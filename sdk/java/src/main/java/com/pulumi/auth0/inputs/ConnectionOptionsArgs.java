@@ -1011,6 +1011,21 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Allows configuration if connections*realm*fallback flag is enabled for the tenant
+     * 
+     */
+    @Import(name="realmFallback")
+    private @Nullable Output<Boolean> realmFallback;
+
+    /**
+     * @return Allows configuration if connections*realm*fallback flag is enabled for the tenant
+     * 
+     */
+    public Optional<Output<Boolean>> realmFallback() {
+        return Optional.ofNullable(this.realmFallback);
+    }
+
+    /**
      * Template that formats the SAML request.
      * 
      */
@@ -1558,6 +1573,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         this.precedences = $.precedences;
         this.protocolBinding = $.protocolBinding;
         this.provider = $.provider;
+        this.realmFallback = $.realmFallback;
         this.requestTemplate = $.requestTemplate;
         this.requiresUsername = $.requiresUsername;
         this.scopes = $.scopes;
@@ -3063,6 +3079,27 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder provider(String provider) {
             return provider(Output.of(provider));
+        }
+
+        /**
+         * @param realmFallback Allows configuration if connections*realm*fallback flag is enabled for the tenant
+         * 
+         * @return builder
+         * 
+         */
+        public Builder realmFallback(@Nullable Output<Boolean> realmFallback) {
+            $.realmFallback = realmFallback;
+            return this;
+        }
+
+        /**
+         * @param realmFallback Allows configuration if connections*realm*fallback flag is enabled for the tenant
+         * 
+         * @return builder
+         * 
+         */
+        public Builder realmFallback(Boolean realmFallback) {
+            return realmFallback(Output.of(realmFallback));
         }
 
         /**

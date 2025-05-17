@@ -13,6 +13,7 @@ import com.pulumi.auth0.outputs.ClientMobile;
 import com.pulumi.auth0.outputs.ClientNativeSocialLogin;
 import com.pulumi.auth0.outputs.ClientOidcLogout;
 import com.pulumi.auth0.outputs.ClientRefreshToken;
+import com.pulumi.auth0.outputs.ClientSessionTransfer;
 import com.pulumi.auth0.outputs.ClientTokenExchange;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -428,14 +429,14 @@ public class Client extends com.pulumi.resources.CustomResource {
      */
     @Deprecated /* This resource is deprecated and will be removed in the next major version. Please use `oidc_logout` for managing OIDC backchannel logout URLs. */
     @Export(name="oidcBackchannelLogoutUrls", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> oidcBackchannelLogoutUrls;
+    private Output<List<String>> oidcBackchannelLogoutUrls;
 
     /**
      * @return Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
      * 
      */
-    public Output<Optional<List<String>>> oidcBackchannelLogoutUrls() {
-        return Codegen.optional(this.oidcBackchannelLogoutUrls);
+    public Output<List<String>> oidcBackchannelLogoutUrls() {
+        return this.oidcBackchannelLogoutUrls;
     }
     /**
      * Indicates whether this client will conform to strict OIDC specifications.
@@ -534,6 +535,12 @@ public class Client extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> requirePushedAuthorizationRequests() {
         return Codegen.optional(this.requirePushedAuthorizationRequests);
+    }
+    @Export(name="sessionTransfer", refs={ClientSessionTransfer.class}, tree="[0]")
+    private Output</* @Nullable */ ClientSessionTransfer> sessionTransfer;
+
+    public Output<Optional<ClientSessionTransfer>> sessionTransfer() {
+        return Codegen.optional(this.sessionTransfer);
     }
     /**
      * List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.

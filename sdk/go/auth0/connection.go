@@ -912,6 +912,9 @@ import (
 //
 // ### Okta Connection
 //
+// !> When configuring an Okta Workforce connection, the `scopes` attribute must be explicitly set. If omitted, the connection may not function correctly.
+// To ensure proper behavior, always specify:  `scopes = ["openid", "profile", "email"]`
+//
 // ```go
 // package main
 //
@@ -968,6 +971,7 @@ import (
 //					AuthorizationEndpoint: pulumi.String("https://example.okta.com/oauth2/v1/authorize"),
 //					Scopes: pulumi.StringArray{
 //						pulumi.String("openid"),
+//						pulumi.String("profile"),
 //						pulumi.String("email"),
 //					},
 //					SetUserRootAttributes: pulumi.String("on_first_login"),

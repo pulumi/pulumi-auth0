@@ -96,7 +96,8 @@ type Client struct {
 	// Makes the use of Proof-of-Possession mandatory for this client.
 	RequireProofOfPossession pulumi.BoolPtrOutput `pulumi:"requireProofOfPossession"`
 	// Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
-	RequirePushedAuthorizationRequests pulumi.BoolPtrOutput `pulumi:"requirePushedAuthorizationRequests"`
+	RequirePushedAuthorizationRequests pulumi.BoolPtrOutput           `pulumi:"requirePushedAuthorizationRequests"`
+	SessionTransfer                    ClientSessionTransferPtrOutput `pulumi:"sessionTransfer"`
 	// List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
 	SigningKeys pulumi.StringMapArrayOutput `pulumi:"signingKeys"`
 	// Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
@@ -217,7 +218,8 @@ type clientState struct {
 	// Makes the use of Proof-of-Possession mandatory for this client.
 	RequireProofOfPossession *bool `pulumi:"requireProofOfPossession"`
 	// Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
-	RequirePushedAuthorizationRequests *bool `pulumi:"requirePushedAuthorizationRequests"`
+	RequirePushedAuthorizationRequests *bool                  `pulumi:"requirePushedAuthorizationRequests"`
+	SessionTransfer                    *ClientSessionTransfer `pulumi:"sessionTransfer"`
 	// List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
 	SigningKeys []map[string]string `pulumi:"signingKeys"`
 	// Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
@@ -303,6 +305,7 @@ type ClientState struct {
 	RequireProofOfPossession pulumi.BoolPtrInput
 	// Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
 	RequirePushedAuthorizationRequests pulumi.BoolPtrInput
+	SessionTransfer                    ClientSessionTransferPtrInput
 	// List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
 	SigningKeys pulumi.StringMapArrayInput
 	// Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
@@ -389,7 +392,8 @@ type clientArgs struct {
 	// Makes the use of Proof-of-Possession mandatory for this client.
 	RequireProofOfPossession *bool `pulumi:"requireProofOfPossession"`
 	// Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
-	RequirePushedAuthorizationRequests *bool `pulumi:"requirePushedAuthorizationRequests"`
+	RequirePushedAuthorizationRequests *bool                  `pulumi:"requirePushedAuthorizationRequests"`
+	SessionTransfer                    *ClientSessionTransfer `pulumi:"sessionTransfer"`
 	// Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
 	Sso *bool `pulumi:"sso"`
 	// Indicates whether or not SSO is disabled.
@@ -472,6 +476,7 @@ type ClientArgs struct {
 	RequireProofOfPossession pulumi.BoolPtrInput
 	// Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
 	RequirePushedAuthorizationRequests pulumi.BoolPtrInput
+	SessionTransfer                    ClientSessionTransferPtrInput
 	// Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
 	Sso pulumi.BoolPtrInput
 	// Indicates whether or not SSO is disabled.
@@ -744,6 +749,10 @@ func (o ClientOutput) RequireProofOfPossession() pulumi.BoolPtrOutput {
 // Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
 func (o ClientOutput) RequirePushedAuthorizationRequests() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Client) pulumi.BoolPtrOutput { return v.RequirePushedAuthorizationRequests }).(pulumi.BoolPtrOutput)
+}
+
+func (o ClientOutput) SessionTransfer() ClientSessionTransferPtrOutput {
+	return o.ApplyT(func(v *Client) ClientSessionTransferPtrOutput { return v.SessionTransfer }).(ClientSessionTransferPtrOutput)
 }
 
 // List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.

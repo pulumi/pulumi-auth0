@@ -160,7 +160,7 @@ export class Client extends pulumi.CustomResource {
      *
      * @deprecated This resource is deprecated and will be removed in the next major version. Please use `oidcLogout` for managing OIDC backchannel logout URLs.
      */
-    public readonly oidcBackchannelLogoutUrls!: pulumi.Output<string[] | undefined>;
+    public readonly oidcBackchannelLogoutUrls!: pulumi.Output<string[]>;
     /**
      * Indicates whether this client will conform to strict OIDC specifications.
      */
@@ -189,6 +189,7 @@ export class Client extends pulumi.CustomResource {
      * Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
      */
     public readonly requirePushedAuthorizationRequests!: pulumi.Output<boolean | undefined>;
+    public readonly sessionTransfer!: pulumi.Output<outputs.ClientSessionTransfer | undefined>;
     /**
      * List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
      */
@@ -258,6 +259,7 @@ export class Client extends pulumi.CustomResource {
             resourceInputs["refreshToken"] = state ? state.refreshToken : undefined;
             resourceInputs["requireProofOfPossession"] = state ? state.requireProofOfPossession : undefined;
             resourceInputs["requirePushedAuthorizationRequests"] = state ? state.requirePushedAuthorizationRequests : undefined;
+            resourceInputs["sessionTransfer"] = state ? state.sessionTransfer : undefined;
             resourceInputs["signingKeys"] = state ? state.signingKeys : undefined;
             resourceInputs["sso"] = state ? state.sso : undefined;
             resourceInputs["ssoDisabled"] = state ? state.ssoDisabled : undefined;
@@ -299,6 +301,7 @@ export class Client extends pulumi.CustomResource {
             resourceInputs["refreshToken"] = args ? args.refreshToken : undefined;
             resourceInputs["requireProofOfPossession"] = args ? args.requireProofOfPossession : undefined;
             resourceInputs["requirePushedAuthorizationRequests"] = args ? args.requirePushedAuthorizationRequests : undefined;
+            resourceInputs["sessionTransfer"] = args ? args.sessionTransfer : undefined;
             resourceInputs["sso"] = args ? args.sso : undefined;
             resourceInputs["ssoDisabled"] = args ? args.ssoDisabled : undefined;
             resourceInputs["tokenExchange"] = args ? args.tokenExchange : undefined;
@@ -459,6 +462,7 @@ export interface ClientState {
      * Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
      */
     requirePushedAuthorizationRequests?: pulumi.Input<boolean>;
+    sessionTransfer?: pulumi.Input<inputs.ClientSessionTransfer>;
     /**
      * List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
      */
@@ -623,6 +627,7 @@ export interface ClientArgs {
      * Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
      */
     requirePushedAuthorizationRequests?: pulumi.Input<boolean>;
+    sessionTransfer?: pulumi.Input<inputs.ClientSessionTransfer>;
     /**
      * Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
      */

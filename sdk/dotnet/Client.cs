@@ -235,6 +235,9 @@ namespace Pulumi.Auth0
         [Output("requirePushedAuthorizationRequests")]
         public Output<bool?> RequirePushedAuthorizationRequests { get; private set; } = null!;
 
+        [Output("sessionTransfer")]
+        public Output<Outputs.ClientSessionTransfer?> SessionTransfer { get; private set; } = null!;
+
         /// <summary>
         /// List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
         /// </summary>
@@ -574,6 +577,9 @@ namespace Pulumi.Auth0
         [Input("requirePushedAuthorizationRequests")]
         public Input<bool>? RequirePushedAuthorizationRequests { get; set; }
 
+        [Input("sessionTransfer")]
+        public Input<Inputs.ClientSessionTransferArgs>? SessionTransfer { get; set; }
+
         /// <summary>
         /// Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
         /// </summary>
@@ -877,6 +883,9 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("requirePushedAuthorizationRequests")]
         public Input<bool>? RequirePushedAuthorizationRequests { get; set; }
+
+        [Input("sessionTransfer")]
+        public Input<Inputs.ClientSessionTransferGetArgs>? SessionTransfer { get; set; }
 
         [Input("signingKeys")]
         private InputList<ImmutableDictionary<string, string>>? _signingKeys;

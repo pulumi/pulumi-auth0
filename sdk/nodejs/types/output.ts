@@ -1291,6 +1291,10 @@ export interface ClientRefreshToken {
      */
     leeway: number;
     /**
+     * A collection of policies governing multi-resource refresh token exchange (MRRT), defining how refresh tokens can be used across different resource servers
+     */
+    policies?: outputs.ClientRefreshTokenPolicy[];
+    /**
      * Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
      */
     rotationType: string;
@@ -1298,6 +1302,29 @@ export interface ClientRefreshToken {
      * The absolute lifetime of a refresh token in seconds.
      */
     tokenLifetime: number;
+}
+
+export interface ClientRefreshTokenPolicy {
+    /**
+     * The identifier of the resource server to which the Multi Resource Refresh Token Policy applies
+     */
+    audience: string;
+    /**
+     * The resource server permissions granted under the Multi Resource Refresh Token Policy, defining the context in which an access token can be used
+     */
+    scopes: string[];
+}
+
+export interface ClientSessionTransfer {
+    allowedAuthenticationMethods: string[];
+    /**
+     * Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session*transfer*token
+     */
+    canCreateSessionTransferToken: boolean;
+    /**
+     * Configures the level of device binding enforced when a session*transfer*token is consumed. Can be one of `ip`, `asn` or `none`.
+     */
+    enforceDeviceBinding: string;
 }
 
 export interface ClientTokenExchange {
@@ -1568,6 +1595,10 @@ export interface ConnectionOptions {
      * Defines the custom `smsGateway` provider.
      */
     provider?: string;
+    /**
+     * Allows configuration if connections*realm*fallback flag is enabled for the tenant
+     */
+    realmFallback?: boolean;
     /**
      * Template that formats the SAML request.
      */
@@ -3436,6 +3467,10 @@ export interface GetClientRefreshToken {
      */
     leeway: number;
     /**
+     * A collection of policies governing multi-resource refresh token exchange (MRRT), defining how refresh tokens can be used across different resource servers
+     */
+    policies: outputs.GetClientRefreshTokenPolicy[];
+    /**
      * Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
      */
     rotationType: string;
@@ -3443,6 +3478,29 @@ export interface GetClientRefreshToken {
      * The absolute lifetime of a refresh token in seconds.
      */
     tokenLifetime: number;
+}
+
+export interface GetClientRefreshTokenPolicy {
+    /**
+     * The identifier of the resource server to which the Multi Resource Refresh Token Policy applies
+     */
+    audience: string;
+    /**
+     * The resource server permissions granted under the Multi Resource Refresh Token Policy, defining the context in which an access token can be used
+     */
+    scopes: string[];
+}
+
+export interface GetClientSessionTransfer {
+    allowedAuthenticationMethods: string[];
+    /**
+     * Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session_transfer_token
+     */
+    canCreateSessionTransferToken: boolean;
+    /**
+     * Configures the level of device binding enforced when a sessionTransferToken is consumed. Can be one of `ip`, `asn` or `none`.
+     */
+    enforceDeviceBinding: string;
 }
 
 export interface GetClientSignedRequestObject {
@@ -3552,6 +3610,7 @@ export interface GetClientsClient {
      * Configure OIDC logout for the Client
      */
     oidcLogouts: outputs.GetClientsClientOidcLogout[];
+    sessionTransfers: outputs.GetClientsClientSessionTransfer[];
     /**
      * Allows configuration for token exchange
      */
@@ -3582,6 +3641,18 @@ export interface GetClientsClientOidcLogoutBackchannelLogoutInitiator {
      * Contains the list of initiators to be enabled for the given client.
      */
     selectedInitiators: string[];
+}
+
+export interface GetClientsClientSessionTransfer {
+    allowedAuthenticationMethods: string[];
+    /**
+     * Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session_transfer_token
+     */
+    canCreateSessionTransferToken: boolean;
+    /**
+     * Configures the level of device binding enforced when a sessionTransferToken is consumed. Can be one of `ip`, `asn` or `none`.
+     */
+    enforceDeviceBinding: string;
 }
 
 export interface GetClientsClientTokenExchange {
@@ -3852,6 +3923,10 @@ export interface GetConnectionOption {
      * Defines the custom `smsGateway` provider.
      */
     provider: string;
+    /**
+     * Allows configuration if connectionsRealmFallback flag is enabled for the tenant
+     */
+    realmFallback: boolean;
     /**
      * Template that formats the SAML request.
      */

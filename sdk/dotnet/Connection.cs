@@ -846,6 +846,9 @@ namespace Pulumi.Auth0
     /// 
     /// ### Okta Connection
     /// 
+    /// !&gt; When configuring an Okta Workforce connection, the `scopes` attribute must be explicitly set. If omitted, the connection may not function correctly.
+    /// To ensure proper behavior, always specify:  `scopes = ["openid", "profile", "email"]`
+    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -879,6 +882,7 @@ namespace Pulumi.Auth0
     ///             Scopes = new[]
     ///             {
     ///                 "openid",
+    ///                 "profile",
     ///                 "email",
     ///             },
     ///             SetUserRootAttributes = "on_first_login",

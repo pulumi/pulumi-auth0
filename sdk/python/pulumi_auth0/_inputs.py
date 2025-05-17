@@ -166,6 +166,10 @@ __all__ = [
     'ClientOidcLogoutBackchannelLogoutInitiatorsArgsDict',
     'ClientRefreshTokenArgs',
     'ClientRefreshTokenArgsDict',
+    'ClientRefreshTokenPolicyArgs',
+    'ClientRefreshTokenPolicyArgsDict',
+    'ClientSessionTransferArgs',
+    'ClientSessionTransferArgsDict',
     'ClientTokenExchangeArgs',
     'ClientTokenExchangeArgsDict',
     'ConnectionOptionsArgs',
@@ -6512,6 +6516,10 @@ if not MYPY:
         """
         The amount of time in seconds in which a refresh token may be reused without triggering reuse detection.
         """
+        policies: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClientRefreshTokenPolicyArgsDict']]]]
+        """
+        A collection of policies governing multi-resource refresh token exchange (MRRT), defining how refresh tokens can be used across different resource servers
+        """
         token_lifetime: NotRequired[pulumi.Input[builtins.int]]
         """
         The absolute lifetime of a refresh token in seconds.
@@ -6528,6 +6536,7 @@ class ClientRefreshTokenArgs:
                  infinite_idle_token_lifetime: Optional[pulumi.Input[builtins.bool]] = None,
                  infinite_token_lifetime: Optional[pulumi.Input[builtins.bool]] = None,
                  leeway: Optional[pulumi.Input[builtins.int]] = None,
+                 policies: Optional[pulumi.Input[Sequence[pulumi.Input['ClientRefreshTokenPolicyArgs']]]] = None,
                  token_lifetime: Optional[pulumi.Input[builtins.int]] = None):
         """
         :param pulumi.Input[builtins.str] expiration_type: Options include `expiring`, `non-expiring`. Whether a refresh token will expire based on an absolute lifetime, after which the token can no longer be used. If rotation is `rotating`, this must be set to `expiring`.
@@ -6536,6 +6545,7 @@ class ClientRefreshTokenArgs:
         :param pulumi.Input[builtins.bool] infinite_idle_token_lifetime: Whether inactive refresh tokens should remain valid indefinitely.
         :param pulumi.Input[builtins.bool] infinite_token_lifetime: Whether refresh tokens should remain valid indefinitely. If false, `token_lifetime` should also be set.
         :param pulumi.Input[builtins.int] leeway: The amount of time in seconds in which a refresh token may be reused without triggering reuse detection.
+        :param pulumi.Input[Sequence[pulumi.Input['ClientRefreshTokenPolicyArgs']]] policies: A collection of policies governing multi-resource refresh token exchange (MRRT), defining how refresh tokens can be used across different resource servers
         :param pulumi.Input[builtins.int] token_lifetime: The absolute lifetime of a refresh token in seconds.
         """
         pulumi.set(__self__, "expiration_type", expiration_type)
@@ -6548,6 +6558,8 @@ class ClientRefreshTokenArgs:
             pulumi.set(__self__, "infinite_token_lifetime", infinite_token_lifetime)
         if leeway is not None:
             pulumi.set(__self__, "leeway", leeway)
+        if policies is not None:
+            pulumi.set(__self__, "policies", policies)
         if token_lifetime is not None:
             pulumi.set(__self__, "token_lifetime", token_lifetime)
 
@@ -6624,6 +6636,18 @@ class ClientRefreshTokenArgs:
         pulumi.set(self, "leeway", value)
 
     @property
+    @pulumi.getter
+    def policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClientRefreshTokenPolicyArgs']]]]:
+        """
+        A collection of policies governing multi-resource refresh token exchange (MRRT), defining how refresh tokens can be used across different resource servers
+        """
+        return pulumi.get(self, "policies")
+
+    @policies.setter
+    def policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClientRefreshTokenPolicyArgs']]]]):
+        pulumi.set(self, "policies", value)
+
+    @property
     @pulumi.getter(name="tokenLifetime")
     def token_lifetime(self) -> Optional[pulumi.Input[builtins.int]]:
         """
@@ -6634,6 +6658,121 @@ class ClientRefreshTokenArgs:
     @token_lifetime.setter
     def token_lifetime(self, value: Optional[pulumi.Input[builtins.int]]):
         pulumi.set(self, "token_lifetime", value)
+
+
+if not MYPY:
+    class ClientRefreshTokenPolicyArgsDict(TypedDict):
+        audience: pulumi.Input[builtins.str]
+        """
+        The identifier of the resource server to which the Multi Resource Refresh Token Policy applies
+        """
+        scopes: pulumi.Input[Sequence[pulumi.Input[builtins.str]]]
+        """
+        The resource server permissions granted under the Multi Resource Refresh Token Policy, defining the context in which an access token can be used
+        """
+elif False:
+    ClientRefreshTokenPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClientRefreshTokenPolicyArgs:
+    def __init__(__self__, *,
+                 audience: pulumi.Input[builtins.str],
+                 scopes: pulumi.Input[Sequence[pulumi.Input[builtins.str]]]):
+        """
+        :param pulumi.Input[builtins.str] audience: The identifier of the resource server to which the Multi Resource Refresh Token Policy applies
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] scopes: The resource server permissions granted under the Multi Resource Refresh Token Policy, defining the context in which an access token can be used
+        """
+        pulumi.set(__self__, "audience", audience)
+        pulumi.set(__self__, "scopes", scopes)
+
+    @property
+    @pulumi.getter
+    def audience(self) -> pulumi.Input[builtins.str]:
+        """
+        The identifier of the resource server to which the Multi Resource Refresh Token Policy applies
+        """
+        return pulumi.get(self, "audience")
+
+    @audience.setter
+    def audience(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "audience", value)
+
+    @property
+    @pulumi.getter
+    def scopes(self) -> pulumi.Input[Sequence[pulumi.Input[builtins.str]]]:
+        """
+        The resource server permissions granted under the Multi Resource Refresh Token Policy, defining the context in which an access token can be used
+        """
+        return pulumi.get(self, "scopes")
+
+    @scopes.setter
+    def scopes(self, value: pulumi.Input[Sequence[pulumi.Input[builtins.str]]]):
+        pulumi.set(self, "scopes", value)
+
+
+if not MYPY:
+    class ClientSessionTransferArgsDict(TypedDict):
+        allowed_authentication_methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        can_create_session_transfer_token: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session*transfer*token
+        """
+        enforce_device_binding: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Configures the level of device binding enforced when a session*transfer*token is consumed. Can be one of `ip`, `asn` or `none`.
+        """
+elif False:
+    ClientSessionTransferArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClientSessionTransferArgs:
+    def __init__(__self__, *,
+                 allowed_authentication_methods: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 can_create_session_transfer_token: Optional[pulumi.Input[builtins.bool]] = None,
+                 enforce_device_binding: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.bool] can_create_session_transfer_token: Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session*transfer*token
+        :param pulumi.Input[builtins.str] enforce_device_binding: Configures the level of device binding enforced when a session*transfer*token is consumed. Can be one of `ip`, `asn` or `none`.
+        """
+        if allowed_authentication_methods is not None:
+            pulumi.set(__self__, "allowed_authentication_methods", allowed_authentication_methods)
+        if can_create_session_transfer_token is not None:
+            pulumi.set(__self__, "can_create_session_transfer_token", can_create_session_transfer_token)
+        if enforce_device_binding is not None:
+            pulumi.set(__self__, "enforce_device_binding", enforce_device_binding)
+
+    @property
+    @pulumi.getter(name="allowedAuthenticationMethods")
+    def allowed_authentication_methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        return pulumi.get(self, "allowed_authentication_methods")
+
+    @allowed_authentication_methods.setter
+    def allowed_authentication_methods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "allowed_authentication_methods", value)
+
+    @property
+    @pulumi.getter(name="canCreateSessionTransferToken")
+    def can_create_session_transfer_token(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session*transfer*token
+        """
+        return pulumi.get(self, "can_create_session_transfer_token")
+
+    @can_create_session_transfer_token.setter
+    def can_create_session_transfer_token(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "can_create_session_transfer_token", value)
+
+    @property
+    @pulumi.getter(name="enforceDeviceBinding")
+    def enforce_device_binding(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Configures the level of device binding enforced when a session*transfer*token is consumed. Can be one of `ip`, `asn` or `none`.
+        """
+        return pulumi.get(self, "enforce_device_binding")
+
+    @enforce_device_binding.setter
+    def enforce_device_binding(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "enforce_device_binding", value)
 
 
 if not MYPY:
@@ -6929,6 +7068,10 @@ if not MYPY:
         """
         Defines the custom `sms_gateway` provider.
         """
+        realm_fallback: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        Allows configuration if connections*realm*fallback flag is enabled for the tenant
+        """
         request_template: NotRequired[pulumi.Input[builtins.str]]
         """
         Template that formats the SAML request.
@@ -7128,6 +7271,7 @@ class ConnectionOptionsArgs:
                  precedences: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  protocol_binding: Optional[pulumi.Input[builtins.str]] = None,
                  provider: Optional[pulumi.Input[builtins.str]] = None,
+                 realm_fallback: Optional[pulumi.Input[builtins.bool]] = None,
                  request_template: Optional[pulumi.Input[builtins.str]] = None,
                  requires_username: Optional[pulumi.Input[builtins.bool]] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
@@ -7226,6 +7370,7 @@ class ConnectionOptionsArgs:
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] precedences: Order of attributes for precedence in identification.Valid values: email, phone*number, username. If Precedence is set, it must contain all values (email, phone*number, username) in specific order
         :param pulumi.Input[builtins.str] protocol_binding: The SAML Response Binding: how the SAML token is received by Auth0 from the IdP.
         :param pulumi.Input[builtins.str] provider: Defines the custom `sms_gateway` provider.
+        :param pulumi.Input[builtins.bool] realm_fallback: Allows configuration if connections*realm*fallback flag is enabled for the tenant
         :param pulumi.Input[builtins.str] request_template: Template that formats the SAML request.
         :param pulumi.Input[builtins.bool] requires_username: Indicates whether the user is required to provide a username in addition to an email address.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] scopes: Permissions to grant to the connection. Within the Auth0 dashboard these appear under the "Attributes" and "Extended Attributes" sections. Some examples: `basic_profile`, `ext_profile`, `ext_nested_groups`, etc.
@@ -7389,6 +7534,8 @@ class ConnectionOptionsArgs:
             pulumi.set(__self__, "protocol_binding", protocol_binding)
         if provider is not None:
             pulumi.set(__self__, "provider", provider)
+        if realm_fallback is not None:
+            pulumi.set(__self__, "realm_fallback", realm_fallback)
         if request_template is not None:
             pulumi.set(__self__, "request_template", request_template)
         if requires_username is not None:
@@ -8233,6 +8380,18 @@ class ConnectionOptionsArgs:
     @provider.setter
     def provider(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "provider", value)
+
+    @property
+    @pulumi.getter(name="realmFallback")
+    def realm_fallback(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Allows configuration if connections*realm*fallback flag is enabled for the tenant
+        """
+        return pulumi.get(self, "realm_fallback")
+
+    @realm_fallback.setter
+    def realm_fallback(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "realm_fallback", value)
 
     @property
     @pulumi.getter(name="requestTemplate")

@@ -201,6 +201,7 @@ export interface GetClientResult {
      * Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
      */
     readonly requirePushedAuthorizationRequests: boolean;
+    readonly sessionTransfers: outputs.GetClientSessionTransfer[];
     /**
      * Configuration for JWT-secured Authorization Requests(JAR).
      */
