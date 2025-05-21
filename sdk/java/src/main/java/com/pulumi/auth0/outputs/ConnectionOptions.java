@@ -357,6 +357,11 @@ public final class ConnectionOptions {
      */
     private @Nullable String provider;
     /**
+     * @return Allows configuration if connections*realm*fallback flag is enabled for the tenant
+     * 
+     */
+    private @Nullable Boolean realmFallback;
+    /**
      * @return Template that formats the SAML request.
      * 
      */
@@ -974,6 +979,13 @@ public final class ConnectionOptions {
         return Optional.ofNullable(this.provider);
     }
     /**
+     * @return Allows configuration if connections*realm*fallback flag is enabled for the tenant
+     * 
+     */
+    public Optional<Boolean> realmFallback() {
+        return Optional.ofNullable(this.realmFallback);
+    }
+    /**
      * @return Template that formats the SAML request.
      * 
      */
@@ -1272,6 +1284,7 @@ public final class ConnectionOptions {
         private @Nullable List<String> precedences;
         private @Nullable String protocolBinding;
         private @Nullable String provider;
+        private @Nullable Boolean realmFallback;
         private @Nullable String requestTemplate;
         private @Nullable Boolean requiresUsername;
         private @Nullable List<String> scopes;
@@ -1372,6 +1385,7 @@ public final class ConnectionOptions {
     	      this.precedences = defaults.precedences;
     	      this.protocolBinding = defaults.protocolBinding;
     	      this.provider = defaults.provider;
+    	      this.realmFallback = defaults.realmFallback;
     	      this.requestTemplate = defaults.requestTemplate;
     	      this.requiresUsername = defaults.requiresUsername;
     	      this.scopes = defaults.scopes;
@@ -1821,6 +1835,12 @@ public final class ConnectionOptions {
             return this;
         }
         @CustomType.Setter
+        public Builder realmFallback(@Nullable Boolean realmFallback) {
+
+            this.realmFallback = realmFallback;
+            return this;
+        }
+        @CustomType.Setter
         public Builder requestTemplate(@Nullable String requestTemplate) {
 
             this.requestTemplate = requestTemplate;
@@ -2082,6 +2102,7 @@ public final class ConnectionOptions {
             _resultValue.precedences = precedences;
             _resultValue.protocolBinding = protocolBinding;
             _resultValue.provider = provider;
+            _resultValue.realmFallback = realmFallback;
             _resultValue.requestTemplate = requestTemplate;
             _resultValue.requiresUsername = requiresUsername;
             _resultValue.scopes = scopes;

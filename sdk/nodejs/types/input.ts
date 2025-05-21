@@ -1291,6 +1291,10 @@ export interface ClientRefreshToken {
      */
     leeway?: pulumi.Input<number>;
     /**
+     * A collection of policies governing multi-resource refresh token exchange (MRRT), defining how refresh tokens can be used across different resource servers
+     */
+    policies?: pulumi.Input<pulumi.Input<inputs.ClientRefreshTokenPolicy>[]>;
+    /**
      * Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
      */
     rotationType: pulumi.Input<string>;
@@ -1298,6 +1302,29 @@ export interface ClientRefreshToken {
      * The absolute lifetime of a refresh token in seconds.
      */
     tokenLifetime?: pulumi.Input<number>;
+}
+
+export interface ClientRefreshTokenPolicy {
+    /**
+     * The identifier of the resource server to which the Multi Resource Refresh Token Policy applies
+     */
+    audience: pulumi.Input<string>;
+    /**
+     * The resource server permissions granted under the Multi Resource Refresh Token Policy, defining the context in which an access token can be used
+     */
+    scopes: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface ClientSessionTransfer {
+    allowedAuthenticationMethods?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session*transfer*token
+     */
+    canCreateSessionTransferToken?: pulumi.Input<boolean>;
+    /**
+     * Configures the level of device binding enforced when a session*transfer*token is consumed. Can be one of `ip`, `asn` or `none`.
+     */
+    enforceDeviceBinding?: pulumi.Input<string>;
 }
 
 export interface ClientTokenExchange {
@@ -1568,6 +1595,10 @@ export interface ConnectionOptions {
      * Defines the custom `smsGateway` provider.
      */
     provider?: pulumi.Input<string>;
+    /**
+     * Allows configuration if connections*realm*fallback flag is enabled for the tenant
+     */
+    realmFallback?: pulumi.Input<boolean>;
     /**
      * Template that formats the SAML request.
      */

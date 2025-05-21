@@ -193,6 +193,7 @@ func TestConnectionMigration(t *testing.T) {
                     "options"
                 ],
                 "detailedDiff": {
+									  "options.realmFallback": {},
                     "options.globalTokenRevocationJwtIss": {
                     },
                     "options.globalTokenRevocationJwtSub": {

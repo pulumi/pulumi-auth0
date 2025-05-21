@@ -56,6 +56,7 @@ class ClientArgs:
                  refresh_token: Optional[pulumi.Input['ClientRefreshTokenArgs']] = None,
                  require_proof_of_possession: Optional[pulumi.Input[builtins.bool]] = None,
                  require_pushed_authorization_requests: Optional[pulumi.Input[builtins.bool]] = None,
+                 session_transfer: Optional[pulumi.Input['ClientSessionTransferArgs']] = None,
                  sso: Optional[pulumi.Input[builtins.bool]] = None,
                  sso_disabled: Optional[pulumi.Input[builtins.bool]] = None,
                  token_exchange: Optional[pulumi.Input['ClientTokenExchangeArgs']] = None,
@@ -174,6 +175,8 @@ class ClientArgs:
             pulumi.set(__self__, "require_proof_of_possession", require_proof_of_possession)
         if require_pushed_authorization_requests is not None:
             pulumi.set(__self__, "require_pushed_authorization_requests", require_pushed_authorization_requests)
+        if session_transfer is not None:
+            pulumi.set(__self__, "session_transfer", session_transfer)
         if sso is not None:
             pulumi.set(__self__, "sso", sso)
         if sso_disabled is not None:
@@ -593,6 +596,15 @@ class ClientArgs:
         pulumi.set(self, "require_pushed_authorization_requests", value)
 
     @property
+    @pulumi.getter(name="sessionTransfer")
+    def session_transfer(self) -> Optional[pulumi.Input['ClientSessionTransferArgs']]:
+        return pulumi.get(self, "session_transfer")
+
+    @session_transfer.setter
+    def session_transfer(self, value: Optional[pulumi.Input['ClientSessionTransferArgs']]):
+        pulumi.set(self, "session_transfer", value)
+
+    @property
     @pulumi.getter
     def sso(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
@@ -679,6 +691,7 @@ class _ClientState:
                  refresh_token: Optional[pulumi.Input['ClientRefreshTokenArgs']] = None,
                  require_proof_of_possession: Optional[pulumi.Input[builtins.bool]] = None,
                  require_pushed_authorization_requests: Optional[pulumi.Input[builtins.bool]] = None,
+                 session_transfer: Optional[pulumi.Input['ClientSessionTransferArgs']] = None,
                  signing_keys: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]]] = None,
                  sso: Optional[pulumi.Input[builtins.bool]] = None,
                  sso_disabled: Optional[pulumi.Input[builtins.bool]] = None,
@@ -802,6 +815,8 @@ class _ClientState:
             pulumi.set(__self__, "require_proof_of_possession", require_proof_of_possession)
         if require_pushed_authorization_requests is not None:
             pulumi.set(__self__, "require_pushed_authorization_requests", require_pushed_authorization_requests)
+        if session_transfer is not None:
+            pulumi.set(__self__, "session_transfer", session_transfer)
         if signing_keys is not None:
             pulumi.set(__self__, "signing_keys", signing_keys)
         if sso is not None:
@@ -1235,6 +1250,15 @@ class _ClientState:
         pulumi.set(self, "require_pushed_authorization_requests", value)
 
     @property
+    @pulumi.getter(name="sessionTransfer")
+    def session_transfer(self) -> Optional[pulumi.Input['ClientSessionTransferArgs']]:
+        return pulumi.get(self, "session_transfer")
+
+    @session_transfer.setter
+    def session_transfer(self, value: Optional[pulumi.Input['ClientSessionTransferArgs']]):
+        pulumi.set(self, "session_transfer", value)
+
+    @property
     @pulumi.getter(name="signingKeys")
     def signing_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]]]:
         """
@@ -1335,6 +1359,7 @@ class Client(pulumi.CustomResource):
                  refresh_token: Optional[pulumi.Input[Union['ClientRefreshTokenArgs', 'ClientRefreshTokenArgsDict']]] = None,
                  require_proof_of_possession: Optional[pulumi.Input[builtins.bool]] = None,
                  require_pushed_authorization_requests: Optional[pulumi.Input[builtins.bool]] = None,
+                 session_transfer: Optional[pulumi.Input[Union['ClientSessionTransferArgs', 'ClientSessionTransferArgsDict']]] = None,
                  sso: Optional[pulumi.Input[builtins.bool]] = None,
                  sso_disabled: Optional[pulumi.Input[builtins.bool]] = None,
                  token_exchange: Optional[pulumi.Input[Union['ClientTokenExchangeArgs', 'ClientTokenExchangeArgsDict']]] = None,
@@ -1462,6 +1487,7 @@ class Client(pulumi.CustomResource):
                  refresh_token: Optional[pulumi.Input[Union['ClientRefreshTokenArgs', 'ClientRefreshTokenArgsDict']]] = None,
                  require_proof_of_possession: Optional[pulumi.Input[builtins.bool]] = None,
                  require_pushed_authorization_requests: Optional[pulumi.Input[builtins.bool]] = None,
+                 session_transfer: Optional[pulumi.Input[Union['ClientSessionTransferArgs', 'ClientSessionTransferArgsDict']]] = None,
                  sso: Optional[pulumi.Input[builtins.bool]] = None,
                  sso_disabled: Optional[pulumi.Input[builtins.bool]] = None,
                  token_exchange: Optional[pulumi.Input[Union['ClientTokenExchangeArgs', 'ClientTokenExchangeArgsDict']]] = None,
@@ -1511,6 +1537,7 @@ class Client(pulumi.CustomResource):
             __props__.__dict__["refresh_token"] = refresh_token
             __props__.__dict__["require_proof_of_possession"] = require_proof_of_possession
             __props__.__dict__["require_pushed_authorization_requests"] = require_pushed_authorization_requests
+            __props__.__dict__["session_transfer"] = session_transfer
             __props__.__dict__["sso"] = sso
             __props__.__dict__["sso_disabled"] = sso_disabled
             __props__.__dict__["token_exchange"] = token_exchange
@@ -1564,6 +1591,7 @@ class Client(pulumi.CustomResource):
             refresh_token: Optional[pulumi.Input[Union['ClientRefreshTokenArgs', 'ClientRefreshTokenArgsDict']]] = None,
             require_proof_of_possession: Optional[pulumi.Input[builtins.bool]] = None,
             require_pushed_authorization_requests: Optional[pulumi.Input[builtins.bool]] = None,
+            session_transfer: Optional[pulumi.Input[Union['ClientSessionTransferArgs', 'ClientSessionTransferArgsDict']]] = None,
             signing_keys: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]]] = None,
             sso: Optional[pulumi.Input[builtins.bool]] = None,
             sso_disabled: Optional[pulumi.Input[builtins.bool]] = None,
@@ -1656,6 +1684,7 @@ class Client(pulumi.CustomResource):
         __props__.__dict__["refresh_token"] = refresh_token
         __props__.__dict__["require_proof_of_possession"] = require_proof_of_possession
         __props__.__dict__["require_pushed_authorization_requests"] = require_pushed_authorization_requests
+        __props__.__dict__["session_transfer"] = session_transfer
         __props__.__dict__["signing_keys"] = signing_keys
         __props__.__dict__["sso"] = sso
         __props__.__dict__["sso_disabled"] = sso_disabled
@@ -1882,7 +1911,7 @@ class Client(pulumi.CustomResource):
     @property
     @pulumi.getter(name="oidcBackchannelLogoutUrls")
     @_utilities.deprecated("""This resource is deprecated and will be removed in the next major version. Please use `oidc_logout` for managing OIDC backchannel logout URLs.""")
-    def oidc_backchannel_logout_urls(self) -> pulumi.Output[Optional[Sequence[builtins.str]]]:
+    def oidc_backchannel_logout_urls(self) -> pulumi.Output[Sequence[builtins.str]]:
         """
         Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
         """
@@ -1943,6 +1972,11 @@ class Client(pulumi.CustomResource):
         Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
         """
         return pulumi.get(self, "require_pushed_authorization_requests")
+
+    @property
+    @pulumi.getter(name="sessionTransfer")
+    def session_transfer(self) -> pulumi.Output[Optional['outputs.ClientSessionTransfer']]:
+        return pulumi.get(self, "session_transfer")
 
     @property
     @pulumi.getter(name="signingKeys")
