@@ -356,6 +356,11 @@ public final class GetConnectionOption {
      */
     private String provider;
     /**
+     * @return Allows configuration if connections_realm_fallback flag is enabled for the tenant
+     * 
+     */
+    private Boolean realmFallback;
+    /**
      * @return Template that formats the SAML request.
      * 
      */
@@ -973,6 +978,13 @@ public final class GetConnectionOption {
         return this.provider;
     }
     /**
+     * @return Allows configuration if connections_realm_fallback flag is enabled for the tenant
+     * 
+     */
+    public Boolean realmFallback() {
+        return this.realmFallback;
+    }
+    /**
      * @return Template that formats the SAML request.
      * 
      */
@@ -1271,6 +1283,7 @@ public final class GetConnectionOption {
         private List<String> precedences;
         private String protocolBinding;
         private String provider;
+        private Boolean realmFallback;
         private String requestTemplate;
         private Boolean requiresUsername;
         private List<String> scopes;
@@ -1371,6 +1384,7 @@ public final class GetConnectionOption {
     	      this.precedences = defaults.precedences;
     	      this.protocolBinding = defaults.protocolBinding;
     	      this.provider = defaults.provider;
+    	      this.realmFallback = defaults.realmFallback;
     	      this.requestTemplate = defaults.requestTemplate;
     	      this.requiresUsername = defaults.requiresUsername;
     	      this.scopes = defaults.scopes;
@@ -1980,6 +1994,14 @@ public final class GetConnectionOption {
             return this;
         }
         @CustomType.Setter
+        public Builder realmFallback(Boolean realmFallback) {
+            if (realmFallback == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOption", "realmFallback");
+            }
+            this.realmFallback = realmFallback;
+            return this;
+        }
+        @CustomType.Setter
         public Builder requestTemplate(String requestTemplate) {
             if (requestTemplate == null) {
               throw new MissingRequiredPropertyException("GetConnectionOption", "requestTemplate");
@@ -2314,6 +2336,7 @@ public final class GetConnectionOption {
             _resultValue.precedences = precedences;
             _resultValue.protocolBinding = protocolBinding;
             _resultValue.provider = provider;
+            _resultValue.realmFallback = realmFallback;
             _resultValue.requestTemplate = requestTemplate;
             _resultValue.requiresUsername = requiresUsername;
             _resultValue.scopes = scopes;
