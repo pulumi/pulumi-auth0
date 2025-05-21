@@ -351,7 +351,31 @@
                         }
                     },
                     "refresh_token": {
-                        "maxItemsOne": true
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "policies": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "scope": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "session_transfer": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "allowed_authentication_methods": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "signing_keys": {
                         "maxItemsOne": false
@@ -1540,7 +1564,31 @@
                         }
                     },
                     "refresh_token": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "policies": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "scope": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "session_transfer": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "allowed_authentication_methods": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "signed_request_object": {
                         "maxItemsOne": false,
@@ -1611,6 +1659,16 @@
                                                 }
                                             },
                                             "backchannel_logout_urls": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "session_transfer": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "allowed_authentication_methods": {
                                                 "maxItemsOne": false
                                             }
                                         }
