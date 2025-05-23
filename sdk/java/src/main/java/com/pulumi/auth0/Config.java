@@ -29,6 +29,13 @@ public final class Config {
         return Codegen.stringProp("audience").config(config).get();
     }
 /**
+ * While toggled on, the API token gets fetched from the keyring for the given domain
+ * 
+ */
+    public Optional<Boolean> cliLogin() {
+        return Codegen.booleanProp("cliLogin").config(config).get();
+    }
+/**
  * Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.
  * 
  */

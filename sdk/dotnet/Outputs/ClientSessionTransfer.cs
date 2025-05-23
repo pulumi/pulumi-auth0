@@ -13,6 +13,10 @@ namespace Pulumi.Auth0.Outputs
     [OutputType]
     public sealed class ClientSessionTransfer
     {
+        /// <summary>
+        /// Indicates whether the application is allowed to use a refresh token when using a session*transfer*token session.
+        /// </summary>
+        public readonly bool? AllowRefreshToken;
         public readonly ImmutableArray<string> AllowedAuthenticationMethods;
         /// <summary>
         /// Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session*transfer*token
@@ -25,12 +29,15 @@ namespace Pulumi.Auth0.Outputs
 
         [OutputConstructor]
         private ClientSessionTransfer(
+            bool? allowRefreshToken,
+
             ImmutableArray<string> allowedAuthenticationMethods,
 
             bool? canCreateSessionTransferToken,
 
             string? enforceDeviceBinding)
         {
+            AllowRefreshToken = allowRefreshToken;
             AllowedAuthenticationMethods = allowedAuthenticationMethods;
             CanCreateSessionTransferToken = canCreateSessionTransferToken;
             EnforceDeviceBinding = enforceDeviceBinding;

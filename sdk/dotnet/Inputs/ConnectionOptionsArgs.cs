@@ -147,14 +147,14 @@ namespace Pulumi.Auth0.Inputs
         public Input<Inputs.ConnectionOptionsConnectionSettingsArgs>? ConnectionSettings { get; set; }
 
         [Input("customHeaders")]
-        private InputList<ImmutableDictionary<string, string>>? _customHeaders;
+        private InputList<Inputs.ConnectionOptionsCustomHeaderArgs>? _customHeaders;
 
         /// <summary>
         /// Configure extra headers to the Token endpoint of an OAuth 2.0 provider
         /// </summary>
-        public InputList<ImmutableDictionary<string, string>> CustomHeaders
+        public InputList<Inputs.ConnectionOptionsCustomHeaderArgs> CustomHeaders
         {
-            get => _customHeaders ?? (_customHeaders = new InputList<ImmutableDictionary<string, string>>());
+            get => _customHeaders ?? (_customHeaders = new InputList<Inputs.ConnectionOptionsCustomHeaderArgs>());
             set => _customHeaders = value;
         }
 

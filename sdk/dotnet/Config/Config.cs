@@ -55,6 +55,16 @@ namespace Pulumi.Auth0
             set => _audience.Set(value);
         }
 
+        private static readonly __Value<bool?> _cliLogin = new __Value<bool?>(() => __config.GetBoolean("cliLogin"));
+        /// <summary>
+        /// While toggled on, the API token gets fetched from the keyring for the given domain
+        /// </summary>
+        public static bool? CliLogin
+        {
+            get => _cliLogin.Get();
+            set => _cliLogin.Set(value);
+        }
+
         private static readonly __Value<string?> _clientId = new __Value<string?>(() => __config.Get("clientId"));
         /// <summary>
         /// Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.

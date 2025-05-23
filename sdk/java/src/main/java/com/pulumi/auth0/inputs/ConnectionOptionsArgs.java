@@ -7,6 +7,7 @@ import com.pulumi.auth0.inputs.ConnectionOptionsAttributeArgs;
 import com.pulumi.auth0.inputs.ConnectionOptionsAttributeMapArgs;
 import com.pulumi.auth0.inputs.ConnectionOptionsAuthenticationMethodArgs;
 import com.pulumi.auth0.inputs.ConnectionOptionsConnectionSettingsArgs;
+import com.pulumi.auth0.inputs.ConnectionOptionsCustomHeaderArgs;
 import com.pulumi.auth0.inputs.ConnectionOptionsDecryptionKeyArgs;
 import com.pulumi.auth0.inputs.ConnectionOptionsGatewayAuthenticationArgs;
 import com.pulumi.auth0.inputs.ConnectionOptionsIdpInitiatedArgs;
@@ -265,13 +266,13 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
      * 
      */
     @Import(name="customHeaders")
-    private @Nullable Output<List<Map<String,String>>> customHeaders;
+    private @Nullable Output<List<ConnectionOptionsCustomHeaderArgs>> customHeaders;
 
     /**
      * @return Configure extra headers to the Token endpoint of an OAuth 2.0 provider
      * 
      */
-    public Optional<Output<List<Map<String,String>>>> customHeaders() {
+    public Optional<Output<List<ConnectionOptionsCustomHeaderArgs>>> customHeaders() {
         return Optional.ofNullable(this.customHeaders);
     }
 
@@ -1977,7 +1978,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
          * @return builder
          * 
          */
-        public Builder customHeaders(@Nullable Output<List<Map<String,String>>> customHeaders) {
+        public Builder customHeaders(@Nullable Output<List<ConnectionOptionsCustomHeaderArgs>> customHeaders) {
             $.customHeaders = customHeaders;
             return this;
         }
@@ -1988,7 +1989,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
          * @return builder
          * 
          */
-        public Builder customHeaders(List<Map<String,String>> customHeaders) {
+        public Builder customHeaders(List<ConnectionOptionsCustomHeaderArgs> customHeaders) {
             return customHeaders(Output.of(customHeaders));
         }
 
@@ -1998,7 +1999,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
          * @return builder
          * 
          */
-        public Builder customHeaders(Map<String,String>... customHeaders) {
+        public Builder customHeaders(ConnectionOptionsCustomHeaderArgs... customHeaders) {
             return customHeaders(List.of(customHeaders));
         }
 

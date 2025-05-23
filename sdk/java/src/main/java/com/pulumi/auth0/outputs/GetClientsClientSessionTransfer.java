@@ -12,6 +12,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClientsClientSessionTransfer {
+    /**
+     * @return Indicates whether the application is allowed to use a refresh token when using a session_transfer_token session.
+     * 
+     */
+    private Boolean allowRefreshToken;
     private List<String> allowedAuthenticationMethods;
     /**
      * @return Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session_transfer_token
@@ -25,6 +30,13 @@ public final class GetClientsClientSessionTransfer {
     private String enforceDeviceBinding;
 
     private GetClientsClientSessionTransfer() {}
+    /**
+     * @return Indicates whether the application is allowed to use a refresh token when using a session_transfer_token session.
+     * 
+     */
+    public Boolean allowRefreshToken() {
+        return this.allowRefreshToken;
+    }
     public List<String> allowedAuthenticationMethods() {
         return this.allowedAuthenticationMethods;
     }
@@ -52,17 +64,27 @@ public final class GetClientsClientSessionTransfer {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Boolean allowRefreshToken;
         private List<String> allowedAuthenticationMethods;
         private Boolean canCreateSessionTransferToken;
         private String enforceDeviceBinding;
         public Builder() {}
         public Builder(GetClientsClientSessionTransfer defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.allowRefreshToken = defaults.allowRefreshToken;
     	      this.allowedAuthenticationMethods = defaults.allowedAuthenticationMethods;
     	      this.canCreateSessionTransferToken = defaults.canCreateSessionTransferToken;
     	      this.enforceDeviceBinding = defaults.enforceDeviceBinding;
         }
 
+        @CustomType.Setter
+        public Builder allowRefreshToken(Boolean allowRefreshToken) {
+            if (allowRefreshToken == null) {
+              throw new MissingRequiredPropertyException("GetClientsClientSessionTransfer", "allowRefreshToken");
+            }
+            this.allowRefreshToken = allowRefreshToken;
+            return this;
+        }
         @CustomType.Setter
         public Builder allowedAuthenticationMethods(List<String> allowedAuthenticationMethods) {
             if (allowedAuthenticationMethods == null) {
@@ -92,6 +114,7 @@ public final class GetClientsClientSessionTransfer {
         }
         public GetClientsClientSessionTransfer build() {
             final var _resultValue = new GetClientsClientSessionTransfer();
+            _resultValue.allowRefreshToken = allowRefreshToken;
             _resultValue.allowedAuthenticationMethods = allowedAuthenticationMethods;
             _resultValue.canCreateSessionTransferToken = canCreateSessionTransferToken;
             _resultValue.enforceDeviceBinding = enforceDeviceBinding;

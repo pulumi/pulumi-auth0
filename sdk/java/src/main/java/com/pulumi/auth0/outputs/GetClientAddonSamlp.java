@@ -46,6 +46,11 @@ public final class GetClientAddonSamlp {
      */
     private String digestAlgorithm;
     /**
+     * @return This is a supporting attribute to `mappings` field.Please note this is an experimental field. It should only be used when needed to send a map with keys as slices.
+     * 
+     */
+    private String flexibleMappings;
+    /**
      * @return Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion. Defaults to `true`.
      * 
      */
@@ -163,6 +168,13 @@ public final class GetClientAddonSamlp {
      */
     public String digestAlgorithm() {
         return this.digestAlgorithm;
+    }
+    /**
+     * @return This is a supporting attribute to `mappings` field.Please note this is an experimental field. It should only be used when needed to send a map with keys as slices.
+     * 
+     */
+    public String flexibleMappings() {
+        return this.flexibleMappings;
     }
     /**
      * @return Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion. Defaults to `true`.
@@ -285,6 +297,7 @@ public final class GetClientAddonSamlp {
         private Boolean createUpnClaim;
         private String destination;
         private String digestAlgorithm;
+        private String flexibleMappings;
         private Boolean includeAttributeNameFormat;
         private String issuer;
         private Integer lifetimeInSeconds;
@@ -309,6 +322,7 @@ public final class GetClientAddonSamlp {
     	      this.createUpnClaim = defaults.createUpnClaim;
     	      this.destination = defaults.destination;
     	      this.digestAlgorithm = defaults.digestAlgorithm;
+    	      this.flexibleMappings = defaults.flexibleMappings;
     	      this.includeAttributeNameFormat = defaults.includeAttributeNameFormat;
     	      this.issuer = defaults.issuer;
     	      this.lifetimeInSeconds = defaults.lifetimeInSeconds;
@@ -372,6 +386,14 @@ public final class GetClientAddonSamlp {
               throw new MissingRequiredPropertyException("GetClientAddonSamlp", "digestAlgorithm");
             }
             this.digestAlgorithm = digestAlgorithm;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder flexibleMappings(String flexibleMappings) {
+            if (flexibleMappings == null) {
+              throw new MissingRequiredPropertyException("GetClientAddonSamlp", "flexibleMappings");
+            }
+            this.flexibleMappings = flexibleMappings;
             return this;
         }
         @CustomType.Setter
@@ -508,6 +530,7 @@ public final class GetClientAddonSamlp {
             _resultValue.createUpnClaim = createUpnClaim;
             _resultValue.destination = destination;
             _resultValue.digestAlgorithm = digestAlgorithm;
+            _resultValue.flexibleMappings = flexibleMappings;
             _resultValue.includeAttributeNameFormat = includeAttributeNameFormat;
             _resultValue.issuer = issuer;
             _resultValue.lifetimeInSeconds = lifetimeInSeconds;

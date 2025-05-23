@@ -632,6 +632,16 @@ class Connection(pulumi.CustomResource):
                 "authorization_endpoint": "https://auth.example.com/oauth2/authorize",
                 "pkce_enabled": True,
                 "icon_url": "https://auth.example.com/assets/logo.png",
+                "custom_headers": [
+                    {
+                        "header": "bar",
+                        "value": "foo",
+                    },
+                    {
+                        "header": "foo",
+                        "value": "bar",
+                    },
+                ],
                 "scripts": {
                     "fetchUserProfile": \"\"\"        function fetchUserProfile(accessToken, context, callback) {
                   return callback(new Error("Whoops!"));
@@ -1346,6 +1356,16 @@ class Connection(pulumi.CustomResource):
                 "authorization_endpoint": "https://auth.example.com/oauth2/authorize",
                 "pkce_enabled": True,
                 "icon_url": "https://auth.example.com/assets/logo.png",
+                "custom_headers": [
+                    {
+                        "header": "bar",
+                        "value": "foo",
+                    },
+                    {
+                        "header": "foo",
+                        "value": "bar",
+                    },
+                ],
                 "scripts": {
                     "fetchUserProfile": \"\"\"        function fetchUserProfile(accessToken, context, callback) {
                   return callback(new Error("Whoops!"));

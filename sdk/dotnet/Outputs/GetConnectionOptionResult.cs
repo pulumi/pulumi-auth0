@@ -76,7 +76,7 @@ namespace Pulumi.Auth0.Outputs
         /// <summary>
         /// Configure extra headers to the Token endpoint of an OAuth 2.0 provider
         /// </summary>
-        public readonly ImmutableArray<ImmutableDictionary<string, string>> CustomHeaders;
+        public readonly ImmutableArray<Outputs.GetConnectionOptionCustomHeaderResult> CustomHeaders;
         /// <summary>
         /// A map of scripts used to integrate with a custom database.
         /// </summary>
@@ -438,7 +438,7 @@ namespace Pulumi.Auth0.Outputs
 
             ImmutableArray<Outputs.GetConnectionOptionConnectionSettingResult> connectionSettings,
 
-            ImmutableArray<ImmutableDictionary<string, string>> customHeaders,
+            ImmutableArray<Outputs.GetConnectionOptionCustomHeaderResult> customHeaders,
 
             ImmutableDictionary<string, string> customScripts,
 

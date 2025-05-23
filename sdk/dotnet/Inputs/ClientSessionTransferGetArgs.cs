@@ -12,6 +12,12 @@ namespace Pulumi.Auth0.Inputs
 
     public sealed class ClientSessionTransferGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Indicates whether the application is allowed to use a refresh token when using a session*transfer*token session.
+        /// </summary>
+        [Input("allowRefreshToken")]
+        public Input<bool>? AllowRefreshToken { get; set; }
+
         [Input("allowedAuthenticationMethods")]
         private InputList<string>? _allowedAuthenticationMethods;
         public InputList<string> AllowedAuthenticationMethods

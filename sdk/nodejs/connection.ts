@@ -339,6 +339,16 @@ import * as utilities from "./utilities";
  *         authorizationEndpoint: "https://auth.example.com/oauth2/authorize",
  *         pkceEnabled: true,
  *         iconUrl: "https://auth.example.com/assets/logo.png",
+ *         customHeaders: [
+ *             {
+ *                 header: "bar",
+ *                 value: "foo",
+ *             },
+ *             {
+ *                 header: "foo",
+ *                 value: "bar",
+ *             },
+ *         ],
  *         scripts: {
  *             fetchUserProfile: `        function fetchUserProfile(accessToken, context, callback) {
  *           return callback(new Error("Whoops!"));

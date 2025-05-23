@@ -39,6 +39,13 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('audience')
 
     @property
+    def cli_login(self) -> Optional[bool]:
+        """
+        While toggled on, the API token gets fetched from the keyring for the given domain
+        """
+        return __config__.get_bool('cliLogin')
+
+    @property
     def client_id(self) -> Optional[str]:
         """
         Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.

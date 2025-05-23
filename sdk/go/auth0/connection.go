@@ -485,6 +485,16 @@ import (
 //					AuthorizationEndpoint: pulumi.String("https://auth.example.com/oauth2/authorize"),
 //					PkceEnabled:           pulumi.Bool(true),
 //					IconUrl:               pulumi.String("https://auth.example.com/assets/logo.png"),
+//					CustomHeaders: auth0.ConnectionOptionsCustomHeaderArray{
+//						&auth0.ConnectionOptionsCustomHeaderArgs{
+//							Header: pulumi.String("bar"),
+//							Value:  pulumi.String("foo"),
+//						},
+//						&auth0.ConnectionOptionsCustomHeaderArgs{
+//							Header: pulumi.String("foo"),
+//							Value:  pulumi.String("bar"),
+//						},
+//					},
 //					Scripts: pulumi.StringMap{
 //						"fetchUserProfile": pulumi.String("        function fetchUserProfile(accessToken, context, callback) {\n          return callback(new Error(\"Whoops!\"));\n        }\n"),
 //					},

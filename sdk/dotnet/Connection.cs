@@ -456,6 +456,19 @@ namespace Pulumi.Auth0
     ///             AuthorizationEndpoint = "https://auth.example.com/oauth2/authorize",
     ///             PkceEnabled = true,
     ///             IconUrl = "https://auth.example.com/assets/logo.png",
+    ///             CustomHeaders = new[]
+    ///             {
+    ///                 new Auth0.Inputs.ConnectionOptionsCustomHeaderArgs
+    ///                 {
+    ///                     Header = "bar",
+    ///                     Value = "foo",
+    ///                 },
+    ///                 new Auth0.Inputs.ConnectionOptionsCustomHeaderArgs
+    ///                 {
+    ///                     Header = "foo",
+    ///                     Value = "bar",
+    ///                 },
+    ///             },
     ///             Scripts = 
     ///             {
     ///                 { "fetchUserProfile", @"        function fetchUserProfile(accessToken, context, callback) {

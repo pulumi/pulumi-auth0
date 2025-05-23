@@ -62,6 +62,8 @@ type providerArgs struct {
 	ApiToken *string `pulumi:"apiToken"`
 	// Your Auth0 audience when using a custom domain. It can also be sourced from the `AUTH0_AUDIENCE` environment variable.
 	Audience *string `pulumi:"audience"`
+	// While toggled on, the API token gets fetched from the keyring for the given domain
+	CliLogin *bool `pulumi:"cliLogin"`
 	// Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.
 	ClientId *string `pulumi:"clientId"`
 	// Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable.
@@ -83,6 +85,8 @@ type ProviderArgs struct {
 	ApiToken pulumi.StringPtrInput
 	// Your Auth0 audience when using a custom domain. It can also be sourced from the `AUTH0_AUDIENCE` environment variable.
 	Audience pulumi.StringPtrInput
+	// While toggled on, the API token gets fetched from the keyring for the given domain
+	CliLogin pulumi.BoolPtrInput
 	// Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.
 	ClientId pulumi.StringPtrInput
 	// Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable.
