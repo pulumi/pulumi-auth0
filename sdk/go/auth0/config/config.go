@@ -24,6 +24,11 @@ func GetAudience(ctx *pulumi.Context) string {
 	return config.Get(ctx, "auth0:audience")
 }
 
+// While toggled on, the API token gets fetched from the keyring for the given domain
+func GetCliLogin(ctx *pulumi.Context) bool {
+	return config.GetBool(ctx, "auth0:cliLogin")
+}
+
 // Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.
 func GetClientId(ctx *pulumi.Context) string {
 	return config.Get(ctx, "auth0:clientId")

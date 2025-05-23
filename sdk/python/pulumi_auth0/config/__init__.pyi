@@ -28,6 +28,11 @@ audience: Optional[str]
 Your Auth0 audience when using a custom domain. It can also be sourced from the `AUTH0_AUDIENCE` environment variable.
 """
 
+cliLogin: Optional[bool]
+"""
+While toggled on, the API token gets fetched from the keyring for the given domain
+"""
+
 clientId: Optional[str]
 """
 Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.

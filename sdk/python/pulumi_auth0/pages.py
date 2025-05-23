@@ -177,6 +177,9 @@ class Pages(pulumi.CustomResource):
         """
         With this resource you can manage custom HTML for the Login, Reset Password, Multi-Factor Authentication and Error pages.
 
+        !> The error block in Pages is not recommended when you're managing tenant settings via the Tenant resource.
+        To avoid conflicts, configure the error_page directly in Tenant instead.
+
         ## Example Usage
 
         ```python
@@ -232,6 +235,9 @@ class Pages(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         With this resource you can manage custom HTML for the Login, Reset Password, Multi-Factor Authentication and Error pages.
+
+        !> The error block in Pages is not recommended when you're managing tenant settings via the Tenant resource.
+        To avoid conflicts, configure the error_page directly in Tenant instead.
 
         ## Example Usage
 

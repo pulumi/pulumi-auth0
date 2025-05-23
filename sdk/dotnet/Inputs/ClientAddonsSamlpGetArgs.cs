@@ -49,6 +49,12 @@ namespace Pulumi.Auth0.Inputs
         public Input<string>? DigestAlgorithm { get; set; }
 
         /// <summary>
+        /// This is a supporting attribute to `mappings` field.Please note this is an experimental field. It should only be used when needed to send a map with keys as slices.
+        /// </summary>
+        [Input("flexibleMappings")]
+        public Input<string>? FlexibleMappings { get; set; }
+
+        /// <summary>
         /// Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion. Defaults to `true`.
         /// </summary>
         [Input("includeAttributeNameFormat")]

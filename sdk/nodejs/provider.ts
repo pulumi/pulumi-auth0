@@ -62,6 +62,7 @@ export class Provider extends pulumi.ProviderResource {
         {
             resourceInputs["apiToken"] = args ? args.apiToken : undefined;
             resourceInputs["audience"] = args ? args.audience : undefined;
+            resourceInputs["cliLogin"] = pulumi.output(args ? args.cliLogin : undefined).apply(JSON.stringify);
             resourceInputs["clientId"] = args ? args.clientId : undefined;
             resourceInputs["clientSecret"] = args ? args.clientSecret : undefined;
             resourceInputs["debug"] = pulumi.output((args ? args.debug : undefined) ?? utilities.getEnvBoolean("AUTH0_DEBUG")).apply(JSON.stringify);
@@ -97,6 +98,10 @@ export interface ProviderArgs {
      * Your Auth0 audience when using a custom domain. It can also be sourced from the `AUTH0_AUDIENCE` environment variable.
      */
     audience?: pulumi.Input<string>;
+    /**
+     * While toggled on, the API token gets fetched from the keyring for the given domain
+     */
+    cliLogin?: pulumi.Input<boolean>;
     /**
      * Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.
      */

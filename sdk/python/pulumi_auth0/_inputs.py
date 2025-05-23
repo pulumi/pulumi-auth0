@@ -212,6 +212,8 @@ __all__ = [
     'ConnectionOptionsAuthenticationMethodPasswordArgsDict',
     'ConnectionOptionsConnectionSettingsArgs',
     'ConnectionOptionsConnectionSettingsArgsDict',
+    'ConnectionOptionsCustomHeaderArgs',
+    'ConnectionOptionsCustomHeaderArgsDict',
     'ConnectionOptionsDecryptionKeyArgs',
     'ConnectionOptionsDecryptionKeyArgsDict',
     'ConnectionOptionsGatewayAuthenticationArgs',
@@ -4178,6 +4180,10 @@ if not MYPY:
         """
         Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`. Defaults to `sha1`.
         """
+        flexible_mappings: NotRequired[pulumi.Input[builtins.str]]
+        """
+        This is a supporting attribute to `mappings` field.Please note this is an experimental field. It should only be used when needed to send a map with keys as slices.
+        """
         include_attribute_name_format: NotRequired[pulumi.Input[builtins.bool]]
         """
         Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion. Defaults to `true`.
@@ -4250,6 +4256,7 @@ class ClientAddonsSamlpArgs:
                  create_upn_claim: Optional[pulumi.Input[builtins.bool]] = None,
                  destination: Optional[pulumi.Input[builtins.str]] = None,
                  digest_algorithm: Optional[pulumi.Input[builtins.str]] = None,
+                 flexible_mappings: Optional[pulumi.Input[builtins.str]] = None,
                  include_attribute_name_format: Optional[pulumi.Input[builtins.bool]] = None,
                  issuer: Optional[pulumi.Input[builtins.str]] = None,
                  lifetime_in_seconds: Optional[pulumi.Input[builtins.int]] = None,
@@ -4272,6 +4279,7 @@ class ClientAddonsSamlpArgs:
         :param pulumi.Input[builtins.bool] create_upn_claim: Indicates whether a UPN claim should be created. Defaults to `true`.
         :param pulumi.Input[builtins.str] destination: Destination of the SAML Response. If not specified, it will be `AssertionConsumerUrl` of SAMLRequest or callback URL if there was no SAMLRequest.
         :param pulumi.Input[builtins.str] digest_algorithm: Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`. Defaults to `sha1`.
+        :param pulumi.Input[builtins.str] flexible_mappings: This is a supporting attribute to `mappings` field.Please note this is an experimental field. It should only be used when needed to send a map with keys as slices.
         :param pulumi.Input[builtins.bool] include_attribute_name_format: Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion. Defaults to `true`.
         :param pulumi.Input[builtins.str] issuer: Issuer of the SAML Assertion.
         :param pulumi.Input[builtins.int] lifetime_in_seconds: Number of seconds during which the token is valid. Defaults to `3600` seconds.
@@ -4300,6 +4308,8 @@ class ClientAddonsSamlpArgs:
             pulumi.set(__self__, "destination", destination)
         if digest_algorithm is not None:
             pulumi.set(__self__, "digest_algorithm", digest_algorithm)
+        if flexible_mappings is not None:
+            pulumi.set(__self__, "flexible_mappings", flexible_mappings)
         if include_attribute_name_format is not None:
             pulumi.set(__self__, "include_attribute_name_format", include_attribute_name_format)
         if issuer is not None:
@@ -4402,6 +4412,18 @@ class ClientAddonsSamlpArgs:
     @digest_algorithm.setter
     def digest_algorithm(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "digest_algorithm", value)
+
+    @property
+    @pulumi.getter(name="flexibleMappings")
+    def flexible_mappings(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        This is a supporting attribute to `mappings` field.Please note this is an experimental field. It should only be used when needed to send a map with keys as slices.
+        """
+        return pulumi.get(self, "flexible_mappings")
+
+    @flexible_mappings.setter
+    def flexible_mappings(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "flexible_mappings", value)
 
     @property
     @pulumi.getter(name="includeAttributeNameFormat")
@@ -6712,6 +6734,10 @@ class ClientRefreshTokenPolicyArgs:
 
 if not MYPY:
     class ClientSessionTransferArgsDict(TypedDict):
+        allow_refresh_token: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        Indicates whether the application is allowed to use a refresh token when using a session*transfer*token session.
+        """
         allowed_authentication_methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
         can_create_session_transfer_token: NotRequired[pulumi.Input[builtins.bool]]
         """
@@ -6727,19 +6753,35 @@ elif False:
 @pulumi.input_type
 class ClientSessionTransferArgs:
     def __init__(__self__, *,
+                 allow_refresh_token: Optional[pulumi.Input[builtins.bool]] = None,
                  allowed_authentication_methods: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  can_create_session_transfer_token: Optional[pulumi.Input[builtins.bool]] = None,
                  enforce_device_binding: Optional[pulumi.Input[builtins.str]] = None):
         """
+        :param pulumi.Input[builtins.bool] allow_refresh_token: Indicates whether the application is allowed to use a refresh token when using a session*transfer*token session.
         :param pulumi.Input[builtins.bool] can_create_session_transfer_token: Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session*transfer*token
         :param pulumi.Input[builtins.str] enforce_device_binding: Configures the level of device binding enforced when a session*transfer*token is consumed. Can be one of `ip`, `asn` or `none`.
         """
+        if allow_refresh_token is not None:
+            pulumi.set(__self__, "allow_refresh_token", allow_refresh_token)
         if allowed_authentication_methods is not None:
             pulumi.set(__self__, "allowed_authentication_methods", allowed_authentication_methods)
         if can_create_session_transfer_token is not None:
             pulumi.set(__self__, "can_create_session_transfer_token", can_create_session_transfer_token)
         if enforce_device_binding is not None:
             pulumi.set(__self__, "enforce_device_binding", enforce_device_binding)
+
+    @property
+    @pulumi.getter(name="allowRefreshToken")
+    def allow_refresh_token(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Indicates whether the application is allowed to use a refresh token when using a session*transfer*token session.
+        """
+        return pulumi.get(self, "allow_refresh_token")
+
+    @allow_refresh_token.setter
+    def allow_refresh_token(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "allow_refresh_token", value)
 
     @property
     @pulumi.getter(name="allowedAuthenticationMethods")
@@ -6868,7 +6910,7 @@ if not MYPY:
         """
         Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
         """
-        custom_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]]]
+        custom_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsCustomHeaderArgsDict']]]]
         """
         Configure extra headers to the Token endpoint of an OAuth 2.0 provider
         """
@@ -7221,7 +7263,7 @@ class ConnectionOptionsArgs:
                  community_base_url: Optional[pulumi.Input[builtins.str]] = None,
                  configuration: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  connection_settings: Optional[pulumi.Input['ConnectionOptionsConnectionSettingsArgs']] = None,
-                 custom_headers: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]]] = None,
+                 custom_headers: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsCustomHeaderArgs']]]] = None,
                  custom_scripts: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  debug: Optional[pulumi.Input[builtins.bool]] = None,
                  decryption_key: Optional[pulumi.Input['ConnectionOptionsDecryptionKeyArgs']] = None,
@@ -7320,7 +7362,7 @@ class ConnectionOptionsArgs:
         :param pulumi.Input[builtins.str] community_base_url: Salesforce community base URL.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] configuration: A case-sensitive map of key value pairs used as configuration variables for the `custom_script`.
         :param pulumi.Input['ConnectionOptionsConnectionSettingsArgs'] connection_settings: Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]] custom_headers: Configure extra headers to the Token endpoint of an OAuth 2.0 provider
+        :param pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsCustomHeaderArgs']]] custom_headers: Configure extra headers to the Token endpoint of an OAuth 2.0 provider
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] custom_scripts: A map of scripts used to integrate with a custom database.
         :param pulumi.Input[builtins.bool] debug: When enabled, additional debug information will be generated.
         :param pulumi.Input['ConnectionOptionsDecryptionKeyArgs'] decryption_key: The key used to decrypt encrypted responses from the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
@@ -7783,14 +7825,14 @@ class ConnectionOptionsArgs:
 
     @property
     @pulumi.getter(name="customHeaders")
-    def custom_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]]]:
+    def custom_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsCustomHeaderArgs']]]]:
         """
         Configure extra headers to the Token endpoint of an OAuth 2.0 provider
         """
         return pulumi.get(self, "custom_headers")
 
     @custom_headers.setter
-    def custom_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]]]):
+    def custom_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsCustomHeaderArgs']]]]):
         pulumi.set(self, "custom_headers", value)
 
     @property
@@ -9742,6 +9784,40 @@ class ConnectionOptionsConnectionSettingsArgs:
     @pkce.setter
     def pkce(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "pkce", value)
+
+
+if not MYPY:
+    class ConnectionOptionsCustomHeaderArgsDict(TypedDict):
+        header: pulumi.Input[builtins.str]
+        value: pulumi.Input[builtins.str]
+elif False:
+    ConnectionOptionsCustomHeaderArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConnectionOptionsCustomHeaderArgs:
+    def __init__(__self__, *,
+                 header: pulumi.Input[builtins.str],
+                 value: pulumi.Input[builtins.str]):
+        pulumi.set(__self__, "header", header)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def header(self) -> pulumi.Input[builtins.str]:
+        return pulumi.get(self, "header")
+
+    @header.setter
+    def header(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "header", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[builtins.str]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "value", value)
 
 
 if not MYPY:

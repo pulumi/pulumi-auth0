@@ -101,6 +101,12 @@ namespace Pulumi.Auth0
         public Input<string>? Audience { get; set; }
 
         /// <summary>
+        /// While toggled on, the API token gets fetched from the keyring for the given domain
+        /// </summary>
+        [Input("cliLogin", json: true)]
+        public Input<bool>? CliLogin { get; set; }
+
+        /// <summary>
         /// Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.
         /// </summary>
         [Input("clientId")]

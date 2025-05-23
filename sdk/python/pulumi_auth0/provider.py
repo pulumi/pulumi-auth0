@@ -22,6 +22,7 @@ class ProviderArgs:
     def __init__(__self__, *,
                  api_token: Optional[pulumi.Input[builtins.str]] = None,
                  audience: Optional[pulumi.Input[builtins.str]] = None,
+                 cli_login: Optional[pulumi.Input[builtins.bool]] = None,
                  client_id: Optional[pulumi.Input[builtins.str]] = None,
                  client_secret: Optional[pulumi.Input[builtins.str]] = None,
                  debug: Optional[pulumi.Input[builtins.bool]] = None,
@@ -34,6 +35,7 @@ class ProviderArgs:
                the `AUTH0_API_TOKEN` environment variable. It can be used instead of `client_id` + `client_secret`. If both are
                specified, `api_token` will be used over `client_id` + `client_secret` fields.
         :param pulumi.Input[builtins.str] audience: Your Auth0 audience when using a custom domain. It can also be sourced from the `AUTH0_AUDIENCE` environment variable.
+        :param pulumi.Input[builtins.bool] cli_login: While toggled on, the API token gets fetched from the keyring for the given domain
         :param pulumi.Input[builtins.str] client_id: Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.
         :param pulumi.Input[builtins.str] client_secret: Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable.
         :param pulumi.Input[builtins.bool] debug: Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG`
@@ -44,6 +46,8 @@ class ProviderArgs:
             pulumi.set(__self__, "api_token", api_token)
         if audience is not None:
             pulumi.set(__self__, "audience", audience)
+        if cli_login is not None:
+            pulumi.set(__self__, "cli_login", cli_login)
         if client_id is not None:
             pulumi.set(__self__, "client_id", client_id)
         if client_secret is not None:
@@ -83,6 +87,18 @@ class ProviderArgs:
     @audience.setter
     def audience(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "audience", value)
+
+    @property
+    @pulumi.getter(name="cliLogin")
+    def cli_login(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        While toggled on, the API token gets fetched from the keyring for the given domain
+        """
+        return pulumi.get(self, "cli_login")
+
+    @cli_login.setter
+    def cli_login(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "cli_login", value)
 
     @property
     @pulumi.getter(name="clientId")
@@ -151,6 +167,7 @@ class Provider(pulumi.ProviderResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_token: Optional[pulumi.Input[builtins.str]] = None,
                  audience: Optional[pulumi.Input[builtins.str]] = None,
+                 cli_login: Optional[pulumi.Input[builtins.bool]] = None,
                  client_id: Optional[pulumi.Input[builtins.str]] = None,
                  client_secret: Optional[pulumi.Input[builtins.str]] = None,
                  debug: Optional[pulumi.Input[builtins.bool]] = None,
@@ -170,6 +187,7 @@ class Provider(pulumi.ProviderResource):
                the `AUTH0_API_TOKEN` environment variable. It can be used instead of `client_id` + `client_secret`. If both are
                specified, `api_token` will be used over `client_id` + `client_secret` fields.
         :param pulumi.Input[builtins.str] audience: Your Auth0 audience when using a custom domain. It can also be sourced from the `AUTH0_AUDIENCE` environment variable.
+        :param pulumi.Input[builtins.bool] cli_login: While toggled on, the API token gets fetched from the keyring for the given domain
         :param pulumi.Input[builtins.str] client_id: Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.
         :param pulumi.Input[builtins.str] client_secret: Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable.
         :param pulumi.Input[builtins.bool] debug: Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG`
@@ -205,6 +223,7 @@ class Provider(pulumi.ProviderResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_token: Optional[pulumi.Input[builtins.str]] = None,
                  audience: Optional[pulumi.Input[builtins.str]] = None,
+                 cli_login: Optional[pulumi.Input[builtins.bool]] = None,
                  client_id: Optional[pulumi.Input[builtins.str]] = None,
                  client_secret: Optional[pulumi.Input[builtins.str]] = None,
                  debug: Optional[pulumi.Input[builtins.bool]] = None,
@@ -221,6 +240,7 @@ class Provider(pulumi.ProviderResource):
 
             __props__.__dict__["api_token"] = api_token
             __props__.__dict__["audience"] = audience
+            __props__.__dict__["cli_login"] = pulumi.Output.from_input(cli_login).apply(pulumi.runtime.to_json) if cli_login is not None else None
             __props__.__dict__["client_id"] = client_id
             __props__.__dict__["client_secret"] = client_secret
             if debug is None:

@@ -7,6 +7,7 @@ import com.pulumi.auth0.outputs.GetConnectionOptionAttribute;
 import com.pulumi.auth0.outputs.GetConnectionOptionAttributeMap;
 import com.pulumi.auth0.outputs.GetConnectionOptionAuthenticationMethod;
 import com.pulumi.auth0.outputs.GetConnectionOptionConnectionSetting;
+import com.pulumi.auth0.outputs.GetConnectionOptionCustomHeader;
 import com.pulumi.auth0.outputs.GetConnectionOptionDecryptionKey;
 import com.pulumi.auth0.outputs.GetConnectionOptionGatewayAuthentication;
 import com.pulumi.auth0.outputs.GetConnectionOptionIdpInitiated;
@@ -109,7 +110,7 @@ public final class GetConnectionOption {
      * @return Configure extra headers to the Token endpoint of an OAuth 2.0 provider
      * 
      */
-    private List<Map<String,String>> customHeaders;
+    private List<GetConnectionOptionCustomHeader> customHeaders;
     /**
      * @return A map of scripts used to integrate with a custom database.
      * 
@@ -631,7 +632,7 @@ public final class GetConnectionOption {
      * @return Configure extra headers to the Token endpoint of an OAuth 2.0 provider
      * 
      */
-    public List<Map<String,String>> customHeaders() {
+    public List<GetConnectionOptionCustomHeader> customHeaders() {
         return this.customHeaders;
     }
     /**
@@ -1233,7 +1234,7 @@ public final class GetConnectionOption {
         private String communityBaseUrl;
         private Map<String,String> configuration;
         private List<GetConnectionOptionConnectionSetting> connectionSettings;
-        private List<Map<String,String>> customHeaders;
+        private List<GetConnectionOptionCustomHeader> customHeaders;
         private Map<String,String> customScripts;
         private Boolean debug;
         private List<GetConnectionOptionDecryptionKey> decryptionKeys;
@@ -1555,12 +1556,15 @@ public final class GetConnectionOption {
             return connectionSettings(List.of(connectionSettings));
         }
         @CustomType.Setter
-        public Builder customHeaders(List<Map<String,String>> customHeaders) {
+        public Builder customHeaders(List<GetConnectionOptionCustomHeader> customHeaders) {
             if (customHeaders == null) {
               throw new MissingRequiredPropertyException("GetConnectionOption", "customHeaders");
             }
             this.customHeaders = customHeaders;
             return this;
+        }
+        public Builder customHeaders(GetConnectionOptionCustomHeader... customHeaders) {
+            return customHeaders(List.of(customHeaders));
         }
         @CustomType.Setter
         public Builder customScripts(Map<String,String> customScripts) {

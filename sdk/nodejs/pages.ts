@@ -9,6 +9,9 @@ import * as utilities from "./utilities";
 /**
  * With this resource you can manage custom HTML for the Login, Reset Password, Multi-Factor Authentication and Error pages.
  *
+ * !> The error block in auth0.Pages is not recommended when you're managing tenant settings via the auth0.Tenant resource.
+ * To avoid conflicts, configure the errorPage directly in auth0.Tenant instead.
+ *
  * ## Example Usage
  *
  * ```typescript

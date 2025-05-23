@@ -8143,6 +8143,8 @@ type ClientAddonsSamlp struct {
 	Destination *string `pulumi:"destination"`
 	// Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`. Defaults to `sha1`.
 	DigestAlgorithm *string `pulumi:"digestAlgorithm"`
+	// This is a supporting attribute to `mappings` field.Please note this is an experimental field. It should only be used when needed to send a map with keys as slices.
+	FlexibleMappings *string `pulumi:"flexibleMappings"`
 	// Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion. Defaults to `true`.
 	IncludeAttributeNameFormat *bool `pulumi:"includeAttributeNameFormat"`
 	// Issuer of the SAML Assertion.
@@ -8199,6 +8201,8 @@ type ClientAddonsSamlpArgs struct {
 	Destination pulumi.StringPtrInput `pulumi:"destination"`
 	// Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`. Defaults to `sha1`.
 	DigestAlgorithm pulumi.StringPtrInput `pulumi:"digestAlgorithm"`
+	// This is a supporting attribute to `mappings` field.Please note this is an experimental field. It should only be used when needed to send a map with keys as slices.
+	FlexibleMappings pulumi.StringPtrInput `pulumi:"flexibleMappings"`
 	// Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion. Defaults to `true`.
 	IncludeAttributeNameFormat pulumi.BoolPtrInput `pulumi:"includeAttributeNameFormat"`
 	// Issuer of the SAML Assertion.
@@ -8336,6 +8340,11 @@ func (o ClientAddonsSamlpOutput) Destination() pulumi.StringPtrOutput {
 // Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`. Defaults to `sha1`.
 func (o ClientAddonsSamlpOutput) DigestAlgorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSamlp) *string { return v.DigestAlgorithm }).(pulumi.StringPtrOutput)
+}
+
+// This is a supporting attribute to `mappings` field.Please note this is an experimental field. It should only be used when needed to send a map with keys as slices.
+func (o ClientAddonsSamlpOutput) FlexibleMappings() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientAddonsSamlp) *string { return v.FlexibleMappings }).(pulumi.StringPtrOutput)
 }
 
 // Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion. Defaults to `true`.
@@ -8494,6 +8503,16 @@ func (o ClientAddonsSamlpPtrOutput) DigestAlgorithm() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.DigestAlgorithm
+	}).(pulumi.StringPtrOutput)
+}
+
+// This is a supporting attribute to `mappings` field.Please note this is an experimental field. It should only be used when needed to send a map with keys as slices.
+func (o ClientAddonsSamlpPtrOutput) FlexibleMappings() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientAddonsSamlp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FlexibleMappings
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -13622,6 +13641,8 @@ func (o ClientRefreshTokenPolicyArrayOutput) Index(i pulumi.IntInput) ClientRefr
 }
 
 type ClientSessionTransfer struct {
+	// Indicates whether the application is allowed to use a refresh token when using a session*transfer*token session.
+	AllowRefreshToken            *bool    `pulumi:"allowRefreshToken"`
 	AllowedAuthenticationMethods []string `pulumi:"allowedAuthenticationMethods"`
 	// Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session*transfer*token
 	CanCreateSessionTransferToken *bool `pulumi:"canCreateSessionTransferToken"`
@@ -13641,6 +13662,8 @@ type ClientSessionTransferInput interface {
 }
 
 type ClientSessionTransferArgs struct {
+	// Indicates whether the application is allowed to use a refresh token when using a session*transfer*token session.
+	AllowRefreshToken            pulumi.BoolPtrInput     `pulumi:"allowRefreshToken"`
 	AllowedAuthenticationMethods pulumi.StringArrayInput `pulumi:"allowedAuthenticationMethods"`
 	// Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session*transfer*token
 	CanCreateSessionTransferToken pulumi.BoolPtrInput `pulumi:"canCreateSessionTransferToken"`
@@ -13725,6 +13748,11 @@ func (o ClientSessionTransferOutput) ToClientSessionTransferPtrOutputWithContext
 	}).(ClientSessionTransferPtrOutput)
 }
 
+// Indicates whether the application is allowed to use a refresh token when using a session*transfer*token session.
+func (o ClientSessionTransferOutput) AllowRefreshToken() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClientSessionTransfer) *bool { return v.AllowRefreshToken }).(pulumi.BoolPtrOutput)
+}
+
 func (o ClientSessionTransferOutput) AllowedAuthenticationMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClientSessionTransfer) []string { return v.AllowedAuthenticationMethods }).(pulumi.StringArrayOutput)
 }
@@ -13761,6 +13789,16 @@ func (o ClientSessionTransferPtrOutput) Elem() ClientSessionTransferOutput {
 		var ret ClientSessionTransfer
 		return ret
 	}).(ClientSessionTransferOutput)
+}
+
+// Indicates whether the application is allowed to use a refresh token when using a session*transfer*token session.
+func (o ClientSessionTransferPtrOutput) AllowRefreshToken() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClientSessionTransfer) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowRefreshToken
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o ClientSessionTransferPtrOutput) AllowedAuthenticationMethods() pulumi.StringArrayOutput {
@@ -13961,7 +13999,7 @@ type ConnectionOptions struct {
 	// Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
 	ConnectionSettings *ConnectionOptionsConnectionSettings `pulumi:"connectionSettings"`
 	// Configure extra headers to the Token endpoint of an OAuth 2.0 provider
-	CustomHeaders []map[string]string `pulumi:"customHeaders"`
+	CustomHeaders []ConnectionOptionsCustomHeader `pulumi:"customHeaders"`
 	// A map of scripts used to integrate with a custom database.
 	CustomScripts map[string]string `pulumi:"customScripts"`
 	// When enabled, additional debug information will be generated.
@@ -14171,7 +14209,7 @@ type ConnectionOptionsArgs struct {
 	// Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
 	ConnectionSettings ConnectionOptionsConnectionSettingsPtrInput `pulumi:"connectionSettings"`
 	// Configure extra headers to the Token endpoint of an OAuth 2.0 provider
-	CustomHeaders pulumi.StringMapArrayInput `pulumi:"customHeaders"`
+	CustomHeaders ConnectionOptionsCustomHeaderArrayInput `pulumi:"customHeaders"`
 	// A map of scripts used to integrate with a custom database.
 	CustomScripts pulumi.StringMapInput `pulumi:"customScripts"`
 	// When enabled, additional debug information will be generated.
@@ -14491,8 +14529,8 @@ func (o ConnectionOptionsOutput) ConnectionSettings() ConnectionOptionsConnectio
 }
 
 // Configure extra headers to the Token endpoint of an OAuth 2.0 provider
-func (o ConnectionOptionsOutput) CustomHeaders() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v ConnectionOptions) []map[string]string { return v.CustomHeaders }).(pulumi.StringMapArrayOutput)
+func (o ConnectionOptionsOutput) CustomHeaders() ConnectionOptionsCustomHeaderArrayOutput {
+	return o.ApplyT(func(v ConnectionOptions) []ConnectionOptionsCustomHeader { return v.CustomHeaders }).(ConnectionOptionsCustomHeaderArrayOutput)
 }
 
 // A map of scripts used to integrate with a custom database.
@@ -15082,13 +15120,13 @@ func (o ConnectionOptionsPtrOutput) ConnectionSettings() ConnectionOptionsConnec
 }
 
 // Configure extra headers to the Token endpoint of an OAuth 2.0 provider
-func (o ConnectionOptionsPtrOutput) CustomHeaders() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v *ConnectionOptions) []map[string]string {
+func (o ConnectionOptionsPtrOutput) CustomHeaders() ConnectionOptionsCustomHeaderArrayOutput {
+	return o.ApplyT(func(v *ConnectionOptions) []ConnectionOptionsCustomHeader {
 		if v == nil {
 			return nil
 		}
 		return v.CustomHeaders
-	}).(pulumi.StringMapArrayOutput)
+	}).(ConnectionOptionsCustomHeaderArrayOutput)
 }
 
 // A map of scripts used to integrate with a custom database.
@@ -18116,6 +18154,106 @@ func (o ConnectionOptionsConnectionSettingsPtrOutput) Pkce() pulumi.StringPtrOut
 		}
 		return &v.Pkce
 	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionOptionsCustomHeader struct {
+	Header string `pulumi:"header"`
+	Value  string `pulumi:"value"`
+}
+
+// ConnectionOptionsCustomHeaderInput is an input type that accepts ConnectionOptionsCustomHeaderArgs and ConnectionOptionsCustomHeaderOutput values.
+// You can construct a concrete instance of `ConnectionOptionsCustomHeaderInput` via:
+//
+//	ConnectionOptionsCustomHeaderArgs{...}
+type ConnectionOptionsCustomHeaderInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsCustomHeaderOutput() ConnectionOptionsCustomHeaderOutput
+	ToConnectionOptionsCustomHeaderOutputWithContext(context.Context) ConnectionOptionsCustomHeaderOutput
+}
+
+type ConnectionOptionsCustomHeaderArgs struct {
+	Header pulumi.StringInput `pulumi:"header"`
+	Value  pulumi.StringInput `pulumi:"value"`
+}
+
+func (ConnectionOptionsCustomHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsCustomHeader)(nil)).Elem()
+}
+
+func (i ConnectionOptionsCustomHeaderArgs) ToConnectionOptionsCustomHeaderOutput() ConnectionOptionsCustomHeaderOutput {
+	return i.ToConnectionOptionsCustomHeaderOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsCustomHeaderArgs) ToConnectionOptionsCustomHeaderOutputWithContext(ctx context.Context) ConnectionOptionsCustomHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsCustomHeaderOutput)
+}
+
+// ConnectionOptionsCustomHeaderArrayInput is an input type that accepts ConnectionOptionsCustomHeaderArray and ConnectionOptionsCustomHeaderArrayOutput values.
+// You can construct a concrete instance of `ConnectionOptionsCustomHeaderArrayInput` via:
+//
+//	ConnectionOptionsCustomHeaderArray{ ConnectionOptionsCustomHeaderArgs{...} }
+type ConnectionOptionsCustomHeaderArrayInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsCustomHeaderArrayOutput() ConnectionOptionsCustomHeaderArrayOutput
+	ToConnectionOptionsCustomHeaderArrayOutputWithContext(context.Context) ConnectionOptionsCustomHeaderArrayOutput
+}
+
+type ConnectionOptionsCustomHeaderArray []ConnectionOptionsCustomHeaderInput
+
+func (ConnectionOptionsCustomHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectionOptionsCustomHeader)(nil)).Elem()
+}
+
+func (i ConnectionOptionsCustomHeaderArray) ToConnectionOptionsCustomHeaderArrayOutput() ConnectionOptionsCustomHeaderArrayOutput {
+	return i.ToConnectionOptionsCustomHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsCustomHeaderArray) ToConnectionOptionsCustomHeaderArrayOutputWithContext(ctx context.Context) ConnectionOptionsCustomHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsCustomHeaderArrayOutput)
+}
+
+type ConnectionOptionsCustomHeaderOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsCustomHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsCustomHeader)(nil)).Elem()
+}
+
+func (o ConnectionOptionsCustomHeaderOutput) ToConnectionOptionsCustomHeaderOutput() ConnectionOptionsCustomHeaderOutput {
+	return o
+}
+
+func (o ConnectionOptionsCustomHeaderOutput) ToConnectionOptionsCustomHeaderOutputWithContext(ctx context.Context) ConnectionOptionsCustomHeaderOutput {
+	return o
+}
+
+func (o ConnectionOptionsCustomHeaderOutput) Header() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionOptionsCustomHeader) string { return v.Header }).(pulumi.StringOutput)
+}
+
+func (o ConnectionOptionsCustomHeaderOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionOptionsCustomHeader) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type ConnectionOptionsCustomHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsCustomHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectionOptionsCustomHeader)(nil)).Elem()
+}
+
+func (o ConnectionOptionsCustomHeaderArrayOutput) ToConnectionOptionsCustomHeaderArrayOutput() ConnectionOptionsCustomHeaderArrayOutput {
+	return o
+}
+
+func (o ConnectionOptionsCustomHeaderArrayOutput) ToConnectionOptionsCustomHeaderArrayOutputWithContext(ctx context.Context) ConnectionOptionsCustomHeaderArrayOutput {
+	return o
+}
+
+func (o ConnectionOptionsCustomHeaderArrayOutput) Index(i pulumi.IntInput) ConnectionOptionsCustomHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionOptionsCustomHeader {
+		return vs[0].([]ConnectionOptionsCustomHeader)[vs[1].(int)]
+	}).(ConnectionOptionsCustomHeaderOutput)
 }
 
 type ConnectionOptionsDecryptionKey struct {
@@ -35112,6 +35250,8 @@ type GetClientAddonSamlp struct {
 	Destination string `pulumi:"destination"`
 	// Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`. Defaults to `sha1`.
 	DigestAlgorithm string `pulumi:"digestAlgorithm"`
+	// This is a supporting attribute to `mappings` field.Please note this is an experimental field. It should only be used when needed to send a map with keys as slices.
+	FlexibleMappings string `pulumi:"flexibleMappings"`
 	// Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion. Defaults to `true`.
 	IncludeAttributeNameFormat bool `pulumi:"includeAttributeNameFormat"`
 	// Issuer of the SAML Assertion.
@@ -35168,6 +35308,8 @@ type GetClientAddonSamlpArgs struct {
 	Destination pulumi.StringInput `pulumi:"destination"`
 	// Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`. Defaults to `sha1`.
 	DigestAlgorithm pulumi.StringInput `pulumi:"digestAlgorithm"`
+	// This is a supporting attribute to `mappings` field.Please note this is an experimental field. It should only be used when needed to send a map with keys as slices.
+	FlexibleMappings pulumi.StringInput `pulumi:"flexibleMappings"`
 	// Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion. Defaults to `true`.
 	IncludeAttributeNameFormat pulumi.BoolInput `pulumi:"includeAttributeNameFormat"`
 	// Issuer of the SAML Assertion.
@@ -35279,6 +35421,11 @@ func (o GetClientAddonSamlpOutput) Destination() pulumi.StringOutput {
 // Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`. Defaults to `sha1`.
 func (o GetClientAddonSamlpOutput) DigestAlgorithm() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClientAddonSamlp) string { return v.DigestAlgorithm }).(pulumi.StringOutput)
+}
+
+// This is a supporting attribute to `mappings` field.Please note this is an experimental field. It should only be used when needed to send a map with keys as slices.
+func (o GetClientAddonSamlpOutput) FlexibleMappings() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientAddonSamlp) string { return v.FlexibleMappings }).(pulumi.StringOutput)
 }
 
 // Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion. Defaults to `true`.
@@ -38788,6 +38935,8 @@ func (o GetClientRefreshTokenPolicyArrayOutput) Index(i pulumi.IntInput) GetClie
 }
 
 type GetClientSessionTransfer struct {
+	// Indicates whether the application is allowed to use a refresh token when using a sessionTransferToken session.
+	AllowRefreshToken            bool     `pulumi:"allowRefreshToken"`
 	AllowedAuthenticationMethods []string `pulumi:"allowedAuthenticationMethods"`
 	// Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session_transfer_token
 	CanCreateSessionTransferToken bool `pulumi:"canCreateSessionTransferToken"`
@@ -38807,6 +38956,8 @@ type GetClientSessionTransferInput interface {
 }
 
 type GetClientSessionTransferArgs struct {
+	// Indicates whether the application is allowed to use a refresh token when using a sessionTransferToken session.
+	AllowRefreshToken            pulumi.BoolInput        `pulumi:"allowRefreshToken"`
 	AllowedAuthenticationMethods pulumi.StringArrayInput `pulumi:"allowedAuthenticationMethods"`
 	// Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session_transfer_token
 	CanCreateSessionTransferToken pulumi.BoolInput `pulumi:"canCreateSessionTransferToken"`
@@ -38863,6 +39014,11 @@ func (o GetClientSessionTransferOutput) ToGetClientSessionTransferOutput() GetCl
 
 func (o GetClientSessionTransferOutput) ToGetClientSessionTransferOutputWithContext(ctx context.Context) GetClientSessionTransferOutput {
 	return o
+}
+
+// Indicates whether the application is allowed to use a refresh token when using a sessionTransferToken session.
+func (o GetClientSessionTransferOutput) AllowRefreshToken() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientSessionTransfer) bool { return v.AllowRefreshToken }).(pulumi.BoolOutput)
 }
 
 func (o GetClientSessionTransferOutput) AllowedAuthenticationMethods() pulumi.StringArrayOutput {
@@ -39712,6 +39868,8 @@ func (o GetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayOutput) Index(i
 }
 
 type GetClientsClientSessionTransfer struct {
+	// Indicates whether the application is allowed to use a refresh token when using a sessionTransferToken session.
+	AllowRefreshToken            bool     `pulumi:"allowRefreshToken"`
 	AllowedAuthenticationMethods []string `pulumi:"allowedAuthenticationMethods"`
 	// Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session_transfer_token
 	CanCreateSessionTransferToken bool `pulumi:"canCreateSessionTransferToken"`
@@ -39731,6 +39889,8 @@ type GetClientsClientSessionTransferInput interface {
 }
 
 type GetClientsClientSessionTransferArgs struct {
+	// Indicates whether the application is allowed to use a refresh token when using a sessionTransferToken session.
+	AllowRefreshToken            pulumi.BoolInput        `pulumi:"allowRefreshToken"`
 	AllowedAuthenticationMethods pulumi.StringArrayInput `pulumi:"allowedAuthenticationMethods"`
 	// Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session_transfer_token
 	CanCreateSessionTransferToken pulumi.BoolInput `pulumi:"canCreateSessionTransferToken"`
@@ -39787,6 +39947,11 @@ func (o GetClientsClientSessionTransferOutput) ToGetClientsClientSessionTransfer
 
 func (o GetClientsClientSessionTransferOutput) ToGetClientsClientSessionTransferOutputWithContext(ctx context.Context) GetClientsClientSessionTransferOutput {
 	return o
+}
+
+// Indicates whether the application is allowed to use a refresh token when using a sessionTransferToken session.
+func (o GetClientsClientSessionTransferOutput) AllowRefreshToken() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientsClientSessionTransfer) bool { return v.AllowRefreshToken }).(pulumi.BoolOutput)
 }
 
 func (o GetClientsClientSessionTransferOutput) AllowedAuthenticationMethods() pulumi.StringArrayOutput {
@@ -39952,7 +40117,7 @@ type GetConnectionOption struct {
 	// Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
 	ConnectionSettings []GetConnectionOptionConnectionSetting `pulumi:"connectionSettings"`
 	// Configure extra headers to the Token endpoint of an OAuth 2.0 provider
-	CustomHeaders []map[string]string `pulumi:"customHeaders"`
+	CustomHeaders []GetConnectionOptionCustomHeader `pulumi:"customHeaders"`
 	// A map of scripts used to integrate with a custom database.
 	CustomScripts map[string]string `pulumi:"customScripts"`
 	// When enabled, additional debug information will be generated.
@@ -40162,7 +40327,7 @@ type GetConnectionOptionArgs struct {
 	// Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
 	ConnectionSettings GetConnectionOptionConnectionSettingArrayInput `pulumi:"connectionSettings"`
 	// Configure extra headers to the Token endpoint of an OAuth 2.0 provider
-	CustomHeaders pulumi.StringMapArrayInput `pulumi:"customHeaders"`
+	CustomHeaders GetConnectionOptionCustomHeaderArrayInput `pulumi:"customHeaders"`
 	// A map of scripts used to integrate with a custom database.
 	CustomScripts pulumi.StringMapInput `pulumi:"customScripts"`
 	// When enabled, additional debug information will be generated.
@@ -40456,8 +40621,8 @@ func (o GetConnectionOptionOutput) ConnectionSettings() GetConnectionOptionConne
 }
 
 // Configure extra headers to the Token endpoint of an OAuth 2.0 provider
-func (o GetConnectionOptionOutput) CustomHeaders() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v GetConnectionOption) []map[string]string { return v.CustomHeaders }).(pulumi.StringMapArrayOutput)
+func (o GetConnectionOptionOutput) CustomHeaders() GetConnectionOptionCustomHeaderArrayOutput {
+	return o.ApplyT(func(v GetConnectionOption) []GetConnectionOptionCustomHeader { return v.CustomHeaders }).(GetConnectionOptionCustomHeaderArrayOutput)
 }
 
 // A map of scripts used to integrate with a custom database.
@@ -42921,6 +43086,106 @@ func (o GetConnectionOptionConnectionSettingArrayOutput) Index(i pulumi.IntInput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionConnectionSetting {
 		return vs[0].([]GetConnectionOptionConnectionSetting)[vs[1].(int)]
 	}).(GetConnectionOptionConnectionSettingOutput)
+}
+
+type GetConnectionOptionCustomHeader struct {
+	Header string `pulumi:"header"`
+	Value  string `pulumi:"value"`
+}
+
+// GetConnectionOptionCustomHeaderInput is an input type that accepts GetConnectionOptionCustomHeaderArgs and GetConnectionOptionCustomHeaderOutput values.
+// You can construct a concrete instance of `GetConnectionOptionCustomHeaderInput` via:
+//
+//	GetConnectionOptionCustomHeaderArgs{...}
+type GetConnectionOptionCustomHeaderInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionCustomHeaderOutput() GetConnectionOptionCustomHeaderOutput
+	ToGetConnectionOptionCustomHeaderOutputWithContext(context.Context) GetConnectionOptionCustomHeaderOutput
+}
+
+type GetConnectionOptionCustomHeaderArgs struct {
+	Header pulumi.StringInput `pulumi:"header"`
+	Value  pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetConnectionOptionCustomHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionCustomHeader)(nil)).Elem()
+}
+
+func (i GetConnectionOptionCustomHeaderArgs) ToGetConnectionOptionCustomHeaderOutput() GetConnectionOptionCustomHeaderOutput {
+	return i.ToGetConnectionOptionCustomHeaderOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionCustomHeaderArgs) ToGetConnectionOptionCustomHeaderOutputWithContext(ctx context.Context) GetConnectionOptionCustomHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionCustomHeaderOutput)
+}
+
+// GetConnectionOptionCustomHeaderArrayInput is an input type that accepts GetConnectionOptionCustomHeaderArray and GetConnectionOptionCustomHeaderArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionCustomHeaderArrayInput` via:
+//
+//	GetConnectionOptionCustomHeaderArray{ GetConnectionOptionCustomHeaderArgs{...} }
+type GetConnectionOptionCustomHeaderArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionCustomHeaderArrayOutput() GetConnectionOptionCustomHeaderArrayOutput
+	ToGetConnectionOptionCustomHeaderArrayOutputWithContext(context.Context) GetConnectionOptionCustomHeaderArrayOutput
+}
+
+type GetConnectionOptionCustomHeaderArray []GetConnectionOptionCustomHeaderInput
+
+func (GetConnectionOptionCustomHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionCustomHeader)(nil)).Elem()
+}
+
+func (i GetConnectionOptionCustomHeaderArray) ToGetConnectionOptionCustomHeaderArrayOutput() GetConnectionOptionCustomHeaderArrayOutput {
+	return i.ToGetConnectionOptionCustomHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionCustomHeaderArray) ToGetConnectionOptionCustomHeaderArrayOutputWithContext(ctx context.Context) GetConnectionOptionCustomHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionCustomHeaderArrayOutput)
+}
+
+type GetConnectionOptionCustomHeaderOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionCustomHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionCustomHeader)(nil)).Elem()
+}
+
+func (o GetConnectionOptionCustomHeaderOutput) ToGetConnectionOptionCustomHeaderOutput() GetConnectionOptionCustomHeaderOutput {
+	return o
+}
+
+func (o GetConnectionOptionCustomHeaderOutput) ToGetConnectionOptionCustomHeaderOutputWithContext(ctx context.Context) GetConnectionOptionCustomHeaderOutput {
+	return o
+}
+
+func (o GetConnectionOptionCustomHeaderOutput) Header() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionCustomHeader) string { return v.Header }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionCustomHeaderOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionCustomHeader) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetConnectionOptionCustomHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionCustomHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionCustomHeader)(nil)).Elem()
+}
+
+func (o GetConnectionOptionCustomHeaderArrayOutput) ToGetConnectionOptionCustomHeaderArrayOutput() GetConnectionOptionCustomHeaderArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionCustomHeaderArrayOutput) ToGetConnectionOptionCustomHeaderArrayOutputWithContext(ctx context.Context) GetConnectionOptionCustomHeaderArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionCustomHeaderArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionCustomHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionCustomHeader {
+		return vs[0].([]GetConnectionOptionCustomHeader)[vs[1].(int)]
+	}).(GetConnectionOptionCustomHeaderOutput)
 }
 
 type GetConnectionOptionDecryptionKey struct {
@@ -48852,6 +49117,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsAuthenticationMethodPasswordPtrInput)(nil)).Elem(), ConnectionOptionsAuthenticationMethodPasswordArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsConnectionSettingsInput)(nil)).Elem(), ConnectionOptionsConnectionSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsConnectionSettingsPtrInput)(nil)).Elem(), ConnectionOptionsConnectionSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsCustomHeaderInput)(nil)).Elem(), ConnectionOptionsCustomHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsCustomHeaderArrayInput)(nil)).Elem(), ConnectionOptionsCustomHeaderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsDecryptionKeyInput)(nil)).Elem(), ConnectionOptionsDecryptionKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsDecryptionKeyPtrInput)(nil)).Elem(), ConnectionOptionsDecryptionKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsGatewayAuthenticationInput)(nil)).Elem(), ConnectionOptionsGatewayAuthenticationArgs{})
@@ -49191,6 +49458,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAuthenticationMethodPasswordArrayInput)(nil)).Elem(), GetConnectionOptionAuthenticationMethodPasswordArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionConnectionSettingInput)(nil)).Elem(), GetConnectionOptionConnectionSettingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionConnectionSettingArrayInput)(nil)).Elem(), GetConnectionOptionConnectionSettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionCustomHeaderInput)(nil)).Elem(), GetConnectionOptionCustomHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionCustomHeaderArrayInput)(nil)).Elem(), GetConnectionOptionCustomHeaderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionDecryptionKeyInput)(nil)).Elem(), GetConnectionOptionDecryptionKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionDecryptionKeyArrayInput)(nil)).Elem(), GetConnectionOptionDecryptionKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionGatewayAuthenticationInput)(nil)).Elem(), GetConnectionOptionGatewayAuthenticationArgs{})
@@ -49485,6 +49754,8 @@ func init() {
 	pulumi.RegisterOutputType(ConnectionOptionsAuthenticationMethodPasswordPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsConnectionSettingsOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsConnectionSettingsPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsCustomHeaderOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsCustomHeaderArrayOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsDecryptionKeyOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsDecryptionKeyPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsGatewayAuthenticationOutput{})
@@ -49824,6 +50095,8 @@ func init() {
 	pulumi.RegisterOutputType(GetConnectionOptionAuthenticationMethodPasswordArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionConnectionSettingOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionConnectionSettingArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionCustomHeaderOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionCustomHeaderArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionDecryptionKeyOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionDecryptionKeyArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionGatewayAuthenticationOutput{})

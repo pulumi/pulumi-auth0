@@ -33,6 +33,17 @@ Object.defineProperty(exports, "audience", {
 });
 
 /**
+ * While toggled on, the API token gets fetched from the keyring for the given domain
+ */
+export declare const cliLogin: boolean | undefined;
+Object.defineProperty(exports, "cliLogin", {
+    get() {
+        return __config.getObject<boolean>("cliLogin");
+    },
+    enumerable: true,
+});
+
+/**
  * Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.
  */
 export declare const clientId: string | undefined;

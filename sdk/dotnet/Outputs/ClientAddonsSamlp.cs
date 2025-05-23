@@ -38,6 +38,10 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string? DigestAlgorithm;
         /// <summary>
+        /// This is a supporting attribute to `mappings` field.Please note this is an experimental field. It should only be used when needed to send a map with keys as slices.
+        /// </summary>
+        public readonly string? FlexibleMappings;
+        /// <summary>
         /// Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion. Defaults to `true`.
         /// </summary>
         public readonly bool? IncludeAttributeNameFormat;
@@ -112,6 +116,8 @@ namespace Pulumi.Auth0.Outputs
 
             string? digestAlgorithm,
 
+            string? flexibleMappings,
+
             bool? includeAttributeNameFormat,
 
             string? issuer,
@@ -148,6 +154,7 @@ namespace Pulumi.Auth0.Outputs
             CreateUpnClaim = createUpnClaim;
             Destination = destination;
             DigestAlgorithm = digestAlgorithm;
+            FlexibleMappings = flexibleMappings;
             IncludeAttributeNameFormat = includeAttributeNameFormat;
             Issuer = issuer;
             LifetimeInSeconds = lifetimeInSeconds;

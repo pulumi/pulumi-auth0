@@ -7,6 +7,7 @@ import com.pulumi.auth0.outputs.ConnectionOptionsAttribute;
 import com.pulumi.auth0.outputs.ConnectionOptionsAttributeMap;
 import com.pulumi.auth0.outputs.ConnectionOptionsAuthenticationMethod;
 import com.pulumi.auth0.outputs.ConnectionOptionsConnectionSettings;
+import com.pulumi.auth0.outputs.ConnectionOptionsCustomHeader;
 import com.pulumi.auth0.outputs.ConnectionOptionsDecryptionKey;
 import com.pulumi.auth0.outputs.ConnectionOptionsGatewayAuthentication;
 import com.pulumi.auth0.outputs.ConnectionOptionsIdpInitiated;
@@ -110,7 +111,7 @@ public final class ConnectionOptions {
      * @return Configure extra headers to the Token endpoint of an OAuth 2.0 provider
      * 
      */
-    private @Nullable List<Map<String,String>> customHeaders;
+    private @Nullable List<ConnectionOptionsCustomHeader> customHeaders;
     /**
      * @return A map of scripts used to integrate with a custom database.
      * 
@@ -632,7 +633,7 @@ public final class ConnectionOptions {
      * @return Configure extra headers to the Token endpoint of an OAuth 2.0 provider
      * 
      */
-    public List<Map<String,String>> customHeaders() {
+    public List<ConnectionOptionsCustomHeader> customHeaders() {
         return this.customHeaders == null ? List.of() : this.customHeaders;
     }
     /**
@@ -1234,7 +1235,7 @@ public final class ConnectionOptions {
         private @Nullable String communityBaseUrl;
         private @Nullable Map<String,String> configuration;
         private @Nullable ConnectionOptionsConnectionSettings connectionSettings;
-        private @Nullable List<Map<String,String>> customHeaders;
+        private @Nullable List<ConnectionOptionsCustomHeader> customHeaders;
         private @Nullable Map<String,String> customScripts;
         private @Nullable Boolean debug;
         private @Nullable ConnectionOptionsDecryptionKey decryptionKey;
@@ -1520,10 +1521,13 @@ public final class ConnectionOptions {
             return this;
         }
         @CustomType.Setter
-        public Builder customHeaders(@Nullable List<Map<String,String>> customHeaders) {
+        public Builder customHeaders(@Nullable List<ConnectionOptionsCustomHeader> customHeaders) {
 
             this.customHeaders = customHeaders;
             return this;
+        }
+        public Builder customHeaders(ConnectionOptionsCustomHeader... customHeaders) {
+            return customHeaders(List.of(customHeaders));
         }
         @CustomType.Setter
         public Builder customScripts(@Nullable Map<String,String> customScripts) {

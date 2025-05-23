@@ -820,6 +820,10 @@ export interface ClientAddonsSamlp {
      */
     digestAlgorithm?: pulumi.Input<string>;
     /**
+     * This is a supporting attribute to `mappings` field.Please note this is an experimental field. It should only be used when needed to send a map with keys as slices.
+     */
+    flexibleMappings?: pulumi.Input<string>;
+    /**
      * Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion. Defaults to `true`.
      */
     includeAttributeNameFormat?: pulumi.Input<boolean>;
@@ -1316,6 +1320,10 @@ export interface ClientRefreshTokenPolicy {
 }
 
 export interface ClientSessionTransfer {
+    /**
+     * Indicates whether the application is allowed to use a refresh token when using a session*transfer*token session.
+     */
+    allowRefreshToken?: pulumi.Input<boolean>;
     allowedAuthenticationMethods?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session*transfer*token
@@ -1398,7 +1406,7 @@ export interface ConnectionOptions {
     /**
      * Configure extra headers to the Token endpoint of an OAuth 2.0 provider
      */
-    customHeaders?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+    customHeaders?: pulumi.Input<pulumi.Input<inputs.ConnectionOptionsCustomHeader>[]>;
     /**
      * A map of scripts used to integrate with a custom database.
      */
@@ -1932,6 +1940,11 @@ export interface ConnectionOptionsConnectionSettings {
      * PKCE configuration. Possible values: `auto` (uses the strongest algorithm available), `S256` (uses the SHA-256 algorithm), `plain` (uses plaintext as described in the PKCE specification) or `disabled` (disables support for PKCE).
      */
     pkce: pulumi.Input<string>;
+}
+
+export interface ConnectionOptionsCustomHeader {
+    header: pulumi.Input<string>;
+    value: pulumi.Input<string>;
 }
 
 export interface ConnectionOptionsDecryptionKey {

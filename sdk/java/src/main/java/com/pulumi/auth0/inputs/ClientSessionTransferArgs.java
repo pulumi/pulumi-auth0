@@ -17,6 +17,21 @@ public final class ClientSessionTransferArgs extends com.pulumi.resources.Resour
 
     public static final ClientSessionTransferArgs Empty = new ClientSessionTransferArgs();
 
+    /**
+     * Indicates whether the application is allowed to use a refresh token when using a session*transfer*token session.
+     * 
+     */
+    @Import(name="allowRefreshToken")
+    private @Nullable Output<Boolean> allowRefreshToken;
+
+    /**
+     * @return Indicates whether the application is allowed to use a refresh token when using a session*transfer*token session.
+     * 
+     */
+    public Optional<Output<Boolean>> allowRefreshToken() {
+        return Optional.ofNullable(this.allowRefreshToken);
+    }
+
     @Import(name="allowedAuthenticationMethods")
     private @Nullable Output<List<String>> allowedAuthenticationMethods;
 
@@ -57,6 +72,7 @@ public final class ClientSessionTransferArgs extends com.pulumi.resources.Resour
     private ClientSessionTransferArgs() {}
 
     private ClientSessionTransferArgs(ClientSessionTransferArgs $) {
+        this.allowRefreshToken = $.allowRefreshToken;
         this.allowedAuthenticationMethods = $.allowedAuthenticationMethods;
         this.canCreateSessionTransferToken = $.canCreateSessionTransferToken;
         this.enforceDeviceBinding = $.enforceDeviceBinding;
@@ -78,6 +94,27 @@ public final class ClientSessionTransferArgs extends com.pulumi.resources.Resour
 
         public Builder(ClientSessionTransferArgs defaults) {
             $ = new ClientSessionTransferArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param allowRefreshToken Indicates whether the application is allowed to use a refresh token when using a session*transfer*token session.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowRefreshToken(@Nullable Output<Boolean> allowRefreshToken) {
+            $.allowRefreshToken = allowRefreshToken;
+            return this;
+        }
+
+        /**
+         * @param allowRefreshToken Indicates whether the application is allowed to use a refresh token when using a session*transfer*token session.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowRefreshToken(Boolean allowRefreshToken) {
+            return allowRefreshToken(Output.of(allowRefreshToken));
         }
 
         public Builder allowedAuthenticationMethods(@Nullable Output<List<String>> allowedAuthenticationMethods) {

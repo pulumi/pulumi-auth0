@@ -820,6 +820,10 @@ export interface ClientAddonsSamlp {
      */
     digestAlgorithm?: string;
     /**
+     * This is a supporting attribute to `mappings` field.Please note this is an experimental field. It should only be used when needed to send a map with keys as slices.
+     */
+    flexibleMappings?: string;
+    /**
      * Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion. Defaults to `true`.
      */
     includeAttributeNameFormat?: boolean;
@@ -1316,6 +1320,10 @@ export interface ClientRefreshTokenPolicy {
 }
 
 export interface ClientSessionTransfer {
+    /**
+     * Indicates whether the application is allowed to use a refresh token when using a session*transfer*token session.
+     */
+    allowRefreshToken: boolean;
     allowedAuthenticationMethods: string[];
     /**
      * Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session*transfer*token
@@ -1398,7 +1406,7 @@ export interface ConnectionOptions {
     /**
      * Configure extra headers to the Token endpoint of an OAuth 2.0 provider
      */
-    customHeaders?: {[key: string]: string}[];
+    customHeaders?: outputs.ConnectionOptionsCustomHeader[];
     /**
      * A map of scripts used to integrate with a custom database.
      */
@@ -1932,6 +1940,11 @@ export interface ConnectionOptionsConnectionSettings {
      * PKCE configuration. Possible values: `auto` (uses the strongest algorithm available), `S256` (uses the SHA-256 algorithm), `plain` (uses plaintext as described in the PKCE specification) or `disabled` (disables support for PKCE).
      */
     pkce: string;
+}
+
+export interface ConnectionOptionsCustomHeader {
+    header: string;
+    value: string;
 }
 
 export interface ConnectionOptionsDecryptionKey {
@@ -3059,6 +3072,10 @@ export interface GetClientAddonSamlp {
      */
     digestAlgorithm: string;
     /**
+     * This is a supporting attribute to `mappings` field.Please note this is an experimental field. It should only be used when needed to send a map with keys as slices.
+     */
+    flexibleMappings: string;
+    /**
      * Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion. Defaults to `true`.
      */
     includeAttributeNameFormat: boolean;
@@ -3492,6 +3509,10 @@ export interface GetClientRefreshTokenPolicy {
 }
 
 export interface GetClientSessionTransfer {
+    /**
+     * Indicates whether the application is allowed to use a refresh token when using a sessionTransferToken session.
+     */
+    allowRefreshToken: boolean;
     allowedAuthenticationMethods: string[];
     /**
      * Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session_transfer_token
@@ -3644,6 +3665,10 @@ export interface GetClientsClientOidcLogoutBackchannelLogoutInitiator {
 }
 
 export interface GetClientsClientSessionTransfer {
+    /**
+     * Indicates whether the application is allowed to use a refresh token when using a sessionTransferToken session.
+     */
+    allowRefreshToken: boolean;
     allowedAuthenticationMethods: string[];
     /**
      * Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session_transfer_token
@@ -3726,7 +3751,7 @@ export interface GetConnectionOption {
     /**
      * Configure extra headers to the Token endpoint of an OAuth 2.0 provider
      */
-    customHeaders: {[key: string]: string}[];
+    customHeaders: outputs.GetConnectionOptionCustomHeader[];
     /**
      * A map of scripts used to integrate with a custom database.
      */
@@ -4260,6 +4285,11 @@ export interface GetConnectionOptionConnectionSetting {
      * PKCE configuration. Possible values: `auto` (uses the strongest algorithm available), `S256` (uses the SHA-256 algorithm), `plain` (uses plaintext as described in the PKCE specification) or `disabled` (disables support for PKCE).
      */
     pkce: string;
+}
+
+export interface GetConnectionOptionCustomHeader {
+    header: string;
+    value: string;
 }
 
 export interface GetConnectionOptionDecryptionKey {

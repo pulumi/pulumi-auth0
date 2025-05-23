@@ -13,6 +13,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClientSessionTransfer {
+    /**
+     * @return Indicates whether the application is allowed to use a refresh token when using a session*transfer*token session.
+     * 
+     */
+    private @Nullable Boolean allowRefreshToken;
     private @Nullable List<String> allowedAuthenticationMethods;
     /**
      * @return Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session*transfer*token
@@ -26,6 +31,13 @@ public final class ClientSessionTransfer {
     private @Nullable String enforceDeviceBinding;
 
     private ClientSessionTransfer() {}
+    /**
+     * @return Indicates whether the application is allowed to use a refresh token when using a session*transfer*token session.
+     * 
+     */
+    public Optional<Boolean> allowRefreshToken() {
+        return Optional.ofNullable(this.allowRefreshToken);
+    }
     public List<String> allowedAuthenticationMethods() {
         return this.allowedAuthenticationMethods == null ? List.of() : this.allowedAuthenticationMethods;
     }
@@ -53,17 +65,25 @@ public final class ClientSessionTransfer {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean allowRefreshToken;
         private @Nullable List<String> allowedAuthenticationMethods;
         private @Nullable Boolean canCreateSessionTransferToken;
         private @Nullable String enforceDeviceBinding;
         public Builder() {}
         public Builder(ClientSessionTransfer defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.allowRefreshToken = defaults.allowRefreshToken;
     	      this.allowedAuthenticationMethods = defaults.allowedAuthenticationMethods;
     	      this.canCreateSessionTransferToken = defaults.canCreateSessionTransferToken;
     	      this.enforceDeviceBinding = defaults.enforceDeviceBinding;
         }
 
+        @CustomType.Setter
+        public Builder allowRefreshToken(@Nullable Boolean allowRefreshToken) {
+
+            this.allowRefreshToken = allowRefreshToken;
+            return this;
+        }
         @CustomType.Setter
         public Builder allowedAuthenticationMethods(@Nullable List<String> allowedAuthenticationMethods) {
 
@@ -87,6 +107,7 @@ public final class ClientSessionTransfer {
         }
         public ClientSessionTransfer build() {
             final var _resultValue = new ClientSessionTransfer();
+            _resultValue.allowRefreshToken = allowRefreshToken;
             _resultValue.allowedAuthenticationMethods = allowedAuthenticationMethods;
             _resultValue.canCreateSessionTransferToken = canCreateSessionTransferToken;
             _resultValue.enforceDeviceBinding = enforceDeviceBinding;

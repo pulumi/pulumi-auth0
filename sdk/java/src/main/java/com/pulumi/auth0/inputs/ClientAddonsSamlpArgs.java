@@ -111,6 +111,21 @@ public final class ClientAddonsSamlpArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * This is a supporting attribute to `mappings` field.Please note this is an experimental field. It should only be used when needed to send a map with keys as slices.
+     * 
+     */
+    @Import(name="flexibleMappings")
+    private @Nullable Output<String> flexibleMappings;
+
+    /**
+     * @return This is a supporting attribute to `mappings` field.Please note this is an experimental field. It should only be used when needed to send a map with keys as slices.
+     * 
+     */
+    public Optional<Output<String>> flexibleMappings() {
+        return Optional.ofNullable(this.flexibleMappings);
+    }
+
+    /**
      * Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion. Defaults to `true`.
      * 
      */
@@ -344,6 +359,7 @@ public final class ClientAddonsSamlpArgs extends com.pulumi.resources.ResourceAr
         this.createUpnClaim = $.createUpnClaim;
         this.destination = $.destination;
         this.digestAlgorithm = $.digestAlgorithm;
+        this.flexibleMappings = $.flexibleMappings;
         this.includeAttributeNameFormat = $.includeAttributeNameFormat;
         this.issuer = $.issuer;
         this.lifetimeInSeconds = $.lifetimeInSeconds;
@@ -503,6 +519,27 @@ public final class ClientAddonsSamlpArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder digestAlgorithm(String digestAlgorithm) {
             return digestAlgorithm(Output.of(digestAlgorithm));
+        }
+
+        /**
+         * @param flexibleMappings This is a supporting attribute to `mappings` field.Please note this is an experimental field. It should only be used when needed to send a map with keys as slices.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder flexibleMappings(@Nullable Output<String> flexibleMappings) {
+            $.flexibleMappings = flexibleMappings;
+            return this;
+        }
+
+        /**
+         * @param flexibleMappings This is a supporting attribute to `mappings` field.Please note this is an experimental field. It should only be used when needed to send a map with keys as slices.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder flexibleMappings(String flexibleMappings) {
+            return flexibleMappings(Output.of(flexibleMappings));
         }
 
         /**

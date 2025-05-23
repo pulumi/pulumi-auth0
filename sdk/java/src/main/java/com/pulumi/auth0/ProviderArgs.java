@@ -54,6 +54,21 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * While toggled on, the API token gets fetched from the keyring for the given domain
+     * 
+     */
+    @Import(name="cliLogin", json=true)
+    private @Nullable Output<Boolean> cliLogin;
+
+    /**
+     * @return While toggled on, the API token gets fetched from the keyring for the given domain
+     * 
+     */
+    public Optional<Output<Boolean>> cliLogin() {
+        return Optional.ofNullable(this.cliLogin);
+    }
+
+    /**
      * Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.
      * 
      */
@@ -127,6 +142,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     private ProviderArgs(ProviderArgs $) {
         this.apiToken = $.apiToken;
         this.audience = $.audience;
+        this.cliLogin = $.cliLogin;
         this.clientId = $.clientId;
         this.clientSecret = $.clientSecret;
         this.debug = $.debug;
@@ -198,6 +214,27 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder audience(String audience) {
             return audience(Output.of(audience));
+        }
+
+        /**
+         * @param cliLogin While toggled on, the API token gets fetched from the keyring for the given domain
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cliLogin(@Nullable Output<Boolean> cliLogin) {
+            $.cliLogin = cliLogin;
+            return this;
+        }
+
+        /**
+         * @param cliLogin While toggled on, the API token gets fetched from the keyring for the given domain
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cliLogin(Boolean cliLogin) {
+            return cliLogin(Output.of(cliLogin));
         }
 
         /**

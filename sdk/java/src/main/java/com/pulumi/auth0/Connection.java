@@ -564,6 +564,15 @@ import javax.annotation.Nullable;
  *                 .authorizationEndpoint("https://auth.example.com/oauth2/authorize")
  *                 .pkceEnabled(true)
  *                 .iconUrl("https://auth.example.com/assets/logo.png")
+ *                 .customHeaders(                
+ *                     ConnectionOptionsCustomHeaderArgs.builder()
+ *                         .header("bar")
+ *                         .value("foo")
+ *                         .build(),
+ *                     ConnectionOptionsCustomHeaderArgs.builder()
+ *                         .header("foo")
+ *                         .value("bar")
+ *                         .build())
  *                 .scripts(Map.of("fetchUserProfile", """
  *         function fetchUserProfile(accessToken, context, callback) {
  *           return callback(new Error("Whoops!"));
