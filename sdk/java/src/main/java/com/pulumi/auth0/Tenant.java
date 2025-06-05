@@ -6,6 +6,7 @@ package com.pulumi.auth0;
 import com.pulumi.auth0.TenantArgs;
 import com.pulumi.auth0.Utilities;
 import com.pulumi.auth0.inputs.TenantState;
+import com.pulumi.auth0.outputs.TenantDefaultTokenQuota;
 import com.pulumi.auth0.outputs.TenantErrorPage;
 import com.pulumi.auth0.outputs.TenantFlags;
 import com.pulumi.auth0.outputs.TenantMtls;
@@ -209,6 +210,20 @@ public class Tenant extends com.pulumi.resources.CustomResource {
      */
     public Output<String> defaultRedirectionUri() {
         return this.defaultRedirectionUri;
+    }
+    /**
+     * Token Quota configuration.
+     * 
+     */
+    @Export(name="defaultTokenQuota", refs={TenantDefaultTokenQuota.class}, tree="[0]")
+    private Output</* @Nullable */ TenantDefaultTokenQuota> defaultTokenQuota;
+
+    /**
+     * @return Token Quota configuration.
+     * 
+     */
+    public Output<Optional<TenantDefaultTokenQuota>> defaultTokenQuota() {
+        return Codegen.optional(this.defaultTokenQuota);
     }
     /**
      * Disable list of supported ACR values.

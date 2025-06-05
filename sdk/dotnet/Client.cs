@@ -263,6 +263,12 @@ namespace Pulumi.Auth0
         public Output<Outputs.ClientTokenExchange?> TokenExchange { get; private set; } = null!;
 
         /// <summary>
+        /// The token quota configuration.
+        /// </summary>
+        [Output("tokenQuota")]
+        public Output<Outputs.ClientTokenQuota?> TokenQuota { get; private set; } = null!;
+
+        /// <summary>
         /// URLs that represent valid web origins for use with web message response mode.
         /// </summary>
         [Output("webOrigins")]
@@ -598,6 +604,12 @@ namespace Pulumi.Auth0
         [Input("tokenExchange")]
         public Input<Inputs.ClientTokenExchangeArgs>? TokenExchange { get; set; }
 
+        /// <summary>
+        /// The token quota configuration.
+        /// </summary>
+        [Input("tokenQuota")]
+        public Input<Inputs.ClientTokenQuotaArgs>? TokenQuota { get; set; }
+
         [Input("webOrigins")]
         private InputList<string>? _webOrigins;
 
@@ -920,6 +932,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("tokenExchange")]
         public Input<Inputs.ClientTokenExchangeGetArgs>? TokenExchange { get; set; }
+
+        /// <summary>
+        /// The token quota configuration.
+        /// </summary>
+        [Input("tokenQuota")]
+        public Input<Inputs.ClientTokenQuotaGetArgs>? TokenQuota { get; set; }
 
         [Input("webOrigins")]
         private InputList<string>? _webOrigins;

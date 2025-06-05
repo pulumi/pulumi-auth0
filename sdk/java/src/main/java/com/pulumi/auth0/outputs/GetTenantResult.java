@@ -3,6 +3,7 @@
 
 package com.pulumi.auth0.outputs;
 
+import com.pulumi.auth0.outputs.GetTenantDefaultTokenQuota;
 import com.pulumi.auth0.outputs.GetTenantErrorPage;
 import com.pulumi.auth0.outputs.GetTenantFlag;
 import com.pulumi.auth0.outputs.GetTenantMtl;
@@ -54,6 +55,11 @@ public final class GetTenantResult {
      * 
      */
     private String defaultRedirectionUri;
+    /**
+     * @return Token Quota configuration.
+     * 
+     */
+    private List<GetTenantDefaultTokenQuota> defaultTokenQuotas;
     /**
      * @return Disable list of supported ACR values.
      * 
@@ -199,6 +205,13 @@ public final class GetTenantResult {
      */
     public String defaultRedirectionUri() {
         return this.defaultRedirectionUri;
+    }
+    /**
+     * @return Token Quota configuration.
+     * 
+     */
+    public List<GetTenantDefaultTokenQuota> defaultTokenQuotas() {
+        return this.defaultTokenQuotas;
     }
     /**
      * @return Disable list of supported ACR values.
@@ -350,6 +363,7 @@ public final class GetTenantResult {
         private String defaultAudience;
         private String defaultDirectory;
         private String defaultRedirectionUri;
+        private List<GetTenantDefaultTokenQuota> defaultTokenQuotas;
         private Boolean disableAcrValuesSupported;
         private String domain;
         private List<String> enabledLocales;
@@ -379,6 +393,7 @@ public final class GetTenantResult {
     	      this.defaultAudience = defaults.defaultAudience;
     	      this.defaultDirectory = defaults.defaultDirectory;
     	      this.defaultRedirectionUri = defaults.defaultRedirectionUri;
+    	      this.defaultTokenQuotas = defaults.defaultTokenQuotas;
     	      this.disableAcrValuesSupported = defaults.disableAcrValuesSupported;
     	      this.domain = defaults.domain;
     	      this.enabledLocales = defaults.enabledLocales;
@@ -461,6 +476,17 @@ public final class GetTenantResult {
             }
             this.defaultRedirectionUri = defaultRedirectionUri;
             return this;
+        }
+        @CustomType.Setter
+        public Builder defaultTokenQuotas(List<GetTenantDefaultTokenQuota> defaultTokenQuotas) {
+            if (defaultTokenQuotas == null) {
+              throw new MissingRequiredPropertyException("GetTenantResult", "defaultTokenQuotas");
+            }
+            this.defaultTokenQuotas = defaultTokenQuotas;
+            return this;
+        }
+        public Builder defaultTokenQuotas(GetTenantDefaultTokenQuota... defaultTokenQuotas) {
+            return defaultTokenQuotas(List.of(defaultTokenQuotas));
         }
         @CustomType.Setter
         public Builder disableAcrValuesSupported(Boolean disableAcrValuesSupported) {
@@ -644,6 +670,7 @@ public final class GetTenantResult {
             _resultValue.defaultAudience = defaultAudience;
             _resultValue.defaultDirectory = defaultDirectory;
             _resultValue.defaultRedirectionUri = defaultRedirectionUri;
+            _resultValue.defaultTokenQuotas = defaultTokenQuotas;
             _resultValue.disableAcrValuesSupported = disableAcrValuesSupported;
             _resultValue.domain = domain;
             _resultValue.enabledLocales = enabledLocales;

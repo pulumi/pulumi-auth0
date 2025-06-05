@@ -88,6 +88,10 @@ export class Organization extends pulumi.CustomResource {
      * The name of this organization.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The token quota configuration.
+     */
+    public readonly tokenQuota!: pulumi.Output<outputs.OrganizationTokenQuota | undefined>;
 
     /**
      * Create a Organization resource with the given unique name, arguments, and options.
@@ -106,12 +110,14 @@ export class Organization extends pulumi.CustomResource {
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["metadata"] = state ? state.metadata : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["tokenQuota"] = state ? state.tokenQuota : undefined;
         } else {
             const args = argsOrState as OrganizationArgs | undefined;
             resourceInputs["branding"] = args ? args.branding : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["metadata"] = args ? args.metadata : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["tokenQuota"] = args ? args.tokenQuota : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Organization.__pulumiType, name, resourceInputs, opts);
@@ -138,6 +144,10 @@ export interface OrganizationState {
      * The name of this organization.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The token quota configuration.
+     */
+    tokenQuota?: pulumi.Input<inputs.OrganizationTokenQuota>;
 }
 
 /**
@@ -160,4 +170,8 @@ export interface OrganizationArgs {
      * The name of this organization.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The token quota configuration.
+     */
+    tokenQuota?: pulumi.Input<inputs.OrganizationTokenQuota>;
 }

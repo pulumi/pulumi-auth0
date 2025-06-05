@@ -1342,6 +1342,28 @@ export interface ClientTokenExchange {
     allowAnyProfileOfTypes: string[];
 }
 
+export interface ClientTokenQuota {
+    /**
+     * The token quota configuration for client credentials.
+     */
+    clientCredentials: outputs.ClientTokenQuotaClientCredentials;
+}
+
+export interface ClientTokenQuotaClientCredentials {
+    /**
+     * If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+     */
+    enforce?: boolean;
+    /**
+     * Maximum number of issued tokens per day
+     */
+    perDay?: number;
+    /**
+     * Maximum number of issued tokens per hour
+     */
+    perHour?: number;
+}
+
 export interface ConnectionOptions {
     /**
      * ADFS URL where to fetch the metadata source.
@@ -3577,6 +3599,28 @@ export interface GetClientTokenExchange {
     allowAnyProfileOfTypes: string[];
 }
 
+export interface GetClientTokenQuota {
+    /**
+     * The token quota configuration for client credentials.
+     */
+    clientCredentials: outputs.GetClientTokenQuotaClientCredential[];
+}
+
+export interface GetClientTokenQuotaClientCredential {
+    /**
+     * If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+     */
+    enforce: boolean;
+    /**
+     * Maximum number of issued tokens per day
+     */
+    perDay: number;
+    /**
+     * Maximum number of issued tokens per hour
+     */
+    perHour: number;
+}
+
 export interface GetClientsClient {
     /**
      * List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
@@ -3637,6 +3681,10 @@ export interface GetClientsClient {
      */
     tokenExchanges: outputs.GetClientsClientTokenExchange[];
     /**
+     * The token quota configuration.
+     */
+    tokenQuotas: outputs.GetClientsClientTokenQuota[];
+    /**
      * URLs that represent valid web origins for use with web message response mode.
      */
     webOrigins: string[];
@@ -3685,6 +3733,28 @@ export interface GetClientsClientTokenExchange {
      * List of allowed profile types for token exchange
      */
     allowAnyProfileOfTypes: string[];
+}
+
+export interface GetClientsClientTokenQuota {
+    /**
+     * The token quota configuration for client credentials.
+     */
+    clientCredentials: outputs.GetClientsClientTokenQuotaClientCredential[];
+}
+
+export interface GetClientsClientTokenQuotaClientCredential {
+    /**
+     * If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+     */
+    enforce: boolean;
+    /**
+     * Maximum number of issued tokens per day
+     */
+    perDay: number;
+    /**
+     * Maximum number of issued tokens per hour
+     */
+    perHour: number;
 }
 
 export interface GetConnectionOption {
@@ -4601,6 +4671,28 @@ export interface GetOrganizationConnection {
     showAsButton: boolean;
 }
 
+export interface GetOrganizationTokenQuota {
+    /**
+     * The token quota configuration for client credentials.
+     */
+    clientCredentials: outputs.GetOrganizationTokenQuotaClientCredential[];
+}
+
+export interface GetOrganizationTokenQuotaClientCredential {
+    /**
+     * If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+     */
+    enforce: boolean;
+    /**
+     * Maximum number of issued tokens per day
+     */
+    perDay: number;
+    /**
+     * Maximum number of issued tokens per hour
+     */
+    perHour: number;
+}
+
 export interface GetPagesChangePassword {
     /**
      * Indicates whether to use the custom Reset Password HTML (`true`) or the default Auth0 page (`false`).
@@ -4874,6 +4966,61 @@ export interface GetSigningKeysSigningKey {
      * The cert thumbprint.
      */
     thumbprint: string;
+}
+
+export interface GetTenantDefaultTokenQuota {
+    /**
+     * The token quota configuration.
+     */
+    clients: outputs.GetTenantDefaultTokenQuotaClient[];
+    /**
+     * The token quota configuration.
+     */
+    organizations: outputs.GetTenantDefaultTokenQuotaOrganization[];
+}
+
+export interface GetTenantDefaultTokenQuotaClient {
+    /**
+     * The token quota configuration for client credentials.
+     */
+    clientCredentials: outputs.GetTenantDefaultTokenQuotaClientClientCredential[];
+}
+
+export interface GetTenantDefaultTokenQuotaClientClientCredential {
+    /**
+     * If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+     */
+    enforce: boolean;
+    /**
+     * Maximum number of issued tokens per day
+     */
+    perDay: number;
+    /**
+     * Maximum number of issued tokens per hour
+     */
+    perHour: number;
+}
+
+export interface GetTenantDefaultTokenQuotaOrganization {
+    /**
+     * The token quota configuration for client credentials.
+     */
+    clientCredentials: outputs.GetTenantDefaultTokenQuotaOrganizationClientCredential[];
+}
+
+export interface GetTenantDefaultTokenQuotaOrganizationClientCredential {
+    /**
+     * If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+     */
+    enforce: boolean;
+    /**
+     * Maximum number of issued tokens per day
+     */
+    perDay: number;
+    /**
+     * Maximum number of issued tokens per hour
+     */
+    perHour: number;
 }
 
 export interface GetTenantErrorPage {
@@ -5476,6 +5623,28 @@ export interface OrganizationConnectionsEnabledConnection {
     showAsButton?: boolean;
 }
 
+export interface OrganizationTokenQuota {
+    /**
+     * The token quota configuration for client credentials.
+     */
+    clientCredentials: outputs.OrganizationTokenQuotaClientCredentials;
+}
+
+export interface OrganizationTokenQuotaClientCredentials {
+    /**
+     * If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+     */
+    enforce?: boolean;
+    /**
+     * Maximum number of issued tokens per day
+     */
+    perDay?: number;
+    /**
+     * Maximum number of issued tokens per hour
+     */
+    perHour?: number;
+}
+
 export interface PagesChangePassword {
     /**
      * Indicates whether to use the custom Reset Password HTML (`true`) or the default Auth0 page (`false`).
@@ -5741,6 +5910,61 @@ export interface SelfServiceProfileUserAttribute {
      * Attribute’s name on Auth0 side
      */
     name: string;
+}
+
+export interface TenantDefaultTokenQuota {
+    /**
+     * The token quota configuration.
+     */
+    clients?: outputs.TenantDefaultTokenQuotaClients;
+    /**
+     * The token quota configuration.
+     */
+    organizations?: outputs.TenantDefaultTokenQuotaOrganizations;
+}
+
+export interface TenantDefaultTokenQuotaClients {
+    /**
+     * The token quota configuration for client credentials.
+     */
+    clientCredentials: outputs.TenantDefaultTokenQuotaClientsClientCredentials;
+}
+
+export interface TenantDefaultTokenQuotaClientsClientCredentials {
+    /**
+     * If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+     */
+    enforce?: boolean;
+    /**
+     * Maximum number of issued tokens per day
+     */
+    perDay?: number;
+    /**
+     * Maximum number of issued tokens per hour
+     */
+    perHour?: number;
+}
+
+export interface TenantDefaultTokenQuotaOrganizations {
+    /**
+     * The token quota configuration for client credentials.
+     */
+    clientCredentials: outputs.TenantDefaultTokenQuotaOrganizationsClientCredentials;
+}
+
+export interface TenantDefaultTokenQuotaOrganizationsClientCredentials {
+    /**
+     * If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+     */
+    enforce?: boolean;
+    /**
+     * Maximum number of issued tokens per day
+     */
+    perDay?: number;
+    /**
+     * Maximum number of issued tokens per hour
+     */
+    perHour?: number;
 }
 
 export interface TenantErrorPage {

@@ -172,6 +172,10 @@ __all__ = [
     'ClientSessionTransferArgsDict',
     'ClientTokenExchangeArgs',
     'ClientTokenExchangeArgsDict',
+    'ClientTokenQuotaArgs',
+    'ClientTokenQuotaArgsDict',
+    'ClientTokenQuotaClientCredentialsArgs',
+    'ClientTokenQuotaClientCredentialsArgsDict',
     'ConnectionOptionsArgs',
     'ConnectionOptionsArgsDict',
     'ConnectionOptionsAttributeArgs',
@@ -294,6 +298,10 @@ __all__ = [
     'OrganizationBrandingArgsDict',
     'OrganizationConnectionsEnabledConnectionArgs',
     'OrganizationConnectionsEnabledConnectionArgsDict',
+    'OrganizationTokenQuotaArgs',
+    'OrganizationTokenQuotaArgsDict',
+    'OrganizationTokenQuotaClientCredentialsArgs',
+    'OrganizationTokenQuotaClientCredentialsArgsDict',
     'PagesChangePasswordArgs',
     'PagesChangePasswordArgsDict',
     'PagesErrorArgs',
@@ -330,6 +338,16 @@ __all__ = [
     'SelfServiceProfileBrandingColorsArgsDict',
     'SelfServiceProfileUserAttributeArgs',
     'SelfServiceProfileUserAttributeArgsDict',
+    'TenantDefaultTokenQuotaArgs',
+    'TenantDefaultTokenQuotaArgsDict',
+    'TenantDefaultTokenQuotaClientsArgs',
+    'TenantDefaultTokenQuotaClientsArgsDict',
+    'TenantDefaultTokenQuotaClientsClientCredentialsArgs',
+    'TenantDefaultTokenQuotaClientsClientCredentialsArgsDict',
+    'TenantDefaultTokenQuotaOrganizationsArgs',
+    'TenantDefaultTokenQuotaOrganizationsArgsDict',
+    'TenantDefaultTokenQuotaOrganizationsClientCredentialsArgs',
+    'TenantDefaultTokenQuotaOrganizationsClientCredentialsArgsDict',
     'TenantErrorPageArgs',
     'TenantErrorPageArgsDict',
     'TenantFlagsArgs',
@@ -6846,6 +6864,109 @@ class ClientTokenExchangeArgs:
     @allow_any_profile_of_types.setter
     def allow_any_profile_of_types(self, value: pulumi.Input[Sequence[pulumi.Input[builtins.str]]]):
         pulumi.set(self, "allow_any_profile_of_types", value)
+
+
+if not MYPY:
+    class ClientTokenQuotaArgsDict(TypedDict):
+        client_credentials: pulumi.Input['ClientTokenQuotaClientCredentialsArgsDict']
+        """
+        The token quota configuration for client credentials.
+        """
+elif False:
+    ClientTokenQuotaArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClientTokenQuotaArgs:
+    def __init__(__self__, *,
+                 client_credentials: pulumi.Input['ClientTokenQuotaClientCredentialsArgs']):
+        """
+        :param pulumi.Input['ClientTokenQuotaClientCredentialsArgs'] client_credentials: The token quota configuration for client credentials.
+        """
+        pulumi.set(__self__, "client_credentials", client_credentials)
+
+    @property
+    @pulumi.getter(name="clientCredentials")
+    def client_credentials(self) -> pulumi.Input['ClientTokenQuotaClientCredentialsArgs']:
+        """
+        The token quota configuration for client credentials.
+        """
+        return pulumi.get(self, "client_credentials")
+
+    @client_credentials.setter
+    def client_credentials(self, value: pulumi.Input['ClientTokenQuotaClientCredentialsArgs']):
+        pulumi.set(self, "client_credentials", value)
+
+
+if not MYPY:
+    class ClientTokenQuotaClientCredentialsArgsDict(TypedDict):
+        enforce: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+        """
+        per_day: NotRequired[pulumi.Input[builtins.int]]
+        """
+        Maximum number of issued tokens per day
+        """
+        per_hour: NotRequired[pulumi.Input[builtins.int]]
+        """
+        Maximum number of issued tokens per hour
+        """
+elif False:
+    ClientTokenQuotaClientCredentialsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClientTokenQuotaClientCredentialsArgs:
+    def __init__(__self__, *,
+                 enforce: Optional[pulumi.Input[builtins.bool]] = None,
+                 per_day: Optional[pulumi.Input[builtins.int]] = None,
+                 per_hour: Optional[pulumi.Input[builtins.int]] = None):
+        """
+        :param pulumi.Input[builtins.bool] enforce: If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+        :param pulumi.Input[builtins.int] per_day: Maximum number of issued tokens per day
+        :param pulumi.Input[builtins.int] per_hour: Maximum number of issued tokens per hour
+        """
+        if enforce is not None:
+            pulumi.set(__self__, "enforce", enforce)
+        if per_day is not None:
+            pulumi.set(__self__, "per_day", per_day)
+        if per_hour is not None:
+            pulumi.set(__self__, "per_hour", per_hour)
+
+    @property
+    @pulumi.getter
+    def enforce(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+        """
+        return pulumi.get(self, "enforce")
+
+    @enforce.setter
+    def enforce(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "enforce", value)
+
+    @property
+    @pulumi.getter(name="perDay")
+    def per_day(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Maximum number of issued tokens per day
+        """
+        return pulumi.get(self, "per_day")
+
+    @per_day.setter
+    def per_day(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "per_day", value)
+
+    @property
+    @pulumi.getter(name="perHour")
+    def per_hour(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Maximum number of issued tokens per hour
+        """
+        return pulumi.get(self, "per_hour")
+
+    @per_hour.setter
+    def per_hour(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "per_hour", value)
 
 
 if not MYPY:
@@ -13474,6 +13595,109 @@ class OrganizationConnectionsEnabledConnectionArgs:
 
 
 if not MYPY:
+    class OrganizationTokenQuotaArgsDict(TypedDict):
+        client_credentials: pulumi.Input['OrganizationTokenQuotaClientCredentialsArgsDict']
+        """
+        The token quota configuration for client credentials.
+        """
+elif False:
+    OrganizationTokenQuotaArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OrganizationTokenQuotaArgs:
+    def __init__(__self__, *,
+                 client_credentials: pulumi.Input['OrganizationTokenQuotaClientCredentialsArgs']):
+        """
+        :param pulumi.Input['OrganizationTokenQuotaClientCredentialsArgs'] client_credentials: The token quota configuration for client credentials.
+        """
+        pulumi.set(__self__, "client_credentials", client_credentials)
+
+    @property
+    @pulumi.getter(name="clientCredentials")
+    def client_credentials(self) -> pulumi.Input['OrganizationTokenQuotaClientCredentialsArgs']:
+        """
+        The token quota configuration for client credentials.
+        """
+        return pulumi.get(self, "client_credentials")
+
+    @client_credentials.setter
+    def client_credentials(self, value: pulumi.Input['OrganizationTokenQuotaClientCredentialsArgs']):
+        pulumi.set(self, "client_credentials", value)
+
+
+if not MYPY:
+    class OrganizationTokenQuotaClientCredentialsArgsDict(TypedDict):
+        enforce: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+        """
+        per_day: NotRequired[pulumi.Input[builtins.int]]
+        """
+        Maximum number of issued tokens per day
+        """
+        per_hour: NotRequired[pulumi.Input[builtins.int]]
+        """
+        Maximum number of issued tokens per hour
+        """
+elif False:
+    OrganizationTokenQuotaClientCredentialsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OrganizationTokenQuotaClientCredentialsArgs:
+    def __init__(__self__, *,
+                 enforce: Optional[pulumi.Input[builtins.bool]] = None,
+                 per_day: Optional[pulumi.Input[builtins.int]] = None,
+                 per_hour: Optional[pulumi.Input[builtins.int]] = None):
+        """
+        :param pulumi.Input[builtins.bool] enforce: If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+        :param pulumi.Input[builtins.int] per_day: Maximum number of issued tokens per day
+        :param pulumi.Input[builtins.int] per_hour: Maximum number of issued tokens per hour
+        """
+        if enforce is not None:
+            pulumi.set(__self__, "enforce", enforce)
+        if per_day is not None:
+            pulumi.set(__self__, "per_day", per_day)
+        if per_hour is not None:
+            pulumi.set(__self__, "per_hour", per_hour)
+
+    @property
+    @pulumi.getter
+    def enforce(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+        """
+        return pulumi.get(self, "enforce")
+
+    @enforce.setter
+    def enforce(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "enforce", value)
+
+    @property
+    @pulumi.getter(name="perDay")
+    def per_day(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Maximum number of issued tokens per day
+        """
+        return pulumi.get(self, "per_day")
+
+    @per_day.setter
+    def per_day(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "per_day", value)
+
+    @property
+    @pulumi.getter(name="perHour")
+    def per_hour(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Maximum number of issued tokens per hour
+        """
+        return pulumi.get(self, "per_hour")
+
+    @per_hour.setter
+    def per_hour(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "per_hour", value)
+
+
+if not MYPY:
     class PagesChangePasswordArgsDict(TypedDict):
         enabled: pulumi.Input[builtins.bool]
         """
@@ -14742,6 +14966,264 @@ class SelfServiceProfileUserAttributeArgs:
     @name.setter
     def name(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "name", value)
+
+
+if not MYPY:
+    class TenantDefaultTokenQuotaArgsDict(TypedDict):
+        clients: NotRequired[pulumi.Input['TenantDefaultTokenQuotaClientsArgsDict']]
+        """
+        The token quota configuration.
+        """
+        organizations: NotRequired[pulumi.Input['TenantDefaultTokenQuotaOrganizationsArgsDict']]
+        """
+        The token quota configuration.
+        """
+elif False:
+    TenantDefaultTokenQuotaArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TenantDefaultTokenQuotaArgs:
+    def __init__(__self__, *,
+                 clients: Optional[pulumi.Input['TenantDefaultTokenQuotaClientsArgs']] = None,
+                 organizations: Optional[pulumi.Input['TenantDefaultTokenQuotaOrganizationsArgs']] = None):
+        """
+        :param pulumi.Input['TenantDefaultTokenQuotaClientsArgs'] clients: The token quota configuration.
+        :param pulumi.Input['TenantDefaultTokenQuotaOrganizationsArgs'] organizations: The token quota configuration.
+        """
+        if clients is not None:
+            pulumi.set(__self__, "clients", clients)
+        if organizations is not None:
+            pulumi.set(__self__, "organizations", organizations)
+
+    @property
+    @pulumi.getter
+    def clients(self) -> Optional[pulumi.Input['TenantDefaultTokenQuotaClientsArgs']]:
+        """
+        The token quota configuration.
+        """
+        return pulumi.get(self, "clients")
+
+    @clients.setter
+    def clients(self, value: Optional[pulumi.Input['TenantDefaultTokenQuotaClientsArgs']]):
+        pulumi.set(self, "clients", value)
+
+    @property
+    @pulumi.getter
+    def organizations(self) -> Optional[pulumi.Input['TenantDefaultTokenQuotaOrganizationsArgs']]:
+        """
+        The token quota configuration.
+        """
+        return pulumi.get(self, "organizations")
+
+    @organizations.setter
+    def organizations(self, value: Optional[pulumi.Input['TenantDefaultTokenQuotaOrganizationsArgs']]):
+        pulumi.set(self, "organizations", value)
+
+
+if not MYPY:
+    class TenantDefaultTokenQuotaClientsArgsDict(TypedDict):
+        client_credentials: pulumi.Input['TenantDefaultTokenQuotaClientsClientCredentialsArgsDict']
+        """
+        The token quota configuration for client credentials.
+        """
+elif False:
+    TenantDefaultTokenQuotaClientsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TenantDefaultTokenQuotaClientsArgs:
+    def __init__(__self__, *,
+                 client_credentials: pulumi.Input['TenantDefaultTokenQuotaClientsClientCredentialsArgs']):
+        """
+        :param pulumi.Input['TenantDefaultTokenQuotaClientsClientCredentialsArgs'] client_credentials: The token quota configuration for client credentials.
+        """
+        pulumi.set(__self__, "client_credentials", client_credentials)
+
+    @property
+    @pulumi.getter(name="clientCredentials")
+    def client_credentials(self) -> pulumi.Input['TenantDefaultTokenQuotaClientsClientCredentialsArgs']:
+        """
+        The token quota configuration for client credentials.
+        """
+        return pulumi.get(self, "client_credentials")
+
+    @client_credentials.setter
+    def client_credentials(self, value: pulumi.Input['TenantDefaultTokenQuotaClientsClientCredentialsArgs']):
+        pulumi.set(self, "client_credentials", value)
+
+
+if not MYPY:
+    class TenantDefaultTokenQuotaClientsClientCredentialsArgsDict(TypedDict):
+        enforce: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+        """
+        per_day: NotRequired[pulumi.Input[builtins.int]]
+        """
+        Maximum number of issued tokens per day
+        """
+        per_hour: NotRequired[pulumi.Input[builtins.int]]
+        """
+        Maximum number of issued tokens per hour
+        """
+elif False:
+    TenantDefaultTokenQuotaClientsClientCredentialsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TenantDefaultTokenQuotaClientsClientCredentialsArgs:
+    def __init__(__self__, *,
+                 enforce: Optional[pulumi.Input[builtins.bool]] = None,
+                 per_day: Optional[pulumi.Input[builtins.int]] = None,
+                 per_hour: Optional[pulumi.Input[builtins.int]] = None):
+        """
+        :param pulumi.Input[builtins.bool] enforce: If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+        :param pulumi.Input[builtins.int] per_day: Maximum number of issued tokens per day
+        :param pulumi.Input[builtins.int] per_hour: Maximum number of issued tokens per hour
+        """
+        if enforce is not None:
+            pulumi.set(__self__, "enforce", enforce)
+        if per_day is not None:
+            pulumi.set(__self__, "per_day", per_day)
+        if per_hour is not None:
+            pulumi.set(__self__, "per_hour", per_hour)
+
+    @property
+    @pulumi.getter
+    def enforce(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+        """
+        return pulumi.get(self, "enforce")
+
+    @enforce.setter
+    def enforce(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "enforce", value)
+
+    @property
+    @pulumi.getter(name="perDay")
+    def per_day(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Maximum number of issued tokens per day
+        """
+        return pulumi.get(self, "per_day")
+
+    @per_day.setter
+    def per_day(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "per_day", value)
+
+    @property
+    @pulumi.getter(name="perHour")
+    def per_hour(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Maximum number of issued tokens per hour
+        """
+        return pulumi.get(self, "per_hour")
+
+    @per_hour.setter
+    def per_hour(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "per_hour", value)
+
+
+if not MYPY:
+    class TenantDefaultTokenQuotaOrganizationsArgsDict(TypedDict):
+        client_credentials: pulumi.Input['TenantDefaultTokenQuotaOrganizationsClientCredentialsArgsDict']
+        """
+        The token quota configuration for client credentials.
+        """
+elif False:
+    TenantDefaultTokenQuotaOrganizationsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TenantDefaultTokenQuotaOrganizationsArgs:
+    def __init__(__self__, *,
+                 client_credentials: pulumi.Input['TenantDefaultTokenQuotaOrganizationsClientCredentialsArgs']):
+        """
+        :param pulumi.Input['TenantDefaultTokenQuotaOrganizationsClientCredentialsArgs'] client_credentials: The token quota configuration for client credentials.
+        """
+        pulumi.set(__self__, "client_credentials", client_credentials)
+
+    @property
+    @pulumi.getter(name="clientCredentials")
+    def client_credentials(self) -> pulumi.Input['TenantDefaultTokenQuotaOrganizationsClientCredentialsArgs']:
+        """
+        The token quota configuration for client credentials.
+        """
+        return pulumi.get(self, "client_credentials")
+
+    @client_credentials.setter
+    def client_credentials(self, value: pulumi.Input['TenantDefaultTokenQuotaOrganizationsClientCredentialsArgs']):
+        pulumi.set(self, "client_credentials", value)
+
+
+if not MYPY:
+    class TenantDefaultTokenQuotaOrganizationsClientCredentialsArgsDict(TypedDict):
+        enforce: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+        """
+        per_day: NotRequired[pulumi.Input[builtins.int]]
+        """
+        Maximum number of issued tokens per day
+        """
+        per_hour: NotRequired[pulumi.Input[builtins.int]]
+        """
+        Maximum number of issued tokens per hour
+        """
+elif False:
+    TenantDefaultTokenQuotaOrganizationsClientCredentialsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TenantDefaultTokenQuotaOrganizationsClientCredentialsArgs:
+    def __init__(__self__, *,
+                 enforce: Optional[pulumi.Input[builtins.bool]] = None,
+                 per_day: Optional[pulumi.Input[builtins.int]] = None,
+                 per_hour: Optional[pulumi.Input[builtins.int]] = None):
+        """
+        :param pulumi.Input[builtins.bool] enforce: If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+        :param pulumi.Input[builtins.int] per_day: Maximum number of issued tokens per day
+        :param pulumi.Input[builtins.int] per_hour: Maximum number of issued tokens per hour
+        """
+        if enforce is not None:
+            pulumi.set(__self__, "enforce", enforce)
+        if per_day is not None:
+            pulumi.set(__self__, "per_day", per_day)
+        if per_hour is not None:
+            pulumi.set(__self__, "per_hour", per_hour)
+
+    @property
+    @pulumi.getter
+    def enforce(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+        """
+        return pulumi.get(self, "enforce")
+
+    @enforce.setter
+    def enforce(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "enforce", value)
+
+    @property
+    @pulumi.getter(name="perDay")
+    def per_day(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Maximum number of issued tokens per day
+        """
+        return pulumi.get(self, "per_day")
+
+    @per_day.setter
+    def per_day(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "per_day", value)
+
+    @property
+    @pulumi.getter(name="perHour")
+    def per_hour(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Maximum number of issued tokens per hour
+        """
+        return pulumi.get(self, "per_hour")
+
+    @per_hour.setter
+    def per_hour(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "per_hour", value)
 
 
 if not MYPY:

@@ -28,7 +28,7 @@ class GetTenantResult:
     """
     A collection of values returned by getTenant.
     """
-    def __init__(__self__, acr_values_supporteds=None, allow_organization_name_in_authentication_api=None, allowed_logout_urls=None, customize_mfa_in_postlogin_action=None, default_audience=None, default_directory=None, default_redirection_uri=None, disable_acr_values_supported=None, domain=None, enabled_locales=None, error_pages=None, flags=None, friendly_name=None, id=None, idle_session_lifetime=None, management_api_identifier=None, mtls=None, oidc_logouts=None, picture_url=None, pushed_authorization_requests_supported=None, sandbox_version=None, session_cookies=None, session_lifetime=None, sessions=None, support_email=None, support_url=None):
+    def __init__(__self__, acr_values_supporteds=None, allow_organization_name_in_authentication_api=None, allowed_logout_urls=None, customize_mfa_in_postlogin_action=None, default_audience=None, default_directory=None, default_redirection_uri=None, default_token_quotas=None, disable_acr_values_supported=None, domain=None, enabled_locales=None, error_pages=None, flags=None, friendly_name=None, id=None, idle_session_lifetime=None, management_api_identifier=None, mtls=None, oidc_logouts=None, picture_url=None, pushed_authorization_requests_supported=None, sandbox_version=None, session_cookies=None, session_lifetime=None, sessions=None, support_email=None, support_url=None):
         if acr_values_supporteds and not isinstance(acr_values_supporteds, list):
             raise TypeError("Expected argument 'acr_values_supporteds' to be a list")
         pulumi.set(__self__, "acr_values_supporteds", acr_values_supporteds)
@@ -50,6 +50,9 @@ class GetTenantResult:
         if default_redirection_uri and not isinstance(default_redirection_uri, str):
             raise TypeError("Expected argument 'default_redirection_uri' to be a str")
         pulumi.set(__self__, "default_redirection_uri", default_redirection_uri)
+        if default_token_quotas and not isinstance(default_token_quotas, list):
+            raise TypeError("Expected argument 'default_token_quotas' to be a list")
+        pulumi.set(__self__, "default_token_quotas", default_token_quotas)
         if disable_acr_values_supported and not isinstance(disable_acr_values_supported, bool):
             raise TypeError("Expected argument 'disable_acr_values_supported' to be a bool")
         pulumi.set(__self__, "disable_acr_values_supported", disable_acr_values_supported)
@@ -163,6 +166,14 @@ class GetTenantResult:
         The default absolute redirection URI. Must be HTTPS or an empty string.
         """
         return pulumi.get(self, "default_redirection_uri")
+
+    @property
+    @pulumi.getter(name="defaultTokenQuotas")
+    def default_token_quotas(self) -> Sequence['outputs.GetTenantDefaultTokenQuotaResult']:
+        """
+        Token Quota configuration.
+        """
+        return pulumi.get(self, "default_token_quotas")
 
     @property
     @pulumi.getter(name="disableAcrValuesSupported")
@@ -330,6 +341,7 @@ class AwaitableGetTenantResult(GetTenantResult):
             default_audience=self.default_audience,
             default_directory=self.default_directory,
             default_redirection_uri=self.default_redirection_uri,
+            default_token_quotas=self.default_token_quotas,
             disable_acr_values_supported=self.disable_acr_values_supported,
             domain=self.domain,
             enabled_locales=self.enabled_locales,
@@ -376,6 +388,7 @@ def get_tenant(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTenan
         default_audience=pulumi.get(__ret__, 'default_audience'),
         default_directory=pulumi.get(__ret__, 'default_directory'),
         default_redirection_uri=pulumi.get(__ret__, 'default_redirection_uri'),
+        default_token_quotas=pulumi.get(__ret__, 'default_token_quotas'),
         disable_acr_values_supported=pulumi.get(__ret__, 'disable_acr_values_supported'),
         domain=pulumi.get(__ret__, 'domain'),
         enabled_locales=pulumi.get(__ret__, 'enabled_locales'),
@@ -419,6 +432,7 @@ def get_tenant_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOu
         default_audience=pulumi.get(__response__, 'default_audience'),
         default_directory=pulumi.get(__response__, 'default_directory'),
         default_redirection_uri=pulumi.get(__response__, 'default_redirection_uri'),
+        default_token_quotas=pulumi.get(__response__, 'default_token_quotas'),
         disable_acr_values_supported=pulumi.get(__response__, 'disable_acr_values_supported'),
         domain=pulumi.get(__response__, 'domain'),
         enabled_locales=pulumi.get(__response__, 'enabled_locales'),

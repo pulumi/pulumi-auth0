@@ -183,6 +183,10 @@ namespace Pulumi.Auth0
         /// The ID of the organization. If not provided, `name` must be set.
         /// </summary>
         public readonly string? OrganizationId;
+        /// <summary>
+        /// The token quota configuration.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetOrganizationTokenQuotaResult> TokenQuotas;
 
         [OutputConstructor]
         private GetOrganizationResult(
@@ -202,7 +206,9 @@ namespace Pulumi.Auth0
 
             string? name,
 
-            string? organizationId)
+            string? organizationId,
+
+            ImmutableArray<Outputs.GetOrganizationTokenQuotaResult> tokenQuotas)
         {
             Brandings = brandings;
             ClientGrants = clientGrants;
@@ -213,6 +219,7 @@ namespace Pulumi.Auth0
             Metadata = metadata;
             Name = name;
             OrganizationId = organizationId;
+            TokenQuotas = tokenQuotas;
         }
     }
 }

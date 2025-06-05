@@ -12,6 +12,7 @@ import com.pulumi.auth0.inputs.ClientOidcLogoutArgs;
 import com.pulumi.auth0.inputs.ClientRefreshTokenArgs;
 import com.pulumi.auth0.inputs.ClientSessionTransferArgs;
 import com.pulumi.auth0.inputs.ClientTokenExchangeArgs;
+import com.pulumi.auth0.inputs.ClientTokenQuotaArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.core.internal.Codegen;
@@ -629,6 +630,21 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The token quota configuration.
+     * 
+     */
+    @Import(name="tokenQuota")
+    private @Nullable Output<ClientTokenQuotaArgs> tokenQuota;
+
+    /**
+     * @return The token quota configuration.
+     * 
+     */
+    public Optional<Output<ClientTokenQuotaArgs>> tokenQuota() {
+        return Optional.ofNullable(this.tokenQuota);
+    }
+
+    /**
      * URLs that represent valid web origins for use with web message response mode.
      * 
      */
@@ -686,6 +702,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         this.sso = $.sso;
         this.ssoDisabled = $.ssoDisabled;
         this.tokenExchange = $.tokenExchange;
+        this.tokenQuota = $.tokenQuota;
         this.webOrigins = $.webOrigins;
     }
 
@@ -1625,6 +1642,27 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder tokenExchange(ClientTokenExchangeArgs tokenExchange) {
             return tokenExchange(Output.of(tokenExchange));
+        }
+
+        /**
+         * @param tokenQuota The token quota configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tokenQuota(@Nullable Output<ClientTokenQuotaArgs> tokenQuota) {
+            $.tokenQuota = tokenQuota;
+            return this;
+        }
+
+        /**
+         * @param tokenQuota The token quota configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tokenQuota(ClientTokenQuotaArgs tokenQuota) {
+            return tokenQuota(Output.of(tokenQuota));
         }
 
         /**

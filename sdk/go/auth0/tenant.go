@@ -103,6 +103,8 @@ type Tenant struct {
 	DefaultDirectory pulumi.StringOutput `pulumi:"defaultDirectory"`
 	// The default absolute redirection URI. Must be HTTPS or an empty string.
 	DefaultRedirectionUri pulumi.StringOutput `pulumi:"defaultRedirectionUri"`
+	// Token Quota configuration.
+	DefaultTokenQuota TenantDefaultTokenQuotaPtrOutput `pulumi:"defaultTokenQuota"`
 	// Disable list of supported ACR values.
 	DisableAcrValuesSupported pulumi.BoolOutput `pulumi:"disableAcrValuesSupported"`
 	// Supported locales for the user interface. The first locale in the list will be used to set the default locale.
@@ -181,6 +183,8 @@ type tenantState struct {
 	DefaultDirectory *string `pulumi:"defaultDirectory"`
 	// The default absolute redirection URI. Must be HTTPS or an empty string.
 	DefaultRedirectionUri *string `pulumi:"defaultRedirectionUri"`
+	// Token Quota configuration.
+	DefaultTokenQuota *TenantDefaultTokenQuota `pulumi:"defaultTokenQuota"`
 	// Disable list of supported ACR values.
 	DisableAcrValuesSupported *bool `pulumi:"disableAcrValuesSupported"`
 	// Supported locales for the user interface. The first locale in the list will be used to set the default locale.
@@ -230,6 +234,8 @@ type TenantState struct {
 	DefaultDirectory pulumi.StringPtrInput
 	// The default absolute redirection URI. Must be HTTPS or an empty string.
 	DefaultRedirectionUri pulumi.StringPtrInput
+	// Token Quota configuration.
+	DefaultTokenQuota TenantDefaultTokenQuotaPtrInput
 	// Disable list of supported ACR values.
 	DisableAcrValuesSupported pulumi.BoolPtrInput
 	// Supported locales for the user interface. The first locale in the list will be used to set the default locale.
@@ -283,6 +289,8 @@ type tenantArgs struct {
 	DefaultDirectory *string `pulumi:"defaultDirectory"`
 	// The default absolute redirection URI. Must be HTTPS or an empty string.
 	DefaultRedirectionUri *string `pulumi:"defaultRedirectionUri"`
+	// Token Quota configuration.
+	DefaultTokenQuota *TenantDefaultTokenQuota `pulumi:"defaultTokenQuota"`
 	// Disable list of supported ACR values.
 	DisableAcrValuesSupported *bool `pulumi:"disableAcrValuesSupported"`
 	// Supported locales for the user interface. The first locale in the list will be used to set the default locale.
@@ -333,6 +341,8 @@ type TenantArgs struct {
 	DefaultDirectory pulumi.StringPtrInput
 	// The default absolute redirection URI. Must be HTTPS or an empty string.
 	DefaultRedirectionUri pulumi.StringPtrInput
+	// Token Quota configuration.
+	DefaultTokenQuota TenantDefaultTokenQuotaPtrInput
 	// Disable list of supported ACR values.
 	DisableAcrValuesSupported pulumi.BoolPtrInput
 	// Supported locales for the user interface. The first locale in the list will be used to set the default locale.
@@ -487,6 +497,11 @@ func (o TenantOutput) DefaultDirectory() pulumi.StringOutput {
 // The default absolute redirection URI. Must be HTTPS or an empty string.
 func (o TenantOutput) DefaultRedirectionUri() pulumi.StringOutput {
 	return o.ApplyT(func(v *Tenant) pulumi.StringOutput { return v.DefaultRedirectionUri }).(pulumi.StringOutput)
+}
+
+// Token Quota configuration.
+func (o TenantOutput) DefaultTokenQuota() TenantDefaultTokenQuotaPtrOutput {
+	return o.ApplyT(func(v *Tenant) TenantDefaultTokenQuotaPtrOutput { return v.DefaultTokenQuota }).(TenantDefaultTokenQuotaPtrOutput)
 }
 
 // Disable list of supported ACR values.

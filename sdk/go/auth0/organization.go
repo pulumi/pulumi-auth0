@@ -73,6 +73,8 @@ type Organization struct {
 	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
 	// The name of this organization.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The token quota configuration.
+	TokenQuota OrganizationTokenQuotaPtrOutput `pulumi:"tokenQuota"`
 }
 
 // NewOrganization registers a new resource with the given unique name, arguments, and options.
@@ -113,6 +115,8 @@ type organizationState struct {
 	Metadata map[string]string `pulumi:"metadata"`
 	// The name of this organization.
 	Name *string `pulumi:"name"`
+	// The token quota configuration.
+	TokenQuota *OrganizationTokenQuota `pulumi:"tokenQuota"`
 }
 
 type OrganizationState struct {
@@ -124,6 +128,8 @@ type OrganizationState struct {
 	Metadata pulumi.StringMapInput
 	// The name of this organization.
 	Name pulumi.StringPtrInput
+	// The token quota configuration.
+	TokenQuota OrganizationTokenQuotaPtrInput
 }
 
 func (OrganizationState) ElementType() reflect.Type {
@@ -139,6 +145,8 @@ type organizationArgs struct {
 	Metadata map[string]string `pulumi:"metadata"`
 	// The name of this organization.
 	Name *string `pulumi:"name"`
+	// The token quota configuration.
+	TokenQuota *OrganizationTokenQuota `pulumi:"tokenQuota"`
 }
 
 // The set of arguments for constructing a Organization resource.
@@ -151,6 +159,8 @@ type OrganizationArgs struct {
 	Metadata pulumi.StringMapInput
 	// The name of this organization.
 	Name pulumi.StringPtrInput
+	// The token quota configuration.
+	TokenQuota OrganizationTokenQuotaPtrInput
 }
 
 func (OrganizationArgs) ElementType() reflect.Type {
@@ -258,6 +268,11 @@ func (o OrganizationOutput) Metadata() pulumi.StringMapOutput {
 // The name of this organization.
 func (o OrganizationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Organization) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The token quota configuration.
+func (o OrganizationOutput) TokenQuota() OrganizationTokenQuotaPtrOutput {
+	return o.ApplyT(func(v *Organization) OrganizationTokenQuotaPtrOutput { return v.TokenQuota }).(OrganizationTokenQuotaPtrOutput)
 }
 
 type OrganizationArrayOutput struct{ *pulumi.OutputState }

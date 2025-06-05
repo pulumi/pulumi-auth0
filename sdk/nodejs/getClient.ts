@@ -227,6 +227,10 @@ export interface GetClientResult {
      */
     readonly tokenExchanges: outputs.GetClientTokenExchange[];
     /**
+     * The token quota configuration.
+     */
+    readonly tokenQuotas: outputs.GetClientTokenQuota[];
+    /**
      * URLs that represent valid web origins for use with web message response mode.
      */
     readonly webOrigins: string[];

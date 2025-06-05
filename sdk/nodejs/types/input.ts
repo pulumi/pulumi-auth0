@@ -1342,6 +1342,28 @@ export interface ClientTokenExchange {
     allowAnyProfileOfTypes: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface ClientTokenQuota {
+    /**
+     * The token quota configuration for client credentials.
+     */
+    clientCredentials: pulumi.Input<inputs.ClientTokenQuotaClientCredentials>;
+}
+
+export interface ClientTokenQuotaClientCredentials {
+    /**
+     * If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+     */
+    enforce?: pulumi.Input<boolean>;
+    /**
+     * Maximum number of issued tokens per day
+     */
+    perDay?: pulumi.Input<number>;
+    /**
+     * Maximum number of issued tokens per hour
+     */
+    perHour?: pulumi.Input<number>;
+}
+
 export interface ConnectionOptions {
     /**
      * ADFS URL where to fetch the metadata source.
@@ -2810,6 +2832,28 @@ export interface OrganizationConnectionsEnabledConnection {
     showAsButton?: pulumi.Input<boolean>;
 }
 
+export interface OrganizationTokenQuota {
+    /**
+     * The token quota configuration for client credentials.
+     */
+    clientCredentials: pulumi.Input<inputs.OrganizationTokenQuotaClientCredentials>;
+}
+
+export interface OrganizationTokenQuotaClientCredentials {
+    /**
+     * If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+     */
+    enforce?: pulumi.Input<boolean>;
+    /**
+     * Maximum number of issued tokens per day
+     */
+    perDay?: pulumi.Input<number>;
+    /**
+     * Maximum number of issued tokens per hour
+     */
+    perHour?: pulumi.Input<number>;
+}
+
 export interface PagesChangePassword {
     /**
      * Indicates whether to use the custom Reset Password HTML (`true`) or the default Auth0 page (`false`).
@@ -3075,6 +3119,61 @@ export interface SelfServiceProfileUserAttribute {
      * Attribute’s name on Auth0 side
      */
     name: pulumi.Input<string>;
+}
+
+export interface TenantDefaultTokenQuota {
+    /**
+     * The token quota configuration.
+     */
+    clients?: pulumi.Input<inputs.TenantDefaultTokenQuotaClients>;
+    /**
+     * The token quota configuration.
+     */
+    organizations?: pulumi.Input<inputs.TenantDefaultTokenQuotaOrganizations>;
+}
+
+export interface TenantDefaultTokenQuotaClients {
+    /**
+     * The token quota configuration for client credentials.
+     */
+    clientCredentials: pulumi.Input<inputs.TenantDefaultTokenQuotaClientsClientCredentials>;
+}
+
+export interface TenantDefaultTokenQuotaClientsClientCredentials {
+    /**
+     * If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+     */
+    enforce?: pulumi.Input<boolean>;
+    /**
+     * Maximum number of issued tokens per day
+     */
+    perDay?: pulumi.Input<number>;
+    /**
+     * Maximum number of issued tokens per hour
+     */
+    perHour?: pulumi.Input<number>;
+}
+
+export interface TenantDefaultTokenQuotaOrganizations {
+    /**
+     * The token quota configuration for client credentials.
+     */
+    clientCredentials: pulumi.Input<inputs.TenantDefaultTokenQuotaOrganizationsClientCredentials>;
+}
+
+export interface TenantDefaultTokenQuotaOrganizationsClientCredentials {
+    /**
+     * If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+     */
+    enforce?: pulumi.Input<boolean>;
+    /**
+     * Maximum number of issued tokens per day
+     */
+    perDay?: pulumi.Input<number>;
+    /**
+     * Maximum number of issued tokens per hour
+     */
+    perHour?: pulumi.Input<number>;
 }
 
 export interface TenantErrorPage {

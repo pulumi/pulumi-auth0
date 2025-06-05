@@ -108,6 +108,10 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly string DefaultRedirectionUri;
         /// <summary>
+        /// Token Quota configuration.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetTenantDefaultTokenQuotaResult> DefaultTokenQuotas;
+        /// <summary>
         /// Disable list of supported ACR values.
         /// </summary>
         public readonly bool DisableAcrValuesSupported;
@@ -200,6 +204,8 @@ namespace Pulumi.Auth0
 
             string defaultRedirectionUri,
 
+            ImmutableArray<Outputs.GetTenantDefaultTokenQuotaResult> defaultTokenQuotas,
+
             bool disableAcrValuesSupported,
 
             string domain,
@@ -245,6 +251,7 @@ namespace Pulumi.Auth0
             DefaultAudience = defaultAudience;
             DefaultDirectory = defaultDirectory;
             DefaultRedirectionUri = defaultRedirectionUri;
+            DefaultTokenQuotas = defaultTokenQuotas;
             DisableAcrValuesSupported = disableAcrValuesSupported;
             Domain = domain;
             EnabledLocales = enabledLocales;

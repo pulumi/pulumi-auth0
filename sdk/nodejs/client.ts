@@ -207,6 +207,10 @@ export class Client extends pulumi.CustomResource {
      */
     public readonly tokenExchange!: pulumi.Output<outputs.ClientTokenExchange | undefined>;
     /**
+     * The token quota configuration.
+     */
+    public readonly tokenQuota!: pulumi.Output<outputs.ClientTokenQuota | undefined>;
+    /**
      * URLs that represent valid web origins for use with web message response mode.
      */
     public readonly webOrigins!: pulumi.Output<string[] | undefined>;
@@ -264,6 +268,7 @@ export class Client extends pulumi.CustomResource {
             resourceInputs["sso"] = state ? state.sso : undefined;
             resourceInputs["ssoDisabled"] = state ? state.ssoDisabled : undefined;
             resourceInputs["tokenExchange"] = state ? state.tokenExchange : undefined;
+            resourceInputs["tokenQuota"] = state ? state.tokenQuota : undefined;
             resourceInputs["webOrigins"] = state ? state.webOrigins : undefined;
         } else {
             const args = argsOrState as ClientArgs | undefined;
@@ -305,6 +310,7 @@ export class Client extends pulumi.CustomResource {
             resourceInputs["sso"] = args ? args.sso : undefined;
             resourceInputs["ssoDisabled"] = args ? args.ssoDisabled : undefined;
             resourceInputs["tokenExchange"] = args ? args.tokenExchange : undefined;
+            resourceInputs["tokenQuota"] = args ? args.tokenQuota : undefined;
             resourceInputs["webOrigins"] = args ? args.webOrigins : undefined;
             resourceInputs["clientId"] = undefined /*out*/;
             resourceInputs["signingKeys"] = undefined /*out*/;
@@ -480,6 +486,10 @@ export interface ClientState {
      */
     tokenExchange?: pulumi.Input<inputs.ClientTokenExchange>;
     /**
+     * The token quota configuration.
+     */
+    tokenQuota?: pulumi.Input<inputs.ClientTokenQuota>;
+    /**
      * URLs that represent valid web origins for use with web message response mode.
      */
     webOrigins?: pulumi.Input<pulumi.Input<string>[]>;
@@ -640,6 +650,10 @@ export interface ClientArgs {
      * Allows configuration for token exchange
      */
     tokenExchange?: pulumi.Input<inputs.ClientTokenExchange>;
+    /**
+     * The token quota configuration.
+     */
+    tokenQuota?: pulumi.Input<inputs.ClientTokenQuota>;
     /**
      * URLs that represent valid web origins for use with web message response mode.
      */
