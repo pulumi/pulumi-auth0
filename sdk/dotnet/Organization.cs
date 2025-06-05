@@ -83,6 +83,12 @@ namespace Pulumi.Auth0
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The token quota configuration.
+        /// </summary>
+        [Output("tokenQuota")]
+        public Output<Outputs.OrganizationTokenQuota?> TokenQuota { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Organization resource with the given unique name, arguments, and options.
@@ -159,6 +165,12 @@ namespace Pulumi.Auth0
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The token quota configuration.
+        /// </summary>
+        [Input("tokenQuota")]
+        public Input<Inputs.OrganizationTokenQuotaArgs>? TokenQuota { get; set; }
+
         public OrganizationArgs()
         {
         }
@@ -196,6 +208,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The token quota configuration.
+        /// </summary>
+        [Input("tokenQuota")]
+        public Input<Inputs.OrganizationTokenQuotaGetArgs>? TokenQuota { get; set; }
 
         public OrganizationState()
         {

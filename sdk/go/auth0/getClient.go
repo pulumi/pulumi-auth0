@@ -154,6 +154,8 @@ type LookupClientResult struct {
 	TokenEndpointAuthMethod string `pulumi:"tokenEndpointAuthMethod"`
 	// Allows configuration for token exchange
 	TokenExchanges []GetClientTokenExchange `pulumi:"tokenExchanges"`
+	// The token quota configuration.
+	TokenQuotas []GetClientTokenQuota `pulumi:"tokenQuotas"`
 	// URLs that represent valid web origins for use with web message response mode.
 	WebOrigins []string `pulumi:"webOrigins"`
 }
@@ -415,6 +417,11 @@ func (o LookupClientResultOutput) TokenEndpointAuthMethod() pulumi.StringOutput 
 // Allows configuration for token exchange
 func (o LookupClientResultOutput) TokenExchanges() GetClientTokenExchangeArrayOutput {
 	return o.ApplyT(func(v LookupClientResult) []GetClientTokenExchange { return v.TokenExchanges }).(GetClientTokenExchangeArrayOutput)
+}
+
+// The token quota configuration.
+func (o LookupClientResultOutput) TokenQuotas() GetClientTokenQuotaArrayOutput {
+	return o.ApplyT(func(v LookupClientResult) []GetClientTokenQuota { return v.TokenQuotas }).(GetClientTokenQuotaArrayOutput)
 }
 
 // URLs that represent valid web origins for use with web message response mode.

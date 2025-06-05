@@ -57,6 +57,10 @@ export interface GetTenantResult {
      */
     readonly defaultRedirectionUri: string;
     /**
+     * Token Quota configuration.
+     */
+    readonly defaultTokenQuotas: outputs.GetTenantDefaultTokenQuota[];
+    /**
      * Disable list of supported ACR values.
      */
     readonly disableAcrValuesSupported: boolean;

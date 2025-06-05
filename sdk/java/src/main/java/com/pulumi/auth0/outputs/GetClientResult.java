@@ -14,6 +14,7 @@ import com.pulumi.auth0.outputs.GetClientRefreshToken;
 import com.pulumi.auth0.outputs.GetClientSessionTransfer;
 import com.pulumi.auth0.outputs.GetClientSignedRequestObject;
 import com.pulumi.auth0.outputs.GetClientTokenExchange;
+import com.pulumi.auth0.outputs.GetClientTokenQuota;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
@@ -243,6 +244,11 @@ public final class GetClientResult {
      * 
      */
     private List<GetClientTokenExchange> tokenExchanges;
+    /**
+     * @return The token quota configuration.
+     * 
+     */
+    private List<GetClientTokenQuota> tokenQuotas;
     /**
      * @return URLs that represent valid web origins for use with web message response mode.
      * 
@@ -558,6 +564,13 @@ public final class GetClientResult {
         return this.tokenExchanges;
     }
     /**
+     * @return The token quota configuration.
+     * 
+     */
+    public List<GetClientTokenQuota> tokenQuotas() {
+        return this.tokenQuotas;
+    }
+    /**
      * @return URLs that represent valid web origins for use with web message response mode.
      * 
      */
@@ -619,6 +632,7 @@ public final class GetClientResult {
         private Boolean ssoDisabled;
         private String tokenEndpointAuthMethod;
         private List<GetClientTokenExchange> tokenExchanges;
+        private List<GetClientTokenQuota> tokenQuotas;
         private List<String> webOrigins;
         public Builder() {}
         public Builder(GetClientResult defaults) {
@@ -668,6 +682,7 @@ public final class GetClientResult {
     	      this.ssoDisabled = defaults.ssoDisabled;
     	      this.tokenEndpointAuthMethod = defaults.tokenEndpointAuthMethod;
     	      this.tokenExchanges = defaults.tokenExchanges;
+    	      this.tokenQuotas = defaults.tokenQuotas;
     	      this.webOrigins = defaults.webOrigins;
         }
 
@@ -1082,6 +1097,17 @@ public final class GetClientResult {
             return tokenExchanges(List.of(tokenExchanges));
         }
         @CustomType.Setter
+        public Builder tokenQuotas(List<GetClientTokenQuota> tokenQuotas) {
+            if (tokenQuotas == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "tokenQuotas");
+            }
+            this.tokenQuotas = tokenQuotas;
+            return this;
+        }
+        public Builder tokenQuotas(GetClientTokenQuota... tokenQuotas) {
+            return tokenQuotas(List.of(tokenQuotas));
+        }
+        @CustomType.Setter
         public Builder webOrigins(List<String> webOrigins) {
             if (webOrigins == null) {
               throw new MissingRequiredPropertyException("GetClientResult", "webOrigins");
@@ -1139,6 +1165,7 @@ public final class GetClientResult {
             _resultValue.ssoDisabled = ssoDisabled;
             _resultValue.tokenEndpointAuthMethod = tokenEndpointAuthMethod;
             _resultValue.tokenExchanges = tokenExchanges;
+            _resultValue.tokenQuotas = tokenQuotas;
             _resultValue.webOrigins = webOrigins;
             return _resultValue;
         }

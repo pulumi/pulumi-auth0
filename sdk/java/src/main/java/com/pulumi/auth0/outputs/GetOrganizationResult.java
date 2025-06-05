@@ -5,6 +5,7 @@ package com.pulumi.auth0.outputs;
 
 import com.pulumi.auth0.outputs.GetOrganizationBranding;
 import com.pulumi.auth0.outputs.GetOrganizationConnection;
+import com.pulumi.auth0.outputs.GetOrganizationTokenQuota;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
@@ -57,6 +58,11 @@ public final class GetOrganizationResult {
      * 
      */
     private @Nullable String organizationId;
+    /**
+     * @return The token quota configuration.
+     * 
+     */
+    private List<GetOrganizationTokenQuota> tokenQuotas;
 
     private GetOrganizationResult() {}
     /**
@@ -118,6 +124,13 @@ public final class GetOrganizationResult {
     public Optional<String> organizationId() {
         return Optional.ofNullable(this.organizationId);
     }
+    /**
+     * @return The token quota configuration.
+     * 
+     */
+    public List<GetOrganizationTokenQuota> tokenQuotas() {
+        return this.tokenQuotas;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -137,6 +150,7 @@ public final class GetOrganizationResult {
         private Map<String,String> metadata;
         private @Nullable String name;
         private @Nullable String organizationId;
+        private List<GetOrganizationTokenQuota> tokenQuotas;
         public Builder() {}
         public Builder(GetOrganizationResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -149,6 +163,7 @@ public final class GetOrganizationResult {
     	      this.metadata = defaults.metadata;
     	      this.name = defaults.name;
     	      this.organizationId = defaults.organizationId;
+    	      this.tokenQuotas = defaults.tokenQuotas;
         }
 
         @CustomType.Setter
@@ -231,6 +246,17 @@ public final class GetOrganizationResult {
             this.organizationId = organizationId;
             return this;
         }
+        @CustomType.Setter
+        public Builder tokenQuotas(List<GetOrganizationTokenQuota> tokenQuotas) {
+            if (tokenQuotas == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationResult", "tokenQuotas");
+            }
+            this.tokenQuotas = tokenQuotas;
+            return this;
+        }
+        public Builder tokenQuotas(GetOrganizationTokenQuota... tokenQuotas) {
+            return tokenQuotas(List.of(tokenQuotas));
+        }
         public GetOrganizationResult build() {
             final var _resultValue = new GetOrganizationResult();
             _resultValue.brandings = brandings;
@@ -242,6 +268,7 @@ public final class GetOrganizationResult {
             _resultValue.metadata = metadata;
             _resultValue.name = name;
             _resultValue.organizationId = organizationId;
+            _resultValue.tokenQuotas = tokenQuotas;
             return _resultValue;
         }
     }

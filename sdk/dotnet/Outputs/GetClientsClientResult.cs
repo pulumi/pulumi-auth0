@@ -72,6 +72,10 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClientsClientTokenExchangeResult> TokenExchanges;
         /// <summary>
+        /// The token quota configuration.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetClientsClientTokenQuotaResult> TokenQuotas;
+        /// <summary>
         /// URLs that represent valid web origins for use with web message response mode.
         /// </summary>
         public readonly ImmutableArray<string> WebOrigins;
@@ -110,6 +114,8 @@ namespace Pulumi.Auth0.Outputs
 
             ImmutableArray<Outputs.GetClientsClientTokenExchangeResult> tokenExchanges,
 
+            ImmutableArray<Outputs.GetClientsClientTokenQuotaResult> tokenQuotas,
+
             ImmutableArray<string> webOrigins)
         {
             AllowedClients = allowedClients;
@@ -128,6 +134,7 @@ namespace Pulumi.Auth0.Outputs
             OidcLogouts = oidcLogouts;
             SessionTransfers = sessionTransfers;
             TokenExchanges = tokenExchanges;
+            TokenQuotas = tokenQuotas;
             WebOrigins = webOrigins;
         }
     }

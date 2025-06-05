@@ -106,6 +106,8 @@ type Client struct {
 	SsoDisabled pulumi.BoolPtrOutput `pulumi:"ssoDisabled"`
 	// Allows configuration for token exchange
 	TokenExchange ClientTokenExchangePtrOutput `pulumi:"tokenExchange"`
+	// The token quota configuration.
+	TokenQuota ClientTokenQuotaPtrOutput `pulumi:"tokenQuota"`
 	// URLs that represent valid web origins for use with web message response mode.
 	WebOrigins pulumi.StringArrayOutput `pulumi:"webOrigins"`
 }
@@ -228,6 +230,8 @@ type clientState struct {
 	SsoDisabled *bool `pulumi:"ssoDisabled"`
 	// Allows configuration for token exchange
 	TokenExchange *ClientTokenExchange `pulumi:"tokenExchange"`
+	// The token quota configuration.
+	TokenQuota *ClientTokenQuota `pulumi:"tokenQuota"`
 	// URLs that represent valid web origins for use with web message response mode.
 	WebOrigins []string `pulumi:"webOrigins"`
 }
@@ -314,6 +318,8 @@ type ClientState struct {
 	SsoDisabled pulumi.BoolPtrInput
 	// Allows configuration for token exchange
 	TokenExchange ClientTokenExchangePtrInput
+	// The token quota configuration.
+	TokenQuota ClientTokenQuotaPtrInput
 	// URLs that represent valid web origins for use with web message response mode.
 	WebOrigins pulumi.StringArrayInput
 }
@@ -400,6 +406,8 @@ type clientArgs struct {
 	SsoDisabled *bool `pulumi:"ssoDisabled"`
 	// Allows configuration for token exchange
 	TokenExchange *ClientTokenExchange `pulumi:"tokenExchange"`
+	// The token quota configuration.
+	TokenQuota *ClientTokenQuota `pulumi:"tokenQuota"`
 	// URLs that represent valid web origins for use with web message response mode.
 	WebOrigins []string `pulumi:"webOrigins"`
 }
@@ -483,6 +491,8 @@ type ClientArgs struct {
 	SsoDisabled pulumi.BoolPtrInput
 	// Allows configuration for token exchange
 	TokenExchange ClientTokenExchangePtrInput
+	// The token quota configuration.
+	TokenQuota ClientTokenQuotaPtrInput
 	// URLs that represent valid web origins for use with web message response mode.
 	WebOrigins pulumi.StringArrayInput
 }
@@ -773,6 +783,11 @@ func (o ClientOutput) SsoDisabled() pulumi.BoolPtrOutput {
 // Allows configuration for token exchange
 func (o ClientOutput) TokenExchange() ClientTokenExchangePtrOutput {
 	return o.ApplyT(func(v *Client) ClientTokenExchangePtrOutput { return v.TokenExchange }).(ClientTokenExchangePtrOutput)
+}
+
+// The token quota configuration.
+func (o ClientOutput) TokenQuota() ClientTokenQuotaPtrOutput {
+	return o.ApplyT(func(v *Client) ClientTokenQuotaPtrOutput { return v.TokenQuota }).(ClientTokenQuotaPtrOutput)
 }
 
 // URLs that represent valid web origins for use with web message response mode.

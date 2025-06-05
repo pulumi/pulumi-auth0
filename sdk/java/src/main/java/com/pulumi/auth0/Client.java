@@ -15,6 +15,7 @@ import com.pulumi.auth0.outputs.ClientOidcLogout;
 import com.pulumi.auth0.outputs.ClientRefreshToken;
 import com.pulumi.auth0.outputs.ClientSessionTransfer;
 import com.pulumi.auth0.outputs.ClientTokenExchange;
+import com.pulumi.auth0.outputs.ClientTokenQuota;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -597,6 +598,20 @@ public class Client extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<ClientTokenExchange>> tokenExchange() {
         return Codegen.optional(this.tokenExchange);
+    }
+    /**
+     * The token quota configuration.
+     * 
+     */
+    @Export(name="tokenQuota", refs={ClientTokenQuota.class}, tree="[0]")
+    private Output</* @Nullable */ ClientTokenQuota> tokenQuota;
+
+    /**
+     * @return The token quota configuration.
+     * 
+     */
+    public Output<Optional<ClientTokenQuota>> tokenQuota() {
+        return Codegen.optional(this.tokenQuota);
     }
     /**
      * URLs that represent valid web origins for use with web message response mode.

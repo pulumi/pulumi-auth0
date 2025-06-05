@@ -130,6 +130,12 @@ namespace Pulumi.Auth0
         public Output<string> DefaultRedirectionUri { get; private set; } = null!;
 
         /// <summary>
+        /// Token Quota configuration.
+        /// </summary>
+        [Output("defaultTokenQuota")]
+        public Output<Outputs.TenantDefaultTokenQuota?> DefaultTokenQuota { get; private set; } = null!;
+
+        /// <summary>
         /// Disable list of supported ACR values.
         /// </summary>
         [Output("disableAcrValuesSupported")]
@@ -326,6 +332,12 @@ namespace Pulumi.Auth0
         public Input<string>? DefaultRedirectionUri { get; set; }
 
         /// <summary>
+        /// Token Quota configuration.
+        /// </summary>
+        [Input("defaultTokenQuota")]
+        public Input<Inputs.TenantDefaultTokenQuotaArgs>? DefaultTokenQuota { get; set; }
+
+        /// <summary>
         /// Disable list of supported ACR values.
         /// </summary>
         [Input("disableAcrValuesSupported")]
@@ -488,6 +500,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("defaultRedirectionUri")]
         public Input<string>? DefaultRedirectionUri { get; set; }
+
+        /// <summary>
+        /// Token Quota configuration.
+        /// </summary>
+        [Input("defaultTokenQuota")]
+        public Input<Inputs.TenantDefaultTokenQuotaGetArgs>? DefaultTokenQuota { get; set; }
 
         /// <summary>
         /// Disable list of supported ACR values.

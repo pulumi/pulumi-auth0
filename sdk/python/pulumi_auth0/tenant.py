@@ -29,6 +29,7 @@ class TenantArgs:
                  default_audience: Optional[pulumi.Input[builtins.str]] = None,
                  default_directory: Optional[pulumi.Input[builtins.str]] = None,
                  default_redirection_uri: Optional[pulumi.Input[builtins.str]] = None,
+                 default_token_quota: Optional[pulumi.Input['TenantDefaultTokenQuotaArgs']] = None,
                  disable_acr_values_supported: Optional[pulumi.Input[builtins.bool]] = None,
                  enabled_locales: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  error_page: Optional[pulumi.Input['TenantErrorPageArgs']] = None,
@@ -54,6 +55,7 @@ class TenantArgs:
         :param pulumi.Input[builtins.str] default_audience: API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
         :param pulumi.Input[builtins.str] default_directory: Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
         :param pulumi.Input[builtins.str] default_redirection_uri: The default absolute redirection URI. Must be HTTPS or an empty string.
+        :param pulumi.Input['TenantDefaultTokenQuotaArgs'] default_token_quota: Token Quota configuration.
         :param pulumi.Input[builtins.bool] disable_acr_values_supported: Disable list of supported ACR values.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] enabled_locales: Supported locales for the user interface. The first locale in the list will be used to set the default locale.
         :param pulumi.Input['TenantErrorPageArgs'] error_page: Configuration for the error page
@@ -85,6 +87,8 @@ class TenantArgs:
             pulumi.set(__self__, "default_directory", default_directory)
         if default_redirection_uri is not None:
             pulumi.set(__self__, "default_redirection_uri", default_redirection_uri)
+        if default_token_quota is not None:
+            pulumi.set(__self__, "default_token_quota", default_token_quota)
         if disable_acr_values_supported is not None:
             pulumi.set(__self__, "disable_acr_values_supported", disable_acr_values_supported)
         if enabled_locales is not None:
@@ -201,6 +205,18 @@ class TenantArgs:
     @default_redirection_uri.setter
     def default_redirection_uri(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "default_redirection_uri", value)
+
+    @property
+    @pulumi.getter(name="defaultTokenQuota")
+    def default_token_quota(self) -> Optional[pulumi.Input['TenantDefaultTokenQuotaArgs']]:
+        """
+        Token Quota configuration.
+        """
+        return pulumi.get(self, "default_token_quota")
+
+    @default_token_quota.setter
+    def default_token_quota(self, value: Optional[pulumi.Input['TenantDefaultTokenQuotaArgs']]):
+        pulumi.set(self, "default_token_quota", value)
 
     @property
     @pulumi.getter(name="disableAcrValuesSupported")
@@ -405,6 +421,7 @@ class _TenantState:
                  default_audience: Optional[pulumi.Input[builtins.str]] = None,
                  default_directory: Optional[pulumi.Input[builtins.str]] = None,
                  default_redirection_uri: Optional[pulumi.Input[builtins.str]] = None,
+                 default_token_quota: Optional[pulumi.Input['TenantDefaultTokenQuotaArgs']] = None,
                  disable_acr_values_supported: Optional[pulumi.Input[builtins.bool]] = None,
                  enabled_locales: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  error_page: Optional[pulumi.Input['TenantErrorPageArgs']] = None,
@@ -430,6 +447,7 @@ class _TenantState:
         :param pulumi.Input[builtins.str] default_audience: API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
         :param pulumi.Input[builtins.str] default_directory: Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
         :param pulumi.Input[builtins.str] default_redirection_uri: The default absolute redirection URI. Must be HTTPS or an empty string.
+        :param pulumi.Input['TenantDefaultTokenQuotaArgs'] default_token_quota: Token Quota configuration.
         :param pulumi.Input[builtins.bool] disable_acr_values_supported: Disable list of supported ACR values.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] enabled_locales: Supported locales for the user interface. The first locale in the list will be used to set the default locale.
         :param pulumi.Input['TenantErrorPageArgs'] error_page: Configuration for the error page
@@ -461,6 +479,8 @@ class _TenantState:
             pulumi.set(__self__, "default_directory", default_directory)
         if default_redirection_uri is not None:
             pulumi.set(__self__, "default_redirection_uri", default_redirection_uri)
+        if default_token_quota is not None:
+            pulumi.set(__self__, "default_token_quota", default_token_quota)
         if disable_acr_values_supported is not None:
             pulumi.set(__self__, "disable_acr_values_supported", disable_acr_values_supported)
         if enabled_locales is not None:
@@ -577,6 +597,18 @@ class _TenantState:
     @default_redirection_uri.setter
     def default_redirection_uri(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "default_redirection_uri", value)
+
+    @property
+    @pulumi.getter(name="defaultTokenQuota")
+    def default_token_quota(self) -> Optional[pulumi.Input['TenantDefaultTokenQuotaArgs']]:
+        """
+        Token Quota configuration.
+        """
+        return pulumi.get(self, "default_token_quota")
+
+    @default_token_quota.setter
+    def default_token_quota(self, value: Optional[pulumi.Input['TenantDefaultTokenQuotaArgs']]):
+        pulumi.set(self, "default_token_quota", value)
 
     @property
     @pulumi.getter(name="disableAcrValuesSupported")
@@ -784,6 +816,7 @@ class Tenant(pulumi.CustomResource):
                  default_audience: Optional[pulumi.Input[builtins.str]] = None,
                  default_directory: Optional[pulumi.Input[builtins.str]] = None,
                  default_redirection_uri: Optional[pulumi.Input[builtins.str]] = None,
+                 default_token_quota: Optional[pulumi.Input[Union['TenantDefaultTokenQuotaArgs', 'TenantDefaultTokenQuotaArgsDict']]] = None,
                  disable_acr_values_supported: Optional[pulumi.Input[builtins.bool]] = None,
                  enabled_locales: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  error_page: Optional[pulumi.Input[Union['TenantErrorPageArgs', 'TenantErrorPageArgsDict']]] = None,
@@ -867,6 +900,7 @@ class Tenant(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] default_audience: API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
         :param pulumi.Input[builtins.str] default_directory: Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
         :param pulumi.Input[builtins.str] default_redirection_uri: The default absolute redirection URI. Must be HTTPS or an empty string.
+        :param pulumi.Input[Union['TenantDefaultTokenQuotaArgs', 'TenantDefaultTokenQuotaArgsDict']] default_token_quota: Token Quota configuration.
         :param pulumi.Input[builtins.bool] disable_acr_values_supported: Disable list of supported ACR values.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] enabled_locales: Supported locales for the user interface. The first locale in the list will be used to set the default locale.
         :param pulumi.Input[Union['TenantErrorPageArgs', 'TenantErrorPageArgsDict']] error_page: Configuration for the error page
@@ -969,6 +1003,7 @@ class Tenant(pulumi.CustomResource):
                  default_audience: Optional[pulumi.Input[builtins.str]] = None,
                  default_directory: Optional[pulumi.Input[builtins.str]] = None,
                  default_redirection_uri: Optional[pulumi.Input[builtins.str]] = None,
+                 default_token_quota: Optional[pulumi.Input[Union['TenantDefaultTokenQuotaArgs', 'TenantDefaultTokenQuotaArgsDict']]] = None,
                  disable_acr_values_supported: Optional[pulumi.Input[builtins.bool]] = None,
                  enabled_locales: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  error_page: Optional[pulumi.Input[Union['TenantErrorPageArgs', 'TenantErrorPageArgsDict']]] = None,
@@ -1001,6 +1036,7 @@ class Tenant(pulumi.CustomResource):
             __props__.__dict__["default_audience"] = default_audience
             __props__.__dict__["default_directory"] = default_directory
             __props__.__dict__["default_redirection_uri"] = default_redirection_uri
+            __props__.__dict__["default_token_quota"] = default_token_quota
             __props__.__dict__["disable_acr_values_supported"] = disable_acr_values_supported
             __props__.__dict__["enabled_locales"] = enabled_locales
             __props__.__dict__["error_page"] = error_page
@@ -1034,6 +1070,7 @@ class Tenant(pulumi.CustomResource):
             default_audience: Optional[pulumi.Input[builtins.str]] = None,
             default_directory: Optional[pulumi.Input[builtins.str]] = None,
             default_redirection_uri: Optional[pulumi.Input[builtins.str]] = None,
+            default_token_quota: Optional[pulumi.Input[Union['TenantDefaultTokenQuotaArgs', 'TenantDefaultTokenQuotaArgsDict']]] = None,
             disable_acr_values_supported: Optional[pulumi.Input[builtins.bool]] = None,
             enabled_locales: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
             error_page: Optional[pulumi.Input[Union['TenantErrorPageArgs', 'TenantErrorPageArgsDict']]] = None,
@@ -1064,6 +1101,7 @@ class Tenant(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] default_audience: API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
         :param pulumi.Input[builtins.str] default_directory: Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
         :param pulumi.Input[builtins.str] default_redirection_uri: The default absolute redirection URI. Must be HTTPS or an empty string.
+        :param pulumi.Input[Union['TenantDefaultTokenQuotaArgs', 'TenantDefaultTokenQuotaArgsDict']] default_token_quota: Token Quota configuration.
         :param pulumi.Input[builtins.bool] disable_acr_values_supported: Disable list of supported ACR values.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] enabled_locales: Supported locales for the user interface. The first locale in the list will be used to set the default locale.
         :param pulumi.Input[Union['TenantErrorPageArgs', 'TenantErrorPageArgsDict']] error_page: Configuration for the error page
@@ -1092,6 +1130,7 @@ class Tenant(pulumi.CustomResource):
         __props__.__dict__["default_audience"] = default_audience
         __props__.__dict__["default_directory"] = default_directory
         __props__.__dict__["default_redirection_uri"] = default_redirection_uri
+        __props__.__dict__["default_token_quota"] = default_token_quota
         __props__.__dict__["disable_acr_values_supported"] = disable_acr_values_supported
         __props__.__dict__["enabled_locales"] = enabled_locales
         __props__.__dict__["error_page"] = error_page
@@ -1165,6 +1204,14 @@ class Tenant(pulumi.CustomResource):
         The default absolute redirection URI. Must be HTTPS or an empty string.
         """
         return pulumi.get(self, "default_redirection_uri")
+
+    @property
+    @pulumi.getter(name="defaultTokenQuota")
+    def default_token_quota(self) -> pulumi.Output[Optional['outputs.TenantDefaultTokenQuota']]:
+        """
+        Token Quota configuration.
+        """
+        return pulumi.get(self, "default_token_quota")
 
     @property
     @pulumi.getter(name="disableAcrValuesSupported")

@@ -28,7 +28,7 @@ class GetOrganizationResult:
     """
     A collection of values returned by getOrganization.
     """
-    def __init__(__self__, brandings=None, client_grants=None, connections=None, display_name=None, id=None, members=None, metadata=None, name=None, organization_id=None):
+    def __init__(__self__, brandings=None, client_grants=None, connections=None, display_name=None, id=None, members=None, metadata=None, name=None, organization_id=None, token_quotas=None):
         if brandings and not isinstance(brandings, list):
             raise TypeError("Expected argument 'brandings' to be a list")
         pulumi.set(__self__, "brandings", brandings)
@@ -56,6 +56,9 @@ class GetOrganizationResult:
         if organization_id and not isinstance(organization_id, str):
             raise TypeError("Expected argument 'organization_id' to be a str")
         pulumi.set(__self__, "organization_id", organization_id)
+        if token_quotas and not isinstance(token_quotas, list):
+            raise TypeError("Expected argument 'token_quotas' to be a list")
+        pulumi.set(__self__, "token_quotas", token_quotas)
 
     @property
     @pulumi.getter
@@ -126,6 +129,14 @@ class GetOrganizationResult:
         """
         return pulumi.get(self, "organization_id")
 
+    @property
+    @pulumi.getter(name="tokenQuotas")
+    def token_quotas(self) -> Sequence['outputs.GetOrganizationTokenQuotaResult']:
+        """
+        The token quota configuration.
+        """
+        return pulumi.get(self, "token_quotas")
+
 
 class AwaitableGetOrganizationResult(GetOrganizationResult):
     # pylint: disable=using-constant-test
@@ -141,7 +152,8 @@ class AwaitableGetOrganizationResult(GetOrganizationResult):
             members=self.members,
             metadata=self.metadata,
             name=self.name,
-            organization_id=self.organization_id)
+            organization_id=self.organization_id,
+            token_quotas=self.token_quotas)
 
 
 def get_organization(name: Optional[builtins.str] = None,
@@ -181,7 +193,8 @@ def get_organization(name: Optional[builtins.str] = None,
         members=pulumi.get(__ret__, 'members'),
         metadata=pulumi.get(__ret__, 'metadata'),
         name=pulumi.get(__ret__, 'name'),
-        organization_id=pulumi.get(__ret__, 'organization_id'))
+        organization_id=pulumi.get(__ret__, 'organization_id'),
+        token_quotas=pulumi.get(__ret__, 'token_quotas'))
 def get_organization_output(name: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                             organization_id: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationResult]:
@@ -218,4 +231,5 @@ def get_organization_output(name: Optional[pulumi.Input[Optional[builtins.str]]]
         members=pulumi.get(__response__, 'members'),
         metadata=pulumi.get(__response__, 'metadata'),
         name=pulumi.get(__response__, 'name'),
-        organization_id=pulumi.get(__response__, 'organization_id')))
+        organization_id=pulumi.get(__response__, 'organization_id'),
+        token_quotas=pulumi.get(__response__, 'token_quotas')))

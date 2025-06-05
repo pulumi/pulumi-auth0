@@ -6,6 +6,7 @@ package com.pulumi.auth0.outputs;
 import com.pulumi.auth0.outputs.GetClientsClientOidcLogout;
 import com.pulumi.auth0.outputs.GetClientsClientSessionTransfer;
 import com.pulumi.auth0.outputs.GetClientsClientTokenExchange;
+import com.pulumi.auth0.outputs.GetClientsClientTokenQuota;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
@@ -90,6 +91,11 @@ public final class GetClientsClient {
      * 
      */
     private List<GetClientsClientTokenExchange> tokenExchanges;
+    /**
+     * @return The token quota configuration.
+     * 
+     */
+    private List<GetClientsClientTokenQuota> tokenQuotas;
     /**
      * @return URLs that represent valid web origins for use with web message response mode.
      * 
@@ -202,6 +208,13 @@ public final class GetClientsClient {
         return this.tokenExchanges;
     }
     /**
+     * @return The token quota configuration.
+     * 
+     */
+    public List<GetClientsClientTokenQuota> tokenQuotas() {
+        return this.tokenQuotas;
+    }
+    /**
      * @return URLs that represent valid web origins for use with web message response mode.
      * 
      */
@@ -234,6 +247,7 @@ public final class GetClientsClient {
         private List<GetClientsClientOidcLogout> oidcLogouts;
         private List<GetClientsClientSessionTransfer> sessionTransfers;
         private List<GetClientsClientTokenExchange> tokenExchanges;
+        private List<GetClientsClientTokenQuota> tokenQuotas;
         private List<String> webOrigins;
         public Builder() {}
         public Builder(GetClientsClient defaults) {
@@ -254,6 +268,7 @@ public final class GetClientsClient {
     	      this.oidcLogouts = defaults.oidcLogouts;
     	      this.sessionTransfers = defaults.sessionTransfers;
     	      this.tokenExchanges = defaults.tokenExchanges;
+    	      this.tokenQuotas = defaults.tokenQuotas;
     	      this.webOrigins = defaults.webOrigins;
         }
 
@@ -406,6 +421,17 @@ public final class GetClientsClient {
             return tokenExchanges(List.of(tokenExchanges));
         }
         @CustomType.Setter
+        public Builder tokenQuotas(List<GetClientsClientTokenQuota> tokenQuotas) {
+            if (tokenQuotas == null) {
+              throw new MissingRequiredPropertyException("GetClientsClient", "tokenQuotas");
+            }
+            this.tokenQuotas = tokenQuotas;
+            return this;
+        }
+        public Builder tokenQuotas(GetClientsClientTokenQuota... tokenQuotas) {
+            return tokenQuotas(List.of(tokenQuotas));
+        }
+        @CustomType.Setter
         public Builder webOrigins(List<String> webOrigins) {
             if (webOrigins == null) {
               throw new MissingRequiredPropertyException("GetClientsClient", "webOrigins");
@@ -434,6 +460,7 @@ public final class GetClientsClient {
             _resultValue.oidcLogouts = oidcLogouts;
             _resultValue.sessionTransfers = sessionTransfers;
             _resultValue.tokenExchanges = tokenExchanges;
+            _resultValue.tokenQuotas = tokenQuotas;
             _resultValue.webOrigins = webOrigins;
             return _resultValue;
         }

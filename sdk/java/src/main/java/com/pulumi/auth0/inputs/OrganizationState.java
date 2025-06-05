@@ -4,6 +4,7 @@
 package com.pulumi.auth0.inputs;
 
 import com.pulumi.auth0.inputs.OrganizationBrandingArgs;
+import com.pulumi.auth0.inputs.OrganizationTokenQuotaArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
@@ -77,6 +78,21 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * The token quota configuration.
+     * 
+     */
+    @Import(name="tokenQuota")
+    private @Nullable Output<OrganizationTokenQuotaArgs> tokenQuota;
+
+    /**
+     * @return The token quota configuration.
+     * 
+     */
+    public Optional<Output<OrganizationTokenQuotaArgs>> tokenQuota() {
+        return Optional.ofNullable(this.tokenQuota);
+    }
+
     private OrganizationState() {}
 
     private OrganizationState(OrganizationState $) {
@@ -84,6 +100,7 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
         this.displayName = $.displayName;
         this.metadata = $.metadata;
         this.name = $.name;
+        this.tokenQuota = $.tokenQuota;
     }
 
     public static Builder builder() {
@@ -186,6 +203,27 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param tokenQuota The token quota configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tokenQuota(@Nullable Output<OrganizationTokenQuotaArgs> tokenQuota) {
+            $.tokenQuota = tokenQuota;
+            return this;
+        }
+
+        /**
+         * @param tokenQuota The token quota configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tokenQuota(OrganizationTokenQuotaArgs tokenQuota) {
+            return tokenQuota(Output.of(tokenQuota));
         }
 
         public OrganizationState build() {

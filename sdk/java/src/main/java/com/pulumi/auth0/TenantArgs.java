@@ -3,6 +3,7 @@
 
 package com.pulumi.auth0;
 
+import com.pulumi.auth0.inputs.TenantDefaultTokenQuotaArgs;
 import com.pulumi.auth0.inputs.TenantErrorPageArgs;
 import com.pulumi.auth0.inputs.TenantFlagsArgs;
 import com.pulumi.auth0.inputs.TenantMtlsArgs;
@@ -127,6 +128,21 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> defaultRedirectionUri() {
         return Optional.ofNullable(this.defaultRedirectionUri);
+    }
+
+    /**
+     * Token Quota configuration.
+     * 
+     */
+    @Import(name="defaultTokenQuota")
+    private @Nullable Output<TenantDefaultTokenQuotaArgs> defaultTokenQuota;
+
+    /**
+     * @return Token Quota configuration.
+     * 
+     */
+    public Optional<Output<TenantDefaultTokenQuotaArgs>> defaultTokenQuota() {
+        return Optional.ofNullable(this.defaultTokenQuota);
     }
 
     /**
@@ -379,6 +395,7 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
         this.defaultAudience = $.defaultAudience;
         this.defaultDirectory = $.defaultDirectory;
         this.defaultRedirectionUri = $.defaultRedirectionUri;
+        this.defaultTokenQuota = $.defaultTokenQuota;
         this.disableAcrValuesSupported = $.disableAcrValuesSupported;
         this.enabledLocales = $.enabledLocales;
         this.errorPage = $.errorPage;
@@ -580,6 +597,27 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder defaultRedirectionUri(String defaultRedirectionUri) {
             return defaultRedirectionUri(Output.of(defaultRedirectionUri));
+        }
+
+        /**
+         * @param defaultTokenQuota Token Quota configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultTokenQuota(@Nullable Output<TenantDefaultTokenQuotaArgs> defaultTokenQuota) {
+            $.defaultTokenQuota = defaultTokenQuota;
+            return this;
+        }
+
+        /**
+         * @param defaultTokenQuota Token Quota configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultTokenQuota(TenantDefaultTokenQuotaArgs defaultTokenQuota) {
+            return defaultTokenQuota(Output.of(defaultTokenQuota));
         }
 
         /**

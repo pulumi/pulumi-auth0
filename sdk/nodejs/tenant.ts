@@ -121,6 +121,10 @@ export class Tenant extends pulumi.CustomResource {
      */
     public readonly defaultRedirectionUri!: pulumi.Output<string>;
     /**
+     * Token Quota configuration.
+     */
+    public readonly defaultTokenQuota!: pulumi.Output<outputs.TenantDefaultTokenQuota | undefined>;
+    /**
      * Disable list of supported ACR values.
      */
     public readonly disableAcrValuesSupported!: pulumi.Output<boolean>;
@@ -205,6 +209,7 @@ export class Tenant extends pulumi.CustomResource {
             resourceInputs["defaultAudience"] = state ? state.defaultAudience : undefined;
             resourceInputs["defaultDirectory"] = state ? state.defaultDirectory : undefined;
             resourceInputs["defaultRedirectionUri"] = state ? state.defaultRedirectionUri : undefined;
+            resourceInputs["defaultTokenQuota"] = state ? state.defaultTokenQuota : undefined;
             resourceInputs["disableAcrValuesSupported"] = state ? state.disableAcrValuesSupported : undefined;
             resourceInputs["enabledLocales"] = state ? state.enabledLocales : undefined;
             resourceInputs["errorPage"] = state ? state.errorPage : undefined;
@@ -230,6 +235,7 @@ export class Tenant extends pulumi.CustomResource {
             resourceInputs["defaultAudience"] = args ? args.defaultAudience : undefined;
             resourceInputs["defaultDirectory"] = args ? args.defaultDirectory : undefined;
             resourceInputs["defaultRedirectionUri"] = args ? args.defaultRedirectionUri : undefined;
+            resourceInputs["defaultTokenQuota"] = args ? args.defaultTokenQuota : undefined;
             resourceInputs["disableAcrValuesSupported"] = args ? args.disableAcrValuesSupported : undefined;
             resourceInputs["enabledLocales"] = args ? args.enabledLocales : undefined;
             resourceInputs["errorPage"] = args ? args.errorPage : undefined;
@@ -284,6 +290,10 @@ export interface TenantState {
      * The default absolute redirection URI. Must be HTTPS or an empty string.
      */
     defaultRedirectionUri?: pulumi.Input<string>;
+    /**
+     * Token Quota configuration.
+     */
+    defaultTokenQuota?: pulumi.Input<inputs.TenantDefaultTokenQuota>;
     /**
      * Disable list of supported ACR values.
      */
@@ -382,6 +392,10 @@ export interface TenantArgs {
      * The default absolute redirection URI. Must be HTTPS or an empty string.
      */
     defaultRedirectionUri?: pulumi.Input<string>;
+    /**
+     * Token Quota configuration.
+     */
+    defaultTokenQuota?: pulumi.Input<inputs.TenantDefaultTokenQuota>;
     /**
      * Disable list of supported ACR values.
      */

@@ -83,6 +83,8 @@ type LookupOrganizationResult struct {
 	Name *string `pulumi:"name"`
 	// The ID of the organization. If not provided, `name` must be set.
 	OrganizationId *string `pulumi:"organizationId"`
+	// The token quota configuration.
+	TokenQuotas []GetOrganizationTokenQuota `pulumi:"tokenQuotas"`
 }
 
 func LookupOrganizationOutput(ctx *pulumi.Context, args LookupOrganizationOutputArgs, opts ...pulumi.InvokeOption) LookupOrganizationResultOutput {
@@ -163,6 +165,11 @@ func (o LookupOrganizationResultOutput) Name() pulumi.StringPtrOutput {
 // The ID of the organization. If not provided, `name` must be set.
 func (o LookupOrganizationResultOutput) OrganizationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupOrganizationResult) *string { return v.OrganizationId }).(pulumi.StringPtrOutput)
+}
+
+// The token quota configuration.
+func (o LookupOrganizationResultOutput) TokenQuotas() GetOrganizationTokenQuotaArrayOutput {
+	return o.ApplyT(func(v LookupOrganizationResult) []GetOrganizationTokenQuota { return v.TokenQuotas }).(GetOrganizationTokenQuotaArrayOutput)
 }
 
 func init() {

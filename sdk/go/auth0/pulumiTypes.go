@@ -13967,6 +13967,318 @@ func (o ClientTokenExchangePtrOutput) AllowAnyProfileOfTypes() pulumi.StringArra
 	}).(pulumi.StringArrayOutput)
 }
 
+type ClientTokenQuota struct {
+	// The token quota configuration for client credentials.
+	ClientCredentials ClientTokenQuotaClientCredentials `pulumi:"clientCredentials"`
+}
+
+// ClientTokenQuotaInput is an input type that accepts ClientTokenQuotaArgs and ClientTokenQuotaOutput values.
+// You can construct a concrete instance of `ClientTokenQuotaInput` via:
+//
+//	ClientTokenQuotaArgs{...}
+type ClientTokenQuotaInput interface {
+	pulumi.Input
+
+	ToClientTokenQuotaOutput() ClientTokenQuotaOutput
+	ToClientTokenQuotaOutputWithContext(context.Context) ClientTokenQuotaOutput
+}
+
+type ClientTokenQuotaArgs struct {
+	// The token quota configuration for client credentials.
+	ClientCredentials ClientTokenQuotaClientCredentialsInput `pulumi:"clientCredentials"`
+}
+
+func (ClientTokenQuotaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientTokenQuota)(nil)).Elem()
+}
+
+func (i ClientTokenQuotaArgs) ToClientTokenQuotaOutput() ClientTokenQuotaOutput {
+	return i.ToClientTokenQuotaOutputWithContext(context.Background())
+}
+
+func (i ClientTokenQuotaArgs) ToClientTokenQuotaOutputWithContext(ctx context.Context) ClientTokenQuotaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientTokenQuotaOutput)
+}
+
+func (i ClientTokenQuotaArgs) ToClientTokenQuotaPtrOutput() ClientTokenQuotaPtrOutput {
+	return i.ToClientTokenQuotaPtrOutputWithContext(context.Background())
+}
+
+func (i ClientTokenQuotaArgs) ToClientTokenQuotaPtrOutputWithContext(ctx context.Context) ClientTokenQuotaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientTokenQuotaOutput).ToClientTokenQuotaPtrOutputWithContext(ctx)
+}
+
+// ClientTokenQuotaPtrInput is an input type that accepts ClientTokenQuotaArgs, ClientTokenQuotaPtr and ClientTokenQuotaPtrOutput values.
+// You can construct a concrete instance of `ClientTokenQuotaPtrInput` via:
+//
+//	        ClientTokenQuotaArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientTokenQuotaPtrInput interface {
+	pulumi.Input
+
+	ToClientTokenQuotaPtrOutput() ClientTokenQuotaPtrOutput
+	ToClientTokenQuotaPtrOutputWithContext(context.Context) ClientTokenQuotaPtrOutput
+}
+
+type clientTokenQuotaPtrType ClientTokenQuotaArgs
+
+func ClientTokenQuotaPtr(v *ClientTokenQuotaArgs) ClientTokenQuotaPtrInput {
+	return (*clientTokenQuotaPtrType)(v)
+}
+
+func (*clientTokenQuotaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientTokenQuota)(nil)).Elem()
+}
+
+func (i *clientTokenQuotaPtrType) ToClientTokenQuotaPtrOutput() ClientTokenQuotaPtrOutput {
+	return i.ToClientTokenQuotaPtrOutputWithContext(context.Background())
+}
+
+func (i *clientTokenQuotaPtrType) ToClientTokenQuotaPtrOutputWithContext(ctx context.Context) ClientTokenQuotaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientTokenQuotaPtrOutput)
+}
+
+type ClientTokenQuotaOutput struct{ *pulumi.OutputState }
+
+func (ClientTokenQuotaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientTokenQuota)(nil)).Elem()
+}
+
+func (o ClientTokenQuotaOutput) ToClientTokenQuotaOutput() ClientTokenQuotaOutput {
+	return o
+}
+
+func (o ClientTokenQuotaOutput) ToClientTokenQuotaOutputWithContext(ctx context.Context) ClientTokenQuotaOutput {
+	return o
+}
+
+func (o ClientTokenQuotaOutput) ToClientTokenQuotaPtrOutput() ClientTokenQuotaPtrOutput {
+	return o.ToClientTokenQuotaPtrOutputWithContext(context.Background())
+}
+
+func (o ClientTokenQuotaOutput) ToClientTokenQuotaPtrOutputWithContext(ctx context.Context) ClientTokenQuotaPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientTokenQuota) *ClientTokenQuota {
+		return &v
+	}).(ClientTokenQuotaPtrOutput)
+}
+
+// The token quota configuration for client credentials.
+func (o ClientTokenQuotaOutput) ClientCredentials() ClientTokenQuotaClientCredentialsOutput {
+	return o.ApplyT(func(v ClientTokenQuota) ClientTokenQuotaClientCredentials { return v.ClientCredentials }).(ClientTokenQuotaClientCredentialsOutput)
+}
+
+type ClientTokenQuotaPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientTokenQuotaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientTokenQuota)(nil)).Elem()
+}
+
+func (o ClientTokenQuotaPtrOutput) ToClientTokenQuotaPtrOutput() ClientTokenQuotaPtrOutput {
+	return o
+}
+
+func (o ClientTokenQuotaPtrOutput) ToClientTokenQuotaPtrOutputWithContext(ctx context.Context) ClientTokenQuotaPtrOutput {
+	return o
+}
+
+func (o ClientTokenQuotaPtrOutput) Elem() ClientTokenQuotaOutput {
+	return o.ApplyT(func(v *ClientTokenQuota) ClientTokenQuota {
+		if v != nil {
+			return *v
+		}
+		var ret ClientTokenQuota
+		return ret
+	}).(ClientTokenQuotaOutput)
+}
+
+// The token quota configuration for client credentials.
+func (o ClientTokenQuotaPtrOutput) ClientCredentials() ClientTokenQuotaClientCredentialsPtrOutput {
+	return o.ApplyT(func(v *ClientTokenQuota) *ClientTokenQuotaClientCredentials {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientCredentials
+	}).(ClientTokenQuotaClientCredentialsPtrOutput)
+}
+
+type ClientTokenQuotaClientCredentials struct {
+	// If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+	Enforce *bool `pulumi:"enforce"`
+	// Maximum number of issued tokens per day
+	PerDay *int `pulumi:"perDay"`
+	// Maximum number of issued tokens per hour
+	PerHour *int `pulumi:"perHour"`
+}
+
+// ClientTokenQuotaClientCredentialsInput is an input type that accepts ClientTokenQuotaClientCredentialsArgs and ClientTokenQuotaClientCredentialsOutput values.
+// You can construct a concrete instance of `ClientTokenQuotaClientCredentialsInput` via:
+//
+//	ClientTokenQuotaClientCredentialsArgs{...}
+type ClientTokenQuotaClientCredentialsInput interface {
+	pulumi.Input
+
+	ToClientTokenQuotaClientCredentialsOutput() ClientTokenQuotaClientCredentialsOutput
+	ToClientTokenQuotaClientCredentialsOutputWithContext(context.Context) ClientTokenQuotaClientCredentialsOutput
+}
+
+type ClientTokenQuotaClientCredentialsArgs struct {
+	// If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+	Enforce pulumi.BoolPtrInput `pulumi:"enforce"`
+	// Maximum number of issued tokens per day
+	PerDay pulumi.IntPtrInput `pulumi:"perDay"`
+	// Maximum number of issued tokens per hour
+	PerHour pulumi.IntPtrInput `pulumi:"perHour"`
+}
+
+func (ClientTokenQuotaClientCredentialsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientTokenQuotaClientCredentials)(nil)).Elem()
+}
+
+func (i ClientTokenQuotaClientCredentialsArgs) ToClientTokenQuotaClientCredentialsOutput() ClientTokenQuotaClientCredentialsOutput {
+	return i.ToClientTokenQuotaClientCredentialsOutputWithContext(context.Background())
+}
+
+func (i ClientTokenQuotaClientCredentialsArgs) ToClientTokenQuotaClientCredentialsOutputWithContext(ctx context.Context) ClientTokenQuotaClientCredentialsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientTokenQuotaClientCredentialsOutput)
+}
+
+func (i ClientTokenQuotaClientCredentialsArgs) ToClientTokenQuotaClientCredentialsPtrOutput() ClientTokenQuotaClientCredentialsPtrOutput {
+	return i.ToClientTokenQuotaClientCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i ClientTokenQuotaClientCredentialsArgs) ToClientTokenQuotaClientCredentialsPtrOutputWithContext(ctx context.Context) ClientTokenQuotaClientCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientTokenQuotaClientCredentialsOutput).ToClientTokenQuotaClientCredentialsPtrOutputWithContext(ctx)
+}
+
+// ClientTokenQuotaClientCredentialsPtrInput is an input type that accepts ClientTokenQuotaClientCredentialsArgs, ClientTokenQuotaClientCredentialsPtr and ClientTokenQuotaClientCredentialsPtrOutput values.
+// You can construct a concrete instance of `ClientTokenQuotaClientCredentialsPtrInput` via:
+//
+//	        ClientTokenQuotaClientCredentialsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientTokenQuotaClientCredentialsPtrInput interface {
+	pulumi.Input
+
+	ToClientTokenQuotaClientCredentialsPtrOutput() ClientTokenQuotaClientCredentialsPtrOutput
+	ToClientTokenQuotaClientCredentialsPtrOutputWithContext(context.Context) ClientTokenQuotaClientCredentialsPtrOutput
+}
+
+type clientTokenQuotaClientCredentialsPtrType ClientTokenQuotaClientCredentialsArgs
+
+func ClientTokenQuotaClientCredentialsPtr(v *ClientTokenQuotaClientCredentialsArgs) ClientTokenQuotaClientCredentialsPtrInput {
+	return (*clientTokenQuotaClientCredentialsPtrType)(v)
+}
+
+func (*clientTokenQuotaClientCredentialsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientTokenQuotaClientCredentials)(nil)).Elem()
+}
+
+func (i *clientTokenQuotaClientCredentialsPtrType) ToClientTokenQuotaClientCredentialsPtrOutput() ClientTokenQuotaClientCredentialsPtrOutput {
+	return i.ToClientTokenQuotaClientCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i *clientTokenQuotaClientCredentialsPtrType) ToClientTokenQuotaClientCredentialsPtrOutputWithContext(ctx context.Context) ClientTokenQuotaClientCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientTokenQuotaClientCredentialsPtrOutput)
+}
+
+type ClientTokenQuotaClientCredentialsOutput struct{ *pulumi.OutputState }
+
+func (ClientTokenQuotaClientCredentialsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientTokenQuotaClientCredentials)(nil)).Elem()
+}
+
+func (o ClientTokenQuotaClientCredentialsOutput) ToClientTokenQuotaClientCredentialsOutput() ClientTokenQuotaClientCredentialsOutput {
+	return o
+}
+
+func (o ClientTokenQuotaClientCredentialsOutput) ToClientTokenQuotaClientCredentialsOutputWithContext(ctx context.Context) ClientTokenQuotaClientCredentialsOutput {
+	return o
+}
+
+func (o ClientTokenQuotaClientCredentialsOutput) ToClientTokenQuotaClientCredentialsPtrOutput() ClientTokenQuotaClientCredentialsPtrOutput {
+	return o.ToClientTokenQuotaClientCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (o ClientTokenQuotaClientCredentialsOutput) ToClientTokenQuotaClientCredentialsPtrOutputWithContext(ctx context.Context) ClientTokenQuotaClientCredentialsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientTokenQuotaClientCredentials) *ClientTokenQuotaClientCredentials {
+		return &v
+	}).(ClientTokenQuotaClientCredentialsPtrOutput)
+}
+
+// If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+func (o ClientTokenQuotaClientCredentialsOutput) Enforce() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClientTokenQuotaClientCredentials) *bool { return v.Enforce }).(pulumi.BoolPtrOutput)
+}
+
+// Maximum number of issued tokens per day
+func (o ClientTokenQuotaClientCredentialsOutput) PerDay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClientTokenQuotaClientCredentials) *int { return v.PerDay }).(pulumi.IntPtrOutput)
+}
+
+// Maximum number of issued tokens per hour
+func (o ClientTokenQuotaClientCredentialsOutput) PerHour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClientTokenQuotaClientCredentials) *int { return v.PerHour }).(pulumi.IntPtrOutput)
+}
+
+type ClientTokenQuotaClientCredentialsPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientTokenQuotaClientCredentialsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientTokenQuotaClientCredentials)(nil)).Elem()
+}
+
+func (o ClientTokenQuotaClientCredentialsPtrOutput) ToClientTokenQuotaClientCredentialsPtrOutput() ClientTokenQuotaClientCredentialsPtrOutput {
+	return o
+}
+
+func (o ClientTokenQuotaClientCredentialsPtrOutput) ToClientTokenQuotaClientCredentialsPtrOutputWithContext(ctx context.Context) ClientTokenQuotaClientCredentialsPtrOutput {
+	return o
+}
+
+func (o ClientTokenQuotaClientCredentialsPtrOutput) Elem() ClientTokenQuotaClientCredentialsOutput {
+	return o.ApplyT(func(v *ClientTokenQuotaClientCredentials) ClientTokenQuotaClientCredentials {
+		if v != nil {
+			return *v
+		}
+		var ret ClientTokenQuotaClientCredentials
+		return ret
+	}).(ClientTokenQuotaClientCredentialsOutput)
+}
+
+// If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+func (o ClientTokenQuotaClientCredentialsPtrOutput) Enforce() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClientTokenQuotaClientCredentials) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enforce
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Maximum number of issued tokens per day
+func (o ClientTokenQuotaClientCredentialsPtrOutput) PerDay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClientTokenQuotaClientCredentials) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PerDay
+	}).(pulumi.IntPtrOutput)
+}
+
+// Maximum number of issued tokens per hour
+func (o ClientTokenQuotaClientCredentialsPtrOutput) PerHour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClientTokenQuotaClientCredentials) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PerHour
+	}).(pulumi.IntPtrOutput)
+}
+
 type ConnectionOptions struct {
 	// ADFS URL where to fetch the metadata source.
 	AdfsServer *string `pulumi:"adfsServer"`
@@ -25661,6 +25973,318 @@ func (o OrganizationConnectionsEnabledConnectionArrayOutput) Index(i pulumi.IntI
 	}).(OrganizationConnectionsEnabledConnectionOutput)
 }
 
+type OrganizationTokenQuota struct {
+	// The token quota configuration for client credentials.
+	ClientCredentials OrganizationTokenQuotaClientCredentials `pulumi:"clientCredentials"`
+}
+
+// OrganizationTokenQuotaInput is an input type that accepts OrganizationTokenQuotaArgs and OrganizationTokenQuotaOutput values.
+// You can construct a concrete instance of `OrganizationTokenQuotaInput` via:
+//
+//	OrganizationTokenQuotaArgs{...}
+type OrganizationTokenQuotaInput interface {
+	pulumi.Input
+
+	ToOrganizationTokenQuotaOutput() OrganizationTokenQuotaOutput
+	ToOrganizationTokenQuotaOutputWithContext(context.Context) OrganizationTokenQuotaOutput
+}
+
+type OrganizationTokenQuotaArgs struct {
+	// The token quota configuration for client credentials.
+	ClientCredentials OrganizationTokenQuotaClientCredentialsInput `pulumi:"clientCredentials"`
+}
+
+func (OrganizationTokenQuotaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationTokenQuota)(nil)).Elem()
+}
+
+func (i OrganizationTokenQuotaArgs) ToOrganizationTokenQuotaOutput() OrganizationTokenQuotaOutput {
+	return i.ToOrganizationTokenQuotaOutputWithContext(context.Background())
+}
+
+func (i OrganizationTokenQuotaArgs) ToOrganizationTokenQuotaOutputWithContext(ctx context.Context) OrganizationTokenQuotaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationTokenQuotaOutput)
+}
+
+func (i OrganizationTokenQuotaArgs) ToOrganizationTokenQuotaPtrOutput() OrganizationTokenQuotaPtrOutput {
+	return i.ToOrganizationTokenQuotaPtrOutputWithContext(context.Background())
+}
+
+func (i OrganizationTokenQuotaArgs) ToOrganizationTokenQuotaPtrOutputWithContext(ctx context.Context) OrganizationTokenQuotaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationTokenQuotaOutput).ToOrganizationTokenQuotaPtrOutputWithContext(ctx)
+}
+
+// OrganizationTokenQuotaPtrInput is an input type that accepts OrganizationTokenQuotaArgs, OrganizationTokenQuotaPtr and OrganizationTokenQuotaPtrOutput values.
+// You can construct a concrete instance of `OrganizationTokenQuotaPtrInput` via:
+//
+//	        OrganizationTokenQuotaArgs{...}
+//
+//	or:
+//
+//	        nil
+type OrganizationTokenQuotaPtrInput interface {
+	pulumi.Input
+
+	ToOrganizationTokenQuotaPtrOutput() OrganizationTokenQuotaPtrOutput
+	ToOrganizationTokenQuotaPtrOutputWithContext(context.Context) OrganizationTokenQuotaPtrOutput
+}
+
+type organizationTokenQuotaPtrType OrganizationTokenQuotaArgs
+
+func OrganizationTokenQuotaPtr(v *OrganizationTokenQuotaArgs) OrganizationTokenQuotaPtrInput {
+	return (*organizationTokenQuotaPtrType)(v)
+}
+
+func (*organizationTokenQuotaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrganizationTokenQuota)(nil)).Elem()
+}
+
+func (i *organizationTokenQuotaPtrType) ToOrganizationTokenQuotaPtrOutput() OrganizationTokenQuotaPtrOutput {
+	return i.ToOrganizationTokenQuotaPtrOutputWithContext(context.Background())
+}
+
+func (i *organizationTokenQuotaPtrType) ToOrganizationTokenQuotaPtrOutputWithContext(ctx context.Context) OrganizationTokenQuotaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationTokenQuotaPtrOutput)
+}
+
+type OrganizationTokenQuotaOutput struct{ *pulumi.OutputState }
+
+func (OrganizationTokenQuotaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationTokenQuota)(nil)).Elem()
+}
+
+func (o OrganizationTokenQuotaOutput) ToOrganizationTokenQuotaOutput() OrganizationTokenQuotaOutput {
+	return o
+}
+
+func (o OrganizationTokenQuotaOutput) ToOrganizationTokenQuotaOutputWithContext(ctx context.Context) OrganizationTokenQuotaOutput {
+	return o
+}
+
+func (o OrganizationTokenQuotaOutput) ToOrganizationTokenQuotaPtrOutput() OrganizationTokenQuotaPtrOutput {
+	return o.ToOrganizationTokenQuotaPtrOutputWithContext(context.Background())
+}
+
+func (o OrganizationTokenQuotaOutput) ToOrganizationTokenQuotaPtrOutputWithContext(ctx context.Context) OrganizationTokenQuotaPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrganizationTokenQuota) *OrganizationTokenQuota {
+		return &v
+	}).(OrganizationTokenQuotaPtrOutput)
+}
+
+// The token quota configuration for client credentials.
+func (o OrganizationTokenQuotaOutput) ClientCredentials() OrganizationTokenQuotaClientCredentialsOutput {
+	return o.ApplyT(func(v OrganizationTokenQuota) OrganizationTokenQuotaClientCredentials { return v.ClientCredentials }).(OrganizationTokenQuotaClientCredentialsOutput)
+}
+
+type OrganizationTokenQuotaPtrOutput struct{ *pulumi.OutputState }
+
+func (OrganizationTokenQuotaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrganizationTokenQuota)(nil)).Elem()
+}
+
+func (o OrganizationTokenQuotaPtrOutput) ToOrganizationTokenQuotaPtrOutput() OrganizationTokenQuotaPtrOutput {
+	return o
+}
+
+func (o OrganizationTokenQuotaPtrOutput) ToOrganizationTokenQuotaPtrOutputWithContext(ctx context.Context) OrganizationTokenQuotaPtrOutput {
+	return o
+}
+
+func (o OrganizationTokenQuotaPtrOutput) Elem() OrganizationTokenQuotaOutput {
+	return o.ApplyT(func(v *OrganizationTokenQuota) OrganizationTokenQuota {
+		if v != nil {
+			return *v
+		}
+		var ret OrganizationTokenQuota
+		return ret
+	}).(OrganizationTokenQuotaOutput)
+}
+
+// The token quota configuration for client credentials.
+func (o OrganizationTokenQuotaPtrOutput) ClientCredentials() OrganizationTokenQuotaClientCredentialsPtrOutput {
+	return o.ApplyT(func(v *OrganizationTokenQuota) *OrganizationTokenQuotaClientCredentials {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientCredentials
+	}).(OrganizationTokenQuotaClientCredentialsPtrOutput)
+}
+
+type OrganizationTokenQuotaClientCredentials struct {
+	// If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+	Enforce *bool `pulumi:"enforce"`
+	// Maximum number of issued tokens per day
+	PerDay *int `pulumi:"perDay"`
+	// Maximum number of issued tokens per hour
+	PerHour *int `pulumi:"perHour"`
+}
+
+// OrganizationTokenQuotaClientCredentialsInput is an input type that accepts OrganizationTokenQuotaClientCredentialsArgs and OrganizationTokenQuotaClientCredentialsOutput values.
+// You can construct a concrete instance of `OrganizationTokenQuotaClientCredentialsInput` via:
+//
+//	OrganizationTokenQuotaClientCredentialsArgs{...}
+type OrganizationTokenQuotaClientCredentialsInput interface {
+	pulumi.Input
+
+	ToOrganizationTokenQuotaClientCredentialsOutput() OrganizationTokenQuotaClientCredentialsOutput
+	ToOrganizationTokenQuotaClientCredentialsOutputWithContext(context.Context) OrganizationTokenQuotaClientCredentialsOutput
+}
+
+type OrganizationTokenQuotaClientCredentialsArgs struct {
+	// If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+	Enforce pulumi.BoolPtrInput `pulumi:"enforce"`
+	// Maximum number of issued tokens per day
+	PerDay pulumi.IntPtrInput `pulumi:"perDay"`
+	// Maximum number of issued tokens per hour
+	PerHour pulumi.IntPtrInput `pulumi:"perHour"`
+}
+
+func (OrganizationTokenQuotaClientCredentialsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationTokenQuotaClientCredentials)(nil)).Elem()
+}
+
+func (i OrganizationTokenQuotaClientCredentialsArgs) ToOrganizationTokenQuotaClientCredentialsOutput() OrganizationTokenQuotaClientCredentialsOutput {
+	return i.ToOrganizationTokenQuotaClientCredentialsOutputWithContext(context.Background())
+}
+
+func (i OrganizationTokenQuotaClientCredentialsArgs) ToOrganizationTokenQuotaClientCredentialsOutputWithContext(ctx context.Context) OrganizationTokenQuotaClientCredentialsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationTokenQuotaClientCredentialsOutput)
+}
+
+func (i OrganizationTokenQuotaClientCredentialsArgs) ToOrganizationTokenQuotaClientCredentialsPtrOutput() OrganizationTokenQuotaClientCredentialsPtrOutput {
+	return i.ToOrganizationTokenQuotaClientCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i OrganizationTokenQuotaClientCredentialsArgs) ToOrganizationTokenQuotaClientCredentialsPtrOutputWithContext(ctx context.Context) OrganizationTokenQuotaClientCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationTokenQuotaClientCredentialsOutput).ToOrganizationTokenQuotaClientCredentialsPtrOutputWithContext(ctx)
+}
+
+// OrganizationTokenQuotaClientCredentialsPtrInput is an input type that accepts OrganizationTokenQuotaClientCredentialsArgs, OrganizationTokenQuotaClientCredentialsPtr and OrganizationTokenQuotaClientCredentialsPtrOutput values.
+// You can construct a concrete instance of `OrganizationTokenQuotaClientCredentialsPtrInput` via:
+//
+//	        OrganizationTokenQuotaClientCredentialsArgs{...}
+//
+//	or:
+//
+//	        nil
+type OrganizationTokenQuotaClientCredentialsPtrInput interface {
+	pulumi.Input
+
+	ToOrganizationTokenQuotaClientCredentialsPtrOutput() OrganizationTokenQuotaClientCredentialsPtrOutput
+	ToOrganizationTokenQuotaClientCredentialsPtrOutputWithContext(context.Context) OrganizationTokenQuotaClientCredentialsPtrOutput
+}
+
+type organizationTokenQuotaClientCredentialsPtrType OrganizationTokenQuotaClientCredentialsArgs
+
+func OrganizationTokenQuotaClientCredentialsPtr(v *OrganizationTokenQuotaClientCredentialsArgs) OrganizationTokenQuotaClientCredentialsPtrInput {
+	return (*organizationTokenQuotaClientCredentialsPtrType)(v)
+}
+
+func (*organizationTokenQuotaClientCredentialsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrganizationTokenQuotaClientCredentials)(nil)).Elem()
+}
+
+func (i *organizationTokenQuotaClientCredentialsPtrType) ToOrganizationTokenQuotaClientCredentialsPtrOutput() OrganizationTokenQuotaClientCredentialsPtrOutput {
+	return i.ToOrganizationTokenQuotaClientCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i *organizationTokenQuotaClientCredentialsPtrType) ToOrganizationTokenQuotaClientCredentialsPtrOutputWithContext(ctx context.Context) OrganizationTokenQuotaClientCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationTokenQuotaClientCredentialsPtrOutput)
+}
+
+type OrganizationTokenQuotaClientCredentialsOutput struct{ *pulumi.OutputState }
+
+func (OrganizationTokenQuotaClientCredentialsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationTokenQuotaClientCredentials)(nil)).Elem()
+}
+
+func (o OrganizationTokenQuotaClientCredentialsOutput) ToOrganizationTokenQuotaClientCredentialsOutput() OrganizationTokenQuotaClientCredentialsOutput {
+	return o
+}
+
+func (o OrganizationTokenQuotaClientCredentialsOutput) ToOrganizationTokenQuotaClientCredentialsOutputWithContext(ctx context.Context) OrganizationTokenQuotaClientCredentialsOutput {
+	return o
+}
+
+func (o OrganizationTokenQuotaClientCredentialsOutput) ToOrganizationTokenQuotaClientCredentialsPtrOutput() OrganizationTokenQuotaClientCredentialsPtrOutput {
+	return o.ToOrganizationTokenQuotaClientCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (o OrganizationTokenQuotaClientCredentialsOutput) ToOrganizationTokenQuotaClientCredentialsPtrOutputWithContext(ctx context.Context) OrganizationTokenQuotaClientCredentialsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrganizationTokenQuotaClientCredentials) *OrganizationTokenQuotaClientCredentials {
+		return &v
+	}).(OrganizationTokenQuotaClientCredentialsPtrOutput)
+}
+
+// If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+func (o OrganizationTokenQuotaClientCredentialsOutput) Enforce() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OrganizationTokenQuotaClientCredentials) *bool { return v.Enforce }).(pulumi.BoolPtrOutput)
+}
+
+// Maximum number of issued tokens per day
+func (o OrganizationTokenQuotaClientCredentialsOutput) PerDay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OrganizationTokenQuotaClientCredentials) *int { return v.PerDay }).(pulumi.IntPtrOutput)
+}
+
+// Maximum number of issued tokens per hour
+func (o OrganizationTokenQuotaClientCredentialsOutput) PerHour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OrganizationTokenQuotaClientCredentials) *int { return v.PerHour }).(pulumi.IntPtrOutput)
+}
+
+type OrganizationTokenQuotaClientCredentialsPtrOutput struct{ *pulumi.OutputState }
+
+func (OrganizationTokenQuotaClientCredentialsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrganizationTokenQuotaClientCredentials)(nil)).Elem()
+}
+
+func (o OrganizationTokenQuotaClientCredentialsPtrOutput) ToOrganizationTokenQuotaClientCredentialsPtrOutput() OrganizationTokenQuotaClientCredentialsPtrOutput {
+	return o
+}
+
+func (o OrganizationTokenQuotaClientCredentialsPtrOutput) ToOrganizationTokenQuotaClientCredentialsPtrOutputWithContext(ctx context.Context) OrganizationTokenQuotaClientCredentialsPtrOutput {
+	return o
+}
+
+func (o OrganizationTokenQuotaClientCredentialsPtrOutput) Elem() OrganizationTokenQuotaClientCredentialsOutput {
+	return o.ApplyT(func(v *OrganizationTokenQuotaClientCredentials) OrganizationTokenQuotaClientCredentials {
+		if v != nil {
+			return *v
+		}
+		var ret OrganizationTokenQuotaClientCredentials
+		return ret
+	}).(OrganizationTokenQuotaClientCredentialsOutput)
+}
+
+// If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+func (o OrganizationTokenQuotaClientCredentialsPtrOutput) Enforce() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OrganizationTokenQuotaClientCredentials) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enforce
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Maximum number of issued tokens per day
+func (o OrganizationTokenQuotaClientCredentialsPtrOutput) PerDay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OrganizationTokenQuotaClientCredentials) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PerDay
+	}).(pulumi.IntPtrOutput)
+}
+
+// Maximum number of issued tokens per hour
+func (o OrganizationTokenQuotaClientCredentialsPtrOutput) PerHour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OrganizationTokenQuotaClientCredentials) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PerHour
+	}).(pulumi.IntPtrOutput)
+}
+
 type PagesChangePassword struct {
 	// Indicates whether to use the custom Reset Password HTML (`true`) or the default Auth0 page (`false`).
 	Enabled bool `pulumi:"enabled"`
@@ -28385,6 +29009,790 @@ func (o SelfServiceProfileUserAttributeArrayOutput) Index(i pulumi.IntInput) Sel
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SelfServiceProfileUserAttribute {
 		return vs[0].([]SelfServiceProfileUserAttribute)[vs[1].(int)]
 	}).(SelfServiceProfileUserAttributeOutput)
+}
+
+type TenantDefaultTokenQuota struct {
+	// The token quota configuration.
+	Clients *TenantDefaultTokenQuotaClients `pulumi:"clients"`
+	// The token quota configuration.
+	Organizations *TenantDefaultTokenQuotaOrganizations `pulumi:"organizations"`
+}
+
+// TenantDefaultTokenQuotaInput is an input type that accepts TenantDefaultTokenQuotaArgs and TenantDefaultTokenQuotaOutput values.
+// You can construct a concrete instance of `TenantDefaultTokenQuotaInput` via:
+//
+//	TenantDefaultTokenQuotaArgs{...}
+type TenantDefaultTokenQuotaInput interface {
+	pulumi.Input
+
+	ToTenantDefaultTokenQuotaOutput() TenantDefaultTokenQuotaOutput
+	ToTenantDefaultTokenQuotaOutputWithContext(context.Context) TenantDefaultTokenQuotaOutput
+}
+
+type TenantDefaultTokenQuotaArgs struct {
+	// The token quota configuration.
+	Clients TenantDefaultTokenQuotaClientsPtrInput `pulumi:"clients"`
+	// The token quota configuration.
+	Organizations TenantDefaultTokenQuotaOrganizationsPtrInput `pulumi:"organizations"`
+}
+
+func (TenantDefaultTokenQuotaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TenantDefaultTokenQuota)(nil)).Elem()
+}
+
+func (i TenantDefaultTokenQuotaArgs) ToTenantDefaultTokenQuotaOutput() TenantDefaultTokenQuotaOutput {
+	return i.ToTenantDefaultTokenQuotaOutputWithContext(context.Background())
+}
+
+func (i TenantDefaultTokenQuotaArgs) ToTenantDefaultTokenQuotaOutputWithContext(ctx context.Context) TenantDefaultTokenQuotaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TenantDefaultTokenQuotaOutput)
+}
+
+func (i TenantDefaultTokenQuotaArgs) ToTenantDefaultTokenQuotaPtrOutput() TenantDefaultTokenQuotaPtrOutput {
+	return i.ToTenantDefaultTokenQuotaPtrOutputWithContext(context.Background())
+}
+
+func (i TenantDefaultTokenQuotaArgs) ToTenantDefaultTokenQuotaPtrOutputWithContext(ctx context.Context) TenantDefaultTokenQuotaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TenantDefaultTokenQuotaOutput).ToTenantDefaultTokenQuotaPtrOutputWithContext(ctx)
+}
+
+// TenantDefaultTokenQuotaPtrInput is an input type that accepts TenantDefaultTokenQuotaArgs, TenantDefaultTokenQuotaPtr and TenantDefaultTokenQuotaPtrOutput values.
+// You can construct a concrete instance of `TenantDefaultTokenQuotaPtrInput` via:
+//
+//	        TenantDefaultTokenQuotaArgs{...}
+//
+//	or:
+//
+//	        nil
+type TenantDefaultTokenQuotaPtrInput interface {
+	pulumi.Input
+
+	ToTenantDefaultTokenQuotaPtrOutput() TenantDefaultTokenQuotaPtrOutput
+	ToTenantDefaultTokenQuotaPtrOutputWithContext(context.Context) TenantDefaultTokenQuotaPtrOutput
+}
+
+type tenantDefaultTokenQuotaPtrType TenantDefaultTokenQuotaArgs
+
+func TenantDefaultTokenQuotaPtr(v *TenantDefaultTokenQuotaArgs) TenantDefaultTokenQuotaPtrInput {
+	return (*tenantDefaultTokenQuotaPtrType)(v)
+}
+
+func (*tenantDefaultTokenQuotaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TenantDefaultTokenQuota)(nil)).Elem()
+}
+
+func (i *tenantDefaultTokenQuotaPtrType) ToTenantDefaultTokenQuotaPtrOutput() TenantDefaultTokenQuotaPtrOutput {
+	return i.ToTenantDefaultTokenQuotaPtrOutputWithContext(context.Background())
+}
+
+func (i *tenantDefaultTokenQuotaPtrType) ToTenantDefaultTokenQuotaPtrOutputWithContext(ctx context.Context) TenantDefaultTokenQuotaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TenantDefaultTokenQuotaPtrOutput)
+}
+
+type TenantDefaultTokenQuotaOutput struct{ *pulumi.OutputState }
+
+func (TenantDefaultTokenQuotaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TenantDefaultTokenQuota)(nil)).Elem()
+}
+
+func (o TenantDefaultTokenQuotaOutput) ToTenantDefaultTokenQuotaOutput() TenantDefaultTokenQuotaOutput {
+	return o
+}
+
+func (o TenantDefaultTokenQuotaOutput) ToTenantDefaultTokenQuotaOutputWithContext(ctx context.Context) TenantDefaultTokenQuotaOutput {
+	return o
+}
+
+func (o TenantDefaultTokenQuotaOutput) ToTenantDefaultTokenQuotaPtrOutput() TenantDefaultTokenQuotaPtrOutput {
+	return o.ToTenantDefaultTokenQuotaPtrOutputWithContext(context.Background())
+}
+
+func (o TenantDefaultTokenQuotaOutput) ToTenantDefaultTokenQuotaPtrOutputWithContext(ctx context.Context) TenantDefaultTokenQuotaPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TenantDefaultTokenQuota) *TenantDefaultTokenQuota {
+		return &v
+	}).(TenantDefaultTokenQuotaPtrOutput)
+}
+
+// The token quota configuration.
+func (o TenantDefaultTokenQuotaOutput) Clients() TenantDefaultTokenQuotaClientsPtrOutput {
+	return o.ApplyT(func(v TenantDefaultTokenQuota) *TenantDefaultTokenQuotaClients { return v.Clients }).(TenantDefaultTokenQuotaClientsPtrOutput)
+}
+
+// The token quota configuration.
+func (o TenantDefaultTokenQuotaOutput) Organizations() TenantDefaultTokenQuotaOrganizationsPtrOutput {
+	return o.ApplyT(func(v TenantDefaultTokenQuota) *TenantDefaultTokenQuotaOrganizations { return v.Organizations }).(TenantDefaultTokenQuotaOrganizationsPtrOutput)
+}
+
+type TenantDefaultTokenQuotaPtrOutput struct{ *pulumi.OutputState }
+
+func (TenantDefaultTokenQuotaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TenantDefaultTokenQuota)(nil)).Elem()
+}
+
+func (o TenantDefaultTokenQuotaPtrOutput) ToTenantDefaultTokenQuotaPtrOutput() TenantDefaultTokenQuotaPtrOutput {
+	return o
+}
+
+func (o TenantDefaultTokenQuotaPtrOutput) ToTenantDefaultTokenQuotaPtrOutputWithContext(ctx context.Context) TenantDefaultTokenQuotaPtrOutput {
+	return o
+}
+
+func (o TenantDefaultTokenQuotaPtrOutput) Elem() TenantDefaultTokenQuotaOutput {
+	return o.ApplyT(func(v *TenantDefaultTokenQuota) TenantDefaultTokenQuota {
+		if v != nil {
+			return *v
+		}
+		var ret TenantDefaultTokenQuota
+		return ret
+	}).(TenantDefaultTokenQuotaOutput)
+}
+
+// The token quota configuration.
+func (o TenantDefaultTokenQuotaPtrOutput) Clients() TenantDefaultTokenQuotaClientsPtrOutput {
+	return o.ApplyT(func(v *TenantDefaultTokenQuota) *TenantDefaultTokenQuotaClients {
+		if v == nil {
+			return nil
+		}
+		return v.Clients
+	}).(TenantDefaultTokenQuotaClientsPtrOutput)
+}
+
+// The token quota configuration.
+func (o TenantDefaultTokenQuotaPtrOutput) Organizations() TenantDefaultTokenQuotaOrganizationsPtrOutput {
+	return o.ApplyT(func(v *TenantDefaultTokenQuota) *TenantDefaultTokenQuotaOrganizations {
+		if v == nil {
+			return nil
+		}
+		return v.Organizations
+	}).(TenantDefaultTokenQuotaOrganizationsPtrOutput)
+}
+
+type TenantDefaultTokenQuotaClients struct {
+	// The token quota configuration for client credentials.
+	ClientCredentials TenantDefaultTokenQuotaClientsClientCredentials `pulumi:"clientCredentials"`
+}
+
+// TenantDefaultTokenQuotaClientsInput is an input type that accepts TenantDefaultTokenQuotaClientsArgs and TenantDefaultTokenQuotaClientsOutput values.
+// You can construct a concrete instance of `TenantDefaultTokenQuotaClientsInput` via:
+//
+//	TenantDefaultTokenQuotaClientsArgs{...}
+type TenantDefaultTokenQuotaClientsInput interface {
+	pulumi.Input
+
+	ToTenantDefaultTokenQuotaClientsOutput() TenantDefaultTokenQuotaClientsOutput
+	ToTenantDefaultTokenQuotaClientsOutputWithContext(context.Context) TenantDefaultTokenQuotaClientsOutput
+}
+
+type TenantDefaultTokenQuotaClientsArgs struct {
+	// The token quota configuration for client credentials.
+	ClientCredentials TenantDefaultTokenQuotaClientsClientCredentialsInput `pulumi:"clientCredentials"`
+}
+
+func (TenantDefaultTokenQuotaClientsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TenantDefaultTokenQuotaClients)(nil)).Elem()
+}
+
+func (i TenantDefaultTokenQuotaClientsArgs) ToTenantDefaultTokenQuotaClientsOutput() TenantDefaultTokenQuotaClientsOutput {
+	return i.ToTenantDefaultTokenQuotaClientsOutputWithContext(context.Background())
+}
+
+func (i TenantDefaultTokenQuotaClientsArgs) ToTenantDefaultTokenQuotaClientsOutputWithContext(ctx context.Context) TenantDefaultTokenQuotaClientsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TenantDefaultTokenQuotaClientsOutput)
+}
+
+func (i TenantDefaultTokenQuotaClientsArgs) ToTenantDefaultTokenQuotaClientsPtrOutput() TenantDefaultTokenQuotaClientsPtrOutput {
+	return i.ToTenantDefaultTokenQuotaClientsPtrOutputWithContext(context.Background())
+}
+
+func (i TenantDefaultTokenQuotaClientsArgs) ToTenantDefaultTokenQuotaClientsPtrOutputWithContext(ctx context.Context) TenantDefaultTokenQuotaClientsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TenantDefaultTokenQuotaClientsOutput).ToTenantDefaultTokenQuotaClientsPtrOutputWithContext(ctx)
+}
+
+// TenantDefaultTokenQuotaClientsPtrInput is an input type that accepts TenantDefaultTokenQuotaClientsArgs, TenantDefaultTokenQuotaClientsPtr and TenantDefaultTokenQuotaClientsPtrOutput values.
+// You can construct a concrete instance of `TenantDefaultTokenQuotaClientsPtrInput` via:
+//
+//	        TenantDefaultTokenQuotaClientsArgs{...}
+//
+//	or:
+//
+//	        nil
+type TenantDefaultTokenQuotaClientsPtrInput interface {
+	pulumi.Input
+
+	ToTenantDefaultTokenQuotaClientsPtrOutput() TenantDefaultTokenQuotaClientsPtrOutput
+	ToTenantDefaultTokenQuotaClientsPtrOutputWithContext(context.Context) TenantDefaultTokenQuotaClientsPtrOutput
+}
+
+type tenantDefaultTokenQuotaClientsPtrType TenantDefaultTokenQuotaClientsArgs
+
+func TenantDefaultTokenQuotaClientsPtr(v *TenantDefaultTokenQuotaClientsArgs) TenantDefaultTokenQuotaClientsPtrInput {
+	return (*tenantDefaultTokenQuotaClientsPtrType)(v)
+}
+
+func (*tenantDefaultTokenQuotaClientsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TenantDefaultTokenQuotaClients)(nil)).Elem()
+}
+
+func (i *tenantDefaultTokenQuotaClientsPtrType) ToTenantDefaultTokenQuotaClientsPtrOutput() TenantDefaultTokenQuotaClientsPtrOutput {
+	return i.ToTenantDefaultTokenQuotaClientsPtrOutputWithContext(context.Background())
+}
+
+func (i *tenantDefaultTokenQuotaClientsPtrType) ToTenantDefaultTokenQuotaClientsPtrOutputWithContext(ctx context.Context) TenantDefaultTokenQuotaClientsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TenantDefaultTokenQuotaClientsPtrOutput)
+}
+
+type TenantDefaultTokenQuotaClientsOutput struct{ *pulumi.OutputState }
+
+func (TenantDefaultTokenQuotaClientsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TenantDefaultTokenQuotaClients)(nil)).Elem()
+}
+
+func (o TenantDefaultTokenQuotaClientsOutput) ToTenantDefaultTokenQuotaClientsOutput() TenantDefaultTokenQuotaClientsOutput {
+	return o
+}
+
+func (o TenantDefaultTokenQuotaClientsOutput) ToTenantDefaultTokenQuotaClientsOutputWithContext(ctx context.Context) TenantDefaultTokenQuotaClientsOutput {
+	return o
+}
+
+func (o TenantDefaultTokenQuotaClientsOutput) ToTenantDefaultTokenQuotaClientsPtrOutput() TenantDefaultTokenQuotaClientsPtrOutput {
+	return o.ToTenantDefaultTokenQuotaClientsPtrOutputWithContext(context.Background())
+}
+
+func (o TenantDefaultTokenQuotaClientsOutput) ToTenantDefaultTokenQuotaClientsPtrOutputWithContext(ctx context.Context) TenantDefaultTokenQuotaClientsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TenantDefaultTokenQuotaClients) *TenantDefaultTokenQuotaClients {
+		return &v
+	}).(TenantDefaultTokenQuotaClientsPtrOutput)
+}
+
+// The token quota configuration for client credentials.
+func (o TenantDefaultTokenQuotaClientsOutput) ClientCredentials() TenantDefaultTokenQuotaClientsClientCredentialsOutput {
+	return o.ApplyT(func(v TenantDefaultTokenQuotaClients) TenantDefaultTokenQuotaClientsClientCredentials {
+		return v.ClientCredentials
+	}).(TenantDefaultTokenQuotaClientsClientCredentialsOutput)
+}
+
+type TenantDefaultTokenQuotaClientsPtrOutput struct{ *pulumi.OutputState }
+
+func (TenantDefaultTokenQuotaClientsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TenantDefaultTokenQuotaClients)(nil)).Elem()
+}
+
+func (o TenantDefaultTokenQuotaClientsPtrOutput) ToTenantDefaultTokenQuotaClientsPtrOutput() TenantDefaultTokenQuotaClientsPtrOutput {
+	return o
+}
+
+func (o TenantDefaultTokenQuotaClientsPtrOutput) ToTenantDefaultTokenQuotaClientsPtrOutputWithContext(ctx context.Context) TenantDefaultTokenQuotaClientsPtrOutput {
+	return o
+}
+
+func (o TenantDefaultTokenQuotaClientsPtrOutput) Elem() TenantDefaultTokenQuotaClientsOutput {
+	return o.ApplyT(func(v *TenantDefaultTokenQuotaClients) TenantDefaultTokenQuotaClients {
+		if v != nil {
+			return *v
+		}
+		var ret TenantDefaultTokenQuotaClients
+		return ret
+	}).(TenantDefaultTokenQuotaClientsOutput)
+}
+
+// The token quota configuration for client credentials.
+func (o TenantDefaultTokenQuotaClientsPtrOutput) ClientCredentials() TenantDefaultTokenQuotaClientsClientCredentialsPtrOutput {
+	return o.ApplyT(func(v *TenantDefaultTokenQuotaClients) *TenantDefaultTokenQuotaClientsClientCredentials {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientCredentials
+	}).(TenantDefaultTokenQuotaClientsClientCredentialsPtrOutput)
+}
+
+type TenantDefaultTokenQuotaClientsClientCredentials struct {
+	// If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+	Enforce *bool `pulumi:"enforce"`
+	// Maximum number of issued tokens per day
+	PerDay *int `pulumi:"perDay"`
+	// Maximum number of issued tokens per hour
+	PerHour *int `pulumi:"perHour"`
+}
+
+// TenantDefaultTokenQuotaClientsClientCredentialsInput is an input type that accepts TenantDefaultTokenQuotaClientsClientCredentialsArgs and TenantDefaultTokenQuotaClientsClientCredentialsOutput values.
+// You can construct a concrete instance of `TenantDefaultTokenQuotaClientsClientCredentialsInput` via:
+//
+//	TenantDefaultTokenQuotaClientsClientCredentialsArgs{...}
+type TenantDefaultTokenQuotaClientsClientCredentialsInput interface {
+	pulumi.Input
+
+	ToTenantDefaultTokenQuotaClientsClientCredentialsOutput() TenantDefaultTokenQuotaClientsClientCredentialsOutput
+	ToTenantDefaultTokenQuotaClientsClientCredentialsOutputWithContext(context.Context) TenantDefaultTokenQuotaClientsClientCredentialsOutput
+}
+
+type TenantDefaultTokenQuotaClientsClientCredentialsArgs struct {
+	// If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+	Enforce pulumi.BoolPtrInput `pulumi:"enforce"`
+	// Maximum number of issued tokens per day
+	PerDay pulumi.IntPtrInput `pulumi:"perDay"`
+	// Maximum number of issued tokens per hour
+	PerHour pulumi.IntPtrInput `pulumi:"perHour"`
+}
+
+func (TenantDefaultTokenQuotaClientsClientCredentialsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TenantDefaultTokenQuotaClientsClientCredentials)(nil)).Elem()
+}
+
+func (i TenantDefaultTokenQuotaClientsClientCredentialsArgs) ToTenantDefaultTokenQuotaClientsClientCredentialsOutput() TenantDefaultTokenQuotaClientsClientCredentialsOutput {
+	return i.ToTenantDefaultTokenQuotaClientsClientCredentialsOutputWithContext(context.Background())
+}
+
+func (i TenantDefaultTokenQuotaClientsClientCredentialsArgs) ToTenantDefaultTokenQuotaClientsClientCredentialsOutputWithContext(ctx context.Context) TenantDefaultTokenQuotaClientsClientCredentialsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TenantDefaultTokenQuotaClientsClientCredentialsOutput)
+}
+
+func (i TenantDefaultTokenQuotaClientsClientCredentialsArgs) ToTenantDefaultTokenQuotaClientsClientCredentialsPtrOutput() TenantDefaultTokenQuotaClientsClientCredentialsPtrOutput {
+	return i.ToTenantDefaultTokenQuotaClientsClientCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i TenantDefaultTokenQuotaClientsClientCredentialsArgs) ToTenantDefaultTokenQuotaClientsClientCredentialsPtrOutputWithContext(ctx context.Context) TenantDefaultTokenQuotaClientsClientCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TenantDefaultTokenQuotaClientsClientCredentialsOutput).ToTenantDefaultTokenQuotaClientsClientCredentialsPtrOutputWithContext(ctx)
+}
+
+// TenantDefaultTokenQuotaClientsClientCredentialsPtrInput is an input type that accepts TenantDefaultTokenQuotaClientsClientCredentialsArgs, TenantDefaultTokenQuotaClientsClientCredentialsPtr and TenantDefaultTokenQuotaClientsClientCredentialsPtrOutput values.
+// You can construct a concrete instance of `TenantDefaultTokenQuotaClientsClientCredentialsPtrInput` via:
+//
+//	        TenantDefaultTokenQuotaClientsClientCredentialsArgs{...}
+//
+//	or:
+//
+//	        nil
+type TenantDefaultTokenQuotaClientsClientCredentialsPtrInput interface {
+	pulumi.Input
+
+	ToTenantDefaultTokenQuotaClientsClientCredentialsPtrOutput() TenantDefaultTokenQuotaClientsClientCredentialsPtrOutput
+	ToTenantDefaultTokenQuotaClientsClientCredentialsPtrOutputWithContext(context.Context) TenantDefaultTokenQuotaClientsClientCredentialsPtrOutput
+}
+
+type tenantDefaultTokenQuotaClientsClientCredentialsPtrType TenantDefaultTokenQuotaClientsClientCredentialsArgs
+
+func TenantDefaultTokenQuotaClientsClientCredentialsPtr(v *TenantDefaultTokenQuotaClientsClientCredentialsArgs) TenantDefaultTokenQuotaClientsClientCredentialsPtrInput {
+	return (*tenantDefaultTokenQuotaClientsClientCredentialsPtrType)(v)
+}
+
+func (*tenantDefaultTokenQuotaClientsClientCredentialsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TenantDefaultTokenQuotaClientsClientCredentials)(nil)).Elem()
+}
+
+func (i *tenantDefaultTokenQuotaClientsClientCredentialsPtrType) ToTenantDefaultTokenQuotaClientsClientCredentialsPtrOutput() TenantDefaultTokenQuotaClientsClientCredentialsPtrOutput {
+	return i.ToTenantDefaultTokenQuotaClientsClientCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i *tenantDefaultTokenQuotaClientsClientCredentialsPtrType) ToTenantDefaultTokenQuotaClientsClientCredentialsPtrOutputWithContext(ctx context.Context) TenantDefaultTokenQuotaClientsClientCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TenantDefaultTokenQuotaClientsClientCredentialsPtrOutput)
+}
+
+type TenantDefaultTokenQuotaClientsClientCredentialsOutput struct{ *pulumi.OutputState }
+
+func (TenantDefaultTokenQuotaClientsClientCredentialsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TenantDefaultTokenQuotaClientsClientCredentials)(nil)).Elem()
+}
+
+func (o TenantDefaultTokenQuotaClientsClientCredentialsOutput) ToTenantDefaultTokenQuotaClientsClientCredentialsOutput() TenantDefaultTokenQuotaClientsClientCredentialsOutput {
+	return o
+}
+
+func (o TenantDefaultTokenQuotaClientsClientCredentialsOutput) ToTenantDefaultTokenQuotaClientsClientCredentialsOutputWithContext(ctx context.Context) TenantDefaultTokenQuotaClientsClientCredentialsOutput {
+	return o
+}
+
+func (o TenantDefaultTokenQuotaClientsClientCredentialsOutput) ToTenantDefaultTokenQuotaClientsClientCredentialsPtrOutput() TenantDefaultTokenQuotaClientsClientCredentialsPtrOutput {
+	return o.ToTenantDefaultTokenQuotaClientsClientCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (o TenantDefaultTokenQuotaClientsClientCredentialsOutput) ToTenantDefaultTokenQuotaClientsClientCredentialsPtrOutputWithContext(ctx context.Context) TenantDefaultTokenQuotaClientsClientCredentialsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TenantDefaultTokenQuotaClientsClientCredentials) *TenantDefaultTokenQuotaClientsClientCredentials {
+		return &v
+	}).(TenantDefaultTokenQuotaClientsClientCredentialsPtrOutput)
+}
+
+// If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+func (o TenantDefaultTokenQuotaClientsClientCredentialsOutput) Enforce() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TenantDefaultTokenQuotaClientsClientCredentials) *bool { return v.Enforce }).(pulumi.BoolPtrOutput)
+}
+
+// Maximum number of issued tokens per day
+func (o TenantDefaultTokenQuotaClientsClientCredentialsOutput) PerDay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TenantDefaultTokenQuotaClientsClientCredentials) *int { return v.PerDay }).(pulumi.IntPtrOutput)
+}
+
+// Maximum number of issued tokens per hour
+func (o TenantDefaultTokenQuotaClientsClientCredentialsOutput) PerHour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TenantDefaultTokenQuotaClientsClientCredentials) *int { return v.PerHour }).(pulumi.IntPtrOutput)
+}
+
+type TenantDefaultTokenQuotaClientsClientCredentialsPtrOutput struct{ *pulumi.OutputState }
+
+func (TenantDefaultTokenQuotaClientsClientCredentialsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TenantDefaultTokenQuotaClientsClientCredentials)(nil)).Elem()
+}
+
+func (o TenantDefaultTokenQuotaClientsClientCredentialsPtrOutput) ToTenantDefaultTokenQuotaClientsClientCredentialsPtrOutput() TenantDefaultTokenQuotaClientsClientCredentialsPtrOutput {
+	return o
+}
+
+func (o TenantDefaultTokenQuotaClientsClientCredentialsPtrOutput) ToTenantDefaultTokenQuotaClientsClientCredentialsPtrOutputWithContext(ctx context.Context) TenantDefaultTokenQuotaClientsClientCredentialsPtrOutput {
+	return o
+}
+
+func (o TenantDefaultTokenQuotaClientsClientCredentialsPtrOutput) Elem() TenantDefaultTokenQuotaClientsClientCredentialsOutput {
+	return o.ApplyT(func(v *TenantDefaultTokenQuotaClientsClientCredentials) TenantDefaultTokenQuotaClientsClientCredentials {
+		if v != nil {
+			return *v
+		}
+		var ret TenantDefaultTokenQuotaClientsClientCredentials
+		return ret
+	}).(TenantDefaultTokenQuotaClientsClientCredentialsOutput)
+}
+
+// If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+func (o TenantDefaultTokenQuotaClientsClientCredentialsPtrOutput) Enforce() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TenantDefaultTokenQuotaClientsClientCredentials) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enforce
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Maximum number of issued tokens per day
+func (o TenantDefaultTokenQuotaClientsClientCredentialsPtrOutput) PerDay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TenantDefaultTokenQuotaClientsClientCredentials) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PerDay
+	}).(pulumi.IntPtrOutput)
+}
+
+// Maximum number of issued tokens per hour
+func (o TenantDefaultTokenQuotaClientsClientCredentialsPtrOutput) PerHour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TenantDefaultTokenQuotaClientsClientCredentials) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PerHour
+	}).(pulumi.IntPtrOutput)
+}
+
+type TenantDefaultTokenQuotaOrganizations struct {
+	// The token quota configuration for client credentials.
+	ClientCredentials TenantDefaultTokenQuotaOrganizationsClientCredentials `pulumi:"clientCredentials"`
+}
+
+// TenantDefaultTokenQuotaOrganizationsInput is an input type that accepts TenantDefaultTokenQuotaOrganizationsArgs and TenantDefaultTokenQuotaOrganizationsOutput values.
+// You can construct a concrete instance of `TenantDefaultTokenQuotaOrganizationsInput` via:
+//
+//	TenantDefaultTokenQuotaOrganizationsArgs{...}
+type TenantDefaultTokenQuotaOrganizationsInput interface {
+	pulumi.Input
+
+	ToTenantDefaultTokenQuotaOrganizationsOutput() TenantDefaultTokenQuotaOrganizationsOutput
+	ToTenantDefaultTokenQuotaOrganizationsOutputWithContext(context.Context) TenantDefaultTokenQuotaOrganizationsOutput
+}
+
+type TenantDefaultTokenQuotaOrganizationsArgs struct {
+	// The token quota configuration for client credentials.
+	ClientCredentials TenantDefaultTokenQuotaOrganizationsClientCredentialsInput `pulumi:"clientCredentials"`
+}
+
+func (TenantDefaultTokenQuotaOrganizationsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TenantDefaultTokenQuotaOrganizations)(nil)).Elem()
+}
+
+func (i TenantDefaultTokenQuotaOrganizationsArgs) ToTenantDefaultTokenQuotaOrganizationsOutput() TenantDefaultTokenQuotaOrganizationsOutput {
+	return i.ToTenantDefaultTokenQuotaOrganizationsOutputWithContext(context.Background())
+}
+
+func (i TenantDefaultTokenQuotaOrganizationsArgs) ToTenantDefaultTokenQuotaOrganizationsOutputWithContext(ctx context.Context) TenantDefaultTokenQuotaOrganizationsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TenantDefaultTokenQuotaOrganizationsOutput)
+}
+
+func (i TenantDefaultTokenQuotaOrganizationsArgs) ToTenantDefaultTokenQuotaOrganizationsPtrOutput() TenantDefaultTokenQuotaOrganizationsPtrOutput {
+	return i.ToTenantDefaultTokenQuotaOrganizationsPtrOutputWithContext(context.Background())
+}
+
+func (i TenantDefaultTokenQuotaOrganizationsArgs) ToTenantDefaultTokenQuotaOrganizationsPtrOutputWithContext(ctx context.Context) TenantDefaultTokenQuotaOrganizationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TenantDefaultTokenQuotaOrganizationsOutput).ToTenantDefaultTokenQuotaOrganizationsPtrOutputWithContext(ctx)
+}
+
+// TenantDefaultTokenQuotaOrganizationsPtrInput is an input type that accepts TenantDefaultTokenQuotaOrganizationsArgs, TenantDefaultTokenQuotaOrganizationsPtr and TenantDefaultTokenQuotaOrganizationsPtrOutput values.
+// You can construct a concrete instance of `TenantDefaultTokenQuotaOrganizationsPtrInput` via:
+//
+//	        TenantDefaultTokenQuotaOrganizationsArgs{...}
+//
+//	or:
+//
+//	        nil
+type TenantDefaultTokenQuotaOrganizationsPtrInput interface {
+	pulumi.Input
+
+	ToTenantDefaultTokenQuotaOrganizationsPtrOutput() TenantDefaultTokenQuotaOrganizationsPtrOutput
+	ToTenantDefaultTokenQuotaOrganizationsPtrOutputWithContext(context.Context) TenantDefaultTokenQuotaOrganizationsPtrOutput
+}
+
+type tenantDefaultTokenQuotaOrganizationsPtrType TenantDefaultTokenQuotaOrganizationsArgs
+
+func TenantDefaultTokenQuotaOrganizationsPtr(v *TenantDefaultTokenQuotaOrganizationsArgs) TenantDefaultTokenQuotaOrganizationsPtrInput {
+	return (*tenantDefaultTokenQuotaOrganizationsPtrType)(v)
+}
+
+func (*tenantDefaultTokenQuotaOrganizationsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TenantDefaultTokenQuotaOrganizations)(nil)).Elem()
+}
+
+func (i *tenantDefaultTokenQuotaOrganizationsPtrType) ToTenantDefaultTokenQuotaOrganizationsPtrOutput() TenantDefaultTokenQuotaOrganizationsPtrOutput {
+	return i.ToTenantDefaultTokenQuotaOrganizationsPtrOutputWithContext(context.Background())
+}
+
+func (i *tenantDefaultTokenQuotaOrganizationsPtrType) ToTenantDefaultTokenQuotaOrganizationsPtrOutputWithContext(ctx context.Context) TenantDefaultTokenQuotaOrganizationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TenantDefaultTokenQuotaOrganizationsPtrOutput)
+}
+
+type TenantDefaultTokenQuotaOrganizationsOutput struct{ *pulumi.OutputState }
+
+func (TenantDefaultTokenQuotaOrganizationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TenantDefaultTokenQuotaOrganizations)(nil)).Elem()
+}
+
+func (o TenantDefaultTokenQuotaOrganizationsOutput) ToTenantDefaultTokenQuotaOrganizationsOutput() TenantDefaultTokenQuotaOrganizationsOutput {
+	return o
+}
+
+func (o TenantDefaultTokenQuotaOrganizationsOutput) ToTenantDefaultTokenQuotaOrganizationsOutputWithContext(ctx context.Context) TenantDefaultTokenQuotaOrganizationsOutput {
+	return o
+}
+
+func (o TenantDefaultTokenQuotaOrganizationsOutput) ToTenantDefaultTokenQuotaOrganizationsPtrOutput() TenantDefaultTokenQuotaOrganizationsPtrOutput {
+	return o.ToTenantDefaultTokenQuotaOrganizationsPtrOutputWithContext(context.Background())
+}
+
+func (o TenantDefaultTokenQuotaOrganizationsOutput) ToTenantDefaultTokenQuotaOrganizationsPtrOutputWithContext(ctx context.Context) TenantDefaultTokenQuotaOrganizationsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TenantDefaultTokenQuotaOrganizations) *TenantDefaultTokenQuotaOrganizations {
+		return &v
+	}).(TenantDefaultTokenQuotaOrganizationsPtrOutput)
+}
+
+// The token quota configuration for client credentials.
+func (o TenantDefaultTokenQuotaOrganizationsOutput) ClientCredentials() TenantDefaultTokenQuotaOrganizationsClientCredentialsOutput {
+	return o.ApplyT(func(v TenantDefaultTokenQuotaOrganizations) TenantDefaultTokenQuotaOrganizationsClientCredentials {
+		return v.ClientCredentials
+	}).(TenantDefaultTokenQuotaOrganizationsClientCredentialsOutput)
+}
+
+type TenantDefaultTokenQuotaOrganizationsPtrOutput struct{ *pulumi.OutputState }
+
+func (TenantDefaultTokenQuotaOrganizationsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TenantDefaultTokenQuotaOrganizations)(nil)).Elem()
+}
+
+func (o TenantDefaultTokenQuotaOrganizationsPtrOutput) ToTenantDefaultTokenQuotaOrganizationsPtrOutput() TenantDefaultTokenQuotaOrganizationsPtrOutput {
+	return o
+}
+
+func (o TenantDefaultTokenQuotaOrganizationsPtrOutput) ToTenantDefaultTokenQuotaOrganizationsPtrOutputWithContext(ctx context.Context) TenantDefaultTokenQuotaOrganizationsPtrOutput {
+	return o
+}
+
+func (o TenantDefaultTokenQuotaOrganizationsPtrOutput) Elem() TenantDefaultTokenQuotaOrganizationsOutput {
+	return o.ApplyT(func(v *TenantDefaultTokenQuotaOrganizations) TenantDefaultTokenQuotaOrganizations {
+		if v != nil {
+			return *v
+		}
+		var ret TenantDefaultTokenQuotaOrganizations
+		return ret
+	}).(TenantDefaultTokenQuotaOrganizationsOutput)
+}
+
+// The token quota configuration for client credentials.
+func (o TenantDefaultTokenQuotaOrganizationsPtrOutput) ClientCredentials() TenantDefaultTokenQuotaOrganizationsClientCredentialsPtrOutput {
+	return o.ApplyT(func(v *TenantDefaultTokenQuotaOrganizations) *TenantDefaultTokenQuotaOrganizationsClientCredentials {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientCredentials
+	}).(TenantDefaultTokenQuotaOrganizationsClientCredentialsPtrOutput)
+}
+
+type TenantDefaultTokenQuotaOrganizationsClientCredentials struct {
+	// If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+	Enforce *bool `pulumi:"enforce"`
+	// Maximum number of issued tokens per day
+	PerDay *int `pulumi:"perDay"`
+	// Maximum number of issued tokens per hour
+	PerHour *int `pulumi:"perHour"`
+}
+
+// TenantDefaultTokenQuotaOrganizationsClientCredentialsInput is an input type that accepts TenantDefaultTokenQuotaOrganizationsClientCredentialsArgs and TenantDefaultTokenQuotaOrganizationsClientCredentialsOutput values.
+// You can construct a concrete instance of `TenantDefaultTokenQuotaOrganizationsClientCredentialsInput` via:
+//
+//	TenantDefaultTokenQuotaOrganizationsClientCredentialsArgs{...}
+type TenantDefaultTokenQuotaOrganizationsClientCredentialsInput interface {
+	pulumi.Input
+
+	ToTenantDefaultTokenQuotaOrganizationsClientCredentialsOutput() TenantDefaultTokenQuotaOrganizationsClientCredentialsOutput
+	ToTenantDefaultTokenQuotaOrganizationsClientCredentialsOutputWithContext(context.Context) TenantDefaultTokenQuotaOrganizationsClientCredentialsOutput
+}
+
+type TenantDefaultTokenQuotaOrganizationsClientCredentialsArgs struct {
+	// If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+	Enforce pulumi.BoolPtrInput `pulumi:"enforce"`
+	// Maximum number of issued tokens per day
+	PerDay pulumi.IntPtrInput `pulumi:"perDay"`
+	// Maximum number of issued tokens per hour
+	PerHour pulumi.IntPtrInput `pulumi:"perHour"`
+}
+
+func (TenantDefaultTokenQuotaOrganizationsClientCredentialsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TenantDefaultTokenQuotaOrganizationsClientCredentials)(nil)).Elem()
+}
+
+func (i TenantDefaultTokenQuotaOrganizationsClientCredentialsArgs) ToTenantDefaultTokenQuotaOrganizationsClientCredentialsOutput() TenantDefaultTokenQuotaOrganizationsClientCredentialsOutput {
+	return i.ToTenantDefaultTokenQuotaOrganizationsClientCredentialsOutputWithContext(context.Background())
+}
+
+func (i TenantDefaultTokenQuotaOrganizationsClientCredentialsArgs) ToTenantDefaultTokenQuotaOrganizationsClientCredentialsOutputWithContext(ctx context.Context) TenantDefaultTokenQuotaOrganizationsClientCredentialsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TenantDefaultTokenQuotaOrganizationsClientCredentialsOutput)
+}
+
+func (i TenantDefaultTokenQuotaOrganizationsClientCredentialsArgs) ToTenantDefaultTokenQuotaOrganizationsClientCredentialsPtrOutput() TenantDefaultTokenQuotaOrganizationsClientCredentialsPtrOutput {
+	return i.ToTenantDefaultTokenQuotaOrganizationsClientCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i TenantDefaultTokenQuotaOrganizationsClientCredentialsArgs) ToTenantDefaultTokenQuotaOrganizationsClientCredentialsPtrOutputWithContext(ctx context.Context) TenantDefaultTokenQuotaOrganizationsClientCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TenantDefaultTokenQuotaOrganizationsClientCredentialsOutput).ToTenantDefaultTokenQuotaOrganizationsClientCredentialsPtrOutputWithContext(ctx)
+}
+
+// TenantDefaultTokenQuotaOrganizationsClientCredentialsPtrInput is an input type that accepts TenantDefaultTokenQuotaOrganizationsClientCredentialsArgs, TenantDefaultTokenQuotaOrganizationsClientCredentialsPtr and TenantDefaultTokenQuotaOrganizationsClientCredentialsPtrOutput values.
+// You can construct a concrete instance of `TenantDefaultTokenQuotaOrganizationsClientCredentialsPtrInput` via:
+//
+//	        TenantDefaultTokenQuotaOrganizationsClientCredentialsArgs{...}
+//
+//	or:
+//
+//	        nil
+type TenantDefaultTokenQuotaOrganizationsClientCredentialsPtrInput interface {
+	pulumi.Input
+
+	ToTenantDefaultTokenQuotaOrganizationsClientCredentialsPtrOutput() TenantDefaultTokenQuotaOrganizationsClientCredentialsPtrOutput
+	ToTenantDefaultTokenQuotaOrganizationsClientCredentialsPtrOutputWithContext(context.Context) TenantDefaultTokenQuotaOrganizationsClientCredentialsPtrOutput
+}
+
+type tenantDefaultTokenQuotaOrganizationsClientCredentialsPtrType TenantDefaultTokenQuotaOrganizationsClientCredentialsArgs
+
+func TenantDefaultTokenQuotaOrganizationsClientCredentialsPtr(v *TenantDefaultTokenQuotaOrganizationsClientCredentialsArgs) TenantDefaultTokenQuotaOrganizationsClientCredentialsPtrInput {
+	return (*tenantDefaultTokenQuotaOrganizationsClientCredentialsPtrType)(v)
+}
+
+func (*tenantDefaultTokenQuotaOrganizationsClientCredentialsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TenantDefaultTokenQuotaOrganizationsClientCredentials)(nil)).Elem()
+}
+
+func (i *tenantDefaultTokenQuotaOrganizationsClientCredentialsPtrType) ToTenantDefaultTokenQuotaOrganizationsClientCredentialsPtrOutput() TenantDefaultTokenQuotaOrganizationsClientCredentialsPtrOutput {
+	return i.ToTenantDefaultTokenQuotaOrganizationsClientCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i *tenantDefaultTokenQuotaOrganizationsClientCredentialsPtrType) ToTenantDefaultTokenQuotaOrganizationsClientCredentialsPtrOutputWithContext(ctx context.Context) TenantDefaultTokenQuotaOrganizationsClientCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TenantDefaultTokenQuotaOrganizationsClientCredentialsPtrOutput)
+}
+
+type TenantDefaultTokenQuotaOrganizationsClientCredentialsOutput struct{ *pulumi.OutputState }
+
+func (TenantDefaultTokenQuotaOrganizationsClientCredentialsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TenantDefaultTokenQuotaOrganizationsClientCredentials)(nil)).Elem()
+}
+
+func (o TenantDefaultTokenQuotaOrganizationsClientCredentialsOutput) ToTenantDefaultTokenQuotaOrganizationsClientCredentialsOutput() TenantDefaultTokenQuotaOrganizationsClientCredentialsOutput {
+	return o
+}
+
+func (o TenantDefaultTokenQuotaOrganizationsClientCredentialsOutput) ToTenantDefaultTokenQuotaOrganizationsClientCredentialsOutputWithContext(ctx context.Context) TenantDefaultTokenQuotaOrganizationsClientCredentialsOutput {
+	return o
+}
+
+func (o TenantDefaultTokenQuotaOrganizationsClientCredentialsOutput) ToTenantDefaultTokenQuotaOrganizationsClientCredentialsPtrOutput() TenantDefaultTokenQuotaOrganizationsClientCredentialsPtrOutput {
+	return o.ToTenantDefaultTokenQuotaOrganizationsClientCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (o TenantDefaultTokenQuotaOrganizationsClientCredentialsOutput) ToTenantDefaultTokenQuotaOrganizationsClientCredentialsPtrOutputWithContext(ctx context.Context) TenantDefaultTokenQuotaOrganizationsClientCredentialsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TenantDefaultTokenQuotaOrganizationsClientCredentials) *TenantDefaultTokenQuotaOrganizationsClientCredentials {
+		return &v
+	}).(TenantDefaultTokenQuotaOrganizationsClientCredentialsPtrOutput)
+}
+
+// If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+func (o TenantDefaultTokenQuotaOrganizationsClientCredentialsOutput) Enforce() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TenantDefaultTokenQuotaOrganizationsClientCredentials) *bool { return v.Enforce }).(pulumi.BoolPtrOutput)
+}
+
+// Maximum number of issued tokens per day
+func (o TenantDefaultTokenQuotaOrganizationsClientCredentialsOutput) PerDay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TenantDefaultTokenQuotaOrganizationsClientCredentials) *int { return v.PerDay }).(pulumi.IntPtrOutput)
+}
+
+// Maximum number of issued tokens per hour
+func (o TenantDefaultTokenQuotaOrganizationsClientCredentialsOutput) PerHour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TenantDefaultTokenQuotaOrganizationsClientCredentials) *int { return v.PerHour }).(pulumi.IntPtrOutput)
+}
+
+type TenantDefaultTokenQuotaOrganizationsClientCredentialsPtrOutput struct{ *pulumi.OutputState }
+
+func (TenantDefaultTokenQuotaOrganizationsClientCredentialsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TenantDefaultTokenQuotaOrganizationsClientCredentials)(nil)).Elem()
+}
+
+func (o TenantDefaultTokenQuotaOrganizationsClientCredentialsPtrOutput) ToTenantDefaultTokenQuotaOrganizationsClientCredentialsPtrOutput() TenantDefaultTokenQuotaOrganizationsClientCredentialsPtrOutput {
+	return o
+}
+
+func (o TenantDefaultTokenQuotaOrganizationsClientCredentialsPtrOutput) ToTenantDefaultTokenQuotaOrganizationsClientCredentialsPtrOutputWithContext(ctx context.Context) TenantDefaultTokenQuotaOrganizationsClientCredentialsPtrOutput {
+	return o
+}
+
+func (o TenantDefaultTokenQuotaOrganizationsClientCredentialsPtrOutput) Elem() TenantDefaultTokenQuotaOrganizationsClientCredentialsOutput {
+	return o.ApplyT(func(v *TenantDefaultTokenQuotaOrganizationsClientCredentials) TenantDefaultTokenQuotaOrganizationsClientCredentials {
+		if v != nil {
+			return *v
+		}
+		var ret TenantDefaultTokenQuotaOrganizationsClientCredentials
+		return ret
+	}).(TenantDefaultTokenQuotaOrganizationsClientCredentialsOutput)
+}
+
+// If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+func (o TenantDefaultTokenQuotaOrganizationsClientCredentialsPtrOutput) Enforce() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TenantDefaultTokenQuotaOrganizationsClientCredentials) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enforce
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Maximum number of issued tokens per day
+func (o TenantDefaultTokenQuotaOrganizationsClientCredentialsPtrOutput) PerDay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TenantDefaultTokenQuotaOrganizationsClientCredentials) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PerDay
+	}).(pulumi.IntPtrOutput)
+}
+
+// Maximum number of issued tokens per hour
+func (o TenantDefaultTokenQuotaOrganizationsClientCredentialsPtrOutput) PerHour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TenantDefaultTokenQuotaOrganizationsClientCredentials) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PerHour
+	}).(pulumi.IntPtrOutput)
 }
 
 type TenantErrorPage struct {
@@ -39418,6 +40826,218 @@ func (o GetClientTokenExchangeArrayOutput) Index(i pulumi.IntInput) GetClientTok
 	}).(GetClientTokenExchangeOutput)
 }
 
+type GetClientTokenQuota struct {
+	// The token quota configuration for client credentials.
+	ClientCredentials []GetClientTokenQuotaClientCredential `pulumi:"clientCredentials"`
+}
+
+// GetClientTokenQuotaInput is an input type that accepts GetClientTokenQuotaArgs and GetClientTokenQuotaOutput values.
+// You can construct a concrete instance of `GetClientTokenQuotaInput` via:
+//
+//	GetClientTokenQuotaArgs{...}
+type GetClientTokenQuotaInput interface {
+	pulumi.Input
+
+	ToGetClientTokenQuotaOutput() GetClientTokenQuotaOutput
+	ToGetClientTokenQuotaOutputWithContext(context.Context) GetClientTokenQuotaOutput
+}
+
+type GetClientTokenQuotaArgs struct {
+	// The token quota configuration for client credentials.
+	ClientCredentials GetClientTokenQuotaClientCredentialArrayInput `pulumi:"clientCredentials"`
+}
+
+func (GetClientTokenQuotaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientTokenQuota)(nil)).Elem()
+}
+
+func (i GetClientTokenQuotaArgs) ToGetClientTokenQuotaOutput() GetClientTokenQuotaOutput {
+	return i.ToGetClientTokenQuotaOutputWithContext(context.Background())
+}
+
+func (i GetClientTokenQuotaArgs) ToGetClientTokenQuotaOutputWithContext(ctx context.Context) GetClientTokenQuotaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientTokenQuotaOutput)
+}
+
+// GetClientTokenQuotaArrayInput is an input type that accepts GetClientTokenQuotaArray and GetClientTokenQuotaArrayOutput values.
+// You can construct a concrete instance of `GetClientTokenQuotaArrayInput` via:
+//
+//	GetClientTokenQuotaArray{ GetClientTokenQuotaArgs{...} }
+type GetClientTokenQuotaArrayInput interface {
+	pulumi.Input
+
+	ToGetClientTokenQuotaArrayOutput() GetClientTokenQuotaArrayOutput
+	ToGetClientTokenQuotaArrayOutputWithContext(context.Context) GetClientTokenQuotaArrayOutput
+}
+
+type GetClientTokenQuotaArray []GetClientTokenQuotaInput
+
+func (GetClientTokenQuotaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientTokenQuota)(nil)).Elem()
+}
+
+func (i GetClientTokenQuotaArray) ToGetClientTokenQuotaArrayOutput() GetClientTokenQuotaArrayOutput {
+	return i.ToGetClientTokenQuotaArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientTokenQuotaArray) ToGetClientTokenQuotaArrayOutputWithContext(ctx context.Context) GetClientTokenQuotaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientTokenQuotaArrayOutput)
+}
+
+type GetClientTokenQuotaOutput struct{ *pulumi.OutputState }
+
+func (GetClientTokenQuotaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientTokenQuota)(nil)).Elem()
+}
+
+func (o GetClientTokenQuotaOutput) ToGetClientTokenQuotaOutput() GetClientTokenQuotaOutput {
+	return o
+}
+
+func (o GetClientTokenQuotaOutput) ToGetClientTokenQuotaOutputWithContext(ctx context.Context) GetClientTokenQuotaOutput {
+	return o
+}
+
+// The token quota configuration for client credentials.
+func (o GetClientTokenQuotaOutput) ClientCredentials() GetClientTokenQuotaClientCredentialArrayOutput {
+	return o.ApplyT(func(v GetClientTokenQuota) []GetClientTokenQuotaClientCredential { return v.ClientCredentials }).(GetClientTokenQuotaClientCredentialArrayOutput)
+}
+
+type GetClientTokenQuotaArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientTokenQuotaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientTokenQuota)(nil)).Elem()
+}
+
+func (o GetClientTokenQuotaArrayOutput) ToGetClientTokenQuotaArrayOutput() GetClientTokenQuotaArrayOutput {
+	return o
+}
+
+func (o GetClientTokenQuotaArrayOutput) ToGetClientTokenQuotaArrayOutputWithContext(ctx context.Context) GetClientTokenQuotaArrayOutput {
+	return o
+}
+
+func (o GetClientTokenQuotaArrayOutput) Index(i pulumi.IntInput) GetClientTokenQuotaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientTokenQuota {
+		return vs[0].([]GetClientTokenQuota)[vs[1].(int)]
+	}).(GetClientTokenQuotaOutput)
+}
+
+type GetClientTokenQuotaClientCredential struct {
+	// If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+	Enforce bool `pulumi:"enforce"`
+	// Maximum number of issued tokens per day
+	PerDay int `pulumi:"perDay"`
+	// Maximum number of issued tokens per hour
+	PerHour int `pulumi:"perHour"`
+}
+
+// GetClientTokenQuotaClientCredentialInput is an input type that accepts GetClientTokenQuotaClientCredentialArgs and GetClientTokenQuotaClientCredentialOutput values.
+// You can construct a concrete instance of `GetClientTokenQuotaClientCredentialInput` via:
+//
+//	GetClientTokenQuotaClientCredentialArgs{...}
+type GetClientTokenQuotaClientCredentialInput interface {
+	pulumi.Input
+
+	ToGetClientTokenQuotaClientCredentialOutput() GetClientTokenQuotaClientCredentialOutput
+	ToGetClientTokenQuotaClientCredentialOutputWithContext(context.Context) GetClientTokenQuotaClientCredentialOutput
+}
+
+type GetClientTokenQuotaClientCredentialArgs struct {
+	// If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+	Enforce pulumi.BoolInput `pulumi:"enforce"`
+	// Maximum number of issued tokens per day
+	PerDay pulumi.IntInput `pulumi:"perDay"`
+	// Maximum number of issued tokens per hour
+	PerHour pulumi.IntInput `pulumi:"perHour"`
+}
+
+func (GetClientTokenQuotaClientCredentialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientTokenQuotaClientCredential)(nil)).Elem()
+}
+
+func (i GetClientTokenQuotaClientCredentialArgs) ToGetClientTokenQuotaClientCredentialOutput() GetClientTokenQuotaClientCredentialOutput {
+	return i.ToGetClientTokenQuotaClientCredentialOutputWithContext(context.Background())
+}
+
+func (i GetClientTokenQuotaClientCredentialArgs) ToGetClientTokenQuotaClientCredentialOutputWithContext(ctx context.Context) GetClientTokenQuotaClientCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientTokenQuotaClientCredentialOutput)
+}
+
+// GetClientTokenQuotaClientCredentialArrayInput is an input type that accepts GetClientTokenQuotaClientCredentialArray and GetClientTokenQuotaClientCredentialArrayOutput values.
+// You can construct a concrete instance of `GetClientTokenQuotaClientCredentialArrayInput` via:
+//
+//	GetClientTokenQuotaClientCredentialArray{ GetClientTokenQuotaClientCredentialArgs{...} }
+type GetClientTokenQuotaClientCredentialArrayInput interface {
+	pulumi.Input
+
+	ToGetClientTokenQuotaClientCredentialArrayOutput() GetClientTokenQuotaClientCredentialArrayOutput
+	ToGetClientTokenQuotaClientCredentialArrayOutputWithContext(context.Context) GetClientTokenQuotaClientCredentialArrayOutput
+}
+
+type GetClientTokenQuotaClientCredentialArray []GetClientTokenQuotaClientCredentialInput
+
+func (GetClientTokenQuotaClientCredentialArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientTokenQuotaClientCredential)(nil)).Elem()
+}
+
+func (i GetClientTokenQuotaClientCredentialArray) ToGetClientTokenQuotaClientCredentialArrayOutput() GetClientTokenQuotaClientCredentialArrayOutput {
+	return i.ToGetClientTokenQuotaClientCredentialArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientTokenQuotaClientCredentialArray) ToGetClientTokenQuotaClientCredentialArrayOutputWithContext(ctx context.Context) GetClientTokenQuotaClientCredentialArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientTokenQuotaClientCredentialArrayOutput)
+}
+
+type GetClientTokenQuotaClientCredentialOutput struct{ *pulumi.OutputState }
+
+func (GetClientTokenQuotaClientCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientTokenQuotaClientCredential)(nil)).Elem()
+}
+
+func (o GetClientTokenQuotaClientCredentialOutput) ToGetClientTokenQuotaClientCredentialOutput() GetClientTokenQuotaClientCredentialOutput {
+	return o
+}
+
+func (o GetClientTokenQuotaClientCredentialOutput) ToGetClientTokenQuotaClientCredentialOutputWithContext(ctx context.Context) GetClientTokenQuotaClientCredentialOutput {
+	return o
+}
+
+// If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+func (o GetClientTokenQuotaClientCredentialOutput) Enforce() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientTokenQuotaClientCredential) bool { return v.Enforce }).(pulumi.BoolOutput)
+}
+
+// Maximum number of issued tokens per day
+func (o GetClientTokenQuotaClientCredentialOutput) PerDay() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClientTokenQuotaClientCredential) int { return v.PerDay }).(pulumi.IntOutput)
+}
+
+// Maximum number of issued tokens per hour
+func (o GetClientTokenQuotaClientCredentialOutput) PerHour() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClientTokenQuotaClientCredential) int { return v.PerHour }).(pulumi.IntOutput)
+}
+
+type GetClientTokenQuotaClientCredentialArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientTokenQuotaClientCredentialArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientTokenQuotaClientCredential)(nil)).Elem()
+}
+
+func (o GetClientTokenQuotaClientCredentialArrayOutput) ToGetClientTokenQuotaClientCredentialArrayOutput() GetClientTokenQuotaClientCredentialArrayOutput {
+	return o
+}
+
+func (o GetClientTokenQuotaClientCredentialArrayOutput) ToGetClientTokenQuotaClientCredentialArrayOutputWithContext(ctx context.Context) GetClientTokenQuotaClientCredentialArrayOutput {
+	return o
+}
+
+func (o GetClientTokenQuotaClientCredentialArrayOutput) Index(i pulumi.IntInput) GetClientTokenQuotaClientCredentialOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientTokenQuotaClientCredential {
+		return vs[0].([]GetClientTokenQuotaClientCredential)[vs[1].(int)]
+	}).(GetClientTokenQuotaClientCredentialOutput)
+}
+
 type GetClientsClient struct {
 	// List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
 	AllowedClients []string `pulumi:"allowedClients"`
@@ -39449,6 +41069,8 @@ type GetClientsClient struct {
 	SessionTransfers []GetClientsClientSessionTransfer `pulumi:"sessionTransfers"`
 	// Allows configuration for token exchange
 	TokenExchanges []GetClientsClientTokenExchange `pulumi:"tokenExchanges"`
+	// The token quota configuration.
+	TokenQuotas []GetClientsClientTokenQuota `pulumi:"tokenQuotas"`
 	// URLs that represent valid web origins for use with web message response mode.
 	WebOrigins []string `pulumi:"webOrigins"`
 }
@@ -39495,6 +41117,8 @@ type GetClientsClientArgs struct {
 	SessionTransfers GetClientsClientSessionTransferArrayInput `pulumi:"sessionTransfers"`
 	// Allows configuration for token exchange
 	TokenExchanges GetClientsClientTokenExchangeArrayInput `pulumi:"tokenExchanges"`
+	// The token quota configuration.
+	TokenQuotas GetClientsClientTokenQuotaArrayInput `pulumi:"tokenQuotas"`
 	// URLs that represent valid web origins for use with web message response mode.
 	WebOrigins pulumi.StringArrayInput `pulumi:"webOrigins"`
 }
@@ -39626,6 +41250,11 @@ func (o GetClientsClientOutput) SessionTransfers() GetClientsClientSessionTransf
 // Allows configuration for token exchange
 func (o GetClientsClientOutput) TokenExchanges() GetClientsClientTokenExchangeArrayOutput {
 	return o.ApplyT(func(v GetClientsClient) []GetClientsClientTokenExchange { return v.TokenExchanges }).(GetClientsClientTokenExchangeArrayOutput)
+}
+
+// The token quota configuration.
+func (o GetClientsClientOutput) TokenQuotas() GetClientsClientTokenQuotaArrayOutput {
+	return o.ApplyT(func(v GetClientsClient) []GetClientsClientTokenQuota { return v.TokenQuotas }).(GetClientsClientTokenQuotaArrayOutput)
 }
 
 // URLs that represent valid web origins for use with web message response mode.
@@ -40083,6 +41712,220 @@ func (o GetClientsClientTokenExchangeArrayOutput) Index(i pulumi.IntInput) GetCl
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientsClientTokenExchange {
 		return vs[0].([]GetClientsClientTokenExchange)[vs[1].(int)]
 	}).(GetClientsClientTokenExchangeOutput)
+}
+
+type GetClientsClientTokenQuota struct {
+	// The token quota configuration for client credentials.
+	ClientCredentials []GetClientsClientTokenQuotaClientCredential `pulumi:"clientCredentials"`
+}
+
+// GetClientsClientTokenQuotaInput is an input type that accepts GetClientsClientTokenQuotaArgs and GetClientsClientTokenQuotaOutput values.
+// You can construct a concrete instance of `GetClientsClientTokenQuotaInput` via:
+//
+//	GetClientsClientTokenQuotaArgs{...}
+type GetClientsClientTokenQuotaInput interface {
+	pulumi.Input
+
+	ToGetClientsClientTokenQuotaOutput() GetClientsClientTokenQuotaOutput
+	ToGetClientsClientTokenQuotaOutputWithContext(context.Context) GetClientsClientTokenQuotaOutput
+}
+
+type GetClientsClientTokenQuotaArgs struct {
+	// The token quota configuration for client credentials.
+	ClientCredentials GetClientsClientTokenQuotaClientCredentialArrayInput `pulumi:"clientCredentials"`
+}
+
+func (GetClientsClientTokenQuotaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClientTokenQuota)(nil)).Elem()
+}
+
+func (i GetClientsClientTokenQuotaArgs) ToGetClientsClientTokenQuotaOutput() GetClientsClientTokenQuotaOutput {
+	return i.ToGetClientsClientTokenQuotaOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientTokenQuotaArgs) ToGetClientsClientTokenQuotaOutputWithContext(ctx context.Context) GetClientsClientTokenQuotaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientTokenQuotaOutput)
+}
+
+// GetClientsClientTokenQuotaArrayInput is an input type that accepts GetClientsClientTokenQuotaArray and GetClientsClientTokenQuotaArrayOutput values.
+// You can construct a concrete instance of `GetClientsClientTokenQuotaArrayInput` via:
+//
+//	GetClientsClientTokenQuotaArray{ GetClientsClientTokenQuotaArgs{...} }
+type GetClientsClientTokenQuotaArrayInput interface {
+	pulumi.Input
+
+	ToGetClientsClientTokenQuotaArrayOutput() GetClientsClientTokenQuotaArrayOutput
+	ToGetClientsClientTokenQuotaArrayOutputWithContext(context.Context) GetClientsClientTokenQuotaArrayOutput
+}
+
+type GetClientsClientTokenQuotaArray []GetClientsClientTokenQuotaInput
+
+func (GetClientsClientTokenQuotaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClientTokenQuota)(nil)).Elem()
+}
+
+func (i GetClientsClientTokenQuotaArray) ToGetClientsClientTokenQuotaArrayOutput() GetClientsClientTokenQuotaArrayOutput {
+	return i.ToGetClientsClientTokenQuotaArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientTokenQuotaArray) ToGetClientsClientTokenQuotaArrayOutputWithContext(ctx context.Context) GetClientsClientTokenQuotaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientTokenQuotaArrayOutput)
+}
+
+type GetClientsClientTokenQuotaOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientTokenQuotaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClientTokenQuota)(nil)).Elem()
+}
+
+func (o GetClientsClientTokenQuotaOutput) ToGetClientsClientTokenQuotaOutput() GetClientsClientTokenQuotaOutput {
+	return o
+}
+
+func (o GetClientsClientTokenQuotaOutput) ToGetClientsClientTokenQuotaOutputWithContext(ctx context.Context) GetClientsClientTokenQuotaOutput {
+	return o
+}
+
+// The token quota configuration for client credentials.
+func (o GetClientsClientTokenQuotaOutput) ClientCredentials() GetClientsClientTokenQuotaClientCredentialArrayOutput {
+	return o.ApplyT(func(v GetClientsClientTokenQuota) []GetClientsClientTokenQuotaClientCredential {
+		return v.ClientCredentials
+	}).(GetClientsClientTokenQuotaClientCredentialArrayOutput)
+}
+
+type GetClientsClientTokenQuotaArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientTokenQuotaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClientTokenQuota)(nil)).Elem()
+}
+
+func (o GetClientsClientTokenQuotaArrayOutput) ToGetClientsClientTokenQuotaArrayOutput() GetClientsClientTokenQuotaArrayOutput {
+	return o
+}
+
+func (o GetClientsClientTokenQuotaArrayOutput) ToGetClientsClientTokenQuotaArrayOutputWithContext(ctx context.Context) GetClientsClientTokenQuotaArrayOutput {
+	return o
+}
+
+func (o GetClientsClientTokenQuotaArrayOutput) Index(i pulumi.IntInput) GetClientsClientTokenQuotaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientsClientTokenQuota {
+		return vs[0].([]GetClientsClientTokenQuota)[vs[1].(int)]
+	}).(GetClientsClientTokenQuotaOutput)
+}
+
+type GetClientsClientTokenQuotaClientCredential struct {
+	// If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+	Enforce bool `pulumi:"enforce"`
+	// Maximum number of issued tokens per day
+	PerDay int `pulumi:"perDay"`
+	// Maximum number of issued tokens per hour
+	PerHour int `pulumi:"perHour"`
+}
+
+// GetClientsClientTokenQuotaClientCredentialInput is an input type that accepts GetClientsClientTokenQuotaClientCredentialArgs and GetClientsClientTokenQuotaClientCredentialOutput values.
+// You can construct a concrete instance of `GetClientsClientTokenQuotaClientCredentialInput` via:
+//
+//	GetClientsClientTokenQuotaClientCredentialArgs{...}
+type GetClientsClientTokenQuotaClientCredentialInput interface {
+	pulumi.Input
+
+	ToGetClientsClientTokenQuotaClientCredentialOutput() GetClientsClientTokenQuotaClientCredentialOutput
+	ToGetClientsClientTokenQuotaClientCredentialOutputWithContext(context.Context) GetClientsClientTokenQuotaClientCredentialOutput
+}
+
+type GetClientsClientTokenQuotaClientCredentialArgs struct {
+	// If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+	Enforce pulumi.BoolInput `pulumi:"enforce"`
+	// Maximum number of issued tokens per day
+	PerDay pulumi.IntInput `pulumi:"perDay"`
+	// Maximum number of issued tokens per hour
+	PerHour pulumi.IntInput `pulumi:"perHour"`
+}
+
+func (GetClientsClientTokenQuotaClientCredentialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClientTokenQuotaClientCredential)(nil)).Elem()
+}
+
+func (i GetClientsClientTokenQuotaClientCredentialArgs) ToGetClientsClientTokenQuotaClientCredentialOutput() GetClientsClientTokenQuotaClientCredentialOutput {
+	return i.ToGetClientsClientTokenQuotaClientCredentialOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientTokenQuotaClientCredentialArgs) ToGetClientsClientTokenQuotaClientCredentialOutputWithContext(ctx context.Context) GetClientsClientTokenQuotaClientCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientTokenQuotaClientCredentialOutput)
+}
+
+// GetClientsClientTokenQuotaClientCredentialArrayInput is an input type that accepts GetClientsClientTokenQuotaClientCredentialArray and GetClientsClientTokenQuotaClientCredentialArrayOutput values.
+// You can construct a concrete instance of `GetClientsClientTokenQuotaClientCredentialArrayInput` via:
+//
+//	GetClientsClientTokenQuotaClientCredentialArray{ GetClientsClientTokenQuotaClientCredentialArgs{...} }
+type GetClientsClientTokenQuotaClientCredentialArrayInput interface {
+	pulumi.Input
+
+	ToGetClientsClientTokenQuotaClientCredentialArrayOutput() GetClientsClientTokenQuotaClientCredentialArrayOutput
+	ToGetClientsClientTokenQuotaClientCredentialArrayOutputWithContext(context.Context) GetClientsClientTokenQuotaClientCredentialArrayOutput
+}
+
+type GetClientsClientTokenQuotaClientCredentialArray []GetClientsClientTokenQuotaClientCredentialInput
+
+func (GetClientsClientTokenQuotaClientCredentialArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClientTokenQuotaClientCredential)(nil)).Elem()
+}
+
+func (i GetClientsClientTokenQuotaClientCredentialArray) ToGetClientsClientTokenQuotaClientCredentialArrayOutput() GetClientsClientTokenQuotaClientCredentialArrayOutput {
+	return i.ToGetClientsClientTokenQuotaClientCredentialArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientTokenQuotaClientCredentialArray) ToGetClientsClientTokenQuotaClientCredentialArrayOutputWithContext(ctx context.Context) GetClientsClientTokenQuotaClientCredentialArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientTokenQuotaClientCredentialArrayOutput)
+}
+
+type GetClientsClientTokenQuotaClientCredentialOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientTokenQuotaClientCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClientTokenQuotaClientCredential)(nil)).Elem()
+}
+
+func (o GetClientsClientTokenQuotaClientCredentialOutput) ToGetClientsClientTokenQuotaClientCredentialOutput() GetClientsClientTokenQuotaClientCredentialOutput {
+	return o
+}
+
+func (o GetClientsClientTokenQuotaClientCredentialOutput) ToGetClientsClientTokenQuotaClientCredentialOutputWithContext(ctx context.Context) GetClientsClientTokenQuotaClientCredentialOutput {
+	return o
+}
+
+// If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+func (o GetClientsClientTokenQuotaClientCredentialOutput) Enforce() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientsClientTokenQuotaClientCredential) bool { return v.Enforce }).(pulumi.BoolOutput)
+}
+
+// Maximum number of issued tokens per day
+func (o GetClientsClientTokenQuotaClientCredentialOutput) PerDay() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClientsClientTokenQuotaClientCredential) int { return v.PerDay }).(pulumi.IntOutput)
+}
+
+// Maximum number of issued tokens per hour
+func (o GetClientsClientTokenQuotaClientCredentialOutput) PerHour() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClientsClientTokenQuotaClientCredential) int { return v.PerHour }).(pulumi.IntOutput)
+}
+
+type GetClientsClientTokenQuotaClientCredentialArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientTokenQuotaClientCredentialArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClientTokenQuotaClientCredential)(nil)).Elem()
+}
+
+func (o GetClientsClientTokenQuotaClientCredentialArrayOutput) ToGetClientsClientTokenQuotaClientCredentialArrayOutput() GetClientsClientTokenQuotaClientCredentialArrayOutput {
+	return o
+}
+
+func (o GetClientsClientTokenQuotaClientCredentialArrayOutput) ToGetClientsClientTokenQuotaClientCredentialArrayOutputWithContext(ctx context.Context) GetClientsClientTokenQuotaClientCredentialArrayOutput {
+	return o
+}
+
+func (o GetClientsClientTokenQuotaClientCredentialArrayOutput) Index(i pulumi.IntInput) GetClientsClientTokenQuotaClientCredentialOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientsClientTokenQuotaClientCredential {
+		return vs[0].([]GetClientsClientTokenQuotaClientCredential)[vs[1].(int)]
+	}).(GetClientsClientTokenQuotaClientCredentialOutput)
 }
 
 type GetConnectionOption struct {
@@ -45882,6 +47725,220 @@ func (o GetOrganizationConnectionTypeArrayOutput) Index(i pulumi.IntInput) GetOr
 	}).(GetOrganizationConnectionTypeOutput)
 }
 
+type GetOrganizationTokenQuota struct {
+	// The token quota configuration for client credentials.
+	ClientCredentials []GetOrganizationTokenQuotaClientCredential `pulumi:"clientCredentials"`
+}
+
+// GetOrganizationTokenQuotaInput is an input type that accepts GetOrganizationTokenQuotaArgs and GetOrganizationTokenQuotaOutput values.
+// You can construct a concrete instance of `GetOrganizationTokenQuotaInput` via:
+//
+//	GetOrganizationTokenQuotaArgs{...}
+type GetOrganizationTokenQuotaInput interface {
+	pulumi.Input
+
+	ToGetOrganizationTokenQuotaOutput() GetOrganizationTokenQuotaOutput
+	ToGetOrganizationTokenQuotaOutputWithContext(context.Context) GetOrganizationTokenQuotaOutput
+}
+
+type GetOrganizationTokenQuotaArgs struct {
+	// The token quota configuration for client credentials.
+	ClientCredentials GetOrganizationTokenQuotaClientCredentialArrayInput `pulumi:"clientCredentials"`
+}
+
+func (GetOrganizationTokenQuotaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationTokenQuota)(nil)).Elem()
+}
+
+func (i GetOrganizationTokenQuotaArgs) ToGetOrganizationTokenQuotaOutput() GetOrganizationTokenQuotaOutput {
+	return i.ToGetOrganizationTokenQuotaOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationTokenQuotaArgs) ToGetOrganizationTokenQuotaOutputWithContext(ctx context.Context) GetOrganizationTokenQuotaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationTokenQuotaOutput)
+}
+
+// GetOrganizationTokenQuotaArrayInput is an input type that accepts GetOrganizationTokenQuotaArray and GetOrganizationTokenQuotaArrayOutput values.
+// You can construct a concrete instance of `GetOrganizationTokenQuotaArrayInput` via:
+//
+//	GetOrganizationTokenQuotaArray{ GetOrganizationTokenQuotaArgs{...} }
+type GetOrganizationTokenQuotaArrayInput interface {
+	pulumi.Input
+
+	ToGetOrganizationTokenQuotaArrayOutput() GetOrganizationTokenQuotaArrayOutput
+	ToGetOrganizationTokenQuotaArrayOutputWithContext(context.Context) GetOrganizationTokenQuotaArrayOutput
+}
+
+type GetOrganizationTokenQuotaArray []GetOrganizationTokenQuotaInput
+
+func (GetOrganizationTokenQuotaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationTokenQuota)(nil)).Elem()
+}
+
+func (i GetOrganizationTokenQuotaArray) ToGetOrganizationTokenQuotaArrayOutput() GetOrganizationTokenQuotaArrayOutput {
+	return i.ToGetOrganizationTokenQuotaArrayOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationTokenQuotaArray) ToGetOrganizationTokenQuotaArrayOutputWithContext(ctx context.Context) GetOrganizationTokenQuotaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationTokenQuotaArrayOutput)
+}
+
+type GetOrganizationTokenQuotaOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationTokenQuotaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationTokenQuota)(nil)).Elem()
+}
+
+func (o GetOrganizationTokenQuotaOutput) ToGetOrganizationTokenQuotaOutput() GetOrganizationTokenQuotaOutput {
+	return o
+}
+
+func (o GetOrganizationTokenQuotaOutput) ToGetOrganizationTokenQuotaOutputWithContext(ctx context.Context) GetOrganizationTokenQuotaOutput {
+	return o
+}
+
+// The token quota configuration for client credentials.
+func (o GetOrganizationTokenQuotaOutput) ClientCredentials() GetOrganizationTokenQuotaClientCredentialArrayOutput {
+	return o.ApplyT(func(v GetOrganizationTokenQuota) []GetOrganizationTokenQuotaClientCredential {
+		return v.ClientCredentials
+	}).(GetOrganizationTokenQuotaClientCredentialArrayOutput)
+}
+
+type GetOrganizationTokenQuotaArrayOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationTokenQuotaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationTokenQuota)(nil)).Elem()
+}
+
+func (o GetOrganizationTokenQuotaArrayOutput) ToGetOrganizationTokenQuotaArrayOutput() GetOrganizationTokenQuotaArrayOutput {
+	return o
+}
+
+func (o GetOrganizationTokenQuotaArrayOutput) ToGetOrganizationTokenQuotaArrayOutputWithContext(ctx context.Context) GetOrganizationTokenQuotaArrayOutput {
+	return o
+}
+
+func (o GetOrganizationTokenQuotaArrayOutput) Index(i pulumi.IntInput) GetOrganizationTokenQuotaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOrganizationTokenQuota {
+		return vs[0].([]GetOrganizationTokenQuota)[vs[1].(int)]
+	}).(GetOrganizationTokenQuotaOutput)
+}
+
+type GetOrganizationTokenQuotaClientCredential struct {
+	// If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+	Enforce bool `pulumi:"enforce"`
+	// Maximum number of issued tokens per day
+	PerDay int `pulumi:"perDay"`
+	// Maximum number of issued tokens per hour
+	PerHour int `pulumi:"perHour"`
+}
+
+// GetOrganizationTokenQuotaClientCredentialInput is an input type that accepts GetOrganizationTokenQuotaClientCredentialArgs and GetOrganizationTokenQuotaClientCredentialOutput values.
+// You can construct a concrete instance of `GetOrganizationTokenQuotaClientCredentialInput` via:
+//
+//	GetOrganizationTokenQuotaClientCredentialArgs{...}
+type GetOrganizationTokenQuotaClientCredentialInput interface {
+	pulumi.Input
+
+	ToGetOrganizationTokenQuotaClientCredentialOutput() GetOrganizationTokenQuotaClientCredentialOutput
+	ToGetOrganizationTokenQuotaClientCredentialOutputWithContext(context.Context) GetOrganizationTokenQuotaClientCredentialOutput
+}
+
+type GetOrganizationTokenQuotaClientCredentialArgs struct {
+	// If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+	Enforce pulumi.BoolInput `pulumi:"enforce"`
+	// Maximum number of issued tokens per day
+	PerDay pulumi.IntInput `pulumi:"perDay"`
+	// Maximum number of issued tokens per hour
+	PerHour pulumi.IntInput `pulumi:"perHour"`
+}
+
+func (GetOrganizationTokenQuotaClientCredentialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationTokenQuotaClientCredential)(nil)).Elem()
+}
+
+func (i GetOrganizationTokenQuotaClientCredentialArgs) ToGetOrganizationTokenQuotaClientCredentialOutput() GetOrganizationTokenQuotaClientCredentialOutput {
+	return i.ToGetOrganizationTokenQuotaClientCredentialOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationTokenQuotaClientCredentialArgs) ToGetOrganizationTokenQuotaClientCredentialOutputWithContext(ctx context.Context) GetOrganizationTokenQuotaClientCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationTokenQuotaClientCredentialOutput)
+}
+
+// GetOrganizationTokenQuotaClientCredentialArrayInput is an input type that accepts GetOrganizationTokenQuotaClientCredentialArray and GetOrganizationTokenQuotaClientCredentialArrayOutput values.
+// You can construct a concrete instance of `GetOrganizationTokenQuotaClientCredentialArrayInput` via:
+//
+//	GetOrganizationTokenQuotaClientCredentialArray{ GetOrganizationTokenQuotaClientCredentialArgs{...} }
+type GetOrganizationTokenQuotaClientCredentialArrayInput interface {
+	pulumi.Input
+
+	ToGetOrganizationTokenQuotaClientCredentialArrayOutput() GetOrganizationTokenQuotaClientCredentialArrayOutput
+	ToGetOrganizationTokenQuotaClientCredentialArrayOutputWithContext(context.Context) GetOrganizationTokenQuotaClientCredentialArrayOutput
+}
+
+type GetOrganizationTokenQuotaClientCredentialArray []GetOrganizationTokenQuotaClientCredentialInput
+
+func (GetOrganizationTokenQuotaClientCredentialArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationTokenQuotaClientCredential)(nil)).Elem()
+}
+
+func (i GetOrganizationTokenQuotaClientCredentialArray) ToGetOrganizationTokenQuotaClientCredentialArrayOutput() GetOrganizationTokenQuotaClientCredentialArrayOutput {
+	return i.ToGetOrganizationTokenQuotaClientCredentialArrayOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationTokenQuotaClientCredentialArray) ToGetOrganizationTokenQuotaClientCredentialArrayOutputWithContext(ctx context.Context) GetOrganizationTokenQuotaClientCredentialArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationTokenQuotaClientCredentialArrayOutput)
+}
+
+type GetOrganizationTokenQuotaClientCredentialOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationTokenQuotaClientCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationTokenQuotaClientCredential)(nil)).Elem()
+}
+
+func (o GetOrganizationTokenQuotaClientCredentialOutput) ToGetOrganizationTokenQuotaClientCredentialOutput() GetOrganizationTokenQuotaClientCredentialOutput {
+	return o
+}
+
+func (o GetOrganizationTokenQuotaClientCredentialOutput) ToGetOrganizationTokenQuotaClientCredentialOutputWithContext(ctx context.Context) GetOrganizationTokenQuotaClientCredentialOutput {
+	return o
+}
+
+// If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+func (o GetOrganizationTokenQuotaClientCredentialOutput) Enforce() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetOrganizationTokenQuotaClientCredential) bool { return v.Enforce }).(pulumi.BoolOutput)
+}
+
+// Maximum number of issued tokens per day
+func (o GetOrganizationTokenQuotaClientCredentialOutput) PerDay() pulumi.IntOutput {
+	return o.ApplyT(func(v GetOrganizationTokenQuotaClientCredential) int { return v.PerDay }).(pulumi.IntOutput)
+}
+
+// Maximum number of issued tokens per hour
+func (o GetOrganizationTokenQuotaClientCredentialOutput) PerHour() pulumi.IntOutput {
+	return o.ApplyT(func(v GetOrganizationTokenQuotaClientCredential) int { return v.PerHour }).(pulumi.IntOutput)
+}
+
+type GetOrganizationTokenQuotaClientCredentialArrayOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationTokenQuotaClientCredentialArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationTokenQuotaClientCredential)(nil)).Elem()
+}
+
+func (o GetOrganizationTokenQuotaClientCredentialArrayOutput) ToGetOrganizationTokenQuotaClientCredentialArrayOutput() GetOrganizationTokenQuotaClientCredentialArrayOutput {
+	return o
+}
+
+func (o GetOrganizationTokenQuotaClientCredentialArrayOutput) ToGetOrganizationTokenQuotaClientCredentialArrayOutputWithContext(ctx context.Context) GetOrganizationTokenQuotaClientCredentialArrayOutput {
+	return o
+}
+
+func (o GetOrganizationTokenQuotaClientCredentialArrayOutput) Index(i pulumi.IntInput) GetOrganizationTokenQuotaClientCredentialOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOrganizationTokenQuotaClientCredential {
+		return vs[0].([]GetOrganizationTokenQuotaClientCredential)[vs[1].(int)]
+	}).(GetOrganizationTokenQuotaClientCredentialOutput)
+}
+
 type GetPagesChangePassword struct {
 	// Indicates whether to use the custom Reset Password HTML (`true`) or the default Auth0 page (`false`).
 	Enabled bool `pulumi:"enabled"`
@@ -47971,6 +50028,540 @@ func (o GetSigningKeysSigningKeyArrayOutput) Index(i pulumi.IntInput) GetSigning
 	}).(GetSigningKeysSigningKeyOutput)
 }
 
+type GetTenantDefaultTokenQuota struct {
+	// The token quota configuration.
+	Clients []GetTenantDefaultTokenQuotaClient `pulumi:"clients"`
+	// The token quota configuration.
+	Organizations []GetTenantDefaultTokenQuotaOrganization `pulumi:"organizations"`
+}
+
+// GetTenantDefaultTokenQuotaInput is an input type that accepts GetTenantDefaultTokenQuotaArgs and GetTenantDefaultTokenQuotaOutput values.
+// You can construct a concrete instance of `GetTenantDefaultTokenQuotaInput` via:
+//
+//	GetTenantDefaultTokenQuotaArgs{...}
+type GetTenantDefaultTokenQuotaInput interface {
+	pulumi.Input
+
+	ToGetTenantDefaultTokenQuotaOutput() GetTenantDefaultTokenQuotaOutput
+	ToGetTenantDefaultTokenQuotaOutputWithContext(context.Context) GetTenantDefaultTokenQuotaOutput
+}
+
+type GetTenantDefaultTokenQuotaArgs struct {
+	// The token quota configuration.
+	Clients GetTenantDefaultTokenQuotaClientArrayInput `pulumi:"clients"`
+	// The token quota configuration.
+	Organizations GetTenantDefaultTokenQuotaOrganizationArrayInput `pulumi:"organizations"`
+}
+
+func (GetTenantDefaultTokenQuotaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTenantDefaultTokenQuota)(nil)).Elem()
+}
+
+func (i GetTenantDefaultTokenQuotaArgs) ToGetTenantDefaultTokenQuotaOutput() GetTenantDefaultTokenQuotaOutput {
+	return i.ToGetTenantDefaultTokenQuotaOutputWithContext(context.Background())
+}
+
+func (i GetTenantDefaultTokenQuotaArgs) ToGetTenantDefaultTokenQuotaOutputWithContext(ctx context.Context) GetTenantDefaultTokenQuotaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTenantDefaultTokenQuotaOutput)
+}
+
+// GetTenantDefaultTokenQuotaArrayInput is an input type that accepts GetTenantDefaultTokenQuotaArray and GetTenantDefaultTokenQuotaArrayOutput values.
+// You can construct a concrete instance of `GetTenantDefaultTokenQuotaArrayInput` via:
+//
+//	GetTenantDefaultTokenQuotaArray{ GetTenantDefaultTokenQuotaArgs{...} }
+type GetTenantDefaultTokenQuotaArrayInput interface {
+	pulumi.Input
+
+	ToGetTenantDefaultTokenQuotaArrayOutput() GetTenantDefaultTokenQuotaArrayOutput
+	ToGetTenantDefaultTokenQuotaArrayOutputWithContext(context.Context) GetTenantDefaultTokenQuotaArrayOutput
+}
+
+type GetTenantDefaultTokenQuotaArray []GetTenantDefaultTokenQuotaInput
+
+func (GetTenantDefaultTokenQuotaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTenantDefaultTokenQuota)(nil)).Elem()
+}
+
+func (i GetTenantDefaultTokenQuotaArray) ToGetTenantDefaultTokenQuotaArrayOutput() GetTenantDefaultTokenQuotaArrayOutput {
+	return i.ToGetTenantDefaultTokenQuotaArrayOutputWithContext(context.Background())
+}
+
+func (i GetTenantDefaultTokenQuotaArray) ToGetTenantDefaultTokenQuotaArrayOutputWithContext(ctx context.Context) GetTenantDefaultTokenQuotaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTenantDefaultTokenQuotaArrayOutput)
+}
+
+type GetTenantDefaultTokenQuotaOutput struct{ *pulumi.OutputState }
+
+func (GetTenantDefaultTokenQuotaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTenantDefaultTokenQuota)(nil)).Elem()
+}
+
+func (o GetTenantDefaultTokenQuotaOutput) ToGetTenantDefaultTokenQuotaOutput() GetTenantDefaultTokenQuotaOutput {
+	return o
+}
+
+func (o GetTenantDefaultTokenQuotaOutput) ToGetTenantDefaultTokenQuotaOutputWithContext(ctx context.Context) GetTenantDefaultTokenQuotaOutput {
+	return o
+}
+
+// The token quota configuration.
+func (o GetTenantDefaultTokenQuotaOutput) Clients() GetTenantDefaultTokenQuotaClientArrayOutput {
+	return o.ApplyT(func(v GetTenantDefaultTokenQuota) []GetTenantDefaultTokenQuotaClient { return v.Clients }).(GetTenantDefaultTokenQuotaClientArrayOutput)
+}
+
+// The token quota configuration.
+func (o GetTenantDefaultTokenQuotaOutput) Organizations() GetTenantDefaultTokenQuotaOrganizationArrayOutput {
+	return o.ApplyT(func(v GetTenantDefaultTokenQuota) []GetTenantDefaultTokenQuotaOrganization { return v.Organizations }).(GetTenantDefaultTokenQuotaOrganizationArrayOutput)
+}
+
+type GetTenantDefaultTokenQuotaArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTenantDefaultTokenQuotaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTenantDefaultTokenQuota)(nil)).Elem()
+}
+
+func (o GetTenantDefaultTokenQuotaArrayOutput) ToGetTenantDefaultTokenQuotaArrayOutput() GetTenantDefaultTokenQuotaArrayOutput {
+	return o
+}
+
+func (o GetTenantDefaultTokenQuotaArrayOutput) ToGetTenantDefaultTokenQuotaArrayOutputWithContext(ctx context.Context) GetTenantDefaultTokenQuotaArrayOutput {
+	return o
+}
+
+func (o GetTenantDefaultTokenQuotaArrayOutput) Index(i pulumi.IntInput) GetTenantDefaultTokenQuotaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTenantDefaultTokenQuota {
+		return vs[0].([]GetTenantDefaultTokenQuota)[vs[1].(int)]
+	}).(GetTenantDefaultTokenQuotaOutput)
+}
+
+type GetTenantDefaultTokenQuotaClient struct {
+	// The token quota configuration for client credentials.
+	ClientCredentials []GetTenantDefaultTokenQuotaClientClientCredential `pulumi:"clientCredentials"`
+}
+
+// GetTenantDefaultTokenQuotaClientInput is an input type that accepts GetTenantDefaultTokenQuotaClientArgs and GetTenantDefaultTokenQuotaClientOutput values.
+// You can construct a concrete instance of `GetTenantDefaultTokenQuotaClientInput` via:
+//
+//	GetTenantDefaultTokenQuotaClientArgs{...}
+type GetTenantDefaultTokenQuotaClientInput interface {
+	pulumi.Input
+
+	ToGetTenantDefaultTokenQuotaClientOutput() GetTenantDefaultTokenQuotaClientOutput
+	ToGetTenantDefaultTokenQuotaClientOutputWithContext(context.Context) GetTenantDefaultTokenQuotaClientOutput
+}
+
+type GetTenantDefaultTokenQuotaClientArgs struct {
+	// The token quota configuration for client credentials.
+	ClientCredentials GetTenantDefaultTokenQuotaClientClientCredentialArrayInput `pulumi:"clientCredentials"`
+}
+
+func (GetTenantDefaultTokenQuotaClientArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTenantDefaultTokenQuotaClient)(nil)).Elem()
+}
+
+func (i GetTenantDefaultTokenQuotaClientArgs) ToGetTenantDefaultTokenQuotaClientOutput() GetTenantDefaultTokenQuotaClientOutput {
+	return i.ToGetTenantDefaultTokenQuotaClientOutputWithContext(context.Background())
+}
+
+func (i GetTenantDefaultTokenQuotaClientArgs) ToGetTenantDefaultTokenQuotaClientOutputWithContext(ctx context.Context) GetTenantDefaultTokenQuotaClientOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTenantDefaultTokenQuotaClientOutput)
+}
+
+// GetTenantDefaultTokenQuotaClientArrayInput is an input type that accepts GetTenantDefaultTokenQuotaClientArray and GetTenantDefaultTokenQuotaClientArrayOutput values.
+// You can construct a concrete instance of `GetTenantDefaultTokenQuotaClientArrayInput` via:
+//
+//	GetTenantDefaultTokenQuotaClientArray{ GetTenantDefaultTokenQuotaClientArgs{...} }
+type GetTenantDefaultTokenQuotaClientArrayInput interface {
+	pulumi.Input
+
+	ToGetTenantDefaultTokenQuotaClientArrayOutput() GetTenantDefaultTokenQuotaClientArrayOutput
+	ToGetTenantDefaultTokenQuotaClientArrayOutputWithContext(context.Context) GetTenantDefaultTokenQuotaClientArrayOutput
+}
+
+type GetTenantDefaultTokenQuotaClientArray []GetTenantDefaultTokenQuotaClientInput
+
+func (GetTenantDefaultTokenQuotaClientArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTenantDefaultTokenQuotaClient)(nil)).Elem()
+}
+
+func (i GetTenantDefaultTokenQuotaClientArray) ToGetTenantDefaultTokenQuotaClientArrayOutput() GetTenantDefaultTokenQuotaClientArrayOutput {
+	return i.ToGetTenantDefaultTokenQuotaClientArrayOutputWithContext(context.Background())
+}
+
+func (i GetTenantDefaultTokenQuotaClientArray) ToGetTenantDefaultTokenQuotaClientArrayOutputWithContext(ctx context.Context) GetTenantDefaultTokenQuotaClientArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTenantDefaultTokenQuotaClientArrayOutput)
+}
+
+type GetTenantDefaultTokenQuotaClientOutput struct{ *pulumi.OutputState }
+
+func (GetTenantDefaultTokenQuotaClientOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTenantDefaultTokenQuotaClient)(nil)).Elem()
+}
+
+func (o GetTenantDefaultTokenQuotaClientOutput) ToGetTenantDefaultTokenQuotaClientOutput() GetTenantDefaultTokenQuotaClientOutput {
+	return o
+}
+
+func (o GetTenantDefaultTokenQuotaClientOutput) ToGetTenantDefaultTokenQuotaClientOutputWithContext(ctx context.Context) GetTenantDefaultTokenQuotaClientOutput {
+	return o
+}
+
+// The token quota configuration for client credentials.
+func (o GetTenantDefaultTokenQuotaClientOutput) ClientCredentials() GetTenantDefaultTokenQuotaClientClientCredentialArrayOutput {
+	return o.ApplyT(func(v GetTenantDefaultTokenQuotaClient) []GetTenantDefaultTokenQuotaClientClientCredential {
+		return v.ClientCredentials
+	}).(GetTenantDefaultTokenQuotaClientClientCredentialArrayOutput)
+}
+
+type GetTenantDefaultTokenQuotaClientArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTenantDefaultTokenQuotaClientArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTenantDefaultTokenQuotaClient)(nil)).Elem()
+}
+
+func (o GetTenantDefaultTokenQuotaClientArrayOutput) ToGetTenantDefaultTokenQuotaClientArrayOutput() GetTenantDefaultTokenQuotaClientArrayOutput {
+	return o
+}
+
+func (o GetTenantDefaultTokenQuotaClientArrayOutput) ToGetTenantDefaultTokenQuotaClientArrayOutputWithContext(ctx context.Context) GetTenantDefaultTokenQuotaClientArrayOutput {
+	return o
+}
+
+func (o GetTenantDefaultTokenQuotaClientArrayOutput) Index(i pulumi.IntInput) GetTenantDefaultTokenQuotaClientOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTenantDefaultTokenQuotaClient {
+		return vs[0].([]GetTenantDefaultTokenQuotaClient)[vs[1].(int)]
+	}).(GetTenantDefaultTokenQuotaClientOutput)
+}
+
+type GetTenantDefaultTokenQuotaClientClientCredential struct {
+	// If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+	Enforce bool `pulumi:"enforce"`
+	// Maximum number of issued tokens per day
+	PerDay int `pulumi:"perDay"`
+	// Maximum number of issued tokens per hour
+	PerHour int `pulumi:"perHour"`
+}
+
+// GetTenantDefaultTokenQuotaClientClientCredentialInput is an input type that accepts GetTenantDefaultTokenQuotaClientClientCredentialArgs and GetTenantDefaultTokenQuotaClientClientCredentialOutput values.
+// You can construct a concrete instance of `GetTenantDefaultTokenQuotaClientClientCredentialInput` via:
+//
+//	GetTenantDefaultTokenQuotaClientClientCredentialArgs{...}
+type GetTenantDefaultTokenQuotaClientClientCredentialInput interface {
+	pulumi.Input
+
+	ToGetTenantDefaultTokenQuotaClientClientCredentialOutput() GetTenantDefaultTokenQuotaClientClientCredentialOutput
+	ToGetTenantDefaultTokenQuotaClientClientCredentialOutputWithContext(context.Context) GetTenantDefaultTokenQuotaClientClientCredentialOutput
+}
+
+type GetTenantDefaultTokenQuotaClientClientCredentialArgs struct {
+	// If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+	Enforce pulumi.BoolInput `pulumi:"enforce"`
+	// Maximum number of issued tokens per day
+	PerDay pulumi.IntInput `pulumi:"perDay"`
+	// Maximum number of issued tokens per hour
+	PerHour pulumi.IntInput `pulumi:"perHour"`
+}
+
+func (GetTenantDefaultTokenQuotaClientClientCredentialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTenantDefaultTokenQuotaClientClientCredential)(nil)).Elem()
+}
+
+func (i GetTenantDefaultTokenQuotaClientClientCredentialArgs) ToGetTenantDefaultTokenQuotaClientClientCredentialOutput() GetTenantDefaultTokenQuotaClientClientCredentialOutput {
+	return i.ToGetTenantDefaultTokenQuotaClientClientCredentialOutputWithContext(context.Background())
+}
+
+func (i GetTenantDefaultTokenQuotaClientClientCredentialArgs) ToGetTenantDefaultTokenQuotaClientClientCredentialOutputWithContext(ctx context.Context) GetTenantDefaultTokenQuotaClientClientCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTenantDefaultTokenQuotaClientClientCredentialOutput)
+}
+
+// GetTenantDefaultTokenQuotaClientClientCredentialArrayInput is an input type that accepts GetTenantDefaultTokenQuotaClientClientCredentialArray and GetTenantDefaultTokenQuotaClientClientCredentialArrayOutput values.
+// You can construct a concrete instance of `GetTenantDefaultTokenQuotaClientClientCredentialArrayInput` via:
+//
+//	GetTenantDefaultTokenQuotaClientClientCredentialArray{ GetTenantDefaultTokenQuotaClientClientCredentialArgs{...} }
+type GetTenantDefaultTokenQuotaClientClientCredentialArrayInput interface {
+	pulumi.Input
+
+	ToGetTenantDefaultTokenQuotaClientClientCredentialArrayOutput() GetTenantDefaultTokenQuotaClientClientCredentialArrayOutput
+	ToGetTenantDefaultTokenQuotaClientClientCredentialArrayOutputWithContext(context.Context) GetTenantDefaultTokenQuotaClientClientCredentialArrayOutput
+}
+
+type GetTenantDefaultTokenQuotaClientClientCredentialArray []GetTenantDefaultTokenQuotaClientClientCredentialInput
+
+func (GetTenantDefaultTokenQuotaClientClientCredentialArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTenantDefaultTokenQuotaClientClientCredential)(nil)).Elem()
+}
+
+func (i GetTenantDefaultTokenQuotaClientClientCredentialArray) ToGetTenantDefaultTokenQuotaClientClientCredentialArrayOutput() GetTenantDefaultTokenQuotaClientClientCredentialArrayOutput {
+	return i.ToGetTenantDefaultTokenQuotaClientClientCredentialArrayOutputWithContext(context.Background())
+}
+
+func (i GetTenantDefaultTokenQuotaClientClientCredentialArray) ToGetTenantDefaultTokenQuotaClientClientCredentialArrayOutputWithContext(ctx context.Context) GetTenantDefaultTokenQuotaClientClientCredentialArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTenantDefaultTokenQuotaClientClientCredentialArrayOutput)
+}
+
+type GetTenantDefaultTokenQuotaClientClientCredentialOutput struct{ *pulumi.OutputState }
+
+func (GetTenantDefaultTokenQuotaClientClientCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTenantDefaultTokenQuotaClientClientCredential)(nil)).Elem()
+}
+
+func (o GetTenantDefaultTokenQuotaClientClientCredentialOutput) ToGetTenantDefaultTokenQuotaClientClientCredentialOutput() GetTenantDefaultTokenQuotaClientClientCredentialOutput {
+	return o
+}
+
+func (o GetTenantDefaultTokenQuotaClientClientCredentialOutput) ToGetTenantDefaultTokenQuotaClientClientCredentialOutputWithContext(ctx context.Context) GetTenantDefaultTokenQuotaClientClientCredentialOutput {
+	return o
+}
+
+// If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+func (o GetTenantDefaultTokenQuotaClientClientCredentialOutput) Enforce() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantDefaultTokenQuotaClientClientCredential) bool { return v.Enforce }).(pulumi.BoolOutput)
+}
+
+// Maximum number of issued tokens per day
+func (o GetTenantDefaultTokenQuotaClientClientCredentialOutput) PerDay() pulumi.IntOutput {
+	return o.ApplyT(func(v GetTenantDefaultTokenQuotaClientClientCredential) int { return v.PerDay }).(pulumi.IntOutput)
+}
+
+// Maximum number of issued tokens per hour
+func (o GetTenantDefaultTokenQuotaClientClientCredentialOutput) PerHour() pulumi.IntOutput {
+	return o.ApplyT(func(v GetTenantDefaultTokenQuotaClientClientCredential) int { return v.PerHour }).(pulumi.IntOutput)
+}
+
+type GetTenantDefaultTokenQuotaClientClientCredentialArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTenantDefaultTokenQuotaClientClientCredentialArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTenantDefaultTokenQuotaClientClientCredential)(nil)).Elem()
+}
+
+func (o GetTenantDefaultTokenQuotaClientClientCredentialArrayOutput) ToGetTenantDefaultTokenQuotaClientClientCredentialArrayOutput() GetTenantDefaultTokenQuotaClientClientCredentialArrayOutput {
+	return o
+}
+
+func (o GetTenantDefaultTokenQuotaClientClientCredentialArrayOutput) ToGetTenantDefaultTokenQuotaClientClientCredentialArrayOutputWithContext(ctx context.Context) GetTenantDefaultTokenQuotaClientClientCredentialArrayOutput {
+	return o
+}
+
+func (o GetTenantDefaultTokenQuotaClientClientCredentialArrayOutput) Index(i pulumi.IntInput) GetTenantDefaultTokenQuotaClientClientCredentialOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTenantDefaultTokenQuotaClientClientCredential {
+		return vs[0].([]GetTenantDefaultTokenQuotaClientClientCredential)[vs[1].(int)]
+	}).(GetTenantDefaultTokenQuotaClientClientCredentialOutput)
+}
+
+type GetTenantDefaultTokenQuotaOrganization struct {
+	// The token quota configuration for client credentials.
+	ClientCredentials []GetTenantDefaultTokenQuotaOrganizationClientCredential `pulumi:"clientCredentials"`
+}
+
+// GetTenantDefaultTokenQuotaOrganizationInput is an input type that accepts GetTenantDefaultTokenQuotaOrganizationArgs and GetTenantDefaultTokenQuotaOrganizationOutput values.
+// You can construct a concrete instance of `GetTenantDefaultTokenQuotaOrganizationInput` via:
+//
+//	GetTenantDefaultTokenQuotaOrganizationArgs{...}
+type GetTenantDefaultTokenQuotaOrganizationInput interface {
+	pulumi.Input
+
+	ToGetTenantDefaultTokenQuotaOrganizationOutput() GetTenantDefaultTokenQuotaOrganizationOutput
+	ToGetTenantDefaultTokenQuotaOrganizationOutputWithContext(context.Context) GetTenantDefaultTokenQuotaOrganizationOutput
+}
+
+type GetTenantDefaultTokenQuotaOrganizationArgs struct {
+	// The token quota configuration for client credentials.
+	ClientCredentials GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayInput `pulumi:"clientCredentials"`
+}
+
+func (GetTenantDefaultTokenQuotaOrganizationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTenantDefaultTokenQuotaOrganization)(nil)).Elem()
+}
+
+func (i GetTenantDefaultTokenQuotaOrganizationArgs) ToGetTenantDefaultTokenQuotaOrganizationOutput() GetTenantDefaultTokenQuotaOrganizationOutput {
+	return i.ToGetTenantDefaultTokenQuotaOrganizationOutputWithContext(context.Background())
+}
+
+func (i GetTenantDefaultTokenQuotaOrganizationArgs) ToGetTenantDefaultTokenQuotaOrganizationOutputWithContext(ctx context.Context) GetTenantDefaultTokenQuotaOrganizationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTenantDefaultTokenQuotaOrganizationOutput)
+}
+
+// GetTenantDefaultTokenQuotaOrganizationArrayInput is an input type that accepts GetTenantDefaultTokenQuotaOrganizationArray and GetTenantDefaultTokenQuotaOrganizationArrayOutput values.
+// You can construct a concrete instance of `GetTenantDefaultTokenQuotaOrganizationArrayInput` via:
+//
+//	GetTenantDefaultTokenQuotaOrganizationArray{ GetTenantDefaultTokenQuotaOrganizationArgs{...} }
+type GetTenantDefaultTokenQuotaOrganizationArrayInput interface {
+	pulumi.Input
+
+	ToGetTenantDefaultTokenQuotaOrganizationArrayOutput() GetTenantDefaultTokenQuotaOrganizationArrayOutput
+	ToGetTenantDefaultTokenQuotaOrganizationArrayOutputWithContext(context.Context) GetTenantDefaultTokenQuotaOrganizationArrayOutput
+}
+
+type GetTenantDefaultTokenQuotaOrganizationArray []GetTenantDefaultTokenQuotaOrganizationInput
+
+func (GetTenantDefaultTokenQuotaOrganizationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTenantDefaultTokenQuotaOrganization)(nil)).Elem()
+}
+
+func (i GetTenantDefaultTokenQuotaOrganizationArray) ToGetTenantDefaultTokenQuotaOrganizationArrayOutput() GetTenantDefaultTokenQuotaOrganizationArrayOutput {
+	return i.ToGetTenantDefaultTokenQuotaOrganizationArrayOutputWithContext(context.Background())
+}
+
+func (i GetTenantDefaultTokenQuotaOrganizationArray) ToGetTenantDefaultTokenQuotaOrganizationArrayOutputWithContext(ctx context.Context) GetTenantDefaultTokenQuotaOrganizationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTenantDefaultTokenQuotaOrganizationArrayOutput)
+}
+
+type GetTenantDefaultTokenQuotaOrganizationOutput struct{ *pulumi.OutputState }
+
+func (GetTenantDefaultTokenQuotaOrganizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTenantDefaultTokenQuotaOrganization)(nil)).Elem()
+}
+
+func (o GetTenantDefaultTokenQuotaOrganizationOutput) ToGetTenantDefaultTokenQuotaOrganizationOutput() GetTenantDefaultTokenQuotaOrganizationOutput {
+	return o
+}
+
+func (o GetTenantDefaultTokenQuotaOrganizationOutput) ToGetTenantDefaultTokenQuotaOrganizationOutputWithContext(ctx context.Context) GetTenantDefaultTokenQuotaOrganizationOutput {
+	return o
+}
+
+// The token quota configuration for client credentials.
+func (o GetTenantDefaultTokenQuotaOrganizationOutput) ClientCredentials() GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutput {
+	return o.ApplyT(func(v GetTenantDefaultTokenQuotaOrganization) []GetTenantDefaultTokenQuotaOrganizationClientCredential {
+		return v.ClientCredentials
+	}).(GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutput)
+}
+
+type GetTenantDefaultTokenQuotaOrganizationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTenantDefaultTokenQuotaOrganizationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTenantDefaultTokenQuotaOrganization)(nil)).Elem()
+}
+
+func (o GetTenantDefaultTokenQuotaOrganizationArrayOutput) ToGetTenantDefaultTokenQuotaOrganizationArrayOutput() GetTenantDefaultTokenQuotaOrganizationArrayOutput {
+	return o
+}
+
+func (o GetTenantDefaultTokenQuotaOrganizationArrayOutput) ToGetTenantDefaultTokenQuotaOrganizationArrayOutputWithContext(ctx context.Context) GetTenantDefaultTokenQuotaOrganizationArrayOutput {
+	return o
+}
+
+func (o GetTenantDefaultTokenQuotaOrganizationArrayOutput) Index(i pulumi.IntInput) GetTenantDefaultTokenQuotaOrganizationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTenantDefaultTokenQuotaOrganization {
+		return vs[0].([]GetTenantDefaultTokenQuotaOrganization)[vs[1].(int)]
+	}).(GetTenantDefaultTokenQuotaOrganizationOutput)
+}
+
+type GetTenantDefaultTokenQuotaOrganizationClientCredential struct {
+	// If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+	Enforce bool `pulumi:"enforce"`
+	// Maximum number of issued tokens per day
+	PerDay int `pulumi:"perDay"`
+	// Maximum number of issued tokens per hour
+	PerHour int `pulumi:"perHour"`
+}
+
+// GetTenantDefaultTokenQuotaOrganizationClientCredentialInput is an input type that accepts GetTenantDefaultTokenQuotaOrganizationClientCredentialArgs and GetTenantDefaultTokenQuotaOrganizationClientCredentialOutput values.
+// You can construct a concrete instance of `GetTenantDefaultTokenQuotaOrganizationClientCredentialInput` via:
+//
+//	GetTenantDefaultTokenQuotaOrganizationClientCredentialArgs{...}
+type GetTenantDefaultTokenQuotaOrganizationClientCredentialInput interface {
+	pulumi.Input
+
+	ToGetTenantDefaultTokenQuotaOrganizationClientCredentialOutput() GetTenantDefaultTokenQuotaOrganizationClientCredentialOutput
+	ToGetTenantDefaultTokenQuotaOrganizationClientCredentialOutputWithContext(context.Context) GetTenantDefaultTokenQuotaOrganizationClientCredentialOutput
+}
+
+type GetTenantDefaultTokenQuotaOrganizationClientCredentialArgs struct {
+	// If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+	Enforce pulumi.BoolInput `pulumi:"enforce"`
+	// Maximum number of issued tokens per day
+	PerDay pulumi.IntInput `pulumi:"perDay"`
+	// Maximum number of issued tokens per hour
+	PerHour pulumi.IntInput `pulumi:"perHour"`
+}
+
+func (GetTenantDefaultTokenQuotaOrganizationClientCredentialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTenantDefaultTokenQuotaOrganizationClientCredential)(nil)).Elem()
+}
+
+func (i GetTenantDefaultTokenQuotaOrganizationClientCredentialArgs) ToGetTenantDefaultTokenQuotaOrganizationClientCredentialOutput() GetTenantDefaultTokenQuotaOrganizationClientCredentialOutput {
+	return i.ToGetTenantDefaultTokenQuotaOrganizationClientCredentialOutputWithContext(context.Background())
+}
+
+func (i GetTenantDefaultTokenQuotaOrganizationClientCredentialArgs) ToGetTenantDefaultTokenQuotaOrganizationClientCredentialOutputWithContext(ctx context.Context) GetTenantDefaultTokenQuotaOrganizationClientCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTenantDefaultTokenQuotaOrganizationClientCredentialOutput)
+}
+
+// GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayInput is an input type that accepts GetTenantDefaultTokenQuotaOrganizationClientCredentialArray and GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutput values.
+// You can construct a concrete instance of `GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayInput` via:
+//
+//	GetTenantDefaultTokenQuotaOrganizationClientCredentialArray{ GetTenantDefaultTokenQuotaOrganizationClientCredentialArgs{...} }
+type GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayInput interface {
+	pulumi.Input
+
+	ToGetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutput() GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutput
+	ToGetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutputWithContext(context.Context) GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutput
+}
+
+type GetTenantDefaultTokenQuotaOrganizationClientCredentialArray []GetTenantDefaultTokenQuotaOrganizationClientCredentialInput
+
+func (GetTenantDefaultTokenQuotaOrganizationClientCredentialArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTenantDefaultTokenQuotaOrganizationClientCredential)(nil)).Elem()
+}
+
+func (i GetTenantDefaultTokenQuotaOrganizationClientCredentialArray) ToGetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutput() GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutput {
+	return i.ToGetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutputWithContext(context.Background())
+}
+
+func (i GetTenantDefaultTokenQuotaOrganizationClientCredentialArray) ToGetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutputWithContext(ctx context.Context) GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutput)
+}
+
+type GetTenantDefaultTokenQuotaOrganizationClientCredentialOutput struct{ *pulumi.OutputState }
+
+func (GetTenantDefaultTokenQuotaOrganizationClientCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTenantDefaultTokenQuotaOrganizationClientCredential)(nil)).Elem()
+}
+
+func (o GetTenantDefaultTokenQuotaOrganizationClientCredentialOutput) ToGetTenantDefaultTokenQuotaOrganizationClientCredentialOutput() GetTenantDefaultTokenQuotaOrganizationClientCredentialOutput {
+	return o
+}
+
+func (o GetTenantDefaultTokenQuotaOrganizationClientCredentialOutput) ToGetTenantDefaultTokenQuotaOrganizationClientCredentialOutputWithContext(ctx context.Context) GetTenantDefaultTokenQuotaOrganizationClientCredentialOutput {
+	return o
+}
+
+// If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+func (o GetTenantDefaultTokenQuotaOrganizationClientCredentialOutput) Enforce() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantDefaultTokenQuotaOrganizationClientCredential) bool { return v.Enforce }).(pulumi.BoolOutput)
+}
+
+// Maximum number of issued tokens per day
+func (o GetTenantDefaultTokenQuotaOrganizationClientCredentialOutput) PerDay() pulumi.IntOutput {
+	return o.ApplyT(func(v GetTenantDefaultTokenQuotaOrganizationClientCredential) int { return v.PerDay }).(pulumi.IntOutput)
+}
+
+// Maximum number of issued tokens per hour
+func (o GetTenantDefaultTokenQuotaOrganizationClientCredentialOutput) PerHour() pulumi.IntOutput {
+	return o.ApplyT(func(v GetTenantDefaultTokenQuotaOrganizationClientCredential) int { return v.PerHour }).(pulumi.IntOutput)
+}
+
+type GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTenantDefaultTokenQuotaOrganizationClientCredential)(nil)).Elem()
+}
+
+func (o GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutput) ToGetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutput() GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutput {
+	return o
+}
+
+func (o GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutput) ToGetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutputWithContext(ctx context.Context) GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutput {
+	return o
+}
+
+func (o GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutput) Index(i pulumi.IntInput) GetTenantDefaultTokenQuotaOrganizationClientCredentialOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTenantDefaultTokenQuotaOrganizationClientCredential {
+		return vs[0].([]GetTenantDefaultTokenQuotaOrganizationClientCredential)[vs[1].(int)]
+	}).(GetTenantDefaultTokenQuotaOrganizationClientCredentialOutput)
+}
+
 type GetTenantErrorPage struct {
 	// Custom Error HTML (Liquid syntax is supported)
 	Html string `pulumi:"html"`
@@ -49077,6 +51668,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientSessionTransferPtrInput)(nil)).Elem(), ClientSessionTransferArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientTokenExchangeInput)(nil)).Elem(), ClientTokenExchangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientTokenExchangePtrInput)(nil)).Elem(), ClientTokenExchangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientTokenQuotaInput)(nil)).Elem(), ClientTokenQuotaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientTokenQuotaPtrInput)(nil)).Elem(), ClientTokenQuotaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientTokenQuotaClientCredentialsInput)(nil)).Elem(), ClientTokenQuotaClientCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientTokenQuotaClientCredentialsPtrInput)(nil)).Elem(), ClientTokenQuotaClientCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsInput)(nil)).Elem(), ConnectionOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsPtrInput)(nil)).Elem(), ConnectionOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsAttributeInput)(nil)).Elem(), ConnectionOptionsAttributeArgs{})
@@ -49199,6 +51794,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationBrandingPtrInput)(nil)).Elem(), OrganizationBrandingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationConnectionsEnabledConnectionInput)(nil)).Elem(), OrganizationConnectionsEnabledConnectionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationConnectionsEnabledConnectionArrayInput)(nil)).Elem(), OrganizationConnectionsEnabledConnectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationTokenQuotaInput)(nil)).Elem(), OrganizationTokenQuotaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationTokenQuotaPtrInput)(nil)).Elem(), OrganizationTokenQuotaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationTokenQuotaClientCredentialsInput)(nil)).Elem(), OrganizationTokenQuotaClientCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationTokenQuotaClientCredentialsPtrInput)(nil)).Elem(), OrganizationTokenQuotaClientCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PagesChangePasswordInput)(nil)).Elem(), PagesChangePasswordArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PagesChangePasswordPtrInput)(nil)).Elem(), PagesChangePasswordArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PagesErrorInput)(nil)).Elem(), PagesErrorArgs{})
@@ -49234,6 +51833,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SelfServiceProfileBrandingColorsPtrInput)(nil)).Elem(), SelfServiceProfileBrandingColorsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SelfServiceProfileUserAttributeInput)(nil)).Elem(), SelfServiceProfileUserAttributeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SelfServiceProfileUserAttributeArrayInput)(nil)).Elem(), SelfServiceProfileUserAttributeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantDefaultTokenQuotaInput)(nil)).Elem(), TenantDefaultTokenQuotaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantDefaultTokenQuotaPtrInput)(nil)).Elem(), TenantDefaultTokenQuotaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantDefaultTokenQuotaClientsInput)(nil)).Elem(), TenantDefaultTokenQuotaClientsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantDefaultTokenQuotaClientsPtrInput)(nil)).Elem(), TenantDefaultTokenQuotaClientsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantDefaultTokenQuotaClientsClientCredentialsInput)(nil)).Elem(), TenantDefaultTokenQuotaClientsClientCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantDefaultTokenQuotaClientsClientCredentialsPtrInput)(nil)).Elem(), TenantDefaultTokenQuotaClientsClientCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantDefaultTokenQuotaOrganizationsInput)(nil)).Elem(), TenantDefaultTokenQuotaOrganizationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantDefaultTokenQuotaOrganizationsPtrInput)(nil)).Elem(), TenantDefaultTokenQuotaOrganizationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantDefaultTokenQuotaOrganizationsClientCredentialsInput)(nil)).Elem(), TenantDefaultTokenQuotaOrganizationsClientCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantDefaultTokenQuotaOrganizationsClientCredentialsPtrInput)(nil)).Elem(), TenantDefaultTokenQuotaOrganizationsClientCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantErrorPageInput)(nil)).Elem(), TenantErrorPageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantErrorPagePtrInput)(nil)).Elem(), TenantErrorPageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantFlagsInput)(nil)).Elem(), TenantFlagsArgs{})
@@ -49408,6 +52017,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientSignedRequestObjectCredentialArrayInput)(nil)).Elem(), GetClientSignedRequestObjectCredentialArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientTokenExchangeInput)(nil)).Elem(), GetClientTokenExchangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientTokenExchangeArrayInput)(nil)).Elem(), GetClientTokenExchangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientTokenQuotaInput)(nil)).Elem(), GetClientTokenQuotaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientTokenQuotaArrayInput)(nil)).Elem(), GetClientTokenQuotaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientTokenQuotaClientCredentialInput)(nil)).Elem(), GetClientTokenQuotaClientCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientTokenQuotaClientCredentialArrayInput)(nil)).Elem(), GetClientTokenQuotaClientCredentialArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientInput)(nil)).Elem(), GetClientsClientArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientArrayInput)(nil)).Elem(), GetClientsClientArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientOidcLogoutInput)(nil)).Elem(), GetClientsClientOidcLogoutArgs{})
@@ -49418,6 +52031,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientSessionTransferArrayInput)(nil)).Elem(), GetClientsClientSessionTransferArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientTokenExchangeInput)(nil)).Elem(), GetClientsClientTokenExchangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientTokenExchangeArrayInput)(nil)).Elem(), GetClientsClientTokenExchangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientTokenQuotaInput)(nil)).Elem(), GetClientsClientTokenQuotaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientTokenQuotaArrayInput)(nil)).Elem(), GetClientsClientTokenQuotaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientTokenQuotaClientCredentialInput)(nil)).Elem(), GetClientsClientTokenQuotaClientCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientTokenQuotaClientCredentialArrayInput)(nil)).Elem(), GetClientsClientTokenQuotaClientCredentialArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionInput)(nil)).Elem(), GetConnectionOptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionArrayInput)(nil)).Elem(), GetConnectionOptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributeInput)(nil)).Elem(), GetConnectionOptionAttributeArgs{})
@@ -49508,6 +52125,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBrandingArrayInput)(nil)).Elem(), GetOrganizationBrandingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationConnectionTypeInput)(nil)).Elem(), GetOrganizationConnectionTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationConnectionTypeArrayInput)(nil)).Elem(), GetOrganizationConnectionTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationTokenQuotaInput)(nil)).Elem(), GetOrganizationTokenQuotaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationTokenQuotaArrayInput)(nil)).Elem(), GetOrganizationTokenQuotaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationTokenQuotaClientCredentialInput)(nil)).Elem(), GetOrganizationTokenQuotaClientCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationTokenQuotaClientCredentialArrayInput)(nil)).Elem(), GetOrganizationTokenQuotaClientCredentialArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesChangePasswordInput)(nil)).Elem(), GetPagesChangePasswordArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesChangePasswordArrayInput)(nil)).Elem(), GetPagesChangePasswordArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesErrorInput)(nil)).Elem(), GetPagesErrorArgs{})
@@ -49544,6 +52165,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSelfServiceProfileUserAttributeArrayInput)(nil)).Elem(), GetSelfServiceProfileUserAttributeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSigningKeysSigningKeyInput)(nil)).Elem(), GetSigningKeysSigningKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSigningKeysSigningKeyArrayInput)(nil)).Elem(), GetSigningKeysSigningKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantDefaultTokenQuotaInput)(nil)).Elem(), GetTenantDefaultTokenQuotaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantDefaultTokenQuotaArrayInput)(nil)).Elem(), GetTenantDefaultTokenQuotaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantDefaultTokenQuotaClientInput)(nil)).Elem(), GetTenantDefaultTokenQuotaClientArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantDefaultTokenQuotaClientArrayInput)(nil)).Elem(), GetTenantDefaultTokenQuotaClientArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantDefaultTokenQuotaClientClientCredentialInput)(nil)).Elem(), GetTenantDefaultTokenQuotaClientClientCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantDefaultTokenQuotaClientClientCredentialArrayInput)(nil)).Elem(), GetTenantDefaultTokenQuotaClientClientCredentialArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantDefaultTokenQuotaOrganizationInput)(nil)).Elem(), GetTenantDefaultTokenQuotaOrganizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantDefaultTokenQuotaOrganizationArrayInput)(nil)).Elem(), GetTenantDefaultTokenQuotaOrganizationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantDefaultTokenQuotaOrganizationClientCredentialInput)(nil)).Elem(), GetTenantDefaultTokenQuotaOrganizationClientCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayInput)(nil)).Elem(), GetTenantDefaultTokenQuotaOrganizationClientCredentialArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantErrorPageInput)(nil)).Elem(), GetTenantErrorPageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantErrorPageArrayInput)(nil)).Elem(), GetTenantErrorPageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantFlagInput)(nil)).Elem(), GetTenantFlagArgs{})
@@ -49714,6 +52345,10 @@ func init() {
 	pulumi.RegisterOutputType(ClientSessionTransferPtrOutput{})
 	pulumi.RegisterOutputType(ClientTokenExchangeOutput{})
 	pulumi.RegisterOutputType(ClientTokenExchangePtrOutput{})
+	pulumi.RegisterOutputType(ClientTokenQuotaOutput{})
+	pulumi.RegisterOutputType(ClientTokenQuotaPtrOutput{})
+	pulumi.RegisterOutputType(ClientTokenQuotaClientCredentialsOutput{})
+	pulumi.RegisterOutputType(ClientTokenQuotaClientCredentialsPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsAttributeOutput{})
@@ -49836,6 +52471,10 @@ func init() {
 	pulumi.RegisterOutputType(OrganizationBrandingPtrOutput{})
 	pulumi.RegisterOutputType(OrganizationConnectionsEnabledConnectionOutput{})
 	pulumi.RegisterOutputType(OrganizationConnectionsEnabledConnectionArrayOutput{})
+	pulumi.RegisterOutputType(OrganizationTokenQuotaOutput{})
+	pulumi.RegisterOutputType(OrganizationTokenQuotaPtrOutput{})
+	pulumi.RegisterOutputType(OrganizationTokenQuotaClientCredentialsOutput{})
+	pulumi.RegisterOutputType(OrganizationTokenQuotaClientCredentialsPtrOutput{})
 	pulumi.RegisterOutputType(PagesChangePasswordOutput{})
 	pulumi.RegisterOutputType(PagesChangePasswordPtrOutput{})
 	pulumi.RegisterOutputType(PagesErrorOutput{})
@@ -49871,6 +52510,16 @@ func init() {
 	pulumi.RegisterOutputType(SelfServiceProfileBrandingColorsPtrOutput{})
 	pulumi.RegisterOutputType(SelfServiceProfileUserAttributeOutput{})
 	pulumi.RegisterOutputType(SelfServiceProfileUserAttributeArrayOutput{})
+	pulumi.RegisterOutputType(TenantDefaultTokenQuotaOutput{})
+	pulumi.RegisterOutputType(TenantDefaultTokenQuotaPtrOutput{})
+	pulumi.RegisterOutputType(TenantDefaultTokenQuotaClientsOutput{})
+	pulumi.RegisterOutputType(TenantDefaultTokenQuotaClientsPtrOutput{})
+	pulumi.RegisterOutputType(TenantDefaultTokenQuotaClientsClientCredentialsOutput{})
+	pulumi.RegisterOutputType(TenantDefaultTokenQuotaClientsClientCredentialsPtrOutput{})
+	pulumi.RegisterOutputType(TenantDefaultTokenQuotaOrganizationsOutput{})
+	pulumi.RegisterOutputType(TenantDefaultTokenQuotaOrganizationsPtrOutput{})
+	pulumi.RegisterOutputType(TenantDefaultTokenQuotaOrganizationsClientCredentialsOutput{})
+	pulumi.RegisterOutputType(TenantDefaultTokenQuotaOrganizationsClientCredentialsPtrOutput{})
 	pulumi.RegisterOutputType(TenantErrorPageOutput{})
 	pulumi.RegisterOutputType(TenantErrorPagePtrOutput{})
 	pulumi.RegisterOutputType(TenantFlagsOutput{})
@@ -50045,6 +52694,10 @@ func init() {
 	pulumi.RegisterOutputType(GetClientSignedRequestObjectCredentialArrayOutput{})
 	pulumi.RegisterOutputType(GetClientTokenExchangeOutput{})
 	pulumi.RegisterOutputType(GetClientTokenExchangeArrayOutput{})
+	pulumi.RegisterOutputType(GetClientTokenQuotaOutput{})
+	pulumi.RegisterOutputType(GetClientTokenQuotaArrayOutput{})
+	pulumi.RegisterOutputType(GetClientTokenQuotaClientCredentialOutput{})
+	pulumi.RegisterOutputType(GetClientTokenQuotaClientCredentialArrayOutput{})
 	pulumi.RegisterOutputType(GetClientsClientOutput{})
 	pulumi.RegisterOutputType(GetClientsClientArrayOutput{})
 	pulumi.RegisterOutputType(GetClientsClientOidcLogoutOutput{})
@@ -50055,6 +52708,10 @@ func init() {
 	pulumi.RegisterOutputType(GetClientsClientSessionTransferArrayOutput{})
 	pulumi.RegisterOutputType(GetClientsClientTokenExchangeOutput{})
 	pulumi.RegisterOutputType(GetClientsClientTokenExchangeArrayOutput{})
+	pulumi.RegisterOutputType(GetClientsClientTokenQuotaOutput{})
+	pulumi.RegisterOutputType(GetClientsClientTokenQuotaArrayOutput{})
+	pulumi.RegisterOutputType(GetClientsClientTokenQuotaClientCredentialOutput{})
+	pulumi.RegisterOutputType(GetClientsClientTokenQuotaClientCredentialArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionAttributeOutput{})
@@ -50145,6 +52802,10 @@ func init() {
 	pulumi.RegisterOutputType(GetOrganizationBrandingArrayOutput{})
 	pulumi.RegisterOutputType(GetOrganizationConnectionTypeOutput{})
 	pulumi.RegisterOutputType(GetOrganizationConnectionTypeArrayOutput{})
+	pulumi.RegisterOutputType(GetOrganizationTokenQuotaOutput{})
+	pulumi.RegisterOutputType(GetOrganizationTokenQuotaArrayOutput{})
+	pulumi.RegisterOutputType(GetOrganizationTokenQuotaClientCredentialOutput{})
+	pulumi.RegisterOutputType(GetOrganizationTokenQuotaClientCredentialArrayOutput{})
 	pulumi.RegisterOutputType(GetPagesChangePasswordOutput{})
 	pulumi.RegisterOutputType(GetPagesChangePasswordArrayOutput{})
 	pulumi.RegisterOutputType(GetPagesErrorOutput{})
@@ -50181,6 +52842,16 @@ func init() {
 	pulumi.RegisterOutputType(GetSelfServiceProfileUserAttributeArrayOutput{})
 	pulumi.RegisterOutputType(GetSigningKeysSigningKeyOutput{})
 	pulumi.RegisterOutputType(GetSigningKeysSigningKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetTenantDefaultTokenQuotaOutput{})
+	pulumi.RegisterOutputType(GetTenantDefaultTokenQuotaArrayOutput{})
+	pulumi.RegisterOutputType(GetTenantDefaultTokenQuotaClientOutput{})
+	pulumi.RegisterOutputType(GetTenantDefaultTokenQuotaClientArrayOutput{})
+	pulumi.RegisterOutputType(GetTenantDefaultTokenQuotaClientClientCredentialOutput{})
+	pulumi.RegisterOutputType(GetTenantDefaultTokenQuotaClientClientCredentialArrayOutput{})
+	pulumi.RegisterOutputType(GetTenantDefaultTokenQuotaOrganizationOutput{})
+	pulumi.RegisterOutputType(GetTenantDefaultTokenQuotaOrganizationArrayOutput{})
+	pulumi.RegisterOutputType(GetTenantDefaultTokenQuotaOrganizationClientCredentialOutput{})
+	pulumi.RegisterOutputType(GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutput{})
 	pulumi.RegisterOutputType(GetTenantErrorPageOutput{})
 	pulumi.RegisterOutputType(GetTenantErrorPageArrayOutput{})
 	pulumi.RegisterOutputType(GetTenantFlagOutput{})

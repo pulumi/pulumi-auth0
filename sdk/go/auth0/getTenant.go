@@ -62,6 +62,8 @@ type LookupTenantResult struct {
 	DefaultDirectory string `pulumi:"defaultDirectory"`
 	// The default absolute redirection URI. Must be HTTPS or an empty string.
 	DefaultRedirectionUri string `pulumi:"defaultRedirectionUri"`
+	// Token Quota configuration.
+	DefaultTokenQuotas []GetTenantDefaultTokenQuota `pulumi:"defaultTokenQuotas"`
 	// Disable list of supported ACR values.
 	DisableAcrValuesSupported bool `pulumi:"disableAcrValuesSupported"`
 	// Your Auth0 domain name.
@@ -157,6 +159,11 @@ func (o LookupTenantResultOutput) DefaultDirectory() pulumi.StringOutput {
 // The default absolute redirection URI. Must be HTTPS or an empty string.
 func (o LookupTenantResultOutput) DefaultRedirectionUri() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTenantResult) string { return v.DefaultRedirectionUri }).(pulumi.StringOutput)
+}
+
+// Token Quota configuration.
+func (o LookupTenantResultOutput) DefaultTokenQuotas() GetTenantDefaultTokenQuotaArrayOutput {
+	return o.ApplyT(func(v LookupTenantResult) []GetTenantDefaultTokenQuota { return v.DefaultTokenQuotas }).(GetTenantDefaultTokenQuotaArrayOutput)
 }
 
 // Disable list of supported ACR values.

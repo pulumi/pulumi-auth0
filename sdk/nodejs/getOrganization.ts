@@ -85,6 +85,10 @@ export interface GetOrganizationResult {
      * The ID of the organization. If not provided, `name` must be set.
      */
     readonly organizationId?: string;
+    /**
+     * The token quota configuration.
+     */
+    readonly tokenQuotas: outputs.GetOrganizationTokenQuota[];
 }
 /**
  * Data source to retrieve a specific Auth0 organization by `organizationId` or `name`.

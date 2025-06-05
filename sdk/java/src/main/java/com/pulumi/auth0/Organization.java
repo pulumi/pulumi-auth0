@@ -7,6 +7,7 @@ import com.pulumi.auth0.OrganizationArgs;
 import com.pulumi.auth0.Utilities;
 import com.pulumi.auth0.inputs.OrganizationState;
 import com.pulumi.auth0.outputs.OrganizationBranding;
+import com.pulumi.auth0.outputs.OrganizationTokenQuota;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -137,6 +138,20 @@ public class Organization extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * The token quota configuration.
+     * 
+     */
+    @Export(name="tokenQuota", refs={OrganizationTokenQuota.class}, tree="[0]")
+    private Output</* @Nullable */ OrganizationTokenQuota> tokenQuota;
+
+    /**
+     * @return The token quota configuration.
+     * 
+     */
+    public Output<Optional<OrganizationTokenQuota>> tokenQuota() {
+        return Codegen.optional(this.tokenQuota);
     }
 
     /**
