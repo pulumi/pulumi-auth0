@@ -390,6 +390,16 @@
                             }
                         }
                     },
+                    "token_quota": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "client_credentials": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
                     "web_origins": {
                         "maxItemsOne": false
                     }
@@ -880,6 +890,16 @@
                 "fields": {
                     "branding": {
                         "maxItemsOne": true
+                    },
+                    "token_quota": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "client_credentials": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -1104,6 +1124,33 @@
                     },
                     "allowed_logout_urls": {
                         "maxItemsOne": false
+                    },
+                    "default_token_quota": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "clients": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "client_credentials": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "organizations": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "client_credentials": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     },
                     "enabled_locales": {
                         "maxItemsOne": false
@@ -1613,6 +1660,16 @@
                             }
                         }
                     },
+                    "token_quota": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "client_credentials": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "web_origins": {
                         "maxItemsOne": false
                     }
@@ -1679,6 +1736,16 @@
                                     "elem": {
                                         "fields": {
                                             "allow_any_profile_of_type": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "token_quota": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "client_credentials": {
                                                 "maxItemsOne": false
                                             }
                                         }
@@ -2012,6 +2079,16 @@
                     },
                     "members": {
                         "maxItemsOne": false
+                    },
+                    "token_quota": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "client_credentials": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -2154,6 +2231,33 @@
                     },
                     "allowed_logout_urls": {
                         "maxItemsOne": false
+                    },
+                    "default_token_quota": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "clients": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "client_credentials": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "organizations": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "client_credentials": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     },
                     "enabled_locales": {
                         "maxItemsOne": false

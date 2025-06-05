@@ -1964,6 +1964,35 @@
                 "allowAnyProfileOfTypes"
             ]
         },
+        "auth0:index/ClientTokenQuota:ClientTokenQuota": {
+            "properties": {
+                "clientCredentials": {
+                    "$ref": "#/types/auth0:index/ClientTokenQuotaClientCredentials:ClientTokenQuotaClientCredentials",
+                    "description": "The token quota configuration for client credentials.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "clientCredentials"
+            ]
+        },
+        "auth0:index/ClientTokenQuotaClientCredentials:ClientTokenQuotaClientCredentials": {
+            "properties": {
+                "enforce": {
+                    "type": "boolean",
+                    "description": "If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.\n"
+                },
+                "perDay": {
+                    "type": "integer",
+                    "description": "Maximum number of issued tokens per day\n"
+                },
+                "perHour": {
+                    "type": "integer",
+                    "description": "Maximum number of issued tokens per hour\n"
+                }
+            },
+            "type": "object"
+        },
         "auth0:index/ConnectionOptions:ConnectionOptions": {
             "properties": {
                 "adfsServer": {
@@ -3882,6 +3911,35 @@
                 "connectionId"
             ]
         },
+        "auth0:index/OrganizationTokenQuota:OrganizationTokenQuota": {
+            "properties": {
+                "clientCredentials": {
+                    "$ref": "#/types/auth0:index/OrganizationTokenQuotaClientCredentials:OrganizationTokenQuotaClientCredentials",
+                    "description": "The token quota configuration for client credentials.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "clientCredentials"
+            ]
+        },
+        "auth0:index/OrganizationTokenQuotaClientCredentials:OrganizationTokenQuotaClientCredentials": {
+            "properties": {
+                "enforce": {
+                    "type": "boolean",
+                    "description": "If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.\n"
+                },
+                "perDay": {
+                    "type": "integer",
+                    "description": "Maximum number of issued tokens per day\n"
+                },
+                "perHour": {
+                    "type": "integer",
+                    "description": "Maximum number of issued tokens per hour\n"
+                }
+            },
+            "type": "object"
+        },
         "auth0:index/PagesChangePassword:PagesChangePassword": {
             "properties": {
                 "enabled": {
@@ -4278,6 +4336,77 @@
                 "isOptional",
                 "name"
             ]
+        },
+        "auth0:index/TenantDefaultTokenQuota:TenantDefaultTokenQuota": {
+            "properties": {
+                "clients": {
+                    "$ref": "#/types/auth0:index/TenantDefaultTokenQuotaClients:TenantDefaultTokenQuotaClients",
+                    "description": "The token quota configuration.\n"
+                },
+                "organizations": {
+                    "$ref": "#/types/auth0:index/TenantDefaultTokenQuotaOrganizations:TenantDefaultTokenQuotaOrganizations",
+                    "description": "The token quota configuration.\n"
+                }
+            },
+            "type": "object"
+        },
+        "auth0:index/TenantDefaultTokenQuotaClients:TenantDefaultTokenQuotaClients": {
+            "properties": {
+                "clientCredentials": {
+                    "$ref": "#/types/auth0:index/TenantDefaultTokenQuotaClientsClientCredentials:TenantDefaultTokenQuotaClientsClientCredentials",
+                    "description": "The token quota configuration for client credentials.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "clientCredentials"
+            ]
+        },
+        "auth0:index/TenantDefaultTokenQuotaClientsClientCredentials:TenantDefaultTokenQuotaClientsClientCredentials": {
+            "properties": {
+                "enforce": {
+                    "type": "boolean",
+                    "description": "If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.\n"
+                },
+                "perDay": {
+                    "type": "integer",
+                    "description": "Maximum number of issued tokens per day\n"
+                },
+                "perHour": {
+                    "type": "integer",
+                    "description": "Maximum number of issued tokens per hour\n"
+                }
+            },
+            "type": "object"
+        },
+        "auth0:index/TenantDefaultTokenQuotaOrganizations:TenantDefaultTokenQuotaOrganizations": {
+            "properties": {
+                "clientCredentials": {
+                    "$ref": "#/types/auth0:index/TenantDefaultTokenQuotaOrganizationsClientCredentials:TenantDefaultTokenQuotaOrganizationsClientCredentials",
+                    "description": "The token quota configuration for client credentials.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "clientCredentials"
+            ]
+        },
+        "auth0:index/TenantDefaultTokenQuotaOrganizationsClientCredentials:TenantDefaultTokenQuotaOrganizationsClientCredentials": {
+            "properties": {
+                "enforce": {
+                    "type": "boolean",
+                    "description": "If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.\n"
+                },
+                "perDay": {
+                    "type": "integer",
+                    "description": "Maximum number of issued tokens per day\n"
+                },
+                "perHour": {
+                    "type": "integer",
+                    "description": "Maximum number of issued tokens per hour\n"
+                }
+            },
+            "type": "object"
         },
         "auth0:index/TenantErrorPage:TenantErrorPage": {
             "properties": {
@@ -7037,6 +7166,53 @@
                 }
             }
         },
+        "auth0:index/getClientTokenQuota:getClientTokenQuota": {
+            "properties": {
+                "clientCredentials": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/getClientTokenQuotaClientCredential:getClientTokenQuotaClientCredential"
+                    },
+                    "description": "The token quota configuration for client credentials.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "clientCredentials"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getClientTokenQuotaClientCredential:getClientTokenQuotaClientCredential": {
+            "properties": {
+                "enforce": {
+                    "type": "boolean",
+                    "description": "If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.\n"
+                },
+                "perDay": {
+                    "type": "integer",
+                    "description": "Maximum number of issued tokens per day\n"
+                },
+                "perHour": {
+                    "type": "integer",
+                    "description": "Maximum number of issued tokens per hour\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enforce",
+                "perDay",
+                "perHour"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "auth0:index/getClientsClient:getClientsClient": {
             "properties": {
                 "allowedClients": {
@@ -7129,6 +7305,13 @@
                     },
                     "description": "Allows configuration for token exchange\n"
                 },
+                "tokenQuotas": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/getClientsClientTokenQuota:getClientsClientTokenQuota"
+                    },
+                    "description": "The token quota configuration.\n"
+                },
                 "webOrigins": {
                     "type": "array",
                     "items": {
@@ -7153,6 +7336,7 @@
                 "oidcLogouts",
                 "sessionTransfers",
                 "tokenExchanges",
+                "tokenQuotas",
                 "webOrigins"
             ],
             "language": {
@@ -7261,6 +7445,53 @@
             "type": "object",
             "required": [
                 "allowAnyProfileOfTypes"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getClientsClientTokenQuota:getClientsClientTokenQuota": {
+            "properties": {
+                "clientCredentials": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/getClientsClientTokenQuotaClientCredential:getClientsClientTokenQuotaClientCredential"
+                    },
+                    "description": "The token quota configuration for client credentials.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "clientCredentials"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getClientsClientTokenQuotaClientCredential:getClientsClientTokenQuotaClientCredential": {
+            "properties": {
+                "enforce": {
+                    "type": "boolean",
+                    "description": "If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.\n"
+                },
+                "perDay": {
+                    "type": "integer",
+                    "description": "Maximum number of issued tokens per day\n"
+                },
+                "perHour": {
+                    "type": "integer",
+                    "description": "Maximum number of issued tokens per hour\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enforce",
+                "perDay",
+                "perHour"
             ],
             "language": {
                 "nodejs": {
@@ -9018,6 +9249,53 @@
                 }
             }
         },
+        "auth0:index/getOrganizationTokenQuota:getOrganizationTokenQuota": {
+            "properties": {
+                "clientCredentials": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/getOrganizationTokenQuotaClientCredential:getOrganizationTokenQuotaClientCredential"
+                    },
+                    "description": "The token quota configuration for client credentials.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "clientCredentials"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getOrganizationTokenQuotaClientCredential:getOrganizationTokenQuotaClientCredential": {
+            "properties": {
+                "enforce": {
+                    "type": "boolean",
+                    "description": "If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.\n"
+                },
+                "perDay": {
+                    "type": "integer",
+                    "description": "Maximum number of issued tokens per day\n"
+                },
+                "perHour": {
+                    "type": "integer",
+                    "description": "Maximum number of issued tokens per hour\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enforce",
+                "perDay",
+                "perHour"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "auth0:index/getPagesChangePassword:getPagesChangePassword": {
             "properties": {
                 "enabled": {
@@ -9518,6 +9796,128 @@
                 "previous",
                 "revoked",
                 "thumbprint"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getTenantDefaultTokenQuota:getTenantDefaultTokenQuota": {
+            "properties": {
+                "clients": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/getTenantDefaultTokenQuotaClient:getTenantDefaultTokenQuotaClient"
+                    },
+                    "description": "The token quota configuration.\n"
+                },
+                "organizations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/getTenantDefaultTokenQuotaOrganization:getTenantDefaultTokenQuotaOrganization"
+                    },
+                    "description": "The token quota configuration.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "clients",
+                "organizations"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getTenantDefaultTokenQuotaClient:getTenantDefaultTokenQuotaClient": {
+            "properties": {
+                "clientCredentials": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/getTenantDefaultTokenQuotaClientClientCredential:getTenantDefaultTokenQuotaClientClientCredential"
+                    },
+                    "description": "The token quota configuration for client credentials.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "clientCredentials"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getTenantDefaultTokenQuotaClientClientCredential:getTenantDefaultTokenQuotaClientClientCredential": {
+            "properties": {
+                "enforce": {
+                    "type": "boolean",
+                    "description": "If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.\n"
+                },
+                "perDay": {
+                    "type": "integer",
+                    "description": "Maximum number of issued tokens per day\n"
+                },
+                "perHour": {
+                    "type": "integer",
+                    "description": "Maximum number of issued tokens per hour\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enforce",
+                "perDay",
+                "perHour"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getTenantDefaultTokenQuotaOrganization:getTenantDefaultTokenQuotaOrganization": {
+            "properties": {
+                "clientCredentials": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/getTenantDefaultTokenQuotaOrganizationClientCredential:getTenantDefaultTokenQuotaOrganizationClientCredential"
+                    },
+                    "description": "The token quota configuration for client credentials.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "clientCredentials"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getTenantDefaultTokenQuotaOrganizationClientCredential:getTenantDefaultTokenQuotaOrganizationClientCredential": {
+            "properties": {
+                "enforce": {
+                    "type": "boolean",
+                    "description": "If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.\n"
+                },
+                "perDay": {
+                    "type": "integer",
+                    "description": "Maximum number of issued tokens per day\n"
+                },
+                "perHour": {
+                    "type": "integer",
+                    "description": "Maximum number of issued tokens per hour\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enforce",
+                "perDay",
+                "perHour"
             ],
             "language": {
                 "nodejs": {
@@ -10421,6 +10821,10 @@
                     "$ref": "#/types/auth0:index/ClientTokenExchange:ClientTokenExchange",
                     "description": "Allows configuration for token exchange\n"
                 },
+                "tokenQuota": {
+                    "$ref": "#/types/auth0:index/ClientTokenQuota:ClientTokenQuota",
+                    "description": "The token quota configuration.\n"
+                },
                 "webOrigins": {
                     "type": "array",
                     "items": {
@@ -10628,6 +11032,10 @@
                     "$ref": "#/types/auth0:index/ClientTokenExchange:ClientTokenExchange",
                     "description": "Allows configuration for token exchange\n"
                 },
+                "tokenQuota": {
+                    "$ref": "#/types/auth0:index/ClientTokenQuota:ClientTokenQuota",
+                    "description": "The token quota configuration.\n"
+                },
                 "webOrigins": {
                     "type": "array",
                     "items": {
@@ -10833,6 +11241,10 @@
                     "tokenExchange": {
                         "$ref": "#/types/auth0:index/ClientTokenExchange:ClientTokenExchange",
                         "description": "Allows configuration for token exchange\n"
+                    },
+                    "tokenQuota": {
+                        "$ref": "#/types/auth0:index/ClientTokenQuota:ClientTokenQuota",
+                        "description": "The token quota configuration.\n"
                     },
                     "webOrigins": {
                         "type": "array",
@@ -12611,6 +13023,10 @@
                 "name": {
                     "type": "string",
                     "description": "The name of this organization.\n"
+                },
+                "tokenQuota": {
+                    "$ref": "#/types/auth0:index/OrganizationTokenQuota:OrganizationTokenQuota",
+                    "description": "The token quota configuration.\n"
                 }
             },
             "required": [
@@ -12636,6 +13052,10 @@
                 "name": {
                     "type": "string",
                     "description": "The name of this organization.\n"
+                },
+                "tokenQuota": {
+                    "$ref": "#/types/auth0:index/OrganizationTokenQuota:OrganizationTokenQuota",
+                    "description": "The token quota configuration.\n"
                 }
             },
             "stateInputs": {
@@ -12659,6 +13079,10 @@
                     "name": {
                         "type": "string",
                         "description": "The name of this organization.\n"
+                    },
+                    "tokenQuota": {
+                        "$ref": "#/types/auth0:index/OrganizationTokenQuota:OrganizationTokenQuota",
+                        "description": "The token quota configuration.\n"
                     }
                 },
                 "type": "object"
@@ -13646,7 +14070,7 @@
                 },
                 "promptType": {
                     "type": "string",
-                    "description": "The prompt that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkeys`, `captcha`, `login`, `signup`, `reset-password`, `mfa`, `mfa-sms`, `mfa-email`, `mfa-push`, `invitation`, `organizations`, `mfa-otp`, `device-flow`, `mfa-phone`, `mfa-voice`, `mfa-recovery-code`, `common`, `consent`, `customized-consent`, `email-otp-challenge`, `email-verification`, `login-email-verification`, `logout`, `mfa-webauthn`, `brute-force-protection`.\n"
+                    "description": "The prompt that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkeys`, `captcha`, `login`, `signup`, `reset-password`, `mfa`, `mfa-sms`, `mfa-email`, `mfa-push`, `invitation`, `organizations`, `mfa-otp`, `device-flow`, `mfa-phone`, `mfa-voice`, `mfa-recovery-code`, `common`, `email-verification`, `login-email-verification`, `logout`, `mfa-webauthn`.\n"
                 },
                 "renderingMode": {
                     "type": "string",
@@ -13654,7 +14078,7 @@
                 },
                 "screenName": {
                     "type": "string",
-                    "description": "The screen that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`, `login`, `signup`, `reset-password-request`, `reset-password-email`, `reset-password`, `reset-password-success`, `reset-password-error`, `reset-password-mfa-email-challenge`, `reset-password-mfa-otp-challenge`, `reset-password-mfa-push-challenge-push`, `reset-password-mfa-sms-challenge`, `mfa-detect-browser-capabilities`, `mfa-enroll-result`, `mfa-begin-enroll-options`, `mfa-login-options`, `mfa-country-codes`, `mfa-sms-challenge`, `mfa-sms-enrollment`, `mfa-sms-list`, `mfa-email-challenge`, `mfa-email-list`, `mfa-push-challenge-push`, `mfa-push-enrollment-qr`, `mfa-push-list`, `mfa-push-welcome`, `accept-invitation`, `organization-selection`, `organization-picker`, `mfa-otp-challenge`, `mfa-otp-enrollment-code`, `mfa-otp-enrollment-qr`, `device-code-activation`, `device-code-activation-allowed`, `device-code-activation-denied`, `device-code-confirmation`, `mfa-phone-challenge`, `mfa-phone-enrollment`, `mfa-voice-challenge`, `mfa-voice-enrollment`, `reset-password-mfa-phone-challenge`, `reset-password-mfa-voice-challenge`, `mfa-recovery-code-challenge`, `mfa-recovery-code-enrollment`, `reset-password-mfa-recovery-code-challenge`, `redeem-ticket`, `mfa-recovery-code-challenge-new-code`, `consent`, `customized-consent`, `email-otp-challenge`, `email-verification-result`, `login-email-verification`, `logout`, `logout-aborted`, `logout-complete`, `mfa-webauthn-change-key-nickname`, `mfa-webauthn-enrollment-success`, `mfa-webauthn-error`, `mfa-webauthn-not-available-error`, `mfa-webauthn-platform-challenge`, `mfa-webauthn-platform-enrollment`, `mfa-webauthn-roaming-challenge`, `mfa-webauthn-roaming-enrollment`, `reset-password-mfa-webauthn-platform-challenge`, `reset-password-mfa-webauthn-roaming-challenge`, `brute-force-protection-unblock`, `brute-force-protection-unblock-failure`, `brute-force-protection-unblock-success`.\n"
+                    "description": "The screen that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`, `login`, `signup`, `reset-password-request`, `reset-password-email`, `reset-password`, `reset-password-success`, `reset-password-error`, `reset-password-mfa-email-challenge`, `reset-password-mfa-otp-challenge`, `reset-password-mfa-push-challenge-push`, `reset-password-mfa-sms-challenge`, `mfa-detect-browser-capabilities`, `mfa-enroll-result`, `mfa-begin-enroll-options`, `mfa-login-options`, `mfa-country-codes`, `mfa-sms-challenge`, `mfa-sms-enrollment`, `mfa-sms-list`, `mfa-email-challenge`, `mfa-email-list`, `mfa-push-challenge-push`, `mfa-push-enrollment-qr`, `mfa-push-list`, `mfa-push-welcome`, `accept-invitation`, `organization-selection`, `organization-picker`, `mfa-otp-challenge`, `mfa-otp-enrollment-code`, `mfa-otp-enrollment-qr`, `device-code-activation`, `device-code-activation-allowed`, `device-code-activation-denied`, `device-code-confirmation`, `mfa-phone-challenge`, `mfa-phone-enrollment`, `mfa-voice-challenge`, `mfa-voice-enrollment`, `reset-password-mfa-phone-challenge`, `reset-password-mfa-voice-challenge`, `mfa-recovery-code-challenge`, `mfa-recovery-code-enrollment`, `reset-password-mfa-recovery-code-challenge`, `redeem-ticket`, `mfa-recovery-code-challenge-new-code`, `email-verification-result`, `login-email-verification`, `logout`, `logout-aborted`, `logout-complete`, `mfa-webauthn-change-key-nickname`, `mfa-webauthn-enrollment-success`, `mfa-webauthn-error`, `mfa-webauthn-platform-challenge`, `mfa-webauthn-platform-enrollment`, `mfa-webauthn-roaming-challenge`, `mfa-webauthn-roaming-enrollment`, `reset-password-mfa-webauthn-platform-challenge`, `reset-password-mfa-webauthn-roaming-challenge`.\n"
                 },
                 "tenant": {
                     "type": "string",
@@ -13686,7 +14110,7 @@
                 },
                 "promptType": {
                     "type": "string",
-                    "description": "The prompt that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkeys`, `captcha`, `login`, `signup`, `reset-password`, `mfa`, `mfa-sms`, `mfa-email`, `mfa-push`, `invitation`, `organizations`, `mfa-otp`, `device-flow`, `mfa-phone`, `mfa-voice`, `mfa-recovery-code`, `common`, `consent`, `customized-consent`, `email-otp-challenge`, `email-verification`, `login-email-verification`, `logout`, `mfa-webauthn`, `brute-force-protection`.\n"
+                    "description": "The prompt that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkeys`, `captcha`, `login`, `signup`, `reset-password`, `mfa`, `mfa-sms`, `mfa-email`, `mfa-push`, `invitation`, `organizations`, `mfa-otp`, `device-flow`, `mfa-phone`, `mfa-voice`, `mfa-recovery-code`, `common`, `email-verification`, `login-email-verification`, `logout`, `mfa-webauthn`.\n"
                 },
                 "renderingMode": {
                     "type": "string",
@@ -13694,7 +14118,7 @@
                 },
                 "screenName": {
                     "type": "string",
-                    "description": "The screen that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`, `login`, `signup`, `reset-password-request`, `reset-password-email`, `reset-password`, `reset-password-success`, `reset-password-error`, `reset-password-mfa-email-challenge`, `reset-password-mfa-otp-challenge`, `reset-password-mfa-push-challenge-push`, `reset-password-mfa-sms-challenge`, `mfa-detect-browser-capabilities`, `mfa-enroll-result`, `mfa-begin-enroll-options`, `mfa-login-options`, `mfa-country-codes`, `mfa-sms-challenge`, `mfa-sms-enrollment`, `mfa-sms-list`, `mfa-email-challenge`, `mfa-email-list`, `mfa-push-challenge-push`, `mfa-push-enrollment-qr`, `mfa-push-list`, `mfa-push-welcome`, `accept-invitation`, `organization-selection`, `organization-picker`, `mfa-otp-challenge`, `mfa-otp-enrollment-code`, `mfa-otp-enrollment-qr`, `device-code-activation`, `device-code-activation-allowed`, `device-code-activation-denied`, `device-code-confirmation`, `mfa-phone-challenge`, `mfa-phone-enrollment`, `mfa-voice-challenge`, `mfa-voice-enrollment`, `reset-password-mfa-phone-challenge`, `reset-password-mfa-voice-challenge`, `mfa-recovery-code-challenge`, `mfa-recovery-code-enrollment`, `reset-password-mfa-recovery-code-challenge`, `redeem-ticket`, `mfa-recovery-code-challenge-new-code`, `consent`, `customized-consent`, `email-otp-challenge`, `email-verification-result`, `login-email-verification`, `logout`, `logout-aborted`, `logout-complete`, `mfa-webauthn-change-key-nickname`, `mfa-webauthn-enrollment-success`, `mfa-webauthn-error`, `mfa-webauthn-not-available-error`, `mfa-webauthn-platform-challenge`, `mfa-webauthn-platform-enrollment`, `mfa-webauthn-roaming-challenge`, `mfa-webauthn-roaming-enrollment`, `reset-password-mfa-webauthn-platform-challenge`, `reset-password-mfa-webauthn-roaming-challenge`, `brute-force-protection-unblock`, `brute-force-protection-unblock-failure`, `brute-force-protection-unblock-success`.\n"
+                    "description": "The screen that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`, `login`, `signup`, `reset-password-request`, `reset-password-email`, `reset-password`, `reset-password-success`, `reset-password-error`, `reset-password-mfa-email-challenge`, `reset-password-mfa-otp-challenge`, `reset-password-mfa-push-challenge-push`, `reset-password-mfa-sms-challenge`, `mfa-detect-browser-capabilities`, `mfa-enroll-result`, `mfa-begin-enroll-options`, `mfa-login-options`, `mfa-country-codes`, `mfa-sms-challenge`, `mfa-sms-enrollment`, `mfa-sms-list`, `mfa-email-challenge`, `mfa-email-list`, `mfa-push-challenge-push`, `mfa-push-enrollment-qr`, `mfa-push-list`, `mfa-push-welcome`, `accept-invitation`, `organization-selection`, `organization-picker`, `mfa-otp-challenge`, `mfa-otp-enrollment-code`, `mfa-otp-enrollment-qr`, `device-code-activation`, `device-code-activation-allowed`, `device-code-activation-denied`, `device-code-confirmation`, `mfa-phone-challenge`, `mfa-phone-enrollment`, `mfa-voice-challenge`, `mfa-voice-enrollment`, `reset-password-mfa-phone-challenge`, `reset-password-mfa-voice-challenge`, `mfa-recovery-code-challenge`, `mfa-recovery-code-enrollment`, `reset-password-mfa-recovery-code-challenge`, `redeem-ticket`, `mfa-recovery-code-challenge-new-code`, `email-verification-result`, `login-email-verification`, `logout`, `logout-aborted`, `logout-complete`, `mfa-webauthn-change-key-nickname`, `mfa-webauthn-enrollment-success`, `mfa-webauthn-error`, `mfa-webauthn-platform-challenge`, `mfa-webauthn-platform-enrollment`, `mfa-webauthn-roaming-challenge`, `mfa-webauthn-roaming-enrollment`, `reset-password-mfa-webauthn-platform-challenge`, `reset-password-mfa-webauthn-roaming-challenge`.\n"
                 }
             },
             "requiredInputs": [
@@ -13721,7 +14145,7 @@
                     },
                     "promptType": {
                         "type": "string",
-                        "description": "The prompt that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkeys`, `captcha`, `login`, `signup`, `reset-password`, `mfa`, `mfa-sms`, `mfa-email`, `mfa-push`, `invitation`, `organizations`, `mfa-otp`, `device-flow`, `mfa-phone`, `mfa-voice`, `mfa-recovery-code`, `common`, `consent`, `customized-consent`, `email-otp-challenge`, `email-verification`, `login-email-verification`, `logout`, `mfa-webauthn`, `brute-force-protection`.\n"
+                        "description": "The prompt that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkeys`, `captcha`, `login`, `signup`, `reset-password`, `mfa`, `mfa-sms`, `mfa-email`, `mfa-push`, `invitation`, `organizations`, `mfa-otp`, `device-flow`, `mfa-phone`, `mfa-voice`, `mfa-recovery-code`, `common`, `email-verification`, `login-email-verification`, `logout`, `mfa-webauthn`.\n"
                     },
                     "renderingMode": {
                         "type": "string",
@@ -13729,7 +14153,7 @@
                     },
                     "screenName": {
                         "type": "string",
-                        "description": "The screen that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`, `login`, `signup`, `reset-password-request`, `reset-password-email`, `reset-password`, `reset-password-success`, `reset-password-error`, `reset-password-mfa-email-challenge`, `reset-password-mfa-otp-challenge`, `reset-password-mfa-push-challenge-push`, `reset-password-mfa-sms-challenge`, `mfa-detect-browser-capabilities`, `mfa-enroll-result`, `mfa-begin-enroll-options`, `mfa-login-options`, `mfa-country-codes`, `mfa-sms-challenge`, `mfa-sms-enrollment`, `mfa-sms-list`, `mfa-email-challenge`, `mfa-email-list`, `mfa-push-challenge-push`, `mfa-push-enrollment-qr`, `mfa-push-list`, `mfa-push-welcome`, `accept-invitation`, `organization-selection`, `organization-picker`, `mfa-otp-challenge`, `mfa-otp-enrollment-code`, `mfa-otp-enrollment-qr`, `device-code-activation`, `device-code-activation-allowed`, `device-code-activation-denied`, `device-code-confirmation`, `mfa-phone-challenge`, `mfa-phone-enrollment`, `mfa-voice-challenge`, `mfa-voice-enrollment`, `reset-password-mfa-phone-challenge`, `reset-password-mfa-voice-challenge`, `mfa-recovery-code-challenge`, `mfa-recovery-code-enrollment`, `reset-password-mfa-recovery-code-challenge`, `redeem-ticket`, `mfa-recovery-code-challenge-new-code`, `consent`, `customized-consent`, `email-otp-challenge`, `email-verification-result`, `login-email-verification`, `logout`, `logout-aborted`, `logout-complete`, `mfa-webauthn-change-key-nickname`, `mfa-webauthn-enrollment-success`, `mfa-webauthn-error`, `mfa-webauthn-not-available-error`, `mfa-webauthn-platform-challenge`, `mfa-webauthn-platform-enrollment`, `mfa-webauthn-roaming-challenge`, `mfa-webauthn-roaming-enrollment`, `reset-password-mfa-webauthn-platform-challenge`, `reset-password-mfa-webauthn-roaming-challenge`, `brute-force-protection-unblock`, `brute-force-protection-unblock-failure`, `brute-force-protection-unblock-success`.\n"
+                        "description": "The screen that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`, `login`, `signup`, `reset-password-request`, `reset-password-email`, `reset-password`, `reset-password-success`, `reset-password-error`, `reset-password-mfa-email-challenge`, `reset-password-mfa-otp-challenge`, `reset-password-mfa-push-challenge-push`, `reset-password-mfa-sms-challenge`, `mfa-detect-browser-capabilities`, `mfa-enroll-result`, `mfa-begin-enroll-options`, `mfa-login-options`, `mfa-country-codes`, `mfa-sms-challenge`, `mfa-sms-enrollment`, `mfa-sms-list`, `mfa-email-challenge`, `mfa-email-list`, `mfa-push-challenge-push`, `mfa-push-enrollment-qr`, `mfa-push-list`, `mfa-push-welcome`, `accept-invitation`, `organization-selection`, `organization-picker`, `mfa-otp-challenge`, `mfa-otp-enrollment-code`, `mfa-otp-enrollment-qr`, `device-code-activation`, `device-code-activation-allowed`, `device-code-activation-denied`, `device-code-confirmation`, `mfa-phone-challenge`, `mfa-phone-enrollment`, `mfa-voice-challenge`, `mfa-voice-enrollment`, `reset-password-mfa-phone-challenge`, `reset-password-mfa-voice-challenge`, `mfa-recovery-code-challenge`, `mfa-recovery-code-enrollment`, `reset-password-mfa-recovery-code-challenge`, `redeem-ticket`, `mfa-recovery-code-challenge-new-code`, `email-verification-result`, `login-email-verification`, `logout`, `logout-aborted`, `logout-complete`, `mfa-webauthn-change-key-nickname`, `mfa-webauthn-enrollment-success`, `mfa-webauthn-error`, `mfa-webauthn-platform-challenge`, `mfa-webauthn-platform-enrollment`, `mfa-webauthn-roaming-challenge`, `mfa-webauthn-roaming-enrollment`, `reset-password-mfa-webauthn-platform-challenge`, `reset-password-mfa-webauthn-roaming-challenge`.\n"
                     },
                     "tenant": {
                         "type": "string",
@@ -14603,6 +15027,10 @@
                     "type": "string",
                     "description": "The default absolute redirection URI. Must be HTTPS or an empty string.\n"
                 },
+                "defaultTokenQuota": {
+                    "$ref": "#/types/auth0:index/TenantDefaultTokenQuota:TenantDefaultTokenQuota",
+                    "description": "Token Quota configuration.\n"
+                },
                 "disableAcrValuesSupported": {
                     "type": "boolean",
                     "description": "Disable list of supported ACR values.\n"
@@ -14728,6 +15156,10 @@
                     "type": "string",
                     "description": "The default absolute redirection URI. Must be HTTPS or an empty string.\n"
                 },
+                "defaultTokenQuota": {
+                    "$ref": "#/types/auth0:index/TenantDefaultTokenQuota:TenantDefaultTokenQuota",
+                    "description": "Token Quota configuration.\n"
+                },
                 "disableAcrValuesSupported": {
                     "type": "boolean",
                     "description": "Disable list of supported ACR values.\n"
@@ -14832,6 +15264,10 @@
                     "defaultRedirectionUri": {
                         "type": "string",
                         "description": "The default absolute redirection URI. Must be HTTPS or an empty string.\n"
+                    },
+                    "defaultTokenQuota": {
+                        "$ref": "#/types/auth0:index/TenantDefaultTokenQuota:TenantDefaultTokenQuota",
+                        "description": "Token Quota configuration.\n"
                     },
                     "disableAcrValuesSupported": {
                         "type": "boolean",
@@ -16086,6 +16522,13 @@
                         },
                         "type": "array"
                     },
+                    "tokenQuotas": {
+                        "description": "The token quota configuration.\n",
+                        "items": {
+                            "$ref": "#/types/auth0:index/getClientTokenQuota:getClientTokenQuota"
+                        },
+                        "type": "array"
+                    },
                     "webOrigins": {
                         "description": "URLs that represent valid web origins for use with web message response mode.\n",
                         "items": {
@@ -16137,6 +16580,7 @@
                     "ssoDisabled",
                     "tokenEndpointAuthMethod",
                     "tokenExchanges",
+                    "tokenQuotas",
                     "webOrigins",
                     "id"
                 ],
@@ -16737,6 +17181,13 @@
                     "organizationId": {
                         "description": "The ID of the organization. If not provided, `name` must be set.\n",
                         "type": "string"
+                    },
+                    "tokenQuotas": {
+                        "description": "The token quota configuration.\n",
+                        "items": {
+                            "$ref": "#/types/auth0:index/getOrganizationTokenQuota:getOrganizationTokenQuota"
+                        },
+                        "type": "array"
                     }
                 },
                 "required": [
@@ -16746,6 +17197,7 @@
                     "displayName",
                     "members",
                     "metadata",
+                    "tokenQuotas",
                     "id"
                 ],
                 "type": "object"
@@ -17305,6 +17757,13 @@
                         "description": "The default absolute redirection URI. Must be HTTPS or an empty string.\n",
                         "type": "string"
                     },
+                    "defaultTokenQuotas": {
+                        "description": "Token Quota configuration.\n",
+                        "items": {
+                            "$ref": "#/types/auth0:index/getTenantDefaultTokenQuota:getTenantDefaultTokenQuota"
+                        },
+                        "type": "array"
+                    },
                     "disableAcrValuesSupported": {
                         "description": "Disable list of supported ACR values.\n",
                         "type": "boolean"
@@ -17411,6 +17870,7 @@
                     "defaultAudience",
                     "defaultDirectory",
                     "defaultRedirectionUri",
+                    "defaultTokenQuotas",
                     "disableAcrValuesSupported",
                     "domain",
                     "enabledLocales",
