@@ -19,6 +19,9 @@ import (
 // The provider also supports a 1:many variant auth0_trigger_actions.
 // If by any means, a binding is missing is the state file, it can be imported to the state and deleted, before attempting to delete the action.
 //
+// > Values provided in the sensitive values shall be stored in the raw state as plain text: secrets.
+// Read more about sensitive data in state.
+//
 // ## Import
 //
 // This resource can be imported by specifying the action ID.
@@ -45,7 +48,7 @@ type Action struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The Node runtime. Possible values are: `node12`, `node16` (not recommended), `node18`, `node22`
 	Runtime pulumi.StringOutput `pulumi:"runtime"`
-	// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
+	// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
 	Secrets ActionSecretArrayOutput `pulumi:"secrets"`
 	// List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
 	SupportedTriggers ActionSupportedTriggersOutput `pulumi:"supportedTriggers"`
@@ -99,7 +102,7 @@ type actionState struct {
 	Name *string `pulumi:"name"`
 	// The Node runtime. Possible values are: `node12`, `node16` (not recommended), `node18`, `node22`
 	Runtime *string `pulumi:"runtime"`
-	// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
+	// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
 	Secrets []ActionSecret `pulumi:"secrets"`
 	// List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
 	SupportedTriggers *ActionSupportedTriggers `pulumi:"supportedTriggers"`
@@ -118,7 +121,7 @@ type ActionState struct {
 	Name pulumi.StringPtrInput
 	// The Node runtime. Possible values are: `node12`, `node16` (not recommended), `node18`, `node22`
 	Runtime pulumi.StringPtrInput
-	// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
+	// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
 	Secrets ActionSecretArrayInput
 	// List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
 	SupportedTriggers ActionSupportedTriggersPtrInput
@@ -141,7 +144,7 @@ type actionArgs struct {
 	Name *string `pulumi:"name"`
 	// The Node runtime. Possible values are: `node12`, `node16` (not recommended), `node18`, `node22`
 	Runtime *string `pulumi:"runtime"`
-	// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
+	// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
 	Secrets []ActionSecret `pulumi:"secrets"`
 	// List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
 	SupportedTriggers ActionSupportedTriggers `pulumi:"supportedTriggers"`
@@ -159,7 +162,7 @@ type ActionArgs struct {
 	Name pulumi.StringPtrInput
 	// The Node runtime. Possible values are: `node12`, `node16` (not recommended), `node18`, `node22`
 	Runtime pulumi.StringPtrInput
-	// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
+	// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
 	Secrets ActionSecretArrayInput
 	// List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
 	SupportedTriggers ActionSupportedTriggersInput
@@ -277,7 +280,7 @@ func (o ActionOutput) Runtime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Action) pulumi.StringOutput { return v.Runtime }).(pulumi.StringOutput)
 }
 
-// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
+// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
 func (o ActionOutput) Secrets() ActionSecretArrayOutput {
 	return o.ApplyT(func(v *Action) ActionSecretArrayOutput { return v.Secrets }).(ActionSecretArrayOutput)
 }
