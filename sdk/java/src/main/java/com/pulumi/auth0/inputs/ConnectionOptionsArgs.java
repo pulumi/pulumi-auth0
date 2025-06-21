@@ -1312,6 +1312,36 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
+     * 
+     */
+    @Import(name="tokenEndpointAuthMethod")
+    private @Nullable Output<String> tokenEndpointAuthMethod;
+
+    /**
+     * @return Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
+     * 
+     */
+    public Optional<Output<String>> tokenEndpointAuthMethod() {
+        return Optional.ofNullable(this.tokenEndpointAuthMethod);
+    }
+
+    /**
+     * Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
+     * 
+     */
+    @Import(name="tokenEndpointAuthSigningAlg")
+    private @Nullable Output<String> tokenEndpointAuthSigningAlg;
+
+    /**
+     * @return Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
+     * 
+     */
+    public Optional<Output<String>> tokenEndpointAuthSigningAlg() {
+        return Optional.ofNullable(this.tokenEndpointAuthSigningAlg);
+    }
+
+    /**
      * Configuration options for one-time passwords.
      * 
      */
@@ -1594,6 +1624,8 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         this.template = $.template;
         this.tenantDomain = $.tenantDomain;
         this.tokenEndpoint = $.tokenEndpoint;
+        this.tokenEndpointAuthMethod = $.tokenEndpointAuthMethod;
+        this.tokenEndpointAuthSigningAlg = $.tokenEndpointAuthSigningAlg;
         this.totp = $.totp;
         this.twilioSid = $.twilioSid;
         this.twilioToken = $.twilioToken;
@@ -3510,6 +3542,48 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder tokenEndpoint(String tokenEndpoint) {
             return tokenEndpoint(Output.of(tokenEndpoint));
+        }
+
+        /**
+         * @param tokenEndpointAuthMethod Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tokenEndpointAuthMethod(@Nullable Output<String> tokenEndpointAuthMethod) {
+            $.tokenEndpointAuthMethod = tokenEndpointAuthMethod;
+            return this;
+        }
+
+        /**
+         * @param tokenEndpointAuthMethod Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tokenEndpointAuthMethod(String tokenEndpointAuthMethod) {
+            return tokenEndpointAuthMethod(Output.of(tokenEndpointAuthMethod));
+        }
+
+        /**
+         * @param tokenEndpointAuthSigningAlg Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tokenEndpointAuthSigningAlg(@Nullable Output<String> tokenEndpointAuthSigningAlg) {
+            $.tokenEndpointAuthSigningAlg = tokenEndpointAuthSigningAlg;
+            return this;
+        }
+
+        /**
+         * @param tokenEndpointAuthSigningAlg Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tokenEndpointAuthSigningAlg(String tokenEndpointAuthSigningAlg) {
+            return tokenEndpointAuthSigningAlg(Output.of(tokenEndpointAuthSigningAlg));
         }
 
         /**

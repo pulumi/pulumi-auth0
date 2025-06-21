@@ -109,7 +109,7 @@ class GetActionResult:
     @pulumi.getter
     def secrets(self) -> Sequence['outputs.GetActionSecretResult']:
         """
-        List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
+        List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
         """
         return pulumi.get(self, "secrets")
 

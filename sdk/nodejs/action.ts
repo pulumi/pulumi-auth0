@@ -14,6 +14,9 @@ import * as utilities from "./utilities";
  * The provider also supports a 1:many variant auth0_trigger_actions.
  * If by any means, a binding is missing is the state file, it can be imported to the state and deleted, before attempting to delete the action.
  *
+ * > Values provided in the sensitive values shall be stored in the raw state as plain text: secrets.
+ * Read more about sensitive data in state.
+ *
  * ## Import
  *
  * This resource can be imported by specifying the action ID.
@@ -77,7 +80,7 @@ export class Action extends pulumi.CustomResource {
      */
     public readonly runtime!: pulumi.Output<string>;
     /**
-     * List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
+     * List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
      */
     public readonly secrets!: pulumi.Output<outputs.ActionSecret[] | undefined>;
     /**
@@ -157,7 +160,7 @@ export interface ActionState {
      */
     runtime?: pulumi.Input<string>;
     /**
-     * List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
+     * List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
      */
     secrets?: pulumi.Input<pulumi.Input<inputs.ActionSecret>[]>;
     /**
@@ -195,7 +198,7 @@ export interface ActionArgs {
      */
     runtime?: pulumi.Input<string>;
     /**
-     * List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
+     * List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
      */
     secrets?: pulumi.Input<pulumi.Input<inputs.ActionSecret>[]>;
     /**

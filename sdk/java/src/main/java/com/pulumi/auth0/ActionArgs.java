@@ -97,14 +97,14 @@ public final class ActionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
+     * List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
      * 
      */
     @Import(name="secrets")
     private @Nullable Output<List<ActionSecretArgs>> secrets;
 
     /**
-     * @return List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
+     * @return List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
      * 
      */
     public Optional<Output<List<ActionSecretArgs>>> secrets() {
@@ -272,7 +272,7 @@ public final class ActionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secrets List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
+         * @param secrets List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
          * 
          * @return builder
          * 
@@ -283,7 +283,7 @@ public final class ActionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secrets List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
+         * @param secrets List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
          * 
          * @return builder
          * 
@@ -293,7 +293,7 @@ public final class ActionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secrets List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
+         * @param secrets List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
          * 
          * @return builder
          * 

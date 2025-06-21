@@ -61,7 +61,7 @@ export interface GetActionResult {
      */
     readonly runtime: string;
     /**
-     * List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
+     * List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
      */
     readonly secrets: outputs.GetActionSecret[];
     /**

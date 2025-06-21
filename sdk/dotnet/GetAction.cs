@@ -100,7 +100,7 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly string Runtime;
         /// <summary>
-        /// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
+        /// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetActionSecretResult> Secrets;
         /// <summary>

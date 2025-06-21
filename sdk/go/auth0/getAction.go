@@ -44,7 +44,7 @@ type LookupActionResult struct {
 	Name *string `pulumi:"name"`
 	// The Node runtime. Possible values are: `node12`, `node16` (not recommended), `node18`, `node22`
 	Runtime string `pulumi:"runtime"`
-	// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
+	// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
 	Secrets []GetActionSecret `pulumi:"secrets"`
 	// List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
 	SupportedTriggers []GetActionSupportedTrigger `pulumi:"supportedTriggers"`
@@ -118,7 +118,7 @@ func (o LookupActionResultOutput) Runtime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupActionResult) string { return v.Runtime }).(pulumi.StringOutput)
 }
 
-// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
+// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
 func (o LookupActionResultOutput) Secrets() GetActionSecretArrayOutput {
 	return o.ApplyT(func(v LookupActionResult) []GetActionSecret { return v.Secrets }).(GetActionSecretArrayOutput)
 }
