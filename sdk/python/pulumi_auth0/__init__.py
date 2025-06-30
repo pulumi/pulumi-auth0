@@ -16,6 +16,7 @@ from .client_grant import *
 from .connection import *
 from .connection_client import *
 from .connection_clients import *
+from .connection_keys import *
 from .connection_scim_configuration import *
 from .custom_domain import *
 from .custom_domain_verification import *
@@ -32,6 +33,7 @@ from .get_branding_theme import *
 from .get_client import *
 from .get_clients import *
 from .get_connection import *
+from .get_connection_keys import *
 from .get_connection_scim_configuration import *
 from .get_custom_domain import *
 from .get_flow import *
@@ -181,6 +183,14 @@ _utilities.register(
   "fqn": "pulumi_auth0",
   "classes": {
    "auth0:index/connectionClients:ConnectionClients": "ConnectionClients"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/connectionKeys",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/connectionKeys:ConnectionKeys": "ConnectionKeys"
   }
  },
  {

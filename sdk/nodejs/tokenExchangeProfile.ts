@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * // This action is then linked using the action_id param to the token-exchange profile
  * const myAction = new auth0.Action("my_action", {
  *     name: "TokenExchange-Action",
- *     code: `exports.onContinuePostLogin = async (event, api) => {
+ *     code: `exports.onExecuteCustomTokenExchange = async (event, api) => {
  * \x09console.log("foo")
  * };"
  * `,

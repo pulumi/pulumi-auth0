@@ -27,7 +27,7 @@ namespace Pulumi.Auth0
     ///     var myAction = new Auth0.Action("my_action", new()
     ///     {
     ///         Name = "TokenExchange-Action",
-    ///         Code = @"exports.onContinuePostLogin = async (event, api) =&gt; {
+    ///         Code = @"exports.onExecuteCustomTokenExchange = async (event, api) =&gt; {
     /// 	console.log(""foo"")
     /// };""
     /// ",
