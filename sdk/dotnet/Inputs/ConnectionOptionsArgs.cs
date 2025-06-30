@@ -621,6 +621,18 @@ namespace Pulumi.Auth0.Inputs
         public Input<string>? TokenEndpoint { get; set; }
 
         /// <summary>
+        /// Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
+        /// </summary>
+        [Input("tokenEndpointAuthMethod")]
+        public Input<string>? TokenEndpointAuthMethod { get; set; }
+
+        /// <summary>
+        /// Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
+        /// </summary>
+        [Input("tokenEndpointAuthSigningAlg")]
+        public Input<string>? TokenEndpointAuthSigningAlg { get; set; }
+
+        /// <summary>
         /// Configuration options for one-time passwords.
         /// </summary>
         [Input("totp")]

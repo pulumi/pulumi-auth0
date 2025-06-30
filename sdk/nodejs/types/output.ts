@@ -1706,6 +1706,14 @@ export interface ConnectionOptions {
      */
     tokenEndpoint: string;
     /**
+     * Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
+     */
+    tokenEndpointAuthMethod?: string;
+    /**
+     * Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
+     */
+    tokenEndpointAuthSigningAlg?: string;
+    /**
      * Configuration options for one-time passwords.
      */
     totp?: outputs.ConnectionOptionsTotp;
@@ -3757,6 +3765,62 @@ export interface GetClientsClientTokenQuotaClientCredential {
     perHour: number;
 }
 
+export interface GetConnectionKeysKey {
+    /**
+     * The signing key algorithm.
+     */
+    algorithm: string;
+    /**
+     * The public certificate of the signing key.
+     */
+    cert: string;
+    connectionId: string;
+    /**
+     * True if the key is the current key.
+     */
+    current: boolean;
+    /**
+     * The date and time when the key became the current key.
+     */
+    currentSince: string;
+    /**
+     * The certificate fingerprint.
+     */
+    fingerprint: string;
+    /**
+     * The signing key use, whether for encryption or signing.
+     */
+    keyUse: string;
+    /**
+     * The key ID of the signing key.
+     */
+    kid: string;
+    /**
+     * True if the key is the next key.
+     */
+    next: boolean;
+    /**
+     * The public certificate of the signing key in PKCS7 format.
+     */
+    pkcs: string;
+    /**
+     * True if the key is the previous key.
+     */
+    previous: boolean;
+    /**
+     * The subject distinguished name (DN) of the certificate.
+     */
+    subjectDn: string;
+    /**
+     * The certificate thumbprint.
+     */
+    thumbprint: string;
+    /**
+     * This is an arbitrary map, which when edited shall perform rotation of keys for the corresponding connection. It can host keys like version, timestamp of last rotation etc.The field has no association with API
+     */
+    triggers: {[key: string]: string};
+}
+
 export interface GetConnectionOption {
     /**
      * ADFS URL where to fetch the metadata source.
@@ -4098,6 +4162,14 @@ export interface GetConnectionOption {
      * Token endpoint.
      */
     tokenEndpoint: string;
+    /**
+     * Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
+     */
+    tokenEndpointAuthMethod: string;
+    /**
+     * Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
+     */
+    tokenEndpointAuthSigningAlg: string;
     /**
      * Configuration options for one-time passwords.
      */

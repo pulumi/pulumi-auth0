@@ -457,6 +457,16 @@ public final class GetConnectionOption {
      */
     private String tokenEndpoint;
     /**
+     * @return Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
+     * 
+     */
+    private String tokenEndpointAuthMethod;
+    /**
+     * @return Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
+     * 
+     */
+    private String tokenEndpointAuthSigningAlg;
+    /**
      * @return Configuration options for one-time passwords.
      * 
      */
@@ -1119,6 +1129,20 @@ public final class GetConnectionOption {
         return this.tokenEndpoint;
     }
     /**
+     * @return Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
+     * 
+     */
+    public String tokenEndpointAuthMethod() {
+        return this.tokenEndpointAuthMethod;
+    }
+    /**
+     * @return Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
+     * 
+     */
+    public String tokenEndpointAuthSigningAlg() {
+        return this.tokenEndpointAuthSigningAlg;
+    }
+    /**
      * @return Configuration options for one-time passwords.
      * 
      */
@@ -1304,6 +1328,8 @@ public final class GetConnectionOption {
         private String template;
         private String tenantDomain;
         private String tokenEndpoint;
+        private String tokenEndpointAuthMethod;
+        private String tokenEndpointAuthSigningAlg;
         private List<GetConnectionOptionTotp> totps;
         private String twilioSid;
         private String twilioToken;
@@ -1405,6 +1431,8 @@ public final class GetConnectionOption {
     	      this.template = defaults.template;
     	      this.tenantDomain = defaults.tenantDomain;
     	      this.tokenEndpoint = defaults.tokenEndpoint;
+    	      this.tokenEndpointAuthMethod = defaults.tokenEndpointAuthMethod;
+    	      this.tokenEndpointAuthSigningAlg = defaults.tokenEndpointAuthSigningAlg;
     	      this.totps = defaults.totps;
     	      this.twilioSid = defaults.twilioSid;
     	      this.twilioToken = defaults.twilioToken;
@@ -2164,6 +2192,22 @@ public final class GetConnectionOption {
             return this;
         }
         @CustomType.Setter
+        public Builder tokenEndpointAuthMethod(String tokenEndpointAuthMethod) {
+            if (tokenEndpointAuthMethod == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOption", "tokenEndpointAuthMethod");
+            }
+            this.tokenEndpointAuthMethod = tokenEndpointAuthMethod;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder tokenEndpointAuthSigningAlg(String tokenEndpointAuthSigningAlg) {
+            if (tokenEndpointAuthSigningAlg == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOption", "tokenEndpointAuthSigningAlg");
+            }
+            this.tokenEndpointAuthSigningAlg = tokenEndpointAuthSigningAlg;
+            return this;
+        }
+        @CustomType.Setter
         public Builder totps(List<GetConnectionOptionTotp> totps) {
             if (totps == null) {
               throw new MissingRequiredPropertyException("GetConnectionOption", "totps");
@@ -2360,6 +2404,8 @@ public final class GetConnectionOption {
             _resultValue.template = template;
             _resultValue.tenantDomain = tenantDomain;
             _resultValue.tokenEndpoint = tokenEndpoint;
+            _resultValue.tokenEndpointAuthMethod = tokenEndpointAuthMethod;
+            _resultValue.tokenEndpointAuthSigningAlg = tokenEndpointAuthSigningAlg;
             _resultValue.totps = totps;
             _resultValue.twilioSid = twilioSid;
             _resultValue.twilioToken = twilioToken;
