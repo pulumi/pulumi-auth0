@@ -25,6 +25,12 @@ type Provider struct {
 	ApiToken pulumi.StringPtrOutput `pulumi:"apiToken"`
 	// Your Auth0 audience when using a custom domain. It can also be sourced from the `AUTH0_AUDIENCE` environment variable.
 	Audience pulumi.StringPtrOutput `pulumi:"audience"`
+	// The private key used to sign the client assertion JWT. It can also be sourced from the
+	// `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
+	ClientAssertionPrivateKey pulumi.StringPtrOutput `pulumi:"clientAssertionPrivateKey"`
+	// The algorithm used to sign the client assertion JWT. It can also be sourced from the
+	// `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
+	ClientAssertionSigningAlg pulumi.StringPtrOutput `pulumi:"clientAssertionSigningAlg"`
 	// Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.
 	ClientId pulumi.StringPtrOutput `pulumi:"clientId"`
 	// Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable.
@@ -64,6 +70,12 @@ type providerArgs struct {
 	Audience *string `pulumi:"audience"`
 	// While toggled on, the API token gets fetched from the keyring for the given domain
 	CliLogin *bool `pulumi:"cliLogin"`
+	// The private key used to sign the client assertion JWT. It can also be sourced from the
+	// `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
+	ClientAssertionPrivateKey *string `pulumi:"clientAssertionPrivateKey"`
+	// The algorithm used to sign the client assertion JWT. It can also be sourced from the
+	// `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
+	ClientAssertionSigningAlg *string `pulumi:"clientAssertionSigningAlg"`
 	// Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.
 	ClientId *string `pulumi:"clientId"`
 	// Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable.
@@ -87,6 +99,12 @@ type ProviderArgs struct {
 	Audience pulumi.StringPtrInput
 	// While toggled on, the API token gets fetched from the keyring for the given domain
 	CliLogin pulumi.BoolPtrInput
+	// The private key used to sign the client assertion JWT. It can also be sourced from the
+	// `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
+	ClientAssertionPrivateKey pulumi.StringPtrInput
+	// The algorithm used to sign the client assertion JWT. It can also be sourced from the
+	// `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
+	ClientAssertionSigningAlg pulumi.StringPtrInput
 	// Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.
 	ClientId pulumi.StringPtrInput
 	// Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable.
@@ -170,6 +188,18 @@ func (o ProviderOutput) ApiToken() pulumi.StringPtrOutput {
 // Your Auth0 audience when using a custom domain. It can also be sourced from the `AUTH0_AUDIENCE` environment variable.
 func (o ProviderOutput) Audience() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Audience }).(pulumi.StringPtrOutput)
+}
+
+// The private key used to sign the client assertion JWT. It can also be sourced from the
+// `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
+func (o ProviderOutput) ClientAssertionPrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ClientAssertionPrivateKey }).(pulumi.StringPtrOutput)
+}
+
+// The algorithm used to sign the client assertion JWT. It can also be sourced from the
+// `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
+func (o ProviderOutput) ClientAssertionSigningAlg() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ClientAssertionSigningAlg }).(pulumi.StringPtrOutput)
 }
 
 // Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.

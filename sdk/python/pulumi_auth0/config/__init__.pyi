@@ -33,6 +33,18 @@ cliLogin: Optional[bool]
 While toggled on, the API token gets fetched from the keyring for the given domain
 """
 
+clientAssertionPrivateKey: Optional[str]
+"""
+The private key used to sign the client assertion JWT. It can also be sourced from the
+`AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
+"""
+
+clientAssertionSigningAlg: Optional[str]
+"""
+The algorithm used to sign the client assertion JWT. It can also be sourced from the
+`AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
+"""
+
 clientId: Optional[str]
 """
 Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.

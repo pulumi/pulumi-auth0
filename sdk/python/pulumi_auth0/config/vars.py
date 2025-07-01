@@ -46,6 +46,22 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get_bool('cliLogin')
 
     @property
+    def client_assertion_private_key(self) -> Optional[str]:
+        """
+        The private key used to sign the client assertion JWT. It can also be sourced from the
+        `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
+        """
+        return __config__.get('clientAssertionPrivateKey')
+
+    @property
+    def client_assertion_signing_alg(self) -> Optional[str]:
+        """
+        The algorithm used to sign the client assertion JWT. It can also be sourced from the
+        `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
+        """
+        return __config__.get('clientAssertionSigningAlg')
+
+    @property
     def client_id(self) -> Optional[str]:
         """
         Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.

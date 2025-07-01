@@ -57,6 +57,38 @@ public class Provider extends com.pulumi.resources.ProviderResource {
         return Codegen.optional(this.audience);
     }
     /**
+     * The private key used to sign the client assertion JWT. It can also be sourced from the
+     * `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
+     * 
+     */
+    @Export(name="clientAssertionPrivateKey", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> clientAssertionPrivateKey;
+
+    /**
+     * @return The private key used to sign the client assertion JWT. It can also be sourced from the
+     * `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
+     * 
+     */
+    public Output<Optional<String>> clientAssertionPrivateKey() {
+        return Codegen.optional(this.clientAssertionPrivateKey);
+    }
+    /**
+     * The algorithm used to sign the client assertion JWT. It can also be sourced from the
+     * `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
+     * 
+     */
+    @Export(name="clientAssertionSigningAlg", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> clientAssertionSigningAlg;
+
+    /**
+     * @return The algorithm used to sign the client assertion JWT. It can also be sourced from the
+     * `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
+     * 
+     */
+    public Output<Optional<String>> clientAssertionSigningAlg() {
+        return Codegen.optional(this.clientAssertionSigningAlg);
+    }
+    /**
      * Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.
      * 
      */

@@ -34,6 +34,20 @@ namespace Pulumi.Auth0
         public Output<string?> Audience { get; private set; } = null!;
 
         /// <summary>
+        /// The private key used to sign the client assertion JWT. It can also be sourced from the
+        /// `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
+        /// </summary>
+        [Output("clientAssertionPrivateKey")]
+        public Output<string?> ClientAssertionPrivateKey { get; private set; } = null!;
+
+        /// <summary>
+        /// The algorithm used to sign the client assertion JWT. It can also be sourced from the
+        /// `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
+        /// </summary>
+        [Output("clientAssertionSigningAlg")]
+        public Output<string?> ClientAssertionSigningAlg { get; private set; } = null!;
+
+        /// <summary>
         /// Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.
         /// </summary>
         [Output("clientId")]
@@ -105,6 +119,20 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("cliLogin", json: true)]
         public Input<bool>? CliLogin { get; set; }
+
+        /// <summary>
+        /// The private key used to sign the client assertion JWT. It can also be sourced from the
+        /// `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
+        /// </summary>
+        [Input("clientAssertionPrivateKey")]
+        public Input<string>? ClientAssertionPrivateKey { get; set; }
+
+        /// <summary>
+        /// The algorithm used to sign the client assertion JWT. It can also be sourced from the
+        /// `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
+        /// </summary>
+        [Input("clientAssertionSigningAlg")]
+        public Input<string>? ClientAssertionSigningAlg { get; set; }
 
         /// <summary>
         /// Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.

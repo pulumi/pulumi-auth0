@@ -17,6 +17,9 @@ namespace Pulumi.Auth0
     /// The provider also supports a 1:many variant auth0_trigger_actions.
     /// If by any means, a binding is missing is the state file, it can be imported to the state and deleted, before attempting to delete the action.
     /// 
+    /// &gt; Values provided in the sensitive values shall be stored in the raw state as plain text: secrets.
+    /// Read more about sensitive data in state.
+    /// 
     /// ## Import
     /// 
     /// This resource can be imported by specifying the action ID.
@@ -65,7 +68,7 @@ namespace Pulumi.Auth0
         public Output<string> Runtime { get; private set; } = null!;
 
         /// <summary>
-        /// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
+        /// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
         /// </summary>
         [Output("secrets")]
         public Output<ImmutableArray<Outputs.ActionSecret>> Secrets { get; private set; } = null!;
@@ -168,7 +171,7 @@ namespace Pulumi.Auth0
         private InputList<Inputs.ActionSecretArgs>? _secrets;
 
         /// <summary>
-        /// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
+        /// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
         /// </summary>
         public InputList<Inputs.ActionSecretArgs> Secrets
         {
@@ -230,7 +233,7 @@ namespace Pulumi.Auth0
         private InputList<Inputs.ActionSecretGetArgs>? _secrets;
 
         /// <summary>
-        /// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
+        /// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
         /// </summary>
         public InputList<Inputs.ActionSecretGetArgs> Secrets
         {

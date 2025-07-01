@@ -14450,6 +14450,10 @@ type ConnectionOptions struct {
 	TenantDomain *string `pulumi:"tenantDomain"`
 	// Token endpoint.
 	TokenEndpoint *string `pulumi:"tokenEndpoint"`
+	// Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
+	TokenEndpointAuthMethod *string `pulumi:"tokenEndpointAuthMethod"`
+	// Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
+	TokenEndpointAuthSigningAlg *string `pulumi:"tokenEndpointAuthSigningAlg"`
 	// Configuration options for one-time passwords.
 	Totp *ConnectionOptionsTotp `pulumi:"totp"`
 	// SID for your Twilio account.
@@ -14660,6 +14664,10 @@ type ConnectionOptionsArgs struct {
 	TenantDomain pulumi.StringPtrInput `pulumi:"tenantDomain"`
 	// Token endpoint.
 	TokenEndpoint pulumi.StringPtrInput `pulumi:"tokenEndpoint"`
+	// Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
+	TokenEndpointAuthMethod pulumi.StringPtrInput `pulumi:"tokenEndpointAuthMethod"`
+	// Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
+	TokenEndpointAuthSigningAlg pulumi.StringPtrInput `pulumi:"tokenEndpointAuthSigningAlg"`
 	// Configuration options for one-time passwords.
 	Totp ConnectionOptionsTotpPtrInput `pulumi:"totp"`
 	// SID for your Twilio account.
@@ -15190,6 +15198,16 @@ func (o ConnectionOptionsOutput) TenantDomain() pulumi.StringPtrOutput {
 // Token endpoint.
 func (o ConnectionOptionsOutput) TokenEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.TokenEndpoint }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
+func (o ConnectionOptionsOutput) TokenEndpointAuthMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *string { return v.TokenEndpointAuthMethod }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
+func (o ConnectionOptionsOutput) TokenEndpointAuthSigningAlg() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *string { return v.TokenEndpointAuthSigningAlg }).(pulumi.StringPtrOutput)
 }
 
 // Configuration options for one-time passwords.
@@ -16128,6 +16146,26 @@ func (o ConnectionOptionsPtrOutput) TokenEndpoint() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.TokenEndpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
+func (o ConnectionOptionsPtrOutput) TokenEndpointAuthMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TokenEndpointAuthMethod
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
+func (o ConnectionOptionsPtrOutput) TokenEndpointAuthSigningAlg() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TokenEndpointAuthSigningAlg
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -41928,6 +41966,217 @@ func (o GetClientsClientTokenQuotaClientCredentialArrayOutput) Index(i pulumi.In
 	}).(GetClientsClientTokenQuotaClientCredentialOutput)
 }
 
+type GetConnectionKeysKey struct {
+	// The signing key algorithm.
+	Algorithm string `pulumi:"algorithm"`
+	// The public certificate of the signing key.
+	Cert         string `pulumi:"cert"`
+	ConnectionId string `pulumi:"connectionId"`
+	// True if the key is the current key.
+	Current bool `pulumi:"current"`
+	// The date and time when the key became the current key.
+	CurrentSince string `pulumi:"currentSince"`
+	// The certificate fingerprint.
+	Fingerprint string `pulumi:"fingerprint"`
+	// The signing key use, whether for encryption or signing.
+	KeyUse string `pulumi:"keyUse"`
+	// The key ID of the signing key.
+	Kid string `pulumi:"kid"`
+	// True if the key is the next key.
+	Next bool `pulumi:"next"`
+	// The public certificate of the signing key in PKCS7 format.
+	Pkcs string `pulumi:"pkcs"`
+	// True if the key is the previous key.
+	Previous bool `pulumi:"previous"`
+	// The subject distinguished name (DN) of the certificate.
+	SubjectDn string `pulumi:"subjectDn"`
+	// The certificate thumbprint.
+	Thumbprint string `pulumi:"thumbprint"`
+	// This is an arbitrary map, which when edited shall perform rotation of keys for the corresponding connection. It can host keys like version, timestamp of last rotation etc.The field has no association with API
+	Triggers map[string]string `pulumi:"triggers"`
+}
+
+// GetConnectionKeysKeyInput is an input type that accepts GetConnectionKeysKeyArgs and GetConnectionKeysKeyOutput values.
+// You can construct a concrete instance of `GetConnectionKeysKeyInput` via:
+//
+//	GetConnectionKeysKeyArgs{...}
+type GetConnectionKeysKeyInput interface {
+	pulumi.Input
+
+	ToGetConnectionKeysKeyOutput() GetConnectionKeysKeyOutput
+	ToGetConnectionKeysKeyOutputWithContext(context.Context) GetConnectionKeysKeyOutput
+}
+
+type GetConnectionKeysKeyArgs struct {
+	// The signing key algorithm.
+	Algorithm pulumi.StringInput `pulumi:"algorithm"`
+	// The public certificate of the signing key.
+	Cert         pulumi.StringInput `pulumi:"cert"`
+	ConnectionId pulumi.StringInput `pulumi:"connectionId"`
+	// True if the key is the current key.
+	Current pulumi.BoolInput `pulumi:"current"`
+	// The date and time when the key became the current key.
+	CurrentSince pulumi.StringInput `pulumi:"currentSince"`
+	// The certificate fingerprint.
+	Fingerprint pulumi.StringInput `pulumi:"fingerprint"`
+	// The signing key use, whether for encryption or signing.
+	KeyUse pulumi.StringInput `pulumi:"keyUse"`
+	// The key ID of the signing key.
+	Kid pulumi.StringInput `pulumi:"kid"`
+	// True if the key is the next key.
+	Next pulumi.BoolInput `pulumi:"next"`
+	// The public certificate of the signing key in PKCS7 format.
+	Pkcs pulumi.StringInput `pulumi:"pkcs"`
+	// True if the key is the previous key.
+	Previous pulumi.BoolInput `pulumi:"previous"`
+	// The subject distinguished name (DN) of the certificate.
+	SubjectDn pulumi.StringInput `pulumi:"subjectDn"`
+	// The certificate thumbprint.
+	Thumbprint pulumi.StringInput `pulumi:"thumbprint"`
+	// This is an arbitrary map, which when edited shall perform rotation of keys for the corresponding connection. It can host keys like version, timestamp of last rotation etc.The field has no association with API
+	Triggers pulumi.StringMapInput `pulumi:"triggers"`
+}
+
+func (GetConnectionKeysKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionKeysKey)(nil)).Elem()
+}
+
+func (i GetConnectionKeysKeyArgs) ToGetConnectionKeysKeyOutput() GetConnectionKeysKeyOutput {
+	return i.ToGetConnectionKeysKeyOutputWithContext(context.Background())
+}
+
+func (i GetConnectionKeysKeyArgs) ToGetConnectionKeysKeyOutputWithContext(ctx context.Context) GetConnectionKeysKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionKeysKeyOutput)
+}
+
+// GetConnectionKeysKeyArrayInput is an input type that accepts GetConnectionKeysKeyArray and GetConnectionKeysKeyArrayOutput values.
+// You can construct a concrete instance of `GetConnectionKeysKeyArrayInput` via:
+//
+//	GetConnectionKeysKeyArray{ GetConnectionKeysKeyArgs{...} }
+type GetConnectionKeysKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionKeysKeyArrayOutput() GetConnectionKeysKeyArrayOutput
+	ToGetConnectionKeysKeyArrayOutputWithContext(context.Context) GetConnectionKeysKeyArrayOutput
+}
+
+type GetConnectionKeysKeyArray []GetConnectionKeysKeyInput
+
+func (GetConnectionKeysKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionKeysKey)(nil)).Elem()
+}
+
+func (i GetConnectionKeysKeyArray) ToGetConnectionKeysKeyArrayOutput() GetConnectionKeysKeyArrayOutput {
+	return i.ToGetConnectionKeysKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionKeysKeyArray) ToGetConnectionKeysKeyArrayOutputWithContext(ctx context.Context) GetConnectionKeysKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionKeysKeyArrayOutput)
+}
+
+type GetConnectionKeysKeyOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionKeysKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionKeysKey)(nil)).Elem()
+}
+
+func (o GetConnectionKeysKeyOutput) ToGetConnectionKeysKeyOutput() GetConnectionKeysKeyOutput {
+	return o
+}
+
+func (o GetConnectionKeysKeyOutput) ToGetConnectionKeysKeyOutputWithContext(ctx context.Context) GetConnectionKeysKeyOutput {
+	return o
+}
+
+// The signing key algorithm.
+func (o GetConnectionKeysKeyOutput) Algorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionKeysKey) string { return v.Algorithm }).(pulumi.StringOutput)
+}
+
+// The public certificate of the signing key.
+func (o GetConnectionKeysKeyOutput) Cert() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionKeysKey) string { return v.Cert }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionKeysKeyOutput) ConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionKeysKey) string { return v.ConnectionId }).(pulumi.StringOutput)
+}
+
+// True if the key is the current key.
+func (o GetConnectionKeysKeyOutput) Current() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionKeysKey) bool { return v.Current }).(pulumi.BoolOutput)
+}
+
+// The date and time when the key became the current key.
+func (o GetConnectionKeysKeyOutput) CurrentSince() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionKeysKey) string { return v.CurrentSince }).(pulumi.StringOutput)
+}
+
+// The certificate fingerprint.
+func (o GetConnectionKeysKeyOutput) Fingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionKeysKey) string { return v.Fingerprint }).(pulumi.StringOutput)
+}
+
+// The signing key use, whether for encryption or signing.
+func (o GetConnectionKeysKeyOutput) KeyUse() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionKeysKey) string { return v.KeyUse }).(pulumi.StringOutput)
+}
+
+// The key ID of the signing key.
+func (o GetConnectionKeysKeyOutput) Kid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionKeysKey) string { return v.Kid }).(pulumi.StringOutput)
+}
+
+// True if the key is the next key.
+func (o GetConnectionKeysKeyOutput) Next() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionKeysKey) bool { return v.Next }).(pulumi.BoolOutput)
+}
+
+// The public certificate of the signing key in PKCS7 format.
+func (o GetConnectionKeysKeyOutput) Pkcs() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionKeysKey) string { return v.Pkcs }).(pulumi.StringOutput)
+}
+
+// True if the key is the previous key.
+func (o GetConnectionKeysKeyOutput) Previous() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionKeysKey) bool { return v.Previous }).(pulumi.BoolOutput)
+}
+
+// The subject distinguished name (DN) of the certificate.
+func (o GetConnectionKeysKeyOutput) SubjectDn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionKeysKey) string { return v.SubjectDn }).(pulumi.StringOutput)
+}
+
+// The certificate thumbprint.
+func (o GetConnectionKeysKeyOutput) Thumbprint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionKeysKey) string { return v.Thumbprint }).(pulumi.StringOutput)
+}
+
+// This is an arbitrary map, which when edited shall perform rotation of keys for the corresponding connection. It can host keys like version, timestamp of last rotation etc.The field has no association with API
+func (o GetConnectionKeysKeyOutput) Triggers() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetConnectionKeysKey) map[string]string { return v.Triggers }).(pulumi.StringMapOutput)
+}
+
+type GetConnectionKeysKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionKeysKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionKeysKey)(nil)).Elem()
+}
+
+func (o GetConnectionKeysKeyArrayOutput) ToGetConnectionKeysKeyArrayOutput() GetConnectionKeysKeyArrayOutput {
+	return o
+}
+
+func (o GetConnectionKeysKeyArrayOutput) ToGetConnectionKeysKeyArrayOutputWithContext(ctx context.Context) GetConnectionKeysKeyArrayOutput {
+	return o
+}
+
+func (o GetConnectionKeysKeyArrayOutput) Index(i pulumi.IntInput) GetConnectionKeysKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionKeysKey {
+		return vs[0].([]GetConnectionKeysKey)[vs[1].(int)]
+	}).(GetConnectionKeysKeyOutput)
+}
+
 type GetConnectionOption struct {
 	// ADFS URL where to fetch the metadata source.
 	AdfsServer string `pulumi:"adfsServer"`
@@ -42099,6 +42348,10 @@ type GetConnectionOption struct {
 	TenantDomain string `pulumi:"tenantDomain"`
 	// Token endpoint.
 	TokenEndpoint string `pulumi:"tokenEndpoint"`
+	// Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
+	TokenEndpointAuthMethod string `pulumi:"tokenEndpointAuthMethod"`
+	// Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
+	TokenEndpointAuthSigningAlg string `pulumi:"tokenEndpointAuthSigningAlg"`
 	// Configuration options for one-time passwords.
 	Totps []GetConnectionOptionTotp `pulumi:"totps"`
 	// SID for your Twilio account.
@@ -42309,6 +42562,10 @@ type GetConnectionOptionArgs struct {
 	TenantDomain pulumi.StringInput `pulumi:"tenantDomain"`
 	// Token endpoint.
 	TokenEndpoint pulumi.StringInput `pulumi:"tokenEndpoint"`
+	// Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
+	TokenEndpointAuthMethod pulumi.StringInput `pulumi:"tokenEndpointAuthMethod"`
+	// Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
+	TokenEndpointAuthSigningAlg pulumi.StringInput `pulumi:"tokenEndpointAuthSigningAlg"`
 	// Configuration options for one-time passwords.
 	Totps GetConnectionOptionTotpArrayInput `pulumi:"totps"`
 	// SID for your Twilio account.
@@ -42817,6 +43074,16 @@ func (o GetConnectionOptionOutput) TenantDomain() pulumi.StringOutput {
 // Token endpoint.
 func (o GetConnectionOptionOutput) TokenEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionOption) string { return v.TokenEndpoint }).(pulumi.StringOutput)
+}
+
+// Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
+func (o GetConnectionOptionOutput) TokenEndpointAuthMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.TokenEndpointAuthMethod }).(pulumi.StringOutput)
+}
+
+// Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
+func (o GetConnectionOptionOutput) TokenEndpointAuthSigningAlg() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.TokenEndpointAuthSigningAlg }).(pulumi.StringOutput)
 }
 
 // Configuration options for one-time passwords.
@@ -52035,6 +52302,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientTokenQuotaArrayInput)(nil)).Elem(), GetClientsClientTokenQuotaArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientTokenQuotaClientCredentialInput)(nil)).Elem(), GetClientsClientTokenQuotaClientCredentialArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientTokenQuotaClientCredentialArrayInput)(nil)).Elem(), GetClientsClientTokenQuotaClientCredentialArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionKeysKeyInput)(nil)).Elem(), GetConnectionKeysKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionKeysKeyArrayInput)(nil)).Elem(), GetConnectionKeysKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionInput)(nil)).Elem(), GetConnectionOptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionArrayInput)(nil)).Elem(), GetConnectionOptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributeInput)(nil)).Elem(), GetConnectionOptionAttributeArgs{})
@@ -52712,6 +52981,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClientsClientTokenQuotaArrayOutput{})
 	pulumi.RegisterOutputType(GetClientsClientTokenQuotaClientCredentialOutput{})
 	pulumi.RegisterOutputType(GetClientsClientTokenQuotaClientCredentialArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionKeysKeyOutput{})
+	pulumi.RegisterOutputType(GetConnectionKeysKeyArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionAttributeOutput{})

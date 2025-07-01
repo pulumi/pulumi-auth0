@@ -65,6 +65,28 @@ namespace Pulumi.Auth0
             set => _cliLogin.Set(value);
         }
 
+        private static readonly __Value<string?> _clientAssertionPrivateKey = new __Value<string?>(() => __config.Get("clientAssertionPrivateKey"));
+        /// <summary>
+        /// The private key used to sign the client assertion JWT. It can also be sourced from the
+        /// `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
+        /// </summary>
+        public static string? ClientAssertionPrivateKey
+        {
+            get => _clientAssertionPrivateKey.Get();
+            set => _clientAssertionPrivateKey.Set(value);
+        }
+
+        private static readonly __Value<string?> _clientAssertionSigningAlg = new __Value<string?>(() => __config.Get("clientAssertionSigningAlg"));
+        /// <summary>
+        /// The algorithm used to sign the client assertion JWT. It can also be sourced from the
+        /// `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
+        /// </summary>
+        public static string? ClientAssertionSigningAlg
+        {
+            get => _clientAssertionSigningAlg.Get();
+            set => _clientAssertionSigningAlg.Set(value);
+        }
+
         private static readonly __Value<string?> _clientId = new __Value<string?>(() => __config.Get("clientId"));
         /// <summary>
         /// Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.

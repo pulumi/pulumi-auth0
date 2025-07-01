@@ -37,7 +37,7 @@ class ActionArgs:
         :param pulumi.Input[builtins.bool] deploy: Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately.
         :param pulumi.Input[builtins.str] name: The name of the action.
         :param pulumi.Input[builtins.str] runtime: The Node runtime. Possible values are: `node12`, `node16` (not recommended), `node18`, `node22`
-        :param pulumi.Input[Sequence[pulumi.Input['ActionSecretArgs']]] secrets: List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
+        :param pulumi.Input[Sequence[pulumi.Input['ActionSecretArgs']]] secrets: List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
         """
         pulumi.set(__self__, "code", code)
         pulumi.set(__self__, "supported_triggers", supported_triggers)
@@ -128,7 +128,7 @@ class ActionArgs:
     @pulumi.getter
     def secrets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ActionSecretArgs']]]]:
         """
-        List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
+        List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
         """
         return pulumi.get(self, "secrets")
 
@@ -155,7 +155,7 @@ class _ActionState:
         :param pulumi.Input[builtins.bool] deploy: Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately.
         :param pulumi.Input[builtins.str] name: The name of the action.
         :param pulumi.Input[builtins.str] runtime: The Node runtime. Possible values are: `node12`, `node16` (not recommended), `node18`, `node22`
-        :param pulumi.Input[Sequence[pulumi.Input['ActionSecretArgs']]] secrets: List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
+        :param pulumi.Input[Sequence[pulumi.Input['ActionSecretArgs']]] secrets: List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
         :param pulumi.Input['ActionSupportedTriggersArgs'] supported_triggers: List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
         :param pulumi.Input[builtins.str] version_id: Version ID of the action. This value is available if `deploy` is set to true.
         """
@@ -240,7 +240,7 @@ class _ActionState:
     @pulumi.getter
     def secrets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ActionSecretArgs']]]]:
         """
-        List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
+        List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
         """
         return pulumi.get(self, "secrets")
 
@@ -295,6 +295,9 @@ class Action(pulumi.CustomResource):
         The provider also supports a 1:many variant auth0_trigger_actions.
         If by any means, a binding is missing is the state file, it can be imported to the state and deleted, before attempting to delete the action.
 
+        > Values provided in the sensitive values shall be stored in the raw state as plain text: secrets.
+        Read more about sensitive data in state.
+
         ## Import
 
         This resource can be imported by specifying the action ID.
@@ -316,7 +319,7 @@ class Action(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] deploy: Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately.
         :param pulumi.Input[builtins.str] name: The name of the action.
         :param pulumi.Input[builtins.str] runtime: The Node runtime. Possible values are: `node12`, `node16` (not recommended), `node18`, `node22`
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ActionSecretArgs', 'ActionSecretArgsDict']]]] secrets: List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ActionSecretArgs', 'ActionSecretArgsDict']]]] secrets: List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
         :param pulumi.Input[Union['ActionSupportedTriggersArgs', 'ActionSupportedTriggersArgsDict']] supported_triggers: List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
         """
         ...
@@ -332,6 +335,9 @@ class Action(pulumi.CustomResource):
         A binding is usually managed by TriggerAction resource.
         The provider also supports a 1:many variant auth0_trigger_actions.
         If by any means, a binding is missing is the state file, it can be imported to the state and deleted, before attempting to delete the action.
+
+        > Values provided in the sensitive values shall be stored in the raw state as plain text: secrets.
+        Read more about sensitive data in state.
 
         ## Import
 
@@ -420,7 +426,7 @@ class Action(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] deploy: Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately.
         :param pulumi.Input[builtins.str] name: The name of the action.
         :param pulumi.Input[builtins.str] runtime: The Node runtime. Possible values are: `node12`, `node16` (not recommended), `node18`, `node22`
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ActionSecretArgs', 'ActionSecretArgsDict']]]] secrets: List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ActionSecretArgs', 'ActionSecretArgsDict']]]] secrets: List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
         :param pulumi.Input[Union['ActionSupportedTriggersArgs', 'ActionSupportedTriggersArgsDict']] supported_triggers: List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
         :param pulumi.Input[builtins.str] version_id: Version ID of the action. This value is available if `deploy` is set to true.
         """
@@ -482,7 +488,7 @@ class Action(pulumi.CustomResource):
     @pulumi.getter
     def secrets(self) -> pulumi.Output[Optional[Sequence['outputs.ActionSecret']]]:
         """
-        List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
+        List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
         """
         return pulumi.get(self, "secrets")
 

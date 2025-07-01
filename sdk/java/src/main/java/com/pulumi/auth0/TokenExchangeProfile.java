@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *         var myAction = new Action("myAction", ActionArgs.builder()
  *             .name("TokenExchange-Action")
  *             .code("""
- * exports.onContinuePostLogin = async (event, api) => {
+ * exports.onExecuteCustomTokenExchange = async (event, api) => {
  * 	console.log("foo")
  * };"
  *             """)
