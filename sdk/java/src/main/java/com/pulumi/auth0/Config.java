@@ -36,6 +36,22 @@ public final class Config {
         return Codegen.booleanProp("cliLogin").config(config).get();
     }
 /**
+ * The private key used to sign the client assertion JWT. It can also be sourced from the
+ * `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
+ * 
+ */
+    public Optional<String> clientAssertionPrivateKey() {
+        return Codegen.stringProp("clientAssertionPrivateKey").config(config).get();
+    }
+/**
+ * The algorithm used to sign the client assertion JWT. It can also be sourced from the
+ * `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
+ * 
+ */
+    public Optional<String> clientAssertionSigningAlg() {
+        return Codegen.stringProp("clientAssertionSigningAlg").config(config).get();
+    }
+/**
  * Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.
  * 
  */

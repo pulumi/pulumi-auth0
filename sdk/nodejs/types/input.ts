@@ -1706,6 +1706,14 @@ export interface ConnectionOptions {
      */
     tokenEndpoint?: pulumi.Input<string>;
     /**
+     * Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
+     */
+    tokenEndpointAuthMethod?: pulumi.Input<string>;
+    /**
+     * Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
+     */
+    tokenEndpointAuthSigningAlg?: pulumi.Input<string>;
+    /**
      * Configuration options for one-time passwords.
      */
     totp?: pulumi.Input<inputs.ConnectionOptionsTotp>;

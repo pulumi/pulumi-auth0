@@ -37,6 +37,16 @@ export class Provider extends pulumi.ProviderResource {
      */
     public readonly audience!: pulumi.Output<string | undefined>;
     /**
+     * The private key used to sign the client assertion JWT. It can also be sourced from the
+     * `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
+     */
+    public readonly clientAssertionPrivateKey!: pulumi.Output<string | undefined>;
+    /**
+     * The algorithm used to sign the client assertion JWT. It can also be sourced from the
+     * `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
+     */
+    public readonly clientAssertionSigningAlg!: pulumi.Output<string | undefined>;
+    /**
      * Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.
      */
     public readonly clientId!: pulumi.Output<string | undefined>;
@@ -63,6 +73,8 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["apiToken"] = args ? args.apiToken : undefined;
             resourceInputs["audience"] = args ? args.audience : undefined;
             resourceInputs["cliLogin"] = pulumi.output(args ? args.cliLogin : undefined).apply(JSON.stringify);
+            resourceInputs["clientAssertionPrivateKey"] = args ? args.clientAssertionPrivateKey : undefined;
+            resourceInputs["clientAssertionSigningAlg"] = args ? args.clientAssertionSigningAlg : undefined;
             resourceInputs["clientId"] = args ? args.clientId : undefined;
             resourceInputs["clientSecret"] = args ? args.clientSecret : undefined;
             resourceInputs["debug"] = pulumi.output((args ? args.debug : undefined) ?? utilities.getEnvBoolean("AUTH0_DEBUG")).apply(JSON.stringify);
@@ -102,6 +114,16 @@ export interface ProviderArgs {
      * While toggled on, the API token gets fetched from the keyring for the given domain
      */
     cliLogin?: pulumi.Input<boolean>;
+    /**
+     * The private key used to sign the client assertion JWT. It can also be sourced from the
+     * `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
+     */
+    clientAssertionPrivateKey?: pulumi.Input<string>;
+    /**
+     * The algorithm used to sign the client assertion JWT. It can also be sourced from the
+     * `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
+     */
+    clientAssertionSigningAlg?: pulumi.Input<string>;
     /**
      * Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.
      */

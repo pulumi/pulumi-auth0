@@ -217,7 +217,7 @@ class TokenExchangeProfile(pulumi.CustomResource):
         # This action is then linked using the action_id param to the token-exchange profile
         my_action = auth0.Action("my_action",
             name="TokenExchange-Action",
-            code=\"\"\"exports.onContinuePostLogin = async (event, api) => {
+            code=\"\"\"exports.onExecuteCustomTokenExchange = async (event, api) => {
         \\x09console.log("foo")
         };"
         \"\"\",
@@ -269,7 +269,7 @@ class TokenExchangeProfile(pulumi.CustomResource):
         # This action is then linked using the action_id param to the token-exchange profile
         my_action = auth0.Action("my_action",
             name="TokenExchange-Action",
-            code=\"\"\"exports.onContinuePostLogin = async (event, api) => {
+            code=\"\"\"exports.onExecuteCustomTokenExchange = async (event, api) => {
         \\x09console.log("foo")
         };"
         \"\"\",
