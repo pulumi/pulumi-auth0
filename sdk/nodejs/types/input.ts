@@ -1706,6 +1706,14 @@ export interface ConnectionOptions {
      */
     tokenEndpoint?: pulumi.Input<string>;
     /**
+     * Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
+     */
+    tokenEndpointAuthMethod?: pulumi.Input<string>;
+    /**
+     * Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
+     */
+    tokenEndpointAuthSigningAlg?: pulumi.Input<string>;
+    /**
      * Configuration options for one-time passwords.
      */
     totp?: pulumi.Input<inputs.ConnectionOptionsTotp>;
@@ -2996,6 +3004,25 @@ export interface PromptScreenPartialsScreenPartialInsertionPoints {
      * Actions that go at the start of secondary actions.
      */
     secondaryActionsStart?: pulumi.Input<string>;
+}
+
+export interface PromptScreenRendererFilters {
+    /**
+     * An array of clients (applications) identified by id or a metadata key/value pair. Entity Limit: 25.
+     */
+    clients?: pulumi.Input<string>;
+    /**
+     * An array of domains identified by id or a metadata key/value pair. Entity Limit: 25.
+     */
+    domains?: pulumi.Input<string>;
+    /**
+     * Type of match to apply. Options: `includesAny`, `excludesAny`.
+     */
+    matchType: pulumi.Input<string>;
+    /**
+     * An array of organizations identified by id or a metadata key/value pair. Entity Limit: 25.
+     */
+    organizations?: pulumi.Input<string>;
 }
 
 export interface ResourceServerAuthorizationDetail {

@@ -84,6 +84,10 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly bool DefaultHeadTagsDisabled;
         /// <summary>
+        /// Optional filters to apply rendering rules to specific entities. `match_type` and at least one of the entity arrays are required.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetPromptScreenRendererFilterResult> Filters;
+        /// <summary>
         /// An array of head tags
         /// </summary>
         public readonly string HeadTags;
@@ -107,12 +111,18 @@ namespace Pulumi.Auth0
         /// Tenant ID
         /// </summary>
         public readonly string Tenant;
+        /// <summary>
+        /// Use page template with ACUL
+        /// </summary>
+        public readonly bool UsePageTemplate;
 
         [OutputConstructor]
         private GetPromptScreenRendererResult(
             ImmutableArray<string> contextConfigurations,
 
             bool defaultHeadTagsDisabled,
+
+            ImmutableArray<Outputs.GetPromptScreenRendererFilterResult> filters,
 
             string headTags,
 
@@ -124,16 +134,20 @@ namespace Pulumi.Auth0
 
             string screenName,
 
-            string tenant)
+            string tenant,
+
+            bool usePageTemplate)
         {
             ContextConfigurations = contextConfigurations;
             DefaultHeadTagsDisabled = defaultHeadTagsDisabled;
+            Filters = filters;
             HeadTags = headTags;
             Id = id;
             PromptType = promptType;
             RenderingMode = renderingMode;
             ScreenName = screenName;
             Tenant = tenant;
+            UsePageTemplate = usePageTemplate;
         }
     }
 }

@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -42,6 +44,10 @@ export interface GetPromptScreenRendererResult {
      */
     readonly defaultHeadTagsDisabled: boolean;
     /**
+     * Optional filters to apply rendering rules to specific entities. `matchType` and at least one of the entity arrays are required.
+     */
+    readonly filters: outputs.GetPromptScreenRendererFilter[];
+    /**
      * An array of head tags
      */
     readonly headTags: string;
@@ -65,6 +71,10 @@ export interface GetPromptScreenRendererResult {
      * Tenant ID
      */
     readonly tenant: string;
+    /**
+     * Use page template with ACUL
+     */
+    readonly usePageTemplate: boolean;
 }
 /**
  * Data source to retrieve a specific Auth0 prompt screen settings by `promptType` and `screenName`

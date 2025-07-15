@@ -169,6 +169,7 @@ __all__ = [
     'PromptScreenPartialInsertionPoints',
     'PromptScreenPartialsScreenPartial',
     'PromptScreenPartialsScreenPartialInsertionPoints',
+    'PromptScreenRendererFilters',
     'ResourceServerAuthorizationDetail',
     'ResourceServerProofOfPossession',
     'ResourceServerScopesScope',
@@ -279,6 +280,7 @@ __all__ = [
     'GetClientsClientTokenExchangeResult',
     'GetClientsClientTokenQuotaResult',
     'GetClientsClientTokenQuotaClientCredentialResult',
+    'GetConnectionKeysKeyResult',
     'GetConnectionOptionResult',
     'GetConnectionOptionAttributeResult',
     'GetConnectionOptionAttributeEmailResult',
@@ -334,6 +336,7 @@ __all__ = [
     'GetPhoneProviderCredentialResult',
     'GetPromptScreenPartialsScreenPartialResult',
     'GetPromptScreenPartialsScreenPartialInsertionPointResult',
+    'GetPromptScreenRendererFilterResult',
     'GetResourceServerAuthorizationDetailResult',
     'GetResourceServerProofOfPossessionResult',
     'GetResourceServerScopeResult',
@@ -5375,6 +5378,10 @@ class ConnectionOptions(dict):
             suggest = "tenant_domain"
         elif key == "tokenEndpoint":
             suggest = "token_endpoint"
+        elif key == "tokenEndpointAuthMethod":
+            suggest = "token_endpoint_auth_method"
+        elif key == "tokenEndpointAuthSigningAlg":
+            suggest = "token_endpoint_auth_signing_alg"
         elif key == "twilioSid":
             suggest = "twilio_sid"
         elif key == "twilioToken":
@@ -5493,6 +5500,8 @@ class ConnectionOptions(dict):
                  template: Optional[builtins.str] = None,
                  tenant_domain: Optional[builtins.str] = None,
                  token_endpoint: Optional[builtins.str] = None,
+                 token_endpoint_auth_method: Optional[builtins.str] = None,
+                 token_endpoint_auth_signing_alg: Optional[builtins.str] = None,
                  totp: Optional['outputs.ConnectionOptionsTotp'] = None,
                  twilio_sid: Optional[builtins.str] = None,
                  twilio_token: Optional[builtins.str] = None,
@@ -5592,6 +5601,8 @@ class ConnectionOptions(dict):
         :param builtins.str template: Body of the template.
         :param builtins.str tenant_domain: Tenant domain name.
         :param builtins.str token_endpoint: Token endpoint.
+        :param builtins.str token_endpoint_auth_method: Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
+        :param builtins.str token_endpoint_auth_signing_alg: Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
         :param 'ConnectionOptionsTotpArgs' totp: Configuration options for one-time passwords.
         :param builtins.str twilio_sid: SID for your Twilio account.
         :param builtins.str twilio_token: AuthToken for your Twilio account.
@@ -5776,6 +5787,10 @@ class ConnectionOptions(dict):
             pulumi.set(__self__, "tenant_domain", tenant_domain)
         if token_endpoint is not None:
             pulumi.set(__self__, "token_endpoint", token_endpoint)
+        if token_endpoint_auth_method is not None:
+            pulumi.set(__self__, "token_endpoint_auth_method", token_endpoint_auth_method)
+        if token_endpoint_auth_signing_alg is not None:
+            pulumi.set(__self__, "token_endpoint_auth_signing_alg", token_endpoint_auth_signing_alg)
         if totp is not None:
             pulumi.set(__self__, "totp", totp)
         if twilio_sid is not None:
@@ -6482,6 +6497,22 @@ class ConnectionOptions(dict):
         Token endpoint.
         """
         return pulumi.get(self, "token_endpoint")
+
+    @property
+    @pulumi.getter(name="tokenEndpointAuthMethod")
+    def token_endpoint_auth_method(self) -> Optional[builtins.str]:
+        """
+        Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
+        """
+        return pulumi.get(self, "token_endpoint_auth_method")
+
+    @property
+    @pulumi.getter(name="tokenEndpointAuthSigningAlg")
+    def token_endpoint_auth_signing_alg(self) -> Optional[builtins.str]:
+        """
+        Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
+        """
+        return pulumi.get(self, "token_endpoint_auth_signing_alg")
 
     @property
     @pulumi.getter
@@ -10751,6 +10782,77 @@ class PromptScreenPartialsScreenPartialInsertionPoints(dict):
         Actions that go at the start of secondary actions.
         """
         return pulumi.get(self, "secondary_actions_start")
+
+
+@pulumi.output_type
+class PromptScreenRendererFilters(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "matchType":
+            suggest = "match_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PromptScreenRendererFilters. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PromptScreenRendererFilters.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PromptScreenRendererFilters.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 match_type: builtins.str,
+                 clients: Optional[builtins.str] = None,
+                 domains: Optional[builtins.str] = None,
+                 organizations: Optional[builtins.str] = None):
+        """
+        :param builtins.str match_type: Type of match to apply. Options: `includes_any`, `excludes_any`.
+        :param builtins.str clients: An array of clients (applications) identified by id or a metadata key/value pair. Entity Limit: 25.
+        :param builtins.str domains: An array of domains identified by id or a metadata key/value pair. Entity Limit: 25.
+        :param builtins.str organizations: An array of organizations identified by id or a metadata key/value pair. Entity Limit: 25.
+        """
+        pulumi.set(__self__, "match_type", match_type)
+        if clients is not None:
+            pulumi.set(__self__, "clients", clients)
+        if domains is not None:
+            pulumi.set(__self__, "domains", domains)
+        if organizations is not None:
+            pulumi.set(__self__, "organizations", organizations)
+
+    @property
+    @pulumi.getter(name="matchType")
+    def match_type(self) -> builtins.str:
+        """
+        Type of match to apply. Options: `includes_any`, `excludes_any`.
+        """
+        return pulumi.get(self, "match_type")
+
+    @property
+    @pulumi.getter
+    def clients(self) -> Optional[builtins.str]:
+        """
+        An array of clients (applications) identified by id or a metadata key/value pair. Entity Limit: 25.
+        """
+        return pulumi.get(self, "clients")
+
+    @property
+    @pulumi.getter
+    def domains(self) -> Optional[builtins.str]:
+        """
+        An array of domains identified by id or a metadata key/value pair. Entity Limit: 25.
+        """
+        return pulumi.get(self, "domains")
+
+    @property
+    @pulumi.getter
+    def organizations(self) -> Optional[builtins.str]:
+        """
+        An array of organizations identified by id or a metadata key/value pair. Entity Limit: 25.
+        """
+        return pulumi.get(self, "organizations")
 
 
 @pulumi.output_type
@@ -16079,6 +16181,163 @@ class GetClientsClientTokenQuotaClientCredentialResult(dict):
 
 
 @pulumi.output_type
+class GetConnectionKeysKeyResult(dict):
+    def __init__(__self__, *,
+                 algorithm: builtins.str,
+                 cert: builtins.str,
+                 connection_id: builtins.str,
+                 current: builtins.bool,
+                 current_since: builtins.str,
+                 fingerprint: builtins.str,
+                 key_use: builtins.str,
+                 kid: builtins.str,
+                 next: builtins.bool,
+                 pkcs: builtins.str,
+                 previous: builtins.bool,
+                 subject_dn: builtins.str,
+                 thumbprint: builtins.str,
+                 triggers: Mapping[str, builtins.str]):
+        """
+        :param builtins.str algorithm: The signing key algorithm.
+        :param builtins.str cert: The public certificate of the signing key.
+        :param builtins.bool current: True if the key is the current key.
+        :param builtins.str current_since: The date and time when the key became the current key.
+        :param builtins.str fingerprint: The certificate fingerprint.
+        :param builtins.str key_use: The signing key use, whether for encryption or signing.
+        :param builtins.str kid: The key ID of the signing key.
+        :param builtins.bool next: True if the key is the next key.
+        :param builtins.str pkcs: The public certificate of the signing key in PKCS7 format.
+        :param builtins.bool previous: True if the key is the previous key.
+        :param builtins.str subject_dn: The subject distinguished name (DN) of the certificate.
+        :param builtins.str thumbprint: The certificate thumbprint.
+        :param Mapping[str, builtins.str] triggers: This is an arbitrary map, which when edited shall perform rotation of keys for the corresponding connection. It can host keys like version, timestamp of last rotation etc.The field has no association with API
+        """
+        pulumi.set(__self__, "algorithm", algorithm)
+        pulumi.set(__self__, "cert", cert)
+        pulumi.set(__self__, "connection_id", connection_id)
+        pulumi.set(__self__, "current", current)
+        pulumi.set(__self__, "current_since", current_since)
+        pulumi.set(__self__, "fingerprint", fingerprint)
+        pulumi.set(__self__, "key_use", key_use)
+        pulumi.set(__self__, "kid", kid)
+        pulumi.set(__self__, "next", next)
+        pulumi.set(__self__, "pkcs", pkcs)
+        pulumi.set(__self__, "previous", previous)
+        pulumi.set(__self__, "subject_dn", subject_dn)
+        pulumi.set(__self__, "thumbprint", thumbprint)
+        pulumi.set(__self__, "triggers", triggers)
+
+    @property
+    @pulumi.getter
+    def algorithm(self) -> builtins.str:
+        """
+        The signing key algorithm.
+        """
+        return pulumi.get(self, "algorithm")
+
+    @property
+    @pulumi.getter
+    def cert(self) -> builtins.str:
+        """
+        The public certificate of the signing key.
+        """
+        return pulumi.get(self, "cert")
+
+    @property
+    @pulumi.getter(name="connectionId")
+    def connection_id(self) -> builtins.str:
+        return pulumi.get(self, "connection_id")
+
+    @property
+    @pulumi.getter
+    def current(self) -> builtins.bool:
+        """
+        True if the key is the current key.
+        """
+        return pulumi.get(self, "current")
+
+    @property
+    @pulumi.getter(name="currentSince")
+    def current_since(self) -> builtins.str:
+        """
+        The date and time when the key became the current key.
+        """
+        return pulumi.get(self, "current_since")
+
+    @property
+    @pulumi.getter
+    def fingerprint(self) -> builtins.str:
+        """
+        The certificate fingerprint.
+        """
+        return pulumi.get(self, "fingerprint")
+
+    @property
+    @pulumi.getter(name="keyUse")
+    def key_use(self) -> builtins.str:
+        """
+        The signing key use, whether for encryption or signing.
+        """
+        return pulumi.get(self, "key_use")
+
+    @property
+    @pulumi.getter
+    def kid(self) -> builtins.str:
+        """
+        The key ID of the signing key.
+        """
+        return pulumi.get(self, "kid")
+
+    @property
+    @pulumi.getter
+    def next(self) -> builtins.bool:
+        """
+        True if the key is the next key.
+        """
+        return pulumi.get(self, "next")
+
+    @property
+    @pulumi.getter
+    def pkcs(self) -> builtins.str:
+        """
+        The public certificate of the signing key in PKCS7 format.
+        """
+        return pulumi.get(self, "pkcs")
+
+    @property
+    @pulumi.getter
+    def previous(self) -> builtins.bool:
+        """
+        True if the key is the previous key.
+        """
+        return pulumi.get(self, "previous")
+
+    @property
+    @pulumi.getter(name="subjectDn")
+    def subject_dn(self) -> builtins.str:
+        """
+        The subject distinguished name (DN) of the certificate.
+        """
+        return pulumi.get(self, "subject_dn")
+
+    @property
+    @pulumi.getter
+    def thumbprint(self) -> builtins.str:
+        """
+        The certificate thumbprint.
+        """
+        return pulumi.get(self, "thumbprint")
+
+    @property
+    @pulumi.getter
+    def triggers(self) -> Mapping[str, builtins.str]:
+        """
+        This is an arbitrary map, which when edited shall perform rotation of keys for the corresponding connection. It can host keys like version, timestamp of last rotation etc.The field has no association with API
+        """
+        return pulumi.get(self, "triggers")
+
+
+@pulumi.output_type
 class GetConnectionOptionResult(dict):
     def __init__(__self__, *,
                  adfs_server: builtins.str,
@@ -16166,6 +16425,8 @@ class GetConnectionOptionResult(dict):
                  template: builtins.str,
                  tenant_domain: builtins.str,
                  token_endpoint: builtins.str,
+                 token_endpoint_auth_method: builtins.str,
+                 token_endpoint_auth_signing_alg: builtins.str,
                  totps: Sequence['outputs.GetConnectionOptionTotpResult'],
                  twilio_sid: builtins.str,
                  twilio_token: builtins.str,
@@ -16265,6 +16526,8 @@ class GetConnectionOptionResult(dict):
         :param builtins.str template: Body of the template.
         :param builtins.str tenant_domain: Tenant domain name.
         :param builtins.str token_endpoint: Token endpoint.
+        :param builtins.str token_endpoint_auth_method: Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
+        :param builtins.str token_endpoint_auth_signing_alg: Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
         :param Sequence['GetConnectionOptionTotpArgs'] totps: Configuration options for one-time passwords.
         :param builtins.str twilio_sid: SID for your Twilio account.
         :param builtins.str twilio_token: AuthToken for your Twilio account.
@@ -16364,6 +16627,8 @@ class GetConnectionOptionResult(dict):
         pulumi.set(__self__, "template", template)
         pulumi.set(__self__, "tenant_domain", tenant_domain)
         pulumi.set(__self__, "token_endpoint", token_endpoint)
+        pulumi.set(__self__, "token_endpoint_auth_method", token_endpoint_auth_method)
+        pulumi.set(__self__, "token_endpoint_auth_signing_alg", token_endpoint_auth_signing_alg)
         pulumi.set(__self__, "totps", totps)
         pulumi.set(__self__, "twilio_sid", twilio_sid)
         pulumi.set(__self__, "twilio_token", twilio_token)
@@ -17057,6 +17322,22 @@ class GetConnectionOptionResult(dict):
         Token endpoint.
         """
         return pulumi.get(self, "token_endpoint")
+
+    @property
+    @pulumi.getter(name="tokenEndpointAuthMethod")
+    def token_endpoint_auth_method(self) -> builtins.str:
+        """
+        Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
+        """
+        return pulumi.get(self, "token_endpoint_auth_method")
+
+    @property
+    @pulumi.getter(name="tokenEndpointAuthSigningAlg")
+    def token_endpoint_auth_signing_alg(self) -> builtins.str:
+        """
+        Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
+        """
+        return pulumi.get(self, "token_endpoint_auth_signing_alg")
 
     @property
     @pulumi.getter
@@ -18946,6 +19227,57 @@ class GetPromptScreenPartialsScreenPartialInsertionPointResult(dict):
         Actions that go at the start of secondary actions.
         """
         return pulumi.get(self, "secondary_actions_start")
+
+
+@pulumi.output_type
+class GetPromptScreenRendererFilterResult(dict):
+    def __init__(__self__, *,
+                 clients: builtins.str,
+                 domains: builtins.str,
+                 match_type: builtins.str,
+                 organizations: builtins.str):
+        """
+        :param builtins.str clients: An array of clients (applications) identified by id or a metadata key/value pair. Entity Limit: 25.
+        :param builtins.str domains: An array of domains identified by id or a metadata key/value pair. Entity Limit: 25.
+        :param builtins.str match_type: Type of match to apply. Options: `includes_any`, `excludes_any`.
+        :param builtins.str organizations: An array of organizations identified by id or a metadata key/value pair. Entity Limit: 25.
+        """
+        pulumi.set(__self__, "clients", clients)
+        pulumi.set(__self__, "domains", domains)
+        pulumi.set(__self__, "match_type", match_type)
+        pulumi.set(__self__, "organizations", organizations)
+
+    @property
+    @pulumi.getter
+    def clients(self) -> builtins.str:
+        """
+        An array of clients (applications) identified by id or a metadata key/value pair. Entity Limit: 25.
+        """
+        return pulumi.get(self, "clients")
+
+    @property
+    @pulumi.getter
+    def domains(self) -> builtins.str:
+        """
+        An array of domains identified by id or a metadata key/value pair. Entity Limit: 25.
+        """
+        return pulumi.get(self, "domains")
+
+    @property
+    @pulumi.getter(name="matchType")
+    def match_type(self) -> builtins.str:
+        """
+        Type of match to apply. Options: `includes_any`, `excludes_any`.
+        """
+        return pulumi.get(self, "match_type")
+
+    @property
+    @pulumi.getter
+    def organizations(self) -> builtins.str:
+        """
+        An array of organizations identified by id or a metadata key/value pair. Entity Limit: 25.
+        """
+        return pulumi.get(self, "organizations")
 
 
 @pulumi.output_type

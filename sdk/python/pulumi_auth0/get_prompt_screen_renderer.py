@@ -14,6 +14,7 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
 
 __all__ = [
     'GetPromptScreenRendererResult',
@@ -27,13 +28,16 @@ class GetPromptScreenRendererResult:
     """
     A collection of values returned by getPromptScreenRenderer.
     """
-    def __init__(__self__, context_configurations=None, default_head_tags_disabled=None, head_tags=None, id=None, prompt_type=None, rendering_mode=None, screen_name=None, tenant=None):
+    def __init__(__self__, context_configurations=None, default_head_tags_disabled=None, filters=None, head_tags=None, id=None, prompt_type=None, rendering_mode=None, screen_name=None, tenant=None, use_page_template=None):
         if context_configurations and not isinstance(context_configurations, list):
             raise TypeError("Expected argument 'context_configurations' to be a list")
         pulumi.set(__self__, "context_configurations", context_configurations)
         if default_head_tags_disabled and not isinstance(default_head_tags_disabled, bool):
             raise TypeError("Expected argument 'default_head_tags_disabled' to be a bool")
         pulumi.set(__self__, "default_head_tags_disabled", default_head_tags_disabled)
+        if filters and not isinstance(filters, list):
+            raise TypeError("Expected argument 'filters' to be a list")
+        pulumi.set(__self__, "filters", filters)
         if head_tags and not isinstance(head_tags, str):
             raise TypeError("Expected argument 'head_tags' to be a str")
         pulumi.set(__self__, "head_tags", head_tags)
@@ -52,6 +56,9 @@ class GetPromptScreenRendererResult:
         if tenant and not isinstance(tenant, str):
             raise TypeError("Expected argument 'tenant' to be a str")
         pulumi.set(__self__, "tenant", tenant)
+        if use_page_template and not isinstance(use_page_template, bool):
+            raise TypeError("Expected argument 'use_page_template' to be a bool")
+        pulumi.set(__self__, "use_page_template", use_page_template)
 
     @property
     @pulumi.getter(name="contextConfigurations")
@@ -68,6 +75,14 @@ class GetPromptScreenRendererResult:
         Override Universal Login default head tags
         """
         return pulumi.get(self, "default_head_tags_disabled")
+
+    @property
+    @pulumi.getter
+    def filters(self) -> Sequence['outputs.GetPromptScreenRendererFilterResult']:
+        """
+        Optional filters to apply rendering rules to specific entities. `match_type` and at least one of the entity arrays are required.
+        """
+        return pulumi.get(self, "filters")
 
     @property
     @pulumi.getter(name="headTags")
@@ -117,6 +132,14 @@ class GetPromptScreenRendererResult:
         """
         return pulumi.get(self, "tenant")
 
+    @property
+    @pulumi.getter(name="usePageTemplate")
+    def use_page_template(self) -> builtins.bool:
+        """
+        Use page template with ACUL
+        """
+        return pulumi.get(self, "use_page_template")
+
 
 class AwaitableGetPromptScreenRendererResult(GetPromptScreenRendererResult):
     # pylint: disable=using-constant-test
@@ -126,12 +149,14 @@ class AwaitableGetPromptScreenRendererResult(GetPromptScreenRendererResult):
         return GetPromptScreenRendererResult(
             context_configurations=self.context_configurations,
             default_head_tags_disabled=self.default_head_tags_disabled,
+            filters=self.filters,
             head_tags=self.head_tags,
             id=self.id,
             prompt_type=self.prompt_type,
             rendering_mode=self.rendering_mode,
             screen_name=self.screen_name,
-            tenant=self.tenant)
+            tenant=self.tenant,
+            use_page_template=self.use_page_template)
 
 
 def get_prompt_screen_renderer(prompt_type: Optional[builtins.str] = None,
@@ -153,12 +178,14 @@ def get_prompt_screen_renderer(prompt_type: Optional[builtins.str] = None,
     return AwaitableGetPromptScreenRendererResult(
         context_configurations=pulumi.get(__ret__, 'context_configurations'),
         default_head_tags_disabled=pulumi.get(__ret__, 'default_head_tags_disabled'),
+        filters=pulumi.get(__ret__, 'filters'),
         head_tags=pulumi.get(__ret__, 'head_tags'),
         id=pulumi.get(__ret__, 'id'),
         prompt_type=pulumi.get(__ret__, 'prompt_type'),
         rendering_mode=pulumi.get(__ret__, 'rendering_mode'),
         screen_name=pulumi.get(__ret__, 'screen_name'),
-        tenant=pulumi.get(__ret__, 'tenant'))
+        tenant=pulumi.get(__ret__, 'tenant'),
+        use_page_template=pulumi.get(__ret__, 'use_page_template'))
 def get_prompt_screen_renderer_output(prompt_type: Optional[pulumi.Input[builtins.str]] = None,
                                       screen_name: Optional[pulumi.Input[builtins.str]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPromptScreenRendererResult]:
@@ -177,9 +204,11 @@ def get_prompt_screen_renderer_output(prompt_type: Optional[pulumi.Input[builtin
     return __ret__.apply(lambda __response__: GetPromptScreenRendererResult(
         context_configurations=pulumi.get(__response__, 'context_configurations'),
         default_head_tags_disabled=pulumi.get(__response__, 'default_head_tags_disabled'),
+        filters=pulumi.get(__response__, 'filters'),
         head_tags=pulumi.get(__response__, 'head_tags'),
         id=pulumi.get(__response__, 'id'),
         prompt_type=pulumi.get(__response__, 'prompt_type'),
         rendering_mode=pulumi.get(__response__, 'rendering_mode'),
         screen_name=pulumi.get(__response__, 'screen_name'),
-        tenant=pulumi.get(__response__, 'tenant')))
+        tenant=pulumi.get(__response__, 'tenant'),
+        use_page_template=pulumi.get(__response__, 'use_page_template')))

@@ -69,6 +69,40 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The private key used to sign the client assertion JWT. It can also be sourced from the
+     * `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
+     * 
+     */
+    @Import(name="clientAssertionPrivateKey")
+    private @Nullable Output<String> clientAssertionPrivateKey;
+
+    /**
+     * @return The private key used to sign the client assertion JWT. It can also be sourced from the
+     * `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
+     * 
+     */
+    public Optional<Output<String>> clientAssertionPrivateKey() {
+        return Optional.ofNullable(this.clientAssertionPrivateKey);
+    }
+
+    /**
+     * The algorithm used to sign the client assertion JWT. It can also be sourced from the
+     * `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
+     * 
+     */
+    @Import(name="clientAssertionSigningAlg")
+    private @Nullable Output<String> clientAssertionSigningAlg;
+
+    /**
+     * @return The algorithm used to sign the client assertion JWT. It can also be sourced from the
+     * `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
+     * 
+     */
+    public Optional<Output<String>> clientAssertionSigningAlg() {
+        return Optional.ofNullable(this.clientAssertionSigningAlg);
+    }
+
+    /**
      * Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.
      * 
      */
@@ -143,6 +177,8 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.apiToken = $.apiToken;
         this.audience = $.audience;
         this.cliLogin = $.cliLogin;
+        this.clientAssertionPrivateKey = $.clientAssertionPrivateKey;
+        this.clientAssertionSigningAlg = $.clientAssertionSigningAlg;
         this.clientId = $.clientId;
         this.clientSecret = $.clientSecret;
         this.debug = $.debug;
@@ -235,6 +271,52 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder cliLogin(Boolean cliLogin) {
             return cliLogin(Output.of(cliLogin));
+        }
+
+        /**
+         * @param clientAssertionPrivateKey The private key used to sign the client assertion JWT. It can also be sourced from the
+         * `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientAssertionPrivateKey(@Nullable Output<String> clientAssertionPrivateKey) {
+            $.clientAssertionPrivateKey = clientAssertionPrivateKey;
+            return this;
+        }
+
+        /**
+         * @param clientAssertionPrivateKey The private key used to sign the client assertion JWT. It can also be sourced from the
+         * `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientAssertionPrivateKey(String clientAssertionPrivateKey) {
+            return clientAssertionPrivateKey(Output.of(clientAssertionPrivateKey));
+        }
+
+        /**
+         * @param clientAssertionSigningAlg The algorithm used to sign the client assertion JWT. It can also be sourced from the
+         * `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientAssertionSigningAlg(@Nullable Output<String> clientAssertionSigningAlg) {
+            $.clientAssertionSigningAlg = clientAssertionSigningAlg;
+            return this;
+        }
+
+        /**
+         * @param clientAssertionSigningAlg The algorithm used to sign the client assertion JWT. It can also be sourced from the
+         * `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientAssertionSigningAlg(String clientAssertionSigningAlg) {
+            return clientAssertionSigningAlg(Output.of(clientAssertionSigningAlg));
         }
 
         /**

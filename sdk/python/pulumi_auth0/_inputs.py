@@ -320,6 +320,8 @@ __all__ = [
     'PromptScreenPartialsScreenPartialArgsDict',
     'PromptScreenPartialsScreenPartialInsertionPointsArgs',
     'PromptScreenPartialsScreenPartialInsertionPointsArgsDict',
+    'PromptScreenRendererFiltersArgs',
+    'PromptScreenRendererFiltersArgsDict',
     'ResourceServerAuthorizationDetailArgs',
     'ResourceServerAuthorizationDetailArgsDict',
     'ResourceServerProofOfPossessionArgs',
@@ -7311,6 +7313,14 @@ if not MYPY:
         """
         Token endpoint.
         """
+        token_endpoint_auth_method: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
+        """
+        token_endpoint_auth_signing_alg: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
+        """
         totp: NotRequired[pulumi.Input['ConnectionOptionsTotpArgsDict']]
         """
         Configuration options for one-time passwords.
@@ -7454,6 +7464,8 @@ class ConnectionOptionsArgs:
                  template: Optional[pulumi.Input[builtins.str]] = None,
                  tenant_domain: Optional[pulumi.Input[builtins.str]] = None,
                  token_endpoint: Optional[pulumi.Input[builtins.str]] = None,
+                 token_endpoint_auth_method: Optional[pulumi.Input[builtins.str]] = None,
+                 token_endpoint_auth_signing_alg: Optional[pulumi.Input[builtins.str]] = None,
                  totp: Optional[pulumi.Input['ConnectionOptionsTotpArgs']] = None,
                  twilio_sid: Optional[pulumi.Input[builtins.str]] = None,
                  twilio_token: Optional[pulumi.Input[builtins.str]] = None,
@@ -7553,6 +7565,8 @@ class ConnectionOptionsArgs:
         :param pulumi.Input[builtins.str] template: Body of the template.
         :param pulumi.Input[builtins.str] tenant_domain: Tenant domain name.
         :param pulumi.Input[builtins.str] token_endpoint: Token endpoint.
+        :param pulumi.Input[builtins.str] token_endpoint_auth_method: Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
+        :param pulumi.Input[builtins.str] token_endpoint_auth_signing_alg: Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
         :param pulumi.Input['ConnectionOptionsTotpArgs'] totp: Configuration options for one-time passwords.
         :param pulumi.Input[builtins.str] twilio_sid: SID for your Twilio account.
         :param pulumi.Input[builtins.str] twilio_token: AuthToken for your Twilio account.
@@ -7737,6 +7751,10 @@ class ConnectionOptionsArgs:
             pulumi.set(__self__, "tenant_domain", tenant_domain)
         if token_endpoint is not None:
             pulumi.set(__self__, "token_endpoint", token_endpoint)
+        if token_endpoint_auth_method is not None:
+            pulumi.set(__self__, "token_endpoint_auth_method", token_endpoint_auth_method)
+        if token_endpoint_auth_signing_alg is not None:
+            pulumi.set(__self__, "token_endpoint_auth_signing_alg", token_endpoint_auth_signing_alg)
         if totp is not None:
             pulumi.set(__self__, "totp", totp)
         if twilio_sid is not None:
@@ -8783,6 +8801,30 @@ class ConnectionOptionsArgs:
     @token_endpoint.setter
     def token_endpoint(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "token_endpoint", value)
+
+    @property
+    @pulumi.getter(name="tokenEndpointAuthMethod")
+    def token_endpoint_auth_method(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
+        """
+        return pulumi.get(self, "token_endpoint_auth_method")
+
+    @token_endpoint_auth_method.setter
+    def token_endpoint_auth_method(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "token_endpoint_auth_method", value)
+
+    @property
+    @pulumi.getter(name="tokenEndpointAuthSigningAlg")
+    def token_endpoint_auth_signing_alg(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
+        """
+        return pulumi.get(self, "token_endpoint_auth_signing_alg")
+
+    @token_endpoint_auth_signing_alg.setter
+    def token_endpoint_auth_signing_alg(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "token_endpoint_auth_signing_alg", value)
 
     @property
     @pulumi.getter
@@ -14386,6 +14428,97 @@ class PromptScreenPartialsScreenPartialInsertionPointsArgs:
     @secondary_actions_start.setter
     def secondary_actions_start(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "secondary_actions_start", value)
+
+
+if not MYPY:
+    class PromptScreenRendererFiltersArgsDict(TypedDict):
+        match_type: pulumi.Input[builtins.str]
+        """
+        Type of match to apply. Options: `includes_any`, `excludes_any`.
+        """
+        clients: NotRequired[pulumi.Input[builtins.str]]
+        """
+        An array of clients (applications) identified by id or a metadata key/value pair. Entity Limit: 25.
+        """
+        domains: NotRequired[pulumi.Input[builtins.str]]
+        """
+        An array of domains identified by id or a metadata key/value pair. Entity Limit: 25.
+        """
+        organizations: NotRequired[pulumi.Input[builtins.str]]
+        """
+        An array of organizations identified by id or a metadata key/value pair. Entity Limit: 25.
+        """
+elif False:
+    PromptScreenRendererFiltersArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PromptScreenRendererFiltersArgs:
+    def __init__(__self__, *,
+                 match_type: pulumi.Input[builtins.str],
+                 clients: Optional[pulumi.Input[builtins.str]] = None,
+                 domains: Optional[pulumi.Input[builtins.str]] = None,
+                 organizations: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] match_type: Type of match to apply. Options: `includes_any`, `excludes_any`.
+        :param pulumi.Input[builtins.str] clients: An array of clients (applications) identified by id or a metadata key/value pair. Entity Limit: 25.
+        :param pulumi.Input[builtins.str] domains: An array of domains identified by id or a metadata key/value pair. Entity Limit: 25.
+        :param pulumi.Input[builtins.str] organizations: An array of organizations identified by id or a metadata key/value pair. Entity Limit: 25.
+        """
+        pulumi.set(__self__, "match_type", match_type)
+        if clients is not None:
+            pulumi.set(__self__, "clients", clients)
+        if domains is not None:
+            pulumi.set(__self__, "domains", domains)
+        if organizations is not None:
+            pulumi.set(__self__, "organizations", organizations)
+
+    @property
+    @pulumi.getter(name="matchType")
+    def match_type(self) -> pulumi.Input[builtins.str]:
+        """
+        Type of match to apply. Options: `includes_any`, `excludes_any`.
+        """
+        return pulumi.get(self, "match_type")
+
+    @match_type.setter
+    def match_type(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "match_type", value)
+
+    @property
+    @pulumi.getter
+    def clients(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        An array of clients (applications) identified by id or a metadata key/value pair. Entity Limit: 25.
+        """
+        return pulumi.get(self, "clients")
+
+    @clients.setter
+    def clients(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "clients", value)
+
+    @property
+    @pulumi.getter
+    def domains(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        An array of domains identified by id or a metadata key/value pair. Entity Limit: 25.
+        """
+        return pulumi.get(self, "domains")
+
+    @domains.setter
+    def domains(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "domains", value)
+
+    @property
+    @pulumi.getter
+    def organizations(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        An array of organizations identified by id or a metadata key/value pair. Entity Limit: 25.
+        """
+        return pulumi.get(self, "organizations")
+
+    @organizations.setter
+    def organizations(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "organizations", value)
 
 
 if not MYPY:

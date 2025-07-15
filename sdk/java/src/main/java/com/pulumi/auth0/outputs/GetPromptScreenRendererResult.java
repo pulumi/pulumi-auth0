@@ -3,6 +3,7 @@
 
 package com.pulumi.auth0.outputs;
 
+import com.pulumi.auth0.outputs.GetPromptScreenRendererFilter;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
@@ -22,6 +23,11 @@ public final class GetPromptScreenRendererResult {
      * 
      */
     private Boolean defaultHeadTagsDisabled;
+    /**
+     * @return Optional filters to apply rendering rules to specific entities. `match_type` and at least one of the entity arrays are required.
+     * 
+     */
+    private List<GetPromptScreenRendererFilter> filters;
     /**
      * @return An array of head tags
      * 
@@ -52,6 +58,11 @@ public final class GetPromptScreenRendererResult {
      * 
      */
     private String tenant;
+    /**
+     * @return Use page template with ACUL
+     * 
+     */
+    private Boolean usePageTemplate;
 
     private GetPromptScreenRendererResult() {}
     /**
@@ -67,6 +78,13 @@ public final class GetPromptScreenRendererResult {
      */
     public Boolean defaultHeadTagsDisabled() {
         return this.defaultHeadTagsDisabled;
+    }
+    /**
+     * @return Optional filters to apply rendering rules to specific entities. `match_type` and at least one of the entity arrays are required.
+     * 
+     */
+    public List<GetPromptScreenRendererFilter> filters() {
+        return this.filters;
     }
     /**
      * @return An array of head tags
@@ -110,6 +128,13 @@ public final class GetPromptScreenRendererResult {
     public String tenant() {
         return this.tenant;
     }
+    /**
+     * @return Use page template with ACUL
+     * 
+     */
+    public Boolean usePageTemplate() {
+        return this.usePageTemplate;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -122,23 +147,27 @@ public final class GetPromptScreenRendererResult {
     public static final class Builder {
         private List<String> contextConfigurations;
         private Boolean defaultHeadTagsDisabled;
+        private List<GetPromptScreenRendererFilter> filters;
         private String headTags;
         private String id;
         private String promptType;
         private String renderingMode;
         private String screenName;
         private String tenant;
+        private Boolean usePageTemplate;
         public Builder() {}
         public Builder(GetPromptScreenRendererResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.contextConfigurations = defaults.contextConfigurations;
     	      this.defaultHeadTagsDisabled = defaults.defaultHeadTagsDisabled;
+    	      this.filters = defaults.filters;
     	      this.headTags = defaults.headTags;
     	      this.id = defaults.id;
     	      this.promptType = defaults.promptType;
     	      this.renderingMode = defaults.renderingMode;
     	      this.screenName = defaults.screenName;
     	      this.tenant = defaults.tenant;
+    	      this.usePageTemplate = defaults.usePageTemplate;
         }
 
         @CustomType.Setter
@@ -159,6 +188,17 @@ public final class GetPromptScreenRendererResult {
             }
             this.defaultHeadTagsDisabled = defaultHeadTagsDisabled;
             return this;
+        }
+        @CustomType.Setter
+        public Builder filters(List<GetPromptScreenRendererFilter> filters) {
+            if (filters == null) {
+              throw new MissingRequiredPropertyException("GetPromptScreenRendererResult", "filters");
+            }
+            this.filters = filters;
+            return this;
+        }
+        public Builder filters(GetPromptScreenRendererFilter... filters) {
+            return filters(List.of(filters));
         }
         @CustomType.Setter
         public Builder headTags(String headTags) {
@@ -208,16 +248,26 @@ public final class GetPromptScreenRendererResult {
             this.tenant = tenant;
             return this;
         }
+        @CustomType.Setter
+        public Builder usePageTemplate(Boolean usePageTemplate) {
+            if (usePageTemplate == null) {
+              throw new MissingRequiredPropertyException("GetPromptScreenRendererResult", "usePageTemplate");
+            }
+            this.usePageTemplate = usePageTemplate;
+            return this;
+        }
         public GetPromptScreenRendererResult build() {
             final var _resultValue = new GetPromptScreenRendererResult();
             _resultValue.contextConfigurations = contextConfigurations;
             _resultValue.defaultHeadTagsDisabled = defaultHeadTagsDisabled;
+            _resultValue.filters = filters;
             _resultValue.headTags = headTags;
             _resultValue.id = id;
             _resultValue.promptType = promptType;
             _resultValue.renderingMode = renderingMode;
             _resultValue.screenName = screenName;
             _resultValue.tenant = tenant;
+            _resultValue.usePageTemplate = usePageTemplate;
             return _resultValue;
         }
     }
