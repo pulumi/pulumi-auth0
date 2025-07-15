@@ -649,6 +649,10 @@
                     }
                 }
             },
+            "auth0_connection_keys": {
+                "current": "auth0:index/connectionKeys:ConnectionKeys",
+                "majorVersion": 3
+            },
             "auth0_connection_scim_configuration": {
                 "current": "auth0:index/connectionScimConfiguration:ConnectionScimConfiguration",
                 "majorVersion": 3,
@@ -1026,6 +1030,9 @@
                 "fields": {
                     "context_configuration": {
                         "maxItemsOne": false
+                    },
+                    "filters": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -1938,6 +1945,15 @@
                     }
                 }
             },
+            "auth0_connection_keys": {
+                "current": "auth0:index/getConnectionKeys:getConnectionKeys",
+                "majorVersion": 3,
+                "fields": {
+                    "keys": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "auth0_connection_scim_configuration": {
                 "current": "auth0:index/getConnectionScimConfiguration:getConnectionScimConfiguration",
                 "majorVersion": 3,
@@ -2150,6 +2166,9 @@
                 "majorVersion": 3,
                 "fields": {
                     "context_configuration": {
+                        "maxItemsOne": false
+                    },
+                    "filters": {
                         "maxItemsOne": false
                     }
                 }

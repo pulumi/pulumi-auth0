@@ -61,6 +61,14 @@
                 "type": "boolean",
                 "description": "While toggled on, the API token gets fetched from the keyring for the given domain\n"
             },
+            "clientAssertionPrivateKey": {
+                "type": "string",
+                "description": "The private key used to sign the client assertion JWT. It can also be sourced from the\n`AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.\n"
+            },
+            "clientAssertionSigningAlg": {
+                "type": "string",
+                "description": "The algorithm used to sign the client assertion JWT. It can also be sourced from the\n`AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.\n"
+            },
             "clientId": {
                 "type": "string",
                 "description": "Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.\n"
@@ -2379,6 +2387,14 @@
                     "type": "string",
                     "description": "Token endpoint.\n"
                 },
+                "tokenEndpointAuthMethod": {
+                    "type": "string",
+                    "description": "Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)\n"
+                },
+                "tokenEndpointAuthSigningAlg": {
+                    "type": "string",
+                    "description": "Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)\n"
+                },
                 "totp": {
                     "$ref": "#/types/auth0:index/ConnectionOptionsTotp:ConnectionOptionsTotp",
                     "description": "Configuration options for one-time passwords.\n"
@@ -4129,6 +4145,30 @@
                 }
             },
             "type": "object"
+        },
+        "auth0:index/PromptScreenRendererFilters:PromptScreenRendererFilters": {
+            "properties": {
+                "clients": {
+                    "type": "string",
+                    "description": "An array of clients (applications) identified by id or a metadata key/value pair. Entity Limit: 25.\n"
+                },
+                "domains": {
+                    "type": "string",
+                    "description": "An array of domains identified by id or a metadata key/value pair. Entity Limit: 25.\n"
+                },
+                "matchType": {
+                    "type": "string",
+                    "description": "Type of match to apply. Options: `includes_any`, `excludes_any`.\n"
+                },
+                "organizations": {
+                    "type": "string",
+                    "description": "An array of organizations identified by id or a metadata key/value pair. Entity Limit: 25.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "matchType"
+            ]
         },
         "auth0:index/ResourceServerAuthorizationDetail:ResourceServerAuthorizationDetail": {
             "properties": {
@@ -7499,6 +7539,90 @@
                 }
             }
         },
+        "auth0:index/getConnectionKeysKey:getConnectionKeysKey": {
+            "properties": {
+                "algorithm": {
+                    "type": "string",
+                    "description": "The signing key algorithm.\n"
+                },
+                "cert": {
+                    "type": "string",
+                    "description": "The public certificate of the signing key.\n"
+                },
+                "connectionId": {
+                    "type": "string"
+                },
+                "current": {
+                    "type": "boolean",
+                    "description": "True if the key is the current key.\n"
+                },
+                "currentSince": {
+                    "type": "string",
+                    "description": "The date and time when the key became the current key.\n"
+                },
+                "fingerprint": {
+                    "type": "string",
+                    "description": "The certificate fingerprint.\n"
+                },
+                "keyUse": {
+                    "type": "string",
+                    "description": "The signing key use, whether for encryption or signing.\n"
+                },
+                "kid": {
+                    "type": "string",
+                    "description": "The key ID of the signing key.\n"
+                },
+                "next": {
+                    "type": "boolean",
+                    "description": "True if the key is the next key.\n"
+                },
+                "pkcs": {
+                    "type": "string",
+                    "description": "The public certificate of the signing key in PKCS7 format.\n"
+                },
+                "previous": {
+                    "type": "boolean",
+                    "description": "True if the key is the previous key.\n"
+                },
+                "subjectDn": {
+                    "type": "string",
+                    "description": "The subject distinguished name (DN) of the certificate.\n"
+                },
+                "thumbprint": {
+                    "type": "string",
+                    "description": "The certificate thumbprint.\n"
+                },
+                "triggers": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "This is an arbitrary map, which when edited shall perform rotation of keys for the corresponding connection. It can host keys like version, timestamp of last rotation etc.The field has no association with API\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "algorithm",
+                "cert",
+                "connectionId",
+                "current",
+                "currentSince",
+                "fingerprint",
+                "keyUse",
+                "kid",
+                "next",
+                "pkcs",
+                "previous",
+                "subjectDn",
+                "thumbprint",
+                "triggers"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "auth0:index/getConnectionOption:getConnectionOption": {
             "properties": {
                 "adfsServer": {
@@ -7916,6 +8040,14 @@
                     "type": "string",
                     "description": "Token endpoint.\n"
                 },
+                "tokenEndpointAuthMethod": {
+                    "type": "string",
+                    "description": "Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)\n"
+                },
+                "tokenEndpointAuthSigningAlg": {
+                    "type": "string",
+                    "description": "Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)\n"
+                },
                 "totps": {
                     "type": "array",
                     "items": {
@@ -8062,6 +8194,8 @@
                 "template",
                 "tenantDomain",
                 "tokenEndpoint",
+                "tokenEndpointAuthMethod",
+                "tokenEndpointAuthSigningAlg",
                 "totps",
                 "twilioSid",
                 "twilioToken",
@@ -9512,6 +9646,38 @@
                 }
             }
         },
+        "auth0:index/getPromptScreenRendererFilter:getPromptScreenRendererFilter": {
+            "properties": {
+                "clients": {
+                    "type": "string",
+                    "description": "An array of clients (applications) identified by id or a metadata key/value pair. Entity Limit: 25.\n"
+                },
+                "domains": {
+                    "type": "string",
+                    "description": "An array of domains identified by id or a metadata key/value pair. Entity Limit: 25.\n"
+                },
+                "matchType": {
+                    "type": "string",
+                    "description": "Type of match to apply. Options: `includes_any`, `excludes_any`.\n"
+                },
+                "organizations": {
+                    "type": "string",
+                    "description": "An array of organizations identified by id or a metadata key/value pair. Entity Limit: 25.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "clients",
+                "domains",
+                "matchType",
+                "organizations"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "auth0:index/getResourceServerAuthorizationDetail:getResourceServerAuthorizationDetail": {
             "properties": {
                 "disable": {
@@ -10210,6 +10376,14 @@
                 "type": "boolean",
                 "description": "While toggled on, the API token gets fetched from the keyring for the given domain\n"
             },
+            "clientAssertionPrivateKey": {
+                "type": "string",
+                "description": "The private key used to sign the client assertion JWT. It can also be sourced from the\n`AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.\n"
+            },
+            "clientAssertionSigningAlg": {
+                "type": "string",
+                "description": "The algorithm used to sign the client assertion JWT. It can also be sourced from the\n`AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.\n"
+            },
             "clientId": {
                 "type": "string",
                 "description": "Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.\n"
@@ -10243,6 +10417,14 @@
                 "type": "boolean",
                 "description": "While toggled on, the API token gets fetched from the keyring for the given domain\n"
             },
+            "clientAssertionPrivateKey": {
+                "type": "string",
+                "description": "The private key used to sign the client assertion JWT. It can also be sourced from the\n`AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.\n"
+            },
+            "clientAssertionSigningAlg": {
+                "type": "string",
+                "description": "The algorithm used to sign the client assertion JWT. It can also be sourced from the\n`AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.\n"
+            },
             "clientId": {
                 "type": "string",
                 "description": "Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.\n"
@@ -10274,7 +10456,7 @@
     },
     "resources": {
         "auth0:index/action:Action": {
-            "description": "Actions are secure, tenant-specific, versioned functions written in Node.js that execute at certain points during the Auth0 runtime. Actions are used to customize and extend Auth0's capabilities with custom logic.\n\n\u003e An action bound to a trigger cannot be deleted. To destroy such an action, the trigger binding must first be deleted.\nA binding is usually managed by auth0.TriggerAction resource.\nThe provider also supports a 1:many variant auth0_trigger_actions.\nIf by any means, a binding is missing is the state file, it can be imported to the state and deleted, before attempting to delete the action.\n\n\n## Import\n\nThis resource can be imported by specifying the action ID.\n\nExample:\n\n```sh\n$ pulumi import auth0:index/action:Action my_action \"12f4f21b-017a-319d-92e7-2291c1ca36c4\"\n```\n\n~\u003e For security reasons importing `secrets` is not allowed. Therefore, it is advised to import\n\nthe action without secrets and adding them back after the action has been imported.\n\n",
+            "description": "Actions are secure, tenant-specific, versioned functions written in Node.js that execute at certain points during the Auth0 runtime. Actions are used to customize and extend Auth0's capabilities with custom logic.\n\n\u003e An action bound to a trigger cannot be deleted. To destroy such an action, the trigger binding must first be deleted.\nA binding is usually managed by auth0.TriggerAction resource.\nThe provider also supports a 1:many variant auth0_trigger_actions.\nIf by any means, a binding is missing is the state file, it can be imported to the state and deleted, before attempting to delete the action.\n\n\u003e Values provided in the sensitive values shall be stored in the raw state as plain text: secrets.\nRead more about sensitive data in state.\n\n\n## Import\n\nThis resource can be imported by specifying the action ID.\n\nExample:\n\n```sh\n$ pulumi import auth0:index/action:Action my_action \"12f4f21b-017a-319d-92e7-2291c1ca36c4\"\n```\n\n~\u003e For security reasons importing `secrets` is not allowed. Therefore, it is advised to import\n\nthe action without secrets and adding them back after the action has been imported.\n\n",
             "properties": {
                 "code": {
                     "type": "string",
@@ -10304,7 +10486,7 @@
                     "items": {
                         "$ref": "#/types/auth0:index/ActionSecret:ActionSecret"
                     },
-                    "description": "List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.\n"
+                    "description": "List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.\n"
                 },
                 "supportedTriggers": {
                     "$ref": "#/types/auth0:index/ActionSupportedTriggers:ActionSupportedTriggers",
@@ -10351,7 +10533,7 @@
                     "items": {
                         "$ref": "#/types/auth0:index/ActionSecret:ActionSecret"
                     },
-                    "description": "List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.\n"
+                    "description": "List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.\n"
                 },
                 "supportedTriggers": {
                     "$ref": "#/types/auth0:index/ActionSupportedTriggers:ActionSupportedTriggers",
@@ -10393,7 +10575,7 @@
                         "items": {
                             "$ref": "#/types/auth0:index/ActionSecret:ActionSecret"
                         },
-                        "description": "List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.\n"
+                        "description": "List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.\n"
                     },
                     "supportedTriggers": {
                         "$ref": "#/types/auth0:index/ActionSupportedTriggers:ActionSupportedTriggers",
@@ -11738,6 +11920,167 @@
                     "strategy": {
                         "type": "string",
                         "description": "The strategy of the connection on which to enable the client.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "auth0:index/connectionKeys:ConnectionKeys": {
+            "description": "Client Assertion JWT is a more secure alternative to client secret authentication for OIDC and Okta Workforce connections. It uses a signed JWT instead of a shared secret to authenticate the client. The resource only supports key rotation. Use the auth0.ConnectionKeys data source to read existing keys. Removing the resource from configuration will NOT DELETE the key.\n\n!\u003e The triggers field is only a placeholder for an arbitrary map used to signal the provider\nto perform a key rotation whenever any update is made.\nIf the resource is removed from the configuration, the keys will not be deleted.\n\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myClient = new auth0.Client(\"my_client\", {name: \"My-Auth0-Client\"});\nconst oidc = new auth0.Connection(\"oidc\", {\n    name: \"OIDC-Connection\",\n    strategy: \"oidc\",\n    options: {\n        clientId: myClient.id,\n        scopes: [\n            \"ext_nested_groups\",\n            \"openid\",\n        ],\n        issuer: \"https://example.com\",\n        authorizationEndpoint: \"https://example.com\",\n        jwksUri: \"https://example.com/jwks\",\n        type: \"front_channel\",\n        discoveryUrl: \"https://www.paypalobjects.com/.well-known/openid-configuration\",\n        tokenEndpointAuthMethod: \"private_key_jwt\",\n        tokenEndpointAuthSigningAlg: \"RS256\",\n    },\n});\n// Resource used to rotate the keys for above OIDC connection\nconst myKeys = new auth0.ConnectionKeys(\"my_keys\", {\n    connectionId: oidc.id,\n    triggers: {\n        version: \"1\",\n        date: \"2023-10-01T00:00:00Z\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_client = auth0.Client(\"my_client\", name=\"My-Auth0-Client\")\noidc = auth0.Connection(\"oidc\",\n    name=\"OIDC-Connection\",\n    strategy=\"oidc\",\n    options={\n        \"client_id\": my_client.id,\n        \"scopes\": [\n            \"ext_nested_groups\",\n            \"openid\",\n        ],\n        \"issuer\": \"https://example.com\",\n        \"authorization_endpoint\": \"https://example.com\",\n        \"jwks_uri\": \"https://example.com/jwks\",\n        \"type\": \"front_channel\",\n        \"discovery_url\": \"https://www.paypalobjects.com/.well-known/openid-configuration\",\n        \"token_endpoint_auth_method\": \"private_key_jwt\",\n        \"token_endpoint_auth_signing_alg\": \"RS256\",\n    })\n# Resource used to rotate the keys for above OIDC connection\nmy_keys = auth0.ConnectionKeys(\"my_keys\",\n    connection_id=oidc.id,\n    triggers={\n        \"version\": \"1\",\n        \"date\": \"2023-10-01T00:00:00Z\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myClient = new Auth0.Client(\"my_client\", new()\n    {\n        Name = \"My-Auth0-Client\",\n    });\n\n    var oidc = new Auth0.Connection(\"oidc\", new()\n    {\n        Name = \"OIDC-Connection\",\n        Strategy = \"oidc\",\n        Options = new Auth0.Inputs.ConnectionOptionsArgs\n        {\n            ClientId = myClient.Id,\n            Scopes = new[]\n            {\n                \"ext_nested_groups\",\n                \"openid\",\n            },\n            Issuer = \"https://example.com\",\n            AuthorizationEndpoint = \"https://example.com\",\n            JwksUri = \"https://example.com/jwks\",\n            Type = \"front_channel\",\n            DiscoveryUrl = \"https://www.paypalobjects.com/.well-known/openid-configuration\",\n            TokenEndpointAuthMethod = \"private_key_jwt\",\n            TokenEndpointAuthSigningAlg = \"RS256\",\n        },\n    });\n\n    // Resource used to rotate the keys for above OIDC connection\n    var myKeys = new Auth0.ConnectionKeys(\"my_keys\", new()\n    {\n        ConnectionId = oidc.Id,\n        Triggers = \n        {\n            { \"version\", \"1\" },\n            { \"date\", \"2023-10-01T00:00:00Z\" },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmyClient, err := auth0.NewClient(ctx, \"my_client\", \u0026auth0.ClientArgs{\n\t\t\tName: pulumi.String(\"My-Auth0-Client\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\toidc, err := auth0.NewConnection(ctx, \"oidc\", \u0026auth0.ConnectionArgs{\n\t\t\tName:     pulumi.String(\"OIDC-Connection\"),\n\t\t\tStrategy: pulumi.String(\"oidc\"),\n\t\t\tOptions: \u0026auth0.ConnectionOptionsArgs{\n\t\t\t\tClientId: myClient.ID(),\n\t\t\t\tScopes: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"ext_nested_groups\"),\n\t\t\t\t\tpulumi.String(\"openid\"),\n\t\t\t\t},\n\t\t\t\tIssuer:                      pulumi.String(\"https://example.com\"),\n\t\t\t\tAuthorizationEndpoint:       pulumi.String(\"https://example.com\"),\n\t\t\t\tJwksUri:                     pulumi.String(\"https://example.com/jwks\"),\n\t\t\t\tType:                        pulumi.String(\"front_channel\"),\n\t\t\t\tDiscoveryUrl:                pulumi.String(\"https://www.paypalobjects.com/.well-known/openid-configuration\"),\n\t\t\t\tTokenEndpointAuthMethod:     pulumi.String(\"private_key_jwt\"),\n\t\t\t\tTokenEndpointAuthSigningAlg: pulumi.String(\"RS256\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Resource used to rotate the keys for above OIDC connection\n\t\t_, err = auth0.NewConnectionKeys(ctx, \"my_keys\", \u0026auth0.ConnectionKeysArgs{\n\t\t\tConnectionId: oidc.ID(),\n\t\t\tTriggers: pulumi.StringMap{\n\t\t\t\t\"version\": pulumi.String(\"1\"),\n\t\t\t\t\"date\":    pulumi.String(\"2023-10-01T00:00:00Z\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.Client;\nimport com.pulumi.auth0.ClientArgs;\nimport com.pulumi.auth0.Connection;\nimport com.pulumi.auth0.ConnectionArgs;\nimport com.pulumi.auth0.inputs.ConnectionOptionsArgs;\nimport com.pulumi.auth0.ConnectionKeys;\nimport com.pulumi.auth0.ConnectionKeysArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myClient = new Client(\"myClient\", ClientArgs.builder()\n            .name(\"My-Auth0-Client\")\n            .build());\n\n        var oidc = new Connection(\"oidc\", ConnectionArgs.builder()\n            .name(\"OIDC-Connection\")\n            .strategy(\"oidc\")\n            .options(ConnectionOptionsArgs.builder()\n                .clientId(myClient.id())\n                .scopes(                \n                    \"ext_nested_groups\",\n                    \"openid\")\n                .issuer(\"https://example.com\")\n                .authorizationEndpoint(\"https://example.com\")\n                .jwksUri(\"https://example.com/jwks\")\n                .type(\"front_channel\")\n                .discoveryUrl(\"https://www.paypalobjects.com/.well-known/openid-configuration\")\n                .tokenEndpointAuthMethod(\"private_key_jwt\")\n                .tokenEndpointAuthSigningAlg(\"RS256\")\n                .build())\n            .build());\n\n        // Resource used to rotate the keys for above OIDC connection\n        var myKeys = new ConnectionKeys(\"myKeys\", ConnectionKeysArgs.builder()\n            .connectionId(oidc.id())\n            .triggers(Map.ofEntries(\n                Map.entry(\"version\", \"1\"),\n                Map.entry(\"date\", \"2023-10-01T00:00:00Z\")\n            ))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myClient:\n    type: auth0:Client\n    name: my_client\n    properties:\n      name: My-Auth0-Client\n  oidc:\n    type: auth0:Connection\n    properties:\n      name: OIDC-Connection\n      strategy: oidc\n      options:\n        clientId: ${myClient.id}\n        scopes:\n          - ext_nested_groups\n          - openid\n        issuer: https://example.com\n        authorizationEndpoint: https://example.com\n        jwksUri: https://example.com/jwks\n        type: front_channel\n        discoveryUrl: https://www.paypalobjects.com/.well-known/openid-configuration\n        tokenEndpointAuthMethod: private_key_jwt\n        tokenEndpointAuthSigningAlg: RS256\n  # Resource used to rotate the keys for above OIDC connection\n  myKeys:\n    type: auth0:ConnectionKeys\n    name: my_keys\n    properties:\n      connectionId: ${oidc.id}\n      triggers:\n        version: '1'\n        date: 2023-10-01T00:00:00Z\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "properties": {
+                "algorithm": {
+                    "type": "string",
+                    "description": "The signing key algorithm.\n"
+                },
+                "cert": {
+                    "type": "string",
+                    "description": "The public certificate of the signing key.\n"
+                },
+                "connectionId": {
+                    "type": "string"
+                },
+                "current": {
+                    "type": "boolean",
+                    "description": "True if the key is the current key.\n"
+                },
+                "currentSince": {
+                    "type": "string",
+                    "description": "The date and time when the key became the current key.\n"
+                },
+                "fingerprint": {
+                    "type": "string",
+                    "description": "The certificate fingerprint.\n"
+                },
+                "keyUse": {
+                    "type": "string",
+                    "description": "The signing key use, whether for encryption or signing.\n"
+                },
+                "kid": {
+                    "type": "string",
+                    "description": "The key ID of the signing key.\n"
+                },
+                "next": {
+                    "type": "boolean",
+                    "description": "True if the key is the next key.\n"
+                },
+                "pkcs": {
+                    "type": "string",
+                    "description": "The public certificate of the signing key in PKCS7 format.\n"
+                },
+                "previous": {
+                    "type": "boolean",
+                    "description": "True if the key is the previous key.\n"
+                },
+                "subjectDn": {
+                    "type": "string",
+                    "description": "The subject distinguished name (DN) of the certificate.\n"
+                },
+                "thumbprint": {
+                    "type": "string",
+                    "description": "The certificate thumbprint.\n"
+                },
+                "triggers": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "This is an arbitrary map, which when edited shall perform rotation of keys for the corresponding connection. It can host keys like version, timestamp of last rotation etc.The field has no association with API\n"
+                }
+            },
+            "required": [
+                "algorithm",
+                "cert",
+                "connectionId",
+                "current",
+                "currentSince",
+                "fingerprint",
+                "keyUse",
+                "kid",
+                "next",
+                "pkcs",
+                "previous",
+                "subjectDn",
+                "thumbprint",
+                "triggers"
+            ],
+            "inputProperties": {
+                "connectionId": {
+                    "type": "string",
+                    "willReplaceOnChanges": true
+                },
+                "triggers": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "This is an arbitrary map, which when edited shall perform rotation of keys for the corresponding connection. It can host keys like version, timestamp of last rotation etc.The field has no association with API\n"
+                }
+            },
+            "requiredInputs": [
+                "connectionId",
+                "triggers"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ConnectionKeys resources.\n",
+                "properties": {
+                    "algorithm": {
+                        "type": "string",
+                        "description": "The signing key algorithm.\n"
+                    },
+                    "cert": {
+                        "type": "string",
+                        "description": "The public certificate of the signing key.\n"
+                    },
+                    "connectionId": {
+                        "type": "string",
+                        "willReplaceOnChanges": true
+                    },
+                    "current": {
+                        "type": "boolean",
+                        "description": "True if the key is the current key.\n"
+                    },
+                    "currentSince": {
+                        "type": "string",
+                        "description": "The date and time when the key became the current key.\n"
+                    },
+                    "fingerprint": {
+                        "type": "string",
+                        "description": "The certificate fingerprint.\n"
+                    },
+                    "keyUse": {
+                        "type": "string",
+                        "description": "The signing key use, whether for encryption or signing.\n"
+                    },
+                    "kid": {
+                        "type": "string",
+                        "description": "The key ID of the signing key.\n"
+                    },
+                    "next": {
+                        "type": "boolean",
+                        "description": "True if the key is the next key.\n"
+                    },
+                    "pkcs": {
+                        "type": "string",
+                        "description": "The public certificate of the signing key in PKCS7 format.\n"
+                    },
+                    "previous": {
+                        "type": "boolean",
+                        "description": "True if the key is the previous key.\n"
+                    },
+                    "subjectDn": {
+                        "type": "string",
+                        "description": "The subject distinguished name (DN) of the certificate.\n"
+                    },
+                    "thumbprint": {
+                        "type": "string",
+                        "description": "The certificate thumbprint.\n"
+                    },
+                    "triggers": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "This is an arbitrary map, which when edited shall perform rotation of keys for the corresponding connection. It can host keys like version, timestamp of last rotation etc.The field has no association with API\n"
                     }
                 },
                 "type": "object"
@@ -13774,7 +14117,7 @@
                 },
                 "prompt": {
                     "type": "string",
-                    "description": "The term `prompt` is used to refer to a specific step in the login flow. Options include: `login`, `login-id`, `login-password`, `login-passwordless`, `login-email-verification`, `signup`, `signup-id`, `signup-password`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `reset-password`, `custom-form`, `consent`, `logout`, `mfa-push`, `mfa-otp`, `mfa-voice`, `mfa-phone`, `mfa-webauthn`, `mfa-sms`, `mfa-email`, `mfa-recovery-code`, `mfa`, `status`, `device-flow`, `email-verification`, `email-otp-challenge`, `organizations`, `invitation`, `common`, `passkeys`, `captcha`.\n"
+                    "description": "The term `prompt` is used to refer to a specific step in the login flow. Options include: `login`, `login-id`, `login-password`, `login-passwordless`, `login-email-verification`, `signup`, `signup-id`, `signup-password`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `reset-password`, `custom-form`, `consent`, `customized-consent`, `logout`, `mfa-push`, `mfa-otp`, `mfa-voice`, `mfa-phone`, `mfa-webauthn`, `mfa-sms`, `mfa-email`, `mfa-recovery-code`, `mfa`, `status`, `device-flow`, `email-verification`, `email-otp-challenge`, `organizations`, `invitation`, `common`, `passkeys`, `captcha`, `brute-force-protection`.\n"
                 }
             },
             "required": [
@@ -13793,7 +14136,7 @@
                 },
                 "prompt": {
                     "type": "string",
-                    "description": "The term `prompt` is used to refer to a specific step in the login flow. Options include: `login`, `login-id`, `login-password`, `login-passwordless`, `login-email-verification`, `signup`, `signup-id`, `signup-password`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `reset-password`, `custom-form`, `consent`, `logout`, `mfa-push`, `mfa-otp`, `mfa-voice`, `mfa-phone`, `mfa-webauthn`, `mfa-sms`, `mfa-email`, `mfa-recovery-code`, `mfa`, `status`, `device-flow`, `email-verification`, `email-otp-challenge`, `organizations`, `invitation`, `common`, `passkeys`, `captcha`.\n"
+                    "description": "The term `prompt` is used to refer to a specific step in the login flow. Options include: `login`, `login-id`, `login-password`, `login-passwordless`, `login-email-verification`, `signup`, `signup-id`, `signup-password`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `reset-password`, `custom-form`, `consent`, `customized-consent`, `logout`, `mfa-push`, `mfa-otp`, `mfa-voice`, `mfa-phone`, `mfa-webauthn`, `mfa-sms`, `mfa-email`, `mfa-recovery-code`, `mfa`, `status`, `device-flow`, `email-verification`, `email-otp-challenge`, `organizations`, `invitation`, `common`, `passkeys`, `captcha`, `brute-force-protection`.\n"
                 }
             },
             "requiredInputs": [
@@ -13814,7 +14157,7 @@
                     },
                     "prompt": {
                         "type": "string",
-                        "description": "The term `prompt` is used to refer to a specific step in the login flow. Options include: `login`, `login-id`, `login-password`, `login-passwordless`, `login-email-verification`, `signup`, `signup-id`, `signup-password`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `reset-password`, `custom-form`, `consent`, `logout`, `mfa-push`, `mfa-otp`, `mfa-voice`, `mfa-phone`, `mfa-webauthn`, `mfa-sms`, `mfa-email`, `mfa-recovery-code`, `mfa`, `status`, `device-flow`, `email-verification`, `email-otp-challenge`, `organizations`, `invitation`, `common`, `passkeys`, `captcha`.\n"
+                        "description": "The term `prompt` is used to refer to a specific step in the login flow. Options include: `login`, `login-id`, `login-password`, `login-passwordless`, `login-email-verification`, `signup`, `signup-id`, `signup-password`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `reset-password`, `custom-form`, `consent`, `customized-consent`, `logout`, `mfa-push`, `mfa-otp`, `mfa-voice`, `mfa-phone`, `mfa-webauthn`, `mfa-sms`, `mfa-email`, `mfa-recovery-code`, `mfa`, `status`, `device-flow`, `email-verification`, `email-otp-challenge`, `organizations`, `invitation`, `common`, `passkeys`, `captcha`, `brute-force-protection`.\n"
                     }
                 },
                 "type": "object"
@@ -14064,13 +14407,17 @@
                     "type": "boolean",
                     "description": "Override Universal Login default head tags\n"
                 },
+                "filters": {
+                    "$ref": "#/types/auth0:index/PromptScreenRendererFilters:PromptScreenRendererFilters",
+                    "description": "Optional filters to apply rendering rules to specific entities. `match_type` and at least one of the entity arrays are required.\n"
+                },
                 "headTags": {
                     "type": "string",
                     "description": "An array of head tags\n"
                 },
                 "promptType": {
                     "type": "string",
-                    "description": "The prompt that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkeys`, `captcha`, `login`, `signup`, `reset-password`, `mfa`, `mfa-sms`, `mfa-email`, `mfa-push`, `invitation`, `organizations`, `mfa-otp`, `device-flow`, `mfa-phone`, `mfa-voice`, `mfa-recovery-code`, `common`, `email-verification`, `login-email-verification`, `logout`, `mfa-webauthn`.\n"
+                    "description": "The prompt that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkeys`, `captcha`, `login`, `signup`, `reset-password`, `mfa`, `mfa-sms`, `mfa-email`, `mfa-push`, `invitation`, `organizations`, `mfa-otp`, `device-flow`, `mfa-phone`, `mfa-voice`, `mfa-recovery-code`, `common`, `email-verification`, `login-email-verification`, `logout`, `mfa-webauthn`, `consent`, `customized-consent`, `email-otp-challenge`.\n"
                 },
                 "renderingMode": {
                     "type": "string",
@@ -14078,11 +14425,15 @@
                 },
                 "screenName": {
                     "type": "string",
-                    "description": "The screen that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`, `login`, `signup`, `reset-password-request`, `reset-password-email`, `reset-password`, `reset-password-success`, `reset-password-error`, `reset-password-mfa-email-challenge`, `reset-password-mfa-otp-challenge`, `reset-password-mfa-push-challenge-push`, `reset-password-mfa-sms-challenge`, `mfa-detect-browser-capabilities`, `mfa-enroll-result`, `mfa-begin-enroll-options`, `mfa-login-options`, `mfa-country-codes`, `mfa-sms-challenge`, `mfa-sms-enrollment`, `mfa-sms-list`, `mfa-email-challenge`, `mfa-email-list`, `mfa-push-challenge-push`, `mfa-push-enrollment-qr`, `mfa-push-list`, `mfa-push-welcome`, `accept-invitation`, `organization-selection`, `organization-picker`, `mfa-otp-challenge`, `mfa-otp-enrollment-code`, `mfa-otp-enrollment-qr`, `device-code-activation`, `device-code-activation-allowed`, `device-code-activation-denied`, `device-code-confirmation`, `mfa-phone-challenge`, `mfa-phone-enrollment`, `mfa-voice-challenge`, `mfa-voice-enrollment`, `reset-password-mfa-phone-challenge`, `reset-password-mfa-voice-challenge`, `mfa-recovery-code-challenge`, `mfa-recovery-code-enrollment`, `reset-password-mfa-recovery-code-challenge`, `redeem-ticket`, `mfa-recovery-code-challenge-new-code`, `email-verification-result`, `login-email-verification`, `logout`, `logout-aborted`, `logout-complete`, `mfa-webauthn-change-key-nickname`, `mfa-webauthn-enrollment-success`, `mfa-webauthn-error`, `mfa-webauthn-platform-challenge`, `mfa-webauthn-platform-enrollment`, `mfa-webauthn-roaming-challenge`, `mfa-webauthn-roaming-enrollment`, `reset-password-mfa-webauthn-platform-challenge`, `reset-password-mfa-webauthn-roaming-challenge`.\n"
+                    "description": "The screen that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`, `login`, `signup`, `reset-password-request`, `reset-password-email`, `reset-password`, `reset-password-success`, `reset-password-error`, `reset-password-mfa-email-challenge`, `reset-password-mfa-otp-challenge`, `reset-password-mfa-push-challenge-push`, `reset-password-mfa-sms-challenge`, `mfa-detect-browser-capabilities`, `mfa-enroll-result`, `mfa-begin-enroll-options`, `mfa-login-options`, `mfa-country-codes`, `mfa-sms-challenge`, `mfa-sms-enrollment`, `mfa-sms-list`, `mfa-email-challenge`, `mfa-email-list`, `mfa-push-challenge-push`, `mfa-push-enrollment-qr`, `mfa-push-list`, `mfa-push-welcome`, `accept-invitation`, `organization-selection`, `organization-picker`, `mfa-otp-challenge`, `mfa-otp-enrollment-code`, `mfa-otp-enrollment-qr`, `device-code-activation`, `device-code-activation-allowed`, `device-code-activation-denied`, `device-code-confirmation`, `mfa-phone-challenge`, `mfa-phone-enrollment`, `mfa-voice-challenge`, `mfa-voice-enrollment`, `reset-password-mfa-phone-challenge`, `reset-password-mfa-voice-challenge`, `mfa-recovery-code-challenge`, `mfa-recovery-code-enrollment`, `reset-password-mfa-recovery-code-challenge`, `redeem-ticket`, `mfa-recovery-code-challenge-new-code`, `email-verification-result`, `login-email-verification`, `logout`, `logout-aborted`, `logout-complete`, `mfa-webauthn-change-key-nickname`, `mfa-webauthn-enrollment-success`, `mfa-webauthn-error`, `mfa-webauthn-platform-challenge`, `mfa-webauthn-platform-enrollment`, `mfa-webauthn-roaming-challenge`, `mfa-webauthn-roaming-enrollment`, `reset-password-mfa-webauthn-platform-challenge`, `reset-password-mfa-webauthn-roaming-challenge`, `consent`, `customized-consent`, `email-otp-challenge`, `mfa-webauthn-not-available-error`.\n"
                 },
                 "tenant": {
                     "type": "string",
                     "description": "Tenant ID\n"
+                },
+                "usePageTemplate": {
+                    "type": "boolean",
+                    "description": "Use page template with ACUL\n"
                 }
             },
             "required": [
@@ -14104,13 +14455,17 @@
                     "type": "boolean",
                     "description": "Override Universal Login default head tags\n"
                 },
+                "filters": {
+                    "$ref": "#/types/auth0:index/PromptScreenRendererFilters:PromptScreenRendererFilters",
+                    "description": "Optional filters to apply rendering rules to specific entities. `match_type` and at least one of the entity arrays are required.\n"
+                },
                 "headTags": {
                     "type": "string",
                     "description": "An array of head tags\n"
                 },
                 "promptType": {
                     "type": "string",
-                    "description": "The prompt that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkeys`, `captcha`, `login`, `signup`, `reset-password`, `mfa`, `mfa-sms`, `mfa-email`, `mfa-push`, `invitation`, `organizations`, `mfa-otp`, `device-flow`, `mfa-phone`, `mfa-voice`, `mfa-recovery-code`, `common`, `email-verification`, `login-email-verification`, `logout`, `mfa-webauthn`.\n"
+                    "description": "The prompt that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkeys`, `captcha`, `login`, `signup`, `reset-password`, `mfa`, `mfa-sms`, `mfa-email`, `mfa-push`, `invitation`, `organizations`, `mfa-otp`, `device-flow`, `mfa-phone`, `mfa-voice`, `mfa-recovery-code`, `common`, `email-verification`, `login-email-verification`, `logout`, `mfa-webauthn`, `consent`, `customized-consent`, `email-otp-challenge`.\n"
                 },
                 "renderingMode": {
                     "type": "string",
@@ -14118,7 +14473,11 @@
                 },
                 "screenName": {
                     "type": "string",
-                    "description": "The screen that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`, `login`, `signup`, `reset-password-request`, `reset-password-email`, `reset-password`, `reset-password-success`, `reset-password-error`, `reset-password-mfa-email-challenge`, `reset-password-mfa-otp-challenge`, `reset-password-mfa-push-challenge-push`, `reset-password-mfa-sms-challenge`, `mfa-detect-browser-capabilities`, `mfa-enroll-result`, `mfa-begin-enroll-options`, `mfa-login-options`, `mfa-country-codes`, `mfa-sms-challenge`, `mfa-sms-enrollment`, `mfa-sms-list`, `mfa-email-challenge`, `mfa-email-list`, `mfa-push-challenge-push`, `mfa-push-enrollment-qr`, `mfa-push-list`, `mfa-push-welcome`, `accept-invitation`, `organization-selection`, `organization-picker`, `mfa-otp-challenge`, `mfa-otp-enrollment-code`, `mfa-otp-enrollment-qr`, `device-code-activation`, `device-code-activation-allowed`, `device-code-activation-denied`, `device-code-confirmation`, `mfa-phone-challenge`, `mfa-phone-enrollment`, `mfa-voice-challenge`, `mfa-voice-enrollment`, `reset-password-mfa-phone-challenge`, `reset-password-mfa-voice-challenge`, `mfa-recovery-code-challenge`, `mfa-recovery-code-enrollment`, `reset-password-mfa-recovery-code-challenge`, `redeem-ticket`, `mfa-recovery-code-challenge-new-code`, `email-verification-result`, `login-email-verification`, `logout`, `logout-aborted`, `logout-complete`, `mfa-webauthn-change-key-nickname`, `mfa-webauthn-enrollment-success`, `mfa-webauthn-error`, `mfa-webauthn-platform-challenge`, `mfa-webauthn-platform-enrollment`, `mfa-webauthn-roaming-challenge`, `mfa-webauthn-roaming-enrollment`, `reset-password-mfa-webauthn-platform-challenge`, `reset-password-mfa-webauthn-roaming-challenge`.\n"
+                    "description": "The screen that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`, `login`, `signup`, `reset-password-request`, `reset-password-email`, `reset-password`, `reset-password-success`, `reset-password-error`, `reset-password-mfa-email-challenge`, `reset-password-mfa-otp-challenge`, `reset-password-mfa-push-challenge-push`, `reset-password-mfa-sms-challenge`, `mfa-detect-browser-capabilities`, `mfa-enroll-result`, `mfa-begin-enroll-options`, `mfa-login-options`, `mfa-country-codes`, `mfa-sms-challenge`, `mfa-sms-enrollment`, `mfa-sms-list`, `mfa-email-challenge`, `mfa-email-list`, `mfa-push-challenge-push`, `mfa-push-enrollment-qr`, `mfa-push-list`, `mfa-push-welcome`, `accept-invitation`, `organization-selection`, `organization-picker`, `mfa-otp-challenge`, `mfa-otp-enrollment-code`, `mfa-otp-enrollment-qr`, `device-code-activation`, `device-code-activation-allowed`, `device-code-activation-denied`, `device-code-confirmation`, `mfa-phone-challenge`, `mfa-phone-enrollment`, `mfa-voice-challenge`, `mfa-voice-enrollment`, `reset-password-mfa-phone-challenge`, `reset-password-mfa-voice-challenge`, `mfa-recovery-code-challenge`, `mfa-recovery-code-enrollment`, `reset-password-mfa-recovery-code-challenge`, `redeem-ticket`, `mfa-recovery-code-challenge-new-code`, `email-verification-result`, `login-email-verification`, `logout`, `logout-aborted`, `logout-complete`, `mfa-webauthn-change-key-nickname`, `mfa-webauthn-enrollment-success`, `mfa-webauthn-error`, `mfa-webauthn-platform-challenge`, `mfa-webauthn-platform-enrollment`, `mfa-webauthn-roaming-challenge`, `mfa-webauthn-roaming-enrollment`, `reset-password-mfa-webauthn-platform-challenge`, `reset-password-mfa-webauthn-roaming-challenge`, `consent`, `customized-consent`, `email-otp-challenge`, `mfa-webauthn-not-available-error`.\n"
+                },
+                "usePageTemplate": {
+                    "type": "boolean",
+                    "description": "Use page template with ACUL\n"
                 }
             },
             "requiredInputs": [
@@ -14139,13 +14498,17 @@
                         "type": "boolean",
                         "description": "Override Universal Login default head tags\n"
                     },
+                    "filters": {
+                        "$ref": "#/types/auth0:index/PromptScreenRendererFilters:PromptScreenRendererFilters",
+                        "description": "Optional filters to apply rendering rules to specific entities. `match_type` and at least one of the entity arrays are required.\n"
+                    },
                     "headTags": {
                         "type": "string",
                         "description": "An array of head tags\n"
                     },
                     "promptType": {
                         "type": "string",
-                        "description": "The prompt that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkeys`, `captcha`, `login`, `signup`, `reset-password`, `mfa`, `mfa-sms`, `mfa-email`, `mfa-push`, `invitation`, `organizations`, `mfa-otp`, `device-flow`, `mfa-phone`, `mfa-voice`, `mfa-recovery-code`, `common`, `email-verification`, `login-email-verification`, `logout`, `mfa-webauthn`.\n"
+                        "description": "The prompt that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkeys`, `captcha`, `login`, `signup`, `reset-password`, `mfa`, `mfa-sms`, `mfa-email`, `mfa-push`, `invitation`, `organizations`, `mfa-otp`, `device-flow`, `mfa-phone`, `mfa-voice`, `mfa-recovery-code`, `common`, `email-verification`, `login-email-verification`, `logout`, `mfa-webauthn`, `consent`, `customized-consent`, `email-otp-challenge`.\n"
                     },
                     "renderingMode": {
                         "type": "string",
@@ -14153,11 +14516,15 @@
                     },
                     "screenName": {
                         "type": "string",
-                        "description": "The screen that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`, `login`, `signup`, `reset-password-request`, `reset-password-email`, `reset-password`, `reset-password-success`, `reset-password-error`, `reset-password-mfa-email-challenge`, `reset-password-mfa-otp-challenge`, `reset-password-mfa-push-challenge-push`, `reset-password-mfa-sms-challenge`, `mfa-detect-browser-capabilities`, `mfa-enroll-result`, `mfa-begin-enroll-options`, `mfa-login-options`, `mfa-country-codes`, `mfa-sms-challenge`, `mfa-sms-enrollment`, `mfa-sms-list`, `mfa-email-challenge`, `mfa-email-list`, `mfa-push-challenge-push`, `mfa-push-enrollment-qr`, `mfa-push-list`, `mfa-push-welcome`, `accept-invitation`, `organization-selection`, `organization-picker`, `mfa-otp-challenge`, `mfa-otp-enrollment-code`, `mfa-otp-enrollment-qr`, `device-code-activation`, `device-code-activation-allowed`, `device-code-activation-denied`, `device-code-confirmation`, `mfa-phone-challenge`, `mfa-phone-enrollment`, `mfa-voice-challenge`, `mfa-voice-enrollment`, `reset-password-mfa-phone-challenge`, `reset-password-mfa-voice-challenge`, `mfa-recovery-code-challenge`, `mfa-recovery-code-enrollment`, `reset-password-mfa-recovery-code-challenge`, `redeem-ticket`, `mfa-recovery-code-challenge-new-code`, `email-verification-result`, `login-email-verification`, `logout`, `logout-aborted`, `logout-complete`, `mfa-webauthn-change-key-nickname`, `mfa-webauthn-enrollment-success`, `mfa-webauthn-error`, `mfa-webauthn-platform-challenge`, `mfa-webauthn-platform-enrollment`, `mfa-webauthn-roaming-challenge`, `mfa-webauthn-roaming-enrollment`, `reset-password-mfa-webauthn-platform-challenge`, `reset-password-mfa-webauthn-roaming-challenge`.\n"
+                        "description": "The screen that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`, `login`, `signup`, `reset-password-request`, `reset-password-email`, `reset-password`, `reset-password-success`, `reset-password-error`, `reset-password-mfa-email-challenge`, `reset-password-mfa-otp-challenge`, `reset-password-mfa-push-challenge-push`, `reset-password-mfa-sms-challenge`, `mfa-detect-browser-capabilities`, `mfa-enroll-result`, `mfa-begin-enroll-options`, `mfa-login-options`, `mfa-country-codes`, `mfa-sms-challenge`, `mfa-sms-enrollment`, `mfa-sms-list`, `mfa-email-challenge`, `mfa-email-list`, `mfa-push-challenge-push`, `mfa-push-enrollment-qr`, `mfa-push-list`, `mfa-push-welcome`, `accept-invitation`, `organization-selection`, `organization-picker`, `mfa-otp-challenge`, `mfa-otp-enrollment-code`, `mfa-otp-enrollment-qr`, `device-code-activation`, `device-code-activation-allowed`, `device-code-activation-denied`, `device-code-confirmation`, `mfa-phone-challenge`, `mfa-phone-enrollment`, `mfa-voice-challenge`, `mfa-voice-enrollment`, `reset-password-mfa-phone-challenge`, `reset-password-mfa-voice-challenge`, `mfa-recovery-code-challenge`, `mfa-recovery-code-enrollment`, `reset-password-mfa-recovery-code-challenge`, `redeem-ticket`, `mfa-recovery-code-challenge-new-code`, `email-verification-result`, `login-email-verification`, `logout`, `logout-aborted`, `logout-complete`, `mfa-webauthn-change-key-nickname`, `mfa-webauthn-enrollment-success`, `mfa-webauthn-error`, `mfa-webauthn-platform-challenge`, `mfa-webauthn-platform-enrollment`, `mfa-webauthn-roaming-challenge`, `mfa-webauthn-roaming-enrollment`, `reset-password-mfa-webauthn-platform-challenge`, `reset-password-mfa-webauthn-roaming-challenge`, `consent`, `customized-consent`, `email-otp-challenge`, `mfa-webauthn-not-available-error`.\n"
                     },
                     "tenant": {
                         "type": "string",
                         "description": "Tenant ID\n"
+                    },
+                    "usePageTemplate": {
+                        "type": "boolean",
+                        "description": "Use page template with ACUL\n"
                     }
                 },
                 "type": "object"
@@ -15341,7 +15708,7 @@
             }
         },
         "auth0:index/tokenExchangeProfile:TokenExchangeProfile": {
-            "description": "With this resource, you can manage Auth0 Custom Token Exchange Profiles\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\n// Below action is created with custom-token-exchange as supported_triggers\n// This action is then linked using the action_id param to the token-exchange profile\nconst myAction = new auth0.Action(\"my_action\", {\n    name: \"TokenExchange-Action\",\n    code: `exports.onContinuePostLogin = async (event, api) =\u003e {\n\\x09console.log(\"foo\")\n};\"\n`,\n    deploy: true,\n    supportedTriggers: {\n        id: \"custom-token-exchange\",\n        version: \"v1\",\n    },\n});\nconst myTokenExchangeProfile = new auth0.TokenExchangeProfile(\"my_token_exchange_profile\", {\n    name: \"token-exchange-prof\",\n    subjectTokenType: \"https://acme.com/cis-token\",\n    actionId: myAction.id,\n    type: \"custom_authentication\",\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\n# Below action is created with custom-token-exchange as supported_triggers\n# This action is then linked using the action_id param to the token-exchange profile\nmy_action = auth0.Action(\"my_action\",\n    name=\"TokenExchange-Action\",\n    code=\"\"\"exports.onContinuePostLogin = async (event, api) =\u003e {\n\\x09console.log(\"foo\")\n};\"\n\"\"\",\n    deploy=True,\n    supported_triggers={\n        \"id\": \"custom-token-exchange\",\n        \"version\": \"v1\",\n    })\nmy_token_exchange_profile = auth0.TokenExchangeProfile(\"my_token_exchange_profile\",\n    name=\"token-exchange-prof\",\n    subject_token_type=\"https://acme.com/cis-token\",\n    action_id=my_action.id,\n    type=\"custom_authentication\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Below action is created with custom-token-exchange as supported_triggers\n    // This action is then linked using the action_id param to the token-exchange profile\n    var myAction = new Auth0.Action(\"my_action\", new()\n    {\n        Name = \"TokenExchange-Action\",\n        Code = @\"exports.onContinuePostLogin = async (event, api) =\u003e {\n\tconsole.log(\"\"foo\"\")\n};\"\"\n\",\n        Deploy = true,\n        SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs\n        {\n            Id = \"custom-token-exchange\",\n            Version = \"v1\",\n        },\n    });\n\n    var myTokenExchangeProfile = new Auth0.TokenExchangeProfile(\"my_token_exchange_profile\", new()\n    {\n        Name = \"token-exchange-prof\",\n        SubjectTokenType = \"https://acme.com/cis-token\",\n        ActionId = myAction.Id,\n        Type = \"custom_authentication\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Below action is created with custom-token-exchange as supported_triggers\n\t\t// This action is then linked using the action_id param to the token-exchange profile\n\t\tmyAction, err := auth0.NewAction(ctx, \"my_action\", \u0026auth0.ActionArgs{\n\t\t\tName:   pulumi.String(\"TokenExchange-Action\"),\n\t\t\tCode:   pulumi.String(\"exports.onContinuePostLogin = async (event, api) =\u003e {\\n\tconsole.log(\\\"foo\\\")\\n};\\\"\\n\"),\n\t\t\tDeploy: pulumi.Bool(true),\n\t\t\tSupportedTriggers: \u0026auth0.ActionSupportedTriggersArgs{\n\t\t\t\tId:      pulumi.String(\"custom-token-exchange\"),\n\t\t\t\tVersion: pulumi.String(\"v1\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = auth0.NewTokenExchangeProfile(ctx, \"my_token_exchange_profile\", \u0026auth0.TokenExchangeProfileArgs{\n\t\t\tName:             pulumi.String(\"token-exchange-prof\"),\n\t\t\tSubjectTokenType: pulumi.String(\"https://acme.com/cis-token\"),\n\t\t\tActionId:         myAction.ID(),\n\t\t\tType:             pulumi.String(\"custom_authentication\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.Action;\nimport com.pulumi.auth0.ActionArgs;\nimport com.pulumi.auth0.inputs.ActionSupportedTriggersArgs;\nimport com.pulumi.auth0.TokenExchangeProfile;\nimport com.pulumi.auth0.TokenExchangeProfileArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Below action is created with custom-token-exchange as supported_triggers\n        // This action is then linked using the action_id param to the token-exchange profile\n        var myAction = new Action(\"myAction\", ActionArgs.builder()\n            .name(\"TokenExchange-Action\")\n            .code(\"\"\"\nexports.onContinuePostLogin = async (event, api) =\u003e {\n\tconsole.log(\"foo\")\n};\"\n            \"\"\")\n            .deploy(true)\n            .supportedTriggers(ActionSupportedTriggersArgs.builder()\n                .id(\"custom-token-exchange\")\n                .version(\"v1\")\n                .build())\n            .build());\n\n        var myTokenExchangeProfile = new TokenExchangeProfile(\"myTokenExchangeProfile\", TokenExchangeProfileArgs.builder()\n            .name(\"token-exchange-prof\")\n            .subjectTokenType(\"https://acme.com/cis-token\")\n            .actionId(myAction.id())\n            .type(\"custom_authentication\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myTokenExchangeProfile:\n    type: auth0:TokenExchangeProfile\n    name: my_token_exchange_profile\n    properties:\n      name: token-exchange-prof\n      subjectTokenType: https://acme.com/cis-token\n      actionId: ${myAction.id}\n      type: custom_authentication\n  # Below action is created with custom-token-exchange as supported_triggers\n  # This action is then linked using the action_id param to the token-exchange profile\n  myAction:\n    type: auth0:Action\n    name: my_action\n    properties:\n      name: TokenExchange-Action\n      code: |\n        exports.onContinuePostLogin = async (event, api) =\u003e {\n        \tconsole.log(\"foo\")\n        };\"\n      deploy: true\n      supportedTriggers:\n        id: custom-token-exchange\n        version: v1\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThis resource can be imported using the token exchange profile ID.\n\nExample:\n\n```sh\n$ pulumi import auth0:index/tokenExchangeProfile:TokenExchangeProfile profile \"tep_XXXXXXXXXXXXXX\"\n```\n\n",
+            "description": "With this resource, you can manage Auth0 Custom Token Exchange Profiles\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\n// Below action is created with custom-token-exchange as supported_triggers\n// This action is then linked using the action_id param to the token-exchange profile\nconst myAction = new auth0.Action(\"my_action\", {\n    name: \"TokenExchange-Action\",\n    code: `exports.onExecuteCustomTokenExchange = async (event, api) =\u003e {\n\\x09console.log(\"foo\")\n};\"\n`,\n    deploy: true,\n    supportedTriggers: {\n        id: \"custom-token-exchange\",\n        version: \"v1\",\n    },\n});\nconst myTokenExchangeProfile = new auth0.TokenExchangeProfile(\"my_token_exchange_profile\", {\n    name: \"token-exchange-prof\",\n    subjectTokenType: \"https://acme.com/cis-token\",\n    actionId: myAction.id,\n    type: \"custom_authentication\",\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\n# Below action is created with custom-token-exchange as supported_triggers\n# This action is then linked using the action_id param to the token-exchange profile\nmy_action = auth0.Action(\"my_action\",\n    name=\"TokenExchange-Action\",\n    code=\"\"\"exports.onExecuteCustomTokenExchange = async (event, api) =\u003e {\n\\x09console.log(\"foo\")\n};\"\n\"\"\",\n    deploy=True,\n    supported_triggers={\n        \"id\": \"custom-token-exchange\",\n        \"version\": \"v1\",\n    })\nmy_token_exchange_profile = auth0.TokenExchangeProfile(\"my_token_exchange_profile\",\n    name=\"token-exchange-prof\",\n    subject_token_type=\"https://acme.com/cis-token\",\n    action_id=my_action.id,\n    type=\"custom_authentication\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Below action is created with custom-token-exchange as supported_triggers\n    // This action is then linked using the action_id param to the token-exchange profile\n    var myAction = new Auth0.Action(\"my_action\", new()\n    {\n        Name = \"TokenExchange-Action\",\n        Code = @\"exports.onExecuteCustomTokenExchange = async (event, api) =\u003e {\n\tconsole.log(\"\"foo\"\")\n};\"\"\n\",\n        Deploy = true,\n        SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs\n        {\n            Id = \"custom-token-exchange\",\n            Version = \"v1\",\n        },\n    });\n\n    var myTokenExchangeProfile = new Auth0.TokenExchangeProfile(\"my_token_exchange_profile\", new()\n    {\n        Name = \"token-exchange-prof\",\n        SubjectTokenType = \"https://acme.com/cis-token\",\n        ActionId = myAction.Id,\n        Type = \"custom_authentication\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Below action is created with custom-token-exchange as supported_triggers\n\t\t// This action is then linked using the action_id param to the token-exchange profile\n\t\tmyAction, err := auth0.NewAction(ctx, \"my_action\", \u0026auth0.ActionArgs{\n\t\t\tName:   pulumi.String(\"TokenExchange-Action\"),\n\t\t\tCode:   pulumi.String(\"exports.onExecuteCustomTokenExchange = async (event, api) =\u003e {\\n\tconsole.log(\\\"foo\\\")\\n};\\\"\\n\"),\n\t\t\tDeploy: pulumi.Bool(true),\n\t\t\tSupportedTriggers: \u0026auth0.ActionSupportedTriggersArgs{\n\t\t\t\tId:      pulumi.String(\"custom-token-exchange\"),\n\t\t\t\tVersion: pulumi.String(\"v1\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = auth0.NewTokenExchangeProfile(ctx, \"my_token_exchange_profile\", \u0026auth0.TokenExchangeProfileArgs{\n\t\t\tName:             pulumi.String(\"token-exchange-prof\"),\n\t\t\tSubjectTokenType: pulumi.String(\"https://acme.com/cis-token\"),\n\t\t\tActionId:         myAction.ID(),\n\t\t\tType:             pulumi.String(\"custom_authentication\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.Action;\nimport com.pulumi.auth0.ActionArgs;\nimport com.pulumi.auth0.inputs.ActionSupportedTriggersArgs;\nimport com.pulumi.auth0.TokenExchangeProfile;\nimport com.pulumi.auth0.TokenExchangeProfileArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Below action is created with custom-token-exchange as supported_triggers\n        // This action is then linked using the action_id param to the token-exchange profile\n        var myAction = new Action(\"myAction\", ActionArgs.builder()\n            .name(\"TokenExchange-Action\")\n            .code(\"\"\"\nexports.onExecuteCustomTokenExchange = async (event, api) =\u003e {\n\tconsole.log(\"foo\")\n};\"\n            \"\"\")\n            .deploy(true)\n            .supportedTriggers(ActionSupportedTriggersArgs.builder()\n                .id(\"custom-token-exchange\")\n                .version(\"v1\")\n                .build())\n            .build());\n\n        var myTokenExchangeProfile = new TokenExchangeProfile(\"myTokenExchangeProfile\", TokenExchangeProfileArgs.builder()\n            .name(\"token-exchange-prof\")\n            .subjectTokenType(\"https://acme.com/cis-token\")\n            .actionId(myAction.id())\n            .type(\"custom_authentication\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myTokenExchangeProfile:\n    type: auth0:TokenExchangeProfile\n    name: my_token_exchange_profile\n    properties:\n      name: token-exchange-prof\n      subjectTokenType: https://acme.com/cis-token\n      actionId: ${myAction.id}\n      type: custom_authentication\n  # Below action is created with custom-token-exchange as supported_triggers\n  # This action is then linked using the action_id param to the token-exchange profile\n  myAction:\n    type: auth0:Action\n    name: my_action\n    properties:\n      name: TokenExchange-Action\n      code: |\n        exports.onExecuteCustomTokenExchange = async (event, api) =\u003e {\n        \tconsole.log(\"foo\")\n        };\"\n      deploy: true\n      supportedTriggers:\n        id: custom-token-exchange\n        version: v1\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThis resource can be imported using the token exchange profile ID.\n\nExample:\n\n```sh\n$ pulumi import auth0:index/tokenExchangeProfile:TokenExchangeProfile profile \"tep_XXXXXXXXXXXXXX\"\n```\n\n",
             "properties": {
                 "actionId": {
                     "type": "string",
@@ -16082,7 +16449,7 @@
                         "type": "string"
                     },
                     "secrets": {
-                        "description": "List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.\n",
+                        "description": "List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.\n",
                         "items": {
                             "$ref": "#/types/auth0:index/getActionSecret:getActionSecret"
                         },
@@ -16732,6 +17099,48 @@
                     "realms",
                     "showAsButton",
                     "strategy",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "auth0:index/getConnectionKeys:getConnectionKeys": {
+            "description": "Retrieve the list of signing keys for a specific Auth0 connection. (Okta/OIDC only)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\n// An Auth0 Connection Keys loaded using its Connection ID.\nconst myKeys = auth0.getConnectionKeys({\n    connectionId: \"con_xxxxxxxxxxxxx\",\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\n# An Auth0 Connection Keys loaded using its Connection ID.\nmy_keys = auth0.get_connection_keys(connection_id=\"con_xxxxxxxxxxxxx\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // An Auth0 Connection Keys loaded using its Connection ID.\n    var myKeys = Auth0.GetConnectionKeys.Invoke(new()\n    {\n        ConnectionId = \"con_xxxxxxxxxxxxx\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// An Auth0 Connection Keys loaded using its Connection ID.\n\t\t_, err := auth0.LookupConnectionKeys(ctx, \u0026auth0.LookupConnectionKeysArgs{\n\t\t\tConnectionId: \"con_xxxxxxxxxxxxx\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.Auth0Functions;\nimport com.pulumi.auth0.inputs.GetConnectionKeysArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // An Auth0 Connection Keys loaded using its Connection ID.\n        final var myKeys = Auth0Functions.getConnectionKeys(GetConnectionKeysArgs.builder()\n            .connectionId(\"con_xxxxxxxxxxxxx\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  # An Auth0 Connection Keys loaded using its Connection ID.\n  myKeys:\n    fn::invoke:\n      function: auth0:getConnectionKeys\n      arguments:\n        connectionId: con_xxxxxxxxxxxxx\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getConnectionKeys.\n",
+                "properties": {
+                    "connectionId": {
+                        "type": "string",
+                        "description": "The ID of the connection to retrieve keys for.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "connectionId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getConnectionKeys.\n",
+                "properties": {
+                    "connectionId": {
+                        "description": "The ID of the connection to retrieve keys for.\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "keys": {
+                        "description": "List of signing keys associated with the connection.\n",
+                        "items": {
+                            "$ref": "#/types/auth0:index/getConnectionKeysKey:getConnectionKeysKey"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "connectionId",
+                    "keys",
                     "id"
                 ],
                 "type": "object"
@@ -17399,6 +17808,13 @@
                         "description": "Override Universal Login default head tags\n",
                         "type": "boolean"
                     },
+                    "filters": {
+                        "description": "Optional filters to apply rendering rules to specific entities. `match_type` and at least one of the entity arrays are required.\n",
+                        "items": {
+                            "$ref": "#/types/auth0:index/getPromptScreenRendererFilter:getPromptScreenRendererFilter"
+                        },
+                        "type": "array"
+                    },
                     "headTags": {
                         "description": "An array of head tags\n",
                         "type": "string"
@@ -17422,16 +17838,22 @@
                     "tenant": {
                         "description": "Tenant ID\n",
                         "type": "string"
+                    },
+                    "usePageTemplate": {
+                        "description": "Use page template with ACUL\n",
+                        "type": "boolean"
                     }
                 },
                 "required": [
                     "contextConfigurations",
                     "defaultHeadTagsDisabled",
+                    "filters",
                     "headTags",
                     "promptType",
                     "renderingMode",
                     "screenName",
                     "tenant",
+                    "usePageTemplate",
                     "id"
                 ],
                 "type": "object"
