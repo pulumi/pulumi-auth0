@@ -12,17 +12,35 @@ namespace Pulumi.Auth0.Inputs
 
     public sealed class CustomDomainVerificationGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Contains error message, if any, from the last DNS verification check.
+        /// </summary>
+        [Input("errorMsg")]
+        public Input<string>? ErrorMsg { get; set; }
+
+        /// <summary>
+        /// Indicates the last time the domain was successfully verified.
+        /// </summary>
+        [Input("lastVerifiedAt")]
+        public Input<string>? LastVerifiedAt { get; set; }
+
         [Input("methods")]
         private InputList<object>? _methods;
 
         /// <summary>
-        /// Verification methods for the domain.
+        /// Defines the list of domain verification methods used.
         /// </summary>
         public InputList<object> Methods
         {
             get => _methods ?? (_methods = new InputList<object>());
             set => _methods = value;
         }
+
+        /// <summary>
+        /// Represents the current status of the domain verification process.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
 
         public CustomDomainVerificationGetArgs()
         {

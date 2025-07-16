@@ -44,6 +44,30 @@ Object.defineProperty(exports, "cliLogin", {
 });
 
 /**
+ * The private key used to sign the client assertion JWT. It can also be sourced from the
+ * `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
+ */
+export declare const clientAssertionPrivateKey: string | undefined;
+Object.defineProperty(exports, "clientAssertionPrivateKey", {
+    get() {
+        return __config.get("clientAssertionPrivateKey");
+    },
+    enumerable: true,
+});
+
+/**
+ * The algorithm used to sign the client assertion JWT. It can also be sourced from the
+ * `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
+ */
+export declare const clientAssertionSigningAlg: string | undefined;
+Object.defineProperty(exports, "clientAssertionSigningAlg", {
+    get() {
+        return __config.get("clientAssertionSigningAlg");
+    },
+    enumerable: true,
+});
+
+/**
  * Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.
  */
 export declare const clientId: string | undefined;

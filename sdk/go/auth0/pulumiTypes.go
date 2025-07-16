@@ -14450,6 +14450,10 @@ type ConnectionOptions struct {
 	TenantDomain *string `pulumi:"tenantDomain"`
 	// Token endpoint.
 	TokenEndpoint *string `pulumi:"tokenEndpoint"`
+	// Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
+	TokenEndpointAuthMethod *string `pulumi:"tokenEndpointAuthMethod"`
+	// Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
+	TokenEndpointAuthSigningAlg *string `pulumi:"tokenEndpointAuthSigningAlg"`
 	// Configuration options for one-time passwords.
 	Totp *ConnectionOptionsTotp `pulumi:"totp"`
 	// SID for your Twilio account.
@@ -14660,6 +14664,10 @@ type ConnectionOptionsArgs struct {
 	TenantDomain pulumi.StringPtrInput `pulumi:"tenantDomain"`
 	// Token endpoint.
 	TokenEndpoint pulumi.StringPtrInput `pulumi:"tokenEndpoint"`
+	// Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
+	TokenEndpointAuthMethod pulumi.StringPtrInput `pulumi:"tokenEndpointAuthMethod"`
+	// Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
+	TokenEndpointAuthSigningAlg pulumi.StringPtrInput `pulumi:"tokenEndpointAuthSigningAlg"`
 	// Configuration options for one-time passwords.
 	Totp ConnectionOptionsTotpPtrInput `pulumi:"totp"`
 	// SID for your Twilio account.
@@ -15190,6 +15198,16 @@ func (o ConnectionOptionsOutput) TenantDomain() pulumi.StringPtrOutput {
 // Token endpoint.
 func (o ConnectionOptionsOutput) TokenEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.TokenEndpoint }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
+func (o ConnectionOptionsOutput) TokenEndpointAuthMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *string { return v.TokenEndpointAuthMethod }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
+func (o ConnectionOptionsOutput) TokenEndpointAuthSigningAlg() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *string { return v.TokenEndpointAuthSigningAlg }).(pulumi.StringPtrOutput)
 }
 
 // Configuration options for one-time passwords.
@@ -16128,6 +16146,26 @@ func (o ConnectionOptionsPtrOutput) TokenEndpoint() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.TokenEndpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
+func (o ConnectionOptionsPtrOutput) TokenEndpointAuthMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TokenEndpointAuthMethod
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
+func (o ConnectionOptionsPtrOutput) TokenEndpointAuthSigningAlg() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TokenEndpointAuthSigningAlg
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -20659,9 +20697,139 @@ func (o ConnectionScimConfigurationMappingArrayOutput) Index(i pulumi.IntInput) 
 	}).(ConnectionScimConfigurationMappingOutput)
 }
 
+type CustomDomainCertificate struct {
+	// Name of the certificate authority that issued the certificate.
+	CertificateAuthority *string `pulumi:"certificateAuthority"`
+	// Contains the error message if the provisioning process fails.
+	ErrorMsg *string `pulumi:"errorMsg"`
+	// Specifies the date by which the certificate should be renewed.
+	RenewsBefore *string `pulumi:"renewsBefore"`
+	// Indicates the current state of the certificate provisioning process.
+	Status *string `pulumi:"status"`
+}
+
+// CustomDomainCertificateInput is an input type that accepts CustomDomainCertificateArgs and CustomDomainCertificateOutput values.
+// You can construct a concrete instance of `CustomDomainCertificateInput` via:
+//
+//	CustomDomainCertificateArgs{...}
+type CustomDomainCertificateInput interface {
+	pulumi.Input
+
+	ToCustomDomainCertificateOutput() CustomDomainCertificateOutput
+	ToCustomDomainCertificateOutputWithContext(context.Context) CustomDomainCertificateOutput
+}
+
+type CustomDomainCertificateArgs struct {
+	// Name of the certificate authority that issued the certificate.
+	CertificateAuthority pulumi.StringPtrInput `pulumi:"certificateAuthority"`
+	// Contains the error message if the provisioning process fails.
+	ErrorMsg pulumi.StringPtrInput `pulumi:"errorMsg"`
+	// Specifies the date by which the certificate should be renewed.
+	RenewsBefore pulumi.StringPtrInput `pulumi:"renewsBefore"`
+	// Indicates the current state of the certificate provisioning process.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (CustomDomainCertificateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomDomainCertificate)(nil)).Elem()
+}
+
+func (i CustomDomainCertificateArgs) ToCustomDomainCertificateOutput() CustomDomainCertificateOutput {
+	return i.ToCustomDomainCertificateOutputWithContext(context.Background())
+}
+
+func (i CustomDomainCertificateArgs) ToCustomDomainCertificateOutputWithContext(ctx context.Context) CustomDomainCertificateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomDomainCertificateOutput)
+}
+
+// CustomDomainCertificateArrayInput is an input type that accepts CustomDomainCertificateArray and CustomDomainCertificateArrayOutput values.
+// You can construct a concrete instance of `CustomDomainCertificateArrayInput` via:
+//
+//	CustomDomainCertificateArray{ CustomDomainCertificateArgs{...} }
+type CustomDomainCertificateArrayInput interface {
+	pulumi.Input
+
+	ToCustomDomainCertificateArrayOutput() CustomDomainCertificateArrayOutput
+	ToCustomDomainCertificateArrayOutputWithContext(context.Context) CustomDomainCertificateArrayOutput
+}
+
+type CustomDomainCertificateArray []CustomDomainCertificateInput
+
+func (CustomDomainCertificateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomDomainCertificate)(nil)).Elem()
+}
+
+func (i CustomDomainCertificateArray) ToCustomDomainCertificateArrayOutput() CustomDomainCertificateArrayOutput {
+	return i.ToCustomDomainCertificateArrayOutputWithContext(context.Background())
+}
+
+func (i CustomDomainCertificateArray) ToCustomDomainCertificateArrayOutputWithContext(ctx context.Context) CustomDomainCertificateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomDomainCertificateArrayOutput)
+}
+
+type CustomDomainCertificateOutput struct{ *pulumi.OutputState }
+
+func (CustomDomainCertificateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomDomainCertificate)(nil)).Elem()
+}
+
+func (o CustomDomainCertificateOutput) ToCustomDomainCertificateOutput() CustomDomainCertificateOutput {
+	return o
+}
+
+func (o CustomDomainCertificateOutput) ToCustomDomainCertificateOutputWithContext(ctx context.Context) CustomDomainCertificateOutput {
+	return o
+}
+
+// Name of the certificate authority that issued the certificate.
+func (o CustomDomainCertificateOutput) CertificateAuthority() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomDomainCertificate) *string { return v.CertificateAuthority }).(pulumi.StringPtrOutput)
+}
+
+// Contains the error message if the provisioning process fails.
+func (o CustomDomainCertificateOutput) ErrorMsg() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomDomainCertificate) *string { return v.ErrorMsg }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the date by which the certificate should be renewed.
+func (o CustomDomainCertificateOutput) RenewsBefore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomDomainCertificate) *string { return v.RenewsBefore }).(pulumi.StringPtrOutput)
+}
+
+// Indicates the current state of the certificate provisioning process.
+func (o CustomDomainCertificateOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomDomainCertificate) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type CustomDomainCertificateArrayOutput struct{ *pulumi.OutputState }
+
+func (CustomDomainCertificateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomDomainCertificate)(nil)).Elem()
+}
+
+func (o CustomDomainCertificateArrayOutput) ToCustomDomainCertificateArrayOutput() CustomDomainCertificateArrayOutput {
+	return o
+}
+
+func (o CustomDomainCertificateArrayOutput) ToCustomDomainCertificateArrayOutputWithContext(ctx context.Context) CustomDomainCertificateArrayOutput {
+	return o
+}
+
+func (o CustomDomainCertificateArrayOutput) Index(i pulumi.IntInput) CustomDomainCertificateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomDomainCertificate {
+		return vs[0].([]CustomDomainCertificate)[vs[1].(int)]
+	}).(CustomDomainCertificateOutput)
+}
+
 type CustomDomainVerificationType struct {
-	// Verification methods for the domain.
+	// Contains error message, if any, from the last DNS verification check.
+	ErrorMsg *string `pulumi:"errorMsg"`
+	// Indicates the last time the domain was successfully verified.
+	LastVerifiedAt *string `pulumi:"lastVerifiedAt"`
+	// Defines the list of domain verification methods used.
 	Methods []interface{} `pulumi:"methods"`
+	// Represents the current status of the domain verification process.
+	Status *string `pulumi:"status"`
 }
 
 // CustomDomainVerificationTypeInput is an input type that accepts CustomDomainVerificationTypeArgs and CustomDomainVerificationTypeOutput values.
@@ -20676,8 +20844,14 @@ type CustomDomainVerificationTypeInput interface {
 }
 
 type CustomDomainVerificationTypeArgs struct {
-	// Verification methods for the domain.
+	// Contains error message, if any, from the last DNS verification check.
+	ErrorMsg pulumi.StringPtrInput `pulumi:"errorMsg"`
+	// Indicates the last time the domain was successfully verified.
+	LastVerifiedAt pulumi.StringPtrInput `pulumi:"lastVerifiedAt"`
+	// Defines the list of domain verification methods used.
 	Methods pulumi.ArrayInput `pulumi:"methods"`
+	// Represents the current status of the domain verification process.
+	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
 func (CustomDomainVerificationTypeArgs) ElementType() reflect.Type {
@@ -20731,9 +20905,24 @@ func (o CustomDomainVerificationTypeOutput) ToCustomDomainVerificationTypeOutput
 	return o
 }
 
-// Verification methods for the domain.
+// Contains error message, if any, from the last DNS verification check.
+func (o CustomDomainVerificationTypeOutput) ErrorMsg() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomDomainVerificationType) *string { return v.ErrorMsg }).(pulumi.StringPtrOutput)
+}
+
+// Indicates the last time the domain was successfully verified.
+func (o CustomDomainVerificationTypeOutput) LastVerifiedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomDomainVerificationType) *string { return v.LastVerifiedAt }).(pulumi.StringPtrOutput)
+}
+
+// Defines the list of domain verification methods used.
 func (o CustomDomainVerificationTypeOutput) Methods() pulumi.ArrayOutput {
 	return o.ApplyT(func(v CustomDomainVerificationType) []interface{} { return v.Methods }).(pulumi.ArrayOutput)
+}
+
+// Represents the current status of the domain verification process.
+func (o CustomDomainVerificationTypeOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomDomainVerificationType) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
 type CustomDomainVerificationTypeArrayOutput struct{ *pulumi.OutputState }
@@ -27719,6 +27908,200 @@ func (o PromptScreenPartialsScreenPartialInsertionPointsOutput) SecondaryActions
 // Actions that go at the start of secondary actions.
 func (o PromptScreenPartialsScreenPartialInsertionPointsOutput) SecondaryActionsStart() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PromptScreenPartialsScreenPartialInsertionPoints) *string { return v.SecondaryActionsStart }).(pulumi.StringPtrOutput)
+}
+
+type PromptScreenRendererFilters struct {
+	// An array of clients (applications) identified by id or a metadata key/value pair. Entity Limit: 25.
+	Clients *string `pulumi:"clients"`
+	// An array of domains identified by id or a metadata key/value pair. Entity Limit: 25.
+	Domains *string `pulumi:"domains"`
+	// Type of match to apply. Options: `includesAny`, `excludesAny`.
+	MatchType string `pulumi:"matchType"`
+	// An array of organizations identified by id or a metadata key/value pair. Entity Limit: 25.
+	Organizations *string `pulumi:"organizations"`
+}
+
+// PromptScreenRendererFiltersInput is an input type that accepts PromptScreenRendererFiltersArgs and PromptScreenRendererFiltersOutput values.
+// You can construct a concrete instance of `PromptScreenRendererFiltersInput` via:
+//
+//	PromptScreenRendererFiltersArgs{...}
+type PromptScreenRendererFiltersInput interface {
+	pulumi.Input
+
+	ToPromptScreenRendererFiltersOutput() PromptScreenRendererFiltersOutput
+	ToPromptScreenRendererFiltersOutputWithContext(context.Context) PromptScreenRendererFiltersOutput
+}
+
+type PromptScreenRendererFiltersArgs struct {
+	// An array of clients (applications) identified by id or a metadata key/value pair. Entity Limit: 25.
+	Clients pulumi.StringPtrInput `pulumi:"clients"`
+	// An array of domains identified by id or a metadata key/value pair. Entity Limit: 25.
+	Domains pulumi.StringPtrInput `pulumi:"domains"`
+	// Type of match to apply. Options: `includesAny`, `excludesAny`.
+	MatchType pulumi.StringInput `pulumi:"matchType"`
+	// An array of organizations identified by id or a metadata key/value pair. Entity Limit: 25.
+	Organizations pulumi.StringPtrInput `pulumi:"organizations"`
+}
+
+func (PromptScreenRendererFiltersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PromptScreenRendererFilters)(nil)).Elem()
+}
+
+func (i PromptScreenRendererFiltersArgs) ToPromptScreenRendererFiltersOutput() PromptScreenRendererFiltersOutput {
+	return i.ToPromptScreenRendererFiltersOutputWithContext(context.Background())
+}
+
+func (i PromptScreenRendererFiltersArgs) ToPromptScreenRendererFiltersOutputWithContext(ctx context.Context) PromptScreenRendererFiltersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PromptScreenRendererFiltersOutput)
+}
+
+func (i PromptScreenRendererFiltersArgs) ToPromptScreenRendererFiltersPtrOutput() PromptScreenRendererFiltersPtrOutput {
+	return i.ToPromptScreenRendererFiltersPtrOutputWithContext(context.Background())
+}
+
+func (i PromptScreenRendererFiltersArgs) ToPromptScreenRendererFiltersPtrOutputWithContext(ctx context.Context) PromptScreenRendererFiltersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PromptScreenRendererFiltersOutput).ToPromptScreenRendererFiltersPtrOutputWithContext(ctx)
+}
+
+// PromptScreenRendererFiltersPtrInput is an input type that accepts PromptScreenRendererFiltersArgs, PromptScreenRendererFiltersPtr and PromptScreenRendererFiltersPtrOutput values.
+// You can construct a concrete instance of `PromptScreenRendererFiltersPtrInput` via:
+//
+//	        PromptScreenRendererFiltersArgs{...}
+//
+//	or:
+//
+//	        nil
+type PromptScreenRendererFiltersPtrInput interface {
+	pulumi.Input
+
+	ToPromptScreenRendererFiltersPtrOutput() PromptScreenRendererFiltersPtrOutput
+	ToPromptScreenRendererFiltersPtrOutputWithContext(context.Context) PromptScreenRendererFiltersPtrOutput
+}
+
+type promptScreenRendererFiltersPtrType PromptScreenRendererFiltersArgs
+
+func PromptScreenRendererFiltersPtr(v *PromptScreenRendererFiltersArgs) PromptScreenRendererFiltersPtrInput {
+	return (*promptScreenRendererFiltersPtrType)(v)
+}
+
+func (*promptScreenRendererFiltersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PromptScreenRendererFilters)(nil)).Elem()
+}
+
+func (i *promptScreenRendererFiltersPtrType) ToPromptScreenRendererFiltersPtrOutput() PromptScreenRendererFiltersPtrOutput {
+	return i.ToPromptScreenRendererFiltersPtrOutputWithContext(context.Background())
+}
+
+func (i *promptScreenRendererFiltersPtrType) ToPromptScreenRendererFiltersPtrOutputWithContext(ctx context.Context) PromptScreenRendererFiltersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PromptScreenRendererFiltersPtrOutput)
+}
+
+type PromptScreenRendererFiltersOutput struct{ *pulumi.OutputState }
+
+func (PromptScreenRendererFiltersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PromptScreenRendererFilters)(nil)).Elem()
+}
+
+func (o PromptScreenRendererFiltersOutput) ToPromptScreenRendererFiltersOutput() PromptScreenRendererFiltersOutput {
+	return o
+}
+
+func (o PromptScreenRendererFiltersOutput) ToPromptScreenRendererFiltersOutputWithContext(ctx context.Context) PromptScreenRendererFiltersOutput {
+	return o
+}
+
+func (o PromptScreenRendererFiltersOutput) ToPromptScreenRendererFiltersPtrOutput() PromptScreenRendererFiltersPtrOutput {
+	return o.ToPromptScreenRendererFiltersPtrOutputWithContext(context.Background())
+}
+
+func (o PromptScreenRendererFiltersOutput) ToPromptScreenRendererFiltersPtrOutputWithContext(ctx context.Context) PromptScreenRendererFiltersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PromptScreenRendererFilters) *PromptScreenRendererFilters {
+		return &v
+	}).(PromptScreenRendererFiltersPtrOutput)
+}
+
+// An array of clients (applications) identified by id or a metadata key/value pair. Entity Limit: 25.
+func (o PromptScreenRendererFiltersOutput) Clients() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PromptScreenRendererFilters) *string { return v.Clients }).(pulumi.StringPtrOutput)
+}
+
+// An array of domains identified by id or a metadata key/value pair. Entity Limit: 25.
+func (o PromptScreenRendererFiltersOutput) Domains() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PromptScreenRendererFilters) *string { return v.Domains }).(pulumi.StringPtrOutput)
+}
+
+// Type of match to apply. Options: `includesAny`, `excludesAny`.
+func (o PromptScreenRendererFiltersOutput) MatchType() pulumi.StringOutput {
+	return o.ApplyT(func(v PromptScreenRendererFilters) string { return v.MatchType }).(pulumi.StringOutput)
+}
+
+// An array of organizations identified by id or a metadata key/value pair. Entity Limit: 25.
+func (o PromptScreenRendererFiltersOutput) Organizations() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PromptScreenRendererFilters) *string { return v.Organizations }).(pulumi.StringPtrOutput)
+}
+
+type PromptScreenRendererFiltersPtrOutput struct{ *pulumi.OutputState }
+
+func (PromptScreenRendererFiltersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PromptScreenRendererFilters)(nil)).Elem()
+}
+
+func (o PromptScreenRendererFiltersPtrOutput) ToPromptScreenRendererFiltersPtrOutput() PromptScreenRendererFiltersPtrOutput {
+	return o
+}
+
+func (o PromptScreenRendererFiltersPtrOutput) ToPromptScreenRendererFiltersPtrOutputWithContext(ctx context.Context) PromptScreenRendererFiltersPtrOutput {
+	return o
+}
+
+func (o PromptScreenRendererFiltersPtrOutput) Elem() PromptScreenRendererFiltersOutput {
+	return o.ApplyT(func(v *PromptScreenRendererFilters) PromptScreenRendererFilters {
+		if v != nil {
+			return *v
+		}
+		var ret PromptScreenRendererFilters
+		return ret
+	}).(PromptScreenRendererFiltersOutput)
+}
+
+// An array of clients (applications) identified by id or a metadata key/value pair. Entity Limit: 25.
+func (o PromptScreenRendererFiltersPtrOutput) Clients() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PromptScreenRendererFilters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Clients
+	}).(pulumi.StringPtrOutput)
+}
+
+// An array of domains identified by id or a metadata key/value pair. Entity Limit: 25.
+func (o PromptScreenRendererFiltersPtrOutput) Domains() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PromptScreenRendererFilters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Domains
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of match to apply. Options: `includesAny`, `excludesAny`.
+func (o PromptScreenRendererFiltersPtrOutput) MatchType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PromptScreenRendererFilters) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MatchType
+	}).(pulumi.StringPtrOutput)
+}
+
+// An array of organizations identified by id or a metadata key/value pair. Entity Limit: 25.
+func (o PromptScreenRendererFiltersPtrOutput) Organizations() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PromptScreenRendererFilters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Organizations
+	}).(pulumi.StringPtrOutput)
 }
 
 type ResourceServerAuthorizationDetail struct {
@@ -41928,6 +42311,217 @@ func (o GetClientsClientTokenQuotaClientCredentialArrayOutput) Index(i pulumi.In
 	}).(GetClientsClientTokenQuotaClientCredentialOutput)
 }
 
+type GetConnectionKeysKey struct {
+	// The signing key algorithm.
+	Algorithm string `pulumi:"algorithm"`
+	// The public certificate of the signing key.
+	Cert         string `pulumi:"cert"`
+	ConnectionId string `pulumi:"connectionId"`
+	// True if the key is the current key.
+	Current bool `pulumi:"current"`
+	// The date and time when the key became the current key.
+	CurrentSince string `pulumi:"currentSince"`
+	// The certificate fingerprint.
+	Fingerprint string `pulumi:"fingerprint"`
+	// The signing key use, whether for encryption or signing.
+	KeyUse string `pulumi:"keyUse"`
+	// The key ID of the signing key.
+	Kid string `pulumi:"kid"`
+	// True if the key is the next key.
+	Next bool `pulumi:"next"`
+	// The public certificate of the signing key in PKCS7 format.
+	Pkcs string `pulumi:"pkcs"`
+	// True if the key is the previous key.
+	Previous bool `pulumi:"previous"`
+	// The subject distinguished name (DN) of the certificate.
+	SubjectDn string `pulumi:"subjectDn"`
+	// The certificate thumbprint.
+	Thumbprint string `pulumi:"thumbprint"`
+	// This is an arbitrary map, which when edited shall perform rotation of keys for the corresponding connection. It can host keys like version, timestamp of last rotation etc.The field has no association with API
+	Triggers map[string]string `pulumi:"triggers"`
+}
+
+// GetConnectionKeysKeyInput is an input type that accepts GetConnectionKeysKeyArgs and GetConnectionKeysKeyOutput values.
+// You can construct a concrete instance of `GetConnectionKeysKeyInput` via:
+//
+//	GetConnectionKeysKeyArgs{...}
+type GetConnectionKeysKeyInput interface {
+	pulumi.Input
+
+	ToGetConnectionKeysKeyOutput() GetConnectionKeysKeyOutput
+	ToGetConnectionKeysKeyOutputWithContext(context.Context) GetConnectionKeysKeyOutput
+}
+
+type GetConnectionKeysKeyArgs struct {
+	// The signing key algorithm.
+	Algorithm pulumi.StringInput `pulumi:"algorithm"`
+	// The public certificate of the signing key.
+	Cert         pulumi.StringInput `pulumi:"cert"`
+	ConnectionId pulumi.StringInput `pulumi:"connectionId"`
+	// True if the key is the current key.
+	Current pulumi.BoolInput `pulumi:"current"`
+	// The date and time when the key became the current key.
+	CurrentSince pulumi.StringInput `pulumi:"currentSince"`
+	// The certificate fingerprint.
+	Fingerprint pulumi.StringInput `pulumi:"fingerprint"`
+	// The signing key use, whether for encryption or signing.
+	KeyUse pulumi.StringInput `pulumi:"keyUse"`
+	// The key ID of the signing key.
+	Kid pulumi.StringInput `pulumi:"kid"`
+	// True if the key is the next key.
+	Next pulumi.BoolInput `pulumi:"next"`
+	// The public certificate of the signing key in PKCS7 format.
+	Pkcs pulumi.StringInput `pulumi:"pkcs"`
+	// True if the key is the previous key.
+	Previous pulumi.BoolInput `pulumi:"previous"`
+	// The subject distinguished name (DN) of the certificate.
+	SubjectDn pulumi.StringInput `pulumi:"subjectDn"`
+	// The certificate thumbprint.
+	Thumbprint pulumi.StringInput `pulumi:"thumbprint"`
+	// This is an arbitrary map, which when edited shall perform rotation of keys for the corresponding connection. It can host keys like version, timestamp of last rotation etc.The field has no association with API
+	Triggers pulumi.StringMapInput `pulumi:"triggers"`
+}
+
+func (GetConnectionKeysKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionKeysKey)(nil)).Elem()
+}
+
+func (i GetConnectionKeysKeyArgs) ToGetConnectionKeysKeyOutput() GetConnectionKeysKeyOutput {
+	return i.ToGetConnectionKeysKeyOutputWithContext(context.Background())
+}
+
+func (i GetConnectionKeysKeyArgs) ToGetConnectionKeysKeyOutputWithContext(ctx context.Context) GetConnectionKeysKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionKeysKeyOutput)
+}
+
+// GetConnectionKeysKeyArrayInput is an input type that accepts GetConnectionKeysKeyArray and GetConnectionKeysKeyArrayOutput values.
+// You can construct a concrete instance of `GetConnectionKeysKeyArrayInput` via:
+//
+//	GetConnectionKeysKeyArray{ GetConnectionKeysKeyArgs{...} }
+type GetConnectionKeysKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionKeysKeyArrayOutput() GetConnectionKeysKeyArrayOutput
+	ToGetConnectionKeysKeyArrayOutputWithContext(context.Context) GetConnectionKeysKeyArrayOutput
+}
+
+type GetConnectionKeysKeyArray []GetConnectionKeysKeyInput
+
+func (GetConnectionKeysKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionKeysKey)(nil)).Elem()
+}
+
+func (i GetConnectionKeysKeyArray) ToGetConnectionKeysKeyArrayOutput() GetConnectionKeysKeyArrayOutput {
+	return i.ToGetConnectionKeysKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionKeysKeyArray) ToGetConnectionKeysKeyArrayOutputWithContext(ctx context.Context) GetConnectionKeysKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionKeysKeyArrayOutput)
+}
+
+type GetConnectionKeysKeyOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionKeysKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionKeysKey)(nil)).Elem()
+}
+
+func (o GetConnectionKeysKeyOutput) ToGetConnectionKeysKeyOutput() GetConnectionKeysKeyOutput {
+	return o
+}
+
+func (o GetConnectionKeysKeyOutput) ToGetConnectionKeysKeyOutputWithContext(ctx context.Context) GetConnectionKeysKeyOutput {
+	return o
+}
+
+// The signing key algorithm.
+func (o GetConnectionKeysKeyOutput) Algorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionKeysKey) string { return v.Algorithm }).(pulumi.StringOutput)
+}
+
+// The public certificate of the signing key.
+func (o GetConnectionKeysKeyOutput) Cert() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionKeysKey) string { return v.Cert }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionKeysKeyOutput) ConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionKeysKey) string { return v.ConnectionId }).(pulumi.StringOutput)
+}
+
+// True if the key is the current key.
+func (o GetConnectionKeysKeyOutput) Current() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionKeysKey) bool { return v.Current }).(pulumi.BoolOutput)
+}
+
+// The date and time when the key became the current key.
+func (o GetConnectionKeysKeyOutput) CurrentSince() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionKeysKey) string { return v.CurrentSince }).(pulumi.StringOutput)
+}
+
+// The certificate fingerprint.
+func (o GetConnectionKeysKeyOutput) Fingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionKeysKey) string { return v.Fingerprint }).(pulumi.StringOutput)
+}
+
+// The signing key use, whether for encryption or signing.
+func (o GetConnectionKeysKeyOutput) KeyUse() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionKeysKey) string { return v.KeyUse }).(pulumi.StringOutput)
+}
+
+// The key ID of the signing key.
+func (o GetConnectionKeysKeyOutput) Kid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionKeysKey) string { return v.Kid }).(pulumi.StringOutput)
+}
+
+// True if the key is the next key.
+func (o GetConnectionKeysKeyOutput) Next() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionKeysKey) bool { return v.Next }).(pulumi.BoolOutput)
+}
+
+// The public certificate of the signing key in PKCS7 format.
+func (o GetConnectionKeysKeyOutput) Pkcs() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionKeysKey) string { return v.Pkcs }).(pulumi.StringOutput)
+}
+
+// True if the key is the previous key.
+func (o GetConnectionKeysKeyOutput) Previous() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionKeysKey) bool { return v.Previous }).(pulumi.BoolOutput)
+}
+
+// The subject distinguished name (DN) of the certificate.
+func (o GetConnectionKeysKeyOutput) SubjectDn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionKeysKey) string { return v.SubjectDn }).(pulumi.StringOutput)
+}
+
+// The certificate thumbprint.
+func (o GetConnectionKeysKeyOutput) Thumbprint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionKeysKey) string { return v.Thumbprint }).(pulumi.StringOutput)
+}
+
+// This is an arbitrary map, which when edited shall perform rotation of keys for the corresponding connection. It can host keys like version, timestamp of last rotation etc.The field has no association with API
+func (o GetConnectionKeysKeyOutput) Triggers() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetConnectionKeysKey) map[string]string { return v.Triggers }).(pulumi.StringMapOutput)
+}
+
+type GetConnectionKeysKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionKeysKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionKeysKey)(nil)).Elem()
+}
+
+func (o GetConnectionKeysKeyArrayOutput) ToGetConnectionKeysKeyArrayOutput() GetConnectionKeysKeyArrayOutput {
+	return o
+}
+
+func (o GetConnectionKeysKeyArrayOutput) ToGetConnectionKeysKeyArrayOutputWithContext(ctx context.Context) GetConnectionKeysKeyArrayOutput {
+	return o
+}
+
+func (o GetConnectionKeysKeyArrayOutput) Index(i pulumi.IntInput) GetConnectionKeysKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionKeysKey {
+		return vs[0].([]GetConnectionKeysKey)[vs[1].(int)]
+	}).(GetConnectionKeysKeyOutput)
+}
+
 type GetConnectionOption struct {
 	// ADFS URL where to fetch the metadata source.
 	AdfsServer string `pulumi:"adfsServer"`
@@ -42099,6 +42693,10 @@ type GetConnectionOption struct {
 	TenantDomain string `pulumi:"tenantDomain"`
 	// Token endpoint.
 	TokenEndpoint string `pulumi:"tokenEndpoint"`
+	// Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
+	TokenEndpointAuthMethod string `pulumi:"tokenEndpointAuthMethod"`
+	// Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
+	TokenEndpointAuthSigningAlg string `pulumi:"tokenEndpointAuthSigningAlg"`
 	// Configuration options for one-time passwords.
 	Totps []GetConnectionOptionTotp `pulumi:"totps"`
 	// SID for your Twilio account.
@@ -42309,6 +42907,10 @@ type GetConnectionOptionArgs struct {
 	TenantDomain pulumi.StringInput `pulumi:"tenantDomain"`
 	// Token endpoint.
 	TokenEndpoint pulumi.StringInput `pulumi:"tokenEndpoint"`
+	// Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
+	TokenEndpointAuthMethod pulumi.StringInput `pulumi:"tokenEndpointAuthMethod"`
+	// Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
+	TokenEndpointAuthSigningAlg pulumi.StringInput `pulumi:"tokenEndpointAuthSigningAlg"`
 	// Configuration options for one-time passwords.
 	Totps GetConnectionOptionTotpArrayInput `pulumi:"totps"`
 	// SID for your Twilio account.
@@ -42817,6 +43419,16 @@ func (o GetConnectionOptionOutput) TenantDomain() pulumi.StringOutput {
 // Token endpoint.
 func (o GetConnectionOptionOutput) TokenEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionOption) string { return v.TokenEndpoint }).(pulumi.StringOutput)
+}
+
+// Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
+func (o GetConnectionOptionOutput) TokenEndpointAuthMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.TokenEndpointAuthMethod }).(pulumi.StringOutput)
+}
+
+// Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
+func (o GetConnectionOptionOutput) TokenEndpointAuthSigningAlg() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.TokenEndpointAuthSigningAlg }).(pulumi.StringOutput)
 }
 
 // Configuration options for one-time passwords.
@@ -46609,9 +47221,139 @@ func (o GetConnectionScimConfigurationMappingArrayOutput) Index(i pulumi.IntInpu
 	}).(GetConnectionScimConfigurationMappingOutput)
 }
 
+type GetCustomDomainCertificate struct {
+	// Name of the certificate authority that issued the certificate.
+	CertificateAuthority string `pulumi:"certificateAuthority"`
+	// Contains the error message if the provisioning process fails.
+	ErrorMsg string `pulumi:"errorMsg"`
+	// Specifies the date by which the certificate should be renewed.
+	RenewsBefore string `pulumi:"renewsBefore"`
+	// Indicates the current state of the certificate provisioning process.
+	Status string `pulumi:"status"`
+}
+
+// GetCustomDomainCertificateInput is an input type that accepts GetCustomDomainCertificateArgs and GetCustomDomainCertificateOutput values.
+// You can construct a concrete instance of `GetCustomDomainCertificateInput` via:
+//
+//	GetCustomDomainCertificateArgs{...}
+type GetCustomDomainCertificateInput interface {
+	pulumi.Input
+
+	ToGetCustomDomainCertificateOutput() GetCustomDomainCertificateOutput
+	ToGetCustomDomainCertificateOutputWithContext(context.Context) GetCustomDomainCertificateOutput
+}
+
+type GetCustomDomainCertificateArgs struct {
+	// Name of the certificate authority that issued the certificate.
+	CertificateAuthority pulumi.StringInput `pulumi:"certificateAuthority"`
+	// Contains the error message if the provisioning process fails.
+	ErrorMsg pulumi.StringInput `pulumi:"errorMsg"`
+	// Specifies the date by which the certificate should be renewed.
+	RenewsBefore pulumi.StringInput `pulumi:"renewsBefore"`
+	// Indicates the current state of the certificate provisioning process.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetCustomDomainCertificateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCustomDomainCertificate)(nil)).Elem()
+}
+
+func (i GetCustomDomainCertificateArgs) ToGetCustomDomainCertificateOutput() GetCustomDomainCertificateOutput {
+	return i.ToGetCustomDomainCertificateOutputWithContext(context.Background())
+}
+
+func (i GetCustomDomainCertificateArgs) ToGetCustomDomainCertificateOutputWithContext(ctx context.Context) GetCustomDomainCertificateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCustomDomainCertificateOutput)
+}
+
+// GetCustomDomainCertificateArrayInput is an input type that accepts GetCustomDomainCertificateArray and GetCustomDomainCertificateArrayOutput values.
+// You can construct a concrete instance of `GetCustomDomainCertificateArrayInput` via:
+//
+//	GetCustomDomainCertificateArray{ GetCustomDomainCertificateArgs{...} }
+type GetCustomDomainCertificateArrayInput interface {
+	pulumi.Input
+
+	ToGetCustomDomainCertificateArrayOutput() GetCustomDomainCertificateArrayOutput
+	ToGetCustomDomainCertificateArrayOutputWithContext(context.Context) GetCustomDomainCertificateArrayOutput
+}
+
+type GetCustomDomainCertificateArray []GetCustomDomainCertificateInput
+
+func (GetCustomDomainCertificateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCustomDomainCertificate)(nil)).Elem()
+}
+
+func (i GetCustomDomainCertificateArray) ToGetCustomDomainCertificateArrayOutput() GetCustomDomainCertificateArrayOutput {
+	return i.ToGetCustomDomainCertificateArrayOutputWithContext(context.Background())
+}
+
+func (i GetCustomDomainCertificateArray) ToGetCustomDomainCertificateArrayOutputWithContext(ctx context.Context) GetCustomDomainCertificateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCustomDomainCertificateArrayOutput)
+}
+
+type GetCustomDomainCertificateOutput struct{ *pulumi.OutputState }
+
+func (GetCustomDomainCertificateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCustomDomainCertificate)(nil)).Elem()
+}
+
+func (o GetCustomDomainCertificateOutput) ToGetCustomDomainCertificateOutput() GetCustomDomainCertificateOutput {
+	return o
+}
+
+func (o GetCustomDomainCertificateOutput) ToGetCustomDomainCertificateOutputWithContext(ctx context.Context) GetCustomDomainCertificateOutput {
+	return o
+}
+
+// Name of the certificate authority that issued the certificate.
+func (o GetCustomDomainCertificateOutput) CertificateAuthority() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomDomainCertificate) string { return v.CertificateAuthority }).(pulumi.StringOutput)
+}
+
+// Contains the error message if the provisioning process fails.
+func (o GetCustomDomainCertificateOutput) ErrorMsg() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomDomainCertificate) string { return v.ErrorMsg }).(pulumi.StringOutput)
+}
+
+// Specifies the date by which the certificate should be renewed.
+func (o GetCustomDomainCertificateOutput) RenewsBefore() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomDomainCertificate) string { return v.RenewsBefore }).(pulumi.StringOutput)
+}
+
+// Indicates the current state of the certificate provisioning process.
+func (o GetCustomDomainCertificateOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomDomainCertificate) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetCustomDomainCertificateArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCustomDomainCertificateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCustomDomainCertificate)(nil)).Elem()
+}
+
+func (o GetCustomDomainCertificateArrayOutput) ToGetCustomDomainCertificateArrayOutput() GetCustomDomainCertificateArrayOutput {
+	return o
+}
+
+func (o GetCustomDomainCertificateArrayOutput) ToGetCustomDomainCertificateArrayOutputWithContext(ctx context.Context) GetCustomDomainCertificateArrayOutput {
+	return o
+}
+
+func (o GetCustomDomainCertificateArrayOutput) Index(i pulumi.IntInput) GetCustomDomainCertificateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCustomDomainCertificate {
+		return vs[0].([]GetCustomDomainCertificate)[vs[1].(int)]
+	}).(GetCustomDomainCertificateOutput)
+}
+
 type GetCustomDomainVerificationType struct {
-	// Verification methods for the domain.
+	// Contains error message, if any, from the last DNS verification check.
+	ErrorMsg string `pulumi:"errorMsg"`
+	// Indicates the last time the domain was successfully verified.
+	LastVerifiedAt string `pulumi:"lastVerifiedAt"`
+	// Defines the list of domain verification methods used.
 	Methods []interface{} `pulumi:"methods"`
+	// Represents the current status of the domain verification process.
+	Status string `pulumi:"status"`
 }
 
 // GetCustomDomainVerificationTypeInput is an input type that accepts GetCustomDomainVerificationTypeArgs and GetCustomDomainVerificationTypeOutput values.
@@ -46626,8 +47368,14 @@ type GetCustomDomainVerificationTypeInput interface {
 }
 
 type GetCustomDomainVerificationTypeArgs struct {
-	// Verification methods for the domain.
+	// Contains error message, if any, from the last DNS verification check.
+	ErrorMsg pulumi.StringInput `pulumi:"errorMsg"`
+	// Indicates the last time the domain was successfully verified.
+	LastVerifiedAt pulumi.StringInput `pulumi:"lastVerifiedAt"`
+	// Defines the list of domain verification methods used.
 	Methods pulumi.ArrayInput `pulumi:"methods"`
+	// Represents the current status of the domain verification process.
+	Status pulumi.StringInput `pulumi:"status"`
 }
 
 func (GetCustomDomainVerificationTypeArgs) ElementType() reflect.Type {
@@ -46681,9 +47429,24 @@ func (o GetCustomDomainVerificationTypeOutput) ToGetCustomDomainVerificationType
 	return o
 }
 
-// Verification methods for the domain.
+// Contains error message, if any, from the last DNS verification check.
+func (o GetCustomDomainVerificationTypeOutput) ErrorMsg() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomDomainVerificationType) string { return v.ErrorMsg }).(pulumi.StringOutput)
+}
+
+// Indicates the last time the domain was successfully verified.
+func (o GetCustomDomainVerificationTypeOutput) LastVerifiedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomDomainVerificationType) string { return v.LastVerifiedAt }).(pulumi.StringOutput)
+}
+
+// Defines the list of domain verification methods used.
 func (o GetCustomDomainVerificationTypeOutput) Methods() pulumi.ArrayOutput {
 	return o.ApplyT(func(v GetCustomDomainVerificationType) []interface{} { return v.Methods }).(pulumi.ArrayOutput)
+}
+
+// Represents the current status of the domain verification process.
+func (o GetCustomDomainVerificationTypeOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomDomainVerificationType) string { return v.Status }).(pulumi.StringOutput)
 }
 
 type GetCustomDomainVerificationTypeArrayOutput struct{ *pulumi.OutputState }
@@ -48847,6 +49610,130 @@ func (o GetPromptScreenPartialsScreenPartialInsertionPointArrayOutput) Index(i p
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPromptScreenPartialsScreenPartialInsertionPoint {
 		return vs[0].([]GetPromptScreenPartialsScreenPartialInsertionPoint)[vs[1].(int)]
 	}).(GetPromptScreenPartialsScreenPartialInsertionPointOutput)
+}
+
+type GetPromptScreenRendererFilter struct {
+	// An array of clients (applications) identified by id or a metadata key/value pair. Entity Limit: 25.
+	Clients string `pulumi:"clients"`
+	// An array of domains identified by id or a metadata key/value pair. Entity Limit: 25.
+	Domains string `pulumi:"domains"`
+	// Type of match to apply. Options: `includesAny`, `excludesAny`.
+	MatchType string `pulumi:"matchType"`
+	// An array of organizations identified by id or a metadata key/value pair. Entity Limit: 25.
+	Organizations string `pulumi:"organizations"`
+}
+
+// GetPromptScreenRendererFilterInput is an input type that accepts GetPromptScreenRendererFilterArgs and GetPromptScreenRendererFilterOutput values.
+// You can construct a concrete instance of `GetPromptScreenRendererFilterInput` via:
+//
+//	GetPromptScreenRendererFilterArgs{...}
+type GetPromptScreenRendererFilterInput interface {
+	pulumi.Input
+
+	ToGetPromptScreenRendererFilterOutput() GetPromptScreenRendererFilterOutput
+	ToGetPromptScreenRendererFilterOutputWithContext(context.Context) GetPromptScreenRendererFilterOutput
+}
+
+type GetPromptScreenRendererFilterArgs struct {
+	// An array of clients (applications) identified by id or a metadata key/value pair. Entity Limit: 25.
+	Clients pulumi.StringInput `pulumi:"clients"`
+	// An array of domains identified by id or a metadata key/value pair. Entity Limit: 25.
+	Domains pulumi.StringInput `pulumi:"domains"`
+	// Type of match to apply. Options: `includesAny`, `excludesAny`.
+	MatchType pulumi.StringInput `pulumi:"matchType"`
+	// An array of organizations identified by id or a metadata key/value pair. Entity Limit: 25.
+	Organizations pulumi.StringInput `pulumi:"organizations"`
+}
+
+func (GetPromptScreenRendererFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPromptScreenRendererFilter)(nil)).Elem()
+}
+
+func (i GetPromptScreenRendererFilterArgs) ToGetPromptScreenRendererFilterOutput() GetPromptScreenRendererFilterOutput {
+	return i.ToGetPromptScreenRendererFilterOutputWithContext(context.Background())
+}
+
+func (i GetPromptScreenRendererFilterArgs) ToGetPromptScreenRendererFilterOutputWithContext(ctx context.Context) GetPromptScreenRendererFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPromptScreenRendererFilterOutput)
+}
+
+// GetPromptScreenRendererFilterArrayInput is an input type that accepts GetPromptScreenRendererFilterArray and GetPromptScreenRendererFilterArrayOutput values.
+// You can construct a concrete instance of `GetPromptScreenRendererFilterArrayInput` via:
+//
+//	GetPromptScreenRendererFilterArray{ GetPromptScreenRendererFilterArgs{...} }
+type GetPromptScreenRendererFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetPromptScreenRendererFilterArrayOutput() GetPromptScreenRendererFilterArrayOutput
+	ToGetPromptScreenRendererFilterArrayOutputWithContext(context.Context) GetPromptScreenRendererFilterArrayOutput
+}
+
+type GetPromptScreenRendererFilterArray []GetPromptScreenRendererFilterInput
+
+func (GetPromptScreenRendererFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPromptScreenRendererFilter)(nil)).Elem()
+}
+
+func (i GetPromptScreenRendererFilterArray) ToGetPromptScreenRendererFilterArrayOutput() GetPromptScreenRendererFilterArrayOutput {
+	return i.ToGetPromptScreenRendererFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetPromptScreenRendererFilterArray) ToGetPromptScreenRendererFilterArrayOutputWithContext(ctx context.Context) GetPromptScreenRendererFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPromptScreenRendererFilterArrayOutput)
+}
+
+type GetPromptScreenRendererFilterOutput struct{ *pulumi.OutputState }
+
+func (GetPromptScreenRendererFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPromptScreenRendererFilter)(nil)).Elem()
+}
+
+func (o GetPromptScreenRendererFilterOutput) ToGetPromptScreenRendererFilterOutput() GetPromptScreenRendererFilterOutput {
+	return o
+}
+
+func (o GetPromptScreenRendererFilterOutput) ToGetPromptScreenRendererFilterOutputWithContext(ctx context.Context) GetPromptScreenRendererFilterOutput {
+	return o
+}
+
+// An array of clients (applications) identified by id or a metadata key/value pair. Entity Limit: 25.
+func (o GetPromptScreenRendererFilterOutput) Clients() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPromptScreenRendererFilter) string { return v.Clients }).(pulumi.StringOutput)
+}
+
+// An array of domains identified by id or a metadata key/value pair. Entity Limit: 25.
+func (o GetPromptScreenRendererFilterOutput) Domains() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPromptScreenRendererFilter) string { return v.Domains }).(pulumi.StringOutput)
+}
+
+// Type of match to apply. Options: `includesAny`, `excludesAny`.
+func (o GetPromptScreenRendererFilterOutput) MatchType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPromptScreenRendererFilter) string { return v.MatchType }).(pulumi.StringOutput)
+}
+
+// An array of organizations identified by id or a metadata key/value pair. Entity Limit: 25.
+func (o GetPromptScreenRendererFilterOutput) Organizations() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPromptScreenRendererFilter) string { return v.Organizations }).(pulumi.StringOutput)
+}
+
+type GetPromptScreenRendererFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPromptScreenRendererFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPromptScreenRendererFilter)(nil)).Elem()
+}
+
+func (o GetPromptScreenRendererFilterArrayOutput) ToGetPromptScreenRendererFilterArrayOutput() GetPromptScreenRendererFilterArrayOutput {
+	return o
+}
+
+func (o GetPromptScreenRendererFilterArrayOutput) ToGetPromptScreenRendererFilterArrayOutputWithContext(ctx context.Context) GetPromptScreenRendererFilterArrayOutput {
+	return o
+}
+
+func (o GetPromptScreenRendererFilterArrayOutput) Index(i pulumi.IntInput) GetPromptScreenRendererFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPromptScreenRendererFilter {
+		return vs[0].([]GetPromptScreenRendererFilter)[vs[1].(int)]
+	}).(GetPromptScreenRendererFilterOutput)
 }
 
 type GetResourceServerAuthorizationDetail struct {
@@ -51742,6 +52629,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsValidationUsernamePtrInput)(nil)).Elem(), ConnectionOptionsValidationUsernameArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionScimConfigurationMappingInput)(nil)).Elem(), ConnectionScimConfigurationMappingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionScimConfigurationMappingArrayInput)(nil)).Elem(), ConnectionScimConfigurationMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomDomainCertificateInput)(nil)).Elem(), CustomDomainCertificateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomDomainCertificateArrayInput)(nil)).Elem(), CustomDomainCertificateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomDomainVerificationTypeInput)(nil)).Elem(), CustomDomainVerificationTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomDomainVerificationTypeArrayInput)(nil)).Elem(), CustomDomainVerificationTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EmailProviderCredentialsInput)(nil)).Elem(), EmailProviderCredentialsArgs{})
@@ -51815,6 +52704,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PromptScreenPartialsScreenPartialInput)(nil)).Elem(), PromptScreenPartialsScreenPartialArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PromptScreenPartialsScreenPartialArrayInput)(nil)).Elem(), PromptScreenPartialsScreenPartialArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PromptScreenPartialsScreenPartialInsertionPointsInput)(nil)).Elem(), PromptScreenPartialsScreenPartialInsertionPointsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PromptScreenRendererFiltersInput)(nil)).Elem(), PromptScreenRendererFiltersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PromptScreenRendererFiltersPtrInput)(nil)).Elem(), PromptScreenRendererFiltersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceServerAuthorizationDetailInput)(nil)).Elem(), ResourceServerAuthorizationDetailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceServerAuthorizationDetailArrayInput)(nil)).Elem(), ResourceServerAuthorizationDetailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceServerProofOfPossessionInput)(nil)).Elem(), ResourceServerProofOfPossessionArgs{})
@@ -52035,6 +52926,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientTokenQuotaArrayInput)(nil)).Elem(), GetClientsClientTokenQuotaArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientTokenQuotaClientCredentialInput)(nil)).Elem(), GetClientsClientTokenQuotaClientCredentialArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientTokenQuotaClientCredentialArrayInput)(nil)).Elem(), GetClientsClientTokenQuotaClientCredentialArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionKeysKeyInput)(nil)).Elem(), GetConnectionKeysKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionKeysKeyArrayInput)(nil)).Elem(), GetConnectionKeysKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionInput)(nil)).Elem(), GetConnectionOptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionArrayInput)(nil)).Elem(), GetConnectionOptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributeInput)(nil)).Elem(), GetConnectionOptionAttributeArgs{})
@@ -52107,6 +53000,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionScimConfigurationDefaultMappingArrayInput)(nil)).Elem(), GetConnectionScimConfigurationDefaultMappingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionScimConfigurationMappingInput)(nil)).Elem(), GetConnectionScimConfigurationMappingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionScimConfigurationMappingArrayInput)(nil)).Elem(), GetConnectionScimConfigurationMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomDomainCertificateInput)(nil)).Elem(), GetCustomDomainCertificateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomDomainCertificateArrayInput)(nil)).Elem(), GetCustomDomainCertificateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomDomainVerificationTypeInput)(nil)).Elem(), GetCustomDomainVerificationTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomDomainVerificationTypeArrayInput)(nil)).Elem(), GetCustomDomainVerificationTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFormLanguageInput)(nil)).Elem(), GetFormLanguageArgs{})
@@ -52145,6 +53040,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPromptScreenPartialsScreenPartialArrayInput)(nil)).Elem(), GetPromptScreenPartialsScreenPartialArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPromptScreenPartialsScreenPartialInsertionPointInput)(nil)).Elem(), GetPromptScreenPartialsScreenPartialInsertionPointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPromptScreenPartialsScreenPartialInsertionPointArrayInput)(nil)).Elem(), GetPromptScreenPartialsScreenPartialInsertionPointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPromptScreenRendererFilterInput)(nil)).Elem(), GetPromptScreenRendererFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPromptScreenRendererFilterArrayInput)(nil)).Elem(), GetPromptScreenRendererFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerAuthorizationDetailInput)(nil)).Elem(), GetResourceServerAuthorizationDetailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerAuthorizationDetailArrayInput)(nil)).Elem(), GetResourceServerAuthorizationDetailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerProofOfPossessionInput)(nil)).Elem(), GetResourceServerProofOfPossessionArgs{})
@@ -52419,6 +53316,8 @@ func init() {
 	pulumi.RegisterOutputType(ConnectionOptionsValidationUsernamePtrOutput{})
 	pulumi.RegisterOutputType(ConnectionScimConfigurationMappingOutput{})
 	pulumi.RegisterOutputType(ConnectionScimConfigurationMappingArrayOutput{})
+	pulumi.RegisterOutputType(CustomDomainCertificateOutput{})
+	pulumi.RegisterOutputType(CustomDomainCertificateArrayOutput{})
 	pulumi.RegisterOutputType(CustomDomainVerificationTypeOutput{})
 	pulumi.RegisterOutputType(CustomDomainVerificationTypeArrayOutput{})
 	pulumi.RegisterOutputType(EmailProviderCredentialsOutput{})
@@ -52492,6 +53391,8 @@ func init() {
 	pulumi.RegisterOutputType(PromptScreenPartialsScreenPartialOutput{})
 	pulumi.RegisterOutputType(PromptScreenPartialsScreenPartialArrayOutput{})
 	pulumi.RegisterOutputType(PromptScreenPartialsScreenPartialInsertionPointsOutput{})
+	pulumi.RegisterOutputType(PromptScreenRendererFiltersOutput{})
+	pulumi.RegisterOutputType(PromptScreenRendererFiltersPtrOutput{})
 	pulumi.RegisterOutputType(ResourceServerAuthorizationDetailOutput{})
 	pulumi.RegisterOutputType(ResourceServerAuthorizationDetailArrayOutput{})
 	pulumi.RegisterOutputType(ResourceServerProofOfPossessionOutput{})
@@ -52712,6 +53613,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClientsClientTokenQuotaArrayOutput{})
 	pulumi.RegisterOutputType(GetClientsClientTokenQuotaClientCredentialOutput{})
 	pulumi.RegisterOutputType(GetClientsClientTokenQuotaClientCredentialArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionKeysKeyOutput{})
+	pulumi.RegisterOutputType(GetConnectionKeysKeyArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionAttributeOutput{})
@@ -52784,6 +53687,8 @@ func init() {
 	pulumi.RegisterOutputType(GetConnectionScimConfigurationDefaultMappingArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionScimConfigurationMappingOutput{})
 	pulumi.RegisterOutputType(GetConnectionScimConfigurationMappingArrayOutput{})
+	pulumi.RegisterOutputType(GetCustomDomainCertificateOutput{})
+	pulumi.RegisterOutputType(GetCustomDomainCertificateArrayOutput{})
 	pulumi.RegisterOutputType(GetCustomDomainVerificationTypeOutput{})
 	pulumi.RegisterOutputType(GetCustomDomainVerificationTypeArrayOutput{})
 	pulumi.RegisterOutputType(GetFormLanguageOutput{})
@@ -52822,6 +53727,8 @@ func init() {
 	pulumi.RegisterOutputType(GetPromptScreenPartialsScreenPartialArrayOutput{})
 	pulumi.RegisterOutputType(GetPromptScreenPartialsScreenPartialInsertionPointOutput{})
 	pulumi.RegisterOutputType(GetPromptScreenPartialsScreenPartialInsertionPointArrayOutput{})
+	pulumi.RegisterOutputType(GetPromptScreenRendererFilterOutput{})
+	pulumi.RegisterOutputType(GetPromptScreenRendererFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceServerAuthorizationDetailOutput{})
 	pulumi.RegisterOutputType(GetResourceServerAuthorizationDetailArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceServerProofOfPossessionOutput{})

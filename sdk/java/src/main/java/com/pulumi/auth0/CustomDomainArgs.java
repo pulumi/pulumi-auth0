@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -47,6 +48,21 @@ public final class CustomDomainArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed.
+     * 
+     */
+    @Import(name="domainMetadata")
+    private @Nullable Output<Map<String,String>> domainMetadata;
+
+    /**
+     * @return Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> domainMetadata() {
+        return Optional.ofNullable(this.domainMetadata);
+    }
+
+    /**
      * TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on self_managed domains.
      * 
      */
@@ -81,6 +97,7 @@ public final class CustomDomainArgs extends com.pulumi.resources.ResourceArgs {
     private CustomDomainArgs(CustomDomainArgs $) {
         this.customClientIpHeader = $.customClientIpHeader;
         this.domain = $.domain;
+        this.domainMetadata = $.domainMetadata;
         this.tlsPolicy = $.tlsPolicy;
         this.type = $.type;
     }
@@ -143,6 +160,27 @@ public final class CustomDomainArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder domain(String domain) {
             return domain(Output.of(domain));
+        }
+
+        /**
+         * @param domainMetadata Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder domainMetadata(@Nullable Output<Map<String,String>> domainMetadata) {
+            $.domainMetadata = domainMetadata;
+            return this;
+        }
+
+        /**
+         * @param domainMetadata Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder domainMetadata(Map<String,String> domainMetadata) {
+            return domainMetadata(Output.of(domainMetadata));
         }
 
         /**

@@ -29,8 +29,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := auth0.NewCustomDomain(ctx, "my_custom_domain", &auth0.CustomDomainArgs{
-//				Domain: pulumi.String("auth.example.com"),
-//				Type:   pulumi.String("auth0_managed_certs"),
+//				Domain:    pulumi.String("auth.example.com"),
+//				Type:      pulumi.String("auth0_managed_certs"),
+//				TlsPolicy: pulumi.String("recommended"),
+//				DomainMetadata: pulumi.StringMap{
+//					"key1": pulumi.String("value1"),
+//					"key2": pulumi.String("value2"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -57,13 +62,19 @@ import (
 type CustomDomain struct {
 	pulumi.CustomResourceState
 
+	// The Custom Domain certificate.
+	Certificates CustomDomainCertificateArrayOutput `pulumi:"certificates"`
 	// The HTTP header to fetch the client's IP address. Cannot be set on auth0Managed domains.
 	CustomClientIpHeader pulumi.StringPtrOutput `pulumi:"customClientIpHeader"`
 	// Name of the custom domain.
 	Domain pulumi.StringOutput `pulumi:"domain"`
+	// Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed.
+	DomainMetadata pulumi.StringMapOutput `pulumi:"domainMetadata"`
 	// Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
 	OriginDomainName pulumi.StringOutput `pulumi:"originDomainName"`
 	// Indicates whether this is a primary domain.
+	//
+	// Deprecated: Primary field is no longer used and will be removed in a future release.
 	Primary pulumi.BoolOutput `pulumi:"primary"`
 	// Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, and `ready`.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -111,13 +122,19 @@ func GetCustomDomain(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CustomDomain resources.
 type customDomainState struct {
+	// The Custom Domain certificate.
+	Certificates []CustomDomainCertificate `pulumi:"certificates"`
 	// The HTTP header to fetch the client's IP address. Cannot be set on auth0Managed domains.
 	CustomClientIpHeader *string `pulumi:"customClientIpHeader"`
 	// Name of the custom domain.
 	Domain *string `pulumi:"domain"`
+	// Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed.
+	DomainMetadata map[string]string `pulumi:"domainMetadata"`
 	// Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
 	OriginDomainName *string `pulumi:"originDomainName"`
 	// Indicates whether this is a primary domain.
+	//
+	// Deprecated: Primary field is no longer used and will be removed in a future release.
 	Primary *bool `pulumi:"primary"`
 	// Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, and `ready`.
 	Status *string `pulumi:"status"`
@@ -130,13 +147,19 @@ type customDomainState struct {
 }
 
 type CustomDomainState struct {
+	// The Custom Domain certificate.
+	Certificates CustomDomainCertificateArrayInput
 	// The HTTP header to fetch the client's IP address. Cannot be set on auth0Managed domains.
 	CustomClientIpHeader pulumi.StringPtrInput
 	// Name of the custom domain.
 	Domain pulumi.StringPtrInput
+	// Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed.
+	DomainMetadata pulumi.StringMapInput
 	// Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
 	OriginDomainName pulumi.StringPtrInput
 	// Indicates whether this is a primary domain.
+	//
+	// Deprecated: Primary field is no longer used and will be removed in a future release.
 	Primary pulumi.BoolPtrInput
 	// Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, and `ready`.
 	Status pulumi.StringPtrInput
@@ -157,6 +180,8 @@ type customDomainArgs struct {
 	CustomClientIpHeader *string `pulumi:"customClientIpHeader"`
 	// Name of the custom domain.
 	Domain string `pulumi:"domain"`
+	// Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed.
+	DomainMetadata map[string]string `pulumi:"domainMetadata"`
 	// TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on selfManaged domains.
 	TlsPolicy *string `pulumi:"tlsPolicy"`
 	// Provisioning type for the custom domain. Options include `auth0ManagedCerts` and `selfManagedCerts`.
@@ -169,6 +194,8 @@ type CustomDomainArgs struct {
 	CustomClientIpHeader pulumi.StringPtrInput
 	// Name of the custom domain.
 	Domain pulumi.StringInput
+	// Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed.
+	DomainMetadata pulumi.StringMapInput
 	// TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on selfManaged domains.
 	TlsPolicy pulumi.StringPtrInput
 	// Provisioning type for the custom domain. Options include `auth0ManagedCerts` and `selfManagedCerts`.
@@ -262,6 +289,11 @@ func (o CustomDomainOutput) ToCustomDomainOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The Custom Domain certificate.
+func (o CustomDomainOutput) Certificates() CustomDomainCertificateArrayOutput {
+	return o.ApplyT(func(v *CustomDomain) CustomDomainCertificateArrayOutput { return v.Certificates }).(CustomDomainCertificateArrayOutput)
+}
+
 // The HTTP header to fetch the client's IP address. Cannot be set on auth0Managed domains.
 func (o CustomDomainOutput) CustomClientIpHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CustomDomain) pulumi.StringPtrOutput { return v.CustomClientIpHeader }).(pulumi.StringPtrOutput)
@@ -272,12 +304,19 @@ func (o CustomDomainOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomDomain) pulumi.StringOutput { return v.Domain }).(pulumi.StringOutput)
 }
 
+// Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed.
+func (o CustomDomainOutput) DomainMetadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CustomDomain) pulumi.StringMapOutput { return v.DomainMetadata }).(pulumi.StringMapOutput)
+}
+
 // Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
 func (o CustomDomainOutput) OriginDomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomDomain) pulumi.StringOutput { return v.OriginDomainName }).(pulumi.StringOutput)
 }
 
 // Indicates whether this is a primary domain.
+//
+// Deprecated: Primary field is no longer used and will be removed in a future release.
 func (o CustomDomainOutput) Primary() pulumi.BoolOutput {
 	return o.ApplyT(func(v *CustomDomain) pulumi.BoolOutput { return v.Primary }).(pulumi.BoolOutput)
 }

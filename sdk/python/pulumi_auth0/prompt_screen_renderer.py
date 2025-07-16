@@ -14,6 +14,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['PromptScreenRendererArgs', 'PromptScreenRenderer']
 
@@ -24,16 +26,20 @@ class PromptScreenRendererArgs:
                  screen_name: pulumi.Input[builtins.str],
                  context_configurations: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  default_head_tags_disabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 filters: Optional[pulumi.Input['PromptScreenRendererFiltersArgs']] = None,
                  head_tags: Optional[pulumi.Input[builtins.str]] = None,
-                 rendering_mode: Optional[pulumi.Input[builtins.str]] = None):
+                 rendering_mode: Optional[pulumi.Input[builtins.str]] = None,
+                 use_page_template: Optional[pulumi.Input[builtins.bool]] = None):
         """
         The set of arguments for constructing a PromptScreenRenderer resource.
-        :param pulumi.Input[builtins.str] prompt_type: The prompt that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkeys`, `captcha`, `login`, `signup`, `reset-password`, `mfa`, `mfa-sms`, `mfa-email`, `mfa-push`, `invitation`, `organizations`, `mfa-otp`, `device-flow`, `mfa-phone`, `mfa-voice`, `mfa-recovery-code`, `common`, `email-verification`, `login-email-verification`, `logout`, `mfa-webauthn`.
-        :param pulumi.Input[builtins.str] screen_name: The screen that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`, `login`, `signup`, `reset-password-request`, `reset-password-email`, `reset-password`, `reset-password-success`, `reset-password-error`, `reset-password-mfa-email-challenge`, `reset-password-mfa-otp-challenge`, `reset-password-mfa-push-challenge-push`, `reset-password-mfa-sms-challenge`, `mfa-detect-browser-capabilities`, `mfa-enroll-result`, `mfa-begin-enroll-options`, `mfa-login-options`, `mfa-country-codes`, `mfa-sms-challenge`, `mfa-sms-enrollment`, `mfa-sms-list`, `mfa-email-challenge`, `mfa-email-list`, `mfa-push-challenge-push`, `mfa-push-enrollment-qr`, `mfa-push-list`, `mfa-push-welcome`, `accept-invitation`, `organization-selection`, `organization-picker`, `mfa-otp-challenge`, `mfa-otp-enrollment-code`, `mfa-otp-enrollment-qr`, `device-code-activation`, `device-code-activation-allowed`, `device-code-activation-denied`, `device-code-confirmation`, `mfa-phone-challenge`, `mfa-phone-enrollment`, `mfa-voice-challenge`, `mfa-voice-enrollment`, `reset-password-mfa-phone-challenge`, `reset-password-mfa-voice-challenge`, `mfa-recovery-code-challenge`, `mfa-recovery-code-enrollment`, `reset-password-mfa-recovery-code-challenge`, `redeem-ticket`, `mfa-recovery-code-challenge-new-code`, `email-verification-result`, `login-email-verification`, `logout`, `logout-aborted`, `logout-complete`, `mfa-webauthn-change-key-nickname`, `mfa-webauthn-enrollment-success`, `mfa-webauthn-error`, `mfa-webauthn-platform-challenge`, `mfa-webauthn-platform-enrollment`, `mfa-webauthn-roaming-challenge`, `mfa-webauthn-roaming-enrollment`, `reset-password-mfa-webauthn-platform-challenge`, `reset-password-mfa-webauthn-roaming-challenge`.
+        :param pulumi.Input[builtins.str] prompt_type: The prompt that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkeys`, `captcha`, `login`, `signup`, `reset-password`, `mfa`, `mfa-sms`, `mfa-email`, `mfa-push`, `invitation`, `organizations`, `mfa-otp`, `device-flow`, `mfa-phone`, `mfa-voice`, `mfa-recovery-code`, `common`, `email-verification`, `login-email-verification`, `logout`, `mfa-webauthn`, `consent`, `customized-consent`, `email-otp-challenge`.
+        :param pulumi.Input[builtins.str] screen_name: The screen that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`, `login`, `signup`, `reset-password-request`, `reset-password-email`, `reset-password`, `reset-password-success`, `reset-password-error`, `reset-password-mfa-email-challenge`, `reset-password-mfa-otp-challenge`, `reset-password-mfa-push-challenge-push`, `reset-password-mfa-sms-challenge`, `mfa-detect-browser-capabilities`, `mfa-enroll-result`, `mfa-begin-enroll-options`, `mfa-login-options`, `mfa-country-codes`, `mfa-sms-challenge`, `mfa-sms-enrollment`, `mfa-sms-list`, `mfa-email-challenge`, `mfa-email-list`, `mfa-push-challenge-push`, `mfa-push-enrollment-qr`, `mfa-push-list`, `mfa-push-welcome`, `accept-invitation`, `organization-selection`, `organization-picker`, `mfa-otp-challenge`, `mfa-otp-enrollment-code`, `mfa-otp-enrollment-qr`, `device-code-activation`, `device-code-activation-allowed`, `device-code-activation-denied`, `device-code-confirmation`, `mfa-phone-challenge`, `mfa-phone-enrollment`, `mfa-voice-challenge`, `mfa-voice-enrollment`, `reset-password-mfa-phone-challenge`, `reset-password-mfa-voice-challenge`, `mfa-recovery-code-challenge`, `mfa-recovery-code-enrollment`, `reset-password-mfa-recovery-code-challenge`, `redeem-ticket`, `mfa-recovery-code-challenge-new-code`, `email-verification-result`, `login-email-verification`, `logout`, `logout-aborted`, `logout-complete`, `mfa-webauthn-change-key-nickname`, `mfa-webauthn-enrollment-success`, `mfa-webauthn-error`, `mfa-webauthn-platform-challenge`, `mfa-webauthn-platform-enrollment`, `mfa-webauthn-roaming-challenge`, `mfa-webauthn-roaming-enrollment`, `reset-password-mfa-webauthn-platform-challenge`, `reset-password-mfa-webauthn-roaming-challenge`, `consent`, `customized-consent`, `email-otp-challenge`, `mfa-webauthn-not-available-error`.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] context_configurations: Context values to make available
         :param pulumi.Input[builtins.bool] default_head_tags_disabled: Override Universal Login default head tags
+        :param pulumi.Input['PromptScreenRendererFiltersArgs'] filters: Optional filters to apply rendering rules to specific entities. `match_type` and at least one of the entity arrays are required.
         :param pulumi.Input[builtins.str] head_tags: An array of head tags
         :param pulumi.Input[builtins.str] rendering_mode: Rendering modeOptions are: `standard`, `advanced`.
+        :param pulumi.Input[builtins.bool] use_page_template: Use page template with ACUL
         """
         pulumi.set(__self__, "prompt_type", prompt_type)
         pulumi.set(__self__, "screen_name", screen_name)
@@ -41,16 +47,20 @@ class PromptScreenRendererArgs:
             pulumi.set(__self__, "context_configurations", context_configurations)
         if default_head_tags_disabled is not None:
             pulumi.set(__self__, "default_head_tags_disabled", default_head_tags_disabled)
+        if filters is not None:
+            pulumi.set(__self__, "filters", filters)
         if head_tags is not None:
             pulumi.set(__self__, "head_tags", head_tags)
         if rendering_mode is not None:
             pulumi.set(__self__, "rendering_mode", rendering_mode)
+        if use_page_template is not None:
+            pulumi.set(__self__, "use_page_template", use_page_template)
 
     @property
     @pulumi.getter(name="promptType")
     def prompt_type(self) -> pulumi.Input[builtins.str]:
         """
-        The prompt that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkeys`, `captcha`, `login`, `signup`, `reset-password`, `mfa`, `mfa-sms`, `mfa-email`, `mfa-push`, `invitation`, `organizations`, `mfa-otp`, `device-flow`, `mfa-phone`, `mfa-voice`, `mfa-recovery-code`, `common`, `email-verification`, `login-email-verification`, `logout`, `mfa-webauthn`.
+        The prompt that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkeys`, `captcha`, `login`, `signup`, `reset-password`, `mfa`, `mfa-sms`, `mfa-email`, `mfa-push`, `invitation`, `organizations`, `mfa-otp`, `device-flow`, `mfa-phone`, `mfa-voice`, `mfa-recovery-code`, `common`, `email-verification`, `login-email-verification`, `logout`, `mfa-webauthn`, `consent`, `customized-consent`, `email-otp-challenge`.
         """
         return pulumi.get(self, "prompt_type")
 
@@ -62,7 +72,7 @@ class PromptScreenRendererArgs:
     @pulumi.getter(name="screenName")
     def screen_name(self) -> pulumi.Input[builtins.str]:
         """
-        The screen that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`, `login`, `signup`, `reset-password-request`, `reset-password-email`, `reset-password`, `reset-password-success`, `reset-password-error`, `reset-password-mfa-email-challenge`, `reset-password-mfa-otp-challenge`, `reset-password-mfa-push-challenge-push`, `reset-password-mfa-sms-challenge`, `mfa-detect-browser-capabilities`, `mfa-enroll-result`, `mfa-begin-enroll-options`, `mfa-login-options`, `mfa-country-codes`, `mfa-sms-challenge`, `mfa-sms-enrollment`, `mfa-sms-list`, `mfa-email-challenge`, `mfa-email-list`, `mfa-push-challenge-push`, `mfa-push-enrollment-qr`, `mfa-push-list`, `mfa-push-welcome`, `accept-invitation`, `organization-selection`, `organization-picker`, `mfa-otp-challenge`, `mfa-otp-enrollment-code`, `mfa-otp-enrollment-qr`, `device-code-activation`, `device-code-activation-allowed`, `device-code-activation-denied`, `device-code-confirmation`, `mfa-phone-challenge`, `mfa-phone-enrollment`, `mfa-voice-challenge`, `mfa-voice-enrollment`, `reset-password-mfa-phone-challenge`, `reset-password-mfa-voice-challenge`, `mfa-recovery-code-challenge`, `mfa-recovery-code-enrollment`, `reset-password-mfa-recovery-code-challenge`, `redeem-ticket`, `mfa-recovery-code-challenge-new-code`, `email-verification-result`, `login-email-verification`, `logout`, `logout-aborted`, `logout-complete`, `mfa-webauthn-change-key-nickname`, `mfa-webauthn-enrollment-success`, `mfa-webauthn-error`, `mfa-webauthn-platform-challenge`, `mfa-webauthn-platform-enrollment`, `mfa-webauthn-roaming-challenge`, `mfa-webauthn-roaming-enrollment`, `reset-password-mfa-webauthn-platform-challenge`, `reset-password-mfa-webauthn-roaming-challenge`.
+        The screen that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`, `login`, `signup`, `reset-password-request`, `reset-password-email`, `reset-password`, `reset-password-success`, `reset-password-error`, `reset-password-mfa-email-challenge`, `reset-password-mfa-otp-challenge`, `reset-password-mfa-push-challenge-push`, `reset-password-mfa-sms-challenge`, `mfa-detect-browser-capabilities`, `mfa-enroll-result`, `mfa-begin-enroll-options`, `mfa-login-options`, `mfa-country-codes`, `mfa-sms-challenge`, `mfa-sms-enrollment`, `mfa-sms-list`, `mfa-email-challenge`, `mfa-email-list`, `mfa-push-challenge-push`, `mfa-push-enrollment-qr`, `mfa-push-list`, `mfa-push-welcome`, `accept-invitation`, `organization-selection`, `organization-picker`, `mfa-otp-challenge`, `mfa-otp-enrollment-code`, `mfa-otp-enrollment-qr`, `device-code-activation`, `device-code-activation-allowed`, `device-code-activation-denied`, `device-code-confirmation`, `mfa-phone-challenge`, `mfa-phone-enrollment`, `mfa-voice-challenge`, `mfa-voice-enrollment`, `reset-password-mfa-phone-challenge`, `reset-password-mfa-voice-challenge`, `mfa-recovery-code-challenge`, `mfa-recovery-code-enrollment`, `reset-password-mfa-recovery-code-challenge`, `redeem-ticket`, `mfa-recovery-code-challenge-new-code`, `email-verification-result`, `login-email-verification`, `logout`, `logout-aborted`, `logout-complete`, `mfa-webauthn-change-key-nickname`, `mfa-webauthn-enrollment-success`, `mfa-webauthn-error`, `mfa-webauthn-platform-challenge`, `mfa-webauthn-platform-enrollment`, `mfa-webauthn-roaming-challenge`, `mfa-webauthn-roaming-enrollment`, `reset-password-mfa-webauthn-platform-challenge`, `reset-password-mfa-webauthn-roaming-challenge`, `consent`, `customized-consent`, `email-otp-challenge`, `mfa-webauthn-not-available-error`.
         """
         return pulumi.get(self, "screen_name")
 
@@ -95,6 +105,18 @@ class PromptScreenRendererArgs:
         pulumi.set(self, "default_head_tags_disabled", value)
 
     @property
+    @pulumi.getter
+    def filters(self) -> Optional[pulumi.Input['PromptScreenRendererFiltersArgs']]:
+        """
+        Optional filters to apply rendering rules to specific entities. `match_type` and at least one of the entity arrays are required.
+        """
+        return pulumi.get(self, "filters")
+
+    @filters.setter
+    def filters(self, value: Optional[pulumi.Input['PromptScreenRendererFiltersArgs']]):
+        pulumi.set(self, "filters", value)
+
+    @property
     @pulumi.getter(name="headTags")
     def head_tags(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -118,31 +140,49 @@ class PromptScreenRendererArgs:
     def rendering_mode(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "rendering_mode", value)
 
+    @property
+    @pulumi.getter(name="usePageTemplate")
+    def use_page_template(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Use page template with ACUL
+        """
+        return pulumi.get(self, "use_page_template")
+
+    @use_page_template.setter
+    def use_page_template(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "use_page_template", value)
+
 
 @pulumi.input_type
 class _PromptScreenRendererState:
     def __init__(__self__, *,
                  context_configurations: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  default_head_tags_disabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 filters: Optional[pulumi.Input['PromptScreenRendererFiltersArgs']] = None,
                  head_tags: Optional[pulumi.Input[builtins.str]] = None,
                  prompt_type: Optional[pulumi.Input[builtins.str]] = None,
                  rendering_mode: Optional[pulumi.Input[builtins.str]] = None,
                  screen_name: Optional[pulumi.Input[builtins.str]] = None,
-                 tenant: Optional[pulumi.Input[builtins.str]] = None):
+                 tenant: Optional[pulumi.Input[builtins.str]] = None,
+                 use_page_template: Optional[pulumi.Input[builtins.bool]] = None):
         """
         Input properties used for looking up and filtering PromptScreenRenderer resources.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] context_configurations: Context values to make available
         :param pulumi.Input[builtins.bool] default_head_tags_disabled: Override Universal Login default head tags
+        :param pulumi.Input['PromptScreenRendererFiltersArgs'] filters: Optional filters to apply rendering rules to specific entities. `match_type` and at least one of the entity arrays are required.
         :param pulumi.Input[builtins.str] head_tags: An array of head tags
-        :param pulumi.Input[builtins.str] prompt_type: The prompt that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkeys`, `captcha`, `login`, `signup`, `reset-password`, `mfa`, `mfa-sms`, `mfa-email`, `mfa-push`, `invitation`, `organizations`, `mfa-otp`, `device-flow`, `mfa-phone`, `mfa-voice`, `mfa-recovery-code`, `common`, `email-verification`, `login-email-verification`, `logout`, `mfa-webauthn`.
+        :param pulumi.Input[builtins.str] prompt_type: The prompt that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkeys`, `captcha`, `login`, `signup`, `reset-password`, `mfa`, `mfa-sms`, `mfa-email`, `mfa-push`, `invitation`, `organizations`, `mfa-otp`, `device-flow`, `mfa-phone`, `mfa-voice`, `mfa-recovery-code`, `common`, `email-verification`, `login-email-verification`, `logout`, `mfa-webauthn`, `consent`, `customized-consent`, `email-otp-challenge`.
         :param pulumi.Input[builtins.str] rendering_mode: Rendering modeOptions are: `standard`, `advanced`.
-        :param pulumi.Input[builtins.str] screen_name: The screen that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`, `login`, `signup`, `reset-password-request`, `reset-password-email`, `reset-password`, `reset-password-success`, `reset-password-error`, `reset-password-mfa-email-challenge`, `reset-password-mfa-otp-challenge`, `reset-password-mfa-push-challenge-push`, `reset-password-mfa-sms-challenge`, `mfa-detect-browser-capabilities`, `mfa-enroll-result`, `mfa-begin-enroll-options`, `mfa-login-options`, `mfa-country-codes`, `mfa-sms-challenge`, `mfa-sms-enrollment`, `mfa-sms-list`, `mfa-email-challenge`, `mfa-email-list`, `mfa-push-challenge-push`, `mfa-push-enrollment-qr`, `mfa-push-list`, `mfa-push-welcome`, `accept-invitation`, `organization-selection`, `organization-picker`, `mfa-otp-challenge`, `mfa-otp-enrollment-code`, `mfa-otp-enrollment-qr`, `device-code-activation`, `device-code-activation-allowed`, `device-code-activation-denied`, `device-code-confirmation`, `mfa-phone-challenge`, `mfa-phone-enrollment`, `mfa-voice-challenge`, `mfa-voice-enrollment`, `reset-password-mfa-phone-challenge`, `reset-password-mfa-voice-challenge`, `mfa-recovery-code-challenge`, `mfa-recovery-code-enrollment`, `reset-password-mfa-recovery-code-challenge`, `redeem-ticket`, `mfa-recovery-code-challenge-new-code`, `email-verification-result`, `login-email-verification`, `logout`, `logout-aborted`, `logout-complete`, `mfa-webauthn-change-key-nickname`, `mfa-webauthn-enrollment-success`, `mfa-webauthn-error`, `mfa-webauthn-platform-challenge`, `mfa-webauthn-platform-enrollment`, `mfa-webauthn-roaming-challenge`, `mfa-webauthn-roaming-enrollment`, `reset-password-mfa-webauthn-platform-challenge`, `reset-password-mfa-webauthn-roaming-challenge`.
+        :param pulumi.Input[builtins.str] screen_name: The screen that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`, `login`, `signup`, `reset-password-request`, `reset-password-email`, `reset-password`, `reset-password-success`, `reset-password-error`, `reset-password-mfa-email-challenge`, `reset-password-mfa-otp-challenge`, `reset-password-mfa-push-challenge-push`, `reset-password-mfa-sms-challenge`, `mfa-detect-browser-capabilities`, `mfa-enroll-result`, `mfa-begin-enroll-options`, `mfa-login-options`, `mfa-country-codes`, `mfa-sms-challenge`, `mfa-sms-enrollment`, `mfa-sms-list`, `mfa-email-challenge`, `mfa-email-list`, `mfa-push-challenge-push`, `mfa-push-enrollment-qr`, `mfa-push-list`, `mfa-push-welcome`, `accept-invitation`, `organization-selection`, `organization-picker`, `mfa-otp-challenge`, `mfa-otp-enrollment-code`, `mfa-otp-enrollment-qr`, `device-code-activation`, `device-code-activation-allowed`, `device-code-activation-denied`, `device-code-confirmation`, `mfa-phone-challenge`, `mfa-phone-enrollment`, `mfa-voice-challenge`, `mfa-voice-enrollment`, `reset-password-mfa-phone-challenge`, `reset-password-mfa-voice-challenge`, `mfa-recovery-code-challenge`, `mfa-recovery-code-enrollment`, `reset-password-mfa-recovery-code-challenge`, `redeem-ticket`, `mfa-recovery-code-challenge-new-code`, `email-verification-result`, `login-email-verification`, `logout`, `logout-aborted`, `logout-complete`, `mfa-webauthn-change-key-nickname`, `mfa-webauthn-enrollment-success`, `mfa-webauthn-error`, `mfa-webauthn-platform-challenge`, `mfa-webauthn-platform-enrollment`, `mfa-webauthn-roaming-challenge`, `mfa-webauthn-roaming-enrollment`, `reset-password-mfa-webauthn-platform-challenge`, `reset-password-mfa-webauthn-roaming-challenge`, `consent`, `customized-consent`, `email-otp-challenge`, `mfa-webauthn-not-available-error`.
         :param pulumi.Input[builtins.str] tenant: Tenant ID
+        :param pulumi.Input[builtins.bool] use_page_template: Use page template with ACUL
         """
         if context_configurations is not None:
             pulumi.set(__self__, "context_configurations", context_configurations)
         if default_head_tags_disabled is not None:
             pulumi.set(__self__, "default_head_tags_disabled", default_head_tags_disabled)
+        if filters is not None:
+            pulumi.set(__self__, "filters", filters)
         if head_tags is not None:
             pulumi.set(__self__, "head_tags", head_tags)
         if prompt_type is not None:
@@ -153,6 +193,8 @@ class _PromptScreenRendererState:
             pulumi.set(__self__, "screen_name", screen_name)
         if tenant is not None:
             pulumi.set(__self__, "tenant", tenant)
+        if use_page_template is not None:
+            pulumi.set(__self__, "use_page_template", use_page_template)
 
     @property
     @pulumi.getter(name="contextConfigurations")
@@ -179,6 +221,18 @@ class _PromptScreenRendererState:
         pulumi.set(self, "default_head_tags_disabled", value)
 
     @property
+    @pulumi.getter
+    def filters(self) -> Optional[pulumi.Input['PromptScreenRendererFiltersArgs']]:
+        """
+        Optional filters to apply rendering rules to specific entities. `match_type` and at least one of the entity arrays are required.
+        """
+        return pulumi.get(self, "filters")
+
+    @filters.setter
+    def filters(self, value: Optional[pulumi.Input['PromptScreenRendererFiltersArgs']]):
+        pulumi.set(self, "filters", value)
+
+    @property
     @pulumi.getter(name="headTags")
     def head_tags(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -194,7 +248,7 @@ class _PromptScreenRendererState:
     @pulumi.getter(name="promptType")
     def prompt_type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The prompt that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkeys`, `captcha`, `login`, `signup`, `reset-password`, `mfa`, `mfa-sms`, `mfa-email`, `mfa-push`, `invitation`, `organizations`, `mfa-otp`, `device-flow`, `mfa-phone`, `mfa-voice`, `mfa-recovery-code`, `common`, `email-verification`, `login-email-verification`, `logout`, `mfa-webauthn`.
+        The prompt that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkeys`, `captcha`, `login`, `signup`, `reset-password`, `mfa`, `mfa-sms`, `mfa-email`, `mfa-push`, `invitation`, `organizations`, `mfa-otp`, `device-flow`, `mfa-phone`, `mfa-voice`, `mfa-recovery-code`, `common`, `email-verification`, `login-email-verification`, `logout`, `mfa-webauthn`, `consent`, `customized-consent`, `email-otp-challenge`.
         """
         return pulumi.get(self, "prompt_type")
 
@@ -218,7 +272,7 @@ class _PromptScreenRendererState:
     @pulumi.getter(name="screenName")
     def screen_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The screen that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`, `login`, `signup`, `reset-password-request`, `reset-password-email`, `reset-password`, `reset-password-success`, `reset-password-error`, `reset-password-mfa-email-challenge`, `reset-password-mfa-otp-challenge`, `reset-password-mfa-push-challenge-push`, `reset-password-mfa-sms-challenge`, `mfa-detect-browser-capabilities`, `mfa-enroll-result`, `mfa-begin-enroll-options`, `mfa-login-options`, `mfa-country-codes`, `mfa-sms-challenge`, `mfa-sms-enrollment`, `mfa-sms-list`, `mfa-email-challenge`, `mfa-email-list`, `mfa-push-challenge-push`, `mfa-push-enrollment-qr`, `mfa-push-list`, `mfa-push-welcome`, `accept-invitation`, `organization-selection`, `organization-picker`, `mfa-otp-challenge`, `mfa-otp-enrollment-code`, `mfa-otp-enrollment-qr`, `device-code-activation`, `device-code-activation-allowed`, `device-code-activation-denied`, `device-code-confirmation`, `mfa-phone-challenge`, `mfa-phone-enrollment`, `mfa-voice-challenge`, `mfa-voice-enrollment`, `reset-password-mfa-phone-challenge`, `reset-password-mfa-voice-challenge`, `mfa-recovery-code-challenge`, `mfa-recovery-code-enrollment`, `reset-password-mfa-recovery-code-challenge`, `redeem-ticket`, `mfa-recovery-code-challenge-new-code`, `email-verification-result`, `login-email-verification`, `logout`, `logout-aborted`, `logout-complete`, `mfa-webauthn-change-key-nickname`, `mfa-webauthn-enrollment-success`, `mfa-webauthn-error`, `mfa-webauthn-platform-challenge`, `mfa-webauthn-platform-enrollment`, `mfa-webauthn-roaming-challenge`, `mfa-webauthn-roaming-enrollment`, `reset-password-mfa-webauthn-platform-challenge`, `reset-password-mfa-webauthn-roaming-challenge`.
+        The screen that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`, `login`, `signup`, `reset-password-request`, `reset-password-email`, `reset-password`, `reset-password-success`, `reset-password-error`, `reset-password-mfa-email-challenge`, `reset-password-mfa-otp-challenge`, `reset-password-mfa-push-challenge-push`, `reset-password-mfa-sms-challenge`, `mfa-detect-browser-capabilities`, `mfa-enroll-result`, `mfa-begin-enroll-options`, `mfa-login-options`, `mfa-country-codes`, `mfa-sms-challenge`, `mfa-sms-enrollment`, `mfa-sms-list`, `mfa-email-challenge`, `mfa-email-list`, `mfa-push-challenge-push`, `mfa-push-enrollment-qr`, `mfa-push-list`, `mfa-push-welcome`, `accept-invitation`, `organization-selection`, `organization-picker`, `mfa-otp-challenge`, `mfa-otp-enrollment-code`, `mfa-otp-enrollment-qr`, `device-code-activation`, `device-code-activation-allowed`, `device-code-activation-denied`, `device-code-confirmation`, `mfa-phone-challenge`, `mfa-phone-enrollment`, `mfa-voice-challenge`, `mfa-voice-enrollment`, `reset-password-mfa-phone-challenge`, `reset-password-mfa-voice-challenge`, `mfa-recovery-code-challenge`, `mfa-recovery-code-enrollment`, `reset-password-mfa-recovery-code-challenge`, `redeem-ticket`, `mfa-recovery-code-challenge-new-code`, `email-verification-result`, `login-email-verification`, `logout`, `logout-aborted`, `logout-complete`, `mfa-webauthn-change-key-nickname`, `mfa-webauthn-enrollment-success`, `mfa-webauthn-error`, `mfa-webauthn-platform-challenge`, `mfa-webauthn-platform-enrollment`, `mfa-webauthn-roaming-challenge`, `mfa-webauthn-roaming-enrollment`, `reset-password-mfa-webauthn-platform-challenge`, `reset-password-mfa-webauthn-roaming-challenge`, `consent`, `customized-consent`, `email-otp-challenge`, `mfa-webauthn-not-available-error`.
         """
         return pulumi.get(self, "screen_name")
 
@@ -238,6 +292,18 @@ class _PromptScreenRendererState:
     def tenant(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "tenant", value)
 
+    @property
+    @pulumi.getter(name="usePageTemplate")
+    def use_page_template(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Use page template with ACUL
+        """
+        return pulumi.get(self, "use_page_template")
+
+    @use_page_template.setter
+    def use_page_template(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "use_page_template", value)
+
 
 @pulumi.type_token("auth0:index/promptScreenRenderer:PromptScreenRenderer")
 class PromptScreenRenderer(pulumi.CustomResource):
@@ -247,10 +313,12 @@ class PromptScreenRenderer(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  context_configurations: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  default_head_tags_disabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 filters: Optional[pulumi.Input[Union['PromptScreenRendererFiltersArgs', 'PromptScreenRendererFiltersArgsDict']]] = None,
                  head_tags: Optional[pulumi.Input[builtins.str]] = None,
                  prompt_type: Optional[pulumi.Input[builtins.str]] = None,
                  rendering_mode: Optional[pulumi.Input[builtins.str]] = None,
                  screen_name: Optional[pulumi.Input[builtins.str]] = None,
+                 use_page_template: Optional[pulumi.Input[builtins.bool]] = None,
                  __props__=None):
         """
         With this resource, you can Configure the render settings for a specific screen.You can read more about this [here](https://auth0.com/docs/customize/login-pages/advanced-customizations/getting-started/configure-acul-screens).
@@ -317,10 +385,12 @@ class PromptScreenRenderer(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] context_configurations: Context values to make available
         :param pulumi.Input[builtins.bool] default_head_tags_disabled: Override Universal Login default head tags
+        :param pulumi.Input[Union['PromptScreenRendererFiltersArgs', 'PromptScreenRendererFiltersArgsDict']] filters: Optional filters to apply rendering rules to specific entities. `match_type` and at least one of the entity arrays are required.
         :param pulumi.Input[builtins.str] head_tags: An array of head tags
-        :param pulumi.Input[builtins.str] prompt_type: The prompt that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkeys`, `captcha`, `login`, `signup`, `reset-password`, `mfa`, `mfa-sms`, `mfa-email`, `mfa-push`, `invitation`, `organizations`, `mfa-otp`, `device-flow`, `mfa-phone`, `mfa-voice`, `mfa-recovery-code`, `common`, `email-verification`, `login-email-verification`, `logout`, `mfa-webauthn`.
+        :param pulumi.Input[builtins.str] prompt_type: The prompt that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkeys`, `captcha`, `login`, `signup`, `reset-password`, `mfa`, `mfa-sms`, `mfa-email`, `mfa-push`, `invitation`, `organizations`, `mfa-otp`, `device-flow`, `mfa-phone`, `mfa-voice`, `mfa-recovery-code`, `common`, `email-verification`, `login-email-verification`, `logout`, `mfa-webauthn`, `consent`, `customized-consent`, `email-otp-challenge`.
         :param pulumi.Input[builtins.str] rendering_mode: Rendering modeOptions are: `standard`, `advanced`.
-        :param pulumi.Input[builtins.str] screen_name: The screen that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`, `login`, `signup`, `reset-password-request`, `reset-password-email`, `reset-password`, `reset-password-success`, `reset-password-error`, `reset-password-mfa-email-challenge`, `reset-password-mfa-otp-challenge`, `reset-password-mfa-push-challenge-push`, `reset-password-mfa-sms-challenge`, `mfa-detect-browser-capabilities`, `mfa-enroll-result`, `mfa-begin-enroll-options`, `mfa-login-options`, `mfa-country-codes`, `mfa-sms-challenge`, `mfa-sms-enrollment`, `mfa-sms-list`, `mfa-email-challenge`, `mfa-email-list`, `mfa-push-challenge-push`, `mfa-push-enrollment-qr`, `mfa-push-list`, `mfa-push-welcome`, `accept-invitation`, `organization-selection`, `organization-picker`, `mfa-otp-challenge`, `mfa-otp-enrollment-code`, `mfa-otp-enrollment-qr`, `device-code-activation`, `device-code-activation-allowed`, `device-code-activation-denied`, `device-code-confirmation`, `mfa-phone-challenge`, `mfa-phone-enrollment`, `mfa-voice-challenge`, `mfa-voice-enrollment`, `reset-password-mfa-phone-challenge`, `reset-password-mfa-voice-challenge`, `mfa-recovery-code-challenge`, `mfa-recovery-code-enrollment`, `reset-password-mfa-recovery-code-challenge`, `redeem-ticket`, `mfa-recovery-code-challenge-new-code`, `email-verification-result`, `login-email-verification`, `logout`, `logout-aborted`, `logout-complete`, `mfa-webauthn-change-key-nickname`, `mfa-webauthn-enrollment-success`, `mfa-webauthn-error`, `mfa-webauthn-platform-challenge`, `mfa-webauthn-platform-enrollment`, `mfa-webauthn-roaming-challenge`, `mfa-webauthn-roaming-enrollment`, `reset-password-mfa-webauthn-platform-challenge`, `reset-password-mfa-webauthn-roaming-challenge`.
+        :param pulumi.Input[builtins.str] screen_name: The screen that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`, `login`, `signup`, `reset-password-request`, `reset-password-email`, `reset-password`, `reset-password-success`, `reset-password-error`, `reset-password-mfa-email-challenge`, `reset-password-mfa-otp-challenge`, `reset-password-mfa-push-challenge-push`, `reset-password-mfa-sms-challenge`, `mfa-detect-browser-capabilities`, `mfa-enroll-result`, `mfa-begin-enroll-options`, `mfa-login-options`, `mfa-country-codes`, `mfa-sms-challenge`, `mfa-sms-enrollment`, `mfa-sms-list`, `mfa-email-challenge`, `mfa-email-list`, `mfa-push-challenge-push`, `mfa-push-enrollment-qr`, `mfa-push-list`, `mfa-push-welcome`, `accept-invitation`, `organization-selection`, `organization-picker`, `mfa-otp-challenge`, `mfa-otp-enrollment-code`, `mfa-otp-enrollment-qr`, `device-code-activation`, `device-code-activation-allowed`, `device-code-activation-denied`, `device-code-confirmation`, `mfa-phone-challenge`, `mfa-phone-enrollment`, `mfa-voice-challenge`, `mfa-voice-enrollment`, `reset-password-mfa-phone-challenge`, `reset-password-mfa-voice-challenge`, `mfa-recovery-code-challenge`, `mfa-recovery-code-enrollment`, `reset-password-mfa-recovery-code-challenge`, `redeem-ticket`, `mfa-recovery-code-challenge-new-code`, `email-verification-result`, `login-email-verification`, `logout`, `logout-aborted`, `logout-complete`, `mfa-webauthn-change-key-nickname`, `mfa-webauthn-enrollment-success`, `mfa-webauthn-error`, `mfa-webauthn-platform-challenge`, `mfa-webauthn-platform-enrollment`, `mfa-webauthn-roaming-challenge`, `mfa-webauthn-roaming-enrollment`, `reset-password-mfa-webauthn-platform-challenge`, `reset-password-mfa-webauthn-roaming-challenge`, `consent`, `customized-consent`, `email-otp-challenge`, `mfa-webauthn-not-available-error`.
+        :param pulumi.Input[builtins.bool] use_page_template: Use page template with ACUL
         """
         ...
     @overload
@@ -406,10 +476,12 @@ class PromptScreenRenderer(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  context_configurations: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  default_head_tags_disabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 filters: Optional[pulumi.Input[Union['PromptScreenRendererFiltersArgs', 'PromptScreenRendererFiltersArgsDict']]] = None,
                  head_tags: Optional[pulumi.Input[builtins.str]] = None,
                  prompt_type: Optional[pulumi.Input[builtins.str]] = None,
                  rendering_mode: Optional[pulumi.Input[builtins.str]] = None,
                  screen_name: Optional[pulumi.Input[builtins.str]] = None,
+                 use_page_template: Optional[pulumi.Input[builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -421,6 +493,7 @@ class PromptScreenRenderer(pulumi.CustomResource):
 
             __props__.__dict__["context_configurations"] = context_configurations
             __props__.__dict__["default_head_tags_disabled"] = default_head_tags_disabled
+            __props__.__dict__["filters"] = filters
             __props__.__dict__["head_tags"] = head_tags
             if prompt_type is None and not opts.urn:
                 raise TypeError("Missing required property 'prompt_type'")
@@ -429,6 +502,7 @@ class PromptScreenRenderer(pulumi.CustomResource):
             if screen_name is None and not opts.urn:
                 raise TypeError("Missing required property 'screen_name'")
             __props__.__dict__["screen_name"] = screen_name
+            __props__.__dict__["use_page_template"] = use_page_template
             __props__.__dict__["tenant"] = None
         super(PromptScreenRenderer, __self__).__init__(
             'auth0:index/promptScreenRenderer:PromptScreenRenderer',
@@ -442,11 +516,13 @@ class PromptScreenRenderer(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             context_configurations: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
             default_head_tags_disabled: Optional[pulumi.Input[builtins.bool]] = None,
+            filters: Optional[pulumi.Input[Union['PromptScreenRendererFiltersArgs', 'PromptScreenRendererFiltersArgsDict']]] = None,
             head_tags: Optional[pulumi.Input[builtins.str]] = None,
             prompt_type: Optional[pulumi.Input[builtins.str]] = None,
             rendering_mode: Optional[pulumi.Input[builtins.str]] = None,
             screen_name: Optional[pulumi.Input[builtins.str]] = None,
-            tenant: Optional[pulumi.Input[builtins.str]] = None) -> 'PromptScreenRenderer':
+            tenant: Optional[pulumi.Input[builtins.str]] = None,
+            use_page_template: Optional[pulumi.Input[builtins.bool]] = None) -> 'PromptScreenRenderer':
         """
         Get an existing PromptScreenRenderer resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -456,11 +532,13 @@ class PromptScreenRenderer(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] context_configurations: Context values to make available
         :param pulumi.Input[builtins.bool] default_head_tags_disabled: Override Universal Login default head tags
+        :param pulumi.Input[Union['PromptScreenRendererFiltersArgs', 'PromptScreenRendererFiltersArgsDict']] filters: Optional filters to apply rendering rules to specific entities. `match_type` and at least one of the entity arrays are required.
         :param pulumi.Input[builtins.str] head_tags: An array of head tags
-        :param pulumi.Input[builtins.str] prompt_type: The prompt that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkeys`, `captcha`, `login`, `signup`, `reset-password`, `mfa`, `mfa-sms`, `mfa-email`, `mfa-push`, `invitation`, `organizations`, `mfa-otp`, `device-flow`, `mfa-phone`, `mfa-voice`, `mfa-recovery-code`, `common`, `email-verification`, `login-email-verification`, `logout`, `mfa-webauthn`.
+        :param pulumi.Input[builtins.str] prompt_type: The prompt that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkeys`, `captcha`, `login`, `signup`, `reset-password`, `mfa`, `mfa-sms`, `mfa-email`, `mfa-push`, `invitation`, `organizations`, `mfa-otp`, `device-flow`, `mfa-phone`, `mfa-voice`, `mfa-recovery-code`, `common`, `email-verification`, `login-email-verification`, `logout`, `mfa-webauthn`, `consent`, `customized-consent`, `email-otp-challenge`.
         :param pulumi.Input[builtins.str] rendering_mode: Rendering modeOptions are: `standard`, `advanced`.
-        :param pulumi.Input[builtins.str] screen_name: The screen that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`, `login`, `signup`, `reset-password-request`, `reset-password-email`, `reset-password`, `reset-password-success`, `reset-password-error`, `reset-password-mfa-email-challenge`, `reset-password-mfa-otp-challenge`, `reset-password-mfa-push-challenge-push`, `reset-password-mfa-sms-challenge`, `mfa-detect-browser-capabilities`, `mfa-enroll-result`, `mfa-begin-enroll-options`, `mfa-login-options`, `mfa-country-codes`, `mfa-sms-challenge`, `mfa-sms-enrollment`, `mfa-sms-list`, `mfa-email-challenge`, `mfa-email-list`, `mfa-push-challenge-push`, `mfa-push-enrollment-qr`, `mfa-push-list`, `mfa-push-welcome`, `accept-invitation`, `organization-selection`, `organization-picker`, `mfa-otp-challenge`, `mfa-otp-enrollment-code`, `mfa-otp-enrollment-qr`, `device-code-activation`, `device-code-activation-allowed`, `device-code-activation-denied`, `device-code-confirmation`, `mfa-phone-challenge`, `mfa-phone-enrollment`, `mfa-voice-challenge`, `mfa-voice-enrollment`, `reset-password-mfa-phone-challenge`, `reset-password-mfa-voice-challenge`, `mfa-recovery-code-challenge`, `mfa-recovery-code-enrollment`, `reset-password-mfa-recovery-code-challenge`, `redeem-ticket`, `mfa-recovery-code-challenge-new-code`, `email-verification-result`, `login-email-verification`, `logout`, `logout-aborted`, `logout-complete`, `mfa-webauthn-change-key-nickname`, `mfa-webauthn-enrollment-success`, `mfa-webauthn-error`, `mfa-webauthn-platform-challenge`, `mfa-webauthn-platform-enrollment`, `mfa-webauthn-roaming-challenge`, `mfa-webauthn-roaming-enrollment`, `reset-password-mfa-webauthn-platform-challenge`, `reset-password-mfa-webauthn-roaming-challenge`.
+        :param pulumi.Input[builtins.str] screen_name: The screen that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`, `login`, `signup`, `reset-password-request`, `reset-password-email`, `reset-password`, `reset-password-success`, `reset-password-error`, `reset-password-mfa-email-challenge`, `reset-password-mfa-otp-challenge`, `reset-password-mfa-push-challenge-push`, `reset-password-mfa-sms-challenge`, `mfa-detect-browser-capabilities`, `mfa-enroll-result`, `mfa-begin-enroll-options`, `mfa-login-options`, `mfa-country-codes`, `mfa-sms-challenge`, `mfa-sms-enrollment`, `mfa-sms-list`, `mfa-email-challenge`, `mfa-email-list`, `mfa-push-challenge-push`, `mfa-push-enrollment-qr`, `mfa-push-list`, `mfa-push-welcome`, `accept-invitation`, `organization-selection`, `organization-picker`, `mfa-otp-challenge`, `mfa-otp-enrollment-code`, `mfa-otp-enrollment-qr`, `device-code-activation`, `device-code-activation-allowed`, `device-code-activation-denied`, `device-code-confirmation`, `mfa-phone-challenge`, `mfa-phone-enrollment`, `mfa-voice-challenge`, `mfa-voice-enrollment`, `reset-password-mfa-phone-challenge`, `reset-password-mfa-voice-challenge`, `mfa-recovery-code-challenge`, `mfa-recovery-code-enrollment`, `reset-password-mfa-recovery-code-challenge`, `redeem-ticket`, `mfa-recovery-code-challenge-new-code`, `email-verification-result`, `login-email-verification`, `logout`, `logout-aborted`, `logout-complete`, `mfa-webauthn-change-key-nickname`, `mfa-webauthn-enrollment-success`, `mfa-webauthn-error`, `mfa-webauthn-platform-challenge`, `mfa-webauthn-platform-enrollment`, `mfa-webauthn-roaming-challenge`, `mfa-webauthn-roaming-enrollment`, `reset-password-mfa-webauthn-platform-challenge`, `reset-password-mfa-webauthn-roaming-challenge`, `consent`, `customized-consent`, `email-otp-challenge`, `mfa-webauthn-not-available-error`.
         :param pulumi.Input[builtins.str] tenant: Tenant ID
+        :param pulumi.Input[builtins.bool] use_page_template: Use page template with ACUL
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -468,11 +546,13 @@ class PromptScreenRenderer(pulumi.CustomResource):
 
         __props__.__dict__["context_configurations"] = context_configurations
         __props__.__dict__["default_head_tags_disabled"] = default_head_tags_disabled
+        __props__.__dict__["filters"] = filters
         __props__.__dict__["head_tags"] = head_tags
         __props__.__dict__["prompt_type"] = prompt_type
         __props__.__dict__["rendering_mode"] = rendering_mode
         __props__.__dict__["screen_name"] = screen_name
         __props__.__dict__["tenant"] = tenant
+        __props__.__dict__["use_page_template"] = use_page_template
         return PromptScreenRenderer(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -492,6 +572,14 @@ class PromptScreenRenderer(pulumi.CustomResource):
         return pulumi.get(self, "default_head_tags_disabled")
 
     @property
+    @pulumi.getter
+    def filters(self) -> pulumi.Output[Optional['outputs.PromptScreenRendererFilters']]:
+        """
+        Optional filters to apply rendering rules to specific entities. `match_type` and at least one of the entity arrays are required.
+        """
+        return pulumi.get(self, "filters")
+
+    @property
     @pulumi.getter(name="headTags")
     def head_tags(self) -> pulumi.Output[builtins.str]:
         """
@@ -503,7 +591,7 @@ class PromptScreenRenderer(pulumi.CustomResource):
     @pulumi.getter(name="promptType")
     def prompt_type(self) -> pulumi.Output[builtins.str]:
         """
-        The prompt that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkeys`, `captcha`, `login`, `signup`, `reset-password`, `mfa`, `mfa-sms`, `mfa-email`, `mfa-push`, `invitation`, `organizations`, `mfa-otp`, `device-flow`, `mfa-phone`, `mfa-voice`, `mfa-recovery-code`, `common`, `email-verification`, `login-email-verification`, `logout`, `mfa-webauthn`.
+        The prompt that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkeys`, `captcha`, `login`, `signup`, `reset-password`, `mfa`, `mfa-sms`, `mfa-email`, `mfa-push`, `invitation`, `organizations`, `mfa-otp`, `device-flow`, `mfa-phone`, `mfa-voice`, `mfa-recovery-code`, `common`, `email-verification`, `login-email-verification`, `logout`, `mfa-webauthn`, `consent`, `customized-consent`, `email-otp-challenge`.
         """
         return pulumi.get(self, "prompt_type")
 
@@ -519,7 +607,7 @@ class PromptScreenRenderer(pulumi.CustomResource):
     @pulumi.getter(name="screenName")
     def screen_name(self) -> pulumi.Output[builtins.str]:
         """
-        The screen that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`, `login`, `signup`, `reset-password-request`, `reset-password-email`, `reset-password`, `reset-password-success`, `reset-password-error`, `reset-password-mfa-email-challenge`, `reset-password-mfa-otp-challenge`, `reset-password-mfa-push-challenge-push`, `reset-password-mfa-sms-challenge`, `mfa-detect-browser-capabilities`, `mfa-enroll-result`, `mfa-begin-enroll-options`, `mfa-login-options`, `mfa-country-codes`, `mfa-sms-challenge`, `mfa-sms-enrollment`, `mfa-sms-list`, `mfa-email-challenge`, `mfa-email-list`, `mfa-push-challenge-push`, `mfa-push-enrollment-qr`, `mfa-push-list`, `mfa-push-welcome`, `accept-invitation`, `organization-selection`, `organization-picker`, `mfa-otp-challenge`, `mfa-otp-enrollment-code`, `mfa-otp-enrollment-qr`, `device-code-activation`, `device-code-activation-allowed`, `device-code-activation-denied`, `device-code-confirmation`, `mfa-phone-challenge`, `mfa-phone-enrollment`, `mfa-voice-challenge`, `mfa-voice-enrollment`, `reset-password-mfa-phone-challenge`, `reset-password-mfa-voice-challenge`, `mfa-recovery-code-challenge`, `mfa-recovery-code-enrollment`, `reset-password-mfa-recovery-code-challenge`, `redeem-ticket`, `mfa-recovery-code-challenge-new-code`, `email-verification-result`, `login-email-verification`, `logout`, `logout-aborted`, `logout-complete`, `mfa-webauthn-change-key-nickname`, `mfa-webauthn-enrollment-success`, `mfa-webauthn-error`, `mfa-webauthn-platform-challenge`, `mfa-webauthn-platform-enrollment`, `mfa-webauthn-roaming-challenge`, `mfa-webauthn-roaming-enrollment`, `reset-password-mfa-webauthn-platform-challenge`, `reset-password-mfa-webauthn-roaming-challenge`.
+        The screen that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`, `login`, `signup`, `reset-password-request`, `reset-password-email`, `reset-password`, `reset-password-success`, `reset-password-error`, `reset-password-mfa-email-challenge`, `reset-password-mfa-otp-challenge`, `reset-password-mfa-push-challenge-push`, `reset-password-mfa-sms-challenge`, `mfa-detect-browser-capabilities`, `mfa-enroll-result`, `mfa-begin-enroll-options`, `mfa-login-options`, `mfa-country-codes`, `mfa-sms-challenge`, `mfa-sms-enrollment`, `mfa-sms-list`, `mfa-email-challenge`, `mfa-email-list`, `mfa-push-challenge-push`, `mfa-push-enrollment-qr`, `mfa-push-list`, `mfa-push-welcome`, `accept-invitation`, `organization-selection`, `organization-picker`, `mfa-otp-challenge`, `mfa-otp-enrollment-code`, `mfa-otp-enrollment-qr`, `device-code-activation`, `device-code-activation-allowed`, `device-code-activation-denied`, `device-code-confirmation`, `mfa-phone-challenge`, `mfa-phone-enrollment`, `mfa-voice-challenge`, `mfa-voice-enrollment`, `reset-password-mfa-phone-challenge`, `reset-password-mfa-voice-challenge`, `mfa-recovery-code-challenge`, `mfa-recovery-code-enrollment`, `reset-password-mfa-recovery-code-challenge`, `redeem-ticket`, `mfa-recovery-code-challenge-new-code`, `email-verification-result`, `login-email-verification`, `logout`, `logout-aborted`, `logout-complete`, `mfa-webauthn-change-key-nickname`, `mfa-webauthn-enrollment-success`, `mfa-webauthn-error`, `mfa-webauthn-platform-challenge`, `mfa-webauthn-platform-enrollment`, `mfa-webauthn-roaming-challenge`, `mfa-webauthn-roaming-enrollment`, `reset-password-mfa-webauthn-platform-challenge`, `reset-password-mfa-webauthn-roaming-challenge`, `consent`, `customized-consent`, `email-otp-challenge`, `mfa-webauthn-not-available-error`.
         """
         return pulumi.get(self, "screen_name")
 
@@ -530,4 +618,12 @@ class PromptScreenRenderer(pulumi.CustomResource):
         Tenant ID
         """
         return pulumi.get(self, "tenant")
+
+    @property
+    @pulumi.getter(name="usePageTemplate")
+    def use_page_template(self) -> pulumi.Output[Optional[builtins.bool]]:
+        """
+        Use page template with ACUL
+        """
+        return pulumi.get(self, "use_page_template")
 

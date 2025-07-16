@@ -26,6 +26,12 @@ namespace Pulumi.Auth0
     ///     {
     ///         Domain = "auth.example.com",
     ///         Type = "auth0_managed_certs",
+    ///         TlsPolicy = "recommended",
+    ///         DomainMetadata = 
+    ///         {
+    ///             { "key1", "value1" },
+    ///             { "key2", "value2" },
+    ///         },
     ///     });
     /// 
     /// });
@@ -49,6 +55,12 @@ namespace Pulumi.Auth0
     public partial class CustomDomain : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The Custom Domain certificate.
+        /// </summary>
+        [Output("certificates")]
+        public Output<ImmutableArray<Outputs.CustomDomainCertificate>> Certificates { get; private set; } = null!;
+
+        /// <summary>
         /// The HTTP header to fetch the client's IP address. Cannot be set on auth0_managed domains.
         /// </summary>
         [Output("customClientIpHeader")]
@@ -59,6 +71,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Output("domain")]
         public Output<string> Domain { get; private set; } = null!;
+
+        /// <summary>
+        /// Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed.
+        /// </summary>
+        [Output("domainMetadata")]
+        public Output<ImmutableDictionary<string, string>?> DomainMetadata { get; private set; } = null!;
 
         /// <summary>
         /// Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
@@ -154,6 +172,18 @@ namespace Pulumi.Auth0
         [Input("domain", required: true)]
         public Input<string> Domain { get; set; } = null!;
 
+        [Input("domainMetadata")]
+        private InputMap<string>? _domainMetadata;
+
+        /// <summary>
+        /// Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed.
+        /// </summary>
+        public InputMap<string> DomainMetadata
+        {
+            get => _domainMetadata ?? (_domainMetadata = new InputMap<string>());
+            set => _domainMetadata = value;
+        }
+
         /// <summary>
         /// TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on self_managed domains.
         /// </summary>
@@ -174,6 +204,18 @@ namespace Pulumi.Auth0
 
     public sealed class CustomDomainState : global::Pulumi.ResourceArgs
     {
+        [Input("certificates")]
+        private InputList<Inputs.CustomDomainCertificateGetArgs>? _certificates;
+
+        /// <summary>
+        /// The Custom Domain certificate.
+        /// </summary>
+        public InputList<Inputs.CustomDomainCertificateGetArgs> Certificates
+        {
+            get => _certificates ?? (_certificates = new InputList<Inputs.CustomDomainCertificateGetArgs>());
+            set => _certificates = value;
+        }
+
         /// <summary>
         /// The HTTP header to fetch the client's IP address. Cannot be set on auth0_managed domains.
         /// </summary>
@@ -185,6 +227,18 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("domain")]
         public Input<string>? Domain { get; set; }
+
+        [Input("domainMetadata")]
+        private InputMap<string>? _domainMetadata;
+
+        /// <summary>
+        /// Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed.
+        /// </summary>
+        public InputMap<string> DomainMetadata
+        {
+            get => _domainMetadata ?? (_domainMetadata = new InputMap<string>());
+            set => _domainMetadata = value;
+        }
 
         /// <summary>
         /// Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.

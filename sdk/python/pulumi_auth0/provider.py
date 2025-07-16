@@ -23,6 +23,8 @@ class ProviderArgs:
                  api_token: Optional[pulumi.Input[builtins.str]] = None,
                  audience: Optional[pulumi.Input[builtins.str]] = None,
                  cli_login: Optional[pulumi.Input[builtins.bool]] = None,
+                 client_assertion_private_key: Optional[pulumi.Input[builtins.str]] = None,
+                 client_assertion_signing_alg: Optional[pulumi.Input[builtins.str]] = None,
                  client_id: Optional[pulumi.Input[builtins.str]] = None,
                  client_secret: Optional[pulumi.Input[builtins.str]] = None,
                  debug: Optional[pulumi.Input[builtins.bool]] = None,
@@ -36,6 +38,10 @@ class ProviderArgs:
                specified, `api_token` will be used over `client_id` + `client_secret` fields.
         :param pulumi.Input[builtins.str] audience: Your Auth0 audience when using a custom domain. It can also be sourced from the `AUTH0_AUDIENCE` environment variable.
         :param pulumi.Input[builtins.bool] cli_login: While toggled on, the API token gets fetched from the keyring for the given domain
+        :param pulumi.Input[builtins.str] client_assertion_private_key: The private key used to sign the client assertion JWT. It can also be sourced from the
+               `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
+        :param pulumi.Input[builtins.str] client_assertion_signing_alg: The algorithm used to sign the client assertion JWT. It can also be sourced from the
+               `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
         :param pulumi.Input[builtins.str] client_id: Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.
         :param pulumi.Input[builtins.str] client_secret: Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable.
         :param pulumi.Input[builtins.bool] debug: Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG`
@@ -48,6 +54,10 @@ class ProviderArgs:
             pulumi.set(__self__, "audience", audience)
         if cli_login is not None:
             pulumi.set(__self__, "cli_login", cli_login)
+        if client_assertion_private_key is not None:
+            pulumi.set(__self__, "client_assertion_private_key", client_assertion_private_key)
+        if client_assertion_signing_alg is not None:
+            pulumi.set(__self__, "client_assertion_signing_alg", client_assertion_signing_alg)
         if client_id is not None:
             pulumi.set(__self__, "client_id", client_id)
         if client_secret is not None:
@@ -99,6 +109,32 @@ class ProviderArgs:
     @cli_login.setter
     def cli_login(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "cli_login", value)
+
+    @property
+    @pulumi.getter(name="clientAssertionPrivateKey")
+    def client_assertion_private_key(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The private key used to sign the client assertion JWT. It can also be sourced from the
+        `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
+        """
+        return pulumi.get(self, "client_assertion_private_key")
+
+    @client_assertion_private_key.setter
+    def client_assertion_private_key(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "client_assertion_private_key", value)
+
+    @property
+    @pulumi.getter(name="clientAssertionSigningAlg")
+    def client_assertion_signing_alg(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The algorithm used to sign the client assertion JWT. It can also be sourced from the
+        `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
+        """
+        return pulumi.get(self, "client_assertion_signing_alg")
+
+    @client_assertion_signing_alg.setter
+    def client_assertion_signing_alg(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "client_assertion_signing_alg", value)
 
     @property
     @pulumi.getter(name="clientId")
@@ -168,6 +204,8 @@ class Provider(pulumi.ProviderResource):
                  api_token: Optional[pulumi.Input[builtins.str]] = None,
                  audience: Optional[pulumi.Input[builtins.str]] = None,
                  cli_login: Optional[pulumi.Input[builtins.bool]] = None,
+                 client_assertion_private_key: Optional[pulumi.Input[builtins.str]] = None,
+                 client_assertion_signing_alg: Optional[pulumi.Input[builtins.str]] = None,
                  client_id: Optional[pulumi.Input[builtins.str]] = None,
                  client_secret: Optional[pulumi.Input[builtins.str]] = None,
                  debug: Optional[pulumi.Input[builtins.bool]] = None,
@@ -188,6 +226,10 @@ class Provider(pulumi.ProviderResource):
                specified, `api_token` will be used over `client_id` + `client_secret` fields.
         :param pulumi.Input[builtins.str] audience: Your Auth0 audience when using a custom domain. It can also be sourced from the `AUTH0_AUDIENCE` environment variable.
         :param pulumi.Input[builtins.bool] cli_login: While toggled on, the API token gets fetched from the keyring for the given domain
+        :param pulumi.Input[builtins.str] client_assertion_private_key: The private key used to sign the client assertion JWT. It can also be sourced from the
+               `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
+        :param pulumi.Input[builtins.str] client_assertion_signing_alg: The algorithm used to sign the client assertion JWT. It can also be sourced from the
+               `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
         :param pulumi.Input[builtins.str] client_id: Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.
         :param pulumi.Input[builtins.str] client_secret: Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable.
         :param pulumi.Input[builtins.bool] debug: Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG`
@@ -224,6 +266,8 @@ class Provider(pulumi.ProviderResource):
                  api_token: Optional[pulumi.Input[builtins.str]] = None,
                  audience: Optional[pulumi.Input[builtins.str]] = None,
                  cli_login: Optional[pulumi.Input[builtins.bool]] = None,
+                 client_assertion_private_key: Optional[pulumi.Input[builtins.str]] = None,
+                 client_assertion_signing_alg: Optional[pulumi.Input[builtins.str]] = None,
                  client_id: Optional[pulumi.Input[builtins.str]] = None,
                  client_secret: Optional[pulumi.Input[builtins.str]] = None,
                  debug: Optional[pulumi.Input[builtins.bool]] = None,
@@ -241,6 +285,8 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["api_token"] = api_token
             __props__.__dict__["audience"] = audience
             __props__.__dict__["cli_login"] = pulumi.Output.from_input(cli_login).apply(pulumi.runtime.to_json) if cli_login is not None else None
+            __props__.__dict__["client_assertion_private_key"] = client_assertion_private_key
+            __props__.__dict__["client_assertion_signing_alg"] = client_assertion_signing_alg
             __props__.__dict__["client_id"] = client_id
             __props__.__dict__["client_secret"] = client_secret
             if debug is None:
@@ -272,6 +318,24 @@ class Provider(pulumi.ProviderResource):
         Your Auth0 audience when using a custom domain. It can also be sourced from the `AUTH0_AUDIENCE` environment variable.
         """
         return pulumi.get(self, "audience")
+
+    @property
+    @pulumi.getter(name="clientAssertionPrivateKey")
+    def client_assertion_private_key(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        The private key used to sign the client assertion JWT. It can also be sourced from the
+        `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
+        """
+        return pulumi.get(self, "client_assertion_private_key")
+
+    @property
+    @pulumi.getter(name="clientAssertionSigningAlg")
+    def client_assertion_signing_alg(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        The algorithm used to sign the client assertion JWT. It can also be sourced from the
+        `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
+        """
+        return pulumi.get(self, "client_assertion_signing_alg")
 
     @property
     @pulumi.getter(name="clientId")

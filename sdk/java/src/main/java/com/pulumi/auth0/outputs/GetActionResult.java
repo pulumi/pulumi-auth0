@@ -48,7 +48,7 @@ public final class GetActionResult {
      */
     private String runtime;
     /**
-     * @return List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
+     * @return List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
      * 
      */
     private List<GetActionSecret> secrets;
@@ -107,7 +107,7 @@ public final class GetActionResult {
         return this.runtime;
     }
     /**
-     * @return List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported.
+     * @return List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
      * 
      */
     public List<GetActionSecret> secrets() {

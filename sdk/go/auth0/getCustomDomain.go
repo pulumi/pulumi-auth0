@@ -12,22 +12,69 @@ import (
 )
 
 // Data source to retrieve the custom domain configuration.
-func LookupCustomDomain(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*LookupCustomDomainResult, error) {
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myCustomDomain, err := auth0.NewCustomDomain(ctx, "my_custom_domain", &auth0.CustomDomainArgs{
+//				Domain:    pulumi.String("example.auth.tempdomain.com"),
+//				Type:      pulumi.String("auth0_managed_certs"),
+//				TlsPolicy: pulumi.String("recommended"),
+//				DomainMetadata: pulumi.StringMap{
+//					"key1": pulumi.String("value1"),
+//					"key2": pulumi.String("value2"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_ = auth0.LookupCustomDomainOutput(ctx, auth0.GetCustomDomainOutputArgs{
+//				CustomDomainId: myCustomDomain.ID(),
+//			}, nil)
+//			return nil
+//		})
+//	}
+//
+// ```
+func LookupCustomDomain(ctx *pulumi.Context, args *LookupCustomDomainArgs, opts ...pulumi.InvokeOption) (*LookupCustomDomainResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCustomDomainResult
-	err := ctx.Invoke("auth0:index/getCustomDomain:getCustomDomain", nil, &rv, opts...)
+	err := ctx.Invoke("auth0:index/getCustomDomain:getCustomDomain", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &rv, nil
 }
 
+// A collection of arguments for invoking getCustomDomain.
+type LookupCustomDomainArgs struct {
+	// The ID of the Custom Domain.
+	CustomDomainId *string `pulumi:"customDomainId"`
+}
+
 // A collection of values returned by getCustomDomain.
 type LookupCustomDomainResult struct {
+	// The Custom Domain certificate.
+	Certificates []GetCustomDomainCertificate `pulumi:"certificates"`
 	// The HTTP header to fetch the client's IP address. Cannot be set on auth0Managed domains.
 	CustomClientIpHeader string `pulumi:"customClientIpHeader"`
+	// The ID of the Custom Domain.
+	CustomDomainId *string `pulumi:"customDomainId"`
 	// Name of the custom domain.
 	Domain string `pulumi:"domain"`
+	// Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed.
+	DomainMetadata map[string]string `pulumi:"domainMetadata"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
@@ -44,11 +91,23 @@ type LookupCustomDomainResult struct {
 	Verifications []GetCustomDomainVerificationType `pulumi:"verifications"`
 }
 
-func LookupCustomDomainOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) LookupCustomDomainResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (LookupCustomDomainResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("auth0:index/getCustomDomain:getCustomDomain", nil, LookupCustomDomainResultOutput{}, options).(LookupCustomDomainResultOutput), nil
-	}).(LookupCustomDomainResultOutput)
+func LookupCustomDomainOutput(ctx *pulumi.Context, args LookupCustomDomainOutputArgs, opts ...pulumi.InvokeOption) LookupCustomDomainResultOutput {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (LookupCustomDomainResultOutput, error) {
+			args := v.(LookupCustomDomainArgs)
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("auth0:index/getCustomDomain:getCustomDomain", args, LookupCustomDomainResultOutput{}, options).(LookupCustomDomainResultOutput), nil
+		}).(LookupCustomDomainResultOutput)
+}
+
+// A collection of arguments for invoking getCustomDomain.
+type LookupCustomDomainOutputArgs struct {
+	// The ID of the Custom Domain.
+	CustomDomainId pulumi.StringPtrInput `pulumi:"customDomainId"`
+}
+
+func (LookupCustomDomainOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupCustomDomainArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getCustomDomain.
@@ -66,14 +125,29 @@ func (o LookupCustomDomainResultOutput) ToLookupCustomDomainResultOutputWithCont
 	return o
 }
 
+// The Custom Domain certificate.
+func (o LookupCustomDomainResultOutput) Certificates() GetCustomDomainCertificateArrayOutput {
+	return o.ApplyT(func(v LookupCustomDomainResult) []GetCustomDomainCertificate { return v.Certificates }).(GetCustomDomainCertificateArrayOutput)
+}
+
 // The HTTP header to fetch the client's IP address. Cannot be set on auth0Managed domains.
 func (o LookupCustomDomainResultOutput) CustomClientIpHeader() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomDomainResult) string { return v.CustomClientIpHeader }).(pulumi.StringOutput)
 }
 
+// The ID of the Custom Domain.
+func (o LookupCustomDomainResultOutput) CustomDomainId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupCustomDomainResult) *string { return v.CustomDomainId }).(pulumi.StringPtrOutput)
+}
+
 // Name of the custom domain.
 func (o LookupCustomDomainResultOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomDomainResult) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+// Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed.
+func (o LookupCustomDomainResultOutput) DomainMetadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupCustomDomainResult) map[string]string { return v.DomainMetadata }).(pulumi.StringMapOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

@@ -18,6 +18,11 @@ import * as utilities from "./utilities";
  * const myCustomDomain = new auth0.CustomDomain("my_custom_domain", {
  *     domain: "auth.example.com",
  *     type: "auth0_managed_certs",
+ *     tlsPolicy: "recommended",
+ *     domainMetadata: {
+ *         key1: "value1",
+ *         key2: "value2",
+ *     },
  * });
  * ```
  *
@@ -64,6 +69,10 @@ export class CustomDomain extends pulumi.CustomResource {
     }
 
     /**
+     * The Custom Domain certificate.
+     */
+    public /*out*/ readonly certificates!: pulumi.Output<outputs.CustomDomainCertificate[]>;
+    /**
      * The HTTP header to fetch the client's IP address. Cannot be set on auth0Managed domains.
      */
     public readonly customClientIpHeader!: pulumi.Output<string | undefined>;
@@ -72,11 +81,17 @@ export class CustomDomain extends pulumi.CustomResource {
      */
     public readonly domain!: pulumi.Output<string>;
     /**
+     * Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed.
+     */
+    public readonly domainMetadata!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
      */
     public /*out*/ readonly originDomainName!: pulumi.Output<string>;
     /**
      * Indicates whether this is a primary domain.
+     *
+     * @deprecated Primary field is no longer used and will be removed in a future release.
      */
     public /*out*/ readonly primary!: pulumi.Output<boolean>;
     /**
@@ -109,8 +124,10 @@ export class CustomDomain extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CustomDomainState | undefined;
+            resourceInputs["certificates"] = state ? state.certificates : undefined;
             resourceInputs["customClientIpHeader"] = state ? state.customClientIpHeader : undefined;
             resourceInputs["domain"] = state ? state.domain : undefined;
+            resourceInputs["domainMetadata"] = state ? state.domainMetadata : undefined;
             resourceInputs["originDomainName"] = state ? state.originDomainName : undefined;
             resourceInputs["primary"] = state ? state.primary : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
@@ -127,8 +144,10 @@ export class CustomDomain extends pulumi.CustomResource {
             }
             resourceInputs["customClientIpHeader"] = args ? args.customClientIpHeader : undefined;
             resourceInputs["domain"] = args ? args.domain : undefined;
+            resourceInputs["domainMetadata"] = args ? args.domainMetadata : undefined;
             resourceInputs["tlsPolicy"] = args ? args.tlsPolicy : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["certificates"] = undefined /*out*/;
             resourceInputs["originDomainName"] = undefined /*out*/;
             resourceInputs["primary"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
@@ -144,6 +163,10 @@ export class CustomDomain extends pulumi.CustomResource {
  */
 export interface CustomDomainState {
     /**
+     * The Custom Domain certificate.
+     */
+    certificates?: pulumi.Input<pulumi.Input<inputs.CustomDomainCertificate>[]>;
+    /**
      * The HTTP header to fetch the client's IP address. Cannot be set on auth0Managed domains.
      */
     customClientIpHeader?: pulumi.Input<string>;
@@ -152,11 +175,17 @@ export interface CustomDomainState {
      */
     domain?: pulumi.Input<string>;
     /**
+     * Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed.
+     */
+    domainMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
      */
     originDomainName?: pulumi.Input<string>;
     /**
      * Indicates whether this is a primary domain.
+     *
+     * @deprecated Primary field is no longer used and will be removed in a future release.
      */
     primary?: pulumi.Input<boolean>;
     /**
@@ -189,6 +218,10 @@ export interface CustomDomainArgs {
      * Name of the custom domain.
      */
     domain: pulumi.Input<string>;
+    /**
+     * Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed.
+     */
+    domainMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on selfManaged domains.
      */

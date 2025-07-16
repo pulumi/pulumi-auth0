@@ -14,14 +14,36 @@ namespace Pulumi.Auth0.Outputs
     public sealed class GetCustomDomainVerificationResult
     {
         /// <summary>
-        /// Verification methods for the domain.
+        /// Contains error message, if any, from the last DNS verification check.
+        /// </summary>
+        public readonly string ErrorMsg;
+        /// <summary>
+        /// Indicates the last time the domain was successfully verified.
+        /// </summary>
+        public readonly string LastVerifiedAt;
+        /// <summary>
+        /// Defines the list of domain verification methods used.
         /// </summary>
         public readonly ImmutableArray<object> Methods;
+        /// <summary>
+        /// Represents the current status of the domain verification process.
+        /// </summary>
+        public readonly string Status;
 
         [OutputConstructor]
-        private GetCustomDomainVerificationResult(ImmutableArray<object> methods)
+        private GetCustomDomainVerificationResult(
+            string errorMsg,
+
+            string lastVerifiedAt,
+
+            ImmutableArray<object> methods,
+
+            string status)
         {
+            ErrorMsg = errorMsg;
+            LastVerifiedAt = lastVerifiedAt;
             Methods = methods;
+            Status = status;
         }
     }
 }

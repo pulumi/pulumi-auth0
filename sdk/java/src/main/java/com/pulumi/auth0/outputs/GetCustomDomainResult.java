@@ -3,26 +3,45 @@
 
 package com.pulumi.auth0.outputs;
 
+import com.pulumi.auth0.outputs.GetCustomDomainCertificate;
 import com.pulumi.auth0.outputs.GetCustomDomainVerification;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetCustomDomainResult {
+    /**
+     * @return The Custom Domain certificate.
+     * 
+     */
+    private List<GetCustomDomainCertificate> certificates;
     /**
      * @return The HTTP header to fetch the client&#39;s IP address. Cannot be set on auth0_managed domains.
      * 
      */
     private String customClientIpHeader;
     /**
+     * @return The ID of the Custom Domain.
+     * 
+     */
+    private @Nullable String customDomainId;
+    /**
      * @return Name of the custom domain.
      * 
      */
     private String domain;
+    /**
+     * @return Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed.
+     * 
+     */
+    private Map<String,String> domainMetadata;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -61,6 +80,13 @@ public final class GetCustomDomainResult {
 
     private GetCustomDomainResult() {}
     /**
+     * @return The Custom Domain certificate.
+     * 
+     */
+    public List<GetCustomDomainCertificate> certificates() {
+        return this.certificates;
+    }
+    /**
      * @return The HTTP header to fetch the client&#39;s IP address. Cannot be set on auth0_managed domains.
      * 
      */
@@ -68,11 +94,25 @@ public final class GetCustomDomainResult {
         return this.customClientIpHeader;
     }
     /**
+     * @return The ID of the Custom Domain.
+     * 
+     */
+    public Optional<String> customDomainId() {
+        return Optional.ofNullable(this.customDomainId);
+    }
+    /**
      * @return Name of the custom domain.
      * 
      */
     public String domain() {
         return this.domain;
+    }
+    /**
+     * @return Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed.
+     * 
+     */
+    public Map<String,String> domainMetadata() {
+        return this.domainMetadata;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -133,8 +173,11 @@ public final class GetCustomDomainResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetCustomDomainCertificate> certificates;
         private String customClientIpHeader;
+        private @Nullable String customDomainId;
         private String domain;
+        private Map<String,String> domainMetadata;
         private String id;
         private String originDomainName;
         private Boolean primary;
@@ -145,8 +188,11 @@ public final class GetCustomDomainResult {
         public Builder() {}
         public Builder(GetCustomDomainResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.certificates = defaults.certificates;
     	      this.customClientIpHeader = defaults.customClientIpHeader;
+    	      this.customDomainId = defaults.customDomainId;
     	      this.domain = defaults.domain;
+    	      this.domainMetadata = defaults.domainMetadata;
     	      this.id = defaults.id;
     	      this.originDomainName = defaults.originDomainName;
     	      this.primary = defaults.primary;
@@ -157,6 +203,17 @@ public final class GetCustomDomainResult {
         }
 
         @CustomType.Setter
+        public Builder certificates(List<GetCustomDomainCertificate> certificates) {
+            if (certificates == null) {
+              throw new MissingRequiredPropertyException("GetCustomDomainResult", "certificates");
+            }
+            this.certificates = certificates;
+            return this;
+        }
+        public Builder certificates(GetCustomDomainCertificate... certificates) {
+            return certificates(List.of(certificates));
+        }
+        @CustomType.Setter
         public Builder customClientIpHeader(String customClientIpHeader) {
             if (customClientIpHeader == null) {
               throw new MissingRequiredPropertyException("GetCustomDomainResult", "customClientIpHeader");
@@ -165,11 +222,25 @@ public final class GetCustomDomainResult {
             return this;
         }
         @CustomType.Setter
+        public Builder customDomainId(@Nullable String customDomainId) {
+
+            this.customDomainId = customDomainId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder domain(String domain) {
             if (domain == null) {
               throw new MissingRequiredPropertyException("GetCustomDomainResult", "domain");
             }
             this.domain = domain;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder domainMetadata(Map<String,String> domainMetadata) {
+            if (domainMetadata == null) {
+              throw new MissingRequiredPropertyException("GetCustomDomainResult", "domainMetadata");
+            }
+            this.domainMetadata = domainMetadata;
             return this;
         }
         @CustomType.Setter
@@ -233,8 +304,11 @@ public final class GetCustomDomainResult {
         }
         public GetCustomDomainResult build() {
             final var _resultValue = new GetCustomDomainResult();
+            _resultValue.certificates = certificates;
             _resultValue.customClientIpHeader = customClientIpHeader;
+            _resultValue.customDomainId = customDomainId;
             _resultValue.domain = domain;
+            _resultValue.domainMetadata = domainMetadata;
             _resultValue.id = id;
             _resultValue.originDomainName = originDomainName;
             _resultValue.primary = primary;

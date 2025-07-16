@@ -28,13 +28,22 @@ class GetCustomDomainResult:
     """
     A collection of values returned by getCustomDomain.
     """
-    def __init__(__self__, custom_client_ip_header=None, domain=None, id=None, origin_domain_name=None, primary=None, status=None, tls_policy=None, type=None, verifications=None):
+    def __init__(__self__, certificates=None, custom_client_ip_header=None, custom_domain_id=None, domain=None, domain_metadata=None, id=None, origin_domain_name=None, primary=None, status=None, tls_policy=None, type=None, verifications=None):
+        if certificates and not isinstance(certificates, list):
+            raise TypeError("Expected argument 'certificates' to be a list")
+        pulumi.set(__self__, "certificates", certificates)
         if custom_client_ip_header and not isinstance(custom_client_ip_header, str):
             raise TypeError("Expected argument 'custom_client_ip_header' to be a str")
         pulumi.set(__self__, "custom_client_ip_header", custom_client_ip_header)
+        if custom_domain_id and not isinstance(custom_domain_id, str):
+            raise TypeError("Expected argument 'custom_domain_id' to be a str")
+        pulumi.set(__self__, "custom_domain_id", custom_domain_id)
         if domain and not isinstance(domain, str):
             raise TypeError("Expected argument 'domain' to be a str")
         pulumi.set(__self__, "domain", domain)
+        if domain_metadata and not isinstance(domain_metadata, dict):
+            raise TypeError("Expected argument 'domain_metadata' to be a dict")
+        pulumi.set(__self__, "domain_metadata", domain_metadata)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -58,6 +67,14 @@ class GetCustomDomainResult:
         pulumi.set(__self__, "verifications", verifications)
 
     @property
+    @pulumi.getter
+    def certificates(self) -> Sequence['outputs.GetCustomDomainCertificateResult']:
+        """
+        The Custom Domain certificate.
+        """
+        return pulumi.get(self, "certificates")
+
+    @property
     @pulumi.getter(name="customClientIpHeader")
     def custom_client_ip_header(self) -> builtins.str:
         """
@@ -66,12 +83,28 @@ class GetCustomDomainResult:
         return pulumi.get(self, "custom_client_ip_header")
 
     @property
+    @pulumi.getter(name="customDomainId")
+    def custom_domain_id(self) -> Optional[builtins.str]:
+        """
+        The ID of the Custom Domain.
+        """
+        return pulumi.get(self, "custom_domain_id")
+
+    @property
     @pulumi.getter
     def domain(self) -> builtins.str:
         """
         Name of the custom domain.
         """
         return pulumi.get(self, "domain")
+
+    @property
+    @pulumi.getter(name="domainMetadata")
+    def domain_metadata(self) -> Mapping[str, builtins.str]:
+        """
+        Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed.
+        """
+        return pulumi.get(self, "domain_metadata")
 
     @property
     @pulumi.getter
@@ -136,8 +169,11 @@ class AwaitableGetCustomDomainResult(GetCustomDomainResult):
         if False:
             yield self
         return GetCustomDomainResult(
+            certificates=self.certificates,
             custom_client_ip_header=self.custom_client_ip_header,
+            custom_domain_id=self.custom_domain_id,
             domain=self.domain,
+            domain_metadata=self.domain_metadata,
             id=self.id,
             origin_domain_name=self.origin_domain_name,
             primary=self.primary,
@@ -147,17 +183,42 @@ class AwaitableGetCustomDomainResult(GetCustomDomainResult):
             verifications=self.verifications)
 
 
-def get_custom_domain(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCustomDomainResult:
+def get_custom_domain(custom_domain_id: Optional[builtins.str] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCustomDomainResult:
     """
     Data source to retrieve the custom domain configuration.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_auth0 as auth0
+
+    my_custom_domain = auth0.CustomDomain("my_custom_domain",
+        domain="example.auth.tempdomain.com",
+        type="auth0_managed_certs",
+        tls_policy="recommended",
+        domain_metadata={
+            "key1": "value1",
+            "key2": "value2",
+        })
+    test = auth0.get_custom_domain_output(custom_domain_id=my_custom_domain.id)
+    ```
+
+
+    :param builtins.str custom_domain_id: The ID of the Custom Domain.
     """
     __args__ = dict()
+    __args__['customDomainId'] = custom_domain_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('auth0:index/getCustomDomain:getCustomDomain', __args__, opts=opts, typ=GetCustomDomainResult).value
 
     return AwaitableGetCustomDomainResult(
+        certificates=pulumi.get(__ret__, 'certificates'),
         custom_client_ip_header=pulumi.get(__ret__, 'custom_client_ip_header'),
+        custom_domain_id=pulumi.get(__ret__, 'custom_domain_id'),
         domain=pulumi.get(__ret__, 'domain'),
+        domain_metadata=pulumi.get(__ret__, 'domain_metadata'),
         id=pulumi.get(__ret__, 'id'),
         origin_domain_name=pulumi.get(__ret__, 'origin_domain_name'),
         primary=pulumi.get(__ret__, 'primary'),
@@ -165,16 +226,41 @@ def get_custom_domain(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableG
         tls_policy=pulumi.get(__ret__, 'tls_policy'),
         type=pulumi.get(__ret__, 'type'),
         verifications=pulumi.get(__ret__, 'verifications'))
-def get_custom_domain_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCustomDomainResult]:
+def get_custom_domain_output(custom_domain_id: Optional[pulumi.Input[Optional[builtins.str]]] = None,
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCustomDomainResult]:
     """
     Data source to retrieve the custom domain configuration.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_auth0 as auth0
+
+    my_custom_domain = auth0.CustomDomain("my_custom_domain",
+        domain="example.auth.tempdomain.com",
+        type="auth0_managed_certs",
+        tls_policy="recommended",
+        domain_metadata={
+            "key1": "value1",
+            "key2": "value2",
+        })
+    test = auth0.get_custom_domain_output(custom_domain_id=my_custom_domain.id)
+    ```
+
+
+    :param builtins.str custom_domain_id: The ID of the Custom Domain.
     """
     __args__ = dict()
+    __args__['customDomainId'] = custom_domain_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('auth0:index/getCustomDomain:getCustomDomain', __args__, opts=opts, typ=GetCustomDomainResult)
     return __ret__.apply(lambda __response__: GetCustomDomainResult(
+        certificates=pulumi.get(__response__, 'certificates'),
         custom_client_ip_header=pulumi.get(__response__, 'custom_client_ip_header'),
+        custom_domain_id=pulumi.get(__response__, 'custom_domain_id'),
         domain=pulumi.get(__response__, 'domain'),
+        domain_metadata=pulumi.get(__response__, 'domain_metadata'),
         id=pulumi.get(__response__, 'id'),
         origin_domain_name=pulumi.get(__response__, 'origin_domain_name'),
         primary=pulumi.get(__response__, 'primary'),
