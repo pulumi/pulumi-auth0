@@ -13,21 +13,140 @@ namespace Pulumi.Auth0
     {
         /// <summary>
         /// Data source to retrieve the custom domain configuration.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Auth0 = Pulumi.Auth0;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myCustomDomain = new Auth0.CustomDomain("my_custom_domain", new()
+        ///     {
+        ///         Domain = "example.auth.tempdomain.com",
+        ///         Type = "auth0_managed_certs",
+        ///         TlsPolicy = "recommended",
+        ///         DomainMetadata = 
+        ///         {
+        ///             { "key1", "value1" },
+        ///             { "key2", "value2" },
+        ///         },
+        ///     });
+        /// 
+        ///     var test = Auth0.GetCustomDomain.Invoke(new()
+        ///     {
+        ///         CustomDomainId = myCustomDomain.Id,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
-        public static Task<GetCustomDomainResult> InvokeAsync(InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.InvokeAsync<GetCustomDomainResult>("auth0:index/getCustomDomain:getCustomDomain", InvokeArgs.Empty, options.WithDefaults());
+        public static Task<GetCustomDomainResult> InvokeAsync(GetCustomDomainArgs? args = null, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetCustomDomainResult>("auth0:index/getCustomDomain:getCustomDomain", args ?? new GetCustomDomainArgs(), options.WithDefaults());
 
         /// <summary>
         /// Data source to retrieve the custom domain configuration.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Auth0 = Pulumi.Auth0;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myCustomDomain = new Auth0.CustomDomain("my_custom_domain", new()
+        ///     {
+        ///         Domain = "example.auth.tempdomain.com",
+        ///         Type = "auth0_managed_certs",
+        ///         TlsPolicy = "recommended",
+        ///         DomainMetadata = 
+        ///         {
+        ///             { "key1", "value1" },
+        ///             { "key2", "value2" },
+        ///         },
+        ///     });
+        /// 
+        ///     var test = Auth0.GetCustomDomain.Invoke(new()
+        ///     {
+        ///         CustomDomainId = myCustomDomain.Id,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
-        public static Output<GetCustomDomainResult> Invoke(InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.Invoke<GetCustomDomainResult>("auth0:index/getCustomDomain:getCustomDomain", InvokeArgs.Empty, options.WithDefaults());
+        public static Output<GetCustomDomainResult> Invoke(GetCustomDomainInvokeArgs? args = null, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetCustomDomainResult>("auth0:index/getCustomDomain:getCustomDomain", args ?? new GetCustomDomainInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Data source to retrieve the custom domain configuration.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Auth0 = Pulumi.Auth0;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myCustomDomain = new Auth0.CustomDomain("my_custom_domain", new()
+        ///     {
+        ///         Domain = "example.auth.tempdomain.com",
+        ///         Type = "auth0_managed_certs",
+        ///         TlsPolicy = "recommended",
+        ///         DomainMetadata = 
+        ///         {
+        ///             { "key1", "value1" },
+        ///             { "key2", "value2" },
+        ///         },
+        ///     });
+        /// 
+        ///     var test = Auth0.GetCustomDomain.Invoke(new()
+        ///     {
+        ///         CustomDomainId = myCustomDomain.Id,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
-        public static Output<GetCustomDomainResult> Invoke(InvokeOutputOptions options)
-            => global::Pulumi.Deployment.Instance.Invoke<GetCustomDomainResult>("auth0:index/getCustomDomain:getCustomDomain", InvokeArgs.Empty, options.WithDefaults());
+        public static Output<GetCustomDomainResult> Invoke(GetCustomDomainInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetCustomDomainResult>("auth0:index/getCustomDomain:getCustomDomain", args ?? new GetCustomDomainInvokeArgs(), options.WithDefaults());
+    }
+
+
+    public sealed class GetCustomDomainArgs : global::Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The ID of the Custom Domain.
+        /// </summary>
+        [Input("customDomainId")]
+        public string? CustomDomainId { get; set; }
+
+        public GetCustomDomainArgs()
+        {
+        }
+        public static new GetCustomDomainArgs Empty => new GetCustomDomainArgs();
+    }
+
+    public sealed class GetCustomDomainInvokeArgs : global::Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The ID of the Custom Domain.
+        /// </summary>
+        [Input("customDomainId")]
+        public Input<string>? CustomDomainId { get; set; }
+
+        public GetCustomDomainInvokeArgs()
+        {
+        }
+        public static new GetCustomDomainInvokeArgs Empty => new GetCustomDomainInvokeArgs();
     }
 
 
@@ -35,13 +154,25 @@ namespace Pulumi.Auth0
     public sealed class GetCustomDomainResult
     {
         /// <summary>
+        /// The Custom Domain certificate.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetCustomDomainCertificateResult> Certificates;
+        /// <summary>
         /// The HTTP header to fetch the client's IP address. Cannot be set on auth0_managed domains.
         /// </summary>
         public readonly string CustomClientIpHeader;
         /// <summary>
+        /// The ID of the Custom Domain.
+        /// </summary>
+        public readonly string? CustomDomainId;
+        /// <summary>
         /// Name of the custom domain.
         /// </summary>
         public readonly string Domain;
+        /// <summary>
+        /// Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> DomainMetadata;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -73,9 +204,15 @@ namespace Pulumi.Auth0
 
         [OutputConstructor]
         private GetCustomDomainResult(
+            ImmutableArray<Outputs.GetCustomDomainCertificateResult> certificates,
+
             string customClientIpHeader,
 
+            string? customDomainId,
+
             string domain,
+
+            ImmutableDictionary<string, string> domainMetadata,
 
             string id,
 
@@ -91,8 +228,11 @@ namespace Pulumi.Auth0
 
             ImmutableArray<Outputs.GetCustomDomainVerificationResult> verifications)
         {
+            Certificates = certificates;
             CustomClientIpHeader = customClientIpHeader;
+            CustomDomainId = customDomainId;
             Domain = domain;
+            DomainMetadata = domainMetadata;
             Id = id;
             OriginDomainName = originDomainName;
             Primary = primary;

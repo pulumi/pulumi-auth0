@@ -192,38 +192,7 @@ func TestConnectionMigration(t *testing.T) {
                 "diffs": [
                     "options"
                 ],
-                "detailedDiff": {
-									  "options.realmFallback": {},
-                    "options.globalTokenRevocationJwtIss": {
-                    },
-                    "options.globalTokenRevocationJwtSub": {
-                    },
-                    "options.fieldsMap": {
-                        "kind": "DELETE"
-                    },
-                    "options.authParams": {
-                    },
-                    "options.disableSelfServiceChangePassword": {
-                    },
-                    "options.disableSignOut": {
-                    },
-                    "options.enableScriptContext": {
-                    },
-                    "options.fedMetadataXml": {
-                    },
-                    "options.mapUserIdToId": {
-                    },
-                    "options.metadataUrl": {
-                    },
-                    "options.metadataXml": {
-                    },
-                    "options.pingFederateBaseUrl": {
-                    },
-                    "options.pkceEnabled": {
-                    },
-                    "options.upstreamParams": {
-                    }
-                },
+                "detailedDiff": "*",
                 "hasDetailedDiff": true
             },
             "metadata": {

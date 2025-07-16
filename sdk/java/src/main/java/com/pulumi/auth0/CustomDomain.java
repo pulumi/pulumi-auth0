@@ -6,6 +6,7 @@ package com.pulumi.auth0;
 import com.pulumi.auth0.CustomDomainArgs;
 import com.pulumi.auth0.Utilities;
 import com.pulumi.auth0.inputs.CustomDomainState;
+import com.pulumi.auth0.outputs.CustomDomainCertificate;
 import com.pulumi.auth0.outputs.CustomDomainVerification;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -14,6 +15,7 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -48,6 +50,11 @@ import javax.annotation.Nullable;
  *         var myCustomDomain = new CustomDomain("myCustomDomain", CustomDomainArgs.builder()
  *             .domain("auth.example.com")
  *             .type("auth0_managed_certs")
+ *             .tlsPolicy("recommended")
+ *             .domainMetadata(Map.ofEntries(
+ *                 Map.entry("key1", "value1"),
+ *                 Map.entry("key2", "value2")
+ *             ))
  *             .build());
  * 
  *     }
@@ -73,6 +80,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="auth0:index/customDomain:CustomDomain")
 public class CustomDomain extends com.pulumi.resources.CustomResource {
+    /**
+     * The Custom Domain certificate.
+     * 
+     */
+    @Export(name="certificates", refs={List.class,CustomDomainCertificate.class}, tree="[0,1]")
+    private Output<List<CustomDomainCertificate>> certificates;
+
+    /**
+     * @return The Custom Domain certificate.
+     * 
+     */
+    public Output<List<CustomDomainCertificate>> certificates() {
+        return this.certificates;
+    }
     /**
      * The HTTP header to fetch the client&#39;s IP address. Cannot be set on auth0_managed domains.
      * 
@@ -102,6 +123,20 @@ public class CustomDomain extends com.pulumi.resources.CustomResource {
         return this.domain;
     }
     /**
+     * Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed.
+     * 
+     */
+    @Export(name="domainMetadata", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> domainMetadata;
+
+    /**
+     * @return Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> domainMetadata() {
+        return Codegen.optional(this.domainMetadata);
+    }
+    /**
      * Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
      * 
      */
@@ -118,7 +153,11 @@ public class CustomDomain extends com.pulumi.resources.CustomResource {
     /**
      * Indicates whether this is a primary domain.
      * 
+     * @deprecated
+     * Primary field is no longer used and will be removed in a future release.
+     * 
      */
+    @Deprecated /* Primary field is no longer used and will be removed in a future release. */
     @Export(name="primary", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> primary;
 

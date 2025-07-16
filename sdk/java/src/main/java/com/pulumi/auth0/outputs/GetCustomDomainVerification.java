@@ -6,24 +6,61 @@ package com.pulumi.auth0.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
+import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetCustomDomainVerification {
     /**
-     * @return Verification methods for the domain.
+     * @return Contains error message, if any, from the last DNS verification check.
+     * 
+     */
+    private String errorMsg;
+    /**
+     * @return Indicates the last time the domain was successfully verified.
+     * 
+     */
+    private String lastVerifiedAt;
+    /**
+     * @return Defines the list of domain verification methods used.
      * 
      */
     private List<Object> methods;
+    /**
+     * @return Represents the current status of the domain verification process.
+     * 
+     */
+    private String status;
 
     private GetCustomDomainVerification() {}
     /**
-     * @return Verification methods for the domain.
+     * @return Contains error message, if any, from the last DNS verification check.
+     * 
+     */
+    public String errorMsg() {
+        return this.errorMsg;
+    }
+    /**
+     * @return Indicates the last time the domain was successfully verified.
+     * 
+     */
+    public String lastVerifiedAt() {
+        return this.lastVerifiedAt;
+    }
+    /**
+     * @return Defines the list of domain verification methods used.
      * 
      */
     public List<Object> methods() {
         return this.methods;
+    }
+    /**
+     * @return Represents the current status of the domain verification process.
+     * 
+     */
+    public String status() {
+        return this.status;
     }
 
     public static Builder builder() {
@@ -35,13 +72,35 @@ public final class GetCustomDomainVerification {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String errorMsg;
+        private String lastVerifiedAt;
         private List<Object> methods;
+        private String status;
         public Builder() {}
         public Builder(GetCustomDomainVerification defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.errorMsg = defaults.errorMsg;
+    	      this.lastVerifiedAt = defaults.lastVerifiedAt;
     	      this.methods = defaults.methods;
+    	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
+        public Builder errorMsg(String errorMsg) {
+            if (errorMsg == null) {
+              throw new MissingRequiredPropertyException("GetCustomDomainVerification", "errorMsg");
+            }
+            this.errorMsg = errorMsg;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder lastVerifiedAt(String lastVerifiedAt) {
+            if (lastVerifiedAt == null) {
+              throw new MissingRequiredPropertyException("GetCustomDomainVerification", "lastVerifiedAt");
+            }
+            this.lastVerifiedAt = lastVerifiedAt;
+            return this;
+        }
         @CustomType.Setter
         public Builder methods(List<Object> methods) {
             if (methods == null) {
@@ -53,9 +112,20 @@ public final class GetCustomDomainVerification {
         public Builder methods(Object... methods) {
             return methods(List.of(methods));
         }
+        @CustomType.Setter
+        public Builder status(String status) {
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetCustomDomainVerification", "status");
+            }
+            this.status = status;
+            return this;
+        }
         public GetCustomDomainVerification build() {
             final var _resultValue = new GetCustomDomainVerification();
+            _resultValue.errorMsg = errorMsg;
+            _resultValue.lastVerifiedAt = lastVerifiedAt;
             _resultValue.methods = methods;
+            _resultValue.status = status;
             return _resultValue;
         }
     }

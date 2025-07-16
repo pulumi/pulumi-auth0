@@ -45,14 +45,14 @@ public final class PromptCustomTextArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The term `prompt` is used to refer to a specific step in the login flow. Options include: `login`, `login-id`, `login-password`, `login-passwordless`, `login-email-verification`, `signup`, `signup-id`, `signup-password`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `reset-password`, `custom-form`, `consent`, `logout`, `mfa-push`, `mfa-otp`, `mfa-voice`, `mfa-phone`, `mfa-webauthn`, `mfa-sms`, `mfa-email`, `mfa-recovery-code`, `mfa`, `status`, `device-flow`, `email-verification`, `email-otp-challenge`, `organizations`, `invitation`, `common`, `passkeys`, `captcha`.
+     * The term `prompt` is used to refer to a specific step in the login flow. Options include: `login`, `login-id`, `login-password`, `login-passwordless`, `login-email-verification`, `signup`, `signup-id`, `signup-password`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `reset-password`, `custom-form`, `consent`, `customized-consent`, `logout`, `mfa-push`, `mfa-otp`, `mfa-voice`, `mfa-phone`, `mfa-webauthn`, `mfa-sms`, `mfa-email`, `mfa-recovery-code`, `mfa`, `status`, `device-flow`, `email-verification`, `email-otp-challenge`, `organizations`, `invitation`, `common`, `passkeys`, `captcha`, `brute-force-protection`.
      * 
      */
     @Import(name="prompt", required=true)
     private Output<String> prompt;
 
     /**
-     * @return The term `prompt` is used to refer to a specific step in the login flow. Options include: `login`, `login-id`, `login-password`, `login-passwordless`, `login-email-verification`, `signup`, `signup-id`, `signup-password`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `reset-password`, `custom-form`, `consent`, `logout`, `mfa-push`, `mfa-otp`, `mfa-voice`, `mfa-phone`, `mfa-webauthn`, `mfa-sms`, `mfa-email`, `mfa-recovery-code`, `mfa`, `status`, `device-flow`, `email-verification`, `email-otp-challenge`, `organizations`, `invitation`, `common`, `passkeys`, `captcha`.
+     * @return The term `prompt` is used to refer to a specific step in the login flow. Options include: `login`, `login-id`, `login-password`, `login-passwordless`, `login-email-verification`, `signup`, `signup-id`, `signup-password`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `reset-password`, `custom-form`, `consent`, `customized-consent`, `logout`, `mfa-push`, `mfa-otp`, `mfa-voice`, `mfa-phone`, `mfa-webauthn`, `mfa-sms`, `mfa-email`, `mfa-recovery-code`, `mfa`, `status`, `device-flow`, `email-verification`, `email-otp-challenge`, `organizations`, `invitation`, `common`, `passkeys`, `captcha`, `brute-force-protection`.
      * 
      */
     public Output<String> prompt() {
@@ -128,7 +128,7 @@ public final class PromptCustomTextArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param prompt The term `prompt` is used to refer to a specific step in the login flow. Options include: `login`, `login-id`, `login-password`, `login-passwordless`, `login-email-verification`, `signup`, `signup-id`, `signup-password`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `reset-password`, `custom-form`, `consent`, `logout`, `mfa-push`, `mfa-otp`, `mfa-voice`, `mfa-phone`, `mfa-webauthn`, `mfa-sms`, `mfa-email`, `mfa-recovery-code`, `mfa`, `status`, `device-flow`, `email-verification`, `email-otp-challenge`, `organizations`, `invitation`, `common`, `passkeys`, `captcha`.
+         * @param prompt The term `prompt` is used to refer to a specific step in the login flow. Options include: `login`, `login-id`, `login-password`, `login-passwordless`, `login-email-verification`, `signup`, `signup-id`, `signup-password`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `reset-password`, `custom-form`, `consent`, `customized-consent`, `logout`, `mfa-push`, `mfa-otp`, `mfa-voice`, `mfa-phone`, `mfa-webauthn`, `mfa-sms`, `mfa-email`, `mfa-recovery-code`, `mfa`, `status`, `device-flow`, `email-verification`, `email-otp-challenge`, `organizations`, `invitation`, `common`, `passkeys`, `captcha`, `brute-force-protection`.
          * 
          * @return builder
          * 
@@ -139,7 +139,7 @@ public final class PromptCustomTextArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param prompt The term `prompt` is used to refer to a specific step in the login flow. Options include: `login`, `login-id`, `login-password`, `login-passwordless`, `login-email-verification`, `signup`, `signup-id`, `signup-password`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `reset-password`, `custom-form`, `consent`, `logout`, `mfa-push`, `mfa-otp`, `mfa-voice`, `mfa-phone`, `mfa-webauthn`, `mfa-sms`, `mfa-email`, `mfa-recovery-code`, `mfa`, `status`, `device-flow`, `email-verification`, `email-otp-challenge`, `organizations`, `invitation`, `common`, `passkeys`, `captcha`.
+         * @param prompt The term `prompt` is used to refer to a specific step in the login flow. Options include: `login`, `login-id`, `login-password`, `login-passwordless`, `login-email-verification`, `signup`, `signup-id`, `signup-password`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `reset-password`, `custom-form`, `consent`, `customized-consent`, `logout`, `mfa-push`, `mfa-otp`, `mfa-voice`, `mfa-phone`, `mfa-webauthn`, `mfa-sms`, `mfa-email`, `mfa-recovery-code`, `mfa`, `status`, `device-flow`, `email-verification`, `email-otp-challenge`, `organizations`, `invitation`, `common`, `passkeys`, `captcha`, `brute-force-protection`.
          * 
          * @return builder
          * 

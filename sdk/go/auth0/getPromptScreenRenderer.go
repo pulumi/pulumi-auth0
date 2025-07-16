@@ -36,6 +36,8 @@ type LookupPromptScreenRendererResult struct {
 	ContextConfigurations []string `pulumi:"contextConfigurations"`
 	// Override Universal Login default head tags
 	DefaultHeadTagsDisabled bool `pulumi:"defaultHeadTagsDisabled"`
+	// Optional filters to apply rendering rules to specific entities. `matchType` and at least one of the entity arrays are required.
+	Filters []GetPromptScreenRendererFilter `pulumi:"filters"`
 	// An array of head tags
 	HeadTags string `pulumi:"headTags"`
 	// The provider-assigned unique ID for this managed resource.
@@ -48,6 +50,8 @@ type LookupPromptScreenRendererResult struct {
 	ScreenName string `pulumi:"screenName"`
 	// Tenant ID
 	Tenant string `pulumi:"tenant"`
+	// Use page template with ACUL
+	UsePageTemplate bool `pulumi:"usePageTemplate"`
 }
 
 func LookupPromptScreenRendererOutput(ctx *pulumi.Context, args LookupPromptScreenRendererOutputArgs, opts ...pulumi.InvokeOption) LookupPromptScreenRendererResultOutput {
@@ -96,6 +100,11 @@ func (o LookupPromptScreenRendererResultOutput) DefaultHeadTagsDisabled() pulumi
 	return o.ApplyT(func(v LookupPromptScreenRendererResult) bool { return v.DefaultHeadTagsDisabled }).(pulumi.BoolOutput)
 }
 
+// Optional filters to apply rendering rules to specific entities. `matchType` and at least one of the entity arrays are required.
+func (o LookupPromptScreenRendererResultOutput) Filters() GetPromptScreenRendererFilterArrayOutput {
+	return o.ApplyT(func(v LookupPromptScreenRendererResult) []GetPromptScreenRendererFilter { return v.Filters }).(GetPromptScreenRendererFilterArrayOutput)
+}
+
 // An array of head tags
 func (o LookupPromptScreenRendererResultOutput) HeadTags() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPromptScreenRendererResult) string { return v.HeadTags }).(pulumi.StringOutput)
@@ -124,6 +133,11 @@ func (o LookupPromptScreenRendererResultOutput) ScreenName() pulumi.StringOutput
 // Tenant ID
 func (o LookupPromptScreenRendererResultOutput) Tenant() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPromptScreenRendererResult) string { return v.Tenant }).(pulumi.StringOutput)
+}
+
+// Use page template with ACUL
+func (o LookupPromptScreenRendererResultOutput) UsePageTemplate() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupPromptScreenRendererResult) bool { return v.UsePageTemplate }).(pulumi.BoolOutput)
 }
 
 func init() {

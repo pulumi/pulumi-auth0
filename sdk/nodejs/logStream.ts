@@ -96,7 +96,7 @@ export class LogStream extends pulumi.CustomResource {
     /**
      * Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered. Filters available: `auth.ancillary.fail`, `auth.ancillary.success`, `auth.login.fail`, `auth.login.notification`, `auth.login.success`, `auth.logout.fail`, `auth.logout.success`, `auth.signup.fail`, `auth.signup.success`, `auth.silent_auth.fail`, `auth.silent_auth.success`, `auth.token_exchange.fail`, `auth.token_exchange.success`, `management.fail`, `management.success`, `system.notification`, `user.fail`, `user.notification`, `user.success`, `other`.
      */
-    public readonly filters!: pulumi.Output<{[key: string]: string}[] | undefined>;
+    public readonly filters!: pulumi.Output<{[key: string]: string}[]>;
     /**
      * Set True for priority log streams, False for non-priority
      */

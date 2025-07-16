@@ -8,11 +8,43 @@ import * as utilities from "./utilities";
 
 /**
  * Data source to retrieve the custom domain configuration.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * const myCustomDomain = new auth0.CustomDomain("my_custom_domain", {
+ *     domain: "example.auth.tempdomain.com",
+ *     type: "auth0_managed_certs",
+ *     tlsPolicy: "recommended",
+ *     domainMetadata: {
+ *         key1: "value1",
+ *         key2: "value2",
+ *     },
+ * });
+ * const test = auth0.getCustomDomainOutput({
+ *     customDomainId: myCustomDomain.id,
+ * });
+ * ```
  */
-export function getCustomDomain(opts?: pulumi.InvokeOptions): Promise<GetCustomDomainResult> {
+export function getCustomDomain(args?: GetCustomDomainArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomDomainResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("auth0:index/getCustomDomain:getCustomDomain", {
+        "customDomainId": args.customDomainId,
     }, opts);
+}
+
+/**
+ * A collection of arguments for invoking getCustomDomain.
+ */
+export interface GetCustomDomainArgs {
+    /**
+     * The ID of the Custom Domain.
+     */
+    customDomainId?: string;
 }
 
 /**
@@ -20,13 +52,25 @@ export function getCustomDomain(opts?: pulumi.InvokeOptions): Promise<GetCustomD
  */
 export interface GetCustomDomainResult {
     /**
+     * The Custom Domain certificate.
+     */
+    readonly certificates: outputs.GetCustomDomainCertificate[];
+    /**
      * The HTTP header to fetch the client's IP address. Cannot be set on auth0Managed domains.
      */
     readonly customClientIpHeader: string;
     /**
+     * The ID of the Custom Domain.
+     */
+    readonly customDomainId?: string;
+    /**
      * Name of the custom domain.
      */
     readonly domain: string;
+    /**
+     * Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed.
+     */
+    readonly domainMetadata: {[key: string]: string};
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -58,9 +102,41 @@ export interface GetCustomDomainResult {
 }
 /**
  * Data source to retrieve the custom domain configuration.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * const myCustomDomain = new auth0.CustomDomain("my_custom_domain", {
+ *     domain: "example.auth.tempdomain.com",
+ *     type: "auth0_managed_certs",
+ *     tlsPolicy: "recommended",
+ *     domainMetadata: {
+ *         key1: "value1",
+ *         key2: "value2",
+ *     },
+ * });
+ * const test = auth0.getCustomDomainOutput({
+ *     customDomainId: myCustomDomain.id,
+ * });
+ * ```
  */
-export function getCustomDomainOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCustomDomainResult> {
+export function getCustomDomainOutput(args?: GetCustomDomainOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCustomDomainResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("auth0:index/getCustomDomain:getCustomDomain", {
+        "customDomainId": args.customDomainId,
     }, opts);
+}
+
+/**
+ * A collection of arguments for invoking getCustomDomain.
+ */
+export interface GetCustomDomainOutputArgs {
+    /**
+     * The ID of the Custom Domain.
+     */
+    customDomainId?: pulumi.Input<string>;
 }

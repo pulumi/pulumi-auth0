@@ -29,6 +29,18 @@ func GetCliLogin(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "auth0:cliLogin")
 }
 
+// The private key used to sign the client assertion JWT. It can also be sourced from the
+// `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
+func GetClientAssertionPrivateKey(ctx *pulumi.Context) string {
+	return config.Get(ctx, "auth0:clientAssertionPrivateKey")
+}
+
+// The algorithm used to sign the client assertion JWT. It can also be sourced from the
+// `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
+func GetClientAssertionSigningAlg(ctx *pulumi.Context) string {
+	return config.Get(ctx, "auth0:clientAssertionSigningAlg")
+}
+
 // Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.
 func GetClientId(ctx *pulumi.Context) string {
 	return config.Get(ctx, "auth0:clientId")

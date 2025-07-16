@@ -110,14 +110,14 @@ public class LogStream extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="filters", refs={List.class,Map.class,String.class}, tree="[0,[1,2,2]]")
-    private Output</* @Nullable */ List<Map<String,String>>> filters;
+    private Output<List<Map<String,String>>> filters;
 
     /**
      * @return Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered. Filters available: `auth.ancillary.fail`, `auth.ancillary.success`, `auth.login.fail`, `auth.login.notification`, `auth.login.success`, `auth.logout.fail`, `auth.logout.success`, `auth.signup.fail`, `auth.signup.success`, `auth.silent_auth.fail`, `auth.silent_auth.success`, `auth.token_exchange.fail`, `auth.token_exchange.success`, `management.fail`, `management.success`, `system.notification`, `user.fail`, `user.notification`, `user.success`, `other`.
      * 
      */
-    public Output<Optional<List<Map<String,String>>>> filters() {
-        return Codegen.optional(this.filters);
+    public Output<List<Map<String,String>>> filters() {
+        return this.filters;
     }
     /**
      * Set True for priority log streams, False for non-priority

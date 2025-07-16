@@ -6,6 +6,7 @@ package com.pulumi.auth0.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Object;
+import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,24 +18,72 @@ public final class CustomDomainVerificationArgs extends com.pulumi.resources.Res
     public static final CustomDomainVerificationArgs Empty = new CustomDomainVerificationArgs();
 
     /**
-     * Verification methods for the domain.
+     * Contains error message, if any, from the last DNS verification check.
+     * 
+     */
+    @Import(name="errorMsg")
+    private @Nullable Output<String> errorMsg;
+
+    /**
+     * @return Contains error message, if any, from the last DNS verification check.
+     * 
+     */
+    public Optional<Output<String>> errorMsg() {
+        return Optional.ofNullable(this.errorMsg);
+    }
+
+    /**
+     * Indicates the last time the domain was successfully verified.
+     * 
+     */
+    @Import(name="lastVerifiedAt")
+    private @Nullable Output<String> lastVerifiedAt;
+
+    /**
+     * @return Indicates the last time the domain was successfully verified.
+     * 
+     */
+    public Optional<Output<String>> lastVerifiedAt() {
+        return Optional.ofNullable(this.lastVerifiedAt);
+    }
+
+    /**
+     * Defines the list of domain verification methods used.
      * 
      */
     @Import(name="methods")
     private @Nullable Output<List<Object>> methods;
 
     /**
-     * @return Verification methods for the domain.
+     * @return Defines the list of domain verification methods used.
      * 
      */
     public Optional<Output<List<Object>>> methods() {
         return Optional.ofNullable(this.methods);
     }
 
+    /**
+     * Represents the current status of the domain verification process.
+     * 
+     */
+    @Import(name="status")
+    private @Nullable Output<String> status;
+
+    /**
+     * @return Represents the current status of the domain verification process.
+     * 
+     */
+    public Optional<Output<String>> status() {
+        return Optional.ofNullable(this.status);
+    }
+
     private CustomDomainVerificationArgs() {}
 
     private CustomDomainVerificationArgs(CustomDomainVerificationArgs $) {
+        this.errorMsg = $.errorMsg;
+        this.lastVerifiedAt = $.lastVerifiedAt;
         this.methods = $.methods;
+        this.status = $.status;
     }
 
     public static Builder builder() {
@@ -56,7 +105,49 @@ public final class CustomDomainVerificationArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param methods Verification methods for the domain.
+         * @param errorMsg Contains error message, if any, from the last DNS verification check.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder errorMsg(@Nullable Output<String> errorMsg) {
+            $.errorMsg = errorMsg;
+            return this;
+        }
+
+        /**
+         * @param errorMsg Contains error message, if any, from the last DNS verification check.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder errorMsg(String errorMsg) {
+            return errorMsg(Output.of(errorMsg));
+        }
+
+        /**
+         * @param lastVerifiedAt Indicates the last time the domain was successfully verified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastVerifiedAt(@Nullable Output<String> lastVerifiedAt) {
+            $.lastVerifiedAt = lastVerifiedAt;
+            return this;
+        }
+
+        /**
+         * @param lastVerifiedAt Indicates the last time the domain was successfully verified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastVerifiedAt(String lastVerifiedAt) {
+            return lastVerifiedAt(Output.of(lastVerifiedAt));
+        }
+
+        /**
+         * @param methods Defines the list of domain verification methods used.
          * 
          * @return builder
          * 
@@ -67,7 +158,7 @@ public final class CustomDomainVerificationArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param methods Verification methods for the domain.
+         * @param methods Defines the list of domain verification methods used.
          * 
          * @return builder
          * 
@@ -77,13 +168,34 @@ public final class CustomDomainVerificationArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param methods Verification methods for the domain.
+         * @param methods Defines the list of domain verification methods used.
          * 
          * @return builder
          * 
          */
         public Builder methods(Object... methods) {
             return methods(List.of(methods));
+        }
+
+        /**
+         * @param status Represents the current status of the domain verification process.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(@Nullable Output<String> status) {
+            $.status = status;
+            return this;
+        }
+
+        /**
+         * @param status Represents the current status of the domain verification process.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(String status) {
+            return status(Output.of(status));
         }
 
         public CustomDomainVerificationArgs build() {

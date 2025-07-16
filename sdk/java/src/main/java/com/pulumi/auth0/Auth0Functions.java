@@ -11,9 +11,13 @@ import com.pulumi.auth0.inputs.GetClientPlainArgs;
 import com.pulumi.auth0.inputs.GetClientsArgs;
 import com.pulumi.auth0.inputs.GetClientsPlainArgs;
 import com.pulumi.auth0.inputs.GetConnectionArgs;
+import com.pulumi.auth0.inputs.GetConnectionKeysArgs;
+import com.pulumi.auth0.inputs.GetConnectionKeysPlainArgs;
 import com.pulumi.auth0.inputs.GetConnectionPlainArgs;
 import com.pulumi.auth0.inputs.GetConnectionScimConfigurationArgs;
 import com.pulumi.auth0.inputs.GetConnectionScimConfigurationPlainArgs;
+import com.pulumi.auth0.inputs.GetCustomDomainArgs;
+import com.pulumi.auth0.inputs.GetCustomDomainPlainArgs;
 import com.pulumi.auth0.inputs.GetFlowArgs;
 import com.pulumi.auth0.inputs.GetFlowPlainArgs;
 import com.pulumi.auth0.inputs.GetFlowVaultConnectionArgs;
@@ -46,6 +50,7 @@ import com.pulumi.auth0.outputs.GetBrandingResult;
 import com.pulumi.auth0.outputs.GetBrandingThemeResult;
 import com.pulumi.auth0.outputs.GetClientResult;
 import com.pulumi.auth0.outputs.GetClientsResult;
+import com.pulumi.auth0.outputs.GetConnectionKeysResult;
 import com.pulumi.auth0.outputs.GetConnectionResult;
 import com.pulumi.auth0.outputs.GetConnectionScimConfigurationResult;
 import com.pulumi.auth0.outputs.GetCustomDomainResult;
@@ -2000,6 +2005,221 @@ public final class Auth0Functions {
         return Deployment.getInstance().invokeAsync("auth0:index/getConnection:getConnection", TypeShape.of(GetConnectionResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieve the list of signing keys for a specific Auth0 connection. (Okta/OIDC only)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetConnectionKeysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An Auth0 Connection Keys loaded using its Connection ID.
+     *         final var myKeys = Auth0Functions.getConnectionKeys(GetConnectionKeysArgs.builder()
+     *             .connectionId("con_xxxxxxxxxxxxx")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetConnectionKeysResult> getConnectionKeys(GetConnectionKeysArgs args) {
+        return getConnectionKeys(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieve the list of signing keys for a specific Auth0 connection. (Okta/OIDC only)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetConnectionKeysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An Auth0 Connection Keys loaded using its Connection ID.
+     *         final var myKeys = Auth0Functions.getConnectionKeys(GetConnectionKeysArgs.builder()
+     *             .connectionId("con_xxxxxxxxxxxxx")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetConnectionKeysResult> getConnectionKeysPlain(GetConnectionKeysPlainArgs args) {
+        return getConnectionKeysPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieve the list of signing keys for a specific Auth0 connection. (Okta/OIDC only)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetConnectionKeysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An Auth0 Connection Keys loaded using its Connection ID.
+     *         final var myKeys = Auth0Functions.getConnectionKeys(GetConnectionKeysArgs.builder()
+     *             .connectionId("con_xxxxxxxxxxxxx")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetConnectionKeysResult> getConnectionKeys(GetConnectionKeysArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getConnectionKeys:getConnectionKeys", TypeShape.of(GetConnectionKeysResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieve the list of signing keys for a specific Auth0 connection. (Okta/OIDC only)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetConnectionKeysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An Auth0 Connection Keys loaded using its Connection ID.
+     *         final var myKeys = Auth0Functions.getConnectionKeys(GetConnectionKeysArgs.builder()
+     *             .connectionId("con_xxxxxxxxxxxxx")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetConnectionKeysResult> getConnectionKeys(GetConnectionKeysArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getConnectionKeys:getConnectionKeys", TypeShape.of(GetConnectionKeysResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieve the list of signing keys for a specific Auth0 connection. (Okta/OIDC only)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetConnectionKeysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An Auth0 Connection Keys loaded using its Connection ID.
+     *         final var myKeys = Auth0Functions.getConnectionKeys(GetConnectionKeysArgs.builder()
+     *             .connectionId("con_xxxxxxxxxxxxx")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetConnectionKeysResult> getConnectionKeysPlain(GetConnectionKeysPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("auth0:index/getConnectionKeys:getConnectionKeys", TypeShape.of(GetConnectionKeysResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Data source to retrieve a SCIM configuration for an Auth0 connection by `connection_id`.
      * 
      * ## Example Usage
@@ -2332,50 +2552,379 @@ public final class Auth0Functions {
     /**
      * Data source to retrieve the custom domain configuration.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.CustomDomain;
+     * import com.pulumi.auth0.CustomDomainArgs;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetCustomDomainArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var myCustomDomain = new CustomDomain("myCustomDomain", CustomDomainArgs.builder()
+     *             .domain("example.auth.tempdomain.com")
+     *             .type("auth0_managed_certs")
+     *             .tlsPolicy("recommended")
+     *             .domainMetadata(Map.ofEntries(
+     *                 Map.entry("key1", "value1"),
+     *                 Map.entry("key2", "value2")
+     *             ))
+     *             .build());
+     * 
+     *         final var test = Auth0Functions.getCustomDomain(GetCustomDomainArgs.builder()
+     *             .customDomainId(myCustomDomain.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetCustomDomainResult> getCustomDomain() {
-        return getCustomDomain(InvokeArgs.Empty, InvokeOptions.Empty);
+        return getCustomDomain(GetCustomDomainArgs.Empty, InvokeOptions.Empty);
     }
     /**
      * Data source to retrieve the custom domain configuration.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.CustomDomain;
+     * import com.pulumi.auth0.CustomDomainArgs;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetCustomDomainArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var myCustomDomain = new CustomDomain("myCustomDomain", CustomDomainArgs.builder()
+     *             .domain("example.auth.tempdomain.com")
+     *             .type("auth0_managed_certs")
+     *             .tlsPolicy("recommended")
+     *             .domainMetadata(Map.ofEntries(
+     *                 Map.entry("key1", "value1"),
+     *                 Map.entry("key2", "value2")
+     *             ))
+     *             .build());
+     * 
+     *         final var test = Auth0Functions.getCustomDomain(GetCustomDomainArgs.builder()
+     *             .customDomainId(myCustomDomain.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCustomDomainResult> getCustomDomainPlain() {
-        return getCustomDomainPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+        return getCustomDomainPlain(GetCustomDomainPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
      * Data source to retrieve the custom domain configuration.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.CustomDomain;
+     * import com.pulumi.auth0.CustomDomainArgs;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetCustomDomainArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var myCustomDomain = new CustomDomain("myCustomDomain", CustomDomainArgs.builder()
+     *             .domain("example.auth.tempdomain.com")
+     *             .type("auth0_managed_certs")
+     *             .tlsPolicy("recommended")
+     *             .domainMetadata(Map.ofEntries(
+     *                 Map.entry("key1", "value1"),
+     *                 Map.entry("key2", "value2")
+     *             ))
+     *             .build());
+     * 
+     *         final var test = Auth0Functions.getCustomDomain(GetCustomDomainArgs.builder()
+     *             .customDomainId(myCustomDomain.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
-    public static Output<GetCustomDomainResult> getCustomDomain(InvokeArgs args) {
+    public static Output<GetCustomDomainResult> getCustomDomain(GetCustomDomainArgs args) {
         return getCustomDomain(args, InvokeOptions.Empty);
     }
     /**
      * Data source to retrieve the custom domain configuration.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.CustomDomain;
+     * import com.pulumi.auth0.CustomDomainArgs;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetCustomDomainArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var myCustomDomain = new CustomDomain("myCustomDomain", CustomDomainArgs.builder()
+     *             .domain("example.auth.tempdomain.com")
+     *             .type("auth0_managed_certs")
+     *             .tlsPolicy("recommended")
+     *             .domainMetadata(Map.ofEntries(
+     *                 Map.entry("key1", "value1"),
+     *                 Map.entry("key2", "value2")
+     *             ))
+     *             .build());
+     * 
+     *         final var test = Auth0Functions.getCustomDomain(GetCustomDomainArgs.builder()
+     *             .customDomainId(myCustomDomain.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
-    public static CompletableFuture<GetCustomDomainResult> getCustomDomainPlain(InvokeArgs args) {
+    public static CompletableFuture<GetCustomDomainResult> getCustomDomainPlain(GetCustomDomainPlainArgs args) {
         return getCustomDomainPlain(args, InvokeOptions.Empty);
     }
     /**
      * Data source to retrieve the custom domain configuration.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.CustomDomain;
+     * import com.pulumi.auth0.CustomDomainArgs;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetCustomDomainArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var myCustomDomain = new CustomDomain("myCustomDomain", CustomDomainArgs.builder()
+     *             .domain("example.auth.tempdomain.com")
+     *             .type("auth0_managed_certs")
+     *             .tlsPolicy("recommended")
+     *             .domainMetadata(Map.ofEntries(
+     *                 Map.entry("key1", "value1"),
+     *                 Map.entry("key2", "value2")
+     *             ))
+     *             .build());
+     * 
+     *         final var test = Auth0Functions.getCustomDomain(GetCustomDomainArgs.builder()
+     *             .customDomainId(myCustomDomain.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
-    public static Output<GetCustomDomainResult> getCustomDomain(InvokeArgs args, InvokeOptions options) {
+    public static Output<GetCustomDomainResult> getCustomDomain(GetCustomDomainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("auth0:index/getCustomDomain:getCustomDomain", TypeShape.of(GetCustomDomainResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source to retrieve the custom domain configuration.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.CustomDomain;
+     * import com.pulumi.auth0.CustomDomainArgs;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetCustomDomainArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var myCustomDomain = new CustomDomain("myCustomDomain", CustomDomainArgs.builder()
+     *             .domain("example.auth.tempdomain.com")
+     *             .type("auth0_managed_certs")
+     *             .tlsPolicy("recommended")
+     *             .domainMetadata(Map.ofEntries(
+     *                 Map.entry("key1", "value1"),
+     *                 Map.entry("key2", "value2")
+     *             ))
+     *             .build());
+     * 
+     *         final var test = Auth0Functions.getCustomDomain(GetCustomDomainArgs.builder()
+     *             .customDomainId(myCustomDomain.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
-    public static Output<GetCustomDomainResult> getCustomDomain(InvokeArgs args, InvokeOutputOptions options) {
+    public static Output<GetCustomDomainResult> getCustomDomain(GetCustomDomainArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("auth0:index/getCustomDomain:getCustomDomain", TypeShape.of(GetCustomDomainResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source to retrieve the custom domain configuration.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.CustomDomain;
+     * import com.pulumi.auth0.CustomDomainArgs;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetCustomDomainArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var myCustomDomain = new CustomDomain("myCustomDomain", CustomDomainArgs.builder()
+     *             .domain("example.auth.tempdomain.com")
+     *             .type("auth0_managed_certs")
+     *             .tlsPolicy("recommended")
+     *             .domainMetadata(Map.ofEntries(
+     *                 Map.entry("key1", "value1"),
+     *                 Map.entry("key2", "value2")
+     *             ))
+     *             .build());
+     * 
+     *         final var test = Auth0Functions.getCustomDomain(GetCustomDomainArgs.builder()
+     *             .customDomainId(myCustomDomain.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
-    public static CompletableFuture<GetCustomDomainResult> getCustomDomainPlain(InvokeArgs args, InvokeOptions options) {
+    public static CompletableFuture<GetCustomDomainResult> getCustomDomainPlain(GetCustomDomainPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("auth0:index/getCustomDomain:getCustomDomain", TypeShape.of(GetCustomDomainResult.class), args, Utilities.withVersion(options));
     }
     /**

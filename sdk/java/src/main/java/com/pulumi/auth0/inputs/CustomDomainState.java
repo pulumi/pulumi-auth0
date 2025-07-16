@@ -3,12 +3,14 @@
 
 package com.pulumi.auth0.inputs;
 
+import com.pulumi.auth0.inputs.CustomDomainCertificateArgs;
 import com.pulumi.auth0.inputs.CustomDomainVerificationArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,6 +19,21 @@ import javax.annotation.Nullable;
 public final class CustomDomainState extends com.pulumi.resources.ResourceArgs {
 
     public static final CustomDomainState Empty = new CustomDomainState();
+
+    /**
+     * The Custom Domain certificate.
+     * 
+     */
+    @Import(name="certificates")
+    private @Nullable Output<List<CustomDomainCertificateArgs>> certificates;
+
+    /**
+     * @return The Custom Domain certificate.
+     * 
+     */
+    public Optional<Output<List<CustomDomainCertificateArgs>>> certificates() {
+        return Optional.ofNullable(this.certificates);
+    }
 
     /**
      * The HTTP header to fetch the client&#39;s IP address. Cannot be set on auth0_managed domains.
@@ -49,6 +66,21 @@ public final class CustomDomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed.
+     * 
+     */
+    @Import(name="domainMetadata")
+    private @Nullable Output<Map<String,String>> domainMetadata;
+
+    /**
+     * @return Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> domainMetadata() {
+        return Optional.ofNullable(this.domainMetadata);
+    }
+
+    /**
      * Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
      * 
      */
@@ -66,14 +98,22 @@ public final class CustomDomainState extends com.pulumi.resources.ResourceArgs {
     /**
      * Indicates whether this is a primary domain.
      * 
+     * @deprecated
+     * Primary field is no longer used and will be removed in a future release.
+     * 
      */
+    @Deprecated /* Primary field is no longer used and will be removed in a future release. */
     @Import(name="primary")
     private @Nullable Output<Boolean> primary;
 
     /**
      * @return Indicates whether this is a primary domain.
      * 
+     * @deprecated
+     * Primary field is no longer used and will be removed in a future release.
+     * 
      */
+    @Deprecated /* Primary field is no longer used and will be removed in a future release. */
     public Optional<Output<Boolean>> primary() {
         return Optional.ofNullable(this.primary);
     }
@@ -141,8 +181,10 @@ public final class CustomDomainState extends com.pulumi.resources.ResourceArgs {
     private CustomDomainState() {}
 
     private CustomDomainState(CustomDomainState $) {
+        this.certificates = $.certificates;
         this.customClientIpHeader = $.customClientIpHeader;
         this.domain = $.domain;
+        this.domainMetadata = $.domainMetadata;
         this.originDomainName = $.originDomainName;
         this.primary = $.primary;
         this.status = $.status;
@@ -167,6 +209,37 @@ public final class CustomDomainState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(CustomDomainState defaults) {
             $ = new CustomDomainState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param certificates The Custom Domain certificate.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certificates(@Nullable Output<List<CustomDomainCertificateArgs>> certificates) {
+            $.certificates = certificates;
+            return this;
+        }
+
+        /**
+         * @param certificates The Custom Domain certificate.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certificates(List<CustomDomainCertificateArgs> certificates) {
+            return certificates(Output.of(certificates));
+        }
+
+        /**
+         * @param certificates The Custom Domain certificate.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certificates(CustomDomainCertificateArgs... certificates) {
+            return certificates(List.of(certificates));
         }
 
         /**
@@ -212,6 +285,27 @@ public final class CustomDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param domainMetadata Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder domainMetadata(@Nullable Output<Map<String,String>> domainMetadata) {
+            $.domainMetadata = domainMetadata;
+            return this;
+        }
+
+        /**
+         * @param domainMetadata Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder domainMetadata(Map<String,String> domainMetadata) {
+            return domainMetadata(Output.of(domainMetadata));
+        }
+
+        /**
          * @param originDomainName Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
          * 
          * @return builder
@@ -237,7 +331,11 @@ public final class CustomDomainState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Primary field is no longer used and will be removed in a future release.
+         * 
          */
+        @Deprecated /* Primary field is no longer used and will be removed in a future release. */
         public Builder primary(@Nullable Output<Boolean> primary) {
             $.primary = primary;
             return this;
@@ -248,7 +346,11 @@ public final class CustomDomainState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Primary field is no longer used and will be removed in a future release.
+         * 
          */
+        @Deprecated /* Primary field is no longer used and will be removed in a future release. */
         public Builder primary(Boolean primary) {
             return primary(Output.of(primary));
         }

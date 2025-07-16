@@ -1706,6 +1706,14 @@ export interface ConnectionOptions {
      */
     tokenEndpoint?: pulumi.Input<string>;
     /**
+     * Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
+     */
+    tokenEndpointAuthMethod?: pulumi.Input<string>;
+    /**
+     * Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
+     */
+    tokenEndpointAuthSigningAlg?: pulumi.Input<string>;
+    /**
      * Configuration options for one-time passwords.
      */
     totp?: pulumi.Input<inputs.ConnectionOptionsTotp>;
@@ -2096,11 +2104,42 @@ export interface ConnectionScimConfigurationMapping {
     scim: pulumi.Input<string>;
 }
 
+export interface CustomDomainCertificate {
+    /**
+     * Name of the certificate authority that issued the certificate.
+     */
+    certificateAuthority?: pulumi.Input<string>;
+    /**
+     * Contains the error message if the provisioning process fails.
+     */
+    errorMsg?: pulumi.Input<string>;
+    /**
+     * Specifies the date by which the certificate should be renewed.
+     */
+    renewsBefore?: pulumi.Input<string>;
+    /**
+     * Indicates the current state of the certificate provisioning process.
+     */
+    status?: pulumi.Input<string>;
+}
+
 export interface CustomDomainVerification {
     /**
-     * Verification methods for the domain.
+     * Contains error message, if any, from the last DNS verification check.
+     */
+    errorMsg?: pulumi.Input<string>;
+    /**
+     * Indicates the last time the domain was successfully verified.
+     */
+    lastVerifiedAt?: pulumi.Input<string>;
+    /**
+     * Defines the list of domain verification methods used.
      */
     methods?: pulumi.Input<any[]>;
+    /**
+     * Represents the current status of the domain verification process.
+     */
+    status?: pulumi.Input<string>;
 }
 
 export interface EmailProviderCredentials {
@@ -2996,6 +3035,25 @@ export interface PromptScreenPartialsScreenPartialInsertionPoints {
      * Actions that go at the start of secondary actions.
      */
     secondaryActionsStart?: pulumi.Input<string>;
+}
+
+export interface PromptScreenRendererFilters {
+    /**
+     * An array of clients (applications) identified by id or a metadata key/value pair. Entity Limit: 25.
+     */
+    clients?: pulumi.Input<string>;
+    /**
+     * An array of domains identified by id or a metadata key/value pair. Entity Limit: 25.
+     */
+    domains?: pulumi.Input<string>;
+    /**
+     * Type of match to apply. Options: `includesAny`, `excludesAny`.
+     */
+    matchType: pulumi.Input<string>;
+    /**
+     * An array of organizations identified by id or a metadata key/value pair. Entity Limit: 25.
+     */
+    organizations?: pulumi.Input<string>;
 }
 
 export interface ResourceServerAuthorizationDetail {

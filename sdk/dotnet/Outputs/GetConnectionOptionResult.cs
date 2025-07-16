@@ -354,6 +354,14 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string TokenEndpoint;
         /// <summary>
+        /// Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
+        /// </summary>
+        public readonly string TokenEndpointAuthMethod;
+        /// <summary>
+        /// Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
+        /// </summary>
+        public readonly string TokenEndpointAuthSigningAlg;
+        /// <summary>
         /// Configuration options for one-time passwords.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetConnectionOptionTotpResult> Totps;
@@ -578,6 +586,10 @@ namespace Pulumi.Auth0.Outputs
 
             string tokenEndpoint,
 
+            string tokenEndpointAuthMethod,
+
+            string tokenEndpointAuthSigningAlg,
+
             ImmutableArray<Outputs.GetConnectionOptionTotpResult> totps,
 
             string twilioSid,
@@ -689,6 +701,8 @@ namespace Pulumi.Auth0.Outputs
             Template = template;
             TenantDomain = tenantDomain;
             TokenEndpoint = tokenEndpoint;
+            TokenEndpointAuthMethod = tokenEndpointAuthMethod;
+            TokenEndpointAuthSigningAlg = tokenEndpointAuthSigningAlg;
             Totps = totps;
             TwilioSid = twilioSid;
             TwilioToken = twilioToken;
