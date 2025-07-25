@@ -66,6 +66,14 @@ public final class Config {
         return Codegen.stringProp("clientSecret").config(config).get();
     }
 /**
+ * When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting
+ * overrides all resource specific `custom_domain_header` value
+ * 
+ */
+    public Optional<String> customDomainHeader() {
+        return Codegen.stringProp("customDomainHeader").config(config).get();
+    }
+/**
  * Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG`
  * environment variable.
  * 

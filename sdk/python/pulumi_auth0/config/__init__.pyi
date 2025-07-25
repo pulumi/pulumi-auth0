@@ -55,6 +55,12 @@ clientSecret: Optional[str]
 Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable.
 """
 
+customDomainHeader: Optional[str]
+"""
+When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting
+overrides all resource specific `custom_domain_header` value
+"""
+
 debug: Optional[bool]
 """
 Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG`

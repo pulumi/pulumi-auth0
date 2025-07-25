@@ -62,6 +62,21 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Sets the `Auth0-Custom-Domain` header on all requests for this resource. Global setting of provider takes precedence over resource specific param, if both are set.
+     * 
+     */
+    @Import(name="customDomainHeader")
+    private @Nullable Output<String> customDomainHeader;
+
+    /**
+     * @return Sets the `Auth0-Custom-Domain` header on all requests for this resource. Global setting of provider takes precedence over resource specific param, if both are set.
+     * 
+     */
+    public Optional<Output<String>> customDomainHeader() {
+        return Optional.ofNullable(this.customDomainHeader);
+    }
+
+    /**
      * Email address of the user.
      * 
      */
@@ -277,6 +292,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         this.appMetadata = $.appMetadata;
         this.blocked = $.blocked;
         this.connectionName = $.connectionName;
+        this.customDomainHeader = $.customDomainHeader;
         this.email = $.email;
         this.emailVerified = $.emailVerified;
         this.familyName = $.familyName;
@@ -372,6 +388,27 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder connectionName(String connectionName) {
             return connectionName(Output.of(connectionName));
+        }
+
+        /**
+         * @param customDomainHeader Sets the `Auth0-Custom-Domain` header on all requests for this resource. Global setting of provider takes precedence over resource specific param, if both are set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customDomainHeader(@Nullable Output<String> customDomainHeader) {
+            $.customDomainHeader = customDomainHeader;
+            return this;
+        }
+
+        /**
+         * @param customDomainHeader Sets the `Auth0-Custom-Domain` header on all requests for this resource. Global setting of provider takes precedence over resource specific param, if both are set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customDomainHeader(String customDomainHeader) {
+            return customDomainHeader(Output.of(customDomainHeader));
         }
 
         /**

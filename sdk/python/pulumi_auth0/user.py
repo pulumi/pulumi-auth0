@@ -23,6 +23,7 @@ class UserArgs:
                  connection_name: pulumi.Input[builtins.str],
                  app_metadata: Optional[pulumi.Input[builtins.str]] = None,
                  blocked: Optional[pulumi.Input[builtins.bool]] = None,
+                 custom_domain_header: Optional[pulumi.Input[builtins.str]] = None,
                  email: Optional[pulumi.Input[builtins.str]] = None,
                  email_verified: Optional[pulumi.Input[builtins.bool]] = None,
                  family_name: Optional[pulumi.Input[builtins.str]] = None,
@@ -42,6 +43,7 @@ class UserArgs:
         :param pulumi.Input[builtins.str] connection_name: Name of the connection from which the user information was sourced.
         :param pulumi.Input[builtins.str] app_metadata: Custom fields that store info about the user that impact the user's core functionality, such as how an application functions or what the user can access. Examples include support plans and IDs for external accounts.
         :param pulumi.Input[builtins.bool] blocked: Indicates whether the user is blocked or not.
+        :param pulumi.Input[builtins.str] custom_domain_header: Sets the `Auth0-Custom-Domain` header on all requests for this resource. Global setting of provider takes precedence over resource specific param, if both are set.
         :param pulumi.Input[builtins.str] email: Email address of the user.
         :param pulumi.Input[builtins.bool] email_verified: Indicates whether the email address has been verified.
         :param pulumi.Input[builtins.str] family_name: Family name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
@@ -62,6 +64,8 @@ class UserArgs:
             pulumi.set(__self__, "app_metadata", app_metadata)
         if blocked is not None:
             pulumi.set(__self__, "blocked", blocked)
+        if custom_domain_header is not None:
+            pulumi.set(__self__, "custom_domain_header", custom_domain_header)
         if email is not None:
             pulumi.set(__self__, "email", email)
         if email_verified is not None:
@@ -126,6 +130,18 @@ class UserArgs:
     @blocked.setter
     def blocked(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "blocked", value)
+
+    @property
+    @pulumi.getter(name="customDomainHeader")
+    def custom_domain_header(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Sets the `Auth0-Custom-Domain` header on all requests for this resource. Global setting of provider takes precedence over resource specific param, if both are set.
+        """
+        return pulumi.get(self, "custom_domain_header")
+
+    @custom_domain_header.setter
+    def custom_domain_header(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "custom_domain_header", value)
 
     @property
     @pulumi.getter
@@ -302,6 +318,7 @@ class _UserState:
                  app_metadata: Optional[pulumi.Input[builtins.str]] = None,
                  blocked: Optional[pulumi.Input[builtins.bool]] = None,
                  connection_name: Optional[pulumi.Input[builtins.str]] = None,
+                 custom_domain_header: Optional[pulumi.Input[builtins.str]] = None,
                  email: Optional[pulumi.Input[builtins.str]] = None,
                  email_verified: Optional[pulumi.Input[builtins.bool]] = None,
                  family_name: Optional[pulumi.Input[builtins.str]] = None,
@@ -321,6 +338,7 @@ class _UserState:
         :param pulumi.Input[builtins.str] app_metadata: Custom fields that store info about the user that impact the user's core functionality, such as how an application functions or what the user can access. Examples include support plans and IDs for external accounts.
         :param pulumi.Input[builtins.bool] blocked: Indicates whether the user is blocked or not.
         :param pulumi.Input[builtins.str] connection_name: Name of the connection from which the user information was sourced.
+        :param pulumi.Input[builtins.str] custom_domain_header: Sets the `Auth0-Custom-Domain` header on all requests for this resource. Global setting of provider takes precedence over resource specific param, if both are set.
         :param pulumi.Input[builtins.str] email: Email address of the user.
         :param pulumi.Input[builtins.bool] email_verified: Indicates whether the email address has been verified.
         :param pulumi.Input[builtins.str] family_name: Family name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
@@ -342,6 +360,8 @@ class _UserState:
             pulumi.set(__self__, "blocked", blocked)
         if connection_name is not None:
             pulumi.set(__self__, "connection_name", connection_name)
+        if custom_domain_header is not None:
+            pulumi.set(__self__, "custom_domain_header", custom_domain_header)
         if email is not None:
             pulumi.set(__self__, "email", email)
         if email_verified is not None:
@@ -406,6 +426,18 @@ class _UserState:
     @connection_name.setter
     def connection_name(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "connection_name", value)
+
+    @property
+    @pulumi.getter(name="customDomainHeader")
+    def custom_domain_header(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Sets the `Auth0-Custom-Domain` header on all requests for this resource. Global setting of provider takes precedence over resource specific param, if both are set.
+        """
+        return pulumi.get(self, "custom_domain_header")
+
+    @custom_domain_header.setter
+    def custom_domain_header(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "custom_domain_header", value)
 
     @property
     @pulumi.getter
@@ -585,6 +617,7 @@ class User(pulumi.CustomResource):
                  app_metadata: Optional[pulumi.Input[builtins.str]] = None,
                  blocked: Optional[pulumi.Input[builtins.bool]] = None,
                  connection_name: Optional[pulumi.Input[builtins.str]] = None,
+                 custom_domain_header: Optional[pulumi.Input[builtins.str]] = None,
                  email: Optional[pulumi.Input[builtins.str]] = None,
                  email_verified: Optional[pulumi.Input[builtins.bool]] = None,
                  family_name: Optional[pulumi.Input[builtins.str]] = None,
@@ -619,6 +652,14 @@ class User(pulumi.CustomResource):
             email_verified=True,
             password="passpass$12$12",
             picture="https://www.example.com/a-valid-picture-url.jpg")
+        # Create a user with custom_domain_header
+        auth0_user_with_custom_domain = auth0.User("auth0_user_with_custom_domain",
+            connection_name="Username-Password-Authentication",
+            username="your_new_user_",
+            email="change.username@acceptance.test.com",
+            email_verified=True,
+            password="MyPass123$",
+            custom_domain_header="my-custom.domain.org")
         ```
 
         ## Import
@@ -636,6 +677,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] app_metadata: Custom fields that store info about the user that impact the user's core functionality, such as how an application functions or what the user can access. Examples include support plans and IDs for external accounts.
         :param pulumi.Input[builtins.bool] blocked: Indicates whether the user is blocked or not.
         :param pulumi.Input[builtins.str] connection_name: Name of the connection from which the user information was sourced.
+        :param pulumi.Input[builtins.str] custom_domain_header: Sets the `Auth0-Custom-Domain` header on all requests for this resource. Global setting of provider takes precedence over resource specific param, if both are set.
         :param pulumi.Input[builtins.str] email: Email address of the user.
         :param pulumi.Input[builtins.bool] email_verified: Indicates whether the email address has been verified.
         :param pulumi.Input[builtins.str] family_name: Family name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
@@ -676,6 +718,14 @@ class User(pulumi.CustomResource):
             email_verified=True,
             password="passpass$12$12",
             picture="https://www.example.com/a-valid-picture-url.jpg")
+        # Create a user with custom_domain_header
+        auth0_user_with_custom_domain = auth0.User("auth0_user_with_custom_domain",
+            connection_name="Username-Password-Authentication",
+            username="your_new_user_",
+            email="change.username@acceptance.test.com",
+            email_verified=True,
+            password="MyPass123$",
+            custom_domain_header="my-custom.domain.org")
         ```
 
         ## Import
@@ -706,6 +756,7 @@ class User(pulumi.CustomResource):
                  app_metadata: Optional[pulumi.Input[builtins.str]] = None,
                  blocked: Optional[pulumi.Input[builtins.bool]] = None,
                  connection_name: Optional[pulumi.Input[builtins.str]] = None,
+                 custom_domain_header: Optional[pulumi.Input[builtins.str]] = None,
                  email: Optional[pulumi.Input[builtins.str]] = None,
                  email_verified: Optional[pulumi.Input[builtins.bool]] = None,
                  family_name: Optional[pulumi.Input[builtins.str]] = None,
@@ -734,6 +785,7 @@ class User(pulumi.CustomResource):
             if connection_name is None and not opts.urn:
                 raise TypeError("Missing required property 'connection_name'")
             __props__.__dict__["connection_name"] = connection_name
+            __props__.__dict__["custom_domain_header"] = custom_domain_header
             __props__.__dict__["email"] = email
             __props__.__dict__["email_verified"] = email_verified
             __props__.__dict__["family_name"] = family_name
@@ -763,6 +815,7 @@ class User(pulumi.CustomResource):
             app_metadata: Optional[pulumi.Input[builtins.str]] = None,
             blocked: Optional[pulumi.Input[builtins.bool]] = None,
             connection_name: Optional[pulumi.Input[builtins.str]] = None,
+            custom_domain_header: Optional[pulumi.Input[builtins.str]] = None,
             email: Optional[pulumi.Input[builtins.str]] = None,
             email_verified: Optional[pulumi.Input[builtins.bool]] = None,
             family_name: Optional[pulumi.Input[builtins.str]] = None,
@@ -787,6 +840,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] app_metadata: Custom fields that store info about the user that impact the user's core functionality, such as how an application functions or what the user can access. Examples include support plans and IDs for external accounts.
         :param pulumi.Input[builtins.bool] blocked: Indicates whether the user is blocked or not.
         :param pulumi.Input[builtins.str] connection_name: Name of the connection from which the user information was sourced.
+        :param pulumi.Input[builtins.str] custom_domain_header: Sets the `Auth0-Custom-Domain` header on all requests for this resource. Global setting of provider takes precedence over resource specific param, if both are set.
         :param pulumi.Input[builtins.str] email: Email address of the user.
         :param pulumi.Input[builtins.bool] email_verified: Indicates whether the email address has been verified.
         :param pulumi.Input[builtins.str] family_name: Family name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
@@ -809,6 +863,7 @@ class User(pulumi.CustomResource):
         __props__.__dict__["app_metadata"] = app_metadata
         __props__.__dict__["blocked"] = blocked
         __props__.__dict__["connection_name"] = connection_name
+        __props__.__dict__["custom_domain_header"] = custom_domain_header
         __props__.__dict__["email"] = email
         __props__.__dict__["email_verified"] = email_verified
         __props__.__dict__["family_name"] = family_name
@@ -848,6 +903,14 @@ class User(pulumi.CustomResource):
         Name of the connection from which the user information was sourced.
         """
         return pulumi.get(self, "connection_name")
+
+    @property
+    @pulumi.getter(name="customDomainHeader")
+    def custom_domain_header(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        Sets the `Auth0-Custom-Domain` header on all requests for this resource. Global setting of provider takes precedence over resource specific param, if both are set.
+        """
+        return pulumi.get(self, "custom_domain_header")
 
     @property
     @pulumi.getter

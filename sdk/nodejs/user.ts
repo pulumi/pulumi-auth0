@@ -24,6 +24,15 @@ import * as utilities from "./utilities";
  *     password: "passpass$12$12",
  *     picture: "https://www.example.com/a-valid-picture-url.jpg",
  * });
+ * // Create a user with custom_domain_header
+ * const auth0UserWithCustomDomain = new auth0.User("auth0_user_with_custom_domain", {
+ *     connectionName: "Username-Password-Authentication",
+ *     username: "your_new_user_",
+ *     email: "change.username@acceptance.test.com",
+ *     emailVerified: true,
+ *     password: "MyPass123$",
+ *     customDomainHeader: "my-custom.domain.org",
+ * });
  * ```
  *
  * ## Import
@@ -76,6 +85,10 @@ export class User extends pulumi.CustomResource {
      * Name of the connection from which the user information was sourced.
      */
     public readonly connectionName!: pulumi.Output<string>;
+    /**
+     * Sets the `Auth0-Custom-Domain` header on all requests for this resource. Global setting of provider takes precedence over resource specific param, if both are set.
+     */
+    public readonly customDomainHeader!: pulumi.Output<string | undefined>;
     /**
      * Email address of the user.
      */
@@ -149,6 +162,7 @@ export class User extends pulumi.CustomResource {
             resourceInputs["appMetadata"] = state ? state.appMetadata : undefined;
             resourceInputs["blocked"] = state ? state.blocked : undefined;
             resourceInputs["connectionName"] = state ? state.connectionName : undefined;
+            resourceInputs["customDomainHeader"] = state ? state.customDomainHeader : undefined;
             resourceInputs["email"] = state ? state.email : undefined;
             resourceInputs["emailVerified"] = state ? state.emailVerified : undefined;
             resourceInputs["familyName"] = state ? state.familyName : undefined;
@@ -171,6 +185,7 @@ export class User extends pulumi.CustomResource {
             resourceInputs["appMetadata"] = args ? args.appMetadata : undefined;
             resourceInputs["blocked"] = args ? args.blocked : undefined;
             resourceInputs["connectionName"] = args ? args.connectionName : undefined;
+            resourceInputs["customDomainHeader"] = args ? args.customDomainHeader : undefined;
             resourceInputs["email"] = args ? args.email : undefined;
             resourceInputs["emailVerified"] = args ? args.emailVerified : undefined;
             resourceInputs["familyName"] = args ? args.familyName : undefined;
@@ -209,6 +224,10 @@ export interface UserState {
      * Name of the connection from which the user information was sourced.
      */
     connectionName?: pulumi.Input<string>;
+    /**
+     * Sets the `Auth0-Custom-Domain` header on all requests for this resource. Global setting of provider takes precedence over resource specific param, if both are set.
+     */
+    customDomainHeader?: pulumi.Input<string>;
     /**
      * Email address of the user.
      */
@@ -283,6 +302,10 @@ export interface UserArgs {
      * Name of the connection from which the user information was sourced.
      */
     connectionName: pulumi.Input<string>;
+    /**
+     * Sets the `Auth0-Custom-Domain` header on all requests for this resource. Global setting of provider takes precedence over resource specific param, if both are set.
+     */
+    customDomainHeader?: pulumi.Input<string>;
     /**
      * Email address of the user.
      */

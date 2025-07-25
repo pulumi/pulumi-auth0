@@ -76,6 +76,14 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('clientSecret')
 
     @property
+    def custom_domain_header(self) -> Optional[str]:
+        """
+        When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting
+        overrides all resource specific `custom_domain_header` value
+        """
+        return __config__.get('customDomainHeader')
+
+    @property
     def debug(self) -> Optional[bool]:
         """
         Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG`

@@ -51,6 +51,12 @@ func GetClientSecret(ctx *pulumi.Context) string {
 	return config.Get(ctx, "auth0:clientSecret")
 }
 
+// When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting
+// overrides all resource specific `customDomainHeader` value
+func GetCustomDomainHeader(ctx *pulumi.Context) string {
+	return config.Get(ctx, "auth0:customDomainHeader")
+}
+
 // Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG`
 // environment variable.
 func GetDebug(ctx *pulumi.Context) bool {

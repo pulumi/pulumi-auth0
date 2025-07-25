@@ -27,6 +27,7 @@ class ProviderArgs:
                  client_assertion_signing_alg: Optional[pulumi.Input[builtins.str]] = None,
                  client_id: Optional[pulumi.Input[builtins.str]] = None,
                  client_secret: Optional[pulumi.Input[builtins.str]] = None,
+                 custom_domain_header: Optional[pulumi.Input[builtins.str]] = None,
                  debug: Optional[pulumi.Input[builtins.bool]] = None,
                  domain: Optional[pulumi.Input[builtins.str]] = None,
                  dynamic_credentials: Optional[pulumi.Input[builtins.bool]] = None):
@@ -44,6 +45,8 @@ class ProviderArgs:
                `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
         :param pulumi.Input[builtins.str] client_id: Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.
         :param pulumi.Input[builtins.str] client_secret: Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable.
+        :param pulumi.Input[builtins.str] custom_domain_header: When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting
+               overrides all resource specific `custom_domain_header` value
         :param pulumi.Input[builtins.bool] debug: Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG`
                environment variable.
         :param pulumi.Input[builtins.str] domain: Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
@@ -62,6 +65,8 @@ class ProviderArgs:
             pulumi.set(__self__, "client_id", client_id)
         if client_secret is not None:
             pulumi.set(__self__, "client_secret", client_secret)
+        if custom_domain_header is not None:
+            pulumi.set(__self__, "custom_domain_header", custom_domain_header)
         if debug is None:
             debug = _utilities.get_env_bool('AUTH0_DEBUG')
         if debug is not None:
@@ -161,6 +166,19 @@ class ProviderArgs:
         pulumi.set(self, "client_secret", value)
 
     @property
+    @pulumi.getter(name="customDomainHeader")
+    def custom_domain_header(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting
+        overrides all resource specific `custom_domain_header` value
+        """
+        return pulumi.get(self, "custom_domain_header")
+
+    @custom_domain_header.setter
+    def custom_domain_header(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "custom_domain_header", value)
+
+    @property
     @pulumi.getter
     def debug(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
@@ -208,6 +226,7 @@ class Provider(pulumi.ProviderResource):
                  client_assertion_signing_alg: Optional[pulumi.Input[builtins.str]] = None,
                  client_id: Optional[pulumi.Input[builtins.str]] = None,
                  client_secret: Optional[pulumi.Input[builtins.str]] = None,
+                 custom_domain_header: Optional[pulumi.Input[builtins.str]] = None,
                  debug: Optional[pulumi.Input[builtins.bool]] = None,
                  domain: Optional[pulumi.Input[builtins.str]] = None,
                  dynamic_credentials: Optional[pulumi.Input[builtins.bool]] = None,
@@ -232,6 +251,8 @@ class Provider(pulumi.ProviderResource):
                `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
         :param pulumi.Input[builtins.str] client_id: Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.
         :param pulumi.Input[builtins.str] client_secret: Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable.
+        :param pulumi.Input[builtins.str] custom_domain_header: When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting
+               overrides all resource specific `custom_domain_header` value
         :param pulumi.Input[builtins.bool] debug: Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG`
                environment variable.
         :param pulumi.Input[builtins.str] domain: Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
@@ -270,6 +291,7 @@ class Provider(pulumi.ProviderResource):
                  client_assertion_signing_alg: Optional[pulumi.Input[builtins.str]] = None,
                  client_id: Optional[pulumi.Input[builtins.str]] = None,
                  client_secret: Optional[pulumi.Input[builtins.str]] = None,
+                 custom_domain_header: Optional[pulumi.Input[builtins.str]] = None,
                  debug: Optional[pulumi.Input[builtins.bool]] = None,
                  domain: Optional[pulumi.Input[builtins.str]] = None,
                  dynamic_credentials: Optional[pulumi.Input[builtins.bool]] = None,
@@ -289,6 +311,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["client_assertion_signing_alg"] = client_assertion_signing_alg
             __props__.__dict__["client_id"] = client_id
             __props__.__dict__["client_secret"] = client_secret
+            __props__.__dict__["custom_domain_header"] = custom_domain_header
             if debug is None:
                 debug = _utilities.get_env_bool('AUTH0_DEBUG')
             __props__.__dict__["debug"] = pulumi.Output.from_input(debug).apply(pulumi.runtime.to_json) if debug is not None else None
@@ -352,6 +375,15 @@ class Provider(pulumi.ProviderResource):
         Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable.
         """
         return pulumi.get(self, "client_secret")
+
+    @property
+    @pulumi.getter(name="customDomainHeader")
+    def custom_domain_header(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting
+        overrides all resource specific `custom_domain_header` value
+        """
+        return pulumi.get(self, "custom_domain_header")
 
     @property
     @pulumi.getter

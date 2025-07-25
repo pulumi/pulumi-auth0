@@ -133,6 +133,23 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting
+     * overrides all resource specific `custom_domain_header` value
+     * 
+     */
+    @Import(name="customDomainHeader")
+    private @Nullable Output<String> customDomainHeader;
+
+    /**
+     * @return When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting
+     * overrides all resource specific `custom_domain_header` value
+     * 
+     */
+    public Optional<Output<String>> customDomainHeader() {
+        return Optional.ofNullable(this.customDomainHeader);
+    }
+
+    /**
      * Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG`
      * environment variable.
      * 
@@ -181,6 +198,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.clientAssertionSigningAlg = $.clientAssertionSigningAlg;
         this.clientId = $.clientId;
         this.clientSecret = $.clientSecret;
+        this.customDomainHeader = $.customDomainHeader;
         this.debug = $.debug;
         this.domain = $.domain;
         this.dynamicCredentials = $.dynamicCredentials;
@@ -359,6 +377,29 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder clientSecret(String clientSecret) {
             return clientSecret(Output.of(clientSecret));
+        }
+
+        /**
+         * @param customDomainHeader When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting
+         * overrides all resource specific `custom_domain_header` value
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customDomainHeader(@Nullable Output<String> customDomainHeader) {
+            $.customDomainHeader = customDomainHeader;
+            return this;
+        }
+
+        /**
+         * @param customDomainHeader When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting
+         * overrides all resource specific `custom_domain_header` value
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customDomainHeader(String customDomainHeader) {
+            return customDomainHeader(Output.of(customDomainHeader));
         }
 
         /**

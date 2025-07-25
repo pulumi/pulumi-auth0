@@ -24,6 +24,8 @@ func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getUser.
 type LookupUserArgs struct {
+	// Sets the `Auth0-Custom-Domain` header on all requests for this resource. Global setting of provider takes precedence over resource specific param, if both are set.
+	CustomDomainHeader *string `pulumi:"customDomainHeader"`
 	// Lucene Query for retrieving a user.
 	Query *string `pulumi:"query"`
 	// ID of the user.
@@ -38,6 +40,8 @@ type LookupUserResult struct {
 	Blocked bool `pulumi:"blocked"`
 	// Name of the connection from which the user information was sourced.
 	ConnectionName string `pulumi:"connectionName"`
+	// Sets the `Auth0-Custom-Domain` header on all requests for this resource. Global setting of provider takes precedence over resource specific param, if both are set.
+	CustomDomainHeader *string `pulumi:"customDomainHeader"`
 	// Email address of the user.
 	Email string `pulumi:"email"`
 	// Indicates whether the email address has been verified.
@@ -87,6 +91,8 @@ func LookupUserOutput(ctx *pulumi.Context, args LookupUserOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getUser.
 type LookupUserOutputArgs struct {
+	// Sets the `Auth0-Custom-Domain` header on all requests for this resource. Global setting of provider takes precedence over resource specific param, if both are set.
+	CustomDomainHeader pulumi.StringPtrInput `pulumi:"customDomainHeader"`
 	// Lucene Query for retrieving a user.
 	Query pulumi.StringPtrInput `pulumi:"query"`
 	// ID of the user.
@@ -125,6 +131,11 @@ func (o LookupUserResultOutput) Blocked() pulumi.BoolOutput {
 // Name of the connection from which the user information was sourced.
 func (o LookupUserResultOutput) ConnectionName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.ConnectionName }).(pulumi.StringOutput)
+}
+
+// Sets the `Auth0-Custom-Domain` header on all requests for this resource. Global setting of provider takes precedence over resource specific param, if both are set.
+func (o LookupUserResultOutput) CustomDomainHeader() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupUserResult) *string { return v.CustomDomainHeader }).(pulumi.StringPtrOutput)
 }
 
 // Email address of the user.

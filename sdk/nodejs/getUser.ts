@@ -13,6 +13,7 @@ export function getUser(args?: GetUserArgs, opts?: pulumi.InvokeOptions): Promis
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("auth0:index/getUser:getUser", {
+        "customDomainHeader": args.customDomainHeader,
         "query": args.query,
         "userId": args.userId,
     }, opts);
@@ -22,6 +23,10 @@ export function getUser(args?: GetUserArgs, opts?: pulumi.InvokeOptions): Promis
  * A collection of arguments for invoking getUser.
  */
 export interface GetUserArgs {
+    /**
+     * Sets the `Auth0-Custom-Domain` header on all requests for this resource. Global setting of provider takes precedence over resource specific param, if both are set.
+     */
+    customDomainHeader?: string;
     /**
      * Lucene Query for retrieving a user.
      */
@@ -48,6 +53,10 @@ export interface GetUserResult {
      * Name of the connection from which the user information was sourced.
      */
     readonly connectionName: string;
+    /**
+     * Sets the `Auth0-Custom-Domain` header on all requests for this resource. Global setting of provider takes precedence over resource specific param, if both are set.
+     */
+    readonly customDomainHeader?: string;
     /**
      * Email address of the user.
      */
@@ -128,6 +137,7 @@ export function getUserOutput(args?: GetUserOutputArgs, opts?: pulumi.InvokeOutp
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("auth0:index/getUser:getUser", {
+        "customDomainHeader": args.customDomainHeader,
         "query": args.query,
         "userId": args.userId,
     }, opts);
@@ -137,6 +147,10 @@ export function getUserOutput(args?: GetUserOutputArgs, opts?: pulumi.InvokeOutp
  * A collection of arguments for invoking getUser.
  */
 export interface GetUserOutputArgs {
+    /**
+     * Sets the `Auth0-Custom-Domain` header on all requests for this resource. Global setting of provider takes precedence over resource specific param, if both are set.
+     */
+    customDomainHeader?: pulumi.Input<string>;
     /**
      * Lucene Query for retrieving a user.
      */
