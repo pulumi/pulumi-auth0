@@ -77,6 +77,10 @@
                 "type": "string",
                 "description": "Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable.\n"
             },
+            "customDomainHeader": {
+                "type": "string",
+                "description": "When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting\noverrides all resource specific `custom_domain_header` value\n"
+            },
             "debug": {
                 "type": "boolean",
                 "description": "Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG`\nenvironment variable.\n",
@@ -10485,6 +10489,10 @@
                 "type": "string",
                 "description": "Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable.\n"
             },
+            "customDomainHeader": {
+                "type": "string",
+                "description": "When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting\noverrides all resource specific `custom_domain_header` value\n"
+            },
             "debug": {
                 "type": "boolean",
                 "description": "Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG`\nenvironment variable.\n"
@@ -10525,6 +10533,10 @@
             "clientSecret": {
                 "type": "string",
                 "description": "Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable.\n"
+            },
+            "customDomainHeader": {
+                "type": "string",
+                "description": "When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting\noverrides all resource specific `custom_domain_header` value\n"
             },
             "debug": {
                 "type": "boolean",
@@ -16041,7 +16053,7 @@
             }
         },
         "auth0:index/user:User": {
-            "description": "With this resource, you can manage user identities, including resetting passwords, and creating, provisioning, blocking, and deleting users.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst user = new auth0.User(\"user\", {\n    connectionName: \"Username-Password-Authentication\",\n    userId: \"12345\",\n    username: \"unique_username\",\n    name: \"Firstname Lastname\",\n    nickname: \"some.nickname\",\n    email: \"test@test.com\",\n    emailVerified: true,\n    password: \"passpass$12$12\",\n    picture: \"https://www.example.com/a-valid-picture-url.jpg\",\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nuser = auth0.User(\"user\",\n    connection_name=\"Username-Password-Authentication\",\n    user_id=\"12345\",\n    username=\"unique_username\",\n    name=\"Firstname Lastname\",\n    nickname=\"some.nickname\",\n    email=\"test@test.com\",\n    email_verified=True,\n    password=\"passpass$12$12\",\n    picture=\"https://www.example.com/a-valid-picture-url.jpg\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var user = new Auth0.User(\"user\", new()\n    {\n        ConnectionName = \"Username-Password-Authentication\",\n        UserId = \"12345\",\n        Username = \"unique_username\",\n        Name = \"Firstname Lastname\",\n        Nickname = \"some.nickname\",\n        Email = \"test@test.com\",\n        EmailVerified = true,\n        Password = \"passpass$12$12\",\n        Picture = \"https://www.example.com/a-valid-picture-url.jpg\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewUser(ctx, \"user\", \u0026auth0.UserArgs{\n\t\t\tConnectionName: pulumi.String(\"Username-Password-Authentication\"),\n\t\t\tUserId:         pulumi.String(\"12345\"),\n\t\t\tUsername:       pulumi.String(\"unique_username\"),\n\t\t\tName:           pulumi.String(\"Firstname Lastname\"),\n\t\t\tNickname:       pulumi.String(\"some.nickname\"),\n\t\t\tEmail:          pulumi.String(\"test@test.com\"),\n\t\t\tEmailVerified:  pulumi.Bool(true),\n\t\t\tPassword:       pulumi.String(\"passpass$12$12\"),\n\t\t\tPicture:        pulumi.String(\"https://www.example.com/a-valid-picture-url.jpg\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.User;\nimport com.pulumi.auth0.UserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var user = new User(\"user\", UserArgs.builder()\n            .connectionName(\"Username-Password-Authentication\")\n            .userId(\"12345\")\n            .username(\"unique_username\")\n            .name(\"Firstname Lastname\")\n            .nickname(\"some.nickname\")\n            .email(\"test@test.com\")\n            .emailVerified(true)\n            .password(\"passpass$12$12\")\n            .picture(\"https://www.example.com/a-valid-picture-url.jpg\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  user:\n    type: auth0:User\n    properties:\n      connectionName: Username-Password-Authentication\n      userId: '12345'\n      username: unique_username\n      name: Firstname Lastname\n      nickname: some.nickname\n      email: test@test.com\n      emailVerified: true\n      password: passpass$12$12\n      picture: https://www.example.com/a-valid-picture-url.jpg\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThis resource can be imported using the user ID.\n\nExample:\n\n```sh\n$ pulumi import auth0:index/user:User user \"auth0|111111111111111111111111\"\n```\n\n",
+            "description": "With this resource, you can manage user identities, including resetting passwords, and creating, provisioning, blocking, and deleting users.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst user = new auth0.User(\"user\", {\n    connectionName: \"Username-Password-Authentication\",\n    userId: \"12345\",\n    username: \"unique_username\",\n    name: \"Firstname Lastname\",\n    nickname: \"some.nickname\",\n    email: \"test@test.com\",\n    emailVerified: true,\n    password: \"passpass$12$12\",\n    picture: \"https://www.example.com/a-valid-picture-url.jpg\",\n});\n// Create a user with custom_domain_header\nconst auth0UserWithCustomDomain = new auth0.User(\"auth0_user_with_custom_domain\", {\n    connectionName: \"Username-Password-Authentication\",\n    username: \"your_new_user_\",\n    email: \"change.username@acceptance.test.com\",\n    emailVerified: true,\n    password: \"MyPass123$\",\n    customDomainHeader: \"my-custom.domain.org\",\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nuser = auth0.User(\"user\",\n    connection_name=\"Username-Password-Authentication\",\n    user_id=\"12345\",\n    username=\"unique_username\",\n    name=\"Firstname Lastname\",\n    nickname=\"some.nickname\",\n    email=\"test@test.com\",\n    email_verified=True,\n    password=\"passpass$12$12\",\n    picture=\"https://www.example.com/a-valid-picture-url.jpg\")\n# Create a user with custom_domain_header\nauth0_user_with_custom_domain = auth0.User(\"auth0_user_with_custom_domain\",\n    connection_name=\"Username-Password-Authentication\",\n    username=\"your_new_user_\",\n    email=\"change.username@acceptance.test.com\",\n    email_verified=True,\n    password=\"MyPass123$\",\n    custom_domain_header=\"my-custom.domain.org\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var user = new Auth0.User(\"user\", new()\n    {\n        ConnectionName = \"Username-Password-Authentication\",\n        UserId = \"12345\",\n        Username = \"unique_username\",\n        Name = \"Firstname Lastname\",\n        Nickname = \"some.nickname\",\n        Email = \"test@test.com\",\n        EmailVerified = true,\n        Password = \"passpass$12$12\",\n        Picture = \"https://www.example.com/a-valid-picture-url.jpg\",\n    });\n\n    // Create a user with custom_domain_header\n    var auth0UserWithCustomDomain = new Auth0.User(\"auth0_user_with_custom_domain\", new()\n    {\n        ConnectionName = \"Username-Password-Authentication\",\n        Username = \"your_new_user_\",\n        Email = \"change.username@acceptance.test.com\",\n        EmailVerified = true,\n        Password = \"MyPass123$\",\n        CustomDomainHeader = \"my-custom.domain.org\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewUser(ctx, \"user\", \u0026auth0.UserArgs{\n\t\t\tConnectionName: pulumi.String(\"Username-Password-Authentication\"),\n\t\t\tUserId:         pulumi.String(\"12345\"),\n\t\t\tUsername:       pulumi.String(\"unique_username\"),\n\t\t\tName:           pulumi.String(\"Firstname Lastname\"),\n\t\t\tNickname:       pulumi.String(\"some.nickname\"),\n\t\t\tEmail:          pulumi.String(\"test@test.com\"),\n\t\t\tEmailVerified:  pulumi.Bool(true),\n\t\t\tPassword:       pulumi.String(\"passpass$12$12\"),\n\t\t\tPicture:        pulumi.String(\"https://www.example.com/a-valid-picture-url.jpg\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Create a user with custom_domain_header\n\t\t_, err = auth0.NewUser(ctx, \"auth0_user_with_custom_domain\", \u0026auth0.UserArgs{\n\t\t\tConnectionName:     pulumi.String(\"Username-Password-Authentication\"),\n\t\t\tUsername:           pulumi.String(\"your_new_user_\"),\n\t\t\tEmail:              pulumi.String(\"change.username@acceptance.test.com\"),\n\t\t\tEmailVerified:      pulumi.Bool(true),\n\t\t\tPassword:           pulumi.String(\"MyPass123$\"),\n\t\t\tCustomDomainHeader: pulumi.String(\"my-custom.domain.org\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.User;\nimport com.pulumi.auth0.UserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var user = new User(\"user\", UserArgs.builder()\n            .connectionName(\"Username-Password-Authentication\")\n            .userId(\"12345\")\n            .username(\"unique_username\")\n            .name(\"Firstname Lastname\")\n            .nickname(\"some.nickname\")\n            .email(\"test@test.com\")\n            .emailVerified(true)\n            .password(\"passpass$12$12\")\n            .picture(\"https://www.example.com/a-valid-picture-url.jpg\")\n            .build());\n\n        // Create a user with custom_domain_header\n        var auth0UserWithCustomDomain = new User(\"auth0UserWithCustomDomain\", UserArgs.builder()\n            .connectionName(\"Username-Password-Authentication\")\n            .username(\"your_new_user_\")\n            .email(\"change.username@acceptance.test.com\")\n            .emailVerified(true)\n            .password(\"MyPass123$\")\n            .customDomainHeader(\"my-custom.domain.org\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  user:\n    type: auth0:User\n    properties:\n      connectionName: Username-Password-Authentication\n      userId: '12345'\n      username: unique_username\n      name: Firstname Lastname\n      nickname: some.nickname\n      email: test@test.com\n      emailVerified: true\n      password: passpass$12$12\n      picture: https://www.example.com/a-valid-picture-url.jpg\n  # Create a user with custom_domain_header\n  auth0UserWithCustomDomain:\n    type: auth0:User\n    name: auth0_user_with_custom_domain\n    properties:\n      connectionName: Username-Password-Authentication\n      username: your_new_user_\n      email: change.username@acceptance.test.com\n      emailVerified: true\n      password: MyPass123$\n      customDomainHeader: my-custom.domain.org\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThis resource can be imported using the user ID.\n\nExample:\n\n```sh\n$ pulumi import auth0:index/user:User user \"auth0|111111111111111111111111\"\n```\n\n",
             "properties": {
                 "appMetadata": {
                     "type": "string",
@@ -16054,6 +16066,10 @@
                 "connectionName": {
                     "type": "string",
                     "description": "Name of the connection from which the user information was sourced.\n"
+                },
+                "customDomainHeader": {
+                    "type": "string",
+                    "description": "Sets the `Auth0-Custom-Domain` header on all requests for this resource. Global setting of provider takes precedence over resource specific param, if both are set.\n"
                 },
                 "email": {
                     "type": "string",
@@ -16133,6 +16149,10 @@
                     "type": "string",
                     "description": "Name of the connection from which the user information was sourced.\n"
                 },
+                "customDomainHeader": {
+                    "type": "string",
+                    "description": "Sets the `Auth0-Custom-Domain` header on all requests for this resource. Global setting of provider takes precedence over resource specific param, if both are set.\n"
+                },
                 "email": {
                     "type": "string",
                     "description": "Email address of the user.\n"
@@ -16208,6 +16228,10 @@
                     "connectionName": {
                         "type": "string",
                         "description": "Name of the connection from which the user information was sourced.\n"
+                    },
+                    "customDomainHeader": {
+                        "type": "string",
+                        "description": "Sets the `Auth0-Custom-Domain` header on all requests for this resource. Global setting of provider takes precedence over resource specific param, if both are set.\n"
                     },
                     "email": {
                         "type": "string",
@@ -18542,6 +18566,10 @@
             "inputs": {
                 "description": "A collection of arguments for invoking getUser.\n",
                 "properties": {
+                    "customDomainHeader": {
+                        "type": "string",
+                        "description": "Sets the `Auth0-Custom-Domain` header on all requests for this resource. Global setting of provider takes precedence over resource specific param, if both are set.\n"
+                    },
                     "query": {
                         "type": "string",
                         "description": "Lucene Query for retrieving a user.\n"
@@ -18566,6 +18594,10 @@
                     },
                     "connectionName": {
                         "description": "Name of the connection from which the user information was sourced.\n",
+                        "type": "string"
+                    },
+                    "customDomainHeader": {
+                        "description": "Sets the `Auth0-Custom-Domain` header on all requests for this resource. Global setting of provider takes precedence over resource specific param, if both are set.\n",
                         "type": "string"
                     },
                     "email": {
