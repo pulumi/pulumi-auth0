@@ -35,6 +35,17 @@ namespace Pulumi.Auth0
     ///         Picture = "https://www.example.com/a-valid-picture-url.jpg",
     ///     });
     /// 
+    ///     // Create a user with custom_domain_header
+    ///     var auth0UserWithCustomDomain = new Auth0.User("auth0_user_with_custom_domain", new()
+    ///     {
+    ///         ConnectionName = "Username-Password-Authentication",
+    ///         Username = "your_new_user_",
+    ///         Email = "change.username@acceptance.test.com",
+    ///         EmailVerified = true,
+    ///         Password = "MyPass123$",
+    ///         CustomDomainHeader = "my-custom.domain.org",
+    ///     });
+    /// 
     /// });
     /// ```
     /// 
@@ -68,6 +79,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Output("connectionName")]
         public Output<string> ConnectionName { get; private set; } = null!;
+
+        /// <summary>
+        /// Sets the `Auth0-Custom-Domain` header on all requests for this resource. Global setting of provider takes precedence over resource specific param, if both are set.
+        /// </summary>
+        [Output("customDomainHeader")]
+        public Output<string?> CustomDomainHeader { get; private set; } = null!;
 
         /// <summary>
         /// Email address of the user.
@@ -222,6 +239,12 @@ namespace Pulumi.Auth0
         public Input<string> ConnectionName { get; set; } = null!;
 
         /// <summary>
+        /// Sets the `Auth0-Custom-Domain` header on all requests for this resource. Global setting of provider takes precedence over resource specific param, if both are set.
+        /// </summary>
+        [Input("customDomainHeader")]
+        public Input<string>? CustomDomainHeader { get; set; }
+
+        /// <summary>
         /// Email address of the user.
         /// </summary>
         [Input("email")]
@@ -340,6 +363,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("connectionName")]
         public Input<string>? ConnectionName { get; set; }
+
+        /// <summary>
+        /// Sets the `Auth0-Custom-Domain` header on all requests for this resource. Global setting of provider takes precedence over resource specific param, if both are set.
+        /// </summary>
+        [Input("customDomainHeader")]
+        public Input<string>? CustomDomainHeader { get; set; }
 
         /// <summary>
         /// Email address of the user.

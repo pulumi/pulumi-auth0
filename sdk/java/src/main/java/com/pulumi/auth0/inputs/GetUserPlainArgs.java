@@ -15,6 +15,21 @@ public final class GetUserPlainArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetUserPlainArgs Empty = new GetUserPlainArgs();
 
     /**
+     * Sets the `Auth0-Custom-Domain` header on all requests for this resource. Global setting of provider takes precedence over resource specific param, if both are set.
+     * 
+     */
+    @Import(name="customDomainHeader")
+    private @Nullable String customDomainHeader;
+
+    /**
+     * @return Sets the `Auth0-Custom-Domain` header on all requests for this resource. Global setting of provider takes precedence over resource specific param, if both are set.
+     * 
+     */
+    public Optional<String> customDomainHeader() {
+        return Optional.ofNullable(this.customDomainHeader);
+    }
+
+    /**
      * Lucene Query for retrieving a user.
      * 
      */
@@ -47,6 +62,7 @@ public final class GetUserPlainArgs extends com.pulumi.resources.InvokeArgs {
     private GetUserPlainArgs() {}
 
     private GetUserPlainArgs(GetUserPlainArgs $) {
+        this.customDomainHeader = $.customDomainHeader;
         this.query = $.query;
         this.userId = $.userId;
     }
@@ -67,6 +83,17 @@ public final class GetUserPlainArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder(GetUserPlainArgs defaults) {
             $ = new GetUserPlainArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param customDomainHeader Sets the `Auth0-Custom-Domain` header on all requests for this resource. Global setting of provider takes precedence over resource specific param, if both are set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customDomainHeader(@Nullable String customDomainHeader) {
+            $.customDomainHeader = customDomainHeader;
+            return this;
         }
 
         /**

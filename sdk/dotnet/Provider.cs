@@ -60,6 +60,13 @@ namespace Pulumi.Auth0
         public Output<string?> ClientSecret { get; private set; } = null!;
 
         /// <summary>
+        /// When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting
+        /// overrides all resource specific `custom_domain_header` value
+        /// </summary>
+        [Output("customDomainHeader")]
+        public Output<string?> CustomDomainHeader { get; private set; } = null!;
+
+        /// <summary>
         /// Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
         /// </summary>
         [Output("domain")]
@@ -145,6 +152,13 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("clientSecret")]
         public Input<string>? ClientSecret { get; set; }
+
+        /// <summary>
+        /// When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting
+        /// overrides all resource specific `custom_domain_header` value
+        /// </summary>
+        [Input("customDomainHeader")]
+        public Input<string>? CustomDomainHeader { get; set; }
 
         /// <summary>
         /// Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG`

@@ -35,6 +35,9 @@ type Provider struct {
 	ClientId pulumi.StringPtrOutput `pulumi:"clientId"`
 	// Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable.
 	ClientSecret pulumi.StringPtrOutput `pulumi:"clientSecret"`
+	// When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting
+	// overrides all resource specific `customDomainHeader` value
+	CustomDomainHeader pulumi.StringPtrOutput `pulumi:"customDomainHeader"`
 	// Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
 	Domain pulumi.StringPtrOutput `pulumi:"domain"`
 }
@@ -80,6 +83,9 @@ type providerArgs struct {
 	ClientId *string `pulumi:"clientId"`
 	// Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable.
 	ClientSecret *string `pulumi:"clientSecret"`
+	// When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting
+	// overrides all resource specific `customDomainHeader` value
+	CustomDomainHeader *string `pulumi:"customDomainHeader"`
 	// Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG`
 	// environment variable.
 	Debug *bool `pulumi:"debug"`
@@ -109,6 +115,9 @@ type ProviderArgs struct {
 	ClientId pulumi.StringPtrInput
 	// Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable.
 	ClientSecret pulumi.StringPtrInput
+	// When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting
+	// overrides all resource specific `customDomainHeader` value
+	CustomDomainHeader pulumi.StringPtrInput
 	// Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG`
 	// environment variable.
 	Debug pulumi.BoolPtrInput
@@ -210,6 +219,12 @@ func (o ProviderOutput) ClientId() pulumi.StringPtrOutput {
 // Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable.
 func (o ProviderOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ClientSecret }).(pulumi.StringPtrOutput)
+}
+
+// When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting
+// overrides all resource specific `customDomainHeader` value
+func (o ProviderOutput) CustomDomainHeader() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.CustomDomainHeader }).(pulumi.StringPtrOutput)
 }
 
 // Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.

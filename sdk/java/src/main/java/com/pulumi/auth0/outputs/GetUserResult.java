@@ -31,6 +31,11 @@ public final class GetUserResult {
      */
     private String connectionName;
     /**
+     * @return Sets the `Auth0-Custom-Domain` header on all requests for this resource. Global setting of provider takes precedence over resource specific param, if both are set.
+     * 
+     */
+    private @Nullable String customDomainHeader;
+    /**
      * @return Email address of the user.
      * 
      */
@@ -142,6 +147,13 @@ public final class GetUserResult {
      */
     public String connectionName() {
         return this.connectionName;
+    }
+    /**
+     * @return Sets the `Auth0-Custom-Domain` header on all requests for this resource. Global setting of provider takes precedence over resource specific param, if both are set.
+     * 
+     */
+    public Optional<String> customDomainHeader() {
+        return Optional.ofNullable(this.customDomainHeader);
     }
     /**
      * @return Email address of the user.
@@ -282,6 +294,7 @@ public final class GetUserResult {
         private String appMetadata;
         private Boolean blocked;
         private String connectionName;
+        private @Nullable String customDomainHeader;
         private String email;
         private Boolean emailVerified;
         private String familyName;
@@ -306,6 +319,7 @@ public final class GetUserResult {
     	      this.appMetadata = defaults.appMetadata;
     	      this.blocked = defaults.blocked;
     	      this.connectionName = defaults.connectionName;
+    	      this.customDomainHeader = defaults.customDomainHeader;
     	      this.email = defaults.email;
     	      this.emailVerified = defaults.emailVerified;
     	      this.familyName = defaults.familyName;
@@ -348,6 +362,12 @@ public final class GetUserResult {
               throw new MissingRequiredPropertyException("GetUserResult", "connectionName");
             }
             this.connectionName = connectionName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder customDomainHeader(@Nullable String customDomainHeader) {
+
+            this.customDomainHeader = customDomainHeader;
             return this;
         }
         @CustomType.Setter
@@ -501,6 +521,7 @@ public final class GetUserResult {
             _resultValue.appMetadata = appMetadata;
             _resultValue.blocked = blocked;
             _resultValue.connectionName = connectionName;
+            _resultValue.customDomainHeader = customDomainHeader;
             _resultValue.email = email;
             _resultValue.emailVerified = emailVerified;
             _resultValue.familyName = familyName;

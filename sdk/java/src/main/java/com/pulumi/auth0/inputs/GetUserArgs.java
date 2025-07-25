@@ -16,6 +16,21 @@ public final class GetUserArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetUserArgs Empty = new GetUserArgs();
 
     /**
+     * Sets the `Auth0-Custom-Domain` header on all requests for this resource. Global setting of provider takes precedence over resource specific param, if both are set.
+     * 
+     */
+    @Import(name="customDomainHeader")
+    private @Nullable Output<String> customDomainHeader;
+
+    /**
+     * @return Sets the `Auth0-Custom-Domain` header on all requests for this resource. Global setting of provider takes precedence over resource specific param, if both are set.
+     * 
+     */
+    public Optional<Output<String>> customDomainHeader() {
+        return Optional.ofNullable(this.customDomainHeader);
+    }
+
+    /**
      * Lucene Query for retrieving a user.
      * 
      */
@@ -48,6 +63,7 @@ public final class GetUserArgs extends com.pulumi.resources.InvokeArgs {
     private GetUserArgs() {}
 
     private GetUserArgs(GetUserArgs $) {
+        this.customDomainHeader = $.customDomainHeader;
         this.query = $.query;
         this.userId = $.userId;
     }
@@ -68,6 +84,27 @@ public final class GetUserArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder(GetUserArgs defaults) {
             $ = new GetUserArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param customDomainHeader Sets the `Auth0-Custom-Domain` header on all requests for this resource. Global setting of provider takes precedence over resource specific param, if both are set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customDomainHeader(@Nullable Output<String> customDomainHeader) {
+            $.customDomainHeader = customDomainHeader;
+            return this;
+        }
+
+        /**
+         * @param customDomainHeader Sets the `Auth0-Custom-Domain` header on all requests for this resource. Global setting of provider takes precedence over resource specific param, if both are set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customDomainHeader(String customDomainHeader) {
+            return customDomainHeader(Output.of(customDomainHeader));
         }
 
         /**

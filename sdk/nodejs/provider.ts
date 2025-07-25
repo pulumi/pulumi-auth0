@@ -55,6 +55,11 @@ export class Provider extends pulumi.ProviderResource {
      */
     public readonly clientSecret!: pulumi.Output<string | undefined>;
     /**
+     * When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting
+     * overrides all resource specific `customDomainHeader` value
+     */
+    public readonly customDomainHeader!: pulumi.Output<string | undefined>;
+    /**
      * Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
      */
     public readonly domain!: pulumi.Output<string | undefined>;
@@ -77,6 +82,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["clientAssertionSigningAlg"] = args ? args.clientAssertionSigningAlg : undefined;
             resourceInputs["clientId"] = args ? args.clientId : undefined;
             resourceInputs["clientSecret"] = args ? args.clientSecret : undefined;
+            resourceInputs["customDomainHeader"] = args ? args.customDomainHeader : undefined;
             resourceInputs["debug"] = pulumi.output((args ? args.debug : undefined) ?? utilities.getEnvBoolean("AUTH0_DEBUG")).apply(JSON.stringify);
             resourceInputs["domain"] = args ? args.domain : undefined;
             resourceInputs["dynamicCredentials"] = pulumi.output(args ? args.dynamicCredentials : undefined).apply(JSON.stringify);
@@ -132,6 +138,11 @@ export interface ProviderArgs {
      * Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable.
      */
     clientSecret?: pulumi.Input<string>;
+    /**
+     * When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting
+     * overrides all resource specific `customDomainHeader` value
+     */
+    customDomainHeader?: pulumi.Input<string>;
     /**
      * Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG`
      * environment variable.

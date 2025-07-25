@@ -90,6 +90,18 @@ Object.defineProperty(exports, "clientSecret", {
 });
 
 /**
+ * When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting
+ * overrides all resource specific `customDomainHeader` value
+ */
+export declare const customDomainHeader: string | undefined;
+Object.defineProperty(exports, "customDomainHeader", {
+    get() {
+        return __config.get("customDomainHeader");
+    },
+    enumerable: true,
+});
+
+/**
  * Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG`
  * environment variable.
  */

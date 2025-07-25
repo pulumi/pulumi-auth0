@@ -117,6 +117,22 @@ public class Provider extends com.pulumi.resources.ProviderResource {
         return Codegen.optional(this.clientSecret);
     }
     /**
+     * When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting
+     * overrides all resource specific `custom_domain_header` value
+     * 
+     */
+    @Export(name="customDomainHeader", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> customDomainHeader;
+
+    /**
+     * @return When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting
+     * overrides all resource specific `custom_domain_header` value
+     * 
+     */
+    public Output<Optional<String>> customDomainHeader() {
+        return Codegen.optional(this.customDomainHeader);
+    }
+    /**
      * Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
      * 
      */

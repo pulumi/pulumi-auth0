@@ -56,6 +56,16 @@ import javax.annotation.Nullable;
  *             .picture("https://www.example.com/a-valid-picture-url.jpg")
  *             .build());
  * 
+ *         // Create a user with custom_domain_header
+ *         var auth0UserWithCustomDomain = new User("auth0UserWithCustomDomain", UserArgs.builder()
+ *             .connectionName("Username-Password-Authentication")
+ *             .username("your_new_user_")
+ *             .email("change.username}{@literal @}{@code acceptance.test.com")
+ *             .emailVerified(true)
+ *             .password("MyPass123$")
+ *             .customDomainHeader("my-custom.domain.org")
+ *             .build());
+ * 
  *     }}{@code
  * }}{@code
  * }
@@ -116,6 +126,20 @@ public class User extends com.pulumi.resources.CustomResource {
      */
     public Output<String> connectionName() {
         return this.connectionName;
+    }
+    /**
+     * Sets the `Auth0-Custom-Domain` header on all requests for this resource. Global setting of provider takes precedence over resource specific param, if both are set.
+     * 
+     */
+    @Export(name="customDomainHeader", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> customDomainHeader;
+
+    /**
+     * @return Sets the `Auth0-Custom-Domain` header on all requests for this resource. Global setting of provider takes precedence over resource specific param, if both are set.
+     * 
+     */
+    public Output<Optional<String>> customDomainHeader() {
+        return Codegen.optional(this.customDomainHeader);
     }
     /**
      * Email address of the user.

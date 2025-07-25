@@ -6,10 +6,11 @@ resources:
   azureAdConnection:
     type: auth0:Connection
     properties:
+      name: azure-ad-connection
       strategy: waad
       showAsButton: true
       options:
-        identityApi: azure-active-directory-v1.0
+        identityApi: microsoft-identity-platform-v2.0
         clientId: 123456
         clientSecret: 123456
         appId: app-id-123
@@ -24,6 +25,8 @@ resources:
         waadCommonEndpoint: false
         maxGroupsToRetrieve: 250
         apiEnableUsers: true
+        strategyVersion: 2
+        userIdAttribute: oid
         scopes:
           - basic_profile
           - ext_groups
@@ -45,9 +48,9 @@ resources:
     properties:
       displayName: Test Org
 
-  orgConnection:
-    type: auth0:OrganizationConnection
-    properties:
-      organizationId: ${organization.id}
-      connectionId: ${azureAdConnection.id}
-      assignMembershipOnLogin: true
+orgConnection:
+  type: auth0:OrganizationConnection
+  properties:
+    organizationId: ${organization.id}
+    connectionId: ${azureAdConnection.id}
+    assignMembershipOnLogin: true

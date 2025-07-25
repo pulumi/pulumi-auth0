@@ -42,6 +42,18 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Create a user with custom_domain_header
+//			_, err = auth0.NewUser(ctx, "auth0_user_with_custom_domain", &auth0.UserArgs{
+//				ConnectionName:     pulumi.String("Username-Password-Authentication"),
+//				Username:           pulumi.String("your_new_user_"),
+//				Email:              pulumi.String("change.username@acceptance.test.com"),
+//				EmailVerified:      pulumi.Bool(true),
+//				Password:           pulumi.String("MyPass123$"),
+//				CustomDomainHeader: pulumi.String("my-custom.domain.org"),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			return nil
 //		})
 //	}
@@ -66,6 +78,8 @@ type User struct {
 	Blocked pulumi.BoolPtrOutput `pulumi:"blocked"`
 	// Name of the connection from which the user information was sourced.
 	ConnectionName pulumi.StringOutput `pulumi:"connectionName"`
+	// Sets the `Auth0-Custom-Domain` header on all requests for this resource. Global setting of provider takes precedence over resource specific param, if both are set.
+	CustomDomainHeader pulumi.StringPtrOutput `pulumi:"customDomainHeader"`
 	// Email address of the user.
 	Email pulumi.StringPtrOutput `pulumi:"email"`
 	// Indicates whether the email address has been verified.
@@ -142,6 +156,8 @@ type userState struct {
 	Blocked *bool `pulumi:"blocked"`
 	// Name of the connection from which the user information was sourced.
 	ConnectionName *string `pulumi:"connectionName"`
+	// Sets the `Auth0-Custom-Domain` header on all requests for this resource. Global setting of provider takes precedence over resource specific param, if both are set.
+	CustomDomainHeader *string `pulumi:"customDomainHeader"`
 	// Email address of the user.
 	Email *string `pulumi:"email"`
 	// Indicates whether the email address has been verified.
@@ -179,6 +195,8 @@ type UserState struct {
 	Blocked pulumi.BoolPtrInput
 	// Name of the connection from which the user information was sourced.
 	ConnectionName pulumi.StringPtrInput
+	// Sets the `Auth0-Custom-Domain` header on all requests for this resource. Global setting of provider takes precedence over resource specific param, if both are set.
+	CustomDomainHeader pulumi.StringPtrInput
 	// Email address of the user.
 	Email pulumi.StringPtrInput
 	// Indicates whether the email address has been verified.
@@ -220,6 +238,8 @@ type userArgs struct {
 	Blocked *bool `pulumi:"blocked"`
 	// Name of the connection from which the user information was sourced.
 	ConnectionName string `pulumi:"connectionName"`
+	// Sets the `Auth0-Custom-Domain` header on all requests for this resource. Global setting of provider takes precedence over resource specific param, if both are set.
+	CustomDomainHeader *string `pulumi:"customDomainHeader"`
 	// Email address of the user.
 	Email *string `pulumi:"email"`
 	// Indicates whether the email address has been verified.
@@ -258,6 +278,8 @@ type UserArgs struct {
 	Blocked pulumi.BoolPtrInput
 	// Name of the connection from which the user information was sourced.
 	ConnectionName pulumi.StringInput
+	// Sets the `Auth0-Custom-Domain` header on all requests for this resource. Global setting of provider takes precedence over resource specific param, if both are set.
+	CustomDomainHeader pulumi.StringPtrInput
 	// Email address of the user.
 	Email pulumi.StringPtrInput
 	// Indicates whether the email address has been verified.
@@ -388,6 +410,11 @@ func (o UserOutput) Blocked() pulumi.BoolPtrOutput {
 // Name of the connection from which the user information was sourced.
 func (o UserOutput) ConnectionName() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.ConnectionName }).(pulumi.StringOutput)
+}
+
+// Sets the `Auth0-Custom-Domain` header on all requests for this resource. Global setting of provider takes precedence over resource specific param, if both are set.
+func (o UserOutput) CustomDomainHeader() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.CustomDomainHeader }).(pulumi.StringPtrOutput)
 }
 
 // Email address of the user.

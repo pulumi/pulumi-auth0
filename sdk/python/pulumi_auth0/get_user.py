@@ -28,7 +28,7 @@ class GetUserResult:
     """
     A collection of values returned by getUser.
     """
-    def __init__(__self__, app_metadata=None, blocked=None, connection_name=None, email=None, email_verified=None, family_name=None, given_name=None, id=None, name=None, nickname=None, password=None, permissions=None, phone_number=None, phone_verified=None, picture=None, query=None, roles=None, user_id=None, user_metadata=None, username=None, verify_email=None):
+    def __init__(__self__, app_metadata=None, blocked=None, connection_name=None, custom_domain_header=None, email=None, email_verified=None, family_name=None, given_name=None, id=None, name=None, nickname=None, password=None, permissions=None, phone_number=None, phone_verified=None, picture=None, query=None, roles=None, user_id=None, user_metadata=None, username=None, verify_email=None):
         if app_metadata and not isinstance(app_metadata, str):
             raise TypeError("Expected argument 'app_metadata' to be a str")
         pulumi.set(__self__, "app_metadata", app_metadata)
@@ -38,6 +38,9 @@ class GetUserResult:
         if connection_name and not isinstance(connection_name, str):
             raise TypeError("Expected argument 'connection_name' to be a str")
         pulumi.set(__self__, "connection_name", connection_name)
+        if custom_domain_header and not isinstance(custom_domain_header, str):
+            raise TypeError("Expected argument 'custom_domain_header' to be a str")
+        pulumi.set(__self__, "custom_domain_header", custom_domain_header)
         if email and not isinstance(email, str):
             raise TypeError("Expected argument 'email' to be a str")
         pulumi.set(__self__, "email", email)
@@ -116,6 +119,14 @@ class GetUserResult:
         Name of the connection from which the user information was sourced.
         """
         return pulumi.get(self, "connection_name")
+
+    @property
+    @pulumi.getter(name="customDomainHeader")
+    def custom_domain_header(self) -> Optional[builtins.str]:
+        """
+        Sets the `Auth0-Custom-Domain` header on all requests for this resource. Global setting of provider takes precedence over resource specific param, if both are set.
+        """
+        return pulumi.get(self, "custom_domain_header")
 
     @property
     @pulumi.getter
@@ -271,6 +282,7 @@ class AwaitableGetUserResult(GetUserResult):
             app_metadata=self.app_metadata,
             blocked=self.blocked,
             connection_name=self.connection_name,
+            custom_domain_header=self.custom_domain_header,
             email=self.email,
             email_verified=self.email_verified,
             family_name=self.family_name,
@@ -291,17 +303,20 @@ class AwaitableGetUserResult(GetUserResult):
             verify_email=self.verify_email)
 
 
-def get_user(query: Optional[builtins.str] = None,
+def get_user(custom_domain_header: Optional[builtins.str] = None,
+             query: Optional[builtins.str] = None,
              user_id: Optional[builtins.str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserResult:
     """
     Data source to retrieve a specific Auth0 user by `user_id` or by `lucene query`. If filtered by Lucene Query, it should include sufficient filters to retrieve a unique user.
 
 
+    :param builtins.str custom_domain_header: Sets the `Auth0-Custom-Domain` header on all requests for this resource. Global setting of provider takes precedence over resource specific param, if both are set.
     :param builtins.str query: Lucene Query for retrieving a user.
     :param builtins.str user_id: ID of the user.
     """
     __args__ = dict()
+    __args__['customDomainHeader'] = custom_domain_header
     __args__['query'] = query
     __args__['userId'] = user_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -311,6 +326,7 @@ def get_user(query: Optional[builtins.str] = None,
         app_metadata=pulumi.get(__ret__, 'app_metadata'),
         blocked=pulumi.get(__ret__, 'blocked'),
         connection_name=pulumi.get(__ret__, 'connection_name'),
+        custom_domain_header=pulumi.get(__ret__, 'custom_domain_header'),
         email=pulumi.get(__ret__, 'email'),
         email_verified=pulumi.get(__ret__, 'email_verified'),
         family_name=pulumi.get(__ret__, 'family_name'),
@@ -329,17 +345,20 @@ def get_user(query: Optional[builtins.str] = None,
         user_metadata=pulumi.get(__ret__, 'user_metadata'),
         username=pulumi.get(__ret__, 'username'),
         verify_email=pulumi.get(__ret__, 'verify_email'))
-def get_user_output(query: Optional[pulumi.Input[Optional[builtins.str]]] = None,
+def get_user_output(custom_domain_header: Optional[pulumi.Input[Optional[builtins.str]]] = None,
+                    query: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                     user_id: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserResult]:
     """
     Data source to retrieve a specific Auth0 user by `user_id` or by `lucene query`. If filtered by Lucene Query, it should include sufficient filters to retrieve a unique user.
 
 
+    :param builtins.str custom_domain_header: Sets the `Auth0-Custom-Domain` header on all requests for this resource. Global setting of provider takes precedence over resource specific param, if both are set.
     :param builtins.str query: Lucene Query for retrieving a user.
     :param builtins.str user_id: ID of the user.
     """
     __args__ = dict()
+    __args__['customDomainHeader'] = custom_domain_header
     __args__['query'] = query
     __args__['userId'] = user_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -348,6 +367,7 @@ def get_user_output(query: Optional[pulumi.Input[Optional[builtins.str]]] = None
         app_metadata=pulumi.get(__response__, 'app_metadata'),
         blocked=pulumi.get(__response__, 'blocked'),
         connection_name=pulumi.get(__response__, 'connection_name'),
+        custom_domain_header=pulumi.get(__response__, 'custom_domain_header'),
         email=pulumi.get(__response__, 'email'),
         email_verified=pulumi.get(__response__, 'email_verified'),
         family_name=pulumi.get(__response__, 'family_name'),

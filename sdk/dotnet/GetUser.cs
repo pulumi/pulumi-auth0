@@ -34,6 +34,12 @@ namespace Pulumi.Auth0
     public sealed class GetUserArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// Sets the `Auth0-Custom-Domain` header on all requests for this resource. Global setting of provider takes precedence over resource specific param, if both are set.
+        /// </summary>
+        [Input("customDomainHeader")]
+        public string? CustomDomainHeader { get; set; }
+
+        /// <summary>
         /// Lucene Query for retrieving a user.
         /// </summary>
         [Input("query")]
@@ -53,6 +59,12 @@ namespace Pulumi.Auth0
 
     public sealed class GetUserInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Sets the `Auth0-Custom-Domain` header on all requests for this resource. Global setting of provider takes precedence over resource specific param, if both are set.
+        /// </summary>
+        [Input("customDomainHeader")]
+        public Input<string>? CustomDomainHeader { get; set; }
+
         /// <summary>
         /// Lucene Query for retrieving a user.
         /// </summary>
@@ -87,6 +99,10 @@ namespace Pulumi.Auth0
         /// Name of the connection from which the user information was sourced.
         /// </summary>
         public readonly string ConnectionName;
+        /// <summary>
+        /// Sets the `Auth0-Custom-Domain` header on all requests for this resource. Global setting of provider takes precedence over resource specific param, if both are set.
+        /// </summary>
+        public readonly string? CustomDomainHeader;
         /// <summary>
         /// Email address of the user.
         /// </summary>
@@ -168,6 +184,8 @@ namespace Pulumi.Auth0
 
             string connectionName,
 
+            string? customDomainHeader,
+
             string email,
 
             bool emailVerified,
@@ -207,6 +225,7 @@ namespace Pulumi.Auth0
             AppMetadata = appMetadata;
             Blocked = blocked;
             ConnectionName = connectionName;
+            CustomDomainHeader = customDomainHeader;
             Email = email;
             EmailVerified = emailVerified;
             FamilyName = familyName;

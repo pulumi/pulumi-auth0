@@ -107,6 +107,17 @@ namespace Pulumi.Auth0
             set => _clientSecret.Set(value);
         }
 
+        private static readonly __Value<string?> _customDomainHeader = new __Value<string?>(() => __config.Get("customDomainHeader"));
+        /// <summary>
+        /// When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting
+        /// overrides all resource specific `custom_domain_header` value
+        /// </summary>
+        public static string? CustomDomainHeader
+        {
+            get => _customDomainHeader.Get();
+            set => _customDomainHeader.Set(value);
+        }
+
         private static readonly __Value<bool?> _debug = new __Value<bool?>(() => __config.GetBoolean("debug") ?? Utilities.GetEnvBoolean("AUTH0_DEBUG"));
         /// <summary>
         /// Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG`
