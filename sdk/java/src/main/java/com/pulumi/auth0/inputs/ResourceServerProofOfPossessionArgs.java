@@ -32,14 +32,14 @@ public final class ResourceServerProofOfPossessionArgs extends com.pulumi.resour
     }
 
     /**
-     * Mechanism used for proof-of-possession. Only `mtls` is supported.
+     * Mechanism used for proof-of-possession. `mtls` or `dpop` is supported.
      * 
      */
     @Import(name="mechanism")
     private @Nullable Output<String> mechanism;
 
     /**
-     * @return Mechanism used for proof-of-possession. Only `mtls` is supported.
+     * @return Mechanism used for proof-of-possession. `mtls` or `dpop` is supported.
      * 
      */
     public Optional<Output<String>> mechanism() {
@@ -109,7 +109,7 @@ public final class ResourceServerProofOfPossessionArgs extends com.pulumi.resour
         }
 
         /**
-         * @param mechanism Mechanism used for proof-of-possession. Only `mtls` is supported.
+         * @param mechanism Mechanism used for proof-of-possession. `mtls` or `dpop` is supported.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class ResourceServerProofOfPossessionArgs extends com.pulumi.resour
         }
 
         /**
-         * @param mechanism Mechanism used for proof-of-possession. Only `mtls` is supported.
+         * @param mechanism Mechanism used for proof-of-possession. `mtls` or `dpop` is supported.
          * 
          * @return builder
          * 

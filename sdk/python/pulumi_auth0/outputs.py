@@ -11026,7 +11026,7 @@ class ResourceServerProofOfPossession(dict):
                  required: Optional[_builtins.bool] = None):
         """
         :param _builtins.bool disable: Disable proof-of-possession.
-        :param _builtins.str mechanism: Mechanism used for proof-of-possession. Only `mtls` is supported.
+        :param _builtins.str mechanism: Mechanism used for proof-of-possession. `mtls` or `dpop` is supported.
         :param _builtins.bool required: Indicates whether proof-of-possession is required with this resource server.
         """
         if disable is not None:
@@ -11048,7 +11048,7 @@ class ResourceServerProofOfPossession(dict):
     @pulumi.getter
     def mechanism(self) -> Optional[_builtins.str]:
         """
-        Mechanism used for proof-of-possession. Only `mtls` is supported.
+        Mechanism used for proof-of-possession. `mtls` or `dpop` is supported.
         """
         return pulumi.get(self, "mechanism")
 
@@ -19533,7 +19533,7 @@ class GetResourceServerProofOfPossessionResult(dict):
                  required: _builtins.bool):
         """
         :param _builtins.bool disable: Disable proof-of-possession.
-        :param _builtins.str mechanism: Mechanism used for proof-of-possession. Only `mtls` is supported.
+        :param _builtins.str mechanism: Mechanism used for proof-of-possession. `mtls` or `dpop` is supported.
         :param _builtins.bool required: Indicates whether proof-of-possession is required with this resource server.
         """
         pulumi.set(__self__, "disable", disable)
@@ -19552,7 +19552,7 @@ class GetResourceServerProofOfPossessionResult(dict):
     @pulumi.getter
     def mechanism(self) -> _builtins.str:
         """
-        Mechanism used for proof-of-possession. Only `mtls` is supported.
+        Mechanism used for proof-of-possession. `mtls` or `dpop` is supported.
         """
         return pulumi.get(self, "mechanism")
 

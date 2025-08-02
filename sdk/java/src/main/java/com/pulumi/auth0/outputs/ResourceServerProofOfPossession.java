@@ -18,7 +18,7 @@ public final class ResourceServerProofOfPossession {
      */
     private @Nullable Boolean disable;
     /**
-     * @return Mechanism used for proof-of-possession. Only `mtls` is supported.
+     * @return Mechanism used for proof-of-possession. `mtls` or `dpop` is supported.
      * 
      */
     private @Nullable String mechanism;
@@ -37,7 +37,7 @@ public final class ResourceServerProofOfPossession {
         return Optional.ofNullable(this.disable);
     }
     /**
-     * @return Mechanism used for proof-of-possession. Only `mtls` is supported.
+     * @return Mechanism used for proof-of-possession. `mtls` or `dpop` is supported.
      * 
      */
     public Optional<String> mechanism() {

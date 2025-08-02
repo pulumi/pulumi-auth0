@@ -14734,7 +14734,7 @@ if not MYPY:
         """
         mechanism: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Mechanism used for proof-of-possession. Only `mtls` is supported.
+        Mechanism used for proof-of-possession. `mtls` or `dpop` is supported.
         """
         required: NotRequired[pulumi.Input[_builtins.bool]]
         """
@@ -14751,7 +14751,7 @@ class ResourceServerProofOfPossessionArgs:
                  required: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] disable: Disable proof-of-possession.
-        :param pulumi.Input[_builtins.str] mechanism: Mechanism used for proof-of-possession. Only `mtls` is supported.
+        :param pulumi.Input[_builtins.str] mechanism: Mechanism used for proof-of-possession. `mtls` or `dpop` is supported.
         :param pulumi.Input[_builtins.bool] required: Indicates whether proof-of-possession is required with this resource server.
         """
         if disable is not None:
@@ -14777,7 +14777,7 @@ class ResourceServerProofOfPossessionArgs:
     @pulumi.getter
     def mechanism(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Mechanism used for proof-of-possession. Only `mtls` is supported.
+        Mechanism used for proof-of-possession. `mtls` or `dpop` is supported.
         """
         return pulumi.get(self, "mechanism")
 
