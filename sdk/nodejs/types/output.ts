@@ -4976,7 +4976,7 @@ export interface GetResourceServerProofOfPossession {
      */
     disable: boolean;
     /**
-     * Mechanism used for proof-of-possession. Only `mtls` is supported.
+     * Mechanism used for proof-of-possession. `mtls` or `dpop` is supported.
      */
     mechanism: string;
     /**
@@ -5978,7 +5978,7 @@ export interface ResourceServerProofOfPossession {
      */
     disable?: boolean;
     /**
-     * Mechanism used for proof-of-possession. Only `mtls` is supported.
+     * Mechanism used for proof-of-possession. `mtls` or `dpop` is supported.
      */
     mechanism: string;
     /**

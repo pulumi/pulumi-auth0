@@ -4241,7 +4241,7 @@
                 },
                 "mechanism": {
                     "type": "string",
-                    "description": "Mechanism used for proof-of-possession. Only `mtls` is supported.\n"
+                    "description": "Mechanism used for proof-of-possession. `mtls` or `dpop` is supported.\n"
                 },
                 "required": {
                     "type": "boolean",
@@ -9805,7 +9805,7 @@
                 },
                 "mechanism": {
                     "type": "string",
-                    "description": "Mechanism used for proof-of-possession. Only `mtls` is supported.\n"
+                    "description": "Mechanism used for proof-of-possession. `mtls` or `dpop` is supported.\n"
                 },
                 "required": {
                     "type": "boolean",

@@ -19,7 +19,7 @@ namespace Pulumi.Auth0.Inputs
         public Input<bool>? Disable { get; set; }
 
         /// <summary>
-        /// Mechanism used for proof-of-possession. Only `mtls` is supported.
+        /// Mechanism used for proof-of-possession. `mtls` or `dpop` is supported.
         /// </summary>
         [Input("mechanism")]
         public Input<string>? Mechanism { get; set; }

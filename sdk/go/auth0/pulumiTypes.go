@@ -28213,7 +28213,7 @@ func (o ResourceServerAuthorizationDetailArrayOutput) Index(i pulumi.IntInput) R
 type ResourceServerProofOfPossession struct {
 	// Disable proof-of-possession.
 	Disable *bool `pulumi:"disable"`
-	// Mechanism used for proof-of-possession. Only `mtls` is supported.
+	// Mechanism used for proof-of-possession. `mtls` or `dpop` is supported.
 	Mechanism *string `pulumi:"mechanism"`
 	// Indicates whether proof-of-possession is required with this resource server.
 	Required *bool `pulumi:"required"`
@@ -28233,7 +28233,7 @@ type ResourceServerProofOfPossessionInput interface {
 type ResourceServerProofOfPossessionArgs struct {
 	// Disable proof-of-possession.
 	Disable pulumi.BoolPtrInput `pulumi:"disable"`
-	// Mechanism used for proof-of-possession. Only `mtls` is supported.
+	// Mechanism used for proof-of-possession. `mtls` or `dpop` is supported.
 	Mechanism pulumi.StringPtrInput `pulumi:"mechanism"`
 	// Indicates whether proof-of-possession is required with this resource server.
 	Required pulumi.BoolPtrInput `pulumi:"required"`
@@ -28321,7 +28321,7 @@ func (o ResourceServerProofOfPossessionOutput) Disable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ResourceServerProofOfPossession) *bool { return v.Disable }).(pulumi.BoolPtrOutput)
 }
 
-// Mechanism used for proof-of-possession. Only `mtls` is supported.
+// Mechanism used for proof-of-possession. `mtls` or `dpop` is supported.
 func (o ResourceServerProofOfPossessionOutput) Mechanism() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceServerProofOfPossession) *string { return v.Mechanism }).(pulumi.StringPtrOutput)
 }
@@ -28365,7 +28365,7 @@ func (o ResourceServerProofOfPossessionPtrOutput) Disable() pulumi.BoolPtrOutput
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Mechanism used for proof-of-possession. Only `mtls` is supported.
+// Mechanism used for proof-of-possession. `mtls` or `dpop` is supported.
 func (o ResourceServerProofOfPossessionPtrOutput) Mechanism() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceServerProofOfPossession) *string {
 		if v == nil {
@@ -49845,7 +49845,7 @@ func (o GetResourceServerAuthorizationDetailArrayOutput) Index(i pulumi.IntInput
 type GetResourceServerProofOfPossession struct {
 	// Disable proof-of-possession.
 	Disable bool `pulumi:"disable"`
-	// Mechanism used for proof-of-possession. Only `mtls` is supported.
+	// Mechanism used for proof-of-possession. `mtls` or `dpop` is supported.
 	Mechanism string `pulumi:"mechanism"`
 	// Indicates whether proof-of-possession is required with this resource server.
 	Required bool `pulumi:"required"`
@@ -49865,7 +49865,7 @@ type GetResourceServerProofOfPossessionInput interface {
 type GetResourceServerProofOfPossessionArgs struct {
 	// Disable proof-of-possession.
 	Disable pulumi.BoolInput `pulumi:"disable"`
-	// Mechanism used for proof-of-possession. Only `mtls` is supported.
+	// Mechanism used for proof-of-possession. `mtls` or `dpop` is supported.
 	Mechanism pulumi.StringInput `pulumi:"mechanism"`
 	// Indicates whether proof-of-possession is required with this resource server.
 	Required pulumi.BoolInput `pulumi:"required"`
@@ -49927,7 +49927,7 @@ func (o GetResourceServerProofOfPossessionOutput) Disable() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetResourceServerProofOfPossession) bool { return v.Disable }).(pulumi.BoolOutput)
 }
 
-// Mechanism used for proof-of-possession. Only `mtls` is supported.
+// Mechanism used for proof-of-possession. `mtls` or `dpop` is supported.
 func (o GetResourceServerProofOfPossessionOutput) Mechanism() pulumi.StringOutput {
 	return o.ApplyT(func(v GetResourceServerProofOfPossession) string { return v.Mechanism }).(pulumi.StringOutput)
 }

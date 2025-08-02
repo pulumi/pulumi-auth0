@@ -17,7 +17,7 @@ public final class GetResourceServerProofOfPossession {
      */
     private Boolean disable;
     /**
-     * @return Mechanism used for proof-of-possession. Only `mtls` is supported.
+     * @return Mechanism used for proof-of-possession. `mtls` or `dpop` is supported.
      * 
      */
     private String mechanism;
@@ -36,7 +36,7 @@ public final class GetResourceServerProofOfPossession {
         return this.disable;
     }
     /**
-     * @return Mechanism used for proof-of-possession. Only `mtls` is supported.
+     * @return Mechanism used for proof-of-possession. `mtls` or `dpop` is supported.
      * 
      */
     public String mechanism() {

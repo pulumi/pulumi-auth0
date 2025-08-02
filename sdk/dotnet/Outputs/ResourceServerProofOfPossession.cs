@@ -18,7 +18,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly bool? Disable;
         /// <summary>
-        /// Mechanism used for proof-of-possession. Only `mtls` is supported.
+        /// Mechanism used for proof-of-possession. `mtls` or `dpop` is supported.
         /// </summary>
         public readonly string? Mechanism;
         /// <summary>
