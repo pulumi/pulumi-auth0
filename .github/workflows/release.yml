@@ -10,13 +10,15 @@ env:
   AUTH0_CLIENT_ID: ${{ secrets.AUTH0_CLIENT_ID }}
   AUTH0_CLIENT_SECRET: ${{ secrets.AUTH0_CLIENT_SECRET }}
   AUTH0_DOMAIN: ${{ secrets.AUTH0_DOMAIN }}
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   PULUMI_API: https://api.pulumi-staging.io
   PULUMI_GO_DEP_ROOT: ${{ github.workspace }}/..
   PULUMI_LOCAL_NUGET: ${{ github.workspace }}/nuget
   TF_APPEND_USER_AGENT: pulumi
 jobs:
   prerequisites:
+    permissions:
+      contents: read
+      pull-requests: write
     uses: ./.github/workflows/prerequisites.yml
     secrets: inherit
     with:
