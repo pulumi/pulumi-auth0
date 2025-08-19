@@ -18709,7 +18709,7 @@
                 "properties": {
                     "__self__": {
                         "type": "ref",
-                        "$ref": "#/resources/pulumi:providers:auth0"
+                        "$ref": "#/provider"
                     }
                 },
                 "type": "pulumi:providers:auth0/terraformConfig",
