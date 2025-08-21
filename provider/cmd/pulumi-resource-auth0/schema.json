@@ -3639,6 +3639,28 @@
                 }
             }
         },
+        "auth0:index/LogStreamPiiConfig:LogStreamPiiConfig": {
+            "properties": {
+                "algorithm": {
+                    "type": "string",
+                    "description": "The algorithm to use for PII handling. Currently, only `xxhash` is supported.\n"
+                },
+                "logFields": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "method": {
+                    "type": "string",
+                    "description": "The method to use for PII handling. Options are `hash` or `mask`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "logFields"
+            ]
+        },
         "auth0:index/LogStreamSink:LogStreamSink": {
             "properties": {
                 "awsAccountId": {
@@ -13321,6 +13343,10 @@
                     "type": "string",
                     "description": "Name of the log stream.\n"
                 },
+                "piiConfig": {
+                    "$ref": "#/types/auth0:index/LogStreamPiiConfig:LogStreamPiiConfig",
+                    "description": "Configuration for PII (Personally Identifiable Information) handling.\n"
+                },
                 "sink": {
                     "$ref": "#/types/auth0:index/LogStreamSink:LogStreamSink",
                     "description": "The sink configuration for the log stream.\n"
@@ -13360,6 +13386,10 @@
                     "type": "string",
                     "description": "Name of the log stream.\n"
                 },
+                "piiConfig": {
+                    "$ref": "#/types/auth0:index/LogStreamPiiConfig:LogStreamPiiConfig",
+                    "description": "Configuration for PII (Personally Identifiable Information) handling.\n"
+                },
                 "sink": {
                     "$ref": "#/types/auth0:index/LogStreamSink:LogStreamSink",
                     "description": "The sink configuration for the log stream.\n"
@@ -13398,6 +13428,10 @@
                     "name": {
                         "type": "string",
                         "description": "Name of the log stream.\n"
+                    },
+                    "piiConfig": {
+                        "$ref": "#/types/auth0:index/LogStreamPiiConfig:LogStreamPiiConfig",
+                        "description": "Configuration for PII (Personally Identifiable Information) handling.\n"
                     },
                     "sink": {
                         "$ref": "#/types/auth0:index/LogStreamSink:LogStreamSink",
@@ -15005,6 +15039,68 @@
                         "items": {
                             "$ref": "#/types/auth0:index/ResourceServerScopesScope:ResourceServerScopesScope"
                         }
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "auth0:index/riskAssessments:RiskAssessments": {
+            "description": "Resource for managing general Risk Assessment settings.\n",
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether risk assessment is enabled or not.\n"
+                }
+            },
+            "required": [
+                "enabled"
+            ],
+            "inputProperties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether risk assessment is enabled or not.\n"
+                }
+            },
+            "requiredInputs": [
+                "enabled"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering RiskAssessments resources.\n",
+                "properties": {
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Whether risk assessment is enabled or not.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "auth0:index/riskAssessmentsNewDevice:RiskAssessmentsNewDevice": {
+            "description": "Resource for managing Risk Assessment settings for new devices.\n",
+            "properties": {
+                "rememberFor": {
+                    "type": "integer",
+                    "description": "Length of time to remember devices for, in days\n"
+                }
+            },
+            "required": [
+                "rememberFor"
+            ],
+            "inputProperties": {
+                "rememberFor": {
+                    "type": "integer",
+                    "description": "Length of time to remember devices for, in days\n"
+                }
+            },
+            "requiredInputs": [
+                "rememberFor"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering RiskAssessmentsNewDevice resources.\n",
+                "properties": {
+                    "rememberFor": {
+                        "type": "integer",
+                        "description": "Length of time to remember devices for, in days\n"
                     }
                 },
                 "type": "object"
