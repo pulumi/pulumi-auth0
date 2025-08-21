@@ -106,6 +106,10 @@ export class LogStream extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * Configuration for PII (Personally Identifiable Information) handling.
+     */
+    public readonly piiConfig!: pulumi.Output<outputs.LogStreamPiiConfig | undefined>;
+    /**
      * The sink configuration for the log stream.
      */
     public readonly sink!: pulumi.Output<outputs.LogStreamSink>;
@@ -134,6 +138,7 @@ export class LogStream extends pulumi.CustomResource {
             resourceInputs["filters"] = state ? state.filters : undefined;
             resourceInputs["isPriority"] = state ? state.isPriority : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["piiConfig"] = state ? state.piiConfig : undefined;
             resourceInputs["sink"] = state ? state.sink : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
@@ -148,6 +153,7 @@ export class LogStream extends pulumi.CustomResource {
             resourceInputs["filters"] = args ? args.filters : undefined;
             resourceInputs["isPriority"] = args ? args.isPriority : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["piiConfig"] = args ? args.piiConfig : undefined;
             resourceInputs["sink"] = args ? args.sink : undefined;
             resourceInputs["status"] = args ? args.status : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
@@ -173,6 +179,10 @@ export interface LogStreamState {
      * Name of the log stream.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Configuration for PII (Personally Identifiable Information) handling.
+     */
+    piiConfig?: pulumi.Input<inputs.LogStreamPiiConfig>;
     /**
      * The sink configuration for the log stream.
      */
@@ -203,6 +213,10 @@ export interface LogStreamArgs {
      * Name of the log stream.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Configuration for PII (Personally Identifiable Information) handling.
+     */
+    piiConfig?: pulumi.Input<inputs.LogStreamPiiConfig>;
     /**
      * The sink configuration for the log stream.
      */

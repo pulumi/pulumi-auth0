@@ -285,6 +285,8 @@ __all__ = [
     'GuardianWebauthnPlatformArgsDict',
     'GuardianWebauthnRoamingArgs',
     'GuardianWebauthnRoamingArgsDict',
+    'LogStreamPiiConfigArgs',
+    'LogStreamPiiConfigArgsDict',
     'LogStreamSinkArgs',
     'LogStreamSinkArgsDict',
     'NetworkAclRuleArgs',
@@ -12606,6 +12608,70 @@ class GuardianWebauthnRoamingArgs:
     @user_verification.setter
     def user_verification(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "user_verification", value)
+
+
+if not MYPY:
+    class LogStreamPiiConfigArgsDict(TypedDict):
+        log_fields: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+        algorithm: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The algorithm to use for PII handling. Currently, only `xxhash` is supported.
+        """
+        method: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The method to use for PII handling. Options are `hash` or `mask`.
+        """
+elif False:
+    LogStreamPiiConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class LogStreamPiiConfigArgs:
+    def __init__(__self__, *,
+                 log_fields: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
+                 algorithm: Optional[pulumi.Input[_builtins.str]] = None,
+                 method: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] algorithm: The algorithm to use for PII handling. Currently, only `xxhash` is supported.
+        :param pulumi.Input[_builtins.str] method: The method to use for PII handling. Options are `hash` or `mask`.
+        """
+        pulumi.set(__self__, "log_fields", log_fields)
+        if algorithm is not None:
+            pulumi.set(__self__, "algorithm", algorithm)
+        if method is not None:
+            pulumi.set(__self__, "method", method)
+
+    @_builtins.property
+    @pulumi.getter(name="logFields")
+    def log_fields(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        return pulumi.get(self, "log_fields")
+
+    @log_fields.setter
+    def log_fields(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "log_fields", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The algorithm to use for PII handling. Currently, only `xxhash` is supported.
+        """
+        return pulumi.get(self, "algorithm")
+
+    @algorithm.setter
+    def algorithm(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "algorithm", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def method(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The method to use for PII handling. Options are `hash` or `mask`.
+        """
+        return pulumi.get(self, "method")
+
+    @method.setter
+    def method(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "method", value)
 
 
 if not MYPY:

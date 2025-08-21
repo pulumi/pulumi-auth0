@@ -107,6 +107,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ResourceServerScope{}
 	case "auth0:index/resourceServerScopes:ResourceServerScopes":
 		r = &ResourceServerScopes{}
+	case "auth0:index/riskAssessments:RiskAssessments":
+		r = &RiskAssessments{}
+	case "auth0:index/riskAssessmentsNewDevice:RiskAssessmentsNewDevice":
+		r = &RiskAssessmentsNewDevice{}
 	case "auth0:index/role:Role":
 		r = &Role{}
 	case "auth0:index/rolePermission:RolePermission":
@@ -383,6 +387,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"auth0",
 		"index/resourceServerScopes",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"auth0",
+		"index/riskAssessments",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"auth0",
+		"index/riskAssessmentsNewDevice",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

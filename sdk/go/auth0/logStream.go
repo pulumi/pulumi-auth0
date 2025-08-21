@@ -98,6 +98,8 @@ type LogStream struct {
 	IsPriority pulumi.BoolPtrOutput `pulumi:"isPriority"`
 	// Name of the log stream.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Configuration for PII (Personally Identifiable Information) handling.
+	PiiConfig LogStreamPiiConfigPtrOutput `pulumi:"piiConfig"`
 	// The sink configuration for the log stream.
 	Sink LogStreamSinkOutput `pulumi:"sink"`
 	// The current status of the log stream. Options are "active", "paused", "suspended".
@@ -148,6 +150,8 @@ type logStreamState struct {
 	IsPriority *bool `pulumi:"isPriority"`
 	// Name of the log stream.
 	Name *string `pulumi:"name"`
+	// Configuration for PII (Personally Identifiable Information) handling.
+	PiiConfig *LogStreamPiiConfig `pulumi:"piiConfig"`
 	// The sink configuration for the log stream.
 	Sink *LogStreamSink `pulumi:"sink"`
 	// The current status of the log stream. Options are "active", "paused", "suspended".
@@ -163,6 +167,8 @@ type LogStreamState struct {
 	IsPriority pulumi.BoolPtrInput
 	// Name of the log stream.
 	Name pulumi.StringPtrInput
+	// Configuration for PII (Personally Identifiable Information) handling.
+	PiiConfig LogStreamPiiConfigPtrInput
 	// The sink configuration for the log stream.
 	Sink LogStreamSinkPtrInput
 	// The current status of the log stream. Options are "active", "paused", "suspended".
@@ -182,6 +188,8 @@ type logStreamArgs struct {
 	IsPriority *bool `pulumi:"isPriority"`
 	// Name of the log stream.
 	Name *string `pulumi:"name"`
+	// Configuration for PII (Personally Identifiable Information) handling.
+	PiiConfig *LogStreamPiiConfig `pulumi:"piiConfig"`
 	// The sink configuration for the log stream.
 	Sink LogStreamSink `pulumi:"sink"`
 	// The current status of the log stream. Options are "active", "paused", "suspended".
@@ -198,6 +206,8 @@ type LogStreamArgs struct {
 	IsPriority pulumi.BoolPtrInput
 	// Name of the log stream.
 	Name pulumi.StringPtrInput
+	// Configuration for PII (Personally Identifiable Information) handling.
+	PiiConfig LogStreamPiiConfigPtrInput
 	// The sink configuration for the log stream.
 	Sink LogStreamSinkInput
 	// The current status of the log stream. Options are "active", "paused", "suspended".
@@ -306,6 +316,11 @@ func (o LogStreamOutput) IsPriority() pulumi.BoolPtrOutput {
 // Name of the log stream.
 func (o LogStreamOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogStream) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Configuration for PII (Personally Identifiable Information) handling.
+func (o LogStreamOutput) PiiConfig() LogStreamPiiConfigPtrOutput {
+	return o.ApplyT(func(v *LogStream) LogStreamPiiConfigPtrOutput { return v.PiiConfig }).(LogStreamPiiConfigPtrOutput)
 }
 
 // The sink configuration for the log stream.
