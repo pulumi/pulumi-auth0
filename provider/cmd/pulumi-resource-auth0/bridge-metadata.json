@@ -801,6 +801,16 @@
                     "filters": {
                         "maxItemsOne": false
                     },
+                    "pii_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "log_fields": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "sink": {
                         "maxItemsOne": true,
                         "elem": {
@@ -1073,6 +1083,14 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "auth0_risk_assessments": {
+                "current": "auth0:index/riskAssessments:RiskAssessments",
+                "majorVersion": 3
+            },
+            "auth0_risk_assessments_new_device": {
+                "current": "auth0:index/riskAssessmentsNewDevice:RiskAssessmentsNewDevice",
+                "majorVersion": 3
             },
             "auth0_role": {
                 "current": "auth0:index/role:Role",

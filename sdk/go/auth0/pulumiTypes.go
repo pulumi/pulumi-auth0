@@ -24361,6 +24361,177 @@ func (o GuardianWebauthnRoamingPtrOutput) UserVerification() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+type LogStreamPiiConfig struct {
+	// The algorithm to use for PII handling. Currently, only `xxhash` is supported.
+	Algorithm *string  `pulumi:"algorithm"`
+	LogFields []string `pulumi:"logFields"`
+	// The method to use for PII handling. Options are `hash` or `mask`.
+	Method *string `pulumi:"method"`
+}
+
+// LogStreamPiiConfigInput is an input type that accepts LogStreamPiiConfigArgs and LogStreamPiiConfigOutput values.
+// You can construct a concrete instance of `LogStreamPiiConfigInput` via:
+//
+//	LogStreamPiiConfigArgs{...}
+type LogStreamPiiConfigInput interface {
+	pulumi.Input
+
+	ToLogStreamPiiConfigOutput() LogStreamPiiConfigOutput
+	ToLogStreamPiiConfigOutputWithContext(context.Context) LogStreamPiiConfigOutput
+}
+
+type LogStreamPiiConfigArgs struct {
+	// The algorithm to use for PII handling. Currently, only `xxhash` is supported.
+	Algorithm pulumi.StringPtrInput   `pulumi:"algorithm"`
+	LogFields pulumi.StringArrayInput `pulumi:"logFields"`
+	// The method to use for PII handling. Options are `hash` or `mask`.
+	Method pulumi.StringPtrInput `pulumi:"method"`
+}
+
+func (LogStreamPiiConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogStreamPiiConfig)(nil)).Elem()
+}
+
+func (i LogStreamPiiConfigArgs) ToLogStreamPiiConfigOutput() LogStreamPiiConfigOutput {
+	return i.ToLogStreamPiiConfigOutputWithContext(context.Background())
+}
+
+func (i LogStreamPiiConfigArgs) ToLogStreamPiiConfigOutputWithContext(ctx context.Context) LogStreamPiiConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogStreamPiiConfigOutput)
+}
+
+func (i LogStreamPiiConfigArgs) ToLogStreamPiiConfigPtrOutput() LogStreamPiiConfigPtrOutput {
+	return i.ToLogStreamPiiConfigPtrOutputWithContext(context.Background())
+}
+
+func (i LogStreamPiiConfigArgs) ToLogStreamPiiConfigPtrOutputWithContext(ctx context.Context) LogStreamPiiConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogStreamPiiConfigOutput).ToLogStreamPiiConfigPtrOutputWithContext(ctx)
+}
+
+// LogStreamPiiConfigPtrInput is an input type that accepts LogStreamPiiConfigArgs, LogStreamPiiConfigPtr and LogStreamPiiConfigPtrOutput values.
+// You can construct a concrete instance of `LogStreamPiiConfigPtrInput` via:
+//
+//	        LogStreamPiiConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type LogStreamPiiConfigPtrInput interface {
+	pulumi.Input
+
+	ToLogStreamPiiConfigPtrOutput() LogStreamPiiConfigPtrOutput
+	ToLogStreamPiiConfigPtrOutputWithContext(context.Context) LogStreamPiiConfigPtrOutput
+}
+
+type logStreamPiiConfigPtrType LogStreamPiiConfigArgs
+
+func LogStreamPiiConfigPtr(v *LogStreamPiiConfigArgs) LogStreamPiiConfigPtrInput {
+	return (*logStreamPiiConfigPtrType)(v)
+}
+
+func (*logStreamPiiConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogStreamPiiConfig)(nil)).Elem()
+}
+
+func (i *logStreamPiiConfigPtrType) ToLogStreamPiiConfigPtrOutput() LogStreamPiiConfigPtrOutput {
+	return i.ToLogStreamPiiConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *logStreamPiiConfigPtrType) ToLogStreamPiiConfigPtrOutputWithContext(ctx context.Context) LogStreamPiiConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogStreamPiiConfigPtrOutput)
+}
+
+type LogStreamPiiConfigOutput struct{ *pulumi.OutputState }
+
+func (LogStreamPiiConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogStreamPiiConfig)(nil)).Elem()
+}
+
+func (o LogStreamPiiConfigOutput) ToLogStreamPiiConfigOutput() LogStreamPiiConfigOutput {
+	return o
+}
+
+func (o LogStreamPiiConfigOutput) ToLogStreamPiiConfigOutputWithContext(ctx context.Context) LogStreamPiiConfigOutput {
+	return o
+}
+
+func (o LogStreamPiiConfigOutput) ToLogStreamPiiConfigPtrOutput() LogStreamPiiConfigPtrOutput {
+	return o.ToLogStreamPiiConfigPtrOutputWithContext(context.Background())
+}
+
+func (o LogStreamPiiConfigOutput) ToLogStreamPiiConfigPtrOutputWithContext(ctx context.Context) LogStreamPiiConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogStreamPiiConfig) *LogStreamPiiConfig {
+		return &v
+	}).(LogStreamPiiConfigPtrOutput)
+}
+
+// The algorithm to use for PII handling. Currently, only `xxhash` is supported.
+func (o LogStreamPiiConfigOutput) Algorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogStreamPiiConfig) *string { return v.Algorithm }).(pulumi.StringPtrOutput)
+}
+
+func (o LogStreamPiiConfigOutput) LogFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LogStreamPiiConfig) []string { return v.LogFields }).(pulumi.StringArrayOutput)
+}
+
+// The method to use for PII handling. Options are `hash` or `mask`.
+func (o LogStreamPiiConfigOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogStreamPiiConfig) *string { return v.Method }).(pulumi.StringPtrOutput)
+}
+
+type LogStreamPiiConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (LogStreamPiiConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogStreamPiiConfig)(nil)).Elem()
+}
+
+func (o LogStreamPiiConfigPtrOutput) ToLogStreamPiiConfigPtrOutput() LogStreamPiiConfigPtrOutput {
+	return o
+}
+
+func (o LogStreamPiiConfigPtrOutput) ToLogStreamPiiConfigPtrOutputWithContext(ctx context.Context) LogStreamPiiConfigPtrOutput {
+	return o
+}
+
+func (o LogStreamPiiConfigPtrOutput) Elem() LogStreamPiiConfigOutput {
+	return o.ApplyT(func(v *LogStreamPiiConfig) LogStreamPiiConfig {
+		if v != nil {
+			return *v
+		}
+		var ret LogStreamPiiConfig
+		return ret
+	}).(LogStreamPiiConfigOutput)
+}
+
+// The algorithm to use for PII handling. Currently, only `xxhash` is supported.
+func (o LogStreamPiiConfigPtrOutput) Algorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogStreamPiiConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Algorithm
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o LogStreamPiiConfigPtrOutput) LogFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *LogStreamPiiConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.LogFields
+	}).(pulumi.StringArrayOutput)
+}
+
+// The method to use for PII handling. Options are `hash` or `mask`.
+func (o LogStreamPiiConfigPtrOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogStreamPiiConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Method
+	}).(pulumi.StringPtrOutput)
+}
+
 type LogStreamSink struct {
 	// The AWS Account ID.
 	AwsAccountId *string `pulumi:"awsAccountId"`
@@ -52669,6 +52840,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GuardianWebauthnPlatformPtrInput)(nil)).Elem(), GuardianWebauthnPlatformArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GuardianWebauthnRoamingInput)(nil)).Elem(), GuardianWebauthnRoamingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GuardianWebauthnRoamingPtrInput)(nil)).Elem(), GuardianWebauthnRoamingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogStreamPiiConfigInput)(nil)).Elem(), LogStreamPiiConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogStreamPiiConfigPtrInput)(nil)).Elem(), LogStreamPiiConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LogStreamSinkInput)(nil)).Elem(), LogStreamSinkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LogStreamSinkPtrInput)(nil)).Elem(), LogStreamSinkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkAclRuleInput)(nil)).Elem(), NetworkAclRuleArgs{})
@@ -53356,6 +53529,8 @@ func init() {
 	pulumi.RegisterOutputType(GuardianWebauthnPlatformPtrOutput{})
 	pulumi.RegisterOutputType(GuardianWebauthnRoamingOutput{})
 	pulumi.RegisterOutputType(GuardianWebauthnRoamingPtrOutput{})
+	pulumi.RegisterOutputType(LogStreamPiiConfigOutput{})
+	pulumi.RegisterOutputType(LogStreamPiiConfigPtrOutput{})
 	pulumi.RegisterOutputType(LogStreamSinkOutput{})
 	pulumi.RegisterOutputType(LogStreamSinkPtrOutput{})
 	pulumi.RegisterOutputType(NetworkAclRuleOutput{})

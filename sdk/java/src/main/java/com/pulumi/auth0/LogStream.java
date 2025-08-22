@@ -6,6 +6,7 @@ package com.pulumi.auth0;
 import com.pulumi.auth0.LogStreamArgs;
 import com.pulumi.auth0.Utilities;
 import com.pulumi.auth0.inputs.LogStreamState;
+import com.pulumi.auth0.outputs.LogStreamPiiConfig;
 import com.pulumi.auth0.outputs.LogStreamSink;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -146,6 +147,20 @@ public class LogStream extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Configuration for PII (Personally Identifiable Information) handling.
+     * 
+     */
+    @Export(name="piiConfig", refs={LogStreamPiiConfig.class}, tree="[0]")
+    private Output</* @Nullable */ LogStreamPiiConfig> piiConfig;
+
+    /**
+     * @return Configuration for PII (Personally Identifiable Information) handling.
+     * 
+     */
+    public Output<Optional<LogStreamPiiConfig>> piiConfig() {
+        return Codegen.optional(this.piiConfig);
     }
     /**
      * The sink configuration for the log stream.

@@ -2630,6 +2630,18 @@ export interface GuardianWebauthnRoaming {
     userVerification?: pulumi.Input<string>;
 }
 
+export interface LogStreamPiiConfig {
+    /**
+     * The algorithm to use for PII handling. Currently, only `xxhash` is supported.
+     */
+    algorithm?: pulumi.Input<string>;
+    logFields: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The method to use for PII handling. Options are `hash` or `mask`.
+     */
+    method?: pulumi.Input<string>;
+}
+
 export interface LogStreamSink {
     /**
      * The AWS Account ID.

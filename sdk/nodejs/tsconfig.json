@@ -86,6 +86,8 @@
         "resourceServer.ts",
         "resourceServerScope.ts",
         "resourceServerScopes.ts",
+        "riskAssessments.ts",
+        "riskAssessmentsNewDevice.ts",
         "role.ts",
         "rolePermission.ts",
         "rolePermissions.ts",

@@ -353,6 +353,16 @@ export type ResourceServerScopes = import("./resourceServerScopes").ResourceServ
 export const ResourceServerScopes: typeof import("./resourceServerScopes").ResourceServerScopes = null as any;
 utilities.lazyLoad(exports, ["ResourceServerScopes"], () => require("./resourceServerScopes"));
 
+export { RiskAssessmentsArgs, RiskAssessmentsState } from "./riskAssessments";
+export type RiskAssessments = import("./riskAssessments").RiskAssessments;
+export const RiskAssessments: typeof import("./riskAssessments").RiskAssessments = null as any;
+utilities.lazyLoad(exports, ["RiskAssessments"], () => require("./riskAssessments"));
+
+export { RiskAssessmentsNewDeviceArgs, RiskAssessmentsNewDeviceState } from "./riskAssessmentsNewDevice";
+export type RiskAssessmentsNewDevice = import("./riskAssessmentsNewDevice").RiskAssessmentsNewDevice;
+export const RiskAssessmentsNewDevice: typeof import("./riskAssessmentsNewDevice").RiskAssessmentsNewDevice = null as any;
+utilities.lazyLoad(exports, ["RiskAssessmentsNewDevice"], () => require("./riskAssessmentsNewDevice"));
+
 export { RoleArgs, RoleState } from "./role";
 export type Role = import("./role").Role;
 export const Role: typeof import("./role").Role = null as any;
@@ -533,6 +543,10 @@ const _module = {
                 return new ResourceServerScope(name, <any>undefined, { urn })
             case "auth0:index/resourceServerScopes:ResourceServerScopes":
                 return new ResourceServerScopes(name, <any>undefined, { urn })
+            case "auth0:index/riskAssessments:RiskAssessments":
+                return new RiskAssessments(name, <any>undefined, { urn })
+            case "auth0:index/riskAssessmentsNewDevice:RiskAssessmentsNewDevice":
+                return new RiskAssessmentsNewDevice(name, <any>undefined, { urn })
             case "auth0:index/role:Role":
                 return new Role(name, <any>undefined, { urn })
             case "auth0:index/rolePermission:RolePermission":
@@ -613,6 +627,8 @@ pulumi.runtime.registerResourceModule("auth0", "index/promptScreenRenderer", _mo
 pulumi.runtime.registerResourceModule("auth0", "index/resourceServer", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/resourceServerScope", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/resourceServerScopes", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/riskAssessments", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/riskAssessmentsNewDevice", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/role", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/rolePermission", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/rolePermissions", _module)

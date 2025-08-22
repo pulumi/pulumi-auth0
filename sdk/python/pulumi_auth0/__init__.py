@@ -76,6 +76,8 @@ from .provider import *
 from .resource_server import *
 from .resource_server_scope import *
 from .resource_server_scopes import *
+from .risk_assessments import *
+from .risk_assessments_new_device import *
 from .role import *
 from .role_permission import *
 from .role_permissions import *
@@ -447,6 +449,22 @@ _utilities.register(
   "fqn": "pulumi_auth0",
   "classes": {
    "auth0:index/resourceServerScopes:ResourceServerScopes": "ResourceServerScopes"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/riskAssessments",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/riskAssessments:RiskAssessments": "RiskAssessments"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/riskAssessmentsNewDevice",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/riskAssessmentsNewDevice:RiskAssessmentsNewDevice": "RiskAssessmentsNewDevice"
   }
  },
  {

@@ -108,6 +108,12 @@ namespace Pulumi.Auth0
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration for PII (Personally Identifiable Information) handling.
+        /// </summary>
+        [Output("piiConfig")]
+        public Output<Outputs.LogStreamPiiConfig?> PiiConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The sink configuration for the log stream.
         /// </summary>
         [Output("sink")]
@@ -196,6 +202,12 @@ namespace Pulumi.Auth0
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Configuration for PII (Personally Identifiable Information) handling.
+        /// </summary>
+        [Input("piiConfig")]
+        public Input<Inputs.LogStreamPiiConfigArgs>? PiiConfig { get; set; }
+
+        /// <summary>
         /// The sink configuration for the log stream.
         /// </summary>
         [Input("sink", required: true)]
@@ -244,6 +256,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Configuration for PII (Personally Identifiable Information) handling.
+        /// </summary>
+        [Input("piiConfig")]
+        public Input<Inputs.LogStreamPiiConfigGetArgs>? PiiConfig { get; set; }
 
         /// <summary>
         /// The sink configuration for the log stream.

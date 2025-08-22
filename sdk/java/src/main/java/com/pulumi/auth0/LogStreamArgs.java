@@ -3,6 +3,7 @@
 
 package com.pulumi.auth0;
 
+import com.pulumi.auth0.inputs.LogStreamPiiConfigArgs;
 import com.pulumi.auth0.inputs.LogStreamSinkArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -66,6 +67,21 @@ public final class LogStreamArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Configuration for PII (Personally Identifiable Information) handling.
+     * 
+     */
+    @Import(name="piiConfig")
+    private @Nullable Output<LogStreamPiiConfigArgs> piiConfig;
+
+    /**
+     * @return Configuration for PII (Personally Identifiable Information) handling.
+     * 
+     */
+    public Optional<Output<LogStreamPiiConfigArgs>> piiConfig() {
+        return Optional.ofNullable(this.piiConfig);
+    }
+
+    /**
      * The sink configuration for the log stream.
      * 
      */
@@ -116,6 +132,7 @@ public final class LogStreamArgs extends com.pulumi.resources.ResourceArgs {
         this.filters = $.filters;
         this.isPriority = $.isPriority;
         this.name = $.name;
+        this.piiConfig = $.piiConfig;
         this.sink = $.sink;
         this.status = $.status;
         this.type = $.type;
@@ -210,6 +227,27 @@ public final class LogStreamArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param piiConfig Configuration for PII (Personally Identifiable Information) handling.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder piiConfig(@Nullable Output<LogStreamPiiConfigArgs> piiConfig) {
+            $.piiConfig = piiConfig;
+            return this;
+        }
+
+        /**
+         * @param piiConfig Configuration for PII (Personally Identifiable Information) handling.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder piiConfig(LogStreamPiiConfigArgs piiConfig) {
+            return piiConfig(Output.of(piiConfig));
         }
 
         /**
