@@ -76,15 +76,15 @@ export class ResourceServerScope extends pulumi.CustomResource {
     /**
      * Description of the scope (permission).
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Identifier of the resource server that the scope (permission) is associated with.
      */
-    public readonly resourceServerIdentifier!: pulumi.Output<string>;
+    declare public readonly resourceServerIdentifier: pulumi.Output<string>;
     /**
      * Name of the scope (permission).
      */
-    public readonly scope!: pulumi.Output<string>;
+    declare public readonly scope: pulumi.Output<string>;
 
     /**
      * Create a ResourceServerScope resource with the given unique name, arguments, and options.
@@ -99,20 +99,20 @@ export class ResourceServerScope extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ResourceServerScopeState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["resourceServerIdentifier"] = state ? state.resourceServerIdentifier : undefined;
-            resourceInputs["scope"] = state ? state.scope : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["resourceServerIdentifier"] = state?.resourceServerIdentifier;
+            resourceInputs["scope"] = state?.scope;
         } else {
             const args = argsOrState as ResourceServerScopeArgs | undefined;
-            if ((!args || args.resourceServerIdentifier === undefined) && !opts.urn) {
+            if (args?.resourceServerIdentifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceServerIdentifier'");
             }
-            if ((!args || args.scope === undefined) && !opts.urn) {
+            if (args?.scope === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scope'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["resourceServerIdentifier"] = args ? args.resourceServerIdentifier : undefined;
-            resourceInputs["scope"] = args ? args.scope : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["resourceServerIdentifier"] = args?.resourceServerIdentifier;
+            resourceInputs["scope"] = args?.scope;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ResourceServerScope.__pulumiType, name, resourceInputs, opts);

@@ -91,8 +91,8 @@ export class PromptScreenPartials extends pulumi.CustomResource {
     /**
      * The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
      */
-    public readonly promptType!: pulumi.Output<string>;
-    public readonly screenPartials!: pulumi.Output<outputs.PromptScreenPartialsScreenPartial[] | undefined>;
+    declare public readonly promptType: pulumi.Output<string>;
+    declare public readonly screenPartials: pulumi.Output<outputs.PromptScreenPartialsScreenPartial[] | undefined>;
 
     /**
      * Create a PromptScreenPartials resource with the given unique name, arguments, and options.
@@ -107,15 +107,15 @@ export class PromptScreenPartials extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PromptScreenPartialsState | undefined;
-            resourceInputs["promptType"] = state ? state.promptType : undefined;
-            resourceInputs["screenPartials"] = state ? state.screenPartials : undefined;
+            resourceInputs["promptType"] = state?.promptType;
+            resourceInputs["screenPartials"] = state?.screenPartials;
         } else {
             const args = argsOrState as PromptScreenPartialsArgs | undefined;
-            if ((!args || args.promptType === undefined) && !opts.urn) {
+            if (args?.promptType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'promptType'");
             }
-            resourceInputs["promptType"] = args ? args.promptType : undefined;
-            resourceInputs["screenPartials"] = args ? args.screenPartials : undefined;
+            resourceInputs["promptType"] = args?.promptType;
+            resourceInputs["screenPartials"] = args?.screenPartials;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(PromptScreenPartials.__pulumiType, name, resourceInputs, opts);

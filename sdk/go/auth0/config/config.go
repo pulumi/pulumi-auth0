@@ -11,10 +11,7 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
-// Your Auth0 [management api access
-// token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from
-// the `AUTH0_API_TOKEN` environment variable. It can be used instead of `clientId` + `clientSecret`. If both are
-// specified, `apiToken` will be used over `clientId` + `clientSecret` fields.
+// Your Auth0 [management api access token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from the `AUTH0_API_TOKEN` environment variable. It can be used instead of `clientId` + `clientSecret`. If both are specified, `apiToken` will be used over `clientId` + `clientSecret` fields.
 func GetApiToken(ctx *pulumi.Context) string {
 	return config.Get(ctx, "auth0:apiToken")
 }
@@ -29,14 +26,12 @@ func GetCliLogin(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "auth0:cliLogin")
 }
 
-// The private key used to sign the client assertion JWT. It can also be sourced from the
-// `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
+// The private key used to sign the client assertion JWT. It can also be sourced from the `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
 func GetClientAssertionPrivateKey(ctx *pulumi.Context) string {
 	return config.Get(ctx, "auth0:clientAssertionPrivateKey")
 }
 
-// The algorithm used to sign the client assertion JWT. It can also be sourced from the
-// `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
+// The algorithm used to sign the client assertion JWT. It can also be sourced from the `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
 func GetClientAssertionSigningAlg(ctx *pulumi.Context) string {
 	return config.Get(ctx, "auth0:clientAssertionSigningAlg")
 }
@@ -51,14 +46,12 @@ func GetClientSecret(ctx *pulumi.Context) string {
 	return config.Get(ctx, "auth0:clientSecret")
 }
 
-// When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting
-// overrides all resource specific `customDomainHeader` value
+// When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting overrides all resource specific `customDomainHeader` value
 func GetCustomDomainHeader(ctx *pulumi.Context) string {
 	return config.Get(ctx, "auth0:customDomainHeader")
 }
 
-// Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG`
-// environment variable.
+// Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG` environment variable.
 func GetDebug(ctx *pulumi.Context) bool {
 	v, err := config.TryBool(ctx, "auth0:debug")
 	if err == nil {

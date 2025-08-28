@@ -71,31 +71,31 @@ export class SelfServiceProfile extends pulumi.CustomResource {
     /**
      * List of IdP strategies that will be shown to users during the Self-Service SSO flow.
      */
-    public readonly allowedStrategies!: pulumi.Output<string[] | undefined>;
+    declare public readonly allowedStrategies: pulumi.Output<string[] | undefined>;
     /**
      * Field can be used to customize the look and feel of the wizard.
      */
-    public readonly branding!: pulumi.Output<outputs.SelfServiceProfileBranding>;
+    declare public readonly branding: pulumi.Output<outputs.SelfServiceProfileBranding>;
     /**
      * The ISO 8601 formatted date the profile was created.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The description of the self-service Profile
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The name of the self-service Profile
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ISO 8601 formatted date the profile was updated.
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
     /**
      * This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0.
      */
-    public readonly userAttributes!: pulumi.Output<outputs.SelfServiceProfileUserAttribute[] | undefined>;
+    declare public readonly userAttributes: pulumi.Output<outputs.SelfServiceProfileUserAttribute[] | undefined>;
 
     /**
      * Create a SelfServiceProfile resource with the given unique name, arguments, and options.
@@ -110,20 +110,20 @@ export class SelfServiceProfile extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SelfServiceProfileState | undefined;
-            resourceInputs["allowedStrategies"] = state ? state.allowedStrategies : undefined;
-            resourceInputs["branding"] = state ? state.branding : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
-            resourceInputs["userAttributes"] = state ? state.userAttributes : undefined;
+            resourceInputs["allowedStrategies"] = state?.allowedStrategies;
+            resourceInputs["branding"] = state?.branding;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["userAttributes"] = state?.userAttributes;
         } else {
             const args = argsOrState as SelfServiceProfileArgs | undefined;
-            resourceInputs["allowedStrategies"] = args ? args.allowedStrategies : undefined;
-            resourceInputs["branding"] = args ? args.branding : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["userAttributes"] = args ? args.userAttributes : undefined;
+            resourceInputs["allowedStrategies"] = args?.allowedStrategies;
+            resourceInputs["branding"] = args?.branding;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["userAttributes"] = args?.userAttributes;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
         }

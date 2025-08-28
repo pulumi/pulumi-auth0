@@ -68,19 +68,19 @@ export class SelfServiceProfileCustomText extends pulumi.CustomResource {
     /**
      * The list of text keys and values to customize the self-service SSO page. Values can be plain text or rich HTML content limited to basic styling tags and hyperlinks
      */
-    public readonly body!: pulumi.Output<string>;
+    declare public readonly body: pulumi.Output<string>;
     /**
      * The language of the custom text
      */
-    public readonly language!: pulumi.Output<string>;
+    declare public readonly language: pulumi.Output<string>;
     /**
      * The page where the custom text is shown
      */
-    public readonly page!: pulumi.Output<string>;
+    declare public readonly page: pulumi.Output<string>;
     /**
      * The id of the self-service profile
      */
-    public readonly ssoId!: pulumi.Output<string>;
+    declare public readonly ssoId: pulumi.Output<string>;
 
     /**
      * Create a SelfServiceProfileCustomText resource with the given unique name, arguments, and options.
@@ -95,28 +95,28 @@ export class SelfServiceProfileCustomText extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SelfServiceProfileCustomTextState | undefined;
-            resourceInputs["body"] = state ? state.body : undefined;
-            resourceInputs["language"] = state ? state.language : undefined;
-            resourceInputs["page"] = state ? state.page : undefined;
-            resourceInputs["ssoId"] = state ? state.ssoId : undefined;
+            resourceInputs["body"] = state?.body;
+            resourceInputs["language"] = state?.language;
+            resourceInputs["page"] = state?.page;
+            resourceInputs["ssoId"] = state?.ssoId;
         } else {
             const args = argsOrState as SelfServiceProfileCustomTextArgs | undefined;
-            if ((!args || args.body === undefined) && !opts.urn) {
+            if (args?.body === undefined && !opts.urn) {
                 throw new Error("Missing required property 'body'");
             }
-            if ((!args || args.language === undefined) && !opts.urn) {
+            if (args?.language === undefined && !opts.urn) {
                 throw new Error("Missing required property 'language'");
             }
-            if ((!args || args.page === undefined) && !opts.urn) {
+            if (args?.page === undefined && !opts.urn) {
                 throw new Error("Missing required property 'page'");
             }
-            if ((!args || args.ssoId === undefined) && !opts.urn) {
+            if (args?.ssoId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ssoId'");
             }
-            resourceInputs["body"] = args ? args.body : undefined;
-            resourceInputs["language"] = args ? args.language : undefined;
-            resourceInputs["page"] = args ? args.page : undefined;
-            resourceInputs["ssoId"] = args ? args.ssoId : undefined;
+            resourceInputs["body"] = args?.body;
+            resourceInputs["language"] = args?.language;
+            resourceInputs["page"] = args?.page;
+            resourceInputs["ssoId"] = args?.ssoId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SelfServiceProfileCustomText.__pulumiType, name, resourceInputs, opts);

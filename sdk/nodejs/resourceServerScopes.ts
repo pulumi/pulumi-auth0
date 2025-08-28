@@ -80,8 +80,8 @@ export class ResourceServerScopes extends pulumi.CustomResource {
     /**
      * Identifier of the resource server that the scopes (permission) are associated with.
      */
-    public readonly resourceServerIdentifier!: pulumi.Output<string>;
-    public readonly scopes!: pulumi.Output<outputs.ResourceServerScopesScope[]>;
+    declare public readonly resourceServerIdentifier: pulumi.Output<string>;
+    declare public readonly scopes: pulumi.Output<outputs.ResourceServerScopesScope[]>;
 
     /**
      * Create a ResourceServerScopes resource with the given unique name, arguments, and options.
@@ -96,18 +96,18 @@ export class ResourceServerScopes extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ResourceServerScopesState | undefined;
-            resourceInputs["resourceServerIdentifier"] = state ? state.resourceServerIdentifier : undefined;
-            resourceInputs["scopes"] = state ? state.scopes : undefined;
+            resourceInputs["resourceServerIdentifier"] = state?.resourceServerIdentifier;
+            resourceInputs["scopes"] = state?.scopes;
         } else {
             const args = argsOrState as ResourceServerScopesArgs | undefined;
-            if ((!args || args.resourceServerIdentifier === undefined) && !opts.urn) {
+            if (args?.resourceServerIdentifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceServerIdentifier'");
             }
-            if ((!args || args.scopes === undefined) && !opts.urn) {
+            if (args?.scopes === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scopes'");
             }
-            resourceInputs["resourceServerIdentifier"] = args ? args.resourceServerIdentifier : undefined;
-            resourceInputs["scopes"] = args ? args.scopes : undefined;
+            resourceInputs["resourceServerIdentifier"] = args?.resourceServerIdentifier;
+            resourceInputs["scopes"] = args?.scopes;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ResourceServerScopes.__pulumiType, name, resourceInputs, opts);

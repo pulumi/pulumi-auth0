@@ -84,19 +84,19 @@ export class Pages extends pulumi.CustomResource {
     /**
      * Configuration settings for customizing the Password Reset page.
      */
-    public readonly changePassword!: pulumi.Output<outputs.PagesChangePassword>;
+    declare public readonly changePassword: pulumi.Output<outputs.PagesChangePassword>;
     /**
      * Configuration settings for the Error pages.
      */
-    public readonly error!: pulumi.Output<outputs.PagesError>;
+    declare public readonly error: pulumi.Output<outputs.PagesError>;
     /**
      * Configuration settings for customizing the Guardian Multi-Factor Authentication page.
      */
-    public readonly guardianMfa!: pulumi.Output<outputs.PagesGuardianMfa>;
+    declare public readonly guardianMfa: pulumi.Output<outputs.PagesGuardianMfa>;
     /**
      * Configuration settings for customizing the Login page.
      */
-    public readonly login!: pulumi.Output<outputs.PagesLogin>;
+    declare public readonly login: pulumi.Output<outputs.PagesLogin>;
 
     /**
      * Create a Pages resource with the given unique name, arguments, and options.
@@ -111,16 +111,16 @@ export class Pages extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PagesState | undefined;
-            resourceInputs["changePassword"] = state ? state.changePassword : undefined;
-            resourceInputs["error"] = state ? state.error : undefined;
-            resourceInputs["guardianMfa"] = state ? state.guardianMfa : undefined;
-            resourceInputs["login"] = state ? state.login : undefined;
+            resourceInputs["changePassword"] = state?.changePassword;
+            resourceInputs["error"] = state?.error;
+            resourceInputs["guardianMfa"] = state?.guardianMfa;
+            resourceInputs["login"] = state?.login;
         } else {
             const args = argsOrState as PagesArgs | undefined;
-            resourceInputs["changePassword"] = args ? args.changePassword : undefined;
-            resourceInputs["error"] = args ? args.error : undefined;
-            resourceInputs["guardianMfa"] = args ? args.guardianMfa : undefined;
-            resourceInputs["login"] = args ? args.login : undefined;
+            resourceInputs["changePassword"] = args?.changePassword;
+            resourceInputs["error"] = args?.error;
+            resourceInputs["guardianMfa"] = args?.guardianMfa;
+            resourceInputs["login"] = args?.login;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Pages.__pulumiType, name, resourceInputs, opts);

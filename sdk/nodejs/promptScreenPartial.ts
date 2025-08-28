@@ -84,15 +84,15 @@ export class PromptScreenPartial extends pulumi.CustomResource {
     /**
      * The insertion points for the partials.
      */
-    public readonly insertionPoints!: pulumi.Output<outputs.PromptScreenPartialInsertionPoints | undefined>;
+    declare public readonly insertionPoints: pulumi.Output<outputs.PromptScreenPartialInsertionPoints | undefined>;
     /**
      * The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
      */
-    public readonly promptType!: pulumi.Output<string>;
+    declare public readonly promptType: pulumi.Output<string>;
     /**
      * The name of the screen associated with the partials
      */
-    public readonly screenName!: pulumi.Output<string>;
+    declare public readonly screenName: pulumi.Output<string>;
 
     /**
      * Create a PromptScreenPartial resource with the given unique name, arguments, and options.
@@ -107,20 +107,20 @@ export class PromptScreenPartial extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PromptScreenPartialState | undefined;
-            resourceInputs["insertionPoints"] = state ? state.insertionPoints : undefined;
-            resourceInputs["promptType"] = state ? state.promptType : undefined;
-            resourceInputs["screenName"] = state ? state.screenName : undefined;
+            resourceInputs["insertionPoints"] = state?.insertionPoints;
+            resourceInputs["promptType"] = state?.promptType;
+            resourceInputs["screenName"] = state?.screenName;
         } else {
             const args = argsOrState as PromptScreenPartialArgs | undefined;
-            if ((!args || args.promptType === undefined) && !opts.urn) {
+            if (args?.promptType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'promptType'");
             }
-            if ((!args || args.screenName === undefined) && !opts.urn) {
+            if (args?.screenName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'screenName'");
             }
-            resourceInputs["insertionPoints"] = args ? args.insertionPoints : undefined;
-            resourceInputs["promptType"] = args ? args.promptType : undefined;
-            resourceInputs["screenName"] = args ? args.screenName : undefined;
+            resourceInputs["insertionPoints"] = args?.insertionPoints;
+            resourceInputs["promptType"] = args?.promptType;
+            resourceInputs["screenName"] = args?.screenName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(PromptScreenPartial.__pulumiType, name, resourceInputs, opts);

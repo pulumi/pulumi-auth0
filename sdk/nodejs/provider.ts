@@ -26,43 +26,37 @@ export class Provider extends pulumi.ProviderResource {
     }
 
     /**
-     * Your Auth0 [management api access
-     * token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from
-     * the `AUTH0_API_TOKEN` environment variable. It can be used instead of `clientId` + `clientSecret`. If both are
-     * specified, `apiToken` will be used over `clientId` + `clientSecret` fields.
+     * Your Auth0 [management api access token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from the `AUTH0_API_TOKEN` environment variable. It can be used instead of `clientId` + `clientSecret`. If both are specified, `apiToken` will be used over `clientId` + `clientSecret` fields.
      */
-    public readonly apiToken!: pulumi.Output<string | undefined>;
+    declare public readonly apiToken: pulumi.Output<string | undefined>;
     /**
      * Your Auth0 audience when using a custom domain. It can also be sourced from the `AUTH0_AUDIENCE` environment variable.
      */
-    public readonly audience!: pulumi.Output<string | undefined>;
+    declare public readonly audience: pulumi.Output<string | undefined>;
     /**
-     * The private key used to sign the client assertion JWT. It can also be sourced from the
-     * `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
+     * The private key used to sign the client assertion JWT. It can also be sourced from the `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
      */
-    public readonly clientAssertionPrivateKey!: pulumi.Output<string | undefined>;
+    declare public readonly clientAssertionPrivateKey: pulumi.Output<string | undefined>;
     /**
-     * The algorithm used to sign the client assertion JWT. It can also be sourced from the
-     * `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
+     * The algorithm used to sign the client assertion JWT. It can also be sourced from the `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
      */
-    public readonly clientAssertionSigningAlg!: pulumi.Output<string | undefined>;
+    declare public readonly clientAssertionSigningAlg: pulumi.Output<string | undefined>;
     /**
      * Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.
      */
-    public readonly clientId!: pulumi.Output<string | undefined>;
+    declare public readonly clientId: pulumi.Output<string | undefined>;
     /**
      * Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable.
      */
-    public readonly clientSecret!: pulumi.Output<string | undefined>;
+    declare public readonly clientSecret: pulumi.Output<string | undefined>;
     /**
-     * When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting
-     * overrides all resource specific `customDomainHeader` value
+     * When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting overrides all resource specific `customDomainHeader` value
      */
-    public readonly customDomainHeader!: pulumi.Output<string | undefined>;
+    declare public readonly customDomainHeader: pulumi.Output<string | undefined>;
     /**
      * Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
      */
-    public readonly domain!: pulumi.Output<string | undefined>;
+    declare public readonly domain: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -75,17 +69,17 @@ export class Provider extends pulumi.ProviderResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            resourceInputs["apiToken"] = args ? args.apiToken : undefined;
-            resourceInputs["audience"] = args ? args.audience : undefined;
-            resourceInputs["cliLogin"] = pulumi.output(args ? args.cliLogin : undefined).apply(JSON.stringify);
-            resourceInputs["clientAssertionPrivateKey"] = args ? args.clientAssertionPrivateKey : undefined;
-            resourceInputs["clientAssertionSigningAlg"] = args ? args.clientAssertionSigningAlg : undefined;
-            resourceInputs["clientId"] = args ? args.clientId : undefined;
-            resourceInputs["clientSecret"] = args ? args.clientSecret : undefined;
-            resourceInputs["customDomainHeader"] = args ? args.customDomainHeader : undefined;
-            resourceInputs["debug"] = pulumi.output((args ? args.debug : undefined) ?? utilities.getEnvBoolean("AUTH0_DEBUG")).apply(JSON.stringify);
-            resourceInputs["domain"] = args ? args.domain : undefined;
-            resourceInputs["dynamicCredentials"] = pulumi.output(args ? args.dynamicCredentials : undefined).apply(JSON.stringify);
+            resourceInputs["apiToken"] = args?.apiToken;
+            resourceInputs["audience"] = args?.audience;
+            resourceInputs["cliLogin"] = pulumi.output(args?.cliLogin).apply(JSON.stringify);
+            resourceInputs["clientAssertionPrivateKey"] = args?.clientAssertionPrivateKey;
+            resourceInputs["clientAssertionSigningAlg"] = args?.clientAssertionSigningAlg;
+            resourceInputs["clientId"] = args?.clientId;
+            resourceInputs["clientSecret"] = args?.clientSecret;
+            resourceInputs["customDomainHeader"] = args?.customDomainHeader;
+            resourceInputs["debug"] = pulumi.output((args?.debug) ?? utilities.getEnvBoolean("AUTH0_DEBUG")).apply(JSON.stringify);
+            resourceInputs["domain"] = args?.domain;
+            resourceInputs["dynamicCredentials"] = pulumi.output(args?.dynamicCredentials).apply(JSON.stringify);
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Provider.__pulumiType, name, resourceInputs, opts);
@@ -106,10 +100,7 @@ export class Provider extends pulumi.ProviderResource {
  */
 export interface ProviderArgs {
     /**
-     * Your Auth0 [management api access
-     * token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from
-     * the `AUTH0_API_TOKEN` environment variable. It can be used instead of `clientId` + `clientSecret`. If both are
-     * specified, `apiToken` will be used over `clientId` + `clientSecret` fields.
+     * Your Auth0 [management api access token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from the `AUTH0_API_TOKEN` environment variable. It can be used instead of `clientId` + `clientSecret`. If both are specified, `apiToken` will be used over `clientId` + `clientSecret` fields.
      */
     apiToken?: pulumi.Input<string>;
     /**
@@ -121,13 +112,11 @@ export interface ProviderArgs {
      */
     cliLogin?: pulumi.Input<boolean>;
     /**
-     * The private key used to sign the client assertion JWT. It can also be sourced from the
-     * `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
+     * The private key used to sign the client assertion JWT. It can also be sourced from the `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
      */
     clientAssertionPrivateKey?: pulumi.Input<string>;
     /**
-     * The algorithm used to sign the client assertion JWT. It can also be sourced from the
-     * `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
+     * The algorithm used to sign the client assertion JWT. It can also be sourced from the `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
      */
     clientAssertionSigningAlg?: pulumi.Input<string>;
     /**
@@ -139,13 +128,11 @@ export interface ProviderArgs {
      */
     clientSecret?: pulumi.Input<string>;
     /**
-     * When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting
-     * overrides all resource specific `customDomainHeader` value
+     * When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting overrides all resource specific `customDomainHeader` value
      */
     customDomainHeader?: pulumi.Input<string>;
     /**
-     * Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG`
-     * environment variable.
+     * Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG` environment variable.
      */
     debug?: pulumi.Input<boolean>;
     /**

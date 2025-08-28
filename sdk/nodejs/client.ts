@@ -50,170 +50,170 @@ export class Client extends pulumi.CustomResource {
     /**
      * Addons enabled for this client and their associated configurations.
      */
-    public readonly addons!: pulumi.Output<outputs.ClientAddons | undefined>;
+    declare public readonly addons: pulumi.Output<outputs.ClientAddons | undefined>;
     /**
      * List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
      */
-    public readonly allowedClients!: pulumi.Output<string[] | undefined>;
+    declare public readonly allowedClients: pulumi.Output<string[] | undefined>;
     /**
      * URLs that Auth0 may redirect to after logout.
      */
-    public readonly allowedLogoutUrls!: pulumi.Output<string[] | undefined>;
+    declare public readonly allowedLogoutUrls: pulumi.Output<string[] | undefined>;
     /**
      * URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
      */
-    public readonly allowedOrigins!: pulumi.Output<string[] | undefined>;
+    declare public readonly allowedOrigins: pulumi.Output<string[] | undefined>;
     /**
      * Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
      */
-    public readonly appType!: pulumi.Output<string | undefined>;
+    declare public readonly appType: pulumi.Output<string | undefined>;
     /**
      * URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
      */
-    public readonly callbacks!: pulumi.Output<string[] | undefined>;
+    declare public readonly callbacks: pulumi.Output<string[] | undefined>;
     /**
      * List of audiences/realms for SAML protocol. Used by the wsfed addon.
      */
-    public readonly clientAliases!: pulumi.Output<string[] | undefined>;
+    declare public readonly clientAliases: pulumi.Output<string[] | undefined>;
     /**
      * The ID of the client.
      */
-    public /*out*/ readonly clientId!: pulumi.Output<string>;
+    declare public /*out*/ readonly clientId: pulumi.Output<string>;
     /**
      * Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
      */
-    public readonly clientMetadata!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly clientMetadata: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Defines the compliance level for this client, which may restrict it's capabilities. Can be one of `none`, `fapi1AdvPkjPar`, `fapi1AdvMtlsPar`.
      */
-    public readonly complianceLevel!: pulumi.Output<string | undefined>;
+    declare public readonly complianceLevel: pulumi.Output<string | undefined>;
     /**
      * Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
      */
-    public readonly crossOriginAuth!: pulumi.Output<boolean | undefined>;
+    declare public readonly crossOriginAuth: pulumi.Output<boolean | undefined>;
     /**
      * URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
      */
-    public readonly crossOriginLoc!: pulumi.Output<string | undefined>;
+    declare public readonly crossOriginLoc: pulumi.Output<string | undefined>;
     /**
      * The content (HTML, CSS, JS) of the custom login page.
      */
-    public readonly customLoginPage!: pulumi.Output<string | undefined>;
+    declare public readonly customLoginPage: pulumi.Output<string | undefined>;
     /**
      * Indicates whether a custom login page is to be used.
      */
-    public readonly customLoginPageOn!: pulumi.Output<boolean>;
+    declare public readonly customLoginPageOn: pulumi.Output<boolean>;
     /**
      * Configure and associate an organization with the Client
      */
-    public readonly defaultOrganization!: pulumi.Output<outputs.ClientDefaultOrganization>;
+    declare public readonly defaultOrganization: pulumi.Output<outputs.ClientDefaultOrganization>;
     /**
      * Description of the purpose of the client.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * Encryption used for WS-Fed responses with this client.
      */
-    public readonly encryptionKey!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly encryptionKey: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * HTML form template to be used for WS-Federation.
      */
-    public readonly formTemplate!: pulumi.Output<string | undefined>;
+    declare public readonly formTemplate: pulumi.Output<string | undefined>;
     /**
      * Types of grants that this client is authorized to use.
      */
-    public readonly grantTypes!: pulumi.Output<string[]>;
+    declare public readonly grantTypes: pulumi.Output<string[]>;
     /**
      * Initiate login URI. Must be HTTPS or an empty string.
      */
-    public readonly initiateLoginUri!: pulumi.Output<string | undefined>;
+    declare public readonly initiateLoginUri: pulumi.Output<string | undefined>;
     /**
      * Indicates whether this client is a first-party client.Defaults to true from the API
      */
-    public readonly isFirstParty!: pulumi.Output<boolean>;
+    declare public readonly isFirstParty: pulumi.Output<boolean>;
     /**
      * Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `clientSecretPost` or `clientSecretBasic`. Setting this property when creating the resource, will default the authentication method to `clientSecretPost`. To change the authentication method to `clientSecretBasic` use the `auth0.ClientCredentials` resource.
      */
-    public readonly isTokenEndpointIpHeaderTrusted!: pulumi.Output<boolean>;
+    declare public readonly isTokenEndpointIpHeaderTrusted: pulumi.Output<boolean>;
     /**
      * Configuration settings for the JWTs issued for this client.
      */
-    public readonly jwtConfiguration!: pulumi.Output<outputs.ClientJwtConfiguration>;
+    declare public readonly jwtConfiguration: pulumi.Output<outputs.ClientJwtConfiguration>;
     /**
      * URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
      */
-    public readonly logoUri!: pulumi.Output<string | undefined>;
+    declare public readonly logoUri: pulumi.Output<string | undefined>;
     /**
      * Additional configuration for native mobile apps.
      */
-    public readonly mobile!: pulumi.Output<outputs.ClientMobile>;
+    declare public readonly mobile: pulumi.Output<outputs.ClientMobile>;
     /**
      * Name of the client.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `appType`.
      */
-    public readonly nativeSocialLogin!: pulumi.Output<outputs.ClientNativeSocialLogin>;
+    declare public readonly nativeSocialLogin: pulumi.Output<outputs.ClientNativeSocialLogin>;
     /**
      * Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
      *
      * @deprecated This resource is deprecated and will be removed in the next major version. Please use `oidcLogout` for managing OIDC backchannel logout URLs.
      */
-    public readonly oidcBackchannelLogoutUrls!: pulumi.Output<string[]>;
+    declare public readonly oidcBackchannelLogoutUrls: pulumi.Output<string[]>;
     /**
      * Indicates whether this client will conform to strict OIDC specifications.
      */
-    public readonly oidcConformant!: pulumi.Output<boolean>;
+    declare public readonly oidcConformant: pulumi.Output<boolean>;
     /**
      * Configure OIDC logout for the Client
      */
-    public readonly oidcLogout!: pulumi.Output<outputs.ClientOidcLogout>;
+    declare public readonly oidcLogout: pulumi.Output<outputs.ClientOidcLogout>;
     /**
      * Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default), `preLoginPrompt` or  `postLoginPrompt`.
      */
-    public readonly organizationRequireBehavior!: pulumi.Output<string | undefined>;
+    declare public readonly organizationRequireBehavior: pulumi.Output<string | undefined>;
     /**
      * Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
      */
-    public readonly organizationUsage!: pulumi.Output<string | undefined>;
+    declare public readonly organizationUsage: pulumi.Output<string | undefined>;
     /**
      * Configuration settings for the refresh tokens issued for this client.
      */
-    public readonly refreshToken!: pulumi.Output<outputs.ClientRefreshToken>;
+    declare public readonly refreshToken: pulumi.Output<outputs.ClientRefreshToken>;
     /**
      * Makes the use of Proof-of-Possession mandatory for this client.
      */
-    public readonly requireProofOfPossession!: pulumi.Output<boolean | undefined>;
+    declare public readonly requireProofOfPossession: pulumi.Output<boolean | undefined>;
     /**
      * Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
      */
-    public readonly requirePushedAuthorizationRequests!: pulumi.Output<boolean | undefined>;
-    public readonly sessionTransfer!: pulumi.Output<outputs.ClientSessionTransfer | undefined>;
+    declare public readonly requirePushedAuthorizationRequests: pulumi.Output<boolean | undefined>;
+    declare public readonly sessionTransfer: pulumi.Output<outputs.ClientSessionTransfer | undefined>;
     /**
      * List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
      */
-    public /*out*/ readonly signingKeys!: pulumi.Output<{[key: string]: string}[]>;
+    declare public /*out*/ readonly signingKeys: pulumi.Output<{[key: string]: string}[]>;
     /**
      * Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
      */
-    public readonly sso!: pulumi.Output<boolean | undefined>;
+    declare public readonly sso: pulumi.Output<boolean | undefined>;
     /**
      * Indicates whether or not SSO is disabled.
      */
-    public readonly ssoDisabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly ssoDisabled: pulumi.Output<boolean | undefined>;
     /**
      * Allows configuration for token exchange
      */
-    public readonly tokenExchange!: pulumi.Output<outputs.ClientTokenExchange | undefined>;
+    declare public readonly tokenExchange: pulumi.Output<outputs.ClientTokenExchange | undefined>;
     /**
      * The token quota configuration.
      */
-    public readonly tokenQuota!: pulumi.Output<outputs.ClientTokenQuota | undefined>;
+    declare public readonly tokenQuota: pulumi.Output<outputs.ClientTokenQuota | undefined>;
     /**
      * URLs that represent valid web origins for use with web message response mode.
      */
-    public readonly webOrigins!: pulumi.Output<string[] | undefined>;
+    declare public readonly webOrigins: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a Client resource with the given unique name, arguments, and options.
@@ -228,90 +228,90 @@ export class Client extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClientState | undefined;
-            resourceInputs["addons"] = state ? state.addons : undefined;
-            resourceInputs["allowedClients"] = state ? state.allowedClients : undefined;
-            resourceInputs["allowedLogoutUrls"] = state ? state.allowedLogoutUrls : undefined;
-            resourceInputs["allowedOrigins"] = state ? state.allowedOrigins : undefined;
-            resourceInputs["appType"] = state ? state.appType : undefined;
-            resourceInputs["callbacks"] = state ? state.callbacks : undefined;
-            resourceInputs["clientAliases"] = state ? state.clientAliases : undefined;
-            resourceInputs["clientId"] = state ? state.clientId : undefined;
-            resourceInputs["clientMetadata"] = state ? state.clientMetadata : undefined;
-            resourceInputs["complianceLevel"] = state ? state.complianceLevel : undefined;
-            resourceInputs["crossOriginAuth"] = state ? state.crossOriginAuth : undefined;
-            resourceInputs["crossOriginLoc"] = state ? state.crossOriginLoc : undefined;
-            resourceInputs["customLoginPage"] = state ? state.customLoginPage : undefined;
-            resourceInputs["customLoginPageOn"] = state ? state.customLoginPageOn : undefined;
-            resourceInputs["defaultOrganization"] = state ? state.defaultOrganization : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["encryptionKey"] = state ? state.encryptionKey : undefined;
-            resourceInputs["formTemplate"] = state ? state.formTemplate : undefined;
-            resourceInputs["grantTypes"] = state ? state.grantTypes : undefined;
-            resourceInputs["initiateLoginUri"] = state ? state.initiateLoginUri : undefined;
-            resourceInputs["isFirstParty"] = state ? state.isFirstParty : undefined;
-            resourceInputs["isTokenEndpointIpHeaderTrusted"] = state ? state.isTokenEndpointIpHeaderTrusted : undefined;
-            resourceInputs["jwtConfiguration"] = state ? state.jwtConfiguration : undefined;
-            resourceInputs["logoUri"] = state ? state.logoUri : undefined;
-            resourceInputs["mobile"] = state ? state.mobile : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["nativeSocialLogin"] = state ? state.nativeSocialLogin : undefined;
-            resourceInputs["oidcBackchannelLogoutUrls"] = state ? state.oidcBackchannelLogoutUrls : undefined;
-            resourceInputs["oidcConformant"] = state ? state.oidcConformant : undefined;
-            resourceInputs["oidcLogout"] = state ? state.oidcLogout : undefined;
-            resourceInputs["organizationRequireBehavior"] = state ? state.organizationRequireBehavior : undefined;
-            resourceInputs["organizationUsage"] = state ? state.organizationUsage : undefined;
-            resourceInputs["refreshToken"] = state ? state.refreshToken : undefined;
-            resourceInputs["requireProofOfPossession"] = state ? state.requireProofOfPossession : undefined;
-            resourceInputs["requirePushedAuthorizationRequests"] = state ? state.requirePushedAuthorizationRequests : undefined;
-            resourceInputs["sessionTransfer"] = state ? state.sessionTransfer : undefined;
-            resourceInputs["signingKeys"] = state ? state.signingKeys : undefined;
-            resourceInputs["sso"] = state ? state.sso : undefined;
-            resourceInputs["ssoDisabled"] = state ? state.ssoDisabled : undefined;
-            resourceInputs["tokenExchange"] = state ? state.tokenExchange : undefined;
-            resourceInputs["tokenQuota"] = state ? state.tokenQuota : undefined;
-            resourceInputs["webOrigins"] = state ? state.webOrigins : undefined;
+            resourceInputs["addons"] = state?.addons;
+            resourceInputs["allowedClients"] = state?.allowedClients;
+            resourceInputs["allowedLogoutUrls"] = state?.allowedLogoutUrls;
+            resourceInputs["allowedOrigins"] = state?.allowedOrigins;
+            resourceInputs["appType"] = state?.appType;
+            resourceInputs["callbacks"] = state?.callbacks;
+            resourceInputs["clientAliases"] = state?.clientAliases;
+            resourceInputs["clientId"] = state?.clientId;
+            resourceInputs["clientMetadata"] = state?.clientMetadata;
+            resourceInputs["complianceLevel"] = state?.complianceLevel;
+            resourceInputs["crossOriginAuth"] = state?.crossOriginAuth;
+            resourceInputs["crossOriginLoc"] = state?.crossOriginLoc;
+            resourceInputs["customLoginPage"] = state?.customLoginPage;
+            resourceInputs["customLoginPageOn"] = state?.customLoginPageOn;
+            resourceInputs["defaultOrganization"] = state?.defaultOrganization;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["encryptionKey"] = state?.encryptionKey;
+            resourceInputs["formTemplate"] = state?.formTemplate;
+            resourceInputs["grantTypes"] = state?.grantTypes;
+            resourceInputs["initiateLoginUri"] = state?.initiateLoginUri;
+            resourceInputs["isFirstParty"] = state?.isFirstParty;
+            resourceInputs["isTokenEndpointIpHeaderTrusted"] = state?.isTokenEndpointIpHeaderTrusted;
+            resourceInputs["jwtConfiguration"] = state?.jwtConfiguration;
+            resourceInputs["logoUri"] = state?.logoUri;
+            resourceInputs["mobile"] = state?.mobile;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["nativeSocialLogin"] = state?.nativeSocialLogin;
+            resourceInputs["oidcBackchannelLogoutUrls"] = state?.oidcBackchannelLogoutUrls;
+            resourceInputs["oidcConformant"] = state?.oidcConformant;
+            resourceInputs["oidcLogout"] = state?.oidcLogout;
+            resourceInputs["organizationRequireBehavior"] = state?.organizationRequireBehavior;
+            resourceInputs["organizationUsage"] = state?.organizationUsage;
+            resourceInputs["refreshToken"] = state?.refreshToken;
+            resourceInputs["requireProofOfPossession"] = state?.requireProofOfPossession;
+            resourceInputs["requirePushedAuthorizationRequests"] = state?.requirePushedAuthorizationRequests;
+            resourceInputs["sessionTransfer"] = state?.sessionTransfer;
+            resourceInputs["signingKeys"] = state?.signingKeys;
+            resourceInputs["sso"] = state?.sso;
+            resourceInputs["ssoDisabled"] = state?.ssoDisabled;
+            resourceInputs["tokenExchange"] = state?.tokenExchange;
+            resourceInputs["tokenQuota"] = state?.tokenQuota;
+            resourceInputs["webOrigins"] = state?.webOrigins;
         } else {
             const args = argsOrState as ClientArgs | undefined;
-            resourceInputs["addons"] = args ? args.addons : undefined;
-            resourceInputs["allowedClients"] = args ? args.allowedClients : undefined;
-            resourceInputs["allowedLogoutUrls"] = args ? args.allowedLogoutUrls : undefined;
-            resourceInputs["allowedOrigins"] = args ? args.allowedOrigins : undefined;
-            resourceInputs["appType"] = args ? args.appType : undefined;
-            resourceInputs["callbacks"] = args ? args.callbacks : undefined;
-            resourceInputs["clientAliases"] = args ? args.clientAliases : undefined;
-            resourceInputs["clientMetadata"] = args ? args.clientMetadata : undefined;
-            resourceInputs["complianceLevel"] = args ? args.complianceLevel : undefined;
-            resourceInputs["crossOriginAuth"] = args ? args.crossOriginAuth : undefined;
-            resourceInputs["crossOriginLoc"] = args ? args.crossOriginLoc : undefined;
-            resourceInputs["customLoginPage"] = args ? args.customLoginPage : undefined;
-            resourceInputs["customLoginPageOn"] = args ? args.customLoginPageOn : undefined;
-            resourceInputs["defaultOrganization"] = args ? args.defaultOrganization : undefined;
-            resourceInputs["description"] = (args ? args.description : undefined) ?? "Managed by Pulumi";
-            resourceInputs["encryptionKey"] = args ? args.encryptionKey : undefined;
-            resourceInputs["formTemplate"] = args ? args.formTemplate : undefined;
-            resourceInputs["grantTypes"] = args ? args.grantTypes : undefined;
-            resourceInputs["initiateLoginUri"] = args ? args.initiateLoginUri : undefined;
-            resourceInputs["isFirstParty"] = args ? args.isFirstParty : undefined;
-            resourceInputs["isTokenEndpointIpHeaderTrusted"] = args ? args.isTokenEndpointIpHeaderTrusted : undefined;
-            resourceInputs["jwtConfiguration"] = args ? args.jwtConfiguration : undefined;
-            resourceInputs["logoUri"] = args ? args.logoUri : undefined;
-            resourceInputs["mobile"] = args ? args.mobile : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["nativeSocialLogin"] = args ? args.nativeSocialLogin : undefined;
-            resourceInputs["oidcBackchannelLogoutUrls"] = args ? args.oidcBackchannelLogoutUrls : undefined;
-            resourceInputs["oidcConformant"] = args ? args.oidcConformant : undefined;
-            resourceInputs["oidcLogout"] = args ? args.oidcLogout : undefined;
-            resourceInputs["organizationRequireBehavior"] = args ? args.organizationRequireBehavior : undefined;
-            resourceInputs["organizationUsage"] = args ? args.organizationUsage : undefined;
-            resourceInputs["refreshToken"] = args ? args.refreshToken : undefined;
-            resourceInputs["requireProofOfPossession"] = args ? args.requireProofOfPossession : undefined;
-            resourceInputs["requirePushedAuthorizationRequests"] = args ? args.requirePushedAuthorizationRequests : undefined;
-            resourceInputs["sessionTransfer"] = args ? args.sessionTransfer : undefined;
-            resourceInputs["sso"] = args ? args.sso : undefined;
-            resourceInputs["ssoDisabled"] = args ? args.ssoDisabled : undefined;
-            resourceInputs["tokenExchange"] = args ? args.tokenExchange : undefined;
-            resourceInputs["tokenQuota"] = args ? args.tokenQuota : undefined;
-            resourceInputs["webOrigins"] = args ? args.webOrigins : undefined;
+            resourceInputs["addons"] = args?.addons;
+            resourceInputs["allowedClients"] = args?.allowedClients;
+            resourceInputs["allowedLogoutUrls"] = args?.allowedLogoutUrls;
+            resourceInputs["allowedOrigins"] = args?.allowedOrigins;
+            resourceInputs["appType"] = args?.appType;
+            resourceInputs["callbacks"] = args?.callbacks;
+            resourceInputs["clientAliases"] = args?.clientAliases;
+            resourceInputs["clientMetadata"] = args?.clientMetadata;
+            resourceInputs["complianceLevel"] = args?.complianceLevel;
+            resourceInputs["crossOriginAuth"] = args?.crossOriginAuth;
+            resourceInputs["crossOriginLoc"] = args?.crossOriginLoc;
+            resourceInputs["customLoginPage"] = args?.customLoginPage;
+            resourceInputs["customLoginPageOn"] = args?.customLoginPageOn;
+            resourceInputs["defaultOrganization"] = args?.defaultOrganization;
+            resourceInputs["description"] = (args?.description) ?? "Managed by Pulumi";
+            resourceInputs["encryptionKey"] = args?.encryptionKey;
+            resourceInputs["formTemplate"] = args?.formTemplate;
+            resourceInputs["grantTypes"] = args?.grantTypes;
+            resourceInputs["initiateLoginUri"] = args?.initiateLoginUri;
+            resourceInputs["isFirstParty"] = args?.isFirstParty;
+            resourceInputs["isTokenEndpointIpHeaderTrusted"] = args?.isTokenEndpointIpHeaderTrusted;
+            resourceInputs["jwtConfiguration"] = args?.jwtConfiguration;
+            resourceInputs["logoUri"] = args?.logoUri;
+            resourceInputs["mobile"] = args?.mobile;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["nativeSocialLogin"] = args?.nativeSocialLogin;
+            resourceInputs["oidcBackchannelLogoutUrls"] = args?.oidcBackchannelLogoutUrls;
+            resourceInputs["oidcConformant"] = args?.oidcConformant;
+            resourceInputs["oidcLogout"] = args?.oidcLogout;
+            resourceInputs["organizationRequireBehavior"] = args?.organizationRequireBehavior;
+            resourceInputs["organizationUsage"] = args?.organizationUsage;
+            resourceInputs["refreshToken"] = args?.refreshToken;
+            resourceInputs["requireProofOfPossession"] = args?.requireProofOfPossession;
+            resourceInputs["requirePushedAuthorizationRequests"] = args?.requirePushedAuthorizationRequests;
+            resourceInputs["sessionTransfer"] = args?.sessionTransfer;
+            resourceInputs["sso"] = args?.sso;
+            resourceInputs["ssoDisabled"] = args?.ssoDisabled;
+            resourceInputs["tokenExchange"] = args?.tokenExchange;
+            resourceInputs["tokenQuota"] = args?.tokenQuota;
+            resourceInputs["webOrigins"] = args?.webOrigins;
             resourceInputs["clientId"] = undefined /*out*/;
             resourceInputs["signingKeys"] = undefined /*out*/;
         }

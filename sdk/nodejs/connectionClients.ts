@@ -76,19 +76,19 @@ export class ConnectionClients extends pulumi.CustomResource {
     /**
      * ID of the connection on which to enable the client.
      */
-    public readonly connectionId!: pulumi.Output<string>;
+    declare public readonly connectionId: pulumi.Output<string>;
     /**
      * IDs of the clients for which the connection is enabled.
      */
-    public readonly enabledClients!: pulumi.Output<string[]>;
+    declare public readonly enabledClients: pulumi.Output<string[]>;
     /**
      * The name of the connection on which to enable the client.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The strategy of the connection on which to enable the client.
      */
-    public /*out*/ readonly strategy!: pulumi.Output<string>;
+    declare public /*out*/ readonly strategy: pulumi.Output<string>;
 
     /**
      * Create a ConnectionClients resource with the given unique name, arguments, and options.
@@ -103,20 +103,20 @@ export class ConnectionClients extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConnectionClientsState | undefined;
-            resourceInputs["connectionId"] = state ? state.connectionId : undefined;
-            resourceInputs["enabledClients"] = state ? state.enabledClients : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["strategy"] = state ? state.strategy : undefined;
+            resourceInputs["connectionId"] = state?.connectionId;
+            resourceInputs["enabledClients"] = state?.enabledClients;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["strategy"] = state?.strategy;
         } else {
             const args = argsOrState as ConnectionClientsArgs | undefined;
-            if ((!args || args.connectionId === undefined) && !opts.urn) {
+            if (args?.connectionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'connectionId'");
             }
-            if ((!args || args.enabledClients === undefined) && !opts.urn) {
+            if (args?.enabledClients === undefined && !opts.urn) {
                 throw new Error("Missing required property 'enabledClients'");
             }
-            resourceInputs["connectionId"] = args ? args.connectionId : undefined;
-            resourceInputs["enabledClients"] = args ? args.enabledClients : undefined;
+            resourceInputs["connectionId"] = args?.connectionId;
+            resourceInputs["enabledClients"] = args?.enabledClients;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["strategy"] = undefined /*out*/;
         }

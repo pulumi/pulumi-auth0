@@ -87,15 +87,15 @@ export class PromptCustomText extends pulumi.CustomResource {
     /**
      * JSON containing the custom texts. You can check the options for each prompt [here](https://auth0.com/docs/customize/universal-login-pages/customize-login-text-prompts#prompt-values).
      */
-    public readonly body!: pulumi.Output<string>;
+    declare public readonly body: pulumi.Output<string>;
     /**
      * Language of the custom text. Options include: `am`, `ar`, `ar-EG`, `ar-SA`, `az`, `bg`, `bn`, `bs`, `ca-ES`, `cnr`, `cs`, `cy`, `da`, `de`, `el`, `en`, `en-CA`, `es`, `es-419`, `es-AR`, `es-MX`, `et`, `eu-ES`, `fa`, `fi`, `fr`, `fr-CA`, `fr-FR`, `gl-ES`, `gu`, `he`, `hi`, `hr`, `hu`, `hy`, `id`, `is`, `it`, `ja`, `ka`, `kk`, `kn`, `ko`, `lt`, `lv`, `mk`, `ml`, `mn`, `mr`, `ms`, `my`, `nb`, `nl`, `nn`, `no`, `pa`, `pl`, `pt`, `pt-BR`, `pt-PT`, `ro`, `ru`, `sk`, `sl`, `so`, `sq`, `sr`, `sv`, `sw`, `ta`, `te`, `th`, `tl`, `tr`, `uk`, `ur`, `vi`, `zgh`, `zh-CN`, `zh-HK`, `zh-TW`.
      */
-    public readonly language!: pulumi.Output<string>;
+    declare public readonly language: pulumi.Output<string>;
     /**
      * The term `prompt` is used to refer to a specific step in the login flow. Options include: `login`, `login-id`, `login-password`, `login-passwordless`, `login-email-verification`, `signup`, `signup-id`, `signup-password`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `reset-password`, `custom-form`, `consent`, `customized-consent`, `logout`, `mfa-push`, `mfa-otp`, `mfa-voice`, `mfa-phone`, `mfa-webauthn`, `mfa-sms`, `mfa-email`, `mfa-recovery-code`, `mfa`, `status`, `device-flow`, `email-verification`, `email-otp-challenge`, `organizations`, `invitation`, `common`, `passkeys`, `captcha`, `brute-force-protection`.
      */
-    public readonly prompt!: pulumi.Output<string>;
+    declare public readonly prompt: pulumi.Output<string>;
 
     /**
      * Create a PromptCustomText resource with the given unique name, arguments, and options.
@@ -110,23 +110,23 @@ export class PromptCustomText extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PromptCustomTextState | undefined;
-            resourceInputs["body"] = state ? state.body : undefined;
-            resourceInputs["language"] = state ? state.language : undefined;
-            resourceInputs["prompt"] = state ? state.prompt : undefined;
+            resourceInputs["body"] = state?.body;
+            resourceInputs["language"] = state?.language;
+            resourceInputs["prompt"] = state?.prompt;
         } else {
             const args = argsOrState as PromptCustomTextArgs | undefined;
-            if ((!args || args.body === undefined) && !opts.urn) {
+            if (args?.body === undefined && !opts.urn) {
                 throw new Error("Missing required property 'body'");
             }
-            if ((!args || args.language === undefined) && !opts.urn) {
+            if (args?.language === undefined && !opts.urn) {
                 throw new Error("Missing required property 'language'");
             }
-            if ((!args || args.prompt === undefined) && !opts.urn) {
+            if (args?.prompt === undefined && !opts.urn) {
                 throw new Error("Missing required property 'prompt'");
             }
-            resourceInputs["body"] = args ? args.body : undefined;
-            resourceInputs["language"] = args ? args.language : undefined;
-            resourceInputs["prompt"] = args ? args.prompt : undefined;
+            resourceInputs["body"] = args?.body;
+            resourceInputs["language"] = args?.language;
+            resourceInputs["prompt"] = args?.prompt;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(PromptCustomText.__pulumiType, name, resourceInputs, opts);

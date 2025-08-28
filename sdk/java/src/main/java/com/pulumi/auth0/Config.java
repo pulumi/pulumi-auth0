@@ -12,10 +12,7 @@ public final class Config {
 
     private static final com.pulumi.Config config = com.pulumi.Config.of("auth0");
 /**
- * Your Auth0 [management api access
- * token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from
- * the `AUTH0_API_TOKEN` environment variable. It can be used instead of `client_id` + `client_secret`. If both are
- * specified, `api_token` will be used over `client_id` + `client_secret` fields.
+ * Your Auth0 [management api access token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from the `AUTH0_API_TOKEN` environment variable. It can be used instead of `client_id` + `client_secret`. If both are specified, `api_token` will be used over `client_id` + `client_secret` fields.
  * 
  */
     public Optional<String> apiToken() {
@@ -36,16 +33,14 @@ public final class Config {
         return Codegen.booleanProp("cliLogin").config(config).get();
     }
 /**
- * The private key used to sign the client assertion JWT. It can also be sourced from the
- * `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
+ * The private key used to sign the client assertion JWT. It can also be sourced from the `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
  * 
  */
     public Optional<String> clientAssertionPrivateKey() {
         return Codegen.stringProp("clientAssertionPrivateKey").config(config).get();
     }
 /**
- * The algorithm used to sign the client assertion JWT. It can also be sourced from the
- * `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
+ * The algorithm used to sign the client assertion JWT. It can also be sourced from the `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
  * 
  */
     public Optional<String> clientAssertionSigningAlg() {
@@ -66,16 +61,14 @@ public final class Config {
         return Codegen.stringProp("clientSecret").config(config).get();
     }
 /**
- * When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting
- * overrides all resource specific `custom_domain_header` value
+ * When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting overrides all resource specific `custom_domain_header` value
  * 
  */
     public Optional<String> customDomainHeader() {
         return Codegen.stringProp("customDomainHeader").config(config).get();
     }
 /**
- * Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG`
- * environment variable.
+ * Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG` environment variable.
  * 
  */
     public Optional<Boolean> debug() {

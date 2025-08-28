@@ -16,10 +16,7 @@ from .. import _utilities
 
 apiToken: Optional[str]
 """
-Your Auth0 [management api access
-token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from
-the `AUTH0_API_TOKEN` environment variable. It can be used instead of `client_id` + `client_secret`. If both are
-specified, `api_token` will be used over `client_id` + `client_secret` fields.
+Your Auth0 [management api access token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from the `AUTH0_API_TOKEN` environment variable. It can be used instead of `client_id` + `client_secret`. If both are specified, `api_token` will be used over `client_id` + `client_secret` fields.
 """
 
 audience: Optional[str]
@@ -34,14 +31,12 @@ While toggled on, the API token gets fetched from the keyring for the given doma
 
 clientAssertionPrivateKey: Optional[str]
 """
-The private key used to sign the client assertion JWT. It can also be sourced from the
-`AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
+The private key used to sign the client assertion JWT. It can also be sourced from the `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
 """
 
 clientAssertionSigningAlg: Optional[str]
 """
-The algorithm used to sign the client assertion JWT. It can also be sourced from the
-`AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
+The algorithm used to sign the client assertion JWT. It can also be sourced from the `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
 """
 
 clientId: Optional[str]
@@ -56,14 +51,12 @@ Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` 
 
 customDomainHeader: Optional[str]
 """
-When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting
-overrides all resource specific `custom_domain_header` value
+When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting overrides all resource specific `custom_domain_header` value
 """
 
 debug: Optional[bool]
 """
-Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG`
-environment variable.
+Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG` environment variable.
 """
 
 domain: Optional[str]

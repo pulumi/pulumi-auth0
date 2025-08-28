@@ -18,20 +18,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     public static final ProviderArgs Empty = new ProviderArgs();
 
     /**
-     * Your Auth0 [management api access
-     * token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from
-     * the `AUTH0_API_TOKEN` environment variable. It can be used instead of `client_id` + `client_secret`. If both are
-     * specified, `api_token` will be used over `client_id` + `client_secret` fields.
+     * Your Auth0 [management api access token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from the `AUTH0_API_TOKEN` environment variable. It can be used instead of `client_id` + `client_secret`. If both are specified, `api_token` will be used over `client_id` + `client_secret` fields.
      * 
      */
     @Import(name="apiToken")
     private @Nullable Output<String> apiToken;
 
     /**
-     * @return Your Auth0 [management api access
-     * token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from
-     * the `AUTH0_API_TOKEN` environment variable. It can be used instead of `client_id` + `client_secret`. If both are
-     * specified, `api_token` will be used over `client_id` + `client_secret` fields.
+     * @return Your Auth0 [management api access token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from the `AUTH0_API_TOKEN` environment variable. It can be used instead of `client_id` + `client_secret`. If both are specified, `api_token` will be used over `client_id` + `client_secret` fields.
      * 
      */
     public Optional<Output<String>> apiToken() {
@@ -69,16 +63,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The private key used to sign the client assertion JWT. It can also be sourced from the
-     * `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
+     * The private key used to sign the client assertion JWT. It can also be sourced from the `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
      * 
      */
     @Import(name="clientAssertionPrivateKey")
     private @Nullable Output<String> clientAssertionPrivateKey;
 
     /**
-     * @return The private key used to sign the client assertion JWT. It can also be sourced from the
-     * `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
+     * @return The private key used to sign the client assertion JWT. It can also be sourced from the `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
      * 
      */
     public Optional<Output<String>> clientAssertionPrivateKey() {
@@ -86,16 +78,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The algorithm used to sign the client assertion JWT. It can also be sourced from the
-     * `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
+     * The algorithm used to sign the client assertion JWT. It can also be sourced from the `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
      * 
      */
     @Import(name="clientAssertionSigningAlg")
     private @Nullable Output<String> clientAssertionSigningAlg;
 
     /**
-     * @return The algorithm used to sign the client assertion JWT. It can also be sourced from the
-     * `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
+     * @return The algorithm used to sign the client assertion JWT. It can also be sourced from the `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
      * 
      */
     public Optional<Output<String>> clientAssertionSigningAlg() {
@@ -133,16 +123,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting
-     * overrides all resource specific `custom_domain_header` value
+     * When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting overrides all resource specific `custom_domain_header` value
      * 
      */
     @Import(name="customDomainHeader")
     private @Nullable Output<String> customDomainHeader;
 
     /**
-     * @return When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting
-     * overrides all resource specific `custom_domain_header` value
+     * @return When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting overrides all resource specific `custom_domain_header` value
      * 
      */
     public Optional<Output<String>> customDomainHeader() {
@@ -150,16 +138,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG`
-     * environment variable.
+     * Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG` environment variable.
      * 
      */
     @Import(name="debug", json=true)
     private @Nullable Output<Boolean> debug;
 
     /**
-     * @return Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG`
-     * environment variable.
+     * @return Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG` environment variable.
      * 
      */
     public Optional<Output<Boolean>> debug() {
@@ -223,10 +209,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param apiToken Your Auth0 [management api access
-         * token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from
-         * the `AUTH0_API_TOKEN` environment variable. It can be used instead of `client_id` + `client_secret`. If both are
-         * specified, `api_token` will be used over `client_id` + `client_secret` fields.
+         * @param apiToken Your Auth0 [management api access token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from the `AUTH0_API_TOKEN` environment variable. It can be used instead of `client_id` + `client_secret`. If both are specified, `api_token` will be used over `client_id` + `client_secret` fields.
          * 
          * @return builder
          * 
@@ -237,10 +220,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param apiToken Your Auth0 [management api access
-         * token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from
-         * the `AUTH0_API_TOKEN` environment variable. It can be used instead of `client_id` + `client_secret`. If both are
-         * specified, `api_token` will be used over `client_id` + `client_secret` fields.
+         * @param apiToken Your Auth0 [management api access token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from the `AUTH0_API_TOKEN` environment variable. It can be used instead of `client_id` + `client_secret`. If both are specified, `api_token` will be used over `client_id` + `client_secret` fields.
          * 
          * @return builder
          * 
@@ -292,8 +272,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clientAssertionPrivateKey The private key used to sign the client assertion JWT. It can also be sourced from the
-         * `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
+         * @param clientAssertionPrivateKey The private key used to sign the client assertion JWT. It can also be sourced from the `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
          * 
          * @return builder
          * 
@@ -304,8 +283,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clientAssertionPrivateKey The private key used to sign the client assertion JWT. It can also be sourced from the
-         * `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
+         * @param clientAssertionPrivateKey The private key used to sign the client assertion JWT. It can also be sourced from the `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
          * 
          * @return builder
          * 
@@ -315,8 +293,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clientAssertionSigningAlg The algorithm used to sign the client assertion JWT. It can also be sourced from the
-         * `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
+         * @param clientAssertionSigningAlg The algorithm used to sign the client assertion JWT. It can also be sourced from the `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
          * 
          * @return builder
          * 
@@ -327,8 +304,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clientAssertionSigningAlg The algorithm used to sign the client assertion JWT. It can also be sourced from the
-         * `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
+         * @param clientAssertionSigningAlg The algorithm used to sign the client assertion JWT. It can also be sourced from the `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
          * 
          * @return builder
          * 
@@ -380,8 +356,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customDomainHeader When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting
-         * overrides all resource specific `custom_domain_header` value
+         * @param customDomainHeader When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting overrides all resource specific `custom_domain_header` value
          * 
          * @return builder
          * 
@@ -392,8 +367,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customDomainHeader When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting
-         * overrides all resource specific `custom_domain_header` value
+         * @param customDomainHeader When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting overrides all resource specific `custom_domain_header` value
          * 
          * @return builder
          * 
@@ -403,8 +377,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param debug Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG`
-         * environment variable.
+         * @param debug Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG` environment variable.
          * 
          * @return builder
          * 
@@ -415,8 +388,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param debug Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG`
-         * environment variable.
+         * @param debug Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG` environment variable.
          * 
          * @return builder
          * 

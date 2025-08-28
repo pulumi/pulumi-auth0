@@ -753,35 +753,35 @@ export class Connection extends pulumi.CustomResource {
     /**
      * Name used in login screen.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * Indicates whether the connection is domain level.
      */
-    public readonly isDomainConnection!: pulumi.Output<boolean>;
+    declare public readonly isDomainConnection: pulumi.Output<boolean>;
     /**
      * Metadata associated with the connection, in the form of a map of string values (max 255 chars).
      */
-    public readonly metadata!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly metadata: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Name of the connection.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Configuration settings for connection options.
      */
-    public readonly options!: pulumi.Output<outputs.ConnectionOptions>;
+    declare public readonly options: pulumi.Output<outputs.ConnectionOptions>;
     /**
      * Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
      */
-    public readonly realms!: pulumi.Output<string[]>;
+    declare public readonly realms: pulumi.Output<string[]>;
     /**
      * Display connection as a button. Only available on enterprise connections.
      */
-    public readonly showAsButton!: pulumi.Output<boolean | undefined>;
+    declare public readonly showAsButton: pulumi.Output<boolean | undefined>;
     /**
      * Type of the connection, which indicates the identity provider.
      */
-    public readonly strategy!: pulumi.Output<string>;
+    declare public readonly strategy: pulumi.Output<string>;
 
     /**
      * Create a Connection resource with the given unique name, arguments, and options.
@@ -796,27 +796,27 @@ export class Connection extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConnectionState | undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["isDomainConnection"] = state ? state.isDomainConnection : undefined;
-            resourceInputs["metadata"] = state ? state.metadata : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["options"] = state ? state.options : undefined;
-            resourceInputs["realms"] = state ? state.realms : undefined;
-            resourceInputs["showAsButton"] = state ? state.showAsButton : undefined;
-            resourceInputs["strategy"] = state ? state.strategy : undefined;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["isDomainConnection"] = state?.isDomainConnection;
+            resourceInputs["metadata"] = state?.metadata;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["options"] = state?.options;
+            resourceInputs["realms"] = state?.realms;
+            resourceInputs["showAsButton"] = state?.showAsButton;
+            resourceInputs["strategy"] = state?.strategy;
         } else {
             const args = argsOrState as ConnectionArgs | undefined;
-            if ((!args || args.strategy === undefined) && !opts.urn) {
+            if (args?.strategy === undefined && !opts.urn) {
                 throw new Error("Missing required property 'strategy'");
             }
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["isDomainConnection"] = args ? args.isDomainConnection : undefined;
-            resourceInputs["metadata"] = args ? args.metadata : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["options"] = args ? args.options : undefined;
-            resourceInputs["realms"] = args ? args.realms : undefined;
-            resourceInputs["showAsButton"] = args ? args.showAsButton : undefined;
-            resourceInputs["strategy"] = args ? args.strategy : undefined;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["isDomainConnection"] = args?.isDomainConnection;
+            resourceInputs["metadata"] = args?.metadata;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["options"] = args?.options;
+            resourceInputs["realms"] = args?.realms;
+            resourceInputs["showAsButton"] = args?.showAsButton;
+            resourceInputs["strategy"] = args?.strategy;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Connection.__pulumiType, name, resourceInputs, opts);

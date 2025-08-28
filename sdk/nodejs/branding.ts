@@ -54,23 +54,23 @@ export class Branding extends pulumi.CustomResource {
     /**
      * Configuration settings for colors for branding.
      */
-    public readonly colors!: pulumi.Output<outputs.BrandingColors>;
+    declare public readonly colors: pulumi.Output<outputs.BrandingColors>;
     /**
      * URL for the favicon.
      */
-    public readonly faviconUrl!: pulumi.Output<string>;
+    declare public readonly faviconUrl: pulumi.Output<string>;
     /**
      * Configuration settings to customize the font.
      */
-    public readonly font!: pulumi.Output<outputs.BrandingFont | undefined>;
+    declare public readonly font: pulumi.Output<outputs.BrandingFont | undefined>;
     /**
      * URL of logo for branding.
      */
-    public readonly logoUrl!: pulumi.Output<string>;
+    declare public readonly logoUrl: pulumi.Output<string>;
     /**
      * Configuration settings for Universal Login.
      */
-    public readonly universalLogin!: pulumi.Output<outputs.BrandingUniversalLogin | undefined>;
+    declare public readonly universalLogin: pulumi.Output<outputs.BrandingUniversalLogin | undefined>;
 
     /**
      * Create a Branding resource with the given unique name, arguments, and options.
@@ -85,18 +85,18 @@ export class Branding extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BrandingState | undefined;
-            resourceInputs["colors"] = state ? state.colors : undefined;
-            resourceInputs["faviconUrl"] = state ? state.faviconUrl : undefined;
-            resourceInputs["font"] = state ? state.font : undefined;
-            resourceInputs["logoUrl"] = state ? state.logoUrl : undefined;
-            resourceInputs["universalLogin"] = state ? state.universalLogin : undefined;
+            resourceInputs["colors"] = state?.colors;
+            resourceInputs["faviconUrl"] = state?.faviconUrl;
+            resourceInputs["font"] = state?.font;
+            resourceInputs["logoUrl"] = state?.logoUrl;
+            resourceInputs["universalLogin"] = state?.universalLogin;
         } else {
             const args = argsOrState as BrandingArgs | undefined;
-            resourceInputs["colors"] = args ? args.colors : undefined;
-            resourceInputs["faviconUrl"] = args ? args.faviconUrl : undefined;
-            resourceInputs["font"] = args ? args.font : undefined;
-            resourceInputs["logoUrl"] = args ? args.logoUrl : undefined;
-            resourceInputs["universalLogin"] = args ? args.universalLogin : undefined;
+            resourceInputs["colors"] = args?.colors;
+            resourceInputs["faviconUrl"] = args?.faviconUrl;
+            resourceInputs["font"] = args?.font;
+            resourceInputs["logoUrl"] = args?.logoUrl;
+            resourceInputs["universalLogin"] = args?.universalLogin;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Branding.__pulumiType, name, resourceInputs, opts);

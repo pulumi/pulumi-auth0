@@ -88,39 +88,39 @@ export class EmailTemplate extends pulumi.CustomResource {
     /**
      * Body of the email template. You can include [common variables](https://auth0.com/docs/customize/email/email-templates#common-variables).
      */
-    public readonly body!: pulumi.Output<string>;
+    declare public readonly body: pulumi.Output<string>;
     /**
      * Indicates whether the template is enabled.
      */
-    public readonly enabled!: pulumi.Output<boolean>;
+    declare public readonly enabled: pulumi.Output<boolean>;
     /**
      * Email address to use as the sender. You can include [common variables](https://auth0.com/docs/customize/email/email-templates#common-variables).
      */
-    public readonly from!: pulumi.Output<string>;
+    declare public readonly from: pulumi.Output<string>;
     /**
      * Whether the `resetEmail` and `verifyEmail` templates should include the user's email address as the email parameter in the `returnUrl` (true) or whether no email address should be included in the redirect (false). Defaults to `true`.
      */
-    public readonly includeEmailInRedirect!: pulumi.Output<boolean>;
+    declare public readonly includeEmailInRedirect: pulumi.Output<boolean>;
     /**
      * URL to redirect the user to after a successful action. [Learn more](https://auth0.com/docs/customize/email/email-templates#configure-template-fields).
      */
-    public readonly resultUrl!: pulumi.Output<string | undefined>;
+    declare public readonly resultUrl: pulumi.Output<string | undefined>;
     /**
      * Subject line of the email. You can include [common variables](https://auth0.com/docs/customize/email/email-templates#common-variables).
      */
-    public readonly subject!: pulumi.Output<string>;
+    declare public readonly subject: pulumi.Output<string>;
     /**
      * Syntax of the template body. You can use either text or HTML with Liquid syntax.
      */
-    public readonly syntax!: pulumi.Output<string>;
+    declare public readonly syntax: pulumi.Output<string>;
     /**
      * Template name. Options include `verifyEmail`, `verifyEmailByCode`, `resetEmail`, `resetEmailByCode`, `welcomeEmail`, `blockedAccount`, `stolenCredentials`, `enrollmentEmail`, `mfaOobCode`, `userInvitation`, `changePassword` (legacy), or `passwordReset` (legacy).
      */
-    public readonly template!: pulumi.Output<string>;
+    declare public readonly template: pulumi.Output<string>;
     /**
      * Number of seconds during which the link within the email will be valid.
      */
-    public readonly urlLifetimeInSeconds!: pulumi.Output<number | undefined>;
+    declare public readonly urlLifetimeInSeconds: pulumi.Output<number | undefined>;
 
     /**
      * Create a EmailTemplate resource with the given unique name, arguments, and options.
@@ -135,44 +135,44 @@ export class EmailTemplate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EmailTemplateState | undefined;
-            resourceInputs["body"] = state ? state.body : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["from"] = state ? state.from : undefined;
-            resourceInputs["includeEmailInRedirect"] = state ? state.includeEmailInRedirect : undefined;
-            resourceInputs["resultUrl"] = state ? state.resultUrl : undefined;
-            resourceInputs["subject"] = state ? state.subject : undefined;
-            resourceInputs["syntax"] = state ? state.syntax : undefined;
-            resourceInputs["template"] = state ? state.template : undefined;
-            resourceInputs["urlLifetimeInSeconds"] = state ? state.urlLifetimeInSeconds : undefined;
+            resourceInputs["body"] = state?.body;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["from"] = state?.from;
+            resourceInputs["includeEmailInRedirect"] = state?.includeEmailInRedirect;
+            resourceInputs["resultUrl"] = state?.resultUrl;
+            resourceInputs["subject"] = state?.subject;
+            resourceInputs["syntax"] = state?.syntax;
+            resourceInputs["template"] = state?.template;
+            resourceInputs["urlLifetimeInSeconds"] = state?.urlLifetimeInSeconds;
         } else {
             const args = argsOrState as EmailTemplateArgs | undefined;
-            if ((!args || args.body === undefined) && !opts.urn) {
+            if (args?.body === undefined && !opts.urn) {
                 throw new Error("Missing required property 'body'");
             }
-            if ((!args || args.enabled === undefined) && !opts.urn) {
+            if (args?.enabled === undefined && !opts.urn) {
                 throw new Error("Missing required property 'enabled'");
             }
-            if ((!args || args.from === undefined) && !opts.urn) {
+            if (args?.from === undefined && !opts.urn) {
                 throw new Error("Missing required property 'from'");
             }
-            if ((!args || args.subject === undefined) && !opts.urn) {
+            if (args?.subject === undefined && !opts.urn) {
                 throw new Error("Missing required property 'subject'");
             }
-            if ((!args || args.syntax === undefined) && !opts.urn) {
+            if (args?.syntax === undefined && !opts.urn) {
                 throw new Error("Missing required property 'syntax'");
             }
-            if ((!args || args.template === undefined) && !opts.urn) {
+            if (args?.template === undefined && !opts.urn) {
                 throw new Error("Missing required property 'template'");
             }
-            resourceInputs["body"] = args ? args.body : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["from"] = args ? args.from : undefined;
-            resourceInputs["includeEmailInRedirect"] = args ? args.includeEmailInRedirect : undefined;
-            resourceInputs["resultUrl"] = args ? args.resultUrl : undefined;
-            resourceInputs["subject"] = args ? args.subject : undefined;
-            resourceInputs["syntax"] = args ? args.syntax : undefined;
-            resourceInputs["template"] = args ? args.template : undefined;
-            resourceInputs["urlLifetimeInSeconds"] = args ? args.urlLifetimeInSeconds : undefined;
+            resourceInputs["body"] = args?.body;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["from"] = args?.from;
+            resourceInputs["includeEmailInRedirect"] = args?.includeEmailInRedirect;
+            resourceInputs["resultUrl"] = args?.resultUrl;
+            resourceInputs["subject"] = args?.subject;
+            resourceInputs["syntax"] = args?.syntax;
+            resourceInputs["template"] = args?.template;
+            resourceInputs["urlLifetimeInSeconds"] = args?.urlLifetimeInSeconds;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EmailTemplate.__pulumiType, name, resourceInputs, opts);

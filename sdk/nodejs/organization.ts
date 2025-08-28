@@ -75,23 +75,23 @@ export class Organization extends pulumi.CustomResource {
     /**
      * Defines how to style the login pages.
      */
-    public readonly branding!: pulumi.Output<outputs.OrganizationBranding>;
+    declare public readonly branding: pulumi.Output<outputs.OrganizationBranding>;
     /**
      * Friendly name of this organization.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
      * Metadata associated with the organization. Maximum of 10 metadata properties allowed.
      */
-    public readonly metadata!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly metadata: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The name of this organization.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The token quota configuration.
      */
-    public readonly tokenQuota!: pulumi.Output<outputs.OrganizationTokenQuota | undefined>;
+    declare public readonly tokenQuota: pulumi.Output<outputs.OrganizationTokenQuota | undefined>;
 
     /**
      * Create a Organization resource with the given unique name, arguments, and options.
@@ -106,18 +106,18 @@ export class Organization extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OrganizationState | undefined;
-            resourceInputs["branding"] = state ? state.branding : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["metadata"] = state ? state.metadata : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["tokenQuota"] = state ? state.tokenQuota : undefined;
+            resourceInputs["branding"] = state?.branding;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["metadata"] = state?.metadata;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["tokenQuota"] = state?.tokenQuota;
         } else {
             const args = argsOrState as OrganizationArgs | undefined;
-            resourceInputs["branding"] = args ? args.branding : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["metadata"] = args ? args.metadata : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["tokenQuota"] = args ? args.tokenQuota : undefined;
+            resourceInputs["branding"] = args?.branding;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["metadata"] = args?.metadata;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["tokenQuota"] = args?.tokenQuota;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Organization.__pulumiType, name, resourceInputs, opts);

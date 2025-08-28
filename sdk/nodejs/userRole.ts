@@ -80,19 +80,19 @@ export class UserRole extends pulumi.CustomResource {
     /**
      * Description of the role.
      */
-    public /*out*/ readonly roleDescription!: pulumi.Output<string>;
+    declare public /*out*/ readonly roleDescription: pulumi.Output<string>;
     /**
      * ID of the role assigned to the user.
      */
-    public readonly roleId!: pulumi.Output<string>;
+    declare public readonly roleId: pulumi.Output<string>;
     /**
      * Name of the role.
      */
-    public /*out*/ readonly roleName!: pulumi.Output<string>;
+    declare public /*out*/ readonly roleName: pulumi.Output<string>;
     /**
      * ID of the user.
      */
-    public readonly userId!: pulumi.Output<string>;
+    declare public readonly userId: pulumi.Output<string>;
 
     /**
      * Create a UserRole resource with the given unique name, arguments, and options.
@@ -107,20 +107,20 @@ export class UserRole extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserRoleState | undefined;
-            resourceInputs["roleDescription"] = state ? state.roleDescription : undefined;
-            resourceInputs["roleId"] = state ? state.roleId : undefined;
-            resourceInputs["roleName"] = state ? state.roleName : undefined;
-            resourceInputs["userId"] = state ? state.userId : undefined;
+            resourceInputs["roleDescription"] = state?.roleDescription;
+            resourceInputs["roleId"] = state?.roleId;
+            resourceInputs["roleName"] = state?.roleName;
+            resourceInputs["userId"] = state?.userId;
         } else {
             const args = argsOrState as UserRoleArgs | undefined;
-            if ((!args || args.roleId === undefined) && !opts.urn) {
+            if (args?.roleId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'roleId'");
             }
-            if ((!args || args.userId === undefined) && !opts.urn) {
+            if (args?.userId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userId'");
             }
-            resourceInputs["roleId"] = args ? args.roleId : undefined;
-            resourceInputs["userId"] = args ? args.userId : undefined;
+            resourceInputs["roleId"] = args?.roleId;
+            resourceInputs["userId"] = args?.userId;
             resourceInputs["roleDescription"] = undefined /*out*/;
             resourceInputs["roleName"] = undefined /*out*/;
         }

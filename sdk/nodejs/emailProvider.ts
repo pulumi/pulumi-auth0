@@ -150,23 +150,23 @@ export class EmailProvider extends pulumi.CustomResource {
     /**
      * Configuration settings for the credentials for the email provider.
      */
-    public readonly credentials!: pulumi.Output<outputs.EmailProviderCredentials>;
+    declare public readonly credentials: pulumi.Output<outputs.EmailProviderCredentials>;
     /**
      * Email address to use as the sender when no other "from" address is specified.
      */
-    public readonly defaultFromAddress!: pulumi.Output<string>;
+    declare public readonly defaultFromAddress: pulumi.Output<string>;
     /**
      * Indicates whether the email provider is enabled.
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
      * Name of the email provider. Options include `azureCs`, `custom`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Specific email provider settings.
      */
-    public readonly settings!: pulumi.Output<outputs.EmailProviderSettings>;
+    declare public readonly settings: pulumi.Output<outputs.EmailProviderSettings>;
 
     /**
      * Create a EmailProvider resource with the given unique name, arguments, and options.
@@ -181,24 +181,24 @@ export class EmailProvider extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EmailProviderState | undefined;
-            resourceInputs["credentials"] = state ? state.credentials : undefined;
-            resourceInputs["defaultFromAddress"] = state ? state.defaultFromAddress : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["settings"] = state ? state.settings : undefined;
+            resourceInputs["credentials"] = state?.credentials;
+            resourceInputs["defaultFromAddress"] = state?.defaultFromAddress;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["settings"] = state?.settings;
         } else {
             const args = argsOrState as EmailProviderArgs | undefined;
-            if ((!args || args.credentials === undefined) && !opts.urn) {
+            if (args?.credentials === undefined && !opts.urn) {
                 throw new Error("Missing required property 'credentials'");
             }
-            if ((!args || args.defaultFromAddress === undefined) && !opts.urn) {
+            if (args?.defaultFromAddress === undefined && !opts.urn) {
                 throw new Error("Missing required property 'defaultFromAddress'");
             }
-            resourceInputs["credentials"] = args ? args.credentials : undefined;
-            resourceInputs["defaultFromAddress"] = args ? args.defaultFromAddress : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["settings"] = args ? args.settings : undefined;
+            resourceInputs["credentials"] = args?.credentials;
+            resourceInputs["defaultFromAddress"] = args?.defaultFromAddress;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["settings"] = args?.settings;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EmailProvider.__pulumiType, name, resourceInputs, opts);

@@ -62,35 +62,35 @@ export class Action extends pulumi.CustomResource {
     /**
      * The source code of the action.
      */
-    public readonly code!: pulumi.Output<string>;
+    declare public readonly code: pulumi.Output<string>;
     /**
      * List of third party npm modules, and their versions, that this action depends on.
      */
-    public readonly dependencies!: pulumi.Output<outputs.ActionDependency[] | undefined>;
+    declare public readonly dependencies: pulumi.Output<outputs.ActionDependency[] | undefined>;
     /**
      * Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately.
      */
-    public readonly deploy!: pulumi.Output<boolean | undefined>;
+    declare public readonly deploy: pulumi.Output<boolean | undefined>;
     /**
      * The name of the action.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The Node runtime. Possible values are: `node12`, `node16` (not recommended), `node18`, `node22`
      */
-    public readonly runtime!: pulumi.Output<string>;
+    declare public readonly runtime: pulumi.Output<string>;
     /**
      * List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
      */
-    public readonly secrets!: pulumi.Output<outputs.ActionSecret[] | undefined>;
+    declare public readonly secrets: pulumi.Output<outputs.ActionSecret[] | undefined>;
     /**
      * List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
      */
-    public readonly supportedTriggers!: pulumi.Output<outputs.ActionSupportedTriggers>;
+    declare public readonly supportedTriggers: pulumi.Output<outputs.ActionSupportedTriggers>;
     /**
      * Version ID of the action. This value is available if `deploy` is set to true.
      */
-    public /*out*/ readonly versionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly versionId: pulumi.Output<string>;
 
     /**
      * Create a Action resource with the given unique name, arguments, and options.
@@ -105,29 +105,29 @@ export class Action extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ActionState | undefined;
-            resourceInputs["code"] = state ? state.code : undefined;
-            resourceInputs["dependencies"] = state ? state.dependencies : undefined;
-            resourceInputs["deploy"] = state ? state.deploy : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["runtime"] = state ? state.runtime : undefined;
-            resourceInputs["secrets"] = state ? state.secrets : undefined;
-            resourceInputs["supportedTriggers"] = state ? state.supportedTriggers : undefined;
-            resourceInputs["versionId"] = state ? state.versionId : undefined;
+            resourceInputs["code"] = state?.code;
+            resourceInputs["dependencies"] = state?.dependencies;
+            resourceInputs["deploy"] = state?.deploy;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["runtime"] = state?.runtime;
+            resourceInputs["secrets"] = state?.secrets;
+            resourceInputs["supportedTriggers"] = state?.supportedTriggers;
+            resourceInputs["versionId"] = state?.versionId;
         } else {
             const args = argsOrState as ActionArgs | undefined;
-            if ((!args || args.code === undefined) && !opts.urn) {
+            if (args?.code === undefined && !opts.urn) {
                 throw new Error("Missing required property 'code'");
             }
-            if ((!args || args.supportedTriggers === undefined) && !opts.urn) {
+            if (args?.supportedTriggers === undefined && !opts.urn) {
                 throw new Error("Missing required property 'supportedTriggers'");
             }
-            resourceInputs["code"] = args ? args.code : undefined;
-            resourceInputs["dependencies"] = args ? args.dependencies : undefined;
-            resourceInputs["deploy"] = args ? args.deploy : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["runtime"] = args ? args.runtime : undefined;
-            resourceInputs["secrets"] = args ? args.secrets : undefined;
-            resourceInputs["supportedTriggers"] = args ? args.supportedTriggers : undefined;
+            resourceInputs["code"] = args?.code;
+            resourceInputs["dependencies"] = args?.dependencies;
+            resourceInputs["deploy"] = args?.deploy;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["runtime"] = args?.runtime;
+            resourceInputs["secrets"] = args?.secrets;
+            resourceInputs["supportedTriggers"] = args?.supportedTriggers;
             resourceInputs["versionId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
