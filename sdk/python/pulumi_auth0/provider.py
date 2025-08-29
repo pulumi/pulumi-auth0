@@ -32,22 +32,15 @@ class ProviderArgs:
                  dynamic_credentials: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Provider resource.
-        :param pulumi.Input[_builtins.str] api_token: Your Auth0 [management api access
-               token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from
-               the `AUTH0_API_TOKEN` environment variable. It can be used instead of `client_id` + `client_secret`. If both are
-               specified, `api_token` will be used over `client_id` + `client_secret` fields.
+        :param pulumi.Input[_builtins.str] api_token: Your Auth0 [management api access token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from the `AUTH0_API_TOKEN` environment variable. It can be used instead of `client_id` + `client_secret`. If both are specified, `api_token` will be used over `client_id` + `client_secret` fields.
         :param pulumi.Input[_builtins.str] audience: Your Auth0 audience when using a custom domain. It can also be sourced from the `AUTH0_AUDIENCE` environment variable.
         :param pulumi.Input[_builtins.bool] cli_login: While toggled on, the API token gets fetched from the keyring for the given domain
-        :param pulumi.Input[_builtins.str] client_assertion_private_key: The private key used to sign the client assertion JWT. It can also be sourced from the
-               `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
-        :param pulumi.Input[_builtins.str] client_assertion_signing_alg: The algorithm used to sign the client assertion JWT. It can also be sourced from the
-               `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
+        :param pulumi.Input[_builtins.str] client_assertion_private_key: The private key used to sign the client assertion JWT. It can also be sourced from the `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
+        :param pulumi.Input[_builtins.str] client_assertion_signing_alg: The algorithm used to sign the client assertion JWT. It can also be sourced from the `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
         :param pulumi.Input[_builtins.str] client_id: Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.
         :param pulumi.Input[_builtins.str] client_secret: Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable.
-        :param pulumi.Input[_builtins.str] custom_domain_header: When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting
-               overrides all resource specific `custom_domain_header` value
-        :param pulumi.Input[_builtins.bool] debug: Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG`
-               environment variable.
+        :param pulumi.Input[_builtins.str] custom_domain_header: When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting overrides all resource specific `custom_domain_header` value
+        :param pulumi.Input[_builtins.bool] debug: Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG` environment variable.
         :param pulumi.Input[_builtins.str] domain: Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
         """
         if api_token is not None:
@@ -79,10 +72,7 @@ class ProviderArgs:
     @pulumi.getter(name="apiToken")
     def api_token(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Your Auth0 [management api access
-        token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from
-        the `AUTH0_API_TOKEN` environment variable. It can be used instead of `client_id` + `client_secret`. If both are
-        specified, `api_token` will be used over `client_id` + `client_secret` fields.
+        Your Auth0 [management api access token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from the `AUTH0_API_TOKEN` environment variable. It can be used instead of `client_id` + `client_secret`. If both are specified, `api_token` will be used over `client_id` + `client_secret` fields.
         """
         return pulumi.get(self, "api_token")
 
@@ -118,8 +108,7 @@ class ProviderArgs:
     @pulumi.getter(name="clientAssertionPrivateKey")
     def client_assertion_private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The private key used to sign the client assertion JWT. It can also be sourced from the
-        `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
+        The private key used to sign the client assertion JWT. It can also be sourced from the `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
         """
         return pulumi.get(self, "client_assertion_private_key")
 
@@ -131,8 +120,7 @@ class ProviderArgs:
     @pulumi.getter(name="clientAssertionSigningAlg")
     def client_assertion_signing_alg(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The algorithm used to sign the client assertion JWT. It can also be sourced from the
-        `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
+        The algorithm used to sign the client assertion JWT. It can also be sourced from the `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
         """
         return pulumi.get(self, "client_assertion_signing_alg")
 
@@ -168,8 +156,7 @@ class ProviderArgs:
     @pulumi.getter(name="customDomainHeader")
     def custom_domain_header(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting
-        overrides all resource specific `custom_domain_header` value
+        When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting overrides all resource specific `custom_domain_header` value
         """
         return pulumi.get(self, "custom_domain_header")
 
@@ -181,8 +168,7 @@ class ProviderArgs:
     @pulumi.getter
     def debug(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG`
-        environment variable.
+        Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG` environment variable.
         """
         return pulumi.get(self, "debug")
 
@@ -238,22 +224,15 @@ class Provider(pulumi.ProviderResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] api_token: Your Auth0 [management api access
-               token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from
-               the `AUTH0_API_TOKEN` environment variable. It can be used instead of `client_id` + `client_secret`. If both are
-               specified, `api_token` will be used over `client_id` + `client_secret` fields.
+        :param pulumi.Input[_builtins.str] api_token: Your Auth0 [management api access token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from the `AUTH0_API_TOKEN` environment variable. It can be used instead of `client_id` + `client_secret`. If both are specified, `api_token` will be used over `client_id` + `client_secret` fields.
         :param pulumi.Input[_builtins.str] audience: Your Auth0 audience when using a custom domain. It can also be sourced from the `AUTH0_AUDIENCE` environment variable.
         :param pulumi.Input[_builtins.bool] cli_login: While toggled on, the API token gets fetched from the keyring for the given domain
-        :param pulumi.Input[_builtins.str] client_assertion_private_key: The private key used to sign the client assertion JWT. It can also be sourced from the
-               `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
-        :param pulumi.Input[_builtins.str] client_assertion_signing_alg: The algorithm used to sign the client assertion JWT. It can also be sourced from the
-               `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
+        :param pulumi.Input[_builtins.str] client_assertion_private_key: The private key used to sign the client assertion JWT. It can also be sourced from the `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
+        :param pulumi.Input[_builtins.str] client_assertion_signing_alg: The algorithm used to sign the client assertion JWT. It can also be sourced from the `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
         :param pulumi.Input[_builtins.str] client_id: Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.
         :param pulumi.Input[_builtins.str] client_secret: Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable.
-        :param pulumi.Input[_builtins.str] custom_domain_header: When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting
-               overrides all resource specific `custom_domain_header` value
-        :param pulumi.Input[_builtins.bool] debug: Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG`
-               environment variable.
+        :param pulumi.Input[_builtins.str] custom_domain_header: When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting overrides all resource specific `custom_domain_header` value
+        :param pulumi.Input[_builtins.bool] debug: Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG` environment variable.
         :param pulumi.Input[_builtins.str] domain: Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
         """
         ...
@@ -326,10 +305,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="apiToken")
     def api_token(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Your Auth0 [management api access
-        token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from
-        the `AUTH0_API_TOKEN` environment variable. It can be used instead of `client_id` + `client_secret`. If both are
-        specified, `api_token` will be used over `client_id` + `client_secret` fields.
+        Your Auth0 [management api access token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from the `AUTH0_API_TOKEN` environment variable. It can be used instead of `client_id` + `client_secret`. If both are specified, `api_token` will be used over `client_id` + `client_secret` fields.
         """
         return pulumi.get(self, "api_token")
 
@@ -345,8 +321,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="clientAssertionPrivateKey")
     def client_assertion_private_key(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The private key used to sign the client assertion JWT. It can also be sourced from the
-        `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
+        The private key used to sign the client assertion JWT. It can also be sourced from the `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
         """
         return pulumi.get(self, "client_assertion_private_key")
 
@@ -354,8 +329,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="clientAssertionSigningAlg")
     def client_assertion_signing_alg(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The algorithm used to sign the client assertion JWT. It can also be sourced from the
-        `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
+        The algorithm used to sign the client assertion JWT. It can also be sourced from the `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
         """
         return pulumi.get(self, "client_assertion_signing_alg")
 
@@ -379,8 +353,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="customDomainHeader")
     def custom_domain_header(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting
-        overrides all resource specific `custom_domain_header` value
+        When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting overrides all resource specific `custom_domain_header` value
         """
         return pulumi.get(self, "custom_domain_header")
 

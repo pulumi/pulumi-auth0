@@ -38,7 +38,7 @@ export class RiskAssessmentsNewDevice extends pulumi.CustomResource {
     /**
      * Length of time to remember devices for, in days
      */
-    public readonly rememberFor!: pulumi.Output<number>;
+    declare public readonly rememberFor: pulumi.Output<number>;
 
     /**
      * Create a RiskAssessmentsNewDevice resource with the given unique name, arguments, and options.
@@ -53,13 +53,13 @@ export class RiskAssessmentsNewDevice extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RiskAssessmentsNewDeviceState | undefined;
-            resourceInputs["rememberFor"] = state ? state.rememberFor : undefined;
+            resourceInputs["rememberFor"] = state?.rememberFor;
         } else {
             const args = argsOrState as RiskAssessmentsNewDeviceArgs | undefined;
-            if ((!args || args.rememberFor === undefined) && !opts.urn) {
+            if (args?.rememberFor === undefined && !opts.urn) {
                 throw new Error("Missing required property 'rememberFor'");
             }
-            resourceInputs["rememberFor"] = args ? args.rememberFor : undefined;
+            resourceInputs["rememberFor"] = args?.rememberFor;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(RiskAssessmentsNewDevice.__pulumiType, name, resourceInputs, opts);

@@ -70,43 +70,43 @@ export class PromptPartials extends pulumi.CustomResource {
      *
      * @deprecated This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
      */
-    public readonly formContentEnd!: pulumi.Output<string | undefined>;
+    declare public readonly formContentEnd: pulumi.Output<string | undefined>;
     /**
      * Content that goes at the start of the form.
      *
      * @deprecated This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
      */
-    public readonly formContentStart!: pulumi.Output<string | undefined>;
+    declare public readonly formContentStart: pulumi.Output<string | undefined>;
     /**
      * Footer content for the end of the footer.
      *
      * @deprecated This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
      */
-    public readonly formFooterEnd!: pulumi.Output<string | undefined>;
+    declare public readonly formFooterEnd: pulumi.Output<string | undefined>;
     /**
      * Footer content for the start of the footer.
      *
      * @deprecated This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
      */
-    public readonly formFooterStart!: pulumi.Output<string | undefined>;
+    declare public readonly formFooterStart: pulumi.Output<string | undefined>;
     /**
      * The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
      *
      * @deprecated This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
      */
-    public readonly prompt!: pulumi.Output<string>;
+    declare public readonly prompt: pulumi.Output<string>;
     /**
      * Actions that go at the end of secondary actions.
      *
      * @deprecated This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
      */
-    public readonly secondaryActionsEnd!: pulumi.Output<string | undefined>;
+    declare public readonly secondaryActionsEnd: pulumi.Output<string | undefined>;
     /**
      * Actions that go at the start of secondary actions.
      *
      * @deprecated This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
      */
-    public readonly secondaryActionsStart!: pulumi.Output<string | undefined>;
+    declare public readonly secondaryActionsStart: pulumi.Output<string | undefined>;
 
     /**
      * Create a PromptPartials resource with the given unique name, arguments, and options.
@@ -121,25 +121,25 @@ export class PromptPartials extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PromptPartialsState | undefined;
-            resourceInputs["formContentEnd"] = state ? state.formContentEnd : undefined;
-            resourceInputs["formContentStart"] = state ? state.formContentStart : undefined;
-            resourceInputs["formFooterEnd"] = state ? state.formFooterEnd : undefined;
-            resourceInputs["formFooterStart"] = state ? state.formFooterStart : undefined;
-            resourceInputs["prompt"] = state ? state.prompt : undefined;
-            resourceInputs["secondaryActionsEnd"] = state ? state.secondaryActionsEnd : undefined;
-            resourceInputs["secondaryActionsStart"] = state ? state.secondaryActionsStart : undefined;
+            resourceInputs["formContentEnd"] = state?.formContentEnd;
+            resourceInputs["formContentStart"] = state?.formContentStart;
+            resourceInputs["formFooterEnd"] = state?.formFooterEnd;
+            resourceInputs["formFooterStart"] = state?.formFooterStart;
+            resourceInputs["prompt"] = state?.prompt;
+            resourceInputs["secondaryActionsEnd"] = state?.secondaryActionsEnd;
+            resourceInputs["secondaryActionsStart"] = state?.secondaryActionsStart;
         } else {
             const args = argsOrState as PromptPartialsArgs | undefined;
-            if ((!args || args.prompt === undefined) && !opts.urn) {
+            if (args?.prompt === undefined && !opts.urn) {
                 throw new Error("Missing required property 'prompt'");
             }
-            resourceInputs["formContentEnd"] = args ? args.formContentEnd : undefined;
-            resourceInputs["formContentStart"] = args ? args.formContentStart : undefined;
-            resourceInputs["formFooterEnd"] = args ? args.formFooterEnd : undefined;
-            resourceInputs["formFooterStart"] = args ? args.formFooterStart : undefined;
-            resourceInputs["prompt"] = args ? args.prompt : undefined;
-            resourceInputs["secondaryActionsEnd"] = args ? args.secondaryActionsEnd : undefined;
-            resourceInputs["secondaryActionsStart"] = args ? args.secondaryActionsStart : undefined;
+            resourceInputs["formContentEnd"] = args?.formContentEnd;
+            resourceInputs["formContentStart"] = args?.formContentStart;
+            resourceInputs["formFooterEnd"] = args?.formFooterEnd;
+            resourceInputs["formFooterStart"] = args?.formFooterStart;
+            resourceInputs["prompt"] = args?.prompt;
+            resourceInputs["secondaryActionsEnd"] = args?.secondaryActionsEnd;
+            resourceInputs["secondaryActionsStart"] = args?.secondaryActionsStart;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(PromptPartials.__pulumiType, name, resourceInputs, opts);

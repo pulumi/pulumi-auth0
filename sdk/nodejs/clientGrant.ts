@@ -50,23 +50,23 @@ export class ClientGrant extends pulumi.CustomResource {
     /**
      * If enabled, any organization can be used with this grant. If disabled (default), the grant must be explicitly assigned to the desired organizations.
      */
-    public readonly allowAnyOrganization!: pulumi.Output<boolean | undefined>;
+    declare public readonly allowAnyOrganization: pulumi.Output<boolean | undefined>;
     /**
      * Audience or API Identifier for this grant.
      */
-    public readonly audience!: pulumi.Output<string>;
+    declare public readonly audience: pulumi.Output<string>;
     /**
      * ID of the client for this grant.
      */
-    public readonly clientId!: pulumi.Output<string>;
+    declare public readonly clientId: pulumi.Output<string>;
     /**
      * Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
      */
-    public readonly organizationUsage!: pulumi.Output<string | undefined>;
+    declare public readonly organizationUsage: pulumi.Output<string | undefined>;
     /**
      * Permissions (scopes) included in this grant.
      */
-    public readonly scopes!: pulumi.Output<string[]>;
+    declare public readonly scopes: pulumi.Output<string[]>;
 
     /**
      * Create a ClientGrant resource with the given unique name, arguments, and options.
@@ -81,27 +81,27 @@ export class ClientGrant extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClientGrantState | undefined;
-            resourceInputs["allowAnyOrganization"] = state ? state.allowAnyOrganization : undefined;
-            resourceInputs["audience"] = state ? state.audience : undefined;
-            resourceInputs["clientId"] = state ? state.clientId : undefined;
-            resourceInputs["organizationUsage"] = state ? state.organizationUsage : undefined;
-            resourceInputs["scopes"] = state ? state.scopes : undefined;
+            resourceInputs["allowAnyOrganization"] = state?.allowAnyOrganization;
+            resourceInputs["audience"] = state?.audience;
+            resourceInputs["clientId"] = state?.clientId;
+            resourceInputs["organizationUsage"] = state?.organizationUsage;
+            resourceInputs["scopes"] = state?.scopes;
         } else {
             const args = argsOrState as ClientGrantArgs | undefined;
-            if ((!args || args.audience === undefined) && !opts.urn) {
+            if (args?.audience === undefined && !opts.urn) {
                 throw new Error("Missing required property 'audience'");
             }
-            if ((!args || args.clientId === undefined) && !opts.urn) {
+            if (args?.clientId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clientId'");
             }
-            if ((!args || args.scopes === undefined) && !opts.urn) {
+            if (args?.scopes === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scopes'");
             }
-            resourceInputs["allowAnyOrganization"] = args ? args.allowAnyOrganization : undefined;
-            resourceInputs["audience"] = args ? args.audience : undefined;
-            resourceInputs["clientId"] = args ? args.clientId : undefined;
-            resourceInputs["organizationUsage"] = args ? args.organizationUsage : undefined;
-            resourceInputs["scopes"] = args ? args.scopes : undefined;
+            resourceInputs["allowAnyOrganization"] = args?.allowAnyOrganization;
+            resourceInputs["audience"] = args?.audience;
+            resourceInputs["clientId"] = args?.clientId;
+            resourceInputs["organizationUsage"] = args?.organizationUsage;
+            resourceInputs["scopes"] = args?.scopes;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ClientGrant.__pulumiType, name, resourceInputs, opts);

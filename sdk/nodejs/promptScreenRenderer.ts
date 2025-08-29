@@ -98,39 +98,39 @@ export class PromptScreenRenderer extends pulumi.CustomResource {
     /**
      * Context values to make available
      */
-    public readonly contextConfigurations!: pulumi.Output<string[]>;
+    declare public readonly contextConfigurations: pulumi.Output<string[]>;
     /**
      * Override Universal Login default head tags
      */
-    public readonly defaultHeadTagsDisabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly defaultHeadTagsDisabled: pulumi.Output<boolean | undefined>;
     /**
      * Optional filters to apply rendering rules to specific entities. `matchType` and at least one of the entity arrays are required.
      */
-    public readonly filters!: pulumi.Output<outputs.PromptScreenRendererFilters | undefined>;
+    declare public readonly filters: pulumi.Output<outputs.PromptScreenRendererFilters | undefined>;
     /**
      * An array of head tags
      */
-    public readonly headTags!: pulumi.Output<string>;
+    declare public readonly headTags: pulumi.Output<string>;
     /**
      * The prompt that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkeys`, `captcha`, `login`, `signup`, `reset-password`, `mfa`, `mfa-sms`, `mfa-email`, `mfa-push`, `invitation`, `organizations`, `mfa-otp`, `device-flow`, `mfa-phone`, `mfa-voice`, `mfa-recovery-code`, `common`, `email-verification`, `login-email-verification`, `logout`, `mfa-webauthn`, `consent`, `customized-consent`, `email-otp-challenge`.
      */
-    public readonly promptType!: pulumi.Output<string>;
+    declare public readonly promptType: pulumi.Output<string>;
     /**
      * Rendering modeOptions are: `standard`, `advanced`.
      */
-    public readonly renderingMode!: pulumi.Output<string | undefined>;
+    declare public readonly renderingMode: pulumi.Output<string | undefined>;
     /**
      * The screen that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`, `login`, `signup`, `reset-password-request`, `reset-password-email`, `reset-password`, `reset-password-success`, `reset-password-error`, `reset-password-mfa-email-challenge`, `reset-password-mfa-otp-challenge`, `reset-password-mfa-push-challenge-push`, `reset-password-mfa-sms-challenge`, `mfa-detect-browser-capabilities`, `mfa-enroll-result`, `mfa-begin-enroll-options`, `mfa-login-options`, `mfa-country-codes`, `mfa-sms-challenge`, `mfa-sms-enrollment`, `mfa-sms-list`, `mfa-email-challenge`, `mfa-email-list`, `mfa-push-challenge-push`, `mfa-push-enrollment-qr`, `mfa-push-list`, `mfa-push-welcome`, `accept-invitation`, `organization-selection`, `organization-picker`, `mfa-otp-challenge`, `mfa-otp-enrollment-code`, `mfa-otp-enrollment-qr`, `device-code-activation`, `device-code-activation-allowed`, `device-code-activation-denied`, `device-code-confirmation`, `mfa-phone-challenge`, `mfa-phone-enrollment`, `mfa-voice-challenge`, `mfa-voice-enrollment`, `reset-password-mfa-phone-challenge`, `reset-password-mfa-voice-challenge`, `mfa-recovery-code-challenge`, `mfa-recovery-code-enrollment`, `reset-password-mfa-recovery-code-challenge`, `redeem-ticket`, `mfa-recovery-code-challenge-new-code`, `email-verification-result`, `login-email-verification`, `logout`, `logout-aborted`, `logout-complete`, `mfa-webauthn-change-key-nickname`, `mfa-webauthn-enrollment-success`, `mfa-webauthn-error`, `mfa-webauthn-platform-challenge`, `mfa-webauthn-platform-enrollment`, `mfa-webauthn-roaming-challenge`, `mfa-webauthn-roaming-enrollment`, `reset-password-mfa-webauthn-platform-challenge`, `reset-password-mfa-webauthn-roaming-challenge`, `consent`, `customized-consent`, `email-otp-challenge`, `mfa-webauthn-not-available-error`.
      */
-    public readonly screenName!: pulumi.Output<string>;
+    declare public readonly screenName: pulumi.Output<string>;
     /**
      * Tenant ID
      */
-    public /*out*/ readonly tenant!: pulumi.Output<string>;
+    declare public /*out*/ readonly tenant: pulumi.Output<string>;
     /**
      * Use page template with ACUL
      */
-    public readonly usePageTemplate!: pulumi.Output<boolean | undefined>;
+    declare public readonly usePageTemplate: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a PromptScreenRenderer resource with the given unique name, arguments, and options.
@@ -145,31 +145,31 @@ export class PromptScreenRenderer extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PromptScreenRendererState | undefined;
-            resourceInputs["contextConfigurations"] = state ? state.contextConfigurations : undefined;
-            resourceInputs["defaultHeadTagsDisabled"] = state ? state.defaultHeadTagsDisabled : undefined;
-            resourceInputs["filters"] = state ? state.filters : undefined;
-            resourceInputs["headTags"] = state ? state.headTags : undefined;
-            resourceInputs["promptType"] = state ? state.promptType : undefined;
-            resourceInputs["renderingMode"] = state ? state.renderingMode : undefined;
-            resourceInputs["screenName"] = state ? state.screenName : undefined;
-            resourceInputs["tenant"] = state ? state.tenant : undefined;
-            resourceInputs["usePageTemplate"] = state ? state.usePageTemplate : undefined;
+            resourceInputs["contextConfigurations"] = state?.contextConfigurations;
+            resourceInputs["defaultHeadTagsDisabled"] = state?.defaultHeadTagsDisabled;
+            resourceInputs["filters"] = state?.filters;
+            resourceInputs["headTags"] = state?.headTags;
+            resourceInputs["promptType"] = state?.promptType;
+            resourceInputs["renderingMode"] = state?.renderingMode;
+            resourceInputs["screenName"] = state?.screenName;
+            resourceInputs["tenant"] = state?.tenant;
+            resourceInputs["usePageTemplate"] = state?.usePageTemplate;
         } else {
             const args = argsOrState as PromptScreenRendererArgs | undefined;
-            if ((!args || args.promptType === undefined) && !opts.urn) {
+            if (args?.promptType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'promptType'");
             }
-            if ((!args || args.screenName === undefined) && !opts.urn) {
+            if (args?.screenName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'screenName'");
             }
-            resourceInputs["contextConfigurations"] = args ? args.contextConfigurations : undefined;
-            resourceInputs["defaultHeadTagsDisabled"] = args ? args.defaultHeadTagsDisabled : undefined;
-            resourceInputs["filters"] = args ? args.filters : undefined;
-            resourceInputs["headTags"] = args ? args.headTags : undefined;
-            resourceInputs["promptType"] = args ? args.promptType : undefined;
-            resourceInputs["renderingMode"] = args ? args.renderingMode : undefined;
-            resourceInputs["screenName"] = args ? args.screenName : undefined;
-            resourceInputs["usePageTemplate"] = args ? args.usePageTemplate : undefined;
+            resourceInputs["contextConfigurations"] = args?.contextConfigurations;
+            resourceInputs["defaultHeadTagsDisabled"] = args?.defaultHeadTagsDisabled;
+            resourceInputs["filters"] = args?.filters;
+            resourceInputs["headTags"] = args?.headTags;
+            resourceInputs["promptType"] = args?.promptType;
+            resourceInputs["renderingMode"] = args?.renderingMode;
+            resourceInputs["screenName"] = args?.screenName;
+            resourceInputs["usePageTemplate"] = args?.usePageTemplate;
             resourceInputs["tenant"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

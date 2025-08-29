@@ -103,27 +103,27 @@ export class ConnectionScimConfiguration extends pulumi.CustomResource {
     /**
      * ID of the connection for this SCIM configuration.
      */
-    public readonly connectionId!: pulumi.Output<string>;
+    declare public readonly connectionId: pulumi.Output<string>;
     /**
      * Name of the connection for this SCIM configuration.
      */
-    public /*out*/ readonly connectionName!: pulumi.Output<string>;
+    declare public /*out*/ readonly connectionName: pulumi.Output<string>;
     /**
      * Mapping between Auth0 attributes and SCIM attributes. If `userIdAttribute` is set, `mapping` must be set as well.
      */
-    public readonly mappings!: pulumi.Output<outputs.ConnectionScimConfigurationMapping[]>;
+    declare public readonly mappings: pulumi.Output<outputs.ConnectionScimConfigurationMapping[]>;
     /**
      * Schema of the connection for this SCIM configuration.
      */
-    public /*out*/ readonly strategy!: pulumi.Output<string>;
+    declare public /*out*/ readonly strategy: pulumi.Output<string>;
     /**
      * Name of the tenant for this SCIM configuration.
      */
-    public /*out*/ readonly tenantName!: pulumi.Output<string>;
+    declare public /*out*/ readonly tenantName: pulumi.Output<string>;
     /**
      * User ID attribute for generation unique of user ids. If `userIdAttribute` is set, `mapping` must be set as well. Defaults to `userName` for SAML connections and `externalId` for OIDC connections.
      */
-    public readonly userIdAttribute!: pulumi.Output<string>;
+    declare public readonly userIdAttribute: pulumi.Output<string>;
 
     /**
      * Create a ConnectionScimConfiguration resource with the given unique name, arguments, and options.
@@ -138,20 +138,20 @@ export class ConnectionScimConfiguration extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConnectionScimConfigurationState | undefined;
-            resourceInputs["connectionId"] = state ? state.connectionId : undefined;
-            resourceInputs["connectionName"] = state ? state.connectionName : undefined;
-            resourceInputs["mappings"] = state ? state.mappings : undefined;
-            resourceInputs["strategy"] = state ? state.strategy : undefined;
-            resourceInputs["tenantName"] = state ? state.tenantName : undefined;
-            resourceInputs["userIdAttribute"] = state ? state.userIdAttribute : undefined;
+            resourceInputs["connectionId"] = state?.connectionId;
+            resourceInputs["connectionName"] = state?.connectionName;
+            resourceInputs["mappings"] = state?.mappings;
+            resourceInputs["strategy"] = state?.strategy;
+            resourceInputs["tenantName"] = state?.tenantName;
+            resourceInputs["userIdAttribute"] = state?.userIdAttribute;
         } else {
             const args = argsOrState as ConnectionScimConfigurationArgs | undefined;
-            if ((!args || args.connectionId === undefined) && !opts.urn) {
+            if (args?.connectionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'connectionId'");
             }
-            resourceInputs["connectionId"] = args ? args.connectionId : undefined;
-            resourceInputs["mappings"] = args ? args.mappings : undefined;
-            resourceInputs["userIdAttribute"] = args ? args.userIdAttribute : undefined;
+            resourceInputs["connectionId"] = args?.connectionId;
+            resourceInputs["mappings"] = args?.mappings;
+            resourceInputs["userIdAttribute"] = args?.userIdAttribute;
             resourceInputs["connectionName"] = undefined /*out*/;
             resourceInputs["strategy"] = undefined /*out*/;
             resourceInputs["tenantName"] = undefined /*out*/;

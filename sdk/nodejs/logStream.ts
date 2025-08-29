@@ -96,31 +96,31 @@ export class LogStream extends pulumi.CustomResource {
     /**
      * Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered. Filters available: `auth.ancillary.fail`, `auth.ancillary.success`, `auth.login.fail`, `auth.login.notification`, `auth.login.success`, `auth.logout.fail`, `auth.logout.success`, `auth.signup.fail`, `auth.signup.success`, `auth.silent_auth.fail`, `auth.silent_auth.success`, `auth.token_exchange.fail`, `auth.token_exchange.success`, `management.fail`, `management.success`, `system.notification`, `user.fail`, `user.notification`, `user.success`, `other`.
      */
-    public readonly filters!: pulumi.Output<{[key: string]: string}[]>;
+    declare public readonly filters: pulumi.Output<{[key: string]: string}[]>;
     /**
      * Set True for priority log streams, False for non-priority
      */
-    public readonly isPriority!: pulumi.Output<boolean | undefined>;
+    declare public readonly isPriority: pulumi.Output<boolean | undefined>;
     /**
      * Name of the log stream.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Configuration for PII (Personally Identifiable Information) handling.
      */
-    public readonly piiConfig!: pulumi.Output<outputs.LogStreamPiiConfig | undefined>;
+    declare public readonly piiConfig: pulumi.Output<outputs.LogStreamPiiConfig | undefined>;
     /**
      * The sink configuration for the log stream.
      */
-    public readonly sink!: pulumi.Output<outputs.LogStreamSink>;
+    declare public readonly sink: pulumi.Output<outputs.LogStreamSink>;
     /**
      * The current status of the log stream. Options are "active", "paused", "suspended".
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * Type of the log stream, which indicates the sink provider. Options include: `eventbridge`, `eventgrid`, `http`, `datadog`, `splunk`, `sumo`, `mixpanel`, `segment`.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a LogStream resource with the given unique name, arguments, and options.
@@ -135,28 +135,28 @@ export class LogStream extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LogStreamState | undefined;
-            resourceInputs["filters"] = state ? state.filters : undefined;
-            resourceInputs["isPriority"] = state ? state.isPriority : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["piiConfig"] = state ? state.piiConfig : undefined;
-            resourceInputs["sink"] = state ? state.sink : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["filters"] = state?.filters;
+            resourceInputs["isPriority"] = state?.isPriority;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["piiConfig"] = state?.piiConfig;
+            resourceInputs["sink"] = state?.sink;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as LogStreamArgs | undefined;
-            if ((!args || args.sink === undefined) && !opts.urn) {
+            if (args?.sink === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sink'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["filters"] = args ? args.filters : undefined;
-            resourceInputs["isPriority"] = args ? args.isPriority : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["piiConfig"] = args ? args.piiConfig : undefined;
-            resourceInputs["sink"] = args ? args.sink : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["filters"] = args?.filters;
+            resourceInputs["isPriority"] = args?.isPriority;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["piiConfig"] = args?.piiConfig;
+            resourceInputs["sink"] = args?.sink;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["type"] = args?.type;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(LogStream.__pulumiType, name, resourceInputs, opts);

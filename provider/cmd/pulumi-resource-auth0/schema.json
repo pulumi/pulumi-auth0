@@ -51,39 +51,39 @@
         "variables": {
             "apiToken": {
                 "type": "string",
-                "description": "Your Auth0 [management api access\ntoken](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from\nthe `AUTH0_API_TOKEN` environment variable. It can be used instead of `client_id` + `client_secret`. If both are\nspecified, `api_token` will be used over `client_id` + `client_secret` fields.\n"
+                "description": "Your Auth0 [management api access token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from the `AUTH0_API_TOKEN` environment variable. It can be used instead of `client_id` + `client_secret`. If both are specified, `api_token` will be used over `client_id` + `client_secret` fields."
             },
             "audience": {
                 "type": "string",
-                "description": "Your Auth0 audience when using a custom domain. It can also be sourced from the `AUTH0_AUDIENCE` environment variable.\n"
+                "description": "Your Auth0 audience when using a custom domain. It can also be sourced from the `AUTH0_AUDIENCE` environment variable."
             },
             "cliLogin": {
                 "type": "boolean",
-                "description": "While toggled on, the API token gets fetched from the keyring for the given domain\n"
+                "description": "While toggled on, the API token gets fetched from the keyring for the given domain"
             },
             "clientAssertionPrivateKey": {
                 "type": "string",
-                "description": "The private key used to sign the client assertion JWT. It can also be sourced from the\n`AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.\n"
+                "description": "The private key used to sign the client assertion JWT. It can also be sourced from the `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable."
             },
             "clientAssertionSigningAlg": {
                 "type": "string",
-                "description": "The algorithm used to sign the client assertion JWT. It can also be sourced from the\n`AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.\n"
+                "description": "The algorithm used to sign the client assertion JWT. It can also be sourced from the `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable."
             },
             "clientId": {
                 "type": "string",
-                "description": "Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.\n"
+                "description": "Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable."
             },
             "clientSecret": {
                 "type": "string",
-                "description": "Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable.\n"
+                "description": "Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable."
             },
             "customDomainHeader": {
                 "type": "string",
-                "description": "When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting\noverrides all resource specific `custom_domain_header` value\n"
+                "description": "When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting overrides all resource specific `custom_domain_header` value"
             },
             "debug": {
                 "type": "boolean",
-                "description": "Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG`\nenvironment variable.\n",
+                "description": "Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG` environment variable.",
                 "defaultInfo": {
                     "environment": [
                         "AUTH0_DEBUG"
@@ -92,7 +92,7 @@
             },
             "domain": {
                 "type": "string",
-                "description": "Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.\n"
+                "description": "Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable."
             },
             "dynamicCredentials": {
                 "type": "boolean"
@@ -10485,43 +10485,43 @@
         "properties": {
             "apiToken": {
                 "type": "string",
-                "description": "Your Auth0 [management api access\ntoken](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from\nthe `AUTH0_API_TOKEN` environment variable. It can be used instead of `client_id` + `client_secret`. If both are\nspecified, `api_token` will be used over `client_id` + `client_secret` fields.\n"
+                "description": "Your Auth0 [management api access token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from the `AUTH0_API_TOKEN` environment variable. It can be used instead of `client_id` + `client_secret`. If both are specified, `api_token` will be used over `client_id` + `client_secret` fields."
             },
             "audience": {
                 "type": "string",
-                "description": "Your Auth0 audience when using a custom domain. It can also be sourced from the `AUTH0_AUDIENCE` environment variable.\n"
+                "description": "Your Auth0 audience when using a custom domain. It can also be sourced from the `AUTH0_AUDIENCE` environment variable."
             },
             "cliLogin": {
                 "type": "boolean",
-                "description": "While toggled on, the API token gets fetched from the keyring for the given domain\n"
+                "description": "While toggled on, the API token gets fetched from the keyring for the given domain"
             },
             "clientAssertionPrivateKey": {
                 "type": "string",
-                "description": "The private key used to sign the client assertion JWT. It can also be sourced from the\n`AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.\n"
+                "description": "The private key used to sign the client assertion JWT. It can also be sourced from the `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable."
             },
             "clientAssertionSigningAlg": {
                 "type": "string",
-                "description": "The algorithm used to sign the client assertion JWT. It can also be sourced from the\n`AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.\n"
+                "description": "The algorithm used to sign the client assertion JWT. It can also be sourced from the `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable."
             },
             "clientId": {
                 "type": "string",
-                "description": "Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.\n"
+                "description": "Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable."
             },
             "clientSecret": {
                 "type": "string",
-                "description": "Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable.\n"
+                "description": "Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable."
             },
             "customDomainHeader": {
                 "type": "string",
-                "description": "When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting\noverrides all resource specific `custom_domain_header` value\n"
+                "description": "When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting overrides all resource specific `custom_domain_header` value"
             },
             "debug": {
                 "type": "boolean",
-                "description": "Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG`\nenvironment variable.\n"
+                "description": "Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG` environment variable."
             },
             "domain": {
                 "type": "string",
-                "description": "Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.\n"
+                "description": "Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable."
             },
             "dynamicCredentials": {
                 "type": "boolean"
@@ -10530,39 +10530,39 @@
         "inputProperties": {
             "apiToken": {
                 "type": "string",
-                "description": "Your Auth0 [management api access\ntoken](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from\nthe `AUTH0_API_TOKEN` environment variable. It can be used instead of `client_id` + `client_secret`. If both are\nspecified, `api_token` will be used over `client_id` + `client_secret` fields.\n"
+                "description": "Your Auth0 [management api access token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from the `AUTH0_API_TOKEN` environment variable. It can be used instead of `client_id` + `client_secret`. If both are specified, `api_token` will be used over `client_id` + `client_secret` fields."
             },
             "audience": {
                 "type": "string",
-                "description": "Your Auth0 audience when using a custom domain. It can also be sourced from the `AUTH0_AUDIENCE` environment variable.\n"
+                "description": "Your Auth0 audience when using a custom domain. It can also be sourced from the `AUTH0_AUDIENCE` environment variable."
             },
             "cliLogin": {
                 "type": "boolean",
-                "description": "While toggled on, the API token gets fetched from the keyring for the given domain\n"
+                "description": "While toggled on, the API token gets fetched from the keyring for the given domain"
             },
             "clientAssertionPrivateKey": {
                 "type": "string",
-                "description": "The private key used to sign the client assertion JWT. It can also be sourced from the\n`AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.\n"
+                "description": "The private key used to sign the client assertion JWT. It can also be sourced from the `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable."
             },
             "clientAssertionSigningAlg": {
                 "type": "string",
-                "description": "The algorithm used to sign the client assertion JWT. It can also be sourced from the\n`AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.\n"
+                "description": "The algorithm used to sign the client assertion JWT. It can also be sourced from the `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable."
             },
             "clientId": {
                 "type": "string",
-                "description": "Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.\n"
+                "description": "Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable."
             },
             "clientSecret": {
                 "type": "string",
-                "description": "Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable.\n"
+                "description": "Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable."
             },
             "customDomainHeader": {
                 "type": "string",
-                "description": "When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting\noverrides all resource specific `custom_domain_header` value\n"
+                "description": "When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting overrides all resource specific `custom_domain_header` value"
             },
             "debug": {
                 "type": "boolean",
-                "description": "Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG`\nenvironment variable.\n",
+                "description": "Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG` environment variable.",
                 "defaultInfo": {
                     "environment": [
                         "AUTH0_DEBUG"
@@ -10571,7 +10571,7 @@
             },
             "domain": {
                 "type": "string",
-                "description": "Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.\n"
+                "description": "Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable."
             },
             "dynamicCredentials": {
                 "type": "boolean"
@@ -16751,7 +16751,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "suspiciousIpThrottlings": {
@@ -16795,7 +16795,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "logoUrl": {
@@ -16849,7 +16849,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "pageBackgrounds": {
@@ -17014,7 +17014,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "initiateLoginUri": {
@@ -17247,7 +17247,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "isFirstParty": {
@@ -17301,7 +17301,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "isDomainConnection": {
@@ -17379,7 +17379,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "keys": {
@@ -17446,7 +17446,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "mappings": {
@@ -17524,7 +17524,7 @@
                         "type": "object"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "originDomainName": {
@@ -17848,7 +17848,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "members": {
@@ -17921,7 +17921,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "logins": {
@@ -18033,7 +18033,7 @@
                 "description": "A collection of values returned by getPromptScreenPartials.\n",
                 "properties": {
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "promptType": {
@@ -18102,7 +18102,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "promptType": {
@@ -18180,7 +18180,7 @@
                         "type": "boolean"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "identifier": {
@@ -18290,7 +18290,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "name": {
@@ -18404,7 +18404,7 @@
                 "description": "A collection of values returned by getSigningKeys.\n",
                 "properties": {
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "signingKeys": {
@@ -18502,7 +18502,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "idleSessionLifetime": {
@@ -18713,7 +18713,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "name": {

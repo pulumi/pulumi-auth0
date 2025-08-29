@@ -109,39 +109,39 @@ export class Guardian extends pulumi.CustomResource {
     /**
      * Configuration settings for the Duo MFA. If this block is present, Duo MFA will be enabled, and disabled otherwise.
      */
-    public readonly duo!: pulumi.Output<outputs.GuardianDuo>;
+    declare public readonly duo: pulumi.Output<outputs.GuardianDuo>;
     /**
      * Indicates whether email MFA is enabled.
      */
-    public readonly email!: pulumi.Output<boolean | undefined>;
+    declare public readonly email: pulumi.Output<boolean | undefined>;
     /**
      * Indicates whether one time password MFA is enabled.
      */
-    public readonly otp!: pulumi.Output<boolean | undefined>;
+    declare public readonly otp: pulumi.Output<boolean | undefined>;
     /**
      * Configuration settings for the phone MFA. If this block is present, Phone MFA will be enabled, and disabled otherwise.
      */
-    public readonly phone!: pulumi.Output<outputs.GuardianPhone>;
+    declare public readonly phone: pulumi.Output<outputs.GuardianPhone>;
     /**
      * Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
      */
-    public readonly policy!: pulumi.Output<string>;
+    declare public readonly policy: pulumi.Output<string>;
     /**
      * Configuration settings for the Push MFA. If this block is present, Push MFA will be enabled, and disabled otherwise.
      */
-    public readonly push!: pulumi.Output<outputs.GuardianPush>;
+    declare public readonly push: pulumi.Output<outputs.GuardianPush>;
     /**
      * Indicates whether recovery code MFA is enabled.
      */
-    public readonly recoveryCode!: pulumi.Output<boolean | undefined>;
+    declare public readonly recoveryCode: pulumi.Output<boolean | undefined>;
     /**
      * Configuration settings for the WebAuthn with FIDO Device Biometrics MFA. If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.
      */
-    public readonly webauthnPlatform!: pulumi.Output<outputs.GuardianWebauthnPlatform>;
+    declare public readonly webauthnPlatform: pulumi.Output<outputs.GuardianWebauthnPlatform>;
     /**
      * Configuration settings for the WebAuthn with FIDO Security Keys MFA. If this block is present, WebAuthn with FIDO Security Keys MFA will be enabled, and disabled otherwise.
      */
-    public readonly webauthnRoaming!: pulumi.Output<outputs.GuardianWebauthnRoaming>;
+    declare public readonly webauthnRoaming: pulumi.Output<outputs.GuardianWebauthnRoaming>;
 
     /**
      * Create a Guardian resource with the given unique name, arguments, and options.
@@ -156,29 +156,29 @@ export class Guardian extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GuardianState | undefined;
-            resourceInputs["duo"] = state ? state.duo : undefined;
-            resourceInputs["email"] = state ? state.email : undefined;
-            resourceInputs["otp"] = state ? state.otp : undefined;
-            resourceInputs["phone"] = state ? state.phone : undefined;
-            resourceInputs["policy"] = state ? state.policy : undefined;
-            resourceInputs["push"] = state ? state.push : undefined;
-            resourceInputs["recoveryCode"] = state ? state.recoveryCode : undefined;
-            resourceInputs["webauthnPlatform"] = state ? state.webauthnPlatform : undefined;
-            resourceInputs["webauthnRoaming"] = state ? state.webauthnRoaming : undefined;
+            resourceInputs["duo"] = state?.duo;
+            resourceInputs["email"] = state?.email;
+            resourceInputs["otp"] = state?.otp;
+            resourceInputs["phone"] = state?.phone;
+            resourceInputs["policy"] = state?.policy;
+            resourceInputs["push"] = state?.push;
+            resourceInputs["recoveryCode"] = state?.recoveryCode;
+            resourceInputs["webauthnPlatform"] = state?.webauthnPlatform;
+            resourceInputs["webauthnRoaming"] = state?.webauthnRoaming;
         } else {
             const args = argsOrState as GuardianArgs | undefined;
-            if ((!args || args.policy === undefined) && !opts.urn) {
+            if (args?.policy === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policy'");
             }
-            resourceInputs["duo"] = args ? args.duo : undefined;
-            resourceInputs["email"] = args ? args.email : undefined;
-            resourceInputs["otp"] = args ? args.otp : undefined;
-            resourceInputs["phone"] = args ? args.phone : undefined;
-            resourceInputs["policy"] = args ? args.policy : undefined;
-            resourceInputs["push"] = args ? args.push : undefined;
-            resourceInputs["recoveryCode"] = args ? args.recoveryCode : undefined;
-            resourceInputs["webauthnPlatform"] = args ? args.webauthnPlatform : undefined;
-            resourceInputs["webauthnRoaming"] = args ? args.webauthnRoaming : undefined;
+            resourceInputs["duo"] = args?.duo;
+            resourceInputs["email"] = args?.email;
+            resourceInputs["otp"] = args?.otp;
+            resourceInputs["phone"] = args?.phone;
+            resourceInputs["policy"] = args?.policy;
+            resourceInputs["push"] = args?.push;
+            resourceInputs["recoveryCode"] = args?.recoveryCode;
+            resourceInputs["webauthnPlatform"] = args?.webauthnPlatform;
+            resourceInputs["webauthnRoaming"] = args?.webauthnRoaming;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Guardian.__pulumiType, name, resourceInputs, opts);

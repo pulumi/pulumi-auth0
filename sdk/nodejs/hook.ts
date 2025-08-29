@@ -73,27 +73,27 @@ export class Hook extends pulumi.CustomResource {
     /**
      * Dependencies of this hook used by the WebTask server.
      */
-    public readonly dependencies!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly dependencies: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Whether the hook is enabled, or disabled.
      */
-    public readonly enabled!: pulumi.Output<boolean>;
+    declare public readonly enabled: pulumi.Output<boolean>;
     /**
      * Name of this hook.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Code to be executed when this hook runs.
      */
-    public readonly script!: pulumi.Output<string>;
+    declare public readonly script: pulumi.Output<string>;
     /**
      * The secrets associated with the hook.
      */
-    public readonly secrets!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly secrets: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message.
      */
-    public readonly triggerId!: pulumi.Output<string>;
+    declare public readonly triggerId: pulumi.Output<string>;
 
     /**
      * Create a Hook resource with the given unique name, arguments, and options.
@@ -108,26 +108,26 @@ export class Hook extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HookState | undefined;
-            resourceInputs["dependencies"] = state ? state.dependencies : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["script"] = state ? state.script : undefined;
-            resourceInputs["secrets"] = state ? state.secrets : undefined;
-            resourceInputs["triggerId"] = state ? state.triggerId : undefined;
+            resourceInputs["dependencies"] = state?.dependencies;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["script"] = state?.script;
+            resourceInputs["secrets"] = state?.secrets;
+            resourceInputs["triggerId"] = state?.triggerId;
         } else {
             const args = argsOrState as HookArgs | undefined;
-            if ((!args || args.script === undefined) && !opts.urn) {
+            if (args?.script === undefined && !opts.urn) {
                 throw new Error("Missing required property 'script'");
             }
-            if ((!args || args.triggerId === undefined) && !opts.urn) {
+            if (args?.triggerId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'triggerId'");
             }
-            resourceInputs["dependencies"] = args ? args.dependencies : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["script"] = args ? args.script : undefined;
+            resourceInputs["dependencies"] = args?.dependencies;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["script"] = args?.script;
             resourceInputs["secrets"] = args?.secrets ? pulumi.secret(args.secrets) : undefined;
-            resourceInputs["triggerId"] = args ? args.triggerId : undefined;
+            resourceInputs["triggerId"] = args?.triggerId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["secrets"] };

@@ -92,11 +92,11 @@ export class OrganizationConnections extends pulumi.CustomResource {
     /**
      * Connections that are enabled for the organization.
      */
-    public readonly enabledConnections!: pulumi.Output<outputs.OrganizationConnectionsEnabledConnection[]>;
+    declare public readonly enabledConnections: pulumi.Output<outputs.OrganizationConnectionsEnabledConnection[]>;
     /**
      * ID of the organization on which to enable the connections.
      */
-    public readonly organizationId!: pulumi.Output<string>;
+    declare public readonly organizationId: pulumi.Output<string>;
 
     /**
      * Create a OrganizationConnections resource with the given unique name, arguments, and options.
@@ -111,18 +111,18 @@ export class OrganizationConnections extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OrganizationConnectionsState | undefined;
-            resourceInputs["enabledConnections"] = state ? state.enabledConnections : undefined;
-            resourceInputs["organizationId"] = state ? state.organizationId : undefined;
+            resourceInputs["enabledConnections"] = state?.enabledConnections;
+            resourceInputs["organizationId"] = state?.organizationId;
         } else {
             const args = argsOrState as OrganizationConnectionsArgs | undefined;
-            if ((!args || args.enabledConnections === undefined) && !opts.urn) {
+            if (args?.enabledConnections === undefined && !opts.urn) {
                 throw new Error("Missing required property 'enabledConnections'");
             }
-            if ((!args || args.organizationId === undefined) && !opts.urn) {
+            if (args?.organizationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
-            resourceInputs["enabledConnections"] = args ? args.enabledConnections : undefined;
-            resourceInputs["organizationId"] = args ? args.organizationId : undefined;
+            resourceInputs["enabledConnections"] = args?.enabledConnections;
+            resourceInputs["organizationId"] = args?.organizationId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(OrganizationConnections.__pulumiType, name, resourceInputs, opts);

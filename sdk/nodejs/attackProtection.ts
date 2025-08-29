@@ -108,15 +108,15 @@ export class AttackProtection extends pulumi.CustomResource {
     /**
      * Breached password detection protects your applications from bad actors logging in with stolen credentials.
      */
-    public readonly breachedPasswordDetection!: pulumi.Output<outputs.AttackProtectionBreachedPasswordDetection>;
+    declare public readonly breachedPasswordDetection: pulumi.Output<outputs.AttackProtectionBreachedPasswordDetection>;
     /**
      * Brute-force protection safeguards against a single IP address attacking a single user account.
      */
-    public readonly bruteForceProtection!: pulumi.Output<outputs.AttackProtectionBruteForceProtection>;
+    declare public readonly bruteForceProtection: pulumi.Output<outputs.AttackProtectionBruteForceProtection>;
     /**
      * Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.
      */
-    public readonly suspiciousIpThrottling!: pulumi.Output<outputs.AttackProtectionSuspiciousIpThrottling>;
+    declare public readonly suspiciousIpThrottling: pulumi.Output<outputs.AttackProtectionSuspiciousIpThrottling>;
 
     /**
      * Create a AttackProtection resource with the given unique name, arguments, and options.
@@ -131,14 +131,14 @@ export class AttackProtection extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AttackProtectionState | undefined;
-            resourceInputs["breachedPasswordDetection"] = state ? state.breachedPasswordDetection : undefined;
-            resourceInputs["bruteForceProtection"] = state ? state.bruteForceProtection : undefined;
-            resourceInputs["suspiciousIpThrottling"] = state ? state.suspiciousIpThrottling : undefined;
+            resourceInputs["breachedPasswordDetection"] = state?.breachedPasswordDetection;
+            resourceInputs["bruteForceProtection"] = state?.bruteForceProtection;
+            resourceInputs["suspiciousIpThrottling"] = state?.suspiciousIpThrottling;
         } else {
             const args = argsOrState as AttackProtectionArgs | undefined;
-            resourceInputs["breachedPasswordDetection"] = args ? args.breachedPasswordDetection : undefined;
-            resourceInputs["bruteForceProtection"] = args ? args.bruteForceProtection : undefined;
-            resourceInputs["suspiciousIpThrottling"] = args ? args.suspiciousIpThrottling : undefined;
+            resourceInputs["breachedPasswordDetection"] = args?.breachedPasswordDetection;
+            resourceInputs["bruteForceProtection"] = args?.bruteForceProtection;
+            resourceInputs["suspiciousIpThrottling"] = args?.suspiciousIpThrottling;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AttackProtection.__pulumiType, name, resourceInputs, opts);

@@ -23,20 +23,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="pulumi:providers:auth0")
 public class Provider extends com.pulumi.resources.ProviderResource {
     /**
-     * Your Auth0 [management api access
-     * token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from
-     * the `AUTH0_API_TOKEN` environment variable. It can be used instead of `client_id` + `client_secret`. If both are
-     * specified, `api_token` will be used over `client_id` + `client_secret` fields.
+     * Your Auth0 [management api access token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from the `AUTH0_API_TOKEN` environment variable. It can be used instead of `client_id` + `client_secret`. If both are specified, `api_token` will be used over `client_id` + `client_secret` fields.
      * 
      */
     @Export(name="apiToken", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> apiToken;
 
     /**
-     * @return Your Auth0 [management api access
-     * token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from
-     * the `AUTH0_API_TOKEN` environment variable. It can be used instead of `client_id` + `client_secret`. If both are
-     * specified, `api_token` will be used over `client_id` + `client_secret` fields.
+     * @return Your Auth0 [management api access token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from the `AUTH0_API_TOKEN` environment variable. It can be used instead of `client_id` + `client_secret`. If both are specified, `api_token` will be used over `client_id` + `client_secret` fields.
      * 
      */
     public Output<Optional<String>> apiToken() {
@@ -57,32 +51,28 @@ public class Provider extends com.pulumi.resources.ProviderResource {
         return Codegen.optional(this.audience);
     }
     /**
-     * The private key used to sign the client assertion JWT. It can also be sourced from the
-     * `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
+     * The private key used to sign the client assertion JWT. It can also be sourced from the `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
      * 
      */
     @Export(name="clientAssertionPrivateKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clientAssertionPrivateKey;
 
     /**
-     * @return The private key used to sign the client assertion JWT. It can also be sourced from the
-     * `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
+     * @return The private key used to sign the client assertion JWT. It can also be sourced from the `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
      * 
      */
     public Output<Optional<String>> clientAssertionPrivateKey() {
         return Codegen.optional(this.clientAssertionPrivateKey);
     }
     /**
-     * The algorithm used to sign the client assertion JWT. It can also be sourced from the
-     * `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
+     * The algorithm used to sign the client assertion JWT. It can also be sourced from the `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
      * 
      */
     @Export(name="clientAssertionSigningAlg", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clientAssertionSigningAlg;
 
     /**
-     * @return The algorithm used to sign the client assertion JWT. It can also be sourced from the
-     * `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
+     * @return The algorithm used to sign the client assertion JWT. It can also be sourced from the `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
      * 
      */
     public Output<Optional<String>> clientAssertionSigningAlg() {
@@ -117,16 +107,14 @@ public class Provider extends com.pulumi.resources.ProviderResource {
         return Codegen.optional(this.clientSecret);
     }
     /**
-     * When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting
-     * overrides all resource specific `custom_domain_header` value
+     * When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting overrides all resource specific `custom_domain_header` value
      * 
      */
     @Export(name="customDomainHeader", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> customDomainHeader;
 
     /**
-     * @return When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting
-     * overrides all resource specific `custom_domain_header` value
+     * @return When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting overrides all resource specific `custom_domain_header` value
      * 
      */
     public Output<Optional<String>> customDomainHeader() {

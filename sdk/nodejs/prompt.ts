@@ -65,15 +65,15 @@ export class Prompt extends pulumi.CustomResource {
     /**
      * Indicates whether the identifier first is used when using the new Universal Login experience.
      */
-    public readonly identifierFirst!: pulumi.Output<boolean>;
+    declare public readonly identifierFirst: pulumi.Output<boolean>;
     /**
      * Which login experience to use. Options include `classic` and `new`.
      */
-    public readonly universalLoginExperience!: pulumi.Output<string>;
+    declare public readonly universalLoginExperience: pulumi.Output<string>;
     /**
      * Determines if the login screen uses identifier and biometrics first. Setting this property to `true`, requires MFA factors enabled for enrollment; use the `auth0.Guardian` resource to set one up.
      */
-    public readonly webauthnPlatformFirstFactor!: pulumi.Output<boolean>;
+    declare public readonly webauthnPlatformFirstFactor: pulumi.Output<boolean>;
 
     /**
      * Create a Prompt resource with the given unique name, arguments, and options.
@@ -88,14 +88,14 @@ export class Prompt extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PromptState | undefined;
-            resourceInputs["identifierFirst"] = state ? state.identifierFirst : undefined;
-            resourceInputs["universalLoginExperience"] = state ? state.universalLoginExperience : undefined;
-            resourceInputs["webauthnPlatformFirstFactor"] = state ? state.webauthnPlatformFirstFactor : undefined;
+            resourceInputs["identifierFirst"] = state?.identifierFirst;
+            resourceInputs["universalLoginExperience"] = state?.universalLoginExperience;
+            resourceInputs["webauthnPlatformFirstFactor"] = state?.webauthnPlatformFirstFactor;
         } else {
             const args = argsOrState as PromptArgs | undefined;
-            resourceInputs["identifierFirst"] = args ? args.identifierFirst : undefined;
-            resourceInputs["universalLoginExperience"] = args ? args.universalLoginExperience : undefined;
-            resourceInputs["webauthnPlatformFirstFactor"] = args ? args.webauthnPlatformFirstFactor : undefined;
+            resourceInputs["identifierFirst"] = args?.identifierFirst;
+            resourceInputs["universalLoginExperience"] = args?.universalLoginExperience;
+            resourceInputs["webauthnPlatformFirstFactor"] = args?.webauthnPlatformFirstFactor;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Prompt.__pulumiType, name, resourceInputs, opts);

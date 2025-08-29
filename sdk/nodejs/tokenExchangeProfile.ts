@@ -76,27 +76,27 @@ export class TokenExchangeProfile extends pulumi.CustomResource {
     /**
      * Unique identifier of the Action
      */
-    public readonly actionId!: pulumi.Output<string | undefined>;
+    declare public readonly actionId: pulumi.Output<string | undefined>;
     /**
      * The ISO 8601 formatted date the credential was created.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * Name of the token exchange profile.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Type of the subject token
      */
-    public readonly subjectTokenType!: pulumi.Output<string | undefined>;
+    declare public readonly subjectTokenType: pulumi.Output<string | undefined>;
     /**
      * Type of the token exchange profile
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * The ISO 8601 formatted date the credential was updated.
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
 
     /**
      * Create a TokenExchangeProfile resource with the given unique name, arguments, and options.
@@ -111,18 +111,18 @@ export class TokenExchangeProfile extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TokenExchangeProfileState | undefined;
-            resourceInputs["actionId"] = state ? state.actionId : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["subjectTokenType"] = state ? state.subjectTokenType : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["actionId"] = state?.actionId;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["subjectTokenType"] = state?.subjectTokenType;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["updatedAt"] = state?.updatedAt;
         } else {
             const args = argsOrState as TokenExchangeProfileArgs | undefined;
-            resourceInputs["actionId"] = args ? args.actionId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["subjectTokenType"] = args ? args.subjectTokenType : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["actionId"] = args?.actionId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["subjectTokenType"] = args?.subjectTokenType;
+            resourceInputs["type"] = args?.type;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
         }

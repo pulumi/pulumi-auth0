@@ -8,10 +8,7 @@ declare var exports: any;
 const __config = new pulumi.Config("auth0");
 
 /**
- * Your Auth0 [management api access
- * token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from
- * the `AUTH0_API_TOKEN` environment variable. It can be used instead of `clientId` + `clientSecret`. If both are
- * specified, `apiToken` will be used over `clientId` + `clientSecret` fields.
+ * Your Auth0 [management api access token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from the `AUTH0_API_TOKEN` environment variable. It can be used instead of `clientId` + `clientSecret`. If both are specified, `apiToken` will be used over `clientId` + `clientSecret` fields.
  */
 export declare const apiToken: string | undefined;
 Object.defineProperty(exports, "apiToken", {
@@ -44,8 +41,7 @@ Object.defineProperty(exports, "cliLogin", {
 });
 
 /**
- * The private key used to sign the client assertion JWT. It can also be sourced from the
- * `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
+ * The private key used to sign the client assertion JWT. It can also be sourced from the `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
  */
 export declare const clientAssertionPrivateKey: string | undefined;
 Object.defineProperty(exports, "clientAssertionPrivateKey", {
@@ -56,8 +52,7 @@ Object.defineProperty(exports, "clientAssertionPrivateKey", {
 });
 
 /**
- * The algorithm used to sign the client assertion JWT. It can also be sourced from the
- * `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
+ * The algorithm used to sign the client assertion JWT. It can also be sourced from the `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
  */
 export declare const clientAssertionSigningAlg: string | undefined;
 Object.defineProperty(exports, "clientAssertionSigningAlg", {
@@ -90,8 +85,7 @@ Object.defineProperty(exports, "clientSecret", {
 });
 
 /**
- * When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting
- * overrides all resource specific `customDomainHeader` value
+ * When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting overrides all resource specific `customDomainHeader` value
  */
 export declare const customDomainHeader: string | undefined;
 Object.defineProperty(exports, "customDomainHeader", {
@@ -102,8 +96,7 @@ Object.defineProperty(exports, "customDomainHeader", {
 });
 
 /**
- * Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG`
- * environment variable.
+ * Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG` environment variable.
  */
 export declare const debug: boolean | undefined;
 Object.defineProperty(exports, "debug", {

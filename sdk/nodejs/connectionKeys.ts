@@ -77,56 +77,56 @@ export class ConnectionKeys extends pulumi.CustomResource {
     /**
      * The signing key algorithm.
      */
-    public /*out*/ readonly algorithm!: pulumi.Output<string>;
+    declare public /*out*/ readonly algorithm: pulumi.Output<string>;
     /**
      * The public certificate of the signing key.
      */
-    public /*out*/ readonly cert!: pulumi.Output<string>;
-    public readonly connectionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly cert: pulumi.Output<string>;
+    declare public readonly connectionId: pulumi.Output<string>;
     /**
      * True if the key is the current key.
      */
-    public /*out*/ readonly current!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly current: pulumi.Output<boolean>;
     /**
      * The date and time when the key became the current key.
      */
-    public /*out*/ readonly currentSince!: pulumi.Output<string>;
+    declare public /*out*/ readonly currentSince: pulumi.Output<string>;
     /**
      * The certificate fingerprint.
      */
-    public /*out*/ readonly fingerprint!: pulumi.Output<string>;
+    declare public /*out*/ readonly fingerprint: pulumi.Output<string>;
     /**
      * The signing key use, whether for encryption or signing.
      */
-    public /*out*/ readonly keyUse!: pulumi.Output<string>;
+    declare public /*out*/ readonly keyUse: pulumi.Output<string>;
     /**
      * The key ID of the signing key.
      */
-    public /*out*/ readonly kid!: pulumi.Output<string>;
+    declare public /*out*/ readonly kid: pulumi.Output<string>;
     /**
      * True if the key is the next key.
      */
-    public /*out*/ readonly next!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly next: pulumi.Output<boolean>;
     /**
      * The public certificate of the signing key in PKCS7 format.
      */
-    public /*out*/ readonly pkcs!: pulumi.Output<string>;
+    declare public /*out*/ readonly pkcs: pulumi.Output<string>;
     /**
      * True if the key is the previous key.
      */
-    public /*out*/ readonly previous!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly previous: pulumi.Output<boolean>;
     /**
      * The subject distinguished name (DN) of the certificate.
      */
-    public /*out*/ readonly subjectDn!: pulumi.Output<string>;
+    declare public /*out*/ readonly subjectDn: pulumi.Output<string>;
     /**
      * The certificate thumbprint.
      */
-    public /*out*/ readonly thumbprint!: pulumi.Output<string>;
+    declare public /*out*/ readonly thumbprint: pulumi.Output<string>;
     /**
      * This is an arbitrary map, which when edited shall perform rotation of keys for the corresponding connection. It can host keys like version, timestamp of last rotation etc.The field has no association with API
      */
-    public readonly triggers!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly triggers: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a ConnectionKeys resource with the given unique name, arguments, and options.
@@ -141,30 +141,30 @@ export class ConnectionKeys extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConnectionKeysState | undefined;
-            resourceInputs["algorithm"] = state ? state.algorithm : undefined;
-            resourceInputs["cert"] = state ? state.cert : undefined;
-            resourceInputs["connectionId"] = state ? state.connectionId : undefined;
-            resourceInputs["current"] = state ? state.current : undefined;
-            resourceInputs["currentSince"] = state ? state.currentSince : undefined;
-            resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
-            resourceInputs["keyUse"] = state ? state.keyUse : undefined;
-            resourceInputs["kid"] = state ? state.kid : undefined;
-            resourceInputs["next"] = state ? state.next : undefined;
-            resourceInputs["pkcs"] = state ? state.pkcs : undefined;
-            resourceInputs["previous"] = state ? state.previous : undefined;
-            resourceInputs["subjectDn"] = state ? state.subjectDn : undefined;
-            resourceInputs["thumbprint"] = state ? state.thumbprint : undefined;
-            resourceInputs["triggers"] = state ? state.triggers : undefined;
+            resourceInputs["algorithm"] = state?.algorithm;
+            resourceInputs["cert"] = state?.cert;
+            resourceInputs["connectionId"] = state?.connectionId;
+            resourceInputs["current"] = state?.current;
+            resourceInputs["currentSince"] = state?.currentSince;
+            resourceInputs["fingerprint"] = state?.fingerprint;
+            resourceInputs["keyUse"] = state?.keyUse;
+            resourceInputs["kid"] = state?.kid;
+            resourceInputs["next"] = state?.next;
+            resourceInputs["pkcs"] = state?.pkcs;
+            resourceInputs["previous"] = state?.previous;
+            resourceInputs["subjectDn"] = state?.subjectDn;
+            resourceInputs["thumbprint"] = state?.thumbprint;
+            resourceInputs["triggers"] = state?.triggers;
         } else {
             const args = argsOrState as ConnectionKeysArgs | undefined;
-            if ((!args || args.connectionId === undefined) && !opts.urn) {
+            if (args?.connectionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'connectionId'");
             }
-            if ((!args || args.triggers === undefined) && !opts.urn) {
+            if (args?.triggers === undefined && !opts.urn) {
                 throw new Error("Missing required property 'triggers'");
             }
-            resourceInputs["connectionId"] = args ? args.connectionId : undefined;
-            resourceInputs["triggers"] = args ? args.triggers : undefined;
+            resourceInputs["connectionId"] = args?.connectionId;
+            resourceInputs["triggers"] = args?.triggers;
             resourceInputs["algorithm"] = undefined /*out*/;
             resourceInputs["cert"] = undefined /*out*/;
             resourceInputs["current"] = undefined /*out*/;

@@ -83,15 +83,15 @@ export class OrganizationMemberRoles extends pulumi.CustomResource {
     /**
      * The ID of the organization.
      */
-    public readonly organizationId!: pulumi.Output<string>;
+    declare public readonly organizationId: pulumi.Output<string>;
     /**
      * The role ID(s) to assign to the organization member.
      */
-    public readonly roles!: pulumi.Output<string[]>;
+    declare public readonly roles: pulumi.Output<string[]>;
     /**
      * The user ID of the organization member.
      */
-    public readonly userId!: pulumi.Output<string>;
+    declare public readonly userId: pulumi.Output<string>;
 
     /**
      * Create a OrganizationMemberRoles resource with the given unique name, arguments, and options.
@@ -106,23 +106,23 @@ export class OrganizationMemberRoles extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OrganizationMemberRolesState | undefined;
-            resourceInputs["organizationId"] = state ? state.organizationId : undefined;
-            resourceInputs["roles"] = state ? state.roles : undefined;
-            resourceInputs["userId"] = state ? state.userId : undefined;
+            resourceInputs["organizationId"] = state?.organizationId;
+            resourceInputs["roles"] = state?.roles;
+            resourceInputs["userId"] = state?.userId;
         } else {
             const args = argsOrState as OrganizationMemberRolesArgs | undefined;
-            if ((!args || args.organizationId === undefined) && !opts.urn) {
+            if (args?.organizationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
-            if ((!args || args.roles === undefined) && !opts.urn) {
+            if (args?.roles === undefined && !opts.urn) {
                 throw new Error("Missing required property 'roles'");
             }
-            if ((!args || args.userId === undefined) && !opts.urn) {
+            if (args?.userId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userId'");
             }
-            resourceInputs["organizationId"] = args ? args.organizationId : undefined;
-            resourceInputs["roles"] = args ? args.roles : undefined;
-            resourceInputs["userId"] = args ? args.userId : undefined;
+            resourceInputs["organizationId"] = args?.organizationId;
+            resourceInputs["roles"] = args?.roles;
+            resourceInputs["userId"] = args?.userId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(OrganizationMemberRoles.__pulumiType, name, resourceInputs, opts);

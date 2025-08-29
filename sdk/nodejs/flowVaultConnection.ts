@@ -67,31 +67,31 @@ export class FlowVaultConnection extends pulumi.CustomResource {
     /**
      * Custom account name of the vault connection.
      */
-    public readonly accountName!: pulumi.Output<string | undefined>;
+    declare public readonly accountName: pulumi.Output<string | undefined>;
     /**
      * App identifier of the vault connection.
      */
-    public readonly appId!: pulumi.Output<string>;
+    declare public readonly appId: pulumi.Output<string>;
     /**
      * Environment of the vault connection.
      */
-    public readonly environment!: pulumi.Output<string | undefined>;
+    declare public readonly environment: pulumi.Output<string | undefined>;
     /**
      * Fingerprint of the vault connection.
      */
-    public readonly fingerprint!: pulumi.Output<string>;
+    declare public readonly fingerprint: pulumi.Output<string>;
     /**
      * Name of the vault connection.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Indicates if the vault connection is configured.
      */
-    public /*out*/ readonly ready!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly ready: pulumi.Output<boolean>;
     /**
      * Configuration of the vault connection. (Mapping information must be provided as key/value pairs)
      */
-    public readonly setup!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly setup: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a FlowVaultConnection resource with the given unique name, arguments, and options.
@@ -106,23 +106,23 @@ export class FlowVaultConnection extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FlowVaultConnectionState | undefined;
-            resourceInputs["accountName"] = state ? state.accountName : undefined;
-            resourceInputs["appId"] = state ? state.appId : undefined;
-            resourceInputs["environment"] = state ? state.environment : undefined;
-            resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["ready"] = state ? state.ready : undefined;
-            resourceInputs["setup"] = state ? state.setup : undefined;
+            resourceInputs["accountName"] = state?.accountName;
+            resourceInputs["appId"] = state?.appId;
+            resourceInputs["environment"] = state?.environment;
+            resourceInputs["fingerprint"] = state?.fingerprint;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["ready"] = state?.ready;
+            resourceInputs["setup"] = state?.setup;
         } else {
             const args = argsOrState as FlowVaultConnectionArgs | undefined;
-            if ((!args || args.appId === undefined) && !opts.urn) {
+            if (args?.appId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'appId'");
             }
-            resourceInputs["accountName"] = args ? args.accountName : undefined;
-            resourceInputs["appId"] = args ? args.appId : undefined;
-            resourceInputs["environment"] = args ? args.environment : undefined;
-            resourceInputs["fingerprint"] = args ? args.fingerprint : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["accountName"] = args?.accountName;
+            resourceInputs["appId"] = args?.appId;
+            resourceInputs["environment"] = args?.environment;
+            resourceInputs["fingerprint"] = args?.fingerprint;
+            resourceInputs["name"] = args?.name;
             resourceInputs["setup"] = args?.setup ? pulumi.secret(args.setup) : undefined;
             resourceInputs["ready"] = undefined /*out*/;
         }

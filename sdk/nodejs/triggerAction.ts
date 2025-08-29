@@ -82,15 +82,15 @@ export class TriggerAction extends pulumi.CustomResource {
     /**
      * The ID of the action to bind to the trigger.
      */
-    public readonly actionId!: pulumi.Output<string>;
+    declare public readonly actionId: pulumi.Output<string>;
     /**
      * The name for this action within the trigger. This can be useful for distinguishing between multiple instances of the same action bound to a trigger. Defaults to action name when not provided.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-email-provider`, `custom-phone-provider`.
      */
-    public readonly trigger!: pulumi.Output<string>;
+    declare public readonly trigger: pulumi.Output<string>;
 
     /**
      * Create a TriggerAction resource with the given unique name, arguments, and options.
@@ -105,20 +105,20 @@ export class TriggerAction extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TriggerActionState | undefined;
-            resourceInputs["actionId"] = state ? state.actionId : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["trigger"] = state ? state.trigger : undefined;
+            resourceInputs["actionId"] = state?.actionId;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["trigger"] = state?.trigger;
         } else {
             const args = argsOrState as TriggerActionArgs | undefined;
-            if ((!args || args.actionId === undefined) && !opts.urn) {
+            if (args?.actionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'actionId'");
             }
-            if ((!args || args.trigger === undefined) && !opts.urn) {
+            if (args?.trigger === undefined && !opts.urn) {
                 throw new Error("Missing required property 'trigger'");
             }
-            resourceInputs["actionId"] = args ? args.actionId : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["trigger"] = args ? args.trigger : undefined;
+            resourceInputs["actionId"] = args?.actionId;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["trigger"] = args?.trigger;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(TriggerAction.__pulumiType, name, resourceInputs, opts);

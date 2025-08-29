@@ -92,11 +92,11 @@ export class RolePermissions extends pulumi.CustomResource {
     /**
      * List of API permissions granted to the role.
      */
-    public readonly permissions!: pulumi.Output<outputs.RolePermissionsPermission[]>;
+    declare public readonly permissions: pulumi.Output<outputs.RolePermissionsPermission[]>;
     /**
      * ID of the role to associate the permission to.
      */
-    public readonly roleId!: pulumi.Output<string>;
+    declare public readonly roleId: pulumi.Output<string>;
 
     /**
      * Create a RolePermissions resource with the given unique name, arguments, and options.
@@ -111,18 +111,18 @@ export class RolePermissions extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RolePermissionsState | undefined;
-            resourceInputs["permissions"] = state ? state.permissions : undefined;
-            resourceInputs["roleId"] = state ? state.roleId : undefined;
+            resourceInputs["permissions"] = state?.permissions;
+            resourceInputs["roleId"] = state?.roleId;
         } else {
             const args = argsOrState as RolePermissionsArgs | undefined;
-            if ((!args || args.permissions === undefined) && !opts.urn) {
+            if (args?.permissions === undefined && !opts.urn) {
                 throw new Error("Missing required property 'permissions'");
             }
-            if ((!args || args.roleId === undefined) && !opts.urn) {
+            if (args?.roleId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'roleId'");
             }
-            resourceInputs["permissions"] = args ? args.permissions : undefined;
-            resourceInputs["roleId"] = args ? args.roleId : undefined;
+            resourceInputs["permissions"] = args?.permissions;
+            resourceInputs["roleId"] = args?.roleId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(RolePermissions.__pulumiType, name, resourceInputs, opts);

@@ -77,11 +77,11 @@ export class Flow extends pulumi.CustomResource {
     /**
      * Actions of the flow.
      */
-    public readonly actions!: pulumi.Output<string | undefined>;
+    declare public readonly actions: pulumi.Output<string | undefined>;
     /**
      * Name of the flow.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
 
     /**
      * Create a Flow resource with the given unique name, arguments, and options.
@@ -96,12 +96,12 @@ export class Flow extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FlowState | undefined;
-            resourceInputs["actions"] = state ? state.actions : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["actions"] = state?.actions;
+            resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as FlowArgs | undefined;
-            resourceInputs["actions"] = args ? args.actions : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["actions"] = args?.actions;
+            resourceInputs["name"] = args?.name;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Flow.__pulumiType, name, resourceInputs, opts);
