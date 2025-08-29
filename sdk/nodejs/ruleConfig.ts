@@ -68,11 +68,11 @@ export class RuleConfig extends pulumi.CustomResource {
     /**
      * Key for a rules configuration variable.
      */
-    public readonly key!: pulumi.Output<string>;
+    declare public readonly key: pulumi.Output<string>;
     /**
      * Value for a rules configuration variable.
      */
-    public readonly value!: pulumi.Output<string>;
+    declare public readonly value: pulumi.Output<string>;
 
     /**
      * Create a RuleConfig resource with the given unique name, arguments, and options.
@@ -87,17 +87,17 @@ export class RuleConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RuleConfigState | undefined;
-            resourceInputs["key"] = state ? state.key : undefined;
-            resourceInputs["value"] = state ? state.value : undefined;
+            resourceInputs["key"] = state?.key;
+            resourceInputs["value"] = state?.value;
         } else {
             const args = argsOrState as RuleConfigArgs | undefined;
-            if ((!args || args.key === undefined) && !opts.urn) {
+            if (args?.key === undefined && !opts.urn) {
                 throw new Error("Missing required property 'key'");
             }
-            if ((!args || args.value === undefined) && !opts.urn) {
+            if (args?.value === undefined && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
-            resourceInputs["key"] = args ? args.key : undefined;
+            resourceInputs["key"] = args?.key;
             resourceInputs["value"] = args?.value ? pulumi.secret(args.value) : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

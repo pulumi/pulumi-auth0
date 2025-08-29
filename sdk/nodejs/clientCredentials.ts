@@ -57,28 +57,28 @@ export class ClientCredentials extends pulumi.CustomResource {
     /**
      * Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `clientSecretPost` (confidential client using HTTP POST parameters), `clientSecretBasic` (confidential client using HTTP Basic), `privateKeyJwt` (confidential client using a Private Key JWT), `tlsClientAuth` (confidential client using CA-based mTLS authentication), `selfSignedTlsClientAuth` (confidential client using mTLS authentication utilizing a self-signed certificate).
      */
-    public readonly authenticationMethod!: pulumi.Output<string>;
+    declare public readonly authenticationMethod: pulumi.Output<string>;
     /**
      * The ID of the client for which to configure the authentication method.
      */
-    public readonly clientId!: pulumi.Output<string>;
-    public readonly clientSecret!: pulumi.Output<string>;
+    declare public readonly clientId: pulumi.Output<string>;
+    declare public readonly clientSecret: pulumi.Output<string>;
     /**
      * Defines `privateKeyJwt` client authentication method.
      */
-    public readonly privateKeyJwt!: pulumi.Output<outputs.ClientCredentialsPrivateKeyJwt | undefined>;
+    declare public readonly privateKeyJwt: pulumi.Output<outputs.ClientCredentialsPrivateKeyJwt | undefined>;
     /**
      * Defines `tlsClientAuth` client authentication method.
      */
-    public readonly selfSignedTlsClientAuth!: pulumi.Output<outputs.ClientCredentialsSelfSignedTlsClientAuth | undefined>;
+    declare public readonly selfSignedTlsClientAuth: pulumi.Output<outputs.ClientCredentialsSelfSignedTlsClientAuth | undefined>;
     /**
      * Configuration for JWT-secured Authorization Requests(JAR).
      */
-    public readonly signedRequestObject!: pulumi.Output<outputs.ClientCredentialsSignedRequestObject | undefined>;
+    declare public readonly signedRequestObject: pulumi.Output<outputs.ClientCredentialsSignedRequestObject | undefined>;
     /**
      * Defines `tlsClientAuth` client authentication method.
      */
-    public readonly tlsClientAuth!: pulumi.Output<outputs.ClientCredentialsTlsClientAuth | undefined>;
+    declare public readonly tlsClientAuth: pulumi.Output<outputs.ClientCredentialsTlsClientAuth | undefined>;
 
     /**
      * Create a ClientCredentials resource with the given unique name, arguments, and options.
@@ -93,25 +93,25 @@ export class ClientCredentials extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClientCredentialsState | undefined;
-            resourceInputs["authenticationMethod"] = state ? state.authenticationMethod : undefined;
-            resourceInputs["clientId"] = state ? state.clientId : undefined;
-            resourceInputs["clientSecret"] = state ? state.clientSecret : undefined;
-            resourceInputs["privateKeyJwt"] = state ? state.privateKeyJwt : undefined;
-            resourceInputs["selfSignedTlsClientAuth"] = state ? state.selfSignedTlsClientAuth : undefined;
-            resourceInputs["signedRequestObject"] = state ? state.signedRequestObject : undefined;
-            resourceInputs["tlsClientAuth"] = state ? state.tlsClientAuth : undefined;
+            resourceInputs["authenticationMethod"] = state?.authenticationMethod;
+            resourceInputs["clientId"] = state?.clientId;
+            resourceInputs["clientSecret"] = state?.clientSecret;
+            resourceInputs["privateKeyJwt"] = state?.privateKeyJwt;
+            resourceInputs["selfSignedTlsClientAuth"] = state?.selfSignedTlsClientAuth;
+            resourceInputs["signedRequestObject"] = state?.signedRequestObject;
+            resourceInputs["tlsClientAuth"] = state?.tlsClientAuth;
         } else {
             const args = argsOrState as ClientCredentialsArgs | undefined;
-            if ((!args || args.clientId === undefined) && !opts.urn) {
+            if (args?.clientId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clientId'");
             }
-            resourceInputs["authenticationMethod"] = args ? args.authenticationMethod : undefined;
-            resourceInputs["clientId"] = args ? args.clientId : undefined;
+            resourceInputs["authenticationMethod"] = args?.authenticationMethod;
+            resourceInputs["clientId"] = args?.clientId;
             resourceInputs["clientSecret"] = args?.clientSecret ? pulumi.secret(args.clientSecret) : undefined;
-            resourceInputs["privateKeyJwt"] = args ? args.privateKeyJwt : undefined;
-            resourceInputs["selfSignedTlsClientAuth"] = args ? args.selfSignedTlsClientAuth : undefined;
-            resourceInputs["signedRequestObject"] = args ? args.signedRequestObject : undefined;
-            resourceInputs["tlsClientAuth"] = args ? args.tlsClientAuth : undefined;
+            resourceInputs["privateKeyJwt"] = args?.privateKeyJwt;
+            resourceInputs["selfSignedTlsClientAuth"] = args?.selfSignedTlsClientAuth;
+            resourceInputs["signedRequestObject"] = args?.signedRequestObject;
+            resourceInputs["tlsClientAuth"] = args?.tlsClientAuth;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["clientSecret"] };

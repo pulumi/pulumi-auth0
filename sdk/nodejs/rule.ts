@@ -66,19 +66,19 @@ export class Rule extends pulumi.CustomResource {
     /**
      * Indicates whether the rule is enabled.
      */
-    public readonly enabled!: pulumi.Output<boolean>;
+    declare public readonly enabled: pulumi.Output<boolean>;
     /**
      * Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Order in which the rule executes relative to other rules. Lower-valued rules execute first.
      */
-    public readonly order!: pulumi.Output<number>;
+    declare public readonly order: pulumi.Output<number>;
     /**
      * Code to be executed when the rule runs.
      */
-    public readonly script!: pulumi.Output<string>;
+    declare public readonly script: pulumi.Output<string>;
 
     /**
      * Create a Rule resource with the given unique name, arguments, and options.
@@ -93,19 +93,19 @@ export class Rule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RuleState | undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["order"] = state ? state.order : undefined;
-            resourceInputs["script"] = state ? state.script : undefined;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["order"] = state?.order;
+            resourceInputs["script"] = state?.script;
         } else {
             const args = argsOrState as RuleArgs | undefined;
-            if ((!args || args.script === undefined) && !opts.urn) {
+            if (args?.script === undefined && !opts.urn) {
                 throw new Error("Missing required property 'script'");
             }
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["order"] = args ? args.order : undefined;
-            resourceInputs["script"] = args ? args.script : undefined;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["order"] = args?.order;
+            resourceInputs["script"] = args?.script;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Rule.__pulumiType, name, resourceInputs, opts);

@@ -95,99 +95,99 @@ export class Tenant extends pulumi.CustomResource {
     /**
      * List of supported ACR values.
      */
-    public readonly acrValuesSupporteds!: pulumi.Output<string[]>;
+    declare public readonly acrValuesSupporteds: pulumi.Output<string[]>;
     /**
      * Whether to accept an organization name instead of an ID on auth endpoints.
      */
-    public readonly allowOrganizationNameInAuthenticationApi!: pulumi.Output<boolean>;
+    declare public readonly allowOrganizationNameInAuthenticationApi: pulumi.Output<boolean>;
     /**
      * URLs that Auth0 may redirect to after logout.
      */
-    public readonly allowedLogoutUrls!: pulumi.Output<string[]>;
+    declare public readonly allowedLogoutUrls: pulumi.Output<string[]>;
     /**
      * Whether to enable flexible factors for MFA in the PostLogin action.
      */
-    public readonly customizeMfaInPostloginAction!: pulumi.Output<boolean>;
+    declare public readonly customizeMfaInPostloginAction: pulumi.Output<boolean>;
     /**
      * API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
      */
-    public readonly defaultAudience!: pulumi.Output<string>;
+    declare public readonly defaultAudience: pulumi.Output<string>;
     /**
      * Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
      */
-    public readonly defaultDirectory!: pulumi.Output<string>;
+    declare public readonly defaultDirectory: pulumi.Output<string>;
     /**
      * The default absolute redirection URI. Must be HTTPS or an empty string.
      */
-    public readonly defaultRedirectionUri!: pulumi.Output<string>;
+    declare public readonly defaultRedirectionUri: pulumi.Output<string>;
     /**
      * Token Quota configuration.
      */
-    public readonly defaultTokenQuota!: pulumi.Output<outputs.TenantDefaultTokenQuota | undefined>;
+    declare public readonly defaultTokenQuota: pulumi.Output<outputs.TenantDefaultTokenQuota | undefined>;
     /**
      * Disable list of supported ACR values.
      */
-    public readonly disableAcrValuesSupported!: pulumi.Output<boolean>;
+    declare public readonly disableAcrValuesSupported: pulumi.Output<boolean>;
     /**
      * Supported locales for the user interface. The first locale in the list will be used to set the default locale.
      */
-    public readonly enabledLocales!: pulumi.Output<string[]>;
+    declare public readonly enabledLocales: pulumi.Output<string[]>;
     /**
      * Configuration for the error page
      */
-    public readonly errorPage!: pulumi.Output<outputs.TenantErrorPage | undefined>;
+    declare public readonly errorPage: pulumi.Output<outputs.TenantErrorPage | undefined>;
     /**
      * Configuration settings for tenant flags.
      */
-    public readonly flags!: pulumi.Output<outputs.TenantFlags>;
+    declare public readonly flags: pulumi.Output<outputs.TenantFlags>;
     /**
      * Friendly name for the tenant.
      */
-    public readonly friendlyName!: pulumi.Output<string>;
+    declare public readonly friendlyName: pulumi.Output<string>;
     /**
      * Number of hours during which a session can be inactive before the user must log in again.
      */
-    public readonly idleSessionLifetime!: pulumi.Output<number | undefined>;
+    declare public readonly idleSessionLifetime: pulumi.Output<number | undefined>;
     /**
      * Configuration for mTLS.
      */
-    public readonly mtls!: pulumi.Output<outputs.TenantMtls>;
+    declare public readonly mtls: pulumi.Output<outputs.TenantMtls>;
     /**
      * Settings related to OIDC RP-initiated Logout.
      */
-    public readonly oidcLogout!: pulumi.Output<outputs.TenantOidcLogout>;
+    declare public readonly oidcLogout: pulumi.Output<outputs.TenantOidcLogout>;
     /**
      * URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
      */
-    public readonly pictureUrl!: pulumi.Output<string>;
+    declare public readonly pictureUrl: pulumi.Output<string>;
     /**
      * Enable pushed authorization requests.
      */
-    public readonly pushedAuthorizationRequestsSupported!: pulumi.Output<boolean>;
+    declare public readonly pushedAuthorizationRequestsSupported: pulumi.Output<boolean>;
     /**
      * Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
      */
-    public readonly sandboxVersion!: pulumi.Output<string>;
+    declare public readonly sandboxVersion: pulumi.Output<string>;
     /**
      * Alters behavior of tenant's session cookie. Contains a single `mode` property.
      */
-    public readonly sessionCookie!: pulumi.Output<outputs.TenantSessionCookie>;
+    declare public readonly sessionCookie: pulumi.Output<outputs.TenantSessionCookie>;
     /**
      * Number of hours during which a session will stay valid.
      */
-    public readonly sessionLifetime!: pulumi.Output<number | undefined>;
+    declare public readonly sessionLifetime: pulumi.Output<number | undefined>;
     /**
      * Sessions related settings for the tenant.
      */
-    public readonly sessions!: pulumi.Output<outputs.TenantSessions>;
+    declare public readonly sessions: pulumi.Output<outputs.TenantSessions>;
     /**
      * Support email address for authenticating users.
      */
-    public readonly supportEmail!: pulumi.Output<string>;
+    declare public readonly supportEmail: pulumi.Output<string>;
     /**
      * Support URL for authenticating users.
      */
-    public readonly supportUrl!: pulumi.Output<string>;
+    declare public readonly supportUrl: pulumi.Output<string>;
 
     /**
      * Create a Tenant resource with the given unique name, arguments, and options.
@@ -202,56 +202,56 @@ export class Tenant extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TenantState | undefined;
-            resourceInputs["acrValuesSupporteds"] = state ? state.acrValuesSupporteds : undefined;
-            resourceInputs["allowOrganizationNameInAuthenticationApi"] = state ? state.allowOrganizationNameInAuthenticationApi : undefined;
-            resourceInputs["allowedLogoutUrls"] = state ? state.allowedLogoutUrls : undefined;
-            resourceInputs["customizeMfaInPostloginAction"] = state ? state.customizeMfaInPostloginAction : undefined;
-            resourceInputs["defaultAudience"] = state ? state.defaultAudience : undefined;
-            resourceInputs["defaultDirectory"] = state ? state.defaultDirectory : undefined;
-            resourceInputs["defaultRedirectionUri"] = state ? state.defaultRedirectionUri : undefined;
-            resourceInputs["defaultTokenQuota"] = state ? state.defaultTokenQuota : undefined;
-            resourceInputs["disableAcrValuesSupported"] = state ? state.disableAcrValuesSupported : undefined;
-            resourceInputs["enabledLocales"] = state ? state.enabledLocales : undefined;
-            resourceInputs["errorPage"] = state ? state.errorPage : undefined;
-            resourceInputs["flags"] = state ? state.flags : undefined;
-            resourceInputs["friendlyName"] = state ? state.friendlyName : undefined;
-            resourceInputs["idleSessionLifetime"] = state ? state.idleSessionLifetime : undefined;
-            resourceInputs["mtls"] = state ? state.mtls : undefined;
-            resourceInputs["oidcLogout"] = state ? state.oidcLogout : undefined;
-            resourceInputs["pictureUrl"] = state ? state.pictureUrl : undefined;
-            resourceInputs["pushedAuthorizationRequestsSupported"] = state ? state.pushedAuthorizationRequestsSupported : undefined;
-            resourceInputs["sandboxVersion"] = state ? state.sandboxVersion : undefined;
-            resourceInputs["sessionCookie"] = state ? state.sessionCookie : undefined;
-            resourceInputs["sessionLifetime"] = state ? state.sessionLifetime : undefined;
-            resourceInputs["sessions"] = state ? state.sessions : undefined;
-            resourceInputs["supportEmail"] = state ? state.supportEmail : undefined;
-            resourceInputs["supportUrl"] = state ? state.supportUrl : undefined;
+            resourceInputs["acrValuesSupporteds"] = state?.acrValuesSupporteds;
+            resourceInputs["allowOrganizationNameInAuthenticationApi"] = state?.allowOrganizationNameInAuthenticationApi;
+            resourceInputs["allowedLogoutUrls"] = state?.allowedLogoutUrls;
+            resourceInputs["customizeMfaInPostloginAction"] = state?.customizeMfaInPostloginAction;
+            resourceInputs["defaultAudience"] = state?.defaultAudience;
+            resourceInputs["defaultDirectory"] = state?.defaultDirectory;
+            resourceInputs["defaultRedirectionUri"] = state?.defaultRedirectionUri;
+            resourceInputs["defaultTokenQuota"] = state?.defaultTokenQuota;
+            resourceInputs["disableAcrValuesSupported"] = state?.disableAcrValuesSupported;
+            resourceInputs["enabledLocales"] = state?.enabledLocales;
+            resourceInputs["errorPage"] = state?.errorPage;
+            resourceInputs["flags"] = state?.flags;
+            resourceInputs["friendlyName"] = state?.friendlyName;
+            resourceInputs["idleSessionLifetime"] = state?.idleSessionLifetime;
+            resourceInputs["mtls"] = state?.mtls;
+            resourceInputs["oidcLogout"] = state?.oidcLogout;
+            resourceInputs["pictureUrl"] = state?.pictureUrl;
+            resourceInputs["pushedAuthorizationRequestsSupported"] = state?.pushedAuthorizationRequestsSupported;
+            resourceInputs["sandboxVersion"] = state?.sandboxVersion;
+            resourceInputs["sessionCookie"] = state?.sessionCookie;
+            resourceInputs["sessionLifetime"] = state?.sessionLifetime;
+            resourceInputs["sessions"] = state?.sessions;
+            resourceInputs["supportEmail"] = state?.supportEmail;
+            resourceInputs["supportUrl"] = state?.supportUrl;
         } else {
             const args = argsOrState as TenantArgs | undefined;
-            resourceInputs["acrValuesSupporteds"] = args ? args.acrValuesSupporteds : undefined;
-            resourceInputs["allowOrganizationNameInAuthenticationApi"] = args ? args.allowOrganizationNameInAuthenticationApi : undefined;
-            resourceInputs["allowedLogoutUrls"] = args ? args.allowedLogoutUrls : undefined;
-            resourceInputs["customizeMfaInPostloginAction"] = args ? args.customizeMfaInPostloginAction : undefined;
-            resourceInputs["defaultAudience"] = args ? args.defaultAudience : undefined;
-            resourceInputs["defaultDirectory"] = args ? args.defaultDirectory : undefined;
-            resourceInputs["defaultRedirectionUri"] = args ? args.defaultRedirectionUri : undefined;
-            resourceInputs["defaultTokenQuota"] = args ? args.defaultTokenQuota : undefined;
-            resourceInputs["disableAcrValuesSupported"] = args ? args.disableAcrValuesSupported : undefined;
-            resourceInputs["enabledLocales"] = args ? args.enabledLocales : undefined;
-            resourceInputs["errorPage"] = args ? args.errorPage : undefined;
-            resourceInputs["flags"] = args ? args.flags : undefined;
-            resourceInputs["friendlyName"] = args ? args.friendlyName : undefined;
-            resourceInputs["idleSessionLifetime"] = args ? args.idleSessionLifetime : undefined;
-            resourceInputs["mtls"] = args ? args.mtls : undefined;
-            resourceInputs["oidcLogout"] = args ? args.oidcLogout : undefined;
-            resourceInputs["pictureUrl"] = args ? args.pictureUrl : undefined;
-            resourceInputs["pushedAuthorizationRequestsSupported"] = args ? args.pushedAuthorizationRequestsSupported : undefined;
-            resourceInputs["sandboxVersion"] = args ? args.sandboxVersion : undefined;
-            resourceInputs["sessionCookie"] = args ? args.sessionCookie : undefined;
-            resourceInputs["sessionLifetime"] = args ? args.sessionLifetime : undefined;
-            resourceInputs["sessions"] = args ? args.sessions : undefined;
-            resourceInputs["supportEmail"] = args ? args.supportEmail : undefined;
-            resourceInputs["supportUrl"] = args ? args.supportUrl : undefined;
+            resourceInputs["acrValuesSupporteds"] = args?.acrValuesSupporteds;
+            resourceInputs["allowOrganizationNameInAuthenticationApi"] = args?.allowOrganizationNameInAuthenticationApi;
+            resourceInputs["allowedLogoutUrls"] = args?.allowedLogoutUrls;
+            resourceInputs["customizeMfaInPostloginAction"] = args?.customizeMfaInPostloginAction;
+            resourceInputs["defaultAudience"] = args?.defaultAudience;
+            resourceInputs["defaultDirectory"] = args?.defaultDirectory;
+            resourceInputs["defaultRedirectionUri"] = args?.defaultRedirectionUri;
+            resourceInputs["defaultTokenQuota"] = args?.defaultTokenQuota;
+            resourceInputs["disableAcrValuesSupported"] = args?.disableAcrValuesSupported;
+            resourceInputs["enabledLocales"] = args?.enabledLocales;
+            resourceInputs["errorPage"] = args?.errorPage;
+            resourceInputs["flags"] = args?.flags;
+            resourceInputs["friendlyName"] = args?.friendlyName;
+            resourceInputs["idleSessionLifetime"] = args?.idleSessionLifetime;
+            resourceInputs["mtls"] = args?.mtls;
+            resourceInputs["oidcLogout"] = args?.oidcLogout;
+            resourceInputs["pictureUrl"] = args?.pictureUrl;
+            resourceInputs["pushedAuthorizationRequestsSupported"] = args?.pushedAuthorizationRequestsSupported;
+            resourceInputs["sandboxVersion"] = args?.sandboxVersion;
+            resourceInputs["sessionCookie"] = args?.sessionCookie;
+            resourceInputs["sessionLifetime"] = args?.sessionLifetime;
+            resourceInputs["sessions"] = args?.sessions;
+            resourceInputs["supportEmail"] = args?.supportEmail;
+            resourceInputs["supportUrl"] = args?.supportUrl;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Tenant.__pulumiType, name, resourceInputs, opts);

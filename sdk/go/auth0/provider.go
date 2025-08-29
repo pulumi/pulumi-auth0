@@ -18,25 +18,19 @@ import (
 type Provider struct {
 	pulumi.ProviderResourceState
 
-	// Your Auth0 [management api access
-	// token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from
-	// the `AUTH0_API_TOKEN` environment variable. It can be used instead of `clientId` + `clientSecret`. If both are
-	// specified, `apiToken` will be used over `clientId` + `clientSecret` fields.
+	// Your Auth0 [management api access token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from the `AUTH0_API_TOKEN` environment variable. It can be used instead of `clientId` + `clientSecret`. If both are specified, `apiToken` will be used over `clientId` + `clientSecret` fields.
 	ApiToken pulumi.StringPtrOutput `pulumi:"apiToken"`
 	// Your Auth0 audience when using a custom domain. It can also be sourced from the `AUTH0_AUDIENCE` environment variable.
 	Audience pulumi.StringPtrOutput `pulumi:"audience"`
-	// The private key used to sign the client assertion JWT. It can also be sourced from the
-	// `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
+	// The private key used to sign the client assertion JWT. It can also be sourced from the `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
 	ClientAssertionPrivateKey pulumi.StringPtrOutput `pulumi:"clientAssertionPrivateKey"`
-	// The algorithm used to sign the client assertion JWT. It can also be sourced from the
-	// `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
+	// The algorithm used to sign the client assertion JWT. It can also be sourced from the `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
 	ClientAssertionSigningAlg pulumi.StringPtrOutput `pulumi:"clientAssertionSigningAlg"`
 	// Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.
 	ClientId pulumi.StringPtrOutput `pulumi:"clientId"`
 	// Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable.
 	ClientSecret pulumi.StringPtrOutput `pulumi:"clientSecret"`
-	// When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting
-	// overrides all resource specific `customDomainHeader` value
+	// When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting overrides all resource specific `customDomainHeader` value
 	CustomDomainHeader pulumi.StringPtrOutput `pulumi:"customDomainHeader"`
 	// Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
 	Domain pulumi.StringPtrOutput `pulumi:"domain"`
@@ -64,30 +58,23 @@ func NewProvider(ctx *pulumi.Context,
 }
 
 type providerArgs struct {
-	// Your Auth0 [management api access
-	// token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from
-	// the `AUTH0_API_TOKEN` environment variable. It can be used instead of `clientId` + `clientSecret`. If both are
-	// specified, `apiToken` will be used over `clientId` + `clientSecret` fields.
+	// Your Auth0 [management api access token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from the `AUTH0_API_TOKEN` environment variable. It can be used instead of `clientId` + `clientSecret`. If both are specified, `apiToken` will be used over `clientId` + `clientSecret` fields.
 	ApiToken *string `pulumi:"apiToken"`
 	// Your Auth0 audience when using a custom domain. It can also be sourced from the `AUTH0_AUDIENCE` environment variable.
 	Audience *string `pulumi:"audience"`
 	// While toggled on, the API token gets fetched from the keyring for the given domain
 	CliLogin *bool `pulumi:"cliLogin"`
-	// The private key used to sign the client assertion JWT. It can also be sourced from the
-	// `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
+	// The private key used to sign the client assertion JWT. It can also be sourced from the `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
 	ClientAssertionPrivateKey *string `pulumi:"clientAssertionPrivateKey"`
-	// The algorithm used to sign the client assertion JWT. It can also be sourced from the
-	// `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
+	// The algorithm used to sign the client assertion JWT. It can also be sourced from the `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
 	ClientAssertionSigningAlg *string `pulumi:"clientAssertionSigningAlg"`
 	// Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.
 	ClientId *string `pulumi:"clientId"`
 	// Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable.
 	ClientSecret *string `pulumi:"clientSecret"`
-	// When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting
-	// overrides all resource specific `customDomainHeader` value
+	// When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting overrides all resource specific `customDomainHeader` value
 	CustomDomainHeader *string `pulumi:"customDomainHeader"`
-	// Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG`
-	// environment variable.
+	// Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG` environment variable.
 	Debug *bool `pulumi:"debug"`
 	// Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
 	Domain             *string `pulumi:"domain"`
@@ -96,30 +83,23 @@ type providerArgs struct {
 
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
-	// Your Auth0 [management api access
-	// token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from
-	// the `AUTH0_API_TOKEN` environment variable. It can be used instead of `clientId` + `clientSecret`. If both are
-	// specified, `apiToken` will be used over `clientId` + `clientSecret` fields.
+	// Your Auth0 [management api access token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from the `AUTH0_API_TOKEN` environment variable. It can be used instead of `clientId` + `clientSecret`. If both are specified, `apiToken` will be used over `clientId` + `clientSecret` fields.
 	ApiToken pulumi.StringPtrInput
 	// Your Auth0 audience when using a custom domain. It can also be sourced from the `AUTH0_AUDIENCE` environment variable.
 	Audience pulumi.StringPtrInput
 	// While toggled on, the API token gets fetched from the keyring for the given domain
 	CliLogin pulumi.BoolPtrInput
-	// The private key used to sign the client assertion JWT. It can also be sourced from the
-	// `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
+	// The private key used to sign the client assertion JWT. It can also be sourced from the `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
 	ClientAssertionPrivateKey pulumi.StringPtrInput
-	// The algorithm used to sign the client assertion JWT. It can also be sourced from the
-	// `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
+	// The algorithm used to sign the client assertion JWT. It can also be sourced from the `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
 	ClientAssertionSigningAlg pulumi.StringPtrInput
 	// Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.
 	ClientId pulumi.StringPtrInput
 	// Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable.
 	ClientSecret pulumi.StringPtrInput
-	// When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting
-	// overrides all resource specific `customDomainHeader` value
+	// When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting overrides all resource specific `customDomainHeader` value
 	CustomDomainHeader pulumi.StringPtrInput
-	// Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG`
-	// environment variable.
+	// Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG` environment variable.
 	Debug pulumi.BoolPtrInput
 	// Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
 	Domain             pulumi.StringPtrInput
@@ -186,10 +166,7 @@ func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) Provide
 	return o
 }
 
-// Your Auth0 [management api access
-// token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from
-// the `AUTH0_API_TOKEN` environment variable. It can be used instead of `clientId` + `clientSecret`. If both are
-// specified, `apiToken` will be used over `clientId` + `clientSecret` fields.
+// Your Auth0 [management api access token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from the `AUTH0_API_TOKEN` environment variable. It can be used instead of `clientId` + `clientSecret`. If both are specified, `apiToken` will be used over `clientId` + `clientSecret` fields.
 func (o ProviderOutput) ApiToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ApiToken }).(pulumi.StringPtrOutput)
 }
@@ -199,14 +176,12 @@ func (o ProviderOutput) Audience() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Audience }).(pulumi.StringPtrOutput)
 }
 
-// The private key used to sign the client assertion JWT. It can also be sourced from the
-// `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
+// The private key used to sign the client assertion JWT. It can also be sourced from the `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
 func (o ProviderOutput) ClientAssertionPrivateKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ClientAssertionPrivateKey }).(pulumi.StringPtrOutput)
 }
 
-// The algorithm used to sign the client assertion JWT. It can also be sourced from the
-// `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
+// The algorithm used to sign the client assertion JWT. It can also be sourced from the `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
 func (o ProviderOutput) ClientAssertionSigningAlg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ClientAssertionSigningAlg }).(pulumi.StringPtrOutput)
 }
@@ -221,8 +196,7 @@ func (o ProviderOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ClientSecret }).(pulumi.StringPtrOutput)
 }
 
-// When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting
-// overrides all resource specific `customDomainHeader` value
+// When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting overrides all resource specific `customDomainHeader` value
 func (o ProviderOutput) CustomDomainHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.CustomDomainHeader }).(pulumi.StringPtrOutput)
 }

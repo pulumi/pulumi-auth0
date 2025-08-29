@@ -90,63 +90,63 @@ export class ResourceServer extends pulumi.CustomResource {
     /**
      * Indicates whether refresh tokens can be issued for this resource server.
      */
-    public readonly allowOfflineAccess!: pulumi.Output<boolean | undefined>;
+    declare public readonly allowOfflineAccess: pulumi.Output<boolean | undefined>;
     /**
      * Authorization details for this resource server.
      */
-    public readonly authorizationDetails!: pulumi.Output<outputs.ResourceServerAuthorizationDetail[]>;
+    declare public readonly authorizationDetails: pulumi.Output<outputs.ResourceServerAuthorizationDetail[]>;
     /**
      * Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
      */
-    public readonly consentPolicy!: pulumi.Output<string>;
+    declare public readonly consentPolicy: pulumi.Output<string>;
     /**
      * If this setting is enabled, RBAC authorization policies will be enforced for this API. Role and permission assignments will be evaluated during the login transaction.
      */
-    public readonly enforcePolicies!: pulumi.Output<boolean>;
+    declare public readonly enforcePolicies: pulumi.Output<boolean>;
     /**
      * Unique identifier for the resource server. Used as the audience parameter for authorization calls. Cannot be changed once set.
      */
-    public readonly identifier!: pulumi.Output<string>;
+    declare public readonly identifier: pulumi.Output<string>;
     /**
      * Friendly name for the resource server. Cannot include `<` or `>` characters.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Configuration settings for proof-of-possession for this resource server.
      */
-    public readonly proofOfPossession!: pulumi.Output<outputs.ResourceServerProofOfPossession>;
+    declare public readonly proofOfPossession: pulumi.Output<outputs.ResourceServerProofOfPossession>;
     /**
      * Algorithm used to sign JWTs. Options include `HS256`, `RS256`, and `PS256`.
      */
-    public readonly signingAlg!: pulumi.Output<string>;
+    declare public readonly signingAlg: pulumi.Output<string>;
     /**
      * Secret used to sign tokens when using symmetric algorithms (HS256).
      */
-    public readonly signingSecret!: pulumi.Output<string>;
+    declare public readonly signingSecret: pulumi.Output<string>;
     /**
      * Indicates whether to skip user consent for applications flagged as first party.
      */
-    public readonly skipConsentForVerifiableFirstPartyClients!: pulumi.Output<boolean>;
+    declare public readonly skipConsentForVerifiableFirstPartyClients: pulumi.Output<boolean>;
     /**
      * Dialect of access tokens that should be issued for this resource server. Options include `accessToken`, `rfc9068Profile`, `accessTokenAuthz`, and `rfc9068ProfileAuthz`. `accessToken` is a JWT containing standard Auth0 claims. `rfc9068Profile` is a JWT conforming to the IETF JWT Access Token Profile. `accessTokenAuthz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068ProfileAuthz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforcePolicies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).
      */
-    public readonly tokenDialect!: pulumi.Output<string>;
+    declare public readonly tokenDialect: pulumi.Output<string>;
     /**
      * Configuration for JSON Web Encryption(JWE) of tokens for this resource server.
      */
-    public readonly tokenEncryption!: pulumi.Output<outputs.ResourceServerTokenEncryption>;
+    declare public readonly tokenEncryption: pulumi.Output<outputs.ResourceServerTokenEncryption>;
     /**
      * Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
      */
-    public readonly tokenLifetime!: pulumi.Output<number>;
+    declare public readonly tokenLifetime: pulumi.Output<number>;
     /**
      * Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `tokenLifetime` value.
      */
-    public readonly tokenLifetimeForWeb!: pulumi.Output<number>;
+    declare public readonly tokenLifetimeForWeb: pulumi.Output<number>;
     /**
      * URL from which to retrieve JWKs for this resource server. Used for verifying the JWT sent to Auth0 for token introspection.
      */
-    public readonly verificationLocation!: pulumi.Output<string | undefined>;
+    declare public readonly verificationLocation: pulumi.Output<string | undefined>;
 
     /**
      * Create a ResourceServer resource with the given unique name, arguments, and options.
@@ -161,41 +161,41 @@ export class ResourceServer extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ResourceServerState | undefined;
-            resourceInputs["allowOfflineAccess"] = state ? state.allowOfflineAccess : undefined;
-            resourceInputs["authorizationDetails"] = state ? state.authorizationDetails : undefined;
-            resourceInputs["consentPolicy"] = state ? state.consentPolicy : undefined;
-            resourceInputs["enforcePolicies"] = state ? state.enforcePolicies : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["proofOfPossession"] = state ? state.proofOfPossession : undefined;
-            resourceInputs["signingAlg"] = state ? state.signingAlg : undefined;
-            resourceInputs["signingSecret"] = state ? state.signingSecret : undefined;
-            resourceInputs["skipConsentForVerifiableFirstPartyClients"] = state ? state.skipConsentForVerifiableFirstPartyClients : undefined;
-            resourceInputs["tokenDialect"] = state ? state.tokenDialect : undefined;
-            resourceInputs["tokenEncryption"] = state ? state.tokenEncryption : undefined;
-            resourceInputs["tokenLifetime"] = state ? state.tokenLifetime : undefined;
-            resourceInputs["tokenLifetimeForWeb"] = state ? state.tokenLifetimeForWeb : undefined;
-            resourceInputs["verificationLocation"] = state ? state.verificationLocation : undefined;
+            resourceInputs["allowOfflineAccess"] = state?.allowOfflineAccess;
+            resourceInputs["authorizationDetails"] = state?.authorizationDetails;
+            resourceInputs["consentPolicy"] = state?.consentPolicy;
+            resourceInputs["enforcePolicies"] = state?.enforcePolicies;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["proofOfPossession"] = state?.proofOfPossession;
+            resourceInputs["signingAlg"] = state?.signingAlg;
+            resourceInputs["signingSecret"] = state?.signingSecret;
+            resourceInputs["skipConsentForVerifiableFirstPartyClients"] = state?.skipConsentForVerifiableFirstPartyClients;
+            resourceInputs["tokenDialect"] = state?.tokenDialect;
+            resourceInputs["tokenEncryption"] = state?.tokenEncryption;
+            resourceInputs["tokenLifetime"] = state?.tokenLifetime;
+            resourceInputs["tokenLifetimeForWeb"] = state?.tokenLifetimeForWeb;
+            resourceInputs["verificationLocation"] = state?.verificationLocation;
         } else {
             const args = argsOrState as ResourceServerArgs | undefined;
-            if ((!args || args.identifier === undefined) && !opts.urn) {
+            if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            resourceInputs["allowOfflineAccess"] = args ? args.allowOfflineAccess : undefined;
-            resourceInputs["authorizationDetails"] = args ? args.authorizationDetails : undefined;
-            resourceInputs["consentPolicy"] = args ? args.consentPolicy : undefined;
-            resourceInputs["enforcePolicies"] = args ? args.enforcePolicies : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["proofOfPossession"] = args ? args.proofOfPossession : undefined;
-            resourceInputs["signingAlg"] = args ? args.signingAlg : undefined;
-            resourceInputs["signingSecret"] = args ? args.signingSecret : undefined;
-            resourceInputs["skipConsentForVerifiableFirstPartyClients"] = args ? args.skipConsentForVerifiableFirstPartyClients : undefined;
-            resourceInputs["tokenDialect"] = args ? args.tokenDialect : undefined;
-            resourceInputs["tokenEncryption"] = args ? args.tokenEncryption : undefined;
-            resourceInputs["tokenLifetime"] = args ? args.tokenLifetime : undefined;
-            resourceInputs["tokenLifetimeForWeb"] = args ? args.tokenLifetimeForWeb : undefined;
-            resourceInputs["verificationLocation"] = args ? args.verificationLocation : undefined;
+            resourceInputs["allowOfflineAccess"] = args?.allowOfflineAccess;
+            resourceInputs["authorizationDetails"] = args?.authorizationDetails;
+            resourceInputs["consentPolicy"] = args?.consentPolicy;
+            resourceInputs["enforcePolicies"] = args?.enforcePolicies;
+            resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["proofOfPossession"] = args?.proofOfPossession;
+            resourceInputs["signingAlg"] = args?.signingAlg;
+            resourceInputs["signingSecret"] = args?.signingSecret;
+            resourceInputs["skipConsentForVerifiableFirstPartyClients"] = args?.skipConsentForVerifiableFirstPartyClients;
+            resourceInputs["tokenDialect"] = args?.tokenDialect;
+            resourceInputs["tokenEncryption"] = args?.tokenEncryption;
+            resourceInputs["tokenLifetime"] = args?.tokenLifetime;
+            resourceInputs["tokenLifetimeForWeb"] = args?.tokenLifetimeForWeb;
+            resourceInputs["verificationLocation"] = args?.verificationLocation;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ResourceServer.__pulumiType, name, resourceInputs, opts);

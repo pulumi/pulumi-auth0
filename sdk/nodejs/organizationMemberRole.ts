@@ -85,23 +85,23 @@ export class OrganizationMemberRole extends pulumi.CustomResource {
     /**
      * The ID of the organization.
      */
-    public readonly organizationId!: pulumi.Output<string>;
+    declare public readonly organizationId: pulumi.Output<string>;
     /**
      * Description of the role.
      */
-    public /*out*/ readonly roleDescription!: pulumi.Output<string>;
+    declare public /*out*/ readonly roleDescription: pulumi.Output<string>;
     /**
      * The role ID to assign to the organization member.
      */
-    public readonly roleId!: pulumi.Output<string>;
+    declare public readonly roleId: pulumi.Output<string>;
     /**
      * Name of the role.
      */
-    public /*out*/ readonly roleName!: pulumi.Output<string>;
+    declare public /*out*/ readonly roleName: pulumi.Output<string>;
     /**
      * The user ID of the organization member.
      */
-    public readonly userId!: pulumi.Output<string>;
+    declare public readonly userId: pulumi.Output<string>;
 
     /**
      * Create a OrganizationMemberRole resource with the given unique name, arguments, and options.
@@ -116,25 +116,25 @@ export class OrganizationMemberRole extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OrganizationMemberRoleState | undefined;
-            resourceInputs["organizationId"] = state ? state.organizationId : undefined;
-            resourceInputs["roleDescription"] = state ? state.roleDescription : undefined;
-            resourceInputs["roleId"] = state ? state.roleId : undefined;
-            resourceInputs["roleName"] = state ? state.roleName : undefined;
-            resourceInputs["userId"] = state ? state.userId : undefined;
+            resourceInputs["organizationId"] = state?.organizationId;
+            resourceInputs["roleDescription"] = state?.roleDescription;
+            resourceInputs["roleId"] = state?.roleId;
+            resourceInputs["roleName"] = state?.roleName;
+            resourceInputs["userId"] = state?.userId;
         } else {
             const args = argsOrState as OrganizationMemberRoleArgs | undefined;
-            if ((!args || args.organizationId === undefined) && !opts.urn) {
+            if (args?.organizationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
-            if ((!args || args.roleId === undefined) && !opts.urn) {
+            if (args?.roleId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'roleId'");
             }
-            if ((!args || args.userId === undefined) && !opts.urn) {
+            if (args?.userId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userId'");
             }
-            resourceInputs["organizationId"] = args ? args.organizationId : undefined;
-            resourceInputs["roleId"] = args ? args.roleId : undefined;
-            resourceInputs["userId"] = args ? args.userId : undefined;
+            resourceInputs["organizationId"] = args?.organizationId;
+            resourceInputs["roleId"] = args?.roleId;
+            resourceInputs["userId"] = args?.userId;
             resourceInputs["roleDescription"] = undefined /*out*/;
             resourceInputs["roleName"] = undefined /*out*/;
         }

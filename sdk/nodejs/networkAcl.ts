@@ -100,19 +100,19 @@ export class NetworkAcl extends pulumi.CustomResource {
     /**
      * Whether the Network ACL is active
      */
-    public readonly active!: pulumi.Output<boolean>;
+    declare public readonly active: pulumi.Output<boolean>;
     /**
      * The description of the Network ACL
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * The priority of the Network ACL. Must be unique between 1 and 10.
      */
-    public readonly priority!: pulumi.Output<number>;
+    declare public readonly priority: pulumi.Output<number>;
     /**
      * The rule of the Network ACL
      */
-    public readonly rule!: pulumi.Output<outputs.NetworkAclRule>;
+    declare public readonly rule: pulumi.Output<outputs.NetworkAclRule>;
 
     /**
      * Create a NetworkAcl resource with the given unique name, arguments, and options.
@@ -127,28 +127,28 @@ export class NetworkAcl extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NetworkAclState | undefined;
-            resourceInputs["active"] = state ? state.active : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["priority"] = state ? state.priority : undefined;
-            resourceInputs["rule"] = state ? state.rule : undefined;
+            resourceInputs["active"] = state?.active;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["priority"] = state?.priority;
+            resourceInputs["rule"] = state?.rule;
         } else {
             const args = argsOrState as NetworkAclArgs | undefined;
-            if ((!args || args.active === undefined) && !opts.urn) {
+            if (args?.active === undefined && !opts.urn) {
                 throw new Error("Missing required property 'active'");
             }
-            if ((!args || args.description === undefined) && !opts.urn) {
+            if (args?.description === undefined && !opts.urn) {
                 throw new Error("Missing required property 'description'");
             }
-            if ((!args || args.priority === undefined) && !opts.urn) {
+            if (args?.priority === undefined && !opts.urn) {
                 throw new Error("Missing required property 'priority'");
             }
-            if ((!args || args.rule === undefined) && !opts.urn) {
+            if (args?.rule === undefined && !opts.urn) {
                 throw new Error("Missing required property 'rule'");
             }
-            resourceInputs["active"] = args ? args.active : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["priority"] = args ? args.priority : undefined;
-            resourceInputs["rule"] = args ? args.rule : undefined;
+            resourceInputs["active"] = args?.active;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["priority"] = args?.priority;
+            resourceInputs["rule"] = args?.rule;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(NetworkAcl.__pulumiType, name, resourceInputs, opts);

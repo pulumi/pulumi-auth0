@@ -54,11 +54,11 @@ export class UserPermissions extends pulumi.CustomResource {
     /**
      * List of API permissions granted to the user.
      */
-    public readonly permissions!: pulumi.Output<outputs.UserPermissionsPermission[]>;
+    declare public readonly permissions: pulumi.Output<outputs.UserPermissionsPermission[]>;
     /**
      * ID of the user to associate the permission to.
      */
-    public readonly userId!: pulumi.Output<string>;
+    declare public readonly userId: pulumi.Output<string>;
 
     /**
      * Create a UserPermissions resource with the given unique name, arguments, and options.
@@ -73,18 +73,18 @@ export class UserPermissions extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserPermissionsState | undefined;
-            resourceInputs["permissions"] = state ? state.permissions : undefined;
-            resourceInputs["userId"] = state ? state.userId : undefined;
+            resourceInputs["permissions"] = state?.permissions;
+            resourceInputs["userId"] = state?.userId;
         } else {
             const args = argsOrState as UserPermissionsArgs | undefined;
-            if ((!args || args.permissions === undefined) && !opts.urn) {
+            if (args?.permissions === undefined && !opts.urn) {
                 throw new Error("Missing required property 'permissions'");
             }
-            if ((!args || args.userId === undefined) && !opts.urn) {
+            if (args?.userId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userId'");
             }
-            resourceInputs["permissions"] = args ? args.permissions : undefined;
-            resourceInputs["userId"] = args ? args.userId : undefined;
+            resourceInputs["permissions"] = args?.permissions;
+            resourceInputs["userId"] = args?.userId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(UserPermissions.__pulumiType, name, resourceInputs, opts);

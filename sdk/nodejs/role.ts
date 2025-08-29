@@ -60,11 +60,11 @@ export class Role extends pulumi.CustomResource {
     /**
      * The description of the role.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * The name of the role.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
 
     /**
      * Create a Role resource with the given unique name, arguments, and options.
@@ -79,12 +79,12 @@ export class Role extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RoleState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as RoleArgs | undefined;
-            resourceInputs["description"] = (args ? args.description : undefined) ?? "Managed by Pulumi";
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["description"] = (args?.description) ?? "Managed by Pulumi";
+            resourceInputs["name"] = args?.name;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Role.__pulumiType, name, resourceInputs, opts);

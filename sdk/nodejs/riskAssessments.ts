@@ -38,7 +38,7 @@ export class RiskAssessments extends pulumi.CustomResource {
     /**
      * Whether risk assessment is enabled or not.
      */
-    public readonly enabled!: pulumi.Output<boolean>;
+    declare public readonly enabled: pulumi.Output<boolean>;
 
     /**
      * Create a RiskAssessments resource with the given unique name, arguments, and options.
@@ -53,13 +53,13 @@ export class RiskAssessments extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RiskAssessmentsState | undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["enabled"] = state?.enabled;
         } else {
             const args = argsOrState as RiskAssessmentsArgs | undefined;
-            if ((!args || args.enabled === undefined) && !opts.urn) {
+            if (args?.enabled === undefined && !opts.urn) {
                 throw new Error("Missing required property 'enabled'");
             }
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["enabled"] = args?.enabled;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(RiskAssessments.__pulumiType, name, resourceInputs, opts);

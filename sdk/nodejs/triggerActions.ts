@@ -99,11 +99,11 @@ export class TriggerActions extends pulumi.CustomResource {
     /**
      * The list of actions bound to this trigger.
      */
-    public readonly actions!: pulumi.Output<outputs.TriggerActionsAction[]>;
+    declare public readonly actions: pulumi.Output<outputs.TriggerActionsAction[]>;
     /**
      * The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-email-provider`, `custom-phone-provider`.
      */
-    public readonly trigger!: pulumi.Output<string>;
+    declare public readonly trigger: pulumi.Output<string>;
 
     /**
      * Create a TriggerActions resource with the given unique name, arguments, and options.
@@ -118,18 +118,18 @@ export class TriggerActions extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TriggerActionsState | undefined;
-            resourceInputs["actions"] = state ? state.actions : undefined;
-            resourceInputs["trigger"] = state ? state.trigger : undefined;
+            resourceInputs["actions"] = state?.actions;
+            resourceInputs["trigger"] = state?.trigger;
         } else {
             const args = argsOrState as TriggerActionsArgs | undefined;
-            if ((!args || args.actions === undefined) && !opts.urn) {
+            if (args?.actions === undefined && !opts.urn) {
                 throw new Error("Missing required property 'actions'");
             }
-            if ((!args || args.trigger === undefined) && !opts.urn) {
+            if (args?.trigger === undefined && !opts.urn) {
                 throw new Error("Missing required property 'trigger'");
             }
-            resourceInputs["actions"] = args ? args.actions : undefined;
-            resourceInputs["trigger"] = args ? args.trigger : undefined;
+            resourceInputs["actions"] = args?.actions;
+            resourceInputs["trigger"] = args?.trigger;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(TriggerActions.__pulumiType, name, resourceInputs, opts);

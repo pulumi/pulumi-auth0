@@ -47,15 +47,15 @@ export class BrandingTheme extends pulumi.CustomResource {
         return obj['__pulumiType'] === BrandingTheme.__pulumiType;
     }
 
-    public readonly borders!: pulumi.Output<outputs.BrandingThemeBorders>;
-    public readonly colors!: pulumi.Output<outputs.BrandingThemeColors>;
+    declare public readonly borders: pulumi.Output<outputs.BrandingThemeBorders>;
+    declare public readonly colors: pulumi.Output<outputs.BrandingThemeColors>;
     /**
      * The display name for the branding theme.
      */
-    public readonly displayName!: pulumi.Output<string | undefined>;
-    public readonly fonts!: pulumi.Output<outputs.BrandingThemeFonts>;
-    public readonly pageBackground!: pulumi.Output<outputs.BrandingThemePageBackground>;
-    public readonly widget!: pulumi.Output<outputs.BrandingThemeWidget>;
+    declare public readonly displayName: pulumi.Output<string | undefined>;
+    declare public readonly fonts: pulumi.Output<outputs.BrandingThemeFonts>;
+    declare public readonly pageBackground: pulumi.Output<outputs.BrandingThemePageBackground>;
+    declare public readonly widget: pulumi.Output<outputs.BrandingThemeWidget>;
 
     /**
      * Create a BrandingTheme resource with the given unique name, arguments, and options.
@@ -70,35 +70,35 @@ export class BrandingTheme extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BrandingThemeState | undefined;
-            resourceInputs["borders"] = state ? state.borders : undefined;
-            resourceInputs["colors"] = state ? state.colors : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["fonts"] = state ? state.fonts : undefined;
-            resourceInputs["pageBackground"] = state ? state.pageBackground : undefined;
-            resourceInputs["widget"] = state ? state.widget : undefined;
+            resourceInputs["borders"] = state?.borders;
+            resourceInputs["colors"] = state?.colors;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["fonts"] = state?.fonts;
+            resourceInputs["pageBackground"] = state?.pageBackground;
+            resourceInputs["widget"] = state?.widget;
         } else {
             const args = argsOrState as BrandingThemeArgs | undefined;
-            if ((!args || args.borders === undefined) && !opts.urn) {
+            if (args?.borders === undefined && !opts.urn) {
                 throw new Error("Missing required property 'borders'");
             }
-            if ((!args || args.colors === undefined) && !opts.urn) {
+            if (args?.colors === undefined && !opts.urn) {
                 throw new Error("Missing required property 'colors'");
             }
-            if ((!args || args.fonts === undefined) && !opts.urn) {
+            if (args?.fonts === undefined && !opts.urn) {
                 throw new Error("Missing required property 'fonts'");
             }
-            if ((!args || args.pageBackground === undefined) && !opts.urn) {
+            if (args?.pageBackground === undefined && !opts.urn) {
                 throw new Error("Missing required property 'pageBackground'");
             }
-            if ((!args || args.widget === undefined) && !opts.urn) {
+            if (args?.widget === undefined && !opts.urn) {
                 throw new Error("Missing required property 'widget'");
             }
-            resourceInputs["borders"] = args ? args.borders : undefined;
-            resourceInputs["colors"] = args ? args.colors : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["fonts"] = args ? args.fonts : undefined;
-            resourceInputs["pageBackground"] = args ? args.pageBackground : undefined;
-            resourceInputs["widget"] = args ? args.widget : undefined;
+            resourceInputs["borders"] = args?.borders;
+            resourceInputs["colors"] = args?.colors;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["fonts"] = args?.fonts;
+            resourceInputs["pageBackground"] = args?.pageBackground;
+            resourceInputs["widget"] = args?.widget;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(BrandingTheme.__pulumiType, name, resourceInputs, opts);

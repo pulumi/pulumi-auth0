@@ -34,10 +34,7 @@ namespace Pulumi.Auth0
 
         private static readonly __Value<string?> _apiToken = new __Value<string?>(() => __config.Get("apiToken"));
         /// <summary>
-        /// Your Auth0 [management api access
-        /// token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from
-        /// the `AUTH0_API_TOKEN` environment variable. It can be used instead of `client_id` + `client_secret`. If both are
-        /// specified, `api_token` will be used over `client_id` + `client_secret` fields.
+        /// Your Auth0 [management api access token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from the `AUTH0_API_TOKEN` environment variable. It can be used instead of `client_id` + `client_secret`. If both are specified, `api_token` will be used over `client_id` + `client_secret` fields.
         /// </summary>
         public static string? ApiToken
         {
@@ -67,8 +64,7 @@ namespace Pulumi.Auth0
 
         private static readonly __Value<string?> _clientAssertionPrivateKey = new __Value<string?>(() => __config.Get("clientAssertionPrivateKey"));
         /// <summary>
-        /// The private key used to sign the client assertion JWT. It can also be sourced from the
-        /// `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
+        /// The private key used to sign the client assertion JWT. It can also be sourced from the `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
         /// </summary>
         public static string? ClientAssertionPrivateKey
         {
@@ -78,8 +74,7 @@ namespace Pulumi.Auth0
 
         private static readonly __Value<string?> _clientAssertionSigningAlg = new __Value<string?>(() => __config.Get("clientAssertionSigningAlg"));
         /// <summary>
-        /// The algorithm used to sign the client assertion JWT. It can also be sourced from the
-        /// `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
+        /// The algorithm used to sign the client assertion JWT. It can also be sourced from the `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
         /// </summary>
         public static string? ClientAssertionSigningAlg
         {
@@ -109,8 +104,7 @@ namespace Pulumi.Auth0
 
         private static readonly __Value<string?> _customDomainHeader = new __Value<string?>(() => __config.Get("customDomainHeader"));
         /// <summary>
-        /// When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting
-        /// overrides all resource specific `custom_domain_header` value
+        /// When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting overrides all resource specific `custom_domain_header` value
         /// </summary>
         public static string? CustomDomainHeader
         {
@@ -120,8 +114,7 @@ namespace Pulumi.Auth0
 
         private static readonly __Value<bool?> _debug = new __Value<bool?>(() => __config.GetBoolean("debug") ?? Utilities.GetEnvBoolean("AUTH0_DEBUG"));
         /// <summary>
-        /// Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG`
-        /// environment variable.
+        /// Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG` environment variable.
         /// </summary>
         public static bool? Debug
         {

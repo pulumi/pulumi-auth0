@@ -114,27 +114,27 @@ export class PhoneProvider extends pulumi.CustomResource {
     /**
      * The channel of the phone provider.
      */
-    public /*out*/ readonly channel!: pulumi.Output<string>;
+    declare public /*out*/ readonly channel: pulumi.Output<string>;
     /**
      * Specific phone provider settings.
      */
-    public readonly configuration!: pulumi.Output<outputs.PhoneProviderConfiguration>;
+    declare public readonly configuration: pulumi.Output<outputs.PhoneProviderConfiguration>;
     /**
      * Provider credentials required to use authenticate to the provider.
      */
-    public readonly credentials!: pulumi.Output<outputs.PhoneProviderCredentials>;
+    declare public readonly credentials: pulumi.Output<outputs.PhoneProviderCredentials>;
     /**
      * Indicates whether the phone provider is enabled (false) or disabled (true).
      */
-    public readonly disabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly disabled: pulumi.Output<boolean | undefined>;
     /**
      * Name of the phone provider. Options include `twilio`, `custom`.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The tenant of the phone provider.
      */
-    public /*out*/ readonly tenant!: pulumi.Output<string>;
+    declare public /*out*/ readonly tenant: pulumi.Output<string>;
 
     /**
      * Create a PhoneProvider resource with the given unique name, arguments, and options.
@@ -149,24 +149,24 @@ export class PhoneProvider extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PhoneProviderState | undefined;
-            resourceInputs["channel"] = state ? state.channel : undefined;
-            resourceInputs["configuration"] = state ? state.configuration : undefined;
-            resourceInputs["credentials"] = state ? state.credentials : undefined;
-            resourceInputs["disabled"] = state ? state.disabled : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["tenant"] = state ? state.tenant : undefined;
+            resourceInputs["channel"] = state?.channel;
+            resourceInputs["configuration"] = state?.configuration;
+            resourceInputs["credentials"] = state?.credentials;
+            resourceInputs["disabled"] = state?.disabled;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["tenant"] = state?.tenant;
         } else {
             const args = argsOrState as PhoneProviderArgs | undefined;
-            if ((!args || args.configuration === undefined) && !opts.urn) {
+            if (args?.configuration === undefined && !opts.urn) {
                 throw new Error("Missing required property 'configuration'");
             }
-            if ((!args || args.credentials === undefined) && !opts.urn) {
+            if (args?.credentials === undefined && !opts.urn) {
                 throw new Error("Missing required property 'credentials'");
             }
-            resourceInputs["configuration"] = args ? args.configuration : undefined;
-            resourceInputs["credentials"] = args ? args.credentials : undefined;
-            resourceInputs["disabled"] = args ? args.disabled : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["configuration"] = args?.configuration;
+            resourceInputs["credentials"] = args?.credentials;
+            resourceInputs["disabled"] = args?.disabled;
+            resourceInputs["name"] = args?.name;
             resourceInputs["channel"] = undefined /*out*/;
             resourceInputs["tenant"] = undefined /*out*/;
         }

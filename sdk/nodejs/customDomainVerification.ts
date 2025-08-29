@@ -45,15 +45,15 @@ export class CustomDomainVerification extends pulumi.CustomResource {
         return obj['__pulumiType'] === CustomDomainVerification.__pulumiType;
     }
 
-    public /*out*/ readonly cnameApiKey!: pulumi.Output<string>;
+    declare public /*out*/ readonly cnameApiKey: pulumi.Output<string>;
     /**
      * ID of the custom domain resource.
      */
-    public readonly customDomainId!: pulumi.Output<string>;
+    declare public readonly customDomainId: pulumi.Output<string>;
     /**
      * The DNS name of the Auth0 origin server that handles traffic for the custom domain.
      */
-    public /*out*/ readonly originDomainName!: pulumi.Output<string>;
+    declare public /*out*/ readonly originDomainName: pulumi.Output<string>;
 
     /**
      * Create a CustomDomainVerification resource with the given unique name, arguments, and options.
@@ -68,15 +68,15 @@ export class CustomDomainVerification extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CustomDomainVerificationState | undefined;
-            resourceInputs["cnameApiKey"] = state ? state.cnameApiKey : undefined;
-            resourceInputs["customDomainId"] = state ? state.customDomainId : undefined;
-            resourceInputs["originDomainName"] = state ? state.originDomainName : undefined;
+            resourceInputs["cnameApiKey"] = state?.cnameApiKey;
+            resourceInputs["customDomainId"] = state?.customDomainId;
+            resourceInputs["originDomainName"] = state?.originDomainName;
         } else {
             const args = argsOrState as CustomDomainVerificationArgs | undefined;
-            if ((!args || args.customDomainId === undefined) && !opts.urn) {
+            if (args?.customDomainId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'customDomainId'");
             }
-            resourceInputs["customDomainId"] = args ? args.customDomainId : undefined;
+            resourceInputs["customDomainId"] = args?.customDomainId;
             resourceInputs["cnameApiKey"] = undefined /*out*/;
             resourceInputs["originDomainName"] = undefined /*out*/;
         }

@@ -82,11 +82,11 @@ export class OrganizationMembers extends pulumi.CustomResource {
     /**
      * Add user ID(s) directly from the tenant to become members of the organization.
      */
-    public readonly members!: pulumi.Output<string[]>;
+    declare public readonly members: pulumi.Output<string[]>;
     /**
      * The ID of the organization to assign the members to.
      */
-    public readonly organizationId!: pulumi.Output<string>;
+    declare public readonly organizationId: pulumi.Output<string>;
 
     /**
      * Create a OrganizationMembers resource with the given unique name, arguments, and options.
@@ -101,18 +101,18 @@ export class OrganizationMembers extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OrganizationMembersState | undefined;
-            resourceInputs["members"] = state ? state.members : undefined;
-            resourceInputs["organizationId"] = state ? state.organizationId : undefined;
+            resourceInputs["members"] = state?.members;
+            resourceInputs["organizationId"] = state?.organizationId;
         } else {
             const args = argsOrState as OrganizationMembersArgs | undefined;
-            if ((!args || args.members === undefined) && !opts.urn) {
+            if (args?.members === undefined && !opts.urn) {
                 throw new Error("Missing required property 'members'");
             }
-            if ((!args || args.organizationId === undefined) && !opts.urn) {
+            if (args?.organizationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
-            resourceInputs["members"] = args ? args.members : undefined;
-            resourceInputs["organizationId"] = args ? args.organizationId : undefined;
+            resourceInputs["members"] = args?.members;
+            resourceInputs["organizationId"] = args?.organizationId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(OrganizationMembers.__pulumiType, name, resourceInputs, opts);

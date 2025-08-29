@@ -56,23 +56,23 @@ export class UserPermission extends pulumi.CustomResource {
     /**
      * Description of the permission.
      */
-    public /*out*/ readonly description!: pulumi.Output<string>;
+    declare public /*out*/ readonly description: pulumi.Output<string>;
     /**
      * Name of the permission.
      */
-    public readonly permission!: pulumi.Output<string>;
+    declare public readonly permission: pulumi.Output<string>;
     /**
      * Identifier of the resource server that the permission is associated with.
      */
-    public readonly resourceServerIdentifier!: pulumi.Output<string>;
+    declare public readonly resourceServerIdentifier: pulumi.Output<string>;
     /**
      * Name of the resource server that the permission is associated with.
      */
-    public /*out*/ readonly resourceServerName!: pulumi.Output<string>;
+    declare public /*out*/ readonly resourceServerName: pulumi.Output<string>;
     /**
      * ID of the user to associate the permission to.
      */
-    public readonly userId!: pulumi.Output<string>;
+    declare public readonly userId: pulumi.Output<string>;
 
     /**
      * Create a UserPermission resource with the given unique name, arguments, and options.
@@ -87,25 +87,25 @@ export class UserPermission extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserPermissionState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["permission"] = state ? state.permission : undefined;
-            resourceInputs["resourceServerIdentifier"] = state ? state.resourceServerIdentifier : undefined;
-            resourceInputs["resourceServerName"] = state ? state.resourceServerName : undefined;
-            resourceInputs["userId"] = state ? state.userId : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["permission"] = state?.permission;
+            resourceInputs["resourceServerIdentifier"] = state?.resourceServerIdentifier;
+            resourceInputs["resourceServerName"] = state?.resourceServerName;
+            resourceInputs["userId"] = state?.userId;
         } else {
             const args = argsOrState as UserPermissionArgs | undefined;
-            if ((!args || args.permission === undefined) && !opts.urn) {
+            if (args?.permission === undefined && !opts.urn) {
                 throw new Error("Missing required property 'permission'");
             }
-            if ((!args || args.resourceServerIdentifier === undefined) && !opts.urn) {
+            if (args?.resourceServerIdentifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceServerIdentifier'");
             }
-            if ((!args || args.userId === undefined) && !opts.urn) {
+            if (args?.userId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userId'");
             }
-            resourceInputs["permission"] = args ? args.permission : undefined;
-            resourceInputs["resourceServerIdentifier"] = args ? args.resourceServerIdentifier : undefined;
-            resourceInputs["userId"] = args ? args.userId : undefined;
+            resourceInputs["permission"] = args?.permission;
+            resourceInputs["resourceServerIdentifier"] = args?.resourceServerIdentifier;
+            resourceInputs["userId"] = args?.userId;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["resourceServerName"] = undefined /*out*/;
         }

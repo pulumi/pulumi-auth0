@@ -107,11 +107,11 @@ export class OrganizationClientGrant extends pulumi.CustomResource {
     /**
      * A Client Grant ID to add to the organization.
      */
-    public readonly grantId!: pulumi.Output<string>;
+    declare public readonly grantId: pulumi.Output<string>;
     /**
      * The ID of the organization to associate the client grant.
      */
-    public readonly organizationId!: pulumi.Output<string>;
+    declare public readonly organizationId: pulumi.Output<string>;
 
     /**
      * Create a OrganizationClientGrant resource with the given unique name, arguments, and options.
@@ -126,18 +126,18 @@ export class OrganizationClientGrant extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OrganizationClientGrantState | undefined;
-            resourceInputs["grantId"] = state ? state.grantId : undefined;
-            resourceInputs["organizationId"] = state ? state.organizationId : undefined;
+            resourceInputs["grantId"] = state?.grantId;
+            resourceInputs["organizationId"] = state?.organizationId;
         } else {
             const args = argsOrState as OrganizationClientGrantArgs | undefined;
-            if ((!args || args.grantId === undefined) && !opts.urn) {
+            if (args?.grantId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'grantId'");
             }
-            if ((!args || args.organizationId === undefined) && !opts.urn) {
+            if (args?.organizationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
-            resourceInputs["grantId"] = args ? args.grantId : undefined;
-            resourceInputs["organizationId"] = args ? args.organizationId : undefined;
+            resourceInputs["grantId"] = args?.grantId;
+            resourceInputs["organizationId"] = args?.organizationId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(OrganizationClientGrant.__pulumiType, name, resourceInputs, opts);

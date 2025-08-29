@@ -78,11 +78,11 @@ export class OrganizationMember extends pulumi.CustomResource {
     /**
      * The ID of the organization to assign the member to.
      */
-    public readonly organizationId!: pulumi.Output<string>;
+    declare public readonly organizationId: pulumi.Output<string>;
     /**
      * ID of the user to add as an organization member.
      */
-    public readonly userId!: pulumi.Output<string>;
+    declare public readonly userId: pulumi.Output<string>;
 
     /**
      * Create a OrganizationMember resource with the given unique name, arguments, and options.
@@ -97,18 +97,18 @@ export class OrganizationMember extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OrganizationMemberState | undefined;
-            resourceInputs["organizationId"] = state ? state.organizationId : undefined;
-            resourceInputs["userId"] = state ? state.userId : undefined;
+            resourceInputs["organizationId"] = state?.organizationId;
+            resourceInputs["userId"] = state?.userId;
         } else {
             const args = argsOrState as OrganizationMemberArgs | undefined;
-            if ((!args || args.organizationId === undefined) && !opts.urn) {
+            if (args?.organizationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
-            if ((!args || args.userId === undefined) && !opts.urn) {
+            if (args?.userId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userId'");
             }
-            resourceInputs["organizationId"] = args ? args.organizationId : undefined;
-            resourceInputs["userId"] = args ? args.userId : undefined;
+            resourceInputs["organizationId"] = args?.organizationId;
+            resourceInputs["userId"] = args?.userId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(OrganizationMember.__pulumiType, name, resourceInputs, opts);

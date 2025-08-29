@@ -80,31 +80,31 @@ export class OrganizationConnection extends pulumi.CustomResource {
     /**
      * When `true`, all users that log in with this connection will be automatically granted membership in the organization. When `false`, users must be granted membership in the organization before logging in with this connection.
      */
-    public readonly assignMembershipOnLogin!: pulumi.Output<boolean | undefined>;
+    declare public readonly assignMembershipOnLogin: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the connection to enable for the organization.
      */
-    public readonly connectionId!: pulumi.Output<string>;
+    declare public readonly connectionId: pulumi.Output<string>;
     /**
      * Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `isSignupEnabled` can only be `true` if `assignMembershipOnLogin` is `true`.
      */
-    public readonly isSignupEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly isSignupEnabled: pulumi.Output<boolean | undefined>;
     /**
      * The name of the enabled connection.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The ID of the organization to enable the connection for.
      */
-    public readonly organizationId!: pulumi.Output<string>;
+    declare public readonly organizationId: pulumi.Output<string>;
     /**
      * Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
      */
-    public readonly showAsButton!: pulumi.Output<boolean | undefined>;
+    declare public readonly showAsButton: pulumi.Output<boolean | undefined>;
     /**
      * The strategy of the enabled connection.
      */
-    public /*out*/ readonly strategy!: pulumi.Output<string>;
+    declare public /*out*/ readonly strategy: pulumi.Output<string>;
 
     /**
      * Create a OrganizationConnection resource with the given unique name, arguments, and options.
@@ -119,26 +119,26 @@ export class OrganizationConnection extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OrganizationConnectionState | undefined;
-            resourceInputs["assignMembershipOnLogin"] = state ? state.assignMembershipOnLogin : undefined;
-            resourceInputs["connectionId"] = state ? state.connectionId : undefined;
-            resourceInputs["isSignupEnabled"] = state ? state.isSignupEnabled : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["organizationId"] = state ? state.organizationId : undefined;
-            resourceInputs["showAsButton"] = state ? state.showAsButton : undefined;
-            resourceInputs["strategy"] = state ? state.strategy : undefined;
+            resourceInputs["assignMembershipOnLogin"] = state?.assignMembershipOnLogin;
+            resourceInputs["connectionId"] = state?.connectionId;
+            resourceInputs["isSignupEnabled"] = state?.isSignupEnabled;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["organizationId"] = state?.organizationId;
+            resourceInputs["showAsButton"] = state?.showAsButton;
+            resourceInputs["strategy"] = state?.strategy;
         } else {
             const args = argsOrState as OrganizationConnectionArgs | undefined;
-            if ((!args || args.connectionId === undefined) && !opts.urn) {
+            if (args?.connectionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'connectionId'");
             }
-            if ((!args || args.organizationId === undefined) && !opts.urn) {
+            if (args?.organizationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
-            resourceInputs["assignMembershipOnLogin"] = args ? args.assignMembershipOnLogin : undefined;
-            resourceInputs["connectionId"] = args ? args.connectionId : undefined;
-            resourceInputs["isSignupEnabled"] = args ? args.isSignupEnabled : undefined;
-            resourceInputs["organizationId"] = args ? args.organizationId : undefined;
-            resourceInputs["showAsButton"] = args ? args.showAsButton : undefined;
+            resourceInputs["assignMembershipOnLogin"] = args?.assignMembershipOnLogin;
+            resourceInputs["connectionId"] = args?.connectionId;
+            resourceInputs["isSignupEnabled"] = args?.isSignupEnabled;
+            resourceInputs["organizationId"] = args?.organizationId;
+            resourceInputs["showAsButton"] = args?.showAsButton;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["strategy"] = undefined /*out*/;
         }

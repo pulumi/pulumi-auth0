@@ -146,35 +146,35 @@ export class Form extends pulumi.CustomResource {
     /**
      * Submission configuration of the form. (JSON encoded)
      */
-    public readonly ending!: pulumi.Output<string | undefined>;
+    declare public readonly ending: pulumi.Output<string | undefined>;
     /**
      * Language specific configuration for the form.
      */
-    public readonly languages!: pulumi.Output<outputs.FormLanguage[] | undefined>;
+    declare public readonly languages: pulumi.Output<outputs.FormLanguage[] | undefined>;
     /**
      * Message specific configuration for the form.
      */
-    public readonly messages!: pulumi.Output<outputs.FormMessage[] | undefined>;
+    declare public readonly messages: pulumi.Output<outputs.FormMessage[] | undefined>;
     /**
      * Name of the form.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Nodes of the form. (JSON encoded)
      */
-    public readonly nodes!: pulumi.Output<string | undefined>;
+    declare public readonly nodes: pulumi.Output<string | undefined>;
     /**
      * Input setup of the form. (JSON encoded)
      */
-    public readonly start!: pulumi.Output<string | undefined>;
+    declare public readonly start: pulumi.Output<string | undefined>;
     /**
      * Style specific configuration for the form. (JSON encoded)
      */
-    public readonly style!: pulumi.Output<string | undefined>;
+    declare public readonly style: pulumi.Output<string | undefined>;
     /**
      * Translations of the form. (JSON encoded)
      */
-    public readonly translations!: pulumi.Output<string | undefined>;
+    declare public readonly translations: pulumi.Output<string | undefined>;
 
     /**
      * Create a Form resource with the given unique name, arguments, and options.
@@ -189,24 +189,24 @@ export class Form extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FormState | undefined;
-            resourceInputs["ending"] = state ? state.ending : undefined;
-            resourceInputs["languages"] = state ? state.languages : undefined;
-            resourceInputs["messages"] = state ? state.messages : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["nodes"] = state ? state.nodes : undefined;
-            resourceInputs["start"] = state ? state.start : undefined;
-            resourceInputs["style"] = state ? state.style : undefined;
-            resourceInputs["translations"] = state ? state.translations : undefined;
+            resourceInputs["ending"] = state?.ending;
+            resourceInputs["languages"] = state?.languages;
+            resourceInputs["messages"] = state?.messages;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["nodes"] = state?.nodes;
+            resourceInputs["start"] = state?.start;
+            resourceInputs["style"] = state?.style;
+            resourceInputs["translations"] = state?.translations;
         } else {
             const args = argsOrState as FormArgs | undefined;
-            resourceInputs["ending"] = args ? args.ending : undefined;
-            resourceInputs["languages"] = args ? args.languages : undefined;
-            resourceInputs["messages"] = args ? args.messages : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["nodes"] = args ? args.nodes : undefined;
-            resourceInputs["start"] = args ? args.start : undefined;
-            resourceInputs["style"] = args ? args.style : undefined;
-            resourceInputs["translations"] = args ? args.translations : undefined;
+            resourceInputs["ending"] = args?.ending;
+            resourceInputs["languages"] = args?.languages;
+            resourceInputs["messages"] = args?.messages;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["nodes"] = args?.nodes;
+            resourceInputs["start"] = args?.start;
+            resourceInputs["style"] = args?.style;
+            resourceInputs["translations"] = args?.translations;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Form.__pulumiType, name, resourceInputs, opts);

@@ -76,75 +76,75 @@ export class User extends pulumi.CustomResource {
     /**
      * Custom fields that store info about the user that impact the user's core functionality, such as how an application functions or what the user can access. Examples include support plans and IDs for external accounts.
      */
-    public readonly appMetadata!: pulumi.Output<string | undefined>;
+    declare public readonly appMetadata: pulumi.Output<string | undefined>;
     /**
      * Indicates whether the user is blocked or not.
      */
-    public readonly blocked!: pulumi.Output<boolean | undefined>;
+    declare public readonly blocked: pulumi.Output<boolean | undefined>;
     /**
      * Name of the connection from which the user information was sourced.
      */
-    public readonly connectionName!: pulumi.Output<string>;
+    declare public readonly connectionName: pulumi.Output<string>;
     /**
      * Sets the `Auth0-Custom-Domain` header on all requests for this resource. Global setting of provider takes precedence over resource specific param, if both are set.
      */
-    public readonly customDomainHeader!: pulumi.Output<string | undefined>;
+    declare public readonly customDomainHeader: pulumi.Output<string | undefined>;
     /**
      * Email address of the user.
      */
-    public readonly email!: pulumi.Output<string | undefined>;
+    declare public readonly email: pulumi.Output<string | undefined>;
     /**
      * Indicates whether the email address has been verified.
      */
-    public readonly emailVerified!: pulumi.Output<boolean | undefined>;
+    declare public readonly emailVerified: pulumi.Output<boolean | undefined>;
     /**
      * Family name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
      */
-    public readonly familyName!: pulumi.Output<string | undefined>;
+    declare public readonly familyName: pulumi.Output<string | undefined>;
     /**
      * Given name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
      */
-    public readonly givenName!: pulumi.Output<string | undefined>;
+    declare public readonly givenName: pulumi.Output<string | undefined>;
     /**
      * Name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Preferred nickname or alias of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
      */
-    public readonly nickname!: pulumi.Output<string>;
+    declare public readonly nickname: pulumi.Output<string>;
     /**
      * Initial password for this user. Required for non-passwordless connections (SMS and email).
      */
-    public readonly password!: pulumi.Output<string | undefined>;
+    declare public readonly password: pulumi.Output<string | undefined>;
     /**
      * Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
      */
-    public readonly phoneNumber!: pulumi.Output<string | undefined>;
+    declare public readonly phoneNumber: pulumi.Output<string | undefined>;
     /**
      * Indicates whether the phone number has been verified.
      */
-    public readonly phoneVerified!: pulumi.Output<boolean | undefined>;
+    declare public readonly phoneVerified: pulumi.Output<boolean | undefined>;
     /**
      * Picture of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
      */
-    public readonly picture!: pulumi.Output<string>;
+    declare public readonly picture: pulumi.Output<string>;
     /**
      * ID of the user.
      */
-    public readonly userId!: pulumi.Output<string>;
+    declare public readonly userId: pulumi.Output<string>;
     /**
      * Custom fields that store info about the user that does not impact a user's core functionality. Examples include work address, home address, and user preferences.
      */
-    public readonly userMetadata!: pulumi.Output<string | undefined>;
+    declare public readonly userMetadata: pulumi.Output<string | undefined>;
     /**
      * Username of the user. Only valid if the connection requires a username.
      */
-    public readonly username!: pulumi.Output<string | undefined>;
+    declare public readonly username: pulumi.Output<string | undefined>;
     /**
      * Indicates whether the user will receive a verification email after creation. Overrides behavior of `emailVerified` parameter.
      */
-    public readonly verifyEmail!: pulumi.Output<boolean | undefined>;
+    declare public readonly verifyEmail: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a User resource with the given unique name, arguments, and options.
@@ -159,47 +159,47 @@ export class User extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserState | undefined;
-            resourceInputs["appMetadata"] = state ? state.appMetadata : undefined;
-            resourceInputs["blocked"] = state ? state.blocked : undefined;
-            resourceInputs["connectionName"] = state ? state.connectionName : undefined;
-            resourceInputs["customDomainHeader"] = state ? state.customDomainHeader : undefined;
-            resourceInputs["email"] = state ? state.email : undefined;
-            resourceInputs["emailVerified"] = state ? state.emailVerified : undefined;
-            resourceInputs["familyName"] = state ? state.familyName : undefined;
-            resourceInputs["givenName"] = state ? state.givenName : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["nickname"] = state ? state.nickname : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["phoneNumber"] = state ? state.phoneNumber : undefined;
-            resourceInputs["phoneVerified"] = state ? state.phoneVerified : undefined;
-            resourceInputs["picture"] = state ? state.picture : undefined;
-            resourceInputs["userId"] = state ? state.userId : undefined;
-            resourceInputs["userMetadata"] = state ? state.userMetadata : undefined;
-            resourceInputs["username"] = state ? state.username : undefined;
-            resourceInputs["verifyEmail"] = state ? state.verifyEmail : undefined;
+            resourceInputs["appMetadata"] = state?.appMetadata;
+            resourceInputs["blocked"] = state?.blocked;
+            resourceInputs["connectionName"] = state?.connectionName;
+            resourceInputs["customDomainHeader"] = state?.customDomainHeader;
+            resourceInputs["email"] = state?.email;
+            resourceInputs["emailVerified"] = state?.emailVerified;
+            resourceInputs["familyName"] = state?.familyName;
+            resourceInputs["givenName"] = state?.givenName;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["nickname"] = state?.nickname;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["phoneNumber"] = state?.phoneNumber;
+            resourceInputs["phoneVerified"] = state?.phoneVerified;
+            resourceInputs["picture"] = state?.picture;
+            resourceInputs["userId"] = state?.userId;
+            resourceInputs["userMetadata"] = state?.userMetadata;
+            resourceInputs["username"] = state?.username;
+            resourceInputs["verifyEmail"] = state?.verifyEmail;
         } else {
             const args = argsOrState as UserArgs | undefined;
-            if ((!args || args.connectionName === undefined) && !opts.urn) {
+            if (args?.connectionName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'connectionName'");
             }
-            resourceInputs["appMetadata"] = args ? args.appMetadata : undefined;
-            resourceInputs["blocked"] = args ? args.blocked : undefined;
-            resourceInputs["connectionName"] = args ? args.connectionName : undefined;
-            resourceInputs["customDomainHeader"] = args ? args.customDomainHeader : undefined;
-            resourceInputs["email"] = args ? args.email : undefined;
-            resourceInputs["emailVerified"] = args ? args.emailVerified : undefined;
-            resourceInputs["familyName"] = args ? args.familyName : undefined;
-            resourceInputs["givenName"] = args ? args.givenName : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["nickname"] = args ? args.nickname : undefined;
+            resourceInputs["appMetadata"] = args?.appMetadata;
+            resourceInputs["blocked"] = args?.blocked;
+            resourceInputs["connectionName"] = args?.connectionName;
+            resourceInputs["customDomainHeader"] = args?.customDomainHeader;
+            resourceInputs["email"] = args?.email;
+            resourceInputs["emailVerified"] = args?.emailVerified;
+            resourceInputs["familyName"] = args?.familyName;
+            resourceInputs["givenName"] = args?.givenName;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["nickname"] = args?.nickname;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["phoneNumber"] = args ? args.phoneNumber : undefined;
-            resourceInputs["phoneVerified"] = args ? args.phoneVerified : undefined;
-            resourceInputs["picture"] = args ? args.picture : undefined;
-            resourceInputs["userId"] = args ? args.userId : undefined;
-            resourceInputs["userMetadata"] = args ? args.userMetadata : undefined;
-            resourceInputs["username"] = args ? args.username : undefined;
-            resourceInputs["verifyEmail"] = args ? args.verifyEmail : undefined;
+            resourceInputs["phoneNumber"] = args?.phoneNumber;
+            resourceInputs["phoneVerified"] = args?.phoneVerified;
+            resourceInputs["picture"] = args?.picture;
+            resourceInputs["userId"] = args?.userId;
+            resourceInputs["userMetadata"] = args?.userMetadata;
+            resourceInputs["username"] = args?.username;
+            resourceInputs["verifyEmail"] = args?.verifyEmail;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["password"] };
