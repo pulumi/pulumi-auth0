@@ -763,7 +763,7 @@ export class Connection extends pulumi.CustomResource {
      */
     declare public readonly metadata: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Name of the connection.
+     * Name of the connection. This value is immutable and changing it requires the creation of a new resource.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
@@ -840,7 +840,7 @@ export interface ConnectionState {
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Name of the connection.
+     * Name of the connection. This value is immutable and changing it requires the creation of a new resource.
      */
     name?: pulumi.Input<string>;
     /**
@@ -878,7 +878,7 @@ export interface ConnectionArgs {
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Name of the connection.
+     * Name of the connection. This value is immutable and changing it requires the creation of a new resource.
      */
     name?: pulumi.Input<string>;
     /**

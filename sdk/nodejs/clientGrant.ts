@@ -7,6 +7,64 @@ import * as utilities from "./utilities";
 /**
  * Auth0 uses various grant types, or methods by which you grant limited access to your resources to another entity without exposing credentials. The OAuth 2.0 protocol supports several types of grants, which allow different types of access. This resource allows you to create and manage client grants used with configured Auth0 clients.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * // The following example grants a client the "create:foo" and "create:bar" permissions (scopes).
+ * const myClient = new auth0.Client("my_client", {name: "Example Application - Client Grant (Managed by Terraform)"});
+ * const myResourceServer = new auth0.ResourceServer("my_resource_server", {
+ *     name: "Example Resource Server - Client Grant (Managed by Terraform)",
+ *     identifier: "https://api.example.com/client-grant",
+ *     authorizationDetails: [
+ *         {
+ *             type: "payment",
+ *         },
+ *         {
+ *             type: "shipping",
+ *         },
+ *     ],
+ *     subjectTypeAuthorization: {
+ *         user: {
+ *             policy: "allow_all",
+ *         },
+ *         client: {
+ *             policy: "require_client_grant",
+ *         },
+ *     },
+ * });
+ * const myScopes = new auth0.ResourceServerScopes("my_scopes", {
+ *     resourceServerIdentifier: myResourceServer.identifier,
+ *     scopes: [
+ *         {
+ *             name: "read:foo",
+ *             description: "Can read Foo",
+ *         },
+ *         {
+ *             name: "create:foo",
+ *             description: "Can create Foo",
+ *         },
+ *     ],
+ * }, {
+ *     dependsOn: [myResourceServer],
+ * });
+ * const myClientGrant = new auth0.ClientGrant("my_client_grant", {
+ *     clientId: myClient.id,
+ *     audience: myResourceServer.identifier,
+ *     scopes: [
+ *         "create:foo",
+ *         "read:foo",
+ *     ],
+ *     subjectType: "user",
+ *     authorizationDetailsTypes: [
+ *         "payment",
+ *         "shipping",
+ *     ],
+ * });
+ * ```
+ *
  * ## Import
  *
  * This resource can be imported by specifying the client grant ID.
@@ -56,6 +114,10 @@ export class ClientGrant extends pulumi.CustomResource {
      */
     declare public readonly audience: pulumi.Output<string>;
     /**
+     * Defines the types of authorization details allowed for this client grant.
+     */
+    declare public readonly authorizationDetailsTypes: pulumi.Output<string[] | undefined>;
+    /**
      * ID of the client for this grant.
      */
     declare public readonly clientId: pulumi.Output<string>;
@@ -67,6 +129,10 @@ export class ClientGrant extends pulumi.CustomResource {
      * Permissions (scopes) included in this grant.
      */
     declare public readonly scopes: pulumi.Output<string[]>;
+    /**
+     * Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
+     */
+    declare public readonly subjectType: pulumi.Output<string | undefined>;
 
     /**
      * Create a ClientGrant resource with the given unique name, arguments, and options.
@@ -83,9 +149,11 @@ export class ClientGrant extends pulumi.CustomResource {
             const state = argsOrState as ClientGrantState | undefined;
             resourceInputs["allowAnyOrganization"] = state?.allowAnyOrganization;
             resourceInputs["audience"] = state?.audience;
+            resourceInputs["authorizationDetailsTypes"] = state?.authorizationDetailsTypes;
             resourceInputs["clientId"] = state?.clientId;
             resourceInputs["organizationUsage"] = state?.organizationUsage;
             resourceInputs["scopes"] = state?.scopes;
+            resourceInputs["subjectType"] = state?.subjectType;
         } else {
             const args = argsOrState as ClientGrantArgs | undefined;
             if (args?.audience === undefined && !opts.urn) {
@@ -99,9 +167,11 @@ export class ClientGrant extends pulumi.CustomResource {
             }
             resourceInputs["allowAnyOrganization"] = args?.allowAnyOrganization;
             resourceInputs["audience"] = args?.audience;
+            resourceInputs["authorizationDetailsTypes"] = args?.authorizationDetailsTypes;
             resourceInputs["clientId"] = args?.clientId;
             resourceInputs["organizationUsage"] = args?.organizationUsage;
             resourceInputs["scopes"] = args?.scopes;
+            resourceInputs["subjectType"] = args?.subjectType;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ClientGrant.__pulumiType, name, resourceInputs, opts);
@@ -121,6 +191,10 @@ export interface ClientGrantState {
      */
     audience?: pulumi.Input<string>;
     /**
+     * Defines the types of authorization details allowed for this client grant.
+     */
+    authorizationDetailsTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * ID of the client for this grant.
      */
     clientId?: pulumi.Input<string>;
@@ -132,6 +206,10 @@ export interface ClientGrantState {
      * Permissions (scopes) included in this grant.
      */
     scopes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
+     */
+    subjectType?: pulumi.Input<string>;
 }
 
 /**
@@ -147,6 +225,10 @@ export interface ClientGrantArgs {
      */
     audience: pulumi.Input<string>;
     /**
+     * Defines the types of authorization details allowed for this client grant.
+     */
+    authorizationDetailsTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * ID of the client for this grant.
      */
     clientId: pulumi.Input<string>;
@@ -158,4 +240,8 @@ export interface ClientGrantArgs {
      * Permissions (scopes) included in this grant.
      */
     scopes: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
+     */
+    subjectType?: pulumi.Input<string>;
 }

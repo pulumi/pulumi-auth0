@@ -4996,6 +4996,31 @@ export interface GetResourceServerScope {
     name: string;
 }
 
+export interface GetResourceServerSubjectTypeAuthorization {
+    /**
+     * Client authorization policies for the resource server.
+     */
+    clients: outputs.GetResourceServerSubjectTypeAuthorizationClient[];
+    /**
+     * User authorization policies for the resource server.
+     */
+    users: outputs.GetResourceServerSubjectTypeAuthorizationUser[];
+}
+
+export interface GetResourceServerSubjectTypeAuthorizationClient {
+    /**
+     * Client flows policy. One of `denyAll`, `requireClientGrant`.
+     */
+    policy: string;
+}
+
+export interface GetResourceServerSubjectTypeAuthorizationUser {
+    /**
+     * User flows policy. One of `allowAll`, `denyAll`, `requireClientGrant`.
+     */
+    policy: string;
+}
+
 export interface GetResourceServerTokenEncryption {
     /**
      * Disable token encryption.
@@ -6008,6 +6033,31 @@ export interface ResourceServerScopesScope {
      * Name of the scope (permission). Examples include `read:appointments` or `delete:appointments`.
      */
     name: string;
+}
+
+export interface ResourceServerSubjectTypeAuthorization {
+    /**
+     * Client authorization policies for the resource server.
+     */
+    client?: outputs.ResourceServerSubjectTypeAuthorizationClient;
+    /**
+     * User authorization policies for the resource server.
+     */
+    user?: outputs.ResourceServerSubjectTypeAuthorizationUser;
+}
+
+export interface ResourceServerSubjectTypeAuthorizationClient {
+    /**
+     * Client flows policy. One of `denyAll`, `requireClientGrant`.
+     */
+    policy?: string;
+}
+
+export interface ResourceServerSubjectTypeAuthorizationUser {
+    /**
+     * User flows policy. One of `allowAll`, `denyAll`, `requireClientGrant`.
+     */
+    policy?: string;
 }
 
 export interface ResourceServerTokenEncryption {

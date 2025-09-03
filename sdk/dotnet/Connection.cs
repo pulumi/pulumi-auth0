@@ -968,7 +968,7 @@ namespace Pulumi.Auth0
         public Output<ImmutableDictionary<string, string>?> Metadata { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the connection.
+        /// Name of the connection. This value is immutable and changing it requires the creation of a new resource.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -1068,7 +1068,7 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// Name of the connection.
+        /// Name of the connection. This value is immutable and changing it requires the creation of a new resource.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -1136,7 +1136,7 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// Name of the connection.
+        /// Name of the connection. This value is immutable and changing it requires the creation of a new resource.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

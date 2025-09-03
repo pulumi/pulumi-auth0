@@ -35,7 +35,7 @@ class ConnectionArgs:
         :param pulumi.Input[_builtins.str] display_name: Name used in login screen.
         :param pulumi.Input[_builtins.bool] is_domain_connection: Indicates whether the connection is domain level.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Metadata associated with the connection, in the form of a map of string values (max 255 chars).
-        :param pulumi.Input[_builtins.str] name: Name of the connection.
+        :param pulumi.Input[_builtins.str] name: Name of the connection. This value is immutable and changing it requires the creation of a new resource.
         :param pulumi.Input['ConnectionOptionsArgs'] options: Configuration settings for connection options.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] realms: Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
         :param pulumi.Input[_builtins.bool] show_as_button: Display connection as a button. Only available on enterprise connections.
@@ -108,7 +108,7 @@ class ConnectionArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Name of the connection.
+        Name of the connection. This value is immutable and changing it requires the creation of a new resource.
         """
         return pulumi.get(self, "name")
 
@@ -169,7 +169,7 @@ class _ConnectionState:
         :param pulumi.Input[_builtins.str] display_name: Name used in login screen.
         :param pulumi.Input[_builtins.bool] is_domain_connection: Indicates whether the connection is domain level.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Metadata associated with the connection, in the form of a map of string values (max 255 chars).
-        :param pulumi.Input[_builtins.str] name: Name of the connection.
+        :param pulumi.Input[_builtins.str] name: Name of the connection. This value is immutable and changing it requires the creation of a new resource.
         :param pulumi.Input['ConnectionOptionsArgs'] options: Configuration settings for connection options.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] realms: Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
         :param pulumi.Input[_builtins.bool] show_as_button: Display connection as a button. Only available on enterprise connections.
@@ -232,7 +232,7 @@ class _ConnectionState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Name of the connection.
+        Name of the connection. This value is immutable and changing it requires the creation of a new resource.
         """
         return pulumi.get(self, "name")
 
@@ -1016,7 +1016,7 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] display_name: Name used in login screen.
         :param pulumi.Input[_builtins.bool] is_domain_connection: Indicates whether the connection is domain level.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Metadata associated with the connection, in the form of a map of string values (max 255 chars).
-        :param pulumi.Input[_builtins.str] name: Name of the connection.
+        :param pulumi.Input[_builtins.str] name: Name of the connection. This value is immutable and changing it requires the creation of a new resource.
         :param pulumi.Input[Union['ConnectionOptionsArgs', 'ConnectionOptionsArgsDict']] options: Configuration settings for connection options.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] realms: Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
         :param pulumi.Input[_builtins.bool] show_as_button: Display connection as a button. Only available on enterprise connections.
@@ -1805,7 +1805,7 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] display_name: Name used in login screen.
         :param pulumi.Input[_builtins.bool] is_domain_connection: Indicates whether the connection is domain level.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Metadata associated with the connection, in the form of a map of string values (max 255 chars).
-        :param pulumi.Input[_builtins.str] name: Name of the connection.
+        :param pulumi.Input[_builtins.str] name: Name of the connection. This value is immutable and changing it requires the creation of a new resource.
         :param pulumi.Input[Union['ConnectionOptionsArgs', 'ConnectionOptionsArgsDict']] options: Configuration settings for connection options.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] realms: Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
         :param pulumi.Input[_builtins.bool] show_as_button: Display connection as a button. Only available on enterprise connections.
@@ -1853,7 +1853,7 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        Name of the connection.
+        Name of the connection. This value is immutable and changing it requires the creation of a new resource.
         """
         return pulumi.get(self, "name")
 

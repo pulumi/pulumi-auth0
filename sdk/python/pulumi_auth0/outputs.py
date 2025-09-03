@@ -174,6 +174,9 @@ __all__ = [
     'ResourceServerAuthorizationDetail',
     'ResourceServerProofOfPossession',
     'ResourceServerScopesScope',
+    'ResourceServerSubjectTypeAuthorization',
+    'ResourceServerSubjectTypeAuthorizationClient',
+    'ResourceServerSubjectTypeAuthorizationUser',
     'ResourceServerTokenEncryption',
     'ResourceServerTokenEncryptionEncryptionKey',
     'RolePermissionsPermission',
@@ -342,6 +345,9 @@ __all__ = [
     'GetResourceServerAuthorizationDetailResult',
     'GetResourceServerProofOfPossessionResult',
     'GetResourceServerScopeResult',
+    'GetResourceServerSubjectTypeAuthorizationResult',
+    'GetResourceServerSubjectTypeAuthorizationClientResult',
+    'GetResourceServerSubjectTypeAuthorizationUserResult',
     'GetResourceServerTokenEncryptionResult',
     'GetResourceServerTokenEncryptionEncryptionKeyResult',
     'GetRolePermissionResult',
@@ -11148,6 +11154,75 @@ class ResourceServerScopesScope(dict):
 
 
 @pulumi.output_type
+class ResourceServerSubjectTypeAuthorization(dict):
+    def __init__(__self__, *,
+                 client: Optional['outputs.ResourceServerSubjectTypeAuthorizationClient'] = None,
+                 user: Optional['outputs.ResourceServerSubjectTypeAuthorizationUser'] = None):
+        """
+        :param 'ResourceServerSubjectTypeAuthorizationClientArgs' client: Client authorization policies for the resource server.
+        :param 'ResourceServerSubjectTypeAuthorizationUserArgs' user: User authorization policies for the resource server.
+        """
+        if client is not None:
+            pulumi.set(__self__, "client", client)
+        if user is not None:
+            pulumi.set(__self__, "user", user)
+
+    @_builtins.property
+    @pulumi.getter
+    def client(self) -> Optional['outputs.ResourceServerSubjectTypeAuthorizationClient']:
+        """
+        Client authorization policies for the resource server.
+        """
+        return pulumi.get(self, "client")
+
+    @_builtins.property
+    @pulumi.getter
+    def user(self) -> Optional['outputs.ResourceServerSubjectTypeAuthorizationUser']:
+        """
+        User authorization policies for the resource server.
+        """
+        return pulumi.get(self, "user")
+
+
+@pulumi.output_type
+class ResourceServerSubjectTypeAuthorizationClient(dict):
+    def __init__(__self__, *,
+                 policy: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str policy: Client flows policy. One of `deny_all`, `require_client_grant`.
+        """
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
+
+    @_builtins.property
+    @pulumi.getter
+    def policy(self) -> Optional[_builtins.str]:
+        """
+        Client flows policy. One of `deny_all`, `require_client_grant`.
+        """
+        return pulumi.get(self, "policy")
+
+
+@pulumi.output_type
+class ResourceServerSubjectTypeAuthorizationUser(dict):
+    def __init__(__self__, *,
+                 policy: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str policy: User flows policy. One of `allow_all`, `deny_all`, `require_client_grant`.
+        """
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
+
+    @_builtins.property
+    @pulumi.getter
+    def policy(self) -> Optional[_builtins.str]:
+        """
+        User flows policy. One of `allow_all`, `deny_all`, `require_client_grant`.
+        """
+        return pulumi.get(self, "policy")
+
+
+@pulumi.output_type
 class ResourceServerTokenEncryption(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -19648,6 +19723,71 @@ class GetResourceServerScopeResult(dict):
         Name of the permission (scope). Examples include `read:appointments` or `delete:appointments`.
         """
         return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetResourceServerSubjectTypeAuthorizationResult(dict):
+    def __init__(__self__, *,
+                 clients: Sequence['outputs.GetResourceServerSubjectTypeAuthorizationClientResult'],
+                 users: Sequence['outputs.GetResourceServerSubjectTypeAuthorizationUserResult']):
+        """
+        :param Sequence['GetResourceServerSubjectTypeAuthorizationClientArgs'] clients: Client authorization policies for the resource server.
+        :param Sequence['GetResourceServerSubjectTypeAuthorizationUserArgs'] users: User authorization policies for the resource server.
+        """
+        pulumi.set(__self__, "clients", clients)
+        pulumi.set(__self__, "users", users)
+
+    @_builtins.property
+    @pulumi.getter
+    def clients(self) -> Sequence['outputs.GetResourceServerSubjectTypeAuthorizationClientResult']:
+        """
+        Client authorization policies for the resource server.
+        """
+        return pulumi.get(self, "clients")
+
+    @_builtins.property
+    @pulumi.getter
+    def users(self) -> Sequence['outputs.GetResourceServerSubjectTypeAuthorizationUserResult']:
+        """
+        User authorization policies for the resource server.
+        """
+        return pulumi.get(self, "users")
+
+
+@pulumi.output_type
+class GetResourceServerSubjectTypeAuthorizationClientResult(dict):
+    def __init__(__self__, *,
+                 policy: _builtins.str):
+        """
+        :param _builtins.str policy: Client flows policy. One of `deny_all`, `require_client_grant`.
+        """
+        pulumi.set(__self__, "policy", policy)
+
+    @_builtins.property
+    @pulumi.getter
+    def policy(self) -> _builtins.str:
+        """
+        Client flows policy. One of `deny_all`, `require_client_grant`.
+        """
+        return pulumi.get(self, "policy")
+
+
+@pulumi.output_type
+class GetResourceServerSubjectTypeAuthorizationUserResult(dict):
+    def __init__(__self__, *,
+                 policy: _builtins.str):
+        """
+        :param _builtins.str policy: User flows policy. One of `allow_all`, `deny_all`, `require_client_grant`.
+        """
+        pulumi.set(__self__, "policy", policy)
+
+    @_builtins.property
+    @pulumi.getter
+    def policy(self) -> _builtins.str:
+        """
+        User flows policy. One of `allow_all`, `deny_all`, `require_client_grant`.
+        """
+        return pulumi.get(self, "policy")
 
 
 @pulumi.output_type

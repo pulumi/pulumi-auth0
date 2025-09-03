@@ -8,6 +8,7 @@ import com.pulumi.auth0.Utilities;
 import com.pulumi.auth0.inputs.ResourceServerState;
 import com.pulumi.auth0.outputs.ResourceServerAuthorizationDetail;
 import com.pulumi.auth0.outputs.ResourceServerProofOfPossession;
+import com.pulumi.auth0.outputs.ResourceServerSubjectTypeAuthorization;
 import com.pulumi.auth0.outputs.ResourceServerTokenEncryption;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -39,6 +40,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.auth0.inputs.ResourceServerTokenEncryptionEncryptionKeyArgs;
  * import com.pulumi.auth0.inputs.ResourceServerAuthorizationDetailArgs;
  * import com.pulumi.auth0.inputs.ResourceServerProofOfPossessionArgs;
+ * import com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationArgs;
+ * import com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationUserArgs;
+ * import com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationClientArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -82,6 +86,14 @@ import javax.annotation.Nullable;
  *             .proofOfPossession(ResourceServerProofOfPossessionArgs.builder()
  *                 .mechanism("mtls")
  *                 .required(true)
+ *                 .build())
+ *             .subjectTypeAuthorization(ResourceServerSubjectTypeAuthorizationArgs.builder()
+ *                 .user(ResourceServerSubjectTypeAuthorizationUserArgs.builder()
+ *                     .policy("allow_all")
+ *                     .build())
+ *                 .client(ResourceServerSubjectTypeAuthorizationClientArgs.builder()
+ *                     .policy("require_client_grant")
+ *                     .build())
  *                 .build())
  *             .build());
  * 
@@ -243,6 +255,20 @@ public class ResourceServer extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> skipConsentForVerifiableFirstPartyClients() {
         return this.skipConsentForVerifiableFirstPartyClients;
+    }
+    /**
+     * Authorization policies for user and client flows.
+     * 
+     */
+    @Export(name="subjectTypeAuthorization", refs={ResourceServerSubjectTypeAuthorization.class}, tree="[0]")
+    private Output<ResourceServerSubjectTypeAuthorization> subjectTypeAuthorization;
+
+    /**
+     * @return Authorization policies for user and client flows.
+     * 
+     */
+    public Output<ResourceServerSubjectTypeAuthorization> subjectTypeAuthorization() {
+        return this.subjectTypeAuthorization;
     }
     /**
      * Dialect of access tokens that should be issued for this resource server. Options include `access_token`, `rfc9068_profile`, `access_token_authz`, and `rfc9068_profile_authz`. `access_token` is a JWT containing standard Auth0 claims. `rfc9068_profile` is a JWT conforming to the IETF JWT Access Token Profile. `access_token_authz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068_profile_authz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforce_policies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).

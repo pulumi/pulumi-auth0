@@ -60,6 +60,17 @@ namespace Pulumi.Auth0
     ///             Mechanism = "mtls",
     ///             Required = true,
     ///         },
+    ///         SubjectTypeAuthorization = new Auth0.Inputs.ResourceServerSubjectTypeAuthorizationArgs
+    ///         {
+    ///             User = new Auth0.Inputs.ResourceServerSubjectTypeAuthorizationUserArgs
+    ///             {
+    ///                 Policy = "allow_all",
+    ///             },
+    ///             Client = new Auth0.Inputs.ResourceServerSubjectTypeAuthorizationClientArgs
+    ///             {
+    ///                 Policy = "require_client_grant",
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });
@@ -137,6 +148,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Output("skipConsentForVerifiableFirstPartyClients")]
         public Output<bool> SkipConsentForVerifiableFirstPartyClients { get; private set; } = null!;
+
+        /// <summary>
+        /// Authorization policies for user and client flows.
+        /// </summary>
+        [Output("subjectTypeAuthorization")]
+        public Output<Outputs.ResourceServerSubjectTypeAuthorization> SubjectTypeAuthorization { get; private set; } = null!;
 
         /// <summary>
         /// Dialect of access tokens that should be issued for this resource server. Options include `access_token`, `rfc9068_profile`, `access_token_authz`, and `rfc9068_profile_authz`. `access_token` is a JWT containing standard Auth0 claims. `rfc9068_profile` is a JWT conforming to the IETF JWT Access Token Profile. `access_token_authz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068_profile_authz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforce_policies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).
@@ -281,6 +298,12 @@ namespace Pulumi.Auth0
         public Input<bool>? SkipConsentForVerifiableFirstPartyClients { get; set; }
 
         /// <summary>
+        /// Authorization policies for user and client flows.
+        /// </summary>
+        [Input("subjectTypeAuthorization")]
+        public Input<Inputs.ResourceServerSubjectTypeAuthorizationArgs>? SubjectTypeAuthorization { get; set; }
+
+        /// <summary>
         /// Dialect of access tokens that should be issued for this resource server. Options include `access_token`, `rfc9068_profile`, `access_token_authz`, and `rfc9068_profile_authz`. `access_token` is a JWT containing standard Auth0 claims. `rfc9068_profile` is a JWT conforming to the IETF JWT Access Token Profile. `access_token_authz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068_profile_authz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforce_policies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).
         /// </summary>
         [Input("tokenDialect")]
@@ -383,6 +406,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("skipConsentForVerifiableFirstPartyClients")]
         public Input<bool>? SkipConsentForVerifiableFirstPartyClients { get; set; }
+
+        /// <summary>
+        /// Authorization policies for user and client flows.
+        /// </summary>
+        [Input("subjectTypeAuthorization")]
+        public Input<Inputs.ResourceServerSubjectTypeAuthorizationGetArgs>? SubjectTypeAuthorization { get; set; }
 
         /// <summary>
         /// Dialect of access tokens that should be issued for this resource server. Options include `access_token`, `rfc9068_profile`, `access_token_authz`, and `rfc9068_profile_authz`. `access_token` is a JWT containing standard Auth0 claims. `rfc9068_profile` is a JWT conforming to the IETF JWT Access Token Profile. `access_token_authz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068_profile_authz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforce_policies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).

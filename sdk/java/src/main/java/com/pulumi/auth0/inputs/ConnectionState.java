@@ -65,14 +65,14 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the connection.
+     * Name of the connection. This value is immutable and changing it requires the creation of a new resource.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the connection.
+     * @return Name of the connection. This value is immutable and changing it requires the creation of a new resource.
      * 
      */
     public Optional<Output<String>> name() {
@@ -234,7 +234,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the connection.
+         * @param name Name of the connection. This value is immutable and changing it requires the creation of a new resource.
          * 
          * @return builder
          * 
@@ -245,7 +245,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the connection.
+         * @param name Name of the connection. This value is immutable and changing it requires the creation of a new resource.
          * 
          * @return builder
          * 

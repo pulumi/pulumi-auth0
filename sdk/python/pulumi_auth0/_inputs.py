@@ -331,6 +331,12 @@ __all__ = [
     'ResourceServerProofOfPossessionArgsDict',
     'ResourceServerScopesScopeArgs',
     'ResourceServerScopesScopeArgsDict',
+    'ResourceServerSubjectTypeAuthorizationArgs',
+    'ResourceServerSubjectTypeAuthorizationArgsDict',
+    'ResourceServerSubjectTypeAuthorizationClientArgs',
+    'ResourceServerSubjectTypeAuthorizationClientArgsDict',
+    'ResourceServerSubjectTypeAuthorizationUserArgs',
+    'ResourceServerSubjectTypeAuthorizationUserArgsDict',
     'ResourceServerTokenEncryptionArgs',
     'ResourceServerTokenEncryptionArgsDict',
     'ResourceServerTokenEncryptionEncryptionKeyArgs',
@@ -14913,6 +14919,122 @@ class ResourceServerScopesScopeArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+
+if not MYPY:
+    class ResourceServerSubjectTypeAuthorizationArgsDict(TypedDict):
+        client: NotRequired[pulumi.Input['ResourceServerSubjectTypeAuthorizationClientArgsDict']]
+        """
+        Client authorization policies for the resource server.
+        """
+        user: NotRequired[pulumi.Input['ResourceServerSubjectTypeAuthorizationUserArgsDict']]
+        """
+        User authorization policies for the resource server.
+        """
+elif False:
+    ResourceServerSubjectTypeAuthorizationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ResourceServerSubjectTypeAuthorizationArgs:
+    def __init__(__self__, *,
+                 client: Optional[pulumi.Input['ResourceServerSubjectTypeAuthorizationClientArgs']] = None,
+                 user: Optional[pulumi.Input['ResourceServerSubjectTypeAuthorizationUserArgs']] = None):
+        """
+        :param pulumi.Input['ResourceServerSubjectTypeAuthorizationClientArgs'] client: Client authorization policies for the resource server.
+        :param pulumi.Input['ResourceServerSubjectTypeAuthorizationUserArgs'] user: User authorization policies for the resource server.
+        """
+        if client is not None:
+            pulumi.set(__self__, "client", client)
+        if user is not None:
+            pulumi.set(__self__, "user", user)
+
+    @_builtins.property
+    @pulumi.getter
+    def client(self) -> Optional[pulumi.Input['ResourceServerSubjectTypeAuthorizationClientArgs']]:
+        """
+        Client authorization policies for the resource server.
+        """
+        return pulumi.get(self, "client")
+
+    @client.setter
+    def client(self, value: Optional[pulumi.Input['ResourceServerSubjectTypeAuthorizationClientArgs']]):
+        pulumi.set(self, "client", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def user(self) -> Optional[pulumi.Input['ResourceServerSubjectTypeAuthorizationUserArgs']]:
+        """
+        User authorization policies for the resource server.
+        """
+        return pulumi.get(self, "user")
+
+    @user.setter
+    def user(self, value: Optional[pulumi.Input['ResourceServerSubjectTypeAuthorizationUserArgs']]):
+        pulumi.set(self, "user", value)
+
+
+if not MYPY:
+    class ResourceServerSubjectTypeAuthorizationClientArgsDict(TypedDict):
+        policy: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Client flows policy. One of `deny_all`, `require_client_grant`.
+        """
+elif False:
+    ResourceServerSubjectTypeAuthorizationClientArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ResourceServerSubjectTypeAuthorizationClientArgs:
+    def __init__(__self__, *,
+                 policy: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] policy: Client flows policy. One of `deny_all`, `require_client_grant`.
+        """
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
+
+    @_builtins.property
+    @pulumi.getter
+    def policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Client flows policy. One of `deny_all`, `require_client_grant`.
+        """
+        return pulumi.get(self, "policy")
+
+    @policy.setter
+    def policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "policy", value)
+
+
+if not MYPY:
+    class ResourceServerSubjectTypeAuthorizationUserArgsDict(TypedDict):
+        policy: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        User flows policy. One of `allow_all`, `deny_all`, `require_client_grant`.
+        """
+elif False:
+    ResourceServerSubjectTypeAuthorizationUserArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ResourceServerSubjectTypeAuthorizationUserArgs:
+    def __init__(__self__, *,
+                 policy: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] policy: User flows policy. One of `allow_all`, `deny_all`, `require_client_grant`.
+        """
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
+
+    @_builtins.property
+    @pulumi.getter
+    def policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        User flows policy. One of `allow_all`, `deny_all`, `require_client_grant`.
+        """
+        return pulumi.get(self, "policy")
+
+    @policy.setter
+    def policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "policy", value)
 
 
 if not MYPY:

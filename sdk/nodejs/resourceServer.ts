@@ -46,6 +46,14 @@ import * as utilities from "./utilities";
  *         mechanism: "mtls",
  *         required: true,
  *     },
+ *     subjectTypeAuthorization: {
+ *         user: {
+ *             policy: "allow_all",
+ *         },
+ *         client: {
+ *             policy: "require_client_grant",
+ *         },
+ *     },
  * });
  * ```
  *
@@ -128,6 +136,10 @@ export class ResourceServer extends pulumi.CustomResource {
      */
     declare public readonly skipConsentForVerifiableFirstPartyClients: pulumi.Output<boolean>;
     /**
+     * Authorization policies for user and client flows.
+     */
+    declare public readonly subjectTypeAuthorization: pulumi.Output<outputs.ResourceServerSubjectTypeAuthorization>;
+    /**
      * Dialect of access tokens that should be issued for this resource server. Options include `accessToken`, `rfc9068Profile`, `accessTokenAuthz`, and `rfc9068ProfileAuthz`. `accessToken` is a JWT containing standard Auth0 claims. `rfc9068Profile` is a JWT conforming to the IETF JWT Access Token Profile. `accessTokenAuthz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068ProfileAuthz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforcePolicies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).
      */
     declare public readonly tokenDialect: pulumi.Output<string>;
@@ -171,6 +183,7 @@ export class ResourceServer extends pulumi.CustomResource {
             resourceInputs["signingAlg"] = state?.signingAlg;
             resourceInputs["signingSecret"] = state?.signingSecret;
             resourceInputs["skipConsentForVerifiableFirstPartyClients"] = state?.skipConsentForVerifiableFirstPartyClients;
+            resourceInputs["subjectTypeAuthorization"] = state?.subjectTypeAuthorization;
             resourceInputs["tokenDialect"] = state?.tokenDialect;
             resourceInputs["tokenEncryption"] = state?.tokenEncryption;
             resourceInputs["tokenLifetime"] = state?.tokenLifetime;
@@ -191,6 +204,7 @@ export class ResourceServer extends pulumi.CustomResource {
             resourceInputs["signingAlg"] = args?.signingAlg;
             resourceInputs["signingSecret"] = args?.signingSecret;
             resourceInputs["skipConsentForVerifiableFirstPartyClients"] = args?.skipConsentForVerifiableFirstPartyClients;
+            resourceInputs["subjectTypeAuthorization"] = args?.subjectTypeAuthorization;
             resourceInputs["tokenDialect"] = args?.tokenDialect;
             resourceInputs["tokenEncryption"] = args?.tokenEncryption;
             resourceInputs["tokenLifetime"] = args?.tokenLifetime;
@@ -246,6 +260,10 @@ export interface ResourceServerState {
      * Indicates whether to skip user consent for applications flagged as first party.
      */
     skipConsentForVerifiableFirstPartyClients?: pulumi.Input<boolean>;
+    /**
+     * Authorization policies for user and client flows.
+     */
+    subjectTypeAuthorization?: pulumi.Input<inputs.ResourceServerSubjectTypeAuthorization>;
     /**
      * Dialect of access tokens that should be issued for this resource server. Options include `accessToken`, `rfc9068Profile`, `accessTokenAuthz`, and `rfc9068ProfileAuthz`. `accessToken` is a JWT containing standard Auth0 claims. `rfc9068Profile` is a JWT conforming to the IETF JWT Access Token Profile. `accessTokenAuthz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068ProfileAuthz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforcePolicies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).
      */
@@ -312,6 +330,10 @@ export interface ResourceServerArgs {
      * Indicates whether to skip user consent for applications flagged as first party.
      */
     skipConsentForVerifiableFirstPartyClients?: pulumi.Input<boolean>;
+    /**
+     * Authorization policies for user and client flows.
+     */
+    subjectTypeAuthorization?: pulumi.Input<inputs.ResourceServerSubjectTypeAuthorization>;
     /**
      * Dialect of access tokens that should be issued for this resource server. Options include `accessToken`, `rfc9068Profile`, `accessTokenAuthz`, and `rfc9068ProfileAuthz`. `accessToken` is a JWT containing standard Auth0 claims. `rfc9068Profile` is a JWT conforming to the IETF JWT Access Token Profile. `accessTokenAuthz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068ProfileAuthz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforcePolicies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).
      */
