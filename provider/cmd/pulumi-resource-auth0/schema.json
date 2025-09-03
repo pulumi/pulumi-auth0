@@ -4296,6 +4296,37 @@
                 "name"
             ]
         },
+        "auth0:index/ResourceServerSubjectTypeAuthorization:ResourceServerSubjectTypeAuthorization": {
+            "properties": {
+                "client": {
+                    "$ref": "#/types/auth0:index/ResourceServerSubjectTypeAuthorizationClient:ResourceServerSubjectTypeAuthorizationClient",
+                    "description": "Client authorization policies for the resource server.\n"
+                },
+                "user": {
+                    "$ref": "#/types/auth0:index/ResourceServerSubjectTypeAuthorizationUser:ResourceServerSubjectTypeAuthorizationUser",
+                    "description": "User authorization policies for the resource server.\n"
+                }
+            },
+            "type": "object"
+        },
+        "auth0:index/ResourceServerSubjectTypeAuthorizationClient:ResourceServerSubjectTypeAuthorizationClient": {
+            "properties": {
+                "policy": {
+                    "type": "string",
+                    "description": "Client flows policy. One of `deny_all`, `require_client_grant`.\n"
+                }
+            },
+            "type": "object"
+        },
+        "auth0:index/ResourceServerSubjectTypeAuthorizationUser:ResourceServerSubjectTypeAuthorizationUser": {
+            "properties": {
+                "policy": {
+                    "type": "string",
+                    "description": "User flows policy. One of `allow_all`, `deny_all`, `require_client_grant`.\n"
+                }
+            },
+            "type": "object"
+        },
         "auth0:index/ResourceServerTokenEncryption:ResourceServerTokenEncryption": {
             "properties": {
                 "disable": {
@@ -9868,6 +9899,68 @@
                 }
             }
         },
+        "auth0:index/getResourceServerSubjectTypeAuthorization:getResourceServerSubjectTypeAuthorization": {
+            "properties": {
+                "clients": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/getResourceServerSubjectTypeAuthorizationClient:getResourceServerSubjectTypeAuthorizationClient"
+                    },
+                    "description": "Client authorization policies for the resource server.\n"
+                },
+                "users": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/getResourceServerSubjectTypeAuthorizationUser:getResourceServerSubjectTypeAuthorizationUser"
+                    },
+                    "description": "User authorization policies for the resource server.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "clients",
+                "users"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getResourceServerSubjectTypeAuthorizationClient:getResourceServerSubjectTypeAuthorizationClient": {
+            "properties": {
+                "policy": {
+                    "type": "string",
+                    "description": "Client flows policy. One of `deny_all`, `require_client_grant`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "policy"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getResourceServerSubjectTypeAuthorizationUser:getResourceServerSubjectTypeAuthorizationUser": {
+            "properties": {
+                "policy": {
+                    "type": "string",
+                    "description": "User flows policy. One of `allow_all`, `deny_all`, `require_client_grant`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "policy"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "auth0:index/getResourceServerTokenEncryption:getResourceServerTokenEncryption": {
             "properties": {
                 "disable": {
@@ -11674,7 +11767,7 @@
             }
         },
         "auth0:index/clientGrant:ClientGrant": {
-            "description": "Auth0 uses various grant types, or methods by which you grant limited access to your resources to another entity without exposing credentials. The OAuth 2.0 protocol supports several types of grants, which allow different types of access. This resource allows you to create and manage client grants used with configured Auth0 clients.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```yaml\nresources:\n  # The following example grants a client the \"create:foo\" and \"create:bar\" permissions (scopes).\n  myClient:\n    type: auth0:Client\n    name: my_client\n    properties:\n      name: Example Application - Client Grant (Managed by Terraform)\n  myResourceServer:\n    type: auth0:ResourceServer\n    name: my_resource_server\n    properties:\n      name: Example Resource Server - Client Grant (Managed by Terraform)\n      identifier: https://api.example.com/client-grant\n      scopes:\n        - value: create:foo\n          description: Create foos\n        - value: create:bar\n          description: Create bars\n  myClientGrant:\n    type: auth0:ClientGrant\n    name: my_client_grant\n    properties:\n      clientId: ${myClient.id}\n      audience: ${myResourceServer.identifier}\n      scopes:\n        - create:foo\n        - create:bar\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThis resource can be imported by specifying the client grant ID.\n\nYou can find this within the Management Dashboard in Application -\u003e APIs -\u003e Expand the required API.\n\nExample:\n\n```sh\n$ pulumi import auth0:index/clientGrant:ClientGrant my_client_grant \"cgr_XXXXXXXXXXXXXXXX\"\n```\n\n",
+            "description": "Auth0 uses various grant types, or methods by which you grant limited access to your resources to another entity without exposing credentials. The OAuth 2.0 protocol supports several types of grants, which allow different types of access. This resource allows you to create and manage client grants used with configured Auth0 clients.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\n// The following example grants a client the \"create:foo\" and \"create:bar\" permissions (scopes).\nconst myClient = new auth0.Client(\"my_client\", {name: \"Example Application - Client Grant (Managed by Terraform)\"});\nconst myResourceServer = new auth0.ResourceServer(\"my_resource_server\", {\n    name: \"Example Resource Server - Client Grant (Managed by Terraform)\",\n    identifier: \"https://api.example.com/client-grant\",\n    authorizationDetails: [\n        {\n            type: \"payment\",\n        },\n        {\n            type: \"shipping\",\n        },\n    ],\n    subjectTypeAuthorization: {\n        user: {\n            policy: \"allow_all\",\n        },\n        client: {\n            policy: \"require_client_grant\",\n        },\n    },\n});\nconst myScopes = new auth0.ResourceServerScopes(\"my_scopes\", {\n    resourceServerIdentifier: myResourceServer.identifier,\n    scopes: [\n        {\n            name: \"read:foo\",\n            description: \"Can read Foo\",\n        },\n        {\n            name: \"create:foo\",\n            description: \"Can create Foo\",\n        },\n    ],\n}, {\n    dependsOn: [myResourceServer],\n});\nconst myClientGrant = new auth0.ClientGrant(\"my_client_grant\", {\n    clientId: myClient.id,\n    audience: myResourceServer.identifier,\n    scopes: [\n        \"create:foo\",\n        \"read:foo\",\n    ],\n    subjectType: \"user\",\n    authorizationDetailsTypes: [\n        \"payment\",\n        \"shipping\",\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\n# The following example grants a client the \"create:foo\" and \"create:bar\" permissions (scopes).\nmy_client = auth0.Client(\"my_client\", name=\"Example Application - Client Grant (Managed by Terraform)\")\nmy_resource_server = auth0.ResourceServer(\"my_resource_server\",\n    name=\"Example Resource Server - Client Grant (Managed by Terraform)\",\n    identifier=\"https://api.example.com/client-grant\",\n    authorization_details=[\n        {\n            \"type\": \"payment\",\n        },\n        {\n            \"type\": \"shipping\",\n        },\n    ],\n    subject_type_authorization={\n        \"user\": {\n            \"policy\": \"allow_all\",\n        },\n        \"client\": {\n            \"policy\": \"require_client_grant\",\n        },\n    })\nmy_scopes = auth0.ResourceServerScopes(\"my_scopes\",\n    resource_server_identifier=my_resource_server.identifier,\n    scopes=[\n        {\n            \"name\": \"read:foo\",\n            \"description\": \"Can read Foo\",\n        },\n        {\n            \"name\": \"create:foo\",\n            \"description\": \"Can create Foo\",\n        },\n    ],\n    opts = pulumi.ResourceOptions(depends_on=[my_resource_server]))\nmy_client_grant = auth0.ClientGrant(\"my_client_grant\",\n    client_id=my_client.id,\n    audience=my_resource_server.identifier,\n    scopes=[\n        \"create:foo\",\n        \"read:foo\",\n    ],\n    subject_type=\"user\",\n    authorization_details_types=[\n        \"payment\",\n        \"shipping\",\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // The following example grants a client the \"create:foo\" and \"create:bar\" permissions (scopes).\n    var myClient = new Auth0.Client(\"my_client\", new()\n    {\n        Name = \"Example Application - Client Grant (Managed by Terraform)\",\n    });\n\n    var myResourceServer = new Auth0.ResourceServer(\"my_resource_server\", new()\n    {\n        Name = \"Example Resource Server - Client Grant (Managed by Terraform)\",\n        Identifier = \"https://api.example.com/client-grant\",\n        AuthorizationDetails = new[]\n        {\n            new Auth0.Inputs.ResourceServerAuthorizationDetailArgs\n            {\n                Type = \"payment\",\n            },\n            new Auth0.Inputs.ResourceServerAuthorizationDetailArgs\n            {\n                Type = \"shipping\",\n            },\n        },\n        SubjectTypeAuthorization = new Auth0.Inputs.ResourceServerSubjectTypeAuthorizationArgs\n        {\n            User = new Auth0.Inputs.ResourceServerSubjectTypeAuthorizationUserArgs\n            {\n                Policy = \"allow_all\",\n            },\n            Client = new Auth0.Inputs.ResourceServerSubjectTypeAuthorizationClientArgs\n            {\n                Policy = \"require_client_grant\",\n            },\n        },\n    });\n\n    var myScopes = new Auth0.ResourceServerScopes(\"my_scopes\", new()\n    {\n        ResourceServerIdentifier = myResourceServer.Identifier,\n        Scopes = new[]\n        {\n            new Auth0.Inputs.ResourceServerScopesScopeArgs\n            {\n                Name = \"read:foo\",\n                Description = \"Can read Foo\",\n            },\n            new Auth0.Inputs.ResourceServerScopesScopeArgs\n            {\n                Name = \"create:foo\",\n                Description = \"Can create Foo\",\n            },\n        },\n    }, new CustomResourceOptions\n    {\n        DependsOn =\n        {\n            myResourceServer,\n        },\n    });\n\n    var myClientGrant = new Auth0.ClientGrant(\"my_client_grant\", new()\n    {\n        ClientId = myClient.Id,\n        Audience = myResourceServer.Identifier,\n        Scopes = new[]\n        {\n            \"create:foo\",\n            \"read:foo\",\n        },\n        SubjectType = \"user\",\n        AuthorizationDetailsTypes = new[]\n        {\n            \"payment\",\n            \"shipping\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// The following example grants a client the \"create:foo\" and \"create:bar\" permissions (scopes).\n\t\tmyClient, err := auth0.NewClient(ctx, \"my_client\", \u0026auth0.ClientArgs{\n\t\t\tName: pulumi.String(\"Example Application - Client Grant (Managed by Terraform)\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tmyResourceServer, err := auth0.NewResourceServer(ctx, \"my_resource_server\", \u0026auth0.ResourceServerArgs{\n\t\t\tName:       pulumi.String(\"Example Resource Server - Client Grant (Managed by Terraform)\"),\n\t\t\tIdentifier: pulumi.String(\"https://api.example.com/client-grant\"),\n\t\t\tAuthorizationDetails: auth0.ResourceServerAuthorizationDetailArray{\n\t\t\t\t\u0026auth0.ResourceServerAuthorizationDetailArgs{\n\t\t\t\t\tType: pulumi.String(\"payment\"),\n\t\t\t\t},\n\t\t\t\t\u0026auth0.ResourceServerAuthorizationDetailArgs{\n\t\t\t\t\tType: pulumi.String(\"shipping\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tSubjectTypeAuthorization: \u0026auth0.ResourceServerSubjectTypeAuthorizationArgs{\n\t\t\t\tUser: \u0026auth0.ResourceServerSubjectTypeAuthorizationUserArgs{\n\t\t\t\t\tPolicy: pulumi.String(\"allow_all\"),\n\t\t\t\t},\n\t\t\t\tClient: \u0026auth0.ResourceServerSubjectTypeAuthorizationClientArgs{\n\t\t\t\t\tPolicy: pulumi.String(\"require_client_grant\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = auth0.NewResourceServerScopes(ctx, \"my_scopes\", \u0026auth0.ResourceServerScopesArgs{\n\t\t\tResourceServerIdentifier: myResourceServer.Identifier,\n\t\t\tScopes: auth0.ResourceServerScopesScopeArray{\n\t\t\t\t\u0026auth0.ResourceServerScopesScopeArgs{\n\t\t\t\t\tName:        pulumi.String(\"read:foo\"),\n\t\t\t\t\tDescription: pulumi.String(\"Can read Foo\"),\n\t\t\t\t},\n\t\t\t\t\u0026auth0.ResourceServerScopesScopeArgs{\n\t\t\t\t\tName:        pulumi.String(\"create:foo\"),\n\t\t\t\t\tDescription: pulumi.String(\"Can create Foo\"),\n\t\t\t\t},\n\t\t\t},\n\t\t}, pulumi.DependsOn([]pulumi.Resource{\n\t\t\tmyResourceServer,\n\t\t}))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = auth0.NewClientGrant(ctx, \"my_client_grant\", \u0026auth0.ClientGrantArgs{\n\t\t\tClientId: myClient.ID(),\n\t\t\tAudience: myResourceServer.Identifier,\n\t\t\tScopes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"create:foo\"),\n\t\t\t\tpulumi.String(\"read:foo\"),\n\t\t\t},\n\t\t\tSubjectType: pulumi.String(\"user\"),\n\t\t\tAuthorizationDetailsTypes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"payment\"),\n\t\t\t\tpulumi.String(\"shipping\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.Client;\nimport com.pulumi.auth0.ClientArgs;\nimport com.pulumi.auth0.ResourceServer;\nimport com.pulumi.auth0.ResourceServerArgs;\nimport com.pulumi.auth0.inputs.ResourceServerAuthorizationDetailArgs;\nimport com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationArgs;\nimport com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationUserArgs;\nimport com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationClientArgs;\nimport com.pulumi.auth0.ResourceServerScopes;\nimport com.pulumi.auth0.ResourceServerScopesArgs;\nimport com.pulumi.auth0.inputs.ResourceServerScopesScopeArgs;\nimport com.pulumi.auth0.ClientGrant;\nimport com.pulumi.auth0.ClientGrantArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // The following example grants a client the \"create:foo\" and \"create:bar\" permissions (scopes).\n        var myClient = new Client(\"myClient\", ClientArgs.builder()\n            .name(\"Example Application - Client Grant (Managed by Terraform)\")\n            .build());\n\n        var myResourceServer = new ResourceServer(\"myResourceServer\", ResourceServerArgs.builder()\n            .name(\"Example Resource Server - Client Grant (Managed by Terraform)\")\n            .identifier(\"https://api.example.com/client-grant\")\n            .authorizationDetails(            \n                ResourceServerAuthorizationDetailArgs.builder()\n                    .type(\"payment\")\n                    .build(),\n                ResourceServerAuthorizationDetailArgs.builder()\n                    .type(\"shipping\")\n                    .build())\n            .subjectTypeAuthorization(ResourceServerSubjectTypeAuthorizationArgs.builder()\n                .user(ResourceServerSubjectTypeAuthorizationUserArgs.builder()\n                    .policy(\"allow_all\")\n                    .build())\n                .client(ResourceServerSubjectTypeAuthorizationClientArgs.builder()\n                    .policy(\"require_client_grant\")\n                    .build())\n                .build())\n            .build());\n\n        var myScopes = new ResourceServerScopes(\"myScopes\", ResourceServerScopesArgs.builder()\n            .resourceServerIdentifier(myResourceServer.identifier())\n            .scopes(            \n                ResourceServerScopesScopeArgs.builder()\n                    .name(\"read:foo\")\n                    .description(\"Can read Foo\")\n                    .build(),\n                ResourceServerScopesScopeArgs.builder()\n                    .name(\"create:foo\")\n                    .description(\"Can create Foo\")\n                    .build())\n            .build(), CustomResourceOptions.builder()\n                .dependsOn(myResourceServer)\n                .build());\n\n        var myClientGrant = new ClientGrant(\"myClientGrant\", ClientGrantArgs.builder()\n            .clientId(myClient.id())\n            .audience(myResourceServer.identifier())\n            .scopes(            \n                \"create:foo\",\n                \"read:foo\")\n            .subjectType(\"user\")\n            .authorizationDetailsTypes(            \n                \"payment\",\n                \"shipping\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # The following example grants a client the \"create:foo\" and \"create:bar\" permissions (scopes).\n  myClient:\n    type: auth0:Client\n    name: my_client\n    properties:\n      name: Example Application - Client Grant (Managed by Terraform)\n  myResourceServer:\n    type: auth0:ResourceServer\n    name: my_resource_server\n    properties:\n      name: Example Resource Server - Client Grant (Managed by Terraform)\n      identifier: https://api.example.com/client-grant\n      authorizationDetails:\n        - type: payment\n        - type: shipping\n      subjectTypeAuthorization:\n        user:\n          policy: allow_all\n        client:\n          policy: require_client_grant\n  myScopes:\n    type: auth0:ResourceServerScopes\n    name: my_scopes\n    properties:\n      resourceServerIdentifier: ${myResourceServer.identifier}\n      scopes:\n        - name: read:foo\n          description: Can read Foo\n        - name: create:foo\n          description: Can create Foo\n    options:\n      dependsOn:\n        - ${myResourceServer}\n  myClientGrant:\n    type: auth0:ClientGrant\n    name: my_client_grant\n    properties:\n      clientId: ${myClient.id}\n      audience: ${myResourceServer.identifier}\n      scopes:\n        - create:foo\n        - read:foo\n      subjectType: user\n      authorizationDetailsTypes:\n        - payment\n        - shipping\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThis resource can be imported by specifying the client grant ID.\n\nYou can find this within the Management Dashboard in Application -\u003e APIs -\u003e Expand the required API.\n\nExample:\n\n```sh\n$ pulumi import auth0:index/clientGrant:ClientGrant my_client_grant \"cgr_XXXXXXXXXXXXXXXX\"\n```\n\n",
             "properties": {
                 "allowAnyOrganization": {
                     "type": "boolean",
@@ -11683,6 +11776,13 @@
                 "audience": {
                     "type": "string",
                     "description": "Audience or API Identifier for this grant.\n"
+                },
+                "authorizationDetailsTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Defines the types of authorization details allowed for this client grant.\n"
                 },
                 "clientId": {
                     "type": "string",
@@ -11698,6 +11798,10 @@
                         "type": "string"
                     },
                     "description": "Permissions (scopes) included in this grant.\n"
+                },
+                "subjectType": {
+                    "type": "string",
+                    "description": "Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.\n"
                 }
             },
             "required": [
@@ -11715,6 +11819,13 @@
                     "description": "Audience or API Identifier for this grant.\n",
                     "willReplaceOnChanges": true
                 },
+                "authorizationDetailsTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Defines the types of authorization details allowed for this client grant.\n"
+                },
                 "clientId": {
                     "type": "string",
                     "description": "ID of the client for this grant.\n",
@@ -11730,6 +11841,11 @@
                         "type": "string"
                     },
                     "description": "Permissions (scopes) included in this grant.\n"
+                },
+                "subjectType": {
+                    "type": "string",
+                    "description": "Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.\n",
+                    "willReplaceOnChanges": true
                 }
             },
             "requiredInputs": [
@@ -11749,6 +11865,13 @@
                         "description": "Audience or API Identifier for this grant.\n",
                         "willReplaceOnChanges": true
                     },
+                    "authorizationDetailsTypes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Defines the types of authorization details allowed for this client grant.\n"
+                    },
                     "clientId": {
                         "type": "string",
                         "description": "ID of the client for this grant.\n",
@@ -11764,6 +11887,11 @@
                             "type": "string"
                         },
                         "description": "Permissions (scopes) included in this grant.\n"
+                    },
+                    "subjectType": {
+                        "type": "string",
+                        "description": "Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.\n",
+                        "willReplaceOnChanges": true
                     }
                 },
                 "type": "object"
@@ -11789,7 +11917,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the connection.\n"
+                    "description": "Name of the connection. This value is immutable and changing it requires the creation of a new resource.\n"
                 },
                 "options": {
                     "$ref": "#/types/auth0:index/ConnectionOptions:ConnectionOptions",
@@ -11837,7 +11965,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the connection.\n",
+                    "description": "Name of the connection. This value is immutable and changing it requires the creation of a new resource.\n",
                     "willReplaceOnChanges": true
                 },
                 "options": {
@@ -11884,7 +12012,7 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "Name of the connection.\n",
+                        "description": "Name of the connection. This value is immutable and changing it requires the creation of a new resource.\n",
                         "willReplaceOnChanges": true
                     },
                     "options": {
@@ -14709,7 +14837,7 @@
             }
         },
         "auth0:index/resourceServer:ResourceServer": {
-            "description": "With this resource, you can set up APIs that can be consumed from your authorized applications.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myResourceServer = new auth0.ResourceServer(\"my_resource_server\", {\n    name: \"Example Resource Server (Managed by Terraform)\",\n    identifier: \"https://api.example.com\",\n    signingAlg: \"RS256\",\n    allowOfflineAccess: true,\n    tokenLifetime: 8600,\n    skipConsentForVerifiableFirstPartyClients: true,\n    consentPolicy: \"transactional-authorization-with-mfa\",\n    tokenEncryption: {\n        format: \"compact-nested-jwe\",\n        encryptionKey: {\n            name: \"keyname\",\n            algorithm: \"RSA-OAEP-256\",\n            pem: `-----BEGIN CERTIFICATE-----\nMIIFWDCCA0ACCQDXqpBo3R...G9w0BAQsFADBuMQswCQYDVQQGEwJl\n-----END CERTIFICATE-----\n`,\n        },\n    },\n    authorizationDetails: [\n        {\n            type: \"payment\",\n        },\n        {\n            type: \"non-payment\",\n        },\n    ],\n    proofOfPossession: {\n        mechanism: \"mtls\",\n        required: true,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_resource_server = auth0.ResourceServer(\"my_resource_server\",\n    name=\"Example Resource Server (Managed by Terraform)\",\n    identifier=\"https://api.example.com\",\n    signing_alg=\"RS256\",\n    allow_offline_access=True,\n    token_lifetime=8600,\n    skip_consent_for_verifiable_first_party_clients=True,\n    consent_policy=\"transactional-authorization-with-mfa\",\n    token_encryption={\n        \"format\": \"compact-nested-jwe\",\n        \"encryption_key\": {\n            \"name\": \"keyname\",\n            \"algorithm\": \"RSA-OAEP-256\",\n            \"pem\": \"\"\"-----BEGIN CERTIFICATE-----\nMIIFWDCCA0ACCQDXqpBo3R...G9w0BAQsFADBuMQswCQYDVQQGEwJl\n-----END CERTIFICATE-----\n\"\"\",\n        },\n    },\n    authorization_details=[\n        {\n            \"type\": \"payment\",\n        },\n        {\n            \"type\": \"non-payment\",\n        },\n    ],\n    proof_of_possession={\n        \"mechanism\": \"mtls\",\n        \"required\": True,\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myResourceServer = new Auth0.ResourceServer(\"my_resource_server\", new()\n    {\n        Name = \"Example Resource Server (Managed by Terraform)\",\n        Identifier = \"https://api.example.com\",\n        SigningAlg = \"RS256\",\n        AllowOfflineAccess = true,\n        TokenLifetime = 8600,\n        SkipConsentForVerifiableFirstPartyClients = true,\n        ConsentPolicy = \"transactional-authorization-with-mfa\",\n        TokenEncryption = new Auth0.Inputs.ResourceServerTokenEncryptionArgs\n        {\n            Format = \"compact-nested-jwe\",\n            EncryptionKey = new Auth0.Inputs.ResourceServerTokenEncryptionEncryptionKeyArgs\n            {\n                Name = \"keyname\",\n                Algorithm = \"RSA-OAEP-256\",\n                Pem = @\"-----BEGIN CERTIFICATE-----\nMIIFWDCCA0ACCQDXqpBo3R...G9w0BAQsFADBuMQswCQYDVQQGEwJl\n-----END CERTIFICATE-----\n\",\n            },\n        },\n        AuthorizationDetails = new[]\n        {\n            new Auth0.Inputs.ResourceServerAuthorizationDetailArgs\n            {\n                Type = \"payment\",\n            },\n            new Auth0.Inputs.ResourceServerAuthorizationDetailArgs\n            {\n                Type = \"non-payment\",\n            },\n        },\n        ProofOfPossession = new Auth0.Inputs.ResourceServerProofOfPossessionArgs\n        {\n            Mechanism = \"mtls\",\n            Required = true,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewResourceServer(ctx, \"my_resource_server\", \u0026auth0.ResourceServerArgs{\n\t\t\tName:               pulumi.String(\"Example Resource Server (Managed by Terraform)\"),\n\t\t\tIdentifier:         pulumi.String(\"https://api.example.com\"),\n\t\t\tSigningAlg:         pulumi.String(\"RS256\"),\n\t\t\tAllowOfflineAccess: pulumi.Bool(true),\n\t\t\tTokenLifetime:      pulumi.Int(8600),\n\t\t\tSkipConsentForVerifiableFirstPartyClients: pulumi.Bool(true),\n\t\t\tConsentPolicy: pulumi.String(\"transactional-authorization-with-mfa\"),\n\t\t\tTokenEncryption: \u0026auth0.ResourceServerTokenEncryptionArgs{\n\t\t\t\tFormat: pulumi.String(\"compact-nested-jwe\"),\n\t\t\t\tEncryptionKey: \u0026auth0.ResourceServerTokenEncryptionEncryptionKeyArgs{\n\t\t\t\t\tName:      pulumi.String(\"keyname\"),\n\t\t\t\t\tAlgorithm: pulumi.String(\"RSA-OAEP-256\"),\n\t\t\t\t\tPem:       pulumi.String(\"-----BEGIN CERTIFICATE-----\\nMIIFWDCCA0ACCQDXqpBo3R...G9w0BAQsFADBuMQswCQYDVQQGEwJl\\n-----END CERTIFICATE-----\\n\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tAuthorizationDetails: auth0.ResourceServerAuthorizationDetailArray{\n\t\t\t\t\u0026auth0.ResourceServerAuthorizationDetailArgs{\n\t\t\t\t\tType: pulumi.String(\"payment\"),\n\t\t\t\t},\n\t\t\t\t\u0026auth0.ResourceServerAuthorizationDetailArgs{\n\t\t\t\t\tType: pulumi.String(\"non-payment\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tProofOfPossession: \u0026auth0.ResourceServerProofOfPossessionArgs{\n\t\t\t\tMechanism: pulumi.String(\"mtls\"),\n\t\t\t\tRequired:  pulumi.Bool(true),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.ResourceServer;\nimport com.pulumi.auth0.ResourceServerArgs;\nimport com.pulumi.auth0.inputs.ResourceServerTokenEncryptionArgs;\nimport com.pulumi.auth0.inputs.ResourceServerTokenEncryptionEncryptionKeyArgs;\nimport com.pulumi.auth0.inputs.ResourceServerAuthorizationDetailArgs;\nimport com.pulumi.auth0.inputs.ResourceServerProofOfPossessionArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myResourceServer = new ResourceServer(\"myResourceServer\", ResourceServerArgs.builder()\n            .name(\"Example Resource Server (Managed by Terraform)\")\n            .identifier(\"https://api.example.com\")\n            .signingAlg(\"RS256\")\n            .allowOfflineAccess(true)\n            .tokenLifetime(8600)\n            .skipConsentForVerifiableFirstPartyClients(true)\n            .consentPolicy(\"transactional-authorization-with-mfa\")\n            .tokenEncryption(ResourceServerTokenEncryptionArgs.builder()\n                .format(\"compact-nested-jwe\")\n                .encryptionKey(ResourceServerTokenEncryptionEncryptionKeyArgs.builder()\n                    .name(\"keyname\")\n                    .algorithm(\"RSA-OAEP-256\")\n                    .pem(\"\"\"\n-----BEGIN CERTIFICATE-----\nMIIFWDCCA0ACCQDXqpBo3R...G9w0BAQsFADBuMQswCQYDVQQGEwJl\n-----END CERTIFICATE-----\n                    \"\"\")\n                    .build())\n                .build())\n            .authorizationDetails(            \n                ResourceServerAuthorizationDetailArgs.builder()\n                    .type(\"payment\")\n                    .build(),\n                ResourceServerAuthorizationDetailArgs.builder()\n                    .type(\"non-payment\")\n                    .build())\n            .proofOfPossession(ResourceServerProofOfPossessionArgs.builder()\n                .mechanism(\"mtls\")\n                .required(true)\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myResourceServer:\n    type: auth0:ResourceServer\n    name: my_resource_server\n    properties:\n      name: Example Resource Server (Managed by Terraform)\n      identifier: https://api.example.com\n      signingAlg: RS256\n      allowOfflineAccess: true\n      tokenLifetime: 8600\n      skipConsentForVerifiableFirstPartyClients: true\n      consentPolicy: transactional-authorization-with-mfa\n      tokenEncryption:\n        format: compact-nested-jwe\n        encryptionKey:\n          name: keyname\n          algorithm: RSA-OAEP-256\n          pem: |\n            -----BEGIN CERTIFICATE-----\n            MIIFWDCCA0ACCQDXqpBo3R...G9w0BAQsFADBuMQswCQYDVQQGEwJl\n            -----END CERTIFICATE-----\n      authorizationDetails:\n        - type: payment\n        - type: non-payment\n      proofOfPossession:\n        mechanism: mtls\n        required: true\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nExisting resource servers can be imported using their ID.\n\nExample:\n\n```sh\n$ pulumi import auth0:index/resourceServer:ResourceServer my_resource_server \"XXXXXXXXXXXXXXXXXXXXXXX\"\n```\n\n",
+            "description": "With this resource, you can set up APIs that can be consumed from your authorized applications.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myResourceServer = new auth0.ResourceServer(\"my_resource_server\", {\n    name: \"Example Resource Server (Managed by Terraform)\",\n    identifier: \"https://api.example.com\",\n    signingAlg: \"RS256\",\n    allowOfflineAccess: true,\n    tokenLifetime: 8600,\n    skipConsentForVerifiableFirstPartyClients: true,\n    consentPolicy: \"transactional-authorization-with-mfa\",\n    tokenEncryption: {\n        format: \"compact-nested-jwe\",\n        encryptionKey: {\n            name: \"keyname\",\n            algorithm: \"RSA-OAEP-256\",\n            pem: `-----BEGIN CERTIFICATE-----\nMIIFWDCCA0ACCQDXqpBo3R...G9w0BAQsFADBuMQswCQYDVQQGEwJl\n-----END CERTIFICATE-----\n`,\n        },\n    },\n    authorizationDetails: [\n        {\n            type: \"payment\",\n        },\n        {\n            type: \"non-payment\",\n        },\n    ],\n    proofOfPossession: {\n        mechanism: \"mtls\",\n        required: true,\n    },\n    subjectTypeAuthorization: {\n        user: {\n            policy: \"allow_all\",\n        },\n        client: {\n            policy: \"require_client_grant\",\n        },\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_resource_server = auth0.ResourceServer(\"my_resource_server\",\n    name=\"Example Resource Server (Managed by Terraform)\",\n    identifier=\"https://api.example.com\",\n    signing_alg=\"RS256\",\n    allow_offline_access=True,\n    token_lifetime=8600,\n    skip_consent_for_verifiable_first_party_clients=True,\n    consent_policy=\"transactional-authorization-with-mfa\",\n    token_encryption={\n        \"format\": \"compact-nested-jwe\",\n        \"encryption_key\": {\n            \"name\": \"keyname\",\n            \"algorithm\": \"RSA-OAEP-256\",\n            \"pem\": \"\"\"-----BEGIN CERTIFICATE-----\nMIIFWDCCA0ACCQDXqpBo3R...G9w0BAQsFADBuMQswCQYDVQQGEwJl\n-----END CERTIFICATE-----\n\"\"\",\n        },\n    },\n    authorization_details=[\n        {\n            \"type\": \"payment\",\n        },\n        {\n            \"type\": \"non-payment\",\n        },\n    ],\n    proof_of_possession={\n        \"mechanism\": \"mtls\",\n        \"required\": True,\n    },\n    subject_type_authorization={\n        \"user\": {\n            \"policy\": \"allow_all\",\n        },\n        \"client\": {\n            \"policy\": \"require_client_grant\",\n        },\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myResourceServer = new Auth0.ResourceServer(\"my_resource_server\", new()\n    {\n        Name = \"Example Resource Server (Managed by Terraform)\",\n        Identifier = \"https://api.example.com\",\n        SigningAlg = \"RS256\",\n        AllowOfflineAccess = true,\n        TokenLifetime = 8600,\n        SkipConsentForVerifiableFirstPartyClients = true,\n        ConsentPolicy = \"transactional-authorization-with-mfa\",\n        TokenEncryption = new Auth0.Inputs.ResourceServerTokenEncryptionArgs\n        {\n            Format = \"compact-nested-jwe\",\n            EncryptionKey = new Auth0.Inputs.ResourceServerTokenEncryptionEncryptionKeyArgs\n            {\n                Name = \"keyname\",\n                Algorithm = \"RSA-OAEP-256\",\n                Pem = @\"-----BEGIN CERTIFICATE-----\nMIIFWDCCA0ACCQDXqpBo3R...G9w0BAQsFADBuMQswCQYDVQQGEwJl\n-----END CERTIFICATE-----\n\",\n            },\n        },\n        AuthorizationDetails = new[]\n        {\n            new Auth0.Inputs.ResourceServerAuthorizationDetailArgs\n            {\n                Type = \"payment\",\n            },\n            new Auth0.Inputs.ResourceServerAuthorizationDetailArgs\n            {\n                Type = \"non-payment\",\n            },\n        },\n        ProofOfPossession = new Auth0.Inputs.ResourceServerProofOfPossessionArgs\n        {\n            Mechanism = \"mtls\",\n            Required = true,\n        },\n        SubjectTypeAuthorization = new Auth0.Inputs.ResourceServerSubjectTypeAuthorizationArgs\n        {\n            User = new Auth0.Inputs.ResourceServerSubjectTypeAuthorizationUserArgs\n            {\n                Policy = \"allow_all\",\n            },\n            Client = new Auth0.Inputs.ResourceServerSubjectTypeAuthorizationClientArgs\n            {\n                Policy = \"require_client_grant\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewResourceServer(ctx, \"my_resource_server\", \u0026auth0.ResourceServerArgs{\n\t\t\tName:               pulumi.String(\"Example Resource Server (Managed by Terraform)\"),\n\t\t\tIdentifier:         pulumi.String(\"https://api.example.com\"),\n\t\t\tSigningAlg:         pulumi.String(\"RS256\"),\n\t\t\tAllowOfflineAccess: pulumi.Bool(true),\n\t\t\tTokenLifetime:      pulumi.Int(8600),\n\t\t\tSkipConsentForVerifiableFirstPartyClients: pulumi.Bool(true),\n\t\t\tConsentPolicy: pulumi.String(\"transactional-authorization-with-mfa\"),\n\t\t\tTokenEncryption: \u0026auth0.ResourceServerTokenEncryptionArgs{\n\t\t\t\tFormat: pulumi.String(\"compact-nested-jwe\"),\n\t\t\t\tEncryptionKey: \u0026auth0.ResourceServerTokenEncryptionEncryptionKeyArgs{\n\t\t\t\t\tName:      pulumi.String(\"keyname\"),\n\t\t\t\t\tAlgorithm: pulumi.String(\"RSA-OAEP-256\"),\n\t\t\t\t\tPem:       pulumi.String(\"-----BEGIN CERTIFICATE-----\\nMIIFWDCCA0ACCQDXqpBo3R...G9w0BAQsFADBuMQswCQYDVQQGEwJl\\n-----END CERTIFICATE-----\\n\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tAuthorizationDetails: auth0.ResourceServerAuthorizationDetailArray{\n\t\t\t\t\u0026auth0.ResourceServerAuthorizationDetailArgs{\n\t\t\t\t\tType: pulumi.String(\"payment\"),\n\t\t\t\t},\n\t\t\t\t\u0026auth0.ResourceServerAuthorizationDetailArgs{\n\t\t\t\t\tType: pulumi.String(\"non-payment\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tProofOfPossession: \u0026auth0.ResourceServerProofOfPossessionArgs{\n\t\t\t\tMechanism: pulumi.String(\"mtls\"),\n\t\t\t\tRequired:  pulumi.Bool(true),\n\t\t\t},\n\t\t\tSubjectTypeAuthorization: \u0026auth0.ResourceServerSubjectTypeAuthorizationArgs{\n\t\t\t\tUser: \u0026auth0.ResourceServerSubjectTypeAuthorizationUserArgs{\n\t\t\t\t\tPolicy: pulumi.String(\"allow_all\"),\n\t\t\t\t},\n\t\t\t\tClient: \u0026auth0.ResourceServerSubjectTypeAuthorizationClientArgs{\n\t\t\t\t\tPolicy: pulumi.String(\"require_client_grant\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.ResourceServer;\nimport com.pulumi.auth0.ResourceServerArgs;\nimport com.pulumi.auth0.inputs.ResourceServerTokenEncryptionArgs;\nimport com.pulumi.auth0.inputs.ResourceServerTokenEncryptionEncryptionKeyArgs;\nimport com.pulumi.auth0.inputs.ResourceServerAuthorizationDetailArgs;\nimport com.pulumi.auth0.inputs.ResourceServerProofOfPossessionArgs;\nimport com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationArgs;\nimport com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationUserArgs;\nimport com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationClientArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myResourceServer = new ResourceServer(\"myResourceServer\", ResourceServerArgs.builder()\n            .name(\"Example Resource Server (Managed by Terraform)\")\n            .identifier(\"https://api.example.com\")\n            .signingAlg(\"RS256\")\n            .allowOfflineAccess(true)\n            .tokenLifetime(8600)\n            .skipConsentForVerifiableFirstPartyClients(true)\n            .consentPolicy(\"transactional-authorization-with-mfa\")\n            .tokenEncryption(ResourceServerTokenEncryptionArgs.builder()\n                .format(\"compact-nested-jwe\")\n                .encryptionKey(ResourceServerTokenEncryptionEncryptionKeyArgs.builder()\n                    .name(\"keyname\")\n                    .algorithm(\"RSA-OAEP-256\")\n                    .pem(\"\"\"\n-----BEGIN CERTIFICATE-----\nMIIFWDCCA0ACCQDXqpBo3R...G9w0BAQsFADBuMQswCQYDVQQGEwJl\n-----END CERTIFICATE-----\n                    \"\"\")\n                    .build())\n                .build())\n            .authorizationDetails(            \n                ResourceServerAuthorizationDetailArgs.builder()\n                    .type(\"payment\")\n                    .build(),\n                ResourceServerAuthorizationDetailArgs.builder()\n                    .type(\"non-payment\")\n                    .build())\n            .proofOfPossession(ResourceServerProofOfPossessionArgs.builder()\n                .mechanism(\"mtls\")\n                .required(true)\n                .build())\n            .subjectTypeAuthorization(ResourceServerSubjectTypeAuthorizationArgs.builder()\n                .user(ResourceServerSubjectTypeAuthorizationUserArgs.builder()\n                    .policy(\"allow_all\")\n                    .build())\n                .client(ResourceServerSubjectTypeAuthorizationClientArgs.builder()\n                    .policy(\"require_client_grant\")\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myResourceServer:\n    type: auth0:ResourceServer\n    name: my_resource_server\n    properties:\n      name: Example Resource Server (Managed by Terraform)\n      identifier: https://api.example.com\n      signingAlg: RS256\n      allowOfflineAccess: true\n      tokenLifetime: 8600\n      skipConsentForVerifiableFirstPartyClients: true\n      consentPolicy: transactional-authorization-with-mfa\n      tokenEncryption:\n        format: compact-nested-jwe\n        encryptionKey:\n          name: keyname\n          algorithm: RSA-OAEP-256\n          pem: |\n            -----BEGIN CERTIFICATE-----\n            MIIFWDCCA0ACCQDXqpBo3R...G9w0BAQsFADBuMQswCQYDVQQGEwJl\n            -----END CERTIFICATE-----\n      authorizationDetails:\n        - type: payment\n        - type: non-payment\n      proofOfPossession:\n        mechanism: mtls\n        required: true\n      subjectTypeAuthorization:\n        user:\n          policy: allow_all\n        client:\n          policy: require_client_grant\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nExisting resource servers can be imported using their ID.\n\nExample:\n\n```sh\n$ pulumi import auth0:index/resourceServer:ResourceServer my_resource_server \"XXXXXXXXXXXXXXXXXXXXXXX\"\n```\n\n",
             "properties": {
                 "allowOfflineAccess": {
                     "type": "boolean",
@@ -14754,6 +14882,10 @@
                     "type": "boolean",
                     "description": "Indicates whether to skip user consent for applications flagged as first party.\n"
                 },
+                "subjectTypeAuthorization": {
+                    "$ref": "#/types/auth0:index/ResourceServerSubjectTypeAuthorization:ResourceServerSubjectTypeAuthorization",
+                    "description": "Authorization policies for user and client flows.\n"
+                },
                 "tokenDialect": {
                     "type": "string",
                     "description": "Dialect of access tokens that should be issued for this resource server. Options include `access_token`, `rfc9068_profile`, `access_token_authz`, and `rfc9068_profile_authz`. `access_token` is a JWT containing standard Auth0 claims. `rfc9068_profile` is a JWT conforming to the IETF JWT Access Token Profile. `access_token_authz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068_profile_authz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforce_policies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).\n"
@@ -14785,6 +14917,7 @@
                 "signingAlg",
                 "signingSecret",
                 "skipConsentForVerifiableFirstPartyClients",
+                "subjectTypeAuthorization",
                 "tokenDialect",
                 "tokenEncryption",
                 "tokenLifetime",
@@ -14834,6 +14967,10 @@
                 "skipConsentForVerifiableFirstPartyClients": {
                     "type": "boolean",
                     "description": "Indicates whether to skip user consent for applications flagged as first party.\n"
+                },
+                "subjectTypeAuthorization": {
+                    "$ref": "#/types/auth0:index/ResourceServerSubjectTypeAuthorization:ResourceServerSubjectTypeAuthorization",
+                    "description": "Authorization policies for user and client flows.\n"
                 },
                 "tokenDialect": {
                     "type": "string",
@@ -14905,6 +15042,10 @@
                     "skipConsentForVerifiableFirstPartyClients": {
                         "type": "boolean",
                         "description": "Indicates whether to skip user consent for applications flagged as first party.\n"
+                    },
+                    "subjectTypeAuthorization": {
+                        "$ref": "#/types/auth0:index/ResourceServerSubjectTypeAuthorization:ResourceServerSubjectTypeAuthorization",
+                        "description": "Authorization policies for user and client flows.\n"
                     },
                     "tokenDialect": {
                         "type": "string",
@@ -18221,6 +18362,13 @@
                         "description": "Indicates whether to skip user consent for applications flagged as first party.\n",
                         "type": "boolean"
                     },
+                    "subjectTypeAuthorizations": {
+                        "description": "Authorization policies for user and client flows.\n",
+                        "items": {
+                            "$ref": "#/types/auth0:index/getResourceServerSubjectTypeAuthorization:getResourceServerSubjectTypeAuthorization"
+                        },
+                        "type": "array"
+                    },
                     "tokenDialect": {
                         "description": "Dialect of access tokens that should be issued for this resource server. Options include `access_token`, `rfc9068_profile`, `access_token_authz`, and `rfc9068_profile_authz`. `access_token` is a JWT containing standard Auth0 claims. `rfc9068_profile` is a JWT conforming to the IETF JWT Access Token Profile. `access_token_authz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068_profile_authz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforce_policies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).\n",
                         "type": "string"
@@ -18256,6 +18404,7 @@
                     "signingAlg",
                     "signingSecret",
                     "skipConsentForVerifiableFirstPartyClients",
+                    "subjectTypeAuthorizations",
                     "tokenDialect",
                     "tokenEncryptions",
                     "tokenLifetime",

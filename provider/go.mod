@@ -15,7 +15,7 @@ require (
 	github.com/pulumi/providertest v0.3.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.113.0
 	github.com/pulumi/pulumi/sdk/v3 v3.190.0
-	github.com/stretchr/testify v1.10.0
+	github.com/stretchr/testify v1.11.1
 )
 
 require (
@@ -39,7 +39,7 @@ require (
 	github.com/apparentlymart/go-textseg/v15 v15.0.0 // indirect
 	github.com/armon/go-radix v1.0.0 // indirect
 	github.com/atotto/clipboard v0.1.4 // indirect
-	github.com/auth0/go-auth0 v1.26.0 // indirect
+	github.com/auth0/go-auth0 v1.27.0 // indirect
 	github.com/aws/aws-sdk-go v1.50.36 // indirect
 	github.com/aymanbagabas/go-osc52/v2 v2.0.1 // indirect
 	github.com/bgentry/go-netrc v0.0.0-20140422174119-9fd32a8b3d3d // indirect

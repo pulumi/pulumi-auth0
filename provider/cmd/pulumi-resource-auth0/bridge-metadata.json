@@ -455,6 +455,9 @@
                 "current": "auth0:index/clientGrant:ClientGrant",
                 "majorVersion": 3,
                 "fields": {
+                    "authorization_details_types": {
+                        "maxItemsOne": false
+                    },
                     "scopes": {
                         "maxItemsOne": false
                     }
@@ -1058,6 +1061,19 @@
                     },
                     "proof_of_possession": {
                         "maxItemsOne": true
+                    },
+                    "subject_type_authorization": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "client": {
+                                    "maxItemsOne": true
+                                },
+                                "user": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
                     },
                     "token_encryption": {
                         "maxItemsOne": true,
@@ -2209,6 +2225,19 @@
                     },
                     "scopes": {
                         "maxItemsOne": false
+                    },
+                    "subject_type_authorization": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "client": {
+                                    "maxItemsOne": false
+                                },
+                                "user": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "token_encryption": {
                         "maxItemsOne": false,
