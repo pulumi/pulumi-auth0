@@ -6,6 +6,7 @@ package com.pulumi.auth0.outputs;
 import com.pulumi.auth0.outputs.GetResourceServerAuthorizationDetail;
 import com.pulumi.auth0.outputs.GetResourceServerProofOfPossession;
 import com.pulumi.auth0.outputs.GetResourceServerScope;
+import com.pulumi.auth0.outputs.GetResourceServerSubjectTypeAuthorization;
 import com.pulumi.auth0.outputs.GetResourceServerTokenEncryption;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -84,6 +85,11 @@ public final class GetResourceServerResult {
      * 
      */
     private Boolean skipConsentForVerifiableFirstPartyClients;
+    /**
+     * @return Authorization policies for user and client flows.
+     * 
+     */
+    private List<GetResourceServerSubjectTypeAuthorization> subjectTypeAuthorizations;
     /**
      * @return Dialect of access tokens that should be issued for this resource server. Options include `access_token`, `rfc9068_profile`, `access_token_authz`, and `rfc9068_profile_authz`. `access_token` is a JWT containing standard Auth0 claims. `rfc9068_profile` is a JWT conforming to the IETF JWT Access Token Profile. `access_token_authz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068_profile_authz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforce_policies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).
      * 
@@ -203,6 +209,13 @@ public final class GetResourceServerResult {
         return this.skipConsentForVerifiableFirstPartyClients;
     }
     /**
+     * @return Authorization policies for user and client flows.
+     * 
+     */
+    public List<GetResourceServerSubjectTypeAuthorization> subjectTypeAuthorizations() {
+        return this.subjectTypeAuthorizations;
+    }
+    /**
      * @return Dialect of access tokens that should be issued for this resource server. Options include `access_token`, `rfc9068_profile`, `access_token_authz`, and `rfc9068_profile_authz`. `access_token` is a JWT containing standard Auth0 claims. `rfc9068_profile` is a JWT conforming to the IETF JWT Access Token Profile. `access_token_authz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068_profile_authz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforce_policies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).
      * 
      */
@@ -260,6 +273,7 @@ public final class GetResourceServerResult {
         private String signingAlg;
         private String signingSecret;
         private Boolean skipConsentForVerifiableFirstPartyClients;
+        private List<GetResourceServerSubjectTypeAuthorization> subjectTypeAuthorizations;
         private String tokenDialect;
         private List<GetResourceServerTokenEncryption> tokenEncryptions;
         private Integer tokenLifetime;
@@ -281,6 +295,7 @@ public final class GetResourceServerResult {
     	      this.signingAlg = defaults.signingAlg;
     	      this.signingSecret = defaults.signingSecret;
     	      this.skipConsentForVerifiableFirstPartyClients = defaults.skipConsentForVerifiableFirstPartyClients;
+    	      this.subjectTypeAuthorizations = defaults.subjectTypeAuthorizations;
     	      this.tokenDialect = defaults.tokenDialect;
     	      this.tokenEncryptions = defaults.tokenEncryptions;
     	      this.tokenLifetime = defaults.tokenLifetime;
@@ -398,6 +413,17 @@ public final class GetResourceServerResult {
             return this;
         }
         @CustomType.Setter
+        public Builder subjectTypeAuthorizations(List<GetResourceServerSubjectTypeAuthorization> subjectTypeAuthorizations) {
+            if (subjectTypeAuthorizations == null) {
+              throw new MissingRequiredPropertyException("GetResourceServerResult", "subjectTypeAuthorizations");
+            }
+            this.subjectTypeAuthorizations = subjectTypeAuthorizations;
+            return this;
+        }
+        public Builder subjectTypeAuthorizations(GetResourceServerSubjectTypeAuthorization... subjectTypeAuthorizations) {
+            return subjectTypeAuthorizations(List.of(subjectTypeAuthorizations));
+        }
+        @CustomType.Setter
         public Builder tokenDialect(String tokenDialect) {
             if (tokenDialect == null) {
               throw new MissingRequiredPropertyException("GetResourceServerResult", "tokenDialect");
@@ -455,6 +481,7 @@ public final class GetResourceServerResult {
             _resultValue.signingAlg = signingAlg;
             _resultValue.signingSecret = signingSecret;
             _resultValue.skipConsentForVerifiableFirstPartyClients = skipConsentForVerifiableFirstPartyClients;
+            _resultValue.subjectTypeAuthorizations = subjectTypeAuthorizations;
             _resultValue.tokenDialect = tokenDialect;
             _resultValue.tokenEncryptions = tokenEncryptions;
             _resultValue.tokenLifetime = tokenLifetime;

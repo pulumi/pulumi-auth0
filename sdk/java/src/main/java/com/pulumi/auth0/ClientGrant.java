@@ -22,6 +22,96 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.auth0.Client;
+ * import com.pulumi.auth0.ClientArgs;
+ * import com.pulumi.auth0.ResourceServer;
+ * import com.pulumi.auth0.ResourceServerArgs;
+ * import com.pulumi.auth0.inputs.ResourceServerAuthorizationDetailArgs;
+ * import com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationArgs;
+ * import com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationUserArgs;
+ * import com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationClientArgs;
+ * import com.pulumi.auth0.ResourceServerScopes;
+ * import com.pulumi.auth0.ResourceServerScopesArgs;
+ * import com.pulumi.auth0.inputs.ResourceServerScopesScopeArgs;
+ * import com.pulumi.auth0.ClientGrant;
+ * import com.pulumi.auth0.ClientGrantArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         // The following example grants a client the "create:foo" and "create:bar" permissions (scopes).
+ *         var myClient = new Client("myClient", ClientArgs.builder()
+ *             .name("Example Application - Client Grant (Managed by Terraform)")
+ *             .build());
+ * 
+ *         var myResourceServer = new ResourceServer("myResourceServer", ResourceServerArgs.builder()
+ *             .name("Example Resource Server - Client Grant (Managed by Terraform)")
+ *             .identifier("https://api.example.com/client-grant")
+ *             .authorizationDetails(            
+ *                 ResourceServerAuthorizationDetailArgs.builder()
+ *                     .type("payment")
+ *                     .build(),
+ *                 ResourceServerAuthorizationDetailArgs.builder()
+ *                     .type("shipping")
+ *                     .build())
+ *             .subjectTypeAuthorization(ResourceServerSubjectTypeAuthorizationArgs.builder()
+ *                 .user(ResourceServerSubjectTypeAuthorizationUserArgs.builder()
+ *                     .policy("allow_all")
+ *                     .build())
+ *                 .client(ResourceServerSubjectTypeAuthorizationClientArgs.builder()
+ *                     .policy("require_client_grant")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var myScopes = new ResourceServerScopes("myScopes", ResourceServerScopesArgs.builder()
+ *             .resourceServerIdentifier(myResourceServer.identifier())
+ *             .scopes(            
+ *                 ResourceServerScopesScopeArgs.builder()
+ *                     .name("read:foo")
+ *                     .description("Can read Foo")
+ *                     .build(),
+ *                 ResourceServerScopesScopeArgs.builder()
+ *                     .name("create:foo")
+ *                     .description("Can create Foo")
+ *                     .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(myResourceServer)
+ *                 .build());
+ * 
+ *         var myClientGrant = new ClientGrant("myClientGrant", ClientGrantArgs.builder()
+ *             .clientId(myClient.id())
+ *             .audience(myResourceServer.identifier())
+ *             .scopes(            
+ *                 "create:foo",
+ *                 "read:foo")
+ *             .subjectType("user")
+ *             .authorizationDetailsTypes(            
+ *                 "payment",
+ *                 "shipping")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -68,6 +158,20 @@ public class ClientGrant extends com.pulumi.resources.CustomResource {
         return this.audience;
     }
     /**
+     * Defines the types of authorization details allowed for this client grant.
+     * 
+     */
+    @Export(name="authorizationDetailsTypes", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> authorizationDetailsTypes;
+
+    /**
+     * @return Defines the types of authorization details allowed for this client grant.
+     * 
+     */
+    public Output<Optional<List<String>>> authorizationDetailsTypes() {
+        return Codegen.optional(this.authorizationDetailsTypes);
+    }
+    /**
      * ID of the client for this grant.
      * 
      */
@@ -108,6 +212,20 @@ public class ClientGrant extends com.pulumi.resources.CustomResource {
      */
     public Output<List<String>> scopes() {
         return this.scopes;
+    }
+    /**
+     * Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
+     * 
+     */
+    @Export(name="subjectType", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> subjectType;
+
+    /**
+     * @return Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
+     * 
+     */
+    public Output<Optional<String>> subjectType() {
+        return Codegen.optional(this.subjectType);
     }
 
     /**

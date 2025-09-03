@@ -3105,6 +3105,31 @@ export interface ResourceServerScopesScope {
     name: pulumi.Input<string>;
 }
 
+export interface ResourceServerSubjectTypeAuthorization {
+    /**
+     * Client authorization policies for the resource server.
+     */
+    client?: pulumi.Input<inputs.ResourceServerSubjectTypeAuthorizationClient>;
+    /**
+     * User authorization policies for the resource server.
+     */
+    user?: pulumi.Input<inputs.ResourceServerSubjectTypeAuthorizationUser>;
+}
+
+export interface ResourceServerSubjectTypeAuthorizationClient {
+    /**
+     * Client flows policy. One of `denyAll`, `requireClientGrant`.
+     */
+    policy?: pulumi.Input<string>;
+}
+
+export interface ResourceServerSubjectTypeAuthorizationUser {
+    /**
+     * User flows policy. One of `allowAll`, `denyAll`, `requireClientGrant`.
+     */
+    policy?: pulumi.Input<string>;
+}
+
 export interface ResourceServerTokenEncryption {
     /**
      * Disable token encryption.

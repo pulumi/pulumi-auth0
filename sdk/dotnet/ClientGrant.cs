@@ -12,6 +12,94 @@ namespace Pulumi.Auth0
     /// <summary>
     /// Auth0 uses various grant types, or methods by which you grant limited access to your resources to another entity without exposing credentials. The OAuth 2.0 protocol supports several types of grants, which allow different types of access. This resource allows you to create and manage client grants used with configured Auth0 clients.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // The following example grants a client the "create:foo" and "create:bar" permissions (scopes).
+    ///     var myClient = new Auth0.Client("my_client", new()
+    ///     {
+    ///         Name = "Example Application - Client Grant (Managed by Terraform)",
+    ///     });
+    /// 
+    ///     var myResourceServer = new Auth0.ResourceServer("my_resource_server", new()
+    ///     {
+    ///         Name = "Example Resource Server - Client Grant (Managed by Terraform)",
+    ///         Identifier = "https://api.example.com/client-grant",
+    ///         AuthorizationDetails = new[]
+    ///         {
+    ///             new Auth0.Inputs.ResourceServerAuthorizationDetailArgs
+    ///             {
+    ///                 Type = "payment",
+    ///             },
+    ///             new Auth0.Inputs.ResourceServerAuthorizationDetailArgs
+    ///             {
+    ///                 Type = "shipping",
+    ///             },
+    ///         },
+    ///         SubjectTypeAuthorization = new Auth0.Inputs.ResourceServerSubjectTypeAuthorizationArgs
+    ///         {
+    ///             User = new Auth0.Inputs.ResourceServerSubjectTypeAuthorizationUserArgs
+    ///             {
+    ///                 Policy = "allow_all",
+    ///             },
+    ///             Client = new Auth0.Inputs.ResourceServerSubjectTypeAuthorizationClientArgs
+    ///             {
+    ///                 Policy = "require_client_grant",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var myScopes = new Auth0.ResourceServerScopes("my_scopes", new()
+    ///     {
+    ///         ResourceServerIdentifier = myResourceServer.Identifier,
+    ///         Scopes = new[]
+    ///         {
+    ///             new Auth0.Inputs.ResourceServerScopesScopeArgs
+    ///             {
+    ///                 Name = "read:foo",
+    ///                 Description = "Can read Foo",
+    ///             },
+    ///             new Auth0.Inputs.ResourceServerScopesScopeArgs
+    ///             {
+    ///                 Name = "create:foo",
+    ///                 Description = "Can create Foo",
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             myResourceServer,
+    ///         },
+    ///     });
+    /// 
+    ///     var myClientGrant = new Auth0.ClientGrant("my_client_grant", new()
+    ///     {
+    ///         ClientId = myClient.Id,
+    ///         Audience = myResourceServer.Identifier,
+    ///         Scopes = new[]
+    ///         {
+    ///             "create:foo",
+    ///             "read:foo",
+    ///         },
+    ///         SubjectType = "user",
+    ///         AuthorizationDetailsTypes = new[]
+    ///         {
+    ///             "payment",
+    ///             "shipping",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// This resource can be imported by specifying the client grant ID.
@@ -40,6 +128,12 @@ namespace Pulumi.Auth0
         public Output<string> Audience { get; private set; } = null!;
 
         /// <summary>
+        /// Defines the types of authorization details allowed for this client grant.
+        /// </summary>
+        [Output("authorizationDetailsTypes")]
+        public Output<ImmutableArray<string>> AuthorizationDetailsTypes { get; private set; } = null!;
+
+        /// <summary>
         /// ID of the client for this grant.
         /// </summary>
         [Output("clientId")]
@@ -56,6 +150,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Output("scopes")]
         public Output<ImmutableArray<string>> Scopes { get; private set; } = null!;
+
+        /// <summary>
+        /// Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
+        /// </summary>
+        [Output("subjectType")]
+        public Output<string?> SubjectType { get; private set; } = null!;
 
 
         /// <summary>
@@ -115,6 +215,18 @@ namespace Pulumi.Auth0
         [Input("audience", required: true)]
         public Input<string> Audience { get; set; } = null!;
 
+        [Input("authorizationDetailsTypes")]
+        private InputList<string>? _authorizationDetailsTypes;
+
+        /// <summary>
+        /// Defines the types of authorization details allowed for this client grant.
+        /// </summary>
+        public InputList<string> AuthorizationDetailsTypes
+        {
+            get => _authorizationDetailsTypes ?? (_authorizationDetailsTypes = new InputList<string>());
+            set => _authorizationDetailsTypes = value;
+        }
+
         /// <summary>
         /// ID of the client for this grant.
         /// </summary>
@@ -139,6 +251,12 @@ namespace Pulumi.Auth0
             set => _scopes = value;
         }
 
+        /// <summary>
+        /// Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
+        /// </summary>
+        [Input("subjectType")]
+        public Input<string>? SubjectType { get; set; }
+
         public ClientGrantArgs()
         {
         }
@@ -158,6 +276,18 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("audience")]
         public Input<string>? Audience { get; set; }
+
+        [Input("authorizationDetailsTypes")]
+        private InputList<string>? _authorizationDetailsTypes;
+
+        /// <summary>
+        /// Defines the types of authorization details allowed for this client grant.
+        /// </summary>
+        public InputList<string> AuthorizationDetailsTypes
+        {
+            get => _authorizationDetailsTypes ?? (_authorizationDetailsTypes = new InputList<string>());
+            set => _authorizationDetailsTypes = value;
+        }
 
         /// <summary>
         /// ID of the client for this grant.
@@ -182,6 +312,12 @@ namespace Pulumi.Auth0
             get => _scopes ?? (_scopes = new InputList<string>());
             set => _scopes = value;
         }
+
+        /// <summary>
+        /// Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
+        /// </summary>
+        [Input("subjectType")]
+        public Input<string>? SubjectType { get; set; }
 
         public ClientGrantState()
         {

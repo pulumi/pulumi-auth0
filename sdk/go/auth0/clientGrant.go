@@ -14,6 +14,90 @@ import (
 
 // Auth0 uses various grant types, or methods by which you grant limited access to your resources to another entity without exposing credentials. The OAuth 2.0 protocol supports several types of grants, which allow different types of access. This resource allows you to create and manage client grants used with configured Auth0 clients.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// The following example grants a client the "create:foo" and "create:bar" permissions (scopes).
+//			myClient, err := auth0.NewClient(ctx, "my_client", &auth0.ClientArgs{
+//				Name: pulumi.String("Example Application - Client Grant (Managed by Terraform)"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			myResourceServer, err := auth0.NewResourceServer(ctx, "my_resource_server", &auth0.ResourceServerArgs{
+//				Name:       pulumi.String("Example Resource Server - Client Grant (Managed by Terraform)"),
+//				Identifier: pulumi.String("https://api.example.com/client-grant"),
+//				AuthorizationDetails: auth0.ResourceServerAuthorizationDetailArray{
+//					&auth0.ResourceServerAuthorizationDetailArgs{
+//						Type: pulumi.String("payment"),
+//					},
+//					&auth0.ResourceServerAuthorizationDetailArgs{
+//						Type: pulumi.String("shipping"),
+//					},
+//				},
+//				SubjectTypeAuthorization: &auth0.ResourceServerSubjectTypeAuthorizationArgs{
+//					User: &auth0.ResourceServerSubjectTypeAuthorizationUserArgs{
+//						Policy: pulumi.String("allow_all"),
+//					},
+//					Client: &auth0.ResourceServerSubjectTypeAuthorizationClientArgs{
+//						Policy: pulumi.String("require_client_grant"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = auth0.NewResourceServerScopes(ctx, "my_scopes", &auth0.ResourceServerScopesArgs{
+//				ResourceServerIdentifier: myResourceServer.Identifier,
+//				Scopes: auth0.ResourceServerScopesScopeArray{
+//					&auth0.ResourceServerScopesScopeArgs{
+//						Name:        pulumi.String("read:foo"),
+//						Description: pulumi.String("Can read Foo"),
+//					},
+//					&auth0.ResourceServerScopesScopeArgs{
+//						Name:        pulumi.String("create:foo"),
+//						Description: pulumi.String("Can create Foo"),
+//					},
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				myResourceServer,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = auth0.NewClientGrant(ctx, "my_client_grant", &auth0.ClientGrantArgs{
+//				ClientId: myClient.ID(),
+//				Audience: myResourceServer.Identifier,
+//				Scopes: pulumi.StringArray{
+//					pulumi.String("create:foo"),
+//					pulumi.String("read:foo"),
+//				},
+//				SubjectType: pulumi.String("user"),
+//				AuthorizationDetailsTypes: pulumi.StringArray{
+//					pulumi.String("payment"),
+//					pulumi.String("shipping"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // This resource can be imported by specifying the client grant ID.
@@ -32,12 +116,16 @@ type ClientGrant struct {
 	AllowAnyOrganization pulumi.BoolPtrOutput `pulumi:"allowAnyOrganization"`
 	// Audience or API Identifier for this grant.
 	Audience pulumi.StringOutput `pulumi:"audience"`
+	// Defines the types of authorization details allowed for this client grant.
+	AuthorizationDetailsTypes pulumi.StringArrayOutput `pulumi:"authorizationDetailsTypes"`
 	// ID of the client for this grant.
 	ClientId pulumi.StringOutput `pulumi:"clientId"`
 	// Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
 	OrganizationUsage pulumi.StringPtrOutput `pulumi:"organizationUsage"`
 	// Permissions (scopes) included in this grant.
 	Scopes pulumi.StringArrayOutput `pulumi:"scopes"`
+	// Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
+	SubjectType pulumi.StringPtrOutput `pulumi:"subjectType"`
 }
 
 // NewClientGrant registers a new resource with the given unique name, arguments, and options.
@@ -83,12 +171,16 @@ type clientGrantState struct {
 	AllowAnyOrganization *bool `pulumi:"allowAnyOrganization"`
 	// Audience or API Identifier for this grant.
 	Audience *string `pulumi:"audience"`
+	// Defines the types of authorization details allowed for this client grant.
+	AuthorizationDetailsTypes []string `pulumi:"authorizationDetailsTypes"`
 	// ID of the client for this grant.
 	ClientId *string `pulumi:"clientId"`
 	// Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
 	OrganizationUsage *string `pulumi:"organizationUsage"`
 	// Permissions (scopes) included in this grant.
 	Scopes []string `pulumi:"scopes"`
+	// Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
+	SubjectType *string `pulumi:"subjectType"`
 }
 
 type ClientGrantState struct {
@@ -96,12 +188,16 @@ type ClientGrantState struct {
 	AllowAnyOrganization pulumi.BoolPtrInput
 	// Audience or API Identifier for this grant.
 	Audience pulumi.StringPtrInput
+	// Defines the types of authorization details allowed for this client grant.
+	AuthorizationDetailsTypes pulumi.StringArrayInput
 	// ID of the client for this grant.
 	ClientId pulumi.StringPtrInput
 	// Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
 	OrganizationUsage pulumi.StringPtrInput
 	// Permissions (scopes) included in this grant.
 	Scopes pulumi.StringArrayInput
+	// Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
+	SubjectType pulumi.StringPtrInput
 }
 
 func (ClientGrantState) ElementType() reflect.Type {
@@ -113,12 +209,16 @@ type clientGrantArgs struct {
 	AllowAnyOrganization *bool `pulumi:"allowAnyOrganization"`
 	// Audience or API Identifier for this grant.
 	Audience string `pulumi:"audience"`
+	// Defines the types of authorization details allowed for this client grant.
+	AuthorizationDetailsTypes []string `pulumi:"authorizationDetailsTypes"`
 	// ID of the client for this grant.
 	ClientId string `pulumi:"clientId"`
 	// Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
 	OrganizationUsage *string `pulumi:"organizationUsage"`
 	// Permissions (scopes) included in this grant.
 	Scopes []string `pulumi:"scopes"`
+	// Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
+	SubjectType *string `pulumi:"subjectType"`
 }
 
 // The set of arguments for constructing a ClientGrant resource.
@@ -127,12 +227,16 @@ type ClientGrantArgs struct {
 	AllowAnyOrganization pulumi.BoolPtrInput
 	// Audience or API Identifier for this grant.
 	Audience pulumi.StringInput
+	// Defines the types of authorization details allowed for this client grant.
+	AuthorizationDetailsTypes pulumi.StringArrayInput
 	// ID of the client for this grant.
 	ClientId pulumi.StringInput
 	// Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
 	OrganizationUsage pulumi.StringPtrInput
 	// Permissions (scopes) included in this grant.
 	Scopes pulumi.StringArrayInput
+	// Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
+	SubjectType pulumi.StringPtrInput
 }
 
 func (ClientGrantArgs) ElementType() reflect.Type {
@@ -232,6 +336,11 @@ func (o ClientGrantOutput) Audience() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClientGrant) pulumi.StringOutput { return v.Audience }).(pulumi.StringOutput)
 }
 
+// Defines the types of authorization details allowed for this client grant.
+func (o ClientGrantOutput) AuthorizationDetailsTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClientGrant) pulumi.StringArrayOutput { return v.AuthorizationDetailsTypes }).(pulumi.StringArrayOutput)
+}
+
 // ID of the client for this grant.
 func (o ClientGrantOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClientGrant) pulumi.StringOutput { return v.ClientId }).(pulumi.StringOutput)
@@ -245,6 +354,11 @@ func (o ClientGrantOutput) OrganizationUsage() pulumi.StringPtrOutput {
 // Permissions (scopes) included in this grant.
 func (o ClientGrantOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ClientGrant) pulumi.StringArrayOutput { return v.Scopes }).(pulumi.StringArrayOutput)
+}
+
+// Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
+func (o ClientGrantOutput) SubjectType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientGrant) pulumi.StringPtrOutput { return v.SubjectType }).(pulumi.StringPtrOutput)
 }
 
 type ClientGrantArrayOutput struct{ *pulumi.OutputState }

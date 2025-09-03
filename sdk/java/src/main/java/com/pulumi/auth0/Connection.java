@@ -1182,14 +1182,14 @@ public class Connection extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.metadata);
     }
     /**
-     * Name of the connection.
+     * Name of the connection. This value is immutable and changing it requires the creation of a new resource.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the connection.
+     * @return Name of the connection. This value is immutable and changing it requires the creation of a new resource.
      * 
      */
     public Output<String> name() {

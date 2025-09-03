@@ -27,7 +27,7 @@ class GetResourceServerResult:
     """
     A collection of values returned by getResourceServer.
     """
-    def __init__(__self__, allow_offline_access=None, authorization_details=None, consent_policy=None, enforce_policies=None, id=None, identifier=None, name=None, proof_of_possessions=None, resource_server_id=None, scopes=None, signing_alg=None, signing_secret=None, skip_consent_for_verifiable_first_party_clients=None, token_dialect=None, token_encryptions=None, token_lifetime=None, token_lifetime_for_web=None, verification_location=None):
+    def __init__(__self__, allow_offline_access=None, authorization_details=None, consent_policy=None, enforce_policies=None, id=None, identifier=None, name=None, proof_of_possessions=None, resource_server_id=None, scopes=None, signing_alg=None, signing_secret=None, skip_consent_for_verifiable_first_party_clients=None, subject_type_authorizations=None, token_dialect=None, token_encryptions=None, token_lifetime=None, token_lifetime_for_web=None, verification_location=None):
         if allow_offline_access and not isinstance(allow_offline_access, bool):
             raise TypeError("Expected argument 'allow_offline_access' to be a bool")
         pulumi.set(__self__, "allow_offline_access", allow_offline_access)
@@ -67,6 +67,9 @@ class GetResourceServerResult:
         if skip_consent_for_verifiable_first_party_clients and not isinstance(skip_consent_for_verifiable_first_party_clients, bool):
             raise TypeError("Expected argument 'skip_consent_for_verifiable_first_party_clients' to be a bool")
         pulumi.set(__self__, "skip_consent_for_verifiable_first_party_clients", skip_consent_for_verifiable_first_party_clients)
+        if subject_type_authorizations and not isinstance(subject_type_authorizations, list):
+            raise TypeError("Expected argument 'subject_type_authorizations' to be a list")
+        pulumi.set(__self__, "subject_type_authorizations", subject_type_authorizations)
         if token_dialect and not isinstance(token_dialect, str):
             raise TypeError("Expected argument 'token_dialect' to be a str")
         pulumi.set(__self__, "token_dialect", token_dialect)
@@ -188,6 +191,14 @@ class GetResourceServerResult:
         return pulumi.get(self, "skip_consent_for_verifiable_first_party_clients")
 
     @_builtins.property
+    @pulumi.getter(name="subjectTypeAuthorizations")
+    def subject_type_authorizations(self) -> Sequence['outputs.GetResourceServerSubjectTypeAuthorizationResult']:
+        """
+        Authorization policies for user and client flows.
+        """
+        return pulumi.get(self, "subject_type_authorizations")
+
+    @_builtins.property
     @pulumi.getter(name="tokenDialect")
     def token_dialect(self) -> _builtins.str:
         """
@@ -247,6 +258,7 @@ class AwaitableGetResourceServerResult(GetResourceServerResult):
             signing_alg=self.signing_alg,
             signing_secret=self.signing_secret,
             skip_consent_for_verifiable_first_party_clients=self.skip_consent_for_verifiable_first_party_clients,
+            subject_type_authorizations=self.subject_type_authorizations,
             token_dialect=self.token_dialect,
             token_encryptions=self.token_encryptions,
             token_lifetime=self.token_lifetime,
@@ -296,6 +308,7 @@ def get_resource_server(identifier: Optional[_builtins.str] = None,
         signing_alg=pulumi.get(__ret__, 'signing_alg'),
         signing_secret=pulumi.get(__ret__, 'signing_secret'),
         skip_consent_for_verifiable_first_party_clients=pulumi.get(__ret__, 'skip_consent_for_verifiable_first_party_clients'),
+        subject_type_authorizations=pulumi.get(__ret__, 'subject_type_authorizations'),
         token_dialect=pulumi.get(__ret__, 'token_dialect'),
         token_encryptions=pulumi.get(__ret__, 'token_encryptions'),
         token_lifetime=pulumi.get(__ret__, 'token_lifetime'),
@@ -342,6 +355,7 @@ def get_resource_server_output(identifier: Optional[pulumi.Input[Optional[_built
         signing_alg=pulumi.get(__response__, 'signing_alg'),
         signing_secret=pulumi.get(__response__, 'signing_secret'),
         skip_consent_for_verifiable_first_party_clients=pulumi.get(__response__, 'skip_consent_for_verifiable_first_party_clients'),
+        subject_type_authorizations=pulumi.get(__response__, 'subject_type_authorizations'),
         token_dialect=pulumi.get(__response__, 'token_dialect'),
         token_encryptions=pulumi.get(__response__, 'token_encryptions'),
         token_lifetime=pulumi.get(__response__, 'token_lifetime'),

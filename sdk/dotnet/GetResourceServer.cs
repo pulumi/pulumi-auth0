@@ -203,6 +203,10 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly bool SkipConsentForVerifiableFirstPartyClients;
         /// <summary>
+        /// Authorization policies for user and client flows.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetResourceServerSubjectTypeAuthorizationResult> SubjectTypeAuthorizations;
+        /// <summary>
         /// Dialect of access tokens that should be issued for this resource server. Options include `access_token`, `rfc9068_profile`, `access_token_authz`, and `rfc9068_profile_authz`. `access_token` is a JWT containing standard Auth0 claims. `rfc9068_profile` is a JWT conforming to the IETF JWT Access Token Profile. `access_token_authz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068_profile_authz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforce_policies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).
         /// </summary>
         public readonly string TokenDialect;
@@ -251,6 +255,8 @@ namespace Pulumi.Auth0
 
             bool skipConsentForVerifiableFirstPartyClients,
 
+            ImmutableArray<Outputs.GetResourceServerSubjectTypeAuthorizationResult> subjectTypeAuthorizations,
+
             string tokenDialect,
 
             ImmutableArray<Outputs.GetResourceServerTokenEncryptionResult> tokenEncryptions,
@@ -274,6 +280,7 @@ namespace Pulumi.Auth0
             SigningAlg = signingAlg;
             SigningSecret = signingSecret;
             SkipConsentForVerifiableFirstPartyClients = skipConsentForVerifiableFirstPartyClients;
+            SubjectTypeAuthorizations = subjectTypeAuthorizations;
             TokenDialect = tokenDialect;
             TokenEncryptions = tokenEncryptions;
             TokenLifetime = tokenLifetime;

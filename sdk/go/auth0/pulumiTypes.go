@@ -28662,6 +28662,440 @@ func (o ResourceServerScopesScopeArrayOutput) Index(i pulumi.IntInput) ResourceS
 	}).(ResourceServerScopesScopeOutput)
 }
 
+type ResourceServerSubjectTypeAuthorization struct {
+	// Client authorization policies for the resource server.
+	Client *ResourceServerSubjectTypeAuthorizationClient `pulumi:"client"`
+	// User authorization policies for the resource server.
+	User *ResourceServerSubjectTypeAuthorizationUser `pulumi:"user"`
+}
+
+// ResourceServerSubjectTypeAuthorizationInput is an input type that accepts ResourceServerSubjectTypeAuthorizationArgs and ResourceServerSubjectTypeAuthorizationOutput values.
+// You can construct a concrete instance of `ResourceServerSubjectTypeAuthorizationInput` via:
+//
+//	ResourceServerSubjectTypeAuthorizationArgs{...}
+type ResourceServerSubjectTypeAuthorizationInput interface {
+	pulumi.Input
+
+	ToResourceServerSubjectTypeAuthorizationOutput() ResourceServerSubjectTypeAuthorizationOutput
+	ToResourceServerSubjectTypeAuthorizationOutputWithContext(context.Context) ResourceServerSubjectTypeAuthorizationOutput
+}
+
+type ResourceServerSubjectTypeAuthorizationArgs struct {
+	// Client authorization policies for the resource server.
+	Client ResourceServerSubjectTypeAuthorizationClientPtrInput `pulumi:"client"`
+	// User authorization policies for the resource server.
+	User ResourceServerSubjectTypeAuthorizationUserPtrInput `pulumi:"user"`
+}
+
+func (ResourceServerSubjectTypeAuthorizationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceServerSubjectTypeAuthorization)(nil)).Elem()
+}
+
+func (i ResourceServerSubjectTypeAuthorizationArgs) ToResourceServerSubjectTypeAuthorizationOutput() ResourceServerSubjectTypeAuthorizationOutput {
+	return i.ToResourceServerSubjectTypeAuthorizationOutputWithContext(context.Background())
+}
+
+func (i ResourceServerSubjectTypeAuthorizationArgs) ToResourceServerSubjectTypeAuthorizationOutputWithContext(ctx context.Context) ResourceServerSubjectTypeAuthorizationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceServerSubjectTypeAuthorizationOutput)
+}
+
+func (i ResourceServerSubjectTypeAuthorizationArgs) ToResourceServerSubjectTypeAuthorizationPtrOutput() ResourceServerSubjectTypeAuthorizationPtrOutput {
+	return i.ToResourceServerSubjectTypeAuthorizationPtrOutputWithContext(context.Background())
+}
+
+func (i ResourceServerSubjectTypeAuthorizationArgs) ToResourceServerSubjectTypeAuthorizationPtrOutputWithContext(ctx context.Context) ResourceServerSubjectTypeAuthorizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceServerSubjectTypeAuthorizationOutput).ToResourceServerSubjectTypeAuthorizationPtrOutputWithContext(ctx)
+}
+
+// ResourceServerSubjectTypeAuthorizationPtrInput is an input type that accepts ResourceServerSubjectTypeAuthorizationArgs, ResourceServerSubjectTypeAuthorizationPtr and ResourceServerSubjectTypeAuthorizationPtrOutput values.
+// You can construct a concrete instance of `ResourceServerSubjectTypeAuthorizationPtrInput` via:
+//
+//	        ResourceServerSubjectTypeAuthorizationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourceServerSubjectTypeAuthorizationPtrInput interface {
+	pulumi.Input
+
+	ToResourceServerSubjectTypeAuthorizationPtrOutput() ResourceServerSubjectTypeAuthorizationPtrOutput
+	ToResourceServerSubjectTypeAuthorizationPtrOutputWithContext(context.Context) ResourceServerSubjectTypeAuthorizationPtrOutput
+}
+
+type resourceServerSubjectTypeAuthorizationPtrType ResourceServerSubjectTypeAuthorizationArgs
+
+func ResourceServerSubjectTypeAuthorizationPtr(v *ResourceServerSubjectTypeAuthorizationArgs) ResourceServerSubjectTypeAuthorizationPtrInput {
+	return (*resourceServerSubjectTypeAuthorizationPtrType)(v)
+}
+
+func (*resourceServerSubjectTypeAuthorizationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceServerSubjectTypeAuthorization)(nil)).Elem()
+}
+
+func (i *resourceServerSubjectTypeAuthorizationPtrType) ToResourceServerSubjectTypeAuthorizationPtrOutput() ResourceServerSubjectTypeAuthorizationPtrOutput {
+	return i.ToResourceServerSubjectTypeAuthorizationPtrOutputWithContext(context.Background())
+}
+
+func (i *resourceServerSubjectTypeAuthorizationPtrType) ToResourceServerSubjectTypeAuthorizationPtrOutputWithContext(ctx context.Context) ResourceServerSubjectTypeAuthorizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceServerSubjectTypeAuthorizationPtrOutput)
+}
+
+type ResourceServerSubjectTypeAuthorizationOutput struct{ *pulumi.OutputState }
+
+func (ResourceServerSubjectTypeAuthorizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceServerSubjectTypeAuthorization)(nil)).Elem()
+}
+
+func (o ResourceServerSubjectTypeAuthorizationOutput) ToResourceServerSubjectTypeAuthorizationOutput() ResourceServerSubjectTypeAuthorizationOutput {
+	return o
+}
+
+func (o ResourceServerSubjectTypeAuthorizationOutput) ToResourceServerSubjectTypeAuthorizationOutputWithContext(ctx context.Context) ResourceServerSubjectTypeAuthorizationOutput {
+	return o
+}
+
+func (o ResourceServerSubjectTypeAuthorizationOutput) ToResourceServerSubjectTypeAuthorizationPtrOutput() ResourceServerSubjectTypeAuthorizationPtrOutput {
+	return o.ToResourceServerSubjectTypeAuthorizationPtrOutputWithContext(context.Background())
+}
+
+func (o ResourceServerSubjectTypeAuthorizationOutput) ToResourceServerSubjectTypeAuthorizationPtrOutputWithContext(ctx context.Context) ResourceServerSubjectTypeAuthorizationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceServerSubjectTypeAuthorization) *ResourceServerSubjectTypeAuthorization {
+		return &v
+	}).(ResourceServerSubjectTypeAuthorizationPtrOutput)
+}
+
+// Client authorization policies for the resource server.
+func (o ResourceServerSubjectTypeAuthorizationOutput) Client() ResourceServerSubjectTypeAuthorizationClientPtrOutput {
+	return o.ApplyT(func(v ResourceServerSubjectTypeAuthorization) *ResourceServerSubjectTypeAuthorizationClient {
+		return v.Client
+	}).(ResourceServerSubjectTypeAuthorizationClientPtrOutput)
+}
+
+// User authorization policies for the resource server.
+func (o ResourceServerSubjectTypeAuthorizationOutput) User() ResourceServerSubjectTypeAuthorizationUserPtrOutput {
+	return o.ApplyT(func(v ResourceServerSubjectTypeAuthorization) *ResourceServerSubjectTypeAuthorizationUser {
+		return v.User
+	}).(ResourceServerSubjectTypeAuthorizationUserPtrOutput)
+}
+
+type ResourceServerSubjectTypeAuthorizationPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceServerSubjectTypeAuthorizationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceServerSubjectTypeAuthorization)(nil)).Elem()
+}
+
+func (o ResourceServerSubjectTypeAuthorizationPtrOutput) ToResourceServerSubjectTypeAuthorizationPtrOutput() ResourceServerSubjectTypeAuthorizationPtrOutput {
+	return o
+}
+
+func (o ResourceServerSubjectTypeAuthorizationPtrOutput) ToResourceServerSubjectTypeAuthorizationPtrOutputWithContext(ctx context.Context) ResourceServerSubjectTypeAuthorizationPtrOutput {
+	return o
+}
+
+func (o ResourceServerSubjectTypeAuthorizationPtrOutput) Elem() ResourceServerSubjectTypeAuthorizationOutput {
+	return o.ApplyT(func(v *ResourceServerSubjectTypeAuthorization) ResourceServerSubjectTypeAuthorization {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceServerSubjectTypeAuthorization
+		return ret
+	}).(ResourceServerSubjectTypeAuthorizationOutput)
+}
+
+// Client authorization policies for the resource server.
+func (o ResourceServerSubjectTypeAuthorizationPtrOutput) Client() ResourceServerSubjectTypeAuthorizationClientPtrOutput {
+	return o.ApplyT(func(v *ResourceServerSubjectTypeAuthorization) *ResourceServerSubjectTypeAuthorizationClient {
+		if v == nil {
+			return nil
+		}
+		return v.Client
+	}).(ResourceServerSubjectTypeAuthorizationClientPtrOutput)
+}
+
+// User authorization policies for the resource server.
+func (o ResourceServerSubjectTypeAuthorizationPtrOutput) User() ResourceServerSubjectTypeAuthorizationUserPtrOutput {
+	return o.ApplyT(func(v *ResourceServerSubjectTypeAuthorization) *ResourceServerSubjectTypeAuthorizationUser {
+		if v == nil {
+			return nil
+		}
+		return v.User
+	}).(ResourceServerSubjectTypeAuthorizationUserPtrOutput)
+}
+
+type ResourceServerSubjectTypeAuthorizationClient struct {
+	// Client flows policy. One of `denyAll`, `requireClientGrant`.
+	Policy *string `pulumi:"policy"`
+}
+
+// ResourceServerSubjectTypeAuthorizationClientInput is an input type that accepts ResourceServerSubjectTypeAuthorizationClientArgs and ResourceServerSubjectTypeAuthorizationClientOutput values.
+// You can construct a concrete instance of `ResourceServerSubjectTypeAuthorizationClientInput` via:
+//
+//	ResourceServerSubjectTypeAuthorizationClientArgs{...}
+type ResourceServerSubjectTypeAuthorizationClientInput interface {
+	pulumi.Input
+
+	ToResourceServerSubjectTypeAuthorizationClientOutput() ResourceServerSubjectTypeAuthorizationClientOutput
+	ToResourceServerSubjectTypeAuthorizationClientOutputWithContext(context.Context) ResourceServerSubjectTypeAuthorizationClientOutput
+}
+
+type ResourceServerSubjectTypeAuthorizationClientArgs struct {
+	// Client flows policy. One of `denyAll`, `requireClientGrant`.
+	Policy pulumi.StringPtrInput `pulumi:"policy"`
+}
+
+func (ResourceServerSubjectTypeAuthorizationClientArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceServerSubjectTypeAuthorizationClient)(nil)).Elem()
+}
+
+func (i ResourceServerSubjectTypeAuthorizationClientArgs) ToResourceServerSubjectTypeAuthorizationClientOutput() ResourceServerSubjectTypeAuthorizationClientOutput {
+	return i.ToResourceServerSubjectTypeAuthorizationClientOutputWithContext(context.Background())
+}
+
+func (i ResourceServerSubjectTypeAuthorizationClientArgs) ToResourceServerSubjectTypeAuthorizationClientOutputWithContext(ctx context.Context) ResourceServerSubjectTypeAuthorizationClientOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceServerSubjectTypeAuthorizationClientOutput)
+}
+
+func (i ResourceServerSubjectTypeAuthorizationClientArgs) ToResourceServerSubjectTypeAuthorizationClientPtrOutput() ResourceServerSubjectTypeAuthorizationClientPtrOutput {
+	return i.ToResourceServerSubjectTypeAuthorizationClientPtrOutputWithContext(context.Background())
+}
+
+func (i ResourceServerSubjectTypeAuthorizationClientArgs) ToResourceServerSubjectTypeAuthorizationClientPtrOutputWithContext(ctx context.Context) ResourceServerSubjectTypeAuthorizationClientPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceServerSubjectTypeAuthorizationClientOutput).ToResourceServerSubjectTypeAuthorizationClientPtrOutputWithContext(ctx)
+}
+
+// ResourceServerSubjectTypeAuthorizationClientPtrInput is an input type that accepts ResourceServerSubjectTypeAuthorizationClientArgs, ResourceServerSubjectTypeAuthorizationClientPtr and ResourceServerSubjectTypeAuthorizationClientPtrOutput values.
+// You can construct a concrete instance of `ResourceServerSubjectTypeAuthorizationClientPtrInput` via:
+//
+//	        ResourceServerSubjectTypeAuthorizationClientArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourceServerSubjectTypeAuthorizationClientPtrInput interface {
+	pulumi.Input
+
+	ToResourceServerSubjectTypeAuthorizationClientPtrOutput() ResourceServerSubjectTypeAuthorizationClientPtrOutput
+	ToResourceServerSubjectTypeAuthorizationClientPtrOutputWithContext(context.Context) ResourceServerSubjectTypeAuthorizationClientPtrOutput
+}
+
+type resourceServerSubjectTypeAuthorizationClientPtrType ResourceServerSubjectTypeAuthorizationClientArgs
+
+func ResourceServerSubjectTypeAuthorizationClientPtr(v *ResourceServerSubjectTypeAuthorizationClientArgs) ResourceServerSubjectTypeAuthorizationClientPtrInput {
+	return (*resourceServerSubjectTypeAuthorizationClientPtrType)(v)
+}
+
+func (*resourceServerSubjectTypeAuthorizationClientPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceServerSubjectTypeAuthorizationClient)(nil)).Elem()
+}
+
+func (i *resourceServerSubjectTypeAuthorizationClientPtrType) ToResourceServerSubjectTypeAuthorizationClientPtrOutput() ResourceServerSubjectTypeAuthorizationClientPtrOutput {
+	return i.ToResourceServerSubjectTypeAuthorizationClientPtrOutputWithContext(context.Background())
+}
+
+func (i *resourceServerSubjectTypeAuthorizationClientPtrType) ToResourceServerSubjectTypeAuthorizationClientPtrOutputWithContext(ctx context.Context) ResourceServerSubjectTypeAuthorizationClientPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceServerSubjectTypeAuthorizationClientPtrOutput)
+}
+
+type ResourceServerSubjectTypeAuthorizationClientOutput struct{ *pulumi.OutputState }
+
+func (ResourceServerSubjectTypeAuthorizationClientOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceServerSubjectTypeAuthorizationClient)(nil)).Elem()
+}
+
+func (o ResourceServerSubjectTypeAuthorizationClientOutput) ToResourceServerSubjectTypeAuthorizationClientOutput() ResourceServerSubjectTypeAuthorizationClientOutput {
+	return o
+}
+
+func (o ResourceServerSubjectTypeAuthorizationClientOutput) ToResourceServerSubjectTypeAuthorizationClientOutputWithContext(ctx context.Context) ResourceServerSubjectTypeAuthorizationClientOutput {
+	return o
+}
+
+func (o ResourceServerSubjectTypeAuthorizationClientOutput) ToResourceServerSubjectTypeAuthorizationClientPtrOutput() ResourceServerSubjectTypeAuthorizationClientPtrOutput {
+	return o.ToResourceServerSubjectTypeAuthorizationClientPtrOutputWithContext(context.Background())
+}
+
+func (o ResourceServerSubjectTypeAuthorizationClientOutput) ToResourceServerSubjectTypeAuthorizationClientPtrOutputWithContext(ctx context.Context) ResourceServerSubjectTypeAuthorizationClientPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceServerSubjectTypeAuthorizationClient) *ResourceServerSubjectTypeAuthorizationClient {
+		return &v
+	}).(ResourceServerSubjectTypeAuthorizationClientPtrOutput)
+}
+
+// Client flows policy. One of `denyAll`, `requireClientGrant`.
+func (o ResourceServerSubjectTypeAuthorizationClientOutput) Policy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceServerSubjectTypeAuthorizationClient) *string { return v.Policy }).(pulumi.StringPtrOutput)
+}
+
+type ResourceServerSubjectTypeAuthorizationClientPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceServerSubjectTypeAuthorizationClientPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceServerSubjectTypeAuthorizationClient)(nil)).Elem()
+}
+
+func (o ResourceServerSubjectTypeAuthorizationClientPtrOutput) ToResourceServerSubjectTypeAuthorizationClientPtrOutput() ResourceServerSubjectTypeAuthorizationClientPtrOutput {
+	return o
+}
+
+func (o ResourceServerSubjectTypeAuthorizationClientPtrOutput) ToResourceServerSubjectTypeAuthorizationClientPtrOutputWithContext(ctx context.Context) ResourceServerSubjectTypeAuthorizationClientPtrOutput {
+	return o
+}
+
+func (o ResourceServerSubjectTypeAuthorizationClientPtrOutput) Elem() ResourceServerSubjectTypeAuthorizationClientOutput {
+	return o.ApplyT(func(v *ResourceServerSubjectTypeAuthorizationClient) ResourceServerSubjectTypeAuthorizationClient {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceServerSubjectTypeAuthorizationClient
+		return ret
+	}).(ResourceServerSubjectTypeAuthorizationClientOutput)
+}
+
+// Client flows policy. One of `denyAll`, `requireClientGrant`.
+func (o ResourceServerSubjectTypeAuthorizationClientPtrOutput) Policy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceServerSubjectTypeAuthorizationClient) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Policy
+	}).(pulumi.StringPtrOutput)
+}
+
+type ResourceServerSubjectTypeAuthorizationUser struct {
+	// User flows policy. One of `allowAll`, `denyAll`, `requireClientGrant`.
+	Policy *string `pulumi:"policy"`
+}
+
+// ResourceServerSubjectTypeAuthorizationUserInput is an input type that accepts ResourceServerSubjectTypeAuthorizationUserArgs and ResourceServerSubjectTypeAuthorizationUserOutput values.
+// You can construct a concrete instance of `ResourceServerSubjectTypeAuthorizationUserInput` via:
+//
+//	ResourceServerSubjectTypeAuthorizationUserArgs{...}
+type ResourceServerSubjectTypeAuthorizationUserInput interface {
+	pulumi.Input
+
+	ToResourceServerSubjectTypeAuthorizationUserOutput() ResourceServerSubjectTypeAuthorizationUserOutput
+	ToResourceServerSubjectTypeAuthorizationUserOutputWithContext(context.Context) ResourceServerSubjectTypeAuthorizationUserOutput
+}
+
+type ResourceServerSubjectTypeAuthorizationUserArgs struct {
+	// User flows policy. One of `allowAll`, `denyAll`, `requireClientGrant`.
+	Policy pulumi.StringPtrInput `pulumi:"policy"`
+}
+
+func (ResourceServerSubjectTypeAuthorizationUserArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceServerSubjectTypeAuthorizationUser)(nil)).Elem()
+}
+
+func (i ResourceServerSubjectTypeAuthorizationUserArgs) ToResourceServerSubjectTypeAuthorizationUserOutput() ResourceServerSubjectTypeAuthorizationUserOutput {
+	return i.ToResourceServerSubjectTypeAuthorizationUserOutputWithContext(context.Background())
+}
+
+func (i ResourceServerSubjectTypeAuthorizationUserArgs) ToResourceServerSubjectTypeAuthorizationUserOutputWithContext(ctx context.Context) ResourceServerSubjectTypeAuthorizationUserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceServerSubjectTypeAuthorizationUserOutput)
+}
+
+func (i ResourceServerSubjectTypeAuthorizationUserArgs) ToResourceServerSubjectTypeAuthorizationUserPtrOutput() ResourceServerSubjectTypeAuthorizationUserPtrOutput {
+	return i.ToResourceServerSubjectTypeAuthorizationUserPtrOutputWithContext(context.Background())
+}
+
+func (i ResourceServerSubjectTypeAuthorizationUserArgs) ToResourceServerSubjectTypeAuthorizationUserPtrOutputWithContext(ctx context.Context) ResourceServerSubjectTypeAuthorizationUserPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceServerSubjectTypeAuthorizationUserOutput).ToResourceServerSubjectTypeAuthorizationUserPtrOutputWithContext(ctx)
+}
+
+// ResourceServerSubjectTypeAuthorizationUserPtrInput is an input type that accepts ResourceServerSubjectTypeAuthorizationUserArgs, ResourceServerSubjectTypeAuthorizationUserPtr and ResourceServerSubjectTypeAuthorizationUserPtrOutput values.
+// You can construct a concrete instance of `ResourceServerSubjectTypeAuthorizationUserPtrInput` via:
+//
+//	        ResourceServerSubjectTypeAuthorizationUserArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourceServerSubjectTypeAuthorizationUserPtrInput interface {
+	pulumi.Input
+
+	ToResourceServerSubjectTypeAuthorizationUserPtrOutput() ResourceServerSubjectTypeAuthorizationUserPtrOutput
+	ToResourceServerSubjectTypeAuthorizationUserPtrOutputWithContext(context.Context) ResourceServerSubjectTypeAuthorizationUserPtrOutput
+}
+
+type resourceServerSubjectTypeAuthorizationUserPtrType ResourceServerSubjectTypeAuthorizationUserArgs
+
+func ResourceServerSubjectTypeAuthorizationUserPtr(v *ResourceServerSubjectTypeAuthorizationUserArgs) ResourceServerSubjectTypeAuthorizationUserPtrInput {
+	return (*resourceServerSubjectTypeAuthorizationUserPtrType)(v)
+}
+
+func (*resourceServerSubjectTypeAuthorizationUserPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceServerSubjectTypeAuthorizationUser)(nil)).Elem()
+}
+
+func (i *resourceServerSubjectTypeAuthorizationUserPtrType) ToResourceServerSubjectTypeAuthorizationUserPtrOutput() ResourceServerSubjectTypeAuthorizationUserPtrOutput {
+	return i.ToResourceServerSubjectTypeAuthorizationUserPtrOutputWithContext(context.Background())
+}
+
+func (i *resourceServerSubjectTypeAuthorizationUserPtrType) ToResourceServerSubjectTypeAuthorizationUserPtrOutputWithContext(ctx context.Context) ResourceServerSubjectTypeAuthorizationUserPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceServerSubjectTypeAuthorizationUserPtrOutput)
+}
+
+type ResourceServerSubjectTypeAuthorizationUserOutput struct{ *pulumi.OutputState }
+
+func (ResourceServerSubjectTypeAuthorizationUserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceServerSubjectTypeAuthorizationUser)(nil)).Elem()
+}
+
+func (o ResourceServerSubjectTypeAuthorizationUserOutput) ToResourceServerSubjectTypeAuthorizationUserOutput() ResourceServerSubjectTypeAuthorizationUserOutput {
+	return o
+}
+
+func (o ResourceServerSubjectTypeAuthorizationUserOutput) ToResourceServerSubjectTypeAuthorizationUserOutputWithContext(ctx context.Context) ResourceServerSubjectTypeAuthorizationUserOutput {
+	return o
+}
+
+func (o ResourceServerSubjectTypeAuthorizationUserOutput) ToResourceServerSubjectTypeAuthorizationUserPtrOutput() ResourceServerSubjectTypeAuthorizationUserPtrOutput {
+	return o.ToResourceServerSubjectTypeAuthorizationUserPtrOutputWithContext(context.Background())
+}
+
+func (o ResourceServerSubjectTypeAuthorizationUserOutput) ToResourceServerSubjectTypeAuthorizationUserPtrOutputWithContext(ctx context.Context) ResourceServerSubjectTypeAuthorizationUserPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceServerSubjectTypeAuthorizationUser) *ResourceServerSubjectTypeAuthorizationUser {
+		return &v
+	}).(ResourceServerSubjectTypeAuthorizationUserPtrOutput)
+}
+
+// User flows policy. One of `allowAll`, `denyAll`, `requireClientGrant`.
+func (o ResourceServerSubjectTypeAuthorizationUserOutput) Policy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceServerSubjectTypeAuthorizationUser) *string { return v.Policy }).(pulumi.StringPtrOutput)
+}
+
+type ResourceServerSubjectTypeAuthorizationUserPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceServerSubjectTypeAuthorizationUserPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceServerSubjectTypeAuthorizationUser)(nil)).Elem()
+}
+
+func (o ResourceServerSubjectTypeAuthorizationUserPtrOutput) ToResourceServerSubjectTypeAuthorizationUserPtrOutput() ResourceServerSubjectTypeAuthorizationUserPtrOutput {
+	return o
+}
+
+func (o ResourceServerSubjectTypeAuthorizationUserPtrOutput) ToResourceServerSubjectTypeAuthorizationUserPtrOutputWithContext(ctx context.Context) ResourceServerSubjectTypeAuthorizationUserPtrOutput {
+	return o
+}
+
+func (o ResourceServerSubjectTypeAuthorizationUserPtrOutput) Elem() ResourceServerSubjectTypeAuthorizationUserOutput {
+	return o.ApplyT(func(v *ResourceServerSubjectTypeAuthorizationUser) ResourceServerSubjectTypeAuthorizationUser {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceServerSubjectTypeAuthorizationUser
+		return ret
+	}).(ResourceServerSubjectTypeAuthorizationUserOutput)
+}
+
+// User flows policy. One of `allowAll`, `denyAll`, `requireClientGrant`.
+func (o ResourceServerSubjectTypeAuthorizationUserPtrOutput) Policy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceServerSubjectTypeAuthorizationUser) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Policy
+	}).(pulumi.StringPtrOutput)
+}
+
 type ResourceServerTokenEncryption struct {
 	// Disable token encryption.
 	Disable *bool `pulumi:"disable"`
@@ -50234,6 +50668,310 @@ func (o GetResourceServerScopeTypeArrayOutput) Index(i pulumi.IntInput) GetResou
 	}).(GetResourceServerScopeTypeOutput)
 }
 
+type GetResourceServerSubjectTypeAuthorization struct {
+	// Client authorization policies for the resource server.
+	Clients []GetResourceServerSubjectTypeAuthorizationClient `pulumi:"clients"`
+	// User authorization policies for the resource server.
+	Users []GetResourceServerSubjectTypeAuthorizationUser `pulumi:"users"`
+}
+
+// GetResourceServerSubjectTypeAuthorizationInput is an input type that accepts GetResourceServerSubjectTypeAuthorizationArgs and GetResourceServerSubjectTypeAuthorizationOutput values.
+// You can construct a concrete instance of `GetResourceServerSubjectTypeAuthorizationInput` via:
+//
+//	GetResourceServerSubjectTypeAuthorizationArgs{...}
+type GetResourceServerSubjectTypeAuthorizationInput interface {
+	pulumi.Input
+
+	ToGetResourceServerSubjectTypeAuthorizationOutput() GetResourceServerSubjectTypeAuthorizationOutput
+	ToGetResourceServerSubjectTypeAuthorizationOutputWithContext(context.Context) GetResourceServerSubjectTypeAuthorizationOutput
+}
+
+type GetResourceServerSubjectTypeAuthorizationArgs struct {
+	// Client authorization policies for the resource server.
+	Clients GetResourceServerSubjectTypeAuthorizationClientArrayInput `pulumi:"clients"`
+	// User authorization policies for the resource server.
+	Users GetResourceServerSubjectTypeAuthorizationUserArrayInput `pulumi:"users"`
+}
+
+func (GetResourceServerSubjectTypeAuthorizationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceServerSubjectTypeAuthorization)(nil)).Elem()
+}
+
+func (i GetResourceServerSubjectTypeAuthorizationArgs) ToGetResourceServerSubjectTypeAuthorizationOutput() GetResourceServerSubjectTypeAuthorizationOutput {
+	return i.ToGetResourceServerSubjectTypeAuthorizationOutputWithContext(context.Background())
+}
+
+func (i GetResourceServerSubjectTypeAuthorizationArgs) ToGetResourceServerSubjectTypeAuthorizationOutputWithContext(ctx context.Context) GetResourceServerSubjectTypeAuthorizationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceServerSubjectTypeAuthorizationOutput)
+}
+
+// GetResourceServerSubjectTypeAuthorizationArrayInput is an input type that accepts GetResourceServerSubjectTypeAuthorizationArray and GetResourceServerSubjectTypeAuthorizationArrayOutput values.
+// You can construct a concrete instance of `GetResourceServerSubjectTypeAuthorizationArrayInput` via:
+//
+//	GetResourceServerSubjectTypeAuthorizationArray{ GetResourceServerSubjectTypeAuthorizationArgs{...} }
+type GetResourceServerSubjectTypeAuthorizationArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceServerSubjectTypeAuthorizationArrayOutput() GetResourceServerSubjectTypeAuthorizationArrayOutput
+	ToGetResourceServerSubjectTypeAuthorizationArrayOutputWithContext(context.Context) GetResourceServerSubjectTypeAuthorizationArrayOutput
+}
+
+type GetResourceServerSubjectTypeAuthorizationArray []GetResourceServerSubjectTypeAuthorizationInput
+
+func (GetResourceServerSubjectTypeAuthorizationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceServerSubjectTypeAuthorization)(nil)).Elem()
+}
+
+func (i GetResourceServerSubjectTypeAuthorizationArray) ToGetResourceServerSubjectTypeAuthorizationArrayOutput() GetResourceServerSubjectTypeAuthorizationArrayOutput {
+	return i.ToGetResourceServerSubjectTypeAuthorizationArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceServerSubjectTypeAuthorizationArray) ToGetResourceServerSubjectTypeAuthorizationArrayOutputWithContext(ctx context.Context) GetResourceServerSubjectTypeAuthorizationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceServerSubjectTypeAuthorizationArrayOutput)
+}
+
+type GetResourceServerSubjectTypeAuthorizationOutput struct{ *pulumi.OutputState }
+
+func (GetResourceServerSubjectTypeAuthorizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceServerSubjectTypeAuthorization)(nil)).Elem()
+}
+
+func (o GetResourceServerSubjectTypeAuthorizationOutput) ToGetResourceServerSubjectTypeAuthorizationOutput() GetResourceServerSubjectTypeAuthorizationOutput {
+	return o
+}
+
+func (o GetResourceServerSubjectTypeAuthorizationOutput) ToGetResourceServerSubjectTypeAuthorizationOutputWithContext(ctx context.Context) GetResourceServerSubjectTypeAuthorizationOutput {
+	return o
+}
+
+// Client authorization policies for the resource server.
+func (o GetResourceServerSubjectTypeAuthorizationOutput) Clients() GetResourceServerSubjectTypeAuthorizationClientArrayOutput {
+	return o.ApplyT(func(v GetResourceServerSubjectTypeAuthorization) []GetResourceServerSubjectTypeAuthorizationClient {
+		return v.Clients
+	}).(GetResourceServerSubjectTypeAuthorizationClientArrayOutput)
+}
+
+// User authorization policies for the resource server.
+func (o GetResourceServerSubjectTypeAuthorizationOutput) Users() GetResourceServerSubjectTypeAuthorizationUserArrayOutput {
+	return o.ApplyT(func(v GetResourceServerSubjectTypeAuthorization) []GetResourceServerSubjectTypeAuthorizationUser {
+		return v.Users
+	}).(GetResourceServerSubjectTypeAuthorizationUserArrayOutput)
+}
+
+type GetResourceServerSubjectTypeAuthorizationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceServerSubjectTypeAuthorizationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceServerSubjectTypeAuthorization)(nil)).Elem()
+}
+
+func (o GetResourceServerSubjectTypeAuthorizationArrayOutput) ToGetResourceServerSubjectTypeAuthorizationArrayOutput() GetResourceServerSubjectTypeAuthorizationArrayOutput {
+	return o
+}
+
+func (o GetResourceServerSubjectTypeAuthorizationArrayOutput) ToGetResourceServerSubjectTypeAuthorizationArrayOutputWithContext(ctx context.Context) GetResourceServerSubjectTypeAuthorizationArrayOutput {
+	return o
+}
+
+func (o GetResourceServerSubjectTypeAuthorizationArrayOutput) Index(i pulumi.IntInput) GetResourceServerSubjectTypeAuthorizationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceServerSubjectTypeAuthorization {
+		return vs[0].([]GetResourceServerSubjectTypeAuthorization)[vs[1].(int)]
+	}).(GetResourceServerSubjectTypeAuthorizationOutput)
+}
+
+type GetResourceServerSubjectTypeAuthorizationClient struct {
+	// Client flows policy. One of `denyAll`, `requireClientGrant`.
+	Policy string `pulumi:"policy"`
+}
+
+// GetResourceServerSubjectTypeAuthorizationClientInput is an input type that accepts GetResourceServerSubjectTypeAuthorizationClientArgs and GetResourceServerSubjectTypeAuthorizationClientOutput values.
+// You can construct a concrete instance of `GetResourceServerSubjectTypeAuthorizationClientInput` via:
+//
+//	GetResourceServerSubjectTypeAuthorizationClientArgs{...}
+type GetResourceServerSubjectTypeAuthorizationClientInput interface {
+	pulumi.Input
+
+	ToGetResourceServerSubjectTypeAuthorizationClientOutput() GetResourceServerSubjectTypeAuthorizationClientOutput
+	ToGetResourceServerSubjectTypeAuthorizationClientOutputWithContext(context.Context) GetResourceServerSubjectTypeAuthorizationClientOutput
+}
+
+type GetResourceServerSubjectTypeAuthorizationClientArgs struct {
+	// Client flows policy. One of `denyAll`, `requireClientGrant`.
+	Policy pulumi.StringInput `pulumi:"policy"`
+}
+
+func (GetResourceServerSubjectTypeAuthorizationClientArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceServerSubjectTypeAuthorizationClient)(nil)).Elem()
+}
+
+func (i GetResourceServerSubjectTypeAuthorizationClientArgs) ToGetResourceServerSubjectTypeAuthorizationClientOutput() GetResourceServerSubjectTypeAuthorizationClientOutput {
+	return i.ToGetResourceServerSubjectTypeAuthorizationClientOutputWithContext(context.Background())
+}
+
+func (i GetResourceServerSubjectTypeAuthorizationClientArgs) ToGetResourceServerSubjectTypeAuthorizationClientOutputWithContext(ctx context.Context) GetResourceServerSubjectTypeAuthorizationClientOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceServerSubjectTypeAuthorizationClientOutput)
+}
+
+// GetResourceServerSubjectTypeAuthorizationClientArrayInput is an input type that accepts GetResourceServerSubjectTypeAuthorizationClientArray and GetResourceServerSubjectTypeAuthorizationClientArrayOutput values.
+// You can construct a concrete instance of `GetResourceServerSubjectTypeAuthorizationClientArrayInput` via:
+//
+//	GetResourceServerSubjectTypeAuthorizationClientArray{ GetResourceServerSubjectTypeAuthorizationClientArgs{...} }
+type GetResourceServerSubjectTypeAuthorizationClientArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceServerSubjectTypeAuthorizationClientArrayOutput() GetResourceServerSubjectTypeAuthorizationClientArrayOutput
+	ToGetResourceServerSubjectTypeAuthorizationClientArrayOutputWithContext(context.Context) GetResourceServerSubjectTypeAuthorizationClientArrayOutput
+}
+
+type GetResourceServerSubjectTypeAuthorizationClientArray []GetResourceServerSubjectTypeAuthorizationClientInput
+
+func (GetResourceServerSubjectTypeAuthorizationClientArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceServerSubjectTypeAuthorizationClient)(nil)).Elem()
+}
+
+func (i GetResourceServerSubjectTypeAuthorizationClientArray) ToGetResourceServerSubjectTypeAuthorizationClientArrayOutput() GetResourceServerSubjectTypeAuthorizationClientArrayOutput {
+	return i.ToGetResourceServerSubjectTypeAuthorizationClientArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceServerSubjectTypeAuthorizationClientArray) ToGetResourceServerSubjectTypeAuthorizationClientArrayOutputWithContext(ctx context.Context) GetResourceServerSubjectTypeAuthorizationClientArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceServerSubjectTypeAuthorizationClientArrayOutput)
+}
+
+type GetResourceServerSubjectTypeAuthorizationClientOutput struct{ *pulumi.OutputState }
+
+func (GetResourceServerSubjectTypeAuthorizationClientOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceServerSubjectTypeAuthorizationClient)(nil)).Elem()
+}
+
+func (o GetResourceServerSubjectTypeAuthorizationClientOutput) ToGetResourceServerSubjectTypeAuthorizationClientOutput() GetResourceServerSubjectTypeAuthorizationClientOutput {
+	return o
+}
+
+func (o GetResourceServerSubjectTypeAuthorizationClientOutput) ToGetResourceServerSubjectTypeAuthorizationClientOutputWithContext(ctx context.Context) GetResourceServerSubjectTypeAuthorizationClientOutput {
+	return o
+}
+
+// Client flows policy. One of `denyAll`, `requireClientGrant`.
+func (o GetResourceServerSubjectTypeAuthorizationClientOutput) Policy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceServerSubjectTypeAuthorizationClient) string { return v.Policy }).(pulumi.StringOutput)
+}
+
+type GetResourceServerSubjectTypeAuthorizationClientArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceServerSubjectTypeAuthorizationClientArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceServerSubjectTypeAuthorizationClient)(nil)).Elem()
+}
+
+func (o GetResourceServerSubjectTypeAuthorizationClientArrayOutput) ToGetResourceServerSubjectTypeAuthorizationClientArrayOutput() GetResourceServerSubjectTypeAuthorizationClientArrayOutput {
+	return o
+}
+
+func (o GetResourceServerSubjectTypeAuthorizationClientArrayOutput) ToGetResourceServerSubjectTypeAuthorizationClientArrayOutputWithContext(ctx context.Context) GetResourceServerSubjectTypeAuthorizationClientArrayOutput {
+	return o
+}
+
+func (o GetResourceServerSubjectTypeAuthorizationClientArrayOutput) Index(i pulumi.IntInput) GetResourceServerSubjectTypeAuthorizationClientOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceServerSubjectTypeAuthorizationClient {
+		return vs[0].([]GetResourceServerSubjectTypeAuthorizationClient)[vs[1].(int)]
+	}).(GetResourceServerSubjectTypeAuthorizationClientOutput)
+}
+
+type GetResourceServerSubjectTypeAuthorizationUser struct {
+	// User flows policy. One of `allowAll`, `denyAll`, `requireClientGrant`.
+	Policy string `pulumi:"policy"`
+}
+
+// GetResourceServerSubjectTypeAuthorizationUserInput is an input type that accepts GetResourceServerSubjectTypeAuthorizationUserArgs and GetResourceServerSubjectTypeAuthorizationUserOutput values.
+// You can construct a concrete instance of `GetResourceServerSubjectTypeAuthorizationUserInput` via:
+//
+//	GetResourceServerSubjectTypeAuthorizationUserArgs{...}
+type GetResourceServerSubjectTypeAuthorizationUserInput interface {
+	pulumi.Input
+
+	ToGetResourceServerSubjectTypeAuthorizationUserOutput() GetResourceServerSubjectTypeAuthorizationUserOutput
+	ToGetResourceServerSubjectTypeAuthorizationUserOutputWithContext(context.Context) GetResourceServerSubjectTypeAuthorizationUserOutput
+}
+
+type GetResourceServerSubjectTypeAuthorizationUserArgs struct {
+	// User flows policy. One of `allowAll`, `denyAll`, `requireClientGrant`.
+	Policy pulumi.StringInput `pulumi:"policy"`
+}
+
+func (GetResourceServerSubjectTypeAuthorizationUserArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceServerSubjectTypeAuthorizationUser)(nil)).Elem()
+}
+
+func (i GetResourceServerSubjectTypeAuthorizationUserArgs) ToGetResourceServerSubjectTypeAuthorizationUserOutput() GetResourceServerSubjectTypeAuthorizationUserOutput {
+	return i.ToGetResourceServerSubjectTypeAuthorizationUserOutputWithContext(context.Background())
+}
+
+func (i GetResourceServerSubjectTypeAuthorizationUserArgs) ToGetResourceServerSubjectTypeAuthorizationUserOutputWithContext(ctx context.Context) GetResourceServerSubjectTypeAuthorizationUserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceServerSubjectTypeAuthorizationUserOutput)
+}
+
+// GetResourceServerSubjectTypeAuthorizationUserArrayInput is an input type that accepts GetResourceServerSubjectTypeAuthorizationUserArray and GetResourceServerSubjectTypeAuthorizationUserArrayOutput values.
+// You can construct a concrete instance of `GetResourceServerSubjectTypeAuthorizationUserArrayInput` via:
+//
+//	GetResourceServerSubjectTypeAuthorizationUserArray{ GetResourceServerSubjectTypeAuthorizationUserArgs{...} }
+type GetResourceServerSubjectTypeAuthorizationUserArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceServerSubjectTypeAuthorizationUserArrayOutput() GetResourceServerSubjectTypeAuthorizationUserArrayOutput
+	ToGetResourceServerSubjectTypeAuthorizationUserArrayOutputWithContext(context.Context) GetResourceServerSubjectTypeAuthorizationUserArrayOutput
+}
+
+type GetResourceServerSubjectTypeAuthorizationUserArray []GetResourceServerSubjectTypeAuthorizationUserInput
+
+func (GetResourceServerSubjectTypeAuthorizationUserArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceServerSubjectTypeAuthorizationUser)(nil)).Elem()
+}
+
+func (i GetResourceServerSubjectTypeAuthorizationUserArray) ToGetResourceServerSubjectTypeAuthorizationUserArrayOutput() GetResourceServerSubjectTypeAuthorizationUserArrayOutput {
+	return i.ToGetResourceServerSubjectTypeAuthorizationUserArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceServerSubjectTypeAuthorizationUserArray) ToGetResourceServerSubjectTypeAuthorizationUserArrayOutputWithContext(ctx context.Context) GetResourceServerSubjectTypeAuthorizationUserArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceServerSubjectTypeAuthorizationUserArrayOutput)
+}
+
+type GetResourceServerSubjectTypeAuthorizationUserOutput struct{ *pulumi.OutputState }
+
+func (GetResourceServerSubjectTypeAuthorizationUserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceServerSubjectTypeAuthorizationUser)(nil)).Elem()
+}
+
+func (o GetResourceServerSubjectTypeAuthorizationUserOutput) ToGetResourceServerSubjectTypeAuthorizationUserOutput() GetResourceServerSubjectTypeAuthorizationUserOutput {
+	return o
+}
+
+func (o GetResourceServerSubjectTypeAuthorizationUserOutput) ToGetResourceServerSubjectTypeAuthorizationUserOutputWithContext(ctx context.Context) GetResourceServerSubjectTypeAuthorizationUserOutput {
+	return o
+}
+
+// User flows policy. One of `allowAll`, `denyAll`, `requireClientGrant`.
+func (o GetResourceServerSubjectTypeAuthorizationUserOutput) Policy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceServerSubjectTypeAuthorizationUser) string { return v.Policy }).(pulumi.StringOutput)
+}
+
+type GetResourceServerSubjectTypeAuthorizationUserArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceServerSubjectTypeAuthorizationUserArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceServerSubjectTypeAuthorizationUser)(nil)).Elem()
+}
+
+func (o GetResourceServerSubjectTypeAuthorizationUserArrayOutput) ToGetResourceServerSubjectTypeAuthorizationUserArrayOutput() GetResourceServerSubjectTypeAuthorizationUserArrayOutput {
+	return o
+}
+
+func (o GetResourceServerSubjectTypeAuthorizationUserArrayOutput) ToGetResourceServerSubjectTypeAuthorizationUserArrayOutputWithContext(ctx context.Context) GetResourceServerSubjectTypeAuthorizationUserArrayOutput {
+	return o
+}
+
+func (o GetResourceServerSubjectTypeAuthorizationUserArrayOutput) Index(i pulumi.IntInput) GetResourceServerSubjectTypeAuthorizationUserOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceServerSubjectTypeAuthorizationUser {
+		return vs[0].([]GetResourceServerSubjectTypeAuthorizationUser)[vs[1].(int)]
+	}).(GetResourceServerSubjectTypeAuthorizationUserOutput)
+}
+
 type GetResourceServerTokenEncryption struct {
 	// Disable token encryption.
 	Disable bool `pulumi:"disable"`
@@ -52885,6 +53623,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceServerProofOfPossessionPtrInput)(nil)).Elem(), ResourceServerProofOfPossessionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceServerScopesScopeInput)(nil)).Elem(), ResourceServerScopesScopeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceServerScopesScopeArrayInput)(nil)).Elem(), ResourceServerScopesScopeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceServerSubjectTypeAuthorizationInput)(nil)).Elem(), ResourceServerSubjectTypeAuthorizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceServerSubjectTypeAuthorizationPtrInput)(nil)).Elem(), ResourceServerSubjectTypeAuthorizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceServerSubjectTypeAuthorizationClientInput)(nil)).Elem(), ResourceServerSubjectTypeAuthorizationClientArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceServerSubjectTypeAuthorizationClientPtrInput)(nil)).Elem(), ResourceServerSubjectTypeAuthorizationClientArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceServerSubjectTypeAuthorizationUserInput)(nil)).Elem(), ResourceServerSubjectTypeAuthorizationUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceServerSubjectTypeAuthorizationUserPtrInput)(nil)).Elem(), ResourceServerSubjectTypeAuthorizationUserArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceServerTokenEncryptionInput)(nil)).Elem(), ResourceServerTokenEncryptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceServerTokenEncryptionPtrInput)(nil)).Elem(), ResourceServerTokenEncryptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceServerTokenEncryptionEncryptionKeyInput)(nil)).Elem(), ResourceServerTokenEncryptionEncryptionKeyArgs{})
@@ -53221,6 +53965,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerProofOfPossessionArrayInput)(nil)).Elem(), GetResourceServerProofOfPossessionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerScopeTypeInput)(nil)).Elem(), GetResourceServerScopeTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerScopeTypeArrayInput)(nil)).Elem(), GetResourceServerScopeTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerSubjectTypeAuthorizationInput)(nil)).Elem(), GetResourceServerSubjectTypeAuthorizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerSubjectTypeAuthorizationArrayInput)(nil)).Elem(), GetResourceServerSubjectTypeAuthorizationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerSubjectTypeAuthorizationClientInput)(nil)).Elem(), GetResourceServerSubjectTypeAuthorizationClientArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerSubjectTypeAuthorizationClientArrayInput)(nil)).Elem(), GetResourceServerSubjectTypeAuthorizationClientArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerSubjectTypeAuthorizationUserInput)(nil)).Elem(), GetResourceServerSubjectTypeAuthorizationUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerSubjectTypeAuthorizationUserArrayInput)(nil)).Elem(), GetResourceServerSubjectTypeAuthorizationUserArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerTokenEncryptionInput)(nil)).Elem(), GetResourceServerTokenEncryptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerTokenEncryptionArrayInput)(nil)).Elem(), GetResourceServerTokenEncryptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerTokenEncryptionEncryptionKeyInput)(nil)).Elem(), GetResourceServerTokenEncryptionEncryptionKeyArgs{})
@@ -53574,6 +54324,12 @@ func init() {
 	pulumi.RegisterOutputType(ResourceServerProofOfPossessionPtrOutput{})
 	pulumi.RegisterOutputType(ResourceServerScopesScopeOutput{})
 	pulumi.RegisterOutputType(ResourceServerScopesScopeArrayOutput{})
+	pulumi.RegisterOutputType(ResourceServerSubjectTypeAuthorizationOutput{})
+	pulumi.RegisterOutputType(ResourceServerSubjectTypeAuthorizationPtrOutput{})
+	pulumi.RegisterOutputType(ResourceServerSubjectTypeAuthorizationClientOutput{})
+	pulumi.RegisterOutputType(ResourceServerSubjectTypeAuthorizationClientPtrOutput{})
+	pulumi.RegisterOutputType(ResourceServerSubjectTypeAuthorizationUserOutput{})
+	pulumi.RegisterOutputType(ResourceServerSubjectTypeAuthorizationUserPtrOutput{})
 	pulumi.RegisterOutputType(ResourceServerTokenEncryptionOutput{})
 	pulumi.RegisterOutputType(ResourceServerTokenEncryptionPtrOutput{})
 	pulumi.RegisterOutputType(ResourceServerTokenEncryptionEncryptionKeyOutput{})
@@ -53910,6 +54666,12 @@ func init() {
 	pulumi.RegisterOutputType(GetResourceServerProofOfPossessionArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceServerScopeTypeOutput{})
 	pulumi.RegisterOutputType(GetResourceServerScopeTypeArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceServerSubjectTypeAuthorizationOutput{})
+	pulumi.RegisterOutputType(GetResourceServerSubjectTypeAuthorizationArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceServerSubjectTypeAuthorizationClientOutput{})
+	pulumi.RegisterOutputType(GetResourceServerSubjectTypeAuthorizationClientArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceServerSubjectTypeAuthorizationUserOutput{})
+	pulumi.RegisterOutputType(GetResourceServerSubjectTypeAuthorizationUserArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceServerTokenEncryptionOutput{})
 	pulumi.RegisterOutputType(GetResourceServerTokenEncryptionArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceServerTokenEncryptionEncryptionKeyOutput{})

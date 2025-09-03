@@ -56,6 +56,14 @@ import (
 //					Mechanism: pulumi.String("mtls"),
 //					Required:  pulumi.Bool(true),
 //				},
+//				SubjectTypeAuthorization: &auth0.ResourceServerSubjectTypeAuthorizationArgs{
+//					User: &auth0.ResourceServerSubjectTypeAuthorizationUserArgs{
+//						Policy: pulumi.String("allow_all"),
+//					},
+//					Client: &auth0.ResourceServerSubjectTypeAuthorizationClientArgs{
+//						Policy: pulumi.String("require_client_grant"),
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -98,6 +106,8 @@ type ResourceServer struct {
 	SigningSecret pulumi.StringOutput `pulumi:"signingSecret"`
 	// Indicates whether to skip user consent for applications flagged as first party.
 	SkipConsentForVerifiableFirstPartyClients pulumi.BoolOutput `pulumi:"skipConsentForVerifiableFirstPartyClients"`
+	// Authorization policies for user and client flows.
+	SubjectTypeAuthorization ResourceServerSubjectTypeAuthorizationOutput `pulumi:"subjectTypeAuthorization"`
 	// Dialect of access tokens that should be issued for this resource server. Options include `accessToken`, `rfc9068Profile`, `accessTokenAuthz`, and `rfc9068ProfileAuthz`. `accessToken` is a JWT containing standard Auth0 claims. `rfc9068Profile` is a JWT conforming to the IETF JWT Access Token Profile. `accessTokenAuthz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068ProfileAuthz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforcePolicies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).
 	TokenDialect pulumi.StringOutput `pulumi:"tokenDialect"`
 	// Configuration for JSON Web Encryption(JWE) of tokens for this resource server.
@@ -163,6 +173,8 @@ type resourceServerState struct {
 	SigningSecret *string `pulumi:"signingSecret"`
 	// Indicates whether to skip user consent for applications flagged as first party.
 	SkipConsentForVerifiableFirstPartyClients *bool `pulumi:"skipConsentForVerifiableFirstPartyClients"`
+	// Authorization policies for user and client flows.
+	SubjectTypeAuthorization *ResourceServerSubjectTypeAuthorization `pulumi:"subjectTypeAuthorization"`
 	// Dialect of access tokens that should be issued for this resource server. Options include `accessToken`, `rfc9068Profile`, `accessTokenAuthz`, and `rfc9068ProfileAuthz`. `accessToken` is a JWT containing standard Auth0 claims. `rfc9068Profile` is a JWT conforming to the IETF JWT Access Token Profile. `accessTokenAuthz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068ProfileAuthz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforcePolicies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).
 	TokenDialect *string `pulumi:"tokenDialect"`
 	// Configuration for JSON Web Encryption(JWE) of tokens for this resource server.
@@ -196,6 +208,8 @@ type ResourceServerState struct {
 	SigningSecret pulumi.StringPtrInput
 	// Indicates whether to skip user consent for applications flagged as first party.
 	SkipConsentForVerifiableFirstPartyClients pulumi.BoolPtrInput
+	// Authorization policies for user and client flows.
+	SubjectTypeAuthorization ResourceServerSubjectTypeAuthorizationPtrInput
 	// Dialect of access tokens that should be issued for this resource server. Options include `accessToken`, `rfc9068Profile`, `accessTokenAuthz`, and `rfc9068ProfileAuthz`. `accessToken` is a JWT containing standard Auth0 claims. `rfc9068Profile` is a JWT conforming to the IETF JWT Access Token Profile. `accessTokenAuthz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068ProfileAuthz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforcePolicies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).
 	TokenDialect pulumi.StringPtrInput
 	// Configuration for JSON Web Encryption(JWE) of tokens for this resource server.
@@ -233,6 +247,8 @@ type resourceServerArgs struct {
 	SigningSecret *string `pulumi:"signingSecret"`
 	// Indicates whether to skip user consent for applications flagged as first party.
 	SkipConsentForVerifiableFirstPartyClients *bool `pulumi:"skipConsentForVerifiableFirstPartyClients"`
+	// Authorization policies for user and client flows.
+	SubjectTypeAuthorization *ResourceServerSubjectTypeAuthorization `pulumi:"subjectTypeAuthorization"`
 	// Dialect of access tokens that should be issued for this resource server. Options include `accessToken`, `rfc9068Profile`, `accessTokenAuthz`, and `rfc9068ProfileAuthz`. `accessToken` is a JWT containing standard Auth0 claims. `rfc9068Profile` is a JWT conforming to the IETF JWT Access Token Profile. `accessTokenAuthz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068ProfileAuthz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforcePolicies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).
 	TokenDialect *string `pulumi:"tokenDialect"`
 	// Configuration for JSON Web Encryption(JWE) of tokens for this resource server.
@@ -267,6 +283,8 @@ type ResourceServerArgs struct {
 	SigningSecret pulumi.StringPtrInput
 	// Indicates whether to skip user consent for applications flagged as first party.
 	SkipConsentForVerifiableFirstPartyClients pulumi.BoolPtrInput
+	// Authorization policies for user and client flows.
+	SubjectTypeAuthorization ResourceServerSubjectTypeAuthorizationPtrInput
 	// Dialect of access tokens that should be issued for this resource server. Options include `accessToken`, `rfc9068Profile`, `accessTokenAuthz`, and `rfc9068ProfileAuthz`. `accessToken` is a JWT containing standard Auth0 claims. `rfc9068Profile` is a JWT conforming to the IETF JWT Access Token Profile. `accessTokenAuthz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068ProfileAuthz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforcePolicies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).
 	TokenDialect pulumi.StringPtrInput
 	// Configuration for JSON Web Encryption(JWE) of tokens for this resource server.
@@ -414,6 +432,13 @@ func (o ResourceServerOutput) SigningSecret() pulumi.StringOutput {
 // Indicates whether to skip user consent for applications flagged as first party.
 func (o ResourceServerOutput) SkipConsentForVerifiableFirstPartyClients() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ResourceServer) pulumi.BoolOutput { return v.SkipConsentForVerifiableFirstPartyClients }).(pulumi.BoolOutput)
+}
+
+// Authorization policies for user and client flows.
+func (o ResourceServerOutput) SubjectTypeAuthorization() ResourceServerSubjectTypeAuthorizationOutput {
+	return o.ApplyT(func(v *ResourceServer) ResourceServerSubjectTypeAuthorizationOutput {
+		return v.SubjectTypeAuthorization
+	}).(ResourceServerSubjectTypeAuthorizationOutput)
 }
 
 // Dialect of access tokens that should be issued for this resource server. Options include `accessToken`, `rfc9068Profile`, `accessTokenAuthz`, and `rfc9068ProfileAuthz`. `accessToken` is a JWT containing standard Auth0 claims. `rfc9068Profile` is a JWT conforming to the IETF JWT Access Token Profile. `accessTokenAuthz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068ProfileAuthz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforcePolicies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).

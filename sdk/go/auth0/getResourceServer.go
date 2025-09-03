@@ -92,6 +92,8 @@ type LookupResourceServerResult struct {
 	SigningSecret string `pulumi:"signingSecret"`
 	// Indicates whether to skip user consent for applications flagged as first party.
 	SkipConsentForVerifiableFirstPartyClients bool `pulumi:"skipConsentForVerifiableFirstPartyClients"`
+	// Authorization policies for user and client flows.
+	SubjectTypeAuthorizations []GetResourceServerSubjectTypeAuthorization `pulumi:"subjectTypeAuthorizations"`
 	// Dialect of access tokens that should be issued for this resource server. Options include `accessToken`, `rfc9068Profile`, `accessTokenAuthz`, and `rfc9068ProfileAuthz`. `accessToken` is a JWT containing standard Auth0 claims. `rfc9068Profile` is a JWT conforming to the IETF JWT Access Token Profile. `accessTokenAuthz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068ProfileAuthz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforcePolicies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).
 	TokenDialect string `pulumi:"tokenDialect"`
 	// Configuration for JSON Web Encryption(JWE) of tokens for this resource server.
@@ -205,6 +207,13 @@ func (o LookupResourceServerResultOutput) SigningSecret() pulumi.StringOutput {
 // Indicates whether to skip user consent for applications flagged as first party.
 func (o LookupResourceServerResultOutput) SkipConsentForVerifiableFirstPartyClients() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupResourceServerResult) bool { return v.SkipConsentForVerifiableFirstPartyClients }).(pulumi.BoolOutput)
+}
+
+// Authorization policies for user and client flows.
+func (o LookupResourceServerResultOutput) SubjectTypeAuthorizations() GetResourceServerSubjectTypeAuthorizationArrayOutput {
+	return o.ApplyT(func(v LookupResourceServerResult) []GetResourceServerSubjectTypeAuthorization {
+		return v.SubjectTypeAuthorizations
+	}).(GetResourceServerSubjectTypeAuthorizationArrayOutput)
 }
 
 // Dialect of access tokens that should be issued for this resource server. Options include `accessToken`, `rfc9068Profile`, `accessTokenAuthz`, and `rfc9068ProfileAuthz`. `accessToken` is a JWT containing standard Auth0 claims. `rfc9068Profile` is a JWT conforming to the IETF JWT Access Token Profile. `accessTokenAuthz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068ProfileAuthz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforcePolicies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).

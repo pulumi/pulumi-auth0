@@ -49,6 +49,21 @@ public final class ClientGrantArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Defines the types of authorization details allowed for this client grant.
+     * 
+     */
+    @Import(name="authorizationDetailsTypes")
+    private @Nullable Output<List<String>> authorizationDetailsTypes;
+
+    /**
+     * @return Defines the types of authorization details allowed for this client grant.
+     * 
+     */
+    public Optional<Output<List<String>>> authorizationDetailsTypes() {
+        return Optional.ofNullable(this.authorizationDetailsTypes);
+    }
+
+    /**
      * ID of the client for this grant.
      * 
      */
@@ -93,14 +108,31 @@ public final class ClientGrantArgs extends com.pulumi.resources.ResourceArgs {
         return this.scopes;
     }
 
+    /**
+     * Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
+     * 
+     */
+    @Import(name="subjectType")
+    private @Nullable Output<String> subjectType;
+
+    /**
+     * @return Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
+     * 
+     */
+    public Optional<Output<String>> subjectType() {
+        return Optional.ofNullable(this.subjectType);
+    }
+
     private ClientGrantArgs() {}
 
     private ClientGrantArgs(ClientGrantArgs $) {
         this.allowAnyOrganization = $.allowAnyOrganization;
         this.audience = $.audience;
+        this.authorizationDetailsTypes = $.authorizationDetailsTypes;
         this.clientId = $.clientId;
         this.organizationUsage = $.organizationUsage;
         this.scopes = $.scopes;
+        this.subjectType = $.subjectType;
     }
 
     public static Builder builder() {
@@ -161,6 +193,37 @@ public final class ClientGrantArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder audience(String audience) {
             return audience(Output.of(audience));
+        }
+
+        /**
+         * @param authorizationDetailsTypes Defines the types of authorization details allowed for this client grant.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authorizationDetailsTypes(@Nullable Output<List<String>> authorizationDetailsTypes) {
+            $.authorizationDetailsTypes = authorizationDetailsTypes;
+            return this;
+        }
+
+        /**
+         * @param authorizationDetailsTypes Defines the types of authorization details allowed for this client grant.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authorizationDetailsTypes(List<String> authorizationDetailsTypes) {
+            return authorizationDetailsTypes(Output.of(authorizationDetailsTypes));
+        }
+
+        /**
+         * @param authorizationDetailsTypes Defines the types of authorization details allowed for this client grant.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authorizationDetailsTypes(String... authorizationDetailsTypes) {
+            return authorizationDetailsTypes(List.of(authorizationDetailsTypes));
         }
 
         /**
@@ -234,6 +297,27 @@ public final class ClientGrantArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder scopes(String... scopes) {
             return scopes(List.of(scopes));
+        }
+
+        /**
+         * @param subjectType Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subjectType(@Nullable Output<String> subjectType) {
+            $.subjectType = subjectType;
+            return this;
+        }
+
+        /**
+         * @param subjectType Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subjectType(String subjectType) {
+            return subjectType(Output.of(subjectType));
         }
 
         public ClientGrantArgs build() {

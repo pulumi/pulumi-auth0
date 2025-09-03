@@ -5,6 +5,7 @@ package com.pulumi.auth0.inputs;
 
 import com.pulumi.auth0.inputs.ResourceServerAuthorizationDetailArgs;
 import com.pulumi.auth0.inputs.ResourceServerProofOfPossessionArgs;
+import com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationArgs;
 import com.pulumi.auth0.inputs.ResourceServerTokenEncryptionArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -172,6 +173,21 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * Authorization policies for user and client flows.
+     * 
+     */
+    @Import(name="subjectTypeAuthorization")
+    private @Nullable Output<ResourceServerSubjectTypeAuthorizationArgs> subjectTypeAuthorization;
+
+    /**
+     * @return Authorization policies for user and client flows.
+     * 
+     */
+    public Optional<Output<ResourceServerSubjectTypeAuthorizationArgs>> subjectTypeAuthorization() {
+        return Optional.ofNullable(this.subjectTypeAuthorization);
+    }
+
+    /**
      * Dialect of access tokens that should be issued for this resource server. Options include `access_token`, `rfc9068_profile`, `access_token_authz`, and `rfc9068_profile_authz`. `access_token` is a JWT containing standard Auth0 claims. `rfc9068_profile` is a JWT conforming to the IETF JWT Access Token Profile. `access_token_authz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068_profile_authz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforce_policies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).
      * 
      */
@@ -259,6 +275,7 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
         this.signingAlg = $.signingAlg;
         this.signingSecret = $.signingSecret;
         this.skipConsentForVerifiableFirstPartyClients = $.skipConsentForVerifiableFirstPartyClients;
+        this.subjectTypeAuthorization = $.subjectTypeAuthorization;
         this.tokenDialect = $.tokenDialect;
         this.tokenEncryption = $.tokenEncryption;
         this.tokenLifetime = $.tokenLifetime;
@@ -502,6 +519,27 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
          */
         public Builder skipConsentForVerifiableFirstPartyClients(Boolean skipConsentForVerifiableFirstPartyClients) {
             return skipConsentForVerifiableFirstPartyClients(Output.of(skipConsentForVerifiableFirstPartyClients));
+        }
+
+        /**
+         * @param subjectTypeAuthorization Authorization policies for user and client flows.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subjectTypeAuthorization(@Nullable Output<ResourceServerSubjectTypeAuthorizationArgs> subjectTypeAuthorization) {
+            $.subjectTypeAuthorization = subjectTypeAuthorization;
+            return this;
+        }
+
+        /**
+         * @param subjectTypeAuthorization Authorization policies for user and client flows.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subjectTypeAuthorization(ResourceServerSubjectTypeAuthorizationArgs subjectTypeAuthorization) {
+            return subjectTypeAuthorization(Output.of(subjectTypeAuthorization));
         }
 
         /**
