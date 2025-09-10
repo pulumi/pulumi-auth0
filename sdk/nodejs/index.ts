@@ -90,6 +90,11 @@ export type EncryptionKeyManager = import("./encryptionKeyManager").EncryptionKe
 export const EncryptionKeyManager: typeof import("./encryptionKeyManager").EncryptionKeyManager = null as any;
 utilities.lazyLoad(exports, ["EncryptionKeyManager"], () => require("./encryptionKeyManager"));
 
+export { EventStreamArgs, EventStreamState } from "./eventStream";
+export type EventStream = import("./eventStream").EventStream;
+export const EventStream: typeof import("./eventStream").EventStream = null as any;
+utilities.lazyLoad(exports, ["EventStream"], () => require("./eventStream"));
+
 export { FlowArgs, FlowState } from "./flow";
 export type Flow = import("./flow").Flow;
 export const Flow: typeof import("./flow").Flow = null as any;
@@ -154,6 +159,11 @@ export { GetCustomDomainArgs, GetCustomDomainResult, GetCustomDomainOutputArgs }
 export const getCustomDomain: typeof import("./getCustomDomain").getCustomDomain = null as any;
 export const getCustomDomainOutput: typeof import("./getCustomDomain").getCustomDomainOutput = null as any;
 utilities.lazyLoad(exports, ["getCustomDomain","getCustomDomainOutput"], () => require("./getCustomDomain"));
+
+export { GetEventStreamArgs, GetEventStreamResult, GetEventStreamOutputArgs } from "./getEventStream";
+export const getEventStream: typeof import("./getEventStream").getEventStream = null as any;
+export const getEventStreamOutput: typeof import("./getEventStream").getEventStreamOutput = null as any;
+utilities.lazyLoad(exports, ["getEventStream","getEventStreamOutput"], () => require("./getEventStream"));
 
 export { GetFlowArgs, GetFlowResult, GetFlowOutputArgs } from "./getFlow";
 export const getFlow: typeof import("./getFlow").getFlow = null as any;
@@ -491,6 +501,8 @@ const _module = {
                 return new EmailTemplate(name, <any>undefined, { urn })
             case "auth0:index/encryptionKeyManager:EncryptionKeyManager":
                 return new EncryptionKeyManager(name, <any>undefined, { urn })
+            case "auth0:index/eventStream:EventStream":
+                return new EventStream(name, <any>undefined, { urn })
             case "auth0:index/flow:Flow":
                 return new Flow(name, <any>undefined, { urn })
             case "auth0:index/flowVaultConnection:FlowVaultConnection":
@@ -601,6 +613,7 @@ pulumi.runtime.registerResourceModule("auth0", "index/customDomainVerification",
 pulumi.runtime.registerResourceModule("auth0", "index/emailProvider", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/emailTemplate", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/encryptionKeyManager", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/eventStream", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/flow", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/flowVaultConnection", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/form", _module)

@@ -155,7 +155,7 @@ namespace Pulumi.Auth0
         /// Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
         /// </summary>
         [Output("subjectType")]
-        public Output<string?> SubjectType { get; private set; } = null!;
+        public Output<string> SubjectType { get; private set; } = null!;
 
 
         /// <summary>

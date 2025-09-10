@@ -22209,6 +22209,521 @@ func (o EncryptionKeyManagerEncryptionKeyArrayOutput) Index(i pulumi.IntInput) E
 	}).(EncryptionKeyManagerEncryptionKeyOutput)
 }
 
+type EventStreamEventbridgeConfiguration struct {
+	AwsAccountId          string  `pulumi:"awsAccountId"`
+	AwsPartnerEventSource *string `pulumi:"awsPartnerEventSource"`
+	AwsRegion             string  `pulumi:"awsRegion"`
+}
+
+// EventStreamEventbridgeConfigurationInput is an input type that accepts EventStreamEventbridgeConfigurationArgs and EventStreamEventbridgeConfigurationOutput values.
+// You can construct a concrete instance of `EventStreamEventbridgeConfigurationInput` via:
+//
+//	EventStreamEventbridgeConfigurationArgs{...}
+type EventStreamEventbridgeConfigurationInput interface {
+	pulumi.Input
+
+	ToEventStreamEventbridgeConfigurationOutput() EventStreamEventbridgeConfigurationOutput
+	ToEventStreamEventbridgeConfigurationOutputWithContext(context.Context) EventStreamEventbridgeConfigurationOutput
+}
+
+type EventStreamEventbridgeConfigurationArgs struct {
+	AwsAccountId          pulumi.StringInput    `pulumi:"awsAccountId"`
+	AwsPartnerEventSource pulumi.StringPtrInput `pulumi:"awsPartnerEventSource"`
+	AwsRegion             pulumi.StringInput    `pulumi:"awsRegion"`
+}
+
+func (EventStreamEventbridgeConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventStreamEventbridgeConfiguration)(nil)).Elem()
+}
+
+func (i EventStreamEventbridgeConfigurationArgs) ToEventStreamEventbridgeConfigurationOutput() EventStreamEventbridgeConfigurationOutput {
+	return i.ToEventStreamEventbridgeConfigurationOutputWithContext(context.Background())
+}
+
+func (i EventStreamEventbridgeConfigurationArgs) ToEventStreamEventbridgeConfigurationOutputWithContext(ctx context.Context) EventStreamEventbridgeConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventStreamEventbridgeConfigurationOutput)
+}
+
+func (i EventStreamEventbridgeConfigurationArgs) ToEventStreamEventbridgeConfigurationPtrOutput() EventStreamEventbridgeConfigurationPtrOutput {
+	return i.ToEventStreamEventbridgeConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i EventStreamEventbridgeConfigurationArgs) ToEventStreamEventbridgeConfigurationPtrOutputWithContext(ctx context.Context) EventStreamEventbridgeConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventStreamEventbridgeConfigurationOutput).ToEventStreamEventbridgeConfigurationPtrOutputWithContext(ctx)
+}
+
+// EventStreamEventbridgeConfigurationPtrInput is an input type that accepts EventStreamEventbridgeConfigurationArgs, EventStreamEventbridgeConfigurationPtr and EventStreamEventbridgeConfigurationPtrOutput values.
+// You can construct a concrete instance of `EventStreamEventbridgeConfigurationPtrInput` via:
+//
+//	        EventStreamEventbridgeConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type EventStreamEventbridgeConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToEventStreamEventbridgeConfigurationPtrOutput() EventStreamEventbridgeConfigurationPtrOutput
+	ToEventStreamEventbridgeConfigurationPtrOutputWithContext(context.Context) EventStreamEventbridgeConfigurationPtrOutput
+}
+
+type eventStreamEventbridgeConfigurationPtrType EventStreamEventbridgeConfigurationArgs
+
+func EventStreamEventbridgeConfigurationPtr(v *EventStreamEventbridgeConfigurationArgs) EventStreamEventbridgeConfigurationPtrInput {
+	return (*eventStreamEventbridgeConfigurationPtrType)(v)
+}
+
+func (*eventStreamEventbridgeConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventStreamEventbridgeConfiguration)(nil)).Elem()
+}
+
+func (i *eventStreamEventbridgeConfigurationPtrType) ToEventStreamEventbridgeConfigurationPtrOutput() EventStreamEventbridgeConfigurationPtrOutput {
+	return i.ToEventStreamEventbridgeConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *eventStreamEventbridgeConfigurationPtrType) ToEventStreamEventbridgeConfigurationPtrOutputWithContext(ctx context.Context) EventStreamEventbridgeConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventStreamEventbridgeConfigurationPtrOutput)
+}
+
+type EventStreamEventbridgeConfigurationOutput struct{ *pulumi.OutputState }
+
+func (EventStreamEventbridgeConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventStreamEventbridgeConfiguration)(nil)).Elem()
+}
+
+func (o EventStreamEventbridgeConfigurationOutput) ToEventStreamEventbridgeConfigurationOutput() EventStreamEventbridgeConfigurationOutput {
+	return o
+}
+
+func (o EventStreamEventbridgeConfigurationOutput) ToEventStreamEventbridgeConfigurationOutputWithContext(ctx context.Context) EventStreamEventbridgeConfigurationOutput {
+	return o
+}
+
+func (o EventStreamEventbridgeConfigurationOutput) ToEventStreamEventbridgeConfigurationPtrOutput() EventStreamEventbridgeConfigurationPtrOutput {
+	return o.ToEventStreamEventbridgeConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o EventStreamEventbridgeConfigurationOutput) ToEventStreamEventbridgeConfigurationPtrOutputWithContext(ctx context.Context) EventStreamEventbridgeConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EventStreamEventbridgeConfiguration) *EventStreamEventbridgeConfiguration {
+		return &v
+	}).(EventStreamEventbridgeConfigurationPtrOutput)
+}
+
+func (o EventStreamEventbridgeConfigurationOutput) AwsAccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v EventStreamEventbridgeConfiguration) string { return v.AwsAccountId }).(pulumi.StringOutput)
+}
+
+func (o EventStreamEventbridgeConfigurationOutput) AwsPartnerEventSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventStreamEventbridgeConfiguration) *string { return v.AwsPartnerEventSource }).(pulumi.StringPtrOutput)
+}
+
+func (o EventStreamEventbridgeConfigurationOutput) AwsRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v EventStreamEventbridgeConfiguration) string { return v.AwsRegion }).(pulumi.StringOutput)
+}
+
+type EventStreamEventbridgeConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (EventStreamEventbridgeConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventStreamEventbridgeConfiguration)(nil)).Elem()
+}
+
+func (o EventStreamEventbridgeConfigurationPtrOutput) ToEventStreamEventbridgeConfigurationPtrOutput() EventStreamEventbridgeConfigurationPtrOutput {
+	return o
+}
+
+func (o EventStreamEventbridgeConfigurationPtrOutput) ToEventStreamEventbridgeConfigurationPtrOutputWithContext(ctx context.Context) EventStreamEventbridgeConfigurationPtrOutput {
+	return o
+}
+
+func (o EventStreamEventbridgeConfigurationPtrOutput) Elem() EventStreamEventbridgeConfigurationOutput {
+	return o.ApplyT(func(v *EventStreamEventbridgeConfiguration) EventStreamEventbridgeConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret EventStreamEventbridgeConfiguration
+		return ret
+	}).(EventStreamEventbridgeConfigurationOutput)
+}
+
+func (o EventStreamEventbridgeConfigurationPtrOutput) AwsAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventStreamEventbridgeConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AwsAccountId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o EventStreamEventbridgeConfigurationPtrOutput) AwsPartnerEventSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventStreamEventbridgeConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AwsPartnerEventSource
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o EventStreamEventbridgeConfigurationPtrOutput) AwsRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventStreamEventbridgeConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AwsRegion
+	}).(pulumi.StringPtrOutput)
+}
+
+type EventStreamWebhookConfiguration struct {
+	// Authorization details for the webhook endpoint. Supports `basic` authentication using `username` and `password`, or `bearer` authentication using a `token`. The appropriate fields must be set based on the chosen method.
+	WebhookAuthorization EventStreamWebhookConfigurationWebhookAuthorization `pulumi:"webhookAuthorization"`
+	// The HTTPS endpoint that will receive the webhook events. Must be a valid, publicly accessible URL.
+	WebhookEndpoint string `pulumi:"webhookEndpoint"`
+}
+
+// EventStreamWebhookConfigurationInput is an input type that accepts EventStreamWebhookConfigurationArgs and EventStreamWebhookConfigurationOutput values.
+// You can construct a concrete instance of `EventStreamWebhookConfigurationInput` via:
+//
+//	EventStreamWebhookConfigurationArgs{...}
+type EventStreamWebhookConfigurationInput interface {
+	pulumi.Input
+
+	ToEventStreamWebhookConfigurationOutput() EventStreamWebhookConfigurationOutput
+	ToEventStreamWebhookConfigurationOutputWithContext(context.Context) EventStreamWebhookConfigurationOutput
+}
+
+type EventStreamWebhookConfigurationArgs struct {
+	// Authorization details for the webhook endpoint. Supports `basic` authentication using `username` and `password`, or `bearer` authentication using a `token`. The appropriate fields must be set based on the chosen method.
+	WebhookAuthorization EventStreamWebhookConfigurationWebhookAuthorizationInput `pulumi:"webhookAuthorization"`
+	// The HTTPS endpoint that will receive the webhook events. Must be a valid, publicly accessible URL.
+	WebhookEndpoint pulumi.StringInput `pulumi:"webhookEndpoint"`
+}
+
+func (EventStreamWebhookConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventStreamWebhookConfiguration)(nil)).Elem()
+}
+
+func (i EventStreamWebhookConfigurationArgs) ToEventStreamWebhookConfigurationOutput() EventStreamWebhookConfigurationOutput {
+	return i.ToEventStreamWebhookConfigurationOutputWithContext(context.Background())
+}
+
+func (i EventStreamWebhookConfigurationArgs) ToEventStreamWebhookConfigurationOutputWithContext(ctx context.Context) EventStreamWebhookConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventStreamWebhookConfigurationOutput)
+}
+
+func (i EventStreamWebhookConfigurationArgs) ToEventStreamWebhookConfigurationPtrOutput() EventStreamWebhookConfigurationPtrOutput {
+	return i.ToEventStreamWebhookConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i EventStreamWebhookConfigurationArgs) ToEventStreamWebhookConfigurationPtrOutputWithContext(ctx context.Context) EventStreamWebhookConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventStreamWebhookConfigurationOutput).ToEventStreamWebhookConfigurationPtrOutputWithContext(ctx)
+}
+
+// EventStreamWebhookConfigurationPtrInput is an input type that accepts EventStreamWebhookConfigurationArgs, EventStreamWebhookConfigurationPtr and EventStreamWebhookConfigurationPtrOutput values.
+// You can construct a concrete instance of `EventStreamWebhookConfigurationPtrInput` via:
+//
+//	        EventStreamWebhookConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type EventStreamWebhookConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToEventStreamWebhookConfigurationPtrOutput() EventStreamWebhookConfigurationPtrOutput
+	ToEventStreamWebhookConfigurationPtrOutputWithContext(context.Context) EventStreamWebhookConfigurationPtrOutput
+}
+
+type eventStreamWebhookConfigurationPtrType EventStreamWebhookConfigurationArgs
+
+func EventStreamWebhookConfigurationPtr(v *EventStreamWebhookConfigurationArgs) EventStreamWebhookConfigurationPtrInput {
+	return (*eventStreamWebhookConfigurationPtrType)(v)
+}
+
+func (*eventStreamWebhookConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventStreamWebhookConfiguration)(nil)).Elem()
+}
+
+func (i *eventStreamWebhookConfigurationPtrType) ToEventStreamWebhookConfigurationPtrOutput() EventStreamWebhookConfigurationPtrOutput {
+	return i.ToEventStreamWebhookConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *eventStreamWebhookConfigurationPtrType) ToEventStreamWebhookConfigurationPtrOutputWithContext(ctx context.Context) EventStreamWebhookConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventStreamWebhookConfigurationPtrOutput)
+}
+
+type EventStreamWebhookConfigurationOutput struct{ *pulumi.OutputState }
+
+func (EventStreamWebhookConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventStreamWebhookConfiguration)(nil)).Elem()
+}
+
+func (o EventStreamWebhookConfigurationOutput) ToEventStreamWebhookConfigurationOutput() EventStreamWebhookConfigurationOutput {
+	return o
+}
+
+func (o EventStreamWebhookConfigurationOutput) ToEventStreamWebhookConfigurationOutputWithContext(ctx context.Context) EventStreamWebhookConfigurationOutput {
+	return o
+}
+
+func (o EventStreamWebhookConfigurationOutput) ToEventStreamWebhookConfigurationPtrOutput() EventStreamWebhookConfigurationPtrOutput {
+	return o.ToEventStreamWebhookConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o EventStreamWebhookConfigurationOutput) ToEventStreamWebhookConfigurationPtrOutputWithContext(ctx context.Context) EventStreamWebhookConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EventStreamWebhookConfiguration) *EventStreamWebhookConfiguration {
+		return &v
+	}).(EventStreamWebhookConfigurationPtrOutput)
+}
+
+// Authorization details for the webhook endpoint. Supports `basic` authentication using `username` and `password`, or `bearer` authentication using a `token`. The appropriate fields must be set based on the chosen method.
+func (o EventStreamWebhookConfigurationOutput) WebhookAuthorization() EventStreamWebhookConfigurationWebhookAuthorizationOutput {
+	return o.ApplyT(func(v EventStreamWebhookConfiguration) EventStreamWebhookConfigurationWebhookAuthorization {
+		return v.WebhookAuthorization
+	}).(EventStreamWebhookConfigurationWebhookAuthorizationOutput)
+}
+
+// The HTTPS endpoint that will receive the webhook events. Must be a valid, publicly accessible URL.
+func (o EventStreamWebhookConfigurationOutput) WebhookEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v EventStreamWebhookConfiguration) string { return v.WebhookEndpoint }).(pulumi.StringOutput)
+}
+
+type EventStreamWebhookConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (EventStreamWebhookConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventStreamWebhookConfiguration)(nil)).Elem()
+}
+
+func (o EventStreamWebhookConfigurationPtrOutput) ToEventStreamWebhookConfigurationPtrOutput() EventStreamWebhookConfigurationPtrOutput {
+	return o
+}
+
+func (o EventStreamWebhookConfigurationPtrOutput) ToEventStreamWebhookConfigurationPtrOutputWithContext(ctx context.Context) EventStreamWebhookConfigurationPtrOutput {
+	return o
+}
+
+func (o EventStreamWebhookConfigurationPtrOutput) Elem() EventStreamWebhookConfigurationOutput {
+	return o.ApplyT(func(v *EventStreamWebhookConfiguration) EventStreamWebhookConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret EventStreamWebhookConfiguration
+		return ret
+	}).(EventStreamWebhookConfigurationOutput)
+}
+
+// Authorization details for the webhook endpoint. Supports `basic` authentication using `username` and `password`, or `bearer` authentication using a `token`. The appropriate fields must be set based on the chosen method.
+func (o EventStreamWebhookConfigurationPtrOutput) WebhookAuthorization() EventStreamWebhookConfigurationWebhookAuthorizationPtrOutput {
+	return o.ApplyT(func(v *EventStreamWebhookConfiguration) *EventStreamWebhookConfigurationWebhookAuthorization {
+		if v == nil {
+			return nil
+		}
+		return &v.WebhookAuthorization
+	}).(EventStreamWebhookConfigurationWebhookAuthorizationPtrOutput)
+}
+
+// The HTTPS endpoint that will receive the webhook events. Must be a valid, publicly accessible URL.
+func (o EventStreamWebhookConfigurationPtrOutput) WebhookEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventStreamWebhookConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WebhookEndpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+type EventStreamWebhookConfigurationWebhookAuthorization struct {
+	// The authorization method used to secure the webhook endpoint. Can be either `basic` or `bearer`.
+	Method string `pulumi:"method"`
+	// The password for `basic` authentication. Required when `method` is set to `basic`.
+	Password *string `pulumi:"password"`
+	// The token used for `bearer` authentication. Required when `method` is set to `bearer`.
+	Token *string `pulumi:"token"`
+	// The username for `basic` authentication. Required when `method` is set to `basic`.
+	Username *string `pulumi:"username"`
+}
+
+// EventStreamWebhookConfigurationWebhookAuthorizationInput is an input type that accepts EventStreamWebhookConfigurationWebhookAuthorizationArgs and EventStreamWebhookConfigurationWebhookAuthorizationOutput values.
+// You can construct a concrete instance of `EventStreamWebhookConfigurationWebhookAuthorizationInput` via:
+//
+//	EventStreamWebhookConfigurationWebhookAuthorizationArgs{...}
+type EventStreamWebhookConfigurationWebhookAuthorizationInput interface {
+	pulumi.Input
+
+	ToEventStreamWebhookConfigurationWebhookAuthorizationOutput() EventStreamWebhookConfigurationWebhookAuthorizationOutput
+	ToEventStreamWebhookConfigurationWebhookAuthorizationOutputWithContext(context.Context) EventStreamWebhookConfigurationWebhookAuthorizationOutput
+}
+
+type EventStreamWebhookConfigurationWebhookAuthorizationArgs struct {
+	// The authorization method used to secure the webhook endpoint. Can be either `basic` or `bearer`.
+	Method pulumi.StringInput `pulumi:"method"`
+	// The password for `basic` authentication. Required when `method` is set to `basic`.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// The token used for `bearer` authentication. Required when `method` is set to `bearer`.
+	Token pulumi.StringPtrInput `pulumi:"token"`
+	// The username for `basic` authentication. Required when `method` is set to `basic`.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (EventStreamWebhookConfigurationWebhookAuthorizationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventStreamWebhookConfigurationWebhookAuthorization)(nil)).Elem()
+}
+
+func (i EventStreamWebhookConfigurationWebhookAuthorizationArgs) ToEventStreamWebhookConfigurationWebhookAuthorizationOutput() EventStreamWebhookConfigurationWebhookAuthorizationOutput {
+	return i.ToEventStreamWebhookConfigurationWebhookAuthorizationOutputWithContext(context.Background())
+}
+
+func (i EventStreamWebhookConfigurationWebhookAuthorizationArgs) ToEventStreamWebhookConfigurationWebhookAuthorizationOutputWithContext(ctx context.Context) EventStreamWebhookConfigurationWebhookAuthorizationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventStreamWebhookConfigurationWebhookAuthorizationOutput)
+}
+
+func (i EventStreamWebhookConfigurationWebhookAuthorizationArgs) ToEventStreamWebhookConfigurationWebhookAuthorizationPtrOutput() EventStreamWebhookConfigurationWebhookAuthorizationPtrOutput {
+	return i.ToEventStreamWebhookConfigurationWebhookAuthorizationPtrOutputWithContext(context.Background())
+}
+
+func (i EventStreamWebhookConfigurationWebhookAuthorizationArgs) ToEventStreamWebhookConfigurationWebhookAuthorizationPtrOutputWithContext(ctx context.Context) EventStreamWebhookConfigurationWebhookAuthorizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventStreamWebhookConfigurationWebhookAuthorizationOutput).ToEventStreamWebhookConfigurationWebhookAuthorizationPtrOutputWithContext(ctx)
+}
+
+// EventStreamWebhookConfigurationWebhookAuthorizationPtrInput is an input type that accepts EventStreamWebhookConfigurationWebhookAuthorizationArgs, EventStreamWebhookConfigurationWebhookAuthorizationPtr and EventStreamWebhookConfigurationWebhookAuthorizationPtrOutput values.
+// You can construct a concrete instance of `EventStreamWebhookConfigurationWebhookAuthorizationPtrInput` via:
+//
+//	        EventStreamWebhookConfigurationWebhookAuthorizationArgs{...}
+//
+//	or:
+//
+//	        nil
+type EventStreamWebhookConfigurationWebhookAuthorizationPtrInput interface {
+	pulumi.Input
+
+	ToEventStreamWebhookConfigurationWebhookAuthorizationPtrOutput() EventStreamWebhookConfigurationWebhookAuthorizationPtrOutput
+	ToEventStreamWebhookConfigurationWebhookAuthorizationPtrOutputWithContext(context.Context) EventStreamWebhookConfigurationWebhookAuthorizationPtrOutput
+}
+
+type eventStreamWebhookConfigurationWebhookAuthorizationPtrType EventStreamWebhookConfigurationWebhookAuthorizationArgs
+
+func EventStreamWebhookConfigurationWebhookAuthorizationPtr(v *EventStreamWebhookConfigurationWebhookAuthorizationArgs) EventStreamWebhookConfigurationWebhookAuthorizationPtrInput {
+	return (*eventStreamWebhookConfigurationWebhookAuthorizationPtrType)(v)
+}
+
+func (*eventStreamWebhookConfigurationWebhookAuthorizationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventStreamWebhookConfigurationWebhookAuthorization)(nil)).Elem()
+}
+
+func (i *eventStreamWebhookConfigurationWebhookAuthorizationPtrType) ToEventStreamWebhookConfigurationWebhookAuthorizationPtrOutput() EventStreamWebhookConfigurationWebhookAuthorizationPtrOutput {
+	return i.ToEventStreamWebhookConfigurationWebhookAuthorizationPtrOutputWithContext(context.Background())
+}
+
+func (i *eventStreamWebhookConfigurationWebhookAuthorizationPtrType) ToEventStreamWebhookConfigurationWebhookAuthorizationPtrOutputWithContext(ctx context.Context) EventStreamWebhookConfigurationWebhookAuthorizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventStreamWebhookConfigurationWebhookAuthorizationPtrOutput)
+}
+
+type EventStreamWebhookConfigurationWebhookAuthorizationOutput struct{ *pulumi.OutputState }
+
+func (EventStreamWebhookConfigurationWebhookAuthorizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventStreamWebhookConfigurationWebhookAuthorization)(nil)).Elem()
+}
+
+func (o EventStreamWebhookConfigurationWebhookAuthorizationOutput) ToEventStreamWebhookConfigurationWebhookAuthorizationOutput() EventStreamWebhookConfigurationWebhookAuthorizationOutput {
+	return o
+}
+
+func (o EventStreamWebhookConfigurationWebhookAuthorizationOutput) ToEventStreamWebhookConfigurationWebhookAuthorizationOutputWithContext(ctx context.Context) EventStreamWebhookConfigurationWebhookAuthorizationOutput {
+	return o
+}
+
+func (o EventStreamWebhookConfigurationWebhookAuthorizationOutput) ToEventStreamWebhookConfigurationWebhookAuthorizationPtrOutput() EventStreamWebhookConfigurationWebhookAuthorizationPtrOutput {
+	return o.ToEventStreamWebhookConfigurationWebhookAuthorizationPtrOutputWithContext(context.Background())
+}
+
+func (o EventStreamWebhookConfigurationWebhookAuthorizationOutput) ToEventStreamWebhookConfigurationWebhookAuthorizationPtrOutputWithContext(ctx context.Context) EventStreamWebhookConfigurationWebhookAuthorizationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EventStreamWebhookConfigurationWebhookAuthorization) *EventStreamWebhookConfigurationWebhookAuthorization {
+		return &v
+	}).(EventStreamWebhookConfigurationWebhookAuthorizationPtrOutput)
+}
+
+// The authorization method used to secure the webhook endpoint. Can be either `basic` or `bearer`.
+func (o EventStreamWebhookConfigurationWebhookAuthorizationOutput) Method() pulumi.StringOutput {
+	return o.ApplyT(func(v EventStreamWebhookConfigurationWebhookAuthorization) string { return v.Method }).(pulumi.StringOutput)
+}
+
+// The password for `basic` authentication. Required when `method` is set to `basic`.
+func (o EventStreamWebhookConfigurationWebhookAuthorizationOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventStreamWebhookConfigurationWebhookAuthorization) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The token used for `bearer` authentication. Required when `method` is set to `bearer`.
+func (o EventStreamWebhookConfigurationWebhookAuthorizationOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventStreamWebhookConfigurationWebhookAuthorization) *string { return v.Token }).(pulumi.StringPtrOutput)
+}
+
+// The username for `basic` authentication. Required when `method` is set to `basic`.
+func (o EventStreamWebhookConfigurationWebhookAuthorizationOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventStreamWebhookConfigurationWebhookAuthorization) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type EventStreamWebhookConfigurationWebhookAuthorizationPtrOutput struct{ *pulumi.OutputState }
+
+func (EventStreamWebhookConfigurationWebhookAuthorizationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventStreamWebhookConfigurationWebhookAuthorization)(nil)).Elem()
+}
+
+func (o EventStreamWebhookConfigurationWebhookAuthorizationPtrOutput) ToEventStreamWebhookConfigurationWebhookAuthorizationPtrOutput() EventStreamWebhookConfigurationWebhookAuthorizationPtrOutput {
+	return o
+}
+
+func (o EventStreamWebhookConfigurationWebhookAuthorizationPtrOutput) ToEventStreamWebhookConfigurationWebhookAuthorizationPtrOutputWithContext(ctx context.Context) EventStreamWebhookConfigurationWebhookAuthorizationPtrOutput {
+	return o
+}
+
+func (o EventStreamWebhookConfigurationWebhookAuthorizationPtrOutput) Elem() EventStreamWebhookConfigurationWebhookAuthorizationOutput {
+	return o.ApplyT(func(v *EventStreamWebhookConfigurationWebhookAuthorization) EventStreamWebhookConfigurationWebhookAuthorization {
+		if v != nil {
+			return *v
+		}
+		var ret EventStreamWebhookConfigurationWebhookAuthorization
+		return ret
+	}).(EventStreamWebhookConfigurationWebhookAuthorizationOutput)
+}
+
+// The authorization method used to secure the webhook endpoint. Can be either `basic` or `bearer`.
+func (o EventStreamWebhookConfigurationWebhookAuthorizationPtrOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventStreamWebhookConfigurationWebhookAuthorization) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Method
+	}).(pulumi.StringPtrOutput)
+}
+
+// The password for `basic` authentication. Required when `method` is set to `basic`.
+func (o EventStreamWebhookConfigurationWebhookAuthorizationPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventStreamWebhookConfigurationWebhookAuthorization) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// The token used for `bearer` authentication. Required when `method` is set to `bearer`.
+func (o EventStreamWebhookConfigurationWebhookAuthorizationPtrOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventStreamWebhookConfigurationWebhookAuthorization) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Token
+	}).(pulumi.StringPtrOutput)
+}
+
+// The username for `basic` authentication. Required when `method` is set to `basic`.
+func (o EventStreamWebhookConfigurationWebhookAuthorizationPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventStreamWebhookConfigurationWebhookAuthorization) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
 type FormLanguage struct {
 	// Default language for the form.
 	Default *string `pulumi:"default"`
@@ -48074,6 +48589,344 @@ func (o GetCustomDomainVerificationTypeArrayOutput) Index(i pulumi.IntInput) Get
 	}).(GetCustomDomainVerificationTypeOutput)
 }
 
+type GetEventStreamEventbridgeConfiguration struct {
+	AwsAccountId          string `pulumi:"awsAccountId"`
+	AwsPartnerEventSource string `pulumi:"awsPartnerEventSource"`
+	AwsRegion             string `pulumi:"awsRegion"`
+}
+
+// GetEventStreamEventbridgeConfigurationInput is an input type that accepts GetEventStreamEventbridgeConfigurationArgs and GetEventStreamEventbridgeConfigurationOutput values.
+// You can construct a concrete instance of `GetEventStreamEventbridgeConfigurationInput` via:
+//
+//	GetEventStreamEventbridgeConfigurationArgs{...}
+type GetEventStreamEventbridgeConfigurationInput interface {
+	pulumi.Input
+
+	ToGetEventStreamEventbridgeConfigurationOutput() GetEventStreamEventbridgeConfigurationOutput
+	ToGetEventStreamEventbridgeConfigurationOutputWithContext(context.Context) GetEventStreamEventbridgeConfigurationOutput
+}
+
+type GetEventStreamEventbridgeConfigurationArgs struct {
+	AwsAccountId          pulumi.StringInput `pulumi:"awsAccountId"`
+	AwsPartnerEventSource pulumi.StringInput `pulumi:"awsPartnerEventSource"`
+	AwsRegion             pulumi.StringInput `pulumi:"awsRegion"`
+}
+
+func (GetEventStreamEventbridgeConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventStreamEventbridgeConfiguration)(nil)).Elem()
+}
+
+func (i GetEventStreamEventbridgeConfigurationArgs) ToGetEventStreamEventbridgeConfigurationOutput() GetEventStreamEventbridgeConfigurationOutput {
+	return i.ToGetEventStreamEventbridgeConfigurationOutputWithContext(context.Background())
+}
+
+func (i GetEventStreamEventbridgeConfigurationArgs) ToGetEventStreamEventbridgeConfigurationOutputWithContext(ctx context.Context) GetEventStreamEventbridgeConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventStreamEventbridgeConfigurationOutput)
+}
+
+// GetEventStreamEventbridgeConfigurationArrayInput is an input type that accepts GetEventStreamEventbridgeConfigurationArray and GetEventStreamEventbridgeConfigurationArrayOutput values.
+// You can construct a concrete instance of `GetEventStreamEventbridgeConfigurationArrayInput` via:
+//
+//	GetEventStreamEventbridgeConfigurationArray{ GetEventStreamEventbridgeConfigurationArgs{...} }
+type GetEventStreamEventbridgeConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToGetEventStreamEventbridgeConfigurationArrayOutput() GetEventStreamEventbridgeConfigurationArrayOutput
+	ToGetEventStreamEventbridgeConfigurationArrayOutputWithContext(context.Context) GetEventStreamEventbridgeConfigurationArrayOutput
+}
+
+type GetEventStreamEventbridgeConfigurationArray []GetEventStreamEventbridgeConfigurationInput
+
+func (GetEventStreamEventbridgeConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEventStreamEventbridgeConfiguration)(nil)).Elem()
+}
+
+func (i GetEventStreamEventbridgeConfigurationArray) ToGetEventStreamEventbridgeConfigurationArrayOutput() GetEventStreamEventbridgeConfigurationArrayOutput {
+	return i.ToGetEventStreamEventbridgeConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i GetEventStreamEventbridgeConfigurationArray) ToGetEventStreamEventbridgeConfigurationArrayOutputWithContext(ctx context.Context) GetEventStreamEventbridgeConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventStreamEventbridgeConfigurationArrayOutput)
+}
+
+type GetEventStreamEventbridgeConfigurationOutput struct{ *pulumi.OutputState }
+
+func (GetEventStreamEventbridgeConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventStreamEventbridgeConfiguration)(nil)).Elem()
+}
+
+func (o GetEventStreamEventbridgeConfigurationOutput) ToGetEventStreamEventbridgeConfigurationOutput() GetEventStreamEventbridgeConfigurationOutput {
+	return o
+}
+
+func (o GetEventStreamEventbridgeConfigurationOutput) ToGetEventStreamEventbridgeConfigurationOutputWithContext(ctx context.Context) GetEventStreamEventbridgeConfigurationOutput {
+	return o
+}
+
+func (o GetEventStreamEventbridgeConfigurationOutput) AwsAccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventStreamEventbridgeConfiguration) string { return v.AwsAccountId }).(pulumi.StringOutput)
+}
+
+func (o GetEventStreamEventbridgeConfigurationOutput) AwsPartnerEventSource() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventStreamEventbridgeConfiguration) string { return v.AwsPartnerEventSource }).(pulumi.StringOutput)
+}
+
+func (o GetEventStreamEventbridgeConfigurationOutput) AwsRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventStreamEventbridgeConfiguration) string { return v.AwsRegion }).(pulumi.StringOutput)
+}
+
+type GetEventStreamEventbridgeConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEventStreamEventbridgeConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEventStreamEventbridgeConfiguration)(nil)).Elem()
+}
+
+func (o GetEventStreamEventbridgeConfigurationArrayOutput) ToGetEventStreamEventbridgeConfigurationArrayOutput() GetEventStreamEventbridgeConfigurationArrayOutput {
+	return o
+}
+
+func (o GetEventStreamEventbridgeConfigurationArrayOutput) ToGetEventStreamEventbridgeConfigurationArrayOutputWithContext(ctx context.Context) GetEventStreamEventbridgeConfigurationArrayOutput {
+	return o
+}
+
+func (o GetEventStreamEventbridgeConfigurationArrayOutput) Index(i pulumi.IntInput) GetEventStreamEventbridgeConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEventStreamEventbridgeConfiguration {
+		return vs[0].([]GetEventStreamEventbridgeConfiguration)[vs[1].(int)]
+	}).(GetEventStreamEventbridgeConfigurationOutput)
+}
+
+type GetEventStreamWebhookConfiguration struct {
+	// Authorization details for the webhook endpoint. Supports `basic` authentication using `username` and `password`, or `bearer` authentication using a `token`. The appropriate fields must be set based on the chosen method.
+	WebhookAuthorizations []GetEventStreamWebhookConfigurationWebhookAuthorization `pulumi:"webhookAuthorizations"`
+	// The HTTPS endpoint that will receive the webhook events. Must be a valid, publicly accessible URL.
+	WebhookEndpoint string `pulumi:"webhookEndpoint"`
+}
+
+// GetEventStreamWebhookConfigurationInput is an input type that accepts GetEventStreamWebhookConfigurationArgs and GetEventStreamWebhookConfigurationOutput values.
+// You can construct a concrete instance of `GetEventStreamWebhookConfigurationInput` via:
+//
+//	GetEventStreamWebhookConfigurationArgs{...}
+type GetEventStreamWebhookConfigurationInput interface {
+	pulumi.Input
+
+	ToGetEventStreamWebhookConfigurationOutput() GetEventStreamWebhookConfigurationOutput
+	ToGetEventStreamWebhookConfigurationOutputWithContext(context.Context) GetEventStreamWebhookConfigurationOutput
+}
+
+type GetEventStreamWebhookConfigurationArgs struct {
+	// Authorization details for the webhook endpoint. Supports `basic` authentication using `username` and `password`, or `bearer` authentication using a `token`. The appropriate fields must be set based on the chosen method.
+	WebhookAuthorizations GetEventStreamWebhookConfigurationWebhookAuthorizationArrayInput `pulumi:"webhookAuthorizations"`
+	// The HTTPS endpoint that will receive the webhook events. Must be a valid, publicly accessible URL.
+	WebhookEndpoint pulumi.StringInput `pulumi:"webhookEndpoint"`
+}
+
+func (GetEventStreamWebhookConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventStreamWebhookConfiguration)(nil)).Elem()
+}
+
+func (i GetEventStreamWebhookConfigurationArgs) ToGetEventStreamWebhookConfigurationOutput() GetEventStreamWebhookConfigurationOutput {
+	return i.ToGetEventStreamWebhookConfigurationOutputWithContext(context.Background())
+}
+
+func (i GetEventStreamWebhookConfigurationArgs) ToGetEventStreamWebhookConfigurationOutputWithContext(ctx context.Context) GetEventStreamWebhookConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventStreamWebhookConfigurationOutput)
+}
+
+// GetEventStreamWebhookConfigurationArrayInput is an input type that accepts GetEventStreamWebhookConfigurationArray and GetEventStreamWebhookConfigurationArrayOutput values.
+// You can construct a concrete instance of `GetEventStreamWebhookConfigurationArrayInput` via:
+//
+//	GetEventStreamWebhookConfigurationArray{ GetEventStreamWebhookConfigurationArgs{...} }
+type GetEventStreamWebhookConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToGetEventStreamWebhookConfigurationArrayOutput() GetEventStreamWebhookConfigurationArrayOutput
+	ToGetEventStreamWebhookConfigurationArrayOutputWithContext(context.Context) GetEventStreamWebhookConfigurationArrayOutput
+}
+
+type GetEventStreamWebhookConfigurationArray []GetEventStreamWebhookConfigurationInput
+
+func (GetEventStreamWebhookConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEventStreamWebhookConfiguration)(nil)).Elem()
+}
+
+func (i GetEventStreamWebhookConfigurationArray) ToGetEventStreamWebhookConfigurationArrayOutput() GetEventStreamWebhookConfigurationArrayOutput {
+	return i.ToGetEventStreamWebhookConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i GetEventStreamWebhookConfigurationArray) ToGetEventStreamWebhookConfigurationArrayOutputWithContext(ctx context.Context) GetEventStreamWebhookConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventStreamWebhookConfigurationArrayOutput)
+}
+
+type GetEventStreamWebhookConfigurationOutput struct{ *pulumi.OutputState }
+
+func (GetEventStreamWebhookConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventStreamWebhookConfiguration)(nil)).Elem()
+}
+
+func (o GetEventStreamWebhookConfigurationOutput) ToGetEventStreamWebhookConfigurationOutput() GetEventStreamWebhookConfigurationOutput {
+	return o
+}
+
+func (o GetEventStreamWebhookConfigurationOutput) ToGetEventStreamWebhookConfigurationOutputWithContext(ctx context.Context) GetEventStreamWebhookConfigurationOutput {
+	return o
+}
+
+// Authorization details for the webhook endpoint. Supports `basic` authentication using `username` and `password`, or `bearer` authentication using a `token`. The appropriate fields must be set based on the chosen method.
+func (o GetEventStreamWebhookConfigurationOutput) WebhookAuthorizations() GetEventStreamWebhookConfigurationWebhookAuthorizationArrayOutput {
+	return o.ApplyT(func(v GetEventStreamWebhookConfiguration) []GetEventStreamWebhookConfigurationWebhookAuthorization {
+		return v.WebhookAuthorizations
+	}).(GetEventStreamWebhookConfigurationWebhookAuthorizationArrayOutput)
+}
+
+// The HTTPS endpoint that will receive the webhook events. Must be a valid, publicly accessible URL.
+func (o GetEventStreamWebhookConfigurationOutput) WebhookEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventStreamWebhookConfiguration) string { return v.WebhookEndpoint }).(pulumi.StringOutput)
+}
+
+type GetEventStreamWebhookConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEventStreamWebhookConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEventStreamWebhookConfiguration)(nil)).Elem()
+}
+
+func (o GetEventStreamWebhookConfigurationArrayOutput) ToGetEventStreamWebhookConfigurationArrayOutput() GetEventStreamWebhookConfigurationArrayOutput {
+	return o
+}
+
+func (o GetEventStreamWebhookConfigurationArrayOutput) ToGetEventStreamWebhookConfigurationArrayOutputWithContext(ctx context.Context) GetEventStreamWebhookConfigurationArrayOutput {
+	return o
+}
+
+func (o GetEventStreamWebhookConfigurationArrayOutput) Index(i pulumi.IntInput) GetEventStreamWebhookConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEventStreamWebhookConfiguration {
+		return vs[0].([]GetEventStreamWebhookConfiguration)[vs[1].(int)]
+	}).(GetEventStreamWebhookConfigurationOutput)
+}
+
+type GetEventStreamWebhookConfigurationWebhookAuthorization struct {
+	// The authorization method used to secure the webhook endpoint. Can be either `basic` or `bearer`.
+	Method string `pulumi:"method"`
+	// The password for `basic` authentication. Required when `method` is set to `basic`.
+	Password string `pulumi:"password"`
+	// The token used for `bearer` authentication. Required when `method` is set to `bearer`.
+	Token string `pulumi:"token"`
+	// The username for `basic` authentication. Required when `method` is set to `basic`.
+	Username string `pulumi:"username"`
+}
+
+// GetEventStreamWebhookConfigurationWebhookAuthorizationInput is an input type that accepts GetEventStreamWebhookConfigurationWebhookAuthorizationArgs and GetEventStreamWebhookConfigurationWebhookAuthorizationOutput values.
+// You can construct a concrete instance of `GetEventStreamWebhookConfigurationWebhookAuthorizationInput` via:
+//
+//	GetEventStreamWebhookConfigurationWebhookAuthorizationArgs{...}
+type GetEventStreamWebhookConfigurationWebhookAuthorizationInput interface {
+	pulumi.Input
+
+	ToGetEventStreamWebhookConfigurationWebhookAuthorizationOutput() GetEventStreamWebhookConfigurationWebhookAuthorizationOutput
+	ToGetEventStreamWebhookConfigurationWebhookAuthorizationOutputWithContext(context.Context) GetEventStreamWebhookConfigurationWebhookAuthorizationOutput
+}
+
+type GetEventStreamWebhookConfigurationWebhookAuthorizationArgs struct {
+	// The authorization method used to secure the webhook endpoint. Can be either `basic` or `bearer`.
+	Method pulumi.StringInput `pulumi:"method"`
+	// The password for `basic` authentication. Required when `method` is set to `basic`.
+	Password pulumi.StringInput `pulumi:"password"`
+	// The token used for `bearer` authentication. Required when `method` is set to `bearer`.
+	Token pulumi.StringInput `pulumi:"token"`
+	// The username for `basic` authentication. Required when `method` is set to `basic`.
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (GetEventStreamWebhookConfigurationWebhookAuthorizationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventStreamWebhookConfigurationWebhookAuthorization)(nil)).Elem()
+}
+
+func (i GetEventStreamWebhookConfigurationWebhookAuthorizationArgs) ToGetEventStreamWebhookConfigurationWebhookAuthorizationOutput() GetEventStreamWebhookConfigurationWebhookAuthorizationOutput {
+	return i.ToGetEventStreamWebhookConfigurationWebhookAuthorizationOutputWithContext(context.Background())
+}
+
+func (i GetEventStreamWebhookConfigurationWebhookAuthorizationArgs) ToGetEventStreamWebhookConfigurationWebhookAuthorizationOutputWithContext(ctx context.Context) GetEventStreamWebhookConfigurationWebhookAuthorizationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventStreamWebhookConfigurationWebhookAuthorizationOutput)
+}
+
+// GetEventStreamWebhookConfigurationWebhookAuthorizationArrayInput is an input type that accepts GetEventStreamWebhookConfigurationWebhookAuthorizationArray and GetEventStreamWebhookConfigurationWebhookAuthorizationArrayOutput values.
+// You can construct a concrete instance of `GetEventStreamWebhookConfigurationWebhookAuthorizationArrayInput` via:
+//
+//	GetEventStreamWebhookConfigurationWebhookAuthorizationArray{ GetEventStreamWebhookConfigurationWebhookAuthorizationArgs{...} }
+type GetEventStreamWebhookConfigurationWebhookAuthorizationArrayInput interface {
+	pulumi.Input
+
+	ToGetEventStreamWebhookConfigurationWebhookAuthorizationArrayOutput() GetEventStreamWebhookConfigurationWebhookAuthorizationArrayOutput
+	ToGetEventStreamWebhookConfigurationWebhookAuthorizationArrayOutputWithContext(context.Context) GetEventStreamWebhookConfigurationWebhookAuthorizationArrayOutput
+}
+
+type GetEventStreamWebhookConfigurationWebhookAuthorizationArray []GetEventStreamWebhookConfigurationWebhookAuthorizationInput
+
+func (GetEventStreamWebhookConfigurationWebhookAuthorizationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEventStreamWebhookConfigurationWebhookAuthorization)(nil)).Elem()
+}
+
+func (i GetEventStreamWebhookConfigurationWebhookAuthorizationArray) ToGetEventStreamWebhookConfigurationWebhookAuthorizationArrayOutput() GetEventStreamWebhookConfigurationWebhookAuthorizationArrayOutput {
+	return i.ToGetEventStreamWebhookConfigurationWebhookAuthorizationArrayOutputWithContext(context.Background())
+}
+
+func (i GetEventStreamWebhookConfigurationWebhookAuthorizationArray) ToGetEventStreamWebhookConfigurationWebhookAuthorizationArrayOutputWithContext(ctx context.Context) GetEventStreamWebhookConfigurationWebhookAuthorizationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventStreamWebhookConfigurationWebhookAuthorizationArrayOutput)
+}
+
+type GetEventStreamWebhookConfigurationWebhookAuthorizationOutput struct{ *pulumi.OutputState }
+
+func (GetEventStreamWebhookConfigurationWebhookAuthorizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventStreamWebhookConfigurationWebhookAuthorization)(nil)).Elem()
+}
+
+func (o GetEventStreamWebhookConfigurationWebhookAuthorizationOutput) ToGetEventStreamWebhookConfigurationWebhookAuthorizationOutput() GetEventStreamWebhookConfigurationWebhookAuthorizationOutput {
+	return o
+}
+
+func (o GetEventStreamWebhookConfigurationWebhookAuthorizationOutput) ToGetEventStreamWebhookConfigurationWebhookAuthorizationOutputWithContext(ctx context.Context) GetEventStreamWebhookConfigurationWebhookAuthorizationOutput {
+	return o
+}
+
+// The authorization method used to secure the webhook endpoint. Can be either `basic` or `bearer`.
+func (o GetEventStreamWebhookConfigurationWebhookAuthorizationOutput) Method() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventStreamWebhookConfigurationWebhookAuthorization) string { return v.Method }).(pulumi.StringOutput)
+}
+
+// The password for `basic` authentication. Required when `method` is set to `basic`.
+func (o GetEventStreamWebhookConfigurationWebhookAuthorizationOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventStreamWebhookConfigurationWebhookAuthorization) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// The token used for `bearer` authentication. Required when `method` is set to `bearer`.
+func (o GetEventStreamWebhookConfigurationWebhookAuthorizationOutput) Token() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventStreamWebhookConfigurationWebhookAuthorization) string { return v.Token }).(pulumi.StringOutput)
+}
+
+// The username for `basic` authentication. Required when `method` is set to `basic`.
+func (o GetEventStreamWebhookConfigurationWebhookAuthorizationOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventStreamWebhookConfigurationWebhookAuthorization) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type GetEventStreamWebhookConfigurationWebhookAuthorizationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEventStreamWebhookConfigurationWebhookAuthorizationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEventStreamWebhookConfigurationWebhookAuthorization)(nil)).Elem()
+}
+
+func (o GetEventStreamWebhookConfigurationWebhookAuthorizationArrayOutput) ToGetEventStreamWebhookConfigurationWebhookAuthorizationArrayOutput() GetEventStreamWebhookConfigurationWebhookAuthorizationArrayOutput {
+	return o
+}
+
+func (o GetEventStreamWebhookConfigurationWebhookAuthorizationArrayOutput) ToGetEventStreamWebhookConfigurationWebhookAuthorizationArrayOutputWithContext(ctx context.Context) GetEventStreamWebhookConfigurationWebhookAuthorizationArrayOutput {
+	return o
+}
+
+func (o GetEventStreamWebhookConfigurationWebhookAuthorizationArrayOutput) Index(i pulumi.IntInput) GetEventStreamWebhookConfigurationWebhookAuthorizationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEventStreamWebhookConfigurationWebhookAuthorization {
+		return vs[0].([]GetEventStreamWebhookConfigurationWebhookAuthorization)[vs[1].(int)]
+	}).(GetEventStreamWebhookConfigurationWebhookAuthorizationOutput)
+}
+
 type GetFormLanguage struct {
 	// Default language for the form.
 	Default string `pulumi:"default"`
@@ -53554,6 +54407,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionKeyManagerCustomerProvidedRootKeyPtrInput)(nil)).Elem(), EncryptionKeyManagerCustomerProvidedRootKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionKeyManagerEncryptionKeyInput)(nil)).Elem(), EncryptionKeyManagerEncryptionKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionKeyManagerEncryptionKeyArrayInput)(nil)).Elem(), EncryptionKeyManagerEncryptionKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventStreamEventbridgeConfigurationInput)(nil)).Elem(), EventStreamEventbridgeConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventStreamEventbridgeConfigurationPtrInput)(nil)).Elem(), EventStreamEventbridgeConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventStreamWebhookConfigurationInput)(nil)).Elem(), EventStreamWebhookConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventStreamWebhookConfigurationPtrInput)(nil)).Elem(), EventStreamWebhookConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventStreamWebhookConfigurationWebhookAuthorizationInput)(nil)).Elem(), EventStreamWebhookConfigurationWebhookAuthorizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventStreamWebhookConfigurationWebhookAuthorizationPtrInput)(nil)).Elem(), EventStreamWebhookConfigurationWebhookAuthorizationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FormLanguageInput)(nil)).Elem(), FormLanguageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FormLanguageArrayInput)(nil)).Elem(), FormLanguageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FormMessageInput)(nil)).Elem(), FormMessageArgs{})
@@ -53921,6 +54780,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomDomainCertificateArrayInput)(nil)).Elem(), GetCustomDomainCertificateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomDomainVerificationTypeInput)(nil)).Elem(), GetCustomDomainVerificationTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomDomainVerificationTypeArrayInput)(nil)).Elem(), GetCustomDomainVerificationTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEventStreamEventbridgeConfigurationInput)(nil)).Elem(), GetEventStreamEventbridgeConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEventStreamEventbridgeConfigurationArrayInput)(nil)).Elem(), GetEventStreamEventbridgeConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEventStreamWebhookConfigurationInput)(nil)).Elem(), GetEventStreamWebhookConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEventStreamWebhookConfigurationArrayInput)(nil)).Elem(), GetEventStreamWebhookConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEventStreamWebhookConfigurationWebhookAuthorizationInput)(nil)).Elem(), GetEventStreamWebhookConfigurationWebhookAuthorizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEventStreamWebhookConfigurationWebhookAuthorizationArrayInput)(nil)).Elem(), GetEventStreamWebhookConfigurationWebhookAuthorizationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFormLanguageInput)(nil)).Elem(), GetFormLanguageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFormLanguageArrayInput)(nil)).Elem(), GetFormLanguageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFormMessageInput)(nil)).Elem(), GetFormMessageArgs{})
@@ -54255,6 +55120,12 @@ func init() {
 	pulumi.RegisterOutputType(EncryptionKeyManagerCustomerProvidedRootKeyPtrOutput{})
 	pulumi.RegisterOutputType(EncryptionKeyManagerEncryptionKeyOutput{})
 	pulumi.RegisterOutputType(EncryptionKeyManagerEncryptionKeyArrayOutput{})
+	pulumi.RegisterOutputType(EventStreamEventbridgeConfigurationOutput{})
+	pulumi.RegisterOutputType(EventStreamEventbridgeConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(EventStreamWebhookConfigurationOutput{})
+	pulumi.RegisterOutputType(EventStreamWebhookConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(EventStreamWebhookConfigurationWebhookAuthorizationOutput{})
+	pulumi.RegisterOutputType(EventStreamWebhookConfigurationWebhookAuthorizationPtrOutput{})
 	pulumi.RegisterOutputType(FormLanguageOutput{})
 	pulumi.RegisterOutputType(FormLanguageArrayOutput{})
 	pulumi.RegisterOutputType(FormMessageOutput{})
@@ -54622,6 +55493,12 @@ func init() {
 	pulumi.RegisterOutputType(GetCustomDomainCertificateArrayOutput{})
 	pulumi.RegisterOutputType(GetCustomDomainVerificationTypeOutput{})
 	pulumi.RegisterOutputType(GetCustomDomainVerificationTypeArrayOutput{})
+	pulumi.RegisterOutputType(GetEventStreamEventbridgeConfigurationOutput{})
+	pulumi.RegisterOutputType(GetEventStreamEventbridgeConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(GetEventStreamWebhookConfigurationOutput{})
+	pulumi.RegisterOutputType(GetEventStreamWebhookConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(GetEventStreamWebhookConfigurationWebhookAuthorizationOutput{})
+	pulumi.RegisterOutputType(GetEventStreamWebhookConfigurationWebhookAuthorizationArrayOutput{})
 	pulumi.RegisterOutputType(GetFormLanguageOutput{})
 	pulumi.RegisterOutputType(GetFormLanguageArrayOutput{})
 	pulumi.RegisterOutputType(GetFormMessageOutput{})

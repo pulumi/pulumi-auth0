@@ -96,6 +96,21 @@ public final class LogStreamState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The optional datetime (ISO 8601) to start streaming logs from.
+     * 
+     */
+    @Import(name="startFrom")
+    private @Nullable Output<String> startFrom;
+
+    /**
+     * @return The optional datetime (ISO 8601) to start streaming logs from.
+     * 
+     */
+    public Optional<Output<String>> startFrom() {
+        return Optional.ofNullable(this.startFrom);
+    }
+
+    /**
      * The current status of the log stream. Options are &#34;active&#34;, &#34;paused&#34;, &#34;suspended&#34;.
      * 
      */
@@ -133,6 +148,7 @@ public final class LogStreamState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.piiConfig = $.piiConfig;
         this.sink = $.sink;
+        this.startFrom = $.startFrom;
         this.status = $.status;
         this.type = $.type;
     }
@@ -268,6 +284,27 @@ public final class LogStreamState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder sink(LogStreamSinkArgs sink) {
             return sink(Output.of(sink));
+        }
+
+        /**
+         * @param startFrom The optional datetime (ISO 8601) to start streaming logs from.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder startFrom(@Nullable Output<String> startFrom) {
+            $.startFrom = startFrom;
+            return this;
+        }
+
+        /**
+         * @param startFrom The optional datetime (ISO 8601) to start streaming logs from.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder startFrom(String startFrom) {
+            return startFrom(Output.of(startFrom));
         }
 
         /**

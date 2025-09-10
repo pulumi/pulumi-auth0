@@ -132,7 +132,7 @@ export class ClientGrant extends pulumi.CustomResource {
     /**
      * Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
      */
-    declare public readonly subjectType: pulumi.Output<string | undefined>;
+    declare public readonly subjectType: pulumi.Output<string>;
 
     /**
      * Create a ClientGrant resource with the given unique name, arguments, and options.

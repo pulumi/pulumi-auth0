@@ -102,6 +102,8 @@ type LogStream struct {
 	PiiConfig LogStreamPiiConfigPtrOutput `pulumi:"piiConfig"`
 	// The sink configuration for the log stream.
 	Sink LogStreamSinkOutput `pulumi:"sink"`
+	// The optional datetime (ISO 8601) to start streaming logs from.
+	StartFrom pulumi.StringPtrOutput `pulumi:"startFrom"`
 	// The current status of the log stream. Options are "active", "paused", "suspended".
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Type of the log stream, which indicates the sink provider. Options include: `eventbridge`, `eventgrid`, `http`, `datadog`, `splunk`, `sumo`, `mixpanel`, `segment`.
@@ -154,6 +156,8 @@ type logStreamState struct {
 	PiiConfig *LogStreamPiiConfig `pulumi:"piiConfig"`
 	// The sink configuration for the log stream.
 	Sink *LogStreamSink `pulumi:"sink"`
+	// The optional datetime (ISO 8601) to start streaming logs from.
+	StartFrom *string `pulumi:"startFrom"`
 	// The current status of the log stream. Options are "active", "paused", "suspended".
 	Status *string `pulumi:"status"`
 	// Type of the log stream, which indicates the sink provider. Options include: `eventbridge`, `eventgrid`, `http`, `datadog`, `splunk`, `sumo`, `mixpanel`, `segment`.
@@ -171,6 +175,8 @@ type LogStreamState struct {
 	PiiConfig LogStreamPiiConfigPtrInput
 	// The sink configuration for the log stream.
 	Sink LogStreamSinkPtrInput
+	// The optional datetime (ISO 8601) to start streaming logs from.
+	StartFrom pulumi.StringPtrInput
 	// The current status of the log stream. Options are "active", "paused", "suspended".
 	Status pulumi.StringPtrInput
 	// Type of the log stream, which indicates the sink provider. Options include: `eventbridge`, `eventgrid`, `http`, `datadog`, `splunk`, `sumo`, `mixpanel`, `segment`.
@@ -192,6 +198,8 @@ type logStreamArgs struct {
 	PiiConfig *LogStreamPiiConfig `pulumi:"piiConfig"`
 	// The sink configuration for the log stream.
 	Sink LogStreamSink `pulumi:"sink"`
+	// The optional datetime (ISO 8601) to start streaming logs from.
+	StartFrom *string `pulumi:"startFrom"`
 	// The current status of the log stream. Options are "active", "paused", "suspended".
 	Status *string `pulumi:"status"`
 	// Type of the log stream, which indicates the sink provider. Options include: `eventbridge`, `eventgrid`, `http`, `datadog`, `splunk`, `sumo`, `mixpanel`, `segment`.
@@ -210,6 +218,8 @@ type LogStreamArgs struct {
 	PiiConfig LogStreamPiiConfigPtrInput
 	// The sink configuration for the log stream.
 	Sink LogStreamSinkInput
+	// The optional datetime (ISO 8601) to start streaming logs from.
+	StartFrom pulumi.StringPtrInput
 	// The current status of the log stream. Options are "active", "paused", "suspended".
 	Status pulumi.StringPtrInput
 	// Type of the log stream, which indicates the sink provider. Options include: `eventbridge`, `eventgrid`, `http`, `datadog`, `splunk`, `sumo`, `mixpanel`, `segment`.
@@ -326,6 +336,11 @@ func (o LogStreamOutput) PiiConfig() LogStreamPiiConfigPtrOutput {
 // The sink configuration for the log stream.
 func (o LogStreamOutput) Sink() LogStreamSinkOutput {
 	return o.ApplyT(func(v *LogStream) LogStreamSinkOutput { return v.Sink }).(LogStreamSinkOutput)
+}
+
+// The optional datetime (ISO 8601) to start streaming logs from.
+func (o LogStreamOutput) StartFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogStream) pulumi.StringPtrOutput { return v.StartFrom }).(pulumi.StringPtrOutput)
 }
 
 // The current status of the log stream. Options are "active", "paused", "suspended".

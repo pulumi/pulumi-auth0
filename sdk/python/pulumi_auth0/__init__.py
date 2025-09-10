@@ -23,6 +23,7 @@ from .custom_domain_verification import *
 from .email_provider import *
 from .email_template import *
 from .encryption_key_manager import *
+from .event_stream import *
 from .flow import *
 from .flow_vault_connection import *
 from .form import *
@@ -36,6 +37,7 @@ from .get_connection import *
 from .get_connection_keys import *
 from .get_connection_scim_configuration import *
 from .get_custom_domain import *
+from .get_event_stream import *
 from .get_flow import *
 from .get_flow_vault_connection import *
 from .get_form import *
@@ -241,6 +243,14 @@ _utilities.register(
   "fqn": "pulumi_auth0",
   "classes": {
    "auth0:index/encryptionKeyManager:EncryptionKeyManager": "EncryptionKeyManager"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/eventStream",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/eventStream:EventStream": "EventStream"
   }
  },
  {
