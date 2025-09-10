@@ -726,6 +726,28 @@
                     }
                 }
             },
+            "auth0_event_stream": {
+                "current": "auth0:index/eventStream:EventStream",
+                "majorVersion": 3,
+                "fields": {
+                    "eventbridge_configuration": {
+                        "maxItemsOne": true
+                    },
+                    "subscriptions": {
+                        "maxItemsOne": false
+                    },
+                    "webhook_configuration": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "webhook_authorization": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "auth0_flow": {
                 "current": "auth0:index/flow:Flow",
                 "majorVersion": 3
@@ -2015,6 +2037,28 @@
                         "elem": {
                             "fields": {
                                 "methods": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "auth0_event_stream": {
+                "current": "auth0:index/getEventStream:getEventStream",
+                "majorVersion": 3,
+                "fields": {
+                    "eventbridge_configuration": {
+                        "maxItemsOne": false
+                    },
+                    "subscriptions": {
+                        "maxItemsOne": false
+                    },
+                    "webhook_configuration": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "webhook_authorization": {
                                     "maxItemsOne": false
                                 }
                             }

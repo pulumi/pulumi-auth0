@@ -3314,6 +3314,78 @@
                 }
             }
         },
+        "auth0:index/EventStreamEventbridgeConfiguration:EventStreamEventbridgeConfiguration": {
+            "properties": {
+                "awsAccountId": {
+                    "type": "string",
+                    "willReplaceOnChanges": true
+                },
+                "awsPartnerEventSource": {
+                    "type": "string"
+                },
+                "awsRegion": {
+                    "type": "string",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "type": "object",
+            "required": [
+                "awsAccountId",
+                "awsRegion"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "awsAccountId",
+                        "awsPartnerEventSource",
+                        "awsRegion"
+                    ]
+                }
+            }
+        },
+        "auth0:index/EventStreamWebhookConfiguration:EventStreamWebhookConfiguration": {
+            "properties": {
+                "webhookAuthorization": {
+                    "$ref": "#/types/auth0:index/EventStreamWebhookConfigurationWebhookAuthorization:EventStreamWebhookConfigurationWebhookAuthorization",
+                    "description": "Authorization details for the webhook endpoint. Supports `basic` authentication using `username` and `password`, or `bearer` authentication using a `token`. The appropriate fields must be set based on the chosen method.\n"
+                },
+                "webhookEndpoint": {
+                    "type": "string",
+                    "description": "The HTTPS endpoint that will receive the webhook events. Must be a valid, publicly accessible URL.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "webhookAuthorization",
+                "webhookEndpoint"
+            ]
+        },
+        "auth0:index/EventStreamWebhookConfigurationWebhookAuthorization:EventStreamWebhookConfigurationWebhookAuthorization": {
+            "properties": {
+                "method": {
+                    "type": "string",
+                    "description": "The authorization method used to secure the webhook endpoint. Can be either `basic` or `bearer`.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "The password for `basic` authentication. Required when `method` is set to `basic`.\n",
+                    "secret": true
+                },
+                "token": {
+                    "type": "string",
+                    "description": "The token used for `bearer` authentication. Required when `method` is set to `bearer`.\n",
+                    "secret": true
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username for `basic` authentication. Required when `method` is set to `basic`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "method"
+            ]
+        },
         "auth0:index/FormLanguage:FormLanguage": {
             "properties": {
                 "default": {
@@ -9202,6 +9274,87 @@
                 }
             }
         },
+        "auth0:index/getEventStreamEventbridgeConfiguration:getEventStreamEventbridgeConfiguration": {
+            "properties": {
+                "awsAccountId": {
+                    "type": "string"
+                },
+                "awsPartnerEventSource": {
+                    "type": "string"
+                },
+                "awsRegion": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "awsAccountId",
+                "awsPartnerEventSource",
+                "awsRegion"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getEventStreamWebhookConfiguration:getEventStreamWebhookConfiguration": {
+            "properties": {
+                "webhookAuthorizations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/getEventStreamWebhookConfigurationWebhookAuthorization:getEventStreamWebhookConfigurationWebhookAuthorization"
+                    },
+                    "description": "Authorization details for the webhook endpoint. Supports `basic` authentication using `username` and `password`, or `bearer` authentication using a `token`. The appropriate fields must be set based on the chosen method.\n"
+                },
+                "webhookEndpoint": {
+                    "type": "string",
+                    "description": "The HTTPS endpoint that will receive the webhook events. Must be a valid, publicly accessible URL.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "webhookAuthorizations",
+                "webhookEndpoint"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getEventStreamWebhookConfigurationWebhookAuthorization:getEventStreamWebhookConfigurationWebhookAuthorization": {
+            "properties": {
+                "method": {
+                    "type": "string",
+                    "description": "The authorization method used to secure the webhook endpoint. Can be either `basic` or `bearer`.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "The password for `basic` authentication. Required when `method` is set to `basic`.\n"
+                },
+                "token": {
+                    "type": "string",
+                    "description": "The token used for `bearer` authentication. Required when `method` is set to `bearer`.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username for `basic` authentication. Required when `method` is set to `basic`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "method",
+                "password",
+                "token",
+                "username"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "auth0:index/getFormLanguage:getFormLanguage": {
             "properties": {
                 "default": {
@@ -11807,7 +11960,8 @@
             "required": [
                 "audience",
                 "clientId",
-                "scopes"
+                "scopes",
+                "subjectType"
             ],
             "inputProperties": {
                 "allowAnyOrganization": {
@@ -12725,7 +12879,7 @@
             }
         },
         "auth0:index/emailTemplate:EmailTemplate": {
-            "description": "With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right into Auth0. This resource allows you to configure email templates to customize the look, feel, and sender identities of emails sent by Auth0. Used in conjunction with configured email providers.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myEmailProvider = new auth0.EmailProvider(\"my_email_provider\", {\n    name: \"ses\",\n    enabled: true,\n    defaultFromAddress: \"accounts@example.com\",\n    credentials: {\n        accessKeyId: \"AKIAXXXXXXXXXXXXXXXX\",\n        secretAccessKey: \"7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n        region: \"us-east-1\",\n    },\n});\nconst myEmailTemplate = new auth0.EmailTemplate(\"my_email_template\", {\n    template: \"welcome_email\",\n    body: \"\u003chtml\u003e\u003cbody\u003e\u003ch1\u003eWelcome!\u003c/h1\u003e\u003c/body\u003e\u003c/html\u003e\",\n    from: \"welcome@example.com\",\n    resultUrl: \"https://example.com/welcome\",\n    subject: \"Welcome\",\n    syntax: \"liquid\",\n    urlLifetimeInSeconds: 3600,\n    enabled: true,\n}, {\n    dependsOn: [myEmailProvider],\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_email_provider = auth0.EmailProvider(\"my_email_provider\",\n    name=\"ses\",\n    enabled=True,\n    default_from_address=\"accounts@example.com\",\n    credentials={\n        \"access_key_id\": \"AKIAXXXXXXXXXXXXXXXX\",\n        \"secret_access_key\": \"7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n        \"region\": \"us-east-1\",\n    })\nmy_email_template = auth0.EmailTemplate(\"my_email_template\",\n    template=\"welcome_email\",\n    body=\"\u003chtml\u003e\u003cbody\u003e\u003ch1\u003eWelcome!\u003c/h1\u003e\u003c/body\u003e\u003c/html\u003e\",\n    from_=\"welcome@example.com\",\n    result_url=\"https://example.com/welcome\",\n    subject=\"Welcome\",\n    syntax=\"liquid\",\n    url_lifetime_in_seconds=3600,\n    enabled=True,\n    opts = pulumi.ResourceOptions(depends_on=[my_email_provider]))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myEmailProvider = new Auth0.EmailProvider(\"my_email_provider\", new()\n    {\n        Name = \"ses\",\n        Enabled = true,\n        DefaultFromAddress = \"accounts@example.com\",\n        Credentials = new Auth0.Inputs.EmailProviderCredentialsArgs\n        {\n            AccessKeyId = \"AKIAXXXXXXXXXXXXXXXX\",\n            SecretAccessKey = \"7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n            Region = \"us-east-1\",\n        },\n    });\n\n    var myEmailTemplate = new Auth0.EmailTemplate(\"my_email_template\", new()\n    {\n        Template = \"welcome_email\",\n        Body = \"\u003chtml\u003e\u003cbody\u003e\u003ch1\u003eWelcome!\u003c/h1\u003e\u003c/body\u003e\u003c/html\u003e\",\n        From = \"welcome@example.com\",\n        ResultUrl = \"https://example.com/welcome\",\n        Subject = \"Welcome\",\n        Syntax = \"liquid\",\n        UrlLifetimeInSeconds = 3600,\n        Enabled = true,\n    }, new CustomResourceOptions\n    {\n        DependsOn =\n        {\n            myEmailProvider,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmyEmailProvider, err := auth0.NewEmailProvider(ctx, \"my_email_provider\", \u0026auth0.EmailProviderArgs{\n\t\t\tName:               pulumi.String(\"ses\"),\n\t\t\tEnabled:            pulumi.Bool(true),\n\t\t\tDefaultFromAddress: pulumi.String(\"accounts@example.com\"),\n\t\t\tCredentials: \u0026auth0.EmailProviderCredentialsArgs{\n\t\t\t\tAccessKeyId:     pulumi.String(\"AKIAXXXXXXXXXXXXXXXX\"),\n\t\t\t\tSecretAccessKey: pulumi.String(\"7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"),\n\t\t\t\tRegion:          pulumi.String(\"us-east-1\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = auth0.NewEmailTemplate(ctx, \"my_email_template\", \u0026auth0.EmailTemplateArgs{\n\t\t\tTemplate:             pulumi.String(\"welcome_email\"),\n\t\t\tBody:                 pulumi.String(\"\u003chtml\u003e\u003cbody\u003e\u003ch1\u003eWelcome!\u003c/h1\u003e\u003c/body\u003e\u003c/html\u003e\"),\n\t\t\tFrom:                 pulumi.String(\"welcome@example.com\"),\n\t\t\tResultUrl:            pulumi.String(\"https://example.com/welcome\"),\n\t\t\tSubject:              pulumi.String(\"Welcome\"),\n\t\t\tSyntax:               pulumi.String(\"liquid\"),\n\t\t\tUrlLifetimeInSeconds: pulumi.Int(3600),\n\t\t\tEnabled:              pulumi.Bool(true),\n\t\t}, pulumi.DependsOn([]pulumi.Resource{\n\t\t\tmyEmailProvider,\n\t\t}))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.EmailProvider;\nimport com.pulumi.auth0.EmailProviderArgs;\nimport com.pulumi.auth0.inputs.EmailProviderCredentialsArgs;\nimport com.pulumi.auth0.EmailTemplate;\nimport com.pulumi.auth0.EmailTemplateArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myEmailProvider = new EmailProvider(\"myEmailProvider\", EmailProviderArgs.builder()\n            .name(\"ses\")\n            .enabled(true)\n            .defaultFromAddress(\"accounts@example.com\")\n            .credentials(EmailProviderCredentialsArgs.builder()\n                .accessKeyId(\"AKIAXXXXXXXXXXXXXXXX\")\n                .secretAccessKey(\"7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\")\n                .region(\"us-east-1\")\n                .build())\n            .build());\n\n        var myEmailTemplate = new EmailTemplate(\"myEmailTemplate\", EmailTemplateArgs.builder()\n            .template(\"welcome_email\")\n            .body(\"\u003chtml\u003e\u003cbody\u003e\u003ch1\u003eWelcome!\u003c/h1\u003e\u003c/body\u003e\u003c/html\u003e\")\n            .from(\"welcome@example.com\")\n            .resultUrl(\"https://example.com/welcome\")\n            .subject(\"Welcome\")\n            .syntax(\"liquid\")\n            .urlLifetimeInSeconds(3600)\n            .enabled(true)\n            .build(), CustomResourceOptions.builder()\n                .dependsOn(myEmailProvider)\n                .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myEmailProvider:\n    type: auth0:EmailProvider\n    name: my_email_provider\n    properties:\n      name: ses\n      enabled: true\n      defaultFromAddress: accounts@example.com\n      credentials:\n        accessKeyId: AKIAXXXXXXXXXXXXXXXX\n        secretAccessKey: 7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n        region: us-east-1\n  myEmailTemplate:\n    type: auth0:EmailTemplate\n    name: my_email_template\n    properties:\n      template: welcome_email\n      body: \u003chtml\u003e\u003cbody\u003e\u003ch1\u003eWelcome!\u003c/h1\u003e\u003c/body\u003e\u003c/html\u003e\n      from: welcome@example.com\n      resultUrl: https://example.com/welcome\n      subject: Welcome\n      syntax: liquid\n      urlLifetimeInSeconds: 3600\n      enabled: true\n    options:\n      dependsOn:\n        - ${myEmailProvider}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThis resource can be imported using the pre-defined template name.\n\nThese names are `verify_email`, `verify_email_by_code`, `reset_email`,\n\n`welcome_email`, `blocked_account`, `stolen_credentials`,\n\n`enrollment_email`, `mfa_oob_code`, and `user_invitation`.\n\nThe names `change_password`, and `password_reset` are also supported\n\nfor legacy scenarios.\n\nExample:\n\n```sh\n$ pulumi import auth0:index/emailTemplate:EmailTemplate my_email_template \"welcome_email\"\n```\n\n",
+            "description": "With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right into Auth0. This resource allows you to configure email templates to customize the look, feel, and sender identities of emails sent by Auth0. Used in conjunction with configured email providers.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myEmailProvider = new auth0.EmailProvider(\"my_email_provider\", {\n    name: \"ses\",\n    enabled: true,\n    defaultFromAddress: \"accounts@example.com\",\n    credentials: {\n        accessKeyId: \"AKIAXXXXXXXXXXXXXXXX\",\n        secretAccessKey: \"7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n        region: \"us-east-1\",\n    },\n});\nconst myEmailTemplate = new auth0.EmailTemplate(\"my_email_template\", {\n    template: \"welcome_email\",\n    body: \"\u003chtml\u003e\u003cbody\u003e\u003ch1\u003eWelcome!\u003c/h1\u003e\u003c/body\u003e\u003c/html\u003e\",\n    from: \"welcome@example.com\",\n    resultUrl: \"https://example.com/welcome\",\n    subject: \"Welcome\",\n    syntax: \"liquid\",\n    urlLifetimeInSeconds: 3600,\n    enabled: true,\n}, {\n    dependsOn: [myEmailProvider],\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_email_provider = auth0.EmailProvider(\"my_email_provider\",\n    name=\"ses\",\n    enabled=True,\n    default_from_address=\"accounts@example.com\",\n    credentials={\n        \"access_key_id\": \"AKIAXXXXXXXXXXXXXXXX\",\n        \"secret_access_key\": \"7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n        \"region\": \"us-east-1\",\n    })\nmy_email_template = auth0.EmailTemplate(\"my_email_template\",\n    template=\"welcome_email\",\n    body=\"\u003chtml\u003e\u003cbody\u003e\u003ch1\u003eWelcome!\u003c/h1\u003e\u003c/body\u003e\u003c/html\u003e\",\n    from_=\"welcome@example.com\",\n    result_url=\"https://example.com/welcome\",\n    subject=\"Welcome\",\n    syntax=\"liquid\",\n    url_lifetime_in_seconds=3600,\n    enabled=True,\n    opts = pulumi.ResourceOptions(depends_on=[my_email_provider]))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myEmailProvider = new Auth0.EmailProvider(\"my_email_provider\", new()\n    {\n        Name = \"ses\",\n        Enabled = true,\n        DefaultFromAddress = \"accounts@example.com\",\n        Credentials = new Auth0.Inputs.EmailProviderCredentialsArgs\n        {\n            AccessKeyId = \"AKIAXXXXXXXXXXXXXXXX\",\n            SecretAccessKey = \"7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n            Region = \"us-east-1\",\n        },\n    });\n\n    var myEmailTemplate = new Auth0.EmailTemplate(\"my_email_template\", new()\n    {\n        Template = \"welcome_email\",\n        Body = \"\u003chtml\u003e\u003cbody\u003e\u003ch1\u003eWelcome!\u003c/h1\u003e\u003c/body\u003e\u003c/html\u003e\",\n        From = \"welcome@example.com\",\n        ResultUrl = \"https://example.com/welcome\",\n        Subject = \"Welcome\",\n        Syntax = \"liquid\",\n        UrlLifetimeInSeconds = 3600,\n        Enabled = true,\n    }, new CustomResourceOptions\n    {\n        DependsOn =\n        {\n            myEmailProvider,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmyEmailProvider, err := auth0.NewEmailProvider(ctx, \"my_email_provider\", \u0026auth0.EmailProviderArgs{\n\t\t\tName:               pulumi.String(\"ses\"),\n\t\t\tEnabled:            pulumi.Bool(true),\n\t\t\tDefaultFromAddress: pulumi.String(\"accounts@example.com\"),\n\t\t\tCredentials: \u0026auth0.EmailProviderCredentialsArgs{\n\t\t\t\tAccessKeyId:     pulumi.String(\"AKIAXXXXXXXXXXXXXXXX\"),\n\t\t\t\tSecretAccessKey: pulumi.String(\"7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"),\n\t\t\t\tRegion:          pulumi.String(\"us-east-1\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = auth0.NewEmailTemplate(ctx, \"my_email_template\", \u0026auth0.EmailTemplateArgs{\n\t\t\tTemplate:             pulumi.String(\"welcome_email\"),\n\t\t\tBody:                 pulumi.String(\"\u003chtml\u003e\u003cbody\u003e\u003ch1\u003eWelcome!\u003c/h1\u003e\u003c/body\u003e\u003c/html\u003e\"),\n\t\t\tFrom:                 pulumi.String(\"welcome@example.com\"),\n\t\t\tResultUrl:            pulumi.String(\"https://example.com/welcome\"),\n\t\t\tSubject:              pulumi.String(\"Welcome\"),\n\t\t\tSyntax:               pulumi.String(\"liquid\"),\n\t\t\tUrlLifetimeInSeconds: pulumi.Int(3600),\n\t\t\tEnabled:              pulumi.Bool(true),\n\t\t}, pulumi.DependsOn([]pulumi.Resource{\n\t\t\tmyEmailProvider,\n\t\t}))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.EmailProvider;\nimport com.pulumi.auth0.EmailProviderArgs;\nimport com.pulumi.auth0.inputs.EmailProviderCredentialsArgs;\nimport com.pulumi.auth0.EmailTemplate;\nimport com.pulumi.auth0.EmailTemplateArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myEmailProvider = new EmailProvider(\"myEmailProvider\", EmailProviderArgs.builder()\n            .name(\"ses\")\n            .enabled(true)\n            .defaultFromAddress(\"accounts@example.com\")\n            .credentials(EmailProviderCredentialsArgs.builder()\n                .accessKeyId(\"AKIAXXXXXXXXXXXXXXXX\")\n                .secretAccessKey(\"7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\")\n                .region(\"us-east-1\")\n                .build())\n            .build());\n\n        var myEmailTemplate = new EmailTemplate(\"myEmailTemplate\", EmailTemplateArgs.builder()\n            .template(\"welcome_email\")\n            .body(\"\u003chtml\u003e\u003cbody\u003e\u003ch1\u003eWelcome!\u003c/h1\u003e\u003c/body\u003e\u003c/html\u003e\")\n            .from(\"welcome@example.com\")\n            .resultUrl(\"https://example.com/welcome\")\n            .subject(\"Welcome\")\n            .syntax(\"liquid\")\n            .urlLifetimeInSeconds(3600)\n            .enabled(true)\n            .build(), CustomResourceOptions.builder()\n                .dependsOn(myEmailProvider)\n                .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myEmailProvider:\n    type: auth0:EmailProvider\n    name: my_email_provider\n    properties:\n      name: ses\n      enabled: true\n      defaultFromAddress: accounts@example.com\n      credentials:\n        accessKeyId: AKIAXXXXXXXXXXXXXXXX\n        secretAccessKey: 7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n        region: us-east-1\n  myEmailTemplate:\n    type: auth0:EmailTemplate\n    name: my_email_template\n    properties:\n      template: welcome_email\n      body: \u003chtml\u003e\u003cbody\u003e\u003ch1\u003eWelcome!\u003c/h1\u003e\u003c/body\u003e\u003c/html\u003e\n      from: welcome@example.com\n      resultUrl: https://example.com/welcome\n      subject: Welcome\n      syntax: liquid\n      urlLifetimeInSeconds: 3600\n      enabled: true\n    options:\n      dependsOn:\n        - ${myEmailProvider}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThis resource can be imported using the pre-defined template name.\n\nThese names are `verify_email`, `verify_email_by_code`, `reset_email`, `reset_email_by_code`,\n\n`welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`,\n\n`mfa_oob_code`, `user_invitation`, and `async_approval`.\n\nThe names `change_password`, and `password_reset` are also supported\n\nfor legacy scenarios.\n\nExample:\n\n```sh\n$ pulumi import auth0:index/emailTemplate:EmailTemplate my_email_template \"welcome_email\"\n```\n\n",
             "properties": {
                 "body": {
                     "type": "string",
@@ -12757,7 +12911,7 @@
                 },
                 "template": {
                     "type": "string",
-                    "description": "Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `reset_email_by_code`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), or `password_reset` (legacy).\n"
+                    "description": "Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `reset_email_by_code`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), `password_reset` (legacy), or `async_approval`.\n"
                 },
                 "urlLifetimeInSeconds": {
                     "type": "integer",
@@ -12804,7 +12958,7 @@
                 },
                 "template": {
                     "type": "string",
-                    "description": "Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `reset_email_by_code`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), or `password_reset` (legacy).\n"
+                    "description": "Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `reset_email_by_code`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), `password_reset` (legacy), or `async_approval`.\n"
                 },
                 "urlLifetimeInSeconds": {
                     "type": "integer",
@@ -12852,7 +13006,7 @@
                     },
                     "template": {
                         "type": "string",
-                        "description": "Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `reset_email_by_code`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), or `password_reset` (legacy).\n"
+                        "description": "Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `reset_email_by_code`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), `password_reset` (legacy), or `async_approval`.\n"
                     },
                     "urlLifetimeInSeconds": {
                         "type": "integer",
@@ -12911,6 +13065,128 @@
                     "keyRotationId": {
                         "type": "string",
                         "description": "If this value is changed, the encryption keys will be rotated. A UUID is recommended for the `key_rotation_id`.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "auth0:index/eventStream:EventStream": {
+            "description": "Allows you to manage Auth0 Event Streams.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\n// Creates an event stream of type eventbridge\nconst myEventStreamEventBridge = new auth0.EventStream(\"my_event_stream_event_bridge\", {\n    name: \"my-eventbridge\",\n    destinationType: \"eventbridge\",\n    subscriptions: [\n        \"user.created\",\n        \"user.updated\",\n    ],\n    eventbridgeConfiguration: {\n        awsAccountId: \"242849305777\",\n        awsRegion: \"us-east-1\",\n    },\n});\n// Creates an event stream of type webhook\nconst myEventStreamWebhook = new auth0.EventStream(\"my_event_stream_webhook\", {\n    name: \"my-webhook\",\n    destinationType: \"webhook\",\n    subscriptions: [\n        \"user.created\",\n        \"user.updated\",\n    ],\n    webhookConfiguration: {\n        webhookEndpoint: \"https://eof28wtn4v4506o.m.pipedream.net\",\n        webhookAuthorization: {\n            method: \"bearer\",\n            token: \"123456789\",\n        },\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\n# Creates an event stream of type eventbridge\nmy_event_stream_event_bridge = auth0.EventStream(\"my_event_stream_event_bridge\",\n    name=\"my-eventbridge\",\n    destination_type=\"eventbridge\",\n    subscriptions=[\n        \"user.created\",\n        \"user.updated\",\n    ],\n    eventbridge_configuration={\n        \"aws_account_id\": \"242849305777\",\n        \"aws_region\": \"us-east-1\",\n    })\n# Creates an event stream of type webhook\nmy_event_stream_webhook = auth0.EventStream(\"my_event_stream_webhook\",\n    name=\"my-webhook\",\n    destination_type=\"webhook\",\n    subscriptions=[\n        \"user.created\",\n        \"user.updated\",\n    ],\n    webhook_configuration={\n        \"webhook_endpoint\": \"https://eof28wtn4v4506o.m.pipedream.net\",\n        \"webhook_authorization\": {\n            \"method\": \"bearer\",\n            \"token\": \"123456789\",\n        },\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Creates an event stream of type eventbridge\n    var myEventStreamEventBridge = new Auth0.EventStream(\"my_event_stream_event_bridge\", new()\n    {\n        Name = \"my-eventbridge\",\n        DestinationType = \"eventbridge\",\n        Subscriptions = new[]\n        {\n            \"user.created\",\n            \"user.updated\",\n        },\n        EventbridgeConfiguration = new Auth0.Inputs.EventStreamEventbridgeConfigurationArgs\n        {\n            AwsAccountId = \"242849305777\",\n            AwsRegion = \"us-east-1\",\n        },\n    });\n\n    // Creates an event stream of type webhook\n    var myEventStreamWebhook = new Auth0.EventStream(\"my_event_stream_webhook\", new()\n    {\n        Name = \"my-webhook\",\n        DestinationType = \"webhook\",\n        Subscriptions = new[]\n        {\n            \"user.created\",\n            \"user.updated\",\n        },\n        WebhookConfiguration = new Auth0.Inputs.EventStreamWebhookConfigurationArgs\n        {\n            WebhookEndpoint = \"https://eof28wtn4v4506o.m.pipedream.net\",\n            WebhookAuthorization = new Auth0.Inputs.EventStreamWebhookConfigurationWebhookAuthorizationArgs\n            {\n                Method = \"bearer\",\n                Token = \"123456789\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Creates an event stream of type eventbridge\n\t\t_, err := auth0.NewEventStream(ctx, \"my_event_stream_event_bridge\", \u0026auth0.EventStreamArgs{\n\t\t\tName:            pulumi.String(\"my-eventbridge\"),\n\t\t\tDestinationType: pulumi.String(\"eventbridge\"),\n\t\t\tSubscriptions: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"user.created\"),\n\t\t\t\tpulumi.String(\"user.updated\"),\n\t\t\t},\n\t\t\tEventbridgeConfiguration: \u0026auth0.EventStreamEventbridgeConfigurationArgs{\n\t\t\t\tAwsAccountId: pulumi.String(\"242849305777\"),\n\t\t\t\tAwsRegion:    pulumi.String(\"us-east-1\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Creates an event stream of type webhook\n\t\t_, err = auth0.NewEventStream(ctx, \"my_event_stream_webhook\", \u0026auth0.EventStreamArgs{\n\t\t\tName:            pulumi.String(\"my-webhook\"),\n\t\t\tDestinationType: pulumi.String(\"webhook\"),\n\t\t\tSubscriptions: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"user.created\"),\n\t\t\t\tpulumi.String(\"user.updated\"),\n\t\t\t},\n\t\t\tWebhookConfiguration: \u0026auth0.EventStreamWebhookConfigurationArgs{\n\t\t\t\tWebhookEndpoint: pulumi.String(\"https://eof28wtn4v4506o.m.pipedream.net\"),\n\t\t\t\tWebhookAuthorization: \u0026auth0.EventStreamWebhookConfigurationWebhookAuthorizationArgs{\n\t\t\t\t\tMethod: pulumi.String(\"bearer\"),\n\t\t\t\t\tToken:  pulumi.String(\"123456789\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.EventStream;\nimport com.pulumi.auth0.EventStreamArgs;\nimport com.pulumi.auth0.inputs.EventStreamEventbridgeConfigurationArgs;\nimport com.pulumi.auth0.inputs.EventStreamWebhookConfigurationArgs;\nimport com.pulumi.auth0.inputs.EventStreamWebhookConfigurationWebhookAuthorizationArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Creates an event stream of type eventbridge\n        var myEventStreamEventBridge = new EventStream(\"myEventStreamEventBridge\", EventStreamArgs.builder()\n            .name(\"my-eventbridge\")\n            .destinationType(\"eventbridge\")\n            .subscriptions(            \n                \"user.created\",\n                \"user.updated\")\n            .eventbridgeConfiguration(EventStreamEventbridgeConfigurationArgs.builder()\n                .awsAccountId(\"242849305777\")\n                .awsRegion(\"us-east-1\")\n                .build())\n            .build());\n\n        // Creates an event stream of type webhook\n        var myEventStreamWebhook = new EventStream(\"myEventStreamWebhook\", EventStreamArgs.builder()\n            .name(\"my-webhook\")\n            .destinationType(\"webhook\")\n            .subscriptions(            \n                \"user.created\",\n                \"user.updated\")\n            .webhookConfiguration(EventStreamWebhookConfigurationArgs.builder()\n                .webhookEndpoint(\"https://eof28wtn4v4506o.m.pipedream.net\")\n                .webhookAuthorization(EventStreamWebhookConfigurationWebhookAuthorizationArgs.builder()\n                    .method(\"bearer\")\n                    .token(\"123456789\")\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Creates an event stream of type eventbridge\n  myEventStreamEventBridge:\n    type: auth0:EventStream\n    name: my_event_stream_event_bridge\n    properties:\n      name: my-eventbridge\n      destinationType: eventbridge\n      subscriptions:\n        - user.created\n        - user.updated\n      eventbridgeConfiguration:\n        awsAccountId: '242849305777'\n        awsRegion: us-east-1\n  # Creates an event stream of type webhook\n  myEventStreamWebhook:\n    type: auth0:EventStream\n    name: my_event_stream_webhook\n    properties:\n      name: my-webhook\n      destinationType: webhook\n      subscriptions:\n        - user.created\n        - user.updated\n      webhookConfiguration:\n        webhookEndpoint: https://eof28wtn4v4506o.m.pipedream.net\n        webhookAuthorization:\n          method: bearer\n          token: '123456789'\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThis resource can be imported by specifying the Event Stream ID.\n\nExample:\n\n```sh\n$ pulumi import auth0:index/eventStream:EventStream my_stream \"est_XXXXXXXXXXXXXXXX\"\n```\n\n",
+            "properties": {
+                "createdAt": {
+                    "type": "string",
+                    "description": "The ISO 8601 timestamp when the stream was created.\n"
+                },
+                "destinationType": {
+                    "type": "string",
+                    "description": "The type of event stream destination (either 'eventbridge' or 'webhook').\n"
+                },
+                "eventbridgeConfiguration": {
+                    "$ref": "#/types/auth0:index/EventStreamEventbridgeConfiguration:EventStreamEventbridgeConfiguration",
+                    "description": "Configuration for the EventBridge destination. This block is only applicable when `destination_type` is set to `eventbridge`. EventBridge configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the event stream.\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "The current status of the event stream.\n"
+                },
+                "subscriptions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of event types this stream is subscribed to.\n"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "description": "The ISO 8601 timestamp when the stream was last updated.\n"
+                },
+                "webhookConfiguration": {
+                    "$ref": "#/types/auth0:index/EventStreamWebhookConfiguration:EventStreamWebhookConfiguration",
+                    "description": "Configuration for the Webhook destination. This block is only applicable when `destination_type` is set to `webhook`. Webhook configurations **can** be updated after creation, including the endpoint and authorization fields.\n"
+                }
+            },
+            "required": [
+                "createdAt",
+                "destinationType",
+                "name",
+                "status",
+                "subscriptions",
+                "updatedAt"
+            ],
+            "inputProperties": {
+                "destinationType": {
+                    "type": "string",
+                    "description": "The type of event stream destination (either 'eventbridge' or 'webhook').\n",
+                    "willReplaceOnChanges": true
+                },
+                "eventbridgeConfiguration": {
+                    "$ref": "#/types/auth0:index/EventStreamEventbridgeConfiguration:EventStreamEventbridgeConfiguration",
+                    "description": "Configuration for the EventBridge destination. This block is only applicable when `destination_type` is set to `eventbridge`. EventBridge configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.\n",
+                    "willReplaceOnChanges": true
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the event stream.\n"
+                },
+                "subscriptions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of event types this stream is subscribed to.\n"
+                },
+                "webhookConfiguration": {
+                    "$ref": "#/types/auth0:index/EventStreamWebhookConfiguration:EventStreamWebhookConfiguration",
+                    "description": "Configuration for the Webhook destination. This block is only applicable when `destination_type` is set to `webhook`. Webhook configurations **can** be updated after creation, including the endpoint and authorization fields.\n"
+                }
+            },
+            "requiredInputs": [
+                "destinationType",
+                "subscriptions"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering EventStream resources.\n",
+                "properties": {
+                    "createdAt": {
+                        "type": "string",
+                        "description": "The ISO 8601 timestamp when the stream was created.\n"
+                    },
+                    "destinationType": {
+                        "type": "string",
+                        "description": "The type of event stream destination (either 'eventbridge' or 'webhook').\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "eventbridgeConfiguration": {
+                        "$ref": "#/types/auth0:index/EventStreamEventbridgeConfiguration:EventStreamEventbridgeConfiguration",
+                        "description": "Configuration for the EventBridge destination. This block is only applicable when `destination_type` is set to `eventbridge`. EventBridge configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the event stream.\n"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "The current status of the event stream.\n"
+                    },
+                    "subscriptions": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of event types this stream is subscribed to.\n"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "description": "The ISO 8601 timestamp when the stream was last updated.\n"
+                    },
+                    "webhookConfiguration": {
+                        "$ref": "#/types/auth0:index/EventStreamWebhookConfiguration:EventStreamWebhookConfiguration",
+                        "description": "Configuration for the Webhook destination. This block is only applicable when `destination_type` is set to `webhook`. Webhook configurations **can** be updated after creation, including the endpoint and authorization fields.\n"
                     }
                 },
                 "type": "object"
@@ -13479,6 +13755,10 @@
                     "$ref": "#/types/auth0:index/LogStreamSink:LogStreamSink",
                     "description": "The sink configuration for the log stream.\n"
                 },
+                "startFrom": {
+                    "type": "string",
+                    "description": "The optional datetime (ISO 8601) to start streaming logs from.\n"
+                },
                 "status": {
                     "type": "string",
                     "description": "The current status of the log stream. Options are \"active\", \"paused\", \"suspended\".\n"
@@ -13522,6 +13802,10 @@
                     "$ref": "#/types/auth0:index/LogStreamSink:LogStreamSink",
                     "description": "The sink configuration for the log stream.\n"
                 },
+                "startFrom": {
+                    "type": "string",
+                    "description": "The optional datetime (ISO 8601) to start streaming logs from.\n"
+                },
                 "status": {
                     "type": "string",
                     "description": "The current status of the log stream. Options are \"active\", \"paused\", \"suspended\".\n"
@@ -13564,6 +13848,10 @@
                     "sink": {
                         "$ref": "#/types/auth0:index/LogStreamSink:LogStreamSink",
                         "description": "The sink configuration for the log stream.\n"
+                    },
+                    "startFrom": {
+                        "type": "string",
+                        "description": "The optional datetime (ISO 8601) to start streaming logs from.\n"
                     },
                     "status": {
                         "type": "string",
@@ -17708,6 +17996,84 @@
                     "type",
                     "verifications",
                     "id"
+                ],
+                "type": "object"
+            }
+        },
+        "auth0:index/getEventStream:getEventStream": {
+            "description": "Data source to retrieve a specific Auth0 Event Stream by `id`.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\n// An Auth0 Event Stream loaded using its ID.\nconst test = auth0.getEventStream({\n    id: \"est_XXXXXXXXXXXXXXX\",\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\n# An Auth0 Event Stream loaded using its ID.\ntest = auth0.get_event_stream(id=\"est_XXXXXXXXXXXXXXX\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // An Auth0 Event Stream loaded using its ID.\n    var test = Auth0.GetEventStream.Invoke(new()\n    {\n        Id = \"est_XXXXXXXXXXXXXXX\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// An Auth0 Event Stream loaded using its ID.\n\t\t_, err := auth0.LookupEventStream(ctx, \u0026auth0.LookupEventStreamArgs{\n\t\t\tId: \"est_XXXXXXXXXXXXXXX\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.Auth0Functions;\nimport com.pulumi.auth0.inputs.GetEventStreamArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // An Auth0 Event Stream loaded using its ID.\n        final var test = Auth0Functions.getEventStream(GetEventStreamArgs.builder()\n            .id(\"est_XXXXXXXXXXXXXXX\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  # An Auth0 Event Stream loaded using its ID.\n  test:\n    fn::invoke:\n      function: auth0:getEventStream\n      arguments:\n        id: est_XXXXXXXXXXXXXXX\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getEventStream.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of the Event Stream.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getEventStream.\n",
+                "properties": {
+                    "createdAt": {
+                        "description": "The ISO 8601 timestamp when the stream was created.\n",
+                        "type": "string"
+                    },
+                    "destinationType": {
+                        "description": "The type of event stream destination (either 'eventbridge' or 'webhook').\n",
+                        "type": "string"
+                    },
+                    "eventbridgeConfigurations": {
+                        "description": "Configuration for the EventBridge destination. This block is only applicable when `destination_type` is set to `eventbridge`. EventBridge configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.\n",
+                        "items": {
+                            "$ref": "#/types/auth0:index/getEventStreamEventbridgeConfiguration:getEventStreamEventbridgeConfiguration"
+                        },
+                        "type": "array"
+                    },
+                    "id": {
+                        "description": "The ID of the Event Stream.\n",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "The name of the event stream.\n",
+                        "type": "string"
+                    },
+                    "status": {
+                        "description": "The current status of the event stream.\n",
+                        "type": "string"
+                    },
+                    "subscriptions": {
+                        "description": "List of event types this stream is subscribed to.\n",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "updatedAt": {
+                        "description": "The ISO 8601 timestamp when the stream was last updated.\n",
+                        "type": "string"
+                    },
+                    "webhookConfigurations": {
+                        "description": "Configuration for the Webhook destination. This block is only applicable when `destination_type` is set to `webhook`. Webhook configurations **can** be updated after creation, including the endpoint and authorization fields.\n",
+                        "items": {
+                            "$ref": "#/types/auth0:index/getEventStreamWebhookConfiguration:getEventStreamWebhookConfiguration"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "createdAt",
+                    "destinationType",
+                    "eventbridgeConfigurations",
+                    "id",
+                    "name",
+                    "status",
+                    "subscriptions",
+                    "updatedAt",
+                    "webhookConfigurations"
                 ],
                 "type": "object"
             }
