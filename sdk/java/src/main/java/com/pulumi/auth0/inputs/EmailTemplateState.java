@@ -123,14 +123,14 @@ public final class EmailTemplateState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `reset_email_by_code`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), or `password_reset` (legacy).
+     * Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `reset_email_by_code`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), `password_reset` (legacy), or `async_approval`.
      * 
      */
     @Import(name="template")
     private @Nullable Output<String> template;
 
     /**
-     * @return Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `reset_email_by_code`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), or `password_reset` (legacy).
+     * @return Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `reset_email_by_code`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), `password_reset` (legacy), or `async_approval`.
      * 
      */
     public Optional<Output<String>> template() {
@@ -332,7 +332,7 @@ public final class EmailTemplateState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param template Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `reset_email_by_code`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), or `password_reset` (legacy).
+         * @param template Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `reset_email_by_code`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), `password_reset` (legacy), or `async_approval`.
          * 
          * @return builder
          * 
@@ -343,7 +343,7 @@ public final class EmailTemplateState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param template Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `reset_email_by_code`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), or `password_reset` (legacy).
+         * @param template Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `reset_email_by_code`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), `password_reset` (legacy), or `async_approval`.
          * 
          * @return builder
          * 

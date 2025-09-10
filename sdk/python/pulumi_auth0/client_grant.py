@@ -560,7 +560,7 @@ class ClientGrant(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="subjectType")
-    def subject_type(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def subject_type(self) -> pulumi.Output[_builtins.str]:
         """
         Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
         """

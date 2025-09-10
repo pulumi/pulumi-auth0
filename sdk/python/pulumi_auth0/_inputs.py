@@ -261,6 +261,12 @@ __all__ = [
     'EncryptionKeyManagerCustomerProvidedRootKeyArgsDict',
     'EncryptionKeyManagerEncryptionKeyArgs',
     'EncryptionKeyManagerEncryptionKeyArgsDict',
+    'EventStreamEventbridgeConfigurationArgs',
+    'EventStreamEventbridgeConfigurationArgsDict',
+    'EventStreamWebhookConfigurationArgs',
+    'EventStreamWebhookConfigurationArgsDict',
+    'EventStreamWebhookConfigurationWebhookAuthorizationArgs',
+    'EventStreamWebhookConfigurationWebhookAuthorizationArgsDict',
     'FormLanguageArgs',
     'FormLanguageArgsDict',
     'FormMessageArgs',
@@ -11605,6 +11611,194 @@ class EncryptionKeyManagerEncryptionKeyArgs:
     @updated_at.setter
     def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "updated_at", value)
+
+
+if not MYPY:
+    class EventStreamEventbridgeConfigurationArgsDict(TypedDict):
+        aws_account_id: pulumi.Input[_builtins.str]
+        aws_region: pulumi.Input[_builtins.str]
+        aws_partner_event_source: NotRequired[pulumi.Input[_builtins.str]]
+elif False:
+    EventStreamEventbridgeConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class EventStreamEventbridgeConfigurationArgs:
+    def __init__(__self__, *,
+                 aws_account_id: pulumi.Input[_builtins.str],
+                 aws_region: pulumi.Input[_builtins.str],
+                 aws_partner_event_source: Optional[pulumi.Input[_builtins.str]] = None):
+        pulumi.set(__self__, "aws_account_id", aws_account_id)
+        pulumi.set(__self__, "aws_region", aws_region)
+        if aws_partner_event_source is not None:
+            pulumi.set(__self__, "aws_partner_event_source", aws_partner_event_source)
+
+    @_builtins.property
+    @pulumi.getter(name="awsAccountId")
+    def aws_account_id(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "aws_account_id")
+
+    @aws_account_id.setter
+    def aws_account_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "aws_account_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="awsRegion")
+    def aws_region(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "aws_region")
+
+    @aws_region.setter
+    def aws_region(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "aws_region", value)
+
+    @_builtins.property
+    @pulumi.getter(name="awsPartnerEventSource")
+    def aws_partner_event_source(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "aws_partner_event_source")
+
+    @aws_partner_event_source.setter
+    def aws_partner_event_source(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "aws_partner_event_source", value)
+
+
+if not MYPY:
+    class EventStreamWebhookConfigurationArgsDict(TypedDict):
+        webhook_authorization: pulumi.Input['EventStreamWebhookConfigurationWebhookAuthorizationArgsDict']
+        """
+        Authorization details for the webhook endpoint. Supports `basic` authentication using `username` and `password`, or `bearer` authentication using a `token`. The appropriate fields must be set based on the chosen method.
+        """
+        webhook_endpoint: pulumi.Input[_builtins.str]
+        """
+        The HTTPS endpoint that will receive the webhook events. Must be a valid, publicly accessible URL.
+        """
+elif False:
+    EventStreamWebhookConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class EventStreamWebhookConfigurationArgs:
+    def __init__(__self__, *,
+                 webhook_authorization: pulumi.Input['EventStreamWebhookConfigurationWebhookAuthorizationArgs'],
+                 webhook_endpoint: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input['EventStreamWebhookConfigurationWebhookAuthorizationArgs'] webhook_authorization: Authorization details for the webhook endpoint. Supports `basic` authentication using `username` and `password`, or `bearer` authentication using a `token`. The appropriate fields must be set based on the chosen method.
+        :param pulumi.Input[_builtins.str] webhook_endpoint: The HTTPS endpoint that will receive the webhook events. Must be a valid, publicly accessible URL.
+        """
+        pulumi.set(__self__, "webhook_authorization", webhook_authorization)
+        pulumi.set(__self__, "webhook_endpoint", webhook_endpoint)
+
+    @_builtins.property
+    @pulumi.getter(name="webhookAuthorization")
+    def webhook_authorization(self) -> pulumi.Input['EventStreamWebhookConfigurationWebhookAuthorizationArgs']:
+        """
+        Authorization details for the webhook endpoint. Supports `basic` authentication using `username` and `password`, or `bearer` authentication using a `token`. The appropriate fields must be set based on the chosen method.
+        """
+        return pulumi.get(self, "webhook_authorization")
+
+    @webhook_authorization.setter
+    def webhook_authorization(self, value: pulumi.Input['EventStreamWebhookConfigurationWebhookAuthorizationArgs']):
+        pulumi.set(self, "webhook_authorization", value)
+
+    @_builtins.property
+    @pulumi.getter(name="webhookEndpoint")
+    def webhook_endpoint(self) -> pulumi.Input[_builtins.str]:
+        """
+        The HTTPS endpoint that will receive the webhook events. Must be a valid, publicly accessible URL.
+        """
+        return pulumi.get(self, "webhook_endpoint")
+
+    @webhook_endpoint.setter
+    def webhook_endpoint(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "webhook_endpoint", value)
+
+
+if not MYPY:
+    class EventStreamWebhookConfigurationWebhookAuthorizationArgsDict(TypedDict):
+        method: pulumi.Input[_builtins.str]
+        """
+        The authorization method used to secure the webhook endpoint. Can be either `basic` or `bearer`.
+        """
+        password: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The password for `basic` authentication. Required when `method` is set to `basic`.
+        """
+        token: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The token used for `bearer` authentication. Required when `method` is set to `bearer`.
+        """
+        username: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The username for `basic` authentication. Required when `method` is set to `basic`.
+        """
+elif False:
+    EventStreamWebhookConfigurationWebhookAuthorizationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class EventStreamWebhookConfigurationWebhookAuthorizationArgs:
+    def __init__(__self__, *,
+                 method: pulumi.Input[_builtins.str],
+                 password: Optional[pulumi.Input[_builtins.str]] = None,
+                 token: Optional[pulumi.Input[_builtins.str]] = None,
+                 username: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] method: The authorization method used to secure the webhook endpoint. Can be either `basic` or `bearer`.
+        :param pulumi.Input[_builtins.str] password: The password for `basic` authentication. Required when `method` is set to `basic`.
+        :param pulumi.Input[_builtins.str] token: The token used for `bearer` authentication. Required when `method` is set to `bearer`.
+        :param pulumi.Input[_builtins.str] username: The username for `basic` authentication. Required when `method` is set to `basic`.
+        """
+        pulumi.set(__self__, "method", method)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if token is not None:
+            pulumi.set(__self__, "token", token)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @_builtins.property
+    @pulumi.getter
+    def method(self) -> pulumi.Input[_builtins.str]:
+        """
+        The authorization method used to secure the webhook endpoint. Can be either `basic` or `bearer`.
+        """
+        return pulumi.get(self, "method")
+
+    @method.setter
+    def method(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "method", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The password for `basic` authentication. Required when `method` is set to `basic`.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "password", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def token(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The token used for `bearer` authentication. Required when `method` is set to `bearer`.
+        """
+        return pulumi.get(self, "token")
+
+    @token.setter
+    def token(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "token", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The username for `basic` authentication. Required when `method` is set to `basic`.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "username", value)
 
 
 if not MYPY:

@@ -41,11 +41,11 @@ import * as utilities from "./utilities";
  *
  * This resource can be imported using the pre-defined template name.
  *
- * These names are `verify_email`, `verify_email_by_code`, `reset_email`,
+ * These names are `verify_email`, `verify_email_by_code`, `reset_email`, `reset_email_by_code`,
  *
- * `welcome_email`, `blocked_account`, `stolen_credentials`,
+ * `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`,
  *
- * `enrollment_email`, `mfa_oob_code`, and `user_invitation`.
+ * `mfa_oob_code`, `user_invitation`, and `async_approval`.
  *
  * The names `change_password`, and `password_reset` are also supported
  *
@@ -114,7 +114,7 @@ export class EmailTemplate extends pulumi.CustomResource {
      */
     declare public readonly syntax: pulumi.Output<string>;
     /**
-     * Template name. Options include `verifyEmail`, `verifyEmailByCode`, `resetEmail`, `resetEmailByCode`, `welcomeEmail`, `blockedAccount`, `stolenCredentials`, `enrollmentEmail`, `mfaOobCode`, `userInvitation`, `changePassword` (legacy), or `passwordReset` (legacy).
+     * Template name. Options include `verifyEmail`, `verifyEmailByCode`, `resetEmail`, `resetEmailByCode`, `welcomeEmail`, `blockedAccount`, `stolenCredentials`, `enrollmentEmail`, `mfaOobCode`, `userInvitation`, `changePassword` (legacy), `passwordReset` (legacy), or `asyncApproval`.
      */
     declare public readonly template: pulumi.Output<string>;
     /**
@@ -212,7 +212,7 @@ export interface EmailTemplateState {
      */
     syntax?: pulumi.Input<string>;
     /**
-     * Template name. Options include `verifyEmail`, `verifyEmailByCode`, `resetEmail`, `resetEmailByCode`, `welcomeEmail`, `blockedAccount`, `stolenCredentials`, `enrollmentEmail`, `mfaOobCode`, `userInvitation`, `changePassword` (legacy), or `passwordReset` (legacy).
+     * Template name. Options include `verifyEmail`, `verifyEmailByCode`, `resetEmail`, `resetEmailByCode`, `welcomeEmail`, `blockedAccount`, `stolenCredentials`, `enrollmentEmail`, `mfaOobCode`, `userInvitation`, `changePassword` (legacy), `passwordReset` (legacy), or `asyncApproval`.
      */
     template?: pulumi.Input<string>;
     /**
@@ -254,7 +254,7 @@ export interface EmailTemplateArgs {
      */
     syntax: pulumi.Input<string>;
     /**
-     * Template name. Options include `verifyEmail`, `verifyEmailByCode`, `resetEmail`, `resetEmailByCode`, `welcomeEmail`, `blockedAccount`, `stolenCredentials`, `enrollmentEmail`, `mfaOobCode`, `userInvitation`, `changePassword` (legacy), or `passwordReset` (legacy).
+     * Template name. Options include `verifyEmail`, `verifyEmailByCode`, `resetEmail`, `resetEmailByCode`, `welcomeEmail`, `blockedAccount`, `stolenCredentials`, `enrollmentEmail`, `mfaOobCode`, `userInvitation`, `changePassword` (legacy), `passwordReset` (legacy), or `asyncApproval`.
      */
     template: pulumi.Input<string>;
     /**

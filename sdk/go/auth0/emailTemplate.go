@@ -66,11 +66,11 @@ import (
 //
 // This resource can be imported using the pre-defined template name.
 //
-// These names are `verify_email`, `verify_email_by_code`, `reset_email`,
+// These names are `verify_email`, `verify_email_by_code`, `reset_email`, `reset_email_by_code`,
 //
-// `welcome_email`, `blocked_account`, `stolen_credentials`,
+// `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`,
 //
-// `enrollment_email`, `mfa_oob_code`, and `user_invitation`.
+// `mfa_oob_code`, `user_invitation`, and `async_approval`.
 //
 // The names `change_password`, and `password_reset` are also supported
 //
@@ -98,7 +98,7 @@ type EmailTemplate struct {
 	Subject pulumi.StringOutput `pulumi:"subject"`
 	// Syntax of the template body. You can use either text or HTML with Liquid syntax.
 	Syntax pulumi.StringOutput `pulumi:"syntax"`
-	// Template name. Options include `verifyEmail`, `verifyEmailByCode`, `resetEmail`, `resetEmailByCode`, `welcomeEmail`, `blockedAccount`, `stolenCredentials`, `enrollmentEmail`, `mfaOobCode`, `userInvitation`, `changePassword` (legacy), or `passwordReset` (legacy).
+	// Template name. Options include `verifyEmail`, `verifyEmailByCode`, `resetEmail`, `resetEmailByCode`, `welcomeEmail`, `blockedAccount`, `stolenCredentials`, `enrollmentEmail`, `mfaOobCode`, `userInvitation`, `changePassword` (legacy), `passwordReset` (legacy), or `asyncApproval`.
 	Template pulumi.StringOutput `pulumi:"template"`
 	// Number of seconds during which the link within the email will be valid.
 	UrlLifetimeInSeconds pulumi.IntPtrOutput `pulumi:"urlLifetimeInSeconds"`
@@ -166,7 +166,7 @@ type emailTemplateState struct {
 	Subject *string `pulumi:"subject"`
 	// Syntax of the template body. You can use either text or HTML with Liquid syntax.
 	Syntax *string `pulumi:"syntax"`
-	// Template name. Options include `verifyEmail`, `verifyEmailByCode`, `resetEmail`, `resetEmailByCode`, `welcomeEmail`, `blockedAccount`, `stolenCredentials`, `enrollmentEmail`, `mfaOobCode`, `userInvitation`, `changePassword` (legacy), or `passwordReset` (legacy).
+	// Template name. Options include `verifyEmail`, `verifyEmailByCode`, `resetEmail`, `resetEmailByCode`, `welcomeEmail`, `blockedAccount`, `stolenCredentials`, `enrollmentEmail`, `mfaOobCode`, `userInvitation`, `changePassword` (legacy), `passwordReset` (legacy), or `asyncApproval`.
 	Template *string `pulumi:"template"`
 	// Number of seconds during which the link within the email will be valid.
 	UrlLifetimeInSeconds *int `pulumi:"urlLifetimeInSeconds"`
@@ -187,7 +187,7 @@ type EmailTemplateState struct {
 	Subject pulumi.StringPtrInput
 	// Syntax of the template body. You can use either text or HTML with Liquid syntax.
 	Syntax pulumi.StringPtrInput
-	// Template name. Options include `verifyEmail`, `verifyEmailByCode`, `resetEmail`, `resetEmailByCode`, `welcomeEmail`, `blockedAccount`, `stolenCredentials`, `enrollmentEmail`, `mfaOobCode`, `userInvitation`, `changePassword` (legacy), or `passwordReset` (legacy).
+	// Template name. Options include `verifyEmail`, `verifyEmailByCode`, `resetEmail`, `resetEmailByCode`, `welcomeEmail`, `blockedAccount`, `stolenCredentials`, `enrollmentEmail`, `mfaOobCode`, `userInvitation`, `changePassword` (legacy), `passwordReset` (legacy), or `asyncApproval`.
 	Template pulumi.StringPtrInput
 	// Number of seconds during which the link within the email will be valid.
 	UrlLifetimeInSeconds pulumi.IntPtrInput
@@ -212,7 +212,7 @@ type emailTemplateArgs struct {
 	Subject string `pulumi:"subject"`
 	// Syntax of the template body. You can use either text or HTML with Liquid syntax.
 	Syntax string `pulumi:"syntax"`
-	// Template name. Options include `verifyEmail`, `verifyEmailByCode`, `resetEmail`, `resetEmailByCode`, `welcomeEmail`, `blockedAccount`, `stolenCredentials`, `enrollmentEmail`, `mfaOobCode`, `userInvitation`, `changePassword` (legacy), or `passwordReset` (legacy).
+	// Template name. Options include `verifyEmail`, `verifyEmailByCode`, `resetEmail`, `resetEmailByCode`, `welcomeEmail`, `blockedAccount`, `stolenCredentials`, `enrollmentEmail`, `mfaOobCode`, `userInvitation`, `changePassword` (legacy), `passwordReset` (legacy), or `asyncApproval`.
 	Template string `pulumi:"template"`
 	// Number of seconds during which the link within the email will be valid.
 	UrlLifetimeInSeconds *int `pulumi:"urlLifetimeInSeconds"`
@@ -234,7 +234,7 @@ type EmailTemplateArgs struct {
 	Subject pulumi.StringInput
 	// Syntax of the template body. You can use either text or HTML with Liquid syntax.
 	Syntax pulumi.StringInput
-	// Template name. Options include `verifyEmail`, `verifyEmailByCode`, `resetEmail`, `resetEmailByCode`, `welcomeEmail`, `blockedAccount`, `stolenCredentials`, `enrollmentEmail`, `mfaOobCode`, `userInvitation`, `changePassword` (legacy), or `passwordReset` (legacy).
+	// Template name. Options include `verifyEmail`, `verifyEmailByCode`, `resetEmail`, `resetEmailByCode`, `welcomeEmail`, `blockedAccount`, `stolenCredentials`, `enrollmentEmail`, `mfaOobCode`, `userInvitation`, `changePassword` (legacy), `passwordReset` (legacy), or `asyncApproval`.
 	Template pulumi.StringInput
 	// Number of seconds during which the link within the email will be valid.
 	UrlLifetimeInSeconds pulumi.IntPtrInput
@@ -362,7 +362,7 @@ func (o EmailTemplateOutput) Syntax() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailTemplate) pulumi.StringOutput { return v.Syntax }).(pulumi.StringOutput)
 }
 
-// Template name. Options include `verifyEmail`, `verifyEmailByCode`, `resetEmail`, `resetEmailByCode`, `welcomeEmail`, `blockedAccount`, `stolenCredentials`, `enrollmentEmail`, `mfaOobCode`, `userInvitation`, `changePassword` (legacy), or `passwordReset` (legacy).
+// Template name. Options include `verifyEmail`, `verifyEmailByCode`, `resetEmail`, `resetEmailByCode`, `welcomeEmail`, `blockedAccount`, `stolenCredentials`, `enrollmentEmail`, `mfaOobCode`, `userInvitation`, `changePassword` (legacy), `passwordReset` (legacy), or `asyncApproval`.
 func (o EmailTemplateOutput) Template() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailTemplate) pulumi.StringOutput { return v.Template }).(pulumi.StringOutput)
 }

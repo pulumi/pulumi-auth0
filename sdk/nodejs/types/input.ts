@@ -2296,6 +2296,42 @@ export interface EncryptionKeyManagerEncryptionKey {
     updatedAt?: pulumi.Input<string>;
 }
 
+export interface EventStreamEventbridgeConfiguration {
+    awsAccountId: pulumi.Input<string>;
+    awsPartnerEventSource?: pulumi.Input<string>;
+    awsRegion: pulumi.Input<string>;
+}
+
+export interface EventStreamWebhookConfiguration {
+    /**
+     * Authorization details for the webhook endpoint. Supports `basic` authentication using `username` and `password`, or `bearer` authentication using a `token`. The appropriate fields must be set based on the chosen method.
+     */
+    webhookAuthorization: pulumi.Input<inputs.EventStreamWebhookConfigurationWebhookAuthorization>;
+    /**
+     * The HTTPS endpoint that will receive the webhook events. Must be a valid, publicly accessible URL.
+     */
+    webhookEndpoint: pulumi.Input<string>;
+}
+
+export interface EventStreamWebhookConfigurationWebhookAuthorization {
+    /**
+     * The authorization method used to secure the webhook endpoint. Can be either `basic` or `bearer`.
+     */
+    method: pulumi.Input<string>;
+    /**
+     * The password for `basic` authentication. Required when `method` is set to `basic`.
+     */
+    password?: pulumi.Input<string>;
+    /**
+     * The token used for `bearer` authentication. Required when `method` is set to `bearer`.
+     */
+    token?: pulumi.Input<string>;
+    /**
+     * The username for `basic` authentication. Required when `method` is set to `basic`.
+     */
+    username?: pulumi.Input<string>;
+}
+
 export interface FormLanguage {
     /**
      * Default language for the form.

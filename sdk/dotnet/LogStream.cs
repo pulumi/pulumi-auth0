@@ -120,6 +120,12 @@ namespace Pulumi.Auth0
         public Output<Outputs.LogStreamSink> Sink { get; private set; } = null!;
 
         /// <summary>
+        /// The optional datetime (ISO 8601) to start streaming logs from.
+        /// </summary>
+        [Output("startFrom")]
+        public Output<string?> StartFrom { get; private set; } = null!;
+
+        /// <summary>
         /// The current status of the log stream. Options are "active", "paused", "suspended".
         /// </summary>
         [Output("status")]
@@ -214,6 +220,12 @@ namespace Pulumi.Auth0
         public Input<Inputs.LogStreamSinkArgs> Sink { get; set; } = null!;
 
         /// <summary>
+        /// The optional datetime (ISO 8601) to start streaming logs from.
+        /// </summary>
+        [Input("startFrom")]
+        public Input<string>? StartFrom { get; set; }
+
+        /// <summary>
         /// The current status of the log stream. Options are "active", "paused", "suspended".
         /// </summary>
         [Input("status")]
@@ -268,6 +280,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("sink")]
         public Input<Inputs.LogStreamSinkGetArgs>? Sink { get; set; }
+
+        /// <summary>
+        /// The optional datetime (ISO 8601) to start streaming logs from.
+        /// </summary>
+        [Input("startFrom")]
+        public Input<string>? StartFrom { get; set; }
 
         /// <summary>
         /// The current status of the log stream. Options are "active", "paused", "suspended".

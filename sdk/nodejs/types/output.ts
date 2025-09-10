@@ -2296,6 +2296,42 @@ export interface EncryptionKeyManagerEncryptionKey {
     updatedAt: string;
 }
 
+export interface EventStreamEventbridgeConfiguration {
+    awsAccountId: string;
+    awsPartnerEventSource: string;
+    awsRegion: string;
+}
+
+export interface EventStreamWebhookConfiguration {
+    /**
+     * Authorization details for the webhook endpoint. Supports `basic` authentication using `username` and `password`, or `bearer` authentication using a `token`. The appropriate fields must be set based on the chosen method.
+     */
+    webhookAuthorization: outputs.EventStreamWebhookConfigurationWebhookAuthorization;
+    /**
+     * The HTTPS endpoint that will receive the webhook events. Must be a valid, publicly accessible URL.
+     */
+    webhookEndpoint: string;
+}
+
+export interface EventStreamWebhookConfigurationWebhookAuthorization {
+    /**
+     * The authorization method used to secure the webhook endpoint. Can be either `basic` or `bearer`.
+     */
+    method: string;
+    /**
+     * The password for `basic` authentication. Required when `method` is set to `basic`.
+     */
+    password?: string;
+    /**
+     * The token used for `bearer` authentication. Required when `method` is set to `bearer`.
+     */
+    token?: string;
+    /**
+     * The username for `basic` authentication. Required when `method` is set to `basic`.
+     */
+    username?: string;
+}
+
 export interface FormLanguage {
     /**
      * Default language for the form.
@@ -4639,6 +4675,42 @@ export interface GetCustomDomainVerification {
      * Represents the current status of the domain verification process.
      */
     status: string;
+}
+
+export interface GetEventStreamEventbridgeConfiguration {
+    awsAccountId: string;
+    awsPartnerEventSource: string;
+    awsRegion: string;
+}
+
+export interface GetEventStreamWebhookConfiguration {
+    /**
+     * Authorization details for the webhook endpoint. Supports `basic` authentication using `username` and `password`, or `bearer` authentication using a `token`. The appropriate fields must be set based on the chosen method.
+     */
+    webhookAuthorizations: outputs.GetEventStreamWebhookConfigurationWebhookAuthorization[];
+    /**
+     * The HTTPS endpoint that will receive the webhook events. Must be a valid, publicly accessible URL.
+     */
+    webhookEndpoint: string;
+}
+
+export interface GetEventStreamWebhookConfigurationWebhookAuthorization {
+    /**
+     * The authorization method used to secure the webhook endpoint. Can be either `basic` or `bearer`.
+     */
+    method: string;
+    /**
+     * The password for `basic` authentication. Required when `method` is set to `basic`.
+     */
+    password: string;
+    /**
+     * The token used for `bearer` authentication. Required when `method` is set to `bearer`.
+     */
+    token: string;
+    /**
+     * The username for `basic` authentication. Required when `method` is set to `basic`.
+     */
+    username: string;
 }
 
 export interface GetFormLanguage {

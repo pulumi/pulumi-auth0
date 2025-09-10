@@ -177,6 +177,20 @@ public class LogStream extends com.pulumi.resources.CustomResource {
         return this.sink;
     }
     /**
+     * The optional datetime (ISO 8601) to start streaming logs from.
+     * 
+     */
+    @Export(name="startFrom", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> startFrom;
+
+    /**
+     * @return The optional datetime (ISO 8601) to start streaming logs from.
+     * 
+     */
+    public Output<Optional<String>> startFrom() {
+        return Codegen.optional(this.startFrom);
+    }
+    /**
      * The current status of the log stream. Options are &#34;active&#34;, &#34;paused&#34;, &#34;suspended&#34;.
      * 
      */

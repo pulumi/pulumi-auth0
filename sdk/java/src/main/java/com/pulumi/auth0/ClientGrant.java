@@ -218,14 +218,14 @@ public class ClientGrant extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="subjectType", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> subjectType;
+    private Output<String> subjectType;
 
     /**
      * @return Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
      * 
      */
-    public Output<Optional<String>> subjectType() {
-        return Codegen.optional(this.subjectType);
+    public Output<String> subjectType() {
+        return this.subjectType;
     }
 
     /**

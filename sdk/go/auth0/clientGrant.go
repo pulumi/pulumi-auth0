@@ -125,7 +125,7 @@ type ClientGrant struct {
 	// Permissions (scopes) included in this grant.
 	Scopes pulumi.StringArrayOutput `pulumi:"scopes"`
 	// Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
-	SubjectType pulumi.StringPtrOutput `pulumi:"subjectType"`
+	SubjectType pulumi.StringOutput `pulumi:"subjectType"`
 }
 
 // NewClientGrant registers a new resource with the given unique name, arguments, and options.
@@ -357,8 +357,8 @@ func (o ClientGrantOutput) Scopes() pulumi.StringArrayOutput {
 }
 
 // Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
-func (o ClientGrantOutput) SubjectType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ClientGrant) pulumi.StringPtrOutput { return v.SubjectType }).(pulumi.StringPtrOutput)
+func (o ClientGrantOutput) SubjectType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClientGrant) pulumi.StringOutput { return v.SubjectType }).(pulumi.StringOutput)
 }
 
 type ClientGrantArrayOutput struct{ *pulumi.OutputState }

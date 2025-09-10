@@ -27,6 +27,7 @@ class LogStreamArgs:
                  is_priority: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  pii_config: Optional[pulumi.Input['LogStreamPiiConfigArgs']] = None,
+                 start_from: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a LogStream resource.
@@ -36,6 +37,7 @@ class LogStreamArgs:
         :param pulumi.Input[_builtins.bool] is_priority: Set True for priority log streams, False for non-priority
         :param pulumi.Input[_builtins.str] name: Name of the log stream.
         :param pulumi.Input['LogStreamPiiConfigArgs'] pii_config: Configuration for PII (Personally Identifiable Information) handling.
+        :param pulumi.Input[_builtins.str] start_from: The optional datetime (ISO 8601) to start streaming logs from.
         :param pulumi.Input[_builtins.str] status: The current status of the log stream. Options are "active", "paused", "suspended".
         """
         pulumi.set(__self__, "sink", sink)
@@ -48,6 +50,8 @@ class LogStreamArgs:
             pulumi.set(__self__, "name", name)
         if pii_config is not None:
             pulumi.set(__self__, "pii_config", pii_config)
+        if start_from is not None:
+            pulumi.set(__self__, "start_from", start_from)
         if status is not None:
             pulumi.set(__self__, "status", status)
 
@@ -124,6 +128,18 @@ class LogStreamArgs:
         pulumi.set(self, "pii_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="startFrom")
+    def start_from(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The optional datetime (ISO 8601) to start streaming logs from.
+        """
+        return pulumi.get(self, "start_from")
+
+    @start_from.setter
+    def start_from(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "start_from", value)
+
+    @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -144,6 +160,7 @@ class _LogStreamState:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  pii_config: Optional[pulumi.Input['LogStreamPiiConfigArgs']] = None,
                  sink: Optional[pulumi.Input['LogStreamSinkArgs']] = None,
+                 start_from: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -153,6 +170,7 @@ class _LogStreamState:
         :param pulumi.Input[_builtins.str] name: Name of the log stream.
         :param pulumi.Input['LogStreamPiiConfigArgs'] pii_config: Configuration for PII (Personally Identifiable Information) handling.
         :param pulumi.Input['LogStreamSinkArgs'] sink: The sink configuration for the log stream.
+        :param pulumi.Input[_builtins.str] start_from: The optional datetime (ISO 8601) to start streaming logs from.
         :param pulumi.Input[_builtins.str] status: The current status of the log stream. Options are "active", "paused", "suspended".
         :param pulumi.Input[_builtins.str] type: Type of the log stream, which indicates the sink provider. Options include: `eventbridge`, `eventgrid`, `http`, `datadog`, `splunk`, `sumo`, `mixpanel`, `segment`.
         """
@@ -166,6 +184,8 @@ class _LogStreamState:
             pulumi.set(__self__, "pii_config", pii_config)
         if sink is not None:
             pulumi.set(__self__, "sink", sink)
+        if start_from is not None:
+            pulumi.set(__self__, "start_from", start_from)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if type is not None:
@@ -232,6 +252,18 @@ class _LogStreamState:
         pulumi.set(self, "sink", value)
 
     @_builtins.property
+    @pulumi.getter(name="startFrom")
+    def start_from(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The optional datetime (ISO 8601) to start streaming logs from.
+        """
+        return pulumi.get(self, "start_from")
+
+    @start_from.setter
+    def start_from(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "start_from", value)
+
+    @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -267,6 +299,7 @@ class LogStream(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  pii_config: Optional[pulumi.Input[Union['LogStreamPiiConfigArgs', 'LogStreamPiiConfigArgsDict']]] = None,
                  sink: Optional[pulumi.Input[Union['LogStreamSinkArgs', 'LogStreamSinkArgsDict']]] = None,
+                 start_from: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -334,6 +367,7 @@ class LogStream(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of the log stream.
         :param pulumi.Input[Union['LogStreamPiiConfigArgs', 'LogStreamPiiConfigArgsDict']] pii_config: Configuration for PII (Personally Identifiable Information) handling.
         :param pulumi.Input[Union['LogStreamSinkArgs', 'LogStreamSinkArgsDict']] sink: The sink configuration for the log stream.
+        :param pulumi.Input[_builtins.str] start_from: The optional datetime (ISO 8601) to start streaming logs from.
         :param pulumi.Input[_builtins.str] status: The current status of the log stream. Options are "active", "paused", "suspended".
         :param pulumi.Input[_builtins.str] type: Type of the log stream, which indicates the sink provider. Options include: `eventbridge`, `eventgrid`, `http`, `datadog`, `splunk`, `sumo`, `mixpanel`, `segment`.
         """
@@ -420,6 +454,7 @@ class LogStream(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  pii_config: Optional[pulumi.Input[Union['LogStreamPiiConfigArgs', 'LogStreamPiiConfigArgsDict']]] = None,
                  sink: Optional[pulumi.Input[Union['LogStreamSinkArgs', 'LogStreamSinkArgsDict']]] = None,
+                 start_from: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -438,6 +473,7 @@ class LogStream(pulumi.CustomResource):
             if sink is None and not opts.urn:
                 raise TypeError("Missing required property 'sink'")
             __props__.__dict__["sink"] = sink
+            __props__.__dict__["start_from"] = start_from
             __props__.__dict__["status"] = status
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
@@ -457,6 +493,7 @@ class LogStream(pulumi.CustomResource):
             name: Optional[pulumi.Input[_builtins.str]] = None,
             pii_config: Optional[pulumi.Input[Union['LogStreamPiiConfigArgs', 'LogStreamPiiConfigArgsDict']]] = None,
             sink: Optional[pulumi.Input[Union['LogStreamSinkArgs', 'LogStreamSinkArgsDict']]] = None,
+            start_from: Optional[pulumi.Input[_builtins.str]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None,
             type: Optional[pulumi.Input[_builtins.str]] = None) -> 'LogStream':
         """
@@ -471,6 +508,7 @@ class LogStream(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of the log stream.
         :param pulumi.Input[Union['LogStreamPiiConfigArgs', 'LogStreamPiiConfigArgsDict']] pii_config: Configuration for PII (Personally Identifiable Information) handling.
         :param pulumi.Input[Union['LogStreamSinkArgs', 'LogStreamSinkArgsDict']] sink: The sink configuration for the log stream.
+        :param pulumi.Input[_builtins.str] start_from: The optional datetime (ISO 8601) to start streaming logs from.
         :param pulumi.Input[_builtins.str] status: The current status of the log stream. Options are "active", "paused", "suspended".
         :param pulumi.Input[_builtins.str] type: Type of the log stream, which indicates the sink provider. Options include: `eventbridge`, `eventgrid`, `http`, `datadog`, `splunk`, `sumo`, `mixpanel`, `segment`.
         """
@@ -483,6 +521,7 @@ class LogStream(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["pii_config"] = pii_config
         __props__.__dict__["sink"] = sink
+        __props__.__dict__["start_from"] = start_from
         __props__.__dict__["status"] = status
         __props__.__dict__["type"] = type
         return LogStream(resource_name, opts=opts, __props__=__props__)
@@ -526,6 +565,14 @@ class LogStream(pulumi.CustomResource):
         The sink configuration for the log stream.
         """
         return pulumi.get(self, "sink")
+
+    @_builtins.property
+    @pulumi.getter(name="startFrom")
+    def start_from(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The optional datetime (ISO 8601) to start streaming logs from.
+        """
+        return pulumi.get(self, "start_from")
 
     @_builtins.property
     @pulumi.getter

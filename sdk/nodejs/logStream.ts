@@ -114,6 +114,10 @@ export class LogStream extends pulumi.CustomResource {
      */
     declare public readonly sink: pulumi.Output<outputs.LogStreamSink>;
     /**
+     * The optional datetime (ISO 8601) to start streaming logs from.
+     */
+    declare public readonly startFrom: pulumi.Output<string | undefined>;
+    /**
      * The current status of the log stream. Options are "active", "paused", "suspended".
      */
     declare public readonly status: pulumi.Output<string>;
@@ -140,6 +144,7 @@ export class LogStream extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["piiConfig"] = state?.piiConfig;
             resourceInputs["sink"] = state?.sink;
+            resourceInputs["startFrom"] = state?.startFrom;
             resourceInputs["status"] = state?.status;
             resourceInputs["type"] = state?.type;
         } else {
@@ -155,6 +160,7 @@ export class LogStream extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["piiConfig"] = args?.piiConfig;
             resourceInputs["sink"] = args?.sink;
+            resourceInputs["startFrom"] = args?.startFrom;
             resourceInputs["status"] = args?.status;
             resourceInputs["type"] = args?.type;
         }
@@ -187,6 +193,10 @@ export interface LogStreamState {
      * The sink configuration for the log stream.
      */
     sink?: pulumi.Input<inputs.LogStreamSink>;
+    /**
+     * The optional datetime (ISO 8601) to start streaming logs from.
+     */
+    startFrom?: pulumi.Input<string>;
     /**
      * The current status of the log stream. Options are "active", "paused", "suspended".
      */
@@ -221,6 +231,10 @@ export interface LogStreamArgs {
      * The sink configuration for the log stream.
      */
     sink: pulumi.Input<inputs.LogStreamSink>;
+    /**
+     * The optional datetime (ISO 8601) to start streaming logs from.
+     */
+    startFrom?: pulumi.Input<string>;
     /**
      * The current status of the log stream. Options are "active", "paused", "suspended".
      */

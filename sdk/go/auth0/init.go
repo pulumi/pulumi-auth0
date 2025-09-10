@@ -55,6 +55,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &EmailTemplate{}
 	case "auth0:index/encryptionKeyManager:EncryptionKeyManager":
 		r = &EncryptionKeyManager{}
+	case "auth0:index/eventStream:EventStream":
+		r = &EventStream{}
 	case "auth0:index/flow:Flow":
 		r = &Flow{}
 	case "auth0:index/flowVaultConnection:FlowVaultConnection":
@@ -257,6 +259,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"auth0",
 		"index/encryptionKeyManager",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"auth0",
+		"index/eventStream",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
