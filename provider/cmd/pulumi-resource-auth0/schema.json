@@ -1944,9 +1944,17 @@
                     "type": "boolean",
                     "description": "Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session*transfer*token\n"
                 },
+                "enforceCascadeRevocation": {
+                    "type": "boolean",
+                    "description": "Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are.\n"
+                },
                 "enforceDeviceBinding": {
                     "type": "string",
                     "description": "Configures the level of device binding enforced when a session*transfer*token is consumed. Can be one of `ip`, `asn` or `none`.\n"
+                },
+                "enforceOnlineRefreshTokens": {
+                    "type": "boolean",
+                    "description": "Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities.\n"
                 }
             },
             "type": "object",
@@ -1956,7 +1964,9 @@
                         "allowRefreshToken",
                         "allowedAuthenticationMethods",
                         "canCreateSessionTransferToken",
-                        "enforceDeviceBinding"
+                        "enforceCascadeRevocation",
+                        "enforceDeviceBinding",
+                        "enforceOnlineRefreshTokens"
                     ]
                 }
             }
@@ -7266,9 +7276,17 @@
                     "type": "boolean",
                     "description": "Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session_transfer_token\n"
                 },
+                "enforceCascadeRevocation": {
+                    "type": "boolean",
+                    "description": "Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are.\n"
+                },
                 "enforceDeviceBinding": {
                     "type": "string",
                     "description": "Configures the level of device binding enforced when a session_transfer_token is consumed. Can be one of `ip`, `asn` or `none`.\n"
+                },
+                "enforceOnlineRefreshTokens": {
+                    "type": "boolean",
+                    "description": "Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities.\n"
                 }
             },
             "type": "object",
@@ -7276,7 +7294,9 @@
                 "allowRefreshToken",
                 "allowedAuthenticationMethods",
                 "canCreateSessionTransferToken",
-                "enforceDeviceBinding"
+                "enforceCascadeRevocation",
+                "enforceDeviceBinding",
+                "enforceOnlineRefreshTokens"
             ],
             "language": {
                 "nodejs": {
@@ -7453,7 +7473,7 @@
                 },
                 "appType": {
                     "type": "string",
-                    "description": "Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.\n"
+                    "description": "Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.\n"
                 },
                 "callbacks": {
                     "type": "array",
@@ -7507,6 +7527,10 @@
                     },
                     "description": "Configure OIDC logout for the Client\n"
                 },
+                "resourceServerIdentifier": {
+                    "type": "string",
+                    "description": "The identifier of a resource server that client is associated withThis property can be sent only when app_type=resource_server.This property can not be changed, once the client is created.\n"
+                },
                 "sessionTransfers": {
                     "type": "array",
                     "items": {
@@ -7549,6 +7573,7 @@
                 "isFirstParty",
                 "isTokenEndpointIpHeaderTrusted",
                 "oidcLogouts",
+                "resourceServerIdentifier",
                 "sessionTransfers",
                 "tokenExchanges",
                 "tokenQuotas",
@@ -7629,9 +7654,17 @@
                     "type": "boolean",
                     "description": "Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session_transfer_token\n"
                 },
+                "enforceCascadeRevocation": {
+                    "type": "boolean",
+                    "description": "Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are.\n"
+                },
                 "enforceDeviceBinding": {
                     "type": "string",
                     "description": "Configures the level of device binding enforced when a session_transfer_token is consumed. Can be one of `ip`, `asn` or `none`.\n"
+                },
+                "enforceOnlineRefreshTokens": {
+                    "type": "boolean",
+                    "description": "Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities.\n"
                 }
             },
             "type": "object",
@@ -7639,7 +7672,9 @@
                 "allowRefreshToken",
                 "allowedAuthenticationMethods",
                 "canCreateSessionTransferToken",
-                "enforceDeviceBinding"
+                "enforceCascadeRevocation",
+                "enforceDeviceBinding",
+                "enforceOnlineRefreshTokens"
             ],
             "language": {
                 "nodejs": {
@@ -11208,7 +11243,7 @@
                 },
                 "appType": {
                     "type": "string",
-                    "description": "Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.\n"
+                    "description": "Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.\n"
                 },
                 "callbacks": {
                     "type": "array",
@@ -11350,6 +11385,10 @@
                     "type": "boolean",
                     "description": "Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.\n"
                 },
+                "resourceServerIdentifier": {
+                    "type": "string",
+                    "description": "The identifier of a resource server that client is associated withThis property can be sent only when app*type=resource*server.This property can not be changed, once the client is created.\n"
+                },
                 "sessionTransfer": {
                     "$ref": "#/types/auth0:index/ClientSessionTransfer:ClientSessionTransfer"
                 },
@@ -11434,7 +11473,7 @@
                 },
                 "appType": {
                     "type": "string",
-                    "description": "Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.\n"
+                    "description": "Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.\n"
                 },
                 "callbacks": {
                     "type": "array",
@@ -11572,6 +11611,10 @@
                     "type": "boolean",
                     "description": "Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.\n"
                 },
+                "resourceServerIdentifier": {
+                    "type": "string",
+                    "description": "The identifier of a resource server that client is associated withThis property can be sent only when app*type=resource*server.This property can not be changed, once the client is created.\n"
+                },
                 "sessionTransfer": {
                     "$ref": "#/types/auth0:index/ClientSessionTransfer:ClientSessionTransfer"
                 },
@@ -11629,7 +11672,7 @@
                     },
                     "appType": {
                         "type": "string",
-                        "description": "Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.\n"
+                        "description": "Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.\n"
                     },
                     "callbacks": {
                         "type": "array",
@@ -11770,6 +11813,10 @@
                     "requirePushedAuthorizationRequests": {
                         "type": "boolean",
                         "description": "Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.\n"
+                    },
+                    "resourceServerIdentifier": {
+                        "type": "string",
+                        "description": "The identifier of a resource server that client is associated withThis property can be sent only when app*type=resource*server.This property can not be changed, once the client is created.\n"
                     },
                     "sessionTransfer": {
                         "$ref": "#/types/auth0:index/ClientSessionTransfer:ClientSessionTransfer"
@@ -15138,6 +15185,10 @@
                     },
                     "description": "Authorization details for this resource server.\n"
                 },
+                "clientId": {
+                    "type": "string",
+                    "description": "The ID of the client associated with this resource server. If a client has been created and linked to this resource server, this field will be populated with that client's ID.\n"
+                },
                 "consentPolicy": {
                     "type": "string",
                     "description": "Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.\n"
@@ -15197,6 +15248,7 @@
             },
             "required": [
                 "authorizationDetails",
+                "clientId",
                 "consentPolicy",
                 "enforcePolicies",
                 "identifier",
@@ -15297,6 +15349,10 @@
                             "$ref": "#/types/auth0:index/ResourceServerAuthorizationDetail:ResourceServerAuthorizationDetail"
                         },
                         "description": "Authorization details for this resource server.\n"
+                    },
+                    "clientId": {
+                        "type": "string",
+                        "description": "The ID of the client associated with this resource server. If a client has been created and linked to this resource server, this field will be populated with that client's ID.\n"
                     },
                     "consentPolicy": {
                         "type": "string",
@@ -16522,7 +16578,7 @@
             }
         },
         "auth0:index/triggerActions:TriggerActions": {
-            "description": "With this resource, you can bind actions to a trigger. Once actions are created and deployed, they can be attached (i.e. bound) to a trigger so that it will be executed as part of a flow. The list of actions reflects the order in which they will be executed during the appropriate flow.\n\n!\u003e This resource manages all the action bindings to a trigger. In contrast, the `auth0.TriggerAction` resource only\nappends an action to the trigger binding. To avoid potential issues, it is recommended not to use this resource in\nconjunction with the `auth0.TriggerAction` resource when binding actions to the same trigger.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst actionFoo = new auth0.Action(\"action_foo\", {\n    name: \"Test Trigger Binding Foo\",\n    code: `exports.onContinuePostLogin = async (event, api) =\u003e {\n  console.log(\"foo\");\n};\"\n`,\n    deploy: true,\n    supportedTriggers: {\n        id: \"post-login\",\n        version: \"v3\",\n    },\n});\nconst actionBar = new auth0.Action(\"action_bar\", {\n    name: \"Test Trigger Binding Bar\",\n    code: `exports.onContinuePostLogin = async (event, api) =\u003e {\n  console.log(\"bar\");\n};\"\n`,\n    deploy: true,\n    supportedTriggers: {\n        id: \"post-login\",\n        version: \"v3\",\n    },\n});\nconst loginFlow = new auth0.TriggerActions(\"login_flow\", {\n    trigger: \"post-login\",\n    actions: [\n        {\n            id: actionFoo.id,\n            displayName: actionFoo.name,\n        },\n        {\n            id: actionBar.id,\n            displayName: actionBar.name,\n        },\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\naction_foo = auth0.Action(\"action_foo\",\n    name=\"Test Trigger Binding Foo\",\n    code=\"\"\"exports.onContinuePostLogin = async (event, api) =\u003e {\n  console.log(\"foo\");\n};\"\n\"\"\",\n    deploy=True,\n    supported_triggers={\n        \"id\": \"post-login\",\n        \"version\": \"v3\",\n    })\naction_bar = auth0.Action(\"action_bar\",\n    name=\"Test Trigger Binding Bar\",\n    code=\"\"\"exports.onContinuePostLogin = async (event, api) =\u003e {\n  console.log(\"bar\");\n};\"\n\"\"\",\n    deploy=True,\n    supported_triggers={\n        \"id\": \"post-login\",\n        \"version\": \"v3\",\n    })\nlogin_flow = auth0.TriggerActions(\"login_flow\",\n    trigger=\"post-login\",\n    actions=[\n        {\n            \"id\": action_foo.id,\n            \"display_name\": action_foo.name,\n        },\n        {\n            \"id\": action_bar.id,\n            \"display_name\": action_bar.name,\n        },\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var actionFoo = new Auth0.Action(\"action_foo\", new()\n    {\n        Name = \"Test Trigger Binding Foo\",\n        Code = @\"exports.onContinuePostLogin = async (event, api) =\u003e {\n  console.log(\"\"foo\"\");\n};\"\"\n\",\n        Deploy = true,\n        SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs\n        {\n            Id = \"post-login\",\n            Version = \"v3\",\n        },\n    });\n\n    var actionBar = new Auth0.Action(\"action_bar\", new()\n    {\n        Name = \"Test Trigger Binding Bar\",\n        Code = @\"exports.onContinuePostLogin = async (event, api) =\u003e {\n  console.log(\"\"bar\"\");\n};\"\"\n\",\n        Deploy = true,\n        SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs\n        {\n            Id = \"post-login\",\n            Version = \"v3\",\n        },\n    });\n\n    var loginFlow = new Auth0.TriggerActions(\"login_flow\", new()\n    {\n        Trigger = \"post-login\",\n        Actions = new[]\n        {\n            new Auth0.Inputs.TriggerActionsActionArgs\n            {\n                Id = actionFoo.Id,\n                DisplayName = actionFoo.Name,\n            },\n            new Auth0.Inputs.TriggerActionsActionArgs\n            {\n                Id = actionBar.Id,\n                DisplayName = actionBar.Name,\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tactionFoo, err := auth0.NewAction(ctx, \"action_foo\", \u0026auth0.ActionArgs{\n\t\t\tName:   pulumi.String(\"Test Trigger Binding Foo\"),\n\t\t\tCode:   pulumi.String(\"exports.onContinuePostLogin = async (event, api) =\u003e {\\n  console.log(\\\"foo\\\");\\n};\\\"\\n\"),\n\t\t\tDeploy: pulumi.Bool(true),\n\t\t\tSupportedTriggers: \u0026auth0.ActionSupportedTriggersArgs{\n\t\t\t\tId:      pulumi.String(\"post-login\"),\n\t\t\t\tVersion: pulumi.String(\"v3\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tactionBar, err := auth0.NewAction(ctx, \"action_bar\", \u0026auth0.ActionArgs{\n\t\t\tName:   pulumi.String(\"Test Trigger Binding Bar\"),\n\t\t\tCode:   pulumi.String(\"exports.onContinuePostLogin = async (event, api) =\u003e {\\n  console.log(\\\"bar\\\");\\n};\\\"\\n\"),\n\t\t\tDeploy: pulumi.Bool(true),\n\t\t\tSupportedTriggers: \u0026auth0.ActionSupportedTriggersArgs{\n\t\t\t\tId:      pulumi.String(\"post-login\"),\n\t\t\t\tVersion: pulumi.String(\"v3\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = auth0.NewTriggerActions(ctx, \"login_flow\", \u0026auth0.TriggerActionsArgs{\n\t\t\tTrigger: pulumi.String(\"post-login\"),\n\t\t\tActions: auth0.TriggerActionsActionArray{\n\t\t\t\t\u0026auth0.TriggerActionsActionArgs{\n\t\t\t\t\tId:          actionFoo.ID(),\n\t\t\t\t\tDisplayName: actionFoo.Name,\n\t\t\t\t},\n\t\t\t\t\u0026auth0.TriggerActionsActionArgs{\n\t\t\t\t\tId:          actionBar.ID(),\n\t\t\t\t\tDisplayName: actionBar.Name,\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.Action;\nimport com.pulumi.auth0.ActionArgs;\nimport com.pulumi.auth0.inputs.ActionSupportedTriggersArgs;\nimport com.pulumi.auth0.TriggerActions;\nimport com.pulumi.auth0.TriggerActionsArgs;\nimport com.pulumi.auth0.inputs.TriggerActionsActionArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var actionFoo = new Action(\"actionFoo\", ActionArgs.builder()\n            .name(\"Test Trigger Binding Foo\")\n            .code(\"\"\"\nexports.onContinuePostLogin = async (event, api) =\u003e {\n  console.log(\"foo\");\n};\"\n            \"\"\")\n            .deploy(true)\n            .supportedTriggers(ActionSupportedTriggersArgs.builder()\n                .id(\"post-login\")\n                .version(\"v3\")\n                .build())\n            .build());\n\n        var actionBar = new Action(\"actionBar\", ActionArgs.builder()\n            .name(\"Test Trigger Binding Bar\")\n            .code(\"\"\"\nexports.onContinuePostLogin = async (event, api) =\u003e {\n  console.log(\"bar\");\n};\"\n            \"\"\")\n            .deploy(true)\n            .supportedTriggers(ActionSupportedTriggersArgs.builder()\n                .id(\"post-login\")\n                .version(\"v3\")\n                .build())\n            .build());\n\n        var loginFlow = new TriggerActions(\"loginFlow\", TriggerActionsArgs.builder()\n            .trigger(\"post-login\")\n            .actions(            \n                TriggerActionsActionArgs.builder()\n                    .id(actionFoo.id())\n                    .displayName(actionFoo.name())\n                    .build(),\n                TriggerActionsActionArgs.builder()\n                    .id(actionBar.id())\n                    .displayName(actionBar.name())\n                    .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  actionFoo:\n    type: auth0:Action\n    name: action_foo\n    properties:\n      name: Test Trigger Binding Foo\n      code: |\n        exports.onContinuePostLogin = async (event, api) =\u003e {\n          console.log(\"foo\");\n        };\"\n      deploy: true\n      supportedTriggers:\n        id: post-login\n        version: v3\n  actionBar:\n    type: auth0:Action\n    name: action_bar\n    properties:\n      name: Test Trigger Binding Bar\n      code: |\n        exports.onContinuePostLogin = async (event, api) =\u003e {\n          console.log(\"bar\");\n        };\"\n      deploy: true\n      supportedTriggers:\n        id: post-login\n        version: v3\n  loginFlow:\n    type: auth0:TriggerActions\n    name: login_flow\n    properties:\n      trigger: post-login\n      actions:\n        - id: ${actionFoo.id}\n          displayName: ${actionFoo.name}\n        - id: ${actionBar.id}\n          displayName: ${actionBar.name}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThis resource can be imported using the bindings trigger ID.\n\nExample:\n\n```sh\n$ pulumi import auth0:index/triggerActions:TriggerActions example \"post-login\"\n```\n\n",
+            "description": "With this resource, you can bind actions to a trigger. Once actions are created and deployed, they can be attached (i.e. bound) to a trigger so that it will be executed as part of a flow. The list of actions reflects the order in which they will be executed during the appropriate flow.\n\n!\u003e This resource manages all the action bindings to a trigger. In contrast, the `auth0.TriggerAction` resource only\nappends an action to the trigger binding. To avoid potential issues, it is recommended not to use this resource in\nconjunction with the `auth0.TriggerAction` resource when binding actions to the same trigger.\n\n\u003e The list of supported runtimes for a trigger are available via [Get triggers](https://auth0.com/docs/api/management/v2/actions/get-triggers)\n\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst actionFoo = new auth0.Action(\"action_foo\", {\n    name: \"Test Trigger Binding Foo\",\n    code: `exports.onContinuePostLogin = async (event, api) =\u003e {\n  console.log(\"foo\");\n};\"\n`,\n    deploy: true,\n    supportedTriggers: {\n        id: \"post-login\",\n        version: \"v3\",\n    },\n});\nconst actionBar = new auth0.Action(\"action_bar\", {\n    name: \"Test Trigger Binding Bar\",\n    code: `exports.onContinuePostLogin = async (event, api) =\u003e {\n  console.log(\"bar\");\n};\"\n`,\n    deploy: true,\n    supportedTriggers: {\n        id: \"post-login\",\n        version: \"v3\",\n    },\n});\nconst loginFlow = new auth0.TriggerActions(\"login_flow\", {\n    trigger: \"post-login\",\n    actions: [\n        {\n            id: actionFoo.id,\n            displayName: actionFoo.name,\n        },\n        {\n            id: actionBar.id,\n            displayName: actionBar.name,\n        },\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\naction_foo = auth0.Action(\"action_foo\",\n    name=\"Test Trigger Binding Foo\",\n    code=\"\"\"exports.onContinuePostLogin = async (event, api) =\u003e {\n  console.log(\"foo\");\n};\"\n\"\"\",\n    deploy=True,\n    supported_triggers={\n        \"id\": \"post-login\",\n        \"version\": \"v3\",\n    })\naction_bar = auth0.Action(\"action_bar\",\n    name=\"Test Trigger Binding Bar\",\n    code=\"\"\"exports.onContinuePostLogin = async (event, api) =\u003e {\n  console.log(\"bar\");\n};\"\n\"\"\",\n    deploy=True,\n    supported_triggers={\n        \"id\": \"post-login\",\n        \"version\": \"v3\",\n    })\nlogin_flow = auth0.TriggerActions(\"login_flow\",\n    trigger=\"post-login\",\n    actions=[\n        {\n            \"id\": action_foo.id,\n            \"display_name\": action_foo.name,\n        },\n        {\n            \"id\": action_bar.id,\n            \"display_name\": action_bar.name,\n        },\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var actionFoo = new Auth0.Action(\"action_foo\", new()\n    {\n        Name = \"Test Trigger Binding Foo\",\n        Code = @\"exports.onContinuePostLogin = async (event, api) =\u003e {\n  console.log(\"\"foo\"\");\n};\"\"\n\",\n        Deploy = true,\n        SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs\n        {\n            Id = \"post-login\",\n            Version = \"v3\",\n        },\n    });\n\n    var actionBar = new Auth0.Action(\"action_bar\", new()\n    {\n        Name = \"Test Trigger Binding Bar\",\n        Code = @\"exports.onContinuePostLogin = async (event, api) =\u003e {\n  console.log(\"\"bar\"\");\n};\"\"\n\",\n        Deploy = true,\n        SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs\n        {\n            Id = \"post-login\",\n            Version = \"v3\",\n        },\n    });\n\n    var loginFlow = new Auth0.TriggerActions(\"login_flow\", new()\n    {\n        Trigger = \"post-login\",\n        Actions = new[]\n        {\n            new Auth0.Inputs.TriggerActionsActionArgs\n            {\n                Id = actionFoo.Id,\n                DisplayName = actionFoo.Name,\n            },\n            new Auth0.Inputs.TriggerActionsActionArgs\n            {\n                Id = actionBar.Id,\n                DisplayName = actionBar.Name,\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tactionFoo, err := auth0.NewAction(ctx, \"action_foo\", \u0026auth0.ActionArgs{\n\t\t\tName:   pulumi.String(\"Test Trigger Binding Foo\"),\n\t\t\tCode:   pulumi.String(\"exports.onContinuePostLogin = async (event, api) =\u003e {\\n  console.log(\\\"foo\\\");\\n};\\\"\\n\"),\n\t\t\tDeploy: pulumi.Bool(true),\n\t\t\tSupportedTriggers: \u0026auth0.ActionSupportedTriggersArgs{\n\t\t\t\tId:      pulumi.String(\"post-login\"),\n\t\t\t\tVersion: pulumi.String(\"v3\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tactionBar, err := auth0.NewAction(ctx, \"action_bar\", \u0026auth0.ActionArgs{\n\t\t\tName:   pulumi.String(\"Test Trigger Binding Bar\"),\n\t\t\tCode:   pulumi.String(\"exports.onContinuePostLogin = async (event, api) =\u003e {\\n  console.log(\\\"bar\\\");\\n};\\\"\\n\"),\n\t\t\tDeploy: pulumi.Bool(true),\n\t\t\tSupportedTriggers: \u0026auth0.ActionSupportedTriggersArgs{\n\t\t\t\tId:      pulumi.String(\"post-login\"),\n\t\t\t\tVersion: pulumi.String(\"v3\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = auth0.NewTriggerActions(ctx, \"login_flow\", \u0026auth0.TriggerActionsArgs{\n\t\t\tTrigger: pulumi.String(\"post-login\"),\n\t\t\tActions: auth0.TriggerActionsActionArray{\n\t\t\t\t\u0026auth0.TriggerActionsActionArgs{\n\t\t\t\t\tId:          actionFoo.ID(),\n\t\t\t\t\tDisplayName: actionFoo.Name,\n\t\t\t\t},\n\t\t\t\t\u0026auth0.TriggerActionsActionArgs{\n\t\t\t\t\tId:          actionBar.ID(),\n\t\t\t\t\tDisplayName: actionBar.Name,\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.Action;\nimport com.pulumi.auth0.ActionArgs;\nimport com.pulumi.auth0.inputs.ActionSupportedTriggersArgs;\nimport com.pulumi.auth0.TriggerActions;\nimport com.pulumi.auth0.TriggerActionsArgs;\nimport com.pulumi.auth0.inputs.TriggerActionsActionArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var actionFoo = new Action(\"actionFoo\", ActionArgs.builder()\n            .name(\"Test Trigger Binding Foo\")\n            .code(\"\"\"\nexports.onContinuePostLogin = async (event, api) =\u003e {\n  console.log(\"foo\");\n};\"\n            \"\"\")\n            .deploy(true)\n            .supportedTriggers(ActionSupportedTriggersArgs.builder()\n                .id(\"post-login\")\n                .version(\"v3\")\n                .build())\n            .build());\n\n        var actionBar = new Action(\"actionBar\", ActionArgs.builder()\n            .name(\"Test Trigger Binding Bar\")\n            .code(\"\"\"\nexports.onContinuePostLogin = async (event, api) =\u003e {\n  console.log(\"bar\");\n};\"\n            \"\"\")\n            .deploy(true)\n            .supportedTriggers(ActionSupportedTriggersArgs.builder()\n                .id(\"post-login\")\n                .version(\"v3\")\n                .build())\n            .build());\n\n        var loginFlow = new TriggerActions(\"loginFlow\", TriggerActionsArgs.builder()\n            .trigger(\"post-login\")\n            .actions(            \n                TriggerActionsActionArgs.builder()\n                    .id(actionFoo.id())\n                    .displayName(actionFoo.name())\n                    .build(),\n                TriggerActionsActionArgs.builder()\n                    .id(actionBar.id())\n                    .displayName(actionBar.name())\n                    .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  actionFoo:\n    type: auth0:Action\n    name: action_foo\n    properties:\n      name: Test Trigger Binding Foo\n      code: |\n        exports.onContinuePostLogin = async (event, api) =\u003e {\n          console.log(\"foo\");\n        };\"\n      deploy: true\n      supportedTriggers:\n        id: post-login\n        version: v3\n  actionBar:\n    type: auth0:Action\n    name: action_bar\n    properties:\n      name: Test Trigger Binding Bar\n      code: |\n        exports.onContinuePostLogin = async (event, api) =\u003e {\n          console.log(\"bar\");\n        };\"\n      deploy: true\n      supportedTriggers:\n        id: post-login\n        version: v3\n  loginFlow:\n    type: auth0:TriggerActions\n    name: login_flow\n    properties:\n      trigger: post-login\n      actions:\n        - id: ${actionFoo.id}\n          displayName: ${actionFoo.name}\n        - id: ${actionBar.id}\n          displayName: ${actionBar.name}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThis resource can be imported using the bindings trigger ID.\n\nExample:\n\n```sh\n$ pulumi import auth0:index/triggerActions:TriggerActions example \"post-login\"\n```\n\n",
             "properties": {
                 "actions": {
                     "type": "array",
@@ -17354,7 +17410,7 @@
                         "type": "array"
                     },
                     "appType": {
-                        "description": "Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.\n",
+                        "description": "Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.\n",
                         "type": "string"
                     },
                     "callbacks": {
@@ -17528,6 +17584,10 @@
                         "description": "Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.\n",
                         "type": "boolean"
                     },
+                    "resourceServerIdentifier": {
+                        "description": "The identifier of a resource server that client is associated withThis property can be sent only when app*type=resource*server.This property can not be changed, once the client is created.\n",
+                        "type": "string"
+                    },
                     "sessionTransfers": {
                         "items": {
                             "$ref": "#/types/auth0:index/getClientSessionTransfer:getClientSessionTransfer"
@@ -17621,6 +17681,7 @@
                     "refreshTokens",
                     "requireProofOfPossession",
                     "requirePushedAuthorizationRequests",
+                    "resourceServerIdentifier",
                     "sessionTransfers",
                     "signedRequestObjects",
                     "signingKeys",
@@ -18678,6 +18739,10 @@
                         },
                         "type": "array"
                     },
+                    "clientId": {
+                        "description": "The ID of the client associated with this resource server. If a client has been created and linked to this resource server, this field will be populated with that client's ID.\n",
+                        "type": "string"
+                    },
                     "consentPolicy": {
                         "description": "Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.\n",
                         "type": "string"
@@ -18762,6 +18827,7 @@
                 "required": [
                     "allowOfflineAccess",
                     "authorizationDetails",
+                    "clientId",
                     "consentPolicy",
                     "enforcePolicies",
                     "name",
