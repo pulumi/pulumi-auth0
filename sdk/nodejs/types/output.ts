@@ -1330,9 +1330,17 @@ export interface ClientSessionTransfer {
      */
     canCreateSessionTransferToken: boolean;
     /**
+     * Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are.
+     */
+    enforceCascadeRevocation: boolean;
+    /**
      * Configures the level of device binding enforced when a session*transfer*token is consumed. Can be one of `ip`, `asn` or `none`.
      */
     enforceDeviceBinding: string;
+    /**
+     * Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities.
+     */
+    enforceOnlineRefreshTokens: boolean;
 }
 
 export interface ClientTokenExchange {
@@ -3616,9 +3624,17 @@ export interface GetClientSessionTransfer {
      */
     canCreateSessionTransferToken: boolean;
     /**
+     * Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are.
+     */
+    enforceCascadeRevocation: boolean;
+    /**
      * Configures the level of device binding enforced when a sessionTransferToken is consumed. Can be one of `ip`, `asn` or `none`.
      */
     enforceDeviceBinding: string;
+    /**
+     * Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities.
+     */
+    enforceOnlineRefreshTokens: boolean;
 }
 
 export interface GetClientSignedRequestObject {
@@ -3710,7 +3726,7 @@ export interface GetClientsClient {
      */
     allowedOrigins: string[];
     /**
-     * Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+     * Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
      */
     appType: string;
     /**
@@ -3750,6 +3766,10 @@ export interface GetClientsClient {
      * Configure OIDC logout for the Client
      */
     oidcLogouts: outputs.GetClientsClientOidcLogout[];
+    /**
+     * The identifier of a resource server that client is associated withThis property can be sent only when app_type=resource_server.This property can not be changed, once the client is created.
+     */
+    resourceServerIdentifier: string;
     sessionTransfers: outputs.GetClientsClientSessionTransfer[];
     /**
      * Allows configuration for token exchange
@@ -3798,9 +3818,17 @@ export interface GetClientsClientSessionTransfer {
      */
     canCreateSessionTransferToken: boolean;
     /**
+     * Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are.
+     */
+    enforceCascadeRevocation: boolean;
+    /**
      * Configures the level of device binding enforced when a sessionTransferToken is consumed. Can be one of `ip`, `asn` or `none`.
      */
     enforceDeviceBinding: string;
+    /**
+     * Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities.
+     */
+    enforceOnlineRefreshTokens: boolean;
 }
 
 export interface GetClientsClientTokenExchange {

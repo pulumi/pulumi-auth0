@@ -35,7 +35,7 @@ public final class GetClientsClient {
      */
     private List<String> allowedOrigins;
     /**
-     * @return Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+     * @return Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
      * 
      */
     private String appType;
@@ -85,6 +85,11 @@ public final class GetClientsClient {
      * 
      */
     private List<GetClientsClientOidcLogout> oidcLogouts;
+    /**
+     * @return The identifier of a resource server that client is associated withThis property can be sent only when app_type=resource_server.This property can not be changed, once the client is created.
+     * 
+     */
+    private String resourceServerIdentifier;
     private List<GetClientsClientSessionTransfer> sessionTransfers;
     /**
      * @return Allows configuration for token exchange
@@ -125,7 +130,7 @@ public final class GetClientsClient {
         return this.allowedOrigins;
     }
     /**
-     * @return Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+     * @return Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
      * 
      */
     public String appType() {
@@ -197,6 +202,13 @@ public final class GetClientsClient {
     public List<GetClientsClientOidcLogout> oidcLogouts() {
         return this.oidcLogouts;
     }
+    /**
+     * @return The identifier of a resource server that client is associated withThis property can be sent only when app_type=resource_server.This property can not be changed, once the client is created.
+     * 
+     */
+    public String resourceServerIdentifier() {
+        return this.resourceServerIdentifier;
+    }
     public List<GetClientsClientSessionTransfer> sessionTransfers() {
         return this.sessionTransfers;
     }
@@ -245,6 +257,7 @@ public final class GetClientsClient {
         private Boolean isTokenEndpointIpHeaderTrusted;
         private @Nullable String name;
         private List<GetClientsClientOidcLogout> oidcLogouts;
+        private String resourceServerIdentifier;
         private List<GetClientsClientSessionTransfer> sessionTransfers;
         private List<GetClientsClientTokenExchange> tokenExchanges;
         private List<GetClientsClientTokenQuota> tokenQuotas;
@@ -266,6 +279,7 @@ public final class GetClientsClient {
     	      this.isTokenEndpointIpHeaderTrusted = defaults.isTokenEndpointIpHeaderTrusted;
     	      this.name = defaults.name;
     	      this.oidcLogouts = defaults.oidcLogouts;
+    	      this.resourceServerIdentifier = defaults.resourceServerIdentifier;
     	      this.sessionTransfers = defaults.sessionTransfers;
     	      this.tokenExchanges = defaults.tokenExchanges;
     	      this.tokenQuotas = defaults.tokenQuotas;
@@ -399,6 +413,14 @@ public final class GetClientsClient {
             return oidcLogouts(List.of(oidcLogouts));
         }
         @CustomType.Setter
+        public Builder resourceServerIdentifier(String resourceServerIdentifier) {
+            if (resourceServerIdentifier == null) {
+              throw new MissingRequiredPropertyException("GetClientsClient", "resourceServerIdentifier");
+            }
+            this.resourceServerIdentifier = resourceServerIdentifier;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sessionTransfers(List<GetClientsClientSessionTransfer> sessionTransfers) {
             if (sessionTransfers == null) {
               throw new MissingRequiredPropertyException("GetClientsClient", "sessionTransfers");
@@ -458,6 +480,7 @@ public final class GetClientsClient {
             _resultValue.isTokenEndpointIpHeaderTrusted = isTokenEndpointIpHeaderTrusted;
             _resultValue.name = name;
             _resultValue.oidcLogouts = oidcLogouts;
+            _resultValue.resourceServerIdentifier = resourceServerIdentifier;
             _resultValue.sessionTransfers = sessionTransfers;
             _resultValue.tokenExchanges = tokenExchanges;
             _resultValue.tokenQuotas = tokenQuotas;

@@ -167,7 +167,7 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly ImmutableArray<string> AllowedOrigins;
         /// <summary>
-        /// Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+        /// Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
         /// </summary>
         public readonly string AppType;
         /// <summary>
@@ -299,6 +299,10 @@ namespace Pulumi.Auth0
         /// Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
         /// </summary>
         public readonly bool RequirePushedAuthorizationRequests;
+        /// <summary>
+        /// The identifier of a resource server that client is associated withThis property can be sent only when app*type=resource*server.This property can not be changed, once the client is created.
+        /// </summary>
+        public readonly string ResourceServerIdentifier;
         public readonly ImmutableArray<Outputs.GetClientSessionTransferResult> SessionTransfers;
         /// <summary>
         /// Configuration for JWT-secured Authorization Requests(JAR).
@@ -411,6 +415,8 @@ namespace Pulumi.Auth0
 
             bool requirePushedAuthorizationRequests,
 
+            string resourceServerIdentifier,
+
             ImmutableArray<Outputs.GetClientSessionTransferResult> sessionTransfers,
 
             ImmutableArray<Outputs.GetClientSignedRequestObjectResult> signedRequestObjects,
@@ -467,6 +473,7 @@ namespace Pulumi.Auth0
             RefreshTokens = refreshTokens;
             RequireProofOfPossession = requireProofOfPossession;
             RequirePushedAuthorizationRequests = requirePushedAuthorizationRequests;
+            ResourceServerIdentifier = resourceServerIdentifier;
             SessionTransfers = sessionTransfers;
             SignedRequestObjects = signedRequestObjects;
             SigningKeys = signingKeys;

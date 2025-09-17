@@ -55,6 +55,7 @@ class ClientArgs:
                  refresh_token: Optional[pulumi.Input['ClientRefreshTokenArgs']] = None,
                  require_proof_of_possession: Optional[pulumi.Input[_builtins.bool]] = None,
                  require_pushed_authorization_requests: Optional[pulumi.Input[_builtins.bool]] = None,
+                 resource_server_identifier: Optional[pulumi.Input[_builtins.str]] = None,
                  session_transfer: Optional[pulumi.Input['ClientSessionTransferArgs']] = None,
                  sso: Optional[pulumi.Input[_builtins.bool]] = None,
                  sso_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -67,7 +68,7 @@ class ClientArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_clients: List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_origins: URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
-        :param pulumi.Input[_builtins.str] app_type: Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+        :param pulumi.Input[_builtins.str] app_type: Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] callbacks: URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] client_aliases: List of audiences/realms for SAML protocol. Used by the wsfed addon.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] client_metadata: Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
@@ -97,6 +98,7 @@ class ClientArgs:
         :param pulumi.Input['ClientRefreshTokenArgs'] refresh_token: Configuration settings for the refresh tokens issued for this client.
         :param pulumi.Input[_builtins.bool] require_proof_of_possession: Makes the use of Proof-of-Possession mandatory for this client.
         :param pulumi.Input[_builtins.bool] require_pushed_authorization_requests: Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
+        :param pulumi.Input[_builtins.str] resource_server_identifier: The identifier of a resource server that client is associated withThis property can be sent only when app*type=resource*server.This property can not be changed, once the client is created.
         :param pulumi.Input[_builtins.bool] sso: Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
         :param pulumi.Input[_builtins.bool] sso_disabled: Indicates whether or not SSO is disabled.
         :param pulumi.Input['ClientTokenExchangeArgs'] token_exchange: Allows configuration for token exchange
@@ -176,6 +178,8 @@ class ClientArgs:
             pulumi.set(__self__, "require_proof_of_possession", require_proof_of_possession)
         if require_pushed_authorization_requests is not None:
             pulumi.set(__self__, "require_pushed_authorization_requests", require_pushed_authorization_requests)
+        if resource_server_identifier is not None:
+            pulumi.set(__self__, "resource_server_identifier", resource_server_identifier)
         if session_transfer is not None:
             pulumi.set(__self__, "session_transfer", session_transfer)
         if sso is not None:
@@ -241,7 +245,7 @@ class ClientArgs:
     @pulumi.getter(name="appType")
     def app_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+        Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
         """
         return pulumi.get(self, "app_type")
 
@@ -599,6 +603,18 @@ class ClientArgs:
         pulumi.set(self, "require_pushed_authorization_requests", value)
 
     @_builtins.property
+    @pulumi.getter(name="resourceServerIdentifier")
+    def resource_server_identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The identifier of a resource server that client is associated withThis property can be sent only when app*type=resource*server.This property can not be changed, once the client is created.
+        """
+        return pulumi.get(self, "resource_server_identifier")
+
+    @resource_server_identifier.setter
+    def resource_server_identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "resource_server_identifier", value)
+
+    @_builtins.property
     @pulumi.getter(name="sessionTransfer")
     def session_transfer(self) -> Optional[pulumi.Input['ClientSessionTransferArgs']]:
         return pulumi.get(self, "session_transfer")
@@ -706,6 +722,7 @@ class _ClientState:
                  refresh_token: Optional[pulumi.Input['ClientRefreshTokenArgs']] = None,
                  require_proof_of_possession: Optional[pulumi.Input[_builtins.bool]] = None,
                  require_pushed_authorization_requests: Optional[pulumi.Input[_builtins.bool]] = None,
+                 resource_server_identifier: Optional[pulumi.Input[_builtins.str]] = None,
                  session_transfer: Optional[pulumi.Input['ClientSessionTransferArgs']] = None,
                  signing_keys: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
                  sso: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -719,7 +736,7 @@ class _ClientState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_clients: List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_origins: URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
-        :param pulumi.Input[_builtins.str] app_type: Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+        :param pulumi.Input[_builtins.str] app_type: Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] callbacks: URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] client_aliases: List of audiences/realms for SAML protocol. Used by the wsfed addon.
         :param pulumi.Input[_builtins.str] client_id: The ID of the client.
@@ -750,6 +767,7 @@ class _ClientState:
         :param pulumi.Input['ClientRefreshTokenArgs'] refresh_token: Configuration settings for the refresh tokens issued for this client.
         :param pulumi.Input[_builtins.bool] require_proof_of_possession: Makes the use of Proof-of-Possession mandatory for this client.
         :param pulumi.Input[_builtins.bool] require_pushed_authorization_requests: Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
+        :param pulumi.Input[_builtins.str] resource_server_identifier: The identifier of a resource server that client is associated withThis property can be sent only when app*type=resource*server.This property can not be changed, once the client is created.
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]] signing_keys: List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
         :param pulumi.Input[_builtins.bool] sso: Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
         :param pulumi.Input[_builtins.bool] sso_disabled: Indicates whether or not SSO is disabled.
@@ -832,6 +850,8 @@ class _ClientState:
             pulumi.set(__self__, "require_proof_of_possession", require_proof_of_possession)
         if require_pushed_authorization_requests is not None:
             pulumi.set(__self__, "require_pushed_authorization_requests", require_pushed_authorization_requests)
+        if resource_server_identifier is not None:
+            pulumi.set(__self__, "resource_server_identifier", resource_server_identifier)
         if session_transfer is not None:
             pulumi.set(__self__, "session_transfer", session_transfer)
         if signing_keys is not None:
@@ -899,7 +919,7 @@ class _ClientState:
     @pulumi.getter(name="appType")
     def app_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+        Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
         """
         return pulumi.get(self, "app_type")
 
@@ -1269,6 +1289,18 @@ class _ClientState:
         pulumi.set(self, "require_pushed_authorization_requests", value)
 
     @_builtins.property
+    @pulumi.getter(name="resourceServerIdentifier")
+    def resource_server_identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The identifier of a resource server that client is associated withThis property can be sent only when app*type=resource*server.This property can not be changed, once the client is created.
+        """
+        return pulumi.get(self, "resource_server_identifier")
+
+    @resource_server_identifier.setter
+    def resource_server_identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "resource_server_identifier", value)
+
+    @_builtins.property
     @pulumi.getter(name="sessionTransfer")
     def session_transfer(self) -> Optional[pulumi.Input['ClientSessionTransferArgs']]:
         return pulumi.get(self, "session_transfer")
@@ -1390,6 +1422,7 @@ class Client(pulumi.CustomResource):
                  refresh_token: Optional[pulumi.Input[Union['ClientRefreshTokenArgs', 'ClientRefreshTokenArgsDict']]] = None,
                  require_proof_of_possession: Optional[pulumi.Input[_builtins.bool]] = None,
                  require_pushed_authorization_requests: Optional[pulumi.Input[_builtins.bool]] = None,
+                 resource_server_identifier: Optional[pulumi.Input[_builtins.str]] = None,
                  session_transfer: Optional[pulumi.Input[Union['ClientSessionTransferArgs', 'ClientSessionTransferArgsDict']]] = None,
                  sso: Optional[pulumi.Input[_builtins.bool]] = None,
                  sso_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -1416,7 +1449,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_clients: List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_origins: URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
-        :param pulumi.Input[_builtins.str] app_type: Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+        :param pulumi.Input[_builtins.str] app_type: Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] callbacks: URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] client_aliases: List of audiences/realms for SAML protocol. Used by the wsfed addon.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] client_metadata: Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
@@ -1446,6 +1479,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[Union['ClientRefreshTokenArgs', 'ClientRefreshTokenArgsDict']] refresh_token: Configuration settings for the refresh tokens issued for this client.
         :param pulumi.Input[_builtins.bool] require_proof_of_possession: Makes the use of Proof-of-Possession mandatory for this client.
         :param pulumi.Input[_builtins.bool] require_pushed_authorization_requests: Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
+        :param pulumi.Input[_builtins.str] resource_server_identifier: The identifier of a resource server that client is associated withThis property can be sent only when app*type=resource*server.This property can not be changed, once the client is created.
         :param pulumi.Input[_builtins.bool] sso: Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
         :param pulumi.Input[_builtins.bool] sso_disabled: Indicates whether or not SSO is disabled.
         :param pulumi.Input[Union['ClientTokenExchangeArgs', 'ClientTokenExchangeArgsDict']] token_exchange: Allows configuration for token exchange
@@ -1520,6 +1554,7 @@ class Client(pulumi.CustomResource):
                  refresh_token: Optional[pulumi.Input[Union['ClientRefreshTokenArgs', 'ClientRefreshTokenArgsDict']]] = None,
                  require_proof_of_possession: Optional[pulumi.Input[_builtins.bool]] = None,
                  require_pushed_authorization_requests: Optional[pulumi.Input[_builtins.bool]] = None,
+                 resource_server_identifier: Optional[pulumi.Input[_builtins.str]] = None,
                  session_transfer: Optional[pulumi.Input[Union['ClientSessionTransferArgs', 'ClientSessionTransferArgsDict']]] = None,
                  sso: Optional[pulumi.Input[_builtins.bool]] = None,
                  sso_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -1571,6 +1606,7 @@ class Client(pulumi.CustomResource):
             __props__.__dict__["refresh_token"] = refresh_token
             __props__.__dict__["require_proof_of_possession"] = require_proof_of_possession
             __props__.__dict__["require_pushed_authorization_requests"] = require_pushed_authorization_requests
+            __props__.__dict__["resource_server_identifier"] = resource_server_identifier
             __props__.__dict__["session_transfer"] = session_transfer
             __props__.__dict__["sso"] = sso
             __props__.__dict__["sso_disabled"] = sso_disabled
@@ -1626,6 +1662,7 @@ class Client(pulumi.CustomResource):
             refresh_token: Optional[pulumi.Input[Union['ClientRefreshTokenArgs', 'ClientRefreshTokenArgsDict']]] = None,
             require_proof_of_possession: Optional[pulumi.Input[_builtins.bool]] = None,
             require_pushed_authorization_requests: Optional[pulumi.Input[_builtins.bool]] = None,
+            resource_server_identifier: Optional[pulumi.Input[_builtins.str]] = None,
             session_transfer: Optional[pulumi.Input[Union['ClientSessionTransferArgs', 'ClientSessionTransferArgsDict']]] = None,
             signing_keys: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
             sso: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -1644,7 +1681,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_clients: List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_origins: URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
-        :param pulumi.Input[_builtins.str] app_type: Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+        :param pulumi.Input[_builtins.str] app_type: Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] callbacks: URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] client_aliases: List of audiences/realms for SAML protocol. Used by the wsfed addon.
         :param pulumi.Input[_builtins.str] client_id: The ID of the client.
@@ -1675,6 +1712,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[Union['ClientRefreshTokenArgs', 'ClientRefreshTokenArgsDict']] refresh_token: Configuration settings for the refresh tokens issued for this client.
         :param pulumi.Input[_builtins.bool] require_proof_of_possession: Makes the use of Proof-of-Possession mandatory for this client.
         :param pulumi.Input[_builtins.bool] require_pushed_authorization_requests: Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
+        :param pulumi.Input[_builtins.str] resource_server_identifier: The identifier of a resource server that client is associated withThis property can be sent only when app*type=resource*server.This property can not be changed, once the client is created.
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]] signing_keys: List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
         :param pulumi.Input[_builtins.bool] sso: Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
         :param pulumi.Input[_builtins.bool] sso_disabled: Indicates whether or not SSO is disabled.
@@ -1721,6 +1759,7 @@ class Client(pulumi.CustomResource):
         __props__.__dict__["refresh_token"] = refresh_token
         __props__.__dict__["require_proof_of_possession"] = require_proof_of_possession
         __props__.__dict__["require_pushed_authorization_requests"] = require_pushed_authorization_requests
+        __props__.__dict__["resource_server_identifier"] = resource_server_identifier
         __props__.__dict__["session_transfer"] = session_transfer
         __props__.__dict__["signing_keys"] = signing_keys
         __props__.__dict__["sso"] = sso
@@ -1766,7 +1805,7 @@ class Client(pulumi.CustomResource):
     @pulumi.getter(name="appType")
     def app_type(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+        Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
         """
         return pulumi.get(self, "app_type")
 
@@ -2010,6 +2049,14 @@ class Client(pulumi.CustomResource):
         Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
         """
         return pulumi.get(self, "require_pushed_authorization_requests")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceServerIdentifier")
+    def resource_server_identifier(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The identifier of a resource server that client is associated withThis property can be sent only when app*type=resource*server.This property can not be changed, once the client is created.
+        """
+        return pulumi.get(self, "resource_server_identifier")
 
     @_builtins.property
     @pulumi.getter(name="sessionTransfer")

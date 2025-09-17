@@ -100,14 +100,14 @@ public class Client extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.allowedOrigins);
     }
     /**
-     * Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+     * Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
      * 
      */
     @Export(name="appType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> appType;
 
     /**
-     * @return Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+     * @return Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
      * 
      */
     public Output<Optional<String>> appType() {
@@ -536,6 +536,20 @@ public class Client extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> requirePushedAuthorizationRequests() {
         return Codegen.optional(this.requirePushedAuthorizationRequests);
+    }
+    /**
+     * The identifier of a resource server that client is associated withThis property can be sent only when app*type=resource*server.This property can not be changed, once the client is created.
+     * 
+     */
+    @Export(name="resourceServerIdentifier", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> resourceServerIdentifier;
+
+    /**
+     * @return The identifier of a resource server that client is associated withThis property can be sent only when app*type=resource*server.This property can not be changed, once the client is created.
+     * 
+     */
+    public Output<Optional<String>> resourceServerIdentifier() {
+        return Codegen.optional(this.resourceServerIdentifier);
     }
     @Export(name="sessionTransfer", refs={ClientSessionTransfer.class}, tree="[0]")
     private Output</* @Nullable */ ClientSessionTransfer> sessionTransfer;

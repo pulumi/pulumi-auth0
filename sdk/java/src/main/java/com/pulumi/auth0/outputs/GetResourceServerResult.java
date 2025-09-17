@@ -31,6 +31,11 @@ public final class GetResourceServerResult {
      */
     private List<GetResourceServerAuthorizationDetail> authorizationDetails;
     /**
+     * @return The ID of the client associated with this resource server. If a client has been created and linked to this resource server, this field will be populated with that client&#39;s ID.
+     * 
+     */
+    private String clientId;
+    /**
      * @return Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
      * 
      */
@@ -130,6 +135,13 @@ public final class GetResourceServerResult {
      */
     public List<GetResourceServerAuthorizationDetail> authorizationDetails() {
         return this.authorizationDetails;
+    }
+    /**
+     * @return The ID of the client associated with this resource server. If a client has been created and linked to this resource server, this field will be populated with that client&#39;s ID.
+     * 
+     */
+    public String clientId() {
+        return this.clientId;
     }
     /**
      * @return Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
@@ -262,6 +274,7 @@ public final class GetResourceServerResult {
     public static final class Builder {
         private Boolean allowOfflineAccess;
         private List<GetResourceServerAuthorizationDetail> authorizationDetails;
+        private String clientId;
         private String consentPolicy;
         private Boolean enforcePolicies;
         private String id;
@@ -284,6 +297,7 @@ public final class GetResourceServerResult {
     	      Objects.requireNonNull(defaults);
     	      this.allowOfflineAccess = defaults.allowOfflineAccess;
     	      this.authorizationDetails = defaults.authorizationDetails;
+    	      this.clientId = defaults.clientId;
     	      this.consentPolicy = defaults.consentPolicy;
     	      this.enforcePolicies = defaults.enforcePolicies;
     	      this.id = defaults.id;
@@ -321,6 +335,14 @@ public final class GetResourceServerResult {
         }
         public Builder authorizationDetails(GetResourceServerAuthorizationDetail... authorizationDetails) {
             return authorizationDetails(List.of(authorizationDetails));
+        }
+        @CustomType.Setter
+        public Builder clientId(String clientId) {
+            if (clientId == null) {
+              throw new MissingRequiredPropertyException("GetResourceServerResult", "clientId");
+            }
+            this.clientId = clientId;
+            return this;
         }
         @CustomType.Setter
         public Builder consentPolicy(String consentPolicy) {
@@ -470,6 +492,7 @@ public final class GetResourceServerResult {
             final var _resultValue = new GetResourceServerResult();
             _resultValue.allowOfflineAccess = allowOfflineAccess;
             _resultValue.authorizationDetails = authorizationDetails;
+            _resultValue.clientId = clientId;
             _resultValue.consentPolicy = consentPolicy;
             _resultValue.enforcePolicies = enforcePolicies;
             _resultValue.id = id;

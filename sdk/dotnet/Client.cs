@@ -50,7 +50,7 @@ namespace Pulumi.Auth0
         public Output<ImmutableArray<string>> AllowedOrigins { get; private set; } = null!;
 
         /// <summary>
-        /// Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+        /// Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
         /// </summary>
         [Output("appType")]
         public Output<string?> AppType { get; private set; } = null!;
@@ -235,6 +235,12 @@ namespace Pulumi.Auth0
         [Output("requirePushedAuthorizationRequests")]
         public Output<bool?> RequirePushedAuthorizationRequests { get; private set; } = null!;
 
+        /// <summary>
+        /// The identifier of a resource server that client is associated withThis property can be sent only when app*type=resource*server.This property can not be changed, once the client is created.
+        /// </summary>
+        [Output("resourceServerIdentifier")]
+        public Output<string?> ResourceServerIdentifier { get; private set; } = null!;
+
         [Output("sessionTransfer")]
         public Output<Outputs.ClientSessionTransfer?> SessionTransfer { get; private set; } = null!;
 
@@ -367,7 +373,7 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+        /// Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
         /// </summary>
         [Input("appType")]
         public Input<string>? AppType { get; set; }
@@ -583,6 +589,12 @@ namespace Pulumi.Auth0
         [Input("requirePushedAuthorizationRequests")]
         public Input<bool>? RequirePushedAuthorizationRequests { get; set; }
 
+        /// <summary>
+        /// The identifier of a resource server that client is associated withThis property can be sent only when app*type=resource*server.This property can not be changed, once the client is created.
+        /// </summary>
+        [Input("resourceServerIdentifier")]
+        public Input<string>? ResourceServerIdentifier { get; set; }
+
         [Input("sessionTransfer")]
         public Input<Inputs.ClientSessionTransferArgs>? SessionTransfer { get; set; }
 
@@ -674,7 +686,7 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+        /// Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
         /// </summary>
         [Input("appType")]
         public Input<string>? AppType { get; set; }
@@ -895,6 +907,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("requirePushedAuthorizationRequests")]
         public Input<bool>? RequirePushedAuthorizationRequests { get; set; }
+
+        /// <summary>
+        /// The identifier of a resource server that client is associated withThis property can be sent only when app*type=resource*server.This property can not be changed, once the client is created.
+        /// </summary>
+        [Input("resourceServerIdentifier")]
+        public Input<string>? ResourceServerIdentifier { get; set; }
 
         [Input("sessionTransfer")]
         public Input<Inputs.ClientSessionTransferGetArgs>? SessionTransfer { get; set; }

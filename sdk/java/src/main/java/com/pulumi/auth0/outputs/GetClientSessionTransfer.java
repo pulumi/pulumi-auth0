@@ -24,10 +24,20 @@ public final class GetClientSessionTransfer {
      */
     private Boolean canCreateSessionTransferToken;
     /**
+     * @return Indicates whether Refresh Tokens created during a native-to-web session are tied to that session&#39;s lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are.
+     * 
+     */
+    private Boolean enforceCascadeRevocation;
+    /**
      * @return Configures the level of device binding enforced when a session_transfer_token is consumed. Can be one of `ip`, `asn` or `none`.
      * 
      */
     private String enforceDeviceBinding;
+    /**
+     * @return Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities.
+     * 
+     */
+    private Boolean enforceOnlineRefreshTokens;
 
     private GetClientSessionTransfer() {}
     /**
@@ -48,11 +58,25 @@ public final class GetClientSessionTransfer {
         return this.canCreateSessionTransferToken;
     }
     /**
+     * @return Indicates whether Refresh Tokens created during a native-to-web session are tied to that session&#39;s lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are.
+     * 
+     */
+    public Boolean enforceCascadeRevocation() {
+        return this.enforceCascadeRevocation;
+    }
+    /**
      * @return Configures the level of device binding enforced when a session_transfer_token is consumed. Can be one of `ip`, `asn` or `none`.
      * 
      */
     public String enforceDeviceBinding() {
         return this.enforceDeviceBinding;
+    }
+    /**
+     * @return Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities.
+     * 
+     */
+    public Boolean enforceOnlineRefreshTokens() {
+        return this.enforceOnlineRefreshTokens;
     }
 
     public static Builder builder() {
@@ -67,14 +91,18 @@ public final class GetClientSessionTransfer {
         private Boolean allowRefreshToken;
         private List<String> allowedAuthenticationMethods;
         private Boolean canCreateSessionTransferToken;
+        private Boolean enforceCascadeRevocation;
         private String enforceDeviceBinding;
+        private Boolean enforceOnlineRefreshTokens;
         public Builder() {}
         public Builder(GetClientSessionTransfer defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowRefreshToken = defaults.allowRefreshToken;
     	      this.allowedAuthenticationMethods = defaults.allowedAuthenticationMethods;
     	      this.canCreateSessionTransferToken = defaults.canCreateSessionTransferToken;
+    	      this.enforceCascadeRevocation = defaults.enforceCascadeRevocation;
     	      this.enforceDeviceBinding = defaults.enforceDeviceBinding;
+    	      this.enforceOnlineRefreshTokens = defaults.enforceOnlineRefreshTokens;
         }
 
         @CustomType.Setter
@@ -105,6 +133,14 @@ public final class GetClientSessionTransfer {
             return this;
         }
         @CustomType.Setter
+        public Builder enforceCascadeRevocation(Boolean enforceCascadeRevocation) {
+            if (enforceCascadeRevocation == null) {
+              throw new MissingRequiredPropertyException("GetClientSessionTransfer", "enforceCascadeRevocation");
+            }
+            this.enforceCascadeRevocation = enforceCascadeRevocation;
+            return this;
+        }
+        @CustomType.Setter
         public Builder enforceDeviceBinding(String enforceDeviceBinding) {
             if (enforceDeviceBinding == null) {
               throw new MissingRequiredPropertyException("GetClientSessionTransfer", "enforceDeviceBinding");
@@ -112,12 +148,22 @@ public final class GetClientSessionTransfer {
             this.enforceDeviceBinding = enforceDeviceBinding;
             return this;
         }
+        @CustomType.Setter
+        public Builder enforceOnlineRefreshTokens(Boolean enforceOnlineRefreshTokens) {
+            if (enforceOnlineRefreshTokens == null) {
+              throw new MissingRequiredPropertyException("GetClientSessionTransfer", "enforceOnlineRefreshTokens");
+            }
+            this.enforceOnlineRefreshTokens = enforceOnlineRefreshTokens;
+            return this;
+        }
         public GetClientSessionTransfer build() {
             final var _resultValue = new GetClientSessionTransfer();
             _resultValue.allowRefreshToken = allowRefreshToken;
             _resultValue.allowedAuthenticationMethods = allowedAuthenticationMethods;
             _resultValue.canCreateSessionTransferToken = canCreateSessionTransferToken;
+            _resultValue.enforceCascadeRevocation = enforceCascadeRevocation;
             _resultValue.enforceDeviceBinding = enforceDeviceBinding;
+            _resultValue.enforceOnlineRefreshTokens = enforceOnlineRefreshTokens;
             return _resultValue;
         }
     }

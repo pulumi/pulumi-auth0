@@ -13646,8 +13646,12 @@ type ClientSessionTransfer struct {
 	AllowedAuthenticationMethods []string `pulumi:"allowedAuthenticationMethods"`
 	// Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session*transfer*token
 	CanCreateSessionTransferToken *bool `pulumi:"canCreateSessionTransferToken"`
+	// Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are.
+	EnforceCascadeRevocation *bool `pulumi:"enforceCascadeRevocation"`
 	// Configures the level of device binding enforced when a session*transfer*token is consumed. Can be one of `ip`, `asn` or `none`.
 	EnforceDeviceBinding *string `pulumi:"enforceDeviceBinding"`
+	// Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities.
+	EnforceOnlineRefreshTokens *bool `pulumi:"enforceOnlineRefreshTokens"`
 }
 
 // ClientSessionTransferInput is an input type that accepts ClientSessionTransferArgs and ClientSessionTransferOutput values.
@@ -13667,8 +13671,12 @@ type ClientSessionTransferArgs struct {
 	AllowedAuthenticationMethods pulumi.StringArrayInput `pulumi:"allowedAuthenticationMethods"`
 	// Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session*transfer*token
 	CanCreateSessionTransferToken pulumi.BoolPtrInput `pulumi:"canCreateSessionTransferToken"`
+	// Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are.
+	EnforceCascadeRevocation pulumi.BoolPtrInput `pulumi:"enforceCascadeRevocation"`
 	// Configures the level of device binding enforced when a session*transfer*token is consumed. Can be one of `ip`, `asn` or `none`.
 	EnforceDeviceBinding pulumi.StringPtrInput `pulumi:"enforceDeviceBinding"`
+	// Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities.
+	EnforceOnlineRefreshTokens pulumi.BoolPtrInput `pulumi:"enforceOnlineRefreshTokens"`
 }
 
 func (ClientSessionTransferArgs) ElementType() reflect.Type {
@@ -13762,9 +13770,19 @@ func (o ClientSessionTransferOutput) CanCreateSessionTransferToken() pulumi.Bool
 	return o.ApplyT(func(v ClientSessionTransfer) *bool { return v.CanCreateSessionTransferToken }).(pulumi.BoolPtrOutput)
 }
 
+// Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are.
+func (o ClientSessionTransferOutput) EnforceCascadeRevocation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClientSessionTransfer) *bool { return v.EnforceCascadeRevocation }).(pulumi.BoolPtrOutput)
+}
+
 // Configures the level of device binding enforced when a session*transfer*token is consumed. Can be one of `ip`, `asn` or `none`.
 func (o ClientSessionTransferOutput) EnforceDeviceBinding() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientSessionTransfer) *string { return v.EnforceDeviceBinding }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities.
+func (o ClientSessionTransferOutput) EnforceOnlineRefreshTokens() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClientSessionTransfer) *bool { return v.EnforceOnlineRefreshTokens }).(pulumi.BoolPtrOutput)
 }
 
 type ClientSessionTransferPtrOutput struct{ *pulumi.OutputState }
@@ -13820,6 +13838,16 @@ func (o ClientSessionTransferPtrOutput) CanCreateSessionTransferToken() pulumi.B
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are.
+func (o ClientSessionTransferPtrOutput) EnforceCascadeRevocation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClientSessionTransfer) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnforceCascadeRevocation
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Configures the level of device binding enforced when a session*transfer*token is consumed. Can be one of `ip`, `asn` or `none`.
 func (o ClientSessionTransferPtrOutput) EnforceDeviceBinding() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientSessionTransfer) *string {
@@ -13828,6 +13856,16 @@ func (o ClientSessionTransferPtrOutput) EnforceDeviceBinding() pulumi.StringPtrO
 		}
 		return v.EnforceDeviceBinding
 	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities.
+func (o ClientSessionTransferPtrOutput) EnforceOnlineRefreshTokens() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClientSessionTransfer) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnforceOnlineRefreshTokens
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ClientTokenExchange struct {
@@ -41851,8 +41889,12 @@ type GetClientSessionTransfer struct {
 	AllowedAuthenticationMethods []string `pulumi:"allowedAuthenticationMethods"`
 	// Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session_transfer_token
 	CanCreateSessionTransferToken bool `pulumi:"canCreateSessionTransferToken"`
+	// Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are.
+	EnforceCascadeRevocation bool `pulumi:"enforceCascadeRevocation"`
 	// Configures the level of device binding enforced when a sessionTransferToken is consumed. Can be one of `ip`, `asn` or `none`.
 	EnforceDeviceBinding string `pulumi:"enforceDeviceBinding"`
+	// Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities.
+	EnforceOnlineRefreshTokens bool `pulumi:"enforceOnlineRefreshTokens"`
 }
 
 // GetClientSessionTransferInput is an input type that accepts GetClientSessionTransferArgs and GetClientSessionTransferOutput values.
@@ -41872,8 +41914,12 @@ type GetClientSessionTransferArgs struct {
 	AllowedAuthenticationMethods pulumi.StringArrayInput `pulumi:"allowedAuthenticationMethods"`
 	// Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session_transfer_token
 	CanCreateSessionTransferToken pulumi.BoolInput `pulumi:"canCreateSessionTransferToken"`
+	// Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are.
+	EnforceCascadeRevocation pulumi.BoolInput `pulumi:"enforceCascadeRevocation"`
 	// Configures the level of device binding enforced when a sessionTransferToken is consumed. Can be one of `ip`, `asn` or `none`.
 	EnforceDeviceBinding pulumi.StringInput `pulumi:"enforceDeviceBinding"`
+	// Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities.
+	EnforceOnlineRefreshTokens pulumi.BoolInput `pulumi:"enforceOnlineRefreshTokens"`
 }
 
 func (GetClientSessionTransferArgs) ElementType() reflect.Type {
@@ -41941,9 +41987,19 @@ func (o GetClientSessionTransferOutput) CanCreateSessionTransferToken() pulumi.B
 	return o.ApplyT(func(v GetClientSessionTransfer) bool { return v.CanCreateSessionTransferToken }).(pulumi.BoolOutput)
 }
 
+// Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are.
+func (o GetClientSessionTransferOutput) EnforceCascadeRevocation() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientSessionTransfer) bool { return v.EnforceCascadeRevocation }).(pulumi.BoolOutput)
+}
+
 // Configures the level of device binding enforced when a sessionTransferToken is consumed. Can be one of `ip`, `asn` or `none`.
 func (o GetClientSessionTransferOutput) EnforceDeviceBinding() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClientSessionTransfer) string { return v.EnforceDeviceBinding }).(pulumi.StringOutput)
+}
+
+// Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities.
+func (o GetClientSessionTransferOutput) EnforceOnlineRefreshTokens() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientSessionTransfer) bool { return v.EnforceOnlineRefreshTokens }).(pulumi.BoolOutput)
 }
 
 type GetClientSessionTransferArrayOutput struct{ *pulumi.OutputState }
@@ -42548,7 +42604,7 @@ type GetClientsClient struct {
 	AllowedLogoutUrls []string `pulumi:"allowedLogoutUrls"`
 	// URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
 	AllowedOrigins []string `pulumi:"allowedOrigins"`
-	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
 	AppType string `pulumi:"appType"`
 	// URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
 	Callbacks []string `pulumi:"callbacks"`
@@ -42568,8 +42624,10 @@ type GetClientsClient struct {
 	// The name of the client. If not provided, `clientId` must be set.
 	Name *string `pulumi:"name"`
 	// Configure OIDC logout for the Client
-	OidcLogouts      []GetClientsClientOidcLogout      `pulumi:"oidcLogouts"`
-	SessionTransfers []GetClientsClientSessionTransfer `pulumi:"sessionTransfers"`
+	OidcLogouts []GetClientsClientOidcLogout `pulumi:"oidcLogouts"`
+	// The identifier of a resource server that client is associated withThis property can be sent only when app_type=resource_server.This property can not be changed, once the client is created.
+	ResourceServerIdentifier string                            `pulumi:"resourceServerIdentifier"`
+	SessionTransfers         []GetClientsClientSessionTransfer `pulumi:"sessionTransfers"`
 	// Allows configuration for token exchange
 	TokenExchanges []GetClientsClientTokenExchange `pulumi:"tokenExchanges"`
 	// The token quota configuration.
@@ -42596,7 +42654,7 @@ type GetClientsClientArgs struct {
 	AllowedLogoutUrls pulumi.StringArrayInput `pulumi:"allowedLogoutUrls"`
 	// URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
 	AllowedOrigins pulumi.StringArrayInput `pulumi:"allowedOrigins"`
-	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
 	AppType pulumi.StringInput `pulumi:"appType"`
 	// URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
 	Callbacks pulumi.StringArrayInput `pulumi:"callbacks"`
@@ -42616,8 +42674,10 @@ type GetClientsClientArgs struct {
 	// The name of the client. If not provided, `clientId` must be set.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Configure OIDC logout for the Client
-	OidcLogouts      GetClientsClientOidcLogoutArrayInput      `pulumi:"oidcLogouts"`
-	SessionTransfers GetClientsClientSessionTransferArrayInput `pulumi:"sessionTransfers"`
+	OidcLogouts GetClientsClientOidcLogoutArrayInput `pulumi:"oidcLogouts"`
+	// The identifier of a resource server that client is associated withThis property can be sent only when app_type=resource_server.This property can not be changed, once the client is created.
+	ResourceServerIdentifier pulumi.StringInput                        `pulumi:"resourceServerIdentifier"`
+	SessionTransfers         GetClientsClientSessionTransferArrayInput `pulumi:"sessionTransfers"`
 	// Allows configuration for token exchange
 	TokenExchanges GetClientsClientTokenExchangeArrayInput `pulumi:"tokenExchanges"`
 	// The token quota configuration.
@@ -42692,7 +42752,7 @@ func (o GetClientsClientOutput) AllowedOrigins() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetClientsClient) []string { return v.AllowedOrigins }).(pulumi.StringArrayOutput)
 }
 
-// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
 func (o GetClientsClientOutput) AppType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClientsClient) string { return v.AppType }).(pulumi.StringOutput)
 }
@@ -42744,6 +42804,11 @@ func (o GetClientsClientOutput) Name() pulumi.StringPtrOutput {
 // Configure OIDC logout for the Client
 func (o GetClientsClientOutput) OidcLogouts() GetClientsClientOidcLogoutArrayOutput {
 	return o.ApplyT(func(v GetClientsClient) []GetClientsClientOidcLogout { return v.OidcLogouts }).(GetClientsClientOidcLogoutArrayOutput)
+}
+
+// The identifier of a resource server that client is associated withThis property can be sent only when app_type=resource_server.This property can not be changed, once the client is created.
+func (o GetClientsClientOutput) ResourceServerIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientsClient) string { return v.ResourceServerIdentifier }).(pulumi.StringOutput)
 }
 
 func (o GetClientsClientOutput) SessionTransfers() GetClientsClientSessionTransferArrayOutput {
@@ -43005,8 +43070,12 @@ type GetClientsClientSessionTransfer struct {
 	AllowedAuthenticationMethods []string `pulumi:"allowedAuthenticationMethods"`
 	// Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session_transfer_token
 	CanCreateSessionTransferToken bool `pulumi:"canCreateSessionTransferToken"`
+	// Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are.
+	EnforceCascadeRevocation bool `pulumi:"enforceCascadeRevocation"`
 	// Configures the level of device binding enforced when a sessionTransferToken is consumed. Can be one of `ip`, `asn` or `none`.
 	EnforceDeviceBinding string `pulumi:"enforceDeviceBinding"`
+	// Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities.
+	EnforceOnlineRefreshTokens bool `pulumi:"enforceOnlineRefreshTokens"`
 }
 
 // GetClientsClientSessionTransferInput is an input type that accepts GetClientsClientSessionTransferArgs and GetClientsClientSessionTransferOutput values.
@@ -43026,8 +43095,12 @@ type GetClientsClientSessionTransferArgs struct {
 	AllowedAuthenticationMethods pulumi.StringArrayInput `pulumi:"allowedAuthenticationMethods"`
 	// Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session_transfer_token
 	CanCreateSessionTransferToken pulumi.BoolInput `pulumi:"canCreateSessionTransferToken"`
+	// Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are.
+	EnforceCascadeRevocation pulumi.BoolInput `pulumi:"enforceCascadeRevocation"`
 	// Configures the level of device binding enforced when a sessionTransferToken is consumed. Can be one of `ip`, `asn` or `none`.
 	EnforceDeviceBinding pulumi.StringInput `pulumi:"enforceDeviceBinding"`
+	// Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities.
+	EnforceOnlineRefreshTokens pulumi.BoolInput `pulumi:"enforceOnlineRefreshTokens"`
 }
 
 func (GetClientsClientSessionTransferArgs) ElementType() reflect.Type {
@@ -43095,9 +43168,19 @@ func (o GetClientsClientSessionTransferOutput) CanCreateSessionTransferToken() p
 	return o.ApplyT(func(v GetClientsClientSessionTransfer) bool { return v.CanCreateSessionTransferToken }).(pulumi.BoolOutput)
 }
 
+// Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are.
+func (o GetClientsClientSessionTransferOutput) EnforceCascadeRevocation() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientsClientSessionTransfer) bool { return v.EnforceCascadeRevocation }).(pulumi.BoolOutput)
+}
+
 // Configures the level of device binding enforced when a sessionTransferToken is consumed. Can be one of `ip`, `asn` or `none`.
 func (o GetClientsClientSessionTransferOutput) EnforceDeviceBinding() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClientsClientSessionTransfer) string { return v.EnforceDeviceBinding }).(pulumi.StringOutput)
+}
+
+// Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities.
+func (o GetClientsClientSessionTransferOutput) EnforceOnlineRefreshTokens() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientsClientSessionTransfer) bool { return v.EnforceOnlineRefreshTokens }).(pulumi.BoolOutput)
 }
 
 type GetClientsClientSessionTransferArrayOutput struct{ *pulumi.OutputState }

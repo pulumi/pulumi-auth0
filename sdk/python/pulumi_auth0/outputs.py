@@ -5052,8 +5052,12 @@ class ClientSessionTransfer(dict):
             suggest = "allowed_authentication_methods"
         elif key == "canCreateSessionTransferToken":
             suggest = "can_create_session_transfer_token"
+        elif key == "enforceCascadeRevocation":
+            suggest = "enforce_cascade_revocation"
         elif key == "enforceDeviceBinding":
             suggest = "enforce_device_binding"
+        elif key == "enforceOnlineRefreshTokens":
+            suggest = "enforce_online_refresh_tokens"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ClientSessionTransfer. Access the value via the '{suggest}' property getter instead.")
@@ -5070,11 +5074,15 @@ class ClientSessionTransfer(dict):
                  allow_refresh_token: Optional[_builtins.bool] = None,
                  allowed_authentication_methods: Optional[Sequence[_builtins.str]] = None,
                  can_create_session_transfer_token: Optional[_builtins.bool] = None,
-                 enforce_device_binding: Optional[_builtins.str] = None):
+                 enforce_cascade_revocation: Optional[_builtins.bool] = None,
+                 enforce_device_binding: Optional[_builtins.str] = None,
+                 enforce_online_refresh_tokens: Optional[_builtins.bool] = None):
         """
         :param _builtins.bool allow_refresh_token: Indicates whether the application is allowed to use a refresh token when using a session*transfer*token session.
         :param _builtins.bool can_create_session_transfer_token: Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session*transfer*token
+        :param _builtins.bool enforce_cascade_revocation: Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are.
         :param _builtins.str enforce_device_binding: Configures the level of device binding enforced when a session*transfer*token is consumed. Can be one of `ip`, `asn` or `none`.
+        :param _builtins.bool enforce_online_refresh_tokens: Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities.
         """
         if allow_refresh_token is not None:
             pulumi.set(__self__, "allow_refresh_token", allow_refresh_token)
@@ -5082,8 +5090,12 @@ class ClientSessionTransfer(dict):
             pulumi.set(__self__, "allowed_authentication_methods", allowed_authentication_methods)
         if can_create_session_transfer_token is not None:
             pulumi.set(__self__, "can_create_session_transfer_token", can_create_session_transfer_token)
+        if enforce_cascade_revocation is not None:
+            pulumi.set(__self__, "enforce_cascade_revocation", enforce_cascade_revocation)
         if enforce_device_binding is not None:
             pulumi.set(__self__, "enforce_device_binding", enforce_device_binding)
+        if enforce_online_refresh_tokens is not None:
+            pulumi.set(__self__, "enforce_online_refresh_tokens", enforce_online_refresh_tokens)
 
     @_builtins.property
     @pulumi.getter(name="allowRefreshToken")
@@ -5107,12 +5119,28 @@ class ClientSessionTransfer(dict):
         return pulumi.get(self, "can_create_session_transfer_token")
 
     @_builtins.property
+    @pulumi.getter(name="enforceCascadeRevocation")
+    def enforce_cascade_revocation(self) -> Optional[_builtins.bool]:
+        """
+        Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are.
+        """
+        return pulumi.get(self, "enforce_cascade_revocation")
+
+    @_builtins.property
     @pulumi.getter(name="enforceDeviceBinding")
     def enforce_device_binding(self) -> Optional[_builtins.str]:
         """
         Configures the level of device binding enforced when a session*transfer*token is consumed. Can be one of `ip`, `asn` or `none`.
         """
         return pulumi.get(self, "enforce_device_binding")
+
+    @_builtins.property
+    @pulumi.getter(name="enforceOnlineRefreshTokens")
+    def enforce_online_refresh_tokens(self) -> Optional[_builtins.bool]:
+        """
+        Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities.
+        """
+        return pulumi.get(self, "enforce_online_refresh_tokens")
 
 
 @pulumi.output_type
@@ -15978,16 +16006,22 @@ class GetClientSessionTransferResult(dict):
                  allow_refresh_token: _builtins.bool,
                  allowed_authentication_methods: Sequence[_builtins.str],
                  can_create_session_transfer_token: _builtins.bool,
-                 enforce_device_binding: _builtins.str):
+                 enforce_cascade_revocation: _builtins.bool,
+                 enforce_device_binding: _builtins.str,
+                 enforce_online_refresh_tokens: _builtins.bool):
         """
         :param _builtins.bool allow_refresh_token: Indicates whether the application is allowed to use a refresh token when using a session_transfer_token session.
         :param _builtins.bool can_create_session_transfer_token: Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session_transfer_token
+        :param _builtins.bool enforce_cascade_revocation: Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are.
         :param _builtins.str enforce_device_binding: Configures the level of device binding enforced when a session_transfer_token is consumed. Can be one of `ip`, `asn` or `none`.
+        :param _builtins.bool enforce_online_refresh_tokens: Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities.
         """
         pulumi.set(__self__, "allow_refresh_token", allow_refresh_token)
         pulumi.set(__self__, "allowed_authentication_methods", allowed_authentication_methods)
         pulumi.set(__self__, "can_create_session_transfer_token", can_create_session_transfer_token)
+        pulumi.set(__self__, "enforce_cascade_revocation", enforce_cascade_revocation)
         pulumi.set(__self__, "enforce_device_binding", enforce_device_binding)
+        pulumi.set(__self__, "enforce_online_refresh_tokens", enforce_online_refresh_tokens)
 
     @_builtins.property
     @pulumi.getter(name="allowRefreshToken")
@@ -16011,12 +16045,28 @@ class GetClientSessionTransferResult(dict):
         return pulumi.get(self, "can_create_session_transfer_token")
 
     @_builtins.property
+    @pulumi.getter(name="enforceCascadeRevocation")
+    def enforce_cascade_revocation(self) -> _builtins.bool:
+        """
+        Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are.
+        """
+        return pulumi.get(self, "enforce_cascade_revocation")
+
+    @_builtins.property
     @pulumi.getter(name="enforceDeviceBinding")
     def enforce_device_binding(self) -> _builtins.str:
         """
         Configures the level of device binding enforced when a session_transfer_token is consumed. Can be one of `ip`, `asn` or `none`.
         """
         return pulumi.get(self, "enforce_device_binding")
+
+    @_builtins.property
+    @pulumi.getter(name="enforceOnlineRefreshTokens")
+    def enforce_online_refresh_tokens(self) -> _builtins.bool:
+        """
+        Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities.
+        """
+        return pulumi.get(self, "enforce_online_refresh_tokens")
 
 
 @pulumi.output_type
@@ -16234,6 +16284,7 @@ class GetClientsClientResult(dict):
                  is_first_party: _builtins.bool,
                  is_token_endpoint_ip_header_trusted: _builtins.bool,
                  oidc_logouts: Sequence['outputs.GetClientsClientOidcLogoutResult'],
+                 resource_server_identifier: _builtins.str,
                  session_transfers: Sequence['outputs.GetClientsClientSessionTransferResult'],
                  token_exchanges: Sequence['outputs.GetClientsClientTokenExchangeResult'],
                  token_quotas: Sequence['outputs.GetClientsClientTokenQuotaResult'],
@@ -16244,7 +16295,7 @@ class GetClientsClientResult(dict):
         :param Sequence[_builtins.str] allowed_clients: List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
         :param Sequence[_builtins.str] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
         :param Sequence[_builtins.str] allowed_origins: URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
-        :param _builtins.str app_type: Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+        :param _builtins.str app_type: Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
         :param Sequence[_builtins.str] callbacks: URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
         :param Mapping[str, _builtins.str] client_metadata: Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
         :param _builtins.str description: Description of the purpose of the client.
@@ -16252,6 +16303,7 @@ class GetClientsClientResult(dict):
         :param _builtins.bool is_first_party: Indicates whether this client is a first-party client.Defaults to true from the API
         :param _builtins.bool is_token_endpoint_ip_header_trusted: Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `client_secret_post` or `client_secret_basic`. Setting this property when creating the resource, will default the authentication method to `client_secret_post`. To change the authentication method to `client_secret_basic` use the `ClientCredentials` resource.
         :param Sequence['GetClientsClientOidcLogoutArgs'] oidc_logouts: Configure OIDC logout for the Client
+        :param _builtins.str resource_server_identifier: The identifier of a resource server that client is associated withThis property can be sent only when app_type=resource_server.This property can not be changed, once the client is created.
         :param Sequence['GetClientsClientTokenExchangeArgs'] token_exchanges: Allows configuration for token exchange
         :param Sequence['GetClientsClientTokenQuotaArgs'] token_quotas: The token quota configuration.
         :param Sequence[_builtins.str] web_origins: URLs that represent valid web origins for use with web message response mode.
@@ -16270,6 +16322,7 @@ class GetClientsClientResult(dict):
         pulumi.set(__self__, "is_first_party", is_first_party)
         pulumi.set(__self__, "is_token_endpoint_ip_header_trusted", is_token_endpoint_ip_header_trusted)
         pulumi.set(__self__, "oidc_logouts", oidc_logouts)
+        pulumi.set(__self__, "resource_server_identifier", resource_server_identifier)
         pulumi.set(__self__, "session_transfers", session_transfers)
         pulumi.set(__self__, "token_exchanges", token_exchanges)
         pulumi.set(__self__, "token_quotas", token_quotas)
@@ -16307,7 +16360,7 @@ class GetClientsClientResult(dict):
     @pulumi.getter(name="appType")
     def app_type(self) -> _builtins.str:
         """
-        Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+        Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
         """
         return pulumi.get(self, "app_type")
 
@@ -16371,6 +16424,14 @@ class GetClientsClientResult(dict):
         Configure OIDC logout for the Client
         """
         return pulumi.get(self, "oidc_logouts")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceServerIdentifier")
+    def resource_server_identifier(self) -> _builtins.str:
+        """
+        The identifier of a resource server that client is associated withThis property can be sent only when app_type=resource_server.This property can not be changed, once the client is created.
+        """
+        return pulumi.get(self, "resource_server_identifier")
 
     @_builtins.property
     @pulumi.getter(name="sessionTransfers")
@@ -16482,16 +16543,22 @@ class GetClientsClientSessionTransferResult(dict):
                  allow_refresh_token: _builtins.bool,
                  allowed_authentication_methods: Sequence[_builtins.str],
                  can_create_session_transfer_token: _builtins.bool,
-                 enforce_device_binding: _builtins.str):
+                 enforce_cascade_revocation: _builtins.bool,
+                 enforce_device_binding: _builtins.str,
+                 enforce_online_refresh_tokens: _builtins.bool):
         """
         :param _builtins.bool allow_refresh_token: Indicates whether the application is allowed to use a refresh token when using a session_transfer_token session.
         :param _builtins.bool can_create_session_transfer_token: Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session_transfer_token
+        :param _builtins.bool enforce_cascade_revocation: Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are.
         :param _builtins.str enforce_device_binding: Configures the level of device binding enforced when a session_transfer_token is consumed. Can be one of `ip`, `asn` or `none`.
+        :param _builtins.bool enforce_online_refresh_tokens: Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities.
         """
         pulumi.set(__self__, "allow_refresh_token", allow_refresh_token)
         pulumi.set(__self__, "allowed_authentication_methods", allowed_authentication_methods)
         pulumi.set(__self__, "can_create_session_transfer_token", can_create_session_transfer_token)
+        pulumi.set(__self__, "enforce_cascade_revocation", enforce_cascade_revocation)
         pulumi.set(__self__, "enforce_device_binding", enforce_device_binding)
+        pulumi.set(__self__, "enforce_online_refresh_tokens", enforce_online_refresh_tokens)
 
     @_builtins.property
     @pulumi.getter(name="allowRefreshToken")
@@ -16515,12 +16582,28 @@ class GetClientsClientSessionTransferResult(dict):
         return pulumi.get(self, "can_create_session_transfer_token")
 
     @_builtins.property
+    @pulumi.getter(name="enforceCascadeRevocation")
+    def enforce_cascade_revocation(self) -> _builtins.bool:
+        """
+        Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are.
+        """
+        return pulumi.get(self, "enforce_cascade_revocation")
+
+    @_builtins.property
     @pulumi.getter(name="enforceDeviceBinding")
     def enforce_device_binding(self) -> _builtins.str:
         """
         Configures the level of device binding enforced when a session_transfer_token is consumed. Can be one of `ip`, `asn` or `none`.
         """
         return pulumi.get(self, "enforce_device_binding")
+
+    @_builtins.property
+    @pulumi.getter(name="enforceOnlineRefreshTokens")
+    def enforce_online_refresh_tokens(self) -> _builtins.bool:
+        """
+        Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities.
+        """
+        return pulumi.get(self, "enforce_online_refresh_tokens")
 
 
 @pulumi.output_type

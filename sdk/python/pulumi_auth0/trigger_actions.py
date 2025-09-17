@@ -112,6 +112,8 @@ class TriggerActions(pulumi.CustomResource):
         appends an action to the trigger binding. To avoid potential issues, it is recommended not to use this resource in
         conjunction with the `TriggerAction` resource when binding actions to the same trigger.
 
+        > The list of supported runtimes for a trigger are available via [Get triggers](https://auth0.com/docs/api/management/v2/actions/get-triggers)
+
         ## Example Usage
 
         ```python
@@ -181,6 +183,8 @@ class TriggerActions(pulumi.CustomResource):
         !> This resource manages all the action bindings to a trigger. In contrast, the `TriggerAction` resource only
         appends an action to the trigger binding. To avoid potential issues, it is recommended not to use this resource in
         conjunction with the `TriggerAction` resource when binding actions to the same trigger.
+
+        > The list of supported runtimes for a trigger are available via [Get triggers](https://auth0.com/docs/api/management/v2/actions/get-triggers)
 
         ## Example Usage
 

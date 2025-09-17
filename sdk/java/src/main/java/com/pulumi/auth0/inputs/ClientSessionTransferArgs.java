@@ -55,6 +55,21 @@ public final class ClientSessionTransferArgs extends com.pulumi.resources.Resour
     }
 
     /**
+     * Indicates whether Refresh Tokens created during a native-to-web session are tied to that session&#39;s lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are.
+     * 
+     */
+    @Import(name="enforceCascadeRevocation")
+    private @Nullable Output<Boolean> enforceCascadeRevocation;
+
+    /**
+     * @return Indicates whether Refresh Tokens created during a native-to-web session are tied to that session&#39;s lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are.
+     * 
+     */
+    public Optional<Output<Boolean>> enforceCascadeRevocation() {
+        return Optional.ofNullable(this.enforceCascadeRevocation);
+    }
+
+    /**
      * Configures the level of device binding enforced when a session*transfer*token is consumed. Can be one of `ip`, `asn` or `none`.
      * 
      */
@@ -69,13 +84,30 @@ public final class ClientSessionTransferArgs extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.enforceDeviceBinding);
     }
 
+    /**
+     * Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities.
+     * 
+     */
+    @Import(name="enforceOnlineRefreshTokens")
+    private @Nullable Output<Boolean> enforceOnlineRefreshTokens;
+
+    /**
+     * @return Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities.
+     * 
+     */
+    public Optional<Output<Boolean>> enforceOnlineRefreshTokens() {
+        return Optional.ofNullable(this.enforceOnlineRefreshTokens);
+    }
+
     private ClientSessionTransferArgs() {}
 
     private ClientSessionTransferArgs(ClientSessionTransferArgs $) {
         this.allowRefreshToken = $.allowRefreshToken;
         this.allowedAuthenticationMethods = $.allowedAuthenticationMethods;
         this.canCreateSessionTransferToken = $.canCreateSessionTransferToken;
+        this.enforceCascadeRevocation = $.enforceCascadeRevocation;
         this.enforceDeviceBinding = $.enforceDeviceBinding;
+        this.enforceOnlineRefreshTokens = $.enforceOnlineRefreshTokens;
     }
 
     public static Builder builder() {
@@ -152,6 +184,27 @@ public final class ClientSessionTransferArgs extends com.pulumi.resources.Resour
         }
 
         /**
+         * @param enforceCascadeRevocation Indicates whether Refresh Tokens created during a native-to-web session are tied to that session&#39;s lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enforceCascadeRevocation(@Nullable Output<Boolean> enforceCascadeRevocation) {
+            $.enforceCascadeRevocation = enforceCascadeRevocation;
+            return this;
+        }
+
+        /**
+         * @param enforceCascadeRevocation Indicates whether Refresh Tokens created during a native-to-web session are tied to that session&#39;s lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enforceCascadeRevocation(Boolean enforceCascadeRevocation) {
+            return enforceCascadeRevocation(Output.of(enforceCascadeRevocation));
+        }
+
+        /**
          * @param enforceDeviceBinding Configures the level of device binding enforced when a session*transfer*token is consumed. Can be one of `ip`, `asn` or `none`.
          * 
          * @return builder
@@ -170,6 +223,27 @@ public final class ClientSessionTransferArgs extends com.pulumi.resources.Resour
          */
         public Builder enforceDeviceBinding(String enforceDeviceBinding) {
             return enforceDeviceBinding(Output.of(enforceDeviceBinding));
+        }
+
+        /**
+         * @param enforceOnlineRefreshTokens Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enforceOnlineRefreshTokens(@Nullable Output<Boolean> enforceOnlineRefreshTokens) {
+            $.enforceOnlineRefreshTokens = enforceOnlineRefreshTokens;
+            return this;
+        }
+
+        /**
+         * @param enforceOnlineRefreshTokens Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enforceOnlineRefreshTokens(Boolean enforceOnlineRefreshTokens) {
+            return enforceOnlineRefreshTokens(Output.of(enforceOnlineRefreshTokens));
         }
 
         public ClientSessionTransferArgs build() {
