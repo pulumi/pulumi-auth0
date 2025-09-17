@@ -143,6 +143,20 @@ public class ResourceServer extends com.pulumi.resources.CustomResource {
         return this.authorizationDetails;
     }
     /**
+     * The ID of the client associated with this resource server. If a client has been created and linked to this resource server, this field will be populated with that client&#39;s ID.
+     * 
+     */
+    @Export(name="clientId", refs={String.class}, tree="[0]")
+    private Output<String> clientId;
+
+    /**
+     * @return The ID of the client associated with this resource server. If a client has been created and linked to this resource server, this field will be populated with that client&#39;s ID.
+     * 
+     */
+    public Output<String> clientId() {
+        return this.clientId;
+    }
+    /**
      * Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
      * 
      */

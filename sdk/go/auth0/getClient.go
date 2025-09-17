@@ -74,7 +74,7 @@ type LookupClientResult struct {
 	AllowedLogoutUrls []string `pulumi:"allowedLogoutUrls"`
 	// URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
 	AllowedOrigins []string `pulumi:"allowedOrigins"`
-	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
 	AppType string `pulumi:"appType"`
 	// URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
 	Callbacks []string `pulumi:"callbacks"`
@@ -140,8 +140,10 @@ type LookupClientResult struct {
 	// Makes the use of Proof-of-Possession mandatory for this client.
 	RequireProofOfPossession bool `pulumi:"requireProofOfPossession"`
 	// Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
-	RequirePushedAuthorizationRequests bool                       `pulumi:"requirePushedAuthorizationRequests"`
-	SessionTransfers                   []GetClientSessionTransfer `pulumi:"sessionTransfers"`
+	RequirePushedAuthorizationRequests bool `pulumi:"requirePushedAuthorizationRequests"`
+	// The identifier of a resource server that client is associated withThis property can be sent only when app*type=resource*server.This property can not be changed, once the client is created.
+	ResourceServerIdentifier string                     `pulumi:"resourceServerIdentifier"`
+	SessionTransfers         []GetClientSessionTransfer `pulumi:"sessionTransfers"`
 	// Configuration for JWT-secured Authorization Requests(JAR).
 	SignedRequestObjects []GetClientSignedRequestObject `pulumi:"signedRequestObjects"`
 	// List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
@@ -216,7 +218,7 @@ func (o LookupClientResultOutput) AllowedOrigins() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupClientResult) []string { return v.AllowedOrigins }).(pulumi.StringArrayOutput)
 }
 
-// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
 func (o LookupClientResultOutput) AppType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClientResult) string { return v.AppType }).(pulumi.StringOutput)
 }
@@ -383,6 +385,11 @@ func (o LookupClientResultOutput) RequireProofOfPossession() pulumi.BoolOutput {
 // Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
 func (o LookupClientResultOutput) RequirePushedAuthorizationRequests() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupClientResult) bool { return v.RequirePushedAuthorizationRequests }).(pulumi.BoolOutput)
+}
+
+// The identifier of a resource server that client is associated withThis property can be sent only when app*type=resource*server.This property can not be changed, once the client is created.
+func (o LookupClientResultOutput) ResourceServerIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClientResult) string { return v.ResourceServerIdentifier }).(pulumi.StringOutput)
 }
 
 func (o LookupClientResultOutput) SessionTransfers() GetClientSessionTransferArrayOutput {

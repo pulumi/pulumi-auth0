@@ -90,6 +90,8 @@ type ResourceServer struct {
 	AllowOfflineAccess pulumi.BoolPtrOutput `pulumi:"allowOfflineAccess"`
 	// Authorization details for this resource server.
 	AuthorizationDetails ResourceServerAuthorizationDetailArrayOutput `pulumi:"authorizationDetails"`
+	// The ID of the client associated with this resource server. If a client has been created and linked to this resource server, this field will be populated with that client's ID.
+	ClientId pulumi.StringOutput `pulumi:"clientId"`
 	// Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
 	ConsentPolicy pulumi.StringOutput `pulumi:"consentPolicy"`
 	// If this setting is enabled, RBAC authorization policies will be enforced for this API. Role and permission assignments will be evaluated during the login transaction.
@@ -157,6 +159,8 @@ type resourceServerState struct {
 	AllowOfflineAccess *bool `pulumi:"allowOfflineAccess"`
 	// Authorization details for this resource server.
 	AuthorizationDetails []ResourceServerAuthorizationDetail `pulumi:"authorizationDetails"`
+	// The ID of the client associated with this resource server. If a client has been created and linked to this resource server, this field will be populated with that client's ID.
+	ClientId *string `pulumi:"clientId"`
 	// Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
 	ConsentPolicy *string `pulumi:"consentPolicy"`
 	// If this setting is enabled, RBAC authorization policies will be enforced for this API. Role and permission assignments will be evaluated during the login transaction.
@@ -192,6 +196,8 @@ type ResourceServerState struct {
 	AllowOfflineAccess pulumi.BoolPtrInput
 	// Authorization details for this resource server.
 	AuthorizationDetails ResourceServerAuthorizationDetailArrayInput
+	// The ID of the client associated with this resource server. If a client has been created and linked to this resource server, this field will be populated with that client's ID.
+	ClientId pulumi.StringPtrInput
 	// Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
 	ConsentPolicy pulumi.StringPtrInput
 	// If this setting is enabled, RBAC authorization policies will be enforced for this API. Role and permission assignments will be evaluated during the login transaction.
@@ -392,6 +398,11 @@ func (o ResourceServerOutput) AllowOfflineAccess() pulumi.BoolPtrOutput {
 // Authorization details for this resource server.
 func (o ResourceServerOutput) AuthorizationDetails() ResourceServerAuthorizationDetailArrayOutput {
 	return o.ApplyT(func(v *ResourceServer) ResourceServerAuthorizationDetailArrayOutput { return v.AuthorizationDetails }).(ResourceServerAuthorizationDetailArrayOutput)
+}
+
+// The ID of the client associated with this resource server. If a client has been created and linked to this resource server, this field will be populated with that client's ID.
+func (o ResourceServerOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResourceServer) pulumi.StringOutput { return v.ClientId }).(pulumi.StringOutput)
 }
 
 // Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.

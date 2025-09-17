@@ -104,6 +104,10 @@ export class ResourceServer extends pulumi.CustomResource {
      */
     declare public readonly authorizationDetails: pulumi.Output<outputs.ResourceServerAuthorizationDetail[]>;
     /**
+     * The ID of the client associated with this resource server. If a client has been created and linked to this resource server, this field will be populated with that client's ID.
+     */
+    declare public /*out*/ readonly clientId: pulumi.Output<string>;
+    /**
      * Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
      */
     declare public readonly consentPolicy: pulumi.Output<string>;
@@ -175,6 +179,7 @@ export class ResourceServer extends pulumi.CustomResource {
             const state = argsOrState as ResourceServerState | undefined;
             resourceInputs["allowOfflineAccess"] = state?.allowOfflineAccess;
             resourceInputs["authorizationDetails"] = state?.authorizationDetails;
+            resourceInputs["clientId"] = state?.clientId;
             resourceInputs["consentPolicy"] = state?.consentPolicy;
             resourceInputs["enforcePolicies"] = state?.enforcePolicies;
             resourceInputs["identifier"] = state?.identifier;
@@ -210,6 +215,7 @@ export class ResourceServer extends pulumi.CustomResource {
             resourceInputs["tokenLifetime"] = args?.tokenLifetime;
             resourceInputs["tokenLifetimeForWeb"] = args?.tokenLifetimeForWeb;
             resourceInputs["verificationLocation"] = args?.verificationLocation;
+            resourceInputs["clientId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ResourceServer.__pulumiType, name, resourceInputs, opts);
@@ -228,6 +234,10 @@ export interface ResourceServerState {
      * Authorization details for this resource server.
      */
     authorizationDetails?: pulumi.Input<pulumi.Input<inputs.ResourceServerAuthorizationDetail>[]>;
+    /**
+     * The ID of the client associated with this resource server. If a client has been created and linked to this resource server, this field will be populated with that client's ID.
+     */
+    clientId?: pulumi.Input<string>;
     /**
      * Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
      */

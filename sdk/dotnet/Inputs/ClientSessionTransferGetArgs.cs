@@ -33,10 +33,22 @@ namespace Pulumi.Auth0.Inputs
         public Input<bool>? CanCreateSessionTransferToken { get; set; }
 
         /// <summary>
+        /// Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are.
+        /// </summary>
+        [Input("enforceCascadeRevocation")]
+        public Input<bool>? EnforceCascadeRevocation { get; set; }
+
+        /// <summary>
         /// Configures the level of device binding enforced when a session*transfer*token is consumed. Can be one of `ip`, `asn` or `none`.
         /// </summary>
         [Input("enforceDeviceBinding")]
         public Input<string>? EnforceDeviceBinding { get; set; }
+
+        /// <summary>
+        /// Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities.
+        /// </summary>
+        [Input("enforceOnlineRefreshTokens")]
+        public Input<bool>? EnforceOnlineRefreshTokens { get; set; }
 
         public ClientSessionTransferGetArgs()
         {

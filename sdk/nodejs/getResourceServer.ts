@@ -61,6 +61,10 @@ export interface GetResourceServerResult {
      */
     readonly authorizationDetails: outputs.GetResourceServerAuthorizationDetail[];
     /**
+     * The ID of the client associated with this resource server. If a client has been created and linked to this resource server, this field will be populated with that client's ID.
+     */
+    readonly clientId: string;
+    /**
      * Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
      */
     readonly consentPolicy: string;

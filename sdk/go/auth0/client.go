@@ -33,7 +33,7 @@ type Client struct {
 	AllowedLogoutUrls pulumi.StringArrayOutput `pulumi:"allowedLogoutUrls"`
 	// URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
 	AllowedOrigins pulumi.StringArrayOutput `pulumi:"allowedOrigins"`
-	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
 	AppType pulumi.StringPtrOutput `pulumi:"appType"`
 	// URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
 	Callbacks pulumi.StringArrayOutput `pulumi:"callbacks"`
@@ -96,8 +96,10 @@ type Client struct {
 	// Makes the use of Proof-of-Possession mandatory for this client.
 	RequireProofOfPossession pulumi.BoolPtrOutput `pulumi:"requireProofOfPossession"`
 	// Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
-	RequirePushedAuthorizationRequests pulumi.BoolPtrOutput           `pulumi:"requirePushedAuthorizationRequests"`
-	SessionTransfer                    ClientSessionTransferPtrOutput `pulumi:"sessionTransfer"`
+	RequirePushedAuthorizationRequests pulumi.BoolPtrOutput `pulumi:"requirePushedAuthorizationRequests"`
+	// The identifier of a resource server that client is associated withThis property can be sent only when app*type=resource*server.This property can not be changed, once the client is created.
+	ResourceServerIdentifier pulumi.StringPtrOutput         `pulumi:"resourceServerIdentifier"`
+	SessionTransfer          ClientSessionTransferPtrOutput `pulumi:"sessionTransfer"`
 	// List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
 	SigningKeys pulumi.StringMapArrayOutput `pulumi:"signingKeys"`
 	// Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
@@ -157,7 +159,7 @@ type clientState struct {
 	AllowedLogoutUrls []string `pulumi:"allowedLogoutUrls"`
 	// URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
 	AllowedOrigins []string `pulumi:"allowedOrigins"`
-	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
 	AppType *string `pulumi:"appType"`
 	// URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
 	Callbacks []string `pulumi:"callbacks"`
@@ -220,8 +222,10 @@ type clientState struct {
 	// Makes the use of Proof-of-Possession mandatory for this client.
 	RequireProofOfPossession *bool `pulumi:"requireProofOfPossession"`
 	// Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
-	RequirePushedAuthorizationRequests *bool                  `pulumi:"requirePushedAuthorizationRequests"`
-	SessionTransfer                    *ClientSessionTransfer `pulumi:"sessionTransfer"`
+	RequirePushedAuthorizationRequests *bool `pulumi:"requirePushedAuthorizationRequests"`
+	// The identifier of a resource server that client is associated withThis property can be sent only when app*type=resource*server.This property can not be changed, once the client is created.
+	ResourceServerIdentifier *string                `pulumi:"resourceServerIdentifier"`
+	SessionTransfer          *ClientSessionTransfer `pulumi:"sessionTransfer"`
 	// List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
 	SigningKeys []map[string]string `pulumi:"signingKeys"`
 	// Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
@@ -245,7 +249,7 @@ type ClientState struct {
 	AllowedLogoutUrls pulumi.StringArrayInput
 	// URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
 	AllowedOrigins pulumi.StringArrayInput
-	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
 	AppType pulumi.StringPtrInput
 	// URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
 	Callbacks pulumi.StringArrayInput
@@ -309,7 +313,9 @@ type ClientState struct {
 	RequireProofOfPossession pulumi.BoolPtrInput
 	// Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
 	RequirePushedAuthorizationRequests pulumi.BoolPtrInput
-	SessionTransfer                    ClientSessionTransferPtrInput
+	// The identifier of a resource server that client is associated withThis property can be sent only when app*type=resource*server.This property can not be changed, once the client is created.
+	ResourceServerIdentifier pulumi.StringPtrInput
+	SessionTransfer          ClientSessionTransferPtrInput
 	// List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
 	SigningKeys pulumi.StringMapArrayInput
 	// Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
@@ -337,7 +343,7 @@ type clientArgs struct {
 	AllowedLogoutUrls []string `pulumi:"allowedLogoutUrls"`
 	// URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
 	AllowedOrigins []string `pulumi:"allowedOrigins"`
-	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
 	AppType *string `pulumi:"appType"`
 	// URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
 	Callbacks []string `pulumi:"callbacks"`
@@ -398,8 +404,10 @@ type clientArgs struct {
 	// Makes the use of Proof-of-Possession mandatory for this client.
 	RequireProofOfPossession *bool `pulumi:"requireProofOfPossession"`
 	// Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
-	RequirePushedAuthorizationRequests *bool                  `pulumi:"requirePushedAuthorizationRequests"`
-	SessionTransfer                    *ClientSessionTransfer `pulumi:"sessionTransfer"`
+	RequirePushedAuthorizationRequests *bool `pulumi:"requirePushedAuthorizationRequests"`
+	// The identifier of a resource server that client is associated withThis property can be sent only when app*type=resource*server.This property can not be changed, once the client is created.
+	ResourceServerIdentifier *string                `pulumi:"resourceServerIdentifier"`
+	SessionTransfer          *ClientSessionTransfer `pulumi:"sessionTransfer"`
 	// Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
 	Sso *bool `pulumi:"sso"`
 	// Indicates whether or not SSO is disabled.
@@ -422,7 +430,7 @@ type ClientArgs struct {
 	AllowedLogoutUrls pulumi.StringArrayInput
 	// URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
 	AllowedOrigins pulumi.StringArrayInput
-	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
 	AppType pulumi.StringPtrInput
 	// URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
 	Callbacks pulumi.StringArrayInput
@@ -484,7 +492,9 @@ type ClientArgs struct {
 	RequireProofOfPossession pulumi.BoolPtrInput
 	// Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
 	RequirePushedAuthorizationRequests pulumi.BoolPtrInput
-	SessionTransfer                    ClientSessionTransferPtrInput
+	// The identifier of a resource server that client is associated withThis property can be sent only when app*type=resource*server.This property can not be changed, once the client is created.
+	ResourceServerIdentifier pulumi.StringPtrInput
+	SessionTransfer          ClientSessionTransferPtrInput
 	// Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
 	Sso pulumi.BoolPtrInput
 	// Indicates whether or not SSO is disabled.
@@ -604,7 +614,7 @@ func (o ClientOutput) AllowedOrigins() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Client) pulumi.StringArrayOutput { return v.AllowedOrigins }).(pulumi.StringArrayOutput)
 }
 
-// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
 func (o ClientOutput) AppType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Client) pulumi.StringPtrOutput { return v.AppType }).(pulumi.StringPtrOutput)
 }
@@ -759,6 +769,11 @@ func (o ClientOutput) RequireProofOfPossession() pulumi.BoolPtrOutput {
 // Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
 func (o ClientOutput) RequirePushedAuthorizationRequests() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Client) pulumi.BoolPtrOutput { return v.RequirePushedAuthorizationRequests }).(pulumi.BoolPtrOutput)
+}
+
+// The identifier of a resource server that client is associated withThis property can be sent only when app*type=resource*server.This property can not be changed, once the client is created.
+func (o ClientOutput) ResourceServerIdentifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Client) pulumi.StringPtrOutput { return v.ResourceServerIdentifier }).(pulumi.StringPtrOutput)
 }
 
 func (o ClientOutput) SessionTransfer() ClientSessionTransferPtrOutput {

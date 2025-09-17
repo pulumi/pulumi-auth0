@@ -64,7 +64,7 @@ export class Client extends pulumi.CustomResource {
      */
     declare public readonly allowedOrigins: pulumi.Output<string[] | undefined>;
     /**
-     * Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+     * Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
      */
     declare public readonly appType: pulumi.Output<string | undefined>;
     /**
@@ -189,6 +189,10 @@ export class Client extends pulumi.CustomResource {
      * Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
      */
     declare public readonly requirePushedAuthorizationRequests: pulumi.Output<boolean | undefined>;
+    /**
+     * The identifier of a resource server that client is associated withThis property can be sent only when app*type=resource*server.This property can not be changed, once the client is created.
+     */
+    declare public readonly resourceServerIdentifier: pulumi.Output<string | undefined>;
     declare public readonly sessionTransfer: pulumi.Output<outputs.ClientSessionTransfer | undefined>;
     /**
      * List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
@@ -263,6 +267,7 @@ export class Client extends pulumi.CustomResource {
             resourceInputs["refreshToken"] = state?.refreshToken;
             resourceInputs["requireProofOfPossession"] = state?.requireProofOfPossession;
             resourceInputs["requirePushedAuthorizationRequests"] = state?.requirePushedAuthorizationRequests;
+            resourceInputs["resourceServerIdentifier"] = state?.resourceServerIdentifier;
             resourceInputs["sessionTransfer"] = state?.sessionTransfer;
             resourceInputs["signingKeys"] = state?.signingKeys;
             resourceInputs["sso"] = state?.sso;
@@ -306,6 +311,7 @@ export class Client extends pulumi.CustomResource {
             resourceInputs["refreshToken"] = args?.refreshToken;
             resourceInputs["requireProofOfPossession"] = args?.requireProofOfPossession;
             resourceInputs["requirePushedAuthorizationRequests"] = args?.requirePushedAuthorizationRequests;
+            resourceInputs["resourceServerIdentifier"] = args?.resourceServerIdentifier;
             resourceInputs["sessionTransfer"] = args?.sessionTransfer;
             resourceInputs["sso"] = args?.sso;
             resourceInputs["ssoDisabled"] = args?.ssoDisabled;
@@ -343,7 +349,7 @@ export interface ClientState {
      */
     allowedOrigins?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+     * Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
      */
     appType?: pulumi.Input<string>;
     /**
@@ -468,6 +474,10 @@ export interface ClientState {
      * Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
      */
     requirePushedAuthorizationRequests?: pulumi.Input<boolean>;
+    /**
+     * The identifier of a resource server that client is associated withThis property can be sent only when app*type=resource*server.This property can not be changed, once the client is created.
+     */
+    resourceServerIdentifier?: pulumi.Input<string>;
     sessionTransfer?: pulumi.Input<inputs.ClientSessionTransfer>;
     /**
      * List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
@@ -516,7 +526,7 @@ export interface ClientArgs {
      */
     allowedOrigins?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+     * Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
      */
     appType?: pulumi.Input<string>;
     /**
@@ -637,6 +647,10 @@ export interface ClientArgs {
      * Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
      */
     requirePushedAuthorizationRequests?: pulumi.Input<boolean>;
+    /**
+     * The identifier of a resource server that client is associated withThis property can be sent only when app*type=resource*server.This property can not be changed, once the client is created.
+     */
+    resourceServerIdentifier?: pulumi.Input<string>;
     sessionTransfer?: pulumi.Input<inputs.ClientSessionTransfer>;
     /**
      * Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).

@@ -26,7 +26,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly ImmutableArray<string> AllowedOrigins;
         /// <summary>
-        /// Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+        /// Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
         /// </summary>
         public readonly string AppType;
         /// <summary>
@@ -66,6 +66,10 @@ namespace Pulumi.Auth0.Outputs
         /// Configure OIDC logout for the Client
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClientsClientOidcLogoutResult> OidcLogouts;
+        /// <summary>
+        /// The identifier of a resource server that client is associated withThis property can be sent only when app_type=resource_server.This property can not be changed, once the client is created.
+        /// </summary>
+        public readonly string ResourceServerIdentifier;
         public readonly ImmutableArray<Outputs.GetClientsClientSessionTransferResult> SessionTransfers;
         /// <summary>
         /// Allows configuration for token exchange
@@ -110,6 +114,8 @@ namespace Pulumi.Auth0.Outputs
 
             ImmutableArray<Outputs.GetClientsClientOidcLogoutResult> oidcLogouts,
 
+            string resourceServerIdentifier,
+
             ImmutableArray<Outputs.GetClientsClientSessionTransferResult> sessionTransfers,
 
             ImmutableArray<Outputs.GetClientsClientTokenExchangeResult> tokenExchanges,
@@ -132,6 +138,7 @@ namespace Pulumi.Auth0.Outputs
             IsTokenEndpointIpHeaderTrusted = isTokenEndpointIpHeaderTrusted;
             Name = name;
             OidcLogouts = oidcLogouts;
+            ResourceServerIdentifier = resourceServerIdentifier;
             SessionTransfers = sessionTransfers;
             TokenExchanges = tokenExchanges;
             TokenQuotas = tokenQuotas;

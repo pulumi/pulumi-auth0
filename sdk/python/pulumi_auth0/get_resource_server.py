@@ -27,13 +27,16 @@ class GetResourceServerResult:
     """
     A collection of values returned by getResourceServer.
     """
-    def __init__(__self__, allow_offline_access=None, authorization_details=None, consent_policy=None, enforce_policies=None, id=None, identifier=None, name=None, proof_of_possessions=None, resource_server_id=None, scopes=None, signing_alg=None, signing_secret=None, skip_consent_for_verifiable_first_party_clients=None, subject_type_authorizations=None, token_dialect=None, token_encryptions=None, token_lifetime=None, token_lifetime_for_web=None, verification_location=None):
+    def __init__(__self__, allow_offline_access=None, authorization_details=None, client_id=None, consent_policy=None, enforce_policies=None, id=None, identifier=None, name=None, proof_of_possessions=None, resource_server_id=None, scopes=None, signing_alg=None, signing_secret=None, skip_consent_for_verifiable_first_party_clients=None, subject_type_authorizations=None, token_dialect=None, token_encryptions=None, token_lifetime=None, token_lifetime_for_web=None, verification_location=None):
         if allow_offline_access and not isinstance(allow_offline_access, bool):
             raise TypeError("Expected argument 'allow_offline_access' to be a bool")
         pulumi.set(__self__, "allow_offline_access", allow_offline_access)
         if authorization_details and not isinstance(authorization_details, list):
             raise TypeError("Expected argument 'authorization_details' to be a list")
         pulumi.set(__self__, "authorization_details", authorization_details)
+        if client_id and not isinstance(client_id, str):
+            raise TypeError("Expected argument 'client_id' to be a str")
+        pulumi.set(__self__, "client_id", client_id)
         if consent_policy and not isinstance(consent_policy, str):
             raise TypeError("Expected argument 'consent_policy' to be a str")
         pulumi.set(__self__, "consent_policy", consent_policy)
@@ -101,6 +104,14 @@ class GetResourceServerResult:
         Authorization details for this resource server.
         """
         return pulumi.get(self, "authorization_details")
+
+    @_builtins.property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> _builtins.str:
+        """
+        The ID of the client associated with this resource server. If a client has been created and linked to this resource server, this field will be populated with that client's ID.
+        """
+        return pulumi.get(self, "client_id")
 
     @_builtins.property
     @pulumi.getter(name="consentPolicy")
@@ -247,6 +258,7 @@ class AwaitableGetResourceServerResult(GetResourceServerResult):
         return GetResourceServerResult(
             allow_offline_access=self.allow_offline_access,
             authorization_details=self.authorization_details,
+            client_id=self.client_id,
             consent_policy=self.consent_policy,
             enforce_policies=self.enforce_policies,
             id=self.id,
@@ -297,6 +309,7 @@ def get_resource_server(identifier: Optional[_builtins.str] = None,
     return AwaitableGetResourceServerResult(
         allow_offline_access=pulumi.get(__ret__, 'allow_offline_access'),
         authorization_details=pulumi.get(__ret__, 'authorization_details'),
+        client_id=pulumi.get(__ret__, 'client_id'),
         consent_policy=pulumi.get(__ret__, 'consent_policy'),
         enforce_policies=pulumi.get(__ret__, 'enforce_policies'),
         id=pulumi.get(__ret__, 'id'),
@@ -344,6 +357,7 @@ def get_resource_server_output(identifier: Optional[pulumi.Input[Optional[_built
     return __ret__.apply(lambda __response__: GetResourceServerResult(
         allow_offline_access=pulumi.get(__response__, 'allow_offline_access'),
         authorization_details=pulumi.get(__response__, 'authorization_details'),
+        client_id=pulumi.get(__response__, 'client_id'),
         consent_policy=pulumi.get(__response__, 'consent_policy'),
         enforce_policies=pulumi.get(__response__, 'enforce_policies'),
         id=pulumi.get(__response__, 'id'),

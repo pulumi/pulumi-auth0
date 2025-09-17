@@ -90,14 +90,14 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+     * Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
      * 
      */
     @Import(name="appType")
     private @Nullable Output<String> appType;
 
     /**
-     * @return Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+     * @return Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
      * 
      */
     public Optional<Output<String>> appType() {
@@ -547,6 +547,21 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.requirePushedAuthorizationRequests);
     }
 
+    /**
+     * The identifier of a resource server that client is associated withThis property can be sent only when app*type=resource*server.This property can not be changed, once the client is created.
+     * 
+     */
+    @Import(name="resourceServerIdentifier")
+    private @Nullable Output<String> resourceServerIdentifier;
+
+    /**
+     * @return The identifier of a resource server that client is associated withThis property can be sent only when app*type=resource*server.This property can not be changed, once the client is created.
+     * 
+     */
+    public Optional<Output<String>> resourceServerIdentifier() {
+        return Optional.ofNullable(this.resourceServerIdentifier);
+    }
+
     @Import(name="sessionTransfer")
     private @Nullable Output<ClientSessionTransferArgs> sessionTransfer;
 
@@ -666,6 +681,7 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
         this.refreshToken = $.refreshToken;
         this.requireProofOfPossession = $.requireProofOfPossession;
         this.requirePushedAuthorizationRequests = $.requirePushedAuthorizationRequests;
+        this.resourceServerIdentifier = $.resourceServerIdentifier;
         this.sessionTransfer = $.sessionTransfer;
         this.sso = $.sso;
         this.ssoDisabled = $.ssoDisabled;
@@ -807,7 +823,7 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appType Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+         * @param appType Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
          * 
          * @return builder
          * 
@@ -818,7 +834,7 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appType Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+         * @param appType Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
          * 
          * @return builder
          * 
@@ -1486,6 +1502,27 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder requirePushedAuthorizationRequests(Boolean requirePushedAuthorizationRequests) {
             return requirePushedAuthorizationRequests(Output.of(requirePushedAuthorizationRequests));
+        }
+
+        /**
+         * @param resourceServerIdentifier The identifier of a resource server that client is associated withThis property can be sent only when app*type=resource*server.This property can not be changed, once the client is created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceServerIdentifier(@Nullable Output<String> resourceServerIdentifier) {
+            $.resourceServerIdentifier = resourceServerIdentifier;
+            return this;
+        }
+
+        /**
+         * @param resourceServerIdentifier The identifier of a resource server that client is associated withThis property can be sent only when app*type=resource*server.This property can not be changed, once the client is created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceServerIdentifier(String resourceServerIdentifier) {
+            return resourceServerIdentifier(Output.of(resourceServerIdentifier));
         }
 
         public Builder sessionTransfer(@Nullable Output<ClientSessionTransferArgs> sessionTransfer) {

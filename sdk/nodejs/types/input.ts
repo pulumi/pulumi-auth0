@@ -1330,9 +1330,17 @@ export interface ClientSessionTransfer {
      */
     canCreateSessionTransferToken?: pulumi.Input<boolean>;
     /**
+     * Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are.
+     */
+    enforceCascadeRevocation?: pulumi.Input<boolean>;
+    /**
      * Configures the level of device binding enforced when a session*transfer*token is consumed. Can be one of `ip`, `asn` or `none`.
      */
     enforceDeviceBinding?: pulumi.Input<string>;
+    /**
+     * Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities.
+     */
+    enforceOnlineRefreshTokens?: pulumi.Input<boolean>;
 }
 
 export interface ClientTokenExchange {

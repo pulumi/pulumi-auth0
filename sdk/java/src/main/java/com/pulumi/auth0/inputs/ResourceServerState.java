@@ -53,6 +53,21 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * The ID of the client associated with this resource server. If a client has been created and linked to this resource server, this field will be populated with that client&#39;s ID.
+     * 
+     */
+    @Import(name="clientId")
+    private @Nullable Output<String> clientId;
+
+    /**
+     * @return The ID of the client associated with this resource server. If a client has been created and linked to this resource server, this field will be populated with that client&#39;s ID.
+     * 
+     */
+    public Optional<Output<String>> clientId() {
+        return Optional.ofNullable(this.clientId);
+    }
+
+    /**
      * Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
      * 
      */
@@ -267,6 +282,7 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
     private ResourceServerState(ResourceServerState $) {
         this.allowOfflineAccess = $.allowOfflineAccess;
         this.authorizationDetails = $.authorizationDetails;
+        this.clientId = $.clientId;
         this.consentPolicy = $.consentPolicy;
         this.enforcePolicies = $.enforcePolicies;
         this.identifier = $.identifier;
@@ -351,6 +367,27 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
          */
         public Builder authorizationDetails(ResourceServerAuthorizationDetailArgs... authorizationDetails) {
             return authorizationDetails(List.of(authorizationDetails));
+        }
+
+        /**
+         * @param clientId The ID of the client associated with this resource server. If a client has been created and linked to this resource server, this field will be populated with that client&#39;s ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientId(@Nullable Output<String> clientId) {
+            $.clientId = clientId;
+            return this;
+        }
+
+        /**
+         * @param clientId The ID of the client associated with this resource server. If a client has been created and linked to this resource server, this field will be populated with that client&#39;s ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientId(String clientId) {
+            return clientId(Output.of(clientId));
         }
 
         /**

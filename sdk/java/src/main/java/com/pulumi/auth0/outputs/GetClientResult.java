@@ -48,7 +48,7 @@ public final class GetClientResult {
      */
     private List<String> allowedOrigins;
     /**
-     * @return Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+     * @return Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
      * 
      */
     private String appType;
@@ -213,6 +213,11 @@ public final class GetClientResult {
      * 
      */
     private Boolean requirePushedAuthorizationRequests;
+    /**
+     * @return The identifier of a resource server that client is associated withThis property can be sent only when app*type=resource*server.This property can not be changed, once the client is created.
+     * 
+     */
+    private String resourceServerIdentifier;
     private List<GetClientSessionTransfer> sessionTransfers;
     /**
      * @return Configuration for JWT-secured Authorization Requests(JAR).
@@ -285,7 +290,7 @@ public final class GetClientResult {
         return this.allowedOrigins;
     }
     /**
-     * @return Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+     * @return Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
      * 
      */
     public String appType() {
@@ -518,6 +523,13 @@ public final class GetClientResult {
     public Boolean requirePushedAuthorizationRequests() {
         return this.requirePushedAuthorizationRequests;
     }
+    /**
+     * @return The identifier of a resource server that client is associated withThis property can be sent only when app*type=resource*server.This property can not be changed, once the client is created.
+     * 
+     */
+    public String resourceServerIdentifier() {
+        return this.resourceServerIdentifier;
+    }
     public List<GetClientSessionTransfer> sessionTransfers() {
         return this.sessionTransfers;
     }
@@ -625,6 +637,7 @@ public final class GetClientResult {
         private List<GetClientRefreshToken> refreshTokens;
         private Boolean requireProofOfPossession;
         private Boolean requirePushedAuthorizationRequests;
+        private String resourceServerIdentifier;
         private List<GetClientSessionTransfer> sessionTransfers;
         private List<GetClientSignedRequestObject> signedRequestObjects;
         private List<Map<String,String>> signingKeys;
@@ -675,6 +688,7 @@ public final class GetClientResult {
     	      this.refreshTokens = defaults.refreshTokens;
     	      this.requireProofOfPossession = defaults.requireProofOfPossession;
     	      this.requirePushedAuthorizationRequests = defaults.requirePushedAuthorizationRequests;
+    	      this.resourceServerIdentifier = defaults.resourceServerIdentifier;
     	      this.sessionTransfers = defaults.sessionTransfers;
     	      this.signedRequestObjects = defaults.signedRequestObjects;
     	      this.signingKeys = defaults.signingKeys;
@@ -1032,6 +1046,14 @@ public final class GetClientResult {
             return this;
         }
         @CustomType.Setter
+        public Builder resourceServerIdentifier(String resourceServerIdentifier) {
+            if (resourceServerIdentifier == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "resourceServerIdentifier");
+            }
+            this.resourceServerIdentifier = resourceServerIdentifier;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sessionTransfers(List<GetClientSessionTransfer> sessionTransfers) {
             if (sessionTransfers == null) {
               throw new MissingRequiredPropertyException("GetClientResult", "sessionTransfers");
@@ -1158,6 +1180,7 @@ public final class GetClientResult {
             _resultValue.refreshTokens = refreshTokens;
             _resultValue.requireProofOfPossession = requireProofOfPossession;
             _resultValue.requirePushedAuthorizationRequests = requirePushedAuthorizationRequests;
+            _resultValue.resourceServerIdentifier = resourceServerIdentifier;
             _resultValue.sessionTransfers = sessionTransfers;
             _resultValue.signedRequestObjects = signedRequestObjects;
             _resultValue.signingKeys = signingKeys;

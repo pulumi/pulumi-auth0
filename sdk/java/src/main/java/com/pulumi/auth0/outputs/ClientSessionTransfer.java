@@ -25,10 +25,20 @@ public final class ClientSessionTransfer {
      */
     private @Nullable Boolean canCreateSessionTransferToken;
     /**
+     * @return Indicates whether Refresh Tokens created during a native-to-web session are tied to that session&#39;s lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are.
+     * 
+     */
+    private @Nullable Boolean enforceCascadeRevocation;
+    /**
      * @return Configures the level of device binding enforced when a session*transfer*token is consumed. Can be one of `ip`, `asn` or `none`.
      * 
      */
     private @Nullable String enforceDeviceBinding;
+    /**
+     * @return Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities.
+     * 
+     */
+    private @Nullable Boolean enforceOnlineRefreshTokens;
 
     private ClientSessionTransfer() {}
     /**
@@ -49,11 +59,25 @@ public final class ClientSessionTransfer {
         return Optional.ofNullable(this.canCreateSessionTransferToken);
     }
     /**
+     * @return Indicates whether Refresh Tokens created during a native-to-web session are tied to that session&#39;s lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are.
+     * 
+     */
+    public Optional<Boolean> enforceCascadeRevocation() {
+        return Optional.ofNullable(this.enforceCascadeRevocation);
+    }
+    /**
      * @return Configures the level of device binding enforced when a session*transfer*token is consumed. Can be one of `ip`, `asn` or `none`.
      * 
      */
     public Optional<String> enforceDeviceBinding() {
         return Optional.ofNullable(this.enforceDeviceBinding);
+    }
+    /**
+     * @return Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities.
+     * 
+     */
+    public Optional<Boolean> enforceOnlineRefreshTokens() {
+        return Optional.ofNullable(this.enforceOnlineRefreshTokens);
     }
 
     public static Builder builder() {
@@ -68,14 +92,18 @@ public final class ClientSessionTransfer {
         private @Nullable Boolean allowRefreshToken;
         private @Nullable List<String> allowedAuthenticationMethods;
         private @Nullable Boolean canCreateSessionTransferToken;
+        private @Nullable Boolean enforceCascadeRevocation;
         private @Nullable String enforceDeviceBinding;
+        private @Nullable Boolean enforceOnlineRefreshTokens;
         public Builder() {}
         public Builder(ClientSessionTransfer defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowRefreshToken = defaults.allowRefreshToken;
     	      this.allowedAuthenticationMethods = defaults.allowedAuthenticationMethods;
     	      this.canCreateSessionTransferToken = defaults.canCreateSessionTransferToken;
+    	      this.enforceCascadeRevocation = defaults.enforceCascadeRevocation;
     	      this.enforceDeviceBinding = defaults.enforceDeviceBinding;
+    	      this.enforceOnlineRefreshTokens = defaults.enforceOnlineRefreshTokens;
         }
 
         @CustomType.Setter
@@ -100,9 +128,21 @@ public final class ClientSessionTransfer {
             return this;
         }
         @CustomType.Setter
+        public Builder enforceCascadeRevocation(@Nullable Boolean enforceCascadeRevocation) {
+
+            this.enforceCascadeRevocation = enforceCascadeRevocation;
+            return this;
+        }
+        @CustomType.Setter
         public Builder enforceDeviceBinding(@Nullable String enforceDeviceBinding) {
 
             this.enforceDeviceBinding = enforceDeviceBinding;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enforceOnlineRefreshTokens(@Nullable Boolean enforceOnlineRefreshTokens) {
+
+            this.enforceOnlineRefreshTokens = enforceOnlineRefreshTokens;
             return this;
         }
         public ClientSessionTransfer build() {
@@ -110,7 +150,9 @@ public final class ClientSessionTransfer {
             _resultValue.allowRefreshToken = allowRefreshToken;
             _resultValue.allowedAuthenticationMethods = allowedAuthenticationMethods;
             _resultValue.canCreateSessionTransferToken = canCreateSessionTransferToken;
+            _resultValue.enforceCascadeRevocation = enforceCascadeRevocation;
             _resultValue.enforceDeviceBinding = enforceDeviceBinding;
+            _resultValue.enforceOnlineRefreshTokens = enforceOnlineRefreshTokens;
             return _resultValue;
         }
     }

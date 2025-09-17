@@ -16,6 +16,8 @@ namespace Pulumi.Auth0
     /// appends an action to the trigger binding. To avoid potential issues, it is recommended not to use this resource in
     /// conjunction with the `auth0.TriggerAction` resource when binding actions to the same trigger.
     /// 
+    /// &gt; The list of supported runtimes for a trigger are available via [Get triggers](https://auth0.com/docs/api/management/v2/actions/get-triggers)
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
