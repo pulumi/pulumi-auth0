@@ -1262,6 +1262,58 @@
                 "current": "auth0:index/user:User",
                 "majorVersion": 3
             },
+            "auth0_user_attribute_profile": {
+                "current": "auth0:index/userAttributeProfile:UserAttributeProfile",
+                "majorVersion": 3,
+                "fields": {
+                    "user_attributes": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "oidc_mapping": {
+                                    "maxItemsOne": true
+                                },
+                                "saml_mapping": {
+                                    "maxItemsOne": false
+                                },
+                                "strategy_overrides": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "oidc_mapping": {
+                                                "maxItemsOne": true
+                                            },
+                                            "saml_mapping": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "user_id": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "saml_mapping": {
+                                    "maxItemsOne": false
+                                },
+                                "strategy_overrides": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "saml_mapping": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "auth0_user_permission": {
                 "current": "auth0:index/userPermission:UserPermission",
                 "majorVersion": 3
@@ -2192,6 +2244,32 @@
                     }
                 }
             },
+            "auth0_outbound_ips": {
+                "current": "auth0:index/getOutboundIps:getOutboundIps",
+                "majorVersion": 3,
+                "fields": {
+                    "changelog": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "ipv4_cidrs": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "regions": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "ipv4_cidrs": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "auth0_pages": {
                 "current": "auth0:index/getPages:getPages",
                 "majorVersion": 3,
@@ -2411,6 +2489,58 @@
                     },
                     "roles": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "auth0_user_attribute_profile": {
+                "current": "auth0:index/getUserAttributeProfile:getUserAttributeProfile",
+                "majorVersion": 3,
+                "fields": {
+                    "user_attributes": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "oidc_mapping": {
+                                    "maxItemsOne": false
+                                },
+                                "saml_mapping": {
+                                    "maxItemsOne": false
+                                },
+                                "strategy_overrides": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "oidc_mapping": {
+                                                "maxItemsOne": false
+                                            },
+                                            "saml_mapping": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "user_id": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "saml_mapping": {
+                                    "maxItemsOne": false
+                                },
+                                "strategy_overrides": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "saml_mapping": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
