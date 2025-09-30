@@ -149,7 +149,11 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly string UpdatedAt;
         /// <summary>
-        /// This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0.
+        /// The ID of the user attribute profile to use for this self-service profile. Cannot be used with user_attributes.
+        /// </summary>
+        public readonly string UserAttributeProfileId;
+        /// <summary>
+        /// This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0. Cannot be used with user*attribute*profile*id.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetSelfServiceProfileUserAttributeResult> UserAttributes;
 
@@ -169,6 +173,8 @@ namespace Pulumi.Auth0
 
             string updatedAt,
 
+            string userAttributeProfileId,
+
             ImmutableArray<Outputs.GetSelfServiceProfileUserAttributeResult> userAttributes)
         {
             AllowedStrategies = allowedStrategies;
@@ -178,6 +184,7 @@ namespace Pulumi.Auth0
             Id = id;
             Name = name;
             UpdatedAt = updatedAt;
+            UserAttributeProfileId = userAttributeProfileId;
             UserAttributes = userAttributes;
         }
     }

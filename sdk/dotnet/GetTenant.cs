@@ -180,6 +180,10 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly ImmutableArray<Outputs.GetTenantSessionResult> Sessions;
         /// <summary>
+        /// Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+        /// </summary>
+        public readonly bool SkipNonVerifiableCallbackUriConfirmationPrompt;
+        /// <summary>
         /// Support email address for authenticating users.
         /// </summary>
         public readonly string SupportEmail;
@@ -240,6 +244,8 @@ namespace Pulumi.Auth0
 
             ImmutableArray<Outputs.GetTenantSessionResult> sessions,
 
+            bool skipNonVerifiableCallbackUriConfirmationPrompt,
+
             string supportEmail,
 
             string supportUrl)
@@ -269,6 +275,7 @@ namespace Pulumi.Auth0
             SessionCookies = sessionCookies;
             SessionLifetime = sessionLifetime;
             Sessions = sessions;
+            SkipNonVerifiableCallbackUriConfirmationPrompt = skipNonVerifiableCallbackUriConfirmationPrompt;
             SupportEmail = supportEmail;
             SupportUrl = supportUrl;
         }

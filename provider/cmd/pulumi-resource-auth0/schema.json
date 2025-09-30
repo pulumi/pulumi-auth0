@@ -2543,6 +2543,10 @@
                     },
                     "description": "Defines signup settings for Email attribute\n"
                 },
+                "unique": {
+                    "type": "boolean",
+                    "description": "If set to false, it allow multiple accounts with the same email address\n"
+                },
                 "verificationMethod": {
                     "type": "string",
                     "description": "Defines whether whether user will receive a link or an OTP during user signup for email verification and password reset for email verification\n"
@@ -4849,6 +4853,217 @@
                 "displayName",
                 "id"
             ]
+        },
+        "auth0:index/UserAttributeProfileUserAttribute:UserAttributeProfileUserAttribute": {
+            "properties": {
+                "auth0Mapping": {
+                    "type": "string",
+                    "description": "The Auth0 mapping for the user attribute.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the user attribute.\n"
+                },
+                "label": {
+                    "type": "string",
+                    "description": "Display label for the user attribute.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the user attribute.\n"
+                },
+                "oidcMapping": {
+                    "$ref": "#/types/auth0:index/UserAttributeProfileUserAttributeOidcMapping:UserAttributeProfileUserAttributeOidcMapping",
+                    "description": "The OIDC mapping configuration for the user attribute.\n"
+                },
+                "profileRequired": {
+                    "type": "boolean",
+                    "description": "Whether the attribute is required in the profile.\n"
+                },
+                "samlMappings": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "SAML mapping override for this strategy.\n"
+                },
+                "scimMapping": {
+                    "type": "string",
+                    "description": "The SCIM mapping for the user attribute.\n"
+                },
+                "strategyOverrides": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/UserAttributeProfileUserAttributeStrategyOverride:UserAttributeProfileUserAttributeStrategyOverride"
+                    },
+                    "description": "Strategy-specific overrides for user attribute mapping.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "auth0Mapping",
+                "description",
+                "label",
+                "name",
+                "profileRequired"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "auth0Mapping",
+                        "description",
+                        "label",
+                        "name",
+                        "oidcMapping",
+                        "profileRequired",
+                        "samlMappings",
+                        "scimMapping",
+                        "strategyOverrides"
+                    ]
+                }
+            }
+        },
+        "auth0:index/UserAttributeProfileUserAttributeOidcMapping:UserAttributeProfileUserAttributeOidcMapping": {
+            "properties": {
+                "displayName": {
+                    "type": "string",
+                    "description": "Display name for the OIDC mapping.\n"
+                },
+                "mapping": {
+                    "type": "string",
+                    "description": "The OIDC mapping field.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "mapping"
+            ]
+        },
+        "auth0:index/UserAttributeProfileUserAttributeStrategyOverride:UserAttributeProfileUserAttributeStrategyOverride": {
+            "properties": {
+                "oidcMapping": {
+                    "$ref": "#/types/auth0:index/UserAttributeProfileUserAttributeStrategyOverrideOidcMapping:UserAttributeProfileUserAttributeStrategyOverrideOidcMapping",
+                    "description": "OIDC mapping override for this strategy.\n"
+                },
+                "samlMappings": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "SAML mapping override for this strategy.\n"
+                },
+                "scimMapping": {
+                    "type": "string",
+                    "description": "SCIM mapping override for this strategy.\n"
+                },
+                "strategy": {
+                    "type": "string",
+                    "description": "The strategy name (e.g., 'oidc', 'samlp', 'ad', etc.).\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "strategy"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "oidcMapping",
+                        "samlMappings",
+                        "scimMapping",
+                        "strategy"
+                    ]
+                }
+            }
+        },
+        "auth0:index/UserAttributeProfileUserAttributeStrategyOverrideOidcMapping:UserAttributeProfileUserAttributeStrategyOverrideOidcMapping": {
+            "properties": {
+                "displayName": {
+                    "type": "string",
+                    "description": "Display name for the OIDC mapping.\n"
+                },
+                "mapping": {
+                    "type": "string",
+                    "description": "The OIDC mapping field.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "mapping"
+            ]
+        },
+        "auth0:index/UserAttributeProfileUserId:UserAttributeProfileUserId": {
+            "properties": {
+                "oidcMapping": {
+                    "type": "string",
+                    "description": "The OIDC mapping for the user ID.\n"
+                },
+                "samlMappings": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The SAML mapping for the user ID.\n"
+                },
+                "scimMapping": {
+                    "type": "string",
+                    "description": "The SCIM mapping for the user ID.\n"
+                },
+                "strategyOverrides": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/UserAttributeProfileUserIdStrategyOverride:UserAttributeProfileUserIdStrategyOverride"
+                    },
+                    "description": "Strategy-specific overrides for user ID mapping.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "oidcMapping",
+                        "samlMappings",
+                        "scimMapping"
+                    ]
+                }
+            }
+        },
+        "auth0:index/UserAttributeProfileUserIdStrategyOverride:UserAttributeProfileUserIdStrategyOverride": {
+            "properties": {
+                "oidcMapping": {
+                    "type": "string",
+                    "description": "OIDC mapping override for this strategy.\n"
+                },
+                "samlMappings": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "SAML mapping override for this strategy.\n"
+                },
+                "scimMapping": {
+                    "type": "string",
+                    "description": "SCIM mapping override for this strategy.\n"
+                },
+                "strategy": {
+                    "type": "string",
+                    "description": "The strategy name (e.g., 'oidc', 'samlp', 'ad', etc.).\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "strategy"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "oidcMapping",
+                        "samlMappings",
+                        "scimMapping",
+                        "strategy"
+                    ]
+                }
+            }
         },
         "auth0:index/UserPermissionsPermission:UserPermissionsPermission": {
             "properties": {
@@ -7537,6 +7752,10 @@
                         "$ref": "#/types/auth0:index/getClientsClientSessionTransfer:getClientsClientSessionTransfer"
                     }
                 },
+                "skipNonVerifiableCallbackUriConfirmationPrompt": {
+                    "type": "boolean",
+                    "description": "Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.\n"
+                },
                 "tokenExchanges": {
                     "type": "array",
                     "items": {
@@ -7575,6 +7794,7 @@
                 "oidcLogouts",
                 "resourceServerIdentifier",
                 "sessionTransfers",
+                "skipNonVerifiableCallbackUriConfirmationPrompt",
                 "tokenExchanges",
                 "tokenQuotas",
                 "webOrigins"
@@ -8482,6 +8702,10 @@
                     },
                     "description": "Defines signup settings for Email attribute\n"
                 },
+                "unique": {
+                    "type": "boolean",
+                    "description": "If set to false, it allow multiple accounts with the same email address\n"
+                },
                 "verificationMethod": {
                     "type": "string",
                     "description": "Defines whether whether user will receive a link or an OTP during user signup for email verification and password reset for email verification\n"
@@ -8492,6 +8716,7 @@
                 "identifiers",
                 "profileRequired",
                 "signups",
+                "unique",
                 "verificationMethod"
             ],
             "language": {
@@ -9768,6 +9993,66 @@
                 }
             }
         },
+        "auth0:index/getOutboundIpsChangelog:getOutboundIpsChangelog": {
+            "properties": {
+                "action": {
+                    "type": "string",
+                    "description": "Type of change (add or remove).\n"
+                },
+                "date": {
+                    "type": "string",
+                    "description": "Date of the change (YYYY-MM-DD format).\n"
+                },
+                "ipv4Cidrs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of IPv4 CIDR blocks affected by this change.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "Region affected by the change.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "action",
+                "date",
+                "ipv4Cidrs",
+                "region"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getOutboundIpsRegion:getOutboundIpsRegion": {
+            "properties": {
+                "ipv4Cidrs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of IPv4 CIDR blocks for the region.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The code for the region (e.g., 'US', 'CA').\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "ipv4Cidrs",
+                "region"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "auth0:index/getPagesChangePassword:getPagesChangePassword": {
             "properties": {
                 "enabled": {
@@ -10728,6 +11013,227 @@
                 }
             }
         },
+        "auth0:index/getUserAttributeProfileUserAttribute:getUserAttributeProfileUserAttribute": {
+            "properties": {
+                "auth0Mapping": {
+                    "type": "string",
+                    "description": "The Auth0 mapping for the user attribute.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the user attribute.\n"
+                },
+                "label": {
+                    "type": "string",
+                    "description": "Display label for the user attribute.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the user attribute.\n"
+                },
+                "oidcMappings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/getUserAttributeProfileUserAttributeOidcMapping:getUserAttributeProfileUserAttributeOidcMapping"
+                    },
+                    "description": "The OIDC mapping configuration for the user attribute.\n"
+                },
+                "profileRequired": {
+                    "type": "boolean",
+                    "description": "Whether the attribute is required in the profile.\n"
+                },
+                "samlMappings": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "SAML mapping override for this strategy.\n"
+                },
+                "scimMapping": {
+                    "type": "string",
+                    "description": "The SCIM mapping for the user attribute.\n"
+                },
+                "strategyOverrides": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/getUserAttributeProfileUserAttributeStrategyOverride:getUserAttributeProfileUserAttributeStrategyOverride"
+                    },
+                    "description": "Strategy-specific overrides for user attribute mapping.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "auth0Mapping",
+                "description",
+                "label",
+                "name",
+                "oidcMappings",
+                "profileRequired",
+                "samlMappings",
+                "scimMapping",
+                "strategyOverrides"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getUserAttributeProfileUserAttributeOidcMapping:getUserAttributeProfileUserAttributeOidcMapping": {
+            "properties": {
+                "displayName": {
+                    "type": "string",
+                    "description": "Display name for the OIDC mapping.\n"
+                },
+                "mapping": {
+                    "type": "string",
+                    "description": "The OIDC mapping field.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "displayName",
+                "mapping"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getUserAttributeProfileUserAttributeStrategyOverride:getUserAttributeProfileUserAttributeStrategyOverride": {
+            "properties": {
+                "oidcMappings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/getUserAttributeProfileUserAttributeStrategyOverrideOidcMapping:getUserAttributeProfileUserAttributeStrategyOverrideOidcMapping"
+                    },
+                    "description": "OIDC mapping override for this strategy.\n"
+                },
+                "samlMappings": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "SAML mapping override for this strategy.\n"
+                },
+                "scimMapping": {
+                    "type": "string",
+                    "description": "SCIM mapping override for this strategy.\n"
+                },
+                "strategy": {
+                    "type": "string",
+                    "description": "The strategy name (e.g., 'oidc', 'samlp', 'ad', etc.).\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "oidcMappings",
+                "samlMappings",
+                "scimMapping",
+                "strategy"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getUserAttributeProfileUserAttributeStrategyOverrideOidcMapping:getUserAttributeProfileUserAttributeStrategyOverrideOidcMapping": {
+            "properties": {
+                "displayName": {
+                    "type": "string",
+                    "description": "Display name for the OIDC mapping.\n"
+                },
+                "mapping": {
+                    "type": "string",
+                    "description": "The OIDC mapping field.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "displayName",
+                "mapping"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getUserAttributeProfileUserId:getUserAttributeProfileUserId": {
+            "properties": {
+                "oidcMapping": {
+                    "type": "string",
+                    "description": "The OIDC mapping for the user ID.\n"
+                },
+                "samlMappings": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The SAML mapping for the user ID.\n"
+                },
+                "scimMapping": {
+                    "type": "string",
+                    "description": "The SCIM mapping for the user ID.\n"
+                },
+                "strategyOverrides": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/getUserAttributeProfileUserIdStrategyOverride:getUserAttributeProfileUserIdStrategyOverride"
+                    },
+                    "description": "Strategy-specific overrides for user ID mapping.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "oidcMapping",
+                "samlMappings",
+                "scimMapping",
+                "strategyOverrides"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getUserAttributeProfileUserIdStrategyOverride:getUserAttributeProfileUserIdStrategyOverride": {
+            "properties": {
+                "oidcMapping": {
+                    "type": "string",
+                    "description": "OIDC mapping override for this strategy.\n"
+                },
+                "samlMappings": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "SAML mapping override for this strategy.\n"
+                },
+                "scimMapping": {
+                    "type": "string",
+                    "description": "SCIM mapping override for this strategy.\n"
+                },
+                "strategy": {
+                    "type": "string",
+                    "description": "The strategy name (e.g., 'oidc', 'samlp', 'ad', etc.).\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "oidcMapping",
+                "samlMappings",
+                "scimMapping",
+                "strategy"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "auth0:index/getUserPermission:getUserPermission": {
             "properties": {
                 "description": {
@@ -11403,6 +11909,10 @@
                     "description": "List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.\n",
                     "secret": true
                 },
+                "skipNonVerifiableCallbackUriConfirmationPrompt": {
+                    "type": "boolean",
+                    "description": "Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.\n"
+                },
                 "sso": {
                     "type": "boolean",
                     "description": "Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).\n"
@@ -11618,6 +12128,10 @@
                 "sessionTransfer": {
                     "$ref": "#/types/auth0:index/ClientSessionTransfer:ClientSessionTransfer"
                 },
+                "skipNonVerifiableCallbackUriConfirmationPrompt": {
+                    "type": "boolean",
+                    "description": "Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.\n"
+                },
                 "sso": {
                     "type": "boolean",
                     "description": "Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).\n"
@@ -11831,6 +12345,10 @@
                         },
                         "description": "List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.\n",
                         "secret": true
+                    },
+                    "skipNonVerifiableCallbackUriConfirmationPrompt": {
+                        "type": "boolean",
+                        "description": "Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.\n"
                     },
                     "sso": {
                         "type": "boolean",
@@ -15895,7 +16413,7 @@
             }
         },
         "auth0:index/selfServiceProfile:SelfServiceProfile": {
-            "description": "With this resource, you can create and manage Self-Service Profile for a tenant.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst mySelfServiceProfile = new auth0.SelfServiceProfile(\"my_self_service_profile\", {\n    userAttributes: [{\n        name: \"sample-name\",\n        description: \"sample-description\",\n        isOptional: true,\n    }],\n    branding: {\n        logoUrl: \"https://mycompany.org/v2/logo.png\",\n        colors: {\n            primary: \"#0059d6\",\n        },\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_self_service_profile = auth0.SelfServiceProfile(\"my_self_service_profile\",\n    user_attributes=[{\n        \"name\": \"sample-name\",\n        \"description\": \"sample-description\",\n        \"is_optional\": True,\n    }],\n    branding={\n        \"logo_url\": \"https://mycompany.org/v2/logo.png\",\n        \"colors\": {\n            \"primary\": \"#0059d6\",\n        },\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var mySelfServiceProfile = new Auth0.SelfServiceProfile(\"my_self_service_profile\", new()\n    {\n        UserAttributes = new[]\n        {\n            new Auth0.Inputs.SelfServiceProfileUserAttributeArgs\n            {\n                Name = \"sample-name\",\n                Description = \"sample-description\",\n                IsOptional = true,\n            },\n        },\n        Branding = new Auth0.Inputs.SelfServiceProfileBrandingArgs\n        {\n            LogoUrl = \"https://mycompany.org/v2/logo.png\",\n            Colors = new Auth0.Inputs.SelfServiceProfileBrandingColorsArgs\n            {\n                Primary = \"#0059d6\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewSelfServiceProfile(ctx, \"my_self_service_profile\", \u0026auth0.SelfServiceProfileArgs{\n\t\t\tUserAttributes: auth0.SelfServiceProfileUserAttributeArray{\n\t\t\t\t\u0026auth0.SelfServiceProfileUserAttributeArgs{\n\t\t\t\t\tName:        pulumi.String(\"sample-name\"),\n\t\t\t\t\tDescription: pulumi.String(\"sample-description\"),\n\t\t\t\t\tIsOptional:  pulumi.Bool(true),\n\t\t\t\t},\n\t\t\t},\n\t\t\tBranding: \u0026auth0.SelfServiceProfileBrandingArgs{\n\t\t\t\tLogoUrl: pulumi.String(\"https://mycompany.org/v2/logo.png\"),\n\t\t\t\tColors: \u0026auth0.SelfServiceProfileBrandingColorsArgs{\n\t\t\t\t\tPrimary: pulumi.String(\"#0059d6\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.SelfServiceProfile;\nimport com.pulumi.auth0.SelfServiceProfileArgs;\nimport com.pulumi.auth0.inputs.SelfServiceProfileUserAttributeArgs;\nimport com.pulumi.auth0.inputs.SelfServiceProfileBrandingArgs;\nimport com.pulumi.auth0.inputs.SelfServiceProfileBrandingColorsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var mySelfServiceProfile = new SelfServiceProfile(\"mySelfServiceProfile\", SelfServiceProfileArgs.builder()\n            .userAttributes(SelfServiceProfileUserAttributeArgs.builder()\n                .name(\"sample-name\")\n                .description(\"sample-description\")\n                .isOptional(true)\n                .build())\n            .branding(SelfServiceProfileBrandingArgs.builder()\n                .logoUrl(\"https://mycompany.org/v2/logo.png\")\n                .colors(SelfServiceProfileBrandingColorsArgs.builder()\n                    .primary(\"#0059d6\")\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  mySelfServiceProfile:\n    type: auth0:SelfServiceProfile\n    name: my_self_service_profile\n    properties:\n      userAttributes:\n        - name: sample-name\n          description: sample-description\n          isOptional: true\n      branding:\n        logoUrl: https://mycompany.org/v2/logo.png\n        colors:\n          primary: '#0059d6'\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThis resource can be imported using the id\n\nExample:\n\n```sh\n$ pulumi import auth0:index/selfServiceProfile:SelfServiceProfile id \"ssp_32oi5unksja93124\"\n```\n\n",
+            "description": "With this resource, you can create and manage Self-Service Profile for a tenant.\n\n\u003e user_attribute_profile_id field only available for [EA](https://auth0.com/docs/troubleshoot/product-lifecycle/product-release-stages#early-access) users.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst mySelfServiceProfile = new auth0.SelfServiceProfile(\"my_self_service_profile\", {\n    userAttributes: [{\n        name: \"sample-name\",\n        description: \"sample-description\",\n        isOptional: true,\n    }],\n    branding: {\n        logoUrl: \"https://mycompany.org/v2/logo.png\",\n        colors: {\n            primary: \"#0059d6\",\n        },\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_self_service_profile = auth0.SelfServiceProfile(\"my_self_service_profile\",\n    user_attributes=[{\n        \"name\": \"sample-name\",\n        \"description\": \"sample-description\",\n        \"is_optional\": True,\n    }],\n    branding={\n        \"logo_url\": \"https://mycompany.org/v2/logo.png\",\n        \"colors\": {\n            \"primary\": \"#0059d6\",\n        },\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var mySelfServiceProfile = new Auth0.SelfServiceProfile(\"my_self_service_profile\", new()\n    {\n        UserAttributes = new[]\n        {\n            new Auth0.Inputs.SelfServiceProfileUserAttributeArgs\n            {\n                Name = \"sample-name\",\n                Description = \"sample-description\",\n                IsOptional = true,\n            },\n        },\n        Branding = new Auth0.Inputs.SelfServiceProfileBrandingArgs\n        {\n            LogoUrl = \"https://mycompany.org/v2/logo.png\",\n            Colors = new Auth0.Inputs.SelfServiceProfileBrandingColorsArgs\n            {\n                Primary = \"#0059d6\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewSelfServiceProfile(ctx, \"my_self_service_profile\", \u0026auth0.SelfServiceProfileArgs{\n\t\t\tUserAttributes: auth0.SelfServiceProfileUserAttributeArray{\n\t\t\t\t\u0026auth0.SelfServiceProfileUserAttributeArgs{\n\t\t\t\t\tName:        pulumi.String(\"sample-name\"),\n\t\t\t\t\tDescription: pulumi.String(\"sample-description\"),\n\t\t\t\t\tIsOptional:  pulumi.Bool(true),\n\t\t\t\t},\n\t\t\t},\n\t\t\tBranding: \u0026auth0.SelfServiceProfileBrandingArgs{\n\t\t\t\tLogoUrl: pulumi.String(\"https://mycompany.org/v2/logo.png\"),\n\t\t\t\tColors: \u0026auth0.SelfServiceProfileBrandingColorsArgs{\n\t\t\t\t\tPrimary: pulumi.String(\"#0059d6\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.SelfServiceProfile;\nimport com.pulumi.auth0.SelfServiceProfileArgs;\nimport com.pulumi.auth0.inputs.SelfServiceProfileUserAttributeArgs;\nimport com.pulumi.auth0.inputs.SelfServiceProfileBrandingArgs;\nimport com.pulumi.auth0.inputs.SelfServiceProfileBrandingColorsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var mySelfServiceProfile = new SelfServiceProfile(\"mySelfServiceProfile\", SelfServiceProfileArgs.builder()\n            .userAttributes(SelfServiceProfileUserAttributeArgs.builder()\n                .name(\"sample-name\")\n                .description(\"sample-description\")\n                .isOptional(true)\n                .build())\n            .branding(SelfServiceProfileBrandingArgs.builder()\n                .logoUrl(\"https://mycompany.org/v2/logo.png\")\n                .colors(SelfServiceProfileBrandingColorsArgs.builder()\n                    .primary(\"#0059d6\")\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  mySelfServiceProfile:\n    type: auth0:SelfServiceProfile\n    name: my_self_service_profile\n    properties:\n      userAttributes:\n        - name: sample-name\n          description: sample-description\n          isOptional: true\n      branding:\n        logoUrl: https://mycompany.org/v2/logo.png\n        colors:\n          primary: '#0059d6'\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThis resource can be imported using the id\n\nExample:\n\n```sh\n$ pulumi import auth0:index/selfServiceProfile:SelfServiceProfile id \"ssp_32oi5unksja93124\"\n```\n\n",
             "properties": {
                 "allowedStrategies": {
                     "type": "array",
@@ -15924,12 +16442,16 @@
                     "type": "string",
                     "description": "The ISO 8601 formatted date the profile was updated.\n"
                 },
+                "userAttributeProfileId": {
+                    "type": "string",
+                    "description": "The ID of the user attribute profile to use for this self-service profile. Cannot be used with user_attributes.\n"
+                },
                 "userAttributes": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/auth0:index/SelfServiceProfileUserAttribute:SelfServiceProfileUserAttribute"
                     },
-                    "description": "This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0.\n"
+                    "description": "This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0. Cannot be used with user*attribute*profile*id.\n"
                 }
             },
             "required": [
@@ -15958,12 +16480,16 @@
                     "type": "string",
                     "description": "The name of the self-service Profile\n"
                 },
+                "userAttributeProfileId": {
+                    "type": "string",
+                    "description": "The ID of the user attribute profile to use for this self-service profile. Cannot be used with user_attributes.\n"
+                },
                 "userAttributes": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/auth0:index/SelfServiceProfileUserAttribute:SelfServiceProfileUserAttribute"
                     },
-                    "description": "This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0.\n"
+                    "description": "This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0. Cannot be used with user*attribute*profile*id.\n"
                 }
             },
             "stateInputs": {
@@ -15996,12 +16522,16 @@
                         "type": "string",
                         "description": "The ISO 8601 formatted date the profile was updated.\n"
                     },
+                    "userAttributeProfileId": {
+                        "type": "string",
+                        "description": "The ID of the user attribute profile to use for this self-service profile. Cannot be used with user_attributes.\n"
+                    },
                     "userAttributes": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/auth0:index/SelfServiceProfileUserAttribute:SelfServiceProfileUserAttribute"
                         },
-                        "description": "This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0.\n"
+                        "description": "This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0. Cannot be used with user*attribute*profile*id.\n"
                     }
                 },
                 "type": "object"
@@ -16083,7 +16613,7 @@
             }
         },
         "auth0:index/tenant:Tenant": {
-            "description": "With this resource, you can manage Auth0 tenants, including setting logos and support contact information, setting error pages, and configuring default tenant behaviors.\n\n\u003e Creating tenants through the Management API is not currently supported. Therefore, this resource can only\nmanage an existing tenant created through the Auth0 dashboard.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myTenant = new auth0.Tenant(\"my_tenant\", {\n    friendlyName: \"Tenant Name\",\n    pictureUrl: \"http://example.com/logo.png\",\n    supportEmail: \"support@example.com\",\n    supportUrl: \"http://example.com/support\",\n    allowedLogoutUrls: [\"http://example.com/logout\"],\n    sessionLifetime: 8760,\n    sandboxVersion: \"12\",\n    enabledLocales: [\"en\"],\n    defaultRedirectionUri: \"https://example.com/login\",\n    flags: {\n        disableClickjackProtectionHeaders: true,\n        enablePublicSignupUserExistsError: true,\n        useScopeDescriptionsForConsent: true,\n        noDiscloseEnterpriseConnections: false,\n        disableManagementApiSmsObfuscation: false,\n        disableFieldsMapFix: false,\n    },\n    sessionCookie: {\n        mode: \"non-persistent\",\n    },\n    sessions: {\n        oidcLogoutPromptEnabled: false,\n    },\n    errorPage: {\n        html: \"\u003chtml\u003e\u003c/html\u003e\",\n        showLogLink: false,\n        url: \"https://example.com/error\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_tenant = auth0.Tenant(\"my_tenant\",\n    friendly_name=\"Tenant Name\",\n    picture_url=\"http://example.com/logo.png\",\n    support_email=\"support@example.com\",\n    support_url=\"http://example.com/support\",\n    allowed_logout_urls=[\"http://example.com/logout\"],\n    session_lifetime=8760,\n    sandbox_version=\"12\",\n    enabled_locales=[\"en\"],\n    default_redirection_uri=\"https://example.com/login\",\n    flags={\n        \"disable_clickjack_protection_headers\": True,\n        \"enable_public_signup_user_exists_error\": True,\n        \"use_scope_descriptions_for_consent\": True,\n        \"no_disclose_enterprise_connections\": False,\n        \"disable_management_api_sms_obfuscation\": False,\n        \"disable_fields_map_fix\": False,\n    },\n    session_cookie={\n        \"mode\": \"non-persistent\",\n    },\n    sessions={\n        \"oidc_logout_prompt_enabled\": False,\n    },\n    error_page={\n        \"html\": \"\u003chtml\u003e\u003c/html\u003e\",\n        \"show_log_link\": False,\n        \"url\": \"https://example.com/error\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myTenant = new Auth0.Tenant(\"my_tenant\", new()\n    {\n        FriendlyName = \"Tenant Name\",\n        PictureUrl = \"http://example.com/logo.png\",\n        SupportEmail = \"support@example.com\",\n        SupportUrl = \"http://example.com/support\",\n        AllowedLogoutUrls = new[]\n        {\n            \"http://example.com/logout\",\n        },\n        SessionLifetime = 8760,\n        SandboxVersion = \"12\",\n        EnabledLocales = new[]\n        {\n            \"en\",\n        },\n        DefaultRedirectionUri = \"https://example.com/login\",\n        Flags = new Auth0.Inputs.TenantFlagsArgs\n        {\n            DisableClickjackProtectionHeaders = true,\n            EnablePublicSignupUserExistsError = true,\n            UseScopeDescriptionsForConsent = true,\n            NoDiscloseEnterpriseConnections = false,\n            DisableManagementApiSmsObfuscation = false,\n            DisableFieldsMapFix = false,\n        },\n        SessionCookie = new Auth0.Inputs.TenantSessionCookieArgs\n        {\n            Mode = \"non-persistent\",\n        },\n        Sessions = new Auth0.Inputs.TenantSessionsArgs\n        {\n            OidcLogoutPromptEnabled = false,\n        },\n        ErrorPage = new Auth0.Inputs.TenantErrorPageArgs\n        {\n            Html = \"\u003chtml\u003e\u003c/html\u003e\",\n            ShowLogLink = false,\n            Url = \"https://example.com/error\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewTenant(ctx, \"my_tenant\", \u0026auth0.TenantArgs{\n\t\t\tFriendlyName: pulumi.String(\"Tenant Name\"),\n\t\t\tPictureUrl:   pulumi.String(\"http://example.com/logo.png\"),\n\t\t\tSupportEmail: pulumi.String(\"support@example.com\"),\n\t\t\tSupportUrl:   pulumi.String(\"http://example.com/support\"),\n\t\t\tAllowedLogoutUrls: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"http://example.com/logout\"),\n\t\t\t},\n\t\t\tSessionLifetime: pulumi.Float64(8760),\n\t\t\tSandboxVersion:  pulumi.String(\"12\"),\n\t\t\tEnabledLocales: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"en\"),\n\t\t\t},\n\t\t\tDefaultRedirectionUri: pulumi.String(\"https://example.com/login\"),\n\t\t\tFlags: \u0026auth0.TenantFlagsArgs{\n\t\t\t\tDisableClickjackProtectionHeaders:  pulumi.Bool(true),\n\t\t\t\tEnablePublicSignupUserExistsError:  pulumi.Bool(true),\n\t\t\t\tUseScopeDescriptionsForConsent:     pulumi.Bool(true),\n\t\t\t\tNoDiscloseEnterpriseConnections:    pulumi.Bool(false),\n\t\t\t\tDisableManagementApiSmsObfuscation: pulumi.Bool(false),\n\t\t\t\tDisableFieldsMapFix:                pulumi.Bool(false),\n\t\t\t},\n\t\t\tSessionCookie: \u0026auth0.TenantSessionCookieArgs{\n\t\t\t\tMode: pulumi.String(\"non-persistent\"),\n\t\t\t},\n\t\t\tSessions: \u0026auth0.TenantSessionsArgs{\n\t\t\t\tOidcLogoutPromptEnabled: pulumi.Bool(false),\n\t\t\t},\n\t\t\tErrorPage: \u0026auth0.TenantErrorPageArgs{\n\t\t\t\tHtml:        pulumi.String(\"\u003chtml\u003e\u003c/html\u003e\"),\n\t\t\t\tShowLogLink: pulumi.Bool(false),\n\t\t\t\tUrl:         pulumi.String(\"https://example.com/error\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.Tenant;\nimport com.pulumi.auth0.TenantArgs;\nimport com.pulumi.auth0.inputs.TenantFlagsArgs;\nimport com.pulumi.auth0.inputs.TenantSessionCookieArgs;\nimport com.pulumi.auth0.inputs.TenantSessionsArgs;\nimport com.pulumi.auth0.inputs.TenantErrorPageArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myTenant = new Tenant(\"myTenant\", TenantArgs.builder()\n            .friendlyName(\"Tenant Name\")\n            .pictureUrl(\"http://example.com/logo.png\")\n            .supportEmail(\"support@example.com\")\n            .supportUrl(\"http://example.com/support\")\n            .allowedLogoutUrls(\"http://example.com/logout\")\n            .sessionLifetime(8760.0)\n            .sandboxVersion(\"12\")\n            .enabledLocales(\"en\")\n            .defaultRedirectionUri(\"https://example.com/login\")\n            .flags(TenantFlagsArgs.builder()\n                .disableClickjackProtectionHeaders(true)\n                .enablePublicSignupUserExistsError(true)\n                .useScopeDescriptionsForConsent(true)\n                .noDiscloseEnterpriseConnections(false)\n                .disableManagementApiSmsObfuscation(false)\n                .disableFieldsMapFix(false)\n                .build())\n            .sessionCookie(TenantSessionCookieArgs.builder()\n                .mode(\"non-persistent\")\n                .build())\n            .sessions(TenantSessionsArgs.builder()\n                .oidcLogoutPromptEnabled(false)\n                .build())\n            .errorPage(TenantErrorPageArgs.builder()\n                .html(\"\u003chtml\u003e\u003c/html\u003e\")\n                .showLogLink(false)\n                .url(\"https://example.com/error\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myTenant:\n    type: auth0:Tenant\n    name: my_tenant\n    properties:\n      friendlyName: Tenant Name\n      pictureUrl: http://example.com/logo.png\n      supportEmail: support@example.com\n      supportUrl: http://example.com/support\n      allowedLogoutUrls:\n        - http://example.com/logout\n      sessionLifetime: 8760\n      sandboxVersion: '12'\n      enabledLocales:\n        - en\n      defaultRedirectionUri: https://example.com/login\n      flags:\n        disableClickjackProtectionHeaders: true\n        enablePublicSignupUserExistsError: true\n        useScopeDescriptionsForConsent: true\n        noDiscloseEnterpriseConnections: false\n        disableManagementApiSmsObfuscation: false\n        disableFieldsMapFix: false\n      sessionCookie:\n        mode: non-persistent\n      sessions:\n        oidcLogoutPromptEnabled: false\n      errorPage:\n        html: \u003chtml\u003e\u003c/html\u003e\n        showLogLink: false\n        url: https://example.com/error\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nAs this is not a resource identifiable by an ID within the Auth0 Management API,\n\ntenant can be imported using a random string.\n\nWe recommend [Version 4 UUID](https://www.uuidgenerator.net/version4)\n\nExample:\n\n```sh\n$ pulumi import auth0:index/tenant:Tenant my_tenant \"82f4f21b-017a-319d-92e7-2291c1ca36c4\"\n```\n\n",
+            "description": "With this resource, you can manage Auth0 tenants, including setting logos and support contact information, setting error pages, and configuring default tenant behaviors.\n\n\u003e Creating tenants through the Management API is not currently supported. Therefore, this resource can only\nmanage an existing tenant created through the Auth0 dashboard.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myTenant = new auth0.Tenant(\"my_tenant\", {\n    friendlyName: \"Tenant Name\",\n    pictureUrl: \"http://example.com/logo.png\",\n    supportEmail: \"support@example.com\",\n    supportUrl: \"http://example.com/support\",\n    allowedLogoutUrls: [\"http://example.com/logout\"],\n    sessionLifetime: 8760,\n    sandboxVersion: \"12\",\n    enabledLocales: [\"en\"],\n    defaultRedirectionUri: \"https://example.com/login\",\n    skipNonVerifiableCallbackUriConfirmationPrompt: true,\n    flags: {\n        disableClickjackProtectionHeaders: true,\n        enablePublicSignupUserExistsError: true,\n        useScopeDescriptionsForConsent: true,\n        noDiscloseEnterpriseConnections: false,\n        disableManagementApiSmsObfuscation: false,\n        disableFieldsMapFix: false,\n    },\n    sessionCookie: {\n        mode: \"non-persistent\",\n    },\n    sessions: {\n        oidcLogoutPromptEnabled: false,\n    },\n    errorPage: {\n        html: \"\u003chtml\u003e\u003c/html\u003e\",\n        showLogLink: false,\n        url: \"https://example.com/error\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_tenant = auth0.Tenant(\"my_tenant\",\n    friendly_name=\"Tenant Name\",\n    picture_url=\"http://example.com/logo.png\",\n    support_email=\"support@example.com\",\n    support_url=\"http://example.com/support\",\n    allowed_logout_urls=[\"http://example.com/logout\"],\n    session_lifetime=8760,\n    sandbox_version=\"12\",\n    enabled_locales=[\"en\"],\n    default_redirection_uri=\"https://example.com/login\",\n    skip_non_verifiable_callback_uri_confirmation_prompt=True,\n    flags={\n        \"disable_clickjack_protection_headers\": True,\n        \"enable_public_signup_user_exists_error\": True,\n        \"use_scope_descriptions_for_consent\": True,\n        \"no_disclose_enterprise_connections\": False,\n        \"disable_management_api_sms_obfuscation\": False,\n        \"disable_fields_map_fix\": False,\n    },\n    session_cookie={\n        \"mode\": \"non-persistent\",\n    },\n    sessions={\n        \"oidc_logout_prompt_enabled\": False,\n    },\n    error_page={\n        \"html\": \"\u003chtml\u003e\u003c/html\u003e\",\n        \"show_log_link\": False,\n        \"url\": \"https://example.com/error\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myTenant = new Auth0.Tenant(\"my_tenant\", new()\n    {\n        FriendlyName = \"Tenant Name\",\n        PictureUrl = \"http://example.com/logo.png\",\n        SupportEmail = \"support@example.com\",\n        SupportUrl = \"http://example.com/support\",\n        AllowedLogoutUrls = new[]\n        {\n            \"http://example.com/logout\",\n        },\n        SessionLifetime = 8760,\n        SandboxVersion = \"12\",\n        EnabledLocales = new[]\n        {\n            \"en\",\n        },\n        DefaultRedirectionUri = \"https://example.com/login\",\n        SkipNonVerifiableCallbackUriConfirmationPrompt = true,\n        Flags = new Auth0.Inputs.TenantFlagsArgs\n        {\n            DisableClickjackProtectionHeaders = true,\n            EnablePublicSignupUserExistsError = true,\n            UseScopeDescriptionsForConsent = true,\n            NoDiscloseEnterpriseConnections = false,\n            DisableManagementApiSmsObfuscation = false,\n            DisableFieldsMapFix = false,\n        },\n        SessionCookie = new Auth0.Inputs.TenantSessionCookieArgs\n        {\n            Mode = \"non-persistent\",\n        },\n        Sessions = new Auth0.Inputs.TenantSessionsArgs\n        {\n            OidcLogoutPromptEnabled = false,\n        },\n        ErrorPage = new Auth0.Inputs.TenantErrorPageArgs\n        {\n            Html = \"\u003chtml\u003e\u003c/html\u003e\",\n            ShowLogLink = false,\n            Url = \"https://example.com/error\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewTenant(ctx, \"my_tenant\", \u0026auth0.TenantArgs{\n\t\t\tFriendlyName: pulumi.String(\"Tenant Name\"),\n\t\t\tPictureUrl:   pulumi.String(\"http://example.com/logo.png\"),\n\t\t\tSupportEmail: pulumi.String(\"support@example.com\"),\n\t\t\tSupportUrl:   pulumi.String(\"http://example.com/support\"),\n\t\t\tAllowedLogoutUrls: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"http://example.com/logout\"),\n\t\t\t},\n\t\t\tSessionLifetime: pulumi.Float64(8760),\n\t\t\tSandboxVersion:  pulumi.String(\"12\"),\n\t\t\tEnabledLocales: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"en\"),\n\t\t\t},\n\t\t\tDefaultRedirectionUri:                          pulumi.String(\"https://example.com/login\"),\n\t\t\tSkipNonVerifiableCallbackUriConfirmationPrompt: pulumi.Bool(true),\n\t\t\tFlags: \u0026auth0.TenantFlagsArgs{\n\t\t\t\tDisableClickjackProtectionHeaders:  pulumi.Bool(true),\n\t\t\t\tEnablePublicSignupUserExistsError:  pulumi.Bool(true),\n\t\t\t\tUseScopeDescriptionsForConsent:     pulumi.Bool(true),\n\t\t\t\tNoDiscloseEnterpriseConnections:    pulumi.Bool(false),\n\t\t\t\tDisableManagementApiSmsObfuscation: pulumi.Bool(false),\n\t\t\t\tDisableFieldsMapFix:                pulumi.Bool(false),\n\t\t\t},\n\t\t\tSessionCookie: \u0026auth0.TenantSessionCookieArgs{\n\t\t\t\tMode: pulumi.String(\"non-persistent\"),\n\t\t\t},\n\t\t\tSessions: \u0026auth0.TenantSessionsArgs{\n\t\t\t\tOidcLogoutPromptEnabled: pulumi.Bool(false),\n\t\t\t},\n\t\t\tErrorPage: \u0026auth0.TenantErrorPageArgs{\n\t\t\t\tHtml:        pulumi.String(\"\u003chtml\u003e\u003c/html\u003e\"),\n\t\t\t\tShowLogLink: pulumi.Bool(false),\n\t\t\t\tUrl:         pulumi.String(\"https://example.com/error\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.Tenant;\nimport com.pulumi.auth0.TenantArgs;\nimport com.pulumi.auth0.inputs.TenantFlagsArgs;\nimport com.pulumi.auth0.inputs.TenantSessionCookieArgs;\nimport com.pulumi.auth0.inputs.TenantSessionsArgs;\nimport com.pulumi.auth0.inputs.TenantErrorPageArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myTenant = new Tenant(\"myTenant\", TenantArgs.builder()\n            .friendlyName(\"Tenant Name\")\n            .pictureUrl(\"http://example.com/logo.png\")\n            .supportEmail(\"support@example.com\")\n            .supportUrl(\"http://example.com/support\")\n            .allowedLogoutUrls(\"http://example.com/logout\")\n            .sessionLifetime(8760.0)\n            .sandboxVersion(\"12\")\n            .enabledLocales(\"en\")\n            .defaultRedirectionUri(\"https://example.com/login\")\n            .skipNonVerifiableCallbackUriConfirmationPrompt(true)\n            .flags(TenantFlagsArgs.builder()\n                .disableClickjackProtectionHeaders(true)\n                .enablePublicSignupUserExistsError(true)\n                .useScopeDescriptionsForConsent(true)\n                .noDiscloseEnterpriseConnections(false)\n                .disableManagementApiSmsObfuscation(false)\n                .disableFieldsMapFix(false)\n                .build())\n            .sessionCookie(TenantSessionCookieArgs.builder()\n                .mode(\"non-persistent\")\n                .build())\n            .sessions(TenantSessionsArgs.builder()\n                .oidcLogoutPromptEnabled(false)\n                .build())\n            .errorPage(TenantErrorPageArgs.builder()\n                .html(\"\u003chtml\u003e\u003c/html\u003e\")\n                .showLogLink(false)\n                .url(\"https://example.com/error\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myTenant:\n    type: auth0:Tenant\n    name: my_tenant\n    properties:\n      friendlyName: Tenant Name\n      pictureUrl: http://example.com/logo.png\n      supportEmail: support@example.com\n      supportUrl: http://example.com/support\n      allowedLogoutUrls:\n        - http://example.com/logout\n      sessionLifetime: 8760\n      sandboxVersion: '12'\n      enabledLocales:\n        - en\n      defaultRedirectionUri: https://example.com/login\n      skipNonVerifiableCallbackUriConfirmationPrompt: true\n      flags:\n        disableClickjackProtectionHeaders: true\n        enablePublicSignupUserExistsError: true\n        useScopeDescriptionsForConsent: true\n        noDiscloseEnterpriseConnections: false\n        disableManagementApiSmsObfuscation: false\n        disableFieldsMapFix: false\n      sessionCookie:\n        mode: non-persistent\n      sessions:\n        oidcLogoutPromptEnabled: false\n      errorPage:\n        html: \u003chtml\u003e\u003c/html\u003e\n        showLogLink: false\n        url: https://example.com/error\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nAs this is not a resource identifiable by an ID within the Auth0 Management API,\n\ntenant can be imported using a random string.\n\nWe recommend [Version 4 UUID](https://www.uuidgenerator.net/version4)\n\nExample:\n\n```sh\n$ pulumi import auth0:index/tenant:Tenant my_tenant \"82f4f21b-017a-319d-92e7-2291c1ca36c4\"\n```\n\n",
             "properties": {
                 "acrValuesSupporteds": {
                     "type": "array",
@@ -16181,6 +16711,10 @@
                 "sessions": {
                     "$ref": "#/types/auth0:index/TenantSessions:TenantSessions",
                     "description": "Sessions related settings for the tenant.\n"
+                },
+                "skipNonVerifiableCallbackUriConfirmationPrompt": {
+                    "type": "boolean",
+                    "description": "Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.\n"
                 },
                 "supportEmail": {
                     "type": "string",
@@ -16311,6 +16845,10 @@
                     "$ref": "#/types/auth0:index/TenantSessions:TenantSessions",
                     "description": "Sessions related settings for the tenant.\n"
                 },
+                "skipNonVerifiableCallbackUriConfirmationPrompt": {
+                    "type": "boolean",
+                    "description": "Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.\n"
+                },
                 "supportEmail": {
                     "type": "string",
                     "description": "Support email address for authenticating users.\n"
@@ -16419,6 +16957,10 @@
                     "sessions": {
                         "$ref": "#/types/auth0:index/TenantSessions:TenantSessions",
                         "description": "Sessions related settings for the tenant.\n"
+                    },
+                    "skipNonVerifiableCallbackUriConfirmationPrompt": {
+                        "type": "boolean",
+                        "description": "Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.\n"
                     },
                     "supportEmail": {
                         "type": "string",
@@ -16870,6 +17412,72 @@
                     "verifyEmail": {
                         "type": "boolean",
                         "description": "Indicates whether the user will receive a verification email after creation. Overrides behavior of `email_verified` parameter.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "auth0:index/userAttributeProfile:UserAttributeProfile": {
+            "description": "With this resource, you can manage User Attribute Profiles within Auth0. User Attribute Profiles allow you to define how user attributes are mapped between different identity providers and Auth0.\n\n\u003e This resource is only available for [EA](https://auth0.com/docs/troubleshoot/product-lifecycle/product-release-stages#early-access) users.\n",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The name of the User Attribute Profile.\n"
+                },
+                "userAttributes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/UserAttributeProfileUserAttribute:UserAttributeProfileUserAttribute"
+                    },
+                    "description": "List of user attribute configurations.\n"
+                },
+                "userId": {
+                    "$ref": "#/types/auth0:index/UserAttributeProfileUserId:UserAttributeProfileUserId",
+                    "description": "Configuration for mapping the user ID from identity providers.\n"
+                }
+            },
+            "required": [
+                "name",
+                "userAttributes",
+                "userId"
+            ],
+            "inputProperties": {
+                "name": {
+                    "type": "string",
+                    "description": "The name of the User Attribute Profile.\n"
+                },
+                "userAttributes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/UserAttributeProfileUserAttribute:UserAttributeProfileUserAttribute"
+                    },
+                    "description": "List of user attribute configurations.\n"
+                },
+                "userId": {
+                    "$ref": "#/types/auth0:index/UserAttributeProfileUserId:UserAttributeProfileUserId",
+                    "description": "Configuration for mapping the user ID from identity providers.\n"
+                }
+            },
+            "requiredInputs": [
+                "userAttributes"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering UserAttributeProfile resources.\n",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the User Attribute Profile.\n"
+                    },
+                    "userAttributes": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/auth0:index/UserAttributeProfileUserAttribute:UserAttributeProfileUserAttribute"
+                        },
+                        "description": "List of user attribute configurations.\n"
+                    },
+                    "userId": {
+                        "$ref": "#/types/auth0:index/UserAttributeProfileUserId:UserAttributeProfileUserId",
+                        "description": "Configuration for mapping the user ID from identity providers.\n"
                     }
                 },
                 "type": "object"
@@ -17611,6 +18219,10 @@
                         },
                         "type": "array"
                     },
+                    "skipNonVerifiableCallbackUriConfirmationPrompt": {
+                        "description": "Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.\n",
+                        "type": "boolean"
+                    },
                     "sso": {
                         "description": "Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).\n",
                         "type": "boolean"
@@ -17685,6 +18297,7 @@
                     "sessionTransfers",
                     "signedRequestObjects",
                     "signingKeys",
+                    "skipNonVerifiableCallbackUriConfirmationPrompt",
                     "sso",
                     "ssoDisabled",
                     "tokenEndpointAuthMethod",
@@ -18462,6 +19075,43 @@
                 "type": "object"
             }
         },
+        "auth0:index/getOutboundIps:getOutboundIps": {
+            "description": "Use this data source to retrieve Auth0's outbound IP ranges for allowlisting purposes.\n\n",
+            "outputs": {
+                "description": "A collection of values returned by getOutboundIps.\n",
+                "properties": {
+                    "changelogs": {
+                        "description": "List of recent changes to IP ranges.\n",
+                        "items": {
+                            "$ref": "#/types/auth0:index/getOutboundIpsChangelog:getOutboundIpsChangelog"
+                        },
+                        "type": "array"
+                    },
+                    "id": {
+                        "description": "The ID of this resource.\n",
+                        "type": "string"
+                    },
+                    "lastUpdatedAt": {
+                        "description": "RFC3339 timestamp when the IP ranges were last updated.\n",
+                        "type": "string"
+                    },
+                    "regions": {
+                        "description": "A list of regions and their corresponding IP CIDR blocks.\n",
+                        "items": {
+                            "$ref": "#/types/auth0:index/getOutboundIpsRegion:getOutboundIpsRegion"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "changelogs",
+                    "id",
+                    "lastUpdatedAt",
+                    "regions"
+                ],
+                "type": "object"
+            }
+        },
         "auth0:index/getPages:getPages": {
             "description": "Use this data source to access the HTML for the login, reset password, multi-factor authentication and error pages.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myPages = auth0.getPages({});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_pages = auth0.get_pages()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myPages = Auth0.GetPages.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.LookupPages(ctx, map[string]interface{}{}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.Auth0Functions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var myPages = Auth0Functions.getPages(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);\n\n    }\n}\n```\n```yaml\nvariables:\n  myPages:\n    fn::invoke:\n      function: auth0:getPages\n      arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "outputs": {
@@ -18958,8 +19608,12 @@
                         "description": "The ISO 8601 formatted date the profile was updated.\n",
                         "type": "string"
                     },
+                    "userAttributeProfileId": {
+                        "description": "The ID of the user attribute profile to use for this self-service profile. Cannot be used with user_attributes.\n",
+                        "type": "string"
+                    },
                     "userAttributes": {
-                        "description": "This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0.\n",
+                        "description": "This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0. Cannot be used with user*attribute*profile*id.\n",
                         "items": {
                             "$ref": "#/types/auth0:index/getSelfServiceProfileUserAttribute:getSelfServiceProfileUserAttribute"
                         },
@@ -18974,6 +19628,7 @@
                     "id",
                     "name",
                     "updatedAt",
+                    "userAttributeProfileId",
                     "userAttributes"
                 ],
                 "type": "object"
@@ -19138,6 +19793,10 @@
                         },
                         "type": "array"
                     },
+                    "skipNonVerifiableCallbackUriConfirmationPrompt": {
+                        "description": "Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.\n",
+                        "type": "boolean"
+                    },
                     "supportEmail": {
                         "description": "Support email address for authenticating users.\n",
                         "type": "string"
@@ -19172,6 +19831,7 @@
                     "sessionCookies",
                     "sessionLifetime",
                     "sessions",
+                    "skipNonVerifiableCallbackUriConfirmationPrompt",
                     "supportEmail",
                     "supportUrl",
                     "id"
@@ -19375,6 +20035,60 @@
                     "userMetadata",
                     "username",
                     "verifyEmail",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "auth0:index/getUserAttributeProfile:getUserAttributeProfile": {
+            "description": "Data source to retrieve a specific Auth0 User Attribute Profile by `user_attribute_profile_id` or `name`.\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getUserAttributeProfile.\n",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the User Attribute Profile.\n"
+                    },
+                    "userAttributeProfileId": {
+                        "type": "string",
+                        "description": "The ID of the User Attribute Profile.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getUserAttributeProfile.\n",
+                "properties": {
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "The name of the User Attribute Profile.\n",
+                        "type": "string"
+                    },
+                    "userAttributeProfileId": {
+                        "description": "The ID of the User Attribute Profile.\n",
+                        "type": "string"
+                    },
+                    "userAttributes": {
+                        "description": "List of user attribute configurations.\n",
+                        "items": {
+                            "$ref": "#/types/auth0:index/getUserAttributeProfileUserAttribute:getUserAttributeProfileUserAttribute"
+                        },
+                        "type": "array"
+                    },
+                    "userIds": {
+                        "description": "Configuration for mapping the user ID from identity providers.\n",
+                        "items": {
+                            "$ref": "#/types/auth0:index/getUserAttributeProfileUserId:getUserAttributeProfileUserId"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "userAttributes",
+                    "userIds",
                     "id"
                 ],
                 "type": "object"

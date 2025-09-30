@@ -27,7 +27,7 @@ class GetTenantResult:
     """
     A collection of values returned by getTenant.
     """
-    def __init__(__self__, acr_values_supporteds=None, allow_organization_name_in_authentication_api=None, allowed_logout_urls=None, customize_mfa_in_postlogin_action=None, default_audience=None, default_directory=None, default_redirection_uri=None, default_token_quotas=None, disable_acr_values_supported=None, domain=None, enabled_locales=None, error_pages=None, flags=None, friendly_name=None, id=None, idle_session_lifetime=None, management_api_identifier=None, mtls=None, oidc_logouts=None, picture_url=None, pushed_authorization_requests_supported=None, sandbox_version=None, session_cookies=None, session_lifetime=None, sessions=None, support_email=None, support_url=None):
+    def __init__(__self__, acr_values_supporteds=None, allow_organization_name_in_authentication_api=None, allowed_logout_urls=None, customize_mfa_in_postlogin_action=None, default_audience=None, default_directory=None, default_redirection_uri=None, default_token_quotas=None, disable_acr_values_supported=None, domain=None, enabled_locales=None, error_pages=None, flags=None, friendly_name=None, id=None, idle_session_lifetime=None, management_api_identifier=None, mtls=None, oidc_logouts=None, picture_url=None, pushed_authorization_requests_supported=None, sandbox_version=None, session_cookies=None, session_lifetime=None, sessions=None, skip_non_verifiable_callback_uri_confirmation_prompt=None, support_email=None, support_url=None):
         if acr_values_supporteds and not isinstance(acr_values_supporteds, list):
             raise TypeError("Expected argument 'acr_values_supporteds' to be a list")
         pulumi.set(__self__, "acr_values_supporteds", acr_values_supporteds)
@@ -103,6 +103,9 @@ class GetTenantResult:
         if sessions and not isinstance(sessions, list):
             raise TypeError("Expected argument 'sessions' to be a list")
         pulumi.set(__self__, "sessions", sessions)
+        if skip_non_verifiable_callback_uri_confirmation_prompt and not isinstance(skip_non_verifiable_callback_uri_confirmation_prompt, bool):
+            raise TypeError("Expected argument 'skip_non_verifiable_callback_uri_confirmation_prompt' to be a bool")
+        pulumi.set(__self__, "skip_non_verifiable_callback_uri_confirmation_prompt", skip_non_verifiable_callback_uri_confirmation_prompt)
         if support_email and not isinstance(support_email, str):
             raise TypeError("Expected argument 'support_email' to be a str")
         pulumi.set(__self__, "support_email", support_email)
@@ -311,6 +314,14 @@ class GetTenantResult:
         return pulumi.get(self, "sessions")
 
     @_builtins.property
+    @pulumi.getter(name="skipNonVerifiableCallbackUriConfirmationPrompt")
+    def skip_non_verifiable_callback_uri_confirmation_prompt(self) -> _builtins.bool:
+        """
+        Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+        """
+        return pulumi.get(self, "skip_non_verifiable_callback_uri_confirmation_prompt")
+
+    @_builtins.property
     @pulumi.getter(name="supportEmail")
     def support_email(self) -> _builtins.str:
         """
@@ -358,6 +369,7 @@ class AwaitableGetTenantResult(GetTenantResult):
             session_cookies=self.session_cookies,
             session_lifetime=self.session_lifetime,
             sessions=self.sessions,
+            skip_non_verifiable_callback_uri_confirmation_prompt=self.skip_non_verifiable_callback_uri_confirmation_prompt,
             support_email=self.support_email,
             support_url=self.support_url)
 
@@ -405,6 +417,7 @@ def get_tenant(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTenan
         session_cookies=pulumi.get(__ret__, 'session_cookies'),
         session_lifetime=pulumi.get(__ret__, 'session_lifetime'),
         sessions=pulumi.get(__ret__, 'sessions'),
+        skip_non_verifiable_callback_uri_confirmation_prompt=pulumi.get(__ret__, 'skip_non_verifiable_callback_uri_confirmation_prompt'),
         support_email=pulumi.get(__ret__, 'support_email'),
         support_url=pulumi.get(__ret__, 'support_url'))
 def get_tenant_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTenantResult]:
@@ -449,5 +462,6 @@ def get_tenant_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOu
         session_cookies=pulumi.get(__response__, 'session_cookies'),
         session_lifetime=pulumi.get(__response__, 'session_lifetime'),
         sessions=pulumi.get(__response__, 'sessions'),
+        skip_non_verifiable_callback_uri_confirmation_prompt=pulumi.get(__response__, 'skip_non_verifiable_callback_uri_confirmation_prompt'),
         support_email=pulumi.get(__response__, 'support_email'),
         support_url=pulumi.get(__response__, 'support_url')))

@@ -102,6 +102,8 @@ type Client struct {
 	SessionTransfer          ClientSessionTransferPtrOutput `pulumi:"sessionTransfer"`
 	// List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
 	SigningKeys pulumi.StringMapArrayOutput `pulumi:"signingKeys"`
+	// Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+	SkipNonVerifiableCallbackUriConfirmationPrompt pulumi.BoolPtrOutput `pulumi:"skipNonVerifiableCallbackUriConfirmationPrompt"`
 	// Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
 	Sso pulumi.BoolPtrOutput `pulumi:"sso"`
 	// Indicates whether or not SSO is disabled.
@@ -228,6 +230,8 @@ type clientState struct {
 	SessionTransfer          *ClientSessionTransfer `pulumi:"sessionTransfer"`
 	// List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
 	SigningKeys []map[string]string `pulumi:"signingKeys"`
+	// Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+	SkipNonVerifiableCallbackUriConfirmationPrompt *bool `pulumi:"skipNonVerifiableCallbackUriConfirmationPrompt"`
 	// Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
 	Sso *bool `pulumi:"sso"`
 	// Indicates whether or not SSO is disabled.
@@ -318,6 +322,8 @@ type ClientState struct {
 	SessionTransfer          ClientSessionTransferPtrInput
 	// List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
 	SigningKeys pulumi.StringMapArrayInput
+	// Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+	SkipNonVerifiableCallbackUriConfirmationPrompt pulumi.BoolPtrInput
 	// Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
 	Sso pulumi.BoolPtrInput
 	// Indicates whether or not SSO is disabled.
@@ -408,6 +414,8 @@ type clientArgs struct {
 	// The identifier of a resource server that client is associated withThis property can be sent only when app*type=resource*server.This property can not be changed, once the client is created.
 	ResourceServerIdentifier *string                `pulumi:"resourceServerIdentifier"`
 	SessionTransfer          *ClientSessionTransfer `pulumi:"sessionTransfer"`
+	// Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+	SkipNonVerifiableCallbackUriConfirmationPrompt *bool `pulumi:"skipNonVerifiableCallbackUriConfirmationPrompt"`
 	// Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
 	Sso *bool `pulumi:"sso"`
 	// Indicates whether or not SSO is disabled.
@@ -495,6 +503,8 @@ type ClientArgs struct {
 	// The identifier of a resource server that client is associated withThis property can be sent only when app*type=resource*server.This property can not be changed, once the client is created.
 	ResourceServerIdentifier pulumi.StringPtrInput
 	SessionTransfer          ClientSessionTransferPtrInput
+	// Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+	SkipNonVerifiableCallbackUriConfirmationPrompt pulumi.BoolPtrInput
 	// Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
 	Sso pulumi.BoolPtrInput
 	// Indicates whether or not SSO is disabled.
@@ -783,6 +793,11 @@ func (o ClientOutput) SessionTransfer() ClientSessionTransferPtrOutput {
 // List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
 func (o ClientOutput) SigningKeys() pulumi.StringMapArrayOutput {
 	return o.ApplyT(func(v *Client) pulumi.StringMapArrayOutput { return v.SigningKeys }).(pulumi.StringMapArrayOutput)
+}
+
+// Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+func (o ClientOutput) SkipNonVerifiableCallbackUriConfirmationPrompt() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Client) pulumi.BoolPtrOutput { return v.SkipNonVerifiableCallbackUriConfirmationPrompt }).(pulumi.BoolPtrOutput)
 }
 
 // Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).

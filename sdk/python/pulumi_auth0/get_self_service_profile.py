@@ -27,7 +27,7 @@ class GetSelfServiceProfileResult:
     """
     A collection of values returned by getSelfServiceProfile.
     """
-    def __init__(__self__, allowed_strategies=None, brandings=None, created_at=None, description=None, id=None, name=None, updated_at=None, user_attributes=None):
+    def __init__(__self__, allowed_strategies=None, brandings=None, created_at=None, description=None, id=None, name=None, updated_at=None, user_attribute_profile_id=None, user_attributes=None):
         if allowed_strategies and not isinstance(allowed_strategies, list):
             raise TypeError("Expected argument 'allowed_strategies' to be a list")
         pulumi.set(__self__, "allowed_strategies", allowed_strategies)
@@ -49,6 +49,9 @@ class GetSelfServiceProfileResult:
         if updated_at and not isinstance(updated_at, str):
             raise TypeError("Expected argument 'updated_at' to be a str")
         pulumi.set(__self__, "updated_at", updated_at)
+        if user_attribute_profile_id and not isinstance(user_attribute_profile_id, str):
+            raise TypeError("Expected argument 'user_attribute_profile_id' to be a str")
+        pulumi.set(__self__, "user_attribute_profile_id", user_attribute_profile_id)
         if user_attributes and not isinstance(user_attributes, list):
             raise TypeError("Expected argument 'user_attributes' to be a list")
         pulumi.set(__self__, "user_attributes", user_attributes)
@@ -110,10 +113,18 @@ class GetSelfServiceProfileResult:
         return pulumi.get(self, "updated_at")
 
     @_builtins.property
+    @pulumi.getter(name="userAttributeProfileId")
+    def user_attribute_profile_id(self) -> _builtins.str:
+        """
+        The ID of the user attribute profile to use for this self-service profile. Cannot be used with user_attributes.
+        """
+        return pulumi.get(self, "user_attribute_profile_id")
+
+    @_builtins.property
     @pulumi.getter(name="userAttributes")
     def user_attributes(self) -> Sequence['outputs.GetSelfServiceProfileUserAttributeResult']:
         """
-        This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0.
+        This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0. Cannot be used with user*attribute*profile*id.
         """
         return pulumi.get(self, "user_attributes")
 
@@ -131,6 +142,7 @@ class AwaitableGetSelfServiceProfileResult(GetSelfServiceProfileResult):
             id=self.id,
             name=self.name,
             updated_at=self.updated_at,
+            user_attribute_profile_id=self.user_attribute_profile_id,
             user_attributes=self.user_attributes)
 
 
@@ -165,6 +177,7 @@ def get_self_service_profile(id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         updated_at=pulumi.get(__ret__, 'updated_at'),
+        user_attribute_profile_id=pulumi.get(__ret__, 'user_attribute_profile_id'),
         user_attributes=pulumi.get(__ret__, 'user_attributes'))
 def get_self_service_profile_output(id: Optional[pulumi.Input[_builtins.str]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSelfServiceProfileResult]:
@@ -196,4 +209,5 @@ def get_self_service_profile_output(id: Optional[pulumi.Input[_builtins.str]] = 
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
         updated_at=pulumi.get(__response__, 'updated_at'),
+        user_attribute_profile_id=pulumi.get(__response__, 'user_attribute_profile_id'),
         user_attributes=pulumi.get(__response__, 'user_attributes')))

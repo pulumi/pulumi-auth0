@@ -13,6 +13,8 @@ import (
 
 // With this resource, you can create and manage Self-Service Profile for a tenant.
 //
+// > userAttributeProfileId field only available for [EA](https://auth0.com/docs/troubleshoot/product-lifecycle/product-release-stages#early-access) users.
+//
 // ## Example Usage
 //
 // ```go
@@ -75,7 +77,9 @@ type SelfServiceProfile struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ISO 8601 formatted date the profile was updated.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
-	// This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0.
+	// The ID of the user attribute profile to use for this self-service profile. Cannot be used with user_attributes.
+	UserAttributeProfileId pulumi.StringPtrOutput `pulumi:"userAttributeProfileId"`
+	// This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0. Cannot be used with user*attribute*profile*id.
 	UserAttributes SelfServiceProfileUserAttributeArrayOutput `pulumi:"userAttributes"`
 }
 
@@ -121,7 +125,9 @@ type selfServiceProfileState struct {
 	Name *string `pulumi:"name"`
 	// The ISO 8601 formatted date the profile was updated.
 	UpdatedAt *string `pulumi:"updatedAt"`
-	// This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0.
+	// The ID of the user attribute profile to use for this self-service profile. Cannot be used with user_attributes.
+	UserAttributeProfileId *string `pulumi:"userAttributeProfileId"`
+	// This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0. Cannot be used with user*attribute*profile*id.
 	UserAttributes []SelfServiceProfileUserAttribute `pulumi:"userAttributes"`
 }
 
@@ -138,7 +144,9 @@ type SelfServiceProfileState struct {
 	Name pulumi.StringPtrInput
 	// The ISO 8601 formatted date the profile was updated.
 	UpdatedAt pulumi.StringPtrInput
-	// This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0.
+	// The ID of the user attribute profile to use for this self-service profile. Cannot be used with user_attributes.
+	UserAttributeProfileId pulumi.StringPtrInput
+	// This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0. Cannot be used with user*attribute*profile*id.
 	UserAttributes SelfServiceProfileUserAttributeArrayInput
 }
 
@@ -155,7 +163,9 @@ type selfServiceProfileArgs struct {
 	Description *string `pulumi:"description"`
 	// The name of the self-service Profile
 	Name *string `pulumi:"name"`
-	// This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0.
+	// The ID of the user attribute profile to use for this self-service profile. Cannot be used with user_attributes.
+	UserAttributeProfileId *string `pulumi:"userAttributeProfileId"`
+	// This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0. Cannot be used with user*attribute*profile*id.
 	UserAttributes []SelfServiceProfileUserAttribute `pulumi:"userAttributes"`
 }
 
@@ -169,7 +179,9 @@ type SelfServiceProfileArgs struct {
 	Description pulumi.StringPtrInput
 	// The name of the self-service Profile
 	Name pulumi.StringPtrInput
-	// This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0.
+	// The ID of the user attribute profile to use for this self-service profile. Cannot be used with user_attributes.
+	UserAttributeProfileId pulumi.StringPtrInput
+	// This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0. Cannot be used with user*attribute*profile*id.
 	UserAttributes SelfServiceProfileUserAttributeArrayInput
 }
 
@@ -290,7 +302,12 @@ func (o SelfServiceProfileOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *SelfServiceProfile) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
-// This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0.
+// The ID of the user attribute profile to use for this self-service profile. Cannot be used with user_attributes.
+func (o SelfServiceProfileOutput) UserAttributeProfileId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SelfServiceProfile) pulumi.StringPtrOutput { return v.UserAttributeProfileId }).(pulumi.StringPtrOutput)
+}
+
+// This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0. Cannot be used with user*attribute*profile*id.
 func (o SelfServiceProfileOutput) UserAttributes() SelfServiceProfileUserAttributeArrayOutput {
 	return o.ApplyT(func(v *SelfServiceProfile) SelfServiceProfileUserAttributeArrayOutput { return v.UserAttributes }).(SelfServiceProfileUserAttributeArrayOutput)
 }

@@ -65,6 +65,21 @@ public final class ConnectionOptionsAttributeEmailArgs extends com.pulumi.resour
     }
 
     /**
+     * If set to false, it allow multiple accounts with the same email address
+     * 
+     */
+    @Import(name="unique")
+    private @Nullable Output<Boolean> unique;
+
+    /**
+     * @return If set to false, it allow multiple accounts with the same email address
+     * 
+     */
+    public Optional<Output<Boolean>> unique() {
+        return Optional.ofNullable(this.unique);
+    }
+
+    /**
      * Defines whether whether user will receive a link or an OTP during user signup for email verification and password reset for email verification
      * 
      */
@@ -85,6 +100,7 @@ public final class ConnectionOptionsAttributeEmailArgs extends com.pulumi.resour
         this.identifiers = $.identifiers;
         this.profileRequired = $.profileRequired;
         this.signups = $.signups;
+        this.unique = $.unique;
         this.verificationMethod = $.verificationMethod;
     }
 
@@ -187,6 +203,27 @@ public final class ConnectionOptionsAttributeEmailArgs extends com.pulumi.resour
          */
         public Builder signups(ConnectionOptionsAttributeEmailSignupArgs... signups) {
             return signups(List.of(signups));
+        }
+
+        /**
+         * @param unique If set to false, it allow multiple accounts with the same email address
+         * 
+         * @return builder
+         * 
+         */
+        public Builder unique(@Nullable Output<Boolean> unique) {
+            $.unique = unique;
+            return this;
+        }
+
+        /**
+         * @param unique If set to false, it allow multiple accounts with the same email address
+         * 
+         * @return builder
+         * 
+         */
+        public Builder unique(Boolean unique) {
+            return unique(Output.of(unique));
         }
 
         /**

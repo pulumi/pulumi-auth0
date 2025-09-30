@@ -45,6 +45,8 @@ import com.pulumi.auth0.inputs.GetSelfServiceProfilePlainArgs;
 import com.pulumi.auth0.inputs.GetTokenExchangeProfileArgs;
 import com.pulumi.auth0.inputs.GetTokenExchangeProfilePlainArgs;
 import com.pulumi.auth0.inputs.GetUserArgs;
+import com.pulumi.auth0.inputs.GetUserAttributeProfileArgs;
+import com.pulumi.auth0.inputs.GetUserAttributeProfilePlainArgs;
 import com.pulumi.auth0.inputs.GetUserPlainArgs;
 import com.pulumi.auth0.outputs.GetActionResult;
 import com.pulumi.auth0.outputs.GetAttackProtectionResult;
@@ -62,6 +64,7 @@ import com.pulumi.auth0.outputs.GetFlowVaultConnectionResult;
 import com.pulumi.auth0.outputs.GetFormResult;
 import com.pulumi.auth0.outputs.GetNetworkAclResult;
 import com.pulumi.auth0.outputs.GetOrganizationResult;
+import com.pulumi.auth0.outputs.GetOutboundIpsResult;
 import com.pulumi.auth0.outputs.GetPagesResult;
 import com.pulumi.auth0.outputs.GetPhoneProviderResult;
 import com.pulumi.auth0.outputs.GetPromptScreenPartialsResult;
@@ -72,6 +75,7 @@ import com.pulumi.auth0.outputs.GetSelfServiceProfileResult;
 import com.pulumi.auth0.outputs.GetSigningKeysResult;
 import com.pulumi.auth0.outputs.GetTenantResult;
 import com.pulumi.auth0.outputs.GetTokenExchangeProfileResult;
+import com.pulumi.auth0.outputs.GetUserAttributeProfileResult;
 import com.pulumi.auth0.outputs.GetUserResult;
 import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
@@ -4160,6 +4164,55 @@ public final class Auth0Functions {
         return Deployment.getInstance().invokeAsync("auth0:index/getOrganization:getOrganization", TypeShape.of(GetOrganizationResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Use this data source to retrieve Auth0&#39;s outbound IP ranges for allowlisting purposes.
+     * 
+     */
+    public static Output<GetOutboundIpsResult> getOutboundIps() {
+        return getOutboundIps(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve Auth0&#39;s outbound IP ranges for allowlisting purposes.
+     * 
+     */
+    public static CompletableFuture<GetOutboundIpsResult> getOutboundIpsPlain() {
+        return getOutboundIpsPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve Auth0&#39;s outbound IP ranges for allowlisting purposes.
+     * 
+     */
+    public static Output<GetOutboundIpsResult> getOutboundIps(InvokeArgs args) {
+        return getOutboundIps(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve Auth0&#39;s outbound IP ranges for allowlisting purposes.
+     * 
+     */
+    public static CompletableFuture<GetOutboundIpsResult> getOutboundIpsPlain(InvokeArgs args) {
+        return getOutboundIpsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve Auth0&#39;s outbound IP ranges for allowlisting purposes.
+     * 
+     */
+    public static Output<GetOutboundIpsResult> getOutboundIps(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getOutboundIps:getOutboundIps", TypeShape.of(GetOutboundIpsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve Auth0&#39;s outbound IP ranges for allowlisting purposes.
+     * 
+     */
+    public static Output<GetOutboundIpsResult> getOutboundIps(InvokeArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getOutboundIps:getOutboundIps", TypeShape.of(GetOutboundIpsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve Auth0&#39;s outbound IP ranges for allowlisting purposes.
+     * 
+     */
+    public static CompletableFuture<GetOutboundIpsResult> getOutboundIpsPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("auth0:index/getOutboundIps:getOutboundIps", TypeShape.of(GetOutboundIpsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Use this data source to access the HTML for the login, reset password, multi-factor authentication and error pages.
      * 
      * ## Example Usage
@@ -6098,5 +6151,54 @@ public final class Auth0Functions {
      */
     public static CompletableFuture<GetUserResult> getUserPlain(GetUserPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("auth0:index/getUser:getUser", TypeShape.of(GetUserResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Auth0 User Attribute Profile by `user_attribute_profile_id` or `name`.
+     * 
+     */
+    public static Output<GetUserAttributeProfileResult> getUserAttributeProfile() {
+        return getUserAttributeProfile(GetUserAttributeProfileArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Auth0 User Attribute Profile by `user_attribute_profile_id` or `name`.
+     * 
+     */
+    public static CompletableFuture<GetUserAttributeProfileResult> getUserAttributeProfilePlain() {
+        return getUserAttributeProfilePlain(GetUserAttributeProfilePlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Auth0 User Attribute Profile by `user_attribute_profile_id` or `name`.
+     * 
+     */
+    public static Output<GetUserAttributeProfileResult> getUserAttributeProfile(GetUserAttributeProfileArgs args) {
+        return getUserAttributeProfile(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Auth0 User Attribute Profile by `user_attribute_profile_id` or `name`.
+     * 
+     */
+    public static CompletableFuture<GetUserAttributeProfileResult> getUserAttributeProfilePlain(GetUserAttributeProfilePlainArgs args) {
+        return getUserAttributeProfilePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Auth0 User Attribute Profile by `user_attribute_profile_id` or `name`.
+     * 
+     */
+    public static Output<GetUserAttributeProfileResult> getUserAttributeProfile(GetUserAttributeProfileArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getUserAttributeProfile:getUserAttributeProfile", TypeShape.of(GetUserAttributeProfileResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Auth0 User Attribute Profile by `user_attribute_profile_id` or `name`.
+     * 
+     */
+    public static Output<GetUserAttributeProfileResult> getUserAttributeProfile(GetUserAttributeProfileArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getUserAttributeProfile:getUserAttributeProfile", TypeShape.of(GetUserAttributeProfileResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Auth0 User Attribute Profile by `user_attribute_profile_id` or `name`.
+     * 
+     */
+    public static CompletableFuture<GetUserAttributeProfileResult> getUserAttributeProfilePlain(GetUserAttributeProfilePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("auth0:index/getUserAttributeProfile:getUserAttributeProfile", TypeShape.of(GetUserAttributeProfileResult.class), args, Utilities.withVersion(options));
     }
 }

@@ -570,6 +570,21 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+     * 
+     */
+    @Import(name="skipNonVerifiableCallbackUriConfirmationPrompt")
+    private @Nullable Output<Boolean> skipNonVerifiableCallbackUriConfirmationPrompt;
+
+    /**
+     * @return Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+     * 
+     */
+    public Optional<Output<Boolean>> skipNonVerifiableCallbackUriConfirmationPrompt() {
+        return Optional.ofNullable(this.skipNonVerifiableCallbackUriConfirmationPrompt);
+    }
+
+    /**
      * Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
      * 
      */
@@ -683,6 +698,7 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
         this.requirePushedAuthorizationRequests = $.requirePushedAuthorizationRequests;
         this.resourceServerIdentifier = $.resourceServerIdentifier;
         this.sessionTransfer = $.sessionTransfer;
+        this.skipNonVerifiableCallbackUriConfirmationPrompt = $.skipNonVerifiableCallbackUriConfirmationPrompt;
         this.sso = $.sso;
         this.ssoDisabled = $.ssoDisabled;
         this.tokenExchange = $.tokenExchange;
@@ -1532,6 +1548,27 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder sessionTransfer(ClientSessionTransferArgs sessionTransfer) {
             return sessionTransfer(Output.of(sessionTransfer));
+        }
+
+        /**
+         * @param skipNonVerifiableCallbackUriConfirmationPrompt Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipNonVerifiableCallbackUriConfirmationPrompt(@Nullable Output<Boolean> skipNonVerifiableCallbackUriConfirmationPrompt) {
+            $.skipNonVerifiableCallbackUriConfirmationPrompt = skipNonVerifiableCallbackUriConfirmationPrompt;
+            return this;
+        }
+
+        /**
+         * @param skipNonVerifiableCallbackUriConfirmationPrompt Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipNonVerifiableCallbackUriConfirmationPrompt(Boolean skipNonVerifiableCallbackUriConfirmationPrompt) {
+            return skipNonVerifiableCallbackUriConfirmationPrompt(Output.of(skipNonVerifiableCallbackUriConfirmationPrompt));
         }
 
         /**

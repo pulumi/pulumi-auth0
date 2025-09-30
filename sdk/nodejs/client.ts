@@ -199,6 +199,10 @@ export class Client extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly signingKeys: pulumi.Output<{[key: string]: string}[]>;
     /**
+     * Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+     */
+    declare public readonly skipNonVerifiableCallbackUriConfirmationPrompt: pulumi.Output<boolean | undefined>;
+    /**
      * Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
      */
     declare public readonly sso: pulumi.Output<boolean | undefined>;
@@ -270,6 +274,7 @@ export class Client extends pulumi.CustomResource {
             resourceInputs["resourceServerIdentifier"] = state?.resourceServerIdentifier;
             resourceInputs["sessionTransfer"] = state?.sessionTransfer;
             resourceInputs["signingKeys"] = state?.signingKeys;
+            resourceInputs["skipNonVerifiableCallbackUriConfirmationPrompt"] = state?.skipNonVerifiableCallbackUriConfirmationPrompt;
             resourceInputs["sso"] = state?.sso;
             resourceInputs["ssoDisabled"] = state?.ssoDisabled;
             resourceInputs["tokenExchange"] = state?.tokenExchange;
@@ -313,6 +318,7 @@ export class Client extends pulumi.CustomResource {
             resourceInputs["requirePushedAuthorizationRequests"] = args?.requirePushedAuthorizationRequests;
             resourceInputs["resourceServerIdentifier"] = args?.resourceServerIdentifier;
             resourceInputs["sessionTransfer"] = args?.sessionTransfer;
+            resourceInputs["skipNonVerifiableCallbackUriConfirmationPrompt"] = args?.skipNonVerifiableCallbackUriConfirmationPrompt;
             resourceInputs["sso"] = args?.sso;
             resourceInputs["ssoDisabled"] = args?.ssoDisabled;
             resourceInputs["tokenExchange"] = args?.tokenExchange;
@@ -484,6 +490,10 @@ export interface ClientState {
      */
     signingKeys?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
     /**
+     * Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+     */
+    skipNonVerifiableCallbackUriConfirmationPrompt?: pulumi.Input<boolean>;
+    /**
      * Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
      */
     sso?: pulumi.Input<boolean>;
@@ -652,6 +662,10 @@ export interface ClientArgs {
      */
     resourceServerIdentifier?: pulumi.Input<string>;
     sessionTransfer?: pulumi.Input<inputs.ClientSessionTransfer>;
+    /**
+     * Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+     */
+    skipNonVerifiableCallbackUriConfirmationPrompt?: pulumi.Input<boolean>;
     /**
      * Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
      */

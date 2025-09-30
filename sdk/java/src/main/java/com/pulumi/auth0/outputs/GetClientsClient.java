@@ -92,6 +92,11 @@ public final class GetClientsClient {
     private String resourceServerIdentifier;
     private List<GetClientsClientSessionTransfer> sessionTransfers;
     /**
+     * @return Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+     * 
+     */
+    private Boolean skipNonVerifiableCallbackUriConfirmationPrompt;
+    /**
      * @return Allows configuration for token exchange
      * 
      */
@@ -213,6 +218,13 @@ public final class GetClientsClient {
         return this.sessionTransfers;
     }
     /**
+     * @return Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+     * 
+     */
+    public Boolean skipNonVerifiableCallbackUriConfirmationPrompt() {
+        return this.skipNonVerifiableCallbackUriConfirmationPrompt;
+    }
+    /**
      * @return Allows configuration for token exchange
      * 
      */
@@ -259,6 +271,7 @@ public final class GetClientsClient {
         private List<GetClientsClientOidcLogout> oidcLogouts;
         private String resourceServerIdentifier;
         private List<GetClientsClientSessionTransfer> sessionTransfers;
+        private Boolean skipNonVerifiableCallbackUriConfirmationPrompt;
         private List<GetClientsClientTokenExchange> tokenExchanges;
         private List<GetClientsClientTokenQuota> tokenQuotas;
         private List<String> webOrigins;
@@ -281,6 +294,7 @@ public final class GetClientsClient {
     	      this.oidcLogouts = defaults.oidcLogouts;
     	      this.resourceServerIdentifier = defaults.resourceServerIdentifier;
     	      this.sessionTransfers = defaults.sessionTransfers;
+    	      this.skipNonVerifiableCallbackUriConfirmationPrompt = defaults.skipNonVerifiableCallbackUriConfirmationPrompt;
     	      this.tokenExchanges = defaults.tokenExchanges;
     	      this.tokenQuotas = defaults.tokenQuotas;
     	      this.webOrigins = defaults.webOrigins;
@@ -432,6 +446,14 @@ public final class GetClientsClient {
             return sessionTransfers(List.of(sessionTransfers));
         }
         @CustomType.Setter
+        public Builder skipNonVerifiableCallbackUriConfirmationPrompt(Boolean skipNonVerifiableCallbackUriConfirmationPrompt) {
+            if (skipNonVerifiableCallbackUriConfirmationPrompt == null) {
+              throw new MissingRequiredPropertyException("GetClientsClient", "skipNonVerifiableCallbackUriConfirmationPrompt");
+            }
+            this.skipNonVerifiableCallbackUriConfirmationPrompt = skipNonVerifiableCallbackUriConfirmationPrompt;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tokenExchanges(List<GetClientsClientTokenExchange> tokenExchanges) {
             if (tokenExchanges == null) {
               throw new MissingRequiredPropertyException("GetClientsClient", "tokenExchanges");
@@ -482,6 +504,7 @@ public final class GetClientsClient {
             _resultValue.oidcLogouts = oidcLogouts;
             _resultValue.resourceServerIdentifier = resourceServerIdentifier;
             _resultValue.sessionTransfers = sessionTransfers;
+            _resultValue.skipNonVerifiableCallbackUriConfirmationPrompt = skipNonVerifiableCallbackUriConfirmationPrompt;
             _resultValue.tokenExchanges = tokenExchanges;
             _resultValue.tokenQuotas = tokenQuotas;
             _resultValue.webOrigins = webOrigins;

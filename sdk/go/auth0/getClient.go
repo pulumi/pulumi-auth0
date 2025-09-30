@@ -148,6 +148,8 @@ type LookupClientResult struct {
 	SignedRequestObjects []GetClientSignedRequestObject `pulumi:"signedRequestObjects"`
 	// List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
 	SigningKeys []map[string]string `pulumi:"signingKeys"`
+	// Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+	SkipNonVerifiableCallbackUriConfirmationPrompt bool `pulumi:"skipNonVerifiableCallbackUriConfirmationPrompt"`
 	// Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
 	Sso bool `pulumi:"sso"`
 	// Indicates whether or not SSO is disabled.
@@ -404,6 +406,11 @@ func (o LookupClientResultOutput) SignedRequestObjects() GetClientSignedRequestO
 // List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
 func (o LookupClientResultOutput) SigningKeys() pulumi.StringMapArrayOutput {
 	return o.ApplyT(func(v LookupClientResult) []map[string]string { return v.SigningKeys }).(pulumi.StringMapArrayOutput)
+}
+
+// Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+func (o LookupClientResultOutput) SkipNonVerifiableCallbackUriConfirmationPrompt() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupClientResult) bool { return v.SkipNonVerifiableCallbackUriConfirmationPrompt }).(pulumi.BoolOutput)
 }
 
 // Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).

@@ -42,6 +42,7 @@ namespace Pulumi.Auth0
     ///             "en",
     ///         },
     ///         DefaultRedirectionUri = "https://example.com/login",
+    ///         SkipNonVerifiableCallbackUriConfirmationPrompt = true,
     ///         Flags = new Auth0.Inputs.TenantFlagsArgs
     ///         {
     ///             DisableClickjackProtectionHeaders = true,
@@ -218,6 +219,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Output("sessions")]
         public Output<Outputs.TenantSessions> Sessions { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+        /// </summary>
+        [Output("skipNonVerifiableCallbackUriConfirmationPrompt")]
+        public Output<bool?> SkipNonVerifiableCallbackUriConfirmationPrompt { get; private set; } = null!;
 
         /// <summary>
         /// Support email address for authenticating users.
@@ -428,6 +435,12 @@ namespace Pulumi.Auth0
         public Input<Inputs.TenantSessionsArgs>? Sessions { get; set; }
 
         /// <summary>
+        /// Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+        /// </summary>
+        [Input("skipNonVerifiableCallbackUriConfirmationPrompt")]
+        public Input<bool>? SkipNonVerifiableCallbackUriConfirmationPrompt { get; set; }
+
+        /// <summary>
         /// Support email address for authenticating users.
         /// </summary>
         [Input("supportEmail")]
@@ -596,6 +609,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("sessions")]
         public Input<Inputs.TenantSessionsGetArgs>? Sessions { get; set; }
+
+        /// <summary>
+        /// Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+        /// </summary>
+        [Input("skipNonVerifiableCallbackUriConfirmationPrompt")]
+        public Input<bool>? SkipNonVerifiableCallbackUriConfirmationPrompt { get; set; }
 
         /// <summary>
         /// Support email address for authenticating users.

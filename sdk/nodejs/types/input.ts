@@ -1804,6 +1804,10 @@ export interface ConnectionOptionsAttributeEmail {
      */
     signups?: pulumi.Input<pulumi.Input<inputs.ConnectionOptionsAttributeEmailSignup>[]>;
     /**
+     * If set to false, it allow multiple accounts with the same email address
+     */
+    unique?: pulumi.Input<boolean>;
+    /**
      * Defines whether whether user will receive a link or an OTP during user signup for email verification and password reset for email verification
      */
     verificationMethod?: pulumi.Input<string>;
@@ -3476,6 +3480,124 @@ export interface TriggerActionsAction {
      * Action ID.
      */
     id: pulumi.Input<string>;
+}
+
+export interface UserAttributeProfileUserAttribute {
+    /**
+     * The Auth0 mapping for the user attribute.
+     */
+    auth0Mapping: pulumi.Input<string>;
+    /**
+     * Description of the user attribute.
+     */
+    description: pulumi.Input<string>;
+    /**
+     * Display label for the user attribute.
+     */
+    label: pulumi.Input<string>;
+    /**
+     * Name of the user attribute.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The OIDC mapping configuration for the user attribute.
+     */
+    oidcMapping?: pulumi.Input<inputs.UserAttributeProfileUserAttributeOidcMapping>;
+    /**
+     * Whether the attribute is required in the profile.
+     */
+    profileRequired: pulumi.Input<boolean>;
+    /**
+     * SAML mapping override for this strategy.
+     */
+    samlMappings?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The SCIM mapping for the user attribute.
+     */
+    scimMapping?: pulumi.Input<string>;
+    /**
+     * Strategy-specific overrides for user attribute mapping.
+     */
+    strategyOverrides?: pulumi.Input<pulumi.Input<inputs.UserAttributeProfileUserAttributeStrategyOverride>[]>;
+}
+
+export interface UserAttributeProfileUserAttributeOidcMapping {
+    /**
+     * Display name for the OIDC mapping.
+     */
+    displayName?: pulumi.Input<string>;
+    /**
+     * The OIDC mapping field.
+     */
+    mapping: pulumi.Input<string>;
+}
+
+export interface UserAttributeProfileUserAttributeStrategyOverride {
+    /**
+     * OIDC mapping override for this strategy.
+     */
+    oidcMapping?: pulumi.Input<inputs.UserAttributeProfileUserAttributeStrategyOverrideOidcMapping>;
+    /**
+     * SAML mapping override for this strategy.
+     */
+    samlMappings?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * SCIM mapping override for this strategy.
+     */
+    scimMapping?: pulumi.Input<string>;
+    /**
+     * The strategy name (e.g., 'oidc', 'samlp', 'ad', etc.).
+     */
+    strategy: pulumi.Input<string>;
+}
+
+export interface UserAttributeProfileUserAttributeStrategyOverrideOidcMapping {
+    /**
+     * Display name for the OIDC mapping.
+     */
+    displayName?: pulumi.Input<string>;
+    /**
+     * The OIDC mapping field.
+     */
+    mapping: pulumi.Input<string>;
+}
+
+export interface UserAttributeProfileUserId {
+    /**
+     * The OIDC mapping for the user ID.
+     */
+    oidcMapping?: pulumi.Input<string>;
+    /**
+     * The SAML mapping for the user ID.
+     */
+    samlMappings?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The SCIM mapping for the user ID.
+     */
+    scimMapping?: pulumi.Input<string>;
+    /**
+     * Strategy-specific overrides for user ID mapping.
+     */
+    strategyOverrides?: pulumi.Input<pulumi.Input<inputs.UserAttributeProfileUserIdStrategyOverride>[]>;
+}
+
+export interface UserAttributeProfileUserIdStrategyOverride {
+    /**
+     * OIDC mapping override for this strategy.
+     */
+    oidcMapping?: pulumi.Input<string>;
+    /**
+     * SAML mapping override for this strategy.
+     */
+    samlMappings?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * SCIM mapping override for this strategy.
+     */
+    scimMapping?: pulumi.Input<string>;
+    /**
+     * The strategy name (e.g., 'oidc', 'samlp', 'ad', etc.).
+     */
+    strategy: pulumi.Input<string>;
 }
 
 export interface UserPermissionsPermission {

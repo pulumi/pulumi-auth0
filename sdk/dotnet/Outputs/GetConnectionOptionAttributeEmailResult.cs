@@ -26,6 +26,10 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetConnectionOptionAttributeEmailSignupResult> Signups;
         /// <summary>
+        /// If set to false, it allow multiple accounts with the same email address
+        /// </summary>
+        public readonly bool Unique;
+        /// <summary>
         /// Defines whether whether user will receive a link or an OTP during user signup for email verification and password reset for email verification
         /// </summary>
         public readonly string VerificationMethod;
@@ -38,11 +42,14 @@ namespace Pulumi.Auth0.Outputs
 
             ImmutableArray<Outputs.GetConnectionOptionAttributeEmailSignupResult> signups,
 
+            bool unique,
+
             string verificationMethod)
         {
             Identifiers = identifiers;
             ProfileRequired = profileRequired;
             Signups = signups;
+            Unique = unique;
             VerificationMethod = verificationMethod;
         }
     }

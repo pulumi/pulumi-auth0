@@ -20,6 +20,8 @@ import javax.annotation.Nullable;
 /**
  * With this resource, you can create and manage Self-Service Profile for a tenant.
  * 
+ * &gt; user_attribute_profile_id field only available for [EA](https://auth0.com/docs/troubleshoot/product-lifecycle/product-release-stages#early-access) users.
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -164,14 +166,28 @@ public class SelfServiceProfile extends com.pulumi.resources.CustomResource {
         return this.updatedAt;
     }
     /**
-     * This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0.
+     * The ID of the user attribute profile to use for this self-service profile. Cannot be used with user_attributes.
+     * 
+     */
+    @Export(name="userAttributeProfileId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> userAttributeProfileId;
+
+    /**
+     * @return The ID of the user attribute profile to use for this self-service profile. Cannot be used with user_attributes.
+     * 
+     */
+    public Output<Optional<String>> userAttributeProfileId() {
+        return Codegen.optional(this.userAttributeProfileId);
+    }
+    /**
+     * This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0. Cannot be used with user*attribute*profile*id.
      * 
      */
     @Export(name="userAttributes", refs={List.class,SelfServiceProfileUserAttribute.class}, tree="[0,1]")
     private Output</* @Nullable */ List<SelfServiceProfileUserAttribute>> userAttributes;
 
     /**
-     * @return This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0.
+     * @return This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0. Cannot be used with user*attribute*profile*id.
      * 
      */
     public Output<Optional<List<SelfServiceProfileUserAttribute>>> userAttributes() {

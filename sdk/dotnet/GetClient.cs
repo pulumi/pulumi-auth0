@@ -313,6 +313,10 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly ImmutableArray<ImmutableDictionary<string, string>> SigningKeys;
         /// <summary>
+        /// Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+        /// </summary>
+        public readonly bool SkipNonVerifiableCallbackUriConfirmationPrompt;
+        /// <summary>
         /// Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
         /// </summary>
         public readonly bool Sso;
@@ -423,6 +427,8 @@ namespace Pulumi.Auth0
 
             ImmutableArray<ImmutableDictionary<string, string>> signingKeys,
 
+            bool skipNonVerifiableCallbackUriConfirmationPrompt,
+
             bool sso,
 
             bool ssoDisabled,
@@ -477,6 +483,7 @@ namespace Pulumi.Auth0
             SessionTransfers = sessionTransfers;
             SignedRequestObjects = signedRequestObjects;
             SigningKeys = signingKeys;
+            SkipNonVerifiableCallbackUriConfirmationPrompt = skipNonVerifiableCallbackUriConfirmationPrompt;
             Sso = sso;
             SsoDisabled = ssoDisabled;
             TokenEndpointAuthMethod = tokenEndpointAuthMethod;

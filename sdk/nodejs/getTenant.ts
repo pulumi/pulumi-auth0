@@ -129,6 +129,10 @@ export interface GetTenantResult {
      */
     readonly sessions: outputs.GetTenantSession[];
     /**
+     * Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+     */
+    readonly skipNonVerifiableCallbackUriConfirmationPrompt: boolean;
+    /**
      * Support email address for authenticating users.
      */
     readonly supportEmail: string;

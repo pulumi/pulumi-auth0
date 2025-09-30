@@ -72,6 +72,10 @@ namespace Pulumi.Auth0.Outputs
         public readonly string ResourceServerIdentifier;
         public readonly ImmutableArray<Outputs.GetClientsClientSessionTransferResult> SessionTransfers;
         /// <summary>
+        /// Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+        /// </summary>
+        public readonly bool SkipNonVerifiableCallbackUriConfirmationPrompt;
+        /// <summary>
         /// Allows configuration for token exchange
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClientsClientTokenExchangeResult> TokenExchanges;
@@ -118,6 +122,8 @@ namespace Pulumi.Auth0.Outputs
 
             ImmutableArray<Outputs.GetClientsClientSessionTransferResult> sessionTransfers,
 
+            bool skipNonVerifiableCallbackUriConfirmationPrompt,
+
             ImmutableArray<Outputs.GetClientsClientTokenExchangeResult> tokenExchanges,
 
             ImmutableArray<Outputs.GetClientsClientTokenQuotaResult> tokenQuotas,
@@ -140,6 +146,7 @@ namespace Pulumi.Auth0.Outputs
             OidcLogouts = oidcLogouts;
             ResourceServerIdentifier = resourceServerIdentifier;
             SessionTransfers = sessionTransfers;
+            SkipNonVerifiableCallbackUriConfirmationPrompt = skipNonVerifiableCallbackUriConfirmationPrompt;
             TokenExchanges = tokenExchanges;
             TokenQuotas = tokenQuotas;
             WebOrigins = webOrigins;

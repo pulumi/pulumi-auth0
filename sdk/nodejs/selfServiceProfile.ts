@@ -9,6 +9,8 @@ import * as utilities from "./utilities";
 /**
  * With this resource, you can create and manage Self-Service Profile for a tenant.
  *
+ * > userAttributeProfileId field only available for [EA](https://auth0.com/docs/troubleshoot/product-lifecycle/product-release-stages#early-access) users.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -93,7 +95,11 @@ export class SelfServiceProfile extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
     /**
-     * This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0.
+     * The ID of the user attribute profile to use for this self-service profile. Cannot be used with user_attributes.
+     */
+    declare public readonly userAttributeProfileId: pulumi.Output<string | undefined>;
+    /**
+     * This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0. Cannot be used with user*attribute*profile*id.
      */
     declare public readonly userAttributes: pulumi.Output<outputs.SelfServiceProfileUserAttribute[] | undefined>;
 
@@ -116,6 +122,7 @@ export class SelfServiceProfile extends pulumi.CustomResource {
             resourceInputs["description"] = state?.description;
             resourceInputs["name"] = state?.name;
             resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["userAttributeProfileId"] = state?.userAttributeProfileId;
             resourceInputs["userAttributes"] = state?.userAttributes;
         } else {
             const args = argsOrState as SelfServiceProfileArgs | undefined;
@@ -123,6 +130,7 @@ export class SelfServiceProfile extends pulumi.CustomResource {
             resourceInputs["branding"] = args?.branding;
             resourceInputs["description"] = args?.description;
             resourceInputs["name"] = args?.name;
+            resourceInputs["userAttributeProfileId"] = args?.userAttributeProfileId;
             resourceInputs["userAttributes"] = args?.userAttributes;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
@@ -161,7 +169,11 @@ export interface SelfServiceProfileState {
      */
     updatedAt?: pulumi.Input<string>;
     /**
-     * This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0.
+     * The ID of the user attribute profile to use for this self-service profile. Cannot be used with user_attributes.
+     */
+    userAttributeProfileId?: pulumi.Input<string>;
+    /**
+     * This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0. Cannot be used with user*attribute*profile*id.
      */
     userAttributes?: pulumi.Input<pulumi.Input<inputs.SelfServiceProfileUserAttribute>[]>;
 }
@@ -187,7 +199,11 @@ export interface SelfServiceProfileArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0.
+     * The ID of the user attribute profile to use for this self-service profile. Cannot be used with user_attributes.
+     */
+    userAttributeProfileId?: pulumi.Input<string>;
+    /**
+     * This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0. Cannot be used with user*attribute*profile*id.
      */
     userAttributes?: pulumi.Input<pulumi.Input<inputs.SelfServiceProfileUserAttribute>[]>;
 }

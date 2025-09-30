@@ -12,6 +12,8 @@ namespace Pulumi.Auth0
     /// <summary>
     /// With this resource, you can create and manage Self-Service Profile for a tenant.
     /// 
+    /// &gt; user_attribute_profile_id field only available for [EA](https://auth0.com/docs/troubleshoot/product-lifecycle/product-release-stages#early-access) users.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -96,7 +98,13 @@ namespace Pulumi.Auth0
         public Output<string> UpdatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0.
+        /// The ID of the user attribute profile to use for this self-service profile. Cannot be used with user_attributes.
+        /// </summary>
+        [Output("userAttributeProfileId")]
+        public Output<string?> UserAttributeProfileId { get; private set; } = null!;
+
+        /// <summary>
+        /// This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0. Cannot be used with user*attribute*profile*id.
         /// </summary>
         [Output("userAttributes")]
         public Output<ImmutableArray<Outputs.SelfServiceProfileUserAttribute>> UserAttributes { get; private set; } = null!;
@@ -177,11 +185,17 @@ namespace Pulumi.Auth0
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The ID of the user attribute profile to use for this self-service profile. Cannot be used with user_attributes.
+        /// </summary>
+        [Input("userAttributeProfileId")]
+        public Input<string>? UserAttributeProfileId { get; set; }
+
         [Input("userAttributes")]
         private InputList<Inputs.SelfServiceProfileUserAttributeArgs>? _userAttributes;
 
         /// <summary>
-        /// This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0.
+        /// This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0. Cannot be used with user*attribute*profile*id.
         /// </summary>
         public InputList<Inputs.SelfServiceProfileUserAttributeArgs> UserAttributes
         {
@@ -239,11 +253,17 @@ namespace Pulumi.Auth0
         [Input("updatedAt")]
         public Input<string>? UpdatedAt { get; set; }
 
+        /// <summary>
+        /// The ID of the user attribute profile to use for this self-service profile. Cannot be used with user_attributes.
+        /// </summary>
+        [Input("userAttributeProfileId")]
+        public Input<string>? UserAttributeProfileId { get; set; }
+
         [Input("userAttributes")]
         private InputList<Inputs.SelfServiceProfileUserAttributeGetArgs>? _userAttributes;
 
         /// <summary>
-        /// This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0.
+        /// This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0. Cannot be used with user*attribute*profile*id.
         /// </summary>
         public InputList<Inputs.SelfServiceProfileUserAttributeGetArgs> UserAttributes
         {

@@ -16459,6 +16459,8 @@ type ConnectionOptionsAttributeEmail struct {
 	ProfileRequired *bool `pulumi:"profileRequired"`
 	// Defines signup settings for Email attribute
 	Signups []ConnectionOptionsAttributeEmailSignup `pulumi:"signups"`
+	// If set to false, it allow multiple accounts with the same email address
+	Unique *bool `pulumi:"unique"`
 	// Defines whether whether user will receive a link or an OTP during user signup for email verification and password reset for email verification
 	VerificationMethod *string `pulumi:"verificationMethod"`
 }
@@ -16481,6 +16483,8 @@ type ConnectionOptionsAttributeEmailArgs struct {
 	ProfileRequired pulumi.BoolPtrInput `pulumi:"profileRequired"`
 	// Defines signup settings for Email attribute
 	Signups ConnectionOptionsAttributeEmailSignupArrayInput `pulumi:"signups"`
+	// If set to false, it allow multiple accounts with the same email address
+	Unique pulumi.BoolPtrInput `pulumi:"unique"`
 	// Defines whether whether user will receive a link or an OTP during user signup for email verification and password reset for email verification
 	VerificationMethod pulumi.StringPtrInput `pulumi:"verificationMethod"`
 }
@@ -16551,6 +16555,11 @@ func (o ConnectionOptionsAttributeEmailOutput) ProfileRequired() pulumi.BoolPtrO
 // Defines signup settings for Email attribute
 func (o ConnectionOptionsAttributeEmailOutput) Signups() ConnectionOptionsAttributeEmailSignupArrayOutput {
 	return o.ApplyT(func(v ConnectionOptionsAttributeEmail) []ConnectionOptionsAttributeEmailSignup { return v.Signups }).(ConnectionOptionsAttributeEmailSignupArrayOutput)
+}
+
+// If set to false, it allow multiple accounts with the same email address
+func (o ConnectionOptionsAttributeEmailOutput) Unique() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectionOptionsAttributeEmail) *bool { return v.Unique }).(pulumi.BoolPtrOutput)
 }
 
 // Defines whether whether user will receive a link or an OTP during user signup for email verification and password reset for email verification
@@ -32785,6 +32794,937 @@ func (o TriggerActionsActionArrayOutput) Index(i pulumi.IntInput) TriggerActions
 	}).(TriggerActionsActionOutput)
 }
 
+type UserAttributeProfileUserAttribute struct {
+	// The Auth0 mapping for the user attribute.
+	Auth0Mapping string `pulumi:"auth0Mapping"`
+	// Description of the user attribute.
+	Description string `pulumi:"description"`
+	// Display label for the user attribute.
+	Label string `pulumi:"label"`
+	// Name of the user attribute.
+	Name string `pulumi:"name"`
+	// The OIDC mapping configuration for the user attribute.
+	OidcMapping *UserAttributeProfileUserAttributeOidcMapping `pulumi:"oidcMapping"`
+	// Whether the attribute is required in the profile.
+	ProfileRequired bool `pulumi:"profileRequired"`
+	// SAML mapping override for this strategy.
+	SamlMappings []string `pulumi:"samlMappings"`
+	// The SCIM mapping for the user attribute.
+	ScimMapping *string `pulumi:"scimMapping"`
+	// Strategy-specific overrides for user attribute mapping.
+	StrategyOverrides []UserAttributeProfileUserAttributeStrategyOverride `pulumi:"strategyOverrides"`
+}
+
+// UserAttributeProfileUserAttributeInput is an input type that accepts UserAttributeProfileUserAttributeArgs and UserAttributeProfileUserAttributeOutput values.
+// You can construct a concrete instance of `UserAttributeProfileUserAttributeInput` via:
+//
+//	UserAttributeProfileUserAttributeArgs{...}
+type UserAttributeProfileUserAttributeInput interface {
+	pulumi.Input
+
+	ToUserAttributeProfileUserAttributeOutput() UserAttributeProfileUserAttributeOutput
+	ToUserAttributeProfileUserAttributeOutputWithContext(context.Context) UserAttributeProfileUserAttributeOutput
+}
+
+type UserAttributeProfileUserAttributeArgs struct {
+	// The Auth0 mapping for the user attribute.
+	Auth0Mapping pulumi.StringInput `pulumi:"auth0Mapping"`
+	// Description of the user attribute.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Display label for the user attribute.
+	Label pulumi.StringInput `pulumi:"label"`
+	// Name of the user attribute.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The OIDC mapping configuration for the user attribute.
+	OidcMapping UserAttributeProfileUserAttributeOidcMappingPtrInput `pulumi:"oidcMapping"`
+	// Whether the attribute is required in the profile.
+	ProfileRequired pulumi.BoolInput `pulumi:"profileRequired"`
+	// SAML mapping override for this strategy.
+	SamlMappings pulumi.StringArrayInput `pulumi:"samlMappings"`
+	// The SCIM mapping for the user attribute.
+	ScimMapping pulumi.StringPtrInput `pulumi:"scimMapping"`
+	// Strategy-specific overrides for user attribute mapping.
+	StrategyOverrides UserAttributeProfileUserAttributeStrategyOverrideArrayInput `pulumi:"strategyOverrides"`
+}
+
+func (UserAttributeProfileUserAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAttributeProfileUserAttribute)(nil)).Elem()
+}
+
+func (i UserAttributeProfileUserAttributeArgs) ToUserAttributeProfileUserAttributeOutput() UserAttributeProfileUserAttributeOutput {
+	return i.ToUserAttributeProfileUserAttributeOutputWithContext(context.Background())
+}
+
+func (i UserAttributeProfileUserAttributeArgs) ToUserAttributeProfileUserAttributeOutputWithContext(ctx context.Context) UserAttributeProfileUserAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserAttributeProfileUserAttributeOutput)
+}
+
+// UserAttributeProfileUserAttributeArrayInput is an input type that accepts UserAttributeProfileUserAttributeArray and UserAttributeProfileUserAttributeArrayOutput values.
+// You can construct a concrete instance of `UserAttributeProfileUserAttributeArrayInput` via:
+//
+//	UserAttributeProfileUserAttributeArray{ UserAttributeProfileUserAttributeArgs{...} }
+type UserAttributeProfileUserAttributeArrayInput interface {
+	pulumi.Input
+
+	ToUserAttributeProfileUserAttributeArrayOutput() UserAttributeProfileUserAttributeArrayOutput
+	ToUserAttributeProfileUserAttributeArrayOutputWithContext(context.Context) UserAttributeProfileUserAttributeArrayOutput
+}
+
+type UserAttributeProfileUserAttributeArray []UserAttributeProfileUserAttributeInput
+
+func (UserAttributeProfileUserAttributeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UserAttributeProfileUserAttribute)(nil)).Elem()
+}
+
+func (i UserAttributeProfileUserAttributeArray) ToUserAttributeProfileUserAttributeArrayOutput() UserAttributeProfileUserAttributeArrayOutput {
+	return i.ToUserAttributeProfileUserAttributeArrayOutputWithContext(context.Background())
+}
+
+func (i UserAttributeProfileUserAttributeArray) ToUserAttributeProfileUserAttributeArrayOutputWithContext(ctx context.Context) UserAttributeProfileUserAttributeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserAttributeProfileUserAttributeArrayOutput)
+}
+
+type UserAttributeProfileUserAttributeOutput struct{ *pulumi.OutputState }
+
+func (UserAttributeProfileUserAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAttributeProfileUserAttribute)(nil)).Elem()
+}
+
+func (o UserAttributeProfileUserAttributeOutput) ToUserAttributeProfileUserAttributeOutput() UserAttributeProfileUserAttributeOutput {
+	return o
+}
+
+func (o UserAttributeProfileUserAttributeOutput) ToUserAttributeProfileUserAttributeOutputWithContext(ctx context.Context) UserAttributeProfileUserAttributeOutput {
+	return o
+}
+
+// The Auth0 mapping for the user attribute.
+func (o UserAttributeProfileUserAttributeOutput) Auth0Mapping() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAttributeProfileUserAttribute) string { return v.Auth0Mapping }).(pulumi.StringOutput)
+}
+
+// Description of the user attribute.
+func (o UserAttributeProfileUserAttributeOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAttributeProfileUserAttribute) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Display label for the user attribute.
+func (o UserAttributeProfileUserAttributeOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAttributeProfileUserAttribute) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// Name of the user attribute.
+func (o UserAttributeProfileUserAttributeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAttributeProfileUserAttribute) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The OIDC mapping configuration for the user attribute.
+func (o UserAttributeProfileUserAttributeOutput) OidcMapping() UserAttributeProfileUserAttributeOidcMappingPtrOutput {
+	return o.ApplyT(func(v UserAttributeProfileUserAttribute) *UserAttributeProfileUserAttributeOidcMapping {
+		return v.OidcMapping
+	}).(UserAttributeProfileUserAttributeOidcMappingPtrOutput)
+}
+
+// Whether the attribute is required in the profile.
+func (o UserAttributeProfileUserAttributeOutput) ProfileRequired() pulumi.BoolOutput {
+	return o.ApplyT(func(v UserAttributeProfileUserAttribute) bool { return v.ProfileRequired }).(pulumi.BoolOutput)
+}
+
+// SAML mapping override for this strategy.
+func (o UserAttributeProfileUserAttributeOutput) SamlMappings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v UserAttributeProfileUserAttribute) []string { return v.SamlMappings }).(pulumi.StringArrayOutput)
+}
+
+// The SCIM mapping for the user attribute.
+func (o UserAttributeProfileUserAttributeOutput) ScimMapping() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserAttributeProfileUserAttribute) *string { return v.ScimMapping }).(pulumi.StringPtrOutput)
+}
+
+// Strategy-specific overrides for user attribute mapping.
+func (o UserAttributeProfileUserAttributeOutput) StrategyOverrides() UserAttributeProfileUserAttributeStrategyOverrideArrayOutput {
+	return o.ApplyT(func(v UserAttributeProfileUserAttribute) []UserAttributeProfileUserAttributeStrategyOverride {
+		return v.StrategyOverrides
+	}).(UserAttributeProfileUserAttributeStrategyOverrideArrayOutput)
+}
+
+type UserAttributeProfileUserAttributeArrayOutput struct{ *pulumi.OutputState }
+
+func (UserAttributeProfileUserAttributeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UserAttributeProfileUserAttribute)(nil)).Elem()
+}
+
+func (o UserAttributeProfileUserAttributeArrayOutput) ToUserAttributeProfileUserAttributeArrayOutput() UserAttributeProfileUserAttributeArrayOutput {
+	return o
+}
+
+func (o UserAttributeProfileUserAttributeArrayOutput) ToUserAttributeProfileUserAttributeArrayOutputWithContext(ctx context.Context) UserAttributeProfileUserAttributeArrayOutput {
+	return o
+}
+
+func (o UserAttributeProfileUserAttributeArrayOutput) Index(i pulumi.IntInput) UserAttributeProfileUserAttributeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UserAttributeProfileUserAttribute {
+		return vs[0].([]UserAttributeProfileUserAttribute)[vs[1].(int)]
+	}).(UserAttributeProfileUserAttributeOutput)
+}
+
+type UserAttributeProfileUserAttributeOidcMapping struct {
+	// Display name for the OIDC mapping.
+	DisplayName *string `pulumi:"displayName"`
+	// The OIDC mapping field.
+	Mapping string `pulumi:"mapping"`
+}
+
+// UserAttributeProfileUserAttributeOidcMappingInput is an input type that accepts UserAttributeProfileUserAttributeOidcMappingArgs and UserAttributeProfileUserAttributeOidcMappingOutput values.
+// You can construct a concrete instance of `UserAttributeProfileUserAttributeOidcMappingInput` via:
+//
+//	UserAttributeProfileUserAttributeOidcMappingArgs{...}
+type UserAttributeProfileUserAttributeOidcMappingInput interface {
+	pulumi.Input
+
+	ToUserAttributeProfileUserAttributeOidcMappingOutput() UserAttributeProfileUserAttributeOidcMappingOutput
+	ToUserAttributeProfileUserAttributeOidcMappingOutputWithContext(context.Context) UserAttributeProfileUserAttributeOidcMappingOutput
+}
+
+type UserAttributeProfileUserAttributeOidcMappingArgs struct {
+	// Display name for the OIDC mapping.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// The OIDC mapping field.
+	Mapping pulumi.StringInput `pulumi:"mapping"`
+}
+
+func (UserAttributeProfileUserAttributeOidcMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAttributeProfileUserAttributeOidcMapping)(nil)).Elem()
+}
+
+func (i UserAttributeProfileUserAttributeOidcMappingArgs) ToUserAttributeProfileUserAttributeOidcMappingOutput() UserAttributeProfileUserAttributeOidcMappingOutput {
+	return i.ToUserAttributeProfileUserAttributeOidcMappingOutputWithContext(context.Background())
+}
+
+func (i UserAttributeProfileUserAttributeOidcMappingArgs) ToUserAttributeProfileUserAttributeOidcMappingOutputWithContext(ctx context.Context) UserAttributeProfileUserAttributeOidcMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserAttributeProfileUserAttributeOidcMappingOutput)
+}
+
+func (i UserAttributeProfileUserAttributeOidcMappingArgs) ToUserAttributeProfileUserAttributeOidcMappingPtrOutput() UserAttributeProfileUserAttributeOidcMappingPtrOutput {
+	return i.ToUserAttributeProfileUserAttributeOidcMappingPtrOutputWithContext(context.Background())
+}
+
+func (i UserAttributeProfileUserAttributeOidcMappingArgs) ToUserAttributeProfileUserAttributeOidcMappingPtrOutputWithContext(ctx context.Context) UserAttributeProfileUserAttributeOidcMappingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserAttributeProfileUserAttributeOidcMappingOutput).ToUserAttributeProfileUserAttributeOidcMappingPtrOutputWithContext(ctx)
+}
+
+// UserAttributeProfileUserAttributeOidcMappingPtrInput is an input type that accepts UserAttributeProfileUserAttributeOidcMappingArgs, UserAttributeProfileUserAttributeOidcMappingPtr and UserAttributeProfileUserAttributeOidcMappingPtrOutput values.
+// You can construct a concrete instance of `UserAttributeProfileUserAttributeOidcMappingPtrInput` via:
+//
+//	        UserAttributeProfileUserAttributeOidcMappingArgs{...}
+//
+//	or:
+//
+//	        nil
+type UserAttributeProfileUserAttributeOidcMappingPtrInput interface {
+	pulumi.Input
+
+	ToUserAttributeProfileUserAttributeOidcMappingPtrOutput() UserAttributeProfileUserAttributeOidcMappingPtrOutput
+	ToUserAttributeProfileUserAttributeOidcMappingPtrOutputWithContext(context.Context) UserAttributeProfileUserAttributeOidcMappingPtrOutput
+}
+
+type userAttributeProfileUserAttributeOidcMappingPtrType UserAttributeProfileUserAttributeOidcMappingArgs
+
+func UserAttributeProfileUserAttributeOidcMappingPtr(v *UserAttributeProfileUserAttributeOidcMappingArgs) UserAttributeProfileUserAttributeOidcMappingPtrInput {
+	return (*userAttributeProfileUserAttributeOidcMappingPtrType)(v)
+}
+
+func (*userAttributeProfileUserAttributeOidcMappingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserAttributeProfileUserAttributeOidcMapping)(nil)).Elem()
+}
+
+func (i *userAttributeProfileUserAttributeOidcMappingPtrType) ToUserAttributeProfileUserAttributeOidcMappingPtrOutput() UserAttributeProfileUserAttributeOidcMappingPtrOutput {
+	return i.ToUserAttributeProfileUserAttributeOidcMappingPtrOutputWithContext(context.Background())
+}
+
+func (i *userAttributeProfileUserAttributeOidcMappingPtrType) ToUserAttributeProfileUserAttributeOidcMappingPtrOutputWithContext(ctx context.Context) UserAttributeProfileUserAttributeOidcMappingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserAttributeProfileUserAttributeOidcMappingPtrOutput)
+}
+
+type UserAttributeProfileUserAttributeOidcMappingOutput struct{ *pulumi.OutputState }
+
+func (UserAttributeProfileUserAttributeOidcMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAttributeProfileUserAttributeOidcMapping)(nil)).Elem()
+}
+
+func (o UserAttributeProfileUserAttributeOidcMappingOutput) ToUserAttributeProfileUserAttributeOidcMappingOutput() UserAttributeProfileUserAttributeOidcMappingOutput {
+	return o
+}
+
+func (o UserAttributeProfileUserAttributeOidcMappingOutput) ToUserAttributeProfileUserAttributeOidcMappingOutputWithContext(ctx context.Context) UserAttributeProfileUserAttributeOidcMappingOutput {
+	return o
+}
+
+func (o UserAttributeProfileUserAttributeOidcMappingOutput) ToUserAttributeProfileUserAttributeOidcMappingPtrOutput() UserAttributeProfileUserAttributeOidcMappingPtrOutput {
+	return o.ToUserAttributeProfileUserAttributeOidcMappingPtrOutputWithContext(context.Background())
+}
+
+func (o UserAttributeProfileUserAttributeOidcMappingOutput) ToUserAttributeProfileUserAttributeOidcMappingPtrOutputWithContext(ctx context.Context) UserAttributeProfileUserAttributeOidcMappingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UserAttributeProfileUserAttributeOidcMapping) *UserAttributeProfileUserAttributeOidcMapping {
+		return &v
+	}).(UserAttributeProfileUserAttributeOidcMappingPtrOutput)
+}
+
+// Display name for the OIDC mapping.
+func (o UserAttributeProfileUserAttributeOidcMappingOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserAttributeProfileUserAttributeOidcMapping) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// The OIDC mapping field.
+func (o UserAttributeProfileUserAttributeOidcMappingOutput) Mapping() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAttributeProfileUserAttributeOidcMapping) string { return v.Mapping }).(pulumi.StringOutput)
+}
+
+type UserAttributeProfileUserAttributeOidcMappingPtrOutput struct{ *pulumi.OutputState }
+
+func (UserAttributeProfileUserAttributeOidcMappingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserAttributeProfileUserAttributeOidcMapping)(nil)).Elem()
+}
+
+func (o UserAttributeProfileUserAttributeOidcMappingPtrOutput) ToUserAttributeProfileUserAttributeOidcMappingPtrOutput() UserAttributeProfileUserAttributeOidcMappingPtrOutput {
+	return o
+}
+
+func (o UserAttributeProfileUserAttributeOidcMappingPtrOutput) ToUserAttributeProfileUserAttributeOidcMappingPtrOutputWithContext(ctx context.Context) UserAttributeProfileUserAttributeOidcMappingPtrOutput {
+	return o
+}
+
+func (o UserAttributeProfileUserAttributeOidcMappingPtrOutput) Elem() UserAttributeProfileUserAttributeOidcMappingOutput {
+	return o.ApplyT(func(v *UserAttributeProfileUserAttributeOidcMapping) UserAttributeProfileUserAttributeOidcMapping {
+		if v != nil {
+			return *v
+		}
+		var ret UserAttributeProfileUserAttributeOidcMapping
+		return ret
+	}).(UserAttributeProfileUserAttributeOidcMappingOutput)
+}
+
+// Display name for the OIDC mapping.
+func (o UserAttributeProfileUserAttributeOidcMappingPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserAttributeProfileUserAttributeOidcMapping) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The OIDC mapping field.
+func (o UserAttributeProfileUserAttributeOidcMappingPtrOutput) Mapping() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserAttributeProfileUserAttributeOidcMapping) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Mapping
+	}).(pulumi.StringPtrOutput)
+}
+
+type UserAttributeProfileUserAttributeStrategyOverride struct {
+	// OIDC mapping override for this strategy.
+	OidcMapping *UserAttributeProfileUserAttributeStrategyOverrideOidcMapping `pulumi:"oidcMapping"`
+	// SAML mapping override for this strategy.
+	SamlMappings []string `pulumi:"samlMappings"`
+	// SCIM mapping override for this strategy.
+	ScimMapping *string `pulumi:"scimMapping"`
+	// The strategy name (e.g., 'oidc', 'samlp', 'ad', etc.).
+	Strategy string `pulumi:"strategy"`
+}
+
+// UserAttributeProfileUserAttributeStrategyOverrideInput is an input type that accepts UserAttributeProfileUserAttributeStrategyOverrideArgs and UserAttributeProfileUserAttributeStrategyOverrideOutput values.
+// You can construct a concrete instance of `UserAttributeProfileUserAttributeStrategyOverrideInput` via:
+//
+//	UserAttributeProfileUserAttributeStrategyOverrideArgs{...}
+type UserAttributeProfileUserAttributeStrategyOverrideInput interface {
+	pulumi.Input
+
+	ToUserAttributeProfileUserAttributeStrategyOverrideOutput() UserAttributeProfileUserAttributeStrategyOverrideOutput
+	ToUserAttributeProfileUserAttributeStrategyOverrideOutputWithContext(context.Context) UserAttributeProfileUserAttributeStrategyOverrideOutput
+}
+
+type UserAttributeProfileUserAttributeStrategyOverrideArgs struct {
+	// OIDC mapping override for this strategy.
+	OidcMapping UserAttributeProfileUserAttributeStrategyOverrideOidcMappingPtrInput `pulumi:"oidcMapping"`
+	// SAML mapping override for this strategy.
+	SamlMappings pulumi.StringArrayInput `pulumi:"samlMappings"`
+	// SCIM mapping override for this strategy.
+	ScimMapping pulumi.StringPtrInput `pulumi:"scimMapping"`
+	// The strategy name (e.g., 'oidc', 'samlp', 'ad', etc.).
+	Strategy pulumi.StringInput `pulumi:"strategy"`
+}
+
+func (UserAttributeProfileUserAttributeStrategyOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAttributeProfileUserAttributeStrategyOverride)(nil)).Elem()
+}
+
+func (i UserAttributeProfileUserAttributeStrategyOverrideArgs) ToUserAttributeProfileUserAttributeStrategyOverrideOutput() UserAttributeProfileUserAttributeStrategyOverrideOutput {
+	return i.ToUserAttributeProfileUserAttributeStrategyOverrideOutputWithContext(context.Background())
+}
+
+func (i UserAttributeProfileUserAttributeStrategyOverrideArgs) ToUserAttributeProfileUserAttributeStrategyOverrideOutputWithContext(ctx context.Context) UserAttributeProfileUserAttributeStrategyOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserAttributeProfileUserAttributeStrategyOverrideOutput)
+}
+
+// UserAttributeProfileUserAttributeStrategyOverrideArrayInput is an input type that accepts UserAttributeProfileUserAttributeStrategyOverrideArray and UserAttributeProfileUserAttributeStrategyOverrideArrayOutput values.
+// You can construct a concrete instance of `UserAttributeProfileUserAttributeStrategyOverrideArrayInput` via:
+//
+//	UserAttributeProfileUserAttributeStrategyOverrideArray{ UserAttributeProfileUserAttributeStrategyOverrideArgs{...} }
+type UserAttributeProfileUserAttributeStrategyOverrideArrayInput interface {
+	pulumi.Input
+
+	ToUserAttributeProfileUserAttributeStrategyOverrideArrayOutput() UserAttributeProfileUserAttributeStrategyOverrideArrayOutput
+	ToUserAttributeProfileUserAttributeStrategyOverrideArrayOutputWithContext(context.Context) UserAttributeProfileUserAttributeStrategyOverrideArrayOutput
+}
+
+type UserAttributeProfileUserAttributeStrategyOverrideArray []UserAttributeProfileUserAttributeStrategyOverrideInput
+
+func (UserAttributeProfileUserAttributeStrategyOverrideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UserAttributeProfileUserAttributeStrategyOverride)(nil)).Elem()
+}
+
+func (i UserAttributeProfileUserAttributeStrategyOverrideArray) ToUserAttributeProfileUserAttributeStrategyOverrideArrayOutput() UserAttributeProfileUserAttributeStrategyOverrideArrayOutput {
+	return i.ToUserAttributeProfileUserAttributeStrategyOverrideArrayOutputWithContext(context.Background())
+}
+
+func (i UserAttributeProfileUserAttributeStrategyOverrideArray) ToUserAttributeProfileUserAttributeStrategyOverrideArrayOutputWithContext(ctx context.Context) UserAttributeProfileUserAttributeStrategyOverrideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserAttributeProfileUserAttributeStrategyOverrideArrayOutput)
+}
+
+type UserAttributeProfileUserAttributeStrategyOverrideOutput struct{ *pulumi.OutputState }
+
+func (UserAttributeProfileUserAttributeStrategyOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAttributeProfileUserAttributeStrategyOverride)(nil)).Elem()
+}
+
+func (o UserAttributeProfileUserAttributeStrategyOverrideOutput) ToUserAttributeProfileUserAttributeStrategyOverrideOutput() UserAttributeProfileUserAttributeStrategyOverrideOutput {
+	return o
+}
+
+func (o UserAttributeProfileUserAttributeStrategyOverrideOutput) ToUserAttributeProfileUserAttributeStrategyOverrideOutputWithContext(ctx context.Context) UserAttributeProfileUserAttributeStrategyOverrideOutput {
+	return o
+}
+
+// OIDC mapping override for this strategy.
+func (o UserAttributeProfileUserAttributeStrategyOverrideOutput) OidcMapping() UserAttributeProfileUserAttributeStrategyOverrideOidcMappingPtrOutput {
+	return o.ApplyT(func(v UserAttributeProfileUserAttributeStrategyOverride) *UserAttributeProfileUserAttributeStrategyOverrideOidcMapping {
+		return v.OidcMapping
+	}).(UserAttributeProfileUserAttributeStrategyOverrideOidcMappingPtrOutput)
+}
+
+// SAML mapping override for this strategy.
+func (o UserAttributeProfileUserAttributeStrategyOverrideOutput) SamlMappings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v UserAttributeProfileUserAttributeStrategyOverride) []string { return v.SamlMappings }).(pulumi.StringArrayOutput)
+}
+
+// SCIM mapping override for this strategy.
+func (o UserAttributeProfileUserAttributeStrategyOverrideOutput) ScimMapping() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserAttributeProfileUserAttributeStrategyOverride) *string { return v.ScimMapping }).(pulumi.StringPtrOutput)
+}
+
+// The strategy name (e.g., 'oidc', 'samlp', 'ad', etc.).
+func (o UserAttributeProfileUserAttributeStrategyOverrideOutput) Strategy() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAttributeProfileUserAttributeStrategyOverride) string { return v.Strategy }).(pulumi.StringOutput)
+}
+
+type UserAttributeProfileUserAttributeStrategyOverrideArrayOutput struct{ *pulumi.OutputState }
+
+func (UserAttributeProfileUserAttributeStrategyOverrideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UserAttributeProfileUserAttributeStrategyOverride)(nil)).Elem()
+}
+
+func (o UserAttributeProfileUserAttributeStrategyOverrideArrayOutput) ToUserAttributeProfileUserAttributeStrategyOverrideArrayOutput() UserAttributeProfileUserAttributeStrategyOverrideArrayOutput {
+	return o
+}
+
+func (o UserAttributeProfileUserAttributeStrategyOverrideArrayOutput) ToUserAttributeProfileUserAttributeStrategyOverrideArrayOutputWithContext(ctx context.Context) UserAttributeProfileUserAttributeStrategyOverrideArrayOutput {
+	return o
+}
+
+func (o UserAttributeProfileUserAttributeStrategyOverrideArrayOutput) Index(i pulumi.IntInput) UserAttributeProfileUserAttributeStrategyOverrideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UserAttributeProfileUserAttributeStrategyOverride {
+		return vs[0].([]UserAttributeProfileUserAttributeStrategyOverride)[vs[1].(int)]
+	}).(UserAttributeProfileUserAttributeStrategyOverrideOutput)
+}
+
+type UserAttributeProfileUserAttributeStrategyOverrideOidcMapping struct {
+	// Display name for the OIDC mapping.
+	DisplayName *string `pulumi:"displayName"`
+	// The OIDC mapping field.
+	Mapping string `pulumi:"mapping"`
+}
+
+// UserAttributeProfileUserAttributeStrategyOverrideOidcMappingInput is an input type that accepts UserAttributeProfileUserAttributeStrategyOverrideOidcMappingArgs and UserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput values.
+// You can construct a concrete instance of `UserAttributeProfileUserAttributeStrategyOverrideOidcMappingInput` via:
+//
+//	UserAttributeProfileUserAttributeStrategyOverrideOidcMappingArgs{...}
+type UserAttributeProfileUserAttributeStrategyOverrideOidcMappingInput interface {
+	pulumi.Input
+
+	ToUserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput() UserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput
+	ToUserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutputWithContext(context.Context) UserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput
+}
+
+type UserAttributeProfileUserAttributeStrategyOverrideOidcMappingArgs struct {
+	// Display name for the OIDC mapping.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// The OIDC mapping field.
+	Mapping pulumi.StringInput `pulumi:"mapping"`
+}
+
+func (UserAttributeProfileUserAttributeStrategyOverrideOidcMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAttributeProfileUserAttributeStrategyOverrideOidcMapping)(nil)).Elem()
+}
+
+func (i UserAttributeProfileUserAttributeStrategyOverrideOidcMappingArgs) ToUserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput() UserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput {
+	return i.ToUserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutputWithContext(context.Background())
+}
+
+func (i UserAttributeProfileUserAttributeStrategyOverrideOidcMappingArgs) ToUserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutputWithContext(ctx context.Context) UserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput)
+}
+
+func (i UserAttributeProfileUserAttributeStrategyOverrideOidcMappingArgs) ToUserAttributeProfileUserAttributeStrategyOverrideOidcMappingPtrOutput() UserAttributeProfileUserAttributeStrategyOverrideOidcMappingPtrOutput {
+	return i.ToUserAttributeProfileUserAttributeStrategyOverrideOidcMappingPtrOutputWithContext(context.Background())
+}
+
+func (i UserAttributeProfileUserAttributeStrategyOverrideOidcMappingArgs) ToUserAttributeProfileUserAttributeStrategyOverrideOidcMappingPtrOutputWithContext(ctx context.Context) UserAttributeProfileUserAttributeStrategyOverrideOidcMappingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput).ToUserAttributeProfileUserAttributeStrategyOverrideOidcMappingPtrOutputWithContext(ctx)
+}
+
+// UserAttributeProfileUserAttributeStrategyOverrideOidcMappingPtrInput is an input type that accepts UserAttributeProfileUserAttributeStrategyOverrideOidcMappingArgs, UserAttributeProfileUserAttributeStrategyOverrideOidcMappingPtr and UserAttributeProfileUserAttributeStrategyOverrideOidcMappingPtrOutput values.
+// You can construct a concrete instance of `UserAttributeProfileUserAttributeStrategyOverrideOidcMappingPtrInput` via:
+//
+//	        UserAttributeProfileUserAttributeStrategyOverrideOidcMappingArgs{...}
+//
+//	or:
+//
+//	        nil
+type UserAttributeProfileUserAttributeStrategyOverrideOidcMappingPtrInput interface {
+	pulumi.Input
+
+	ToUserAttributeProfileUserAttributeStrategyOverrideOidcMappingPtrOutput() UserAttributeProfileUserAttributeStrategyOverrideOidcMappingPtrOutput
+	ToUserAttributeProfileUserAttributeStrategyOverrideOidcMappingPtrOutputWithContext(context.Context) UserAttributeProfileUserAttributeStrategyOverrideOidcMappingPtrOutput
+}
+
+type userAttributeProfileUserAttributeStrategyOverrideOidcMappingPtrType UserAttributeProfileUserAttributeStrategyOverrideOidcMappingArgs
+
+func UserAttributeProfileUserAttributeStrategyOverrideOidcMappingPtr(v *UserAttributeProfileUserAttributeStrategyOverrideOidcMappingArgs) UserAttributeProfileUserAttributeStrategyOverrideOidcMappingPtrInput {
+	return (*userAttributeProfileUserAttributeStrategyOverrideOidcMappingPtrType)(v)
+}
+
+func (*userAttributeProfileUserAttributeStrategyOverrideOidcMappingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserAttributeProfileUserAttributeStrategyOverrideOidcMapping)(nil)).Elem()
+}
+
+func (i *userAttributeProfileUserAttributeStrategyOverrideOidcMappingPtrType) ToUserAttributeProfileUserAttributeStrategyOverrideOidcMappingPtrOutput() UserAttributeProfileUserAttributeStrategyOverrideOidcMappingPtrOutput {
+	return i.ToUserAttributeProfileUserAttributeStrategyOverrideOidcMappingPtrOutputWithContext(context.Background())
+}
+
+func (i *userAttributeProfileUserAttributeStrategyOverrideOidcMappingPtrType) ToUserAttributeProfileUserAttributeStrategyOverrideOidcMappingPtrOutputWithContext(ctx context.Context) UserAttributeProfileUserAttributeStrategyOverrideOidcMappingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserAttributeProfileUserAttributeStrategyOverrideOidcMappingPtrOutput)
+}
+
+type UserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput struct{ *pulumi.OutputState }
+
+func (UserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAttributeProfileUserAttributeStrategyOverrideOidcMapping)(nil)).Elem()
+}
+
+func (o UserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput) ToUserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput() UserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput {
+	return o
+}
+
+func (o UserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput) ToUserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutputWithContext(ctx context.Context) UserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput {
+	return o
+}
+
+func (o UserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput) ToUserAttributeProfileUserAttributeStrategyOverrideOidcMappingPtrOutput() UserAttributeProfileUserAttributeStrategyOverrideOidcMappingPtrOutput {
+	return o.ToUserAttributeProfileUserAttributeStrategyOverrideOidcMappingPtrOutputWithContext(context.Background())
+}
+
+func (o UserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput) ToUserAttributeProfileUserAttributeStrategyOverrideOidcMappingPtrOutputWithContext(ctx context.Context) UserAttributeProfileUserAttributeStrategyOverrideOidcMappingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UserAttributeProfileUserAttributeStrategyOverrideOidcMapping) *UserAttributeProfileUserAttributeStrategyOverrideOidcMapping {
+		return &v
+	}).(UserAttributeProfileUserAttributeStrategyOverrideOidcMappingPtrOutput)
+}
+
+// Display name for the OIDC mapping.
+func (o UserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserAttributeProfileUserAttributeStrategyOverrideOidcMapping) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// The OIDC mapping field.
+func (o UserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput) Mapping() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAttributeProfileUserAttributeStrategyOverrideOidcMapping) string { return v.Mapping }).(pulumi.StringOutput)
+}
+
+type UserAttributeProfileUserAttributeStrategyOverrideOidcMappingPtrOutput struct{ *pulumi.OutputState }
+
+func (UserAttributeProfileUserAttributeStrategyOverrideOidcMappingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserAttributeProfileUserAttributeStrategyOverrideOidcMapping)(nil)).Elem()
+}
+
+func (o UserAttributeProfileUserAttributeStrategyOverrideOidcMappingPtrOutput) ToUserAttributeProfileUserAttributeStrategyOverrideOidcMappingPtrOutput() UserAttributeProfileUserAttributeStrategyOverrideOidcMappingPtrOutput {
+	return o
+}
+
+func (o UserAttributeProfileUserAttributeStrategyOverrideOidcMappingPtrOutput) ToUserAttributeProfileUserAttributeStrategyOverrideOidcMappingPtrOutputWithContext(ctx context.Context) UserAttributeProfileUserAttributeStrategyOverrideOidcMappingPtrOutput {
+	return o
+}
+
+func (o UserAttributeProfileUserAttributeStrategyOverrideOidcMappingPtrOutput) Elem() UserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput {
+	return o.ApplyT(func(v *UserAttributeProfileUserAttributeStrategyOverrideOidcMapping) UserAttributeProfileUserAttributeStrategyOverrideOidcMapping {
+		if v != nil {
+			return *v
+		}
+		var ret UserAttributeProfileUserAttributeStrategyOverrideOidcMapping
+		return ret
+	}).(UserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput)
+}
+
+// Display name for the OIDC mapping.
+func (o UserAttributeProfileUserAttributeStrategyOverrideOidcMappingPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserAttributeProfileUserAttributeStrategyOverrideOidcMapping) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The OIDC mapping field.
+func (o UserAttributeProfileUserAttributeStrategyOverrideOidcMappingPtrOutput) Mapping() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserAttributeProfileUserAttributeStrategyOverrideOidcMapping) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Mapping
+	}).(pulumi.StringPtrOutput)
+}
+
+type UserAttributeProfileUserId struct {
+	// The OIDC mapping for the user ID.
+	OidcMapping *string `pulumi:"oidcMapping"`
+	// The SAML mapping for the user ID.
+	SamlMappings []string `pulumi:"samlMappings"`
+	// The SCIM mapping for the user ID.
+	ScimMapping *string `pulumi:"scimMapping"`
+	// Strategy-specific overrides for user ID mapping.
+	StrategyOverrides []UserAttributeProfileUserIdStrategyOverride `pulumi:"strategyOverrides"`
+}
+
+// UserAttributeProfileUserIdInput is an input type that accepts UserAttributeProfileUserIdArgs and UserAttributeProfileUserIdOutput values.
+// You can construct a concrete instance of `UserAttributeProfileUserIdInput` via:
+//
+//	UserAttributeProfileUserIdArgs{...}
+type UserAttributeProfileUserIdInput interface {
+	pulumi.Input
+
+	ToUserAttributeProfileUserIdOutput() UserAttributeProfileUserIdOutput
+	ToUserAttributeProfileUserIdOutputWithContext(context.Context) UserAttributeProfileUserIdOutput
+}
+
+type UserAttributeProfileUserIdArgs struct {
+	// The OIDC mapping for the user ID.
+	OidcMapping pulumi.StringPtrInput `pulumi:"oidcMapping"`
+	// The SAML mapping for the user ID.
+	SamlMappings pulumi.StringArrayInput `pulumi:"samlMappings"`
+	// The SCIM mapping for the user ID.
+	ScimMapping pulumi.StringPtrInput `pulumi:"scimMapping"`
+	// Strategy-specific overrides for user ID mapping.
+	StrategyOverrides UserAttributeProfileUserIdStrategyOverrideArrayInput `pulumi:"strategyOverrides"`
+}
+
+func (UserAttributeProfileUserIdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAttributeProfileUserId)(nil)).Elem()
+}
+
+func (i UserAttributeProfileUserIdArgs) ToUserAttributeProfileUserIdOutput() UserAttributeProfileUserIdOutput {
+	return i.ToUserAttributeProfileUserIdOutputWithContext(context.Background())
+}
+
+func (i UserAttributeProfileUserIdArgs) ToUserAttributeProfileUserIdOutputWithContext(ctx context.Context) UserAttributeProfileUserIdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserAttributeProfileUserIdOutput)
+}
+
+func (i UserAttributeProfileUserIdArgs) ToUserAttributeProfileUserIdPtrOutput() UserAttributeProfileUserIdPtrOutput {
+	return i.ToUserAttributeProfileUserIdPtrOutputWithContext(context.Background())
+}
+
+func (i UserAttributeProfileUserIdArgs) ToUserAttributeProfileUserIdPtrOutputWithContext(ctx context.Context) UserAttributeProfileUserIdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserAttributeProfileUserIdOutput).ToUserAttributeProfileUserIdPtrOutputWithContext(ctx)
+}
+
+// UserAttributeProfileUserIdPtrInput is an input type that accepts UserAttributeProfileUserIdArgs, UserAttributeProfileUserIdPtr and UserAttributeProfileUserIdPtrOutput values.
+// You can construct a concrete instance of `UserAttributeProfileUserIdPtrInput` via:
+//
+//	        UserAttributeProfileUserIdArgs{...}
+//
+//	or:
+//
+//	        nil
+type UserAttributeProfileUserIdPtrInput interface {
+	pulumi.Input
+
+	ToUserAttributeProfileUserIdPtrOutput() UserAttributeProfileUserIdPtrOutput
+	ToUserAttributeProfileUserIdPtrOutputWithContext(context.Context) UserAttributeProfileUserIdPtrOutput
+}
+
+type userAttributeProfileUserIdPtrType UserAttributeProfileUserIdArgs
+
+func UserAttributeProfileUserIdPtr(v *UserAttributeProfileUserIdArgs) UserAttributeProfileUserIdPtrInput {
+	return (*userAttributeProfileUserIdPtrType)(v)
+}
+
+func (*userAttributeProfileUserIdPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserAttributeProfileUserId)(nil)).Elem()
+}
+
+func (i *userAttributeProfileUserIdPtrType) ToUserAttributeProfileUserIdPtrOutput() UserAttributeProfileUserIdPtrOutput {
+	return i.ToUserAttributeProfileUserIdPtrOutputWithContext(context.Background())
+}
+
+func (i *userAttributeProfileUserIdPtrType) ToUserAttributeProfileUserIdPtrOutputWithContext(ctx context.Context) UserAttributeProfileUserIdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserAttributeProfileUserIdPtrOutput)
+}
+
+type UserAttributeProfileUserIdOutput struct{ *pulumi.OutputState }
+
+func (UserAttributeProfileUserIdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAttributeProfileUserId)(nil)).Elem()
+}
+
+func (o UserAttributeProfileUserIdOutput) ToUserAttributeProfileUserIdOutput() UserAttributeProfileUserIdOutput {
+	return o
+}
+
+func (o UserAttributeProfileUserIdOutput) ToUserAttributeProfileUserIdOutputWithContext(ctx context.Context) UserAttributeProfileUserIdOutput {
+	return o
+}
+
+func (o UserAttributeProfileUserIdOutput) ToUserAttributeProfileUserIdPtrOutput() UserAttributeProfileUserIdPtrOutput {
+	return o.ToUserAttributeProfileUserIdPtrOutputWithContext(context.Background())
+}
+
+func (o UserAttributeProfileUserIdOutput) ToUserAttributeProfileUserIdPtrOutputWithContext(ctx context.Context) UserAttributeProfileUserIdPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UserAttributeProfileUserId) *UserAttributeProfileUserId {
+		return &v
+	}).(UserAttributeProfileUserIdPtrOutput)
+}
+
+// The OIDC mapping for the user ID.
+func (o UserAttributeProfileUserIdOutput) OidcMapping() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserAttributeProfileUserId) *string { return v.OidcMapping }).(pulumi.StringPtrOutput)
+}
+
+// The SAML mapping for the user ID.
+func (o UserAttributeProfileUserIdOutput) SamlMappings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v UserAttributeProfileUserId) []string { return v.SamlMappings }).(pulumi.StringArrayOutput)
+}
+
+// The SCIM mapping for the user ID.
+func (o UserAttributeProfileUserIdOutput) ScimMapping() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserAttributeProfileUserId) *string { return v.ScimMapping }).(pulumi.StringPtrOutput)
+}
+
+// Strategy-specific overrides for user ID mapping.
+func (o UserAttributeProfileUserIdOutput) StrategyOverrides() UserAttributeProfileUserIdStrategyOverrideArrayOutput {
+	return o.ApplyT(func(v UserAttributeProfileUserId) []UserAttributeProfileUserIdStrategyOverride {
+		return v.StrategyOverrides
+	}).(UserAttributeProfileUserIdStrategyOverrideArrayOutput)
+}
+
+type UserAttributeProfileUserIdPtrOutput struct{ *pulumi.OutputState }
+
+func (UserAttributeProfileUserIdPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserAttributeProfileUserId)(nil)).Elem()
+}
+
+func (o UserAttributeProfileUserIdPtrOutput) ToUserAttributeProfileUserIdPtrOutput() UserAttributeProfileUserIdPtrOutput {
+	return o
+}
+
+func (o UserAttributeProfileUserIdPtrOutput) ToUserAttributeProfileUserIdPtrOutputWithContext(ctx context.Context) UserAttributeProfileUserIdPtrOutput {
+	return o
+}
+
+func (o UserAttributeProfileUserIdPtrOutput) Elem() UserAttributeProfileUserIdOutput {
+	return o.ApplyT(func(v *UserAttributeProfileUserId) UserAttributeProfileUserId {
+		if v != nil {
+			return *v
+		}
+		var ret UserAttributeProfileUserId
+		return ret
+	}).(UserAttributeProfileUserIdOutput)
+}
+
+// The OIDC mapping for the user ID.
+func (o UserAttributeProfileUserIdPtrOutput) OidcMapping() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserAttributeProfileUserId) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OidcMapping
+	}).(pulumi.StringPtrOutput)
+}
+
+// The SAML mapping for the user ID.
+func (o UserAttributeProfileUserIdPtrOutput) SamlMappings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *UserAttributeProfileUserId) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SamlMappings
+	}).(pulumi.StringArrayOutput)
+}
+
+// The SCIM mapping for the user ID.
+func (o UserAttributeProfileUserIdPtrOutput) ScimMapping() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserAttributeProfileUserId) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ScimMapping
+	}).(pulumi.StringPtrOutput)
+}
+
+// Strategy-specific overrides for user ID mapping.
+func (o UserAttributeProfileUserIdPtrOutput) StrategyOverrides() UserAttributeProfileUserIdStrategyOverrideArrayOutput {
+	return o.ApplyT(func(v *UserAttributeProfileUserId) []UserAttributeProfileUserIdStrategyOverride {
+		if v == nil {
+			return nil
+		}
+		return v.StrategyOverrides
+	}).(UserAttributeProfileUserIdStrategyOverrideArrayOutput)
+}
+
+type UserAttributeProfileUserIdStrategyOverride struct {
+	// OIDC mapping override for this strategy.
+	OidcMapping *string `pulumi:"oidcMapping"`
+	// SAML mapping override for this strategy.
+	SamlMappings []string `pulumi:"samlMappings"`
+	// SCIM mapping override for this strategy.
+	ScimMapping *string `pulumi:"scimMapping"`
+	// The strategy name (e.g., 'oidc', 'samlp', 'ad', etc.).
+	Strategy string `pulumi:"strategy"`
+}
+
+// UserAttributeProfileUserIdStrategyOverrideInput is an input type that accepts UserAttributeProfileUserIdStrategyOverrideArgs and UserAttributeProfileUserIdStrategyOverrideOutput values.
+// You can construct a concrete instance of `UserAttributeProfileUserIdStrategyOverrideInput` via:
+//
+//	UserAttributeProfileUserIdStrategyOverrideArgs{...}
+type UserAttributeProfileUserIdStrategyOverrideInput interface {
+	pulumi.Input
+
+	ToUserAttributeProfileUserIdStrategyOverrideOutput() UserAttributeProfileUserIdStrategyOverrideOutput
+	ToUserAttributeProfileUserIdStrategyOverrideOutputWithContext(context.Context) UserAttributeProfileUserIdStrategyOverrideOutput
+}
+
+type UserAttributeProfileUserIdStrategyOverrideArgs struct {
+	// OIDC mapping override for this strategy.
+	OidcMapping pulumi.StringPtrInput `pulumi:"oidcMapping"`
+	// SAML mapping override for this strategy.
+	SamlMappings pulumi.StringArrayInput `pulumi:"samlMappings"`
+	// SCIM mapping override for this strategy.
+	ScimMapping pulumi.StringPtrInput `pulumi:"scimMapping"`
+	// The strategy name (e.g., 'oidc', 'samlp', 'ad', etc.).
+	Strategy pulumi.StringInput `pulumi:"strategy"`
+}
+
+func (UserAttributeProfileUserIdStrategyOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAttributeProfileUserIdStrategyOverride)(nil)).Elem()
+}
+
+func (i UserAttributeProfileUserIdStrategyOverrideArgs) ToUserAttributeProfileUserIdStrategyOverrideOutput() UserAttributeProfileUserIdStrategyOverrideOutput {
+	return i.ToUserAttributeProfileUserIdStrategyOverrideOutputWithContext(context.Background())
+}
+
+func (i UserAttributeProfileUserIdStrategyOverrideArgs) ToUserAttributeProfileUserIdStrategyOverrideOutputWithContext(ctx context.Context) UserAttributeProfileUserIdStrategyOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserAttributeProfileUserIdStrategyOverrideOutput)
+}
+
+// UserAttributeProfileUserIdStrategyOverrideArrayInput is an input type that accepts UserAttributeProfileUserIdStrategyOverrideArray and UserAttributeProfileUserIdStrategyOverrideArrayOutput values.
+// You can construct a concrete instance of `UserAttributeProfileUserIdStrategyOverrideArrayInput` via:
+//
+//	UserAttributeProfileUserIdStrategyOverrideArray{ UserAttributeProfileUserIdStrategyOverrideArgs{...} }
+type UserAttributeProfileUserIdStrategyOverrideArrayInput interface {
+	pulumi.Input
+
+	ToUserAttributeProfileUserIdStrategyOverrideArrayOutput() UserAttributeProfileUserIdStrategyOverrideArrayOutput
+	ToUserAttributeProfileUserIdStrategyOverrideArrayOutputWithContext(context.Context) UserAttributeProfileUserIdStrategyOverrideArrayOutput
+}
+
+type UserAttributeProfileUserIdStrategyOverrideArray []UserAttributeProfileUserIdStrategyOverrideInput
+
+func (UserAttributeProfileUserIdStrategyOverrideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UserAttributeProfileUserIdStrategyOverride)(nil)).Elem()
+}
+
+func (i UserAttributeProfileUserIdStrategyOverrideArray) ToUserAttributeProfileUserIdStrategyOverrideArrayOutput() UserAttributeProfileUserIdStrategyOverrideArrayOutput {
+	return i.ToUserAttributeProfileUserIdStrategyOverrideArrayOutputWithContext(context.Background())
+}
+
+func (i UserAttributeProfileUserIdStrategyOverrideArray) ToUserAttributeProfileUserIdStrategyOverrideArrayOutputWithContext(ctx context.Context) UserAttributeProfileUserIdStrategyOverrideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserAttributeProfileUserIdStrategyOverrideArrayOutput)
+}
+
+type UserAttributeProfileUserIdStrategyOverrideOutput struct{ *pulumi.OutputState }
+
+func (UserAttributeProfileUserIdStrategyOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAttributeProfileUserIdStrategyOverride)(nil)).Elem()
+}
+
+func (o UserAttributeProfileUserIdStrategyOverrideOutput) ToUserAttributeProfileUserIdStrategyOverrideOutput() UserAttributeProfileUserIdStrategyOverrideOutput {
+	return o
+}
+
+func (o UserAttributeProfileUserIdStrategyOverrideOutput) ToUserAttributeProfileUserIdStrategyOverrideOutputWithContext(ctx context.Context) UserAttributeProfileUserIdStrategyOverrideOutput {
+	return o
+}
+
+// OIDC mapping override for this strategy.
+func (o UserAttributeProfileUserIdStrategyOverrideOutput) OidcMapping() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserAttributeProfileUserIdStrategyOverride) *string { return v.OidcMapping }).(pulumi.StringPtrOutput)
+}
+
+// SAML mapping override for this strategy.
+func (o UserAttributeProfileUserIdStrategyOverrideOutput) SamlMappings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v UserAttributeProfileUserIdStrategyOverride) []string { return v.SamlMappings }).(pulumi.StringArrayOutput)
+}
+
+// SCIM mapping override for this strategy.
+func (o UserAttributeProfileUserIdStrategyOverrideOutput) ScimMapping() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserAttributeProfileUserIdStrategyOverride) *string { return v.ScimMapping }).(pulumi.StringPtrOutput)
+}
+
+// The strategy name (e.g., 'oidc', 'samlp', 'ad', etc.).
+func (o UserAttributeProfileUserIdStrategyOverrideOutput) Strategy() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAttributeProfileUserIdStrategyOverride) string { return v.Strategy }).(pulumi.StringOutput)
+}
+
+type UserAttributeProfileUserIdStrategyOverrideArrayOutput struct{ *pulumi.OutputState }
+
+func (UserAttributeProfileUserIdStrategyOverrideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UserAttributeProfileUserIdStrategyOverride)(nil)).Elem()
+}
+
+func (o UserAttributeProfileUserIdStrategyOverrideArrayOutput) ToUserAttributeProfileUserIdStrategyOverrideArrayOutput() UserAttributeProfileUserIdStrategyOverrideArrayOutput {
+	return o
+}
+
+func (o UserAttributeProfileUserIdStrategyOverrideArrayOutput) ToUserAttributeProfileUserIdStrategyOverrideArrayOutputWithContext(ctx context.Context) UserAttributeProfileUserIdStrategyOverrideArrayOutput {
+	return o
+}
+
+func (o UserAttributeProfileUserIdStrategyOverrideArrayOutput) Index(i pulumi.IntInput) UserAttributeProfileUserIdStrategyOverrideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UserAttributeProfileUserIdStrategyOverride {
+		return vs[0].([]UserAttributeProfileUserIdStrategyOverride)[vs[1].(int)]
+	}).(UserAttributeProfileUserIdStrategyOverrideOutput)
+}
+
 type UserPermissionsPermission struct {
 	// Description of the permission.
 	Description *string `pulumi:"description"`
@@ -42628,6 +43568,8 @@ type GetClientsClient struct {
 	// The identifier of a resource server that client is associated withThis property can be sent only when app_type=resource_server.This property can not be changed, once the client is created.
 	ResourceServerIdentifier string                            `pulumi:"resourceServerIdentifier"`
 	SessionTransfers         []GetClientsClientSessionTransfer `pulumi:"sessionTransfers"`
+	// Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+	SkipNonVerifiableCallbackUriConfirmationPrompt bool `pulumi:"skipNonVerifiableCallbackUriConfirmationPrompt"`
 	// Allows configuration for token exchange
 	TokenExchanges []GetClientsClientTokenExchange `pulumi:"tokenExchanges"`
 	// The token quota configuration.
@@ -42678,6 +43620,8 @@ type GetClientsClientArgs struct {
 	// The identifier of a resource server that client is associated withThis property can be sent only when app_type=resource_server.This property can not be changed, once the client is created.
 	ResourceServerIdentifier pulumi.StringInput                        `pulumi:"resourceServerIdentifier"`
 	SessionTransfers         GetClientsClientSessionTransferArrayInput `pulumi:"sessionTransfers"`
+	// Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+	SkipNonVerifiableCallbackUriConfirmationPrompt pulumi.BoolInput `pulumi:"skipNonVerifiableCallbackUriConfirmationPrompt"`
 	// Allows configuration for token exchange
 	TokenExchanges GetClientsClientTokenExchangeArrayInput `pulumi:"tokenExchanges"`
 	// The token quota configuration.
@@ -42813,6 +43757,11 @@ func (o GetClientsClientOutput) ResourceServerIdentifier() pulumi.StringOutput {
 
 func (o GetClientsClientOutput) SessionTransfers() GetClientsClientSessionTransferArrayOutput {
 	return o.ApplyT(func(v GetClientsClient) []GetClientsClientSessionTransfer { return v.SessionTransfers }).(GetClientsClientSessionTransferArrayOutput)
+}
+
+// Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+func (o GetClientsClientOutput) SkipNonVerifiableCallbackUriConfirmationPrompt() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientsClient) bool { return v.SkipNonVerifiableCallbackUriConfirmationPrompt }).(pulumi.BoolOutput)
 }
 
 // Allows configuration for token exchange
@@ -44841,6 +45790,8 @@ type GetConnectionOptionAttributeEmail struct {
 	ProfileRequired bool `pulumi:"profileRequired"`
 	// Defines signup settings for Email attribute
 	Signups []GetConnectionOptionAttributeEmailSignup `pulumi:"signups"`
+	// If set to false, it allow multiple accounts with the same email address
+	Unique bool `pulumi:"unique"`
 	// Defines whether whether user will receive a link or an OTP during user signup for email verification and password reset for email verification
 	VerificationMethod string `pulumi:"verificationMethod"`
 }
@@ -44863,6 +45814,8 @@ type GetConnectionOptionAttributeEmailArgs struct {
 	ProfileRequired pulumi.BoolInput `pulumi:"profileRequired"`
 	// Defines signup settings for Email attribute
 	Signups GetConnectionOptionAttributeEmailSignupArrayInput `pulumi:"signups"`
+	// If set to false, it allow multiple accounts with the same email address
+	Unique pulumi.BoolInput `pulumi:"unique"`
 	// Defines whether whether user will receive a link or an OTP during user signup for email verification and password reset for email verification
 	VerificationMethod pulumi.StringInput `pulumi:"verificationMethod"`
 }
@@ -44933,6 +45886,11 @@ func (o GetConnectionOptionAttributeEmailOutput) ProfileRequired() pulumi.BoolOu
 // Defines signup settings for Email attribute
 func (o GetConnectionOptionAttributeEmailOutput) Signups() GetConnectionOptionAttributeEmailSignupArrayOutput {
 	return o.ApplyT(func(v GetConnectionOptionAttributeEmail) []GetConnectionOptionAttributeEmailSignup { return v.Signups }).(GetConnectionOptionAttributeEmailSignupArrayOutput)
+}
+
+// If set to false, it allow multiple accounts with the same email address
+func (o GetConnectionOptionAttributeEmailOutput) Unique() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttributeEmail) bool { return v.Unique }).(pulumi.BoolOutput)
 }
 
 // Defines whether whether user will receive a link or an OTP during user signup for email verification and password reset for email verification
@@ -50243,6 +51201,236 @@ func (o GetOrganizationTokenQuotaClientCredentialArrayOutput) Index(i pulumi.Int
 	}).(GetOrganizationTokenQuotaClientCredentialOutput)
 }
 
+type GetOutboundIpsChangelog struct {
+	// Type of change (add or remove).
+	Action string `pulumi:"action"`
+	// Date of the change (YYYY-MM-DD format).
+	Date string `pulumi:"date"`
+	// List of IPv4 CIDR blocks affected by this change.
+	Ipv4Cidrs []string `pulumi:"ipv4Cidrs"`
+	// Region affected by the change.
+	Region string `pulumi:"region"`
+}
+
+// GetOutboundIpsChangelogInput is an input type that accepts GetOutboundIpsChangelogArgs and GetOutboundIpsChangelogOutput values.
+// You can construct a concrete instance of `GetOutboundIpsChangelogInput` via:
+//
+//	GetOutboundIpsChangelogArgs{...}
+type GetOutboundIpsChangelogInput interface {
+	pulumi.Input
+
+	ToGetOutboundIpsChangelogOutput() GetOutboundIpsChangelogOutput
+	ToGetOutboundIpsChangelogOutputWithContext(context.Context) GetOutboundIpsChangelogOutput
+}
+
+type GetOutboundIpsChangelogArgs struct {
+	// Type of change (add or remove).
+	Action pulumi.StringInput `pulumi:"action"`
+	// Date of the change (YYYY-MM-DD format).
+	Date pulumi.StringInput `pulumi:"date"`
+	// List of IPv4 CIDR blocks affected by this change.
+	Ipv4Cidrs pulumi.StringArrayInput `pulumi:"ipv4Cidrs"`
+	// Region affected by the change.
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (GetOutboundIpsChangelogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOutboundIpsChangelog)(nil)).Elem()
+}
+
+func (i GetOutboundIpsChangelogArgs) ToGetOutboundIpsChangelogOutput() GetOutboundIpsChangelogOutput {
+	return i.ToGetOutboundIpsChangelogOutputWithContext(context.Background())
+}
+
+func (i GetOutboundIpsChangelogArgs) ToGetOutboundIpsChangelogOutputWithContext(ctx context.Context) GetOutboundIpsChangelogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOutboundIpsChangelogOutput)
+}
+
+// GetOutboundIpsChangelogArrayInput is an input type that accepts GetOutboundIpsChangelogArray and GetOutboundIpsChangelogArrayOutput values.
+// You can construct a concrete instance of `GetOutboundIpsChangelogArrayInput` via:
+//
+//	GetOutboundIpsChangelogArray{ GetOutboundIpsChangelogArgs{...} }
+type GetOutboundIpsChangelogArrayInput interface {
+	pulumi.Input
+
+	ToGetOutboundIpsChangelogArrayOutput() GetOutboundIpsChangelogArrayOutput
+	ToGetOutboundIpsChangelogArrayOutputWithContext(context.Context) GetOutboundIpsChangelogArrayOutput
+}
+
+type GetOutboundIpsChangelogArray []GetOutboundIpsChangelogInput
+
+func (GetOutboundIpsChangelogArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOutboundIpsChangelog)(nil)).Elem()
+}
+
+func (i GetOutboundIpsChangelogArray) ToGetOutboundIpsChangelogArrayOutput() GetOutboundIpsChangelogArrayOutput {
+	return i.ToGetOutboundIpsChangelogArrayOutputWithContext(context.Background())
+}
+
+func (i GetOutboundIpsChangelogArray) ToGetOutboundIpsChangelogArrayOutputWithContext(ctx context.Context) GetOutboundIpsChangelogArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOutboundIpsChangelogArrayOutput)
+}
+
+type GetOutboundIpsChangelogOutput struct{ *pulumi.OutputState }
+
+func (GetOutboundIpsChangelogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOutboundIpsChangelog)(nil)).Elem()
+}
+
+func (o GetOutboundIpsChangelogOutput) ToGetOutboundIpsChangelogOutput() GetOutboundIpsChangelogOutput {
+	return o
+}
+
+func (o GetOutboundIpsChangelogOutput) ToGetOutboundIpsChangelogOutputWithContext(ctx context.Context) GetOutboundIpsChangelogOutput {
+	return o
+}
+
+// Type of change (add or remove).
+func (o GetOutboundIpsChangelogOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOutboundIpsChangelog) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// Date of the change (YYYY-MM-DD format).
+func (o GetOutboundIpsChangelogOutput) Date() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOutboundIpsChangelog) string { return v.Date }).(pulumi.StringOutput)
+}
+
+// List of IPv4 CIDR blocks affected by this change.
+func (o GetOutboundIpsChangelogOutput) Ipv4Cidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetOutboundIpsChangelog) []string { return v.Ipv4Cidrs }).(pulumi.StringArrayOutput)
+}
+
+// Region affected by the change.
+func (o GetOutboundIpsChangelogOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOutboundIpsChangelog) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type GetOutboundIpsChangelogArrayOutput struct{ *pulumi.OutputState }
+
+func (GetOutboundIpsChangelogArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOutboundIpsChangelog)(nil)).Elem()
+}
+
+func (o GetOutboundIpsChangelogArrayOutput) ToGetOutboundIpsChangelogArrayOutput() GetOutboundIpsChangelogArrayOutput {
+	return o
+}
+
+func (o GetOutboundIpsChangelogArrayOutput) ToGetOutboundIpsChangelogArrayOutputWithContext(ctx context.Context) GetOutboundIpsChangelogArrayOutput {
+	return o
+}
+
+func (o GetOutboundIpsChangelogArrayOutput) Index(i pulumi.IntInput) GetOutboundIpsChangelogOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOutboundIpsChangelog {
+		return vs[0].([]GetOutboundIpsChangelog)[vs[1].(int)]
+	}).(GetOutboundIpsChangelogOutput)
+}
+
+type GetOutboundIpsRegion struct {
+	// A list of IPv4 CIDR blocks for the region.
+	Ipv4Cidrs []string `pulumi:"ipv4Cidrs"`
+	// The code for the region (e.g., 'US', 'CA').
+	Region string `pulumi:"region"`
+}
+
+// GetOutboundIpsRegionInput is an input type that accepts GetOutboundIpsRegionArgs and GetOutboundIpsRegionOutput values.
+// You can construct a concrete instance of `GetOutboundIpsRegionInput` via:
+//
+//	GetOutboundIpsRegionArgs{...}
+type GetOutboundIpsRegionInput interface {
+	pulumi.Input
+
+	ToGetOutboundIpsRegionOutput() GetOutboundIpsRegionOutput
+	ToGetOutboundIpsRegionOutputWithContext(context.Context) GetOutboundIpsRegionOutput
+}
+
+type GetOutboundIpsRegionArgs struct {
+	// A list of IPv4 CIDR blocks for the region.
+	Ipv4Cidrs pulumi.StringArrayInput `pulumi:"ipv4Cidrs"`
+	// The code for the region (e.g., 'US', 'CA').
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (GetOutboundIpsRegionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOutboundIpsRegion)(nil)).Elem()
+}
+
+func (i GetOutboundIpsRegionArgs) ToGetOutboundIpsRegionOutput() GetOutboundIpsRegionOutput {
+	return i.ToGetOutboundIpsRegionOutputWithContext(context.Background())
+}
+
+func (i GetOutboundIpsRegionArgs) ToGetOutboundIpsRegionOutputWithContext(ctx context.Context) GetOutboundIpsRegionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOutboundIpsRegionOutput)
+}
+
+// GetOutboundIpsRegionArrayInput is an input type that accepts GetOutboundIpsRegionArray and GetOutboundIpsRegionArrayOutput values.
+// You can construct a concrete instance of `GetOutboundIpsRegionArrayInput` via:
+//
+//	GetOutboundIpsRegionArray{ GetOutboundIpsRegionArgs{...} }
+type GetOutboundIpsRegionArrayInput interface {
+	pulumi.Input
+
+	ToGetOutboundIpsRegionArrayOutput() GetOutboundIpsRegionArrayOutput
+	ToGetOutboundIpsRegionArrayOutputWithContext(context.Context) GetOutboundIpsRegionArrayOutput
+}
+
+type GetOutboundIpsRegionArray []GetOutboundIpsRegionInput
+
+func (GetOutboundIpsRegionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOutboundIpsRegion)(nil)).Elem()
+}
+
+func (i GetOutboundIpsRegionArray) ToGetOutboundIpsRegionArrayOutput() GetOutboundIpsRegionArrayOutput {
+	return i.ToGetOutboundIpsRegionArrayOutputWithContext(context.Background())
+}
+
+func (i GetOutboundIpsRegionArray) ToGetOutboundIpsRegionArrayOutputWithContext(ctx context.Context) GetOutboundIpsRegionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOutboundIpsRegionArrayOutput)
+}
+
+type GetOutboundIpsRegionOutput struct{ *pulumi.OutputState }
+
+func (GetOutboundIpsRegionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOutboundIpsRegion)(nil)).Elem()
+}
+
+func (o GetOutboundIpsRegionOutput) ToGetOutboundIpsRegionOutput() GetOutboundIpsRegionOutput {
+	return o
+}
+
+func (o GetOutboundIpsRegionOutput) ToGetOutboundIpsRegionOutputWithContext(ctx context.Context) GetOutboundIpsRegionOutput {
+	return o
+}
+
+// A list of IPv4 CIDR blocks for the region.
+func (o GetOutboundIpsRegionOutput) Ipv4Cidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetOutboundIpsRegion) []string { return v.Ipv4Cidrs }).(pulumi.StringArrayOutput)
+}
+
+// The code for the region (e.g., 'US', 'CA').
+func (o GetOutboundIpsRegionOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOutboundIpsRegion) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type GetOutboundIpsRegionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetOutboundIpsRegionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOutboundIpsRegion)(nil)).Elem()
+}
+
+func (o GetOutboundIpsRegionArrayOutput) ToGetOutboundIpsRegionArrayOutput() GetOutboundIpsRegionArrayOutput {
+	return o
+}
+
+func (o GetOutboundIpsRegionArrayOutput) ToGetOutboundIpsRegionArrayOutputWithContext(ctx context.Context) GetOutboundIpsRegionArrayOutput {
+	return o
+}
+
+func (o GetOutboundIpsRegionArrayOutput) Index(i pulumi.IntInput) GetOutboundIpsRegionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOutboundIpsRegion {
+		return vs[0].([]GetOutboundIpsRegion)[vs[1].(int)]
+	}).(GetOutboundIpsRegionOutput)
+}
+
 type GetPagesChangePassword struct {
 	// Indicates whether to use the custom Reset Password HTML (`true`) or the default Auth0 page (`false`).
 	Enabled bool `pulumi:"enabled"`
@@ -54119,6 +55307,767 @@ func (o GetTenantSessionCookyArrayOutput) Index(i pulumi.IntInput) GetTenantSess
 	}).(GetTenantSessionCookyOutput)
 }
 
+type GetUserAttributeProfileUserAttribute struct {
+	// The Auth0 mapping for the user attribute.
+	Auth0Mapping string `pulumi:"auth0Mapping"`
+	// Description of the user attribute.
+	Description string `pulumi:"description"`
+	// Display label for the user attribute.
+	Label string `pulumi:"label"`
+	// Name of the user attribute.
+	Name string `pulumi:"name"`
+	// The OIDC mapping configuration for the user attribute.
+	OidcMappings []GetUserAttributeProfileUserAttributeOidcMapping `pulumi:"oidcMappings"`
+	// Whether the attribute is required in the profile.
+	ProfileRequired bool `pulumi:"profileRequired"`
+	// SAML mapping override for this strategy.
+	SamlMappings []string `pulumi:"samlMappings"`
+	// The SCIM mapping for the user attribute.
+	ScimMapping string `pulumi:"scimMapping"`
+	// Strategy-specific overrides for user attribute mapping.
+	StrategyOverrides []GetUserAttributeProfileUserAttributeStrategyOverride `pulumi:"strategyOverrides"`
+}
+
+// GetUserAttributeProfileUserAttributeInput is an input type that accepts GetUserAttributeProfileUserAttributeArgs and GetUserAttributeProfileUserAttributeOutput values.
+// You can construct a concrete instance of `GetUserAttributeProfileUserAttributeInput` via:
+//
+//	GetUserAttributeProfileUserAttributeArgs{...}
+type GetUserAttributeProfileUserAttributeInput interface {
+	pulumi.Input
+
+	ToGetUserAttributeProfileUserAttributeOutput() GetUserAttributeProfileUserAttributeOutput
+	ToGetUserAttributeProfileUserAttributeOutputWithContext(context.Context) GetUserAttributeProfileUserAttributeOutput
+}
+
+type GetUserAttributeProfileUserAttributeArgs struct {
+	// The Auth0 mapping for the user attribute.
+	Auth0Mapping pulumi.StringInput `pulumi:"auth0Mapping"`
+	// Description of the user attribute.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Display label for the user attribute.
+	Label pulumi.StringInput `pulumi:"label"`
+	// Name of the user attribute.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The OIDC mapping configuration for the user attribute.
+	OidcMappings GetUserAttributeProfileUserAttributeOidcMappingArrayInput `pulumi:"oidcMappings"`
+	// Whether the attribute is required in the profile.
+	ProfileRequired pulumi.BoolInput `pulumi:"profileRequired"`
+	// SAML mapping override for this strategy.
+	SamlMappings pulumi.StringArrayInput `pulumi:"samlMappings"`
+	// The SCIM mapping for the user attribute.
+	ScimMapping pulumi.StringInput `pulumi:"scimMapping"`
+	// Strategy-specific overrides for user attribute mapping.
+	StrategyOverrides GetUserAttributeProfileUserAttributeStrategyOverrideArrayInput `pulumi:"strategyOverrides"`
+}
+
+func (GetUserAttributeProfileUserAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUserAttributeProfileUserAttribute)(nil)).Elem()
+}
+
+func (i GetUserAttributeProfileUserAttributeArgs) ToGetUserAttributeProfileUserAttributeOutput() GetUserAttributeProfileUserAttributeOutput {
+	return i.ToGetUserAttributeProfileUserAttributeOutputWithContext(context.Background())
+}
+
+func (i GetUserAttributeProfileUserAttributeArgs) ToGetUserAttributeProfileUserAttributeOutputWithContext(ctx context.Context) GetUserAttributeProfileUserAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUserAttributeProfileUserAttributeOutput)
+}
+
+// GetUserAttributeProfileUserAttributeArrayInput is an input type that accepts GetUserAttributeProfileUserAttributeArray and GetUserAttributeProfileUserAttributeArrayOutput values.
+// You can construct a concrete instance of `GetUserAttributeProfileUserAttributeArrayInput` via:
+//
+//	GetUserAttributeProfileUserAttributeArray{ GetUserAttributeProfileUserAttributeArgs{...} }
+type GetUserAttributeProfileUserAttributeArrayInput interface {
+	pulumi.Input
+
+	ToGetUserAttributeProfileUserAttributeArrayOutput() GetUserAttributeProfileUserAttributeArrayOutput
+	ToGetUserAttributeProfileUserAttributeArrayOutputWithContext(context.Context) GetUserAttributeProfileUserAttributeArrayOutput
+}
+
+type GetUserAttributeProfileUserAttributeArray []GetUserAttributeProfileUserAttributeInput
+
+func (GetUserAttributeProfileUserAttributeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUserAttributeProfileUserAttribute)(nil)).Elem()
+}
+
+func (i GetUserAttributeProfileUserAttributeArray) ToGetUserAttributeProfileUserAttributeArrayOutput() GetUserAttributeProfileUserAttributeArrayOutput {
+	return i.ToGetUserAttributeProfileUserAttributeArrayOutputWithContext(context.Background())
+}
+
+func (i GetUserAttributeProfileUserAttributeArray) ToGetUserAttributeProfileUserAttributeArrayOutputWithContext(ctx context.Context) GetUserAttributeProfileUserAttributeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUserAttributeProfileUserAttributeArrayOutput)
+}
+
+type GetUserAttributeProfileUserAttributeOutput struct{ *pulumi.OutputState }
+
+func (GetUserAttributeProfileUserAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUserAttributeProfileUserAttribute)(nil)).Elem()
+}
+
+func (o GetUserAttributeProfileUserAttributeOutput) ToGetUserAttributeProfileUserAttributeOutput() GetUserAttributeProfileUserAttributeOutput {
+	return o
+}
+
+func (o GetUserAttributeProfileUserAttributeOutput) ToGetUserAttributeProfileUserAttributeOutputWithContext(ctx context.Context) GetUserAttributeProfileUserAttributeOutput {
+	return o
+}
+
+// The Auth0 mapping for the user attribute.
+func (o GetUserAttributeProfileUserAttributeOutput) Auth0Mapping() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserAttributeProfileUserAttribute) string { return v.Auth0Mapping }).(pulumi.StringOutput)
+}
+
+// Description of the user attribute.
+func (o GetUserAttributeProfileUserAttributeOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserAttributeProfileUserAttribute) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Display label for the user attribute.
+func (o GetUserAttributeProfileUserAttributeOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserAttributeProfileUserAttribute) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// Name of the user attribute.
+func (o GetUserAttributeProfileUserAttributeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserAttributeProfileUserAttribute) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The OIDC mapping configuration for the user attribute.
+func (o GetUserAttributeProfileUserAttributeOutput) OidcMappings() GetUserAttributeProfileUserAttributeOidcMappingArrayOutput {
+	return o.ApplyT(func(v GetUserAttributeProfileUserAttribute) []GetUserAttributeProfileUserAttributeOidcMapping {
+		return v.OidcMappings
+	}).(GetUserAttributeProfileUserAttributeOidcMappingArrayOutput)
+}
+
+// Whether the attribute is required in the profile.
+func (o GetUserAttributeProfileUserAttributeOutput) ProfileRequired() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetUserAttributeProfileUserAttribute) bool { return v.ProfileRequired }).(pulumi.BoolOutput)
+}
+
+// SAML mapping override for this strategy.
+func (o GetUserAttributeProfileUserAttributeOutput) SamlMappings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetUserAttributeProfileUserAttribute) []string { return v.SamlMappings }).(pulumi.StringArrayOutput)
+}
+
+// The SCIM mapping for the user attribute.
+func (o GetUserAttributeProfileUserAttributeOutput) ScimMapping() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserAttributeProfileUserAttribute) string { return v.ScimMapping }).(pulumi.StringOutput)
+}
+
+// Strategy-specific overrides for user attribute mapping.
+func (o GetUserAttributeProfileUserAttributeOutput) StrategyOverrides() GetUserAttributeProfileUserAttributeStrategyOverrideArrayOutput {
+	return o.ApplyT(func(v GetUserAttributeProfileUserAttribute) []GetUserAttributeProfileUserAttributeStrategyOverride {
+		return v.StrategyOverrides
+	}).(GetUserAttributeProfileUserAttributeStrategyOverrideArrayOutput)
+}
+
+type GetUserAttributeProfileUserAttributeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetUserAttributeProfileUserAttributeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUserAttributeProfileUserAttribute)(nil)).Elem()
+}
+
+func (o GetUserAttributeProfileUserAttributeArrayOutput) ToGetUserAttributeProfileUserAttributeArrayOutput() GetUserAttributeProfileUserAttributeArrayOutput {
+	return o
+}
+
+func (o GetUserAttributeProfileUserAttributeArrayOutput) ToGetUserAttributeProfileUserAttributeArrayOutputWithContext(ctx context.Context) GetUserAttributeProfileUserAttributeArrayOutput {
+	return o
+}
+
+func (o GetUserAttributeProfileUserAttributeArrayOutput) Index(i pulumi.IntInput) GetUserAttributeProfileUserAttributeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetUserAttributeProfileUserAttribute {
+		return vs[0].([]GetUserAttributeProfileUserAttribute)[vs[1].(int)]
+	}).(GetUserAttributeProfileUserAttributeOutput)
+}
+
+type GetUserAttributeProfileUserAttributeOidcMapping struct {
+	// Display name for the OIDC mapping.
+	DisplayName string `pulumi:"displayName"`
+	// The OIDC mapping field.
+	Mapping string `pulumi:"mapping"`
+}
+
+// GetUserAttributeProfileUserAttributeOidcMappingInput is an input type that accepts GetUserAttributeProfileUserAttributeOidcMappingArgs and GetUserAttributeProfileUserAttributeOidcMappingOutput values.
+// You can construct a concrete instance of `GetUserAttributeProfileUserAttributeOidcMappingInput` via:
+//
+//	GetUserAttributeProfileUserAttributeOidcMappingArgs{...}
+type GetUserAttributeProfileUserAttributeOidcMappingInput interface {
+	pulumi.Input
+
+	ToGetUserAttributeProfileUserAttributeOidcMappingOutput() GetUserAttributeProfileUserAttributeOidcMappingOutput
+	ToGetUserAttributeProfileUserAttributeOidcMappingOutputWithContext(context.Context) GetUserAttributeProfileUserAttributeOidcMappingOutput
+}
+
+type GetUserAttributeProfileUserAttributeOidcMappingArgs struct {
+	// Display name for the OIDC mapping.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// The OIDC mapping field.
+	Mapping pulumi.StringInput `pulumi:"mapping"`
+}
+
+func (GetUserAttributeProfileUserAttributeOidcMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUserAttributeProfileUserAttributeOidcMapping)(nil)).Elem()
+}
+
+func (i GetUserAttributeProfileUserAttributeOidcMappingArgs) ToGetUserAttributeProfileUserAttributeOidcMappingOutput() GetUserAttributeProfileUserAttributeOidcMappingOutput {
+	return i.ToGetUserAttributeProfileUserAttributeOidcMappingOutputWithContext(context.Background())
+}
+
+func (i GetUserAttributeProfileUserAttributeOidcMappingArgs) ToGetUserAttributeProfileUserAttributeOidcMappingOutputWithContext(ctx context.Context) GetUserAttributeProfileUserAttributeOidcMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUserAttributeProfileUserAttributeOidcMappingOutput)
+}
+
+// GetUserAttributeProfileUserAttributeOidcMappingArrayInput is an input type that accepts GetUserAttributeProfileUserAttributeOidcMappingArray and GetUserAttributeProfileUserAttributeOidcMappingArrayOutput values.
+// You can construct a concrete instance of `GetUserAttributeProfileUserAttributeOidcMappingArrayInput` via:
+//
+//	GetUserAttributeProfileUserAttributeOidcMappingArray{ GetUserAttributeProfileUserAttributeOidcMappingArgs{...} }
+type GetUserAttributeProfileUserAttributeOidcMappingArrayInput interface {
+	pulumi.Input
+
+	ToGetUserAttributeProfileUserAttributeOidcMappingArrayOutput() GetUserAttributeProfileUserAttributeOidcMappingArrayOutput
+	ToGetUserAttributeProfileUserAttributeOidcMappingArrayOutputWithContext(context.Context) GetUserAttributeProfileUserAttributeOidcMappingArrayOutput
+}
+
+type GetUserAttributeProfileUserAttributeOidcMappingArray []GetUserAttributeProfileUserAttributeOidcMappingInput
+
+func (GetUserAttributeProfileUserAttributeOidcMappingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUserAttributeProfileUserAttributeOidcMapping)(nil)).Elem()
+}
+
+func (i GetUserAttributeProfileUserAttributeOidcMappingArray) ToGetUserAttributeProfileUserAttributeOidcMappingArrayOutput() GetUserAttributeProfileUserAttributeOidcMappingArrayOutput {
+	return i.ToGetUserAttributeProfileUserAttributeOidcMappingArrayOutputWithContext(context.Background())
+}
+
+func (i GetUserAttributeProfileUserAttributeOidcMappingArray) ToGetUserAttributeProfileUserAttributeOidcMappingArrayOutputWithContext(ctx context.Context) GetUserAttributeProfileUserAttributeOidcMappingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUserAttributeProfileUserAttributeOidcMappingArrayOutput)
+}
+
+type GetUserAttributeProfileUserAttributeOidcMappingOutput struct{ *pulumi.OutputState }
+
+func (GetUserAttributeProfileUserAttributeOidcMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUserAttributeProfileUserAttributeOidcMapping)(nil)).Elem()
+}
+
+func (o GetUserAttributeProfileUserAttributeOidcMappingOutput) ToGetUserAttributeProfileUserAttributeOidcMappingOutput() GetUserAttributeProfileUserAttributeOidcMappingOutput {
+	return o
+}
+
+func (o GetUserAttributeProfileUserAttributeOidcMappingOutput) ToGetUserAttributeProfileUserAttributeOidcMappingOutputWithContext(ctx context.Context) GetUserAttributeProfileUserAttributeOidcMappingOutput {
+	return o
+}
+
+// Display name for the OIDC mapping.
+func (o GetUserAttributeProfileUserAttributeOidcMappingOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserAttributeProfileUserAttributeOidcMapping) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The OIDC mapping field.
+func (o GetUserAttributeProfileUserAttributeOidcMappingOutput) Mapping() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserAttributeProfileUserAttributeOidcMapping) string { return v.Mapping }).(pulumi.StringOutput)
+}
+
+type GetUserAttributeProfileUserAttributeOidcMappingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetUserAttributeProfileUserAttributeOidcMappingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUserAttributeProfileUserAttributeOidcMapping)(nil)).Elem()
+}
+
+func (o GetUserAttributeProfileUserAttributeOidcMappingArrayOutput) ToGetUserAttributeProfileUserAttributeOidcMappingArrayOutput() GetUserAttributeProfileUserAttributeOidcMappingArrayOutput {
+	return o
+}
+
+func (o GetUserAttributeProfileUserAttributeOidcMappingArrayOutput) ToGetUserAttributeProfileUserAttributeOidcMappingArrayOutputWithContext(ctx context.Context) GetUserAttributeProfileUserAttributeOidcMappingArrayOutput {
+	return o
+}
+
+func (o GetUserAttributeProfileUserAttributeOidcMappingArrayOutput) Index(i pulumi.IntInput) GetUserAttributeProfileUserAttributeOidcMappingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetUserAttributeProfileUserAttributeOidcMapping {
+		return vs[0].([]GetUserAttributeProfileUserAttributeOidcMapping)[vs[1].(int)]
+	}).(GetUserAttributeProfileUserAttributeOidcMappingOutput)
+}
+
+type GetUserAttributeProfileUserAttributeStrategyOverride struct {
+	// OIDC mapping override for this strategy.
+	OidcMappings []GetUserAttributeProfileUserAttributeStrategyOverrideOidcMapping `pulumi:"oidcMappings"`
+	// SAML mapping override for this strategy.
+	SamlMappings []string `pulumi:"samlMappings"`
+	// SCIM mapping override for this strategy.
+	ScimMapping string `pulumi:"scimMapping"`
+	// The strategy name (e.g., 'oidc', 'samlp', 'ad', etc.).
+	Strategy string `pulumi:"strategy"`
+}
+
+// GetUserAttributeProfileUserAttributeStrategyOverrideInput is an input type that accepts GetUserAttributeProfileUserAttributeStrategyOverrideArgs and GetUserAttributeProfileUserAttributeStrategyOverrideOutput values.
+// You can construct a concrete instance of `GetUserAttributeProfileUserAttributeStrategyOverrideInput` via:
+//
+//	GetUserAttributeProfileUserAttributeStrategyOverrideArgs{...}
+type GetUserAttributeProfileUserAttributeStrategyOverrideInput interface {
+	pulumi.Input
+
+	ToGetUserAttributeProfileUserAttributeStrategyOverrideOutput() GetUserAttributeProfileUserAttributeStrategyOverrideOutput
+	ToGetUserAttributeProfileUserAttributeStrategyOverrideOutputWithContext(context.Context) GetUserAttributeProfileUserAttributeStrategyOverrideOutput
+}
+
+type GetUserAttributeProfileUserAttributeStrategyOverrideArgs struct {
+	// OIDC mapping override for this strategy.
+	OidcMappings GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArrayInput `pulumi:"oidcMappings"`
+	// SAML mapping override for this strategy.
+	SamlMappings pulumi.StringArrayInput `pulumi:"samlMappings"`
+	// SCIM mapping override for this strategy.
+	ScimMapping pulumi.StringInput `pulumi:"scimMapping"`
+	// The strategy name (e.g., 'oidc', 'samlp', 'ad', etc.).
+	Strategy pulumi.StringInput `pulumi:"strategy"`
+}
+
+func (GetUserAttributeProfileUserAttributeStrategyOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUserAttributeProfileUserAttributeStrategyOverride)(nil)).Elem()
+}
+
+func (i GetUserAttributeProfileUserAttributeStrategyOverrideArgs) ToGetUserAttributeProfileUserAttributeStrategyOverrideOutput() GetUserAttributeProfileUserAttributeStrategyOverrideOutput {
+	return i.ToGetUserAttributeProfileUserAttributeStrategyOverrideOutputWithContext(context.Background())
+}
+
+func (i GetUserAttributeProfileUserAttributeStrategyOverrideArgs) ToGetUserAttributeProfileUserAttributeStrategyOverrideOutputWithContext(ctx context.Context) GetUserAttributeProfileUserAttributeStrategyOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUserAttributeProfileUserAttributeStrategyOverrideOutput)
+}
+
+// GetUserAttributeProfileUserAttributeStrategyOverrideArrayInput is an input type that accepts GetUserAttributeProfileUserAttributeStrategyOverrideArray and GetUserAttributeProfileUserAttributeStrategyOverrideArrayOutput values.
+// You can construct a concrete instance of `GetUserAttributeProfileUserAttributeStrategyOverrideArrayInput` via:
+//
+//	GetUserAttributeProfileUserAttributeStrategyOverrideArray{ GetUserAttributeProfileUserAttributeStrategyOverrideArgs{...} }
+type GetUserAttributeProfileUserAttributeStrategyOverrideArrayInput interface {
+	pulumi.Input
+
+	ToGetUserAttributeProfileUserAttributeStrategyOverrideArrayOutput() GetUserAttributeProfileUserAttributeStrategyOverrideArrayOutput
+	ToGetUserAttributeProfileUserAttributeStrategyOverrideArrayOutputWithContext(context.Context) GetUserAttributeProfileUserAttributeStrategyOverrideArrayOutput
+}
+
+type GetUserAttributeProfileUserAttributeStrategyOverrideArray []GetUserAttributeProfileUserAttributeStrategyOverrideInput
+
+func (GetUserAttributeProfileUserAttributeStrategyOverrideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUserAttributeProfileUserAttributeStrategyOverride)(nil)).Elem()
+}
+
+func (i GetUserAttributeProfileUserAttributeStrategyOverrideArray) ToGetUserAttributeProfileUserAttributeStrategyOverrideArrayOutput() GetUserAttributeProfileUserAttributeStrategyOverrideArrayOutput {
+	return i.ToGetUserAttributeProfileUserAttributeStrategyOverrideArrayOutputWithContext(context.Background())
+}
+
+func (i GetUserAttributeProfileUserAttributeStrategyOverrideArray) ToGetUserAttributeProfileUserAttributeStrategyOverrideArrayOutputWithContext(ctx context.Context) GetUserAttributeProfileUserAttributeStrategyOverrideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUserAttributeProfileUserAttributeStrategyOverrideArrayOutput)
+}
+
+type GetUserAttributeProfileUserAttributeStrategyOverrideOutput struct{ *pulumi.OutputState }
+
+func (GetUserAttributeProfileUserAttributeStrategyOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUserAttributeProfileUserAttributeStrategyOverride)(nil)).Elem()
+}
+
+func (o GetUserAttributeProfileUserAttributeStrategyOverrideOutput) ToGetUserAttributeProfileUserAttributeStrategyOverrideOutput() GetUserAttributeProfileUserAttributeStrategyOverrideOutput {
+	return o
+}
+
+func (o GetUserAttributeProfileUserAttributeStrategyOverrideOutput) ToGetUserAttributeProfileUserAttributeStrategyOverrideOutputWithContext(ctx context.Context) GetUserAttributeProfileUserAttributeStrategyOverrideOutput {
+	return o
+}
+
+// OIDC mapping override for this strategy.
+func (o GetUserAttributeProfileUserAttributeStrategyOverrideOutput) OidcMappings() GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArrayOutput {
+	return o.ApplyT(func(v GetUserAttributeProfileUserAttributeStrategyOverride) []GetUserAttributeProfileUserAttributeStrategyOverrideOidcMapping {
+		return v.OidcMappings
+	}).(GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArrayOutput)
+}
+
+// SAML mapping override for this strategy.
+func (o GetUserAttributeProfileUserAttributeStrategyOverrideOutput) SamlMappings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetUserAttributeProfileUserAttributeStrategyOverride) []string { return v.SamlMappings }).(pulumi.StringArrayOutput)
+}
+
+// SCIM mapping override for this strategy.
+func (o GetUserAttributeProfileUserAttributeStrategyOverrideOutput) ScimMapping() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserAttributeProfileUserAttributeStrategyOverride) string { return v.ScimMapping }).(pulumi.StringOutput)
+}
+
+// The strategy name (e.g., 'oidc', 'samlp', 'ad', etc.).
+func (o GetUserAttributeProfileUserAttributeStrategyOverrideOutput) Strategy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserAttributeProfileUserAttributeStrategyOverride) string { return v.Strategy }).(pulumi.StringOutput)
+}
+
+type GetUserAttributeProfileUserAttributeStrategyOverrideArrayOutput struct{ *pulumi.OutputState }
+
+func (GetUserAttributeProfileUserAttributeStrategyOverrideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUserAttributeProfileUserAttributeStrategyOverride)(nil)).Elem()
+}
+
+func (o GetUserAttributeProfileUserAttributeStrategyOverrideArrayOutput) ToGetUserAttributeProfileUserAttributeStrategyOverrideArrayOutput() GetUserAttributeProfileUserAttributeStrategyOverrideArrayOutput {
+	return o
+}
+
+func (o GetUserAttributeProfileUserAttributeStrategyOverrideArrayOutput) ToGetUserAttributeProfileUserAttributeStrategyOverrideArrayOutputWithContext(ctx context.Context) GetUserAttributeProfileUserAttributeStrategyOverrideArrayOutput {
+	return o
+}
+
+func (o GetUserAttributeProfileUserAttributeStrategyOverrideArrayOutput) Index(i pulumi.IntInput) GetUserAttributeProfileUserAttributeStrategyOverrideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetUserAttributeProfileUserAttributeStrategyOverride {
+		return vs[0].([]GetUserAttributeProfileUserAttributeStrategyOverride)[vs[1].(int)]
+	}).(GetUserAttributeProfileUserAttributeStrategyOverrideOutput)
+}
+
+type GetUserAttributeProfileUserAttributeStrategyOverrideOidcMapping struct {
+	// Display name for the OIDC mapping.
+	DisplayName string `pulumi:"displayName"`
+	// The OIDC mapping field.
+	Mapping string `pulumi:"mapping"`
+}
+
+// GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingInput is an input type that accepts GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArgs and GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput values.
+// You can construct a concrete instance of `GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingInput` via:
+//
+//	GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArgs{...}
+type GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingInput interface {
+	pulumi.Input
+
+	ToGetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput() GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput
+	ToGetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutputWithContext(context.Context) GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput
+}
+
+type GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArgs struct {
+	// Display name for the OIDC mapping.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// The OIDC mapping field.
+	Mapping pulumi.StringInput `pulumi:"mapping"`
+}
+
+func (GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUserAttributeProfileUserAttributeStrategyOverrideOidcMapping)(nil)).Elem()
+}
+
+func (i GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArgs) ToGetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput() GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput {
+	return i.ToGetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutputWithContext(context.Background())
+}
+
+func (i GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArgs) ToGetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutputWithContext(ctx context.Context) GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput)
+}
+
+// GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArrayInput is an input type that accepts GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArray and GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArrayOutput values.
+// You can construct a concrete instance of `GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArrayInput` via:
+//
+//	GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArray{ GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArgs{...} }
+type GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArrayInput interface {
+	pulumi.Input
+
+	ToGetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArrayOutput() GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArrayOutput
+	ToGetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArrayOutputWithContext(context.Context) GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArrayOutput
+}
+
+type GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArray []GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingInput
+
+func (GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUserAttributeProfileUserAttributeStrategyOverrideOidcMapping)(nil)).Elem()
+}
+
+func (i GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArray) ToGetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArrayOutput() GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArrayOutput {
+	return i.ToGetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArrayOutputWithContext(context.Background())
+}
+
+func (i GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArray) ToGetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArrayOutputWithContext(ctx context.Context) GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArrayOutput)
+}
+
+type GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput struct{ *pulumi.OutputState }
+
+func (GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUserAttributeProfileUserAttributeStrategyOverrideOidcMapping)(nil)).Elem()
+}
+
+func (o GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput) ToGetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput() GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput {
+	return o
+}
+
+func (o GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput) ToGetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutputWithContext(ctx context.Context) GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput {
+	return o
+}
+
+// Display name for the OIDC mapping.
+func (o GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserAttributeProfileUserAttributeStrategyOverrideOidcMapping) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The OIDC mapping field.
+func (o GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput) Mapping() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserAttributeProfileUserAttributeStrategyOverrideOidcMapping) string { return v.Mapping }).(pulumi.StringOutput)
+}
+
+type GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUserAttributeProfileUserAttributeStrategyOverrideOidcMapping)(nil)).Elem()
+}
+
+func (o GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArrayOutput) ToGetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArrayOutput() GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArrayOutput {
+	return o
+}
+
+func (o GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArrayOutput) ToGetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArrayOutputWithContext(ctx context.Context) GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArrayOutput {
+	return o
+}
+
+func (o GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArrayOutput) Index(i pulumi.IntInput) GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetUserAttributeProfileUserAttributeStrategyOverrideOidcMapping {
+		return vs[0].([]GetUserAttributeProfileUserAttributeStrategyOverrideOidcMapping)[vs[1].(int)]
+	}).(GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput)
+}
+
+type GetUserAttributeProfileUserId struct {
+	// The OIDC mapping for the user ID.
+	OidcMapping string `pulumi:"oidcMapping"`
+	// The SAML mapping for the user ID.
+	SamlMappings []string `pulumi:"samlMappings"`
+	// The SCIM mapping for the user ID.
+	ScimMapping string `pulumi:"scimMapping"`
+	// Strategy-specific overrides for user ID mapping.
+	StrategyOverrides []GetUserAttributeProfileUserIdStrategyOverride `pulumi:"strategyOverrides"`
+}
+
+// GetUserAttributeProfileUserIdInput is an input type that accepts GetUserAttributeProfileUserIdArgs and GetUserAttributeProfileUserIdOutput values.
+// You can construct a concrete instance of `GetUserAttributeProfileUserIdInput` via:
+//
+//	GetUserAttributeProfileUserIdArgs{...}
+type GetUserAttributeProfileUserIdInput interface {
+	pulumi.Input
+
+	ToGetUserAttributeProfileUserIdOutput() GetUserAttributeProfileUserIdOutput
+	ToGetUserAttributeProfileUserIdOutputWithContext(context.Context) GetUserAttributeProfileUserIdOutput
+}
+
+type GetUserAttributeProfileUserIdArgs struct {
+	// The OIDC mapping for the user ID.
+	OidcMapping pulumi.StringInput `pulumi:"oidcMapping"`
+	// The SAML mapping for the user ID.
+	SamlMappings pulumi.StringArrayInput `pulumi:"samlMappings"`
+	// The SCIM mapping for the user ID.
+	ScimMapping pulumi.StringInput `pulumi:"scimMapping"`
+	// Strategy-specific overrides for user ID mapping.
+	StrategyOverrides GetUserAttributeProfileUserIdStrategyOverrideArrayInput `pulumi:"strategyOverrides"`
+}
+
+func (GetUserAttributeProfileUserIdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUserAttributeProfileUserId)(nil)).Elem()
+}
+
+func (i GetUserAttributeProfileUserIdArgs) ToGetUserAttributeProfileUserIdOutput() GetUserAttributeProfileUserIdOutput {
+	return i.ToGetUserAttributeProfileUserIdOutputWithContext(context.Background())
+}
+
+func (i GetUserAttributeProfileUserIdArgs) ToGetUserAttributeProfileUserIdOutputWithContext(ctx context.Context) GetUserAttributeProfileUserIdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUserAttributeProfileUserIdOutput)
+}
+
+// GetUserAttributeProfileUserIdArrayInput is an input type that accepts GetUserAttributeProfileUserIdArray and GetUserAttributeProfileUserIdArrayOutput values.
+// You can construct a concrete instance of `GetUserAttributeProfileUserIdArrayInput` via:
+//
+//	GetUserAttributeProfileUserIdArray{ GetUserAttributeProfileUserIdArgs{...} }
+type GetUserAttributeProfileUserIdArrayInput interface {
+	pulumi.Input
+
+	ToGetUserAttributeProfileUserIdArrayOutput() GetUserAttributeProfileUserIdArrayOutput
+	ToGetUserAttributeProfileUserIdArrayOutputWithContext(context.Context) GetUserAttributeProfileUserIdArrayOutput
+}
+
+type GetUserAttributeProfileUserIdArray []GetUserAttributeProfileUserIdInput
+
+func (GetUserAttributeProfileUserIdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUserAttributeProfileUserId)(nil)).Elem()
+}
+
+func (i GetUserAttributeProfileUserIdArray) ToGetUserAttributeProfileUserIdArrayOutput() GetUserAttributeProfileUserIdArrayOutput {
+	return i.ToGetUserAttributeProfileUserIdArrayOutputWithContext(context.Background())
+}
+
+func (i GetUserAttributeProfileUserIdArray) ToGetUserAttributeProfileUserIdArrayOutputWithContext(ctx context.Context) GetUserAttributeProfileUserIdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUserAttributeProfileUserIdArrayOutput)
+}
+
+type GetUserAttributeProfileUserIdOutput struct{ *pulumi.OutputState }
+
+func (GetUserAttributeProfileUserIdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUserAttributeProfileUserId)(nil)).Elem()
+}
+
+func (o GetUserAttributeProfileUserIdOutput) ToGetUserAttributeProfileUserIdOutput() GetUserAttributeProfileUserIdOutput {
+	return o
+}
+
+func (o GetUserAttributeProfileUserIdOutput) ToGetUserAttributeProfileUserIdOutputWithContext(ctx context.Context) GetUserAttributeProfileUserIdOutput {
+	return o
+}
+
+// The OIDC mapping for the user ID.
+func (o GetUserAttributeProfileUserIdOutput) OidcMapping() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserAttributeProfileUserId) string { return v.OidcMapping }).(pulumi.StringOutput)
+}
+
+// The SAML mapping for the user ID.
+func (o GetUserAttributeProfileUserIdOutput) SamlMappings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetUserAttributeProfileUserId) []string { return v.SamlMappings }).(pulumi.StringArrayOutput)
+}
+
+// The SCIM mapping for the user ID.
+func (o GetUserAttributeProfileUserIdOutput) ScimMapping() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserAttributeProfileUserId) string { return v.ScimMapping }).(pulumi.StringOutput)
+}
+
+// Strategy-specific overrides for user ID mapping.
+func (o GetUserAttributeProfileUserIdOutput) StrategyOverrides() GetUserAttributeProfileUserIdStrategyOverrideArrayOutput {
+	return o.ApplyT(func(v GetUserAttributeProfileUserId) []GetUserAttributeProfileUserIdStrategyOverride {
+		return v.StrategyOverrides
+	}).(GetUserAttributeProfileUserIdStrategyOverrideArrayOutput)
+}
+
+type GetUserAttributeProfileUserIdArrayOutput struct{ *pulumi.OutputState }
+
+func (GetUserAttributeProfileUserIdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUserAttributeProfileUserId)(nil)).Elem()
+}
+
+func (o GetUserAttributeProfileUserIdArrayOutput) ToGetUserAttributeProfileUserIdArrayOutput() GetUserAttributeProfileUserIdArrayOutput {
+	return o
+}
+
+func (o GetUserAttributeProfileUserIdArrayOutput) ToGetUserAttributeProfileUserIdArrayOutputWithContext(ctx context.Context) GetUserAttributeProfileUserIdArrayOutput {
+	return o
+}
+
+func (o GetUserAttributeProfileUserIdArrayOutput) Index(i pulumi.IntInput) GetUserAttributeProfileUserIdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetUserAttributeProfileUserId {
+		return vs[0].([]GetUserAttributeProfileUserId)[vs[1].(int)]
+	}).(GetUserAttributeProfileUserIdOutput)
+}
+
+type GetUserAttributeProfileUserIdStrategyOverride struct {
+	// OIDC mapping override for this strategy.
+	OidcMapping string `pulumi:"oidcMapping"`
+	// SAML mapping override for this strategy.
+	SamlMappings []string `pulumi:"samlMappings"`
+	// SCIM mapping override for this strategy.
+	ScimMapping string `pulumi:"scimMapping"`
+	// The strategy name (e.g., 'oidc', 'samlp', 'ad', etc.).
+	Strategy string `pulumi:"strategy"`
+}
+
+// GetUserAttributeProfileUserIdStrategyOverrideInput is an input type that accepts GetUserAttributeProfileUserIdStrategyOverrideArgs and GetUserAttributeProfileUserIdStrategyOverrideOutput values.
+// You can construct a concrete instance of `GetUserAttributeProfileUserIdStrategyOverrideInput` via:
+//
+//	GetUserAttributeProfileUserIdStrategyOverrideArgs{...}
+type GetUserAttributeProfileUserIdStrategyOverrideInput interface {
+	pulumi.Input
+
+	ToGetUserAttributeProfileUserIdStrategyOverrideOutput() GetUserAttributeProfileUserIdStrategyOverrideOutput
+	ToGetUserAttributeProfileUserIdStrategyOverrideOutputWithContext(context.Context) GetUserAttributeProfileUserIdStrategyOverrideOutput
+}
+
+type GetUserAttributeProfileUserIdStrategyOverrideArgs struct {
+	// OIDC mapping override for this strategy.
+	OidcMapping pulumi.StringInput `pulumi:"oidcMapping"`
+	// SAML mapping override for this strategy.
+	SamlMappings pulumi.StringArrayInput `pulumi:"samlMappings"`
+	// SCIM mapping override for this strategy.
+	ScimMapping pulumi.StringInput `pulumi:"scimMapping"`
+	// The strategy name (e.g., 'oidc', 'samlp', 'ad', etc.).
+	Strategy pulumi.StringInput `pulumi:"strategy"`
+}
+
+func (GetUserAttributeProfileUserIdStrategyOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUserAttributeProfileUserIdStrategyOverride)(nil)).Elem()
+}
+
+func (i GetUserAttributeProfileUserIdStrategyOverrideArgs) ToGetUserAttributeProfileUserIdStrategyOverrideOutput() GetUserAttributeProfileUserIdStrategyOverrideOutput {
+	return i.ToGetUserAttributeProfileUserIdStrategyOverrideOutputWithContext(context.Background())
+}
+
+func (i GetUserAttributeProfileUserIdStrategyOverrideArgs) ToGetUserAttributeProfileUserIdStrategyOverrideOutputWithContext(ctx context.Context) GetUserAttributeProfileUserIdStrategyOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUserAttributeProfileUserIdStrategyOverrideOutput)
+}
+
+// GetUserAttributeProfileUserIdStrategyOverrideArrayInput is an input type that accepts GetUserAttributeProfileUserIdStrategyOverrideArray and GetUserAttributeProfileUserIdStrategyOverrideArrayOutput values.
+// You can construct a concrete instance of `GetUserAttributeProfileUserIdStrategyOverrideArrayInput` via:
+//
+//	GetUserAttributeProfileUserIdStrategyOverrideArray{ GetUserAttributeProfileUserIdStrategyOverrideArgs{...} }
+type GetUserAttributeProfileUserIdStrategyOverrideArrayInput interface {
+	pulumi.Input
+
+	ToGetUserAttributeProfileUserIdStrategyOverrideArrayOutput() GetUserAttributeProfileUserIdStrategyOverrideArrayOutput
+	ToGetUserAttributeProfileUserIdStrategyOverrideArrayOutputWithContext(context.Context) GetUserAttributeProfileUserIdStrategyOverrideArrayOutput
+}
+
+type GetUserAttributeProfileUserIdStrategyOverrideArray []GetUserAttributeProfileUserIdStrategyOverrideInput
+
+func (GetUserAttributeProfileUserIdStrategyOverrideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUserAttributeProfileUserIdStrategyOverride)(nil)).Elem()
+}
+
+func (i GetUserAttributeProfileUserIdStrategyOverrideArray) ToGetUserAttributeProfileUserIdStrategyOverrideArrayOutput() GetUserAttributeProfileUserIdStrategyOverrideArrayOutput {
+	return i.ToGetUserAttributeProfileUserIdStrategyOverrideArrayOutputWithContext(context.Background())
+}
+
+func (i GetUserAttributeProfileUserIdStrategyOverrideArray) ToGetUserAttributeProfileUserIdStrategyOverrideArrayOutputWithContext(ctx context.Context) GetUserAttributeProfileUserIdStrategyOverrideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUserAttributeProfileUserIdStrategyOverrideArrayOutput)
+}
+
+type GetUserAttributeProfileUserIdStrategyOverrideOutput struct{ *pulumi.OutputState }
+
+func (GetUserAttributeProfileUserIdStrategyOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUserAttributeProfileUserIdStrategyOverride)(nil)).Elem()
+}
+
+func (o GetUserAttributeProfileUserIdStrategyOverrideOutput) ToGetUserAttributeProfileUserIdStrategyOverrideOutput() GetUserAttributeProfileUserIdStrategyOverrideOutput {
+	return o
+}
+
+func (o GetUserAttributeProfileUserIdStrategyOverrideOutput) ToGetUserAttributeProfileUserIdStrategyOverrideOutputWithContext(ctx context.Context) GetUserAttributeProfileUserIdStrategyOverrideOutput {
+	return o
+}
+
+// OIDC mapping override for this strategy.
+func (o GetUserAttributeProfileUserIdStrategyOverrideOutput) OidcMapping() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserAttributeProfileUserIdStrategyOverride) string { return v.OidcMapping }).(pulumi.StringOutput)
+}
+
+// SAML mapping override for this strategy.
+func (o GetUserAttributeProfileUserIdStrategyOverrideOutput) SamlMappings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetUserAttributeProfileUserIdStrategyOverride) []string { return v.SamlMappings }).(pulumi.StringArrayOutput)
+}
+
+// SCIM mapping override for this strategy.
+func (o GetUserAttributeProfileUserIdStrategyOverrideOutput) ScimMapping() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserAttributeProfileUserIdStrategyOverride) string { return v.ScimMapping }).(pulumi.StringOutput)
+}
+
+// The strategy name (e.g., 'oidc', 'samlp', 'ad', etc.).
+func (o GetUserAttributeProfileUserIdStrategyOverrideOutput) Strategy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserAttributeProfileUserIdStrategyOverride) string { return v.Strategy }).(pulumi.StringOutput)
+}
+
+type GetUserAttributeProfileUserIdStrategyOverrideArrayOutput struct{ *pulumi.OutputState }
+
+func (GetUserAttributeProfileUserIdStrategyOverrideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUserAttributeProfileUserIdStrategyOverride)(nil)).Elem()
+}
+
+func (o GetUserAttributeProfileUserIdStrategyOverrideArrayOutput) ToGetUserAttributeProfileUserIdStrategyOverrideArrayOutput() GetUserAttributeProfileUserIdStrategyOverrideArrayOutput {
+	return o
+}
+
+func (o GetUserAttributeProfileUserIdStrategyOverrideArrayOutput) ToGetUserAttributeProfileUserIdStrategyOverrideArrayOutputWithContext(ctx context.Context) GetUserAttributeProfileUserIdStrategyOverrideArrayOutput {
+	return o
+}
+
+func (o GetUserAttributeProfileUserIdStrategyOverrideArrayOutput) Index(i pulumi.IntInput) GetUserAttributeProfileUserIdStrategyOverrideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetUserAttributeProfileUserIdStrategyOverride {
+		return vs[0].([]GetUserAttributeProfileUserIdStrategyOverride)[vs[1].(int)]
+	}).(GetUserAttributeProfileUserIdStrategyOverrideOutput)
+}
+
 type GetUserPermissionType struct {
 	// Description of the permission.
 	Description string `pulumi:"description"`
@@ -54607,6 +56556,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantSessionsPtrInput)(nil)).Elem(), TenantSessionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerActionsActionInput)(nil)).Elem(), TriggerActionsActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerActionsActionArrayInput)(nil)).Elem(), TriggerActionsActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserAttributeProfileUserAttributeInput)(nil)).Elem(), UserAttributeProfileUserAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserAttributeProfileUserAttributeArrayInput)(nil)).Elem(), UserAttributeProfileUserAttributeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserAttributeProfileUserAttributeOidcMappingInput)(nil)).Elem(), UserAttributeProfileUserAttributeOidcMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserAttributeProfileUserAttributeOidcMappingPtrInput)(nil)).Elem(), UserAttributeProfileUserAttributeOidcMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserAttributeProfileUserAttributeStrategyOverrideInput)(nil)).Elem(), UserAttributeProfileUserAttributeStrategyOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserAttributeProfileUserAttributeStrategyOverrideArrayInput)(nil)).Elem(), UserAttributeProfileUserAttributeStrategyOverrideArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserAttributeProfileUserAttributeStrategyOverrideOidcMappingInput)(nil)).Elem(), UserAttributeProfileUserAttributeStrategyOverrideOidcMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserAttributeProfileUserAttributeStrategyOverrideOidcMappingPtrInput)(nil)).Elem(), UserAttributeProfileUserAttributeStrategyOverrideOidcMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserAttributeProfileUserIdInput)(nil)).Elem(), UserAttributeProfileUserIdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserAttributeProfileUserIdPtrInput)(nil)).Elem(), UserAttributeProfileUserIdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserAttributeProfileUserIdStrategyOverrideInput)(nil)).Elem(), UserAttributeProfileUserIdStrategyOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserAttributeProfileUserIdStrategyOverrideArrayInput)(nil)).Elem(), UserAttributeProfileUserIdStrategyOverrideArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserPermissionsPermissionInput)(nil)).Elem(), UserPermissionsPermissionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserPermissionsPermissionArrayInput)(nil)).Elem(), UserPermissionsPermissionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetActionDependencyInput)(nil)).Elem(), GetActionDependencyArgs{})
@@ -54889,6 +56850,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationTokenQuotaArrayInput)(nil)).Elem(), GetOrganizationTokenQuotaArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationTokenQuotaClientCredentialInput)(nil)).Elem(), GetOrganizationTokenQuotaClientCredentialArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationTokenQuotaClientCredentialArrayInput)(nil)).Elem(), GetOrganizationTokenQuotaClientCredentialArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOutboundIpsChangelogInput)(nil)).Elem(), GetOutboundIpsChangelogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOutboundIpsChangelogArrayInput)(nil)).Elem(), GetOutboundIpsChangelogArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOutboundIpsRegionInput)(nil)).Elem(), GetOutboundIpsRegionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOutboundIpsRegionArrayInput)(nil)).Elem(), GetOutboundIpsRegionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesChangePasswordInput)(nil)).Elem(), GetPagesChangePasswordArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesChangePasswordArrayInput)(nil)).Elem(), GetPagesChangePasswordArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesErrorInput)(nil)).Elem(), GetPagesErrorArgs{})
@@ -54955,6 +56920,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantSessionArrayInput)(nil)).Elem(), GetTenantSessionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantSessionCookyInput)(nil)).Elem(), GetTenantSessionCookyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantSessionCookyArrayInput)(nil)).Elem(), GetTenantSessionCookyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUserAttributeProfileUserAttributeInput)(nil)).Elem(), GetUserAttributeProfileUserAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUserAttributeProfileUserAttributeArrayInput)(nil)).Elem(), GetUserAttributeProfileUserAttributeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUserAttributeProfileUserAttributeOidcMappingInput)(nil)).Elem(), GetUserAttributeProfileUserAttributeOidcMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUserAttributeProfileUserAttributeOidcMappingArrayInput)(nil)).Elem(), GetUserAttributeProfileUserAttributeOidcMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUserAttributeProfileUserAttributeStrategyOverrideInput)(nil)).Elem(), GetUserAttributeProfileUserAttributeStrategyOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUserAttributeProfileUserAttributeStrategyOverrideArrayInput)(nil)).Elem(), GetUserAttributeProfileUserAttributeStrategyOverrideArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingInput)(nil)).Elem(), GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArrayInput)(nil)).Elem(), GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUserAttributeProfileUserIdInput)(nil)).Elem(), GetUserAttributeProfileUserIdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUserAttributeProfileUserIdArrayInput)(nil)).Elem(), GetUserAttributeProfileUserIdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUserAttributeProfileUserIdStrategyOverrideInput)(nil)).Elem(), GetUserAttributeProfileUserIdStrategyOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUserAttributeProfileUserIdStrategyOverrideArrayInput)(nil)).Elem(), GetUserAttributeProfileUserIdStrategyOverrideArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserPermissionTypeInput)(nil)).Elem(), GetUserPermissionTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserPermissionTypeArrayInput)(nil)).Elem(), GetUserPermissionTypeArray{})
 	pulumi.RegisterOutputType(ActionDependencyOutput{})
@@ -55320,6 +57297,18 @@ func init() {
 	pulumi.RegisterOutputType(TenantSessionsPtrOutput{})
 	pulumi.RegisterOutputType(TriggerActionsActionOutput{})
 	pulumi.RegisterOutputType(TriggerActionsActionArrayOutput{})
+	pulumi.RegisterOutputType(UserAttributeProfileUserAttributeOutput{})
+	pulumi.RegisterOutputType(UserAttributeProfileUserAttributeArrayOutput{})
+	pulumi.RegisterOutputType(UserAttributeProfileUserAttributeOidcMappingOutput{})
+	pulumi.RegisterOutputType(UserAttributeProfileUserAttributeOidcMappingPtrOutput{})
+	pulumi.RegisterOutputType(UserAttributeProfileUserAttributeStrategyOverrideOutput{})
+	pulumi.RegisterOutputType(UserAttributeProfileUserAttributeStrategyOverrideArrayOutput{})
+	pulumi.RegisterOutputType(UserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput{})
+	pulumi.RegisterOutputType(UserAttributeProfileUserAttributeStrategyOverrideOidcMappingPtrOutput{})
+	pulumi.RegisterOutputType(UserAttributeProfileUserIdOutput{})
+	pulumi.RegisterOutputType(UserAttributeProfileUserIdPtrOutput{})
+	pulumi.RegisterOutputType(UserAttributeProfileUserIdStrategyOverrideOutput{})
+	pulumi.RegisterOutputType(UserAttributeProfileUserIdStrategyOverrideArrayOutput{})
 	pulumi.RegisterOutputType(UserPermissionsPermissionOutput{})
 	pulumi.RegisterOutputType(UserPermissionsPermissionArrayOutput{})
 	pulumi.RegisterOutputType(GetActionDependencyOutput{})
@@ -55602,6 +57591,10 @@ func init() {
 	pulumi.RegisterOutputType(GetOrganizationTokenQuotaArrayOutput{})
 	pulumi.RegisterOutputType(GetOrganizationTokenQuotaClientCredentialOutput{})
 	pulumi.RegisterOutputType(GetOrganizationTokenQuotaClientCredentialArrayOutput{})
+	pulumi.RegisterOutputType(GetOutboundIpsChangelogOutput{})
+	pulumi.RegisterOutputType(GetOutboundIpsChangelogArrayOutput{})
+	pulumi.RegisterOutputType(GetOutboundIpsRegionOutput{})
+	pulumi.RegisterOutputType(GetOutboundIpsRegionArrayOutput{})
 	pulumi.RegisterOutputType(GetPagesChangePasswordOutput{})
 	pulumi.RegisterOutputType(GetPagesChangePasswordArrayOutput{})
 	pulumi.RegisterOutputType(GetPagesErrorOutput{})
@@ -55668,6 +57661,18 @@ func init() {
 	pulumi.RegisterOutputType(GetTenantSessionArrayOutput{})
 	pulumi.RegisterOutputType(GetTenantSessionCookyOutput{})
 	pulumi.RegisterOutputType(GetTenantSessionCookyArrayOutput{})
+	pulumi.RegisterOutputType(GetUserAttributeProfileUserAttributeOutput{})
+	pulumi.RegisterOutputType(GetUserAttributeProfileUserAttributeArrayOutput{})
+	pulumi.RegisterOutputType(GetUserAttributeProfileUserAttributeOidcMappingOutput{})
+	pulumi.RegisterOutputType(GetUserAttributeProfileUserAttributeOidcMappingArrayOutput{})
+	pulumi.RegisterOutputType(GetUserAttributeProfileUserAttributeStrategyOverrideOutput{})
+	pulumi.RegisterOutputType(GetUserAttributeProfileUserAttributeStrategyOverrideArrayOutput{})
+	pulumi.RegisterOutputType(GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput{})
+	pulumi.RegisterOutputType(GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArrayOutput{})
+	pulumi.RegisterOutputType(GetUserAttributeProfileUserIdOutput{})
+	pulumi.RegisterOutputType(GetUserAttributeProfileUserIdArrayOutput{})
+	pulumi.RegisterOutputType(GetUserAttributeProfileUserIdStrategyOverrideOutput{})
+	pulumi.RegisterOutputType(GetUserAttributeProfileUserIdStrategyOverrideArrayOutput{})
 	pulumi.RegisterOutputType(GetUserPermissionTypeOutput{})
 	pulumi.RegisterOutputType(GetUserPermissionTypeArrayOutput{})
 }
