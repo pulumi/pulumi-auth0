@@ -31,6 +31,11 @@ public final class ConnectionOptionsAttributeEmail {
      */
     private @Nullable List<ConnectionOptionsAttributeEmailSignup> signups;
     /**
+     * @return If set to false, it allow multiple accounts with the same email address
+     * 
+     */
+    private @Nullable Boolean unique;
+    /**
      * @return Defines whether whether user will receive a link or an OTP during user signup for email verification and password reset for email verification
      * 
      */
@@ -59,6 +64,13 @@ public final class ConnectionOptionsAttributeEmail {
         return this.signups == null ? List.of() : this.signups;
     }
     /**
+     * @return If set to false, it allow multiple accounts with the same email address
+     * 
+     */
+    public Optional<Boolean> unique() {
+        return Optional.ofNullable(this.unique);
+    }
+    /**
      * @return Defines whether whether user will receive a link or an OTP during user signup for email verification and password reset for email verification
      * 
      */
@@ -78,6 +90,7 @@ public final class ConnectionOptionsAttributeEmail {
         private @Nullable List<ConnectionOptionsAttributeEmailIdentifier> identifiers;
         private @Nullable Boolean profileRequired;
         private @Nullable List<ConnectionOptionsAttributeEmailSignup> signups;
+        private @Nullable Boolean unique;
         private @Nullable String verificationMethod;
         public Builder() {}
         public Builder(ConnectionOptionsAttributeEmail defaults) {
@@ -85,6 +98,7 @@ public final class ConnectionOptionsAttributeEmail {
     	      this.identifiers = defaults.identifiers;
     	      this.profileRequired = defaults.profileRequired;
     	      this.signups = defaults.signups;
+    	      this.unique = defaults.unique;
     	      this.verificationMethod = defaults.verificationMethod;
         }
 
@@ -113,6 +127,12 @@ public final class ConnectionOptionsAttributeEmail {
             return signups(List.of(signups));
         }
         @CustomType.Setter
+        public Builder unique(@Nullable Boolean unique) {
+
+            this.unique = unique;
+            return this;
+        }
+        @CustomType.Setter
         public Builder verificationMethod(@Nullable String verificationMethod) {
 
             this.verificationMethod = verificationMethod;
@@ -123,6 +143,7 @@ public final class ConnectionOptionsAttributeEmail {
             _resultValue.identifiers = identifiers;
             _resultValue.profileRequired = profileRequired;
             _resultValue.signups = signups;
+            _resultValue.unique = unique;
             _resultValue.verificationMethod = verificationMethod;
             return _resultValue;
         }

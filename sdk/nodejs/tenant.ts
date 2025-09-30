@@ -28,6 +28,7 @@ import * as utilities from "./utilities";
  *     sandboxVersion: "12",
  *     enabledLocales: ["en"],
  *     defaultRedirectionUri: "https://example.com/login",
+ *     skipNonVerifiableCallbackUriConfirmationPrompt: true,
  *     flags: {
  *         disableClickjackProtectionHeaders: true,
  *         enablePublicSignupUserExistsError: true,
@@ -181,6 +182,10 @@ export class Tenant extends pulumi.CustomResource {
      */
     declare public readonly sessions: pulumi.Output<outputs.TenantSessions>;
     /**
+     * Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+     */
+    declare public readonly skipNonVerifiableCallbackUriConfirmationPrompt: pulumi.Output<boolean | undefined>;
+    /**
      * Support email address for authenticating users.
      */
     declare public readonly supportEmail: pulumi.Output<string>;
@@ -224,6 +229,7 @@ export class Tenant extends pulumi.CustomResource {
             resourceInputs["sessionCookie"] = state?.sessionCookie;
             resourceInputs["sessionLifetime"] = state?.sessionLifetime;
             resourceInputs["sessions"] = state?.sessions;
+            resourceInputs["skipNonVerifiableCallbackUriConfirmationPrompt"] = state?.skipNonVerifiableCallbackUriConfirmationPrompt;
             resourceInputs["supportEmail"] = state?.supportEmail;
             resourceInputs["supportUrl"] = state?.supportUrl;
         } else {
@@ -250,6 +256,7 @@ export class Tenant extends pulumi.CustomResource {
             resourceInputs["sessionCookie"] = args?.sessionCookie;
             resourceInputs["sessionLifetime"] = args?.sessionLifetime;
             resourceInputs["sessions"] = args?.sessions;
+            resourceInputs["skipNonVerifiableCallbackUriConfirmationPrompt"] = args?.skipNonVerifiableCallbackUriConfirmationPrompt;
             resourceInputs["supportEmail"] = args?.supportEmail;
             resourceInputs["supportUrl"] = args?.supportUrl;
         }
@@ -350,6 +357,10 @@ export interface TenantState {
      * Sessions related settings for the tenant.
      */
     sessions?: pulumi.Input<inputs.TenantSessions>;
+    /**
+     * Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+     */
+    skipNonVerifiableCallbackUriConfirmationPrompt?: pulumi.Input<boolean>;
     /**
      * Support email address for authenticating users.
      */
@@ -452,6 +463,10 @@ export interface TenantArgs {
      * Sessions related settings for the tenant.
      */
     sessions?: pulumi.Input<inputs.TenantSessions>;
+    /**
+     * Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+     */
+    skipNonVerifiableCallbackUriConfirmationPrompt?: pulumi.Input<boolean>;
     /**
      * Support email address for authenticating users.
      */

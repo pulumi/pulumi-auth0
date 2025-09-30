@@ -109,14 +109,29 @@ public final class SelfServiceProfileState extends com.pulumi.resources.Resource
     }
 
     /**
-     * This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0.
+     * The ID of the user attribute profile to use for this self-service profile. Cannot be used with user_attributes.
+     * 
+     */
+    @Import(name="userAttributeProfileId")
+    private @Nullable Output<String> userAttributeProfileId;
+
+    /**
+     * @return The ID of the user attribute profile to use for this self-service profile. Cannot be used with user_attributes.
+     * 
+     */
+    public Optional<Output<String>> userAttributeProfileId() {
+        return Optional.ofNullable(this.userAttributeProfileId);
+    }
+
+    /**
+     * This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0. Cannot be used with user*attribute*profile*id.
      * 
      */
     @Import(name="userAttributes")
     private @Nullable Output<List<SelfServiceProfileUserAttributeArgs>> userAttributes;
 
     /**
-     * @return This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0.
+     * @return This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0. Cannot be used with user*attribute*profile*id.
      * 
      */
     public Optional<Output<List<SelfServiceProfileUserAttributeArgs>>> userAttributes() {
@@ -132,6 +147,7 @@ public final class SelfServiceProfileState extends com.pulumi.resources.Resource
         this.description = $.description;
         this.name = $.name;
         this.updatedAt = $.updatedAt;
+        this.userAttributeProfileId = $.userAttributeProfileId;
         this.userAttributes = $.userAttributes;
     }
 
@@ -290,7 +306,28 @@ public final class SelfServiceProfileState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param userAttributes This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0.
+         * @param userAttributeProfileId The ID of the user attribute profile to use for this self-service profile. Cannot be used with user_attributes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userAttributeProfileId(@Nullable Output<String> userAttributeProfileId) {
+            $.userAttributeProfileId = userAttributeProfileId;
+            return this;
+        }
+
+        /**
+         * @param userAttributeProfileId The ID of the user attribute profile to use for this self-service profile. Cannot be used with user_attributes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userAttributeProfileId(String userAttributeProfileId) {
+            return userAttributeProfileId(Output.of(userAttributeProfileId));
+        }
+
+        /**
+         * @param userAttributes This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0. Cannot be used with user*attribute*profile*id.
          * 
          * @return builder
          * 
@@ -301,7 +338,7 @@ public final class SelfServiceProfileState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param userAttributes This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0.
+         * @param userAttributes This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0. Cannot be used with user*attribute*profile*id.
          * 
          * @return builder
          * 
@@ -311,7 +348,7 @@ public final class SelfServiceProfileState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param userAttributes This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0.
+         * @param userAttributes This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0. Cannot be used with user*attribute*profile*id.
          * 
          * @return builder
          * 

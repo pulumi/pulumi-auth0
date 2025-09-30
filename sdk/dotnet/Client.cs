@@ -251,6 +251,12 @@ namespace Pulumi.Auth0
         public Output<ImmutableArray<ImmutableDictionary<string, string>>> SigningKeys { get; private set; } = null!;
 
         /// <summary>
+        /// Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+        /// </summary>
+        [Output("skipNonVerifiableCallbackUriConfirmationPrompt")]
+        public Output<bool?> SkipNonVerifiableCallbackUriConfirmationPrompt { get; private set; } = null!;
+
+        /// <summary>
         /// Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
         /// </summary>
         [Output("sso")]
@@ -599,6 +605,12 @@ namespace Pulumi.Auth0
         public Input<Inputs.ClientSessionTransferArgs>? SessionTransfer { get; set; }
 
         /// <summary>
+        /// Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+        /// </summary>
+        [Input("skipNonVerifiableCallbackUriConfirmationPrompt")]
+        public Input<bool>? SkipNonVerifiableCallbackUriConfirmationPrompt { get; set; }
+
+        /// <summary>
         /// Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
         /// </summary>
         [Input("sso")]
@@ -932,6 +944,12 @@ namespace Pulumi.Auth0
                 _signingKeys = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
+
+        /// <summary>
+        /// Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+        /// </summary>
+        [Input("skipNonVerifiableCallbackUriConfirmationPrompt")]
+        public Input<bool>? SkipNonVerifiableCallbackUriConfirmationPrompt { get; set; }
 
         /// <summary>
         /// Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).

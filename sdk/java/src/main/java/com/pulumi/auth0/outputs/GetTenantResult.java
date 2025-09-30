@@ -146,6 +146,11 @@ public final class GetTenantResult {
      */
     private List<GetTenantSession> sessions;
     /**
+     * @return Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+     * 
+     */
+    private Boolean skipNonVerifiableCallbackUriConfirmationPrompt;
+    /**
      * @return Support email address for authenticating users.
      * 
      */
@@ -333,6 +338,13 @@ public final class GetTenantResult {
         return this.sessions;
     }
     /**
+     * @return Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+     * 
+     */
+    public Boolean skipNonVerifiableCallbackUriConfirmationPrompt() {
+        return this.skipNonVerifiableCallbackUriConfirmationPrompt;
+    }
+    /**
      * @return Support email address for authenticating users.
      * 
      */
@@ -381,6 +393,7 @@ public final class GetTenantResult {
         private List<GetTenantSessionCooky> sessionCookies;
         private Double sessionLifetime;
         private List<GetTenantSession> sessions;
+        private Boolean skipNonVerifiableCallbackUriConfirmationPrompt;
         private String supportEmail;
         private String supportUrl;
         public Builder() {}
@@ -411,6 +424,7 @@ public final class GetTenantResult {
     	      this.sessionCookies = defaults.sessionCookies;
     	      this.sessionLifetime = defaults.sessionLifetime;
     	      this.sessions = defaults.sessions;
+    	      this.skipNonVerifiableCallbackUriConfirmationPrompt = defaults.skipNonVerifiableCallbackUriConfirmationPrompt;
     	      this.supportEmail = defaults.supportEmail;
     	      this.supportUrl = defaults.supportUrl;
         }
@@ -646,6 +660,14 @@ public final class GetTenantResult {
             return sessions(List.of(sessions));
         }
         @CustomType.Setter
+        public Builder skipNonVerifiableCallbackUriConfirmationPrompt(Boolean skipNonVerifiableCallbackUriConfirmationPrompt) {
+            if (skipNonVerifiableCallbackUriConfirmationPrompt == null) {
+              throw new MissingRequiredPropertyException("GetTenantResult", "skipNonVerifiableCallbackUriConfirmationPrompt");
+            }
+            this.skipNonVerifiableCallbackUriConfirmationPrompt = skipNonVerifiableCallbackUriConfirmationPrompt;
+            return this;
+        }
+        @CustomType.Setter
         public Builder supportEmail(String supportEmail) {
             if (supportEmail == null) {
               throw new MissingRequiredPropertyException("GetTenantResult", "supportEmail");
@@ -688,6 +710,7 @@ public final class GetTenantResult {
             _resultValue.sessionCookies = sessionCookies;
             _resultValue.sessionLifetime = sessionLifetime;
             _resultValue.sessions = sessions;
+            _resultValue.skipNonVerifiableCallbackUriConfirmationPrompt = skipNonVerifiableCallbackUriConfirmationPrompt;
             _resultValue.supportEmail = supportEmail;
             _resultValue.supportUrl = supportUrl;
             return _resultValue;

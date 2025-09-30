@@ -190,6 +190,11 @@ export const getOrganization: typeof import("./getOrganization").getOrganization
 export const getOrganizationOutput: typeof import("./getOrganization").getOrganizationOutput = null as any;
 utilities.lazyLoad(exports, ["getOrganization","getOrganizationOutput"], () => require("./getOrganization"));
 
+export { GetOutboundIpsResult } from "./getOutboundIps";
+export const getOutboundIps: typeof import("./getOutboundIps").getOutboundIps = null as any;
+export const getOutboundIpsOutput: typeof import("./getOutboundIps").getOutboundIpsOutput = null as any;
+utilities.lazyLoad(exports, ["getOutboundIps","getOutboundIpsOutput"], () => require("./getOutboundIps"));
+
 export { GetPagesResult } from "./getPages";
 export const getPages: typeof import("./getPages").getPages = null as any;
 export const getPagesOutput: typeof import("./getPages").getPagesOutput = null as any;
@@ -244,6 +249,11 @@ export { GetUserArgs, GetUserResult, GetUserOutputArgs } from "./getUser";
 export const getUser: typeof import("./getUser").getUser = null as any;
 export const getUserOutput: typeof import("./getUser").getUserOutput = null as any;
 utilities.lazyLoad(exports, ["getUser","getUserOutput"], () => require("./getUser"));
+
+export { GetUserAttributeProfileArgs, GetUserAttributeProfileResult, GetUserAttributeProfileOutputArgs } from "./getUserAttributeProfile";
+export const getUserAttributeProfile: typeof import("./getUserAttributeProfile").getUserAttributeProfile = null as any;
+export const getUserAttributeProfileOutput: typeof import("./getUserAttributeProfile").getUserAttributeProfileOutput = null as any;
+utilities.lazyLoad(exports, ["getUserAttributeProfile","getUserAttributeProfileOutput"], () => require("./getUserAttributeProfile"));
 
 export { GuardianArgs, GuardianState } from "./guardian";
 export type Guardian = import("./guardian").Guardian;
@@ -433,6 +443,11 @@ export type User = import("./user").User;
 export const User: typeof import("./user").User = null as any;
 utilities.lazyLoad(exports, ["User"], () => require("./user"));
 
+export { UserAttributeProfileArgs, UserAttributeProfileState } from "./userAttributeProfile";
+export type UserAttributeProfile = import("./userAttributeProfile").UserAttributeProfile;
+export const UserAttributeProfile: typeof import("./userAttributeProfile").UserAttributeProfile = null as any;
+utilities.lazyLoad(exports, ["UserAttributeProfile"], () => require("./userAttributeProfile"));
+
 export { UserPermissionArgs, UserPermissionState } from "./userPermission";
 export type UserPermission = import("./userPermission").UserPermission;
 export const UserPermission: typeof import("./userPermission").UserPermission = null as any;
@@ -583,6 +598,8 @@ const _module = {
                 return new TriggerActions(name, <any>undefined, { urn })
             case "auth0:index/user:User":
                 return new User(name, <any>undefined, { urn })
+            case "auth0:index/userAttributeProfile:UserAttributeProfile":
+                return new UserAttributeProfile(name, <any>undefined, { urn })
             case "auth0:index/userPermission:UserPermission":
                 return new UserPermission(name, <any>undefined, { urn })
             case "auth0:index/userPermissions:UserPermissions":
@@ -654,6 +671,7 @@ pulumi.runtime.registerResourceModule("auth0", "index/tokenExchangeProfile", _mo
 pulumi.runtime.registerResourceModule("auth0", "index/triggerAction", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/triggerActions", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/user", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/userAttributeProfile", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/userPermission", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/userPermissions", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/userRole", _module)

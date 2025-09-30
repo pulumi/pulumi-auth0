@@ -198,6 +198,12 @@ __all__ = [
     'TenantSessionCookie',
     'TenantSessions',
     'TriggerActionsAction',
+    'UserAttributeProfileUserAttribute',
+    'UserAttributeProfileUserAttributeOidcMapping',
+    'UserAttributeProfileUserAttributeStrategyOverride',
+    'UserAttributeProfileUserAttributeStrategyOverrideOidcMapping',
+    'UserAttributeProfileUserId',
+    'UserAttributeProfileUserIdStrategyOverride',
     'UserPermissionsPermission',
     'GetActionDependencyResult',
     'GetActionSecretResult',
@@ -339,6 +345,8 @@ __all__ = [
     'GetOrganizationConnectionResult',
     'GetOrganizationTokenQuotaResult',
     'GetOrganizationTokenQuotaClientCredentialResult',
+    'GetOutboundIpsChangelogResult',
+    'GetOutboundIpsRegionResult',
     'GetPagesChangePasswordResult',
     'GetPagesErrorResult',
     'GetPagesGuardianMfaResult',
@@ -372,6 +380,12 @@ __all__ = [
     'GetTenantOidcLogoutResult',
     'GetTenantSessionResult',
     'GetTenantSessionCookyResult',
+    'GetUserAttributeProfileUserAttributeResult',
+    'GetUserAttributeProfileUserAttributeOidcMappingResult',
+    'GetUserAttributeProfileUserAttributeStrategyOverrideResult',
+    'GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingResult',
+    'GetUserAttributeProfileUserIdResult',
+    'GetUserAttributeProfileUserIdStrategyOverrideResult',
     'GetUserPermissionResult',
 ]
 
@@ -6746,11 +6760,13 @@ class ConnectionOptionsAttributeEmail(dict):
                  identifiers: Optional[Sequence['outputs.ConnectionOptionsAttributeEmailIdentifier']] = None,
                  profile_required: Optional[_builtins.bool] = None,
                  signups: Optional[Sequence['outputs.ConnectionOptionsAttributeEmailSignup']] = None,
+                 unique: Optional[_builtins.bool] = None,
                  verification_method: Optional[_builtins.str] = None):
         """
         :param Sequence['ConnectionOptionsAttributeEmailIdentifierArgs'] identifiers: Connection Options Email Attribute Identifier
         :param _builtins.bool profile_required: Defines whether Profile is required
         :param Sequence['ConnectionOptionsAttributeEmailSignupArgs'] signups: Defines signup settings for Email attribute
+        :param _builtins.bool unique: If set to false, it allow multiple accounts with the same email address
         :param _builtins.str verification_method: Defines whether whether user will receive a link or an OTP during user signup for email verification and password reset for email verification
         """
         if identifiers is not None:
@@ -6759,6 +6775,8 @@ class ConnectionOptionsAttributeEmail(dict):
             pulumi.set(__self__, "profile_required", profile_required)
         if signups is not None:
             pulumi.set(__self__, "signups", signups)
+        if unique is not None:
+            pulumi.set(__self__, "unique", unique)
         if verification_method is not None:
             pulumi.set(__self__, "verification_method", verification_method)
 
@@ -6785,6 +6803,14 @@ class ConnectionOptionsAttributeEmail(dict):
         Defines signup settings for Email attribute
         """
         return pulumi.get(self, "signups")
+
+    @_builtins.property
+    @pulumi.getter
+    def unique(self) -> Optional[_builtins.bool]:
+        """
+        If set to false, it allow multiple accounts with the same email address
+        """
+        return pulumi.get(self, "unique")
 
     @_builtins.property
     @pulumi.getter(name="verificationMethod")
@@ -12557,6 +12583,465 @@ class TriggerActionsAction(dict):
 
 
 @pulumi.output_type
+class UserAttributeProfileUserAttribute(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "auth0Mapping":
+            suggest = "auth0_mapping"
+        elif key == "profileRequired":
+            suggest = "profile_required"
+        elif key == "oidcMapping":
+            suggest = "oidc_mapping"
+        elif key == "samlMappings":
+            suggest = "saml_mappings"
+        elif key == "scimMapping":
+            suggest = "scim_mapping"
+        elif key == "strategyOverrides":
+            suggest = "strategy_overrides"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UserAttributeProfileUserAttribute. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UserAttributeProfileUserAttribute.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UserAttributeProfileUserAttribute.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 auth0_mapping: _builtins.str,
+                 description: _builtins.str,
+                 label: _builtins.str,
+                 name: _builtins.str,
+                 profile_required: _builtins.bool,
+                 oidc_mapping: Optional['outputs.UserAttributeProfileUserAttributeOidcMapping'] = None,
+                 saml_mappings: Optional[Sequence[_builtins.str]] = None,
+                 scim_mapping: Optional[_builtins.str] = None,
+                 strategy_overrides: Optional[Sequence['outputs.UserAttributeProfileUserAttributeStrategyOverride']] = None):
+        """
+        :param _builtins.str auth0_mapping: The Auth0 mapping for the user attribute.
+        :param _builtins.str description: Description of the user attribute.
+        :param _builtins.str label: Display label for the user attribute.
+        :param _builtins.str name: Name of the user attribute.
+        :param _builtins.bool profile_required: Whether the attribute is required in the profile.
+        :param 'UserAttributeProfileUserAttributeOidcMappingArgs' oidc_mapping: The OIDC mapping configuration for the user attribute.
+        :param Sequence[_builtins.str] saml_mappings: SAML mapping override for this strategy.
+        :param _builtins.str scim_mapping: The SCIM mapping for the user attribute.
+        :param Sequence['UserAttributeProfileUserAttributeStrategyOverrideArgs'] strategy_overrides: Strategy-specific overrides for user attribute mapping.
+        """
+        pulumi.set(__self__, "auth0_mapping", auth0_mapping)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "profile_required", profile_required)
+        if oidc_mapping is not None:
+            pulumi.set(__self__, "oidc_mapping", oidc_mapping)
+        if saml_mappings is not None:
+            pulumi.set(__self__, "saml_mappings", saml_mappings)
+        if scim_mapping is not None:
+            pulumi.set(__self__, "scim_mapping", scim_mapping)
+        if strategy_overrides is not None:
+            pulumi.set(__self__, "strategy_overrides", strategy_overrides)
+
+    @_builtins.property
+    @pulumi.getter(name="auth0Mapping")
+    def auth0_mapping(self) -> _builtins.str:
+        """
+        The Auth0 mapping for the user attribute.
+        """
+        return pulumi.get(self, "auth0_mapping")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Description of the user attribute.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def label(self) -> _builtins.str:
+        """
+        Display label for the user attribute.
+        """
+        return pulumi.get(self, "label")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the user attribute.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="profileRequired")
+    def profile_required(self) -> _builtins.bool:
+        """
+        Whether the attribute is required in the profile.
+        """
+        return pulumi.get(self, "profile_required")
+
+    @_builtins.property
+    @pulumi.getter(name="oidcMapping")
+    def oidc_mapping(self) -> Optional['outputs.UserAttributeProfileUserAttributeOidcMapping']:
+        """
+        The OIDC mapping configuration for the user attribute.
+        """
+        return pulumi.get(self, "oidc_mapping")
+
+    @_builtins.property
+    @pulumi.getter(name="samlMappings")
+    def saml_mappings(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        SAML mapping override for this strategy.
+        """
+        return pulumi.get(self, "saml_mappings")
+
+    @_builtins.property
+    @pulumi.getter(name="scimMapping")
+    def scim_mapping(self) -> Optional[_builtins.str]:
+        """
+        The SCIM mapping for the user attribute.
+        """
+        return pulumi.get(self, "scim_mapping")
+
+    @_builtins.property
+    @pulumi.getter(name="strategyOverrides")
+    def strategy_overrides(self) -> Optional[Sequence['outputs.UserAttributeProfileUserAttributeStrategyOverride']]:
+        """
+        Strategy-specific overrides for user attribute mapping.
+        """
+        return pulumi.get(self, "strategy_overrides")
+
+
+@pulumi.output_type
+class UserAttributeProfileUserAttributeOidcMapping(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UserAttributeProfileUserAttributeOidcMapping. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UserAttributeProfileUserAttributeOidcMapping.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UserAttributeProfileUserAttributeOidcMapping.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 mapping: _builtins.str,
+                 display_name: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str mapping: The OIDC mapping field.
+        :param _builtins.str display_name: Display name for the OIDC mapping.
+        """
+        pulumi.set(__self__, "mapping", mapping)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+
+    @_builtins.property
+    @pulumi.getter
+    def mapping(self) -> _builtins.str:
+        """
+        The OIDC mapping field.
+        """
+        return pulumi.get(self, "mapping")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[_builtins.str]:
+        """
+        Display name for the OIDC mapping.
+        """
+        return pulumi.get(self, "display_name")
+
+
+@pulumi.output_type
+class UserAttributeProfileUserAttributeStrategyOverride(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "oidcMapping":
+            suggest = "oidc_mapping"
+        elif key == "samlMappings":
+            suggest = "saml_mappings"
+        elif key == "scimMapping":
+            suggest = "scim_mapping"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UserAttributeProfileUserAttributeStrategyOverride. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UserAttributeProfileUserAttributeStrategyOverride.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UserAttributeProfileUserAttributeStrategyOverride.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 strategy: _builtins.str,
+                 oidc_mapping: Optional['outputs.UserAttributeProfileUserAttributeStrategyOverrideOidcMapping'] = None,
+                 saml_mappings: Optional[Sequence[_builtins.str]] = None,
+                 scim_mapping: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str strategy: The strategy name (e.g., 'oidc', 'samlp', 'ad', etc.).
+        :param 'UserAttributeProfileUserAttributeStrategyOverrideOidcMappingArgs' oidc_mapping: OIDC mapping override for this strategy.
+        :param Sequence[_builtins.str] saml_mappings: SAML mapping override for this strategy.
+        :param _builtins.str scim_mapping: SCIM mapping override for this strategy.
+        """
+        pulumi.set(__self__, "strategy", strategy)
+        if oidc_mapping is not None:
+            pulumi.set(__self__, "oidc_mapping", oidc_mapping)
+        if saml_mappings is not None:
+            pulumi.set(__self__, "saml_mappings", saml_mappings)
+        if scim_mapping is not None:
+            pulumi.set(__self__, "scim_mapping", scim_mapping)
+
+    @_builtins.property
+    @pulumi.getter
+    def strategy(self) -> _builtins.str:
+        """
+        The strategy name (e.g., 'oidc', 'samlp', 'ad', etc.).
+        """
+        return pulumi.get(self, "strategy")
+
+    @_builtins.property
+    @pulumi.getter(name="oidcMapping")
+    def oidc_mapping(self) -> Optional['outputs.UserAttributeProfileUserAttributeStrategyOverrideOidcMapping']:
+        """
+        OIDC mapping override for this strategy.
+        """
+        return pulumi.get(self, "oidc_mapping")
+
+    @_builtins.property
+    @pulumi.getter(name="samlMappings")
+    def saml_mappings(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        SAML mapping override for this strategy.
+        """
+        return pulumi.get(self, "saml_mappings")
+
+    @_builtins.property
+    @pulumi.getter(name="scimMapping")
+    def scim_mapping(self) -> Optional[_builtins.str]:
+        """
+        SCIM mapping override for this strategy.
+        """
+        return pulumi.get(self, "scim_mapping")
+
+
+@pulumi.output_type
+class UserAttributeProfileUserAttributeStrategyOverrideOidcMapping(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UserAttributeProfileUserAttributeStrategyOverrideOidcMapping. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UserAttributeProfileUserAttributeStrategyOverrideOidcMapping.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UserAttributeProfileUserAttributeStrategyOverrideOidcMapping.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 mapping: _builtins.str,
+                 display_name: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str mapping: The OIDC mapping field.
+        :param _builtins.str display_name: Display name for the OIDC mapping.
+        """
+        pulumi.set(__self__, "mapping", mapping)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+
+    @_builtins.property
+    @pulumi.getter
+    def mapping(self) -> _builtins.str:
+        """
+        The OIDC mapping field.
+        """
+        return pulumi.get(self, "mapping")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[_builtins.str]:
+        """
+        Display name for the OIDC mapping.
+        """
+        return pulumi.get(self, "display_name")
+
+
+@pulumi.output_type
+class UserAttributeProfileUserId(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "oidcMapping":
+            suggest = "oidc_mapping"
+        elif key == "samlMappings":
+            suggest = "saml_mappings"
+        elif key == "scimMapping":
+            suggest = "scim_mapping"
+        elif key == "strategyOverrides":
+            suggest = "strategy_overrides"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UserAttributeProfileUserId. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UserAttributeProfileUserId.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UserAttributeProfileUserId.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 oidc_mapping: Optional[_builtins.str] = None,
+                 saml_mappings: Optional[Sequence[_builtins.str]] = None,
+                 scim_mapping: Optional[_builtins.str] = None,
+                 strategy_overrides: Optional[Sequence['outputs.UserAttributeProfileUserIdStrategyOverride']] = None):
+        """
+        :param _builtins.str oidc_mapping: The OIDC mapping for the user ID.
+        :param Sequence[_builtins.str] saml_mappings: The SAML mapping for the user ID.
+        :param _builtins.str scim_mapping: The SCIM mapping for the user ID.
+        :param Sequence['UserAttributeProfileUserIdStrategyOverrideArgs'] strategy_overrides: Strategy-specific overrides for user ID mapping.
+        """
+        if oidc_mapping is not None:
+            pulumi.set(__self__, "oidc_mapping", oidc_mapping)
+        if saml_mappings is not None:
+            pulumi.set(__self__, "saml_mappings", saml_mappings)
+        if scim_mapping is not None:
+            pulumi.set(__self__, "scim_mapping", scim_mapping)
+        if strategy_overrides is not None:
+            pulumi.set(__self__, "strategy_overrides", strategy_overrides)
+
+    @_builtins.property
+    @pulumi.getter(name="oidcMapping")
+    def oidc_mapping(self) -> Optional[_builtins.str]:
+        """
+        The OIDC mapping for the user ID.
+        """
+        return pulumi.get(self, "oidc_mapping")
+
+    @_builtins.property
+    @pulumi.getter(name="samlMappings")
+    def saml_mappings(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The SAML mapping for the user ID.
+        """
+        return pulumi.get(self, "saml_mappings")
+
+    @_builtins.property
+    @pulumi.getter(name="scimMapping")
+    def scim_mapping(self) -> Optional[_builtins.str]:
+        """
+        The SCIM mapping for the user ID.
+        """
+        return pulumi.get(self, "scim_mapping")
+
+    @_builtins.property
+    @pulumi.getter(name="strategyOverrides")
+    def strategy_overrides(self) -> Optional[Sequence['outputs.UserAttributeProfileUserIdStrategyOverride']]:
+        """
+        Strategy-specific overrides for user ID mapping.
+        """
+        return pulumi.get(self, "strategy_overrides")
+
+
+@pulumi.output_type
+class UserAttributeProfileUserIdStrategyOverride(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "oidcMapping":
+            suggest = "oidc_mapping"
+        elif key == "samlMappings":
+            suggest = "saml_mappings"
+        elif key == "scimMapping":
+            suggest = "scim_mapping"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UserAttributeProfileUserIdStrategyOverride. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UserAttributeProfileUserIdStrategyOverride.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UserAttributeProfileUserIdStrategyOverride.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 strategy: _builtins.str,
+                 oidc_mapping: Optional[_builtins.str] = None,
+                 saml_mappings: Optional[Sequence[_builtins.str]] = None,
+                 scim_mapping: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str strategy: The strategy name (e.g., 'oidc', 'samlp', 'ad', etc.).
+        :param _builtins.str oidc_mapping: OIDC mapping override for this strategy.
+        :param Sequence[_builtins.str] saml_mappings: SAML mapping override for this strategy.
+        :param _builtins.str scim_mapping: SCIM mapping override for this strategy.
+        """
+        pulumi.set(__self__, "strategy", strategy)
+        if oidc_mapping is not None:
+            pulumi.set(__self__, "oidc_mapping", oidc_mapping)
+        if saml_mappings is not None:
+            pulumi.set(__self__, "saml_mappings", saml_mappings)
+        if scim_mapping is not None:
+            pulumi.set(__self__, "scim_mapping", scim_mapping)
+
+    @_builtins.property
+    @pulumi.getter
+    def strategy(self) -> _builtins.str:
+        """
+        The strategy name (e.g., 'oidc', 'samlp', 'ad', etc.).
+        """
+        return pulumi.get(self, "strategy")
+
+    @_builtins.property
+    @pulumi.getter(name="oidcMapping")
+    def oidc_mapping(self) -> Optional[_builtins.str]:
+        """
+        OIDC mapping override for this strategy.
+        """
+        return pulumi.get(self, "oidc_mapping")
+
+    @_builtins.property
+    @pulumi.getter(name="samlMappings")
+    def saml_mappings(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        SAML mapping override for this strategy.
+        """
+        return pulumi.get(self, "saml_mappings")
+
+    @_builtins.property
+    @pulumi.getter(name="scimMapping")
+    def scim_mapping(self) -> Optional[_builtins.str]:
+        """
+        SCIM mapping override for this strategy.
+        """
+        return pulumi.get(self, "scim_mapping")
+
+
+@pulumi.output_type
 class UserPermissionsPermission(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -16286,6 +16771,7 @@ class GetClientsClientResult(dict):
                  oidc_logouts: Sequence['outputs.GetClientsClientOidcLogoutResult'],
                  resource_server_identifier: _builtins.str,
                  session_transfers: Sequence['outputs.GetClientsClientSessionTransferResult'],
+                 skip_non_verifiable_callback_uri_confirmation_prompt: _builtins.bool,
                  token_exchanges: Sequence['outputs.GetClientsClientTokenExchangeResult'],
                  token_quotas: Sequence['outputs.GetClientsClientTokenQuotaResult'],
                  web_origins: Sequence[_builtins.str],
@@ -16304,6 +16790,7 @@ class GetClientsClientResult(dict):
         :param _builtins.bool is_token_endpoint_ip_header_trusted: Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `client_secret_post` or `client_secret_basic`. Setting this property when creating the resource, will default the authentication method to `client_secret_post`. To change the authentication method to `client_secret_basic` use the `ClientCredentials` resource.
         :param Sequence['GetClientsClientOidcLogoutArgs'] oidc_logouts: Configure OIDC logout for the Client
         :param _builtins.str resource_server_identifier: The identifier of a resource server that client is associated withThis property can be sent only when app_type=resource_server.This property can not be changed, once the client is created.
+        :param _builtins.bool skip_non_verifiable_callback_uri_confirmation_prompt: Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
         :param Sequence['GetClientsClientTokenExchangeArgs'] token_exchanges: Allows configuration for token exchange
         :param Sequence['GetClientsClientTokenQuotaArgs'] token_quotas: The token quota configuration.
         :param Sequence[_builtins.str] web_origins: URLs that represent valid web origins for use with web message response mode.
@@ -16324,6 +16811,7 @@ class GetClientsClientResult(dict):
         pulumi.set(__self__, "oidc_logouts", oidc_logouts)
         pulumi.set(__self__, "resource_server_identifier", resource_server_identifier)
         pulumi.set(__self__, "session_transfers", session_transfers)
+        pulumi.set(__self__, "skip_non_verifiable_callback_uri_confirmation_prompt", skip_non_verifiable_callback_uri_confirmation_prompt)
         pulumi.set(__self__, "token_exchanges", token_exchanges)
         pulumi.set(__self__, "token_quotas", token_quotas)
         pulumi.set(__self__, "web_origins", web_origins)
@@ -16437,6 +16925,14 @@ class GetClientsClientResult(dict):
     @pulumi.getter(name="sessionTransfers")
     def session_transfers(self) -> Sequence['outputs.GetClientsClientSessionTransferResult']:
         return pulumi.get(self, "session_transfers")
+
+    @_builtins.property
+    @pulumi.getter(name="skipNonVerifiableCallbackUriConfirmationPrompt")
+    def skip_non_verifiable_callback_uri_confirmation_prompt(self) -> _builtins.bool:
+        """
+        Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+        """
+        return pulumi.get(self, "skip_non_verifiable_callback_uri_confirmation_prompt")
 
     @_builtins.property
     @pulumi.getter(name="tokenExchanges")
@@ -17992,16 +18488,19 @@ class GetConnectionOptionAttributeEmailResult(dict):
                  identifiers: Sequence['outputs.GetConnectionOptionAttributeEmailIdentifierResult'],
                  profile_required: _builtins.bool,
                  signups: Sequence['outputs.GetConnectionOptionAttributeEmailSignupResult'],
+                 unique: _builtins.bool,
                  verification_method: _builtins.str):
         """
         :param Sequence['GetConnectionOptionAttributeEmailIdentifierArgs'] identifiers: Connection Options Email Attribute Identifier
         :param _builtins.bool profile_required: Defines whether Profile is required
         :param Sequence['GetConnectionOptionAttributeEmailSignupArgs'] signups: Defines signup settings for Email attribute
+        :param _builtins.bool unique: If set to false, it allow multiple accounts with the same email address
         :param _builtins.str verification_method: Defines whether whether user will receive a link or an OTP during user signup for email verification and password reset for email verification
         """
         pulumi.set(__self__, "identifiers", identifiers)
         pulumi.set(__self__, "profile_required", profile_required)
         pulumi.set(__self__, "signups", signups)
+        pulumi.set(__self__, "unique", unique)
         pulumi.set(__self__, "verification_method", verification_method)
 
     @_builtins.property
@@ -18027,6 +18526,14 @@ class GetConnectionOptionAttributeEmailResult(dict):
         Defines signup settings for Email attribute
         """
         return pulumi.get(self, "signups")
+
+    @_builtins.property
+    @pulumi.getter
+    def unique(self) -> _builtins.bool:
+        """
+        If set to false, it allow multiple accounts with the same email address
+        """
+        return pulumi.get(self, "unique")
 
     @_builtins.property
     @pulumi.getter(name="verificationMethod")
@@ -19617,6 +20124,86 @@ class GetOrganizationTokenQuotaClientCredentialResult(dict):
 
 
 @pulumi.output_type
+class GetOutboundIpsChangelogResult(dict):
+    def __init__(__self__, *,
+                 action: _builtins.str,
+                 date: _builtins.str,
+                 ipv4_cidrs: Sequence[_builtins.str],
+                 region: _builtins.str):
+        """
+        :param _builtins.str action: Type of change (add or remove).
+        :param _builtins.str date: Date of the change (YYYY-MM-DD format).
+        :param Sequence[_builtins.str] ipv4_cidrs: List of IPv4 CIDR blocks affected by this change.
+        :param _builtins.str region: Region affected by the change.
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "date", date)
+        pulumi.set(__self__, "ipv4_cidrs", ipv4_cidrs)
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def action(self) -> _builtins.str:
+        """
+        Type of change (add or remove).
+        """
+        return pulumi.get(self, "action")
+
+    @_builtins.property
+    @pulumi.getter
+    def date(self) -> _builtins.str:
+        """
+        Date of the change (YYYY-MM-DD format).
+        """
+        return pulumi.get(self, "date")
+
+    @_builtins.property
+    @pulumi.getter(name="ipv4Cidrs")
+    def ipv4_cidrs(self) -> Sequence[_builtins.str]:
+        """
+        List of IPv4 CIDR blocks affected by this change.
+        """
+        return pulumi.get(self, "ipv4_cidrs")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region affected by the change.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetOutboundIpsRegionResult(dict):
+    def __init__(__self__, *,
+                 ipv4_cidrs: Sequence[_builtins.str],
+                 region: _builtins.str):
+        """
+        :param Sequence[_builtins.str] ipv4_cidrs: A list of IPv4 CIDR blocks for the region.
+        :param _builtins.str region: The code for the region (e.g., 'US', 'CA').
+        """
+        pulumi.set(__self__, "ipv4_cidrs", ipv4_cidrs)
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="ipv4Cidrs")
+    def ipv4_cidrs(self) -> Sequence[_builtins.str]:
+        """
+        A list of IPv4 CIDR blocks for the region.
+        """
+        return pulumi.get(self, "ipv4_cidrs")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        The code for the region (e.g., 'US', 'CA').
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
 class GetPagesChangePasswordResult(dict):
     def __init__(__self__, *,
                  enabled: _builtins.bool,
@@ -21018,6 +21605,323 @@ class GetTenantSessionCookyResult(dict):
         Behavior of tenant session cookie. Accepts either "persistent" or "non-persistent".
         """
         return pulumi.get(self, "mode")
+
+
+@pulumi.output_type
+class GetUserAttributeProfileUserAttributeResult(dict):
+    def __init__(__self__, *,
+                 auth0_mapping: _builtins.str,
+                 description: _builtins.str,
+                 label: _builtins.str,
+                 name: _builtins.str,
+                 oidc_mappings: Sequence['outputs.GetUserAttributeProfileUserAttributeOidcMappingResult'],
+                 profile_required: _builtins.bool,
+                 saml_mappings: Sequence[_builtins.str],
+                 scim_mapping: _builtins.str,
+                 strategy_overrides: Sequence['outputs.GetUserAttributeProfileUserAttributeStrategyOverrideResult']):
+        """
+        :param _builtins.str auth0_mapping: The Auth0 mapping for the user attribute.
+        :param _builtins.str description: Description of the user attribute.
+        :param _builtins.str label: Display label for the user attribute.
+        :param _builtins.str name: Name of the user attribute.
+        :param Sequence['GetUserAttributeProfileUserAttributeOidcMappingArgs'] oidc_mappings: The OIDC mapping configuration for the user attribute.
+        :param _builtins.bool profile_required: Whether the attribute is required in the profile.
+        :param Sequence[_builtins.str] saml_mappings: SAML mapping override for this strategy.
+        :param _builtins.str scim_mapping: The SCIM mapping for the user attribute.
+        :param Sequence['GetUserAttributeProfileUserAttributeStrategyOverrideArgs'] strategy_overrides: Strategy-specific overrides for user attribute mapping.
+        """
+        pulumi.set(__self__, "auth0_mapping", auth0_mapping)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "oidc_mappings", oidc_mappings)
+        pulumi.set(__self__, "profile_required", profile_required)
+        pulumi.set(__self__, "saml_mappings", saml_mappings)
+        pulumi.set(__self__, "scim_mapping", scim_mapping)
+        pulumi.set(__self__, "strategy_overrides", strategy_overrides)
+
+    @_builtins.property
+    @pulumi.getter(name="auth0Mapping")
+    def auth0_mapping(self) -> _builtins.str:
+        """
+        The Auth0 mapping for the user attribute.
+        """
+        return pulumi.get(self, "auth0_mapping")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Description of the user attribute.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def label(self) -> _builtins.str:
+        """
+        Display label for the user attribute.
+        """
+        return pulumi.get(self, "label")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the user attribute.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="oidcMappings")
+    def oidc_mappings(self) -> Sequence['outputs.GetUserAttributeProfileUserAttributeOidcMappingResult']:
+        """
+        The OIDC mapping configuration for the user attribute.
+        """
+        return pulumi.get(self, "oidc_mappings")
+
+    @_builtins.property
+    @pulumi.getter(name="profileRequired")
+    def profile_required(self) -> _builtins.bool:
+        """
+        Whether the attribute is required in the profile.
+        """
+        return pulumi.get(self, "profile_required")
+
+    @_builtins.property
+    @pulumi.getter(name="samlMappings")
+    def saml_mappings(self) -> Sequence[_builtins.str]:
+        """
+        SAML mapping override for this strategy.
+        """
+        return pulumi.get(self, "saml_mappings")
+
+    @_builtins.property
+    @pulumi.getter(name="scimMapping")
+    def scim_mapping(self) -> _builtins.str:
+        """
+        The SCIM mapping for the user attribute.
+        """
+        return pulumi.get(self, "scim_mapping")
+
+    @_builtins.property
+    @pulumi.getter(name="strategyOverrides")
+    def strategy_overrides(self) -> Sequence['outputs.GetUserAttributeProfileUserAttributeStrategyOverrideResult']:
+        """
+        Strategy-specific overrides for user attribute mapping.
+        """
+        return pulumi.get(self, "strategy_overrides")
+
+
+@pulumi.output_type
+class GetUserAttributeProfileUserAttributeOidcMappingResult(dict):
+    def __init__(__self__, *,
+                 display_name: _builtins.str,
+                 mapping: _builtins.str):
+        """
+        :param _builtins.str display_name: Display name for the OIDC mapping.
+        :param _builtins.str mapping: The OIDC mapping field.
+        """
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "mapping", mapping)
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> _builtins.str:
+        """
+        Display name for the OIDC mapping.
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def mapping(self) -> _builtins.str:
+        """
+        The OIDC mapping field.
+        """
+        return pulumi.get(self, "mapping")
+
+
+@pulumi.output_type
+class GetUserAttributeProfileUserAttributeStrategyOverrideResult(dict):
+    def __init__(__self__, *,
+                 oidc_mappings: Sequence['outputs.GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingResult'],
+                 saml_mappings: Sequence[_builtins.str],
+                 scim_mapping: _builtins.str,
+                 strategy: _builtins.str):
+        """
+        :param Sequence['GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArgs'] oidc_mappings: OIDC mapping override for this strategy.
+        :param Sequence[_builtins.str] saml_mappings: SAML mapping override for this strategy.
+        :param _builtins.str scim_mapping: SCIM mapping override for this strategy.
+        :param _builtins.str strategy: The strategy name (e.g., 'oidc', 'samlp', 'ad', etc.).
+        """
+        pulumi.set(__self__, "oidc_mappings", oidc_mappings)
+        pulumi.set(__self__, "saml_mappings", saml_mappings)
+        pulumi.set(__self__, "scim_mapping", scim_mapping)
+        pulumi.set(__self__, "strategy", strategy)
+
+    @_builtins.property
+    @pulumi.getter(name="oidcMappings")
+    def oidc_mappings(self) -> Sequence['outputs.GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingResult']:
+        """
+        OIDC mapping override for this strategy.
+        """
+        return pulumi.get(self, "oidc_mappings")
+
+    @_builtins.property
+    @pulumi.getter(name="samlMappings")
+    def saml_mappings(self) -> Sequence[_builtins.str]:
+        """
+        SAML mapping override for this strategy.
+        """
+        return pulumi.get(self, "saml_mappings")
+
+    @_builtins.property
+    @pulumi.getter(name="scimMapping")
+    def scim_mapping(self) -> _builtins.str:
+        """
+        SCIM mapping override for this strategy.
+        """
+        return pulumi.get(self, "scim_mapping")
+
+    @_builtins.property
+    @pulumi.getter
+    def strategy(self) -> _builtins.str:
+        """
+        The strategy name (e.g., 'oidc', 'samlp', 'ad', etc.).
+        """
+        return pulumi.get(self, "strategy")
+
+
+@pulumi.output_type
+class GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingResult(dict):
+    def __init__(__self__, *,
+                 display_name: _builtins.str,
+                 mapping: _builtins.str):
+        """
+        :param _builtins.str display_name: Display name for the OIDC mapping.
+        :param _builtins.str mapping: The OIDC mapping field.
+        """
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "mapping", mapping)
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> _builtins.str:
+        """
+        Display name for the OIDC mapping.
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def mapping(self) -> _builtins.str:
+        """
+        The OIDC mapping field.
+        """
+        return pulumi.get(self, "mapping")
+
+
+@pulumi.output_type
+class GetUserAttributeProfileUserIdResult(dict):
+    def __init__(__self__, *,
+                 oidc_mapping: _builtins.str,
+                 saml_mappings: Sequence[_builtins.str],
+                 scim_mapping: _builtins.str,
+                 strategy_overrides: Sequence['outputs.GetUserAttributeProfileUserIdStrategyOverrideResult']):
+        """
+        :param _builtins.str oidc_mapping: The OIDC mapping for the user ID.
+        :param Sequence[_builtins.str] saml_mappings: The SAML mapping for the user ID.
+        :param _builtins.str scim_mapping: The SCIM mapping for the user ID.
+        :param Sequence['GetUserAttributeProfileUserIdStrategyOverrideArgs'] strategy_overrides: Strategy-specific overrides for user ID mapping.
+        """
+        pulumi.set(__self__, "oidc_mapping", oidc_mapping)
+        pulumi.set(__self__, "saml_mappings", saml_mappings)
+        pulumi.set(__self__, "scim_mapping", scim_mapping)
+        pulumi.set(__self__, "strategy_overrides", strategy_overrides)
+
+    @_builtins.property
+    @pulumi.getter(name="oidcMapping")
+    def oidc_mapping(self) -> _builtins.str:
+        """
+        The OIDC mapping for the user ID.
+        """
+        return pulumi.get(self, "oidc_mapping")
+
+    @_builtins.property
+    @pulumi.getter(name="samlMappings")
+    def saml_mappings(self) -> Sequence[_builtins.str]:
+        """
+        The SAML mapping for the user ID.
+        """
+        return pulumi.get(self, "saml_mappings")
+
+    @_builtins.property
+    @pulumi.getter(name="scimMapping")
+    def scim_mapping(self) -> _builtins.str:
+        """
+        The SCIM mapping for the user ID.
+        """
+        return pulumi.get(self, "scim_mapping")
+
+    @_builtins.property
+    @pulumi.getter(name="strategyOverrides")
+    def strategy_overrides(self) -> Sequence['outputs.GetUserAttributeProfileUserIdStrategyOverrideResult']:
+        """
+        Strategy-specific overrides for user ID mapping.
+        """
+        return pulumi.get(self, "strategy_overrides")
+
+
+@pulumi.output_type
+class GetUserAttributeProfileUserIdStrategyOverrideResult(dict):
+    def __init__(__self__, *,
+                 oidc_mapping: _builtins.str,
+                 saml_mappings: Sequence[_builtins.str],
+                 scim_mapping: _builtins.str,
+                 strategy: _builtins.str):
+        """
+        :param _builtins.str oidc_mapping: OIDC mapping override for this strategy.
+        :param Sequence[_builtins.str] saml_mappings: SAML mapping override for this strategy.
+        :param _builtins.str scim_mapping: SCIM mapping override for this strategy.
+        :param _builtins.str strategy: The strategy name (e.g., 'oidc', 'samlp', 'ad', etc.).
+        """
+        pulumi.set(__self__, "oidc_mapping", oidc_mapping)
+        pulumi.set(__self__, "saml_mappings", saml_mappings)
+        pulumi.set(__self__, "scim_mapping", scim_mapping)
+        pulumi.set(__self__, "strategy", strategy)
+
+    @_builtins.property
+    @pulumi.getter(name="oidcMapping")
+    def oidc_mapping(self) -> _builtins.str:
+        """
+        OIDC mapping override for this strategy.
+        """
+        return pulumi.get(self, "oidc_mapping")
+
+    @_builtins.property
+    @pulumi.getter(name="samlMappings")
+    def saml_mappings(self) -> Sequence[_builtins.str]:
+        """
+        SAML mapping override for this strategy.
+        """
+        return pulumi.get(self, "saml_mappings")
+
+    @_builtins.property
+    @pulumi.getter(name="scimMapping")
+    def scim_mapping(self) -> _builtins.str:
+        """
+        SCIM mapping override for this strategy.
+        """
+        return pulumi.get(self, "scim_mapping")
+
+    @_builtins.property
+    @pulumi.getter
+    def strategy(self) -> _builtins.str:
+        """
+        The strategy name (e.g., 'oidc', 'samlp', 'ad', etc.).
+        """
+        return pulumi.get(self, "strategy")
 
 
 @pulumi.output_type

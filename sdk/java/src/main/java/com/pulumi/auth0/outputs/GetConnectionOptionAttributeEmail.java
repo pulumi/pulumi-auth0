@@ -30,6 +30,11 @@ public final class GetConnectionOptionAttributeEmail {
      */
     private List<GetConnectionOptionAttributeEmailSignup> signups;
     /**
+     * @return If set to false, it allow multiple accounts with the same email address
+     * 
+     */
+    private Boolean unique;
+    /**
      * @return Defines whether whether user will receive a link or an OTP during user signup for email verification and password reset for email verification
      * 
      */
@@ -58,6 +63,13 @@ public final class GetConnectionOptionAttributeEmail {
         return this.signups;
     }
     /**
+     * @return If set to false, it allow multiple accounts with the same email address
+     * 
+     */
+    public Boolean unique() {
+        return this.unique;
+    }
+    /**
      * @return Defines whether whether user will receive a link or an OTP during user signup for email verification and password reset for email verification
      * 
      */
@@ -77,6 +89,7 @@ public final class GetConnectionOptionAttributeEmail {
         private List<GetConnectionOptionAttributeEmailIdentifier> identifiers;
         private Boolean profileRequired;
         private List<GetConnectionOptionAttributeEmailSignup> signups;
+        private Boolean unique;
         private String verificationMethod;
         public Builder() {}
         public Builder(GetConnectionOptionAttributeEmail defaults) {
@@ -84,6 +97,7 @@ public final class GetConnectionOptionAttributeEmail {
     	      this.identifiers = defaults.identifiers;
     	      this.profileRequired = defaults.profileRequired;
     	      this.signups = defaults.signups;
+    	      this.unique = defaults.unique;
     	      this.verificationMethod = defaults.verificationMethod;
         }
 
@@ -118,6 +132,14 @@ public final class GetConnectionOptionAttributeEmail {
             return signups(List.of(signups));
         }
         @CustomType.Setter
+        public Builder unique(Boolean unique) {
+            if (unique == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOptionAttributeEmail", "unique");
+            }
+            this.unique = unique;
+            return this;
+        }
+        @CustomType.Setter
         public Builder verificationMethod(String verificationMethod) {
             if (verificationMethod == null) {
               throw new MissingRequiredPropertyException("GetConnectionOptionAttributeEmail", "verificationMethod");
@@ -130,6 +152,7 @@ public final class GetConnectionOptionAttributeEmail {
             _resultValue.identifiers = identifiers;
             _resultValue.profileRequired = profileRequired;
             _resultValue.signups = signups;
+            _resultValue.unique = unique;
             _resultValue.verificationMethod = verificationMethod;
             return _resultValue;
         }

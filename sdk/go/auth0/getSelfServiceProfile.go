@@ -71,7 +71,9 @@ type LookupSelfServiceProfileResult struct {
 	Name string `pulumi:"name"`
 	// The ISO 8601 formatted date the profile was updated.
 	UpdatedAt string `pulumi:"updatedAt"`
-	// This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0.
+	// The ID of the user attribute profile to use for this self-service profile. Cannot be used with user_attributes.
+	UserAttributeProfileId string `pulumi:"userAttributeProfileId"`
+	// This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0. Cannot be used with user*attribute*profile*id.
 	UserAttributes []GetSelfServiceProfileUserAttribute `pulumi:"userAttributes"`
 }
 
@@ -144,7 +146,12 @@ func (o LookupSelfServiceProfileResultOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSelfServiceProfileResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
-// This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0.
+// The ID of the user attribute profile to use for this self-service profile. Cannot be used with user_attributes.
+func (o LookupSelfServiceProfileResultOutput) UserAttributeProfileId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSelfServiceProfileResult) string { return v.UserAttributeProfileId }).(pulumi.StringOutput)
+}
+
+// This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0. Cannot be used with user*attribute*profile*id.
 func (o LookupSelfServiceProfileResultOutput) UserAttributes() GetSelfServiceProfileUserAttributeArrayOutput {
 	return o.ApplyT(func(v LookupSelfServiceProfileResult) []GetSelfServiceProfileUserAttribute { return v.UserAttributes }).(GetSelfServiceProfileUserAttributeArrayOutput)
 }

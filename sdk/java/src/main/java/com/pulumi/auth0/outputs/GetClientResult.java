@@ -230,6 +230,11 @@ public final class GetClientResult {
      */
     private List<Map<String,String>> signingKeys;
     /**
+     * @return Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+     * 
+     */
+    private Boolean skipNonVerifiableCallbackUriConfirmationPrompt;
+    /**
      * @return Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
      * 
      */
@@ -548,6 +553,13 @@ public final class GetClientResult {
         return this.signingKeys;
     }
     /**
+     * @return Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+     * 
+     */
+    public Boolean skipNonVerifiableCallbackUriConfirmationPrompt() {
+        return this.skipNonVerifiableCallbackUriConfirmationPrompt;
+    }
+    /**
      * @return Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
      * 
      */
@@ -641,6 +653,7 @@ public final class GetClientResult {
         private List<GetClientSessionTransfer> sessionTransfers;
         private List<GetClientSignedRequestObject> signedRequestObjects;
         private List<Map<String,String>> signingKeys;
+        private Boolean skipNonVerifiableCallbackUriConfirmationPrompt;
         private Boolean sso;
         private Boolean ssoDisabled;
         private String tokenEndpointAuthMethod;
@@ -692,6 +705,7 @@ public final class GetClientResult {
     	      this.sessionTransfers = defaults.sessionTransfers;
     	      this.signedRequestObjects = defaults.signedRequestObjects;
     	      this.signingKeys = defaults.signingKeys;
+    	      this.skipNonVerifiableCallbackUriConfirmationPrompt = defaults.skipNonVerifiableCallbackUriConfirmationPrompt;
     	      this.sso = defaults.sso;
     	      this.ssoDisabled = defaults.ssoDisabled;
     	      this.tokenEndpointAuthMethod = defaults.tokenEndpointAuthMethod;
@@ -1084,6 +1098,14 @@ public final class GetClientResult {
             return this;
         }
         @CustomType.Setter
+        public Builder skipNonVerifiableCallbackUriConfirmationPrompt(Boolean skipNonVerifiableCallbackUriConfirmationPrompt) {
+            if (skipNonVerifiableCallbackUriConfirmationPrompt == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "skipNonVerifiableCallbackUriConfirmationPrompt");
+            }
+            this.skipNonVerifiableCallbackUriConfirmationPrompt = skipNonVerifiableCallbackUriConfirmationPrompt;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sso(Boolean sso) {
             if (sso == null) {
               throw new MissingRequiredPropertyException("GetClientResult", "sso");
@@ -1184,6 +1206,7 @@ public final class GetClientResult {
             _resultValue.sessionTransfers = sessionTransfers;
             _resultValue.signedRequestObjects = signedRequestObjects;
             _resultValue.signingKeys = signingKeys;
+            _resultValue.skipNonVerifiableCallbackUriConfirmationPrompt = skipNonVerifiableCallbackUriConfirmationPrompt;
             _resultValue.sso = sso;
             _resultValue.ssoDisabled = ssoDisabled;
             _resultValue.tokenEndpointAuthMethod = tokenEndpointAuthMethod;

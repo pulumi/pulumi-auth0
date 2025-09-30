@@ -68,6 +68,7 @@ import javax.annotation.Nullable;
  *             .sandboxVersion("12")
  *             .enabledLocales("en")
  *             .defaultRedirectionUri("https://example.com/login")
+ *             .skipNonVerifiableCallbackUriConfirmationPrompt(true)
  *             .flags(TenantFlagsArgs.builder()
  *                 .disableClickjackProtectionHeaders(true)
  *                 .enablePublicSignupUserExistsError(true)
@@ -418,6 +419,20 @@ public class Tenant extends com.pulumi.resources.CustomResource {
      */
     public Output<TenantSessions> sessions() {
         return this.sessions;
+    }
+    /**
+     * Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+     * 
+     */
+    @Export(name="skipNonVerifiableCallbackUriConfirmationPrompt", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> skipNonVerifiableCallbackUriConfirmationPrompt;
+
+    /**
+     * @return Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+     * 
+     */
+    public Output<Optional<Boolean>> skipNonVerifiableCallbackUriConfirmationPrompt() {
+        return Codegen.optional(this.skipNonVerifiableCallbackUriConfirmationPrompt);
     }
     /**
      * Support email address for authenticating users.

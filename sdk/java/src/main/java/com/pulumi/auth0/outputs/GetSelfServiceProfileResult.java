@@ -49,7 +49,12 @@ public final class GetSelfServiceProfileResult {
      */
     private String updatedAt;
     /**
-     * @return This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0.
+     * @return The ID of the user attribute profile to use for this self-service profile. Cannot be used with user_attributes.
+     * 
+     */
+    private String userAttributeProfileId;
+    /**
+     * @return This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0. Cannot be used with user*attribute*profile*id.
      * 
      */
     private List<GetSelfServiceProfileUserAttribute> userAttributes;
@@ -105,7 +110,14 @@ public final class GetSelfServiceProfileResult {
         return this.updatedAt;
     }
     /**
-     * @return This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0.
+     * @return The ID of the user attribute profile to use for this self-service profile. Cannot be used with user_attributes.
+     * 
+     */
+    public String userAttributeProfileId() {
+        return this.userAttributeProfileId;
+    }
+    /**
+     * @return This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0. Cannot be used with user*attribute*profile*id.
      * 
      */
     public List<GetSelfServiceProfileUserAttribute> userAttributes() {
@@ -128,6 +140,7 @@ public final class GetSelfServiceProfileResult {
         private String id;
         private String name;
         private String updatedAt;
+        private String userAttributeProfileId;
         private List<GetSelfServiceProfileUserAttribute> userAttributes;
         public Builder() {}
         public Builder(GetSelfServiceProfileResult defaults) {
@@ -139,6 +152,7 @@ public final class GetSelfServiceProfileResult {
     	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.updatedAt = defaults.updatedAt;
+    	      this.userAttributeProfileId = defaults.userAttributeProfileId;
     	      this.userAttributes = defaults.userAttributes;
         }
 
@@ -205,6 +219,14 @@ public final class GetSelfServiceProfileResult {
             return this;
         }
         @CustomType.Setter
+        public Builder userAttributeProfileId(String userAttributeProfileId) {
+            if (userAttributeProfileId == null) {
+              throw new MissingRequiredPropertyException("GetSelfServiceProfileResult", "userAttributeProfileId");
+            }
+            this.userAttributeProfileId = userAttributeProfileId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder userAttributes(List<GetSelfServiceProfileUserAttribute> userAttributes) {
             if (userAttributes == null) {
               throw new MissingRequiredPropertyException("GetSelfServiceProfileResult", "userAttributes");
@@ -224,6 +246,7 @@ public final class GetSelfServiceProfileResult {
             _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.updatedAt = updatedAt;
+            _resultValue.userAttributeProfileId = userAttributeProfileId;
             _resultValue.userAttributes = userAttributes;
             return _resultValue;
         }

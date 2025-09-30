@@ -215,6 +215,10 @@ export interface GetClientResult {
      */
     readonly signingKeys: {[key: string]: string}[];
     /**
+     * Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+     */
+    readonly skipNonVerifiableCallbackUriConfirmationPrompt: boolean;
+    /**
      * Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
      */
     readonly sso: boolean;

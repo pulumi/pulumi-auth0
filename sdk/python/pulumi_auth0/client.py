@@ -57,6 +57,7 @@ class ClientArgs:
                  require_pushed_authorization_requests: Optional[pulumi.Input[_builtins.bool]] = None,
                  resource_server_identifier: Optional[pulumi.Input[_builtins.str]] = None,
                  session_transfer: Optional[pulumi.Input['ClientSessionTransferArgs']] = None,
+                 skip_non_verifiable_callback_uri_confirmation_prompt: Optional[pulumi.Input[_builtins.bool]] = None,
                  sso: Optional[pulumi.Input[_builtins.bool]] = None,
                  sso_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  token_exchange: Optional[pulumi.Input['ClientTokenExchangeArgs']] = None,
@@ -99,6 +100,7 @@ class ClientArgs:
         :param pulumi.Input[_builtins.bool] require_proof_of_possession: Makes the use of Proof-of-Possession mandatory for this client.
         :param pulumi.Input[_builtins.bool] require_pushed_authorization_requests: Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
         :param pulumi.Input[_builtins.str] resource_server_identifier: The identifier of a resource server that client is associated withThis property can be sent only when app*type=resource*server.This property can not be changed, once the client is created.
+        :param pulumi.Input[_builtins.bool] skip_non_verifiable_callback_uri_confirmation_prompt: Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
         :param pulumi.Input[_builtins.bool] sso: Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
         :param pulumi.Input[_builtins.bool] sso_disabled: Indicates whether or not SSO is disabled.
         :param pulumi.Input['ClientTokenExchangeArgs'] token_exchange: Allows configuration for token exchange
@@ -182,6 +184,8 @@ class ClientArgs:
             pulumi.set(__self__, "resource_server_identifier", resource_server_identifier)
         if session_transfer is not None:
             pulumi.set(__self__, "session_transfer", session_transfer)
+        if skip_non_verifiable_callback_uri_confirmation_prompt is not None:
+            pulumi.set(__self__, "skip_non_verifiable_callback_uri_confirmation_prompt", skip_non_verifiable_callback_uri_confirmation_prompt)
         if sso is not None:
             pulumi.set(__self__, "sso", sso)
         if sso_disabled is not None:
@@ -624,6 +628,18 @@ class ClientArgs:
         pulumi.set(self, "session_transfer", value)
 
     @_builtins.property
+    @pulumi.getter(name="skipNonVerifiableCallbackUriConfirmationPrompt")
+    def skip_non_verifiable_callback_uri_confirmation_prompt(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+        """
+        return pulumi.get(self, "skip_non_verifiable_callback_uri_confirmation_prompt")
+
+    @skip_non_verifiable_callback_uri_confirmation_prompt.setter
+    def skip_non_verifiable_callback_uri_confirmation_prompt(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "skip_non_verifiable_callback_uri_confirmation_prompt", value)
+
+    @_builtins.property
     @pulumi.getter
     def sso(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -725,6 +741,7 @@ class _ClientState:
                  resource_server_identifier: Optional[pulumi.Input[_builtins.str]] = None,
                  session_transfer: Optional[pulumi.Input['ClientSessionTransferArgs']] = None,
                  signing_keys: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
+                 skip_non_verifiable_callback_uri_confirmation_prompt: Optional[pulumi.Input[_builtins.bool]] = None,
                  sso: Optional[pulumi.Input[_builtins.bool]] = None,
                  sso_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  token_exchange: Optional[pulumi.Input['ClientTokenExchangeArgs']] = None,
@@ -769,6 +786,7 @@ class _ClientState:
         :param pulumi.Input[_builtins.bool] require_pushed_authorization_requests: Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
         :param pulumi.Input[_builtins.str] resource_server_identifier: The identifier of a resource server that client is associated withThis property can be sent only when app*type=resource*server.This property can not be changed, once the client is created.
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]] signing_keys: List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
+        :param pulumi.Input[_builtins.bool] skip_non_verifiable_callback_uri_confirmation_prompt: Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
         :param pulumi.Input[_builtins.bool] sso: Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
         :param pulumi.Input[_builtins.bool] sso_disabled: Indicates whether or not SSO is disabled.
         :param pulumi.Input['ClientTokenExchangeArgs'] token_exchange: Allows configuration for token exchange
@@ -856,6 +874,8 @@ class _ClientState:
             pulumi.set(__self__, "session_transfer", session_transfer)
         if signing_keys is not None:
             pulumi.set(__self__, "signing_keys", signing_keys)
+        if skip_non_verifiable_callback_uri_confirmation_prompt is not None:
+            pulumi.set(__self__, "skip_non_verifiable_callback_uri_confirmation_prompt", skip_non_verifiable_callback_uri_confirmation_prompt)
         if sso is not None:
             pulumi.set(__self__, "sso", sso)
         if sso_disabled is not None:
@@ -1322,6 +1342,18 @@ class _ClientState:
         pulumi.set(self, "signing_keys", value)
 
     @_builtins.property
+    @pulumi.getter(name="skipNonVerifiableCallbackUriConfirmationPrompt")
+    def skip_non_verifiable_callback_uri_confirmation_prompt(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+        """
+        return pulumi.get(self, "skip_non_verifiable_callback_uri_confirmation_prompt")
+
+    @skip_non_verifiable_callback_uri_confirmation_prompt.setter
+    def skip_non_verifiable_callback_uri_confirmation_prompt(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "skip_non_verifiable_callback_uri_confirmation_prompt", value)
+
+    @_builtins.property
     @pulumi.getter
     def sso(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -1424,6 +1456,7 @@ class Client(pulumi.CustomResource):
                  require_pushed_authorization_requests: Optional[pulumi.Input[_builtins.bool]] = None,
                  resource_server_identifier: Optional[pulumi.Input[_builtins.str]] = None,
                  session_transfer: Optional[pulumi.Input[Union['ClientSessionTransferArgs', 'ClientSessionTransferArgsDict']]] = None,
+                 skip_non_verifiable_callback_uri_confirmation_prompt: Optional[pulumi.Input[_builtins.bool]] = None,
                  sso: Optional[pulumi.Input[_builtins.bool]] = None,
                  sso_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  token_exchange: Optional[pulumi.Input[Union['ClientTokenExchangeArgs', 'ClientTokenExchangeArgsDict']]] = None,
@@ -1480,6 +1513,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] require_proof_of_possession: Makes the use of Proof-of-Possession mandatory for this client.
         :param pulumi.Input[_builtins.bool] require_pushed_authorization_requests: Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
         :param pulumi.Input[_builtins.str] resource_server_identifier: The identifier of a resource server that client is associated withThis property can be sent only when app*type=resource*server.This property can not be changed, once the client is created.
+        :param pulumi.Input[_builtins.bool] skip_non_verifiable_callback_uri_confirmation_prompt: Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
         :param pulumi.Input[_builtins.bool] sso: Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
         :param pulumi.Input[_builtins.bool] sso_disabled: Indicates whether or not SSO is disabled.
         :param pulumi.Input[Union['ClientTokenExchangeArgs', 'ClientTokenExchangeArgsDict']] token_exchange: Allows configuration for token exchange
@@ -1556,6 +1590,7 @@ class Client(pulumi.CustomResource):
                  require_pushed_authorization_requests: Optional[pulumi.Input[_builtins.bool]] = None,
                  resource_server_identifier: Optional[pulumi.Input[_builtins.str]] = None,
                  session_transfer: Optional[pulumi.Input[Union['ClientSessionTransferArgs', 'ClientSessionTransferArgsDict']]] = None,
+                 skip_non_verifiable_callback_uri_confirmation_prompt: Optional[pulumi.Input[_builtins.bool]] = None,
                  sso: Optional[pulumi.Input[_builtins.bool]] = None,
                  sso_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  token_exchange: Optional[pulumi.Input[Union['ClientTokenExchangeArgs', 'ClientTokenExchangeArgsDict']]] = None,
@@ -1608,6 +1643,7 @@ class Client(pulumi.CustomResource):
             __props__.__dict__["require_pushed_authorization_requests"] = require_pushed_authorization_requests
             __props__.__dict__["resource_server_identifier"] = resource_server_identifier
             __props__.__dict__["session_transfer"] = session_transfer
+            __props__.__dict__["skip_non_verifiable_callback_uri_confirmation_prompt"] = skip_non_verifiable_callback_uri_confirmation_prompt
             __props__.__dict__["sso"] = sso
             __props__.__dict__["sso_disabled"] = sso_disabled
             __props__.__dict__["token_exchange"] = token_exchange
@@ -1665,6 +1701,7 @@ class Client(pulumi.CustomResource):
             resource_server_identifier: Optional[pulumi.Input[_builtins.str]] = None,
             session_transfer: Optional[pulumi.Input[Union['ClientSessionTransferArgs', 'ClientSessionTransferArgsDict']]] = None,
             signing_keys: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
+            skip_non_verifiable_callback_uri_confirmation_prompt: Optional[pulumi.Input[_builtins.bool]] = None,
             sso: Optional[pulumi.Input[_builtins.bool]] = None,
             sso_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
             token_exchange: Optional[pulumi.Input[Union['ClientTokenExchangeArgs', 'ClientTokenExchangeArgsDict']]] = None,
@@ -1714,6 +1751,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] require_pushed_authorization_requests: Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
         :param pulumi.Input[_builtins.str] resource_server_identifier: The identifier of a resource server that client is associated withThis property can be sent only when app*type=resource*server.This property can not be changed, once the client is created.
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]] signing_keys: List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
+        :param pulumi.Input[_builtins.bool] skip_non_verifiable_callback_uri_confirmation_prompt: Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
         :param pulumi.Input[_builtins.bool] sso: Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
         :param pulumi.Input[_builtins.bool] sso_disabled: Indicates whether or not SSO is disabled.
         :param pulumi.Input[Union['ClientTokenExchangeArgs', 'ClientTokenExchangeArgsDict']] token_exchange: Allows configuration for token exchange
@@ -1762,6 +1800,7 @@ class Client(pulumi.CustomResource):
         __props__.__dict__["resource_server_identifier"] = resource_server_identifier
         __props__.__dict__["session_transfer"] = session_transfer
         __props__.__dict__["signing_keys"] = signing_keys
+        __props__.__dict__["skip_non_verifiable_callback_uri_confirmation_prompt"] = skip_non_verifiable_callback_uri_confirmation_prompt
         __props__.__dict__["sso"] = sso
         __props__.__dict__["sso_disabled"] = sso_disabled
         __props__.__dict__["token_exchange"] = token_exchange
@@ -2070,6 +2109,14 @@ class Client(pulumi.CustomResource):
         List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
         """
         return pulumi.get(self, "signing_keys")
+
+    @_builtins.property
+    @pulumi.getter(name="skipNonVerifiableCallbackUriConfirmationPrompt")
+    def skip_non_verifiable_callback_uri_confirmation_prompt(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+        """
+        return pulumi.get(self, "skip_non_verifiable_callback_uri_confirmation_prompt")
 
     @_builtins.property
     @pulumi.getter

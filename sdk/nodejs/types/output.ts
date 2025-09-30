@@ -1804,6 +1804,10 @@ export interface ConnectionOptionsAttributeEmail {
      */
     signups?: outputs.ConnectionOptionsAttributeEmailSignup[];
     /**
+     * If set to false, it allow multiple accounts with the same email address
+     */
+    unique?: boolean;
+    /**
      * Defines whether whether user will receive a link or an OTP during user signup for email verification and password reset for email verification
      */
     verificationMethod: string;
@@ -3772,6 +3776,10 @@ export interface GetClientsClient {
     resourceServerIdentifier: string;
     sessionTransfers: outputs.GetClientsClientSessionTransfer[];
     /**
+     * Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+     */
+    skipNonVerifiableCallbackUriConfirmationPrompt: boolean;
+    /**
      * Allows configuration for token exchange
      */
     tokenExchanges: outputs.GetClientsClientTokenExchange[];
@@ -4347,6 +4355,10 @@ export interface GetConnectionOptionAttributeEmail {
      * Defines signup settings for Email attribute
      */
     signups: outputs.GetConnectionOptionAttributeEmailSignup[];
+    /**
+     * If set to false, it allow multiple accounts with the same email address
+     */
+    unique: boolean;
     /**
      * Defines whether whether user will receive a link or an OTP during user signup for email verification and password reset for email verification
      */
@@ -4927,6 +4939,36 @@ export interface GetOrganizationTokenQuotaClientCredential {
     perHour: number;
 }
 
+export interface GetOutboundIpsChangelog {
+    /**
+     * Type of change (add or remove).
+     */
+    action: string;
+    /**
+     * Date of the change (YYYY-MM-DD format).
+     */
+    date: string;
+    /**
+     * List of IPv4 CIDR blocks affected by this change.
+     */
+    ipv4Cidrs: string[];
+    /**
+     * Region affected by the change.
+     */
+    region: string;
+}
+
+export interface GetOutboundIpsRegion {
+    /**
+     * A list of IPv4 CIDR blocks for the region.
+     */
+    ipv4Cidrs: string[];
+    /**
+     * The code for the region (e.g., 'US', 'CA').
+     */
+    region: string;
+}
+
 export interface GetPagesChangePassword {
     /**
      * Indicates whether to use the custom Reset Password HTML (`true`) or the default Auth0 page (`false`).
@@ -5449,6 +5491,124 @@ export interface GetTenantSessionCooky {
      * Behavior of tenant session cookie. Accepts either "persistent" or "non-persistent".
      */
     mode: string;
+}
+
+export interface GetUserAttributeProfileUserAttribute {
+    /**
+     * The Auth0 mapping for the user attribute.
+     */
+    auth0Mapping: string;
+    /**
+     * Description of the user attribute.
+     */
+    description: string;
+    /**
+     * Display label for the user attribute.
+     */
+    label: string;
+    /**
+     * Name of the user attribute.
+     */
+    name: string;
+    /**
+     * The OIDC mapping configuration for the user attribute.
+     */
+    oidcMappings: outputs.GetUserAttributeProfileUserAttributeOidcMapping[];
+    /**
+     * Whether the attribute is required in the profile.
+     */
+    profileRequired: boolean;
+    /**
+     * SAML mapping override for this strategy.
+     */
+    samlMappings: string[];
+    /**
+     * The SCIM mapping for the user attribute.
+     */
+    scimMapping: string;
+    /**
+     * Strategy-specific overrides for user attribute mapping.
+     */
+    strategyOverrides: outputs.GetUserAttributeProfileUserAttributeStrategyOverride[];
+}
+
+export interface GetUserAttributeProfileUserAttributeOidcMapping {
+    /**
+     * Display name for the OIDC mapping.
+     */
+    displayName: string;
+    /**
+     * The OIDC mapping field.
+     */
+    mapping: string;
+}
+
+export interface GetUserAttributeProfileUserAttributeStrategyOverride {
+    /**
+     * OIDC mapping override for this strategy.
+     */
+    oidcMappings: outputs.GetUserAttributeProfileUserAttributeStrategyOverrideOidcMapping[];
+    /**
+     * SAML mapping override for this strategy.
+     */
+    samlMappings: string[];
+    /**
+     * SCIM mapping override for this strategy.
+     */
+    scimMapping: string;
+    /**
+     * The strategy name (e.g., 'oidc', 'samlp', 'ad', etc.).
+     */
+    strategy: string;
+}
+
+export interface GetUserAttributeProfileUserAttributeStrategyOverrideOidcMapping {
+    /**
+     * Display name for the OIDC mapping.
+     */
+    displayName: string;
+    /**
+     * The OIDC mapping field.
+     */
+    mapping: string;
+}
+
+export interface GetUserAttributeProfileUserId {
+    /**
+     * The OIDC mapping for the user ID.
+     */
+    oidcMapping: string;
+    /**
+     * The SAML mapping for the user ID.
+     */
+    samlMappings: string[];
+    /**
+     * The SCIM mapping for the user ID.
+     */
+    scimMapping: string;
+    /**
+     * Strategy-specific overrides for user ID mapping.
+     */
+    strategyOverrides: outputs.GetUserAttributeProfileUserIdStrategyOverride[];
+}
+
+export interface GetUserAttributeProfileUserIdStrategyOverride {
+    /**
+     * OIDC mapping override for this strategy.
+     */
+    oidcMapping: string;
+    /**
+     * SAML mapping override for this strategy.
+     */
+    samlMappings: string[];
+    /**
+     * SCIM mapping override for this strategy.
+     */
+    scimMapping: string;
+    /**
+     * The strategy name (e.g., 'oidc', 'samlp', 'ad', etc.).
+     */
+    strategy: string;
 }
 
 export interface GetUserPermission {
@@ -6462,6 +6622,124 @@ export interface TriggerActionsAction {
      * Action ID.
      */
     id: string;
+}
+
+export interface UserAttributeProfileUserAttribute {
+    /**
+     * The Auth0 mapping for the user attribute.
+     */
+    auth0Mapping: string;
+    /**
+     * Description of the user attribute.
+     */
+    description: string;
+    /**
+     * Display label for the user attribute.
+     */
+    label: string;
+    /**
+     * Name of the user attribute.
+     */
+    name: string;
+    /**
+     * The OIDC mapping configuration for the user attribute.
+     */
+    oidcMapping: outputs.UserAttributeProfileUserAttributeOidcMapping;
+    /**
+     * Whether the attribute is required in the profile.
+     */
+    profileRequired: boolean;
+    /**
+     * SAML mapping override for this strategy.
+     */
+    samlMappings: string[];
+    /**
+     * The SCIM mapping for the user attribute.
+     */
+    scimMapping: string;
+    /**
+     * Strategy-specific overrides for user attribute mapping.
+     */
+    strategyOverrides: outputs.UserAttributeProfileUserAttributeStrategyOverride[];
+}
+
+export interface UserAttributeProfileUserAttributeOidcMapping {
+    /**
+     * Display name for the OIDC mapping.
+     */
+    displayName?: string;
+    /**
+     * The OIDC mapping field.
+     */
+    mapping: string;
+}
+
+export interface UserAttributeProfileUserAttributeStrategyOverride {
+    /**
+     * OIDC mapping override for this strategy.
+     */
+    oidcMapping: outputs.UserAttributeProfileUserAttributeStrategyOverrideOidcMapping;
+    /**
+     * SAML mapping override for this strategy.
+     */
+    samlMappings: string[];
+    /**
+     * SCIM mapping override for this strategy.
+     */
+    scimMapping: string;
+    /**
+     * The strategy name (e.g., 'oidc', 'samlp', 'ad', etc.).
+     */
+    strategy: string;
+}
+
+export interface UserAttributeProfileUserAttributeStrategyOverrideOidcMapping {
+    /**
+     * Display name for the OIDC mapping.
+     */
+    displayName?: string;
+    /**
+     * The OIDC mapping field.
+     */
+    mapping: string;
+}
+
+export interface UserAttributeProfileUserId {
+    /**
+     * The OIDC mapping for the user ID.
+     */
+    oidcMapping: string;
+    /**
+     * The SAML mapping for the user ID.
+     */
+    samlMappings: string[];
+    /**
+     * The SCIM mapping for the user ID.
+     */
+    scimMapping: string;
+    /**
+     * Strategy-specific overrides for user ID mapping.
+     */
+    strategyOverrides?: outputs.UserAttributeProfileUserIdStrategyOverride[];
+}
+
+export interface UserAttributeProfileUserIdStrategyOverride {
+    /**
+     * OIDC mapping override for this strategy.
+     */
+    oidcMapping: string;
+    /**
+     * SAML mapping override for this strategy.
+     */
+    samlMappings: string[];
+    /**
+     * SCIM mapping override for this strategy.
+     */
+    scimMapping: string;
+    /**
+     * The strategy name (e.g., 'oidc', 'samlp', 'ad', etc.).
+     */
+    strategy: string;
 }
 
 export interface UserPermissionsPermission {

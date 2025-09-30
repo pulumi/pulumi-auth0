@@ -27,7 +27,7 @@ class GetClientResult:
     """
     A collection of values returned by getClient.
     """
-    def __init__(__self__, addons=None, allowed_clients=None, allowed_logout_urls=None, allowed_origins=None, app_type=None, callbacks=None, client_aliases=None, client_authentication_methods=None, client_id=None, client_metadata=None, client_secret=None, compliance_level=None, cross_origin_auth=None, cross_origin_loc=None, custom_login_page=None, custom_login_page_on=None, default_organizations=None, description=None, encryption_key=None, form_template=None, grant_types=None, id=None, initiate_login_uri=None, is_first_party=None, is_token_endpoint_ip_header_trusted=None, jwt_configurations=None, logo_uri=None, mobiles=None, name=None, native_social_logins=None, oidc_backchannel_logout_urls=None, oidc_conformant=None, oidc_logouts=None, organization_require_behavior=None, organization_usage=None, refresh_tokens=None, require_proof_of_possession=None, require_pushed_authorization_requests=None, resource_server_identifier=None, session_transfers=None, signed_request_objects=None, signing_keys=None, sso=None, sso_disabled=None, token_endpoint_auth_method=None, token_exchanges=None, token_quotas=None, web_origins=None):
+    def __init__(__self__, addons=None, allowed_clients=None, allowed_logout_urls=None, allowed_origins=None, app_type=None, callbacks=None, client_aliases=None, client_authentication_methods=None, client_id=None, client_metadata=None, client_secret=None, compliance_level=None, cross_origin_auth=None, cross_origin_loc=None, custom_login_page=None, custom_login_page_on=None, default_organizations=None, description=None, encryption_key=None, form_template=None, grant_types=None, id=None, initiate_login_uri=None, is_first_party=None, is_token_endpoint_ip_header_trusted=None, jwt_configurations=None, logo_uri=None, mobiles=None, name=None, native_social_logins=None, oidc_backchannel_logout_urls=None, oidc_conformant=None, oidc_logouts=None, organization_require_behavior=None, organization_usage=None, refresh_tokens=None, require_proof_of_possession=None, require_pushed_authorization_requests=None, resource_server_identifier=None, session_transfers=None, signed_request_objects=None, signing_keys=None, skip_non_verifiable_callback_uri_confirmation_prompt=None, sso=None, sso_disabled=None, token_endpoint_auth_method=None, token_exchanges=None, token_quotas=None, web_origins=None):
         if addons and not isinstance(addons, list):
             raise TypeError("Expected argument 'addons' to be a list")
         pulumi.set(__self__, "addons", addons)
@@ -154,6 +154,9 @@ class GetClientResult:
         if signing_keys and not isinstance(signing_keys, list):
             raise TypeError("Expected argument 'signing_keys' to be a list")
         pulumi.set(__self__, "signing_keys", signing_keys)
+        if skip_non_verifiable_callback_uri_confirmation_prompt and not isinstance(skip_non_verifiable_callback_uri_confirmation_prompt, bool):
+            raise TypeError("Expected argument 'skip_non_verifiable_callback_uri_confirmation_prompt' to be a bool")
+        pulumi.set(__self__, "skip_non_verifiable_callback_uri_confirmation_prompt", skip_non_verifiable_callback_uri_confirmation_prompt)
         if sso and not isinstance(sso, bool):
             raise TypeError("Expected argument 'sso' to be a bool")
         pulumi.set(__self__, "sso", sso)
@@ -504,6 +507,14 @@ class GetClientResult:
         return pulumi.get(self, "signing_keys")
 
     @_builtins.property
+    @pulumi.getter(name="skipNonVerifiableCallbackUriConfirmationPrompt")
+    def skip_non_verifiable_callback_uri_confirmation_prompt(self) -> _builtins.bool:
+        """
+        Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+        """
+        return pulumi.get(self, "skip_non_verifiable_callback_uri_confirmation_prompt")
+
+    @_builtins.property
     @pulumi.getter
     def sso(self) -> _builtins.bool:
         """
@@ -600,6 +611,7 @@ class AwaitableGetClientResult(GetClientResult):
             session_transfers=self.session_transfers,
             signed_request_objects=self.signed_request_objects,
             signing_keys=self.signing_keys,
+            skip_non_verifiable_callback_uri_confirmation_prompt=self.skip_non_verifiable_callback_uri_confirmation_prompt,
             sso=self.sso,
             sso_disabled=self.sso_disabled,
             token_endpoint_auth_method=self.token_endpoint_auth_method,
@@ -679,6 +691,7 @@ def get_client(client_id: Optional[_builtins.str] = None,
         session_transfers=pulumi.get(__ret__, 'session_transfers'),
         signed_request_objects=pulumi.get(__ret__, 'signed_request_objects'),
         signing_keys=pulumi.get(__ret__, 'signing_keys'),
+        skip_non_verifiable_callback_uri_confirmation_prompt=pulumi.get(__ret__, 'skip_non_verifiable_callback_uri_confirmation_prompt'),
         sso=pulumi.get(__ret__, 'sso'),
         sso_disabled=pulumi.get(__ret__, 'sso_disabled'),
         token_endpoint_auth_method=pulumi.get(__ret__, 'token_endpoint_auth_method'),
@@ -755,6 +768,7 @@ def get_client_output(client_id: Optional[pulumi.Input[Optional[_builtins.str]]]
         session_transfers=pulumi.get(__response__, 'session_transfers'),
         signed_request_objects=pulumi.get(__response__, 'signed_request_objects'),
         signing_keys=pulumi.get(__response__, 'signing_keys'),
+        skip_non_verifiable_callback_uri_confirmation_prompt=pulumi.get(__response__, 'skip_non_verifiable_callback_uri_confirmation_prompt'),
         sso=pulumi.get(__response__, 'sso'),
         sso_disabled=pulumi.get(__response__, 'sso_disabled'),
         token_endpoint_auth_method=pulumi.get(__response__, 'token_endpoint_auth_method'),

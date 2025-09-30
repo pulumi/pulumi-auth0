@@ -137,6 +137,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &TriggerActions{}
 	case "auth0:index/user:User":
 		r = &User{}
+	case "auth0:index/userAttributeProfile:UserAttributeProfile":
+		r = &UserAttributeProfile{}
 	case "auth0:index/userPermission:UserPermission":
 		r = &UserPermission{}
 	case "auth0:index/userPermissions:UserPermissions":
@@ -464,6 +466,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"auth0",
 		"index/user",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"auth0",
+		"index/userAttributeProfile",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

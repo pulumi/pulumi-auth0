@@ -43,6 +43,12 @@ namespace Pulumi.Auth0.Inputs
         }
 
         /// <summary>
+        /// If set to false, it allow multiple accounts with the same email address
+        /// </summary>
+        [Input("unique")]
+        public Input<bool>? Unique { get; set; }
+
+        /// <summary>
         /// Defines whether whether user will receive a link or an OTP during user signup for email verification and password reset for email verification
         /// </summary>
         [Input("verificationMethod")]

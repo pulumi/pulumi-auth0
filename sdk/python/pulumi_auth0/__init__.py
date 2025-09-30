@@ -43,6 +43,7 @@ from .get_flow_vault_connection import *
 from .get_form import *
 from .get_network_acl import *
 from .get_organization import *
+from .get_outbound_ips import *
 from .get_pages import *
 from .get_phone_provider import *
 from .get_prompt_screen_partials import *
@@ -54,6 +55,7 @@ from .get_signing_keys import *
 from .get_tenant import *
 from .get_token_exchange_profile import *
 from .get_user import *
+from .get_user_attribute_profile import *
 from .guardian import *
 from .hook import *
 from .log_stream import *
@@ -92,6 +94,7 @@ from .token_exchange_profile import *
 from .trigger_action import *
 from .trigger_actions import *
 from .user import *
+from .user_attribute_profile import *
 from .user_permission import *
 from .user_permissions import *
 from .user_role import *
@@ -571,6 +574,14 @@ _utilities.register(
   "fqn": "pulumi_auth0",
   "classes": {
    "auth0:index/user:User": "User"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/userAttributeProfile",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/userAttributeProfile:UserAttributeProfile": "UserAttributeProfile"
   }
  },
  {
