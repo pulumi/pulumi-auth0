@@ -12,6 +12,37 @@ namespace Pulumi.Auth0
     /// <summary>
     /// This resource allows you to manage branding within your Auth0 tenant. Auth0 can be customized with a look and feel that aligns with your organization's brand requirements and user expectations.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myBrand = new Auth0.Branding("my_brand", new()
+    ///     {
+    ///         LogoUrl = "https://mycompany.org/logo.png",
+    ///         Colors = new Auth0.Inputs.BrandingColorsArgs
+    ///         {
+    ///             Primary = "#0059d6",
+    ///             PageBackground = "#000000",
+    ///         },
+    ///         UniversalLogin = new Auth0.Inputs.BrandingUniversalLoginArgs
+    ///         {
+    ///             Body = Std.Index.File.Invoke(new()
+    ///             {
+    ///                 Input = "universal_login_body.html",
+    ///             }).Result,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// As this is not a resource identifiable by an ID within the Auth0 Management API,

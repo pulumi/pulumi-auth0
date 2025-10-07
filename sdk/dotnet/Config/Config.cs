@@ -34,7 +34,7 @@ namespace Pulumi.Auth0
 
         private static readonly __Value<string?> _apiToken = new __Value<string?>(() => __config.Get("apiToken"));
         /// <summary>
-        /// Your Auth0 [management api access token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from the `AUTH0_API_TOKEN` environment variable. It can be used instead of `client_id` + `client_secret`. If both are specified, `api_token` will be used over `client_id` + `client_secret` fields.
+        /// Your Auth0 [management api access token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from the `AUTH0_API_TOKEN` environment variable. It can be used instead of `ClientId` + `ClientSecret`. If both are specified, `ApiToken` will be used over `ClientId` + `ClientSecret` fields.
         /// </summary>
         public static string? ApiToken
         {
@@ -104,7 +104,7 @@ namespace Pulumi.Auth0
 
         private static readonly __Value<string?> _customDomainHeader = new __Value<string?>(() => __config.Get("customDomainHeader"));
         /// <summary>
-        /// When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting overrides all resource specific `custom_domain_header` value
+        /// When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting overrides all resource specific `CustomDomainHeader` value
         /// </summary>
         public static string? CustomDomainHeader
         {

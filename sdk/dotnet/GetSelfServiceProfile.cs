@@ -12,7 +12,7 @@ namespace Pulumi.Auth0
     public static class GetSelfServiceProfile
     {
         /// <summary>
-        /// Data source to retrieve a specific Auth0 Self-Service Profile by `id`
+        /// Data source to retrieve a specific Auth0 Self-Service Profile by `Id`
         /// 
         /// ## Example Usage
         /// 
@@ -37,7 +37,7 @@ namespace Pulumi.Auth0
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSelfServiceProfileResult>("auth0:index/getSelfServiceProfile:getSelfServiceProfile", args ?? new GetSelfServiceProfileArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source to retrieve a specific Auth0 Self-Service Profile by `id`
+        /// Data source to retrieve a specific Auth0 Self-Service Profile by `Id`
         /// 
         /// ## Example Usage
         /// 
@@ -62,7 +62,7 @@ namespace Pulumi.Auth0
             => global::Pulumi.Deployment.Instance.Invoke<GetSelfServiceProfileResult>("auth0:index/getSelfServiceProfile:getSelfServiceProfile", args ?? new GetSelfServiceProfileInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source to retrieve a specific Auth0 Self-Service Profile by `id`
+        /// Data source to retrieve a specific Auth0 Self-Service Profile by `Id`
         /// 
         /// ## Example Usage
         /// 

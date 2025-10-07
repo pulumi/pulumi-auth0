@@ -16,7 +16,7 @@ public final class GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCre
      */
     private String createdAt;
     /**
-     * @return Credential type. Supported types: `x509_cert`.
+     * @return Credential type. Supported types: `x509Cert`.
      * 
      */
     private String credentialType;
@@ -45,7 +45,7 @@ public final class GetClientClientAuthenticationMethodSelfSignedTlsClientAuthCre
         return this.createdAt;
     }
     /**
-     * @return Credential type. Supported types: `x509_cert`.
+     * @return Credential type. Supported types: `x509Cert`.
      * 
      */
     public String credentialType() {

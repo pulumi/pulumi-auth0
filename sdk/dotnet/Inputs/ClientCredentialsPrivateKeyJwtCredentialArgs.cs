@@ -25,7 +25,7 @@ namespace Pulumi.Auth0.Inputs
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// Credential type. Supported types: `public_key`.
+        /// Credential type. Supported types: `PublicKey`.
         /// </summary>
         [Input("credentialType", required: true)]
         public Input<string> CredentialType { get; set; } = null!;
@@ -55,7 +55,7 @@ namespace Pulumi.Auth0.Inputs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Parse expiry from x509 certificate. If true, attempts to parse the expiry date from the provided PEM. If also the `expires_at` is set the credential expiry will be set to the explicit `expires_at` value.
+        /// Parse expiry from x509 certificate. If true, attempts to parse the expiry date from the provided PEM. If also the `ExpiresAt` is set the credential expiry will be set to the explicit `ExpiresAt` value.
         /// </summary>
         [Input("parseExpiryFromCert")]
         public Input<bool>? ParseExpiryFromCert { get; set; }

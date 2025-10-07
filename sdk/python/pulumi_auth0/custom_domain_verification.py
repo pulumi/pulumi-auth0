@@ -102,6 +102,28 @@ class CustomDomainVerification(pulumi.CustomResource):
         """
         With Auth0, you can use a custom domain to maintain a consistent user experience. This is a three-step process; you must configure the custom domain in Auth0, then create a DNS record for the domain, then verify the DNS record in Auth0. This resource allows for automating the verification part of the process.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+        import pulumi_digitalocean as digitalocean
+        import pulumi_std as std
+
+        # Example of a custom domain managed through DigitalOcean and verified using this resource.
+        my_custom_domain = auth0.CustomDomain("my_custom_domain",
+            domain="login.example.com",
+            type="auth0_managed_certs")
+        my_domain_name_record = digitalocean.index.Record("my_domain_name_record",
+            domain=example.com,
+            type=std.index.upper(input=my_custom_domain.verifications[0].methods[0].name).result,
+            name=std.index.trimsuffix(input=my_custom_domain.verifications[0].methods[0].domain,
+                suffix=.example.com).result,
+            value=my_custom_domain.verifications[0].methods[0].record)
+        my_custom_domain_verification = auth0.CustomDomainVerification("my_custom_domain_verification", custom_domain_id=my_custom_domain.id,
+        opts = pulumi.ResourceOptions(depends_on=[my_domain_name_record]))
+        ```
+
         ## Import
 
         You can import this resource using the custom domain ID.
@@ -124,6 +146,28 @@ class CustomDomainVerification(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         With Auth0, you can use a custom domain to maintain a consistent user experience. This is a three-step process; you must configure the custom domain in Auth0, then create a DNS record for the domain, then verify the DNS record in Auth0. This resource allows for automating the verification part of the process.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+        import pulumi_digitalocean as digitalocean
+        import pulumi_std as std
+
+        # Example of a custom domain managed through DigitalOcean and verified using this resource.
+        my_custom_domain = auth0.CustomDomain("my_custom_domain",
+            domain="login.example.com",
+            type="auth0_managed_certs")
+        my_domain_name_record = digitalocean.index.Record("my_domain_name_record",
+            domain=example.com,
+            type=std.index.upper(input=my_custom_domain.verifications[0].methods[0].name).result,
+            name=std.index.trimsuffix(input=my_custom_domain.verifications[0].methods[0].domain,
+                suffix=.example.com).result,
+            value=my_custom_domain.verifications[0].methods[0].record)
+        my_custom_domain_verification = auth0.CustomDomainVerification("my_custom_domain_verification", custom_domain_id=my_custom_domain.id,
+        opts = pulumi.ResourceOptions(depends_on=[my_domain_name_record]))
+        ```
 
         ## Import
 

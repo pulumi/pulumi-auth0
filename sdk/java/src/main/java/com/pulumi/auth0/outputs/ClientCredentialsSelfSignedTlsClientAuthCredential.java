@@ -18,7 +18,7 @@ public final class ClientCredentialsSelfSignedTlsClientAuthCredential {
      */
     private @Nullable String createdAt;
     /**
-     * @return Credential type. Supported types: `x509_cert`.
+     * @return Credential type. Supported types: `x509Cert`.
      * 
      */
     private @Nullable String credentialType;
@@ -62,7 +62,7 @@ public final class ClientCredentialsSelfSignedTlsClientAuthCredential {
         return Optional.ofNullable(this.createdAt);
     }
     /**
-     * @return Credential type. Supported types: `x509_cert`.
+     * @return Credential type. Supported types: `x509Cert`.
      * 
      */
     public Optional<String> credentialType() {

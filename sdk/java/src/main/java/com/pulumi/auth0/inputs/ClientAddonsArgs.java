@@ -434,14 +434,14 @@ public final class ClientAddonsArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * WS-Fed (WIF) addon indicator. Actual configuration is stored in `callback` and `client_aliases` properties on the client.
+     * WS-Fed (WIF) addon indicator. Actual configuration is stored in `callback` and `clientAliases` properties on the client.
      * 
      */
     @Import(name="wsfed")
     private @Nullable Output<ClientAddonsWsfedArgs> wsfed;
 
     /**
-     * @return WS-Fed (WIF) addon indicator. Actual configuration is stored in `callback` and `client_aliases` properties on the client.
+     * @return WS-Fed (WIF) addon indicator. Actual configuration is stored in `callback` and `clientAliases` properties on the client.
      * 
      */
     public Optional<Output<ClientAddonsWsfedArgs>> wsfed() {
@@ -1077,7 +1077,7 @@ public final class ClientAddonsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param wsfed WS-Fed (WIF) addon indicator. Actual configuration is stored in `callback` and `client_aliases` properties on the client.
+         * @param wsfed WS-Fed (WIF) addon indicator. Actual configuration is stored in `callback` and `clientAliases` properties on the client.
          * 
          * @return builder
          * 
@@ -1088,7 +1088,7 @@ public final class ClientAddonsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param wsfed WS-Fed (WIF) addon indicator. Actual configuration is stored in `callback` and `client_aliases` properties on the client.
+         * @param wsfed WS-Fed (WIF) addon indicator. Actual configuration is stored in `callback` and `clientAliases` properties on the client.
          * 
          * @return builder
          * 

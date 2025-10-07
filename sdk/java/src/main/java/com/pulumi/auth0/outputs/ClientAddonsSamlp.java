@@ -72,7 +72,7 @@ public final class ClientAddonsSamlp {
      */
     private @Nullable ClientAddonsSamlpLogout logout;
     /**
-     * @return Indicates whether or not to add additional identity information in the token, such as the provider used and the `access_token`, if available. Defaults to `true`.
+     * @return Indicates whether or not to add additional identity information in the token, such as the provider used and the `accessToken`, if available. Defaults to `true`.
      * 
      */
     private @Nullable Boolean mapIdentities;
@@ -206,7 +206,7 @@ public final class ClientAddonsSamlp {
         return Optional.ofNullable(this.logout);
     }
     /**
-     * @return Indicates whether or not to add additional identity information in the token, such as the provider used and the `access_token`, if available. Defaults to `true`.
+     * @return Indicates whether or not to add additional identity information in the token, such as the provider used and the `accessToken`, if available. Defaults to `true`.
      * 
      */
     public Optional<Boolean> mapIdentities() {

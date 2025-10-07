@@ -14,15 +14,15 @@ namespace Pulumi.Auth0.Outputs
     public sealed class ConnectionOptionsGatewayAuthentication
     {
         /// <summary>
-        /// Audience claim for the HS256 token sent to `gateway_url`.
+        /// Audience claim for the HS256 token sent to `GatewayUrl`.
         /// </summary>
         public readonly string? Audience;
         /// <summary>
-        /// Authentication method (default is `bearer` token).
+        /// Authentication method (default is `Bearer` token).
         /// </summary>
         public readonly string? Method;
         /// <summary>
-        /// Secret used to sign the HS256 token sent to `gateway_url`.
+        /// Secret used to sign the HS256 token sent to `GatewayUrl`.
         /// </summary>
         public readonly string? Secret;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly bool? SecretBase64Encoded;
         /// <summary>
-        /// Subject claim for the HS256 token sent to `gateway_url`.
+        /// Subject claim for the HS256 token sent to `GatewayUrl`.
         /// </summary>
         public readonly string? Subject;
 

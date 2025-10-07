@@ -170,7 +170,7 @@ public final class ClientAddons {
      */
     private @Nullable ClientAddonsWams wams;
     /**
-     * @return WS-Fed (WIF) addon indicator. Actual configuration is stored in `callback` and `client_aliases` properties on the client.
+     * @return WS-Fed (WIF) addon indicator. Actual configuration is stored in `callback` and `clientAliases` properties on the client.
      * 
      */
     private @Nullable ClientAddonsWsfed wsfed;
@@ -369,7 +369,7 @@ public final class ClientAddons {
         return Optional.ofNullable(this.wams);
     }
     /**
-     * @return WS-Fed (WIF) addon indicator. Actual configuration is stored in `callback` and `client_aliases` properties on the client.
+     * @return WS-Fed (WIF) addon indicator. Actual configuration is stored in `callback` and `clientAliases` properties on the client.
      * 
      */
     public Optional<ClientAddonsWsfed> wsfed() {

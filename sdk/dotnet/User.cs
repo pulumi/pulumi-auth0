@@ -165,7 +165,7 @@ namespace Pulumi.Auth0
         public Output<string?> Username { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether the user will receive a verification email after creation. Overrides behavior of `email_verified` parameter.
+        /// Indicates whether the user will receive a verification email after creation. Overrides behavior of `EmailVerified` parameter.
         /// </summary>
         [Output("verifyEmail")]
         public Output<bool?> VerifyEmail { get; private set; } = null!;
@@ -333,7 +333,7 @@ namespace Pulumi.Auth0
         public Input<string>? Username { get; set; }
 
         /// <summary>
-        /// Indicates whether the user will receive a verification email after creation. Overrides behavior of `email_verified` parameter.
+        /// Indicates whether the user will receive a verification email after creation. Overrides behavior of `EmailVerified` parameter.
         /// </summary>
         [Input("verifyEmail")]
         public Input<bool>? VerifyEmail { get; set; }
@@ -459,7 +459,7 @@ namespace Pulumi.Auth0
         public Input<string>? Username { get; set; }
 
         /// <summary>
-        /// Indicates whether the user will receive a verification email after creation. Overrides behavior of `email_verified` parameter.
+        /// Indicates whether the user will receive a verification email after creation. Overrides behavior of `EmailVerified` parameter.
         /// </summary>
         [Input("verifyEmail")]
         public Input<bool>? VerifyEmail { get; set; }

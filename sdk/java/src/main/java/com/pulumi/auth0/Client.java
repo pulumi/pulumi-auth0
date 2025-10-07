@@ -100,14 +100,14 @@ public class Client extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.allowedOrigins);
     }
     /**
-     * Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+     * Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
      * 
      */
     @Export(name="appType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> appType;
 
     /**
-     * @return Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+     * @return Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
      * 
      */
     public Output<Optional<String>> appType() {
@@ -170,14 +170,14 @@ public class Client extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.clientMetadata);
     }
     /**
-     * Defines the compliance level for this client, which may restrict it&#39;s capabilities. Can be one of `none`, `fapi1_adv_pkj_par`, `fapi1_adv_mtls_par`.
+     * Defines the compliance level for this client, which may restrict it&#39;s capabilities. Can be one of `none`, `fapi1AdvPkjPar`, `fapi1AdvMtlsPar`.
      * 
      */
     @Export(name="complianceLevel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> complianceLevel;
 
     /**
-     * @return Defines the compliance level for this client, which may restrict it&#39;s capabilities. Can be one of `none`, `fapi1_adv_pkj_par`, `fapi1_adv_mtls_par`.
+     * @return Defines the compliance level for this client, which may restrict it&#39;s capabilities. Can be one of `none`, `fapi1AdvPkjPar`, `fapi1AdvMtlsPar`.
      * 
      */
     public Output<Optional<String>> complianceLevel() {
@@ -338,14 +338,14 @@ public class Client extends com.pulumi.resources.CustomResource {
         return this.isFirstParty;
     }
     /**
-     * Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `client_secret_post` or `client_secret_basic`. Setting this property when creating the resource, will default the authentication method to `client_secret_post`. To change the authentication method to `client_secret_basic` use the `auth0.ClientCredentials` resource.
+     * Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `clientSecretPost` or `clientSecretBasic`. Setting this property when creating the resource, will default the authentication method to `clientSecretPost`. To change the authentication method to `clientSecretBasic` use the `auth0.ClientCredentials` resource.
      * 
      */
     @Export(name="isTokenEndpointIpHeaderTrusted", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> isTokenEndpointIpHeaderTrusted;
 
     /**
-     * @return Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `client_secret_post` or `client_secret_basic`. Setting this property when creating the resource, will default the authentication method to `client_secret_post`. To change the authentication method to `client_secret_basic` use the `auth0.ClientCredentials` resource.
+     * @return Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `clientSecretPost` or `clientSecretBasic`. Setting this property when creating the resource, will default the authentication method to `clientSecretPost`. To change the authentication method to `clientSecretBasic` use the `auth0.ClientCredentials` resource.
      * 
      */
     public Output<Boolean> isTokenEndpointIpHeaderTrusted() {
@@ -408,14 +408,14 @@ public class Client extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `app_type`.
+     * Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `appType`.
      * 
      */
     @Export(name="nativeSocialLogin", refs={ClientNativeSocialLogin.class}, tree="[0]")
     private Output<ClientNativeSocialLogin> nativeSocialLogin;
 
     /**
-     * @return Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `app_type`.
+     * @return Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `appType`.
      * 
      */
     public Output<ClientNativeSocialLogin> nativeSocialLogin() {
@@ -425,10 +425,10 @@ public class Client extends com.pulumi.resources.CustomResource {
      * Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
      * 
      * @deprecated
-     * This resource is deprecated and will be removed in the next major version. Please use `oidc_logout` for managing OIDC backchannel logout URLs.
+     * This resource is deprecated and will be removed in the next major version. Please use `oidcLogout` for managing OIDC backchannel logout URLs.
      * 
      */
-    @Deprecated /* This resource is deprecated and will be removed in the next major version. Please use `oidc_logout` for managing OIDC backchannel logout URLs. */
+    @Deprecated /* This resource is deprecated and will be removed in the next major version. Please use `oidcLogout` for managing OIDC backchannel logout URLs. */
     @Export(name="oidcBackchannelLogoutUrls", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> oidcBackchannelLogoutUrls;
 
@@ -468,14 +468,14 @@ public class Client extends com.pulumi.resources.CustomResource {
         return this.oidcLogout;
     }
     /**
-     * Defines how to proceed during an authentication transaction when `organization_usage = &#34;require&#34;`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.
+     * Defines how to proceed during an authentication transaction when `organizationUsage = &#34;require&#34;`. Can be `noPrompt` (default), `preLoginPrompt` or  `postLoginPrompt`.
      * 
      */
     @Export(name="organizationRequireBehavior", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> organizationRequireBehavior;
 
     /**
-     * @return Defines how to proceed during an authentication transaction when `organization_usage = &#34;require&#34;`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.
+     * @return Defines how to proceed during an authentication transaction when `organizationUsage = &#34;require&#34;`. Can be `noPrompt` (default), `preLoginPrompt` or  `postLoginPrompt`.
      * 
      */
     public Output<Optional<String>> organizationRequireBehavior() {

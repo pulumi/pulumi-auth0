@@ -18,7 +18,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string CreatedAt;
         /// <summary>
-        /// Credential type. Supported types: `x509_cert`.
+        /// Credential type. Supported types: `X509Cert`.
         /// </summary>
         public readonly string CredentialType;
         /// <summary>

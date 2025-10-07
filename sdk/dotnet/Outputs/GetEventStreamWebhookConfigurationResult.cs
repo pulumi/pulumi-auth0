@@ -14,7 +14,7 @@ namespace Pulumi.Auth0.Outputs
     public sealed class GetEventStreamWebhookConfigurationResult
     {
         /// <summary>
-        /// Authorization details for the webhook endpoint. Supports `basic` authentication using `username` and `password`, or `bearer` authentication using a `token`. The appropriate fields must be set based on the chosen method.
+        /// Authorization details for the webhook endpoint. Supports `Basic` authentication using `Username` and `Password`, or `Bearer` authentication using a `Token`. The appropriate fields must be set based on the chosen method.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetEventStreamWebhookConfigurationWebhookAuthorizationResult> WebhookAuthorizations;
         /// <summary>

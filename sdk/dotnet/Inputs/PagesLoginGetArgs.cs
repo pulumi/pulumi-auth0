@@ -13,7 +13,7 @@ namespace Pulumi.Auth0.Inputs
     public sealed class PagesLoginGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Indicates whether to use the custom Login page HTML (`true`) or the default Auth0 page (`false`).
+        /// Indicates whether to use the custom Login page HTML (`True`) or the default Auth0 page (`False`).
         /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;

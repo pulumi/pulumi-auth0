@@ -12,7 +12,7 @@ namespace Pulumi.Auth0
     public static class GetConnectionScimConfiguration
     {
         /// <summary>
-        /// Data source to retrieve a SCIM configuration for an Auth0 connection by `connection_id`.
+        /// Data source to retrieve a SCIM configuration for an Auth0 connection by `ConnectionId`.
         /// 
         /// ## Example Usage
         /// 
@@ -58,7 +58,7 @@ namespace Pulumi.Auth0
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetConnectionScimConfigurationResult>("auth0:index/getConnectionScimConfiguration:getConnectionScimConfiguration", args ?? new GetConnectionScimConfigurationArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source to retrieve a SCIM configuration for an Auth0 connection by `connection_id`.
+        /// Data source to retrieve a SCIM configuration for an Auth0 connection by `ConnectionId`.
         /// 
         /// ## Example Usage
         /// 
@@ -104,7 +104,7 @@ namespace Pulumi.Auth0
             => global::Pulumi.Deployment.Instance.Invoke<GetConnectionScimConfigurationResult>("auth0:index/getConnectionScimConfiguration:getConnectionScimConfiguration", args ?? new GetConnectionScimConfigurationInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source to retrieve a SCIM configuration for an Auth0 connection by `connection_id`.
+        /// Data source to retrieve a SCIM configuration for an Auth0 connection by `ConnectionId`.
         /// 
         /// ## Example Usage
         /// 

@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetClientAddonSapApi {
     /**
-     * @return If activated in the OAuth 2.0 client configuration (transaction ` SOAUTH2) the SAML attribute  `client_id`must be set and equal the`client_id` form parameter of the access token request.
+     * @return If activated in the OAuth 2.0 client configuration (transaction ` SOAUTH2) the SAML attribute  `clientId`must be set and equal the`clientId` form parameter of the access token request.
      * 
      */
     private String clientId;
@@ -43,7 +43,7 @@ public final class GetClientAddonSapApi {
 
     private GetClientAddonSapApi() {}
     /**
-     * @return If activated in the OAuth 2.0 client configuration (transaction ` SOAUTH2) the SAML attribute  `client_id`must be set and equal the`client_id` form parameter of the access token request.
+     * @return If activated in the OAuth 2.0 client configuration (transaction ` SOAUTH2) the SAML attribute  `clientId`must be set and equal the`clientId` form parameter of the access token request.
      * 
      */
     public String clientId() {

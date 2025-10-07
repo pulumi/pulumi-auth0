@@ -121,7 +121,7 @@ public final class GetUserResult {
      */
     private String username;
     /**
-     * @return Indicates whether the user will receive a verification email after creation. Overrides behavior of `email_verified` parameter.
+     * @return Indicates whether the user will receive a verification email after creation. Overrides behavior of `emailVerified` parameter.
      * 
      */
     private Boolean verifyEmail;
@@ -275,7 +275,7 @@ public final class GetUserResult {
         return this.username;
     }
     /**
-     * @return Indicates whether the user will receive a verification email after creation. Overrides behavior of `email_verified` parameter.
+     * @return Indicates whether the user will receive a verification email after creation. Overrides behavior of `emailVerified` parameter.
      * 
      */
     public Boolean verifyEmail() {

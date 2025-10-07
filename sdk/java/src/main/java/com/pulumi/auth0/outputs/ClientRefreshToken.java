@@ -32,7 +32,7 @@ public final class ClientRefreshToken {
      */
     private @Nullable Boolean infiniteIdleTokenLifetime;
     /**
-     * @return Whether refresh tokens should remain valid indefinitely. If false, `token_lifetime` should also be set.
+     * @return Whether refresh tokens should remain valid indefinitely. If false, `tokenLifetime` should also be set.
      * 
      */
     private @Nullable Boolean infiniteTokenLifetime;
@@ -80,7 +80,7 @@ public final class ClientRefreshToken {
         return Optional.ofNullable(this.infiniteIdleTokenLifetime);
     }
     /**
-     * @return Whether refresh tokens should remain valid indefinitely. If false, `token_lifetime` should also be set.
+     * @return Whether refresh tokens should remain valid indefinitely. If false, `tokenLifetime` should also be set.
      * 
      */
     public Optional<Boolean> infiniteTokenLifetime() {
