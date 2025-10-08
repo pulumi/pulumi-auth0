@@ -15,14 +15,14 @@ public final class GetOrganizationPlainArgs extends com.pulumi.resources.InvokeA
     public static final GetOrganizationPlainArgs Empty = new GetOrganizationPlainArgs();
 
     /**
-     * The name of the organization. If not provided, `organization_id` must be set. For performance, it is advised to use the `organization_id` as a lookup if possible.
+     * The name of the organization. If not provided, `organizationId` must be set. For performance, it is advised to use the `organizationId` as a lookup if possible.
      * 
      */
     @Import(name="name")
     private @Nullable String name;
 
     /**
-     * @return The name of the organization. If not provided, `organization_id` must be set. For performance, it is advised to use the `organization_id` as a lookup if possible.
+     * @return The name of the organization. If not provided, `organizationId` must be set. For performance, it is advised to use the `organizationId` as a lookup if possible.
      * 
      */
     public Optional<String> name() {
@@ -70,7 +70,7 @@ public final class GetOrganizationPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param name The name of the organization. If not provided, `organization_id` must be set. For performance, it is advised to use the `organization_id` as a lookup if possible.
+         * @param name The name of the organization. If not provided, `organizationId` must be set. For performance, it is advised to use the `organizationId` as a lookup if possible.
          * 
          * @return builder
          * 

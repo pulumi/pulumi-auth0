@@ -43,7 +43,7 @@ namespace Pulumi.Auth0.Inputs
         public Input<Inputs.BrandingThemeFontsLinksGetArgs> Links { get; set; } = null!;
 
         /// <summary>
-        /// Links style. Defaults to `normal`.
+        /// Links style. Defaults to `Normal`.
         /// </summary>
         [Input("linksStyle")]
         public Input<string>? LinksStyle { get; set; }

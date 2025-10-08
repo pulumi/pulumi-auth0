@@ -18,7 +18,7 @@ public final class ClientCredentialsTlsClientAuthCredential {
      */
     private @Nullable String createdAt;
     /**
-     * @return Credential type. Supported types: `cert_subject_dn`.
+     * @return Credential type. Supported types: `certSubjectDn`.
      * 
      */
     private String credentialType;
@@ -33,7 +33,7 @@ public final class ClientCredentialsTlsClientAuthCredential {
      */
     private @Nullable String name;
     /**
-     * @return PEM-formatted X509 certificate. Must be JSON escaped. Mutually exlusive with `subject_dn` property.
+     * @return PEM-formatted X509 certificate. Must be JSON escaped. Mutually exlusive with `subjectDn` property.
      * 
      */
     private @Nullable String pem;
@@ -57,7 +57,7 @@ public final class ClientCredentialsTlsClientAuthCredential {
         return Optional.ofNullable(this.createdAt);
     }
     /**
-     * @return Credential type. Supported types: `cert_subject_dn`.
+     * @return Credential type. Supported types: `certSubjectDn`.
      * 
      */
     public String credentialType() {
@@ -78,7 +78,7 @@ public final class ClientCredentialsTlsClientAuthCredential {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return PEM-formatted X509 certificate. Must be JSON escaped. Mutually exlusive with `subject_dn` property.
+     * @return PEM-formatted X509 certificate. Must be JSON escaped. Mutually exlusive with `subjectDn` property.
      * 
      */
     public Optional<String> pem() {

@@ -23,7 +23,7 @@ public final class PromptScreenRendererFilters {
      */
     private @Nullable String domains;
     /**
-     * @return Type of match to apply. Options: `includes_any`, `excludes_any`.
+     * @return Type of match to apply. Options: `includesAny`, `excludesAny`.
      * 
      */
     private String matchType;
@@ -49,7 +49,7 @@ public final class PromptScreenRendererFilters {
         return Optional.ofNullable(this.domains);
     }
     /**
-     * @return Type of match to apply. Options: `includes_any`, `excludes_any`.
+     * @return Type of match to apply. Options: `includesAny`, `excludesAny`.
      * 
      */
     public String matchType() {

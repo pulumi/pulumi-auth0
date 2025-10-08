@@ -24,7 +24,7 @@ public final class ClientAddonsLayer {
      */
     private String keyId;
     /**
-     * @return Name of the property used as the unique user ID in Layer. If not specified `user_id` is used.
+     * @return Name of the property used as the unique user ID in Layer. If not specified `userId` is used.
      * 
      */
     private @Nullable String principal;
@@ -55,7 +55,7 @@ public final class ClientAddonsLayer {
         return this.keyId;
     }
     /**
-     * @return Name of the property used as the unique user ID in Layer. If not specified `user_id` is used.
+     * @return Name of the property used as the unique user ID in Layer. If not specified `userId` is used.
      * 
      */
     public Optional<String> principal() {

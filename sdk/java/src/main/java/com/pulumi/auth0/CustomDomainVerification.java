@@ -17,6 +17,63 @@ import javax.annotation.Nullable;
 /**
  * With Auth0, you can use a custom domain to maintain a consistent user experience. This is a three-step process; you must configure the custom domain in Auth0, then create a DNS record for the domain, then verify the DNS record in Auth0. This resource allows for automating the verification part of the process.
  * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.auth0.CustomDomain;
+ * import com.pulumi.auth0.CustomDomainArgs;
+ * import com.pulumi.digitalocean.record;
+ * import com.pulumi.digitalocean.recordArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.auth0.CustomDomainVerification;
+ * import com.pulumi.auth0.CustomDomainVerificationArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         // Example of a custom domain managed through DigitalOcean and verified using this resource.
+ *         var myCustomDomain = new CustomDomain("myCustomDomain", CustomDomainArgs.builder()
+ *             .domain("login.example.com")
+ *             .type("auth0_managed_certs")
+ *             .build());
+ * 
+ *         var myDomainNameRecord = new Record("myDomainNameRecord", RecordArgs.builder()
+ *             .domain("example.com")
+ *             .type(StdFunctions.upper(Map.of("input", myCustomDomain.verifications()[0].methods()[0].name())).result())
+ *             .name(StdFunctions.trimsuffix(Map.ofEntries(
+ *                 Map.entry("input", myCustomDomain.verifications()[0].methods()[0].domain()),
+ *                 Map.entry("suffix", ".example.com")
+ *             )).result())
+ *             .value(myCustomDomain.verifications()[0].methods()[0].record())
+ *             .build());
+ * 
+ *         var myCustomDomainVerification = new CustomDomainVerification("myCustomDomainVerification", CustomDomainVerificationArgs.builder()
+ *             .customDomainId(myCustomDomain.id())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(myDomainNameRecord)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * You can import this resource using the custom domain ID.

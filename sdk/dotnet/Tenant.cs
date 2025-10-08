@@ -119,7 +119,7 @@ namespace Pulumi.Auth0
         public Output<string> DefaultAudience { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
+        /// Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `Ad`, `Auth0`, `Email`, `Sms`, `Waad`, and `Adfs`.
         /// </summary>
         [Output("defaultDirectory")]
         public Output<string> DefaultDirectory { get; private set; } = null!;
@@ -203,7 +203,7 @@ namespace Pulumi.Auth0
         public Output<string> SandboxVersion { get; private set; } = null!;
 
         /// <summary>
-        /// Alters behavior of tenant's session cookie. Contains a single `mode` property.
+        /// Alters behavior of tenant's session cookie. Contains a single `Mode` property.
         /// </summary>
         [Output("sessionCookie")]
         public Output<Outputs.TenantSessionCookie> SessionCookie { get; private set; } = null!;
@@ -327,7 +327,7 @@ namespace Pulumi.Auth0
         public Input<string>? DefaultAudience { get; set; }
 
         /// <summary>
-        /// Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
+        /// Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `Ad`, `Auth0`, `Email`, `Sms`, `Waad`, and `Adfs`.
         /// </summary>
         [Input("defaultDirectory")]
         public Input<string>? DefaultDirectory { get; set; }
@@ -417,7 +417,7 @@ namespace Pulumi.Auth0
         public Input<string>? SandboxVersion { get; set; }
 
         /// <summary>
-        /// Alters behavior of tenant's session cookie. Contains a single `mode` property.
+        /// Alters behavior of tenant's session cookie. Contains a single `Mode` property.
         /// </summary>
         [Input("sessionCookie")]
         public Input<Inputs.TenantSessionCookieArgs>? SessionCookie { get; set; }
@@ -503,7 +503,7 @@ namespace Pulumi.Auth0
         public Input<string>? DefaultAudience { get; set; }
 
         /// <summary>
-        /// Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
+        /// Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `Ad`, `Auth0`, `Email`, `Sms`, `Waad`, and `Adfs`.
         /// </summary>
         [Input("defaultDirectory")]
         public Input<string>? DefaultDirectory { get; set; }
@@ -593,7 +593,7 @@ namespace Pulumi.Auth0
         public Input<string>? SandboxVersion { get; set; }
 
         /// <summary>
-        /// Alters behavior of tenant's session cookie. Contains a single `mode` property.
+        /// Alters behavior of tenant's session cookie. Contains a single `Mode` property.
         /// </summary>
         [Input("sessionCookie")]
         public Input<Inputs.TenantSessionCookieGetArgs>? SessionCookie { get; set; }

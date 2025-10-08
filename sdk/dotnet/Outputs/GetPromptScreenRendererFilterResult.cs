@@ -22,7 +22,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string Domains;
         /// <summary>
-        /// Type of match to apply. Options: `includes_any`, `excludes_any`.
+        /// Type of match to apply. Options: `IncludesAny`, `ExcludesAny`.
         /// </summary>
         public readonly string MatchType;
         /// <summary>

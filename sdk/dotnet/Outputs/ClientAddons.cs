@@ -118,7 +118,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly Outputs.ClientAddonsWams? Wams;
         /// <summary>
-        /// WS-Fed (WIF) addon indicator. Actual configuration is stored in `callback` and `client_aliases` properties on the client.
+        /// WS-Fed (WIF) addon indicator. Actual configuration is stored in `Callback` and `ClientAliases` properties on the client.
         /// </summary>
         public readonly Outputs.ClientAddonsWsfed? Wsfed;
         /// <summary>

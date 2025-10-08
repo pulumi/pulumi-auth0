@@ -53,7 +53,7 @@ namespace Pulumi.Auth0.Inputs
         public Input<string>? TokenEndpointUrl { get; set; }
 
         /// <summary>
-        /// Name of the property in the user object that maps to a SAP username, for example `email`.
+        /// Name of the property in the user object that maps to a SAP username, for example `Email`.
         /// </summary>
         [Input("usernameAttribute")]
         public Input<string>? UsernameAttribute { get; set; }

@@ -48,14 +48,14 @@ public final class ConnectionScimConfigurationState extends com.pulumi.resources
     }
 
     /**
-     * Mapping between Auth0 attributes and SCIM attributes. If `user_id_attribute` is set, `mapping` must be set as well.
+     * Mapping between Auth0 attributes and SCIM attributes. If `userIdAttribute` is set, `mapping` must be set as well.
      * 
      */
     @Import(name="mappings")
     private @Nullable Output<List<ConnectionScimConfigurationMappingArgs>> mappings;
 
     /**
-     * @return Mapping between Auth0 attributes and SCIM attributes. If `user_id_attribute` is set, `mapping` must be set as well.
+     * @return Mapping between Auth0 attributes and SCIM attributes. If `userIdAttribute` is set, `mapping` must be set as well.
      * 
      */
     public Optional<Output<List<ConnectionScimConfigurationMappingArgs>>> mappings() {
@@ -93,14 +93,14 @@ public final class ConnectionScimConfigurationState extends com.pulumi.resources
     }
 
     /**
-     * User ID attribute for generation unique of user ids. If `user_id_attribute` is set, `mapping` must be set as well. Defaults to `userName` for SAML connections and `externalId` for OIDC connections.
+     * User ID attribute for generation unique of user ids. If `userIdAttribute` is set, `mapping` must be set as well. Defaults to `userName` for SAML connections and `externalId` for OIDC connections.
      * 
      */
     @Import(name="userIdAttribute")
     private @Nullable Output<String> userIdAttribute;
 
     /**
-     * @return User ID attribute for generation unique of user ids. If `user_id_attribute` is set, `mapping` must be set as well. Defaults to `userName` for SAML connections and `externalId` for OIDC connections.
+     * @return User ID attribute for generation unique of user ids. If `userIdAttribute` is set, `mapping` must be set as well. Defaults to `userName` for SAML connections and `externalId` for OIDC connections.
      * 
      */
     public Optional<Output<String>> userIdAttribute() {
@@ -179,7 +179,7 @@ public final class ConnectionScimConfigurationState extends com.pulumi.resources
         }
 
         /**
-         * @param mappings Mapping between Auth0 attributes and SCIM attributes. If `user_id_attribute` is set, `mapping` must be set as well.
+         * @param mappings Mapping between Auth0 attributes and SCIM attributes. If `userIdAttribute` is set, `mapping` must be set as well.
          * 
          * @return builder
          * 
@@ -190,7 +190,7 @@ public final class ConnectionScimConfigurationState extends com.pulumi.resources
         }
 
         /**
-         * @param mappings Mapping between Auth0 attributes and SCIM attributes. If `user_id_attribute` is set, `mapping` must be set as well.
+         * @param mappings Mapping between Auth0 attributes and SCIM attributes. If `userIdAttribute` is set, `mapping` must be set as well.
          * 
          * @return builder
          * 
@@ -200,7 +200,7 @@ public final class ConnectionScimConfigurationState extends com.pulumi.resources
         }
 
         /**
-         * @param mappings Mapping between Auth0 attributes and SCIM attributes. If `user_id_attribute` is set, `mapping` must be set as well.
+         * @param mappings Mapping between Auth0 attributes and SCIM attributes. If `userIdAttribute` is set, `mapping` must be set as well.
          * 
          * @return builder
          * 
@@ -252,7 +252,7 @@ public final class ConnectionScimConfigurationState extends com.pulumi.resources
         }
 
         /**
-         * @param userIdAttribute User ID attribute for generation unique of user ids. If `user_id_attribute` is set, `mapping` must be set as well. Defaults to `userName` for SAML connections and `externalId` for OIDC connections.
+         * @param userIdAttribute User ID attribute for generation unique of user ids. If `userIdAttribute` is set, `mapping` must be set as well. Defaults to `userName` for SAML connections and `externalId` for OIDC connections.
          * 
          * @return builder
          * 
@@ -263,7 +263,7 @@ public final class ConnectionScimConfigurationState extends com.pulumi.resources
         }
 
         /**
-         * @param userIdAttribute User ID attribute for generation unique of user ids. If `user_id_attribute` is set, `mapping` must be set as well. Defaults to `userName` for SAML connections and `externalId` for OIDC connections.
+         * @param userIdAttribute User ID attribute for generation unique of user ids. If `userIdAttribute` is set, `mapping` must be set as well. Defaults to `userName` for SAML connections and `externalId` for OIDC connections.
          * 
          * @return builder
          * 

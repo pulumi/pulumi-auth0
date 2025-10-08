@@ -37,7 +37,7 @@ namespace Pulumi.Auth0.Inputs
         public Input<string>? AzurePartnerTopic { get; set; }
 
         /// <summary>
-        /// The Azure region code. Possible values: `australiacentral`, `australiaeast`, `australiasoutheast`, `brazilsouth`, `canadacentral`, `canadaeast`, `centralindia`, `centralus`, `eastasia`, `eastus`, `eastus2`, `francecentral`, `germanywestcentral`, `japaneast`, `japanwest`, `koreacentral`, `koreasouth`, `northcentralus`, `northeurope`, `norwayeast`, `southafricanorth`, `southcentralus`, `southeastasia`, `southindia`, `switzerlandnorth`, `uaenorth`, `uksouth`, `ukwest`, `westcentralus`, `westeurope`, `westindia`, `westus`, `westus2`.
+        /// The Azure region code. Possible values: `Australiacentral`, `Australiaeast`, `Australiasoutheast`, `Brazilsouth`, `Canadacentral`, `Canadaeast`, `Centralindia`, `Centralus`, `Eastasia`, `Eastus`, `Eastus2`, `Francecentral`, `Germanywestcentral`, `Japaneast`, `Japanwest`, `Koreacentral`, `Koreasouth`, `Northcentralus`, `Northeurope`, `Norwayeast`, `Southafricanorth`, `Southcentralus`, `Southeastasia`, `Southindia`, `Switzerlandnorth`, `Uaenorth`, `Uksouth`, `Ukwest`, `Westcentralus`, `Westeurope`, `Westindia`, `Westus`, `Westus2`.
         /// </summary>
         [Input("azureRegion")]
         public Input<string>? AzureRegion { get; set; }
@@ -71,7 +71,7 @@ namespace Pulumi.Auth0.Inputs
         }
 
         /// <summary>
-        /// The Datadog region. Possible values: `us`, `eu`, `us3`, `us5`.
+        /// The Datadog region. Possible values: `Us`, `Eu`, `Us3`, `Us5`.
         /// </summary>
         [Input("datadogRegion")]
         public Input<string>? DatadogRegion { get; set; }

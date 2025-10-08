@@ -209,6 +209,24 @@ class Branding(pulumi.CustomResource):
         """
         This resource allows you to manage branding within your Auth0 tenant. Auth0 can be customized with a look and feel that aligns with your organization's brand requirements and user expectations.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+        import pulumi_std as std
+
+        my_brand = auth0.Branding("my_brand",
+            logo_url="https://mycompany.org/logo.png",
+            colors={
+                "primary": "#0059d6",
+                "page_background": "#000000",
+            },
+            universal_login={
+                "body": std.index.file(input="universal_login_body.html")["result"],
+            })
+        ```
+
         ## Import
 
         As this is not a resource identifiable by an ID within the Auth0 Management API,
@@ -239,6 +257,24 @@ class Branding(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         This resource allows you to manage branding within your Auth0 tenant. Auth0 can be customized with a look and feel that aligns with your organization's brand requirements and user expectations.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+        import pulumi_std as std
+
+        my_brand = auth0.Branding("my_brand",
+            logo_url="https://mycompany.org/logo.png",
+            colors={
+                "primary": "#0059d6",
+                "page_background": "#000000",
+            },
+            universal_login={
+                "body": std.index.file(input="universal_login_body.html")["result"],
+            })
+        ```
 
         ## Import
 

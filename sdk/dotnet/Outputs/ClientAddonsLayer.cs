@@ -22,7 +22,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string KeyId;
         /// <summary>
-        /// Name of the property used as the unique user ID in Layer. If not specified `user_id` is used.
+        /// Name of the property used as the unique user ID in Layer. If not specified `UserId` is used.
         /// </summary>
         public readonly string? Principal;
         /// <summary>

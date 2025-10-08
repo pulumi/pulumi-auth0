@@ -28,7 +28,7 @@ public final class NetworkAclRuleAction {
      */
     private @Nullable Boolean log;
     /**
-     * @return If true, redirects the request. When using redirect action, redirect_uri must also be specified.
+     * @return If true, redirects the request. When using redirect action, redirectUri must also be specified.
      * 
      */
     private @Nullable Boolean redirect;
@@ -61,7 +61,7 @@ public final class NetworkAclRuleAction {
         return Optional.ofNullable(this.log);
     }
     /**
-     * @return If true, redirects the request. When using redirect action, redirect_uri must also be specified.
+     * @return If true, redirects the request. When using redirect action, redirectUri must also be specified.
      * 
      */
     public Optional<Boolean> redirect() {

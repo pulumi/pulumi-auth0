@@ -14,7 +14,7 @@ namespace Pulumi.Auth0.Outputs
     public sealed class BrandingThemeWidget
     {
         /// <summary>
-        /// Header text alignment. Available options: `center`, `left`, `right`. Defaults to `center`.
+        /// Header text alignment. Available options: `Center`, `Left`, `Right`. Defaults to `Center`.
         /// </summary>
         public readonly string? HeaderTextAlignment;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly double? LogoHeight;
         /// <summary>
-        /// Logo position. Available options: `center`, `left`, `right`, `none`. Defaults to `center`.
+        /// Logo position. Available options: `Center`, `Left`, `Right`, `None`. Defaults to `Center`.
         /// </summary>
         public readonly string? LogoPosition;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string? LogoUrl;
         /// <summary>
-        /// Social buttons layout. Available options: `bottom`, `top`. Defaults to `bottom`.
+        /// Social buttons layout. Available options: `Bottom`, `Top`. Defaults to `Bottom`.
         /// </summary>
         public readonly string? SocialButtonsLayout;
 

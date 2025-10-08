@@ -322,14 +322,14 @@ public class User extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.username);
     }
     /**
-     * Indicates whether the user will receive a verification email after creation. Overrides behavior of `email_verified` parameter.
+     * Indicates whether the user will receive a verification email after creation. Overrides behavior of `emailVerified` parameter.
      * 
      */
     @Export(name="verifyEmail", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> verifyEmail;
 
     /**
-     * @return Indicates whether the user will receive a verification email after creation. Overrides behavior of `email_verified` parameter.
+     * @return Indicates whether the user will receive a verification email after creation. Overrides behavior of `emailVerified` parameter.
      * 
      */
     public Output<Optional<Boolean>> verifyEmail() {
