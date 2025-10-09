@@ -121,14 +121,14 @@ public final class EncryptionKeyManagerCustomerProvidedRootKeyArgs extends com.p
     }
 
     /**
-     * The base64-encoded customer provided root key, wrapped using the `public_wrapping_key`. This can be removed after the wrapped key has been applied.
+     * The base64-encoded customer provided root key, wrapped using the `publicWrappingKey`. This can be removed after the wrapped key has been applied.
      * 
      */
     @Import(name="wrappedKey")
     private @Nullable Output<String> wrappedKey;
 
     /**
-     * @return The base64-encoded customer provided root key, wrapped using the `public_wrapping_key`. This can be removed after the wrapped key has been applied.
+     * @return The base64-encoded customer provided root key, wrapped using the `publicWrappingKey`. This can be removed after the wrapped key has been applied.
      * 
      */
     public Optional<Output<String>> wrappedKey() {
@@ -330,7 +330,7 @@ public final class EncryptionKeyManagerCustomerProvidedRootKeyArgs extends com.p
         }
 
         /**
-         * @param wrappedKey The base64-encoded customer provided root key, wrapped using the `public_wrapping_key`. This can be removed after the wrapped key has been applied.
+         * @param wrappedKey The base64-encoded customer provided root key, wrapped using the `publicWrappingKey`. This can be removed after the wrapped key has been applied.
          * 
          * @return builder
          * 
@@ -341,7 +341,7 @@ public final class EncryptionKeyManagerCustomerProvidedRootKeyArgs extends com.p
         }
 
         /**
-         * @param wrappedKey The base64-encoded customer provided root key, wrapped using the `public_wrapping_key`. This can be removed after the wrapped key has been applied.
+         * @param wrappedKey The base64-encoded customer provided root key, wrapped using the `publicWrappingKey`. This can be removed after the wrapped key has been applied.
          * 
          * @return builder
          * 

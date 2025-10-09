@@ -69,7 +69,7 @@ namespace Pulumi.Auth0
     public partial class OrganizationConnection : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// When `true`, all users that log in with this connection will be automatically granted membership in the organization. When `false`, users must be granted membership in the organization before logging in with this connection.
+        /// When `True`, all users that log in with this connection will be automatically granted membership in the organization. When `False`, users must be granted membership in the organization before logging in with this connection.
         /// </summary>
         [Output("assignMembershipOnLogin")]
         public Output<bool?> AssignMembershipOnLogin { get; private set; } = null!;
@@ -81,7 +81,7 @@ namespace Pulumi.Auth0
         public Output<string> ConnectionId { get; private set; } = null!;
 
         /// <summary>
-        /// Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `is_signup_enabled` can only be `true` if `assign_membership_on_login` is `true`.
+        /// Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `IsSignupEnabled` can only be `True` if `AssignMembershipOnLogin` is `True`.
         /// </summary>
         [Output("isSignupEnabled")]
         public Output<bool?> IsSignupEnabled { get; private set; } = null!;
@@ -157,7 +157,7 @@ namespace Pulumi.Auth0
     public sealed class OrganizationConnectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// When `true`, all users that log in with this connection will be automatically granted membership in the organization. When `false`, users must be granted membership in the organization before logging in with this connection.
+        /// When `True`, all users that log in with this connection will be automatically granted membership in the organization. When `False`, users must be granted membership in the organization before logging in with this connection.
         /// </summary>
         [Input("assignMembershipOnLogin")]
         public Input<bool>? AssignMembershipOnLogin { get; set; }
@@ -169,7 +169,7 @@ namespace Pulumi.Auth0
         public Input<string> ConnectionId { get; set; } = null!;
 
         /// <summary>
-        /// Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `is_signup_enabled` can only be `true` if `assign_membership_on_login` is `true`.
+        /// Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `IsSignupEnabled` can only be `True` if `AssignMembershipOnLogin` is `True`.
         /// </summary>
         [Input("isSignupEnabled")]
         public Input<bool>? IsSignupEnabled { get; set; }
@@ -195,7 +195,7 @@ namespace Pulumi.Auth0
     public sealed class OrganizationConnectionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// When `true`, all users that log in with this connection will be automatically granted membership in the organization. When `false`, users must be granted membership in the organization before logging in with this connection.
+        /// When `True`, all users that log in with this connection will be automatically granted membership in the organization. When `False`, users must be granted membership in the organization before logging in with this connection.
         /// </summary>
         [Input("assignMembershipOnLogin")]
         public Input<bool>? AssignMembershipOnLogin { get; set; }
@@ -207,7 +207,7 @@ namespace Pulumi.Auth0
         public Input<string>? ConnectionId { get; set; }
 
         /// <summary>
-        /// Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `is_signup_enabled` can only be `true` if `assign_membership_on_login` is `true`.
+        /// Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `IsSignupEnabled` can only be `True` if `AssignMembershipOnLogin` is `True`.
         /// </summary>
         [Input("isSignupEnabled")]
         public Input<bool>? IsSignupEnabled { get; set; }

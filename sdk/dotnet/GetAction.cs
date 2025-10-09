@@ -12,19 +12,19 @@ namespace Pulumi.Auth0
     public static class GetAction
     {
         /// <summary>
-        /// Data source to retrieve a specific Auth0 action by `name`.
+        /// Data source to retrieve a specific Auth0 action by `Name`.
         /// </summary>
         public static Task<GetActionResult> InvokeAsync(GetActionArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetActionResult>("auth0:index/getAction:getAction", args ?? new GetActionArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source to retrieve a specific Auth0 action by `name`.
+        /// Data source to retrieve a specific Auth0 action by `Name`.
         /// </summary>
         public static Output<GetActionResult> Invoke(GetActionInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetActionResult>("auth0:index/getAction:getAction", args ?? new GetActionInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source to retrieve a specific Auth0 action by `name`.
+        /// Data source to retrieve a specific Auth0 action by `Name`.
         /// </summary>
         public static Output<GetActionResult> Invoke(GetActionInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetActionResult>("auth0:index/getAction:getAction", args ?? new GetActionInvokeArgs(), options.WithDefaults());
@@ -34,13 +34,13 @@ namespace Pulumi.Auth0
     public sealed class GetActionArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of the action. If not provided, `name` must be set.
+        /// The ID of the action. If not provided, `Name` must be set.
         /// </summary>
         [Input("id")]
         public string? Id { get; set; }
 
         /// <summary>
-        /// The name of the action. If not provided, `id` must be set.
+        /// The name of the action. If not provided, `Id` must be set.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
@@ -54,13 +54,13 @@ namespace Pulumi.Auth0
     public sealed class GetActionInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of the action. If not provided, `name` must be set.
+        /// The ID of the action. If not provided, `Name` must be set.
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// The name of the action. If not provided, `id` must be set.
+        /// The name of the action. If not provided, `Id` must be set.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -88,15 +88,15 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly bool Deploy;
         /// <summary>
-        /// The ID of the action. If not provided, `name` must be set.
+        /// The ID of the action. If not provided, `Name` must be set.
         /// </summary>
         public readonly string? Id;
         /// <summary>
-        /// The name of the action. If not provided, `id` must be set.
+        /// The name of the action. If not provided, `Id` must be set.
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// The Node runtime. Possible values are: `node12`, `node16` (not recommended), `node18`, `node22`
+        /// The Node runtime. Possible values are: `Node12`, `Node16` (not recommended), `Node18`, `Node22`
         /// </summary>
         public readonly string Runtime;
         /// <summary>
@@ -108,7 +108,7 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly ImmutableArray<Outputs.GetActionSupportedTriggerResult> SupportedTriggers;
         /// <summary>
-        /// Version ID of the action. This value is available if `deploy` is set to true.
+        /// Version ID of the action. This value is available if `Deploy` is set to true.
         /// </summary>
         public readonly string VersionId;
 

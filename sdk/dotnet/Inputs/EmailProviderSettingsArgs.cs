@@ -13,13 +13,13 @@ namespace Pulumi.Auth0.Inputs
     public sealed class EmailProviderSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Headers settings for the `smtp` email provider.
+        /// Headers settings for the `Smtp` email provider.
         /// </summary>
         [Input("headers")]
         public Input<Inputs.EmailProviderSettingsHeadersArgs>? Headers { get; set; }
 
         /// <summary>
-        /// Message settings for the `mandrill` or `ses` email provider.
+        /// Message settings for the `Mandrill` or `Ses` email provider.
         /// </summary>
         [Input("message")]
         public Input<Inputs.EmailProviderSettingsMessageArgs>? Message { get; set; }

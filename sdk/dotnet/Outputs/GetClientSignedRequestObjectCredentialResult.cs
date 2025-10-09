@@ -22,7 +22,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string CreatedAt;
         /// <summary>
-        /// Credential type. Supported types: `public_key`.
+        /// Credential type. Supported types: `PublicKey`.
         /// </summary>
         public readonly string CredentialType;
         /// <summary>

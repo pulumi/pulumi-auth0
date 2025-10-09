@@ -14,12 +14,12 @@ namespace Pulumi.Auth0.Outputs
     public sealed class LogStreamPiiConfig
     {
         /// <summary>
-        /// The algorithm to use for PII handling. Currently, only `xxhash` is supported.
+        /// The algorithm to use for PII handling. Currently, only `Xxhash` is supported.
         /// </summary>
         public readonly string? Algorithm;
         public readonly ImmutableArray<string> LogFields;
         /// <summary>
-        /// The method to use for PII handling. Options are `hash` or `mask`.
+        /// The method to use for PII handling. Options are `Hash` or `Mask`.
         /// </summary>
         public readonly string? Method;
 

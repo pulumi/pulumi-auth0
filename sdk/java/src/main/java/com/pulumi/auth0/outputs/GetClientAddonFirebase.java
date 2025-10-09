@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetClientAddonFirebase {
     /**
-     * @return ID of the Service Account you have created (shown as `client_email` in the generated JSON file, SDK v3+ tokens only).
+     * @return ID of the Service Account you have created (shown as `clientEmail` in the generated JSON file, SDK v3+ tokens only).
      * 
      */
     private String clientEmail;
@@ -39,7 +39,7 @@ public final class GetClientAddonFirebase {
 
     private GetClientAddonFirebase() {}
     /**
-     * @return ID of the Service Account you have created (shown as `client_email` in the generated JSON file, SDK v3+ tokens only).
+     * @return ID of the Service Account you have created (shown as `clientEmail` in the generated JSON file, SDK v3+ tokens only).
      * 
      */
     public String clientEmail() {

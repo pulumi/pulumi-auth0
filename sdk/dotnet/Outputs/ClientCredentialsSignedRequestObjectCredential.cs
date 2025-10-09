@@ -22,7 +22,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string? CreatedAt;
         /// <summary>
-        /// Credential type. Supported types: `public_key`.
+        /// Credential type. Supported types: `PublicKey`.
         /// </summary>
         public readonly string CredentialType;
         /// <summary>
@@ -42,7 +42,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// Parse expiry from x509 certificate. If true, attempts to parse the expiry date from the provided PEM. If also the `expires_at` is set the credential expiry will be set to the explicit `expires_at` value.
+        /// Parse expiry from x509 certificate. If true, attempts to parse the expiry date from the provided PEM. If also the `ExpiresAt` is set the credential expiry will be set to the explicit `ExpiresAt` value.
         /// </summary>
         public readonly bool? ParseExpiryFromCert;
         /// <summary>
