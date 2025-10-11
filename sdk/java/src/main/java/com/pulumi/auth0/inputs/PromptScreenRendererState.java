@@ -49,14 +49,14 @@ public final class PromptScreenRendererState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Optional filters to apply rendering rules to specific entities. `match_type` and at least one of the entity arrays are required.
+     * Optional filters to apply rendering rules to specific entities. `matchType` and at least one of the entity arrays are required.
      * 
      */
     @Import(name="filters")
     private @Nullable Output<PromptScreenRendererFiltersArgs> filters;
 
     /**
-     * @return Optional filters to apply rendering rules to specific entities. `match_type` and at least one of the entity arrays are required.
+     * @return Optional filters to apply rendering rules to specific entities. `matchType` and at least one of the entity arrays are required.
      * 
      */
     public Optional<Output<PromptScreenRendererFiltersArgs>> filters() {
@@ -238,7 +238,7 @@ public final class PromptScreenRendererState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param filters Optional filters to apply rendering rules to specific entities. `match_type` and at least one of the entity arrays are required.
+         * @param filters Optional filters to apply rendering rules to specific entities. `matchType` and at least one of the entity arrays are required.
          * 
          * @return builder
          * 
@@ -249,7 +249,7 @@ public final class PromptScreenRendererState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param filters Optional filters to apply rendering rules to specific entities. `match_type` and at least one of the entity arrays are required.
+         * @param filters Optional filters to apply rendering rules to specific entities. `matchType` and at least one of the entity arrays are required.
          * 
          * @return builder
          * 

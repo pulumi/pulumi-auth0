@@ -12,7 +12,7 @@ namespace Pulumi.Auth0
     public static class GetForm
     {
         /// <summary>
-        /// Data source to retrieve a specific Auth0 Form by `id`
+        /// Data source to retrieve a specific Auth0 Form by `Id`
         /// 
         /// ## Example Usage
         /// 
@@ -37,7 +37,7 @@ namespace Pulumi.Auth0
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFormResult>("auth0:index/getForm:getForm", args ?? new GetFormArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source to retrieve a specific Auth0 Form by `id`
+        /// Data source to retrieve a specific Auth0 Form by `Id`
         /// 
         /// ## Example Usage
         /// 
@@ -62,7 +62,7 @@ namespace Pulumi.Auth0
             => global::Pulumi.Deployment.Instance.Invoke<GetFormResult>("auth0:index/getForm:getForm", args ?? new GetFormInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source to retrieve a specific Auth0 Form by `id`
+        /// Data source to retrieve a specific Auth0 Form by `Id`
         /// 
         /// ## Example Usage
         /// 

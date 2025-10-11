@@ -14,7 +14,7 @@ namespace Pulumi.Auth0.Outputs
     public sealed class GetClientDefaultOrganizationResult
     {
         /// <summary>
-        /// If set, the `default_organization` will be removed.
+        /// If set, the `DefaultOrganization` will be removed.
         /// </summary>
         public readonly bool Disable;
         /// <summary>

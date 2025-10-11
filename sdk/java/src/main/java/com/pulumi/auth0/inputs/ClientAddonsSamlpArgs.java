@@ -186,14 +186,14 @@ public final class ClientAddonsSamlpArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Indicates whether or not to add additional identity information in the token, such as the provider used and the `access_token`, if available. Defaults to `true`.
+     * Indicates whether or not to add additional identity information in the token, such as the provider used and the `accessToken`, if available. Defaults to `true`.
      * 
      */
     @Import(name="mapIdentities")
     private @Nullable Output<Boolean> mapIdentities;
 
     /**
-     * @return Indicates whether or not to add additional identity information in the token, such as the provider used and the `access_token`, if available. Defaults to `true`.
+     * @return Indicates whether or not to add additional identity information in the token, such as the provider used and the `accessToken`, if available. Defaults to `true`.
      * 
      */
     public Optional<Output<Boolean>> mapIdentities() {
@@ -627,7 +627,7 @@ public final class ClientAddonsSamlpArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param mapIdentities Indicates whether or not to add additional identity information in the token, such as the provider used and the `access_token`, if available. Defaults to `true`.
+         * @param mapIdentities Indicates whether or not to add additional identity information in the token, such as the provider used and the `accessToken`, if available. Defaults to `true`.
          * 
          * @return builder
          * 
@@ -638,7 +638,7 @@ public final class ClientAddonsSamlpArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param mapIdentities Indicates whether or not to add additional identity information in the token, such as the provider used and the `access_token`, if available. Defaults to `true`.
+         * @param mapIdentities Indicates whether or not to add additional identity information in the token, such as the provider used and the `accessToken`, if available. Defaults to `true`.
          * 
          * @return builder
          * 

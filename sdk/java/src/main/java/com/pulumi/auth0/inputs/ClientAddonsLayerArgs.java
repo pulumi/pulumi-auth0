@@ -48,14 +48,14 @@ public final class ClientAddonsLayerArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Name of the property used as the unique user ID in Layer. If not specified `user_id` is used.
+     * Name of the property used as the unique user ID in Layer. If not specified `userId` is used.
      * 
      */
     @Import(name="principal")
     private @Nullable Output<String> principal;
 
     /**
-     * @return Name of the property used as the unique user ID in Layer. If not specified `user_id` is used.
+     * @return Name of the property used as the unique user ID in Layer. If not specified `userId` is used.
      * 
      */
     public Optional<Output<String>> principal() {
@@ -163,7 +163,7 @@ public final class ClientAddonsLayerArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param principal Name of the property used as the unique user ID in Layer. If not specified `user_id` is used.
+         * @param principal Name of the property used as the unique user ID in Layer. If not specified `userId` is used.
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class ClientAddonsLayerArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param principal Name of the property used as the unique user ID in Layer. If not specified `user_id` is used.
+         * @param principal Name of the property used as the unique user ID in Layer. If not specified `userId` is used.
          * 
          * @return builder
          * 

@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClientAddonsFirebase {
     /**
-     * @return ID of the Service Account you have created (shown as `client_email` in the generated JSON file, SDK v3+ tokens only).
+     * @return ID of the Service Account you have created (shown as `clientEmail` in the generated JSON file, SDK v3+ tokens only).
      * 
      */
     private @Nullable String clientEmail;
@@ -40,7 +40,7 @@ public final class ClientAddonsFirebase {
 
     private ClientAddonsFirebase() {}
     /**
-     * @return ID of the Service Account you have created (shown as `client_email` in the generated JSON file, SDK v3+ tokens only).
+     * @return ID of the Service Account you have created (shown as `clientEmail` in the generated JSON file, SDK v3+ tokens only).
      * 
      */
     public Optional<String> clientEmail() {

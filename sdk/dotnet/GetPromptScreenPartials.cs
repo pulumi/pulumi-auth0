@@ -12,7 +12,7 @@ namespace Pulumi.Auth0
     public static class GetPromptScreenPartials
     {
         /// <summary>
-        /// Data source to retrieve a specific Auth0 prompt screen partials by `prompt_type`.
+        /// Data source to retrieve a specific Auth0 prompt screen partials by `PromptType`.
         /// 
         /// ## Example Usage
         /// 
@@ -36,7 +36,7 @@ namespace Pulumi.Auth0
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPromptScreenPartialsResult>("auth0:index/getPromptScreenPartials:getPromptScreenPartials", args ?? new GetPromptScreenPartialsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source to retrieve a specific Auth0 prompt screen partials by `prompt_type`.
+        /// Data source to retrieve a specific Auth0 prompt screen partials by `PromptType`.
         /// 
         /// ## Example Usage
         /// 
@@ -60,7 +60,7 @@ namespace Pulumi.Auth0
             => global::Pulumi.Deployment.Instance.Invoke<GetPromptScreenPartialsResult>("auth0:index/getPromptScreenPartials:getPromptScreenPartials", args ?? new GetPromptScreenPartialsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source to retrieve a specific Auth0 prompt screen partials by `prompt_type`.
+        /// Data source to retrieve a specific Auth0 prompt screen partials by `PromptType`.
         /// 
         /// ## Example Usage
         /// 

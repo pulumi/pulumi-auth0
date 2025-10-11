@@ -26,7 +26,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly bool? Log;
         /// <summary>
-        /// If true, redirects the request. When using redirect action, redirect_uri must also be specified.
+        /// If true, redirects the request. When using redirect action, RedirectUri must also be specified.
         /// </summary>
         public readonly bool? Redirect;
         /// <summary>

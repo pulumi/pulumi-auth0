@@ -14,7 +14,7 @@ namespace Pulumi.Auth0.Outputs
     public sealed class GetTenantOidcLogoutResult
     {
         /// <summary>
-        /// Enable the end_session_endpoint URL in the .well-known discovery configuration.
+        /// Enable the EndSessionEndpoint URL in the .well-known discovery configuration.
         /// </summary>
         public readonly bool RpLogoutEndSessionEndpointDiscovery;
 

@@ -232,14 +232,14 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * A case-sensitive map of key value pairs used as configuration variables for the `custom_script`.
+     * A case-sensitive map of key value pairs used as configuration variables for the `customScript`.
      * 
      */
     @Import(name="configuration")
     private @Nullable Output<Map<String,String>> configuration;
 
     /**
-     * @return A case-sensitive map of key value pairs used as configuration variables for the `custom_script`.
+     * @return A case-sensitive map of key value pairs used as configuration variables for the `customScript`.
      * 
      */
     public Optional<Output<Map<String,String>>> configuration() {
@@ -637,14 +637,14 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Configuration options for IDP Initiated Authentication. This is an object with the properties: `client_id`, `client_protocol`, and `client_authorize_query`.
+     * Configuration options for IDP Initiated Authentication. This is an object with the properties: `clientId`, `clientProtocol`, and `clientAuthorizeQuery`.
      * 
      */
     @Import(name="idpInitiated")
     private @Nullable Output<ConnectionOptionsIdpInitiatedArgs> idpInitiated;
 
     /**
-     * @return Configuration options for IDP Initiated Authentication. This is an object with the properties: `client_id`, `client_protocol`, and `client_authorize_query`.
+     * @return Configuration options for IDP Initiated Authentication. This is an object with the properties: `clientId`, `clientProtocol`, and `clientAuthorizeQuery`.
      * 
      */
     public Optional<Output<ConnectionOptionsIdpInitiatedArgs>> idpInitiated() {
@@ -727,14 +727,14 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * By default Auth0 maps `user_id` to `email`. Enabling this setting changes the behavior to map `user_id` to &#39;id&#39; instead. This can only be defined on a new Google Workspace connection and can not be changed once set.
+     * By default Auth0 maps `userId` to `email`. Enabling this setting changes the behavior to map `userId` to &#39;id&#39; instead. This can only be defined on a new Google Workspace connection and can not be changed once set.
      * 
      */
     @Import(name="mapUserIdToId")
     private @Nullable Output<Boolean> mapUserIdToId;
 
     /**
-     * @return By default Auth0 maps `user_id` to `email`. Enabling this setting changes the behavior to map `user_id` to &#39;id&#39; instead. This can only be defined on a new Google Workspace connection and can not be changed once set.
+     * @return By default Auth0 maps `userId` to `email`. Enabling this setting changes the behavior to map `userId` to &#39;id&#39; instead. This can only be defined on a new Google Workspace connection and can not be changed once set.
      * 
      */
     public Optional<Output<Boolean>> mapUserIdToId() {
@@ -997,14 +997,14 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Defines the custom `sms_gateway` provider.
+     * Defines the custom `smsGateway` provider.
      * 
      */
     @Import(name="provider")
     private @Nullable Output<String> provider;
 
     /**
-     * @return Defines the custom `sms_gateway` provider.
+     * @return Defines the custom `smsGateway` provider.
      * 
      */
     public Optional<Output<String>> provider() {
@@ -1057,14 +1057,14 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Permissions to grant to the connection. Within the Auth0 dashboard these appear under the &#34;Attributes&#34; and &#34;Extended Attributes&#34; sections. Some examples: `basic_profile`, `ext_profile`, `ext_nested_groups`, etc.
+     * Permissions to grant to the connection. Within the Auth0 dashboard these appear under the &#34;Attributes&#34; and &#34;Extended Attributes&#34; sections. Some examples: `basicProfile`, `extProfile`, `extNestedGroups`, etc.
      * 
      */
     @Import(name="scopes")
     private @Nullable Output<List<String>> scopes;
 
     /**
-     * @return Permissions to grant to the connection. Within the Auth0 dashboard these appear under the &#34;Attributes&#34; and &#34;Extended Attributes&#34; sections. Some examples: `basic_profile`, `ext_profile`, `ext_nested_groups`, etc.
+     * @return Permissions to grant to the connection. Within the Auth0 dashboard these appear under the &#34;Attributes&#34; and &#34;Extended Attributes&#34; sections. Some examples: `basicProfile`, `extProfile`, `extNestedGroups`, etc.
      * 
      */
     public Optional<Output<List<String>>> scopes() {
@@ -1087,14 +1087,14 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Determines whether to sync user profile attributes (`name`, `given_name`, `family_name`, `nickname`, `picture`) at each login or only on the first login. Options include: `on_each_login`, `on_first_login`, `never_on_login`. Default value: `on_each_login`.
+     * Determines whether to sync user profile attributes (`name`, `givenName`, `familyName`, `nickname`, `picture`) at each login or only on the first login. Options include: `onEachLogin`, `onFirstLogin`, `neverOnLogin`. Default value: `onEachLogin`.
      * 
      */
     @Import(name="setUserRootAttributes")
     private @Nullable Output<String> setUserRootAttributes;
 
     /**
-     * @return Determines whether to sync user profile attributes (`name`, `given_name`, `family_name`, `nickname`, `picture`) at each login or only on the first login. Options include: `on_each_login`, `on_first_login`, `never_on_login`. Default value: `on_each_login`.
+     * @return Determines whether to sync user profile attributes (`name`, `givenName`, `familyName`, `nickname`, `picture`) at each login or only on the first login. Options include: `onEachLogin`, `onFirstLogin`, `neverOnLogin`. Default value: `onEachLogin`.
      * 
      */
     public Optional<Output<String>> setUserRootAttributes() {
@@ -1102,14 +1102,14 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Choose how Auth0 sets the email_verified field in the user profile.
+     * Choose how Auth0 sets the emailVerified field in the user profile.
      * 
      */
     @Import(name="shouldTrustEmailVerifiedConnection")
     private @Nullable Output<String> shouldTrustEmailVerifiedConnection;
 
     /**
-     * @return Choose how Auth0 sets the email_verified field in the user profile.
+     * @return Choose how Auth0 sets the emailVerified field in the user profile.
      * 
      */
     public Optional<Output<String>> shouldTrustEmailVerifiedConnection() {
@@ -1387,14 +1387,14 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Value can be `back_channel` or `front_channel`. Front Channel will use OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel will use `response_type=code`.
+     * Value can be `backChannel` or `frontChannel`. Front Channel will use OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel will use `response_type=code`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Value can be `back_channel` or `front_channel`. Front Channel will use OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel will use `response_type=code`.
+     * @return Value can be `backChannel` or `frontChannel`. Front Channel will use OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel will use `response_type=code`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -1462,14 +1462,14 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Attribute in the token that will be mapped to the user_id property in Auth0.
+     * Attribute in the token that will be mapped to the userId property in Auth0.
      * 
      */
     @Import(name="userIdAttribute")
     private @Nullable Output<String> userIdAttribute;
 
     /**
-     * @return Attribute in the token that will be mapped to the user_id property in Auth0.
+     * @return Attribute in the token that will be mapped to the userId property in Auth0.
      * 
      */
     public Optional<Output<String>> userIdAttribute() {
@@ -1963,7 +1963,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param configuration A case-sensitive map of key value pairs used as configuration variables for the `custom_script`.
+         * @param configuration A case-sensitive map of key value pairs used as configuration variables for the `customScript`.
          * 
          * @return builder
          * 
@@ -1974,7 +1974,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param configuration A case-sensitive map of key value pairs used as configuration variables for the `custom_script`.
+         * @param configuration A case-sensitive map of key value pairs used as configuration variables for the `customScript`.
          * 
          * @return builder
          * 
@@ -2550,7 +2550,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param idpInitiated Configuration options for IDP Initiated Authentication. This is an object with the properties: `client_id`, `client_protocol`, and `client_authorize_query`.
+         * @param idpInitiated Configuration options for IDP Initiated Authentication. This is an object with the properties: `clientId`, `clientProtocol`, and `clientAuthorizeQuery`.
          * 
          * @return builder
          * 
@@ -2561,7 +2561,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param idpInitiated Configuration options for IDP Initiated Authentication. This is an object with the properties: `client_id`, `client_protocol`, and `client_authorize_query`.
+         * @param idpInitiated Configuration options for IDP Initiated Authentication. This is an object with the properties: `clientId`, `clientProtocol`, and `clientAuthorizeQuery`.
          * 
          * @return builder
          * 
@@ -2686,7 +2686,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param mapUserIdToId By default Auth0 maps `user_id` to `email`. Enabling this setting changes the behavior to map `user_id` to &#39;id&#39; instead. This can only be defined on a new Google Workspace connection and can not be changed once set.
+         * @param mapUserIdToId By default Auth0 maps `userId` to `email`. Enabling this setting changes the behavior to map `userId` to &#39;id&#39; instead. This can only be defined on a new Google Workspace connection and can not be changed once set.
          * 
          * @return builder
          * 
@@ -2697,7 +2697,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param mapUserIdToId By default Auth0 maps `user_id` to `email`. Enabling this setting changes the behavior to map `user_id` to &#39;id&#39; instead. This can only be defined on a new Google Workspace connection and can not be changed once set.
+         * @param mapUserIdToId By default Auth0 maps `userId` to `email`. Enabling this setting changes the behavior to map `userId` to &#39;id&#39; instead. This can only be defined on a new Google Workspace connection and can not be changed once set.
          * 
          * @return builder
          * 
@@ -3094,7 +3094,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param provider Defines the custom `sms_gateway` provider.
+         * @param provider Defines the custom `smsGateway` provider.
          * 
          * @return builder
          * 
@@ -3105,7 +3105,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param provider Defines the custom `sms_gateway` provider.
+         * @param provider Defines the custom `smsGateway` provider.
          * 
          * @return builder
          * 
@@ -3178,7 +3178,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param scopes Permissions to grant to the connection. Within the Auth0 dashboard these appear under the &#34;Attributes&#34; and &#34;Extended Attributes&#34; sections. Some examples: `basic_profile`, `ext_profile`, `ext_nested_groups`, etc.
+         * @param scopes Permissions to grant to the connection. Within the Auth0 dashboard these appear under the &#34;Attributes&#34; and &#34;Extended Attributes&#34; sections. Some examples: `basicProfile`, `extProfile`, `extNestedGroups`, etc.
          * 
          * @return builder
          * 
@@ -3189,7 +3189,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param scopes Permissions to grant to the connection. Within the Auth0 dashboard these appear under the &#34;Attributes&#34; and &#34;Extended Attributes&#34; sections. Some examples: `basic_profile`, `ext_profile`, `ext_nested_groups`, etc.
+         * @param scopes Permissions to grant to the connection. Within the Auth0 dashboard these appear under the &#34;Attributes&#34; and &#34;Extended Attributes&#34; sections. Some examples: `basicProfile`, `extProfile`, `extNestedGroups`, etc.
          * 
          * @return builder
          * 
@@ -3199,7 +3199,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param scopes Permissions to grant to the connection. Within the Auth0 dashboard these appear under the &#34;Attributes&#34; and &#34;Extended Attributes&#34; sections. Some examples: `basic_profile`, `ext_profile`, `ext_nested_groups`, etc.
+         * @param scopes Permissions to grant to the connection. Within the Auth0 dashboard these appear under the &#34;Attributes&#34; and &#34;Extended Attributes&#34; sections. Some examples: `basicProfile`, `extProfile`, `extNestedGroups`, etc.
          * 
          * @return builder
          * 
@@ -3230,7 +3230,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param setUserRootAttributes Determines whether to sync user profile attributes (`name`, `given_name`, `family_name`, `nickname`, `picture`) at each login or only on the first login. Options include: `on_each_login`, `on_first_login`, `never_on_login`. Default value: `on_each_login`.
+         * @param setUserRootAttributes Determines whether to sync user profile attributes (`name`, `givenName`, `familyName`, `nickname`, `picture`) at each login or only on the first login. Options include: `onEachLogin`, `onFirstLogin`, `neverOnLogin`. Default value: `onEachLogin`.
          * 
          * @return builder
          * 
@@ -3241,7 +3241,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param setUserRootAttributes Determines whether to sync user profile attributes (`name`, `given_name`, `family_name`, `nickname`, `picture`) at each login or only on the first login. Options include: `on_each_login`, `on_first_login`, `never_on_login`. Default value: `on_each_login`.
+         * @param setUserRootAttributes Determines whether to sync user profile attributes (`name`, `givenName`, `familyName`, `nickname`, `picture`) at each login or only on the first login. Options include: `onEachLogin`, `onFirstLogin`, `neverOnLogin`. Default value: `onEachLogin`.
          * 
          * @return builder
          * 
@@ -3251,7 +3251,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param shouldTrustEmailVerifiedConnection Choose how Auth0 sets the email_verified field in the user profile.
+         * @param shouldTrustEmailVerifiedConnection Choose how Auth0 sets the emailVerified field in the user profile.
          * 
          * @return builder
          * 
@@ -3262,7 +3262,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param shouldTrustEmailVerifiedConnection Choose how Auth0 sets the email_verified field in the user profile.
+         * @param shouldTrustEmailVerifiedConnection Choose how Auth0 sets the emailVerified field in the user profile.
          * 
          * @return builder
          * 
@@ -3650,7 +3650,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param type Value can be `back_channel` or `front_channel`. Front Channel will use OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel will use `response_type=code`.
+         * @param type Value can be `backChannel` or `frontChannel`. Front Channel will use OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel will use `response_type=code`.
          * 
          * @return builder
          * 
@@ -3661,7 +3661,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param type Value can be `back_channel` or `front_channel`. Front Channel will use OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel will use `response_type=code`.
+         * @param type Value can be `backChannel` or `frontChannel`. Front Channel will use OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel will use `response_type=code`.
          * 
          * @return builder
          * 
@@ -3755,7 +3755,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param userIdAttribute Attribute in the token that will be mapped to the user_id property in Auth0.
+         * @param userIdAttribute Attribute in the token that will be mapped to the userId property in Auth0.
          * 
          * @return builder
          * 
@@ -3766,7 +3766,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param userIdAttribute Attribute in the token that will be mapped to the user_id property in Auth0.
+         * @param userIdAttribute Attribute in the token that will be mapped to the userId property in Auth0.
          * 
          * @return builder
          * 

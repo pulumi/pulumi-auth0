@@ -86,7 +86,7 @@ namespace Pulumi.Auth0
     public partial class PromptScreenPartials : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
+        /// The prompt that you are adding partials for. Options are: `login-id`, `Login`, `login-password`, `Signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
         /// </summary>
         [Output("promptType")]
         public Output<string> PromptType { get; private set; } = null!;
@@ -141,7 +141,7 @@ namespace Pulumi.Auth0
     public sealed class PromptScreenPartialsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
+        /// The prompt that you are adding partials for. Options are: `login-id`, `Login`, `login-password`, `Signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
         /// </summary>
         [Input("promptType", required: true)]
         public Input<string> PromptType { get; set; } = null!;
@@ -163,7 +163,7 @@ namespace Pulumi.Auth0
     public sealed class PromptScreenPartialsState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
+        /// The prompt that you are adding partials for. Options are: `login-id`, `Login`, `login-password`, `Signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
         /// </summary>
         [Input("promptType")]
         public Input<string>? PromptType { get; set; }

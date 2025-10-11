@@ -61,7 +61,7 @@ namespace Pulumi.Auth0
         public Output<ImmutableArray<Outputs.CustomDomainCertificate>> Certificates { get; private set; } = null!;
 
         /// <summary>
-        /// The HTTP header to fetch the client's IP address. Cannot be set on auth0_managed domains.
+        /// The HTTP header to fetch the client's IP address. Cannot be set on Auth0Managed domains.
         /// </summary>
         [Output("customClientIpHeader")]
         public Output<string?> CustomClientIpHeader { get; private set; } = null!;
@@ -79,7 +79,7 @@ namespace Pulumi.Auth0
         public Output<ImmutableDictionary<string, string>?> DomainMetadata { get; private set; } = null!;
 
         /// <summary>
-        /// Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
+        /// Once the configuration status is `Ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
         /// </summary>
         [Output("originDomainName")]
         public Output<string> OriginDomainName { get; private set; } = null!;
@@ -91,19 +91,19 @@ namespace Pulumi.Auth0
         public Output<bool> Primary { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration status for the custom domain. Options include `disabled`, `pending`, `pending_verification`, and `ready`.
+        /// Configuration status for the custom domain. Options include `Disabled`, `Pending`, `PendingVerification`, and `Ready`.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on self_managed domains.
+        /// TLS policy for the custom domain. Available options are: `Compatible` or `Recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on SelfManaged domains.
         /// </summary>
         [Output("tlsPolicy")]
         public Output<string> TlsPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
+        /// Provisioning type for the custom domain. Options include `Auth0ManagedCerts` and `SelfManagedCerts`.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -161,7 +161,7 @@ namespace Pulumi.Auth0
     public sealed class CustomDomainArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The HTTP header to fetch the client's IP address. Cannot be set on auth0_managed domains.
+        /// The HTTP header to fetch the client's IP address. Cannot be set on Auth0Managed domains.
         /// </summary>
         [Input("customClientIpHeader")]
         public Input<string>? CustomClientIpHeader { get; set; }
@@ -185,13 +185,13 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on self_managed domains.
+        /// TLS policy for the custom domain. Available options are: `Compatible` or `Recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on SelfManaged domains.
         /// </summary>
         [Input("tlsPolicy")]
         public Input<string>? TlsPolicy { get; set; }
 
         /// <summary>
-        /// Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
+        /// Provisioning type for the custom domain. Options include `Auth0ManagedCerts` and `SelfManagedCerts`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -217,7 +217,7 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// The HTTP header to fetch the client's IP address. Cannot be set on auth0_managed domains.
+        /// The HTTP header to fetch the client's IP address. Cannot be set on Auth0Managed domains.
         /// </summary>
         [Input("customClientIpHeader")]
         public Input<string>? CustomClientIpHeader { get; set; }
@@ -241,7 +241,7 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
+        /// Once the configuration status is `Ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
         /// </summary>
         [Input("originDomainName")]
         public Input<string>? OriginDomainName { get; set; }
@@ -253,19 +253,19 @@ namespace Pulumi.Auth0
         public Input<bool>? Primary { get; set; }
 
         /// <summary>
-        /// Configuration status for the custom domain. Options include `disabled`, `pending`, `pending_verification`, and `ready`.
+        /// Configuration status for the custom domain. Options include `Disabled`, `Pending`, `PendingVerification`, and `Ready`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on self_managed domains.
+        /// TLS policy for the custom domain. Available options are: `Compatible` or `Recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on SelfManaged domains.
         /// </summary>
         [Input("tlsPolicy")]
         public Input<string>? TlsPolicy { get; set; }
 
         /// <summary>
-        /// Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
+        /// Provisioning type for the custom domain. Options include `Auth0ManagedCerts` and `SelfManagedCerts`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

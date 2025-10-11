@@ -16,14 +16,14 @@ public final class ResourceServerSubjectTypeAuthorizationUserArgs extends com.pu
     public static final ResourceServerSubjectTypeAuthorizationUserArgs Empty = new ResourceServerSubjectTypeAuthorizationUserArgs();
 
     /**
-     * User flows policy. One of `allow_all`, `deny_all`, `require_client_grant`.
+     * User flows policy. One of `allowAll`, `denyAll`, `requireClientGrant`.
      * 
      */
     @Import(name="policy")
     private @Nullable Output<String> policy;
 
     /**
-     * @return User flows policy. One of `allow_all`, `deny_all`, `require_client_grant`.
+     * @return User flows policy. One of `allowAll`, `denyAll`, `requireClientGrant`.
      * 
      */
     public Optional<Output<String>> policy() {
@@ -55,7 +55,7 @@ public final class ResourceServerSubjectTypeAuthorizationUserArgs extends com.pu
         }
 
         /**
-         * @param policy User flows policy. One of `allow_all`, `deny_all`, `require_client_grant`.
+         * @param policy User flows policy. One of `allowAll`, `denyAll`, `requireClientGrant`.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class ResourceServerSubjectTypeAuthorizationUserArgs extends com.pu
         }
 
         /**
-         * @param policy User flows policy. One of `allow_all`, `deny_all`, `require_client_grant`.
+         * @param policy User flows policy. One of `allowAll`, `denyAll`, `requireClientGrant`.
          * 
          * @return builder
          * 

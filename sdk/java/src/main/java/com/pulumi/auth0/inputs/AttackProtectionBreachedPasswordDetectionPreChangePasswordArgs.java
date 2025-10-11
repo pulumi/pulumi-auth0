@@ -17,14 +17,14 @@ public final class AttackProtectionBreachedPasswordDetectionPreChangePasswordArg
     public static final AttackProtectionBreachedPasswordDetectionPreChangePasswordArgs Empty = new AttackProtectionBreachedPasswordDetectionPreChangePasswordArgs();
 
     /**
-     * Action to take when a breached password is detected before the password is changed. Possible values: `block` (block compromised credentials for new accounts), `admin_notification` (send an email notification with a summary of compromised credentials in new accounts).
+     * Action to take when a breached password is detected before the password is changed. Possible values: `block` (block compromised credentials for new accounts), `adminNotification` (send an email notification with a summary of compromised credentials in new accounts).
      * 
      */
     @Import(name="shields")
     private @Nullable Output<List<String>> shields;
 
     /**
-     * @return Action to take when a breached password is detected before the password is changed. Possible values: `block` (block compromised credentials for new accounts), `admin_notification` (send an email notification with a summary of compromised credentials in new accounts).
+     * @return Action to take when a breached password is detected before the password is changed. Possible values: `block` (block compromised credentials for new accounts), `adminNotification` (send an email notification with a summary of compromised credentials in new accounts).
      * 
      */
     public Optional<Output<List<String>>> shields() {
@@ -56,7 +56,7 @@ public final class AttackProtectionBreachedPasswordDetectionPreChangePasswordArg
         }
 
         /**
-         * @param shields Action to take when a breached password is detected before the password is changed. Possible values: `block` (block compromised credentials for new accounts), `admin_notification` (send an email notification with a summary of compromised credentials in new accounts).
+         * @param shields Action to take when a breached password is detected before the password is changed. Possible values: `block` (block compromised credentials for new accounts), `adminNotification` (send an email notification with a summary of compromised credentials in new accounts).
          * 
          * @return builder
          * 
@@ -67,7 +67,7 @@ public final class AttackProtectionBreachedPasswordDetectionPreChangePasswordArg
         }
 
         /**
-         * @param shields Action to take when a breached password is detected before the password is changed. Possible values: `block` (block compromised credentials for new accounts), `admin_notification` (send an email notification with a summary of compromised credentials in new accounts).
+         * @param shields Action to take when a breached password is detected before the password is changed. Possible values: `block` (block compromised credentials for new accounts), `adminNotification` (send an email notification with a summary of compromised credentials in new accounts).
          * 
          * @return builder
          * 
@@ -77,7 +77,7 @@ public final class AttackProtectionBreachedPasswordDetectionPreChangePasswordArg
         }
 
         /**
-         * @param shields Action to take when a breached password is detected before the password is changed. Possible values: `block` (block compromised credentials for new accounts), `admin_notification` (send an email notification with a summary of compromised credentials in new accounts).
+         * @param shields Action to take when a breached password is detected before the password is changed. Possible values: `block` (block compromised credentials for new accounts), `adminNotification` (send an email notification with a summary of compromised credentials in new accounts).
          * 
          * @return builder
          * 

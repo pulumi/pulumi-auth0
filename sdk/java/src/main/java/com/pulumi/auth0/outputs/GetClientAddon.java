@@ -170,7 +170,7 @@ public final class GetClientAddon {
      */
     private List<GetClientAddonWam> wams;
     /**
-     * @return WS-Fed (WIF) addon indicator. Actual configuration is stored in `callback` and `client_aliases` properties on the client.
+     * @return WS-Fed (WIF) addon indicator. Actual configuration is stored in `callback` and `clientAliases` properties on the client.
      * 
      */
     private List<GetClientAddonWsfed> wsfeds;
@@ -369,7 +369,7 @@ public final class GetClientAddon {
         return this.wams;
     }
     /**
-     * @return WS-Fed (WIF) addon indicator. Actual configuration is stored in `callback` and `client_aliases` properties on the client.
+     * @return WS-Fed (WIF) addon indicator. Actual configuration is stored in `callback` and `clientAliases` properties on the client.
      * 
      */
     public List<GetClientAddonWsfed> wsfeds() {

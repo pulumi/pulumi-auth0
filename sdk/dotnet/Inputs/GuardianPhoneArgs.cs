@@ -22,7 +22,7 @@ namespace Pulumi.Auth0.Inputs
         private InputList<string>? _messageTypes;
 
         /// <summary>
-        /// Message types to use, array of `sms` and/or `voice`. Adding both to the array should enable the user to choose.
+        /// Message types to use, array of `Sms` and/or `Voice`. Adding both to the array should enable the user to choose.
         /// </summary>
         public InputList<string> MessageTypes
         {
@@ -37,7 +37,7 @@ namespace Pulumi.Auth0.Inputs
         public Input<Inputs.GuardianPhoneOptionsArgs>? Options { get; set; }
 
         /// <summary>
-        /// Provider to use, one of `auth0`, `twilio` or `phone-message-hook`. Selecting `phone-message-hook` will require a Phone Message Action to be created before. [Learn how](https://auth0.com/docs/customize/actions/flows-and-triggers/send-phone-message-flow).
+        /// Provider to use, one of `Auth0`, `Twilio` or `phone-message-hook`. Selecting `phone-message-hook` will require a Phone Message Action to be created before. [Learn how](https://auth0.com/docs/customize/actions/flows-and-triggers/send-phone-message-flow).
         /// </summary>
         [Input("provider")]
         public Input<string>? Provider { get; set; }

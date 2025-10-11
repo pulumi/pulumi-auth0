@@ -47,7 +47,7 @@ public final class GetConnectionResult {
      */
     private Map<String,String> metadata;
     /**
-     * @return The name of the connection. If not provided, `connection_id` must be set.
+     * @return The name of the connection. If not provided, `connectionId` must be set.
      * 
      */
     private @Nullable String name;
@@ -116,7 +116,7 @@ public final class GetConnectionResult {
         return this.metadata;
     }
     /**
-     * @return The name of the connection. If not provided, `connection_id` must be set.
+     * @return The name of the connection. If not provided, `connectionId` must be set.
      * 
      */
     public Optional<String> name() {

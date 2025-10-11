@@ -913,7 +913,7 @@ public final class Auth0Functions {
         return Deployment.getInstance().invokeAsync("auth0:index/getBrandingTheme:getBrandingTheme", TypeShape.of(GetBrandingThemeResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Data source to retrieve a specific Auth0 application client by `client_id` or `name`.
+     * Data source to retrieve a specific Auth0 application client by `clientId` or `name`.
      * 
      * ## Example Usage
      * 
@@ -959,7 +959,7 @@ public final class Auth0Functions {
         return getClient(GetClientArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Data source to retrieve a specific Auth0 application client by `client_id` or `name`.
+     * Data source to retrieve a specific Auth0 application client by `clientId` or `name`.
      * 
      * ## Example Usage
      * 
@@ -1005,7 +1005,7 @@ public final class Auth0Functions {
         return getClientPlain(GetClientPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Data source to retrieve a specific Auth0 application client by `client_id` or `name`.
+     * Data source to retrieve a specific Auth0 application client by `clientId` or `name`.
      * 
      * ## Example Usage
      * 
@@ -1051,7 +1051,7 @@ public final class Auth0Functions {
         return getClient(args, InvokeOptions.Empty);
     }
     /**
-     * Data source to retrieve a specific Auth0 application client by `client_id` or `name`.
+     * Data source to retrieve a specific Auth0 application client by `clientId` or `name`.
      * 
      * ## Example Usage
      * 
@@ -1097,7 +1097,7 @@ public final class Auth0Functions {
         return getClientPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Data source to retrieve a specific Auth0 application client by `client_id` or `name`.
+     * Data source to retrieve a specific Auth0 application client by `clientId` or `name`.
      * 
      * ## Example Usage
      * 
@@ -1143,7 +1143,7 @@ public final class Auth0Functions {
         return Deployment.getInstance().invoke("auth0:index/getClient:getClient", TypeShape.of(GetClientResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Data source to retrieve a specific Auth0 application client by `client_id` or `name`.
+     * Data source to retrieve a specific Auth0 application client by `clientId` or `name`.
      * 
      * ## Example Usage
      * 
@@ -1189,7 +1189,7 @@ public final class Auth0Functions {
         return Deployment.getInstance().invoke("auth0:index/getClient:getClient", TypeShape.of(GetClientResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Data source to retrieve a specific Auth0 application client by `client_id` or `name`.
+     * Data source to retrieve a specific Auth0 application client by `clientId` or `name`.
      * 
      * ## Example Usage
      * 
@@ -1606,7 +1606,7 @@ public final class Auth0Functions {
         return Deployment.getInstance().invokeAsync("auth0:index/getClients:getClients", TypeShape.of(GetClientsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Data source to retrieve a specific Auth0 connection by `connection_id` or `name`.
+     * Data source to retrieve a specific Auth0 connection by `connectionId` or `name`.
      * 
      * ## Example Usage
      * 
@@ -1652,7 +1652,7 @@ public final class Auth0Functions {
         return getConnection(GetConnectionArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Data source to retrieve a specific Auth0 connection by `connection_id` or `name`.
+     * Data source to retrieve a specific Auth0 connection by `connectionId` or `name`.
      * 
      * ## Example Usage
      * 
@@ -1698,7 +1698,7 @@ public final class Auth0Functions {
         return getConnectionPlain(GetConnectionPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Data source to retrieve a specific Auth0 connection by `connection_id` or `name`.
+     * Data source to retrieve a specific Auth0 connection by `connectionId` or `name`.
      * 
      * ## Example Usage
      * 
@@ -1744,7 +1744,7 @@ public final class Auth0Functions {
         return getConnection(args, InvokeOptions.Empty);
     }
     /**
-     * Data source to retrieve a specific Auth0 connection by `connection_id` or `name`.
+     * Data source to retrieve a specific Auth0 connection by `connectionId` or `name`.
      * 
      * ## Example Usage
      * 
@@ -1790,7 +1790,7 @@ public final class Auth0Functions {
         return getConnectionPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Data source to retrieve a specific Auth0 connection by `connection_id` or `name`.
+     * Data source to retrieve a specific Auth0 connection by `connectionId` or `name`.
      * 
      * ## Example Usage
      * 
@@ -1836,7 +1836,7 @@ public final class Auth0Functions {
         return Deployment.getInstance().invoke("auth0:index/getConnection:getConnection", TypeShape.of(GetConnectionResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Data source to retrieve a specific Auth0 connection by `connection_id` or `name`.
+     * Data source to retrieve a specific Auth0 connection by `connectionId` or `name`.
      * 
      * ## Example Usage
      * 
@@ -1882,7 +1882,7 @@ public final class Auth0Functions {
         return Deployment.getInstance().invoke("auth0:index/getConnection:getConnection", TypeShape.of(GetConnectionResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Data source to retrieve a specific Auth0 connection by `connection_id` or `name`.
+     * Data source to retrieve a specific Auth0 connection by `connectionId` or `name`.
      * 
      * ## Example Usage
      * 
@@ -2133,7 +2133,7 @@ public final class Auth0Functions {
         return Deployment.getInstance().invokeAsync("auth0:index/getConnectionKeys:getConnectionKeys", TypeShape.of(GetConnectionKeysResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Data source to retrieve a SCIM configuration for an Auth0 connection by `connection_id`.
+     * Data source to retrieve a SCIM configuration for an Auth0 connection by `connectionId`.
      * 
      * ## Example Usage
      * 
@@ -2197,7 +2197,7 @@ public final class Auth0Functions {
         return getConnectionScimConfiguration(args, InvokeOptions.Empty);
     }
     /**
-     * Data source to retrieve a SCIM configuration for an Auth0 connection by `connection_id`.
+     * Data source to retrieve a SCIM configuration for an Auth0 connection by `connectionId`.
      * 
      * ## Example Usage
      * 
@@ -2261,7 +2261,7 @@ public final class Auth0Functions {
         return getConnectionScimConfigurationPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Data source to retrieve a SCIM configuration for an Auth0 connection by `connection_id`.
+     * Data source to retrieve a SCIM configuration for an Auth0 connection by `connectionId`.
      * 
      * ## Example Usage
      * 
@@ -2325,7 +2325,7 @@ public final class Auth0Functions {
         return Deployment.getInstance().invoke("auth0:index/getConnectionScimConfiguration:getConnectionScimConfiguration", TypeShape.of(GetConnectionScimConfigurationResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Data source to retrieve a SCIM configuration for an Auth0 connection by `connection_id`.
+     * Data source to retrieve a SCIM configuration for an Auth0 connection by `connectionId`.
      * 
      * ## Example Usage
      * 
@@ -2389,7 +2389,7 @@ public final class Auth0Functions {
         return Deployment.getInstance().invoke("auth0:index/getConnectionScimConfiguration:getConnectionScimConfiguration", TypeShape.of(GetConnectionScimConfigurationResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Data source to retrieve a SCIM configuration for an Auth0 connection by `connection_id`.
+     * Data source to retrieve a SCIM configuration for an Auth0 connection by `connectionId`.
      * 
      * ## Example Usage
      * 
@@ -3842,7 +3842,7 @@ public final class Auth0Functions {
         return Deployment.getInstance().invokeAsync("auth0:index/getNetworkAcl:getNetworkAcl", TypeShape.of(GetNetworkAclResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Data source to retrieve a specific Auth0 organization by `organization_id` or `name`.
+     * Data source to retrieve a specific Auth0 organization by `organizationId` or `name`.
      * 
      * ## Example Usage
      * 
@@ -3888,7 +3888,7 @@ public final class Auth0Functions {
         return getOrganization(GetOrganizationArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Data source to retrieve a specific Auth0 organization by `organization_id` or `name`.
+     * Data source to retrieve a specific Auth0 organization by `organizationId` or `name`.
      * 
      * ## Example Usage
      * 
@@ -3934,7 +3934,7 @@ public final class Auth0Functions {
         return getOrganizationPlain(GetOrganizationPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Data source to retrieve a specific Auth0 organization by `organization_id` or `name`.
+     * Data source to retrieve a specific Auth0 organization by `organizationId` or `name`.
      * 
      * ## Example Usage
      * 
@@ -3980,7 +3980,7 @@ public final class Auth0Functions {
         return getOrganization(args, InvokeOptions.Empty);
     }
     /**
-     * Data source to retrieve a specific Auth0 organization by `organization_id` or `name`.
+     * Data source to retrieve a specific Auth0 organization by `organizationId` or `name`.
      * 
      * ## Example Usage
      * 
@@ -4026,7 +4026,7 @@ public final class Auth0Functions {
         return getOrganizationPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Data source to retrieve a specific Auth0 organization by `organization_id` or `name`.
+     * Data source to retrieve a specific Auth0 organization by `organizationId` or `name`.
      * 
      * ## Example Usage
      * 
@@ -4072,7 +4072,7 @@ public final class Auth0Functions {
         return Deployment.getInstance().invoke("auth0:index/getOrganization:getOrganization", TypeShape.of(GetOrganizationResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Data source to retrieve a specific Auth0 organization by `organization_id` or `name`.
+     * Data source to retrieve a specific Auth0 organization by `organizationId` or `name`.
      * 
      * ## Example Usage
      * 
@@ -4118,7 +4118,7 @@ public final class Auth0Functions {
         return Deployment.getInstance().invoke("auth0:index/getOrganization:getOrganization", TypeShape.of(GetOrganizationResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Data source to retrieve a specific Auth0 organization by `organization_id` or `name`.
+     * Data source to retrieve a specific Auth0 organization by `organizationId` or `name`.
      * 
      * ## Example Usage
      * 
@@ -4507,7 +4507,7 @@ public final class Auth0Functions {
         return Deployment.getInstance().invokeAsync("auth0:index/getPhoneProvider:getPhoneProvider", TypeShape.of(GetPhoneProviderResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Data source to retrieve a specific Auth0 prompt screen partials by `prompt_type`.
+     * Data source to retrieve a specific Auth0 prompt screen partials by `promptType`.
      * 
      * ## Example Usage
      * 
@@ -4547,7 +4547,7 @@ public final class Auth0Functions {
         return getPromptScreenPartials(args, InvokeOptions.Empty);
     }
     /**
-     * Data source to retrieve a specific Auth0 prompt screen partials by `prompt_type`.
+     * Data source to retrieve a specific Auth0 prompt screen partials by `promptType`.
      * 
      * ## Example Usage
      * 
@@ -4587,7 +4587,7 @@ public final class Auth0Functions {
         return getPromptScreenPartialsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Data source to retrieve a specific Auth0 prompt screen partials by `prompt_type`.
+     * Data source to retrieve a specific Auth0 prompt screen partials by `promptType`.
      * 
      * ## Example Usage
      * 
@@ -4627,7 +4627,7 @@ public final class Auth0Functions {
         return Deployment.getInstance().invoke("auth0:index/getPromptScreenPartials:getPromptScreenPartials", TypeShape.of(GetPromptScreenPartialsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Data source to retrieve a specific Auth0 prompt screen partials by `prompt_type`.
+     * Data source to retrieve a specific Auth0 prompt screen partials by `promptType`.
      * 
      * ## Example Usage
      * 
@@ -4667,7 +4667,7 @@ public final class Auth0Functions {
         return Deployment.getInstance().invoke("auth0:index/getPromptScreenPartials:getPromptScreenPartials", TypeShape.of(GetPromptScreenPartialsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Data source to retrieve a specific Auth0 prompt screen partials by `prompt_type`.
+     * Data source to retrieve a specific Auth0 prompt screen partials by `promptType`.
      * 
      * ## Example Usage
      * 
@@ -4707,42 +4707,42 @@ public final class Auth0Functions {
         return Deployment.getInstance().invokeAsync("auth0:index/getPromptScreenPartials:getPromptScreenPartials", TypeShape.of(GetPromptScreenPartialsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Data source to retrieve a specific Auth0 prompt screen settings by `prompt_type` and `screen_name`
+     * Data source to retrieve a specific Auth0 prompt screen settings by `promptType` and `screenName`
      * 
      */
     public static Output<GetPromptScreenRendererResult> getPromptScreenRenderer(GetPromptScreenRendererArgs args) {
         return getPromptScreenRenderer(args, InvokeOptions.Empty);
     }
     /**
-     * Data source to retrieve a specific Auth0 prompt screen settings by `prompt_type` and `screen_name`
+     * Data source to retrieve a specific Auth0 prompt screen settings by `promptType` and `screenName`
      * 
      */
     public static CompletableFuture<GetPromptScreenRendererResult> getPromptScreenRendererPlain(GetPromptScreenRendererPlainArgs args) {
         return getPromptScreenRendererPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Data source to retrieve a specific Auth0 prompt screen settings by `prompt_type` and `screen_name`
+     * Data source to retrieve a specific Auth0 prompt screen settings by `promptType` and `screenName`
      * 
      */
     public static Output<GetPromptScreenRendererResult> getPromptScreenRenderer(GetPromptScreenRendererArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("auth0:index/getPromptScreenRenderer:getPromptScreenRenderer", TypeShape.of(GetPromptScreenRendererResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Data source to retrieve a specific Auth0 prompt screen settings by `prompt_type` and `screen_name`
+     * Data source to retrieve a specific Auth0 prompt screen settings by `promptType` and `screenName`
      * 
      */
     public static Output<GetPromptScreenRendererResult> getPromptScreenRenderer(GetPromptScreenRendererArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("auth0:index/getPromptScreenRenderer:getPromptScreenRenderer", TypeShape.of(GetPromptScreenRendererResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Data source to retrieve a specific Auth0 prompt screen settings by `prompt_type` and `screen_name`
+     * Data source to retrieve a specific Auth0 prompt screen settings by `promptType` and `screenName`
      * 
      */
     public static CompletableFuture<GetPromptScreenRendererResult> getPromptScreenRendererPlain(GetPromptScreenRendererPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("auth0:index/getPromptScreenRenderer:getPromptScreenRenderer", TypeShape.of(GetPromptScreenRendererResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Data source to retrieve a specific Auth0 resource server by `resource_server_id` or `identifier`.
+     * Data source to retrieve a specific Auth0 resource server by `resourceServerId` or `identifier`.
      * 
      * ## Example Usage
      * 
@@ -4788,7 +4788,7 @@ public final class Auth0Functions {
         return getResourceServer(GetResourceServerArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Data source to retrieve a specific Auth0 resource server by `resource_server_id` or `identifier`.
+     * Data source to retrieve a specific Auth0 resource server by `resourceServerId` or `identifier`.
      * 
      * ## Example Usage
      * 
@@ -4834,7 +4834,7 @@ public final class Auth0Functions {
         return getResourceServerPlain(GetResourceServerPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Data source to retrieve a specific Auth0 resource server by `resource_server_id` or `identifier`.
+     * Data source to retrieve a specific Auth0 resource server by `resourceServerId` or `identifier`.
      * 
      * ## Example Usage
      * 
@@ -4880,7 +4880,7 @@ public final class Auth0Functions {
         return getResourceServer(args, InvokeOptions.Empty);
     }
     /**
-     * Data source to retrieve a specific Auth0 resource server by `resource_server_id` or `identifier`.
+     * Data source to retrieve a specific Auth0 resource server by `resourceServerId` or `identifier`.
      * 
      * ## Example Usage
      * 
@@ -4926,7 +4926,7 @@ public final class Auth0Functions {
         return getResourceServerPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Data source to retrieve a specific Auth0 resource server by `resource_server_id` or `identifier`.
+     * Data source to retrieve a specific Auth0 resource server by `resourceServerId` or `identifier`.
      * 
      * ## Example Usage
      * 
@@ -4972,7 +4972,7 @@ public final class Auth0Functions {
         return Deployment.getInstance().invoke("auth0:index/getResourceServer:getResourceServer", TypeShape.of(GetResourceServerResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Data source to retrieve a specific Auth0 resource server by `resource_server_id` or `identifier`.
+     * Data source to retrieve a specific Auth0 resource server by `resourceServerId` or `identifier`.
      * 
      * ## Example Usage
      * 
@@ -5018,7 +5018,7 @@ public final class Auth0Functions {
         return Deployment.getInstance().invoke("auth0:index/getResourceServer:getResourceServer", TypeShape.of(GetResourceServerResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Data source to retrieve a specific Auth0 resource server by `resource_server_id` or `identifier`.
+     * Data source to retrieve a specific Auth0 resource server by `resourceServerId` or `identifier`.
      * 
      * ## Example Usage
      * 
@@ -5064,7 +5064,7 @@ public final class Auth0Functions {
         return Deployment.getInstance().invokeAsync("auth0:index/getResourceServer:getResourceServer", TypeShape.of(GetResourceServerResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Data source to retrieve a specific Auth0 role by `role_id` or `name`.
+     * Data source to retrieve a specific Auth0 role by `roleId` or `name`.
      * 
      * ## Example Usage
      * 
@@ -5110,7 +5110,7 @@ public final class Auth0Functions {
         return getRole(GetRoleArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Data source to retrieve a specific Auth0 role by `role_id` or `name`.
+     * Data source to retrieve a specific Auth0 role by `roleId` or `name`.
      * 
      * ## Example Usage
      * 
@@ -5156,7 +5156,7 @@ public final class Auth0Functions {
         return getRolePlain(GetRolePlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Data source to retrieve a specific Auth0 role by `role_id` or `name`.
+     * Data source to retrieve a specific Auth0 role by `roleId` or `name`.
      * 
      * ## Example Usage
      * 
@@ -5202,7 +5202,7 @@ public final class Auth0Functions {
         return getRole(args, InvokeOptions.Empty);
     }
     /**
-     * Data source to retrieve a specific Auth0 role by `role_id` or `name`.
+     * Data source to retrieve a specific Auth0 role by `roleId` or `name`.
      * 
      * ## Example Usage
      * 
@@ -5248,7 +5248,7 @@ public final class Auth0Functions {
         return getRolePlain(args, InvokeOptions.Empty);
     }
     /**
-     * Data source to retrieve a specific Auth0 role by `role_id` or `name`.
+     * Data source to retrieve a specific Auth0 role by `roleId` or `name`.
      * 
      * ## Example Usage
      * 
@@ -5294,7 +5294,7 @@ public final class Auth0Functions {
         return Deployment.getInstance().invoke("auth0:index/getRole:getRole", TypeShape.of(GetRoleResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Data source to retrieve a specific Auth0 role by `role_id` or `name`.
+     * Data source to retrieve a specific Auth0 role by `roleId` or `name`.
      * 
      * ## Example Usage
      * 
@@ -5340,7 +5340,7 @@ public final class Auth0Functions {
         return Deployment.getInstance().invoke("auth0:index/getRole:getRole", TypeShape.of(GetRoleResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Data source to retrieve a specific Auth0 role by `role_id` or `name`.
+     * Data source to retrieve a specific Auth0 role by `roleId` or `name`.
      * 
      * ## Example Usage
      * 
@@ -6104,98 +6104,98 @@ public final class Auth0Functions {
         return Deployment.getInstance().invokeAsync("auth0:index/getTokenExchangeProfile:getTokenExchangeProfile", TypeShape.of(GetTokenExchangeProfileResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Data source to retrieve a specific Auth0 user by `user_id` or by `lucene query`. If filtered by Lucene Query, it should include sufficient filters to retrieve a unique user.
+     * Data source to retrieve a specific Auth0 user by `userId` or by `lucene query`. If filtered by Lucene Query, it should include sufficient filters to retrieve a unique user.
      * 
      */
     public static Output<GetUserResult> getUser() {
         return getUser(GetUserArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Data source to retrieve a specific Auth0 user by `user_id` or by `lucene query`. If filtered by Lucene Query, it should include sufficient filters to retrieve a unique user.
+     * Data source to retrieve a specific Auth0 user by `userId` or by `lucene query`. If filtered by Lucene Query, it should include sufficient filters to retrieve a unique user.
      * 
      */
     public static CompletableFuture<GetUserResult> getUserPlain() {
         return getUserPlain(GetUserPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Data source to retrieve a specific Auth0 user by `user_id` or by `lucene query`. If filtered by Lucene Query, it should include sufficient filters to retrieve a unique user.
+     * Data source to retrieve a specific Auth0 user by `userId` or by `lucene query`. If filtered by Lucene Query, it should include sufficient filters to retrieve a unique user.
      * 
      */
     public static Output<GetUserResult> getUser(GetUserArgs args) {
         return getUser(args, InvokeOptions.Empty);
     }
     /**
-     * Data source to retrieve a specific Auth0 user by `user_id` or by `lucene query`. If filtered by Lucene Query, it should include sufficient filters to retrieve a unique user.
+     * Data source to retrieve a specific Auth0 user by `userId` or by `lucene query`. If filtered by Lucene Query, it should include sufficient filters to retrieve a unique user.
      * 
      */
     public static CompletableFuture<GetUserResult> getUserPlain(GetUserPlainArgs args) {
         return getUserPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Data source to retrieve a specific Auth0 user by `user_id` or by `lucene query`. If filtered by Lucene Query, it should include sufficient filters to retrieve a unique user.
+     * Data source to retrieve a specific Auth0 user by `userId` or by `lucene query`. If filtered by Lucene Query, it should include sufficient filters to retrieve a unique user.
      * 
      */
     public static Output<GetUserResult> getUser(GetUserArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("auth0:index/getUser:getUser", TypeShape.of(GetUserResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Data source to retrieve a specific Auth0 user by `user_id` or by `lucene query`. If filtered by Lucene Query, it should include sufficient filters to retrieve a unique user.
+     * Data source to retrieve a specific Auth0 user by `userId` or by `lucene query`. If filtered by Lucene Query, it should include sufficient filters to retrieve a unique user.
      * 
      */
     public static Output<GetUserResult> getUser(GetUserArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("auth0:index/getUser:getUser", TypeShape.of(GetUserResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Data source to retrieve a specific Auth0 user by `user_id` or by `lucene query`. If filtered by Lucene Query, it should include sufficient filters to retrieve a unique user.
+     * Data source to retrieve a specific Auth0 user by `userId` or by `lucene query`. If filtered by Lucene Query, it should include sufficient filters to retrieve a unique user.
      * 
      */
     public static CompletableFuture<GetUserResult> getUserPlain(GetUserPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("auth0:index/getUser:getUser", TypeShape.of(GetUserResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Data source to retrieve a specific Auth0 User Attribute Profile by `user_attribute_profile_id` or `name`.
+     * Data source to retrieve a specific Auth0 User Attribute Profile by `userAttributeProfileId` or `name`.
      * 
      */
     public static Output<GetUserAttributeProfileResult> getUserAttributeProfile() {
         return getUserAttributeProfile(GetUserAttributeProfileArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Data source to retrieve a specific Auth0 User Attribute Profile by `user_attribute_profile_id` or `name`.
+     * Data source to retrieve a specific Auth0 User Attribute Profile by `userAttributeProfileId` or `name`.
      * 
      */
     public static CompletableFuture<GetUserAttributeProfileResult> getUserAttributeProfilePlain() {
         return getUserAttributeProfilePlain(GetUserAttributeProfilePlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Data source to retrieve a specific Auth0 User Attribute Profile by `user_attribute_profile_id` or `name`.
+     * Data source to retrieve a specific Auth0 User Attribute Profile by `userAttributeProfileId` or `name`.
      * 
      */
     public static Output<GetUserAttributeProfileResult> getUserAttributeProfile(GetUserAttributeProfileArgs args) {
         return getUserAttributeProfile(args, InvokeOptions.Empty);
     }
     /**
-     * Data source to retrieve a specific Auth0 User Attribute Profile by `user_attribute_profile_id` or `name`.
+     * Data source to retrieve a specific Auth0 User Attribute Profile by `userAttributeProfileId` or `name`.
      * 
      */
     public static CompletableFuture<GetUserAttributeProfileResult> getUserAttributeProfilePlain(GetUserAttributeProfilePlainArgs args) {
         return getUserAttributeProfilePlain(args, InvokeOptions.Empty);
     }
     /**
-     * Data source to retrieve a specific Auth0 User Attribute Profile by `user_attribute_profile_id` or `name`.
+     * Data source to retrieve a specific Auth0 User Attribute Profile by `userAttributeProfileId` or `name`.
      * 
      */
     public static Output<GetUserAttributeProfileResult> getUserAttributeProfile(GetUserAttributeProfileArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("auth0:index/getUserAttributeProfile:getUserAttributeProfile", TypeShape.of(GetUserAttributeProfileResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Data source to retrieve a specific Auth0 User Attribute Profile by `user_attribute_profile_id` or `name`.
+     * Data source to retrieve a specific Auth0 User Attribute Profile by `userAttributeProfileId` or `name`.
      * 
      */
     public static Output<GetUserAttributeProfileResult> getUserAttributeProfile(GetUserAttributeProfileArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("auth0:index/getUserAttributeProfile:getUserAttributeProfile", TypeShape.of(GetUserAttributeProfileResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Data source to retrieve a specific Auth0 User Attribute Profile by `user_attribute_profile_id` or `name`.
+     * Data source to retrieve a specific Auth0 User Attribute Profile by `userAttributeProfileId` or `name`.
      * 
      */
     public static CompletableFuture<GetUserAttributeProfileResult> getUserAttributeProfilePlain(GetUserAttributeProfilePlainArgs args, InvokeOptions options) {

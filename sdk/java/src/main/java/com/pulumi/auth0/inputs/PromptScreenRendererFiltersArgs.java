@@ -47,14 +47,14 @@ public final class PromptScreenRendererFiltersArgs extends com.pulumi.resources.
     }
 
     /**
-     * Type of match to apply. Options: `includes_any`, `excludes_any`.
+     * Type of match to apply. Options: `includesAny`, `excludesAny`.
      * 
      */
     @Import(name="matchType", required=true)
     private Output<String> matchType;
 
     /**
-     * @return Type of match to apply. Options: `includes_any`, `excludes_any`.
+     * @return Type of match to apply. Options: `includesAny`, `excludesAny`.
      * 
      */
     public Output<String> matchType() {
@@ -146,7 +146,7 @@ public final class PromptScreenRendererFiltersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param matchType Type of match to apply. Options: `includes_any`, `excludes_any`.
+         * @param matchType Type of match to apply. Options: `includesAny`, `excludesAny`.
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class PromptScreenRendererFiltersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param matchType Type of match to apply. Options: `includes_any`, `excludes_any`.
+         * @param matchType Type of match to apply. Options: `includesAny`, `excludesAny`.
          * 
          * @return builder
          * 

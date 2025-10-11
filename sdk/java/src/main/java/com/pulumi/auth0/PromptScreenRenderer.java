@@ -133,14 +133,14 @@ public class PromptScreenRenderer extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.defaultHeadTagsDisabled);
     }
     /**
-     * Optional filters to apply rendering rules to specific entities. `match_type` and at least one of the entity arrays are required.
+     * Optional filters to apply rendering rules to specific entities. `matchType` and at least one of the entity arrays are required.
      * 
      */
     @Export(name="filters", refs={PromptScreenRendererFilters.class}, tree="[0]")
     private Output</* @Nullable */ PromptScreenRendererFilters> filters;
 
     /**
-     * @return Optional filters to apply rendering rules to specific entities. `match_type` and at least one of the entity arrays are required.
+     * @return Optional filters to apply rendering rules to specific entities. `matchType` and at least one of the entity arrays are required.
      * 
      */
     public Output<Optional<PromptScreenRendererFilters>> filters() {
