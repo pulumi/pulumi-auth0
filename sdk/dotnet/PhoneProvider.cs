@@ -15,7 +15,7 @@ namespace Pulumi.Auth0
     /// !&gt; This resource manages to create a max of 1 phone provider for a tenant.
     /// To avoid potential issues, it is recommended not to try creating multiple phone providers on the same tenant.
     /// 
-    /// !&gt; If you are using the `auth0.PhoneProvider` resource to create a `custom` phone provider, you must ensure an action is created first with `custom-phone-provider` as the supported_triggers
+    /// !&gt; If you are using the `auth0.PhoneProvider` resource to create a `Custom` phone provider, you must ensure an action is created first with `custom-phone-provider` as the SupportedTriggers
     /// 
     /// ## Example Usage
     /// 
@@ -135,7 +135,7 @@ namespace Pulumi.Auth0
         public Output<bool?> Disabled { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the phone provider. Options include `twilio`, `custom`.
+        /// Name of the phone provider. Options include `Twilio`, `Custom`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -211,7 +211,7 @@ namespace Pulumi.Auth0
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// Name of the phone provider. Options include `twilio`, `custom`.
+        /// Name of the phone provider. Options include `Twilio`, `Custom`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -249,7 +249,7 @@ namespace Pulumi.Auth0
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// Name of the phone provider. Options include `twilio`, `custom`.
+        /// Name of the phone provider. Options include `Twilio`, `Custom`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

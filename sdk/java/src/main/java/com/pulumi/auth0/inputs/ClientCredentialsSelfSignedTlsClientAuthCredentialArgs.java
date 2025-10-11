@@ -32,14 +32,14 @@ public final class ClientCredentialsSelfSignedTlsClientAuthCredentialArgs extend
     }
 
     /**
-     * Credential type. Supported types: `x509_cert`.
+     * Credential type. Supported types: `x509Cert`.
      * 
      */
     @Import(name="credentialType")
     private @Nullable Output<String> credentialType;
 
     /**
-     * @return Credential type. Supported types: `x509_cert`.
+     * @return Credential type. Supported types: `x509Cert`.
      * 
      */
     public Optional<Output<String>> credentialType() {
@@ -189,7 +189,7 @@ public final class ClientCredentialsSelfSignedTlsClientAuthCredentialArgs extend
         }
 
         /**
-         * @param credentialType Credential type. Supported types: `x509_cert`.
+         * @param credentialType Credential type. Supported types: `x509Cert`.
          * 
          * @return builder
          * 
@@ -200,7 +200,7 @@ public final class ClientCredentialsSelfSignedTlsClientAuthCredentialArgs extend
         }
 
         /**
-         * @param credentialType Credential type. Supported types: `x509_cert`.
+         * @param credentialType Credential type. Supported types: `x509Cert`.
          * 
          * @return builder
          * 

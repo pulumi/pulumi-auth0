@@ -12,7 +12,7 @@ namespace Pulumi.Auth0
     public static class GetClient
     {
         /// <summary>
-        /// Data source to retrieve a specific Auth0 application client by `client_id` or `name`.
+        /// Data source to retrieve a specific Auth0 application client by `ClientId` or `Name`.
         /// 
         /// ## Example Usage
         /// 
@@ -43,7 +43,7 @@ namespace Pulumi.Auth0
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetClientResult>("auth0:index/getClient:getClient", args ?? new GetClientArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source to retrieve a specific Auth0 application client by `client_id` or `name`.
+        /// Data source to retrieve a specific Auth0 application client by `ClientId` or `Name`.
         /// 
         /// ## Example Usage
         /// 
@@ -74,7 +74,7 @@ namespace Pulumi.Auth0
             => global::Pulumi.Deployment.Instance.Invoke<GetClientResult>("auth0:index/getClient:getClient", args ?? new GetClientInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source to retrieve a specific Auth0 application client by `client_id` or `name`.
+        /// Data source to retrieve a specific Auth0 application client by `ClientId` or `Name`.
         /// 
         /// ## Example Usage
         /// 
@@ -109,13 +109,13 @@ namespace Pulumi.Auth0
     public sealed class GetClientArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of the client. If not provided, `name` must be set.
+        /// The ID of the client. If not provided, `Name` must be set.
         /// </summary>
         [Input("clientId")]
         public string? ClientId { get; set; }
 
         /// <summary>
-        /// The name of the client. If not provided, `client_id` must be set.
+        /// The name of the client. If not provided, `ClientId` must be set.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
@@ -129,13 +129,13 @@ namespace Pulumi.Auth0
     public sealed class GetClientInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of the client. If not provided, `name` must be set.
+        /// The ID of the client. If not provided, `Name` must be set.
         /// </summary>
         [Input("clientId")]
         public Input<string>? ClientId { get; set; }
 
         /// <summary>
-        /// The name of the client. If not provided, `client_id` must be set.
+        /// The name of the client. If not provided, `ClientId` must be set.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -167,7 +167,7 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly ImmutableArray<string> AllowedOrigins;
         /// <summary>
-        /// Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+        /// Type of application the client represents. Possible values are: `Native`, `Spa`, `RegularWeb`, `NonInteractive`, `ResourceServer`,`SsoIntegration`. Specific SSO integrations types accepted as well are: `Rms`, `Box`, `Cloudbees`, `Concur`, `Dropbox`, `Mscrm`, `Echosign`, `Egnyte`, `Newrelic`, `Office365`, `Salesforce`, `Sentry`, `Sharepoint`, `Slack`, `Springcm`, `Zendesk`, `Zoom`.
         /// </summary>
         public readonly string AppType;
         /// <summary>
@@ -183,7 +183,7 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClientClientAuthenticationMethodResult> ClientAuthenticationMethods;
         /// <summary>
-        /// The ID of the client. If not provided, `name` must be set.
+        /// The ID of the client. If not provided, `Name` must be set.
         /// </summary>
         public readonly string? ClientId;
         /// <summary>
@@ -192,11 +192,11 @@ namespace Pulumi.Auth0
         public readonly ImmutableDictionary<string, string> ClientMetadata;
         public readonly string ClientSecret;
         /// <summary>
-        /// Defines the compliance level for this client, which may restrict it's capabilities. Can be one of `none`, `fapi1_adv_pkj_par`, `fapi1_adv_mtls_par`.
+        /// Defines the compliance level for this client, which may restrict it's capabilities. Can be one of `None`, `Fapi1AdvPkjPar`, `Fapi1AdvMtlsPar`.
         /// </summary>
         public readonly string ComplianceLevel;
         /// <summary>
-        /// Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
+        /// Whether this client can be used to make cross-origin authentication requests (`True`) or it is not allowed to make such requests (`False`).
         /// </summary>
         public readonly bool CrossOriginAuth;
         /// <summary>
@@ -244,7 +244,7 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly bool IsFirstParty;
         /// <summary>
-        /// Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `client_secret_post` or `client_secret_basic`. Setting this property when creating the resource, will default the authentication method to `client_secret_post`. To change the authentication method to `client_secret_basic` use the `auth0.ClientCredentials` resource.
+        /// Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `ClientSecretPost` or `ClientSecretBasic`. Setting this property when creating the resource, will default the authentication method to `ClientSecretPost`. To change the authentication method to `ClientSecretBasic` use the `auth0.ClientCredentials` resource.
         /// </summary>
         public readonly bool IsTokenEndpointIpHeaderTrusted;
         /// <summary>
@@ -260,11 +260,11 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClientMobileResult> Mobiles;
         /// <summary>
-        /// The name of the client. If not provided, `client_id` must be set.
+        /// The name of the client. If not provided, `ClientId` must be set.
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `app_type`.
+        /// Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `False` in order to change the `AppType`.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClientNativeSocialLoginResult> NativeSocialLogins;
         /// <summary>
@@ -280,11 +280,11 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClientOidcLogoutResult> OidcLogouts;
         /// <summary>
-        /// Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.
+        /// Defines how to proceed during an authentication transaction when `OrganizationUsage = "require"`. Can be `NoPrompt` (default), `PreLoginPrompt` or  `PostLoginPrompt`.
         /// </summary>
         public readonly string OrganizationRequireBehavior;
         /// <summary>
-        /// Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+        /// Defines how to proceed during an authentication transaction with regards to an organization. Can be `Deny` (default), `Allow` or `Require`.
         /// </summary>
         public readonly string OrganizationUsage;
         /// <summary>
@@ -325,7 +325,7 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly bool SsoDisabled;
         /// <summary>
-        /// The authentication method for the token endpoint. Results include `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic), Managing a client's authentication method can be done via the `auth0.ClientCredentials` resource.
+        /// The authentication method for the token endpoint. Results include `None` (public client without a client secret), `ClientSecretPost` (client uses HTTP POST parameters), `ClientSecretBasic` (client uses HTTP Basic), Managing a client's authentication method can be done via the `auth0.ClientCredentials` resource.
         /// </summary>
         public readonly string TokenEndpointAuthMethod;
         /// <summary>

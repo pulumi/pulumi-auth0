@@ -18,7 +18,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The trigger version. This regulates which `runtime` versions are supported.
+        /// The trigger version. This regulates which `Runtime` versions are supported.
         /// </summary>
         public readonly string Version;
 

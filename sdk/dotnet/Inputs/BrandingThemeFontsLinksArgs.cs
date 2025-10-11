@@ -13,7 +13,7 @@ namespace Pulumi.Auth0.Inputs
     public sealed class BrandingThemeFontsLinksArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Links bold. Defaults to `true`.
+        /// Links bold. Defaults to `True`.
         /// </summary>
         [Input("bold")]
         public Input<bool>? Bold { get; set; }

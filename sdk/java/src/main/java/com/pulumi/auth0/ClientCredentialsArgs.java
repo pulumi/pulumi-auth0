@@ -21,14 +21,14 @@ public final class ClientCredentialsArgs extends com.pulumi.resources.ResourceAr
     public static final ClientCredentialsArgs Empty = new ClientCredentialsArgs();
 
     /**
-     * Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `client_secret_post` (confidential client using HTTP POST parameters), `client_secret_basic` (confidential client using HTTP Basic), `private_key_jwt` (confidential client using a Private Key JWT), `tls_client_auth` (confidential client using CA-based mTLS authentication), `self_signed_tls_client_auth` (confidential client using mTLS authentication utilizing a self-signed certificate).
+     * Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `clientSecretPost` (confidential client using HTTP POST parameters), `clientSecretBasic` (confidential client using HTTP Basic), `privateKeyJwt` (confidential client using a Private Key JWT), `tlsClientAuth` (confidential client using CA-based mTLS authentication), `selfSignedTlsClientAuth` (confidential client using mTLS authentication utilizing a self-signed certificate).
      * 
      */
     @Import(name="authenticationMethod")
     private @Nullable Output<String> authenticationMethod;
 
     /**
-     * @return Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `client_secret_post` (confidential client using HTTP POST parameters), `client_secret_basic` (confidential client using HTTP Basic), `private_key_jwt` (confidential client using a Private Key JWT), `tls_client_auth` (confidential client using CA-based mTLS authentication), `self_signed_tls_client_auth` (confidential client using mTLS authentication utilizing a self-signed certificate).
+     * @return Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `clientSecretPost` (confidential client using HTTP POST parameters), `clientSecretBasic` (confidential client using HTTP Basic), `privateKeyJwt` (confidential client using a Private Key JWT), `tlsClientAuth` (confidential client using CA-based mTLS authentication), `selfSignedTlsClientAuth` (confidential client using mTLS authentication utilizing a self-signed certificate).
      * 
      */
     public Optional<Output<String>> authenticationMethod() {
@@ -58,14 +58,14 @@ public final class ClientCredentialsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Defines `private_key_jwt` client authentication method.
+     * Defines `privateKeyJwt` client authentication method.
      * 
      */
     @Import(name="privateKeyJwt")
     private @Nullable Output<ClientCredentialsPrivateKeyJwtArgs> privateKeyJwt;
 
     /**
-     * @return Defines `private_key_jwt` client authentication method.
+     * @return Defines `privateKeyJwt` client authentication method.
      * 
      */
     public Optional<Output<ClientCredentialsPrivateKeyJwtArgs>> privateKeyJwt() {
@@ -73,14 +73,14 @@ public final class ClientCredentialsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Defines `tls_client_auth` client authentication method.
+     * Defines `tlsClientAuth` client authentication method.
      * 
      */
     @Import(name="selfSignedTlsClientAuth")
     private @Nullable Output<ClientCredentialsSelfSignedTlsClientAuthArgs> selfSignedTlsClientAuth;
 
     /**
-     * @return Defines `tls_client_auth` client authentication method.
+     * @return Defines `tlsClientAuth` client authentication method.
      * 
      */
     public Optional<Output<ClientCredentialsSelfSignedTlsClientAuthArgs>> selfSignedTlsClientAuth() {
@@ -103,14 +103,14 @@ public final class ClientCredentialsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Defines `tls_client_auth` client authentication method.
+     * Defines `tlsClientAuth` client authentication method.
      * 
      */
     @Import(name="tlsClientAuth")
     private @Nullable Output<ClientCredentialsTlsClientAuthArgs> tlsClientAuth;
 
     /**
-     * @return Defines `tls_client_auth` client authentication method.
+     * @return Defines `tlsClientAuth` client authentication method.
      * 
      */
     public Optional<Output<ClientCredentialsTlsClientAuthArgs>> tlsClientAuth() {
@@ -148,7 +148,7 @@ public final class ClientCredentialsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param authenticationMethod Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `client_secret_post` (confidential client using HTTP POST parameters), `client_secret_basic` (confidential client using HTTP Basic), `private_key_jwt` (confidential client using a Private Key JWT), `tls_client_auth` (confidential client using CA-based mTLS authentication), `self_signed_tls_client_auth` (confidential client using mTLS authentication utilizing a self-signed certificate).
+         * @param authenticationMethod Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `clientSecretPost` (confidential client using HTTP POST parameters), `clientSecretBasic` (confidential client using HTTP Basic), `privateKeyJwt` (confidential client using a Private Key JWT), `tlsClientAuth` (confidential client using CA-based mTLS authentication), `selfSignedTlsClientAuth` (confidential client using mTLS authentication utilizing a self-signed certificate).
          * 
          * @return builder
          * 
@@ -159,7 +159,7 @@ public final class ClientCredentialsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param authenticationMethod Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `client_secret_post` (confidential client using HTTP POST parameters), `client_secret_basic` (confidential client using HTTP Basic), `private_key_jwt` (confidential client using a Private Key JWT), `tls_client_auth` (confidential client using CA-based mTLS authentication), `self_signed_tls_client_auth` (confidential client using mTLS authentication utilizing a self-signed certificate).
+         * @param authenticationMethod Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `clientSecretPost` (confidential client using HTTP POST parameters), `clientSecretBasic` (confidential client using HTTP Basic), `privateKeyJwt` (confidential client using a Private Key JWT), `tlsClientAuth` (confidential client using CA-based mTLS authentication), `selfSignedTlsClientAuth` (confidential client using mTLS authentication utilizing a self-signed certificate).
          * 
          * @return builder
          * 
@@ -199,7 +199,7 @@ public final class ClientCredentialsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param privateKeyJwt Defines `private_key_jwt` client authentication method.
+         * @param privateKeyJwt Defines `privateKeyJwt` client authentication method.
          * 
          * @return builder
          * 
@@ -210,7 +210,7 @@ public final class ClientCredentialsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param privateKeyJwt Defines `private_key_jwt` client authentication method.
+         * @param privateKeyJwt Defines `privateKeyJwt` client authentication method.
          * 
          * @return builder
          * 
@@ -220,7 +220,7 @@ public final class ClientCredentialsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param selfSignedTlsClientAuth Defines `tls_client_auth` client authentication method.
+         * @param selfSignedTlsClientAuth Defines `tlsClientAuth` client authentication method.
          * 
          * @return builder
          * 
@@ -231,7 +231,7 @@ public final class ClientCredentialsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param selfSignedTlsClientAuth Defines `tls_client_auth` client authentication method.
+         * @param selfSignedTlsClientAuth Defines `tlsClientAuth` client authentication method.
          * 
          * @return builder
          * 
@@ -262,7 +262,7 @@ public final class ClientCredentialsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param tlsClientAuth Defines `tls_client_auth` client authentication method.
+         * @param tlsClientAuth Defines `tlsClientAuth` client authentication method.
          * 
          * @return builder
          * 
@@ -273,7 +273,7 @@ public final class ClientCredentialsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param tlsClientAuth Defines `tls_client_auth` client authentication method.
+         * @param tlsClientAuth Defines `tlsClientAuth` client authentication method.
          * 
          * @return builder
          * 

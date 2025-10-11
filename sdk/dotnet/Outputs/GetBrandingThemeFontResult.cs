@@ -34,7 +34,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetBrandingThemeFontLinkResult> Links;
         /// <summary>
-        /// Links style. Defaults to `normal`.
+        /// Links style. Defaults to `Normal`.
         /// </summary>
         public readonly string LinksStyle;
         /// <summary>

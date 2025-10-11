@@ -18,7 +18,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string? CreatedAt;
         /// <summary>
-        /// Credential type. Supported types: `cert_subject_dn`.
+        /// Credential type. Supported types: `CertSubjectDn`.
         /// </summary>
         public readonly string CredentialType;
         /// <summary>
@@ -30,11 +30,11 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// PEM-formatted X509 certificate. Must be JSON escaped. Mutually exlusive with `subject_dn` property.
+        /// PEM-formatted X509 certificate. Must be JSON escaped. Mutually exlusive with `SubjectDn` property.
         /// </summary>
         public readonly string? Pem;
         /// <summary>
-        /// Subject Distinguished Name. Mutually exlusive with `pem` property.
+        /// Subject Distinguished Name. Mutually exlusive with `Pem` property.
         /// </summary>
         public readonly string? SubjectDn;
         /// <summary>

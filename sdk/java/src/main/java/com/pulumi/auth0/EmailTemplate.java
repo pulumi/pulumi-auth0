@@ -142,14 +142,14 @@ public class EmailTemplate extends com.pulumi.resources.CustomResource {
         return this.from;
     }
     /**
-     * Whether the `reset_email` and `verify_email` templates should include the user&#39;s email address as the email parameter in the `returnUrl` (true) or whether no email address should be included in the redirect (false). Defaults to `true`.
+     * Whether the `resetEmail` and `verifyEmail` templates should include the user&#39;s email address as the email parameter in the `returnUrl` (true) or whether no email address should be included in the redirect (false). Defaults to `true`.
      * 
      */
     @Export(name="includeEmailInRedirect", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> includeEmailInRedirect;
 
     /**
-     * @return Whether the `reset_email` and `verify_email` templates should include the user&#39;s email address as the email parameter in the `returnUrl` (true) or whether no email address should be included in the redirect (false). Defaults to `true`.
+     * @return Whether the `resetEmail` and `verifyEmail` templates should include the user&#39;s email address as the email parameter in the `returnUrl` (true) or whether no email address should be included in the redirect (false). Defaults to `true`.
      * 
      */
     public Output<Boolean> includeEmailInRedirect() {
@@ -198,14 +198,14 @@ public class EmailTemplate extends com.pulumi.resources.CustomResource {
         return this.syntax;
     }
     /**
-     * Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `reset_email_by_code`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), `password_reset` (legacy), or `async_approval`.
+     * Template name. Options include `verifyEmail`, `verifyEmailByCode`, `resetEmail`, `resetEmailByCode`, `welcomeEmail`, `blockedAccount`, `stolenCredentials`, `enrollmentEmail`, `mfaOobCode`, `userInvitation`, `changePassword` (legacy), `passwordReset` (legacy), or `asyncApproval`.
      * 
      */
     @Export(name="template", refs={String.class}, tree="[0]")
     private Output<String> template;
 
     /**
-     * @return Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `reset_email_by_code`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), `password_reset` (legacy), or `async_approval`.
+     * @return Template name. Options include `verifyEmail`, `verifyEmailByCode`, `resetEmail`, `resetEmailByCode`, `welcomeEmail`, `blockedAccount`, `stolenCredentials`, `enrollmentEmail`, `mfaOobCode`, `userInvitation`, `changePassword` (legacy), `passwordReset` (legacy), or `asyncApproval`.
      * 
      */
     public Output<String> template() {

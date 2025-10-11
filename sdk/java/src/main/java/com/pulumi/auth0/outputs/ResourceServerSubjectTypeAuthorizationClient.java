@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ResourceServerSubjectTypeAuthorizationClient {
     /**
-     * @return Client flows policy. One of `deny_all`, `require_client_grant`.
+     * @return Client flows policy. One of `denyAll`, `requireClientGrant`.
      * 
      */
     private @Nullable String policy;
 
     private ResourceServerSubjectTypeAuthorizationClient() {}
     /**
-     * @return Client flows policy. One of `deny_all`, `require_client_grant`.
+     * @return Client flows policy. One of `denyAll`, `requireClientGrant`.
      * 
      */
     public Optional<String> policy() {

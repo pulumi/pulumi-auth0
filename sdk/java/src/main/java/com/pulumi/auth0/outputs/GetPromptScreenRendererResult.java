@@ -24,7 +24,7 @@ public final class GetPromptScreenRendererResult {
      */
     private Boolean defaultHeadTagsDisabled;
     /**
-     * @return Optional filters to apply rendering rules to specific entities. `match_type` and at least one of the entity arrays are required.
+     * @return Optional filters to apply rendering rules to specific entities. `matchType` and at least one of the entity arrays are required.
      * 
      */
     private List<GetPromptScreenRendererFilter> filters;
@@ -80,7 +80,7 @@ public final class GetPromptScreenRendererResult {
         return this.defaultHeadTagsDisabled;
     }
     /**
-     * @return Optional filters to apply rendering rules to specific entities. `match_type` and at least one of the entity arrays are required.
+     * @return Optional filters to apply rendering rules to specific entities. `matchType` and at least one of the entity arrays are required.
      * 
      */
     public List<GetPromptScreenRendererFilter> filters() {

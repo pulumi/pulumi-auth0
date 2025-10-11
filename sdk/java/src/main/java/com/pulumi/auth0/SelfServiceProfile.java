@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
 /**
  * With this resource, you can create and manage Self-Service Profile for a tenant.
  * 
- * &gt; user_attribute_profile_id field only available for [EA](https://auth0.com/docs/troubleshoot/product-lifecycle/product-release-stages#early-access) users.
+ * &gt; userAttributeProfileId field only available for [EA](https://auth0.com/docs/troubleshoot/product-lifecycle/product-release-stages#early-access) users.
  * 
  * ## Example Usage
  * 

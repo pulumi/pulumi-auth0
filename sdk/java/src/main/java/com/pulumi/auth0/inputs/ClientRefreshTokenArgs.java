@@ -66,14 +66,14 @@ public final class ClientRefreshTokenArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Whether refresh tokens should remain valid indefinitely. If false, `token_lifetime` should also be set.
+     * Whether refresh tokens should remain valid indefinitely. If false, `tokenLifetime` should also be set.
      * 
      */
     @Import(name="infiniteTokenLifetime")
     private @Nullable Output<Boolean> infiniteTokenLifetime;
 
     /**
-     * @return Whether refresh tokens should remain valid indefinitely. If false, `token_lifetime` should also be set.
+     * @return Whether refresh tokens should remain valid indefinitely. If false, `tokenLifetime` should also be set.
      * 
      */
     public Optional<Output<Boolean>> infiniteTokenLifetime() {
@@ -235,7 +235,7 @@ public final class ClientRefreshTokenArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param infiniteTokenLifetime Whether refresh tokens should remain valid indefinitely. If false, `token_lifetime` should also be set.
+         * @param infiniteTokenLifetime Whether refresh tokens should remain valid indefinitely. If false, `tokenLifetime` should also be set.
          * 
          * @return builder
          * 
@@ -246,7 +246,7 @@ public final class ClientRefreshTokenArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param infiniteTokenLifetime Whether refresh tokens should remain valid indefinitely. If false, `token_lifetime` should also be set.
+         * @param infiniteTokenLifetime Whether refresh tokens should remain valid indefinitely. If false, `tokenLifetime` should also be set.
          * 
          * @return builder
          * 

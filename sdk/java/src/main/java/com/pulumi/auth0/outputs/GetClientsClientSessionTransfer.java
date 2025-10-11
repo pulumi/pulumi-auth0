@@ -13,7 +13,7 @@ import java.util.Objects;
 @CustomType
 public final class GetClientsClientSessionTransfer {
     /**
-     * @return Indicates whether the application is allowed to use a refresh token when using a session_transfer_token session.
+     * @return Indicates whether the application is allowed to use a refresh token when using a sessionTransferToken session.
      * 
      */
     private Boolean allowRefreshToken;
@@ -29,7 +29,7 @@ public final class GetClientsClientSessionTransfer {
      */
     private Boolean enforceCascadeRevocation;
     /**
-     * @return Configures the level of device binding enforced when a session_transfer_token is consumed. Can be one of `ip`, `asn` or `none`.
+     * @return Configures the level of device binding enforced when a sessionTransferToken is consumed. Can be one of `ip`, `asn` or `none`.
      * 
      */
     private String enforceDeviceBinding;
@@ -41,7 +41,7 @@ public final class GetClientsClientSessionTransfer {
 
     private GetClientsClientSessionTransfer() {}
     /**
-     * @return Indicates whether the application is allowed to use a refresh token when using a session_transfer_token session.
+     * @return Indicates whether the application is allowed to use a refresh token when using a sessionTransferToken session.
      * 
      */
     public Boolean allowRefreshToken() {
@@ -65,7 +65,7 @@ public final class GetClientsClientSessionTransfer {
         return this.enforceCascadeRevocation;
     }
     /**
-     * @return Configures the level of device binding enforced when a session_transfer_token is consumed. Can be one of `ip`, `asn` or `none`.
+     * @return Configures the level of device binding enforced when a sessionTransferToken is consumed. Can be one of `ip`, `asn` or `none`.
      * 
      */
     public String enforceDeviceBinding() {

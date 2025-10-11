@@ -14,7 +14,7 @@ namespace Pulumi.Auth0.Outputs
     public sealed class GetBrandingThemeFontSubtitleResult
     {
         /// <summary>
-        /// Subtitle bold. Defaults to `false`.
+        /// Subtitle bold. Defaults to `False`.
         /// </summary>
         public readonly bool Bold;
         /// <summary>

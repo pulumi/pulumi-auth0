@@ -17,14 +17,14 @@ public final class ClientAddonsFirebaseArgs extends com.pulumi.resources.Resourc
     public static final ClientAddonsFirebaseArgs Empty = new ClientAddonsFirebaseArgs();
 
     /**
-     * ID of the Service Account you have created (shown as `client_email` in the generated JSON file, SDK v3+ tokens only).
+     * ID of the Service Account you have created (shown as `clientEmail` in the generated JSON file, SDK v3+ tokens only).
      * 
      */
     @Import(name="clientEmail")
     private @Nullable Output<String> clientEmail;
 
     /**
-     * @return ID of the Service Account you have created (shown as `client_email` in the generated JSON file, SDK v3+ tokens only).
+     * @return ID of the Service Account you have created (shown as `clientEmail` in the generated JSON file, SDK v3+ tokens only).
      * 
      */
     public Optional<Output<String>> clientEmail() {
@@ -120,7 +120,7 @@ public final class ClientAddonsFirebaseArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param clientEmail ID of the Service Account you have created (shown as `client_email` in the generated JSON file, SDK v3+ tokens only).
+         * @param clientEmail ID of the Service Account you have created (shown as `clientEmail` in the generated JSON file, SDK v3+ tokens only).
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class ClientAddonsFirebaseArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param clientEmail ID of the Service Account you have created (shown as `client_email` in the generated JSON file, SDK v3+ tokens only).
+         * @param clientEmail ID of the Service Account you have created (shown as `clientEmail` in the generated JSON file, SDK v3+ tokens only).
          * 
          * @return builder
          * 

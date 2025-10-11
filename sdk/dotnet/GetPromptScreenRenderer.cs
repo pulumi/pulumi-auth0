@@ -12,19 +12,19 @@ namespace Pulumi.Auth0
     public static class GetPromptScreenRenderer
     {
         /// <summary>
-        /// Data source to retrieve a specific Auth0 prompt screen settings by `prompt_type` and `screen_name`
+        /// Data source to retrieve a specific Auth0 prompt screen settings by `PromptType` and `ScreenName`
         /// </summary>
         public static Task<GetPromptScreenRendererResult> InvokeAsync(GetPromptScreenRendererArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPromptScreenRendererResult>("auth0:index/getPromptScreenRenderer:getPromptScreenRenderer", args ?? new GetPromptScreenRendererArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source to retrieve a specific Auth0 prompt screen settings by `prompt_type` and `screen_name`
+        /// Data source to retrieve a specific Auth0 prompt screen settings by `PromptType` and `ScreenName`
         /// </summary>
         public static Output<GetPromptScreenRendererResult> Invoke(GetPromptScreenRendererInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPromptScreenRendererResult>("auth0:index/getPromptScreenRenderer:getPromptScreenRenderer", args ?? new GetPromptScreenRendererInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source to retrieve a specific Auth0 prompt screen settings by `prompt_type` and `screen_name`
+        /// Data source to retrieve a specific Auth0 prompt screen settings by `PromptType` and `ScreenName`
         /// </summary>
         public static Output<GetPromptScreenRendererResult> Invoke(GetPromptScreenRendererInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetPromptScreenRendererResult>("auth0:index/getPromptScreenRenderer:getPromptScreenRenderer", args ?? new GetPromptScreenRendererInvokeArgs(), options.WithDefaults());
@@ -84,7 +84,7 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly bool DefaultHeadTagsDisabled;
         /// <summary>
-        /// Optional filters to apply rendering rules to specific entities. `match_type` and at least one of the entity arrays are required.
+        /// Optional filters to apply rendering rules to specific entities. `MatchType` and at least one of the entity arrays are required.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetPromptScreenRendererFilterResult> Filters;
         /// <summary>
@@ -100,7 +100,7 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly string PromptType;
         /// <summary>
-        /// Rendering modeOptions are: `standard`, `advanced`.
+        /// Rendering modeOptions are: `Standard`, `Advanced`.
         /// </summary>
         public readonly string RenderingMode;
         /// <summary>

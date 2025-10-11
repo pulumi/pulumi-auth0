@@ -77,7 +77,7 @@ namespace Pulumi.Auth0
         public Output<string?> FormFooterStart { get; private set; } = null!;
 
         /// <summary>
-        /// The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
+        /// The prompt that you are adding partials for. Options are: `login-id`, `Login`, `login-password`, `Signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
         /// </summary>
         [Output("prompt")]
         public Output<string> Prompt { get; private set; } = null!;
@@ -165,7 +165,7 @@ namespace Pulumi.Auth0
         public Input<string>? FormFooterStart { get; set; }
 
         /// <summary>
-        /// The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
+        /// The prompt that you are adding partials for. Options are: `login-id`, `Login`, `login-password`, `Signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
         /// </summary>
         [Input("prompt", required: true)]
         public Input<string> Prompt { get; set; } = null!;
@@ -215,7 +215,7 @@ namespace Pulumi.Auth0
         public Input<string>? FormFooterStart { get; set; }
 
         /// <summary>
-        /// The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
+        /// The prompt that you are adding partials for. Options are: `login-id`, `Login`, `login-password`, `Signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
         /// </summary>
         [Input("prompt")]
         public Input<string>? Prompt { get; set; }

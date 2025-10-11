@@ -26,7 +26,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly ImmutableArray<string> AllowedOrigins;
         /// <summary>
-        /// Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+        /// Type of application the client represents. Possible values are: `Native`, `Spa`, `RegularWeb`, `NonInteractive`, `ResourceServer`,`SsoIntegration`. Specific SSO integrations types accepted as well are: `Rms`, `Box`, `Cloudbees`, `Concur`, `Dropbox`, `Mscrm`, `Echosign`, `Egnyte`, `Newrelic`, `Office365`, `Salesforce`, `Sentry`, `Sharepoint`, `Slack`, `Springcm`, `Zendesk`, `Zoom`.
         /// </summary>
         public readonly string AppType;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Callbacks;
         /// <summary>
-        /// The ID of the client. If not provided, `name` must be set.
+        /// The ID of the client. If not provided, `Name` must be set.
         /// </summary>
         public readonly string? ClientId;
         /// <summary>
@@ -55,11 +55,11 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly bool IsFirstParty;
         /// <summary>
-        /// Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `client_secret_post` or `client_secret_basic`. Setting this property when creating the resource, will default the authentication method to `client_secret_post`. To change the authentication method to `client_secret_basic` use the `auth0.ClientCredentials` resource.
+        /// Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `ClientSecretPost` or `ClientSecretBasic`. Setting this property when creating the resource, will default the authentication method to `ClientSecretPost`. To change the authentication method to `ClientSecretBasic` use the `auth0.ClientCredentials` resource.
         /// </summary>
         public readonly bool IsTokenEndpointIpHeaderTrusted;
         /// <summary>
-        /// The name of the client. If not provided, `client_id` must be set.
+        /// The name of the client. If not provided, `ClientId` must be set.
         /// </summary>
         public readonly string? Name;
         /// <summary>

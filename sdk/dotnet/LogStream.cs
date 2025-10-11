@@ -90,7 +90,7 @@ namespace Pulumi.Auth0
     public partial class LogStream : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered. Filters available: `auth.ancillary.fail`, `auth.ancillary.success`, `auth.login.fail`, `auth.login.notification`, `auth.login.success`, `auth.logout.fail`, `auth.logout.success`, `auth.signup.fail`, `auth.signup.success`, `auth.silent_auth.fail`, `auth.silent_auth.success`, `auth.token_exchange.fail`, `auth.token_exchange.success`, `management.fail`, `management.success`, `system.notification`, `user.fail`, `user.notification`, `user.success`, `other`.
+        /// Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered. Filters available: `auth.ancillary.fail`, `auth.ancillary.success`, `auth.login.fail`, `auth.login.notification`, `auth.login.success`, `auth.logout.fail`, `auth.logout.success`, `auth.signup.fail`, `auth.signup.success`, `auth.silent_auth.fail`, `auth.silent_auth.success`, `auth.token_exchange.fail`, `auth.token_exchange.success`, `management.fail`, `management.success`, `system.notification`, `user.fail`, `user.notification`, `user.success`, `Other`.
         /// </summary>
         [Output("filters")]
         public Output<ImmutableArray<ImmutableDictionary<string, string>>> Filters { get; private set; } = null!;
@@ -132,7 +132,7 @@ namespace Pulumi.Auth0
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// Type of the log stream, which indicates the sink provider. Options include: `eventbridge`, `eventgrid`, `http`, `datadog`, `splunk`, `sumo`, `mixpanel`, `segment`.
+        /// Type of the log stream, which indicates the sink provider. Options include: `Eventbridge`, `Eventgrid`, `Http`, `Datadog`, `Splunk`, `Sumo`, `Mixpanel`, `Segment`.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -187,7 +187,7 @@ namespace Pulumi.Auth0
         private InputList<ImmutableDictionary<string, string>>? _filters;
 
         /// <summary>
-        /// Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered. Filters available: `auth.ancillary.fail`, `auth.ancillary.success`, `auth.login.fail`, `auth.login.notification`, `auth.login.success`, `auth.logout.fail`, `auth.logout.success`, `auth.signup.fail`, `auth.signup.success`, `auth.silent_auth.fail`, `auth.silent_auth.success`, `auth.token_exchange.fail`, `auth.token_exchange.success`, `management.fail`, `management.success`, `system.notification`, `user.fail`, `user.notification`, `user.success`, `other`.
+        /// Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered. Filters available: `auth.ancillary.fail`, `auth.ancillary.success`, `auth.login.fail`, `auth.login.notification`, `auth.login.success`, `auth.logout.fail`, `auth.logout.success`, `auth.signup.fail`, `auth.signup.success`, `auth.silent_auth.fail`, `auth.silent_auth.success`, `auth.token_exchange.fail`, `auth.token_exchange.success`, `management.fail`, `management.success`, `system.notification`, `user.fail`, `user.notification`, `user.success`, `Other`.
         /// </summary>
         public InputList<ImmutableDictionary<string, string>> Filters
         {
@@ -232,7 +232,7 @@ namespace Pulumi.Auth0
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Type of the log stream, which indicates the sink provider. Options include: `eventbridge`, `eventgrid`, `http`, `datadog`, `splunk`, `sumo`, `mixpanel`, `segment`.
+        /// Type of the log stream, which indicates the sink provider. Options include: `Eventbridge`, `Eventgrid`, `Http`, `Datadog`, `Splunk`, `Sumo`, `Mixpanel`, `Segment`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -249,7 +249,7 @@ namespace Pulumi.Auth0
         private InputList<ImmutableDictionary<string, string>>? _filters;
 
         /// <summary>
-        /// Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered. Filters available: `auth.ancillary.fail`, `auth.ancillary.success`, `auth.login.fail`, `auth.login.notification`, `auth.login.success`, `auth.logout.fail`, `auth.logout.success`, `auth.signup.fail`, `auth.signup.success`, `auth.silent_auth.fail`, `auth.silent_auth.success`, `auth.token_exchange.fail`, `auth.token_exchange.success`, `management.fail`, `management.success`, `system.notification`, `user.fail`, `user.notification`, `user.success`, `other`.
+        /// Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered. Filters available: `auth.ancillary.fail`, `auth.ancillary.success`, `auth.login.fail`, `auth.login.notification`, `auth.login.success`, `auth.logout.fail`, `auth.logout.success`, `auth.signup.fail`, `auth.signup.success`, `auth.silent_auth.fail`, `auth.silent_auth.success`, `auth.token_exchange.fail`, `auth.token_exchange.success`, `management.fail`, `management.success`, `system.notification`, `user.fail`, `user.notification`, `user.success`, `Other`.
         /// </summary>
         public InputList<ImmutableDictionary<string, string>> Filters
         {
@@ -294,7 +294,7 @@ namespace Pulumi.Auth0
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Type of the log stream, which indicates the sink provider. Options include: `eventbridge`, `eventgrid`, `http`, `datadog`, `splunk`, `sumo`, `mixpanel`, `segment`.
+        /// Type of the log stream, which indicates the sink provider. Options include: `Eventbridge`, `Eventgrid`, `Http`, `Datadog`, `Splunk`, `Sumo`, `Mixpanel`, `Segment`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

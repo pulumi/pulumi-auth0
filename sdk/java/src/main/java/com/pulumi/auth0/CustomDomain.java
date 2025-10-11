@@ -93,14 +93,14 @@ public class CustomDomain extends com.pulumi.resources.CustomResource {
         return this.certificates;
     }
     /**
-     * The HTTP header to fetch the client&#39;s IP address. Cannot be set on auth0_managed domains.
+     * The HTTP header to fetch the client&#39;s IP address. Cannot be set on auth0Managed domains.
      * 
      */
     @Export(name="customClientIpHeader", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> customClientIpHeader;
 
     /**
-     * @return The HTTP header to fetch the client&#39;s IP address. Cannot be set on auth0_managed domains.
+     * @return The HTTP header to fetch the client&#39;s IP address. Cannot be set on auth0Managed domains.
      * 
      */
     public Output<Optional<String>> customClientIpHeader() {
@@ -167,42 +167,42 @@ public class CustomDomain extends com.pulumi.resources.CustomResource {
         return this.primary;
     }
     /**
-     * Configuration status for the custom domain. Options include `disabled`, `pending`, `pending_verification`, and `ready`.
+     * Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, and `ready`.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return Configuration status for the custom domain. Options include `disabled`, `pending`, `pending_verification`, and `ready`.
+     * @return Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, and `ready`.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on self_managed domains.
+     * TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on selfManaged domains.
      * 
      */
     @Export(name="tlsPolicy", refs={String.class}, tree="[0]")
     private Output<String> tlsPolicy;
 
     /**
-     * @return TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on self_managed domains.
+     * @return TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on selfManaged domains.
      * 
      */
     public Output<String> tlsPolicy() {
         return this.tlsPolicy;
     }
     /**
-     * Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
+     * Provisioning type for the custom domain. Options include `auth0ManagedCerts` and `selfManagedCerts`.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
+     * @return Provisioning type for the custom domain. Options include `auth0ManagedCerts` and `selfManagedCerts`.
      * 
      */
     public Output<String> type() {

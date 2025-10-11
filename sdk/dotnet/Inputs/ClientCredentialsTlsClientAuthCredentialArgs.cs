@@ -19,7 +19,7 @@ namespace Pulumi.Auth0.Inputs
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// Credential type. Supported types: `cert_subject_dn`.
+        /// Credential type. Supported types: `CertSubjectDn`.
         /// </summary>
         [Input("credentialType", required: true)]
         public Input<string> CredentialType { get; set; } = null!;
@@ -37,13 +37,13 @@ namespace Pulumi.Auth0.Inputs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// PEM-formatted X509 certificate. Must be JSON escaped. Mutually exlusive with `subject_dn` property.
+        /// PEM-formatted X509 certificate. Must be JSON escaped. Mutually exlusive with `SubjectDn` property.
         /// </summary>
         [Input("pem")]
         public Input<string>? Pem { get; set; }
 
         /// <summary>
-        /// Subject Distinguished Name. Mutually exlusive with `pem` property.
+        /// Subject Distinguished Name. Mutually exlusive with `Pem` property.
         /// </summary>
         [Input("subjectDn")]
         public Input<string>? SubjectDn { get; set; }

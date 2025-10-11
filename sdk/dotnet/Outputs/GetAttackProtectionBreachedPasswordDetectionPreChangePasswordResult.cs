@@ -14,7 +14,7 @@ namespace Pulumi.Auth0.Outputs
     public sealed class GetAttackProtectionBreachedPasswordDetectionPreChangePasswordResult
     {
         /// <summary>
-        /// Action to take when a breached password is detected before the password is changed. Possible values: `block` (block compromised credentials for new accounts), `admin_notification` (send an email notification with a summary of compromised credentials in new accounts).
+        /// Action to take when a breached password is detected before the password is changed. Possible values: `Block` (block compromised credentials for new accounts), `AdminNotification` (send an email notification with a summary of compromised credentials in new accounts).
         /// </summary>
         public readonly ImmutableArray<string> Shields;
 

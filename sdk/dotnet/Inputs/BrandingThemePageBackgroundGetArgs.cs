@@ -25,7 +25,7 @@ namespace Pulumi.Auth0.Inputs
         public Input<string>? BackgroundImageUrl { get; set; }
 
         /// <summary>
-        /// Page layout. Available options: `center`, `left`, `right`. Defaults to `center`.
+        /// Page layout. Available options: `Center`, `Left`, `Right`. Defaults to `Center`.
         /// </summary>
         [Input("pageLayout")]
         public Input<string>? PageLayout { get; set; }

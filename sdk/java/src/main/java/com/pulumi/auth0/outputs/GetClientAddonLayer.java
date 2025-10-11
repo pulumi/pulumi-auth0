@@ -22,7 +22,7 @@ public final class GetClientAddonLayer {
      */
     private String keyId;
     /**
-     * @return Name of the property used as the unique user ID in Layer. If not specified `user_id` is used.
+     * @return Name of the property used as the unique user ID in Layer. If not specified `userId` is used.
      * 
      */
     private String principal;
@@ -53,7 +53,7 @@ public final class GetClientAddonLayer {
         return this.keyId;
     }
     /**
-     * @return Name of the property used as the unique user ID in Layer. If not specified `user_id` is used.
+     * @return Name of the property used as the unique user ID in Layer. If not specified `userId` is used.
      * 
      */
     public String principal() {

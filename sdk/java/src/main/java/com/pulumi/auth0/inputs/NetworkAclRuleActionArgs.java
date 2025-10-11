@@ -62,14 +62,14 @@ public final class NetworkAclRuleActionArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * If true, redirects the request. When using redirect action, redirect_uri must also be specified.
+     * If true, redirects the request. When using redirect action, redirectUri must also be specified.
      * 
      */
     @Import(name="redirect")
     private @Nullable Output<Boolean> redirect;
 
     /**
-     * @return If true, redirects the request. When using redirect action, redirect_uri must also be specified.
+     * @return If true, redirects the request. When using redirect action, redirectUri must also be specified.
      * 
      */
     public Optional<Output<Boolean>> redirect() {
@@ -183,7 +183,7 @@ public final class NetworkAclRuleActionArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param redirect If true, redirects the request. When using redirect action, redirect_uri must also be specified.
+         * @param redirect If true, redirects the request. When using redirect action, redirectUri must also be specified.
          * 
          * @return builder
          * 
@@ -194,7 +194,7 @@ public final class NetworkAclRuleActionArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param redirect If true, redirects the request. When using redirect action, redirect_uri must also be specified.
+         * @param redirect If true, redirects the request. When using redirect action, redirectUri must also be specified.
          * 
          * @return builder
          * 

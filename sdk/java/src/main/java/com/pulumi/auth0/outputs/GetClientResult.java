@@ -48,7 +48,7 @@ public final class GetClientResult {
      */
     private List<String> allowedOrigins;
     /**
-     * @return Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+     * @return Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
      * 
      */
     private String appType;
@@ -79,7 +79,7 @@ public final class GetClientResult {
     private Map<String,String> clientMetadata;
     private String clientSecret;
     /**
-     * @return Defines the compliance level for this client, which may restrict it&#39;s capabilities. Can be one of `none`, `fapi1_adv_pkj_par`, `fapi1_adv_mtls_par`.
+     * @return Defines the compliance level for this client, which may restrict it&#39;s capabilities. Can be one of `none`, `fapi1AdvPkjPar`, `fapi1AdvMtlsPar`.
      * 
      */
     private String complianceLevel;
@@ -144,7 +144,7 @@ public final class GetClientResult {
      */
     private Boolean isFirstParty;
     /**
-     * @return Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `client_secret_post` or `client_secret_basic`. Setting this property when creating the resource, will default the authentication method to `client_secret_post`. To change the authentication method to `client_secret_basic` use the `auth0.ClientCredentials` resource.
+     * @return Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `clientSecretPost` or `clientSecretBasic`. Setting this property when creating the resource, will default the authentication method to `clientSecretPost`. To change the authentication method to `clientSecretBasic` use the `auth0.ClientCredentials` resource.
      * 
      */
     private Boolean isTokenEndpointIpHeaderTrusted;
@@ -164,12 +164,12 @@ public final class GetClientResult {
      */
     private List<GetClientMobile> mobiles;
     /**
-     * @return The name of the client. If not provided, `client_id` must be set.
+     * @return The name of the client. If not provided, `clientId` must be set.
      * 
      */
     private @Nullable String name;
     /**
-     * @return Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `app_type`.
+     * @return Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `appType`.
      * 
      */
     private List<GetClientNativeSocialLogin> nativeSocialLogins;
@@ -189,7 +189,7 @@ public final class GetClientResult {
      */
     private List<GetClientOidcLogout> oidcLogouts;
     /**
-     * @return Defines how to proceed during an authentication transaction when `organization_usage = &#34;require&#34;`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.
+     * @return Defines how to proceed during an authentication transaction when `organizationUsage = &#34;require&#34;`. Can be `noPrompt` (default), `preLoginPrompt` or  `postLoginPrompt`.
      * 
      */
     private String organizationRequireBehavior;
@@ -245,7 +245,7 @@ public final class GetClientResult {
      */
     private Boolean ssoDisabled;
     /**
-     * @return The authentication method for the token endpoint. Results include `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic), Managing a client&#39;s authentication method can be done via the `auth0.ClientCredentials` resource.
+     * @return The authentication method for the token endpoint. Results include `none` (public client without a client secret), `clientSecretPost` (client uses HTTP POST parameters), `clientSecretBasic` (client uses HTTP Basic), Managing a client&#39;s authentication method can be done via the `auth0.ClientCredentials` resource.
      * 
      */
     private String tokenEndpointAuthMethod;
@@ -295,7 +295,7 @@ public final class GetClientResult {
         return this.allowedOrigins;
     }
     /**
-     * @return Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+     * @return Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
      * 
      */
     public String appType() {
@@ -340,7 +340,7 @@ public final class GetClientResult {
         return this.clientSecret;
     }
     /**
-     * @return Defines the compliance level for this client, which may restrict it&#39;s capabilities. Can be one of `none`, `fapi1_adv_pkj_par`, `fapi1_adv_mtls_par`.
+     * @return Defines the compliance level for this client, which may restrict it&#39;s capabilities. Can be one of `none`, `fapi1AdvPkjPar`, `fapi1AdvMtlsPar`.
      * 
      */
     public String complianceLevel() {
@@ -431,7 +431,7 @@ public final class GetClientResult {
         return this.isFirstParty;
     }
     /**
-     * @return Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `client_secret_post` or `client_secret_basic`. Setting this property when creating the resource, will default the authentication method to `client_secret_post`. To change the authentication method to `client_secret_basic` use the `auth0.ClientCredentials` resource.
+     * @return Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `clientSecretPost` or `clientSecretBasic`. Setting this property when creating the resource, will default the authentication method to `clientSecretPost`. To change the authentication method to `clientSecretBasic` use the `auth0.ClientCredentials` resource.
      * 
      */
     public Boolean isTokenEndpointIpHeaderTrusted() {
@@ -459,14 +459,14 @@ public final class GetClientResult {
         return this.mobiles;
     }
     /**
-     * @return The name of the client. If not provided, `client_id` must be set.
+     * @return The name of the client. If not provided, `clientId` must be set.
      * 
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `app_type`.
+     * @return Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `appType`.
      * 
      */
     public List<GetClientNativeSocialLogin> nativeSocialLogins() {
@@ -494,7 +494,7 @@ public final class GetClientResult {
         return this.oidcLogouts;
     }
     /**
-     * @return Defines how to proceed during an authentication transaction when `organization_usage = &#34;require&#34;`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.
+     * @return Defines how to proceed during an authentication transaction when `organizationUsage = &#34;require&#34;`. Can be `noPrompt` (default), `preLoginPrompt` or  `postLoginPrompt`.
      * 
      */
     public String organizationRequireBehavior() {
@@ -574,7 +574,7 @@ public final class GetClientResult {
         return this.ssoDisabled;
     }
     /**
-     * @return The authentication method for the token endpoint. Results include `none` (public client without a client secret), `client_secret_post` (client uses HTTP POST parameters), `client_secret_basic` (client uses HTTP Basic), Managing a client&#39;s authentication method can be done via the `auth0.ClientCredentials` resource.
+     * @return The authentication method for the token endpoint. Results include `none` (public client without a client secret), `clientSecretPost` (client uses HTTP POST parameters), `clientSecretBasic` (client uses HTTP Basic), Managing a client&#39;s authentication method can be done via the `auth0.ClientCredentials` resource.
      * 
      */
     public String tokenEndpointAuthMethod() {

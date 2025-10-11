@@ -13,7 +13,7 @@ namespace Pulumi.Auth0.Inputs
     public sealed class ResourceServerSubjectTypeAuthorizationClientGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Client flows policy. One of `deny_all`, `require_client_grant`.
+        /// Client flows policy. One of `DenyAll`, `RequireClientGrant`.
         /// </summary>
         [Input("policy")]
         public Input<string>? Policy { get; set; }

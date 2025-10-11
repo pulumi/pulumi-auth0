@@ -143,14 +143,14 @@ public class ConnectionScimConfiguration extends com.pulumi.resources.CustomReso
         return this.connectionName;
     }
     /**
-     * Mapping between Auth0 attributes and SCIM attributes. If `user_id_attribute` is set, `mapping` must be set as well.
+     * Mapping between Auth0 attributes and SCIM attributes. If `userIdAttribute` is set, `mapping` must be set as well.
      * 
      */
     @Export(name="mappings", refs={List.class,ConnectionScimConfigurationMapping.class}, tree="[0,1]")
     private Output<List<ConnectionScimConfigurationMapping>> mappings;
 
     /**
-     * @return Mapping between Auth0 attributes and SCIM attributes. If `user_id_attribute` is set, `mapping` must be set as well.
+     * @return Mapping between Auth0 attributes and SCIM attributes. If `userIdAttribute` is set, `mapping` must be set as well.
      * 
      */
     public Output<List<ConnectionScimConfigurationMapping>> mappings() {
@@ -185,14 +185,14 @@ public class ConnectionScimConfiguration extends com.pulumi.resources.CustomReso
         return this.tenantName;
     }
     /**
-     * User ID attribute for generation unique of user ids. If `user_id_attribute` is set, `mapping` must be set as well. Defaults to `userName` for SAML connections and `externalId` for OIDC connections.
+     * User ID attribute for generation unique of user ids. If `userIdAttribute` is set, `mapping` must be set as well. Defaults to `userName` for SAML connections and `externalId` for OIDC connections.
      * 
      */
     @Export(name="userIdAttribute", refs={String.class}, tree="[0]")
     private Output<String> userIdAttribute;
 
     /**
-     * @return User ID attribute for generation unique of user ids. If `user_id_attribute` is set, `mapping` must be set as well. Defaults to `userName` for SAML connections and `externalId` for OIDC connections.
+     * @return User ID attribute for generation unique of user ids. If `userIdAttribute` is set, `mapping` must be set as well. Defaults to `userName` for SAML connections and `externalId` for OIDC connections.
      * 
      */
     public Output<String> userIdAttribute() {

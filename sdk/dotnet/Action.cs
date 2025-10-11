@@ -62,7 +62,7 @@ namespace Pulumi.Auth0
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The Node runtime. Possible values are: `node12`, `node16` (not recommended), `node18`, `node22`
+        /// The Node runtime. Possible values are: `Node12`, `Node16` (not recommended), `Node18`, `Node22`
         /// </summary>
         [Output("runtime")]
         public Output<string> Runtime { get; private set; } = null!;
@@ -80,7 +80,7 @@ namespace Pulumi.Auth0
         public Output<Outputs.ActionSupportedTriggers> SupportedTriggers { get; private set; } = null!;
 
         /// <summary>
-        /// Version ID of the action. This value is available if `deploy` is set to true.
+        /// Version ID of the action. This value is available if `Deploy` is set to true.
         /// </summary>
         [Output("versionId")]
         public Output<string> VersionId { get; private set; } = null!;
@@ -162,7 +162,7 @@ namespace Pulumi.Auth0
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The Node runtime. Possible values are: `node12`, `node16` (not recommended), `node18`, `node22`
+        /// The Node runtime. Possible values are: `Node12`, `Node16` (not recommended), `Node18`, `Node22`
         /// </summary>
         [Input("runtime")]
         public Input<string>? Runtime { get; set; }
@@ -224,7 +224,7 @@ namespace Pulumi.Auth0
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The Node runtime. Possible values are: `node12`, `node16` (not recommended), `node18`, `node22`
+        /// The Node runtime. Possible values are: `Node12`, `Node16` (not recommended), `Node18`, `Node22`
         /// </summary>
         [Input("runtime")]
         public Input<string>? Runtime { get; set; }
@@ -248,7 +248,7 @@ namespace Pulumi.Auth0
         public Input<Inputs.ActionSupportedTriggersGetArgs>? SupportedTriggers { get; set; }
 
         /// <summary>
-        /// Version ID of the action. This value is available if `deploy` is set to true.
+        /// Version ID of the action. This value is available if `Deploy` is set to true.
         /// </summary>
         [Input("versionId")]
         public Input<string>? VersionId { get; set; }

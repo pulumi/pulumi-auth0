@@ -13,7 +13,7 @@ namespace Pulumi.Auth0.Inputs
     public sealed class ClientDefaultOrganizationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If set, the `default_organization` will be removed.
+        /// If set, the `DefaultOrganization` will be removed.
         /// </summary>
         [Input("disable")]
         public Input<bool>? Disable { get; set; }

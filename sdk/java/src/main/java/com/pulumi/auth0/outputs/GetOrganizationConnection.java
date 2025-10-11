@@ -22,7 +22,7 @@ public final class GetOrganizationConnection {
      */
     private String connectionId;
     /**
-     * @return Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `is_signup_enabled` can only be `true` if `assign_membership_on_login` is `true`.
+     * @return Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `isSignupEnabled` can only be `true` if `assignMembershipOnLogin` is `true`.
      * 
      */
     private Boolean isSignupEnabled;
@@ -48,7 +48,7 @@ public final class GetOrganizationConnection {
         return this.connectionId;
     }
     /**
-     * @return Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `is_signup_enabled` can only be `true` if `assign_membership_on_login` is `true`.
+     * @return Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `isSignupEnabled` can only be `true` if `assignMembershipOnLogin` is `true`.
      * 
      */
     public Boolean isSignupEnabled() {

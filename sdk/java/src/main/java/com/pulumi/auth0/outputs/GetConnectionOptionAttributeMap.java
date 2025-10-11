@@ -16,7 +16,7 @@ public final class GetConnectionOptionAttributeMap {
      */
     private String attributes;
     /**
-     * @return Method used to map incoming claims. Possible values: `use_map` (Okta or OIDC), `bind_all` (OIDC) or `basic_profile` (Okta).
+     * @return Method used to map incoming claims. Possible values: `useMap` (Okta or OIDC), `bindAll` (OIDC) or `basicProfile` (Okta).
      * 
      */
     private String mappingMode;
@@ -35,7 +35,7 @@ public final class GetConnectionOptionAttributeMap {
         return this.attributes;
     }
     /**
-     * @return Method used to map incoming claims. Possible values: `use_map` (Okta or OIDC), `bind_all` (OIDC) or `basic_profile` (Okta).
+     * @return Method used to map incoming claims. Possible values: `useMap` (Okta or OIDC), `bindAll` (OIDC) or `basicProfile` (Okta).
      * 
      */
     public String mappingMode() {

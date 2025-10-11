@@ -18,14 +18,14 @@ public final class ClientDefaultOrganizationArgs extends com.pulumi.resources.Re
     public static final ClientDefaultOrganizationArgs Empty = new ClientDefaultOrganizationArgs();
 
     /**
-     * If set, the `default_organization` will be removed.
+     * If set, the `defaultOrganization` will be removed.
      * 
      */
     @Import(name="disable")
     private @Nullable Output<Boolean> disable;
 
     /**
-     * @return If set, the `default_organization` will be removed.
+     * @return If set, the `defaultOrganization` will be removed.
      * 
      */
     public Optional<Output<Boolean>> disable() {
@@ -89,7 +89,7 @@ public final class ClientDefaultOrganizationArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param disable If set, the `default_organization` will be removed.
+         * @param disable If set, the `defaultOrganization` will be removed.
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class ClientDefaultOrganizationArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param disable If set, the `default_organization` will be removed.
+         * @param disable If set, the `defaultOrganization` will be removed.
          * 
          * @return builder
          * 

@@ -24,7 +24,7 @@ public final class GetEventStreamResult {
      */
     private String destinationType;
     /**
-     * @return Configuration for the EventBridge destination. This block is only applicable when `destination_type` is set to `eventbridge`. EventBridge configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
+     * @return Configuration for the EventBridge destination. This block is only applicable when `destinationType` is set to `eventbridge`. EventBridge configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
      * 
      */
     private List<GetEventStreamEventbridgeConfiguration> eventbridgeConfigurations;
@@ -54,7 +54,7 @@ public final class GetEventStreamResult {
      */
     private String updatedAt;
     /**
-     * @return Configuration for the Webhook destination. This block is only applicable when `destination_type` is set to `webhook`. Webhook configurations **can** be updated after creation, including the endpoint and authorization fields.
+     * @return Configuration for the Webhook destination. This block is only applicable when `destinationType` is set to `webhook`. Webhook configurations **can** be updated after creation, including the endpoint and authorization fields.
      * 
      */
     private List<GetEventStreamWebhookConfiguration> webhookConfigurations;
@@ -75,7 +75,7 @@ public final class GetEventStreamResult {
         return this.destinationType;
     }
     /**
-     * @return Configuration for the EventBridge destination. This block is only applicable when `destination_type` is set to `eventbridge`. EventBridge configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
+     * @return Configuration for the EventBridge destination. This block is only applicable when `destinationType` is set to `eventbridge`. EventBridge configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
      * 
      */
     public List<GetEventStreamEventbridgeConfiguration> eventbridgeConfigurations() {
@@ -117,7 +117,7 @@ public final class GetEventStreamResult {
         return this.updatedAt;
     }
     /**
-     * @return Configuration for the Webhook destination. This block is only applicable when `destination_type` is set to `webhook`. Webhook configurations **can** be updated after creation, including the endpoint and authorization fields.
+     * @return Configuration for the Webhook destination. This block is only applicable when `destinationType` is set to `webhook`. Webhook configurations **can** be updated after creation, including the endpoint and authorization fields.
      * 
      */
     public List<GetEventStreamWebhookConfiguration> webhookConfigurations() {

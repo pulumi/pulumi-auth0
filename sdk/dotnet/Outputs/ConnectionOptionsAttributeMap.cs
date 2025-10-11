@@ -18,7 +18,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string? Attributes;
         /// <summary>
-        /// Method used to map incoming claims. Possible values: `use_map` (Okta or OIDC), `bind_all` (OIDC) or `basic_profile` (Okta).
+        /// Method used to map incoming claims. Possible values: `UseMap` (Okta or OIDC), `BindAll` (OIDC) or `BasicProfile` (Okta).
         /// </summary>
         public readonly string MappingMode;
         /// <summary>

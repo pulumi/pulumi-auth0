@@ -108,7 +108,7 @@ namespace Pulumi.Auth0
         public Output<string> ClientId { get; private set; } = null!;
 
         /// <summary>
-        /// Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
+        /// Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `Null` to disable.
         /// </summary>
         [Output("consentPolicy")]
         public Output<string> ConsentPolicy { get; private set; } = null!;
@@ -162,7 +162,7 @@ namespace Pulumi.Auth0
         public Output<Outputs.ResourceServerSubjectTypeAuthorization> SubjectTypeAuthorization { get; private set; } = null!;
 
         /// <summary>
-        /// Dialect of access tokens that should be issued for this resource server. Options include `access_token`, `rfc9068_profile`, `access_token_authz`, and `rfc9068_profile_authz`. `access_token` is a JWT containing standard Auth0 claims. `rfc9068_profile` is a JWT conforming to the IETF JWT Access Token Profile. `access_token_authz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068_profile_authz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforce_policies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).
+        /// Dialect of access tokens that should be issued for this resource server. Options include `AccessToken`, `Rfc9068Profile`, `AccessTokenAuthz`, and `Rfc9068ProfileAuthz`. `AccessToken` is a JWT containing standard Auth0 claims. `Rfc9068Profile` is a JWT conforming to the IETF JWT Access Token Profile. `AccessTokenAuthz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `Rfc9068ProfileAuthz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`EnforcePolicies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).
         /// </summary>
         [Output("tokenDialect")]
         public Output<string> TokenDialect { get; private set; } = null!;
@@ -180,7 +180,7 @@ namespace Pulumi.Auth0
         public Output<int> TokenLifetime { get; private set; } = null!;
 
         /// <summary>
-        /// Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `token_lifetime` value.
+        /// Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `TokenLifetime` value.
         /// </summary>
         [Output("tokenLifetimeForWeb")]
         public Output<int> TokenLifetimeForWeb { get; private set; } = null!;
@@ -256,7 +256,7 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
+        /// Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `Null` to disable.
         /// </summary>
         [Input("consentPolicy")]
         public Input<string>? ConsentPolicy { get; set; }
@@ -310,7 +310,7 @@ namespace Pulumi.Auth0
         public Input<Inputs.ResourceServerSubjectTypeAuthorizationArgs>? SubjectTypeAuthorization { get; set; }
 
         /// <summary>
-        /// Dialect of access tokens that should be issued for this resource server. Options include `access_token`, `rfc9068_profile`, `access_token_authz`, and `rfc9068_profile_authz`. `access_token` is a JWT containing standard Auth0 claims. `rfc9068_profile` is a JWT conforming to the IETF JWT Access Token Profile. `access_token_authz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068_profile_authz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforce_policies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).
+        /// Dialect of access tokens that should be issued for this resource server. Options include `AccessToken`, `Rfc9068Profile`, `AccessTokenAuthz`, and `Rfc9068ProfileAuthz`. `AccessToken` is a JWT containing standard Auth0 claims. `Rfc9068Profile` is a JWT conforming to the IETF JWT Access Token Profile. `AccessTokenAuthz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `Rfc9068ProfileAuthz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`EnforcePolicies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).
         /// </summary>
         [Input("tokenDialect")]
         public Input<string>? TokenDialect { get; set; }
@@ -328,7 +328,7 @@ namespace Pulumi.Auth0
         public Input<int>? TokenLifetime { get; set; }
 
         /// <summary>
-        /// Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `token_lifetime` value.
+        /// Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `TokenLifetime` value.
         /// </summary>
         [Input("tokenLifetimeForWeb")]
         public Input<int>? TokenLifetimeForWeb { get; set; }
@@ -372,7 +372,7 @@ namespace Pulumi.Auth0
         public Input<string>? ClientId { get; set; }
 
         /// <summary>
-        /// Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
+        /// Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `Null` to disable.
         /// </summary>
         [Input("consentPolicy")]
         public Input<string>? ConsentPolicy { get; set; }
@@ -426,7 +426,7 @@ namespace Pulumi.Auth0
         public Input<Inputs.ResourceServerSubjectTypeAuthorizationGetArgs>? SubjectTypeAuthorization { get; set; }
 
         /// <summary>
-        /// Dialect of access tokens that should be issued for this resource server. Options include `access_token`, `rfc9068_profile`, `access_token_authz`, and `rfc9068_profile_authz`. `access_token` is a JWT containing standard Auth0 claims. `rfc9068_profile` is a JWT conforming to the IETF JWT Access Token Profile. `access_token_authz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068_profile_authz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforce_policies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).
+        /// Dialect of access tokens that should be issued for this resource server. Options include `AccessToken`, `Rfc9068Profile`, `AccessTokenAuthz`, and `Rfc9068ProfileAuthz`. `AccessToken` is a JWT containing standard Auth0 claims. `Rfc9068Profile` is a JWT conforming to the IETF JWT Access Token Profile. `AccessTokenAuthz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `Rfc9068ProfileAuthz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`EnforcePolicies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).
         /// </summary>
         [Input("tokenDialect")]
         public Input<string>? TokenDialect { get; set; }
@@ -444,7 +444,7 @@ namespace Pulumi.Auth0
         public Input<int>? TokenLifetime { get; set; }
 
         /// <summary>
-        /// Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `token_lifetime` value.
+        /// Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `TokenLifetime` value.
         /// </summary>
         [Input("tokenLifetimeForWeb")]
         public Input<int>? TokenLifetimeForWeb { get; set; }

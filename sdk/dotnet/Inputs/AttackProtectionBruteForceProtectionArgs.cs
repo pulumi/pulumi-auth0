@@ -37,7 +37,7 @@ namespace Pulumi.Auth0.Inputs
         public Input<int>? MaxAttempts { get; set; }
 
         /// <summary>
-        /// Determines whether the IP address is used when counting failed attempts. Possible values: `count_per_identifier_and_ip` (lockout an account from a given IP Address) or `count_per_identifier` (lockout an account regardless of IP Address).
+        /// Determines whether the IP address is used when counting failed attempts. Possible values: `CountPerIdentifierAndIp` (lockout an account from a given IP Address) or `CountPerIdentifier` (lockout an account regardless of IP Address).
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
@@ -46,7 +46,7 @@ namespace Pulumi.Auth0.Inputs
         private InputList<string>? _shields;
 
         /// <summary>
-        /// Action to take when a brute force protection threshold is violated. Possible values: `block` (block login attempts for a flagged user account), `user_notification` (send an email to user when their account has been blocked).
+        /// Action to take when a brute force protection threshold is violated. Possible values: `Block` (block login attempts for a flagged user account), `UserNotification` (send an email to user when their account has been blocked).
         /// </summary>
         public InputList<string> Shields
         {

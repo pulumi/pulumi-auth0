@@ -271,14 +271,14 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Indicates whether the public sign up process shows a `user_exists` error if the user already exists.
+     * Indicates whether the public sign up process shows a `userExists` error if the user already exists.
      * 
      */
     @Import(name="enablePublicSignupUserExistsError")
     private @Nullable Output<Boolean> enablePublicSignupUserExistsError;
 
     /**
-     * @return Indicates whether the public sign up process shows a `user_exists` error if the user already exists.
+     * @return Indicates whether the public sign up process shows a `userExists` error if the user already exists.
      * 
      */
     public Optional<Output<Boolean>> enablePublicSignupUserExistsError() {
@@ -804,7 +804,7 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enablePublicSignupUserExistsError Indicates whether the public sign up process shows a `user_exists` error if the user already exists.
+         * @param enablePublicSignupUserExistsError Indicates whether the public sign up process shows a `userExists` error if the user already exists.
          * 
          * @return builder
          * 
@@ -815,7 +815,7 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enablePublicSignupUserExistsError Indicates whether the public sign up process shows a `user_exists` error if the user already exists.
+         * @param enablePublicSignupUserExistsError Indicates whether the public sign up process shows a `userExists` error if the user already exists.
          * 
          * @return builder
          * 

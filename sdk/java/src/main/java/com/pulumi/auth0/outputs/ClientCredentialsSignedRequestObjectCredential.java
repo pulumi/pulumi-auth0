@@ -24,7 +24,7 @@ public final class ClientCredentialsSignedRequestObjectCredential {
      */
     private @Nullable String createdAt;
     /**
-     * @return Credential type. Supported types: `public_key`.
+     * @return Credential type. Supported types: `publicKey`.
      * 
      */
     private String credentialType;
@@ -49,7 +49,7 @@ public final class ClientCredentialsSignedRequestObjectCredential {
      */
     private @Nullable String name;
     /**
-     * @return Parse expiry from x509 certificate. If true, attempts to parse the expiry date from the provided PEM. If also the `expires_at` is set the credential expiry will be set to the explicit `expires_at` value.
+     * @return Parse expiry from x509 certificate. If true, attempts to parse the expiry date from the provided PEM. If also the `expiresAt` is set the credential expiry will be set to the explicit `expiresAt` value.
      * 
      */
     private @Nullable Boolean parseExpiryFromCert;
@@ -80,7 +80,7 @@ public final class ClientCredentialsSignedRequestObjectCredential {
         return Optional.ofNullable(this.createdAt);
     }
     /**
-     * @return Credential type. Supported types: `public_key`.
+     * @return Credential type. Supported types: `publicKey`.
      * 
      */
     public String credentialType() {
@@ -115,7 +115,7 @@ public final class ClientCredentialsSignedRequestObjectCredential {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return Parse expiry from x509 certificate. If true, attempts to parse the expiry date from the provided PEM. If also the `expires_at` is set the credential expiry will be set to the explicit `expires_at` value.
+     * @return Parse expiry from x509 certificate. If true, attempts to parse the expiry date from the provided PEM. If also the `expiresAt` is set the credential expiry will be set to the explicit `expiresAt` value.
      * 
      */
     public Optional<Boolean> parseExpiryFromCert() {

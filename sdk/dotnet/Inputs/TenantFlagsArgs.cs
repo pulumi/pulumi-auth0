@@ -79,7 +79,7 @@ namespace Pulumi.Auth0.Inputs
         public Input<bool>? EnableClientConnections { get; set; }
 
         /// <summary>
-        /// Indicates whether the tenant allows custom domains in emails. Before enabling this flag, you must have a custom domain with status: `ready`.
+        /// Indicates whether the tenant allows custom domains in emails. Before enabling this flag, you must have a custom domain with status: `Ready`.
         /// </summary>
         [Input("enableCustomDomainInEmails")]
         public Input<bool>? EnableCustomDomainInEmails { get; set; }
@@ -115,7 +115,7 @@ namespace Pulumi.Auth0.Inputs
         public Input<bool>? EnablePipeline2 { get; set; }
 
         /// <summary>
-        /// Indicates whether the public sign up process shows a `user_exists` error if the user already exists.
+        /// Indicates whether the public sign up process shows a `UserExists` error if the user already exists.
         /// </summary>
         [Input("enablePublicSignupUserExistsError")]
         public Input<bool>? EnablePublicSignupUserExistsError { get; set; }
@@ -139,7 +139,7 @@ namespace Pulumi.Auth0.Inputs
         public Input<bool>? NoDiscloseEnterpriseConnections { get; set; }
 
         /// <summary>
-        /// Remove `alg` from jwks(JSON Web Key Sets).
+        /// Remove `Alg` from jwks(JSON Web Key Sets).
         /// </summary>
         [Input("removeAlgFromJwks")]
         public Input<bool>? RemoveAlgFromJwks { get; set; }

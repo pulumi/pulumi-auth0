@@ -13,7 +13,7 @@ namespace Pulumi.Auth0.Inputs
     public sealed class ConnectionOptionsConnectionSettingsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// PKCE configuration. Possible values: `auto` (uses the strongest algorithm available), `S256` (uses the SHA-256 algorithm), `plain` (uses plaintext as described in the PKCE specification) or `disabled` (disables support for PKCE).
+        /// PKCE configuration. Possible values: `Auto` (uses the strongest algorithm available), `S256` (uses the SHA-256 algorithm), `Plain` (uses plaintext as described in the PKCE specification) or `Disabled` (disables support for PKCE).
         /// </summary>
         [Input("pkce", required: true)]
         public Input<string> Pkce { get; set; } = null!;

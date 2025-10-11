@@ -13,7 +13,7 @@ namespace Pulumi.Auth0.Inputs
     public sealed class ClientRefreshTokenGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Options include `expiring`, `non-expiring`. Whether a refresh token will expire based on an absolute lifetime, after which the token can no longer be used. If rotation is `rotating`, this must be set to `expiring`.
+        /// Options include `Expiring`, `non-expiring`. Whether a refresh token will expire based on an absolute lifetime, after which the token can no longer be used. If rotation is `Rotating`, this must be set to `Expiring`.
         /// </summary>
         [Input("expirationType", required: true)]
         public Input<string> ExpirationType { get; set; } = null!;
@@ -31,7 +31,7 @@ namespace Pulumi.Auth0.Inputs
         public Input<bool>? InfiniteIdleTokenLifetime { get; set; }
 
         /// <summary>
-        /// Whether refresh tokens should remain valid indefinitely. If false, `token_lifetime` should also be set.
+        /// Whether refresh tokens should remain valid indefinitely. If false, `TokenLifetime` should also be set.
         /// </summary>
         [Input("infiniteTokenLifetime")]
         public Input<bool>? InfiniteTokenLifetime { get; set; }
@@ -55,7 +55,7 @@ namespace Pulumi.Auth0.Inputs
         }
 
         /// <summary>
-        /// Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
+        /// Options include `Rotating`, `non-rotating`. When `Rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
         /// </summary>
         [Input("rotationType", required: true)]
         public Input<string> RotationType { get; set; } = null!;

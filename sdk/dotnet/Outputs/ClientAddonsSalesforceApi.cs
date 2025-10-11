@@ -26,7 +26,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string? CommunityUrlSection;
         /// <summary>
-        /// Name of the property in the user object that maps to a Salesforce username, for example `email`.
+        /// Name of the property in the user object that maps to a Salesforce username, for example `Email`.
         /// </summary>
         public readonly string? Principal;
 

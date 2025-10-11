@@ -15,7 +15,7 @@ namespace Pulumi.Auth0
     /// &gt; The Auth0 dashboard displays only one connection per social provider. Although the Auth0 Management API allows the
     /// creation of multiple connections per strategy, the additional connections may not be visible in the Auth0 dashboard.
     /// 
-    /// &gt; When updating the `options` parameter, ensure that all nested fields within the `options` schema are explicitly defined. Failing to do so may result in the loss of existing configurations.
+    /// &gt; When updating the `Options` parameter, ensure that all nested fields within the `Options` schema are explicitly defined. Failing to do so may result in the loss of existing configurations.
     /// 
     /// ## Example Usage
     /// 
@@ -426,7 +426,7 @@ namespace Pulumi.Auth0
     /// 
     /// ### OAuth2 Connection
     /// 
-    /// Also applies to following connection strategies: `dropbox`, `bitbucket`, `paypal`, `twitter`, `amazon`, `yahoo`, `box`, `wordpress`, `shopify`, `custom`
+    /// Also applies to following connection strategies: `Dropbox`, `Bitbucket`, `Paypal`, `Twitter`, `Amazon`, `Yahoo`, `Box`, `Wordpress`, `Shopify`, `Custom`
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -859,7 +859,7 @@ namespace Pulumi.Auth0
     /// 
     /// ### Okta Connection
     /// 
-    /// !&gt; When configuring an Okta Workforce connection, the `scopes` attribute must be explicitly set. If omitted, the connection may not function correctly.
+    /// !&gt; When configuring an Okta Workforce connection, the `Scopes` attribute must be explicitly set. If omitted, the connection may not function correctly.
     /// To ensure proper behavior, always specify:  `scopes = ["openid", "profile", "email"]`
     /// 
     /// ```csharp

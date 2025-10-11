@@ -18,7 +18,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
-        /// Message types to use, array of `sms` and/or `voice`. Adding both to the array should enable the user to choose.
+        /// Message types to use, array of `Sms` and/or `Voice`. Adding both to the array should enable the user to choose.
         /// </summary>
         public readonly ImmutableArray<string> MessageTypes;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly Outputs.GuardianPhoneOptions? Options;
         /// <summary>
-        /// Provider to use, one of `auth0`, `twilio` or `phone-message-hook`. Selecting `phone-message-hook` will require a Phone Message Action to be created before. [Learn how](https://auth0.com/docs/customize/actions/flows-and-triggers/send-phone-message-flow).
+        /// Provider to use, one of `Auth0`, `Twilio` or `phone-message-hook`. Selecting `phone-message-hook` will require a Phone Message Action to be created before. [Learn how](https://auth0.com/docs/customize/actions/flows-and-triggers/send-phone-message-flow).
         /// </summary>
         public readonly string? Provider;
 

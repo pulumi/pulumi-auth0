@@ -21,14 +21,14 @@ public final class AttackProtectionBreachedPasswordDetectionArgs extends com.pul
     public static final AttackProtectionBreachedPasswordDetectionArgs Empty = new AttackProtectionBreachedPasswordDetectionArgs();
 
     /**
-     * When `admin_notification` is enabled within the `shields` property, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
+     * When `adminNotification` is enabled within the `shields` property, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
      * 
      */
     @Import(name="adminNotificationFrequencies")
     private @Nullable Output<List<String>> adminNotificationFrequencies;
 
     /**
-     * @return When `admin_notification` is enabled within the `shields` property, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
+     * @return When `adminNotification` is enabled within the `shields` property, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
      * 
      */
     public Optional<Output<List<String>>> adminNotificationFrequencies() {
@@ -96,14 +96,14 @@ public final class AttackProtectionBreachedPasswordDetectionArgs extends com.pul
     }
 
     /**
-     * Action to take when a breached password is detected. Options include: `block` (block compromised user accounts), `user_notification` (send an email to user when we detect that they are using compromised credentials) and `admin_notification` (send an email with a summary of the number of accounts logging in with compromised credentials).
+     * Action to take when a breached password is detected. Options include: `block` (block compromised user accounts), `userNotification` (send an email to user when we detect that they are using compromised credentials) and `adminNotification` (send an email with a summary of the number of accounts logging in with compromised credentials).
      * 
      */
     @Import(name="shields")
     private @Nullable Output<List<String>> shields;
 
     /**
-     * @return Action to take when a breached password is detected. Options include: `block` (block compromised user accounts), `user_notification` (send an email to user when we detect that they are using compromised credentials) and `admin_notification` (send an email with a summary of the number of accounts logging in with compromised credentials).
+     * @return Action to take when a breached password is detected. Options include: `block` (block compromised user accounts), `userNotification` (send an email to user when we detect that they are using compromised credentials) and `adminNotification` (send an email with a summary of the number of accounts logging in with compromised credentials).
      * 
      */
     public Optional<Output<List<String>>> shields() {
@@ -140,7 +140,7 @@ public final class AttackProtectionBreachedPasswordDetectionArgs extends com.pul
         }
 
         /**
-         * @param adminNotificationFrequencies When `admin_notification` is enabled within the `shields` property, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
+         * @param adminNotificationFrequencies When `adminNotification` is enabled within the `shields` property, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class AttackProtectionBreachedPasswordDetectionArgs extends com.pul
         }
 
         /**
-         * @param adminNotificationFrequencies When `admin_notification` is enabled within the `shields` property, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
+         * @param adminNotificationFrequencies When `adminNotification` is enabled within the `shields` property, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
          * 
          * @return builder
          * 
@@ -161,7 +161,7 @@ public final class AttackProtectionBreachedPasswordDetectionArgs extends com.pul
         }
 
         /**
-         * @param adminNotificationFrequencies When `admin_notification` is enabled within the `shields` property, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
+         * @param adminNotificationFrequencies When `adminNotification` is enabled within the `shields` property, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
          * 
          * @return builder
          * 
@@ -255,7 +255,7 @@ public final class AttackProtectionBreachedPasswordDetectionArgs extends com.pul
         }
 
         /**
-         * @param shields Action to take when a breached password is detected. Options include: `block` (block compromised user accounts), `user_notification` (send an email to user when we detect that they are using compromised credentials) and `admin_notification` (send an email with a summary of the number of accounts logging in with compromised credentials).
+         * @param shields Action to take when a breached password is detected. Options include: `block` (block compromised user accounts), `userNotification` (send an email to user when we detect that they are using compromised credentials) and `adminNotification` (send an email with a summary of the number of accounts logging in with compromised credentials).
          * 
          * @return builder
          * 
@@ -266,7 +266,7 @@ public final class AttackProtectionBreachedPasswordDetectionArgs extends com.pul
         }
 
         /**
-         * @param shields Action to take when a breached password is detected. Options include: `block` (block compromised user accounts), `user_notification` (send an email to user when we detect that they are using compromised credentials) and `admin_notification` (send an email with a summary of the number of accounts logging in with compromised credentials).
+         * @param shields Action to take when a breached password is detected. Options include: `block` (block compromised user accounts), `userNotification` (send an email to user when we detect that they are using compromised credentials) and `adminNotification` (send an email with a summary of the number of accounts logging in with compromised credentials).
          * 
          * @return builder
          * 
@@ -276,7 +276,7 @@ public final class AttackProtectionBreachedPasswordDetectionArgs extends com.pul
         }
 
         /**
-         * @param shields Action to take when a breached password is detected. Options include: `block` (block compromised user accounts), `user_notification` (send an email to user when we detect that they are using compromised credentials) and `admin_notification` (send an email with a summary of the number of accounts logging in with compromised credentials).
+         * @param shields Action to take when a breached password is detected. Options include: `block` (block compromised user accounts), `userNotification` (send an email to user when we detect that they are using compromised credentials) and `adminNotification` (send an email with a summary of the number of accounts logging in with compromised credentials).
          * 
          * @return builder
          * 

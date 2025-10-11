@@ -49,7 +49,7 @@ public final class GetOrganizationResult {
      */
     private Map<String,String> metadata;
     /**
-     * @return The name of the organization. If not provided, `organization_id` must be set. For performance, it is advised to use the `organization_id` as a lookup if possible.
+     * @return The name of the organization. If not provided, `organizationId` must be set. For performance, it is advised to use the `organizationId` as a lookup if possible.
      * 
      */
     private @Nullable String name;
@@ -111,7 +111,7 @@ public final class GetOrganizationResult {
         return this.metadata;
     }
     /**
-     * @return The name of the organization. If not provided, `organization_id` must be set. For performance, it is advised to use the `organization_id` as a lookup if possible.
+     * @return The name of the organization. If not provided, `organizationId` must be set. For performance, it is advised to use the `organizationId` as a lookup if possible.
      * 
      */
     public Optional<String> name() {

@@ -12,7 +12,7 @@ namespace Pulumi.Auth0
     public static class GetFlow
     {
         /// <summary>
-        /// Data source to retrieve a specific Auth0 Flow by `id`
+        /// Data source to retrieve a specific Auth0 Flow by `Id`
         /// 
         /// ## Example Usage
         /// 
@@ -37,7 +37,7 @@ namespace Pulumi.Auth0
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFlowResult>("auth0:index/getFlow:getFlow", args ?? new GetFlowArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source to retrieve a specific Auth0 Flow by `id`
+        /// Data source to retrieve a specific Auth0 Flow by `Id`
         /// 
         /// ## Example Usage
         /// 
@@ -62,7 +62,7 @@ namespace Pulumi.Auth0
             => global::Pulumi.Deployment.Instance.Invoke<GetFlowResult>("auth0:index/getFlow:getFlow", args ?? new GetFlowInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source to retrieve a specific Auth0 Flow by `id`
+        /// Data source to retrieve a specific Auth0 Flow by `Id`
         /// 
         /// ## Example Usage
         /// 

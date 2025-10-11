@@ -34,7 +34,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
-        /// Provider to use, one of `direct`, `guardian`, `sns`.
+        /// Provider to use, one of `Direct`, `Guardian`, `Sns`.
         /// </summary>
         public readonly string? Provider;
 

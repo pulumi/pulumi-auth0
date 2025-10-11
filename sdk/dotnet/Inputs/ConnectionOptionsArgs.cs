@@ -128,7 +128,7 @@ namespace Pulumi.Auth0.Inputs
         private InputMap<string>? _configuration;
 
         /// <summary>
-        /// A case-sensitive map of key value pairs used as configuration variables for the `custom_script`.
+        /// A case-sensitive map of key value pairs used as configuration variables for the `CustomScript`.
         /// </summary>
         public InputMap<string> Configuration
         {
@@ -177,7 +177,7 @@ namespace Pulumi.Auth0.Inputs
         public Input<bool>? Debug { get; set; }
 
         /// <summary>
-        /// The key used to decrypt encrypted responses from the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
+        /// The key used to decrypt encrypted responses from the connection. Uses the `Key` and `Cert` properties to provide the private key and certificate respectively.
         /// </summary>
         [Input("decryptionKey")]
         public Input<Inputs.ConnectionOptionsDecryptionKeyArgs>? DecryptionKey { get; set; }
@@ -237,13 +237,13 @@ namespace Pulumi.Auth0.Inputs
         }
 
         /// <summary>
-        /// Set to `true` to inject context into custom DB scripts (warning: cannot be disabled once enabled).
+        /// Set to `True` to inject context into custom DB scripts (warning: cannot be disabled once enabled).
         /// </summary>
         [Input("enableScriptContext")]
         public Input<bool>? EnableScriptContext { get; set; }
 
         /// <summary>
-        /// Set to `true` to use a legacy user store.
+        /// Set to `True` to use a legacy user store.
         /// </summary>
         [Input("enabledDatabaseCustomization")]
         public Input<bool>? EnabledDatabaseCustomization { get; set; }
@@ -315,7 +315,7 @@ namespace Pulumi.Auth0.Inputs
         public Input<string>? IdentityApi { get; set; }
 
         /// <summary>
-        /// Configuration options for IDP Initiated Authentication. This is an object with the properties: `client_id`, `client_protocol`, and `client_authorize_query`.
+        /// Configuration options for IDP Initiated Authentication. This is an object with the properties: `ClientId`, `ClientProtocol`, and `ClientAuthorizeQuery`.
         /// </summary>
         [Input("idpInitiated")]
         public Input<Inputs.ConnectionOptionsIdpInitiatedArgs>? IdpInitiated { get; set; }
@@ -357,7 +357,7 @@ namespace Pulumi.Auth0.Inputs
         public Input<string>? KeyId { get; set; }
 
         /// <summary>
-        /// By default Auth0 maps `user_id` to `email`. Enabling this setting changes the behavior to map `user_id` to 'id' instead. This can only be defined on a new Google Workspace connection and can not be changed once set.
+        /// By default Auth0 maps `UserId` to `Email`. Enabling this setting changes the behavior to map `UserId` to 'id' instead. This can only be defined on a new Google Workspace connection and can not be changed once set.
         /// </summary>
         [Input("mapUserIdToId")]
         public Input<bool>? MapUserIdToId { get; set; }
@@ -441,13 +441,13 @@ namespace Pulumi.Auth0.Inputs
         }
 
         /// <summary>
-        /// Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's `name`, `username`, `nickname`, `user_metadata.name`, `user_metadata.first`, `user_metadata.last`, user's `email`, or first part of the user's `email`.
+        /// Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's `Name`, `Username`, `Nickname`, `user_metadata.name`, `user_metadata.first`, `user_metadata.last`, user's `Email`, or first part of the user's `Email`.
         /// </summary>
         [Input("passwordNoPersonalInfo")]
         public Input<Inputs.ConnectionOptionsPasswordNoPersonalInfoArgs>? PasswordNoPersonalInfo { get; set; }
 
         /// <summary>
-        /// Indicates level of password strength to enforce during authentication. A strong password policy will make it difficult, if not improbable, for someone to guess a password through either manual or automated means. Options include `none`, `low`, `fair`, `good`, `excellent`.
+        /// Indicates level of password strength to enforce during authentication. A strong password policy will make it difficult, if not improbable, for someone to guess a password through either manual or automated means. Options include `None`, `Low`, `Fair`, `Good`, `Excellent`.
         /// </summary>
         [Input("passwordPolicy")]
         public Input<string>? PasswordPolicy { get; set; }
@@ -483,7 +483,7 @@ namespace Pulumi.Auth0.Inputs
         public Input<string>? ProtocolBinding { get; set; }
 
         /// <summary>
-        /// Defines the custom `sms_gateway` provider.
+        /// Defines the custom `SmsGateway` provider.
         /// </summary>
         [Input("provider")]
         public Input<string>? Provider { get; set; }
@@ -510,7 +510,7 @@ namespace Pulumi.Auth0.Inputs
         private InputList<string>? _scopes;
 
         /// <summary>
-        /// Permissions to grant to the connection. Within the Auth0 dashboard these appear under the "Attributes" and "Extended Attributes" sections. Some examples: `basic_profile`, `ext_profile`, `ext_nested_groups`, etc.
+        /// Permissions to grant to the connection. Within the Auth0 dashboard these appear under the "Attributes" and "Extended Attributes" sections. Some examples: `BasicProfile`, `ExtProfile`, `ExtNestedGroups`, etc.
         /// </summary>
         public InputList<string> Scopes
         {
@@ -531,13 +531,13 @@ namespace Pulumi.Auth0.Inputs
         }
 
         /// <summary>
-        /// Determines whether to sync user profile attributes (`name`, `given_name`, `family_name`, `nickname`, `picture`) at each login or only on the first login. Options include: `on_each_login`, `on_first_login`, `never_on_login`. Default value: `on_each_login`.
+        /// Determines whether to sync user profile attributes (`Name`, `GivenName`, `FamilyName`, `Nickname`, `Picture`) at each login or only on the first login. Options include: `OnEachLogin`, `OnFirstLogin`, `NeverOnLogin`. Default value: `OnEachLogin`.
         /// </summary>
         [Input("setUserRootAttributes")]
         public Input<string>? SetUserRootAttributes { get; set; }
 
         /// <summary>
-        /// Choose how Auth0 sets the email_verified field in the user profile.
+        /// Choose how Auth0 sets the EmailVerified field in the user profile.
         /// </summary>
         [Input("shouldTrustEmailVerifiedConnection")]
         public Input<string>? ShouldTrustEmailVerifiedConnection { get; set; }
@@ -573,7 +573,7 @@ namespace Pulumi.Auth0.Inputs
         public Input<string>? SigningCert { get; set; }
 
         /// <summary>
-        /// The key used to sign requests in the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
+        /// The key used to sign requests in the connection. Uses the `Key` and `Cert` properties to provide the private key and certificate respectively.
         /// </summary>
         [Input("signingKey")]
         public Input<Inputs.ConnectionOptionsSigningKeyArgs>? SigningKey { get; set; }
@@ -661,7 +661,7 @@ namespace Pulumi.Auth0.Inputs
         }
 
         /// <summary>
-        /// Value can be `back_channel` or `front_channel`. Front Channel will use OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel will use `response_type=code`.
+        /// Value can be `BackChannel` or `FrontChannel`. Front Channel will use OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel will use `response_type=code`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -691,7 +691,7 @@ namespace Pulumi.Auth0.Inputs
         public Input<bool>? UseWsfed { get; set; }
 
         /// <summary>
-        /// Attribute in the token that will be mapped to the user_id property in Auth0.
+        /// Attribute in the token that will be mapped to the UserId property in Auth0.
         /// </summary>
         [Input("userIdAttribute")]
         public Input<string>? UserIdAttribute { get; set; }

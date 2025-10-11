@@ -30,14 +30,14 @@ public final class GetClientPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The name of the client. If not provided, `client_id` must be set.
+     * The name of the client. If not provided, `clientId` must be set.
      * 
      */
     @Import(name="name")
     private @Nullable String name;
 
     /**
-     * @return The name of the client. If not provided, `client_id` must be set.
+     * @return The name of the client. If not provided, `clientId` must be set.
      * 
      */
     public Optional<String> name() {
@@ -81,7 +81,7 @@ public final class GetClientPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param name The name of the client. If not provided, `client_id` must be set.
+         * @param name The name of the client. If not provided, `clientId` must be set.
          * 
          * @return builder
          * 

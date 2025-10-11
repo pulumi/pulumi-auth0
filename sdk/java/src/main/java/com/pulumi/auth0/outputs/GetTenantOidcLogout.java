@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class GetTenantOidcLogout {
     /**
-     * @return Enable the end_session_endpoint URL in the .well-known discovery configuration.
+     * @return Enable the endSessionEndpoint URL in the .well-known discovery configuration.
      * 
      */
     private Boolean rpLogoutEndSessionEndpointDiscovery;
 
     private GetTenantOidcLogout() {}
     /**
-     * @return Enable the end_session_endpoint URL in the .well-known discovery configuration.
+     * @return Enable the endSessionEndpoint URL in the .well-known discovery configuration.
      * 
      */
     public Boolean rpLogoutEndSessionEndpointDiscovery() {

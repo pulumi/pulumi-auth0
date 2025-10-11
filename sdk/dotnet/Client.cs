@@ -50,7 +50,7 @@ namespace Pulumi.Auth0
         public Output<ImmutableArray<string>> AllowedOrigins { get; private set; } = null!;
 
         /// <summary>
-        /// Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+        /// Type of application the client represents. Possible values are: `Native`, `Spa`, `RegularWeb`, `NonInteractive`, `ResourceServer`,`SsoIntegration`. Specific SSO integrations types accepted as well are: `Rms`, `Box`, `Cloudbees`, `Concur`, `Dropbox`, `Mscrm`, `Echosign`, `Egnyte`, `Newrelic`, `Office365`, `Salesforce`, `Sentry`, `Sharepoint`, `Slack`, `Springcm`, `Zendesk`, `Zoom`.
         /// </summary>
         [Output("appType")]
         public Output<string?> AppType { get; private set; } = null!;
@@ -80,13 +80,13 @@ namespace Pulumi.Auth0
         public Output<ImmutableDictionary<string, string>?> ClientMetadata { get; private set; } = null!;
 
         /// <summary>
-        /// Defines the compliance level for this client, which may restrict it's capabilities. Can be one of `none`, `fapi1_adv_pkj_par`, `fapi1_adv_mtls_par`.
+        /// Defines the compliance level for this client, which may restrict it's capabilities. Can be one of `None`, `Fapi1AdvPkjPar`, `Fapi1AdvMtlsPar`.
         /// </summary>
         [Output("complianceLevel")]
         public Output<string?> ComplianceLevel { get; private set; } = null!;
 
         /// <summary>
-        /// Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
+        /// Whether this client can be used to make cross-origin authentication requests (`True`) or it is not allowed to make such requests (`False`).
         /// </summary>
         [Output("crossOriginAuth")]
         public Output<bool?> CrossOriginAuth { get; private set; } = null!;
@@ -152,7 +152,7 @@ namespace Pulumi.Auth0
         public Output<bool> IsFirstParty { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `client_secret_post` or `client_secret_basic`. Setting this property when creating the resource, will default the authentication method to `client_secret_post`. To change the authentication method to `client_secret_basic` use the `auth0.ClientCredentials` resource.
+        /// Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `ClientSecretPost` or `ClientSecretBasic`. Setting this property when creating the resource, will default the authentication method to `ClientSecretPost`. To change the authentication method to `ClientSecretBasic` use the `auth0.ClientCredentials` resource.
         /// </summary>
         [Output("isTokenEndpointIpHeaderTrusted")]
         public Output<bool> IsTokenEndpointIpHeaderTrusted { get; private set; } = null!;
@@ -182,7 +182,7 @@ namespace Pulumi.Auth0
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `app_type`.
+        /// Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `False` in order to change the `AppType`.
         /// </summary>
         [Output("nativeSocialLogin")]
         public Output<Outputs.ClientNativeSocialLogin> NativeSocialLogin { get; private set; } = null!;
@@ -206,13 +206,13 @@ namespace Pulumi.Auth0
         public Output<Outputs.ClientOidcLogout> OidcLogout { get; private set; } = null!;
 
         /// <summary>
-        /// Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.
+        /// Defines how to proceed during an authentication transaction when `OrganizationUsage = "require"`. Can be `NoPrompt` (default), `PreLoginPrompt` or  `PostLoginPrompt`.
         /// </summary>
         [Output("organizationRequireBehavior")]
         public Output<string?> OrganizationRequireBehavior { get; private set; } = null!;
 
         /// <summary>
-        /// Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+        /// Defines how to proceed during an authentication transaction with regards to an organization. Can be `Deny` (default), `Allow` or `Require`.
         /// </summary>
         [Output("organizationUsage")]
         public Output<string?> OrganizationUsage { get; private set; } = null!;
@@ -379,7 +379,7 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+        /// Type of application the client represents. Possible values are: `Native`, `Spa`, `RegularWeb`, `NonInteractive`, `ResourceServer`,`SsoIntegration`. Specific SSO integrations types accepted as well are: `Rms`, `Box`, `Cloudbees`, `Concur`, `Dropbox`, `Mscrm`, `Echosign`, `Egnyte`, `Newrelic`, `Office365`, `Salesforce`, `Sentry`, `Sharepoint`, `Slack`, `Springcm`, `Zendesk`, `Zoom`.
         /// </summary>
         [Input("appType")]
         public Input<string>? AppType { get; set; }
@@ -421,13 +421,13 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// Defines the compliance level for this client, which may restrict it's capabilities. Can be one of `none`, `fapi1_adv_pkj_par`, `fapi1_adv_mtls_par`.
+        /// Defines the compliance level for this client, which may restrict it's capabilities. Can be one of `None`, `Fapi1AdvPkjPar`, `Fapi1AdvMtlsPar`.
         /// </summary>
         [Input("complianceLevel")]
         public Input<string>? ComplianceLevel { get; set; }
 
         /// <summary>
-        /// Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
+        /// Whether this client can be used to make cross-origin authentication requests (`True`) or it is not allowed to make such requests (`False`).
         /// </summary>
         [Input("crossOriginAuth")]
         public Input<bool>? CrossOriginAuth { get; set; }
@@ -505,7 +505,7 @@ namespace Pulumi.Auth0
         public Input<bool>? IsFirstParty { get; set; }
 
         /// <summary>
-        /// Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `client_secret_post` or `client_secret_basic`. Setting this property when creating the resource, will default the authentication method to `client_secret_post`. To change the authentication method to `client_secret_basic` use the `auth0.ClientCredentials` resource.
+        /// Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `ClientSecretPost` or `ClientSecretBasic`. Setting this property when creating the resource, will default the authentication method to `ClientSecretPost`. To change the authentication method to `ClientSecretBasic` use the `auth0.ClientCredentials` resource.
         /// </summary>
         [Input("isTokenEndpointIpHeaderTrusted")]
         public Input<bool>? IsTokenEndpointIpHeaderTrusted { get; set; }
@@ -535,7 +535,7 @@ namespace Pulumi.Auth0
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `app_type`.
+        /// Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `False` in order to change the `AppType`.
         /// </summary>
         [Input("nativeSocialLogin")]
         public Input<Inputs.ClientNativeSocialLoginArgs>? NativeSocialLogin { get; set; }
@@ -546,7 +546,7 @@ namespace Pulumi.Auth0
         /// <summary>
         /// Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
         /// </summary>
-        [Obsolete(@"This resource is deprecated and will be removed in the next major version. Please use `oidc_logout` for managing OIDC backchannel logout URLs.")]
+        [Obsolete(@"This resource is deprecated and will be removed in the next major version. Please use `OidcLogout` for managing OIDC backchannel logout URLs.")]
         public InputList<string> OidcBackchannelLogoutUrls
         {
             get => _oidcBackchannelLogoutUrls ?? (_oidcBackchannelLogoutUrls = new InputList<string>());
@@ -566,13 +566,13 @@ namespace Pulumi.Auth0
         public Input<Inputs.ClientOidcLogoutArgs>? OidcLogout { get; set; }
 
         /// <summary>
-        /// Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.
+        /// Defines how to proceed during an authentication transaction when `OrganizationUsage = "require"`. Can be `NoPrompt` (default), `PreLoginPrompt` or  `PostLoginPrompt`.
         /// </summary>
         [Input("organizationRequireBehavior")]
         public Input<string>? OrganizationRequireBehavior { get; set; }
 
         /// <summary>
-        /// Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+        /// Defines how to proceed during an authentication transaction with regards to an organization. Can be `Deny` (default), `Allow` or `Require`.
         /// </summary>
         [Input("organizationUsage")]
         public Input<string>? OrganizationUsage { get; set; }
@@ -698,7 +698,7 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+        /// Type of application the client represents. Possible values are: `Native`, `Spa`, `RegularWeb`, `NonInteractive`, `ResourceServer`,`SsoIntegration`. Specific SSO integrations types accepted as well are: `Rms`, `Box`, `Cloudbees`, `Concur`, `Dropbox`, `Mscrm`, `Echosign`, `Egnyte`, `Newrelic`, `Office365`, `Salesforce`, `Sentry`, `Sharepoint`, `Slack`, `Springcm`, `Zendesk`, `Zoom`.
         /// </summary>
         [Input("appType")]
         public Input<string>? AppType { get; set; }
@@ -746,13 +746,13 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// Defines the compliance level for this client, which may restrict it's capabilities. Can be one of `none`, `fapi1_adv_pkj_par`, `fapi1_adv_mtls_par`.
+        /// Defines the compliance level for this client, which may restrict it's capabilities. Can be one of `None`, `Fapi1AdvPkjPar`, `Fapi1AdvMtlsPar`.
         /// </summary>
         [Input("complianceLevel")]
         public Input<string>? ComplianceLevel { get; set; }
 
         /// <summary>
-        /// Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
+        /// Whether this client can be used to make cross-origin authentication requests (`True`) or it is not allowed to make such requests (`False`).
         /// </summary>
         [Input("crossOriginAuth")]
         public Input<bool>? CrossOriginAuth { get; set; }
@@ -830,7 +830,7 @@ namespace Pulumi.Auth0
         public Input<bool>? IsFirstParty { get; set; }
 
         /// <summary>
-        /// Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `client_secret_post` or `client_secret_basic`. Setting this property when creating the resource, will default the authentication method to `client_secret_post`. To change the authentication method to `client_secret_basic` use the `auth0.ClientCredentials` resource.
+        /// Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `ClientSecretPost` or `ClientSecretBasic`. Setting this property when creating the resource, will default the authentication method to `ClientSecretPost`. To change the authentication method to `ClientSecretBasic` use the `auth0.ClientCredentials` resource.
         /// </summary>
         [Input("isTokenEndpointIpHeaderTrusted")]
         public Input<bool>? IsTokenEndpointIpHeaderTrusted { get; set; }
@@ -860,7 +860,7 @@ namespace Pulumi.Auth0
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `app_type`.
+        /// Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `False` in order to change the `AppType`.
         /// </summary>
         [Input("nativeSocialLogin")]
         public Input<Inputs.ClientNativeSocialLoginGetArgs>? NativeSocialLogin { get; set; }
@@ -871,7 +871,7 @@ namespace Pulumi.Auth0
         /// <summary>
         /// Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
         /// </summary>
-        [Obsolete(@"This resource is deprecated and will be removed in the next major version. Please use `oidc_logout` for managing OIDC backchannel logout URLs.")]
+        [Obsolete(@"This resource is deprecated and will be removed in the next major version. Please use `OidcLogout` for managing OIDC backchannel logout URLs.")]
         public InputList<string> OidcBackchannelLogoutUrls
         {
             get => _oidcBackchannelLogoutUrls ?? (_oidcBackchannelLogoutUrls = new InputList<string>());
@@ -891,13 +891,13 @@ namespace Pulumi.Auth0
         public Input<Inputs.ClientOidcLogoutGetArgs>? OidcLogout { get; set; }
 
         /// <summary>
-        /// Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.
+        /// Defines how to proceed during an authentication transaction when `OrganizationUsage = "require"`. Can be `NoPrompt` (default), `PreLoginPrompt` or  `PostLoginPrompt`.
         /// </summary>
         [Input("organizationRequireBehavior")]
         public Input<string>? OrganizationRequireBehavior { get; set; }
 
         /// <summary>
-        /// Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+        /// Defines how to proceed during an authentication transaction with regards to an organization. Can be `Deny` (default), `Allow` or `Require`.
         /// </summary>
         [Input("organizationUsage")]
         public Input<string>? OrganizationUsage { get; set; }

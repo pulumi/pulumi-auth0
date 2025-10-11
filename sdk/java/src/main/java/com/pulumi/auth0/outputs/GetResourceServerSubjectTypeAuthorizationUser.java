@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class GetResourceServerSubjectTypeAuthorizationUser {
     /**
-     * @return User flows policy. One of `allow_all`, `deny_all`, `require_client_grant`.
+     * @return User flows policy. One of `allowAll`, `denyAll`, `requireClientGrant`.
      * 
      */
     private String policy;
 
     private GetResourceServerSubjectTypeAuthorizationUser() {}
     /**
-     * @return User flows policy. One of `allow_all`, `deny_all`, `require_client_grant`.
+     * @return User flows policy. One of `allowAll`, `denyAll`, `requireClientGrant`.
      * 
      */
     public String policy() {

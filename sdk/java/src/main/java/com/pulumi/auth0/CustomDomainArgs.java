@@ -18,14 +18,14 @@ public final class CustomDomainArgs extends com.pulumi.resources.ResourceArgs {
     public static final CustomDomainArgs Empty = new CustomDomainArgs();
 
     /**
-     * The HTTP header to fetch the client&#39;s IP address. Cannot be set on auth0_managed domains.
+     * The HTTP header to fetch the client&#39;s IP address. Cannot be set on auth0Managed domains.
      * 
      */
     @Import(name="customClientIpHeader")
     private @Nullable Output<String> customClientIpHeader;
 
     /**
-     * @return The HTTP header to fetch the client&#39;s IP address. Cannot be set on auth0_managed domains.
+     * @return The HTTP header to fetch the client&#39;s IP address. Cannot be set on auth0Managed domains.
      * 
      */
     public Optional<Output<String>> customClientIpHeader() {
@@ -63,14 +63,14 @@ public final class CustomDomainArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on self_managed domains.
+     * TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on selfManaged domains.
      * 
      */
     @Import(name="tlsPolicy")
     private @Nullable Output<String> tlsPolicy;
 
     /**
-     * @return TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on self_managed domains.
+     * @return TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on selfManaged domains.
      * 
      */
     public Optional<Output<String>> tlsPolicy() {
@@ -78,14 +78,14 @@ public final class CustomDomainArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
+     * Provisioning type for the custom domain. Options include `auth0ManagedCerts` and `selfManagedCerts`.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
+     * @return Provisioning type for the custom domain. Options include `auth0ManagedCerts` and `selfManagedCerts`.
      * 
      */
     public Output<String> type() {
@@ -121,7 +121,7 @@ public final class CustomDomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customClientIpHeader The HTTP header to fetch the client&#39;s IP address. Cannot be set on auth0_managed domains.
+         * @param customClientIpHeader The HTTP header to fetch the client&#39;s IP address. Cannot be set on auth0Managed domains.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class CustomDomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customClientIpHeader The HTTP header to fetch the client&#39;s IP address. Cannot be set on auth0_managed domains.
+         * @param customClientIpHeader The HTTP header to fetch the client&#39;s IP address. Cannot be set on auth0Managed domains.
          * 
          * @return builder
          * 
@@ -184,7 +184,7 @@ public final class CustomDomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tlsPolicy TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on self_managed domains.
+         * @param tlsPolicy TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on selfManaged domains.
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class CustomDomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tlsPolicy TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on self_managed domains.
+         * @param tlsPolicy TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on selfManaged domains.
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class CustomDomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
+         * @param type Provisioning type for the custom domain. Options include `auth0ManagedCerts` and `selfManagedCerts`.
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class CustomDomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
+         * @param type Provisioning type for the custom domain. Options include `auth0ManagedCerts` and `selfManagedCerts`.
          * 
          * @return builder
          * 

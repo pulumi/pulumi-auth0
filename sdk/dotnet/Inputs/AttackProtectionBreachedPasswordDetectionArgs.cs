@@ -16,7 +16,7 @@ namespace Pulumi.Auth0.Inputs
         private InputList<string>? _adminNotificationFrequencies;
 
         /// <summary>
-        /// When `admin_notification` is enabled within the `shields` property, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
+        /// When `AdminNotification` is enabled within the `Shields` property, determines how often email notifications are sent. Possible values: `Immediately`, `Daily`, `Weekly`, `Monthly`.
         /// </summary>
         public InputList<string> AdminNotificationFrequencies
         {
@@ -31,7 +31,7 @@ namespace Pulumi.Auth0.Inputs
         public Input<bool> Enabled { get; set; } = null!;
 
         /// <summary>
-        /// The subscription level for breached password detection methods. Use "enhanced" to enable Credential Guard. Possible values: `standard`, `enhanced`.
+        /// The subscription level for breached password detection methods. Use "enhanced" to enable Credential Guard. Possible values: `Standard`, `Enhanced`.
         /// </summary>
         [Input("method")]
         public Input<string>? Method { get; set; }
@@ -52,7 +52,7 @@ namespace Pulumi.Auth0.Inputs
         private InputList<string>? _shields;
 
         /// <summary>
-        /// Action to take when a breached password is detected. Options include: `block` (block compromised user accounts), `user_notification` (send an email to user when we detect that they are using compromised credentials) and `admin_notification` (send an email with a summary of the number of accounts logging in with compromised credentials).
+        /// Action to take when a breached password is detected. Options include: `Block` (block compromised user accounts), `UserNotification` (send an email to user when we detect that they are using compromised credentials) and `AdminNotification` (send an email with a summary of the number of accounts logging in with compromised credentials).
         /// </summary>
         public InputList<string> Shields
         {

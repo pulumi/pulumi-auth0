@@ -12,19 +12,19 @@ namespace Pulumi.Auth0
     public static class GetPhoneProvider
     {
         /// <summary>
-        /// Data source to retrieve a specific Auth0 Phone Provider by `id`.
+        /// Data source to retrieve a specific Auth0 Phone Provider by `Id`.
         /// </summary>
         public static Task<GetPhoneProviderResult> InvokeAsync(GetPhoneProviderArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPhoneProviderResult>("auth0:index/getPhoneProvider:getPhoneProvider", args ?? new GetPhoneProviderArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source to retrieve a specific Auth0 Phone Provider by `id`.
+        /// Data source to retrieve a specific Auth0 Phone Provider by `Id`.
         /// </summary>
         public static Output<GetPhoneProviderResult> Invoke(GetPhoneProviderInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPhoneProviderResult>("auth0:index/getPhoneProvider:getPhoneProvider", args ?? new GetPhoneProviderInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source to retrieve a specific Auth0 Phone Provider by `id`.
+        /// Data source to retrieve a specific Auth0 Phone Provider by `Id`.
         /// </summary>
         public static Output<GetPhoneProviderResult> Invoke(GetPhoneProviderInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetPhoneProviderResult>("auth0:index/getPhoneProvider:getPhoneProvider", args ?? new GetPhoneProviderInvokeArgs(), options.WithDefaults());
@@ -84,7 +84,7 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Name of the phone provider. Options include `twilio`, `custom`.
+        /// Name of the phone provider. Options include `Twilio`, `Custom`.
         /// </summary>
         public readonly string Name;
         /// <summary>

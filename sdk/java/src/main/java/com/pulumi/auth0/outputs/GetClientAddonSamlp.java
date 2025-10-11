@@ -71,7 +71,7 @@ public final class GetClientAddonSamlp {
      */
     private List<GetClientAddonSamlpLogout> logouts;
     /**
-     * @return Indicates whether or not to add additional identity information in the token, such as the provider used and the `access_token`, if available. Defaults to `true`.
+     * @return Indicates whether or not to add additional identity information in the token, such as the provider used and the `accessToken`, if available. Defaults to `true`.
      * 
      */
     private Boolean mapIdentities;
@@ -205,7 +205,7 @@ public final class GetClientAddonSamlp {
         return this.logouts;
     }
     /**
-     * @return Indicates whether or not to add additional identity information in the token, such as the provider used and the `access_token`, if available. Defaults to `true`.
+     * @return Indicates whether or not to add additional identity information in the token, such as the provider used and the `accessToken`, if available. Defaults to `true`.
      * 
      */
     public Boolean mapIdentities() {

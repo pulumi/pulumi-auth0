@@ -16,7 +16,7 @@ namespace Pulumi.Auth0.Inputs
         private InputList<string>? _shields;
 
         /// <summary>
-        /// Action to take when a breached password is detected during a signup. Possible values: `block` (block compromised credentials for new accounts), `admin_notification` (send an email notification with a summary of compromised credentials in new accounts).
+        /// Action to take when a breached password is detected during a signup. Possible values: `Block` (block compromised credentials for new accounts), `AdminNotification` (send an email notification with a summary of compromised credentials in new accounts).
         /// </summary>
         public InputList<string> Shields
         {

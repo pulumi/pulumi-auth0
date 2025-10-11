@@ -18,7 +18,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
-        /// The Relying Party is the domain for which the WebAuthn keys will be issued, set to `true` if you are customizing the identifier.
+        /// The Relying Party is the domain for which the WebAuthn keys will be issued, set to `True` if you are customizing the identifier.
         /// </summary>
         public readonly bool? OverrideRelyingParty;
         /// <summary>

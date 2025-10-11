@@ -15,7 +15,7 @@ import java.util.Objects;
 @CustomType
 public final class GetAttackProtectionBreachedPasswordDetection {
     /**
-     * @return When `admin_notification` is enabled within the `shields` property, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
+     * @return When `adminNotification` is enabled within the `shields` property, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
      * 
      */
     private List<String> adminNotificationFrequencies;
@@ -40,14 +40,14 @@ public final class GetAttackProtectionBreachedPasswordDetection {
      */
     private List<GetAttackProtectionBreachedPasswordDetectionPreUserRegistration> preUserRegistrations;
     /**
-     * @return Action to take when a breached password is detected. Options include: `block` (block compromised user accounts), `user_notification` (send an email to user when we detect that they are using compromised credentials) and `admin_notification` (send an email with a summary of the number of accounts logging in with compromised credentials).
+     * @return Action to take when a breached password is detected. Options include: `block` (block compromised user accounts), `userNotification` (send an email to user when we detect that they are using compromised credentials) and `adminNotification` (send an email with a summary of the number of accounts logging in with compromised credentials).
      * 
      */
     private List<String> shields;
 
     private GetAttackProtectionBreachedPasswordDetection() {}
     /**
-     * @return When `admin_notification` is enabled within the `shields` property, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
+     * @return When `adminNotification` is enabled within the `shields` property, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
      * 
      */
     public List<String> adminNotificationFrequencies() {
@@ -82,7 +82,7 @@ public final class GetAttackProtectionBreachedPasswordDetection {
         return this.preUserRegistrations;
     }
     /**
-     * @return Action to take when a breached password is detected. Options include: `block` (block compromised user accounts), `user_notification` (send an email to user when we detect that they are using compromised credentials) and `admin_notification` (send an email with a summary of the number of accounts logging in with compromised credentials).
+     * @return Action to take when a breached password is detected. Options include: `block` (block compromised user accounts), `userNotification` (send an email to user when we detect that they are using compromised credentials) and `adminNotification` (send an email with a summary of the number of accounts logging in with compromised credentials).
      * 
      */
     public List<String> shields() {

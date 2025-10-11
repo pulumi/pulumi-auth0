@@ -26,7 +26,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string? ParentKeyId;
         /// <summary>
-        /// The state of the encryption key. One of `pre-activation`, `active`, `deactivated`, or `destroyed`.
+        /// The state of the encryption key. One of `pre-activation`, `Active`, `Deactivated`, or `Destroyed`.
         /// </summary>
         public readonly string? State;
         /// <summary>

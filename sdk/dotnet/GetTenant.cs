@@ -100,7 +100,7 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly string DefaultAudience;
         /// <summary>
-        /// Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
+        /// Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `Ad`, `Auth0`, `Email`, `Sms`, `Waad`, and `Adfs`.
         /// </summary>
         public readonly string DefaultDirectory;
         /// <summary>
@@ -168,7 +168,7 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly string SandboxVersion;
         /// <summary>
-        /// Alters behavior of tenant's session cookie. Contains a single `mode` property.
+        /// Alters behavior of tenant's session cookie. Contains a single `Mode` property.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetTenantSessionCookyResult> SessionCookies;
         /// <summary>

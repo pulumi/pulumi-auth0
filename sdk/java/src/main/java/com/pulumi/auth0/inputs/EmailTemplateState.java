@@ -63,14 +63,14 @@ public final class EmailTemplateState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Whether the `reset_email` and `verify_email` templates should include the user&#39;s email address as the email parameter in the `returnUrl` (true) or whether no email address should be included in the redirect (false). Defaults to `true`.
+     * Whether the `resetEmail` and `verifyEmail` templates should include the user&#39;s email address as the email parameter in the `returnUrl` (true) or whether no email address should be included in the redirect (false). Defaults to `true`.
      * 
      */
     @Import(name="includeEmailInRedirect")
     private @Nullable Output<Boolean> includeEmailInRedirect;
 
     /**
-     * @return Whether the `reset_email` and `verify_email` templates should include the user&#39;s email address as the email parameter in the `returnUrl` (true) or whether no email address should be included in the redirect (false). Defaults to `true`.
+     * @return Whether the `resetEmail` and `verifyEmail` templates should include the user&#39;s email address as the email parameter in the `returnUrl` (true) or whether no email address should be included in the redirect (false). Defaults to `true`.
      * 
      */
     public Optional<Output<Boolean>> includeEmailInRedirect() {
@@ -123,14 +123,14 @@ public final class EmailTemplateState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `reset_email_by_code`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), `password_reset` (legacy), or `async_approval`.
+     * Template name. Options include `verifyEmail`, `verifyEmailByCode`, `resetEmail`, `resetEmailByCode`, `welcomeEmail`, `blockedAccount`, `stolenCredentials`, `enrollmentEmail`, `mfaOobCode`, `userInvitation`, `changePassword` (legacy), `passwordReset` (legacy), or `asyncApproval`.
      * 
      */
     @Import(name="template")
     private @Nullable Output<String> template;
 
     /**
-     * @return Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `reset_email_by_code`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), `password_reset` (legacy), or `async_approval`.
+     * @return Template name. Options include `verifyEmail`, `verifyEmailByCode`, `resetEmail`, `resetEmailByCode`, `welcomeEmail`, `blockedAccount`, `stolenCredentials`, `enrollmentEmail`, `mfaOobCode`, `userInvitation`, `changePassword` (legacy), `passwordReset` (legacy), or `asyncApproval`.
      * 
      */
     public Optional<Output<String>> template() {
@@ -248,7 +248,7 @@ public final class EmailTemplateState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param includeEmailInRedirect Whether the `reset_email` and `verify_email` templates should include the user&#39;s email address as the email parameter in the `returnUrl` (true) or whether no email address should be included in the redirect (false). Defaults to `true`.
+         * @param includeEmailInRedirect Whether the `resetEmail` and `verifyEmail` templates should include the user&#39;s email address as the email parameter in the `returnUrl` (true) or whether no email address should be included in the redirect (false). Defaults to `true`.
          * 
          * @return builder
          * 
@@ -259,7 +259,7 @@ public final class EmailTemplateState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param includeEmailInRedirect Whether the `reset_email` and `verify_email` templates should include the user&#39;s email address as the email parameter in the `returnUrl` (true) or whether no email address should be included in the redirect (false). Defaults to `true`.
+         * @param includeEmailInRedirect Whether the `resetEmail` and `verifyEmail` templates should include the user&#39;s email address as the email parameter in the `returnUrl` (true) or whether no email address should be included in the redirect (false). Defaults to `true`.
          * 
          * @return builder
          * 
@@ -332,7 +332,7 @@ public final class EmailTemplateState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param template Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `reset_email_by_code`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), `password_reset` (legacy), or `async_approval`.
+         * @param template Template name. Options include `verifyEmail`, `verifyEmailByCode`, `resetEmail`, `resetEmailByCode`, `welcomeEmail`, `blockedAccount`, `stolenCredentials`, `enrollmentEmail`, `mfaOobCode`, `userInvitation`, `changePassword` (legacy), `passwordReset` (legacy), or `asyncApproval`.
          * 
          * @return builder
          * 
@@ -343,7 +343,7 @@ public final class EmailTemplateState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param template Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `reset_email_by_code`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), `password_reset` (legacy), or `async_approval`.
+         * @param template Template name. Options include `verifyEmail`, `verifyEmailByCode`, `resetEmail`, `resetEmailByCode`, `welcomeEmail`, `blockedAccount`, `stolenCredentials`, `enrollmentEmail`, `mfaOobCode`, `userInvitation`, `changePassword` (legacy), `passwordReset` (legacy), or `asyncApproval`.
          * 
          * @return builder
          * 

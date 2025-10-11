@@ -13,13 +13,13 @@ namespace Pulumi.Auth0.Inputs
     public sealed class ActionDependencyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Dependency name, e.g. `lodash`.
+        /// Dependency name, e.g. `Lodash`.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// Dependency version, e.g. `latest` or `4.17.21`.
+        /// Dependency version, e.g. `Latest` or `4.17.21`.
         /// </summary>
         [Input("version", required: true)]
         public Input<string> Version { get; set; } = null!;

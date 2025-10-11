@@ -97,7 +97,7 @@ public final class GetConnectionOption {
      */
     private String communityBaseUrl;
     /**
-     * @return A case-sensitive map of key value pairs used as configuration variables for the `custom_script`.
+     * @return A case-sensitive map of key value pairs used as configuration variables for the `customScript`.
      * 
      */
     private Map<String,String> configuration;
@@ -232,7 +232,7 @@ public final class GetConnectionOption {
      */
     private String identityApi;
     /**
-     * @return Configuration options for IDP Initiated Authentication. This is an object with the properties: `client_id`, `client_protocol`, and `client_authorize_query`.
+     * @return Configuration options for IDP Initiated Authentication. This is an object with the properties: `clientId`, `clientProtocol`, and `clientAuthorizeQuery`.
      * 
      */
     private List<GetConnectionOptionIdpInitiated> idpInitiateds;
@@ -262,7 +262,7 @@ public final class GetConnectionOption {
      */
     private String keyId;
     /**
-     * @return By default Auth0 maps `user_id` to `email`. Enabling this setting changes the behavior to map `user_id` to &#39;id&#39; instead. This can only be defined on a new Google Workspace connection and can not be changed once set.
+     * @return By default Auth0 maps `userId` to `email`. Enabling this setting changes the behavior to map `userId` to &#39;id&#39; instead. This can only be defined on a new Google Workspace connection and can not be changed once set.
      * 
      */
     private Boolean mapUserIdToId;
@@ -352,12 +352,12 @@ public final class GetConnectionOption {
      */
     private String protocolBinding;
     /**
-     * @return Defines the custom `sms_gateway` provider.
+     * @return Defines the custom `smsGateway` provider.
      * 
      */
     private String provider;
     /**
-     * @return Allows configuration if connections_realm_fallback flag is enabled for the tenant
+     * @return Allows configuration if connectionsRealmFallback flag is enabled for the tenant
      * 
      */
     private Boolean realmFallback;
@@ -372,7 +372,7 @@ public final class GetConnectionOption {
      */
     private Boolean requiresUsername;
     /**
-     * @return Permissions to grant to the connection. Within the Auth0 dashboard these appear under the &#34;Attributes&#34; and &#34;Extended Attributes&#34; sections. Some examples: `basic_profile`, `ext_profile`, `ext_nested_groups`, etc.
+     * @return Permissions to grant to the connection. Within the Auth0 dashboard these appear under the &#34;Attributes&#34; and &#34;Extended Attributes&#34; sections. Some examples: `basicProfile`, `extProfile`, `extNestedGroups`, etc.
      * 
      */
     private List<String> scopes;
@@ -382,12 +382,12 @@ public final class GetConnectionOption {
      */
     private Map<String,String> scripts;
     /**
-     * @return Determines whether to sync user profile attributes (`name`, `given_name`, `family_name`, `nickname`, `picture`) at each login or only on the first login. Options include: `on_each_login`, `on_first_login`, `never_on_login`. Default value: `on_each_login`.
+     * @return Determines whether to sync user profile attributes (`name`, `givenName`, `familyName`, `nickname`, `picture`) at each login or only on the first login. Options include: `onEachLogin`, `onFirstLogin`, `neverOnLogin`. Default value: `onEachLogin`.
      * 
      */
     private String setUserRootAttributes;
     /**
-     * @return Choose how Auth0 sets the email_verified field in the user profile.
+     * @return Choose how Auth0 sets the emailVerified field in the user profile.
      * 
      */
     private String shouldTrustEmailVerifiedConnection;
@@ -482,7 +482,7 @@ public final class GetConnectionOption {
      */
     private String twilioToken;
     /**
-     * @return Value can be `back_channel` or `front_channel`. Front Channel will use OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel will use `response_type=code`.
+     * @return Value can be `backChannel` or `frontChannel`. Front Channel will use OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel will use `response_type=code`.
      * 
      */
     private String type;
@@ -507,7 +507,7 @@ public final class GetConnectionOption {
      */
     private Boolean useWsfed;
     /**
-     * @return Attribute in the token that will be mapped to the user_id property in Auth0.
+     * @return Attribute in the token that will be mapped to the userId property in Auth0.
      * 
      */
     private String userIdAttribute;
@@ -625,7 +625,7 @@ public final class GetConnectionOption {
         return this.communityBaseUrl;
     }
     /**
-     * @return A case-sensitive map of key value pairs used as configuration variables for the `custom_script`.
+     * @return A case-sensitive map of key value pairs used as configuration variables for the `customScript`.
      * 
      */
     public Map<String,String> configuration() {
@@ -814,7 +814,7 @@ public final class GetConnectionOption {
         return this.identityApi;
     }
     /**
-     * @return Configuration options for IDP Initiated Authentication. This is an object with the properties: `client_id`, `client_protocol`, and `client_authorize_query`.
+     * @return Configuration options for IDP Initiated Authentication. This is an object with the properties: `clientId`, `clientProtocol`, and `clientAuthorizeQuery`.
      * 
      */
     public List<GetConnectionOptionIdpInitiated> idpInitiateds() {
@@ -856,7 +856,7 @@ public final class GetConnectionOption {
         return this.keyId;
     }
     /**
-     * @return By default Auth0 maps `user_id` to `email`. Enabling this setting changes the behavior to map `user_id` to &#39;id&#39; instead. This can only be defined on a new Google Workspace connection and can not be changed once set.
+     * @return By default Auth0 maps `userId` to `email`. Enabling this setting changes the behavior to map `userId` to &#39;id&#39; instead. This can only be defined on a new Google Workspace connection and can not be changed once set.
      * 
      */
     public Boolean mapUserIdToId() {
@@ -982,14 +982,14 @@ public final class GetConnectionOption {
         return this.protocolBinding;
     }
     /**
-     * @return Defines the custom `sms_gateway` provider.
+     * @return Defines the custom `smsGateway` provider.
      * 
      */
     public String provider() {
         return this.provider;
     }
     /**
-     * @return Allows configuration if connections_realm_fallback flag is enabled for the tenant
+     * @return Allows configuration if connectionsRealmFallback flag is enabled for the tenant
      * 
      */
     public Boolean realmFallback() {
@@ -1010,7 +1010,7 @@ public final class GetConnectionOption {
         return this.requiresUsername;
     }
     /**
-     * @return Permissions to grant to the connection. Within the Auth0 dashboard these appear under the &#34;Attributes&#34; and &#34;Extended Attributes&#34; sections. Some examples: `basic_profile`, `ext_profile`, `ext_nested_groups`, etc.
+     * @return Permissions to grant to the connection. Within the Auth0 dashboard these appear under the &#34;Attributes&#34; and &#34;Extended Attributes&#34; sections. Some examples: `basicProfile`, `extProfile`, `extNestedGroups`, etc.
      * 
      */
     public List<String> scopes() {
@@ -1024,14 +1024,14 @@ public final class GetConnectionOption {
         return this.scripts;
     }
     /**
-     * @return Determines whether to sync user profile attributes (`name`, `given_name`, `family_name`, `nickname`, `picture`) at each login or only on the first login. Options include: `on_each_login`, `on_first_login`, `never_on_login`. Default value: `on_each_login`.
+     * @return Determines whether to sync user profile attributes (`name`, `givenName`, `familyName`, `nickname`, `picture`) at each login or only on the first login. Options include: `onEachLogin`, `onFirstLogin`, `neverOnLogin`. Default value: `onEachLogin`.
      * 
      */
     public String setUserRootAttributes() {
         return this.setUserRootAttributes;
     }
     /**
-     * @return Choose how Auth0 sets the email_verified field in the user profile.
+     * @return Choose how Auth0 sets the emailVerified field in the user profile.
      * 
      */
     public String shouldTrustEmailVerifiedConnection() {
@@ -1164,7 +1164,7 @@ public final class GetConnectionOption {
         return this.twilioToken;
     }
     /**
-     * @return Value can be `back_channel` or `front_channel`. Front Channel will use OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel will use `response_type=code`.
+     * @return Value can be `backChannel` or `frontChannel`. Front Channel will use OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel will use `response_type=code`.
      * 
      */
     public String type() {
@@ -1199,7 +1199,7 @@ public final class GetConnectionOption {
         return this.useWsfed;
     }
     /**
-     * @return Attribute in the token that will be mapped to the user_id property in Auth0.
+     * @return Attribute in the token that will be mapped to the userId property in Auth0.
      * 
      */
     public String userIdAttribute() {

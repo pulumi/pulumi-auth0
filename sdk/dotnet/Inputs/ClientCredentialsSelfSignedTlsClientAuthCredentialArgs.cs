@@ -19,7 +19,7 @@ namespace Pulumi.Auth0.Inputs
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// Credential type. Supported types: `x509_cert`.
+        /// Credential type. Supported types: `X509Cert`.
         /// </summary>
         [Input("credentialType")]
         public Input<string>? CredentialType { get; set; }

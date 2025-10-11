@@ -47,14 +47,14 @@ public final class OrganizationConnectionState extends com.pulumi.resources.Reso
     }
 
     /**
-     * Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `is_signup_enabled` can only be `true` if `assign_membership_on_login` is `true`.
+     * Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `isSignupEnabled` can only be `true` if `assignMembershipOnLogin` is `true`.
      * 
      */
     @Import(name="isSignupEnabled")
     private @Nullable Output<Boolean> isSignupEnabled;
 
     /**
-     * @return Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `is_signup_enabled` can only be `true` if `assign_membership_on_login` is `true`.
+     * @return Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `isSignupEnabled` can only be `true` if `assignMembershipOnLogin` is `true`.
      * 
      */
     public Optional<Output<Boolean>> isSignupEnabled() {
@@ -194,7 +194,7 @@ public final class OrganizationConnectionState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param isSignupEnabled Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `is_signup_enabled` can only be `true` if `assign_membership_on_login` is `true`.
+         * @param isSignupEnabled Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `isSignupEnabled` can only be `true` if `assignMembershipOnLogin` is `true`.
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class OrganizationConnectionState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param isSignupEnabled Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `is_signup_enabled` can only be `true` if `assign_membership_on_login` is `true`.
+         * @param isSignupEnabled Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `isSignupEnabled` can only be `true` if `assignMembershipOnLogin` is `true`.
          * 
          * @return builder
          * 

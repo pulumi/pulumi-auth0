@@ -12,19 +12,19 @@ namespace Pulumi.Auth0
     public static class GetUser
     {
         /// <summary>
-        /// Data source to retrieve a specific Auth0 user by `user_id` or by `lucene query`. If filtered by Lucene Query, it should include sufficient filters to retrieve a unique user.
+        /// Data source to retrieve a specific Auth0 user by `UserId` or by `lucene query`. If filtered by Lucene Query, it should include sufficient filters to retrieve a unique user.
         /// </summary>
         public static Task<GetUserResult> InvokeAsync(GetUserArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetUserResult>("auth0:index/getUser:getUser", args ?? new GetUserArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source to retrieve a specific Auth0 user by `user_id` or by `lucene query`. If filtered by Lucene Query, it should include sufficient filters to retrieve a unique user.
+        /// Data source to retrieve a specific Auth0 user by `UserId` or by `lucene query`. If filtered by Lucene Query, it should include sufficient filters to retrieve a unique user.
         /// </summary>
         public static Output<GetUserResult> Invoke(GetUserInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetUserResult>("auth0:index/getUser:getUser", args ?? new GetUserInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source to retrieve a specific Auth0 user by `user_id` or by `lucene query`. If filtered by Lucene Query, it should include sufficient filters to retrieve a unique user.
+        /// Data source to retrieve a specific Auth0 user by `UserId` or by `lucene query`. If filtered by Lucene Query, it should include sufficient filters to retrieve a unique user.
         /// </summary>
         public static Output<GetUserResult> Invoke(GetUserInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetUserResult>("auth0:index/getUser:getUser", args ?? new GetUserInvokeArgs(), options.WithDefaults());
@@ -172,7 +172,7 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly string Username;
         /// <summary>
-        /// Indicates whether the user will receive a verification email after creation. Overrides behavior of `email_verified` parameter.
+        /// Indicates whether the user will receive a verification email after creation. Overrides behavior of `EmailVerified` parameter.
         /// </summary>
         public readonly bool VerifyEmail;
 

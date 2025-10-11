@@ -21,7 +21,7 @@ public final class GetClientClientAuthenticationMethodPrivateKeyJwtCredential {
      */
     private String createdAt;
     /**
-     * @return Credential type. Supported types: `public_key`.
+     * @return Credential type. Supported types: `publicKey`.
      * 
      */
     private String credentialType;
@@ -67,7 +67,7 @@ public final class GetClientClientAuthenticationMethodPrivateKeyJwtCredential {
         return this.createdAt;
     }
     /**
-     * @return Credential type. Supported types: `public_key`.
+     * @return Credential type. Supported types: `publicKey`.
      * 
      */
     public String credentialType() {

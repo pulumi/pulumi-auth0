@@ -32,14 +32,14 @@ public final class ClientCredentialsTlsClientAuthCredentialArgs extends com.pulu
     }
 
     /**
-     * Credential type. Supported types: `cert_subject_dn`.
+     * Credential type. Supported types: `certSubjectDn`.
      * 
      */
     @Import(name="credentialType", required=true)
     private Output<String> credentialType;
 
     /**
-     * @return Credential type. Supported types: `cert_subject_dn`.
+     * @return Credential type. Supported types: `certSubjectDn`.
      * 
      */
     public Output<String> credentialType() {
@@ -77,14 +77,14 @@ public final class ClientCredentialsTlsClientAuthCredentialArgs extends com.pulu
     }
 
     /**
-     * PEM-formatted X509 certificate. Must be JSON escaped. Mutually exlusive with `subject_dn` property.
+     * PEM-formatted X509 certificate. Must be JSON escaped. Mutually exlusive with `subjectDn` property.
      * 
      */
     @Import(name="pem")
     private @Nullable Output<String> pem;
 
     /**
-     * @return PEM-formatted X509 certificate. Must be JSON escaped. Mutually exlusive with `subject_dn` property.
+     * @return PEM-formatted X509 certificate. Must be JSON escaped. Mutually exlusive with `subjectDn` property.
      * 
      */
     public Optional<Output<String>> pem() {
@@ -173,7 +173,7 @@ public final class ClientCredentialsTlsClientAuthCredentialArgs extends com.pulu
         }
 
         /**
-         * @param credentialType Credential type. Supported types: `cert_subject_dn`.
+         * @param credentialType Credential type. Supported types: `certSubjectDn`.
          * 
          * @return builder
          * 
@@ -184,7 +184,7 @@ public final class ClientCredentialsTlsClientAuthCredentialArgs extends com.pulu
         }
 
         /**
-         * @param credentialType Credential type. Supported types: `cert_subject_dn`.
+         * @param credentialType Credential type. Supported types: `certSubjectDn`.
          * 
          * @return builder
          * 
@@ -236,7 +236,7 @@ public final class ClientCredentialsTlsClientAuthCredentialArgs extends com.pulu
         }
 
         /**
-         * @param pem PEM-formatted X509 certificate. Must be JSON escaped. Mutually exlusive with `subject_dn` property.
+         * @param pem PEM-formatted X509 certificate. Must be JSON escaped. Mutually exlusive with `subjectDn` property.
          * 
          * @return builder
          * 
@@ -247,7 +247,7 @@ public final class ClientCredentialsTlsClientAuthCredentialArgs extends com.pulu
         }
 
         /**
-         * @param pem PEM-formatted X509 certificate. Must be JSON escaped. Mutually exlusive with `subject_dn` property.
+         * @param pem PEM-formatted X509 certificate. Must be JSON escaped. Mutually exlusive with `subjectDn` property.
          * 
          * @return builder
          * 

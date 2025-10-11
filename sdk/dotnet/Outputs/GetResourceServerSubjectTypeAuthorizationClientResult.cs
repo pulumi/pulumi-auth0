@@ -14,7 +14,7 @@ namespace Pulumi.Auth0.Outputs
     public sealed class GetResourceServerSubjectTypeAuthorizationClientResult
     {
         /// <summary>
-        /// Client flows policy. One of `deny_all`, `require_client_grant`.
+        /// Client flows policy. One of `DenyAll`, `RequireClientGrant`.
         /// </summary>
         public readonly string Policy;
 

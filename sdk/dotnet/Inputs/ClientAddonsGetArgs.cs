@@ -169,7 +169,7 @@ namespace Pulumi.Auth0.Inputs
         public Input<Inputs.ClientAddonsWamsGetArgs>? Wams { get; set; }
 
         /// <summary>
-        /// WS-Fed (WIF) addon indicator. Actual configuration is stored in `callback` and `client_aliases` properties on the client.
+        /// WS-Fed (WIF) addon indicator. Actual configuration is stored in `Callback` and `ClientAliases` properties on the client.
         /// </summary>
         [Input("wsfed")]
         public Input<Inputs.ClientAddonsWsfedGetArgs>? Wsfed { get; set; }

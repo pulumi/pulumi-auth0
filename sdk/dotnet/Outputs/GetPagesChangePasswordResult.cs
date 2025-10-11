@@ -14,7 +14,7 @@ namespace Pulumi.Auth0.Outputs
     public sealed class GetPagesChangePasswordResult
     {
         /// <summary>
-        /// Indicates whether to use the custom Reset Password HTML (`true`) or the default Auth0 page (`false`).
+        /// Indicates whether to use the custom Reset Password HTML (`True`) or the default Auth0 page (`False`).
         /// </summary>
         public readonly bool Enabled;
         /// <summary>

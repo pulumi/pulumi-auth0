@@ -13,13 +13,13 @@ namespace Pulumi.Auth0.Inputs
     public sealed class ConnectionOptionsGatewayAuthenticationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Audience claim for the HS256 token sent to `gateway_url`.
+        /// Audience claim for the HS256 token sent to `GatewayUrl`.
         /// </summary>
         [Input("audience")]
         public Input<string>? Audience { get; set; }
 
         /// <summary>
-        /// Authentication method (default is `bearer` token).
+        /// Authentication method (default is `Bearer` token).
         /// </summary>
         [Input("method")]
         public Input<string>? Method { get; set; }
@@ -28,7 +28,7 @@ namespace Pulumi.Auth0.Inputs
         private Input<string>? _secret;
 
         /// <summary>
-        /// Secret used to sign the HS256 token sent to `gateway_url`.
+        /// Secret used to sign the HS256 token sent to `GatewayUrl`.
         /// </summary>
         public Input<string>? Secret
         {
@@ -47,7 +47,7 @@ namespace Pulumi.Auth0.Inputs
         public Input<bool>? SecretBase64Encoded { get; set; }
 
         /// <summary>
-        /// Subject claim for the HS256 token sent to `gateway_url`.
+        /// Subject claim for the HS256 token sent to `GatewayUrl`.
         /// </summary>
         [Input("subject")]
         public Input<string>? Subject { get; set; }

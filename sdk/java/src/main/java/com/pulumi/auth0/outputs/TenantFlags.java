@@ -97,7 +97,7 @@ public final class TenantFlags {
      */
     private @Nullable Boolean enablePipeline2;
     /**
-     * @return Indicates whether the public sign up process shows a `user_exists` error if the user already exists.
+     * @return Indicates whether the public sign up process shows a `userExists` error if the user already exists.
      * 
      */
     private @Nullable Boolean enablePublicSignupUserExistsError;
@@ -262,7 +262,7 @@ public final class TenantFlags {
         return Optional.ofNullable(this.enablePipeline2);
     }
     /**
-     * @return Indicates whether the public sign up process shows a `user_exists` error if the user already exists.
+     * @return Indicates whether the public sign up process shows a `userExists` error if the user already exists.
      * 
      */
     public Optional<Boolean> enablePublicSignupUserExistsError() {

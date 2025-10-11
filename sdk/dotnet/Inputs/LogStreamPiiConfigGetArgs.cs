@@ -13,7 +13,7 @@ namespace Pulumi.Auth0.Inputs
     public sealed class LogStreamPiiConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The algorithm to use for PII handling. Currently, only `xxhash` is supported.
+        /// The algorithm to use for PII handling. Currently, only `Xxhash` is supported.
         /// </summary>
         [Input("algorithm")]
         public Input<string>? Algorithm { get; set; }
@@ -27,7 +27,7 @@ namespace Pulumi.Auth0.Inputs
         }
 
         /// <summary>
-        /// The method to use for PII handling. Options are `hash` or `mask`.
+        /// The method to use for PII handling. Options are `Hash` or `Mask`.
         /// </summary>
         [Input("method")]
         public Input<string>? Method { get; set; }

@@ -27,7 +27,7 @@ public final class GetNetworkAclRuleAction {
      */
     private Boolean log;
     /**
-     * @return If true, redirects the request. When using redirect action, redirect_uri must also be specified.
+     * @return If true, redirects the request. When using redirect action, redirectUri must also be specified.
      * 
      */
     private Boolean redirect;
@@ -60,7 +60,7 @@ public final class GetNetworkAclRuleAction {
         return this.log;
     }
     /**
-     * @return If true, redirects the request. When using redirect action, redirect_uri must also be specified.
+     * @return If true, redirects the request. When using redirect action, redirectUri must also be specified.
      * 
      */
     public Boolean redirect() {

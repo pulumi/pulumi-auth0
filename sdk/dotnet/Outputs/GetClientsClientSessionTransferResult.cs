@@ -14,7 +14,7 @@ namespace Pulumi.Auth0.Outputs
     public sealed class GetClientsClientSessionTransferResult
     {
         /// <summary>
-        /// Indicates whether the application is allowed to use a refresh token when using a session_transfer_token session.
+        /// Indicates whether the application is allowed to use a refresh token when using a SessionTransferToken session.
         /// </summary>
         public readonly bool AllowRefreshToken;
         public readonly ImmutableArray<string> AllowedAuthenticationMethods;
@@ -27,7 +27,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly bool EnforceCascadeRevocation;
         /// <summary>
-        /// Configures the level of device binding enforced when a session_transfer_token is consumed. Can be one of `ip`, `asn` or `none`.
+        /// Configures the level of device binding enforced when a SessionTransferToken is consumed. Can be one of `Ip`, `Asn` or `None`.
         /// </summary>
         public readonly string EnforceDeviceBinding;
         /// <summary>

@@ -16,7 +16,7 @@ public final class GetClientClientAuthenticationMethodTlsClientAuthCredential {
      */
     private String createdAt;
     /**
-     * @return Credential type. Supported types: `cert_subject_dn`.
+     * @return Credential type. Supported types: `certSubjectDn`.
      * 
      */
     private String credentialType;
@@ -50,7 +50,7 @@ public final class GetClientClientAuthenticationMethodTlsClientAuthCredential {
         return this.createdAt;
     }
     /**
-     * @return Credential type. Supported types: `cert_subject_dn`.
+     * @return Credential type. Supported types: `certSubjectDn`.
      * 
      */
     public String credentialType() {

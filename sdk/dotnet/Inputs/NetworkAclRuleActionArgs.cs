@@ -31,7 +31,7 @@ namespace Pulumi.Auth0.Inputs
         public Input<bool>? Log { get; set; }
 
         /// <summary>
-        /// If true, redirects the request. When using redirect action, redirect_uri must also be specified.
+        /// If true, redirects the request. When using redirect action, RedirectUri must also be specified.
         /// </summary>
         [Input("redirect")]
         public Input<bool>? Redirect { get; set; }

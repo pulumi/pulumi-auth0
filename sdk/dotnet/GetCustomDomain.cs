@@ -158,7 +158,7 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly ImmutableArray<Outputs.GetCustomDomainCertificateResult> Certificates;
         /// <summary>
-        /// The HTTP header to fetch the client's IP address. Cannot be set on auth0_managed domains.
+        /// The HTTP header to fetch the client's IP address. Cannot be set on Auth0Managed domains.
         /// </summary>
         public readonly string CustomClientIpHeader;
         /// <summary>
@@ -178,7 +178,7 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
+        /// Once the configuration status is `Ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
         /// </summary>
         public readonly string OriginDomainName;
         /// <summary>
@@ -186,15 +186,15 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly bool Primary;
         /// <summary>
-        /// Configuration status for the custom domain. Options include `disabled`, `pending`, `pending_verification`, and `ready`.
+        /// Configuration status for the custom domain. Options include `Disabled`, `Pending`, `PendingVerification`, and `Ready`.
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on self_managed domains.
+        /// TLS policy for the custom domain. Available options are: `Compatible` or `Recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on SelfManaged domains.
         /// </summary>
         public readonly string TlsPolicy;
         /// <summary>
-        /// Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
+        /// Provisioning type for the custom domain. Options include `Auth0ManagedCerts` and `SelfManagedCerts`.
         /// </summary>
         public readonly string Type;
         /// <summary>

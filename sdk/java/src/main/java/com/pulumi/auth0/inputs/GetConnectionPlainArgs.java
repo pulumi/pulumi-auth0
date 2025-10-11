@@ -30,14 +30,14 @@ public final class GetConnectionPlainArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * The name of the connection. If not provided, `connection_id` must be set.
+     * The name of the connection. If not provided, `connectionId` must be set.
      * 
      */
     @Import(name="name")
     private @Nullable String name;
 
     /**
-     * @return The name of the connection. If not provided, `connection_id` must be set.
+     * @return The name of the connection. If not provided, `connectionId` must be set.
      * 
      */
     public Optional<String> name() {
@@ -81,7 +81,7 @@ public final class GetConnectionPlainArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param name The name of the connection. If not provided, `connection_id` must be set.
+         * @param name The name of the connection. If not provided, `connectionId` must be set.
          * 
          * @return builder
          * 

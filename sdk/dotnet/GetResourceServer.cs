@@ -12,7 +12,7 @@ namespace Pulumi.Auth0
     public static class GetResourceServer
     {
         /// <summary>
-        /// Data source to retrieve a specific Auth0 resource server by `resource_server_id` or `identifier`.
+        /// Data source to retrieve a specific Auth0 resource server by `ResourceServerId` or `Identifier`.
         /// 
         /// ## Example Usage
         /// 
@@ -43,7 +43,7 @@ namespace Pulumi.Auth0
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetResourceServerResult>("auth0:index/getResourceServer:getResourceServer", args ?? new GetResourceServerArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source to retrieve a specific Auth0 resource server by `resource_server_id` or `identifier`.
+        /// Data source to retrieve a specific Auth0 resource server by `ResourceServerId` or `Identifier`.
         /// 
         /// ## Example Usage
         /// 
@@ -74,7 +74,7 @@ namespace Pulumi.Auth0
             => global::Pulumi.Deployment.Instance.Invoke<GetResourceServerResult>("auth0:index/getResourceServer:getResourceServer", args ?? new GetResourceServerInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source to retrieve a specific Auth0 resource server by `resource_server_id` or `identifier`.
+        /// Data source to retrieve a specific Auth0 resource server by `ResourceServerId` or `Identifier`.
         /// 
         /// ## Example Usage
         /// 
@@ -109,13 +109,13 @@ namespace Pulumi.Auth0
     public sealed class GetResourceServerArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Unique identifier for the resource server. Used as the audience parameter for authorization calls. If not provided, `resource_server_id` must be set.
+        /// Unique identifier for the resource server. Used as the audience parameter for authorization calls. If not provided, `ResourceServerId` must be set.
         /// </summary>
         [Input("identifier")]
         public string? Identifier { get; set; }
 
         /// <summary>
-        /// The ID of the resource server. If not provided, `identifier` must be set.
+        /// The ID of the resource server. If not provided, `Identifier` must be set.
         /// </summary>
         [Input("resourceServerId")]
         public string? ResourceServerId { get; set; }
@@ -129,13 +129,13 @@ namespace Pulumi.Auth0
     public sealed class GetResourceServerInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Unique identifier for the resource server. Used as the audience parameter for authorization calls. If not provided, `resource_server_id` must be set.
+        /// Unique identifier for the resource server. Used as the audience parameter for authorization calls. If not provided, `ResourceServerId` must be set.
         /// </summary>
         [Input("identifier")]
         public Input<string>? Identifier { get; set; }
 
         /// <summary>
-        /// The ID of the resource server. If not provided, `identifier` must be set.
+        /// The ID of the resource server. If not provided, `Identifier` must be set.
         /// </summary>
         [Input("resourceServerId")]
         public Input<string>? ResourceServerId { get; set; }
@@ -163,7 +163,7 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly string ClientId;
         /// <summary>
-        /// Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
+        /// Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `Null` to disable.
         /// </summary>
         public readonly string ConsentPolicy;
         /// <summary>
@@ -175,7 +175,7 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Unique identifier for the resource server. Used as the audience parameter for authorization calls. If not provided, `resource_server_id` must be set.
+        /// Unique identifier for the resource server. Used as the audience parameter for authorization calls. If not provided, `ResourceServerId` must be set.
         /// </summary>
         public readonly string? Identifier;
         /// <summary>
@@ -187,7 +187,7 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly ImmutableArray<Outputs.GetResourceServerProofOfPossessionResult> ProofOfPossessions;
         /// <summary>
-        /// The ID of the resource server. If not provided, `identifier` must be set.
+        /// The ID of the resource server. If not provided, `Identifier` must be set.
         /// </summary>
         public readonly string? ResourceServerId;
         /// <summary>
@@ -211,7 +211,7 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly ImmutableArray<Outputs.GetResourceServerSubjectTypeAuthorizationResult> SubjectTypeAuthorizations;
         /// <summary>
-        /// Dialect of access tokens that should be issued for this resource server. Options include `access_token`, `rfc9068_profile`, `access_token_authz`, and `rfc9068_profile_authz`. `access_token` is a JWT containing standard Auth0 claims. `rfc9068_profile` is a JWT conforming to the IETF JWT Access Token Profile. `access_token_authz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068_profile_authz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforce_policies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).
+        /// Dialect of access tokens that should be issued for this resource server. Options include `AccessToken`, `Rfc9068Profile`, `AccessTokenAuthz`, and `Rfc9068ProfileAuthz`. `AccessToken` is a JWT containing standard Auth0 claims. `Rfc9068Profile` is a JWT conforming to the IETF JWT Access Token Profile. `AccessTokenAuthz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `Rfc9068ProfileAuthz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`EnforcePolicies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).
         /// </summary>
         public readonly string TokenDialect;
         /// <summary>
@@ -223,7 +223,7 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly int TokenLifetime;
         /// <summary>
-        /// Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `token_lifetime` value.
+        /// Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `TokenLifetime` value.
         /// </summary>
         public readonly int TokenLifetimeForWeb;
         /// <summary>

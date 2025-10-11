@@ -34,7 +34,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string? TokenEndpointUrl;
         /// <summary>
-        /// Name of the property in the user object that maps to a SAP username, for example `email`.
+        /// Name of the property in the user object that maps to a SAP username, for example `Email`.
         /// </summary>
         public readonly string? UsernameAttribute;
 

@@ -19,7 +19,7 @@ namespace Pulumi.Auth0.Inputs
         public Input<string> Id { get; set; } = null!;
 
         /// <summary>
-        /// The trigger version. This regulates which `runtime` versions are supported.
+        /// The trigger version. This regulates which `Runtime` versions are supported.
         /// </summary>
         [Input("version", required: true)]
         public Input<string> Version { get; set; } = null!;

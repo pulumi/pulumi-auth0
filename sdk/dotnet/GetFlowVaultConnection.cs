@@ -12,7 +12,7 @@ namespace Pulumi.Auth0
     public static class GetFlowVaultConnection
     {
         /// <summary>
-        /// Data source to retrieve a specific Auth0 Flow Vault Connection by `id`
+        /// Data source to retrieve a specific Auth0 Flow Vault Connection by `Id`
         /// 
         /// ## Example Usage
         /// 
@@ -37,7 +37,7 @@ namespace Pulumi.Auth0
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFlowVaultConnectionResult>("auth0:index/getFlowVaultConnection:getFlowVaultConnection", args ?? new GetFlowVaultConnectionArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source to retrieve a specific Auth0 Flow Vault Connection by `id`
+        /// Data source to retrieve a specific Auth0 Flow Vault Connection by `Id`
         /// 
         /// ## Example Usage
         /// 
@@ -62,7 +62,7 @@ namespace Pulumi.Auth0
             => global::Pulumi.Deployment.Instance.Invoke<GetFlowVaultConnectionResult>("auth0:index/getFlowVaultConnection:getFlowVaultConnection", args ?? new GetFlowVaultConnectionInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source to retrieve a specific Auth0 Flow Vault Connection by `id`
+        /// Data source to retrieve a specific Auth0 Flow Vault Connection by `Id`
         /// 
         /// ## Example Usage
         /// 

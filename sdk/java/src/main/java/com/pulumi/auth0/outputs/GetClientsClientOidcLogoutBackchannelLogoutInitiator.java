@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetClientsClientOidcLogoutBackchannelLogoutInitiator {
     /**
-     * @return Determines the configuration method for enabling initiators. `custom` enables only the initiators listed in the backchannel_logout_selected_initiators set, `all` enables all current and future initiators.
+     * @return Determines the configuration method for enabling initiators. `custom` enables only the initiators listed in the backchannelLogoutSelectedInitiators set, `all` enables all current and future initiators.
      * 
      */
     private String mode;
@@ -24,7 +24,7 @@ public final class GetClientsClientOidcLogoutBackchannelLogoutInitiator {
 
     private GetClientsClientOidcLogoutBackchannelLogoutInitiator() {}
     /**
-     * @return Determines the configuration method for enabling initiators. `custom` enables only the initiators listed in the backchannel_logout_selected_initiators set, `all` enables all current and future initiators.
+     * @return Determines the configuration method for enabling initiators. `custom` enables only the initiators listed in the backchannelLogoutSelectedInitiators set, `all` enables all current and future initiators.
      * 
      */
     public String mode() {

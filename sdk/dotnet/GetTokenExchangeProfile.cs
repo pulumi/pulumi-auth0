@@ -12,7 +12,7 @@ namespace Pulumi.Auth0
     public static class GetTokenExchangeProfile
     {
         /// <summary>
-        /// Data source to retrieve a specific Auth0 Token Exchange Profile by `id`
+        /// Data source to retrieve a specific Auth0 Token Exchange Profile by `Id`
         /// 
         /// ## Example Usage
         /// 
@@ -37,7 +37,7 @@ namespace Pulumi.Auth0
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTokenExchangeProfileResult>("auth0:index/getTokenExchangeProfile:getTokenExchangeProfile", args ?? new GetTokenExchangeProfileArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source to retrieve a specific Auth0 Token Exchange Profile by `id`
+        /// Data source to retrieve a specific Auth0 Token Exchange Profile by `Id`
         /// 
         /// ## Example Usage
         /// 
@@ -62,7 +62,7 @@ namespace Pulumi.Auth0
             => global::Pulumi.Deployment.Instance.Invoke<GetTokenExchangeProfileResult>("auth0:index/getTokenExchangeProfile:getTokenExchangeProfile", args ?? new GetTokenExchangeProfileInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source to retrieve a specific Auth0 Token Exchange Profile by `id`
+        /// Data source to retrieve a specific Auth0 Token Exchange Profile by `Id`
         /// 
         /// ## Example Usage
         /// 

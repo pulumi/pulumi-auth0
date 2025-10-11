@@ -25,7 +25,7 @@ public final class GetRoleResult {
      */
     private String id;
     /**
-     * @return The name of the role. If not provided, `role_id` must be set.
+     * @return The name of the role. If not provided, `roleId` must be set.
      * 
      */
     private @Nullable String name;
@@ -61,7 +61,7 @@ public final class GetRoleResult {
         return this.id;
     }
     /**
-     * @return The name of the role. If not provided, `role_id` must be set.
+     * @return The name of the role. If not provided, `roleId` must be set.
      * 
      */
     public Optional<String> name() {

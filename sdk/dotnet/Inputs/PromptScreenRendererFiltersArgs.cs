@@ -25,7 +25,7 @@ namespace Pulumi.Auth0.Inputs
         public Input<string>? Domains { get; set; }
 
         /// <summary>
-        /// Type of match to apply. Options: `includes_any`, `excludes_any`.
+        /// Type of match to apply. Options: `IncludesAny`, `ExcludesAny`.
         /// </summary>
         [Input("matchType", required: true)]
         public Input<string> MatchType { get; set; } = null!;

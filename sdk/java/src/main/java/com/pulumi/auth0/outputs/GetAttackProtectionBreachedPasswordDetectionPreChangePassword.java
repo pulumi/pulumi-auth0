@@ -12,14 +12,14 @@ import java.util.Objects;
 @CustomType
 public final class GetAttackProtectionBreachedPasswordDetectionPreChangePassword {
     /**
-     * @return Action to take when a breached password is detected before the password is changed. Possible values: `block` (block compromised credentials for new accounts), `admin_notification` (send an email notification with a summary of compromised credentials in new accounts).
+     * @return Action to take when a breached password is detected before the password is changed. Possible values: `block` (block compromised credentials for new accounts), `adminNotification` (send an email notification with a summary of compromised credentials in new accounts).
      * 
      */
     private List<String> shields;
 
     private GetAttackProtectionBreachedPasswordDetectionPreChangePassword() {}
     /**
-     * @return Action to take when a breached password is detected before the password is changed. Possible values: `block` (block compromised credentials for new accounts), `admin_notification` (send an email notification with a summary of compromised credentials in new accounts).
+     * @return Action to take when a breached password is detected before the password is changed. Possible values: `block` (block compromised credentials for new accounts), `adminNotification` (send an email notification with a summary of compromised credentials in new accounts).
      * 
      */
     public List<String> shields() {

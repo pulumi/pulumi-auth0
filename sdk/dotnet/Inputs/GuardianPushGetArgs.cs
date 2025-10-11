@@ -43,7 +43,7 @@ namespace Pulumi.Auth0.Inputs
         public Input<bool> Enabled { get; set; } = null!;
 
         /// <summary>
-        /// Provider to use, one of `direct`, `guardian`, `sns`.
+        /// Provider to use, one of `Direct`, `Guardian`, `Sns`.
         /// </summary>
         [Input("provider")]
         public Input<string>? Provider { get; set; }

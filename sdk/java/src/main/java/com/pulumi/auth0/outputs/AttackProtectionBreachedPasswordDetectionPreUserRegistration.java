@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AttackProtectionBreachedPasswordDetectionPreUserRegistration {
     /**
-     * @return Action to take when a breached password is detected during a signup. Possible values: `block` (block compromised credentials for new accounts), `admin_notification` (send an email notification with a summary of compromised credentials in new accounts).
+     * @return Action to take when a breached password is detected during a signup. Possible values: `block` (block compromised credentials for new accounts), `adminNotification` (send an email notification with a summary of compromised credentials in new accounts).
      * 
      */
     private @Nullable List<String> shields;
 
     private AttackProtectionBreachedPasswordDetectionPreUserRegistration() {}
     /**
-     * @return Action to take when a breached password is detected during a signup. Possible values: `block` (block compromised credentials for new accounts), `admin_notification` (send an email notification with a summary of compromised credentials in new accounts).
+     * @return Action to take when a breached password is detected during a signup. Possible values: `block` (block compromised credentials for new accounts), `adminNotification` (send an email notification with a summary of compromised credentials in new accounts).
      * 
      */
     public List<String> shields() {

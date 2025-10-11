@@ -58,7 +58,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly bool? EnableClientConnections;
         /// <summary>
-        /// Indicates whether the tenant allows custom domains in emails. Before enabling this flag, you must have a custom domain with status: `ready`.
+        /// Indicates whether the tenant allows custom domains in emails. Before enabling this flag, you must have a custom domain with status: `Ready`.
         /// </summary>
         public readonly bool? EnableCustomDomainInEmails;
         /// <summary>
@@ -82,7 +82,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly bool? EnablePipeline2;
         /// <summary>
-        /// Indicates whether the public sign up process shows a `user_exists` error if the user already exists.
+        /// Indicates whether the public sign up process shows a `UserExists` error if the user already exists.
         /// </summary>
         public readonly bool? EnablePublicSignupUserExistsError;
         /// <summary>
@@ -98,7 +98,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly bool? NoDiscloseEnterpriseConnections;
         /// <summary>
-        /// Remove `alg` from jwks(JSON Web Key Sets).
+        /// Remove `Alg` from jwks(JSON Web Key Sets).
         /// </summary>
         public readonly bool? RemoveAlgFromJwks;
         /// <summary>

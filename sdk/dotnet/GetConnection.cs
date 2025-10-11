@@ -12,7 +12,7 @@ namespace Pulumi.Auth0
     public static class GetConnection
     {
         /// <summary>
-        /// Data source to retrieve a specific Auth0 connection by `connection_id` or `name`.
+        /// Data source to retrieve a specific Auth0 connection by `ConnectionId` or `Name`.
         /// 
         /// ## Example Usage
         /// 
@@ -43,7 +43,7 @@ namespace Pulumi.Auth0
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetConnectionResult>("auth0:index/getConnection:getConnection", args ?? new GetConnectionArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source to retrieve a specific Auth0 connection by `connection_id` or `name`.
+        /// Data source to retrieve a specific Auth0 connection by `ConnectionId` or `Name`.
         /// 
         /// ## Example Usage
         /// 
@@ -74,7 +74,7 @@ namespace Pulumi.Auth0
             => global::Pulumi.Deployment.Instance.Invoke<GetConnectionResult>("auth0:index/getConnection:getConnection", args ?? new GetConnectionInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source to retrieve a specific Auth0 connection by `connection_id` or `name`.
+        /// Data source to retrieve a specific Auth0 connection by `ConnectionId` or `Name`.
         /// 
         /// ## Example Usage
         /// 
@@ -109,13 +109,13 @@ namespace Pulumi.Auth0
     public sealed class GetConnectionArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of the connection. If not provided, `name` must be set.
+        /// The ID of the connection. If not provided, `Name` must be set.
         /// </summary>
         [Input("connectionId")]
         public string? ConnectionId { get; set; }
 
         /// <summary>
-        /// The name of the connection. If not provided, `connection_id` must be set.
+        /// The name of the connection. If not provided, `ConnectionId` must be set.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
@@ -129,13 +129,13 @@ namespace Pulumi.Auth0
     public sealed class GetConnectionInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of the connection. If not provided, `name` must be set.
+        /// The ID of the connection. If not provided, `Name` must be set.
         /// </summary>
         [Input("connectionId")]
         public Input<string>? ConnectionId { get; set; }
 
         /// <summary>
-        /// The name of the connection. If not provided, `connection_id` must be set.
+        /// The name of the connection. If not provided, `ConnectionId` must be set.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -151,7 +151,7 @@ namespace Pulumi.Auth0
     public sealed class GetConnectionResult
     {
         /// <summary>
-        /// The ID of the connection. If not provided, `name` must be set.
+        /// The ID of the connection. If not provided, `Name` must be set.
         /// </summary>
         public readonly string? ConnectionId;
         /// <summary>
@@ -175,7 +175,7 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly ImmutableDictionary<string, string> Metadata;
         /// <summary>
-        /// The name of the connection. If not provided, `connection_id` must be set.
+        /// The name of the connection. If not provided, `ConnectionId` must be set.
         /// </summary>
         public readonly string? Name;
         /// <summary>

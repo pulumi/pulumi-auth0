@@ -47,7 +47,7 @@ public final class EncryptionKeyManagerCustomerProvidedRootKey {
      */
     private @Nullable String updatedAt;
     /**
-     * @return The base64-encoded customer provided root key, wrapped using the `public_wrapping_key`. This can be removed after the wrapped key has been applied.
+     * @return The base64-encoded customer provided root key, wrapped using the `publicWrappingKey`. This can be removed after the wrapped key has been applied.
      * 
      */
     private @Nullable String wrappedKey;
@@ -108,7 +108,7 @@ public final class EncryptionKeyManagerCustomerProvidedRootKey {
         return Optional.ofNullable(this.updatedAt);
     }
     /**
-     * @return The base64-encoded customer provided root key, wrapped using the `public_wrapping_key`. This can be removed after the wrapped key has been applied.
+     * @return The base64-encoded customer provided root key, wrapped using the `publicWrappingKey`. This can be removed after the wrapped key has been applied.
      * 
      */
     public Optional<String> wrappedKey() {

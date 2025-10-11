@@ -48,14 +48,14 @@ public final class ClientCredentialsSignedRequestObjectCredentialArgs extends co
     }
 
     /**
-     * Credential type. Supported types: `public_key`.
+     * Credential type. Supported types: `publicKey`.
      * 
      */
     @Import(name="credentialType", required=true)
     private Output<String> credentialType;
 
     /**
-     * @return Credential type. Supported types: `public_key`.
+     * @return Credential type. Supported types: `publicKey`.
      * 
      */
     public Output<String> credentialType() {
@@ -123,14 +123,14 @@ public final class ClientCredentialsSignedRequestObjectCredentialArgs extends co
     }
 
     /**
-     * Parse expiry from x509 certificate. If true, attempts to parse the expiry date from the provided PEM. If also the `expires_at` is set the credential expiry will be set to the explicit `expires_at` value.
+     * Parse expiry from x509 certificate. If true, attempts to parse the expiry date from the provided PEM. If also the `expiresAt` is set the credential expiry will be set to the explicit `expiresAt` value.
      * 
      */
     @Import(name="parseExpiryFromCert")
     private @Nullable Output<Boolean> parseExpiryFromCert;
 
     /**
-     * @return Parse expiry from x509 certificate. If true, attempts to parse the expiry date from the provided PEM. If also the `expires_at` is set the credential expiry will be set to the explicit `expires_at` value.
+     * @return Parse expiry from x509 certificate. If true, attempts to parse the expiry date from the provided PEM. If also the `expiresAt` is set the credential expiry will be set to the explicit `expiresAt` value.
      * 
      */
     public Optional<Output<Boolean>> parseExpiryFromCert() {
@@ -243,7 +243,7 @@ public final class ClientCredentialsSignedRequestObjectCredentialArgs extends co
         }
 
         /**
-         * @param credentialType Credential type. Supported types: `public_key`.
+         * @param credentialType Credential type. Supported types: `publicKey`.
          * 
          * @return builder
          * 
@@ -254,7 +254,7 @@ public final class ClientCredentialsSignedRequestObjectCredentialArgs extends co
         }
 
         /**
-         * @param credentialType Credential type. Supported types: `public_key`.
+         * @param credentialType Credential type. Supported types: `publicKey`.
          * 
          * @return builder
          * 
@@ -348,7 +348,7 @@ public final class ClientCredentialsSignedRequestObjectCredentialArgs extends co
         }
 
         /**
-         * @param parseExpiryFromCert Parse expiry from x509 certificate. If true, attempts to parse the expiry date from the provided PEM. If also the `expires_at` is set the credential expiry will be set to the explicit `expires_at` value.
+         * @param parseExpiryFromCert Parse expiry from x509 certificate. If true, attempts to parse the expiry date from the provided PEM. If also the `expiresAt` is set the credential expiry will be set to the explicit `expiresAt` value.
          * 
          * @return builder
          * 
@@ -359,7 +359,7 @@ public final class ClientCredentialsSignedRequestObjectCredentialArgs extends co
         }
 
         /**
-         * @param parseExpiryFromCert Parse expiry from x509 certificate. If true, attempts to parse the expiry date from the provided PEM. If also the `expires_at` is set the credential expiry will be set to the explicit `expires_at` value.
+         * @param parseExpiryFromCert Parse expiry from x509 certificate. If true, attempts to parse the expiry date from the provided PEM. If also the `expiresAt` is set the credential expiry will be set to the explicit `expiresAt` value.
          * 
          * @return builder
          * 

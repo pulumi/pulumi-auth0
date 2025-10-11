@@ -13,7 +13,7 @@ namespace Pulumi.Auth0.Inputs
     public sealed class EventStreamWebhookConfigurationWebhookAuthorizationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The authorization method used to secure the webhook endpoint. Can be either `basic` or `bearer`.
+        /// The authorization method used to secure the webhook endpoint. Can be either `Basic` or `Bearer`.
         /// </summary>
         [Input("method", required: true)]
         public Input<string> Method { get; set; } = null!;
@@ -22,7 +22,7 @@ namespace Pulumi.Auth0.Inputs
         private Input<string>? _password;
 
         /// <summary>
-        /// The password for `basic` authentication. Required when `method` is set to `basic`.
+        /// The password for `Basic` authentication. Required when `Method` is set to `Basic`.
         /// </summary>
         public Input<string>? Password
         {
@@ -38,7 +38,7 @@ namespace Pulumi.Auth0.Inputs
         private Input<string>? _token;
 
         /// <summary>
-        /// The token used for `bearer` authentication. Required when `method` is set to `bearer`.
+        /// The token used for `Bearer` authentication. Required when `Method` is set to `Bearer`.
         /// </summary>
         public Input<string>? Token
         {
@@ -51,7 +51,7 @@ namespace Pulumi.Auth0.Inputs
         }
 
         /// <summary>
-        /// The username for `basic` authentication. Required when `method` is set to `basic`.
+        /// The username for `Basic` authentication. Required when `Method` is set to `Basic`.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }

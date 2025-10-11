@@ -19,7 +19,7 @@ namespace Pulumi.Auth0.Inputs
         public Input<bool> Enabled { get; set; } = null!;
 
         /// <summary>
-        /// The Relying Party is the domain for which the WebAuthn keys will be issued, set to `true` if you are customizing the identifier.
+        /// The Relying Party is the domain for which the WebAuthn keys will be issued, set to `True` if you are customizing the identifier.
         /// </summary>
         [Input("overrideRelyingParty")]
         public Input<bool>? OverrideRelyingParty { get; set; }
@@ -31,7 +31,7 @@ namespace Pulumi.Auth0.Inputs
         public Input<string>? RelyingPartyIdentifier { get; set; }
 
         /// <summary>
-        /// User verification, one of `discouraged`, `preferred` or `required`.
+        /// User verification, one of `Discouraged`, `Preferred` or `Required`.
         /// </summary>
         [Input("userVerification")]
         public Input<string>? UserVerification { get; set; }
