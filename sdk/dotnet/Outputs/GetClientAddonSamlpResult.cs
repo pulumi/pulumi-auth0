@@ -26,7 +26,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string Binding;
         /// <summary>
-        /// Indicates whether a UPN claim should be created. Defaults to `true`.
+        /// Indicates whether a UPN claim should be created. Defaults to `True`.
         /// </summary>
         public readonly bool CreateUpnClaim;
         /// <summary>
@@ -34,15 +34,15 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string Destination;
         /// <summary>
-        /// Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`. Defaults to `sha1`.
+        /// Algorithm used to calculate the digest of the SAML Assertion or response. Options include `Sha1` and `Sha256`. Defaults to `Sha1`.
         /// </summary>
         public readonly string DigestAlgorithm;
         /// <summary>
-        /// This is a supporting attribute to `mappings` field.Please note this is an experimental field. It should only be used when needed to send a map with keys as slices.
+        /// This is a supporting attribute to `Mappings` field.Please note this is an experimental field. It should only be used when needed to send a map with keys as slices.
         /// </summary>
         public readonly string FlexibleMappings;
         /// <summary>
-        /// Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion. Defaults to `true`.
+        /// Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `False`, the attribute NameFormat is not set in the assertion. Defaults to `True`.
         /// </summary>
         public readonly bool IncludeAttributeNameFormat;
         /// <summary>
@@ -58,15 +58,15 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClientAddonSamlpLogoutResult> Logouts;
         /// <summary>
-        /// Indicates whether or not to add additional identity information in the token, such as the provider used and the `access_token`, if available. Defaults to `true`.
+        /// Indicates whether or not to add additional identity information in the token, such as the provider used and the `AccessToken`, if available. Defaults to `True`.
         /// </summary>
         public readonly bool MapIdentities;
         /// <summary>
-        /// Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion. Defaults to `false`.
+        /// Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion. Defaults to `False`.
         /// </summary>
         public readonly bool MapUnknownClaimsAsIs;
         /// <summary>
-        /// Mappings between the Auth0 user profile property name (`name`) and the output attributes on the SAML attribute in the assertion (`value`).
+        /// Mappings between the Auth0 user profile property name (`Name`) and the output attributes on the SAML attribute in the assertion (`Value`).
         /// </summary>
         public readonly ImmutableDictionary<string, string> Mappings;
         /// <summary>
@@ -78,7 +78,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly ImmutableArray<string> NameIdentifierProbes;
         /// <summary>
-        /// Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion. Defaults to `true`.
+        /// Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion. Defaults to `True`.
         /// </summary>
         public readonly bool PassthroughClaimsWithNoMapping;
         /// <summary>
@@ -98,7 +98,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string SigningCert;
         /// <summary>
-        /// Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to `false`, all `xs:type` are `xs:anyType`. Defaults to `true`.
+        /// Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to `False`, all `xs:type` are `xs:anyType`. Defaults to `True`.
         /// </summary>
         public readonly bool TypedAttributes;
 

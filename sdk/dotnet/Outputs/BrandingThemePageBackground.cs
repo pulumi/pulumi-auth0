@@ -22,7 +22,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string? BackgroundImageUrl;
         /// <summary>
-        /// Page layout. Available options: `center`, `left`, `right`. Defaults to `center`.
+        /// Page layout. Available options: `Center`, `Left`, `Right`. Defaults to `Center`.
         /// </summary>
         public readonly string? PageLayout;
 

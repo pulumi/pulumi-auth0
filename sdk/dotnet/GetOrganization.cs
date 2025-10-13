@@ -12,7 +12,7 @@ namespace Pulumi.Auth0
     public static class GetOrganization
     {
         /// <summary>
-        /// Data source to retrieve a specific Auth0 organization by `organization_id` or `name`.
+        /// Data source to retrieve a specific Auth0 organization by `OrganizationId` or `Name`.
         /// 
         /// ## Example Usage
         /// 
@@ -43,7 +43,7 @@ namespace Pulumi.Auth0
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationResult>("auth0:index/getOrganization:getOrganization", args ?? new GetOrganizationArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source to retrieve a specific Auth0 organization by `organization_id` or `name`.
+        /// Data source to retrieve a specific Auth0 organization by `OrganizationId` or `Name`.
         /// 
         /// ## Example Usage
         /// 
@@ -74,7 +74,7 @@ namespace Pulumi.Auth0
             => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationResult>("auth0:index/getOrganization:getOrganization", args ?? new GetOrganizationInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source to retrieve a specific Auth0 organization by `organization_id` or `name`.
+        /// Data source to retrieve a specific Auth0 organization by `OrganizationId` or `Name`.
         /// 
         /// ## Example Usage
         /// 
@@ -109,13 +109,13 @@ namespace Pulumi.Auth0
     public sealed class GetOrganizationArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the organization. If not provided, `organization_id` must be set. For performance, it is advised to use the `organization_id` as a lookup if possible.
+        /// The name of the organization. If not provided, `OrganizationId` must be set. For performance, it is advised to use the `OrganizationId` as a lookup if possible.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
         /// <summary>
-        /// The ID of the organization. If not provided, `name` must be set.
+        /// The ID of the organization. If not provided, `Name` must be set.
         /// </summary>
         [Input("organizationId")]
         public string? OrganizationId { get; set; }
@@ -129,13 +129,13 @@ namespace Pulumi.Auth0
     public sealed class GetOrganizationInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the organization. If not provided, `organization_id` must be set. For performance, it is advised to use the `organization_id` as a lookup if possible.
+        /// The name of the organization. If not provided, `OrganizationId` must be set. For performance, it is advised to use the `OrganizationId` as a lookup if possible.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The ID of the organization. If not provided, `name` must be set.
+        /// The ID of the organization. If not provided, `Name` must be set.
         /// </summary>
         [Input("organizationId")]
         public Input<string>? OrganizationId { get; set; }
@@ -176,11 +176,11 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly ImmutableDictionary<string, string> Metadata;
         /// <summary>
-        /// The name of the organization. If not provided, `organization_id` must be set. For performance, it is advised to use the `organization_id` as a lookup if possible.
+        /// The name of the organization. If not provided, `OrganizationId` must be set. For performance, it is advised to use the `OrganizationId` as a lookup if possible.
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// The ID of the organization. If not provided, `name` must be set.
+        /// The ID of the organization. If not provided, `Name` must be set.
         /// </summary>
         public readonly string? OrganizationId;
         /// <summary>

@@ -65,14 +65,14 @@ public final class AttackProtectionBruteForceProtectionArgs extends com.pulumi.r
     }
 
     /**
-     * Determines whether the IP address is used when counting failed attempts. Possible values: `count_per_identifier_and_ip` (lockout an account from a given IP Address) or `count_per_identifier` (lockout an account regardless of IP Address).
+     * Determines whether the IP address is used when counting failed attempts. Possible values: `countPerIdentifierAndIp` (lockout an account from a given IP Address) or `countPerIdentifier` (lockout an account regardless of IP Address).
      * 
      */
     @Import(name="mode")
     private @Nullable Output<String> mode;
 
     /**
-     * @return Determines whether the IP address is used when counting failed attempts. Possible values: `count_per_identifier_and_ip` (lockout an account from a given IP Address) or `count_per_identifier` (lockout an account regardless of IP Address).
+     * @return Determines whether the IP address is used when counting failed attempts. Possible values: `countPerIdentifierAndIp` (lockout an account from a given IP Address) or `countPerIdentifier` (lockout an account regardless of IP Address).
      * 
      */
     public Optional<Output<String>> mode() {
@@ -80,14 +80,14 @@ public final class AttackProtectionBruteForceProtectionArgs extends com.pulumi.r
     }
 
     /**
-     * Action to take when a brute force protection threshold is violated. Possible values: `block` (block login attempts for a flagged user account), `user_notification` (send an email to user when their account has been blocked).
+     * Action to take when a brute force protection threshold is violated. Possible values: `block` (block login attempts for a flagged user account), `userNotification` (send an email to user when their account has been blocked).
      * 
      */
     @Import(name="shields")
     private @Nullable Output<List<String>> shields;
 
     /**
-     * @return Action to take when a brute force protection threshold is violated. Possible values: `block` (block login attempts for a flagged user account), `user_notification` (send an email to user when their account has been blocked).
+     * @return Action to take when a brute force protection threshold is violated. Possible values: `block` (block login attempts for a flagged user account), `userNotification` (send an email to user when their account has been blocked).
      * 
      */
     public Optional<Output<List<String>>> shields() {
@@ -196,7 +196,7 @@ public final class AttackProtectionBruteForceProtectionArgs extends com.pulumi.r
         }
 
         /**
-         * @param mode Determines whether the IP address is used when counting failed attempts. Possible values: `count_per_identifier_and_ip` (lockout an account from a given IP Address) or `count_per_identifier` (lockout an account regardless of IP Address).
+         * @param mode Determines whether the IP address is used when counting failed attempts. Possible values: `countPerIdentifierAndIp` (lockout an account from a given IP Address) or `countPerIdentifier` (lockout an account regardless of IP Address).
          * 
          * @return builder
          * 
@@ -207,7 +207,7 @@ public final class AttackProtectionBruteForceProtectionArgs extends com.pulumi.r
         }
 
         /**
-         * @param mode Determines whether the IP address is used when counting failed attempts. Possible values: `count_per_identifier_and_ip` (lockout an account from a given IP Address) or `count_per_identifier` (lockout an account regardless of IP Address).
+         * @param mode Determines whether the IP address is used when counting failed attempts. Possible values: `countPerIdentifierAndIp` (lockout an account from a given IP Address) or `countPerIdentifier` (lockout an account regardless of IP Address).
          * 
          * @return builder
          * 
@@ -217,7 +217,7 @@ public final class AttackProtectionBruteForceProtectionArgs extends com.pulumi.r
         }
 
         /**
-         * @param shields Action to take when a brute force protection threshold is violated. Possible values: `block` (block login attempts for a flagged user account), `user_notification` (send an email to user when their account has been blocked).
+         * @param shields Action to take when a brute force protection threshold is violated. Possible values: `block` (block login attempts for a flagged user account), `userNotification` (send an email to user when their account has been blocked).
          * 
          * @return builder
          * 
@@ -228,7 +228,7 @@ public final class AttackProtectionBruteForceProtectionArgs extends com.pulumi.r
         }
 
         /**
-         * @param shields Action to take when a brute force protection threshold is violated. Possible values: `block` (block login attempts for a flagged user account), `user_notification` (send an email to user when their account has been blocked).
+         * @param shields Action to take when a brute force protection threshold is violated. Possible values: `block` (block login attempts for a flagged user account), `userNotification` (send an email to user when their account has been blocked).
          * 
          * @return builder
          * 
@@ -238,7 +238,7 @@ public final class AttackProtectionBruteForceProtectionArgs extends com.pulumi.r
         }
 
         /**
-         * @param shields Action to take when a brute force protection threshold is violated. Possible values: `block` (block login attempts for a flagged user account), `user_notification` (send an email to user when their account has been blocked).
+         * @param shields Action to take when a brute force protection threshold is violated. Possible values: `block` (block login attempts for a flagged user account), `userNotification` (send an email to user when their account has been blocked).
          * 
          * @return builder
          * 

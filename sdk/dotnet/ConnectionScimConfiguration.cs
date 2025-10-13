@@ -111,7 +111,7 @@ namespace Pulumi.Auth0
         public Output<string> ConnectionName { get; private set; } = null!;
 
         /// <summary>
-        /// Mapping between Auth0 attributes and SCIM attributes. If `user_id_attribute` is set, `mapping` must be set as well.
+        /// Mapping between Auth0 attributes and SCIM attributes. If `UserIdAttribute` is set, `Mapping` must be set as well.
         /// </summary>
         [Output("mappings")]
         public Output<ImmutableArray<Outputs.ConnectionScimConfigurationMapping>> Mappings { get; private set; } = null!;
@@ -129,7 +129,7 @@ namespace Pulumi.Auth0
         public Output<string> TenantName { get; private set; } = null!;
 
         /// <summary>
-        /// User ID attribute for generation unique of user ids. If `user_id_attribute` is set, `mapping` must be set as well. Defaults to `userName` for SAML connections and `externalId` for OIDC connections.
+        /// User ID attribute for generation unique of user ids. If `UserIdAttribute` is set, `Mapping` must be set as well. Defaults to `userName` for SAML connections and `externalId` for OIDC connections.
         /// </summary>
         [Output("userIdAttribute")]
         public Output<string> UserIdAttribute { get; private set; } = null!;
@@ -190,7 +190,7 @@ namespace Pulumi.Auth0
         private InputList<Inputs.ConnectionScimConfigurationMappingArgs>? _mappings;
 
         /// <summary>
-        /// Mapping between Auth0 attributes and SCIM attributes. If `user_id_attribute` is set, `mapping` must be set as well.
+        /// Mapping between Auth0 attributes and SCIM attributes. If `UserIdAttribute` is set, `Mapping` must be set as well.
         /// </summary>
         public InputList<Inputs.ConnectionScimConfigurationMappingArgs> Mappings
         {
@@ -199,7 +199,7 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// User ID attribute for generation unique of user ids. If `user_id_attribute` is set, `mapping` must be set as well. Defaults to `userName` for SAML connections and `externalId` for OIDC connections.
+        /// User ID attribute for generation unique of user ids. If `UserIdAttribute` is set, `Mapping` must be set as well. Defaults to `userName` for SAML connections and `externalId` for OIDC connections.
         /// </summary>
         [Input("userIdAttribute")]
         public Input<string>? UserIdAttribute { get; set; }
@@ -228,7 +228,7 @@ namespace Pulumi.Auth0
         private InputList<Inputs.ConnectionScimConfigurationMappingGetArgs>? _mappings;
 
         /// <summary>
-        /// Mapping between Auth0 attributes and SCIM attributes. If `user_id_attribute` is set, `mapping` must be set as well.
+        /// Mapping between Auth0 attributes and SCIM attributes. If `UserIdAttribute` is set, `Mapping` must be set as well.
         /// </summary>
         public InputList<Inputs.ConnectionScimConfigurationMappingGetArgs> Mappings
         {
@@ -249,7 +249,7 @@ namespace Pulumi.Auth0
         public Input<string>? TenantName { get; set; }
 
         /// <summary>
-        /// User ID attribute for generation unique of user ids. If `user_id_attribute` is set, `mapping` must be set as well. Defaults to `userName` for SAML connections and `externalId` for OIDC connections.
+        /// User ID attribute for generation unique of user ids. If `UserIdAttribute` is set, `Mapping` must be set as well. Defaults to `userName` for SAML connections and `externalId` for OIDC connections.
         /// </summary>
         [Input("userIdAttribute")]
         public Input<string>? UserIdAttribute { get; set; }

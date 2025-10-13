@@ -272,14 +272,14 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Indicates whether the user will receive a verification email after creation. Overrides behavior of `email_verified` parameter.
+     * Indicates whether the user will receive a verification email after creation. Overrides behavior of `emailVerified` parameter.
      * 
      */
     @Import(name="verifyEmail")
     private @Nullable Output<Boolean> verifyEmail;
 
     /**
-     * @return Indicates whether the user will receive a verification email after creation. Overrides behavior of `email_verified` parameter.
+     * @return Indicates whether the user will receive a verification email after creation. Overrides behavior of `emailVerified` parameter.
      * 
      */
     public Optional<Output<Boolean>> verifyEmail() {
@@ -685,7 +685,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param verifyEmail Indicates whether the user will receive a verification email after creation. Overrides behavior of `email_verified` parameter.
+         * @param verifyEmail Indicates whether the user will receive a verification email after creation. Overrides behavior of `emailVerified` parameter.
          * 
          * @return builder
          * 
@@ -696,7 +696,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param verifyEmail Indicates whether the user will receive a verification email after creation. Overrides behavior of `email_verified` parameter.
+         * @param verifyEmail Indicates whether the user will receive a verification email after creation. Overrides behavior of `emailVerified` parameter.
          * 
          * @return builder
          * 

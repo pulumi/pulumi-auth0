@@ -125,7 +125,7 @@ namespace Pulumi.Auth0
         public Output<Outputs.GuardianPhone> Phone { get; private set; } = null!;
 
         /// <summary>
-        /// Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
+        /// Policy to use. Available options are `Never`, `all-applications` and `confidence-score`.
         /// </summary>
         [Output("policy")]
         public Output<string> Policy { get; private set; } = null!;
@@ -225,7 +225,7 @@ namespace Pulumi.Auth0
         public Input<Inputs.GuardianPhoneArgs>? Phone { get; set; }
 
         /// <summary>
-        /// Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
+        /// Policy to use. Available options are `Never`, `all-applications` and `confidence-score`.
         /// </summary>
         [Input("policy", required: true)]
         public Input<string> Policy { get; set; } = null!;
@@ -287,7 +287,7 @@ namespace Pulumi.Auth0
         public Input<Inputs.GuardianPhoneGetArgs>? Phone { get; set; }
 
         /// <summary>
-        /// Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
+        /// Policy to use. Available options are `Never`, `all-applications` and `confidence-score`.
         /// </summary>
         [Input("policy")]
         public Input<string>? Policy { get; set; }

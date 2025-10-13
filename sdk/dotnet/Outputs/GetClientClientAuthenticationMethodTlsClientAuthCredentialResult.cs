@@ -18,7 +18,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string CreatedAt;
         /// <summary>
-        /// Credential type. Supported types: `cert_subject_dn`.
+        /// Credential type. Supported types: `CertSubjectDn`.
         /// </summary>
         public readonly string CredentialType;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Subject Distinguished Name. Mutually exlusive with `pem` property.
+        /// Subject Distinguished Name. Mutually exlusive with `Pem` property.
         /// </summary>
         public readonly string SubjectDn;
         /// <summary>

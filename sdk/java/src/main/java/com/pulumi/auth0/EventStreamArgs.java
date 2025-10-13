@@ -35,14 +35,14 @@ public final class EventStreamArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Configuration for the EventBridge destination. This block is only applicable when `destination_type` is set to `eventbridge`. EventBridge configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
+     * Configuration for the EventBridge destination. This block is only applicable when `destinationType` is set to `eventbridge`. EventBridge configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
      * 
      */
     @Import(name="eventbridgeConfiguration")
     private @Nullable Output<EventStreamEventbridgeConfigurationArgs> eventbridgeConfiguration;
 
     /**
-     * @return Configuration for the EventBridge destination. This block is only applicable when `destination_type` is set to `eventbridge`. EventBridge configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
+     * @return Configuration for the EventBridge destination. This block is only applicable when `destinationType` is set to `eventbridge`. EventBridge configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
      * 
      */
     public Optional<Output<EventStreamEventbridgeConfigurationArgs>> eventbridgeConfiguration() {
@@ -80,14 +80,14 @@ public final class EventStreamArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Configuration for the Webhook destination. This block is only applicable when `destination_type` is set to `webhook`. Webhook configurations **can** be updated after creation, including the endpoint and authorization fields.
+     * Configuration for the Webhook destination. This block is only applicable when `destinationType` is set to `webhook`. Webhook configurations **can** be updated after creation, including the endpoint and authorization fields.
      * 
      */
     @Import(name="webhookConfiguration")
     private @Nullable Output<EventStreamWebhookConfigurationArgs> webhookConfiguration;
 
     /**
-     * @return Configuration for the Webhook destination. This block is only applicable when `destination_type` is set to `webhook`. Webhook configurations **can** be updated after creation, including the endpoint and authorization fields.
+     * @return Configuration for the Webhook destination. This block is only applicable when `destinationType` is set to `webhook`. Webhook configurations **can** be updated after creation, including the endpoint and authorization fields.
      * 
      */
     public Optional<Output<EventStreamWebhookConfigurationArgs>> webhookConfiguration() {
@@ -144,7 +144,7 @@ public final class EventStreamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param eventbridgeConfiguration Configuration for the EventBridge destination. This block is only applicable when `destination_type` is set to `eventbridge`. EventBridge configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
+         * @param eventbridgeConfiguration Configuration for the EventBridge destination. This block is only applicable when `destinationType` is set to `eventbridge`. EventBridge configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
          * 
          * @return builder
          * 
@@ -155,7 +155,7 @@ public final class EventStreamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param eventbridgeConfiguration Configuration for the EventBridge destination. This block is only applicable when `destination_type` is set to `eventbridge`. EventBridge configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
+         * @param eventbridgeConfiguration Configuration for the EventBridge destination. This block is only applicable when `destinationType` is set to `eventbridge`. EventBridge configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
          * 
          * @return builder
          * 
@@ -217,7 +217,7 @@ public final class EventStreamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param webhookConfiguration Configuration for the Webhook destination. This block is only applicable when `destination_type` is set to `webhook`. Webhook configurations **can** be updated after creation, including the endpoint and authorization fields.
+         * @param webhookConfiguration Configuration for the Webhook destination. This block is only applicable when `destinationType` is set to `webhook`. Webhook configurations **can** be updated after creation, including the endpoint and authorization fields.
          * 
          * @return builder
          * 
@@ -228,7 +228,7 @@ public final class EventStreamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param webhookConfiguration Configuration for the Webhook destination. This block is only applicable when `destination_type` is set to `webhook`. Webhook configurations **can** be updated after creation, including the endpoint and authorization fields.
+         * @param webhookConfiguration Configuration for the Webhook destination. This block is only applicable when `destinationType` is set to `webhook`. Webhook configurations **can** be updated after creation, including the endpoint and authorization fields.
          * 
          * @return builder
          * 

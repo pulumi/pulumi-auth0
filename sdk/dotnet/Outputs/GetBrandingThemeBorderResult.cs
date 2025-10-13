@@ -22,7 +22,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly double ButtonBorderWeight;
         /// <summary>
-        /// Buttons style. Available options: `pill`, `rounded`, `sharp`. Defaults to `rounded`.
+        /// Buttons style. Available options: `Pill`, `Rounded`, `Sharp`. Defaults to `Rounded`.
         /// </summary>
         public readonly string ButtonsStyle;
         /// <summary>
@@ -34,11 +34,11 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly double InputBorderWeight;
         /// <summary>
-        /// Inputs style. Available options: `pill`, `rounded`, `sharp`. Defaults to `rounded`.
+        /// Inputs style. Available options: `Pill`, `Rounded`, `Sharp`. Defaults to `Rounded`.
         /// </summary>
         public readonly string InputsStyle;
         /// <summary>
-        /// Show widget shadow. Defaults to `true`.
+        /// Show widget shadow. Defaults to `True`.
         /// </summary>
         public readonly bool ShowWidgetShadow;
         /// <summary>

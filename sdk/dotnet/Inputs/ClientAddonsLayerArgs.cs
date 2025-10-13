@@ -35,7 +35,7 @@ namespace Pulumi.Auth0.Inputs
         }
 
         /// <summary>
-        /// Name of the property used as the unique user ID in Layer. If not specified `user_id` is used.
+        /// Name of the property used as the unique user ID in Layer. If not specified `UserId` is used.
         /// </summary>
         [Input("principal")]
         public Input<string>? Principal { get; set; }

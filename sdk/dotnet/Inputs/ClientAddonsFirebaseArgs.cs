@@ -13,7 +13,7 @@ namespace Pulumi.Auth0.Inputs
     public sealed class ClientAddonsFirebaseArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ID of the Service Account you have created (shown as `client_email` in the generated JSON file, SDK v3+ tokens only).
+        /// ID of the Service Account you have created (shown as `ClientEmail` in the generated JSON file, SDK v3+ tokens only).
         /// </summary>
         [Input("clientEmail")]
         public Input<string>? ClientEmail { get; set; }
@@ -44,7 +44,7 @@ namespace Pulumi.Auth0.Inputs
         private Input<string>? _privateKeyId;
 
         /// <summary>
-        /// Optional ID of the private key to obtain the `kid` header claim from the issued token (SDK v3+ tokens only).
+        /// Optional ID of the private key to obtain the `Kid` header claim from the issued token (SDK v3+ tokens only).
         /// </summary>
         public Input<string>? PrivateKeyId
         {

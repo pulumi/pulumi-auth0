@@ -27,7 +27,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly bool? EnforceCascadeRevocation;
         /// <summary>
-        /// Configures the level of device binding enforced when a session*transfer*token is consumed. Can be one of `ip`, `asn` or `none`.
+        /// Configures the level of device binding enforced when a session*transfer*token is consumed. Can be one of `Ip`, `Asn` or `None`.
         /// </summary>
         public readonly string? EnforceDeviceBinding;
         /// <summary>

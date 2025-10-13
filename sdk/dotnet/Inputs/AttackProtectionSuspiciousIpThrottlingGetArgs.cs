@@ -46,7 +46,7 @@ namespace Pulumi.Auth0.Inputs
         private InputList<string>? _shields;
 
         /// <summary>
-        /// Action to take when a suspicious IP throttling threshold is violated. Possible values: `block` (throttle traffic from an IP address when there is a high number of login attempts targeting too many different accounts), `admin_notification` (send an email notification when traffic is throttled on one or more IP addresses due to high-velocity traffic).
+        /// Action to take when a suspicious IP throttling threshold is violated. Possible values: `Block` (throttle traffic from an IP address when there is a high number of login attempts targeting too many different accounts), `AdminNotification` (send an email notification when traffic is throttled on one or more IP addresses due to high-velocity traffic).
         /// </summary>
         public InputList<string> Shields
         {

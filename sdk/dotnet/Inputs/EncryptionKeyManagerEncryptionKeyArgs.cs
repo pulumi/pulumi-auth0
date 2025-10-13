@@ -31,7 +31,7 @@ namespace Pulumi.Auth0.Inputs
         public Input<string>? ParentKeyId { get; set; }
 
         /// <summary>
-        /// The state of the encryption key. One of `pre-activation`, `active`, `deactivated`, or `destroyed`.
+        /// The state of the encryption key. One of `pre-activation`, `Active`, `Deactivated`, or `Destroyed`.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

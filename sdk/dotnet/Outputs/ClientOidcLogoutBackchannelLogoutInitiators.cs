@@ -14,7 +14,7 @@ namespace Pulumi.Auth0.Outputs
     public sealed class ClientOidcLogoutBackchannelLogoutInitiators
     {
         /// <summary>
-        /// Determines the configuration method for enabling initiators. `custom` enables only the initiators listed in the backchannel*logout*selected_initiators set, `all` enables all current and future initiators.
+        /// Determines the configuration method for enabling initiators. `Custom` enables only the initiators listed in the backchannel*logout*selected_initiators set, `All` enables all current and future initiators.
         /// </summary>
         public readonly string Mode;
         /// <summary>

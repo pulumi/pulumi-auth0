@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetConnectionOptionGatewayAuthentication {
     /**
-     * @return Audience claim for the HS256 token sent to `gateway_url`.
+     * @return Audience claim for the HS256 token sent to `gatewayUrl`.
      * 
      */
     private String audience;
@@ -22,7 +22,7 @@ public final class GetConnectionOptionGatewayAuthentication {
      */
     private String method;
     /**
-     * @return Secret used to sign the HS256 token sent to `gateway_url`.
+     * @return Secret used to sign the HS256 token sent to `gatewayUrl`.
      * 
      */
     private String secret;
@@ -32,14 +32,14 @@ public final class GetConnectionOptionGatewayAuthentication {
      */
     private Boolean secretBase64Encoded;
     /**
-     * @return Subject claim for the HS256 token sent to `gateway_url`.
+     * @return Subject claim for the HS256 token sent to `gatewayUrl`.
      * 
      */
     private String subject;
 
     private GetConnectionOptionGatewayAuthentication() {}
     /**
-     * @return Audience claim for the HS256 token sent to `gateway_url`.
+     * @return Audience claim for the HS256 token sent to `gatewayUrl`.
      * 
      */
     public String audience() {
@@ -53,7 +53,7 @@ public final class GetConnectionOptionGatewayAuthentication {
         return this.method;
     }
     /**
-     * @return Secret used to sign the HS256 token sent to `gateway_url`.
+     * @return Secret used to sign the HS256 token sent to `gatewayUrl`.
      * 
      */
     public String secret() {
@@ -67,7 +67,7 @@ public final class GetConnectionOptionGatewayAuthentication {
         return this.secretBase64Encoded;
     }
     /**
-     * @return Subject claim for the HS256 token sent to `gateway_url`.
+     * @return Subject claim for the HS256 token sent to `gatewayUrl`.
      * 
      */
     public String subject() {

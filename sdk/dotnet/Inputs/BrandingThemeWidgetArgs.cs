@@ -13,7 +13,7 @@ namespace Pulumi.Auth0.Inputs
     public sealed class BrandingThemeWidgetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Header text alignment. Available options: `center`, `left`, `right`. Defaults to `center`.
+        /// Header text alignment. Available options: `Center`, `Left`, `Right`. Defaults to `Center`.
         /// </summary>
         [Input("headerTextAlignment")]
         public Input<string>? HeaderTextAlignment { get; set; }
@@ -25,7 +25,7 @@ namespace Pulumi.Auth0.Inputs
         public Input<double>? LogoHeight { get; set; }
 
         /// <summary>
-        /// Logo position. Available options: `center`, `left`, `right`, `none`. Defaults to `center`.
+        /// Logo position. Available options: `Center`, `Left`, `Right`, `None`. Defaults to `Center`.
         /// </summary>
         [Input("logoPosition")]
         public Input<string>? LogoPosition { get; set; }
@@ -37,7 +37,7 @@ namespace Pulumi.Auth0.Inputs
         public Input<string>? LogoUrl { get; set; }
 
         /// <summary>
-        /// Social buttons layout. Available options: `bottom`, `top`. Defaults to `bottom`.
+        /// Social buttons layout. Available options: `Bottom`, `Top`. Defaults to `Bottom`.
         /// </summary>
         [Input("socialButtonsLayout")]
         public Input<string>? SocialButtonsLayout { get; set; }

@@ -13,7 +13,7 @@ import java.util.Objects;
 @CustomType
 public final class GetClientDefaultOrganization {
     /**
-     * @return If set, the `default_organization` will be removed.
+     * @return If set, the `defaultOrganization` will be removed.
      * 
      */
     private Boolean disable;
@@ -30,7 +30,7 @@ public final class GetClientDefaultOrganization {
 
     private GetClientDefaultOrganization() {}
     /**
-     * @return If set, the `default_organization` will be removed.
+     * @return If set, the `defaultOrganization` will be removed.
      * 
      */
     public Boolean disable() {

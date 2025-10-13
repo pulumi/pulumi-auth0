@@ -81,13 +81,13 @@ namespace Pulumi.Auth0
         public Output<string> Body { get; private set; } = null!;
 
         /// <summary>
-        /// Language of the custom text. Options include: `am`, `ar`, `ar-EG`, `ar-SA`, `az`, `bg`, `bn`, `bs`, `ca-ES`, `cnr`, `cs`, `cy`, `da`, `de`, `el`, `en`, `en-CA`, `es`, `es-419`, `es-AR`, `es-MX`, `et`, `eu-ES`, `fa`, `fi`, `fr`, `fr-CA`, `fr-FR`, `gl-ES`, `gu`, `he`, `hi`, `hr`, `hu`, `hy`, `id`, `is`, `it`, `ja`, `ka`, `kk`, `kn`, `ko`, `lt`, `lv`, `mk`, `ml`, `mn`, `mr`, `ms`, `my`, `nb`, `nl`, `nn`, `no`, `pa`, `pl`, `pt`, `pt-BR`, `pt-PT`, `ro`, `ru`, `sk`, `sl`, `so`, `sq`, `sr`, `sv`, `sw`, `ta`, `te`, `th`, `tl`, `tr`, `uk`, `ur`, `vi`, `zgh`, `zh-CN`, `zh-HK`, `zh-TW`.
+        /// Language of the custom text. Options include: `Am`, `Ar`, `ar-EG`, `ar-SA`, `Az`, `Bg`, `Bn`, `Bs`, `ca-ES`, `Cnr`, `Cs`, `Cy`, `Da`, `De`, `El`, `En`, `en-CA`, `Es`, `es-419`, `es-AR`, `es-MX`, `Et`, `eu-ES`, `Fa`, `Fi`, `Fr`, `fr-CA`, `fr-FR`, `gl-ES`, `Gu`, `He`, `Hi`, `Hr`, `Hu`, `Hy`, `Id`, `Is`, `It`, `Ja`, `Ka`, `Kk`, `Kn`, `Ko`, `Lt`, `Lv`, `Mk`, `Ml`, `Mn`, `Mr`, `Ms`, `My`, `Nb`, `Nl`, `Nn`, `No`, `Pa`, `Pl`, `Pt`, `pt-BR`, `pt-PT`, `Ro`, `Ru`, `Sk`, `Sl`, `So`, `Sq`, `Sr`, `Sv`, `Sw`, `Ta`, `Te`, `Th`, `Tl`, `Tr`, `Uk`, `Ur`, `Vi`, `Zgh`, `zh-CN`, `zh-HK`, `zh-TW`.
         /// </summary>
         [Output("language")]
         public Output<string> Language { get; private set; } = null!;
 
         /// <summary>
-        /// The term `prompt` is used to refer to a specific step in the login flow. Options include: `login`, `login-id`, `login-password`, `login-passwordless`, `login-email-verification`, `signup`, `signup-id`, `signup-password`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `reset-password`, `custom-form`, `consent`, `customized-consent`, `logout`, `mfa-push`, `mfa-otp`, `mfa-voice`, `mfa-phone`, `mfa-webauthn`, `mfa-sms`, `mfa-email`, `mfa-recovery-code`, `mfa`, `status`, `device-flow`, `email-verification`, `email-otp-challenge`, `organizations`, `invitation`, `common`, `passkeys`, `captcha`, `brute-force-protection`.
+        /// The term `Prompt` is used to refer to a specific step in the login flow. Options include: `Login`, `login-id`, `login-password`, `login-passwordless`, `login-email-verification`, `Signup`, `signup-id`, `signup-password`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `reset-password`, `custom-form`, `Consent`, `customized-consent`, `Logout`, `mfa-push`, `mfa-otp`, `mfa-voice`, `mfa-phone`, `mfa-webauthn`, `mfa-sms`, `mfa-email`, `mfa-recovery-code`, `Mfa`, `Status`, `device-flow`, `email-verification`, `email-otp-challenge`, `Organizations`, `Invitation`, `Common`, `Passkeys`, `Captcha`, `brute-force-protection`.
         /// </summary>
         [Output("prompt")]
         public Output<string> Prompt { get; private set; } = null!;
@@ -145,13 +145,13 @@ namespace Pulumi.Auth0
         public Input<string> Body { get; set; } = null!;
 
         /// <summary>
-        /// Language of the custom text. Options include: `am`, `ar`, `ar-EG`, `ar-SA`, `az`, `bg`, `bn`, `bs`, `ca-ES`, `cnr`, `cs`, `cy`, `da`, `de`, `el`, `en`, `en-CA`, `es`, `es-419`, `es-AR`, `es-MX`, `et`, `eu-ES`, `fa`, `fi`, `fr`, `fr-CA`, `fr-FR`, `gl-ES`, `gu`, `he`, `hi`, `hr`, `hu`, `hy`, `id`, `is`, `it`, `ja`, `ka`, `kk`, `kn`, `ko`, `lt`, `lv`, `mk`, `ml`, `mn`, `mr`, `ms`, `my`, `nb`, `nl`, `nn`, `no`, `pa`, `pl`, `pt`, `pt-BR`, `pt-PT`, `ro`, `ru`, `sk`, `sl`, `so`, `sq`, `sr`, `sv`, `sw`, `ta`, `te`, `th`, `tl`, `tr`, `uk`, `ur`, `vi`, `zgh`, `zh-CN`, `zh-HK`, `zh-TW`.
+        /// Language of the custom text. Options include: `Am`, `Ar`, `ar-EG`, `ar-SA`, `Az`, `Bg`, `Bn`, `Bs`, `ca-ES`, `Cnr`, `Cs`, `Cy`, `Da`, `De`, `El`, `En`, `en-CA`, `Es`, `es-419`, `es-AR`, `es-MX`, `Et`, `eu-ES`, `Fa`, `Fi`, `Fr`, `fr-CA`, `fr-FR`, `gl-ES`, `Gu`, `He`, `Hi`, `Hr`, `Hu`, `Hy`, `Id`, `Is`, `It`, `Ja`, `Ka`, `Kk`, `Kn`, `Ko`, `Lt`, `Lv`, `Mk`, `Ml`, `Mn`, `Mr`, `Ms`, `My`, `Nb`, `Nl`, `Nn`, `No`, `Pa`, `Pl`, `Pt`, `pt-BR`, `pt-PT`, `Ro`, `Ru`, `Sk`, `Sl`, `So`, `Sq`, `Sr`, `Sv`, `Sw`, `Ta`, `Te`, `Th`, `Tl`, `Tr`, `Uk`, `Ur`, `Vi`, `Zgh`, `zh-CN`, `zh-HK`, `zh-TW`.
         /// </summary>
         [Input("language", required: true)]
         public Input<string> Language { get; set; } = null!;
 
         /// <summary>
-        /// The term `prompt` is used to refer to a specific step in the login flow. Options include: `login`, `login-id`, `login-password`, `login-passwordless`, `login-email-verification`, `signup`, `signup-id`, `signup-password`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `reset-password`, `custom-form`, `consent`, `customized-consent`, `logout`, `mfa-push`, `mfa-otp`, `mfa-voice`, `mfa-phone`, `mfa-webauthn`, `mfa-sms`, `mfa-email`, `mfa-recovery-code`, `mfa`, `status`, `device-flow`, `email-verification`, `email-otp-challenge`, `organizations`, `invitation`, `common`, `passkeys`, `captcha`, `brute-force-protection`.
+        /// The term `Prompt` is used to refer to a specific step in the login flow. Options include: `Login`, `login-id`, `login-password`, `login-passwordless`, `login-email-verification`, `Signup`, `signup-id`, `signup-password`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `reset-password`, `custom-form`, `Consent`, `customized-consent`, `Logout`, `mfa-push`, `mfa-otp`, `mfa-voice`, `mfa-phone`, `mfa-webauthn`, `mfa-sms`, `mfa-email`, `mfa-recovery-code`, `Mfa`, `Status`, `device-flow`, `email-verification`, `email-otp-challenge`, `Organizations`, `Invitation`, `Common`, `Passkeys`, `Captcha`, `brute-force-protection`.
         /// </summary>
         [Input("prompt", required: true)]
         public Input<string> Prompt { get; set; } = null!;
@@ -171,13 +171,13 @@ namespace Pulumi.Auth0
         public Input<string>? Body { get; set; }
 
         /// <summary>
-        /// Language of the custom text. Options include: `am`, `ar`, `ar-EG`, `ar-SA`, `az`, `bg`, `bn`, `bs`, `ca-ES`, `cnr`, `cs`, `cy`, `da`, `de`, `el`, `en`, `en-CA`, `es`, `es-419`, `es-AR`, `es-MX`, `et`, `eu-ES`, `fa`, `fi`, `fr`, `fr-CA`, `fr-FR`, `gl-ES`, `gu`, `he`, `hi`, `hr`, `hu`, `hy`, `id`, `is`, `it`, `ja`, `ka`, `kk`, `kn`, `ko`, `lt`, `lv`, `mk`, `ml`, `mn`, `mr`, `ms`, `my`, `nb`, `nl`, `nn`, `no`, `pa`, `pl`, `pt`, `pt-BR`, `pt-PT`, `ro`, `ru`, `sk`, `sl`, `so`, `sq`, `sr`, `sv`, `sw`, `ta`, `te`, `th`, `tl`, `tr`, `uk`, `ur`, `vi`, `zgh`, `zh-CN`, `zh-HK`, `zh-TW`.
+        /// Language of the custom text. Options include: `Am`, `Ar`, `ar-EG`, `ar-SA`, `Az`, `Bg`, `Bn`, `Bs`, `ca-ES`, `Cnr`, `Cs`, `Cy`, `Da`, `De`, `El`, `En`, `en-CA`, `Es`, `es-419`, `es-AR`, `es-MX`, `Et`, `eu-ES`, `Fa`, `Fi`, `Fr`, `fr-CA`, `fr-FR`, `gl-ES`, `Gu`, `He`, `Hi`, `Hr`, `Hu`, `Hy`, `Id`, `Is`, `It`, `Ja`, `Ka`, `Kk`, `Kn`, `Ko`, `Lt`, `Lv`, `Mk`, `Ml`, `Mn`, `Mr`, `Ms`, `My`, `Nb`, `Nl`, `Nn`, `No`, `Pa`, `Pl`, `Pt`, `pt-BR`, `pt-PT`, `Ro`, `Ru`, `Sk`, `Sl`, `So`, `Sq`, `Sr`, `Sv`, `Sw`, `Ta`, `Te`, `Th`, `Tl`, `Tr`, `Uk`, `Ur`, `Vi`, `Zgh`, `zh-CN`, `zh-HK`, `zh-TW`.
         /// </summary>
         [Input("language")]
         public Input<string>? Language { get; set; }
 
         /// <summary>
-        /// The term `prompt` is used to refer to a specific step in the login flow. Options include: `login`, `login-id`, `login-password`, `login-passwordless`, `login-email-verification`, `signup`, `signup-id`, `signup-password`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `reset-password`, `custom-form`, `consent`, `customized-consent`, `logout`, `mfa-push`, `mfa-otp`, `mfa-voice`, `mfa-phone`, `mfa-webauthn`, `mfa-sms`, `mfa-email`, `mfa-recovery-code`, `mfa`, `status`, `device-flow`, `email-verification`, `email-otp-challenge`, `organizations`, `invitation`, `common`, `passkeys`, `captcha`, `brute-force-protection`.
+        /// The term `Prompt` is used to refer to a specific step in the login flow. Options include: `Login`, `login-id`, `login-password`, `login-passwordless`, `login-email-verification`, `Signup`, `signup-id`, `signup-password`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `reset-password`, `custom-form`, `Consent`, `customized-consent`, `Logout`, `mfa-push`, `mfa-otp`, `mfa-voice`, `mfa-phone`, `mfa-webauthn`, `mfa-sms`, `mfa-email`, `mfa-recovery-code`, `Mfa`, `Status`, `device-flow`, `email-verification`, `email-otp-challenge`, `Organizations`, `Invitation`, `Common`, `Passkeys`, `Captcha`, `brute-force-protection`.
         /// </summary>
         [Input("prompt")]
         public Input<string>? Prompt { get; set; }

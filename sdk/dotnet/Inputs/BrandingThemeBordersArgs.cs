@@ -25,7 +25,7 @@ namespace Pulumi.Auth0.Inputs
         public Input<double>? ButtonBorderWeight { get; set; }
 
         /// <summary>
-        /// Buttons style. Available options: `pill`, `rounded`, `sharp`. Defaults to `rounded`.
+        /// Buttons style. Available options: `Pill`, `Rounded`, `Sharp`. Defaults to `Rounded`.
         /// </summary>
         [Input("buttonsStyle")]
         public Input<string>? ButtonsStyle { get; set; }
@@ -43,13 +43,13 @@ namespace Pulumi.Auth0.Inputs
         public Input<double>? InputBorderWeight { get; set; }
 
         /// <summary>
-        /// Inputs style. Available options: `pill`, `rounded`, `sharp`. Defaults to `rounded`.
+        /// Inputs style. Available options: `Pill`, `Rounded`, `Sharp`. Defaults to `Rounded`.
         /// </summary>
         [Input("inputsStyle")]
         public Input<string>? InputsStyle { get; set; }
 
         /// <summary>
-        /// Show widget shadow. Defaults to `true`.
+        /// Show widget shadow. Defaults to `True`.
         /// </summary>
         [Input("showWidgetShadow")]
         public Input<bool>? ShowWidgetShadow { get; set; }

@@ -23,7 +23,7 @@ public final class GetCustomDomainResult {
      */
     private List<GetCustomDomainCertificate> certificates;
     /**
-     * @return The HTTP header to fetch the client&#39;s IP address. Cannot be set on auth0_managed domains.
+     * @return The HTTP header to fetch the client&#39;s IP address. Cannot be set on auth0Managed domains.
      * 
      */
     private String customClientIpHeader;
@@ -58,17 +58,17 @@ public final class GetCustomDomainResult {
      */
     private Boolean primary;
     /**
-     * @return Configuration status for the custom domain. Options include `disabled`, `pending`, `pending_verification`, and `ready`.
+     * @return Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, and `ready`.
      * 
      */
     private String status;
     /**
-     * @return TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on self_managed domains.
+     * @return TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on selfManaged domains.
      * 
      */
     private String tlsPolicy;
     /**
-     * @return Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
+     * @return Provisioning type for the custom domain. Options include `auth0ManagedCerts` and `selfManagedCerts`.
      * 
      */
     private String type;
@@ -87,7 +87,7 @@ public final class GetCustomDomainResult {
         return this.certificates;
     }
     /**
-     * @return The HTTP header to fetch the client&#39;s IP address. Cannot be set on auth0_managed domains.
+     * @return The HTTP header to fetch the client&#39;s IP address. Cannot be set on auth0Managed domains.
      * 
      */
     public String customClientIpHeader() {
@@ -136,21 +136,21 @@ public final class GetCustomDomainResult {
         return this.primary;
     }
     /**
-     * @return Configuration status for the custom domain. Options include `disabled`, `pending`, `pending_verification`, and `ready`.
+     * @return Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, and `ready`.
      * 
      */
     public String status() {
         return this.status;
     }
     /**
-     * @return TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on self_managed domains.
+     * @return TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on selfManaged domains.
      * 
      */
     public String tlsPolicy() {
         return this.tlsPolicy;
     }
     /**
-     * @return Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
+     * @return Provisioning type for the custom domain. Options include `auth0ManagedCerts` and `selfManagedCerts`.
      * 
      */
     public String type() {

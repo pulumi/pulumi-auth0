@@ -12,19 +12,19 @@ namespace Pulumi.Auth0
     public static class GetUserAttributeProfile
     {
         /// <summary>
-        /// Data source to retrieve a specific Auth0 User Attribute Profile by `user_attribute_profile_id` or `name`.
+        /// Data source to retrieve a specific Auth0 User Attribute Profile by `UserAttributeProfileId` or `Name`.
         /// </summary>
         public static Task<GetUserAttributeProfileResult> InvokeAsync(GetUserAttributeProfileArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetUserAttributeProfileResult>("auth0:index/getUserAttributeProfile:getUserAttributeProfile", args ?? new GetUserAttributeProfileArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source to retrieve a specific Auth0 User Attribute Profile by `user_attribute_profile_id` or `name`.
+        /// Data source to retrieve a specific Auth0 User Attribute Profile by `UserAttributeProfileId` or `Name`.
         /// </summary>
         public static Output<GetUserAttributeProfileResult> Invoke(GetUserAttributeProfileInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetUserAttributeProfileResult>("auth0:index/getUserAttributeProfile:getUserAttributeProfile", args ?? new GetUserAttributeProfileInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source to retrieve a specific Auth0 User Attribute Profile by `user_attribute_profile_id` or `name`.
+        /// Data source to retrieve a specific Auth0 User Attribute Profile by `UserAttributeProfileId` or `Name`.
         /// </summary>
         public static Output<GetUserAttributeProfileResult> Invoke(GetUserAttributeProfileInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetUserAttributeProfileResult>("auth0:index/getUserAttributeProfile:getUserAttributeProfile", args ?? new GetUserAttributeProfileInvokeArgs(), options.WithDefaults());
