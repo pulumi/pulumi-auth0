@@ -32,14 +32,14 @@ public final class ConnectionOptionsAttributeMapArgs extends com.pulumi.resource
     }
 
     /**
-     * Method used to map incoming claims. Possible values: `use_map` (Okta or OIDC), `bind_all` (OIDC) or `basic_profile` (Okta).
+     * Method used to map incoming claims. Possible values: `useMap` (Okta or OIDC), `bindAll` (OIDC) or `basicProfile` (Okta).
      * 
      */
     @Import(name="mappingMode", required=true)
     private Output<String> mappingMode;
 
     /**
-     * @return Method used to map incoming claims. Possible values: `use_map` (Okta or OIDC), `bind_all` (OIDC) or `basic_profile` (Okta).
+     * @return Method used to map incoming claims. Possible values: `useMap` (Okta or OIDC), `bindAll` (OIDC) or `basicProfile` (Okta).
      * 
      */
     public Output<String> mappingMode() {
@@ -109,7 +109,7 @@ public final class ConnectionOptionsAttributeMapArgs extends com.pulumi.resource
         }
 
         /**
-         * @param mappingMode Method used to map incoming claims. Possible values: `use_map` (Okta or OIDC), `bind_all` (OIDC) or `basic_profile` (Okta).
+         * @param mappingMode Method used to map incoming claims. Possible values: `useMap` (Okta or OIDC), `bindAll` (OIDC) or `basicProfile` (Okta).
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class ConnectionOptionsAttributeMapArgs extends com.pulumi.resource
         }
 
         /**
-         * @param mappingMode Method used to map incoming claims. Possible values: `use_map` (Okta or OIDC), `bind_all` (OIDC) or `basic_profile` (Okta).
+         * @param mappingMode Method used to map incoming claims. Possible values: `useMap` (Okta or OIDC), `bindAll` (OIDC) or `basicProfile` (Okta).
          * 
          * @return builder
          * 

@@ -12,7 +12,7 @@ namespace Pulumi.Auth0
     public static class GetEventStream
     {
         /// <summary>
-        /// Data source to retrieve a specific Auth0 Event Stream by `id`.
+        /// Data source to retrieve a specific Auth0 Event Stream by `Id`.
         /// 
         /// ## Example Usage
         /// 
@@ -37,7 +37,7 @@ namespace Pulumi.Auth0
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEventStreamResult>("auth0:index/getEventStream:getEventStream", args ?? new GetEventStreamArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source to retrieve a specific Auth0 Event Stream by `id`.
+        /// Data source to retrieve a specific Auth0 Event Stream by `Id`.
         /// 
         /// ## Example Usage
         /// 
@@ -62,7 +62,7 @@ namespace Pulumi.Auth0
             => global::Pulumi.Deployment.Instance.Invoke<GetEventStreamResult>("auth0:index/getEventStream:getEventStream", args ?? new GetEventStreamInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source to retrieve a specific Auth0 Event Stream by `id`.
+        /// Data source to retrieve a specific Auth0 Event Stream by `Id`.
         /// 
         /// ## Example Usage
         /// 
@@ -129,7 +129,7 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly string DestinationType;
         /// <summary>
-        /// Configuration for the EventBridge destination. This block is only applicable when `destination_type` is set to `eventbridge`. EventBridge configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
+        /// Configuration for the EventBridge destination. This block is only applicable when `DestinationType` is set to `Eventbridge`. EventBridge configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetEventStreamEventbridgeConfigurationResult> EventbridgeConfigurations;
         /// <summary>
@@ -153,7 +153,7 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly string UpdatedAt;
         /// <summary>
-        /// Configuration for the Webhook destination. This block is only applicable when `destination_type` is set to `webhook`. Webhook configurations **can** be updated after creation, including the endpoint and authorization fields.
+        /// Configuration for the Webhook destination. This block is only applicable when `DestinationType` is set to `Webhook`. Webhook configurations **can** be updated after creation, including the endpoint and authorization fields.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetEventStreamWebhookConfigurationResult> WebhookConfigurations;
 

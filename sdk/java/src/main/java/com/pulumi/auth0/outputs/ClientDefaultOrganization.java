@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClientDefaultOrganization {
     /**
-     * @return If set, the `default_organization` will be removed.
+     * @return If set, the `defaultOrganization` will be removed.
      * 
      */
     private @Nullable Boolean disable;
@@ -31,7 +31,7 @@ public final class ClientDefaultOrganization {
 
     private ClientDefaultOrganization() {}
     /**
-     * @return If set, the `default_organization` will be removed.
+     * @return If set, the `defaultOrganization` will be removed.
      * 
      */
     public Optional<Boolean> disable() {

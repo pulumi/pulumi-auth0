@@ -89,7 +89,7 @@ namespace Pulumi.Auth0
         public Output<string> DestinationType { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration for the EventBridge destination. This block is only applicable when `destination_type` is set to `eventbridge`. EventBridge configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
+        /// Configuration for the EventBridge destination. This block is only applicable when `DestinationType` is set to `Eventbridge`. EventBridge configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
         /// </summary>
         [Output("eventbridgeConfiguration")]
         public Output<Outputs.EventStreamEventbridgeConfiguration?> EventbridgeConfiguration { get; private set; } = null!;
@@ -119,7 +119,7 @@ namespace Pulumi.Auth0
         public Output<string> UpdatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration for the Webhook destination. This block is only applicable when `destination_type` is set to `webhook`. Webhook configurations **can** be updated after creation, including the endpoint and authorization fields.
+        /// Configuration for the Webhook destination. This block is only applicable when `DestinationType` is set to `Webhook`. Webhook configurations **can** be updated after creation, including the endpoint and authorization fields.
         /// </summary>
         [Output("webhookConfiguration")]
         public Output<Outputs.EventStreamWebhookConfiguration?> WebhookConfiguration { get; private set; } = null!;
@@ -177,7 +177,7 @@ namespace Pulumi.Auth0
         public Input<string> DestinationType { get; set; } = null!;
 
         /// <summary>
-        /// Configuration for the EventBridge destination. This block is only applicable when `destination_type` is set to `eventbridge`. EventBridge configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
+        /// Configuration for the EventBridge destination. This block is only applicable when `DestinationType` is set to `Eventbridge`. EventBridge configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
         /// </summary>
         [Input("eventbridgeConfiguration")]
         public Input<Inputs.EventStreamEventbridgeConfigurationArgs>? EventbridgeConfiguration { get; set; }
@@ -201,7 +201,7 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// Configuration for the Webhook destination. This block is only applicable when `destination_type` is set to `webhook`. Webhook configurations **can** be updated after creation, including the endpoint and authorization fields.
+        /// Configuration for the Webhook destination. This block is only applicable when `DestinationType` is set to `Webhook`. Webhook configurations **can** be updated after creation, including the endpoint and authorization fields.
         /// </summary>
         [Input("webhookConfiguration")]
         public Input<Inputs.EventStreamWebhookConfigurationArgs>? WebhookConfiguration { get; set; }
@@ -227,7 +227,7 @@ namespace Pulumi.Auth0
         public Input<string>? DestinationType { get; set; }
 
         /// <summary>
-        /// Configuration for the EventBridge destination. This block is only applicable when `destination_type` is set to `eventbridge`. EventBridge configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
+        /// Configuration for the EventBridge destination. This block is only applicable when `DestinationType` is set to `Eventbridge`. EventBridge configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
         /// </summary>
         [Input("eventbridgeConfiguration")]
         public Input<Inputs.EventStreamEventbridgeConfigurationGetArgs>? EventbridgeConfiguration { get; set; }
@@ -263,7 +263,7 @@ namespace Pulumi.Auth0
         public Input<string>? UpdatedAt { get; set; }
 
         /// <summary>
-        /// Configuration for the Webhook destination. This block is only applicable when `destination_type` is set to `webhook`. Webhook configurations **can** be updated after creation, including the endpoint and authorization fields.
+        /// Configuration for the Webhook destination. This block is only applicable when `DestinationType` is set to `Webhook`. Webhook configurations **can** be updated after creation, including the endpoint and authorization fields.
         /// </summary>
         [Input("webhookConfiguration")]
         public Input<Inputs.EventStreamWebhookConfigurationGetArgs>? WebhookConfiguration { get; set; }

@@ -15,7 +15,7 @@ namespace Pulumi.Auth0
     /// !&gt; This resource manages to create a max of 1 email provider for a tenant.
     /// To avoid potential issues, it is recommended not to try creating multiple email providers on the same tenant.
     /// 
-    /// !&gt; If you are using the `auth0.EmailProvider` resource to create a `custom` email provider, you must ensure an action is created first with `custom-email-provider` as the supported_triggers
+    /// !&gt; If you are using the `auth0.EmailProvider` resource to create a `Custom` email provider, you must ensure an action is created first with `custom-email-provider` as the SupportedTriggers
     /// 
     /// ## Example Usage
     /// 
@@ -173,7 +173,7 @@ namespace Pulumi.Auth0
         public Output<bool?> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the email provider. Options include `azure_cs`, `custom`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
+        /// Name of the email provider. Options include `AzureCs`, `Custom`, `Mailgun`, `Mandrill`, `Ms365`, `Sendgrid`, `Ses`, `Smtp` and `Sparkpost`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -249,7 +249,7 @@ namespace Pulumi.Auth0
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Name of the email provider. Options include `azure_cs`, `custom`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
+        /// Name of the email provider. Options include `AzureCs`, `Custom`, `Mailgun`, `Mandrill`, `Ms365`, `Sendgrid`, `Ses`, `Smtp` and `Sparkpost`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -287,7 +287,7 @@ namespace Pulumi.Auth0
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Name of the email provider. Options include `azure_cs`, `custom`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
+        /// Name of the email provider. Options include `AzureCs`, `Custom`, `Mailgun`, `Mandrill`, `Ms365`, `Sendgrid`, `Ses`, `Smtp` and `Sparkpost`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

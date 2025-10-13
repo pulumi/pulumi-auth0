@@ -14,11 +14,11 @@ namespace Pulumi.Auth0.Outputs
     public sealed class EmailProviderSettings
     {
         /// <summary>
-        /// Headers settings for the `smtp` email provider.
+        /// Headers settings for the `Smtp` email provider.
         /// </summary>
         public readonly Outputs.EmailProviderSettingsHeaders? Headers;
         /// <summary>
-        /// Message settings for the `mandrill` or `ses` email provider.
+        /// Message settings for the `Mandrill` or `Ses` email provider.
         /// </summary>
         public readonly Outputs.EmailProviderSettingsMessage? Message;
 

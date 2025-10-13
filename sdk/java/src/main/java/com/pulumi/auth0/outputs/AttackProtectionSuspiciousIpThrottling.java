@@ -37,7 +37,7 @@ public final class AttackProtectionSuspiciousIpThrottling {
      */
     private @Nullable AttackProtectionSuspiciousIpThrottlingPreUserRegistration preUserRegistration;
     /**
-     * @return Action to take when a suspicious IP throttling threshold is violated. Possible values: `block` (throttle traffic from an IP address when there is a high number of login attempts targeting too many different accounts), `admin_notification` (send an email notification when traffic is throttled on one or more IP addresses due to high-velocity traffic).
+     * @return Action to take when a suspicious IP throttling threshold is violated. Possible values: `block` (throttle traffic from an IP address when there is a high number of login attempts targeting too many different accounts), `adminNotification` (send an email notification when traffic is throttled on one or more IP addresses due to high-velocity traffic).
      * 
      */
     private @Nullable List<String> shields;
@@ -72,7 +72,7 @@ public final class AttackProtectionSuspiciousIpThrottling {
         return Optional.ofNullable(this.preUserRegistration);
     }
     /**
-     * @return Action to take when a suspicious IP throttling threshold is violated. Possible values: `block` (throttle traffic from an IP address when there is a high number of login attempts targeting too many different accounts), `admin_notification` (send an email notification when traffic is throttled on one or more IP addresses due to high-velocity traffic).
+     * @return Action to take when a suspicious IP throttling threshold is violated. Possible values: `block` (throttle traffic from an IP address when there is a high number of login attempts targeting too many different accounts), `adminNotification` (send an email notification when traffic is throttled on one or more IP addresses due to high-velocity traffic).
      * 
      */
     public List<String> shields() {

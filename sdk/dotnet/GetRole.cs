@@ -12,7 +12,7 @@ namespace Pulumi.Auth0
     public static class GetRole
     {
         /// <summary>
-        /// Data source to retrieve a specific Auth0 role by `role_id` or `name`.
+        /// Data source to retrieve a specific Auth0 role by `RoleId` or `Name`.
         /// 
         /// ## Example Usage
         /// 
@@ -43,7 +43,7 @@ namespace Pulumi.Auth0
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRoleResult>("auth0:index/getRole:getRole", args ?? new GetRoleArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source to retrieve a specific Auth0 role by `role_id` or `name`.
+        /// Data source to retrieve a specific Auth0 role by `RoleId` or `Name`.
         /// 
         /// ## Example Usage
         /// 
@@ -74,7 +74,7 @@ namespace Pulumi.Auth0
             => global::Pulumi.Deployment.Instance.Invoke<GetRoleResult>("auth0:index/getRole:getRole", args ?? new GetRoleInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source to retrieve a specific Auth0 role by `role_id` or `name`.
+        /// Data source to retrieve a specific Auth0 role by `RoleId` or `Name`.
         /// 
         /// ## Example Usage
         /// 
@@ -109,13 +109,13 @@ namespace Pulumi.Auth0
     public sealed class GetRoleArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the role. If not provided, `role_id` must be set.
+        /// The name of the role. If not provided, `RoleId` must be set.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
         /// <summary>
-        /// The ID of the role. If not provided, `name` must be set.
+        /// The ID of the role. If not provided, `Name` must be set.
         /// </summary>
         [Input("roleId")]
         public string? RoleId { get; set; }
@@ -129,13 +129,13 @@ namespace Pulumi.Auth0
     public sealed class GetRoleInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the role. If not provided, `role_id` must be set.
+        /// The name of the role. If not provided, `RoleId` must be set.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The ID of the role. If not provided, `name` must be set.
+        /// The ID of the role. If not provided, `Name` must be set.
         /// </summary>
         [Input("roleId")]
         public Input<string>? RoleId { get; set; }
@@ -159,7 +159,7 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The name of the role. If not provided, `role_id` must be set.
+        /// The name of the role. If not provided, `RoleId` must be set.
         /// </summary>
         public readonly string? Name;
         /// <summary>
@@ -167,7 +167,7 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRolePermissionResult> Permissions;
         /// <summary>
-        /// The ID of the role. If not provided, `name` must be set.
+        /// The ID of the role. If not provided, `Name` must be set.
         /// </summary>
         public readonly string? RoleId;
         /// <summary>

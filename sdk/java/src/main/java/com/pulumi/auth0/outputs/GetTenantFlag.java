@@ -96,7 +96,7 @@ public final class GetTenantFlag {
      */
     private Boolean enablePipeline2;
     /**
-     * @return Indicates whether the public sign up process shows a `user_exists` error if the user already exists.
+     * @return Indicates whether the public sign up process shows a `userExists` error if the user already exists.
      * 
      */
     private Boolean enablePublicSignupUserExistsError;
@@ -257,7 +257,7 @@ public final class GetTenantFlag {
         return this.enablePipeline2;
     }
     /**
-     * @return Indicates whether the public sign up process shows a `user_exists` error if the user already exists.
+     * @return Indicates whether the public sign up process shows a `userExists` error if the user already exists.
      * 
      */
     public Boolean enablePublicSignupUserExistsError() {

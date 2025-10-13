@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
  * !&gt; This resource manages to create a max of 1 email provider for a tenant.
  * To avoid potential issues, it is recommended not to try creating multiple email providers on the same tenant.
  * 
- * !&gt; If you are using the `auth0.EmailProvider` resource to create a `custom` email provider, you must ensure an action is created first with `custom-email-provider` as the supported_triggers
+ * !&gt; If you are using the `auth0.EmailProvider` resource to create a `custom` email provider, you must ensure an action is created first with `custom-email-provider` as the supportedTriggers
  * 
  * ## Example Usage
  * 
@@ -211,14 +211,14 @@ public class EmailProvider extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.enabled);
     }
     /**
-     * Name of the email provider. Options include `azure_cs`, `custom`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
+     * Name of the email provider. Options include `azureCs`, `custom`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the email provider. Options include `azure_cs`, `custom`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
+     * @return Name of the email provider. Options include `azureCs`, `custom`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
      * 
      */
     public Output<String> name() {

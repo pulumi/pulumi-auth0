@@ -152,7 +152,7 @@ namespace Pulumi.Auth0
         public Output<ImmutableArray<string>> Scopes { get; private set; } = null!;
 
         /// <summary>
-        /// Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
+        /// Defines the type of subject for this grant. Can be one of `Client` or `User`. Defaults to `Client` when not defined.
         /// </summary>
         [Output("subjectType")]
         public Output<string> SubjectType { get; private set; } = null!;
@@ -252,7 +252,7 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
+        /// Defines the type of subject for this grant. Can be one of `Client` or `User`. Defaults to `Client` when not defined.
         /// </summary>
         [Input("subjectType")]
         public Input<string>? SubjectType { get; set; }
@@ -314,7 +314,7 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
+        /// Defines the type of subject for this grant. Can be one of `Client` or `User`. Defaults to `Client` when not defined.
         /// </summary>
         [Input("subjectType")]
         public Input<string>? SubjectType { get; set; }

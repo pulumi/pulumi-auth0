@@ -16,14 +16,14 @@ public final class ResourceServerSubjectTypeAuthorizationClientArgs extends com.
     public static final ResourceServerSubjectTypeAuthorizationClientArgs Empty = new ResourceServerSubjectTypeAuthorizationClientArgs();
 
     /**
-     * Client flows policy. One of `deny_all`, `require_client_grant`.
+     * Client flows policy. One of `denyAll`, `requireClientGrant`.
      * 
      */
     @Import(name="policy")
     private @Nullable Output<String> policy;
 
     /**
-     * @return Client flows policy. One of `deny_all`, `require_client_grant`.
+     * @return Client flows policy. One of `denyAll`, `requireClientGrant`.
      * 
      */
     public Optional<Output<String>> policy() {
@@ -55,7 +55,7 @@ public final class ResourceServerSubjectTypeAuthorizationClientArgs extends com.
         }
 
         /**
-         * @param policy Client flows policy. One of `deny_all`, `require_client_grant`.
+         * @param policy Client flows policy. One of `denyAll`, `requireClientGrant`.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class ResourceServerSubjectTypeAuthorizationClientArgs extends com.
         }
 
         /**
-         * @param policy Client flows policy. One of `deny_all`, `require_client_grant`.
+         * @param policy Client flows policy. One of `denyAll`, `requireClientGrant`.
          * 
          * @return builder
          * 

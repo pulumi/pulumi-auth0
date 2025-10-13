@@ -17,14 +17,14 @@ public final class ConnectionOptionsGatewayAuthenticationArgs extends com.pulumi
     public static final ConnectionOptionsGatewayAuthenticationArgs Empty = new ConnectionOptionsGatewayAuthenticationArgs();
 
     /**
-     * Audience claim for the HS256 token sent to `gateway_url`.
+     * Audience claim for the HS256 token sent to `gatewayUrl`.
      * 
      */
     @Import(name="audience")
     private @Nullable Output<String> audience;
 
     /**
-     * @return Audience claim for the HS256 token sent to `gateway_url`.
+     * @return Audience claim for the HS256 token sent to `gatewayUrl`.
      * 
      */
     public Optional<Output<String>> audience() {
@@ -47,14 +47,14 @@ public final class ConnectionOptionsGatewayAuthenticationArgs extends com.pulumi
     }
 
     /**
-     * Secret used to sign the HS256 token sent to `gateway_url`.
+     * Secret used to sign the HS256 token sent to `gatewayUrl`.
      * 
      */
     @Import(name="secret")
     private @Nullable Output<String> secret;
 
     /**
-     * @return Secret used to sign the HS256 token sent to `gateway_url`.
+     * @return Secret used to sign the HS256 token sent to `gatewayUrl`.
      * 
      */
     public Optional<Output<String>> secret() {
@@ -77,14 +77,14 @@ public final class ConnectionOptionsGatewayAuthenticationArgs extends com.pulumi
     }
 
     /**
-     * Subject claim for the HS256 token sent to `gateway_url`.
+     * Subject claim for the HS256 token sent to `gatewayUrl`.
      * 
      */
     @Import(name="subject")
     private @Nullable Output<String> subject;
 
     /**
-     * @return Subject claim for the HS256 token sent to `gateway_url`.
+     * @return Subject claim for the HS256 token sent to `gatewayUrl`.
      * 
      */
     public Optional<Output<String>> subject() {
@@ -120,7 +120,7 @@ public final class ConnectionOptionsGatewayAuthenticationArgs extends com.pulumi
         }
 
         /**
-         * @param audience Audience claim for the HS256 token sent to `gateway_url`.
+         * @param audience Audience claim for the HS256 token sent to `gatewayUrl`.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class ConnectionOptionsGatewayAuthenticationArgs extends com.pulumi
         }
 
         /**
-         * @param audience Audience claim for the HS256 token sent to `gateway_url`.
+         * @param audience Audience claim for the HS256 token sent to `gatewayUrl`.
          * 
          * @return builder
          * 
@@ -162,7 +162,7 @@ public final class ConnectionOptionsGatewayAuthenticationArgs extends com.pulumi
         }
 
         /**
-         * @param secret Secret used to sign the HS256 token sent to `gateway_url`.
+         * @param secret Secret used to sign the HS256 token sent to `gatewayUrl`.
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class ConnectionOptionsGatewayAuthenticationArgs extends com.pulumi
         }
 
         /**
-         * @param secret Secret used to sign the HS256 token sent to `gateway_url`.
+         * @param secret Secret used to sign the HS256 token sent to `gatewayUrl`.
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class ConnectionOptionsGatewayAuthenticationArgs extends com.pulumi
         }
 
         /**
-         * @param subject Subject claim for the HS256 token sent to `gateway_url`.
+         * @param subject Subject claim for the HS256 token sent to `gatewayUrl`.
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class ConnectionOptionsGatewayAuthenticationArgs extends com.pulumi
         }
 
         /**
-         * @param subject Subject claim for the HS256 token sent to `gateway_url`.
+         * @param subject Subject claim for the HS256 token sent to `gatewayUrl`.
          * 
          * @return builder
          * 

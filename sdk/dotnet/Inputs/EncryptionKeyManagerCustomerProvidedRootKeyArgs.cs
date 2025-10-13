@@ -37,7 +37,7 @@ namespace Pulumi.Auth0.Inputs
         public Input<string>? PublicWrappingKey { get; set; }
 
         /// <summary>
-        /// The state of the encryption key. One of `pre-activation`, `active`, `deactivated`, or `destroyed`.
+        /// The state of the encryption key. One of `pre-activation`, `Active`, `Deactivated`, or `Destroyed`.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
@@ -55,7 +55,7 @@ namespace Pulumi.Auth0.Inputs
         public Input<string>? UpdatedAt { get; set; }
 
         /// <summary>
-        /// The base64-encoded customer provided root key, wrapped using the `public_wrapping_key`. This can be removed after the wrapped key has been applied.
+        /// The base64-encoded customer provided root key, wrapped using the `PublicWrappingKey`. This can be removed after the wrapped key has been applied.
         /// </summary>
         [Input("wrappedKey")]
         public Input<string>? WrappedKey { get; set; }

@@ -14,7 +14,7 @@ namespace Pulumi.Auth0.Outputs
     public sealed class BrandingThemeFontsTitle
     {
         /// <summary>
-        /// Title bold. Defaults to `false`.
+        /// Title bold. Defaults to `False`.
         /// </summary>
         public readonly bool? Bold;
         /// <summary>

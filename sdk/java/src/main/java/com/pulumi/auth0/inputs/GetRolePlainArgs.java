@@ -15,14 +15,14 @@ public final class GetRolePlainArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetRolePlainArgs Empty = new GetRolePlainArgs();
 
     /**
-     * The name of the role. If not provided, `role_id` must be set.
+     * The name of the role. If not provided, `roleId` must be set.
      * 
      */
     @Import(name="name")
     private @Nullable String name;
 
     /**
-     * @return The name of the role. If not provided, `role_id` must be set.
+     * @return The name of the role. If not provided, `roleId` must be set.
      * 
      */
     public Optional<String> name() {
@@ -70,7 +70,7 @@ public final class GetRolePlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param name The name of the role. If not provided, `role_id` must be set.
+         * @param name The name of the role. If not provided, `roleId` must be set.
          * 
          * @return builder
          * 
