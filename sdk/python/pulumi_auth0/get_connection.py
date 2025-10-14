@@ -27,7 +27,13 @@ class GetConnectionResult:
     """
     A collection of values returned by getConnection.
     """
-    def __init__(__self__, connection_id=None, display_name=None, enabled_clients=None, id=None, is_domain_connection=None, metadata=None, name=None, options=None, realms=None, show_as_button=None, strategy=None):
+    def __init__(__self__, authentications=None, connected_accounts=None, connection_id=None, display_name=None, enabled_clients=None, id=None, is_domain_connection=None, metadata=None, name=None, options=None, realms=None, show_as_button=None, strategy=None):
+        if authentications and not isinstance(authentications, list):
+            raise TypeError("Expected argument 'authentications' to be a list")
+        pulumi.set(__self__, "authentications", authentications)
+        if connected_accounts and not isinstance(connected_accounts, list):
+            raise TypeError("Expected argument 'connected_accounts' to be a list")
+        pulumi.set(__self__, "connected_accounts", connected_accounts)
         if connection_id and not isinstance(connection_id, str):
             raise TypeError("Expected argument 'connection_id' to be a str")
         pulumi.set(__self__, "connection_id", connection_id)
@@ -61,6 +67,22 @@ class GetConnectionResult:
         if strategy and not isinstance(strategy, str):
             raise TypeError("Expected argument 'strategy' to be a str")
         pulumi.set(__self__, "strategy", strategy)
+
+    @_builtins.property
+    @pulumi.getter
+    def authentications(self) -> Sequence['outputs.GetConnectionAuthenticationResult']:
+        """
+        Configure the purpose of a connection to be used for authentication during login.
+        """
+        return pulumi.get(self, "authentications")
+
+    @_builtins.property
+    @pulumi.getter(name="connectedAccounts")
+    def connected_accounts(self) -> Sequence['outputs.GetConnectionConnectedAccountResult']:
+        """
+        Configure the purpose of a connection to be used for connected accounts and Token Vault.
+        """
+        return pulumi.get(self, "connected_accounts")
 
     @_builtins.property
     @pulumi.getter(name="connectionId")
@@ -157,6 +179,8 @@ class AwaitableGetConnectionResult(GetConnectionResult):
         if False:
             yield self
         return GetConnectionResult(
+            authentications=self.authentications,
+            connected_accounts=self.connected_accounts,
             connection_id=self.connection_id,
             display_name=self.display_name,
             enabled_clients=self.enabled_clients,
@@ -199,6 +223,8 @@ def get_connection(connection_id: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('auth0:index/getConnection:getConnection', __args__, opts=opts, typ=GetConnectionResult).value
 
     return AwaitableGetConnectionResult(
+        authentications=pulumi.get(__ret__, 'authentications'),
+        connected_accounts=pulumi.get(__ret__, 'connected_accounts'),
         connection_id=pulumi.get(__ret__, 'connection_id'),
         display_name=pulumi.get(__ret__, 'display_name'),
         enabled_clients=pulumi.get(__ret__, 'enabled_clients'),
@@ -238,6 +264,8 @@ def get_connection_output(connection_id: Optional[pulumi.Input[Optional[_builtin
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('auth0:index/getConnection:getConnection', __args__, opts=opts, typ=GetConnectionResult)
     return __ret__.apply(lambda __response__: GetConnectionResult(
+        authentications=pulumi.get(__response__, 'authentications'),
+        connected_accounts=pulumi.get(__response__, 'connected_accounts'),
         connection_id=pulumi.get(__response__, 'connection_id'),
         display_name=pulumi.get(__response__, 'display_name'),
         enabled_clients=pulumi.get(__response__, 'enabled_clients'),

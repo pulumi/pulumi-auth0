@@ -3,6 +3,8 @@
 
 package com.pulumi.auth0;
 
+import com.pulumi.auth0.inputs.ConnectionAuthenticationArgs;
+import com.pulumi.auth0.inputs.ConnectionConnectedAccountsArgs;
 import com.pulumi.auth0.inputs.ConnectionOptionsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -19,6 +21,36 @@ import javax.annotation.Nullable;
 public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ConnectionArgs Empty = new ConnectionArgs();
+
+    /**
+     * Configure the purpose of a connection to be used for authentication during login.
+     * 
+     */
+    @Import(name="authentication")
+    private @Nullable Output<ConnectionAuthenticationArgs> authentication;
+
+    /**
+     * @return Configure the purpose of a connection to be used for authentication during login.
+     * 
+     */
+    public Optional<Output<ConnectionAuthenticationArgs>> authentication() {
+        return Optional.ofNullable(this.authentication);
+    }
+
+    /**
+     * Configure the purpose of a connection to be used for connected accounts and Token Vault.
+     * 
+     */
+    @Import(name="connectedAccounts")
+    private @Nullable Output<ConnectionConnectedAccountsArgs> connectedAccounts;
+
+    /**
+     * @return Configure the purpose of a connection to be used for connected accounts and Token Vault.
+     * 
+     */
+    public Optional<Output<ConnectionConnectedAccountsArgs>> connectedAccounts() {
+        return Optional.ofNullable(this.connectedAccounts);
+    }
 
     /**
      * Name used in login screen.
@@ -143,6 +175,8 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     private ConnectionArgs() {}
 
     private ConnectionArgs(ConnectionArgs $) {
+        this.authentication = $.authentication;
+        this.connectedAccounts = $.connectedAccounts;
         this.displayName = $.displayName;
         this.isDomainConnection = $.isDomainConnection;
         this.metadata = $.metadata;
@@ -169,6 +203,48 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(ConnectionArgs defaults) {
             $ = new ConnectionArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param authentication Configure the purpose of a connection to be used for authentication during login.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authentication(@Nullable Output<ConnectionAuthenticationArgs> authentication) {
+            $.authentication = authentication;
+            return this;
+        }
+
+        /**
+         * @param authentication Configure the purpose of a connection to be used for authentication during login.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authentication(ConnectionAuthenticationArgs authentication) {
+            return authentication(Output.of(authentication));
+        }
+
+        /**
+         * @param connectedAccounts Configure the purpose of a connection to be used for connected accounts and Token Vault.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectedAccounts(@Nullable Output<ConnectionConnectedAccountsArgs> connectedAccounts) {
+            $.connectedAccounts = connectedAccounts;
+            return this;
+        }
+
+        /**
+         * @param connectedAccounts Configure the purpose of a connection to be used for connected accounts and Token Vault.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectedAccounts(ConnectionConnectedAccountsArgs connectedAccounts) {
+            return connectedAccounts(Output.of(connectedAccounts));
         }
 
         /**

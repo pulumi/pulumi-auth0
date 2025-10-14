@@ -96,6 +96,8 @@ __all__ = [
     'ClientTokenExchange',
     'ClientTokenQuota',
     'ClientTokenQuotaClientCredentials',
+    'ConnectionAuthentication',
+    'ConnectionConnectedAccounts',
     'ConnectionOptions',
     'ConnectionOptionsAttribute',
     'ConnectionOptionsAttributeEmail',
@@ -293,6 +295,8 @@ __all__ = [
     'GetClientsClientTokenExchangeResult',
     'GetClientsClientTokenQuotaResult',
     'GetClientsClientTokenQuotaClientCredentialResult',
+    'GetConnectionAuthenticationResult',
+    'GetConnectionConnectedAccountResult',
     'GetConnectionKeysKeyResult',
     'GetConnectionOptionResult',
     'GetConnectionOptionAttributeResult',
@@ -5287,6 +5291,30 @@ class ClientTokenQuotaClientCredentials(dict):
         Maximum number of issued tokens per hour
         """
         return pulumi.get(self, "per_hour")
+
+
+@pulumi.output_type
+class ConnectionAuthentication(dict):
+    def __init__(__self__, *,
+                 active: _builtins.bool):
+        pulumi.set(__self__, "active", active)
+
+    @_builtins.property
+    @pulumi.getter
+    def active(self) -> _builtins.bool:
+        return pulumi.get(self, "active")
+
+
+@pulumi.output_type
+class ConnectionConnectedAccounts(dict):
+    def __init__(__self__, *,
+                 active: _builtins.bool):
+        pulumi.set(__self__, "active", active)
+
+    @_builtins.property
+    @pulumi.getter
+    def active(self) -> _builtins.bool:
+        return pulumi.get(self, "active")
 
 
 @pulumi.output_type
@@ -17176,6 +17204,30 @@ class GetClientsClientTokenQuotaClientCredentialResult(dict):
         Maximum number of issued tokens per hour
         """
         return pulumi.get(self, "per_hour")
+
+
+@pulumi.output_type
+class GetConnectionAuthenticationResult(dict):
+    def __init__(__self__, *,
+                 active: _builtins.bool):
+        pulumi.set(__self__, "active", active)
+
+    @_builtins.property
+    @pulumi.getter
+    def active(self) -> _builtins.bool:
+        return pulumi.get(self, "active")
+
+
+@pulumi.output_type
+class GetConnectionConnectedAccountResult(dict):
+    def __init__(__self__, *,
+                 active: _builtins.bool):
+        pulumi.set(__self__, "active", active)
+
+    @_builtins.property
+    @pulumi.getter
+    def active(self) -> _builtins.bool:
+        return pulumi.get(self, "active")
 
 
 @pulumi.output_type

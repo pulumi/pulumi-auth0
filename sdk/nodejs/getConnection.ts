@@ -53,6 +53,14 @@ export interface GetConnectionArgs {
  */
 export interface GetConnectionResult {
     /**
+     * Configure the purpose of a connection to be used for authentication during login.
+     */
+    readonly authentications: outputs.GetConnectionAuthentication[];
+    /**
+     * Configure the purpose of a connection to be used for connected accounts and Token Vault.
+     */
+    readonly connectedAccounts: outputs.GetConnectionConnectedAccount[];
+    /**
      * The ID of the connection. If not provided, `name` must be set.
      */
     readonly connectionId?: string;

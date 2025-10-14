@@ -22,6 +22,8 @@ __all__ = ['ConnectionArgs', 'Connection']
 class ConnectionArgs:
     def __init__(__self__, *,
                  strategy: pulumi.Input[_builtins.str],
+                 authentication: Optional[pulumi.Input['ConnectionAuthenticationArgs']] = None,
+                 connected_accounts: Optional[pulumi.Input['ConnectionConnectedAccountsArgs']] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  is_domain_connection: Optional[pulumi.Input[_builtins.bool]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -32,6 +34,8 @@ class ConnectionArgs:
         """
         The set of arguments for constructing a Connection resource.
         :param pulumi.Input[_builtins.str] strategy: Type of the connection, which indicates the identity provider.
+        :param pulumi.Input['ConnectionAuthenticationArgs'] authentication: Configure the purpose of a connection to be used for authentication during login.
+        :param pulumi.Input['ConnectionConnectedAccountsArgs'] connected_accounts: Configure the purpose of a connection to be used for connected accounts and Token Vault.
         :param pulumi.Input[_builtins.str] display_name: Name used in login screen.
         :param pulumi.Input[_builtins.bool] is_domain_connection: Indicates whether the connection is domain level.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Metadata associated with the connection, in the form of a map of string values (max 255 chars).
@@ -41,6 +45,10 @@ class ConnectionArgs:
         :param pulumi.Input[_builtins.bool] show_as_button: Display connection as a button. Only available on enterprise connections.
         """
         pulumi.set(__self__, "strategy", strategy)
+        if authentication is not None:
+            pulumi.set(__self__, "authentication", authentication)
+        if connected_accounts is not None:
+            pulumi.set(__self__, "connected_accounts", connected_accounts)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if is_domain_connection is not None:
@@ -67,6 +75,30 @@ class ConnectionArgs:
     @strategy.setter
     def strategy(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "strategy", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def authentication(self) -> Optional[pulumi.Input['ConnectionAuthenticationArgs']]:
+        """
+        Configure the purpose of a connection to be used for authentication during login.
+        """
+        return pulumi.get(self, "authentication")
+
+    @authentication.setter
+    def authentication(self, value: Optional[pulumi.Input['ConnectionAuthenticationArgs']]):
+        pulumi.set(self, "authentication", value)
+
+    @_builtins.property
+    @pulumi.getter(name="connectedAccounts")
+    def connected_accounts(self) -> Optional[pulumi.Input['ConnectionConnectedAccountsArgs']]:
+        """
+        Configure the purpose of a connection to be used for connected accounts and Token Vault.
+        """
+        return pulumi.get(self, "connected_accounts")
+
+    @connected_accounts.setter
+    def connected_accounts(self, value: Optional[pulumi.Input['ConnectionConnectedAccountsArgs']]):
+        pulumi.set(self, "connected_accounts", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -156,6 +188,8 @@ class ConnectionArgs:
 @pulumi.input_type
 class _ConnectionState:
     def __init__(__self__, *,
+                 authentication: Optional[pulumi.Input['ConnectionAuthenticationArgs']] = None,
+                 connected_accounts: Optional[pulumi.Input['ConnectionConnectedAccountsArgs']] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  is_domain_connection: Optional[pulumi.Input[_builtins.bool]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -166,6 +200,8 @@ class _ConnectionState:
                  strategy: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Connection resources.
+        :param pulumi.Input['ConnectionAuthenticationArgs'] authentication: Configure the purpose of a connection to be used for authentication during login.
+        :param pulumi.Input['ConnectionConnectedAccountsArgs'] connected_accounts: Configure the purpose of a connection to be used for connected accounts and Token Vault.
         :param pulumi.Input[_builtins.str] display_name: Name used in login screen.
         :param pulumi.Input[_builtins.bool] is_domain_connection: Indicates whether the connection is domain level.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Metadata associated with the connection, in the form of a map of string values (max 255 chars).
@@ -175,6 +211,10 @@ class _ConnectionState:
         :param pulumi.Input[_builtins.bool] show_as_button: Display connection as a button. Only available on enterprise connections.
         :param pulumi.Input[_builtins.str] strategy: Type of the connection, which indicates the identity provider.
         """
+        if authentication is not None:
+            pulumi.set(__self__, "authentication", authentication)
+        if connected_accounts is not None:
+            pulumi.set(__self__, "connected_accounts", connected_accounts)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if is_domain_connection is not None:
@@ -191,6 +231,30 @@ class _ConnectionState:
             pulumi.set(__self__, "show_as_button", show_as_button)
         if strategy is not None:
             pulumi.set(__self__, "strategy", strategy)
+
+    @_builtins.property
+    @pulumi.getter
+    def authentication(self) -> Optional[pulumi.Input['ConnectionAuthenticationArgs']]:
+        """
+        Configure the purpose of a connection to be used for authentication during login.
+        """
+        return pulumi.get(self, "authentication")
+
+    @authentication.setter
+    def authentication(self, value: Optional[pulumi.Input['ConnectionAuthenticationArgs']]):
+        pulumi.set(self, "authentication", value)
+
+    @_builtins.property
+    @pulumi.getter(name="connectedAccounts")
+    def connected_accounts(self) -> Optional[pulumi.Input['ConnectionConnectedAccountsArgs']]:
+        """
+        Configure the purpose of a connection to be used for connected accounts and Token Vault.
+        """
+        return pulumi.get(self, "connected_accounts")
+
+    @connected_accounts.setter
+    def connected_accounts(self, value: Optional[pulumi.Input['ConnectionConnectedAccountsArgs']]):
+        pulumi.set(self, "connected_accounts", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -295,6 +359,8 @@ class Connection(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 authentication: Optional[pulumi.Input[Union['ConnectionAuthenticationArgs', 'ConnectionAuthenticationArgsDict']]] = None,
+                 connected_accounts: Optional[pulumi.Input[Union['ConnectionConnectedAccountsArgs', 'ConnectionConnectedAccountsArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  is_domain_connection: Optional[pulumi.Input[_builtins.bool]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1013,6 +1079,8 @@ class Connection(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['ConnectionAuthenticationArgs', 'ConnectionAuthenticationArgsDict']] authentication: Configure the purpose of a connection to be used for authentication during login.
+        :param pulumi.Input[Union['ConnectionConnectedAccountsArgs', 'ConnectionConnectedAccountsArgsDict']] connected_accounts: Configure the purpose of a connection to be used for connected accounts and Token Vault.
         :param pulumi.Input[_builtins.str] display_name: Name used in login screen.
         :param pulumi.Input[_builtins.bool] is_domain_connection: Indicates whether the connection is domain level.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Metadata associated with the connection, in the form of a map of string values (max 255 chars).
@@ -1750,6 +1818,8 @@ class Connection(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 authentication: Optional[pulumi.Input[Union['ConnectionAuthenticationArgs', 'ConnectionAuthenticationArgsDict']]] = None,
+                 connected_accounts: Optional[pulumi.Input[Union['ConnectionConnectedAccountsArgs', 'ConnectionConnectedAccountsArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  is_domain_connection: Optional[pulumi.Input[_builtins.bool]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1767,6 +1837,8 @@ class Connection(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ConnectionArgs.__new__(ConnectionArgs)
 
+            __props__.__dict__["authentication"] = authentication
+            __props__.__dict__["connected_accounts"] = connected_accounts
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["is_domain_connection"] = is_domain_connection
             __props__.__dict__["metadata"] = metadata
@@ -1787,6 +1859,8 @@ class Connection(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            authentication: Optional[pulumi.Input[Union['ConnectionAuthenticationArgs', 'ConnectionAuthenticationArgsDict']]] = None,
+            connected_accounts: Optional[pulumi.Input[Union['ConnectionConnectedAccountsArgs', 'ConnectionConnectedAccountsArgsDict']]] = None,
             display_name: Optional[pulumi.Input[_builtins.str]] = None,
             is_domain_connection: Optional[pulumi.Input[_builtins.bool]] = None,
             metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1802,6 +1876,8 @@ class Connection(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['ConnectionAuthenticationArgs', 'ConnectionAuthenticationArgsDict']] authentication: Configure the purpose of a connection to be used for authentication during login.
+        :param pulumi.Input[Union['ConnectionConnectedAccountsArgs', 'ConnectionConnectedAccountsArgsDict']] connected_accounts: Configure the purpose of a connection to be used for connected accounts and Token Vault.
         :param pulumi.Input[_builtins.str] display_name: Name used in login screen.
         :param pulumi.Input[_builtins.bool] is_domain_connection: Indicates whether the connection is domain level.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Metadata associated with the connection, in the form of a map of string values (max 255 chars).
@@ -1815,6 +1891,8 @@ class Connection(pulumi.CustomResource):
 
         __props__ = _ConnectionState.__new__(_ConnectionState)
 
+        __props__.__dict__["authentication"] = authentication
+        __props__.__dict__["connected_accounts"] = connected_accounts
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["is_domain_connection"] = is_domain_connection
         __props__.__dict__["metadata"] = metadata
@@ -1824,6 +1902,22 @@ class Connection(pulumi.CustomResource):
         __props__.__dict__["show_as_button"] = show_as_button
         __props__.__dict__["strategy"] = strategy
         return Connection(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter
+    def authentication(self) -> pulumi.Output['outputs.ConnectionAuthentication']:
+        """
+        Configure the purpose of a connection to be used for authentication during login.
+        """
+        return pulumi.get(self, "authentication")
+
+    @_builtins.property
+    @pulumi.getter(name="connectedAccounts")
+    def connected_accounts(self) -> pulumi.Output['outputs.ConnectionConnectedAccounts']:
+        """
+        Configure the purpose of a connection to be used for connected accounts and Token Vault.
+        """
+        return pulumi.get(self, "connected_accounts")
 
     @_builtins.property
     @pulumi.getter(name="displayName")

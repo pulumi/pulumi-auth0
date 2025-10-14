@@ -66,6 +66,10 @@ type LookupConnectionArgs struct {
 
 // A collection of values returned by getConnection.
 type LookupConnectionResult struct {
+	// Configure the purpose of a connection to be used for authentication during login.
+	Authentications []GetConnectionAuthentication `pulumi:"authentications"`
+	// Configure the purpose of a connection to be used for connected accounts and Token Vault.
+	ConnectedAccounts []GetConnectionConnectedAccount `pulumi:"connectedAccounts"`
 	// The ID of the connection. If not provided, `name` must be set.
 	ConnectionId *string `pulumi:"connectionId"`
 	// Name used in login screen.
@@ -124,6 +128,16 @@ func (o LookupConnectionResultOutput) ToLookupConnectionResultOutput() LookupCon
 
 func (o LookupConnectionResultOutput) ToLookupConnectionResultOutputWithContext(ctx context.Context) LookupConnectionResultOutput {
 	return o
+}
+
+// Configure the purpose of a connection to be used for authentication during login.
+func (o LookupConnectionResultOutput) Authentications() GetConnectionAuthenticationArrayOutput {
+	return o.ApplyT(func(v LookupConnectionResult) []GetConnectionAuthentication { return v.Authentications }).(GetConnectionAuthenticationArrayOutput)
+}
+
+// Configure the purpose of a connection to be used for connected accounts and Token Vault.
+func (o LookupConnectionResultOutput) ConnectedAccounts() GetConnectionConnectedAccountArrayOutput {
+	return o.ApplyT(func(v LookupConnectionResult) []GetConnectionConnectedAccount { return v.ConnectedAccounts }).(GetConnectionConnectedAccountArrayOutput)
 }
 
 // The ID of the connection. If not provided, `name` must be set.

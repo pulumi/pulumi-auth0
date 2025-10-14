@@ -1372,6 +1372,14 @@ export interface ClientTokenQuotaClientCredentials {
     perHour?: number;
 }
 
+export interface ConnectionAuthentication {
+    active: boolean;
+}
+
+export interface ConnectionConnectedAccounts {
+    active: boolean;
+}
+
 export interface ConnectionOptions {
     /**
      * ADFS URL where to fetch the metadata source.
@@ -3866,6 +3874,14 @@ export interface GetClientsClientTokenQuotaClientCredential {
      * Maximum number of issued tokens per hour
      */
     perHour: number;
+}
+
+export interface GetConnectionAuthentication {
+    active: boolean;
+}
+
+export interface GetConnectionConnectedAccount {
+    active: boolean;
 }
 
 export interface GetConnectionKeysKey {

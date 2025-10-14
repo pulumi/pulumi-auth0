@@ -467,6 +467,12 @@
                 "current": "auth0:index/connection:Connection",
                 "majorVersion": 3,
                 "fields": {
+                    "authentication": {
+                        "maxItemsOne": true
+                    },
+                    "connected_accounts": {
+                        "maxItemsOne": true
+                    },
                     "options": {
                         "maxItemsOne": true,
                         "elem": {
@@ -1881,6 +1887,12 @@
                 "current": "auth0:index/getConnection:getConnection",
                 "majorVersion": 3,
                 "fields": {
+                    "authentication": {
+                        "maxItemsOne": false
+                    },
+                    "connected_accounts": {
+                        "maxItemsOne": false
+                    },
                     "enabled_clients": {
                         "maxItemsOne": false
                     },

@@ -751,6 +751,14 @@ export class Connection extends pulumi.CustomResource {
     }
 
     /**
+     * Configure the purpose of a connection to be used for authentication during login.
+     */
+    declare public readonly authentication: pulumi.Output<outputs.ConnectionAuthentication>;
+    /**
+     * Configure the purpose of a connection to be used for connected accounts and Token Vault.
+     */
+    declare public readonly connectedAccounts: pulumi.Output<outputs.ConnectionConnectedAccounts>;
+    /**
      * Name used in login screen.
      */
     declare public readonly displayName: pulumi.Output<string>;
@@ -796,6 +804,8 @@ export class Connection extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConnectionState | undefined;
+            resourceInputs["authentication"] = state?.authentication;
+            resourceInputs["connectedAccounts"] = state?.connectedAccounts;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["isDomainConnection"] = state?.isDomainConnection;
             resourceInputs["metadata"] = state?.metadata;
@@ -809,6 +819,8 @@ export class Connection extends pulumi.CustomResource {
             if (args?.strategy === undefined && !opts.urn) {
                 throw new Error("Missing required property 'strategy'");
             }
+            resourceInputs["authentication"] = args?.authentication;
+            resourceInputs["connectedAccounts"] = args?.connectedAccounts;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["isDomainConnection"] = args?.isDomainConnection;
             resourceInputs["metadata"] = args?.metadata;
@@ -827,6 +839,14 @@ export class Connection extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Connection resources.
  */
 export interface ConnectionState {
+    /**
+     * Configure the purpose of a connection to be used for authentication during login.
+     */
+    authentication?: pulumi.Input<inputs.ConnectionAuthentication>;
+    /**
+     * Configure the purpose of a connection to be used for connected accounts and Token Vault.
+     */
+    connectedAccounts?: pulumi.Input<inputs.ConnectionConnectedAccounts>;
     /**
      * Name used in login screen.
      */
@@ -865,6 +885,14 @@ export interface ConnectionState {
  * The set of arguments for constructing a Connection resource.
  */
 export interface ConnectionArgs {
+    /**
+     * Configure the purpose of a connection to be used for authentication during login.
+     */
+    authentication?: pulumi.Input<inputs.ConnectionAuthentication>;
+    /**
+     * Configure the purpose of a connection to be used for connected accounts and Token Vault.
+     */
+    connectedAccounts?: pulumi.Input<inputs.ConnectionConnectedAccounts>;
     /**
      * Name used in login screen.
      */

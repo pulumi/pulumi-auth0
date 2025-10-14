@@ -151,6 +151,14 @@ namespace Pulumi.Auth0
     public sealed class GetConnectionResult
     {
         /// <summary>
+        /// Configure the purpose of a connection to be used for authentication during login.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetConnectionAuthenticationResult> Authentications;
+        /// <summary>
+        /// Configure the purpose of a connection to be used for connected accounts and Token Vault.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetConnectionConnectedAccountResult> ConnectedAccounts;
+        /// <summary>
         /// The ID of the connection. If not provided, `Name` must be set.
         /// </summary>
         public readonly string? ConnectionId;
@@ -197,6 +205,10 @@ namespace Pulumi.Auth0
 
         [OutputConstructor]
         private GetConnectionResult(
+            ImmutableArray<Outputs.GetConnectionAuthenticationResult> authentications,
+
+            ImmutableArray<Outputs.GetConnectionConnectedAccountResult> connectedAccounts,
+
             string? connectionId,
 
             string displayName,
@@ -219,6 +231,8 @@ namespace Pulumi.Auth0
 
             string strategy)
         {
+            Authentications = authentications;
+            ConnectedAccounts = connectedAccounts;
             ConnectionId = connectionId;
             DisplayName = displayName;
             EnabledClients = enabledClients;

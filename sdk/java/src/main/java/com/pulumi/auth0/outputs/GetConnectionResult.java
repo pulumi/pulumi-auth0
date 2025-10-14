@@ -3,6 +3,8 @@
 
 package com.pulumi.auth0.outputs;
 
+import com.pulumi.auth0.outputs.GetConnectionAuthentication;
+import com.pulumi.auth0.outputs.GetConnectionConnectedAccount;
 import com.pulumi.auth0.outputs.GetConnectionOption;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -16,6 +18,16 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetConnectionResult {
+    /**
+     * @return Configure the purpose of a connection to be used for authentication during login.
+     * 
+     */
+    private List<GetConnectionAuthentication> authentications;
+    /**
+     * @return Configure the purpose of a connection to be used for connected accounts and Token Vault.
+     * 
+     */
+    private List<GetConnectionConnectedAccount> connectedAccounts;
     /**
      * @return The ID of the connection. If not provided, `name` must be set.
      * 
@@ -73,6 +85,20 @@ public final class GetConnectionResult {
     private String strategy;
 
     private GetConnectionResult() {}
+    /**
+     * @return Configure the purpose of a connection to be used for authentication during login.
+     * 
+     */
+    public List<GetConnectionAuthentication> authentications() {
+        return this.authentications;
+    }
+    /**
+     * @return Configure the purpose of a connection to be used for connected accounts and Token Vault.
+     * 
+     */
+    public List<GetConnectionConnectedAccount> connectedAccounts() {
+        return this.connectedAccounts;
+    }
     /**
      * @return The ID of the connection. If not provided, `name` must be set.
      * 
@@ -160,6 +186,8 @@ public final class GetConnectionResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetConnectionAuthentication> authentications;
+        private List<GetConnectionConnectedAccount> connectedAccounts;
         private @Nullable String connectionId;
         private String displayName;
         private List<String> enabledClients;
@@ -174,6 +202,8 @@ public final class GetConnectionResult {
         public Builder() {}
         public Builder(GetConnectionResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.authentications = defaults.authentications;
+    	      this.connectedAccounts = defaults.connectedAccounts;
     	      this.connectionId = defaults.connectionId;
     	      this.displayName = defaults.displayName;
     	      this.enabledClients = defaults.enabledClients;
@@ -187,6 +217,28 @@ public final class GetConnectionResult {
     	      this.strategy = defaults.strategy;
         }
 
+        @CustomType.Setter
+        public Builder authentications(List<GetConnectionAuthentication> authentications) {
+            if (authentications == null) {
+              throw new MissingRequiredPropertyException("GetConnectionResult", "authentications");
+            }
+            this.authentications = authentications;
+            return this;
+        }
+        public Builder authentications(GetConnectionAuthentication... authentications) {
+            return authentications(List.of(authentications));
+        }
+        @CustomType.Setter
+        public Builder connectedAccounts(List<GetConnectionConnectedAccount> connectedAccounts) {
+            if (connectedAccounts == null) {
+              throw new MissingRequiredPropertyException("GetConnectionResult", "connectedAccounts");
+            }
+            this.connectedAccounts = connectedAccounts;
+            return this;
+        }
+        public Builder connectedAccounts(GetConnectionConnectedAccount... connectedAccounts) {
+            return connectedAccounts(List.of(connectedAccounts));
+        }
         @CustomType.Setter
         public Builder connectionId(@Nullable String connectionId) {
 
@@ -282,6 +334,8 @@ public final class GetConnectionResult {
         }
         public GetConnectionResult build() {
             final var _resultValue = new GetConnectionResult();
+            _resultValue.authentications = authentications;
+            _resultValue.connectedAccounts = connectedAccounts;
             _resultValue.connectionId = connectionId;
             _resultValue.displayName = displayName;
             _resultValue.enabledClients = enabledClients;

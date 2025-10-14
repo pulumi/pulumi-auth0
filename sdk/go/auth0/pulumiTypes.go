@@ -14317,6 +14317,272 @@ func (o ClientTokenQuotaClientCredentialsPtrOutput) PerHour() pulumi.IntPtrOutpu
 	}).(pulumi.IntPtrOutput)
 }
 
+type ConnectionAuthentication struct {
+	Active bool `pulumi:"active"`
+}
+
+// ConnectionAuthenticationInput is an input type that accepts ConnectionAuthenticationArgs and ConnectionAuthenticationOutput values.
+// You can construct a concrete instance of `ConnectionAuthenticationInput` via:
+//
+//	ConnectionAuthenticationArgs{...}
+type ConnectionAuthenticationInput interface {
+	pulumi.Input
+
+	ToConnectionAuthenticationOutput() ConnectionAuthenticationOutput
+	ToConnectionAuthenticationOutputWithContext(context.Context) ConnectionAuthenticationOutput
+}
+
+type ConnectionAuthenticationArgs struct {
+	Active pulumi.BoolInput `pulumi:"active"`
+}
+
+func (ConnectionAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionAuthentication)(nil)).Elem()
+}
+
+func (i ConnectionAuthenticationArgs) ToConnectionAuthenticationOutput() ConnectionAuthenticationOutput {
+	return i.ToConnectionAuthenticationOutputWithContext(context.Background())
+}
+
+func (i ConnectionAuthenticationArgs) ToConnectionAuthenticationOutputWithContext(ctx context.Context) ConnectionAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionAuthenticationOutput)
+}
+
+func (i ConnectionAuthenticationArgs) ToConnectionAuthenticationPtrOutput() ConnectionAuthenticationPtrOutput {
+	return i.ToConnectionAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionAuthenticationArgs) ToConnectionAuthenticationPtrOutputWithContext(ctx context.Context) ConnectionAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionAuthenticationOutput).ToConnectionAuthenticationPtrOutputWithContext(ctx)
+}
+
+// ConnectionAuthenticationPtrInput is an input type that accepts ConnectionAuthenticationArgs, ConnectionAuthenticationPtr and ConnectionAuthenticationPtrOutput values.
+// You can construct a concrete instance of `ConnectionAuthenticationPtrInput` via:
+//
+//	        ConnectionAuthenticationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionAuthenticationPtrInput interface {
+	pulumi.Input
+
+	ToConnectionAuthenticationPtrOutput() ConnectionAuthenticationPtrOutput
+	ToConnectionAuthenticationPtrOutputWithContext(context.Context) ConnectionAuthenticationPtrOutput
+}
+
+type connectionAuthenticationPtrType ConnectionAuthenticationArgs
+
+func ConnectionAuthenticationPtr(v *ConnectionAuthenticationArgs) ConnectionAuthenticationPtrInput {
+	return (*connectionAuthenticationPtrType)(v)
+}
+
+func (*connectionAuthenticationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionAuthentication)(nil)).Elem()
+}
+
+func (i *connectionAuthenticationPtrType) ToConnectionAuthenticationPtrOutput() ConnectionAuthenticationPtrOutput {
+	return i.ToConnectionAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionAuthenticationPtrType) ToConnectionAuthenticationPtrOutputWithContext(ctx context.Context) ConnectionAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionAuthenticationPtrOutput)
+}
+
+type ConnectionAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (ConnectionAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionAuthentication)(nil)).Elem()
+}
+
+func (o ConnectionAuthenticationOutput) ToConnectionAuthenticationOutput() ConnectionAuthenticationOutput {
+	return o
+}
+
+func (o ConnectionAuthenticationOutput) ToConnectionAuthenticationOutputWithContext(ctx context.Context) ConnectionAuthenticationOutput {
+	return o
+}
+
+func (o ConnectionAuthenticationOutput) ToConnectionAuthenticationPtrOutput() ConnectionAuthenticationPtrOutput {
+	return o.ToConnectionAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionAuthenticationOutput) ToConnectionAuthenticationPtrOutputWithContext(ctx context.Context) ConnectionAuthenticationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionAuthentication) *ConnectionAuthentication {
+		return &v
+	}).(ConnectionAuthenticationPtrOutput)
+}
+
+func (o ConnectionAuthenticationOutput) Active() pulumi.BoolOutput {
+	return o.ApplyT(func(v ConnectionAuthentication) bool { return v.Active }).(pulumi.BoolOutput)
+}
+
+type ConnectionAuthenticationPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionAuthenticationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionAuthentication)(nil)).Elem()
+}
+
+func (o ConnectionAuthenticationPtrOutput) ToConnectionAuthenticationPtrOutput() ConnectionAuthenticationPtrOutput {
+	return o
+}
+
+func (o ConnectionAuthenticationPtrOutput) ToConnectionAuthenticationPtrOutputWithContext(ctx context.Context) ConnectionAuthenticationPtrOutput {
+	return o
+}
+
+func (o ConnectionAuthenticationPtrOutput) Elem() ConnectionAuthenticationOutput {
+	return o.ApplyT(func(v *ConnectionAuthentication) ConnectionAuthentication {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionAuthentication
+		return ret
+	}).(ConnectionAuthenticationOutput)
+}
+
+func (o ConnectionAuthenticationPtrOutput) Active() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConnectionAuthentication) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Active
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ConnectionConnectedAccounts struct {
+	Active bool `pulumi:"active"`
+}
+
+// ConnectionConnectedAccountsInput is an input type that accepts ConnectionConnectedAccountsArgs and ConnectionConnectedAccountsOutput values.
+// You can construct a concrete instance of `ConnectionConnectedAccountsInput` via:
+//
+//	ConnectionConnectedAccountsArgs{...}
+type ConnectionConnectedAccountsInput interface {
+	pulumi.Input
+
+	ToConnectionConnectedAccountsOutput() ConnectionConnectedAccountsOutput
+	ToConnectionConnectedAccountsOutputWithContext(context.Context) ConnectionConnectedAccountsOutput
+}
+
+type ConnectionConnectedAccountsArgs struct {
+	Active pulumi.BoolInput `pulumi:"active"`
+}
+
+func (ConnectionConnectedAccountsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionConnectedAccounts)(nil)).Elem()
+}
+
+func (i ConnectionConnectedAccountsArgs) ToConnectionConnectedAccountsOutput() ConnectionConnectedAccountsOutput {
+	return i.ToConnectionConnectedAccountsOutputWithContext(context.Background())
+}
+
+func (i ConnectionConnectedAccountsArgs) ToConnectionConnectedAccountsOutputWithContext(ctx context.Context) ConnectionConnectedAccountsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionConnectedAccountsOutput)
+}
+
+func (i ConnectionConnectedAccountsArgs) ToConnectionConnectedAccountsPtrOutput() ConnectionConnectedAccountsPtrOutput {
+	return i.ToConnectionConnectedAccountsPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionConnectedAccountsArgs) ToConnectionConnectedAccountsPtrOutputWithContext(ctx context.Context) ConnectionConnectedAccountsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionConnectedAccountsOutput).ToConnectionConnectedAccountsPtrOutputWithContext(ctx)
+}
+
+// ConnectionConnectedAccountsPtrInput is an input type that accepts ConnectionConnectedAccountsArgs, ConnectionConnectedAccountsPtr and ConnectionConnectedAccountsPtrOutput values.
+// You can construct a concrete instance of `ConnectionConnectedAccountsPtrInput` via:
+//
+//	        ConnectionConnectedAccountsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionConnectedAccountsPtrInput interface {
+	pulumi.Input
+
+	ToConnectionConnectedAccountsPtrOutput() ConnectionConnectedAccountsPtrOutput
+	ToConnectionConnectedAccountsPtrOutputWithContext(context.Context) ConnectionConnectedAccountsPtrOutput
+}
+
+type connectionConnectedAccountsPtrType ConnectionConnectedAccountsArgs
+
+func ConnectionConnectedAccountsPtr(v *ConnectionConnectedAccountsArgs) ConnectionConnectedAccountsPtrInput {
+	return (*connectionConnectedAccountsPtrType)(v)
+}
+
+func (*connectionConnectedAccountsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionConnectedAccounts)(nil)).Elem()
+}
+
+func (i *connectionConnectedAccountsPtrType) ToConnectionConnectedAccountsPtrOutput() ConnectionConnectedAccountsPtrOutput {
+	return i.ToConnectionConnectedAccountsPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionConnectedAccountsPtrType) ToConnectionConnectedAccountsPtrOutputWithContext(ctx context.Context) ConnectionConnectedAccountsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionConnectedAccountsPtrOutput)
+}
+
+type ConnectionConnectedAccountsOutput struct{ *pulumi.OutputState }
+
+func (ConnectionConnectedAccountsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionConnectedAccounts)(nil)).Elem()
+}
+
+func (o ConnectionConnectedAccountsOutput) ToConnectionConnectedAccountsOutput() ConnectionConnectedAccountsOutput {
+	return o
+}
+
+func (o ConnectionConnectedAccountsOutput) ToConnectionConnectedAccountsOutputWithContext(ctx context.Context) ConnectionConnectedAccountsOutput {
+	return o
+}
+
+func (o ConnectionConnectedAccountsOutput) ToConnectionConnectedAccountsPtrOutput() ConnectionConnectedAccountsPtrOutput {
+	return o.ToConnectionConnectedAccountsPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionConnectedAccountsOutput) ToConnectionConnectedAccountsPtrOutputWithContext(ctx context.Context) ConnectionConnectedAccountsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionConnectedAccounts) *ConnectionConnectedAccounts {
+		return &v
+	}).(ConnectionConnectedAccountsPtrOutput)
+}
+
+func (o ConnectionConnectedAccountsOutput) Active() pulumi.BoolOutput {
+	return o.ApplyT(func(v ConnectionConnectedAccounts) bool { return v.Active }).(pulumi.BoolOutput)
+}
+
+type ConnectionConnectedAccountsPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionConnectedAccountsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionConnectedAccounts)(nil)).Elem()
+}
+
+func (o ConnectionConnectedAccountsPtrOutput) ToConnectionConnectedAccountsPtrOutput() ConnectionConnectedAccountsPtrOutput {
+	return o
+}
+
+func (o ConnectionConnectedAccountsPtrOutput) ToConnectionConnectedAccountsPtrOutputWithContext(ctx context.Context) ConnectionConnectedAccountsPtrOutput {
+	return o
+}
+
+func (o ConnectionConnectedAccountsPtrOutput) Elem() ConnectionConnectedAccountsOutput {
+	return o.ApplyT(func(v *ConnectionConnectedAccounts) ConnectionConnectedAccounts {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionConnectedAccounts
+		return ret
+	}).(ConnectionConnectedAccountsOutput)
+}
+
+func (o ConnectionConnectedAccountsPtrOutput) Active() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConnectionConnectedAccounts) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Active
+	}).(pulumi.BoolPtrOutput)
+}
+
 type ConnectionOptions struct {
 	// ADFS URL where to fetch the metadata source.
 	AdfsServer *string `pulumi:"adfsServer"`
@@ -44463,6 +44729,194 @@ func (o GetClientsClientTokenQuotaClientCredentialArrayOutput) Index(i pulumi.In
 	}).(GetClientsClientTokenQuotaClientCredentialOutput)
 }
 
+type GetConnectionAuthentication struct {
+	Active bool `pulumi:"active"`
+}
+
+// GetConnectionAuthenticationInput is an input type that accepts GetConnectionAuthenticationArgs and GetConnectionAuthenticationOutput values.
+// You can construct a concrete instance of `GetConnectionAuthenticationInput` via:
+//
+//	GetConnectionAuthenticationArgs{...}
+type GetConnectionAuthenticationInput interface {
+	pulumi.Input
+
+	ToGetConnectionAuthenticationOutput() GetConnectionAuthenticationOutput
+	ToGetConnectionAuthenticationOutputWithContext(context.Context) GetConnectionAuthenticationOutput
+}
+
+type GetConnectionAuthenticationArgs struct {
+	Active pulumi.BoolInput `pulumi:"active"`
+}
+
+func (GetConnectionAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionAuthentication)(nil)).Elem()
+}
+
+func (i GetConnectionAuthenticationArgs) ToGetConnectionAuthenticationOutput() GetConnectionAuthenticationOutput {
+	return i.ToGetConnectionAuthenticationOutputWithContext(context.Background())
+}
+
+func (i GetConnectionAuthenticationArgs) ToGetConnectionAuthenticationOutputWithContext(ctx context.Context) GetConnectionAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionAuthenticationOutput)
+}
+
+// GetConnectionAuthenticationArrayInput is an input type that accepts GetConnectionAuthenticationArray and GetConnectionAuthenticationArrayOutput values.
+// You can construct a concrete instance of `GetConnectionAuthenticationArrayInput` via:
+//
+//	GetConnectionAuthenticationArray{ GetConnectionAuthenticationArgs{...} }
+type GetConnectionAuthenticationArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionAuthenticationArrayOutput() GetConnectionAuthenticationArrayOutput
+	ToGetConnectionAuthenticationArrayOutputWithContext(context.Context) GetConnectionAuthenticationArrayOutput
+}
+
+type GetConnectionAuthenticationArray []GetConnectionAuthenticationInput
+
+func (GetConnectionAuthenticationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionAuthentication)(nil)).Elem()
+}
+
+func (i GetConnectionAuthenticationArray) ToGetConnectionAuthenticationArrayOutput() GetConnectionAuthenticationArrayOutput {
+	return i.ToGetConnectionAuthenticationArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionAuthenticationArray) ToGetConnectionAuthenticationArrayOutputWithContext(ctx context.Context) GetConnectionAuthenticationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionAuthenticationArrayOutput)
+}
+
+type GetConnectionAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionAuthentication)(nil)).Elem()
+}
+
+func (o GetConnectionAuthenticationOutput) ToGetConnectionAuthenticationOutput() GetConnectionAuthenticationOutput {
+	return o
+}
+
+func (o GetConnectionAuthenticationOutput) ToGetConnectionAuthenticationOutputWithContext(ctx context.Context) GetConnectionAuthenticationOutput {
+	return o
+}
+
+func (o GetConnectionAuthenticationOutput) Active() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionAuthentication) bool { return v.Active }).(pulumi.BoolOutput)
+}
+
+type GetConnectionAuthenticationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionAuthenticationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionAuthentication)(nil)).Elem()
+}
+
+func (o GetConnectionAuthenticationArrayOutput) ToGetConnectionAuthenticationArrayOutput() GetConnectionAuthenticationArrayOutput {
+	return o
+}
+
+func (o GetConnectionAuthenticationArrayOutput) ToGetConnectionAuthenticationArrayOutputWithContext(ctx context.Context) GetConnectionAuthenticationArrayOutput {
+	return o
+}
+
+func (o GetConnectionAuthenticationArrayOutput) Index(i pulumi.IntInput) GetConnectionAuthenticationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionAuthentication {
+		return vs[0].([]GetConnectionAuthentication)[vs[1].(int)]
+	}).(GetConnectionAuthenticationOutput)
+}
+
+type GetConnectionConnectedAccount struct {
+	Active bool `pulumi:"active"`
+}
+
+// GetConnectionConnectedAccountInput is an input type that accepts GetConnectionConnectedAccountArgs and GetConnectionConnectedAccountOutput values.
+// You can construct a concrete instance of `GetConnectionConnectedAccountInput` via:
+//
+//	GetConnectionConnectedAccountArgs{...}
+type GetConnectionConnectedAccountInput interface {
+	pulumi.Input
+
+	ToGetConnectionConnectedAccountOutput() GetConnectionConnectedAccountOutput
+	ToGetConnectionConnectedAccountOutputWithContext(context.Context) GetConnectionConnectedAccountOutput
+}
+
+type GetConnectionConnectedAccountArgs struct {
+	Active pulumi.BoolInput `pulumi:"active"`
+}
+
+func (GetConnectionConnectedAccountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionConnectedAccount)(nil)).Elem()
+}
+
+func (i GetConnectionConnectedAccountArgs) ToGetConnectionConnectedAccountOutput() GetConnectionConnectedAccountOutput {
+	return i.ToGetConnectionConnectedAccountOutputWithContext(context.Background())
+}
+
+func (i GetConnectionConnectedAccountArgs) ToGetConnectionConnectedAccountOutputWithContext(ctx context.Context) GetConnectionConnectedAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionConnectedAccountOutput)
+}
+
+// GetConnectionConnectedAccountArrayInput is an input type that accepts GetConnectionConnectedAccountArray and GetConnectionConnectedAccountArrayOutput values.
+// You can construct a concrete instance of `GetConnectionConnectedAccountArrayInput` via:
+//
+//	GetConnectionConnectedAccountArray{ GetConnectionConnectedAccountArgs{...} }
+type GetConnectionConnectedAccountArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionConnectedAccountArrayOutput() GetConnectionConnectedAccountArrayOutput
+	ToGetConnectionConnectedAccountArrayOutputWithContext(context.Context) GetConnectionConnectedAccountArrayOutput
+}
+
+type GetConnectionConnectedAccountArray []GetConnectionConnectedAccountInput
+
+func (GetConnectionConnectedAccountArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionConnectedAccount)(nil)).Elem()
+}
+
+func (i GetConnectionConnectedAccountArray) ToGetConnectionConnectedAccountArrayOutput() GetConnectionConnectedAccountArrayOutput {
+	return i.ToGetConnectionConnectedAccountArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionConnectedAccountArray) ToGetConnectionConnectedAccountArrayOutputWithContext(ctx context.Context) GetConnectionConnectedAccountArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionConnectedAccountArrayOutput)
+}
+
+type GetConnectionConnectedAccountOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionConnectedAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionConnectedAccount)(nil)).Elem()
+}
+
+func (o GetConnectionConnectedAccountOutput) ToGetConnectionConnectedAccountOutput() GetConnectionConnectedAccountOutput {
+	return o
+}
+
+func (o GetConnectionConnectedAccountOutput) ToGetConnectionConnectedAccountOutputWithContext(ctx context.Context) GetConnectionConnectedAccountOutput {
+	return o
+}
+
+func (o GetConnectionConnectedAccountOutput) Active() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionConnectedAccount) bool { return v.Active }).(pulumi.BoolOutput)
+}
+
+type GetConnectionConnectedAccountArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionConnectedAccountArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionConnectedAccount)(nil)).Elem()
+}
+
+func (o GetConnectionConnectedAccountArrayOutput) ToGetConnectionConnectedAccountArrayOutput() GetConnectionConnectedAccountArrayOutput {
+	return o
+}
+
+func (o GetConnectionConnectedAccountArrayOutput) ToGetConnectionConnectedAccountArrayOutputWithContext(ctx context.Context) GetConnectionConnectedAccountArrayOutput {
+	return o
+}
+
+func (o GetConnectionConnectedAccountArrayOutput) Index(i pulumi.IntInput) GetConnectionConnectedAccountOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionConnectedAccount {
+		return vs[0].([]GetConnectionConnectedAccount)[vs[1].(int)]
+	}).(GetConnectionConnectedAccountOutput)
+}
+
 type GetConnectionKeysKey struct {
 	// The signing key algorithm.
 	Algorithm string `pulumi:"algorithm"`
@@ -56353,6 +56807,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientTokenQuotaPtrInput)(nil)).Elem(), ClientTokenQuotaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientTokenQuotaClientCredentialsInput)(nil)).Elem(), ClientTokenQuotaClientCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientTokenQuotaClientCredentialsPtrInput)(nil)).Elem(), ClientTokenQuotaClientCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionAuthenticationInput)(nil)).Elem(), ConnectionAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionAuthenticationPtrInput)(nil)).Elem(), ConnectionAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionConnectedAccountsInput)(nil)).Elem(), ConnectionConnectedAccountsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionConnectedAccountsPtrInput)(nil)).Elem(), ConnectionConnectedAccountsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsInput)(nil)).Elem(), ConnectionOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsPtrInput)(nil)).Elem(), ConnectionOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsAttributeInput)(nil)).Elem(), ConnectionOptionsAttributeArgs{})
@@ -56746,6 +57204,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientTokenQuotaArrayInput)(nil)).Elem(), GetClientsClientTokenQuotaArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientTokenQuotaClientCredentialInput)(nil)).Elem(), GetClientsClientTokenQuotaClientCredentialArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientTokenQuotaClientCredentialArrayInput)(nil)).Elem(), GetClientsClientTokenQuotaClientCredentialArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionAuthenticationInput)(nil)).Elem(), GetConnectionAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionAuthenticationArrayInput)(nil)).Elem(), GetConnectionAuthenticationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionConnectedAccountInput)(nil)).Elem(), GetConnectionConnectedAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionConnectedAccountArrayInput)(nil)).Elem(), GetConnectionConnectedAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionKeysKeyInput)(nil)).Elem(), GetConnectionKeysKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionKeysKeyArrayInput)(nil)).Elem(), GetConnectionKeysKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionInput)(nil)).Elem(), GetConnectionOptionArgs{})
@@ -57094,6 +57556,10 @@ func init() {
 	pulumi.RegisterOutputType(ClientTokenQuotaPtrOutput{})
 	pulumi.RegisterOutputType(ClientTokenQuotaClientCredentialsOutput{})
 	pulumi.RegisterOutputType(ClientTokenQuotaClientCredentialsPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionAuthenticationOutput{})
+	pulumi.RegisterOutputType(ConnectionAuthenticationPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionConnectedAccountsOutput{})
+	pulumi.RegisterOutputType(ConnectionConnectedAccountsPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsAttributeOutput{})
@@ -57487,6 +57953,10 @@ func init() {
 	pulumi.RegisterOutputType(GetClientsClientTokenQuotaArrayOutput{})
 	pulumi.RegisterOutputType(GetClientsClientTokenQuotaClientCredentialOutput{})
 	pulumi.RegisterOutputType(GetClientsClientTokenQuotaClientCredentialArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionAuthenticationOutput{})
+	pulumi.RegisterOutputType(GetConnectionAuthenticationArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionConnectedAccountOutput{})
+	pulumi.RegisterOutputType(GetConnectionConnectedAccountArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionKeysKeyOutput{})
 	pulumi.RegisterOutputType(GetConnectionKeysKeyArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionOutput{})

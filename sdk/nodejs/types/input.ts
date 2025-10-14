@@ -1372,6 +1372,14 @@ export interface ClientTokenQuotaClientCredentials {
     perHour?: pulumi.Input<number>;
 }
 
+export interface ConnectionAuthentication {
+    active: pulumi.Input<boolean>;
+}
+
+export interface ConnectionConnectedAccounts {
+    active: pulumi.Input<boolean>;
+}
+
 export interface ConnectionOptions {
     /**
      * ADFS URL where to fetch the metadata source.
