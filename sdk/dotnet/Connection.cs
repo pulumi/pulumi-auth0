@@ -950,6 +950,18 @@ namespace Pulumi.Auth0
     public partial class Connection : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Configure the purpose of a connection to be used for authentication during login.
+        /// </summary>
+        [Output("authentication")]
+        public Output<Outputs.ConnectionAuthentication> Authentication { get; private set; } = null!;
+
+        /// <summary>
+        /// Configure the purpose of a connection to be used for connected accounts and Token Vault.
+        /// </summary>
+        [Output("connectedAccounts")]
+        public Output<Outputs.ConnectionConnectedAccounts> ConnectedAccounts { get; private set; } = null!;
+
+        /// <summary>
         /// Name used in login screen.
         /// </summary>
         [Output("displayName")]
@@ -1044,6 +1056,18 @@ namespace Pulumi.Auth0
     public sealed class ConnectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Configure the purpose of a connection to be used for authentication during login.
+        /// </summary>
+        [Input("authentication")]
+        public Input<Inputs.ConnectionAuthenticationArgs>? Authentication { get; set; }
+
+        /// <summary>
+        /// Configure the purpose of a connection to be used for connected accounts and Token Vault.
+        /// </summary>
+        [Input("connectedAccounts")]
+        public Input<Inputs.ConnectionConnectedAccountsArgs>? ConnectedAccounts { get; set; }
+
+        /// <summary>
         /// Name used in login screen.
         /// </summary>
         [Input("displayName")]
@@ -1111,6 +1135,18 @@ namespace Pulumi.Auth0
 
     public sealed class ConnectionState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Configure the purpose of a connection to be used for authentication during login.
+        /// </summary>
+        [Input("authentication")]
+        public Input<Inputs.ConnectionAuthenticationGetArgs>? Authentication { get; set; }
+
+        /// <summary>
+        /// Configure the purpose of a connection to be used for connected accounts and Token Vault.
+        /// </summary>
+        [Input("connectedAccounts")]
+        public Input<Inputs.ConnectionConnectedAccountsGetArgs>? ConnectedAccounts { get; set; }
+
         /// <summary>
         /// Name used in login screen.
         /// </summary>

@@ -6,6 +6,8 @@ package com.pulumi.auth0;
 import com.pulumi.auth0.ConnectionArgs;
 import com.pulumi.auth0.Utilities;
 import com.pulumi.auth0.inputs.ConnectionState;
+import com.pulumi.auth0.outputs.ConnectionAuthentication;
+import com.pulumi.auth0.outputs.ConnectionConnectedAccounts;
 import com.pulumi.auth0.outputs.ConnectionOptions;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -1107,6 +1109,34 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="auth0:index/connection:Connection")
 public class Connection extends com.pulumi.resources.CustomResource {
+    /**
+     * Configure the purpose of a connection to be used for authentication during login.
+     * 
+     */
+    @Export(name="authentication", refs={ConnectionAuthentication.class}, tree="[0]")
+    private Output<ConnectionAuthentication> authentication;
+
+    /**
+     * @return Configure the purpose of a connection to be used for authentication during login.
+     * 
+     */
+    public Output<ConnectionAuthentication> authentication() {
+        return this.authentication;
+    }
+    /**
+     * Configure the purpose of a connection to be used for connected accounts and Token Vault.
+     * 
+     */
+    @Export(name="connectedAccounts", refs={ConnectionConnectedAccounts.class}, tree="[0]")
+    private Output<ConnectionConnectedAccounts> connectedAccounts;
+
+    /**
+     * @return Configure the purpose of a connection to be used for connected accounts and Token Vault.
+     * 
+     */
+    public Output<ConnectionConnectedAccounts> connectedAccounts() {
+        return this.connectedAccounts;
+    }
     /**
      * Name used in login screen.
      * 

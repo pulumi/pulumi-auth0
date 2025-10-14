@@ -175,6 +175,10 @@ __all__ = [
     'ClientTokenQuotaArgsDict',
     'ClientTokenQuotaClientCredentialsArgs',
     'ClientTokenQuotaClientCredentialsArgsDict',
+    'ConnectionAuthenticationArgs',
+    'ConnectionAuthenticationArgsDict',
+    'ConnectionConnectedAccountsArgs',
+    'ConnectionConnectedAccountsArgsDict',
     'ConnectionOptionsArgs',
     'ConnectionOptionsArgsDict',
     'ConnectionOptionsAttributeArgs',
@@ -7036,6 +7040,50 @@ class ClientTokenQuotaClientCredentialsArgs:
     @per_hour.setter
     def per_hour(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "per_hour", value)
+
+
+if not MYPY:
+    class ConnectionAuthenticationArgsDict(TypedDict):
+        active: pulumi.Input[_builtins.bool]
+elif False:
+    ConnectionAuthenticationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConnectionAuthenticationArgs:
+    def __init__(__self__, *,
+                 active: pulumi.Input[_builtins.bool]):
+        pulumi.set(__self__, "active", active)
+
+    @_builtins.property
+    @pulumi.getter
+    def active(self) -> pulumi.Input[_builtins.bool]:
+        return pulumi.get(self, "active")
+
+    @active.setter
+    def active(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "active", value)
+
+
+if not MYPY:
+    class ConnectionConnectedAccountsArgsDict(TypedDict):
+        active: pulumi.Input[_builtins.bool]
+elif False:
+    ConnectionConnectedAccountsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConnectionConnectedAccountsArgs:
+    def __init__(__self__, *,
+                 active: pulumi.Input[_builtins.bool]):
+        pulumi.set(__self__, "active", active)
+
+    @_builtins.property
+    @pulumi.getter
+    def active(self) -> pulumi.Input[_builtins.bool]:
+        return pulumi.get(self, "active")
+
+    @active.setter
+    def active(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "active", value)
 
 
 if not MYPY:

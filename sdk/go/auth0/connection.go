@@ -1021,6 +1021,10 @@ import (
 type Connection struct {
 	pulumi.CustomResourceState
 
+	// Configure the purpose of a connection to be used for authentication during login.
+	Authentication ConnectionAuthenticationOutput `pulumi:"authentication"`
+	// Configure the purpose of a connection to be used for connected accounts and Token Vault.
+	ConnectedAccounts ConnectionConnectedAccountsOutput `pulumi:"connectedAccounts"`
 	// Name used in login screen.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Indicates whether the connection is domain level.
@@ -1072,6 +1076,10 @@ func GetConnection(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Connection resources.
 type connectionState struct {
+	// Configure the purpose of a connection to be used for authentication during login.
+	Authentication *ConnectionAuthentication `pulumi:"authentication"`
+	// Configure the purpose of a connection to be used for connected accounts and Token Vault.
+	ConnectedAccounts *ConnectionConnectedAccounts `pulumi:"connectedAccounts"`
 	// Name used in login screen.
 	DisplayName *string `pulumi:"displayName"`
 	// Indicates whether the connection is domain level.
@@ -1091,6 +1099,10 @@ type connectionState struct {
 }
 
 type ConnectionState struct {
+	// Configure the purpose of a connection to be used for authentication during login.
+	Authentication ConnectionAuthenticationPtrInput
+	// Configure the purpose of a connection to be used for connected accounts and Token Vault.
+	ConnectedAccounts ConnectionConnectedAccountsPtrInput
 	// Name used in login screen.
 	DisplayName pulumi.StringPtrInput
 	// Indicates whether the connection is domain level.
@@ -1114,6 +1126,10 @@ func (ConnectionState) ElementType() reflect.Type {
 }
 
 type connectionArgs struct {
+	// Configure the purpose of a connection to be used for authentication during login.
+	Authentication *ConnectionAuthentication `pulumi:"authentication"`
+	// Configure the purpose of a connection to be used for connected accounts and Token Vault.
+	ConnectedAccounts *ConnectionConnectedAccounts `pulumi:"connectedAccounts"`
 	// Name used in login screen.
 	DisplayName *string `pulumi:"displayName"`
 	// Indicates whether the connection is domain level.
@@ -1134,6 +1150,10 @@ type connectionArgs struct {
 
 // The set of arguments for constructing a Connection resource.
 type ConnectionArgs struct {
+	// Configure the purpose of a connection to be used for authentication during login.
+	Authentication ConnectionAuthenticationPtrInput
+	// Configure the purpose of a connection to be used for connected accounts and Token Vault.
+	ConnectedAccounts ConnectionConnectedAccountsPtrInput
 	// Name used in login screen.
 	DisplayName pulumi.StringPtrInput
 	// Indicates whether the connection is domain level.
@@ -1237,6 +1257,16 @@ func (o ConnectionOutput) ToConnectionOutput() ConnectionOutput {
 
 func (o ConnectionOutput) ToConnectionOutputWithContext(ctx context.Context) ConnectionOutput {
 	return o
+}
+
+// Configure the purpose of a connection to be used for authentication during login.
+func (o ConnectionOutput) Authentication() ConnectionAuthenticationOutput {
+	return o.ApplyT(func(v *Connection) ConnectionAuthenticationOutput { return v.Authentication }).(ConnectionAuthenticationOutput)
+}
+
+// Configure the purpose of a connection to be used for connected accounts and Token Vault.
+func (o ConnectionOutput) ConnectedAccounts() ConnectionConnectedAccountsOutput {
+	return o.ApplyT(func(v *Connection) ConnectionConnectedAccountsOutput { return v.ConnectedAccounts }).(ConnectionConnectedAccountsOutput)
 }
 
 // Name used in login screen.
