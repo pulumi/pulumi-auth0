@@ -28,8 +28,8 @@ namespace Pulumi.Auth0
     ///     {
     ///         Name = "TokenExchange-Action",
     ///         Code = @"exports.onExecuteCustomTokenExchange = async (event, api) =&gt; {
-    /// 	console.log(""foo"")
-    /// };""
+    /// \tconsole.log(\""foo\"")
+    /// };\""
     /// ",
     ///         Deploy = true,
     ///         SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs

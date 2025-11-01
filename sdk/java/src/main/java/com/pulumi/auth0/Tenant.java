@@ -65,10 +65,9 @@ import javax.annotation.Nullable;
  *             .supportUrl("http://example.com/support")
  *             .allowedLogoutUrls("http://example.com/logout")
  *             .sessionLifetime(8760.0)
- *             .sandboxVersion("12")
+ *             .sandboxVersion("22")
  *             .enabledLocales("en")
  *             .defaultRedirectionUri("https://example.com/login")
- *             .skipNonVerifiableCallbackUriConfirmationPrompt(true)
  *             .flags(TenantFlagsArgs.builder()
  *                 .disableClickjackProtectionHeaders(true)
  *                 .enablePublicSignupUserExistsError(true)
@@ -421,17 +420,17 @@ public class Tenant extends com.pulumi.resources.CustomResource {
         return this.sessions;
     }
     /**
-     * Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+     * Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or (&#34;true&#34;/&#34;false&#34;/&#34;null&#34;)
      * 
      */
-    @Export(name="skipNonVerifiableCallbackUriConfirmationPrompt", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> skipNonVerifiableCallbackUriConfirmationPrompt;
+    @Export(name="skipNonVerifiableCallbackUriConfirmationPrompt", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> skipNonVerifiableCallbackUriConfirmationPrompt;
 
     /**
-     * @return Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+     * @return Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or (&#34;true&#34;/&#34;false&#34;/&#34;null&#34;)
      * 
      */
-    public Output<Optional<Boolean>> skipNonVerifiableCallbackUriConfirmationPrompt() {
+    public Output<Optional<String>> skipNonVerifiableCallbackUriConfirmationPrompt() {
         return Codegen.optional(this.skipNonVerifiableCallbackUriConfirmationPrompt);
     }
     /**

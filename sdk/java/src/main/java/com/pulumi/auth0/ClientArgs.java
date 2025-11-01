@@ -473,6 +473,21 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
+     * 
+     */
+    @Import(name="organizationDiscoveryMethods")
+    private @Nullable Output<List<String>> organizationDiscoveryMethods;
+
+    /**
+     * @return Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
+     * 
+     */
+    public Optional<Output<List<String>>> organizationDiscoveryMethods() {
+        return Optional.ofNullable(this.organizationDiscoveryMethods);
+    }
+
+    /**
      * Defines how to proceed during an authentication transaction when `organizationUsage = &#34;require&#34;`. Can be `noPrompt` (default), `preLoginPrompt` or  `postLoginPrompt`.
      * 
      */
@@ -570,17 +585,17 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+     * Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or (&#34;true&#34;/&#34;false&#34;/&#34;null&#34;)
      * 
      */
     @Import(name="skipNonVerifiableCallbackUriConfirmationPrompt")
-    private @Nullable Output<Boolean> skipNonVerifiableCallbackUriConfirmationPrompt;
+    private @Nullable Output<String> skipNonVerifiableCallbackUriConfirmationPrompt;
 
     /**
-     * @return Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+     * @return Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or (&#34;true&#34;/&#34;false&#34;/&#34;null&#34;)
      * 
      */
-    public Optional<Output<Boolean>> skipNonVerifiableCallbackUriConfirmationPrompt() {
+    public Optional<Output<String>> skipNonVerifiableCallbackUriConfirmationPrompt() {
         return Optional.ofNullable(this.skipNonVerifiableCallbackUriConfirmationPrompt);
     }
 
@@ -691,6 +706,7 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
         this.oidcBackchannelLogoutUrls = $.oidcBackchannelLogoutUrls;
         this.oidcConformant = $.oidcConformant;
         this.oidcLogout = $.oidcLogout;
+        this.organizationDiscoveryMethods = $.organizationDiscoveryMethods;
         this.organizationRequireBehavior = $.organizationRequireBehavior;
         this.organizationUsage = $.organizationUsage;
         this.refreshToken = $.refreshToken;
@@ -1416,6 +1432,37 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param organizationDiscoveryMethods Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder organizationDiscoveryMethods(@Nullable Output<List<String>> organizationDiscoveryMethods) {
+            $.organizationDiscoveryMethods = organizationDiscoveryMethods;
+            return this;
+        }
+
+        /**
+         * @param organizationDiscoveryMethods Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder organizationDiscoveryMethods(List<String> organizationDiscoveryMethods) {
+            return organizationDiscoveryMethods(Output.of(organizationDiscoveryMethods));
+        }
+
+        /**
+         * @param organizationDiscoveryMethods Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder organizationDiscoveryMethods(String... organizationDiscoveryMethods) {
+            return organizationDiscoveryMethods(List.of(organizationDiscoveryMethods));
+        }
+
+        /**
          * @param organizationRequireBehavior Defines how to proceed during an authentication transaction when `organizationUsage = &#34;require&#34;`. Can be `noPrompt` (default), `preLoginPrompt` or  `postLoginPrompt`.
          * 
          * @return builder
@@ -1551,23 +1598,23 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param skipNonVerifiableCallbackUriConfirmationPrompt Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+         * @param skipNonVerifiableCallbackUriConfirmationPrompt Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or (&#34;true&#34;/&#34;false&#34;/&#34;null&#34;)
          * 
          * @return builder
          * 
          */
-        public Builder skipNonVerifiableCallbackUriConfirmationPrompt(@Nullable Output<Boolean> skipNonVerifiableCallbackUriConfirmationPrompt) {
+        public Builder skipNonVerifiableCallbackUriConfirmationPrompt(@Nullable Output<String> skipNonVerifiableCallbackUriConfirmationPrompt) {
             $.skipNonVerifiableCallbackUriConfirmationPrompt = skipNonVerifiableCallbackUriConfirmationPrompt;
             return this;
         }
 
         /**
-         * @param skipNonVerifiableCallbackUriConfirmationPrompt Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+         * @param skipNonVerifiableCallbackUriConfirmationPrompt Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or (&#34;true&#34;/&#34;false&#34;/&#34;null&#34;)
          * 
          * @return builder
          * 
          */
-        public Builder skipNonVerifiableCallbackUriConfirmationPrompt(Boolean skipNonVerifiableCallbackUriConfirmationPrompt) {
+        public Builder skipNonVerifiableCallbackUriConfirmationPrompt(String skipNonVerifiableCallbackUriConfirmationPrompt) {
             return skipNonVerifiableCallbackUriConfirmationPrompt(Output.of(skipNonVerifiableCallbackUriConfirmationPrompt));
         }
 

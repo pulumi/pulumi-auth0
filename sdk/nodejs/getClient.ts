@@ -182,6 +182,10 @@ export interface GetClientResult {
      */
     readonly oidcLogouts: outputs.GetClientOidcLogout[];
     /**
+     * Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
+     */
+    readonly organizationDiscoveryMethods: string[];
+    /**
      * Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default), `preLoginPrompt` or  `postLoginPrompt`.
      */
     readonly organizationRequireBehavior: string;
@@ -215,9 +219,9 @@ export interface GetClientResult {
      */
     readonly signingKeys: {[key: string]: string}[];
     /**
-     * Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+     * Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
      */
-    readonly skipNonVerifiableCallbackUriConfirmationPrompt: boolean;
+    readonly skipNonVerifiableCallbackUriConfirmationPrompt: string;
     /**
      * Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
      */

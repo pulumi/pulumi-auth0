@@ -56,8 +56,8 @@ import javax.annotation.Nullable;
  *             .name("Test Trigger Binding Foo")
  *             .code("""
  * exports.onContinuePostLogin = async (event, api) => {
- *   console.log("foo");
- * };"
+ *   console.log(\"foo\");
+ * };\"
  *             """)
  *             .deploy(true)
  *             .supportedTriggers(ActionSupportedTriggersArgs.builder()
@@ -70,8 +70,8 @@ import javax.annotation.Nullable;
  *             .name("Test Trigger Binding Bar")
  *             .code("""
  * exports.onContinuePostLogin = async (event, api) => {
- *   console.log("bar");
- * };"
+ *   console.log(\"bar\");
+ * };\"
  *             """)
  *             .deploy(true)
  *             .supportedTriggers(ActionSupportedTriggersArgs.builder()

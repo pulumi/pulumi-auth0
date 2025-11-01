@@ -32,8 +32,8 @@ namespace Pulumi.Auth0
     ///     {
     ///         Name = "Test Trigger Binding Foo",
     ///         Code = @"exports.onContinuePostLogin = async (event, api) =&gt; {
-    ///   console.log(""foo"");
-    /// };""
+    ///   console.log(\""foo\"");
+    /// };\""
     /// ",
     ///         Deploy = true,
     ///         SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs
@@ -47,8 +47,8 @@ namespace Pulumi.Auth0
     ///     {
     ///         Name = "Test Trigger Binding Bar",
     ///         Code = @"exports.onContinuePostLogin = async (event, api) =&gt; {
-    ///   console.log(""bar"");
-    /// };""
+    ///   console.log(\""bar\"");
+    /// };\""
     /// ",
     ///         Deploy = true,
     ///         SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs

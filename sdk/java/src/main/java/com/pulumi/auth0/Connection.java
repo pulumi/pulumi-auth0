@@ -82,7 +82,7 @@ import javax.annotation.Nullable;
  *                 .disableSignup(false)
  *                 .customScripts(Map.of("get_user", """
  *         function getByEmail(email, callback) {
- *           return callback(new Error("Whoops!"));
+ *           return callback(new Error(\"Whoops!\"));
  *         }
  *                 """))
  *                 .configuration(Map.ofEntries(
@@ -560,7 +560,7 @@ import javax.annotation.Nullable;
  *                         .build())
  *                 .scripts(Map.of("fetchUserProfile", """
  *         function fetchUserProfile(accessToken, context, callback) {
- *           return callback(new Error("Whoops!"));
+ *           return callback(new Error(\"Whoops!\"));
  *         }
  *                 """))
  *                 .setUserRootAttributes("on_each_login")
@@ -829,11 +829,11 @@ import javax.annotation.Nullable;
  *                 .iconUrl("https://saml.provider/assets/logo.png")
  *                 .entityId("<entity_id>")
  *                 .metadataXml("""
- *     <?xml version="1.0"?>
- *     <md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" entityID="https://example.com">
- *       <md:IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
- *         <md:SingleLogoutService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://saml.provider/sign_out"/>
- *         <md:SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://saml.provider/sign_in"/>
+ *     <?xml version=\"1.0\"?>
+ *     <md:EntityDescriptor xmlns:md=\"urn:oasis:names:tc:SAML:2.0:metadata\" xmlns:ds=\"http://www.w3.org/2000/09/xmldsig#\" entityID=\"https://example.com\">
+ *       <md:IDPSSODescriptor protocolSupportEnumeration=\"urn:oasis:names:tc:SAML:2.0:protocol\">
+ *         <md:SingleLogoutService Binding=\"urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect\" Location=\"https://saml.provider/sign_out\"/>
+ *         <md:SingleSignOnService Binding=\"urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect\" Location=\"https://saml.provider/sign_in\"/>
  *       </md:IDPSSODescriptor>
  *     </md:EntityDescriptor>
  *                 """)

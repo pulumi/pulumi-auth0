@@ -131,6 +131,8 @@ type LookupClientResult struct {
 	OidcConformant bool `pulumi:"oidcConformant"`
 	// Configure OIDC logout for the Client
 	OidcLogouts []GetClientOidcLogout `pulumi:"oidcLogouts"`
+	// Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
+	OrganizationDiscoveryMethods []string `pulumi:"organizationDiscoveryMethods"`
 	// Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default), `preLoginPrompt` or  `postLoginPrompt`.
 	OrganizationRequireBehavior string `pulumi:"organizationRequireBehavior"`
 	// Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
@@ -148,8 +150,8 @@ type LookupClientResult struct {
 	SignedRequestObjects []GetClientSignedRequestObject `pulumi:"signedRequestObjects"`
 	// List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
 	SigningKeys []map[string]string `pulumi:"signingKeys"`
-	// Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
-	SkipNonVerifiableCallbackUriConfirmationPrompt bool `pulumi:"skipNonVerifiableCallbackUriConfirmationPrompt"`
+	// Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
+	SkipNonVerifiableCallbackUriConfirmationPrompt string `pulumi:"skipNonVerifiableCallbackUriConfirmationPrompt"`
 	// Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
 	Sso bool `pulumi:"sso"`
 	// Indicates whether or not SSO is disabled.
@@ -364,6 +366,11 @@ func (o LookupClientResultOutput) OidcLogouts() GetClientOidcLogoutArrayOutput {
 	return o.ApplyT(func(v LookupClientResult) []GetClientOidcLogout { return v.OidcLogouts }).(GetClientOidcLogoutArrayOutput)
 }
 
+// Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
+func (o LookupClientResultOutput) OrganizationDiscoveryMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupClientResult) []string { return v.OrganizationDiscoveryMethods }).(pulumi.StringArrayOutput)
+}
+
 // Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default), `preLoginPrompt` or  `postLoginPrompt`.
 func (o LookupClientResultOutput) OrganizationRequireBehavior() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClientResult) string { return v.OrganizationRequireBehavior }).(pulumi.StringOutput)
@@ -408,9 +415,9 @@ func (o LookupClientResultOutput) SigningKeys() pulumi.StringMapArrayOutput {
 	return o.ApplyT(func(v LookupClientResult) []map[string]string { return v.SigningKeys }).(pulumi.StringMapArrayOutput)
 }
 
-// Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
-func (o LookupClientResultOutput) SkipNonVerifiableCallbackUriConfirmationPrompt() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupClientResult) bool { return v.SkipNonVerifiableCallbackUriConfirmationPrompt }).(pulumi.BoolOutput)
+// Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
+func (o LookupClientResultOutput) SkipNonVerifiableCallbackUriConfirmationPrompt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClientResult) string { return v.SkipNonVerifiableCallbackUriConfirmationPrompt }).(pulumi.StringOutput)
 }
 
 // Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).

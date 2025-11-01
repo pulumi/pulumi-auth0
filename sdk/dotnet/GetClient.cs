@@ -280,6 +280,10 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClientOidcLogoutResult> OidcLogouts;
         /// <summary>
+        /// Methods for discovering organizations during the pre*login*prompt. Can include `Email` (allows users to find their organization by entering their email address) and/or `OrganizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `OrganizationRequireBehavior` is set to `PreLoginPrompt`.
+        /// </summary>
+        public readonly ImmutableArray<string> OrganizationDiscoveryMethods;
+        /// <summary>
         /// Defines how to proceed during an authentication transaction when `OrganizationUsage = "require"`. Can be `NoPrompt` (default), `PreLoginPrompt` or  `PostLoginPrompt`.
         /// </summary>
         public readonly string OrganizationRequireBehavior;
@@ -313,9 +317,9 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly ImmutableArray<ImmutableDictionary<string, string>> SigningKeys;
         /// <summary>
-        /// Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+        /// Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
         /// </summary>
-        public readonly bool SkipNonVerifiableCallbackUriConfirmationPrompt;
+        public readonly string SkipNonVerifiableCallbackUriConfirmationPrompt;
         /// <summary>
         /// Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
         /// </summary>
@@ -409,6 +413,8 @@ namespace Pulumi.Auth0
 
             ImmutableArray<Outputs.GetClientOidcLogoutResult> oidcLogouts,
 
+            ImmutableArray<string> organizationDiscoveryMethods,
+
             string organizationRequireBehavior,
 
             string organizationUsage,
@@ -427,7 +433,7 @@ namespace Pulumi.Auth0
 
             ImmutableArray<ImmutableDictionary<string, string>> signingKeys,
 
-            bool skipNonVerifiableCallbackUriConfirmationPrompt,
+            string skipNonVerifiableCallbackUriConfirmationPrompt,
 
             bool sso,
 
@@ -474,6 +480,7 @@ namespace Pulumi.Auth0
             OidcBackchannelLogoutUrls = oidcBackchannelLogoutUrls;
             OidcConformant = oidcConformant;
             OidcLogouts = oidcLogouts;
+            OrganizationDiscoveryMethods = organizationDiscoveryMethods;
             OrganizationRequireBehavior = organizationRequireBehavior;
             OrganizationUsage = organizationUsage;
             RefreshTokens = refreshTokens;

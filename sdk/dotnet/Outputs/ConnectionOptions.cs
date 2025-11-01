@@ -14,6 +14,10 @@ namespace Pulumi.Auth0.Outputs
     public sealed class ConnectionOptions
     {
         /// <summary>
+        /// URL used to exchange a user-authorized request token for an access token.
+        /// </summary>
+        public readonly string? AccessTokenUrl;
+        /// <summary>
         /// ADFS URL where to fetch the metadata source.
         /// </summary>
         public readonly string? AdfsServer;
@@ -73,6 +77,14 @@ namespace Pulumi.Auth0.Outputs
         /// Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
         /// </summary>
         public readonly Outputs.ConnectionOptionsConnectionSettings? ConnectionSettings;
+        /// <summary>
+        /// Identifies the client to the service provider
+        /// </summary>
+        public readonly string? ConsumerKey;
+        /// <summary>
+        /// Secret used to establish ownership of the consumer key.
+        /// </summary>
+        public readonly string? ConsumerSecret;
         /// <summary>
         /// Configure extra headers to the Token endpoint of an OAuth 2.0 provider
         /// </summary>
@@ -282,6 +294,10 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string? RequestTemplate;
         /// <summary>
+        /// URL used to obtain an unauthorized request token.
+        /// </summary>
+        public readonly string? RequestTokenUrl;
+        /// <summary>
         /// Indicates whether the user is required to provide a username in addition to an email address.
         /// </summary>
         public readonly bool? RequiresUsername;
@@ -293,6 +309,10 @@ namespace Pulumi.Auth0.Outputs
         /// A map of scripts used for an OAuth connection. Only accepts a `fetchUserProfile` script.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Scripts;
+        /// <summary>
+        /// Session Key for storing the request token.
+        /// </summary>
+        public readonly string? SessionKey;
         /// <summary>
         /// Determines whether to sync user profile attributes (`Name`, `GivenName`, `FamilyName`, `Nickname`, `Picture`) at each login or only on the first login. Options include: `OnEachLogin`, `OnFirstLogin`, `NeverOnLogin`. Default value: `OnEachLogin`.
         /// </summary>
@@ -317,6 +337,10 @@ namespace Pulumi.Auth0.Outputs
         /// Sign Request Algorithm.
         /// </summary>
         public readonly string? SignatureAlgorithm;
+        /// <summary>
+        /// Signature method used to sign the request
+        /// </summary>
+        public readonly string? SignatureMethod;
         /// <summary>
         /// X.509 signing certificate (encoded in PEM or CER) you retrieved from the IdP, Base64-encoded.
         /// </summary>
@@ -394,6 +418,10 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly bool? UseWsfed;
         /// <summary>
+        /// URL used to obtain user authorization.
+        /// </summary>
+        public readonly string? UserAuthorizationUrl;
+        /// <summary>
         /// Attribute in the token that will be mapped to the UserId property in Auth0.
         /// </summary>
         public readonly string? UserIdAttribute;
@@ -416,6 +444,8 @@ namespace Pulumi.Auth0.Outputs
 
         [OutputConstructor]
         private ConnectionOptions(
+            string? accessTokenUrl,
+
             string? adfsServer,
 
             ImmutableArray<string> allowedAudiences,
@@ -445,6 +475,10 @@ namespace Pulumi.Auth0.Outputs
             ImmutableDictionary<string, string>? configuration,
 
             Outputs.ConnectionOptionsConnectionSettings? connectionSettings,
+
+            string? consumerKey,
+
+            string? consumerSecret,
 
             ImmutableArray<Outputs.ConnectionOptionsCustomHeader> customHeaders,
 
@@ -550,11 +584,15 @@ namespace Pulumi.Auth0.Outputs
 
             string? requestTemplate,
 
+            string? requestTokenUrl,
+
             bool? requiresUsername,
 
             ImmutableArray<string> scopes,
 
             ImmutableDictionary<string, string>? scripts,
+
+            string? sessionKey,
 
             string? setUserRootAttributes,
 
@@ -567,6 +605,8 @@ namespace Pulumi.Auth0.Outputs
             bool? signSamlRequest,
 
             string? signatureAlgorithm,
+
+            string? signatureMethod,
 
             string? signingCert,
 
@@ -606,6 +646,8 @@ namespace Pulumi.Auth0.Outputs
 
             bool? useWsfed,
 
+            string? userAuthorizationUrl,
+
             string? userIdAttribute,
 
             string? userinfoEndpoint,
@@ -616,6 +658,7 @@ namespace Pulumi.Auth0.Outputs
 
             string? waadProtocol)
         {
+            AccessTokenUrl = accessTokenUrl;
             AdfsServer = adfsServer;
             AllowedAudiences = allowedAudiences;
             ApiEnableUsers = apiEnableUsers;
@@ -631,6 +674,8 @@ namespace Pulumi.Auth0.Outputs
             CommunityBaseUrl = communityBaseUrl;
             Configuration = configuration;
             ConnectionSettings = connectionSettings;
+            ConsumerKey = consumerKey;
+            ConsumerSecret = consumerSecret;
             CustomHeaders = customHeaders;
             CustomScripts = customScripts;
             Debug = debug;
@@ -683,15 +728,18 @@ namespace Pulumi.Auth0.Outputs
             Provider = provider;
             RealmFallback = realmFallback;
             RequestTemplate = requestTemplate;
+            RequestTokenUrl = requestTokenUrl;
             RequiresUsername = requiresUsername;
             Scopes = scopes;
             Scripts = scripts;
+            SessionKey = sessionKey;
             SetUserRootAttributes = setUserRootAttributes;
             ShouldTrustEmailVerifiedConnection = shouldTrustEmailVerifiedConnection;
             SignInEndpoint = signInEndpoint;
             SignOutEndpoint = signOutEndpoint;
             SignSamlRequest = signSamlRequest;
             SignatureAlgorithm = signatureAlgorithm;
+            SignatureMethod = signatureMethod;
             SigningCert = signingCert;
             SigningKey = signingKey;
             StrategyVersion = strategyVersion;
@@ -711,6 +759,7 @@ namespace Pulumi.Auth0.Outputs
             UseCertAuth = useCertAuth;
             UseKerberos = useKerberos;
             UseWsfed = useWsfed;
+            UserAuthorizationUrl = userAuthorizationUrl;
             UserIdAttribute = userIdAttribute;
             UserinfoEndpoint = userinfoEndpoint;
             Validation = validation;

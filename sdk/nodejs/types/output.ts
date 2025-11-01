@@ -1382,6 +1382,10 @@ export interface ConnectionConnectedAccounts {
 
 export interface ConnectionOptions {
     /**
+     * URL used to exchange a user-authorized request token for an access token.
+     */
+    accessTokenUrl?: string;
+    /**
      * ADFS URL where to fetch the metadata source.
      */
     adfsServer?: string;
@@ -1441,6 +1445,14 @@ export interface ConnectionOptions {
      * Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
      */
     connectionSettings: outputs.ConnectionOptionsConnectionSettings;
+    /**
+     * Identifies the client to the service provider
+     */
+    consumerKey?: string;
+    /**
+     * Secret used to establish ownership of the consumer key.
+     */
+    consumerSecret?: string;
     /**
      * Configure extra headers to the Token endpoint of an OAuth 2.0 provider
      */
@@ -1650,6 +1662,10 @@ export interface ConnectionOptions {
      */
     requestTemplate?: string;
     /**
+     * URL used to obtain an unauthorized request token.
+     */
+    requestTokenUrl?: string;
+    /**
      * Indicates whether the user is required to provide a username in addition to an email address.
      */
     requiresUsername?: boolean;
@@ -1661,6 +1677,10 @@ export interface ConnectionOptions {
      * A map of scripts used for an OAuth connection. Only accepts a `fetchUserProfile` script.
      */
     scripts?: {[key: string]: string};
+    /**
+     * Session Key for storing the request token.
+     */
+    sessionKey?: string;
     /**
      * Determines whether to sync user profile attributes (`name`, `givenName`, `familyName`, `nickname`, `picture`) at each login or only on the first login. Options include: `onEachLogin`, `onFirstLogin`, `neverOnLogin`. Default value: `onEachLogin`.
      */
@@ -1685,6 +1705,10 @@ export interface ConnectionOptions {
      * Sign Request Algorithm.
      */
     signatureAlgorithm?: string;
+    /**
+     * Signature method used to sign the request
+     */
+    signatureMethod?: string;
     /**
      * X.509 signing certificate (encoded in PEM or CER) you retrieved from the IdP, Base64-encoded.
      */
@@ -1761,6 +1785,10 @@ export interface ConnectionOptions {
      * Whether to use WS-Fed.
      */
     useWsfed?: boolean;
+    /**
+     * URL used to obtain user authorization.
+     */
+    userAuthorizationUrl?: string;
     /**
      * Attribute in the token that will be mapped to the userId property in Auth0.
      */
@@ -3499,6 +3527,29 @@ export interface GetClientDefaultOrganization {
     organizationId: string;
 }
 
+export interface GetClientGrantsClientGrant {
+    /**
+     * The audience of the client grant.
+     */
+    audience: string;
+    /**
+     * The client ID associated with the grant.
+     */
+    clientId: string;
+    /**
+     * The ID of the client grant.
+     */
+    id: string;
+    /**
+     * List of granted scopes.
+     */
+    scopes: string[];
+    /**
+     * The subject type (usually 'client').
+     */
+    subjectType: string;
+}
+
 export interface GetClientJwtConfiguration {
     /**
      * Algorithm used to sign JWTs. Can be one of `HS256`, `RS256`, `PS256`.
@@ -3779,14 +3830,18 @@ export interface GetClientsClient {
      */
     oidcLogouts: outputs.GetClientsClientOidcLogout[];
     /**
+     * Methods for discovering organizations during the pre_login_prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
+     */
+    organizationDiscoveryMethods: string[];
+    /**
      * The identifier of a resource server that client is associated withThis property can be sent only when app_type=resource_server.This property can not be changed, once the client is created.
      */
     resourceServerIdentifier: string;
     sessionTransfers: outputs.GetClientsClientSessionTransfer[];
     /**
-     * Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+     * Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
      */
-    skipNonVerifiableCallbackUriConfirmationPrompt: boolean;
+    skipNonVerifiableCallbackUriConfirmationPrompt: string;
     /**
      * Allows configuration for token exchange
      */
@@ -3942,6 +3997,10 @@ export interface GetConnectionKeysKey {
 
 export interface GetConnectionOption {
     /**
+     * URL used to exchange a user-authorized request token for an access token.
+     */
+    accessTokenUrl: string;
+    /**
      * ADFS URL where to fetch the metadata source.
      */
     adfsServer: string;
@@ -4001,6 +4060,14 @@ export interface GetConnectionOption {
      * Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
      */
     connectionSettings: outputs.GetConnectionOptionConnectionSetting[];
+    /**
+     * Identifies the client to the service provider
+     */
+    consumerKey: string;
+    /**
+     * Secret used to establish ownership of the consumer key.
+     */
+    consumerSecret: string;
     /**
      * Configure extra headers to the Token endpoint of an OAuth 2.0 provider
      */
@@ -4210,6 +4277,10 @@ export interface GetConnectionOption {
      */
     requestTemplate: string;
     /**
+     * URL used to obtain an unauthorized request token.
+     */
+    requestTokenUrl: string;
+    /**
      * Indicates whether the user is required to provide a username in addition to an email address.
      */
     requiresUsername: boolean;
@@ -4221,6 +4292,10 @@ export interface GetConnectionOption {
      * A map of scripts used for an OAuth connection. Only accepts a `fetchUserProfile` script.
      */
     scripts: {[key: string]: string};
+    /**
+     * Session Key for storing the request token.
+     */
+    sessionKey: string;
     /**
      * Determines whether to sync user profile attributes (`name`, `givenName`, `familyName`, `nickname`, `picture`) at each login or only on the first login. Options include: `onEachLogin`, `onFirstLogin`, `neverOnLogin`. Default value: `onEachLogin`.
      */
@@ -4245,6 +4320,10 @@ export interface GetConnectionOption {
      * Sign Request Algorithm.
      */
     signatureAlgorithm: string;
+    /**
+     * Signature method used to sign the request
+     */
+    signatureMethod: string;
     /**
      * X.509 signing certificate (encoded in PEM or CER) you retrieved from the IdP, Base64-encoded.
      */
@@ -4321,6 +4400,10 @@ export interface GetConnectionOption {
      * Whether to use WS-Fed.
      */
     useWsfed: boolean;
+    /**
+     * URL used to obtain user authorization.
+     */
+    userAuthorizationUrl: string;
     /**
      * Attribute in the token that will be mapped to the userId property in Auth0.
      */
@@ -6087,6 +6170,29 @@ export interface OrganizationConnectionsEnabledConnection {
      * Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
      */
     showAsButton?: boolean;
+}
+
+export interface OrganizationDiscoveryDomainsDiscoveryDomain {
+    /**
+     * The domain name for organization discovery.
+     */
+    domain: string;
+    /**
+     * The ID of the discovery domain.
+     */
+    id: string;
+    /**
+     * Verification status. Must be either 'pending' or 'verified'.
+     */
+    status: string;
+    /**
+     * The full domain where the TXT record should be added.
+     */
+    verificationHost: string;
+    /**
+     * TXT record value for domain verification.
+     */
+    verificationTxt: string;
 }
 
 export interface OrganizationTokenQuota {

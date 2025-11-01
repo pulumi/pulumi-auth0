@@ -123,8 +123,8 @@ class TriggerActions(pulumi.CustomResource):
         action_foo = auth0.Action("action_foo",
             name="Test Trigger Binding Foo",
             code=\"\"\"exports.onContinuePostLogin = async (event, api) => {
-          console.log("foo");
-        };"
+          console.log(\\"foo\\");
+        };\\"
         \"\"\",
             deploy=True,
             supported_triggers={
@@ -134,8 +134,8 @@ class TriggerActions(pulumi.CustomResource):
         action_bar = auth0.Action("action_bar",
             name="Test Trigger Binding Bar",
             code=\"\"\"exports.onContinuePostLogin = async (event, api) => {
-          console.log("bar");
-        };"
+          console.log(\\"bar\\");
+        };\\"
         \"\"\",
             deploy=True,
             supported_triggers={
@@ -195,8 +195,8 @@ class TriggerActions(pulumi.CustomResource):
         action_foo = auth0.Action("action_foo",
             name="Test Trigger Binding Foo",
             code=\"\"\"exports.onContinuePostLogin = async (event, api) => {
-          console.log("foo");
-        };"
+          console.log(\\"foo\\");
+        };\\"
         \"\"\",
             deploy=True,
             supported_triggers={
@@ -206,8 +206,8 @@ class TriggerActions(pulumi.CustomResource):
         action_bar = auth0.Action("action_bar",
             name="Test Trigger Binding Bar",
             code=\"\"\"exports.onContinuePostLogin = async (event, api) => {
-          console.log("bar");
-        };"
+          console.log(\\"bar\\");
+        };\\"
         \"\"\",
             deploy=True,
             supported_triggers={

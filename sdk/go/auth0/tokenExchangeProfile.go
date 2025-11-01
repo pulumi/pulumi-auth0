@@ -31,7 +31,7 @@ import (
 //			// This action is then linked using the action_id param to the token-exchange profile
 //			myAction, err := auth0.NewAction(ctx, "my_action", &auth0.ActionArgs{
 //				Name:   pulumi.String("TokenExchange-Action"),
-//				Code:   pulumi.String("exports.onExecuteCustomTokenExchange = async (event, api) => {\n	console.log(\"foo\")\n};\"\n"),
+//				Code:   pulumi.String("exports.onExecuteCustomTokenExchange = async (event, api) => {\n\\tconsole.log(\\\"foo\\\")\n};\\\"\n"),
 //				Deploy: pulumi.Bool(true),
 //				SupportedTriggers: &auth0.ActionSupportedTriggersArgs{
 //					Id:      pulumi.String("custom-token-exchange"),

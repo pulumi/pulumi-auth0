@@ -356,17 +356,17 @@ public final class TenantState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+     * Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or (&#34;true&#34;/&#34;false&#34;/&#34;null&#34;)
      * 
      */
     @Import(name="skipNonVerifiableCallbackUriConfirmationPrompt")
-    private @Nullable Output<Boolean> skipNonVerifiableCallbackUriConfirmationPrompt;
+    private @Nullable Output<String> skipNonVerifiableCallbackUriConfirmationPrompt;
 
     /**
-     * @return Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+     * @return Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or (&#34;true&#34;/&#34;false&#34;/&#34;null&#34;)
      * 
      */
-    public Optional<Output<Boolean>> skipNonVerifiableCallbackUriConfirmationPrompt() {
+    public Optional<Output<String>> skipNonVerifiableCallbackUriConfirmationPrompt() {
         return Optional.ofNullable(this.skipNonVerifiableCallbackUriConfirmationPrompt);
     }
 
@@ -941,23 +941,23 @@ public final class TenantState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param skipNonVerifiableCallbackUriConfirmationPrompt Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+         * @param skipNonVerifiableCallbackUriConfirmationPrompt Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or (&#34;true&#34;/&#34;false&#34;/&#34;null&#34;)
          * 
          * @return builder
          * 
          */
-        public Builder skipNonVerifiableCallbackUriConfirmationPrompt(@Nullable Output<Boolean> skipNonVerifiableCallbackUriConfirmationPrompt) {
+        public Builder skipNonVerifiableCallbackUriConfirmationPrompt(@Nullable Output<String> skipNonVerifiableCallbackUriConfirmationPrompt) {
             $.skipNonVerifiableCallbackUriConfirmationPrompt = skipNonVerifiableCallbackUriConfirmationPrompt;
             return this;
         }
 
         /**
-         * @param skipNonVerifiableCallbackUriConfirmationPrompt Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+         * @param skipNonVerifiableCallbackUriConfirmationPrompt Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or (&#34;true&#34;/&#34;false&#34;/&#34;null&#34;)
          * 
          * @return builder
          * 
          */
-        public Builder skipNonVerifiableCallbackUriConfirmationPrompt(Boolean skipNonVerifiableCallbackUriConfirmationPrompt) {
+        public Builder skipNonVerifiableCallbackUriConfirmationPrompt(String skipNonVerifiableCallbackUriConfirmationPrompt) {
             return skipNonVerifiableCallbackUriConfirmationPrompt(Output.of(skipNonVerifiableCallbackUriConfirmationPrompt));
         }
 

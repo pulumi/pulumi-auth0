@@ -25,10 +25,9 @@ import * as utilities from "./utilities";
  *     supportUrl: "http://example.com/support",
  *     allowedLogoutUrls: ["http://example.com/logout"],
  *     sessionLifetime: 8760,
- *     sandboxVersion: "12",
+ *     sandboxVersion: "22",
  *     enabledLocales: ["en"],
  *     defaultRedirectionUri: "https://example.com/login",
- *     skipNonVerifiableCallbackUriConfirmationPrompt: true,
  *     flags: {
  *         disableClickjackProtectionHeaders: true,
  *         enablePublicSignupUserExistsError: true,
@@ -182,9 +181,9 @@ export class Tenant extends pulumi.CustomResource {
      */
     declare public readonly sessions: pulumi.Output<outputs.TenantSessions>;
     /**
-     * Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+     * Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
      */
-    declare public readonly skipNonVerifiableCallbackUriConfirmationPrompt: pulumi.Output<boolean | undefined>;
+    declare public readonly skipNonVerifiableCallbackUriConfirmationPrompt: pulumi.Output<string | undefined>;
     /**
      * Support email address for authenticating users.
      */
@@ -358,9 +357,9 @@ export interface TenantState {
      */
     sessions?: pulumi.Input<inputs.TenantSessions>;
     /**
-     * Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+     * Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
      */
-    skipNonVerifiableCallbackUriConfirmationPrompt?: pulumi.Input<boolean>;
+    skipNonVerifiableCallbackUriConfirmationPrompt?: pulumi.Input<string>;
     /**
      * Support email address for authenticating users.
      */
@@ -464,9 +463,9 @@ export interface TenantArgs {
      */
     sessions?: pulumi.Input<inputs.TenantSessions>;
     /**
-     * Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+     * Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
      */
-    skipNonVerifiableCallbackUriConfirmationPrompt?: pulumi.Input<boolean>;
+    skipNonVerifiableCallbackUriConfirmationPrompt?: pulumi.Input<string>;
     /**
      * Support email address for authenticating users.
      */

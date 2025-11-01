@@ -311,6 +311,8 @@ __all__ = [
     'OrganizationBrandingArgsDict',
     'OrganizationConnectionsEnabledConnectionArgs',
     'OrganizationConnectionsEnabledConnectionArgsDict',
+    'OrganizationDiscoveryDomainsDiscoveryDomainArgs',
+    'OrganizationDiscoveryDomainsDiscoveryDomainArgsDict',
     'OrganizationTokenQuotaArgs',
     'OrganizationTokenQuotaArgsDict',
     'OrganizationTokenQuotaClientCredentialsArgs',
@@ -7088,6 +7090,10 @@ class ConnectionConnectedAccountsArgs:
 
 if not MYPY:
     class ConnectionOptionsArgsDict(TypedDict):
+        access_token_url: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        URL used to exchange a user-authorized request token for an access token.
+        """
         adfs_server: NotRequired[pulumi.Input[_builtins.str]]
         """
         ADFS URL where to fetch the metadata source.
@@ -7147,6 +7153,14 @@ if not MYPY:
         connection_settings: NotRequired[pulumi.Input['ConnectionOptionsConnectionSettingsArgsDict']]
         """
         Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
+        """
+        consumer_key: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Identifies the client to the service provider
+        """
+        consumer_secret: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Secret used to establish ownership of the consumer key.
         """
         custom_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsCustomHeaderArgsDict']]]]
         """
@@ -7356,6 +7370,10 @@ if not MYPY:
         """
         Template that formats the SAML request.
         """
+        request_token_url: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        URL used to obtain an unauthorized request token.
+        """
         requires_username: NotRequired[pulumi.Input[_builtins.bool]]
         """
         Indicates whether the user is required to provide a username in addition to an email address.
@@ -7367,6 +7385,10 @@ if not MYPY:
         scripts: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
         A map of scripts used for an OAuth connection. Only accepts a `fetchUserProfile` script.
+        """
+        session_key: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Session Key for storing the request token.
         """
         set_user_root_attributes: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -7391,6 +7413,10 @@ if not MYPY:
         signature_algorithm: NotRequired[pulumi.Input[_builtins.str]]
         """
         Sign Request Algorithm.
+        """
+        signature_method: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Signature method used to sign the request
         """
         signing_cert: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -7468,6 +7494,10 @@ if not MYPY:
         """
         Whether to use WS-Fed.
         """
+        user_authorization_url: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        URL used to obtain user authorization.
+        """
         user_id_attribute: NotRequired[pulumi.Input[_builtins.str]]
         """
         Attribute in the token that will be mapped to the user_id property in Auth0.
@@ -7494,6 +7524,7 @@ elif False:
 @pulumi.input_type
 class ConnectionOptionsArgs:
     def __init__(__self__, *,
+                 access_token_url: Optional[pulumi.Input[_builtins.str]] = None,
                  adfs_server: Optional[pulumi.Input[_builtins.str]] = None,
                  allowed_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  api_enable_users: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -7509,6 +7540,8 @@ class ConnectionOptionsArgs:
                  community_base_url: Optional[pulumi.Input[_builtins.str]] = None,
                  configuration: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  connection_settings: Optional[pulumi.Input['ConnectionOptionsConnectionSettingsArgs']] = None,
+                 consumer_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 consumer_secret: Optional[pulumi.Input[_builtins.str]] = None,
                  custom_headers: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsCustomHeaderArgs']]]] = None,
                  custom_scripts: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  debug: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -7561,15 +7594,18 @@ class ConnectionOptionsArgs:
                  provider: Optional[pulumi.Input[_builtins.str]] = None,
                  realm_fallback: Optional[pulumi.Input[_builtins.bool]] = None,
                  request_template: Optional[pulumi.Input[_builtins.str]] = None,
+                 request_token_url: Optional[pulumi.Input[_builtins.str]] = None,
                  requires_username: Optional[pulumi.Input[_builtins.bool]] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  scripts: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 session_key: Optional[pulumi.Input[_builtins.str]] = None,
                  set_user_root_attributes: Optional[pulumi.Input[_builtins.str]] = None,
                  should_trust_email_verified_connection: Optional[pulumi.Input[_builtins.str]] = None,
                  sign_in_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  sign_out_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  sign_saml_request: Optional[pulumi.Input[_builtins.bool]] = None,
                  signature_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
+                 signature_method: Optional[pulumi.Input[_builtins.str]] = None,
                  signing_cert: Optional[pulumi.Input[_builtins.str]] = None,
                  signing_key: Optional[pulumi.Input['ConnectionOptionsSigningKeyArgs']] = None,
                  strategy_version: Optional[pulumi.Input[_builtins.int]] = None,
@@ -7589,12 +7625,14 @@ class ConnectionOptionsArgs:
                  use_cert_auth: Optional[pulumi.Input[_builtins.bool]] = None,
                  use_kerberos: Optional[pulumi.Input[_builtins.bool]] = None,
                  use_wsfed: Optional[pulumi.Input[_builtins.bool]] = None,
+                 user_authorization_url: Optional[pulumi.Input[_builtins.str]] = None,
                  user_id_attribute: Optional[pulumi.Input[_builtins.str]] = None,
                  userinfo_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  validation: Optional[pulumi.Input['ConnectionOptionsValidationArgs']] = None,
                  waad_common_endpoint: Optional[pulumi.Input[_builtins.bool]] = None,
                  waad_protocol: Optional[pulumi.Input[_builtins.str]] = None):
         """
+        :param pulumi.Input[_builtins.str] access_token_url: URL used to exchange a user-authorized request token for an access token.
         :param pulumi.Input[_builtins.str] adfs_server: ADFS URL where to fetch the metadata source.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_audiences: List of allowed audiences.
         :param pulumi.Input[_builtins.bool] api_enable_users: Enable API Access to users.
@@ -7610,6 +7648,8 @@ class ConnectionOptionsArgs:
         :param pulumi.Input[_builtins.str] community_base_url: Salesforce community base URL.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] configuration: A case-sensitive map of key value pairs used as configuration variables for the `custom_script`.
         :param pulumi.Input['ConnectionOptionsConnectionSettingsArgs'] connection_settings: Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
+        :param pulumi.Input[_builtins.str] consumer_key: Identifies the client to the service provider
+        :param pulumi.Input[_builtins.str] consumer_secret: Secret used to establish ownership of the consumer key.
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsCustomHeaderArgs']]] custom_headers: Configure extra headers to the Token endpoint of an OAuth 2.0 provider
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_scripts: A map of scripts used to integrate with a custom database.
         :param pulumi.Input[_builtins.bool] debug: When enabled, additional debug information will be generated.
@@ -7662,15 +7702,18 @@ class ConnectionOptionsArgs:
         :param pulumi.Input[_builtins.str] provider: Defines the custom `sms_gateway` provider.
         :param pulumi.Input[_builtins.bool] realm_fallback: Allows configuration if connections*realm*fallback flag is enabled for the tenant
         :param pulumi.Input[_builtins.str] request_template: Template that formats the SAML request.
+        :param pulumi.Input[_builtins.str] request_token_url: URL used to obtain an unauthorized request token.
         :param pulumi.Input[_builtins.bool] requires_username: Indicates whether the user is required to provide a username in addition to an email address.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: Permissions to grant to the connection. Within the Auth0 dashboard these appear under the "Attributes" and "Extended Attributes" sections. Some examples: `basic_profile`, `ext_profile`, `ext_nested_groups`, etc.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] scripts: A map of scripts used for an OAuth connection. Only accepts a `fetchUserProfile` script.
+        :param pulumi.Input[_builtins.str] session_key: Session Key for storing the request token.
         :param pulumi.Input[_builtins.str] set_user_root_attributes: Determines whether to sync user profile attributes (`name`, `given_name`, `family_name`, `nickname`, `picture`) at each login or only on the first login. Options include: `on_each_login`, `on_first_login`, `never_on_login`. Default value: `on_each_login`.
         :param pulumi.Input[_builtins.str] should_trust_email_verified_connection: Choose how Auth0 sets the email_verified field in the user profile.
         :param pulumi.Input[_builtins.str] sign_in_endpoint: SAML single login URL for the connection.
         :param pulumi.Input[_builtins.str] sign_out_endpoint: SAML single logout URL for the connection.
         :param pulumi.Input[_builtins.bool] sign_saml_request: When enabled, the SAML authentication request will be signed.
         :param pulumi.Input[_builtins.str] signature_algorithm: Sign Request Algorithm.
+        :param pulumi.Input[_builtins.str] signature_method: Signature method used to sign the request
         :param pulumi.Input[_builtins.str] signing_cert: X.509 signing certificate (encoded in PEM or CER) you retrieved from the IdP, Base64-encoded.
         :param pulumi.Input['ConnectionOptionsSigningKeyArgs'] signing_key: The key used to sign requests in the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
         :param pulumi.Input[_builtins.int] strategy_version: Version 1 is deprecated, use version 2.
@@ -7690,12 +7733,15 @@ class ConnectionOptionsArgs:
         :param pulumi.Input[_builtins.bool] use_cert_auth: Indicates whether to use cert auth or not.
         :param pulumi.Input[_builtins.bool] use_kerberos: Indicates whether to use Kerberos or not.
         :param pulumi.Input[_builtins.bool] use_wsfed: Whether to use WS-Fed.
+        :param pulumi.Input[_builtins.str] user_authorization_url: URL used to obtain user authorization.
         :param pulumi.Input[_builtins.str] user_id_attribute: Attribute in the token that will be mapped to the user_id property in Auth0.
         :param pulumi.Input[_builtins.str] userinfo_endpoint: User info endpoint.
         :param pulumi.Input['ConnectionOptionsValidationArgs'] validation: Validation of the minimum and maximum values allowed for a user to have as username.
         :param pulumi.Input[_builtins.bool] waad_common_endpoint: Indicates whether to use the common endpoint rather than the default endpoint. Typically enabled if you're using this for a multi-tenant application in Azure AD.
         :param pulumi.Input[_builtins.str] waad_protocol: Protocol to use.
         """
+        if access_token_url is not None:
+            pulumi.set(__self__, "access_token_url", access_token_url)
         if adfs_server is not None:
             pulumi.set(__self__, "adfs_server", adfs_server)
         if allowed_audiences is not None:
@@ -7726,6 +7772,10 @@ class ConnectionOptionsArgs:
             pulumi.set(__self__, "configuration", configuration)
         if connection_settings is not None:
             pulumi.set(__self__, "connection_settings", connection_settings)
+        if consumer_key is not None:
+            pulumi.set(__self__, "consumer_key", consumer_key)
+        if consumer_secret is not None:
+            pulumi.set(__self__, "consumer_secret", consumer_secret)
         if custom_headers is not None:
             pulumi.set(__self__, "custom_headers", custom_headers)
         if custom_scripts is not None:
@@ -7830,12 +7880,16 @@ class ConnectionOptionsArgs:
             pulumi.set(__self__, "realm_fallback", realm_fallback)
         if request_template is not None:
             pulumi.set(__self__, "request_template", request_template)
+        if request_token_url is not None:
+            pulumi.set(__self__, "request_token_url", request_token_url)
         if requires_username is not None:
             pulumi.set(__self__, "requires_username", requires_username)
         if scopes is not None:
             pulumi.set(__self__, "scopes", scopes)
         if scripts is not None:
             pulumi.set(__self__, "scripts", scripts)
+        if session_key is not None:
+            pulumi.set(__self__, "session_key", session_key)
         if set_user_root_attributes is not None:
             pulumi.set(__self__, "set_user_root_attributes", set_user_root_attributes)
         if should_trust_email_verified_connection is not None:
@@ -7848,6 +7902,8 @@ class ConnectionOptionsArgs:
             pulumi.set(__self__, "sign_saml_request", sign_saml_request)
         if signature_algorithm is not None:
             pulumi.set(__self__, "signature_algorithm", signature_algorithm)
+        if signature_method is not None:
+            pulumi.set(__self__, "signature_method", signature_method)
         if signing_cert is not None:
             pulumi.set(__self__, "signing_cert", signing_cert)
         if signing_key is not None:
@@ -7886,6 +7942,8 @@ class ConnectionOptionsArgs:
             pulumi.set(__self__, "use_kerberos", use_kerberos)
         if use_wsfed is not None:
             pulumi.set(__self__, "use_wsfed", use_wsfed)
+        if user_authorization_url is not None:
+            pulumi.set(__self__, "user_authorization_url", user_authorization_url)
         if user_id_attribute is not None:
             pulumi.set(__self__, "user_id_attribute", user_id_attribute)
         if userinfo_endpoint is not None:
@@ -7896,6 +7954,18 @@ class ConnectionOptionsArgs:
             pulumi.set(__self__, "waad_common_endpoint", waad_common_endpoint)
         if waad_protocol is not None:
             pulumi.set(__self__, "waad_protocol", waad_protocol)
+
+    @_builtins.property
+    @pulumi.getter(name="accessTokenUrl")
+    def access_token_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        URL used to exchange a user-authorized request token for an access token.
+        """
+        return pulumi.get(self, "access_token_url")
+
+    @access_token_url.setter
+    def access_token_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "access_token_url", value)
 
     @_builtins.property
     @pulumi.getter(name="adfsServer")
@@ -8076,6 +8146,30 @@ class ConnectionOptionsArgs:
     @connection_settings.setter
     def connection_settings(self, value: Optional[pulumi.Input['ConnectionOptionsConnectionSettingsArgs']]):
         pulumi.set(self, "connection_settings", value)
+
+    @_builtins.property
+    @pulumi.getter(name="consumerKey")
+    def consumer_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Identifies the client to the service provider
+        """
+        return pulumi.get(self, "consumer_key")
+
+    @consumer_key.setter
+    def consumer_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "consumer_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="consumerSecret")
+    def consumer_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Secret used to establish ownership of the consumer key.
+        """
+        return pulumi.get(self, "consumer_secret")
+
+    @consumer_secret.setter
+    def consumer_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "consumer_secret", value)
 
     @_builtins.property
     @pulumi.getter(name="customHeaders")
@@ -8702,6 +8796,18 @@ class ConnectionOptionsArgs:
         pulumi.set(self, "request_template", value)
 
     @_builtins.property
+    @pulumi.getter(name="requestTokenUrl")
+    def request_token_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        URL used to obtain an unauthorized request token.
+        """
+        return pulumi.get(self, "request_token_url")
+
+    @request_token_url.setter
+    def request_token_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "request_token_url", value)
+
+    @_builtins.property
     @pulumi.getter(name="requiresUsername")
     def requires_username(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -8736,6 +8842,18 @@ class ConnectionOptionsArgs:
     @scripts.setter
     def scripts(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "scripts", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sessionKey")
+    def session_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Session Key for storing the request token.
+        """
+        return pulumi.get(self, "session_key")
+
+    @session_key.setter
+    def session_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "session_key", value)
 
     @_builtins.property
     @pulumi.getter(name="setUserRootAttributes")
@@ -8808,6 +8926,18 @@ class ConnectionOptionsArgs:
     @signature_algorithm.setter
     def signature_algorithm(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "signature_algorithm", value)
+
+    @_builtins.property
+    @pulumi.getter(name="signatureMethod")
+    def signature_method(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Signature method used to sign the request
+        """
+        return pulumi.get(self, "signature_method")
+
+    @signature_method.setter
+    def signature_method(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "signature_method", value)
 
     @_builtins.property
     @pulumi.getter(name="signingCert")
@@ -9036,6 +9166,18 @@ class ConnectionOptionsArgs:
     @use_wsfed.setter
     def use_wsfed(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "use_wsfed", value)
+
+    @_builtins.property
+    @pulumi.getter(name="userAuthorizationUrl")
+    def user_authorization_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        URL used to obtain user authorization.
+        """
+        return pulumi.get(self, "user_authorization_url")
+
+    @user_authorization_url.setter
+    def user_authorization_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "user_authorization_url", value)
 
     @_builtins.property
     @pulumi.getter(name="userIdAttribute")
@@ -14173,6 +14315,116 @@ class OrganizationConnectionsEnabledConnectionArgs:
     @show_as_button.setter
     def show_as_button(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "show_as_button", value)
+
+
+if not MYPY:
+    class OrganizationDiscoveryDomainsDiscoveryDomainArgsDict(TypedDict):
+        domain: pulumi.Input[_builtins.str]
+        """
+        The domain name for organization discovery.
+        """
+        status: pulumi.Input[_builtins.str]
+        """
+        Verification status. Must be either 'pending' or 'verified'.
+        """
+        id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The ID of the discovery domain.
+        """
+        verification_host: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The full domain where the TXT record should be added.
+        """
+        verification_txt: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        TXT record value for domain verification.
+        """
+elif False:
+    OrganizationDiscoveryDomainsDiscoveryDomainArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OrganizationDiscoveryDomainsDiscoveryDomainArgs:
+    def __init__(__self__, *,
+                 domain: pulumi.Input[_builtins.str],
+                 status: pulumi.Input[_builtins.str],
+                 id: Optional[pulumi.Input[_builtins.str]] = None,
+                 verification_host: Optional[pulumi.Input[_builtins.str]] = None,
+                 verification_txt: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] domain: The domain name for organization discovery.
+        :param pulumi.Input[_builtins.str] status: Verification status. Must be either 'pending' or 'verified'.
+        :param pulumi.Input[_builtins.str] id: The ID of the discovery domain.
+        :param pulumi.Input[_builtins.str] verification_host: The full domain where the TXT record should be added.
+        :param pulumi.Input[_builtins.str] verification_txt: TXT record value for domain verification.
+        """
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "status", status)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if verification_host is not None:
+            pulumi.set(__self__, "verification_host", verification_host)
+        if verification_txt is not None:
+            pulumi.set(__self__, "verification_txt", verification_txt)
+
+    @_builtins.property
+    @pulumi.getter
+    def domain(self) -> pulumi.Input[_builtins.str]:
+        """
+        The domain name for organization discovery.
+        """
+        return pulumi.get(self, "domain")
+
+    @domain.setter
+    def domain(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "domain", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> pulumi.Input[_builtins.str]:
+        """
+        Verification status. Must be either 'pending' or 'verified'.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "status", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of the discovery domain.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="verificationHost")
+    def verification_host(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The full domain where the TXT record should be added.
+        """
+        return pulumi.get(self, "verification_host")
+
+    @verification_host.setter
+    def verification_host(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "verification_host", value)
+
+    @_builtins.property
+    @pulumi.getter(name="verificationTxt")
+    def verification_txt(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        TXT record value for domain verification.
+        """
+        return pulumi.get(self, "verification_txt")
+
+    @verification_txt.setter
+    def verification_txt(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "verification_txt", value)
 
 
 if not MYPY:

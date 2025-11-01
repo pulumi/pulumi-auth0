@@ -135,6 +135,11 @@ export const getClient: typeof import("./getClient").getClient = null as any;
 export const getClientOutput: typeof import("./getClient").getClientOutput = null as any;
 utilities.lazyLoad(exports, ["getClient","getClientOutput"], () => require("./getClient"));
 
+export { GetClientGrantsArgs, GetClientGrantsResult, GetClientGrantsOutputArgs } from "./getClientGrants";
+export const getClientGrants: typeof import("./getClientGrants").getClientGrants = null as any;
+export const getClientGrantsOutput: typeof import("./getClientGrants").getClientGrantsOutput = null as any;
+utilities.lazyLoad(exports, ["getClientGrants","getClientGrantsOutput"], () => require("./getClientGrants"));
+
 export { GetClientsArgs, GetClientsResult, GetClientsOutputArgs } from "./getClients";
 export const getClients: typeof import("./getClients").getClients = null as any;
 export const getClientsOutput: typeof import("./getClients").getClientsOutput = null as any;
@@ -294,6 +299,16 @@ export { OrganizationConnectionsArgs, OrganizationConnectionsState } from "./org
 export type OrganizationConnections = import("./organizationConnections").OrganizationConnections;
 export const OrganizationConnections: typeof import("./organizationConnections").OrganizationConnections = null as any;
 utilities.lazyLoad(exports, ["OrganizationConnections"], () => require("./organizationConnections"));
+
+export { OrganizationDiscoveryDomainArgs, OrganizationDiscoveryDomainState } from "./organizationDiscoveryDomain";
+export type OrganizationDiscoveryDomain = import("./organizationDiscoveryDomain").OrganizationDiscoveryDomain;
+export const OrganizationDiscoveryDomain: typeof import("./organizationDiscoveryDomain").OrganizationDiscoveryDomain = null as any;
+utilities.lazyLoad(exports, ["OrganizationDiscoveryDomain"], () => require("./organizationDiscoveryDomain"));
+
+export { OrganizationDiscoveryDomainsArgs, OrganizationDiscoveryDomainsState } from "./organizationDiscoveryDomains";
+export type OrganizationDiscoveryDomains = import("./organizationDiscoveryDomains").OrganizationDiscoveryDomains;
+export const OrganizationDiscoveryDomains: typeof import("./organizationDiscoveryDomains").OrganizationDiscoveryDomains = null as any;
+utilities.lazyLoad(exports, ["OrganizationDiscoveryDomains"], () => require("./organizationDiscoveryDomains"));
 
 export { OrganizationMemberArgs, OrganizationMemberState } from "./organizationMember";
 export type OrganizationMember = import("./organizationMember").OrganizationMember;
@@ -540,6 +555,10 @@ const _module = {
                 return new OrganizationConnection(name, <any>undefined, { urn })
             case "auth0:index/organizationConnections:OrganizationConnections":
                 return new OrganizationConnections(name, <any>undefined, { urn })
+            case "auth0:index/organizationDiscoveryDomain:OrganizationDiscoveryDomain":
+                return new OrganizationDiscoveryDomain(name, <any>undefined, { urn })
+            case "auth0:index/organizationDiscoveryDomains:OrganizationDiscoveryDomains":
+                return new OrganizationDiscoveryDomains(name, <any>undefined, { urn })
             case "auth0:index/organizationMember:OrganizationMember":
                 return new OrganizationMember(name, <any>undefined, { urn })
             case "auth0:index/organizationMemberRole:OrganizationMemberRole":
@@ -642,6 +661,8 @@ pulumi.runtime.registerResourceModule("auth0", "index/organization", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/organizationClientGrant", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/organizationConnection", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/organizationConnections", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/organizationDiscoveryDomain", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/organizationDiscoveryDomains", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/organizationMember", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/organizationMemberRole", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/organizationMemberRoles", _module)

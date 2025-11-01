@@ -13,6 +13,12 @@ namespace Pulumi.Auth0.Inputs
     public sealed class ConnectionOptionsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// URL used to exchange a user-authorized request token for an access token.
+        /// </summary>
+        [Input("accessTokenUrl")]
+        public Input<string>? AccessTokenUrl { get; set; }
+
+        /// <summary>
         /// ADFS URL where to fetch the metadata source.
         /// </summary>
         [Input("adfsServer")]
@@ -145,6 +151,18 @@ namespace Pulumi.Auth0.Inputs
         /// </summary>
         [Input("connectionSettings")]
         public Input<Inputs.ConnectionOptionsConnectionSettingsGetArgs>? ConnectionSettings { get; set; }
+
+        /// <summary>
+        /// Identifies the client to the service provider
+        /// </summary>
+        [Input("consumerKey")]
+        public Input<string>? ConsumerKey { get; set; }
+
+        /// <summary>
+        /// Secret used to establish ownership of the consumer key.
+        /// </summary>
+        [Input("consumerSecret")]
+        public Input<string>? ConsumerSecret { get; set; }
 
         [Input("customHeaders")]
         private InputList<Inputs.ConnectionOptionsCustomHeaderGetArgs>? _customHeaders;
@@ -501,6 +519,12 @@ namespace Pulumi.Auth0.Inputs
         public Input<string>? RequestTemplate { get; set; }
 
         /// <summary>
+        /// URL used to obtain an unauthorized request token.
+        /// </summary>
+        [Input("requestTokenUrl")]
+        public Input<string>? RequestTokenUrl { get; set; }
+
+        /// <summary>
         /// Indicates whether the user is required to provide a username in addition to an email address.
         /// </summary>
         [Input("requiresUsername")]
@@ -529,6 +553,12 @@ namespace Pulumi.Auth0.Inputs
             get => _scripts ?? (_scripts = new InputMap<string>());
             set => _scripts = value;
         }
+
+        /// <summary>
+        /// Session Key for storing the request token.
+        /// </summary>
+        [Input("sessionKey")]
+        public Input<string>? SessionKey { get; set; }
 
         /// <summary>
         /// Determines whether to sync user profile attributes (`Name`, `GivenName`, `FamilyName`, `Nickname`, `Picture`) at each login or only on the first login. Options include: `OnEachLogin`, `OnFirstLogin`, `NeverOnLogin`. Default value: `OnEachLogin`.
@@ -565,6 +595,12 @@ namespace Pulumi.Auth0.Inputs
         /// </summary>
         [Input("signatureAlgorithm")]
         public Input<string>? SignatureAlgorithm { get; set; }
+
+        /// <summary>
+        /// Signature method used to sign the request
+        /// </summary>
+        [Input("signatureMethod")]
+        public Input<string>? SignatureMethod { get; set; }
 
         /// <summary>
         /// X.509 signing certificate (encoded in PEM or CER) you retrieved from the IdP, Base64-encoded.
@@ -689,6 +725,12 @@ namespace Pulumi.Auth0.Inputs
         /// </summary>
         [Input("useWsfed")]
         public Input<bool>? UseWsfed { get; set; }
+
+        /// <summary>
+        /// URL used to obtain user authorization.
+        /// </summary>
+        [Input("userAuthorizationUrl")]
+        public Input<string>? UserAuthorizationUrl { get; set; }
 
         /// <summary>
         /// Attribute in the token that will be mapped to the UserId property in Auth0.

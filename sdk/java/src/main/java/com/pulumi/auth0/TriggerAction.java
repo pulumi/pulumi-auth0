@@ -53,8 +53,8 @@ import javax.annotation.Nullable;
  *             .name("Alert after login")
  *             .code("""
  * exports.onContinuePostLogin = async (event, api) => {
- *   console.log("foo");
- * };"
+ *   console.log(\"foo\");
+ * };\"
  *             """)
  *             .deploy(true)
  *             .supportedTriggers(ActionSupportedTriggersArgs.builder()

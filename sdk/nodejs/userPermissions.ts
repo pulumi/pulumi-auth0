@@ -13,6 +13,8 @@ import * as utilities from "./utilities";
  * appends a permissions to a user. To avoid potential issues, it is recommended not to use this resource in conjunction
  * with the `auth0.UserPermission` resource when managing permissions for the same user id.
  *
+ * ## Example Usage
+ *
  * ## Import
  *
  * This resource can be imported by specifying the user ID

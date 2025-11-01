@@ -164,6 +164,7 @@ __all__ = [
     'NetworkAclRuleNotMatch',
     'OrganizationBranding',
     'OrganizationConnectionsEnabledConnection',
+    'OrganizationDiscoveryDomainsDiscoveryDomain',
     'OrganizationTokenQuota',
     'OrganizationTokenQuotaClientCredentials',
     'PagesChangePassword',
@@ -270,6 +271,7 @@ __all__ = [
     'GetClientClientAuthenticationMethodTlsClientAuthResult',
     'GetClientClientAuthenticationMethodTlsClientAuthCredentialResult',
     'GetClientDefaultOrganizationResult',
+    'GetClientGrantsClientGrantResult',
     'GetClientJwtConfigurationResult',
     'GetClientMobileResult',
     'GetClientMobileAndroidResult',
@@ -5322,7 +5324,9 @@ class ConnectionOptions(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "adfsServer":
+        if key == "accessTokenUrl":
+            suggest = "access_token_url"
+        elif key == "adfsServer":
             suggest = "adfs_server"
         elif key == "allowedAudiences":
             suggest = "allowed_audiences"
@@ -5348,6 +5352,10 @@ class ConnectionOptions(dict):
             suggest = "community_base_url"
         elif key == "connectionSettings":
             suggest = "connection_settings"
+        elif key == "consumerKey":
+            suggest = "consumer_key"
+        elif key == "consumerSecret":
+            suggest = "consumer_secret"
         elif key == "customHeaders":
             suggest = "custom_headers"
         elif key == "customScripts":
@@ -5436,8 +5444,12 @@ class ConnectionOptions(dict):
             suggest = "realm_fallback"
         elif key == "requestTemplate":
             suggest = "request_template"
+        elif key == "requestTokenUrl":
+            suggest = "request_token_url"
         elif key == "requiresUsername":
             suggest = "requires_username"
+        elif key == "sessionKey":
+            suggest = "session_key"
         elif key == "setUserRootAttributes":
             suggest = "set_user_root_attributes"
         elif key == "shouldTrustEmailVerifiedConnection":
@@ -5450,6 +5462,8 @@ class ConnectionOptions(dict):
             suggest = "sign_saml_request"
         elif key == "signatureAlgorithm":
             suggest = "signature_algorithm"
+        elif key == "signatureMethod":
+            suggest = "signature_method"
         elif key == "signingCert":
             suggest = "signing_cert"
         elif key == "signingKey":
@@ -5478,6 +5492,8 @@ class ConnectionOptions(dict):
             suggest = "use_kerberos"
         elif key == "useWsfed":
             suggest = "use_wsfed"
+        elif key == "userAuthorizationUrl":
+            suggest = "user_authorization_url"
         elif key == "userIdAttribute":
             suggest = "user_id_attribute"
         elif key == "userinfoEndpoint":
@@ -5499,6 +5515,7 @@ class ConnectionOptions(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 access_token_url: Optional[_builtins.str] = None,
                  adfs_server: Optional[_builtins.str] = None,
                  allowed_audiences: Optional[Sequence[_builtins.str]] = None,
                  api_enable_users: Optional[_builtins.bool] = None,
@@ -5514,6 +5531,8 @@ class ConnectionOptions(dict):
                  community_base_url: Optional[_builtins.str] = None,
                  configuration: Optional[Mapping[str, _builtins.str]] = None,
                  connection_settings: Optional['outputs.ConnectionOptionsConnectionSettings'] = None,
+                 consumer_key: Optional[_builtins.str] = None,
+                 consumer_secret: Optional[_builtins.str] = None,
                  custom_headers: Optional[Sequence['outputs.ConnectionOptionsCustomHeader']] = None,
                  custom_scripts: Optional[Mapping[str, _builtins.str]] = None,
                  debug: Optional[_builtins.bool] = None,
@@ -5566,15 +5585,18 @@ class ConnectionOptions(dict):
                  provider: Optional[_builtins.str] = None,
                  realm_fallback: Optional[_builtins.bool] = None,
                  request_template: Optional[_builtins.str] = None,
+                 request_token_url: Optional[_builtins.str] = None,
                  requires_username: Optional[_builtins.bool] = None,
                  scopes: Optional[Sequence[_builtins.str]] = None,
                  scripts: Optional[Mapping[str, _builtins.str]] = None,
+                 session_key: Optional[_builtins.str] = None,
                  set_user_root_attributes: Optional[_builtins.str] = None,
                  should_trust_email_verified_connection: Optional[_builtins.str] = None,
                  sign_in_endpoint: Optional[_builtins.str] = None,
                  sign_out_endpoint: Optional[_builtins.str] = None,
                  sign_saml_request: Optional[_builtins.bool] = None,
                  signature_algorithm: Optional[_builtins.str] = None,
+                 signature_method: Optional[_builtins.str] = None,
                  signing_cert: Optional[_builtins.str] = None,
                  signing_key: Optional['outputs.ConnectionOptionsSigningKey'] = None,
                  strategy_version: Optional[_builtins.int] = None,
@@ -5594,12 +5616,14 @@ class ConnectionOptions(dict):
                  use_cert_auth: Optional[_builtins.bool] = None,
                  use_kerberos: Optional[_builtins.bool] = None,
                  use_wsfed: Optional[_builtins.bool] = None,
+                 user_authorization_url: Optional[_builtins.str] = None,
                  user_id_attribute: Optional[_builtins.str] = None,
                  userinfo_endpoint: Optional[_builtins.str] = None,
                  validation: Optional['outputs.ConnectionOptionsValidation'] = None,
                  waad_common_endpoint: Optional[_builtins.bool] = None,
                  waad_protocol: Optional[_builtins.str] = None):
         """
+        :param _builtins.str access_token_url: URL used to exchange a user-authorized request token for an access token.
         :param _builtins.str adfs_server: ADFS URL where to fetch the metadata source.
         :param Sequence[_builtins.str] allowed_audiences: List of allowed audiences.
         :param _builtins.bool api_enable_users: Enable API Access to users.
@@ -5615,6 +5639,8 @@ class ConnectionOptions(dict):
         :param _builtins.str community_base_url: Salesforce community base URL.
         :param Mapping[str, _builtins.str] configuration: A case-sensitive map of key value pairs used as configuration variables for the `custom_script`.
         :param 'ConnectionOptionsConnectionSettingsArgs' connection_settings: Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
+        :param _builtins.str consumer_key: Identifies the client to the service provider
+        :param _builtins.str consumer_secret: Secret used to establish ownership of the consumer key.
         :param Sequence['ConnectionOptionsCustomHeaderArgs'] custom_headers: Configure extra headers to the Token endpoint of an OAuth 2.0 provider
         :param Mapping[str, _builtins.str] custom_scripts: A map of scripts used to integrate with a custom database.
         :param _builtins.bool debug: When enabled, additional debug information will be generated.
@@ -5667,15 +5693,18 @@ class ConnectionOptions(dict):
         :param _builtins.str provider: Defines the custom `sms_gateway` provider.
         :param _builtins.bool realm_fallback: Allows configuration if connections*realm*fallback flag is enabled for the tenant
         :param _builtins.str request_template: Template that formats the SAML request.
+        :param _builtins.str request_token_url: URL used to obtain an unauthorized request token.
         :param _builtins.bool requires_username: Indicates whether the user is required to provide a username in addition to an email address.
         :param Sequence[_builtins.str] scopes: Permissions to grant to the connection. Within the Auth0 dashboard these appear under the "Attributes" and "Extended Attributes" sections. Some examples: `basic_profile`, `ext_profile`, `ext_nested_groups`, etc.
         :param Mapping[str, _builtins.str] scripts: A map of scripts used for an OAuth connection. Only accepts a `fetchUserProfile` script.
+        :param _builtins.str session_key: Session Key for storing the request token.
         :param _builtins.str set_user_root_attributes: Determines whether to sync user profile attributes (`name`, `given_name`, `family_name`, `nickname`, `picture`) at each login or only on the first login. Options include: `on_each_login`, `on_first_login`, `never_on_login`. Default value: `on_each_login`.
         :param _builtins.str should_trust_email_verified_connection: Choose how Auth0 sets the email_verified field in the user profile.
         :param _builtins.str sign_in_endpoint: SAML single login URL for the connection.
         :param _builtins.str sign_out_endpoint: SAML single logout URL for the connection.
         :param _builtins.bool sign_saml_request: When enabled, the SAML authentication request will be signed.
         :param _builtins.str signature_algorithm: Sign Request Algorithm.
+        :param _builtins.str signature_method: Signature method used to sign the request
         :param _builtins.str signing_cert: X.509 signing certificate (encoded in PEM or CER) you retrieved from the IdP, Base64-encoded.
         :param 'ConnectionOptionsSigningKeyArgs' signing_key: The key used to sign requests in the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
         :param _builtins.int strategy_version: Version 1 is deprecated, use version 2.
@@ -5695,12 +5724,15 @@ class ConnectionOptions(dict):
         :param _builtins.bool use_cert_auth: Indicates whether to use cert auth or not.
         :param _builtins.bool use_kerberos: Indicates whether to use Kerberos or not.
         :param _builtins.bool use_wsfed: Whether to use WS-Fed.
+        :param _builtins.str user_authorization_url: URL used to obtain user authorization.
         :param _builtins.str user_id_attribute: Attribute in the token that will be mapped to the user_id property in Auth0.
         :param _builtins.str userinfo_endpoint: User info endpoint.
         :param 'ConnectionOptionsValidationArgs' validation: Validation of the minimum and maximum values allowed for a user to have as username.
         :param _builtins.bool waad_common_endpoint: Indicates whether to use the common endpoint rather than the default endpoint. Typically enabled if you're using this for a multi-tenant application in Azure AD.
         :param _builtins.str waad_protocol: Protocol to use.
         """
+        if access_token_url is not None:
+            pulumi.set(__self__, "access_token_url", access_token_url)
         if adfs_server is not None:
             pulumi.set(__self__, "adfs_server", adfs_server)
         if allowed_audiences is not None:
@@ -5731,6 +5763,10 @@ class ConnectionOptions(dict):
             pulumi.set(__self__, "configuration", configuration)
         if connection_settings is not None:
             pulumi.set(__self__, "connection_settings", connection_settings)
+        if consumer_key is not None:
+            pulumi.set(__self__, "consumer_key", consumer_key)
+        if consumer_secret is not None:
+            pulumi.set(__self__, "consumer_secret", consumer_secret)
         if custom_headers is not None:
             pulumi.set(__self__, "custom_headers", custom_headers)
         if custom_scripts is not None:
@@ -5835,12 +5871,16 @@ class ConnectionOptions(dict):
             pulumi.set(__self__, "realm_fallback", realm_fallback)
         if request_template is not None:
             pulumi.set(__self__, "request_template", request_template)
+        if request_token_url is not None:
+            pulumi.set(__self__, "request_token_url", request_token_url)
         if requires_username is not None:
             pulumi.set(__self__, "requires_username", requires_username)
         if scopes is not None:
             pulumi.set(__self__, "scopes", scopes)
         if scripts is not None:
             pulumi.set(__self__, "scripts", scripts)
+        if session_key is not None:
+            pulumi.set(__self__, "session_key", session_key)
         if set_user_root_attributes is not None:
             pulumi.set(__self__, "set_user_root_attributes", set_user_root_attributes)
         if should_trust_email_verified_connection is not None:
@@ -5853,6 +5893,8 @@ class ConnectionOptions(dict):
             pulumi.set(__self__, "sign_saml_request", sign_saml_request)
         if signature_algorithm is not None:
             pulumi.set(__self__, "signature_algorithm", signature_algorithm)
+        if signature_method is not None:
+            pulumi.set(__self__, "signature_method", signature_method)
         if signing_cert is not None:
             pulumi.set(__self__, "signing_cert", signing_cert)
         if signing_key is not None:
@@ -5891,6 +5933,8 @@ class ConnectionOptions(dict):
             pulumi.set(__self__, "use_kerberos", use_kerberos)
         if use_wsfed is not None:
             pulumi.set(__self__, "use_wsfed", use_wsfed)
+        if user_authorization_url is not None:
+            pulumi.set(__self__, "user_authorization_url", user_authorization_url)
         if user_id_attribute is not None:
             pulumi.set(__self__, "user_id_attribute", user_id_attribute)
         if userinfo_endpoint is not None:
@@ -5901,6 +5945,14 @@ class ConnectionOptions(dict):
             pulumi.set(__self__, "waad_common_endpoint", waad_common_endpoint)
         if waad_protocol is not None:
             pulumi.set(__self__, "waad_protocol", waad_protocol)
+
+    @_builtins.property
+    @pulumi.getter(name="accessTokenUrl")
+    def access_token_url(self) -> Optional[_builtins.str]:
+        """
+        URL used to exchange a user-authorized request token for an access token.
+        """
+        return pulumi.get(self, "access_token_url")
 
     @_builtins.property
     @pulumi.getter(name="adfsServer")
@@ -6021,6 +6073,22 @@ class ConnectionOptions(dict):
         Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
         """
         return pulumi.get(self, "connection_settings")
+
+    @_builtins.property
+    @pulumi.getter(name="consumerKey")
+    def consumer_key(self) -> Optional[_builtins.str]:
+        """
+        Identifies the client to the service provider
+        """
+        return pulumi.get(self, "consumer_key")
+
+    @_builtins.property
+    @pulumi.getter(name="consumerSecret")
+    def consumer_secret(self) -> Optional[_builtins.str]:
+        """
+        Secret used to establish ownership of the consumer key.
+        """
+        return pulumi.get(self, "consumer_secret")
 
     @_builtins.property
     @pulumi.getter(name="customHeaders")
@@ -6439,6 +6507,14 @@ class ConnectionOptions(dict):
         return pulumi.get(self, "request_template")
 
     @_builtins.property
+    @pulumi.getter(name="requestTokenUrl")
+    def request_token_url(self) -> Optional[_builtins.str]:
+        """
+        URL used to obtain an unauthorized request token.
+        """
+        return pulumi.get(self, "request_token_url")
+
+    @_builtins.property
     @pulumi.getter(name="requiresUsername")
     def requires_username(self) -> Optional[_builtins.bool]:
         """
@@ -6461,6 +6537,14 @@ class ConnectionOptions(dict):
         A map of scripts used for an OAuth connection. Only accepts a `fetchUserProfile` script.
         """
         return pulumi.get(self, "scripts")
+
+    @_builtins.property
+    @pulumi.getter(name="sessionKey")
+    def session_key(self) -> Optional[_builtins.str]:
+        """
+        Session Key for storing the request token.
+        """
+        return pulumi.get(self, "session_key")
 
     @_builtins.property
     @pulumi.getter(name="setUserRootAttributes")
@@ -6509,6 +6593,14 @@ class ConnectionOptions(dict):
         Sign Request Algorithm.
         """
         return pulumi.get(self, "signature_algorithm")
+
+    @_builtins.property
+    @pulumi.getter(name="signatureMethod")
+    def signature_method(self) -> Optional[_builtins.str]:
+        """
+        Signature method used to sign the request
+        """
+        return pulumi.get(self, "signature_method")
 
     @_builtins.property
     @pulumi.getter(name="signingCert")
@@ -6661,6 +6753,14 @@ class ConnectionOptions(dict):
         Whether to use WS-Fed.
         """
         return pulumi.get(self, "use_wsfed")
+
+    @_builtins.property
+    @pulumi.getter(name="userAuthorizationUrl")
+    def user_authorization_url(self) -> Optional[_builtins.str]:
+        """
+        URL used to obtain user authorization.
+        """
+        return pulumi.get(self, "user_authorization_url")
 
     @_builtins.property
     @pulumi.getter(name="userIdAttribute")
@@ -10578,6 +10678,90 @@ class OrganizationConnectionsEnabledConnection(dict):
         Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
         """
         return pulumi.get(self, "show_as_button")
+
+
+@pulumi.output_type
+class OrganizationDiscoveryDomainsDiscoveryDomain(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "verificationHost":
+            suggest = "verification_host"
+        elif key == "verificationTxt":
+            suggest = "verification_txt"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OrganizationDiscoveryDomainsDiscoveryDomain. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OrganizationDiscoveryDomainsDiscoveryDomain.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OrganizationDiscoveryDomainsDiscoveryDomain.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 domain: _builtins.str,
+                 status: _builtins.str,
+                 id: Optional[_builtins.str] = None,
+                 verification_host: Optional[_builtins.str] = None,
+                 verification_txt: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str domain: The domain name for organization discovery.
+        :param _builtins.str status: Verification status. Must be either 'pending' or 'verified'.
+        :param _builtins.str id: The ID of the discovery domain.
+        :param _builtins.str verification_host: The full domain where the TXT record should be added.
+        :param _builtins.str verification_txt: TXT record value for domain verification.
+        """
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "status", status)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if verification_host is not None:
+            pulumi.set(__self__, "verification_host", verification_host)
+        if verification_txt is not None:
+            pulumi.set(__self__, "verification_txt", verification_txt)
+
+    @_builtins.property
+    @pulumi.getter
+    def domain(self) -> _builtins.str:
+        """
+        The domain name for organization discovery.
+        """
+        return pulumi.get(self, "domain")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        Verification status. Must be either 'pending' or 'verified'.
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the discovery domain.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="verificationHost")
+    def verification_host(self) -> Optional[_builtins.str]:
+        """
+        The full domain where the TXT record should be added.
+        """
+        return pulumi.get(self, "verification_host")
+
+    @_builtins.property
+    @pulumi.getter(name="verificationTxt")
+    def verification_txt(self) -> Optional[_builtins.str]:
+        """
+        TXT record value for domain verification.
+        """
+        return pulumi.get(self, "verification_txt")
 
 
 @pulumi.output_type
@@ -16152,6 +16336,68 @@ class GetClientDefaultOrganizationResult(dict):
 
 
 @pulumi.output_type
+class GetClientGrantsClientGrantResult(dict):
+    def __init__(__self__, *,
+                 audience: _builtins.str,
+                 client_id: _builtins.str,
+                 id: _builtins.str,
+                 scopes: Sequence[_builtins.str],
+                 subject_type: _builtins.str):
+        """
+        :param _builtins.str audience: The audience of the client grant.
+        :param _builtins.str client_id: The client ID associated with the grant.
+        :param _builtins.str id: The ID of the client grant.
+        :param Sequence[_builtins.str] scopes: List of granted scopes.
+        :param _builtins.str subject_type: The subject type (usually 'client').
+        """
+        pulumi.set(__self__, "audience", audience)
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "scopes", scopes)
+        pulumi.set(__self__, "subject_type", subject_type)
+
+    @_builtins.property
+    @pulumi.getter
+    def audience(self) -> _builtins.str:
+        """
+        The audience of the client grant.
+        """
+        return pulumi.get(self, "audience")
+
+    @_builtins.property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> _builtins.str:
+        """
+        The client ID associated with the grant.
+        """
+        return pulumi.get(self, "client_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the client grant.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def scopes(self) -> Sequence[_builtins.str]:
+        """
+        List of granted scopes.
+        """
+        return pulumi.get(self, "scopes")
+
+    @_builtins.property
+    @pulumi.getter(name="subjectType")
+    def subject_type(self) -> _builtins.str:
+        """
+        The subject type (usually 'client').
+        """
+        return pulumi.get(self, "subject_type")
+
+
+@pulumi.output_type
 class GetClientJwtConfigurationResult(dict):
     def __init__(__self__, *,
                  alg: _builtins.str,
@@ -16797,9 +17043,10 @@ class GetClientsClientResult(dict):
                  is_first_party: _builtins.bool,
                  is_token_endpoint_ip_header_trusted: _builtins.bool,
                  oidc_logouts: Sequence['outputs.GetClientsClientOidcLogoutResult'],
+                 organization_discovery_methods: Sequence[_builtins.str],
                  resource_server_identifier: _builtins.str,
                  session_transfers: Sequence['outputs.GetClientsClientSessionTransferResult'],
-                 skip_non_verifiable_callback_uri_confirmation_prompt: _builtins.bool,
+                 skip_non_verifiable_callback_uri_confirmation_prompt: _builtins.str,
                  token_exchanges: Sequence['outputs.GetClientsClientTokenExchangeResult'],
                  token_quotas: Sequence['outputs.GetClientsClientTokenQuotaResult'],
                  web_origins: Sequence[_builtins.str],
@@ -16817,8 +17064,9 @@ class GetClientsClientResult(dict):
         :param _builtins.bool is_first_party: Indicates whether this client is a first-party client.Defaults to true from the API
         :param _builtins.bool is_token_endpoint_ip_header_trusted: Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `client_secret_post` or `client_secret_basic`. Setting this property when creating the resource, will default the authentication method to `client_secret_post`. To change the authentication method to `client_secret_basic` use the `ClientCredentials` resource.
         :param Sequence['GetClientsClientOidcLogoutArgs'] oidc_logouts: Configure OIDC logout for the Client
+        :param Sequence[_builtins.str] organization_discovery_methods: Methods for discovering organizations during the pre_login_prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organization_name` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organization_require_behavior` is set to `pre_login_prompt`.
         :param _builtins.str resource_server_identifier: The identifier of a resource server that client is associated withThis property can be sent only when app_type=resource_server.This property can not be changed, once the client is created.
-        :param _builtins.bool skip_non_verifiable_callback_uri_confirmation_prompt: Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+        :param _builtins.str skip_non_verifiable_callback_uri_confirmation_prompt: Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
         :param Sequence['GetClientsClientTokenExchangeArgs'] token_exchanges: Allows configuration for token exchange
         :param Sequence['GetClientsClientTokenQuotaArgs'] token_quotas: The token quota configuration.
         :param Sequence[_builtins.str] web_origins: URLs that represent valid web origins for use with web message response mode.
@@ -16837,6 +17085,7 @@ class GetClientsClientResult(dict):
         pulumi.set(__self__, "is_first_party", is_first_party)
         pulumi.set(__self__, "is_token_endpoint_ip_header_trusted", is_token_endpoint_ip_header_trusted)
         pulumi.set(__self__, "oidc_logouts", oidc_logouts)
+        pulumi.set(__self__, "organization_discovery_methods", organization_discovery_methods)
         pulumi.set(__self__, "resource_server_identifier", resource_server_identifier)
         pulumi.set(__self__, "session_transfers", session_transfers)
         pulumi.set(__self__, "skip_non_verifiable_callback_uri_confirmation_prompt", skip_non_verifiable_callback_uri_confirmation_prompt)
@@ -16942,6 +17191,14 @@ class GetClientsClientResult(dict):
         return pulumi.get(self, "oidc_logouts")
 
     @_builtins.property
+    @pulumi.getter(name="organizationDiscoveryMethods")
+    def organization_discovery_methods(self) -> Sequence[_builtins.str]:
+        """
+        Methods for discovering organizations during the pre_login_prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organization_name` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organization_require_behavior` is set to `pre_login_prompt`.
+        """
+        return pulumi.get(self, "organization_discovery_methods")
+
+    @_builtins.property
     @pulumi.getter(name="resourceServerIdentifier")
     def resource_server_identifier(self) -> _builtins.str:
         """
@@ -16956,9 +17213,9 @@ class GetClientsClientResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="skipNonVerifiableCallbackUriConfirmationPrompt")
-    def skip_non_verifiable_callback_uri_confirmation_prompt(self) -> _builtins.bool:
+    def skip_non_verifiable_callback_uri_confirmation_prompt(self) -> _builtins.str:
         """
-        Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+        Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
         """
         return pulumi.get(self, "skip_non_verifiable_callback_uri_confirmation_prompt")
 
@@ -17390,6 +17647,7 @@ class GetConnectionKeysKeyResult(dict):
 @pulumi.output_type
 class GetConnectionOptionResult(dict):
     def __init__(__self__, *,
+                 access_token_url: _builtins.str,
                  adfs_server: _builtins.str,
                  allowed_audiences: Sequence[_builtins.str],
                  api_enable_users: _builtins.bool,
@@ -17405,6 +17663,8 @@ class GetConnectionOptionResult(dict):
                  community_base_url: _builtins.str,
                  configuration: Mapping[str, _builtins.str],
                  connection_settings: Sequence['outputs.GetConnectionOptionConnectionSettingResult'],
+                 consumer_key: _builtins.str,
+                 consumer_secret: _builtins.str,
                  custom_headers: Sequence['outputs.GetConnectionOptionCustomHeaderResult'],
                  custom_scripts: Mapping[str, _builtins.str],
                  debug: _builtins.bool,
@@ -17457,15 +17717,18 @@ class GetConnectionOptionResult(dict):
                  provider: _builtins.str,
                  realm_fallback: _builtins.bool,
                  request_template: _builtins.str,
+                 request_token_url: _builtins.str,
                  requires_username: _builtins.bool,
                  scopes: Sequence[_builtins.str],
                  scripts: Mapping[str, _builtins.str],
+                 session_key: _builtins.str,
                  set_user_root_attributes: _builtins.str,
                  should_trust_email_verified_connection: _builtins.str,
                  sign_in_endpoint: _builtins.str,
                  sign_out_endpoint: _builtins.str,
                  sign_saml_request: _builtins.bool,
                  signature_algorithm: _builtins.str,
+                 signature_method: _builtins.str,
                  signing_cert: _builtins.str,
                  signing_keys: Sequence['outputs.GetConnectionOptionSigningKeyResult'],
                  strategy_version: _builtins.int,
@@ -17485,12 +17748,14 @@ class GetConnectionOptionResult(dict):
                  use_cert_auth: _builtins.bool,
                  use_kerberos: _builtins.bool,
                  use_wsfed: _builtins.bool,
+                 user_authorization_url: _builtins.str,
                  user_id_attribute: _builtins.str,
                  userinfo_endpoint: _builtins.str,
                  validations: Sequence['outputs.GetConnectionOptionValidationResult'],
                  waad_common_endpoint: _builtins.bool,
                  waad_protocol: _builtins.str):
         """
+        :param _builtins.str access_token_url: URL used to exchange a user-authorized request token for an access token.
         :param _builtins.str adfs_server: ADFS URL where to fetch the metadata source.
         :param Sequence[_builtins.str] allowed_audiences: List of allowed audiences.
         :param _builtins.bool api_enable_users: Enable API Access to users.
@@ -17506,6 +17771,8 @@ class GetConnectionOptionResult(dict):
         :param _builtins.str community_base_url: Salesforce community base URL.
         :param Mapping[str, _builtins.str] configuration: A case-sensitive map of key value pairs used as configuration variables for the `custom_script`.
         :param Sequence['GetConnectionOptionConnectionSettingArgs'] connection_settings: Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
+        :param _builtins.str consumer_key: Identifies the client to the service provider
+        :param _builtins.str consumer_secret: Secret used to establish ownership of the consumer key.
         :param Sequence['GetConnectionOptionCustomHeaderArgs'] custom_headers: Configure extra headers to the Token endpoint of an OAuth 2.0 provider
         :param Mapping[str, _builtins.str] custom_scripts: A map of scripts used to integrate with a custom database.
         :param _builtins.bool debug: When enabled, additional debug information will be generated.
@@ -17558,15 +17825,18 @@ class GetConnectionOptionResult(dict):
         :param _builtins.str provider: Defines the custom `sms_gateway` provider.
         :param _builtins.bool realm_fallback: Allows configuration if connections_realm_fallback flag is enabled for the tenant
         :param _builtins.str request_template: Template that formats the SAML request.
+        :param _builtins.str request_token_url: URL used to obtain an unauthorized request token.
         :param _builtins.bool requires_username: Indicates whether the user is required to provide a username in addition to an email address.
         :param Sequence[_builtins.str] scopes: Permissions to grant to the connection. Within the Auth0 dashboard these appear under the "Attributes" and "Extended Attributes" sections. Some examples: `basic_profile`, `ext_profile`, `ext_nested_groups`, etc.
         :param Mapping[str, _builtins.str] scripts: A map of scripts used for an OAuth connection. Only accepts a `fetchUserProfile` script.
+        :param _builtins.str session_key: Session Key for storing the request token.
         :param _builtins.str set_user_root_attributes: Determines whether to sync user profile attributes (`name`, `given_name`, `family_name`, `nickname`, `picture`) at each login or only on the first login. Options include: `on_each_login`, `on_first_login`, `never_on_login`. Default value: `on_each_login`.
         :param _builtins.str should_trust_email_verified_connection: Choose how Auth0 sets the email_verified field in the user profile.
         :param _builtins.str sign_in_endpoint: SAML single login URL for the connection.
         :param _builtins.str sign_out_endpoint: SAML single logout URL for the connection.
         :param _builtins.bool sign_saml_request: When enabled, the SAML authentication request will be signed.
         :param _builtins.str signature_algorithm: Sign Request Algorithm.
+        :param _builtins.str signature_method: Signature method used to sign the request
         :param _builtins.str signing_cert: X.509 signing certificate (encoded in PEM or CER) you retrieved from the IdP, Base64-encoded.
         :param Sequence['GetConnectionOptionSigningKeyArgs'] signing_keys: The key used to sign requests in the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
         :param _builtins.int strategy_version: Version 1 is deprecated, use version 2.
@@ -17586,12 +17856,14 @@ class GetConnectionOptionResult(dict):
         :param _builtins.bool use_cert_auth: Indicates whether to use cert auth or not.
         :param _builtins.bool use_kerberos: Indicates whether to use Kerberos or not.
         :param _builtins.bool use_wsfed: Whether to use WS-Fed.
+        :param _builtins.str user_authorization_url: URL used to obtain user authorization.
         :param _builtins.str user_id_attribute: Attribute in the token that will be mapped to the user_id property in Auth0.
         :param _builtins.str userinfo_endpoint: User info endpoint.
         :param Sequence['GetConnectionOptionValidationArgs'] validations: Validation of the minimum and maximum values allowed for a user to have as username.
         :param _builtins.bool waad_common_endpoint: Indicates whether to use the common endpoint rather than the default endpoint. Typically enabled if you're using this for a multi-tenant application in Azure AD.
         :param _builtins.str waad_protocol: Protocol to use.
         """
+        pulumi.set(__self__, "access_token_url", access_token_url)
         pulumi.set(__self__, "adfs_server", adfs_server)
         pulumi.set(__self__, "allowed_audiences", allowed_audiences)
         pulumi.set(__self__, "api_enable_users", api_enable_users)
@@ -17607,6 +17879,8 @@ class GetConnectionOptionResult(dict):
         pulumi.set(__self__, "community_base_url", community_base_url)
         pulumi.set(__self__, "configuration", configuration)
         pulumi.set(__self__, "connection_settings", connection_settings)
+        pulumi.set(__self__, "consumer_key", consumer_key)
+        pulumi.set(__self__, "consumer_secret", consumer_secret)
         pulumi.set(__self__, "custom_headers", custom_headers)
         pulumi.set(__self__, "custom_scripts", custom_scripts)
         pulumi.set(__self__, "debug", debug)
@@ -17659,15 +17933,18 @@ class GetConnectionOptionResult(dict):
         pulumi.set(__self__, "provider", provider)
         pulumi.set(__self__, "realm_fallback", realm_fallback)
         pulumi.set(__self__, "request_template", request_template)
+        pulumi.set(__self__, "request_token_url", request_token_url)
         pulumi.set(__self__, "requires_username", requires_username)
         pulumi.set(__self__, "scopes", scopes)
         pulumi.set(__self__, "scripts", scripts)
+        pulumi.set(__self__, "session_key", session_key)
         pulumi.set(__self__, "set_user_root_attributes", set_user_root_attributes)
         pulumi.set(__self__, "should_trust_email_verified_connection", should_trust_email_verified_connection)
         pulumi.set(__self__, "sign_in_endpoint", sign_in_endpoint)
         pulumi.set(__self__, "sign_out_endpoint", sign_out_endpoint)
         pulumi.set(__self__, "sign_saml_request", sign_saml_request)
         pulumi.set(__self__, "signature_algorithm", signature_algorithm)
+        pulumi.set(__self__, "signature_method", signature_method)
         pulumi.set(__self__, "signing_cert", signing_cert)
         pulumi.set(__self__, "signing_keys", signing_keys)
         pulumi.set(__self__, "strategy_version", strategy_version)
@@ -17687,11 +17964,20 @@ class GetConnectionOptionResult(dict):
         pulumi.set(__self__, "use_cert_auth", use_cert_auth)
         pulumi.set(__self__, "use_kerberos", use_kerberos)
         pulumi.set(__self__, "use_wsfed", use_wsfed)
+        pulumi.set(__self__, "user_authorization_url", user_authorization_url)
         pulumi.set(__self__, "user_id_attribute", user_id_attribute)
         pulumi.set(__self__, "userinfo_endpoint", userinfo_endpoint)
         pulumi.set(__self__, "validations", validations)
         pulumi.set(__self__, "waad_common_endpoint", waad_common_endpoint)
         pulumi.set(__self__, "waad_protocol", waad_protocol)
+
+    @_builtins.property
+    @pulumi.getter(name="accessTokenUrl")
+    def access_token_url(self) -> _builtins.str:
+        """
+        URL used to exchange a user-authorized request token for an access token.
+        """
+        return pulumi.get(self, "access_token_url")
 
     @_builtins.property
     @pulumi.getter(name="adfsServer")
@@ -17812,6 +18098,22 @@ class GetConnectionOptionResult(dict):
         Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
         """
         return pulumi.get(self, "connection_settings")
+
+    @_builtins.property
+    @pulumi.getter(name="consumerKey")
+    def consumer_key(self) -> _builtins.str:
+        """
+        Identifies the client to the service provider
+        """
+        return pulumi.get(self, "consumer_key")
+
+    @_builtins.property
+    @pulumi.getter(name="consumerSecret")
+    def consumer_secret(self) -> _builtins.str:
+        """
+        Secret used to establish ownership of the consumer key.
+        """
+        return pulumi.get(self, "consumer_secret")
 
     @_builtins.property
     @pulumi.getter(name="customHeaders")
@@ -18230,6 +18532,14 @@ class GetConnectionOptionResult(dict):
         return pulumi.get(self, "request_template")
 
     @_builtins.property
+    @pulumi.getter(name="requestTokenUrl")
+    def request_token_url(self) -> _builtins.str:
+        """
+        URL used to obtain an unauthorized request token.
+        """
+        return pulumi.get(self, "request_token_url")
+
+    @_builtins.property
     @pulumi.getter(name="requiresUsername")
     def requires_username(self) -> _builtins.bool:
         """
@@ -18252,6 +18562,14 @@ class GetConnectionOptionResult(dict):
         A map of scripts used for an OAuth connection. Only accepts a `fetchUserProfile` script.
         """
         return pulumi.get(self, "scripts")
+
+    @_builtins.property
+    @pulumi.getter(name="sessionKey")
+    def session_key(self) -> _builtins.str:
+        """
+        Session Key for storing the request token.
+        """
+        return pulumi.get(self, "session_key")
 
     @_builtins.property
     @pulumi.getter(name="setUserRootAttributes")
@@ -18300,6 +18618,14 @@ class GetConnectionOptionResult(dict):
         Sign Request Algorithm.
         """
         return pulumi.get(self, "signature_algorithm")
+
+    @_builtins.property
+    @pulumi.getter(name="signatureMethod")
+    def signature_method(self) -> _builtins.str:
+        """
+        Signature method used to sign the request
+        """
+        return pulumi.get(self, "signature_method")
 
     @_builtins.property
     @pulumi.getter(name="signingCert")
@@ -18452,6 +18778,14 @@ class GetConnectionOptionResult(dict):
         Whether to use WS-Fed.
         """
         return pulumi.get(self, "use_wsfed")
+
+    @_builtins.property
+    @pulumi.getter(name="userAuthorizationUrl")
+    def user_authorization_url(self) -> _builtins.str:
+        """
+        URL used to obtain user authorization.
+        """
+        return pulumi.get(self, "user_authorization_url")
 
     @_builtins.property
     @pulumi.getter(name="userIdAttribute")

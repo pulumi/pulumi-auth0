@@ -32,6 +32,7 @@ from .get_attack_protection import *
 from .get_branding import *
 from .get_branding_theme import *
 from .get_client import *
+from .get_client_grants import *
 from .get_clients import *
 from .get_connection import *
 from .get_connection_keys import *
@@ -64,6 +65,8 @@ from .organization import *
 from .organization_client_grant import *
 from .organization_connection import *
 from .organization_connections import *
+from .organization_discovery_domain import *
+from .organization_discovery_domains import *
 from .organization_member import *
 from .organization_member_role import *
 from .organization_member_roles import *
@@ -342,6 +345,22 @@ _utilities.register(
   "fqn": "pulumi_auth0",
   "classes": {
    "auth0:index/organizationConnections:OrganizationConnections": "OrganizationConnections"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/organizationDiscoveryDomain",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/organizationDiscoveryDomain:OrganizationDiscoveryDomain": "OrganizationDiscoveryDomain"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/organizationDiscoveryDomains",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/organizationDiscoveryDomains:OrganizationDiscoveryDomains": "OrganizationDiscoveryDomains"
   }
  },
  {

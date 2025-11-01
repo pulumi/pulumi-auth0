@@ -32,6 +32,11 @@ import java.util.Objects;
 @CustomType
 public final class GetConnectionOption {
     /**
+     * @return URL used to exchange a user-authorized request token for an access token.
+     * 
+     */
+    private String accessTokenUrl;
+    /**
      * @return ADFS URL where to fetch the metadata source.
      * 
      */
@@ -106,6 +111,16 @@ public final class GetConnectionOption {
      * 
      */
     private List<GetConnectionOptionConnectionSetting> connectionSettings;
+    /**
+     * @return Identifies the client to the service provider
+     * 
+     */
+    private String consumerKey;
+    /**
+     * @return Secret used to establish ownership of the consumer key.
+     * 
+     */
+    private String consumerSecret;
     /**
      * @return Configure extra headers to the Token endpoint of an OAuth 2.0 provider
      * 
@@ -367,6 +382,11 @@ public final class GetConnectionOption {
      */
     private String requestTemplate;
     /**
+     * @return URL used to obtain an unauthorized request token.
+     * 
+     */
+    private String requestTokenUrl;
+    /**
      * @return Indicates whether the user is required to provide a username in addition to an email address.
      * 
      */
@@ -381,6 +401,11 @@ public final class GetConnectionOption {
      * 
      */
     private Map<String,String> scripts;
+    /**
+     * @return Session Key for storing the request token.
+     * 
+     */
+    private String sessionKey;
     /**
      * @return Determines whether to sync user profile attributes (`name`, `givenName`, `familyName`, `nickname`, `picture`) at each login or only on the first login. Options include: `onEachLogin`, `onFirstLogin`, `neverOnLogin`. Default value: `onEachLogin`.
      * 
@@ -411,6 +436,11 @@ public final class GetConnectionOption {
      * 
      */
     private String signatureAlgorithm;
+    /**
+     * @return Signature method used to sign the request
+     * 
+     */
+    private String signatureMethod;
     /**
      * @return X.509 signing certificate (encoded in PEM or CER) you retrieved from the IdP, Base64-encoded.
      * 
@@ -507,6 +537,11 @@ public final class GetConnectionOption {
      */
     private Boolean useWsfed;
     /**
+     * @return URL used to obtain user authorization.
+     * 
+     */
+    private String userAuthorizationUrl;
+    /**
      * @return Attribute in the token that will be mapped to the userId property in Auth0.
      * 
      */
@@ -533,6 +568,13 @@ public final class GetConnectionOption {
     private String waadProtocol;
 
     private GetConnectionOption() {}
+    /**
+     * @return URL used to exchange a user-authorized request token for an access token.
+     * 
+     */
+    public String accessTokenUrl() {
+        return this.accessTokenUrl;
+    }
     /**
      * @return ADFS URL where to fetch the metadata source.
      * 
@@ -637,6 +679,20 @@ public final class GetConnectionOption {
      */
     public List<GetConnectionOptionConnectionSetting> connectionSettings() {
         return this.connectionSettings;
+    }
+    /**
+     * @return Identifies the client to the service provider
+     * 
+     */
+    public String consumerKey() {
+        return this.consumerKey;
+    }
+    /**
+     * @return Secret used to establish ownership of the consumer key.
+     * 
+     */
+    public String consumerSecret() {
+        return this.consumerSecret;
     }
     /**
      * @return Configure extra headers to the Token endpoint of an OAuth 2.0 provider
@@ -1003,6 +1059,13 @@ public final class GetConnectionOption {
         return this.requestTemplate;
     }
     /**
+     * @return URL used to obtain an unauthorized request token.
+     * 
+     */
+    public String requestTokenUrl() {
+        return this.requestTokenUrl;
+    }
+    /**
      * @return Indicates whether the user is required to provide a username in addition to an email address.
      * 
      */
@@ -1022,6 +1085,13 @@ public final class GetConnectionOption {
      */
     public Map<String,String> scripts() {
         return this.scripts;
+    }
+    /**
+     * @return Session Key for storing the request token.
+     * 
+     */
+    public String sessionKey() {
+        return this.sessionKey;
     }
     /**
      * @return Determines whether to sync user profile attributes (`name`, `givenName`, `familyName`, `nickname`, `picture`) at each login or only on the first login. Options include: `onEachLogin`, `onFirstLogin`, `neverOnLogin`. Default value: `onEachLogin`.
@@ -1064,6 +1134,13 @@ public final class GetConnectionOption {
      */
     public String signatureAlgorithm() {
         return this.signatureAlgorithm;
+    }
+    /**
+     * @return Signature method used to sign the request
+     * 
+     */
+    public String signatureMethod() {
+        return this.signatureMethod;
     }
     /**
      * @return X.509 signing certificate (encoded in PEM or CER) you retrieved from the IdP, Base64-encoded.
@@ -1199,6 +1276,13 @@ public final class GetConnectionOption {
         return this.useWsfed;
     }
     /**
+     * @return URL used to obtain user authorization.
+     * 
+     */
+    public String userAuthorizationUrl() {
+        return this.userAuthorizationUrl;
+    }
+    /**
      * @return Attribute in the token that will be mapped to the userId property in Auth0.
      * 
      */
@@ -1243,6 +1327,7 @@ public final class GetConnectionOption {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String accessTokenUrl;
         private String adfsServer;
         private List<String> allowedAudiences;
         private Boolean apiEnableUsers;
@@ -1258,6 +1343,8 @@ public final class GetConnectionOption {
         private String communityBaseUrl;
         private Map<String,String> configuration;
         private List<GetConnectionOptionConnectionSetting> connectionSettings;
+        private String consumerKey;
+        private String consumerSecret;
         private List<GetConnectionOptionCustomHeader> customHeaders;
         private Map<String,String> customScripts;
         private Boolean debug;
@@ -1310,15 +1397,18 @@ public final class GetConnectionOption {
         private String provider;
         private Boolean realmFallback;
         private String requestTemplate;
+        private String requestTokenUrl;
         private Boolean requiresUsername;
         private List<String> scopes;
         private Map<String,String> scripts;
+        private String sessionKey;
         private String setUserRootAttributes;
         private String shouldTrustEmailVerifiedConnection;
         private String signInEndpoint;
         private String signOutEndpoint;
         private Boolean signSamlRequest;
         private String signatureAlgorithm;
+        private String signatureMethod;
         private String signingCert;
         private List<GetConnectionOptionSigningKey> signingKeys;
         private Integer strategyVersion;
@@ -1338,6 +1428,7 @@ public final class GetConnectionOption {
         private Boolean useCertAuth;
         private Boolean useKerberos;
         private Boolean useWsfed;
+        private String userAuthorizationUrl;
         private String userIdAttribute;
         private String userinfoEndpoint;
         private List<GetConnectionOptionValidation> validations;
@@ -1346,6 +1437,7 @@ public final class GetConnectionOption {
         public Builder() {}
         public Builder(GetConnectionOption defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.accessTokenUrl = defaults.accessTokenUrl;
     	      this.adfsServer = defaults.adfsServer;
     	      this.allowedAudiences = defaults.allowedAudiences;
     	      this.apiEnableUsers = defaults.apiEnableUsers;
@@ -1361,6 +1453,8 @@ public final class GetConnectionOption {
     	      this.communityBaseUrl = defaults.communityBaseUrl;
     	      this.configuration = defaults.configuration;
     	      this.connectionSettings = defaults.connectionSettings;
+    	      this.consumerKey = defaults.consumerKey;
+    	      this.consumerSecret = defaults.consumerSecret;
     	      this.customHeaders = defaults.customHeaders;
     	      this.customScripts = defaults.customScripts;
     	      this.debug = defaults.debug;
@@ -1413,15 +1507,18 @@ public final class GetConnectionOption {
     	      this.provider = defaults.provider;
     	      this.realmFallback = defaults.realmFallback;
     	      this.requestTemplate = defaults.requestTemplate;
+    	      this.requestTokenUrl = defaults.requestTokenUrl;
     	      this.requiresUsername = defaults.requiresUsername;
     	      this.scopes = defaults.scopes;
     	      this.scripts = defaults.scripts;
+    	      this.sessionKey = defaults.sessionKey;
     	      this.setUserRootAttributes = defaults.setUserRootAttributes;
     	      this.shouldTrustEmailVerifiedConnection = defaults.shouldTrustEmailVerifiedConnection;
     	      this.signInEndpoint = defaults.signInEndpoint;
     	      this.signOutEndpoint = defaults.signOutEndpoint;
     	      this.signSamlRequest = defaults.signSamlRequest;
     	      this.signatureAlgorithm = defaults.signatureAlgorithm;
+    	      this.signatureMethod = defaults.signatureMethod;
     	      this.signingCert = defaults.signingCert;
     	      this.signingKeys = defaults.signingKeys;
     	      this.strategyVersion = defaults.strategyVersion;
@@ -1441,6 +1538,7 @@ public final class GetConnectionOption {
     	      this.useCertAuth = defaults.useCertAuth;
     	      this.useKerberos = defaults.useKerberos;
     	      this.useWsfed = defaults.useWsfed;
+    	      this.userAuthorizationUrl = defaults.userAuthorizationUrl;
     	      this.userIdAttribute = defaults.userIdAttribute;
     	      this.userinfoEndpoint = defaults.userinfoEndpoint;
     	      this.validations = defaults.validations;
@@ -1448,6 +1546,14 @@ public final class GetConnectionOption {
     	      this.waadProtocol = defaults.waadProtocol;
         }
 
+        @CustomType.Setter
+        public Builder accessTokenUrl(String accessTokenUrl) {
+            if (accessTokenUrl == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOption", "accessTokenUrl");
+            }
+            this.accessTokenUrl = accessTokenUrl;
+            return this;
+        }
         @CustomType.Setter
         public Builder adfsServer(String adfsServer) {
             if (adfsServer == null) {
@@ -1582,6 +1688,22 @@ public final class GetConnectionOption {
         }
         public Builder connectionSettings(GetConnectionOptionConnectionSetting... connectionSettings) {
             return connectionSettings(List.of(connectionSettings));
+        }
+        @CustomType.Setter
+        public Builder consumerKey(String consumerKey) {
+            if (consumerKey == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOption", "consumerKey");
+            }
+            this.consumerKey = consumerKey;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder consumerSecret(String consumerSecret) {
+            if (consumerSecret == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOption", "consumerSecret");
+            }
+            this.consumerSecret = consumerSecret;
+            return this;
         }
         @CustomType.Setter
         public Builder customHeaders(List<GetConnectionOptionCustomHeader> customHeaders) {
@@ -2042,6 +2164,14 @@ public final class GetConnectionOption {
             return this;
         }
         @CustomType.Setter
+        public Builder requestTokenUrl(String requestTokenUrl) {
+            if (requestTokenUrl == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOption", "requestTokenUrl");
+            }
+            this.requestTokenUrl = requestTokenUrl;
+            return this;
+        }
+        @CustomType.Setter
         public Builder requiresUsername(Boolean requiresUsername) {
             if (requiresUsername == null) {
               throw new MissingRequiredPropertyException("GetConnectionOption", "requiresUsername");
@@ -2066,6 +2196,14 @@ public final class GetConnectionOption {
               throw new MissingRequiredPropertyException("GetConnectionOption", "scripts");
             }
             this.scripts = scripts;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sessionKey(String sessionKey) {
+            if (sessionKey == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOption", "sessionKey");
+            }
+            this.sessionKey = sessionKey;
             return this;
         }
         @CustomType.Setter
@@ -2114,6 +2252,14 @@ public final class GetConnectionOption {
               throw new MissingRequiredPropertyException("GetConnectionOption", "signatureAlgorithm");
             }
             this.signatureAlgorithm = signatureAlgorithm;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder signatureMethod(String signatureMethod) {
+            if (signatureMethod == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOption", "signatureMethod");
+            }
+            this.signatureMethod = signatureMethod;
             return this;
         }
         @CustomType.Setter
@@ -2275,6 +2421,14 @@ public final class GetConnectionOption {
             return this;
         }
         @CustomType.Setter
+        public Builder userAuthorizationUrl(String userAuthorizationUrl) {
+            if (userAuthorizationUrl == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOption", "userAuthorizationUrl");
+            }
+            this.userAuthorizationUrl = userAuthorizationUrl;
+            return this;
+        }
+        @CustomType.Setter
         public Builder userIdAttribute(String userIdAttribute) {
             if (userIdAttribute == null) {
               throw new MissingRequiredPropertyException("GetConnectionOption", "userIdAttribute");
@@ -2319,6 +2473,7 @@ public final class GetConnectionOption {
         }
         public GetConnectionOption build() {
             final var _resultValue = new GetConnectionOption();
+            _resultValue.accessTokenUrl = accessTokenUrl;
             _resultValue.adfsServer = adfsServer;
             _resultValue.allowedAudiences = allowedAudiences;
             _resultValue.apiEnableUsers = apiEnableUsers;
@@ -2334,6 +2489,8 @@ public final class GetConnectionOption {
             _resultValue.communityBaseUrl = communityBaseUrl;
             _resultValue.configuration = configuration;
             _resultValue.connectionSettings = connectionSettings;
+            _resultValue.consumerKey = consumerKey;
+            _resultValue.consumerSecret = consumerSecret;
             _resultValue.customHeaders = customHeaders;
             _resultValue.customScripts = customScripts;
             _resultValue.debug = debug;
@@ -2386,15 +2543,18 @@ public final class GetConnectionOption {
             _resultValue.provider = provider;
             _resultValue.realmFallback = realmFallback;
             _resultValue.requestTemplate = requestTemplate;
+            _resultValue.requestTokenUrl = requestTokenUrl;
             _resultValue.requiresUsername = requiresUsername;
             _resultValue.scopes = scopes;
             _resultValue.scripts = scripts;
+            _resultValue.sessionKey = sessionKey;
             _resultValue.setUserRootAttributes = setUserRootAttributes;
             _resultValue.shouldTrustEmailVerifiedConnection = shouldTrustEmailVerifiedConnection;
             _resultValue.signInEndpoint = signInEndpoint;
             _resultValue.signOutEndpoint = signOutEndpoint;
             _resultValue.signSamlRequest = signSamlRequest;
             _resultValue.signatureAlgorithm = signatureAlgorithm;
+            _resultValue.signatureMethod = signatureMethod;
             _resultValue.signingCert = signingCert;
             _resultValue.signingKeys = signingKeys;
             _resultValue.strategyVersion = strategyVersion;
@@ -2414,6 +2574,7 @@ public final class GetConnectionOption {
             _resultValue.useCertAuth = useCertAuth;
             _resultValue.useKerberos = useKerberos;
             _resultValue.useWsfed = useWsfed;
+            _resultValue.userAuthorizationUrl = userAuthorizationUrl;
             _resultValue.userIdAttribute = userIdAttribute;
             _resultValue.userinfoEndpoint = userinfoEndpoint;
             _resultValue.validations = validations;

@@ -7,6 +7,8 @@ import com.pulumi.auth0.Utilities;
 import com.pulumi.auth0.inputs.GetActionArgs;
 import com.pulumi.auth0.inputs.GetActionPlainArgs;
 import com.pulumi.auth0.inputs.GetClientArgs;
+import com.pulumi.auth0.inputs.GetClientGrantsArgs;
+import com.pulumi.auth0.inputs.GetClientGrantsPlainArgs;
 import com.pulumi.auth0.inputs.GetClientPlainArgs;
 import com.pulumi.auth0.inputs.GetClientsArgs;
 import com.pulumi.auth0.inputs.GetClientsPlainArgs;
@@ -52,6 +54,7 @@ import com.pulumi.auth0.outputs.GetActionResult;
 import com.pulumi.auth0.outputs.GetAttackProtectionResult;
 import com.pulumi.auth0.outputs.GetBrandingResult;
 import com.pulumi.auth0.outputs.GetBrandingThemeResult;
+import com.pulumi.auth0.outputs.GetClientGrantsResult;
 import com.pulumi.auth0.outputs.GetClientResult;
 import com.pulumi.auth0.outputs.GetClientsResult;
 import com.pulumi.auth0.outputs.GetConnectionKeysResult;
@@ -1233,6 +1236,55 @@ public final class Auth0Functions {
      */
     public static CompletableFuture<GetClientResult> getClientPlain(GetClientPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("auth0:index/getClient:getClient", TypeShape.of(GetClientResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a client grants based on clientId and/or audience
+     * 
+     */
+    public static Output<GetClientGrantsResult> getClientGrants() {
+        return getClientGrants(GetClientGrantsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a client grants based on clientId and/or audience
+     * 
+     */
+    public static CompletableFuture<GetClientGrantsResult> getClientGrantsPlain() {
+        return getClientGrantsPlain(GetClientGrantsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a client grants based on clientId and/or audience
+     * 
+     */
+    public static Output<GetClientGrantsResult> getClientGrants(GetClientGrantsArgs args) {
+        return getClientGrants(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a client grants based on clientId and/or audience
+     * 
+     */
+    public static CompletableFuture<GetClientGrantsResult> getClientGrantsPlain(GetClientGrantsPlainArgs args) {
+        return getClientGrantsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a client grants based on clientId and/or audience
+     * 
+     */
+    public static Output<GetClientGrantsResult> getClientGrants(GetClientGrantsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getClientGrants:getClientGrants", TypeShape.of(GetClientGrantsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a client grants based on clientId and/or audience
+     * 
+     */
+    public static Output<GetClientGrantsResult> getClientGrants(GetClientGrantsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getClientGrants:getClientGrants", TypeShape.of(GetClientGrantsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a client grants based on clientId and/or audience
+     * 
+     */
+    public static CompletableFuture<GetClientGrantsResult> getClientGrantsPlain(GetClientGrantsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("auth0:index/getClientGrants:getClientGrants", TypeShape.of(GetClientGrantsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source to retrieve a list of Auth0 application clients with optional filtering.

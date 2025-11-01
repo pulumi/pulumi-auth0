@@ -468,6 +468,20 @@ public class Client extends com.pulumi.resources.CustomResource {
         return this.oidcLogout;
     }
     /**
+     * Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
+     * 
+     */
+    @Export(name="organizationDiscoveryMethods", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> organizationDiscoveryMethods;
+
+    /**
+     * @return Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
+     * 
+     */
+    public Output<Optional<List<String>>> organizationDiscoveryMethods() {
+        return Codegen.optional(this.organizationDiscoveryMethods);
+    }
+    /**
      * Defines how to proceed during an authentication transaction when `organizationUsage = &#34;require&#34;`. Can be `noPrompt` (default), `preLoginPrompt` or  `postLoginPrompt`.
      * 
      */
@@ -572,17 +586,17 @@ public class Client extends com.pulumi.resources.CustomResource {
         return this.signingKeys;
     }
     /**
-     * Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+     * Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or (&#34;true&#34;/&#34;false&#34;/&#34;null&#34;)
      * 
      */
-    @Export(name="skipNonVerifiableCallbackUriConfirmationPrompt", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> skipNonVerifiableCallbackUriConfirmationPrompt;
+    @Export(name="skipNonVerifiableCallbackUriConfirmationPrompt", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> skipNonVerifiableCallbackUriConfirmationPrompt;
 
     /**
-     * @return Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+     * @return Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or (&#34;true&#34;/&#34;false&#34;/&#34;null&#34;)
      * 
      */
-    public Output<Optional<Boolean>> skipNonVerifiableCallbackUriConfirmationPrompt() {
+    public Output<Optional<String>> skipNonVerifiableCallbackUriConfirmationPrompt() {
         return Codegen.optional(this.skipNonVerifiableCallbackUriConfirmationPrompt);
     }
     /**

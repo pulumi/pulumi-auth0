@@ -50,8 +50,8 @@ import javax.annotation.Nullable;
  *             .name("TokenExchange-Action")
  *             .code("""
  * exports.onExecuteCustomTokenExchange = async (event, api) => {
- * 	console.log("foo")
- * };"
+ * \tconsole.log(\"foo\")
+ * };\"
  *             """)
  *             .deploy(true)
  *             .supportedTriggers(ActionSupportedTriggersArgs.builder()

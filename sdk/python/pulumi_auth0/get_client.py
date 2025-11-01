@@ -27,7 +27,7 @@ class GetClientResult:
     """
     A collection of values returned by getClient.
     """
-    def __init__(__self__, addons=None, allowed_clients=None, allowed_logout_urls=None, allowed_origins=None, app_type=None, callbacks=None, client_aliases=None, client_authentication_methods=None, client_id=None, client_metadata=None, client_secret=None, compliance_level=None, cross_origin_auth=None, cross_origin_loc=None, custom_login_page=None, custom_login_page_on=None, default_organizations=None, description=None, encryption_key=None, form_template=None, grant_types=None, id=None, initiate_login_uri=None, is_first_party=None, is_token_endpoint_ip_header_trusted=None, jwt_configurations=None, logo_uri=None, mobiles=None, name=None, native_social_logins=None, oidc_backchannel_logout_urls=None, oidc_conformant=None, oidc_logouts=None, organization_require_behavior=None, organization_usage=None, refresh_tokens=None, require_proof_of_possession=None, require_pushed_authorization_requests=None, resource_server_identifier=None, session_transfers=None, signed_request_objects=None, signing_keys=None, skip_non_verifiable_callback_uri_confirmation_prompt=None, sso=None, sso_disabled=None, token_endpoint_auth_method=None, token_exchanges=None, token_quotas=None, web_origins=None):
+    def __init__(__self__, addons=None, allowed_clients=None, allowed_logout_urls=None, allowed_origins=None, app_type=None, callbacks=None, client_aliases=None, client_authentication_methods=None, client_id=None, client_metadata=None, client_secret=None, compliance_level=None, cross_origin_auth=None, cross_origin_loc=None, custom_login_page=None, custom_login_page_on=None, default_organizations=None, description=None, encryption_key=None, form_template=None, grant_types=None, id=None, initiate_login_uri=None, is_first_party=None, is_token_endpoint_ip_header_trusted=None, jwt_configurations=None, logo_uri=None, mobiles=None, name=None, native_social_logins=None, oidc_backchannel_logout_urls=None, oidc_conformant=None, oidc_logouts=None, organization_discovery_methods=None, organization_require_behavior=None, organization_usage=None, refresh_tokens=None, require_proof_of_possession=None, require_pushed_authorization_requests=None, resource_server_identifier=None, session_transfers=None, signed_request_objects=None, signing_keys=None, skip_non_verifiable_callback_uri_confirmation_prompt=None, sso=None, sso_disabled=None, token_endpoint_auth_method=None, token_exchanges=None, token_quotas=None, web_origins=None):
         if addons and not isinstance(addons, list):
             raise TypeError("Expected argument 'addons' to be a list")
         pulumi.set(__self__, "addons", addons)
@@ -127,6 +127,9 @@ class GetClientResult:
         if oidc_logouts and not isinstance(oidc_logouts, list):
             raise TypeError("Expected argument 'oidc_logouts' to be a list")
         pulumi.set(__self__, "oidc_logouts", oidc_logouts)
+        if organization_discovery_methods and not isinstance(organization_discovery_methods, list):
+            raise TypeError("Expected argument 'organization_discovery_methods' to be a list")
+        pulumi.set(__self__, "organization_discovery_methods", organization_discovery_methods)
         if organization_require_behavior and not isinstance(organization_require_behavior, str):
             raise TypeError("Expected argument 'organization_require_behavior' to be a str")
         pulumi.set(__self__, "organization_require_behavior", organization_require_behavior)
@@ -154,8 +157,8 @@ class GetClientResult:
         if signing_keys and not isinstance(signing_keys, list):
             raise TypeError("Expected argument 'signing_keys' to be a list")
         pulumi.set(__self__, "signing_keys", signing_keys)
-        if skip_non_verifiable_callback_uri_confirmation_prompt and not isinstance(skip_non_verifiable_callback_uri_confirmation_prompt, bool):
-            raise TypeError("Expected argument 'skip_non_verifiable_callback_uri_confirmation_prompt' to be a bool")
+        if skip_non_verifiable_callback_uri_confirmation_prompt and not isinstance(skip_non_verifiable_callback_uri_confirmation_prompt, str):
+            raise TypeError("Expected argument 'skip_non_verifiable_callback_uri_confirmation_prompt' to be a str")
         pulumi.set(__self__, "skip_non_verifiable_callback_uri_confirmation_prompt", skip_non_verifiable_callback_uri_confirmation_prompt)
         if sso and not isinstance(sso, bool):
             raise TypeError("Expected argument 'sso' to be a bool")
@@ -438,6 +441,14 @@ class GetClientResult:
         return pulumi.get(self, "oidc_logouts")
 
     @_builtins.property
+    @pulumi.getter(name="organizationDiscoveryMethods")
+    def organization_discovery_methods(self) -> Sequence[_builtins.str]:
+        """
+        Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organization_name` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organization_require_behavior` is set to `pre_login_prompt`.
+        """
+        return pulumi.get(self, "organization_discovery_methods")
+
+    @_builtins.property
     @pulumi.getter(name="organizationRequireBehavior")
     def organization_require_behavior(self) -> _builtins.str:
         """
@@ -508,9 +519,9 @@ class GetClientResult:
 
     @_builtins.property
     @pulumi.getter(name="skipNonVerifiableCallbackUriConfirmationPrompt")
-    def skip_non_verifiable_callback_uri_confirmation_prompt(self) -> _builtins.bool:
+    def skip_non_verifiable_callback_uri_confirmation_prompt(self) -> _builtins.str:
         """
-        Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+        Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
         """
         return pulumi.get(self, "skip_non_verifiable_callback_uri_confirmation_prompt")
 
@@ -602,6 +613,7 @@ class AwaitableGetClientResult(GetClientResult):
             oidc_backchannel_logout_urls=self.oidc_backchannel_logout_urls,
             oidc_conformant=self.oidc_conformant,
             oidc_logouts=self.oidc_logouts,
+            organization_discovery_methods=self.organization_discovery_methods,
             organization_require_behavior=self.organization_require_behavior,
             organization_usage=self.organization_usage,
             refresh_tokens=self.refresh_tokens,
@@ -682,6 +694,7 @@ def get_client(client_id: Optional[_builtins.str] = None,
         oidc_backchannel_logout_urls=pulumi.get(__ret__, 'oidc_backchannel_logout_urls'),
         oidc_conformant=pulumi.get(__ret__, 'oidc_conformant'),
         oidc_logouts=pulumi.get(__ret__, 'oidc_logouts'),
+        organization_discovery_methods=pulumi.get(__ret__, 'organization_discovery_methods'),
         organization_require_behavior=pulumi.get(__ret__, 'organization_require_behavior'),
         organization_usage=pulumi.get(__ret__, 'organization_usage'),
         refresh_tokens=pulumi.get(__ret__, 'refresh_tokens'),
@@ -759,6 +772,7 @@ def get_client_output(client_id: Optional[pulumi.Input[Optional[_builtins.str]]]
         oidc_backchannel_logout_urls=pulumi.get(__response__, 'oidc_backchannel_logout_urls'),
         oidc_conformant=pulumi.get(__response__, 'oidc_conformant'),
         oidc_logouts=pulumi.get(__response__, 'oidc_logouts'),
+        organization_discovery_methods=pulumi.get(__response__, 'organization_discovery_methods'),
         organization_require_behavior=pulumi.get(__response__, 'organization_require_behavior'),
         organization_usage=pulumi.get(__response__, 'organization_usage'),
         refresh_tokens=pulumi.get(__response__, 'refresh_tokens'),

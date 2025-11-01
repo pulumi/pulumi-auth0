@@ -33,6 +33,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ConnectionOptions {
     /**
+     * @return URL used to exchange a user-authorized request token for an access token.
+     * 
+     */
+    private @Nullable String accessTokenUrl;
+    /**
      * @return ADFS URL where to fetch the metadata source.
      * 
      */
@@ -107,6 +112,16 @@ public final class ConnectionOptions {
      * 
      */
     private @Nullable ConnectionOptionsConnectionSettings connectionSettings;
+    /**
+     * @return Identifies the client to the service provider
+     * 
+     */
+    private @Nullable String consumerKey;
+    /**
+     * @return Secret used to establish ownership of the consumer key.
+     * 
+     */
+    private @Nullable String consumerSecret;
     /**
      * @return Configure extra headers to the Token endpoint of an OAuth 2.0 provider
      * 
@@ -368,6 +383,11 @@ public final class ConnectionOptions {
      */
     private @Nullable String requestTemplate;
     /**
+     * @return URL used to obtain an unauthorized request token.
+     * 
+     */
+    private @Nullable String requestTokenUrl;
+    /**
      * @return Indicates whether the user is required to provide a username in addition to an email address.
      * 
      */
@@ -382,6 +402,11 @@ public final class ConnectionOptions {
      * 
      */
     private @Nullable Map<String,String> scripts;
+    /**
+     * @return Session Key for storing the request token.
+     * 
+     */
+    private @Nullable String sessionKey;
     /**
      * @return Determines whether to sync user profile attributes (`name`, `givenName`, `familyName`, `nickname`, `picture`) at each login or only on the first login. Options include: `onEachLogin`, `onFirstLogin`, `neverOnLogin`. Default value: `onEachLogin`.
      * 
@@ -412,6 +437,11 @@ public final class ConnectionOptions {
      * 
      */
     private @Nullable String signatureAlgorithm;
+    /**
+     * @return Signature method used to sign the request
+     * 
+     */
+    private @Nullable String signatureMethod;
     /**
      * @return X.509 signing certificate (encoded in PEM or CER) you retrieved from the IdP, Base64-encoded.
      * 
@@ -508,6 +538,11 @@ public final class ConnectionOptions {
      */
     private @Nullable Boolean useWsfed;
     /**
+     * @return URL used to obtain user authorization.
+     * 
+     */
+    private @Nullable String userAuthorizationUrl;
+    /**
      * @return Attribute in the token that will be mapped to the userId property in Auth0.
      * 
      */
@@ -534,6 +569,13 @@ public final class ConnectionOptions {
     private @Nullable String waadProtocol;
 
     private ConnectionOptions() {}
+    /**
+     * @return URL used to exchange a user-authorized request token for an access token.
+     * 
+     */
+    public Optional<String> accessTokenUrl() {
+        return Optional.ofNullable(this.accessTokenUrl);
+    }
     /**
      * @return ADFS URL where to fetch the metadata source.
      * 
@@ -638,6 +680,20 @@ public final class ConnectionOptions {
      */
     public Optional<ConnectionOptionsConnectionSettings> connectionSettings() {
         return Optional.ofNullable(this.connectionSettings);
+    }
+    /**
+     * @return Identifies the client to the service provider
+     * 
+     */
+    public Optional<String> consumerKey() {
+        return Optional.ofNullable(this.consumerKey);
+    }
+    /**
+     * @return Secret used to establish ownership of the consumer key.
+     * 
+     */
+    public Optional<String> consumerSecret() {
+        return Optional.ofNullable(this.consumerSecret);
     }
     /**
      * @return Configure extra headers to the Token endpoint of an OAuth 2.0 provider
@@ -1004,6 +1060,13 @@ public final class ConnectionOptions {
         return Optional.ofNullable(this.requestTemplate);
     }
     /**
+     * @return URL used to obtain an unauthorized request token.
+     * 
+     */
+    public Optional<String> requestTokenUrl() {
+        return Optional.ofNullable(this.requestTokenUrl);
+    }
+    /**
      * @return Indicates whether the user is required to provide a username in addition to an email address.
      * 
      */
@@ -1023,6 +1086,13 @@ public final class ConnectionOptions {
      */
     public Map<String,String> scripts() {
         return this.scripts == null ? Map.of() : this.scripts;
+    }
+    /**
+     * @return Session Key for storing the request token.
+     * 
+     */
+    public Optional<String> sessionKey() {
+        return Optional.ofNullable(this.sessionKey);
     }
     /**
      * @return Determines whether to sync user profile attributes (`name`, `givenName`, `familyName`, `nickname`, `picture`) at each login or only on the first login. Options include: `onEachLogin`, `onFirstLogin`, `neverOnLogin`. Default value: `onEachLogin`.
@@ -1065,6 +1135,13 @@ public final class ConnectionOptions {
      */
     public Optional<String> signatureAlgorithm() {
         return Optional.ofNullable(this.signatureAlgorithm);
+    }
+    /**
+     * @return Signature method used to sign the request
+     * 
+     */
+    public Optional<String> signatureMethod() {
+        return Optional.ofNullable(this.signatureMethod);
     }
     /**
      * @return X.509 signing certificate (encoded in PEM or CER) you retrieved from the IdP, Base64-encoded.
@@ -1200,6 +1277,13 @@ public final class ConnectionOptions {
         return Optional.ofNullable(this.useWsfed);
     }
     /**
+     * @return URL used to obtain user authorization.
+     * 
+     */
+    public Optional<String> userAuthorizationUrl() {
+        return Optional.ofNullable(this.userAuthorizationUrl);
+    }
+    /**
      * @return Attribute in the token that will be mapped to the userId property in Auth0.
      * 
      */
@@ -1244,6 +1328,7 @@ public final class ConnectionOptions {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String accessTokenUrl;
         private @Nullable String adfsServer;
         private @Nullable List<String> allowedAudiences;
         private @Nullable Boolean apiEnableUsers;
@@ -1259,6 +1344,8 @@ public final class ConnectionOptions {
         private @Nullable String communityBaseUrl;
         private @Nullable Map<String,String> configuration;
         private @Nullable ConnectionOptionsConnectionSettings connectionSettings;
+        private @Nullable String consumerKey;
+        private @Nullable String consumerSecret;
         private @Nullable List<ConnectionOptionsCustomHeader> customHeaders;
         private @Nullable Map<String,String> customScripts;
         private @Nullable Boolean debug;
@@ -1311,15 +1398,18 @@ public final class ConnectionOptions {
         private @Nullable String provider;
         private @Nullable Boolean realmFallback;
         private @Nullable String requestTemplate;
+        private @Nullable String requestTokenUrl;
         private @Nullable Boolean requiresUsername;
         private @Nullable List<String> scopes;
         private @Nullable Map<String,String> scripts;
+        private @Nullable String sessionKey;
         private @Nullable String setUserRootAttributes;
         private @Nullable String shouldTrustEmailVerifiedConnection;
         private @Nullable String signInEndpoint;
         private @Nullable String signOutEndpoint;
         private @Nullable Boolean signSamlRequest;
         private @Nullable String signatureAlgorithm;
+        private @Nullable String signatureMethod;
         private @Nullable String signingCert;
         private @Nullable ConnectionOptionsSigningKey signingKey;
         private @Nullable Integer strategyVersion;
@@ -1339,6 +1429,7 @@ public final class ConnectionOptions {
         private @Nullable Boolean useCertAuth;
         private @Nullable Boolean useKerberos;
         private @Nullable Boolean useWsfed;
+        private @Nullable String userAuthorizationUrl;
         private @Nullable String userIdAttribute;
         private @Nullable String userinfoEndpoint;
         private @Nullable ConnectionOptionsValidation validation;
@@ -1347,6 +1438,7 @@ public final class ConnectionOptions {
         public Builder() {}
         public Builder(ConnectionOptions defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.accessTokenUrl = defaults.accessTokenUrl;
     	      this.adfsServer = defaults.adfsServer;
     	      this.allowedAudiences = defaults.allowedAudiences;
     	      this.apiEnableUsers = defaults.apiEnableUsers;
@@ -1362,6 +1454,8 @@ public final class ConnectionOptions {
     	      this.communityBaseUrl = defaults.communityBaseUrl;
     	      this.configuration = defaults.configuration;
     	      this.connectionSettings = defaults.connectionSettings;
+    	      this.consumerKey = defaults.consumerKey;
+    	      this.consumerSecret = defaults.consumerSecret;
     	      this.customHeaders = defaults.customHeaders;
     	      this.customScripts = defaults.customScripts;
     	      this.debug = defaults.debug;
@@ -1414,15 +1508,18 @@ public final class ConnectionOptions {
     	      this.provider = defaults.provider;
     	      this.realmFallback = defaults.realmFallback;
     	      this.requestTemplate = defaults.requestTemplate;
+    	      this.requestTokenUrl = defaults.requestTokenUrl;
     	      this.requiresUsername = defaults.requiresUsername;
     	      this.scopes = defaults.scopes;
     	      this.scripts = defaults.scripts;
+    	      this.sessionKey = defaults.sessionKey;
     	      this.setUserRootAttributes = defaults.setUserRootAttributes;
     	      this.shouldTrustEmailVerifiedConnection = defaults.shouldTrustEmailVerifiedConnection;
     	      this.signInEndpoint = defaults.signInEndpoint;
     	      this.signOutEndpoint = defaults.signOutEndpoint;
     	      this.signSamlRequest = defaults.signSamlRequest;
     	      this.signatureAlgorithm = defaults.signatureAlgorithm;
+    	      this.signatureMethod = defaults.signatureMethod;
     	      this.signingCert = defaults.signingCert;
     	      this.signingKey = defaults.signingKey;
     	      this.strategyVersion = defaults.strategyVersion;
@@ -1442,6 +1539,7 @@ public final class ConnectionOptions {
     	      this.useCertAuth = defaults.useCertAuth;
     	      this.useKerberos = defaults.useKerberos;
     	      this.useWsfed = defaults.useWsfed;
+    	      this.userAuthorizationUrl = defaults.userAuthorizationUrl;
     	      this.userIdAttribute = defaults.userIdAttribute;
     	      this.userinfoEndpoint = defaults.userinfoEndpoint;
     	      this.validation = defaults.validation;
@@ -1449,6 +1547,12 @@ public final class ConnectionOptions {
     	      this.waadProtocol = defaults.waadProtocol;
         }
 
+        @CustomType.Setter
+        public Builder accessTokenUrl(@Nullable String accessTokenUrl) {
+
+            this.accessTokenUrl = accessTokenUrl;
+            return this;
+        }
         @CustomType.Setter
         public Builder adfsServer(@Nullable String adfsServer) {
 
@@ -1546,6 +1650,18 @@ public final class ConnectionOptions {
         public Builder connectionSettings(@Nullable ConnectionOptionsConnectionSettings connectionSettings) {
 
             this.connectionSettings = connectionSettings;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder consumerKey(@Nullable String consumerKey) {
+
+            this.consumerKey = consumerKey;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder consumerSecret(@Nullable String consumerSecret) {
+
+            this.consumerSecret = consumerSecret;
             return this;
         }
         @CustomType.Setter
@@ -1879,6 +1995,12 @@ public final class ConnectionOptions {
             return this;
         }
         @CustomType.Setter
+        public Builder requestTokenUrl(@Nullable String requestTokenUrl) {
+
+            this.requestTokenUrl = requestTokenUrl;
+            return this;
+        }
+        @CustomType.Setter
         public Builder requiresUsername(@Nullable Boolean requiresUsername) {
 
             this.requiresUsername = requiresUsername;
@@ -1897,6 +2019,12 @@ public final class ConnectionOptions {
         public Builder scripts(@Nullable Map<String,String> scripts) {
 
             this.scripts = scripts;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sessionKey(@Nullable String sessionKey) {
+
+            this.sessionKey = sessionKey;
             return this;
         }
         @CustomType.Setter
@@ -1933,6 +2061,12 @@ public final class ConnectionOptions {
         public Builder signatureAlgorithm(@Nullable String signatureAlgorithm) {
 
             this.signatureAlgorithm = signatureAlgorithm;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder signatureMethod(@Nullable String signatureMethod) {
+
+            this.signatureMethod = signatureMethod;
             return this;
         }
         @CustomType.Setter
@@ -2050,6 +2184,12 @@ public final class ConnectionOptions {
             return this;
         }
         @CustomType.Setter
+        public Builder userAuthorizationUrl(@Nullable String userAuthorizationUrl) {
+
+            this.userAuthorizationUrl = userAuthorizationUrl;
+            return this;
+        }
+        @CustomType.Setter
         public Builder userIdAttribute(@Nullable String userIdAttribute) {
 
             this.userIdAttribute = userIdAttribute;
@@ -2081,6 +2221,7 @@ public final class ConnectionOptions {
         }
         public ConnectionOptions build() {
             final var _resultValue = new ConnectionOptions();
+            _resultValue.accessTokenUrl = accessTokenUrl;
             _resultValue.adfsServer = adfsServer;
             _resultValue.allowedAudiences = allowedAudiences;
             _resultValue.apiEnableUsers = apiEnableUsers;
@@ -2096,6 +2237,8 @@ public final class ConnectionOptions {
             _resultValue.communityBaseUrl = communityBaseUrl;
             _resultValue.configuration = configuration;
             _resultValue.connectionSettings = connectionSettings;
+            _resultValue.consumerKey = consumerKey;
+            _resultValue.consumerSecret = consumerSecret;
             _resultValue.customHeaders = customHeaders;
             _resultValue.customScripts = customScripts;
             _resultValue.debug = debug;
@@ -2148,15 +2291,18 @@ public final class ConnectionOptions {
             _resultValue.provider = provider;
             _resultValue.realmFallback = realmFallback;
             _resultValue.requestTemplate = requestTemplate;
+            _resultValue.requestTokenUrl = requestTokenUrl;
             _resultValue.requiresUsername = requiresUsername;
             _resultValue.scopes = scopes;
             _resultValue.scripts = scripts;
+            _resultValue.sessionKey = sessionKey;
             _resultValue.setUserRootAttributes = setUserRootAttributes;
             _resultValue.shouldTrustEmailVerifiedConnection = shouldTrustEmailVerifiedConnection;
             _resultValue.signInEndpoint = signInEndpoint;
             _resultValue.signOutEndpoint = signOutEndpoint;
             _resultValue.signSamlRequest = signSamlRequest;
             _resultValue.signatureAlgorithm = signatureAlgorithm;
+            _resultValue.signatureMethod = signatureMethod;
             _resultValue.signingCert = signingCert;
             _resultValue.signingKey = signingKey;
             _resultValue.strategyVersion = strategyVersion;
@@ -2176,6 +2322,7 @@ public final class ConnectionOptions {
             _resultValue.useCertAuth = useCertAuth;
             _resultValue.useKerberos = useKerberos;
             _resultValue.useWsfed = useWsfed;
+            _resultValue.userAuthorizationUrl = userAuthorizationUrl;
             _resultValue.userIdAttribute = userIdAttribute;
             _resultValue.userinfoEndpoint = userinfoEndpoint;
             _resultValue.validation = validation;
