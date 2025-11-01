@@ -43,7 +43,7 @@ class TenantArgs:
                  session_cookie: Optional[pulumi.Input['TenantSessionCookieArgs']] = None,
                  session_lifetime: Optional[pulumi.Input[_builtins.float]] = None,
                  sessions: Optional[pulumi.Input['TenantSessionsArgs']] = None,
-                 skip_non_verifiable_callback_uri_confirmation_prompt: Optional[pulumi.Input[_builtins.bool]] = None,
+                 skip_non_verifiable_callback_uri_confirmation_prompt: Optional[pulumi.Input[_builtins.str]] = None,
                  support_email: Optional[pulumi.Input[_builtins.str]] = None,
                  support_url: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -70,7 +70,7 @@ class TenantArgs:
         :param pulumi.Input['TenantSessionCookieArgs'] session_cookie: Alters behavior of tenant's session cookie. Contains a single `mode` property.
         :param pulumi.Input[_builtins.float] session_lifetime: Number of hours during which a session will stay valid.
         :param pulumi.Input['TenantSessionsArgs'] sessions: Sessions related settings for the tenant.
-        :param pulumi.Input[_builtins.bool] skip_non_verifiable_callback_uri_confirmation_prompt: Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+        :param pulumi.Input[_builtins.str] skip_non_verifiable_callback_uri_confirmation_prompt: Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
         :param pulumi.Input[_builtins.str] support_email: Support email address for authenticating users.
         :param pulumi.Input[_builtins.str] support_url: Support URL for authenticating users.
         """
@@ -391,14 +391,14 @@ class TenantArgs:
 
     @_builtins.property
     @pulumi.getter(name="skipNonVerifiableCallbackUriConfirmationPrompt")
-    def skip_non_verifiable_callback_uri_confirmation_prompt(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_non_verifiable_callback_uri_confirmation_prompt(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+        Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
         """
         return pulumi.get(self, "skip_non_verifiable_callback_uri_confirmation_prompt")
 
     @skip_non_verifiable_callback_uri_confirmation_prompt.setter
-    def skip_non_verifiable_callback_uri_confirmation_prompt(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_non_verifiable_callback_uri_confirmation_prompt(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "skip_non_verifiable_callback_uri_confirmation_prompt", value)
 
     @_builtins.property
@@ -451,7 +451,7 @@ class _TenantState:
                  session_cookie: Optional[pulumi.Input['TenantSessionCookieArgs']] = None,
                  session_lifetime: Optional[pulumi.Input[_builtins.float]] = None,
                  sessions: Optional[pulumi.Input['TenantSessionsArgs']] = None,
-                 skip_non_verifiable_callback_uri_confirmation_prompt: Optional[pulumi.Input[_builtins.bool]] = None,
+                 skip_non_verifiable_callback_uri_confirmation_prompt: Optional[pulumi.Input[_builtins.str]] = None,
                  support_email: Optional[pulumi.Input[_builtins.str]] = None,
                  support_url: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -478,7 +478,7 @@ class _TenantState:
         :param pulumi.Input['TenantSessionCookieArgs'] session_cookie: Alters behavior of tenant's session cookie. Contains a single `mode` property.
         :param pulumi.Input[_builtins.float] session_lifetime: Number of hours during which a session will stay valid.
         :param pulumi.Input['TenantSessionsArgs'] sessions: Sessions related settings for the tenant.
-        :param pulumi.Input[_builtins.bool] skip_non_verifiable_callback_uri_confirmation_prompt: Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+        :param pulumi.Input[_builtins.str] skip_non_verifiable_callback_uri_confirmation_prompt: Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
         :param pulumi.Input[_builtins.str] support_email: Support email address for authenticating users.
         :param pulumi.Input[_builtins.str] support_url: Support URL for authenticating users.
         """
@@ -799,14 +799,14 @@ class _TenantState:
 
     @_builtins.property
     @pulumi.getter(name="skipNonVerifiableCallbackUriConfirmationPrompt")
-    def skip_non_verifiable_callback_uri_confirmation_prompt(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_non_verifiable_callback_uri_confirmation_prompt(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+        Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
         """
         return pulumi.get(self, "skip_non_verifiable_callback_uri_confirmation_prompt")
 
     @skip_non_verifiable_callback_uri_confirmation_prompt.setter
-    def skip_non_verifiable_callback_uri_confirmation_prompt(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_non_verifiable_callback_uri_confirmation_prompt(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "skip_non_verifiable_callback_uri_confirmation_prompt", value)
 
     @_builtins.property
@@ -862,7 +862,7 @@ class Tenant(pulumi.CustomResource):
                  session_cookie: Optional[pulumi.Input[Union['TenantSessionCookieArgs', 'TenantSessionCookieArgsDict']]] = None,
                  session_lifetime: Optional[pulumi.Input[_builtins.float]] = None,
                  sessions: Optional[pulumi.Input[Union['TenantSessionsArgs', 'TenantSessionsArgsDict']]] = None,
-                 skip_non_verifiable_callback_uri_confirmation_prompt: Optional[pulumi.Input[_builtins.bool]] = None,
+                 skip_non_verifiable_callback_uri_confirmation_prompt: Optional[pulumi.Input[_builtins.str]] = None,
                  support_email: Optional[pulumi.Input[_builtins.str]] = None,
                  support_url: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -885,10 +885,9 @@ class Tenant(pulumi.CustomResource):
             support_url="http://example.com/support",
             allowed_logout_urls=["http://example.com/logout"],
             session_lifetime=8760,
-            sandbox_version="12",
+            sandbox_version="22",
             enabled_locales=["en"],
             default_redirection_uri="https://example.com/login",
-            skip_non_verifiable_callback_uri_confirmation_prompt=True,
             flags={
                 "disable_clickjack_protection_headers": True,
                 "enable_public_signup_user_exists_error": True,
@@ -948,7 +947,7 @@ class Tenant(pulumi.CustomResource):
         :param pulumi.Input[Union['TenantSessionCookieArgs', 'TenantSessionCookieArgsDict']] session_cookie: Alters behavior of tenant's session cookie. Contains a single `mode` property.
         :param pulumi.Input[_builtins.float] session_lifetime: Number of hours during which a session will stay valid.
         :param pulumi.Input[Union['TenantSessionsArgs', 'TenantSessionsArgsDict']] sessions: Sessions related settings for the tenant.
-        :param pulumi.Input[_builtins.bool] skip_non_verifiable_callback_uri_confirmation_prompt: Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+        :param pulumi.Input[_builtins.str] skip_non_verifiable_callback_uri_confirmation_prompt: Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
         :param pulumi.Input[_builtins.str] support_email: Support email address for authenticating users.
         :param pulumi.Input[_builtins.str] support_url: Support URL for authenticating users.
         """
@@ -977,10 +976,9 @@ class Tenant(pulumi.CustomResource):
             support_url="http://example.com/support",
             allowed_logout_urls=["http://example.com/logout"],
             session_lifetime=8760,
-            sandbox_version="12",
+            sandbox_version="22",
             enabled_locales=["en"],
             default_redirection_uri="https://example.com/login",
-            skip_non_verifiable_callback_uri_confirmation_prompt=True,
             flags={
                 "disable_clickjack_protection_headers": True,
                 "enable_public_signup_user_exists_error": True,
@@ -1053,7 +1051,7 @@ class Tenant(pulumi.CustomResource):
                  session_cookie: Optional[pulumi.Input[Union['TenantSessionCookieArgs', 'TenantSessionCookieArgsDict']]] = None,
                  session_lifetime: Optional[pulumi.Input[_builtins.float]] = None,
                  sessions: Optional[pulumi.Input[Union['TenantSessionsArgs', 'TenantSessionsArgsDict']]] = None,
-                 skip_non_verifiable_callback_uri_confirmation_prompt: Optional[pulumi.Input[_builtins.bool]] = None,
+                 skip_non_verifiable_callback_uri_confirmation_prompt: Optional[pulumi.Input[_builtins.str]] = None,
                  support_email: Optional[pulumi.Input[_builtins.str]] = None,
                  support_url: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -1122,7 +1120,7 @@ class Tenant(pulumi.CustomResource):
             session_cookie: Optional[pulumi.Input[Union['TenantSessionCookieArgs', 'TenantSessionCookieArgsDict']]] = None,
             session_lifetime: Optional[pulumi.Input[_builtins.float]] = None,
             sessions: Optional[pulumi.Input[Union['TenantSessionsArgs', 'TenantSessionsArgsDict']]] = None,
-            skip_non_verifiable_callback_uri_confirmation_prompt: Optional[pulumi.Input[_builtins.bool]] = None,
+            skip_non_verifiable_callback_uri_confirmation_prompt: Optional[pulumi.Input[_builtins.str]] = None,
             support_email: Optional[pulumi.Input[_builtins.str]] = None,
             support_url: Optional[pulumi.Input[_builtins.str]] = None) -> 'Tenant':
         """
@@ -1154,7 +1152,7 @@ class Tenant(pulumi.CustomResource):
         :param pulumi.Input[Union['TenantSessionCookieArgs', 'TenantSessionCookieArgsDict']] session_cookie: Alters behavior of tenant's session cookie. Contains a single `mode` property.
         :param pulumi.Input[_builtins.float] session_lifetime: Number of hours during which a session will stay valid.
         :param pulumi.Input[Union['TenantSessionsArgs', 'TenantSessionsArgsDict']] sessions: Sessions related settings for the tenant.
-        :param pulumi.Input[_builtins.bool] skip_non_verifiable_callback_uri_confirmation_prompt: Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+        :param pulumi.Input[_builtins.str] skip_non_verifiable_callback_uri_confirmation_prompt: Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
         :param pulumi.Input[_builtins.str] support_email: Support email address for authenticating users.
         :param pulumi.Input[_builtins.str] support_url: Support URL for authenticating users.
         """
@@ -1367,9 +1365,9 @@ class Tenant(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="skipNonVerifiableCallbackUriConfirmationPrompt")
-    def skip_non_verifiable_callback_uri_confirmation_prompt(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def skip_non_verifiable_callback_uri_confirmation_prompt(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+        Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
         """
         return pulumi.get(self, "skip_non_verifiable_callback_uri_confirmation_prompt")
 

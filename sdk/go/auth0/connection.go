@@ -64,7 +64,7 @@ import (
 //					RequiresUsername:             pulumi.Bool(true),
 //					DisableSignup:                pulumi.Bool(false),
 //					CustomScripts: pulumi.StringMap{
-//						"get_user": pulumi.String("        function getByEmail(email, callback) {\n          return callback(new Error(\"Whoops!\"));\n        }\n"),
+//						"get_user": pulumi.String("        function getByEmail(email, callback) {\n          return callback(new Error(\\\"Whoops!\\\"));\n        }\n"),
 //					},
 //					Configuration: pulumi.StringMap{
 //						"foo": pulumi.String("bar"),
@@ -496,7 +496,7 @@ import (
 //						},
 //					},
 //					Scripts: pulumi.StringMap{
-//						"fetchUserProfile": pulumi.String("        function fetchUserProfile(accessToken, context, callback) {\n          return callback(new Error(\"Whoops!\"));\n        }\n"),
+//						"fetchUserProfile": pulumi.String("        function fetchUserProfile(accessToken, context, callback) {\n          return callback(new Error(\\\"Whoops!\\\"));\n        }\n"),
 //					},
 //					SetUserRootAttributes: pulumi.String("on_each_login"),
 //					NonPersistentAttrs: pulumi.StringArray{
@@ -764,11 +764,11 @@ import (
 //					DigestAlgorithm:    pulumi.String("sha256"),
 //					IconUrl:            pulumi.String("https://saml.provider/assets/logo.png"),
 //					EntityId:           pulumi.String("<entity_id>"),
-//					MetadataXml: pulumi.String(`    <?xml version="1.0"?>
-//	    <md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" entityID="https://example.com">
-//	      <md:IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
-//	        <md:SingleLogoutService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://saml.provider/sign_out"/>
-//	        <md:SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://saml.provider/sign_in"/>
+//					MetadataXml: pulumi.String(`    <?xml version=\"1.0\"?>
+//	    <md:EntityDescriptor xmlns:md=\"urn:oasis:names:tc:SAML:2.0:metadata\" xmlns:ds=\"http://www.w3.org/2000/09/xmldsig#\" entityID=\"https://example.com\">
+//	      <md:IDPSSODescriptor protocolSupportEnumeration=\"urn:oasis:names:tc:SAML:2.0:protocol\">
+//	        <md:SingleLogoutService Binding=\"urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect\" Location=\"https://saml.provider/sign_out\"/>
+//	        <md:SingleSignOnService Binding=\"urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect\" Location=\"https://saml.provider/sign_in\"/>
 //	      </md:IDPSSODescriptor>
 //	    </md:EntityDescriptor>
 //

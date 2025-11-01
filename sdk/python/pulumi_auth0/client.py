@@ -50,6 +50,7 @@ class ClientArgs:
                  oidc_backchannel_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  oidc_conformant: Optional[pulumi.Input[_builtins.bool]] = None,
                  oidc_logout: Optional[pulumi.Input['ClientOidcLogoutArgs']] = None,
+                 organization_discovery_methods: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  organization_require_behavior: Optional[pulumi.Input[_builtins.str]] = None,
                  organization_usage: Optional[pulumi.Input[_builtins.str]] = None,
                  refresh_token: Optional[pulumi.Input['ClientRefreshTokenArgs']] = None,
@@ -57,7 +58,7 @@ class ClientArgs:
                  require_pushed_authorization_requests: Optional[pulumi.Input[_builtins.bool]] = None,
                  resource_server_identifier: Optional[pulumi.Input[_builtins.str]] = None,
                  session_transfer: Optional[pulumi.Input['ClientSessionTransferArgs']] = None,
-                 skip_non_verifiable_callback_uri_confirmation_prompt: Optional[pulumi.Input[_builtins.bool]] = None,
+                 skip_non_verifiable_callback_uri_confirmation_prompt: Optional[pulumi.Input[_builtins.str]] = None,
                  sso: Optional[pulumi.Input[_builtins.bool]] = None,
                  sso_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  token_exchange: Optional[pulumi.Input['ClientTokenExchangeArgs']] = None,
@@ -94,13 +95,14 @@ class ClientArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] oidc_backchannel_logout_urls: Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
         :param pulumi.Input[_builtins.bool] oidc_conformant: Indicates whether this client will conform to strict OIDC specifications.
         :param pulumi.Input['ClientOidcLogoutArgs'] oidc_logout: Configure OIDC logout for the Client
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] organization_discovery_methods: Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organization_name` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organization_require_behavior` is set to `pre_login_prompt`.
         :param pulumi.Input[_builtins.str] organization_require_behavior: Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.
         :param pulumi.Input[_builtins.str] organization_usage: Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
         :param pulumi.Input['ClientRefreshTokenArgs'] refresh_token: Configuration settings for the refresh tokens issued for this client.
         :param pulumi.Input[_builtins.bool] require_proof_of_possession: Makes the use of Proof-of-Possession mandatory for this client.
         :param pulumi.Input[_builtins.bool] require_pushed_authorization_requests: Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
         :param pulumi.Input[_builtins.str] resource_server_identifier: The identifier of a resource server that client is associated withThis property can be sent only when app*type=resource*server.This property can not be changed, once the client is created.
-        :param pulumi.Input[_builtins.bool] skip_non_verifiable_callback_uri_confirmation_prompt: Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+        :param pulumi.Input[_builtins.str] skip_non_verifiable_callback_uri_confirmation_prompt: Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
         :param pulumi.Input[_builtins.bool] sso: Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
         :param pulumi.Input[_builtins.bool] sso_disabled: Indicates whether or not SSO is disabled.
         :param pulumi.Input['ClientTokenExchangeArgs'] token_exchange: Allows configuration for token exchange
@@ -170,6 +172,8 @@ class ClientArgs:
             pulumi.set(__self__, "oidc_conformant", oidc_conformant)
         if oidc_logout is not None:
             pulumi.set(__self__, "oidc_logout", oidc_logout)
+        if organization_discovery_methods is not None:
+            pulumi.set(__self__, "organization_discovery_methods", organization_discovery_methods)
         if organization_require_behavior is not None:
             pulumi.set(__self__, "organization_require_behavior", organization_require_behavior)
         if organization_usage is not None:
@@ -547,6 +551,18 @@ class ClientArgs:
         pulumi.set(self, "oidc_logout", value)
 
     @_builtins.property
+    @pulumi.getter(name="organizationDiscoveryMethods")
+    def organization_discovery_methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organization_name` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organization_require_behavior` is set to `pre_login_prompt`.
+        """
+        return pulumi.get(self, "organization_discovery_methods")
+
+    @organization_discovery_methods.setter
+    def organization_discovery_methods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "organization_discovery_methods", value)
+
+    @_builtins.property
     @pulumi.getter(name="organizationRequireBehavior")
     def organization_require_behavior(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -629,14 +645,14 @@ class ClientArgs:
 
     @_builtins.property
     @pulumi.getter(name="skipNonVerifiableCallbackUriConfirmationPrompt")
-    def skip_non_verifiable_callback_uri_confirmation_prompt(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_non_verifiable_callback_uri_confirmation_prompt(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+        Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
         """
         return pulumi.get(self, "skip_non_verifiable_callback_uri_confirmation_prompt")
 
     @skip_non_verifiable_callback_uri_confirmation_prompt.setter
-    def skip_non_verifiable_callback_uri_confirmation_prompt(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_non_verifiable_callback_uri_confirmation_prompt(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "skip_non_verifiable_callback_uri_confirmation_prompt", value)
 
     @_builtins.property
@@ -733,6 +749,7 @@ class _ClientState:
                  oidc_backchannel_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  oidc_conformant: Optional[pulumi.Input[_builtins.bool]] = None,
                  oidc_logout: Optional[pulumi.Input['ClientOidcLogoutArgs']] = None,
+                 organization_discovery_methods: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  organization_require_behavior: Optional[pulumi.Input[_builtins.str]] = None,
                  organization_usage: Optional[pulumi.Input[_builtins.str]] = None,
                  refresh_token: Optional[pulumi.Input['ClientRefreshTokenArgs']] = None,
@@ -741,7 +758,7 @@ class _ClientState:
                  resource_server_identifier: Optional[pulumi.Input[_builtins.str]] = None,
                  session_transfer: Optional[pulumi.Input['ClientSessionTransferArgs']] = None,
                  signing_keys: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
-                 skip_non_verifiable_callback_uri_confirmation_prompt: Optional[pulumi.Input[_builtins.bool]] = None,
+                 skip_non_verifiable_callback_uri_confirmation_prompt: Optional[pulumi.Input[_builtins.str]] = None,
                  sso: Optional[pulumi.Input[_builtins.bool]] = None,
                  sso_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  token_exchange: Optional[pulumi.Input['ClientTokenExchangeArgs']] = None,
@@ -779,6 +796,7 @@ class _ClientState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] oidc_backchannel_logout_urls: Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
         :param pulumi.Input[_builtins.bool] oidc_conformant: Indicates whether this client will conform to strict OIDC specifications.
         :param pulumi.Input['ClientOidcLogoutArgs'] oidc_logout: Configure OIDC logout for the Client
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] organization_discovery_methods: Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organization_name` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organization_require_behavior` is set to `pre_login_prompt`.
         :param pulumi.Input[_builtins.str] organization_require_behavior: Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.
         :param pulumi.Input[_builtins.str] organization_usage: Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
         :param pulumi.Input['ClientRefreshTokenArgs'] refresh_token: Configuration settings for the refresh tokens issued for this client.
@@ -786,7 +804,7 @@ class _ClientState:
         :param pulumi.Input[_builtins.bool] require_pushed_authorization_requests: Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
         :param pulumi.Input[_builtins.str] resource_server_identifier: The identifier of a resource server that client is associated withThis property can be sent only when app*type=resource*server.This property can not be changed, once the client is created.
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]] signing_keys: List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
-        :param pulumi.Input[_builtins.bool] skip_non_verifiable_callback_uri_confirmation_prompt: Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+        :param pulumi.Input[_builtins.str] skip_non_verifiable_callback_uri_confirmation_prompt: Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
         :param pulumi.Input[_builtins.bool] sso: Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
         :param pulumi.Input[_builtins.bool] sso_disabled: Indicates whether or not SSO is disabled.
         :param pulumi.Input['ClientTokenExchangeArgs'] token_exchange: Allows configuration for token exchange
@@ -858,6 +876,8 @@ class _ClientState:
             pulumi.set(__self__, "oidc_conformant", oidc_conformant)
         if oidc_logout is not None:
             pulumi.set(__self__, "oidc_logout", oidc_logout)
+        if organization_discovery_methods is not None:
+            pulumi.set(__self__, "organization_discovery_methods", organization_discovery_methods)
         if organization_require_behavior is not None:
             pulumi.set(__self__, "organization_require_behavior", organization_require_behavior)
         if organization_usage is not None:
@@ -1249,6 +1269,18 @@ class _ClientState:
         pulumi.set(self, "oidc_logout", value)
 
     @_builtins.property
+    @pulumi.getter(name="organizationDiscoveryMethods")
+    def organization_discovery_methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organization_name` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organization_require_behavior` is set to `pre_login_prompt`.
+        """
+        return pulumi.get(self, "organization_discovery_methods")
+
+    @organization_discovery_methods.setter
+    def organization_discovery_methods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "organization_discovery_methods", value)
+
+    @_builtins.property
     @pulumi.getter(name="organizationRequireBehavior")
     def organization_require_behavior(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -1343,14 +1375,14 @@ class _ClientState:
 
     @_builtins.property
     @pulumi.getter(name="skipNonVerifiableCallbackUriConfirmationPrompt")
-    def skip_non_verifiable_callback_uri_confirmation_prompt(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_non_verifiable_callback_uri_confirmation_prompt(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+        Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
         """
         return pulumi.get(self, "skip_non_verifiable_callback_uri_confirmation_prompt")
 
     @skip_non_verifiable_callback_uri_confirmation_prompt.setter
-    def skip_non_verifiable_callback_uri_confirmation_prompt(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_non_verifiable_callback_uri_confirmation_prompt(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "skip_non_verifiable_callback_uri_confirmation_prompt", value)
 
     @_builtins.property
@@ -1449,6 +1481,7 @@ class Client(pulumi.CustomResource):
                  oidc_backchannel_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  oidc_conformant: Optional[pulumi.Input[_builtins.bool]] = None,
                  oidc_logout: Optional[pulumi.Input[Union['ClientOidcLogoutArgs', 'ClientOidcLogoutArgsDict']]] = None,
+                 organization_discovery_methods: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  organization_require_behavior: Optional[pulumi.Input[_builtins.str]] = None,
                  organization_usage: Optional[pulumi.Input[_builtins.str]] = None,
                  refresh_token: Optional[pulumi.Input[Union['ClientRefreshTokenArgs', 'ClientRefreshTokenArgsDict']]] = None,
@@ -1456,7 +1489,7 @@ class Client(pulumi.CustomResource):
                  require_pushed_authorization_requests: Optional[pulumi.Input[_builtins.bool]] = None,
                  resource_server_identifier: Optional[pulumi.Input[_builtins.str]] = None,
                  session_transfer: Optional[pulumi.Input[Union['ClientSessionTransferArgs', 'ClientSessionTransferArgsDict']]] = None,
-                 skip_non_verifiable_callback_uri_confirmation_prompt: Optional[pulumi.Input[_builtins.bool]] = None,
+                 skip_non_verifiable_callback_uri_confirmation_prompt: Optional[pulumi.Input[_builtins.str]] = None,
                  sso: Optional[pulumi.Input[_builtins.bool]] = None,
                  sso_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  token_exchange: Optional[pulumi.Input[Union['ClientTokenExchangeArgs', 'ClientTokenExchangeArgsDict']]] = None,
@@ -1507,13 +1540,14 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] oidc_backchannel_logout_urls: Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
         :param pulumi.Input[_builtins.bool] oidc_conformant: Indicates whether this client will conform to strict OIDC specifications.
         :param pulumi.Input[Union['ClientOidcLogoutArgs', 'ClientOidcLogoutArgsDict']] oidc_logout: Configure OIDC logout for the Client
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] organization_discovery_methods: Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organization_name` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organization_require_behavior` is set to `pre_login_prompt`.
         :param pulumi.Input[_builtins.str] organization_require_behavior: Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.
         :param pulumi.Input[_builtins.str] organization_usage: Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
         :param pulumi.Input[Union['ClientRefreshTokenArgs', 'ClientRefreshTokenArgsDict']] refresh_token: Configuration settings for the refresh tokens issued for this client.
         :param pulumi.Input[_builtins.bool] require_proof_of_possession: Makes the use of Proof-of-Possession mandatory for this client.
         :param pulumi.Input[_builtins.bool] require_pushed_authorization_requests: Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
         :param pulumi.Input[_builtins.str] resource_server_identifier: The identifier of a resource server that client is associated withThis property can be sent only when app*type=resource*server.This property can not be changed, once the client is created.
-        :param pulumi.Input[_builtins.bool] skip_non_verifiable_callback_uri_confirmation_prompt: Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+        :param pulumi.Input[_builtins.str] skip_non_verifiable_callback_uri_confirmation_prompt: Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
         :param pulumi.Input[_builtins.bool] sso: Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
         :param pulumi.Input[_builtins.bool] sso_disabled: Indicates whether or not SSO is disabled.
         :param pulumi.Input[Union['ClientTokenExchangeArgs', 'ClientTokenExchangeArgsDict']] token_exchange: Allows configuration for token exchange
@@ -1583,6 +1617,7 @@ class Client(pulumi.CustomResource):
                  oidc_backchannel_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  oidc_conformant: Optional[pulumi.Input[_builtins.bool]] = None,
                  oidc_logout: Optional[pulumi.Input[Union['ClientOidcLogoutArgs', 'ClientOidcLogoutArgsDict']]] = None,
+                 organization_discovery_methods: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  organization_require_behavior: Optional[pulumi.Input[_builtins.str]] = None,
                  organization_usage: Optional[pulumi.Input[_builtins.str]] = None,
                  refresh_token: Optional[pulumi.Input[Union['ClientRefreshTokenArgs', 'ClientRefreshTokenArgsDict']]] = None,
@@ -1590,7 +1625,7 @@ class Client(pulumi.CustomResource):
                  require_pushed_authorization_requests: Optional[pulumi.Input[_builtins.bool]] = None,
                  resource_server_identifier: Optional[pulumi.Input[_builtins.str]] = None,
                  session_transfer: Optional[pulumi.Input[Union['ClientSessionTransferArgs', 'ClientSessionTransferArgsDict']]] = None,
-                 skip_non_verifiable_callback_uri_confirmation_prompt: Optional[pulumi.Input[_builtins.bool]] = None,
+                 skip_non_verifiable_callback_uri_confirmation_prompt: Optional[pulumi.Input[_builtins.str]] = None,
                  sso: Optional[pulumi.Input[_builtins.bool]] = None,
                  sso_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  token_exchange: Optional[pulumi.Input[Union['ClientTokenExchangeArgs', 'ClientTokenExchangeArgsDict']]] = None,
@@ -1636,6 +1671,7 @@ class Client(pulumi.CustomResource):
             __props__.__dict__["oidc_backchannel_logout_urls"] = oidc_backchannel_logout_urls
             __props__.__dict__["oidc_conformant"] = oidc_conformant
             __props__.__dict__["oidc_logout"] = oidc_logout
+            __props__.__dict__["organization_discovery_methods"] = organization_discovery_methods
             __props__.__dict__["organization_require_behavior"] = organization_require_behavior
             __props__.__dict__["organization_usage"] = organization_usage
             __props__.__dict__["refresh_token"] = refresh_token
@@ -1693,6 +1729,7 @@ class Client(pulumi.CustomResource):
             oidc_backchannel_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             oidc_conformant: Optional[pulumi.Input[_builtins.bool]] = None,
             oidc_logout: Optional[pulumi.Input[Union['ClientOidcLogoutArgs', 'ClientOidcLogoutArgsDict']]] = None,
+            organization_discovery_methods: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             organization_require_behavior: Optional[pulumi.Input[_builtins.str]] = None,
             organization_usage: Optional[pulumi.Input[_builtins.str]] = None,
             refresh_token: Optional[pulumi.Input[Union['ClientRefreshTokenArgs', 'ClientRefreshTokenArgsDict']]] = None,
@@ -1701,7 +1738,7 @@ class Client(pulumi.CustomResource):
             resource_server_identifier: Optional[pulumi.Input[_builtins.str]] = None,
             session_transfer: Optional[pulumi.Input[Union['ClientSessionTransferArgs', 'ClientSessionTransferArgsDict']]] = None,
             signing_keys: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
-            skip_non_verifiable_callback_uri_confirmation_prompt: Optional[pulumi.Input[_builtins.bool]] = None,
+            skip_non_verifiable_callback_uri_confirmation_prompt: Optional[pulumi.Input[_builtins.str]] = None,
             sso: Optional[pulumi.Input[_builtins.bool]] = None,
             sso_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
             token_exchange: Optional[pulumi.Input[Union['ClientTokenExchangeArgs', 'ClientTokenExchangeArgsDict']]] = None,
@@ -1744,6 +1781,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] oidc_backchannel_logout_urls: Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
         :param pulumi.Input[_builtins.bool] oidc_conformant: Indicates whether this client will conform to strict OIDC specifications.
         :param pulumi.Input[Union['ClientOidcLogoutArgs', 'ClientOidcLogoutArgsDict']] oidc_logout: Configure OIDC logout for the Client
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] organization_discovery_methods: Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organization_name` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organization_require_behavior` is set to `pre_login_prompt`.
         :param pulumi.Input[_builtins.str] organization_require_behavior: Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.
         :param pulumi.Input[_builtins.str] organization_usage: Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
         :param pulumi.Input[Union['ClientRefreshTokenArgs', 'ClientRefreshTokenArgsDict']] refresh_token: Configuration settings for the refresh tokens issued for this client.
@@ -1751,7 +1789,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] require_pushed_authorization_requests: Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
         :param pulumi.Input[_builtins.str] resource_server_identifier: The identifier of a resource server that client is associated withThis property can be sent only when app*type=resource*server.This property can not be changed, once the client is created.
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]] signing_keys: List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
-        :param pulumi.Input[_builtins.bool] skip_non_verifiable_callback_uri_confirmation_prompt: Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+        :param pulumi.Input[_builtins.str] skip_non_verifiable_callback_uri_confirmation_prompt: Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
         :param pulumi.Input[_builtins.bool] sso: Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
         :param pulumi.Input[_builtins.bool] sso_disabled: Indicates whether or not SSO is disabled.
         :param pulumi.Input[Union['ClientTokenExchangeArgs', 'ClientTokenExchangeArgsDict']] token_exchange: Allows configuration for token exchange
@@ -1792,6 +1830,7 @@ class Client(pulumi.CustomResource):
         __props__.__dict__["oidc_backchannel_logout_urls"] = oidc_backchannel_logout_urls
         __props__.__dict__["oidc_conformant"] = oidc_conformant
         __props__.__dict__["oidc_logout"] = oidc_logout
+        __props__.__dict__["organization_discovery_methods"] = organization_discovery_methods
         __props__.__dict__["organization_require_behavior"] = organization_require_behavior
         __props__.__dict__["organization_usage"] = organization_usage
         __props__.__dict__["refresh_token"] = refresh_token
@@ -2050,6 +2089,14 @@ class Client(pulumi.CustomResource):
         return pulumi.get(self, "oidc_logout")
 
     @_builtins.property
+    @pulumi.getter(name="organizationDiscoveryMethods")
+    def organization_discovery_methods(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organization_name` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organization_require_behavior` is set to `pre_login_prompt`.
+        """
+        return pulumi.get(self, "organization_discovery_methods")
+
+    @_builtins.property
     @pulumi.getter(name="organizationRequireBehavior")
     def organization_require_behavior(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
@@ -2112,9 +2159,9 @@ class Client(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="skipNonVerifiableCallbackUriConfirmationPrompt")
-    def skip_non_verifiable_callback_uri_confirmation_prompt(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def skip_non_verifiable_callback_uri_confirmation_prompt(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+        Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
         """
         return pulumi.get(self, "skip_non_verifiable_callback_uri_confirmation_prompt")
 

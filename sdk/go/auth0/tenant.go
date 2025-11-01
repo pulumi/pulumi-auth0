@@ -39,12 +39,11 @@ import (
 //					pulumi.String("http://example.com/logout"),
 //				},
 //				SessionLifetime: pulumi.Float64(8760),
-//				SandboxVersion:  pulumi.String("12"),
+//				SandboxVersion:  pulumi.String("22"),
 //				EnabledLocales: pulumi.StringArray{
 //					pulumi.String("en"),
 //				},
-//				DefaultRedirectionUri:                          pulumi.String("https://example.com/login"),
-//				SkipNonVerifiableCallbackUriConfirmationPrompt: pulumi.Bool(true),
+//				DefaultRedirectionUri: pulumi.String("https://example.com/login"),
 //				Flags: &auth0.TenantFlagsArgs{
 //					DisableClickjackProtectionHeaders:  pulumi.Bool(true),
 //					EnablePublicSignupUserExistsError:  pulumi.Bool(true),
@@ -134,8 +133,8 @@ type Tenant struct {
 	SessionLifetime pulumi.Float64PtrOutput `pulumi:"sessionLifetime"`
 	// Sessions related settings for the tenant.
 	Sessions TenantSessionsOutput `pulumi:"sessions"`
-	// Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
-	SkipNonVerifiableCallbackUriConfirmationPrompt pulumi.BoolPtrOutput `pulumi:"skipNonVerifiableCallbackUriConfirmationPrompt"`
+	// Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
+	SkipNonVerifiableCallbackUriConfirmationPrompt pulumi.StringPtrOutput `pulumi:"skipNonVerifiableCallbackUriConfirmationPrompt"`
 	// Support email address for authenticating users.
 	SupportEmail pulumi.StringOutput `pulumi:"supportEmail"`
 	// Support URL for authenticating users.
@@ -216,8 +215,8 @@ type tenantState struct {
 	SessionLifetime *float64 `pulumi:"sessionLifetime"`
 	// Sessions related settings for the tenant.
 	Sessions *TenantSessions `pulumi:"sessions"`
-	// Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
-	SkipNonVerifiableCallbackUriConfirmationPrompt *bool `pulumi:"skipNonVerifiableCallbackUriConfirmationPrompt"`
+	// Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
+	SkipNonVerifiableCallbackUriConfirmationPrompt *string `pulumi:"skipNonVerifiableCallbackUriConfirmationPrompt"`
 	// Support email address for authenticating users.
 	SupportEmail *string `pulumi:"supportEmail"`
 	// Support URL for authenticating users.
@@ -269,8 +268,8 @@ type TenantState struct {
 	SessionLifetime pulumi.Float64PtrInput
 	// Sessions related settings for the tenant.
 	Sessions TenantSessionsPtrInput
-	// Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
-	SkipNonVerifiableCallbackUriConfirmationPrompt pulumi.BoolPtrInput
+	// Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
+	SkipNonVerifiableCallbackUriConfirmationPrompt pulumi.StringPtrInput
 	// Support email address for authenticating users.
 	SupportEmail pulumi.StringPtrInput
 	// Support URL for authenticating users.
@@ -326,8 +325,8 @@ type tenantArgs struct {
 	SessionLifetime *float64 `pulumi:"sessionLifetime"`
 	// Sessions related settings for the tenant.
 	Sessions *TenantSessions `pulumi:"sessions"`
-	// Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
-	SkipNonVerifiableCallbackUriConfirmationPrompt *bool `pulumi:"skipNonVerifiableCallbackUriConfirmationPrompt"`
+	// Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
+	SkipNonVerifiableCallbackUriConfirmationPrompt *string `pulumi:"skipNonVerifiableCallbackUriConfirmationPrompt"`
 	// Support email address for authenticating users.
 	SupportEmail *string `pulumi:"supportEmail"`
 	// Support URL for authenticating users.
@@ -380,8 +379,8 @@ type TenantArgs struct {
 	SessionLifetime pulumi.Float64PtrInput
 	// Sessions related settings for the tenant.
 	Sessions TenantSessionsPtrInput
-	// Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
-	SkipNonVerifiableCallbackUriConfirmationPrompt pulumi.BoolPtrInput
+	// Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
+	SkipNonVerifiableCallbackUriConfirmationPrompt pulumi.StringPtrInput
 	// Support email address for authenticating users.
 	SupportEmail pulumi.StringPtrInput
 	// Support URL for authenticating users.
@@ -585,9 +584,9 @@ func (o TenantOutput) Sessions() TenantSessionsOutput {
 	return o.ApplyT(func(v *Tenant) TenantSessionsOutput { return v.Sessions }).(TenantSessionsOutput)
 }
 
-// Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
-func (o TenantOutput) SkipNonVerifiableCallbackUriConfirmationPrompt() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Tenant) pulumi.BoolPtrOutput { return v.SkipNonVerifiableCallbackUriConfirmationPrompt }).(pulumi.BoolPtrOutput)
+// Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
+func (o TenantOutput) SkipNonVerifiableCallbackUriConfirmationPrompt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Tenant) pulumi.StringPtrOutput { return v.SkipNonVerifiableCallbackUriConfirmationPrompt }).(pulumi.StringPtrOutput)
 }
 
 // Support email address for authenticating users.

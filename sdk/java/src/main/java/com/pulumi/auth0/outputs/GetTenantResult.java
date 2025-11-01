@@ -146,10 +146,10 @@ public final class GetTenantResult {
      */
     private List<GetTenantSession> sessions;
     /**
-     * @return Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+     * @return Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or (&#34;true&#34;/&#34;false&#34;/&#34;null&#34;)
      * 
      */
-    private Boolean skipNonVerifiableCallbackUriConfirmationPrompt;
+    private String skipNonVerifiableCallbackUriConfirmationPrompt;
     /**
      * @return Support email address for authenticating users.
      * 
@@ -338,10 +338,10 @@ public final class GetTenantResult {
         return this.sessions;
     }
     /**
-     * @return Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+     * @return Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or (&#34;true&#34;/&#34;false&#34;/&#34;null&#34;)
      * 
      */
-    public Boolean skipNonVerifiableCallbackUriConfirmationPrompt() {
+    public String skipNonVerifiableCallbackUriConfirmationPrompt() {
         return this.skipNonVerifiableCallbackUriConfirmationPrompt;
     }
     /**
@@ -393,7 +393,7 @@ public final class GetTenantResult {
         private List<GetTenantSessionCooky> sessionCookies;
         private Double sessionLifetime;
         private List<GetTenantSession> sessions;
-        private Boolean skipNonVerifiableCallbackUriConfirmationPrompt;
+        private String skipNonVerifiableCallbackUriConfirmationPrompt;
         private String supportEmail;
         private String supportUrl;
         public Builder() {}
@@ -660,7 +660,7 @@ public final class GetTenantResult {
             return sessions(List.of(sessions));
         }
         @CustomType.Setter
-        public Builder skipNonVerifiableCallbackUriConfirmationPrompt(Boolean skipNonVerifiableCallbackUriConfirmationPrompt) {
+        public Builder skipNonVerifiableCallbackUriConfirmationPrompt(String skipNonVerifiableCallbackUriConfirmationPrompt) {
             if (skipNonVerifiableCallbackUriConfirmationPrompt == null) {
               throw new MissingRequiredPropertyException("GetTenantResult", "skipNonVerifiableCallbackUriConfirmationPrompt");
             }

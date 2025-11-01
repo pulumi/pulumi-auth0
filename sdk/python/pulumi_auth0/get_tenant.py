@@ -103,8 +103,8 @@ class GetTenantResult:
         if sessions and not isinstance(sessions, list):
             raise TypeError("Expected argument 'sessions' to be a list")
         pulumi.set(__self__, "sessions", sessions)
-        if skip_non_verifiable_callback_uri_confirmation_prompt and not isinstance(skip_non_verifiable_callback_uri_confirmation_prompt, bool):
-            raise TypeError("Expected argument 'skip_non_verifiable_callback_uri_confirmation_prompt' to be a bool")
+        if skip_non_verifiable_callback_uri_confirmation_prompt and not isinstance(skip_non_verifiable_callback_uri_confirmation_prompt, str):
+            raise TypeError("Expected argument 'skip_non_verifiable_callback_uri_confirmation_prompt' to be a str")
         pulumi.set(__self__, "skip_non_verifiable_callback_uri_confirmation_prompt", skip_non_verifiable_callback_uri_confirmation_prompt)
         if support_email and not isinstance(support_email, str):
             raise TypeError("Expected argument 'support_email' to be a str")
@@ -315,9 +315,9 @@ class GetTenantResult:
 
     @_builtins.property
     @pulumi.getter(name="skipNonVerifiableCallbackUriConfirmationPrompt")
-    def skip_non_verifiable_callback_uri_confirmation_prompt(self) -> _builtins.bool:
+    def skip_non_verifiable_callback_uri_confirmation_prompt(self) -> _builtins.str:
         """
-        Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+        Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
         """
         return pulumi.get(self, "skip_non_verifiable_callback_uri_confirmation_prompt")
 

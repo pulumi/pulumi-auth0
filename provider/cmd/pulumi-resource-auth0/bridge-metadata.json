@@ -350,6 +350,9 @@
                             }
                         }
                     },
+                    "organization_discovery_methods": {
+                        "maxItemsOne": false
+                    },
                     "refresh_token": {
                         "maxItemsOne": true,
                         "elem": {
@@ -964,6 +967,19 @@
                 "majorVersion": 3,
                 "fields": {
                     "enabled_connections": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "auth0_organization_discovery_domain": {
+                "current": "auth0:index/organizationDiscoveryDomain:OrganizationDiscoveryDomain",
+                "majorVersion": 3
+            },
+            "auth0_organization_discovery_domains": {
+                "current": "auth0:index/organizationDiscoveryDomains:OrganizationDiscoveryDomains",
+                "majorVersion": 3,
+                "fields": {
+                    "discovery_domains": {
                         "maxItemsOne": false
                     }
                 }
@@ -1734,6 +1750,9 @@
                             }
                         }
                     },
+                    "organization_discovery_methods": {
+                        "maxItemsOne": false
+                    },
                     "refresh_token": {
                         "maxItemsOne": false,
                         "elem": {
@@ -1799,6 +1818,22 @@
                     }
                 }
             },
+            "auth0_client_grants": {
+                "current": "auth0:index/getClientGrants:getClientGrants",
+                "majorVersion": 3,
+                "fields": {
+                    "client_grants": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "scope": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "auth0_clients": {
                 "current": "auth0:index/getClients:getClients",
                 "majorVersion": 3,
@@ -1844,6 +1879,9 @@
                                             }
                                         }
                                     }
+                                },
+                                "organization_discovery_methods": {
+                                    "maxItemsOne": false
                                 },
                                 "session_transfer": {
                                     "maxItemsOne": false,

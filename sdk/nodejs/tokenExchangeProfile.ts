@@ -18,8 +18,8 @@ import * as utilities from "./utilities";
  * const myAction = new auth0.Action("my_action", {
  *     name: "TokenExchange-Action",
  *     code: `exports.onExecuteCustomTokenExchange = async (event, api) => {
- * \x09console.log("foo")
- * };"
+ * \\tconsole.log(\\"foo\\")
+ * };\\"
  * `,
  *     deploy: true,
  *     supportedTriggers: {

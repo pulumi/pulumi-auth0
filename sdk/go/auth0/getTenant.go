@@ -98,8 +98,8 @@ type LookupTenantResult struct {
 	SessionLifetime float64 `pulumi:"sessionLifetime"`
 	// Sessions related settings for the tenant.
 	Sessions []GetTenantSession `pulumi:"sessions"`
-	// Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
-	SkipNonVerifiableCallbackUriConfirmationPrompt bool `pulumi:"skipNonVerifiableCallbackUriConfirmationPrompt"`
+	// Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
+	SkipNonVerifiableCallbackUriConfirmationPrompt string `pulumi:"skipNonVerifiableCallbackUriConfirmationPrompt"`
 	// Support email address for authenticating users.
 	SupportEmail string `pulumi:"supportEmail"`
 	// Support URL for authenticating users.
@@ -253,9 +253,9 @@ func (o LookupTenantResultOutput) Sessions() GetTenantSessionArrayOutput {
 	return o.ApplyT(func(v LookupTenantResult) []GetTenantSession { return v.Sessions }).(GetTenantSessionArrayOutput)
 }
 
-// Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
-func (o LookupTenantResultOutput) SkipNonVerifiableCallbackUriConfirmationPrompt() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupTenantResult) bool { return v.SkipNonVerifiableCallbackUriConfirmationPrompt }).(pulumi.BoolOutput)
+// Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
+func (o LookupTenantResultOutput) SkipNonVerifiableCallbackUriConfirmationPrompt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTenantResult) string { return v.SkipNonVerifiableCallbackUriConfirmationPrompt }).(pulumi.StringOutput)
 }
 
 // Support email address for authenticating users.

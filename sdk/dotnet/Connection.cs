@@ -53,7 +53,7 @@ namespace Pulumi.Auth0
     ///             CustomScripts = 
     ///             {
     ///                 { "get_user", @"        function getByEmail(email, callback) {
-    ///           return callback(new Error(""Whoops!""));
+    ///           return callback(new Error(\""Whoops!\""));
     ///         }
     /// " },
     ///             },
@@ -472,7 +472,7 @@ namespace Pulumi.Auth0
     ///             Scripts = 
     ///             {
     ///                 { "fetchUserProfile", @"        function fetchUserProfile(accessToken, context, callback) {
-    ///           return callback(new Error(""Whoops!""));
+    ///           return callback(new Error(\""Whoops!\""));
     ///         }
     /// " },
     ///             },
@@ -696,11 +696,11 @@ namespace Pulumi.Auth0
     ///             DigestAlgorithm = "sha256",
     ///             IconUrl = "https://saml.provider/assets/logo.png",
     ///             EntityId = "&lt;entity_id&gt;",
-    ///             MetadataXml = @"    &lt;?xml version=""1.0""?&gt;
-    ///     &lt;md:EntityDescriptor xmlns:md=""urn:oasis:names:tc:SAML:2.0:metadata"" xmlns:ds=""http://www.w3.org/2000/09/xmldsig#"" entityID=""https://example.com""&gt;
-    ///       &lt;md:IDPSSODescriptor protocolSupportEnumeration=""urn:oasis:names:tc:SAML:2.0:protocol""&gt;
-    ///         &lt;md:SingleLogoutService Binding=""urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"" Location=""https://saml.provider/sign_out""/&gt;
-    ///         &lt;md:SingleSignOnService Binding=""urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"" Location=""https://saml.provider/sign_in""/&gt;
+    ///             MetadataXml = @"    &lt;?xml version=\""1.0\""?&gt;
+    ///     &lt;md:EntityDescriptor xmlns:md=\""urn:oasis:names:tc:SAML:2.0:metadata\"" xmlns:ds=\""http://www.w3.org/2000/09/xmldsig#\"" entityID=\""https://example.com\""&gt;
+    ///       &lt;md:IDPSSODescriptor protocolSupportEnumeration=\""urn:oasis:names:tc:SAML:2.0:protocol\""&gt;
+    ///         &lt;md:SingleLogoutService Binding=\""urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect\"" Location=\""https://saml.provider/sign_out\""/&gt;
+    ///         &lt;md:SingleSignOnService Binding=\""urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect\"" Location=\""https://saml.provider/sign_in\""/&gt;
     ///       &lt;/md:IDPSSODescriptor&gt;
     ///     &lt;/md:EntityDescriptor&gt;
     /// ",

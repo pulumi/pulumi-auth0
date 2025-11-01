@@ -1382,6 +1382,10 @@ export interface ConnectionConnectedAccounts {
 
 export interface ConnectionOptions {
     /**
+     * URL used to exchange a user-authorized request token for an access token.
+     */
+    accessTokenUrl?: pulumi.Input<string>;
+    /**
      * ADFS URL where to fetch the metadata source.
      */
     adfsServer?: pulumi.Input<string>;
@@ -1441,6 +1445,14 @@ export interface ConnectionOptions {
      * Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
      */
     connectionSettings?: pulumi.Input<inputs.ConnectionOptionsConnectionSettings>;
+    /**
+     * Identifies the client to the service provider
+     */
+    consumerKey?: pulumi.Input<string>;
+    /**
+     * Secret used to establish ownership of the consumer key.
+     */
+    consumerSecret?: pulumi.Input<string>;
     /**
      * Configure extra headers to the Token endpoint of an OAuth 2.0 provider
      */
@@ -1650,6 +1662,10 @@ export interface ConnectionOptions {
      */
     requestTemplate?: pulumi.Input<string>;
     /**
+     * URL used to obtain an unauthorized request token.
+     */
+    requestTokenUrl?: pulumi.Input<string>;
+    /**
      * Indicates whether the user is required to provide a username in addition to an email address.
      */
     requiresUsername?: pulumi.Input<boolean>;
@@ -1661,6 +1677,10 @@ export interface ConnectionOptions {
      * A map of scripts used for an OAuth connection. Only accepts a `fetchUserProfile` script.
      */
     scripts?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Session Key for storing the request token.
+     */
+    sessionKey?: pulumi.Input<string>;
     /**
      * Determines whether to sync user profile attributes (`name`, `givenName`, `familyName`, `nickname`, `picture`) at each login or only on the first login. Options include: `onEachLogin`, `onFirstLogin`, `neverOnLogin`. Default value: `onEachLogin`.
      */
@@ -1685,6 +1705,10 @@ export interface ConnectionOptions {
      * Sign Request Algorithm.
      */
     signatureAlgorithm?: pulumi.Input<string>;
+    /**
+     * Signature method used to sign the request
+     */
+    signatureMethod?: pulumi.Input<string>;
     /**
      * X.509 signing certificate (encoded in PEM or CER) you retrieved from the IdP, Base64-encoded.
      */
@@ -1761,6 +1785,10 @@ export interface ConnectionOptions {
      * Whether to use WS-Fed.
      */
     useWsfed?: pulumi.Input<boolean>;
+    /**
+     * URL used to obtain user authorization.
+     */
+    userAuthorizationUrl?: pulumi.Input<string>;
     /**
      * Attribute in the token that will be mapped to the userId property in Auth0.
      */
@@ -2937,6 +2965,29 @@ export interface OrganizationConnectionsEnabledConnection {
      * Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
      */
     showAsButton?: pulumi.Input<boolean>;
+}
+
+export interface OrganizationDiscoveryDomainsDiscoveryDomain {
+    /**
+     * The domain name for organization discovery.
+     */
+    domain: pulumi.Input<string>;
+    /**
+     * The ID of the discovery domain.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * Verification status. Must be either 'pending' or 'verified'.
+     */
+    status: pulumi.Input<string>;
+    /**
+     * The full domain where the TXT record should be added.
+     */
+    verificationHost?: pulumi.Input<string>;
+    /**
+     * TXT record value for domain verification.
+     */
+    verificationTxt?: pulumi.Input<string>;
 }
 
 export interface OrganizationTokenQuota {

@@ -36,13 +36,12 @@ namespace Pulumi.Auth0
     ///             "http://example.com/logout",
     ///         },
     ///         SessionLifetime = 8760,
-    ///         SandboxVersion = "12",
+    ///         SandboxVersion = "22",
     ///         EnabledLocales = new[]
     ///         {
     ///             "en",
     ///         },
     ///         DefaultRedirectionUri = "https://example.com/login",
-    ///         SkipNonVerifiableCallbackUriConfirmationPrompt = true,
     ///         Flags = new Auth0.Inputs.TenantFlagsArgs
     ///         {
     ///             DisableClickjackProtectionHeaders = true,
@@ -221,10 +220,10 @@ namespace Pulumi.Auth0
         public Output<Outputs.TenantSessions> Sessions { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+        /// Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
         /// </summary>
         [Output("skipNonVerifiableCallbackUriConfirmationPrompt")]
-        public Output<bool?> SkipNonVerifiableCallbackUriConfirmationPrompt { get; private set; } = null!;
+        public Output<string?> SkipNonVerifiableCallbackUriConfirmationPrompt { get; private set; } = null!;
 
         /// <summary>
         /// Support email address for authenticating users.
@@ -435,10 +434,10 @@ namespace Pulumi.Auth0
         public Input<Inputs.TenantSessionsArgs>? Sessions { get; set; }
 
         /// <summary>
-        /// Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+        /// Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
         /// </summary>
         [Input("skipNonVerifiableCallbackUriConfirmationPrompt")]
-        public Input<bool>? SkipNonVerifiableCallbackUriConfirmationPrompt { get; set; }
+        public Input<string>? SkipNonVerifiableCallbackUriConfirmationPrompt { get; set; }
 
         /// <summary>
         /// Support email address for authenticating users.
@@ -611,10 +610,10 @@ namespace Pulumi.Auth0
         public Input<Inputs.TenantSessionsGetArgs>? Sessions { get; set; }
 
         /// <summary>
-        /// Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+        /// Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
         /// </summary>
         [Input("skipNonVerifiableCallbackUriConfirmationPrompt")]
-        public Input<bool>? SkipNonVerifiableCallbackUriConfirmationPrompt { get; set; }
+        public Input<string>? SkipNonVerifiableCallbackUriConfirmationPrompt { get; set; }
 
         /// <summary>
         /// Support email address for authenticating users.

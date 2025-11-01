@@ -189,6 +189,11 @@ public final class GetClientResult {
      */
     private List<GetClientOidcLogout> oidcLogouts;
     /**
+     * @return Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
+     * 
+     */
+    private List<String> organizationDiscoveryMethods;
+    /**
      * @return Defines how to proceed during an authentication transaction when `organizationUsage = &#34;require&#34;`. Can be `noPrompt` (default), `preLoginPrompt` or  `postLoginPrompt`.
      * 
      */
@@ -230,10 +235,10 @@ public final class GetClientResult {
      */
     private List<Map<String,String>> signingKeys;
     /**
-     * @return Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+     * @return Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or (&#34;true&#34;/&#34;false&#34;/&#34;null&#34;)
      * 
      */
-    private Boolean skipNonVerifiableCallbackUriConfirmationPrompt;
+    private String skipNonVerifiableCallbackUriConfirmationPrompt;
     /**
      * @return Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
      * 
@@ -494,6 +499,13 @@ public final class GetClientResult {
         return this.oidcLogouts;
     }
     /**
+     * @return Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
+     * 
+     */
+    public List<String> organizationDiscoveryMethods() {
+        return this.organizationDiscoveryMethods;
+    }
+    /**
      * @return Defines how to proceed during an authentication transaction when `organizationUsage = &#34;require&#34;`. Can be `noPrompt` (default), `preLoginPrompt` or  `postLoginPrompt`.
      * 
      */
@@ -553,10 +565,10 @@ public final class GetClientResult {
         return this.signingKeys;
     }
     /**
-     * @return Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+     * @return Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or (&#34;true&#34;/&#34;false&#34;/&#34;null&#34;)
      * 
      */
-    public Boolean skipNonVerifiableCallbackUriConfirmationPrompt() {
+    public String skipNonVerifiableCallbackUriConfirmationPrompt() {
         return this.skipNonVerifiableCallbackUriConfirmationPrompt;
     }
     /**
@@ -644,6 +656,7 @@ public final class GetClientResult {
         private List<String> oidcBackchannelLogoutUrls;
         private Boolean oidcConformant;
         private List<GetClientOidcLogout> oidcLogouts;
+        private List<String> organizationDiscoveryMethods;
         private String organizationRequireBehavior;
         private String organizationUsage;
         private List<GetClientRefreshToken> refreshTokens;
@@ -653,7 +666,7 @@ public final class GetClientResult {
         private List<GetClientSessionTransfer> sessionTransfers;
         private List<GetClientSignedRequestObject> signedRequestObjects;
         private List<Map<String,String>> signingKeys;
-        private Boolean skipNonVerifiableCallbackUriConfirmationPrompt;
+        private String skipNonVerifiableCallbackUriConfirmationPrompt;
         private Boolean sso;
         private Boolean ssoDisabled;
         private String tokenEndpointAuthMethod;
@@ -696,6 +709,7 @@ public final class GetClientResult {
     	      this.oidcBackchannelLogoutUrls = defaults.oidcBackchannelLogoutUrls;
     	      this.oidcConformant = defaults.oidcConformant;
     	      this.oidcLogouts = defaults.oidcLogouts;
+    	      this.organizationDiscoveryMethods = defaults.organizationDiscoveryMethods;
     	      this.organizationRequireBehavior = defaults.organizationRequireBehavior;
     	      this.organizationUsage = defaults.organizationUsage;
     	      this.refreshTokens = defaults.refreshTokens;
@@ -1017,6 +1031,17 @@ public final class GetClientResult {
             return oidcLogouts(List.of(oidcLogouts));
         }
         @CustomType.Setter
+        public Builder organizationDiscoveryMethods(List<String> organizationDiscoveryMethods) {
+            if (organizationDiscoveryMethods == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "organizationDiscoveryMethods");
+            }
+            this.organizationDiscoveryMethods = organizationDiscoveryMethods;
+            return this;
+        }
+        public Builder organizationDiscoveryMethods(String... organizationDiscoveryMethods) {
+            return organizationDiscoveryMethods(List.of(organizationDiscoveryMethods));
+        }
+        @CustomType.Setter
         public Builder organizationRequireBehavior(String organizationRequireBehavior) {
             if (organizationRequireBehavior == null) {
               throw new MissingRequiredPropertyException("GetClientResult", "organizationRequireBehavior");
@@ -1098,7 +1123,7 @@ public final class GetClientResult {
             return this;
         }
         @CustomType.Setter
-        public Builder skipNonVerifiableCallbackUriConfirmationPrompt(Boolean skipNonVerifiableCallbackUriConfirmationPrompt) {
+        public Builder skipNonVerifiableCallbackUriConfirmationPrompt(String skipNonVerifiableCallbackUriConfirmationPrompt) {
             if (skipNonVerifiableCallbackUriConfirmationPrompt == null) {
               throw new MissingRequiredPropertyException("GetClientResult", "skipNonVerifiableCallbackUriConfirmationPrompt");
             }
@@ -1197,6 +1222,7 @@ public final class GetClientResult {
             _resultValue.oidcBackchannelLogoutUrls = oidcBackchannelLogoutUrls;
             _resultValue.oidcConformant = oidcConformant;
             _resultValue.oidcLogouts = oidcLogouts;
+            _resultValue.organizationDiscoveryMethods = organizationDiscoveryMethods;
             _resultValue.organizationRequireBehavior = organizationRequireBehavior;
             _resultValue.organizationUsage = organizationUsage;
             _resultValue.refreshTokens = refreshTokens;

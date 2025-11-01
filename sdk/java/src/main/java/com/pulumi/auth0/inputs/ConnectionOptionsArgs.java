@@ -37,6 +37,21 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     public static final ConnectionOptionsArgs Empty = new ConnectionOptionsArgs();
 
     /**
+     * URL used to exchange a user-authorized request token for an access token.
+     * 
+     */
+    @Import(name="accessTokenUrl")
+    private @Nullable Output<String> accessTokenUrl;
+
+    /**
+     * @return URL used to exchange a user-authorized request token for an access token.
+     * 
+     */
+    public Optional<Output<String>> accessTokenUrl() {
+        return Optional.ofNullable(this.accessTokenUrl);
+    }
+
+    /**
      * ADFS URL where to fetch the metadata source.
      * 
      */
@@ -259,6 +274,36 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<ConnectionOptionsConnectionSettingsArgs>> connectionSettings() {
         return Optional.ofNullable(this.connectionSettings);
+    }
+
+    /**
+     * Identifies the client to the service provider
+     * 
+     */
+    @Import(name="consumerKey")
+    private @Nullable Output<String> consumerKey;
+
+    /**
+     * @return Identifies the client to the service provider
+     * 
+     */
+    public Optional<Output<String>> consumerKey() {
+        return Optional.ofNullable(this.consumerKey);
+    }
+
+    /**
+     * Secret used to establish ownership of the consumer key.
+     * 
+     */
+    @Import(name="consumerSecret")
+    private @Nullable Output<String> consumerSecret;
+
+    /**
+     * @return Secret used to establish ownership of the consumer key.
+     * 
+     */
+    public Optional<Output<String>> consumerSecret() {
+        return Optional.ofNullable(this.consumerSecret);
     }
 
     /**
@@ -1042,6 +1087,21 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * URL used to obtain an unauthorized request token.
+     * 
+     */
+    @Import(name="requestTokenUrl")
+    private @Nullable Output<String> requestTokenUrl;
+
+    /**
+     * @return URL used to obtain an unauthorized request token.
+     * 
+     */
+    public Optional<Output<String>> requestTokenUrl() {
+        return Optional.ofNullable(this.requestTokenUrl);
+    }
+
+    /**
      * Indicates whether the user is required to provide a username in addition to an email address.
      * 
      */
@@ -1084,6 +1144,21 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<Map<String,String>>> scripts() {
         return Optional.ofNullable(this.scripts);
+    }
+
+    /**
+     * Session Key for storing the request token.
+     * 
+     */
+    @Import(name="sessionKey")
+    private @Nullable Output<String> sessionKey;
+
+    /**
+     * @return Session Key for storing the request token.
+     * 
+     */
+    public Optional<Output<String>> sessionKey() {
+        return Optional.ofNullable(this.sessionKey);
     }
 
     /**
@@ -1174,6 +1249,21 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<String>> signatureAlgorithm() {
         return Optional.ofNullable(this.signatureAlgorithm);
+    }
+
+    /**
+     * Signature method used to sign the request
+     * 
+     */
+    @Import(name="signatureMethod")
+    private @Nullable Output<String> signatureMethod;
+
+    /**
+     * @return Signature method used to sign the request
+     * 
+     */
+    public Optional<Output<String>> signatureMethod() {
+        return Optional.ofNullable(this.signatureMethod);
     }
 
     /**
@@ -1462,6 +1552,21 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * URL used to obtain user authorization.
+     * 
+     */
+    @Import(name="userAuthorizationUrl")
+    private @Nullable Output<String> userAuthorizationUrl;
+
+    /**
+     * @return URL used to obtain user authorization.
+     * 
+     */
+    public Optional<Output<String>> userAuthorizationUrl() {
+        return Optional.ofNullable(this.userAuthorizationUrl);
+    }
+
+    /**
      * Attribute in the token that will be mapped to the userId property in Auth0.
      * 
      */
@@ -1539,6 +1644,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     private ConnectionOptionsArgs() {}
 
     private ConnectionOptionsArgs(ConnectionOptionsArgs $) {
+        this.accessTokenUrl = $.accessTokenUrl;
         this.adfsServer = $.adfsServer;
         this.allowedAudiences = $.allowedAudiences;
         this.apiEnableUsers = $.apiEnableUsers;
@@ -1554,6 +1660,8 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         this.communityBaseUrl = $.communityBaseUrl;
         this.configuration = $.configuration;
         this.connectionSettings = $.connectionSettings;
+        this.consumerKey = $.consumerKey;
+        this.consumerSecret = $.consumerSecret;
         this.customHeaders = $.customHeaders;
         this.customScripts = $.customScripts;
         this.debug = $.debug;
@@ -1606,15 +1714,18 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         this.provider = $.provider;
         this.realmFallback = $.realmFallback;
         this.requestTemplate = $.requestTemplate;
+        this.requestTokenUrl = $.requestTokenUrl;
         this.requiresUsername = $.requiresUsername;
         this.scopes = $.scopes;
         this.scripts = $.scripts;
+        this.sessionKey = $.sessionKey;
         this.setUserRootAttributes = $.setUserRootAttributes;
         this.shouldTrustEmailVerifiedConnection = $.shouldTrustEmailVerifiedConnection;
         this.signInEndpoint = $.signInEndpoint;
         this.signOutEndpoint = $.signOutEndpoint;
         this.signSamlRequest = $.signSamlRequest;
         this.signatureAlgorithm = $.signatureAlgorithm;
+        this.signatureMethod = $.signatureMethod;
         this.signingCert = $.signingCert;
         this.signingKey = $.signingKey;
         this.strategyVersion = $.strategyVersion;
@@ -1634,6 +1745,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         this.useCertAuth = $.useCertAuth;
         this.useKerberos = $.useKerberos;
         this.useWsfed = $.useWsfed;
+        this.userAuthorizationUrl = $.userAuthorizationUrl;
         this.userIdAttribute = $.userIdAttribute;
         this.userinfoEndpoint = $.userinfoEndpoint;
         this.validation = $.validation;
@@ -1657,6 +1769,27 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
 
         public Builder(ConnectionOptionsArgs defaults) {
             $ = new ConnectionOptionsArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param accessTokenUrl URL used to exchange a user-authorized request token for an access token.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accessTokenUrl(@Nullable Output<String> accessTokenUrl) {
+            $.accessTokenUrl = accessTokenUrl;
+            return this;
+        }
+
+        /**
+         * @param accessTokenUrl URL used to exchange a user-authorized request token for an access token.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accessTokenUrl(String accessTokenUrl) {
+            return accessTokenUrl(Output.of(accessTokenUrl));
         }
 
         /**
@@ -2002,6 +2135,48 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder connectionSettings(ConnectionOptionsConnectionSettingsArgs connectionSettings) {
             return connectionSettings(Output.of(connectionSettings));
+        }
+
+        /**
+         * @param consumerKey Identifies the client to the service provider
+         * 
+         * @return builder
+         * 
+         */
+        public Builder consumerKey(@Nullable Output<String> consumerKey) {
+            $.consumerKey = consumerKey;
+            return this;
+        }
+
+        /**
+         * @param consumerKey Identifies the client to the service provider
+         * 
+         * @return builder
+         * 
+         */
+        public Builder consumerKey(String consumerKey) {
+            return consumerKey(Output.of(consumerKey));
+        }
+
+        /**
+         * @param consumerSecret Secret used to establish ownership of the consumer key.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder consumerSecret(@Nullable Output<String> consumerSecret) {
+            $.consumerSecret = consumerSecret;
+            return this;
+        }
+
+        /**
+         * @param consumerSecret Secret used to establish ownership of the consumer key.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder consumerSecret(String consumerSecret) {
+            return consumerSecret(Output.of(consumerSecret));
         }
 
         /**
@@ -3157,6 +3332,27 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param requestTokenUrl URL used to obtain an unauthorized request token.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requestTokenUrl(@Nullable Output<String> requestTokenUrl) {
+            $.requestTokenUrl = requestTokenUrl;
+            return this;
+        }
+
+        /**
+         * @param requestTokenUrl URL used to obtain an unauthorized request token.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requestTokenUrl(String requestTokenUrl) {
+            return requestTokenUrl(Output.of(requestTokenUrl));
+        }
+
+        /**
          * @param requiresUsername Indicates whether the user is required to provide a username in addition to an email address.
          * 
          * @return builder
@@ -3227,6 +3423,27 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder scripts(Map<String,String> scripts) {
             return scripts(Output.of(scripts));
+        }
+
+        /**
+         * @param sessionKey Session Key for storing the request token.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sessionKey(@Nullable Output<String> sessionKey) {
+            $.sessionKey = sessionKey;
+            return this;
+        }
+
+        /**
+         * @param sessionKey Session Key for storing the request token.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sessionKey(String sessionKey) {
+            return sessionKey(Output.of(sessionKey));
         }
 
         /**
@@ -3353,6 +3570,27 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder signatureAlgorithm(String signatureAlgorithm) {
             return signatureAlgorithm(Output.of(signatureAlgorithm));
+        }
+
+        /**
+         * @param signatureMethod Signature method used to sign the request
+         * 
+         * @return builder
+         * 
+         */
+        public Builder signatureMethod(@Nullable Output<String> signatureMethod) {
+            $.signatureMethod = signatureMethod;
+            return this;
+        }
+
+        /**
+         * @param signatureMethod Signature method used to sign the request
+         * 
+         * @return builder
+         * 
+         */
+        public Builder signatureMethod(String signatureMethod) {
+            return signatureMethod(Output.of(signatureMethod));
         }
 
         /**
@@ -3752,6 +3990,27 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder useWsfed(Boolean useWsfed) {
             return useWsfed(Output.of(useWsfed));
+        }
+
+        /**
+         * @param userAuthorizationUrl URL used to obtain user authorization.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userAuthorizationUrl(@Nullable Output<String> userAuthorizationUrl) {
+            $.userAuthorizationUrl = userAuthorizationUrl;
+            return this;
+        }
+
+        /**
+         * @param userAuthorizationUrl URL used to obtain user authorization.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userAuthorizationUrl(String userAuthorizationUrl) {
+            return userAuthorizationUrl(Output.of(userAuthorizationUrl));
         }
 
         /**

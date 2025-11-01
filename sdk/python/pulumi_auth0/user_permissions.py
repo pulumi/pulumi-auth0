@@ -112,6 +112,8 @@ class UserPermissions(pulumi.CustomResource):
         appends a permissions to a user. To avoid potential issues, it is recommended not to use this resource in conjunction
         with the `UserPermission` resource when managing permissions for the same user id.
 
+        ## Example Usage
+
         ## Import
 
         This resource can be imported by specifying the user ID
@@ -139,6 +141,8 @@ class UserPermissions(pulumi.CustomResource):
         !> This resource manages all the permissions assigned to a user. In contrast, the `UserPermission` resource only
         appends a permissions to a user. To avoid potential issues, it is recommended not to use this resource in conjunction
         with the `UserPermission` resource when managing permissions for the same user id.
+
+        ## Example Usage
 
         ## Import
 

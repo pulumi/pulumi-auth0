@@ -22,8 +22,8 @@ import * as utilities from "./utilities";
  * const loginAlert = new auth0.Action("login_alert", {
  *     name: "Alert after login",
  *     code: `exports.onContinuePostLogin = async (event, api) => {
- *   console.log("foo");
- * };"
+ *   console.log(\\"foo\\");
+ * };\\"
  * `,
  *     deploy: true,
  *     supportedTriggers: {

@@ -206,6 +206,12 @@ namespace Pulumi.Auth0
         public Output<Outputs.ClientOidcLogout> OidcLogout { get; private set; } = null!;
 
         /// <summary>
+        /// Methods for discovering organizations during the pre*login*prompt. Can include `Email` (allows users to find their organization by entering their email address) and/or `OrganizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `OrganizationRequireBehavior` is set to `PreLoginPrompt`.
+        /// </summary>
+        [Output("organizationDiscoveryMethods")]
+        public Output<ImmutableArray<string>> OrganizationDiscoveryMethods { get; private set; } = null!;
+
+        /// <summary>
         /// Defines how to proceed during an authentication transaction when `OrganizationUsage = "require"`. Can be `NoPrompt` (default), `PreLoginPrompt` or  `PostLoginPrompt`.
         /// </summary>
         [Output("organizationRequireBehavior")]
@@ -251,10 +257,10 @@ namespace Pulumi.Auth0
         public Output<ImmutableArray<ImmutableDictionary<string, string>>> SigningKeys { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+        /// Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
         /// </summary>
         [Output("skipNonVerifiableCallbackUriConfirmationPrompt")]
-        public Output<bool?> SkipNonVerifiableCallbackUriConfirmationPrompt { get; private set; } = null!;
+        public Output<string?> SkipNonVerifiableCallbackUriConfirmationPrompt { get; private set; } = null!;
 
         /// <summary>
         /// Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
@@ -565,6 +571,18 @@ namespace Pulumi.Auth0
         [Input("oidcLogout")]
         public Input<Inputs.ClientOidcLogoutArgs>? OidcLogout { get; set; }
 
+        [Input("organizationDiscoveryMethods")]
+        private InputList<string>? _organizationDiscoveryMethods;
+
+        /// <summary>
+        /// Methods for discovering organizations during the pre*login*prompt. Can include `Email` (allows users to find their organization by entering their email address) and/or `OrganizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `OrganizationRequireBehavior` is set to `PreLoginPrompt`.
+        /// </summary>
+        public InputList<string> OrganizationDiscoveryMethods
+        {
+            get => _organizationDiscoveryMethods ?? (_organizationDiscoveryMethods = new InputList<string>());
+            set => _organizationDiscoveryMethods = value;
+        }
+
         /// <summary>
         /// Defines how to proceed during an authentication transaction when `OrganizationUsage = "require"`. Can be `NoPrompt` (default), `PreLoginPrompt` or  `PostLoginPrompt`.
         /// </summary>
@@ -605,10 +623,10 @@ namespace Pulumi.Auth0
         public Input<Inputs.ClientSessionTransferArgs>? SessionTransfer { get; set; }
 
         /// <summary>
-        /// Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+        /// Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
         /// </summary>
         [Input("skipNonVerifiableCallbackUriConfirmationPrompt")]
-        public Input<bool>? SkipNonVerifiableCallbackUriConfirmationPrompt { get; set; }
+        public Input<string>? SkipNonVerifiableCallbackUriConfirmationPrompt { get; set; }
 
         /// <summary>
         /// Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
@@ -890,6 +908,18 @@ namespace Pulumi.Auth0
         [Input("oidcLogout")]
         public Input<Inputs.ClientOidcLogoutGetArgs>? OidcLogout { get; set; }
 
+        [Input("organizationDiscoveryMethods")]
+        private InputList<string>? _organizationDiscoveryMethods;
+
+        /// <summary>
+        /// Methods for discovering organizations during the pre*login*prompt. Can include `Email` (allows users to find their organization by entering their email address) and/or `OrganizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `OrganizationRequireBehavior` is set to `PreLoginPrompt`.
+        /// </summary>
+        public InputList<string> OrganizationDiscoveryMethods
+        {
+            get => _organizationDiscoveryMethods ?? (_organizationDiscoveryMethods = new InputList<string>());
+            set => _organizationDiscoveryMethods = value;
+        }
+
         /// <summary>
         /// Defines how to proceed during an authentication transaction when `OrganizationUsage = "require"`. Can be `NoPrompt` (default), `PreLoginPrompt` or  `PostLoginPrompt`.
         /// </summary>
@@ -946,10 +976,10 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+        /// Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
         /// </summary>
         [Input("skipNonVerifiableCallbackUriConfirmationPrompt")]
-        public Input<bool>? SkipNonVerifiableCallbackUriConfirmationPrompt { get; set; }
+        public Input<string>? SkipNonVerifiableCallbackUriConfirmationPrompt { get; set; }
 
         /// <summary>
         /// Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).

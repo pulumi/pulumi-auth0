@@ -86,16 +86,21 @@ public final class GetClientsClient {
      */
     private List<GetClientsClientOidcLogout> oidcLogouts;
     /**
+     * @return Methods for discovering organizations during the pre_login_prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
+     * 
+     */
+    private List<String> organizationDiscoveryMethods;
+    /**
      * @return The identifier of a resource server that client is associated withThis property can be sent only when app_type=resource_server.This property can not be changed, once the client is created.
      * 
      */
     private String resourceServerIdentifier;
     private List<GetClientsClientSessionTransfer> sessionTransfers;
     /**
-     * @return Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+     * @return Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or (&#34;true&#34;/&#34;false&#34;/&#34;null&#34;)
      * 
      */
-    private Boolean skipNonVerifiableCallbackUriConfirmationPrompt;
+    private String skipNonVerifiableCallbackUriConfirmationPrompt;
     /**
      * @return Allows configuration for token exchange
      * 
@@ -208,6 +213,13 @@ public final class GetClientsClient {
         return this.oidcLogouts;
     }
     /**
+     * @return Methods for discovering organizations during the pre_login_prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
+     * 
+     */
+    public List<String> organizationDiscoveryMethods() {
+        return this.organizationDiscoveryMethods;
+    }
+    /**
      * @return The identifier of a resource server that client is associated withThis property can be sent only when app_type=resource_server.This property can not be changed, once the client is created.
      * 
      */
@@ -218,10 +230,10 @@ public final class GetClientsClient {
         return this.sessionTransfers;
     }
     /**
-     * @return Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+     * @return Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or (&#34;true&#34;/&#34;false&#34;/&#34;null&#34;)
      * 
      */
-    public Boolean skipNonVerifiableCallbackUriConfirmationPrompt() {
+    public String skipNonVerifiableCallbackUriConfirmationPrompt() {
         return this.skipNonVerifiableCallbackUriConfirmationPrompt;
     }
     /**
@@ -269,9 +281,10 @@ public final class GetClientsClient {
         private Boolean isTokenEndpointIpHeaderTrusted;
         private @Nullable String name;
         private List<GetClientsClientOidcLogout> oidcLogouts;
+        private List<String> organizationDiscoveryMethods;
         private String resourceServerIdentifier;
         private List<GetClientsClientSessionTransfer> sessionTransfers;
-        private Boolean skipNonVerifiableCallbackUriConfirmationPrompt;
+        private String skipNonVerifiableCallbackUriConfirmationPrompt;
         private List<GetClientsClientTokenExchange> tokenExchanges;
         private List<GetClientsClientTokenQuota> tokenQuotas;
         private List<String> webOrigins;
@@ -292,6 +305,7 @@ public final class GetClientsClient {
     	      this.isTokenEndpointIpHeaderTrusted = defaults.isTokenEndpointIpHeaderTrusted;
     	      this.name = defaults.name;
     	      this.oidcLogouts = defaults.oidcLogouts;
+    	      this.organizationDiscoveryMethods = defaults.organizationDiscoveryMethods;
     	      this.resourceServerIdentifier = defaults.resourceServerIdentifier;
     	      this.sessionTransfers = defaults.sessionTransfers;
     	      this.skipNonVerifiableCallbackUriConfirmationPrompt = defaults.skipNonVerifiableCallbackUriConfirmationPrompt;
@@ -427,6 +441,17 @@ public final class GetClientsClient {
             return oidcLogouts(List.of(oidcLogouts));
         }
         @CustomType.Setter
+        public Builder organizationDiscoveryMethods(List<String> organizationDiscoveryMethods) {
+            if (organizationDiscoveryMethods == null) {
+              throw new MissingRequiredPropertyException("GetClientsClient", "organizationDiscoveryMethods");
+            }
+            this.organizationDiscoveryMethods = organizationDiscoveryMethods;
+            return this;
+        }
+        public Builder organizationDiscoveryMethods(String... organizationDiscoveryMethods) {
+            return organizationDiscoveryMethods(List.of(organizationDiscoveryMethods));
+        }
+        @CustomType.Setter
         public Builder resourceServerIdentifier(String resourceServerIdentifier) {
             if (resourceServerIdentifier == null) {
               throw new MissingRequiredPropertyException("GetClientsClient", "resourceServerIdentifier");
@@ -446,7 +471,7 @@ public final class GetClientsClient {
             return sessionTransfers(List.of(sessionTransfers));
         }
         @CustomType.Setter
-        public Builder skipNonVerifiableCallbackUriConfirmationPrompt(Boolean skipNonVerifiableCallbackUriConfirmationPrompt) {
+        public Builder skipNonVerifiableCallbackUriConfirmationPrompt(String skipNonVerifiableCallbackUriConfirmationPrompt) {
             if (skipNonVerifiableCallbackUriConfirmationPrompt == null) {
               throw new MissingRequiredPropertyException("GetClientsClient", "skipNonVerifiableCallbackUriConfirmationPrompt");
             }
@@ -502,6 +527,7 @@ public final class GetClientsClient {
             _resultValue.isTokenEndpointIpHeaderTrusted = isTokenEndpointIpHeaderTrusted;
             _resultValue.name = name;
             _resultValue.oidcLogouts = oidcLogouts;
+            _resultValue.organizationDiscoveryMethods = organizationDiscoveryMethods;
             _resultValue.resourceServerIdentifier = resourceServerIdentifier;
             _resultValue.sessionTransfers = sessionTransfers;
             _resultValue.skipNonVerifiableCallbackUriConfirmationPrompt = skipNonVerifiableCallbackUriConfirmationPrompt;

@@ -170,6 +170,10 @@ export class Client extends pulumi.CustomResource {
      */
     declare public readonly oidcLogout: pulumi.Output<outputs.ClientOidcLogout>;
     /**
+     * Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
+     */
+    declare public readonly organizationDiscoveryMethods: pulumi.Output<string[] | undefined>;
+    /**
      * Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default), `preLoginPrompt` or  `postLoginPrompt`.
      */
     declare public readonly organizationRequireBehavior: pulumi.Output<string | undefined>;
@@ -199,9 +203,9 @@ export class Client extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly signingKeys: pulumi.Output<{[key: string]: string}[]>;
     /**
-     * Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+     * Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
      */
-    declare public readonly skipNonVerifiableCallbackUriConfirmationPrompt: pulumi.Output<boolean | undefined>;
+    declare public readonly skipNonVerifiableCallbackUriConfirmationPrompt: pulumi.Output<string | undefined>;
     /**
      * Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
      */
@@ -266,6 +270,7 @@ export class Client extends pulumi.CustomResource {
             resourceInputs["oidcBackchannelLogoutUrls"] = state?.oidcBackchannelLogoutUrls;
             resourceInputs["oidcConformant"] = state?.oidcConformant;
             resourceInputs["oidcLogout"] = state?.oidcLogout;
+            resourceInputs["organizationDiscoveryMethods"] = state?.organizationDiscoveryMethods;
             resourceInputs["organizationRequireBehavior"] = state?.organizationRequireBehavior;
             resourceInputs["organizationUsage"] = state?.organizationUsage;
             resourceInputs["refreshToken"] = state?.refreshToken;
@@ -311,6 +316,7 @@ export class Client extends pulumi.CustomResource {
             resourceInputs["oidcBackchannelLogoutUrls"] = args?.oidcBackchannelLogoutUrls;
             resourceInputs["oidcConformant"] = args?.oidcConformant;
             resourceInputs["oidcLogout"] = args?.oidcLogout;
+            resourceInputs["organizationDiscoveryMethods"] = args?.organizationDiscoveryMethods;
             resourceInputs["organizationRequireBehavior"] = args?.organizationRequireBehavior;
             resourceInputs["organizationUsage"] = args?.organizationUsage;
             resourceInputs["refreshToken"] = args?.refreshToken;
@@ -461,6 +467,10 @@ export interface ClientState {
      */
     oidcLogout?: pulumi.Input<inputs.ClientOidcLogout>;
     /**
+     * Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
+     */
+    organizationDiscoveryMethods?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default), `preLoginPrompt` or  `postLoginPrompt`.
      */
     organizationRequireBehavior?: pulumi.Input<string>;
@@ -490,9 +500,9 @@ export interface ClientState {
      */
     signingKeys?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
     /**
-     * Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+     * Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
      */
-    skipNonVerifiableCallbackUriConfirmationPrompt?: pulumi.Input<boolean>;
+    skipNonVerifiableCallbackUriConfirmationPrompt?: pulumi.Input<string>;
     /**
      * Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
      */
@@ -638,6 +648,10 @@ export interface ClientArgs {
      */
     oidcLogout?: pulumi.Input<inputs.ClientOidcLogout>;
     /**
+     * Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
+     */
+    organizationDiscoveryMethods?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default), `preLoginPrompt` or  `postLoginPrompt`.
      */
     organizationRequireBehavior?: pulumi.Input<string>;
@@ -663,9 +677,9 @@ export interface ClientArgs {
     resourceServerIdentifier?: pulumi.Input<string>;
     sessionTransfer?: pulumi.Input<inputs.ClientSessionTransfer>;
     /**
-     * Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+     * Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
      */
-    skipNonVerifiableCallbackUriConfirmationPrompt?: pulumi.Input<boolean>;
+    skipNonVerifiableCallbackUriConfirmationPrompt?: pulumi.Input<string>;
     /**
      * Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
      */

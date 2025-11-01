@@ -36,7 +36,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			loginAlert, err := auth0.NewAction(ctx, "login_alert", &auth0.ActionArgs{
 //				Name:   pulumi.String("Alert after login"),
-//				Code:   pulumi.String("exports.onContinuePostLogin = async (event, api) => {\n  console.log(\"foo\");\n};\"\n"),
+//				Code:   pulumi.String("exports.onContinuePostLogin = async (event, api) => {\n  console.log(\\\"foo\\\");\n};\\\"\n"),
 //				Deploy: pulumi.Bool(true),
 //				SupportedTriggers: &auth0.ActionSupportedTriggersArgs{
 //					Id:      pulumi.String("post-login"),

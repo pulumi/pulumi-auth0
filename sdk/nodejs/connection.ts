@@ -41,7 +41,7 @@ import * as utilities from "./utilities";
  *         disableSignup: false,
  *         customScripts: {
  *             get_user: `        function getByEmail(email, callback) {
- *           return callback(new Error("Whoops!"));
+ *           return callback(new Error(\\"Whoops!\\"));
  *         }
  * `,
  *         },
@@ -351,7 +351,7 @@ import * as utilities from "./utilities";
  *         ],
  *         scripts: {
  *             fetchUserProfile: `        function fetchUserProfile(accessToken, context, callback) {
- *           return callback(new Error("Whoops!"));
+ *           return callback(new Error(\\"Whoops!\\"));
  *         }
  * `,
  *         },
@@ -526,11 +526,11 @@ import * as utilities from "./utilities";
  *         digestAlgorithm: "sha256",
  *         iconUrl: "https://saml.provider/assets/logo.png",
  *         entityId: "<entity_id>",
- *         metadataXml: `    <?xml version="1.0"?>
- *     <md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" entityID="https://example.com">
- *       <md:IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
- *         <md:SingleLogoutService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://saml.provider/sign_out"/>
- *         <md:SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://saml.provider/sign_in"/>
+ *         metadataXml: `    <?xml version=\\"1.0\\"?>
+ *     <md:EntityDescriptor xmlns:md=\\"urn:oasis:names:tc:SAML:2.0:metadata\\" xmlns:ds=\\"http://www.w3.org/2000/09/xmldsig#\\" entityID=\\"https://example.com\\">
+ *       <md:IDPSSODescriptor protocolSupportEnumeration=\\"urn:oasis:names:tc:SAML:2.0:protocol\\">
+ *         <md:SingleLogoutService Binding=\\"urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect\\" Location=\\"https://saml.provider/sign_out\\"/>
+ *         <md:SingleSignOnService Binding=\\"urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect\\" Location=\\"https://saml.provider/sign_in\\"/>
  *       </md:IDPSSODescriptor>
  *     </md:EntityDescriptor>
  * `,

@@ -18,6 +18,8 @@ import (
 // permissions assigned to a user. To avoid potential issues, it is recommended not to use this resource in conjunction
 // with the `UserPermissions` resource when managing permissions for the same user id.
 //
+// ## Example Usage
+//
 // ## Import
 //
 // # This resource can be imported by specifying the

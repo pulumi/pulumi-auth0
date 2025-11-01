@@ -32,8 +32,8 @@ namespace Pulumi.Auth0
     ///     {
     ///         Name = "Alert after login",
     ///         Code = @"exports.onContinuePostLogin = async (event, api) =&gt; {
-    ///   console.log(""foo"");
-    /// };""
+    ///   console.log(\""foo\"");
+    /// };\""
     /// ",
     ///         Deploy = true,
     ///         SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs

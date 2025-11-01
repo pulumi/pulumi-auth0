@@ -14584,6 +14584,8 @@ func (o ConnectionConnectedAccountsPtrOutput) Active() pulumi.BoolPtrOutput {
 }
 
 type ConnectionOptions struct {
+	// URL used to exchange a user-authorized request token for an access token.
+	AccessTokenUrl *string `pulumi:"accessTokenUrl"`
 	// ADFS URL where to fetch the metadata source.
 	AdfsServer *string `pulumi:"adfsServer"`
 	// List of allowed audiences.
@@ -14614,6 +14616,10 @@ type ConnectionOptions struct {
 	Configuration map[string]string `pulumi:"configuration"`
 	// Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
 	ConnectionSettings *ConnectionOptionsConnectionSettings `pulumi:"connectionSettings"`
+	// Identifies the client to the service provider
+	ConsumerKey *string `pulumi:"consumerKey"`
+	// Secret used to establish ownership of the consumer key.
+	ConsumerSecret *string `pulumi:"consumerSecret"`
 	// Configure extra headers to the Token endpoint of an OAuth 2.0 provider
 	CustomHeaders []ConnectionOptionsCustomHeader `pulumi:"customHeaders"`
 	// A map of scripts used to integrate with a custom database.
@@ -14718,12 +14724,16 @@ type ConnectionOptions struct {
 	RealmFallback *bool `pulumi:"realmFallback"`
 	// Template that formats the SAML request.
 	RequestTemplate *string `pulumi:"requestTemplate"`
+	// URL used to obtain an unauthorized request token.
+	RequestTokenUrl *string `pulumi:"requestTokenUrl"`
 	// Indicates whether the user is required to provide a username in addition to an email address.
 	RequiresUsername *bool `pulumi:"requiresUsername"`
 	// Permissions to grant to the connection. Within the Auth0 dashboard these appear under the "Attributes" and "Extended Attributes" sections. Some examples: `basicProfile`, `extProfile`, `extNestedGroups`, etc.
 	Scopes []string `pulumi:"scopes"`
 	// A map of scripts used for an OAuth connection. Only accepts a `fetchUserProfile` script.
 	Scripts map[string]string `pulumi:"scripts"`
+	// Session Key for storing the request token.
+	SessionKey *string `pulumi:"sessionKey"`
 	// Determines whether to sync user profile attributes (`name`, `givenName`, `familyName`, `nickname`, `picture`) at each login or only on the first login. Options include: `onEachLogin`, `onFirstLogin`, `neverOnLogin`. Default value: `onEachLogin`.
 	SetUserRootAttributes *string `pulumi:"setUserRootAttributes"`
 	// Choose how Auth0 sets the emailVerified field in the user profile.
@@ -14736,6 +14746,8 @@ type ConnectionOptions struct {
 	SignSamlRequest *bool `pulumi:"signSamlRequest"`
 	// Sign Request Algorithm.
 	SignatureAlgorithm *string `pulumi:"signatureAlgorithm"`
+	// Signature method used to sign the request
+	SignatureMethod *string `pulumi:"signatureMethod"`
 	// X.509 signing certificate (encoded in PEM or CER) you retrieved from the IdP, Base64-encoded.
 	SigningCert *string `pulumi:"signingCert"`
 	// The key used to sign requests in the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
@@ -14774,6 +14786,8 @@ type ConnectionOptions struct {
 	UseKerberos *bool `pulumi:"useKerberos"`
 	// Whether to use WS-Fed.
 	UseWsfed *bool `pulumi:"useWsfed"`
+	// URL used to obtain user authorization.
+	UserAuthorizationUrl *string `pulumi:"userAuthorizationUrl"`
 	// Attribute in the token that will be mapped to the userId property in Auth0.
 	UserIdAttribute *string `pulumi:"userIdAttribute"`
 	// User info endpoint.
@@ -14798,6 +14812,8 @@ type ConnectionOptionsInput interface {
 }
 
 type ConnectionOptionsArgs struct {
+	// URL used to exchange a user-authorized request token for an access token.
+	AccessTokenUrl pulumi.StringPtrInput `pulumi:"accessTokenUrl"`
 	// ADFS URL where to fetch the metadata source.
 	AdfsServer pulumi.StringPtrInput `pulumi:"adfsServer"`
 	// List of allowed audiences.
@@ -14828,6 +14844,10 @@ type ConnectionOptionsArgs struct {
 	Configuration pulumi.StringMapInput `pulumi:"configuration"`
 	// Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
 	ConnectionSettings ConnectionOptionsConnectionSettingsPtrInput `pulumi:"connectionSettings"`
+	// Identifies the client to the service provider
+	ConsumerKey pulumi.StringPtrInput `pulumi:"consumerKey"`
+	// Secret used to establish ownership of the consumer key.
+	ConsumerSecret pulumi.StringPtrInput `pulumi:"consumerSecret"`
 	// Configure extra headers to the Token endpoint of an OAuth 2.0 provider
 	CustomHeaders ConnectionOptionsCustomHeaderArrayInput `pulumi:"customHeaders"`
 	// A map of scripts used to integrate with a custom database.
@@ -14932,12 +14952,16 @@ type ConnectionOptionsArgs struct {
 	RealmFallback pulumi.BoolPtrInput `pulumi:"realmFallback"`
 	// Template that formats the SAML request.
 	RequestTemplate pulumi.StringPtrInput `pulumi:"requestTemplate"`
+	// URL used to obtain an unauthorized request token.
+	RequestTokenUrl pulumi.StringPtrInput `pulumi:"requestTokenUrl"`
 	// Indicates whether the user is required to provide a username in addition to an email address.
 	RequiresUsername pulumi.BoolPtrInput `pulumi:"requiresUsername"`
 	// Permissions to grant to the connection. Within the Auth0 dashboard these appear under the "Attributes" and "Extended Attributes" sections. Some examples: `basicProfile`, `extProfile`, `extNestedGroups`, etc.
 	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
 	// A map of scripts used for an OAuth connection. Only accepts a `fetchUserProfile` script.
 	Scripts pulumi.StringMapInput `pulumi:"scripts"`
+	// Session Key for storing the request token.
+	SessionKey pulumi.StringPtrInput `pulumi:"sessionKey"`
 	// Determines whether to sync user profile attributes (`name`, `givenName`, `familyName`, `nickname`, `picture`) at each login or only on the first login. Options include: `onEachLogin`, `onFirstLogin`, `neverOnLogin`. Default value: `onEachLogin`.
 	SetUserRootAttributes pulumi.StringPtrInput `pulumi:"setUserRootAttributes"`
 	// Choose how Auth0 sets the emailVerified field in the user profile.
@@ -14950,6 +14974,8 @@ type ConnectionOptionsArgs struct {
 	SignSamlRequest pulumi.BoolPtrInput `pulumi:"signSamlRequest"`
 	// Sign Request Algorithm.
 	SignatureAlgorithm pulumi.StringPtrInput `pulumi:"signatureAlgorithm"`
+	// Signature method used to sign the request
+	SignatureMethod pulumi.StringPtrInput `pulumi:"signatureMethod"`
 	// X.509 signing certificate (encoded in PEM or CER) you retrieved from the IdP, Base64-encoded.
 	SigningCert pulumi.StringPtrInput `pulumi:"signingCert"`
 	// The key used to sign requests in the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
@@ -14988,6 +15014,8 @@ type ConnectionOptionsArgs struct {
 	UseKerberos pulumi.BoolPtrInput `pulumi:"useKerberos"`
 	// Whether to use WS-Fed.
 	UseWsfed pulumi.BoolPtrInput `pulumi:"useWsfed"`
+	// URL used to obtain user authorization.
+	UserAuthorizationUrl pulumi.StringPtrInput `pulumi:"userAuthorizationUrl"`
 	// Attribute in the token that will be mapped to the userId property in Auth0.
 	UserIdAttribute pulumi.StringPtrInput `pulumi:"userIdAttribute"`
 	// User info endpoint.
@@ -15077,6 +15105,11 @@ func (o ConnectionOptionsOutput) ToConnectionOptionsPtrOutputWithContext(ctx con
 	}).(ConnectionOptionsPtrOutput)
 }
 
+// URL used to exchange a user-authorized request token for an access token.
+func (o ConnectionOptionsOutput) AccessTokenUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *string { return v.AccessTokenUrl }).(pulumi.StringPtrOutput)
+}
+
 // ADFS URL where to fetch the metadata source.
 func (o ConnectionOptionsOutput) AdfsServer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.AdfsServer }).(pulumi.StringPtrOutput)
@@ -15150,6 +15183,16 @@ func (o ConnectionOptionsOutput) Configuration() pulumi.StringMapOutput {
 // Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
 func (o ConnectionOptionsOutput) ConnectionSettings() ConnectionOptionsConnectionSettingsPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *ConnectionOptionsConnectionSettings { return v.ConnectionSettings }).(ConnectionOptionsConnectionSettingsPtrOutput)
+}
+
+// Identifies the client to the service provider
+func (o ConnectionOptionsOutput) ConsumerKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *string { return v.ConsumerKey }).(pulumi.StringPtrOutput)
+}
+
+// Secret used to establish ownership of the consumer key.
+func (o ConnectionOptionsOutput) ConsumerSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *string { return v.ConsumerSecret }).(pulumi.StringPtrOutput)
 }
 
 // Configure extra headers to the Token endpoint of an OAuth 2.0 provider
@@ -15414,6 +15457,11 @@ func (o ConnectionOptionsOutput) RequestTemplate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.RequestTemplate }).(pulumi.StringPtrOutput)
 }
 
+// URL used to obtain an unauthorized request token.
+func (o ConnectionOptionsOutput) RequestTokenUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *string { return v.RequestTokenUrl }).(pulumi.StringPtrOutput)
+}
+
 // Indicates whether the user is required to provide a username in addition to an email address.
 func (o ConnectionOptionsOutput) RequiresUsername() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *bool { return v.RequiresUsername }).(pulumi.BoolPtrOutput)
@@ -15427,6 +15475,11 @@ func (o ConnectionOptionsOutput) Scopes() pulumi.StringArrayOutput {
 // A map of scripts used for an OAuth connection. Only accepts a `fetchUserProfile` script.
 func (o ConnectionOptionsOutput) Scripts() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ConnectionOptions) map[string]string { return v.Scripts }).(pulumi.StringMapOutput)
+}
+
+// Session Key for storing the request token.
+func (o ConnectionOptionsOutput) SessionKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *string { return v.SessionKey }).(pulumi.StringPtrOutput)
 }
 
 // Determines whether to sync user profile attributes (`name`, `givenName`, `familyName`, `nickname`, `picture`) at each login or only on the first login. Options include: `onEachLogin`, `onFirstLogin`, `neverOnLogin`. Default value: `onEachLogin`.
@@ -15457,6 +15510,11 @@ func (o ConnectionOptionsOutput) SignSamlRequest() pulumi.BoolPtrOutput {
 // Sign Request Algorithm.
 func (o ConnectionOptionsOutput) SignatureAlgorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.SignatureAlgorithm }).(pulumi.StringPtrOutput)
+}
+
+// Signature method used to sign the request
+func (o ConnectionOptionsOutput) SignatureMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *string { return v.SignatureMethod }).(pulumi.StringPtrOutput)
 }
 
 // X.509 signing certificate (encoded in PEM or CER) you retrieved from the IdP, Base64-encoded.
@@ -15554,6 +15612,11 @@ func (o ConnectionOptionsOutput) UseWsfed() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *bool { return v.UseWsfed }).(pulumi.BoolPtrOutput)
 }
 
+// URL used to obtain user authorization.
+func (o ConnectionOptionsOutput) UserAuthorizationUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *string { return v.UserAuthorizationUrl }).(pulumi.StringPtrOutput)
+}
+
 // Attribute in the token that will be mapped to the userId property in Auth0.
 func (o ConnectionOptionsOutput) UserIdAttribute() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.UserIdAttribute }).(pulumi.StringPtrOutput)
@@ -15601,6 +15664,16 @@ func (o ConnectionOptionsPtrOutput) Elem() ConnectionOptionsOutput {
 		var ret ConnectionOptions
 		return ret
 	}).(ConnectionOptionsOutput)
+}
+
+// URL used to exchange a user-authorized request token for an access token.
+func (o ConnectionOptionsPtrOutput) AccessTokenUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessTokenUrl
+	}).(pulumi.StringPtrOutput)
 }
 
 // ADFS URL where to fetch the metadata source.
@@ -15751,6 +15824,26 @@ func (o ConnectionOptionsPtrOutput) ConnectionSettings() ConnectionOptionsConnec
 		}
 		return v.ConnectionSettings
 	}).(ConnectionOptionsConnectionSettingsPtrOutput)
+}
+
+// Identifies the client to the service provider
+func (o ConnectionOptionsPtrOutput) ConsumerKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConsumerKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Secret used to establish ownership of the consumer key.
+func (o ConnectionOptionsPtrOutput) ConsumerSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConsumerSecret
+	}).(pulumi.StringPtrOutput)
 }
 
 // Configure extra headers to the Token endpoint of an OAuth 2.0 provider
@@ -16273,6 +16366,16 @@ func (o ConnectionOptionsPtrOutput) RequestTemplate() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// URL used to obtain an unauthorized request token.
+func (o ConnectionOptionsPtrOutput) RequestTokenUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RequestTokenUrl
+	}).(pulumi.StringPtrOutput)
+}
+
 // Indicates whether the user is required to provide a username in addition to an email address.
 func (o ConnectionOptionsPtrOutput) RequiresUsername() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *bool {
@@ -16301,6 +16404,16 @@ func (o ConnectionOptionsPtrOutput) Scripts() pulumi.StringMapOutput {
 		}
 		return v.Scripts
 	}).(pulumi.StringMapOutput)
+}
+
+// Session Key for storing the request token.
+func (o ConnectionOptionsPtrOutput) SessionKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SessionKey
+	}).(pulumi.StringPtrOutput)
 }
 
 // Determines whether to sync user profile attributes (`name`, `givenName`, `familyName`, `nickname`, `picture`) at each login or only on the first login. Options include: `onEachLogin`, `onFirstLogin`, `neverOnLogin`. Default value: `onEachLogin`.
@@ -16360,6 +16473,16 @@ func (o ConnectionOptionsPtrOutput) SignatureAlgorithm() pulumi.StringPtrOutput 
 			return nil
 		}
 		return v.SignatureAlgorithm
+	}).(pulumi.StringPtrOutput)
+}
+
+// Signature method used to sign the request
+func (o ConnectionOptionsPtrOutput) SignatureMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SignatureMethod
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -16551,6 +16674,16 @@ func (o ConnectionOptionsPtrOutput) UseWsfed() pulumi.BoolPtrOutput {
 		}
 		return v.UseWsfed
 	}).(pulumi.BoolPtrOutput)
+}
+
+// URL used to obtain user authorization.
+func (o ConnectionOptionsPtrOutput) UserAuthorizationUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAuthorizationUrl
+	}).(pulumi.StringPtrOutput)
 }
 
 // Attribute in the token that will be mapped to the userId property in Auth0.
@@ -27159,6 +27292,139 @@ func (o OrganizationConnectionsEnabledConnectionArrayOutput) Index(i pulumi.IntI
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OrganizationConnectionsEnabledConnection {
 		return vs[0].([]OrganizationConnectionsEnabledConnection)[vs[1].(int)]
 	}).(OrganizationConnectionsEnabledConnectionOutput)
+}
+
+type OrganizationDiscoveryDomainsDiscoveryDomain struct {
+	// The domain name for organization discovery.
+	Domain string `pulumi:"domain"`
+	// The ID of the discovery domain.
+	Id *string `pulumi:"id"`
+	// Verification status. Must be either 'pending' or 'verified'.
+	Status string `pulumi:"status"`
+	// The full domain where the TXT record should be added.
+	VerificationHost *string `pulumi:"verificationHost"`
+	// TXT record value for domain verification.
+	VerificationTxt *string `pulumi:"verificationTxt"`
+}
+
+// OrganizationDiscoveryDomainsDiscoveryDomainInput is an input type that accepts OrganizationDiscoveryDomainsDiscoveryDomainArgs and OrganizationDiscoveryDomainsDiscoveryDomainOutput values.
+// You can construct a concrete instance of `OrganizationDiscoveryDomainsDiscoveryDomainInput` via:
+//
+//	OrganizationDiscoveryDomainsDiscoveryDomainArgs{...}
+type OrganizationDiscoveryDomainsDiscoveryDomainInput interface {
+	pulumi.Input
+
+	ToOrganizationDiscoveryDomainsDiscoveryDomainOutput() OrganizationDiscoveryDomainsDiscoveryDomainOutput
+	ToOrganizationDiscoveryDomainsDiscoveryDomainOutputWithContext(context.Context) OrganizationDiscoveryDomainsDiscoveryDomainOutput
+}
+
+type OrganizationDiscoveryDomainsDiscoveryDomainArgs struct {
+	// The domain name for organization discovery.
+	Domain pulumi.StringInput `pulumi:"domain"`
+	// The ID of the discovery domain.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Verification status. Must be either 'pending' or 'verified'.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The full domain where the TXT record should be added.
+	VerificationHost pulumi.StringPtrInput `pulumi:"verificationHost"`
+	// TXT record value for domain verification.
+	VerificationTxt pulumi.StringPtrInput `pulumi:"verificationTxt"`
+}
+
+func (OrganizationDiscoveryDomainsDiscoveryDomainArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationDiscoveryDomainsDiscoveryDomain)(nil)).Elem()
+}
+
+func (i OrganizationDiscoveryDomainsDiscoveryDomainArgs) ToOrganizationDiscoveryDomainsDiscoveryDomainOutput() OrganizationDiscoveryDomainsDiscoveryDomainOutput {
+	return i.ToOrganizationDiscoveryDomainsDiscoveryDomainOutputWithContext(context.Background())
+}
+
+func (i OrganizationDiscoveryDomainsDiscoveryDomainArgs) ToOrganizationDiscoveryDomainsDiscoveryDomainOutputWithContext(ctx context.Context) OrganizationDiscoveryDomainsDiscoveryDomainOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationDiscoveryDomainsDiscoveryDomainOutput)
+}
+
+// OrganizationDiscoveryDomainsDiscoveryDomainArrayInput is an input type that accepts OrganizationDiscoveryDomainsDiscoveryDomainArray and OrganizationDiscoveryDomainsDiscoveryDomainArrayOutput values.
+// You can construct a concrete instance of `OrganizationDiscoveryDomainsDiscoveryDomainArrayInput` via:
+//
+//	OrganizationDiscoveryDomainsDiscoveryDomainArray{ OrganizationDiscoveryDomainsDiscoveryDomainArgs{...} }
+type OrganizationDiscoveryDomainsDiscoveryDomainArrayInput interface {
+	pulumi.Input
+
+	ToOrganizationDiscoveryDomainsDiscoveryDomainArrayOutput() OrganizationDiscoveryDomainsDiscoveryDomainArrayOutput
+	ToOrganizationDiscoveryDomainsDiscoveryDomainArrayOutputWithContext(context.Context) OrganizationDiscoveryDomainsDiscoveryDomainArrayOutput
+}
+
+type OrganizationDiscoveryDomainsDiscoveryDomainArray []OrganizationDiscoveryDomainsDiscoveryDomainInput
+
+func (OrganizationDiscoveryDomainsDiscoveryDomainArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OrganizationDiscoveryDomainsDiscoveryDomain)(nil)).Elem()
+}
+
+func (i OrganizationDiscoveryDomainsDiscoveryDomainArray) ToOrganizationDiscoveryDomainsDiscoveryDomainArrayOutput() OrganizationDiscoveryDomainsDiscoveryDomainArrayOutput {
+	return i.ToOrganizationDiscoveryDomainsDiscoveryDomainArrayOutputWithContext(context.Background())
+}
+
+func (i OrganizationDiscoveryDomainsDiscoveryDomainArray) ToOrganizationDiscoveryDomainsDiscoveryDomainArrayOutputWithContext(ctx context.Context) OrganizationDiscoveryDomainsDiscoveryDomainArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationDiscoveryDomainsDiscoveryDomainArrayOutput)
+}
+
+type OrganizationDiscoveryDomainsDiscoveryDomainOutput struct{ *pulumi.OutputState }
+
+func (OrganizationDiscoveryDomainsDiscoveryDomainOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationDiscoveryDomainsDiscoveryDomain)(nil)).Elem()
+}
+
+func (o OrganizationDiscoveryDomainsDiscoveryDomainOutput) ToOrganizationDiscoveryDomainsDiscoveryDomainOutput() OrganizationDiscoveryDomainsDiscoveryDomainOutput {
+	return o
+}
+
+func (o OrganizationDiscoveryDomainsDiscoveryDomainOutput) ToOrganizationDiscoveryDomainsDiscoveryDomainOutputWithContext(ctx context.Context) OrganizationDiscoveryDomainsDiscoveryDomainOutput {
+	return o
+}
+
+// The domain name for organization discovery.
+func (o OrganizationDiscoveryDomainsDiscoveryDomainOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v OrganizationDiscoveryDomainsDiscoveryDomain) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+// The ID of the discovery domain.
+func (o OrganizationDiscoveryDomainsDiscoveryDomainOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OrganizationDiscoveryDomainsDiscoveryDomain) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Verification status. Must be either 'pending' or 'verified'.
+func (o OrganizationDiscoveryDomainsDiscoveryDomainOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v OrganizationDiscoveryDomainsDiscoveryDomain) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The full domain where the TXT record should be added.
+func (o OrganizationDiscoveryDomainsDiscoveryDomainOutput) VerificationHost() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OrganizationDiscoveryDomainsDiscoveryDomain) *string { return v.VerificationHost }).(pulumi.StringPtrOutput)
+}
+
+// TXT record value for domain verification.
+func (o OrganizationDiscoveryDomainsDiscoveryDomainOutput) VerificationTxt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OrganizationDiscoveryDomainsDiscoveryDomain) *string { return v.VerificationTxt }).(pulumi.StringPtrOutput)
+}
+
+type OrganizationDiscoveryDomainsDiscoveryDomainArrayOutput struct{ *pulumi.OutputState }
+
+func (OrganizationDiscoveryDomainsDiscoveryDomainArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OrganizationDiscoveryDomainsDiscoveryDomain)(nil)).Elem()
+}
+
+func (o OrganizationDiscoveryDomainsDiscoveryDomainArrayOutput) ToOrganizationDiscoveryDomainsDiscoveryDomainArrayOutput() OrganizationDiscoveryDomainsDiscoveryDomainArrayOutput {
+	return o
+}
+
+func (o OrganizationDiscoveryDomainsDiscoveryDomainArrayOutput) ToOrganizationDiscoveryDomainsDiscoveryDomainArrayOutputWithContext(ctx context.Context) OrganizationDiscoveryDomainsDiscoveryDomainArrayOutput {
+	return o
+}
+
+func (o OrganizationDiscoveryDomainsDiscoveryDomainArrayOutput) Index(i pulumi.IntInput) OrganizationDiscoveryDomainsDiscoveryDomainOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OrganizationDiscoveryDomainsDiscoveryDomain {
+		return vs[0].([]OrganizationDiscoveryDomainsDiscoveryDomain)[vs[1].(int)]
+	}).(OrganizationDiscoveryDomainsDiscoveryDomainOutput)
 }
 
 type OrganizationTokenQuota struct {
@@ -41791,6 +42057,139 @@ func (o GetClientDefaultOrganizationArrayOutput) Index(i pulumi.IntInput) GetCli
 	}).(GetClientDefaultOrganizationOutput)
 }
 
+type GetClientGrantsClientGrant struct {
+	// The audience of the client grant.
+	Audience string `pulumi:"audience"`
+	// The client ID associated with the grant.
+	ClientId string `pulumi:"clientId"`
+	// The ID of the client grant.
+	Id string `pulumi:"id"`
+	// List of granted scopes.
+	Scopes []string `pulumi:"scopes"`
+	// The subject type (usually 'client').
+	SubjectType string `pulumi:"subjectType"`
+}
+
+// GetClientGrantsClientGrantInput is an input type that accepts GetClientGrantsClientGrantArgs and GetClientGrantsClientGrantOutput values.
+// You can construct a concrete instance of `GetClientGrantsClientGrantInput` via:
+//
+//	GetClientGrantsClientGrantArgs{...}
+type GetClientGrantsClientGrantInput interface {
+	pulumi.Input
+
+	ToGetClientGrantsClientGrantOutput() GetClientGrantsClientGrantOutput
+	ToGetClientGrantsClientGrantOutputWithContext(context.Context) GetClientGrantsClientGrantOutput
+}
+
+type GetClientGrantsClientGrantArgs struct {
+	// The audience of the client grant.
+	Audience pulumi.StringInput `pulumi:"audience"`
+	// The client ID associated with the grant.
+	ClientId pulumi.StringInput `pulumi:"clientId"`
+	// The ID of the client grant.
+	Id pulumi.StringInput `pulumi:"id"`
+	// List of granted scopes.
+	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
+	// The subject type (usually 'client').
+	SubjectType pulumi.StringInput `pulumi:"subjectType"`
+}
+
+func (GetClientGrantsClientGrantArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientGrantsClientGrant)(nil)).Elem()
+}
+
+func (i GetClientGrantsClientGrantArgs) ToGetClientGrantsClientGrantOutput() GetClientGrantsClientGrantOutput {
+	return i.ToGetClientGrantsClientGrantOutputWithContext(context.Background())
+}
+
+func (i GetClientGrantsClientGrantArgs) ToGetClientGrantsClientGrantOutputWithContext(ctx context.Context) GetClientGrantsClientGrantOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientGrantsClientGrantOutput)
+}
+
+// GetClientGrantsClientGrantArrayInput is an input type that accepts GetClientGrantsClientGrantArray and GetClientGrantsClientGrantArrayOutput values.
+// You can construct a concrete instance of `GetClientGrantsClientGrantArrayInput` via:
+//
+//	GetClientGrantsClientGrantArray{ GetClientGrantsClientGrantArgs{...} }
+type GetClientGrantsClientGrantArrayInput interface {
+	pulumi.Input
+
+	ToGetClientGrantsClientGrantArrayOutput() GetClientGrantsClientGrantArrayOutput
+	ToGetClientGrantsClientGrantArrayOutputWithContext(context.Context) GetClientGrantsClientGrantArrayOutput
+}
+
+type GetClientGrantsClientGrantArray []GetClientGrantsClientGrantInput
+
+func (GetClientGrantsClientGrantArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientGrantsClientGrant)(nil)).Elem()
+}
+
+func (i GetClientGrantsClientGrantArray) ToGetClientGrantsClientGrantArrayOutput() GetClientGrantsClientGrantArrayOutput {
+	return i.ToGetClientGrantsClientGrantArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientGrantsClientGrantArray) ToGetClientGrantsClientGrantArrayOutputWithContext(ctx context.Context) GetClientGrantsClientGrantArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientGrantsClientGrantArrayOutput)
+}
+
+type GetClientGrantsClientGrantOutput struct{ *pulumi.OutputState }
+
+func (GetClientGrantsClientGrantOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientGrantsClientGrant)(nil)).Elem()
+}
+
+func (o GetClientGrantsClientGrantOutput) ToGetClientGrantsClientGrantOutput() GetClientGrantsClientGrantOutput {
+	return o
+}
+
+func (o GetClientGrantsClientGrantOutput) ToGetClientGrantsClientGrantOutputWithContext(ctx context.Context) GetClientGrantsClientGrantOutput {
+	return o
+}
+
+// The audience of the client grant.
+func (o GetClientGrantsClientGrantOutput) Audience() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientGrantsClientGrant) string { return v.Audience }).(pulumi.StringOutput)
+}
+
+// The client ID associated with the grant.
+func (o GetClientGrantsClientGrantOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientGrantsClientGrant) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// The ID of the client grant.
+func (o GetClientGrantsClientGrantOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientGrantsClientGrant) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// List of granted scopes.
+func (o GetClientGrantsClientGrantOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClientGrantsClientGrant) []string { return v.Scopes }).(pulumi.StringArrayOutput)
+}
+
+// The subject type (usually 'client').
+func (o GetClientGrantsClientGrantOutput) SubjectType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientGrantsClientGrant) string { return v.SubjectType }).(pulumi.StringOutput)
+}
+
+type GetClientGrantsClientGrantArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientGrantsClientGrantArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientGrantsClientGrant)(nil)).Elem()
+}
+
+func (o GetClientGrantsClientGrantArrayOutput) ToGetClientGrantsClientGrantArrayOutput() GetClientGrantsClientGrantArrayOutput {
+	return o
+}
+
+func (o GetClientGrantsClientGrantArrayOutput) ToGetClientGrantsClientGrantArrayOutputWithContext(ctx context.Context) GetClientGrantsClientGrantArrayOutput {
+	return o
+}
+
+func (o GetClientGrantsClientGrantArrayOutput) Index(i pulumi.IntInput) GetClientGrantsClientGrantOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientGrantsClientGrant {
+		return vs[0].([]GetClientGrantsClientGrant)[vs[1].(int)]
+	}).(GetClientGrantsClientGrantOutput)
+}
+
 type GetClientJwtConfiguration struct {
 	// Algorithm used to sign JWTs. Can be one of `HS256`, `RS256`, `PS256`.
 	Alg string `pulumi:"alg"`
@@ -43831,11 +44230,13 @@ type GetClientsClient struct {
 	Name *string `pulumi:"name"`
 	// Configure OIDC logout for the Client
 	OidcLogouts []GetClientsClientOidcLogout `pulumi:"oidcLogouts"`
+	// Methods for discovering organizations during the pre_login_prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
+	OrganizationDiscoveryMethods []string `pulumi:"organizationDiscoveryMethods"`
 	// The identifier of a resource server that client is associated withThis property can be sent only when app_type=resource_server.This property can not be changed, once the client is created.
 	ResourceServerIdentifier string                            `pulumi:"resourceServerIdentifier"`
 	SessionTransfers         []GetClientsClientSessionTransfer `pulumi:"sessionTransfers"`
-	// Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
-	SkipNonVerifiableCallbackUriConfirmationPrompt bool `pulumi:"skipNonVerifiableCallbackUriConfirmationPrompt"`
+	// Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
+	SkipNonVerifiableCallbackUriConfirmationPrompt string `pulumi:"skipNonVerifiableCallbackUriConfirmationPrompt"`
 	// Allows configuration for token exchange
 	TokenExchanges []GetClientsClientTokenExchange `pulumi:"tokenExchanges"`
 	// The token quota configuration.
@@ -43883,11 +44284,13 @@ type GetClientsClientArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Configure OIDC logout for the Client
 	OidcLogouts GetClientsClientOidcLogoutArrayInput `pulumi:"oidcLogouts"`
+	// Methods for discovering organizations during the pre_login_prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
+	OrganizationDiscoveryMethods pulumi.StringArrayInput `pulumi:"organizationDiscoveryMethods"`
 	// The identifier of a resource server that client is associated withThis property can be sent only when app_type=resource_server.This property can not be changed, once the client is created.
 	ResourceServerIdentifier pulumi.StringInput                        `pulumi:"resourceServerIdentifier"`
 	SessionTransfers         GetClientsClientSessionTransferArrayInput `pulumi:"sessionTransfers"`
-	// Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
-	SkipNonVerifiableCallbackUriConfirmationPrompt pulumi.BoolInput `pulumi:"skipNonVerifiableCallbackUriConfirmationPrompt"`
+	// Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
+	SkipNonVerifiableCallbackUriConfirmationPrompt pulumi.StringInput `pulumi:"skipNonVerifiableCallbackUriConfirmationPrompt"`
 	// Allows configuration for token exchange
 	TokenExchanges GetClientsClientTokenExchangeArrayInput `pulumi:"tokenExchanges"`
 	// The token quota configuration.
@@ -44016,6 +44419,11 @@ func (o GetClientsClientOutput) OidcLogouts() GetClientsClientOidcLogoutArrayOut
 	return o.ApplyT(func(v GetClientsClient) []GetClientsClientOidcLogout { return v.OidcLogouts }).(GetClientsClientOidcLogoutArrayOutput)
 }
 
+// Methods for discovering organizations during the pre_login_prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
+func (o GetClientsClientOutput) OrganizationDiscoveryMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClientsClient) []string { return v.OrganizationDiscoveryMethods }).(pulumi.StringArrayOutput)
+}
+
 // The identifier of a resource server that client is associated withThis property can be sent only when app_type=resource_server.This property can not be changed, once the client is created.
 func (o GetClientsClientOutput) ResourceServerIdentifier() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClientsClient) string { return v.ResourceServerIdentifier }).(pulumi.StringOutput)
@@ -44025,9 +44433,9 @@ func (o GetClientsClientOutput) SessionTransfers() GetClientsClientSessionTransf
 	return o.ApplyT(func(v GetClientsClient) []GetClientsClientSessionTransfer { return v.SessionTransfers }).(GetClientsClientSessionTransferArrayOutput)
 }
 
-// Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
-func (o GetClientsClientOutput) SkipNonVerifiableCallbackUriConfirmationPrompt() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetClientsClient) bool { return v.SkipNonVerifiableCallbackUriConfirmationPrompt }).(pulumi.BoolOutput)
+// Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
+func (o GetClientsClientOutput) SkipNonVerifiableCallbackUriConfirmationPrompt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientsClient) string { return v.SkipNonVerifiableCallbackUriConfirmationPrompt }).(pulumi.StringOutput)
 }
 
 // Allows configuration for token exchange
@@ -45129,6 +45537,8 @@ func (o GetConnectionKeysKeyArrayOutput) Index(i pulumi.IntInput) GetConnectionK
 }
 
 type GetConnectionOption struct {
+	// URL used to exchange a user-authorized request token for an access token.
+	AccessTokenUrl string `pulumi:"accessTokenUrl"`
 	// ADFS URL where to fetch the metadata source.
 	AdfsServer string `pulumi:"adfsServer"`
 	// List of allowed audiences.
@@ -45159,6 +45569,10 @@ type GetConnectionOption struct {
 	Configuration map[string]string `pulumi:"configuration"`
 	// Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
 	ConnectionSettings []GetConnectionOptionConnectionSetting `pulumi:"connectionSettings"`
+	// Identifies the client to the service provider
+	ConsumerKey string `pulumi:"consumerKey"`
+	// Secret used to establish ownership of the consumer key.
+	ConsumerSecret string `pulumi:"consumerSecret"`
 	// Configure extra headers to the Token endpoint of an OAuth 2.0 provider
 	CustomHeaders []GetConnectionOptionCustomHeader `pulumi:"customHeaders"`
 	// A map of scripts used to integrate with a custom database.
@@ -45263,12 +45677,16 @@ type GetConnectionOption struct {
 	RealmFallback bool `pulumi:"realmFallback"`
 	// Template that formats the SAML request.
 	RequestTemplate string `pulumi:"requestTemplate"`
+	// URL used to obtain an unauthorized request token.
+	RequestTokenUrl string `pulumi:"requestTokenUrl"`
 	// Indicates whether the user is required to provide a username in addition to an email address.
 	RequiresUsername bool `pulumi:"requiresUsername"`
 	// Permissions to grant to the connection. Within the Auth0 dashboard these appear under the "Attributes" and "Extended Attributes" sections. Some examples: `basicProfile`, `extProfile`, `extNestedGroups`, etc.
 	Scopes []string `pulumi:"scopes"`
 	// A map of scripts used for an OAuth connection. Only accepts a `fetchUserProfile` script.
 	Scripts map[string]string `pulumi:"scripts"`
+	// Session Key for storing the request token.
+	SessionKey string `pulumi:"sessionKey"`
 	// Determines whether to sync user profile attributes (`name`, `givenName`, `familyName`, `nickname`, `picture`) at each login or only on the first login. Options include: `onEachLogin`, `onFirstLogin`, `neverOnLogin`. Default value: `onEachLogin`.
 	SetUserRootAttributes string `pulumi:"setUserRootAttributes"`
 	// Choose how Auth0 sets the emailVerified field in the user profile.
@@ -45281,6 +45699,8 @@ type GetConnectionOption struct {
 	SignSamlRequest bool `pulumi:"signSamlRequest"`
 	// Sign Request Algorithm.
 	SignatureAlgorithm string `pulumi:"signatureAlgorithm"`
+	// Signature method used to sign the request
+	SignatureMethod string `pulumi:"signatureMethod"`
 	// X.509 signing certificate (encoded in PEM or CER) you retrieved from the IdP, Base64-encoded.
 	SigningCert string `pulumi:"signingCert"`
 	// The key used to sign requests in the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
@@ -45319,6 +45739,8 @@ type GetConnectionOption struct {
 	UseKerberos bool `pulumi:"useKerberos"`
 	// Whether to use WS-Fed.
 	UseWsfed bool `pulumi:"useWsfed"`
+	// URL used to obtain user authorization.
+	UserAuthorizationUrl string `pulumi:"userAuthorizationUrl"`
 	// Attribute in the token that will be mapped to the userId property in Auth0.
 	UserIdAttribute string `pulumi:"userIdAttribute"`
 	// User info endpoint.
@@ -45343,6 +45765,8 @@ type GetConnectionOptionInput interface {
 }
 
 type GetConnectionOptionArgs struct {
+	// URL used to exchange a user-authorized request token for an access token.
+	AccessTokenUrl pulumi.StringInput `pulumi:"accessTokenUrl"`
 	// ADFS URL where to fetch the metadata source.
 	AdfsServer pulumi.StringInput `pulumi:"adfsServer"`
 	// List of allowed audiences.
@@ -45373,6 +45797,10 @@ type GetConnectionOptionArgs struct {
 	Configuration pulumi.StringMapInput `pulumi:"configuration"`
 	// Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
 	ConnectionSettings GetConnectionOptionConnectionSettingArrayInput `pulumi:"connectionSettings"`
+	// Identifies the client to the service provider
+	ConsumerKey pulumi.StringInput `pulumi:"consumerKey"`
+	// Secret used to establish ownership of the consumer key.
+	ConsumerSecret pulumi.StringInput `pulumi:"consumerSecret"`
 	// Configure extra headers to the Token endpoint of an OAuth 2.0 provider
 	CustomHeaders GetConnectionOptionCustomHeaderArrayInput `pulumi:"customHeaders"`
 	// A map of scripts used to integrate with a custom database.
@@ -45477,12 +45905,16 @@ type GetConnectionOptionArgs struct {
 	RealmFallback pulumi.BoolInput `pulumi:"realmFallback"`
 	// Template that formats the SAML request.
 	RequestTemplate pulumi.StringInput `pulumi:"requestTemplate"`
+	// URL used to obtain an unauthorized request token.
+	RequestTokenUrl pulumi.StringInput `pulumi:"requestTokenUrl"`
 	// Indicates whether the user is required to provide a username in addition to an email address.
 	RequiresUsername pulumi.BoolInput `pulumi:"requiresUsername"`
 	// Permissions to grant to the connection. Within the Auth0 dashboard these appear under the "Attributes" and "Extended Attributes" sections. Some examples: `basicProfile`, `extProfile`, `extNestedGroups`, etc.
 	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
 	// A map of scripts used for an OAuth connection. Only accepts a `fetchUserProfile` script.
 	Scripts pulumi.StringMapInput `pulumi:"scripts"`
+	// Session Key for storing the request token.
+	SessionKey pulumi.StringInput `pulumi:"sessionKey"`
 	// Determines whether to sync user profile attributes (`name`, `givenName`, `familyName`, `nickname`, `picture`) at each login or only on the first login. Options include: `onEachLogin`, `onFirstLogin`, `neverOnLogin`. Default value: `onEachLogin`.
 	SetUserRootAttributes pulumi.StringInput `pulumi:"setUserRootAttributes"`
 	// Choose how Auth0 sets the emailVerified field in the user profile.
@@ -45495,6 +45927,8 @@ type GetConnectionOptionArgs struct {
 	SignSamlRequest pulumi.BoolInput `pulumi:"signSamlRequest"`
 	// Sign Request Algorithm.
 	SignatureAlgorithm pulumi.StringInput `pulumi:"signatureAlgorithm"`
+	// Signature method used to sign the request
+	SignatureMethod pulumi.StringInput `pulumi:"signatureMethod"`
 	// X.509 signing certificate (encoded in PEM or CER) you retrieved from the IdP, Base64-encoded.
 	SigningCert pulumi.StringInput `pulumi:"signingCert"`
 	// The key used to sign requests in the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
@@ -45533,6 +45967,8 @@ type GetConnectionOptionArgs struct {
 	UseKerberos pulumi.BoolInput `pulumi:"useKerberos"`
 	// Whether to use WS-Fed.
 	UseWsfed pulumi.BoolInput `pulumi:"useWsfed"`
+	// URL used to obtain user authorization.
+	UserAuthorizationUrl pulumi.StringInput `pulumi:"userAuthorizationUrl"`
 	// Attribute in the token that will be mapped to the userId property in Auth0.
 	UserIdAttribute pulumi.StringInput `pulumi:"userIdAttribute"`
 	// User info endpoint.
@@ -45594,6 +46030,11 @@ func (o GetConnectionOptionOutput) ToGetConnectionOptionOutput() GetConnectionOp
 
 func (o GetConnectionOptionOutput) ToGetConnectionOptionOutputWithContext(ctx context.Context) GetConnectionOptionOutput {
 	return o
+}
+
+// URL used to exchange a user-authorized request token for an access token.
+func (o GetConnectionOptionOutput) AccessTokenUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.AccessTokenUrl }).(pulumi.StringOutput)
 }
 
 // ADFS URL where to fetch the metadata source.
@@ -45669,6 +46110,16 @@ func (o GetConnectionOptionOutput) Configuration() pulumi.StringMapOutput {
 // Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
 func (o GetConnectionOptionOutput) ConnectionSettings() GetConnectionOptionConnectionSettingArrayOutput {
 	return o.ApplyT(func(v GetConnectionOption) []GetConnectionOptionConnectionSetting { return v.ConnectionSettings }).(GetConnectionOptionConnectionSettingArrayOutput)
+}
+
+// Identifies the client to the service provider
+func (o GetConnectionOptionOutput) ConsumerKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.ConsumerKey }).(pulumi.StringOutput)
+}
+
+// Secret used to establish ownership of the consumer key.
+func (o GetConnectionOptionOutput) ConsumerSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.ConsumerSecret }).(pulumi.StringOutput)
 }
 
 // Configure extra headers to the Token endpoint of an OAuth 2.0 provider
@@ -45937,6 +46388,11 @@ func (o GetConnectionOptionOutput) RequestTemplate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionOption) string { return v.RequestTemplate }).(pulumi.StringOutput)
 }
 
+// URL used to obtain an unauthorized request token.
+func (o GetConnectionOptionOutput) RequestTokenUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.RequestTokenUrl }).(pulumi.StringOutput)
+}
+
 // Indicates whether the user is required to provide a username in addition to an email address.
 func (o GetConnectionOptionOutput) RequiresUsername() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetConnectionOption) bool { return v.RequiresUsername }).(pulumi.BoolOutput)
@@ -45950,6 +46406,11 @@ func (o GetConnectionOptionOutput) Scopes() pulumi.StringArrayOutput {
 // A map of scripts used for an OAuth connection. Only accepts a `fetchUserProfile` script.
 func (o GetConnectionOptionOutput) Scripts() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetConnectionOption) map[string]string { return v.Scripts }).(pulumi.StringMapOutput)
+}
+
+// Session Key for storing the request token.
+func (o GetConnectionOptionOutput) SessionKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.SessionKey }).(pulumi.StringOutput)
 }
 
 // Determines whether to sync user profile attributes (`name`, `givenName`, `familyName`, `nickname`, `picture`) at each login or only on the first login. Options include: `onEachLogin`, `onFirstLogin`, `neverOnLogin`. Default value: `onEachLogin`.
@@ -45980,6 +46441,11 @@ func (o GetConnectionOptionOutput) SignSamlRequest() pulumi.BoolOutput {
 // Sign Request Algorithm.
 func (o GetConnectionOptionOutput) SignatureAlgorithm() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionOption) string { return v.SignatureAlgorithm }).(pulumi.StringOutput)
+}
+
+// Signature method used to sign the request
+func (o GetConnectionOptionOutput) SignatureMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.SignatureMethod }).(pulumi.StringOutput)
 }
 
 // X.509 signing certificate (encoded in PEM or CER) you retrieved from the IdP, Base64-encoded.
@@ -46075,6 +46541,11 @@ func (o GetConnectionOptionOutput) UseKerberos() pulumi.BoolOutput {
 // Whether to use WS-Fed.
 func (o GetConnectionOptionOutput) UseWsfed() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetConnectionOption) bool { return v.UseWsfed }).(pulumi.BoolOutput)
+}
+
+// URL used to obtain user authorization.
+func (o GetConnectionOptionOutput) UserAuthorizationUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.UserAuthorizationUrl }).(pulumi.StringOutput)
 }
 
 // Attribute in the token that will be mapped to the userId property in Auth0.
@@ -56943,6 +57414,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationBrandingPtrInput)(nil)).Elem(), OrganizationBrandingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationConnectionsEnabledConnectionInput)(nil)).Elem(), OrganizationConnectionsEnabledConnectionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationConnectionsEnabledConnectionArrayInput)(nil)).Elem(), OrganizationConnectionsEnabledConnectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationDiscoveryDomainsDiscoveryDomainInput)(nil)).Elem(), OrganizationDiscoveryDomainsDiscoveryDomainArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationDiscoveryDomainsDiscoveryDomainArrayInput)(nil)).Elem(), OrganizationDiscoveryDomainsDiscoveryDomainArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationTokenQuotaInput)(nil)).Elem(), OrganizationTokenQuotaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationTokenQuotaPtrInput)(nil)).Elem(), OrganizationTokenQuotaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationTokenQuotaClientCredentialsInput)(nil)).Elem(), OrganizationTokenQuotaClientCredentialsArgs{})
@@ -57154,6 +57627,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientClientAuthenticationMethodTlsClientAuthCredentialArrayInput)(nil)).Elem(), GetClientClientAuthenticationMethodTlsClientAuthCredentialArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientDefaultOrganizationInput)(nil)).Elem(), GetClientDefaultOrganizationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientDefaultOrganizationArrayInput)(nil)).Elem(), GetClientDefaultOrganizationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientGrantsClientGrantInput)(nil)).Elem(), GetClientGrantsClientGrantArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientGrantsClientGrantArrayInput)(nil)).Elem(), GetClientGrantsClientGrantArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientJwtConfigurationInput)(nil)).Elem(), GetClientJwtConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientJwtConfigurationArrayInput)(nil)).Elem(), GetClientJwtConfigurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientMobileInput)(nil)).Elem(), GetClientMobileArgs{})
@@ -57692,6 +58167,8 @@ func init() {
 	pulumi.RegisterOutputType(OrganizationBrandingPtrOutput{})
 	pulumi.RegisterOutputType(OrganizationConnectionsEnabledConnectionOutput{})
 	pulumi.RegisterOutputType(OrganizationConnectionsEnabledConnectionArrayOutput{})
+	pulumi.RegisterOutputType(OrganizationDiscoveryDomainsDiscoveryDomainOutput{})
+	pulumi.RegisterOutputType(OrganizationDiscoveryDomainsDiscoveryDomainArrayOutput{})
 	pulumi.RegisterOutputType(OrganizationTokenQuotaOutput{})
 	pulumi.RegisterOutputType(OrganizationTokenQuotaPtrOutput{})
 	pulumi.RegisterOutputType(OrganizationTokenQuotaClientCredentialsOutput{})
@@ -57903,6 +58380,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClientClientAuthenticationMethodTlsClientAuthCredentialArrayOutput{})
 	pulumi.RegisterOutputType(GetClientDefaultOrganizationOutput{})
 	pulumi.RegisterOutputType(GetClientDefaultOrganizationArrayOutput{})
+	pulumi.RegisterOutputType(GetClientGrantsClientGrantOutput{})
+	pulumi.RegisterOutputType(GetClientGrantsClientGrantArrayOutput{})
 	pulumi.RegisterOutputType(GetClientJwtConfigurationOutput{})
 	pulumi.RegisterOutputType(GetClientJwtConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(GetClientMobileOutput{})

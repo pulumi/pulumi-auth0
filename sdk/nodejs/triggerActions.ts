@@ -24,8 +24,8 @@ import * as utilities from "./utilities";
  * const actionFoo = new auth0.Action("action_foo", {
  *     name: "Test Trigger Binding Foo",
  *     code: `exports.onContinuePostLogin = async (event, api) => {
- *   console.log("foo");
- * };"
+ *   console.log(\\"foo\\");
+ * };\\"
  * `,
  *     deploy: true,
  *     supportedTriggers: {
@@ -36,8 +36,8 @@ import * as utilities from "./utilities";
  * const actionBar = new auth0.Action("action_bar", {
  *     name: "Test Trigger Binding Bar",
  *     code: `exports.onContinuePostLogin = async (event, api) => {
- *   console.log("bar");
- * };"
+ *   console.log(\\"bar\\");
+ * };\\"
  * `,
  *     deploy: true,
  *     supportedTriggers: {

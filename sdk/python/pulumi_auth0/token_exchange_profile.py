@@ -217,8 +217,8 @@ class TokenExchangeProfile(pulumi.CustomResource):
         my_action = auth0.Action("my_action",
             name="TokenExchange-Action",
             code=\"\"\"exports.onExecuteCustomTokenExchange = async (event, api) => {
-        \\x09console.log("foo")
-        };"
+        \\tconsole.log(\\"foo\\")
+        };\\"
         \"\"\",
             deploy=True,
             supported_triggers={
@@ -269,8 +269,8 @@ class TokenExchangeProfile(pulumi.CustomResource):
         my_action = auth0.Action("my_action",
             name="TokenExchange-Action",
             code=\"\"\"exports.onExecuteCustomTokenExchange = async (event, api) => {
-        \\x09console.log("foo")
-        };"
+        \\tconsole.log(\\"foo\\")
+        };\\"
         \"\"\",
             deploy=True,
             supported_triggers={

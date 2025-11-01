@@ -67,14 +67,18 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClientsClientOidcLogoutResult> OidcLogouts;
         /// <summary>
+        /// Methods for discovering organizations during the pre_login_prompt. Can include `Email` (allows users to find their organization by entering their email address) and/or `OrganizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `OrganizationRequireBehavior` is set to `PreLoginPrompt`.
+        /// </summary>
+        public readonly ImmutableArray<string> OrganizationDiscoveryMethods;
+        /// <summary>
         /// The identifier of a resource server that client is associated withThis property can be sent only when app_type=resource_server.This property can not be changed, once the client is created.
         /// </summary>
         public readonly string ResourceServerIdentifier;
         public readonly ImmutableArray<Outputs.GetClientsClientSessionTransferResult> SessionTransfers;
         /// <summary>
-        /// Indicates whether to skip the confirmation prompt when using non-verifiable callback URIs.
+        /// Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
         /// </summary>
-        public readonly bool SkipNonVerifiableCallbackUriConfirmationPrompt;
+        public readonly string SkipNonVerifiableCallbackUriConfirmationPrompt;
         /// <summary>
         /// Allows configuration for token exchange
         /// </summary>
@@ -118,11 +122,13 @@ namespace Pulumi.Auth0.Outputs
 
             ImmutableArray<Outputs.GetClientsClientOidcLogoutResult> oidcLogouts,
 
+            ImmutableArray<string> organizationDiscoveryMethods,
+
             string resourceServerIdentifier,
 
             ImmutableArray<Outputs.GetClientsClientSessionTransferResult> sessionTransfers,
 
-            bool skipNonVerifiableCallbackUriConfirmationPrompt,
+            string skipNonVerifiableCallbackUriConfirmationPrompt,
 
             ImmutableArray<Outputs.GetClientsClientTokenExchangeResult> tokenExchanges,
 
@@ -144,6 +150,7 @@ namespace Pulumi.Auth0.Outputs
             IsTokenEndpointIpHeaderTrusted = isTokenEndpointIpHeaderTrusted;
             Name = name;
             OidcLogouts = oidcLogouts;
+            OrganizationDiscoveryMethods = organizationDiscoveryMethods;
             ResourceServerIdentifier = resourceServerIdentifier;
             SessionTransfers = sessionTransfers;
             SkipNonVerifiableCallbackUriConfirmationPrompt = skipNonVerifiableCallbackUriConfirmationPrompt;
