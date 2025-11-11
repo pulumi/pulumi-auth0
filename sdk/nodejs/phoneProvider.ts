@@ -41,7 +41,7 @@ import * as utilities from "./utilities";
  * // Make sure a corresponding action exists with custom-phone-provider as supported triggers
  * const sendCustomPhone = new auth0.Action("send_custom_phone", {
  *     name: "Custom Phone Provider",
- *     runtime: "node18",
+ *     runtime: "node22",
  *     deploy: true,
  *     code: `/**
  *  * Handler to be executed while sending a phone notification

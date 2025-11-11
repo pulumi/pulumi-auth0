@@ -115,7 +115,7 @@ import javax.annotation.Nullable;
  *         // The action with custom-email-provider as supported_triggers is a prerequisite.
  *         var customEmailProviderAction = new Action("customEmailProviderAction", ActionArgs.builder()
  *             .name("custom-email-provider-action")
- *             .runtime("node18")
+ *             .runtime("node22")
  *             .deploy(true)
  *             .code("""
  * /**

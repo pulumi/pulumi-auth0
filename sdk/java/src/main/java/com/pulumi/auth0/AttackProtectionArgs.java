@@ -3,8 +3,10 @@
 
 package com.pulumi.auth0;
 
+import com.pulumi.auth0.inputs.AttackProtectionBotDetectionArgs;
 import com.pulumi.auth0.inputs.AttackProtectionBreachedPasswordDetectionArgs;
 import com.pulumi.auth0.inputs.AttackProtectionBruteForceProtectionArgs;
+import com.pulumi.auth0.inputs.AttackProtectionCaptchaArgs;
 import com.pulumi.auth0.inputs.AttackProtectionSuspiciousIpThrottlingArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -16,6 +18,21 @@ import javax.annotation.Nullable;
 public final class AttackProtectionArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AttackProtectionArgs Empty = new AttackProtectionArgs();
+
+    /**
+     * Bot detection configuration to identify and prevent automated threats.
+     * 
+     */
+    @Import(name="botDetection")
+    private @Nullable Output<AttackProtectionBotDetectionArgs> botDetection;
+
+    /**
+     * @return Bot detection configuration to identify and prevent automated threats.
+     * 
+     */
+    public Optional<Output<AttackProtectionBotDetectionArgs>> botDetection() {
+        return Optional.ofNullable(this.botDetection);
+    }
 
     /**
      * Breached password detection protects your applications from bad actors logging in with stolen credentials.
@@ -48,6 +65,21 @@ public final class AttackProtectionArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * CAPTCHA configuration for attack protection.
+     * 
+     */
+    @Import(name="captcha")
+    private @Nullable Output<AttackProtectionCaptchaArgs> captcha;
+
+    /**
+     * @return CAPTCHA configuration for attack protection.
+     * 
+     */
+    public Optional<Output<AttackProtectionCaptchaArgs>> captcha() {
+        return Optional.ofNullable(this.captcha);
+    }
+
+    /**
      * Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.
      * 
      */
@@ -65,8 +97,10 @@ public final class AttackProtectionArgs extends com.pulumi.resources.ResourceArg
     private AttackProtectionArgs() {}
 
     private AttackProtectionArgs(AttackProtectionArgs $) {
+        this.botDetection = $.botDetection;
         this.breachedPasswordDetection = $.breachedPasswordDetection;
         this.bruteForceProtection = $.bruteForceProtection;
+        this.captcha = $.captcha;
         this.suspiciousIpThrottling = $.suspiciousIpThrottling;
     }
 
@@ -86,6 +120,27 @@ public final class AttackProtectionArgs extends com.pulumi.resources.ResourceArg
 
         public Builder(AttackProtectionArgs defaults) {
             $ = new AttackProtectionArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param botDetection Bot detection configuration to identify and prevent automated threats.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder botDetection(@Nullable Output<AttackProtectionBotDetectionArgs> botDetection) {
+            $.botDetection = botDetection;
+            return this;
+        }
+
+        /**
+         * @param botDetection Bot detection configuration to identify and prevent automated threats.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder botDetection(AttackProtectionBotDetectionArgs botDetection) {
+            return botDetection(Output.of(botDetection));
         }
 
         /**
@@ -128,6 +183,27 @@ public final class AttackProtectionArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder bruteForceProtection(AttackProtectionBruteForceProtectionArgs bruteForceProtection) {
             return bruteForceProtection(Output.of(bruteForceProtection));
+        }
+
+        /**
+         * @param captcha CAPTCHA configuration for attack protection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder captcha(@Nullable Output<AttackProtectionCaptchaArgs> captcha) {
+            $.captcha = captcha;
+            return this;
+        }
+
+        /**
+         * @param captcha CAPTCHA configuration for attack protection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder captcha(AttackProtectionCaptchaArgs captcha) {
+            return captcha(Output.of(captcha));
         }
 
         /**

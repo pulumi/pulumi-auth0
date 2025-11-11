@@ -40,6 +40,11 @@ public final class GetClientsClient {
      */
     private String appType;
     /**
+     * @return List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `[&#34;guardian-push&#34;]` if not specified.
+     * 
+     */
+    private List<String> asyncApprovalNotificationChannels;
+    /**
      * @return URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
      * 
      */
@@ -145,6 +150,13 @@ public final class GetClientsClient {
      */
     public String appType() {
         return this.appType;
+    }
+    /**
+     * @return List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `[&#34;guardian-push&#34;]` if not specified.
+     * 
+     */
+    public List<String> asyncApprovalNotificationChannels() {
+        return this.asyncApprovalNotificationChannels;
     }
     /**
      * @return URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
@@ -271,6 +283,7 @@ public final class GetClientsClient {
         private List<String> allowedLogoutUrls;
         private List<String> allowedOrigins;
         private String appType;
+        private List<String> asyncApprovalNotificationChannels;
         private List<String> callbacks;
         private @Nullable String clientId;
         private Map<String,String> clientMetadata;
@@ -295,6 +308,7 @@ public final class GetClientsClient {
     	      this.allowedLogoutUrls = defaults.allowedLogoutUrls;
     	      this.allowedOrigins = defaults.allowedOrigins;
     	      this.appType = defaults.appType;
+    	      this.asyncApprovalNotificationChannels = defaults.asyncApprovalNotificationChannels;
     	      this.callbacks = defaults.callbacks;
     	      this.clientId = defaults.clientId;
     	      this.clientMetadata = defaults.clientMetadata;
@@ -354,6 +368,17 @@ public final class GetClientsClient {
             }
             this.appType = appType;
             return this;
+        }
+        @CustomType.Setter
+        public Builder asyncApprovalNotificationChannels(List<String> asyncApprovalNotificationChannels) {
+            if (asyncApprovalNotificationChannels == null) {
+              throw new MissingRequiredPropertyException("GetClientsClient", "asyncApprovalNotificationChannels");
+            }
+            this.asyncApprovalNotificationChannels = asyncApprovalNotificationChannels;
+            return this;
+        }
+        public Builder asyncApprovalNotificationChannels(String... asyncApprovalNotificationChannels) {
+            return asyncApprovalNotificationChannels(List.of(asyncApprovalNotificationChannels));
         }
         @CustomType.Setter
         public Builder callbacks(List<String> callbacks) {
@@ -517,6 +542,7 @@ public final class GetClientsClient {
             _resultValue.allowedLogoutUrls = allowedLogoutUrls;
             _resultValue.allowedOrigins = allowedOrigins;
             _resultValue.appType = appType;
+            _resultValue.asyncApprovalNotificationChannels = asyncApprovalNotificationChannels;
             _resultValue.callbacks = callbacks;
             _resultValue.clientId = clientId;
             _resultValue.clientMetadata = clientMetadata;

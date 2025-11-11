@@ -27,6 +27,7 @@
         "connectionClients.ts",
         "connectionKeys.ts",
         "connectionScimConfiguration.ts",
+        "connectionScimToken.ts",
         "customDomain.ts",
         "customDomainVerification.ts",
         "emailProvider.ts",

@@ -76,7 +76,7 @@ import * as utilities from "./utilities";
  * // The action with custom-email-provider as supported_triggers is a prerequisite.
  * const customEmailProviderAction = new auth0.Action("custom_email_provider_action", {
  *     name: "custom-email-provider-action",
- *     runtime: "node18",
+ *     runtime: "node22",
  *     deploy: true,
  *     code: `/**
  *  * Handler to be executed while sending an email notification.

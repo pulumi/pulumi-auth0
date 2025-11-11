@@ -99,7 +99,7 @@ namespace Pulumi.Auth0
     ///     var customEmailProviderAction = new Auth0.Action("custom_email_provider_action", new()
     ///     {
     ///         Name = "custom-email-provider-action",
-    ///         Runtime = "node18",
+    ///         Runtime = "node22",
     ///         Deploy = true,
     ///         Code = @"/**
     ///  * Handler to be executed while sending an email notification.

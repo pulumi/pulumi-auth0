@@ -38,6 +38,33 @@ export interface ActionSupportedTriggers {
     version: string;
 }
 
+export interface AttackProtectionBotDetection {
+    /**
+     * List of IP addresses or ranges that will not trigger bot detection.
+     */
+    allowlists: string[];
+    /**
+     * Bot detection level. Possible values: `low`, `medium`, `high`. Set to empty string to disable.
+     */
+    botDetectionLevel: string;
+    /**
+     * Challenge policy for password flow. Possible values: `never`, `whenRisky`, `always`.
+     */
+    challengePasswordPolicy: string;
+    /**
+     * Challenge policy for password reset flow. Possible values: `never`, `whenRisky`, `always`.
+     */
+    challengePasswordResetPolicy: string;
+    /**
+     * Challenge policy for passwordless flow. Possible values: `never`, `whenRisky`, `always`.
+     */
+    challengePasswordlessPolicy: string;
+    /**
+     * Whether monitoring mode is enabled for bot detection.
+     */
+    monitoringModeEnabled: boolean;
+}
+
 export interface AttackProtectionBreachedPasswordDetection {
     /**
      * When `adminNotification` is enabled within the `shields` property, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
@@ -100,6 +127,115 @@ export interface AttackProtectionBruteForceProtection {
      * Action to take when a brute force protection threshold is violated. Possible values: `block` (block login attempts for a flagged user account), `userNotification` (send an email to user when their account has been blocked).
      */
     shields: string[];
+}
+
+export interface AttackProtectionCaptcha {
+    /**
+     * Active CAPTCHA provider ID. Set to empty string to disable CAPTCHA. Possible values: `recaptchaV2`, `recaptchaEnterprise`, `hcaptcha`, `friendlyCaptcha`, `arkose`, `authChallenge`, `simpleCaptcha`.
+     */
+    activeProviderId: string;
+    /**
+     * Configuration for Arkose Labs.
+     */
+    arkose: outputs.AttackProtectionCaptchaArkose;
+    /**
+     * Configuration for Auth0's Auth Challenge.
+     */
+    authChallenge: outputs.AttackProtectionCaptchaAuthChallenge;
+    /**
+     * Configuration for Friendly Captcha.
+     */
+    friendlyCaptcha: outputs.AttackProtectionCaptchaFriendlyCaptcha;
+    /**
+     * Configuration for hCaptcha.
+     */
+    hcaptcha: outputs.AttackProtectionCaptchaHcaptcha;
+    /**
+     * Configuration for Google reCAPTCHA Enterprise.
+     */
+    recaptchaEnterprise: outputs.AttackProtectionCaptchaRecaptchaEnterprise;
+    /**
+     * Configuration for Google reCAPTCHA v2.
+     */
+    recaptchaV2: outputs.AttackProtectionCaptchaRecaptchaV2;
+}
+
+export interface AttackProtectionCaptchaArkose {
+    /**
+     * Client subdomain for Arkose Labs.
+     */
+    clientSubdomain: string;
+    /**
+     * Whether the captcha should fail open.
+     */
+    failOpen: boolean;
+    /**
+     * Secret for Arkose Labs.
+     */
+    secret: string;
+    /**
+     * Site key for Arkose Labs.
+     */
+    siteKey: string;
+    /**
+     * Verify subdomain for Arkose Labs.
+     */
+    verifySubdomain: string;
+}
+
+export interface AttackProtectionCaptchaAuthChallenge {
+    /**
+     * Whether the auth challenge should fail open.
+     */
+    failOpen: boolean;
+}
+
+export interface AttackProtectionCaptchaFriendlyCaptcha {
+    /**
+     * Secret for Friendly Captcha.
+     */
+    secret: string;
+    /**
+     * Site key for Friendly Captcha.
+     */
+    siteKey: string;
+}
+
+export interface AttackProtectionCaptchaHcaptcha {
+    /**
+     * Secret for hCaptcha.
+     */
+    secret: string;
+    /**
+     * Site key for hCaptcha.
+     */
+    siteKey: string;
+}
+
+export interface AttackProtectionCaptchaRecaptchaEnterprise {
+    /**
+     * API key for reCAPTCHA Enterprise.
+     */
+    apiKey: string;
+    /**
+     * Project ID for reCAPTCHA Enterprise.
+     */
+    projectId: string;
+    /**
+     * Site key for reCAPTCHA Enterprise.
+     */
+    siteKey: string;
+}
+
+export interface AttackProtectionCaptchaRecaptchaV2 {
+    /**
+     * Secret for reCAPTCHA v2.
+     */
+    secret: string;
+    /**
+     * Site key for reCAPTCHA v2.
+     */
+    siteKey: string;
 }
 
 export interface AttackProtectionSuspiciousIpThrottling {
@@ -2435,6 +2571,33 @@ export interface GetActionSupportedTrigger {
     version: string;
 }
 
+export interface GetAttackProtectionBotDetection {
+    /**
+     * List of IP addresses or ranges that will not trigger bot detection.
+     */
+    allowlists: string[];
+    /**
+     * Bot detection level. Possible values: `low`, `medium`, `high`. Set to empty string to disable.
+     */
+    botDetectionLevel: string;
+    /**
+     * Challenge policy for password flow. Possible values: `never`, `whenRisky`, `always`.
+     */
+    challengePasswordPolicy: string;
+    /**
+     * Challenge policy for password reset flow. Possible values: `never`, `whenRisky`, `always`.
+     */
+    challengePasswordResetPolicy: string;
+    /**
+     * Challenge policy for passwordless flow. Possible values: `never`, `whenRisky`, `always`.
+     */
+    challengePasswordlessPolicy: string;
+    /**
+     * Whether monitoring mode is enabled for bot detection.
+     */
+    monitoringModeEnabled: boolean;
+}
+
 export interface GetAttackProtectionBreachedPasswordDetection {
     /**
      * When `adminNotification` is enabled within the `shields` property, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
@@ -2497,6 +2660,115 @@ export interface GetAttackProtectionBruteForceProtection {
      * Action to take when a brute force protection threshold is violated. Possible values: `block` (block login attempts for a flagged user account), `userNotification` (send an email to user when their account has been blocked).
      */
     shields: string[];
+}
+
+export interface GetAttackProtectionCaptcha {
+    /**
+     * Active CAPTCHA provider ID. Set to empty string to disable CAPTCHA. Possible values: `recaptchaV2`, `recaptchaEnterprise`, `hcaptcha`, `friendlyCaptcha`, `arkose`, `authChallenge`, `simpleCaptcha`.
+     */
+    activeProviderId: string;
+    /**
+     * Configuration for Arkose Labs.
+     */
+    arkoses: outputs.GetAttackProtectionCaptchaArkose[];
+    /**
+     * Configuration for Auth0's Auth Challenge.
+     */
+    authChallenges: outputs.GetAttackProtectionCaptchaAuthChallenge[];
+    /**
+     * Configuration for Friendly Captcha.
+     */
+    friendlyCaptchas: outputs.GetAttackProtectionCaptchaFriendlyCaptcha[];
+    /**
+     * Configuration for hCaptcha.
+     */
+    hcaptchas: outputs.GetAttackProtectionCaptchaHcaptcha[];
+    /**
+     * Configuration for Google reCAPTCHA Enterprise.
+     */
+    recaptchaEnterprises: outputs.GetAttackProtectionCaptchaRecaptchaEnterprise[];
+    /**
+     * Configuration for Google reCAPTCHA v2.
+     */
+    recaptchaV2s: outputs.GetAttackProtectionCaptchaRecaptchaV2[];
+}
+
+export interface GetAttackProtectionCaptchaArkose {
+    /**
+     * Client subdomain for Arkose Labs.
+     */
+    clientSubdomain: string;
+    /**
+     * Whether the captcha should fail open.
+     */
+    failOpen: boolean;
+    /**
+     * Secret for Arkose Labs.
+     */
+    secret: string;
+    /**
+     * Site key for Arkose Labs.
+     */
+    siteKey: string;
+    /**
+     * Verify subdomain for Arkose Labs.
+     */
+    verifySubdomain: string;
+}
+
+export interface GetAttackProtectionCaptchaAuthChallenge {
+    /**
+     * Whether the auth challenge should fail open.
+     */
+    failOpen: boolean;
+}
+
+export interface GetAttackProtectionCaptchaFriendlyCaptcha {
+    /**
+     * Secret for Friendly Captcha.
+     */
+    secret: string;
+    /**
+     * Site key for Friendly Captcha.
+     */
+    siteKey: string;
+}
+
+export interface GetAttackProtectionCaptchaHcaptcha {
+    /**
+     * Secret for hCaptcha.
+     */
+    secret: string;
+    /**
+     * Site key for hCaptcha.
+     */
+    siteKey: string;
+}
+
+export interface GetAttackProtectionCaptchaRecaptchaEnterprise {
+    /**
+     * API key for reCAPTCHA Enterprise.
+     */
+    apiKey: string;
+    /**
+     * Project ID for reCAPTCHA Enterprise.
+     */
+    projectId: string;
+    /**
+     * Site key for reCAPTCHA Enterprise.
+     */
+    siteKey: string;
+}
+
+export interface GetAttackProtectionCaptchaRecaptchaV2 {
+    /**
+     * Secret for reCAPTCHA v2.
+     */
+    secret: string;
+    /**
+     * Site key for reCAPTCHA v2.
+     */
+    siteKey: string;
 }
 
 export interface GetAttackProtectionSuspiciousIpThrottling {
@@ -3792,6 +4064,10 @@ export interface GetClientsClient {
      * Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
      */
     appType: string;
+    /**
+     * List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `["guardian-push"]` if not specified.
+     */
+    asyncApprovalNotificationChannels: string[];
     /**
      * URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
      */
@@ -6421,11 +6697,11 @@ export interface ResourceServerSubjectTypeAuthorization {
     /**
      * Client authorization policies for the resource server.
      */
-    client?: outputs.ResourceServerSubjectTypeAuthorizationClient;
+    client: outputs.ResourceServerSubjectTypeAuthorizationClient;
     /**
      * User authorization policies for the resource server.
      */
-    user?: outputs.ResourceServerSubjectTypeAuthorizationUser;
+    user: outputs.ResourceServerSubjectTypeAuthorizationUser;
 }
 
 export interface ResourceServerSubjectTypeAuthorizationClient {

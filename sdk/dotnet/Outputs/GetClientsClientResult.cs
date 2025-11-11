@@ -30,6 +30,10 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string AppType;
         /// <summary>
+        /// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `Email`. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `["guardian-push"]` if not specified.
+        /// </summary>
+        public readonly ImmutableArray<string> AsyncApprovalNotificationChannels;
+        /// <summary>
         /// URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
         /// </summary>
         public readonly ImmutableArray<string> Callbacks;
@@ -102,6 +106,8 @@ namespace Pulumi.Auth0.Outputs
 
             string appType,
 
+            ImmutableArray<string> asyncApprovalNotificationChannels,
+
             ImmutableArray<string> callbacks,
 
             string? clientId,
@@ -140,6 +146,7 @@ namespace Pulumi.Auth0.Outputs
             AllowedLogoutUrls = allowedLogoutUrls;
             AllowedOrigins = allowedOrigins;
             AppType = appType;
+            AsyncApprovalNotificationChannels = asyncApprovalNotificationChannels;
             Callbacks = callbacks;
             ClientId = clientId;
             ClientMetadata = clientMetadata;

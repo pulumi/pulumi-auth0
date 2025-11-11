@@ -54,7 +54,7 @@ namespace Pulumi.Auth0
     ///     var sendCustomPhone = new Auth0.Action("send_custom_phone", new()
     ///     {
     ///         Name = "Custom Phone Provider",
-    ///         Runtime = "node18",
+    ///         Runtime = "node22",
     ///         Deploy = true,
     ///         Code = @"/**
     ///  * Handler to be executed while sending a phone notification

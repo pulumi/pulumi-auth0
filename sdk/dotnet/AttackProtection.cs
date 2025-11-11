@@ -91,8 +91,124 @@ namespace Pulumi.Auth0
     ///                 },
     ///             },
     ///         },
+    ///         BotDetection = new Auth0.Inputs.AttackProtectionBotDetectionArgs
+    ///         {
+    ///             BotDetectionLevel = "medium",
+    ///             ChallengePasswordPolicy = "when_risky",
+    ///             ChallengePasswordlessPolicy = "when_risky",
+    ///             ChallengePasswordResetPolicy = "always",
+    ///             Allowlists = new[]
+    ///             {
+    ///                 "192.168.1.0",
+    ///                 "10.0.0.0",
+    ///             },
+    ///             MonitoringModeEnabled = true,
+    ///         },
     ///     });
     /// 
+    ///     // ============================================================================
+    ///     // CAPTCHA PROVIDER EXAMPLES - One per Provider
+    ///     // ============================================================================
+    ///     var config = new Config();
+    ///     // Google reCAPTCHA v2 site key
+    ///     var recaptchaV2SiteKey = config.Require("recaptchaV2SiteKey");
+    ///     // Google reCAPTCHA v2 secret key
+    ///     var recaptchaV2Secret = config.Require("recaptchaV2Secret");
+    ///     // Example 1: reCAPTCHA v2
+    ///     var captchaRecaptchaV2 = new Auth0.AttackProtection("captcha_recaptcha_v2", new()
+    ///     {
+    ///         Captcha = new Auth0.Inputs.AttackProtectionCaptchaArgs
+    ///         {
+    ///             ActiveProviderId = "recaptcha_v2",
+    ///             RecaptchaV2 = new Auth0.Inputs.AttackProtectionCaptchaRecaptchaV2Args
+    ///             {
+    ///                 SiteKey = recaptchaV2SiteKey,
+    ///                 Secret = recaptchaV2Secret,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     // Google reCAPTCHA Enterprise site key
+    ///     var recaptchaEnterpriseSiteKey = config.Require("recaptchaEnterpriseSiteKey");
+    ///     // Google reCAPTCHA Enterprise API key
+    ///     var recaptchaEnterpriseApiKey = config.Require("recaptchaEnterpriseApiKey");
+    ///     // Google reCAPTCHA Enterprise project ID
+    ///     var recaptchaEnterpriseProjectId = config.Require("recaptchaEnterpriseProjectId");
+    ///     // Example 2: reCAPTCHA Enterprise
+    ///     var captchaRecaptchaEnterprise = new Auth0.AttackProtection("captcha_recaptcha_enterprise", new()
+    ///     {
+    ///         Captcha = new Auth0.Inputs.AttackProtectionCaptchaArgs
+    ///         {
+    ///             ActiveProviderId = "recaptcha_enterprise",
+    ///             RecaptchaEnterprise = new Auth0.Inputs.AttackProtectionCaptchaRecaptchaEnterpriseArgs
+    ///             {
+    ///                 SiteKey = recaptchaEnterpriseSiteKey,
+    ///                 ApiKey = recaptchaEnterpriseApiKey,
+    ///                 ProjectId = recaptchaEnterpriseProjectId,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     // hCaptcha site key
+    ///     var hcaptchaSiteKey = config.Require("hcaptchaSiteKey");
+    ///     // hCaptcha secret key
+    ///     var hcaptchaSecret = config.Require("hcaptchaSecret");
+    ///     // Example 3: hCaptcha
+    ///     var captchaHcaptcha = new Auth0.AttackProtection("captcha_hcaptcha", new()
+    ///     {
+    ///         Captcha = new Auth0.Inputs.AttackProtectionCaptchaArgs
+    ///         {
+    ///             ActiveProviderId = "hcaptcha",
+    ///             Hcaptcha = new Auth0.Inputs.AttackProtectionCaptchaHcaptchaArgs
+    ///             {
+    ///                 SiteKey = hcaptchaSiteKey,
+    ///                 Secret = hcaptchaSecret,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     // Friendly Captcha site key
+    ///     var friendlyCaptchaSiteKey = config.Require("friendlyCaptchaSiteKey");
+    ///     // Friendly Captcha secret key
+    ///     var friendlyCaptchaSecret = config.Require("friendlyCaptchaSecret");
+    ///     // Example 4: Friendly Captcha
+    ///     var captchaFriendlyCaptcha = new Auth0.AttackProtection("captcha_friendly_captcha", new()
+    ///     {
+    ///         Captcha = new Auth0.Inputs.AttackProtectionCaptchaArgs
+    ///         {
+    ///             ActiveProviderId = "friendly_captcha",
+    ///             FriendlyCaptcha = new Auth0.Inputs.AttackProtectionCaptchaFriendlyCaptchaArgs
+    ///             {
+    ///                 SiteKey = friendlyCaptchaSiteKey,
+    ///                 Secret = friendlyCaptchaSecret,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     // Arkose Labs site key
+    ///     var arkoseSiteKey = config.Require("arkoseSiteKey");
+    ///     // Arkose Labs secret key
+    ///     var arkoseSecret = config.Require("arkoseSecret");
+    ///     // Example 5: Arkose Labs
+    ///     var captchaArkose = new Auth0.AttackProtection("captcha_arkose", new()
+    ///     {
+    ///         Captcha = new Auth0.Inputs.AttackProtectionCaptchaArgs
+    ///         {
+    ///             ActiveProviderId = "arkose",
+    ///             Arkose = new Auth0.Inputs.AttackProtectionCaptchaArkoseArgs
+    ///             {
+    ///                 SiteKey = arkoseSiteKey,
+    ///                 Secret = arkoseSecret,
+    ///                 ClientSubdomain = "client.example.com",
+    ///                 VerifySubdomain = "verify.example.com",
+    ///                 FailOpen = false,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     // ============================================================================
+    ///     // VARIABLES FOR SENSITIVE DATA
+    ///     // ============================================================================
     /// });
     /// ```
     /// 
@@ -114,6 +230,12 @@ namespace Pulumi.Auth0
     public partial class AttackProtection : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Bot detection configuration to identify and prevent automated threats.
+        /// </summary>
+        [Output("botDetection")]
+        public Output<Outputs.AttackProtectionBotDetection> BotDetection { get; private set; } = null!;
+
+        /// <summary>
         /// Breached password detection protects your applications from bad actors logging in with stolen credentials.
         /// </summary>
         [Output("breachedPasswordDetection")]
@@ -124,6 +246,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Output("bruteForceProtection")]
         public Output<Outputs.AttackProtectionBruteForceProtection> BruteForceProtection { get; private set; } = null!;
+
+        /// <summary>
+        /// CAPTCHA configuration for attack protection.
+        /// </summary>
+        [Output("captcha")]
+        public Output<Outputs.AttackProtectionCaptcha> Captcha { get; private set; } = null!;
 
         /// <summary>
         /// Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.
@@ -178,6 +306,12 @@ namespace Pulumi.Auth0
     public sealed class AttackProtectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Bot detection configuration to identify and prevent automated threats.
+        /// </summary>
+        [Input("botDetection")]
+        public Input<Inputs.AttackProtectionBotDetectionArgs>? BotDetection { get; set; }
+
+        /// <summary>
         /// Breached password detection protects your applications from bad actors logging in with stolen credentials.
         /// </summary>
         [Input("breachedPasswordDetection")]
@@ -188,6 +322,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("bruteForceProtection")]
         public Input<Inputs.AttackProtectionBruteForceProtectionArgs>? BruteForceProtection { get; set; }
+
+        /// <summary>
+        /// CAPTCHA configuration for attack protection.
+        /// </summary>
+        [Input("captcha")]
+        public Input<Inputs.AttackProtectionCaptchaArgs>? Captcha { get; set; }
 
         /// <summary>
         /// Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.
@@ -204,6 +344,12 @@ namespace Pulumi.Auth0
     public sealed class AttackProtectionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Bot detection configuration to identify and prevent automated threats.
+        /// </summary>
+        [Input("botDetection")]
+        public Input<Inputs.AttackProtectionBotDetectionGetArgs>? BotDetection { get; set; }
+
+        /// <summary>
         /// Breached password detection protects your applications from bad actors logging in with stolen credentials.
         /// </summary>
         [Input("breachedPasswordDetection")]
@@ -214,6 +360,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("bruteForceProtection")]
         public Input<Inputs.AttackProtectionBruteForceProtectionGetArgs>? BruteForceProtection { get; set; }
+
+        /// <summary>
+        /// CAPTCHA configuration for attack protection.
+        /// </summary>
+        [Input("captcha")]
+        public Input<Inputs.AttackProtectionCaptchaGetArgs>? Captcha { get; set; }
 
         /// <summary>
         /// Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.

@@ -53,6 +53,11 @@ public final class GetClientResult {
      */
     private String appType;
     /**
+     * @return List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `[&#34;guardian-push&#34;]` if not specified.
+     * 
+     */
+    private List<String> asyncApprovalNotificationChannels;
+    /**
      * @return URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
      * 
      */
@@ -305,6 +310,13 @@ public final class GetClientResult {
      */
     public String appType() {
         return this.appType;
+    }
+    /**
+     * @return List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `[&#34;guardian-push&#34;]` if not specified.
+     * 
+     */
+    public List<String> asyncApprovalNotificationChannels() {
+        return this.asyncApprovalNotificationChannels;
     }
     /**
      * @return URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
@@ -628,6 +640,7 @@ public final class GetClientResult {
         private List<String> allowedLogoutUrls;
         private List<String> allowedOrigins;
         private String appType;
+        private List<String> asyncApprovalNotificationChannels;
         private List<String> callbacks;
         private List<String> clientAliases;
         private List<GetClientClientAuthenticationMethod> clientAuthenticationMethods;
@@ -681,6 +694,7 @@ public final class GetClientResult {
     	      this.allowedLogoutUrls = defaults.allowedLogoutUrls;
     	      this.allowedOrigins = defaults.allowedOrigins;
     	      this.appType = defaults.appType;
+    	      this.asyncApprovalNotificationChannels = defaults.asyncApprovalNotificationChannels;
     	      this.callbacks = defaults.callbacks;
     	      this.clientAliases = defaults.clientAliases;
     	      this.clientAuthenticationMethods = defaults.clientAuthenticationMethods;
@@ -779,6 +793,17 @@ public final class GetClientResult {
             }
             this.appType = appType;
             return this;
+        }
+        @CustomType.Setter
+        public Builder asyncApprovalNotificationChannels(List<String> asyncApprovalNotificationChannels) {
+            if (asyncApprovalNotificationChannels == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "asyncApprovalNotificationChannels");
+            }
+            this.asyncApprovalNotificationChannels = asyncApprovalNotificationChannels;
+            return this;
+        }
+        public Builder asyncApprovalNotificationChannels(String... asyncApprovalNotificationChannels) {
+            return asyncApprovalNotificationChannels(List.of(asyncApprovalNotificationChannels));
         }
         @CustomType.Setter
         public Builder callbacks(List<String> callbacks) {
@@ -1194,6 +1219,7 @@ public final class GetClientResult {
             _resultValue.allowedLogoutUrls = allowedLogoutUrls;
             _resultValue.allowedOrigins = allowedOrigins;
             _resultValue.appType = appType;
+            _resultValue.asyncApprovalNotificationChannels = asyncApprovalNotificationChannels;
             _resultValue.callbacks = callbacks;
             _resultValue.clientAliases = clientAliases;
             _resultValue.clientAuthenticationMethods = clientAuthenticationMethods;

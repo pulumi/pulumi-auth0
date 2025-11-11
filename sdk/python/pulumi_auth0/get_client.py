@@ -27,7 +27,7 @@ class GetClientResult:
     """
     A collection of values returned by getClient.
     """
-    def __init__(__self__, addons=None, allowed_clients=None, allowed_logout_urls=None, allowed_origins=None, app_type=None, callbacks=None, client_aliases=None, client_authentication_methods=None, client_id=None, client_metadata=None, client_secret=None, compliance_level=None, cross_origin_auth=None, cross_origin_loc=None, custom_login_page=None, custom_login_page_on=None, default_organizations=None, description=None, encryption_key=None, form_template=None, grant_types=None, id=None, initiate_login_uri=None, is_first_party=None, is_token_endpoint_ip_header_trusted=None, jwt_configurations=None, logo_uri=None, mobiles=None, name=None, native_social_logins=None, oidc_backchannel_logout_urls=None, oidc_conformant=None, oidc_logouts=None, organization_discovery_methods=None, organization_require_behavior=None, organization_usage=None, refresh_tokens=None, require_proof_of_possession=None, require_pushed_authorization_requests=None, resource_server_identifier=None, session_transfers=None, signed_request_objects=None, signing_keys=None, skip_non_verifiable_callback_uri_confirmation_prompt=None, sso=None, sso_disabled=None, token_endpoint_auth_method=None, token_exchanges=None, token_quotas=None, web_origins=None):
+    def __init__(__self__, addons=None, allowed_clients=None, allowed_logout_urls=None, allowed_origins=None, app_type=None, async_approval_notification_channels=None, callbacks=None, client_aliases=None, client_authentication_methods=None, client_id=None, client_metadata=None, client_secret=None, compliance_level=None, cross_origin_auth=None, cross_origin_loc=None, custom_login_page=None, custom_login_page_on=None, default_organizations=None, description=None, encryption_key=None, form_template=None, grant_types=None, id=None, initiate_login_uri=None, is_first_party=None, is_token_endpoint_ip_header_trusted=None, jwt_configurations=None, logo_uri=None, mobiles=None, name=None, native_social_logins=None, oidc_backchannel_logout_urls=None, oidc_conformant=None, oidc_logouts=None, organization_discovery_methods=None, organization_require_behavior=None, organization_usage=None, refresh_tokens=None, require_proof_of_possession=None, require_pushed_authorization_requests=None, resource_server_identifier=None, session_transfers=None, signed_request_objects=None, signing_keys=None, skip_non_verifiable_callback_uri_confirmation_prompt=None, sso=None, sso_disabled=None, token_endpoint_auth_method=None, token_exchanges=None, token_quotas=None, web_origins=None):
         if addons and not isinstance(addons, list):
             raise TypeError("Expected argument 'addons' to be a list")
         pulumi.set(__self__, "addons", addons)
@@ -43,6 +43,9 @@ class GetClientResult:
         if app_type and not isinstance(app_type, str):
             raise TypeError("Expected argument 'app_type' to be a str")
         pulumi.set(__self__, "app_type", app_type)
+        if async_approval_notification_channels and not isinstance(async_approval_notification_channels, list):
+            raise TypeError("Expected argument 'async_approval_notification_channels' to be a list")
+        pulumi.set(__self__, "async_approval_notification_channels", async_approval_notification_channels)
         if callbacks and not isinstance(callbacks, list):
             raise TypeError("Expected argument 'callbacks' to be a list")
         pulumi.set(__self__, "callbacks", callbacks)
@@ -218,6 +221,14 @@ class GetClientResult:
         Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
         """
         return pulumi.get(self, "app_type")
+
+    @_builtins.property
+    @pulumi.getter(name="asyncApprovalNotificationChannels")
+    def async_approval_notification_channels(self) -> Sequence[_builtins.str]:
+        """
+        List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `["guardian-push"]` if not specified.
+        """
+        return pulumi.get(self, "async_approval_notification_channels")
 
     @_builtins.property
     @pulumi.getter
@@ -585,6 +596,7 @@ class AwaitableGetClientResult(GetClientResult):
             allowed_logout_urls=self.allowed_logout_urls,
             allowed_origins=self.allowed_origins,
             app_type=self.app_type,
+            async_approval_notification_channels=self.async_approval_notification_channels,
             callbacks=self.callbacks,
             client_aliases=self.client_aliases,
             client_authentication_methods=self.client_authentication_methods,
@@ -666,6 +678,7 @@ def get_client(client_id: Optional[_builtins.str] = None,
         allowed_logout_urls=pulumi.get(__ret__, 'allowed_logout_urls'),
         allowed_origins=pulumi.get(__ret__, 'allowed_origins'),
         app_type=pulumi.get(__ret__, 'app_type'),
+        async_approval_notification_channels=pulumi.get(__ret__, 'async_approval_notification_channels'),
         callbacks=pulumi.get(__ret__, 'callbacks'),
         client_aliases=pulumi.get(__ret__, 'client_aliases'),
         client_authentication_methods=pulumi.get(__ret__, 'client_authentication_methods'),
@@ -744,6 +757,7 @@ def get_client_output(client_id: Optional[pulumi.Input[Optional[_builtins.str]]]
         allowed_logout_urls=pulumi.get(__response__, 'allowed_logout_urls'),
         allowed_origins=pulumi.get(__response__, 'allowed_origins'),
         app_type=pulumi.get(__response__, 'app_type'),
+        async_approval_notification_channels=pulumi.get(__response__, 'async_approval_notification_channels'),
         callbacks=pulumi.get(__response__, 'callbacks'),
         client_aliases=pulumi.get(__response__, 'client_aliases'),
         client_authentication_methods=pulumi.get(__response__, 'client_authentication_methods'),

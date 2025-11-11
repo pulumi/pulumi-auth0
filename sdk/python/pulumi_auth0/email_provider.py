@@ -269,7 +269,7 @@ class EmailProvider(pulumi.CustomResource):
         # The action with custom-email-provider as supported_triggers is a prerequisite.
         custom_email_provider_action = auth0.Action("custom_email_provider_action",
             name="custom-email-provider-action",
-            runtime="node18",
+            runtime="node22",
             deploy=True,
             code=\"\"\"/**
          * Handler to be executed while sending an email notification.
@@ -388,7 +388,7 @@ class EmailProvider(pulumi.CustomResource):
         # The action with custom-email-provider as supported_triggers is a prerequisite.
         custom_email_provider_action = auth0.Action("custom_email_provider_action",
             name="custom-email-provider-action",
-            runtime="node18",
+            runtime="node22",
             deploy=True,
             code=\"\"\"/**
          * Handler to be executed while sending an email notification.

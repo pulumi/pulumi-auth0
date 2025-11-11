@@ -104,7 +104,7 @@ import (
 //			// The action with custom-email-provider as supported_triggers is a prerequisite.
 //			customEmailProviderAction, err := auth0.NewAction(ctx, "custom_email_provider_action", &auth0.ActionArgs{
 //				Name:    pulumi.String("custom-email-provider-action"),
-//				Runtime: pulumi.String("node18"),
+//				Runtime: pulumi.String("node22"),
 //				Deploy:  pulumi.Bool(true),
 //				Code: pulumi.String(`/**
 //	 * Handler to be executed while sending an email notification.

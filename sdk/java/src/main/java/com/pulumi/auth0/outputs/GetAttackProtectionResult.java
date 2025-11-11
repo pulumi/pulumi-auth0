@@ -3,8 +3,10 @@
 
 package com.pulumi.auth0.outputs;
 
+import com.pulumi.auth0.outputs.GetAttackProtectionBotDetection;
 import com.pulumi.auth0.outputs.GetAttackProtectionBreachedPasswordDetection;
 import com.pulumi.auth0.outputs.GetAttackProtectionBruteForceProtection;
+import com.pulumi.auth0.outputs.GetAttackProtectionCaptcha;
 import com.pulumi.auth0.outputs.GetAttackProtectionSuspiciousIpThrottling;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -15,6 +17,11 @@ import java.util.Objects;
 @CustomType
 public final class GetAttackProtectionResult {
     /**
+     * @return Bot detection configuration to identify and prevent automated threats.
+     * 
+     */
+    private List<GetAttackProtectionBotDetection> botDetections;
+    /**
      * @return Breached password detection protects your applications from bad actors logging in with stolen credentials.
      * 
      */
@@ -24,6 +31,11 @@ public final class GetAttackProtectionResult {
      * 
      */
     private List<GetAttackProtectionBruteForceProtection> bruteForceProtections;
+    /**
+     * @return CAPTCHA configuration for attack protection.
+     * 
+     */
+    private List<GetAttackProtectionCaptcha> captchas;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -37,6 +49,13 @@ public final class GetAttackProtectionResult {
 
     private GetAttackProtectionResult() {}
     /**
+     * @return Bot detection configuration to identify and prevent automated threats.
+     * 
+     */
+    public List<GetAttackProtectionBotDetection> botDetections() {
+        return this.botDetections;
+    }
+    /**
      * @return Breached password detection protects your applications from bad actors logging in with stolen credentials.
      * 
      */
@@ -49,6 +68,13 @@ public final class GetAttackProtectionResult {
      */
     public List<GetAttackProtectionBruteForceProtection> bruteForceProtections() {
         return this.bruteForceProtections;
+    }
+    /**
+     * @return CAPTCHA configuration for attack protection.
+     * 
+     */
+    public List<GetAttackProtectionCaptcha> captchas() {
+        return this.captchas;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -74,19 +100,34 @@ public final class GetAttackProtectionResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetAttackProtectionBotDetection> botDetections;
         private List<GetAttackProtectionBreachedPasswordDetection> breachedPasswordDetections;
         private List<GetAttackProtectionBruteForceProtection> bruteForceProtections;
+        private List<GetAttackProtectionCaptcha> captchas;
         private String id;
         private List<GetAttackProtectionSuspiciousIpThrottling> suspiciousIpThrottlings;
         public Builder() {}
         public Builder(GetAttackProtectionResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.botDetections = defaults.botDetections;
     	      this.breachedPasswordDetections = defaults.breachedPasswordDetections;
     	      this.bruteForceProtections = defaults.bruteForceProtections;
+    	      this.captchas = defaults.captchas;
     	      this.id = defaults.id;
     	      this.suspiciousIpThrottlings = defaults.suspiciousIpThrottlings;
         }
 
+        @CustomType.Setter
+        public Builder botDetections(List<GetAttackProtectionBotDetection> botDetections) {
+            if (botDetections == null) {
+              throw new MissingRequiredPropertyException("GetAttackProtectionResult", "botDetections");
+            }
+            this.botDetections = botDetections;
+            return this;
+        }
+        public Builder botDetections(GetAttackProtectionBotDetection... botDetections) {
+            return botDetections(List.of(botDetections));
+        }
         @CustomType.Setter
         public Builder breachedPasswordDetections(List<GetAttackProtectionBreachedPasswordDetection> breachedPasswordDetections) {
             if (breachedPasswordDetections == null) {
@@ -110,6 +151,17 @@ public final class GetAttackProtectionResult {
             return bruteForceProtections(List.of(bruteForceProtections));
         }
         @CustomType.Setter
+        public Builder captchas(List<GetAttackProtectionCaptcha> captchas) {
+            if (captchas == null) {
+              throw new MissingRequiredPropertyException("GetAttackProtectionResult", "captchas");
+            }
+            this.captchas = captchas;
+            return this;
+        }
+        public Builder captchas(GetAttackProtectionCaptcha... captchas) {
+            return captchas(List.of(captchas));
+        }
+        @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetAttackProtectionResult", "id");
@@ -130,8 +182,10 @@ public final class GetAttackProtectionResult {
         }
         public GetAttackProtectionResult build() {
             final var _resultValue = new GetAttackProtectionResult();
+            _resultValue.botDetections = botDetections;
             _resultValue.breachedPasswordDetections = breachedPasswordDetections;
             _resultValue.bruteForceProtections = bruteForceProtections;
+            _resultValue.captchas = captchas;
             _resultValue.id = id;
             _resultValue.suspiciousIpThrottlings = suspiciousIpThrottlings;
             return _resultValue;

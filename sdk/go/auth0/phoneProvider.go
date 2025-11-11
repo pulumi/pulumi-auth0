@@ -57,7 +57,7 @@ import (
 //			// Make sure a corresponding action exists with custom-phone-provider as supported triggers
 //			sendCustomPhone, err := auth0.NewAction(ctx, "send_custom_phone", &auth0.ActionArgs{
 //				Name:    pulumi.String("Custom Phone Provider"),
-//				Runtime: pulumi.String("node18"),
+//				Runtime: pulumi.String("node22"),
 //				Deploy:  pulumi.Bool(true),
 //				Code: pulumi.String(`/**
 //	 * Handler to be executed while sending a phone notification

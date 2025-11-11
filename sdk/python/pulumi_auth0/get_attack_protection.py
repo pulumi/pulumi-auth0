@@ -27,19 +27,33 @@ class GetAttackProtectionResult:
     """
     A collection of values returned by getAttackProtection.
     """
-    def __init__(__self__, breached_password_detections=None, brute_force_protections=None, id=None, suspicious_ip_throttlings=None):
+    def __init__(__self__, bot_detections=None, breached_password_detections=None, brute_force_protections=None, captchas=None, id=None, suspicious_ip_throttlings=None):
+        if bot_detections and not isinstance(bot_detections, list):
+            raise TypeError("Expected argument 'bot_detections' to be a list")
+        pulumi.set(__self__, "bot_detections", bot_detections)
         if breached_password_detections and not isinstance(breached_password_detections, list):
             raise TypeError("Expected argument 'breached_password_detections' to be a list")
         pulumi.set(__self__, "breached_password_detections", breached_password_detections)
         if brute_force_protections and not isinstance(brute_force_protections, list):
             raise TypeError("Expected argument 'brute_force_protections' to be a list")
         pulumi.set(__self__, "brute_force_protections", brute_force_protections)
+        if captchas and not isinstance(captchas, list):
+            raise TypeError("Expected argument 'captchas' to be a list")
+        pulumi.set(__self__, "captchas", captchas)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if suspicious_ip_throttlings and not isinstance(suspicious_ip_throttlings, list):
             raise TypeError("Expected argument 'suspicious_ip_throttlings' to be a list")
         pulumi.set(__self__, "suspicious_ip_throttlings", suspicious_ip_throttlings)
+
+    @_builtins.property
+    @pulumi.getter(name="botDetections")
+    def bot_detections(self) -> Sequence['outputs.GetAttackProtectionBotDetectionResult']:
+        """
+        Bot detection configuration to identify and prevent automated threats.
+        """
+        return pulumi.get(self, "bot_detections")
 
     @_builtins.property
     @pulumi.getter(name="breachedPasswordDetections")
@@ -56,6 +70,14 @@ class GetAttackProtectionResult:
         Brute-force protection safeguards against a single IP address attacking a single user account.
         """
         return pulumi.get(self, "brute_force_protections")
+
+    @_builtins.property
+    @pulumi.getter
+    def captchas(self) -> Sequence['outputs.GetAttackProtectionCaptchaResult']:
+        """
+        CAPTCHA configuration for attack protection.
+        """
+        return pulumi.get(self, "captchas")
 
     @_builtins.property
     @pulumi.getter
@@ -80,8 +102,10 @@ class AwaitableGetAttackProtectionResult(GetAttackProtectionResult):
         if False:
             yield self
         return GetAttackProtectionResult(
+            bot_detections=self.bot_detections,
             breached_password_detections=self.breached_password_detections,
             brute_force_protections=self.brute_force_protections,
+            captchas=self.captchas,
             id=self.id,
             suspicious_ip_throttlings=self.suspicious_ip_throttlings)
 
@@ -104,8 +128,10 @@ def get_attack_protection(opts: Optional[pulumi.InvokeOptions] = None) -> Awaita
     __ret__ = pulumi.runtime.invoke('auth0:index/getAttackProtection:getAttackProtection', __args__, opts=opts, typ=GetAttackProtectionResult).value
 
     return AwaitableGetAttackProtectionResult(
+        bot_detections=pulumi.get(__ret__, 'bot_detections'),
         breached_password_detections=pulumi.get(__ret__, 'breached_password_detections'),
         brute_force_protections=pulumi.get(__ret__, 'brute_force_protections'),
+        captchas=pulumi.get(__ret__, 'captchas'),
         id=pulumi.get(__ret__, 'id'),
         suspicious_ip_throttlings=pulumi.get(__ret__, 'suspicious_ip_throttlings'))
 def get_attack_protection_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAttackProtectionResult]:
@@ -125,7 +151,9 @@ def get_attack_protection_output(opts: Optional[Union[pulumi.InvokeOptions, pulu
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('auth0:index/getAttackProtection:getAttackProtection', __args__, opts=opts, typ=GetAttackProtectionResult)
     return __ret__.apply(lambda __response__: GetAttackProtectionResult(
+        bot_detections=pulumi.get(__response__, 'bot_detections'),
         breached_password_detections=pulumi.get(__response__, 'breached_password_detections'),
         brute_force_protections=pulumi.get(__response__, 'brute_force_protections'),
+        captchas=pulumi.get(__response__, 'captchas'),
         id=pulumi.get(__response__, 'id'),
         suspicious_ip_throttlings=pulumi.get(__response__, 'suspicious_ip_throttlings')))
