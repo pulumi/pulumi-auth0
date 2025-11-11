@@ -26,6 +26,7 @@ class ClientArgs:
                  allowed_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  allowed_origins: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  app_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 async_approval_notification_channels: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  callbacks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  client_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  client_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -71,6 +72,7 @@ class ClientArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_origins: URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
         :param pulumi.Input[_builtins.str] app_type: Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] async_approval_notification_channels: List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `["guardian-push"]` if not specified.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] callbacks: URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] client_aliases: List of audiences/realms for SAML protocol. Used by the wsfed addon.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] client_metadata: Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
@@ -119,6 +121,8 @@ class ClientArgs:
             pulumi.set(__self__, "allowed_origins", allowed_origins)
         if app_type is not None:
             pulumi.set(__self__, "app_type", app_type)
+        if async_approval_notification_channels is not None:
+            pulumi.set(__self__, "async_approval_notification_channels", async_approval_notification_channels)
         if callbacks is not None:
             pulumi.set(__self__, "callbacks", callbacks)
         if client_aliases is not None:
@@ -260,6 +264,18 @@ class ClientArgs:
     @app_type.setter
     def app_type(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "app_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="asyncApprovalNotificationChannels")
+    def async_approval_notification_channels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `["guardian-push"]` if not specified.
+        """
+        return pulumi.get(self, "async_approval_notification_channels")
+
+    @async_approval_notification_channels.setter
+    def async_approval_notification_channels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "async_approval_notification_channels", value)
 
     @_builtins.property
     @pulumi.getter
@@ -724,6 +740,7 @@ class _ClientState:
                  allowed_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  allowed_origins: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  app_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 async_approval_notification_channels: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  callbacks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  client_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  client_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -771,6 +788,7 @@ class _ClientState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_origins: URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
         :param pulumi.Input[_builtins.str] app_type: Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] async_approval_notification_channels: List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `["guardian-push"]` if not specified.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] callbacks: URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] client_aliases: List of audiences/realms for SAML protocol. Used by the wsfed addon.
         :param pulumi.Input[_builtins.str] client_id: The ID of the client.
@@ -821,6 +839,8 @@ class _ClientState:
             pulumi.set(__self__, "allowed_origins", allowed_origins)
         if app_type is not None:
             pulumi.set(__self__, "app_type", app_type)
+        if async_approval_notification_channels is not None:
+            pulumi.set(__self__, "async_approval_notification_channels", async_approval_notification_channels)
         if callbacks is not None:
             pulumi.set(__self__, "callbacks", callbacks)
         if client_aliases is not None:
@@ -966,6 +986,18 @@ class _ClientState:
     @app_type.setter
     def app_type(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "app_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="asyncApprovalNotificationChannels")
+    def async_approval_notification_channels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `["guardian-push"]` if not specified.
+        """
+        return pulumi.get(self, "async_approval_notification_channels")
+
+    @async_approval_notification_channels.setter
+    def async_approval_notification_channels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "async_approval_notification_channels", value)
 
     @_builtins.property
     @pulumi.getter
@@ -1457,6 +1489,7 @@ class Client(pulumi.CustomResource):
                  allowed_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  allowed_origins: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  app_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 async_approval_notification_channels: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  callbacks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  client_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  client_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1516,6 +1549,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_origins: URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
         :param pulumi.Input[_builtins.str] app_type: Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] async_approval_notification_channels: List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `["guardian-push"]` if not specified.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] callbacks: URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] client_aliases: List of audiences/realms for SAML protocol. Used by the wsfed addon.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] client_metadata: Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
@@ -1593,6 +1627,7 @@ class Client(pulumi.CustomResource):
                  allowed_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  allowed_origins: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  app_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 async_approval_notification_channels: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  callbacks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  client_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  client_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1645,6 +1680,7 @@ class Client(pulumi.CustomResource):
             __props__.__dict__["allowed_logout_urls"] = allowed_logout_urls
             __props__.__dict__["allowed_origins"] = allowed_origins
             __props__.__dict__["app_type"] = app_type
+            __props__.__dict__["async_approval_notification_channels"] = async_approval_notification_channels
             __props__.__dict__["callbacks"] = callbacks
             __props__.__dict__["client_aliases"] = client_aliases
             __props__.__dict__["client_metadata"] = client_metadata
@@ -1704,6 +1740,7 @@ class Client(pulumi.CustomResource):
             allowed_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             allowed_origins: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             app_type: Optional[pulumi.Input[_builtins.str]] = None,
+            async_approval_notification_channels: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             callbacks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             client_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             client_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1756,6 +1793,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_origins: URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
         :param pulumi.Input[_builtins.str] app_type: Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] async_approval_notification_channels: List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `["guardian-push"]` if not specified.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] callbacks: URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] client_aliases: List of audiences/realms for SAML protocol. Used by the wsfed addon.
         :param pulumi.Input[_builtins.str] client_id: The ID of the client.
@@ -1805,6 +1843,7 @@ class Client(pulumi.CustomResource):
         __props__.__dict__["allowed_logout_urls"] = allowed_logout_urls
         __props__.__dict__["allowed_origins"] = allowed_origins
         __props__.__dict__["app_type"] = app_type
+        __props__.__dict__["async_approval_notification_channels"] = async_approval_notification_channels
         __props__.__dict__["callbacks"] = callbacks
         __props__.__dict__["client_aliases"] = client_aliases
         __props__.__dict__["client_id"] = client_id
@@ -1886,6 +1925,14 @@ class Client(pulumi.CustomResource):
         Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
         """
         return pulumi.get(self, "app_type")
+
+    @_builtins.property
+    @pulumi.getter(name="asyncApprovalNotificationChannels")
+    def async_approval_notification_channels(self) -> pulumi.Output[Sequence[_builtins.str]]:
+        """
+        List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `["guardian-push"]` if not specified.
+        """
+        return pulumi.get(self, "async_approval_notification_channels")
 
     @_builtins.property
     @pulumi.getter

@@ -237,7 +237,7 @@ class PhoneProvider(pulumi.CustomResource):
         # Make sure a corresponding action exists with custom-phone-provider as supported triggers
         send_custom_phone = auth0.Action("send_custom_phone",
             name="Custom Phone Provider",
-            runtime="node18",
+            runtime="node22",
             deploy=True,
             code=\"\"\"/**
          * Handler to be executed while sending a phone notification
@@ -323,7 +323,7 @@ class PhoneProvider(pulumi.CustomResource):
         # Make sure a corresponding action exists with custom-phone-provider as supported triggers
         send_custom_phone = auth0.Action("send_custom_phone",
             name="Custom Phone Provider",
-            runtime="node18",
+            runtime="node22",
             deploy=True,
             code=\"\"\"/**
          * Handler to be executed while sending a phone notification

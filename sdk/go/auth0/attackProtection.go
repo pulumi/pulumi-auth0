@@ -22,6 +22,7 @@ import (
 //
 //	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
@@ -80,6 +81,109 @@ import (
 //						},
 //					},
 //				},
+//				BotDetection: &auth0.AttackProtectionBotDetectionArgs{
+//					BotDetectionLevel:            pulumi.String("medium"),
+//					ChallengePasswordPolicy:      pulumi.String("when_risky"),
+//					ChallengePasswordlessPolicy:  pulumi.String("when_risky"),
+//					ChallengePasswordResetPolicy: pulumi.String("always"),
+//					Allowlists: pulumi.StringArray{
+//						pulumi.String("192.168.1.0"),
+//						pulumi.String("10.0.0.0"),
+//					},
+//					MonitoringModeEnabled: pulumi.Bool(true),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			cfg := config.New(ctx, "")
+//			// Google reCAPTCHA v2 site key
+//			recaptchaV2SiteKey := cfg.Require("recaptchaV2SiteKey")
+//			// Google reCAPTCHA v2 secret key
+//			recaptchaV2Secret := cfg.Require("recaptchaV2Secret")
+//			// Example 1: reCAPTCHA v2
+//			_, err = auth0.NewAttackProtection(ctx, "captcha_recaptcha_v2", &auth0.AttackProtectionArgs{
+//				Captcha: &auth0.AttackProtectionCaptchaArgs{
+//					ActiveProviderId: pulumi.String("recaptcha_v2"),
+//					RecaptchaV2: &auth0.AttackProtectionCaptchaRecaptchaV2Args{
+//						SiteKey: pulumi.String(recaptchaV2SiteKey),
+//						Secret:  pulumi.String(recaptchaV2Secret),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Google reCAPTCHA Enterprise site key
+//			recaptchaEnterpriseSiteKey := cfg.Require("recaptchaEnterpriseSiteKey")
+//			// Google reCAPTCHA Enterprise API key
+//			recaptchaEnterpriseApiKey := cfg.Require("recaptchaEnterpriseApiKey")
+//			// Google reCAPTCHA Enterprise project ID
+//			recaptchaEnterpriseProjectId := cfg.Require("recaptchaEnterpriseProjectId")
+//			// Example 2: reCAPTCHA Enterprise
+//			_, err = auth0.NewAttackProtection(ctx, "captcha_recaptcha_enterprise", &auth0.AttackProtectionArgs{
+//				Captcha: &auth0.AttackProtectionCaptchaArgs{
+//					ActiveProviderId: pulumi.String("recaptcha_enterprise"),
+//					RecaptchaEnterprise: &auth0.AttackProtectionCaptchaRecaptchaEnterpriseArgs{
+//						SiteKey:   pulumi.String(recaptchaEnterpriseSiteKey),
+//						ApiKey:    pulumi.String(recaptchaEnterpriseApiKey),
+//						ProjectId: pulumi.String(recaptchaEnterpriseProjectId),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// hCaptcha site key
+//			hcaptchaSiteKey := cfg.Require("hcaptchaSiteKey")
+//			// hCaptcha secret key
+//			hcaptchaSecret := cfg.Require("hcaptchaSecret")
+//			// Example 3: hCaptcha
+//			_, err = auth0.NewAttackProtection(ctx, "captcha_hcaptcha", &auth0.AttackProtectionArgs{
+//				Captcha: &auth0.AttackProtectionCaptchaArgs{
+//					ActiveProviderId: pulumi.String("hcaptcha"),
+//					Hcaptcha: &auth0.AttackProtectionCaptchaHcaptchaArgs{
+//						SiteKey: pulumi.String(hcaptchaSiteKey),
+//						Secret:  pulumi.String(hcaptchaSecret),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Friendly Captcha site key
+//			friendlyCaptchaSiteKey := cfg.Require("friendlyCaptchaSiteKey")
+//			// Friendly Captcha secret key
+//			friendlyCaptchaSecret := cfg.Require("friendlyCaptchaSecret")
+//			// Example 4: Friendly Captcha
+//			_, err = auth0.NewAttackProtection(ctx, "captcha_friendly_captcha", &auth0.AttackProtectionArgs{
+//				Captcha: &auth0.AttackProtectionCaptchaArgs{
+//					ActiveProviderId: pulumi.String("friendly_captcha"),
+//					FriendlyCaptcha: &auth0.AttackProtectionCaptchaFriendlyCaptchaArgs{
+//						SiteKey: pulumi.String(friendlyCaptchaSiteKey),
+//						Secret:  pulumi.String(friendlyCaptchaSecret),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Arkose Labs site key
+//			arkoseSiteKey := cfg.Require("arkoseSiteKey")
+//			// Arkose Labs secret key
+//			arkoseSecret := cfg.Require("arkoseSecret")
+//			// Example 5: Arkose Labs
+//			_, err = auth0.NewAttackProtection(ctx, "captcha_arkose", &auth0.AttackProtectionArgs{
+//				Captcha: &auth0.AttackProtectionCaptchaArgs{
+//					ActiveProviderId: pulumi.String("arkose"),
+//					Arkose: &auth0.AttackProtectionCaptchaArkoseArgs{
+//						SiteKey:         pulumi.String(arkoseSiteKey),
+//						Secret:          pulumi.String(arkoseSecret),
+//						ClientSubdomain: pulumi.String("client.example.com"),
+//						VerifySubdomain: pulumi.String("verify.example.com"),
+//						FailOpen:        pulumi.Bool(false),
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -106,10 +210,14 @@ import (
 type AttackProtection struct {
 	pulumi.CustomResourceState
 
+	// Bot detection configuration to identify and prevent automated threats.
+	BotDetection AttackProtectionBotDetectionOutput `pulumi:"botDetection"`
 	// Breached password detection protects your applications from bad actors logging in with stolen credentials.
 	BreachedPasswordDetection AttackProtectionBreachedPasswordDetectionOutput `pulumi:"breachedPasswordDetection"`
 	// Brute-force protection safeguards against a single IP address attacking a single user account.
 	BruteForceProtection AttackProtectionBruteForceProtectionOutput `pulumi:"bruteForceProtection"`
+	// CAPTCHA configuration for attack protection.
+	Captcha AttackProtectionCaptchaOutput `pulumi:"captcha"`
 	// Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.
 	SuspiciousIpThrottling AttackProtectionSuspiciousIpThrottlingOutput `pulumi:"suspiciousIpThrottling"`
 }
@@ -144,19 +252,27 @@ func GetAttackProtection(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AttackProtection resources.
 type attackProtectionState struct {
+	// Bot detection configuration to identify and prevent automated threats.
+	BotDetection *AttackProtectionBotDetection `pulumi:"botDetection"`
 	// Breached password detection protects your applications from bad actors logging in with stolen credentials.
 	BreachedPasswordDetection *AttackProtectionBreachedPasswordDetection `pulumi:"breachedPasswordDetection"`
 	// Brute-force protection safeguards against a single IP address attacking a single user account.
 	BruteForceProtection *AttackProtectionBruteForceProtection `pulumi:"bruteForceProtection"`
+	// CAPTCHA configuration for attack protection.
+	Captcha *AttackProtectionCaptcha `pulumi:"captcha"`
 	// Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.
 	SuspiciousIpThrottling *AttackProtectionSuspiciousIpThrottling `pulumi:"suspiciousIpThrottling"`
 }
 
 type AttackProtectionState struct {
+	// Bot detection configuration to identify and prevent automated threats.
+	BotDetection AttackProtectionBotDetectionPtrInput
 	// Breached password detection protects your applications from bad actors logging in with stolen credentials.
 	BreachedPasswordDetection AttackProtectionBreachedPasswordDetectionPtrInput
 	// Brute-force protection safeguards against a single IP address attacking a single user account.
 	BruteForceProtection AttackProtectionBruteForceProtectionPtrInput
+	// CAPTCHA configuration for attack protection.
+	Captcha AttackProtectionCaptchaPtrInput
 	// Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.
 	SuspiciousIpThrottling AttackProtectionSuspiciousIpThrottlingPtrInput
 }
@@ -166,20 +282,28 @@ func (AttackProtectionState) ElementType() reflect.Type {
 }
 
 type attackProtectionArgs struct {
+	// Bot detection configuration to identify and prevent automated threats.
+	BotDetection *AttackProtectionBotDetection `pulumi:"botDetection"`
 	// Breached password detection protects your applications from bad actors logging in with stolen credentials.
 	BreachedPasswordDetection *AttackProtectionBreachedPasswordDetection `pulumi:"breachedPasswordDetection"`
 	// Brute-force protection safeguards against a single IP address attacking a single user account.
 	BruteForceProtection *AttackProtectionBruteForceProtection `pulumi:"bruteForceProtection"`
+	// CAPTCHA configuration for attack protection.
+	Captcha *AttackProtectionCaptcha `pulumi:"captcha"`
 	// Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.
 	SuspiciousIpThrottling *AttackProtectionSuspiciousIpThrottling `pulumi:"suspiciousIpThrottling"`
 }
 
 // The set of arguments for constructing a AttackProtection resource.
 type AttackProtectionArgs struct {
+	// Bot detection configuration to identify and prevent automated threats.
+	BotDetection AttackProtectionBotDetectionPtrInput
 	// Breached password detection protects your applications from bad actors logging in with stolen credentials.
 	BreachedPasswordDetection AttackProtectionBreachedPasswordDetectionPtrInput
 	// Brute-force protection safeguards against a single IP address attacking a single user account.
 	BruteForceProtection AttackProtectionBruteForceProtectionPtrInput
+	// CAPTCHA configuration for attack protection.
+	Captcha AttackProtectionCaptchaPtrInput
 	// Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.
 	SuspiciousIpThrottling AttackProtectionSuspiciousIpThrottlingPtrInput
 }
@@ -271,6 +395,11 @@ func (o AttackProtectionOutput) ToAttackProtectionOutputWithContext(ctx context.
 	return o
 }
 
+// Bot detection configuration to identify and prevent automated threats.
+func (o AttackProtectionOutput) BotDetection() AttackProtectionBotDetectionOutput {
+	return o.ApplyT(func(v *AttackProtection) AttackProtectionBotDetectionOutput { return v.BotDetection }).(AttackProtectionBotDetectionOutput)
+}
+
 // Breached password detection protects your applications from bad actors logging in with stolen credentials.
 func (o AttackProtectionOutput) BreachedPasswordDetection() AttackProtectionBreachedPasswordDetectionOutput {
 	return o.ApplyT(func(v *AttackProtection) AttackProtectionBreachedPasswordDetectionOutput {
@@ -281,6 +410,11 @@ func (o AttackProtectionOutput) BreachedPasswordDetection() AttackProtectionBrea
 // Brute-force protection safeguards against a single IP address attacking a single user account.
 func (o AttackProtectionOutput) BruteForceProtection() AttackProtectionBruteForceProtectionOutput {
 	return o.ApplyT(func(v *AttackProtection) AttackProtectionBruteForceProtectionOutput { return v.BruteForceProtection }).(AttackProtectionBruteForceProtectionOutput)
+}
+
+// CAPTCHA configuration for attack protection.
+func (o AttackProtectionOutput) Captcha() AttackProtectionCaptchaOutput {
+	return o.ApplyT(func(v *AttackProtection) AttackProtectionCaptchaOutput { return v.Captcha }).(AttackProtectionCaptchaOutput)
 }
 
 // Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.

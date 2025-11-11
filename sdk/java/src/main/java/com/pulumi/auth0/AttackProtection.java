@@ -6,8 +6,10 @@ package com.pulumi.auth0;
 import com.pulumi.auth0.AttackProtectionArgs;
 import com.pulumi.auth0.Utilities;
 import com.pulumi.auth0.inputs.AttackProtectionState;
+import com.pulumi.auth0.outputs.AttackProtectionBotDetection;
 import com.pulumi.auth0.outputs.AttackProtectionBreachedPasswordDetection;
 import com.pulumi.auth0.outputs.AttackProtectionBruteForceProtection;
+import com.pulumi.auth0.outputs.AttackProtectionCaptcha;
 import com.pulumi.auth0.outputs.AttackProtectionSuspiciousIpThrottling;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -36,6 +38,13 @@ import javax.annotation.Nullable;
  * import com.pulumi.auth0.inputs.AttackProtectionBreachedPasswordDetectionArgs;
  * import com.pulumi.auth0.inputs.AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs;
  * import com.pulumi.auth0.inputs.AttackProtectionBreachedPasswordDetectionPreChangePasswordArgs;
+ * import com.pulumi.auth0.inputs.AttackProtectionBotDetectionArgs;
+ * import com.pulumi.auth0.inputs.AttackProtectionCaptchaArgs;
+ * import com.pulumi.auth0.inputs.AttackProtectionCaptchaRecaptchaV2Args;
+ * import com.pulumi.auth0.inputs.AttackProtectionCaptchaRecaptchaEnterpriseArgs;
+ * import com.pulumi.auth0.inputs.AttackProtectionCaptchaHcaptchaArgs;
+ * import com.pulumi.auth0.inputs.AttackProtectionCaptchaFriendlyCaptchaArgs;
+ * import com.pulumi.auth0.inputs.AttackProtectionCaptchaArkoseArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -49,6 +58,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
  *         var myProtection = new AttackProtection("myProtection", AttackProtectionArgs.builder()
  *             .suspiciousIpThrottling(AttackProtectionSuspiciousIpThrottlingArgs.builder()
  *                 .enabled(true)
@@ -90,8 +100,94 @@ import javax.annotation.Nullable;
  *                         "admin_notification")
  *                     .build())
  *                 .build())
+ *             .botDetection(AttackProtectionBotDetectionArgs.builder()
+ *                 .botDetectionLevel("medium")
+ *                 .challengePasswordPolicy("when_risky")
+ *                 .challengePasswordlessPolicy("when_risky")
+ *                 .challengePasswordResetPolicy("always")
+ *                 .allowlists(                
+ *                     "192.168.1.0",
+ *                     "10.0.0.0")
+ *                 .monitoringModeEnabled(true)
+ *                 .build())
  *             .build());
  * 
+ *         // ============================================================================
+ *         // CAPTCHA PROVIDER EXAMPLES - One per Provider
+ *         // ============================================================================
+ *         final var recaptchaV2SiteKey = config.get("recaptchaV2SiteKey");
+ *         final var recaptchaV2Secret = config.get("recaptchaV2Secret");
+ *         // Example 1: reCAPTCHA v2
+ *         var captchaRecaptchaV2 = new AttackProtection("captchaRecaptchaV2", AttackProtectionArgs.builder()
+ *             .captcha(AttackProtectionCaptchaArgs.builder()
+ *                 .activeProviderId("recaptcha_v2")
+ *                 .recaptchaV2(AttackProtectionCaptchaRecaptchaV2Args.builder()
+ *                     .siteKey(recaptchaV2SiteKey)
+ *                     .secret(recaptchaV2Secret)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         final var recaptchaEnterpriseSiteKey = config.get("recaptchaEnterpriseSiteKey");
+ *         final var recaptchaEnterpriseApiKey = config.get("recaptchaEnterpriseApiKey");
+ *         final var recaptchaEnterpriseProjectId = config.get("recaptchaEnterpriseProjectId");
+ *         // Example 2: reCAPTCHA Enterprise
+ *         var captchaRecaptchaEnterprise = new AttackProtection("captchaRecaptchaEnterprise", AttackProtectionArgs.builder()
+ *             .captcha(AttackProtectionCaptchaArgs.builder()
+ *                 .activeProviderId("recaptcha_enterprise")
+ *                 .recaptchaEnterprise(AttackProtectionCaptchaRecaptchaEnterpriseArgs.builder()
+ *                     .siteKey(recaptchaEnterpriseSiteKey)
+ *                     .apiKey(recaptchaEnterpriseApiKey)
+ *                     .projectId(recaptchaEnterpriseProjectId)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         final var hcaptchaSiteKey = config.get("hcaptchaSiteKey");
+ *         final var hcaptchaSecret = config.get("hcaptchaSecret");
+ *         // Example 3: hCaptcha
+ *         var captchaHcaptcha = new AttackProtection("captchaHcaptcha", AttackProtectionArgs.builder()
+ *             .captcha(AttackProtectionCaptchaArgs.builder()
+ *                 .activeProviderId("hcaptcha")
+ *                 .hcaptcha(AttackProtectionCaptchaHcaptchaArgs.builder()
+ *                     .siteKey(hcaptchaSiteKey)
+ *                     .secret(hcaptchaSecret)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         final var friendlyCaptchaSiteKey = config.get("friendlyCaptchaSiteKey");
+ *         final var friendlyCaptchaSecret = config.get("friendlyCaptchaSecret");
+ *         // Example 4: Friendly Captcha
+ *         var captchaFriendlyCaptcha = new AttackProtection("captchaFriendlyCaptcha", AttackProtectionArgs.builder()
+ *             .captcha(AttackProtectionCaptchaArgs.builder()
+ *                 .activeProviderId("friendly_captcha")
+ *                 .friendlyCaptcha(AttackProtectionCaptchaFriendlyCaptchaArgs.builder()
+ *                     .siteKey(friendlyCaptchaSiteKey)
+ *                     .secret(friendlyCaptchaSecret)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         final var arkoseSiteKey = config.get("arkoseSiteKey");
+ *         final var arkoseSecret = config.get("arkoseSecret");
+ *         // Example 5: Arkose Labs
+ *         var captchaArkose = new AttackProtection("captchaArkose", AttackProtectionArgs.builder()
+ *             .captcha(AttackProtectionCaptchaArgs.builder()
+ *                 .activeProviderId("arkose")
+ *                 .arkose(AttackProtectionCaptchaArkoseArgs.builder()
+ *                     .siteKey(arkoseSiteKey)
+ *                     .secret(arkoseSecret)
+ *                     .clientSubdomain("client.example.com")
+ *                     .verifySubdomain("verify.example.com")
+ *                     .failOpen(false)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         // ============================================================================
+ *         // VARIABLES FOR SENSITIVE DATA
+ *         // ============================================================================
  *     }
  * }
  * }
@@ -114,6 +210,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="auth0:index/attackProtection:AttackProtection")
 public class AttackProtection extends com.pulumi.resources.CustomResource {
+    /**
+     * Bot detection configuration to identify and prevent automated threats.
+     * 
+     */
+    @Export(name="botDetection", refs={AttackProtectionBotDetection.class}, tree="[0]")
+    private Output<AttackProtectionBotDetection> botDetection;
+
+    /**
+     * @return Bot detection configuration to identify and prevent automated threats.
+     * 
+     */
+    public Output<AttackProtectionBotDetection> botDetection() {
+        return this.botDetection;
+    }
     /**
      * Breached password detection protects your applications from bad actors logging in with stolen credentials.
      * 
@@ -141,6 +251,20 @@ public class AttackProtection extends com.pulumi.resources.CustomResource {
      */
     public Output<AttackProtectionBruteForceProtection> bruteForceProtection() {
         return this.bruteForceProtection;
+    }
+    /**
+     * CAPTCHA configuration for attack protection.
+     * 
+     */
+    @Export(name="captcha", refs={AttackProtectionCaptcha.class}, tree="[0]")
+    private Output<AttackProtectionCaptcha> captcha;
+
+    /**
+     * @return CAPTCHA configuration for attack protection.
+     * 
+     */
+    public Output<AttackProtectionCaptcha> captcha() {
+        return this.captcha;
     }
     /**
      * Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.

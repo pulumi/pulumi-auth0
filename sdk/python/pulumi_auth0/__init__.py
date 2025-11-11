@@ -18,6 +18,7 @@ from .connection_client import *
 from .connection_clients import *
 from .connection_keys import *
 from .connection_scim_configuration import *
+from .connection_scim_token import *
 from .custom_domain import *
 from .custom_domain_verification import *
 from .email_provider import *
@@ -209,6 +210,14 @@ _utilities.register(
   "fqn": "pulumi_auth0",
   "classes": {
    "auth0:index/connectionScimConfiguration:ConnectionScimConfiguration": "ConnectionScimConfiguration"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/connectionScimToken",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/connectionScimToken:ConnectionScimToken": "ConnectionScimToken"
   }
  },
  {

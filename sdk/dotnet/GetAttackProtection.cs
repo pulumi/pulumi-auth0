@@ -80,6 +80,10 @@ namespace Pulumi.Auth0
     public sealed class GetAttackProtectionResult
     {
         /// <summary>
+        /// Bot detection configuration to identify and prevent automated threats.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetAttackProtectionBotDetectionResult> BotDetections;
+        /// <summary>
         /// Breached password detection protects your applications from bad actors logging in with stolen credentials.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAttackProtectionBreachedPasswordDetectionResult> BreachedPasswordDetections;
@@ -87,6 +91,10 @@ namespace Pulumi.Auth0
         /// Brute-force protection safeguards against a single IP address attacking a single user account.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAttackProtectionBruteForceProtectionResult> BruteForceProtections;
+        /// <summary>
+        /// CAPTCHA configuration for attack protection.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetAttackProtectionCaptchaResult> Captchas;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -98,16 +106,22 @@ namespace Pulumi.Auth0
 
         [OutputConstructor]
         private GetAttackProtectionResult(
+            ImmutableArray<Outputs.GetAttackProtectionBotDetectionResult> botDetections,
+
             ImmutableArray<Outputs.GetAttackProtectionBreachedPasswordDetectionResult> breachedPasswordDetections,
 
             ImmutableArray<Outputs.GetAttackProtectionBruteForceProtectionResult> bruteForceProtections,
+
+            ImmutableArray<Outputs.GetAttackProtectionCaptchaResult> captchas,
 
             string id,
 
             ImmutableArray<Outputs.GetAttackProtectionSuspiciousIpThrottlingResult> suspiciousIpThrottlings)
         {
+            BotDetections = botDetections;
             BreachedPasswordDetections = breachedPasswordDetections;
             BruteForceProtections = bruteForceProtections;
+            Captchas = captchas;
             Id = id;
             SuspiciousIpThrottlings = suspiciousIpThrottlings;
         }

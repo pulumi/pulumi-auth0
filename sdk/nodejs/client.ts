@@ -68,6 +68,10 @@ export class Client extends pulumi.CustomResource {
      */
     declare public readonly appType: pulumi.Output<string | undefined>;
     /**
+     * List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `["guardian-push"]` if not specified.
+     */
+    declare public readonly asyncApprovalNotificationChannels: pulumi.Output<string[]>;
+    /**
      * URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
      */
     declare public readonly callbacks: pulumi.Output<string[] | undefined>;
@@ -245,6 +249,7 @@ export class Client extends pulumi.CustomResource {
             resourceInputs["allowedLogoutUrls"] = state?.allowedLogoutUrls;
             resourceInputs["allowedOrigins"] = state?.allowedOrigins;
             resourceInputs["appType"] = state?.appType;
+            resourceInputs["asyncApprovalNotificationChannels"] = state?.asyncApprovalNotificationChannels;
             resourceInputs["callbacks"] = state?.callbacks;
             resourceInputs["clientAliases"] = state?.clientAliases;
             resourceInputs["clientId"] = state?.clientId;
@@ -292,6 +297,7 @@ export class Client extends pulumi.CustomResource {
             resourceInputs["allowedLogoutUrls"] = args?.allowedLogoutUrls;
             resourceInputs["allowedOrigins"] = args?.allowedOrigins;
             resourceInputs["appType"] = args?.appType;
+            resourceInputs["asyncApprovalNotificationChannels"] = args?.asyncApprovalNotificationChannels;
             resourceInputs["callbacks"] = args?.callbacks;
             resourceInputs["clientAliases"] = args?.clientAliases;
             resourceInputs["clientMetadata"] = args?.clientMetadata;
@@ -364,6 +370,10 @@ export interface ClientState {
      * Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
      */
     appType?: pulumi.Input<string>;
+    /**
+     * List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `["guardian-push"]` if not specified.
+     */
+    asyncApprovalNotificationChannels?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
      */
@@ -549,6 +559,10 @@ export interface ClientArgs {
      * Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
      */
     appType?: pulumi.Input<string>;
+    /**
+     * List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `["guardian-push"]` if not specified.
+     */
+    asyncApprovalNotificationChannels?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
      */

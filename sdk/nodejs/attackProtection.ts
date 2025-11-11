@@ -60,7 +60,91 @@ import * as utilities from "./utilities";
  *             ],
  *         },
  *     },
+ *     botDetection: {
+ *         botDetectionLevel: "medium",
+ *         challengePasswordPolicy: "when_risky",
+ *         challengePasswordlessPolicy: "when_risky",
+ *         challengePasswordResetPolicy: "always",
+ *         allowlists: [
+ *             "192.168.1.0",
+ *             "10.0.0.0",
+ *         ],
+ *         monitoringModeEnabled: true,
+ *     },
  * });
+ * // ============================================================================
+ * // CAPTCHA PROVIDER EXAMPLES - One per Provider
+ * // ============================================================================
+ * const config = new pulumi.Config();
+ * // Google reCAPTCHA v2 site key
+ * const recaptchaV2SiteKey = config.require("recaptchaV2SiteKey");
+ * // Google reCAPTCHA v2 secret key
+ * const recaptchaV2Secret = config.require("recaptchaV2Secret");
+ * // Example 1: reCAPTCHA v2
+ * const captchaRecaptchaV2 = new auth0.AttackProtection("captcha_recaptcha_v2", {captcha: {
+ *     activeProviderId: "recaptcha_v2",
+ *     recaptchaV2: {
+ *         siteKey: recaptchaV2SiteKey,
+ *         secret: recaptchaV2Secret,
+ *     },
+ * }});
+ * // Google reCAPTCHA Enterprise site key
+ * const recaptchaEnterpriseSiteKey = config.require("recaptchaEnterpriseSiteKey");
+ * // Google reCAPTCHA Enterprise API key
+ * const recaptchaEnterpriseApiKey = config.require("recaptchaEnterpriseApiKey");
+ * // Google reCAPTCHA Enterprise project ID
+ * const recaptchaEnterpriseProjectId = config.require("recaptchaEnterpriseProjectId");
+ * // Example 2: reCAPTCHA Enterprise
+ * const captchaRecaptchaEnterprise = new auth0.AttackProtection("captcha_recaptcha_enterprise", {captcha: {
+ *     activeProviderId: "recaptcha_enterprise",
+ *     recaptchaEnterprise: {
+ *         siteKey: recaptchaEnterpriseSiteKey,
+ *         apiKey: recaptchaEnterpriseApiKey,
+ *         projectId: recaptchaEnterpriseProjectId,
+ *     },
+ * }});
+ * // hCaptcha site key
+ * const hcaptchaSiteKey = config.require("hcaptchaSiteKey");
+ * // hCaptcha secret key
+ * const hcaptchaSecret = config.require("hcaptchaSecret");
+ * // Example 3: hCaptcha
+ * const captchaHcaptcha = new auth0.AttackProtection("captcha_hcaptcha", {captcha: {
+ *     activeProviderId: "hcaptcha",
+ *     hcaptcha: {
+ *         siteKey: hcaptchaSiteKey,
+ *         secret: hcaptchaSecret,
+ *     },
+ * }});
+ * // Friendly Captcha site key
+ * const friendlyCaptchaSiteKey = config.require("friendlyCaptchaSiteKey");
+ * // Friendly Captcha secret key
+ * const friendlyCaptchaSecret = config.require("friendlyCaptchaSecret");
+ * // Example 4: Friendly Captcha
+ * const captchaFriendlyCaptcha = new auth0.AttackProtection("captcha_friendly_captcha", {captcha: {
+ *     activeProviderId: "friendly_captcha",
+ *     friendlyCaptcha: {
+ *         siteKey: friendlyCaptchaSiteKey,
+ *         secret: friendlyCaptchaSecret,
+ *     },
+ * }});
+ * // Arkose Labs site key
+ * const arkoseSiteKey = config.require("arkoseSiteKey");
+ * // Arkose Labs secret key
+ * const arkoseSecret = config.require("arkoseSecret");
+ * // Example 5: Arkose Labs
+ * const captchaArkose = new auth0.AttackProtection("captcha_arkose", {captcha: {
+ *     activeProviderId: "arkose",
+ *     arkose: {
+ *         siteKey: arkoseSiteKey,
+ *         secret: arkoseSecret,
+ *         clientSubdomain: "client.example.com",
+ *         verifySubdomain: "verify.example.com",
+ *         failOpen: false,
+ *     },
+ * }});
+ * // ============================================================================
+ * // VARIABLES FOR SENSITIVE DATA
+ * // ============================================================================
  * ```
  *
  * ## Import
@@ -106,6 +190,10 @@ export class AttackProtection extends pulumi.CustomResource {
     }
 
     /**
+     * Bot detection configuration to identify and prevent automated threats.
+     */
+    declare public readonly botDetection: pulumi.Output<outputs.AttackProtectionBotDetection>;
+    /**
      * Breached password detection protects your applications from bad actors logging in with stolen credentials.
      */
     declare public readonly breachedPasswordDetection: pulumi.Output<outputs.AttackProtectionBreachedPasswordDetection>;
@@ -113,6 +201,10 @@ export class AttackProtection extends pulumi.CustomResource {
      * Brute-force protection safeguards against a single IP address attacking a single user account.
      */
     declare public readonly bruteForceProtection: pulumi.Output<outputs.AttackProtectionBruteForceProtection>;
+    /**
+     * CAPTCHA configuration for attack protection.
+     */
+    declare public readonly captcha: pulumi.Output<outputs.AttackProtectionCaptcha>;
     /**
      * Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.
      */
@@ -131,13 +223,17 @@ export class AttackProtection extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AttackProtectionState | undefined;
+            resourceInputs["botDetection"] = state?.botDetection;
             resourceInputs["breachedPasswordDetection"] = state?.breachedPasswordDetection;
             resourceInputs["bruteForceProtection"] = state?.bruteForceProtection;
+            resourceInputs["captcha"] = state?.captcha;
             resourceInputs["suspiciousIpThrottling"] = state?.suspiciousIpThrottling;
         } else {
             const args = argsOrState as AttackProtectionArgs | undefined;
+            resourceInputs["botDetection"] = args?.botDetection;
             resourceInputs["breachedPasswordDetection"] = args?.breachedPasswordDetection;
             resourceInputs["bruteForceProtection"] = args?.bruteForceProtection;
+            resourceInputs["captcha"] = args?.captcha;
             resourceInputs["suspiciousIpThrottling"] = args?.suspiciousIpThrottling;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -150,6 +246,10 @@ export class AttackProtection extends pulumi.CustomResource {
  */
 export interface AttackProtectionState {
     /**
+     * Bot detection configuration to identify and prevent automated threats.
+     */
+    botDetection?: pulumi.Input<inputs.AttackProtectionBotDetection>;
+    /**
      * Breached password detection protects your applications from bad actors logging in with stolen credentials.
      */
     breachedPasswordDetection?: pulumi.Input<inputs.AttackProtectionBreachedPasswordDetection>;
@@ -157,6 +257,10 @@ export interface AttackProtectionState {
      * Brute-force protection safeguards against a single IP address attacking a single user account.
      */
     bruteForceProtection?: pulumi.Input<inputs.AttackProtectionBruteForceProtection>;
+    /**
+     * CAPTCHA configuration for attack protection.
+     */
+    captcha?: pulumi.Input<inputs.AttackProtectionCaptcha>;
     /**
      * Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.
      */
@@ -168,6 +272,10 @@ export interface AttackProtectionState {
  */
 export interface AttackProtectionArgs {
     /**
+     * Bot detection configuration to identify and prevent automated threats.
+     */
+    botDetection?: pulumi.Input<inputs.AttackProtectionBotDetection>;
+    /**
      * Breached password detection protects your applications from bad actors logging in with stolen credentials.
      */
     breachedPasswordDetection?: pulumi.Input<inputs.AttackProtectionBreachedPasswordDetection>;
@@ -175,6 +283,10 @@ export interface AttackProtectionArgs {
      * Brute-force protection safeguards against a single IP address attacking a single user account.
      */
     bruteForceProtection?: pulumi.Input<inputs.AttackProtectionBruteForceProtection>;
+    /**
+     * CAPTCHA configuration for attack protection.
+     */
+    captcha?: pulumi.Input<inputs.AttackProtectionCaptcha>;
     /**
      * Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.
      */

@@ -76,6 +76,8 @@ type LookupClientResult struct {
 	AllowedOrigins []string `pulumi:"allowedOrigins"`
 	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
 	AppType string `pulumi:"appType"`
+	// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `["guardian-push"]` if not specified.
+	AsyncApprovalNotificationChannels []string `pulumi:"asyncApprovalNotificationChannels"`
 	// URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
 	Callbacks []string `pulumi:"callbacks"`
 	// List of audiences/realms for SAML protocol. Used by the wsfed addon.
@@ -225,6 +227,11 @@ func (o LookupClientResultOutput) AllowedOrigins() pulumi.StringArrayOutput {
 // Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
 func (o LookupClientResultOutput) AppType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClientResult) string { return v.AppType }).(pulumi.StringOutput)
+}
+
+// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `["guardian-push"]` if not specified.
+func (o LookupClientResultOutput) AsyncApprovalNotificationChannels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupClientResult) []string { return v.AsyncApprovalNotificationChannels }).(pulumi.StringArrayOutput)
 }
 
 // URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.

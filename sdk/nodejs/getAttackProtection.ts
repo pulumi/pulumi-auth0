@@ -29,6 +29,10 @@ export function getAttackProtection(opts?: pulumi.InvokeOptions): Promise<GetAtt
  */
 export interface GetAttackProtectionResult {
     /**
+     * Bot detection configuration to identify and prevent automated threats.
+     */
+    readonly botDetections: outputs.GetAttackProtectionBotDetection[];
+    /**
      * Breached password detection protects your applications from bad actors logging in with stolen credentials.
      */
     readonly breachedPasswordDetections: outputs.GetAttackProtectionBreachedPasswordDetection[];
@@ -36,6 +40,10 @@ export interface GetAttackProtectionResult {
      * Brute-force protection safeguards against a single IP address attacking a single user account.
      */
     readonly bruteForceProtections: outputs.GetAttackProtectionBruteForceProtection[];
+    /**
+     * CAPTCHA configuration for attack protection.
+     */
+    readonly captchas: outputs.GetAttackProtectionCaptcha[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */

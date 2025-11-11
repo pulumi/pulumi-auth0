@@ -76,7 +76,7 @@ import javax.annotation.Nullable;
  *         // Make sure a corresponding action exists with custom-phone-provider as supported triggers
  *         var sendCustomPhone = new Action("sendCustomPhone", ActionArgs.builder()
  *             .name("Custom Phone Provider")
- *             .runtime("node18")
+ *             .runtime("node22")
  *             .deploy(true)
  *             .code("""
  * /**

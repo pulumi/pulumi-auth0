@@ -38,6 +38,33 @@ export interface ActionSupportedTriggers {
     version: pulumi.Input<string>;
 }
 
+export interface AttackProtectionBotDetection {
+    /**
+     * List of IP addresses or ranges that will not trigger bot detection.
+     */
+    allowlists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Bot detection level. Possible values: `low`, `medium`, `high`. Set to empty string to disable.
+     */
+    botDetectionLevel?: pulumi.Input<string>;
+    /**
+     * Challenge policy for password flow. Possible values: `never`, `whenRisky`, `always`.
+     */
+    challengePasswordPolicy?: pulumi.Input<string>;
+    /**
+     * Challenge policy for password reset flow. Possible values: `never`, `whenRisky`, `always`.
+     */
+    challengePasswordResetPolicy?: pulumi.Input<string>;
+    /**
+     * Challenge policy for passwordless flow. Possible values: `never`, `whenRisky`, `always`.
+     */
+    challengePasswordlessPolicy?: pulumi.Input<string>;
+    /**
+     * Whether monitoring mode is enabled for bot detection.
+     */
+    monitoringModeEnabled?: pulumi.Input<boolean>;
+}
+
 export interface AttackProtectionBreachedPasswordDetection {
     /**
      * When `adminNotification` is enabled within the `shields` property, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
@@ -100,6 +127,115 @@ export interface AttackProtectionBruteForceProtection {
      * Action to take when a brute force protection threshold is violated. Possible values: `block` (block login attempts for a flagged user account), `userNotification` (send an email to user when their account has been blocked).
      */
     shields?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AttackProtectionCaptcha {
+    /**
+     * Active CAPTCHA provider ID. Set to empty string to disable CAPTCHA. Possible values: `recaptchaV2`, `recaptchaEnterprise`, `hcaptcha`, `friendlyCaptcha`, `arkose`, `authChallenge`, `simpleCaptcha`.
+     */
+    activeProviderId?: pulumi.Input<string>;
+    /**
+     * Configuration for Arkose Labs.
+     */
+    arkose?: pulumi.Input<inputs.AttackProtectionCaptchaArkose>;
+    /**
+     * Configuration for Auth0's Auth Challenge.
+     */
+    authChallenge?: pulumi.Input<inputs.AttackProtectionCaptchaAuthChallenge>;
+    /**
+     * Configuration for Friendly Captcha.
+     */
+    friendlyCaptcha?: pulumi.Input<inputs.AttackProtectionCaptchaFriendlyCaptcha>;
+    /**
+     * Configuration for hCaptcha.
+     */
+    hcaptcha?: pulumi.Input<inputs.AttackProtectionCaptchaHcaptcha>;
+    /**
+     * Configuration for Google reCAPTCHA Enterprise.
+     */
+    recaptchaEnterprise?: pulumi.Input<inputs.AttackProtectionCaptchaRecaptchaEnterprise>;
+    /**
+     * Configuration for Google reCAPTCHA v2.
+     */
+    recaptchaV2?: pulumi.Input<inputs.AttackProtectionCaptchaRecaptchaV2>;
+}
+
+export interface AttackProtectionCaptchaArkose {
+    /**
+     * Client subdomain for Arkose Labs.
+     */
+    clientSubdomain?: pulumi.Input<string>;
+    /**
+     * Whether the captcha should fail open.
+     */
+    failOpen?: pulumi.Input<boolean>;
+    /**
+     * Secret for Arkose Labs.
+     */
+    secret: pulumi.Input<string>;
+    /**
+     * Site key for Arkose Labs.
+     */
+    siteKey: pulumi.Input<string>;
+    /**
+     * Verify subdomain for Arkose Labs.
+     */
+    verifySubdomain?: pulumi.Input<string>;
+}
+
+export interface AttackProtectionCaptchaAuthChallenge {
+    /**
+     * Whether the auth challenge should fail open.
+     */
+    failOpen?: pulumi.Input<boolean>;
+}
+
+export interface AttackProtectionCaptchaFriendlyCaptcha {
+    /**
+     * Secret for Friendly Captcha.
+     */
+    secret: pulumi.Input<string>;
+    /**
+     * Site key for Friendly Captcha.
+     */
+    siteKey: pulumi.Input<string>;
+}
+
+export interface AttackProtectionCaptchaHcaptcha {
+    /**
+     * Secret for hCaptcha.
+     */
+    secret: pulumi.Input<string>;
+    /**
+     * Site key for hCaptcha.
+     */
+    siteKey: pulumi.Input<string>;
+}
+
+export interface AttackProtectionCaptchaRecaptchaEnterprise {
+    /**
+     * API key for reCAPTCHA Enterprise.
+     */
+    apiKey: pulumi.Input<string>;
+    /**
+     * Project ID for reCAPTCHA Enterprise.
+     */
+    projectId: pulumi.Input<string>;
+    /**
+     * Site key for reCAPTCHA Enterprise.
+     */
+    siteKey: pulumi.Input<string>;
+}
+
+export interface AttackProtectionCaptchaRecaptchaV2 {
+    /**
+     * Secret for reCAPTCHA v2.
+     */
+    secret: pulumi.Input<string>;
+    /**
+     * Site key for reCAPTCHA v2.
+     */
+    siteKey: pulumi.Input<string>;
 }
 
 export interface AttackProtectionSuspiciousIpThrottling {

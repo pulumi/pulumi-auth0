@@ -48,10 +48,14 @@ func LookupAttackProtection(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*
 
 // A collection of values returned by getAttackProtection.
 type LookupAttackProtectionResult struct {
+	// Bot detection configuration to identify and prevent automated threats.
+	BotDetections []GetAttackProtectionBotDetection `pulumi:"botDetections"`
 	// Breached password detection protects your applications from bad actors logging in with stolen credentials.
 	BreachedPasswordDetections []GetAttackProtectionBreachedPasswordDetection `pulumi:"breachedPasswordDetections"`
 	// Brute-force protection safeguards against a single IP address attacking a single user account.
 	BruteForceProtections []GetAttackProtectionBruteForceProtection `pulumi:"bruteForceProtections"`
+	// CAPTCHA configuration for attack protection.
+	Captchas []GetAttackProtectionCaptcha `pulumi:"captchas"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.
@@ -80,6 +84,11 @@ func (o LookupAttackProtectionResultOutput) ToLookupAttackProtectionResultOutput
 	return o
 }
 
+// Bot detection configuration to identify and prevent automated threats.
+func (o LookupAttackProtectionResultOutput) BotDetections() GetAttackProtectionBotDetectionArrayOutput {
+	return o.ApplyT(func(v LookupAttackProtectionResult) []GetAttackProtectionBotDetection { return v.BotDetections }).(GetAttackProtectionBotDetectionArrayOutput)
+}
+
 // Breached password detection protects your applications from bad actors logging in with stolen credentials.
 func (o LookupAttackProtectionResultOutput) BreachedPasswordDetections() GetAttackProtectionBreachedPasswordDetectionArrayOutput {
 	return o.ApplyT(func(v LookupAttackProtectionResult) []GetAttackProtectionBreachedPasswordDetection {
@@ -92,6 +101,11 @@ func (o LookupAttackProtectionResultOutput) BruteForceProtections() GetAttackPro
 	return o.ApplyT(func(v LookupAttackProtectionResult) []GetAttackProtectionBruteForceProtection {
 		return v.BruteForceProtections
 	}).(GetAttackProtectionBruteForceProtectionArrayOutput)
+}
+
+// CAPTCHA configuration for attack protection.
+func (o LookupAttackProtectionResultOutput) Captchas() GetAttackProtectionCaptchaArrayOutput {
+	return o.ApplyT(func(v LookupAttackProtectionResult) []GetAttackProtectionCaptcha { return v.Captchas }).(GetAttackProtectionCaptchaArrayOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

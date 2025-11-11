@@ -105,6 +105,21 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `[&#34;guardian-push&#34;]` if not specified.
+     * 
+     */
+    @Import(name="asyncApprovalNotificationChannels")
+    private @Nullable Output<List<String>> asyncApprovalNotificationChannels;
+
+    /**
+     * @return List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `[&#34;guardian-push&#34;]` if not specified.
+     * 
+     */
+    public Optional<Output<List<String>>> asyncApprovalNotificationChannels() {
+        return Optional.ofNullable(this.asyncApprovalNotificationChannels);
+    }
+
+    /**
      * URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
      * 
      */
@@ -712,6 +727,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         this.allowedLogoutUrls = $.allowedLogoutUrls;
         this.allowedOrigins = $.allowedOrigins;
         this.appType = $.appType;
+        this.asyncApprovalNotificationChannels = $.asyncApprovalNotificationChannels;
         this.callbacks = $.callbacks;
         this.clientAliases = $.clientAliases;
         this.clientId = $.clientId;
@@ -905,6 +921,37 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder appType(String appType) {
             return appType(Output.of(appType));
+        }
+
+        /**
+         * @param asyncApprovalNotificationChannels List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `[&#34;guardian-push&#34;]` if not specified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder asyncApprovalNotificationChannels(@Nullable Output<List<String>> asyncApprovalNotificationChannels) {
+            $.asyncApprovalNotificationChannels = asyncApprovalNotificationChannels;
+            return this;
+        }
+
+        /**
+         * @param asyncApprovalNotificationChannels List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `[&#34;guardian-push&#34;]` if not specified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder asyncApprovalNotificationChannels(List<String> asyncApprovalNotificationChannels) {
+            return asyncApprovalNotificationChannels(Output.of(asyncApprovalNotificationChannels));
+        }
+
+        /**
+         * @param asyncApprovalNotificationChannels List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `[&#34;guardian-push&#34;]` if not specified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder asyncApprovalNotificationChannels(String... asyncApprovalNotificationChannels) {
+            return asyncApprovalNotificationChannels(List.of(asyncApprovalNotificationChannels));
         }
 
         /**

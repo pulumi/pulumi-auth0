@@ -65,6 +65,11 @@ export type ConnectionScimConfiguration = import("./connectionScimConfiguration"
 export const ConnectionScimConfiguration: typeof import("./connectionScimConfiguration").ConnectionScimConfiguration = null as any;
 utilities.lazyLoad(exports, ["ConnectionScimConfiguration"], () => require("./connectionScimConfiguration"));
 
+export { ConnectionScimTokenArgs, ConnectionScimTokenState } from "./connectionScimToken";
+export type ConnectionScimToken = import("./connectionScimToken").ConnectionScimToken;
+export const ConnectionScimToken: typeof import("./connectionScimToken").ConnectionScimToken = null as any;
+utilities.lazyLoad(exports, ["ConnectionScimToken"], () => require("./connectionScimToken"));
+
 export { CustomDomainArgs, CustomDomainState } from "./customDomain";
 export type CustomDomain = import("./customDomain").CustomDomain;
 export const CustomDomain: typeof import("./customDomain").CustomDomain = null as any;
@@ -521,6 +526,8 @@ const _module = {
                 return new ConnectionKeys(name, <any>undefined, { urn })
             case "auth0:index/connectionScimConfiguration:ConnectionScimConfiguration":
                 return new ConnectionScimConfiguration(name, <any>undefined, { urn })
+            case "auth0:index/connectionScimToken:ConnectionScimToken":
+                return new ConnectionScimToken(name, <any>undefined, { urn })
             case "auth0:index/customDomain:CustomDomain":
                 return new CustomDomain(name, <any>undefined, { urn })
             case "auth0:index/customDomainVerification:CustomDomainVerification":
@@ -644,6 +651,7 @@ pulumi.runtime.registerResourceModule("auth0", "index/connectionClient", _module
 pulumi.runtime.registerResourceModule("auth0", "index/connectionClients", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/connectionKeys", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/connectionScimConfiguration", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/connectionScimToken", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/customDomain", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/customDomainVerification", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/emailProvider", _module)

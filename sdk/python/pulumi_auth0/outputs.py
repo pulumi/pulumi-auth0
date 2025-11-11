@@ -19,10 +19,18 @@ __all__ = [
     'ActionDependency',
     'ActionSecret',
     'ActionSupportedTriggers',
+    'AttackProtectionBotDetection',
     'AttackProtectionBreachedPasswordDetection',
     'AttackProtectionBreachedPasswordDetectionPreChangePassword',
     'AttackProtectionBreachedPasswordDetectionPreUserRegistration',
     'AttackProtectionBruteForceProtection',
+    'AttackProtectionCaptcha',
+    'AttackProtectionCaptchaArkose',
+    'AttackProtectionCaptchaAuthChallenge',
+    'AttackProtectionCaptchaFriendlyCaptcha',
+    'AttackProtectionCaptchaHcaptcha',
+    'AttackProtectionCaptchaRecaptchaEnterprise',
+    'AttackProtectionCaptchaRecaptchaV2',
     'AttackProtectionSuspiciousIpThrottling',
     'AttackProtectionSuspiciousIpThrottlingPreLogin',
     'AttackProtectionSuspiciousIpThrottlingPreUserRegistration',
@@ -211,10 +219,18 @@ __all__ = [
     'GetActionDependencyResult',
     'GetActionSecretResult',
     'GetActionSupportedTriggerResult',
+    'GetAttackProtectionBotDetectionResult',
     'GetAttackProtectionBreachedPasswordDetectionResult',
     'GetAttackProtectionBreachedPasswordDetectionPreChangePasswordResult',
     'GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationResult',
     'GetAttackProtectionBruteForceProtectionResult',
+    'GetAttackProtectionCaptchaResult',
+    'GetAttackProtectionCaptchaArkoseResult',
+    'GetAttackProtectionCaptchaAuthChallengeResult',
+    'GetAttackProtectionCaptchaFriendlyCaptchaResult',
+    'GetAttackProtectionCaptchaHcaptchaResult',
+    'GetAttackProtectionCaptchaRecaptchaEnterpriseResult',
+    'GetAttackProtectionCaptchaRecaptchaV2Result',
     'GetAttackProtectionSuspiciousIpThrottlingResult',
     'GetAttackProtectionSuspiciousIpThrottlingPreLoginResult',
     'GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationResult',
@@ -483,6 +499,110 @@ class ActionSupportedTriggers(dict):
 
 
 @pulumi.output_type
+class AttackProtectionBotDetection(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "botDetectionLevel":
+            suggest = "bot_detection_level"
+        elif key == "challengePasswordPolicy":
+            suggest = "challenge_password_policy"
+        elif key == "challengePasswordResetPolicy":
+            suggest = "challenge_password_reset_policy"
+        elif key == "challengePasswordlessPolicy":
+            suggest = "challenge_passwordless_policy"
+        elif key == "monitoringModeEnabled":
+            suggest = "monitoring_mode_enabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AttackProtectionBotDetection. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AttackProtectionBotDetection.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AttackProtectionBotDetection.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allowlists: Optional[Sequence[_builtins.str]] = None,
+                 bot_detection_level: Optional[_builtins.str] = None,
+                 challenge_password_policy: Optional[_builtins.str] = None,
+                 challenge_password_reset_policy: Optional[_builtins.str] = None,
+                 challenge_passwordless_policy: Optional[_builtins.str] = None,
+                 monitoring_mode_enabled: Optional[_builtins.bool] = None):
+        """
+        :param Sequence[_builtins.str] allowlists: List of IP addresses or ranges that will not trigger bot detection.
+        :param _builtins.str bot_detection_level: Bot detection level. Possible values: `low`, `medium`, `high`. Set to empty string to disable.
+        :param _builtins.str challenge_password_policy: Challenge policy for password flow. Possible values: `never`, `when_risky`, `always`.
+        :param _builtins.str challenge_password_reset_policy: Challenge policy for password reset flow. Possible values: `never`, `when_risky`, `always`.
+        :param _builtins.str challenge_passwordless_policy: Challenge policy for passwordless flow. Possible values: `never`, `when_risky`, `always`.
+        :param _builtins.bool monitoring_mode_enabled: Whether monitoring mode is enabled for bot detection.
+        """
+        if allowlists is not None:
+            pulumi.set(__self__, "allowlists", allowlists)
+        if bot_detection_level is not None:
+            pulumi.set(__self__, "bot_detection_level", bot_detection_level)
+        if challenge_password_policy is not None:
+            pulumi.set(__self__, "challenge_password_policy", challenge_password_policy)
+        if challenge_password_reset_policy is not None:
+            pulumi.set(__self__, "challenge_password_reset_policy", challenge_password_reset_policy)
+        if challenge_passwordless_policy is not None:
+            pulumi.set(__self__, "challenge_passwordless_policy", challenge_passwordless_policy)
+        if monitoring_mode_enabled is not None:
+            pulumi.set(__self__, "monitoring_mode_enabled", monitoring_mode_enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def allowlists(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of IP addresses or ranges that will not trigger bot detection.
+        """
+        return pulumi.get(self, "allowlists")
+
+    @_builtins.property
+    @pulumi.getter(name="botDetectionLevel")
+    def bot_detection_level(self) -> Optional[_builtins.str]:
+        """
+        Bot detection level. Possible values: `low`, `medium`, `high`. Set to empty string to disable.
+        """
+        return pulumi.get(self, "bot_detection_level")
+
+    @_builtins.property
+    @pulumi.getter(name="challengePasswordPolicy")
+    def challenge_password_policy(self) -> Optional[_builtins.str]:
+        """
+        Challenge policy for password flow. Possible values: `never`, `when_risky`, `always`.
+        """
+        return pulumi.get(self, "challenge_password_policy")
+
+    @_builtins.property
+    @pulumi.getter(name="challengePasswordResetPolicy")
+    def challenge_password_reset_policy(self) -> Optional[_builtins.str]:
+        """
+        Challenge policy for password reset flow. Possible values: `never`, `when_risky`, `always`.
+        """
+        return pulumi.get(self, "challenge_password_reset_policy")
+
+    @_builtins.property
+    @pulumi.getter(name="challengePasswordlessPolicy")
+    def challenge_passwordless_policy(self) -> Optional[_builtins.str]:
+        """
+        Challenge policy for passwordless flow. Possible values: `never`, `when_risky`, `always`.
+        """
+        return pulumi.get(self, "challenge_passwordless_policy")
+
+    @_builtins.property
+    @pulumi.getter(name="monitoringModeEnabled")
+    def monitoring_mode_enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether monitoring mode is enabled for bot detection.
+        """
+        return pulumi.get(self, "monitoring_mode_enabled")
+
+
+@pulumi.output_type
 class AttackProtectionBreachedPasswordDetection(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -700,6 +820,445 @@ class AttackProtectionBruteForceProtection(dict):
         Action to take when a brute force protection threshold is violated. Possible values: `block` (block login attempts for a flagged user account), `user_notification` (send an email to user when their account has been blocked).
         """
         return pulumi.get(self, "shields")
+
+
+@pulumi.output_type
+class AttackProtectionCaptcha(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "activeProviderId":
+            suggest = "active_provider_id"
+        elif key == "authChallenge":
+            suggest = "auth_challenge"
+        elif key == "friendlyCaptcha":
+            suggest = "friendly_captcha"
+        elif key == "recaptchaEnterprise":
+            suggest = "recaptcha_enterprise"
+        elif key == "recaptchaV2":
+            suggest = "recaptcha_v2"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AttackProtectionCaptcha. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AttackProtectionCaptcha.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AttackProtectionCaptcha.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 active_provider_id: Optional[_builtins.str] = None,
+                 arkose: Optional['outputs.AttackProtectionCaptchaArkose'] = None,
+                 auth_challenge: Optional['outputs.AttackProtectionCaptchaAuthChallenge'] = None,
+                 friendly_captcha: Optional['outputs.AttackProtectionCaptchaFriendlyCaptcha'] = None,
+                 hcaptcha: Optional['outputs.AttackProtectionCaptchaHcaptcha'] = None,
+                 recaptcha_enterprise: Optional['outputs.AttackProtectionCaptchaRecaptchaEnterprise'] = None,
+                 recaptcha_v2: Optional['outputs.AttackProtectionCaptchaRecaptchaV2'] = None):
+        """
+        :param _builtins.str active_provider_id: Active CAPTCHA provider ID. Set to empty string to disable CAPTCHA. Possible values: `recaptcha_v2`, `recaptcha_enterprise`, `hcaptcha`, `friendly_captcha`, `arkose`, `auth_challenge`, `simple_captcha`.
+        :param 'AttackProtectionCaptchaArkoseArgs' arkose: Configuration for Arkose Labs.
+        :param 'AttackProtectionCaptchaAuthChallengeArgs' auth_challenge: Configuration for Auth0's Auth Challenge.
+        :param 'AttackProtectionCaptchaFriendlyCaptchaArgs' friendly_captcha: Configuration for Friendly Captcha.
+        :param 'AttackProtectionCaptchaHcaptchaArgs' hcaptcha: Configuration for hCaptcha.
+        :param 'AttackProtectionCaptchaRecaptchaEnterpriseArgs' recaptcha_enterprise: Configuration for Google reCAPTCHA Enterprise.
+        :param 'AttackProtectionCaptchaRecaptchaV2Args' recaptcha_v2: Configuration for Google reCAPTCHA v2.
+        """
+        if active_provider_id is not None:
+            pulumi.set(__self__, "active_provider_id", active_provider_id)
+        if arkose is not None:
+            pulumi.set(__self__, "arkose", arkose)
+        if auth_challenge is not None:
+            pulumi.set(__self__, "auth_challenge", auth_challenge)
+        if friendly_captcha is not None:
+            pulumi.set(__self__, "friendly_captcha", friendly_captcha)
+        if hcaptcha is not None:
+            pulumi.set(__self__, "hcaptcha", hcaptcha)
+        if recaptcha_enterprise is not None:
+            pulumi.set(__self__, "recaptcha_enterprise", recaptcha_enterprise)
+        if recaptcha_v2 is not None:
+            pulumi.set(__self__, "recaptcha_v2", recaptcha_v2)
+
+    @_builtins.property
+    @pulumi.getter(name="activeProviderId")
+    def active_provider_id(self) -> Optional[_builtins.str]:
+        """
+        Active CAPTCHA provider ID. Set to empty string to disable CAPTCHA. Possible values: `recaptcha_v2`, `recaptcha_enterprise`, `hcaptcha`, `friendly_captcha`, `arkose`, `auth_challenge`, `simple_captcha`.
+        """
+        return pulumi.get(self, "active_provider_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def arkose(self) -> Optional['outputs.AttackProtectionCaptchaArkose']:
+        """
+        Configuration for Arkose Labs.
+        """
+        return pulumi.get(self, "arkose")
+
+    @_builtins.property
+    @pulumi.getter(name="authChallenge")
+    def auth_challenge(self) -> Optional['outputs.AttackProtectionCaptchaAuthChallenge']:
+        """
+        Configuration for Auth0's Auth Challenge.
+        """
+        return pulumi.get(self, "auth_challenge")
+
+    @_builtins.property
+    @pulumi.getter(name="friendlyCaptcha")
+    def friendly_captcha(self) -> Optional['outputs.AttackProtectionCaptchaFriendlyCaptcha']:
+        """
+        Configuration for Friendly Captcha.
+        """
+        return pulumi.get(self, "friendly_captcha")
+
+    @_builtins.property
+    @pulumi.getter
+    def hcaptcha(self) -> Optional['outputs.AttackProtectionCaptchaHcaptcha']:
+        """
+        Configuration for hCaptcha.
+        """
+        return pulumi.get(self, "hcaptcha")
+
+    @_builtins.property
+    @pulumi.getter(name="recaptchaEnterprise")
+    def recaptcha_enterprise(self) -> Optional['outputs.AttackProtectionCaptchaRecaptchaEnterprise']:
+        """
+        Configuration for Google reCAPTCHA Enterprise.
+        """
+        return pulumi.get(self, "recaptcha_enterprise")
+
+    @_builtins.property
+    @pulumi.getter(name="recaptchaV2")
+    def recaptcha_v2(self) -> Optional['outputs.AttackProtectionCaptchaRecaptchaV2']:
+        """
+        Configuration for Google reCAPTCHA v2.
+        """
+        return pulumi.get(self, "recaptcha_v2")
+
+
+@pulumi.output_type
+class AttackProtectionCaptchaArkose(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "siteKey":
+            suggest = "site_key"
+        elif key == "clientSubdomain":
+            suggest = "client_subdomain"
+        elif key == "failOpen":
+            suggest = "fail_open"
+        elif key == "verifySubdomain":
+            suggest = "verify_subdomain"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AttackProtectionCaptchaArkose. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AttackProtectionCaptchaArkose.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AttackProtectionCaptchaArkose.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 secret: _builtins.str,
+                 site_key: _builtins.str,
+                 client_subdomain: Optional[_builtins.str] = None,
+                 fail_open: Optional[_builtins.bool] = None,
+                 verify_subdomain: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str secret: Secret for Arkose Labs.
+        :param _builtins.str site_key: Site key for Arkose Labs.
+        :param _builtins.str client_subdomain: Client subdomain for Arkose Labs.
+        :param _builtins.bool fail_open: Whether the captcha should fail open.
+        :param _builtins.str verify_subdomain: Verify subdomain for Arkose Labs.
+        """
+        pulumi.set(__self__, "secret", secret)
+        pulumi.set(__self__, "site_key", site_key)
+        if client_subdomain is not None:
+            pulumi.set(__self__, "client_subdomain", client_subdomain)
+        if fail_open is not None:
+            pulumi.set(__self__, "fail_open", fail_open)
+        if verify_subdomain is not None:
+            pulumi.set(__self__, "verify_subdomain", verify_subdomain)
+
+    @_builtins.property
+    @pulumi.getter
+    def secret(self) -> _builtins.str:
+        """
+        Secret for Arkose Labs.
+        """
+        return pulumi.get(self, "secret")
+
+    @_builtins.property
+    @pulumi.getter(name="siteKey")
+    def site_key(self) -> _builtins.str:
+        """
+        Site key for Arkose Labs.
+        """
+        return pulumi.get(self, "site_key")
+
+    @_builtins.property
+    @pulumi.getter(name="clientSubdomain")
+    def client_subdomain(self) -> Optional[_builtins.str]:
+        """
+        Client subdomain for Arkose Labs.
+        """
+        return pulumi.get(self, "client_subdomain")
+
+    @_builtins.property
+    @pulumi.getter(name="failOpen")
+    def fail_open(self) -> Optional[_builtins.bool]:
+        """
+        Whether the captcha should fail open.
+        """
+        return pulumi.get(self, "fail_open")
+
+    @_builtins.property
+    @pulumi.getter(name="verifySubdomain")
+    def verify_subdomain(self) -> Optional[_builtins.str]:
+        """
+        Verify subdomain for Arkose Labs.
+        """
+        return pulumi.get(self, "verify_subdomain")
+
+
+@pulumi.output_type
+class AttackProtectionCaptchaAuthChallenge(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "failOpen":
+            suggest = "fail_open"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AttackProtectionCaptchaAuthChallenge. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AttackProtectionCaptchaAuthChallenge.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AttackProtectionCaptchaAuthChallenge.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 fail_open: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.bool fail_open: Whether the auth challenge should fail open.
+        """
+        if fail_open is not None:
+            pulumi.set(__self__, "fail_open", fail_open)
+
+    @_builtins.property
+    @pulumi.getter(name="failOpen")
+    def fail_open(self) -> Optional[_builtins.bool]:
+        """
+        Whether the auth challenge should fail open.
+        """
+        return pulumi.get(self, "fail_open")
+
+
+@pulumi.output_type
+class AttackProtectionCaptchaFriendlyCaptcha(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "siteKey":
+            suggest = "site_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AttackProtectionCaptchaFriendlyCaptcha. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AttackProtectionCaptchaFriendlyCaptcha.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AttackProtectionCaptchaFriendlyCaptcha.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 secret: _builtins.str,
+                 site_key: _builtins.str):
+        """
+        :param _builtins.str secret: Secret for Friendly Captcha.
+        :param _builtins.str site_key: Site key for Friendly Captcha.
+        """
+        pulumi.set(__self__, "secret", secret)
+        pulumi.set(__self__, "site_key", site_key)
+
+    @_builtins.property
+    @pulumi.getter
+    def secret(self) -> _builtins.str:
+        """
+        Secret for Friendly Captcha.
+        """
+        return pulumi.get(self, "secret")
+
+    @_builtins.property
+    @pulumi.getter(name="siteKey")
+    def site_key(self) -> _builtins.str:
+        """
+        Site key for Friendly Captcha.
+        """
+        return pulumi.get(self, "site_key")
+
+
+@pulumi.output_type
+class AttackProtectionCaptchaHcaptcha(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "siteKey":
+            suggest = "site_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AttackProtectionCaptchaHcaptcha. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AttackProtectionCaptchaHcaptcha.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AttackProtectionCaptchaHcaptcha.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 secret: _builtins.str,
+                 site_key: _builtins.str):
+        """
+        :param _builtins.str secret: Secret for hCaptcha.
+        :param _builtins.str site_key: Site key for hCaptcha.
+        """
+        pulumi.set(__self__, "secret", secret)
+        pulumi.set(__self__, "site_key", site_key)
+
+    @_builtins.property
+    @pulumi.getter
+    def secret(self) -> _builtins.str:
+        """
+        Secret for hCaptcha.
+        """
+        return pulumi.get(self, "secret")
+
+    @_builtins.property
+    @pulumi.getter(name="siteKey")
+    def site_key(self) -> _builtins.str:
+        """
+        Site key for hCaptcha.
+        """
+        return pulumi.get(self, "site_key")
+
+
+@pulumi.output_type
+class AttackProtectionCaptchaRecaptchaEnterprise(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "apiKey":
+            suggest = "api_key"
+        elif key == "projectId":
+            suggest = "project_id"
+        elif key == "siteKey":
+            suggest = "site_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AttackProtectionCaptchaRecaptchaEnterprise. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AttackProtectionCaptchaRecaptchaEnterprise.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AttackProtectionCaptchaRecaptchaEnterprise.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 api_key: _builtins.str,
+                 project_id: _builtins.str,
+                 site_key: _builtins.str):
+        """
+        :param _builtins.str api_key: API key for reCAPTCHA Enterprise.
+        :param _builtins.str project_id: Project ID for reCAPTCHA Enterprise.
+        :param _builtins.str site_key: Site key for reCAPTCHA Enterprise.
+        """
+        pulumi.set(__self__, "api_key", api_key)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "site_key", site_key)
+
+    @_builtins.property
+    @pulumi.getter(name="apiKey")
+    def api_key(self) -> _builtins.str:
+        """
+        API key for reCAPTCHA Enterprise.
+        """
+        return pulumi.get(self, "api_key")
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> _builtins.str:
+        """
+        Project ID for reCAPTCHA Enterprise.
+        """
+        return pulumi.get(self, "project_id")
+
+    @_builtins.property
+    @pulumi.getter(name="siteKey")
+    def site_key(self) -> _builtins.str:
+        """
+        Site key for reCAPTCHA Enterprise.
+        """
+        return pulumi.get(self, "site_key")
+
+
+@pulumi.output_type
+class AttackProtectionCaptchaRecaptchaV2(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "siteKey":
+            suggest = "site_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AttackProtectionCaptchaRecaptchaV2. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AttackProtectionCaptchaRecaptchaV2.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AttackProtectionCaptchaRecaptchaV2.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 secret: _builtins.str,
+                 site_key: _builtins.str):
+        """
+        :param _builtins.str secret: Secret for reCAPTCHA v2.
+        :param _builtins.str site_key: Site key for reCAPTCHA v2.
+        """
+        pulumi.set(__self__, "secret", secret)
+        pulumi.set(__self__, "site_key", site_key)
+
+    @_builtins.property
+    @pulumi.getter
+    def secret(self) -> _builtins.str:
+        """
+        Secret for reCAPTCHA v2.
+        """
+        return pulumi.get(self, "secret")
+
+    @_builtins.property
+    @pulumi.getter(name="siteKey")
+    def site_key(self) -> _builtins.str:
+        """
+        Site key for reCAPTCHA v2.
+        """
+        return pulumi.get(self, "site_key")
 
 
 @pulumi.output_type
@@ -13413,6 +13972,79 @@ class GetActionSupportedTriggerResult(dict):
 
 
 @pulumi.output_type
+class GetAttackProtectionBotDetectionResult(dict):
+    def __init__(__self__, *,
+                 allowlists: Sequence[_builtins.str],
+                 bot_detection_level: _builtins.str,
+                 challenge_password_policy: _builtins.str,
+                 challenge_password_reset_policy: _builtins.str,
+                 challenge_passwordless_policy: _builtins.str,
+                 monitoring_mode_enabled: _builtins.bool):
+        """
+        :param Sequence[_builtins.str] allowlists: List of IP addresses or ranges that will not trigger bot detection.
+        :param _builtins.str bot_detection_level: Bot detection level. Possible values: `low`, `medium`, `high`. Set to empty string to disable.
+        :param _builtins.str challenge_password_policy: Challenge policy for password flow. Possible values: `never`, `when_risky`, `always`.
+        :param _builtins.str challenge_password_reset_policy: Challenge policy for password reset flow. Possible values: `never`, `when_risky`, `always`.
+        :param _builtins.str challenge_passwordless_policy: Challenge policy for passwordless flow. Possible values: `never`, `when_risky`, `always`.
+        :param _builtins.bool monitoring_mode_enabled: Whether monitoring mode is enabled for bot detection.
+        """
+        pulumi.set(__self__, "allowlists", allowlists)
+        pulumi.set(__self__, "bot_detection_level", bot_detection_level)
+        pulumi.set(__self__, "challenge_password_policy", challenge_password_policy)
+        pulumi.set(__self__, "challenge_password_reset_policy", challenge_password_reset_policy)
+        pulumi.set(__self__, "challenge_passwordless_policy", challenge_passwordless_policy)
+        pulumi.set(__self__, "monitoring_mode_enabled", monitoring_mode_enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def allowlists(self) -> Sequence[_builtins.str]:
+        """
+        List of IP addresses or ranges that will not trigger bot detection.
+        """
+        return pulumi.get(self, "allowlists")
+
+    @_builtins.property
+    @pulumi.getter(name="botDetectionLevel")
+    def bot_detection_level(self) -> _builtins.str:
+        """
+        Bot detection level. Possible values: `low`, `medium`, `high`. Set to empty string to disable.
+        """
+        return pulumi.get(self, "bot_detection_level")
+
+    @_builtins.property
+    @pulumi.getter(name="challengePasswordPolicy")
+    def challenge_password_policy(self) -> _builtins.str:
+        """
+        Challenge policy for password flow. Possible values: `never`, `when_risky`, `always`.
+        """
+        return pulumi.get(self, "challenge_password_policy")
+
+    @_builtins.property
+    @pulumi.getter(name="challengePasswordResetPolicy")
+    def challenge_password_reset_policy(self) -> _builtins.str:
+        """
+        Challenge policy for password reset flow. Possible values: `never`, `when_risky`, `always`.
+        """
+        return pulumi.get(self, "challenge_password_reset_policy")
+
+    @_builtins.property
+    @pulumi.getter(name="challengePasswordlessPolicy")
+    def challenge_passwordless_policy(self) -> _builtins.str:
+        """
+        Challenge policy for passwordless flow. Possible values: `never`, `when_risky`, `always`.
+        """
+        return pulumi.get(self, "challenge_passwordless_policy")
+
+    @_builtins.property
+    @pulumi.getter(name="monitoringModeEnabled")
+    def monitoring_mode_enabled(self) -> _builtins.bool:
+        """
+        Whether monitoring mode is enabled for bot detection.
+        """
+        return pulumi.get(self, "monitoring_mode_enabled")
+
+
+@pulumi.output_type
 class GetAttackProtectionBreachedPasswordDetectionResult(dict):
     def __init__(__self__, *,
                  admin_notification_frequencies: Sequence[_builtins.str],
@@ -13581,6 +14213,297 @@ class GetAttackProtectionBruteForceProtectionResult(dict):
         Action to take when a brute force protection threshold is violated. Possible values: `block` (block login attempts for a flagged user account), `user_notification` (send an email to user when their account has been blocked).
         """
         return pulumi.get(self, "shields")
+
+
+@pulumi.output_type
+class GetAttackProtectionCaptchaResult(dict):
+    def __init__(__self__, *,
+                 active_provider_id: _builtins.str,
+                 arkoses: Sequence['outputs.GetAttackProtectionCaptchaArkoseResult'],
+                 auth_challenges: Sequence['outputs.GetAttackProtectionCaptchaAuthChallengeResult'],
+                 friendly_captchas: Sequence['outputs.GetAttackProtectionCaptchaFriendlyCaptchaResult'],
+                 hcaptchas: Sequence['outputs.GetAttackProtectionCaptchaHcaptchaResult'],
+                 recaptcha_enterprises: Sequence['outputs.GetAttackProtectionCaptchaRecaptchaEnterpriseResult'],
+                 recaptcha_v2s: Sequence['outputs.GetAttackProtectionCaptchaRecaptchaV2Result']):
+        """
+        :param _builtins.str active_provider_id: Active CAPTCHA provider ID. Set to empty string to disable CAPTCHA. Possible values: `recaptcha_v2`, `recaptcha_enterprise`, `hcaptcha`, `friendly_captcha`, `arkose`, `auth_challenge`, `simple_captcha`.
+        :param Sequence['GetAttackProtectionCaptchaArkoseArgs'] arkoses: Configuration for Arkose Labs.
+        :param Sequence['GetAttackProtectionCaptchaAuthChallengeArgs'] auth_challenges: Configuration for Auth0's Auth Challenge.
+        :param Sequence['GetAttackProtectionCaptchaFriendlyCaptchaArgs'] friendly_captchas: Configuration for Friendly Captcha.
+        :param Sequence['GetAttackProtectionCaptchaHcaptchaArgs'] hcaptchas: Configuration for hCaptcha.
+        :param Sequence['GetAttackProtectionCaptchaRecaptchaEnterpriseArgs'] recaptcha_enterprises: Configuration for Google reCAPTCHA Enterprise.
+        :param Sequence['GetAttackProtectionCaptchaRecaptchaV2Args'] recaptcha_v2s: Configuration for Google reCAPTCHA v2.
+        """
+        pulumi.set(__self__, "active_provider_id", active_provider_id)
+        pulumi.set(__self__, "arkoses", arkoses)
+        pulumi.set(__self__, "auth_challenges", auth_challenges)
+        pulumi.set(__self__, "friendly_captchas", friendly_captchas)
+        pulumi.set(__self__, "hcaptchas", hcaptchas)
+        pulumi.set(__self__, "recaptcha_enterprises", recaptcha_enterprises)
+        pulumi.set(__self__, "recaptcha_v2s", recaptcha_v2s)
+
+    @_builtins.property
+    @pulumi.getter(name="activeProviderId")
+    def active_provider_id(self) -> _builtins.str:
+        """
+        Active CAPTCHA provider ID. Set to empty string to disable CAPTCHA. Possible values: `recaptcha_v2`, `recaptcha_enterprise`, `hcaptcha`, `friendly_captcha`, `arkose`, `auth_challenge`, `simple_captcha`.
+        """
+        return pulumi.get(self, "active_provider_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def arkoses(self) -> Sequence['outputs.GetAttackProtectionCaptchaArkoseResult']:
+        """
+        Configuration for Arkose Labs.
+        """
+        return pulumi.get(self, "arkoses")
+
+    @_builtins.property
+    @pulumi.getter(name="authChallenges")
+    def auth_challenges(self) -> Sequence['outputs.GetAttackProtectionCaptchaAuthChallengeResult']:
+        """
+        Configuration for Auth0's Auth Challenge.
+        """
+        return pulumi.get(self, "auth_challenges")
+
+    @_builtins.property
+    @pulumi.getter(name="friendlyCaptchas")
+    def friendly_captchas(self) -> Sequence['outputs.GetAttackProtectionCaptchaFriendlyCaptchaResult']:
+        """
+        Configuration for Friendly Captcha.
+        """
+        return pulumi.get(self, "friendly_captchas")
+
+    @_builtins.property
+    @pulumi.getter
+    def hcaptchas(self) -> Sequence['outputs.GetAttackProtectionCaptchaHcaptchaResult']:
+        """
+        Configuration for hCaptcha.
+        """
+        return pulumi.get(self, "hcaptchas")
+
+    @_builtins.property
+    @pulumi.getter(name="recaptchaEnterprises")
+    def recaptcha_enterprises(self) -> Sequence['outputs.GetAttackProtectionCaptchaRecaptchaEnterpriseResult']:
+        """
+        Configuration for Google reCAPTCHA Enterprise.
+        """
+        return pulumi.get(self, "recaptcha_enterprises")
+
+    @_builtins.property
+    @pulumi.getter(name="recaptchaV2s")
+    def recaptcha_v2s(self) -> Sequence['outputs.GetAttackProtectionCaptchaRecaptchaV2Result']:
+        """
+        Configuration for Google reCAPTCHA v2.
+        """
+        return pulumi.get(self, "recaptcha_v2s")
+
+
+@pulumi.output_type
+class GetAttackProtectionCaptchaArkoseResult(dict):
+    def __init__(__self__, *,
+                 client_subdomain: _builtins.str,
+                 fail_open: _builtins.bool,
+                 secret: _builtins.str,
+                 site_key: _builtins.str,
+                 verify_subdomain: _builtins.str):
+        """
+        :param _builtins.str client_subdomain: Client subdomain for Arkose Labs.
+        :param _builtins.bool fail_open: Whether the captcha should fail open.
+        :param _builtins.str secret: Secret for Arkose Labs.
+        :param _builtins.str site_key: Site key for Arkose Labs.
+        :param _builtins.str verify_subdomain: Verify subdomain for Arkose Labs.
+        """
+        pulumi.set(__self__, "client_subdomain", client_subdomain)
+        pulumi.set(__self__, "fail_open", fail_open)
+        pulumi.set(__self__, "secret", secret)
+        pulumi.set(__self__, "site_key", site_key)
+        pulumi.set(__self__, "verify_subdomain", verify_subdomain)
+
+    @_builtins.property
+    @pulumi.getter(name="clientSubdomain")
+    def client_subdomain(self) -> _builtins.str:
+        """
+        Client subdomain for Arkose Labs.
+        """
+        return pulumi.get(self, "client_subdomain")
+
+    @_builtins.property
+    @pulumi.getter(name="failOpen")
+    def fail_open(self) -> _builtins.bool:
+        """
+        Whether the captcha should fail open.
+        """
+        return pulumi.get(self, "fail_open")
+
+    @_builtins.property
+    @pulumi.getter
+    def secret(self) -> _builtins.str:
+        """
+        Secret for Arkose Labs.
+        """
+        return pulumi.get(self, "secret")
+
+    @_builtins.property
+    @pulumi.getter(name="siteKey")
+    def site_key(self) -> _builtins.str:
+        """
+        Site key for Arkose Labs.
+        """
+        return pulumi.get(self, "site_key")
+
+    @_builtins.property
+    @pulumi.getter(name="verifySubdomain")
+    def verify_subdomain(self) -> _builtins.str:
+        """
+        Verify subdomain for Arkose Labs.
+        """
+        return pulumi.get(self, "verify_subdomain")
+
+
+@pulumi.output_type
+class GetAttackProtectionCaptchaAuthChallengeResult(dict):
+    def __init__(__self__, *,
+                 fail_open: _builtins.bool):
+        """
+        :param _builtins.bool fail_open: Whether the auth challenge should fail open.
+        """
+        pulumi.set(__self__, "fail_open", fail_open)
+
+    @_builtins.property
+    @pulumi.getter(name="failOpen")
+    def fail_open(self) -> _builtins.bool:
+        """
+        Whether the auth challenge should fail open.
+        """
+        return pulumi.get(self, "fail_open")
+
+
+@pulumi.output_type
+class GetAttackProtectionCaptchaFriendlyCaptchaResult(dict):
+    def __init__(__self__, *,
+                 secret: _builtins.str,
+                 site_key: _builtins.str):
+        """
+        :param _builtins.str secret: Secret for Friendly Captcha.
+        :param _builtins.str site_key: Site key for Friendly Captcha.
+        """
+        pulumi.set(__self__, "secret", secret)
+        pulumi.set(__self__, "site_key", site_key)
+
+    @_builtins.property
+    @pulumi.getter
+    def secret(self) -> _builtins.str:
+        """
+        Secret for Friendly Captcha.
+        """
+        return pulumi.get(self, "secret")
+
+    @_builtins.property
+    @pulumi.getter(name="siteKey")
+    def site_key(self) -> _builtins.str:
+        """
+        Site key for Friendly Captcha.
+        """
+        return pulumi.get(self, "site_key")
+
+
+@pulumi.output_type
+class GetAttackProtectionCaptchaHcaptchaResult(dict):
+    def __init__(__self__, *,
+                 secret: _builtins.str,
+                 site_key: _builtins.str):
+        """
+        :param _builtins.str secret: Secret for hCaptcha.
+        :param _builtins.str site_key: Site key for hCaptcha.
+        """
+        pulumi.set(__self__, "secret", secret)
+        pulumi.set(__self__, "site_key", site_key)
+
+    @_builtins.property
+    @pulumi.getter
+    def secret(self) -> _builtins.str:
+        """
+        Secret for hCaptcha.
+        """
+        return pulumi.get(self, "secret")
+
+    @_builtins.property
+    @pulumi.getter(name="siteKey")
+    def site_key(self) -> _builtins.str:
+        """
+        Site key for hCaptcha.
+        """
+        return pulumi.get(self, "site_key")
+
+
+@pulumi.output_type
+class GetAttackProtectionCaptchaRecaptchaEnterpriseResult(dict):
+    def __init__(__self__, *,
+                 api_key: _builtins.str,
+                 project_id: _builtins.str,
+                 site_key: _builtins.str):
+        """
+        :param _builtins.str api_key: API key for reCAPTCHA Enterprise.
+        :param _builtins.str project_id: Project ID for reCAPTCHA Enterprise.
+        :param _builtins.str site_key: Site key for reCAPTCHA Enterprise.
+        """
+        pulumi.set(__self__, "api_key", api_key)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "site_key", site_key)
+
+    @_builtins.property
+    @pulumi.getter(name="apiKey")
+    def api_key(self) -> _builtins.str:
+        """
+        API key for reCAPTCHA Enterprise.
+        """
+        return pulumi.get(self, "api_key")
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> _builtins.str:
+        """
+        Project ID for reCAPTCHA Enterprise.
+        """
+        return pulumi.get(self, "project_id")
+
+    @_builtins.property
+    @pulumi.getter(name="siteKey")
+    def site_key(self) -> _builtins.str:
+        """
+        Site key for reCAPTCHA Enterprise.
+        """
+        return pulumi.get(self, "site_key")
+
+
+@pulumi.output_type
+class GetAttackProtectionCaptchaRecaptchaV2Result(dict):
+    def __init__(__self__, *,
+                 secret: _builtins.str,
+                 site_key: _builtins.str):
+        """
+        :param _builtins.str secret: Secret for reCAPTCHA v2.
+        :param _builtins.str site_key: Site key for reCAPTCHA v2.
+        """
+        pulumi.set(__self__, "secret", secret)
+        pulumi.set(__self__, "site_key", site_key)
+
+    @_builtins.property
+    @pulumi.getter
+    def secret(self) -> _builtins.str:
+        """
+        Secret for reCAPTCHA v2.
+        """
+        return pulumi.get(self, "secret")
+
+    @_builtins.property
+    @pulumi.getter(name="siteKey")
+    def site_key(self) -> _builtins.str:
+        """
+        Site key for reCAPTCHA v2.
+        """
+        return pulumi.get(self, "site_key")
 
 
 @pulumi.output_type
@@ -17035,6 +17958,7 @@ class GetClientsClientResult(dict):
                  allowed_logout_urls: Sequence[_builtins.str],
                  allowed_origins: Sequence[_builtins.str],
                  app_type: _builtins.str,
+                 async_approval_notification_channels: Sequence[_builtins.str],
                  callbacks: Sequence[_builtins.str],
                  client_metadata: Mapping[str, _builtins.str],
                  client_secret: _builtins.str,
@@ -17057,6 +17981,7 @@ class GetClientsClientResult(dict):
         :param Sequence[_builtins.str] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
         :param Sequence[_builtins.str] allowed_origins: URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
         :param _builtins.str app_type: Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+        :param Sequence[_builtins.str] async_approval_notification_channels: List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `["guardian-push"]` if not specified.
         :param Sequence[_builtins.str] callbacks: URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
         :param Mapping[str, _builtins.str] client_metadata: Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
         :param _builtins.str description: Description of the purpose of the client.
@@ -17077,6 +18002,7 @@ class GetClientsClientResult(dict):
         pulumi.set(__self__, "allowed_logout_urls", allowed_logout_urls)
         pulumi.set(__self__, "allowed_origins", allowed_origins)
         pulumi.set(__self__, "app_type", app_type)
+        pulumi.set(__self__, "async_approval_notification_channels", async_approval_notification_channels)
         pulumi.set(__self__, "callbacks", callbacks)
         pulumi.set(__self__, "client_metadata", client_metadata)
         pulumi.set(__self__, "client_secret", client_secret)
@@ -17128,6 +18054,14 @@ class GetClientsClientResult(dict):
         Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
         """
         return pulumi.get(self, "app_type")
+
+    @_builtins.property
+    @pulumi.getter(name="asyncApprovalNotificationChannels")
+    def async_approval_notification_channels(self) -> Sequence[_builtins.str]:
+        """
+        List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `["guardian-push"]` if not specified.
+        """
+        return pulumi.get(self, "async_approval_notification_channels")
 
     @_builtins.property
     @pulumi.getter

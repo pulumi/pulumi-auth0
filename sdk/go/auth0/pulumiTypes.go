@@ -381,6 +381,238 @@ func (o ActionSupportedTriggersPtrOutput) Version() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type AttackProtectionBotDetection struct {
+	// List of IP addresses or ranges that will not trigger bot detection.
+	Allowlists []string `pulumi:"allowlists"`
+	// Bot detection level. Possible values: `low`, `medium`, `high`. Set to empty string to disable.
+	BotDetectionLevel *string `pulumi:"botDetectionLevel"`
+	// Challenge policy for password flow. Possible values: `never`, `whenRisky`, `always`.
+	ChallengePasswordPolicy *string `pulumi:"challengePasswordPolicy"`
+	// Challenge policy for password reset flow. Possible values: `never`, `whenRisky`, `always`.
+	ChallengePasswordResetPolicy *string `pulumi:"challengePasswordResetPolicy"`
+	// Challenge policy for passwordless flow. Possible values: `never`, `whenRisky`, `always`.
+	ChallengePasswordlessPolicy *string `pulumi:"challengePasswordlessPolicy"`
+	// Whether monitoring mode is enabled for bot detection.
+	MonitoringModeEnabled *bool `pulumi:"monitoringModeEnabled"`
+}
+
+// AttackProtectionBotDetectionInput is an input type that accepts AttackProtectionBotDetectionArgs and AttackProtectionBotDetectionOutput values.
+// You can construct a concrete instance of `AttackProtectionBotDetectionInput` via:
+//
+//	AttackProtectionBotDetectionArgs{...}
+type AttackProtectionBotDetectionInput interface {
+	pulumi.Input
+
+	ToAttackProtectionBotDetectionOutput() AttackProtectionBotDetectionOutput
+	ToAttackProtectionBotDetectionOutputWithContext(context.Context) AttackProtectionBotDetectionOutput
+}
+
+type AttackProtectionBotDetectionArgs struct {
+	// List of IP addresses or ranges that will not trigger bot detection.
+	Allowlists pulumi.StringArrayInput `pulumi:"allowlists"`
+	// Bot detection level. Possible values: `low`, `medium`, `high`. Set to empty string to disable.
+	BotDetectionLevel pulumi.StringPtrInput `pulumi:"botDetectionLevel"`
+	// Challenge policy for password flow. Possible values: `never`, `whenRisky`, `always`.
+	ChallengePasswordPolicy pulumi.StringPtrInput `pulumi:"challengePasswordPolicy"`
+	// Challenge policy for password reset flow. Possible values: `never`, `whenRisky`, `always`.
+	ChallengePasswordResetPolicy pulumi.StringPtrInput `pulumi:"challengePasswordResetPolicy"`
+	// Challenge policy for passwordless flow. Possible values: `never`, `whenRisky`, `always`.
+	ChallengePasswordlessPolicy pulumi.StringPtrInput `pulumi:"challengePasswordlessPolicy"`
+	// Whether monitoring mode is enabled for bot detection.
+	MonitoringModeEnabled pulumi.BoolPtrInput `pulumi:"monitoringModeEnabled"`
+}
+
+func (AttackProtectionBotDetectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttackProtectionBotDetection)(nil)).Elem()
+}
+
+func (i AttackProtectionBotDetectionArgs) ToAttackProtectionBotDetectionOutput() AttackProtectionBotDetectionOutput {
+	return i.ToAttackProtectionBotDetectionOutputWithContext(context.Background())
+}
+
+func (i AttackProtectionBotDetectionArgs) ToAttackProtectionBotDetectionOutputWithContext(ctx context.Context) AttackProtectionBotDetectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttackProtectionBotDetectionOutput)
+}
+
+func (i AttackProtectionBotDetectionArgs) ToAttackProtectionBotDetectionPtrOutput() AttackProtectionBotDetectionPtrOutput {
+	return i.ToAttackProtectionBotDetectionPtrOutputWithContext(context.Background())
+}
+
+func (i AttackProtectionBotDetectionArgs) ToAttackProtectionBotDetectionPtrOutputWithContext(ctx context.Context) AttackProtectionBotDetectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttackProtectionBotDetectionOutput).ToAttackProtectionBotDetectionPtrOutputWithContext(ctx)
+}
+
+// AttackProtectionBotDetectionPtrInput is an input type that accepts AttackProtectionBotDetectionArgs, AttackProtectionBotDetectionPtr and AttackProtectionBotDetectionPtrOutput values.
+// You can construct a concrete instance of `AttackProtectionBotDetectionPtrInput` via:
+//
+//	        AttackProtectionBotDetectionArgs{...}
+//
+//	or:
+//
+//	        nil
+type AttackProtectionBotDetectionPtrInput interface {
+	pulumi.Input
+
+	ToAttackProtectionBotDetectionPtrOutput() AttackProtectionBotDetectionPtrOutput
+	ToAttackProtectionBotDetectionPtrOutputWithContext(context.Context) AttackProtectionBotDetectionPtrOutput
+}
+
+type attackProtectionBotDetectionPtrType AttackProtectionBotDetectionArgs
+
+func AttackProtectionBotDetectionPtr(v *AttackProtectionBotDetectionArgs) AttackProtectionBotDetectionPtrInput {
+	return (*attackProtectionBotDetectionPtrType)(v)
+}
+
+func (*attackProtectionBotDetectionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttackProtectionBotDetection)(nil)).Elem()
+}
+
+func (i *attackProtectionBotDetectionPtrType) ToAttackProtectionBotDetectionPtrOutput() AttackProtectionBotDetectionPtrOutput {
+	return i.ToAttackProtectionBotDetectionPtrOutputWithContext(context.Background())
+}
+
+func (i *attackProtectionBotDetectionPtrType) ToAttackProtectionBotDetectionPtrOutputWithContext(ctx context.Context) AttackProtectionBotDetectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttackProtectionBotDetectionPtrOutput)
+}
+
+type AttackProtectionBotDetectionOutput struct{ *pulumi.OutputState }
+
+func (AttackProtectionBotDetectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttackProtectionBotDetection)(nil)).Elem()
+}
+
+func (o AttackProtectionBotDetectionOutput) ToAttackProtectionBotDetectionOutput() AttackProtectionBotDetectionOutput {
+	return o
+}
+
+func (o AttackProtectionBotDetectionOutput) ToAttackProtectionBotDetectionOutputWithContext(ctx context.Context) AttackProtectionBotDetectionOutput {
+	return o
+}
+
+func (o AttackProtectionBotDetectionOutput) ToAttackProtectionBotDetectionPtrOutput() AttackProtectionBotDetectionPtrOutput {
+	return o.ToAttackProtectionBotDetectionPtrOutputWithContext(context.Background())
+}
+
+func (o AttackProtectionBotDetectionOutput) ToAttackProtectionBotDetectionPtrOutputWithContext(ctx context.Context) AttackProtectionBotDetectionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AttackProtectionBotDetection) *AttackProtectionBotDetection {
+		return &v
+	}).(AttackProtectionBotDetectionPtrOutput)
+}
+
+// List of IP addresses or ranges that will not trigger bot detection.
+func (o AttackProtectionBotDetectionOutput) Allowlists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AttackProtectionBotDetection) []string { return v.Allowlists }).(pulumi.StringArrayOutput)
+}
+
+// Bot detection level. Possible values: `low`, `medium`, `high`. Set to empty string to disable.
+func (o AttackProtectionBotDetectionOutput) BotDetectionLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AttackProtectionBotDetection) *string { return v.BotDetectionLevel }).(pulumi.StringPtrOutput)
+}
+
+// Challenge policy for password flow. Possible values: `never`, `whenRisky`, `always`.
+func (o AttackProtectionBotDetectionOutput) ChallengePasswordPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AttackProtectionBotDetection) *string { return v.ChallengePasswordPolicy }).(pulumi.StringPtrOutput)
+}
+
+// Challenge policy for password reset flow. Possible values: `never`, `whenRisky`, `always`.
+func (o AttackProtectionBotDetectionOutput) ChallengePasswordResetPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AttackProtectionBotDetection) *string { return v.ChallengePasswordResetPolicy }).(pulumi.StringPtrOutput)
+}
+
+// Challenge policy for passwordless flow. Possible values: `never`, `whenRisky`, `always`.
+func (o AttackProtectionBotDetectionOutput) ChallengePasswordlessPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AttackProtectionBotDetection) *string { return v.ChallengePasswordlessPolicy }).(pulumi.StringPtrOutput)
+}
+
+// Whether monitoring mode is enabled for bot detection.
+func (o AttackProtectionBotDetectionOutput) MonitoringModeEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AttackProtectionBotDetection) *bool { return v.MonitoringModeEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type AttackProtectionBotDetectionPtrOutput struct{ *pulumi.OutputState }
+
+func (AttackProtectionBotDetectionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttackProtectionBotDetection)(nil)).Elem()
+}
+
+func (o AttackProtectionBotDetectionPtrOutput) ToAttackProtectionBotDetectionPtrOutput() AttackProtectionBotDetectionPtrOutput {
+	return o
+}
+
+func (o AttackProtectionBotDetectionPtrOutput) ToAttackProtectionBotDetectionPtrOutputWithContext(ctx context.Context) AttackProtectionBotDetectionPtrOutput {
+	return o
+}
+
+func (o AttackProtectionBotDetectionPtrOutput) Elem() AttackProtectionBotDetectionOutput {
+	return o.ApplyT(func(v *AttackProtectionBotDetection) AttackProtectionBotDetection {
+		if v != nil {
+			return *v
+		}
+		var ret AttackProtectionBotDetection
+		return ret
+	}).(AttackProtectionBotDetectionOutput)
+}
+
+// List of IP addresses or ranges that will not trigger bot detection.
+func (o AttackProtectionBotDetectionPtrOutput) Allowlists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AttackProtectionBotDetection) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Allowlists
+	}).(pulumi.StringArrayOutput)
+}
+
+// Bot detection level. Possible values: `low`, `medium`, `high`. Set to empty string to disable.
+func (o AttackProtectionBotDetectionPtrOutput) BotDetectionLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AttackProtectionBotDetection) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BotDetectionLevel
+	}).(pulumi.StringPtrOutput)
+}
+
+// Challenge policy for password flow. Possible values: `never`, `whenRisky`, `always`.
+func (o AttackProtectionBotDetectionPtrOutput) ChallengePasswordPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AttackProtectionBotDetection) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ChallengePasswordPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Challenge policy for password reset flow. Possible values: `never`, `whenRisky`, `always`.
+func (o AttackProtectionBotDetectionPtrOutput) ChallengePasswordResetPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AttackProtectionBotDetection) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ChallengePasswordResetPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Challenge policy for passwordless flow. Possible values: `never`, `whenRisky`, `always`.
+func (o AttackProtectionBotDetectionPtrOutput) ChallengePasswordlessPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AttackProtectionBotDetection) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ChallengePasswordlessPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether monitoring mode is enabled for bot detection.
+func (o AttackProtectionBotDetectionPtrOutput) MonitoringModeEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AttackProtectionBotDetection) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.MonitoringModeEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 type AttackProtectionBreachedPasswordDetection struct {
 	// When `adminNotification` is enabled within the `shields` property, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
 	AdminNotificationFrequencies []string `pulumi:"adminNotificationFrequencies"`
@@ -1102,6 +1334,1252 @@ func (o AttackProtectionBruteForceProtectionPtrOutput) Shields() pulumi.StringAr
 		}
 		return v.Shields
 	}).(pulumi.StringArrayOutput)
+}
+
+type AttackProtectionCaptcha struct {
+	// Active CAPTCHA provider ID. Set to empty string to disable CAPTCHA. Possible values: `recaptchaV2`, `recaptchaEnterprise`, `hcaptcha`, `friendlyCaptcha`, `arkose`, `authChallenge`, `simpleCaptcha`.
+	ActiveProviderId *string `pulumi:"activeProviderId"`
+	// Configuration for Arkose Labs.
+	Arkose *AttackProtectionCaptchaArkose `pulumi:"arkose"`
+	// Configuration for Auth0's Auth Challenge.
+	AuthChallenge *AttackProtectionCaptchaAuthChallenge `pulumi:"authChallenge"`
+	// Configuration for Friendly Captcha.
+	FriendlyCaptcha *AttackProtectionCaptchaFriendlyCaptcha `pulumi:"friendlyCaptcha"`
+	// Configuration for hCaptcha.
+	Hcaptcha *AttackProtectionCaptchaHcaptcha `pulumi:"hcaptcha"`
+	// Configuration for Google reCAPTCHA Enterprise.
+	RecaptchaEnterprise *AttackProtectionCaptchaRecaptchaEnterprise `pulumi:"recaptchaEnterprise"`
+	// Configuration for Google reCAPTCHA v2.
+	RecaptchaV2 *AttackProtectionCaptchaRecaptchaV2 `pulumi:"recaptchaV2"`
+}
+
+// AttackProtectionCaptchaInput is an input type that accepts AttackProtectionCaptchaArgs and AttackProtectionCaptchaOutput values.
+// You can construct a concrete instance of `AttackProtectionCaptchaInput` via:
+//
+//	AttackProtectionCaptchaArgs{...}
+type AttackProtectionCaptchaInput interface {
+	pulumi.Input
+
+	ToAttackProtectionCaptchaOutput() AttackProtectionCaptchaOutput
+	ToAttackProtectionCaptchaOutputWithContext(context.Context) AttackProtectionCaptchaOutput
+}
+
+type AttackProtectionCaptchaArgs struct {
+	// Active CAPTCHA provider ID. Set to empty string to disable CAPTCHA. Possible values: `recaptchaV2`, `recaptchaEnterprise`, `hcaptcha`, `friendlyCaptcha`, `arkose`, `authChallenge`, `simpleCaptcha`.
+	ActiveProviderId pulumi.StringPtrInput `pulumi:"activeProviderId"`
+	// Configuration for Arkose Labs.
+	Arkose AttackProtectionCaptchaArkosePtrInput `pulumi:"arkose"`
+	// Configuration for Auth0's Auth Challenge.
+	AuthChallenge AttackProtectionCaptchaAuthChallengePtrInput `pulumi:"authChallenge"`
+	// Configuration for Friendly Captcha.
+	FriendlyCaptcha AttackProtectionCaptchaFriendlyCaptchaPtrInput `pulumi:"friendlyCaptcha"`
+	// Configuration for hCaptcha.
+	Hcaptcha AttackProtectionCaptchaHcaptchaPtrInput `pulumi:"hcaptcha"`
+	// Configuration for Google reCAPTCHA Enterprise.
+	RecaptchaEnterprise AttackProtectionCaptchaRecaptchaEnterprisePtrInput `pulumi:"recaptchaEnterprise"`
+	// Configuration for Google reCAPTCHA v2.
+	RecaptchaV2 AttackProtectionCaptchaRecaptchaV2PtrInput `pulumi:"recaptchaV2"`
+}
+
+func (AttackProtectionCaptchaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttackProtectionCaptcha)(nil)).Elem()
+}
+
+func (i AttackProtectionCaptchaArgs) ToAttackProtectionCaptchaOutput() AttackProtectionCaptchaOutput {
+	return i.ToAttackProtectionCaptchaOutputWithContext(context.Background())
+}
+
+func (i AttackProtectionCaptchaArgs) ToAttackProtectionCaptchaOutputWithContext(ctx context.Context) AttackProtectionCaptchaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttackProtectionCaptchaOutput)
+}
+
+func (i AttackProtectionCaptchaArgs) ToAttackProtectionCaptchaPtrOutput() AttackProtectionCaptchaPtrOutput {
+	return i.ToAttackProtectionCaptchaPtrOutputWithContext(context.Background())
+}
+
+func (i AttackProtectionCaptchaArgs) ToAttackProtectionCaptchaPtrOutputWithContext(ctx context.Context) AttackProtectionCaptchaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttackProtectionCaptchaOutput).ToAttackProtectionCaptchaPtrOutputWithContext(ctx)
+}
+
+// AttackProtectionCaptchaPtrInput is an input type that accepts AttackProtectionCaptchaArgs, AttackProtectionCaptchaPtr and AttackProtectionCaptchaPtrOutput values.
+// You can construct a concrete instance of `AttackProtectionCaptchaPtrInput` via:
+//
+//	        AttackProtectionCaptchaArgs{...}
+//
+//	or:
+//
+//	        nil
+type AttackProtectionCaptchaPtrInput interface {
+	pulumi.Input
+
+	ToAttackProtectionCaptchaPtrOutput() AttackProtectionCaptchaPtrOutput
+	ToAttackProtectionCaptchaPtrOutputWithContext(context.Context) AttackProtectionCaptchaPtrOutput
+}
+
+type attackProtectionCaptchaPtrType AttackProtectionCaptchaArgs
+
+func AttackProtectionCaptchaPtr(v *AttackProtectionCaptchaArgs) AttackProtectionCaptchaPtrInput {
+	return (*attackProtectionCaptchaPtrType)(v)
+}
+
+func (*attackProtectionCaptchaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttackProtectionCaptcha)(nil)).Elem()
+}
+
+func (i *attackProtectionCaptchaPtrType) ToAttackProtectionCaptchaPtrOutput() AttackProtectionCaptchaPtrOutput {
+	return i.ToAttackProtectionCaptchaPtrOutputWithContext(context.Background())
+}
+
+func (i *attackProtectionCaptchaPtrType) ToAttackProtectionCaptchaPtrOutputWithContext(ctx context.Context) AttackProtectionCaptchaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttackProtectionCaptchaPtrOutput)
+}
+
+type AttackProtectionCaptchaOutput struct{ *pulumi.OutputState }
+
+func (AttackProtectionCaptchaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttackProtectionCaptcha)(nil)).Elem()
+}
+
+func (o AttackProtectionCaptchaOutput) ToAttackProtectionCaptchaOutput() AttackProtectionCaptchaOutput {
+	return o
+}
+
+func (o AttackProtectionCaptchaOutput) ToAttackProtectionCaptchaOutputWithContext(ctx context.Context) AttackProtectionCaptchaOutput {
+	return o
+}
+
+func (o AttackProtectionCaptchaOutput) ToAttackProtectionCaptchaPtrOutput() AttackProtectionCaptchaPtrOutput {
+	return o.ToAttackProtectionCaptchaPtrOutputWithContext(context.Background())
+}
+
+func (o AttackProtectionCaptchaOutput) ToAttackProtectionCaptchaPtrOutputWithContext(ctx context.Context) AttackProtectionCaptchaPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AttackProtectionCaptcha) *AttackProtectionCaptcha {
+		return &v
+	}).(AttackProtectionCaptchaPtrOutput)
+}
+
+// Active CAPTCHA provider ID. Set to empty string to disable CAPTCHA. Possible values: `recaptchaV2`, `recaptchaEnterprise`, `hcaptcha`, `friendlyCaptcha`, `arkose`, `authChallenge`, `simpleCaptcha`.
+func (o AttackProtectionCaptchaOutput) ActiveProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AttackProtectionCaptcha) *string { return v.ActiveProviderId }).(pulumi.StringPtrOutput)
+}
+
+// Configuration for Arkose Labs.
+func (o AttackProtectionCaptchaOutput) Arkose() AttackProtectionCaptchaArkosePtrOutput {
+	return o.ApplyT(func(v AttackProtectionCaptcha) *AttackProtectionCaptchaArkose { return v.Arkose }).(AttackProtectionCaptchaArkosePtrOutput)
+}
+
+// Configuration for Auth0's Auth Challenge.
+func (o AttackProtectionCaptchaOutput) AuthChallenge() AttackProtectionCaptchaAuthChallengePtrOutput {
+	return o.ApplyT(func(v AttackProtectionCaptcha) *AttackProtectionCaptchaAuthChallenge { return v.AuthChallenge }).(AttackProtectionCaptchaAuthChallengePtrOutput)
+}
+
+// Configuration for Friendly Captcha.
+func (o AttackProtectionCaptchaOutput) FriendlyCaptcha() AttackProtectionCaptchaFriendlyCaptchaPtrOutput {
+	return o.ApplyT(func(v AttackProtectionCaptcha) *AttackProtectionCaptchaFriendlyCaptcha { return v.FriendlyCaptcha }).(AttackProtectionCaptchaFriendlyCaptchaPtrOutput)
+}
+
+// Configuration for hCaptcha.
+func (o AttackProtectionCaptchaOutput) Hcaptcha() AttackProtectionCaptchaHcaptchaPtrOutput {
+	return o.ApplyT(func(v AttackProtectionCaptcha) *AttackProtectionCaptchaHcaptcha { return v.Hcaptcha }).(AttackProtectionCaptchaHcaptchaPtrOutput)
+}
+
+// Configuration for Google reCAPTCHA Enterprise.
+func (o AttackProtectionCaptchaOutput) RecaptchaEnterprise() AttackProtectionCaptchaRecaptchaEnterprisePtrOutput {
+	return o.ApplyT(func(v AttackProtectionCaptcha) *AttackProtectionCaptchaRecaptchaEnterprise {
+		return v.RecaptchaEnterprise
+	}).(AttackProtectionCaptchaRecaptchaEnterprisePtrOutput)
+}
+
+// Configuration for Google reCAPTCHA v2.
+func (o AttackProtectionCaptchaOutput) RecaptchaV2() AttackProtectionCaptchaRecaptchaV2PtrOutput {
+	return o.ApplyT(func(v AttackProtectionCaptcha) *AttackProtectionCaptchaRecaptchaV2 { return v.RecaptchaV2 }).(AttackProtectionCaptchaRecaptchaV2PtrOutput)
+}
+
+type AttackProtectionCaptchaPtrOutput struct{ *pulumi.OutputState }
+
+func (AttackProtectionCaptchaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttackProtectionCaptcha)(nil)).Elem()
+}
+
+func (o AttackProtectionCaptchaPtrOutput) ToAttackProtectionCaptchaPtrOutput() AttackProtectionCaptchaPtrOutput {
+	return o
+}
+
+func (o AttackProtectionCaptchaPtrOutput) ToAttackProtectionCaptchaPtrOutputWithContext(ctx context.Context) AttackProtectionCaptchaPtrOutput {
+	return o
+}
+
+func (o AttackProtectionCaptchaPtrOutput) Elem() AttackProtectionCaptchaOutput {
+	return o.ApplyT(func(v *AttackProtectionCaptcha) AttackProtectionCaptcha {
+		if v != nil {
+			return *v
+		}
+		var ret AttackProtectionCaptcha
+		return ret
+	}).(AttackProtectionCaptchaOutput)
+}
+
+// Active CAPTCHA provider ID. Set to empty string to disable CAPTCHA. Possible values: `recaptchaV2`, `recaptchaEnterprise`, `hcaptcha`, `friendlyCaptcha`, `arkose`, `authChallenge`, `simpleCaptcha`.
+func (o AttackProtectionCaptchaPtrOutput) ActiveProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AttackProtectionCaptcha) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ActiveProviderId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration for Arkose Labs.
+func (o AttackProtectionCaptchaPtrOutput) Arkose() AttackProtectionCaptchaArkosePtrOutput {
+	return o.ApplyT(func(v *AttackProtectionCaptcha) *AttackProtectionCaptchaArkose {
+		if v == nil {
+			return nil
+		}
+		return v.Arkose
+	}).(AttackProtectionCaptchaArkosePtrOutput)
+}
+
+// Configuration for Auth0's Auth Challenge.
+func (o AttackProtectionCaptchaPtrOutput) AuthChallenge() AttackProtectionCaptchaAuthChallengePtrOutput {
+	return o.ApplyT(func(v *AttackProtectionCaptcha) *AttackProtectionCaptchaAuthChallenge {
+		if v == nil {
+			return nil
+		}
+		return v.AuthChallenge
+	}).(AttackProtectionCaptchaAuthChallengePtrOutput)
+}
+
+// Configuration for Friendly Captcha.
+func (o AttackProtectionCaptchaPtrOutput) FriendlyCaptcha() AttackProtectionCaptchaFriendlyCaptchaPtrOutput {
+	return o.ApplyT(func(v *AttackProtectionCaptcha) *AttackProtectionCaptchaFriendlyCaptcha {
+		if v == nil {
+			return nil
+		}
+		return v.FriendlyCaptcha
+	}).(AttackProtectionCaptchaFriendlyCaptchaPtrOutput)
+}
+
+// Configuration for hCaptcha.
+func (o AttackProtectionCaptchaPtrOutput) Hcaptcha() AttackProtectionCaptchaHcaptchaPtrOutput {
+	return o.ApplyT(func(v *AttackProtectionCaptcha) *AttackProtectionCaptchaHcaptcha {
+		if v == nil {
+			return nil
+		}
+		return v.Hcaptcha
+	}).(AttackProtectionCaptchaHcaptchaPtrOutput)
+}
+
+// Configuration for Google reCAPTCHA Enterprise.
+func (o AttackProtectionCaptchaPtrOutput) RecaptchaEnterprise() AttackProtectionCaptchaRecaptchaEnterprisePtrOutput {
+	return o.ApplyT(func(v *AttackProtectionCaptcha) *AttackProtectionCaptchaRecaptchaEnterprise {
+		if v == nil {
+			return nil
+		}
+		return v.RecaptchaEnterprise
+	}).(AttackProtectionCaptchaRecaptchaEnterprisePtrOutput)
+}
+
+// Configuration for Google reCAPTCHA v2.
+func (o AttackProtectionCaptchaPtrOutput) RecaptchaV2() AttackProtectionCaptchaRecaptchaV2PtrOutput {
+	return o.ApplyT(func(v *AttackProtectionCaptcha) *AttackProtectionCaptchaRecaptchaV2 {
+		if v == nil {
+			return nil
+		}
+		return v.RecaptchaV2
+	}).(AttackProtectionCaptchaRecaptchaV2PtrOutput)
+}
+
+type AttackProtectionCaptchaArkose struct {
+	// Client subdomain for Arkose Labs.
+	ClientSubdomain *string `pulumi:"clientSubdomain"`
+	// Whether the captcha should fail open.
+	FailOpen *bool `pulumi:"failOpen"`
+	// Secret for Arkose Labs.
+	Secret string `pulumi:"secret"`
+	// Site key for Arkose Labs.
+	SiteKey string `pulumi:"siteKey"`
+	// Verify subdomain for Arkose Labs.
+	VerifySubdomain *string `pulumi:"verifySubdomain"`
+}
+
+// AttackProtectionCaptchaArkoseInput is an input type that accepts AttackProtectionCaptchaArkoseArgs and AttackProtectionCaptchaArkoseOutput values.
+// You can construct a concrete instance of `AttackProtectionCaptchaArkoseInput` via:
+//
+//	AttackProtectionCaptchaArkoseArgs{...}
+type AttackProtectionCaptchaArkoseInput interface {
+	pulumi.Input
+
+	ToAttackProtectionCaptchaArkoseOutput() AttackProtectionCaptchaArkoseOutput
+	ToAttackProtectionCaptchaArkoseOutputWithContext(context.Context) AttackProtectionCaptchaArkoseOutput
+}
+
+type AttackProtectionCaptchaArkoseArgs struct {
+	// Client subdomain for Arkose Labs.
+	ClientSubdomain pulumi.StringPtrInput `pulumi:"clientSubdomain"`
+	// Whether the captcha should fail open.
+	FailOpen pulumi.BoolPtrInput `pulumi:"failOpen"`
+	// Secret for Arkose Labs.
+	Secret pulumi.StringInput `pulumi:"secret"`
+	// Site key for Arkose Labs.
+	SiteKey pulumi.StringInput `pulumi:"siteKey"`
+	// Verify subdomain for Arkose Labs.
+	VerifySubdomain pulumi.StringPtrInput `pulumi:"verifySubdomain"`
+}
+
+func (AttackProtectionCaptchaArkoseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttackProtectionCaptchaArkose)(nil)).Elem()
+}
+
+func (i AttackProtectionCaptchaArkoseArgs) ToAttackProtectionCaptchaArkoseOutput() AttackProtectionCaptchaArkoseOutput {
+	return i.ToAttackProtectionCaptchaArkoseOutputWithContext(context.Background())
+}
+
+func (i AttackProtectionCaptchaArkoseArgs) ToAttackProtectionCaptchaArkoseOutputWithContext(ctx context.Context) AttackProtectionCaptchaArkoseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttackProtectionCaptchaArkoseOutput)
+}
+
+func (i AttackProtectionCaptchaArkoseArgs) ToAttackProtectionCaptchaArkosePtrOutput() AttackProtectionCaptchaArkosePtrOutput {
+	return i.ToAttackProtectionCaptchaArkosePtrOutputWithContext(context.Background())
+}
+
+func (i AttackProtectionCaptchaArkoseArgs) ToAttackProtectionCaptchaArkosePtrOutputWithContext(ctx context.Context) AttackProtectionCaptchaArkosePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttackProtectionCaptchaArkoseOutput).ToAttackProtectionCaptchaArkosePtrOutputWithContext(ctx)
+}
+
+// AttackProtectionCaptchaArkosePtrInput is an input type that accepts AttackProtectionCaptchaArkoseArgs, AttackProtectionCaptchaArkosePtr and AttackProtectionCaptchaArkosePtrOutput values.
+// You can construct a concrete instance of `AttackProtectionCaptchaArkosePtrInput` via:
+//
+//	        AttackProtectionCaptchaArkoseArgs{...}
+//
+//	or:
+//
+//	        nil
+type AttackProtectionCaptchaArkosePtrInput interface {
+	pulumi.Input
+
+	ToAttackProtectionCaptchaArkosePtrOutput() AttackProtectionCaptchaArkosePtrOutput
+	ToAttackProtectionCaptchaArkosePtrOutputWithContext(context.Context) AttackProtectionCaptchaArkosePtrOutput
+}
+
+type attackProtectionCaptchaArkosePtrType AttackProtectionCaptchaArkoseArgs
+
+func AttackProtectionCaptchaArkosePtr(v *AttackProtectionCaptchaArkoseArgs) AttackProtectionCaptchaArkosePtrInput {
+	return (*attackProtectionCaptchaArkosePtrType)(v)
+}
+
+func (*attackProtectionCaptchaArkosePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttackProtectionCaptchaArkose)(nil)).Elem()
+}
+
+func (i *attackProtectionCaptchaArkosePtrType) ToAttackProtectionCaptchaArkosePtrOutput() AttackProtectionCaptchaArkosePtrOutput {
+	return i.ToAttackProtectionCaptchaArkosePtrOutputWithContext(context.Background())
+}
+
+func (i *attackProtectionCaptchaArkosePtrType) ToAttackProtectionCaptchaArkosePtrOutputWithContext(ctx context.Context) AttackProtectionCaptchaArkosePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttackProtectionCaptchaArkosePtrOutput)
+}
+
+type AttackProtectionCaptchaArkoseOutput struct{ *pulumi.OutputState }
+
+func (AttackProtectionCaptchaArkoseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttackProtectionCaptchaArkose)(nil)).Elem()
+}
+
+func (o AttackProtectionCaptchaArkoseOutput) ToAttackProtectionCaptchaArkoseOutput() AttackProtectionCaptchaArkoseOutput {
+	return o
+}
+
+func (o AttackProtectionCaptchaArkoseOutput) ToAttackProtectionCaptchaArkoseOutputWithContext(ctx context.Context) AttackProtectionCaptchaArkoseOutput {
+	return o
+}
+
+func (o AttackProtectionCaptchaArkoseOutput) ToAttackProtectionCaptchaArkosePtrOutput() AttackProtectionCaptchaArkosePtrOutput {
+	return o.ToAttackProtectionCaptchaArkosePtrOutputWithContext(context.Background())
+}
+
+func (o AttackProtectionCaptchaArkoseOutput) ToAttackProtectionCaptchaArkosePtrOutputWithContext(ctx context.Context) AttackProtectionCaptchaArkosePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AttackProtectionCaptchaArkose) *AttackProtectionCaptchaArkose {
+		return &v
+	}).(AttackProtectionCaptchaArkosePtrOutput)
+}
+
+// Client subdomain for Arkose Labs.
+func (o AttackProtectionCaptchaArkoseOutput) ClientSubdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AttackProtectionCaptchaArkose) *string { return v.ClientSubdomain }).(pulumi.StringPtrOutput)
+}
+
+// Whether the captcha should fail open.
+func (o AttackProtectionCaptchaArkoseOutput) FailOpen() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AttackProtectionCaptchaArkose) *bool { return v.FailOpen }).(pulumi.BoolPtrOutput)
+}
+
+// Secret for Arkose Labs.
+func (o AttackProtectionCaptchaArkoseOutput) Secret() pulumi.StringOutput {
+	return o.ApplyT(func(v AttackProtectionCaptchaArkose) string { return v.Secret }).(pulumi.StringOutput)
+}
+
+// Site key for Arkose Labs.
+func (o AttackProtectionCaptchaArkoseOutput) SiteKey() pulumi.StringOutput {
+	return o.ApplyT(func(v AttackProtectionCaptchaArkose) string { return v.SiteKey }).(pulumi.StringOutput)
+}
+
+// Verify subdomain for Arkose Labs.
+func (o AttackProtectionCaptchaArkoseOutput) VerifySubdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AttackProtectionCaptchaArkose) *string { return v.VerifySubdomain }).(pulumi.StringPtrOutput)
+}
+
+type AttackProtectionCaptchaArkosePtrOutput struct{ *pulumi.OutputState }
+
+func (AttackProtectionCaptchaArkosePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttackProtectionCaptchaArkose)(nil)).Elem()
+}
+
+func (o AttackProtectionCaptchaArkosePtrOutput) ToAttackProtectionCaptchaArkosePtrOutput() AttackProtectionCaptchaArkosePtrOutput {
+	return o
+}
+
+func (o AttackProtectionCaptchaArkosePtrOutput) ToAttackProtectionCaptchaArkosePtrOutputWithContext(ctx context.Context) AttackProtectionCaptchaArkosePtrOutput {
+	return o
+}
+
+func (o AttackProtectionCaptchaArkosePtrOutput) Elem() AttackProtectionCaptchaArkoseOutput {
+	return o.ApplyT(func(v *AttackProtectionCaptchaArkose) AttackProtectionCaptchaArkose {
+		if v != nil {
+			return *v
+		}
+		var ret AttackProtectionCaptchaArkose
+		return ret
+	}).(AttackProtectionCaptchaArkoseOutput)
+}
+
+// Client subdomain for Arkose Labs.
+func (o AttackProtectionCaptchaArkosePtrOutput) ClientSubdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AttackProtectionCaptchaArkose) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientSubdomain
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether the captcha should fail open.
+func (o AttackProtectionCaptchaArkosePtrOutput) FailOpen() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AttackProtectionCaptchaArkose) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.FailOpen
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Secret for Arkose Labs.
+func (o AttackProtectionCaptchaArkosePtrOutput) Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AttackProtectionCaptchaArkose) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Secret
+	}).(pulumi.StringPtrOutput)
+}
+
+// Site key for Arkose Labs.
+func (o AttackProtectionCaptchaArkosePtrOutput) SiteKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AttackProtectionCaptchaArkose) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SiteKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Verify subdomain for Arkose Labs.
+func (o AttackProtectionCaptchaArkosePtrOutput) VerifySubdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AttackProtectionCaptchaArkose) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VerifySubdomain
+	}).(pulumi.StringPtrOutput)
+}
+
+type AttackProtectionCaptchaAuthChallenge struct {
+	// Whether the auth challenge should fail open.
+	FailOpen *bool `pulumi:"failOpen"`
+}
+
+// AttackProtectionCaptchaAuthChallengeInput is an input type that accepts AttackProtectionCaptchaAuthChallengeArgs and AttackProtectionCaptchaAuthChallengeOutput values.
+// You can construct a concrete instance of `AttackProtectionCaptchaAuthChallengeInput` via:
+//
+//	AttackProtectionCaptchaAuthChallengeArgs{...}
+type AttackProtectionCaptchaAuthChallengeInput interface {
+	pulumi.Input
+
+	ToAttackProtectionCaptchaAuthChallengeOutput() AttackProtectionCaptchaAuthChallengeOutput
+	ToAttackProtectionCaptchaAuthChallengeOutputWithContext(context.Context) AttackProtectionCaptchaAuthChallengeOutput
+}
+
+type AttackProtectionCaptchaAuthChallengeArgs struct {
+	// Whether the auth challenge should fail open.
+	FailOpen pulumi.BoolPtrInput `pulumi:"failOpen"`
+}
+
+func (AttackProtectionCaptchaAuthChallengeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttackProtectionCaptchaAuthChallenge)(nil)).Elem()
+}
+
+func (i AttackProtectionCaptchaAuthChallengeArgs) ToAttackProtectionCaptchaAuthChallengeOutput() AttackProtectionCaptchaAuthChallengeOutput {
+	return i.ToAttackProtectionCaptchaAuthChallengeOutputWithContext(context.Background())
+}
+
+func (i AttackProtectionCaptchaAuthChallengeArgs) ToAttackProtectionCaptchaAuthChallengeOutputWithContext(ctx context.Context) AttackProtectionCaptchaAuthChallengeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttackProtectionCaptchaAuthChallengeOutput)
+}
+
+func (i AttackProtectionCaptchaAuthChallengeArgs) ToAttackProtectionCaptchaAuthChallengePtrOutput() AttackProtectionCaptchaAuthChallengePtrOutput {
+	return i.ToAttackProtectionCaptchaAuthChallengePtrOutputWithContext(context.Background())
+}
+
+func (i AttackProtectionCaptchaAuthChallengeArgs) ToAttackProtectionCaptchaAuthChallengePtrOutputWithContext(ctx context.Context) AttackProtectionCaptchaAuthChallengePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttackProtectionCaptchaAuthChallengeOutput).ToAttackProtectionCaptchaAuthChallengePtrOutputWithContext(ctx)
+}
+
+// AttackProtectionCaptchaAuthChallengePtrInput is an input type that accepts AttackProtectionCaptchaAuthChallengeArgs, AttackProtectionCaptchaAuthChallengePtr and AttackProtectionCaptchaAuthChallengePtrOutput values.
+// You can construct a concrete instance of `AttackProtectionCaptchaAuthChallengePtrInput` via:
+//
+//	        AttackProtectionCaptchaAuthChallengeArgs{...}
+//
+//	or:
+//
+//	        nil
+type AttackProtectionCaptchaAuthChallengePtrInput interface {
+	pulumi.Input
+
+	ToAttackProtectionCaptchaAuthChallengePtrOutput() AttackProtectionCaptchaAuthChallengePtrOutput
+	ToAttackProtectionCaptchaAuthChallengePtrOutputWithContext(context.Context) AttackProtectionCaptchaAuthChallengePtrOutput
+}
+
+type attackProtectionCaptchaAuthChallengePtrType AttackProtectionCaptchaAuthChallengeArgs
+
+func AttackProtectionCaptchaAuthChallengePtr(v *AttackProtectionCaptchaAuthChallengeArgs) AttackProtectionCaptchaAuthChallengePtrInput {
+	return (*attackProtectionCaptchaAuthChallengePtrType)(v)
+}
+
+func (*attackProtectionCaptchaAuthChallengePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttackProtectionCaptchaAuthChallenge)(nil)).Elem()
+}
+
+func (i *attackProtectionCaptchaAuthChallengePtrType) ToAttackProtectionCaptchaAuthChallengePtrOutput() AttackProtectionCaptchaAuthChallengePtrOutput {
+	return i.ToAttackProtectionCaptchaAuthChallengePtrOutputWithContext(context.Background())
+}
+
+func (i *attackProtectionCaptchaAuthChallengePtrType) ToAttackProtectionCaptchaAuthChallengePtrOutputWithContext(ctx context.Context) AttackProtectionCaptchaAuthChallengePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttackProtectionCaptchaAuthChallengePtrOutput)
+}
+
+type AttackProtectionCaptchaAuthChallengeOutput struct{ *pulumi.OutputState }
+
+func (AttackProtectionCaptchaAuthChallengeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttackProtectionCaptchaAuthChallenge)(nil)).Elem()
+}
+
+func (o AttackProtectionCaptchaAuthChallengeOutput) ToAttackProtectionCaptchaAuthChallengeOutput() AttackProtectionCaptchaAuthChallengeOutput {
+	return o
+}
+
+func (o AttackProtectionCaptchaAuthChallengeOutput) ToAttackProtectionCaptchaAuthChallengeOutputWithContext(ctx context.Context) AttackProtectionCaptchaAuthChallengeOutput {
+	return o
+}
+
+func (o AttackProtectionCaptchaAuthChallengeOutput) ToAttackProtectionCaptchaAuthChallengePtrOutput() AttackProtectionCaptchaAuthChallengePtrOutput {
+	return o.ToAttackProtectionCaptchaAuthChallengePtrOutputWithContext(context.Background())
+}
+
+func (o AttackProtectionCaptchaAuthChallengeOutput) ToAttackProtectionCaptchaAuthChallengePtrOutputWithContext(ctx context.Context) AttackProtectionCaptchaAuthChallengePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AttackProtectionCaptchaAuthChallenge) *AttackProtectionCaptchaAuthChallenge {
+		return &v
+	}).(AttackProtectionCaptchaAuthChallengePtrOutput)
+}
+
+// Whether the auth challenge should fail open.
+func (o AttackProtectionCaptchaAuthChallengeOutput) FailOpen() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AttackProtectionCaptchaAuthChallenge) *bool { return v.FailOpen }).(pulumi.BoolPtrOutput)
+}
+
+type AttackProtectionCaptchaAuthChallengePtrOutput struct{ *pulumi.OutputState }
+
+func (AttackProtectionCaptchaAuthChallengePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttackProtectionCaptchaAuthChallenge)(nil)).Elem()
+}
+
+func (o AttackProtectionCaptchaAuthChallengePtrOutput) ToAttackProtectionCaptchaAuthChallengePtrOutput() AttackProtectionCaptchaAuthChallengePtrOutput {
+	return o
+}
+
+func (o AttackProtectionCaptchaAuthChallengePtrOutput) ToAttackProtectionCaptchaAuthChallengePtrOutputWithContext(ctx context.Context) AttackProtectionCaptchaAuthChallengePtrOutput {
+	return o
+}
+
+func (o AttackProtectionCaptchaAuthChallengePtrOutput) Elem() AttackProtectionCaptchaAuthChallengeOutput {
+	return o.ApplyT(func(v *AttackProtectionCaptchaAuthChallenge) AttackProtectionCaptchaAuthChallenge {
+		if v != nil {
+			return *v
+		}
+		var ret AttackProtectionCaptchaAuthChallenge
+		return ret
+	}).(AttackProtectionCaptchaAuthChallengeOutput)
+}
+
+// Whether the auth challenge should fail open.
+func (o AttackProtectionCaptchaAuthChallengePtrOutput) FailOpen() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AttackProtectionCaptchaAuthChallenge) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.FailOpen
+	}).(pulumi.BoolPtrOutput)
+}
+
+type AttackProtectionCaptchaFriendlyCaptcha struct {
+	// Secret for Friendly Captcha.
+	Secret string `pulumi:"secret"`
+	// Site key for Friendly Captcha.
+	SiteKey string `pulumi:"siteKey"`
+}
+
+// AttackProtectionCaptchaFriendlyCaptchaInput is an input type that accepts AttackProtectionCaptchaFriendlyCaptchaArgs and AttackProtectionCaptchaFriendlyCaptchaOutput values.
+// You can construct a concrete instance of `AttackProtectionCaptchaFriendlyCaptchaInput` via:
+//
+//	AttackProtectionCaptchaFriendlyCaptchaArgs{...}
+type AttackProtectionCaptchaFriendlyCaptchaInput interface {
+	pulumi.Input
+
+	ToAttackProtectionCaptchaFriendlyCaptchaOutput() AttackProtectionCaptchaFriendlyCaptchaOutput
+	ToAttackProtectionCaptchaFriendlyCaptchaOutputWithContext(context.Context) AttackProtectionCaptchaFriendlyCaptchaOutput
+}
+
+type AttackProtectionCaptchaFriendlyCaptchaArgs struct {
+	// Secret for Friendly Captcha.
+	Secret pulumi.StringInput `pulumi:"secret"`
+	// Site key for Friendly Captcha.
+	SiteKey pulumi.StringInput `pulumi:"siteKey"`
+}
+
+func (AttackProtectionCaptchaFriendlyCaptchaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttackProtectionCaptchaFriendlyCaptcha)(nil)).Elem()
+}
+
+func (i AttackProtectionCaptchaFriendlyCaptchaArgs) ToAttackProtectionCaptchaFriendlyCaptchaOutput() AttackProtectionCaptchaFriendlyCaptchaOutput {
+	return i.ToAttackProtectionCaptchaFriendlyCaptchaOutputWithContext(context.Background())
+}
+
+func (i AttackProtectionCaptchaFriendlyCaptchaArgs) ToAttackProtectionCaptchaFriendlyCaptchaOutputWithContext(ctx context.Context) AttackProtectionCaptchaFriendlyCaptchaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttackProtectionCaptchaFriendlyCaptchaOutput)
+}
+
+func (i AttackProtectionCaptchaFriendlyCaptchaArgs) ToAttackProtectionCaptchaFriendlyCaptchaPtrOutput() AttackProtectionCaptchaFriendlyCaptchaPtrOutput {
+	return i.ToAttackProtectionCaptchaFriendlyCaptchaPtrOutputWithContext(context.Background())
+}
+
+func (i AttackProtectionCaptchaFriendlyCaptchaArgs) ToAttackProtectionCaptchaFriendlyCaptchaPtrOutputWithContext(ctx context.Context) AttackProtectionCaptchaFriendlyCaptchaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttackProtectionCaptchaFriendlyCaptchaOutput).ToAttackProtectionCaptchaFriendlyCaptchaPtrOutputWithContext(ctx)
+}
+
+// AttackProtectionCaptchaFriendlyCaptchaPtrInput is an input type that accepts AttackProtectionCaptchaFriendlyCaptchaArgs, AttackProtectionCaptchaFriendlyCaptchaPtr and AttackProtectionCaptchaFriendlyCaptchaPtrOutput values.
+// You can construct a concrete instance of `AttackProtectionCaptchaFriendlyCaptchaPtrInput` via:
+//
+//	        AttackProtectionCaptchaFriendlyCaptchaArgs{...}
+//
+//	or:
+//
+//	        nil
+type AttackProtectionCaptchaFriendlyCaptchaPtrInput interface {
+	pulumi.Input
+
+	ToAttackProtectionCaptchaFriendlyCaptchaPtrOutput() AttackProtectionCaptchaFriendlyCaptchaPtrOutput
+	ToAttackProtectionCaptchaFriendlyCaptchaPtrOutputWithContext(context.Context) AttackProtectionCaptchaFriendlyCaptchaPtrOutput
+}
+
+type attackProtectionCaptchaFriendlyCaptchaPtrType AttackProtectionCaptchaFriendlyCaptchaArgs
+
+func AttackProtectionCaptchaFriendlyCaptchaPtr(v *AttackProtectionCaptchaFriendlyCaptchaArgs) AttackProtectionCaptchaFriendlyCaptchaPtrInput {
+	return (*attackProtectionCaptchaFriendlyCaptchaPtrType)(v)
+}
+
+func (*attackProtectionCaptchaFriendlyCaptchaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttackProtectionCaptchaFriendlyCaptcha)(nil)).Elem()
+}
+
+func (i *attackProtectionCaptchaFriendlyCaptchaPtrType) ToAttackProtectionCaptchaFriendlyCaptchaPtrOutput() AttackProtectionCaptchaFriendlyCaptchaPtrOutput {
+	return i.ToAttackProtectionCaptchaFriendlyCaptchaPtrOutputWithContext(context.Background())
+}
+
+func (i *attackProtectionCaptchaFriendlyCaptchaPtrType) ToAttackProtectionCaptchaFriendlyCaptchaPtrOutputWithContext(ctx context.Context) AttackProtectionCaptchaFriendlyCaptchaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttackProtectionCaptchaFriendlyCaptchaPtrOutput)
+}
+
+type AttackProtectionCaptchaFriendlyCaptchaOutput struct{ *pulumi.OutputState }
+
+func (AttackProtectionCaptchaFriendlyCaptchaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttackProtectionCaptchaFriendlyCaptcha)(nil)).Elem()
+}
+
+func (o AttackProtectionCaptchaFriendlyCaptchaOutput) ToAttackProtectionCaptchaFriendlyCaptchaOutput() AttackProtectionCaptchaFriendlyCaptchaOutput {
+	return o
+}
+
+func (o AttackProtectionCaptchaFriendlyCaptchaOutput) ToAttackProtectionCaptchaFriendlyCaptchaOutputWithContext(ctx context.Context) AttackProtectionCaptchaFriendlyCaptchaOutput {
+	return o
+}
+
+func (o AttackProtectionCaptchaFriendlyCaptchaOutput) ToAttackProtectionCaptchaFriendlyCaptchaPtrOutput() AttackProtectionCaptchaFriendlyCaptchaPtrOutput {
+	return o.ToAttackProtectionCaptchaFriendlyCaptchaPtrOutputWithContext(context.Background())
+}
+
+func (o AttackProtectionCaptchaFriendlyCaptchaOutput) ToAttackProtectionCaptchaFriendlyCaptchaPtrOutputWithContext(ctx context.Context) AttackProtectionCaptchaFriendlyCaptchaPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AttackProtectionCaptchaFriendlyCaptcha) *AttackProtectionCaptchaFriendlyCaptcha {
+		return &v
+	}).(AttackProtectionCaptchaFriendlyCaptchaPtrOutput)
+}
+
+// Secret for Friendly Captcha.
+func (o AttackProtectionCaptchaFriendlyCaptchaOutput) Secret() pulumi.StringOutput {
+	return o.ApplyT(func(v AttackProtectionCaptchaFriendlyCaptcha) string { return v.Secret }).(pulumi.StringOutput)
+}
+
+// Site key for Friendly Captcha.
+func (o AttackProtectionCaptchaFriendlyCaptchaOutput) SiteKey() pulumi.StringOutput {
+	return o.ApplyT(func(v AttackProtectionCaptchaFriendlyCaptcha) string { return v.SiteKey }).(pulumi.StringOutput)
+}
+
+type AttackProtectionCaptchaFriendlyCaptchaPtrOutput struct{ *pulumi.OutputState }
+
+func (AttackProtectionCaptchaFriendlyCaptchaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttackProtectionCaptchaFriendlyCaptcha)(nil)).Elem()
+}
+
+func (o AttackProtectionCaptchaFriendlyCaptchaPtrOutput) ToAttackProtectionCaptchaFriendlyCaptchaPtrOutput() AttackProtectionCaptchaFriendlyCaptchaPtrOutput {
+	return o
+}
+
+func (o AttackProtectionCaptchaFriendlyCaptchaPtrOutput) ToAttackProtectionCaptchaFriendlyCaptchaPtrOutputWithContext(ctx context.Context) AttackProtectionCaptchaFriendlyCaptchaPtrOutput {
+	return o
+}
+
+func (o AttackProtectionCaptchaFriendlyCaptchaPtrOutput) Elem() AttackProtectionCaptchaFriendlyCaptchaOutput {
+	return o.ApplyT(func(v *AttackProtectionCaptchaFriendlyCaptcha) AttackProtectionCaptchaFriendlyCaptcha {
+		if v != nil {
+			return *v
+		}
+		var ret AttackProtectionCaptchaFriendlyCaptcha
+		return ret
+	}).(AttackProtectionCaptchaFriendlyCaptchaOutput)
+}
+
+// Secret for Friendly Captcha.
+func (o AttackProtectionCaptchaFriendlyCaptchaPtrOutput) Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AttackProtectionCaptchaFriendlyCaptcha) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Secret
+	}).(pulumi.StringPtrOutput)
+}
+
+// Site key for Friendly Captcha.
+func (o AttackProtectionCaptchaFriendlyCaptchaPtrOutput) SiteKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AttackProtectionCaptchaFriendlyCaptcha) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SiteKey
+	}).(pulumi.StringPtrOutput)
+}
+
+type AttackProtectionCaptchaHcaptcha struct {
+	// Secret for hCaptcha.
+	Secret string `pulumi:"secret"`
+	// Site key for hCaptcha.
+	SiteKey string `pulumi:"siteKey"`
+}
+
+// AttackProtectionCaptchaHcaptchaInput is an input type that accepts AttackProtectionCaptchaHcaptchaArgs and AttackProtectionCaptchaHcaptchaOutput values.
+// You can construct a concrete instance of `AttackProtectionCaptchaHcaptchaInput` via:
+//
+//	AttackProtectionCaptchaHcaptchaArgs{...}
+type AttackProtectionCaptchaHcaptchaInput interface {
+	pulumi.Input
+
+	ToAttackProtectionCaptchaHcaptchaOutput() AttackProtectionCaptchaHcaptchaOutput
+	ToAttackProtectionCaptchaHcaptchaOutputWithContext(context.Context) AttackProtectionCaptchaHcaptchaOutput
+}
+
+type AttackProtectionCaptchaHcaptchaArgs struct {
+	// Secret for hCaptcha.
+	Secret pulumi.StringInput `pulumi:"secret"`
+	// Site key for hCaptcha.
+	SiteKey pulumi.StringInput `pulumi:"siteKey"`
+}
+
+func (AttackProtectionCaptchaHcaptchaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttackProtectionCaptchaHcaptcha)(nil)).Elem()
+}
+
+func (i AttackProtectionCaptchaHcaptchaArgs) ToAttackProtectionCaptchaHcaptchaOutput() AttackProtectionCaptchaHcaptchaOutput {
+	return i.ToAttackProtectionCaptchaHcaptchaOutputWithContext(context.Background())
+}
+
+func (i AttackProtectionCaptchaHcaptchaArgs) ToAttackProtectionCaptchaHcaptchaOutputWithContext(ctx context.Context) AttackProtectionCaptchaHcaptchaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttackProtectionCaptchaHcaptchaOutput)
+}
+
+func (i AttackProtectionCaptchaHcaptchaArgs) ToAttackProtectionCaptchaHcaptchaPtrOutput() AttackProtectionCaptchaHcaptchaPtrOutput {
+	return i.ToAttackProtectionCaptchaHcaptchaPtrOutputWithContext(context.Background())
+}
+
+func (i AttackProtectionCaptchaHcaptchaArgs) ToAttackProtectionCaptchaHcaptchaPtrOutputWithContext(ctx context.Context) AttackProtectionCaptchaHcaptchaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttackProtectionCaptchaHcaptchaOutput).ToAttackProtectionCaptchaHcaptchaPtrOutputWithContext(ctx)
+}
+
+// AttackProtectionCaptchaHcaptchaPtrInput is an input type that accepts AttackProtectionCaptchaHcaptchaArgs, AttackProtectionCaptchaHcaptchaPtr and AttackProtectionCaptchaHcaptchaPtrOutput values.
+// You can construct a concrete instance of `AttackProtectionCaptchaHcaptchaPtrInput` via:
+//
+//	        AttackProtectionCaptchaHcaptchaArgs{...}
+//
+//	or:
+//
+//	        nil
+type AttackProtectionCaptchaHcaptchaPtrInput interface {
+	pulumi.Input
+
+	ToAttackProtectionCaptchaHcaptchaPtrOutput() AttackProtectionCaptchaHcaptchaPtrOutput
+	ToAttackProtectionCaptchaHcaptchaPtrOutputWithContext(context.Context) AttackProtectionCaptchaHcaptchaPtrOutput
+}
+
+type attackProtectionCaptchaHcaptchaPtrType AttackProtectionCaptchaHcaptchaArgs
+
+func AttackProtectionCaptchaHcaptchaPtr(v *AttackProtectionCaptchaHcaptchaArgs) AttackProtectionCaptchaHcaptchaPtrInput {
+	return (*attackProtectionCaptchaHcaptchaPtrType)(v)
+}
+
+func (*attackProtectionCaptchaHcaptchaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttackProtectionCaptchaHcaptcha)(nil)).Elem()
+}
+
+func (i *attackProtectionCaptchaHcaptchaPtrType) ToAttackProtectionCaptchaHcaptchaPtrOutput() AttackProtectionCaptchaHcaptchaPtrOutput {
+	return i.ToAttackProtectionCaptchaHcaptchaPtrOutputWithContext(context.Background())
+}
+
+func (i *attackProtectionCaptchaHcaptchaPtrType) ToAttackProtectionCaptchaHcaptchaPtrOutputWithContext(ctx context.Context) AttackProtectionCaptchaHcaptchaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttackProtectionCaptchaHcaptchaPtrOutput)
+}
+
+type AttackProtectionCaptchaHcaptchaOutput struct{ *pulumi.OutputState }
+
+func (AttackProtectionCaptchaHcaptchaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttackProtectionCaptchaHcaptcha)(nil)).Elem()
+}
+
+func (o AttackProtectionCaptchaHcaptchaOutput) ToAttackProtectionCaptchaHcaptchaOutput() AttackProtectionCaptchaHcaptchaOutput {
+	return o
+}
+
+func (o AttackProtectionCaptchaHcaptchaOutput) ToAttackProtectionCaptchaHcaptchaOutputWithContext(ctx context.Context) AttackProtectionCaptchaHcaptchaOutput {
+	return o
+}
+
+func (o AttackProtectionCaptchaHcaptchaOutput) ToAttackProtectionCaptchaHcaptchaPtrOutput() AttackProtectionCaptchaHcaptchaPtrOutput {
+	return o.ToAttackProtectionCaptchaHcaptchaPtrOutputWithContext(context.Background())
+}
+
+func (o AttackProtectionCaptchaHcaptchaOutput) ToAttackProtectionCaptchaHcaptchaPtrOutputWithContext(ctx context.Context) AttackProtectionCaptchaHcaptchaPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AttackProtectionCaptchaHcaptcha) *AttackProtectionCaptchaHcaptcha {
+		return &v
+	}).(AttackProtectionCaptchaHcaptchaPtrOutput)
+}
+
+// Secret for hCaptcha.
+func (o AttackProtectionCaptchaHcaptchaOutput) Secret() pulumi.StringOutput {
+	return o.ApplyT(func(v AttackProtectionCaptchaHcaptcha) string { return v.Secret }).(pulumi.StringOutput)
+}
+
+// Site key for hCaptcha.
+func (o AttackProtectionCaptchaHcaptchaOutput) SiteKey() pulumi.StringOutput {
+	return o.ApplyT(func(v AttackProtectionCaptchaHcaptcha) string { return v.SiteKey }).(pulumi.StringOutput)
+}
+
+type AttackProtectionCaptchaHcaptchaPtrOutput struct{ *pulumi.OutputState }
+
+func (AttackProtectionCaptchaHcaptchaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttackProtectionCaptchaHcaptcha)(nil)).Elem()
+}
+
+func (o AttackProtectionCaptchaHcaptchaPtrOutput) ToAttackProtectionCaptchaHcaptchaPtrOutput() AttackProtectionCaptchaHcaptchaPtrOutput {
+	return o
+}
+
+func (o AttackProtectionCaptchaHcaptchaPtrOutput) ToAttackProtectionCaptchaHcaptchaPtrOutputWithContext(ctx context.Context) AttackProtectionCaptchaHcaptchaPtrOutput {
+	return o
+}
+
+func (o AttackProtectionCaptchaHcaptchaPtrOutput) Elem() AttackProtectionCaptchaHcaptchaOutput {
+	return o.ApplyT(func(v *AttackProtectionCaptchaHcaptcha) AttackProtectionCaptchaHcaptcha {
+		if v != nil {
+			return *v
+		}
+		var ret AttackProtectionCaptchaHcaptcha
+		return ret
+	}).(AttackProtectionCaptchaHcaptchaOutput)
+}
+
+// Secret for hCaptcha.
+func (o AttackProtectionCaptchaHcaptchaPtrOutput) Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AttackProtectionCaptchaHcaptcha) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Secret
+	}).(pulumi.StringPtrOutput)
+}
+
+// Site key for hCaptcha.
+func (o AttackProtectionCaptchaHcaptchaPtrOutput) SiteKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AttackProtectionCaptchaHcaptcha) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SiteKey
+	}).(pulumi.StringPtrOutput)
+}
+
+type AttackProtectionCaptchaRecaptchaEnterprise struct {
+	// API key for reCAPTCHA Enterprise.
+	ApiKey string `pulumi:"apiKey"`
+	// Project ID for reCAPTCHA Enterprise.
+	ProjectId string `pulumi:"projectId"`
+	// Site key for reCAPTCHA Enterprise.
+	SiteKey string `pulumi:"siteKey"`
+}
+
+// AttackProtectionCaptchaRecaptchaEnterpriseInput is an input type that accepts AttackProtectionCaptchaRecaptchaEnterpriseArgs and AttackProtectionCaptchaRecaptchaEnterpriseOutput values.
+// You can construct a concrete instance of `AttackProtectionCaptchaRecaptchaEnterpriseInput` via:
+//
+//	AttackProtectionCaptchaRecaptchaEnterpriseArgs{...}
+type AttackProtectionCaptchaRecaptchaEnterpriseInput interface {
+	pulumi.Input
+
+	ToAttackProtectionCaptchaRecaptchaEnterpriseOutput() AttackProtectionCaptchaRecaptchaEnterpriseOutput
+	ToAttackProtectionCaptchaRecaptchaEnterpriseOutputWithContext(context.Context) AttackProtectionCaptchaRecaptchaEnterpriseOutput
+}
+
+type AttackProtectionCaptchaRecaptchaEnterpriseArgs struct {
+	// API key for reCAPTCHA Enterprise.
+	ApiKey pulumi.StringInput `pulumi:"apiKey"`
+	// Project ID for reCAPTCHA Enterprise.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// Site key for reCAPTCHA Enterprise.
+	SiteKey pulumi.StringInput `pulumi:"siteKey"`
+}
+
+func (AttackProtectionCaptchaRecaptchaEnterpriseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttackProtectionCaptchaRecaptchaEnterprise)(nil)).Elem()
+}
+
+func (i AttackProtectionCaptchaRecaptchaEnterpriseArgs) ToAttackProtectionCaptchaRecaptchaEnterpriseOutput() AttackProtectionCaptchaRecaptchaEnterpriseOutput {
+	return i.ToAttackProtectionCaptchaRecaptchaEnterpriseOutputWithContext(context.Background())
+}
+
+func (i AttackProtectionCaptchaRecaptchaEnterpriseArgs) ToAttackProtectionCaptchaRecaptchaEnterpriseOutputWithContext(ctx context.Context) AttackProtectionCaptchaRecaptchaEnterpriseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttackProtectionCaptchaRecaptchaEnterpriseOutput)
+}
+
+func (i AttackProtectionCaptchaRecaptchaEnterpriseArgs) ToAttackProtectionCaptchaRecaptchaEnterprisePtrOutput() AttackProtectionCaptchaRecaptchaEnterprisePtrOutput {
+	return i.ToAttackProtectionCaptchaRecaptchaEnterprisePtrOutputWithContext(context.Background())
+}
+
+func (i AttackProtectionCaptchaRecaptchaEnterpriseArgs) ToAttackProtectionCaptchaRecaptchaEnterprisePtrOutputWithContext(ctx context.Context) AttackProtectionCaptchaRecaptchaEnterprisePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttackProtectionCaptchaRecaptchaEnterpriseOutput).ToAttackProtectionCaptchaRecaptchaEnterprisePtrOutputWithContext(ctx)
+}
+
+// AttackProtectionCaptchaRecaptchaEnterprisePtrInput is an input type that accepts AttackProtectionCaptchaRecaptchaEnterpriseArgs, AttackProtectionCaptchaRecaptchaEnterprisePtr and AttackProtectionCaptchaRecaptchaEnterprisePtrOutput values.
+// You can construct a concrete instance of `AttackProtectionCaptchaRecaptchaEnterprisePtrInput` via:
+//
+//	        AttackProtectionCaptchaRecaptchaEnterpriseArgs{...}
+//
+//	or:
+//
+//	        nil
+type AttackProtectionCaptchaRecaptchaEnterprisePtrInput interface {
+	pulumi.Input
+
+	ToAttackProtectionCaptchaRecaptchaEnterprisePtrOutput() AttackProtectionCaptchaRecaptchaEnterprisePtrOutput
+	ToAttackProtectionCaptchaRecaptchaEnterprisePtrOutputWithContext(context.Context) AttackProtectionCaptchaRecaptchaEnterprisePtrOutput
+}
+
+type attackProtectionCaptchaRecaptchaEnterprisePtrType AttackProtectionCaptchaRecaptchaEnterpriseArgs
+
+func AttackProtectionCaptchaRecaptchaEnterprisePtr(v *AttackProtectionCaptchaRecaptchaEnterpriseArgs) AttackProtectionCaptchaRecaptchaEnterprisePtrInput {
+	return (*attackProtectionCaptchaRecaptchaEnterprisePtrType)(v)
+}
+
+func (*attackProtectionCaptchaRecaptchaEnterprisePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttackProtectionCaptchaRecaptchaEnterprise)(nil)).Elem()
+}
+
+func (i *attackProtectionCaptchaRecaptchaEnterprisePtrType) ToAttackProtectionCaptchaRecaptchaEnterprisePtrOutput() AttackProtectionCaptchaRecaptchaEnterprisePtrOutput {
+	return i.ToAttackProtectionCaptchaRecaptchaEnterprisePtrOutputWithContext(context.Background())
+}
+
+func (i *attackProtectionCaptchaRecaptchaEnterprisePtrType) ToAttackProtectionCaptchaRecaptchaEnterprisePtrOutputWithContext(ctx context.Context) AttackProtectionCaptchaRecaptchaEnterprisePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttackProtectionCaptchaRecaptchaEnterprisePtrOutput)
+}
+
+type AttackProtectionCaptchaRecaptchaEnterpriseOutput struct{ *pulumi.OutputState }
+
+func (AttackProtectionCaptchaRecaptchaEnterpriseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttackProtectionCaptchaRecaptchaEnterprise)(nil)).Elem()
+}
+
+func (o AttackProtectionCaptchaRecaptchaEnterpriseOutput) ToAttackProtectionCaptchaRecaptchaEnterpriseOutput() AttackProtectionCaptchaRecaptchaEnterpriseOutput {
+	return o
+}
+
+func (o AttackProtectionCaptchaRecaptchaEnterpriseOutput) ToAttackProtectionCaptchaRecaptchaEnterpriseOutputWithContext(ctx context.Context) AttackProtectionCaptchaRecaptchaEnterpriseOutput {
+	return o
+}
+
+func (o AttackProtectionCaptchaRecaptchaEnterpriseOutput) ToAttackProtectionCaptchaRecaptchaEnterprisePtrOutput() AttackProtectionCaptchaRecaptchaEnterprisePtrOutput {
+	return o.ToAttackProtectionCaptchaRecaptchaEnterprisePtrOutputWithContext(context.Background())
+}
+
+func (o AttackProtectionCaptchaRecaptchaEnterpriseOutput) ToAttackProtectionCaptchaRecaptchaEnterprisePtrOutputWithContext(ctx context.Context) AttackProtectionCaptchaRecaptchaEnterprisePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AttackProtectionCaptchaRecaptchaEnterprise) *AttackProtectionCaptchaRecaptchaEnterprise {
+		return &v
+	}).(AttackProtectionCaptchaRecaptchaEnterprisePtrOutput)
+}
+
+// API key for reCAPTCHA Enterprise.
+func (o AttackProtectionCaptchaRecaptchaEnterpriseOutput) ApiKey() pulumi.StringOutput {
+	return o.ApplyT(func(v AttackProtectionCaptchaRecaptchaEnterprise) string { return v.ApiKey }).(pulumi.StringOutput)
+}
+
+// Project ID for reCAPTCHA Enterprise.
+func (o AttackProtectionCaptchaRecaptchaEnterpriseOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v AttackProtectionCaptchaRecaptchaEnterprise) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// Site key for reCAPTCHA Enterprise.
+func (o AttackProtectionCaptchaRecaptchaEnterpriseOutput) SiteKey() pulumi.StringOutput {
+	return o.ApplyT(func(v AttackProtectionCaptchaRecaptchaEnterprise) string { return v.SiteKey }).(pulumi.StringOutput)
+}
+
+type AttackProtectionCaptchaRecaptchaEnterprisePtrOutput struct{ *pulumi.OutputState }
+
+func (AttackProtectionCaptchaRecaptchaEnterprisePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttackProtectionCaptchaRecaptchaEnterprise)(nil)).Elem()
+}
+
+func (o AttackProtectionCaptchaRecaptchaEnterprisePtrOutput) ToAttackProtectionCaptchaRecaptchaEnterprisePtrOutput() AttackProtectionCaptchaRecaptchaEnterprisePtrOutput {
+	return o
+}
+
+func (o AttackProtectionCaptchaRecaptchaEnterprisePtrOutput) ToAttackProtectionCaptchaRecaptchaEnterprisePtrOutputWithContext(ctx context.Context) AttackProtectionCaptchaRecaptchaEnterprisePtrOutput {
+	return o
+}
+
+func (o AttackProtectionCaptchaRecaptchaEnterprisePtrOutput) Elem() AttackProtectionCaptchaRecaptchaEnterpriseOutput {
+	return o.ApplyT(func(v *AttackProtectionCaptchaRecaptchaEnterprise) AttackProtectionCaptchaRecaptchaEnterprise {
+		if v != nil {
+			return *v
+		}
+		var ret AttackProtectionCaptchaRecaptchaEnterprise
+		return ret
+	}).(AttackProtectionCaptchaRecaptchaEnterpriseOutput)
+}
+
+// API key for reCAPTCHA Enterprise.
+func (o AttackProtectionCaptchaRecaptchaEnterprisePtrOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AttackProtectionCaptchaRecaptchaEnterprise) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ApiKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Project ID for reCAPTCHA Enterprise.
+func (o AttackProtectionCaptchaRecaptchaEnterprisePtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AttackProtectionCaptchaRecaptchaEnterprise) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Site key for reCAPTCHA Enterprise.
+func (o AttackProtectionCaptchaRecaptchaEnterprisePtrOutput) SiteKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AttackProtectionCaptchaRecaptchaEnterprise) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SiteKey
+	}).(pulumi.StringPtrOutput)
+}
+
+type AttackProtectionCaptchaRecaptchaV2 struct {
+	// Secret for reCAPTCHA v2.
+	Secret string `pulumi:"secret"`
+	// Site key for reCAPTCHA v2.
+	SiteKey string `pulumi:"siteKey"`
+}
+
+// AttackProtectionCaptchaRecaptchaV2Input is an input type that accepts AttackProtectionCaptchaRecaptchaV2Args and AttackProtectionCaptchaRecaptchaV2Output values.
+// You can construct a concrete instance of `AttackProtectionCaptchaRecaptchaV2Input` via:
+//
+//	AttackProtectionCaptchaRecaptchaV2Args{...}
+type AttackProtectionCaptchaRecaptchaV2Input interface {
+	pulumi.Input
+
+	ToAttackProtectionCaptchaRecaptchaV2Output() AttackProtectionCaptchaRecaptchaV2Output
+	ToAttackProtectionCaptchaRecaptchaV2OutputWithContext(context.Context) AttackProtectionCaptchaRecaptchaV2Output
+}
+
+type AttackProtectionCaptchaRecaptchaV2Args struct {
+	// Secret for reCAPTCHA v2.
+	Secret pulumi.StringInput `pulumi:"secret"`
+	// Site key for reCAPTCHA v2.
+	SiteKey pulumi.StringInput `pulumi:"siteKey"`
+}
+
+func (AttackProtectionCaptchaRecaptchaV2Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttackProtectionCaptchaRecaptchaV2)(nil)).Elem()
+}
+
+func (i AttackProtectionCaptchaRecaptchaV2Args) ToAttackProtectionCaptchaRecaptchaV2Output() AttackProtectionCaptchaRecaptchaV2Output {
+	return i.ToAttackProtectionCaptchaRecaptchaV2OutputWithContext(context.Background())
+}
+
+func (i AttackProtectionCaptchaRecaptchaV2Args) ToAttackProtectionCaptchaRecaptchaV2OutputWithContext(ctx context.Context) AttackProtectionCaptchaRecaptchaV2Output {
+	return pulumi.ToOutputWithContext(ctx, i).(AttackProtectionCaptchaRecaptchaV2Output)
+}
+
+func (i AttackProtectionCaptchaRecaptchaV2Args) ToAttackProtectionCaptchaRecaptchaV2PtrOutput() AttackProtectionCaptchaRecaptchaV2PtrOutput {
+	return i.ToAttackProtectionCaptchaRecaptchaV2PtrOutputWithContext(context.Background())
+}
+
+func (i AttackProtectionCaptchaRecaptchaV2Args) ToAttackProtectionCaptchaRecaptchaV2PtrOutputWithContext(ctx context.Context) AttackProtectionCaptchaRecaptchaV2PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttackProtectionCaptchaRecaptchaV2Output).ToAttackProtectionCaptchaRecaptchaV2PtrOutputWithContext(ctx)
+}
+
+// AttackProtectionCaptchaRecaptchaV2PtrInput is an input type that accepts AttackProtectionCaptchaRecaptchaV2Args, AttackProtectionCaptchaRecaptchaV2Ptr and AttackProtectionCaptchaRecaptchaV2PtrOutput values.
+// You can construct a concrete instance of `AttackProtectionCaptchaRecaptchaV2PtrInput` via:
+//
+//	        AttackProtectionCaptchaRecaptchaV2Args{...}
+//
+//	or:
+//
+//	        nil
+type AttackProtectionCaptchaRecaptchaV2PtrInput interface {
+	pulumi.Input
+
+	ToAttackProtectionCaptchaRecaptchaV2PtrOutput() AttackProtectionCaptchaRecaptchaV2PtrOutput
+	ToAttackProtectionCaptchaRecaptchaV2PtrOutputWithContext(context.Context) AttackProtectionCaptchaRecaptchaV2PtrOutput
+}
+
+type attackProtectionCaptchaRecaptchaV2PtrType AttackProtectionCaptchaRecaptchaV2Args
+
+func AttackProtectionCaptchaRecaptchaV2Ptr(v *AttackProtectionCaptchaRecaptchaV2Args) AttackProtectionCaptchaRecaptchaV2PtrInput {
+	return (*attackProtectionCaptchaRecaptchaV2PtrType)(v)
+}
+
+func (*attackProtectionCaptchaRecaptchaV2PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttackProtectionCaptchaRecaptchaV2)(nil)).Elem()
+}
+
+func (i *attackProtectionCaptchaRecaptchaV2PtrType) ToAttackProtectionCaptchaRecaptchaV2PtrOutput() AttackProtectionCaptchaRecaptchaV2PtrOutput {
+	return i.ToAttackProtectionCaptchaRecaptchaV2PtrOutputWithContext(context.Background())
+}
+
+func (i *attackProtectionCaptchaRecaptchaV2PtrType) ToAttackProtectionCaptchaRecaptchaV2PtrOutputWithContext(ctx context.Context) AttackProtectionCaptchaRecaptchaV2PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttackProtectionCaptchaRecaptchaV2PtrOutput)
+}
+
+type AttackProtectionCaptchaRecaptchaV2Output struct{ *pulumi.OutputState }
+
+func (AttackProtectionCaptchaRecaptchaV2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttackProtectionCaptchaRecaptchaV2)(nil)).Elem()
+}
+
+func (o AttackProtectionCaptchaRecaptchaV2Output) ToAttackProtectionCaptchaRecaptchaV2Output() AttackProtectionCaptchaRecaptchaV2Output {
+	return o
+}
+
+func (o AttackProtectionCaptchaRecaptchaV2Output) ToAttackProtectionCaptchaRecaptchaV2OutputWithContext(ctx context.Context) AttackProtectionCaptchaRecaptchaV2Output {
+	return o
+}
+
+func (o AttackProtectionCaptchaRecaptchaV2Output) ToAttackProtectionCaptchaRecaptchaV2PtrOutput() AttackProtectionCaptchaRecaptchaV2PtrOutput {
+	return o.ToAttackProtectionCaptchaRecaptchaV2PtrOutputWithContext(context.Background())
+}
+
+func (o AttackProtectionCaptchaRecaptchaV2Output) ToAttackProtectionCaptchaRecaptchaV2PtrOutputWithContext(ctx context.Context) AttackProtectionCaptchaRecaptchaV2PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AttackProtectionCaptchaRecaptchaV2) *AttackProtectionCaptchaRecaptchaV2 {
+		return &v
+	}).(AttackProtectionCaptchaRecaptchaV2PtrOutput)
+}
+
+// Secret for reCAPTCHA v2.
+func (o AttackProtectionCaptchaRecaptchaV2Output) Secret() pulumi.StringOutput {
+	return o.ApplyT(func(v AttackProtectionCaptchaRecaptchaV2) string { return v.Secret }).(pulumi.StringOutput)
+}
+
+// Site key for reCAPTCHA v2.
+func (o AttackProtectionCaptchaRecaptchaV2Output) SiteKey() pulumi.StringOutput {
+	return o.ApplyT(func(v AttackProtectionCaptchaRecaptchaV2) string { return v.SiteKey }).(pulumi.StringOutput)
+}
+
+type AttackProtectionCaptchaRecaptchaV2PtrOutput struct{ *pulumi.OutputState }
+
+func (AttackProtectionCaptchaRecaptchaV2PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttackProtectionCaptchaRecaptchaV2)(nil)).Elem()
+}
+
+func (o AttackProtectionCaptchaRecaptchaV2PtrOutput) ToAttackProtectionCaptchaRecaptchaV2PtrOutput() AttackProtectionCaptchaRecaptchaV2PtrOutput {
+	return o
+}
+
+func (o AttackProtectionCaptchaRecaptchaV2PtrOutput) ToAttackProtectionCaptchaRecaptchaV2PtrOutputWithContext(ctx context.Context) AttackProtectionCaptchaRecaptchaV2PtrOutput {
+	return o
+}
+
+func (o AttackProtectionCaptchaRecaptchaV2PtrOutput) Elem() AttackProtectionCaptchaRecaptchaV2Output {
+	return o.ApplyT(func(v *AttackProtectionCaptchaRecaptchaV2) AttackProtectionCaptchaRecaptchaV2 {
+		if v != nil {
+			return *v
+		}
+		var ret AttackProtectionCaptchaRecaptchaV2
+		return ret
+	}).(AttackProtectionCaptchaRecaptchaV2Output)
+}
+
+// Secret for reCAPTCHA v2.
+func (o AttackProtectionCaptchaRecaptchaV2PtrOutput) Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AttackProtectionCaptchaRecaptchaV2) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Secret
+	}).(pulumi.StringPtrOutput)
+}
+
+// Site key for reCAPTCHA v2.
+func (o AttackProtectionCaptchaRecaptchaV2PtrOutput) SiteKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AttackProtectionCaptchaRecaptchaV2) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SiteKey
+	}).(pulumi.StringPtrOutput)
 }
 
 type AttackProtectionSuspiciousIpThrottling struct {
@@ -34699,6 +36177,148 @@ func (o GetActionSupportedTriggerArrayOutput) Index(i pulumi.IntInput) GetAction
 	}).(GetActionSupportedTriggerOutput)
 }
 
+type GetAttackProtectionBotDetection struct {
+	// List of IP addresses or ranges that will not trigger bot detection.
+	Allowlists []string `pulumi:"allowlists"`
+	// Bot detection level. Possible values: `low`, `medium`, `high`. Set to empty string to disable.
+	BotDetectionLevel string `pulumi:"botDetectionLevel"`
+	// Challenge policy for password flow. Possible values: `never`, `whenRisky`, `always`.
+	ChallengePasswordPolicy string `pulumi:"challengePasswordPolicy"`
+	// Challenge policy for password reset flow. Possible values: `never`, `whenRisky`, `always`.
+	ChallengePasswordResetPolicy string `pulumi:"challengePasswordResetPolicy"`
+	// Challenge policy for passwordless flow. Possible values: `never`, `whenRisky`, `always`.
+	ChallengePasswordlessPolicy string `pulumi:"challengePasswordlessPolicy"`
+	// Whether monitoring mode is enabled for bot detection.
+	MonitoringModeEnabled bool `pulumi:"monitoringModeEnabled"`
+}
+
+// GetAttackProtectionBotDetectionInput is an input type that accepts GetAttackProtectionBotDetectionArgs and GetAttackProtectionBotDetectionOutput values.
+// You can construct a concrete instance of `GetAttackProtectionBotDetectionInput` via:
+//
+//	GetAttackProtectionBotDetectionArgs{...}
+type GetAttackProtectionBotDetectionInput interface {
+	pulumi.Input
+
+	ToGetAttackProtectionBotDetectionOutput() GetAttackProtectionBotDetectionOutput
+	ToGetAttackProtectionBotDetectionOutputWithContext(context.Context) GetAttackProtectionBotDetectionOutput
+}
+
+type GetAttackProtectionBotDetectionArgs struct {
+	// List of IP addresses or ranges that will not trigger bot detection.
+	Allowlists pulumi.StringArrayInput `pulumi:"allowlists"`
+	// Bot detection level. Possible values: `low`, `medium`, `high`. Set to empty string to disable.
+	BotDetectionLevel pulumi.StringInput `pulumi:"botDetectionLevel"`
+	// Challenge policy for password flow. Possible values: `never`, `whenRisky`, `always`.
+	ChallengePasswordPolicy pulumi.StringInput `pulumi:"challengePasswordPolicy"`
+	// Challenge policy for password reset flow. Possible values: `never`, `whenRisky`, `always`.
+	ChallengePasswordResetPolicy pulumi.StringInput `pulumi:"challengePasswordResetPolicy"`
+	// Challenge policy for passwordless flow. Possible values: `never`, `whenRisky`, `always`.
+	ChallengePasswordlessPolicy pulumi.StringInput `pulumi:"challengePasswordlessPolicy"`
+	// Whether monitoring mode is enabled for bot detection.
+	MonitoringModeEnabled pulumi.BoolInput `pulumi:"monitoringModeEnabled"`
+}
+
+func (GetAttackProtectionBotDetectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAttackProtectionBotDetection)(nil)).Elem()
+}
+
+func (i GetAttackProtectionBotDetectionArgs) ToGetAttackProtectionBotDetectionOutput() GetAttackProtectionBotDetectionOutput {
+	return i.ToGetAttackProtectionBotDetectionOutputWithContext(context.Background())
+}
+
+func (i GetAttackProtectionBotDetectionArgs) ToGetAttackProtectionBotDetectionOutputWithContext(ctx context.Context) GetAttackProtectionBotDetectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAttackProtectionBotDetectionOutput)
+}
+
+// GetAttackProtectionBotDetectionArrayInput is an input type that accepts GetAttackProtectionBotDetectionArray and GetAttackProtectionBotDetectionArrayOutput values.
+// You can construct a concrete instance of `GetAttackProtectionBotDetectionArrayInput` via:
+//
+//	GetAttackProtectionBotDetectionArray{ GetAttackProtectionBotDetectionArgs{...} }
+type GetAttackProtectionBotDetectionArrayInput interface {
+	pulumi.Input
+
+	ToGetAttackProtectionBotDetectionArrayOutput() GetAttackProtectionBotDetectionArrayOutput
+	ToGetAttackProtectionBotDetectionArrayOutputWithContext(context.Context) GetAttackProtectionBotDetectionArrayOutput
+}
+
+type GetAttackProtectionBotDetectionArray []GetAttackProtectionBotDetectionInput
+
+func (GetAttackProtectionBotDetectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAttackProtectionBotDetection)(nil)).Elem()
+}
+
+func (i GetAttackProtectionBotDetectionArray) ToGetAttackProtectionBotDetectionArrayOutput() GetAttackProtectionBotDetectionArrayOutput {
+	return i.ToGetAttackProtectionBotDetectionArrayOutputWithContext(context.Background())
+}
+
+func (i GetAttackProtectionBotDetectionArray) ToGetAttackProtectionBotDetectionArrayOutputWithContext(ctx context.Context) GetAttackProtectionBotDetectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAttackProtectionBotDetectionArrayOutput)
+}
+
+type GetAttackProtectionBotDetectionOutput struct{ *pulumi.OutputState }
+
+func (GetAttackProtectionBotDetectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAttackProtectionBotDetection)(nil)).Elem()
+}
+
+func (o GetAttackProtectionBotDetectionOutput) ToGetAttackProtectionBotDetectionOutput() GetAttackProtectionBotDetectionOutput {
+	return o
+}
+
+func (o GetAttackProtectionBotDetectionOutput) ToGetAttackProtectionBotDetectionOutputWithContext(ctx context.Context) GetAttackProtectionBotDetectionOutput {
+	return o
+}
+
+// List of IP addresses or ranges that will not trigger bot detection.
+func (o GetAttackProtectionBotDetectionOutput) Allowlists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAttackProtectionBotDetection) []string { return v.Allowlists }).(pulumi.StringArrayOutput)
+}
+
+// Bot detection level. Possible values: `low`, `medium`, `high`. Set to empty string to disable.
+func (o GetAttackProtectionBotDetectionOutput) BotDetectionLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAttackProtectionBotDetection) string { return v.BotDetectionLevel }).(pulumi.StringOutput)
+}
+
+// Challenge policy for password flow. Possible values: `never`, `whenRisky`, `always`.
+func (o GetAttackProtectionBotDetectionOutput) ChallengePasswordPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAttackProtectionBotDetection) string { return v.ChallengePasswordPolicy }).(pulumi.StringOutput)
+}
+
+// Challenge policy for password reset flow. Possible values: `never`, `whenRisky`, `always`.
+func (o GetAttackProtectionBotDetectionOutput) ChallengePasswordResetPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAttackProtectionBotDetection) string { return v.ChallengePasswordResetPolicy }).(pulumi.StringOutput)
+}
+
+// Challenge policy for passwordless flow. Possible values: `never`, `whenRisky`, `always`.
+func (o GetAttackProtectionBotDetectionOutput) ChallengePasswordlessPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAttackProtectionBotDetection) string { return v.ChallengePasswordlessPolicy }).(pulumi.StringOutput)
+}
+
+// Whether monitoring mode is enabled for bot detection.
+func (o GetAttackProtectionBotDetectionOutput) MonitoringModeEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAttackProtectionBotDetection) bool { return v.MonitoringModeEnabled }).(pulumi.BoolOutput)
+}
+
+type GetAttackProtectionBotDetectionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAttackProtectionBotDetectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAttackProtectionBotDetection)(nil)).Elem()
+}
+
+func (o GetAttackProtectionBotDetectionArrayOutput) ToGetAttackProtectionBotDetectionArrayOutput() GetAttackProtectionBotDetectionArrayOutput {
+	return o
+}
+
+func (o GetAttackProtectionBotDetectionArrayOutput) ToGetAttackProtectionBotDetectionArrayOutputWithContext(ctx context.Context) GetAttackProtectionBotDetectionArrayOutput {
+	return o
+}
+
+func (o GetAttackProtectionBotDetectionArrayOutput) Index(i pulumi.IntInput) GetAttackProtectionBotDetectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAttackProtectionBotDetection {
+		return vs[0].([]GetAttackProtectionBotDetection)[vs[1].(int)]
+	}).(GetAttackProtectionBotDetectionOutput)
+}
+
 type GetAttackProtectionBreachedPasswordDetection struct {
 	// When `adminNotification` is enabled within the `shields` property, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
 	AdminNotificationFrequencies []string `pulumi:"adminNotificationFrequencies"`
@@ -35170,6 +36790,824 @@ func (o GetAttackProtectionBruteForceProtectionArrayOutput) Index(i pulumi.IntIn
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAttackProtectionBruteForceProtection {
 		return vs[0].([]GetAttackProtectionBruteForceProtection)[vs[1].(int)]
 	}).(GetAttackProtectionBruteForceProtectionOutput)
+}
+
+type GetAttackProtectionCaptcha struct {
+	// Active CAPTCHA provider ID. Set to empty string to disable CAPTCHA. Possible values: `recaptchaV2`, `recaptchaEnterprise`, `hcaptcha`, `friendlyCaptcha`, `arkose`, `authChallenge`, `simpleCaptcha`.
+	ActiveProviderId string `pulumi:"activeProviderId"`
+	// Configuration for Arkose Labs.
+	Arkoses []GetAttackProtectionCaptchaArkose `pulumi:"arkoses"`
+	// Configuration for Auth0's Auth Challenge.
+	AuthChallenges []GetAttackProtectionCaptchaAuthChallenge `pulumi:"authChallenges"`
+	// Configuration for Friendly Captcha.
+	FriendlyCaptchas []GetAttackProtectionCaptchaFriendlyCaptcha `pulumi:"friendlyCaptchas"`
+	// Configuration for hCaptcha.
+	Hcaptchas []GetAttackProtectionCaptchaHcaptcha `pulumi:"hcaptchas"`
+	// Configuration for Google reCAPTCHA Enterprise.
+	RecaptchaEnterprises []GetAttackProtectionCaptchaRecaptchaEnterprise `pulumi:"recaptchaEnterprises"`
+	// Configuration for Google reCAPTCHA v2.
+	RecaptchaV2s []GetAttackProtectionCaptchaRecaptchaV2 `pulumi:"recaptchaV2s"`
+}
+
+// GetAttackProtectionCaptchaInput is an input type that accepts GetAttackProtectionCaptchaArgs and GetAttackProtectionCaptchaOutput values.
+// You can construct a concrete instance of `GetAttackProtectionCaptchaInput` via:
+//
+//	GetAttackProtectionCaptchaArgs{...}
+type GetAttackProtectionCaptchaInput interface {
+	pulumi.Input
+
+	ToGetAttackProtectionCaptchaOutput() GetAttackProtectionCaptchaOutput
+	ToGetAttackProtectionCaptchaOutputWithContext(context.Context) GetAttackProtectionCaptchaOutput
+}
+
+type GetAttackProtectionCaptchaArgs struct {
+	// Active CAPTCHA provider ID. Set to empty string to disable CAPTCHA. Possible values: `recaptchaV2`, `recaptchaEnterprise`, `hcaptcha`, `friendlyCaptcha`, `arkose`, `authChallenge`, `simpleCaptcha`.
+	ActiveProviderId pulumi.StringInput `pulumi:"activeProviderId"`
+	// Configuration for Arkose Labs.
+	Arkoses GetAttackProtectionCaptchaArkoseArrayInput `pulumi:"arkoses"`
+	// Configuration for Auth0's Auth Challenge.
+	AuthChallenges GetAttackProtectionCaptchaAuthChallengeArrayInput `pulumi:"authChallenges"`
+	// Configuration for Friendly Captcha.
+	FriendlyCaptchas GetAttackProtectionCaptchaFriendlyCaptchaArrayInput `pulumi:"friendlyCaptchas"`
+	// Configuration for hCaptcha.
+	Hcaptchas GetAttackProtectionCaptchaHcaptchaArrayInput `pulumi:"hcaptchas"`
+	// Configuration for Google reCAPTCHA Enterprise.
+	RecaptchaEnterprises GetAttackProtectionCaptchaRecaptchaEnterpriseArrayInput `pulumi:"recaptchaEnterprises"`
+	// Configuration for Google reCAPTCHA v2.
+	RecaptchaV2s GetAttackProtectionCaptchaRecaptchaV2ArrayInput `pulumi:"recaptchaV2s"`
+}
+
+func (GetAttackProtectionCaptchaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAttackProtectionCaptcha)(nil)).Elem()
+}
+
+func (i GetAttackProtectionCaptchaArgs) ToGetAttackProtectionCaptchaOutput() GetAttackProtectionCaptchaOutput {
+	return i.ToGetAttackProtectionCaptchaOutputWithContext(context.Background())
+}
+
+func (i GetAttackProtectionCaptchaArgs) ToGetAttackProtectionCaptchaOutputWithContext(ctx context.Context) GetAttackProtectionCaptchaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAttackProtectionCaptchaOutput)
+}
+
+// GetAttackProtectionCaptchaArrayInput is an input type that accepts GetAttackProtectionCaptchaArray and GetAttackProtectionCaptchaArrayOutput values.
+// You can construct a concrete instance of `GetAttackProtectionCaptchaArrayInput` via:
+//
+//	GetAttackProtectionCaptchaArray{ GetAttackProtectionCaptchaArgs{...} }
+type GetAttackProtectionCaptchaArrayInput interface {
+	pulumi.Input
+
+	ToGetAttackProtectionCaptchaArrayOutput() GetAttackProtectionCaptchaArrayOutput
+	ToGetAttackProtectionCaptchaArrayOutputWithContext(context.Context) GetAttackProtectionCaptchaArrayOutput
+}
+
+type GetAttackProtectionCaptchaArray []GetAttackProtectionCaptchaInput
+
+func (GetAttackProtectionCaptchaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAttackProtectionCaptcha)(nil)).Elem()
+}
+
+func (i GetAttackProtectionCaptchaArray) ToGetAttackProtectionCaptchaArrayOutput() GetAttackProtectionCaptchaArrayOutput {
+	return i.ToGetAttackProtectionCaptchaArrayOutputWithContext(context.Background())
+}
+
+func (i GetAttackProtectionCaptchaArray) ToGetAttackProtectionCaptchaArrayOutputWithContext(ctx context.Context) GetAttackProtectionCaptchaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAttackProtectionCaptchaArrayOutput)
+}
+
+type GetAttackProtectionCaptchaOutput struct{ *pulumi.OutputState }
+
+func (GetAttackProtectionCaptchaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAttackProtectionCaptcha)(nil)).Elem()
+}
+
+func (o GetAttackProtectionCaptchaOutput) ToGetAttackProtectionCaptchaOutput() GetAttackProtectionCaptchaOutput {
+	return o
+}
+
+func (o GetAttackProtectionCaptchaOutput) ToGetAttackProtectionCaptchaOutputWithContext(ctx context.Context) GetAttackProtectionCaptchaOutput {
+	return o
+}
+
+// Active CAPTCHA provider ID. Set to empty string to disable CAPTCHA. Possible values: `recaptchaV2`, `recaptchaEnterprise`, `hcaptcha`, `friendlyCaptcha`, `arkose`, `authChallenge`, `simpleCaptcha`.
+func (o GetAttackProtectionCaptchaOutput) ActiveProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAttackProtectionCaptcha) string { return v.ActiveProviderId }).(pulumi.StringOutput)
+}
+
+// Configuration for Arkose Labs.
+func (o GetAttackProtectionCaptchaOutput) Arkoses() GetAttackProtectionCaptchaArkoseArrayOutput {
+	return o.ApplyT(func(v GetAttackProtectionCaptcha) []GetAttackProtectionCaptchaArkose { return v.Arkoses }).(GetAttackProtectionCaptchaArkoseArrayOutput)
+}
+
+// Configuration for Auth0's Auth Challenge.
+func (o GetAttackProtectionCaptchaOutput) AuthChallenges() GetAttackProtectionCaptchaAuthChallengeArrayOutput {
+	return o.ApplyT(func(v GetAttackProtectionCaptcha) []GetAttackProtectionCaptchaAuthChallenge { return v.AuthChallenges }).(GetAttackProtectionCaptchaAuthChallengeArrayOutput)
+}
+
+// Configuration for Friendly Captcha.
+func (o GetAttackProtectionCaptchaOutput) FriendlyCaptchas() GetAttackProtectionCaptchaFriendlyCaptchaArrayOutput {
+	return o.ApplyT(func(v GetAttackProtectionCaptcha) []GetAttackProtectionCaptchaFriendlyCaptcha {
+		return v.FriendlyCaptchas
+	}).(GetAttackProtectionCaptchaFriendlyCaptchaArrayOutput)
+}
+
+// Configuration for hCaptcha.
+func (o GetAttackProtectionCaptchaOutput) Hcaptchas() GetAttackProtectionCaptchaHcaptchaArrayOutput {
+	return o.ApplyT(func(v GetAttackProtectionCaptcha) []GetAttackProtectionCaptchaHcaptcha { return v.Hcaptchas }).(GetAttackProtectionCaptchaHcaptchaArrayOutput)
+}
+
+// Configuration for Google reCAPTCHA Enterprise.
+func (o GetAttackProtectionCaptchaOutput) RecaptchaEnterprises() GetAttackProtectionCaptchaRecaptchaEnterpriseArrayOutput {
+	return o.ApplyT(func(v GetAttackProtectionCaptcha) []GetAttackProtectionCaptchaRecaptchaEnterprise {
+		return v.RecaptchaEnterprises
+	}).(GetAttackProtectionCaptchaRecaptchaEnterpriseArrayOutput)
+}
+
+// Configuration for Google reCAPTCHA v2.
+func (o GetAttackProtectionCaptchaOutput) RecaptchaV2s() GetAttackProtectionCaptchaRecaptchaV2ArrayOutput {
+	return o.ApplyT(func(v GetAttackProtectionCaptcha) []GetAttackProtectionCaptchaRecaptchaV2 { return v.RecaptchaV2s }).(GetAttackProtectionCaptchaRecaptchaV2ArrayOutput)
+}
+
+type GetAttackProtectionCaptchaArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAttackProtectionCaptchaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAttackProtectionCaptcha)(nil)).Elem()
+}
+
+func (o GetAttackProtectionCaptchaArrayOutput) ToGetAttackProtectionCaptchaArrayOutput() GetAttackProtectionCaptchaArrayOutput {
+	return o
+}
+
+func (o GetAttackProtectionCaptchaArrayOutput) ToGetAttackProtectionCaptchaArrayOutputWithContext(ctx context.Context) GetAttackProtectionCaptchaArrayOutput {
+	return o
+}
+
+func (o GetAttackProtectionCaptchaArrayOutput) Index(i pulumi.IntInput) GetAttackProtectionCaptchaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAttackProtectionCaptcha {
+		return vs[0].([]GetAttackProtectionCaptcha)[vs[1].(int)]
+	}).(GetAttackProtectionCaptchaOutput)
+}
+
+type GetAttackProtectionCaptchaArkose struct {
+	// Client subdomain for Arkose Labs.
+	ClientSubdomain string `pulumi:"clientSubdomain"`
+	// Whether the captcha should fail open.
+	FailOpen bool `pulumi:"failOpen"`
+	// Secret for Arkose Labs.
+	Secret string `pulumi:"secret"`
+	// Site key for Arkose Labs.
+	SiteKey string `pulumi:"siteKey"`
+	// Verify subdomain for Arkose Labs.
+	VerifySubdomain string `pulumi:"verifySubdomain"`
+}
+
+// GetAttackProtectionCaptchaArkoseInput is an input type that accepts GetAttackProtectionCaptchaArkoseArgs and GetAttackProtectionCaptchaArkoseOutput values.
+// You can construct a concrete instance of `GetAttackProtectionCaptchaArkoseInput` via:
+//
+//	GetAttackProtectionCaptchaArkoseArgs{...}
+type GetAttackProtectionCaptchaArkoseInput interface {
+	pulumi.Input
+
+	ToGetAttackProtectionCaptchaArkoseOutput() GetAttackProtectionCaptchaArkoseOutput
+	ToGetAttackProtectionCaptchaArkoseOutputWithContext(context.Context) GetAttackProtectionCaptchaArkoseOutput
+}
+
+type GetAttackProtectionCaptchaArkoseArgs struct {
+	// Client subdomain for Arkose Labs.
+	ClientSubdomain pulumi.StringInput `pulumi:"clientSubdomain"`
+	// Whether the captcha should fail open.
+	FailOpen pulumi.BoolInput `pulumi:"failOpen"`
+	// Secret for Arkose Labs.
+	Secret pulumi.StringInput `pulumi:"secret"`
+	// Site key for Arkose Labs.
+	SiteKey pulumi.StringInput `pulumi:"siteKey"`
+	// Verify subdomain for Arkose Labs.
+	VerifySubdomain pulumi.StringInput `pulumi:"verifySubdomain"`
+}
+
+func (GetAttackProtectionCaptchaArkoseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAttackProtectionCaptchaArkose)(nil)).Elem()
+}
+
+func (i GetAttackProtectionCaptchaArkoseArgs) ToGetAttackProtectionCaptchaArkoseOutput() GetAttackProtectionCaptchaArkoseOutput {
+	return i.ToGetAttackProtectionCaptchaArkoseOutputWithContext(context.Background())
+}
+
+func (i GetAttackProtectionCaptchaArkoseArgs) ToGetAttackProtectionCaptchaArkoseOutputWithContext(ctx context.Context) GetAttackProtectionCaptchaArkoseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAttackProtectionCaptchaArkoseOutput)
+}
+
+// GetAttackProtectionCaptchaArkoseArrayInput is an input type that accepts GetAttackProtectionCaptchaArkoseArray and GetAttackProtectionCaptchaArkoseArrayOutput values.
+// You can construct a concrete instance of `GetAttackProtectionCaptchaArkoseArrayInput` via:
+//
+//	GetAttackProtectionCaptchaArkoseArray{ GetAttackProtectionCaptchaArkoseArgs{...} }
+type GetAttackProtectionCaptchaArkoseArrayInput interface {
+	pulumi.Input
+
+	ToGetAttackProtectionCaptchaArkoseArrayOutput() GetAttackProtectionCaptchaArkoseArrayOutput
+	ToGetAttackProtectionCaptchaArkoseArrayOutputWithContext(context.Context) GetAttackProtectionCaptchaArkoseArrayOutput
+}
+
+type GetAttackProtectionCaptchaArkoseArray []GetAttackProtectionCaptchaArkoseInput
+
+func (GetAttackProtectionCaptchaArkoseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAttackProtectionCaptchaArkose)(nil)).Elem()
+}
+
+func (i GetAttackProtectionCaptchaArkoseArray) ToGetAttackProtectionCaptchaArkoseArrayOutput() GetAttackProtectionCaptchaArkoseArrayOutput {
+	return i.ToGetAttackProtectionCaptchaArkoseArrayOutputWithContext(context.Background())
+}
+
+func (i GetAttackProtectionCaptchaArkoseArray) ToGetAttackProtectionCaptchaArkoseArrayOutputWithContext(ctx context.Context) GetAttackProtectionCaptchaArkoseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAttackProtectionCaptchaArkoseArrayOutput)
+}
+
+type GetAttackProtectionCaptchaArkoseOutput struct{ *pulumi.OutputState }
+
+func (GetAttackProtectionCaptchaArkoseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAttackProtectionCaptchaArkose)(nil)).Elem()
+}
+
+func (o GetAttackProtectionCaptchaArkoseOutput) ToGetAttackProtectionCaptchaArkoseOutput() GetAttackProtectionCaptchaArkoseOutput {
+	return o
+}
+
+func (o GetAttackProtectionCaptchaArkoseOutput) ToGetAttackProtectionCaptchaArkoseOutputWithContext(ctx context.Context) GetAttackProtectionCaptchaArkoseOutput {
+	return o
+}
+
+// Client subdomain for Arkose Labs.
+func (o GetAttackProtectionCaptchaArkoseOutput) ClientSubdomain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAttackProtectionCaptchaArkose) string { return v.ClientSubdomain }).(pulumi.StringOutput)
+}
+
+// Whether the captcha should fail open.
+func (o GetAttackProtectionCaptchaArkoseOutput) FailOpen() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAttackProtectionCaptchaArkose) bool { return v.FailOpen }).(pulumi.BoolOutput)
+}
+
+// Secret for Arkose Labs.
+func (o GetAttackProtectionCaptchaArkoseOutput) Secret() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAttackProtectionCaptchaArkose) string { return v.Secret }).(pulumi.StringOutput)
+}
+
+// Site key for Arkose Labs.
+func (o GetAttackProtectionCaptchaArkoseOutput) SiteKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAttackProtectionCaptchaArkose) string { return v.SiteKey }).(pulumi.StringOutput)
+}
+
+// Verify subdomain for Arkose Labs.
+func (o GetAttackProtectionCaptchaArkoseOutput) VerifySubdomain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAttackProtectionCaptchaArkose) string { return v.VerifySubdomain }).(pulumi.StringOutput)
+}
+
+type GetAttackProtectionCaptchaArkoseArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAttackProtectionCaptchaArkoseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAttackProtectionCaptchaArkose)(nil)).Elem()
+}
+
+func (o GetAttackProtectionCaptchaArkoseArrayOutput) ToGetAttackProtectionCaptchaArkoseArrayOutput() GetAttackProtectionCaptchaArkoseArrayOutput {
+	return o
+}
+
+func (o GetAttackProtectionCaptchaArkoseArrayOutput) ToGetAttackProtectionCaptchaArkoseArrayOutputWithContext(ctx context.Context) GetAttackProtectionCaptchaArkoseArrayOutput {
+	return o
+}
+
+func (o GetAttackProtectionCaptchaArkoseArrayOutput) Index(i pulumi.IntInput) GetAttackProtectionCaptchaArkoseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAttackProtectionCaptchaArkose {
+		return vs[0].([]GetAttackProtectionCaptchaArkose)[vs[1].(int)]
+	}).(GetAttackProtectionCaptchaArkoseOutput)
+}
+
+type GetAttackProtectionCaptchaAuthChallenge struct {
+	// Whether the auth challenge should fail open.
+	FailOpen bool `pulumi:"failOpen"`
+}
+
+// GetAttackProtectionCaptchaAuthChallengeInput is an input type that accepts GetAttackProtectionCaptchaAuthChallengeArgs and GetAttackProtectionCaptchaAuthChallengeOutput values.
+// You can construct a concrete instance of `GetAttackProtectionCaptchaAuthChallengeInput` via:
+//
+//	GetAttackProtectionCaptchaAuthChallengeArgs{...}
+type GetAttackProtectionCaptchaAuthChallengeInput interface {
+	pulumi.Input
+
+	ToGetAttackProtectionCaptchaAuthChallengeOutput() GetAttackProtectionCaptchaAuthChallengeOutput
+	ToGetAttackProtectionCaptchaAuthChallengeOutputWithContext(context.Context) GetAttackProtectionCaptchaAuthChallengeOutput
+}
+
+type GetAttackProtectionCaptchaAuthChallengeArgs struct {
+	// Whether the auth challenge should fail open.
+	FailOpen pulumi.BoolInput `pulumi:"failOpen"`
+}
+
+func (GetAttackProtectionCaptchaAuthChallengeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAttackProtectionCaptchaAuthChallenge)(nil)).Elem()
+}
+
+func (i GetAttackProtectionCaptchaAuthChallengeArgs) ToGetAttackProtectionCaptchaAuthChallengeOutput() GetAttackProtectionCaptchaAuthChallengeOutput {
+	return i.ToGetAttackProtectionCaptchaAuthChallengeOutputWithContext(context.Background())
+}
+
+func (i GetAttackProtectionCaptchaAuthChallengeArgs) ToGetAttackProtectionCaptchaAuthChallengeOutputWithContext(ctx context.Context) GetAttackProtectionCaptchaAuthChallengeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAttackProtectionCaptchaAuthChallengeOutput)
+}
+
+// GetAttackProtectionCaptchaAuthChallengeArrayInput is an input type that accepts GetAttackProtectionCaptchaAuthChallengeArray and GetAttackProtectionCaptchaAuthChallengeArrayOutput values.
+// You can construct a concrete instance of `GetAttackProtectionCaptchaAuthChallengeArrayInput` via:
+//
+//	GetAttackProtectionCaptchaAuthChallengeArray{ GetAttackProtectionCaptchaAuthChallengeArgs{...} }
+type GetAttackProtectionCaptchaAuthChallengeArrayInput interface {
+	pulumi.Input
+
+	ToGetAttackProtectionCaptchaAuthChallengeArrayOutput() GetAttackProtectionCaptchaAuthChallengeArrayOutput
+	ToGetAttackProtectionCaptchaAuthChallengeArrayOutputWithContext(context.Context) GetAttackProtectionCaptchaAuthChallengeArrayOutput
+}
+
+type GetAttackProtectionCaptchaAuthChallengeArray []GetAttackProtectionCaptchaAuthChallengeInput
+
+func (GetAttackProtectionCaptchaAuthChallengeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAttackProtectionCaptchaAuthChallenge)(nil)).Elem()
+}
+
+func (i GetAttackProtectionCaptchaAuthChallengeArray) ToGetAttackProtectionCaptchaAuthChallengeArrayOutput() GetAttackProtectionCaptchaAuthChallengeArrayOutput {
+	return i.ToGetAttackProtectionCaptchaAuthChallengeArrayOutputWithContext(context.Background())
+}
+
+func (i GetAttackProtectionCaptchaAuthChallengeArray) ToGetAttackProtectionCaptchaAuthChallengeArrayOutputWithContext(ctx context.Context) GetAttackProtectionCaptchaAuthChallengeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAttackProtectionCaptchaAuthChallengeArrayOutput)
+}
+
+type GetAttackProtectionCaptchaAuthChallengeOutput struct{ *pulumi.OutputState }
+
+func (GetAttackProtectionCaptchaAuthChallengeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAttackProtectionCaptchaAuthChallenge)(nil)).Elem()
+}
+
+func (o GetAttackProtectionCaptchaAuthChallengeOutput) ToGetAttackProtectionCaptchaAuthChallengeOutput() GetAttackProtectionCaptchaAuthChallengeOutput {
+	return o
+}
+
+func (o GetAttackProtectionCaptchaAuthChallengeOutput) ToGetAttackProtectionCaptchaAuthChallengeOutputWithContext(ctx context.Context) GetAttackProtectionCaptchaAuthChallengeOutput {
+	return o
+}
+
+// Whether the auth challenge should fail open.
+func (o GetAttackProtectionCaptchaAuthChallengeOutput) FailOpen() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAttackProtectionCaptchaAuthChallenge) bool { return v.FailOpen }).(pulumi.BoolOutput)
+}
+
+type GetAttackProtectionCaptchaAuthChallengeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAttackProtectionCaptchaAuthChallengeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAttackProtectionCaptchaAuthChallenge)(nil)).Elem()
+}
+
+func (o GetAttackProtectionCaptchaAuthChallengeArrayOutput) ToGetAttackProtectionCaptchaAuthChallengeArrayOutput() GetAttackProtectionCaptchaAuthChallengeArrayOutput {
+	return o
+}
+
+func (o GetAttackProtectionCaptchaAuthChallengeArrayOutput) ToGetAttackProtectionCaptchaAuthChallengeArrayOutputWithContext(ctx context.Context) GetAttackProtectionCaptchaAuthChallengeArrayOutput {
+	return o
+}
+
+func (o GetAttackProtectionCaptchaAuthChallengeArrayOutput) Index(i pulumi.IntInput) GetAttackProtectionCaptchaAuthChallengeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAttackProtectionCaptchaAuthChallenge {
+		return vs[0].([]GetAttackProtectionCaptchaAuthChallenge)[vs[1].(int)]
+	}).(GetAttackProtectionCaptchaAuthChallengeOutput)
+}
+
+type GetAttackProtectionCaptchaFriendlyCaptcha struct {
+	// Secret for Friendly Captcha.
+	Secret string `pulumi:"secret"`
+	// Site key for Friendly Captcha.
+	SiteKey string `pulumi:"siteKey"`
+}
+
+// GetAttackProtectionCaptchaFriendlyCaptchaInput is an input type that accepts GetAttackProtectionCaptchaFriendlyCaptchaArgs and GetAttackProtectionCaptchaFriendlyCaptchaOutput values.
+// You can construct a concrete instance of `GetAttackProtectionCaptchaFriendlyCaptchaInput` via:
+//
+//	GetAttackProtectionCaptchaFriendlyCaptchaArgs{...}
+type GetAttackProtectionCaptchaFriendlyCaptchaInput interface {
+	pulumi.Input
+
+	ToGetAttackProtectionCaptchaFriendlyCaptchaOutput() GetAttackProtectionCaptchaFriendlyCaptchaOutput
+	ToGetAttackProtectionCaptchaFriendlyCaptchaOutputWithContext(context.Context) GetAttackProtectionCaptchaFriendlyCaptchaOutput
+}
+
+type GetAttackProtectionCaptchaFriendlyCaptchaArgs struct {
+	// Secret for Friendly Captcha.
+	Secret pulumi.StringInput `pulumi:"secret"`
+	// Site key for Friendly Captcha.
+	SiteKey pulumi.StringInput `pulumi:"siteKey"`
+}
+
+func (GetAttackProtectionCaptchaFriendlyCaptchaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAttackProtectionCaptchaFriendlyCaptcha)(nil)).Elem()
+}
+
+func (i GetAttackProtectionCaptchaFriendlyCaptchaArgs) ToGetAttackProtectionCaptchaFriendlyCaptchaOutput() GetAttackProtectionCaptchaFriendlyCaptchaOutput {
+	return i.ToGetAttackProtectionCaptchaFriendlyCaptchaOutputWithContext(context.Background())
+}
+
+func (i GetAttackProtectionCaptchaFriendlyCaptchaArgs) ToGetAttackProtectionCaptchaFriendlyCaptchaOutputWithContext(ctx context.Context) GetAttackProtectionCaptchaFriendlyCaptchaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAttackProtectionCaptchaFriendlyCaptchaOutput)
+}
+
+// GetAttackProtectionCaptchaFriendlyCaptchaArrayInput is an input type that accepts GetAttackProtectionCaptchaFriendlyCaptchaArray and GetAttackProtectionCaptchaFriendlyCaptchaArrayOutput values.
+// You can construct a concrete instance of `GetAttackProtectionCaptchaFriendlyCaptchaArrayInput` via:
+//
+//	GetAttackProtectionCaptchaFriendlyCaptchaArray{ GetAttackProtectionCaptchaFriendlyCaptchaArgs{...} }
+type GetAttackProtectionCaptchaFriendlyCaptchaArrayInput interface {
+	pulumi.Input
+
+	ToGetAttackProtectionCaptchaFriendlyCaptchaArrayOutput() GetAttackProtectionCaptchaFriendlyCaptchaArrayOutput
+	ToGetAttackProtectionCaptchaFriendlyCaptchaArrayOutputWithContext(context.Context) GetAttackProtectionCaptchaFriendlyCaptchaArrayOutput
+}
+
+type GetAttackProtectionCaptchaFriendlyCaptchaArray []GetAttackProtectionCaptchaFriendlyCaptchaInput
+
+func (GetAttackProtectionCaptchaFriendlyCaptchaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAttackProtectionCaptchaFriendlyCaptcha)(nil)).Elem()
+}
+
+func (i GetAttackProtectionCaptchaFriendlyCaptchaArray) ToGetAttackProtectionCaptchaFriendlyCaptchaArrayOutput() GetAttackProtectionCaptchaFriendlyCaptchaArrayOutput {
+	return i.ToGetAttackProtectionCaptchaFriendlyCaptchaArrayOutputWithContext(context.Background())
+}
+
+func (i GetAttackProtectionCaptchaFriendlyCaptchaArray) ToGetAttackProtectionCaptchaFriendlyCaptchaArrayOutputWithContext(ctx context.Context) GetAttackProtectionCaptchaFriendlyCaptchaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAttackProtectionCaptchaFriendlyCaptchaArrayOutput)
+}
+
+type GetAttackProtectionCaptchaFriendlyCaptchaOutput struct{ *pulumi.OutputState }
+
+func (GetAttackProtectionCaptchaFriendlyCaptchaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAttackProtectionCaptchaFriendlyCaptcha)(nil)).Elem()
+}
+
+func (o GetAttackProtectionCaptchaFriendlyCaptchaOutput) ToGetAttackProtectionCaptchaFriendlyCaptchaOutput() GetAttackProtectionCaptchaFriendlyCaptchaOutput {
+	return o
+}
+
+func (o GetAttackProtectionCaptchaFriendlyCaptchaOutput) ToGetAttackProtectionCaptchaFriendlyCaptchaOutputWithContext(ctx context.Context) GetAttackProtectionCaptchaFriendlyCaptchaOutput {
+	return o
+}
+
+// Secret for Friendly Captcha.
+func (o GetAttackProtectionCaptchaFriendlyCaptchaOutput) Secret() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAttackProtectionCaptchaFriendlyCaptcha) string { return v.Secret }).(pulumi.StringOutput)
+}
+
+// Site key for Friendly Captcha.
+func (o GetAttackProtectionCaptchaFriendlyCaptchaOutput) SiteKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAttackProtectionCaptchaFriendlyCaptcha) string { return v.SiteKey }).(pulumi.StringOutput)
+}
+
+type GetAttackProtectionCaptchaFriendlyCaptchaArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAttackProtectionCaptchaFriendlyCaptchaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAttackProtectionCaptchaFriendlyCaptcha)(nil)).Elem()
+}
+
+func (o GetAttackProtectionCaptchaFriendlyCaptchaArrayOutput) ToGetAttackProtectionCaptchaFriendlyCaptchaArrayOutput() GetAttackProtectionCaptchaFriendlyCaptchaArrayOutput {
+	return o
+}
+
+func (o GetAttackProtectionCaptchaFriendlyCaptchaArrayOutput) ToGetAttackProtectionCaptchaFriendlyCaptchaArrayOutputWithContext(ctx context.Context) GetAttackProtectionCaptchaFriendlyCaptchaArrayOutput {
+	return o
+}
+
+func (o GetAttackProtectionCaptchaFriendlyCaptchaArrayOutput) Index(i pulumi.IntInput) GetAttackProtectionCaptchaFriendlyCaptchaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAttackProtectionCaptchaFriendlyCaptcha {
+		return vs[0].([]GetAttackProtectionCaptchaFriendlyCaptcha)[vs[1].(int)]
+	}).(GetAttackProtectionCaptchaFriendlyCaptchaOutput)
+}
+
+type GetAttackProtectionCaptchaHcaptcha struct {
+	// Secret for hCaptcha.
+	Secret string `pulumi:"secret"`
+	// Site key for hCaptcha.
+	SiteKey string `pulumi:"siteKey"`
+}
+
+// GetAttackProtectionCaptchaHcaptchaInput is an input type that accepts GetAttackProtectionCaptchaHcaptchaArgs and GetAttackProtectionCaptchaHcaptchaOutput values.
+// You can construct a concrete instance of `GetAttackProtectionCaptchaHcaptchaInput` via:
+//
+//	GetAttackProtectionCaptchaHcaptchaArgs{...}
+type GetAttackProtectionCaptchaHcaptchaInput interface {
+	pulumi.Input
+
+	ToGetAttackProtectionCaptchaHcaptchaOutput() GetAttackProtectionCaptchaHcaptchaOutput
+	ToGetAttackProtectionCaptchaHcaptchaOutputWithContext(context.Context) GetAttackProtectionCaptchaHcaptchaOutput
+}
+
+type GetAttackProtectionCaptchaHcaptchaArgs struct {
+	// Secret for hCaptcha.
+	Secret pulumi.StringInput `pulumi:"secret"`
+	// Site key for hCaptcha.
+	SiteKey pulumi.StringInput `pulumi:"siteKey"`
+}
+
+func (GetAttackProtectionCaptchaHcaptchaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAttackProtectionCaptchaHcaptcha)(nil)).Elem()
+}
+
+func (i GetAttackProtectionCaptchaHcaptchaArgs) ToGetAttackProtectionCaptchaHcaptchaOutput() GetAttackProtectionCaptchaHcaptchaOutput {
+	return i.ToGetAttackProtectionCaptchaHcaptchaOutputWithContext(context.Background())
+}
+
+func (i GetAttackProtectionCaptchaHcaptchaArgs) ToGetAttackProtectionCaptchaHcaptchaOutputWithContext(ctx context.Context) GetAttackProtectionCaptchaHcaptchaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAttackProtectionCaptchaHcaptchaOutput)
+}
+
+// GetAttackProtectionCaptchaHcaptchaArrayInput is an input type that accepts GetAttackProtectionCaptchaHcaptchaArray and GetAttackProtectionCaptchaHcaptchaArrayOutput values.
+// You can construct a concrete instance of `GetAttackProtectionCaptchaHcaptchaArrayInput` via:
+//
+//	GetAttackProtectionCaptchaHcaptchaArray{ GetAttackProtectionCaptchaHcaptchaArgs{...} }
+type GetAttackProtectionCaptchaHcaptchaArrayInput interface {
+	pulumi.Input
+
+	ToGetAttackProtectionCaptchaHcaptchaArrayOutput() GetAttackProtectionCaptchaHcaptchaArrayOutput
+	ToGetAttackProtectionCaptchaHcaptchaArrayOutputWithContext(context.Context) GetAttackProtectionCaptchaHcaptchaArrayOutput
+}
+
+type GetAttackProtectionCaptchaHcaptchaArray []GetAttackProtectionCaptchaHcaptchaInput
+
+func (GetAttackProtectionCaptchaHcaptchaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAttackProtectionCaptchaHcaptcha)(nil)).Elem()
+}
+
+func (i GetAttackProtectionCaptchaHcaptchaArray) ToGetAttackProtectionCaptchaHcaptchaArrayOutput() GetAttackProtectionCaptchaHcaptchaArrayOutput {
+	return i.ToGetAttackProtectionCaptchaHcaptchaArrayOutputWithContext(context.Background())
+}
+
+func (i GetAttackProtectionCaptchaHcaptchaArray) ToGetAttackProtectionCaptchaHcaptchaArrayOutputWithContext(ctx context.Context) GetAttackProtectionCaptchaHcaptchaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAttackProtectionCaptchaHcaptchaArrayOutput)
+}
+
+type GetAttackProtectionCaptchaHcaptchaOutput struct{ *pulumi.OutputState }
+
+func (GetAttackProtectionCaptchaHcaptchaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAttackProtectionCaptchaHcaptcha)(nil)).Elem()
+}
+
+func (o GetAttackProtectionCaptchaHcaptchaOutput) ToGetAttackProtectionCaptchaHcaptchaOutput() GetAttackProtectionCaptchaHcaptchaOutput {
+	return o
+}
+
+func (o GetAttackProtectionCaptchaHcaptchaOutput) ToGetAttackProtectionCaptchaHcaptchaOutputWithContext(ctx context.Context) GetAttackProtectionCaptchaHcaptchaOutput {
+	return o
+}
+
+// Secret for hCaptcha.
+func (o GetAttackProtectionCaptchaHcaptchaOutput) Secret() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAttackProtectionCaptchaHcaptcha) string { return v.Secret }).(pulumi.StringOutput)
+}
+
+// Site key for hCaptcha.
+func (o GetAttackProtectionCaptchaHcaptchaOutput) SiteKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAttackProtectionCaptchaHcaptcha) string { return v.SiteKey }).(pulumi.StringOutput)
+}
+
+type GetAttackProtectionCaptchaHcaptchaArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAttackProtectionCaptchaHcaptchaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAttackProtectionCaptchaHcaptcha)(nil)).Elem()
+}
+
+func (o GetAttackProtectionCaptchaHcaptchaArrayOutput) ToGetAttackProtectionCaptchaHcaptchaArrayOutput() GetAttackProtectionCaptchaHcaptchaArrayOutput {
+	return o
+}
+
+func (o GetAttackProtectionCaptchaHcaptchaArrayOutput) ToGetAttackProtectionCaptchaHcaptchaArrayOutputWithContext(ctx context.Context) GetAttackProtectionCaptchaHcaptchaArrayOutput {
+	return o
+}
+
+func (o GetAttackProtectionCaptchaHcaptchaArrayOutput) Index(i pulumi.IntInput) GetAttackProtectionCaptchaHcaptchaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAttackProtectionCaptchaHcaptcha {
+		return vs[0].([]GetAttackProtectionCaptchaHcaptcha)[vs[1].(int)]
+	}).(GetAttackProtectionCaptchaHcaptchaOutput)
+}
+
+type GetAttackProtectionCaptchaRecaptchaEnterprise struct {
+	// API key for reCAPTCHA Enterprise.
+	ApiKey string `pulumi:"apiKey"`
+	// Project ID for reCAPTCHA Enterprise.
+	ProjectId string `pulumi:"projectId"`
+	// Site key for reCAPTCHA Enterprise.
+	SiteKey string `pulumi:"siteKey"`
+}
+
+// GetAttackProtectionCaptchaRecaptchaEnterpriseInput is an input type that accepts GetAttackProtectionCaptchaRecaptchaEnterpriseArgs and GetAttackProtectionCaptchaRecaptchaEnterpriseOutput values.
+// You can construct a concrete instance of `GetAttackProtectionCaptchaRecaptchaEnterpriseInput` via:
+//
+//	GetAttackProtectionCaptchaRecaptchaEnterpriseArgs{...}
+type GetAttackProtectionCaptchaRecaptchaEnterpriseInput interface {
+	pulumi.Input
+
+	ToGetAttackProtectionCaptchaRecaptchaEnterpriseOutput() GetAttackProtectionCaptchaRecaptchaEnterpriseOutput
+	ToGetAttackProtectionCaptchaRecaptchaEnterpriseOutputWithContext(context.Context) GetAttackProtectionCaptchaRecaptchaEnterpriseOutput
+}
+
+type GetAttackProtectionCaptchaRecaptchaEnterpriseArgs struct {
+	// API key for reCAPTCHA Enterprise.
+	ApiKey pulumi.StringInput `pulumi:"apiKey"`
+	// Project ID for reCAPTCHA Enterprise.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// Site key for reCAPTCHA Enterprise.
+	SiteKey pulumi.StringInput `pulumi:"siteKey"`
+}
+
+func (GetAttackProtectionCaptchaRecaptchaEnterpriseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAttackProtectionCaptchaRecaptchaEnterprise)(nil)).Elem()
+}
+
+func (i GetAttackProtectionCaptchaRecaptchaEnterpriseArgs) ToGetAttackProtectionCaptchaRecaptchaEnterpriseOutput() GetAttackProtectionCaptchaRecaptchaEnterpriseOutput {
+	return i.ToGetAttackProtectionCaptchaRecaptchaEnterpriseOutputWithContext(context.Background())
+}
+
+func (i GetAttackProtectionCaptchaRecaptchaEnterpriseArgs) ToGetAttackProtectionCaptchaRecaptchaEnterpriseOutputWithContext(ctx context.Context) GetAttackProtectionCaptchaRecaptchaEnterpriseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAttackProtectionCaptchaRecaptchaEnterpriseOutput)
+}
+
+// GetAttackProtectionCaptchaRecaptchaEnterpriseArrayInput is an input type that accepts GetAttackProtectionCaptchaRecaptchaEnterpriseArray and GetAttackProtectionCaptchaRecaptchaEnterpriseArrayOutput values.
+// You can construct a concrete instance of `GetAttackProtectionCaptchaRecaptchaEnterpriseArrayInput` via:
+//
+//	GetAttackProtectionCaptchaRecaptchaEnterpriseArray{ GetAttackProtectionCaptchaRecaptchaEnterpriseArgs{...} }
+type GetAttackProtectionCaptchaRecaptchaEnterpriseArrayInput interface {
+	pulumi.Input
+
+	ToGetAttackProtectionCaptchaRecaptchaEnterpriseArrayOutput() GetAttackProtectionCaptchaRecaptchaEnterpriseArrayOutput
+	ToGetAttackProtectionCaptchaRecaptchaEnterpriseArrayOutputWithContext(context.Context) GetAttackProtectionCaptchaRecaptchaEnterpriseArrayOutput
+}
+
+type GetAttackProtectionCaptchaRecaptchaEnterpriseArray []GetAttackProtectionCaptchaRecaptchaEnterpriseInput
+
+func (GetAttackProtectionCaptchaRecaptchaEnterpriseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAttackProtectionCaptchaRecaptchaEnterprise)(nil)).Elem()
+}
+
+func (i GetAttackProtectionCaptchaRecaptchaEnterpriseArray) ToGetAttackProtectionCaptchaRecaptchaEnterpriseArrayOutput() GetAttackProtectionCaptchaRecaptchaEnterpriseArrayOutput {
+	return i.ToGetAttackProtectionCaptchaRecaptchaEnterpriseArrayOutputWithContext(context.Background())
+}
+
+func (i GetAttackProtectionCaptchaRecaptchaEnterpriseArray) ToGetAttackProtectionCaptchaRecaptchaEnterpriseArrayOutputWithContext(ctx context.Context) GetAttackProtectionCaptchaRecaptchaEnterpriseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAttackProtectionCaptchaRecaptchaEnterpriseArrayOutput)
+}
+
+type GetAttackProtectionCaptchaRecaptchaEnterpriseOutput struct{ *pulumi.OutputState }
+
+func (GetAttackProtectionCaptchaRecaptchaEnterpriseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAttackProtectionCaptchaRecaptchaEnterprise)(nil)).Elem()
+}
+
+func (o GetAttackProtectionCaptchaRecaptchaEnterpriseOutput) ToGetAttackProtectionCaptchaRecaptchaEnterpriseOutput() GetAttackProtectionCaptchaRecaptchaEnterpriseOutput {
+	return o
+}
+
+func (o GetAttackProtectionCaptchaRecaptchaEnterpriseOutput) ToGetAttackProtectionCaptchaRecaptchaEnterpriseOutputWithContext(ctx context.Context) GetAttackProtectionCaptchaRecaptchaEnterpriseOutput {
+	return o
+}
+
+// API key for reCAPTCHA Enterprise.
+func (o GetAttackProtectionCaptchaRecaptchaEnterpriseOutput) ApiKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAttackProtectionCaptchaRecaptchaEnterprise) string { return v.ApiKey }).(pulumi.StringOutput)
+}
+
+// Project ID for reCAPTCHA Enterprise.
+func (o GetAttackProtectionCaptchaRecaptchaEnterpriseOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAttackProtectionCaptchaRecaptchaEnterprise) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// Site key for reCAPTCHA Enterprise.
+func (o GetAttackProtectionCaptchaRecaptchaEnterpriseOutput) SiteKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAttackProtectionCaptchaRecaptchaEnterprise) string { return v.SiteKey }).(pulumi.StringOutput)
+}
+
+type GetAttackProtectionCaptchaRecaptchaEnterpriseArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAttackProtectionCaptchaRecaptchaEnterpriseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAttackProtectionCaptchaRecaptchaEnterprise)(nil)).Elem()
+}
+
+func (o GetAttackProtectionCaptchaRecaptchaEnterpriseArrayOutput) ToGetAttackProtectionCaptchaRecaptchaEnterpriseArrayOutput() GetAttackProtectionCaptchaRecaptchaEnterpriseArrayOutput {
+	return o
+}
+
+func (o GetAttackProtectionCaptchaRecaptchaEnterpriseArrayOutput) ToGetAttackProtectionCaptchaRecaptchaEnterpriseArrayOutputWithContext(ctx context.Context) GetAttackProtectionCaptchaRecaptchaEnterpriseArrayOutput {
+	return o
+}
+
+func (o GetAttackProtectionCaptchaRecaptchaEnterpriseArrayOutput) Index(i pulumi.IntInput) GetAttackProtectionCaptchaRecaptchaEnterpriseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAttackProtectionCaptchaRecaptchaEnterprise {
+		return vs[0].([]GetAttackProtectionCaptchaRecaptchaEnterprise)[vs[1].(int)]
+	}).(GetAttackProtectionCaptchaRecaptchaEnterpriseOutput)
+}
+
+type GetAttackProtectionCaptchaRecaptchaV2 struct {
+	// Secret for reCAPTCHA v2.
+	Secret string `pulumi:"secret"`
+	// Site key for reCAPTCHA v2.
+	SiteKey string `pulumi:"siteKey"`
+}
+
+// GetAttackProtectionCaptchaRecaptchaV2Input is an input type that accepts GetAttackProtectionCaptchaRecaptchaV2Args and GetAttackProtectionCaptchaRecaptchaV2Output values.
+// You can construct a concrete instance of `GetAttackProtectionCaptchaRecaptchaV2Input` via:
+//
+//	GetAttackProtectionCaptchaRecaptchaV2Args{...}
+type GetAttackProtectionCaptchaRecaptchaV2Input interface {
+	pulumi.Input
+
+	ToGetAttackProtectionCaptchaRecaptchaV2Output() GetAttackProtectionCaptchaRecaptchaV2Output
+	ToGetAttackProtectionCaptchaRecaptchaV2OutputWithContext(context.Context) GetAttackProtectionCaptchaRecaptchaV2Output
+}
+
+type GetAttackProtectionCaptchaRecaptchaV2Args struct {
+	// Secret for reCAPTCHA v2.
+	Secret pulumi.StringInput `pulumi:"secret"`
+	// Site key for reCAPTCHA v2.
+	SiteKey pulumi.StringInput `pulumi:"siteKey"`
+}
+
+func (GetAttackProtectionCaptchaRecaptchaV2Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAttackProtectionCaptchaRecaptchaV2)(nil)).Elem()
+}
+
+func (i GetAttackProtectionCaptchaRecaptchaV2Args) ToGetAttackProtectionCaptchaRecaptchaV2Output() GetAttackProtectionCaptchaRecaptchaV2Output {
+	return i.ToGetAttackProtectionCaptchaRecaptchaV2OutputWithContext(context.Background())
+}
+
+func (i GetAttackProtectionCaptchaRecaptchaV2Args) ToGetAttackProtectionCaptchaRecaptchaV2OutputWithContext(ctx context.Context) GetAttackProtectionCaptchaRecaptchaV2Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAttackProtectionCaptchaRecaptchaV2Output)
+}
+
+// GetAttackProtectionCaptchaRecaptchaV2ArrayInput is an input type that accepts GetAttackProtectionCaptchaRecaptchaV2Array and GetAttackProtectionCaptchaRecaptchaV2ArrayOutput values.
+// You can construct a concrete instance of `GetAttackProtectionCaptchaRecaptchaV2ArrayInput` via:
+//
+//	GetAttackProtectionCaptchaRecaptchaV2Array{ GetAttackProtectionCaptchaRecaptchaV2Args{...} }
+type GetAttackProtectionCaptchaRecaptchaV2ArrayInput interface {
+	pulumi.Input
+
+	ToGetAttackProtectionCaptchaRecaptchaV2ArrayOutput() GetAttackProtectionCaptchaRecaptchaV2ArrayOutput
+	ToGetAttackProtectionCaptchaRecaptchaV2ArrayOutputWithContext(context.Context) GetAttackProtectionCaptchaRecaptchaV2ArrayOutput
+}
+
+type GetAttackProtectionCaptchaRecaptchaV2Array []GetAttackProtectionCaptchaRecaptchaV2Input
+
+func (GetAttackProtectionCaptchaRecaptchaV2Array) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAttackProtectionCaptchaRecaptchaV2)(nil)).Elem()
+}
+
+func (i GetAttackProtectionCaptchaRecaptchaV2Array) ToGetAttackProtectionCaptchaRecaptchaV2ArrayOutput() GetAttackProtectionCaptchaRecaptchaV2ArrayOutput {
+	return i.ToGetAttackProtectionCaptchaRecaptchaV2ArrayOutputWithContext(context.Background())
+}
+
+func (i GetAttackProtectionCaptchaRecaptchaV2Array) ToGetAttackProtectionCaptchaRecaptchaV2ArrayOutputWithContext(ctx context.Context) GetAttackProtectionCaptchaRecaptchaV2ArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAttackProtectionCaptchaRecaptchaV2ArrayOutput)
+}
+
+type GetAttackProtectionCaptchaRecaptchaV2Output struct{ *pulumi.OutputState }
+
+func (GetAttackProtectionCaptchaRecaptchaV2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAttackProtectionCaptchaRecaptchaV2)(nil)).Elem()
+}
+
+func (o GetAttackProtectionCaptchaRecaptchaV2Output) ToGetAttackProtectionCaptchaRecaptchaV2Output() GetAttackProtectionCaptchaRecaptchaV2Output {
+	return o
+}
+
+func (o GetAttackProtectionCaptchaRecaptchaV2Output) ToGetAttackProtectionCaptchaRecaptchaV2OutputWithContext(ctx context.Context) GetAttackProtectionCaptchaRecaptchaV2Output {
+	return o
+}
+
+// Secret for reCAPTCHA v2.
+func (o GetAttackProtectionCaptchaRecaptchaV2Output) Secret() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAttackProtectionCaptchaRecaptchaV2) string { return v.Secret }).(pulumi.StringOutput)
+}
+
+// Site key for reCAPTCHA v2.
+func (o GetAttackProtectionCaptchaRecaptchaV2Output) SiteKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAttackProtectionCaptchaRecaptchaV2) string { return v.SiteKey }).(pulumi.StringOutput)
+}
+
+type GetAttackProtectionCaptchaRecaptchaV2ArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAttackProtectionCaptchaRecaptchaV2ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAttackProtectionCaptchaRecaptchaV2)(nil)).Elem()
+}
+
+func (o GetAttackProtectionCaptchaRecaptchaV2ArrayOutput) ToGetAttackProtectionCaptchaRecaptchaV2ArrayOutput() GetAttackProtectionCaptchaRecaptchaV2ArrayOutput {
+	return o
+}
+
+func (o GetAttackProtectionCaptchaRecaptchaV2ArrayOutput) ToGetAttackProtectionCaptchaRecaptchaV2ArrayOutputWithContext(ctx context.Context) GetAttackProtectionCaptchaRecaptchaV2ArrayOutput {
+	return o
+}
+
+func (o GetAttackProtectionCaptchaRecaptchaV2ArrayOutput) Index(i pulumi.IntInput) GetAttackProtectionCaptchaRecaptchaV2Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAttackProtectionCaptchaRecaptchaV2 {
+		return vs[0].([]GetAttackProtectionCaptchaRecaptchaV2)[vs[1].(int)]
+	}).(GetAttackProtectionCaptchaRecaptchaV2Output)
 }
 
 type GetAttackProtectionSuspiciousIpThrottling struct {
@@ -44211,6 +46649,8 @@ type GetClientsClient struct {
 	AllowedOrigins []string `pulumi:"allowedOrigins"`
 	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
 	AppType string `pulumi:"appType"`
+	// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `["guardian-push"]` if not specified.
+	AsyncApprovalNotificationChannels []string `pulumi:"asyncApprovalNotificationChannels"`
 	// URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
 	Callbacks []string `pulumi:"callbacks"`
 	// The ID of the client. If not provided, `name` must be set.
@@ -44265,6 +46705,8 @@ type GetClientsClientArgs struct {
 	AllowedOrigins pulumi.StringArrayInput `pulumi:"allowedOrigins"`
 	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
 	AppType pulumi.StringInput `pulumi:"appType"`
+	// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `["guardian-push"]` if not specified.
+	AsyncApprovalNotificationChannels pulumi.StringArrayInput `pulumi:"asyncApprovalNotificationChannels"`
 	// URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
 	Callbacks pulumi.StringArrayInput `pulumi:"callbacks"`
 	// The ID of the client. If not provided, `name` must be set.
@@ -44368,6 +46810,11 @@ func (o GetClientsClientOutput) AllowedOrigins() pulumi.StringArrayOutput {
 // Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
 func (o GetClientsClientOutput) AppType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClientsClient) string { return v.AppType }).(pulumi.StringOutput)
+}
+
+// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `["guardian-push"]` if not specified.
+func (o GetClientsClientOutput) AsyncApprovalNotificationChannels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClientsClient) []string { return v.AsyncApprovalNotificationChannels }).(pulumi.StringArrayOutput)
 }
 
 // URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
@@ -57124,6 +59571,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionSecretArrayInput)(nil)).Elem(), ActionSecretArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionSupportedTriggersInput)(nil)).Elem(), ActionSupportedTriggersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionSupportedTriggersPtrInput)(nil)).Elem(), ActionSupportedTriggersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttackProtectionBotDetectionInput)(nil)).Elem(), AttackProtectionBotDetectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttackProtectionBotDetectionPtrInput)(nil)).Elem(), AttackProtectionBotDetectionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttackProtectionBreachedPasswordDetectionInput)(nil)).Elem(), AttackProtectionBreachedPasswordDetectionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttackProtectionBreachedPasswordDetectionPtrInput)(nil)).Elem(), AttackProtectionBreachedPasswordDetectionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttackProtectionBreachedPasswordDetectionPreChangePasswordInput)(nil)).Elem(), AttackProtectionBreachedPasswordDetectionPreChangePasswordArgs{})
@@ -57132,6 +59581,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AttackProtectionBreachedPasswordDetectionPreUserRegistrationPtrInput)(nil)).Elem(), AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttackProtectionBruteForceProtectionInput)(nil)).Elem(), AttackProtectionBruteForceProtectionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttackProtectionBruteForceProtectionPtrInput)(nil)).Elem(), AttackProtectionBruteForceProtectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttackProtectionCaptchaInput)(nil)).Elem(), AttackProtectionCaptchaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttackProtectionCaptchaPtrInput)(nil)).Elem(), AttackProtectionCaptchaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttackProtectionCaptchaArkoseInput)(nil)).Elem(), AttackProtectionCaptchaArkoseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttackProtectionCaptchaArkosePtrInput)(nil)).Elem(), AttackProtectionCaptchaArkoseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttackProtectionCaptchaAuthChallengeInput)(nil)).Elem(), AttackProtectionCaptchaAuthChallengeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttackProtectionCaptchaAuthChallengePtrInput)(nil)).Elem(), AttackProtectionCaptchaAuthChallengeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttackProtectionCaptchaFriendlyCaptchaInput)(nil)).Elem(), AttackProtectionCaptchaFriendlyCaptchaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttackProtectionCaptchaFriendlyCaptchaPtrInput)(nil)).Elem(), AttackProtectionCaptchaFriendlyCaptchaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttackProtectionCaptchaHcaptchaInput)(nil)).Elem(), AttackProtectionCaptchaHcaptchaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttackProtectionCaptchaHcaptchaPtrInput)(nil)).Elem(), AttackProtectionCaptchaHcaptchaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttackProtectionCaptchaRecaptchaEnterpriseInput)(nil)).Elem(), AttackProtectionCaptchaRecaptchaEnterpriseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttackProtectionCaptchaRecaptchaEnterprisePtrInput)(nil)).Elem(), AttackProtectionCaptchaRecaptchaEnterpriseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttackProtectionCaptchaRecaptchaV2Input)(nil)).Elem(), AttackProtectionCaptchaRecaptchaV2Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttackProtectionCaptchaRecaptchaV2PtrInput)(nil)).Elem(), AttackProtectionCaptchaRecaptchaV2Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttackProtectionSuspiciousIpThrottlingInput)(nil)).Elem(), AttackProtectionSuspiciousIpThrottlingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttackProtectionSuspiciousIpThrottlingPtrInput)(nil)).Elem(), AttackProtectionSuspiciousIpThrottlingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttackProtectionSuspiciousIpThrottlingPreLoginInput)(nil)).Elem(), AttackProtectionSuspiciousIpThrottlingPreLoginArgs{})
@@ -57507,6 +59970,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetActionSecretArrayInput)(nil)).Elem(), GetActionSecretArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetActionSupportedTriggerInput)(nil)).Elem(), GetActionSupportedTriggerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetActionSupportedTriggerArrayInput)(nil)).Elem(), GetActionSupportedTriggerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackProtectionBotDetectionInput)(nil)).Elem(), GetAttackProtectionBotDetectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackProtectionBotDetectionArrayInput)(nil)).Elem(), GetAttackProtectionBotDetectionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackProtectionBreachedPasswordDetectionInput)(nil)).Elem(), GetAttackProtectionBreachedPasswordDetectionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackProtectionBreachedPasswordDetectionArrayInput)(nil)).Elem(), GetAttackProtectionBreachedPasswordDetectionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackProtectionBreachedPasswordDetectionPreChangePasswordInput)(nil)).Elem(), GetAttackProtectionBreachedPasswordDetectionPreChangePasswordArgs{})
@@ -57515,6 +59980,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationArrayInput)(nil)).Elem(), GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackProtectionBruteForceProtectionInput)(nil)).Elem(), GetAttackProtectionBruteForceProtectionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackProtectionBruteForceProtectionArrayInput)(nil)).Elem(), GetAttackProtectionBruteForceProtectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackProtectionCaptchaInput)(nil)).Elem(), GetAttackProtectionCaptchaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackProtectionCaptchaArrayInput)(nil)).Elem(), GetAttackProtectionCaptchaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackProtectionCaptchaArkoseInput)(nil)).Elem(), GetAttackProtectionCaptchaArkoseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackProtectionCaptchaArkoseArrayInput)(nil)).Elem(), GetAttackProtectionCaptchaArkoseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackProtectionCaptchaAuthChallengeInput)(nil)).Elem(), GetAttackProtectionCaptchaAuthChallengeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackProtectionCaptchaAuthChallengeArrayInput)(nil)).Elem(), GetAttackProtectionCaptchaAuthChallengeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackProtectionCaptchaFriendlyCaptchaInput)(nil)).Elem(), GetAttackProtectionCaptchaFriendlyCaptchaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackProtectionCaptchaFriendlyCaptchaArrayInput)(nil)).Elem(), GetAttackProtectionCaptchaFriendlyCaptchaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackProtectionCaptchaHcaptchaInput)(nil)).Elem(), GetAttackProtectionCaptchaHcaptchaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackProtectionCaptchaHcaptchaArrayInput)(nil)).Elem(), GetAttackProtectionCaptchaHcaptchaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackProtectionCaptchaRecaptchaEnterpriseInput)(nil)).Elem(), GetAttackProtectionCaptchaRecaptchaEnterpriseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackProtectionCaptchaRecaptchaEnterpriseArrayInput)(nil)).Elem(), GetAttackProtectionCaptchaRecaptchaEnterpriseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackProtectionCaptchaRecaptchaV2Input)(nil)).Elem(), GetAttackProtectionCaptchaRecaptchaV2Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackProtectionCaptchaRecaptchaV2ArrayInput)(nil)).Elem(), GetAttackProtectionCaptchaRecaptchaV2Array{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackProtectionSuspiciousIpThrottlingInput)(nil)).Elem(), GetAttackProtectionSuspiciousIpThrottlingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackProtectionSuspiciousIpThrottlingArrayInput)(nil)).Elem(), GetAttackProtectionSuspiciousIpThrottlingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackProtectionSuspiciousIpThrottlingPreLoginInput)(nil)).Elem(), GetAttackProtectionSuspiciousIpThrottlingPreLoginArgs{})
@@ -57877,6 +60356,8 @@ func init() {
 	pulumi.RegisterOutputType(ActionSecretArrayOutput{})
 	pulumi.RegisterOutputType(ActionSupportedTriggersOutput{})
 	pulumi.RegisterOutputType(ActionSupportedTriggersPtrOutput{})
+	pulumi.RegisterOutputType(AttackProtectionBotDetectionOutput{})
+	pulumi.RegisterOutputType(AttackProtectionBotDetectionPtrOutput{})
 	pulumi.RegisterOutputType(AttackProtectionBreachedPasswordDetectionOutput{})
 	pulumi.RegisterOutputType(AttackProtectionBreachedPasswordDetectionPtrOutput{})
 	pulumi.RegisterOutputType(AttackProtectionBreachedPasswordDetectionPreChangePasswordOutput{})
@@ -57885,6 +60366,20 @@ func init() {
 	pulumi.RegisterOutputType(AttackProtectionBreachedPasswordDetectionPreUserRegistrationPtrOutput{})
 	pulumi.RegisterOutputType(AttackProtectionBruteForceProtectionOutput{})
 	pulumi.RegisterOutputType(AttackProtectionBruteForceProtectionPtrOutput{})
+	pulumi.RegisterOutputType(AttackProtectionCaptchaOutput{})
+	pulumi.RegisterOutputType(AttackProtectionCaptchaPtrOutput{})
+	pulumi.RegisterOutputType(AttackProtectionCaptchaArkoseOutput{})
+	pulumi.RegisterOutputType(AttackProtectionCaptchaArkosePtrOutput{})
+	pulumi.RegisterOutputType(AttackProtectionCaptchaAuthChallengeOutput{})
+	pulumi.RegisterOutputType(AttackProtectionCaptchaAuthChallengePtrOutput{})
+	pulumi.RegisterOutputType(AttackProtectionCaptchaFriendlyCaptchaOutput{})
+	pulumi.RegisterOutputType(AttackProtectionCaptchaFriendlyCaptchaPtrOutput{})
+	pulumi.RegisterOutputType(AttackProtectionCaptchaHcaptchaOutput{})
+	pulumi.RegisterOutputType(AttackProtectionCaptchaHcaptchaPtrOutput{})
+	pulumi.RegisterOutputType(AttackProtectionCaptchaRecaptchaEnterpriseOutput{})
+	pulumi.RegisterOutputType(AttackProtectionCaptchaRecaptchaEnterprisePtrOutput{})
+	pulumi.RegisterOutputType(AttackProtectionCaptchaRecaptchaV2Output{})
+	pulumi.RegisterOutputType(AttackProtectionCaptchaRecaptchaV2PtrOutput{})
 	pulumi.RegisterOutputType(AttackProtectionSuspiciousIpThrottlingOutput{})
 	pulumi.RegisterOutputType(AttackProtectionSuspiciousIpThrottlingPtrOutput{})
 	pulumi.RegisterOutputType(AttackProtectionSuspiciousIpThrottlingPreLoginOutput{})
@@ -58260,6 +60755,8 @@ func init() {
 	pulumi.RegisterOutputType(GetActionSecretArrayOutput{})
 	pulumi.RegisterOutputType(GetActionSupportedTriggerOutput{})
 	pulumi.RegisterOutputType(GetActionSupportedTriggerArrayOutput{})
+	pulumi.RegisterOutputType(GetAttackProtectionBotDetectionOutput{})
+	pulumi.RegisterOutputType(GetAttackProtectionBotDetectionArrayOutput{})
 	pulumi.RegisterOutputType(GetAttackProtectionBreachedPasswordDetectionOutput{})
 	pulumi.RegisterOutputType(GetAttackProtectionBreachedPasswordDetectionArrayOutput{})
 	pulumi.RegisterOutputType(GetAttackProtectionBreachedPasswordDetectionPreChangePasswordOutput{})
@@ -58268,6 +60765,20 @@ func init() {
 	pulumi.RegisterOutputType(GetAttackProtectionBreachedPasswordDetectionPreUserRegistrationArrayOutput{})
 	pulumi.RegisterOutputType(GetAttackProtectionBruteForceProtectionOutput{})
 	pulumi.RegisterOutputType(GetAttackProtectionBruteForceProtectionArrayOutput{})
+	pulumi.RegisterOutputType(GetAttackProtectionCaptchaOutput{})
+	pulumi.RegisterOutputType(GetAttackProtectionCaptchaArrayOutput{})
+	pulumi.RegisterOutputType(GetAttackProtectionCaptchaArkoseOutput{})
+	pulumi.RegisterOutputType(GetAttackProtectionCaptchaArkoseArrayOutput{})
+	pulumi.RegisterOutputType(GetAttackProtectionCaptchaAuthChallengeOutput{})
+	pulumi.RegisterOutputType(GetAttackProtectionCaptchaAuthChallengeArrayOutput{})
+	pulumi.RegisterOutputType(GetAttackProtectionCaptchaFriendlyCaptchaOutput{})
+	pulumi.RegisterOutputType(GetAttackProtectionCaptchaFriendlyCaptchaArrayOutput{})
+	pulumi.RegisterOutputType(GetAttackProtectionCaptchaHcaptchaOutput{})
+	pulumi.RegisterOutputType(GetAttackProtectionCaptchaHcaptchaArrayOutput{})
+	pulumi.RegisterOutputType(GetAttackProtectionCaptchaRecaptchaEnterpriseOutput{})
+	pulumi.RegisterOutputType(GetAttackProtectionCaptchaRecaptchaEnterpriseArrayOutput{})
+	pulumi.RegisterOutputType(GetAttackProtectionCaptchaRecaptchaV2Output{})
+	pulumi.RegisterOutputType(GetAttackProtectionCaptchaRecaptchaV2ArrayOutput{})
 	pulumi.RegisterOutputType(GetAttackProtectionSuspiciousIpThrottlingOutput{})
 	pulumi.RegisterOutputType(GetAttackProtectionSuspiciousIpThrottlingArrayOutput{})
 	pulumi.RegisterOutputType(GetAttackProtectionSuspiciousIpThrottlingPreLoginOutput{})
