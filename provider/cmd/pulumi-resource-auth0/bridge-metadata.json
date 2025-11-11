@@ -20,6 +20,16 @@
                 "current": "auth0:index/attackProtection:AttackProtection",
                 "majorVersion": 3,
                 "fields": {
+                    "bot_detection": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "allowlist": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "breached_password_detection": {
                         "maxItemsOne": true,
                         "elem": {
@@ -62,6 +72,31 @@
                                 },
                                 "shields": {
                                     "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "captcha": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "arkose": {
+                                    "maxItemsOne": true
+                                },
+                                "auth_challenge": {
+                                    "maxItemsOne": true
+                                },
+                                "friendly_captcha": {
+                                    "maxItemsOne": true
+                                },
+                                "hcaptcha": {
+                                    "maxItemsOne": true
+                                },
+                                "recaptcha_enterprise": {
+                                    "maxItemsOne": true
+                                },
+                                "recaptcha_v2": {
+                                    "maxItemsOne": true
                                 }
                             }
                         }
@@ -267,6 +302,9 @@
                         "maxItemsOne": false
                     },
                     "allowed_origins": {
+                        "maxItemsOne": false
+                    },
+                    "async_approval_notification_channels": {
                         "maxItemsOne": false
                     },
                     "callbacks": {
@@ -670,6 +708,15 @@
                 "majorVersion": 3,
                 "fields": {
                     "mapping": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "auth0_connection_scim_token": {
+                "current": "auth0:index/connectionScimToken:ConnectionScimToken",
+                "majorVersion": 3,
+                "fields": {
+                    "scopes": {
                         "maxItemsOne": false
                     }
                 }
@@ -1383,6 +1430,16 @@
                 "current": "auth0:index/getAttackProtection:getAttackProtection",
                 "majorVersion": 3,
                 "fields": {
+                    "bot_detection": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "allowlist": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "breached_password_detection": {
                         "maxItemsOne": false,
                         "elem": {
@@ -1424,6 +1481,31 @@
                                     "maxItemsOne": false
                                 },
                                 "shields": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "captcha": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "arkose": {
+                                    "maxItemsOne": false
+                                },
+                                "auth_challenge": {
+                                    "maxItemsOne": false
+                                },
+                                "friendly_captcha": {
+                                    "maxItemsOne": false
+                                },
+                                "hcaptcha": {
+                                    "maxItemsOne": false
+                                },
+                                "recaptcha_enterprise": {
+                                    "maxItemsOne": false
+                                },
+                                "recaptcha_v2": {
                                     "maxItemsOne": false
                                 }
                             }
@@ -1630,6 +1712,9 @@
                         "maxItemsOne": false
                     },
                     "allowed_origins": {
+                        "maxItemsOne": false
+                    },
+                    "async_approval_notification_channels": {
                         "maxItemsOne": false
                     },
                     "callbacks": {
@@ -1852,6 +1937,9 @@
                                     "maxItemsOne": false
                                 },
                                 "allowed_origins": {
+                                    "maxItemsOne": false
+                                },
+                                "async_approval_notification_channels": {
                                     "maxItemsOne": false
                                 },
                                 "callbacks": {
