@@ -18,6 +18,67 @@ namespace Pulumi.Auth0
     /// 
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var resourceServer = new Auth0.ResourceServer("resource_server", new()
+    ///     {
+    ///         Name = "Example Resource Server (Managed by Terraform)",
+    ///         Identifier = "https://api.example.com",
+    ///         Scopes = new[]
+    ///         {
+    ///             
+    ///             {
+    ///                 { "value", "create:foo" },
+    ///                 { "description", "Create foos" },
+    ///             },
+    ///             
+    ///             {
+    ///                 { "value", "read:foo" },
+    ///                 { "description", "Read foos" },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var user = new Auth0.User("user", new()
+    ///     {
+    ///         ConnectionName = "Username-Password-Authentication",
+    ///         UserId = "12345",
+    ///         Username = "unique_username",
+    ///         Name = "Firstname Lastname",
+    ///         Nickname = "some.nickname",
+    ///         Email = "test@test.com",
+    ///         EmailVerified = true,
+    ///         Password = "passpass$12$12",
+    ///         Picture = "https://www.example.com/a-valid-picture-url.jpg",
+    ///     });
+    /// 
+    ///     var allUserPermissions = new Auth0.UserPermissions("all_user_permissions", new()
+    ///     {
+    ///         UserId = user.Id,
+    ///         Permissions = new[]
+    ///         {
+    ///             new Auth0.Inputs.UserPermissionsPermissionArgs
+    ///             {
+    ///                 Name = resourceServer.Scopes[0],
+    ///                 ResourceServerIdentifier = resourceServer.Identifier,
+    ///             },
+    ///             new Auth0.Inputs.UserPermissionsPermissionArgs
+    ///             {
+    ///                 Name = resourceServer.Scopes[1],
+    ///                 ResourceServerIdentifier = resourceServer.Identifier,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// This resource can be imported by specifying the user ID

@@ -114,6 +114,47 @@ class UserPermissions(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        resource_server = auth0.ResourceServer("resource_server",
+            name="Example Resource Server (Managed by Terraform)",
+            identifier="https://api.example.com",
+            scopes=[
+                {
+                    "value": "create:foo",
+                    "description": "Create foos",
+                },
+                {
+                    "value": "read:foo",
+                    "description": "Read foos",
+                },
+            ])
+        user = auth0.User("user",
+            connection_name="Username-Password-Authentication",
+            user_id="12345",
+            username="unique_username",
+            name="Firstname Lastname",
+            nickname="some.nickname",
+            email="test@test.com",
+            email_verified=True,
+            password="passpass$12$12",
+            picture="https://www.example.com/a-valid-picture-url.jpg")
+        all_user_permissions = auth0.UserPermissions("all_user_permissions",
+            user_id=user.id,
+            permissions=[
+                {
+                    "name": resource_server.scopes[0],
+                    "resource_server_identifier": resource_server.identifier,
+                },
+                {
+                    "name": resource_server.scopes[1],
+                    "resource_server_identifier": resource_server.identifier,
+                },
+            ])
+        ```
+
         ## Import
 
         This resource can be imported by specifying the user ID
@@ -143,6 +184,47 @@ class UserPermissions(pulumi.CustomResource):
         with the `UserPermission` resource when managing permissions for the same user id.
 
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        resource_server = auth0.ResourceServer("resource_server",
+            name="Example Resource Server (Managed by Terraform)",
+            identifier="https://api.example.com",
+            scopes=[
+                {
+                    "value": "create:foo",
+                    "description": "Create foos",
+                },
+                {
+                    "value": "read:foo",
+                    "description": "Read foos",
+                },
+            ])
+        user = auth0.User("user",
+            connection_name="Username-Password-Authentication",
+            user_id="12345",
+            username="unique_username",
+            name="Firstname Lastname",
+            nickname="some.nickname",
+            email="test@test.com",
+            email_verified=True,
+            password="passpass$12$12",
+            picture="https://www.example.com/a-valid-picture-url.jpg")
+        all_user_permissions = auth0.UserPermissions("all_user_permissions",
+            user_id=user.id,
+            permissions=[
+                {
+                    "name": resource_server.scopes[0],
+                    "resource_server_identifier": resource_server.identifier,
+                },
+                {
+                    "name": resource_server.scopes[1],
+                    "resource_server_identifier": resource_server.identifier,
+                },
+            ])
+        ```
 
         ## Import
 

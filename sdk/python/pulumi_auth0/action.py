@@ -297,6 +297,54 @@ class Action(pulumi.CustomResource):
         > Values provided in the sensitive values shall be stored in the raw state as plain text: secrets.
         Read more about sensitive data in state.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+        import pulumi_std as std
+
+        my_action = auth0.Action("my_action",
+            name=std.index.format(input="Test Action %s",
+                args=[std.index.timestamp()["result"]])["result"],
+            runtime="node22",
+            deploy=True,
+            code=\"\"\"/**
+         * Handler that will be called during the execution of a PostLogin flow.
+         *
+         * @param {Event} event - Details about the user and the context in which they are logging in.
+         * @param {PostLoginAPI} api - Interface whose methods can be used to change the behavior of the login.
+         */
+         exports.onExecutePostLogin = async (event, api) => {
+           console.log(event);
+         };
+        \"\"\",
+            supported_triggers={
+                "id": "post-login",
+                "version": "v3",
+            },
+            dependencies=[
+                {
+                    "name": "lodash",
+                    "version": "latest",
+                },
+                {
+                    "name": "request",
+                    "version": "latest",
+                },
+            ],
+            secrets=[
+                {
+                    "name": "FOO",
+                    "value": "Foo",
+                },
+                {
+                    "name": "BAR",
+                    "value": "Bar",
+                },
+            ])
+        ```
+
         ## Import
 
         This resource can be imported by specifying the action ID.
@@ -337,6 +385,54 @@ class Action(pulumi.CustomResource):
 
         > Values provided in the sensitive values shall be stored in the raw state as plain text: secrets.
         Read more about sensitive data in state.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+        import pulumi_std as std
+
+        my_action = auth0.Action("my_action",
+            name=std.index.format(input="Test Action %s",
+                args=[std.index.timestamp()["result"]])["result"],
+            runtime="node22",
+            deploy=True,
+            code=\"\"\"/**
+         * Handler that will be called during the execution of a PostLogin flow.
+         *
+         * @param {Event} event - Details about the user and the context in which they are logging in.
+         * @param {PostLoginAPI} api - Interface whose methods can be used to change the behavior of the login.
+         */
+         exports.onExecutePostLogin = async (event, api) => {
+           console.log(event);
+         };
+        \"\"\",
+            supported_triggers={
+                "id": "post-login",
+                "version": "v3",
+            },
+            dependencies=[
+                {
+                    "name": "lodash",
+                    "version": "latest",
+                },
+                {
+                    "name": "request",
+                    "version": "latest",
+                },
+            ],
+            secrets=[
+                {
+                    "name": "FOO",
+                    "value": "Foo",
+                },
+                {
+                    "name": "BAR",
+                    "value": "Bar",
+                },
+            ])
+        ```
 
         ## Import
 

@@ -30,6 +30,82 @@ import javax.annotation.Nullable;
  * &gt; Values provided in the sensitive values shall be stored in the raw state as plain text: secrets.
  * Read more about sensitive data in state.
  * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.auth0.Action;
+ * import com.pulumi.auth0.ActionArgs;
+ * import com.pulumi.auth0.inputs.ActionSupportedTriggersArgs;
+ * import com.pulumi.auth0.inputs.ActionDependencyArgs;
+ * import com.pulumi.auth0.inputs.ActionSecretArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var myAction = new Action("myAction", ActionArgs.builder()
+ *             .name(StdFunctions.format(Map.ofEntries(
+ *                 Map.entry("input", "Test Action %s"),
+ *                 Map.entry("args", StdFunctions.timestamp(Map.ofEntries(
+ *                 )).result())
+ *             )).result())
+ *             .runtime("node22")
+ *             .deploy(true)
+ *             .code("""
+ * /**
+ *  * Handler that will be called during the execution of a PostLogin flow.
+ *  *
+ *  * }{@literal @}{@code param }{{@code Event}}{@code  event - Details about the user and the context in which they are logging in.
+ *  * }{@literal @}{@code param }{{@code PostLoginAPI}}{@code  api - Interface whose methods can be used to change the behavior of the login.
+ *  *}&#47;{@code
+ *  exports.onExecutePostLogin = async (event, api) => }{{@code
+ *    console.log(event);
+ *  }}{@code ;
+ *             """)
+ *             .supportedTriggers(ActionSupportedTriggersArgs.builder()
+ *                 .id("post-login")
+ *                 .version("v3")
+ *                 .build())
+ *             .dependencies(            
+ *                 ActionDependencyArgs.builder()
+ *                     .name("lodash")
+ *                     .version("latest")
+ *                     .build(),
+ *                 ActionDependencyArgs.builder()
+ *                     .name("request")
+ *                     .version("latest")
+ *                     .build())
+ *             .secrets(            
+ *                 ActionSecretArgs.builder()
+ *                     .name("FOO")
+ *                     .value("Foo")
+ *                     .build(),
+ *                 ActionSecretArgs.builder()
+ *                     .name("BAR")
+ *                     .value("Bar")
+ *                     .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * This resource can be imported by specifying the action ID.

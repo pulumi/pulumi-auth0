@@ -18,6 +18,56 @@ namespace Pulumi.Auth0
     /// 
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var resourceServer = new Auth0.ResourceServer("resource_server", new()
+    ///     {
+    ///         Name = "Example Resource Server (Managed by Terraform)",
+    ///         Identifier = "https://api.example.com",
+    ///         Scopes = new[]
+    ///         {
+    ///             
+    ///             {
+    ///                 { "value", "create:foo" },
+    ///                 { "description", "Create foos" },
+    ///             },
+    ///             
+    ///             {
+    ///                 { "value", "create:bar" },
+    ///                 { "description", "Create bars" },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var user = new Auth0.User("user", new()
+    ///     {
+    ///         ConnectionName = "Username-Password-Authentication",
+    ///         UserId = "12345",
+    ///         Username = "unique_username",
+    ///         Name = "Firstname Lastname",
+    ///         Nickname = "some.nickname",
+    ///         Email = "test@test.com",
+    ///         EmailVerified = true,
+    ///         Password = "passpass$12$12",
+    ///         Picture = "https://www.example.com/a-valid-picture-url.jpg",
+    ///     });
+    /// 
+    ///     var userPermissionRead = new Auth0.UserPermission("user_permission_read", new()
+    ///     {
+    ///         UserId = user.Id,
+    ///         ResourceServerIdentifier = resourceServer.Identifier,
+    ///         Permission = resourceServer.Scopes[0],
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// This resource can be imported by specifying the

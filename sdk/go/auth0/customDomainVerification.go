@@ -14,6 +14,58 @@ import (
 
 // With Auth0, you can use a custom domain to maintain a consistent user experience. This is a three-step process; you must configure the custom domain in Auth0, then create a DNS record for the domain, then verify the DNS record in Auth0. This resource allows for automating the verification part of the process.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
+//	"github.com/pulumi/pulumi-digitalocean/sdk/go/digitalocean"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Example of a custom domain managed through DigitalOcean and verified using this resource.
+//			myCustomDomain, err := auth0.NewCustomDomain(ctx, "my_custom_domain", &auth0.CustomDomainArgs{
+//				Domain: pulumi.String("login.example.com"),
+//				Type:   pulumi.String("auth0_managed_certs"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			myDomainNameRecord, err := digitalocean.NewRecord(ctx, "my_domain_name_record", &digitalocean.RecordArgs{
+//				Domain: "example.com",
+//				Type: std.Upper(ctx, map[string]interface{}{
+//					"input": myCustomDomain.Verifications[0].Methods[0].Name,
+//				}, nil).Result,
+//				Name: std.Trimsuffix(ctx, map[string]interface{}{
+//					"input":  myCustomDomain.Verifications[0].Methods[0].Domain,
+//					"suffix": ".example.com",
+//				}, nil).Result,
+//				Value: myCustomDomain.Verifications[0].Methods[0].Record,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = auth0.NewCustomDomainVerification(ctx, "my_custom_domain_verification", &auth0.CustomDomainVerificationArgs{
+//				CustomDomainId: myCustomDomain.ID(),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				myDomainNameRecord,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // You can import this resource using the custom domain ID.

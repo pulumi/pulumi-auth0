@@ -13,6 +13,42 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * const resourceServer = new auth0.ResourceServer("resource_server", {
+ *     name: "Example Resource Server (Managed by Terraform)",
+ *     identifier: "https://api.example.com",
+ *     scopes: [
+ *         {
+ *             value: "create:foo",
+ *             description: "Create foos",
+ *         },
+ *         {
+ *             value: "create:bar",
+ *             description: "Create bars",
+ *         },
+ *     ],
+ * });
+ * const user = new auth0.User("user", {
+ *     connectionName: "Username-Password-Authentication",
+ *     userId: "12345",
+ *     username: "unique_username",
+ *     name: "Firstname Lastname",
+ *     nickname: "some.nickname",
+ *     email: "test@test.com",
+ *     emailVerified: true,
+ *     password: "passpass$12$12",
+ *     picture: "https://www.example.com/a-valid-picture-url.jpg",
+ * });
+ * const userPermissionRead = new auth0.UserPermission("user_permission_read", {
+ *     userId: user.id,
+ *     resourceServerIdentifier: resourceServer.identifier,
+ *     permission: resourceServer.scopes[0],
+ * });
+ * ```
+ *
  * ## Import
  *
  * This resource can be imported by specifying the
