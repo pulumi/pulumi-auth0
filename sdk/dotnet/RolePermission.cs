@@ -16,6 +16,75 @@ namespace Pulumi.Auth0
     /// permissions assigned to a role. To avoid potential issues, it is recommended not to use this resource in conjunction
     /// with the `auth0.RolePermissions` resource when managing permissions for the same role id.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Example:
+    ///     var resourceServer = new Auth0.ResourceServer("resource_server", new()
+    ///     {
+    ///         Name = "test",
+    ///         Identifier = "test.example.com",
+    ///     });
+    /// 
+    ///     var resourceServerScopes = new Auth0.ResourceServerScopes("resource_server_scopes", new()
+    ///     {
+    ///         ResourceServerIdentifier = resourceServer.Identifier,
+    ///         Scopes = new[]
+    ///         {
+    ///             new Auth0.Inputs.ResourceServerScopesScopeArgs
+    ///             {
+    ///                 Name = "store:create",
+    ///             },
+    ///             new Auth0.Inputs.ResourceServerScopesScopeArgs
+    ///             {
+    ///                 Name = "store:read",
+    ///             },
+    ///             new Auth0.Inputs.ResourceServerScopesScopeArgs
+    ///             {
+    ///                 Name = "store:update",
+    ///             },
+    ///             new Auth0.Inputs.ResourceServerScopesScopeArgs
+    ///             {
+    ///                 Name = "store:delete",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var myRole = new Auth0.Role("my_role", new()
+    ///     {
+    ///         Name = "My Role",
+    ///     });
+    /// 
+    ///     var scopesList = resourceServerScopes.Scopes.Apply(scopes =&gt; scopes.Select(scope =&gt; 
+    ///     {
+    ///         return scope.Name;
+    ///     }).ToList());
+    /// 
+    ///     var myRolePerm = new List&lt;Auth0.RolePermission&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; Std.Index.Toset.Invoke(new()
+    ///     {
+    ///         Input = scopesList,
+    ///     }).Result; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         myRolePerm.Add(new Auth0.RolePermission($"my_role_perm-{range.Value}", new()
+    ///         {
+    ///             RoleId = myRole.Id,
+    ///             ResourceServerIdentifier = resourceServer.Identifier,
+    ///             Permission = range.Value,
+    ///         }));
+    ///     }
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// This resource can be imported by specifying the

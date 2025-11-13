@@ -18,6 +18,8 @@ import (
 // permissions assigned to a role. To avoid potential issues, it is recommended not to use this resource in conjunction
 // with the `RolePermissions` resource when managing permissions for the same role id.
 //
+// ## Example Usage
+//
 // ## Import
 //
 // # This resource can be imported by specifying the

@@ -12,6 +12,54 @@ namespace Pulumi.Auth0
     /// <summary>
     /// With Auth0, you can use a custom domain to maintain a consistent user experience. This is a three-step process; you must configure the custom domain in Auth0, then create a DNS record for the domain, then verify the DNS record in Auth0. This resource allows for automating the verification part of the process.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// using Digitalocean = Pulumi.Digitalocean;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Example of a custom domain managed through DigitalOcean and verified using this resource.
+    ///     var myCustomDomain = new Auth0.CustomDomain("my_custom_domain", new()
+    ///     {
+    ///         Domain = "login.example.com",
+    ///         Type = "auth0_managed_certs",
+    ///     });
+    /// 
+    ///     var myDomainNameRecord = new Digitalocean.Index.Record("my_domain_name_record", new()
+    ///     {
+    ///         Domain = "example.com",
+    ///         Type = Std.Index.Upper.Invoke(new()
+    ///         {
+    ///             Input = myCustomDomain.Verifications[0].Methods[0]?.Name,
+    ///         }).Result,
+    ///         Name = Std.Index.Trimsuffix.Invoke(new()
+    ///         {
+    ///             Input = myCustomDomain.Verifications[0].Methods[0]?.Domain,
+    ///             Suffix = ".example.com",
+    ///         }).Result,
+    ///         Value = myCustomDomain.Verifications[0].Methods[0]?.Record,
+    ///     });
+    /// 
+    ///     var myCustomDomainVerification = new Auth0.CustomDomainVerification("my_custom_domain_verification", new()
+    ///     {
+    ///         CustomDomainId = myCustomDomain.Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             myDomainNameRecord,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// You can import this resource using the custom domain ID.

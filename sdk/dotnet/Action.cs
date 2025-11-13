@@ -20,6 +20,75 @@ namespace Pulumi.Auth0
     /// &gt; Values provided in the sensitive values shall be stored in the raw state as plain text: secrets.
     /// Read more about sensitive data in state.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myAction = new Auth0.Action("my_action", new()
+    ///     {
+    ///         Name = Std.Index.Format.Invoke(new()
+    ///         {
+    ///             Input = "Test Action %s",
+    ///             Args = new[]
+    ///             {
+    ///                 Std.Index.Timestamp.Invoke().Result,
+    ///             },
+    ///         }).Result,
+    ///         Runtime = "node22",
+    ///         Deploy = true,
+    ///         Code = @"/**
+    ///  * Handler that will be called during the execution of a PostLogin flow.
+    ///  *
+    ///  * @param {Event} event - Details about the user and the context in which they are logging in.
+    ///  * @param {PostLoginAPI} api - Interface whose methods can be used to change the behavior of the login.
+    ///  */
+    ///  exports.onExecutePostLogin = async (event, api) =&gt; {
+    ///    console.log(event);
+    ///  };
+    /// ",
+    ///         SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs
+    ///         {
+    ///             Id = "post-login",
+    ///             Version = "v3",
+    ///         },
+    ///         Dependencies = new[]
+    ///         {
+    ///             new Auth0.Inputs.ActionDependencyArgs
+    ///             {
+    ///                 Name = "lodash",
+    ///                 Version = "latest",
+    ///             },
+    ///             new Auth0.Inputs.ActionDependencyArgs
+    ///             {
+    ///                 Name = "request",
+    ///                 Version = "latest",
+    ///             },
+    ///         },
+    ///         Secrets = new[]
+    ///         {
+    ///             new Auth0.Inputs.ActionSecretArgs
+    ///             {
+    ///                 Name = "FOO",
+    ///                 Value = "Foo",
+    ///             },
+    ///             new Auth0.Inputs.ActionSecretArgs
+    ///             {
+    ///                 Name = "BAR",
+    ///                 Value = "Bar",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// This resource can be imported by specifying the action ID.

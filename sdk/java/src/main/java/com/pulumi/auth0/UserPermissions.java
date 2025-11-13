@@ -24,6 +24,77 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.auth0.ResourceServer;
+ * import com.pulumi.auth0.ResourceServerArgs;
+ * import com.pulumi.auth0.User;
+ * import com.pulumi.auth0.UserArgs;
+ * import com.pulumi.auth0.UserPermissions;
+ * import com.pulumi.auth0.UserPermissionsArgs;
+ * import com.pulumi.auth0.inputs.UserPermissionsPermissionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var resourceServer = new ResourceServer("resourceServer", ResourceServerArgs.builder()
+ *             .name("Example Resource Server (Managed by Terraform)")
+ *             .identifier("https://api.example.com")
+ *             .scopes(List.of(            
+ *                 Map.ofEntries(
+ *                     Map.entry("value", "create:foo"),
+ *                     Map.entry("description", "Create foos")
+ *                 ),
+ *                 Map.ofEntries(
+ *                     Map.entry("value", "read:foo"),
+ *                     Map.entry("description", "Read foos")
+ *                 )))
+ *             .build());
+ * 
+ *         var user = new User("user", UserArgs.builder()
+ *             .connectionName("Username-Password-Authentication")
+ *             .userId("12345")
+ *             .username("unique_username")
+ *             .name("Firstname Lastname")
+ *             .nickname("some.nickname")
+ *             .email("test}{@literal @}{@code test.com")
+ *             .emailVerified(true)
+ *             .password("passpass$12$12")
+ *             .picture("https://www.example.com/a-valid-picture-url.jpg")
+ *             .build());
+ * 
+ *         var allUserPermissions = new UserPermissions("allUserPermissions", UserPermissionsArgs.builder()
+ *             .userId(user.id())
+ *             .permissions(            
+ *                 UserPermissionsPermissionArgs.builder()
+ *                     .name(resourceServer.scopes()[0])
+ *                     .resourceServerIdentifier(resourceServer.identifier())
+ *                     .build(),
+ *                 UserPermissionsPermissionArgs.builder()
+ *                     .name(resourceServer.scopes()[1])
+ *                     .resourceServerIdentifier(resourceServer.identifier())
+ *                     .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * This resource can be imported by specifying the user ID

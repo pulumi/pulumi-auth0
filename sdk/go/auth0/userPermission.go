@@ -20,6 +20,63 @@ import (
 //
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			resourceServer, err := auth0.NewResourceServer(ctx, "resource_server", &auth0.ResourceServerArgs{
+//				Name:       pulumi.String("Example Resource Server (Managed by Terraform)"),
+//				Identifier: pulumi.String("https://api.example.com"),
+//				Scopes: []map[string]interface{}{
+//					map[string]interface{}{
+//						"value":       "create:foo",
+//						"description": "Create foos",
+//					},
+//					map[string]interface{}{
+//						"value":       "create:bar",
+//						"description": "Create bars",
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			user, err := auth0.NewUser(ctx, "user", &auth0.UserArgs{
+//				ConnectionName: pulumi.String("Username-Password-Authentication"),
+//				UserId:         pulumi.String("12345"),
+//				Username:       pulumi.String("unique_username"),
+//				Name:           pulumi.String("Firstname Lastname"),
+//				Nickname:       pulumi.String("some.nickname"),
+//				Email:          pulumi.String("test@test.com"),
+//				EmailVerified:  pulumi.Bool(true),
+//				Password:       pulumi.String("passpass$12$12"),
+//				Picture:        pulumi.String("https://www.example.com/a-valid-picture-url.jpg"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = auth0.NewUserPermission(ctx, "user_permission_read", &auth0.UserPermissionArgs{
+//				UserId:                   user.ID(),
+//				ResourceServerIdentifier: resourceServer.Identifier,
+//				Permission:               resourceServer.Scopes[0],
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // # This resource can be imported by specifying the

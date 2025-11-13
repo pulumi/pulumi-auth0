@@ -22,6 +22,80 @@ import (
 // > Values provided in the sensitive values shall be stored in the raw state as plain text: secrets.
 // Read more about sensitive data in state.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			invokeFormat, err := std.Format(ctx, map[string]interface{}{
+//				"input": "Test Action %s",
+//				"args": []interface{}{
+//					std.Timestamp(ctx, map[string]interface{}{}, nil).Result,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = auth0.NewAction(ctx, "my_action", &auth0.ActionArgs{
+//				Name:    invokeFormat.Result,
+//				Runtime: pulumi.String("node22"),
+//				Deploy:  pulumi.Bool(true),
+//				Code: pulumi.String(`/**
+//	 * Handler that will be called during the execution of a PostLogin flow.
+//	 *
+//	 * @param {Event} event - Details about the user and the context in which they are logging in.
+//	 * @param {PostLoginAPI} api - Interface whose methods can be used to change the behavior of the login.
+//	 */
+//	 exports.onExecutePostLogin = async (event, api) => {
+//	   console.log(event);
+//	 };
+//
+// `),
+//
+//				SupportedTriggers: &auth0.ActionSupportedTriggersArgs{
+//					Id:      pulumi.String("post-login"),
+//					Version: pulumi.String("v3"),
+//				},
+//				Dependencies: auth0.ActionDependencyArray{
+//					&auth0.ActionDependencyArgs{
+//						Name:    pulumi.String("lodash"),
+//						Version: pulumi.String("latest"),
+//					},
+//					&auth0.ActionDependencyArgs{
+//						Name:    pulumi.String("request"),
+//						Version: pulumi.String("latest"),
+//					},
+//				},
+//				Secrets: auth0.ActionSecretArray{
+//					&auth0.ActionSecretArgs{
+//						Name:  pulumi.String("FOO"),
+//						Value: pulumi.String("Foo"),
+//					},
+//					&auth0.ActionSecretArgs{
+//						Name:  pulumi.String("BAR"),
+//						Value: pulumi.String("Bar"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // This resource can be imported by specifying the action ID.

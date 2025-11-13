@@ -11,6 +11,49 @@ import * as utilities from "./utilities";
  * permissions assigned to a role. To avoid potential issues, it is recommended not to use this resource in conjunction
  * with the `auth0.RolePermissions` resource when managing permissions for the same role id.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ * import * as std from "@pulumi/std";
+ *
+ * // Example:
+ * const resourceServer = new auth0.ResourceServer("resource_server", {
+ *     name: "test",
+ *     identifier: "test.example.com",
+ * });
+ * const resourceServerScopes = new auth0.ResourceServerScopes("resource_server_scopes", {
+ *     resourceServerIdentifier: resourceServer.identifier,
+ *     scopes: [
+ *         {
+ *             name: "store:create",
+ *         },
+ *         {
+ *             name: "store:read",
+ *         },
+ *         {
+ *             name: "store:update",
+ *         },
+ *         {
+ *             name: "store:delete",
+ *         },
+ *     ],
+ * });
+ * const myRole = new auth0.Role("my_role", {name: "My Role"});
+ * const scopesList = resourceServerScopes.scopes.apply(scopes => scopes.map(scope => (scope.name)));
+ * const myRolePerm: auth0.RolePermission[] = [];
+ * for (const range = {value: 0}; range.value < std.index.toset({
+ *     input: scopesList,
+ * }).result; range.value++) {
+ *     myRolePerm.push(new auth0.RolePermission(`my_role_perm-${range.value}`, {
+ *         roleId: myRole.id,
+ *         resourceServerIdentifier: resourceServer.identifier,
+ *         permission: range.value,
+ *     }));
+ * }
+ * ```
+ *
  * ## Import
  *
  * This resource can be imported by specifying the

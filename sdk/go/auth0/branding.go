@@ -13,6 +13,46 @@ import (
 
 // This resource allows you to manage branding within your Auth0 tenant. Auth0 can be customized with a look and feel that aligns with your organization's brand requirements and user expectations.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			invokeFile, err := std.File(ctx, map[string]interface{}{
+//				"input": "universal_login_body.html",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = auth0.NewBranding(ctx, "my_brand", &auth0.BrandingArgs{
+//				LogoUrl: pulumi.String("https://mycompany.org/logo.png"),
+//				Colors: &auth0.BrandingColorsArgs{
+//					Primary:        pulumi.String("#0059d6"),
+//					PageBackground: pulumi.String("#000000"),
+//				},
+//				UniversalLogin: &auth0.BrandingUniversalLoginArgs{
+//					Body: invokeFile.Result,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // As this is not a resource identifiable by an ID within the Auth0 Management API,

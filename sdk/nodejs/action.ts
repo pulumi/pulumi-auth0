@@ -17,6 +17,57 @@ import * as utilities from "./utilities";
  * > Values provided in the sensitive values shall be stored in the raw state as plain text: secrets.
  * Read more about sensitive data in state.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ * import * as std from "@pulumi/std";
+ *
+ * const myAction = new auth0.Action("my_action", {
+ *     name: std.index.format({
+ *         input: "Test Action %s",
+ *         args: [std.index.timestamp({}).result],
+ *     }).result,
+ *     runtime: "node22",
+ *     deploy: true,
+ *     code: `/**
+ *  * Handler that will be called during the execution of a PostLogin flow.
+ *  *
+ *  * @param {Event} event - Details about the user and the context in which they are logging in.
+ *  * @param {PostLoginAPI} api - Interface whose methods can be used to change the behavior of the login.
+ *  *&#47;
+ *  exports.onExecutePostLogin = async (event, api) => {
+ *    console.log(event);
+ *  };
+ * `,
+ *     supportedTriggers: {
+ *         id: "post-login",
+ *         version: "v3",
+ *     },
+ *     dependencies: [
+ *         {
+ *             name: "lodash",
+ *             version: "latest",
+ *         },
+ *         {
+ *             name: "request",
+ *             version: "latest",
+ *         },
+ *     ],
+ *     secrets: [
+ *         {
+ *             name: "FOO",
+ *             value: "Foo",
+ *         },
+ *         {
+ *             name: "BAR",
+ *             value: "Bar",
+ *         },
+ *     ],
+ * });
+ * ```
+ *
  * ## Import
  *
  * This resource can be imported by specifying the action ID.

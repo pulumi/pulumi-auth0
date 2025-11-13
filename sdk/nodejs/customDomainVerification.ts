@@ -7,6 +7,35 @@ import * as utilities from "./utilities";
 /**
  * With Auth0, you can use a custom domain to maintain a consistent user experience. This is a three-step process; you must configure the custom domain in Auth0, then create a DNS record for the domain, then verify the DNS record in Auth0. This resource allows for automating the verification part of the process.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ * import * as std from "@pulumi/std";
+ *
+ * // Example of a custom domain managed through DigitalOcean and verified using this resource.
+ * const myCustomDomain = new auth0.CustomDomain("my_custom_domain", {
+ *     domain: "login.example.com",
+ *     type: "auth0_managed_certs",
+ * });
+ * const myDomainNameRecord = new digitalocean.index.Record("my_domain_name_record", {
+ *     domain: "example.com",
+ *     type: std.index.upper({
+ *         input: myCustomDomain.verifications[0].methods?.[0]?.name,
+ *     }).result,
+ *     name: std.index.trimsuffix({
+ *         input: myCustomDomain.verifications[0].methods?.[0]?.domain,
+ *         suffix: ".example.com",
+ *     }).result,
+ *     value: myCustomDomain.verifications[0].methods?.[0]?.record,
+ * });
+ * const myCustomDomainVerification = new auth0.CustomDomainVerification("my_custom_domain_verification", {customDomainId: myCustomDomain.id}, {
+ *     dependsOn: [myDomainNameRecord],
+ * });
+ * ```
+ *
  * ## Import
  *
  * You can import this resource using the custom domain ID.
