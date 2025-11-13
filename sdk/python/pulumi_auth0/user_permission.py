@@ -176,6 +176,39 @@ class UserPermission(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        resource_server = auth0.ResourceServer("resource_server",
+            name="Example Resource Server (Managed by Terraform)",
+            identifier="https://api.example.com",
+            scopes=[
+                {
+                    "value": "create:foo",
+                    "description": "Create foos",
+                },
+                {
+                    "value": "create:bar",
+                    "description": "Create bars",
+                },
+            ])
+        user = auth0.User("user",
+            connection_name="Username-Password-Authentication",
+            user_id="12345",
+            username="unique_username",
+            name="Firstname Lastname",
+            nickname="some.nickname",
+            email="test@test.com",
+            email_verified=True,
+            password="passpass$12$12",
+            picture="https://www.example.com/a-valid-picture-url.jpg")
+        user_permission_read = auth0.UserPermission("user_permission_read",
+            user_id=user.id,
+            resource_server_identifier=resource_server.identifier,
+            permission=resource_server.scopes[0])
+        ```
+
         ## Import
 
         This resource can be imported by specifying the
@@ -210,6 +243,39 @@ class UserPermission(pulumi.CustomResource):
         with the `UserPermissions` resource when managing permissions for the same user id.
 
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_auth0 as auth0
+
+        resource_server = auth0.ResourceServer("resource_server",
+            name="Example Resource Server (Managed by Terraform)",
+            identifier="https://api.example.com",
+            scopes=[
+                {
+                    "value": "create:foo",
+                    "description": "Create foos",
+                },
+                {
+                    "value": "create:bar",
+                    "description": "Create bars",
+                },
+            ])
+        user = auth0.User("user",
+            connection_name="Username-Password-Authentication",
+            user_id="12345",
+            username="unique_username",
+            name="Firstname Lastname",
+            nickname="some.nickname",
+            email="test@test.com",
+            email_verified=True,
+            password="passpass$12$12",
+            picture="https://www.example.com/a-valid-picture-url.jpg")
+        user_permission_read = auth0.UserPermission("user_permission_read",
+            user_id=user.id,
+            resource_server_identifier=resource_server.identifier,
+            permission=resource_server.scopes[0])
+        ```
 
         ## Import
 
