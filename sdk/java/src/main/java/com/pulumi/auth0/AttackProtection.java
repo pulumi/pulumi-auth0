@@ -92,12 +92,14 @@ import javax.annotation.Nullable;
  *                     "admin_notification",
  *                     "block")
  *                 .preUserRegistration(AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs.builder()
- *                     .shields("block")
+ *                     .shields(                    
+ *                         "admin_notification",
+ *                         "block")
  *                     .build())
  *                 .preChangePassword(AttackProtectionBreachedPasswordDetectionPreChangePasswordArgs.builder()
  *                     .shields(                    
- *                         "block",
- *                         "admin_notification")
+ *                         "admin_notification",
+ *                         "block")
  *                     .build())
  *                 .build())
  *             .botDetection(AttackProtectionBotDetectionArgs.builder()

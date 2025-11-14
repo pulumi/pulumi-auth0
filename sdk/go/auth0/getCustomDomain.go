@@ -73,7 +73,7 @@ type LookupCustomDomainResult struct {
 	CustomDomainId *string `pulumi:"customDomainId"`
 	// Name of the custom domain.
 	Domain string `pulumi:"domain"`
-	// Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed.
+	// Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
 	DomainMetadata map[string]string `pulumi:"domainMetadata"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -81,7 +81,7 @@ type LookupCustomDomainResult struct {
 	OriginDomainName string `pulumi:"originDomainName"`
 	// Indicates whether this is a primary domain.
 	Primary bool `pulumi:"primary"`
-	// Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, and `ready`.
+	// Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, `ready` and `failed`.
 	Status string `pulumi:"status"`
 	// TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on selfManaged domains.
 	TlsPolicy string `pulumi:"tlsPolicy"`
@@ -145,7 +145,7 @@ func (o LookupCustomDomainResultOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomDomainResult) string { return v.Domain }).(pulumi.StringOutput)
 }
 
-// Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed.
+// Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
 func (o LookupCustomDomainResultOutput) DomainMetadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupCustomDomainResult) map[string]string { return v.DomainMetadata }).(pulumi.StringMapOutput)
 }
@@ -165,7 +165,7 @@ func (o LookupCustomDomainResultOutput) Primary() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupCustomDomainResult) bool { return v.Primary }).(pulumi.BoolOutput)
 }
 
-// Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, and `ready`.
+// Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, `ready` and `failed`.
 func (o LookupCustomDomainResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomDomainResult) string { return v.Status }).(pulumi.StringOutput)
 }

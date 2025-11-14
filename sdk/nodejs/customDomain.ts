@@ -81,7 +81,7 @@ export class CustomDomain extends pulumi.CustomResource {
      */
     declare public readonly domain: pulumi.Output<string>;
     /**
-     * Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed.
+     * Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
      */
     declare public readonly domainMetadata: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -95,7 +95,7 @@ export class CustomDomain extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly primary: pulumi.Output<boolean>;
     /**
-     * Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, and `ready`.
+     * Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, `ready` and `failed`.
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
@@ -175,7 +175,7 @@ export interface CustomDomainState {
      */
     domain?: pulumi.Input<string>;
     /**
-     * Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed.
+     * Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
      */
     domainMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -189,7 +189,7 @@ export interface CustomDomainState {
      */
     primary?: pulumi.Input<boolean>;
     /**
-     * Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, and `ready`.
+     * Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, `ready` and `failed`.
      */
     status?: pulumi.Input<string>;
     /**
@@ -219,7 +219,7 @@ export interface CustomDomainArgs {
      */
     domain: pulumi.Input<string>;
     /**
-     * Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed.
+     * Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
      */
     domainMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

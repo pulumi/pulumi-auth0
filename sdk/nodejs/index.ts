@@ -170,6 +170,11 @@ export const getCustomDomain: typeof import("./getCustomDomain").getCustomDomain
 export const getCustomDomainOutput: typeof import("./getCustomDomain").getCustomDomainOutput = null as any;
 utilities.lazyLoad(exports, ["getCustomDomain","getCustomDomainOutput"], () => require("./getCustomDomain"));
 
+export { GetCustomDomainsArgs, GetCustomDomainsResult, GetCustomDomainsOutputArgs } from "./getCustomDomains";
+export const getCustomDomains: typeof import("./getCustomDomains").getCustomDomains = null as any;
+export const getCustomDomainsOutput: typeof import("./getCustomDomains").getCustomDomainsOutput = null as any;
+utilities.lazyLoad(exports, ["getCustomDomains","getCustomDomainsOutput"], () => require("./getCustomDomains"));
+
 export { GetEventStreamArgs, GetEventStreamResult, GetEventStreamOutputArgs } from "./getEventStream";
 export const getEventStream: typeof import("./getEventStream").getEventStream = null as any;
 export const getEventStreamOutput: typeof import("./getEventStream").getEventStreamOutput = null as any;

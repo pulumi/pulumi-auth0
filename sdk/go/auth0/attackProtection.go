@@ -71,13 +71,14 @@ import (
 //					},
 //					PreUserRegistration: &auth0.AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs{
 //						Shields: pulumi.StringArray{
+//							pulumi.String("admin_notification"),
 //							pulumi.String("block"),
 //						},
 //					},
 //					PreChangePassword: &auth0.AttackProtectionBreachedPasswordDetectionPreChangePasswordArgs{
 //						Shields: pulumi.StringArray{
-//							pulumi.String("block"),
 //							pulumi.String("admin_notification"),
+//							pulumi.String("block"),
 //						},
 //					},
 //				},

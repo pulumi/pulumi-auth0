@@ -31,7 +31,7 @@ class CustomDomainArgs:
         :param pulumi.Input[_builtins.str] domain: Name of the custom domain.
         :param pulumi.Input[_builtins.str] type: Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
         :param pulumi.Input[_builtins.str] custom_client_ip_header: The HTTP header to fetch the client's IP address. Cannot be set on auth0_managed domains.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] domain_metadata: Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] domain_metadata: Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
         :param pulumi.Input[_builtins.str] tls_policy: TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on self_managed domains.
         """
         pulumi.set(__self__, "domain", domain)
@@ -83,7 +83,7 @@ class CustomDomainArgs:
     @pulumi.getter(name="domainMetadata")
     def domain_metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed.
+        Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
         """
         return pulumi.get(self, "domain_metadata")
 
@@ -122,10 +122,10 @@ class _CustomDomainState:
         :param pulumi.Input[Sequence[pulumi.Input['CustomDomainCertificateArgs']]] certificates: The Custom Domain certificate.
         :param pulumi.Input[_builtins.str] custom_client_ip_header: The HTTP header to fetch the client's IP address. Cannot be set on auth0_managed domains.
         :param pulumi.Input[_builtins.str] domain: Name of the custom domain.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] domain_metadata: Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] domain_metadata: Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
         :param pulumi.Input[_builtins.str] origin_domain_name: Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
         :param pulumi.Input[_builtins.bool] primary: Indicates whether this is a primary domain.
-        :param pulumi.Input[_builtins.str] status: Configuration status for the custom domain. Options include `disabled`, `pending`, `pending_verification`, and `ready`.
+        :param pulumi.Input[_builtins.str] status: Configuration status for the custom domain. Options include `disabled`, `pending`, `pending_verification`, `ready` and `failed`.
         :param pulumi.Input[_builtins.str] tls_policy: TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on self_managed domains.
         :param pulumi.Input[_builtins.str] type: Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
         :param pulumi.Input[Sequence[pulumi.Input['CustomDomainVerificationArgs']]] verifications: Configuration settings for verification.
@@ -194,7 +194,7 @@ class _CustomDomainState:
     @pulumi.getter(name="domainMetadata")
     def domain_metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed.
+        Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
         """
         return pulumi.get(self, "domain_metadata")
 
@@ -231,7 +231,7 @@ class _CustomDomainState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Configuration status for the custom domain. Options include `disabled`, `pending`, `pending_verification`, and `ready`.
+        Configuration status for the custom domain. Options include `disabled`, `pending`, `pending_verification`, `ready` and `failed`.
         """
         return pulumi.get(self, "status")
 
@@ -325,7 +325,7 @@ class CustomDomain(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] custom_client_ip_header: The HTTP header to fetch the client's IP address. Cannot be set on auth0_managed domains.
         :param pulumi.Input[_builtins.str] domain: Name of the custom domain.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] domain_metadata: Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] domain_metadata: Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
         :param pulumi.Input[_builtins.str] tls_policy: TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on self_managed domains.
         :param pulumi.Input[_builtins.str] type: Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
         """
@@ -441,10 +441,10 @@ class CustomDomain(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['CustomDomainCertificateArgs', 'CustomDomainCertificateArgsDict']]]] certificates: The Custom Domain certificate.
         :param pulumi.Input[_builtins.str] custom_client_ip_header: The HTTP header to fetch the client's IP address. Cannot be set on auth0_managed domains.
         :param pulumi.Input[_builtins.str] domain: Name of the custom domain.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] domain_metadata: Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] domain_metadata: Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
         :param pulumi.Input[_builtins.str] origin_domain_name: Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
         :param pulumi.Input[_builtins.bool] primary: Indicates whether this is a primary domain.
-        :param pulumi.Input[_builtins.str] status: Configuration status for the custom domain. Options include `disabled`, `pending`, `pending_verification`, and `ready`.
+        :param pulumi.Input[_builtins.str] status: Configuration status for the custom domain. Options include `disabled`, `pending`, `pending_verification`, `ready` and `failed`.
         :param pulumi.Input[_builtins.str] tls_policy: TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on self_managed domains.
         :param pulumi.Input[_builtins.str] type: Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['CustomDomainVerificationArgs', 'CustomDomainVerificationArgsDict']]]] verifications: Configuration settings for verification.
@@ -493,7 +493,7 @@ class CustomDomain(pulumi.CustomResource):
     @pulumi.getter(name="domainMetadata")
     def domain_metadata(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
         """
-        Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed.
+        Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
         """
         return pulumi.get(self, "domain_metadata")
 
@@ -518,7 +518,7 @@ class CustomDomain(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        Configuration status for the custom domain. Options include `disabled`, `pending`, `pending_verification`, and `ready`.
+        Configuration status for the custom domain. Options include `disabled`, `pending`, `pending_verification`, `ready` and `failed`.
         """
         return pulumi.get(self, "status")
 

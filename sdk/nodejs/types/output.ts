@@ -5092,6 +5092,87 @@ export interface GetCustomDomainVerification {
     status: string;
 }
 
+export interface GetCustomDomainsCustomDomain {
+    /**
+     * The Custom Domain certificate.
+     */
+    certificates: outputs.GetCustomDomainsCustomDomainCertificate[];
+    /**
+     * The HTTP header to fetch the client's IP address. Cannot be set on auth0Managed domains.
+     */
+    customClientIpHeader: string;
+    /**
+     * Name of the custom domain.
+     */
+    domain: string;
+    /**
+     * Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
+     */
+    domainMetadata: {[key: string]: string};
+    /**
+     * Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
+     */
+    originDomainName: string;
+    /**
+     * Indicates whether this is a primary domain.
+     */
+    primary: boolean;
+    /**
+     * Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, `ready` and `failed`.
+     */
+    status: string;
+    /**
+     * TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on selfManaged domains.
+     */
+    tlsPolicy: string;
+    /**
+     * Provisioning type for the custom domain. Options include `auth0ManagedCerts` and `selfManagedCerts`.
+     */
+    type: string;
+    /**
+     * Configuration settings for verification.
+     */
+    verifications: outputs.GetCustomDomainsCustomDomainVerification[];
+}
+
+export interface GetCustomDomainsCustomDomainCertificate {
+    /**
+     * Name of the certificate authority that issued the certificate.
+     */
+    certificateAuthority: string;
+    /**
+     * Contains the error message if the provisioning process fails.
+     */
+    errorMsg: string;
+    /**
+     * Specifies the date by which the certificate should be renewed.
+     */
+    renewsBefore: string;
+    /**
+     * Indicates the current state of the certificate provisioning process.
+     */
+    status: string;
+}
+
+export interface GetCustomDomainsCustomDomainVerification {
+    /**
+     * Contains error message, if any, from the last DNS verification check.
+     */
+    errorMsg: string;
+    /**
+     * Indicates the last time the domain was successfully verified.
+     */
+    lastVerifiedAt: string;
+    /**
+     * Defines the list of domain verification methods used.
+     */
+    methods: any[];
+    /**
+     * Represents the current status of the domain verification process.
+     */
+    status: string;
+}
+
 export interface GetEventStreamEventbridgeConfiguration {
     awsAccountId: string;
     awsPartnerEventSource: string;

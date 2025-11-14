@@ -51,12 +51,15 @@ import * as utilities from "./utilities";
  *             "block",
  *         ],
  *         preUserRegistration: {
- *             shields: ["block"],
+ *             shields: [
+ *                 "admin_notification",
+ *                 "block",
+ *             ],
  *         },
  *         preChangePassword: {
  *             shields: [
- *                 "block",
  *                 "admin_notification",
+ *                 "block",
  *             ],
  *         },
  *     },

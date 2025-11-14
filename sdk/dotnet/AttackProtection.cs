@@ -79,6 +79,7 @@ namespace Pulumi.Auth0
     ///             {
     ///                 Shields = new[]
     ///                 {
+    ///                     "admin_notification",
     ///                     "block",
     ///                 },
     ///             },
@@ -86,8 +87,8 @@ namespace Pulumi.Auth0
     ///             {
     ///                 Shields = new[]
     ///                 {
-    ///                     "block",
     ///                     "admin_notification",
+    ///                     "block",
     ///                 },
     ///             },
     ///         },

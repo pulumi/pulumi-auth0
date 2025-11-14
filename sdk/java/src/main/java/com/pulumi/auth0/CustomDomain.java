@@ -121,14 +121,14 @@ public class CustomDomain extends com.pulumi.resources.CustomResource {
         return this.domain;
     }
     /**
-     * Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed.
+     * Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
      * 
      */
     @Export(name="domainMetadata", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> domainMetadata;
 
     /**
-     * @return Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed.
+     * @return Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
      * 
      */
     public Output<Optional<Map<String,String>>> domainMetadata() {
@@ -167,14 +167,14 @@ public class CustomDomain extends com.pulumi.resources.CustomResource {
         return this.primary;
     }
     /**
-     * Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, and `ready`.
+     * Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, `ready` and `failed`.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, and `ready`.
+     * @return Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, `ready` and `failed`.
      * 
      */
     public Output<String> status() {
