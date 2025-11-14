@@ -73,7 +73,7 @@ namespace Pulumi.Auth0
         public Output<string> Domain { get; private set; } = null!;
 
         /// <summary>
-        /// Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed.
+        /// Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
         /// </summary>
         [Output("domainMetadata")]
         public Output<ImmutableDictionary<string, string>?> DomainMetadata { get; private set; } = null!;
@@ -91,7 +91,7 @@ namespace Pulumi.Auth0
         public Output<bool> Primary { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration status for the custom domain. Options include `Disabled`, `Pending`, `PendingVerification`, and `Ready`.
+        /// Configuration status for the custom domain. Options include `Disabled`, `Pending`, `PendingVerification`, `Ready` and `Failed`.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -176,7 +176,7 @@ namespace Pulumi.Auth0
         private InputMap<string>? _domainMetadata;
 
         /// <summary>
-        /// Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed.
+        /// Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
         /// </summary>
         public InputMap<string> DomainMetadata
         {
@@ -232,7 +232,7 @@ namespace Pulumi.Auth0
         private InputMap<string>? _domainMetadata;
 
         /// <summary>
-        /// Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed.
+        /// Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
         /// </summary>
         public InputMap<string> DomainMetadata
         {
@@ -253,7 +253,7 @@ namespace Pulumi.Auth0
         public Input<bool>? Primary { get; set; }
 
         /// <summary>
-        /// Configuration status for the custom domain. Options include `Disabled`, `Pending`, `PendingVerification`, and `Ready`.
+        /// Configuration status for the custom domain. Options include `Disabled`, `Pending`, `PendingVerification`, `Ready` and `Failed`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

@@ -39,6 +39,7 @@ from .get_connection import *
 from .get_connection_keys import *
 from .get_connection_scim_configuration import *
 from .get_custom_domain import *
+from .get_custom_domains import *
 from .get_event_stream import *
 from .get_flow import *
 from .get_flow_vault_connection import *

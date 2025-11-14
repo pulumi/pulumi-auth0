@@ -3,8 +3,8 @@
 
 package com.pulumi.auth0.outputs;
 
-import com.pulumi.auth0.outputs.GetCustomDomainCertificate;
-import com.pulumi.auth0.outputs.GetCustomDomainVerification;
+import com.pulumi.auth0.outputs.GetCustomDomainsCustomDomainCertificate;
+import com.pulumi.auth0.outputs.GetCustomDomainsCustomDomainVerification;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
@@ -12,26 +12,19 @@ import java.lang.String;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
-public final class GetCustomDomainResult {
+public final class GetCustomDomainsCustomDomain {
     /**
      * @return The Custom Domain certificate.
      * 
      */
-    private List<GetCustomDomainCertificate> certificates;
+    private List<GetCustomDomainsCustomDomainCertificate> certificates;
     /**
      * @return The HTTP header to fetch the client&#39;s IP address. Cannot be set on auth0Managed domains.
      * 
      */
     private String customClientIpHeader;
-    /**
-     * @return The ID of the Custom Domain.
-     * 
-     */
-    private @Nullable String customDomainId;
     /**
      * @return Name of the custom domain.
      * 
@@ -42,11 +35,6 @@ public final class GetCustomDomainResult {
      * 
      */
     private Map<String,String> domainMetadata;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     /**
      * @return Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
      * 
@@ -76,14 +64,14 @@ public final class GetCustomDomainResult {
      * @return Configuration settings for verification.
      * 
      */
-    private List<GetCustomDomainVerification> verifications;
+    private List<GetCustomDomainsCustomDomainVerification> verifications;
 
-    private GetCustomDomainResult() {}
+    private GetCustomDomainsCustomDomain() {}
     /**
      * @return The Custom Domain certificate.
      * 
      */
-    public List<GetCustomDomainCertificate> certificates() {
+    public List<GetCustomDomainsCustomDomainCertificate> certificates() {
         return this.certificates;
     }
     /**
@@ -92,13 +80,6 @@ public final class GetCustomDomainResult {
      */
     public String customClientIpHeader() {
         return this.customClientIpHeader;
-    }
-    /**
-     * @return The ID of the Custom Domain.
-     * 
-     */
-    public Optional<String> customDomainId() {
-        return Optional.ofNullable(this.customDomainId);
     }
     /**
      * @return Name of the custom domain.
@@ -113,13 +94,6 @@ public final class GetCustomDomainResult {
      */
     public Map<String,String> domainMetadata() {
         return this.domainMetadata;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
@@ -160,7 +134,7 @@ public final class GetCustomDomainResult {
      * @return Configuration settings for verification.
      * 
      */
-    public List<GetCustomDomainVerification> verifications() {
+    public List<GetCustomDomainsCustomDomainVerification> verifications() {
         return this.verifications;
     }
 
@@ -168,32 +142,28 @@ public final class GetCustomDomainResult {
         return new Builder();
     }
 
-    public static Builder builder(GetCustomDomainResult defaults) {
+    public static Builder builder(GetCustomDomainsCustomDomain defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<GetCustomDomainCertificate> certificates;
+        private List<GetCustomDomainsCustomDomainCertificate> certificates;
         private String customClientIpHeader;
-        private @Nullable String customDomainId;
         private String domain;
         private Map<String,String> domainMetadata;
-        private String id;
         private String originDomainName;
         private Boolean primary;
         private String status;
         private String tlsPolicy;
         private String type;
-        private List<GetCustomDomainVerification> verifications;
+        private List<GetCustomDomainsCustomDomainVerification> verifications;
         public Builder() {}
-        public Builder(GetCustomDomainResult defaults) {
+        public Builder(GetCustomDomainsCustomDomain defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.certificates = defaults.certificates;
     	      this.customClientIpHeader = defaults.customClientIpHeader;
-    	      this.customDomainId = defaults.customDomainId;
     	      this.domain = defaults.domain;
     	      this.domainMetadata = defaults.domainMetadata;
-    	      this.id = defaults.id;
     	      this.originDomainName = defaults.originDomainName;
     	      this.primary = defaults.primary;
     	      this.status = defaults.status;
@@ -203,34 +173,28 @@ public final class GetCustomDomainResult {
         }
 
         @CustomType.Setter
-        public Builder certificates(List<GetCustomDomainCertificate> certificates) {
+        public Builder certificates(List<GetCustomDomainsCustomDomainCertificate> certificates) {
             if (certificates == null) {
-              throw new MissingRequiredPropertyException("GetCustomDomainResult", "certificates");
+              throw new MissingRequiredPropertyException("GetCustomDomainsCustomDomain", "certificates");
             }
             this.certificates = certificates;
             return this;
         }
-        public Builder certificates(GetCustomDomainCertificate... certificates) {
+        public Builder certificates(GetCustomDomainsCustomDomainCertificate... certificates) {
             return certificates(List.of(certificates));
         }
         @CustomType.Setter
         public Builder customClientIpHeader(String customClientIpHeader) {
             if (customClientIpHeader == null) {
-              throw new MissingRequiredPropertyException("GetCustomDomainResult", "customClientIpHeader");
+              throw new MissingRequiredPropertyException("GetCustomDomainsCustomDomain", "customClientIpHeader");
             }
             this.customClientIpHeader = customClientIpHeader;
             return this;
         }
         @CustomType.Setter
-        public Builder customDomainId(@Nullable String customDomainId) {
-
-            this.customDomainId = customDomainId;
-            return this;
-        }
-        @CustomType.Setter
         public Builder domain(String domain) {
             if (domain == null) {
-              throw new MissingRequiredPropertyException("GetCustomDomainResult", "domain");
+              throw new MissingRequiredPropertyException("GetCustomDomainsCustomDomain", "domain");
             }
             this.domain = domain;
             return this;
@@ -238,23 +202,15 @@ public final class GetCustomDomainResult {
         @CustomType.Setter
         public Builder domainMetadata(Map<String,String> domainMetadata) {
             if (domainMetadata == null) {
-              throw new MissingRequiredPropertyException("GetCustomDomainResult", "domainMetadata");
+              throw new MissingRequiredPropertyException("GetCustomDomainsCustomDomain", "domainMetadata");
             }
             this.domainMetadata = domainMetadata;
             return this;
         }
         @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetCustomDomainResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
-        @CustomType.Setter
         public Builder originDomainName(String originDomainName) {
             if (originDomainName == null) {
-              throw new MissingRequiredPropertyException("GetCustomDomainResult", "originDomainName");
+              throw new MissingRequiredPropertyException("GetCustomDomainsCustomDomain", "originDomainName");
             }
             this.originDomainName = originDomainName;
             return this;
@@ -262,7 +218,7 @@ public final class GetCustomDomainResult {
         @CustomType.Setter
         public Builder primary(Boolean primary) {
             if (primary == null) {
-              throw new MissingRequiredPropertyException("GetCustomDomainResult", "primary");
+              throw new MissingRequiredPropertyException("GetCustomDomainsCustomDomain", "primary");
             }
             this.primary = primary;
             return this;
@@ -270,7 +226,7 @@ public final class GetCustomDomainResult {
         @CustomType.Setter
         public Builder status(String status) {
             if (status == null) {
-              throw new MissingRequiredPropertyException("GetCustomDomainResult", "status");
+              throw new MissingRequiredPropertyException("GetCustomDomainsCustomDomain", "status");
             }
             this.status = status;
             return this;
@@ -278,7 +234,7 @@ public final class GetCustomDomainResult {
         @CustomType.Setter
         public Builder tlsPolicy(String tlsPolicy) {
             if (tlsPolicy == null) {
-              throw new MissingRequiredPropertyException("GetCustomDomainResult", "tlsPolicy");
+              throw new MissingRequiredPropertyException("GetCustomDomainsCustomDomain", "tlsPolicy");
             }
             this.tlsPolicy = tlsPolicy;
             return this;
@@ -286,30 +242,28 @@ public final class GetCustomDomainResult {
         @CustomType.Setter
         public Builder type(String type) {
             if (type == null) {
-              throw new MissingRequiredPropertyException("GetCustomDomainResult", "type");
+              throw new MissingRequiredPropertyException("GetCustomDomainsCustomDomain", "type");
             }
             this.type = type;
             return this;
         }
         @CustomType.Setter
-        public Builder verifications(List<GetCustomDomainVerification> verifications) {
+        public Builder verifications(List<GetCustomDomainsCustomDomainVerification> verifications) {
             if (verifications == null) {
-              throw new MissingRequiredPropertyException("GetCustomDomainResult", "verifications");
+              throw new MissingRequiredPropertyException("GetCustomDomainsCustomDomain", "verifications");
             }
             this.verifications = verifications;
             return this;
         }
-        public Builder verifications(GetCustomDomainVerification... verifications) {
+        public Builder verifications(GetCustomDomainsCustomDomainVerification... verifications) {
             return verifications(List.of(verifications));
         }
-        public GetCustomDomainResult build() {
-            final var _resultValue = new GetCustomDomainResult();
+        public GetCustomDomainsCustomDomain build() {
+            final var _resultValue = new GetCustomDomainsCustomDomain();
             _resultValue.certificates = certificates;
             _resultValue.customClientIpHeader = customClientIpHeader;
-            _resultValue.customDomainId = customDomainId;
             _resultValue.domain = domain;
             _resultValue.domainMetadata = domainMetadata;
-            _resultValue.id = id;
             _resultValue.originDomainName = originDomainName;
             _resultValue.primary = primary;
             _resultValue.status = status;

@@ -354,6 +354,9 @@ __all__ = [
     'GetConnectionScimConfigurationMappingResult',
     'GetCustomDomainCertificateResult',
     'GetCustomDomainVerificationResult',
+    'GetCustomDomainsCustomDomainResult',
+    'GetCustomDomainsCustomDomainCertificateResult',
+    'GetCustomDomainsCustomDomainVerificationResult',
     'GetEventStreamEventbridgeConfigurationResult',
     'GetEventStreamWebhookConfigurationResult',
     'GetEventStreamWebhookConfigurationWebhookAuthorizationResult',
@@ -20789,6 +20792,225 @@ class GetCustomDomainCertificateResult(dict):
 
 @pulumi.output_type
 class GetCustomDomainVerificationResult(dict):
+    def __init__(__self__, *,
+                 error_msg: _builtins.str,
+                 last_verified_at: _builtins.str,
+                 methods: Sequence[Any],
+                 status: _builtins.str):
+        """
+        :param _builtins.str error_msg: Contains error message, if any, from the last DNS verification check.
+        :param _builtins.str last_verified_at: Indicates the last time the domain was successfully verified.
+        :param Sequence[Any] methods: Defines the list of domain verification methods used.
+        :param _builtins.str status: Represents the current status of the domain verification process.
+        """
+        pulumi.set(__self__, "error_msg", error_msg)
+        pulumi.set(__self__, "last_verified_at", last_verified_at)
+        pulumi.set(__self__, "methods", methods)
+        pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter(name="errorMsg")
+    def error_msg(self) -> _builtins.str:
+        """
+        Contains error message, if any, from the last DNS verification check.
+        """
+        return pulumi.get(self, "error_msg")
+
+    @_builtins.property
+    @pulumi.getter(name="lastVerifiedAt")
+    def last_verified_at(self) -> _builtins.str:
+        """
+        Indicates the last time the domain was successfully verified.
+        """
+        return pulumi.get(self, "last_verified_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def methods(self) -> Sequence[Any]:
+        """
+        Defines the list of domain verification methods used.
+        """
+        return pulumi.get(self, "methods")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        Represents the current status of the domain verification process.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetCustomDomainsCustomDomainResult(dict):
+    def __init__(__self__, *,
+                 certificates: Sequence['outputs.GetCustomDomainsCustomDomainCertificateResult'],
+                 custom_client_ip_header: _builtins.str,
+                 domain: _builtins.str,
+                 domain_metadata: Mapping[str, _builtins.str],
+                 origin_domain_name: _builtins.str,
+                 primary: _builtins.bool,
+                 status: _builtins.str,
+                 tls_policy: _builtins.str,
+                 type: _builtins.str,
+                 verifications: Sequence['outputs.GetCustomDomainsCustomDomainVerificationResult']):
+        """
+        :param Sequence['GetCustomDomainsCustomDomainCertificateArgs'] certificates: The Custom Domain certificate.
+        :param _builtins.str custom_client_ip_header: The HTTP header to fetch the client's IP address. Cannot be set on auth0_managed domains.
+        :param _builtins.str domain: Name of the custom domain.
+        :param Mapping[str, _builtins.str] domain_metadata: Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
+        :param _builtins.str origin_domain_name: Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
+        :param _builtins.bool primary: Indicates whether this is a primary domain.
+        :param _builtins.str status: Configuration status for the custom domain. Options include `disabled`, `pending`, `pending_verification`, `ready` and `failed`.
+        :param _builtins.str tls_policy: TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on self_managed domains.
+        :param _builtins.str type: Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
+        :param Sequence['GetCustomDomainsCustomDomainVerificationArgs'] verifications: Configuration settings for verification.
+        """
+        pulumi.set(__self__, "certificates", certificates)
+        pulumi.set(__self__, "custom_client_ip_header", custom_client_ip_header)
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "domain_metadata", domain_metadata)
+        pulumi.set(__self__, "origin_domain_name", origin_domain_name)
+        pulumi.set(__self__, "primary", primary)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tls_policy", tls_policy)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "verifications", verifications)
+
+    @_builtins.property
+    @pulumi.getter
+    def certificates(self) -> Sequence['outputs.GetCustomDomainsCustomDomainCertificateResult']:
+        """
+        The Custom Domain certificate.
+        """
+        return pulumi.get(self, "certificates")
+
+    @_builtins.property
+    @pulumi.getter(name="customClientIpHeader")
+    def custom_client_ip_header(self) -> _builtins.str:
+        """
+        The HTTP header to fetch the client's IP address. Cannot be set on auth0_managed domains.
+        """
+        return pulumi.get(self, "custom_client_ip_header")
+
+    @_builtins.property
+    @pulumi.getter
+    def domain(self) -> _builtins.str:
+        """
+        Name of the custom domain.
+        """
+        return pulumi.get(self, "domain")
+
+    @_builtins.property
+    @pulumi.getter(name="domainMetadata")
+    def domain_metadata(self) -> Mapping[str, _builtins.str]:
+        """
+        Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
+        """
+        return pulumi.get(self, "domain_metadata")
+
+    @_builtins.property
+    @pulumi.getter(name="originDomainName")
+    def origin_domain_name(self) -> _builtins.str:
+        """
+        Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
+        """
+        return pulumi.get(self, "origin_domain_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def primary(self) -> _builtins.bool:
+        """
+        Indicates whether this is a primary domain.
+        """
+        return pulumi.get(self, "primary")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        Configuration status for the custom domain. Options include `disabled`, `pending`, `pending_verification`, `ready` and `failed`.
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter(name="tlsPolicy")
+    def tls_policy(self) -> _builtins.str:
+        """
+        TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on self_managed domains.
+        """
+        return pulumi.get(self, "tls_policy")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def verifications(self) -> Sequence['outputs.GetCustomDomainsCustomDomainVerificationResult']:
+        """
+        Configuration settings for verification.
+        """
+        return pulumi.get(self, "verifications")
+
+
+@pulumi.output_type
+class GetCustomDomainsCustomDomainCertificateResult(dict):
+    def __init__(__self__, *,
+                 certificate_authority: _builtins.str,
+                 error_msg: _builtins.str,
+                 renews_before: _builtins.str,
+                 status: _builtins.str):
+        """
+        :param _builtins.str certificate_authority: Name of the certificate authority that issued the certificate.
+        :param _builtins.str error_msg: Contains the error message if the provisioning process fails.
+        :param _builtins.str renews_before: Specifies the date by which the certificate should be renewed.
+        :param _builtins.str status: Indicates the current state of the certificate provisioning process.
+        """
+        pulumi.set(__self__, "certificate_authority", certificate_authority)
+        pulumi.set(__self__, "error_msg", error_msg)
+        pulumi.set(__self__, "renews_before", renews_before)
+        pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter(name="certificateAuthority")
+    def certificate_authority(self) -> _builtins.str:
+        """
+        Name of the certificate authority that issued the certificate.
+        """
+        return pulumi.get(self, "certificate_authority")
+
+    @_builtins.property
+    @pulumi.getter(name="errorMsg")
+    def error_msg(self) -> _builtins.str:
+        """
+        Contains the error message if the provisioning process fails.
+        """
+        return pulumi.get(self, "error_msg")
+
+    @_builtins.property
+    @pulumi.getter(name="renewsBefore")
+    def renews_before(self) -> _builtins.str:
+        """
+        Specifies the date by which the certificate should be renewed.
+        """
+        return pulumi.get(self, "renews_before")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        Indicates the current state of the certificate provisioning process.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetCustomDomainsCustomDomainVerificationResult(dict):
     def __init__(__self__, *,
                  error_msg: _builtins.str,
                  last_verified_at: _builtins.str,

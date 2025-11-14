@@ -66,14 +66,14 @@ public final class CustomDomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed.
+     * Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
      * 
      */
     @Import(name="domainMetadata")
     private @Nullable Output<Map<String,String>> domainMetadata;
 
     /**
-     * @return Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed.
+     * @return Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
      * 
      */
     public Optional<Output<Map<String,String>>> domainMetadata() {
@@ -119,14 +119,14 @@ public final class CustomDomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, and `ready`.
+     * Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, `ready` and `failed`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, and `ready`.
+     * @return Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, `ready` and `failed`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -285,7 +285,7 @@ public final class CustomDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param domainMetadata Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed.
+         * @param domainMetadata Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
          * 
          * @return builder
          * 
@@ -296,7 +296,7 @@ public final class CustomDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param domainMetadata Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed.
+         * @param domainMetadata Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
          * 
          * @return builder
          * 
@@ -356,7 +356,7 @@ public final class CustomDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, and `ready`.
+         * @param status Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, `ready` and `failed`.
          * 
          * @return builder
          * 
@@ -367,7 +367,7 @@ public final class CustomDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, and `ready`.
+         * @param status Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, `ready` and `failed`.
          * 
          * @return builder
          * 

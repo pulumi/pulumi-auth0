@@ -2234,6 +2234,32 @@
                     }
                 }
             },
+            "auth0_custom_domains": {
+                "current": "auth0:index/getCustomDomains:getCustomDomains",
+                "majorVersion": 3,
+                "fields": {
+                    "custom_domains": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "certificate": {
+                                    "maxItemsOne": false
+                                },
+                                "verification": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "methods": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "auth0_event_stream": {
                 "current": "auth0:index/getEventStream:getEventStream",
                 "majorVersion": 3,

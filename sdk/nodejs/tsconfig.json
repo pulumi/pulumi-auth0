@@ -48,6 +48,7 @@
         "getConnectionKeys.ts",
         "getConnectionScimConfiguration.ts",
         "getCustomDomain.ts",
+        "getCustomDomains.ts",
         "getEventStream.ts",
         "getFlow.ts",
         "getFlowVaultConnection.ts",

@@ -68,7 +68,7 @@ export interface GetCustomDomainResult {
      */
     readonly domain: string;
     /**
-     * Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed.
+     * Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
      */
     readonly domainMetadata: {[key: string]: string};
     /**
@@ -84,7 +84,7 @@ export interface GetCustomDomainResult {
      */
     readonly primary: boolean;
     /**
-     * Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, and `ready`.
+     * Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, `ready` and `failed`.
      */
     readonly status: string;
     /**

@@ -101,7 +101,7 @@ class GetCustomDomainResult:
     @pulumi.getter(name="domainMetadata")
     def domain_metadata(self) -> Mapping[str, _builtins.str]:
         """
-        Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed.
+        Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
         """
         return pulumi.get(self, "domain_metadata")
 
@@ -133,7 +133,7 @@ class GetCustomDomainResult:
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        Configuration status for the custom domain. Options include `disabled`, `pending`, `pending_verification`, and `ready`.
+        Configuration status for the custom domain. Options include `disabled`, `pending`, `pending_verification`, `ready` and `failed`.
         """
         return pulumi.get(self, "status")
 

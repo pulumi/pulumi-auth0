@@ -53002,6 +53002,434 @@ func (o GetCustomDomainVerificationTypeArrayOutput) Index(i pulumi.IntInput) Get
 	}).(GetCustomDomainVerificationTypeOutput)
 }
 
+type GetCustomDomainsCustomDomain struct {
+	// The Custom Domain certificate.
+	Certificates []GetCustomDomainsCustomDomainCertificate `pulumi:"certificates"`
+	// The HTTP header to fetch the client's IP address. Cannot be set on auth0Managed domains.
+	CustomClientIpHeader string `pulumi:"customClientIpHeader"`
+	// Name of the custom domain.
+	Domain string `pulumi:"domain"`
+	// Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
+	DomainMetadata map[string]string `pulumi:"domainMetadata"`
+	// Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
+	OriginDomainName string `pulumi:"originDomainName"`
+	// Indicates whether this is a primary domain.
+	Primary bool `pulumi:"primary"`
+	// Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, `ready` and `failed`.
+	Status string `pulumi:"status"`
+	// TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on selfManaged domains.
+	TlsPolicy string `pulumi:"tlsPolicy"`
+	// Provisioning type for the custom domain. Options include `auth0ManagedCerts` and `selfManagedCerts`.
+	Type string `pulumi:"type"`
+	// Configuration settings for verification.
+	Verifications []GetCustomDomainsCustomDomainVerification `pulumi:"verifications"`
+}
+
+// GetCustomDomainsCustomDomainInput is an input type that accepts GetCustomDomainsCustomDomainArgs and GetCustomDomainsCustomDomainOutput values.
+// You can construct a concrete instance of `GetCustomDomainsCustomDomainInput` via:
+//
+//	GetCustomDomainsCustomDomainArgs{...}
+type GetCustomDomainsCustomDomainInput interface {
+	pulumi.Input
+
+	ToGetCustomDomainsCustomDomainOutput() GetCustomDomainsCustomDomainOutput
+	ToGetCustomDomainsCustomDomainOutputWithContext(context.Context) GetCustomDomainsCustomDomainOutput
+}
+
+type GetCustomDomainsCustomDomainArgs struct {
+	// The Custom Domain certificate.
+	Certificates GetCustomDomainsCustomDomainCertificateArrayInput `pulumi:"certificates"`
+	// The HTTP header to fetch the client's IP address. Cannot be set on auth0Managed domains.
+	CustomClientIpHeader pulumi.StringInput `pulumi:"customClientIpHeader"`
+	// Name of the custom domain.
+	Domain pulumi.StringInput `pulumi:"domain"`
+	// Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
+	DomainMetadata pulumi.StringMapInput `pulumi:"domainMetadata"`
+	// Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
+	OriginDomainName pulumi.StringInput `pulumi:"originDomainName"`
+	// Indicates whether this is a primary domain.
+	Primary pulumi.BoolInput `pulumi:"primary"`
+	// Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, `ready` and `failed`.
+	Status pulumi.StringInput `pulumi:"status"`
+	// TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on selfManaged domains.
+	TlsPolicy pulumi.StringInput `pulumi:"tlsPolicy"`
+	// Provisioning type for the custom domain. Options include `auth0ManagedCerts` and `selfManagedCerts`.
+	Type pulumi.StringInput `pulumi:"type"`
+	// Configuration settings for verification.
+	Verifications GetCustomDomainsCustomDomainVerificationArrayInput `pulumi:"verifications"`
+}
+
+func (GetCustomDomainsCustomDomainArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCustomDomainsCustomDomain)(nil)).Elem()
+}
+
+func (i GetCustomDomainsCustomDomainArgs) ToGetCustomDomainsCustomDomainOutput() GetCustomDomainsCustomDomainOutput {
+	return i.ToGetCustomDomainsCustomDomainOutputWithContext(context.Background())
+}
+
+func (i GetCustomDomainsCustomDomainArgs) ToGetCustomDomainsCustomDomainOutputWithContext(ctx context.Context) GetCustomDomainsCustomDomainOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCustomDomainsCustomDomainOutput)
+}
+
+// GetCustomDomainsCustomDomainArrayInput is an input type that accepts GetCustomDomainsCustomDomainArray and GetCustomDomainsCustomDomainArrayOutput values.
+// You can construct a concrete instance of `GetCustomDomainsCustomDomainArrayInput` via:
+//
+//	GetCustomDomainsCustomDomainArray{ GetCustomDomainsCustomDomainArgs{...} }
+type GetCustomDomainsCustomDomainArrayInput interface {
+	pulumi.Input
+
+	ToGetCustomDomainsCustomDomainArrayOutput() GetCustomDomainsCustomDomainArrayOutput
+	ToGetCustomDomainsCustomDomainArrayOutputWithContext(context.Context) GetCustomDomainsCustomDomainArrayOutput
+}
+
+type GetCustomDomainsCustomDomainArray []GetCustomDomainsCustomDomainInput
+
+func (GetCustomDomainsCustomDomainArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCustomDomainsCustomDomain)(nil)).Elem()
+}
+
+func (i GetCustomDomainsCustomDomainArray) ToGetCustomDomainsCustomDomainArrayOutput() GetCustomDomainsCustomDomainArrayOutput {
+	return i.ToGetCustomDomainsCustomDomainArrayOutputWithContext(context.Background())
+}
+
+func (i GetCustomDomainsCustomDomainArray) ToGetCustomDomainsCustomDomainArrayOutputWithContext(ctx context.Context) GetCustomDomainsCustomDomainArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCustomDomainsCustomDomainArrayOutput)
+}
+
+type GetCustomDomainsCustomDomainOutput struct{ *pulumi.OutputState }
+
+func (GetCustomDomainsCustomDomainOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCustomDomainsCustomDomain)(nil)).Elem()
+}
+
+func (o GetCustomDomainsCustomDomainOutput) ToGetCustomDomainsCustomDomainOutput() GetCustomDomainsCustomDomainOutput {
+	return o
+}
+
+func (o GetCustomDomainsCustomDomainOutput) ToGetCustomDomainsCustomDomainOutputWithContext(ctx context.Context) GetCustomDomainsCustomDomainOutput {
+	return o
+}
+
+// The Custom Domain certificate.
+func (o GetCustomDomainsCustomDomainOutput) Certificates() GetCustomDomainsCustomDomainCertificateArrayOutput {
+	return o.ApplyT(func(v GetCustomDomainsCustomDomain) []GetCustomDomainsCustomDomainCertificate { return v.Certificates }).(GetCustomDomainsCustomDomainCertificateArrayOutput)
+}
+
+// The HTTP header to fetch the client's IP address. Cannot be set on auth0Managed domains.
+func (o GetCustomDomainsCustomDomainOutput) CustomClientIpHeader() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomDomainsCustomDomain) string { return v.CustomClientIpHeader }).(pulumi.StringOutput)
+}
+
+// Name of the custom domain.
+func (o GetCustomDomainsCustomDomainOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomDomainsCustomDomain) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+// Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
+func (o GetCustomDomainsCustomDomainOutput) DomainMetadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetCustomDomainsCustomDomain) map[string]string { return v.DomainMetadata }).(pulumi.StringMapOutput)
+}
+
+// Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
+func (o GetCustomDomainsCustomDomainOutput) OriginDomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomDomainsCustomDomain) string { return v.OriginDomainName }).(pulumi.StringOutput)
+}
+
+// Indicates whether this is a primary domain.
+func (o GetCustomDomainsCustomDomainOutput) Primary() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCustomDomainsCustomDomain) bool { return v.Primary }).(pulumi.BoolOutput)
+}
+
+// Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, `ready` and `failed`.
+func (o GetCustomDomainsCustomDomainOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomDomainsCustomDomain) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on selfManaged domains.
+func (o GetCustomDomainsCustomDomainOutput) TlsPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomDomainsCustomDomain) string { return v.TlsPolicy }).(pulumi.StringOutput)
+}
+
+// Provisioning type for the custom domain. Options include `auth0ManagedCerts` and `selfManagedCerts`.
+func (o GetCustomDomainsCustomDomainOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomDomainsCustomDomain) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Configuration settings for verification.
+func (o GetCustomDomainsCustomDomainOutput) Verifications() GetCustomDomainsCustomDomainVerificationArrayOutput {
+	return o.ApplyT(func(v GetCustomDomainsCustomDomain) []GetCustomDomainsCustomDomainVerification {
+		return v.Verifications
+	}).(GetCustomDomainsCustomDomainVerificationArrayOutput)
+}
+
+type GetCustomDomainsCustomDomainArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCustomDomainsCustomDomainArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCustomDomainsCustomDomain)(nil)).Elem()
+}
+
+func (o GetCustomDomainsCustomDomainArrayOutput) ToGetCustomDomainsCustomDomainArrayOutput() GetCustomDomainsCustomDomainArrayOutput {
+	return o
+}
+
+func (o GetCustomDomainsCustomDomainArrayOutput) ToGetCustomDomainsCustomDomainArrayOutputWithContext(ctx context.Context) GetCustomDomainsCustomDomainArrayOutput {
+	return o
+}
+
+func (o GetCustomDomainsCustomDomainArrayOutput) Index(i pulumi.IntInput) GetCustomDomainsCustomDomainOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCustomDomainsCustomDomain {
+		return vs[0].([]GetCustomDomainsCustomDomain)[vs[1].(int)]
+	}).(GetCustomDomainsCustomDomainOutput)
+}
+
+type GetCustomDomainsCustomDomainCertificate struct {
+	// Name of the certificate authority that issued the certificate.
+	CertificateAuthority string `pulumi:"certificateAuthority"`
+	// Contains the error message if the provisioning process fails.
+	ErrorMsg string `pulumi:"errorMsg"`
+	// Specifies the date by which the certificate should be renewed.
+	RenewsBefore string `pulumi:"renewsBefore"`
+	// Indicates the current state of the certificate provisioning process.
+	Status string `pulumi:"status"`
+}
+
+// GetCustomDomainsCustomDomainCertificateInput is an input type that accepts GetCustomDomainsCustomDomainCertificateArgs and GetCustomDomainsCustomDomainCertificateOutput values.
+// You can construct a concrete instance of `GetCustomDomainsCustomDomainCertificateInput` via:
+//
+//	GetCustomDomainsCustomDomainCertificateArgs{...}
+type GetCustomDomainsCustomDomainCertificateInput interface {
+	pulumi.Input
+
+	ToGetCustomDomainsCustomDomainCertificateOutput() GetCustomDomainsCustomDomainCertificateOutput
+	ToGetCustomDomainsCustomDomainCertificateOutputWithContext(context.Context) GetCustomDomainsCustomDomainCertificateOutput
+}
+
+type GetCustomDomainsCustomDomainCertificateArgs struct {
+	// Name of the certificate authority that issued the certificate.
+	CertificateAuthority pulumi.StringInput `pulumi:"certificateAuthority"`
+	// Contains the error message if the provisioning process fails.
+	ErrorMsg pulumi.StringInput `pulumi:"errorMsg"`
+	// Specifies the date by which the certificate should be renewed.
+	RenewsBefore pulumi.StringInput `pulumi:"renewsBefore"`
+	// Indicates the current state of the certificate provisioning process.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetCustomDomainsCustomDomainCertificateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCustomDomainsCustomDomainCertificate)(nil)).Elem()
+}
+
+func (i GetCustomDomainsCustomDomainCertificateArgs) ToGetCustomDomainsCustomDomainCertificateOutput() GetCustomDomainsCustomDomainCertificateOutput {
+	return i.ToGetCustomDomainsCustomDomainCertificateOutputWithContext(context.Background())
+}
+
+func (i GetCustomDomainsCustomDomainCertificateArgs) ToGetCustomDomainsCustomDomainCertificateOutputWithContext(ctx context.Context) GetCustomDomainsCustomDomainCertificateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCustomDomainsCustomDomainCertificateOutput)
+}
+
+// GetCustomDomainsCustomDomainCertificateArrayInput is an input type that accepts GetCustomDomainsCustomDomainCertificateArray and GetCustomDomainsCustomDomainCertificateArrayOutput values.
+// You can construct a concrete instance of `GetCustomDomainsCustomDomainCertificateArrayInput` via:
+//
+//	GetCustomDomainsCustomDomainCertificateArray{ GetCustomDomainsCustomDomainCertificateArgs{...} }
+type GetCustomDomainsCustomDomainCertificateArrayInput interface {
+	pulumi.Input
+
+	ToGetCustomDomainsCustomDomainCertificateArrayOutput() GetCustomDomainsCustomDomainCertificateArrayOutput
+	ToGetCustomDomainsCustomDomainCertificateArrayOutputWithContext(context.Context) GetCustomDomainsCustomDomainCertificateArrayOutput
+}
+
+type GetCustomDomainsCustomDomainCertificateArray []GetCustomDomainsCustomDomainCertificateInput
+
+func (GetCustomDomainsCustomDomainCertificateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCustomDomainsCustomDomainCertificate)(nil)).Elem()
+}
+
+func (i GetCustomDomainsCustomDomainCertificateArray) ToGetCustomDomainsCustomDomainCertificateArrayOutput() GetCustomDomainsCustomDomainCertificateArrayOutput {
+	return i.ToGetCustomDomainsCustomDomainCertificateArrayOutputWithContext(context.Background())
+}
+
+func (i GetCustomDomainsCustomDomainCertificateArray) ToGetCustomDomainsCustomDomainCertificateArrayOutputWithContext(ctx context.Context) GetCustomDomainsCustomDomainCertificateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCustomDomainsCustomDomainCertificateArrayOutput)
+}
+
+type GetCustomDomainsCustomDomainCertificateOutput struct{ *pulumi.OutputState }
+
+func (GetCustomDomainsCustomDomainCertificateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCustomDomainsCustomDomainCertificate)(nil)).Elem()
+}
+
+func (o GetCustomDomainsCustomDomainCertificateOutput) ToGetCustomDomainsCustomDomainCertificateOutput() GetCustomDomainsCustomDomainCertificateOutput {
+	return o
+}
+
+func (o GetCustomDomainsCustomDomainCertificateOutput) ToGetCustomDomainsCustomDomainCertificateOutputWithContext(ctx context.Context) GetCustomDomainsCustomDomainCertificateOutput {
+	return o
+}
+
+// Name of the certificate authority that issued the certificate.
+func (o GetCustomDomainsCustomDomainCertificateOutput) CertificateAuthority() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomDomainsCustomDomainCertificate) string { return v.CertificateAuthority }).(pulumi.StringOutput)
+}
+
+// Contains the error message if the provisioning process fails.
+func (o GetCustomDomainsCustomDomainCertificateOutput) ErrorMsg() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomDomainsCustomDomainCertificate) string { return v.ErrorMsg }).(pulumi.StringOutput)
+}
+
+// Specifies the date by which the certificate should be renewed.
+func (o GetCustomDomainsCustomDomainCertificateOutput) RenewsBefore() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomDomainsCustomDomainCertificate) string { return v.RenewsBefore }).(pulumi.StringOutput)
+}
+
+// Indicates the current state of the certificate provisioning process.
+func (o GetCustomDomainsCustomDomainCertificateOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomDomainsCustomDomainCertificate) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetCustomDomainsCustomDomainCertificateArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCustomDomainsCustomDomainCertificateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCustomDomainsCustomDomainCertificate)(nil)).Elem()
+}
+
+func (o GetCustomDomainsCustomDomainCertificateArrayOutput) ToGetCustomDomainsCustomDomainCertificateArrayOutput() GetCustomDomainsCustomDomainCertificateArrayOutput {
+	return o
+}
+
+func (o GetCustomDomainsCustomDomainCertificateArrayOutput) ToGetCustomDomainsCustomDomainCertificateArrayOutputWithContext(ctx context.Context) GetCustomDomainsCustomDomainCertificateArrayOutput {
+	return o
+}
+
+func (o GetCustomDomainsCustomDomainCertificateArrayOutput) Index(i pulumi.IntInput) GetCustomDomainsCustomDomainCertificateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCustomDomainsCustomDomainCertificate {
+		return vs[0].([]GetCustomDomainsCustomDomainCertificate)[vs[1].(int)]
+	}).(GetCustomDomainsCustomDomainCertificateOutput)
+}
+
+type GetCustomDomainsCustomDomainVerification struct {
+	// Contains error message, if any, from the last DNS verification check.
+	ErrorMsg string `pulumi:"errorMsg"`
+	// Indicates the last time the domain was successfully verified.
+	LastVerifiedAt string `pulumi:"lastVerifiedAt"`
+	// Defines the list of domain verification methods used.
+	Methods []interface{} `pulumi:"methods"`
+	// Represents the current status of the domain verification process.
+	Status string `pulumi:"status"`
+}
+
+// GetCustomDomainsCustomDomainVerificationInput is an input type that accepts GetCustomDomainsCustomDomainVerificationArgs and GetCustomDomainsCustomDomainVerificationOutput values.
+// You can construct a concrete instance of `GetCustomDomainsCustomDomainVerificationInput` via:
+//
+//	GetCustomDomainsCustomDomainVerificationArgs{...}
+type GetCustomDomainsCustomDomainVerificationInput interface {
+	pulumi.Input
+
+	ToGetCustomDomainsCustomDomainVerificationOutput() GetCustomDomainsCustomDomainVerificationOutput
+	ToGetCustomDomainsCustomDomainVerificationOutputWithContext(context.Context) GetCustomDomainsCustomDomainVerificationOutput
+}
+
+type GetCustomDomainsCustomDomainVerificationArgs struct {
+	// Contains error message, if any, from the last DNS verification check.
+	ErrorMsg pulumi.StringInput `pulumi:"errorMsg"`
+	// Indicates the last time the domain was successfully verified.
+	LastVerifiedAt pulumi.StringInput `pulumi:"lastVerifiedAt"`
+	// Defines the list of domain verification methods used.
+	Methods pulumi.ArrayInput `pulumi:"methods"`
+	// Represents the current status of the domain verification process.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetCustomDomainsCustomDomainVerificationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCustomDomainsCustomDomainVerification)(nil)).Elem()
+}
+
+func (i GetCustomDomainsCustomDomainVerificationArgs) ToGetCustomDomainsCustomDomainVerificationOutput() GetCustomDomainsCustomDomainVerificationOutput {
+	return i.ToGetCustomDomainsCustomDomainVerificationOutputWithContext(context.Background())
+}
+
+func (i GetCustomDomainsCustomDomainVerificationArgs) ToGetCustomDomainsCustomDomainVerificationOutputWithContext(ctx context.Context) GetCustomDomainsCustomDomainVerificationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCustomDomainsCustomDomainVerificationOutput)
+}
+
+// GetCustomDomainsCustomDomainVerificationArrayInput is an input type that accepts GetCustomDomainsCustomDomainVerificationArray and GetCustomDomainsCustomDomainVerificationArrayOutput values.
+// You can construct a concrete instance of `GetCustomDomainsCustomDomainVerificationArrayInput` via:
+//
+//	GetCustomDomainsCustomDomainVerificationArray{ GetCustomDomainsCustomDomainVerificationArgs{...} }
+type GetCustomDomainsCustomDomainVerificationArrayInput interface {
+	pulumi.Input
+
+	ToGetCustomDomainsCustomDomainVerificationArrayOutput() GetCustomDomainsCustomDomainVerificationArrayOutput
+	ToGetCustomDomainsCustomDomainVerificationArrayOutputWithContext(context.Context) GetCustomDomainsCustomDomainVerificationArrayOutput
+}
+
+type GetCustomDomainsCustomDomainVerificationArray []GetCustomDomainsCustomDomainVerificationInput
+
+func (GetCustomDomainsCustomDomainVerificationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCustomDomainsCustomDomainVerification)(nil)).Elem()
+}
+
+func (i GetCustomDomainsCustomDomainVerificationArray) ToGetCustomDomainsCustomDomainVerificationArrayOutput() GetCustomDomainsCustomDomainVerificationArrayOutput {
+	return i.ToGetCustomDomainsCustomDomainVerificationArrayOutputWithContext(context.Background())
+}
+
+func (i GetCustomDomainsCustomDomainVerificationArray) ToGetCustomDomainsCustomDomainVerificationArrayOutputWithContext(ctx context.Context) GetCustomDomainsCustomDomainVerificationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCustomDomainsCustomDomainVerificationArrayOutput)
+}
+
+type GetCustomDomainsCustomDomainVerificationOutput struct{ *pulumi.OutputState }
+
+func (GetCustomDomainsCustomDomainVerificationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCustomDomainsCustomDomainVerification)(nil)).Elem()
+}
+
+func (o GetCustomDomainsCustomDomainVerificationOutput) ToGetCustomDomainsCustomDomainVerificationOutput() GetCustomDomainsCustomDomainVerificationOutput {
+	return o
+}
+
+func (o GetCustomDomainsCustomDomainVerificationOutput) ToGetCustomDomainsCustomDomainVerificationOutputWithContext(ctx context.Context) GetCustomDomainsCustomDomainVerificationOutput {
+	return o
+}
+
+// Contains error message, if any, from the last DNS verification check.
+func (o GetCustomDomainsCustomDomainVerificationOutput) ErrorMsg() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomDomainsCustomDomainVerification) string { return v.ErrorMsg }).(pulumi.StringOutput)
+}
+
+// Indicates the last time the domain was successfully verified.
+func (o GetCustomDomainsCustomDomainVerificationOutput) LastVerifiedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomDomainsCustomDomainVerification) string { return v.LastVerifiedAt }).(pulumi.StringOutput)
+}
+
+// Defines the list of domain verification methods used.
+func (o GetCustomDomainsCustomDomainVerificationOutput) Methods() pulumi.ArrayOutput {
+	return o.ApplyT(func(v GetCustomDomainsCustomDomainVerification) []interface{} { return v.Methods }).(pulumi.ArrayOutput)
+}
+
+// Represents the current status of the domain verification process.
+func (o GetCustomDomainsCustomDomainVerificationOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomDomainsCustomDomainVerification) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetCustomDomainsCustomDomainVerificationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCustomDomainsCustomDomainVerificationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCustomDomainsCustomDomainVerification)(nil)).Elem()
+}
+
+func (o GetCustomDomainsCustomDomainVerificationArrayOutput) ToGetCustomDomainsCustomDomainVerificationArrayOutput() GetCustomDomainsCustomDomainVerificationArrayOutput {
+	return o
+}
+
+func (o GetCustomDomainsCustomDomainVerificationArrayOutput) ToGetCustomDomainsCustomDomainVerificationArrayOutputWithContext(ctx context.Context) GetCustomDomainsCustomDomainVerificationArrayOutput {
+	return o
+}
+
+func (o GetCustomDomainsCustomDomainVerificationArrayOutput) Index(i pulumi.IntInput) GetCustomDomainsCustomDomainVerificationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCustomDomainsCustomDomainVerification {
+		return vs[0].([]GetCustomDomainsCustomDomainVerification)[vs[1].(int)]
+	}).(GetCustomDomainsCustomDomainVerificationOutput)
+}
+
 type GetEventStreamEventbridgeConfiguration struct {
 	AwsAccountId          string `pulumi:"awsAccountId"`
 	AwsPartnerEventSource string `pulumi:"awsPartnerEventSource"`
@@ -60240,6 +60668,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomDomainCertificateArrayInput)(nil)).Elem(), GetCustomDomainCertificateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomDomainVerificationTypeInput)(nil)).Elem(), GetCustomDomainVerificationTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomDomainVerificationTypeArrayInput)(nil)).Elem(), GetCustomDomainVerificationTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomDomainsCustomDomainInput)(nil)).Elem(), GetCustomDomainsCustomDomainArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomDomainsCustomDomainArrayInput)(nil)).Elem(), GetCustomDomainsCustomDomainArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomDomainsCustomDomainCertificateInput)(nil)).Elem(), GetCustomDomainsCustomDomainCertificateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomDomainsCustomDomainCertificateArrayInput)(nil)).Elem(), GetCustomDomainsCustomDomainCertificateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomDomainsCustomDomainVerificationInput)(nil)).Elem(), GetCustomDomainsCustomDomainVerificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomDomainsCustomDomainVerificationArrayInput)(nil)).Elem(), GetCustomDomainsCustomDomainVerificationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEventStreamEventbridgeConfigurationInput)(nil)).Elem(), GetEventStreamEventbridgeConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEventStreamEventbridgeConfigurationArrayInput)(nil)).Elem(), GetEventStreamEventbridgeConfigurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEventStreamWebhookConfigurationInput)(nil)).Elem(), GetEventStreamWebhookConfigurationArgs{})
@@ -61025,6 +61459,12 @@ func init() {
 	pulumi.RegisterOutputType(GetCustomDomainCertificateArrayOutput{})
 	pulumi.RegisterOutputType(GetCustomDomainVerificationTypeOutput{})
 	pulumi.RegisterOutputType(GetCustomDomainVerificationTypeArrayOutput{})
+	pulumi.RegisterOutputType(GetCustomDomainsCustomDomainOutput{})
+	pulumi.RegisterOutputType(GetCustomDomainsCustomDomainArrayOutput{})
+	pulumi.RegisterOutputType(GetCustomDomainsCustomDomainCertificateOutput{})
+	pulumi.RegisterOutputType(GetCustomDomainsCustomDomainCertificateArrayOutput{})
+	pulumi.RegisterOutputType(GetCustomDomainsCustomDomainVerificationOutput{})
+	pulumi.RegisterOutputType(GetCustomDomainsCustomDomainVerificationArrayOutput{})
 	pulumi.RegisterOutputType(GetEventStreamEventbridgeConfigurationOutput{})
 	pulumi.RegisterOutputType(GetEventStreamEventbridgeConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(GetEventStreamWebhookConfigurationOutput{})

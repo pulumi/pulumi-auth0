@@ -20,6 +20,8 @@ import com.pulumi.auth0.inputs.GetConnectionScimConfigurationArgs;
 import com.pulumi.auth0.inputs.GetConnectionScimConfigurationPlainArgs;
 import com.pulumi.auth0.inputs.GetCustomDomainArgs;
 import com.pulumi.auth0.inputs.GetCustomDomainPlainArgs;
+import com.pulumi.auth0.inputs.GetCustomDomainsArgs;
+import com.pulumi.auth0.inputs.GetCustomDomainsPlainArgs;
 import com.pulumi.auth0.inputs.GetEventStreamArgs;
 import com.pulumi.auth0.inputs.GetEventStreamPlainArgs;
 import com.pulumi.auth0.inputs.GetFlowArgs;
@@ -61,6 +63,7 @@ import com.pulumi.auth0.outputs.GetConnectionKeysResult;
 import com.pulumi.auth0.outputs.GetConnectionResult;
 import com.pulumi.auth0.outputs.GetConnectionScimConfigurationResult;
 import com.pulumi.auth0.outputs.GetCustomDomainResult;
+import com.pulumi.auth0.outputs.GetCustomDomainsResult;
 import com.pulumi.auth0.outputs.GetEventStreamResult;
 import com.pulumi.auth0.outputs.GetFlowResult;
 import com.pulumi.auth0.outputs.GetFlowVaultConnectionResult;
@@ -2867,6 +2870,69 @@ public final class Auth0Functions {
      */
     public static CompletableFuture<GetCustomDomainResult> getCustomDomainPlain(GetCustomDomainPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("auth0:index/getCustomDomain:getCustomDomain", TypeShape.of(GetCustomDomainResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve multiple custom domains based on a search query. EA Only.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetCustomDomainsResult> getCustomDomains() {
+        return getCustomDomains(GetCustomDomainsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve multiple custom domains based on a search query. EA Only.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetCustomDomainsResult> getCustomDomainsPlain() {
+        return getCustomDomainsPlain(GetCustomDomainsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve multiple custom domains based on a search query. EA Only.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetCustomDomainsResult> getCustomDomains(GetCustomDomainsArgs args) {
+        return getCustomDomains(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve multiple custom domains based on a search query. EA Only.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetCustomDomainsResult> getCustomDomainsPlain(GetCustomDomainsPlainArgs args) {
+        return getCustomDomainsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve multiple custom domains based on a search query. EA Only.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetCustomDomainsResult> getCustomDomains(GetCustomDomainsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getCustomDomains:getCustomDomains", TypeShape.of(GetCustomDomainsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve multiple custom domains based on a search query. EA Only.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetCustomDomainsResult> getCustomDomains(GetCustomDomainsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getCustomDomains:getCustomDomains", TypeShape.of(GetCustomDomainsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve multiple custom domains based on a search query. EA Only.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetCustomDomainsResult> getCustomDomainsPlain(GetCustomDomainsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("auth0:index/getCustomDomains:getCustomDomains", TypeShape.of(GetCustomDomainsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source to retrieve a specific Auth0 Event Stream by `id`.

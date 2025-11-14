@@ -170,7 +170,7 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly string Domain;
         /// <summary>
-        /// Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed.
+        /// Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
         /// </summary>
         public readonly ImmutableDictionary<string, string> DomainMetadata;
         /// <summary>
@@ -186,7 +186,7 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly bool Primary;
         /// <summary>
-        /// Configuration status for the custom domain. Options include `Disabled`, `Pending`, `PendingVerification`, and `Ready`.
+        /// Configuration status for the custom domain. Options include `Disabled`, `Pending`, `PendingVerification`, `Ready` and `Failed`.
         /// </summary>
         public readonly string Status;
         /// <summary>

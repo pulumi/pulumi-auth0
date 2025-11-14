@@ -48,14 +48,14 @@ public final class CustomDomainArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed.
+     * Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
      * 
      */
     @Import(name="domainMetadata")
     private @Nullable Output<Map<String,String>> domainMetadata;
 
     /**
-     * @return Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed.
+     * @return Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
      * 
      */
     public Optional<Output<Map<String,String>>> domainMetadata() {
@@ -163,7 +163,7 @@ public final class CustomDomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param domainMetadata Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed.
+         * @param domainMetadata Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class CustomDomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param domainMetadata Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed.
+         * @param domainMetadata Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
          * 
          * @return builder
          * 
