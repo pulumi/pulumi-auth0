@@ -16,6 +16,8 @@ import com.pulumi.auth0.inputs.GetConnectionArgs;
 import com.pulumi.auth0.inputs.GetConnectionKeysArgs;
 import com.pulumi.auth0.inputs.GetConnectionKeysPlainArgs;
 import com.pulumi.auth0.inputs.GetConnectionPlainArgs;
+import com.pulumi.auth0.inputs.GetConnectionProfileArgs;
+import com.pulumi.auth0.inputs.GetConnectionProfilePlainArgs;
 import com.pulumi.auth0.inputs.GetConnectionScimConfigurationArgs;
 import com.pulumi.auth0.inputs.GetConnectionScimConfigurationPlainArgs;
 import com.pulumi.auth0.inputs.GetCustomDomainArgs;
@@ -60,6 +62,7 @@ import com.pulumi.auth0.outputs.GetClientGrantsResult;
 import com.pulumi.auth0.outputs.GetClientResult;
 import com.pulumi.auth0.outputs.GetClientsResult;
 import com.pulumi.auth0.outputs.GetConnectionKeysResult;
+import com.pulumi.auth0.outputs.GetConnectionProfileResult;
 import com.pulumi.auth0.outputs.GetConnectionResult;
 import com.pulumi.auth0.outputs.GetConnectionScimConfigurationResult;
 import com.pulumi.auth0.outputs.GetCustomDomainResult;
@@ -2186,6 +2189,281 @@ public final class Auth0Functions {
      */
     public static CompletableFuture<GetConnectionKeysResult> getConnectionKeysPlain(GetConnectionKeysPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("auth0:index/getConnectionKeys:getConnectionKeys", TypeShape.of(GetConnectionKeysResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieve information about an Auth0 connection profile.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.ConnectionProfile;
+     * import com.pulumi.auth0.ConnectionProfileArgs;
+     * import com.pulumi.auth0.inputs.ConnectionProfileOrganizationArgs;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetConnectionProfileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var myProfile = new ConnectionProfile("myProfile", ConnectionProfileArgs.builder()
+     *             .name("My-Profile")
+     *             .organization(ConnectionProfileOrganizationArgs.builder()
+     *                 .showAsButton("optional")
+     *                 .assignMembershipOnLogin("required")
+     *                 .build())
+     *             .connectionNamePrefixTemplate("template1")
+     *             .enabledFeatures(            
+     *                 "scim",
+     *                 "universal_logout")
+     *             .build());
+     * 
+     *         final var myProfileDs = Auth0Functions.getConnectionProfile(GetConnectionProfileArgs.builder()
+     *             .id(myProfile.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetConnectionProfileResult> getConnectionProfile(GetConnectionProfileArgs args) {
+        return getConnectionProfile(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieve information about an Auth0 connection profile.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.ConnectionProfile;
+     * import com.pulumi.auth0.ConnectionProfileArgs;
+     * import com.pulumi.auth0.inputs.ConnectionProfileOrganizationArgs;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetConnectionProfileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var myProfile = new ConnectionProfile("myProfile", ConnectionProfileArgs.builder()
+     *             .name("My-Profile")
+     *             .organization(ConnectionProfileOrganizationArgs.builder()
+     *                 .showAsButton("optional")
+     *                 .assignMembershipOnLogin("required")
+     *                 .build())
+     *             .connectionNamePrefixTemplate("template1")
+     *             .enabledFeatures(            
+     *                 "scim",
+     *                 "universal_logout")
+     *             .build());
+     * 
+     *         final var myProfileDs = Auth0Functions.getConnectionProfile(GetConnectionProfileArgs.builder()
+     *             .id(myProfile.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetConnectionProfileResult> getConnectionProfilePlain(GetConnectionProfilePlainArgs args) {
+        return getConnectionProfilePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieve information about an Auth0 connection profile.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.ConnectionProfile;
+     * import com.pulumi.auth0.ConnectionProfileArgs;
+     * import com.pulumi.auth0.inputs.ConnectionProfileOrganizationArgs;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetConnectionProfileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var myProfile = new ConnectionProfile("myProfile", ConnectionProfileArgs.builder()
+     *             .name("My-Profile")
+     *             .organization(ConnectionProfileOrganizationArgs.builder()
+     *                 .showAsButton("optional")
+     *                 .assignMembershipOnLogin("required")
+     *                 .build())
+     *             .connectionNamePrefixTemplate("template1")
+     *             .enabledFeatures(            
+     *                 "scim",
+     *                 "universal_logout")
+     *             .build());
+     * 
+     *         final var myProfileDs = Auth0Functions.getConnectionProfile(GetConnectionProfileArgs.builder()
+     *             .id(myProfile.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetConnectionProfileResult> getConnectionProfile(GetConnectionProfileArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getConnectionProfile:getConnectionProfile", TypeShape.of(GetConnectionProfileResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieve information about an Auth0 connection profile.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.ConnectionProfile;
+     * import com.pulumi.auth0.ConnectionProfileArgs;
+     * import com.pulumi.auth0.inputs.ConnectionProfileOrganizationArgs;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetConnectionProfileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var myProfile = new ConnectionProfile("myProfile", ConnectionProfileArgs.builder()
+     *             .name("My-Profile")
+     *             .organization(ConnectionProfileOrganizationArgs.builder()
+     *                 .showAsButton("optional")
+     *                 .assignMembershipOnLogin("required")
+     *                 .build())
+     *             .connectionNamePrefixTemplate("template1")
+     *             .enabledFeatures(            
+     *                 "scim",
+     *                 "universal_logout")
+     *             .build());
+     * 
+     *         final var myProfileDs = Auth0Functions.getConnectionProfile(GetConnectionProfileArgs.builder()
+     *             .id(myProfile.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetConnectionProfileResult> getConnectionProfile(GetConnectionProfileArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getConnectionProfile:getConnectionProfile", TypeShape.of(GetConnectionProfileResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieve information about an Auth0 connection profile.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.ConnectionProfile;
+     * import com.pulumi.auth0.ConnectionProfileArgs;
+     * import com.pulumi.auth0.inputs.ConnectionProfileOrganizationArgs;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetConnectionProfileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var myProfile = new ConnectionProfile("myProfile", ConnectionProfileArgs.builder()
+     *             .name("My-Profile")
+     *             .organization(ConnectionProfileOrganizationArgs.builder()
+     *                 .showAsButton("optional")
+     *                 .assignMembershipOnLogin("required")
+     *                 .build())
+     *             .connectionNamePrefixTemplate("template1")
+     *             .enabledFeatures(            
+     *                 "scim",
+     *                 "universal_logout")
+     *             .build());
+     * 
+     *         final var myProfileDs = Auth0Functions.getConnectionProfile(GetConnectionProfileArgs.builder()
+     *             .id(myProfile.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetConnectionProfileResult> getConnectionProfilePlain(GetConnectionProfilePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("auth0:index/getConnectionProfile:getConnectionProfile", TypeShape.of(GetConnectionProfileResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source to retrieve a SCIM configuration for an Auth0 connection by `connectionId`.

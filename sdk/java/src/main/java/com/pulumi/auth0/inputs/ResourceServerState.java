@@ -113,6 +113,21 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * Indicates whether this resource server is a special resource server created by Auth0. It cannot be modified or deleted directly.
+     * 
+     */
+    @Import(name="isSystem")
+    private @Nullable Output<Boolean> isSystem;
+
+    /**
+     * @return Indicates whether this resource server is a special resource server created by Auth0. It cannot be modified or deleted directly.
+     * 
+     */
+    public Optional<Output<Boolean>> isSystem() {
+        return Optional.ofNullable(this.isSystem);
+    }
+
+    /**
      * Friendly name for the resource server. Cannot include `&lt;` or `&gt;` characters.
      * 
      */
@@ -286,6 +301,7 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
         this.consentPolicy = $.consentPolicy;
         this.enforcePolicies = $.enforcePolicies;
         this.identifier = $.identifier;
+        this.isSystem = $.isSystem;
         this.name = $.name;
         this.proofOfPossession = $.proofOfPossession;
         this.signingAlg = $.signingAlg;
@@ -451,6 +467,27 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
          */
         public Builder identifier(String identifier) {
             return identifier(Output.of(identifier));
+        }
+
+        /**
+         * @param isSystem Indicates whether this resource server is a special resource server created by Auth0. It cannot be modified or deleted directly.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isSystem(@Nullable Output<Boolean> isSystem) {
+            $.isSystem = isSystem;
+            return this;
+        }
+
+        /**
+         * @param isSystem Indicates whether this resource server is a special resource server created by Auth0. It cannot be modified or deleted directly.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isSystem(Boolean isSystem) {
+            return isSystem(Output.of(isSystem));
         }
 
         /**

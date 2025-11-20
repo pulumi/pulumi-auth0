@@ -88,6 +88,8 @@ __all__ = [
     'ClientCredentialsTlsClientAuth',
     'ClientCredentialsTlsClientAuthCredential',
     'ClientDefaultOrganization',
+    'ClientExpressConfiguration',
+    'ClientExpressConfigurationLinkedClient',
     'ClientJwtConfiguration',
     'ClientMobile',
     'ClientMobileAndroid',
@@ -140,6 +142,25 @@ __all__ = [
     'ConnectionOptionsTotp',
     'ConnectionOptionsValidation',
     'ConnectionOptionsValidationUsername',
+    'ConnectionProfileConnectionConfig',
+    'ConnectionProfileOrganization',
+    'ConnectionProfileStrategyOverrides',
+    'ConnectionProfileStrategyOverridesAd',
+    'ConnectionProfileStrategyOverridesAdConnectionConfig',
+    'ConnectionProfileStrategyOverridesAdfs',
+    'ConnectionProfileStrategyOverridesAdfsConnectionConfig',
+    'ConnectionProfileStrategyOverridesGoogleApps',
+    'ConnectionProfileStrategyOverridesGoogleAppsConnectionConfig',
+    'ConnectionProfileStrategyOverridesOidc',
+    'ConnectionProfileStrategyOverridesOidcConnectionConfig',
+    'ConnectionProfileStrategyOverridesOkta',
+    'ConnectionProfileStrategyOverridesOktaConnectionConfig',
+    'ConnectionProfileStrategyOverridesPingfederate',
+    'ConnectionProfileStrategyOverridesPingfederateConnectionConfig',
+    'ConnectionProfileStrategyOverridesSamlp',
+    'ConnectionProfileStrategyOverridesSamlpConnectionConfig',
+    'ConnectionProfileStrategyOverridesWaad',
+    'ConnectionProfileStrategyOverridesWaadConnectionConfig',
     'ConnectionScimConfigurationMapping',
     'CustomDomainCertificate',
     'CustomDomainVerification',
@@ -287,6 +308,8 @@ __all__ = [
     'GetClientClientAuthenticationMethodTlsClientAuthResult',
     'GetClientClientAuthenticationMethodTlsClientAuthCredentialResult',
     'GetClientDefaultOrganizationResult',
+    'GetClientExpressConfigurationResult',
+    'GetClientExpressConfigurationLinkedClientResult',
     'GetClientGrantsClientGrantResult',
     'GetClientJwtConfigurationResult',
     'GetClientMobileResult',
@@ -307,6 +330,8 @@ __all__ = [
     'GetClientTokenQuotaResult',
     'GetClientTokenQuotaClientCredentialResult',
     'GetClientsClientResult',
+    'GetClientsClientExpressConfigurationResult',
+    'GetClientsClientExpressConfigurationLinkedClientResult',
     'GetClientsClientOidcLogoutResult',
     'GetClientsClientOidcLogoutBackchannelLogoutInitiatorResult',
     'GetClientsClientSessionTransferResult',
@@ -350,6 +375,25 @@ __all__ = [
     'GetConnectionOptionTotpResult',
     'GetConnectionOptionValidationResult',
     'GetConnectionOptionValidationUsernameResult',
+    'GetConnectionProfileConnectionConfigResult',
+    'GetConnectionProfileOrganizationResult',
+    'GetConnectionProfileStrategyOverrideResult',
+    'GetConnectionProfileStrategyOverrideAdResult',
+    'GetConnectionProfileStrategyOverrideAdConnectionConfigResult',
+    'GetConnectionProfileStrategyOverrideAdfsResult',
+    'GetConnectionProfileStrategyOverrideAdfsConnectionConfigResult',
+    'GetConnectionProfileStrategyOverrideGoogleAppsResult',
+    'GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigResult',
+    'GetConnectionProfileStrategyOverrideOidcResult',
+    'GetConnectionProfileStrategyOverrideOidcConnectionConfigResult',
+    'GetConnectionProfileStrategyOverrideOktaResult',
+    'GetConnectionProfileStrategyOverrideOktaConnectionConfigResult',
+    'GetConnectionProfileStrategyOverridePingfederateResult',
+    'GetConnectionProfileStrategyOverridePingfederateConnectionConfigResult',
+    'GetConnectionProfileStrategyOverrideSamlpResult',
+    'GetConnectionProfileStrategyOverrideSamlpConnectionConfigResult',
+    'GetConnectionProfileStrategyOverrideWaadResult',
+    'GetConnectionProfileStrategyOverrideWaadConnectionConfigResult',
     'GetConnectionScimConfigurationDefaultMappingResult',
     'GetConnectionScimConfigurationMappingResult',
     'GetCustomDomainCertificateResult',
@@ -5118,6 +5162,190 @@ class ClientDefaultOrganization(dict):
 
 
 @pulumi.output_type
+class ClientExpressConfiguration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "adminLoginDomain":
+            suggest = "admin_login_domain"
+        elif key == "connectionProfileId":
+            suggest = "connection_profile_id"
+        elif key == "enableClient":
+            suggest = "enable_client"
+        elif key == "enableOrganization":
+            suggest = "enable_organization"
+        elif key == "initiateLoginUriTemplate":
+            suggest = "initiate_login_uri_template"
+        elif key == "linkedClients":
+            suggest = "linked_clients"
+        elif key == "oinSubmissionId":
+            suggest = "oin_submission_id"
+        elif key == "oktaOinClientId":
+            suggest = "okta_oin_client_id"
+        elif key == "userAttributeProfileId":
+            suggest = "user_attribute_profile_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClientExpressConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClientExpressConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClientExpressConfiguration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 admin_login_domain: Optional[_builtins.str] = None,
+                 connection_profile_id: Optional[_builtins.str] = None,
+                 enable_client: Optional[_builtins.bool] = None,
+                 enable_organization: Optional[_builtins.bool] = None,
+                 initiate_login_uri_template: Optional[_builtins.str] = None,
+                 linked_clients: Optional[Sequence['outputs.ClientExpressConfigurationLinkedClient']] = None,
+                 oin_submission_id: Optional[_builtins.str] = None,
+                 okta_oin_client_id: Optional[_builtins.str] = None,
+                 user_attribute_profile_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str admin_login_domain: The domain that admins are expected to log in via for authenticating for express configuration.
+        :param _builtins.str connection_profile_id: The ID of the connection profile to use for this application.
+        :param _builtins.bool enable_client: When true, all connections made via express configuration will be enabled for this application.
+        :param _builtins.bool enable_organization: When true, all connections made via express configuration will have the associated organization enabled.
+        :param _builtins.str initiate_login_uri_template: The URI users should bookmark to log in to this application. Variable substitution is permitted for: organization*name, organization*id, and connection_name.
+        :param Sequence['ClientExpressConfigurationLinkedClientArgs'] linked_clients: List of client IDs that are linked to this express configuration (e.g. web or mobile clients).
+        :param _builtins.str oin_submission_id: The identifier of the published application in the OKTA OIN.
+        :param _builtins.str okta_oin_client_id: The unique identifier for the Okta OIN Express Configuration Client.
+        :param _builtins.str user_attribute_profile_id: The ID of the user attribute profile to use for this application.
+        """
+        if admin_login_domain is not None:
+            pulumi.set(__self__, "admin_login_domain", admin_login_domain)
+        if connection_profile_id is not None:
+            pulumi.set(__self__, "connection_profile_id", connection_profile_id)
+        if enable_client is not None:
+            pulumi.set(__self__, "enable_client", enable_client)
+        if enable_organization is not None:
+            pulumi.set(__self__, "enable_organization", enable_organization)
+        if initiate_login_uri_template is not None:
+            pulumi.set(__self__, "initiate_login_uri_template", initiate_login_uri_template)
+        if linked_clients is not None:
+            pulumi.set(__self__, "linked_clients", linked_clients)
+        if oin_submission_id is not None:
+            pulumi.set(__self__, "oin_submission_id", oin_submission_id)
+        if okta_oin_client_id is not None:
+            pulumi.set(__self__, "okta_oin_client_id", okta_oin_client_id)
+        if user_attribute_profile_id is not None:
+            pulumi.set(__self__, "user_attribute_profile_id", user_attribute_profile_id)
+
+    @_builtins.property
+    @pulumi.getter(name="adminLoginDomain")
+    def admin_login_domain(self) -> Optional[_builtins.str]:
+        """
+        The domain that admins are expected to log in via for authenticating for express configuration.
+        """
+        return pulumi.get(self, "admin_login_domain")
+
+    @_builtins.property
+    @pulumi.getter(name="connectionProfileId")
+    def connection_profile_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the connection profile to use for this application.
+        """
+        return pulumi.get(self, "connection_profile_id")
+
+    @_builtins.property
+    @pulumi.getter(name="enableClient")
+    def enable_client(self) -> Optional[_builtins.bool]:
+        """
+        When true, all connections made via express configuration will be enabled for this application.
+        """
+        return pulumi.get(self, "enable_client")
+
+    @_builtins.property
+    @pulumi.getter(name="enableOrganization")
+    def enable_organization(self) -> Optional[_builtins.bool]:
+        """
+        When true, all connections made via express configuration will have the associated organization enabled.
+        """
+        return pulumi.get(self, "enable_organization")
+
+    @_builtins.property
+    @pulumi.getter(name="initiateLoginUriTemplate")
+    def initiate_login_uri_template(self) -> Optional[_builtins.str]:
+        """
+        The URI users should bookmark to log in to this application. Variable substitution is permitted for: organization*name, organization*id, and connection_name.
+        """
+        return pulumi.get(self, "initiate_login_uri_template")
+
+    @_builtins.property
+    @pulumi.getter(name="linkedClients")
+    def linked_clients(self) -> Optional[Sequence['outputs.ClientExpressConfigurationLinkedClient']]:
+        """
+        List of client IDs that are linked to this express configuration (e.g. web or mobile clients).
+        """
+        return pulumi.get(self, "linked_clients")
+
+    @_builtins.property
+    @pulumi.getter(name="oinSubmissionId")
+    def oin_submission_id(self) -> Optional[_builtins.str]:
+        """
+        The identifier of the published application in the OKTA OIN.
+        """
+        return pulumi.get(self, "oin_submission_id")
+
+    @_builtins.property
+    @pulumi.getter(name="oktaOinClientId")
+    def okta_oin_client_id(self) -> Optional[_builtins.str]:
+        """
+        The unique identifier for the Okta OIN Express Configuration Client.
+        """
+        return pulumi.get(self, "okta_oin_client_id")
+
+    @_builtins.property
+    @pulumi.getter(name="userAttributeProfileId")
+    def user_attribute_profile_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the user attribute profile to use for this application.
+        """
+        return pulumi.get(self, "user_attribute_profile_id")
+
+
+@pulumi.output_type
+class ClientExpressConfigurationLinkedClient(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clientId":
+            suggest = "client_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClientExpressConfigurationLinkedClient. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClientExpressConfigurationLinkedClient.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClientExpressConfigurationLinkedClient.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 client_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str client_id: The ID of the linked client.
+        """
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+
+    @_builtins.property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the linked client.
+        """
+        return pulumi.get(self, "client_id")
+
+
+@pulumi.output_type
 class ClientJwtConfiguration(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -8577,6 +8805,630 @@ class ConnectionOptionsValidationUsername(dict):
     @pulumi.getter
     def min(self) -> Optional[_builtins.int]:
         return pulumi.get(self, "min")
+
+
+@pulumi.output_type
+class ConnectionProfileConnectionConfig(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class ConnectionProfileOrganization(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "assignMembershipOnLogin":
+            suggest = "assign_membership_on_login"
+        elif key == "showAsButton":
+            suggest = "show_as_button"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionProfileOrganization. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionProfileOrganization.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionProfileOrganization.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 assign_membership_on_login: Optional[_builtins.str] = None,
+                 show_as_button: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str assign_membership_on_login: Whether to assign membership on login.
+        :param _builtins.str show_as_button: Whether to show organization as a button.
+        """
+        if assign_membership_on_login is not None:
+            pulumi.set(__self__, "assign_membership_on_login", assign_membership_on_login)
+        if show_as_button is not None:
+            pulumi.set(__self__, "show_as_button", show_as_button)
+
+    @_builtins.property
+    @pulumi.getter(name="assignMembershipOnLogin")
+    def assign_membership_on_login(self) -> Optional[_builtins.str]:
+        """
+        Whether to assign membership on login.
+        """
+        return pulumi.get(self, "assign_membership_on_login")
+
+    @_builtins.property
+    @pulumi.getter(name="showAsButton")
+    def show_as_button(self) -> Optional[_builtins.str]:
+        """
+        Whether to show organization as a button.
+        """
+        return pulumi.get(self, "show_as_button")
+
+
+@pulumi.output_type
+class ConnectionProfileStrategyOverrides(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "googleApps":
+            suggest = "google_apps"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionProfileStrategyOverrides. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionProfileStrategyOverrides.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionProfileStrategyOverrides.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ad: Optional['outputs.ConnectionProfileStrategyOverridesAd'] = None,
+                 adfs: Optional['outputs.ConnectionProfileStrategyOverridesAdfs'] = None,
+                 google_apps: Optional['outputs.ConnectionProfileStrategyOverridesGoogleApps'] = None,
+                 oidc: Optional['outputs.ConnectionProfileStrategyOverridesOidc'] = None,
+                 okta: Optional['outputs.ConnectionProfileStrategyOverridesOkta'] = None,
+                 pingfederate: Optional['outputs.ConnectionProfileStrategyOverridesPingfederate'] = None,
+                 samlp: Optional['outputs.ConnectionProfileStrategyOverridesSamlp'] = None,
+                 waad: Optional['outputs.ConnectionProfileStrategyOverridesWaad'] = None):
+        """
+        :param 'ConnectionProfileStrategyOverridesAdArgs' ad: Strategy override configuration.
+        :param 'ConnectionProfileStrategyOverridesAdfsArgs' adfs: Strategy override configuration.
+        :param 'ConnectionProfileStrategyOverridesGoogleAppsArgs' google_apps: Strategy override configuration.
+        :param 'ConnectionProfileStrategyOverridesOidcArgs' oidc: Strategy override configuration.
+        :param 'ConnectionProfileStrategyOverridesOktaArgs' okta: Strategy override configuration.
+        :param 'ConnectionProfileStrategyOverridesPingfederateArgs' pingfederate: Strategy override configuration.
+        :param 'ConnectionProfileStrategyOverridesSamlpArgs' samlp: Strategy override configuration.
+        :param 'ConnectionProfileStrategyOverridesWaadArgs' waad: Strategy override configuration.
+        """
+        if ad is not None:
+            pulumi.set(__self__, "ad", ad)
+        if adfs is not None:
+            pulumi.set(__self__, "adfs", adfs)
+        if google_apps is not None:
+            pulumi.set(__self__, "google_apps", google_apps)
+        if oidc is not None:
+            pulumi.set(__self__, "oidc", oidc)
+        if okta is not None:
+            pulumi.set(__self__, "okta", okta)
+        if pingfederate is not None:
+            pulumi.set(__self__, "pingfederate", pingfederate)
+        if samlp is not None:
+            pulumi.set(__self__, "samlp", samlp)
+        if waad is not None:
+            pulumi.set(__self__, "waad", waad)
+
+    @_builtins.property
+    @pulumi.getter
+    def ad(self) -> Optional['outputs.ConnectionProfileStrategyOverridesAd']:
+        """
+        Strategy override configuration.
+        """
+        return pulumi.get(self, "ad")
+
+    @_builtins.property
+    @pulumi.getter
+    def adfs(self) -> Optional['outputs.ConnectionProfileStrategyOverridesAdfs']:
+        """
+        Strategy override configuration.
+        """
+        return pulumi.get(self, "adfs")
+
+    @_builtins.property
+    @pulumi.getter(name="googleApps")
+    def google_apps(self) -> Optional['outputs.ConnectionProfileStrategyOverridesGoogleApps']:
+        """
+        Strategy override configuration.
+        """
+        return pulumi.get(self, "google_apps")
+
+    @_builtins.property
+    @pulumi.getter
+    def oidc(self) -> Optional['outputs.ConnectionProfileStrategyOverridesOidc']:
+        """
+        Strategy override configuration.
+        """
+        return pulumi.get(self, "oidc")
+
+    @_builtins.property
+    @pulumi.getter
+    def okta(self) -> Optional['outputs.ConnectionProfileStrategyOverridesOkta']:
+        """
+        Strategy override configuration.
+        """
+        return pulumi.get(self, "okta")
+
+    @_builtins.property
+    @pulumi.getter
+    def pingfederate(self) -> Optional['outputs.ConnectionProfileStrategyOverridesPingfederate']:
+        """
+        Strategy override configuration.
+        """
+        return pulumi.get(self, "pingfederate")
+
+    @_builtins.property
+    @pulumi.getter
+    def samlp(self) -> Optional['outputs.ConnectionProfileStrategyOverridesSamlp']:
+        """
+        Strategy override configuration.
+        """
+        return pulumi.get(self, "samlp")
+
+    @_builtins.property
+    @pulumi.getter
+    def waad(self) -> Optional['outputs.ConnectionProfileStrategyOverridesWaad']:
+        """
+        Strategy override configuration.
+        """
+        return pulumi.get(self, "waad")
+
+
+@pulumi.output_type
+class ConnectionProfileStrategyOverridesAd(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectionConfig":
+            suggest = "connection_config"
+        elif key == "enabledFeatures":
+            suggest = "enabled_features"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionProfileStrategyOverridesAd. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionProfileStrategyOverridesAd.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionProfileStrategyOverridesAd.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connection_config: Optional['outputs.ConnectionProfileStrategyOverridesAdConnectionConfig'] = None,
+                 enabled_features: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param 'ConnectionProfileStrategyOverridesAdConnectionConfigArgs' connection_config: Connection config for the strategy override.
+        :param Sequence[_builtins.str] enabled_features: Enabled features for the strategy override.
+        """
+        if connection_config is not None:
+            pulumi.set(__self__, "connection_config", connection_config)
+        if enabled_features is not None:
+            pulumi.set(__self__, "enabled_features", enabled_features)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionConfig")
+    def connection_config(self) -> Optional['outputs.ConnectionProfileStrategyOverridesAdConnectionConfig']:
+        """
+        Connection config for the strategy override.
+        """
+        return pulumi.get(self, "connection_config")
+
+    @_builtins.property
+    @pulumi.getter(name="enabledFeatures")
+    def enabled_features(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Enabled features for the strategy override.
+        """
+        return pulumi.get(self, "enabled_features")
+
+
+@pulumi.output_type
+class ConnectionProfileStrategyOverridesAdConnectionConfig(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class ConnectionProfileStrategyOverridesAdfs(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectionConfig":
+            suggest = "connection_config"
+        elif key == "enabledFeatures":
+            suggest = "enabled_features"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionProfileStrategyOverridesAdfs. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionProfileStrategyOverridesAdfs.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionProfileStrategyOverridesAdfs.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connection_config: Optional['outputs.ConnectionProfileStrategyOverridesAdfsConnectionConfig'] = None,
+                 enabled_features: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param 'ConnectionProfileStrategyOverridesAdfsConnectionConfigArgs' connection_config: Connection config for the strategy override.
+        :param Sequence[_builtins.str] enabled_features: Enabled features for the strategy override.
+        """
+        if connection_config is not None:
+            pulumi.set(__self__, "connection_config", connection_config)
+        if enabled_features is not None:
+            pulumi.set(__self__, "enabled_features", enabled_features)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionConfig")
+    def connection_config(self) -> Optional['outputs.ConnectionProfileStrategyOverridesAdfsConnectionConfig']:
+        """
+        Connection config for the strategy override.
+        """
+        return pulumi.get(self, "connection_config")
+
+    @_builtins.property
+    @pulumi.getter(name="enabledFeatures")
+    def enabled_features(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Enabled features for the strategy override.
+        """
+        return pulumi.get(self, "enabled_features")
+
+
+@pulumi.output_type
+class ConnectionProfileStrategyOverridesAdfsConnectionConfig(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class ConnectionProfileStrategyOverridesGoogleApps(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectionConfig":
+            suggest = "connection_config"
+        elif key == "enabledFeatures":
+            suggest = "enabled_features"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionProfileStrategyOverridesGoogleApps. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionProfileStrategyOverridesGoogleApps.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionProfileStrategyOverridesGoogleApps.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connection_config: Optional['outputs.ConnectionProfileStrategyOverridesGoogleAppsConnectionConfig'] = None,
+                 enabled_features: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param 'ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigArgs' connection_config: Connection config for the strategy override.
+        :param Sequence[_builtins.str] enabled_features: Enabled features for the strategy override.
+        """
+        if connection_config is not None:
+            pulumi.set(__self__, "connection_config", connection_config)
+        if enabled_features is not None:
+            pulumi.set(__self__, "enabled_features", enabled_features)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionConfig")
+    def connection_config(self) -> Optional['outputs.ConnectionProfileStrategyOverridesGoogleAppsConnectionConfig']:
+        """
+        Connection config for the strategy override.
+        """
+        return pulumi.get(self, "connection_config")
+
+    @_builtins.property
+    @pulumi.getter(name="enabledFeatures")
+    def enabled_features(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Enabled features for the strategy override.
+        """
+        return pulumi.get(self, "enabled_features")
+
+
+@pulumi.output_type
+class ConnectionProfileStrategyOverridesGoogleAppsConnectionConfig(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class ConnectionProfileStrategyOverridesOidc(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectionConfig":
+            suggest = "connection_config"
+        elif key == "enabledFeatures":
+            suggest = "enabled_features"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionProfileStrategyOverridesOidc. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionProfileStrategyOverridesOidc.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionProfileStrategyOverridesOidc.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connection_config: Optional['outputs.ConnectionProfileStrategyOverridesOidcConnectionConfig'] = None,
+                 enabled_features: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param 'ConnectionProfileStrategyOverridesOidcConnectionConfigArgs' connection_config: Connection config for the strategy override.
+        :param Sequence[_builtins.str] enabled_features: Enabled features for the strategy override.
+        """
+        if connection_config is not None:
+            pulumi.set(__self__, "connection_config", connection_config)
+        if enabled_features is not None:
+            pulumi.set(__self__, "enabled_features", enabled_features)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionConfig")
+    def connection_config(self) -> Optional['outputs.ConnectionProfileStrategyOverridesOidcConnectionConfig']:
+        """
+        Connection config for the strategy override.
+        """
+        return pulumi.get(self, "connection_config")
+
+    @_builtins.property
+    @pulumi.getter(name="enabledFeatures")
+    def enabled_features(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Enabled features for the strategy override.
+        """
+        return pulumi.get(self, "enabled_features")
+
+
+@pulumi.output_type
+class ConnectionProfileStrategyOverridesOidcConnectionConfig(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class ConnectionProfileStrategyOverridesOkta(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectionConfig":
+            suggest = "connection_config"
+        elif key == "enabledFeatures":
+            suggest = "enabled_features"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionProfileStrategyOverridesOkta. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionProfileStrategyOverridesOkta.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionProfileStrategyOverridesOkta.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connection_config: Optional['outputs.ConnectionProfileStrategyOverridesOktaConnectionConfig'] = None,
+                 enabled_features: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param 'ConnectionProfileStrategyOverridesOktaConnectionConfigArgs' connection_config: Connection config for the strategy override.
+        :param Sequence[_builtins.str] enabled_features: Enabled features for the strategy override.
+        """
+        if connection_config is not None:
+            pulumi.set(__self__, "connection_config", connection_config)
+        if enabled_features is not None:
+            pulumi.set(__self__, "enabled_features", enabled_features)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionConfig")
+    def connection_config(self) -> Optional['outputs.ConnectionProfileStrategyOverridesOktaConnectionConfig']:
+        """
+        Connection config for the strategy override.
+        """
+        return pulumi.get(self, "connection_config")
+
+    @_builtins.property
+    @pulumi.getter(name="enabledFeatures")
+    def enabled_features(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Enabled features for the strategy override.
+        """
+        return pulumi.get(self, "enabled_features")
+
+
+@pulumi.output_type
+class ConnectionProfileStrategyOverridesOktaConnectionConfig(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class ConnectionProfileStrategyOverridesPingfederate(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectionConfig":
+            suggest = "connection_config"
+        elif key == "enabledFeatures":
+            suggest = "enabled_features"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionProfileStrategyOverridesPingfederate. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionProfileStrategyOverridesPingfederate.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionProfileStrategyOverridesPingfederate.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connection_config: Optional['outputs.ConnectionProfileStrategyOverridesPingfederateConnectionConfig'] = None,
+                 enabled_features: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param 'ConnectionProfileStrategyOverridesPingfederateConnectionConfigArgs' connection_config: Connection config for the strategy override.
+        :param Sequence[_builtins.str] enabled_features: Enabled features for the strategy override.
+        """
+        if connection_config is not None:
+            pulumi.set(__self__, "connection_config", connection_config)
+        if enabled_features is not None:
+            pulumi.set(__self__, "enabled_features", enabled_features)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionConfig")
+    def connection_config(self) -> Optional['outputs.ConnectionProfileStrategyOverridesPingfederateConnectionConfig']:
+        """
+        Connection config for the strategy override.
+        """
+        return pulumi.get(self, "connection_config")
+
+    @_builtins.property
+    @pulumi.getter(name="enabledFeatures")
+    def enabled_features(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Enabled features for the strategy override.
+        """
+        return pulumi.get(self, "enabled_features")
+
+
+@pulumi.output_type
+class ConnectionProfileStrategyOverridesPingfederateConnectionConfig(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class ConnectionProfileStrategyOverridesSamlp(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectionConfig":
+            suggest = "connection_config"
+        elif key == "enabledFeatures":
+            suggest = "enabled_features"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionProfileStrategyOverridesSamlp. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionProfileStrategyOverridesSamlp.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionProfileStrategyOverridesSamlp.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connection_config: Optional['outputs.ConnectionProfileStrategyOverridesSamlpConnectionConfig'] = None,
+                 enabled_features: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param 'ConnectionProfileStrategyOverridesSamlpConnectionConfigArgs' connection_config: Connection config for the strategy override.
+        :param Sequence[_builtins.str] enabled_features: Enabled features for the strategy override.
+        """
+        if connection_config is not None:
+            pulumi.set(__self__, "connection_config", connection_config)
+        if enabled_features is not None:
+            pulumi.set(__self__, "enabled_features", enabled_features)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionConfig")
+    def connection_config(self) -> Optional['outputs.ConnectionProfileStrategyOverridesSamlpConnectionConfig']:
+        """
+        Connection config for the strategy override.
+        """
+        return pulumi.get(self, "connection_config")
+
+    @_builtins.property
+    @pulumi.getter(name="enabledFeatures")
+    def enabled_features(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Enabled features for the strategy override.
+        """
+        return pulumi.get(self, "enabled_features")
+
+
+@pulumi.output_type
+class ConnectionProfileStrategyOverridesSamlpConnectionConfig(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class ConnectionProfileStrategyOverridesWaad(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectionConfig":
+            suggest = "connection_config"
+        elif key == "enabledFeatures":
+            suggest = "enabled_features"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionProfileStrategyOverridesWaad. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionProfileStrategyOverridesWaad.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionProfileStrategyOverridesWaad.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connection_config: Optional['outputs.ConnectionProfileStrategyOverridesWaadConnectionConfig'] = None,
+                 enabled_features: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param 'ConnectionProfileStrategyOverridesWaadConnectionConfigArgs' connection_config: Connection config for the strategy override.
+        :param Sequence[_builtins.str] enabled_features: Enabled features for the strategy override.
+        """
+        if connection_config is not None:
+            pulumi.set(__self__, "connection_config", connection_config)
+        if enabled_features is not None:
+            pulumi.set(__self__, "enabled_features", enabled_features)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionConfig")
+    def connection_config(self) -> Optional['outputs.ConnectionProfileStrategyOverridesWaadConnectionConfig']:
+        """
+        Connection config for the strategy override.
+        """
+        return pulumi.get(self, "connection_config")
+
+    @_builtins.property
+    @pulumi.getter(name="enabledFeatures")
+    def enabled_features(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Enabled features for the strategy override.
+        """
+        return pulumi.get(self, "enabled_features")
+
+
+@pulumi.output_type
+class ConnectionProfileStrategyOverridesWaadConnectionConfig(dict):
+    def __init__(__self__):
+        pass
 
 
 @pulumi.output_type
@@ -17262,6 +18114,130 @@ class GetClientDefaultOrganizationResult(dict):
 
 
 @pulumi.output_type
+class GetClientExpressConfigurationResult(dict):
+    def __init__(__self__, *,
+                 admin_login_domain: _builtins.str,
+                 connection_profile_id: _builtins.str,
+                 enable_client: _builtins.bool,
+                 enable_organization: _builtins.bool,
+                 initiate_login_uri_template: _builtins.str,
+                 linked_clients: Sequence['outputs.GetClientExpressConfigurationLinkedClientResult'],
+                 oin_submission_id: _builtins.str,
+                 okta_oin_client_id: _builtins.str,
+                 user_attribute_profile_id: _builtins.str):
+        """
+        :param _builtins.str admin_login_domain: The domain that admins are expected to log in via for authenticating for express configuration.
+        :param _builtins.str connection_profile_id: The ID of the connection profile to use for this application.
+        :param _builtins.bool enable_client: When true, all connections made via express configuration will be enabled for this application.
+        :param _builtins.bool enable_organization: When true, all connections made via express configuration will have the associated organization enabled.
+        :param _builtins.str initiate_login_uri_template: The URI users should bookmark to log in to this application. Variable substitution is permitted for: organization_name, organization_id, and connection_name.
+        :param Sequence['GetClientExpressConfigurationLinkedClientArgs'] linked_clients: List of client IDs that are linked to this express configuration (e.g. web or mobile clients).
+        :param _builtins.str oin_submission_id: The identifier of the published application in the OKTA OIN.
+        :param _builtins.str okta_oin_client_id: The unique identifier for the Okta OIN Express Configuration Client.
+        :param _builtins.str user_attribute_profile_id: The ID of the user attribute profile to use for this application.
+        """
+        pulumi.set(__self__, "admin_login_domain", admin_login_domain)
+        pulumi.set(__self__, "connection_profile_id", connection_profile_id)
+        pulumi.set(__self__, "enable_client", enable_client)
+        pulumi.set(__self__, "enable_organization", enable_organization)
+        pulumi.set(__self__, "initiate_login_uri_template", initiate_login_uri_template)
+        pulumi.set(__self__, "linked_clients", linked_clients)
+        pulumi.set(__self__, "oin_submission_id", oin_submission_id)
+        pulumi.set(__self__, "okta_oin_client_id", okta_oin_client_id)
+        pulumi.set(__self__, "user_attribute_profile_id", user_attribute_profile_id)
+
+    @_builtins.property
+    @pulumi.getter(name="adminLoginDomain")
+    def admin_login_domain(self) -> _builtins.str:
+        """
+        The domain that admins are expected to log in via for authenticating for express configuration.
+        """
+        return pulumi.get(self, "admin_login_domain")
+
+    @_builtins.property
+    @pulumi.getter(name="connectionProfileId")
+    def connection_profile_id(self) -> _builtins.str:
+        """
+        The ID of the connection profile to use for this application.
+        """
+        return pulumi.get(self, "connection_profile_id")
+
+    @_builtins.property
+    @pulumi.getter(name="enableClient")
+    def enable_client(self) -> _builtins.bool:
+        """
+        When true, all connections made via express configuration will be enabled for this application.
+        """
+        return pulumi.get(self, "enable_client")
+
+    @_builtins.property
+    @pulumi.getter(name="enableOrganization")
+    def enable_organization(self) -> _builtins.bool:
+        """
+        When true, all connections made via express configuration will have the associated organization enabled.
+        """
+        return pulumi.get(self, "enable_organization")
+
+    @_builtins.property
+    @pulumi.getter(name="initiateLoginUriTemplate")
+    def initiate_login_uri_template(self) -> _builtins.str:
+        """
+        The URI users should bookmark to log in to this application. Variable substitution is permitted for: organization_name, organization_id, and connection_name.
+        """
+        return pulumi.get(self, "initiate_login_uri_template")
+
+    @_builtins.property
+    @pulumi.getter(name="linkedClients")
+    def linked_clients(self) -> Sequence['outputs.GetClientExpressConfigurationLinkedClientResult']:
+        """
+        List of client IDs that are linked to this express configuration (e.g. web or mobile clients).
+        """
+        return pulumi.get(self, "linked_clients")
+
+    @_builtins.property
+    @pulumi.getter(name="oinSubmissionId")
+    def oin_submission_id(self) -> _builtins.str:
+        """
+        The identifier of the published application in the OKTA OIN.
+        """
+        return pulumi.get(self, "oin_submission_id")
+
+    @_builtins.property
+    @pulumi.getter(name="oktaOinClientId")
+    def okta_oin_client_id(self) -> _builtins.str:
+        """
+        The unique identifier for the Okta OIN Express Configuration Client.
+        """
+        return pulumi.get(self, "okta_oin_client_id")
+
+    @_builtins.property
+    @pulumi.getter(name="userAttributeProfileId")
+    def user_attribute_profile_id(self) -> _builtins.str:
+        """
+        The ID of the user attribute profile to use for this application.
+        """
+        return pulumi.get(self, "user_attribute_profile_id")
+
+
+@pulumi.output_type
+class GetClientExpressConfigurationLinkedClientResult(dict):
+    def __init__(__self__, *,
+                 client_id: _builtins.str):
+        """
+        :param _builtins.str client_id: The ID of the linked client.
+        """
+        pulumi.set(__self__, "client_id", client_id)
+
+    @_builtins.property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> _builtins.str:
+        """
+        The ID of the linked client.
+        """
+        return pulumi.get(self, "client_id")
+
+
+@pulumi.output_type
 class GetClientGrantsClientGrantResult(dict):
     def __init__(__self__, *,
                  audience: _builtins.str,
@@ -17966,6 +18942,7 @@ class GetClientsClientResult(dict):
                  client_metadata: Mapping[str, _builtins.str],
                  client_secret: _builtins.str,
                  description: _builtins.str,
+                 express_configurations: Sequence['outputs.GetClientsClientExpressConfigurationResult'],
                  grant_types: Sequence[_builtins.str],
                  is_first_party: _builtins.bool,
                  is_token_endpoint_ip_header_trusted: _builtins.bool,
@@ -17983,11 +18960,12 @@ class GetClientsClientResult(dict):
         :param Sequence[_builtins.str] allowed_clients: List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
         :param Sequence[_builtins.str] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
         :param Sequence[_builtins.str] allowed_origins: URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
-        :param _builtins.str app_type: Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+        :param _builtins.str app_type: Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `express_configuration`
         :param Sequence[_builtins.str] async_approval_notification_channels: List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `["guardian-push"]` if not specified.
         :param Sequence[_builtins.str] callbacks: URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
         :param Mapping[str, _builtins.str] client_metadata: Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
         :param _builtins.str description: Description of the purpose of the client.
+        :param Sequence['GetClientsClientExpressConfigurationArgs'] express_configurations: Express Configuration settings for the client. Used with OIN Express Configuration.
         :param Sequence[_builtins.str] grant_types: Types of grants that this client is authorized to use.
         :param _builtins.bool is_first_party: Indicates whether this client is a first-party client.Defaults to true from the API
         :param _builtins.bool is_token_endpoint_ip_header_trusted: Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `client_secret_post` or `client_secret_basic`. Setting this property when creating the resource, will default the authentication method to `client_secret_post`. To change the authentication method to `client_secret_basic` use the `ClientCredentials` resource.
@@ -18010,6 +18988,7 @@ class GetClientsClientResult(dict):
         pulumi.set(__self__, "client_metadata", client_metadata)
         pulumi.set(__self__, "client_secret", client_secret)
         pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "express_configurations", express_configurations)
         pulumi.set(__self__, "grant_types", grant_types)
         pulumi.set(__self__, "is_first_party", is_first_party)
         pulumi.set(__self__, "is_token_endpoint_ip_header_trusted", is_token_endpoint_ip_header_trusted)
@@ -18054,7 +19033,7 @@ class GetClientsClientResult(dict):
     @pulumi.getter(name="appType")
     def app_type(self) -> _builtins.str:
         """
-        Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+        Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `express_configuration`
         """
         return pulumi.get(self, "app_type")
 
@@ -18094,6 +19073,14 @@ class GetClientsClientResult(dict):
         Description of the purpose of the client.
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="expressConfigurations")
+    def express_configurations(self) -> Sequence['outputs.GetClientsClientExpressConfigurationResult']:
+        """
+        Express Configuration settings for the client. Used with OIN Express Configuration.
+        """
+        return pulumi.get(self, "express_configurations")
 
     @_builtins.property
     @pulumi.getter(name="grantTypes")
@@ -18195,6 +19182,130 @@ class GetClientsClientResult(dict):
         The name of the client. If not provided, `client_id` must be set.
         """
         return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetClientsClientExpressConfigurationResult(dict):
+    def __init__(__self__, *,
+                 admin_login_domain: _builtins.str,
+                 connection_profile_id: _builtins.str,
+                 enable_client: _builtins.bool,
+                 enable_organization: _builtins.bool,
+                 initiate_login_uri_template: _builtins.str,
+                 linked_clients: Sequence['outputs.GetClientsClientExpressConfigurationLinkedClientResult'],
+                 oin_submission_id: _builtins.str,
+                 okta_oin_client_id: _builtins.str,
+                 user_attribute_profile_id: _builtins.str):
+        """
+        :param _builtins.str admin_login_domain: The domain that admins are expected to log in via for authenticating for express configuration.
+        :param _builtins.str connection_profile_id: The ID of the connection profile to use for this application.
+        :param _builtins.bool enable_client: When true, all connections made via express configuration will be enabled for this application.
+        :param _builtins.bool enable_organization: When true, all connections made via express configuration will have the associated organization enabled.
+        :param _builtins.str initiate_login_uri_template: The URI users should bookmark to log in to this application. Variable substitution is permitted for: organization_name, organization_id, and connection_name.
+        :param Sequence['GetClientsClientExpressConfigurationLinkedClientArgs'] linked_clients: List of client IDs that are linked to this express configuration (e.g. web or mobile clients).
+        :param _builtins.str oin_submission_id: The identifier of the published application in the OKTA OIN.
+        :param _builtins.str okta_oin_client_id: The unique identifier for the Okta OIN Express Configuration Client.
+        :param _builtins.str user_attribute_profile_id: The ID of the user attribute profile to use for this application.
+        """
+        pulumi.set(__self__, "admin_login_domain", admin_login_domain)
+        pulumi.set(__self__, "connection_profile_id", connection_profile_id)
+        pulumi.set(__self__, "enable_client", enable_client)
+        pulumi.set(__self__, "enable_organization", enable_organization)
+        pulumi.set(__self__, "initiate_login_uri_template", initiate_login_uri_template)
+        pulumi.set(__self__, "linked_clients", linked_clients)
+        pulumi.set(__self__, "oin_submission_id", oin_submission_id)
+        pulumi.set(__self__, "okta_oin_client_id", okta_oin_client_id)
+        pulumi.set(__self__, "user_attribute_profile_id", user_attribute_profile_id)
+
+    @_builtins.property
+    @pulumi.getter(name="adminLoginDomain")
+    def admin_login_domain(self) -> _builtins.str:
+        """
+        The domain that admins are expected to log in via for authenticating for express configuration.
+        """
+        return pulumi.get(self, "admin_login_domain")
+
+    @_builtins.property
+    @pulumi.getter(name="connectionProfileId")
+    def connection_profile_id(self) -> _builtins.str:
+        """
+        The ID of the connection profile to use for this application.
+        """
+        return pulumi.get(self, "connection_profile_id")
+
+    @_builtins.property
+    @pulumi.getter(name="enableClient")
+    def enable_client(self) -> _builtins.bool:
+        """
+        When true, all connections made via express configuration will be enabled for this application.
+        """
+        return pulumi.get(self, "enable_client")
+
+    @_builtins.property
+    @pulumi.getter(name="enableOrganization")
+    def enable_organization(self) -> _builtins.bool:
+        """
+        When true, all connections made via express configuration will have the associated organization enabled.
+        """
+        return pulumi.get(self, "enable_organization")
+
+    @_builtins.property
+    @pulumi.getter(name="initiateLoginUriTemplate")
+    def initiate_login_uri_template(self) -> _builtins.str:
+        """
+        The URI users should bookmark to log in to this application. Variable substitution is permitted for: organization_name, organization_id, and connection_name.
+        """
+        return pulumi.get(self, "initiate_login_uri_template")
+
+    @_builtins.property
+    @pulumi.getter(name="linkedClients")
+    def linked_clients(self) -> Sequence['outputs.GetClientsClientExpressConfigurationLinkedClientResult']:
+        """
+        List of client IDs that are linked to this express configuration (e.g. web or mobile clients).
+        """
+        return pulumi.get(self, "linked_clients")
+
+    @_builtins.property
+    @pulumi.getter(name="oinSubmissionId")
+    def oin_submission_id(self) -> _builtins.str:
+        """
+        The identifier of the published application in the OKTA OIN.
+        """
+        return pulumi.get(self, "oin_submission_id")
+
+    @_builtins.property
+    @pulumi.getter(name="oktaOinClientId")
+    def okta_oin_client_id(self) -> _builtins.str:
+        """
+        The unique identifier for the Okta OIN Express Configuration Client.
+        """
+        return pulumi.get(self, "okta_oin_client_id")
+
+    @_builtins.property
+    @pulumi.getter(name="userAttributeProfileId")
+    def user_attribute_profile_id(self) -> _builtins.str:
+        """
+        The ID of the user attribute profile to use for this application.
+        """
+        return pulumi.get(self, "user_attribute_profile_id")
+
+
+@pulumi.output_type
+class GetClientsClientExpressConfigurationLinkedClientResult(dict):
+    def __init__(__self__, *,
+                 client_id: _builtins.str):
+        """
+        :param _builtins.str client_id: The ID of the linked client.
+        """
+        pulumi.set(__self__, "client_id", client_id)
+
+    @_builtins.property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> _builtins.str:
+        """
+        The ID of the linked client.
+        """
+        return pulumi.get(self, "client_id")
 
 
 @pulumi.output_type
@@ -20679,6 +21790,416 @@ class GetConnectionOptionValidationUsernameResult(dict):
     @pulumi.getter
     def min(self) -> _builtins.int:
         return pulumi.get(self, "min")
+
+
+@pulumi.output_type
+class GetConnectionProfileConnectionConfigResult(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class GetConnectionProfileOrganizationResult(dict):
+    def __init__(__self__, *,
+                 assign_membership_on_login: _builtins.str,
+                 show_as_button: _builtins.str):
+        """
+        :param _builtins.str assign_membership_on_login: Whether to assign membership on login.
+        :param _builtins.str show_as_button: Whether to show organization as a button.
+        """
+        pulumi.set(__self__, "assign_membership_on_login", assign_membership_on_login)
+        pulumi.set(__self__, "show_as_button", show_as_button)
+
+    @_builtins.property
+    @pulumi.getter(name="assignMembershipOnLogin")
+    def assign_membership_on_login(self) -> _builtins.str:
+        """
+        Whether to assign membership on login.
+        """
+        return pulumi.get(self, "assign_membership_on_login")
+
+    @_builtins.property
+    @pulumi.getter(name="showAsButton")
+    def show_as_button(self) -> _builtins.str:
+        """
+        Whether to show organization as a button.
+        """
+        return pulumi.get(self, "show_as_button")
+
+
+@pulumi.output_type
+class GetConnectionProfileStrategyOverrideResult(dict):
+    def __init__(__self__, *,
+                 ad: 'outputs.GetConnectionProfileStrategyOverrideAdResult',
+                 adfs: 'outputs.GetConnectionProfileStrategyOverrideAdfsResult',
+                 google_apps: 'outputs.GetConnectionProfileStrategyOverrideGoogleAppsResult',
+                 oidc: 'outputs.GetConnectionProfileStrategyOverrideOidcResult',
+                 okta: 'outputs.GetConnectionProfileStrategyOverrideOktaResult',
+                 pingfederate: 'outputs.GetConnectionProfileStrategyOverridePingfederateResult',
+                 samlp: 'outputs.GetConnectionProfileStrategyOverrideSamlpResult',
+                 waad: 'outputs.GetConnectionProfileStrategyOverrideWaadResult'):
+        """
+        :param 'GetConnectionProfileStrategyOverrideAdArgs' ad: Strategy override configuration.
+        :param 'GetConnectionProfileStrategyOverrideAdfsArgs' adfs: Strategy override configuration.
+        :param 'GetConnectionProfileStrategyOverrideGoogleAppsArgs' google_apps: Strategy override configuration.
+        :param 'GetConnectionProfileStrategyOverrideOidcArgs' oidc: Strategy override configuration.
+        :param 'GetConnectionProfileStrategyOverrideOktaArgs' okta: Strategy override configuration.
+        :param 'GetConnectionProfileStrategyOverridePingfederateArgs' pingfederate: Strategy override configuration.
+        :param 'GetConnectionProfileStrategyOverrideSamlpArgs' samlp: Strategy override configuration.
+        :param 'GetConnectionProfileStrategyOverrideWaadArgs' waad: Strategy override configuration.
+        """
+        pulumi.set(__self__, "ad", ad)
+        pulumi.set(__self__, "adfs", adfs)
+        pulumi.set(__self__, "google_apps", google_apps)
+        pulumi.set(__self__, "oidc", oidc)
+        pulumi.set(__self__, "okta", okta)
+        pulumi.set(__self__, "pingfederate", pingfederate)
+        pulumi.set(__self__, "samlp", samlp)
+        pulumi.set(__self__, "waad", waad)
+
+    @_builtins.property
+    @pulumi.getter
+    def ad(self) -> 'outputs.GetConnectionProfileStrategyOverrideAdResult':
+        """
+        Strategy override configuration.
+        """
+        return pulumi.get(self, "ad")
+
+    @_builtins.property
+    @pulumi.getter
+    def adfs(self) -> 'outputs.GetConnectionProfileStrategyOverrideAdfsResult':
+        """
+        Strategy override configuration.
+        """
+        return pulumi.get(self, "adfs")
+
+    @_builtins.property
+    @pulumi.getter(name="googleApps")
+    def google_apps(self) -> 'outputs.GetConnectionProfileStrategyOverrideGoogleAppsResult':
+        """
+        Strategy override configuration.
+        """
+        return pulumi.get(self, "google_apps")
+
+    @_builtins.property
+    @pulumi.getter
+    def oidc(self) -> 'outputs.GetConnectionProfileStrategyOverrideOidcResult':
+        """
+        Strategy override configuration.
+        """
+        return pulumi.get(self, "oidc")
+
+    @_builtins.property
+    @pulumi.getter
+    def okta(self) -> 'outputs.GetConnectionProfileStrategyOverrideOktaResult':
+        """
+        Strategy override configuration.
+        """
+        return pulumi.get(self, "okta")
+
+    @_builtins.property
+    @pulumi.getter
+    def pingfederate(self) -> 'outputs.GetConnectionProfileStrategyOverridePingfederateResult':
+        """
+        Strategy override configuration.
+        """
+        return pulumi.get(self, "pingfederate")
+
+    @_builtins.property
+    @pulumi.getter
+    def samlp(self) -> 'outputs.GetConnectionProfileStrategyOverrideSamlpResult':
+        """
+        Strategy override configuration.
+        """
+        return pulumi.get(self, "samlp")
+
+    @_builtins.property
+    @pulumi.getter
+    def waad(self) -> 'outputs.GetConnectionProfileStrategyOverrideWaadResult':
+        """
+        Strategy override configuration.
+        """
+        return pulumi.get(self, "waad")
+
+
+@pulumi.output_type
+class GetConnectionProfileStrategyOverrideAdResult(dict):
+    def __init__(__self__, *,
+                 connection_config: 'outputs.GetConnectionProfileStrategyOverrideAdConnectionConfigResult',
+                 enabled_features: Sequence[_builtins.str]):
+        """
+        :param 'GetConnectionProfileStrategyOverrideAdConnectionConfigArgs' connection_config: Connection config for the strategy override.
+        :param Sequence[_builtins.str] enabled_features: Enabled features for the strategy override.
+        """
+        pulumi.set(__self__, "connection_config", connection_config)
+        pulumi.set(__self__, "enabled_features", enabled_features)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionConfig")
+    def connection_config(self) -> 'outputs.GetConnectionProfileStrategyOverrideAdConnectionConfigResult':
+        """
+        Connection config for the strategy override.
+        """
+        return pulumi.get(self, "connection_config")
+
+    @_builtins.property
+    @pulumi.getter(name="enabledFeatures")
+    def enabled_features(self) -> Sequence[_builtins.str]:
+        """
+        Enabled features for the strategy override.
+        """
+        return pulumi.get(self, "enabled_features")
+
+
+@pulumi.output_type
+class GetConnectionProfileStrategyOverrideAdConnectionConfigResult(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class GetConnectionProfileStrategyOverrideAdfsResult(dict):
+    def __init__(__self__, *,
+                 connection_config: 'outputs.GetConnectionProfileStrategyOverrideAdfsConnectionConfigResult',
+                 enabled_features: Sequence[_builtins.str]):
+        """
+        :param 'GetConnectionProfileStrategyOverrideAdfsConnectionConfigArgs' connection_config: Connection config for the strategy override.
+        :param Sequence[_builtins.str] enabled_features: Enabled features for the strategy override.
+        """
+        pulumi.set(__self__, "connection_config", connection_config)
+        pulumi.set(__self__, "enabled_features", enabled_features)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionConfig")
+    def connection_config(self) -> 'outputs.GetConnectionProfileStrategyOverrideAdfsConnectionConfigResult':
+        """
+        Connection config for the strategy override.
+        """
+        return pulumi.get(self, "connection_config")
+
+    @_builtins.property
+    @pulumi.getter(name="enabledFeatures")
+    def enabled_features(self) -> Sequence[_builtins.str]:
+        """
+        Enabled features for the strategy override.
+        """
+        return pulumi.get(self, "enabled_features")
+
+
+@pulumi.output_type
+class GetConnectionProfileStrategyOverrideAdfsConnectionConfigResult(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class GetConnectionProfileStrategyOverrideGoogleAppsResult(dict):
+    def __init__(__self__, *,
+                 connection_config: 'outputs.GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigResult',
+                 enabled_features: Sequence[_builtins.str]):
+        """
+        :param 'GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigArgs' connection_config: Connection config for the strategy override.
+        :param Sequence[_builtins.str] enabled_features: Enabled features for the strategy override.
+        """
+        pulumi.set(__self__, "connection_config", connection_config)
+        pulumi.set(__self__, "enabled_features", enabled_features)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionConfig")
+    def connection_config(self) -> 'outputs.GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigResult':
+        """
+        Connection config for the strategy override.
+        """
+        return pulumi.get(self, "connection_config")
+
+    @_builtins.property
+    @pulumi.getter(name="enabledFeatures")
+    def enabled_features(self) -> Sequence[_builtins.str]:
+        """
+        Enabled features for the strategy override.
+        """
+        return pulumi.get(self, "enabled_features")
+
+
+@pulumi.output_type
+class GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigResult(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class GetConnectionProfileStrategyOverrideOidcResult(dict):
+    def __init__(__self__, *,
+                 connection_config: 'outputs.GetConnectionProfileStrategyOverrideOidcConnectionConfigResult',
+                 enabled_features: Sequence[_builtins.str]):
+        """
+        :param 'GetConnectionProfileStrategyOverrideOidcConnectionConfigArgs' connection_config: Connection config for the strategy override.
+        :param Sequence[_builtins.str] enabled_features: Enabled features for the strategy override.
+        """
+        pulumi.set(__self__, "connection_config", connection_config)
+        pulumi.set(__self__, "enabled_features", enabled_features)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionConfig")
+    def connection_config(self) -> 'outputs.GetConnectionProfileStrategyOverrideOidcConnectionConfigResult':
+        """
+        Connection config for the strategy override.
+        """
+        return pulumi.get(self, "connection_config")
+
+    @_builtins.property
+    @pulumi.getter(name="enabledFeatures")
+    def enabled_features(self) -> Sequence[_builtins.str]:
+        """
+        Enabled features for the strategy override.
+        """
+        return pulumi.get(self, "enabled_features")
+
+
+@pulumi.output_type
+class GetConnectionProfileStrategyOverrideOidcConnectionConfigResult(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class GetConnectionProfileStrategyOverrideOktaResult(dict):
+    def __init__(__self__, *,
+                 connection_config: 'outputs.GetConnectionProfileStrategyOverrideOktaConnectionConfigResult',
+                 enabled_features: Sequence[_builtins.str]):
+        """
+        :param 'GetConnectionProfileStrategyOverrideOktaConnectionConfigArgs' connection_config: Connection config for the strategy override.
+        :param Sequence[_builtins.str] enabled_features: Enabled features for the strategy override.
+        """
+        pulumi.set(__self__, "connection_config", connection_config)
+        pulumi.set(__self__, "enabled_features", enabled_features)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionConfig")
+    def connection_config(self) -> 'outputs.GetConnectionProfileStrategyOverrideOktaConnectionConfigResult':
+        """
+        Connection config for the strategy override.
+        """
+        return pulumi.get(self, "connection_config")
+
+    @_builtins.property
+    @pulumi.getter(name="enabledFeatures")
+    def enabled_features(self) -> Sequence[_builtins.str]:
+        """
+        Enabled features for the strategy override.
+        """
+        return pulumi.get(self, "enabled_features")
+
+
+@pulumi.output_type
+class GetConnectionProfileStrategyOverrideOktaConnectionConfigResult(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class GetConnectionProfileStrategyOverridePingfederateResult(dict):
+    def __init__(__self__, *,
+                 connection_config: 'outputs.GetConnectionProfileStrategyOverridePingfederateConnectionConfigResult',
+                 enabled_features: Sequence[_builtins.str]):
+        """
+        :param 'GetConnectionProfileStrategyOverridePingfederateConnectionConfigArgs' connection_config: Connection config for the strategy override.
+        :param Sequence[_builtins.str] enabled_features: Enabled features for the strategy override.
+        """
+        pulumi.set(__self__, "connection_config", connection_config)
+        pulumi.set(__self__, "enabled_features", enabled_features)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionConfig")
+    def connection_config(self) -> 'outputs.GetConnectionProfileStrategyOverridePingfederateConnectionConfigResult':
+        """
+        Connection config for the strategy override.
+        """
+        return pulumi.get(self, "connection_config")
+
+    @_builtins.property
+    @pulumi.getter(name="enabledFeatures")
+    def enabled_features(self) -> Sequence[_builtins.str]:
+        """
+        Enabled features for the strategy override.
+        """
+        return pulumi.get(self, "enabled_features")
+
+
+@pulumi.output_type
+class GetConnectionProfileStrategyOverridePingfederateConnectionConfigResult(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class GetConnectionProfileStrategyOverrideSamlpResult(dict):
+    def __init__(__self__, *,
+                 connection_config: 'outputs.GetConnectionProfileStrategyOverrideSamlpConnectionConfigResult',
+                 enabled_features: Sequence[_builtins.str]):
+        """
+        :param 'GetConnectionProfileStrategyOverrideSamlpConnectionConfigArgs' connection_config: Connection config for the strategy override.
+        :param Sequence[_builtins.str] enabled_features: Enabled features for the strategy override.
+        """
+        pulumi.set(__self__, "connection_config", connection_config)
+        pulumi.set(__self__, "enabled_features", enabled_features)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionConfig")
+    def connection_config(self) -> 'outputs.GetConnectionProfileStrategyOverrideSamlpConnectionConfigResult':
+        """
+        Connection config for the strategy override.
+        """
+        return pulumi.get(self, "connection_config")
+
+    @_builtins.property
+    @pulumi.getter(name="enabledFeatures")
+    def enabled_features(self) -> Sequence[_builtins.str]:
+        """
+        Enabled features for the strategy override.
+        """
+        return pulumi.get(self, "enabled_features")
+
+
+@pulumi.output_type
+class GetConnectionProfileStrategyOverrideSamlpConnectionConfigResult(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class GetConnectionProfileStrategyOverrideWaadResult(dict):
+    def __init__(__self__, *,
+                 connection_config: 'outputs.GetConnectionProfileStrategyOverrideWaadConnectionConfigResult',
+                 enabled_features: Sequence[_builtins.str]):
+        """
+        :param 'GetConnectionProfileStrategyOverrideWaadConnectionConfigArgs' connection_config: Connection config for the strategy override.
+        :param Sequence[_builtins.str] enabled_features: Enabled features for the strategy override.
+        """
+        pulumi.set(__self__, "connection_config", connection_config)
+        pulumi.set(__self__, "enabled_features", enabled_features)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionConfig")
+    def connection_config(self) -> 'outputs.GetConnectionProfileStrategyOverrideWaadConnectionConfigResult':
+        """
+        Connection config for the strategy override.
+        """
+        return pulumi.get(self, "connection_config")
+
+    @_builtins.property
+    @pulumi.getter(name="enabledFeatures")
+    def enabled_features(self) -> Sequence[_builtins.str]:
+        """
+        Enabled features for the strategy override.
+        """
+        return pulumi.get(self, "enabled_features")
+
+
+@pulumi.output_type
+class GetConnectionProfileStrategyOverrideWaadConnectionConfigResult(dict):
+    def __init__(__self__):
+        pass
 
 
 @pulumi.output_type

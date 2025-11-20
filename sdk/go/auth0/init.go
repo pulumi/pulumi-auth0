@@ -43,6 +43,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ConnectionClients{}
 	case "auth0:index/connectionKeys:ConnectionKeys":
 		r = &ConnectionKeys{}
+	case "auth0:index/connectionProfile:ConnectionProfile":
+		r = &ConnectionProfile{}
 	case "auth0:index/connectionScimConfiguration:ConnectionScimConfiguration":
 		r = &ConnectionScimConfiguration{}
 	case "auth0:index/connectionScimToken:ConnectionScimToken":
@@ -237,6 +239,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"auth0",
 		"index/connectionKeys",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"auth0",
+		"index/connectionProfile",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

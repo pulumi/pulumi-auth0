@@ -60,6 +60,11 @@ export type ConnectionKeys = import("./connectionKeys").ConnectionKeys;
 export const ConnectionKeys: typeof import("./connectionKeys").ConnectionKeys = null as any;
 utilities.lazyLoad(exports, ["ConnectionKeys"], () => require("./connectionKeys"));
 
+export { ConnectionProfileArgs, ConnectionProfileState } from "./connectionProfile";
+export type ConnectionProfile = import("./connectionProfile").ConnectionProfile;
+export const ConnectionProfile: typeof import("./connectionProfile").ConnectionProfile = null as any;
+utilities.lazyLoad(exports, ["ConnectionProfile"], () => require("./connectionProfile"));
+
 export { ConnectionScimConfigurationArgs, ConnectionScimConfigurationState } from "./connectionScimConfiguration";
 export type ConnectionScimConfiguration = import("./connectionScimConfiguration").ConnectionScimConfiguration;
 export const ConnectionScimConfiguration: typeof import("./connectionScimConfiguration").ConnectionScimConfiguration = null as any;
@@ -159,6 +164,11 @@ export { GetConnectionKeysArgs, GetConnectionKeysResult, GetConnectionKeysOutput
 export const getConnectionKeys: typeof import("./getConnectionKeys").getConnectionKeys = null as any;
 export const getConnectionKeysOutput: typeof import("./getConnectionKeys").getConnectionKeysOutput = null as any;
 utilities.lazyLoad(exports, ["getConnectionKeys","getConnectionKeysOutput"], () => require("./getConnectionKeys"));
+
+export { GetConnectionProfileArgs, GetConnectionProfileResult, GetConnectionProfileOutputArgs } from "./getConnectionProfile";
+export const getConnectionProfile: typeof import("./getConnectionProfile").getConnectionProfile = null as any;
+export const getConnectionProfileOutput: typeof import("./getConnectionProfile").getConnectionProfileOutput = null as any;
+utilities.lazyLoad(exports, ["getConnectionProfile","getConnectionProfileOutput"], () => require("./getConnectionProfile"));
 
 export { GetConnectionScimConfigurationArgs, GetConnectionScimConfigurationResult, GetConnectionScimConfigurationOutputArgs } from "./getConnectionScimConfiguration";
 export const getConnectionScimConfiguration: typeof import("./getConnectionScimConfiguration").getConnectionScimConfiguration = null as any;
@@ -529,6 +539,8 @@ const _module = {
                 return new ConnectionClients(name, <any>undefined, { urn })
             case "auth0:index/connectionKeys:ConnectionKeys":
                 return new ConnectionKeys(name, <any>undefined, { urn })
+            case "auth0:index/connectionProfile:ConnectionProfile":
+                return new ConnectionProfile(name, <any>undefined, { urn })
             case "auth0:index/connectionScimConfiguration:ConnectionScimConfiguration":
                 return new ConnectionScimConfiguration(name, <any>undefined, { urn })
             case "auth0:index/connectionScimToken:ConnectionScimToken":
@@ -655,6 +667,7 @@ pulumi.runtime.registerResourceModule("auth0", "index/connection", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/connectionClient", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/connectionClients", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/connectionKeys", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/connectionProfile", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/connectionScimConfiguration", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/connectionScimToken", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/customDomain", _module)

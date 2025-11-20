@@ -167,7 +167,7 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly ImmutableArray<string> AllowedOrigins;
         /// <summary>
-        /// Type of application the client represents. Possible values are: `Native`, `Spa`, `RegularWeb`, `NonInteractive`, `ResourceServer`,`SsoIntegration`. Specific SSO integrations types accepted as well are: `Rms`, `Box`, `Cloudbees`, `Concur`, `Dropbox`, `Mscrm`, `Echosign`, `Egnyte`, `Newrelic`, `Office365`, `Salesforce`, `Sentry`, `Sharepoint`, `Slack`, `Springcm`, `Zendesk`, `Zoom`.
+        /// Type of application the client represents. Possible values are: `Native`, `Spa`, `RegularWeb`, `NonInteractive`, `ResourceServer`,`SsoIntegration`. Specific SSO integrations types accepted as well are: `Rms`, `Box`, `Cloudbees`, `Concur`, `Dropbox`, `Mscrm`, `Echosign`, `Egnyte`, `Newrelic`, `Office365`, `Salesforce`, `Sentry`, `Sharepoint`, `Slack`, `Springcm`, `Zendesk`, `Zoom`, `ExpressConfiguration`
         /// </summary>
         public readonly string AppType;
         /// <summary>
@@ -227,6 +227,10 @@ namespace Pulumi.Auth0
         /// Encryption used for WS-Fed responses with this client.
         /// </summary>
         public readonly ImmutableDictionary<string, string> EncryptionKey;
+        /// <summary>
+        /// Express Configuration settings for the client. Used with OIN Express Configuration.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetClientExpressConfigurationResult> ExpressConfigurations;
         /// <summary>
         /// HTML form template to be used for WS-Federation.
         /// </summary>
@@ -391,6 +395,8 @@ namespace Pulumi.Auth0
 
             ImmutableDictionary<string, string> encryptionKey,
 
+            ImmutableArray<Outputs.GetClientExpressConfigurationResult> expressConfigurations,
+
             string formTemplate,
 
             ImmutableArray<string> grantTypes,
@@ -473,6 +479,7 @@ namespace Pulumi.Auth0
             DefaultOrganizations = defaultOrganizations;
             Description = description;
             EncryptionKey = encryptionKey;
+            ExpressConfigurations = expressConfigurations;
             FormTemplate = formTemplate;
             GrantTypes = grantTypes;
             Id = id;

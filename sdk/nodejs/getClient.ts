@@ -69,7 +69,7 @@ export interface GetClientResult {
      */
     readonly allowedOrigins: string[];
     /**
-     * Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+     * Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `expressConfiguration`
      */
     readonly appType: string;
     /**
@@ -129,6 +129,10 @@ export interface GetClientResult {
      * Encryption used for WS-Fed responses with this client.
      */
     readonly encryptionKey: {[key: string]: string};
+    /**
+     * Express Configuration settings for the client. Used with OIN Express Configuration.
+     */
+    readonly expressConfigurations: outputs.GetClientExpressConfiguration[];
     /**
      * HTML form template to be used for WS-Federation.
      */

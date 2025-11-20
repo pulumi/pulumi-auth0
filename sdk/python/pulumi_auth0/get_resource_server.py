@@ -27,7 +27,7 @@ class GetResourceServerResult:
     """
     A collection of values returned by getResourceServer.
     """
-    def __init__(__self__, allow_offline_access=None, authorization_details=None, client_id=None, consent_policy=None, enforce_policies=None, id=None, identifier=None, name=None, proof_of_possessions=None, resource_server_id=None, scopes=None, signing_alg=None, signing_secret=None, skip_consent_for_verifiable_first_party_clients=None, subject_type_authorizations=None, token_dialect=None, token_encryptions=None, token_lifetime=None, token_lifetime_for_web=None, verification_location=None):
+    def __init__(__self__, allow_offline_access=None, authorization_details=None, client_id=None, consent_policy=None, enforce_policies=None, id=None, identifier=None, is_system=None, name=None, proof_of_possessions=None, resource_server_id=None, scopes=None, signing_alg=None, signing_secret=None, skip_consent_for_verifiable_first_party_clients=None, subject_type_authorizations=None, token_dialect=None, token_encryptions=None, token_lifetime=None, token_lifetime_for_web=None, verification_location=None):
         if allow_offline_access and not isinstance(allow_offline_access, bool):
             raise TypeError("Expected argument 'allow_offline_access' to be a bool")
         pulumi.set(__self__, "allow_offline_access", allow_offline_access)
@@ -49,6 +49,9 @@ class GetResourceServerResult:
         if identifier and not isinstance(identifier, str):
             raise TypeError("Expected argument 'identifier' to be a str")
         pulumi.set(__self__, "identifier", identifier)
+        if is_system and not isinstance(is_system, bool):
+            raise TypeError("Expected argument 'is_system' to be a bool")
+        pulumi.set(__self__, "is_system", is_system)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -144,6 +147,14 @@ class GetResourceServerResult:
         Unique identifier for the resource server. Used as the audience parameter for authorization calls. If not provided, `resource_server_id` must be set.
         """
         return pulumi.get(self, "identifier")
+
+    @_builtins.property
+    @pulumi.getter(name="isSystem")
+    def is_system(self) -> _builtins.bool:
+        """
+        Indicates whether this resource server is a special resource server created by Auth0. It cannot be modified or deleted directly.
+        """
+        return pulumi.get(self, "is_system")
 
     @_builtins.property
     @pulumi.getter
@@ -263,6 +274,7 @@ class AwaitableGetResourceServerResult(GetResourceServerResult):
             enforce_policies=self.enforce_policies,
             id=self.id,
             identifier=self.identifier,
+            is_system=self.is_system,
             name=self.name,
             proof_of_possessions=self.proof_of_possessions,
             resource_server_id=self.resource_server_id,
@@ -314,6 +326,7 @@ def get_resource_server(identifier: Optional[_builtins.str] = None,
         enforce_policies=pulumi.get(__ret__, 'enforce_policies'),
         id=pulumi.get(__ret__, 'id'),
         identifier=pulumi.get(__ret__, 'identifier'),
+        is_system=pulumi.get(__ret__, 'is_system'),
         name=pulumi.get(__ret__, 'name'),
         proof_of_possessions=pulumi.get(__ret__, 'proof_of_possessions'),
         resource_server_id=pulumi.get(__ret__, 'resource_server_id'),
@@ -362,6 +375,7 @@ def get_resource_server_output(identifier: Optional[pulumi.Input[Optional[_built
         enforce_policies=pulumi.get(__response__, 'enforce_policies'),
         id=pulumi.get(__response__, 'id'),
         identifier=pulumi.get(__response__, 'identifier'),
+        is_system=pulumi.get(__response__, 'is_system'),
         name=pulumi.get(__response__, 'name'),
         proof_of_possessions=pulumi.get(__response__, 'proof_of_possessions'),
         resource_server_id=pulumi.get(__response__, 'resource_server_id'),

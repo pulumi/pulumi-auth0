@@ -13220,6 +13220,392 @@ func (o ClientDefaultOrganizationPtrOutput) OrganizationId() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+type ClientExpressConfiguration struct {
+	// The domain that admins are expected to log in via for authenticating for express configuration.
+	AdminLoginDomain *string `pulumi:"adminLoginDomain"`
+	// The ID of the connection profile to use for this application.
+	ConnectionProfileId *string `pulumi:"connectionProfileId"`
+	// When true, all connections made via express configuration will be enabled for this application.
+	EnableClient *bool `pulumi:"enableClient"`
+	// When true, all connections made via express configuration will have the associated organization enabled.
+	EnableOrganization *bool `pulumi:"enableOrganization"`
+	// The URI users should bookmark to log in to this application. Variable substitution is permitted for: organization*name, organization*id, and connection_name.
+	InitiateLoginUriTemplate *string `pulumi:"initiateLoginUriTemplate"`
+	// List of client IDs that are linked to this express configuration (e.g. web or mobile clients).
+	LinkedClients []ClientExpressConfigurationLinkedClient `pulumi:"linkedClients"`
+	// The identifier of the published application in the OKTA OIN.
+	OinSubmissionId *string `pulumi:"oinSubmissionId"`
+	// The unique identifier for the Okta OIN Express Configuration Client.
+	OktaOinClientId *string `pulumi:"oktaOinClientId"`
+	// The ID of the user attribute profile to use for this application.
+	UserAttributeProfileId *string `pulumi:"userAttributeProfileId"`
+}
+
+// ClientExpressConfigurationInput is an input type that accepts ClientExpressConfigurationArgs and ClientExpressConfigurationOutput values.
+// You can construct a concrete instance of `ClientExpressConfigurationInput` via:
+//
+//	ClientExpressConfigurationArgs{...}
+type ClientExpressConfigurationInput interface {
+	pulumi.Input
+
+	ToClientExpressConfigurationOutput() ClientExpressConfigurationOutput
+	ToClientExpressConfigurationOutputWithContext(context.Context) ClientExpressConfigurationOutput
+}
+
+type ClientExpressConfigurationArgs struct {
+	// The domain that admins are expected to log in via for authenticating for express configuration.
+	AdminLoginDomain pulumi.StringPtrInput `pulumi:"adminLoginDomain"`
+	// The ID of the connection profile to use for this application.
+	ConnectionProfileId pulumi.StringPtrInput `pulumi:"connectionProfileId"`
+	// When true, all connections made via express configuration will be enabled for this application.
+	EnableClient pulumi.BoolPtrInput `pulumi:"enableClient"`
+	// When true, all connections made via express configuration will have the associated organization enabled.
+	EnableOrganization pulumi.BoolPtrInput `pulumi:"enableOrganization"`
+	// The URI users should bookmark to log in to this application. Variable substitution is permitted for: organization*name, organization*id, and connection_name.
+	InitiateLoginUriTemplate pulumi.StringPtrInput `pulumi:"initiateLoginUriTemplate"`
+	// List of client IDs that are linked to this express configuration (e.g. web or mobile clients).
+	LinkedClients ClientExpressConfigurationLinkedClientArrayInput `pulumi:"linkedClients"`
+	// The identifier of the published application in the OKTA OIN.
+	OinSubmissionId pulumi.StringPtrInput `pulumi:"oinSubmissionId"`
+	// The unique identifier for the Okta OIN Express Configuration Client.
+	OktaOinClientId pulumi.StringPtrInput `pulumi:"oktaOinClientId"`
+	// The ID of the user attribute profile to use for this application.
+	UserAttributeProfileId pulumi.StringPtrInput `pulumi:"userAttributeProfileId"`
+}
+
+func (ClientExpressConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientExpressConfiguration)(nil)).Elem()
+}
+
+func (i ClientExpressConfigurationArgs) ToClientExpressConfigurationOutput() ClientExpressConfigurationOutput {
+	return i.ToClientExpressConfigurationOutputWithContext(context.Background())
+}
+
+func (i ClientExpressConfigurationArgs) ToClientExpressConfigurationOutputWithContext(ctx context.Context) ClientExpressConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientExpressConfigurationOutput)
+}
+
+func (i ClientExpressConfigurationArgs) ToClientExpressConfigurationPtrOutput() ClientExpressConfigurationPtrOutput {
+	return i.ToClientExpressConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i ClientExpressConfigurationArgs) ToClientExpressConfigurationPtrOutputWithContext(ctx context.Context) ClientExpressConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientExpressConfigurationOutput).ToClientExpressConfigurationPtrOutputWithContext(ctx)
+}
+
+// ClientExpressConfigurationPtrInput is an input type that accepts ClientExpressConfigurationArgs, ClientExpressConfigurationPtr and ClientExpressConfigurationPtrOutput values.
+// You can construct a concrete instance of `ClientExpressConfigurationPtrInput` via:
+//
+//	        ClientExpressConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientExpressConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToClientExpressConfigurationPtrOutput() ClientExpressConfigurationPtrOutput
+	ToClientExpressConfigurationPtrOutputWithContext(context.Context) ClientExpressConfigurationPtrOutput
+}
+
+type clientExpressConfigurationPtrType ClientExpressConfigurationArgs
+
+func ClientExpressConfigurationPtr(v *ClientExpressConfigurationArgs) ClientExpressConfigurationPtrInput {
+	return (*clientExpressConfigurationPtrType)(v)
+}
+
+func (*clientExpressConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientExpressConfiguration)(nil)).Elem()
+}
+
+func (i *clientExpressConfigurationPtrType) ToClientExpressConfigurationPtrOutput() ClientExpressConfigurationPtrOutput {
+	return i.ToClientExpressConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *clientExpressConfigurationPtrType) ToClientExpressConfigurationPtrOutputWithContext(ctx context.Context) ClientExpressConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientExpressConfigurationPtrOutput)
+}
+
+type ClientExpressConfigurationOutput struct{ *pulumi.OutputState }
+
+func (ClientExpressConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientExpressConfiguration)(nil)).Elem()
+}
+
+func (o ClientExpressConfigurationOutput) ToClientExpressConfigurationOutput() ClientExpressConfigurationOutput {
+	return o
+}
+
+func (o ClientExpressConfigurationOutput) ToClientExpressConfigurationOutputWithContext(ctx context.Context) ClientExpressConfigurationOutput {
+	return o
+}
+
+func (o ClientExpressConfigurationOutput) ToClientExpressConfigurationPtrOutput() ClientExpressConfigurationPtrOutput {
+	return o.ToClientExpressConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o ClientExpressConfigurationOutput) ToClientExpressConfigurationPtrOutputWithContext(ctx context.Context) ClientExpressConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientExpressConfiguration) *ClientExpressConfiguration {
+		return &v
+	}).(ClientExpressConfigurationPtrOutput)
+}
+
+// The domain that admins are expected to log in via for authenticating for express configuration.
+func (o ClientExpressConfigurationOutput) AdminLoginDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientExpressConfiguration) *string { return v.AdminLoginDomain }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the connection profile to use for this application.
+func (o ClientExpressConfigurationOutput) ConnectionProfileId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientExpressConfiguration) *string { return v.ConnectionProfileId }).(pulumi.StringPtrOutput)
+}
+
+// When true, all connections made via express configuration will be enabled for this application.
+func (o ClientExpressConfigurationOutput) EnableClient() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClientExpressConfiguration) *bool { return v.EnableClient }).(pulumi.BoolPtrOutput)
+}
+
+// When true, all connections made via express configuration will have the associated organization enabled.
+func (o ClientExpressConfigurationOutput) EnableOrganization() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClientExpressConfiguration) *bool { return v.EnableOrganization }).(pulumi.BoolPtrOutput)
+}
+
+// The URI users should bookmark to log in to this application. Variable substitution is permitted for: organization*name, organization*id, and connection_name.
+func (o ClientExpressConfigurationOutput) InitiateLoginUriTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientExpressConfiguration) *string { return v.InitiateLoginUriTemplate }).(pulumi.StringPtrOutput)
+}
+
+// List of client IDs that are linked to this express configuration (e.g. web or mobile clients).
+func (o ClientExpressConfigurationOutput) LinkedClients() ClientExpressConfigurationLinkedClientArrayOutput {
+	return o.ApplyT(func(v ClientExpressConfiguration) []ClientExpressConfigurationLinkedClient { return v.LinkedClients }).(ClientExpressConfigurationLinkedClientArrayOutput)
+}
+
+// The identifier of the published application in the OKTA OIN.
+func (o ClientExpressConfigurationOutput) OinSubmissionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientExpressConfiguration) *string { return v.OinSubmissionId }).(pulumi.StringPtrOutput)
+}
+
+// The unique identifier for the Okta OIN Express Configuration Client.
+func (o ClientExpressConfigurationOutput) OktaOinClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientExpressConfiguration) *string { return v.OktaOinClientId }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the user attribute profile to use for this application.
+func (o ClientExpressConfigurationOutput) UserAttributeProfileId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientExpressConfiguration) *string { return v.UserAttributeProfileId }).(pulumi.StringPtrOutput)
+}
+
+type ClientExpressConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientExpressConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientExpressConfiguration)(nil)).Elem()
+}
+
+func (o ClientExpressConfigurationPtrOutput) ToClientExpressConfigurationPtrOutput() ClientExpressConfigurationPtrOutput {
+	return o
+}
+
+func (o ClientExpressConfigurationPtrOutput) ToClientExpressConfigurationPtrOutputWithContext(ctx context.Context) ClientExpressConfigurationPtrOutput {
+	return o
+}
+
+func (o ClientExpressConfigurationPtrOutput) Elem() ClientExpressConfigurationOutput {
+	return o.ApplyT(func(v *ClientExpressConfiguration) ClientExpressConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret ClientExpressConfiguration
+		return ret
+	}).(ClientExpressConfigurationOutput)
+}
+
+// The domain that admins are expected to log in via for authenticating for express configuration.
+func (o ClientExpressConfigurationPtrOutput) AdminLoginDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientExpressConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AdminLoginDomain
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the connection profile to use for this application.
+func (o ClientExpressConfigurationPtrOutput) ConnectionProfileId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientExpressConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectionProfileId
+	}).(pulumi.StringPtrOutput)
+}
+
+// When true, all connections made via express configuration will be enabled for this application.
+func (o ClientExpressConfigurationPtrOutput) EnableClient() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClientExpressConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableClient
+	}).(pulumi.BoolPtrOutput)
+}
+
+// When true, all connections made via express configuration will have the associated organization enabled.
+func (o ClientExpressConfigurationPtrOutput) EnableOrganization() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClientExpressConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableOrganization
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The URI users should bookmark to log in to this application. Variable substitution is permitted for: organization*name, organization*id, and connection_name.
+func (o ClientExpressConfigurationPtrOutput) InitiateLoginUriTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientExpressConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InitiateLoginUriTemplate
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of client IDs that are linked to this express configuration (e.g. web or mobile clients).
+func (o ClientExpressConfigurationPtrOutput) LinkedClients() ClientExpressConfigurationLinkedClientArrayOutput {
+	return o.ApplyT(func(v *ClientExpressConfiguration) []ClientExpressConfigurationLinkedClient {
+		if v == nil {
+			return nil
+		}
+		return v.LinkedClients
+	}).(ClientExpressConfigurationLinkedClientArrayOutput)
+}
+
+// The identifier of the published application in the OKTA OIN.
+func (o ClientExpressConfigurationPtrOutput) OinSubmissionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientExpressConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OinSubmissionId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The unique identifier for the Okta OIN Express Configuration Client.
+func (o ClientExpressConfigurationPtrOutput) OktaOinClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientExpressConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OktaOinClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the user attribute profile to use for this application.
+func (o ClientExpressConfigurationPtrOutput) UserAttributeProfileId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientExpressConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAttributeProfileId
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClientExpressConfigurationLinkedClient struct {
+	// The ID of the linked client.
+	ClientId *string `pulumi:"clientId"`
+}
+
+// ClientExpressConfigurationLinkedClientInput is an input type that accepts ClientExpressConfigurationLinkedClientArgs and ClientExpressConfigurationLinkedClientOutput values.
+// You can construct a concrete instance of `ClientExpressConfigurationLinkedClientInput` via:
+//
+//	ClientExpressConfigurationLinkedClientArgs{...}
+type ClientExpressConfigurationLinkedClientInput interface {
+	pulumi.Input
+
+	ToClientExpressConfigurationLinkedClientOutput() ClientExpressConfigurationLinkedClientOutput
+	ToClientExpressConfigurationLinkedClientOutputWithContext(context.Context) ClientExpressConfigurationLinkedClientOutput
+}
+
+type ClientExpressConfigurationLinkedClientArgs struct {
+	// The ID of the linked client.
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
+}
+
+func (ClientExpressConfigurationLinkedClientArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientExpressConfigurationLinkedClient)(nil)).Elem()
+}
+
+func (i ClientExpressConfigurationLinkedClientArgs) ToClientExpressConfigurationLinkedClientOutput() ClientExpressConfigurationLinkedClientOutput {
+	return i.ToClientExpressConfigurationLinkedClientOutputWithContext(context.Background())
+}
+
+func (i ClientExpressConfigurationLinkedClientArgs) ToClientExpressConfigurationLinkedClientOutputWithContext(ctx context.Context) ClientExpressConfigurationLinkedClientOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientExpressConfigurationLinkedClientOutput)
+}
+
+// ClientExpressConfigurationLinkedClientArrayInput is an input type that accepts ClientExpressConfigurationLinkedClientArray and ClientExpressConfigurationLinkedClientArrayOutput values.
+// You can construct a concrete instance of `ClientExpressConfigurationLinkedClientArrayInput` via:
+//
+//	ClientExpressConfigurationLinkedClientArray{ ClientExpressConfigurationLinkedClientArgs{...} }
+type ClientExpressConfigurationLinkedClientArrayInput interface {
+	pulumi.Input
+
+	ToClientExpressConfigurationLinkedClientArrayOutput() ClientExpressConfigurationLinkedClientArrayOutput
+	ToClientExpressConfigurationLinkedClientArrayOutputWithContext(context.Context) ClientExpressConfigurationLinkedClientArrayOutput
+}
+
+type ClientExpressConfigurationLinkedClientArray []ClientExpressConfigurationLinkedClientInput
+
+func (ClientExpressConfigurationLinkedClientArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClientExpressConfigurationLinkedClient)(nil)).Elem()
+}
+
+func (i ClientExpressConfigurationLinkedClientArray) ToClientExpressConfigurationLinkedClientArrayOutput() ClientExpressConfigurationLinkedClientArrayOutput {
+	return i.ToClientExpressConfigurationLinkedClientArrayOutputWithContext(context.Background())
+}
+
+func (i ClientExpressConfigurationLinkedClientArray) ToClientExpressConfigurationLinkedClientArrayOutputWithContext(ctx context.Context) ClientExpressConfigurationLinkedClientArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientExpressConfigurationLinkedClientArrayOutput)
+}
+
+type ClientExpressConfigurationLinkedClientOutput struct{ *pulumi.OutputState }
+
+func (ClientExpressConfigurationLinkedClientOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientExpressConfigurationLinkedClient)(nil)).Elem()
+}
+
+func (o ClientExpressConfigurationLinkedClientOutput) ToClientExpressConfigurationLinkedClientOutput() ClientExpressConfigurationLinkedClientOutput {
+	return o
+}
+
+func (o ClientExpressConfigurationLinkedClientOutput) ToClientExpressConfigurationLinkedClientOutputWithContext(ctx context.Context) ClientExpressConfigurationLinkedClientOutput {
+	return o
+}
+
+// The ID of the linked client.
+func (o ClientExpressConfigurationLinkedClientOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientExpressConfigurationLinkedClient) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+type ClientExpressConfigurationLinkedClientArrayOutput struct{ *pulumi.OutputState }
+
+func (ClientExpressConfigurationLinkedClientArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClientExpressConfigurationLinkedClient)(nil)).Elem()
+}
+
+func (o ClientExpressConfigurationLinkedClientArrayOutput) ToClientExpressConfigurationLinkedClientArrayOutput() ClientExpressConfigurationLinkedClientArrayOutput {
+	return o
+}
+
+func (o ClientExpressConfigurationLinkedClientArrayOutput) ToClientExpressConfigurationLinkedClientArrayOutputWithContext(ctx context.Context) ClientExpressConfigurationLinkedClientArrayOutput {
+	return o
+}
+
+func (o ClientExpressConfigurationLinkedClientArrayOutput) Index(i pulumi.IntInput) ClientExpressConfigurationLinkedClientOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClientExpressConfigurationLinkedClient {
+		return vs[0].([]ClientExpressConfigurationLinkedClient)[vs[1].(int)]
+	}).(ClientExpressConfigurationLinkedClientOutput)
+}
+
 type ClientJwtConfiguration struct {
 	// Algorithm used to sign JWTs. Can be one of `HS256`, `RS256`, `PS256`.
 	Alg *string `pulumi:"alg"`
@@ -22513,6 +22899,2762 @@ func (o ConnectionOptionsValidationUsernamePtrOutput) Min() pulumi.IntPtrOutput 
 		}
 		return v.Min
 	}).(pulumi.IntPtrOutput)
+}
+
+type ConnectionProfileConnectionConfig struct {
+}
+
+// ConnectionProfileConnectionConfigInput is an input type that accepts ConnectionProfileConnectionConfigArgs and ConnectionProfileConnectionConfigOutput values.
+// You can construct a concrete instance of `ConnectionProfileConnectionConfigInput` via:
+//
+//	ConnectionProfileConnectionConfigArgs{...}
+type ConnectionProfileConnectionConfigInput interface {
+	pulumi.Input
+
+	ToConnectionProfileConnectionConfigOutput() ConnectionProfileConnectionConfigOutput
+	ToConnectionProfileConnectionConfigOutputWithContext(context.Context) ConnectionProfileConnectionConfigOutput
+}
+
+type ConnectionProfileConnectionConfigArgs struct {
+}
+
+func (ConnectionProfileConnectionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileConnectionConfig)(nil)).Elem()
+}
+
+func (i ConnectionProfileConnectionConfigArgs) ToConnectionProfileConnectionConfigOutput() ConnectionProfileConnectionConfigOutput {
+	return i.ToConnectionProfileConnectionConfigOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileConnectionConfigArgs) ToConnectionProfileConnectionConfigOutputWithContext(ctx context.Context) ConnectionProfileConnectionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileConnectionConfigOutput)
+}
+
+func (i ConnectionProfileConnectionConfigArgs) ToConnectionProfileConnectionConfigPtrOutput() ConnectionProfileConnectionConfigPtrOutput {
+	return i.ToConnectionProfileConnectionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileConnectionConfigArgs) ToConnectionProfileConnectionConfigPtrOutputWithContext(ctx context.Context) ConnectionProfileConnectionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileConnectionConfigOutput).ToConnectionProfileConnectionConfigPtrOutputWithContext(ctx)
+}
+
+// ConnectionProfileConnectionConfigPtrInput is an input type that accepts ConnectionProfileConnectionConfigArgs, ConnectionProfileConnectionConfigPtr and ConnectionProfileConnectionConfigPtrOutput values.
+// You can construct a concrete instance of `ConnectionProfileConnectionConfigPtrInput` via:
+//
+//	        ConnectionProfileConnectionConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionProfileConnectionConfigPtrInput interface {
+	pulumi.Input
+
+	ToConnectionProfileConnectionConfigPtrOutput() ConnectionProfileConnectionConfigPtrOutput
+	ToConnectionProfileConnectionConfigPtrOutputWithContext(context.Context) ConnectionProfileConnectionConfigPtrOutput
+}
+
+type connectionProfileConnectionConfigPtrType ConnectionProfileConnectionConfigArgs
+
+func ConnectionProfileConnectionConfigPtr(v *ConnectionProfileConnectionConfigArgs) ConnectionProfileConnectionConfigPtrInput {
+	return (*connectionProfileConnectionConfigPtrType)(v)
+}
+
+func (*connectionProfileConnectionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileConnectionConfig)(nil)).Elem()
+}
+
+func (i *connectionProfileConnectionConfigPtrType) ToConnectionProfileConnectionConfigPtrOutput() ConnectionProfileConnectionConfigPtrOutput {
+	return i.ToConnectionProfileConnectionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionProfileConnectionConfigPtrType) ToConnectionProfileConnectionConfigPtrOutputWithContext(ctx context.Context) ConnectionProfileConnectionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileConnectionConfigPtrOutput)
+}
+
+type ConnectionProfileConnectionConfigOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileConnectionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileConnectionConfig)(nil)).Elem()
+}
+
+func (o ConnectionProfileConnectionConfigOutput) ToConnectionProfileConnectionConfigOutput() ConnectionProfileConnectionConfigOutput {
+	return o
+}
+
+func (o ConnectionProfileConnectionConfigOutput) ToConnectionProfileConnectionConfigOutputWithContext(ctx context.Context) ConnectionProfileConnectionConfigOutput {
+	return o
+}
+
+func (o ConnectionProfileConnectionConfigOutput) ToConnectionProfileConnectionConfigPtrOutput() ConnectionProfileConnectionConfigPtrOutput {
+	return o.ToConnectionProfileConnectionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionProfileConnectionConfigOutput) ToConnectionProfileConnectionConfigPtrOutputWithContext(ctx context.Context) ConnectionProfileConnectionConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfileConnectionConfig) *ConnectionProfileConnectionConfig {
+		return &v
+	}).(ConnectionProfileConnectionConfigPtrOutput)
+}
+
+type ConnectionProfileConnectionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileConnectionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileConnectionConfig)(nil)).Elem()
+}
+
+func (o ConnectionProfileConnectionConfigPtrOutput) ToConnectionProfileConnectionConfigPtrOutput() ConnectionProfileConnectionConfigPtrOutput {
+	return o
+}
+
+func (o ConnectionProfileConnectionConfigPtrOutput) ToConnectionProfileConnectionConfigPtrOutputWithContext(ctx context.Context) ConnectionProfileConnectionConfigPtrOutput {
+	return o
+}
+
+func (o ConnectionProfileConnectionConfigPtrOutput) Elem() ConnectionProfileConnectionConfigOutput {
+	return o.ApplyT(func(v *ConnectionProfileConnectionConfig) ConnectionProfileConnectionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionProfileConnectionConfig
+		return ret
+	}).(ConnectionProfileConnectionConfigOutput)
+}
+
+type ConnectionProfileOrganization struct {
+	// Whether to assign membership on login.
+	AssignMembershipOnLogin *string `pulumi:"assignMembershipOnLogin"`
+	// Whether to show organization as a button.
+	ShowAsButton *string `pulumi:"showAsButton"`
+}
+
+// ConnectionProfileOrganizationInput is an input type that accepts ConnectionProfileOrganizationArgs and ConnectionProfileOrganizationOutput values.
+// You can construct a concrete instance of `ConnectionProfileOrganizationInput` via:
+//
+//	ConnectionProfileOrganizationArgs{...}
+type ConnectionProfileOrganizationInput interface {
+	pulumi.Input
+
+	ToConnectionProfileOrganizationOutput() ConnectionProfileOrganizationOutput
+	ToConnectionProfileOrganizationOutputWithContext(context.Context) ConnectionProfileOrganizationOutput
+}
+
+type ConnectionProfileOrganizationArgs struct {
+	// Whether to assign membership on login.
+	AssignMembershipOnLogin pulumi.StringPtrInput `pulumi:"assignMembershipOnLogin"`
+	// Whether to show organization as a button.
+	ShowAsButton pulumi.StringPtrInput `pulumi:"showAsButton"`
+}
+
+func (ConnectionProfileOrganizationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileOrganization)(nil)).Elem()
+}
+
+func (i ConnectionProfileOrganizationArgs) ToConnectionProfileOrganizationOutput() ConnectionProfileOrganizationOutput {
+	return i.ToConnectionProfileOrganizationOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileOrganizationArgs) ToConnectionProfileOrganizationOutputWithContext(ctx context.Context) ConnectionProfileOrganizationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileOrganizationOutput)
+}
+
+func (i ConnectionProfileOrganizationArgs) ToConnectionProfileOrganizationPtrOutput() ConnectionProfileOrganizationPtrOutput {
+	return i.ToConnectionProfileOrganizationPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileOrganizationArgs) ToConnectionProfileOrganizationPtrOutputWithContext(ctx context.Context) ConnectionProfileOrganizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileOrganizationOutput).ToConnectionProfileOrganizationPtrOutputWithContext(ctx)
+}
+
+// ConnectionProfileOrganizationPtrInput is an input type that accepts ConnectionProfileOrganizationArgs, ConnectionProfileOrganizationPtr and ConnectionProfileOrganizationPtrOutput values.
+// You can construct a concrete instance of `ConnectionProfileOrganizationPtrInput` via:
+//
+//	        ConnectionProfileOrganizationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionProfileOrganizationPtrInput interface {
+	pulumi.Input
+
+	ToConnectionProfileOrganizationPtrOutput() ConnectionProfileOrganizationPtrOutput
+	ToConnectionProfileOrganizationPtrOutputWithContext(context.Context) ConnectionProfileOrganizationPtrOutput
+}
+
+type connectionProfileOrganizationPtrType ConnectionProfileOrganizationArgs
+
+func ConnectionProfileOrganizationPtr(v *ConnectionProfileOrganizationArgs) ConnectionProfileOrganizationPtrInput {
+	return (*connectionProfileOrganizationPtrType)(v)
+}
+
+func (*connectionProfileOrganizationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileOrganization)(nil)).Elem()
+}
+
+func (i *connectionProfileOrganizationPtrType) ToConnectionProfileOrganizationPtrOutput() ConnectionProfileOrganizationPtrOutput {
+	return i.ToConnectionProfileOrganizationPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionProfileOrganizationPtrType) ToConnectionProfileOrganizationPtrOutputWithContext(ctx context.Context) ConnectionProfileOrganizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileOrganizationPtrOutput)
+}
+
+type ConnectionProfileOrganizationOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileOrganizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileOrganization)(nil)).Elem()
+}
+
+func (o ConnectionProfileOrganizationOutput) ToConnectionProfileOrganizationOutput() ConnectionProfileOrganizationOutput {
+	return o
+}
+
+func (o ConnectionProfileOrganizationOutput) ToConnectionProfileOrganizationOutputWithContext(ctx context.Context) ConnectionProfileOrganizationOutput {
+	return o
+}
+
+func (o ConnectionProfileOrganizationOutput) ToConnectionProfileOrganizationPtrOutput() ConnectionProfileOrganizationPtrOutput {
+	return o.ToConnectionProfileOrganizationPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionProfileOrganizationOutput) ToConnectionProfileOrganizationPtrOutputWithContext(ctx context.Context) ConnectionProfileOrganizationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfileOrganization) *ConnectionProfileOrganization {
+		return &v
+	}).(ConnectionProfileOrganizationPtrOutput)
+}
+
+// Whether to assign membership on login.
+func (o ConnectionProfileOrganizationOutput) AssignMembershipOnLogin() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileOrganization) *string { return v.AssignMembershipOnLogin }).(pulumi.StringPtrOutput)
+}
+
+// Whether to show organization as a button.
+func (o ConnectionProfileOrganizationOutput) ShowAsButton() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileOrganization) *string { return v.ShowAsButton }).(pulumi.StringPtrOutput)
+}
+
+type ConnectionProfileOrganizationPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileOrganizationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileOrganization)(nil)).Elem()
+}
+
+func (o ConnectionProfileOrganizationPtrOutput) ToConnectionProfileOrganizationPtrOutput() ConnectionProfileOrganizationPtrOutput {
+	return o
+}
+
+func (o ConnectionProfileOrganizationPtrOutput) ToConnectionProfileOrganizationPtrOutputWithContext(ctx context.Context) ConnectionProfileOrganizationPtrOutput {
+	return o
+}
+
+func (o ConnectionProfileOrganizationPtrOutput) Elem() ConnectionProfileOrganizationOutput {
+	return o.ApplyT(func(v *ConnectionProfileOrganization) ConnectionProfileOrganization {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionProfileOrganization
+		return ret
+	}).(ConnectionProfileOrganizationOutput)
+}
+
+// Whether to assign membership on login.
+func (o ConnectionProfileOrganizationPtrOutput) AssignMembershipOnLogin() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileOrganization) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AssignMembershipOnLogin
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to show organization as a button.
+func (o ConnectionProfileOrganizationPtrOutput) ShowAsButton() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileOrganization) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ShowAsButton
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionProfileStrategyOverrides struct {
+	// Strategy override configuration.
+	Ad *ConnectionProfileStrategyOverridesAd `pulumi:"ad"`
+	// Strategy override configuration.
+	Adfs *ConnectionProfileStrategyOverridesAdfs `pulumi:"adfs"`
+	// Strategy override configuration.
+	GoogleApps *ConnectionProfileStrategyOverridesGoogleApps `pulumi:"googleApps"`
+	// Strategy override configuration.
+	Oidc *ConnectionProfileStrategyOverridesOidc `pulumi:"oidc"`
+	// Strategy override configuration.
+	Okta *ConnectionProfileStrategyOverridesOkta `pulumi:"okta"`
+	// Strategy override configuration.
+	Pingfederate *ConnectionProfileStrategyOverridesPingfederate `pulumi:"pingfederate"`
+	// Strategy override configuration.
+	Samlp *ConnectionProfileStrategyOverridesSamlp `pulumi:"samlp"`
+	// Strategy override configuration.
+	Waad *ConnectionProfileStrategyOverridesWaad `pulumi:"waad"`
+}
+
+// ConnectionProfileStrategyOverridesInput is an input type that accepts ConnectionProfileStrategyOverridesArgs and ConnectionProfileStrategyOverridesOutput values.
+// You can construct a concrete instance of `ConnectionProfileStrategyOverridesInput` via:
+//
+//	ConnectionProfileStrategyOverridesArgs{...}
+type ConnectionProfileStrategyOverridesInput interface {
+	pulumi.Input
+
+	ToConnectionProfileStrategyOverridesOutput() ConnectionProfileStrategyOverridesOutput
+	ToConnectionProfileStrategyOverridesOutputWithContext(context.Context) ConnectionProfileStrategyOverridesOutput
+}
+
+type ConnectionProfileStrategyOverridesArgs struct {
+	// Strategy override configuration.
+	Ad ConnectionProfileStrategyOverridesAdPtrInput `pulumi:"ad"`
+	// Strategy override configuration.
+	Adfs ConnectionProfileStrategyOverridesAdfsPtrInput `pulumi:"adfs"`
+	// Strategy override configuration.
+	GoogleApps ConnectionProfileStrategyOverridesGoogleAppsPtrInput `pulumi:"googleApps"`
+	// Strategy override configuration.
+	Oidc ConnectionProfileStrategyOverridesOidcPtrInput `pulumi:"oidc"`
+	// Strategy override configuration.
+	Okta ConnectionProfileStrategyOverridesOktaPtrInput `pulumi:"okta"`
+	// Strategy override configuration.
+	Pingfederate ConnectionProfileStrategyOverridesPingfederatePtrInput `pulumi:"pingfederate"`
+	// Strategy override configuration.
+	Samlp ConnectionProfileStrategyOverridesSamlpPtrInput `pulumi:"samlp"`
+	// Strategy override configuration.
+	Waad ConnectionProfileStrategyOverridesWaadPtrInput `pulumi:"waad"`
+}
+
+func (ConnectionProfileStrategyOverridesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileStrategyOverrides)(nil)).Elem()
+}
+
+func (i ConnectionProfileStrategyOverridesArgs) ToConnectionProfileStrategyOverridesOutput() ConnectionProfileStrategyOverridesOutput {
+	return i.ToConnectionProfileStrategyOverridesOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileStrategyOverridesArgs) ToConnectionProfileStrategyOverridesOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileStrategyOverridesOutput)
+}
+
+func (i ConnectionProfileStrategyOverridesArgs) ToConnectionProfileStrategyOverridesPtrOutput() ConnectionProfileStrategyOverridesPtrOutput {
+	return i.ToConnectionProfileStrategyOverridesPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileStrategyOverridesArgs) ToConnectionProfileStrategyOverridesPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileStrategyOverridesOutput).ToConnectionProfileStrategyOverridesPtrOutputWithContext(ctx)
+}
+
+// ConnectionProfileStrategyOverridesPtrInput is an input type that accepts ConnectionProfileStrategyOverridesArgs, ConnectionProfileStrategyOverridesPtr and ConnectionProfileStrategyOverridesPtrOutput values.
+// You can construct a concrete instance of `ConnectionProfileStrategyOverridesPtrInput` via:
+//
+//	        ConnectionProfileStrategyOverridesArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionProfileStrategyOverridesPtrInput interface {
+	pulumi.Input
+
+	ToConnectionProfileStrategyOverridesPtrOutput() ConnectionProfileStrategyOverridesPtrOutput
+	ToConnectionProfileStrategyOverridesPtrOutputWithContext(context.Context) ConnectionProfileStrategyOverridesPtrOutput
+}
+
+type connectionProfileStrategyOverridesPtrType ConnectionProfileStrategyOverridesArgs
+
+func ConnectionProfileStrategyOverridesPtr(v *ConnectionProfileStrategyOverridesArgs) ConnectionProfileStrategyOverridesPtrInput {
+	return (*connectionProfileStrategyOverridesPtrType)(v)
+}
+
+func (*connectionProfileStrategyOverridesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileStrategyOverrides)(nil)).Elem()
+}
+
+func (i *connectionProfileStrategyOverridesPtrType) ToConnectionProfileStrategyOverridesPtrOutput() ConnectionProfileStrategyOverridesPtrOutput {
+	return i.ToConnectionProfileStrategyOverridesPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionProfileStrategyOverridesPtrType) ToConnectionProfileStrategyOverridesPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileStrategyOverridesPtrOutput)
+}
+
+type ConnectionProfileStrategyOverridesOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileStrategyOverridesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileStrategyOverrides)(nil)).Elem()
+}
+
+func (o ConnectionProfileStrategyOverridesOutput) ToConnectionProfileStrategyOverridesOutput() ConnectionProfileStrategyOverridesOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesOutput) ToConnectionProfileStrategyOverridesOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesOutput) ToConnectionProfileStrategyOverridesPtrOutput() ConnectionProfileStrategyOverridesPtrOutput {
+	return o.ToConnectionProfileStrategyOverridesPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionProfileStrategyOverridesOutput) ToConnectionProfileStrategyOverridesPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfileStrategyOverrides) *ConnectionProfileStrategyOverrides {
+		return &v
+	}).(ConnectionProfileStrategyOverridesPtrOutput)
+}
+
+// Strategy override configuration.
+func (o ConnectionProfileStrategyOverridesOutput) Ad() ConnectionProfileStrategyOverridesAdPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileStrategyOverrides) *ConnectionProfileStrategyOverridesAd { return v.Ad }).(ConnectionProfileStrategyOverridesAdPtrOutput)
+}
+
+// Strategy override configuration.
+func (o ConnectionProfileStrategyOverridesOutput) Adfs() ConnectionProfileStrategyOverridesAdfsPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileStrategyOverrides) *ConnectionProfileStrategyOverridesAdfs { return v.Adfs }).(ConnectionProfileStrategyOverridesAdfsPtrOutput)
+}
+
+// Strategy override configuration.
+func (o ConnectionProfileStrategyOverridesOutput) GoogleApps() ConnectionProfileStrategyOverridesGoogleAppsPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileStrategyOverrides) *ConnectionProfileStrategyOverridesGoogleApps {
+		return v.GoogleApps
+	}).(ConnectionProfileStrategyOverridesGoogleAppsPtrOutput)
+}
+
+// Strategy override configuration.
+func (o ConnectionProfileStrategyOverridesOutput) Oidc() ConnectionProfileStrategyOverridesOidcPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileStrategyOverrides) *ConnectionProfileStrategyOverridesOidc { return v.Oidc }).(ConnectionProfileStrategyOverridesOidcPtrOutput)
+}
+
+// Strategy override configuration.
+func (o ConnectionProfileStrategyOverridesOutput) Okta() ConnectionProfileStrategyOverridesOktaPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileStrategyOverrides) *ConnectionProfileStrategyOverridesOkta { return v.Okta }).(ConnectionProfileStrategyOverridesOktaPtrOutput)
+}
+
+// Strategy override configuration.
+func (o ConnectionProfileStrategyOverridesOutput) Pingfederate() ConnectionProfileStrategyOverridesPingfederatePtrOutput {
+	return o.ApplyT(func(v ConnectionProfileStrategyOverrides) *ConnectionProfileStrategyOverridesPingfederate {
+		return v.Pingfederate
+	}).(ConnectionProfileStrategyOverridesPingfederatePtrOutput)
+}
+
+// Strategy override configuration.
+func (o ConnectionProfileStrategyOverridesOutput) Samlp() ConnectionProfileStrategyOverridesSamlpPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileStrategyOverrides) *ConnectionProfileStrategyOverridesSamlp { return v.Samlp }).(ConnectionProfileStrategyOverridesSamlpPtrOutput)
+}
+
+// Strategy override configuration.
+func (o ConnectionProfileStrategyOverridesOutput) Waad() ConnectionProfileStrategyOverridesWaadPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileStrategyOverrides) *ConnectionProfileStrategyOverridesWaad { return v.Waad }).(ConnectionProfileStrategyOverridesWaadPtrOutput)
+}
+
+type ConnectionProfileStrategyOverridesPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileStrategyOverridesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileStrategyOverrides)(nil)).Elem()
+}
+
+func (o ConnectionProfileStrategyOverridesPtrOutput) ToConnectionProfileStrategyOverridesPtrOutput() ConnectionProfileStrategyOverridesPtrOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesPtrOutput) ToConnectionProfileStrategyOverridesPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesPtrOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesPtrOutput) Elem() ConnectionProfileStrategyOverridesOutput {
+	return o.ApplyT(func(v *ConnectionProfileStrategyOverrides) ConnectionProfileStrategyOverrides {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionProfileStrategyOverrides
+		return ret
+	}).(ConnectionProfileStrategyOverridesOutput)
+}
+
+// Strategy override configuration.
+func (o ConnectionProfileStrategyOverridesPtrOutput) Ad() ConnectionProfileStrategyOverridesAdPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileStrategyOverrides) *ConnectionProfileStrategyOverridesAd {
+		if v == nil {
+			return nil
+		}
+		return v.Ad
+	}).(ConnectionProfileStrategyOverridesAdPtrOutput)
+}
+
+// Strategy override configuration.
+func (o ConnectionProfileStrategyOverridesPtrOutput) Adfs() ConnectionProfileStrategyOverridesAdfsPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileStrategyOverrides) *ConnectionProfileStrategyOverridesAdfs {
+		if v == nil {
+			return nil
+		}
+		return v.Adfs
+	}).(ConnectionProfileStrategyOverridesAdfsPtrOutput)
+}
+
+// Strategy override configuration.
+func (o ConnectionProfileStrategyOverridesPtrOutput) GoogleApps() ConnectionProfileStrategyOverridesGoogleAppsPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileStrategyOverrides) *ConnectionProfileStrategyOverridesGoogleApps {
+		if v == nil {
+			return nil
+		}
+		return v.GoogleApps
+	}).(ConnectionProfileStrategyOverridesGoogleAppsPtrOutput)
+}
+
+// Strategy override configuration.
+func (o ConnectionProfileStrategyOverridesPtrOutput) Oidc() ConnectionProfileStrategyOverridesOidcPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileStrategyOverrides) *ConnectionProfileStrategyOverridesOidc {
+		if v == nil {
+			return nil
+		}
+		return v.Oidc
+	}).(ConnectionProfileStrategyOverridesOidcPtrOutput)
+}
+
+// Strategy override configuration.
+func (o ConnectionProfileStrategyOverridesPtrOutput) Okta() ConnectionProfileStrategyOverridesOktaPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileStrategyOverrides) *ConnectionProfileStrategyOverridesOkta {
+		if v == nil {
+			return nil
+		}
+		return v.Okta
+	}).(ConnectionProfileStrategyOverridesOktaPtrOutput)
+}
+
+// Strategy override configuration.
+func (o ConnectionProfileStrategyOverridesPtrOutput) Pingfederate() ConnectionProfileStrategyOverridesPingfederatePtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileStrategyOverrides) *ConnectionProfileStrategyOverridesPingfederate {
+		if v == nil {
+			return nil
+		}
+		return v.Pingfederate
+	}).(ConnectionProfileStrategyOverridesPingfederatePtrOutput)
+}
+
+// Strategy override configuration.
+func (o ConnectionProfileStrategyOverridesPtrOutput) Samlp() ConnectionProfileStrategyOverridesSamlpPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileStrategyOverrides) *ConnectionProfileStrategyOverridesSamlp {
+		if v == nil {
+			return nil
+		}
+		return v.Samlp
+	}).(ConnectionProfileStrategyOverridesSamlpPtrOutput)
+}
+
+// Strategy override configuration.
+func (o ConnectionProfileStrategyOverridesPtrOutput) Waad() ConnectionProfileStrategyOverridesWaadPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileStrategyOverrides) *ConnectionProfileStrategyOverridesWaad {
+		if v == nil {
+			return nil
+		}
+		return v.Waad
+	}).(ConnectionProfileStrategyOverridesWaadPtrOutput)
+}
+
+type ConnectionProfileStrategyOverridesAd struct {
+	// Connection config for the strategy override.
+	ConnectionConfig *ConnectionProfileStrategyOverridesAdConnectionConfig `pulumi:"connectionConfig"`
+	// Enabled features for the strategy override.
+	EnabledFeatures []string `pulumi:"enabledFeatures"`
+}
+
+// ConnectionProfileStrategyOverridesAdInput is an input type that accepts ConnectionProfileStrategyOverridesAdArgs and ConnectionProfileStrategyOverridesAdOutput values.
+// You can construct a concrete instance of `ConnectionProfileStrategyOverridesAdInput` via:
+//
+//	ConnectionProfileStrategyOverridesAdArgs{...}
+type ConnectionProfileStrategyOverridesAdInput interface {
+	pulumi.Input
+
+	ToConnectionProfileStrategyOverridesAdOutput() ConnectionProfileStrategyOverridesAdOutput
+	ToConnectionProfileStrategyOverridesAdOutputWithContext(context.Context) ConnectionProfileStrategyOverridesAdOutput
+}
+
+type ConnectionProfileStrategyOverridesAdArgs struct {
+	// Connection config for the strategy override.
+	ConnectionConfig ConnectionProfileStrategyOverridesAdConnectionConfigPtrInput `pulumi:"connectionConfig"`
+	// Enabled features for the strategy override.
+	EnabledFeatures pulumi.StringArrayInput `pulumi:"enabledFeatures"`
+}
+
+func (ConnectionProfileStrategyOverridesAdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileStrategyOverridesAd)(nil)).Elem()
+}
+
+func (i ConnectionProfileStrategyOverridesAdArgs) ToConnectionProfileStrategyOverridesAdOutput() ConnectionProfileStrategyOverridesAdOutput {
+	return i.ToConnectionProfileStrategyOverridesAdOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileStrategyOverridesAdArgs) ToConnectionProfileStrategyOverridesAdOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesAdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileStrategyOverridesAdOutput)
+}
+
+func (i ConnectionProfileStrategyOverridesAdArgs) ToConnectionProfileStrategyOverridesAdPtrOutput() ConnectionProfileStrategyOverridesAdPtrOutput {
+	return i.ToConnectionProfileStrategyOverridesAdPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileStrategyOverridesAdArgs) ToConnectionProfileStrategyOverridesAdPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesAdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileStrategyOverridesAdOutput).ToConnectionProfileStrategyOverridesAdPtrOutputWithContext(ctx)
+}
+
+// ConnectionProfileStrategyOverridesAdPtrInput is an input type that accepts ConnectionProfileStrategyOverridesAdArgs, ConnectionProfileStrategyOverridesAdPtr and ConnectionProfileStrategyOverridesAdPtrOutput values.
+// You can construct a concrete instance of `ConnectionProfileStrategyOverridesAdPtrInput` via:
+//
+//	        ConnectionProfileStrategyOverridesAdArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionProfileStrategyOverridesAdPtrInput interface {
+	pulumi.Input
+
+	ToConnectionProfileStrategyOverridesAdPtrOutput() ConnectionProfileStrategyOverridesAdPtrOutput
+	ToConnectionProfileStrategyOverridesAdPtrOutputWithContext(context.Context) ConnectionProfileStrategyOverridesAdPtrOutput
+}
+
+type connectionProfileStrategyOverridesAdPtrType ConnectionProfileStrategyOverridesAdArgs
+
+func ConnectionProfileStrategyOverridesAdPtr(v *ConnectionProfileStrategyOverridesAdArgs) ConnectionProfileStrategyOverridesAdPtrInput {
+	return (*connectionProfileStrategyOverridesAdPtrType)(v)
+}
+
+func (*connectionProfileStrategyOverridesAdPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileStrategyOverridesAd)(nil)).Elem()
+}
+
+func (i *connectionProfileStrategyOverridesAdPtrType) ToConnectionProfileStrategyOverridesAdPtrOutput() ConnectionProfileStrategyOverridesAdPtrOutput {
+	return i.ToConnectionProfileStrategyOverridesAdPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionProfileStrategyOverridesAdPtrType) ToConnectionProfileStrategyOverridesAdPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesAdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileStrategyOverridesAdPtrOutput)
+}
+
+type ConnectionProfileStrategyOverridesAdOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileStrategyOverridesAdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileStrategyOverridesAd)(nil)).Elem()
+}
+
+func (o ConnectionProfileStrategyOverridesAdOutput) ToConnectionProfileStrategyOverridesAdOutput() ConnectionProfileStrategyOverridesAdOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesAdOutput) ToConnectionProfileStrategyOverridesAdOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesAdOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesAdOutput) ToConnectionProfileStrategyOverridesAdPtrOutput() ConnectionProfileStrategyOverridesAdPtrOutput {
+	return o.ToConnectionProfileStrategyOverridesAdPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionProfileStrategyOverridesAdOutput) ToConnectionProfileStrategyOverridesAdPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesAdPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfileStrategyOverridesAd) *ConnectionProfileStrategyOverridesAd {
+		return &v
+	}).(ConnectionProfileStrategyOverridesAdPtrOutput)
+}
+
+// Connection config for the strategy override.
+func (o ConnectionProfileStrategyOverridesAdOutput) ConnectionConfig() ConnectionProfileStrategyOverridesAdConnectionConfigPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileStrategyOverridesAd) *ConnectionProfileStrategyOverridesAdConnectionConfig {
+		return v.ConnectionConfig
+	}).(ConnectionProfileStrategyOverridesAdConnectionConfigPtrOutput)
+}
+
+// Enabled features for the strategy override.
+func (o ConnectionProfileStrategyOverridesAdOutput) EnabledFeatures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectionProfileStrategyOverridesAd) []string { return v.EnabledFeatures }).(pulumi.StringArrayOutput)
+}
+
+type ConnectionProfileStrategyOverridesAdPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileStrategyOverridesAdPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileStrategyOverridesAd)(nil)).Elem()
+}
+
+func (o ConnectionProfileStrategyOverridesAdPtrOutput) ToConnectionProfileStrategyOverridesAdPtrOutput() ConnectionProfileStrategyOverridesAdPtrOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesAdPtrOutput) ToConnectionProfileStrategyOverridesAdPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesAdPtrOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesAdPtrOutput) Elem() ConnectionProfileStrategyOverridesAdOutput {
+	return o.ApplyT(func(v *ConnectionProfileStrategyOverridesAd) ConnectionProfileStrategyOverridesAd {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionProfileStrategyOverridesAd
+		return ret
+	}).(ConnectionProfileStrategyOverridesAdOutput)
+}
+
+// Connection config for the strategy override.
+func (o ConnectionProfileStrategyOverridesAdPtrOutput) ConnectionConfig() ConnectionProfileStrategyOverridesAdConnectionConfigPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileStrategyOverridesAd) *ConnectionProfileStrategyOverridesAdConnectionConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectionConfig
+	}).(ConnectionProfileStrategyOverridesAdConnectionConfigPtrOutput)
+}
+
+// Enabled features for the strategy override.
+func (o ConnectionProfileStrategyOverridesAdPtrOutput) EnabledFeatures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectionProfileStrategyOverridesAd) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EnabledFeatures
+	}).(pulumi.StringArrayOutput)
+}
+
+type ConnectionProfileStrategyOverridesAdConnectionConfig struct {
+}
+
+// ConnectionProfileStrategyOverridesAdConnectionConfigInput is an input type that accepts ConnectionProfileStrategyOverridesAdConnectionConfigArgs and ConnectionProfileStrategyOverridesAdConnectionConfigOutput values.
+// You can construct a concrete instance of `ConnectionProfileStrategyOverridesAdConnectionConfigInput` via:
+//
+//	ConnectionProfileStrategyOverridesAdConnectionConfigArgs{...}
+type ConnectionProfileStrategyOverridesAdConnectionConfigInput interface {
+	pulumi.Input
+
+	ToConnectionProfileStrategyOverridesAdConnectionConfigOutput() ConnectionProfileStrategyOverridesAdConnectionConfigOutput
+	ToConnectionProfileStrategyOverridesAdConnectionConfigOutputWithContext(context.Context) ConnectionProfileStrategyOverridesAdConnectionConfigOutput
+}
+
+type ConnectionProfileStrategyOverridesAdConnectionConfigArgs struct {
+}
+
+func (ConnectionProfileStrategyOverridesAdConnectionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileStrategyOverridesAdConnectionConfig)(nil)).Elem()
+}
+
+func (i ConnectionProfileStrategyOverridesAdConnectionConfigArgs) ToConnectionProfileStrategyOverridesAdConnectionConfigOutput() ConnectionProfileStrategyOverridesAdConnectionConfigOutput {
+	return i.ToConnectionProfileStrategyOverridesAdConnectionConfigOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileStrategyOverridesAdConnectionConfigArgs) ToConnectionProfileStrategyOverridesAdConnectionConfigOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesAdConnectionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileStrategyOverridesAdConnectionConfigOutput)
+}
+
+func (i ConnectionProfileStrategyOverridesAdConnectionConfigArgs) ToConnectionProfileStrategyOverridesAdConnectionConfigPtrOutput() ConnectionProfileStrategyOverridesAdConnectionConfigPtrOutput {
+	return i.ToConnectionProfileStrategyOverridesAdConnectionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileStrategyOverridesAdConnectionConfigArgs) ToConnectionProfileStrategyOverridesAdConnectionConfigPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesAdConnectionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileStrategyOverridesAdConnectionConfigOutput).ToConnectionProfileStrategyOverridesAdConnectionConfigPtrOutputWithContext(ctx)
+}
+
+// ConnectionProfileStrategyOverridesAdConnectionConfigPtrInput is an input type that accepts ConnectionProfileStrategyOverridesAdConnectionConfigArgs, ConnectionProfileStrategyOverridesAdConnectionConfigPtr and ConnectionProfileStrategyOverridesAdConnectionConfigPtrOutput values.
+// You can construct a concrete instance of `ConnectionProfileStrategyOverridesAdConnectionConfigPtrInput` via:
+//
+//	        ConnectionProfileStrategyOverridesAdConnectionConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionProfileStrategyOverridesAdConnectionConfigPtrInput interface {
+	pulumi.Input
+
+	ToConnectionProfileStrategyOverridesAdConnectionConfigPtrOutput() ConnectionProfileStrategyOverridesAdConnectionConfigPtrOutput
+	ToConnectionProfileStrategyOverridesAdConnectionConfigPtrOutputWithContext(context.Context) ConnectionProfileStrategyOverridesAdConnectionConfigPtrOutput
+}
+
+type connectionProfileStrategyOverridesAdConnectionConfigPtrType ConnectionProfileStrategyOverridesAdConnectionConfigArgs
+
+func ConnectionProfileStrategyOverridesAdConnectionConfigPtr(v *ConnectionProfileStrategyOverridesAdConnectionConfigArgs) ConnectionProfileStrategyOverridesAdConnectionConfigPtrInput {
+	return (*connectionProfileStrategyOverridesAdConnectionConfigPtrType)(v)
+}
+
+func (*connectionProfileStrategyOverridesAdConnectionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileStrategyOverridesAdConnectionConfig)(nil)).Elem()
+}
+
+func (i *connectionProfileStrategyOverridesAdConnectionConfigPtrType) ToConnectionProfileStrategyOverridesAdConnectionConfigPtrOutput() ConnectionProfileStrategyOverridesAdConnectionConfigPtrOutput {
+	return i.ToConnectionProfileStrategyOverridesAdConnectionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionProfileStrategyOverridesAdConnectionConfigPtrType) ToConnectionProfileStrategyOverridesAdConnectionConfigPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesAdConnectionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileStrategyOverridesAdConnectionConfigPtrOutput)
+}
+
+type ConnectionProfileStrategyOverridesAdConnectionConfigOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileStrategyOverridesAdConnectionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileStrategyOverridesAdConnectionConfig)(nil)).Elem()
+}
+
+func (o ConnectionProfileStrategyOverridesAdConnectionConfigOutput) ToConnectionProfileStrategyOverridesAdConnectionConfigOutput() ConnectionProfileStrategyOverridesAdConnectionConfigOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesAdConnectionConfigOutput) ToConnectionProfileStrategyOverridesAdConnectionConfigOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesAdConnectionConfigOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesAdConnectionConfigOutput) ToConnectionProfileStrategyOverridesAdConnectionConfigPtrOutput() ConnectionProfileStrategyOverridesAdConnectionConfigPtrOutput {
+	return o.ToConnectionProfileStrategyOverridesAdConnectionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionProfileStrategyOverridesAdConnectionConfigOutput) ToConnectionProfileStrategyOverridesAdConnectionConfigPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesAdConnectionConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfileStrategyOverridesAdConnectionConfig) *ConnectionProfileStrategyOverridesAdConnectionConfig {
+		return &v
+	}).(ConnectionProfileStrategyOverridesAdConnectionConfigPtrOutput)
+}
+
+type ConnectionProfileStrategyOverridesAdConnectionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileStrategyOverridesAdConnectionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileStrategyOverridesAdConnectionConfig)(nil)).Elem()
+}
+
+func (o ConnectionProfileStrategyOverridesAdConnectionConfigPtrOutput) ToConnectionProfileStrategyOverridesAdConnectionConfigPtrOutput() ConnectionProfileStrategyOverridesAdConnectionConfigPtrOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesAdConnectionConfigPtrOutput) ToConnectionProfileStrategyOverridesAdConnectionConfigPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesAdConnectionConfigPtrOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesAdConnectionConfigPtrOutput) Elem() ConnectionProfileStrategyOverridesAdConnectionConfigOutput {
+	return o.ApplyT(func(v *ConnectionProfileStrategyOverridesAdConnectionConfig) ConnectionProfileStrategyOverridesAdConnectionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionProfileStrategyOverridesAdConnectionConfig
+		return ret
+	}).(ConnectionProfileStrategyOverridesAdConnectionConfigOutput)
+}
+
+type ConnectionProfileStrategyOverridesAdfs struct {
+	// Connection config for the strategy override.
+	ConnectionConfig *ConnectionProfileStrategyOverridesAdfsConnectionConfig `pulumi:"connectionConfig"`
+	// Enabled features for the strategy override.
+	EnabledFeatures []string `pulumi:"enabledFeatures"`
+}
+
+// ConnectionProfileStrategyOverridesAdfsInput is an input type that accepts ConnectionProfileStrategyOverridesAdfsArgs and ConnectionProfileStrategyOverridesAdfsOutput values.
+// You can construct a concrete instance of `ConnectionProfileStrategyOverridesAdfsInput` via:
+//
+//	ConnectionProfileStrategyOverridesAdfsArgs{...}
+type ConnectionProfileStrategyOverridesAdfsInput interface {
+	pulumi.Input
+
+	ToConnectionProfileStrategyOverridesAdfsOutput() ConnectionProfileStrategyOverridesAdfsOutput
+	ToConnectionProfileStrategyOverridesAdfsOutputWithContext(context.Context) ConnectionProfileStrategyOverridesAdfsOutput
+}
+
+type ConnectionProfileStrategyOverridesAdfsArgs struct {
+	// Connection config for the strategy override.
+	ConnectionConfig ConnectionProfileStrategyOverridesAdfsConnectionConfigPtrInput `pulumi:"connectionConfig"`
+	// Enabled features for the strategy override.
+	EnabledFeatures pulumi.StringArrayInput `pulumi:"enabledFeatures"`
+}
+
+func (ConnectionProfileStrategyOverridesAdfsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileStrategyOverridesAdfs)(nil)).Elem()
+}
+
+func (i ConnectionProfileStrategyOverridesAdfsArgs) ToConnectionProfileStrategyOverridesAdfsOutput() ConnectionProfileStrategyOverridesAdfsOutput {
+	return i.ToConnectionProfileStrategyOverridesAdfsOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileStrategyOverridesAdfsArgs) ToConnectionProfileStrategyOverridesAdfsOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesAdfsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileStrategyOverridesAdfsOutput)
+}
+
+func (i ConnectionProfileStrategyOverridesAdfsArgs) ToConnectionProfileStrategyOverridesAdfsPtrOutput() ConnectionProfileStrategyOverridesAdfsPtrOutput {
+	return i.ToConnectionProfileStrategyOverridesAdfsPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileStrategyOverridesAdfsArgs) ToConnectionProfileStrategyOverridesAdfsPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesAdfsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileStrategyOverridesAdfsOutput).ToConnectionProfileStrategyOverridesAdfsPtrOutputWithContext(ctx)
+}
+
+// ConnectionProfileStrategyOverridesAdfsPtrInput is an input type that accepts ConnectionProfileStrategyOverridesAdfsArgs, ConnectionProfileStrategyOverridesAdfsPtr and ConnectionProfileStrategyOverridesAdfsPtrOutput values.
+// You can construct a concrete instance of `ConnectionProfileStrategyOverridesAdfsPtrInput` via:
+//
+//	        ConnectionProfileStrategyOverridesAdfsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionProfileStrategyOverridesAdfsPtrInput interface {
+	pulumi.Input
+
+	ToConnectionProfileStrategyOverridesAdfsPtrOutput() ConnectionProfileStrategyOverridesAdfsPtrOutput
+	ToConnectionProfileStrategyOverridesAdfsPtrOutputWithContext(context.Context) ConnectionProfileStrategyOverridesAdfsPtrOutput
+}
+
+type connectionProfileStrategyOverridesAdfsPtrType ConnectionProfileStrategyOverridesAdfsArgs
+
+func ConnectionProfileStrategyOverridesAdfsPtr(v *ConnectionProfileStrategyOverridesAdfsArgs) ConnectionProfileStrategyOverridesAdfsPtrInput {
+	return (*connectionProfileStrategyOverridesAdfsPtrType)(v)
+}
+
+func (*connectionProfileStrategyOverridesAdfsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileStrategyOverridesAdfs)(nil)).Elem()
+}
+
+func (i *connectionProfileStrategyOverridesAdfsPtrType) ToConnectionProfileStrategyOverridesAdfsPtrOutput() ConnectionProfileStrategyOverridesAdfsPtrOutput {
+	return i.ToConnectionProfileStrategyOverridesAdfsPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionProfileStrategyOverridesAdfsPtrType) ToConnectionProfileStrategyOverridesAdfsPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesAdfsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileStrategyOverridesAdfsPtrOutput)
+}
+
+type ConnectionProfileStrategyOverridesAdfsOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileStrategyOverridesAdfsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileStrategyOverridesAdfs)(nil)).Elem()
+}
+
+func (o ConnectionProfileStrategyOverridesAdfsOutput) ToConnectionProfileStrategyOverridesAdfsOutput() ConnectionProfileStrategyOverridesAdfsOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesAdfsOutput) ToConnectionProfileStrategyOverridesAdfsOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesAdfsOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesAdfsOutput) ToConnectionProfileStrategyOverridesAdfsPtrOutput() ConnectionProfileStrategyOverridesAdfsPtrOutput {
+	return o.ToConnectionProfileStrategyOverridesAdfsPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionProfileStrategyOverridesAdfsOutput) ToConnectionProfileStrategyOverridesAdfsPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesAdfsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfileStrategyOverridesAdfs) *ConnectionProfileStrategyOverridesAdfs {
+		return &v
+	}).(ConnectionProfileStrategyOverridesAdfsPtrOutput)
+}
+
+// Connection config for the strategy override.
+func (o ConnectionProfileStrategyOverridesAdfsOutput) ConnectionConfig() ConnectionProfileStrategyOverridesAdfsConnectionConfigPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileStrategyOverridesAdfs) *ConnectionProfileStrategyOverridesAdfsConnectionConfig {
+		return v.ConnectionConfig
+	}).(ConnectionProfileStrategyOverridesAdfsConnectionConfigPtrOutput)
+}
+
+// Enabled features for the strategy override.
+func (o ConnectionProfileStrategyOverridesAdfsOutput) EnabledFeatures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectionProfileStrategyOverridesAdfs) []string { return v.EnabledFeatures }).(pulumi.StringArrayOutput)
+}
+
+type ConnectionProfileStrategyOverridesAdfsPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileStrategyOverridesAdfsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileStrategyOverridesAdfs)(nil)).Elem()
+}
+
+func (o ConnectionProfileStrategyOverridesAdfsPtrOutput) ToConnectionProfileStrategyOverridesAdfsPtrOutput() ConnectionProfileStrategyOverridesAdfsPtrOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesAdfsPtrOutput) ToConnectionProfileStrategyOverridesAdfsPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesAdfsPtrOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesAdfsPtrOutput) Elem() ConnectionProfileStrategyOverridesAdfsOutput {
+	return o.ApplyT(func(v *ConnectionProfileStrategyOverridesAdfs) ConnectionProfileStrategyOverridesAdfs {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionProfileStrategyOverridesAdfs
+		return ret
+	}).(ConnectionProfileStrategyOverridesAdfsOutput)
+}
+
+// Connection config for the strategy override.
+func (o ConnectionProfileStrategyOverridesAdfsPtrOutput) ConnectionConfig() ConnectionProfileStrategyOverridesAdfsConnectionConfigPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileStrategyOverridesAdfs) *ConnectionProfileStrategyOverridesAdfsConnectionConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectionConfig
+	}).(ConnectionProfileStrategyOverridesAdfsConnectionConfigPtrOutput)
+}
+
+// Enabled features for the strategy override.
+func (o ConnectionProfileStrategyOverridesAdfsPtrOutput) EnabledFeatures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectionProfileStrategyOverridesAdfs) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EnabledFeatures
+	}).(pulumi.StringArrayOutput)
+}
+
+type ConnectionProfileStrategyOverridesAdfsConnectionConfig struct {
+}
+
+// ConnectionProfileStrategyOverridesAdfsConnectionConfigInput is an input type that accepts ConnectionProfileStrategyOverridesAdfsConnectionConfigArgs and ConnectionProfileStrategyOverridesAdfsConnectionConfigOutput values.
+// You can construct a concrete instance of `ConnectionProfileStrategyOverridesAdfsConnectionConfigInput` via:
+//
+//	ConnectionProfileStrategyOverridesAdfsConnectionConfigArgs{...}
+type ConnectionProfileStrategyOverridesAdfsConnectionConfigInput interface {
+	pulumi.Input
+
+	ToConnectionProfileStrategyOverridesAdfsConnectionConfigOutput() ConnectionProfileStrategyOverridesAdfsConnectionConfigOutput
+	ToConnectionProfileStrategyOverridesAdfsConnectionConfigOutputWithContext(context.Context) ConnectionProfileStrategyOverridesAdfsConnectionConfigOutput
+}
+
+type ConnectionProfileStrategyOverridesAdfsConnectionConfigArgs struct {
+}
+
+func (ConnectionProfileStrategyOverridesAdfsConnectionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileStrategyOverridesAdfsConnectionConfig)(nil)).Elem()
+}
+
+func (i ConnectionProfileStrategyOverridesAdfsConnectionConfigArgs) ToConnectionProfileStrategyOverridesAdfsConnectionConfigOutput() ConnectionProfileStrategyOverridesAdfsConnectionConfigOutput {
+	return i.ToConnectionProfileStrategyOverridesAdfsConnectionConfigOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileStrategyOverridesAdfsConnectionConfigArgs) ToConnectionProfileStrategyOverridesAdfsConnectionConfigOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesAdfsConnectionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileStrategyOverridesAdfsConnectionConfigOutput)
+}
+
+func (i ConnectionProfileStrategyOverridesAdfsConnectionConfigArgs) ToConnectionProfileStrategyOverridesAdfsConnectionConfigPtrOutput() ConnectionProfileStrategyOverridesAdfsConnectionConfigPtrOutput {
+	return i.ToConnectionProfileStrategyOverridesAdfsConnectionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileStrategyOverridesAdfsConnectionConfigArgs) ToConnectionProfileStrategyOverridesAdfsConnectionConfigPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesAdfsConnectionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileStrategyOverridesAdfsConnectionConfigOutput).ToConnectionProfileStrategyOverridesAdfsConnectionConfigPtrOutputWithContext(ctx)
+}
+
+// ConnectionProfileStrategyOverridesAdfsConnectionConfigPtrInput is an input type that accepts ConnectionProfileStrategyOverridesAdfsConnectionConfigArgs, ConnectionProfileStrategyOverridesAdfsConnectionConfigPtr and ConnectionProfileStrategyOverridesAdfsConnectionConfigPtrOutput values.
+// You can construct a concrete instance of `ConnectionProfileStrategyOverridesAdfsConnectionConfigPtrInput` via:
+//
+//	        ConnectionProfileStrategyOverridesAdfsConnectionConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionProfileStrategyOverridesAdfsConnectionConfigPtrInput interface {
+	pulumi.Input
+
+	ToConnectionProfileStrategyOverridesAdfsConnectionConfigPtrOutput() ConnectionProfileStrategyOverridesAdfsConnectionConfigPtrOutput
+	ToConnectionProfileStrategyOverridesAdfsConnectionConfigPtrOutputWithContext(context.Context) ConnectionProfileStrategyOverridesAdfsConnectionConfigPtrOutput
+}
+
+type connectionProfileStrategyOverridesAdfsConnectionConfigPtrType ConnectionProfileStrategyOverridesAdfsConnectionConfigArgs
+
+func ConnectionProfileStrategyOverridesAdfsConnectionConfigPtr(v *ConnectionProfileStrategyOverridesAdfsConnectionConfigArgs) ConnectionProfileStrategyOverridesAdfsConnectionConfigPtrInput {
+	return (*connectionProfileStrategyOverridesAdfsConnectionConfigPtrType)(v)
+}
+
+func (*connectionProfileStrategyOverridesAdfsConnectionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileStrategyOverridesAdfsConnectionConfig)(nil)).Elem()
+}
+
+func (i *connectionProfileStrategyOverridesAdfsConnectionConfigPtrType) ToConnectionProfileStrategyOverridesAdfsConnectionConfigPtrOutput() ConnectionProfileStrategyOverridesAdfsConnectionConfigPtrOutput {
+	return i.ToConnectionProfileStrategyOverridesAdfsConnectionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionProfileStrategyOverridesAdfsConnectionConfigPtrType) ToConnectionProfileStrategyOverridesAdfsConnectionConfigPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesAdfsConnectionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileStrategyOverridesAdfsConnectionConfigPtrOutput)
+}
+
+type ConnectionProfileStrategyOverridesAdfsConnectionConfigOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileStrategyOverridesAdfsConnectionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileStrategyOverridesAdfsConnectionConfig)(nil)).Elem()
+}
+
+func (o ConnectionProfileStrategyOverridesAdfsConnectionConfigOutput) ToConnectionProfileStrategyOverridesAdfsConnectionConfigOutput() ConnectionProfileStrategyOverridesAdfsConnectionConfigOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesAdfsConnectionConfigOutput) ToConnectionProfileStrategyOverridesAdfsConnectionConfigOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesAdfsConnectionConfigOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesAdfsConnectionConfigOutput) ToConnectionProfileStrategyOverridesAdfsConnectionConfigPtrOutput() ConnectionProfileStrategyOverridesAdfsConnectionConfigPtrOutput {
+	return o.ToConnectionProfileStrategyOverridesAdfsConnectionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionProfileStrategyOverridesAdfsConnectionConfigOutput) ToConnectionProfileStrategyOverridesAdfsConnectionConfigPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesAdfsConnectionConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfileStrategyOverridesAdfsConnectionConfig) *ConnectionProfileStrategyOverridesAdfsConnectionConfig {
+		return &v
+	}).(ConnectionProfileStrategyOverridesAdfsConnectionConfigPtrOutput)
+}
+
+type ConnectionProfileStrategyOverridesAdfsConnectionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileStrategyOverridesAdfsConnectionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileStrategyOverridesAdfsConnectionConfig)(nil)).Elem()
+}
+
+func (o ConnectionProfileStrategyOverridesAdfsConnectionConfigPtrOutput) ToConnectionProfileStrategyOverridesAdfsConnectionConfigPtrOutput() ConnectionProfileStrategyOverridesAdfsConnectionConfigPtrOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesAdfsConnectionConfigPtrOutput) ToConnectionProfileStrategyOverridesAdfsConnectionConfigPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesAdfsConnectionConfigPtrOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesAdfsConnectionConfigPtrOutput) Elem() ConnectionProfileStrategyOverridesAdfsConnectionConfigOutput {
+	return o.ApplyT(func(v *ConnectionProfileStrategyOverridesAdfsConnectionConfig) ConnectionProfileStrategyOverridesAdfsConnectionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionProfileStrategyOverridesAdfsConnectionConfig
+		return ret
+	}).(ConnectionProfileStrategyOverridesAdfsConnectionConfigOutput)
+}
+
+type ConnectionProfileStrategyOverridesGoogleApps struct {
+	// Connection config for the strategy override.
+	ConnectionConfig *ConnectionProfileStrategyOverridesGoogleAppsConnectionConfig `pulumi:"connectionConfig"`
+	// Enabled features for the strategy override.
+	EnabledFeatures []string `pulumi:"enabledFeatures"`
+}
+
+// ConnectionProfileStrategyOverridesGoogleAppsInput is an input type that accepts ConnectionProfileStrategyOverridesGoogleAppsArgs and ConnectionProfileStrategyOverridesGoogleAppsOutput values.
+// You can construct a concrete instance of `ConnectionProfileStrategyOverridesGoogleAppsInput` via:
+//
+//	ConnectionProfileStrategyOverridesGoogleAppsArgs{...}
+type ConnectionProfileStrategyOverridesGoogleAppsInput interface {
+	pulumi.Input
+
+	ToConnectionProfileStrategyOverridesGoogleAppsOutput() ConnectionProfileStrategyOverridesGoogleAppsOutput
+	ToConnectionProfileStrategyOverridesGoogleAppsOutputWithContext(context.Context) ConnectionProfileStrategyOverridesGoogleAppsOutput
+}
+
+type ConnectionProfileStrategyOverridesGoogleAppsArgs struct {
+	// Connection config for the strategy override.
+	ConnectionConfig ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigPtrInput `pulumi:"connectionConfig"`
+	// Enabled features for the strategy override.
+	EnabledFeatures pulumi.StringArrayInput `pulumi:"enabledFeatures"`
+}
+
+func (ConnectionProfileStrategyOverridesGoogleAppsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileStrategyOverridesGoogleApps)(nil)).Elem()
+}
+
+func (i ConnectionProfileStrategyOverridesGoogleAppsArgs) ToConnectionProfileStrategyOverridesGoogleAppsOutput() ConnectionProfileStrategyOverridesGoogleAppsOutput {
+	return i.ToConnectionProfileStrategyOverridesGoogleAppsOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileStrategyOverridesGoogleAppsArgs) ToConnectionProfileStrategyOverridesGoogleAppsOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesGoogleAppsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileStrategyOverridesGoogleAppsOutput)
+}
+
+func (i ConnectionProfileStrategyOverridesGoogleAppsArgs) ToConnectionProfileStrategyOverridesGoogleAppsPtrOutput() ConnectionProfileStrategyOverridesGoogleAppsPtrOutput {
+	return i.ToConnectionProfileStrategyOverridesGoogleAppsPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileStrategyOverridesGoogleAppsArgs) ToConnectionProfileStrategyOverridesGoogleAppsPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesGoogleAppsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileStrategyOverridesGoogleAppsOutput).ToConnectionProfileStrategyOverridesGoogleAppsPtrOutputWithContext(ctx)
+}
+
+// ConnectionProfileStrategyOverridesGoogleAppsPtrInput is an input type that accepts ConnectionProfileStrategyOverridesGoogleAppsArgs, ConnectionProfileStrategyOverridesGoogleAppsPtr and ConnectionProfileStrategyOverridesGoogleAppsPtrOutput values.
+// You can construct a concrete instance of `ConnectionProfileStrategyOverridesGoogleAppsPtrInput` via:
+//
+//	        ConnectionProfileStrategyOverridesGoogleAppsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionProfileStrategyOverridesGoogleAppsPtrInput interface {
+	pulumi.Input
+
+	ToConnectionProfileStrategyOverridesGoogleAppsPtrOutput() ConnectionProfileStrategyOverridesGoogleAppsPtrOutput
+	ToConnectionProfileStrategyOverridesGoogleAppsPtrOutputWithContext(context.Context) ConnectionProfileStrategyOverridesGoogleAppsPtrOutput
+}
+
+type connectionProfileStrategyOverridesGoogleAppsPtrType ConnectionProfileStrategyOverridesGoogleAppsArgs
+
+func ConnectionProfileStrategyOverridesGoogleAppsPtr(v *ConnectionProfileStrategyOverridesGoogleAppsArgs) ConnectionProfileStrategyOverridesGoogleAppsPtrInput {
+	return (*connectionProfileStrategyOverridesGoogleAppsPtrType)(v)
+}
+
+func (*connectionProfileStrategyOverridesGoogleAppsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileStrategyOverridesGoogleApps)(nil)).Elem()
+}
+
+func (i *connectionProfileStrategyOverridesGoogleAppsPtrType) ToConnectionProfileStrategyOverridesGoogleAppsPtrOutput() ConnectionProfileStrategyOverridesGoogleAppsPtrOutput {
+	return i.ToConnectionProfileStrategyOverridesGoogleAppsPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionProfileStrategyOverridesGoogleAppsPtrType) ToConnectionProfileStrategyOverridesGoogleAppsPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesGoogleAppsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileStrategyOverridesGoogleAppsPtrOutput)
+}
+
+type ConnectionProfileStrategyOverridesGoogleAppsOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileStrategyOverridesGoogleAppsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileStrategyOverridesGoogleApps)(nil)).Elem()
+}
+
+func (o ConnectionProfileStrategyOverridesGoogleAppsOutput) ToConnectionProfileStrategyOverridesGoogleAppsOutput() ConnectionProfileStrategyOverridesGoogleAppsOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesGoogleAppsOutput) ToConnectionProfileStrategyOverridesGoogleAppsOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesGoogleAppsOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesGoogleAppsOutput) ToConnectionProfileStrategyOverridesGoogleAppsPtrOutput() ConnectionProfileStrategyOverridesGoogleAppsPtrOutput {
+	return o.ToConnectionProfileStrategyOverridesGoogleAppsPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionProfileStrategyOverridesGoogleAppsOutput) ToConnectionProfileStrategyOverridesGoogleAppsPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesGoogleAppsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfileStrategyOverridesGoogleApps) *ConnectionProfileStrategyOverridesGoogleApps {
+		return &v
+	}).(ConnectionProfileStrategyOverridesGoogleAppsPtrOutput)
+}
+
+// Connection config for the strategy override.
+func (o ConnectionProfileStrategyOverridesGoogleAppsOutput) ConnectionConfig() ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileStrategyOverridesGoogleApps) *ConnectionProfileStrategyOverridesGoogleAppsConnectionConfig {
+		return v.ConnectionConfig
+	}).(ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigPtrOutput)
+}
+
+// Enabled features for the strategy override.
+func (o ConnectionProfileStrategyOverridesGoogleAppsOutput) EnabledFeatures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectionProfileStrategyOverridesGoogleApps) []string { return v.EnabledFeatures }).(pulumi.StringArrayOutput)
+}
+
+type ConnectionProfileStrategyOverridesGoogleAppsPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileStrategyOverridesGoogleAppsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileStrategyOverridesGoogleApps)(nil)).Elem()
+}
+
+func (o ConnectionProfileStrategyOverridesGoogleAppsPtrOutput) ToConnectionProfileStrategyOverridesGoogleAppsPtrOutput() ConnectionProfileStrategyOverridesGoogleAppsPtrOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesGoogleAppsPtrOutput) ToConnectionProfileStrategyOverridesGoogleAppsPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesGoogleAppsPtrOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesGoogleAppsPtrOutput) Elem() ConnectionProfileStrategyOverridesGoogleAppsOutput {
+	return o.ApplyT(func(v *ConnectionProfileStrategyOverridesGoogleApps) ConnectionProfileStrategyOverridesGoogleApps {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionProfileStrategyOverridesGoogleApps
+		return ret
+	}).(ConnectionProfileStrategyOverridesGoogleAppsOutput)
+}
+
+// Connection config for the strategy override.
+func (o ConnectionProfileStrategyOverridesGoogleAppsPtrOutput) ConnectionConfig() ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileStrategyOverridesGoogleApps) *ConnectionProfileStrategyOverridesGoogleAppsConnectionConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectionConfig
+	}).(ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigPtrOutput)
+}
+
+// Enabled features for the strategy override.
+func (o ConnectionProfileStrategyOverridesGoogleAppsPtrOutput) EnabledFeatures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectionProfileStrategyOverridesGoogleApps) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EnabledFeatures
+	}).(pulumi.StringArrayOutput)
+}
+
+type ConnectionProfileStrategyOverridesGoogleAppsConnectionConfig struct {
+}
+
+// ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigInput is an input type that accepts ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigArgs and ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigOutput values.
+// You can construct a concrete instance of `ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigInput` via:
+//
+//	ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigArgs{...}
+type ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigInput interface {
+	pulumi.Input
+
+	ToConnectionProfileStrategyOverridesGoogleAppsConnectionConfigOutput() ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigOutput
+	ToConnectionProfileStrategyOverridesGoogleAppsConnectionConfigOutputWithContext(context.Context) ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigOutput
+}
+
+type ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigArgs struct {
+}
+
+func (ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileStrategyOverridesGoogleAppsConnectionConfig)(nil)).Elem()
+}
+
+func (i ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigArgs) ToConnectionProfileStrategyOverridesGoogleAppsConnectionConfigOutput() ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigOutput {
+	return i.ToConnectionProfileStrategyOverridesGoogleAppsConnectionConfigOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigArgs) ToConnectionProfileStrategyOverridesGoogleAppsConnectionConfigOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigOutput)
+}
+
+func (i ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigArgs) ToConnectionProfileStrategyOverridesGoogleAppsConnectionConfigPtrOutput() ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigPtrOutput {
+	return i.ToConnectionProfileStrategyOverridesGoogleAppsConnectionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigArgs) ToConnectionProfileStrategyOverridesGoogleAppsConnectionConfigPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigOutput).ToConnectionProfileStrategyOverridesGoogleAppsConnectionConfigPtrOutputWithContext(ctx)
+}
+
+// ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigPtrInput is an input type that accepts ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigArgs, ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigPtr and ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigPtrOutput values.
+// You can construct a concrete instance of `ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigPtrInput` via:
+//
+//	        ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigPtrInput interface {
+	pulumi.Input
+
+	ToConnectionProfileStrategyOverridesGoogleAppsConnectionConfigPtrOutput() ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigPtrOutput
+	ToConnectionProfileStrategyOverridesGoogleAppsConnectionConfigPtrOutputWithContext(context.Context) ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigPtrOutput
+}
+
+type connectionProfileStrategyOverridesGoogleAppsConnectionConfigPtrType ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigArgs
+
+func ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigPtr(v *ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigArgs) ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigPtrInput {
+	return (*connectionProfileStrategyOverridesGoogleAppsConnectionConfigPtrType)(v)
+}
+
+func (*connectionProfileStrategyOverridesGoogleAppsConnectionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileStrategyOverridesGoogleAppsConnectionConfig)(nil)).Elem()
+}
+
+func (i *connectionProfileStrategyOverridesGoogleAppsConnectionConfigPtrType) ToConnectionProfileStrategyOverridesGoogleAppsConnectionConfigPtrOutput() ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigPtrOutput {
+	return i.ToConnectionProfileStrategyOverridesGoogleAppsConnectionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionProfileStrategyOverridesGoogleAppsConnectionConfigPtrType) ToConnectionProfileStrategyOverridesGoogleAppsConnectionConfigPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigPtrOutput)
+}
+
+type ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileStrategyOverridesGoogleAppsConnectionConfig)(nil)).Elem()
+}
+
+func (o ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigOutput) ToConnectionProfileStrategyOverridesGoogleAppsConnectionConfigOutput() ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigOutput) ToConnectionProfileStrategyOverridesGoogleAppsConnectionConfigOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigOutput) ToConnectionProfileStrategyOverridesGoogleAppsConnectionConfigPtrOutput() ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigPtrOutput {
+	return o.ToConnectionProfileStrategyOverridesGoogleAppsConnectionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigOutput) ToConnectionProfileStrategyOverridesGoogleAppsConnectionConfigPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfileStrategyOverridesGoogleAppsConnectionConfig) *ConnectionProfileStrategyOverridesGoogleAppsConnectionConfig {
+		return &v
+	}).(ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigPtrOutput)
+}
+
+type ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileStrategyOverridesGoogleAppsConnectionConfig)(nil)).Elem()
+}
+
+func (o ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigPtrOutput) ToConnectionProfileStrategyOverridesGoogleAppsConnectionConfigPtrOutput() ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigPtrOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigPtrOutput) ToConnectionProfileStrategyOverridesGoogleAppsConnectionConfigPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigPtrOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigPtrOutput) Elem() ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigOutput {
+	return o.ApplyT(func(v *ConnectionProfileStrategyOverridesGoogleAppsConnectionConfig) ConnectionProfileStrategyOverridesGoogleAppsConnectionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionProfileStrategyOverridesGoogleAppsConnectionConfig
+		return ret
+	}).(ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigOutput)
+}
+
+type ConnectionProfileStrategyOverridesOidc struct {
+	// Connection config for the strategy override.
+	ConnectionConfig *ConnectionProfileStrategyOverridesOidcConnectionConfig `pulumi:"connectionConfig"`
+	// Enabled features for the strategy override.
+	EnabledFeatures []string `pulumi:"enabledFeatures"`
+}
+
+// ConnectionProfileStrategyOverridesOidcInput is an input type that accepts ConnectionProfileStrategyOverridesOidcArgs and ConnectionProfileStrategyOverridesOidcOutput values.
+// You can construct a concrete instance of `ConnectionProfileStrategyOverridesOidcInput` via:
+//
+//	ConnectionProfileStrategyOverridesOidcArgs{...}
+type ConnectionProfileStrategyOverridesOidcInput interface {
+	pulumi.Input
+
+	ToConnectionProfileStrategyOverridesOidcOutput() ConnectionProfileStrategyOverridesOidcOutput
+	ToConnectionProfileStrategyOverridesOidcOutputWithContext(context.Context) ConnectionProfileStrategyOverridesOidcOutput
+}
+
+type ConnectionProfileStrategyOverridesOidcArgs struct {
+	// Connection config for the strategy override.
+	ConnectionConfig ConnectionProfileStrategyOverridesOidcConnectionConfigPtrInput `pulumi:"connectionConfig"`
+	// Enabled features for the strategy override.
+	EnabledFeatures pulumi.StringArrayInput `pulumi:"enabledFeatures"`
+}
+
+func (ConnectionProfileStrategyOverridesOidcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileStrategyOverridesOidc)(nil)).Elem()
+}
+
+func (i ConnectionProfileStrategyOverridesOidcArgs) ToConnectionProfileStrategyOverridesOidcOutput() ConnectionProfileStrategyOverridesOidcOutput {
+	return i.ToConnectionProfileStrategyOverridesOidcOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileStrategyOverridesOidcArgs) ToConnectionProfileStrategyOverridesOidcOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesOidcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileStrategyOverridesOidcOutput)
+}
+
+func (i ConnectionProfileStrategyOverridesOidcArgs) ToConnectionProfileStrategyOverridesOidcPtrOutput() ConnectionProfileStrategyOverridesOidcPtrOutput {
+	return i.ToConnectionProfileStrategyOverridesOidcPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileStrategyOverridesOidcArgs) ToConnectionProfileStrategyOverridesOidcPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesOidcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileStrategyOverridesOidcOutput).ToConnectionProfileStrategyOverridesOidcPtrOutputWithContext(ctx)
+}
+
+// ConnectionProfileStrategyOverridesOidcPtrInput is an input type that accepts ConnectionProfileStrategyOverridesOidcArgs, ConnectionProfileStrategyOverridesOidcPtr and ConnectionProfileStrategyOverridesOidcPtrOutput values.
+// You can construct a concrete instance of `ConnectionProfileStrategyOverridesOidcPtrInput` via:
+//
+//	        ConnectionProfileStrategyOverridesOidcArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionProfileStrategyOverridesOidcPtrInput interface {
+	pulumi.Input
+
+	ToConnectionProfileStrategyOverridesOidcPtrOutput() ConnectionProfileStrategyOverridesOidcPtrOutput
+	ToConnectionProfileStrategyOverridesOidcPtrOutputWithContext(context.Context) ConnectionProfileStrategyOverridesOidcPtrOutput
+}
+
+type connectionProfileStrategyOverridesOidcPtrType ConnectionProfileStrategyOverridesOidcArgs
+
+func ConnectionProfileStrategyOverridesOidcPtr(v *ConnectionProfileStrategyOverridesOidcArgs) ConnectionProfileStrategyOverridesOidcPtrInput {
+	return (*connectionProfileStrategyOverridesOidcPtrType)(v)
+}
+
+func (*connectionProfileStrategyOverridesOidcPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileStrategyOverridesOidc)(nil)).Elem()
+}
+
+func (i *connectionProfileStrategyOverridesOidcPtrType) ToConnectionProfileStrategyOverridesOidcPtrOutput() ConnectionProfileStrategyOverridesOidcPtrOutput {
+	return i.ToConnectionProfileStrategyOverridesOidcPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionProfileStrategyOverridesOidcPtrType) ToConnectionProfileStrategyOverridesOidcPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesOidcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileStrategyOverridesOidcPtrOutput)
+}
+
+type ConnectionProfileStrategyOverridesOidcOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileStrategyOverridesOidcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileStrategyOverridesOidc)(nil)).Elem()
+}
+
+func (o ConnectionProfileStrategyOverridesOidcOutput) ToConnectionProfileStrategyOverridesOidcOutput() ConnectionProfileStrategyOverridesOidcOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesOidcOutput) ToConnectionProfileStrategyOverridesOidcOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesOidcOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesOidcOutput) ToConnectionProfileStrategyOverridesOidcPtrOutput() ConnectionProfileStrategyOverridesOidcPtrOutput {
+	return o.ToConnectionProfileStrategyOverridesOidcPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionProfileStrategyOverridesOidcOutput) ToConnectionProfileStrategyOverridesOidcPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesOidcPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfileStrategyOverridesOidc) *ConnectionProfileStrategyOverridesOidc {
+		return &v
+	}).(ConnectionProfileStrategyOverridesOidcPtrOutput)
+}
+
+// Connection config for the strategy override.
+func (o ConnectionProfileStrategyOverridesOidcOutput) ConnectionConfig() ConnectionProfileStrategyOverridesOidcConnectionConfigPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileStrategyOverridesOidc) *ConnectionProfileStrategyOverridesOidcConnectionConfig {
+		return v.ConnectionConfig
+	}).(ConnectionProfileStrategyOverridesOidcConnectionConfigPtrOutput)
+}
+
+// Enabled features for the strategy override.
+func (o ConnectionProfileStrategyOverridesOidcOutput) EnabledFeatures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectionProfileStrategyOverridesOidc) []string { return v.EnabledFeatures }).(pulumi.StringArrayOutput)
+}
+
+type ConnectionProfileStrategyOverridesOidcPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileStrategyOverridesOidcPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileStrategyOverridesOidc)(nil)).Elem()
+}
+
+func (o ConnectionProfileStrategyOverridesOidcPtrOutput) ToConnectionProfileStrategyOverridesOidcPtrOutput() ConnectionProfileStrategyOverridesOidcPtrOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesOidcPtrOutput) ToConnectionProfileStrategyOverridesOidcPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesOidcPtrOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesOidcPtrOutput) Elem() ConnectionProfileStrategyOverridesOidcOutput {
+	return o.ApplyT(func(v *ConnectionProfileStrategyOverridesOidc) ConnectionProfileStrategyOverridesOidc {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionProfileStrategyOverridesOidc
+		return ret
+	}).(ConnectionProfileStrategyOverridesOidcOutput)
+}
+
+// Connection config for the strategy override.
+func (o ConnectionProfileStrategyOverridesOidcPtrOutput) ConnectionConfig() ConnectionProfileStrategyOverridesOidcConnectionConfigPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileStrategyOverridesOidc) *ConnectionProfileStrategyOverridesOidcConnectionConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectionConfig
+	}).(ConnectionProfileStrategyOverridesOidcConnectionConfigPtrOutput)
+}
+
+// Enabled features for the strategy override.
+func (o ConnectionProfileStrategyOverridesOidcPtrOutput) EnabledFeatures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectionProfileStrategyOverridesOidc) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EnabledFeatures
+	}).(pulumi.StringArrayOutput)
+}
+
+type ConnectionProfileStrategyOverridesOidcConnectionConfig struct {
+}
+
+// ConnectionProfileStrategyOverridesOidcConnectionConfigInput is an input type that accepts ConnectionProfileStrategyOverridesOidcConnectionConfigArgs and ConnectionProfileStrategyOverridesOidcConnectionConfigOutput values.
+// You can construct a concrete instance of `ConnectionProfileStrategyOverridesOidcConnectionConfigInput` via:
+//
+//	ConnectionProfileStrategyOverridesOidcConnectionConfigArgs{...}
+type ConnectionProfileStrategyOverridesOidcConnectionConfigInput interface {
+	pulumi.Input
+
+	ToConnectionProfileStrategyOverridesOidcConnectionConfigOutput() ConnectionProfileStrategyOverridesOidcConnectionConfigOutput
+	ToConnectionProfileStrategyOverridesOidcConnectionConfigOutputWithContext(context.Context) ConnectionProfileStrategyOverridesOidcConnectionConfigOutput
+}
+
+type ConnectionProfileStrategyOverridesOidcConnectionConfigArgs struct {
+}
+
+func (ConnectionProfileStrategyOverridesOidcConnectionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileStrategyOverridesOidcConnectionConfig)(nil)).Elem()
+}
+
+func (i ConnectionProfileStrategyOverridesOidcConnectionConfigArgs) ToConnectionProfileStrategyOverridesOidcConnectionConfigOutput() ConnectionProfileStrategyOverridesOidcConnectionConfigOutput {
+	return i.ToConnectionProfileStrategyOverridesOidcConnectionConfigOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileStrategyOverridesOidcConnectionConfigArgs) ToConnectionProfileStrategyOverridesOidcConnectionConfigOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesOidcConnectionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileStrategyOverridesOidcConnectionConfigOutput)
+}
+
+func (i ConnectionProfileStrategyOverridesOidcConnectionConfigArgs) ToConnectionProfileStrategyOverridesOidcConnectionConfigPtrOutput() ConnectionProfileStrategyOverridesOidcConnectionConfigPtrOutput {
+	return i.ToConnectionProfileStrategyOverridesOidcConnectionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileStrategyOverridesOidcConnectionConfigArgs) ToConnectionProfileStrategyOverridesOidcConnectionConfigPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesOidcConnectionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileStrategyOverridesOidcConnectionConfigOutput).ToConnectionProfileStrategyOverridesOidcConnectionConfigPtrOutputWithContext(ctx)
+}
+
+// ConnectionProfileStrategyOverridesOidcConnectionConfigPtrInput is an input type that accepts ConnectionProfileStrategyOverridesOidcConnectionConfigArgs, ConnectionProfileStrategyOverridesOidcConnectionConfigPtr and ConnectionProfileStrategyOverridesOidcConnectionConfigPtrOutput values.
+// You can construct a concrete instance of `ConnectionProfileStrategyOverridesOidcConnectionConfigPtrInput` via:
+//
+//	        ConnectionProfileStrategyOverridesOidcConnectionConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionProfileStrategyOverridesOidcConnectionConfigPtrInput interface {
+	pulumi.Input
+
+	ToConnectionProfileStrategyOverridesOidcConnectionConfigPtrOutput() ConnectionProfileStrategyOverridesOidcConnectionConfigPtrOutput
+	ToConnectionProfileStrategyOverridesOidcConnectionConfigPtrOutputWithContext(context.Context) ConnectionProfileStrategyOverridesOidcConnectionConfigPtrOutput
+}
+
+type connectionProfileStrategyOverridesOidcConnectionConfigPtrType ConnectionProfileStrategyOverridesOidcConnectionConfigArgs
+
+func ConnectionProfileStrategyOverridesOidcConnectionConfigPtr(v *ConnectionProfileStrategyOverridesOidcConnectionConfigArgs) ConnectionProfileStrategyOverridesOidcConnectionConfigPtrInput {
+	return (*connectionProfileStrategyOverridesOidcConnectionConfigPtrType)(v)
+}
+
+func (*connectionProfileStrategyOverridesOidcConnectionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileStrategyOverridesOidcConnectionConfig)(nil)).Elem()
+}
+
+func (i *connectionProfileStrategyOverridesOidcConnectionConfigPtrType) ToConnectionProfileStrategyOverridesOidcConnectionConfigPtrOutput() ConnectionProfileStrategyOverridesOidcConnectionConfigPtrOutput {
+	return i.ToConnectionProfileStrategyOverridesOidcConnectionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionProfileStrategyOverridesOidcConnectionConfigPtrType) ToConnectionProfileStrategyOverridesOidcConnectionConfigPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesOidcConnectionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileStrategyOverridesOidcConnectionConfigPtrOutput)
+}
+
+type ConnectionProfileStrategyOverridesOidcConnectionConfigOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileStrategyOverridesOidcConnectionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileStrategyOverridesOidcConnectionConfig)(nil)).Elem()
+}
+
+func (o ConnectionProfileStrategyOverridesOidcConnectionConfigOutput) ToConnectionProfileStrategyOverridesOidcConnectionConfigOutput() ConnectionProfileStrategyOverridesOidcConnectionConfigOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesOidcConnectionConfigOutput) ToConnectionProfileStrategyOverridesOidcConnectionConfigOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesOidcConnectionConfigOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesOidcConnectionConfigOutput) ToConnectionProfileStrategyOverridesOidcConnectionConfigPtrOutput() ConnectionProfileStrategyOverridesOidcConnectionConfigPtrOutput {
+	return o.ToConnectionProfileStrategyOverridesOidcConnectionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionProfileStrategyOverridesOidcConnectionConfigOutput) ToConnectionProfileStrategyOverridesOidcConnectionConfigPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesOidcConnectionConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfileStrategyOverridesOidcConnectionConfig) *ConnectionProfileStrategyOverridesOidcConnectionConfig {
+		return &v
+	}).(ConnectionProfileStrategyOverridesOidcConnectionConfigPtrOutput)
+}
+
+type ConnectionProfileStrategyOverridesOidcConnectionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileStrategyOverridesOidcConnectionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileStrategyOverridesOidcConnectionConfig)(nil)).Elem()
+}
+
+func (o ConnectionProfileStrategyOverridesOidcConnectionConfigPtrOutput) ToConnectionProfileStrategyOverridesOidcConnectionConfigPtrOutput() ConnectionProfileStrategyOverridesOidcConnectionConfigPtrOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesOidcConnectionConfigPtrOutput) ToConnectionProfileStrategyOverridesOidcConnectionConfigPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesOidcConnectionConfigPtrOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesOidcConnectionConfigPtrOutput) Elem() ConnectionProfileStrategyOverridesOidcConnectionConfigOutput {
+	return o.ApplyT(func(v *ConnectionProfileStrategyOverridesOidcConnectionConfig) ConnectionProfileStrategyOverridesOidcConnectionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionProfileStrategyOverridesOidcConnectionConfig
+		return ret
+	}).(ConnectionProfileStrategyOverridesOidcConnectionConfigOutput)
+}
+
+type ConnectionProfileStrategyOverridesOkta struct {
+	// Connection config for the strategy override.
+	ConnectionConfig *ConnectionProfileStrategyOverridesOktaConnectionConfig `pulumi:"connectionConfig"`
+	// Enabled features for the strategy override.
+	EnabledFeatures []string `pulumi:"enabledFeatures"`
+}
+
+// ConnectionProfileStrategyOverridesOktaInput is an input type that accepts ConnectionProfileStrategyOverridesOktaArgs and ConnectionProfileStrategyOverridesOktaOutput values.
+// You can construct a concrete instance of `ConnectionProfileStrategyOverridesOktaInput` via:
+//
+//	ConnectionProfileStrategyOverridesOktaArgs{...}
+type ConnectionProfileStrategyOverridesOktaInput interface {
+	pulumi.Input
+
+	ToConnectionProfileStrategyOverridesOktaOutput() ConnectionProfileStrategyOverridesOktaOutput
+	ToConnectionProfileStrategyOverridesOktaOutputWithContext(context.Context) ConnectionProfileStrategyOverridesOktaOutput
+}
+
+type ConnectionProfileStrategyOverridesOktaArgs struct {
+	// Connection config for the strategy override.
+	ConnectionConfig ConnectionProfileStrategyOverridesOktaConnectionConfigPtrInput `pulumi:"connectionConfig"`
+	// Enabled features for the strategy override.
+	EnabledFeatures pulumi.StringArrayInput `pulumi:"enabledFeatures"`
+}
+
+func (ConnectionProfileStrategyOverridesOktaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileStrategyOverridesOkta)(nil)).Elem()
+}
+
+func (i ConnectionProfileStrategyOverridesOktaArgs) ToConnectionProfileStrategyOverridesOktaOutput() ConnectionProfileStrategyOverridesOktaOutput {
+	return i.ToConnectionProfileStrategyOverridesOktaOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileStrategyOverridesOktaArgs) ToConnectionProfileStrategyOverridesOktaOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesOktaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileStrategyOverridesOktaOutput)
+}
+
+func (i ConnectionProfileStrategyOverridesOktaArgs) ToConnectionProfileStrategyOverridesOktaPtrOutput() ConnectionProfileStrategyOverridesOktaPtrOutput {
+	return i.ToConnectionProfileStrategyOverridesOktaPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileStrategyOverridesOktaArgs) ToConnectionProfileStrategyOverridesOktaPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesOktaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileStrategyOverridesOktaOutput).ToConnectionProfileStrategyOverridesOktaPtrOutputWithContext(ctx)
+}
+
+// ConnectionProfileStrategyOverridesOktaPtrInput is an input type that accepts ConnectionProfileStrategyOverridesOktaArgs, ConnectionProfileStrategyOverridesOktaPtr and ConnectionProfileStrategyOverridesOktaPtrOutput values.
+// You can construct a concrete instance of `ConnectionProfileStrategyOverridesOktaPtrInput` via:
+//
+//	        ConnectionProfileStrategyOverridesOktaArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionProfileStrategyOverridesOktaPtrInput interface {
+	pulumi.Input
+
+	ToConnectionProfileStrategyOverridesOktaPtrOutput() ConnectionProfileStrategyOverridesOktaPtrOutput
+	ToConnectionProfileStrategyOverridesOktaPtrOutputWithContext(context.Context) ConnectionProfileStrategyOverridesOktaPtrOutput
+}
+
+type connectionProfileStrategyOverridesOktaPtrType ConnectionProfileStrategyOverridesOktaArgs
+
+func ConnectionProfileStrategyOverridesOktaPtr(v *ConnectionProfileStrategyOverridesOktaArgs) ConnectionProfileStrategyOverridesOktaPtrInput {
+	return (*connectionProfileStrategyOverridesOktaPtrType)(v)
+}
+
+func (*connectionProfileStrategyOverridesOktaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileStrategyOverridesOkta)(nil)).Elem()
+}
+
+func (i *connectionProfileStrategyOverridesOktaPtrType) ToConnectionProfileStrategyOverridesOktaPtrOutput() ConnectionProfileStrategyOverridesOktaPtrOutput {
+	return i.ToConnectionProfileStrategyOverridesOktaPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionProfileStrategyOverridesOktaPtrType) ToConnectionProfileStrategyOverridesOktaPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesOktaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileStrategyOverridesOktaPtrOutput)
+}
+
+type ConnectionProfileStrategyOverridesOktaOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileStrategyOverridesOktaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileStrategyOverridesOkta)(nil)).Elem()
+}
+
+func (o ConnectionProfileStrategyOverridesOktaOutput) ToConnectionProfileStrategyOverridesOktaOutput() ConnectionProfileStrategyOverridesOktaOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesOktaOutput) ToConnectionProfileStrategyOverridesOktaOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesOktaOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesOktaOutput) ToConnectionProfileStrategyOverridesOktaPtrOutput() ConnectionProfileStrategyOverridesOktaPtrOutput {
+	return o.ToConnectionProfileStrategyOverridesOktaPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionProfileStrategyOverridesOktaOutput) ToConnectionProfileStrategyOverridesOktaPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesOktaPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfileStrategyOverridesOkta) *ConnectionProfileStrategyOverridesOkta {
+		return &v
+	}).(ConnectionProfileStrategyOverridesOktaPtrOutput)
+}
+
+// Connection config for the strategy override.
+func (o ConnectionProfileStrategyOverridesOktaOutput) ConnectionConfig() ConnectionProfileStrategyOverridesOktaConnectionConfigPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileStrategyOverridesOkta) *ConnectionProfileStrategyOverridesOktaConnectionConfig {
+		return v.ConnectionConfig
+	}).(ConnectionProfileStrategyOverridesOktaConnectionConfigPtrOutput)
+}
+
+// Enabled features for the strategy override.
+func (o ConnectionProfileStrategyOverridesOktaOutput) EnabledFeatures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectionProfileStrategyOverridesOkta) []string { return v.EnabledFeatures }).(pulumi.StringArrayOutput)
+}
+
+type ConnectionProfileStrategyOverridesOktaPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileStrategyOverridesOktaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileStrategyOverridesOkta)(nil)).Elem()
+}
+
+func (o ConnectionProfileStrategyOverridesOktaPtrOutput) ToConnectionProfileStrategyOverridesOktaPtrOutput() ConnectionProfileStrategyOverridesOktaPtrOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesOktaPtrOutput) ToConnectionProfileStrategyOverridesOktaPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesOktaPtrOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesOktaPtrOutput) Elem() ConnectionProfileStrategyOverridesOktaOutput {
+	return o.ApplyT(func(v *ConnectionProfileStrategyOverridesOkta) ConnectionProfileStrategyOverridesOkta {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionProfileStrategyOverridesOkta
+		return ret
+	}).(ConnectionProfileStrategyOverridesOktaOutput)
+}
+
+// Connection config for the strategy override.
+func (o ConnectionProfileStrategyOverridesOktaPtrOutput) ConnectionConfig() ConnectionProfileStrategyOverridesOktaConnectionConfigPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileStrategyOverridesOkta) *ConnectionProfileStrategyOverridesOktaConnectionConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectionConfig
+	}).(ConnectionProfileStrategyOverridesOktaConnectionConfigPtrOutput)
+}
+
+// Enabled features for the strategy override.
+func (o ConnectionProfileStrategyOverridesOktaPtrOutput) EnabledFeatures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectionProfileStrategyOverridesOkta) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EnabledFeatures
+	}).(pulumi.StringArrayOutput)
+}
+
+type ConnectionProfileStrategyOverridesOktaConnectionConfig struct {
+}
+
+// ConnectionProfileStrategyOverridesOktaConnectionConfigInput is an input type that accepts ConnectionProfileStrategyOverridesOktaConnectionConfigArgs and ConnectionProfileStrategyOverridesOktaConnectionConfigOutput values.
+// You can construct a concrete instance of `ConnectionProfileStrategyOverridesOktaConnectionConfigInput` via:
+//
+//	ConnectionProfileStrategyOverridesOktaConnectionConfigArgs{...}
+type ConnectionProfileStrategyOverridesOktaConnectionConfigInput interface {
+	pulumi.Input
+
+	ToConnectionProfileStrategyOverridesOktaConnectionConfigOutput() ConnectionProfileStrategyOverridesOktaConnectionConfigOutput
+	ToConnectionProfileStrategyOverridesOktaConnectionConfigOutputWithContext(context.Context) ConnectionProfileStrategyOverridesOktaConnectionConfigOutput
+}
+
+type ConnectionProfileStrategyOverridesOktaConnectionConfigArgs struct {
+}
+
+func (ConnectionProfileStrategyOverridesOktaConnectionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileStrategyOverridesOktaConnectionConfig)(nil)).Elem()
+}
+
+func (i ConnectionProfileStrategyOverridesOktaConnectionConfigArgs) ToConnectionProfileStrategyOverridesOktaConnectionConfigOutput() ConnectionProfileStrategyOverridesOktaConnectionConfigOutput {
+	return i.ToConnectionProfileStrategyOverridesOktaConnectionConfigOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileStrategyOverridesOktaConnectionConfigArgs) ToConnectionProfileStrategyOverridesOktaConnectionConfigOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesOktaConnectionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileStrategyOverridesOktaConnectionConfigOutput)
+}
+
+func (i ConnectionProfileStrategyOverridesOktaConnectionConfigArgs) ToConnectionProfileStrategyOverridesOktaConnectionConfigPtrOutput() ConnectionProfileStrategyOverridesOktaConnectionConfigPtrOutput {
+	return i.ToConnectionProfileStrategyOverridesOktaConnectionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileStrategyOverridesOktaConnectionConfigArgs) ToConnectionProfileStrategyOverridesOktaConnectionConfigPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesOktaConnectionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileStrategyOverridesOktaConnectionConfigOutput).ToConnectionProfileStrategyOverridesOktaConnectionConfigPtrOutputWithContext(ctx)
+}
+
+// ConnectionProfileStrategyOverridesOktaConnectionConfigPtrInput is an input type that accepts ConnectionProfileStrategyOverridesOktaConnectionConfigArgs, ConnectionProfileStrategyOverridesOktaConnectionConfigPtr and ConnectionProfileStrategyOverridesOktaConnectionConfigPtrOutput values.
+// You can construct a concrete instance of `ConnectionProfileStrategyOverridesOktaConnectionConfigPtrInput` via:
+//
+//	        ConnectionProfileStrategyOverridesOktaConnectionConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionProfileStrategyOverridesOktaConnectionConfigPtrInput interface {
+	pulumi.Input
+
+	ToConnectionProfileStrategyOverridesOktaConnectionConfigPtrOutput() ConnectionProfileStrategyOverridesOktaConnectionConfigPtrOutput
+	ToConnectionProfileStrategyOverridesOktaConnectionConfigPtrOutputWithContext(context.Context) ConnectionProfileStrategyOverridesOktaConnectionConfigPtrOutput
+}
+
+type connectionProfileStrategyOverridesOktaConnectionConfigPtrType ConnectionProfileStrategyOverridesOktaConnectionConfigArgs
+
+func ConnectionProfileStrategyOverridesOktaConnectionConfigPtr(v *ConnectionProfileStrategyOverridesOktaConnectionConfigArgs) ConnectionProfileStrategyOverridesOktaConnectionConfigPtrInput {
+	return (*connectionProfileStrategyOverridesOktaConnectionConfigPtrType)(v)
+}
+
+func (*connectionProfileStrategyOverridesOktaConnectionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileStrategyOverridesOktaConnectionConfig)(nil)).Elem()
+}
+
+func (i *connectionProfileStrategyOverridesOktaConnectionConfigPtrType) ToConnectionProfileStrategyOverridesOktaConnectionConfigPtrOutput() ConnectionProfileStrategyOverridesOktaConnectionConfigPtrOutput {
+	return i.ToConnectionProfileStrategyOverridesOktaConnectionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionProfileStrategyOverridesOktaConnectionConfigPtrType) ToConnectionProfileStrategyOverridesOktaConnectionConfigPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesOktaConnectionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileStrategyOverridesOktaConnectionConfigPtrOutput)
+}
+
+type ConnectionProfileStrategyOverridesOktaConnectionConfigOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileStrategyOverridesOktaConnectionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileStrategyOverridesOktaConnectionConfig)(nil)).Elem()
+}
+
+func (o ConnectionProfileStrategyOverridesOktaConnectionConfigOutput) ToConnectionProfileStrategyOverridesOktaConnectionConfigOutput() ConnectionProfileStrategyOverridesOktaConnectionConfigOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesOktaConnectionConfigOutput) ToConnectionProfileStrategyOverridesOktaConnectionConfigOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesOktaConnectionConfigOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesOktaConnectionConfigOutput) ToConnectionProfileStrategyOverridesOktaConnectionConfigPtrOutput() ConnectionProfileStrategyOverridesOktaConnectionConfigPtrOutput {
+	return o.ToConnectionProfileStrategyOverridesOktaConnectionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionProfileStrategyOverridesOktaConnectionConfigOutput) ToConnectionProfileStrategyOverridesOktaConnectionConfigPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesOktaConnectionConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfileStrategyOverridesOktaConnectionConfig) *ConnectionProfileStrategyOverridesOktaConnectionConfig {
+		return &v
+	}).(ConnectionProfileStrategyOverridesOktaConnectionConfigPtrOutput)
+}
+
+type ConnectionProfileStrategyOverridesOktaConnectionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileStrategyOverridesOktaConnectionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileStrategyOverridesOktaConnectionConfig)(nil)).Elem()
+}
+
+func (o ConnectionProfileStrategyOverridesOktaConnectionConfigPtrOutput) ToConnectionProfileStrategyOverridesOktaConnectionConfigPtrOutput() ConnectionProfileStrategyOverridesOktaConnectionConfigPtrOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesOktaConnectionConfigPtrOutput) ToConnectionProfileStrategyOverridesOktaConnectionConfigPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesOktaConnectionConfigPtrOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesOktaConnectionConfigPtrOutput) Elem() ConnectionProfileStrategyOverridesOktaConnectionConfigOutput {
+	return o.ApplyT(func(v *ConnectionProfileStrategyOverridesOktaConnectionConfig) ConnectionProfileStrategyOverridesOktaConnectionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionProfileStrategyOverridesOktaConnectionConfig
+		return ret
+	}).(ConnectionProfileStrategyOverridesOktaConnectionConfigOutput)
+}
+
+type ConnectionProfileStrategyOverridesPingfederate struct {
+	// Connection config for the strategy override.
+	ConnectionConfig *ConnectionProfileStrategyOverridesPingfederateConnectionConfig `pulumi:"connectionConfig"`
+	// Enabled features for the strategy override.
+	EnabledFeatures []string `pulumi:"enabledFeatures"`
+}
+
+// ConnectionProfileStrategyOverridesPingfederateInput is an input type that accepts ConnectionProfileStrategyOverridesPingfederateArgs and ConnectionProfileStrategyOverridesPingfederateOutput values.
+// You can construct a concrete instance of `ConnectionProfileStrategyOverridesPingfederateInput` via:
+//
+//	ConnectionProfileStrategyOverridesPingfederateArgs{...}
+type ConnectionProfileStrategyOverridesPingfederateInput interface {
+	pulumi.Input
+
+	ToConnectionProfileStrategyOverridesPingfederateOutput() ConnectionProfileStrategyOverridesPingfederateOutput
+	ToConnectionProfileStrategyOverridesPingfederateOutputWithContext(context.Context) ConnectionProfileStrategyOverridesPingfederateOutput
+}
+
+type ConnectionProfileStrategyOverridesPingfederateArgs struct {
+	// Connection config for the strategy override.
+	ConnectionConfig ConnectionProfileStrategyOverridesPingfederateConnectionConfigPtrInput `pulumi:"connectionConfig"`
+	// Enabled features for the strategy override.
+	EnabledFeatures pulumi.StringArrayInput `pulumi:"enabledFeatures"`
+}
+
+func (ConnectionProfileStrategyOverridesPingfederateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileStrategyOverridesPingfederate)(nil)).Elem()
+}
+
+func (i ConnectionProfileStrategyOverridesPingfederateArgs) ToConnectionProfileStrategyOverridesPingfederateOutput() ConnectionProfileStrategyOverridesPingfederateOutput {
+	return i.ToConnectionProfileStrategyOverridesPingfederateOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileStrategyOverridesPingfederateArgs) ToConnectionProfileStrategyOverridesPingfederateOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesPingfederateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileStrategyOverridesPingfederateOutput)
+}
+
+func (i ConnectionProfileStrategyOverridesPingfederateArgs) ToConnectionProfileStrategyOverridesPingfederatePtrOutput() ConnectionProfileStrategyOverridesPingfederatePtrOutput {
+	return i.ToConnectionProfileStrategyOverridesPingfederatePtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileStrategyOverridesPingfederateArgs) ToConnectionProfileStrategyOverridesPingfederatePtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesPingfederatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileStrategyOverridesPingfederateOutput).ToConnectionProfileStrategyOverridesPingfederatePtrOutputWithContext(ctx)
+}
+
+// ConnectionProfileStrategyOverridesPingfederatePtrInput is an input type that accepts ConnectionProfileStrategyOverridesPingfederateArgs, ConnectionProfileStrategyOverridesPingfederatePtr and ConnectionProfileStrategyOverridesPingfederatePtrOutput values.
+// You can construct a concrete instance of `ConnectionProfileStrategyOverridesPingfederatePtrInput` via:
+//
+//	        ConnectionProfileStrategyOverridesPingfederateArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionProfileStrategyOverridesPingfederatePtrInput interface {
+	pulumi.Input
+
+	ToConnectionProfileStrategyOverridesPingfederatePtrOutput() ConnectionProfileStrategyOverridesPingfederatePtrOutput
+	ToConnectionProfileStrategyOverridesPingfederatePtrOutputWithContext(context.Context) ConnectionProfileStrategyOverridesPingfederatePtrOutput
+}
+
+type connectionProfileStrategyOverridesPingfederatePtrType ConnectionProfileStrategyOverridesPingfederateArgs
+
+func ConnectionProfileStrategyOverridesPingfederatePtr(v *ConnectionProfileStrategyOverridesPingfederateArgs) ConnectionProfileStrategyOverridesPingfederatePtrInput {
+	return (*connectionProfileStrategyOverridesPingfederatePtrType)(v)
+}
+
+func (*connectionProfileStrategyOverridesPingfederatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileStrategyOverridesPingfederate)(nil)).Elem()
+}
+
+func (i *connectionProfileStrategyOverridesPingfederatePtrType) ToConnectionProfileStrategyOverridesPingfederatePtrOutput() ConnectionProfileStrategyOverridesPingfederatePtrOutput {
+	return i.ToConnectionProfileStrategyOverridesPingfederatePtrOutputWithContext(context.Background())
+}
+
+func (i *connectionProfileStrategyOverridesPingfederatePtrType) ToConnectionProfileStrategyOverridesPingfederatePtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesPingfederatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileStrategyOverridesPingfederatePtrOutput)
+}
+
+type ConnectionProfileStrategyOverridesPingfederateOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileStrategyOverridesPingfederateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileStrategyOverridesPingfederate)(nil)).Elem()
+}
+
+func (o ConnectionProfileStrategyOverridesPingfederateOutput) ToConnectionProfileStrategyOverridesPingfederateOutput() ConnectionProfileStrategyOverridesPingfederateOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesPingfederateOutput) ToConnectionProfileStrategyOverridesPingfederateOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesPingfederateOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesPingfederateOutput) ToConnectionProfileStrategyOverridesPingfederatePtrOutput() ConnectionProfileStrategyOverridesPingfederatePtrOutput {
+	return o.ToConnectionProfileStrategyOverridesPingfederatePtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionProfileStrategyOverridesPingfederateOutput) ToConnectionProfileStrategyOverridesPingfederatePtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesPingfederatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfileStrategyOverridesPingfederate) *ConnectionProfileStrategyOverridesPingfederate {
+		return &v
+	}).(ConnectionProfileStrategyOverridesPingfederatePtrOutput)
+}
+
+// Connection config for the strategy override.
+func (o ConnectionProfileStrategyOverridesPingfederateOutput) ConnectionConfig() ConnectionProfileStrategyOverridesPingfederateConnectionConfigPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileStrategyOverridesPingfederate) *ConnectionProfileStrategyOverridesPingfederateConnectionConfig {
+		return v.ConnectionConfig
+	}).(ConnectionProfileStrategyOverridesPingfederateConnectionConfigPtrOutput)
+}
+
+// Enabled features for the strategy override.
+func (o ConnectionProfileStrategyOverridesPingfederateOutput) EnabledFeatures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectionProfileStrategyOverridesPingfederate) []string { return v.EnabledFeatures }).(pulumi.StringArrayOutput)
+}
+
+type ConnectionProfileStrategyOverridesPingfederatePtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileStrategyOverridesPingfederatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileStrategyOverridesPingfederate)(nil)).Elem()
+}
+
+func (o ConnectionProfileStrategyOverridesPingfederatePtrOutput) ToConnectionProfileStrategyOverridesPingfederatePtrOutput() ConnectionProfileStrategyOverridesPingfederatePtrOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesPingfederatePtrOutput) ToConnectionProfileStrategyOverridesPingfederatePtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesPingfederatePtrOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesPingfederatePtrOutput) Elem() ConnectionProfileStrategyOverridesPingfederateOutput {
+	return o.ApplyT(func(v *ConnectionProfileStrategyOverridesPingfederate) ConnectionProfileStrategyOverridesPingfederate {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionProfileStrategyOverridesPingfederate
+		return ret
+	}).(ConnectionProfileStrategyOverridesPingfederateOutput)
+}
+
+// Connection config for the strategy override.
+func (o ConnectionProfileStrategyOverridesPingfederatePtrOutput) ConnectionConfig() ConnectionProfileStrategyOverridesPingfederateConnectionConfigPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileStrategyOverridesPingfederate) *ConnectionProfileStrategyOverridesPingfederateConnectionConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectionConfig
+	}).(ConnectionProfileStrategyOverridesPingfederateConnectionConfigPtrOutput)
+}
+
+// Enabled features for the strategy override.
+func (o ConnectionProfileStrategyOverridesPingfederatePtrOutput) EnabledFeatures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectionProfileStrategyOverridesPingfederate) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EnabledFeatures
+	}).(pulumi.StringArrayOutput)
+}
+
+type ConnectionProfileStrategyOverridesPingfederateConnectionConfig struct {
+}
+
+// ConnectionProfileStrategyOverridesPingfederateConnectionConfigInput is an input type that accepts ConnectionProfileStrategyOverridesPingfederateConnectionConfigArgs and ConnectionProfileStrategyOverridesPingfederateConnectionConfigOutput values.
+// You can construct a concrete instance of `ConnectionProfileStrategyOverridesPingfederateConnectionConfigInput` via:
+//
+//	ConnectionProfileStrategyOverridesPingfederateConnectionConfigArgs{...}
+type ConnectionProfileStrategyOverridesPingfederateConnectionConfigInput interface {
+	pulumi.Input
+
+	ToConnectionProfileStrategyOverridesPingfederateConnectionConfigOutput() ConnectionProfileStrategyOverridesPingfederateConnectionConfigOutput
+	ToConnectionProfileStrategyOverridesPingfederateConnectionConfigOutputWithContext(context.Context) ConnectionProfileStrategyOverridesPingfederateConnectionConfigOutput
+}
+
+type ConnectionProfileStrategyOverridesPingfederateConnectionConfigArgs struct {
+}
+
+func (ConnectionProfileStrategyOverridesPingfederateConnectionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileStrategyOverridesPingfederateConnectionConfig)(nil)).Elem()
+}
+
+func (i ConnectionProfileStrategyOverridesPingfederateConnectionConfigArgs) ToConnectionProfileStrategyOverridesPingfederateConnectionConfigOutput() ConnectionProfileStrategyOverridesPingfederateConnectionConfigOutput {
+	return i.ToConnectionProfileStrategyOverridesPingfederateConnectionConfigOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileStrategyOverridesPingfederateConnectionConfigArgs) ToConnectionProfileStrategyOverridesPingfederateConnectionConfigOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesPingfederateConnectionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileStrategyOverridesPingfederateConnectionConfigOutput)
+}
+
+func (i ConnectionProfileStrategyOverridesPingfederateConnectionConfigArgs) ToConnectionProfileStrategyOverridesPingfederateConnectionConfigPtrOutput() ConnectionProfileStrategyOverridesPingfederateConnectionConfigPtrOutput {
+	return i.ToConnectionProfileStrategyOverridesPingfederateConnectionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileStrategyOverridesPingfederateConnectionConfigArgs) ToConnectionProfileStrategyOverridesPingfederateConnectionConfigPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesPingfederateConnectionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileStrategyOverridesPingfederateConnectionConfigOutput).ToConnectionProfileStrategyOverridesPingfederateConnectionConfigPtrOutputWithContext(ctx)
+}
+
+// ConnectionProfileStrategyOverridesPingfederateConnectionConfigPtrInput is an input type that accepts ConnectionProfileStrategyOverridesPingfederateConnectionConfigArgs, ConnectionProfileStrategyOverridesPingfederateConnectionConfigPtr and ConnectionProfileStrategyOverridesPingfederateConnectionConfigPtrOutput values.
+// You can construct a concrete instance of `ConnectionProfileStrategyOverridesPingfederateConnectionConfigPtrInput` via:
+//
+//	        ConnectionProfileStrategyOverridesPingfederateConnectionConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionProfileStrategyOverridesPingfederateConnectionConfigPtrInput interface {
+	pulumi.Input
+
+	ToConnectionProfileStrategyOverridesPingfederateConnectionConfigPtrOutput() ConnectionProfileStrategyOverridesPingfederateConnectionConfigPtrOutput
+	ToConnectionProfileStrategyOverridesPingfederateConnectionConfigPtrOutputWithContext(context.Context) ConnectionProfileStrategyOverridesPingfederateConnectionConfigPtrOutput
+}
+
+type connectionProfileStrategyOverridesPingfederateConnectionConfigPtrType ConnectionProfileStrategyOverridesPingfederateConnectionConfigArgs
+
+func ConnectionProfileStrategyOverridesPingfederateConnectionConfigPtr(v *ConnectionProfileStrategyOverridesPingfederateConnectionConfigArgs) ConnectionProfileStrategyOverridesPingfederateConnectionConfigPtrInput {
+	return (*connectionProfileStrategyOverridesPingfederateConnectionConfigPtrType)(v)
+}
+
+func (*connectionProfileStrategyOverridesPingfederateConnectionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileStrategyOverridesPingfederateConnectionConfig)(nil)).Elem()
+}
+
+func (i *connectionProfileStrategyOverridesPingfederateConnectionConfigPtrType) ToConnectionProfileStrategyOverridesPingfederateConnectionConfigPtrOutput() ConnectionProfileStrategyOverridesPingfederateConnectionConfigPtrOutput {
+	return i.ToConnectionProfileStrategyOverridesPingfederateConnectionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionProfileStrategyOverridesPingfederateConnectionConfigPtrType) ToConnectionProfileStrategyOverridesPingfederateConnectionConfigPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesPingfederateConnectionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileStrategyOverridesPingfederateConnectionConfigPtrOutput)
+}
+
+type ConnectionProfileStrategyOverridesPingfederateConnectionConfigOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileStrategyOverridesPingfederateConnectionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileStrategyOverridesPingfederateConnectionConfig)(nil)).Elem()
+}
+
+func (o ConnectionProfileStrategyOverridesPingfederateConnectionConfigOutput) ToConnectionProfileStrategyOverridesPingfederateConnectionConfigOutput() ConnectionProfileStrategyOverridesPingfederateConnectionConfigOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesPingfederateConnectionConfigOutput) ToConnectionProfileStrategyOverridesPingfederateConnectionConfigOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesPingfederateConnectionConfigOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesPingfederateConnectionConfigOutput) ToConnectionProfileStrategyOverridesPingfederateConnectionConfigPtrOutput() ConnectionProfileStrategyOverridesPingfederateConnectionConfigPtrOutput {
+	return o.ToConnectionProfileStrategyOverridesPingfederateConnectionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionProfileStrategyOverridesPingfederateConnectionConfigOutput) ToConnectionProfileStrategyOverridesPingfederateConnectionConfigPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesPingfederateConnectionConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfileStrategyOverridesPingfederateConnectionConfig) *ConnectionProfileStrategyOverridesPingfederateConnectionConfig {
+		return &v
+	}).(ConnectionProfileStrategyOverridesPingfederateConnectionConfigPtrOutput)
+}
+
+type ConnectionProfileStrategyOverridesPingfederateConnectionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileStrategyOverridesPingfederateConnectionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileStrategyOverridesPingfederateConnectionConfig)(nil)).Elem()
+}
+
+func (o ConnectionProfileStrategyOverridesPingfederateConnectionConfigPtrOutput) ToConnectionProfileStrategyOverridesPingfederateConnectionConfigPtrOutput() ConnectionProfileStrategyOverridesPingfederateConnectionConfigPtrOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesPingfederateConnectionConfigPtrOutput) ToConnectionProfileStrategyOverridesPingfederateConnectionConfigPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesPingfederateConnectionConfigPtrOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesPingfederateConnectionConfigPtrOutput) Elem() ConnectionProfileStrategyOverridesPingfederateConnectionConfigOutput {
+	return o.ApplyT(func(v *ConnectionProfileStrategyOverridesPingfederateConnectionConfig) ConnectionProfileStrategyOverridesPingfederateConnectionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionProfileStrategyOverridesPingfederateConnectionConfig
+		return ret
+	}).(ConnectionProfileStrategyOverridesPingfederateConnectionConfigOutput)
+}
+
+type ConnectionProfileStrategyOverridesSamlp struct {
+	// Connection config for the strategy override.
+	ConnectionConfig *ConnectionProfileStrategyOverridesSamlpConnectionConfig `pulumi:"connectionConfig"`
+	// Enabled features for the strategy override.
+	EnabledFeatures []string `pulumi:"enabledFeatures"`
+}
+
+// ConnectionProfileStrategyOverridesSamlpInput is an input type that accepts ConnectionProfileStrategyOverridesSamlpArgs and ConnectionProfileStrategyOverridesSamlpOutput values.
+// You can construct a concrete instance of `ConnectionProfileStrategyOverridesSamlpInput` via:
+//
+//	ConnectionProfileStrategyOverridesSamlpArgs{...}
+type ConnectionProfileStrategyOverridesSamlpInput interface {
+	pulumi.Input
+
+	ToConnectionProfileStrategyOverridesSamlpOutput() ConnectionProfileStrategyOverridesSamlpOutput
+	ToConnectionProfileStrategyOverridesSamlpOutputWithContext(context.Context) ConnectionProfileStrategyOverridesSamlpOutput
+}
+
+type ConnectionProfileStrategyOverridesSamlpArgs struct {
+	// Connection config for the strategy override.
+	ConnectionConfig ConnectionProfileStrategyOverridesSamlpConnectionConfigPtrInput `pulumi:"connectionConfig"`
+	// Enabled features for the strategy override.
+	EnabledFeatures pulumi.StringArrayInput `pulumi:"enabledFeatures"`
+}
+
+func (ConnectionProfileStrategyOverridesSamlpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileStrategyOverridesSamlp)(nil)).Elem()
+}
+
+func (i ConnectionProfileStrategyOverridesSamlpArgs) ToConnectionProfileStrategyOverridesSamlpOutput() ConnectionProfileStrategyOverridesSamlpOutput {
+	return i.ToConnectionProfileStrategyOverridesSamlpOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileStrategyOverridesSamlpArgs) ToConnectionProfileStrategyOverridesSamlpOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesSamlpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileStrategyOverridesSamlpOutput)
+}
+
+func (i ConnectionProfileStrategyOverridesSamlpArgs) ToConnectionProfileStrategyOverridesSamlpPtrOutput() ConnectionProfileStrategyOverridesSamlpPtrOutput {
+	return i.ToConnectionProfileStrategyOverridesSamlpPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileStrategyOverridesSamlpArgs) ToConnectionProfileStrategyOverridesSamlpPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesSamlpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileStrategyOverridesSamlpOutput).ToConnectionProfileStrategyOverridesSamlpPtrOutputWithContext(ctx)
+}
+
+// ConnectionProfileStrategyOverridesSamlpPtrInput is an input type that accepts ConnectionProfileStrategyOverridesSamlpArgs, ConnectionProfileStrategyOverridesSamlpPtr and ConnectionProfileStrategyOverridesSamlpPtrOutput values.
+// You can construct a concrete instance of `ConnectionProfileStrategyOverridesSamlpPtrInput` via:
+//
+//	        ConnectionProfileStrategyOverridesSamlpArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionProfileStrategyOverridesSamlpPtrInput interface {
+	pulumi.Input
+
+	ToConnectionProfileStrategyOverridesSamlpPtrOutput() ConnectionProfileStrategyOverridesSamlpPtrOutput
+	ToConnectionProfileStrategyOverridesSamlpPtrOutputWithContext(context.Context) ConnectionProfileStrategyOverridesSamlpPtrOutput
+}
+
+type connectionProfileStrategyOverridesSamlpPtrType ConnectionProfileStrategyOverridesSamlpArgs
+
+func ConnectionProfileStrategyOverridesSamlpPtr(v *ConnectionProfileStrategyOverridesSamlpArgs) ConnectionProfileStrategyOverridesSamlpPtrInput {
+	return (*connectionProfileStrategyOverridesSamlpPtrType)(v)
+}
+
+func (*connectionProfileStrategyOverridesSamlpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileStrategyOverridesSamlp)(nil)).Elem()
+}
+
+func (i *connectionProfileStrategyOverridesSamlpPtrType) ToConnectionProfileStrategyOverridesSamlpPtrOutput() ConnectionProfileStrategyOverridesSamlpPtrOutput {
+	return i.ToConnectionProfileStrategyOverridesSamlpPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionProfileStrategyOverridesSamlpPtrType) ToConnectionProfileStrategyOverridesSamlpPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesSamlpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileStrategyOverridesSamlpPtrOutput)
+}
+
+type ConnectionProfileStrategyOverridesSamlpOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileStrategyOverridesSamlpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileStrategyOverridesSamlp)(nil)).Elem()
+}
+
+func (o ConnectionProfileStrategyOverridesSamlpOutput) ToConnectionProfileStrategyOverridesSamlpOutput() ConnectionProfileStrategyOverridesSamlpOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesSamlpOutput) ToConnectionProfileStrategyOverridesSamlpOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesSamlpOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesSamlpOutput) ToConnectionProfileStrategyOverridesSamlpPtrOutput() ConnectionProfileStrategyOverridesSamlpPtrOutput {
+	return o.ToConnectionProfileStrategyOverridesSamlpPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionProfileStrategyOverridesSamlpOutput) ToConnectionProfileStrategyOverridesSamlpPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesSamlpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfileStrategyOverridesSamlp) *ConnectionProfileStrategyOverridesSamlp {
+		return &v
+	}).(ConnectionProfileStrategyOverridesSamlpPtrOutput)
+}
+
+// Connection config for the strategy override.
+func (o ConnectionProfileStrategyOverridesSamlpOutput) ConnectionConfig() ConnectionProfileStrategyOverridesSamlpConnectionConfigPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileStrategyOverridesSamlp) *ConnectionProfileStrategyOverridesSamlpConnectionConfig {
+		return v.ConnectionConfig
+	}).(ConnectionProfileStrategyOverridesSamlpConnectionConfigPtrOutput)
+}
+
+// Enabled features for the strategy override.
+func (o ConnectionProfileStrategyOverridesSamlpOutput) EnabledFeatures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectionProfileStrategyOverridesSamlp) []string { return v.EnabledFeatures }).(pulumi.StringArrayOutput)
+}
+
+type ConnectionProfileStrategyOverridesSamlpPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileStrategyOverridesSamlpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileStrategyOverridesSamlp)(nil)).Elem()
+}
+
+func (o ConnectionProfileStrategyOverridesSamlpPtrOutput) ToConnectionProfileStrategyOverridesSamlpPtrOutput() ConnectionProfileStrategyOverridesSamlpPtrOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesSamlpPtrOutput) ToConnectionProfileStrategyOverridesSamlpPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesSamlpPtrOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesSamlpPtrOutput) Elem() ConnectionProfileStrategyOverridesSamlpOutput {
+	return o.ApplyT(func(v *ConnectionProfileStrategyOverridesSamlp) ConnectionProfileStrategyOverridesSamlp {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionProfileStrategyOverridesSamlp
+		return ret
+	}).(ConnectionProfileStrategyOverridesSamlpOutput)
+}
+
+// Connection config for the strategy override.
+func (o ConnectionProfileStrategyOverridesSamlpPtrOutput) ConnectionConfig() ConnectionProfileStrategyOverridesSamlpConnectionConfigPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileStrategyOverridesSamlp) *ConnectionProfileStrategyOverridesSamlpConnectionConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectionConfig
+	}).(ConnectionProfileStrategyOverridesSamlpConnectionConfigPtrOutput)
+}
+
+// Enabled features for the strategy override.
+func (o ConnectionProfileStrategyOverridesSamlpPtrOutput) EnabledFeatures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectionProfileStrategyOverridesSamlp) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EnabledFeatures
+	}).(pulumi.StringArrayOutput)
+}
+
+type ConnectionProfileStrategyOverridesSamlpConnectionConfig struct {
+}
+
+// ConnectionProfileStrategyOverridesSamlpConnectionConfigInput is an input type that accepts ConnectionProfileStrategyOverridesSamlpConnectionConfigArgs and ConnectionProfileStrategyOverridesSamlpConnectionConfigOutput values.
+// You can construct a concrete instance of `ConnectionProfileStrategyOverridesSamlpConnectionConfigInput` via:
+//
+//	ConnectionProfileStrategyOverridesSamlpConnectionConfigArgs{...}
+type ConnectionProfileStrategyOverridesSamlpConnectionConfigInput interface {
+	pulumi.Input
+
+	ToConnectionProfileStrategyOverridesSamlpConnectionConfigOutput() ConnectionProfileStrategyOverridesSamlpConnectionConfigOutput
+	ToConnectionProfileStrategyOverridesSamlpConnectionConfigOutputWithContext(context.Context) ConnectionProfileStrategyOverridesSamlpConnectionConfigOutput
+}
+
+type ConnectionProfileStrategyOverridesSamlpConnectionConfigArgs struct {
+}
+
+func (ConnectionProfileStrategyOverridesSamlpConnectionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileStrategyOverridesSamlpConnectionConfig)(nil)).Elem()
+}
+
+func (i ConnectionProfileStrategyOverridesSamlpConnectionConfigArgs) ToConnectionProfileStrategyOverridesSamlpConnectionConfigOutput() ConnectionProfileStrategyOverridesSamlpConnectionConfigOutput {
+	return i.ToConnectionProfileStrategyOverridesSamlpConnectionConfigOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileStrategyOverridesSamlpConnectionConfigArgs) ToConnectionProfileStrategyOverridesSamlpConnectionConfigOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesSamlpConnectionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileStrategyOverridesSamlpConnectionConfigOutput)
+}
+
+func (i ConnectionProfileStrategyOverridesSamlpConnectionConfigArgs) ToConnectionProfileStrategyOverridesSamlpConnectionConfigPtrOutput() ConnectionProfileStrategyOverridesSamlpConnectionConfigPtrOutput {
+	return i.ToConnectionProfileStrategyOverridesSamlpConnectionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileStrategyOverridesSamlpConnectionConfigArgs) ToConnectionProfileStrategyOverridesSamlpConnectionConfigPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesSamlpConnectionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileStrategyOverridesSamlpConnectionConfigOutput).ToConnectionProfileStrategyOverridesSamlpConnectionConfigPtrOutputWithContext(ctx)
+}
+
+// ConnectionProfileStrategyOverridesSamlpConnectionConfigPtrInput is an input type that accepts ConnectionProfileStrategyOverridesSamlpConnectionConfigArgs, ConnectionProfileStrategyOverridesSamlpConnectionConfigPtr and ConnectionProfileStrategyOverridesSamlpConnectionConfigPtrOutput values.
+// You can construct a concrete instance of `ConnectionProfileStrategyOverridesSamlpConnectionConfigPtrInput` via:
+//
+//	        ConnectionProfileStrategyOverridesSamlpConnectionConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionProfileStrategyOverridesSamlpConnectionConfigPtrInput interface {
+	pulumi.Input
+
+	ToConnectionProfileStrategyOverridesSamlpConnectionConfigPtrOutput() ConnectionProfileStrategyOverridesSamlpConnectionConfigPtrOutput
+	ToConnectionProfileStrategyOverridesSamlpConnectionConfigPtrOutputWithContext(context.Context) ConnectionProfileStrategyOverridesSamlpConnectionConfigPtrOutput
+}
+
+type connectionProfileStrategyOverridesSamlpConnectionConfigPtrType ConnectionProfileStrategyOverridesSamlpConnectionConfigArgs
+
+func ConnectionProfileStrategyOverridesSamlpConnectionConfigPtr(v *ConnectionProfileStrategyOverridesSamlpConnectionConfigArgs) ConnectionProfileStrategyOverridesSamlpConnectionConfigPtrInput {
+	return (*connectionProfileStrategyOverridesSamlpConnectionConfigPtrType)(v)
+}
+
+func (*connectionProfileStrategyOverridesSamlpConnectionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileStrategyOverridesSamlpConnectionConfig)(nil)).Elem()
+}
+
+func (i *connectionProfileStrategyOverridesSamlpConnectionConfigPtrType) ToConnectionProfileStrategyOverridesSamlpConnectionConfigPtrOutput() ConnectionProfileStrategyOverridesSamlpConnectionConfigPtrOutput {
+	return i.ToConnectionProfileStrategyOverridesSamlpConnectionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionProfileStrategyOverridesSamlpConnectionConfigPtrType) ToConnectionProfileStrategyOverridesSamlpConnectionConfigPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesSamlpConnectionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileStrategyOverridesSamlpConnectionConfigPtrOutput)
+}
+
+type ConnectionProfileStrategyOverridesSamlpConnectionConfigOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileStrategyOverridesSamlpConnectionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileStrategyOverridesSamlpConnectionConfig)(nil)).Elem()
+}
+
+func (o ConnectionProfileStrategyOverridesSamlpConnectionConfigOutput) ToConnectionProfileStrategyOverridesSamlpConnectionConfigOutput() ConnectionProfileStrategyOverridesSamlpConnectionConfigOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesSamlpConnectionConfigOutput) ToConnectionProfileStrategyOverridesSamlpConnectionConfigOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesSamlpConnectionConfigOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesSamlpConnectionConfigOutput) ToConnectionProfileStrategyOverridesSamlpConnectionConfigPtrOutput() ConnectionProfileStrategyOverridesSamlpConnectionConfigPtrOutput {
+	return o.ToConnectionProfileStrategyOverridesSamlpConnectionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionProfileStrategyOverridesSamlpConnectionConfigOutput) ToConnectionProfileStrategyOverridesSamlpConnectionConfigPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesSamlpConnectionConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfileStrategyOverridesSamlpConnectionConfig) *ConnectionProfileStrategyOverridesSamlpConnectionConfig {
+		return &v
+	}).(ConnectionProfileStrategyOverridesSamlpConnectionConfigPtrOutput)
+}
+
+type ConnectionProfileStrategyOverridesSamlpConnectionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileStrategyOverridesSamlpConnectionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileStrategyOverridesSamlpConnectionConfig)(nil)).Elem()
+}
+
+func (o ConnectionProfileStrategyOverridesSamlpConnectionConfigPtrOutput) ToConnectionProfileStrategyOverridesSamlpConnectionConfigPtrOutput() ConnectionProfileStrategyOverridesSamlpConnectionConfigPtrOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesSamlpConnectionConfigPtrOutput) ToConnectionProfileStrategyOverridesSamlpConnectionConfigPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesSamlpConnectionConfigPtrOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesSamlpConnectionConfigPtrOutput) Elem() ConnectionProfileStrategyOverridesSamlpConnectionConfigOutput {
+	return o.ApplyT(func(v *ConnectionProfileStrategyOverridesSamlpConnectionConfig) ConnectionProfileStrategyOverridesSamlpConnectionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionProfileStrategyOverridesSamlpConnectionConfig
+		return ret
+	}).(ConnectionProfileStrategyOverridesSamlpConnectionConfigOutput)
+}
+
+type ConnectionProfileStrategyOverridesWaad struct {
+	// Connection config for the strategy override.
+	ConnectionConfig *ConnectionProfileStrategyOverridesWaadConnectionConfig `pulumi:"connectionConfig"`
+	// Enabled features for the strategy override.
+	EnabledFeatures []string `pulumi:"enabledFeatures"`
+}
+
+// ConnectionProfileStrategyOverridesWaadInput is an input type that accepts ConnectionProfileStrategyOverridesWaadArgs and ConnectionProfileStrategyOverridesWaadOutput values.
+// You can construct a concrete instance of `ConnectionProfileStrategyOverridesWaadInput` via:
+//
+//	ConnectionProfileStrategyOverridesWaadArgs{...}
+type ConnectionProfileStrategyOverridesWaadInput interface {
+	pulumi.Input
+
+	ToConnectionProfileStrategyOverridesWaadOutput() ConnectionProfileStrategyOverridesWaadOutput
+	ToConnectionProfileStrategyOverridesWaadOutputWithContext(context.Context) ConnectionProfileStrategyOverridesWaadOutput
+}
+
+type ConnectionProfileStrategyOverridesWaadArgs struct {
+	// Connection config for the strategy override.
+	ConnectionConfig ConnectionProfileStrategyOverridesWaadConnectionConfigPtrInput `pulumi:"connectionConfig"`
+	// Enabled features for the strategy override.
+	EnabledFeatures pulumi.StringArrayInput `pulumi:"enabledFeatures"`
+}
+
+func (ConnectionProfileStrategyOverridesWaadArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileStrategyOverridesWaad)(nil)).Elem()
+}
+
+func (i ConnectionProfileStrategyOverridesWaadArgs) ToConnectionProfileStrategyOverridesWaadOutput() ConnectionProfileStrategyOverridesWaadOutput {
+	return i.ToConnectionProfileStrategyOverridesWaadOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileStrategyOverridesWaadArgs) ToConnectionProfileStrategyOverridesWaadOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesWaadOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileStrategyOverridesWaadOutput)
+}
+
+func (i ConnectionProfileStrategyOverridesWaadArgs) ToConnectionProfileStrategyOverridesWaadPtrOutput() ConnectionProfileStrategyOverridesWaadPtrOutput {
+	return i.ToConnectionProfileStrategyOverridesWaadPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileStrategyOverridesWaadArgs) ToConnectionProfileStrategyOverridesWaadPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesWaadPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileStrategyOverridesWaadOutput).ToConnectionProfileStrategyOverridesWaadPtrOutputWithContext(ctx)
+}
+
+// ConnectionProfileStrategyOverridesWaadPtrInput is an input type that accepts ConnectionProfileStrategyOverridesWaadArgs, ConnectionProfileStrategyOverridesWaadPtr and ConnectionProfileStrategyOverridesWaadPtrOutput values.
+// You can construct a concrete instance of `ConnectionProfileStrategyOverridesWaadPtrInput` via:
+//
+//	        ConnectionProfileStrategyOverridesWaadArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionProfileStrategyOverridesWaadPtrInput interface {
+	pulumi.Input
+
+	ToConnectionProfileStrategyOverridesWaadPtrOutput() ConnectionProfileStrategyOverridesWaadPtrOutput
+	ToConnectionProfileStrategyOverridesWaadPtrOutputWithContext(context.Context) ConnectionProfileStrategyOverridesWaadPtrOutput
+}
+
+type connectionProfileStrategyOverridesWaadPtrType ConnectionProfileStrategyOverridesWaadArgs
+
+func ConnectionProfileStrategyOverridesWaadPtr(v *ConnectionProfileStrategyOverridesWaadArgs) ConnectionProfileStrategyOverridesWaadPtrInput {
+	return (*connectionProfileStrategyOverridesWaadPtrType)(v)
+}
+
+func (*connectionProfileStrategyOverridesWaadPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileStrategyOverridesWaad)(nil)).Elem()
+}
+
+func (i *connectionProfileStrategyOverridesWaadPtrType) ToConnectionProfileStrategyOverridesWaadPtrOutput() ConnectionProfileStrategyOverridesWaadPtrOutput {
+	return i.ToConnectionProfileStrategyOverridesWaadPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionProfileStrategyOverridesWaadPtrType) ToConnectionProfileStrategyOverridesWaadPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesWaadPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileStrategyOverridesWaadPtrOutput)
+}
+
+type ConnectionProfileStrategyOverridesWaadOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileStrategyOverridesWaadOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileStrategyOverridesWaad)(nil)).Elem()
+}
+
+func (o ConnectionProfileStrategyOverridesWaadOutput) ToConnectionProfileStrategyOverridesWaadOutput() ConnectionProfileStrategyOverridesWaadOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesWaadOutput) ToConnectionProfileStrategyOverridesWaadOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesWaadOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesWaadOutput) ToConnectionProfileStrategyOverridesWaadPtrOutput() ConnectionProfileStrategyOverridesWaadPtrOutput {
+	return o.ToConnectionProfileStrategyOverridesWaadPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionProfileStrategyOverridesWaadOutput) ToConnectionProfileStrategyOverridesWaadPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesWaadPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfileStrategyOverridesWaad) *ConnectionProfileStrategyOverridesWaad {
+		return &v
+	}).(ConnectionProfileStrategyOverridesWaadPtrOutput)
+}
+
+// Connection config for the strategy override.
+func (o ConnectionProfileStrategyOverridesWaadOutput) ConnectionConfig() ConnectionProfileStrategyOverridesWaadConnectionConfigPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileStrategyOverridesWaad) *ConnectionProfileStrategyOverridesWaadConnectionConfig {
+		return v.ConnectionConfig
+	}).(ConnectionProfileStrategyOverridesWaadConnectionConfigPtrOutput)
+}
+
+// Enabled features for the strategy override.
+func (o ConnectionProfileStrategyOverridesWaadOutput) EnabledFeatures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectionProfileStrategyOverridesWaad) []string { return v.EnabledFeatures }).(pulumi.StringArrayOutput)
+}
+
+type ConnectionProfileStrategyOverridesWaadPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileStrategyOverridesWaadPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileStrategyOverridesWaad)(nil)).Elem()
+}
+
+func (o ConnectionProfileStrategyOverridesWaadPtrOutput) ToConnectionProfileStrategyOverridesWaadPtrOutput() ConnectionProfileStrategyOverridesWaadPtrOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesWaadPtrOutput) ToConnectionProfileStrategyOverridesWaadPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesWaadPtrOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesWaadPtrOutput) Elem() ConnectionProfileStrategyOverridesWaadOutput {
+	return o.ApplyT(func(v *ConnectionProfileStrategyOverridesWaad) ConnectionProfileStrategyOverridesWaad {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionProfileStrategyOverridesWaad
+		return ret
+	}).(ConnectionProfileStrategyOverridesWaadOutput)
+}
+
+// Connection config for the strategy override.
+func (o ConnectionProfileStrategyOverridesWaadPtrOutput) ConnectionConfig() ConnectionProfileStrategyOverridesWaadConnectionConfigPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileStrategyOverridesWaad) *ConnectionProfileStrategyOverridesWaadConnectionConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectionConfig
+	}).(ConnectionProfileStrategyOverridesWaadConnectionConfigPtrOutput)
+}
+
+// Enabled features for the strategy override.
+func (o ConnectionProfileStrategyOverridesWaadPtrOutput) EnabledFeatures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectionProfileStrategyOverridesWaad) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EnabledFeatures
+	}).(pulumi.StringArrayOutput)
+}
+
+type ConnectionProfileStrategyOverridesWaadConnectionConfig struct {
+}
+
+// ConnectionProfileStrategyOverridesWaadConnectionConfigInput is an input type that accepts ConnectionProfileStrategyOverridesWaadConnectionConfigArgs and ConnectionProfileStrategyOverridesWaadConnectionConfigOutput values.
+// You can construct a concrete instance of `ConnectionProfileStrategyOverridesWaadConnectionConfigInput` via:
+//
+//	ConnectionProfileStrategyOverridesWaadConnectionConfigArgs{...}
+type ConnectionProfileStrategyOverridesWaadConnectionConfigInput interface {
+	pulumi.Input
+
+	ToConnectionProfileStrategyOverridesWaadConnectionConfigOutput() ConnectionProfileStrategyOverridesWaadConnectionConfigOutput
+	ToConnectionProfileStrategyOverridesWaadConnectionConfigOutputWithContext(context.Context) ConnectionProfileStrategyOverridesWaadConnectionConfigOutput
+}
+
+type ConnectionProfileStrategyOverridesWaadConnectionConfigArgs struct {
+}
+
+func (ConnectionProfileStrategyOverridesWaadConnectionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileStrategyOverridesWaadConnectionConfig)(nil)).Elem()
+}
+
+func (i ConnectionProfileStrategyOverridesWaadConnectionConfigArgs) ToConnectionProfileStrategyOverridesWaadConnectionConfigOutput() ConnectionProfileStrategyOverridesWaadConnectionConfigOutput {
+	return i.ToConnectionProfileStrategyOverridesWaadConnectionConfigOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileStrategyOverridesWaadConnectionConfigArgs) ToConnectionProfileStrategyOverridesWaadConnectionConfigOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesWaadConnectionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileStrategyOverridesWaadConnectionConfigOutput)
+}
+
+func (i ConnectionProfileStrategyOverridesWaadConnectionConfigArgs) ToConnectionProfileStrategyOverridesWaadConnectionConfigPtrOutput() ConnectionProfileStrategyOverridesWaadConnectionConfigPtrOutput {
+	return i.ToConnectionProfileStrategyOverridesWaadConnectionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileStrategyOverridesWaadConnectionConfigArgs) ToConnectionProfileStrategyOverridesWaadConnectionConfigPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesWaadConnectionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileStrategyOverridesWaadConnectionConfigOutput).ToConnectionProfileStrategyOverridesWaadConnectionConfigPtrOutputWithContext(ctx)
+}
+
+// ConnectionProfileStrategyOverridesWaadConnectionConfigPtrInput is an input type that accepts ConnectionProfileStrategyOverridesWaadConnectionConfigArgs, ConnectionProfileStrategyOverridesWaadConnectionConfigPtr and ConnectionProfileStrategyOverridesWaadConnectionConfigPtrOutput values.
+// You can construct a concrete instance of `ConnectionProfileStrategyOverridesWaadConnectionConfigPtrInput` via:
+//
+//	        ConnectionProfileStrategyOverridesWaadConnectionConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionProfileStrategyOverridesWaadConnectionConfigPtrInput interface {
+	pulumi.Input
+
+	ToConnectionProfileStrategyOverridesWaadConnectionConfigPtrOutput() ConnectionProfileStrategyOverridesWaadConnectionConfigPtrOutput
+	ToConnectionProfileStrategyOverridesWaadConnectionConfigPtrOutputWithContext(context.Context) ConnectionProfileStrategyOverridesWaadConnectionConfigPtrOutput
+}
+
+type connectionProfileStrategyOverridesWaadConnectionConfigPtrType ConnectionProfileStrategyOverridesWaadConnectionConfigArgs
+
+func ConnectionProfileStrategyOverridesWaadConnectionConfigPtr(v *ConnectionProfileStrategyOverridesWaadConnectionConfigArgs) ConnectionProfileStrategyOverridesWaadConnectionConfigPtrInput {
+	return (*connectionProfileStrategyOverridesWaadConnectionConfigPtrType)(v)
+}
+
+func (*connectionProfileStrategyOverridesWaadConnectionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileStrategyOverridesWaadConnectionConfig)(nil)).Elem()
+}
+
+func (i *connectionProfileStrategyOverridesWaadConnectionConfigPtrType) ToConnectionProfileStrategyOverridesWaadConnectionConfigPtrOutput() ConnectionProfileStrategyOverridesWaadConnectionConfigPtrOutput {
+	return i.ToConnectionProfileStrategyOverridesWaadConnectionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionProfileStrategyOverridesWaadConnectionConfigPtrType) ToConnectionProfileStrategyOverridesWaadConnectionConfigPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesWaadConnectionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileStrategyOverridesWaadConnectionConfigPtrOutput)
+}
+
+type ConnectionProfileStrategyOverridesWaadConnectionConfigOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileStrategyOverridesWaadConnectionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileStrategyOverridesWaadConnectionConfig)(nil)).Elem()
+}
+
+func (o ConnectionProfileStrategyOverridesWaadConnectionConfigOutput) ToConnectionProfileStrategyOverridesWaadConnectionConfigOutput() ConnectionProfileStrategyOverridesWaadConnectionConfigOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesWaadConnectionConfigOutput) ToConnectionProfileStrategyOverridesWaadConnectionConfigOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesWaadConnectionConfigOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesWaadConnectionConfigOutput) ToConnectionProfileStrategyOverridesWaadConnectionConfigPtrOutput() ConnectionProfileStrategyOverridesWaadConnectionConfigPtrOutput {
+	return o.ToConnectionProfileStrategyOverridesWaadConnectionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionProfileStrategyOverridesWaadConnectionConfigOutput) ToConnectionProfileStrategyOverridesWaadConnectionConfigPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesWaadConnectionConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfileStrategyOverridesWaadConnectionConfig) *ConnectionProfileStrategyOverridesWaadConnectionConfig {
+		return &v
+	}).(ConnectionProfileStrategyOverridesWaadConnectionConfigPtrOutput)
+}
+
+type ConnectionProfileStrategyOverridesWaadConnectionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileStrategyOverridesWaadConnectionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileStrategyOverridesWaadConnectionConfig)(nil)).Elem()
+}
+
+func (o ConnectionProfileStrategyOverridesWaadConnectionConfigPtrOutput) ToConnectionProfileStrategyOverridesWaadConnectionConfigPtrOutput() ConnectionProfileStrategyOverridesWaadConnectionConfigPtrOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesWaadConnectionConfigPtrOutput) ToConnectionProfileStrategyOverridesWaadConnectionConfigPtrOutputWithContext(ctx context.Context) ConnectionProfileStrategyOverridesWaadConnectionConfigPtrOutput {
+	return o
+}
+
+func (o ConnectionProfileStrategyOverridesWaadConnectionConfigPtrOutput) Elem() ConnectionProfileStrategyOverridesWaadConnectionConfigOutput {
+	return o.ApplyT(func(v *ConnectionProfileStrategyOverridesWaadConnectionConfig) ConnectionProfileStrategyOverridesWaadConnectionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionProfileStrategyOverridesWaadConnectionConfig
+		return ret
+	}).(ConnectionProfileStrategyOverridesWaadConnectionConfigOutput)
 }
 
 type ConnectionScimConfigurationMapping struct {
@@ -44495,6 +47637,274 @@ func (o GetClientDefaultOrganizationArrayOutput) Index(i pulumi.IntInput) GetCli
 	}).(GetClientDefaultOrganizationOutput)
 }
 
+type GetClientExpressConfiguration struct {
+	// The domain that admins are expected to log in via for authenticating for express configuration.
+	AdminLoginDomain string `pulumi:"adminLoginDomain"`
+	// The ID of the connection profile to use for this application.
+	ConnectionProfileId string `pulumi:"connectionProfileId"`
+	// When true, all connections made via express configuration will be enabled for this application.
+	EnableClient bool `pulumi:"enableClient"`
+	// When true, all connections made via express configuration will have the associated organization enabled.
+	EnableOrganization bool `pulumi:"enableOrganization"`
+	// The URI users should bookmark to log in to this application. Variable substitution is permitted for: organization_name, organization_id, and connection_name.
+	InitiateLoginUriTemplate string `pulumi:"initiateLoginUriTemplate"`
+	// List of client IDs that are linked to this express configuration (e.g. web or mobile clients).
+	LinkedClients []GetClientExpressConfigurationLinkedClient `pulumi:"linkedClients"`
+	// The identifier of the published application in the OKTA OIN.
+	OinSubmissionId string `pulumi:"oinSubmissionId"`
+	// The unique identifier for the Okta OIN Express Configuration Client.
+	OktaOinClientId string `pulumi:"oktaOinClientId"`
+	// The ID of the user attribute profile to use for this application.
+	UserAttributeProfileId string `pulumi:"userAttributeProfileId"`
+}
+
+// GetClientExpressConfigurationInput is an input type that accepts GetClientExpressConfigurationArgs and GetClientExpressConfigurationOutput values.
+// You can construct a concrete instance of `GetClientExpressConfigurationInput` via:
+//
+//	GetClientExpressConfigurationArgs{...}
+type GetClientExpressConfigurationInput interface {
+	pulumi.Input
+
+	ToGetClientExpressConfigurationOutput() GetClientExpressConfigurationOutput
+	ToGetClientExpressConfigurationOutputWithContext(context.Context) GetClientExpressConfigurationOutput
+}
+
+type GetClientExpressConfigurationArgs struct {
+	// The domain that admins are expected to log in via for authenticating for express configuration.
+	AdminLoginDomain pulumi.StringInput `pulumi:"adminLoginDomain"`
+	// The ID of the connection profile to use for this application.
+	ConnectionProfileId pulumi.StringInput `pulumi:"connectionProfileId"`
+	// When true, all connections made via express configuration will be enabled for this application.
+	EnableClient pulumi.BoolInput `pulumi:"enableClient"`
+	// When true, all connections made via express configuration will have the associated organization enabled.
+	EnableOrganization pulumi.BoolInput `pulumi:"enableOrganization"`
+	// The URI users should bookmark to log in to this application. Variable substitution is permitted for: organization_name, organization_id, and connection_name.
+	InitiateLoginUriTemplate pulumi.StringInput `pulumi:"initiateLoginUriTemplate"`
+	// List of client IDs that are linked to this express configuration (e.g. web or mobile clients).
+	LinkedClients GetClientExpressConfigurationLinkedClientArrayInput `pulumi:"linkedClients"`
+	// The identifier of the published application in the OKTA OIN.
+	OinSubmissionId pulumi.StringInput `pulumi:"oinSubmissionId"`
+	// The unique identifier for the Okta OIN Express Configuration Client.
+	OktaOinClientId pulumi.StringInput `pulumi:"oktaOinClientId"`
+	// The ID of the user attribute profile to use for this application.
+	UserAttributeProfileId pulumi.StringInput `pulumi:"userAttributeProfileId"`
+}
+
+func (GetClientExpressConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientExpressConfiguration)(nil)).Elem()
+}
+
+func (i GetClientExpressConfigurationArgs) ToGetClientExpressConfigurationOutput() GetClientExpressConfigurationOutput {
+	return i.ToGetClientExpressConfigurationOutputWithContext(context.Background())
+}
+
+func (i GetClientExpressConfigurationArgs) ToGetClientExpressConfigurationOutputWithContext(ctx context.Context) GetClientExpressConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientExpressConfigurationOutput)
+}
+
+// GetClientExpressConfigurationArrayInput is an input type that accepts GetClientExpressConfigurationArray and GetClientExpressConfigurationArrayOutput values.
+// You can construct a concrete instance of `GetClientExpressConfigurationArrayInput` via:
+//
+//	GetClientExpressConfigurationArray{ GetClientExpressConfigurationArgs{...} }
+type GetClientExpressConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToGetClientExpressConfigurationArrayOutput() GetClientExpressConfigurationArrayOutput
+	ToGetClientExpressConfigurationArrayOutputWithContext(context.Context) GetClientExpressConfigurationArrayOutput
+}
+
+type GetClientExpressConfigurationArray []GetClientExpressConfigurationInput
+
+func (GetClientExpressConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientExpressConfiguration)(nil)).Elem()
+}
+
+func (i GetClientExpressConfigurationArray) ToGetClientExpressConfigurationArrayOutput() GetClientExpressConfigurationArrayOutput {
+	return i.ToGetClientExpressConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientExpressConfigurationArray) ToGetClientExpressConfigurationArrayOutputWithContext(ctx context.Context) GetClientExpressConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientExpressConfigurationArrayOutput)
+}
+
+type GetClientExpressConfigurationOutput struct{ *pulumi.OutputState }
+
+func (GetClientExpressConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientExpressConfiguration)(nil)).Elem()
+}
+
+func (o GetClientExpressConfigurationOutput) ToGetClientExpressConfigurationOutput() GetClientExpressConfigurationOutput {
+	return o
+}
+
+func (o GetClientExpressConfigurationOutput) ToGetClientExpressConfigurationOutputWithContext(ctx context.Context) GetClientExpressConfigurationOutput {
+	return o
+}
+
+// The domain that admins are expected to log in via for authenticating for express configuration.
+func (o GetClientExpressConfigurationOutput) AdminLoginDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientExpressConfiguration) string { return v.AdminLoginDomain }).(pulumi.StringOutput)
+}
+
+// The ID of the connection profile to use for this application.
+func (o GetClientExpressConfigurationOutput) ConnectionProfileId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientExpressConfiguration) string { return v.ConnectionProfileId }).(pulumi.StringOutput)
+}
+
+// When true, all connections made via express configuration will be enabled for this application.
+func (o GetClientExpressConfigurationOutput) EnableClient() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientExpressConfiguration) bool { return v.EnableClient }).(pulumi.BoolOutput)
+}
+
+// When true, all connections made via express configuration will have the associated organization enabled.
+func (o GetClientExpressConfigurationOutput) EnableOrganization() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientExpressConfiguration) bool { return v.EnableOrganization }).(pulumi.BoolOutput)
+}
+
+// The URI users should bookmark to log in to this application. Variable substitution is permitted for: organization_name, organization_id, and connection_name.
+func (o GetClientExpressConfigurationOutput) InitiateLoginUriTemplate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientExpressConfiguration) string { return v.InitiateLoginUriTemplate }).(pulumi.StringOutput)
+}
+
+// List of client IDs that are linked to this express configuration (e.g. web or mobile clients).
+func (o GetClientExpressConfigurationOutput) LinkedClients() GetClientExpressConfigurationLinkedClientArrayOutput {
+	return o.ApplyT(func(v GetClientExpressConfiguration) []GetClientExpressConfigurationLinkedClient {
+		return v.LinkedClients
+	}).(GetClientExpressConfigurationLinkedClientArrayOutput)
+}
+
+// The identifier of the published application in the OKTA OIN.
+func (o GetClientExpressConfigurationOutput) OinSubmissionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientExpressConfiguration) string { return v.OinSubmissionId }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the Okta OIN Express Configuration Client.
+func (o GetClientExpressConfigurationOutput) OktaOinClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientExpressConfiguration) string { return v.OktaOinClientId }).(pulumi.StringOutput)
+}
+
+// The ID of the user attribute profile to use for this application.
+func (o GetClientExpressConfigurationOutput) UserAttributeProfileId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientExpressConfiguration) string { return v.UserAttributeProfileId }).(pulumi.StringOutput)
+}
+
+type GetClientExpressConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientExpressConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientExpressConfiguration)(nil)).Elem()
+}
+
+func (o GetClientExpressConfigurationArrayOutput) ToGetClientExpressConfigurationArrayOutput() GetClientExpressConfigurationArrayOutput {
+	return o
+}
+
+func (o GetClientExpressConfigurationArrayOutput) ToGetClientExpressConfigurationArrayOutputWithContext(ctx context.Context) GetClientExpressConfigurationArrayOutput {
+	return o
+}
+
+func (o GetClientExpressConfigurationArrayOutput) Index(i pulumi.IntInput) GetClientExpressConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientExpressConfiguration {
+		return vs[0].([]GetClientExpressConfiguration)[vs[1].(int)]
+	}).(GetClientExpressConfigurationOutput)
+}
+
+type GetClientExpressConfigurationLinkedClient struct {
+	// The ID of the linked client.
+	ClientId string `pulumi:"clientId"`
+}
+
+// GetClientExpressConfigurationLinkedClientInput is an input type that accepts GetClientExpressConfigurationLinkedClientArgs and GetClientExpressConfigurationLinkedClientOutput values.
+// You can construct a concrete instance of `GetClientExpressConfigurationLinkedClientInput` via:
+//
+//	GetClientExpressConfigurationLinkedClientArgs{...}
+type GetClientExpressConfigurationLinkedClientInput interface {
+	pulumi.Input
+
+	ToGetClientExpressConfigurationLinkedClientOutput() GetClientExpressConfigurationLinkedClientOutput
+	ToGetClientExpressConfigurationLinkedClientOutputWithContext(context.Context) GetClientExpressConfigurationLinkedClientOutput
+}
+
+type GetClientExpressConfigurationLinkedClientArgs struct {
+	// The ID of the linked client.
+	ClientId pulumi.StringInput `pulumi:"clientId"`
+}
+
+func (GetClientExpressConfigurationLinkedClientArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientExpressConfigurationLinkedClient)(nil)).Elem()
+}
+
+func (i GetClientExpressConfigurationLinkedClientArgs) ToGetClientExpressConfigurationLinkedClientOutput() GetClientExpressConfigurationLinkedClientOutput {
+	return i.ToGetClientExpressConfigurationLinkedClientOutputWithContext(context.Background())
+}
+
+func (i GetClientExpressConfigurationLinkedClientArgs) ToGetClientExpressConfigurationLinkedClientOutputWithContext(ctx context.Context) GetClientExpressConfigurationLinkedClientOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientExpressConfigurationLinkedClientOutput)
+}
+
+// GetClientExpressConfigurationLinkedClientArrayInput is an input type that accepts GetClientExpressConfigurationLinkedClientArray and GetClientExpressConfigurationLinkedClientArrayOutput values.
+// You can construct a concrete instance of `GetClientExpressConfigurationLinkedClientArrayInput` via:
+//
+//	GetClientExpressConfigurationLinkedClientArray{ GetClientExpressConfigurationLinkedClientArgs{...} }
+type GetClientExpressConfigurationLinkedClientArrayInput interface {
+	pulumi.Input
+
+	ToGetClientExpressConfigurationLinkedClientArrayOutput() GetClientExpressConfigurationLinkedClientArrayOutput
+	ToGetClientExpressConfigurationLinkedClientArrayOutputWithContext(context.Context) GetClientExpressConfigurationLinkedClientArrayOutput
+}
+
+type GetClientExpressConfigurationLinkedClientArray []GetClientExpressConfigurationLinkedClientInput
+
+func (GetClientExpressConfigurationLinkedClientArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientExpressConfigurationLinkedClient)(nil)).Elem()
+}
+
+func (i GetClientExpressConfigurationLinkedClientArray) ToGetClientExpressConfigurationLinkedClientArrayOutput() GetClientExpressConfigurationLinkedClientArrayOutput {
+	return i.ToGetClientExpressConfigurationLinkedClientArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientExpressConfigurationLinkedClientArray) ToGetClientExpressConfigurationLinkedClientArrayOutputWithContext(ctx context.Context) GetClientExpressConfigurationLinkedClientArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientExpressConfigurationLinkedClientArrayOutput)
+}
+
+type GetClientExpressConfigurationLinkedClientOutput struct{ *pulumi.OutputState }
+
+func (GetClientExpressConfigurationLinkedClientOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientExpressConfigurationLinkedClient)(nil)).Elem()
+}
+
+func (o GetClientExpressConfigurationLinkedClientOutput) ToGetClientExpressConfigurationLinkedClientOutput() GetClientExpressConfigurationLinkedClientOutput {
+	return o
+}
+
+func (o GetClientExpressConfigurationLinkedClientOutput) ToGetClientExpressConfigurationLinkedClientOutputWithContext(ctx context.Context) GetClientExpressConfigurationLinkedClientOutput {
+	return o
+}
+
+// The ID of the linked client.
+func (o GetClientExpressConfigurationLinkedClientOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientExpressConfigurationLinkedClient) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+type GetClientExpressConfigurationLinkedClientArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientExpressConfigurationLinkedClientArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientExpressConfigurationLinkedClient)(nil)).Elem()
+}
+
+func (o GetClientExpressConfigurationLinkedClientArrayOutput) ToGetClientExpressConfigurationLinkedClientArrayOutput() GetClientExpressConfigurationLinkedClientArrayOutput {
+	return o
+}
+
+func (o GetClientExpressConfigurationLinkedClientArrayOutput) ToGetClientExpressConfigurationLinkedClientArrayOutputWithContext(ctx context.Context) GetClientExpressConfigurationLinkedClientArrayOutput {
+	return o
+}
+
+func (o GetClientExpressConfigurationLinkedClientArrayOutput) Index(i pulumi.IntInput) GetClientExpressConfigurationLinkedClientOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientExpressConfigurationLinkedClient {
+		return vs[0].([]GetClientExpressConfigurationLinkedClient)[vs[1].(int)]
+	}).(GetClientExpressConfigurationLinkedClientOutput)
+}
+
 type GetClientGrantsClientGrant struct {
 	// The audience of the client grant.
 	Audience string `pulumi:"audience"`
@@ -46647,7 +50057,7 @@ type GetClientsClient struct {
 	AllowedLogoutUrls []string `pulumi:"allowedLogoutUrls"`
 	// URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
 	AllowedOrigins []string `pulumi:"allowedOrigins"`
-	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `expressConfiguration`
 	AppType string `pulumi:"appType"`
 	// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `["guardian-push"]` if not specified.
 	AsyncApprovalNotificationChannels []string `pulumi:"asyncApprovalNotificationChannels"`
@@ -46660,6 +50070,8 @@ type GetClientsClient struct {
 	ClientSecret   string            `pulumi:"clientSecret"`
 	// Description of the purpose of the client.
 	Description string `pulumi:"description"`
+	// Express Configuration settings for the client. Used with OIN Express Configuration.
+	ExpressConfigurations []GetClientsClientExpressConfiguration `pulumi:"expressConfigurations"`
 	// Types of grants that this client is authorized to use.
 	GrantTypes []string `pulumi:"grantTypes"`
 	// Indicates whether this client is a first-party client.Defaults to true from the API
@@ -46703,7 +50115,7 @@ type GetClientsClientArgs struct {
 	AllowedLogoutUrls pulumi.StringArrayInput `pulumi:"allowedLogoutUrls"`
 	// URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
 	AllowedOrigins pulumi.StringArrayInput `pulumi:"allowedOrigins"`
-	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `expressConfiguration`
 	AppType pulumi.StringInput `pulumi:"appType"`
 	// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `["guardian-push"]` if not specified.
 	AsyncApprovalNotificationChannels pulumi.StringArrayInput `pulumi:"asyncApprovalNotificationChannels"`
@@ -46716,6 +50128,8 @@ type GetClientsClientArgs struct {
 	ClientSecret   pulumi.StringInput    `pulumi:"clientSecret"`
 	// Description of the purpose of the client.
 	Description pulumi.StringInput `pulumi:"description"`
+	// Express Configuration settings for the client. Used with OIN Express Configuration.
+	ExpressConfigurations GetClientsClientExpressConfigurationArrayInput `pulumi:"expressConfigurations"`
 	// Types of grants that this client is authorized to use.
 	GrantTypes pulumi.StringArrayInput `pulumi:"grantTypes"`
 	// Indicates whether this client is a first-party client.Defaults to true from the API
@@ -46807,7 +50221,7 @@ func (o GetClientsClientOutput) AllowedOrigins() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetClientsClient) []string { return v.AllowedOrigins }).(pulumi.StringArrayOutput)
 }
 
-// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `expressConfiguration`
 func (o GetClientsClientOutput) AppType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClientsClient) string { return v.AppType }).(pulumi.StringOutput)
 }
@@ -46839,6 +50253,11 @@ func (o GetClientsClientOutput) ClientSecret() pulumi.StringOutput {
 // Description of the purpose of the client.
 func (o GetClientsClientOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClientsClient) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Express Configuration settings for the client. Used with OIN Express Configuration.
+func (o GetClientsClientOutput) ExpressConfigurations() GetClientsClientExpressConfigurationArrayOutput {
+	return o.ApplyT(func(v GetClientsClient) []GetClientsClientExpressConfiguration { return v.ExpressConfigurations }).(GetClientsClientExpressConfigurationArrayOutput)
 }
 
 // Types of grants that this client is authorized to use.
@@ -46918,6 +50337,274 @@ func (o GetClientsClientArrayOutput) Index(i pulumi.IntInput) GetClientsClientOu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientsClient {
 		return vs[0].([]GetClientsClient)[vs[1].(int)]
 	}).(GetClientsClientOutput)
+}
+
+type GetClientsClientExpressConfiguration struct {
+	// The domain that admins are expected to log in via for authenticating for express configuration.
+	AdminLoginDomain string `pulumi:"adminLoginDomain"`
+	// The ID of the connection profile to use for this application.
+	ConnectionProfileId string `pulumi:"connectionProfileId"`
+	// When true, all connections made via express configuration will be enabled for this application.
+	EnableClient bool `pulumi:"enableClient"`
+	// When true, all connections made via express configuration will have the associated organization enabled.
+	EnableOrganization bool `pulumi:"enableOrganization"`
+	// The URI users should bookmark to log in to this application. Variable substitution is permitted for: organization_name, organization_id, and connection_name.
+	InitiateLoginUriTemplate string `pulumi:"initiateLoginUriTemplate"`
+	// List of client IDs that are linked to this express configuration (e.g. web or mobile clients).
+	LinkedClients []GetClientsClientExpressConfigurationLinkedClient `pulumi:"linkedClients"`
+	// The identifier of the published application in the OKTA OIN.
+	OinSubmissionId string `pulumi:"oinSubmissionId"`
+	// The unique identifier for the Okta OIN Express Configuration Client.
+	OktaOinClientId string `pulumi:"oktaOinClientId"`
+	// The ID of the user attribute profile to use for this application.
+	UserAttributeProfileId string `pulumi:"userAttributeProfileId"`
+}
+
+// GetClientsClientExpressConfigurationInput is an input type that accepts GetClientsClientExpressConfigurationArgs and GetClientsClientExpressConfigurationOutput values.
+// You can construct a concrete instance of `GetClientsClientExpressConfigurationInput` via:
+//
+//	GetClientsClientExpressConfigurationArgs{...}
+type GetClientsClientExpressConfigurationInput interface {
+	pulumi.Input
+
+	ToGetClientsClientExpressConfigurationOutput() GetClientsClientExpressConfigurationOutput
+	ToGetClientsClientExpressConfigurationOutputWithContext(context.Context) GetClientsClientExpressConfigurationOutput
+}
+
+type GetClientsClientExpressConfigurationArgs struct {
+	// The domain that admins are expected to log in via for authenticating for express configuration.
+	AdminLoginDomain pulumi.StringInput `pulumi:"adminLoginDomain"`
+	// The ID of the connection profile to use for this application.
+	ConnectionProfileId pulumi.StringInput `pulumi:"connectionProfileId"`
+	// When true, all connections made via express configuration will be enabled for this application.
+	EnableClient pulumi.BoolInput `pulumi:"enableClient"`
+	// When true, all connections made via express configuration will have the associated organization enabled.
+	EnableOrganization pulumi.BoolInput `pulumi:"enableOrganization"`
+	// The URI users should bookmark to log in to this application. Variable substitution is permitted for: organization_name, organization_id, and connection_name.
+	InitiateLoginUriTemplate pulumi.StringInput `pulumi:"initiateLoginUriTemplate"`
+	// List of client IDs that are linked to this express configuration (e.g. web or mobile clients).
+	LinkedClients GetClientsClientExpressConfigurationLinkedClientArrayInput `pulumi:"linkedClients"`
+	// The identifier of the published application in the OKTA OIN.
+	OinSubmissionId pulumi.StringInput `pulumi:"oinSubmissionId"`
+	// The unique identifier for the Okta OIN Express Configuration Client.
+	OktaOinClientId pulumi.StringInput `pulumi:"oktaOinClientId"`
+	// The ID of the user attribute profile to use for this application.
+	UserAttributeProfileId pulumi.StringInput `pulumi:"userAttributeProfileId"`
+}
+
+func (GetClientsClientExpressConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClientExpressConfiguration)(nil)).Elem()
+}
+
+func (i GetClientsClientExpressConfigurationArgs) ToGetClientsClientExpressConfigurationOutput() GetClientsClientExpressConfigurationOutput {
+	return i.ToGetClientsClientExpressConfigurationOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientExpressConfigurationArgs) ToGetClientsClientExpressConfigurationOutputWithContext(ctx context.Context) GetClientsClientExpressConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientExpressConfigurationOutput)
+}
+
+// GetClientsClientExpressConfigurationArrayInput is an input type that accepts GetClientsClientExpressConfigurationArray and GetClientsClientExpressConfigurationArrayOutput values.
+// You can construct a concrete instance of `GetClientsClientExpressConfigurationArrayInput` via:
+//
+//	GetClientsClientExpressConfigurationArray{ GetClientsClientExpressConfigurationArgs{...} }
+type GetClientsClientExpressConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToGetClientsClientExpressConfigurationArrayOutput() GetClientsClientExpressConfigurationArrayOutput
+	ToGetClientsClientExpressConfigurationArrayOutputWithContext(context.Context) GetClientsClientExpressConfigurationArrayOutput
+}
+
+type GetClientsClientExpressConfigurationArray []GetClientsClientExpressConfigurationInput
+
+func (GetClientsClientExpressConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClientExpressConfiguration)(nil)).Elem()
+}
+
+func (i GetClientsClientExpressConfigurationArray) ToGetClientsClientExpressConfigurationArrayOutput() GetClientsClientExpressConfigurationArrayOutput {
+	return i.ToGetClientsClientExpressConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientExpressConfigurationArray) ToGetClientsClientExpressConfigurationArrayOutputWithContext(ctx context.Context) GetClientsClientExpressConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientExpressConfigurationArrayOutput)
+}
+
+type GetClientsClientExpressConfigurationOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientExpressConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClientExpressConfiguration)(nil)).Elem()
+}
+
+func (o GetClientsClientExpressConfigurationOutput) ToGetClientsClientExpressConfigurationOutput() GetClientsClientExpressConfigurationOutput {
+	return o
+}
+
+func (o GetClientsClientExpressConfigurationOutput) ToGetClientsClientExpressConfigurationOutputWithContext(ctx context.Context) GetClientsClientExpressConfigurationOutput {
+	return o
+}
+
+// The domain that admins are expected to log in via for authenticating for express configuration.
+func (o GetClientsClientExpressConfigurationOutput) AdminLoginDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientsClientExpressConfiguration) string { return v.AdminLoginDomain }).(pulumi.StringOutput)
+}
+
+// The ID of the connection profile to use for this application.
+func (o GetClientsClientExpressConfigurationOutput) ConnectionProfileId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientsClientExpressConfiguration) string { return v.ConnectionProfileId }).(pulumi.StringOutput)
+}
+
+// When true, all connections made via express configuration will be enabled for this application.
+func (o GetClientsClientExpressConfigurationOutput) EnableClient() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientsClientExpressConfiguration) bool { return v.EnableClient }).(pulumi.BoolOutput)
+}
+
+// When true, all connections made via express configuration will have the associated organization enabled.
+func (o GetClientsClientExpressConfigurationOutput) EnableOrganization() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientsClientExpressConfiguration) bool { return v.EnableOrganization }).(pulumi.BoolOutput)
+}
+
+// The URI users should bookmark to log in to this application. Variable substitution is permitted for: organization_name, organization_id, and connection_name.
+func (o GetClientsClientExpressConfigurationOutput) InitiateLoginUriTemplate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientsClientExpressConfiguration) string { return v.InitiateLoginUriTemplate }).(pulumi.StringOutput)
+}
+
+// List of client IDs that are linked to this express configuration (e.g. web or mobile clients).
+func (o GetClientsClientExpressConfigurationOutput) LinkedClients() GetClientsClientExpressConfigurationLinkedClientArrayOutput {
+	return o.ApplyT(func(v GetClientsClientExpressConfiguration) []GetClientsClientExpressConfigurationLinkedClient {
+		return v.LinkedClients
+	}).(GetClientsClientExpressConfigurationLinkedClientArrayOutput)
+}
+
+// The identifier of the published application in the OKTA OIN.
+func (o GetClientsClientExpressConfigurationOutput) OinSubmissionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientsClientExpressConfiguration) string { return v.OinSubmissionId }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the Okta OIN Express Configuration Client.
+func (o GetClientsClientExpressConfigurationOutput) OktaOinClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientsClientExpressConfiguration) string { return v.OktaOinClientId }).(pulumi.StringOutput)
+}
+
+// The ID of the user attribute profile to use for this application.
+func (o GetClientsClientExpressConfigurationOutput) UserAttributeProfileId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientsClientExpressConfiguration) string { return v.UserAttributeProfileId }).(pulumi.StringOutput)
+}
+
+type GetClientsClientExpressConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientExpressConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClientExpressConfiguration)(nil)).Elem()
+}
+
+func (o GetClientsClientExpressConfigurationArrayOutput) ToGetClientsClientExpressConfigurationArrayOutput() GetClientsClientExpressConfigurationArrayOutput {
+	return o
+}
+
+func (o GetClientsClientExpressConfigurationArrayOutput) ToGetClientsClientExpressConfigurationArrayOutputWithContext(ctx context.Context) GetClientsClientExpressConfigurationArrayOutput {
+	return o
+}
+
+func (o GetClientsClientExpressConfigurationArrayOutput) Index(i pulumi.IntInput) GetClientsClientExpressConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientsClientExpressConfiguration {
+		return vs[0].([]GetClientsClientExpressConfiguration)[vs[1].(int)]
+	}).(GetClientsClientExpressConfigurationOutput)
+}
+
+type GetClientsClientExpressConfigurationLinkedClient struct {
+	// The ID of the linked client.
+	ClientId string `pulumi:"clientId"`
+}
+
+// GetClientsClientExpressConfigurationLinkedClientInput is an input type that accepts GetClientsClientExpressConfigurationLinkedClientArgs and GetClientsClientExpressConfigurationLinkedClientOutput values.
+// You can construct a concrete instance of `GetClientsClientExpressConfigurationLinkedClientInput` via:
+//
+//	GetClientsClientExpressConfigurationLinkedClientArgs{...}
+type GetClientsClientExpressConfigurationLinkedClientInput interface {
+	pulumi.Input
+
+	ToGetClientsClientExpressConfigurationLinkedClientOutput() GetClientsClientExpressConfigurationLinkedClientOutput
+	ToGetClientsClientExpressConfigurationLinkedClientOutputWithContext(context.Context) GetClientsClientExpressConfigurationLinkedClientOutput
+}
+
+type GetClientsClientExpressConfigurationLinkedClientArgs struct {
+	// The ID of the linked client.
+	ClientId pulumi.StringInput `pulumi:"clientId"`
+}
+
+func (GetClientsClientExpressConfigurationLinkedClientArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClientExpressConfigurationLinkedClient)(nil)).Elem()
+}
+
+func (i GetClientsClientExpressConfigurationLinkedClientArgs) ToGetClientsClientExpressConfigurationLinkedClientOutput() GetClientsClientExpressConfigurationLinkedClientOutput {
+	return i.ToGetClientsClientExpressConfigurationLinkedClientOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientExpressConfigurationLinkedClientArgs) ToGetClientsClientExpressConfigurationLinkedClientOutputWithContext(ctx context.Context) GetClientsClientExpressConfigurationLinkedClientOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientExpressConfigurationLinkedClientOutput)
+}
+
+// GetClientsClientExpressConfigurationLinkedClientArrayInput is an input type that accepts GetClientsClientExpressConfigurationLinkedClientArray and GetClientsClientExpressConfigurationLinkedClientArrayOutput values.
+// You can construct a concrete instance of `GetClientsClientExpressConfigurationLinkedClientArrayInput` via:
+//
+//	GetClientsClientExpressConfigurationLinkedClientArray{ GetClientsClientExpressConfigurationLinkedClientArgs{...} }
+type GetClientsClientExpressConfigurationLinkedClientArrayInput interface {
+	pulumi.Input
+
+	ToGetClientsClientExpressConfigurationLinkedClientArrayOutput() GetClientsClientExpressConfigurationLinkedClientArrayOutput
+	ToGetClientsClientExpressConfigurationLinkedClientArrayOutputWithContext(context.Context) GetClientsClientExpressConfigurationLinkedClientArrayOutput
+}
+
+type GetClientsClientExpressConfigurationLinkedClientArray []GetClientsClientExpressConfigurationLinkedClientInput
+
+func (GetClientsClientExpressConfigurationLinkedClientArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClientExpressConfigurationLinkedClient)(nil)).Elem()
+}
+
+func (i GetClientsClientExpressConfigurationLinkedClientArray) ToGetClientsClientExpressConfigurationLinkedClientArrayOutput() GetClientsClientExpressConfigurationLinkedClientArrayOutput {
+	return i.ToGetClientsClientExpressConfigurationLinkedClientArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientExpressConfigurationLinkedClientArray) ToGetClientsClientExpressConfigurationLinkedClientArrayOutputWithContext(ctx context.Context) GetClientsClientExpressConfigurationLinkedClientArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientExpressConfigurationLinkedClientArrayOutput)
+}
+
+type GetClientsClientExpressConfigurationLinkedClientOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientExpressConfigurationLinkedClientOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClientExpressConfigurationLinkedClient)(nil)).Elem()
+}
+
+func (o GetClientsClientExpressConfigurationLinkedClientOutput) ToGetClientsClientExpressConfigurationLinkedClientOutput() GetClientsClientExpressConfigurationLinkedClientOutput {
+	return o
+}
+
+func (o GetClientsClientExpressConfigurationLinkedClientOutput) ToGetClientsClientExpressConfigurationLinkedClientOutputWithContext(ctx context.Context) GetClientsClientExpressConfigurationLinkedClientOutput {
+	return o
+}
+
+// The ID of the linked client.
+func (o GetClientsClientExpressConfigurationLinkedClientOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientsClientExpressConfigurationLinkedClient) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+type GetClientsClientExpressConfigurationLinkedClientArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientExpressConfigurationLinkedClientArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClientExpressConfigurationLinkedClient)(nil)).Elem()
+}
+
+func (o GetClientsClientExpressConfigurationLinkedClientArrayOutput) ToGetClientsClientExpressConfigurationLinkedClientArrayOutput() GetClientsClientExpressConfigurationLinkedClientArrayOutput {
+	return o
+}
+
+func (o GetClientsClientExpressConfigurationLinkedClientArrayOutput) ToGetClientsClientExpressConfigurationLinkedClientArrayOutputWithContext(ctx context.Context) GetClientsClientExpressConfigurationLinkedClientArrayOutput {
+	return o
+}
+
+func (o GetClientsClientExpressConfigurationLinkedClientArrayOutput) Index(i pulumi.IntInput) GetClientsClientExpressConfigurationLinkedClientOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientsClientExpressConfigurationLinkedClient {
+		return vs[0].([]GetClientsClientExpressConfigurationLinkedClient)[vs[1].(int)]
+	}).(GetClientsClientExpressConfigurationLinkedClientOutput)
 }
 
 type GetClientsClientOidcLogout struct {
@@ -52540,6 +56227,1212 @@ func (o GetConnectionOptionValidationUsernameArrayOutput) Index(i pulumi.IntInpu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionValidationUsername {
 		return vs[0].([]GetConnectionOptionValidationUsername)[vs[1].(int)]
 	}).(GetConnectionOptionValidationUsernameOutput)
+}
+
+type GetConnectionProfileConnectionConfig struct {
+}
+
+// GetConnectionProfileConnectionConfigInput is an input type that accepts GetConnectionProfileConnectionConfigArgs and GetConnectionProfileConnectionConfigOutput values.
+// You can construct a concrete instance of `GetConnectionProfileConnectionConfigInput` via:
+//
+//	GetConnectionProfileConnectionConfigArgs{...}
+type GetConnectionProfileConnectionConfigInput interface {
+	pulumi.Input
+
+	ToGetConnectionProfileConnectionConfigOutput() GetConnectionProfileConnectionConfigOutput
+	ToGetConnectionProfileConnectionConfigOutputWithContext(context.Context) GetConnectionProfileConnectionConfigOutput
+}
+
+type GetConnectionProfileConnectionConfigArgs struct {
+}
+
+func (GetConnectionProfileConnectionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileConnectionConfig)(nil)).Elem()
+}
+
+func (i GetConnectionProfileConnectionConfigArgs) ToGetConnectionProfileConnectionConfigOutput() GetConnectionProfileConnectionConfigOutput {
+	return i.ToGetConnectionProfileConnectionConfigOutputWithContext(context.Background())
+}
+
+func (i GetConnectionProfileConnectionConfigArgs) ToGetConnectionProfileConnectionConfigOutputWithContext(ctx context.Context) GetConnectionProfileConnectionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionProfileConnectionConfigOutput)
+}
+
+// GetConnectionProfileConnectionConfigArrayInput is an input type that accepts GetConnectionProfileConnectionConfigArray and GetConnectionProfileConnectionConfigArrayOutput values.
+// You can construct a concrete instance of `GetConnectionProfileConnectionConfigArrayInput` via:
+//
+//	GetConnectionProfileConnectionConfigArray{ GetConnectionProfileConnectionConfigArgs{...} }
+type GetConnectionProfileConnectionConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionProfileConnectionConfigArrayOutput() GetConnectionProfileConnectionConfigArrayOutput
+	ToGetConnectionProfileConnectionConfigArrayOutputWithContext(context.Context) GetConnectionProfileConnectionConfigArrayOutput
+}
+
+type GetConnectionProfileConnectionConfigArray []GetConnectionProfileConnectionConfigInput
+
+func (GetConnectionProfileConnectionConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionProfileConnectionConfig)(nil)).Elem()
+}
+
+func (i GetConnectionProfileConnectionConfigArray) ToGetConnectionProfileConnectionConfigArrayOutput() GetConnectionProfileConnectionConfigArrayOutput {
+	return i.ToGetConnectionProfileConnectionConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionProfileConnectionConfigArray) ToGetConnectionProfileConnectionConfigArrayOutputWithContext(ctx context.Context) GetConnectionProfileConnectionConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionProfileConnectionConfigArrayOutput)
+}
+
+type GetConnectionProfileConnectionConfigOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionProfileConnectionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileConnectionConfig)(nil)).Elem()
+}
+
+func (o GetConnectionProfileConnectionConfigOutput) ToGetConnectionProfileConnectionConfigOutput() GetConnectionProfileConnectionConfigOutput {
+	return o
+}
+
+func (o GetConnectionProfileConnectionConfigOutput) ToGetConnectionProfileConnectionConfigOutputWithContext(ctx context.Context) GetConnectionProfileConnectionConfigOutput {
+	return o
+}
+
+type GetConnectionProfileConnectionConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionProfileConnectionConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionProfileConnectionConfig)(nil)).Elem()
+}
+
+func (o GetConnectionProfileConnectionConfigArrayOutput) ToGetConnectionProfileConnectionConfigArrayOutput() GetConnectionProfileConnectionConfigArrayOutput {
+	return o
+}
+
+func (o GetConnectionProfileConnectionConfigArrayOutput) ToGetConnectionProfileConnectionConfigArrayOutputWithContext(ctx context.Context) GetConnectionProfileConnectionConfigArrayOutput {
+	return o
+}
+
+func (o GetConnectionProfileConnectionConfigArrayOutput) Index(i pulumi.IntInput) GetConnectionProfileConnectionConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionProfileConnectionConfig {
+		return vs[0].([]GetConnectionProfileConnectionConfig)[vs[1].(int)]
+	}).(GetConnectionProfileConnectionConfigOutput)
+}
+
+type GetConnectionProfileOrganization struct {
+	// Whether to assign membership on login.
+	AssignMembershipOnLogin string `pulumi:"assignMembershipOnLogin"`
+	// Whether to show organization as a button.
+	ShowAsButton string `pulumi:"showAsButton"`
+}
+
+// GetConnectionProfileOrganizationInput is an input type that accepts GetConnectionProfileOrganizationArgs and GetConnectionProfileOrganizationOutput values.
+// You can construct a concrete instance of `GetConnectionProfileOrganizationInput` via:
+//
+//	GetConnectionProfileOrganizationArgs{...}
+type GetConnectionProfileOrganizationInput interface {
+	pulumi.Input
+
+	ToGetConnectionProfileOrganizationOutput() GetConnectionProfileOrganizationOutput
+	ToGetConnectionProfileOrganizationOutputWithContext(context.Context) GetConnectionProfileOrganizationOutput
+}
+
+type GetConnectionProfileOrganizationArgs struct {
+	// Whether to assign membership on login.
+	AssignMembershipOnLogin pulumi.StringInput `pulumi:"assignMembershipOnLogin"`
+	// Whether to show organization as a button.
+	ShowAsButton pulumi.StringInput `pulumi:"showAsButton"`
+}
+
+func (GetConnectionProfileOrganizationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileOrganization)(nil)).Elem()
+}
+
+func (i GetConnectionProfileOrganizationArgs) ToGetConnectionProfileOrganizationOutput() GetConnectionProfileOrganizationOutput {
+	return i.ToGetConnectionProfileOrganizationOutputWithContext(context.Background())
+}
+
+func (i GetConnectionProfileOrganizationArgs) ToGetConnectionProfileOrganizationOutputWithContext(ctx context.Context) GetConnectionProfileOrganizationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionProfileOrganizationOutput)
+}
+
+// GetConnectionProfileOrganizationArrayInput is an input type that accepts GetConnectionProfileOrganizationArray and GetConnectionProfileOrganizationArrayOutput values.
+// You can construct a concrete instance of `GetConnectionProfileOrganizationArrayInput` via:
+//
+//	GetConnectionProfileOrganizationArray{ GetConnectionProfileOrganizationArgs{...} }
+type GetConnectionProfileOrganizationArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionProfileOrganizationArrayOutput() GetConnectionProfileOrganizationArrayOutput
+	ToGetConnectionProfileOrganizationArrayOutputWithContext(context.Context) GetConnectionProfileOrganizationArrayOutput
+}
+
+type GetConnectionProfileOrganizationArray []GetConnectionProfileOrganizationInput
+
+func (GetConnectionProfileOrganizationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionProfileOrganization)(nil)).Elem()
+}
+
+func (i GetConnectionProfileOrganizationArray) ToGetConnectionProfileOrganizationArrayOutput() GetConnectionProfileOrganizationArrayOutput {
+	return i.ToGetConnectionProfileOrganizationArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionProfileOrganizationArray) ToGetConnectionProfileOrganizationArrayOutputWithContext(ctx context.Context) GetConnectionProfileOrganizationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionProfileOrganizationArrayOutput)
+}
+
+type GetConnectionProfileOrganizationOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionProfileOrganizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileOrganization)(nil)).Elem()
+}
+
+func (o GetConnectionProfileOrganizationOutput) ToGetConnectionProfileOrganizationOutput() GetConnectionProfileOrganizationOutput {
+	return o
+}
+
+func (o GetConnectionProfileOrganizationOutput) ToGetConnectionProfileOrganizationOutputWithContext(ctx context.Context) GetConnectionProfileOrganizationOutput {
+	return o
+}
+
+// Whether to assign membership on login.
+func (o GetConnectionProfileOrganizationOutput) AssignMembershipOnLogin() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionProfileOrganization) string { return v.AssignMembershipOnLogin }).(pulumi.StringOutput)
+}
+
+// Whether to show organization as a button.
+func (o GetConnectionProfileOrganizationOutput) ShowAsButton() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionProfileOrganization) string { return v.ShowAsButton }).(pulumi.StringOutput)
+}
+
+type GetConnectionProfileOrganizationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionProfileOrganizationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionProfileOrganization)(nil)).Elem()
+}
+
+func (o GetConnectionProfileOrganizationArrayOutput) ToGetConnectionProfileOrganizationArrayOutput() GetConnectionProfileOrganizationArrayOutput {
+	return o
+}
+
+func (o GetConnectionProfileOrganizationArrayOutput) ToGetConnectionProfileOrganizationArrayOutputWithContext(ctx context.Context) GetConnectionProfileOrganizationArrayOutput {
+	return o
+}
+
+func (o GetConnectionProfileOrganizationArrayOutput) Index(i pulumi.IntInput) GetConnectionProfileOrganizationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionProfileOrganization {
+		return vs[0].([]GetConnectionProfileOrganization)[vs[1].(int)]
+	}).(GetConnectionProfileOrganizationOutput)
+}
+
+type GetConnectionProfileStrategyOverride struct {
+	// Strategy override configuration.
+	Ad GetConnectionProfileStrategyOverrideAd `pulumi:"ad"`
+	// Strategy override configuration.
+	Adfs GetConnectionProfileStrategyOverrideAdfs `pulumi:"adfs"`
+	// Strategy override configuration.
+	GoogleApps GetConnectionProfileStrategyOverrideGoogleApps `pulumi:"googleApps"`
+	// Strategy override configuration.
+	Oidc GetConnectionProfileStrategyOverrideOidc `pulumi:"oidc"`
+	// Strategy override configuration.
+	Okta GetConnectionProfileStrategyOverrideOkta `pulumi:"okta"`
+	// Strategy override configuration.
+	Pingfederate GetConnectionProfileStrategyOverridePingfederate `pulumi:"pingfederate"`
+	// Strategy override configuration.
+	Samlp GetConnectionProfileStrategyOverrideSamlp `pulumi:"samlp"`
+	// Strategy override configuration.
+	Waad GetConnectionProfileStrategyOverrideWaad `pulumi:"waad"`
+}
+
+// GetConnectionProfileStrategyOverrideInput is an input type that accepts GetConnectionProfileStrategyOverrideArgs and GetConnectionProfileStrategyOverrideOutput values.
+// You can construct a concrete instance of `GetConnectionProfileStrategyOverrideInput` via:
+//
+//	GetConnectionProfileStrategyOverrideArgs{...}
+type GetConnectionProfileStrategyOverrideInput interface {
+	pulumi.Input
+
+	ToGetConnectionProfileStrategyOverrideOutput() GetConnectionProfileStrategyOverrideOutput
+	ToGetConnectionProfileStrategyOverrideOutputWithContext(context.Context) GetConnectionProfileStrategyOverrideOutput
+}
+
+type GetConnectionProfileStrategyOverrideArgs struct {
+	// Strategy override configuration.
+	Ad GetConnectionProfileStrategyOverrideAdInput `pulumi:"ad"`
+	// Strategy override configuration.
+	Adfs GetConnectionProfileStrategyOverrideAdfsInput `pulumi:"adfs"`
+	// Strategy override configuration.
+	GoogleApps GetConnectionProfileStrategyOverrideGoogleAppsInput `pulumi:"googleApps"`
+	// Strategy override configuration.
+	Oidc GetConnectionProfileStrategyOverrideOidcInput `pulumi:"oidc"`
+	// Strategy override configuration.
+	Okta GetConnectionProfileStrategyOverrideOktaInput `pulumi:"okta"`
+	// Strategy override configuration.
+	Pingfederate GetConnectionProfileStrategyOverridePingfederateInput `pulumi:"pingfederate"`
+	// Strategy override configuration.
+	Samlp GetConnectionProfileStrategyOverrideSamlpInput `pulumi:"samlp"`
+	// Strategy override configuration.
+	Waad GetConnectionProfileStrategyOverrideWaadInput `pulumi:"waad"`
+}
+
+func (GetConnectionProfileStrategyOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverride)(nil)).Elem()
+}
+
+func (i GetConnectionProfileStrategyOverrideArgs) ToGetConnectionProfileStrategyOverrideOutput() GetConnectionProfileStrategyOverrideOutput {
+	return i.ToGetConnectionProfileStrategyOverrideOutputWithContext(context.Background())
+}
+
+func (i GetConnectionProfileStrategyOverrideArgs) ToGetConnectionProfileStrategyOverrideOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionProfileStrategyOverrideOutput)
+}
+
+// GetConnectionProfileStrategyOverrideArrayInput is an input type that accepts GetConnectionProfileStrategyOverrideArray and GetConnectionProfileStrategyOverrideArrayOutput values.
+// You can construct a concrete instance of `GetConnectionProfileStrategyOverrideArrayInput` via:
+//
+//	GetConnectionProfileStrategyOverrideArray{ GetConnectionProfileStrategyOverrideArgs{...} }
+type GetConnectionProfileStrategyOverrideArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionProfileStrategyOverrideArrayOutput() GetConnectionProfileStrategyOverrideArrayOutput
+	ToGetConnectionProfileStrategyOverrideArrayOutputWithContext(context.Context) GetConnectionProfileStrategyOverrideArrayOutput
+}
+
+type GetConnectionProfileStrategyOverrideArray []GetConnectionProfileStrategyOverrideInput
+
+func (GetConnectionProfileStrategyOverrideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionProfileStrategyOverride)(nil)).Elem()
+}
+
+func (i GetConnectionProfileStrategyOverrideArray) ToGetConnectionProfileStrategyOverrideArrayOutput() GetConnectionProfileStrategyOverrideArrayOutput {
+	return i.ToGetConnectionProfileStrategyOverrideArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionProfileStrategyOverrideArray) ToGetConnectionProfileStrategyOverrideArrayOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionProfileStrategyOverrideArrayOutput)
+}
+
+type GetConnectionProfileStrategyOverrideOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionProfileStrategyOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverride)(nil)).Elem()
+}
+
+func (o GetConnectionProfileStrategyOverrideOutput) ToGetConnectionProfileStrategyOverrideOutput() GetConnectionProfileStrategyOverrideOutput {
+	return o
+}
+
+func (o GetConnectionProfileStrategyOverrideOutput) ToGetConnectionProfileStrategyOverrideOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideOutput {
+	return o
+}
+
+// Strategy override configuration.
+func (o GetConnectionProfileStrategyOverrideOutput) Ad() GetConnectionProfileStrategyOverrideAdOutput {
+	return o.ApplyT(func(v GetConnectionProfileStrategyOverride) GetConnectionProfileStrategyOverrideAd { return v.Ad }).(GetConnectionProfileStrategyOverrideAdOutput)
+}
+
+// Strategy override configuration.
+func (o GetConnectionProfileStrategyOverrideOutput) Adfs() GetConnectionProfileStrategyOverrideAdfsOutput {
+	return o.ApplyT(func(v GetConnectionProfileStrategyOverride) GetConnectionProfileStrategyOverrideAdfs { return v.Adfs }).(GetConnectionProfileStrategyOverrideAdfsOutput)
+}
+
+// Strategy override configuration.
+func (o GetConnectionProfileStrategyOverrideOutput) GoogleApps() GetConnectionProfileStrategyOverrideGoogleAppsOutput {
+	return o.ApplyT(func(v GetConnectionProfileStrategyOverride) GetConnectionProfileStrategyOverrideGoogleApps {
+		return v.GoogleApps
+	}).(GetConnectionProfileStrategyOverrideGoogleAppsOutput)
+}
+
+// Strategy override configuration.
+func (o GetConnectionProfileStrategyOverrideOutput) Oidc() GetConnectionProfileStrategyOverrideOidcOutput {
+	return o.ApplyT(func(v GetConnectionProfileStrategyOverride) GetConnectionProfileStrategyOverrideOidc { return v.Oidc }).(GetConnectionProfileStrategyOverrideOidcOutput)
+}
+
+// Strategy override configuration.
+func (o GetConnectionProfileStrategyOverrideOutput) Okta() GetConnectionProfileStrategyOverrideOktaOutput {
+	return o.ApplyT(func(v GetConnectionProfileStrategyOverride) GetConnectionProfileStrategyOverrideOkta { return v.Okta }).(GetConnectionProfileStrategyOverrideOktaOutput)
+}
+
+// Strategy override configuration.
+func (o GetConnectionProfileStrategyOverrideOutput) Pingfederate() GetConnectionProfileStrategyOverridePingfederateOutput {
+	return o.ApplyT(func(v GetConnectionProfileStrategyOverride) GetConnectionProfileStrategyOverridePingfederate {
+		return v.Pingfederate
+	}).(GetConnectionProfileStrategyOverridePingfederateOutput)
+}
+
+// Strategy override configuration.
+func (o GetConnectionProfileStrategyOverrideOutput) Samlp() GetConnectionProfileStrategyOverrideSamlpOutput {
+	return o.ApplyT(func(v GetConnectionProfileStrategyOverride) GetConnectionProfileStrategyOverrideSamlp { return v.Samlp }).(GetConnectionProfileStrategyOverrideSamlpOutput)
+}
+
+// Strategy override configuration.
+func (o GetConnectionProfileStrategyOverrideOutput) Waad() GetConnectionProfileStrategyOverrideWaadOutput {
+	return o.ApplyT(func(v GetConnectionProfileStrategyOverride) GetConnectionProfileStrategyOverrideWaad { return v.Waad }).(GetConnectionProfileStrategyOverrideWaadOutput)
+}
+
+type GetConnectionProfileStrategyOverrideArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionProfileStrategyOverrideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionProfileStrategyOverride)(nil)).Elem()
+}
+
+func (o GetConnectionProfileStrategyOverrideArrayOutput) ToGetConnectionProfileStrategyOverrideArrayOutput() GetConnectionProfileStrategyOverrideArrayOutput {
+	return o
+}
+
+func (o GetConnectionProfileStrategyOverrideArrayOutput) ToGetConnectionProfileStrategyOverrideArrayOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideArrayOutput {
+	return o
+}
+
+func (o GetConnectionProfileStrategyOverrideArrayOutput) Index(i pulumi.IntInput) GetConnectionProfileStrategyOverrideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionProfileStrategyOverride {
+		return vs[0].([]GetConnectionProfileStrategyOverride)[vs[1].(int)]
+	}).(GetConnectionProfileStrategyOverrideOutput)
+}
+
+type GetConnectionProfileStrategyOverrideAd struct {
+	// Connection config for the strategy override.
+	ConnectionConfig GetConnectionProfileStrategyOverrideAdConnectionConfig `pulumi:"connectionConfig"`
+	// Enabled features for the strategy override.
+	EnabledFeatures []string `pulumi:"enabledFeatures"`
+}
+
+// GetConnectionProfileStrategyOverrideAdInput is an input type that accepts GetConnectionProfileStrategyOverrideAdArgs and GetConnectionProfileStrategyOverrideAdOutput values.
+// You can construct a concrete instance of `GetConnectionProfileStrategyOverrideAdInput` via:
+//
+//	GetConnectionProfileStrategyOverrideAdArgs{...}
+type GetConnectionProfileStrategyOverrideAdInput interface {
+	pulumi.Input
+
+	ToGetConnectionProfileStrategyOverrideAdOutput() GetConnectionProfileStrategyOverrideAdOutput
+	ToGetConnectionProfileStrategyOverrideAdOutputWithContext(context.Context) GetConnectionProfileStrategyOverrideAdOutput
+}
+
+type GetConnectionProfileStrategyOverrideAdArgs struct {
+	// Connection config for the strategy override.
+	ConnectionConfig GetConnectionProfileStrategyOverrideAdConnectionConfigInput `pulumi:"connectionConfig"`
+	// Enabled features for the strategy override.
+	EnabledFeatures pulumi.StringArrayInput `pulumi:"enabledFeatures"`
+}
+
+func (GetConnectionProfileStrategyOverrideAdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverrideAd)(nil)).Elem()
+}
+
+func (i GetConnectionProfileStrategyOverrideAdArgs) ToGetConnectionProfileStrategyOverrideAdOutput() GetConnectionProfileStrategyOverrideAdOutput {
+	return i.ToGetConnectionProfileStrategyOverrideAdOutputWithContext(context.Background())
+}
+
+func (i GetConnectionProfileStrategyOverrideAdArgs) ToGetConnectionProfileStrategyOverrideAdOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideAdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionProfileStrategyOverrideAdOutput)
+}
+
+type GetConnectionProfileStrategyOverrideAdOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionProfileStrategyOverrideAdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverrideAd)(nil)).Elem()
+}
+
+func (o GetConnectionProfileStrategyOverrideAdOutput) ToGetConnectionProfileStrategyOverrideAdOutput() GetConnectionProfileStrategyOverrideAdOutput {
+	return o
+}
+
+func (o GetConnectionProfileStrategyOverrideAdOutput) ToGetConnectionProfileStrategyOverrideAdOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideAdOutput {
+	return o
+}
+
+// Connection config for the strategy override.
+func (o GetConnectionProfileStrategyOverrideAdOutput) ConnectionConfig() GetConnectionProfileStrategyOverrideAdConnectionConfigOutput {
+	return o.ApplyT(func(v GetConnectionProfileStrategyOverrideAd) GetConnectionProfileStrategyOverrideAdConnectionConfig {
+		return v.ConnectionConfig
+	}).(GetConnectionProfileStrategyOverrideAdConnectionConfigOutput)
+}
+
+// Enabled features for the strategy override.
+func (o GetConnectionProfileStrategyOverrideAdOutput) EnabledFeatures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConnectionProfileStrategyOverrideAd) []string { return v.EnabledFeatures }).(pulumi.StringArrayOutput)
+}
+
+type GetConnectionProfileStrategyOverrideAdConnectionConfig struct {
+}
+
+// GetConnectionProfileStrategyOverrideAdConnectionConfigInput is an input type that accepts GetConnectionProfileStrategyOverrideAdConnectionConfigArgs and GetConnectionProfileStrategyOverrideAdConnectionConfigOutput values.
+// You can construct a concrete instance of `GetConnectionProfileStrategyOverrideAdConnectionConfigInput` via:
+//
+//	GetConnectionProfileStrategyOverrideAdConnectionConfigArgs{...}
+type GetConnectionProfileStrategyOverrideAdConnectionConfigInput interface {
+	pulumi.Input
+
+	ToGetConnectionProfileStrategyOverrideAdConnectionConfigOutput() GetConnectionProfileStrategyOverrideAdConnectionConfigOutput
+	ToGetConnectionProfileStrategyOverrideAdConnectionConfigOutputWithContext(context.Context) GetConnectionProfileStrategyOverrideAdConnectionConfigOutput
+}
+
+type GetConnectionProfileStrategyOverrideAdConnectionConfigArgs struct {
+}
+
+func (GetConnectionProfileStrategyOverrideAdConnectionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverrideAdConnectionConfig)(nil)).Elem()
+}
+
+func (i GetConnectionProfileStrategyOverrideAdConnectionConfigArgs) ToGetConnectionProfileStrategyOverrideAdConnectionConfigOutput() GetConnectionProfileStrategyOverrideAdConnectionConfigOutput {
+	return i.ToGetConnectionProfileStrategyOverrideAdConnectionConfigOutputWithContext(context.Background())
+}
+
+func (i GetConnectionProfileStrategyOverrideAdConnectionConfigArgs) ToGetConnectionProfileStrategyOverrideAdConnectionConfigOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideAdConnectionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionProfileStrategyOverrideAdConnectionConfigOutput)
+}
+
+type GetConnectionProfileStrategyOverrideAdConnectionConfigOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionProfileStrategyOverrideAdConnectionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverrideAdConnectionConfig)(nil)).Elem()
+}
+
+func (o GetConnectionProfileStrategyOverrideAdConnectionConfigOutput) ToGetConnectionProfileStrategyOverrideAdConnectionConfigOutput() GetConnectionProfileStrategyOverrideAdConnectionConfigOutput {
+	return o
+}
+
+func (o GetConnectionProfileStrategyOverrideAdConnectionConfigOutput) ToGetConnectionProfileStrategyOverrideAdConnectionConfigOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideAdConnectionConfigOutput {
+	return o
+}
+
+type GetConnectionProfileStrategyOverrideAdfs struct {
+	// Connection config for the strategy override.
+	ConnectionConfig GetConnectionProfileStrategyOverrideAdfsConnectionConfig `pulumi:"connectionConfig"`
+	// Enabled features for the strategy override.
+	EnabledFeatures []string `pulumi:"enabledFeatures"`
+}
+
+// GetConnectionProfileStrategyOverrideAdfsInput is an input type that accepts GetConnectionProfileStrategyOverrideAdfsArgs and GetConnectionProfileStrategyOverrideAdfsOutput values.
+// You can construct a concrete instance of `GetConnectionProfileStrategyOverrideAdfsInput` via:
+//
+//	GetConnectionProfileStrategyOverrideAdfsArgs{...}
+type GetConnectionProfileStrategyOverrideAdfsInput interface {
+	pulumi.Input
+
+	ToGetConnectionProfileStrategyOverrideAdfsOutput() GetConnectionProfileStrategyOverrideAdfsOutput
+	ToGetConnectionProfileStrategyOverrideAdfsOutputWithContext(context.Context) GetConnectionProfileStrategyOverrideAdfsOutput
+}
+
+type GetConnectionProfileStrategyOverrideAdfsArgs struct {
+	// Connection config for the strategy override.
+	ConnectionConfig GetConnectionProfileStrategyOverrideAdfsConnectionConfigInput `pulumi:"connectionConfig"`
+	// Enabled features for the strategy override.
+	EnabledFeatures pulumi.StringArrayInput `pulumi:"enabledFeatures"`
+}
+
+func (GetConnectionProfileStrategyOverrideAdfsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverrideAdfs)(nil)).Elem()
+}
+
+func (i GetConnectionProfileStrategyOverrideAdfsArgs) ToGetConnectionProfileStrategyOverrideAdfsOutput() GetConnectionProfileStrategyOverrideAdfsOutput {
+	return i.ToGetConnectionProfileStrategyOverrideAdfsOutputWithContext(context.Background())
+}
+
+func (i GetConnectionProfileStrategyOverrideAdfsArgs) ToGetConnectionProfileStrategyOverrideAdfsOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideAdfsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionProfileStrategyOverrideAdfsOutput)
+}
+
+type GetConnectionProfileStrategyOverrideAdfsOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionProfileStrategyOverrideAdfsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverrideAdfs)(nil)).Elem()
+}
+
+func (o GetConnectionProfileStrategyOverrideAdfsOutput) ToGetConnectionProfileStrategyOverrideAdfsOutput() GetConnectionProfileStrategyOverrideAdfsOutput {
+	return o
+}
+
+func (o GetConnectionProfileStrategyOverrideAdfsOutput) ToGetConnectionProfileStrategyOverrideAdfsOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideAdfsOutput {
+	return o
+}
+
+// Connection config for the strategy override.
+func (o GetConnectionProfileStrategyOverrideAdfsOutput) ConnectionConfig() GetConnectionProfileStrategyOverrideAdfsConnectionConfigOutput {
+	return o.ApplyT(func(v GetConnectionProfileStrategyOverrideAdfs) GetConnectionProfileStrategyOverrideAdfsConnectionConfig {
+		return v.ConnectionConfig
+	}).(GetConnectionProfileStrategyOverrideAdfsConnectionConfigOutput)
+}
+
+// Enabled features for the strategy override.
+func (o GetConnectionProfileStrategyOverrideAdfsOutput) EnabledFeatures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConnectionProfileStrategyOverrideAdfs) []string { return v.EnabledFeatures }).(pulumi.StringArrayOutput)
+}
+
+type GetConnectionProfileStrategyOverrideAdfsConnectionConfig struct {
+}
+
+// GetConnectionProfileStrategyOverrideAdfsConnectionConfigInput is an input type that accepts GetConnectionProfileStrategyOverrideAdfsConnectionConfigArgs and GetConnectionProfileStrategyOverrideAdfsConnectionConfigOutput values.
+// You can construct a concrete instance of `GetConnectionProfileStrategyOverrideAdfsConnectionConfigInput` via:
+//
+//	GetConnectionProfileStrategyOverrideAdfsConnectionConfigArgs{...}
+type GetConnectionProfileStrategyOverrideAdfsConnectionConfigInput interface {
+	pulumi.Input
+
+	ToGetConnectionProfileStrategyOverrideAdfsConnectionConfigOutput() GetConnectionProfileStrategyOverrideAdfsConnectionConfigOutput
+	ToGetConnectionProfileStrategyOverrideAdfsConnectionConfigOutputWithContext(context.Context) GetConnectionProfileStrategyOverrideAdfsConnectionConfigOutput
+}
+
+type GetConnectionProfileStrategyOverrideAdfsConnectionConfigArgs struct {
+}
+
+func (GetConnectionProfileStrategyOverrideAdfsConnectionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverrideAdfsConnectionConfig)(nil)).Elem()
+}
+
+func (i GetConnectionProfileStrategyOverrideAdfsConnectionConfigArgs) ToGetConnectionProfileStrategyOverrideAdfsConnectionConfigOutput() GetConnectionProfileStrategyOverrideAdfsConnectionConfigOutput {
+	return i.ToGetConnectionProfileStrategyOverrideAdfsConnectionConfigOutputWithContext(context.Background())
+}
+
+func (i GetConnectionProfileStrategyOverrideAdfsConnectionConfigArgs) ToGetConnectionProfileStrategyOverrideAdfsConnectionConfigOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideAdfsConnectionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionProfileStrategyOverrideAdfsConnectionConfigOutput)
+}
+
+type GetConnectionProfileStrategyOverrideAdfsConnectionConfigOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionProfileStrategyOverrideAdfsConnectionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverrideAdfsConnectionConfig)(nil)).Elem()
+}
+
+func (o GetConnectionProfileStrategyOverrideAdfsConnectionConfigOutput) ToGetConnectionProfileStrategyOverrideAdfsConnectionConfigOutput() GetConnectionProfileStrategyOverrideAdfsConnectionConfigOutput {
+	return o
+}
+
+func (o GetConnectionProfileStrategyOverrideAdfsConnectionConfigOutput) ToGetConnectionProfileStrategyOverrideAdfsConnectionConfigOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideAdfsConnectionConfigOutput {
+	return o
+}
+
+type GetConnectionProfileStrategyOverrideGoogleApps struct {
+	// Connection config for the strategy override.
+	ConnectionConfig GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfig `pulumi:"connectionConfig"`
+	// Enabled features for the strategy override.
+	EnabledFeatures []string `pulumi:"enabledFeatures"`
+}
+
+// GetConnectionProfileStrategyOverrideGoogleAppsInput is an input type that accepts GetConnectionProfileStrategyOverrideGoogleAppsArgs and GetConnectionProfileStrategyOverrideGoogleAppsOutput values.
+// You can construct a concrete instance of `GetConnectionProfileStrategyOverrideGoogleAppsInput` via:
+//
+//	GetConnectionProfileStrategyOverrideGoogleAppsArgs{...}
+type GetConnectionProfileStrategyOverrideGoogleAppsInput interface {
+	pulumi.Input
+
+	ToGetConnectionProfileStrategyOverrideGoogleAppsOutput() GetConnectionProfileStrategyOverrideGoogleAppsOutput
+	ToGetConnectionProfileStrategyOverrideGoogleAppsOutputWithContext(context.Context) GetConnectionProfileStrategyOverrideGoogleAppsOutput
+}
+
+type GetConnectionProfileStrategyOverrideGoogleAppsArgs struct {
+	// Connection config for the strategy override.
+	ConnectionConfig GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigInput `pulumi:"connectionConfig"`
+	// Enabled features for the strategy override.
+	EnabledFeatures pulumi.StringArrayInput `pulumi:"enabledFeatures"`
+}
+
+func (GetConnectionProfileStrategyOverrideGoogleAppsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverrideGoogleApps)(nil)).Elem()
+}
+
+func (i GetConnectionProfileStrategyOverrideGoogleAppsArgs) ToGetConnectionProfileStrategyOverrideGoogleAppsOutput() GetConnectionProfileStrategyOverrideGoogleAppsOutput {
+	return i.ToGetConnectionProfileStrategyOverrideGoogleAppsOutputWithContext(context.Background())
+}
+
+func (i GetConnectionProfileStrategyOverrideGoogleAppsArgs) ToGetConnectionProfileStrategyOverrideGoogleAppsOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideGoogleAppsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionProfileStrategyOverrideGoogleAppsOutput)
+}
+
+type GetConnectionProfileStrategyOverrideGoogleAppsOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionProfileStrategyOverrideGoogleAppsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverrideGoogleApps)(nil)).Elem()
+}
+
+func (o GetConnectionProfileStrategyOverrideGoogleAppsOutput) ToGetConnectionProfileStrategyOverrideGoogleAppsOutput() GetConnectionProfileStrategyOverrideGoogleAppsOutput {
+	return o
+}
+
+func (o GetConnectionProfileStrategyOverrideGoogleAppsOutput) ToGetConnectionProfileStrategyOverrideGoogleAppsOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideGoogleAppsOutput {
+	return o
+}
+
+// Connection config for the strategy override.
+func (o GetConnectionProfileStrategyOverrideGoogleAppsOutput) ConnectionConfig() GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigOutput {
+	return o.ApplyT(func(v GetConnectionProfileStrategyOverrideGoogleApps) GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfig {
+		return v.ConnectionConfig
+	}).(GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigOutput)
+}
+
+// Enabled features for the strategy override.
+func (o GetConnectionProfileStrategyOverrideGoogleAppsOutput) EnabledFeatures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConnectionProfileStrategyOverrideGoogleApps) []string { return v.EnabledFeatures }).(pulumi.StringArrayOutput)
+}
+
+type GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfig struct {
+}
+
+// GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigInput is an input type that accepts GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigArgs and GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigOutput values.
+// You can construct a concrete instance of `GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigInput` via:
+//
+//	GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigArgs{...}
+type GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigInput interface {
+	pulumi.Input
+
+	ToGetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigOutput() GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigOutput
+	ToGetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigOutputWithContext(context.Context) GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigOutput
+}
+
+type GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigArgs struct {
+}
+
+func (GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfig)(nil)).Elem()
+}
+
+func (i GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigArgs) ToGetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigOutput() GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigOutput {
+	return i.ToGetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigOutputWithContext(context.Background())
+}
+
+func (i GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigArgs) ToGetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigOutput)
+}
+
+type GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfig)(nil)).Elem()
+}
+
+func (o GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigOutput) ToGetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigOutput() GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigOutput {
+	return o
+}
+
+func (o GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigOutput) ToGetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigOutput {
+	return o
+}
+
+type GetConnectionProfileStrategyOverrideOidc struct {
+	// Connection config for the strategy override.
+	ConnectionConfig GetConnectionProfileStrategyOverrideOidcConnectionConfig `pulumi:"connectionConfig"`
+	// Enabled features for the strategy override.
+	EnabledFeatures []string `pulumi:"enabledFeatures"`
+}
+
+// GetConnectionProfileStrategyOverrideOidcInput is an input type that accepts GetConnectionProfileStrategyOverrideOidcArgs and GetConnectionProfileStrategyOverrideOidcOutput values.
+// You can construct a concrete instance of `GetConnectionProfileStrategyOverrideOidcInput` via:
+//
+//	GetConnectionProfileStrategyOverrideOidcArgs{...}
+type GetConnectionProfileStrategyOverrideOidcInput interface {
+	pulumi.Input
+
+	ToGetConnectionProfileStrategyOverrideOidcOutput() GetConnectionProfileStrategyOverrideOidcOutput
+	ToGetConnectionProfileStrategyOverrideOidcOutputWithContext(context.Context) GetConnectionProfileStrategyOverrideOidcOutput
+}
+
+type GetConnectionProfileStrategyOverrideOidcArgs struct {
+	// Connection config for the strategy override.
+	ConnectionConfig GetConnectionProfileStrategyOverrideOidcConnectionConfigInput `pulumi:"connectionConfig"`
+	// Enabled features for the strategy override.
+	EnabledFeatures pulumi.StringArrayInput `pulumi:"enabledFeatures"`
+}
+
+func (GetConnectionProfileStrategyOverrideOidcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverrideOidc)(nil)).Elem()
+}
+
+func (i GetConnectionProfileStrategyOverrideOidcArgs) ToGetConnectionProfileStrategyOverrideOidcOutput() GetConnectionProfileStrategyOverrideOidcOutput {
+	return i.ToGetConnectionProfileStrategyOverrideOidcOutputWithContext(context.Background())
+}
+
+func (i GetConnectionProfileStrategyOverrideOidcArgs) ToGetConnectionProfileStrategyOverrideOidcOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideOidcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionProfileStrategyOverrideOidcOutput)
+}
+
+type GetConnectionProfileStrategyOverrideOidcOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionProfileStrategyOverrideOidcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverrideOidc)(nil)).Elem()
+}
+
+func (o GetConnectionProfileStrategyOverrideOidcOutput) ToGetConnectionProfileStrategyOverrideOidcOutput() GetConnectionProfileStrategyOverrideOidcOutput {
+	return o
+}
+
+func (o GetConnectionProfileStrategyOverrideOidcOutput) ToGetConnectionProfileStrategyOverrideOidcOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideOidcOutput {
+	return o
+}
+
+// Connection config for the strategy override.
+func (o GetConnectionProfileStrategyOverrideOidcOutput) ConnectionConfig() GetConnectionProfileStrategyOverrideOidcConnectionConfigOutput {
+	return o.ApplyT(func(v GetConnectionProfileStrategyOverrideOidc) GetConnectionProfileStrategyOverrideOidcConnectionConfig {
+		return v.ConnectionConfig
+	}).(GetConnectionProfileStrategyOverrideOidcConnectionConfigOutput)
+}
+
+// Enabled features for the strategy override.
+func (o GetConnectionProfileStrategyOverrideOidcOutput) EnabledFeatures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConnectionProfileStrategyOverrideOidc) []string { return v.EnabledFeatures }).(pulumi.StringArrayOutput)
+}
+
+type GetConnectionProfileStrategyOverrideOidcConnectionConfig struct {
+}
+
+// GetConnectionProfileStrategyOverrideOidcConnectionConfigInput is an input type that accepts GetConnectionProfileStrategyOverrideOidcConnectionConfigArgs and GetConnectionProfileStrategyOverrideOidcConnectionConfigOutput values.
+// You can construct a concrete instance of `GetConnectionProfileStrategyOverrideOidcConnectionConfigInput` via:
+//
+//	GetConnectionProfileStrategyOverrideOidcConnectionConfigArgs{...}
+type GetConnectionProfileStrategyOverrideOidcConnectionConfigInput interface {
+	pulumi.Input
+
+	ToGetConnectionProfileStrategyOverrideOidcConnectionConfigOutput() GetConnectionProfileStrategyOverrideOidcConnectionConfigOutput
+	ToGetConnectionProfileStrategyOverrideOidcConnectionConfigOutputWithContext(context.Context) GetConnectionProfileStrategyOverrideOidcConnectionConfigOutput
+}
+
+type GetConnectionProfileStrategyOverrideOidcConnectionConfigArgs struct {
+}
+
+func (GetConnectionProfileStrategyOverrideOidcConnectionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverrideOidcConnectionConfig)(nil)).Elem()
+}
+
+func (i GetConnectionProfileStrategyOverrideOidcConnectionConfigArgs) ToGetConnectionProfileStrategyOverrideOidcConnectionConfigOutput() GetConnectionProfileStrategyOverrideOidcConnectionConfigOutput {
+	return i.ToGetConnectionProfileStrategyOverrideOidcConnectionConfigOutputWithContext(context.Background())
+}
+
+func (i GetConnectionProfileStrategyOverrideOidcConnectionConfigArgs) ToGetConnectionProfileStrategyOverrideOidcConnectionConfigOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideOidcConnectionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionProfileStrategyOverrideOidcConnectionConfigOutput)
+}
+
+type GetConnectionProfileStrategyOverrideOidcConnectionConfigOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionProfileStrategyOverrideOidcConnectionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverrideOidcConnectionConfig)(nil)).Elem()
+}
+
+func (o GetConnectionProfileStrategyOverrideOidcConnectionConfigOutput) ToGetConnectionProfileStrategyOverrideOidcConnectionConfigOutput() GetConnectionProfileStrategyOverrideOidcConnectionConfigOutput {
+	return o
+}
+
+func (o GetConnectionProfileStrategyOverrideOidcConnectionConfigOutput) ToGetConnectionProfileStrategyOverrideOidcConnectionConfigOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideOidcConnectionConfigOutput {
+	return o
+}
+
+type GetConnectionProfileStrategyOverrideOkta struct {
+	// Connection config for the strategy override.
+	ConnectionConfig GetConnectionProfileStrategyOverrideOktaConnectionConfig `pulumi:"connectionConfig"`
+	// Enabled features for the strategy override.
+	EnabledFeatures []string `pulumi:"enabledFeatures"`
+}
+
+// GetConnectionProfileStrategyOverrideOktaInput is an input type that accepts GetConnectionProfileStrategyOverrideOktaArgs and GetConnectionProfileStrategyOverrideOktaOutput values.
+// You can construct a concrete instance of `GetConnectionProfileStrategyOverrideOktaInput` via:
+//
+//	GetConnectionProfileStrategyOverrideOktaArgs{...}
+type GetConnectionProfileStrategyOverrideOktaInput interface {
+	pulumi.Input
+
+	ToGetConnectionProfileStrategyOverrideOktaOutput() GetConnectionProfileStrategyOverrideOktaOutput
+	ToGetConnectionProfileStrategyOverrideOktaOutputWithContext(context.Context) GetConnectionProfileStrategyOverrideOktaOutput
+}
+
+type GetConnectionProfileStrategyOverrideOktaArgs struct {
+	// Connection config for the strategy override.
+	ConnectionConfig GetConnectionProfileStrategyOverrideOktaConnectionConfigInput `pulumi:"connectionConfig"`
+	// Enabled features for the strategy override.
+	EnabledFeatures pulumi.StringArrayInput `pulumi:"enabledFeatures"`
+}
+
+func (GetConnectionProfileStrategyOverrideOktaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverrideOkta)(nil)).Elem()
+}
+
+func (i GetConnectionProfileStrategyOverrideOktaArgs) ToGetConnectionProfileStrategyOverrideOktaOutput() GetConnectionProfileStrategyOverrideOktaOutput {
+	return i.ToGetConnectionProfileStrategyOverrideOktaOutputWithContext(context.Background())
+}
+
+func (i GetConnectionProfileStrategyOverrideOktaArgs) ToGetConnectionProfileStrategyOverrideOktaOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideOktaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionProfileStrategyOverrideOktaOutput)
+}
+
+type GetConnectionProfileStrategyOverrideOktaOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionProfileStrategyOverrideOktaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverrideOkta)(nil)).Elem()
+}
+
+func (o GetConnectionProfileStrategyOverrideOktaOutput) ToGetConnectionProfileStrategyOverrideOktaOutput() GetConnectionProfileStrategyOverrideOktaOutput {
+	return o
+}
+
+func (o GetConnectionProfileStrategyOverrideOktaOutput) ToGetConnectionProfileStrategyOverrideOktaOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideOktaOutput {
+	return o
+}
+
+// Connection config for the strategy override.
+func (o GetConnectionProfileStrategyOverrideOktaOutput) ConnectionConfig() GetConnectionProfileStrategyOverrideOktaConnectionConfigOutput {
+	return o.ApplyT(func(v GetConnectionProfileStrategyOverrideOkta) GetConnectionProfileStrategyOverrideOktaConnectionConfig {
+		return v.ConnectionConfig
+	}).(GetConnectionProfileStrategyOverrideOktaConnectionConfigOutput)
+}
+
+// Enabled features for the strategy override.
+func (o GetConnectionProfileStrategyOverrideOktaOutput) EnabledFeatures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConnectionProfileStrategyOverrideOkta) []string { return v.EnabledFeatures }).(pulumi.StringArrayOutput)
+}
+
+type GetConnectionProfileStrategyOverrideOktaConnectionConfig struct {
+}
+
+// GetConnectionProfileStrategyOverrideOktaConnectionConfigInput is an input type that accepts GetConnectionProfileStrategyOverrideOktaConnectionConfigArgs and GetConnectionProfileStrategyOverrideOktaConnectionConfigOutput values.
+// You can construct a concrete instance of `GetConnectionProfileStrategyOverrideOktaConnectionConfigInput` via:
+//
+//	GetConnectionProfileStrategyOverrideOktaConnectionConfigArgs{...}
+type GetConnectionProfileStrategyOverrideOktaConnectionConfigInput interface {
+	pulumi.Input
+
+	ToGetConnectionProfileStrategyOverrideOktaConnectionConfigOutput() GetConnectionProfileStrategyOverrideOktaConnectionConfigOutput
+	ToGetConnectionProfileStrategyOverrideOktaConnectionConfigOutputWithContext(context.Context) GetConnectionProfileStrategyOverrideOktaConnectionConfigOutput
+}
+
+type GetConnectionProfileStrategyOverrideOktaConnectionConfigArgs struct {
+}
+
+func (GetConnectionProfileStrategyOverrideOktaConnectionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverrideOktaConnectionConfig)(nil)).Elem()
+}
+
+func (i GetConnectionProfileStrategyOverrideOktaConnectionConfigArgs) ToGetConnectionProfileStrategyOverrideOktaConnectionConfigOutput() GetConnectionProfileStrategyOverrideOktaConnectionConfigOutput {
+	return i.ToGetConnectionProfileStrategyOverrideOktaConnectionConfigOutputWithContext(context.Background())
+}
+
+func (i GetConnectionProfileStrategyOverrideOktaConnectionConfigArgs) ToGetConnectionProfileStrategyOverrideOktaConnectionConfigOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideOktaConnectionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionProfileStrategyOverrideOktaConnectionConfigOutput)
+}
+
+type GetConnectionProfileStrategyOverrideOktaConnectionConfigOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionProfileStrategyOverrideOktaConnectionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverrideOktaConnectionConfig)(nil)).Elem()
+}
+
+func (o GetConnectionProfileStrategyOverrideOktaConnectionConfigOutput) ToGetConnectionProfileStrategyOverrideOktaConnectionConfigOutput() GetConnectionProfileStrategyOverrideOktaConnectionConfigOutput {
+	return o
+}
+
+func (o GetConnectionProfileStrategyOverrideOktaConnectionConfigOutput) ToGetConnectionProfileStrategyOverrideOktaConnectionConfigOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideOktaConnectionConfigOutput {
+	return o
+}
+
+type GetConnectionProfileStrategyOverridePingfederate struct {
+	// Connection config for the strategy override.
+	ConnectionConfig GetConnectionProfileStrategyOverridePingfederateConnectionConfig `pulumi:"connectionConfig"`
+	// Enabled features for the strategy override.
+	EnabledFeatures []string `pulumi:"enabledFeatures"`
+}
+
+// GetConnectionProfileStrategyOverridePingfederateInput is an input type that accepts GetConnectionProfileStrategyOverridePingfederateArgs and GetConnectionProfileStrategyOverridePingfederateOutput values.
+// You can construct a concrete instance of `GetConnectionProfileStrategyOverridePingfederateInput` via:
+//
+//	GetConnectionProfileStrategyOverridePingfederateArgs{...}
+type GetConnectionProfileStrategyOverridePingfederateInput interface {
+	pulumi.Input
+
+	ToGetConnectionProfileStrategyOverridePingfederateOutput() GetConnectionProfileStrategyOverridePingfederateOutput
+	ToGetConnectionProfileStrategyOverridePingfederateOutputWithContext(context.Context) GetConnectionProfileStrategyOverridePingfederateOutput
+}
+
+type GetConnectionProfileStrategyOverridePingfederateArgs struct {
+	// Connection config for the strategy override.
+	ConnectionConfig GetConnectionProfileStrategyOverridePingfederateConnectionConfigInput `pulumi:"connectionConfig"`
+	// Enabled features for the strategy override.
+	EnabledFeatures pulumi.StringArrayInput `pulumi:"enabledFeatures"`
+}
+
+func (GetConnectionProfileStrategyOverridePingfederateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverridePingfederate)(nil)).Elem()
+}
+
+func (i GetConnectionProfileStrategyOverridePingfederateArgs) ToGetConnectionProfileStrategyOverridePingfederateOutput() GetConnectionProfileStrategyOverridePingfederateOutput {
+	return i.ToGetConnectionProfileStrategyOverridePingfederateOutputWithContext(context.Background())
+}
+
+func (i GetConnectionProfileStrategyOverridePingfederateArgs) ToGetConnectionProfileStrategyOverridePingfederateOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverridePingfederateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionProfileStrategyOverridePingfederateOutput)
+}
+
+type GetConnectionProfileStrategyOverridePingfederateOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionProfileStrategyOverridePingfederateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverridePingfederate)(nil)).Elem()
+}
+
+func (o GetConnectionProfileStrategyOverridePingfederateOutput) ToGetConnectionProfileStrategyOverridePingfederateOutput() GetConnectionProfileStrategyOverridePingfederateOutput {
+	return o
+}
+
+func (o GetConnectionProfileStrategyOverridePingfederateOutput) ToGetConnectionProfileStrategyOverridePingfederateOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverridePingfederateOutput {
+	return o
+}
+
+// Connection config for the strategy override.
+func (o GetConnectionProfileStrategyOverridePingfederateOutput) ConnectionConfig() GetConnectionProfileStrategyOverridePingfederateConnectionConfigOutput {
+	return o.ApplyT(func(v GetConnectionProfileStrategyOverridePingfederate) GetConnectionProfileStrategyOverridePingfederateConnectionConfig {
+		return v.ConnectionConfig
+	}).(GetConnectionProfileStrategyOverridePingfederateConnectionConfigOutput)
+}
+
+// Enabled features for the strategy override.
+func (o GetConnectionProfileStrategyOverridePingfederateOutput) EnabledFeatures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConnectionProfileStrategyOverridePingfederate) []string { return v.EnabledFeatures }).(pulumi.StringArrayOutput)
+}
+
+type GetConnectionProfileStrategyOverridePingfederateConnectionConfig struct {
+}
+
+// GetConnectionProfileStrategyOverridePingfederateConnectionConfigInput is an input type that accepts GetConnectionProfileStrategyOverridePingfederateConnectionConfigArgs and GetConnectionProfileStrategyOverridePingfederateConnectionConfigOutput values.
+// You can construct a concrete instance of `GetConnectionProfileStrategyOverridePingfederateConnectionConfigInput` via:
+//
+//	GetConnectionProfileStrategyOverridePingfederateConnectionConfigArgs{...}
+type GetConnectionProfileStrategyOverridePingfederateConnectionConfigInput interface {
+	pulumi.Input
+
+	ToGetConnectionProfileStrategyOverridePingfederateConnectionConfigOutput() GetConnectionProfileStrategyOverridePingfederateConnectionConfigOutput
+	ToGetConnectionProfileStrategyOverridePingfederateConnectionConfigOutputWithContext(context.Context) GetConnectionProfileStrategyOverridePingfederateConnectionConfigOutput
+}
+
+type GetConnectionProfileStrategyOverridePingfederateConnectionConfigArgs struct {
+}
+
+func (GetConnectionProfileStrategyOverridePingfederateConnectionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverridePingfederateConnectionConfig)(nil)).Elem()
+}
+
+func (i GetConnectionProfileStrategyOverridePingfederateConnectionConfigArgs) ToGetConnectionProfileStrategyOverridePingfederateConnectionConfigOutput() GetConnectionProfileStrategyOverridePingfederateConnectionConfigOutput {
+	return i.ToGetConnectionProfileStrategyOverridePingfederateConnectionConfigOutputWithContext(context.Background())
+}
+
+func (i GetConnectionProfileStrategyOverridePingfederateConnectionConfigArgs) ToGetConnectionProfileStrategyOverridePingfederateConnectionConfigOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverridePingfederateConnectionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionProfileStrategyOverridePingfederateConnectionConfigOutput)
+}
+
+type GetConnectionProfileStrategyOverridePingfederateConnectionConfigOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionProfileStrategyOverridePingfederateConnectionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverridePingfederateConnectionConfig)(nil)).Elem()
+}
+
+func (o GetConnectionProfileStrategyOverridePingfederateConnectionConfigOutput) ToGetConnectionProfileStrategyOverridePingfederateConnectionConfigOutput() GetConnectionProfileStrategyOverridePingfederateConnectionConfigOutput {
+	return o
+}
+
+func (o GetConnectionProfileStrategyOverridePingfederateConnectionConfigOutput) ToGetConnectionProfileStrategyOverridePingfederateConnectionConfigOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverridePingfederateConnectionConfigOutput {
+	return o
+}
+
+type GetConnectionProfileStrategyOverrideSamlp struct {
+	// Connection config for the strategy override.
+	ConnectionConfig GetConnectionProfileStrategyOverrideSamlpConnectionConfig `pulumi:"connectionConfig"`
+	// Enabled features for the strategy override.
+	EnabledFeatures []string `pulumi:"enabledFeatures"`
+}
+
+// GetConnectionProfileStrategyOverrideSamlpInput is an input type that accepts GetConnectionProfileStrategyOverrideSamlpArgs and GetConnectionProfileStrategyOverrideSamlpOutput values.
+// You can construct a concrete instance of `GetConnectionProfileStrategyOverrideSamlpInput` via:
+//
+//	GetConnectionProfileStrategyOverrideSamlpArgs{...}
+type GetConnectionProfileStrategyOverrideSamlpInput interface {
+	pulumi.Input
+
+	ToGetConnectionProfileStrategyOverrideSamlpOutput() GetConnectionProfileStrategyOverrideSamlpOutput
+	ToGetConnectionProfileStrategyOverrideSamlpOutputWithContext(context.Context) GetConnectionProfileStrategyOverrideSamlpOutput
+}
+
+type GetConnectionProfileStrategyOverrideSamlpArgs struct {
+	// Connection config for the strategy override.
+	ConnectionConfig GetConnectionProfileStrategyOverrideSamlpConnectionConfigInput `pulumi:"connectionConfig"`
+	// Enabled features for the strategy override.
+	EnabledFeatures pulumi.StringArrayInput `pulumi:"enabledFeatures"`
+}
+
+func (GetConnectionProfileStrategyOverrideSamlpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverrideSamlp)(nil)).Elem()
+}
+
+func (i GetConnectionProfileStrategyOverrideSamlpArgs) ToGetConnectionProfileStrategyOverrideSamlpOutput() GetConnectionProfileStrategyOverrideSamlpOutput {
+	return i.ToGetConnectionProfileStrategyOverrideSamlpOutputWithContext(context.Background())
+}
+
+func (i GetConnectionProfileStrategyOverrideSamlpArgs) ToGetConnectionProfileStrategyOverrideSamlpOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideSamlpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionProfileStrategyOverrideSamlpOutput)
+}
+
+type GetConnectionProfileStrategyOverrideSamlpOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionProfileStrategyOverrideSamlpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverrideSamlp)(nil)).Elem()
+}
+
+func (o GetConnectionProfileStrategyOverrideSamlpOutput) ToGetConnectionProfileStrategyOverrideSamlpOutput() GetConnectionProfileStrategyOverrideSamlpOutput {
+	return o
+}
+
+func (o GetConnectionProfileStrategyOverrideSamlpOutput) ToGetConnectionProfileStrategyOverrideSamlpOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideSamlpOutput {
+	return o
+}
+
+// Connection config for the strategy override.
+func (o GetConnectionProfileStrategyOverrideSamlpOutput) ConnectionConfig() GetConnectionProfileStrategyOverrideSamlpConnectionConfigOutput {
+	return o.ApplyT(func(v GetConnectionProfileStrategyOverrideSamlp) GetConnectionProfileStrategyOverrideSamlpConnectionConfig {
+		return v.ConnectionConfig
+	}).(GetConnectionProfileStrategyOverrideSamlpConnectionConfigOutput)
+}
+
+// Enabled features for the strategy override.
+func (o GetConnectionProfileStrategyOverrideSamlpOutput) EnabledFeatures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConnectionProfileStrategyOverrideSamlp) []string { return v.EnabledFeatures }).(pulumi.StringArrayOutput)
+}
+
+type GetConnectionProfileStrategyOverrideSamlpConnectionConfig struct {
+}
+
+// GetConnectionProfileStrategyOverrideSamlpConnectionConfigInput is an input type that accepts GetConnectionProfileStrategyOverrideSamlpConnectionConfigArgs and GetConnectionProfileStrategyOverrideSamlpConnectionConfigOutput values.
+// You can construct a concrete instance of `GetConnectionProfileStrategyOverrideSamlpConnectionConfigInput` via:
+//
+//	GetConnectionProfileStrategyOverrideSamlpConnectionConfigArgs{...}
+type GetConnectionProfileStrategyOverrideSamlpConnectionConfigInput interface {
+	pulumi.Input
+
+	ToGetConnectionProfileStrategyOverrideSamlpConnectionConfigOutput() GetConnectionProfileStrategyOverrideSamlpConnectionConfigOutput
+	ToGetConnectionProfileStrategyOverrideSamlpConnectionConfigOutputWithContext(context.Context) GetConnectionProfileStrategyOverrideSamlpConnectionConfigOutput
+}
+
+type GetConnectionProfileStrategyOverrideSamlpConnectionConfigArgs struct {
+}
+
+func (GetConnectionProfileStrategyOverrideSamlpConnectionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverrideSamlpConnectionConfig)(nil)).Elem()
+}
+
+func (i GetConnectionProfileStrategyOverrideSamlpConnectionConfigArgs) ToGetConnectionProfileStrategyOverrideSamlpConnectionConfigOutput() GetConnectionProfileStrategyOverrideSamlpConnectionConfigOutput {
+	return i.ToGetConnectionProfileStrategyOverrideSamlpConnectionConfigOutputWithContext(context.Background())
+}
+
+func (i GetConnectionProfileStrategyOverrideSamlpConnectionConfigArgs) ToGetConnectionProfileStrategyOverrideSamlpConnectionConfigOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideSamlpConnectionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionProfileStrategyOverrideSamlpConnectionConfigOutput)
+}
+
+type GetConnectionProfileStrategyOverrideSamlpConnectionConfigOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionProfileStrategyOverrideSamlpConnectionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverrideSamlpConnectionConfig)(nil)).Elem()
+}
+
+func (o GetConnectionProfileStrategyOverrideSamlpConnectionConfigOutput) ToGetConnectionProfileStrategyOverrideSamlpConnectionConfigOutput() GetConnectionProfileStrategyOverrideSamlpConnectionConfigOutput {
+	return o
+}
+
+func (o GetConnectionProfileStrategyOverrideSamlpConnectionConfigOutput) ToGetConnectionProfileStrategyOverrideSamlpConnectionConfigOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideSamlpConnectionConfigOutput {
+	return o
+}
+
+type GetConnectionProfileStrategyOverrideWaad struct {
+	// Connection config for the strategy override.
+	ConnectionConfig GetConnectionProfileStrategyOverrideWaadConnectionConfig `pulumi:"connectionConfig"`
+	// Enabled features for the strategy override.
+	EnabledFeatures []string `pulumi:"enabledFeatures"`
+}
+
+// GetConnectionProfileStrategyOverrideWaadInput is an input type that accepts GetConnectionProfileStrategyOverrideWaadArgs and GetConnectionProfileStrategyOverrideWaadOutput values.
+// You can construct a concrete instance of `GetConnectionProfileStrategyOverrideWaadInput` via:
+//
+//	GetConnectionProfileStrategyOverrideWaadArgs{...}
+type GetConnectionProfileStrategyOverrideWaadInput interface {
+	pulumi.Input
+
+	ToGetConnectionProfileStrategyOverrideWaadOutput() GetConnectionProfileStrategyOverrideWaadOutput
+	ToGetConnectionProfileStrategyOverrideWaadOutputWithContext(context.Context) GetConnectionProfileStrategyOverrideWaadOutput
+}
+
+type GetConnectionProfileStrategyOverrideWaadArgs struct {
+	// Connection config for the strategy override.
+	ConnectionConfig GetConnectionProfileStrategyOverrideWaadConnectionConfigInput `pulumi:"connectionConfig"`
+	// Enabled features for the strategy override.
+	EnabledFeatures pulumi.StringArrayInput `pulumi:"enabledFeatures"`
+}
+
+func (GetConnectionProfileStrategyOverrideWaadArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverrideWaad)(nil)).Elem()
+}
+
+func (i GetConnectionProfileStrategyOverrideWaadArgs) ToGetConnectionProfileStrategyOverrideWaadOutput() GetConnectionProfileStrategyOverrideWaadOutput {
+	return i.ToGetConnectionProfileStrategyOverrideWaadOutputWithContext(context.Background())
+}
+
+func (i GetConnectionProfileStrategyOverrideWaadArgs) ToGetConnectionProfileStrategyOverrideWaadOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideWaadOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionProfileStrategyOverrideWaadOutput)
+}
+
+type GetConnectionProfileStrategyOverrideWaadOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionProfileStrategyOverrideWaadOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverrideWaad)(nil)).Elem()
+}
+
+func (o GetConnectionProfileStrategyOverrideWaadOutput) ToGetConnectionProfileStrategyOverrideWaadOutput() GetConnectionProfileStrategyOverrideWaadOutput {
+	return o
+}
+
+func (o GetConnectionProfileStrategyOverrideWaadOutput) ToGetConnectionProfileStrategyOverrideWaadOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideWaadOutput {
+	return o
+}
+
+// Connection config for the strategy override.
+func (o GetConnectionProfileStrategyOverrideWaadOutput) ConnectionConfig() GetConnectionProfileStrategyOverrideWaadConnectionConfigOutput {
+	return o.ApplyT(func(v GetConnectionProfileStrategyOverrideWaad) GetConnectionProfileStrategyOverrideWaadConnectionConfig {
+		return v.ConnectionConfig
+	}).(GetConnectionProfileStrategyOverrideWaadConnectionConfigOutput)
+}
+
+// Enabled features for the strategy override.
+func (o GetConnectionProfileStrategyOverrideWaadOutput) EnabledFeatures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConnectionProfileStrategyOverrideWaad) []string { return v.EnabledFeatures }).(pulumi.StringArrayOutput)
+}
+
+type GetConnectionProfileStrategyOverrideWaadConnectionConfig struct {
+}
+
+// GetConnectionProfileStrategyOverrideWaadConnectionConfigInput is an input type that accepts GetConnectionProfileStrategyOverrideWaadConnectionConfigArgs and GetConnectionProfileStrategyOverrideWaadConnectionConfigOutput values.
+// You can construct a concrete instance of `GetConnectionProfileStrategyOverrideWaadConnectionConfigInput` via:
+//
+//	GetConnectionProfileStrategyOverrideWaadConnectionConfigArgs{...}
+type GetConnectionProfileStrategyOverrideWaadConnectionConfigInput interface {
+	pulumi.Input
+
+	ToGetConnectionProfileStrategyOverrideWaadConnectionConfigOutput() GetConnectionProfileStrategyOverrideWaadConnectionConfigOutput
+	ToGetConnectionProfileStrategyOverrideWaadConnectionConfigOutputWithContext(context.Context) GetConnectionProfileStrategyOverrideWaadConnectionConfigOutput
+}
+
+type GetConnectionProfileStrategyOverrideWaadConnectionConfigArgs struct {
+}
+
+func (GetConnectionProfileStrategyOverrideWaadConnectionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverrideWaadConnectionConfig)(nil)).Elem()
+}
+
+func (i GetConnectionProfileStrategyOverrideWaadConnectionConfigArgs) ToGetConnectionProfileStrategyOverrideWaadConnectionConfigOutput() GetConnectionProfileStrategyOverrideWaadConnectionConfigOutput {
+	return i.ToGetConnectionProfileStrategyOverrideWaadConnectionConfigOutputWithContext(context.Background())
+}
+
+func (i GetConnectionProfileStrategyOverrideWaadConnectionConfigArgs) ToGetConnectionProfileStrategyOverrideWaadConnectionConfigOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideWaadConnectionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionProfileStrategyOverrideWaadConnectionConfigOutput)
+}
+
+type GetConnectionProfileStrategyOverrideWaadConnectionConfigOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionProfileStrategyOverrideWaadConnectionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverrideWaadConnectionConfig)(nil)).Elem()
+}
+
+func (o GetConnectionProfileStrategyOverrideWaadConnectionConfigOutput) ToGetConnectionProfileStrategyOverrideWaadConnectionConfigOutput() GetConnectionProfileStrategyOverrideWaadConnectionConfigOutput {
+	return o
+}
+
+func (o GetConnectionProfileStrategyOverrideWaadConnectionConfigOutput) ToGetConnectionProfileStrategyOverrideWaadConnectionConfigOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideWaadConnectionConfigOutput {
+	return o
 }
 
 type GetConnectionScimConfigurationDefaultMapping struct {
@@ -60137,6 +65030,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientCredentialsTlsClientAuthCredentialArrayInput)(nil)).Elem(), ClientCredentialsTlsClientAuthCredentialArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientDefaultOrganizationInput)(nil)).Elem(), ClientDefaultOrganizationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientDefaultOrganizationPtrInput)(nil)).Elem(), ClientDefaultOrganizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientExpressConfigurationInput)(nil)).Elem(), ClientExpressConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientExpressConfigurationPtrInput)(nil)).Elem(), ClientExpressConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientExpressConfigurationLinkedClientInput)(nil)).Elem(), ClientExpressConfigurationLinkedClientArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientExpressConfigurationLinkedClientArrayInput)(nil)).Elem(), ClientExpressConfigurationLinkedClientArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientJwtConfigurationInput)(nil)).Elem(), ClientJwtConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientJwtConfigurationPtrInput)(nil)).Elem(), ClientJwtConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientMobileInput)(nil)).Elem(), ClientMobileArgs{})
@@ -60241,6 +65138,44 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsValidationPtrInput)(nil)).Elem(), ConnectionOptionsValidationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsValidationUsernameInput)(nil)).Elem(), ConnectionOptionsValidationUsernameArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsValidationUsernamePtrInput)(nil)).Elem(), ConnectionOptionsValidationUsernameArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileConnectionConfigInput)(nil)).Elem(), ConnectionProfileConnectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileConnectionConfigPtrInput)(nil)).Elem(), ConnectionProfileConnectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileOrganizationInput)(nil)).Elem(), ConnectionProfileOrganizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileOrganizationPtrInput)(nil)).Elem(), ConnectionProfileOrganizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileStrategyOverridesInput)(nil)).Elem(), ConnectionProfileStrategyOverridesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileStrategyOverridesPtrInput)(nil)).Elem(), ConnectionProfileStrategyOverridesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileStrategyOverridesAdInput)(nil)).Elem(), ConnectionProfileStrategyOverridesAdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileStrategyOverridesAdPtrInput)(nil)).Elem(), ConnectionProfileStrategyOverridesAdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileStrategyOverridesAdConnectionConfigInput)(nil)).Elem(), ConnectionProfileStrategyOverridesAdConnectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileStrategyOverridesAdConnectionConfigPtrInput)(nil)).Elem(), ConnectionProfileStrategyOverridesAdConnectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileStrategyOverridesAdfsInput)(nil)).Elem(), ConnectionProfileStrategyOverridesAdfsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileStrategyOverridesAdfsPtrInput)(nil)).Elem(), ConnectionProfileStrategyOverridesAdfsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileStrategyOverridesAdfsConnectionConfigInput)(nil)).Elem(), ConnectionProfileStrategyOverridesAdfsConnectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileStrategyOverridesAdfsConnectionConfigPtrInput)(nil)).Elem(), ConnectionProfileStrategyOverridesAdfsConnectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileStrategyOverridesGoogleAppsInput)(nil)).Elem(), ConnectionProfileStrategyOverridesGoogleAppsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileStrategyOverridesGoogleAppsPtrInput)(nil)).Elem(), ConnectionProfileStrategyOverridesGoogleAppsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigInput)(nil)).Elem(), ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigPtrInput)(nil)).Elem(), ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileStrategyOverridesOidcInput)(nil)).Elem(), ConnectionProfileStrategyOverridesOidcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileStrategyOverridesOidcPtrInput)(nil)).Elem(), ConnectionProfileStrategyOverridesOidcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileStrategyOverridesOidcConnectionConfigInput)(nil)).Elem(), ConnectionProfileStrategyOverridesOidcConnectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileStrategyOverridesOidcConnectionConfigPtrInput)(nil)).Elem(), ConnectionProfileStrategyOverridesOidcConnectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileStrategyOverridesOktaInput)(nil)).Elem(), ConnectionProfileStrategyOverridesOktaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileStrategyOverridesOktaPtrInput)(nil)).Elem(), ConnectionProfileStrategyOverridesOktaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileStrategyOverridesOktaConnectionConfigInput)(nil)).Elem(), ConnectionProfileStrategyOverridesOktaConnectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileStrategyOverridesOktaConnectionConfigPtrInput)(nil)).Elem(), ConnectionProfileStrategyOverridesOktaConnectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileStrategyOverridesPingfederateInput)(nil)).Elem(), ConnectionProfileStrategyOverridesPingfederateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileStrategyOverridesPingfederatePtrInput)(nil)).Elem(), ConnectionProfileStrategyOverridesPingfederateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileStrategyOverridesPingfederateConnectionConfigInput)(nil)).Elem(), ConnectionProfileStrategyOverridesPingfederateConnectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileStrategyOverridesPingfederateConnectionConfigPtrInput)(nil)).Elem(), ConnectionProfileStrategyOverridesPingfederateConnectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileStrategyOverridesSamlpInput)(nil)).Elem(), ConnectionProfileStrategyOverridesSamlpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileStrategyOverridesSamlpPtrInput)(nil)).Elem(), ConnectionProfileStrategyOverridesSamlpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileStrategyOverridesSamlpConnectionConfigInput)(nil)).Elem(), ConnectionProfileStrategyOverridesSamlpConnectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileStrategyOverridesSamlpConnectionConfigPtrInput)(nil)).Elem(), ConnectionProfileStrategyOverridesSamlpConnectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileStrategyOverridesWaadInput)(nil)).Elem(), ConnectionProfileStrategyOverridesWaadArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileStrategyOverridesWaadPtrInput)(nil)).Elem(), ConnectionProfileStrategyOverridesWaadArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileStrategyOverridesWaadConnectionConfigInput)(nil)).Elem(), ConnectionProfileStrategyOverridesWaadConnectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileStrategyOverridesWaadConnectionConfigPtrInput)(nil)).Elem(), ConnectionProfileStrategyOverridesWaadConnectionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionScimConfigurationMappingInput)(nil)).Elem(), ConnectionScimConfigurationMappingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionScimConfigurationMappingArrayInput)(nil)).Elem(), ConnectionScimConfigurationMappingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomDomainCertificateInput)(nil)).Elem(), CustomDomainCertificateArgs{})
@@ -60534,6 +65469,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientClientAuthenticationMethodTlsClientAuthCredentialArrayInput)(nil)).Elem(), GetClientClientAuthenticationMethodTlsClientAuthCredentialArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientDefaultOrganizationInput)(nil)).Elem(), GetClientDefaultOrganizationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientDefaultOrganizationArrayInput)(nil)).Elem(), GetClientDefaultOrganizationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientExpressConfigurationInput)(nil)).Elem(), GetClientExpressConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientExpressConfigurationArrayInput)(nil)).Elem(), GetClientExpressConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientExpressConfigurationLinkedClientInput)(nil)).Elem(), GetClientExpressConfigurationLinkedClientArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientExpressConfigurationLinkedClientArrayInput)(nil)).Elem(), GetClientExpressConfigurationLinkedClientArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientGrantsClientGrantInput)(nil)).Elem(), GetClientGrantsClientGrantArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientGrantsClientGrantArrayInput)(nil)).Elem(), GetClientGrantsClientGrantArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientJwtConfigurationInput)(nil)).Elem(), GetClientJwtConfigurationArgs{})
@@ -60574,6 +65513,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientTokenQuotaClientCredentialArrayInput)(nil)).Elem(), GetClientTokenQuotaClientCredentialArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientInput)(nil)).Elem(), GetClientsClientArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientArrayInput)(nil)).Elem(), GetClientsClientArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientExpressConfigurationInput)(nil)).Elem(), GetClientsClientExpressConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientExpressConfigurationArrayInput)(nil)).Elem(), GetClientsClientExpressConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientExpressConfigurationLinkedClientInput)(nil)).Elem(), GetClientsClientExpressConfigurationLinkedClientArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientExpressConfigurationLinkedClientArrayInput)(nil)).Elem(), GetClientsClientExpressConfigurationLinkedClientArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientOidcLogoutInput)(nil)).Elem(), GetClientsClientOidcLogoutArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientOidcLogoutArrayInput)(nil)).Elem(), GetClientsClientOidcLogoutArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientOidcLogoutBackchannelLogoutInitiatorInput)(nil)).Elem(), GetClientsClientOidcLogoutBackchannelLogoutInitiatorArgs{})
@@ -60660,6 +65603,28 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionValidationArrayInput)(nil)).Elem(), GetConnectionOptionValidationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionValidationUsernameInput)(nil)).Elem(), GetConnectionOptionValidationUsernameArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionValidationUsernameArrayInput)(nil)).Elem(), GetConnectionOptionValidationUsernameArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionProfileConnectionConfigInput)(nil)).Elem(), GetConnectionProfileConnectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionProfileConnectionConfigArrayInput)(nil)).Elem(), GetConnectionProfileConnectionConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionProfileOrganizationInput)(nil)).Elem(), GetConnectionProfileOrganizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionProfileOrganizationArrayInput)(nil)).Elem(), GetConnectionProfileOrganizationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionProfileStrategyOverrideInput)(nil)).Elem(), GetConnectionProfileStrategyOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionProfileStrategyOverrideArrayInput)(nil)).Elem(), GetConnectionProfileStrategyOverrideArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionProfileStrategyOverrideAdInput)(nil)).Elem(), GetConnectionProfileStrategyOverrideAdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionProfileStrategyOverrideAdConnectionConfigInput)(nil)).Elem(), GetConnectionProfileStrategyOverrideAdConnectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionProfileStrategyOverrideAdfsInput)(nil)).Elem(), GetConnectionProfileStrategyOverrideAdfsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionProfileStrategyOverrideAdfsConnectionConfigInput)(nil)).Elem(), GetConnectionProfileStrategyOverrideAdfsConnectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionProfileStrategyOverrideGoogleAppsInput)(nil)).Elem(), GetConnectionProfileStrategyOverrideGoogleAppsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigInput)(nil)).Elem(), GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionProfileStrategyOverrideOidcInput)(nil)).Elem(), GetConnectionProfileStrategyOverrideOidcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionProfileStrategyOverrideOidcConnectionConfigInput)(nil)).Elem(), GetConnectionProfileStrategyOverrideOidcConnectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionProfileStrategyOverrideOktaInput)(nil)).Elem(), GetConnectionProfileStrategyOverrideOktaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionProfileStrategyOverrideOktaConnectionConfigInput)(nil)).Elem(), GetConnectionProfileStrategyOverrideOktaConnectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionProfileStrategyOverridePingfederateInput)(nil)).Elem(), GetConnectionProfileStrategyOverridePingfederateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionProfileStrategyOverridePingfederateConnectionConfigInput)(nil)).Elem(), GetConnectionProfileStrategyOverridePingfederateConnectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionProfileStrategyOverrideSamlpInput)(nil)).Elem(), GetConnectionProfileStrategyOverrideSamlpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionProfileStrategyOverrideSamlpConnectionConfigInput)(nil)).Elem(), GetConnectionProfileStrategyOverrideSamlpConnectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionProfileStrategyOverrideWaadInput)(nil)).Elem(), GetConnectionProfileStrategyOverrideWaadArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionProfileStrategyOverrideWaadConnectionConfigInput)(nil)).Elem(), GetConnectionProfileStrategyOverrideWaadConnectionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionScimConfigurationDefaultMappingInput)(nil)).Elem(), GetConnectionScimConfigurationDefaultMappingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionScimConfigurationDefaultMappingArrayInput)(nil)).Elem(), GetConnectionScimConfigurationDefaultMappingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionScimConfigurationMappingInput)(nil)).Elem(), GetConnectionScimConfigurationMappingArgs{})
@@ -60928,6 +65893,10 @@ func init() {
 	pulumi.RegisterOutputType(ClientCredentialsTlsClientAuthCredentialArrayOutput{})
 	pulumi.RegisterOutputType(ClientDefaultOrganizationOutput{})
 	pulumi.RegisterOutputType(ClientDefaultOrganizationPtrOutput{})
+	pulumi.RegisterOutputType(ClientExpressConfigurationOutput{})
+	pulumi.RegisterOutputType(ClientExpressConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(ClientExpressConfigurationLinkedClientOutput{})
+	pulumi.RegisterOutputType(ClientExpressConfigurationLinkedClientArrayOutput{})
 	pulumi.RegisterOutputType(ClientJwtConfigurationOutput{})
 	pulumi.RegisterOutputType(ClientJwtConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(ClientMobileOutput{})
@@ -61032,6 +66001,44 @@ func init() {
 	pulumi.RegisterOutputType(ConnectionOptionsValidationPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsValidationUsernameOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsValidationUsernamePtrOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileConnectionConfigOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileConnectionConfigPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileOrganizationOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileOrganizationPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileStrategyOverridesOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileStrategyOverridesPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileStrategyOverridesAdOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileStrategyOverridesAdPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileStrategyOverridesAdConnectionConfigOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileStrategyOverridesAdConnectionConfigPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileStrategyOverridesAdfsOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileStrategyOverridesAdfsPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileStrategyOverridesAdfsConnectionConfigOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileStrategyOverridesAdfsConnectionConfigPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileStrategyOverridesGoogleAppsOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileStrategyOverridesGoogleAppsPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileStrategyOverridesOidcOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileStrategyOverridesOidcPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileStrategyOverridesOidcConnectionConfigOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileStrategyOverridesOidcConnectionConfigPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileStrategyOverridesOktaOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileStrategyOverridesOktaPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileStrategyOverridesOktaConnectionConfigOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileStrategyOverridesOktaConnectionConfigPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileStrategyOverridesPingfederateOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileStrategyOverridesPingfederatePtrOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileStrategyOverridesPingfederateConnectionConfigOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileStrategyOverridesPingfederateConnectionConfigPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileStrategyOverridesSamlpOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileStrategyOverridesSamlpPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileStrategyOverridesSamlpConnectionConfigOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileStrategyOverridesSamlpConnectionConfigPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileStrategyOverridesWaadOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileStrategyOverridesWaadPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileStrategyOverridesWaadConnectionConfigOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileStrategyOverridesWaadConnectionConfigPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionScimConfigurationMappingOutput{})
 	pulumi.RegisterOutputType(ConnectionScimConfigurationMappingArrayOutput{})
 	pulumi.RegisterOutputType(CustomDomainCertificateOutput{})
@@ -61325,6 +66332,10 @@ func init() {
 	pulumi.RegisterOutputType(GetClientClientAuthenticationMethodTlsClientAuthCredentialArrayOutput{})
 	pulumi.RegisterOutputType(GetClientDefaultOrganizationOutput{})
 	pulumi.RegisterOutputType(GetClientDefaultOrganizationArrayOutput{})
+	pulumi.RegisterOutputType(GetClientExpressConfigurationOutput{})
+	pulumi.RegisterOutputType(GetClientExpressConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(GetClientExpressConfigurationLinkedClientOutput{})
+	pulumi.RegisterOutputType(GetClientExpressConfigurationLinkedClientArrayOutput{})
 	pulumi.RegisterOutputType(GetClientGrantsClientGrantOutput{})
 	pulumi.RegisterOutputType(GetClientGrantsClientGrantArrayOutput{})
 	pulumi.RegisterOutputType(GetClientJwtConfigurationOutput{})
@@ -61365,6 +66376,10 @@ func init() {
 	pulumi.RegisterOutputType(GetClientTokenQuotaClientCredentialArrayOutput{})
 	pulumi.RegisterOutputType(GetClientsClientOutput{})
 	pulumi.RegisterOutputType(GetClientsClientArrayOutput{})
+	pulumi.RegisterOutputType(GetClientsClientExpressConfigurationOutput{})
+	pulumi.RegisterOutputType(GetClientsClientExpressConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(GetClientsClientExpressConfigurationLinkedClientOutput{})
+	pulumi.RegisterOutputType(GetClientsClientExpressConfigurationLinkedClientArrayOutput{})
 	pulumi.RegisterOutputType(GetClientsClientOidcLogoutOutput{})
 	pulumi.RegisterOutputType(GetClientsClientOidcLogoutArrayOutput{})
 	pulumi.RegisterOutputType(GetClientsClientOidcLogoutBackchannelLogoutInitiatorOutput{})
@@ -61451,6 +66466,28 @@ func init() {
 	pulumi.RegisterOutputType(GetConnectionOptionValidationArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionValidationUsernameOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionValidationUsernameArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionProfileConnectionConfigOutput{})
+	pulumi.RegisterOutputType(GetConnectionProfileConnectionConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionProfileOrganizationOutput{})
+	pulumi.RegisterOutputType(GetConnectionProfileOrganizationArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionProfileStrategyOverrideOutput{})
+	pulumi.RegisterOutputType(GetConnectionProfileStrategyOverrideArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionProfileStrategyOverrideAdOutput{})
+	pulumi.RegisterOutputType(GetConnectionProfileStrategyOverrideAdConnectionConfigOutput{})
+	pulumi.RegisterOutputType(GetConnectionProfileStrategyOverrideAdfsOutput{})
+	pulumi.RegisterOutputType(GetConnectionProfileStrategyOverrideAdfsConnectionConfigOutput{})
+	pulumi.RegisterOutputType(GetConnectionProfileStrategyOverrideGoogleAppsOutput{})
+	pulumi.RegisterOutputType(GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigOutput{})
+	pulumi.RegisterOutputType(GetConnectionProfileStrategyOverrideOidcOutput{})
+	pulumi.RegisterOutputType(GetConnectionProfileStrategyOverrideOidcConnectionConfigOutput{})
+	pulumi.RegisterOutputType(GetConnectionProfileStrategyOverrideOktaOutput{})
+	pulumi.RegisterOutputType(GetConnectionProfileStrategyOverrideOktaConnectionConfigOutput{})
+	pulumi.RegisterOutputType(GetConnectionProfileStrategyOverridePingfederateOutput{})
+	pulumi.RegisterOutputType(GetConnectionProfileStrategyOverridePingfederateConnectionConfigOutput{})
+	pulumi.RegisterOutputType(GetConnectionProfileStrategyOverrideSamlpOutput{})
+	pulumi.RegisterOutputType(GetConnectionProfileStrategyOverrideSamlpConnectionConfigOutput{})
+	pulumi.RegisterOutputType(GetConnectionProfileStrategyOverrideWaadOutput{})
+	pulumi.RegisterOutputType(GetConnectionProfileStrategyOverrideWaadConnectionConfigOutput{})
 	pulumi.RegisterOutputType(GetConnectionScimConfigurationDefaultMappingOutput{})
 	pulumi.RegisterOutputType(GetConnectionScimConfigurationDefaultMappingArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionScimConfigurationMappingOutput{})

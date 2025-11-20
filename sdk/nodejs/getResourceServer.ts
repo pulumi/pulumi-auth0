@@ -81,6 +81,10 @@ export interface GetResourceServerResult {
      */
     readonly identifier?: string;
     /**
+     * Indicates whether this resource server is a special resource server created by Auth0. It cannot be modified or deleted directly.
+     */
+    readonly isSystem: boolean;
+    /**
      * Friendly name for the resource server. Cannot include `<` or `>` characters.
      */
     readonly name: string;

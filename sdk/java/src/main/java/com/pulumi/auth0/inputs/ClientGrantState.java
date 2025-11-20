@@ -78,6 +78,21 @@ public final class ClientGrantState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Indicates whether this grant is a special grant created by Auth0. It cannot be modified or deleted directly.
+     * 
+     */
+    @Import(name="isSystem")
+    private @Nullable Output<Boolean> isSystem;
+
+    /**
+     * @return Indicates whether this grant is a special grant created by Auth0. It cannot be modified or deleted directly.
+     * 
+     */
+    public Optional<Output<Boolean>> isSystem() {
+        return Optional.ofNullable(this.isSystem);
+    }
+
+    /**
      * Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
      * 
      */
@@ -129,6 +144,7 @@ public final class ClientGrantState extends com.pulumi.resources.ResourceArgs {
         this.audience = $.audience;
         this.authorizationDetailsTypes = $.authorizationDetailsTypes;
         this.clientId = $.clientId;
+        this.isSystem = $.isSystem;
         this.organizationUsage = $.organizationUsage;
         this.scopes = $.scopes;
         this.subjectType = $.subjectType;
@@ -244,6 +260,27 @@ public final class ClientGrantState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder clientId(String clientId) {
             return clientId(Output.of(clientId));
+        }
+
+        /**
+         * @param isSystem Indicates whether this grant is a special grant created by Auth0. It cannot be modified or deleted directly.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isSystem(@Nullable Output<Boolean> isSystem) {
+            $.isSystem = isSystem;
+            return this;
+        }
+
+        /**
+         * @param isSystem Indicates whether this grant is a special grant created by Auth0. It cannot be modified or deleted directly.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isSystem(Boolean isSystem) {
+            return isSystem(Output.of(isSystem));
         }
 
         /**

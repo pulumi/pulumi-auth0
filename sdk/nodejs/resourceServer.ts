@@ -120,6 +120,10 @@ export class ResourceServer extends pulumi.CustomResource {
      */
     declare public readonly identifier: pulumi.Output<string>;
     /**
+     * Indicates whether this resource server is a special resource server created by Auth0. It cannot be modified or deleted directly.
+     */
+    declare public /*out*/ readonly isSystem: pulumi.Output<boolean>;
+    /**
      * Friendly name for the resource server. Cannot include `<` or `>` characters.
      */
     declare public readonly name: pulumi.Output<string>;
@@ -183,6 +187,7 @@ export class ResourceServer extends pulumi.CustomResource {
             resourceInputs["consentPolicy"] = state?.consentPolicy;
             resourceInputs["enforcePolicies"] = state?.enforcePolicies;
             resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["isSystem"] = state?.isSystem;
             resourceInputs["name"] = state?.name;
             resourceInputs["proofOfPossession"] = state?.proofOfPossession;
             resourceInputs["signingAlg"] = state?.signingAlg;
@@ -216,6 +221,7 @@ export class ResourceServer extends pulumi.CustomResource {
             resourceInputs["tokenLifetimeForWeb"] = args?.tokenLifetimeForWeb;
             resourceInputs["verificationLocation"] = args?.verificationLocation;
             resourceInputs["clientId"] = undefined /*out*/;
+            resourceInputs["isSystem"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ResourceServer.__pulumiType, name, resourceInputs, opts);
@@ -250,6 +256,10 @@ export interface ResourceServerState {
      * Unique identifier for the resource server. Used as the audience parameter for authorization calls. Cannot be changed once set.
      */
     identifier?: pulumi.Input<string>;
+    /**
+     * Indicates whether this resource server is a special resource server created by Auth0. It cannot be modified or deleted directly.
+     */
+    isSystem?: pulumi.Input<boolean>;
     /**
      * Friendly name for the resource server. Cannot include `<` or `>` characters.
      */

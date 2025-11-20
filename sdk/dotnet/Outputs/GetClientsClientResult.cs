@@ -26,7 +26,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly ImmutableArray<string> AllowedOrigins;
         /// <summary>
-        /// Type of application the client represents. Possible values are: `Native`, `Spa`, `RegularWeb`, `NonInteractive`, `ResourceServer`,`SsoIntegration`. Specific SSO integrations types accepted as well are: `Rms`, `Box`, `Cloudbees`, `Concur`, `Dropbox`, `Mscrm`, `Echosign`, `Egnyte`, `Newrelic`, `Office365`, `Salesforce`, `Sentry`, `Sharepoint`, `Slack`, `Springcm`, `Zendesk`, `Zoom`.
+        /// Type of application the client represents. Possible values are: `Native`, `Spa`, `RegularWeb`, `NonInteractive`, `ResourceServer`,`SsoIntegration`. Specific SSO integrations types accepted as well are: `Rms`, `Box`, `Cloudbees`, `Concur`, `Dropbox`, `Mscrm`, `Echosign`, `Egnyte`, `Newrelic`, `Office365`, `Salesforce`, `Sentry`, `Sharepoint`, `Slack`, `Springcm`, `Zendesk`, `Zoom`, `ExpressConfiguration`
         /// </summary>
         public readonly string AppType;
         /// <summary>
@@ -50,6 +50,10 @@ namespace Pulumi.Auth0.Outputs
         /// Description of the purpose of the client.
         /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// Express Configuration settings for the client. Used with OIN Express Configuration.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetClientsClientExpressConfigurationResult> ExpressConfigurations;
         /// <summary>
         /// Types of grants that this client is authorized to use.
         /// </summary>
@@ -118,6 +122,8 @@ namespace Pulumi.Auth0.Outputs
 
             string description,
 
+            ImmutableArray<Outputs.GetClientsClientExpressConfigurationResult> expressConfigurations,
+
             ImmutableArray<string> grantTypes,
 
             bool isFirstParty,
@@ -152,6 +158,7 @@ namespace Pulumi.Auth0.Outputs
             ClientMetadata = clientMetadata;
             ClientSecret = clientSecret;
             Description = description;
+            ExpressConfigurations = expressConfigurations;
             GrantTypes = grantTypes;
             IsFirstParty = isFirstParty;
             IsTokenEndpointIpHeaderTrusted = isTokenEndpointIpHeaderTrusted;

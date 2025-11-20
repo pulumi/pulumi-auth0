@@ -74,7 +74,7 @@ type LookupClientResult struct {
 	AllowedLogoutUrls []string `pulumi:"allowedLogoutUrls"`
 	// URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
 	AllowedOrigins []string `pulumi:"allowedOrigins"`
-	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `expressConfiguration`
 	AppType string `pulumi:"appType"`
 	// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `["guardian-push"]` if not specified.
 	AsyncApprovalNotificationChannels []string `pulumi:"asyncApprovalNotificationChannels"`
@@ -105,6 +105,8 @@ type LookupClientResult struct {
 	Description string `pulumi:"description"`
 	// Encryption used for WS-Fed responses with this client.
 	EncryptionKey map[string]string `pulumi:"encryptionKey"`
+	// Express Configuration settings for the client. Used with OIN Express Configuration.
+	ExpressConfigurations []GetClientExpressConfiguration `pulumi:"expressConfigurations"`
 	// HTML form template to be used for WS-Federation.
 	FormTemplate string `pulumi:"formTemplate"`
 	// Types of grants that this client is authorized to use.
@@ -224,7 +226,7 @@ func (o LookupClientResultOutput) AllowedOrigins() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupClientResult) []string { return v.AllowedOrigins }).(pulumi.StringArrayOutput)
 }
 
-// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `expressConfiguration`
 func (o LookupClientResultOutput) AppType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClientResult) string { return v.AppType }).(pulumi.StringOutput)
 }
@@ -301,6 +303,11 @@ func (o LookupClientResultOutput) Description() pulumi.StringOutput {
 // Encryption used for WS-Fed responses with this client.
 func (o LookupClientResultOutput) EncryptionKey() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupClientResult) map[string]string { return v.EncryptionKey }).(pulumi.StringMapOutput)
+}
+
+// Express Configuration settings for the client. Used with OIN Express Configuration.
+func (o LookupClientResultOutput) ExpressConfigurations() GetClientExpressConfigurationArrayOutput {
+	return o.ApplyT(func(v LookupClientResult) []GetClientExpressConfiguration { return v.ExpressConfigurations }).(GetClientExpressConfigurationArrayOutput)
 }
 
 // HTML form template to be used for WS-Federation.

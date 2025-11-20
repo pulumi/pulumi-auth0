@@ -80,6 +80,8 @@ type LookupResourceServerResult struct {
 	Id string `pulumi:"id"`
 	// Unique identifier for the resource server. Used as the audience parameter for authorization calls. If not provided, `resourceServerId` must be set.
 	Identifier *string `pulumi:"identifier"`
+	// Indicates whether this resource server is a special resource server created by Auth0. It cannot be modified or deleted directly.
+	IsSystem bool `pulumi:"isSystem"`
 	// Friendly name for the resource server. Cannot include `<` or `>` characters.
 	Name string `pulumi:"name"`
 	// Configuration settings for proof-of-possession for this resource server.
@@ -179,6 +181,11 @@ func (o LookupResourceServerResultOutput) Id() pulumi.StringOutput {
 // Unique identifier for the resource server. Used as the audience parameter for authorization calls. If not provided, `resourceServerId` must be set.
 func (o LookupResourceServerResultOutput) Identifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupResourceServerResult) *string { return v.Identifier }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether this resource server is a special resource server created by Auth0. It cannot be modified or deleted directly.
+func (o LookupResourceServerResultOutput) IsSystem() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupResourceServerResult) bool { return v.IsSystem }).(pulumi.BoolOutput)
 }
 
 // Friendly name for the resource server. Cannot include `<` or `>` characters.

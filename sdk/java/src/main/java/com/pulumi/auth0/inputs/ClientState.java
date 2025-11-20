@@ -5,6 +5,7 @@ package com.pulumi.auth0.inputs;
 
 import com.pulumi.auth0.inputs.ClientAddonsArgs;
 import com.pulumi.auth0.inputs.ClientDefaultOrganizationArgs;
+import com.pulumi.auth0.inputs.ClientExpressConfigurationArgs;
 import com.pulumi.auth0.inputs.ClientJwtConfigurationArgs;
 import com.pulumi.auth0.inputs.ClientMobileArgs;
 import com.pulumi.auth0.inputs.ClientNativeSocialLoginArgs;
@@ -90,14 +91,14 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+     * Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `expressConfiguration`
      * 
      */
     @Import(name="appType")
     private @Nullable Output<String> appType;
 
     /**
-     * @return Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+     * @return Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `expressConfiguration`
      * 
      */
     public Optional<Output<String>> appType() {
@@ -297,6 +298,21 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Map<String,String>>> encryptionKey() {
         return Optional.ofNullable(this.encryptionKey);
+    }
+
+    /**
+     * Express Configuration settings for the client. Used with OIN Express Configuration.
+     * 
+     */
+    @Import(name="expressConfiguration")
+    private @Nullable Output<ClientExpressConfigurationArgs> expressConfiguration;
+
+    /**
+     * @return Express Configuration settings for the client. Used with OIN Express Configuration.
+     * 
+     */
+    public Optional<Output<ClientExpressConfigurationArgs>> expressConfiguration() {
+        return Optional.ofNullable(this.expressConfiguration);
     }
 
     /**
@@ -740,6 +756,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         this.defaultOrganization = $.defaultOrganization;
         this.description = $.description;
         this.encryptionKey = $.encryptionKey;
+        this.expressConfiguration = $.expressConfiguration;
         this.formTemplate = $.formTemplate;
         this.grantTypes = $.grantTypes;
         this.initiateLoginUri = $.initiateLoginUri;
@@ -903,7 +920,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appType Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+         * @param appType Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `expressConfiguration`
          * 
          * @return builder
          * 
@@ -914,7 +931,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appType Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+         * @param appType Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `expressConfiguration`
          * 
          * @return builder
          * 
@@ -1224,6 +1241,27 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder encryptionKey(Map<String,String> encryptionKey) {
             return encryptionKey(Output.of(encryptionKey));
+        }
+
+        /**
+         * @param expressConfiguration Express Configuration settings for the client. Used with OIN Express Configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expressConfiguration(@Nullable Output<ClientExpressConfigurationArgs> expressConfiguration) {
+            $.expressConfiguration = expressConfiguration;
+            return this;
+        }
+
+        /**
+         * @param expressConfiguration Express Configuration settings for the client. Used with OIN Express Configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expressConfiguration(ClientExpressConfigurationArgs expressConfiguration) {
+            return expressConfiguration(Output.of(expressConfiguration));
         }
 
         /**

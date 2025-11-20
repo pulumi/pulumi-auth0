@@ -50,7 +50,7 @@ namespace Pulumi.Auth0
         public Output<ImmutableArray<string>> AllowedOrigins { get; private set; } = null!;
 
         /// <summary>
-        /// Type of application the client represents. Possible values are: `Native`, `Spa`, `RegularWeb`, `NonInteractive`, `ResourceServer`,`SsoIntegration`. Specific SSO integrations types accepted as well are: `Rms`, `Box`, `Cloudbees`, `Concur`, `Dropbox`, `Mscrm`, `Echosign`, `Egnyte`, `Newrelic`, `Office365`, `Salesforce`, `Sentry`, `Sharepoint`, `Slack`, `Springcm`, `Zendesk`, `Zoom`.
+        /// Type of application the client represents. Possible values are: `Native`, `Spa`, `RegularWeb`, `NonInteractive`, `ResourceServer`,`SsoIntegration`. Specific SSO integrations types accepted as well are: `Rms`, `Box`, `Cloudbees`, `Concur`, `Dropbox`, `Mscrm`, `Echosign`, `Egnyte`, `Newrelic`, `Office365`, `Salesforce`, `Sentry`, `Sharepoint`, `Slack`, `Springcm`, `Zendesk`, `Zoom`, `ExpressConfiguration`
         /// </summary>
         [Output("appType")]
         public Output<string?> AppType { get; private set; } = null!;
@@ -132,6 +132,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Output("encryptionKey")]
         public Output<ImmutableDictionary<string, string>?> EncryptionKey { get; private set; } = null!;
+
+        /// <summary>
+        /// Express Configuration settings for the client. Used with OIN Express Configuration.
+        /// </summary>
+        [Output("expressConfiguration")]
+        public Output<Outputs.ClientExpressConfiguration> ExpressConfiguration { get; private set; } = null!;
 
         /// <summary>
         /// HTML form template to be used for WS-Federation.
@@ -221,13 +227,13 @@ namespace Pulumi.Auth0
         /// Defines how to proceed during an authentication transaction when `OrganizationUsage = "require"`. Can be `NoPrompt` (default), `PreLoginPrompt` or  `PostLoginPrompt`.
         /// </summary>
         [Output("organizationRequireBehavior")]
-        public Output<string?> OrganizationRequireBehavior { get; private set; } = null!;
+        public Output<string> OrganizationRequireBehavior { get; private set; } = null!;
 
         /// <summary>
         /// Defines how to proceed during an authentication transaction with regards to an organization. Can be `Deny` (default), `Allow` or `Require`.
         /// </summary>
         [Output("organizationUsage")]
-        public Output<string?> OrganizationUsage { get; private set; } = null!;
+        public Output<string> OrganizationUsage { get; private set; } = null!;
 
         /// <summary>
         /// Configuration settings for the refresh tokens issued for this client.
@@ -391,7 +397,7 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// Type of application the client represents. Possible values are: `Native`, `Spa`, `RegularWeb`, `NonInteractive`, `ResourceServer`,`SsoIntegration`. Specific SSO integrations types accepted as well are: `Rms`, `Box`, `Cloudbees`, `Concur`, `Dropbox`, `Mscrm`, `Echosign`, `Egnyte`, `Newrelic`, `Office365`, `Salesforce`, `Sentry`, `Sharepoint`, `Slack`, `Springcm`, `Zendesk`, `Zoom`.
+        /// Type of application the client represents. Possible values are: `Native`, `Spa`, `RegularWeb`, `NonInteractive`, `ResourceServer`,`SsoIntegration`. Specific SSO integrations types accepted as well are: `Rms`, `Box`, `Cloudbees`, `Concur`, `Dropbox`, `Mscrm`, `Echosign`, `Egnyte`, `Newrelic`, `Office365`, `Salesforce`, `Sentry`, `Sharepoint`, `Slack`, `Springcm`, `Zendesk`, `Zoom`, `ExpressConfiguration`
         /// </summary>
         [Input("appType")]
         public Input<string>? AppType { get; set; }
@@ -497,6 +503,12 @@ namespace Pulumi.Auth0
             get => _encryptionKey ?? (_encryptionKey = new InputMap<string>());
             set => _encryptionKey = value;
         }
+
+        /// <summary>
+        /// Express Configuration settings for the client. Used with OIN Express Configuration.
+        /// </summary>
+        [Input("expressConfiguration")]
+        public Input<Inputs.ClientExpressConfigurationArgs>? ExpressConfiguration { get; set; }
 
         /// <summary>
         /// HTML form template to be used for WS-Federation.
@@ -734,7 +746,7 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// Type of application the client represents. Possible values are: `Native`, `Spa`, `RegularWeb`, `NonInteractive`, `ResourceServer`,`SsoIntegration`. Specific SSO integrations types accepted as well are: `Rms`, `Box`, `Cloudbees`, `Concur`, `Dropbox`, `Mscrm`, `Echosign`, `Egnyte`, `Newrelic`, `Office365`, `Salesforce`, `Sentry`, `Sharepoint`, `Slack`, `Springcm`, `Zendesk`, `Zoom`.
+        /// Type of application the client represents. Possible values are: `Native`, `Spa`, `RegularWeb`, `NonInteractive`, `ResourceServer`,`SsoIntegration`. Specific SSO integrations types accepted as well are: `Rms`, `Box`, `Cloudbees`, `Concur`, `Dropbox`, `Mscrm`, `Echosign`, `Egnyte`, `Newrelic`, `Office365`, `Salesforce`, `Sentry`, `Sharepoint`, `Slack`, `Springcm`, `Zendesk`, `Zoom`, `ExpressConfiguration`
         /// </summary>
         [Input("appType")]
         public Input<string>? AppType { get; set; }
@@ -846,6 +858,12 @@ namespace Pulumi.Auth0
             get => _encryptionKey ?? (_encryptionKey = new InputMap<string>());
             set => _encryptionKey = value;
         }
+
+        /// <summary>
+        /// Express Configuration settings for the client. Used with OIN Express Configuration.
+        /// </summary>
+        [Input("expressConfiguration")]
+        public Input<Inputs.ClientExpressConfigurationGetArgs>? ExpressConfiguration { get; set; }
 
         /// <summary>
         /// HTML form template to be used for WS-Federation.

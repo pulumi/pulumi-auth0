@@ -120,6 +120,8 @@ type ClientGrant struct {
 	AuthorizationDetailsTypes pulumi.StringArrayOutput `pulumi:"authorizationDetailsTypes"`
 	// ID of the client for this grant.
 	ClientId pulumi.StringOutput `pulumi:"clientId"`
+	// Indicates whether this grant is a special grant created by Auth0. It cannot be modified or deleted directly.
+	IsSystem pulumi.BoolOutput `pulumi:"isSystem"`
 	// Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
 	OrganizationUsage pulumi.StringPtrOutput `pulumi:"organizationUsage"`
 	// Permissions (scopes) included in this grant.
@@ -175,6 +177,8 @@ type clientGrantState struct {
 	AuthorizationDetailsTypes []string `pulumi:"authorizationDetailsTypes"`
 	// ID of the client for this grant.
 	ClientId *string `pulumi:"clientId"`
+	// Indicates whether this grant is a special grant created by Auth0. It cannot be modified or deleted directly.
+	IsSystem *bool `pulumi:"isSystem"`
 	// Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
 	OrganizationUsage *string `pulumi:"organizationUsage"`
 	// Permissions (scopes) included in this grant.
@@ -192,6 +196,8 @@ type ClientGrantState struct {
 	AuthorizationDetailsTypes pulumi.StringArrayInput
 	// ID of the client for this grant.
 	ClientId pulumi.StringPtrInput
+	// Indicates whether this grant is a special grant created by Auth0. It cannot be modified or deleted directly.
+	IsSystem pulumi.BoolPtrInput
 	// Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
 	OrganizationUsage pulumi.StringPtrInput
 	// Permissions (scopes) included in this grant.
@@ -344,6 +350,11 @@ func (o ClientGrantOutput) AuthorizationDetailsTypes() pulumi.StringArrayOutput 
 // ID of the client for this grant.
 func (o ClientGrantOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClientGrant) pulumi.StringOutput { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// Indicates whether this grant is a special grant created by Auth0. It cannot be modified or deleted directly.
+func (o ClientGrantOutput) IsSystem() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ClientGrant) pulumi.BoolOutput { return v.IsSystem }).(pulumi.BoolOutput)
 }
 
 // Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)

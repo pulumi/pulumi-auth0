@@ -38,6 +38,7 @@ class ClientArgs:
                  default_organization: Optional[pulumi.Input['ClientDefaultOrganizationArgs']] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  encryption_key: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 express_configuration: Optional[pulumi.Input['ClientExpressConfigurationArgs']] = None,
                  form_template: Optional[pulumi.Input[_builtins.str]] = None,
                  grant_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  initiate_login_uri: Optional[pulumi.Input[_builtins.str]] = None,
@@ -71,7 +72,7 @@ class ClientArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_clients: List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_origins: URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
-        :param pulumi.Input[_builtins.str] app_type: Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+        :param pulumi.Input[_builtins.str] app_type: Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `express_configuration`
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] async_approval_notification_channels: List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `["guardian-push"]` if not specified.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] callbacks: URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] client_aliases: List of audiences/realms for SAML protocol. Used by the wsfed addon.
@@ -84,6 +85,7 @@ class ClientArgs:
         :param pulumi.Input['ClientDefaultOrganizationArgs'] default_organization: Configure and associate an organization with the Client
         :param pulumi.Input[_builtins.str] description: Description of the purpose of the client.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] encryption_key: Encryption used for WS-Fed responses with this client.
+        :param pulumi.Input['ClientExpressConfigurationArgs'] express_configuration: Express Configuration settings for the client. Used with OIN Express Configuration.
         :param pulumi.Input[_builtins.str] form_template: HTML form template to be used for WS-Federation.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] grant_types: Types of grants that this client is authorized to use.
         :param pulumi.Input[_builtins.str] initiate_login_uri: Initiate login URI. Must be HTTPS or an empty string.
@@ -147,6 +149,8 @@ class ClientArgs:
             pulumi.set(__self__, "description", description)
         if encryption_key is not None:
             pulumi.set(__self__, "encryption_key", encryption_key)
+        if express_configuration is not None:
+            pulumi.set(__self__, "express_configuration", express_configuration)
         if form_template is not None:
             pulumi.set(__self__, "form_template", form_template)
         if grant_types is not None:
@@ -257,7 +261,7 @@ class ClientArgs:
     @pulumi.getter(name="appType")
     def app_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+        Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `express_configuration`
         """
         return pulumi.get(self, "app_type")
 
@@ -408,6 +412,18 @@ class ClientArgs:
     @encryption_key.setter
     def encryption_key(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "encryption_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="expressConfiguration")
+    def express_configuration(self) -> Optional[pulumi.Input['ClientExpressConfigurationArgs']]:
+        """
+        Express Configuration settings for the client. Used with OIN Express Configuration.
+        """
+        return pulumi.get(self, "express_configuration")
+
+    @express_configuration.setter
+    def express_configuration(self, value: Optional[pulumi.Input['ClientExpressConfigurationArgs']]):
+        pulumi.set(self, "express_configuration", value)
 
     @_builtins.property
     @pulumi.getter(name="formTemplate")
@@ -753,6 +769,7 @@ class _ClientState:
                  default_organization: Optional[pulumi.Input['ClientDefaultOrganizationArgs']] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  encryption_key: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 express_configuration: Optional[pulumi.Input['ClientExpressConfigurationArgs']] = None,
                  form_template: Optional[pulumi.Input[_builtins.str]] = None,
                  grant_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  initiate_login_uri: Optional[pulumi.Input[_builtins.str]] = None,
@@ -787,7 +804,7 @@ class _ClientState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_clients: List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_origins: URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
-        :param pulumi.Input[_builtins.str] app_type: Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+        :param pulumi.Input[_builtins.str] app_type: Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `express_configuration`
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] async_approval_notification_channels: List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `["guardian-push"]` if not specified.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] callbacks: URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] client_aliases: List of audiences/realms for SAML protocol. Used by the wsfed addon.
@@ -801,6 +818,7 @@ class _ClientState:
         :param pulumi.Input['ClientDefaultOrganizationArgs'] default_organization: Configure and associate an organization with the Client
         :param pulumi.Input[_builtins.str] description: Description of the purpose of the client.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] encryption_key: Encryption used for WS-Fed responses with this client.
+        :param pulumi.Input['ClientExpressConfigurationArgs'] express_configuration: Express Configuration settings for the client. Used with OIN Express Configuration.
         :param pulumi.Input[_builtins.str] form_template: HTML form template to be used for WS-Federation.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] grant_types: Types of grants that this client is authorized to use.
         :param pulumi.Input[_builtins.str] initiate_login_uri: Initiate login URI. Must be HTTPS or an empty string.
@@ -867,6 +885,8 @@ class _ClientState:
             pulumi.set(__self__, "description", description)
         if encryption_key is not None:
             pulumi.set(__self__, "encryption_key", encryption_key)
+        if express_configuration is not None:
+            pulumi.set(__self__, "express_configuration", express_configuration)
         if form_template is not None:
             pulumi.set(__self__, "form_template", form_template)
         if grant_types is not None:
@@ -979,7 +999,7 @@ class _ClientState:
     @pulumi.getter(name="appType")
     def app_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+        Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `express_configuration`
         """
         return pulumi.get(self, "app_type")
 
@@ -1142,6 +1162,18 @@ class _ClientState:
     @encryption_key.setter
     def encryption_key(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "encryption_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="expressConfiguration")
+    def express_configuration(self) -> Optional[pulumi.Input['ClientExpressConfigurationArgs']]:
+        """
+        Express Configuration settings for the client. Used with OIN Express Configuration.
+        """
+        return pulumi.get(self, "express_configuration")
+
+    @express_configuration.setter
+    def express_configuration(self, value: Optional[pulumi.Input['ClientExpressConfigurationArgs']]):
+        pulumi.set(self, "express_configuration", value)
 
     @_builtins.property
     @pulumi.getter(name="formTemplate")
@@ -1501,6 +1533,7 @@ class Client(pulumi.CustomResource):
                  default_organization: Optional[pulumi.Input[Union['ClientDefaultOrganizationArgs', 'ClientDefaultOrganizationArgsDict']]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  encryption_key: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 express_configuration: Optional[pulumi.Input[Union['ClientExpressConfigurationArgs', 'ClientExpressConfigurationArgsDict']]] = None,
                  form_template: Optional[pulumi.Input[_builtins.str]] = None,
                  grant_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  initiate_login_uri: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1548,7 +1581,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_clients: List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_origins: URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
-        :param pulumi.Input[_builtins.str] app_type: Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+        :param pulumi.Input[_builtins.str] app_type: Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `express_configuration`
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] async_approval_notification_channels: List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `["guardian-push"]` if not specified.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] callbacks: URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] client_aliases: List of audiences/realms for SAML protocol. Used by the wsfed addon.
@@ -1561,6 +1594,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[Union['ClientDefaultOrganizationArgs', 'ClientDefaultOrganizationArgsDict']] default_organization: Configure and associate an organization with the Client
         :param pulumi.Input[_builtins.str] description: Description of the purpose of the client.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] encryption_key: Encryption used for WS-Fed responses with this client.
+        :param pulumi.Input[Union['ClientExpressConfigurationArgs', 'ClientExpressConfigurationArgsDict']] express_configuration: Express Configuration settings for the client. Used with OIN Express Configuration.
         :param pulumi.Input[_builtins.str] form_template: HTML form template to be used for WS-Federation.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] grant_types: Types of grants that this client is authorized to use.
         :param pulumi.Input[_builtins.str] initiate_login_uri: Initiate login URI. Must be HTTPS or an empty string.
@@ -1639,6 +1673,7 @@ class Client(pulumi.CustomResource):
                  default_organization: Optional[pulumi.Input[Union['ClientDefaultOrganizationArgs', 'ClientDefaultOrganizationArgsDict']]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  encryption_key: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 express_configuration: Optional[pulumi.Input[Union['ClientExpressConfigurationArgs', 'ClientExpressConfigurationArgsDict']]] = None,
                  form_template: Optional[pulumi.Input[_builtins.str]] = None,
                  grant_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  initiate_login_uri: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1694,6 +1729,7 @@ class Client(pulumi.CustomResource):
                 description = 'Managed by Pulumi'
             __props__.__dict__["description"] = description
             __props__.__dict__["encryption_key"] = encryption_key
+            __props__.__dict__["express_configuration"] = express_configuration
             __props__.__dict__["form_template"] = form_template
             __props__.__dict__["grant_types"] = grant_types
             __props__.__dict__["initiate_login_uri"] = initiate_login_uri
@@ -1753,6 +1789,7 @@ class Client(pulumi.CustomResource):
             default_organization: Optional[pulumi.Input[Union['ClientDefaultOrganizationArgs', 'ClientDefaultOrganizationArgsDict']]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
             encryption_key: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            express_configuration: Optional[pulumi.Input[Union['ClientExpressConfigurationArgs', 'ClientExpressConfigurationArgsDict']]] = None,
             form_template: Optional[pulumi.Input[_builtins.str]] = None,
             grant_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             initiate_login_uri: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1792,7 +1829,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_clients: List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_origins: URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
-        :param pulumi.Input[_builtins.str] app_type: Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+        :param pulumi.Input[_builtins.str] app_type: Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `express_configuration`
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] async_approval_notification_channels: List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `["guardian-push"]` if not specified.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] callbacks: URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] client_aliases: List of audiences/realms for SAML protocol. Used by the wsfed addon.
@@ -1806,6 +1843,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[Union['ClientDefaultOrganizationArgs', 'ClientDefaultOrganizationArgsDict']] default_organization: Configure and associate an organization with the Client
         :param pulumi.Input[_builtins.str] description: Description of the purpose of the client.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] encryption_key: Encryption used for WS-Fed responses with this client.
+        :param pulumi.Input[Union['ClientExpressConfigurationArgs', 'ClientExpressConfigurationArgsDict']] express_configuration: Express Configuration settings for the client. Used with OIN Express Configuration.
         :param pulumi.Input[_builtins.str] form_template: HTML form template to be used for WS-Federation.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] grant_types: Types of grants that this client is authorized to use.
         :param pulumi.Input[_builtins.str] initiate_login_uri: Initiate login URI. Must be HTTPS or an empty string.
@@ -1856,6 +1894,7 @@ class Client(pulumi.CustomResource):
         __props__.__dict__["default_organization"] = default_organization
         __props__.__dict__["description"] = description
         __props__.__dict__["encryption_key"] = encryption_key
+        __props__.__dict__["express_configuration"] = express_configuration
         __props__.__dict__["form_template"] = form_template
         __props__.__dict__["grant_types"] = grant_types
         __props__.__dict__["initiate_login_uri"] = initiate_login_uri
@@ -1922,7 +1961,7 @@ class Client(pulumi.CustomResource):
     @pulumi.getter(name="appType")
     def app_type(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+        Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `express_configuration`
         """
         return pulumi.get(self, "app_type")
 
@@ -1936,7 +1975,7 @@ class Client(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def callbacks(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+    def callbacks(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
         URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
         """
@@ -2029,6 +2068,14 @@ class Client(pulumi.CustomResource):
         Encryption used for WS-Fed responses with this client.
         """
         return pulumi.get(self, "encryption_key")
+
+    @_builtins.property
+    @pulumi.getter(name="expressConfiguration")
+    def express_configuration(self) -> pulumi.Output['outputs.ClientExpressConfiguration']:
+        """
+        Express Configuration settings for the client. Used with OIN Express Configuration.
+        """
+        return pulumi.get(self, "express_configuration")
 
     @_builtins.property
     @pulumi.getter(name="formTemplate")
@@ -2145,7 +2192,7 @@ class Client(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="organizationRequireBehavior")
-    def organization_require_behavior(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def organization_require_behavior(self) -> pulumi.Output[_builtins.str]:
         """
         Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.
         """
@@ -2153,7 +2200,7 @@ class Client(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="organizationUsage")
-    def organization_usage(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def organization_usage(self) -> pulumi.Output[_builtins.str]:
         """
         Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
         """

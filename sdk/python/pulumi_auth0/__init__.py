@@ -17,6 +17,7 @@ from .connection import *
 from .connection_client import *
 from .connection_clients import *
 from .connection_keys import *
+from .connection_profile import *
 from .connection_scim_configuration import *
 from .connection_scim_token import *
 from .custom_domain import *
@@ -37,6 +38,7 @@ from .get_client_grants import *
 from .get_clients import *
 from .get_connection import *
 from .get_connection_keys import *
+from .get_connection_profile import *
 from .get_connection_scim_configuration import *
 from .get_custom_domain import *
 from .get_custom_domains import *
@@ -203,6 +205,14 @@ _utilities.register(
   "fqn": "pulumi_auth0",
   "classes": {
    "auth0:index/connectionKeys:ConnectionKeys": "ConnectionKeys"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/connectionProfile",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/connectionProfile:ConnectionProfile": "ConnectionProfile"
   }
  },
  {

@@ -27,7 +27,7 @@ class GetClientResult:
     """
     A collection of values returned by getClient.
     """
-    def __init__(__self__, addons=None, allowed_clients=None, allowed_logout_urls=None, allowed_origins=None, app_type=None, async_approval_notification_channels=None, callbacks=None, client_aliases=None, client_authentication_methods=None, client_id=None, client_metadata=None, client_secret=None, compliance_level=None, cross_origin_auth=None, cross_origin_loc=None, custom_login_page=None, custom_login_page_on=None, default_organizations=None, description=None, encryption_key=None, form_template=None, grant_types=None, id=None, initiate_login_uri=None, is_first_party=None, is_token_endpoint_ip_header_trusted=None, jwt_configurations=None, logo_uri=None, mobiles=None, name=None, native_social_logins=None, oidc_backchannel_logout_urls=None, oidc_conformant=None, oidc_logouts=None, organization_discovery_methods=None, organization_require_behavior=None, organization_usage=None, refresh_tokens=None, require_proof_of_possession=None, require_pushed_authorization_requests=None, resource_server_identifier=None, session_transfers=None, signed_request_objects=None, signing_keys=None, skip_non_verifiable_callback_uri_confirmation_prompt=None, sso=None, sso_disabled=None, token_endpoint_auth_method=None, token_exchanges=None, token_quotas=None, web_origins=None):
+    def __init__(__self__, addons=None, allowed_clients=None, allowed_logout_urls=None, allowed_origins=None, app_type=None, async_approval_notification_channels=None, callbacks=None, client_aliases=None, client_authentication_methods=None, client_id=None, client_metadata=None, client_secret=None, compliance_level=None, cross_origin_auth=None, cross_origin_loc=None, custom_login_page=None, custom_login_page_on=None, default_organizations=None, description=None, encryption_key=None, express_configurations=None, form_template=None, grant_types=None, id=None, initiate_login_uri=None, is_first_party=None, is_token_endpoint_ip_header_trusted=None, jwt_configurations=None, logo_uri=None, mobiles=None, name=None, native_social_logins=None, oidc_backchannel_logout_urls=None, oidc_conformant=None, oidc_logouts=None, organization_discovery_methods=None, organization_require_behavior=None, organization_usage=None, refresh_tokens=None, require_proof_of_possession=None, require_pushed_authorization_requests=None, resource_server_identifier=None, session_transfers=None, signed_request_objects=None, signing_keys=None, skip_non_verifiable_callback_uri_confirmation_prompt=None, sso=None, sso_disabled=None, token_endpoint_auth_method=None, token_exchanges=None, token_quotas=None, web_origins=None):
         if addons and not isinstance(addons, list):
             raise TypeError("Expected argument 'addons' to be a list")
         pulumi.set(__self__, "addons", addons)
@@ -88,6 +88,9 @@ class GetClientResult:
         if encryption_key and not isinstance(encryption_key, dict):
             raise TypeError("Expected argument 'encryption_key' to be a dict")
         pulumi.set(__self__, "encryption_key", encryption_key)
+        if express_configurations and not isinstance(express_configurations, list):
+            raise TypeError("Expected argument 'express_configurations' to be a list")
+        pulumi.set(__self__, "express_configurations", express_configurations)
         if form_template and not isinstance(form_template, str):
             raise TypeError("Expected argument 'form_template' to be a str")
         pulumi.set(__self__, "form_template", form_template)
@@ -218,7 +221,7 @@ class GetClientResult:
     @pulumi.getter(name="appType")
     def app_type(self) -> _builtins.str:
         """
-        Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+        Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `express_configuration`
         """
         return pulumi.get(self, "app_type")
 
@@ -338,6 +341,14 @@ class GetClientResult:
         Encryption used for WS-Fed responses with this client.
         """
         return pulumi.get(self, "encryption_key")
+
+    @_builtins.property
+    @pulumi.getter(name="expressConfigurations")
+    def express_configurations(self) -> Sequence['outputs.GetClientExpressConfigurationResult']:
+        """
+        Express Configuration settings for the client. Used with OIN Express Configuration.
+        """
+        return pulumi.get(self, "express_configurations")
 
     @_builtins.property
     @pulumi.getter(name="formTemplate")
@@ -611,6 +622,7 @@ class AwaitableGetClientResult(GetClientResult):
             default_organizations=self.default_organizations,
             description=self.description,
             encryption_key=self.encryption_key,
+            express_configurations=self.express_configurations,
             form_template=self.form_template,
             grant_types=self.grant_types,
             id=self.id,
@@ -693,6 +705,7 @@ def get_client(client_id: Optional[_builtins.str] = None,
         default_organizations=pulumi.get(__ret__, 'default_organizations'),
         description=pulumi.get(__ret__, 'description'),
         encryption_key=pulumi.get(__ret__, 'encryption_key'),
+        express_configurations=pulumi.get(__ret__, 'express_configurations'),
         form_template=pulumi.get(__ret__, 'form_template'),
         grant_types=pulumi.get(__ret__, 'grant_types'),
         id=pulumi.get(__ret__, 'id'),
@@ -772,6 +785,7 @@ def get_client_output(client_id: Optional[pulumi.Input[Optional[_builtins.str]]]
         default_organizations=pulumi.get(__response__, 'default_organizations'),
         description=pulumi.get(__response__, 'description'),
         encryption_key=pulumi.get(__response__, 'encryption_key'),
+        express_configurations=pulumi.get(__response__, 'express_configurations'),
         form_template=pulumi.get(__response__, 'form_template'),
         grant_types=pulumi.get(__response__, 'grant_types'),
         id=pulumi.get(__response__, 'id'),
