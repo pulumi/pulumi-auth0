@@ -323,6 +323,16 @@
                             }
                         }
                     },
+                    "express_configuration": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "linked_clients": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "grant_types": {
                         "maxItemsOne": false
                     },
@@ -702,6 +712,132 @@
             "auth0_connection_keys": {
                 "current": "auth0:index/connectionKeys:ConnectionKeys",
                 "majorVersion": 3
+            },
+            "auth0_connection_profile": {
+                "current": "auth0:index/connectionProfile:ConnectionProfile",
+                "majorVersion": 3,
+                "fields": {
+                    "connection_config": {
+                        "maxItemsOne": true
+                    },
+                    "enabled_features": {
+                        "maxItemsOne": false
+                    },
+                    "organization": {
+                        "maxItemsOne": true
+                    },
+                    "strategy_overrides": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "ad": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "connection_config": {
+                                                "maxItemsOne": true
+                                            },
+                                            "enabled_features": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "adfs": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "connection_config": {
+                                                "maxItemsOne": true
+                                            },
+                                            "enabled_features": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "google_apps": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "connection_config": {
+                                                "maxItemsOne": true
+                                            },
+                                            "enabled_features": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "oidc": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "connection_config": {
+                                                "maxItemsOne": true
+                                            },
+                                            "enabled_features": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "okta": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "connection_config": {
+                                                "maxItemsOne": true
+                                            },
+                                            "enabled_features": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "pingfederate": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "connection_config": {
+                                                "maxItemsOne": true
+                                            },
+                                            "enabled_features": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "samlp": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "connection_config": {
+                                                "maxItemsOne": true
+                                            },
+                                            "enabled_features": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "waad": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "connection_config": {
+                                                "maxItemsOne": true
+                                            },
+                                            "enabled_features": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "auth0_connection_scim_configuration": {
                 "current": "auth0:index/connectionScimConfiguration:ConnectionScimConfiguration",
@@ -1770,6 +1906,16 @@
                             }
                         }
                     },
+                    "express_configuration": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "linked_clients": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "grant_types": {
                         "maxItemsOne": false
                     },
@@ -1944,6 +2090,16 @@
                                 },
                                 "callbacks": {
                                     "maxItemsOne": false
+                                },
+                                "express_configuration": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "linked_clients": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 },
                                 "grant_types": {
                                     "maxItemsOne": false
@@ -2200,6 +2356,132 @@
                 "fields": {
                     "keys": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "auth0_connection_profile": {
+                "current": "auth0:index/getConnectionProfile:getConnectionProfile",
+                "majorVersion": 3,
+                "fields": {
+                    "connection_config": {
+                        "maxItemsOne": false
+                    },
+                    "enabled_features": {
+                        "maxItemsOne": false
+                    },
+                    "organization": {
+                        "maxItemsOne": false
+                    },
+                    "strategy_overrides": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "ad": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "connection_config": {
+                                                "maxItemsOne": true
+                                            },
+                                            "enabled_features": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "adfs": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "connection_config": {
+                                                "maxItemsOne": true
+                                            },
+                                            "enabled_features": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "google_apps": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "connection_config": {
+                                                "maxItemsOne": true
+                                            },
+                                            "enabled_features": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "oidc": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "connection_config": {
+                                                "maxItemsOne": true
+                                            },
+                                            "enabled_features": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "okta": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "connection_config": {
+                                                "maxItemsOne": true
+                                            },
+                                            "enabled_features": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "pingfederate": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "connection_config": {
+                                                "maxItemsOne": true
+                                            },
+                                            "enabled_features": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "samlp": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "connection_config": {
+                                                "maxItemsOne": true
+                                            },
+                                            "enabled_features": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "waad": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "connection_config": {
+                                                "maxItemsOne": true
+                                            },
+                                            "enabled_features": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },

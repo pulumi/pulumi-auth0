@@ -1911,6 +1911,68 @@
                 }
             }
         },
+        "auth0:index/ClientExpressConfiguration:ClientExpressConfiguration": {
+            "properties": {
+                "adminLoginDomain": {
+                    "type": "string",
+                    "description": "The domain that admins are expected to log in via for authenticating for express configuration.\n"
+                },
+                "connectionProfileId": {
+                    "type": "string",
+                    "description": "The ID of the connection profile to use for this application.\n"
+                },
+                "enableClient": {
+                    "type": "boolean",
+                    "description": "When true, all connections made via express configuration will be enabled for this application.\n"
+                },
+                "enableOrganization": {
+                    "type": "boolean",
+                    "description": "When true, all connections made via express configuration will have the associated organization enabled.\n"
+                },
+                "initiateLoginUriTemplate": {
+                    "type": "string",
+                    "description": "The URI users should bookmark to log in to this application. Variable substitution is permitted for: organization*name, organization*id, and connection_name.\n"
+                },
+                "linkedClients": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/ClientExpressConfigurationLinkedClient:ClientExpressConfigurationLinkedClient"
+                    },
+                    "description": "List of client IDs that are linked to this express configuration (e.g. web or mobile clients).\n"
+                },
+                "oinSubmissionId": {
+                    "type": "string",
+                    "description": "The identifier of the published application in the OKTA OIN.\n"
+                },
+                "oktaOinClientId": {
+                    "type": "string",
+                    "description": "The unique identifier for the Okta OIN Express Configuration Client.\n"
+                },
+                "userAttributeProfileId": {
+                    "type": "string",
+                    "description": "The ID of the user attribute profile to use for this application.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "linkedClients",
+                        "oinSubmissionId",
+                        "oktaOinClientId"
+                    ]
+                }
+            }
+        },
+        "auth0:index/ClientExpressConfigurationLinkedClient:ClientExpressConfigurationLinkedClient": {
+            "properties": {
+                "clientId": {
+                    "type": "string",
+                    "description": "The ID of the linked client.\n"
+                }
+            },
+            "type": "object"
+        },
         "auth0:index/ClientJwtConfiguration:ClientJwtConfiguration": {
             "properties": {
                 "alg": {
@@ -3318,6 +3380,297 @@
                     "type": "integer"
                 }
             },
+            "type": "object"
+        },
+        "auth0:index/ConnectionProfileConnectionConfig:ConnectionProfileConnectionConfig": {
+            "type": "object"
+        },
+        "auth0:index/ConnectionProfileOrganization:ConnectionProfileOrganization": {
+            "properties": {
+                "assignMembershipOnLogin": {
+                    "type": "string",
+                    "description": "Whether to assign membership on login.\n"
+                },
+                "showAsButton": {
+                    "type": "string",
+                    "description": "Whether to show organization as a button.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "assignMembershipOnLogin",
+                        "showAsButton"
+                    ]
+                }
+            }
+        },
+        "auth0:index/ConnectionProfileStrategyOverrides:ConnectionProfileStrategyOverrides": {
+            "properties": {
+                "ad": {
+                    "$ref": "#/types/auth0:index/ConnectionProfileStrategyOverridesAd:ConnectionProfileStrategyOverridesAd",
+                    "description": "Strategy override configuration.\n"
+                },
+                "adfs": {
+                    "$ref": "#/types/auth0:index/ConnectionProfileStrategyOverridesAdfs:ConnectionProfileStrategyOverridesAdfs",
+                    "description": "Strategy override configuration.\n"
+                },
+                "googleApps": {
+                    "$ref": "#/types/auth0:index/ConnectionProfileStrategyOverridesGoogleApps:ConnectionProfileStrategyOverridesGoogleApps",
+                    "description": "Strategy override configuration.\n"
+                },
+                "oidc": {
+                    "$ref": "#/types/auth0:index/ConnectionProfileStrategyOverridesOidc:ConnectionProfileStrategyOverridesOidc",
+                    "description": "Strategy override configuration.\n"
+                },
+                "okta": {
+                    "$ref": "#/types/auth0:index/ConnectionProfileStrategyOverridesOkta:ConnectionProfileStrategyOverridesOkta",
+                    "description": "Strategy override configuration.\n"
+                },
+                "pingfederate": {
+                    "$ref": "#/types/auth0:index/ConnectionProfileStrategyOverridesPingfederate:ConnectionProfileStrategyOverridesPingfederate",
+                    "description": "Strategy override configuration.\n"
+                },
+                "samlp": {
+                    "$ref": "#/types/auth0:index/ConnectionProfileStrategyOverridesSamlp:ConnectionProfileStrategyOverridesSamlp",
+                    "description": "Strategy override configuration.\n"
+                },
+                "waad": {
+                    "$ref": "#/types/auth0:index/ConnectionProfileStrategyOverridesWaad:ConnectionProfileStrategyOverridesWaad",
+                    "description": "Strategy override configuration.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "ad",
+                        "adfs",
+                        "googleApps",
+                        "oidc",
+                        "okta",
+                        "pingfederate",
+                        "samlp",
+                        "waad"
+                    ]
+                }
+            }
+        },
+        "auth0:index/ConnectionProfileStrategyOverridesAd:ConnectionProfileStrategyOverridesAd": {
+            "properties": {
+                "connectionConfig": {
+                    "$ref": "#/types/auth0:index/ConnectionProfileStrategyOverridesAdConnectionConfig:ConnectionProfileStrategyOverridesAdConnectionConfig",
+                    "description": "Connection config for the strategy override.\n"
+                },
+                "enabledFeatures": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Enabled features for the strategy override.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "connectionConfig",
+                        "enabledFeatures"
+                    ]
+                }
+            }
+        },
+        "auth0:index/ConnectionProfileStrategyOverridesAdConnectionConfig:ConnectionProfileStrategyOverridesAdConnectionConfig": {
+            "type": "object"
+        },
+        "auth0:index/ConnectionProfileStrategyOverridesAdfs:ConnectionProfileStrategyOverridesAdfs": {
+            "properties": {
+                "connectionConfig": {
+                    "$ref": "#/types/auth0:index/ConnectionProfileStrategyOverridesAdfsConnectionConfig:ConnectionProfileStrategyOverridesAdfsConnectionConfig",
+                    "description": "Connection config for the strategy override.\n"
+                },
+                "enabledFeatures": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Enabled features for the strategy override.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "connectionConfig",
+                        "enabledFeatures"
+                    ]
+                }
+            }
+        },
+        "auth0:index/ConnectionProfileStrategyOverridesAdfsConnectionConfig:ConnectionProfileStrategyOverridesAdfsConnectionConfig": {
+            "type": "object"
+        },
+        "auth0:index/ConnectionProfileStrategyOverridesGoogleApps:ConnectionProfileStrategyOverridesGoogleApps": {
+            "properties": {
+                "connectionConfig": {
+                    "$ref": "#/types/auth0:index/ConnectionProfileStrategyOverridesGoogleAppsConnectionConfig:ConnectionProfileStrategyOverridesGoogleAppsConnectionConfig",
+                    "description": "Connection config for the strategy override.\n"
+                },
+                "enabledFeatures": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Enabled features for the strategy override.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "connectionConfig",
+                        "enabledFeatures"
+                    ]
+                }
+            }
+        },
+        "auth0:index/ConnectionProfileStrategyOverridesGoogleAppsConnectionConfig:ConnectionProfileStrategyOverridesGoogleAppsConnectionConfig": {
+            "type": "object"
+        },
+        "auth0:index/ConnectionProfileStrategyOverridesOidc:ConnectionProfileStrategyOverridesOidc": {
+            "properties": {
+                "connectionConfig": {
+                    "$ref": "#/types/auth0:index/ConnectionProfileStrategyOverridesOidcConnectionConfig:ConnectionProfileStrategyOverridesOidcConnectionConfig",
+                    "description": "Connection config for the strategy override.\n"
+                },
+                "enabledFeatures": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Enabled features for the strategy override.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "connectionConfig",
+                        "enabledFeatures"
+                    ]
+                }
+            }
+        },
+        "auth0:index/ConnectionProfileStrategyOverridesOidcConnectionConfig:ConnectionProfileStrategyOverridesOidcConnectionConfig": {
+            "type": "object"
+        },
+        "auth0:index/ConnectionProfileStrategyOverridesOkta:ConnectionProfileStrategyOverridesOkta": {
+            "properties": {
+                "connectionConfig": {
+                    "$ref": "#/types/auth0:index/ConnectionProfileStrategyOverridesOktaConnectionConfig:ConnectionProfileStrategyOverridesOktaConnectionConfig",
+                    "description": "Connection config for the strategy override.\n"
+                },
+                "enabledFeatures": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Enabled features for the strategy override.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "connectionConfig",
+                        "enabledFeatures"
+                    ]
+                }
+            }
+        },
+        "auth0:index/ConnectionProfileStrategyOverridesOktaConnectionConfig:ConnectionProfileStrategyOverridesOktaConnectionConfig": {
+            "type": "object"
+        },
+        "auth0:index/ConnectionProfileStrategyOverridesPingfederate:ConnectionProfileStrategyOverridesPingfederate": {
+            "properties": {
+                "connectionConfig": {
+                    "$ref": "#/types/auth0:index/ConnectionProfileStrategyOverridesPingfederateConnectionConfig:ConnectionProfileStrategyOverridesPingfederateConnectionConfig",
+                    "description": "Connection config for the strategy override.\n"
+                },
+                "enabledFeatures": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Enabled features for the strategy override.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "connectionConfig",
+                        "enabledFeatures"
+                    ]
+                }
+            }
+        },
+        "auth0:index/ConnectionProfileStrategyOverridesPingfederateConnectionConfig:ConnectionProfileStrategyOverridesPingfederateConnectionConfig": {
+            "type": "object"
+        },
+        "auth0:index/ConnectionProfileStrategyOverridesSamlp:ConnectionProfileStrategyOverridesSamlp": {
+            "properties": {
+                "connectionConfig": {
+                    "$ref": "#/types/auth0:index/ConnectionProfileStrategyOverridesSamlpConnectionConfig:ConnectionProfileStrategyOverridesSamlpConnectionConfig",
+                    "description": "Connection config for the strategy override.\n"
+                },
+                "enabledFeatures": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Enabled features for the strategy override.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "connectionConfig",
+                        "enabledFeatures"
+                    ]
+                }
+            }
+        },
+        "auth0:index/ConnectionProfileStrategyOverridesSamlpConnectionConfig:ConnectionProfileStrategyOverridesSamlpConnectionConfig": {
+            "type": "object"
+        },
+        "auth0:index/ConnectionProfileStrategyOverridesWaad:ConnectionProfileStrategyOverridesWaad": {
+            "properties": {
+                "connectionConfig": {
+                    "$ref": "#/types/auth0:index/ConnectionProfileStrategyOverridesWaadConnectionConfig:ConnectionProfileStrategyOverridesWaadConnectionConfig",
+                    "description": "Connection config for the strategy override.\n"
+                },
+                "enabledFeatures": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Enabled features for the strategy override.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "connectionConfig",
+                        "enabledFeatures"
+                    ]
+                }
+            }
+        },
+        "auth0:index/ConnectionProfileStrategyOverridesWaadConnectionConfig:ConnectionProfileStrategyOverridesWaadConnectionConfig": {
             "type": "object"
         },
         "auth0:index/ConnectionScimConfigurationMapping:ConnectionScimConfigurationMapping": {
@@ -7734,6 +8087,83 @@
                 }
             }
         },
+        "auth0:index/getClientExpressConfiguration:getClientExpressConfiguration": {
+            "properties": {
+                "adminLoginDomain": {
+                    "type": "string",
+                    "description": "The domain that admins are expected to log in via for authenticating for express configuration.\n"
+                },
+                "connectionProfileId": {
+                    "type": "string",
+                    "description": "The ID of the connection profile to use for this application.\n"
+                },
+                "enableClient": {
+                    "type": "boolean",
+                    "description": "When true, all connections made via express configuration will be enabled for this application.\n"
+                },
+                "enableOrganization": {
+                    "type": "boolean",
+                    "description": "When true, all connections made via express configuration will have the associated organization enabled.\n"
+                },
+                "initiateLoginUriTemplate": {
+                    "type": "string",
+                    "description": "The URI users should bookmark to log in to this application. Variable substitution is permitted for: organization_name, organization_id, and connection_name.\n"
+                },
+                "linkedClients": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/getClientExpressConfigurationLinkedClient:getClientExpressConfigurationLinkedClient"
+                    },
+                    "description": "List of client IDs that are linked to this express configuration (e.g. web or mobile clients).\n"
+                },
+                "oinSubmissionId": {
+                    "type": "string",
+                    "description": "The identifier of the published application in the OKTA OIN.\n"
+                },
+                "oktaOinClientId": {
+                    "type": "string",
+                    "description": "The unique identifier for the Okta OIN Express Configuration Client.\n"
+                },
+                "userAttributeProfileId": {
+                    "type": "string",
+                    "description": "The ID of the user attribute profile to use for this application.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "adminLoginDomain",
+                "connectionProfileId",
+                "enableClient",
+                "enableOrganization",
+                "initiateLoginUriTemplate",
+                "linkedClients",
+                "oinSubmissionId",
+                "oktaOinClientId",
+                "userAttributeProfileId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getClientExpressConfigurationLinkedClient:getClientExpressConfigurationLinkedClient": {
+            "properties": {
+                "clientId": {
+                    "type": "string",
+                    "description": "The ID of the linked client.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "clientId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "auth0:index/getClientGrantsClientGrant:getClientGrantsClientGrant": {
             "properties": {
                 "audience": {
@@ -8307,7 +8737,7 @@
                 },
                 "appType": {
                     "type": "string",
-                    "description": "Type of application the client represents. Possible values are: \u003cspan pulumi-lang-nodejs=\"`native`\" pulumi-lang-dotnet=\"`Native`\" pulumi-lang-go=\"`native`\" pulumi-lang-python=\"`native`\" pulumi-lang-yaml=\"`native`\" pulumi-lang-java=\"`native`\"\u003e`native`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`spa`\" pulumi-lang-dotnet=\"`Spa`\" pulumi-lang-go=\"`spa`\" pulumi-lang-python=\"`spa`\" pulumi-lang-yaml=\"`spa`\" pulumi-lang-java=\"`spa`\"\u003e`spa`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`regularWeb`\" pulumi-lang-dotnet=\"`RegularWeb`\" pulumi-lang-go=\"`regularWeb`\" pulumi-lang-python=\"`regular_web`\" pulumi-lang-yaml=\"`regularWeb`\" pulumi-lang-java=\"`regularWeb`\"\u003e`regular_web`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`nonInteractive`\" pulumi-lang-dotnet=\"`NonInteractive`\" pulumi-lang-go=\"`nonInteractive`\" pulumi-lang-python=\"`non_interactive`\" pulumi-lang-yaml=\"`nonInteractive`\" pulumi-lang-java=\"`nonInteractive`\"\u003e`non_interactive`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`resourceServer`\" pulumi-lang-dotnet=\"`ResourceServer`\" pulumi-lang-go=\"`resourceServer`\" pulumi-lang-python=\"`resource_server`\" pulumi-lang-yaml=\"`resourceServer`\" pulumi-lang-java=\"`resourceServer`\"\u003e`resource_server`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`ssoIntegration`\" pulumi-lang-dotnet=\"`SsoIntegration`\" pulumi-lang-go=\"`ssoIntegration`\" pulumi-lang-python=\"`sso_integration`\" pulumi-lang-yaml=\"`ssoIntegration`\" pulumi-lang-java=\"`ssoIntegration`\"\u003e`sso_integration`\u003c/span\u003e. Specific SSO integrations types accepted as well are: \u003cspan pulumi-lang-nodejs=\"`rms`\" pulumi-lang-dotnet=\"`Rms`\" pulumi-lang-go=\"`rms`\" pulumi-lang-python=\"`rms`\" pulumi-lang-yaml=\"`rms`\" pulumi-lang-java=\"`rms`\"\u003e`rms`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`box`\" pulumi-lang-dotnet=\"`Box`\" pulumi-lang-go=\"`box`\" pulumi-lang-python=\"`box`\" pulumi-lang-yaml=\"`box`\" pulumi-lang-java=\"`box`\"\u003e`box`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`cloudbees`\" pulumi-lang-dotnet=\"`Cloudbees`\" pulumi-lang-go=\"`cloudbees`\" pulumi-lang-python=\"`cloudbees`\" pulumi-lang-yaml=\"`cloudbees`\" pulumi-lang-java=\"`cloudbees`\"\u003e`cloudbees`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`concur`\" pulumi-lang-dotnet=\"`Concur`\" pulumi-lang-go=\"`concur`\" pulumi-lang-python=\"`concur`\" pulumi-lang-yaml=\"`concur`\" pulumi-lang-java=\"`concur`\"\u003e`concur`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`dropbox`\" pulumi-lang-dotnet=\"`Dropbox`\" pulumi-lang-go=\"`dropbox`\" pulumi-lang-python=\"`dropbox`\" pulumi-lang-yaml=\"`dropbox`\" pulumi-lang-java=\"`dropbox`\"\u003e`dropbox`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`mscrm`\" pulumi-lang-dotnet=\"`Mscrm`\" pulumi-lang-go=\"`mscrm`\" pulumi-lang-python=\"`mscrm`\" pulumi-lang-yaml=\"`mscrm`\" pulumi-lang-java=\"`mscrm`\"\u003e`mscrm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`echosign`\" pulumi-lang-dotnet=\"`Echosign`\" pulumi-lang-go=\"`echosign`\" pulumi-lang-python=\"`echosign`\" pulumi-lang-yaml=\"`echosign`\" pulumi-lang-java=\"`echosign`\"\u003e`echosign`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`egnyte`\" pulumi-lang-dotnet=\"`Egnyte`\" pulumi-lang-go=\"`egnyte`\" pulumi-lang-python=\"`egnyte`\" pulumi-lang-yaml=\"`egnyte`\" pulumi-lang-java=\"`egnyte`\"\u003e`egnyte`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`newrelic`\" pulumi-lang-dotnet=\"`Newrelic`\" pulumi-lang-go=\"`newrelic`\" pulumi-lang-python=\"`newrelic`\" pulumi-lang-yaml=\"`newrelic`\" pulumi-lang-java=\"`newrelic`\"\u003e`newrelic`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`office365`\" pulumi-lang-dotnet=\"`Office365`\" pulumi-lang-go=\"`office365`\" pulumi-lang-python=\"`office365`\" pulumi-lang-yaml=\"`office365`\" pulumi-lang-java=\"`office365`\"\u003e`office365`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`salesforce`\" pulumi-lang-dotnet=\"`Salesforce`\" pulumi-lang-go=\"`salesforce`\" pulumi-lang-python=\"`salesforce`\" pulumi-lang-yaml=\"`salesforce`\" pulumi-lang-java=\"`salesforce`\"\u003e`salesforce`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sentry`\" pulumi-lang-dotnet=\"`Sentry`\" pulumi-lang-go=\"`sentry`\" pulumi-lang-python=\"`sentry`\" pulumi-lang-yaml=\"`sentry`\" pulumi-lang-java=\"`sentry`\"\u003e`sentry`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sharepoint`\" pulumi-lang-dotnet=\"`Sharepoint`\" pulumi-lang-go=\"`sharepoint`\" pulumi-lang-python=\"`sharepoint`\" pulumi-lang-yaml=\"`sharepoint`\" pulumi-lang-java=\"`sharepoint`\"\u003e`sharepoint`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slack`\" pulumi-lang-dotnet=\"`Slack`\" pulumi-lang-go=\"`slack`\" pulumi-lang-python=\"`slack`\" pulumi-lang-yaml=\"`slack`\" pulumi-lang-java=\"`slack`\"\u003e`slack`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`springcm`\" pulumi-lang-dotnet=\"`Springcm`\" pulumi-lang-go=\"`springcm`\" pulumi-lang-python=\"`springcm`\" pulumi-lang-yaml=\"`springcm`\" pulumi-lang-java=\"`springcm`\"\u003e`springcm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`zendesk`\" pulumi-lang-dotnet=\"`Zendesk`\" pulumi-lang-go=\"`zendesk`\" pulumi-lang-python=\"`zendesk`\" pulumi-lang-yaml=\"`zendesk`\" pulumi-lang-java=\"`zendesk`\"\u003e`zendesk`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`zoom`\" pulumi-lang-dotnet=\"`Zoom`\" pulumi-lang-go=\"`zoom`\" pulumi-lang-python=\"`zoom`\" pulumi-lang-yaml=\"`zoom`\" pulumi-lang-java=\"`zoom`\"\u003e`zoom`\u003c/span\u003e.\n"
+                    "description": "Type of application the client represents. Possible values are: \u003cspan pulumi-lang-nodejs=\"`native`\" pulumi-lang-dotnet=\"`Native`\" pulumi-lang-go=\"`native`\" pulumi-lang-python=\"`native`\" pulumi-lang-yaml=\"`native`\" pulumi-lang-java=\"`native`\"\u003e`native`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`spa`\" pulumi-lang-dotnet=\"`Spa`\" pulumi-lang-go=\"`spa`\" pulumi-lang-python=\"`spa`\" pulumi-lang-yaml=\"`spa`\" pulumi-lang-java=\"`spa`\"\u003e`spa`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`regularWeb`\" pulumi-lang-dotnet=\"`RegularWeb`\" pulumi-lang-go=\"`regularWeb`\" pulumi-lang-python=\"`regular_web`\" pulumi-lang-yaml=\"`regularWeb`\" pulumi-lang-java=\"`regularWeb`\"\u003e`regular_web`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`nonInteractive`\" pulumi-lang-dotnet=\"`NonInteractive`\" pulumi-lang-go=\"`nonInteractive`\" pulumi-lang-python=\"`non_interactive`\" pulumi-lang-yaml=\"`nonInteractive`\" pulumi-lang-java=\"`nonInteractive`\"\u003e`non_interactive`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`resourceServer`\" pulumi-lang-dotnet=\"`ResourceServer`\" pulumi-lang-go=\"`resourceServer`\" pulumi-lang-python=\"`resource_server`\" pulumi-lang-yaml=\"`resourceServer`\" pulumi-lang-java=\"`resourceServer`\"\u003e`resource_server`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`ssoIntegration`\" pulumi-lang-dotnet=\"`SsoIntegration`\" pulumi-lang-go=\"`ssoIntegration`\" pulumi-lang-python=\"`sso_integration`\" pulumi-lang-yaml=\"`ssoIntegration`\" pulumi-lang-java=\"`ssoIntegration`\"\u003e`sso_integration`\u003c/span\u003e. Specific SSO integrations types accepted as well are: \u003cspan pulumi-lang-nodejs=\"`rms`\" pulumi-lang-dotnet=\"`Rms`\" pulumi-lang-go=\"`rms`\" pulumi-lang-python=\"`rms`\" pulumi-lang-yaml=\"`rms`\" pulumi-lang-java=\"`rms`\"\u003e`rms`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`box`\" pulumi-lang-dotnet=\"`Box`\" pulumi-lang-go=\"`box`\" pulumi-lang-python=\"`box`\" pulumi-lang-yaml=\"`box`\" pulumi-lang-java=\"`box`\"\u003e`box`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`cloudbees`\" pulumi-lang-dotnet=\"`Cloudbees`\" pulumi-lang-go=\"`cloudbees`\" pulumi-lang-python=\"`cloudbees`\" pulumi-lang-yaml=\"`cloudbees`\" pulumi-lang-java=\"`cloudbees`\"\u003e`cloudbees`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`concur`\" pulumi-lang-dotnet=\"`Concur`\" pulumi-lang-go=\"`concur`\" pulumi-lang-python=\"`concur`\" pulumi-lang-yaml=\"`concur`\" pulumi-lang-java=\"`concur`\"\u003e`concur`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`dropbox`\" pulumi-lang-dotnet=\"`Dropbox`\" pulumi-lang-go=\"`dropbox`\" pulumi-lang-python=\"`dropbox`\" pulumi-lang-yaml=\"`dropbox`\" pulumi-lang-java=\"`dropbox`\"\u003e`dropbox`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`mscrm`\" pulumi-lang-dotnet=\"`Mscrm`\" pulumi-lang-go=\"`mscrm`\" pulumi-lang-python=\"`mscrm`\" pulumi-lang-yaml=\"`mscrm`\" pulumi-lang-java=\"`mscrm`\"\u003e`mscrm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`echosign`\" pulumi-lang-dotnet=\"`Echosign`\" pulumi-lang-go=\"`echosign`\" pulumi-lang-python=\"`echosign`\" pulumi-lang-yaml=\"`echosign`\" pulumi-lang-java=\"`echosign`\"\u003e`echosign`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`egnyte`\" pulumi-lang-dotnet=\"`Egnyte`\" pulumi-lang-go=\"`egnyte`\" pulumi-lang-python=\"`egnyte`\" pulumi-lang-yaml=\"`egnyte`\" pulumi-lang-java=\"`egnyte`\"\u003e`egnyte`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`newrelic`\" pulumi-lang-dotnet=\"`Newrelic`\" pulumi-lang-go=\"`newrelic`\" pulumi-lang-python=\"`newrelic`\" pulumi-lang-yaml=\"`newrelic`\" pulumi-lang-java=\"`newrelic`\"\u003e`newrelic`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`office365`\" pulumi-lang-dotnet=\"`Office365`\" pulumi-lang-go=\"`office365`\" pulumi-lang-python=\"`office365`\" pulumi-lang-yaml=\"`office365`\" pulumi-lang-java=\"`office365`\"\u003e`office365`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`salesforce`\" pulumi-lang-dotnet=\"`Salesforce`\" pulumi-lang-go=\"`salesforce`\" pulumi-lang-python=\"`salesforce`\" pulumi-lang-yaml=\"`salesforce`\" pulumi-lang-java=\"`salesforce`\"\u003e`salesforce`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sentry`\" pulumi-lang-dotnet=\"`Sentry`\" pulumi-lang-go=\"`sentry`\" pulumi-lang-python=\"`sentry`\" pulumi-lang-yaml=\"`sentry`\" pulumi-lang-java=\"`sentry`\"\u003e`sentry`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sharepoint`\" pulumi-lang-dotnet=\"`Sharepoint`\" pulumi-lang-go=\"`sharepoint`\" pulumi-lang-python=\"`sharepoint`\" pulumi-lang-yaml=\"`sharepoint`\" pulumi-lang-java=\"`sharepoint`\"\u003e`sharepoint`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slack`\" pulumi-lang-dotnet=\"`Slack`\" pulumi-lang-go=\"`slack`\" pulumi-lang-python=\"`slack`\" pulumi-lang-yaml=\"`slack`\" pulumi-lang-java=\"`slack`\"\u003e`slack`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`springcm`\" pulumi-lang-dotnet=\"`Springcm`\" pulumi-lang-go=\"`springcm`\" pulumi-lang-python=\"`springcm`\" pulumi-lang-yaml=\"`springcm`\" pulumi-lang-java=\"`springcm`\"\u003e`springcm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`zendesk`\" pulumi-lang-dotnet=\"`Zendesk`\" pulumi-lang-go=\"`zendesk`\" pulumi-lang-python=\"`zendesk`\" pulumi-lang-yaml=\"`zendesk`\" pulumi-lang-java=\"`zendesk`\"\u003e`zendesk`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`zoom`\" pulumi-lang-dotnet=\"`Zoom`\" pulumi-lang-go=\"`zoom`\" pulumi-lang-python=\"`zoom`\" pulumi-lang-yaml=\"`zoom`\" pulumi-lang-java=\"`zoom`\"\u003e`zoom`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`expressConfiguration`\" pulumi-lang-dotnet=\"`ExpressConfiguration`\" pulumi-lang-go=\"`expressConfiguration`\" pulumi-lang-python=\"`express_configuration`\" pulumi-lang-yaml=\"`expressConfiguration`\" pulumi-lang-java=\"`expressConfiguration`\"\u003e`express_configuration`\u003c/span\u003e\n"
                 },
                 "asyncApprovalNotificationChannels": {
                     "type": "array",
@@ -8341,6 +8771,13 @@
                 "description": {
                     "type": "string",
                     "description": "Description of the purpose of the client.\n"
+                },
+                "expressConfigurations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/getClientsClientExpressConfiguration:getClientsClientExpressConfiguration"
+                    },
+                    "description": "Express Configuration settings for the client. Used with OIN Express Configuration.\n"
                 },
                 "grantTypes": {
                     "type": "array",
@@ -8422,6 +8859,7 @@
                 "clientMetadata",
                 "clientSecret",
                 "description",
+                "expressConfigurations",
                 "grantTypes",
                 "isFirstParty",
                 "isTokenEndpointIpHeaderTrusted",
@@ -8433,6 +8871,83 @@
                 "tokenExchanges",
                 "tokenQuotas",
                 "webOrigins"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getClientsClientExpressConfiguration:getClientsClientExpressConfiguration": {
+            "properties": {
+                "adminLoginDomain": {
+                    "type": "string",
+                    "description": "The domain that admins are expected to log in via for authenticating for express configuration.\n"
+                },
+                "connectionProfileId": {
+                    "type": "string",
+                    "description": "The ID of the connection profile to use for this application.\n"
+                },
+                "enableClient": {
+                    "type": "boolean",
+                    "description": "When true, all connections made via express configuration will be enabled for this application.\n"
+                },
+                "enableOrganization": {
+                    "type": "boolean",
+                    "description": "When true, all connections made via express configuration will have the associated organization enabled.\n"
+                },
+                "initiateLoginUriTemplate": {
+                    "type": "string",
+                    "description": "The URI users should bookmark to log in to this application. Variable substitution is permitted for: organization_name, organization_id, and connection_name.\n"
+                },
+                "linkedClients": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/getClientsClientExpressConfigurationLinkedClient:getClientsClientExpressConfigurationLinkedClient"
+                    },
+                    "description": "List of client IDs that are linked to this express configuration (e.g. web or mobile clients).\n"
+                },
+                "oinSubmissionId": {
+                    "type": "string",
+                    "description": "The identifier of the published application in the OKTA OIN.\n"
+                },
+                "oktaOinClientId": {
+                    "type": "string",
+                    "description": "The unique identifier for the Okta OIN Express Configuration Client.\n"
+                },
+                "userAttributeProfileId": {
+                    "type": "string",
+                    "description": "The ID of the user attribute profile to use for this application.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "adminLoginDomain",
+                "connectionProfileId",
+                "enableClient",
+                "enableOrganization",
+                "initiateLoginUriTemplate",
+                "linkedClients",
+                "oinSubmissionId",
+                "oktaOinClientId",
+                "userAttributeProfileId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getClientsClientExpressConfigurationLinkedClient:getClientsClientExpressConfigurationLinkedClient": {
+            "properties": {
+                "clientId": {
+                    "type": "string",
+                    "description": "The ID of the linked client.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "clientId"
             ],
             "language": {
                 "nodejs": {
@@ -10124,6 +10639,307 @@
                     "requiredInputs": []
                 }
             }
+        },
+        "auth0:index/getConnectionProfileConnectionConfig:getConnectionProfileConnectionConfig": {
+            "type": "object"
+        },
+        "auth0:index/getConnectionProfileOrganization:getConnectionProfileOrganization": {
+            "properties": {
+                "assignMembershipOnLogin": {
+                    "type": "string",
+                    "description": "Whether to assign membership on login.\n"
+                },
+                "showAsButton": {
+                    "type": "string",
+                    "description": "Whether to show organization as a button.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "assignMembershipOnLogin",
+                "showAsButton"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getConnectionProfileStrategyOverride:getConnectionProfileStrategyOverride": {
+            "properties": {
+                "ad": {
+                    "$ref": "#/types/auth0:index/getConnectionProfileStrategyOverrideAd:getConnectionProfileStrategyOverrideAd",
+                    "description": "Strategy override configuration.\n"
+                },
+                "adfs": {
+                    "$ref": "#/types/auth0:index/getConnectionProfileStrategyOverrideAdfs:getConnectionProfileStrategyOverrideAdfs",
+                    "description": "Strategy override configuration.\n"
+                },
+                "googleApps": {
+                    "$ref": "#/types/auth0:index/getConnectionProfileStrategyOverrideGoogleApps:getConnectionProfileStrategyOverrideGoogleApps",
+                    "description": "Strategy override configuration.\n"
+                },
+                "oidc": {
+                    "$ref": "#/types/auth0:index/getConnectionProfileStrategyOverrideOidc:getConnectionProfileStrategyOverrideOidc",
+                    "description": "Strategy override configuration.\n"
+                },
+                "okta": {
+                    "$ref": "#/types/auth0:index/getConnectionProfileStrategyOverrideOkta:getConnectionProfileStrategyOverrideOkta",
+                    "description": "Strategy override configuration.\n"
+                },
+                "pingfederate": {
+                    "$ref": "#/types/auth0:index/getConnectionProfileStrategyOverridePingfederate:getConnectionProfileStrategyOverridePingfederate",
+                    "description": "Strategy override configuration.\n"
+                },
+                "samlp": {
+                    "$ref": "#/types/auth0:index/getConnectionProfileStrategyOverrideSamlp:getConnectionProfileStrategyOverrideSamlp",
+                    "description": "Strategy override configuration.\n"
+                },
+                "waad": {
+                    "$ref": "#/types/auth0:index/getConnectionProfileStrategyOverrideWaad:getConnectionProfileStrategyOverrideWaad",
+                    "description": "Strategy override configuration.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "ad",
+                "adfs",
+                "googleApps",
+                "oidc",
+                "okta",
+                "pingfederate",
+                "samlp",
+                "waad"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getConnectionProfileStrategyOverrideAd:getConnectionProfileStrategyOverrideAd": {
+            "properties": {
+                "connectionConfig": {
+                    "$ref": "#/types/auth0:index/getConnectionProfileStrategyOverrideAdConnectionConfig:getConnectionProfileStrategyOverrideAdConnectionConfig",
+                    "description": "Connection config for the strategy override.\n"
+                },
+                "enabledFeatures": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Enabled features for the strategy override.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "connectionConfig",
+                "enabledFeatures"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getConnectionProfileStrategyOverrideAdConnectionConfig:getConnectionProfileStrategyOverrideAdConnectionConfig": {
+            "type": "object"
+        },
+        "auth0:index/getConnectionProfileStrategyOverrideAdfs:getConnectionProfileStrategyOverrideAdfs": {
+            "properties": {
+                "connectionConfig": {
+                    "$ref": "#/types/auth0:index/getConnectionProfileStrategyOverrideAdfsConnectionConfig:getConnectionProfileStrategyOverrideAdfsConnectionConfig",
+                    "description": "Connection config for the strategy override.\n"
+                },
+                "enabledFeatures": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Enabled features for the strategy override.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "connectionConfig",
+                "enabledFeatures"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getConnectionProfileStrategyOverrideAdfsConnectionConfig:getConnectionProfileStrategyOverrideAdfsConnectionConfig": {
+            "type": "object"
+        },
+        "auth0:index/getConnectionProfileStrategyOverrideGoogleApps:getConnectionProfileStrategyOverrideGoogleApps": {
+            "properties": {
+                "connectionConfig": {
+                    "$ref": "#/types/auth0:index/getConnectionProfileStrategyOverrideGoogleAppsConnectionConfig:getConnectionProfileStrategyOverrideGoogleAppsConnectionConfig",
+                    "description": "Connection config for the strategy override.\n"
+                },
+                "enabledFeatures": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Enabled features for the strategy override.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "connectionConfig",
+                "enabledFeatures"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getConnectionProfileStrategyOverrideGoogleAppsConnectionConfig:getConnectionProfileStrategyOverrideGoogleAppsConnectionConfig": {
+            "type": "object"
+        },
+        "auth0:index/getConnectionProfileStrategyOverrideOidc:getConnectionProfileStrategyOverrideOidc": {
+            "properties": {
+                "connectionConfig": {
+                    "$ref": "#/types/auth0:index/getConnectionProfileStrategyOverrideOidcConnectionConfig:getConnectionProfileStrategyOverrideOidcConnectionConfig",
+                    "description": "Connection config for the strategy override.\n"
+                },
+                "enabledFeatures": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Enabled features for the strategy override.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "connectionConfig",
+                "enabledFeatures"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getConnectionProfileStrategyOverrideOidcConnectionConfig:getConnectionProfileStrategyOverrideOidcConnectionConfig": {
+            "type": "object"
+        },
+        "auth0:index/getConnectionProfileStrategyOverrideOkta:getConnectionProfileStrategyOverrideOkta": {
+            "properties": {
+                "connectionConfig": {
+                    "$ref": "#/types/auth0:index/getConnectionProfileStrategyOverrideOktaConnectionConfig:getConnectionProfileStrategyOverrideOktaConnectionConfig",
+                    "description": "Connection config for the strategy override.\n"
+                },
+                "enabledFeatures": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Enabled features for the strategy override.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "connectionConfig",
+                "enabledFeatures"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getConnectionProfileStrategyOverrideOktaConnectionConfig:getConnectionProfileStrategyOverrideOktaConnectionConfig": {
+            "type": "object"
+        },
+        "auth0:index/getConnectionProfileStrategyOverridePingfederate:getConnectionProfileStrategyOverridePingfederate": {
+            "properties": {
+                "connectionConfig": {
+                    "$ref": "#/types/auth0:index/getConnectionProfileStrategyOverridePingfederateConnectionConfig:getConnectionProfileStrategyOverridePingfederateConnectionConfig",
+                    "description": "Connection config for the strategy override.\n"
+                },
+                "enabledFeatures": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Enabled features for the strategy override.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "connectionConfig",
+                "enabledFeatures"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getConnectionProfileStrategyOverridePingfederateConnectionConfig:getConnectionProfileStrategyOverridePingfederateConnectionConfig": {
+            "type": "object"
+        },
+        "auth0:index/getConnectionProfileStrategyOverrideSamlp:getConnectionProfileStrategyOverrideSamlp": {
+            "properties": {
+                "connectionConfig": {
+                    "$ref": "#/types/auth0:index/getConnectionProfileStrategyOverrideSamlpConnectionConfig:getConnectionProfileStrategyOverrideSamlpConnectionConfig",
+                    "description": "Connection config for the strategy override.\n"
+                },
+                "enabledFeatures": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Enabled features for the strategy override.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "connectionConfig",
+                "enabledFeatures"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getConnectionProfileStrategyOverrideSamlpConnectionConfig:getConnectionProfileStrategyOverrideSamlpConnectionConfig": {
+            "type": "object"
+        },
+        "auth0:index/getConnectionProfileStrategyOverrideWaad:getConnectionProfileStrategyOverrideWaad": {
+            "properties": {
+                "connectionConfig": {
+                    "$ref": "#/types/auth0:index/getConnectionProfileStrategyOverrideWaadConnectionConfig:getConnectionProfileStrategyOverrideWaadConnectionConfig",
+                    "description": "Connection config for the strategy override.\n"
+                },
+                "enabledFeatures": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Enabled features for the strategy override.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "connectionConfig",
+                "enabledFeatures"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getConnectionProfileStrategyOverrideWaadConnectionConfig:getConnectionProfileStrategyOverrideWaadConnectionConfig": {
+            "type": "object"
         },
         "auth0:index/getConnectionScimConfigurationDefaultMapping:getConnectionScimConfigurationDefaultMapping": {
             "properties": {
@@ -12615,7 +13431,7 @@
                 },
                 "appType": {
                     "type": "string",
-                    "description": "Type of application the client represents. Possible values are: \u003cspan pulumi-lang-nodejs=\"`native`\" pulumi-lang-dotnet=\"`Native`\" pulumi-lang-go=\"`native`\" pulumi-lang-python=\"`native`\" pulumi-lang-yaml=\"`native`\" pulumi-lang-java=\"`native`\"\u003e`native`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`spa`\" pulumi-lang-dotnet=\"`Spa`\" pulumi-lang-go=\"`spa`\" pulumi-lang-python=\"`spa`\" pulumi-lang-yaml=\"`spa`\" pulumi-lang-java=\"`spa`\"\u003e`spa`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`regularWeb`\" pulumi-lang-dotnet=\"`RegularWeb`\" pulumi-lang-go=\"`regularWeb`\" pulumi-lang-python=\"`regular_web`\" pulumi-lang-yaml=\"`regularWeb`\" pulumi-lang-java=\"`regularWeb`\"\u003e`regular_web`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`nonInteractive`\" pulumi-lang-dotnet=\"`NonInteractive`\" pulumi-lang-go=\"`nonInteractive`\" pulumi-lang-python=\"`non_interactive`\" pulumi-lang-yaml=\"`nonInteractive`\" pulumi-lang-java=\"`nonInteractive`\"\u003e`non_interactive`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`resourceServer`\" pulumi-lang-dotnet=\"`ResourceServer`\" pulumi-lang-go=\"`resourceServer`\" pulumi-lang-python=\"`resource_server`\" pulumi-lang-yaml=\"`resourceServer`\" pulumi-lang-java=\"`resourceServer`\"\u003e`resource_server`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`ssoIntegration`\" pulumi-lang-dotnet=\"`SsoIntegration`\" pulumi-lang-go=\"`ssoIntegration`\" pulumi-lang-python=\"`sso_integration`\" pulumi-lang-yaml=\"`ssoIntegration`\" pulumi-lang-java=\"`ssoIntegration`\"\u003e`sso_integration`\u003c/span\u003e. Specific SSO integrations types accepted as well are: \u003cspan pulumi-lang-nodejs=\"`rms`\" pulumi-lang-dotnet=\"`Rms`\" pulumi-lang-go=\"`rms`\" pulumi-lang-python=\"`rms`\" pulumi-lang-yaml=\"`rms`\" pulumi-lang-java=\"`rms`\"\u003e`rms`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`box`\" pulumi-lang-dotnet=\"`Box`\" pulumi-lang-go=\"`box`\" pulumi-lang-python=\"`box`\" pulumi-lang-yaml=\"`box`\" pulumi-lang-java=\"`box`\"\u003e`box`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`cloudbees`\" pulumi-lang-dotnet=\"`Cloudbees`\" pulumi-lang-go=\"`cloudbees`\" pulumi-lang-python=\"`cloudbees`\" pulumi-lang-yaml=\"`cloudbees`\" pulumi-lang-java=\"`cloudbees`\"\u003e`cloudbees`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`concur`\" pulumi-lang-dotnet=\"`Concur`\" pulumi-lang-go=\"`concur`\" pulumi-lang-python=\"`concur`\" pulumi-lang-yaml=\"`concur`\" pulumi-lang-java=\"`concur`\"\u003e`concur`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`dropbox`\" pulumi-lang-dotnet=\"`Dropbox`\" pulumi-lang-go=\"`dropbox`\" pulumi-lang-python=\"`dropbox`\" pulumi-lang-yaml=\"`dropbox`\" pulumi-lang-java=\"`dropbox`\"\u003e`dropbox`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`mscrm`\" pulumi-lang-dotnet=\"`Mscrm`\" pulumi-lang-go=\"`mscrm`\" pulumi-lang-python=\"`mscrm`\" pulumi-lang-yaml=\"`mscrm`\" pulumi-lang-java=\"`mscrm`\"\u003e`mscrm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`echosign`\" pulumi-lang-dotnet=\"`Echosign`\" pulumi-lang-go=\"`echosign`\" pulumi-lang-python=\"`echosign`\" pulumi-lang-yaml=\"`echosign`\" pulumi-lang-java=\"`echosign`\"\u003e`echosign`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`egnyte`\" pulumi-lang-dotnet=\"`Egnyte`\" pulumi-lang-go=\"`egnyte`\" pulumi-lang-python=\"`egnyte`\" pulumi-lang-yaml=\"`egnyte`\" pulumi-lang-java=\"`egnyte`\"\u003e`egnyte`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`newrelic`\" pulumi-lang-dotnet=\"`Newrelic`\" pulumi-lang-go=\"`newrelic`\" pulumi-lang-python=\"`newrelic`\" pulumi-lang-yaml=\"`newrelic`\" pulumi-lang-java=\"`newrelic`\"\u003e`newrelic`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`office365`\" pulumi-lang-dotnet=\"`Office365`\" pulumi-lang-go=\"`office365`\" pulumi-lang-python=\"`office365`\" pulumi-lang-yaml=\"`office365`\" pulumi-lang-java=\"`office365`\"\u003e`office365`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`salesforce`\" pulumi-lang-dotnet=\"`Salesforce`\" pulumi-lang-go=\"`salesforce`\" pulumi-lang-python=\"`salesforce`\" pulumi-lang-yaml=\"`salesforce`\" pulumi-lang-java=\"`salesforce`\"\u003e`salesforce`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sentry`\" pulumi-lang-dotnet=\"`Sentry`\" pulumi-lang-go=\"`sentry`\" pulumi-lang-python=\"`sentry`\" pulumi-lang-yaml=\"`sentry`\" pulumi-lang-java=\"`sentry`\"\u003e`sentry`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sharepoint`\" pulumi-lang-dotnet=\"`Sharepoint`\" pulumi-lang-go=\"`sharepoint`\" pulumi-lang-python=\"`sharepoint`\" pulumi-lang-yaml=\"`sharepoint`\" pulumi-lang-java=\"`sharepoint`\"\u003e`sharepoint`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slack`\" pulumi-lang-dotnet=\"`Slack`\" pulumi-lang-go=\"`slack`\" pulumi-lang-python=\"`slack`\" pulumi-lang-yaml=\"`slack`\" pulumi-lang-java=\"`slack`\"\u003e`slack`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`springcm`\" pulumi-lang-dotnet=\"`Springcm`\" pulumi-lang-go=\"`springcm`\" pulumi-lang-python=\"`springcm`\" pulumi-lang-yaml=\"`springcm`\" pulumi-lang-java=\"`springcm`\"\u003e`springcm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`zendesk`\" pulumi-lang-dotnet=\"`Zendesk`\" pulumi-lang-go=\"`zendesk`\" pulumi-lang-python=\"`zendesk`\" pulumi-lang-yaml=\"`zendesk`\" pulumi-lang-java=\"`zendesk`\"\u003e`zendesk`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`zoom`\" pulumi-lang-dotnet=\"`Zoom`\" pulumi-lang-go=\"`zoom`\" pulumi-lang-python=\"`zoom`\" pulumi-lang-yaml=\"`zoom`\" pulumi-lang-java=\"`zoom`\"\u003e`zoom`\u003c/span\u003e.\n"
+                    "description": "Type of application the client represents. Possible values are: \u003cspan pulumi-lang-nodejs=\"`native`\" pulumi-lang-dotnet=\"`Native`\" pulumi-lang-go=\"`native`\" pulumi-lang-python=\"`native`\" pulumi-lang-yaml=\"`native`\" pulumi-lang-java=\"`native`\"\u003e`native`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`spa`\" pulumi-lang-dotnet=\"`Spa`\" pulumi-lang-go=\"`spa`\" pulumi-lang-python=\"`spa`\" pulumi-lang-yaml=\"`spa`\" pulumi-lang-java=\"`spa`\"\u003e`spa`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`regularWeb`\" pulumi-lang-dotnet=\"`RegularWeb`\" pulumi-lang-go=\"`regularWeb`\" pulumi-lang-python=\"`regular_web`\" pulumi-lang-yaml=\"`regularWeb`\" pulumi-lang-java=\"`regularWeb`\"\u003e`regular_web`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`nonInteractive`\" pulumi-lang-dotnet=\"`NonInteractive`\" pulumi-lang-go=\"`nonInteractive`\" pulumi-lang-python=\"`non_interactive`\" pulumi-lang-yaml=\"`nonInteractive`\" pulumi-lang-java=\"`nonInteractive`\"\u003e`non_interactive`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`resourceServer`\" pulumi-lang-dotnet=\"`ResourceServer`\" pulumi-lang-go=\"`resourceServer`\" pulumi-lang-python=\"`resource_server`\" pulumi-lang-yaml=\"`resourceServer`\" pulumi-lang-java=\"`resourceServer`\"\u003e`resource_server`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`ssoIntegration`\" pulumi-lang-dotnet=\"`SsoIntegration`\" pulumi-lang-go=\"`ssoIntegration`\" pulumi-lang-python=\"`sso_integration`\" pulumi-lang-yaml=\"`ssoIntegration`\" pulumi-lang-java=\"`ssoIntegration`\"\u003e`sso_integration`\u003c/span\u003e. Specific SSO integrations types accepted as well are: \u003cspan pulumi-lang-nodejs=\"`rms`\" pulumi-lang-dotnet=\"`Rms`\" pulumi-lang-go=\"`rms`\" pulumi-lang-python=\"`rms`\" pulumi-lang-yaml=\"`rms`\" pulumi-lang-java=\"`rms`\"\u003e`rms`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`box`\" pulumi-lang-dotnet=\"`Box`\" pulumi-lang-go=\"`box`\" pulumi-lang-python=\"`box`\" pulumi-lang-yaml=\"`box`\" pulumi-lang-java=\"`box`\"\u003e`box`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`cloudbees`\" pulumi-lang-dotnet=\"`Cloudbees`\" pulumi-lang-go=\"`cloudbees`\" pulumi-lang-python=\"`cloudbees`\" pulumi-lang-yaml=\"`cloudbees`\" pulumi-lang-java=\"`cloudbees`\"\u003e`cloudbees`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`concur`\" pulumi-lang-dotnet=\"`Concur`\" pulumi-lang-go=\"`concur`\" pulumi-lang-python=\"`concur`\" pulumi-lang-yaml=\"`concur`\" pulumi-lang-java=\"`concur`\"\u003e`concur`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`dropbox`\" pulumi-lang-dotnet=\"`Dropbox`\" pulumi-lang-go=\"`dropbox`\" pulumi-lang-python=\"`dropbox`\" pulumi-lang-yaml=\"`dropbox`\" pulumi-lang-java=\"`dropbox`\"\u003e`dropbox`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`mscrm`\" pulumi-lang-dotnet=\"`Mscrm`\" pulumi-lang-go=\"`mscrm`\" pulumi-lang-python=\"`mscrm`\" pulumi-lang-yaml=\"`mscrm`\" pulumi-lang-java=\"`mscrm`\"\u003e`mscrm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`echosign`\" pulumi-lang-dotnet=\"`Echosign`\" pulumi-lang-go=\"`echosign`\" pulumi-lang-python=\"`echosign`\" pulumi-lang-yaml=\"`echosign`\" pulumi-lang-java=\"`echosign`\"\u003e`echosign`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`egnyte`\" pulumi-lang-dotnet=\"`Egnyte`\" pulumi-lang-go=\"`egnyte`\" pulumi-lang-python=\"`egnyte`\" pulumi-lang-yaml=\"`egnyte`\" pulumi-lang-java=\"`egnyte`\"\u003e`egnyte`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`newrelic`\" pulumi-lang-dotnet=\"`Newrelic`\" pulumi-lang-go=\"`newrelic`\" pulumi-lang-python=\"`newrelic`\" pulumi-lang-yaml=\"`newrelic`\" pulumi-lang-java=\"`newrelic`\"\u003e`newrelic`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`office365`\" pulumi-lang-dotnet=\"`Office365`\" pulumi-lang-go=\"`office365`\" pulumi-lang-python=\"`office365`\" pulumi-lang-yaml=\"`office365`\" pulumi-lang-java=\"`office365`\"\u003e`office365`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`salesforce`\" pulumi-lang-dotnet=\"`Salesforce`\" pulumi-lang-go=\"`salesforce`\" pulumi-lang-python=\"`salesforce`\" pulumi-lang-yaml=\"`salesforce`\" pulumi-lang-java=\"`salesforce`\"\u003e`salesforce`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sentry`\" pulumi-lang-dotnet=\"`Sentry`\" pulumi-lang-go=\"`sentry`\" pulumi-lang-python=\"`sentry`\" pulumi-lang-yaml=\"`sentry`\" pulumi-lang-java=\"`sentry`\"\u003e`sentry`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sharepoint`\" pulumi-lang-dotnet=\"`Sharepoint`\" pulumi-lang-go=\"`sharepoint`\" pulumi-lang-python=\"`sharepoint`\" pulumi-lang-yaml=\"`sharepoint`\" pulumi-lang-java=\"`sharepoint`\"\u003e`sharepoint`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slack`\" pulumi-lang-dotnet=\"`Slack`\" pulumi-lang-go=\"`slack`\" pulumi-lang-python=\"`slack`\" pulumi-lang-yaml=\"`slack`\" pulumi-lang-java=\"`slack`\"\u003e`slack`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`springcm`\" pulumi-lang-dotnet=\"`Springcm`\" pulumi-lang-go=\"`springcm`\" pulumi-lang-python=\"`springcm`\" pulumi-lang-yaml=\"`springcm`\" pulumi-lang-java=\"`springcm`\"\u003e`springcm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`zendesk`\" pulumi-lang-dotnet=\"`Zendesk`\" pulumi-lang-go=\"`zendesk`\" pulumi-lang-python=\"`zendesk`\" pulumi-lang-yaml=\"`zendesk`\" pulumi-lang-java=\"`zendesk`\"\u003e`zendesk`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`zoom`\" pulumi-lang-dotnet=\"`Zoom`\" pulumi-lang-go=\"`zoom`\" pulumi-lang-python=\"`zoom`\" pulumi-lang-yaml=\"`zoom`\" pulumi-lang-java=\"`zoom`\"\u003e`zoom`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`expressConfiguration`\" pulumi-lang-dotnet=\"`ExpressConfiguration`\" pulumi-lang-go=\"`expressConfiguration`\" pulumi-lang-python=\"`express_configuration`\" pulumi-lang-yaml=\"`expressConfiguration`\" pulumi-lang-java=\"`expressConfiguration`\"\u003e`express_configuration`\u003c/span\u003e\n"
                 },
                 "asyncApprovalNotificationChannels": {
                     "type": "array",
@@ -12684,6 +13500,10 @@
                         "type": "string"
                     },
                     "description": "Encryption used for WS-Fed responses with this client.\n"
+                },
+                "expressConfiguration": {
+                    "$ref": "#/types/auth0:index/ClientExpressConfiguration:ClientExpressConfiguration",
+                    "description": "Express Configuration settings for the client. Used with OIN Express Configuration.\n"
                 },
                 "formTemplate": {
                     "type": "string",
@@ -12819,10 +13639,12 @@
             },
             "required": [
                 "asyncApprovalNotificationChannels",
+                "callbacks",
                 "clientId",
                 "customLoginPageOn",
                 "defaultOrganization",
                 "description",
+                "expressConfiguration",
                 "grantTypes",
                 "isFirstParty",
                 "isTokenEndpointIpHeaderTrusted",
@@ -12833,6 +13655,8 @@
                 "oidcBackchannelLogoutUrls",
                 "oidcConformant",
                 "oidcLogout",
+                "organizationRequireBehavior",
+                "organizationUsage",
                 "refreshToken",
                 "signingKeys"
             ],
@@ -12864,7 +13688,7 @@
                 },
                 "appType": {
                     "type": "string",
-                    "description": "Type of application the client represents. Possible values are: \u003cspan pulumi-lang-nodejs=\"`native`\" pulumi-lang-dotnet=\"`Native`\" pulumi-lang-go=\"`native`\" pulumi-lang-python=\"`native`\" pulumi-lang-yaml=\"`native`\" pulumi-lang-java=\"`native`\"\u003e`native`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`spa`\" pulumi-lang-dotnet=\"`Spa`\" pulumi-lang-go=\"`spa`\" pulumi-lang-python=\"`spa`\" pulumi-lang-yaml=\"`spa`\" pulumi-lang-java=\"`spa`\"\u003e`spa`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`regularWeb`\" pulumi-lang-dotnet=\"`RegularWeb`\" pulumi-lang-go=\"`regularWeb`\" pulumi-lang-python=\"`regular_web`\" pulumi-lang-yaml=\"`regularWeb`\" pulumi-lang-java=\"`regularWeb`\"\u003e`regular_web`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`nonInteractive`\" pulumi-lang-dotnet=\"`NonInteractive`\" pulumi-lang-go=\"`nonInteractive`\" pulumi-lang-python=\"`non_interactive`\" pulumi-lang-yaml=\"`nonInteractive`\" pulumi-lang-java=\"`nonInteractive`\"\u003e`non_interactive`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`resourceServer`\" pulumi-lang-dotnet=\"`ResourceServer`\" pulumi-lang-go=\"`resourceServer`\" pulumi-lang-python=\"`resource_server`\" pulumi-lang-yaml=\"`resourceServer`\" pulumi-lang-java=\"`resourceServer`\"\u003e`resource_server`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`ssoIntegration`\" pulumi-lang-dotnet=\"`SsoIntegration`\" pulumi-lang-go=\"`ssoIntegration`\" pulumi-lang-python=\"`sso_integration`\" pulumi-lang-yaml=\"`ssoIntegration`\" pulumi-lang-java=\"`ssoIntegration`\"\u003e`sso_integration`\u003c/span\u003e. Specific SSO integrations types accepted as well are: \u003cspan pulumi-lang-nodejs=\"`rms`\" pulumi-lang-dotnet=\"`Rms`\" pulumi-lang-go=\"`rms`\" pulumi-lang-python=\"`rms`\" pulumi-lang-yaml=\"`rms`\" pulumi-lang-java=\"`rms`\"\u003e`rms`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`box`\" pulumi-lang-dotnet=\"`Box`\" pulumi-lang-go=\"`box`\" pulumi-lang-python=\"`box`\" pulumi-lang-yaml=\"`box`\" pulumi-lang-java=\"`box`\"\u003e`box`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`cloudbees`\" pulumi-lang-dotnet=\"`Cloudbees`\" pulumi-lang-go=\"`cloudbees`\" pulumi-lang-python=\"`cloudbees`\" pulumi-lang-yaml=\"`cloudbees`\" pulumi-lang-java=\"`cloudbees`\"\u003e`cloudbees`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`concur`\" pulumi-lang-dotnet=\"`Concur`\" pulumi-lang-go=\"`concur`\" pulumi-lang-python=\"`concur`\" pulumi-lang-yaml=\"`concur`\" pulumi-lang-java=\"`concur`\"\u003e`concur`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`dropbox`\" pulumi-lang-dotnet=\"`Dropbox`\" pulumi-lang-go=\"`dropbox`\" pulumi-lang-python=\"`dropbox`\" pulumi-lang-yaml=\"`dropbox`\" pulumi-lang-java=\"`dropbox`\"\u003e`dropbox`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`mscrm`\" pulumi-lang-dotnet=\"`Mscrm`\" pulumi-lang-go=\"`mscrm`\" pulumi-lang-python=\"`mscrm`\" pulumi-lang-yaml=\"`mscrm`\" pulumi-lang-java=\"`mscrm`\"\u003e`mscrm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`echosign`\" pulumi-lang-dotnet=\"`Echosign`\" pulumi-lang-go=\"`echosign`\" pulumi-lang-python=\"`echosign`\" pulumi-lang-yaml=\"`echosign`\" pulumi-lang-java=\"`echosign`\"\u003e`echosign`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`egnyte`\" pulumi-lang-dotnet=\"`Egnyte`\" pulumi-lang-go=\"`egnyte`\" pulumi-lang-python=\"`egnyte`\" pulumi-lang-yaml=\"`egnyte`\" pulumi-lang-java=\"`egnyte`\"\u003e`egnyte`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`newrelic`\" pulumi-lang-dotnet=\"`Newrelic`\" pulumi-lang-go=\"`newrelic`\" pulumi-lang-python=\"`newrelic`\" pulumi-lang-yaml=\"`newrelic`\" pulumi-lang-java=\"`newrelic`\"\u003e`newrelic`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`office365`\" pulumi-lang-dotnet=\"`Office365`\" pulumi-lang-go=\"`office365`\" pulumi-lang-python=\"`office365`\" pulumi-lang-yaml=\"`office365`\" pulumi-lang-java=\"`office365`\"\u003e`office365`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`salesforce`\" pulumi-lang-dotnet=\"`Salesforce`\" pulumi-lang-go=\"`salesforce`\" pulumi-lang-python=\"`salesforce`\" pulumi-lang-yaml=\"`salesforce`\" pulumi-lang-java=\"`salesforce`\"\u003e`salesforce`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sentry`\" pulumi-lang-dotnet=\"`Sentry`\" pulumi-lang-go=\"`sentry`\" pulumi-lang-python=\"`sentry`\" pulumi-lang-yaml=\"`sentry`\" pulumi-lang-java=\"`sentry`\"\u003e`sentry`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sharepoint`\" pulumi-lang-dotnet=\"`Sharepoint`\" pulumi-lang-go=\"`sharepoint`\" pulumi-lang-python=\"`sharepoint`\" pulumi-lang-yaml=\"`sharepoint`\" pulumi-lang-java=\"`sharepoint`\"\u003e`sharepoint`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slack`\" pulumi-lang-dotnet=\"`Slack`\" pulumi-lang-go=\"`slack`\" pulumi-lang-python=\"`slack`\" pulumi-lang-yaml=\"`slack`\" pulumi-lang-java=\"`slack`\"\u003e`slack`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`springcm`\" pulumi-lang-dotnet=\"`Springcm`\" pulumi-lang-go=\"`springcm`\" pulumi-lang-python=\"`springcm`\" pulumi-lang-yaml=\"`springcm`\" pulumi-lang-java=\"`springcm`\"\u003e`springcm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`zendesk`\" pulumi-lang-dotnet=\"`Zendesk`\" pulumi-lang-go=\"`zendesk`\" pulumi-lang-python=\"`zendesk`\" pulumi-lang-yaml=\"`zendesk`\" pulumi-lang-java=\"`zendesk`\"\u003e`zendesk`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`zoom`\" pulumi-lang-dotnet=\"`Zoom`\" pulumi-lang-go=\"`zoom`\" pulumi-lang-python=\"`zoom`\" pulumi-lang-yaml=\"`zoom`\" pulumi-lang-java=\"`zoom`\"\u003e`zoom`\u003c/span\u003e.\n"
+                    "description": "Type of application the client represents. Possible values are: \u003cspan pulumi-lang-nodejs=\"`native`\" pulumi-lang-dotnet=\"`Native`\" pulumi-lang-go=\"`native`\" pulumi-lang-python=\"`native`\" pulumi-lang-yaml=\"`native`\" pulumi-lang-java=\"`native`\"\u003e`native`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`spa`\" pulumi-lang-dotnet=\"`Spa`\" pulumi-lang-go=\"`spa`\" pulumi-lang-python=\"`spa`\" pulumi-lang-yaml=\"`spa`\" pulumi-lang-java=\"`spa`\"\u003e`spa`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`regularWeb`\" pulumi-lang-dotnet=\"`RegularWeb`\" pulumi-lang-go=\"`regularWeb`\" pulumi-lang-python=\"`regular_web`\" pulumi-lang-yaml=\"`regularWeb`\" pulumi-lang-java=\"`regularWeb`\"\u003e`regular_web`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`nonInteractive`\" pulumi-lang-dotnet=\"`NonInteractive`\" pulumi-lang-go=\"`nonInteractive`\" pulumi-lang-python=\"`non_interactive`\" pulumi-lang-yaml=\"`nonInteractive`\" pulumi-lang-java=\"`nonInteractive`\"\u003e`non_interactive`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`resourceServer`\" pulumi-lang-dotnet=\"`ResourceServer`\" pulumi-lang-go=\"`resourceServer`\" pulumi-lang-python=\"`resource_server`\" pulumi-lang-yaml=\"`resourceServer`\" pulumi-lang-java=\"`resourceServer`\"\u003e`resource_server`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`ssoIntegration`\" pulumi-lang-dotnet=\"`SsoIntegration`\" pulumi-lang-go=\"`ssoIntegration`\" pulumi-lang-python=\"`sso_integration`\" pulumi-lang-yaml=\"`ssoIntegration`\" pulumi-lang-java=\"`ssoIntegration`\"\u003e`sso_integration`\u003c/span\u003e. Specific SSO integrations types accepted as well are: \u003cspan pulumi-lang-nodejs=\"`rms`\" pulumi-lang-dotnet=\"`Rms`\" pulumi-lang-go=\"`rms`\" pulumi-lang-python=\"`rms`\" pulumi-lang-yaml=\"`rms`\" pulumi-lang-java=\"`rms`\"\u003e`rms`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`box`\" pulumi-lang-dotnet=\"`Box`\" pulumi-lang-go=\"`box`\" pulumi-lang-python=\"`box`\" pulumi-lang-yaml=\"`box`\" pulumi-lang-java=\"`box`\"\u003e`box`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`cloudbees`\" pulumi-lang-dotnet=\"`Cloudbees`\" pulumi-lang-go=\"`cloudbees`\" pulumi-lang-python=\"`cloudbees`\" pulumi-lang-yaml=\"`cloudbees`\" pulumi-lang-java=\"`cloudbees`\"\u003e`cloudbees`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`concur`\" pulumi-lang-dotnet=\"`Concur`\" pulumi-lang-go=\"`concur`\" pulumi-lang-python=\"`concur`\" pulumi-lang-yaml=\"`concur`\" pulumi-lang-java=\"`concur`\"\u003e`concur`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`dropbox`\" pulumi-lang-dotnet=\"`Dropbox`\" pulumi-lang-go=\"`dropbox`\" pulumi-lang-python=\"`dropbox`\" pulumi-lang-yaml=\"`dropbox`\" pulumi-lang-java=\"`dropbox`\"\u003e`dropbox`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`mscrm`\" pulumi-lang-dotnet=\"`Mscrm`\" pulumi-lang-go=\"`mscrm`\" pulumi-lang-python=\"`mscrm`\" pulumi-lang-yaml=\"`mscrm`\" pulumi-lang-java=\"`mscrm`\"\u003e`mscrm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`echosign`\" pulumi-lang-dotnet=\"`Echosign`\" pulumi-lang-go=\"`echosign`\" pulumi-lang-python=\"`echosign`\" pulumi-lang-yaml=\"`echosign`\" pulumi-lang-java=\"`echosign`\"\u003e`echosign`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`egnyte`\" pulumi-lang-dotnet=\"`Egnyte`\" pulumi-lang-go=\"`egnyte`\" pulumi-lang-python=\"`egnyte`\" pulumi-lang-yaml=\"`egnyte`\" pulumi-lang-java=\"`egnyte`\"\u003e`egnyte`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`newrelic`\" pulumi-lang-dotnet=\"`Newrelic`\" pulumi-lang-go=\"`newrelic`\" pulumi-lang-python=\"`newrelic`\" pulumi-lang-yaml=\"`newrelic`\" pulumi-lang-java=\"`newrelic`\"\u003e`newrelic`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`office365`\" pulumi-lang-dotnet=\"`Office365`\" pulumi-lang-go=\"`office365`\" pulumi-lang-python=\"`office365`\" pulumi-lang-yaml=\"`office365`\" pulumi-lang-java=\"`office365`\"\u003e`office365`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`salesforce`\" pulumi-lang-dotnet=\"`Salesforce`\" pulumi-lang-go=\"`salesforce`\" pulumi-lang-python=\"`salesforce`\" pulumi-lang-yaml=\"`salesforce`\" pulumi-lang-java=\"`salesforce`\"\u003e`salesforce`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sentry`\" pulumi-lang-dotnet=\"`Sentry`\" pulumi-lang-go=\"`sentry`\" pulumi-lang-python=\"`sentry`\" pulumi-lang-yaml=\"`sentry`\" pulumi-lang-java=\"`sentry`\"\u003e`sentry`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sharepoint`\" pulumi-lang-dotnet=\"`Sharepoint`\" pulumi-lang-go=\"`sharepoint`\" pulumi-lang-python=\"`sharepoint`\" pulumi-lang-yaml=\"`sharepoint`\" pulumi-lang-java=\"`sharepoint`\"\u003e`sharepoint`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slack`\" pulumi-lang-dotnet=\"`Slack`\" pulumi-lang-go=\"`slack`\" pulumi-lang-python=\"`slack`\" pulumi-lang-yaml=\"`slack`\" pulumi-lang-java=\"`slack`\"\u003e`slack`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`springcm`\" pulumi-lang-dotnet=\"`Springcm`\" pulumi-lang-go=\"`springcm`\" pulumi-lang-python=\"`springcm`\" pulumi-lang-yaml=\"`springcm`\" pulumi-lang-java=\"`springcm`\"\u003e`springcm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`zendesk`\" pulumi-lang-dotnet=\"`Zendesk`\" pulumi-lang-go=\"`zendesk`\" pulumi-lang-python=\"`zendesk`\" pulumi-lang-yaml=\"`zendesk`\" pulumi-lang-java=\"`zendesk`\"\u003e`zendesk`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`zoom`\" pulumi-lang-dotnet=\"`Zoom`\" pulumi-lang-go=\"`zoom`\" pulumi-lang-python=\"`zoom`\" pulumi-lang-yaml=\"`zoom`\" pulumi-lang-java=\"`zoom`\"\u003e`zoom`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`expressConfiguration`\" pulumi-lang-dotnet=\"`ExpressConfiguration`\" pulumi-lang-go=\"`expressConfiguration`\" pulumi-lang-python=\"`express_configuration`\" pulumi-lang-yaml=\"`expressConfiguration`\" pulumi-lang-java=\"`expressConfiguration`\"\u003e`express_configuration`\u003c/span\u003e\n"
                 },
                 "asyncApprovalNotificationChannels": {
                     "type": "array",
@@ -12929,6 +13753,10 @@
                         "type": "string"
                     },
                     "description": "Encryption used for WS-Fed responses with this client.\n"
+                },
+                "expressConfiguration": {
+                    "$ref": "#/types/auth0:index/ClientExpressConfiguration:ClientExpressConfiguration",
+                    "description": "Express Configuration settings for the client. Used with OIN Express Configuration.\n"
                 },
                 "formTemplate": {
                     "type": "string",
@@ -13081,7 +13909,7 @@
                     },
                     "appType": {
                         "type": "string",
-                        "description": "Type of application the client represents. Possible values are: \u003cspan pulumi-lang-nodejs=\"`native`\" pulumi-lang-dotnet=\"`Native`\" pulumi-lang-go=\"`native`\" pulumi-lang-python=\"`native`\" pulumi-lang-yaml=\"`native`\" pulumi-lang-java=\"`native`\"\u003e`native`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`spa`\" pulumi-lang-dotnet=\"`Spa`\" pulumi-lang-go=\"`spa`\" pulumi-lang-python=\"`spa`\" pulumi-lang-yaml=\"`spa`\" pulumi-lang-java=\"`spa`\"\u003e`spa`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`regularWeb`\" pulumi-lang-dotnet=\"`RegularWeb`\" pulumi-lang-go=\"`regularWeb`\" pulumi-lang-python=\"`regular_web`\" pulumi-lang-yaml=\"`regularWeb`\" pulumi-lang-java=\"`regularWeb`\"\u003e`regular_web`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`nonInteractive`\" pulumi-lang-dotnet=\"`NonInteractive`\" pulumi-lang-go=\"`nonInteractive`\" pulumi-lang-python=\"`non_interactive`\" pulumi-lang-yaml=\"`nonInteractive`\" pulumi-lang-java=\"`nonInteractive`\"\u003e`non_interactive`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`resourceServer`\" pulumi-lang-dotnet=\"`ResourceServer`\" pulumi-lang-go=\"`resourceServer`\" pulumi-lang-python=\"`resource_server`\" pulumi-lang-yaml=\"`resourceServer`\" pulumi-lang-java=\"`resourceServer`\"\u003e`resource_server`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`ssoIntegration`\" pulumi-lang-dotnet=\"`SsoIntegration`\" pulumi-lang-go=\"`ssoIntegration`\" pulumi-lang-python=\"`sso_integration`\" pulumi-lang-yaml=\"`ssoIntegration`\" pulumi-lang-java=\"`ssoIntegration`\"\u003e`sso_integration`\u003c/span\u003e. Specific SSO integrations types accepted as well are: \u003cspan pulumi-lang-nodejs=\"`rms`\" pulumi-lang-dotnet=\"`Rms`\" pulumi-lang-go=\"`rms`\" pulumi-lang-python=\"`rms`\" pulumi-lang-yaml=\"`rms`\" pulumi-lang-java=\"`rms`\"\u003e`rms`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`box`\" pulumi-lang-dotnet=\"`Box`\" pulumi-lang-go=\"`box`\" pulumi-lang-python=\"`box`\" pulumi-lang-yaml=\"`box`\" pulumi-lang-java=\"`box`\"\u003e`box`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`cloudbees`\" pulumi-lang-dotnet=\"`Cloudbees`\" pulumi-lang-go=\"`cloudbees`\" pulumi-lang-python=\"`cloudbees`\" pulumi-lang-yaml=\"`cloudbees`\" pulumi-lang-java=\"`cloudbees`\"\u003e`cloudbees`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`concur`\" pulumi-lang-dotnet=\"`Concur`\" pulumi-lang-go=\"`concur`\" pulumi-lang-python=\"`concur`\" pulumi-lang-yaml=\"`concur`\" pulumi-lang-java=\"`concur`\"\u003e`concur`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`dropbox`\" pulumi-lang-dotnet=\"`Dropbox`\" pulumi-lang-go=\"`dropbox`\" pulumi-lang-python=\"`dropbox`\" pulumi-lang-yaml=\"`dropbox`\" pulumi-lang-java=\"`dropbox`\"\u003e`dropbox`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`mscrm`\" pulumi-lang-dotnet=\"`Mscrm`\" pulumi-lang-go=\"`mscrm`\" pulumi-lang-python=\"`mscrm`\" pulumi-lang-yaml=\"`mscrm`\" pulumi-lang-java=\"`mscrm`\"\u003e`mscrm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`echosign`\" pulumi-lang-dotnet=\"`Echosign`\" pulumi-lang-go=\"`echosign`\" pulumi-lang-python=\"`echosign`\" pulumi-lang-yaml=\"`echosign`\" pulumi-lang-java=\"`echosign`\"\u003e`echosign`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`egnyte`\" pulumi-lang-dotnet=\"`Egnyte`\" pulumi-lang-go=\"`egnyte`\" pulumi-lang-python=\"`egnyte`\" pulumi-lang-yaml=\"`egnyte`\" pulumi-lang-java=\"`egnyte`\"\u003e`egnyte`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`newrelic`\" pulumi-lang-dotnet=\"`Newrelic`\" pulumi-lang-go=\"`newrelic`\" pulumi-lang-python=\"`newrelic`\" pulumi-lang-yaml=\"`newrelic`\" pulumi-lang-java=\"`newrelic`\"\u003e`newrelic`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`office365`\" pulumi-lang-dotnet=\"`Office365`\" pulumi-lang-go=\"`office365`\" pulumi-lang-python=\"`office365`\" pulumi-lang-yaml=\"`office365`\" pulumi-lang-java=\"`office365`\"\u003e`office365`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`salesforce`\" pulumi-lang-dotnet=\"`Salesforce`\" pulumi-lang-go=\"`salesforce`\" pulumi-lang-python=\"`salesforce`\" pulumi-lang-yaml=\"`salesforce`\" pulumi-lang-java=\"`salesforce`\"\u003e`salesforce`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sentry`\" pulumi-lang-dotnet=\"`Sentry`\" pulumi-lang-go=\"`sentry`\" pulumi-lang-python=\"`sentry`\" pulumi-lang-yaml=\"`sentry`\" pulumi-lang-java=\"`sentry`\"\u003e`sentry`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sharepoint`\" pulumi-lang-dotnet=\"`Sharepoint`\" pulumi-lang-go=\"`sharepoint`\" pulumi-lang-python=\"`sharepoint`\" pulumi-lang-yaml=\"`sharepoint`\" pulumi-lang-java=\"`sharepoint`\"\u003e`sharepoint`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slack`\" pulumi-lang-dotnet=\"`Slack`\" pulumi-lang-go=\"`slack`\" pulumi-lang-python=\"`slack`\" pulumi-lang-yaml=\"`slack`\" pulumi-lang-java=\"`slack`\"\u003e`slack`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`springcm`\" pulumi-lang-dotnet=\"`Springcm`\" pulumi-lang-go=\"`springcm`\" pulumi-lang-python=\"`springcm`\" pulumi-lang-yaml=\"`springcm`\" pulumi-lang-java=\"`springcm`\"\u003e`springcm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`zendesk`\" pulumi-lang-dotnet=\"`Zendesk`\" pulumi-lang-go=\"`zendesk`\" pulumi-lang-python=\"`zendesk`\" pulumi-lang-yaml=\"`zendesk`\" pulumi-lang-java=\"`zendesk`\"\u003e`zendesk`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`zoom`\" pulumi-lang-dotnet=\"`Zoom`\" pulumi-lang-go=\"`zoom`\" pulumi-lang-python=\"`zoom`\" pulumi-lang-yaml=\"`zoom`\" pulumi-lang-java=\"`zoom`\"\u003e`zoom`\u003c/span\u003e.\n"
+                        "description": "Type of application the client represents. Possible values are: \u003cspan pulumi-lang-nodejs=\"`native`\" pulumi-lang-dotnet=\"`Native`\" pulumi-lang-go=\"`native`\" pulumi-lang-python=\"`native`\" pulumi-lang-yaml=\"`native`\" pulumi-lang-java=\"`native`\"\u003e`native`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`spa`\" pulumi-lang-dotnet=\"`Spa`\" pulumi-lang-go=\"`spa`\" pulumi-lang-python=\"`spa`\" pulumi-lang-yaml=\"`spa`\" pulumi-lang-java=\"`spa`\"\u003e`spa`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`regularWeb`\" pulumi-lang-dotnet=\"`RegularWeb`\" pulumi-lang-go=\"`regularWeb`\" pulumi-lang-python=\"`regular_web`\" pulumi-lang-yaml=\"`regularWeb`\" pulumi-lang-java=\"`regularWeb`\"\u003e`regular_web`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`nonInteractive`\" pulumi-lang-dotnet=\"`NonInteractive`\" pulumi-lang-go=\"`nonInteractive`\" pulumi-lang-python=\"`non_interactive`\" pulumi-lang-yaml=\"`nonInteractive`\" pulumi-lang-java=\"`nonInteractive`\"\u003e`non_interactive`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`resourceServer`\" pulumi-lang-dotnet=\"`ResourceServer`\" pulumi-lang-go=\"`resourceServer`\" pulumi-lang-python=\"`resource_server`\" pulumi-lang-yaml=\"`resourceServer`\" pulumi-lang-java=\"`resourceServer`\"\u003e`resource_server`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`ssoIntegration`\" pulumi-lang-dotnet=\"`SsoIntegration`\" pulumi-lang-go=\"`ssoIntegration`\" pulumi-lang-python=\"`sso_integration`\" pulumi-lang-yaml=\"`ssoIntegration`\" pulumi-lang-java=\"`ssoIntegration`\"\u003e`sso_integration`\u003c/span\u003e. Specific SSO integrations types accepted as well are: \u003cspan pulumi-lang-nodejs=\"`rms`\" pulumi-lang-dotnet=\"`Rms`\" pulumi-lang-go=\"`rms`\" pulumi-lang-python=\"`rms`\" pulumi-lang-yaml=\"`rms`\" pulumi-lang-java=\"`rms`\"\u003e`rms`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`box`\" pulumi-lang-dotnet=\"`Box`\" pulumi-lang-go=\"`box`\" pulumi-lang-python=\"`box`\" pulumi-lang-yaml=\"`box`\" pulumi-lang-java=\"`box`\"\u003e`box`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`cloudbees`\" pulumi-lang-dotnet=\"`Cloudbees`\" pulumi-lang-go=\"`cloudbees`\" pulumi-lang-python=\"`cloudbees`\" pulumi-lang-yaml=\"`cloudbees`\" pulumi-lang-java=\"`cloudbees`\"\u003e`cloudbees`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`concur`\" pulumi-lang-dotnet=\"`Concur`\" pulumi-lang-go=\"`concur`\" pulumi-lang-python=\"`concur`\" pulumi-lang-yaml=\"`concur`\" pulumi-lang-java=\"`concur`\"\u003e`concur`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`dropbox`\" pulumi-lang-dotnet=\"`Dropbox`\" pulumi-lang-go=\"`dropbox`\" pulumi-lang-python=\"`dropbox`\" pulumi-lang-yaml=\"`dropbox`\" pulumi-lang-java=\"`dropbox`\"\u003e`dropbox`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`mscrm`\" pulumi-lang-dotnet=\"`Mscrm`\" pulumi-lang-go=\"`mscrm`\" pulumi-lang-python=\"`mscrm`\" pulumi-lang-yaml=\"`mscrm`\" pulumi-lang-java=\"`mscrm`\"\u003e`mscrm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`echosign`\" pulumi-lang-dotnet=\"`Echosign`\" pulumi-lang-go=\"`echosign`\" pulumi-lang-python=\"`echosign`\" pulumi-lang-yaml=\"`echosign`\" pulumi-lang-java=\"`echosign`\"\u003e`echosign`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`egnyte`\" pulumi-lang-dotnet=\"`Egnyte`\" pulumi-lang-go=\"`egnyte`\" pulumi-lang-python=\"`egnyte`\" pulumi-lang-yaml=\"`egnyte`\" pulumi-lang-java=\"`egnyte`\"\u003e`egnyte`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`newrelic`\" pulumi-lang-dotnet=\"`Newrelic`\" pulumi-lang-go=\"`newrelic`\" pulumi-lang-python=\"`newrelic`\" pulumi-lang-yaml=\"`newrelic`\" pulumi-lang-java=\"`newrelic`\"\u003e`newrelic`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`office365`\" pulumi-lang-dotnet=\"`Office365`\" pulumi-lang-go=\"`office365`\" pulumi-lang-python=\"`office365`\" pulumi-lang-yaml=\"`office365`\" pulumi-lang-java=\"`office365`\"\u003e`office365`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`salesforce`\" pulumi-lang-dotnet=\"`Salesforce`\" pulumi-lang-go=\"`salesforce`\" pulumi-lang-python=\"`salesforce`\" pulumi-lang-yaml=\"`salesforce`\" pulumi-lang-java=\"`salesforce`\"\u003e`salesforce`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sentry`\" pulumi-lang-dotnet=\"`Sentry`\" pulumi-lang-go=\"`sentry`\" pulumi-lang-python=\"`sentry`\" pulumi-lang-yaml=\"`sentry`\" pulumi-lang-java=\"`sentry`\"\u003e`sentry`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sharepoint`\" pulumi-lang-dotnet=\"`Sharepoint`\" pulumi-lang-go=\"`sharepoint`\" pulumi-lang-python=\"`sharepoint`\" pulumi-lang-yaml=\"`sharepoint`\" pulumi-lang-java=\"`sharepoint`\"\u003e`sharepoint`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slack`\" pulumi-lang-dotnet=\"`Slack`\" pulumi-lang-go=\"`slack`\" pulumi-lang-python=\"`slack`\" pulumi-lang-yaml=\"`slack`\" pulumi-lang-java=\"`slack`\"\u003e`slack`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`springcm`\" pulumi-lang-dotnet=\"`Springcm`\" pulumi-lang-go=\"`springcm`\" pulumi-lang-python=\"`springcm`\" pulumi-lang-yaml=\"`springcm`\" pulumi-lang-java=\"`springcm`\"\u003e`springcm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`zendesk`\" pulumi-lang-dotnet=\"`Zendesk`\" pulumi-lang-go=\"`zendesk`\" pulumi-lang-python=\"`zendesk`\" pulumi-lang-yaml=\"`zendesk`\" pulumi-lang-java=\"`zendesk`\"\u003e`zendesk`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`zoom`\" pulumi-lang-dotnet=\"`Zoom`\" pulumi-lang-go=\"`zoom`\" pulumi-lang-python=\"`zoom`\" pulumi-lang-yaml=\"`zoom`\" pulumi-lang-java=\"`zoom`\"\u003e`zoom`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`expressConfiguration`\" pulumi-lang-dotnet=\"`ExpressConfiguration`\" pulumi-lang-go=\"`expressConfiguration`\" pulumi-lang-python=\"`express_configuration`\" pulumi-lang-yaml=\"`expressConfiguration`\" pulumi-lang-java=\"`expressConfiguration`\"\u003e`express_configuration`\u003c/span\u003e\n"
                     },
                     "asyncApprovalNotificationChannels": {
                         "type": "array",
@@ -13150,6 +13978,10 @@
                             "type": "string"
                         },
                         "description": "Encryption used for WS-Fed responses with this client.\n"
+                    },
+                    "expressConfiguration": {
+                        "$ref": "#/types/auth0:index/ClientExpressConfiguration:ClientExpressConfiguration",
+                        "description": "Express Configuration settings for the client. Used with OIN Express Configuration.\n"
                     },
                     "formTemplate": {
                         "type": "string",
@@ -13415,6 +14247,10 @@
                     "type": "string",
                     "description": "ID of the client for this grant.\n"
                 },
+                "isSystem": {
+                    "type": "boolean",
+                    "description": "Indicates whether this grant is a special grant created by Auth0. It cannot be modified or deleted directly.\n"
+                },
                 "organizationUsage": {
                     "type": "string",
                     "description": "Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)\n"
@@ -13434,6 +14270,7 @@
             "required": [
                 "audience",
                 "clientId",
+                "isSystem",
                 "scopes",
                 "subjectType"
             ],
@@ -13504,6 +14341,10 @@
                         "type": "string",
                         "description": "ID of the client for this grant.\n",
                         "willReplaceOnChanges": true
+                    },
+                    "isSystem": {
+                        "type": "boolean",
+                        "description": "Indicates whether this grant is a special grant created by Auth0. It cannot be modified or deleted directly.\n"
                     },
                     "organizationUsage": {
                         "type": "string",
@@ -13990,6 +14831,107 @@
                             "type": "string"
                         },
                         "description": "This is an arbitrary map, which when edited shall perform rotation of keys for the corresponding connection. It can host keys like version, timestamp of last rotation etc.The field has no association with API\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "auth0:index/connectionProfile:ConnectionProfile": {
+            "description": "Manage Auth0 connection profiles. Connection profiles allow you to store configuration templates for connections.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myProfile = new auth0.ConnectionProfile(\"my_profile\", {\n    name: \"My-Profile\",\n    organization: {\n        showAsButton: \"optional\",\n        assignMembershipOnLogin: \"required\",\n    },\n    connectionNamePrefixTemplate: \"template1\",\n    enabledFeatures: [\n        \"scim\",\n        \"universal_logout\",\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_profile = auth0.ConnectionProfile(\"my_profile\",\n    name=\"My-Profile\",\n    organization={\n        \"show_as_button\": \"optional\",\n        \"assign_membership_on_login\": \"required\",\n    },\n    connection_name_prefix_template=\"template1\",\n    enabled_features=[\n        \"scim\",\n        \"universal_logout\",\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myProfile = new Auth0.ConnectionProfile(\"my_profile\", new()\n    {\n        Name = \"My-Profile\",\n        Organization = new Auth0.Inputs.ConnectionProfileOrganizationArgs\n        {\n            ShowAsButton = \"optional\",\n            AssignMembershipOnLogin = \"required\",\n        },\n        ConnectionNamePrefixTemplate = \"template1\",\n        EnabledFeatures = new[]\n        {\n            \"scim\",\n            \"universal_logout\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewConnectionProfile(ctx, \"my_profile\", \u0026auth0.ConnectionProfileArgs{\n\t\t\tName: pulumi.String(\"My-Profile\"),\n\t\t\tOrganization: \u0026auth0.ConnectionProfileOrganizationArgs{\n\t\t\t\tShowAsButton:            pulumi.String(\"optional\"),\n\t\t\t\tAssignMembershipOnLogin: pulumi.String(\"required\"),\n\t\t\t},\n\t\t\tConnectionNamePrefixTemplate: pulumi.String(\"template1\"),\n\t\t\tEnabledFeatures: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"scim\"),\n\t\t\t\tpulumi.String(\"universal_logout\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.ConnectionProfile;\nimport com.pulumi.auth0.ConnectionProfileArgs;\nimport com.pulumi.auth0.inputs.ConnectionProfileOrganizationArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myProfile = new ConnectionProfile(\"myProfile\", ConnectionProfileArgs.builder()\n            .name(\"My-Profile\")\n            .organization(ConnectionProfileOrganizationArgs.builder()\n                .showAsButton(\"optional\")\n                .assignMembershipOnLogin(\"required\")\n                .build())\n            .connectionNamePrefixTemplate(\"template1\")\n            .enabledFeatures(            \n                \"scim\",\n                \"universal_logout\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myProfile:\n    type: auth0:ConnectionProfile\n    name: my_profile\n    properties:\n      name: My-Profile\n      organization:\n        showAsButton: optional\n        assignMembershipOnLogin: required\n      connectionNamePrefixTemplate: template1\n      enabledFeatures:\n        - scim\n        - universal_logout\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThis resource can be imported by specifying the connection Profile ID \u003cconnectionProfileID\u003e\n\nExample:\n\n```sh\n$ pulumi import auth0:index/connectionProfile:ConnectionProfile my_profile \"cop_xxxxxxxxxxxxxxxxx\"\n```\n\n",
+            "properties": {
+                "connectionConfig": {
+                    "$ref": "#/types/auth0:index/ConnectionProfileConnectionConfig:ConnectionProfileConnectionConfig",
+                    "description": "Connection configuration for the profile.\n"
+                },
+                "connectionNamePrefixTemplate": {
+                    "type": "string",
+                    "description": "Template for generating connection names from the profile.\n"
+                },
+                "enabledFeatures": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of enabled features for the connection profile.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the connection profile.\n"
+                },
+                "organization": {
+                    "$ref": "#/types/auth0:index/ConnectionProfileOrganization:ConnectionProfileOrganization",
+                    "description": "Organization associated with the connection profile.\n"
+                },
+                "strategyOverrides": {
+                    "$ref": "#/types/auth0:index/ConnectionProfileStrategyOverrides:ConnectionProfileStrategyOverrides",
+                    "description": "Strategy overrides for the connection profile.\n"
+                }
+            },
+            "required": [
+                "connectionConfig",
+                "enabledFeatures",
+                "name",
+                "organization",
+                "strategyOverrides"
+            ],
+            "inputProperties": {
+                "connectionConfig": {
+                    "$ref": "#/types/auth0:index/ConnectionProfileConnectionConfig:ConnectionProfileConnectionConfig",
+                    "description": "Connection configuration for the profile.\n"
+                },
+                "connectionNamePrefixTemplate": {
+                    "type": "string",
+                    "description": "Template for generating connection names from the profile.\n"
+                },
+                "enabledFeatures": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of enabled features for the connection profile.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the connection profile.\n"
+                },
+                "organization": {
+                    "$ref": "#/types/auth0:index/ConnectionProfileOrganization:ConnectionProfileOrganization",
+                    "description": "Organization associated with the connection profile.\n"
+                },
+                "strategyOverrides": {
+                    "$ref": "#/types/auth0:index/ConnectionProfileStrategyOverrides:ConnectionProfileStrategyOverrides",
+                    "description": "Strategy overrides for the connection profile.\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ConnectionProfile resources.\n",
+                "properties": {
+                    "connectionConfig": {
+                        "$ref": "#/types/auth0:index/ConnectionProfileConnectionConfig:ConnectionProfileConnectionConfig",
+                        "description": "Connection configuration for the profile.\n"
+                    },
+                    "connectionNamePrefixTemplate": {
+                        "type": "string",
+                        "description": "Template for generating connection names from the profile.\n"
+                    },
+                    "enabledFeatures": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of enabled features for the connection profile.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the connection profile.\n"
+                    },
+                    "organization": {
+                        "$ref": "#/types/auth0:index/ConnectionProfileOrganization:ConnectionProfileOrganization",
+                        "description": "Organization associated with the connection profile.\n"
+                    },
+                    "strategyOverrides": {
+                        "$ref": "#/types/auth0:index/ConnectionProfileStrategyOverrides:ConnectionProfileStrategyOverrides",
+                        "description": "Strategy overrides for the connection profile.\n"
                     }
                 },
                 "type": "object"
@@ -16876,6 +17818,10 @@
                     "type": "string",
                     "description": "Unique identifier for the resource server. Used as the audience parameter for authorization calls. Cannot be changed once set.\n"
                 },
+                "isSystem": {
+                    "type": "boolean",
+                    "description": "Indicates whether this resource server is a special resource server created by Auth0. It cannot be modified or deleted directly.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Friendly name for the resource server. Cannot include `\u003c` or `\u003e` characters.\n"
@@ -16927,6 +17873,7 @@
                 "consentPolicy",
                 "enforcePolicies",
                 "identifier",
+                "isSystem",
                 "name",
                 "proofOfPossession",
                 "signingAlg",
@@ -17041,6 +17988,10 @@
                         "type": "string",
                         "description": "Unique identifier for the resource server. Used as the audience parameter for authorization calls. Cannot be changed once set.\n",
                         "willReplaceOnChanges": true
+                    },
+                    "isSystem": {
+                        "type": "boolean",
+                        "description": "Indicates whether this resource server is a special resource server created by Auth0. It cannot be modified or deleted directly.\n"
                     },
                     "name": {
                         "type": "string",
@@ -19191,7 +20142,7 @@
                         "type": "array"
                     },
                     "appType": {
-                        "description": "Type of application the client represents. Possible values are: \u003cspan pulumi-lang-nodejs=\"`native`\" pulumi-lang-dotnet=\"`Native`\" pulumi-lang-go=\"`native`\" pulumi-lang-python=\"`native`\" pulumi-lang-yaml=\"`native`\" pulumi-lang-java=\"`native`\"\u003e`native`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`spa`\" pulumi-lang-dotnet=\"`Spa`\" pulumi-lang-go=\"`spa`\" pulumi-lang-python=\"`spa`\" pulumi-lang-yaml=\"`spa`\" pulumi-lang-java=\"`spa`\"\u003e`spa`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`regularWeb`\" pulumi-lang-dotnet=\"`RegularWeb`\" pulumi-lang-go=\"`regularWeb`\" pulumi-lang-python=\"`regular_web`\" pulumi-lang-yaml=\"`regularWeb`\" pulumi-lang-java=\"`regularWeb`\"\u003e`regular_web`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`nonInteractive`\" pulumi-lang-dotnet=\"`NonInteractive`\" pulumi-lang-go=\"`nonInteractive`\" pulumi-lang-python=\"`non_interactive`\" pulumi-lang-yaml=\"`nonInteractive`\" pulumi-lang-java=\"`nonInteractive`\"\u003e`non_interactive`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`resourceServer`\" pulumi-lang-dotnet=\"`ResourceServer`\" pulumi-lang-go=\"`resourceServer`\" pulumi-lang-python=\"`resource_server`\" pulumi-lang-yaml=\"`resourceServer`\" pulumi-lang-java=\"`resourceServer`\"\u003e`resource_server`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`ssoIntegration`\" pulumi-lang-dotnet=\"`SsoIntegration`\" pulumi-lang-go=\"`ssoIntegration`\" pulumi-lang-python=\"`sso_integration`\" pulumi-lang-yaml=\"`ssoIntegration`\" pulumi-lang-java=\"`ssoIntegration`\"\u003e`sso_integration`\u003c/span\u003e. Specific SSO integrations types accepted as well are: \u003cspan pulumi-lang-nodejs=\"`rms`\" pulumi-lang-dotnet=\"`Rms`\" pulumi-lang-go=\"`rms`\" pulumi-lang-python=\"`rms`\" pulumi-lang-yaml=\"`rms`\" pulumi-lang-java=\"`rms`\"\u003e`rms`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`box`\" pulumi-lang-dotnet=\"`Box`\" pulumi-lang-go=\"`box`\" pulumi-lang-python=\"`box`\" pulumi-lang-yaml=\"`box`\" pulumi-lang-java=\"`box`\"\u003e`box`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`cloudbees`\" pulumi-lang-dotnet=\"`Cloudbees`\" pulumi-lang-go=\"`cloudbees`\" pulumi-lang-python=\"`cloudbees`\" pulumi-lang-yaml=\"`cloudbees`\" pulumi-lang-java=\"`cloudbees`\"\u003e`cloudbees`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`concur`\" pulumi-lang-dotnet=\"`Concur`\" pulumi-lang-go=\"`concur`\" pulumi-lang-python=\"`concur`\" pulumi-lang-yaml=\"`concur`\" pulumi-lang-java=\"`concur`\"\u003e`concur`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`dropbox`\" pulumi-lang-dotnet=\"`Dropbox`\" pulumi-lang-go=\"`dropbox`\" pulumi-lang-python=\"`dropbox`\" pulumi-lang-yaml=\"`dropbox`\" pulumi-lang-java=\"`dropbox`\"\u003e`dropbox`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`mscrm`\" pulumi-lang-dotnet=\"`Mscrm`\" pulumi-lang-go=\"`mscrm`\" pulumi-lang-python=\"`mscrm`\" pulumi-lang-yaml=\"`mscrm`\" pulumi-lang-java=\"`mscrm`\"\u003e`mscrm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`echosign`\" pulumi-lang-dotnet=\"`Echosign`\" pulumi-lang-go=\"`echosign`\" pulumi-lang-python=\"`echosign`\" pulumi-lang-yaml=\"`echosign`\" pulumi-lang-java=\"`echosign`\"\u003e`echosign`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`egnyte`\" pulumi-lang-dotnet=\"`Egnyte`\" pulumi-lang-go=\"`egnyte`\" pulumi-lang-python=\"`egnyte`\" pulumi-lang-yaml=\"`egnyte`\" pulumi-lang-java=\"`egnyte`\"\u003e`egnyte`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`newrelic`\" pulumi-lang-dotnet=\"`Newrelic`\" pulumi-lang-go=\"`newrelic`\" pulumi-lang-python=\"`newrelic`\" pulumi-lang-yaml=\"`newrelic`\" pulumi-lang-java=\"`newrelic`\"\u003e`newrelic`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`office365`\" pulumi-lang-dotnet=\"`Office365`\" pulumi-lang-go=\"`office365`\" pulumi-lang-python=\"`office365`\" pulumi-lang-yaml=\"`office365`\" pulumi-lang-java=\"`office365`\"\u003e`office365`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`salesforce`\" pulumi-lang-dotnet=\"`Salesforce`\" pulumi-lang-go=\"`salesforce`\" pulumi-lang-python=\"`salesforce`\" pulumi-lang-yaml=\"`salesforce`\" pulumi-lang-java=\"`salesforce`\"\u003e`salesforce`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sentry`\" pulumi-lang-dotnet=\"`Sentry`\" pulumi-lang-go=\"`sentry`\" pulumi-lang-python=\"`sentry`\" pulumi-lang-yaml=\"`sentry`\" pulumi-lang-java=\"`sentry`\"\u003e`sentry`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sharepoint`\" pulumi-lang-dotnet=\"`Sharepoint`\" pulumi-lang-go=\"`sharepoint`\" pulumi-lang-python=\"`sharepoint`\" pulumi-lang-yaml=\"`sharepoint`\" pulumi-lang-java=\"`sharepoint`\"\u003e`sharepoint`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slack`\" pulumi-lang-dotnet=\"`Slack`\" pulumi-lang-go=\"`slack`\" pulumi-lang-python=\"`slack`\" pulumi-lang-yaml=\"`slack`\" pulumi-lang-java=\"`slack`\"\u003e`slack`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`springcm`\" pulumi-lang-dotnet=\"`Springcm`\" pulumi-lang-go=\"`springcm`\" pulumi-lang-python=\"`springcm`\" pulumi-lang-yaml=\"`springcm`\" pulumi-lang-java=\"`springcm`\"\u003e`springcm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`zendesk`\" pulumi-lang-dotnet=\"`Zendesk`\" pulumi-lang-go=\"`zendesk`\" pulumi-lang-python=\"`zendesk`\" pulumi-lang-yaml=\"`zendesk`\" pulumi-lang-java=\"`zendesk`\"\u003e`zendesk`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`zoom`\" pulumi-lang-dotnet=\"`Zoom`\" pulumi-lang-go=\"`zoom`\" pulumi-lang-python=\"`zoom`\" pulumi-lang-yaml=\"`zoom`\" pulumi-lang-java=\"`zoom`\"\u003e`zoom`\u003c/span\u003e.\n",
+                        "description": "Type of application the client represents. Possible values are: \u003cspan pulumi-lang-nodejs=\"`native`\" pulumi-lang-dotnet=\"`Native`\" pulumi-lang-go=\"`native`\" pulumi-lang-python=\"`native`\" pulumi-lang-yaml=\"`native`\" pulumi-lang-java=\"`native`\"\u003e`native`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`spa`\" pulumi-lang-dotnet=\"`Spa`\" pulumi-lang-go=\"`spa`\" pulumi-lang-python=\"`spa`\" pulumi-lang-yaml=\"`spa`\" pulumi-lang-java=\"`spa`\"\u003e`spa`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`regularWeb`\" pulumi-lang-dotnet=\"`RegularWeb`\" pulumi-lang-go=\"`regularWeb`\" pulumi-lang-python=\"`regular_web`\" pulumi-lang-yaml=\"`regularWeb`\" pulumi-lang-java=\"`regularWeb`\"\u003e`regular_web`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`nonInteractive`\" pulumi-lang-dotnet=\"`NonInteractive`\" pulumi-lang-go=\"`nonInteractive`\" pulumi-lang-python=\"`non_interactive`\" pulumi-lang-yaml=\"`nonInteractive`\" pulumi-lang-java=\"`nonInteractive`\"\u003e`non_interactive`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`resourceServer`\" pulumi-lang-dotnet=\"`ResourceServer`\" pulumi-lang-go=\"`resourceServer`\" pulumi-lang-python=\"`resource_server`\" pulumi-lang-yaml=\"`resourceServer`\" pulumi-lang-java=\"`resourceServer`\"\u003e`resource_server`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`ssoIntegration`\" pulumi-lang-dotnet=\"`SsoIntegration`\" pulumi-lang-go=\"`ssoIntegration`\" pulumi-lang-python=\"`sso_integration`\" pulumi-lang-yaml=\"`ssoIntegration`\" pulumi-lang-java=\"`ssoIntegration`\"\u003e`sso_integration`\u003c/span\u003e. Specific SSO integrations types accepted as well are: \u003cspan pulumi-lang-nodejs=\"`rms`\" pulumi-lang-dotnet=\"`Rms`\" pulumi-lang-go=\"`rms`\" pulumi-lang-python=\"`rms`\" pulumi-lang-yaml=\"`rms`\" pulumi-lang-java=\"`rms`\"\u003e`rms`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`box`\" pulumi-lang-dotnet=\"`Box`\" pulumi-lang-go=\"`box`\" pulumi-lang-python=\"`box`\" pulumi-lang-yaml=\"`box`\" pulumi-lang-java=\"`box`\"\u003e`box`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`cloudbees`\" pulumi-lang-dotnet=\"`Cloudbees`\" pulumi-lang-go=\"`cloudbees`\" pulumi-lang-python=\"`cloudbees`\" pulumi-lang-yaml=\"`cloudbees`\" pulumi-lang-java=\"`cloudbees`\"\u003e`cloudbees`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`concur`\" pulumi-lang-dotnet=\"`Concur`\" pulumi-lang-go=\"`concur`\" pulumi-lang-python=\"`concur`\" pulumi-lang-yaml=\"`concur`\" pulumi-lang-java=\"`concur`\"\u003e`concur`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`dropbox`\" pulumi-lang-dotnet=\"`Dropbox`\" pulumi-lang-go=\"`dropbox`\" pulumi-lang-python=\"`dropbox`\" pulumi-lang-yaml=\"`dropbox`\" pulumi-lang-java=\"`dropbox`\"\u003e`dropbox`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`mscrm`\" pulumi-lang-dotnet=\"`Mscrm`\" pulumi-lang-go=\"`mscrm`\" pulumi-lang-python=\"`mscrm`\" pulumi-lang-yaml=\"`mscrm`\" pulumi-lang-java=\"`mscrm`\"\u003e`mscrm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`echosign`\" pulumi-lang-dotnet=\"`Echosign`\" pulumi-lang-go=\"`echosign`\" pulumi-lang-python=\"`echosign`\" pulumi-lang-yaml=\"`echosign`\" pulumi-lang-java=\"`echosign`\"\u003e`echosign`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`egnyte`\" pulumi-lang-dotnet=\"`Egnyte`\" pulumi-lang-go=\"`egnyte`\" pulumi-lang-python=\"`egnyte`\" pulumi-lang-yaml=\"`egnyte`\" pulumi-lang-java=\"`egnyte`\"\u003e`egnyte`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`newrelic`\" pulumi-lang-dotnet=\"`Newrelic`\" pulumi-lang-go=\"`newrelic`\" pulumi-lang-python=\"`newrelic`\" pulumi-lang-yaml=\"`newrelic`\" pulumi-lang-java=\"`newrelic`\"\u003e`newrelic`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`office365`\" pulumi-lang-dotnet=\"`Office365`\" pulumi-lang-go=\"`office365`\" pulumi-lang-python=\"`office365`\" pulumi-lang-yaml=\"`office365`\" pulumi-lang-java=\"`office365`\"\u003e`office365`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`salesforce`\" pulumi-lang-dotnet=\"`Salesforce`\" pulumi-lang-go=\"`salesforce`\" pulumi-lang-python=\"`salesforce`\" pulumi-lang-yaml=\"`salesforce`\" pulumi-lang-java=\"`salesforce`\"\u003e`salesforce`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sentry`\" pulumi-lang-dotnet=\"`Sentry`\" pulumi-lang-go=\"`sentry`\" pulumi-lang-python=\"`sentry`\" pulumi-lang-yaml=\"`sentry`\" pulumi-lang-java=\"`sentry`\"\u003e`sentry`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sharepoint`\" pulumi-lang-dotnet=\"`Sharepoint`\" pulumi-lang-go=\"`sharepoint`\" pulumi-lang-python=\"`sharepoint`\" pulumi-lang-yaml=\"`sharepoint`\" pulumi-lang-java=\"`sharepoint`\"\u003e`sharepoint`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slack`\" pulumi-lang-dotnet=\"`Slack`\" pulumi-lang-go=\"`slack`\" pulumi-lang-python=\"`slack`\" pulumi-lang-yaml=\"`slack`\" pulumi-lang-java=\"`slack`\"\u003e`slack`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`springcm`\" pulumi-lang-dotnet=\"`Springcm`\" pulumi-lang-go=\"`springcm`\" pulumi-lang-python=\"`springcm`\" pulumi-lang-yaml=\"`springcm`\" pulumi-lang-java=\"`springcm`\"\u003e`springcm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`zendesk`\" pulumi-lang-dotnet=\"`Zendesk`\" pulumi-lang-go=\"`zendesk`\" pulumi-lang-python=\"`zendesk`\" pulumi-lang-yaml=\"`zendesk`\" pulumi-lang-java=\"`zendesk`\"\u003e`zendesk`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`zoom`\" pulumi-lang-dotnet=\"`Zoom`\" pulumi-lang-go=\"`zoom`\" pulumi-lang-python=\"`zoom`\" pulumi-lang-yaml=\"`zoom`\" pulumi-lang-java=\"`zoom`\"\u003e`zoom`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`expressConfiguration`\" pulumi-lang-dotnet=\"`ExpressConfiguration`\" pulumi-lang-go=\"`expressConfiguration`\" pulumi-lang-python=\"`express_configuration`\" pulumi-lang-yaml=\"`expressConfiguration`\" pulumi-lang-java=\"`expressConfiguration`\"\u003e`express_configuration`\u003c/span\u003e\n",
                         "type": "string"
                     },
                     "asyncApprovalNotificationChannels": {
@@ -19274,6 +20225,13 @@
                         },
                         "description": "Encryption used for WS-Fed responses with this client.\n",
                         "type": "object"
+                    },
+                    "expressConfigurations": {
+                        "description": "Express Configuration settings for the client. Used with OIN Express Configuration.\n",
+                        "items": {
+                            "$ref": "#/types/auth0:index/getClientExpressConfiguration:getClientExpressConfiguration"
+                        },
+                        "type": "array"
                     },
                     "formTemplate": {
                         "description": "HTML form template to be used for WS-Federation.\n",
@@ -19464,6 +20422,7 @@
                     "defaultOrganizations",
                     "description",
                     "encryptionKey",
+                    "expressConfigurations",
                     "formTemplate",
                     "grantTypes",
                     "initiateLoginUri",
@@ -19748,6 +20707,69 @@
                     "connectionId",
                     "keys",
                     "id"
+                ],
+                "type": "object"
+            }
+        },
+        "auth0:index/getConnectionProfile:getConnectionProfile": {
+            "description": "Retrieve information about an Auth0 connection profile.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myProfile = new auth0.ConnectionProfile(\"my_profile\", {\n    name: \"My-Profile\",\n    organization: {\n        showAsButton: \"optional\",\n        assignMembershipOnLogin: \"required\",\n    },\n    connectionNamePrefixTemplate: \"template1\",\n    enabledFeatures: [\n        \"scim\",\n        \"universal_logout\",\n    ],\n});\nconst myProfileDs = auth0.getConnectionProfileOutput({\n    id: myProfile.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_profile = auth0.ConnectionProfile(\"my_profile\",\n    name=\"My-Profile\",\n    organization={\n        \"show_as_button\": \"optional\",\n        \"assign_membership_on_login\": \"required\",\n    },\n    connection_name_prefix_template=\"template1\",\n    enabled_features=[\n        \"scim\",\n        \"universal_logout\",\n    ])\nmy_profile_ds = auth0.get_connection_profile_output(id=my_profile.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myProfile = new Auth0.ConnectionProfile(\"my_profile\", new()\n    {\n        Name = \"My-Profile\",\n        Organization = new Auth0.Inputs.ConnectionProfileOrganizationArgs\n        {\n            ShowAsButton = \"optional\",\n            AssignMembershipOnLogin = \"required\",\n        },\n        ConnectionNamePrefixTemplate = \"template1\",\n        EnabledFeatures = new[]\n        {\n            \"scim\",\n            \"universal_logout\",\n        },\n    });\n\n    var myProfileDs = Auth0.GetConnectionProfile.Invoke(new()\n    {\n        Id = myProfile.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmyProfile, err := auth0.NewConnectionProfile(ctx, \"my_profile\", \u0026auth0.ConnectionProfileArgs{\n\t\t\tName: pulumi.String(\"My-Profile\"),\n\t\t\tOrganization: \u0026auth0.ConnectionProfileOrganizationArgs{\n\t\t\t\tShowAsButton:            pulumi.String(\"optional\"),\n\t\t\t\tAssignMembershipOnLogin: pulumi.String(\"required\"),\n\t\t\t},\n\t\t\tConnectionNamePrefixTemplate: pulumi.String(\"template1\"),\n\t\t\tEnabledFeatures: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"scim\"),\n\t\t\t\tpulumi.String(\"universal_logout\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_ = auth0.LookupConnectionProfileOutput(ctx, auth0.GetConnectionProfileOutputArgs{\n\t\t\tId: myProfile.ID(),\n\t\t}, nil)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.ConnectionProfile;\nimport com.pulumi.auth0.ConnectionProfileArgs;\nimport com.pulumi.auth0.inputs.ConnectionProfileOrganizationArgs;\nimport com.pulumi.auth0.Auth0Functions;\nimport com.pulumi.auth0.inputs.GetConnectionProfileArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myProfile = new ConnectionProfile(\"myProfile\", ConnectionProfileArgs.builder()\n            .name(\"My-Profile\")\n            .organization(ConnectionProfileOrganizationArgs.builder()\n                .showAsButton(\"optional\")\n                .assignMembershipOnLogin(\"required\")\n                .build())\n            .connectionNamePrefixTemplate(\"template1\")\n            .enabledFeatures(            \n                \"scim\",\n                \"universal_logout\")\n            .build());\n\n        final var myProfileDs = Auth0Functions.getConnectionProfile(GetConnectionProfileArgs.builder()\n            .id(myProfile.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myProfile:\n    type: auth0:ConnectionProfile\n    name: my_profile\n    properties:\n      name: My-Profile\n      organization:\n        showAsButton: optional\n        assignMembershipOnLogin: required\n      connectionNamePrefixTemplate: template1\n      enabledFeatures:\n        - scim\n        - universal_logout\nvariables:\n  myProfileDs:\n    fn::invoke:\n      function: auth0:getConnectionProfile\n      arguments:\n        id: ${myProfile.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getConnectionProfile.\n",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getConnectionProfile.\n",
+                "properties": {
+                    "connectionConfigs": {
+                        "items": {
+                            "$ref": "#/types/auth0:index/getConnectionProfileConnectionConfig:getConnectionProfileConnectionConfig"
+                        },
+                        "type": "array"
+                    },
+                    "connectionNamePrefixTemplate": {
+                        "type": "string"
+                    },
+                    "enabledFeatures": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "organizations": {
+                        "items": {
+                            "$ref": "#/types/auth0:index/getConnectionProfileOrganization:getConnectionProfileOrganization"
+                        },
+                        "type": "array"
+                    },
+                    "strategyOverrides": {
+                        "items": {
+                            "$ref": "#/types/auth0:index/getConnectionProfileStrategyOverride:getConnectionProfileStrategyOverride"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "connectionConfigs",
+                    "connectionNamePrefixTemplate",
+                    "enabledFeatures",
+                    "id",
+                    "name",
+                    "organizations",
+                    "strategyOverrides"
                 ],
                 "type": "object"
             }
@@ -20698,6 +21720,10 @@
                         "description": "Unique identifier for the resource server. Used as the audience parameter for authorization calls. If not provided, \u003cspan pulumi-lang-nodejs=\"`resourceServerId`\" pulumi-lang-dotnet=\"`ResourceServerId`\" pulumi-lang-go=\"`resourceServerId`\" pulumi-lang-python=\"`resource_server_id`\" pulumi-lang-yaml=\"`resourceServerId`\" pulumi-lang-java=\"`resourceServerId`\"\u003e`resource_server_id`\u003c/span\u003e must be set.\n",
                         "type": "string"
                     },
+                    "isSystem": {
+                        "description": "Indicates whether this resource server is a special resource server created by Auth0. It cannot be modified or deleted directly.\n",
+                        "type": "boolean"
+                    },
                     "name": {
                         "description": "Friendly name for the resource server. Cannot include `\u003c` or `\u003e` characters.\n",
                         "type": "string"
@@ -20769,6 +21795,7 @@
                     "clientId",
                     "consentPolicy",
                     "enforcePolicies",
+                    "isSystem",
                     "name",
                     "proofOfPossessions",
                     "scopes",
