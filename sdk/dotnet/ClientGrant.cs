@@ -140,6 +140,12 @@ namespace Pulumi.Auth0
         public Output<string> ClientId { get; private set; } = null!;
 
         /// <summary>
+        /// Indicates whether this grant is a special grant created by Auth0. It cannot be modified or deleted directly.
+        /// </summary>
+        [Output("isSystem")]
+        public Output<bool> IsSystem { get; private set; } = null!;
+
+        /// <summary>
         /// Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
         /// </summary>
         [Output("organizationUsage")]
@@ -294,6 +300,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("clientId")]
         public Input<string>? ClientId { get; set; }
+
+        /// <summary>
+        /// Indicates whether this grant is a special grant created by Auth0. It cannot be modified or deleted directly.
+        /// </summary>
+        [Input("isSystem")]
+        public Input<bool>? IsSystem { get; set; }
 
         /// <summary>
         /// Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)

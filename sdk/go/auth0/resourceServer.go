@@ -98,6 +98,8 @@ type ResourceServer struct {
 	EnforcePolicies pulumi.BoolOutput `pulumi:"enforcePolicies"`
 	// Unique identifier for the resource server. Used as the audience parameter for authorization calls. Cannot be changed once set.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
+	// Indicates whether this resource server is a special resource server created by Auth0. It cannot be modified or deleted directly.
+	IsSystem pulumi.BoolOutput `pulumi:"isSystem"`
 	// Friendly name for the resource server. Cannot include `<` or `>` characters.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Configuration settings for proof-of-possession for this resource server.
@@ -167,6 +169,8 @@ type resourceServerState struct {
 	EnforcePolicies *bool `pulumi:"enforcePolicies"`
 	// Unique identifier for the resource server. Used as the audience parameter for authorization calls. Cannot be changed once set.
 	Identifier *string `pulumi:"identifier"`
+	// Indicates whether this resource server is a special resource server created by Auth0. It cannot be modified or deleted directly.
+	IsSystem *bool `pulumi:"isSystem"`
 	// Friendly name for the resource server. Cannot include `<` or `>` characters.
 	Name *string `pulumi:"name"`
 	// Configuration settings for proof-of-possession for this resource server.
@@ -204,6 +208,8 @@ type ResourceServerState struct {
 	EnforcePolicies pulumi.BoolPtrInput
 	// Unique identifier for the resource server. Used as the audience parameter for authorization calls. Cannot be changed once set.
 	Identifier pulumi.StringPtrInput
+	// Indicates whether this resource server is a special resource server created by Auth0. It cannot be modified or deleted directly.
+	IsSystem pulumi.BoolPtrInput
 	// Friendly name for the resource server. Cannot include `<` or `>` characters.
 	Name pulumi.StringPtrInput
 	// Configuration settings for proof-of-possession for this resource server.
@@ -418,6 +424,11 @@ func (o ResourceServerOutput) EnforcePolicies() pulumi.BoolOutput {
 // Unique identifier for the resource server. Used as the audience parameter for authorization calls. Cannot be changed once set.
 func (o ResourceServerOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResourceServer) pulumi.StringOutput { return v.Identifier }).(pulumi.StringOutput)
+}
+
+// Indicates whether this resource server is a special resource server created by Auth0. It cannot be modified or deleted directly.
+func (o ResourceServerOutput) IsSystem() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ResourceServer) pulumi.BoolOutput { return v.IsSystem }).(pulumi.BoolOutput)
 }
 
 // Friendly name for the resource server. Cannot include `<` or `>` characters.

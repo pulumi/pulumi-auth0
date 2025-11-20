@@ -8,6 +8,7 @@ import com.pulumi.auth0.Utilities;
 import com.pulumi.auth0.inputs.ClientState;
 import com.pulumi.auth0.outputs.ClientAddons;
 import com.pulumi.auth0.outputs.ClientDefaultOrganization;
+import com.pulumi.auth0.outputs.ClientExpressConfiguration;
 import com.pulumi.auth0.outputs.ClientJwtConfiguration;
 import com.pulumi.auth0.outputs.ClientMobile;
 import com.pulumi.auth0.outputs.ClientNativeSocialLogin;
@@ -100,14 +101,14 @@ public class Client extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.allowedOrigins);
     }
     /**
-     * Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+     * Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `expressConfiguration`
      * 
      */
     @Export(name="appType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> appType;
 
     /**
-     * @return Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+     * @return Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `expressConfiguration`
      * 
      */
     public Output<Optional<String>> appType() {
@@ -132,14 +133,14 @@ public class Client extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="callbacks", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> callbacks;
+    private Output<List<String>> callbacks;
 
     /**
      * @return URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
      * 
      */
-    public Output<Optional<List<String>>> callbacks() {
-        return Codegen.optional(this.callbacks);
+    public Output<List<String>> callbacks() {
+        return this.callbacks;
     }
     /**
      * List of audiences/realms for SAML protocol. Used by the wsfed addon.
@@ -294,6 +295,20 @@ public class Client extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Map<String,String>>> encryptionKey() {
         return Codegen.optional(this.encryptionKey);
+    }
+    /**
+     * Express Configuration settings for the client. Used with OIN Express Configuration.
+     * 
+     */
+    @Export(name="expressConfiguration", refs={ClientExpressConfiguration.class}, tree="[0]")
+    private Output<ClientExpressConfiguration> expressConfiguration;
+
+    /**
+     * @return Express Configuration settings for the client. Used with OIN Express Configuration.
+     * 
+     */
+    public Output<ClientExpressConfiguration> expressConfiguration() {
+        return this.expressConfiguration;
     }
     /**
      * HTML form template to be used for WS-Federation.
@@ -500,28 +515,28 @@ public class Client extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="organizationRequireBehavior", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> organizationRequireBehavior;
+    private Output<String> organizationRequireBehavior;
 
     /**
      * @return Defines how to proceed during an authentication transaction when `organizationUsage = &#34;require&#34;`. Can be `noPrompt` (default), `preLoginPrompt` or  `postLoginPrompt`.
      * 
      */
-    public Output<Optional<String>> organizationRequireBehavior() {
-        return Codegen.optional(this.organizationRequireBehavior);
+    public Output<String> organizationRequireBehavior() {
+        return this.organizationRequireBehavior;
     }
     /**
      * Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
      * 
      */
     @Export(name="organizationUsage", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> organizationUsage;
+    private Output<String> organizationUsage;
 
     /**
      * @return Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
      * 
      */
-    public Output<Optional<String>> organizationUsage() {
-        return Codegen.optional(this.organizationUsage);
+    public Output<String> organizationUsage() {
+        return this.organizationUsage;
     }
     /**
      * Configuration settings for the refresh tokens issued for this client.

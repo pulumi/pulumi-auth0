@@ -122,6 +122,10 @@ export class ClientGrant extends pulumi.CustomResource {
      */
     declare public readonly clientId: pulumi.Output<string>;
     /**
+     * Indicates whether this grant is a special grant created by Auth0. It cannot be modified or deleted directly.
+     */
+    declare public /*out*/ readonly isSystem: pulumi.Output<boolean>;
+    /**
      * Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
      */
     declare public readonly organizationUsage: pulumi.Output<string | undefined>;
@@ -151,6 +155,7 @@ export class ClientGrant extends pulumi.CustomResource {
             resourceInputs["audience"] = state?.audience;
             resourceInputs["authorizationDetailsTypes"] = state?.authorizationDetailsTypes;
             resourceInputs["clientId"] = state?.clientId;
+            resourceInputs["isSystem"] = state?.isSystem;
             resourceInputs["organizationUsage"] = state?.organizationUsage;
             resourceInputs["scopes"] = state?.scopes;
             resourceInputs["subjectType"] = state?.subjectType;
@@ -172,6 +177,7 @@ export class ClientGrant extends pulumi.CustomResource {
             resourceInputs["organizationUsage"] = args?.organizationUsage;
             resourceInputs["scopes"] = args?.scopes;
             resourceInputs["subjectType"] = args?.subjectType;
+            resourceInputs["isSystem"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ClientGrant.__pulumiType, name, resourceInputs, opts);
@@ -198,6 +204,10 @@ export interface ClientGrantState {
      * ID of the client for this grant.
      */
     clientId?: pulumi.Input<string>;
+    /**
+     * Indicates whether this grant is a special grant created by Auth0. It cannot be modified or deleted directly.
+     */
+    isSystem?: pulumi.Input<boolean>;
     /**
      * Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
      */

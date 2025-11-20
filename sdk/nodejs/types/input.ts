@@ -1329,6 +1329,52 @@ export interface ClientDefaultOrganization {
     organizationId?: pulumi.Input<string>;
 }
 
+export interface ClientExpressConfiguration {
+    /**
+     * The domain that admins are expected to log in via for authenticating for express configuration.
+     */
+    adminLoginDomain?: pulumi.Input<string>;
+    /**
+     * The ID of the connection profile to use for this application.
+     */
+    connectionProfileId?: pulumi.Input<string>;
+    /**
+     * When true, all connections made via express configuration will be enabled for this application.
+     */
+    enableClient?: pulumi.Input<boolean>;
+    /**
+     * When true, all connections made via express configuration will have the associated organization enabled.
+     */
+    enableOrganization?: pulumi.Input<boolean>;
+    /**
+     * The URI users should bookmark to log in to this application. Variable substitution is permitted for: organization*name, organization*id, and connection_name.
+     */
+    initiateLoginUriTemplate?: pulumi.Input<string>;
+    /**
+     * List of client IDs that are linked to this express configuration (e.g. web or mobile clients).
+     */
+    linkedClients?: pulumi.Input<pulumi.Input<inputs.ClientExpressConfigurationLinkedClient>[]>;
+    /**
+     * The identifier of the published application in the OKTA OIN.
+     */
+    oinSubmissionId?: pulumi.Input<string>;
+    /**
+     * The unique identifier for the Okta OIN Express Configuration Client.
+     */
+    oktaOinClientId?: pulumi.Input<string>;
+    /**
+     * The ID of the user attribute profile to use for this application.
+     */
+    userAttributeProfileId?: pulumi.Input<string>;
+}
+
+export interface ClientExpressConfigurationLinkedClient {
+    /**
+     * The ID of the linked client.
+     */
+    clientId?: pulumi.Input<string>;
+}
+
 export interface ClientJwtConfiguration {
     /**
      * Algorithm used to sign JWTs. Can be one of `HS256`, `RS256`, `PS256`.
@@ -2275,6 +2321,167 @@ export interface ConnectionOptionsValidation {
 export interface ConnectionOptionsValidationUsername {
     max?: pulumi.Input<number>;
     min?: pulumi.Input<number>;
+}
+
+export interface ConnectionProfileConnectionConfig {
+}
+
+export interface ConnectionProfileOrganization {
+    /**
+     * Whether to assign membership on login.
+     */
+    assignMembershipOnLogin?: pulumi.Input<string>;
+    /**
+     * Whether to show organization as a button.
+     */
+    showAsButton?: pulumi.Input<string>;
+}
+
+export interface ConnectionProfileStrategyOverrides {
+    /**
+     * Strategy override configuration.
+     */
+    ad?: pulumi.Input<inputs.ConnectionProfileStrategyOverridesAd>;
+    /**
+     * Strategy override configuration.
+     */
+    adfs?: pulumi.Input<inputs.ConnectionProfileStrategyOverridesAdfs>;
+    /**
+     * Strategy override configuration.
+     */
+    googleApps?: pulumi.Input<inputs.ConnectionProfileStrategyOverridesGoogleApps>;
+    /**
+     * Strategy override configuration.
+     */
+    oidc?: pulumi.Input<inputs.ConnectionProfileStrategyOverridesOidc>;
+    /**
+     * Strategy override configuration.
+     */
+    okta?: pulumi.Input<inputs.ConnectionProfileStrategyOverridesOkta>;
+    /**
+     * Strategy override configuration.
+     */
+    pingfederate?: pulumi.Input<inputs.ConnectionProfileStrategyOverridesPingfederate>;
+    /**
+     * Strategy override configuration.
+     */
+    samlp?: pulumi.Input<inputs.ConnectionProfileStrategyOverridesSamlp>;
+    /**
+     * Strategy override configuration.
+     */
+    waad?: pulumi.Input<inputs.ConnectionProfileStrategyOverridesWaad>;
+}
+
+export interface ConnectionProfileStrategyOverridesAd {
+    /**
+     * Connection config for the strategy override.
+     */
+    connectionConfig?: pulumi.Input<inputs.ConnectionProfileStrategyOverridesAdConnectionConfig>;
+    /**
+     * Enabled features for the strategy override.
+     */
+    enabledFeatures?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface ConnectionProfileStrategyOverridesAdConnectionConfig {
+}
+
+export interface ConnectionProfileStrategyOverridesAdfs {
+    /**
+     * Connection config for the strategy override.
+     */
+    connectionConfig?: pulumi.Input<inputs.ConnectionProfileStrategyOverridesAdfsConnectionConfig>;
+    /**
+     * Enabled features for the strategy override.
+     */
+    enabledFeatures?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface ConnectionProfileStrategyOverridesAdfsConnectionConfig {
+}
+
+export interface ConnectionProfileStrategyOverridesGoogleApps {
+    /**
+     * Connection config for the strategy override.
+     */
+    connectionConfig?: pulumi.Input<inputs.ConnectionProfileStrategyOverridesGoogleAppsConnectionConfig>;
+    /**
+     * Enabled features for the strategy override.
+     */
+    enabledFeatures?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface ConnectionProfileStrategyOverridesGoogleAppsConnectionConfig {
+}
+
+export interface ConnectionProfileStrategyOverridesOidc {
+    /**
+     * Connection config for the strategy override.
+     */
+    connectionConfig?: pulumi.Input<inputs.ConnectionProfileStrategyOverridesOidcConnectionConfig>;
+    /**
+     * Enabled features for the strategy override.
+     */
+    enabledFeatures?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface ConnectionProfileStrategyOverridesOidcConnectionConfig {
+}
+
+export interface ConnectionProfileStrategyOverridesOkta {
+    /**
+     * Connection config for the strategy override.
+     */
+    connectionConfig?: pulumi.Input<inputs.ConnectionProfileStrategyOverridesOktaConnectionConfig>;
+    /**
+     * Enabled features for the strategy override.
+     */
+    enabledFeatures?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface ConnectionProfileStrategyOverridesOktaConnectionConfig {
+}
+
+export interface ConnectionProfileStrategyOverridesPingfederate {
+    /**
+     * Connection config for the strategy override.
+     */
+    connectionConfig?: pulumi.Input<inputs.ConnectionProfileStrategyOverridesPingfederateConnectionConfig>;
+    /**
+     * Enabled features for the strategy override.
+     */
+    enabledFeatures?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface ConnectionProfileStrategyOverridesPingfederateConnectionConfig {
+}
+
+export interface ConnectionProfileStrategyOverridesSamlp {
+    /**
+     * Connection config for the strategy override.
+     */
+    connectionConfig?: pulumi.Input<inputs.ConnectionProfileStrategyOverridesSamlpConnectionConfig>;
+    /**
+     * Enabled features for the strategy override.
+     */
+    enabledFeatures?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface ConnectionProfileStrategyOverridesSamlpConnectionConfig {
+}
+
+export interface ConnectionProfileStrategyOverridesWaad {
+    /**
+     * Connection config for the strategy override.
+     */
+    connectionConfig?: pulumi.Input<inputs.ConnectionProfileStrategyOverridesWaadConnectionConfig>;
+    /**
+     * Enabled features for the strategy override.
+     */
+    enabledFeatures?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface ConnectionProfileStrategyOverridesWaadConnectionConfig {
 }
 
 export interface ConnectionScimConfigurationMapping {

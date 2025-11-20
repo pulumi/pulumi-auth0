@@ -3,6 +3,7 @@
 
 package com.pulumi.auth0.outputs;
 
+import com.pulumi.auth0.outputs.GetClientsClientExpressConfiguration;
 import com.pulumi.auth0.outputs.GetClientsClientOidcLogout;
 import com.pulumi.auth0.outputs.GetClientsClientSessionTransfer;
 import com.pulumi.auth0.outputs.GetClientsClientTokenExchange;
@@ -35,7 +36,7 @@ public final class GetClientsClient {
      */
     private List<String> allowedOrigins;
     /**
-     * @return Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+     * @return Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `expressConfiguration`
      * 
      */
     private String appType;
@@ -65,6 +66,11 @@ public final class GetClientsClient {
      * 
      */
     private String description;
+    /**
+     * @return Express Configuration settings for the client. Used with OIN Express Configuration.
+     * 
+     */
+    private List<GetClientsClientExpressConfiguration> expressConfigurations;
     /**
      * @return Types of grants that this client is authorized to use.
      * 
@@ -145,7 +151,7 @@ public final class GetClientsClient {
         return this.allowedOrigins;
     }
     /**
-     * @return Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+     * @return Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `expressConfiguration`
      * 
      */
     public String appType() {
@@ -188,6 +194,13 @@ public final class GetClientsClient {
      */
     public String description() {
         return this.description;
+    }
+    /**
+     * @return Express Configuration settings for the client. Used with OIN Express Configuration.
+     * 
+     */
+    public List<GetClientsClientExpressConfiguration> expressConfigurations() {
+        return this.expressConfigurations;
     }
     /**
      * @return Types of grants that this client is authorized to use.
@@ -289,6 +302,7 @@ public final class GetClientsClient {
         private Map<String,String> clientMetadata;
         private String clientSecret;
         private String description;
+        private List<GetClientsClientExpressConfiguration> expressConfigurations;
         private List<String> grantTypes;
         private Boolean isFirstParty;
         private Boolean isTokenEndpointIpHeaderTrusted;
@@ -314,6 +328,7 @@ public final class GetClientsClient {
     	      this.clientMetadata = defaults.clientMetadata;
     	      this.clientSecret = defaults.clientSecret;
     	      this.description = defaults.description;
+    	      this.expressConfigurations = defaults.expressConfigurations;
     	      this.grantTypes = defaults.grantTypes;
     	      this.isFirstParty = defaults.isFirstParty;
     	      this.isTokenEndpointIpHeaderTrusted = defaults.isTokenEndpointIpHeaderTrusted;
@@ -420,6 +435,17 @@ public final class GetClientsClient {
             }
             this.description = description;
             return this;
+        }
+        @CustomType.Setter
+        public Builder expressConfigurations(List<GetClientsClientExpressConfiguration> expressConfigurations) {
+            if (expressConfigurations == null) {
+              throw new MissingRequiredPropertyException("GetClientsClient", "expressConfigurations");
+            }
+            this.expressConfigurations = expressConfigurations;
+            return this;
+        }
+        public Builder expressConfigurations(GetClientsClientExpressConfiguration... expressConfigurations) {
+            return expressConfigurations(List.of(expressConfigurations));
         }
         @CustomType.Setter
         public Builder grantTypes(List<String> grantTypes) {
@@ -548,6 +574,7 @@ public final class GetClientsClient {
             _resultValue.clientMetadata = clientMetadata;
             _resultValue.clientSecret = clientSecret;
             _resultValue.description = description;
+            _resultValue.expressConfigurations = expressConfigurations;
             _resultValue.grantTypes = grantTypes;
             _resultValue.isFirstParty = isFirstParty;
             _resultValue.isTokenEndpointIpHeaderTrusted = isTokenEndpointIpHeaderTrusted;

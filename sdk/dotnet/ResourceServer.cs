@@ -126,6 +126,12 @@ namespace Pulumi.Auth0
         public Output<string> Identifier { get; private set; } = null!;
 
         /// <summary>
+        /// Indicates whether this resource server is a special resource server created by Auth0. It cannot be modified or deleted directly.
+        /// </summary>
+        [Output("isSystem")]
+        public Output<bool> IsSystem { get; private set; } = null!;
+
+        /// <summary>
         /// Friendly name for the resource server. Cannot include `&lt;` or `&gt;` characters.
         /// </summary>
         [Output("name")]
@@ -388,6 +394,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("identifier")]
         public Input<string>? Identifier { get; set; }
+
+        /// <summary>
+        /// Indicates whether this resource server is a special resource server created by Auth0. It cannot be modified or deleted directly.
+        /// </summary>
+        [Input("isSystem")]
+        public Input<bool>? IsSystem { get; set; }
 
         /// <summary>
         /// Friendly name for the resource server. Cannot include `&lt;` or `&gt;` characters.

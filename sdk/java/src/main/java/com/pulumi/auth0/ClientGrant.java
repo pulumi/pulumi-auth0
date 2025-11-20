@@ -184,6 +184,20 @@ public class ClientGrant extends com.pulumi.resources.CustomResource {
         return this.clientId;
     }
     /**
+     * Indicates whether this grant is a special grant created by Auth0. It cannot be modified or deleted directly.
+     * 
+     */
+    @Export(name="isSystem", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> isSystem;
+
+    /**
+     * @return Indicates whether this grant is a special grant created by Auth0. It cannot be modified or deleted directly.
+     * 
+     */
+    public Output<Boolean> isSystem() {
+        return this.isSystem;
+    }
+    /**
      * Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
      * 
      */

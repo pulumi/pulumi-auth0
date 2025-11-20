@@ -6,6 +6,7 @@ package com.pulumi.auth0.outputs;
 import com.pulumi.auth0.outputs.GetClientAddon;
 import com.pulumi.auth0.outputs.GetClientClientAuthenticationMethod;
 import com.pulumi.auth0.outputs.GetClientDefaultOrganization;
+import com.pulumi.auth0.outputs.GetClientExpressConfiguration;
 import com.pulumi.auth0.outputs.GetClientJwtConfiguration;
 import com.pulumi.auth0.outputs.GetClientMobile;
 import com.pulumi.auth0.outputs.GetClientNativeSocialLogin;
@@ -48,7 +49,7 @@ public final class GetClientResult {
      */
     private List<String> allowedOrigins;
     /**
-     * @return Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+     * @return Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `expressConfiguration`
      * 
      */
     private String appType;
@@ -123,6 +124,11 @@ public final class GetClientResult {
      * 
      */
     private Map<String,String> encryptionKey;
+    /**
+     * @return Express Configuration settings for the client. Used with OIN Express Configuration.
+     * 
+     */
+    private List<GetClientExpressConfiguration> expressConfigurations;
     /**
      * @return HTML form template to be used for WS-Federation.
      * 
@@ -305,7 +311,7 @@ public final class GetClientResult {
         return this.allowedOrigins;
     }
     /**
-     * @return Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+     * @return Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `expressConfiguration`
      * 
      */
     public String appType() {
@@ -411,6 +417,13 @@ public final class GetClientResult {
      */
     public Map<String,String> encryptionKey() {
         return this.encryptionKey;
+    }
+    /**
+     * @return Express Configuration settings for the client. Used with OIN Express Configuration.
+     * 
+     */
+    public List<GetClientExpressConfiguration> expressConfigurations() {
+        return this.expressConfigurations;
     }
     /**
      * @return HTML form template to be used for WS-Federation.
@@ -655,6 +668,7 @@ public final class GetClientResult {
         private List<GetClientDefaultOrganization> defaultOrganizations;
         private String description;
         private Map<String,String> encryptionKey;
+        private List<GetClientExpressConfiguration> expressConfigurations;
         private String formTemplate;
         private List<String> grantTypes;
         private String id;
@@ -709,6 +723,7 @@ public final class GetClientResult {
     	      this.defaultOrganizations = defaults.defaultOrganizations;
     	      this.description = defaults.description;
     	      this.encryptionKey = defaults.encryptionKey;
+    	      this.expressConfigurations = defaults.expressConfigurations;
     	      this.formTemplate = defaults.formTemplate;
     	      this.grantTypes = defaults.grantTypes;
     	      this.id = defaults.id;
@@ -926,6 +941,17 @@ public final class GetClientResult {
             }
             this.encryptionKey = encryptionKey;
             return this;
+        }
+        @CustomType.Setter
+        public Builder expressConfigurations(List<GetClientExpressConfiguration> expressConfigurations) {
+            if (expressConfigurations == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "expressConfigurations");
+            }
+            this.expressConfigurations = expressConfigurations;
+            return this;
+        }
+        public Builder expressConfigurations(GetClientExpressConfiguration... expressConfigurations) {
+            return expressConfigurations(List.of(expressConfigurations));
         }
         @CustomType.Setter
         public Builder formTemplate(String formTemplate) {
@@ -1234,6 +1260,7 @@ public final class GetClientResult {
             _resultValue.defaultOrganizations = defaultOrganizations;
             _resultValue.description = description;
             _resultValue.encryptionKey = encryptionKey;
+            _resultValue.expressConfigurations = expressConfigurations;
             _resultValue.formTemplate = formTemplate;
             _resultValue.grantTypes = grantTypes;
             _resultValue.id = id;

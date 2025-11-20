@@ -64,7 +64,7 @@ export class Client extends pulumi.CustomResource {
      */
     declare public readonly allowedOrigins: pulumi.Output<string[] | undefined>;
     /**
-     * Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+     * Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `expressConfiguration`
      */
     declare public readonly appType: pulumi.Output<string | undefined>;
     /**
@@ -74,7 +74,7 @@ export class Client extends pulumi.CustomResource {
     /**
      * URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
      */
-    declare public readonly callbacks: pulumi.Output<string[] | undefined>;
+    declare public readonly callbacks: pulumi.Output<string[]>;
     /**
      * List of audiences/realms for SAML protocol. Used by the wsfed addon.
      */
@@ -119,6 +119,10 @@ export class Client extends pulumi.CustomResource {
      * Encryption used for WS-Fed responses with this client.
      */
     declare public readonly encryptionKey: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * Express Configuration settings for the client. Used with OIN Express Configuration.
+     */
+    declare public readonly expressConfiguration: pulumi.Output<outputs.ClientExpressConfiguration>;
     /**
      * HTML form template to be used for WS-Federation.
      */
@@ -180,11 +184,11 @@ export class Client extends pulumi.CustomResource {
     /**
      * Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default), `preLoginPrompt` or  `postLoginPrompt`.
      */
-    declare public readonly organizationRequireBehavior: pulumi.Output<string | undefined>;
+    declare public readonly organizationRequireBehavior: pulumi.Output<string>;
     /**
      * Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
      */
-    declare public readonly organizationUsage: pulumi.Output<string | undefined>;
+    declare public readonly organizationUsage: pulumi.Output<string>;
     /**
      * Configuration settings for the refresh tokens issued for this client.
      */
@@ -262,6 +266,7 @@ export class Client extends pulumi.CustomResource {
             resourceInputs["defaultOrganization"] = state?.defaultOrganization;
             resourceInputs["description"] = state?.description;
             resourceInputs["encryptionKey"] = state?.encryptionKey;
+            resourceInputs["expressConfiguration"] = state?.expressConfiguration;
             resourceInputs["formTemplate"] = state?.formTemplate;
             resourceInputs["grantTypes"] = state?.grantTypes;
             resourceInputs["initiateLoginUri"] = state?.initiateLoginUri;
@@ -309,6 +314,7 @@ export class Client extends pulumi.CustomResource {
             resourceInputs["defaultOrganization"] = args?.defaultOrganization;
             resourceInputs["description"] = (args?.description) ?? "Managed by Pulumi";
             resourceInputs["encryptionKey"] = args?.encryptionKey;
+            resourceInputs["expressConfiguration"] = args?.expressConfiguration;
             resourceInputs["formTemplate"] = args?.formTemplate;
             resourceInputs["grantTypes"] = args?.grantTypes;
             resourceInputs["initiateLoginUri"] = args?.initiateLoginUri;
@@ -367,7 +373,7 @@ export interface ClientState {
      */
     allowedOrigins?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+     * Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `expressConfiguration`
      */
     appType?: pulumi.Input<string>;
     /**
@@ -422,6 +428,10 @@ export interface ClientState {
      * Encryption used for WS-Fed responses with this client.
      */
     encryptionKey?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Express Configuration settings for the client. Used with OIN Express Configuration.
+     */
+    expressConfiguration?: pulumi.Input<inputs.ClientExpressConfiguration>;
     /**
      * HTML form template to be used for WS-Federation.
      */
@@ -556,7 +566,7 @@ export interface ClientArgs {
      */
     allowedOrigins?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+     * Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `expressConfiguration`
      */
     appType?: pulumi.Input<string>;
     /**
@@ -607,6 +617,10 @@ export interface ClientArgs {
      * Encryption used for WS-Fed responses with this client.
      */
     encryptionKey?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Express Configuration settings for the client. Used with OIN Express Configuration.
+     */
+    expressConfiguration?: pulumi.Input<inputs.ClientExpressConfiguration>;
     /**
      * HTML form template to be used for WS-Federation.
      */

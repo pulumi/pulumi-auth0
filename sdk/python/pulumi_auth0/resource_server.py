@@ -290,6 +290,7 @@ class _ResourceServerState:
                  consent_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  enforce_policies: Optional[pulumi.Input[_builtins.bool]] = None,
                  identifier: Optional[pulumi.Input[_builtins.str]] = None,
+                 is_system: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  proof_of_possession: Optional[pulumi.Input['ResourceServerProofOfPossessionArgs']] = None,
                  signing_alg: Optional[pulumi.Input[_builtins.str]] = None,
@@ -309,6 +310,7 @@ class _ResourceServerState:
         :param pulumi.Input[_builtins.str] consent_policy: Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
         :param pulumi.Input[_builtins.bool] enforce_policies: If this setting is enabled, RBAC authorization policies will be enforced for this API. Role and permission assignments will be evaluated during the login transaction.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier for the resource server. Used as the audience parameter for authorization calls. Cannot be changed once set.
+        :param pulumi.Input[_builtins.bool] is_system: Indicates whether this resource server is a special resource server created by Auth0. It cannot be modified or deleted directly.
         :param pulumi.Input[_builtins.str] name: Friendly name for the resource server. Cannot include `<` or `>` characters.
         :param pulumi.Input['ResourceServerProofOfPossessionArgs'] proof_of_possession: Configuration settings for proof-of-possession for this resource server.
         :param pulumi.Input[_builtins.str] signing_alg: Algorithm used to sign JWTs. Options include `HS256`, `RS256`, and `PS256`.
@@ -333,6 +335,8 @@ class _ResourceServerState:
             pulumi.set(__self__, "enforce_policies", enforce_policies)
         if identifier is not None:
             pulumi.set(__self__, "identifier", identifier)
+        if is_system is not None:
+            pulumi.set(__self__, "is_system", is_system)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if proof_of_possession is not None:
@@ -427,6 +431,18 @@ class _ResourceServerState:
     @identifier.setter
     def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "identifier", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isSystem")
+    def is_system(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Indicates whether this resource server is a special resource server created by Auth0. It cannot be modified or deleted directly.
+        """
+        return pulumi.get(self, "is_system")
+
+    @is_system.setter
+    def is_system(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "is_system", value)
 
     @_builtins.property
     @pulumi.getter
@@ -788,6 +804,7 @@ class ResourceServer(pulumi.CustomResource):
             __props__.__dict__["token_lifetime_for_web"] = token_lifetime_for_web
             __props__.__dict__["verification_location"] = verification_location
             __props__.__dict__["client_id"] = None
+            __props__.__dict__["is_system"] = None
         super(ResourceServer, __self__).__init__(
             'auth0:index/resourceServer:ResourceServer',
             resource_name,
@@ -804,6 +821,7 @@ class ResourceServer(pulumi.CustomResource):
             consent_policy: Optional[pulumi.Input[_builtins.str]] = None,
             enforce_policies: Optional[pulumi.Input[_builtins.bool]] = None,
             identifier: Optional[pulumi.Input[_builtins.str]] = None,
+            is_system: Optional[pulumi.Input[_builtins.bool]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             proof_of_possession: Optional[pulumi.Input[Union['ResourceServerProofOfPossessionArgs', 'ResourceServerProofOfPossessionArgsDict']]] = None,
             signing_alg: Optional[pulumi.Input[_builtins.str]] = None,
@@ -828,6 +846,7 @@ class ResourceServer(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] consent_policy: Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
         :param pulumi.Input[_builtins.bool] enforce_policies: If this setting is enabled, RBAC authorization policies will be enforced for this API. Role and permission assignments will be evaluated during the login transaction.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier for the resource server. Used as the audience parameter for authorization calls. Cannot be changed once set.
+        :param pulumi.Input[_builtins.bool] is_system: Indicates whether this resource server is a special resource server created by Auth0. It cannot be modified or deleted directly.
         :param pulumi.Input[_builtins.str] name: Friendly name for the resource server. Cannot include `<` or `>` characters.
         :param pulumi.Input[Union['ResourceServerProofOfPossessionArgs', 'ResourceServerProofOfPossessionArgsDict']] proof_of_possession: Configuration settings for proof-of-possession for this resource server.
         :param pulumi.Input[_builtins.str] signing_alg: Algorithm used to sign JWTs. Options include `HS256`, `RS256`, and `PS256`.
@@ -850,6 +869,7 @@ class ResourceServer(pulumi.CustomResource):
         __props__.__dict__["consent_policy"] = consent_policy
         __props__.__dict__["enforce_policies"] = enforce_policies
         __props__.__dict__["identifier"] = identifier
+        __props__.__dict__["is_system"] = is_system
         __props__.__dict__["name"] = name
         __props__.__dict__["proof_of_possession"] = proof_of_possession
         __props__.__dict__["signing_alg"] = signing_alg
@@ -910,6 +930,14 @@ class ResourceServer(pulumi.CustomResource):
         Unique identifier for the resource server. Used as the audience parameter for authorization calls. Cannot be changed once set.
         """
         return pulumi.get(self, "identifier")
+
+    @_builtins.property
+    @pulumi.getter(name="isSystem")
+    def is_system(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Indicates whether this resource server is a special resource server created by Auth0. It cannot be modified or deleted directly.
+        """
+        return pulumi.get(self, "is_system")
 
     @_builtins.property
     @pulumi.getter

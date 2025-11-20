@@ -140,6 +140,7 @@ class _ClientGrantState:
                  audience: Optional[pulumi.Input[_builtins.str]] = None,
                  authorization_details_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  client_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 is_system: Optional[pulumi.Input[_builtins.bool]] = None,
                  organization_usage: Optional[pulumi.Input[_builtins.str]] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  subject_type: Optional[pulumi.Input[_builtins.str]] = None):
@@ -149,6 +150,7 @@ class _ClientGrantState:
         :param pulumi.Input[_builtins.str] audience: Audience or API Identifier for this grant.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorization_details_types: Defines the types of authorization details allowed for this client grant.
         :param pulumi.Input[_builtins.str] client_id: ID of the client for this grant.
+        :param pulumi.Input[_builtins.bool] is_system: Indicates whether this grant is a special grant created by Auth0. It cannot be modified or deleted directly.
         :param pulumi.Input[_builtins.str] organization_usage: Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: Permissions (scopes) included in this grant.
         :param pulumi.Input[_builtins.str] subject_type: Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
@@ -161,6 +163,8 @@ class _ClientGrantState:
             pulumi.set(__self__, "authorization_details_types", authorization_details_types)
         if client_id is not None:
             pulumi.set(__self__, "client_id", client_id)
+        if is_system is not None:
+            pulumi.set(__self__, "is_system", is_system)
         if organization_usage is not None:
             pulumi.set(__self__, "organization_usage", organization_usage)
         if scopes is not None:
@@ -215,6 +219,18 @@ class _ClientGrantState:
     @client_id.setter
     def client_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "client_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isSystem")
+    def is_system(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Indicates whether this grant is a special grant created by Auth0. It cannot be modified or deleted directly.
+        """
+        return pulumi.get(self, "is_system")
+
+    @is_system.setter
+    def is_system(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "is_system", value)
 
     @_builtins.property
     @pulumi.getter(name="organizationUsage")
@@ -465,6 +481,7 @@ class ClientGrant(pulumi.CustomResource):
                 raise TypeError("Missing required property 'scopes'")
             __props__.__dict__["scopes"] = scopes
             __props__.__dict__["subject_type"] = subject_type
+            __props__.__dict__["is_system"] = None
         super(ClientGrant, __self__).__init__(
             'auth0:index/clientGrant:ClientGrant',
             resource_name,
@@ -479,6 +496,7 @@ class ClientGrant(pulumi.CustomResource):
             audience: Optional[pulumi.Input[_builtins.str]] = None,
             authorization_details_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             client_id: Optional[pulumi.Input[_builtins.str]] = None,
+            is_system: Optional[pulumi.Input[_builtins.bool]] = None,
             organization_usage: Optional[pulumi.Input[_builtins.str]] = None,
             scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             subject_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'ClientGrant':
@@ -493,6 +511,7 @@ class ClientGrant(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] audience: Audience or API Identifier for this grant.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorization_details_types: Defines the types of authorization details allowed for this client grant.
         :param pulumi.Input[_builtins.str] client_id: ID of the client for this grant.
+        :param pulumi.Input[_builtins.bool] is_system: Indicates whether this grant is a special grant created by Auth0. It cannot be modified or deleted directly.
         :param pulumi.Input[_builtins.str] organization_usage: Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: Permissions (scopes) included in this grant.
         :param pulumi.Input[_builtins.str] subject_type: Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
@@ -505,6 +524,7 @@ class ClientGrant(pulumi.CustomResource):
         __props__.__dict__["audience"] = audience
         __props__.__dict__["authorization_details_types"] = authorization_details_types
         __props__.__dict__["client_id"] = client_id
+        __props__.__dict__["is_system"] = is_system
         __props__.__dict__["organization_usage"] = organization_usage
         __props__.__dict__["scopes"] = scopes
         __props__.__dict__["subject_type"] = subject_type
@@ -541,6 +561,14 @@ class ClientGrant(pulumi.CustomResource):
         ID of the client for this grant.
         """
         return pulumi.get(self, "client_id")
+
+    @_builtins.property
+    @pulumi.getter(name="isSystem")
+    def is_system(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Indicates whether this grant is a special grant created by Auth0. It cannot be modified or deleted directly.
+        """
+        return pulumi.get(self, "is_system")
 
     @_builtins.property
     @pulumi.getter(name="organizationUsage")

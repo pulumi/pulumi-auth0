@@ -56,6 +56,11 @@ public final class GetResourceServerResult {
      */
     private @Nullable String identifier;
     /**
+     * @return Indicates whether this resource server is a special resource server created by Auth0. It cannot be modified or deleted directly.
+     * 
+     */
+    private Boolean isSystem;
+    /**
      * @return Friendly name for the resource server. Cannot include `&lt;` or `&gt;` characters.
      * 
      */
@@ -172,6 +177,13 @@ public final class GetResourceServerResult {
         return Optional.ofNullable(this.identifier);
     }
     /**
+     * @return Indicates whether this resource server is a special resource server created by Auth0. It cannot be modified or deleted directly.
+     * 
+     */
+    public Boolean isSystem() {
+        return this.isSystem;
+    }
+    /**
      * @return Friendly name for the resource server. Cannot include `&lt;` or `&gt;` characters.
      * 
      */
@@ -279,6 +291,7 @@ public final class GetResourceServerResult {
         private Boolean enforcePolicies;
         private String id;
         private @Nullable String identifier;
+        private Boolean isSystem;
         private String name;
         private List<GetResourceServerProofOfPossession> proofOfPossessions;
         private @Nullable String resourceServerId;
@@ -302,6 +315,7 @@ public final class GetResourceServerResult {
     	      this.enforcePolicies = defaults.enforcePolicies;
     	      this.id = defaults.id;
     	      this.identifier = defaults.identifier;
+    	      this.isSystem = defaults.isSystem;
     	      this.name = defaults.name;
     	      this.proofOfPossessions = defaults.proofOfPossessions;
     	      this.resourceServerId = defaults.resourceServerId;
@@ -372,6 +386,14 @@ public final class GetResourceServerResult {
         public Builder identifier(@Nullable String identifier) {
 
             this.identifier = identifier;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder isSystem(Boolean isSystem) {
+            if (isSystem == null) {
+              throw new MissingRequiredPropertyException("GetResourceServerResult", "isSystem");
+            }
+            this.isSystem = isSystem;
             return this;
         }
         @CustomType.Setter
@@ -497,6 +519,7 @@ public final class GetResourceServerResult {
             _resultValue.enforcePolicies = enforcePolicies;
             _resultValue.id = id;
             _resultValue.identifier = identifier;
+            _resultValue.isSystem = isSystem;
             _resultValue.name = name;
             _resultValue.proofOfPossessions = proofOfPossessions;
             _resultValue.resourceServerId = resourceServerId;

@@ -179,6 +179,10 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly string? Identifier;
         /// <summary>
+        /// Indicates whether this resource server is a special resource server created by Auth0. It cannot be modified or deleted directly.
+        /// </summary>
+        public readonly bool IsSystem;
+        /// <summary>
         /// Friendly name for the resource server. Cannot include `&lt;` or `&gt;` characters.
         /// </summary>
         public readonly string Name;
@@ -247,6 +251,8 @@ namespace Pulumi.Auth0
 
             string? identifier,
 
+            bool isSystem,
+
             string name,
 
             ImmutableArray<Outputs.GetResourceServerProofOfPossessionResult> proofOfPossessions,
@@ -280,6 +286,7 @@ namespace Pulumi.Auth0
             EnforcePolicies = enforcePolicies;
             Id = id;
             Identifier = identifier;
+            IsSystem = isSystem;
             Name = name;
             ProofOfPossessions = proofOfPossessions;
             ResourceServerId = resourceServerId;

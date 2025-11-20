@@ -1329,6 +1329,52 @@ export interface ClientDefaultOrganization {
     organizationId: string;
 }
 
+export interface ClientExpressConfiguration {
+    /**
+     * The domain that admins are expected to log in via for authenticating for express configuration.
+     */
+    adminLoginDomain?: string;
+    /**
+     * The ID of the connection profile to use for this application.
+     */
+    connectionProfileId?: string;
+    /**
+     * When true, all connections made via express configuration will be enabled for this application.
+     */
+    enableClient?: boolean;
+    /**
+     * When true, all connections made via express configuration will have the associated organization enabled.
+     */
+    enableOrganization?: boolean;
+    /**
+     * The URI users should bookmark to log in to this application. Variable substitution is permitted for: organization*name, organization*id, and connection_name.
+     */
+    initiateLoginUriTemplate?: string;
+    /**
+     * List of client IDs that are linked to this express configuration (e.g. web or mobile clients).
+     */
+    linkedClients: outputs.ClientExpressConfigurationLinkedClient[];
+    /**
+     * The identifier of the published application in the OKTA OIN.
+     */
+    oinSubmissionId: string;
+    /**
+     * The unique identifier for the Okta OIN Express Configuration Client.
+     */
+    oktaOinClientId: string;
+    /**
+     * The ID of the user attribute profile to use for this application.
+     */
+    userAttributeProfileId?: string;
+}
+
+export interface ClientExpressConfigurationLinkedClient {
+    /**
+     * The ID of the linked client.
+     */
+    clientId?: string;
+}
+
 export interface ClientJwtConfiguration {
     /**
      * Algorithm used to sign JWTs. Can be one of `HS256`, `RS256`, `PS256`.
@@ -2275,6 +2321,167 @@ export interface ConnectionOptionsValidation {
 export interface ConnectionOptionsValidationUsername {
     max?: number;
     min?: number;
+}
+
+export interface ConnectionProfileConnectionConfig {
+}
+
+export interface ConnectionProfileOrganization {
+    /**
+     * Whether to assign membership on login.
+     */
+    assignMembershipOnLogin: string;
+    /**
+     * Whether to show organization as a button.
+     */
+    showAsButton: string;
+}
+
+export interface ConnectionProfileStrategyOverrides {
+    /**
+     * Strategy override configuration.
+     */
+    ad: outputs.ConnectionProfileStrategyOverridesAd;
+    /**
+     * Strategy override configuration.
+     */
+    adfs: outputs.ConnectionProfileStrategyOverridesAdfs;
+    /**
+     * Strategy override configuration.
+     */
+    googleApps: outputs.ConnectionProfileStrategyOverridesGoogleApps;
+    /**
+     * Strategy override configuration.
+     */
+    oidc: outputs.ConnectionProfileStrategyOverridesOidc;
+    /**
+     * Strategy override configuration.
+     */
+    okta: outputs.ConnectionProfileStrategyOverridesOkta;
+    /**
+     * Strategy override configuration.
+     */
+    pingfederate: outputs.ConnectionProfileStrategyOverridesPingfederate;
+    /**
+     * Strategy override configuration.
+     */
+    samlp: outputs.ConnectionProfileStrategyOverridesSamlp;
+    /**
+     * Strategy override configuration.
+     */
+    waad: outputs.ConnectionProfileStrategyOverridesWaad;
+}
+
+export interface ConnectionProfileStrategyOverridesAd {
+    /**
+     * Connection config for the strategy override.
+     */
+    connectionConfig: outputs.ConnectionProfileStrategyOverridesAdConnectionConfig;
+    /**
+     * Enabled features for the strategy override.
+     */
+    enabledFeatures: string[];
+}
+
+export interface ConnectionProfileStrategyOverridesAdConnectionConfig {
+}
+
+export interface ConnectionProfileStrategyOverridesAdfs {
+    /**
+     * Connection config for the strategy override.
+     */
+    connectionConfig: outputs.ConnectionProfileStrategyOverridesAdfsConnectionConfig;
+    /**
+     * Enabled features for the strategy override.
+     */
+    enabledFeatures: string[];
+}
+
+export interface ConnectionProfileStrategyOverridesAdfsConnectionConfig {
+}
+
+export interface ConnectionProfileStrategyOverridesGoogleApps {
+    /**
+     * Connection config for the strategy override.
+     */
+    connectionConfig: outputs.ConnectionProfileStrategyOverridesGoogleAppsConnectionConfig;
+    /**
+     * Enabled features for the strategy override.
+     */
+    enabledFeatures: string[];
+}
+
+export interface ConnectionProfileStrategyOverridesGoogleAppsConnectionConfig {
+}
+
+export interface ConnectionProfileStrategyOverridesOidc {
+    /**
+     * Connection config for the strategy override.
+     */
+    connectionConfig: outputs.ConnectionProfileStrategyOverridesOidcConnectionConfig;
+    /**
+     * Enabled features for the strategy override.
+     */
+    enabledFeatures: string[];
+}
+
+export interface ConnectionProfileStrategyOverridesOidcConnectionConfig {
+}
+
+export interface ConnectionProfileStrategyOverridesOkta {
+    /**
+     * Connection config for the strategy override.
+     */
+    connectionConfig: outputs.ConnectionProfileStrategyOverridesOktaConnectionConfig;
+    /**
+     * Enabled features for the strategy override.
+     */
+    enabledFeatures: string[];
+}
+
+export interface ConnectionProfileStrategyOverridesOktaConnectionConfig {
+}
+
+export interface ConnectionProfileStrategyOverridesPingfederate {
+    /**
+     * Connection config for the strategy override.
+     */
+    connectionConfig: outputs.ConnectionProfileStrategyOverridesPingfederateConnectionConfig;
+    /**
+     * Enabled features for the strategy override.
+     */
+    enabledFeatures: string[];
+}
+
+export interface ConnectionProfileStrategyOverridesPingfederateConnectionConfig {
+}
+
+export interface ConnectionProfileStrategyOverridesSamlp {
+    /**
+     * Connection config for the strategy override.
+     */
+    connectionConfig: outputs.ConnectionProfileStrategyOverridesSamlpConnectionConfig;
+    /**
+     * Enabled features for the strategy override.
+     */
+    enabledFeatures: string[];
+}
+
+export interface ConnectionProfileStrategyOverridesSamlpConnectionConfig {
+}
+
+export interface ConnectionProfileStrategyOverridesWaad {
+    /**
+     * Connection config for the strategy override.
+     */
+    connectionConfig: outputs.ConnectionProfileStrategyOverridesWaadConnectionConfig;
+    /**
+     * Enabled features for the strategy override.
+     */
+    enabledFeatures: string[];
+}
+
+export interface ConnectionProfileStrategyOverridesWaadConnectionConfig {
 }
 
 export interface ConnectionScimConfigurationMapping {
@@ -3799,6 +4006,52 @@ export interface GetClientDefaultOrganization {
     organizationId: string;
 }
 
+export interface GetClientExpressConfiguration {
+    /**
+     * The domain that admins are expected to log in via for authenticating for express configuration.
+     */
+    adminLoginDomain: string;
+    /**
+     * The ID of the connection profile to use for this application.
+     */
+    connectionProfileId: string;
+    /**
+     * When true, all connections made via express configuration will be enabled for this application.
+     */
+    enableClient: boolean;
+    /**
+     * When true, all connections made via express configuration will have the associated organization enabled.
+     */
+    enableOrganization: boolean;
+    /**
+     * The URI users should bookmark to log in to this application. Variable substitution is permitted for: organization_name, organization_id, and connection_name.
+     */
+    initiateLoginUriTemplate: string;
+    /**
+     * List of client IDs that are linked to this express configuration (e.g. web or mobile clients).
+     */
+    linkedClients: outputs.GetClientExpressConfigurationLinkedClient[];
+    /**
+     * The identifier of the published application in the OKTA OIN.
+     */
+    oinSubmissionId: string;
+    /**
+     * The unique identifier for the Okta OIN Express Configuration Client.
+     */
+    oktaOinClientId: string;
+    /**
+     * The ID of the user attribute profile to use for this application.
+     */
+    userAttributeProfileId: string;
+}
+
+export interface GetClientExpressConfigurationLinkedClient {
+    /**
+     * The ID of the linked client.
+     */
+    clientId: string;
+}
+
 export interface GetClientGrantsClientGrant {
     /**
      * The audience of the client grant.
@@ -4061,7 +4314,7 @@ export interface GetClientsClient {
      */
     allowedOrigins: string[];
     /**
-     * Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+     * Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `expressConfiguration`
      */
     appType: string;
     /**
@@ -4085,6 +4338,10 @@ export interface GetClientsClient {
      * Description of the purpose of the client.
      */
     description: string;
+    /**
+     * Express Configuration settings for the client. Used with OIN Express Configuration.
+     */
+    expressConfigurations: outputs.GetClientsClientExpressConfiguration[];
     /**
      * Types of grants that this client is authorized to use.
      */
@@ -4130,6 +4387,52 @@ export interface GetClientsClient {
      * URLs that represent valid web origins for use with web message response mode.
      */
     webOrigins: string[];
+}
+
+export interface GetClientsClientExpressConfiguration {
+    /**
+     * The domain that admins are expected to log in via for authenticating for express configuration.
+     */
+    adminLoginDomain: string;
+    /**
+     * The ID of the connection profile to use for this application.
+     */
+    connectionProfileId: string;
+    /**
+     * When true, all connections made via express configuration will be enabled for this application.
+     */
+    enableClient: boolean;
+    /**
+     * When true, all connections made via express configuration will have the associated organization enabled.
+     */
+    enableOrganization: boolean;
+    /**
+     * The URI users should bookmark to log in to this application. Variable substitution is permitted for: organization_name, organization_id, and connection_name.
+     */
+    initiateLoginUriTemplate: string;
+    /**
+     * List of client IDs that are linked to this express configuration (e.g. web or mobile clients).
+     */
+    linkedClients: outputs.GetClientsClientExpressConfigurationLinkedClient[];
+    /**
+     * The identifier of the published application in the OKTA OIN.
+     */
+    oinSubmissionId: string;
+    /**
+     * The unique identifier for the Okta OIN Express Configuration Client.
+     */
+    oktaOinClientId: string;
+    /**
+     * The ID of the user attribute profile to use for this application.
+     */
+    userAttributeProfileId: string;
+}
+
+export interface GetClientsClientExpressConfigurationLinkedClient {
+    /**
+     * The ID of the linked client.
+     */
+    clientId: string;
 }
 
 export interface GetClientsClientOidcLogout {
@@ -5030,6 +5333,167 @@ export interface GetConnectionOptionValidation {
 export interface GetConnectionOptionValidationUsername {
     max: number;
     min: number;
+}
+
+export interface GetConnectionProfileConnectionConfig {
+}
+
+export interface GetConnectionProfileOrganization {
+    /**
+     * Whether to assign membership on login.
+     */
+    assignMembershipOnLogin: string;
+    /**
+     * Whether to show organization as a button.
+     */
+    showAsButton: string;
+}
+
+export interface GetConnectionProfileStrategyOverride {
+    /**
+     * Strategy override configuration.
+     */
+    ad: outputs.GetConnectionProfileStrategyOverrideAd;
+    /**
+     * Strategy override configuration.
+     */
+    adfs: outputs.GetConnectionProfileStrategyOverrideAdfs;
+    /**
+     * Strategy override configuration.
+     */
+    googleApps: outputs.GetConnectionProfileStrategyOverrideGoogleApps;
+    /**
+     * Strategy override configuration.
+     */
+    oidc: outputs.GetConnectionProfileStrategyOverrideOidc;
+    /**
+     * Strategy override configuration.
+     */
+    okta: outputs.GetConnectionProfileStrategyOverrideOkta;
+    /**
+     * Strategy override configuration.
+     */
+    pingfederate: outputs.GetConnectionProfileStrategyOverridePingfederate;
+    /**
+     * Strategy override configuration.
+     */
+    samlp: outputs.GetConnectionProfileStrategyOverrideSamlp;
+    /**
+     * Strategy override configuration.
+     */
+    waad: outputs.GetConnectionProfileStrategyOverrideWaad;
+}
+
+export interface GetConnectionProfileStrategyOverrideAd {
+    /**
+     * Connection config for the strategy override.
+     */
+    connectionConfig: outputs.GetConnectionProfileStrategyOverrideAdConnectionConfig;
+    /**
+     * Enabled features for the strategy override.
+     */
+    enabledFeatures: string[];
+}
+
+export interface GetConnectionProfileStrategyOverrideAdConnectionConfig {
+}
+
+export interface GetConnectionProfileStrategyOverrideAdfs {
+    /**
+     * Connection config for the strategy override.
+     */
+    connectionConfig: outputs.GetConnectionProfileStrategyOverrideAdfsConnectionConfig;
+    /**
+     * Enabled features for the strategy override.
+     */
+    enabledFeatures: string[];
+}
+
+export interface GetConnectionProfileStrategyOverrideAdfsConnectionConfig {
+}
+
+export interface GetConnectionProfileStrategyOverrideGoogleApps {
+    /**
+     * Connection config for the strategy override.
+     */
+    connectionConfig: outputs.GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfig;
+    /**
+     * Enabled features for the strategy override.
+     */
+    enabledFeatures: string[];
+}
+
+export interface GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfig {
+}
+
+export interface GetConnectionProfileStrategyOverrideOidc {
+    /**
+     * Connection config for the strategy override.
+     */
+    connectionConfig: outputs.GetConnectionProfileStrategyOverrideOidcConnectionConfig;
+    /**
+     * Enabled features for the strategy override.
+     */
+    enabledFeatures: string[];
+}
+
+export interface GetConnectionProfileStrategyOverrideOidcConnectionConfig {
+}
+
+export interface GetConnectionProfileStrategyOverrideOkta {
+    /**
+     * Connection config for the strategy override.
+     */
+    connectionConfig: outputs.GetConnectionProfileStrategyOverrideOktaConnectionConfig;
+    /**
+     * Enabled features for the strategy override.
+     */
+    enabledFeatures: string[];
+}
+
+export interface GetConnectionProfileStrategyOverrideOktaConnectionConfig {
+}
+
+export interface GetConnectionProfileStrategyOverridePingfederate {
+    /**
+     * Connection config for the strategy override.
+     */
+    connectionConfig: outputs.GetConnectionProfileStrategyOverridePingfederateConnectionConfig;
+    /**
+     * Enabled features for the strategy override.
+     */
+    enabledFeatures: string[];
+}
+
+export interface GetConnectionProfileStrategyOverridePingfederateConnectionConfig {
+}
+
+export interface GetConnectionProfileStrategyOverrideSamlp {
+    /**
+     * Connection config for the strategy override.
+     */
+    connectionConfig: outputs.GetConnectionProfileStrategyOverrideSamlpConnectionConfig;
+    /**
+     * Enabled features for the strategy override.
+     */
+    enabledFeatures: string[];
+}
+
+export interface GetConnectionProfileStrategyOverrideSamlpConnectionConfig {
+}
+
+export interface GetConnectionProfileStrategyOverrideWaad {
+    /**
+     * Connection config for the strategy override.
+     */
+    connectionConfig: outputs.GetConnectionProfileStrategyOverrideWaadConnectionConfig;
+    /**
+     * Enabled features for the strategy override.
+     */
+    enabledFeatures: string[];
+}
+
+export interface GetConnectionProfileStrategyOverrideWaadConnectionConfig {
 }
 
 export interface GetConnectionScimConfigurationDefaultMapping {

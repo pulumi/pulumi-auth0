@@ -33,7 +33,7 @@ type Client struct {
 	AllowedLogoutUrls pulumi.StringArrayOutput `pulumi:"allowedLogoutUrls"`
 	// URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
 	AllowedOrigins pulumi.StringArrayOutput `pulumi:"allowedOrigins"`
-	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `expressConfiguration`
 	AppType pulumi.StringPtrOutput `pulumi:"appType"`
 	// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `["guardian-push"]` if not specified.
 	AsyncApprovalNotificationChannels pulumi.StringArrayOutput `pulumi:"asyncApprovalNotificationChannels"`
@@ -61,6 +61,8 @@ type Client struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Encryption used for WS-Fed responses with this client.
 	EncryptionKey pulumi.StringMapOutput `pulumi:"encryptionKey"`
+	// Express Configuration settings for the client. Used with OIN Express Configuration.
+	ExpressConfiguration ClientExpressConfigurationOutput `pulumi:"expressConfiguration"`
 	// HTML form template to be used for WS-Federation.
 	FormTemplate pulumi.StringPtrOutput `pulumi:"formTemplate"`
 	// Types of grants that this client is authorized to use.
@@ -92,9 +94,9 @@ type Client struct {
 	// Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
 	OrganizationDiscoveryMethods pulumi.StringArrayOutput `pulumi:"organizationDiscoveryMethods"`
 	// Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default), `preLoginPrompt` or  `postLoginPrompt`.
-	OrganizationRequireBehavior pulumi.StringPtrOutput `pulumi:"organizationRequireBehavior"`
+	OrganizationRequireBehavior pulumi.StringOutput `pulumi:"organizationRequireBehavior"`
 	// Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
-	OrganizationUsage pulumi.StringPtrOutput `pulumi:"organizationUsage"`
+	OrganizationUsage pulumi.StringOutput `pulumi:"organizationUsage"`
 	// Configuration settings for the refresh tokens issued for this client.
 	RefreshToken ClientRefreshTokenOutput `pulumi:"refreshToken"`
 	// Makes the use of Proof-of-Possession mandatory for this client.
@@ -165,7 +167,7 @@ type clientState struct {
 	AllowedLogoutUrls []string `pulumi:"allowedLogoutUrls"`
 	// URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
 	AllowedOrigins []string `pulumi:"allowedOrigins"`
-	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `expressConfiguration`
 	AppType *string `pulumi:"appType"`
 	// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `["guardian-push"]` if not specified.
 	AsyncApprovalNotificationChannels []string `pulumi:"asyncApprovalNotificationChannels"`
@@ -193,6 +195,8 @@ type clientState struct {
 	Description *string `pulumi:"description"`
 	// Encryption used for WS-Fed responses with this client.
 	EncryptionKey map[string]string `pulumi:"encryptionKey"`
+	// Express Configuration settings for the client. Used with OIN Express Configuration.
+	ExpressConfiguration *ClientExpressConfiguration `pulumi:"expressConfiguration"`
 	// HTML form template to be used for WS-Federation.
 	FormTemplate *string `pulumi:"formTemplate"`
 	// Types of grants that this client is authorized to use.
@@ -261,7 +265,7 @@ type ClientState struct {
 	AllowedLogoutUrls pulumi.StringArrayInput
 	// URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
 	AllowedOrigins pulumi.StringArrayInput
-	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `expressConfiguration`
 	AppType pulumi.StringPtrInput
 	// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `["guardian-push"]` if not specified.
 	AsyncApprovalNotificationChannels pulumi.StringArrayInput
@@ -289,6 +293,8 @@ type ClientState struct {
 	Description pulumi.StringPtrInput
 	// Encryption used for WS-Fed responses with this client.
 	EncryptionKey pulumi.StringMapInput
+	// Express Configuration settings for the client. Used with OIN Express Configuration.
+	ExpressConfiguration ClientExpressConfigurationPtrInput
 	// HTML form template to be used for WS-Federation.
 	FormTemplate pulumi.StringPtrInput
 	// Types of grants that this client is authorized to use.
@@ -361,7 +367,7 @@ type clientArgs struct {
 	AllowedLogoutUrls []string `pulumi:"allowedLogoutUrls"`
 	// URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
 	AllowedOrigins []string `pulumi:"allowedOrigins"`
-	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `expressConfiguration`
 	AppType *string `pulumi:"appType"`
 	// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `["guardian-push"]` if not specified.
 	AsyncApprovalNotificationChannels []string `pulumi:"asyncApprovalNotificationChannels"`
@@ -387,6 +393,8 @@ type clientArgs struct {
 	Description *string `pulumi:"description"`
 	// Encryption used for WS-Fed responses with this client.
 	EncryptionKey map[string]string `pulumi:"encryptionKey"`
+	// Express Configuration settings for the client. Used with OIN Express Configuration.
+	ExpressConfiguration *ClientExpressConfiguration `pulumi:"expressConfiguration"`
 	// HTML form template to be used for WS-Federation.
 	FormTemplate *string `pulumi:"formTemplate"`
 	// Types of grants that this client is authorized to use.
@@ -454,7 +462,7 @@ type ClientArgs struct {
 	AllowedLogoutUrls pulumi.StringArrayInput
 	// URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
 	AllowedOrigins pulumi.StringArrayInput
-	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `expressConfiguration`
 	AppType pulumi.StringPtrInput
 	// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `["guardian-push"]` if not specified.
 	AsyncApprovalNotificationChannels pulumi.StringArrayInput
@@ -480,6 +488,8 @@ type ClientArgs struct {
 	Description pulumi.StringPtrInput
 	// Encryption used for WS-Fed responses with this client.
 	EncryptionKey pulumi.StringMapInput
+	// Express Configuration settings for the client. Used with OIN Express Configuration.
+	ExpressConfiguration ClientExpressConfigurationPtrInput
 	// HTML form template to be used for WS-Federation.
 	FormTemplate pulumi.StringPtrInput
 	// Types of grants that this client is authorized to use.
@@ -644,7 +654,7 @@ func (o ClientOutput) AllowedOrigins() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Client) pulumi.StringArrayOutput { return v.AllowedOrigins }).(pulumi.StringArrayOutput)
 }
 
-// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`.
+// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `expressConfiguration`
 func (o ClientOutput) AppType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Client) pulumi.StringPtrOutput { return v.AppType }).(pulumi.StringPtrOutput)
 }
@@ -712,6 +722,11 @@ func (o ClientOutput) Description() pulumi.StringOutput {
 // Encryption used for WS-Fed responses with this client.
 func (o ClientOutput) EncryptionKey() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Client) pulumi.StringMapOutput { return v.EncryptionKey }).(pulumi.StringMapOutput)
+}
+
+// Express Configuration settings for the client. Used with OIN Express Configuration.
+func (o ClientOutput) ExpressConfiguration() ClientExpressConfigurationOutput {
+	return o.ApplyT(func(v *Client) ClientExpressConfigurationOutput { return v.ExpressConfiguration }).(ClientExpressConfigurationOutput)
 }
 
 // HTML form template to be used for WS-Federation.
@@ -787,13 +802,13 @@ func (o ClientOutput) OrganizationDiscoveryMethods() pulumi.StringArrayOutput {
 }
 
 // Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default), `preLoginPrompt` or  `postLoginPrompt`.
-func (o ClientOutput) OrganizationRequireBehavior() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Client) pulumi.StringPtrOutput { return v.OrganizationRequireBehavior }).(pulumi.StringPtrOutput)
+func (o ClientOutput) OrganizationRequireBehavior() pulumi.StringOutput {
+	return o.ApplyT(func(v *Client) pulumi.StringOutput { return v.OrganizationRequireBehavior }).(pulumi.StringOutput)
 }
 
 // Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
-func (o ClientOutput) OrganizationUsage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Client) pulumi.StringPtrOutput { return v.OrganizationUsage }).(pulumi.StringPtrOutput)
+func (o ClientOutput) OrganizationUsage() pulumi.StringOutput {
+	return o.ApplyT(func(v *Client) pulumi.StringOutput { return v.OrganizationUsage }).(pulumi.StringOutput)
 }
 
 // Configuration settings for the refresh tokens issued for this client.

@@ -199,6 +199,20 @@ public class ResourceServer extends com.pulumi.resources.CustomResource {
         return this.identifier;
     }
     /**
+     * Indicates whether this resource server is a special resource server created by Auth0. It cannot be modified or deleted directly.
+     * 
+     */
+    @Export(name="isSystem", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> isSystem;
+
+    /**
+     * @return Indicates whether this resource server is a special resource server created by Auth0. It cannot be modified or deleted directly.
+     * 
+     */
+    public Output<Boolean> isSystem() {
+        return this.isSystem;
+    }
+    /**
      * Friendly name for the resource server. Cannot include `&lt;` or `&gt;` characters.
      * 
      */
