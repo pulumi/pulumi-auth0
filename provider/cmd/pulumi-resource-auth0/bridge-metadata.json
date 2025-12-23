@@ -137,6 +137,22 @@
                     }
                 }
             },
+            "auth0_branding_phone_notification_template": {
+                "current": "auth0:index/brandingPhoneNotificationTemplate:BrandingPhoneNotificationTemplate",
+                "majorVersion": 3,
+                "fields": {
+                    "content": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "body": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "auth0_branding_theme": {
                 "current": "auth0:index/brandingTheme:BrandingTheme",
                 "majorVersion": 3,
@@ -709,6 +725,15 @@
                     }
                 }
             },
+            "auth0_connection_directory": {
+                "current": "auth0:index/connectionDirectory:ConnectionDirectory",
+                "majorVersion": 3,
+                "fields": {
+                    "mapping": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "auth0_connection_keys": {
                 "current": "auth0:index/connectionKeys:ConnectionKeys",
                 "majorVersion": 3
@@ -1211,6 +1236,22 @@
                     }
                 }
             },
+            "auth0_phone_notification_template": {
+                "current": "auth0:index/phoneNotificationTemplate:PhoneNotificationTemplate",
+                "majorVersion": 3,
+                "fields": {
+                    "content": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "body": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "auth0_phone_provider": {
                 "current": "auth0:index/phoneProvider:PhoneProvider",
                 "majorVersion": 3,
@@ -1680,6 +1721,22 @@
                     },
                     "universal_login": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "auth0_branding_phone_notification_template": {
+                "current": "auth0:index/getBrandingPhoneNotificationTemplate:getBrandingPhoneNotificationTemplate",
+                "majorVersion": 3,
+                "fields": {
+                    "content": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "body": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -2350,6 +2407,24 @@
                     }
                 }
             },
+            "auth0_connection_directory": {
+                "current": "auth0:index/getConnectionDirectory:getConnectionDirectory",
+                "majorVersion": 3,
+                "fields": {
+                    "mapping": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "auth0_connection_directory_default_mapping": {
+                "current": "auth0:index/getConnectionDirectoryDefaultMapping:getConnectionDirectoryDefaultMapping",
+                "majorVersion": 3,
+                "fields": {
+                    "mapping": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "auth0_connection_keys": {
                 "current": "auth0:index/getConnectionKeys:getConnectionKeys",
                 "majorVersion": 3,
@@ -2731,6 +2806,22 @@
                     },
                     "login": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "auth0_phone_notification_template": {
+                "current": "auth0:index/getPhoneNotificationTemplate:getPhoneNotificationTemplate",
+                "majorVersion": 3,
+                "fields": {
+                    "content": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "body": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
