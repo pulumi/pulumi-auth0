@@ -20,6 +20,11 @@ export type Branding = import("./branding").Branding;
 export const Branding: typeof import("./branding").Branding = null as any;
 utilities.lazyLoad(exports, ["Branding"], () => require("./branding"));
 
+export { BrandingPhoneNotificationTemplateArgs, BrandingPhoneNotificationTemplateState } from "./brandingPhoneNotificationTemplate";
+export type BrandingPhoneNotificationTemplate = import("./brandingPhoneNotificationTemplate").BrandingPhoneNotificationTemplate;
+export const BrandingPhoneNotificationTemplate: typeof import("./brandingPhoneNotificationTemplate").BrandingPhoneNotificationTemplate = null as any;
+utilities.lazyLoad(exports, ["BrandingPhoneNotificationTemplate"], () => require("./brandingPhoneNotificationTemplate"));
+
 export { BrandingThemeArgs, BrandingThemeState } from "./brandingTheme";
 export type BrandingTheme = import("./brandingTheme").BrandingTheme;
 export const BrandingTheme: typeof import("./brandingTheme").BrandingTheme = null as any;
@@ -54,6 +59,11 @@ export { ConnectionClientsArgs, ConnectionClientsState } from "./connectionClien
 export type ConnectionClients = import("./connectionClients").ConnectionClients;
 export const ConnectionClients: typeof import("./connectionClients").ConnectionClients = null as any;
 utilities.lazyLoad(exports, ["ConnectionClients"], () => require("./connectionClients"));
+
+export { ConnectionDirectoryArgs, ConnectionDirectoryState } from "./connectionDirectory";
+export type ConnectionDirectory = import("./connectionDirectory").ConnectionDirectory;
+export const ConnectionDirectory: typeof import("./connectionDirectory").ConnectionDirectory = null as any;
+utilities.lazyLoad(exports, ["ConnectionDirectory"], () => require("./connectionDirectory"));
 
 export { ConnectionKeysArgs, ConnectionKeysState } from "./connectionKeys";
 export type ConnectionKeys = import("./connectionKeys").ConnectionKeys;
@@ -135,6 +145,11 @@ export const getBranding: typeof import("./getBranding").getBranding = null as a
 export const getBrandingOutput: typeof import("./getBranding").getBrandingOutput = null as any;
 utilities.lazyLoad(exports, ["getBranding","getBrandingOutput"], () => require("./getBranding"));
 
+export { GetBrandingPhoneNotificationTemplateArgs, GetBrandingPhoneNotificationTemplateResult, GetBrandingPhoneNotificationTemplateOutputArgs } from "./getBrandingPhoneNotificationTemplate";
+export const getBrandingPhoneNotificationTemplate: typeof import("./getBrandingPhoneNotificationTemplate").getBrandingPhoneNotificationTemplate = null as any;
+export const getBrandingPhoneNotificationTemplateOutput: typeof import("./getBrandingPhoneNotificationTemplate").getBrandingPhoneNotificationTemplateOutput = null as any;
+utilities.lazyLoad(exports, ["getBrandingPhoneNotificationTemplate","getBrandingPhoneNotificationTemplateOutput"], () => require("./getBrandingPhoneNotificationTemplate"));
+
 export { GetBrandingThemeResult } from "./getBrandingTheme";
 export const getBrandingTheme: typeof import("./getBrandingTheme").getBrandingTheme = null as any;
 export const getBrandingThemeOutput: typeof import("./getBrandingTheme").getBrandingThemeOutput = null as any;
@@ -159,6 +174,16 @@ export { GetConnectionArgs, GetConnectionResult, GetConnectionOutputArgs } from 
 export const getConnection: typeof import("./getConnection").getConnection = null as any;
 export const getConnectionOutput: typeof import("./getConnection").getConnectionOutput = null as any;
 utilities.lazyLoad(exports, ["getConnection","getConnectionOutput"], () => require("./getConnection"));
+
+export { GetConnectionDirectoryArgs, GetConnectionDirectoryResult, GetConnectionDirectoryOutputArgs } from "./getConnectionDirectory";
+export const getConnectionDirectory: typeof import("./getConnectionDirectory").getConnectionDirectory = null as any;
+export const getConnectionDirectoryOutput: typeof import("./getConnectionDirectory").getConnectionDirectoryOutput = null as any;
+utilities.lazyLoad(exports, ["getConnectionDirectory","getConnectionDirectoryOutput"], () => require("./getConnectionDirectory"));
+
+export { GetConnectionDirectoryDefaultMappingArgs, GetConnectionDirectoryDefaultMappingResult, GetConnectionDirectoryDefaultMappingOutputArgs } from "./getConnectionDirectoryDefaultMapping";
+export const getConnectionDirectoryDefaultMapping: typeof import("./getConnectionDirectoryDefaultMapping").getConnectionDirectoryDefaultMapping = null as any;
+export const getConnectionDirectoryDefaultMappingOutput: typeof import("./getConnectionDirectoryDefaultMapping").getConnectionDirectoryDefaultMappingOutput = null as any;
+utilities.lazyLoad(exports, ["getConnectionDirectoryDefaultMapping","getConnectionDirectoryDefaultMappingOutput"], () => require("./getConnectionDirectoryDefaultMapping"));
 
 export { GetConnectionKeysArgs, GetConnectionKeysResult, GetConnectionKeysOutputArgs } from "./getConnectionKeys";
 export const getConnectionKeys: typeof import("./getConnectionKeys").getConnectionKeys = null as any;
@@ -224,6 +249,11 @@ export { GetPagesResult } from "./getPages";
 export const getPages: typeof import("./getPages").getPages = null as any;
 export const getPagesOutput: typeof import("./getPages").getPagesOutput = null as any;
 utilities.lazyLoad(exports, ["getPages","getPagesOutput"], () => require("./getPages"));
+
+export { GetPhoneNotificationTemplateArgs, GetPhoneNotificationTemplateResult, GetPhoneNotificationTemplateOutputArgs } from "./getPhoneNotificationTemplate";
+export const getPhoneNotificationTemplate: typeof import("./getPhoneNotificationTemplate").getPhoneNotificationTemplate = null as any;
+export const getPhoneNotificationTemplateOutput: typeof import("./getPhoneNotificationTemplate").getPhoneNotificationTemplateOutput = null as any;
+utilities.lazyLoad(exports, ["getPhoneNotificationTemplate","getPhoneNotificationTemplateOutput"], () => require("./getPhoneNotificationTemplate"));
 
 export { GetPhoneProviderArgs, GetPhoneProviderResult, GetPhoneProviderOutputArgs } from "./getPhoneProvider";
 export const getPhoneProvider: typeof import("./getPhoneProvider").getPhoneProvider = null as any;
@@ -354,6 +384,11 @@ export { PagesArgs, PagesState } from "./pages";
 export type Pages = import("./pages").Pages;
 export const Pages: typeof import("./pages").Pages = null as any;
 utilities.lazyLoad(exports, ["Pages"], () => require("./pages"));
+
+export { PhoneNotificationTemplateArgs, PhoneNotificationTemplateState } from "./phoneNotificationTemplate";
+export type PhoneNotificationTemplate = import("./phoneNotificationTemplate").PhoneNotificationTemplate;
+export const PhoneNotificationTemplate: typeof import("./phoneNotificationTemplate").PhoneNotificationTemplate = null as any;
+utilities.lazyLoad(exports, ["PhoneNotificationTemplate"], () => require("./phoneNotificationTemplate"));
 
 export { PhoneProviderArgs, PhoneProviderState } from "./phoneProvider";
 export type PhoneProvider = import("./phoneProvider").PhoneProvider;
@@ -523,6 +558,8 @@ const _module = {
                 return new AttackProtection(name, <any>undefined, { urn })
             case "auth0:index/branding:Branding":
                 return new Branding(name, <any>undefined, { urn })
+            case "auth0:index/brandingPhoneNotificationTemplate:BrandingPhoneNotificationTemplate":
+                return new BrandingPhoneNotificationTemplate(name, <any>undefined, { urn })
             case "auth0:index/brandingTheme:BrandingTheme":
                 return new BrandingTheme(name, <any>undefined, { urn })
             case "auth0:index/client:Client":
@@ -537,6 +574,8 @@ const _module = {
                 return new ConnectionClient(name, <any>undefined, { urn })
             case "auth0:index/connectionClients:ConnectionClients":
                 return new ConnectionClients(name, <any>undefined, { urn })
+            case "auth0:index/connectionDirectory:ConnectionDirectory":
+                return new ConnectionDirectory(name, <any>undefined, { urn })
             case "auth0:index/connectionKeys:ConnectionKeys":
                 return new ConnectionKeys(name, <any>undefined, { urn })
             case "auth0:index/connectionProfile:ConnectionProfile":
@@ -593,6 +632,8 @@ const _module = {
                 return new OrganizationMembers(name, <any>undefined, { urn })
             case "auth0:index/pages:Pages":
                 return new Pages(name, <any>undefined, { urn })
+            case "auth0:index/phoneNotificationTemplate:PhoneNotificationTemplate":
+                return new PhoneNotificationTemplate(name, <any>undefined, { urn })
             case "auth0:index/phoneProvider:PhoneProvider":
                 return new PhoneProvider(name, <any>undefined, { urn })
             case "auth0:index/prompt:Prompt":
@@ -659,6 +700,7 @@ const _module = {
 pulumi.runtime.registerResourceModule("auth0", "index/action", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/attackProtection", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/branding", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/brandingPhoneNotificationTemplate", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/brandingTheme", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/client", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/clientCredentials", _module)
@@ -666,6 +708,7 @@ pulumi.runtime.registerResourceModule("auth0", "index/clientGrant", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/connection", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/connectionClient", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/connectionClients", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/connectionDirectory", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/connectionKeys", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/connectionProfile", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/connectionScimConfiguration", _module)
@@ -694,6 +737,7 @@ pulumi.runtime.registerResourceModule("auth0", "index/organizationMemberRole", _
 pulumi.runtime.registerResourceModule("auth0", "index/organizationMemberRoles", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/organizationMembers", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/pages", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/phoneNotificationTemplate", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/phoneProvider", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/prompt", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/promptCustomText", _module)

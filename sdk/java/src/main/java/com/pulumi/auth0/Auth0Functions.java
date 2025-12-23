@@ -6,6 +6,8 @@ package com.pulumi.auth0;
 import com.pulumi.auth0.Utilities;
 import com.pulumi.auth0.inputs.GetActionArgs;
 import com.pulumi.auth0.inputs.GetActionPlainArgs;
+import com.pulumi.auth0.inputs.GetBrandingPhoneNotificationTemplateArgs;
+import com.pulumi.auth0.inputs.GetBrandingPhoneNotificationTemplatePlainArgs;
 import com.pulumi.auth0.inputs.GetClientArgs;
 import com.pulumi.auth0.inputs.GetClientGrantsArgs;
 import com.pulumi.auth0.inputs.GetClientGrantsPlainArgs;
@@ -13,6 +15,10 @@ import com.pulumi.auth0.inputs.GetClientPlainArgs;
 import com.pulumi.auth0.inputs.GetClientsArgs;
 import com.pulumi.auth0.inputs.GetClientsPlainArgs;
 import com.pulumi.auth0.inputs.GetConnectionArgs;
+import com.pulumi.auth0.inputs.GetConnectionDirectoryArgs;
+import com.pulumi.auth0.inputs.GetConnectionDirectoryDefaultMappingArgs;
+import com.pulumi.auth0.inputs.GetConnectionDirectoryDefaultMappingPlainArgs;
+import com.pulumi.auth0.inputs.GetConnectionDirectoryPlainArgs;
 import com.pulumi.auth0.inputs.GetConnectionKeysArgs;
 import com.pulumi.auth0.inputs.GetConnectionKeysPlainArgs;
 import com.pulumi.auth0.inputs.GetConnectionPlainArgs;
@@ -36,6 +42,8 @@ import com.pulumi.auth0.inputs.GetNetworkAclArgs;
 import com.pulumi.auth0.inputs.GetNetworkAclPlainArgs;
 import com.pulumi.auth0.inputs.GetOrganizationArgs;
 import com.pulumi.auth0.inputs.GetOrganizationPlainArgs;
+import com.pulumi.auth0.inputs.GetPhoneNotificationTemplateArgs;
+import com.pulumi.auth0.inputs.GetPhoneNotificationTemplatePlainArgs;
 import com.pulumi.auth0.inputs.GetPhoneProviderArgs;
 import com.pulumi.auth0.inputs.GetPhoneProviderPlainArgs;
 import com.pulumi.auth0.inputs.GetPromptScreenPartialsArgs;
@@ -56,11 +64,14 @@ import com.pulumi.auth0.inputs.GetUserAttributeProfilePlainArgs;
 import com.pulumi.auth0.inputs.GetUserPlainArgs;
 import com.pulumi.auth0.outputs.GetActionResult;
 import com.pulumi.auth0.outputs.GetAttackProtectionResult;
+import com.pulumi.auth0.outputs.GetBrandingPhoneNotificationTemplateResult;
 import com.pulumi.auth0.outputs.GetBrandingResult;
 import com.pulumi.auth0.outputs.GetBrandingThemeResult;
 import com.pulumi.auth0.outputs.GetClientGrantsResult;
 import com.pulumi.auth0.outputs.GetClientResult;
 import com.pulumi.auth0.outputs.GetClientsResult;
+import com.pulumi.auth0.outputs.GetConnectionDirectoryDefaultMappingResult;
+import com.pulumi.auth0.outputs.GetConnectionDirectoryResult;
 import com.pulumi.auth0.outputs.GetConnectionKeysResult;
 import com.pulumi.auth0.outputs.GetConnectionProfileResult;
 import com.pulumi.auth0.outputs.GetConnectionResult;
@@ -75,6 +86,7 @@ import com.pulumi.auth0.outputs.GetNetworkAclResult;
 import com.pulumi.auth0.outputs.GetOrganizationResult;
 import com.pulumi.auth0.outputs.GetOutboundIpsResult;
 import com.pulumi.auth0.outputs.GetPagesResult;
+import com.pulumi.auth0.outputs.GetPhoneNotificationTemplateResult;
 import com.pulumi.auth0.outputs.GetPhoneProviderResult;
 import com.pulumi.auth0.outputs.GetPromptScreenPartialsResult;
 import com.pulumi.auth0.outputs.GetPromptScreenRendererResult;
@@ -661,6 +673,226 @@ public final class Auth0Functions {
      */
     public static CompletableFuture<GetBrandingResult> getBrandingPlain(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("auth0:index/getBranding:getBranding", TypeShape.of(GetBrandingResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Auth0 Phone Notification Template by `templateId`.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetBrandingPhoneNotificationTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Data Source Example: Retrieve Auth0 Phone Notification Templates
+     *         // This example shows how to fetch existing phone notification templates from your Auth0 tenant
+     *         // Retrieve the OTP enrollment template
+     *         final var otpEnrollment = Auth0Functions.getBrandingPhoneNotificationTemplate(GetBrandingPhoneNotificationTemplateArgs.builder()
+     *             .templateId("tem_xxxxxxxxxxxxxxxxx")
+     *             .build());
+     * 
+     *         ctx.export("otpEnrollmentId", otpEnrollment.id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetBrandingPhoneNotificationTemplateResult> getBrandingPhoneNotificationTemplate(GetBrandingPhoneNotificationTemplateArgs args) {
+        return getBrandingPhoneNotificationTemplate(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Auth0 Phone Notification Template by `templateId`.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetBrandingPhoneNotificationTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Data Source Example: Retrieve Auth0 Phone Notification Templates
+     *         // This example shows how to fetch existing phone notification templates from your Auth0 tenant
+     *         // Retrieve the OTP enrollment template
+     *         final var otpEnrollment = Auth0Functions.getBrandingPhoneNotificationTemplate(GetBrandingPhoneNotificationTemplateArgs.builder()
+     *             .templateId("tem_xxxxxxxxxxxxxxxxx")
+     *             .build());
+     * 
+     *         ctx.export("otpEnrollmentId", otpEnrollment.id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetBrandingPhoneNotificationTemplateResult> getBrandingPhoneNotificationTemplatePlain(GetBrandingPhoneNotificationTemplatePlainArgs args) {
+        return getBrandingPhoneNotificationTemplatePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Auth0 Phone Notification Template by `templateId`.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetBrandingPhoneNotificationTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Data Source Example: Retrieve Auth0 Phone Notification Templates
+     *         // This example shows how to fetch existing phone notification templates from your Auth0 tenant
+     *         // Retrieve the OTP enrollment template
+     *         final var otpEnrollment = Auth0Functions.getBrandingPhoneNotificationTemplate(GetBrandingPhoneNotificationTemplateArgs.builder()
+     *             .templateId("tem_xxxxxxxxxxxxxxxxx")
+     *             .build());
+     * 
+     *         ctx.export("otpEnrollmentId", otpEnrollment.id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetBrandingPhoneNotificationTemplateResult> getBrandingPhoneNotificationTemplate(GetBrandingPhoneNotificationTemplateArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getBrandingPhoneNotificationTemplate:getBrandingPhoneNotificationTemplate", TypeShape.of(GetBrandingPhoneNotificationTemplateResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Auth0 Phone Notification Template by `templateId`.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetBrandingPhoneNotificationTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Data Source Example: Retrieve Auth0 Phone Notification Templates
+     *         // This example shows how to fetch existing phone notification templates from your Auth0 tenant
+     *         // Retrieve the OTP enrollment template
+     *         final var otpEnrollment = Auth0Functions.getBrandingPhoneNotificationTemplate(GetBrandingPhoneNotificationTemplateArgs.builder()
+     *             .templateId("tem_xxxxxxxxxxxxxxxxx")
+     *             .build());
+     * 
+     *         ctx.export("otpEnrollmentId", otpEnrollment.id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetBrandingPhoneNotificationTemplateResult> getBrandingPhoneNotificationTemplate(GetBrandingPhoneNotificationTemplateArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getBrandingPhoneNotificationTemplate:getBrandingPhoneNotificationTemplate", TypeShape.of(GetBrandingPhoneNotificationTemplateResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Auth0 Phone Notification Template by `templateId`.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetBrandingPhoneNotificationTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Data Source Example: Retrieve Auth0 Phone Notification Templates
+     *         // This example shows how to fetch existing phone notification templates from your Auth0 tenant
+     *         // Retrieve the OTP enrollment template
+     *         final var otpEnrollment = Auth0Functions.getBrandingPhoneNotificationTemplate(GetBrandingPhoneNotificationTemplateArgs.builder()
+     *             .templateId("tem_xxxxxxxxxxxxxxxxx")
+     *             .build());
+     * 
+     *         ctx.export("otpEnrollmentId", otpEnrollment.id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetBrandingPhoneNotificationTemplateResult> getBrandingPhoneNotificationTemplatePlain(GetBrandingPhoneNotificationTemplatePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("auth0:index/getBrandingPhoneNotificationTemplate:getBrandingPhoneNotificationTemplate", TypeShape.of(GetBrandingPhoneNotificationTemplateResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to access information about the tenant&#39;s branding theme settings.
@@ -1984,6 +2216,406 @@ public final class Auth0Functions {
      */
     public static CompletableFuture<GetConnectionResult> getConnectionPlain(GetConnectionPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("auth0:index/getConnection:getConnection", TypeShape.of(GetConnectionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve directory provisioning configuration for an Auth0 connection by `connectionId`.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetConnectionDirectoryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myDirectoryConfig = Auth0Functions.getConnectionDirectory(GetConnectionDirectoryArgs.builder()
+     *             .connectionId("con_xxxxxxxxxxxxx")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetConnectionDirectoryResult> getConnectionDirectory(GetConnectionDirectoryArgs args) {
+        return getConnectionDirectory(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve directory provisioning configuration for an Auth0 connection by `connectionId`.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetConnectionDirectoryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myDirectoryConfig = Auth0Functions.getConnectionDirectory(GetConnectionDirectoryArgs.builder()
+     *             .connectionId("con_xxxxxxxxxxxxx")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetConnectionDirectoryResult> getConnectionDirectoryPlain(GetConnectionDirectoryPlainArgs args) {
+        return getConnectionDirectoryPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve directory provisioning configuration for an Auth0 connection by `connectionId`.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetConnectionDirectoryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myDirectoryConfig = Auth0Functions.getConnectionDirectory(GetConnectionDirectoryArgs.builder()
+     *             .connectionId("con_xxxxxxxxxxxxx")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetConnectionDirectoryResult> getConnectionDirectory(GetConnectionDirectoryArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getConnectionDirectory:getConnectionDirectory", TypeShape.of(GetConnectionDirectoryResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve directory provisioning configuration for an Auth0 connection by `connectionId`.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetConnectionDirectoryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myDirectoryConfig = Auth0Functions.getConnectionDirectory(GetConnectionDirectoryArgs.builder()
+     *             .connectionId("con_xxxxxxxxxxxxx")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetConnectionDirectoryResult> getConnectionDirectory(GetConnectionDirectoryArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getConnectionDirectory:getConnectionDirectory", TypeShape.of(GetConnectionDirectoryResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve directory provisioning configuration for an Auth0 connection by `connectionId`.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetConnectionDirectoryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myDirectoryConfig = Auth0Functions.getConnectionDirectory(GetConnectionDirectoryArgs.builder()
+     *             .connectionId("con_xxxxxxxxxxxxx")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetConnectionDirectoryResult> getConnectionDirectoryPlain(GetConnectionDirectoryPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("auth0:index/getConnectionDirectory:getConnectionDirectory", TypeShape.of(GetConnectionDirectoryResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve the default attribute mapping for directory provisioning on an Auth0 connection by `connectionId`. This shows the standard mapping that would be used if no custom mapping is specified.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetConnectionDirectoryDefaultMappingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myDirectoryConfigMapping = Auth0Functions.getConnectionDirectoryDefaultMapping(GetConnectionDirectoryDefaultMappingArgs.builder()
+     *             .connectionId("con_xxxxxxxxxxxxx")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetConnectionDirectoryDefaultMappingResult> getConnectionDirectoryDefaultMapping(GetConnectionDirectoryDefaultMappingArgs args) {
+        return getConnectionDirectoryDefaultMapping(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve the default attribute mapping for directory provisioning on an Auth0 connection by `connectionId`. This shows the standard mapping that would be used if no custom mapping is specified.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetConnectionDirectoryDefaultMappingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myDirectoryConfigMapping = Auth0Functions.getConnectionDirectoryDefaultMapping(GetConnectionDirectoryDefaultMappingArgs.builder()
+     *             .connectionId("con_xxxxxxxxxxxxx")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetConnectionDirectoryDefaultMappingResult> getConnectionDirectoryDefaultMappingPlain(GetConnectionDirectoryDefaultMappingPlainArgs args) {
+        return getConnectionDirectoryDefaultMappingPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve the default attribute mapping for directory provisioning on an Auth0 connection by `connectionId`. This shows the standard mapping that would be used if no custom mapping is specified.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetConnectionDirectoryDefaultMappingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myDirectoryConfigMapping = Auth0Functions.getConnectionDirectoryDefaultMapping(GetConnectionDirectoryDefaultMappingArgs.builder()
+     *             .connectionId("con_xxxxxxxxxxxxx")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetConnectionDirectoryDefaultMappingResult> getConnectionDirectoryDefaultMapping(GetConnectionDirectoryDefaultMappingArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getConnectionDirectoryDefaultMapping:getConnectionDirectoryDefaultMapping", TypeShape.of(GetConnectionDirectoryDefaultMappingResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve the default attribute mapping for directory provisioning on an Auth0 connection by `connectionId`. This shows the standard mapping that would be used if no custom mapping is specified.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetConnectionDirectoryDefaultMappingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myDirectoryConfigMapping = Auth0Functions.getConnectionDirectoryDefaultMapping(GetConnectionDirectoryDefaultMappingArgs.builder()
+     *             .connectionId("con_xxxxxxxxxxxxx")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetConnectionDirectoryDefaultMappingResult> getConnectionDirectoryDefaultMapping(GetConnectionDirectoryDefaultMappingArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getConnectionDirectoryDefaultMapping:getConnectionDirectoryDefaultMapping", TypeShape.of(GetConnectionDirectoryDefaultMappingResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve the default attribute mapping for directory provisioning on an Auth0 connection by `connectionId`. This shows the standard mapping that would be used if no custom mapping is specified.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetConnectionDirectoryDefaultMappingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myDirectoryConfigMapping = Auth0Functions.getConnectionDirectoryDefaultMapping(GetConnectionDirectoryDefaultMappingArgs.builder()
+     *             .connectionId("con_xxxxxxxxxxxxx")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetConnectionDirectoryDefaultMappingResult> getConnectionDirectoryDefaultMappingPlain(GetConnectionDirectoryDefaultMappingPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("auth0:index/getConnectionDirectoryDefaultMapping:getConnectionDirectoryDefaultMapping", TypeShape.of(GetConnectionDirectoryDefaultMappingResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieve the list of signing keys for a specific Auth0 connection. (Okta/OIDC only)
@@ -4866,6 +5498,41 @@ public final class Auth0Functions {
      */
     public static CompletableFuture<GetPagesResult> getPagesPlain(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("auth0:index/getPages:getPages", TypeShape.of(GetPagesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Auth0 Phone Notification Template by `templateId`.
+     * 
+     */
+    public static Output<GetPhoneNotificationTemplateResult> getPhoneNotificationTemplate(GetPhoneNotificationTemplateArgs args) {
+        return getPhoneNotificationTemplate(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Auth0 Phone Notification Template by `templateId`.
+     * 
+     */
+    public static CompletableFuture<GetPhoneNotificationTemplateResult> getPhoneNotificationTemplatePlain(GetPhoneNotificationTemplatePlainArgs args) {
+        return getPhoneNotificationTemplatePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Auth0 Phone Notification Template by `templateId`.
+     * 
+     */
+    public static Output<GetPhoneNotificationTemplateResult> getPhoneNotificationTemplate(GetPhoneNotificationTemplateArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getPhoneNotificationTemplate:getPhoneNotificationTemplate", TypeShape.of(GetPhoneNotificationTemplateResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Auth0 Phone Notification Template by `templateId`.
+     * 
+     */
+    public static Output<GetPhoneNotificationTemplateResult> getPhoneNotificationTemplate(GetPhoneNotificationTemplateArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getPhoneNotificationTemplate:getPhoneNotificationTemplate", TypeShape.of(GetPhoneNotificationTemplateResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Auth0 Phone Notification Template by `templateId`.
+     * 
+     */
+    public static CompletableFuture<GetPhoneNotificationTemplateResult> getPhoneNotificationTemplatePlain(GetPhoneNotificationTemplatePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("auth0:index/getPhoneNotificationTemplate:getPhoneNotificationTemplate", TypeShape.of(GetPhoneNotificationTemplateResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source to retrieve a specific Auth0 Phone Provider by `id`.

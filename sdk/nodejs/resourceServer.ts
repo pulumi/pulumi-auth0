@@ -55,6 +55,26 @@ import * as utilities from "./utilities";
  *         },
  *     },
  * });
+ * // Sample OIN resource server configuration
+ * const oktaOinExpressConfigurationApi = new auth0.ResourceServer("okta_oin_express_configuration_api", {
+ *     identifier: "urn:auth0:express-configure",
+ *     name: "Okta OIN Express Configuration API",
+ *     signingAlg: "RS256",
+ *     signingSecret: null,
+ *     skipConsentForVerifiableFirstPartyClients: false,
+ *     tokenDialect: null,
+ *     tokenLifetime: 86400,
+ *     verificationLocation: null,
+ *     proofOfPossession: {
+ *         disable: true,
+ *         mechanism: null,
+ *         required: false,
+ *     },
+ *     tokenEncryption: {
+ *         disable: true,
+ *         format: null,
+ *     },
+ * });
  * ```
  *
  * ## Import

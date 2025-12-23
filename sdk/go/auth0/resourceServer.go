@@ -68,6 +68,29 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Sample OIN resource server configuration
+//			_, err = auth0.NewResourceServer(ctx, "okta_oin_express_configuration_api", &auth0.ResourceServerArgs{
+//				Identifier:    pulumi.String("urn:auth0:express-configure"),
+//				Name:          pulumi.String("Okta OIN Express Configuration API"),
+//				SigningAlg:    pulumi.String("RS256"),
+//				SigningSecret: nil,
+//				SkipConsentForVerifiableFirstPartyClients: pulumi.Bool(false),
+//				TokenDialect:         nil,
+//				TokenLifetime:        pulumi.Int(86400),
+//				VerificationLocation: nil,
+//				ProofOfPossession: &auth0.ResourceServerProofOfPossessionArgs{
+//					Disable:   pulumi.Bool(true),
+//					Mechanism: nil,
+//					Required:  pulumi.Bool(false),
+//				},
+//				TokenEncryption: &auth0.ResourceServerTokenEncryptionArgs{
+//					Disable: pulumi.Bool(true),
+//					Format:  nil,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			return nil
 //		})
 //	}

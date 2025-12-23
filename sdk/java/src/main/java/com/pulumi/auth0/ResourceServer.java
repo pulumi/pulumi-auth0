@@ -96,6 +96,27 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // Sample OIN resource server configuration
+ *         var oktaOinExpressConfigurationApi = new ResourceServer("oktaOinExpressConfigurationApi", ResourceServerArgs.builder()
+ *             .identifier("urn:auth0:express-configure")
+ *             .name("Okta OIN Express Configuration API")
+ *             .signingAlg("RS256")
+ *             .signingSecret(null)
+ *             .skipConsentForVerifiableFirstPartyClients(false)
+ *             .tokenDialect(null)
+ *             .tokenLifetime(86400)
+ *             .verificationLocation(null)
+ *             .proofOfPossession(ResourceServerProofOfPossessionArgs.builder()
+ *                 .disable(true)
+ *                 .mechanism(null)
+ *                 .required(false)
+ *                 .build())
+ *             .tokenEncryption(ResourceServerTokenEncryptionArgs.builder()
+ *                 .disable(true)
+ *                 .format(null)
+ *                 .build())
+ *             .build());
+ * 
  *     }
  * }
  * }

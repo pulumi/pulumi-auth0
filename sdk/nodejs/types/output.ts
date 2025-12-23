@@ -301,6 +301,32 @@ export interface BrandingFont {
     url: string;
 }
 
+export interface BrandingPhoneNotificationTemplateContent {
+    /**
+     * The body content of the phone notification template.
+     */
+    body: outputs.BrandingPhoneNotificationTemplateContentBody;
+    /**
+     * The sender phone number for SMS or voice notifications.
+     */
+    from?: string;
+    /**
+     * The syntax of the phone notification template.
+     */
+    syntax: string;
+}
+
+export interface BrandingPhoneNotificationTemplateContentBody {
+    /**
+     * The text content for SMS notifications.
+     */
+    text?: string;
+    /**
+     * The voice content for voice notifications.
+     */
+    voice?: string;
+}
+
 export interface BrandingThemeBorders {
     /**
      * Button border radius. Value needs to be between `1` and `10`. Defaults to `3.0`.
@@ -1560,6 +1586,17 @@ export interface ConnectionAuthentication {
 
 export interface ConnectionConnectedAccounts {
     active: boolean;
+}
+
+export interface ConnectionDirectoryMapping {
+    /**
+     * The field location in the Auth0 schema.
+     */
+    auth0: string;
+    /**
+     * The field location in the IDP schema.
+     */
+    idp: string;
 }
 
 export interface ConnectionOptions {
@@ -3041,6 +3078,32 @@ export interface GetBrandingFont {
     url: string;
 }
 
+export interface GetBrandingPhoneNotificationTemplateContent {
+    /**
+     * The body content of the phone notification template.
+     */
+    bodies: outputs.GetBrandingPhoneNotificationTemplateContentBody[];
+    /**
+     * The sender phone number for SMS or voice notifications.
+     */
+    from: string;
+    /**
+     * The syntax of the phone notification template.
+     */
+    syntax: string;
+}
+
+export interface GetBrandingPhoneNotificationTemplateContentBody {
+    /**
+     * The text content for SMS notifications.
+     */
+    text: string;
+    /**
+     * The voice content for voice notifications.
+     */
+    voice: string;
+}
+
 export interface GetBrandingThemeBorder {
     /**
      * Button border radius. Value needs to be between `1` and `10`. Defaults to `3.0`.
@@ -4518,6 +4581,28 @@ export interface GetConnectionConnectedAccount {
     active: boolean;
 }
 
+export interface GetConnectionDirectoryDefaultMappingMapping {
+    /**
+     * The field location in the Auth0 schema.
+     */
+    auth0: string;
+    /**
+     * The field location in the IDP schema.
+     */
+    idp: string;
+}
+
+export interface GetConnectionDirectoryMapping {
+    /**
+     * The field location in the Auth0 schema.
+     */
+    auth0: string;
+    /**
+     * The field location in the IDP schema.
+     */
+    idp: string;
+}
+
 export interface GetConnectionKeysKey {
     /**
      * The signing key algorithm.
@@ -5937,6 +6022,32 @@ export interface GetPagesLogin {
     html: string;
 }
 
+export interface GetPhoneNotificationTemplateContent {
+    /**
+     * The body content of the phone notification template.
+     */
+    bodies: outputs.GetPhoneNotificationTemplateContentBody[];
+    /**
+     * The sender phone number for SMS or voice notifications.
+     */
+    from: string;
+    /**
+     * The syntax of the phone notification template.
+     */
+    syntax: string;
+}
+
+export interface GetPhoneNotificationTemplateContentBody {
+    /**
+     * The text content for SMS notifications.
+     */
+    text: string;
+    /**
+     * The voice content for voice notifications.
+     */
+    voice: string;
+}
+
 export interface GetPhoneProviderConfiguration {
     /**
      * Default sender subject as "from" when no other value is specified.
@@ -7084,6 +7195,32 @@ export interface PagesLogin {
      * Customized content for the Login page. HTML format with supported [Liquid syntax](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
      */
     html: string;
+}
+
+export interface PhoneNotificationTemplateContent {
+    /**
+     * The body content of the phone notification template.
+     */
+    body: outputs.PhoneNotificationTemplateContentBody;
+    /**
+     * The sender phone number for SMS or voice notifications.
+     */
+    from?: string;
+    /**
+     * The syntax of the phone notification template.
+     */
+    syntax: string;
+}
+
+export interface PhoneNotificationTemplateContentBody {
+    /**
+     * The text content for SMS notifications.
+     */
+    text?: string;
+    /**
+     * The voice content for voice notifications.
+     */
+    voice?: string;
 }
 
 export interface PhoneProviderConfiguration {

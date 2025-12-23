@@ -9,6 +9,7 @@ import typing
 from .action import *
 from .attack_protection import *
 from .branding import *
+from .branding_phone_notification_template import *
 from .branding_theme import *
 from .client import *
 from .client_credentials import *
@@ -16,6 +17,7 @@ from .client_grant import *
 from .connection import *
 from .connection_client import *
 from .connection_clients import *
+from .connection_directory import *
 from .connection_keys import *
 from .connection_profile import *
 from .connection_scim_configuration import *
@@ -32,11 +34,14 @@ from .form import *
 from .get_action import *
 from .get_attack_protection import *
 from .get_branding import *
+from .get_branding_phone_notification_template import *
 from .get_branding_theme import *
 from .get_client import *
 from .get_client_grants import *
 from .get_clients import *
 from .get_connection import *
+from .get_connection_directory import *
+from .get_connection_directory_default_mapping import *
 from .get_connection_keys import *
 from .get_connection_profile import *
 from .get_connection_scim_configuration import *
@@ -50,6 +55,7 @@ from .get_network_acl import *
 from .get_organization import *
 from .get_outbound_ips import *
 from .get_pages import *
+from .get_phone_notification_template import *
 from .get_phone_provider import *
 from .get_prompt_screen_partials import *
 from .get_prompt_screen_renderer import *
@@ -76,6 +82,7 @@ from .organization_member_role import *
 from .organization_member_roles import *
 from .organization_members import *
 from .pages import *
+from .phone_notification_template import *
 from .phone_provider import *
 from .prompt import *
 from .prompt_custom_text import *
@@ -145,6 +152,14 @@ _utilities.register(
  },
  {
   "pkg": "auth0",
+  "mod": "index/brandingPhoneNotificationTemplate",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/brandingPhoneNotificationTemplate:BrandingPhoneNotificationTemplate": "BrandingPhoneNotificationTemplate"
+  }
+ },
+ {
+  "pkg": "auth0",
   "mod": "index/brandingTheme",
   "fqn": "pulumi_auth0",
   "classes": {
@@ -197,6 +212,14 @@ _utilities.register(
   "fqn": "pulumi_auth0",
   "classes": {
    "auth0:index/connectionClients:ConnectionClients": "ConnectionClients"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/connectionDirectory",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/connectionDirectory:ConnectionDirectory": "ConnectionDirectory"
   }
  },
  {
@@ -421,6 +444,14 @@ _utilities.register(
   "fqn": "pulumi_auth0",
   "classes": {
    "auth0:index/pages:Pages": "Pages"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/phoneNotificationTemplate",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/phoneNotificationTemplate:PhoneNotificationTemplate": "PhoneNotificationTemplate"
   }
  },
  {

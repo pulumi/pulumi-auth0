@@ -3404,6 +3404,339 @@ func (o BrandingFontPtrOutput) Url() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type BrandingPhoneNotificationTemplateContent struct {
+	// The body content of the phone notification template.
+	Body *BrandingPhoneNotificationTemplateContentBody `pulumi:"body"`
+	// The sender phone number for SMS or voice notifications.
+	From *string `pulumi:"from"`
+	// The syntax of the phone notification template.
+	Syntax *string `pulumi:"syntax"`
+}
+
+// BrandingPhoneNotificationTemplateContentInput is an input type that accepts BrandingPhoneNotificationTemplateContentArgs and BrandingPhoneNotificationTemplateContentOutput values.
+// You can construct a concrete instance of `BrandingPhoneNotificationTemplateContentInput` via:
+//
+//	BrandingPhoneNotificationTemplateContentArgs{...}
+type BrandingPhoneNotificationTemplateContentInput interface {
+	pulumi.Input
+
+	ToBrandingPhoneNotificationTemplateContentOutput() BrandingPhoneNotificationTemplateContentOutput
+	ToBrandingPhoneNotificationTemplateContentOutputWithContext(context.Context) BrandingPhoneNotificationTemplateContentOutput
+}
+
+type BrandingPhoneNotificationTemplateContentArgs struct {
+	// The body content of the phone notification template.
+	Body BrandingPhoneNotificationTemplateContentBodyPtrInput `pulumi:"body"`
+	// The sender phone number for SMS or voice notifications.
+	From pulumi.StringPtrInput `pulumi:"from"`
+	// The syntax of the phone notification template.
+	Syntax pulumi.StringPtrInput `pulumi:"syntax"`
+}
+
+func (BrandingPhoneNotificationTemplateContentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BrandingPhoneNotificationTemplateContent)(nil)).Elem()
+}
+
+func (i BrandingPhoneNotificationTemplateContentArgs) ToBrandingPhoneNotificationTemplateContentOutput() BrandingPhoneNotificationTemplateContentOutput {
+	return i.ToBrandingPhoneNotificationTemplateContentOutputWithContext(context.Background())
+}
+
+func (i BrandingPhoneNotificationTemplateContentArgs) ToBrandingPhoneNotificationTemplateContentOutputWithContext(ctx context.Context) BrandingPhoneNotificationTemplateContentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BrandingPhoneNotificationTemplateContentOutput)
+}
+
+func (i BrandingPhoneNotificationTemplateContentArgs) ToBrandingPhoneNotificationTemplateContentPtrOutput() BrandingPhoneNotificationTemplateContentPtrOutput {
+	return i.ToBrandingPhoneNotificationTemplateContentPtrOutputWithContext(context.Background())
+}
+
+func (i BrandingPhoneNotificationTemplateContentArgs) ToBrandingPhoneNotificationTemplateContentPtrOutputWithContext(ctx context.Context) BrandingPhoneNotificationTemplateContentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BrandingPhoneNotificationTemplateContentOutput).ToBrandingPhoneNotificationTemplateContentPtrOutputWithContext(ctx)
+}
+
+// BrandingPhoneNotificationTemplateContentPtrInput is an input type that accepts BrandingPhoneNotificationTemplateContentArgs, BrandingPhoneNotificationTemplateContentPtr and BrandingPhoneNotificationTemplateContentPtrOutput values.
+// You can construct a concrete instance of `BrandingPhoneNotificationTemplateContentPtrInput` via:
+//
+//	        BrandingPhoneNotificationTemplateContentArgs{...}
+//
+//	or:
+//
+//	        nil
+type BrandingPhoneNotificationTemplateContentPtrInput interface {
+	pulumi.Input
+
+	ToBrandingPhoneNotificationTemplateContentPtrOutput() BrandingPhoneNotificationTemplateContentPtrOutput
+	ToBrandingPhoneNotificationTemplateContentPtrOutputWithContext(context.Context) BrandingPhoneNotificationTemplateContentPtrOutput
+}
+
+type brandingPhoneNotificationTemplateContentPtrType BrandingPhoneNotificationTemplateContentArgs
+
+func BrandingPhoneNotificationTemplateContentPtr(v *BrandingPhoneNotificationTemplateContentArgs) BrandingPhoneNotificationTemplateContentPtrInput {
+	return (*brandingPhoneNotificationTemplateContentPtrType)(v)
+}
+
+func (*brandingPhoneNotificationTemplateContentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BrandingPhoneNotificationTemplateContent)(nil)).Elem()
+}
+
+func (i *brandingPhoneNotificationTemplateContentPtrType) ToBrandingPhoneNotificationTemplateContentPtrOutput() BrandingPhoneNotificationTemplateContentPtrOutput {
+	return i.ToBrandingPhoneNotificationTemplateContentPtrOutputWithContext(context.Background())
+}
+
+func (i *brandingPhoneNotificationTemplateContentPtrType) ToBrandingPhoneNotificationTemplateContentPtrOutputWithContext(ctx context.Context) BrandingPhoneNotificationTemplateContentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BrandingPhoneNotificationTemplateContentPtrOutput)
+}
+
+type BrandingPhoneNotificationTemplateContentOutput struct{ *pulumi.OutputState }
+
+func (BrandingPhoneNotificationTemplateContentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BrandingPhoneNotificationTemplateContent)(nil)).Elem()
+}
+
+func (o BrandingPhoneNotificationTemplateContentOutput) ToBrandingPhoneNotificationTemplateContentOutput() BrandingPhoneNotificationTemplateContentOutput {
+	return o
+}
+
+func (o BrandingPhoneNotificationTemplateContentOutput) ToBrandingPhoneNotificationTemplateContentOutputWithContext(ctx context.Context) BrandingPhoneNotificationTemplateContentOutput {
+	return o
+}
+
+func (o BrandingPhoneNotificationTemplateContentOutput) ToBrandingPhoneNotificationTemplateContentPtrOutput() BrandingPhoneNotificationTemplateContentPtrOutput {
+	return o.ToBrandingPhoneNotificationTemplateContentPtrOutputWithContext(context.Background())
+}
+
+func (o BrandingPhoneNotificationTemplateContentOutput) ToBrandingPhoneNotificationTemplateContentPtrOutputWithContext(ctx context.Context) BrandingPhoneNotificationTemplateContentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BrandingPhoneNotificationTemplateContent) *BrandingPhoneNotificationTemplateContent {
+		return &v
+	}).(BrandingPhoneNotificationTemplateContentPtrOutput)
+}
+
+// The body content of the phone notification template.
+func (o BrandingPhoneNotificationTemplateContentOutput) Body() BrandingPhoneNotificationTemplateContentBodyPtrOutput {
+	return o.ApplyT(func(v BrandingPhoneNotificationTemplateContent) *BrandingPhoneNotificationTemplateContentBody {
+		return v.Body
+	}).(BrandingPhoneNotificationTemplateContentBodyPtrOutput)
+}
+
+// The sender phone number for SMS or voice notifications.
+func (o BrandingPhoneNotificationTemplateContentOutput) From() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BrandingPhoneNotificationTemplateContent) *string { return v.From }).(pulumi.StringPtrOutput)
+}
+
+// The syntax of the phone notification template.
+func (o BrandingPhoneNotificationTemplateContentOutput) Syntax() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BrandingPhoneNotificationTemplateContent) *string { return v.Syntax }).(pulumi.StringPtrOutput)
+}
+
+type BrandingPhoneNotificationTemplateContentPtrOutput struct{ *pulumi.OutputState }
+
+func (BrandingPhoneNotificationTemplateContentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BrandingPhoneNotificationTemplateContent)(nil)).Elem()
+}
+
+func (o BrandingPhoneNotificationTemplateContentPtrOutput) ToBrandingPhoneNotificationTemplateContentPtrOutput() BrandingPhoneNotificationTemplateContentPtrOutput {
+	return o
+}
+
+func (o BrandingPhoneNotificationTemplateContentPtrOutput) ToBrandingPhoneNotificationTemplateContentPtrOutputWithContext(ctx context.Context) BrandingPhoneNotificationTemplateContentPtrOutput {
+	return o
+}
+
+func (o BrandingPhoneNotificationTemplateContentPtrOutput) Elem() BrandingPhoneNotificationTemplateContentOutput {
+	return o.ApplyT(func(v *BrandingPhoneNotificationTemplateContent) BrandingPhoneNotificationTemplateContent {
+		if v != nil {
+			return *v
+		}
+		var ret BrandingPhoneNotificationTemplateContent
+		return ret
+	}).(BrandingPhoneNotificationTemplateContentOutput)
+}
+
+// The body content of the phone notification template.
+func (o BrandingPhoneNotificationTemplateContentPtrOutput) Body() BrandingPhoneNotificationTemplateContentBodyPtrOutput {
+	return o.ApplyT(func(v *BrandingPhoneNotificationTemplateContent) *BrandingPhoneNotificationTemplateContentBody {
+		if v == nil {
+			return nil
+		}
+		return v.Body
+	}).(BrandingPhoneNotificationTemplateContentBodyPtrOutput)
+}
+
+// The sender phone number for SMS or voice notifications.
+func (o BrandingPhoneNotificationTemplateContentPtrOutput) From() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BrandingPhoneNotificationTemplateContent) *string {
+		if v == nil {
+			return nil
+		}
+		return v.From
+	}).(pulumi.StringPtrOutput)
+}
+
+// The syntax of the phone notification template.
+func (o BrandingPhoneNotificationTemplateContentPtrOutput) Syntax() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BrandingPhoneNotificationTemplateContent) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Syntax
+	}).(pulumi.StringPtrOutput)
+}
+
+type BrandingPhoneNotificationTemplateContentBody struct {
+	// The text content for SMS notifications.
+	Text *string `pulumi:"text"`
+	// The voice content for voice notifications.
+	Voice *string `pulumi:"voice"`
+}
+
+// BrandingPhoneNotificationTemplateContentBodyInput is an input type that accepts BrandingPhoneNotificationTemplateContentBodyArgs and BrandingPhoneNotificationTemplateContentBodyOutput values.
+// You can construct a concrete instance of `BrandingPhoneNotificationTemplateContentBodyInput` via:
+//
+//	BrandingPhoneNotificationTemplateContentBodyArgs{...}
+type BrandingPhoneNotificationTemplateContentBodyInput interface {
+	pulumi.Input
+
+	ToBrandingPhoneNotificationTemplateContentBodyOutput() BrandingPhoneNotificationTemplateContentBodyOutput
+	ToBrandingPhoneNotificationTemplateContentBodyOutputWithContext(context.Context) BrandingPhoneNotificationTemplateContentBodyOutput
+}
+
+type BrandingPhoneNotificationTemplateContentBodyArgs struct {
+	// The text content for SMS notifications.
+	Text pulumi.StringPtrInput `pulumi:"text"`
+	// The voice content for voice notifications.
+	Voice pulumi.StringPtrInput `pulumi:"voice"`
+}
+
+func (BrandingPhoneNotificationTemplateContentBodyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BrandingPhoneNotificationTemplateContentBody)(nil)).Elem()
+}
+
+func (i BrandingPhoneNotificationTemplateContentBodyArgs) ToBrandingPhoneNotificationTemplateContentBodyOutput() BrandingPhoneNotificationTemplateContentBodyOutput {
+	return i.ToBrandingPhoneNotificationTemplateContentBodyOutputWithContext(context.Background())
+}
+
+func (i BrandingPhoneNotificationTemplateContentBodyArgs) ToBrandingPhoneNotificationTemplateContentBodyOutputWithContext(ctx context.Context) BrandingPhoneNotificationTemplateContentBodyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BrandingPhoneNotificationTemplateContentBodyOutput)
+}
+
+func (i BrandingPhoneNotificationTemplateContentBodyArgs) ToBrandingPhoneNotificationTemplateContentBodyPtrOutput() BrandingPhoneNotificationTemplateContentBodyPtrOutput {
+	return i.ToBrandingPhoneNotificationTemplateContentBodyPtrOutputWithContext(context.Background())
+}
+
+func (i BrandingPhoneNotificationTemplateContentBodyArgs) ToBrandingPhoneNotificationTemplateContentBodyPtrOutputWithContext(ctx context.Context) BrandingPhoneNotificationTemplateContentBodyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BrandingPhoneNotificationTemplateContentBodyOutput).ToBrandingPhoneNotificationTemplateContentBodyPtrOutputWithContext(ctx)
+}
+
+// BrandingPhoneNotificationTemplateContentBodyPtrInput is an input type that accepts BrandingPhoneNotificationTemplateContentBodyArgs, BrandingPhoneNotificationTemplateContentBodyPtr and BrandingPhoneNotificationTemplateContentBodyPtrOutput values.
+// You can construct a concrete instance of `BrandingPhoneNotificationTemplateContentBodyPtrInput` via:
+//
+//	        BrandingPhoneNotificationTemplateContentBodyArgs{...}
+//
+//	or:
+//
+//	        nil
+type BrandingPhoneNotificationTemplateContentBodyPtrInput interface {
+	pulumi.Input
+
+	ToBrandingPhoneNotificationTemplateContentBodyPtrOutput() BrandingPhoneNotificationTemplateContentBodyPtrOutput
+	ToBrandingPhoneNotificationTemplateContentBodyPtrOutputWithContext(context.Context) BrandingPhoneNotificationTemplateContentBodyPtrOutput
+}
+
+type brandingPhoneNotificationTemplateContentBodyPtrType BrandingPhoneNotificationTemplateContentBodyArgs
+
+func BrandingPhoneNotificationTemplateContentBodyPtr(v *BrandingPhoneNotificationTemplateContentBodyArgs) BrandingPhoneNotificationTemplateContentBodyPtrInput {
+	return (*brandingPhoneNotificationTemplateContentBodyPtrType)(v)
+}
+
+func (*brandingPhoneNotificationTemplateContentBodyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BrandingPhoneNotificationTemplateContentBody)(nil)).Elem()
+}
+
+func (i *brandingPhoneNotificationTemplateContentBodyPtrType) ToBrandingPhoneNotificationTemplateContentBodyPtrOutput() BrandingPhoneNotificationTemplateContentBodyPtrOutput {
+	return i.ToBrandingPhoneNotificationTemplateContentBodyPtrOutputWithContext(context.Background())
+}
+
+func (i *brandingPhoneNotificationTemplateContentBodyPtrType) ToBrandingPhoneNotificationTemplateContentBodyPtrOutputWithContext(ctx context.Context) BrandingPhoneNotificationTemplateContentBodyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BrandingPhoneNotificationTemplateContentBodyPtrOutput)
+}
+
+type BrandingPhoneNotificationTemplateContentBodyOutput struct{ *pulumi.OutputState }
+
+func (BrandingPhoneNotificationTemplateContentBodyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BrandingPhoneNotificationTemplateContentBody)(nil)).Elem()
+}
+
+func (o BrandingPhoneNotificationTemplateContentBodyOutput) ToBrandingPhoneNotificationTemplateContentBodyOutput() BrandingPhoneNotificationTemplateContentBodyOutput {
+	return o
+}
+
+func (o BrandingPhoneNotificationTemplateContentBodyOutput) ToBrandingPhoneNotificationTemplateContentBodyOutputWithContext(ctx context.Context) BrandingPhoneNotificationTemplateContentBodyOutput {
+	return o
+}
+
+func (o BrandingPhoneNotificationTemplateContentBodyOutput) ToBrandingPhoneNotificationTemplateContentBodyPtrOutput() BrandingPhoneNotificationTemplateContentBodyPtrOutput {
+	return o.ToBrandingPhoneNotificationTemplateContentBodyPtrOutputWithContext(context.Background())
+}
+
+func (o BrandingPhoneNotificationTemplateContentBodyOutput) ToBrandingPhoneNotificationTemplateContentBodyPtrOutputWithContext(ctx context.Context) BrandingPhoneNotificationTemplateContentBodyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BrandingPhoneNotificationTemplateContentBody) *BrandingPhoneNotificationTemplateContentBody {
+		return &v
+	}).(BrandingPhoneNotificationTemplateContentBodyPtrOutput)
+}
+
+// The text content for SMS notifications.
+func (o BrandingPhoneNotificationTemplateContentBodyOutput) Text() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BrandingPhoneNotificationTemplateContentBody) *string { return v.Text }).(pulumi.StringPtrOutput)
+}
+
+// The voice content for voice notifications.
+func (o BrandingPhoneNotificationTemplateContentBodyOutput) Voice() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BrandingPhoneNotificationTemplateContentBody) *string { return v.Voice }).(pulumi.StringPtrOutput)
+}
+
+type BrandingPhoneNotificationTemplateContentBodyPtrOutput struct{ *pulumi.OutputState }
+
+func (BrandingPhoneNotificationTemplateContentBodyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BrandingPhoneNotificationTemplateContentBody)(nil)).Elem()
+}
+
+func (o BrandingPhoneNotificationTemplateContentBodyPtrOutput) ToBrandingPhoneNotificationTemplateContentBodyPtrOutput() BrandingPhoneNotificationTemplateContentBodyPtrOutput {
+	return o
+}
+
+func (o BrandingPhoneNotificationTemplateContentBodyPtrOutput) ToBrandingPhoneNotificationTemplateContentBodyPtrOutputWithContext(ctx context.Context) BrandingPhoneNotificationTemplateContentBodyPtrOutput {
+	return o
+}
+
+func (o BrandingPhoneNotificationTemplateContentBodyPtrOutput) Elem() BrandingPhoneNotificationTemplateContentBodyOutput {
+	return o.ApplyT(func(v *BrandingPhoneNotificationTemplateContentBody) BrandingPhoneNotificationTemplateContentBody {
+		if v != nil {
+			return *v
+		}
+		var ret BrandingPhoneNotificationTemplateContentBody
+		return ret
+	}).(BrandingPhoneNotificationTemplateContentBodyOutput)
+}
+
+// The text content for SMS notifications.
+func (o BrandingPhoneNotificationTemplateContentBodyPtrOutput) Text() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BrandingPhoneNotificationTemplateContentBody) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Text
+	}).(pulumi.StringPtrOutput)
+}
+
+// The voice content for voice notifications.
+func (o BrandingPhoneNotificationTemplateContentBodyPtrOutput) Voice() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BrandingPhoneNotificationTemplateContentBody) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Voice
+	}).(pulumi.StringPtrOutput)
+}
+
 type BrandingThemeBorders struct {
 	// Button border radius. Value needs to be between `1` and `10`. Defaults to `3.0`.
 	ButtonBorderRadius *float64 `pulumi:"buttonBorderRadius"`
@@ -16445,6 +16778,112 @@ func (o ConnectionConnectedAccountsPtrOutput) Active() pulumi.BoolPtrOutput {
 		}
 		return &v.Active
 	}).(pulumi.BoolPtrOutput)
+}
+
+type ConnectionDirectoryMapping struct {
+	// The field location in the Auth0 schema.
+	Auth0 string `pulumi:"auth0"`
+	// The field location in the IDP schema.
+	Idp string `pulumi:"idp"`
+}
+
+// ConnectionDirectoryMappingInput is an input type that accepts ConnectionDirectoryMappingArgs and ConnectionDirectoryMappingOutput values.
+// You can construct a concrete instance of `ConnectionDirectoryMappingInput` via:
+//
+//	ConnectionDirectoryMappingArgs{...}
+type ConnectionDirectoryMappingInput interface {
+	pulumi.Input
+
+	ToConnectionDirectoryMappingOutput() ConnectionDirectoryMappingOutput
+	ToConnectionDirectoryMappingOutputWithContext(context.Context) ConnectionDirectoryMappingOutput
+}
+
+type ConnectionDirectoryMappingArgs struct {
+	// The field location in the Auth0 schema.
+	Auth0 pulumi.StringInput `pulumi:"auth0"`
+	// The field location in the IDP schema.
+	Idp pulumi.StringInput `pulumi:"idp"`
+}
+
+func (ConnectionDirectoryMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionDirectoryMapping)(nil)).Elem()
+}
+
+func (i ConnectionDirectoryMappingArgs) ToConnectionDirectoryMappingOutput() ConnectionDirectoryMappingOutput {
+	return i.ToConnectionDirectoryMappingOutputWithContext(context.Background())
+}
+
+func (i ConnectionDirectoryMappingArgs) ToConnectionDirectoryMappingOutputWithContext(ctx context.Context) ConnectionDirectoryMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionDirectoryMappingOutput)
+}
+
+// ConnectionDirectoryMappingArrayInput is an input type that accepts ConnectionDirectoryMappingArray and ConnectionDirectoryMappingArrayOutput values.
+// You can construct a concrete instance of `ConnectionDirectoryMappingArrayInput` via:
+//
+//	ConnectionDirectoryMappingArray{ ConnectionDirectoryMappingArgs{...} }
+type ConnectionDirectoryMappingArrayInput interface {
+	pulumi.Input
+
+	ToConnectionDirectoryMappingArrayOutput() ConnectionDirectoryMappingArrayOutput
+	ToConnectionDirectoryMappingArrayOutputWithContext(context.Context) ConnectionDirectoryMappingArrayOutput
+}
+
+type ConnectionDirectoryMappingArray []ConnectionDirectoryMappingInput
+
+func (ConnectionDirectoryMappingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectionDirectoryMapping)(nil)).Elem()
+}
+
+func (i ConnectionDirectoryMappingArray) ToConnectionDirectoryMappingArrayOutput() ConnectionDirectoryMappingArrayOutput {
+	return i.ToConnectionDirectoryMappingArrayOutputWithContext(context.Background())
+}
+
+func (i ConnectionDirectoryMappingArray) ToConnectionDirectoryMappingArrayOutputWithContext(ctx context.Context) ConnectionDirectoryMappingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionDirectoryMappingArrayOutput)
+}
+
+type ConnectionDirectoryMappingOutput struct{ *pulumi.OutputState }
+
+func (ConnectionDirectoryMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionDirectoryMapping)(nil)).Elem()
+}
+
+func (o ConnectionDirectoryMappingOutput) ToConnectionDirectoryMappingOutput() ConnectionDirectoryMappingOutput {
+	return o
+}
+
+func (o ConnectionDirectoryMappingOutput) ToConnectionDirectoryMappingOutputWithContext(ctx context.Context) ConnectionDirectoryMappingOutput {
+	return o
+}
+
+// The field location in the Auth0 schema.
+func (o ConnectionDirectoryMappingOutput) Auth0() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionDirectoryMapping) string { return v.Auth0 }).(pulumi.StringOutput)
+}
+
+// The field location in the IDP schema.
+func (o ConnectionDirectoryMappingOutput) Idp() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionDirectoryMapping) string { return v.Idp }).(pulumi.StringOutput)
+}
+
+type ConnectionDirectoryMappingArrayOutput struct{ *pulumi.OutputState }
+
+func (ConnectionDirectoryMappingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectionDirectoryMapping)(nil)).Elem()
+}
+
+func (o ConnectionDirectoryMappingArrayOutput) ToConnectionDirectoryMappingArrayOutput() ConnectionDirectoryMappingArrayOutput {
+	return o
+}
+
+func (o ConnectionDirectoryMappingArrayOutput) ToConnectionDirectoryMappingArrayOutputWithContext(ctx context.Context) ConnectionDirectoryMappingArrayOutput {
+	return o
+}
+
+func (o ConnectionDirectoryMappingArrayOutput) Index(i pulumi.IntInput) ConnectionDirectoryMappingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionDirectoryMapping {
+		return vs[0].([]ConnectionDirectoryMapping)[vs[1].(int)]
+	}).(ConnectionDirectoryMappingOutput)
 }
 
 type ConnectionOptions struct {
@@ -33002,6 +33441,337 @@ func (o PagesLoginPtrOutput) Html() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type PhoneNotificationTemplateContent struct {
+	// The body content of the phone notification template.
+	Body *PhoneNotificationTemplateContentBody `pulumi:"body"`
+	// The sender phone number for SMS or voice notifications.
+	From *string `pulumi:"from"`
+	// The syntax of the phone notification template.
+	Syntax *string `pulumi:"syntax"`
+}
+
+// PhoneNotificationTemplateContentInput is an input type that accepts PhoneNotificationTemplateContentArgs and PhoneNotificationTemplateContentOutput values.
+// You can construct a concrete instance of `PhoneNotificationTemplateContentInput` via:
+//
+//	PhoneNotificationTemplateContentArgs{...}
+type PhoneNotificationTemplateContentInput interface {
+	pulumi.Input
+
+	ToPhoneNotificationTemplateContentOutput() PhoneNotificationTemplateContentOutput
+	ToPhoneNotificationTemplateContentOutputWithContext(context.Context) PhoneNotificationTemplateContentOutput
+}
+
+type PhoneNotificationTemplateContentArgs struct {
+	// The body content of the phone notification template.
+	Body PhoneNotificationTemplateContentBodyPtrInput `pulumi:"body"`
+	// The sender phone number for SMS or voice notifications.
+	From pulumi.StringPtrInput `pulumi:"from"`
+	// The syntax of the phone notification template.
+	Syntax pulumi.StringPtrInput `pulumi:"syntax"`
+}
+
+func (PhoneNotificationTemplateContentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PhoneNotificationTemplateContent)(nil)).Elem()
+}
+
+func (i PhoneNotificationTemplateContentArgs) ToPhoneNotificationTemplateContentOutput() PhoneNotificationTemplateContentOutput {
+	return i.ToPhoneNotificationTemplateContentOutputWithContext(context.Background())
+}
+
+func (i PhoneNotificationTemplateContentArgs) ToPhoneNotificationTemplateContentOutputWithContext(ctx context.Context) PhoneNotificationTemplateContentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PhoneNotificationTemplateContentOutput)
+}
+
+func (i PhoneNotificationTemplateContentArgs) ToPhoneNotificationTemplateContentPtrOutput() PhoneNotificationTemplateContentPtrOutput {
+	return i.ToPhoneNotificationTemplateContentPtrOutputWithContext(context.Background())
+}
+
+func (i PhoneNotificationTemplateContentArgs) ToPhoneNotificationTemplateContentPtrOutputWithContext(ctx context.Context) PhoneNotificationTemplateContentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PhoneNotificationTemplateContentOutput).ToPhoneNotificationTemplateContentPtrOutputWithContext(ctx)
+}
+
+// PhoneNotificationTemplateContentPtrInput is an input type that accepts PhoneNotificationTemplateContentArgs, PhoneNotificationTemplateContentPtr and PhoneNotificationTemplateContentPtrOutput values.
+// You can construct a concrete instance of `PhoneNotificationTemplateContentPtrInput` via:
+//
+//	        PhoneNotificationTemplateContentArgs{...}
+//
+//	or:
+//
+//	        nil
+type PhoneNotificationTemplateContentPtrInput interface {
+	pulumi.Input
+
+	ToPhoneNotificationTemplateContentPtrOutput() PhoneNotificationTemplateContentPtrOutput
+	ToPhoneNotificationTemplateContentPtrOutputWithContext(context.Context) PhoneNotificationTemplateContentPtrOutput
+}
+
+type phoneNotificationTemplateContentPtrType PhoneNotificationTemplateContentArgs
+
+func PhoneNotificationTemplateContentPtr(v *PhoneNotificationTemplateContentArgs) PhoneNotificationTemplateContentPtrInput {
+	return (*phoneNotificationTemplateContentPtrType)(v)
+}
+
+func (*phoneNotificationTemplateContentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PhoneNotificationTemplateContent)(nil)).Elem()
+}
+
+func (i *phoneNotificationTemplateContentPtrType) ToPhoneNotificationTemplateContentPtrOutput() PhoneNotificationTemplateContentPtrOutput {
+	return i.ToPhoneNotificationTemplateContentPtrOutputWithContext(context.Background())
+}
+
+func (i *phoneNotificationTemplateContentPtrType) ToPhoneNotificationTemplateContentPtrOutputWithContext(ctx context.Context) PhoneNotificationTemplateContentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PhoneNotificationTemplateContentPtrOutput)
+}
+
+type PhoneNotificationTemplateContentOutput struct{ *pulumi.OutputState }
+
+func (PhoneNotificationTemplateContentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PhoneNotificationTemplateContent)(nil)).Elem()
+}
+
+func (o PhoneNotificationTemplateContentOutput) ToPhoneNotificationTemplateContentOutput() PhoneNotificationTemplateContentOutput {
+	return o
+}
+
+func (o PhoneNotificationTemplateContentOutput) ToPhoneNotificationTemplateContentOutputWithContext(ctx context.Context) PhoneNotificationTemplateContentOutput {
+	return o
+}
+
+func (o PhoneNotificationTemplateContentOutput) ToPhoneNotificationTemplateContentPtrOutput() PhoneNotificationTemplateContentPtrOutput {
+	return o.ToPhoneNotificationTemplateContentPtrOutputWithContext(context.Background())
+}
+
+func (o PhoneNotificationTemplateContentOutput) ToPhoneNotificationTemplateContentPtrOutputWithContext(ctx context.Context) PhoneNotificationTemplateContentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PhoneNotificationTemplateContent) *PhoneNotificationTemplateContent {
+		return &v
+	}).(PhoneNotificationTemplateContentPtrOutput)
+}
+
+// The body content of the phone notification template.
+func (o PhoneNotificationTemplateContentOutput) Body() PhoneNotificationTemplateContentBodyPtrOutput {
+	return o.ApplyT(func(v PhoneNotificationTemplateContent) *PhoneNotificationTemplateContentBody { return v.Body }).(PhoneNotificationTemplateContentBodyPtrOutput)
+}
+
+// The sender phone number for SMS or voice notifications.
+func (o PhoneNotificationTemplateContentOutput) From() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PhoneNotificationTemplateContent) *string { return v.From }).(pulumi.StringPtrOutput)
+}
+
+// The syntax of the phone notification template.
+func (o PhoneNotificationTemplateContentOutput) Syntax() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PhoneNotificationTemplateContent) *string { return v.Syntax }).(pulumi.StringPtrOutput)
+}
+
+type PhoneNotificationTemplateContentPtrOutput struct{ *pulumi.OutputState }
+
+func (PhoneNotificationTemplateContentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PhoneNotificationTemplateContent)(nil)).Elem()
+}
+
+func (o PhoneNotificationTemplateContentPtrOutput) ToPhoneNotificationTemplateContentPtrOutput() PhoneNotificationTemplateContentPtrOutput {
+	return o
+}
+
+func (o PhoneNotificationTemplateContentPtrOutput) ToPhoneNotificationTemplateContentPtrOutputWithContext(ctx context.Context) PhoneNotificationTemplateContentPtrOutput {
+	return o
+}
+
+func (o PhoneNotificationTemplateContentPtrOutput) Elem() PhoneNotificationTemplateContentOutput {
+	return o.ApplyT(func(v *PhoneNotificationTemplateContent) PhoneNotificationTemplateContent {
+		if v != nil {
+			return *v
+		}
+		var ret PhoneNotificationTemplateContent
+		return ret
+	}).(PhoneNotificationTemplateContentOutput)
+}
+
+// The body content of the phone notification template.
+func (o PhoneNotificationTemplateContentPtrOutput) Body() PhoneNotificationTemplateContentBodyPtrOutput {
+	return o.ApplyT(func(v *PhoneNotificationTemplateContent) *PhoneNotificationTemplateContentBody {
+		if v == nil {
+			return nil
+		}
+		return v.Body
+	}).(PhoneNotificationTemplateContentBodyPtrOutput)
+}
+
+// The sender phone number for SMS or voice notifications.
+func (o PhoneNotificationTemplateContentPtrOutput) From() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PhoneNotificationTemplateContent) *string {
+		if v == nil {
+			return nil
+		}
+		return v.From
+	}).(pulumi.StringPtrOutput)
+}
+
+// The syntax of the phone notification template.
+func (o PhoneNotificationTemplateContentPtrOutput) Syntax() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PhoneNotificationTemplateContent) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Syntax
+	}).(pulumi.StringPtrOutput)
+}
+
+type PhoneNotificationTemplateContentBody struct {
+	// The text content for SMS notifications.
+	Text *string `pulumi:"text"`
+	// The voice content for voice notifications.
+	Voice *string `pulumi:"voice"`
+}
+
+// PhoneNotificationTemplateContentBodyInput is an input type that accepts PhoneNotificationTemplateContentBodyArgs and PhoneNotificationTemplateContentBodyOutput values.
+// You can construct a concrete instance of `PhoneNotificationTemplateContentBodyInput` via:
+//
+//	PhoneNotificationTemplateContentBodyArgs{...}
+type PhoneNotificationTemplateContentBodyInput interface {
+	pulumi.Input
+
+	ToPhoneNotificationTemplateContentBodyOutput() PhoneNotificationTemplateContentBodyOutput
+	ToPhoneNotificationTemplateContentBodyOutputWithContext(context.Context) PhoneNotificationTemplateContentBodyOutput
+}
+
+type PhoneNotificationTemplateContentBodyArgs struct {
+	// The text content for SMS notifications.
+	Text pulumi.StringPtrInput `pulumi:"text"`
+	// The voice content for voice notifications.
+	Voice pulumi.StringPtrInput `pulumi:"voice"`
+}
+
+func (PhoneNotificationTemplateContentBodyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PhoneNotificationTemplateContentBody)(nil)).Elem()
+}
+
+func (i PhoneNotificationTemplateContentBodyArgs) ToPhoneNotificationTemplateContentBodyOutput() PhoneNotificationTemplateContentBodyOutput {
+	return i.ToPhoneNotificationTemplateContentBodyOutputWithContext(context.Background())
+}
+
+func (i PhoneNotificationTemplateContentBodyArgs) ToPhoneNotificationTemplateContentBodyOutputWithContext(ctx context.Context) PhoneNotificationTemplateContentBodyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PhoneNotificationTemplateContentBodyOutput)
+}
+
+func (i PhoneNotificationTemplateContentBodyArgs) ToPhoneNotificationTemplateContentBodyPtrOutput() PhoneNotificationTemplateContentBodyPtrOutput {
+	return i.ToPhoneNotificationTemplateContentBodyPtrOutputWithContext(context.Background())
+}
+
+func (i PhoneNotificationTemplateContentBodyArgs) ToPhoneNotificationTemplateContentBodyPtrOutputWithContext(ctx context.Context) PhoneNotificationTemplateContentBodyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PhoneNotificationTemplateContentBodyOutput).ToPhoneNotificationTemplateContentBodyPtrOutputWithContext(ctx)
+}
+
+// PhoneNotificationTemplateContentBodyPtrInput is an input type that accepts PhoneNotificationTemplateContentBodyArgs, PhoneNotificationTemplateContentBodyPtr and PhoneNotificationTemplateContentBodyPtrOutput values.
+// You can construct a concrete instance of `PhoneNotificationTemplateContentBodyPtrInput` via:
+//
+//	        PhoneNotificationTemplateContentBodyArgs{...}
+//
+//	or:
+//
+//	        nil
+type PhoneNotificationTemplateContentBodyPtrInput interface {
+	pulumi.Input
+
+	ToPhoneNotificationTemplateContentBodyPtrOutput() PhoneNotificationTemplateContentBodyPtrOutput
+	ToPhoneNotificationTemplateContentBodyPtrOutputWithContext(context.Context) PhoneNotificationTemplateContentBodyPtrOutput
+}
+
+type phoneNotificationTemplateContentBodyPtrType PhoneNotificationTemplateContentBodyArgs
+
+func PhoneNotificationTemplateContentBodyPtr(v *PhoneNotificationTemplateContentBodyArgs) PhoneNotificationTemplateContentBodyPtrInput {
+	return (*phoneNotificationTemplateContentBodyPtrType)(v)
+}
+
+func (*phoneNotificationTemplateContentBodyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PhoneNotificationTemplateContentBody)(nil)).Elem()
+}
+
+func (i *phoneNotificationTemplateContentBodyPtrType) ToPhoneNotificationTemplateContentBodyPtrOutput() PhoneNotificationTemplateContentBodyPtrOutput {
+	return i.ToPhoneNotificationTemplateContentBodyPtrOutputWithContext(context.Background())
+}
+
+func (i *phoneNotificationTemplateContentBodyPtrType) ToPhoneNotificationTemplateContentBodyPtrOutputWithContext(ctx context.Context) PhoneNotificationTemplateContentBodyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PhoneNotificationTemplateContentBodyPtrOutput)
+}
+
+type PhoneNotificationTemplateContentBodyOutput struct{ *pulumi.OutputState }
+
+func (PhoneNotificationTemplateContentBodyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PhoneNotificationTemplateContentBody)(nil)).Elem()
+}
+
+func (o PhoneNotificationTemplateContentBodyOutput) ToPhoneNotificationTemplateContentBodyOutput() PhoneNotificationTemplateContentBodyOutput {
+	return o
+}
+
+func (o PhoneNotificationTemplateContentBodyOutput) ToPhoneNotificationTemplateContentBodyOutputWithContext(ctx context.Context) PhoneNotificationTemplateContentBodyOutput {
+	return o
+}
+
+func (o PhoneNotificationTemplateContentBodyOutput) ToPhoneNotificationTemplateContentBodyPtrOutput() PhoneNotificationTemplateContentBodyPtrOutput {
+	return o.ToPhoneNotificationTemplateContentBodyPtrOutputWithContext(context.Background())
+}
+
+func (o PhoneNotificationTemplateContentBodyOutput) ToPhoneNotificationTemplateContentBodyPtrOutputWithContext(ctx context.Context) PhoneNotificationTemplateContentBodyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PhoneNotificationTemplateContentBody) *PhoneNotificationTemplateContentBody {
+		return &v
+	}).(PhoneNotificationTemplateContentBodyPtrOutput)
+}
+
+// The text content for SMS notifications.
+func (o PhoneNotificationTemplateContentBodyOutput) Text() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PhoneNotificationTemplateContentBody) *string { return v.Text }).(pulumi.StringPtrOutput)
+}
+
+// The voice content for voice notifications.
+func (o PhoneNotificationTemplateContentBodyOutput) Voice() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PhoneNotificationTemplateContentBody) *string { return v.Voice }).(pulumi.StringPtrOutput)
+}
+
+type PhoneNotificationTemplateContentBodyPtrOutput struct{ *pulumi.OutputState }
+
+func (PhoneNotificationTemplateContentBodyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PhoneNotificationTemplateContentBody)(nil)).Elem()
+}
+
+func (o PhoneNotificationTemplateContentBodyPtrOutput) ToPhoneNotificationTemplateContentBodyPtrOutput() PhoneNotificationTemplateContentBodyPtrOutput {
+	return o
+}
+
+func (o PhoneNotificationTemplateContentBodyPtrOutput) ToPhoneNotificationTemplateContentBodyPtrOutputWithContext(ctx context.Context) PhoneNotificationTemplateContentBodyPtrOutput {
+	return o
+}
+
+func (o PhoneNotificationTemplateContentBodyPtrOutput) Elem() PhoneNotificationTemplateContentBodyOutput {
+	return o.ApplyT(func(v *PhoneNotificationTemplateContentBody) PhoneNotificationTemplateContentBody {
+		if v != nil {
+			return *v
+		}
+		var ret PhoneNotificationTemplateContentBody
+		return ret
+	}).(PhoneNotificationTemplateContentBodyOutput)
+}
+
+// The text content for SMS notifications.
+func (o PhoneNotificationTemplateContentBodyPtrOutput) Text() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PhoneNotificationTemplateContentBody) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Text
+	}).(pulumi.StringPtrOutput)
+}
+
+// The voice content for voice notifications.
+func (o PhoneNotificationTemplateContentBodyPtrOutput) Voice() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PhoneNotificationTemplateContentBody) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Voice
+	}).(pulumi.StringPtrOutput)
+}
+
 type PhoneProviderConfiguration struct {
 	// Default sender subject as "from" when no other value is specified.
 	DefaultFrom *string `pulumi:"defaultFrom"`
@@ -41302,6 +42072,229 @@ func (o GetBrandingFontArrayOutput) Index(i pulumi.IntInput) GetBrandingFontOutp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBrandingFont {
 		return vs[0].([]GetBrandingFont)[vs[1].(int)]
 	}).(GetBrandingFontOutput)
+}
+
+type GetBrandingPhoneNotificationTemplateContent struct {
+	// The body content of the phone notification template.
+	Bodies []GetBrandingPhoneNotificationTemplateContentBody `pulumi:"bodies"`
+	// The sender phone number for SMS or voice notifications.
+	From string `pulumi:"from"`
+	// The syntax of the phone notification template.
+	Syntax string `pulumi:"syntax"`
+}
+
+// GetBrandingPhoneNotificationTemplateContentInput is an input type that accepts GetBrandingPhoneNotificationTemplateContentArgs and GetBrandingPhoneNotificationTemplateContentOutput values.
+// You can construct a concrete instance of `GetBrandingPhoneNotificationTemplateContentInput` via:
+//
+//	GetBrandingPhoneNotificationTemplateContentArgs{...}
+type GetBrandingPhoneNotificationTemplateContentInput interface {
+	pulumi.Input
+
+	ToGetBrandingPhoneNotificationTemplateContentOutput() GetBrandingPhoneNotificationTemplateContentOutput
+	ToGetBrandingPhoneNotificationTemplateContentOutputWithContext(context.Context) GetBrandingPhoneNotificationTemplateContentOutput
+}
+
+type GetBrandingPhoneNotificationTemplateContentArgs struct {
+	// The body content of the phone notification template.
+	Bodies GetBrandingPhoneNotificationTemplateContentBodyArrayInput `pulumi:"bodies"`
+	// The sender phone number for SMS or voice notifications.
+	From pulumi.StringInput `pulumi:"from"`
+	// The syntax of the phone notification template.
+	Syntax pulumi.StringInput `pulumi:"syntax"`
+}
+
+func (GetBrandingPhoneNotificationTemplateContentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBrandingPhoneNotificationTemplateContent)(nil)).Elem()
+}
+
+func (i GetBrandingPhoneNotificationTemplateContentArgs) ToGetBrandingPhoneNotificationTemplateContentOutput() GetBrandingPhoneNotificationTemplateContentOutput {
+	return i.ToGetBrandingPhoneNotificationTemplateContentOutputWithContext(context.Background())
+}
+
+func (i GetBrandingPhoneNotificationTemplateContentArgs) ToGetBrandingPhoneNotificationTemplateContentOutputWithContext(ctx context.Context) GetBrandingPhoneNotificationTemplateContentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBrandingPhoneNotificationTemplateContentOutput)
+}
+
+// GetBrandingPhoneNotificationTemplateContentArrayInput is an input type that accepts GetBrandingPhoneNotificationTemplateContentArray and GetBrandingPhoneNotificationTemplateContentArrayOutput values.
+// You can construct a concrete instance of `GetBrandingPhoneNotificationTemplateContentArrayInput` via:
+//
+//	GetBrandingPhoneNotificationTemplateContentArray{ GetBrandingPhoneNotificationTemplateContentArgs{...} }
+type GetBrandingPhoneNotificationTemplateContentArrayInput interface {
+	pulumi.Input
+
+	ToGetBrandingPhoneNotificationTemplateContentArrayOutput() GetBrandingPhoneNotificationTemplateContentArrayOutput
+	ToGetBrandingPhoneNotificationTemplateContentArrayOutputWithContext(context.Context) GetBrandingPhoneNotificationTemplateContentArrayOutput
+}
+
+type GetBrandingPhoneNotificationTemplateContentArray []GetBrandingPhoneNotificationTemplateContentInput
+
+func (GetBrandingPhoneNotificationTemplateContentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBrandingPhoneNotificationTemplateContent)(nil)).Elem()
+}
+
+func (i GetBrandingPhoneNotificationTemplateContentArray) ToGetBrandingPhoneNotificationTemplateContentArrayOutput() GetBrandingPhoneNotificationTemplateContentArrayOutput {
+	return i.ToGetBrandingPhoneNotificationTemplateContentArrayOutputWithContext(context.Background())
+}
+
+func (i GetBrandingPhoneNotificationTemplateContentArray) ToGetBrandingPhoneNotificationTemplateContentArrayOutputWithContext(ctx context.Context) GetBrandingPhoneNotificationTemplateContentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBrandingPhoneNotificationTemplateContentArrayOutput)
+}
+
+type GetBrandingPhoneNotificationTemplateContentOutput struct{ *pulumi.OutputState }
+
+func (GetBrandingPhoneNotificationTemplateContentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBrandingPhoneNotificationTemplateContent)(nil)).Elem()
+}
+
+func (o GetBrandingPhoneNotificationTemplateContentOutput) ToGetBrandingPhoneNotificationTemplateContentOutput() GetBrandingPhoneNotificationTemplateContentOutput {
+	return o
+}
+
+func (o GetBrandingPhoneNotificationTemplateContentOutput) ToGetBrandingPhoneNotificationTemplateContentOutputWithContext(ctx context.Context) GetBrandingPhoneNotificationTemplateContentOutput {
+	return o
+}
+
+// The body content of the phone notification template.
+func (o GetBrandingPhoneNotificationTemplateContentOutput) Bodies() GetBrandingPhoneNotificationTemplateContentBodyArrayOutput {
+	return o.ApplyT(func(v GetBrandingPhoneNotificationTemplateContent) []GetBrandingPhoneNotificationTemplateContentBody {
+		return v.Bodies
+	}).(GetBrandingPhoneNotificationTemplateContentBodyArrayOutput)
+}
+
+// The sender phone number for SMS or voice notifications.
+func (o GetBrandingPhoneNotificationTemplateContentOutput) From() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBrandingPhoneNotificationTemplateContent) string { return v.From }).(pulumi.StringOutput)
+}
+
+// The syntax of the phone notification template.
+func (o GetBrandingPhoneNotificationTemplateContentOutput) Syntax() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBrandingPhoneNotificationTemplateContent) string { return v.Syntax }).(pulumi.StringOutput)
+}
+
+type GetBrandingPhoneNotificationTemplateContentArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBrandingPhoneNotificationTemplateContentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBrandingPhoneNotificationTemplateContent)(nil)).Elem()
+}
+
+func (o GetBrandingPhoneNotificationTemplateContentArrayOutput) ToGetBrandingPhoneNotificationTemplateContentArrayOutput() GetBrandingPhoneNotificationTemplateContentArrayOutput {
+	return o
+}
+
+func (o GetBrandingPhoneNotificationTemplateContentArrayOutput) ToGetBrandingPhoneNotificationTemplateContentArrayOutputWithContext(ctx context.Context) GetBrandingPhoneNotificationTemplateContentArrayOutput {
+	return o
+}
+
+func (o GetBrandingPhoneNotificationTemplateContentArrayOutput) Index(i pulumi.IntInput) GetBrandingPhoneNotificationTemplateContentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBrandingPhoneNotificationTemplateContent {
+		return vs[0].([]GetBrandingPhoneNotificationTemplateContent)[vs[1].(int)]
+	}).(GetBrandingPhoneNotificationTemplateContentOutput)
+}
+
+type GetBrandingPhoneNotificationTemplateContentBody struct {
+	// The text content for SMS notifications.
+	Text string `pulumi:"text"`
+	// The voice content for voice notifications.
+	Voice string `pulumi:"voice"`
+}
+
+// GetBrandingPhoneNotificationTemplateContentBodyInput is an input type that accepts GetBrandingPhoneNotificationTemplateContentBodyArgs and GetBrandingPhoneNotificationTemplateContentBodyOutput values.
+// You can construct a concrete instance of `GetBrandingPhoneNotificationTemplateContentBodyInput` via:
+//
+//	GetBrandingPhoneNotificationTemplateContentBodyArgs{...}
+type GetBrandingPhoneNotificationTemplateContentBodyInput interface {
+	pulumi.Input
+
+	ToGetBrandingPhoneNotificationTemplateContentBodyOutput() GetBrandingPhoneNotificationTemplateContentBodyOutput
+	ToGetBrandingPhoneNotificationTemplateContentBodyOutputWithContext(context.Context) GetBrandingPhoneNotificationTemplateContentBodyOutput
+}
+
+type GetBrandingPhoneNotificationTemplateContentBodyArgs struct {
+	// The text content for SMS notifications.
+	Text pulumi.StringInput `pulumi:"text"`
+	// The voice content for voice notifications.
+	Voice pulumi.StringInput `pulumi:"voice"`
+}
+
+func (GetBrandingPhoneNotificationTemplateContentBodyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBrandingPhoneNotificationTemplateContentBody)(nil)).Elem()
+}
+
+func (i GetBrandingPhoneNotificationTemplateContentBodyArgs) ToGetBrandingPhoneNotificationTemplateContentBodyOutput() GetBrandingPhoneNotificationTemplateContentBodyOutput {
+	return i.ToGetBrandingPhoneNotificationTemplateContentBodyOutputWithContext(context.Background())
+}
+
+func (i GetBrandingPhoneNotificationTemplateContentBodyArgs) ToGetBrandingPhoneNotificationTemplateContentBodyOutputWithContext(ctx context.Context) GetBrandingPhoneNotificationTemplateContentBodyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBrandingPhoneNotificationTemplateContentBodyOutput)
+}
+
+// GetBrandingPhoneNotificationTemplateContentBodyArrayInput is an input type that accepts GetBrandingPhoneNotificationTemplateContentBodyArray and GetBrandingPhoneNotificationTemplateContentBodyArrayOutput values.
+// You can construct a concrete instance of `GetBrandingPhoneNotificationTemplateContentBodyArrayInput` via:
+//
+//	GetBrandingPhoneNotificationTemplateContentBodyArray{ GetBrandingPhoneNotificationTemplateContentBodyArgs{...} }
+type GetBrandingPhoneNotificationTemplateContentBodyArrayInput interface {
+	pulumi.Input
+
+	ToGetBrandingPhoneNotificationTemplateContentBodyArrayOutput() GetBrandingPhoneNotificationTemplateContentBodyArrayOutput
+	ToGetBrandingPhoneNotificationTemplateContentBodyArrayOutputWithContext(context.Context) GetBrandingPhoneNotificationTemplateContentBodyArrayOutput
+}
+
+type GetBrandingPhoneNotificationTemplateContentBodyArray []GetBrandingPhoneNotificationTemplateContentBodyInput
+
+func (GetBrandingPhoneNotificationTemplateContentBodyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBrandingPhoneNotificationTemplateContentBody)(nil)).Elem()
+}
+
+func (i GetBrandingPhoneNotificationTemplateContentBodyArray) ToGetBrandingPhoneNotificationTemplateContentBodyArrayOutput() GetBrandingPhoneNotificationTemplateContentBodyArrayOutput {
+	return i.ToGetBrandingPhoneNotificationTemplateContentBodyArrayOutputWithContext(context.Background())
+}
+
+func (i GetBrandingPhoneNotificationTemplateContentBodyArray) ToGetBrandingPhoneNotificationTemplateContentBodyArrayOutputWithContext(ctx context.Context) GetBrandingPhoneNotificationTemplateContentBodyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBrandingPhoneNotificationTemplateContentBodyArrayOutput)
+}
+
+type GetBrandingPhoneNotificationTemplateContentBodyOutput struct{ *pulumi.OutputState }
+
+func (GetBrandingPhoneNotificationTemplateContentBodyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBrandingPhoneNotificationTemplateContentBody)(nil)).Elem()
+}
+
+func (o GetBrandingPhoneNotificationTemplateContentBodyOutput) ToGetBrandingPhoneNotificationTemplateContentBodyOutput() GetBrandingPhoneNotificationTemplateContentBodyOutput {
+	return o
+}
+
+func (o GetBrandingPhoneNotificationTemplateContentBodyOutput) ToGetBrandingPhoneNotificationTemplateContentBodyOutputWithContext(ctx context.Context) GetBrandingPhoneNotificationTemplateContentBodyOutput {
+	return o
+}
+
+// The text content for SMS notifications.
+func (o GetBrandingPhoneNotificationTemplateContentBodyOutput) Text() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBrandingPhoneNotificationTemplateContentBody) string { return v.Text }).(pulumi.StringOutput)
+}
+
+// The voice content for voice notifications.
+func (o GetBrandingPhoneNotificationTemplateContentBodyOutput) Voice() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBrandingPhoneNotificationTemplateContentBody) string { return v.Voice }).(pulumi.StringOutput)
+}
+
+type GetBrandingPhoneNotificationTemplateContentBodyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBrandingPhoneNotificationTemplateContentBodyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBrandingPhoneNotificationTemplateContentBody)(nil)).Elem()
+}
+
+func (o GetBrandingPhoneNotificationTemplateContentBodyArrayOutput) ToGetBrandingPhoneNotificationTemplateContentBodyArrayOutput() GetBrandingPhoneNotificationTemplateContentBodyArrayOutput {
+	return o
+}
+
+func (o GetBrandingPhoneNotificationTemplateContentBodyArrayOutput) ToGetBrandingPhoneNotificationTemplateContentBodyArrayOutputWithContext(ctx context.Context) GetBrandingPhoneNotificationTemplateContentBodyArrayOutput {
+	return o
+}
+
+func (o GetBrandingPhoneNotificationTemplateContentBodyArrayOutput) Index(i pulumi.IntInput) GetBrandingPhoneNotificationTemplateContentBodyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBrandingPhoneNotificationTemplateContentBody {
+		return vs[0].([]GetBrandingPhoneNotificationTemplateContentBody)[vs[1].(int)]
+	}).(GetBrandingPhoneNotificationTemplateContentBodyOutput)
 }
 
 type GetBrandingThemeBorder struct {
@@ -51459,6 +52452,218 @@ func (o GetConnectionConnectedAccountArrayOutput) Index(i pulumi.IntInput) GetCo
 	}).(GetConnectionConnectedAccountOutput)
 }
 
+type GetConnectionDirectoryDefaultMappingMapping struct {
+	// The field location in the Auth0 schema.
+	Auth0 string `pulumi:"auth0"`
+	// The field location in the IDP schema.
+	Idp string `pulumi:"idp"`
+}
+
+// GetConnectionDirectoryDefaultMappingMappingInput is an input type that accepts GetConnectionDirectoryDefaultMappingMappingArgs and GetConnectionDirectoryDefaultMappingMappingOutput values.
+// You can construct a concrete instance of `GetConnectionDirectoryDefaultMappingMappingInput` via:
+//
+//	GetConnectionDirectoryDefaultMappingMappingArgs{...}
+type GetConnectionDirectoryDefaultMappingMappingInput interface {
+	pulumi.Input
+
+	ToGetConnectionDirectoryDefaultMappingMappingOutput() GetConnectionDirectoryDefaultMappingMappingOutput
+	ToGetConnectionDirectoryDefaultMappingMappingOutputWithContext(context.Context) GetConnectionDirectoryDefaultMappingMappingOutput
+}
+
+type GetConnectionDirectoryDefaultMappingMappingArgs struct {
+	// The field location in the Auth0 schema.
+	Auth0 pulumi.StringInput `pulumi:"auth0"`
+	// The field location in the IDP schema.
+	Idp pulumi.StringInput `pulumi:"idp"`
+}
+
+func (GetConnectionDirectoryDefaultMappingMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionDirectoryDefaultMappingMapping)(nil)).Elem()
+}
+
+func (i GetConnectionDirectoryDefaultMappingMappingArgs) ToGetConnectionDirectoryDefaultMappingMappingOutput() GetConnectionDirectoryDefaultMappingMappingOutput {
+	return i.ToGetConnectionDirectoryDefaultMappingMappingOutputWithContext(context.Background())
+}
+
+func (i GetConnectionDirectoryDefaultMappingMappingArgs) ToGetConnectionDirectoryDefaultMappingMappingOutputWithContext(ctx context.Context) GetConnectionDirectoryDefaultMappingMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionDirectoryDefaultMappingMappingOutput)
+}
+
+// GetConnectionDirectoryDefaultMappingMappingArrayInput is an input type that accepts GetConnectionDirectoryDefaultMappingMappingArray and GetConnectionDirectoryDefaultMappingMappingArrayOutput values.
+// You can construct a concrete instance of `GetConnectionDirectoryDefaultMappingMappingArrayInput` via:
+//
+//	GetConnectionDirectoryDefaultMappingMappingArray{ GetConnectionDirectoryDefaultMappingMappingArgs{...} }
+type GetConnectionDirectoryDefaultMappingMappingArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionDirectoryDefaultMappingMappingArrayOutput() GetConnectionDirectoryDefaultMappingMappingArrayOutput
+	ToGetConnectionDirectoryDefaultMappingMappingArrayOutputWithContext(context.Context) GetConnectionDirectoryDefaultMappingMappingArrayOutput
+}
+
+type GetConnectionDirectoryDefaultMappingMappingArray []GetConnectionDirectoryDefaultMappingMappingInput
+
+func (GetConnectionDirectoryDefaultMappingMappingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionDirectoryDefaultMappingMapping)(nil)).Elem()
+}
+
+func (i GetConnectionDirectoryDefaultMappingMappingArray) ToGetConnectionDirectoryDefaultMappingMappingArrayOutput() GetConnectionDirectoryDefaultMappingMappingArrayOutput {
+	return i.ToGetConnectionDirectoryDefaultMappingMappingArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionDirectoryDefaultMappingMappingArray) ToGetConnectionDirectoryDefaultMappingMappingArrayOutputWithContext(ctx context.Context) GetConnectionDirectoryDefaultMappingMappingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionDirectoryDefaultMappingMappingArrayOutput)
+}
+
+type GetConnectionDirectoryDefaultMappingMappingOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionDirectoryDefaultMappingMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionDirectoryDefaultMappingMapping)(nil)).Elem()
+}
+
+func (o GetConnectionDirectoryDefaultMappingMappingOutput) ToGetConnectionDirectoryDefaultMappingMappingOutput() GetConnectionDirectoryDefaultMappingMappingOutput {
+	return o
+}
+
+func (o GetConnectionDirectoryDefaultMappingMappingOutput) ToGetConnectionDirectoryDefaultMappingMappingOutputWithContext(ctx context.Context) GetConnectionDirectoryDefaultMappingMappingOutput {
+	return o
+}
+
+// The field location in the Auth0 schema.
+func (o GetConnectionDirectoryDefaultMappingMappingOutput) Auth0() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionDirectoryDefaultMappingMapping) string { return v.Auth0 }).(pulumi.StringOutput)
+}
+
+// The field location in the IDP schema.
+func (o GetConnectionDirectoryDefaultMappingMappingOutput) Idp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionDirectoryDefaultMappingMapping) string { return v.Idp }).(pulumi.StringOutput)
+}
+
+type GetConnectionDirectoryDefaultMappingMappingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionDirectoryDefaultMappingMappingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionDirectoryDefaultMappingMapping)(nil)).Elem()
+}
+
+func (o GetConnectionDirectoryDefaultMappingMappingArrayOutput) ToGetConnectionDirectoryDefaultMappingMappingArrayOutput() GetConnectionDirectoryDefaultMappingMappingArrayOutput {
+	return o
+}
+
+func (o GetConnectionDirectoryDefaultMappingMappingArrayOutput) ToGetConnectionDirectoryDefaultMappingMappingArrayOutputWithContext(ctx context.Context) GetConnectionDirectoryDefaultMappingMappingArrayOutput {
+	return o
+}
+
+func (o GetConnectionDirectoryDefaultMappingMappingArrayOutput) Index(i pulumi.IntInput) GetConnectionDirectoryDefaultMappingMappingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionDirectoryDefaultMappingMapping {
+		return vs[0].([]GetConnectionDirectoryDefaultMappingMapping)[vs[1].(int)]
+	}).(GetConnectionDirectoryDefaultMappingMappingOutput)
+}
+
+type GetConnectionDirectoryMapping struct {
+	// The field location in the Auth0 schema.
+	Auth0 string `pulumi:"auth0"`
+	// The field location in the IDP schema.
+	Idp string `pulumi:"idp"`
+}
+
+// GetConnectionDirectoryMappingInput is an input type that accepts GetConnectionDirectoryMappingArgs and GetConnectionDirectoryMappingOutput values.
+// You can construct a concrete instance of `GetConnectionDirectoryMappingInput` via:
+//
+//	GetConnectionDirectoryMappingArgs{...}
+type GetConnectionDirectoryMappingInput interface {
+	pulumi.Input
+
+	ToGetConnectionDirectoryMappingOutput() GetConnectionDirectoryMappingOutput
+	ToGetConnectionDirectoryMappingOutputWithContext(context.Context) GetConnectionDirectoryMappingOutput
+}
+
+type GetConnectionDirectoryMappingArgs struct {
+	// The field location in the Auth0 schema.
+	Auth0 pulumi.StringInput `pulumi:"auth0"`
+	// The field location in the IDP schema.
+	Idp pulumi.StringInput `pulumi:"idp"`
+}
+
+func (GetConnectionDirectoryMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionDirectoryMapping)(nil)).Elem()
+}
+
+func (i GetConnectionDirectoryMappingArgs) ToGetConnectionDirectoryMappingOutput() GetConnectionDirectoryMappingOutput {
+	return i.ToGetConnectionDirectoryMappingOutputWithContext(context.Background())
+}
+
+func (i GetConnectionDirectoryMappingArgs) ToGetConnectionDirectoryMappingOutputWithContext(ctx context.Context) GetConnectionDirectoryMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionDirectoryMappingOutput)
+}
+
+// GetConnectionDirectoryMappingArrayInput is an input type that accepts GetConnectionDirectoryMappingArray and GetConnectionDirectoryMappingArrayOutput values.
+// You can construct a concrete instance of `GetConnectionDirectoryMappingArrayInput` via:
+//
+//	GetConnectionDirectoryMappingArray{ GetConnectionDirectoryMappingArgs{...} }
+type GetConnectionDirectoryMappingArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionDirectoryMappingArrayOutput() GetConnectionDirectoryMappingArrayOutput
+	ToGetConnectionDirectoryMappingArrayOutputWithContext(context.Context) GetConnectionDirectoryMappingArrayOutput
+}
+
+type GetConnectionDirectoryMappingArray []GetConnectionDirectoryMappingInput
+
+func (GetConnectionDirectoryMappingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionDirectoryMapping)(nil)).Elem()
+}
+
+func (i GetConnectionDirectoryMappingArray) ToGetConnectionDirectoryMappingArrayOutput() GetConnectionDirectoryMappingArrayOutput {
+	return i.ToGetConnectionDirectoryMappingArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionDirectoryMappingArray) ToGetConnectionDirectoryMappingArrayOutputWithContext(ctx context.Context) GetConnectionDirectoryMappingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionDirectoryMappingArrayOutput)
+}
+
+type GetConnectionDirectoryMappingOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionDirectoryMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionDirectoryMapping)(nil)).Elem()
+}
+
+func (o GetConnectionDirectoryMappingOutput) ToGetConnectionDirectoryMappingOutput() GetConnectionDirectoryMappingOutput {
+	return o
+}
+
+func (o GetConnectionDirectoryMappingOutput) ToGetConnectionDirectoryMappingOutputWithContext(ctx context.Context) GetConnectionDirectoryMappingOutput {
+	return o
+}
+
+// The field location in the Auth0 schema.
+func (o GetConnectionDirectoryMappingOutput) Auth0() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionDirectoryMapping) string { return v.Auth0 }).(pulumi.StringOutput)
+}
+
+// The field location in the IDP schema.
+func (o GetConnectionDirectoryMappingOutput) Idp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionDirectoryMapping) string { return v.Idp }).(pulumi.StringOutput)
+}
+
+type GetConnectionDirectoryMappingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionDirectoryMappingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionDirectoryMapping)(nil)).Elem()
+}
+
+func (o GetConnectionDirectoryMappingArrayOutput) ToGetConnectionDirectoryMappingArrayOutput() GetConnectionDirectoryMappingArrayOutput {
+	return o
+}
+
+func (o GetConnectionDirectoryMappingArrayOutput) ToGetConnectionDirectoryMappingArrayOutputWithContext(ctx context.Context) GetConnectionDirectoryMappingArrayOutput {
+	return o
+}
+
+func (o GetConnectionDirectoryMappingArrayOutput) Index(i pulumi.IntInput) GetConnectionDirectoryMappingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionDirectoryMapping {
+		return vs[0].([]GetConnectionDirectoryMapping)[vs[1].(int)]
+	}).(GetConnectionDirectoryMappingOutput)
+}
+
 type GetConnectionKeysKey struct {
 	// The signing key algorithm.
 	Algorithm string `pulumi:"algorithm"`
@@ -60557,6 +61762,227 @@ func (o GetPagesLoginArrayOutput) Index(i pulumi.IntInput) GetPagesLoginOutput {
 	}).(GetPagesLoginOutput)
 }
 
+type GetPhoneNotificationTemplateContent struct {
+	// The body content of the phone notification template.
+	Bodies []GetPhoneNotificationTemplateContentBody `pulumi:"bodies"`
+	// The sender phone number for SMS or voice notifications.
+	From string `pulumi:"from"`
+	// The syntax of the phone notification template.
+	Syntax string `pulumi:"syntax"`
+}
+
+// GetPhoneNotificationTemplateContentInput is an input type that accepts GetPhoneNotificationTemplateContentArgs and GetPhoneNotificationTemplateContentOutput values.
+// You can construct a concrete instance of `GetPhoneNotificationTemplateContentInput` via:
+//
+//	GetPhoneNotificationTemplateContentArgs{...}
+type GetPhoneNotificationTemplateContentInput interface {
+	pulumi.Input
+
+	ToGetPhoneNotificationTemplateContentOutput() GetPhoneNotificationTemplateContentOutput
+	ToGetPhoneNotificationTemplateContentOutputWithContext(context.Context) GetPhoneNotificationTemplateContentOutput
+}
+
+type GetPhoneNotificationTemplateContentArgs struct {
+	// The body content of the phone notification template.
+	Bodies GetPhoneNotificationTemplateContentBodyArrayInput `pulumi:"bodies"`
+	// The sender phone number for SMS or voice notifications.
+	From pulumi.StringInput `pulumi:"from"`
+	// The syntax of the phone notification template.
+	Syntax pulumi.StringInput `pulumi:"syntax"`
+}
+
+func (GetPhoneNotificationTemplateContentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPhoneNotificationTemplateContent)(nil)).Elem()
+}
+
+func (i GetPhoneNotificationTemplateContentArgs) ToGetPhoneNotificationTemplateContentOutput() GetPhoneNotificationTemplateContentOutput {
+	return i.ToGetPhoneNotificationTemplateContentOutputWithContext(context.Background())
+}
+
+func (i GetPhoneNotificationTemplateContentArgs) ToGetPhoneNotificationTemplateContentOutputWithContext(ctx context.Context) GetPhoneNotificationTemplateContentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPhoneNotificationTemplateContentOutput)
+}
+
+// GetPhoneNotificationTemplateContentArrayInput is an input type that accepts GetPhoneNotificationTemplateContentArray and GetPhoneNotificationTemplateContentArrayOutput values.
+// You can construct a concrete instance of `GetPhoneNotificationTemplateContentArrayInput` via:
+//
+//	GetPhoneNotificationTemplateContentArray{ GetPhoneNotificationTemplateContentArgs{...} }
+type GetPhoneNotificationTemplateContentArrayInput interface {
+	pulumi.Input
+
+	ToGetPhoneNotificationTemplateContentArrayOutput() GetPhoneNotificationTemplateContentArrayOutput
+	ToGetPhoneNotificationTemplateContentArrayOutputWithContext(context.Context) GetPhoneNotificationTemplateContentArrayOutput
+}
+
+type GetPhoneNotificationTemplateContentArray []GetPhoneNotificationTemplateContentInput
+
+func (GetPhoneNotificationTemplateContentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPhoneNotificationTemplateContent)(nil)).Elem()
+}
+
+func (i GetPhoneNotificationTemplateContentArray) ToGetPhoneNotificationTemplateContentArrayOutput() GetPhoneNotificationTemplateContentArrayOutput {
+	return i.ToGetPhoneNotificationTemplateContentArrayOutputWithContext(context.Background())
+}
+
+func (i GetPhoneNotificationTemplateContentArray) ToGetPhoneNotificationTemplateContentArrayOutputWithContext(ctx context.Context) GetPhoneNotificationTemplateContentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPhoneNotificationTemplateContentArrayOutput)
+}
+
+type GetPhoneNotificationTemplateContentOutput struct{ *pulumi.OutputState }
+
+func (GetPhoneNotificationTemplateContentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPhoneNotificationTemplateContent)(nil)).Elem()
+}
+
+func (o GetPhoneNotificationTemplateContentOutput) ToGetPhoneNotificationTemplateContentOutput() GetPhoneNotificationTemplateContentOutput {
+	return o
+}
+
+func (o GetPhoneNotificationTemplateContentOutput) ToGetPhoneNotificationTemplateContentOutputWithContext(ctx context.Context) GetPhoneNotificationTemplateContentOutput {
+	return o
+}
+
+// The body content of the phone notification template.
+func (o GetPhoneNotificationTemplateContentOutput) Bodies() GetPhoneNotificationTemplateContentBodyArrayOutput {
+	return o.ApplyT(func(v GetPhoneNotificationTemplateContent) []GetPhoneNotificationTemplateContentBody { return v.Bodies }).(GetPhoneNotificationTemplateContentBodyArrayOutput)
+}
+
+// The sender phone number for SMS or voice notifications.
+func (o GetPhoneNotificationTemplateContentOutput) From() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPhoneNotificationTemplateContent) string { return v.From }).(pulumi.StringOutput)
+}
+
+// The syntax of the phone notification template.
+func (o GetPhoneNotificationTemplateContentOutput) Syntax() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPhoneNotificationTemplateContent) string { return v.Syntax }).(pulumi.StringOutput)
+}
+
+type GetPhoneNotificationTemplateContentArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPhoneNotificationTemplateContentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPhoneNotificationTemplateContent)(nil)).Elem()
+}
+
+func (o GetPhoneNotificationTemplateContentArrayOutput) ToGetPhoneNotificationTemplateContentArrayOutput() GetPhoneNotificationTemplateContentArrayOutput {
+	return o
+}
+
+func (o GetPhoneNotificationTemplateContentArrayOutput) ToGetPhoneNotificationTemplateContentArrayOutputWithContext(ctx context.Context) GetPhoneNotificationTemplateContentArrayOutput {
+	return o
+}
+
+func (o GetPhoneNotificationTemplateContentArrayOutput) Index(i pulumi.IntInput) GetPhoneNotificationTemplateContentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPhoneNotificationTemplateContent {
+		return vs[0].([]GetPhoneNotificationTemplateContent)[vs[1].(int)]
+	}).(GetPhoneNotificationTemplateContentOutput)
+}
+
+type GetPhoneNotificationTemplateContentBody struct {
+	// The text content for SMS notifications.
+	Text string `pulumi:"text"`
+	// The voice content for voice notifications.
+	Voice string `pulumi:"voice"`
+}
+
+// GetPhoneNotificationTemplateContentBodyInput is an input type that accepts GetPhoneNotificationTemplateContentBodyArgs and GetPhoneNotificationTemplateContentBodyOutput values.
+// You can construct a concrete instance of `GetPhoneNotificationTemplateContentBodyInput` via:
+//
+//	GetPhoneNotificationTemplateContentBodyArgs{...}
+type GetPhoneNotificationTemplateContentBodyInput interface {
+	pulumi.Input
+
+	ToGetPhoneNotificationTemplateContentBodyOutput() GetPhoneNotificationTemplateContentBodyOutput
+	ToGetPhoneNotificationTemplateContentBodyOutputWithContext(context.Context) GetPhoneNotificationTemplateContentBodyOutput
+}
+
+type GetPhoneNotificationTemplateContentBodyArgs struct {
+	// The text content for SMS notifications.
+	Text pulumi.StringInput `pulumi:"text"`
+	// The voice content for voice notifications.
+	Voice pulumi.StringInput `pulumi:"voice"`
+}
+
+func (GetPhoneNotificationTemplateContentBodyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPhoneNotificationTemplateContentBody)(nil)).Elem()
+}
+
+func (i GetPhoneNotificationTemplateContentBodyArgs) ToGetPhoneNotificationTemplateContentBodyOutput() GetPhoneNotificationTemplateContentBodyOutput {
+	return i.ToGetPhoneNotificationTemplateContentBodyOutputWithContext(context.Background())
+}
+
+func (i GetPhoneNotificationTemplateContentBodyArgs) ToGetPhoneNotificationTemplateContentBodyOutputWithContext(ctx context.Context) GetPhoneNotificationTemplateContentBodyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPhoneNotificationTemplateContentBodyOutput)
+}
+
+// GetPhoneNotificationTemplateContentBodyArrayInput is an input type that accepts GetPhoneNotificationTemplateContentBodyArray and GetPhoneNotificationTemplateContentBodyArrayOutput values.
+// You can construct a concrete instance of `GetPhoneNotificationTemplateContentBodyArrayInput` via:
+//
+//	GetPhoneNotificationTemplateContentBodyArray{ GetPhoneNotificationTemplateContentBodyArgs{...} }
+type GetPhoneNotificationTemplateContentBodyArrayInput interface {
+	pulumi.Input
+
+	ToGetPhoneNotificationTemplateContentBodyArrayOutput() GetPhoneNotificationTemplateContentBodyArrayOutput
+	ToGetPhoneNotificationTemplateContentBodyArrayOutputWithContext(context.Context) GetPhoneNotificationTemplateContentBodyArrayOutput
+}
+
+type GetPhoneNotificationTemplateContentBodyArray []GetPhoneNotificationTemplateContentBodyInput
+
+func (GetPhoneNotificationTemplateContentBodyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPhoneNotificationTemplateContentBody)(nil)).Elem()
+}
+
+func (i GetPhoneNotificationTemplateContentBodyArray) ToGetPhoneNotificationTemplateContentBodyArrayOutput() GetPhoneNotificationTemplateContentBodyArrayOutput {
+	return i.ToGetPhoneNotificationTemplateContentBodyArrayOutputWithContext(context.Background())
+}
+
+func (i GetPhoneNotificationTemplateContentBodyArray) ToGetPhoneNotificationTemplateContentBodyArrayOutputWithContext(ctx context.Context) GetPhoneNotificationTemplateContentBodyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPhoneNotificationTemplateContentBodyArrayOutput)
+}
+
+type GetPhoneNotificationTemplateContentBodyOutput struct{ *pulumi.OutputState }
+
+func (GetPhoneNotificationTemplateContentBodyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPhoneNotificationTemplateContentBody)(nil)).Elem()
+}
+
+func (o GetPhoneNotificationTemplateContentBodyOutput) ToGetPhoneNotificationTemplateContentBodyOutput() GetPhoneNotificationTemplateContentBodyOutput {
+	return o
+}
+
+func (o GetPhoneNotificationTemplateContentBodyOutput) ToGetPhoneNotificationTemplateContentBodyOutputWithContext(ctx context.Context) GetPhoneNotificationTemplateContentBodyOutput {
+	return o
+}
+
+// The text content for SMS notifications.
+func (o GetPhoneNotificationTemplateContentBodyOutput) Text() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPhoneNotificationTemplateContentBody) string { return v.Text }).(pulumi.StringOutput)
+}
+
+// The voice content for voice notifications.
+func (o GetPhoneNotificationTemplateContentBodyOutput) Voice() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPhoneNotificationTemplateContentBody) string { return v.Voice }).(pulumi.StringOutput)
+}
+
+type GetPhoneNotificationTemplateContentBodyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPhoneNotificationTemplateContentBodyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPhoneNotificationTemplateContentBody)(nil)).Elem()
+}
+
+func (o GetPhoneNotificationTemplateContentBodyArrayOutput) ToGetPhoneNotificationTemplateContentBodyArrayOutput() GetPhoneNotificationTemplateContentBodyArrayOutput {
+	return o
+}
+
+func (o GetPhoneNotificationTemplateContentBodyArrayOutput) ToGetPhoneNotificationTemplateContentBodyArrayOutputWithContext(ctx context.Context) GetPhoneNotificationTemplateContentBodyArrayOutput {
+	return o
+}
+
+func (o GetPhoneNotificationTemplateContentBodyArrayOutput) Index(i pulumi.IntInput) GetPhoneNotificationTemplateContentBodyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPhoneNotificationTemplateContentBody {
+		return vs[0].([]GetPhoneNotificationTemplateContentBody)[vs[1].(int)]
+	}).(GetPhoneNotificationTemplateContentBodyOutput)
+}
+
 type GetPhoneProviderConfiguration struct {
 	// Default sender subject as "from" when no other value is specified.
 	DefaultFrom string `pulumi:"defaultFrom"`
@@ -64926,6 +66352,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BrandingColorsPtrInput)(nil)).Elem(), BrandingColorsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BrandingFontInput)(nil)).Elem(), BrandingFontArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BrandingFontPtrInput)(nil)).Elem(), BrandingFontArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BrandingPhoneNotificationTemplateContentInput)(nil)).Elem(), BrandingPhoneNotificationTemplateContentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BrandingPhoneNotificationTemplateContentPtrInput)(nil)).Elem(), BrandingPhoneNotificationTemplateContentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BrandingPhoneNotificationTemplateContentBodyInput)(nil)).Elem(), BrandingPhoneNotificationTemplateContentBodyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BrandingPhoneNotificationTemplateContentBodyPtrInput)(nil)).Elem(), BrandingPhoneNotificationTemplateContentBodyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BrandingThemeBordersInput)(nil)).Elem(), BrandingThemeBordersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BrandingThemeBordersPtrInput)(nil)).Elem(), BrandingThemeBordersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BrandingThemeColorsInput)(nil)).Elem(), BrandingThemeColorsArgs{})
@@ -65070,6 +66500,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionAuthenticationPtrInput)(nil)).Elem(), ConnectionAuthenticationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionConnectedAccountsInput)(nil)).Elem(), ConnectionConnectedAccountsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionConnectedAccountsPtrInput)(nil)).Elem(), ConnectionConnectedAccountsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionDirectoryMappingInput)(nil)).Elem(), ConnectionDirectoryMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionDirectoryMappingArrayInput)(nil)).Elem(), ConnectionDirectoryMappingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsInput)(nil)).Elem(), ConnectionOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsPtrInput)(nil)).Elem(), ConnectionOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsAttributeInput)(nil)).Elem(), ConnectionOptionsAttributeArgs{})
@@ -65254,6 +66686,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PagesGuardianMfaPtrInput)(nil)).Elem(), PagesGuardianMfaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PagesLoginInput)(nil)).Elem(), PagesLoginArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PagesLoginPtrInput)(nil)).Elem(), PagesLoginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PhoneNotificationTemplateContentInput)(nil)).Elem(), PhoneNotificationTemplateContentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PhoneNotificationTemplateContentPtrInput)(nil)).Elem(), PhoneNotificationTemplateContentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PhoneNotificationTemplateContentBodyInput)(nil)).Elem(), PhoneNotificationTemplateContentBodyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PhoneNotificationTemplateContentBodyPtrInput)(nil)).Elem(), PhoneNotificationTemplateContentBodyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PhoneProviderConfigurationInput)(nil)).Elem(), PhoneProviderConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PhoneProviderConfigurationPtrInput)(nil)).Elem(), PhoneProviderConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PhoneProviderCredentialsInput)(nil)).Elem(), PhoneProviderCredentialsArgs{})
@@ -65367,6 +66803,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBrandingColorArrayInput)(nil)).Elem(), GetBrandingColorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBrandingFontInput)(nil)).Elem(), GetBrandingFontArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBrandingFontArrayInput)(nil)).Elem(), GetBrandingFontArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBrandingPhoneNotificationTemplateContentInput)(nil)).Elem(), GetBrandingPhoneNotificationTemplateContentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBrandingPhoneNotificationTemplateContentArrayInput)(nil)).Elem(), GetBrandingPhoneNotificationTemplateContentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBrandingPhoneNotificationTemplateContentBodyInput)(nil)).Elem(), GetBrandingPhoneNotificationTemplateContentBodyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBrandingPhoneNotificationTemplateContentBodyArrayInput)(nil)).Elem(), GetBrandingPhoneNotificationTemplateContentBodyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBrandingThemeBorderInput)(nil)).Elem(), GetBrandingThemeBorderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBrandingThemeBorderArrayInput)(nil)).Elem(), GetBrandingThemeBorderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBrandingThemeColorInput)(nil)).Elem(), GetBrandingThemeColorArgs{})
@@ -65533,6 +66973,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionAuthenticationArrayInput)(nil)).Elem(), GetConnectionAuthenticationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionConnectedAccountInput)(nil)).Elem(), GetConnectionConnectedAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionConnectedAccountArrayInput)(nil)).Elem(), GetConnectionConnectedAccountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionDirectoryDefaultMappingMappingInput)(nil)).Elem(), GetConnectionDirectoryDefaultMappingMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionDirectoryDefaultMappingMappingArrayInput)(nil)).Elem(), GetConnectionDirectoryDefaultMappingMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionDirectoryMappingInput)(nil)).Elem(), GetConnectionDirectoryMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionDirectoryMappingArrayInput)(nil)).Elem(), GetConnectionDirectoryMappingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionKeysKeyInput)(nil)).Elem(), GetConnectionKeysKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionKeysKeyArrayInput)(nil)).Elem(), GetConnectionKeysKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionInput)(nil)).Elem(), GetConnectionOptionArgs{})
@@ -65677,6 +67121,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesGuardianMfaArrayInput)(nil)).Elem(), GetPagesGuardianMfaArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesLoginInput)(nil)).Elem(), GetPagesLoginArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPagesLoginArrayInput)(nil)).Elem(), GetPagesLoginArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPhoneNotificationTemplateContentInput)(nil)).Elem(), GetPhoneNotificationTemplateContentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPhoneNotificationTemplateContentArrayInput)(nil)).Elem(), GetPhoneNotificationTemplateContentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPhoneNotificationTemplateContentBodyInput)(nil)).Elem(), GetPhoneNotificationTemplateContentBodyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPhoneNotificationTemplateContentBodyArrayInput)(nil)).Elem(), GetPhoneNotificationTemplateContentBodyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPhoneProviderConfigurationInput)(nil)).Elem(), GetPhoneProviderConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPhoneProviderConfigurationArrayInput)(nil)).Elem(), GetPhoneProviderConfigurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPhoneProviderCredentialInput)(nil)).Elem(), GetPhoneProviderCredentialArgs{})
@@ -65789,6 +67237,10 @@ func init() {
 	pulumi.RegisterOutputType(BrandingColorsPtrOutput{})
 	pulumi.RegisterOutputType(BrandingFontOutput{})
 	pulumi.RegisterOutputType(BrandingFontPtrOutput{})
+	pulumi.RegisterOutputType(BrandingPhoneNotificationTemplateContentOutput{})
+	pulumi.RegisterOutputType(BrandingPhoneNotificationTemplateContentPtrOutput{})
+	pulumi.RegisterOutputType(BrandingPhoneNotificationTemplateContentBodyOutput{})
+	pulumi.RegisterOutputType(BrandingPhoneNotificationTemplateContentBodyPtrOutput{})
 	pulumi.RegisterOutputType(BrandingThemeBordersOutput{})
 	pulumi.RegisterOutputType(BrandingThemeBordersPtrOutput{})
 	pulumi.RegisterOutputType(BrandingThemeColorsOutput{})
@@ -65933,6 +67385,8 @@ func init() {
 	pulumi.RegisterOutputType(ConnectionAuthenticationPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionConnectedAccountsOutput{})
 	pulumi.RegisterOutputType(ConnectionConnectedAccountsPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionDirectoryMappingOutput{})
+	pulumi.RegisterOutputType(ConnectionDirectoryMappingArrayOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsAttributeOutput{})
@@ -66117,6 +67571,10 @@ func init() {
 	pulumi.RegisterOutputType(PagesGuardianMfaPtrOutput{})
 	pulumi.RegisterOutputType(PagesLoginOutput{})
 	pulumi.RegisterOutputType(PagesLoginPtrOutput{})
+	pulumi.RegisterOutputType(PhoneNotificationTemplateContentOutput{})
+	pulumi.RegisterOutputType(PhoneNotificationTemplateContentPtrOutput{})
+	pulumi.RegisterOutputType(PhoneNotificationTemplateContentBodyOutput{})
+	pulumi.RegisterOutputType(PhoneNotificationTemplateContentBodyPtrOutput{})
 	pulumi.RegisterOutputType(PhoneProviderConfigurationOutput{})
 	pulumi.RegisterOutputType(PhoneProviderConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(PhoneProviderCredentialsOutput{})
@@ -66230,6 +67688,10 @@ func init() {
 	pulumi.RegisterOutputType(GetBrandingColorArrayOutput{})
 	pulumi.RegisterOutputType(GetBrandingFontOutput{})
 	pulumi.RegisterOutputType(GetBrandingFontArrayOutput{})
+	pulumi.RegisterOutputType(GetBrandingPhoneNotificationTemplateContentOutput{})
+	pulumi.RegisterOutputType(GetBrandingPhoneNotificationTemplateContentArrayOutput{})
+	pulumi.RegisterOutputType(GetBrandingPhoneNotificationTemplateContentBodyOutput{})
+	pulumi.RegisterOutputType(GetBrandingPhoneNotificationTemplateContentBodyArrayOutput{})
 	pulumi.RegisterOutputType(GetBrandingThemeBorderOutput{})
 	pulumi.RegisterOutputType(GetBrandingThemeBorderArrayOutput{})
 	pulumi.RegisterOutputType(GetBrandingThemeColorOutput{})
@@ -66396,6 +67858,10 @@ func init() {
 	pulumi.RegisterOutputType(GetConnectionAuthenticationArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionConnectedAccountOutput{})
 	pulumi.RegisterOutputType(GetConnectionConnectedAccountArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionDirectoryDefaultMappingMappingOutput{})
+	pulumi.RegisterOutputType(GetConnectionDirectoryDefaultMappingMappingArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionDirectoryMappingOutput{})
+	pulumi.RegisterOutputType(GetConnectionDirectoryMappingArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionKeysKeyOutput{})
 	pulumi.RegisterOutputType(GetConnectionKeysKeyArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionOutput{})
@@ -66540,6 +68006,10 @@ func init() {
 	pulumi.RegisterOutputType(GetPagesGuardianMfaArrayOutput{})
 	pulumi.RegisterOutputType(GetPagesLoginOutput{})
 	pulumi.RegisterOutputType(GetPagesLoginArrayOutput{})
+	pulumi.RegisterOutputType(GetPhoneNotificationTemplateContentOutput{})
+	pulumi.RegisterOutputType(GetPhoneNotificationTemplateContentArrayOutput{})
+	pulumi.RegisterOutputType(GetPhoneNotificationTemplateContentBodyOutput{})
+	pulumi.RegisterOutputType(GetPhoneNotificationTemplateContentBodyArrayOutput{})
 	pulumi.RegisterOutputType(GetPhoneProviderConfigurationOutput{})
 	pulumi.RegisterOutputType(GetPhoneProviderConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(GetPhoneProviderCredentialOutput{})
