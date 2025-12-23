@@ -629,6 +629,44 @@
                 "url"
             ]
         },
+        "auth0:index/BrandingPhoneNotificationTemplateContent:BrandingPhoneNotificationTemplateContent": {
+            "properties": {
+                "body": {
+                    "$ref": "#/types/auth0:index/BrandingPhoneNotificationTemplateContentBody:BrandingPhoneNotificationTemplateContentBody",
+                    "description": "The body content of the phone notification template.\n"
+                },
+                "from": {
+                    "type": "string",
+                    "description": "The sender phone number for SMS or voice notifications.\n"
+                },
+                "syntax": {
+                    "type": "string",
+                    "description": "The syntax of the phone notification template.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "body",
+                        "syntax"
+                    ]
+                }
+            }
+        },
+        "auth0:index/BrandingPhoneNotificationTemplateContentBody:BrandingPhoneNotificationTemplateContentBody": {
+            "properties": {
+                "text": {
+                    "type": "string",
+                    "description": "The text content for SMS notifications.\n"
+                },
+                "voice": {
+                    "type": "string",
+                    "description": "The voice content for voice notifications.\n"
+                }
+            },
+            "type": "object"
+        },
         "auth0:index/BrandingThemeBorders:BrandingThemeBorders": {
             "properties": {
                 "buttonBorderRadius": {
@@ -2321,6 +2359,23 @@
             "type": "object",
             "required": [
                 "active"
+            ]
+        },
+        "auth0:index/ConnectionDirectoryMapping:ConnectionDirectoryMapping": {
+            "properties": {
+                "auth0": {
+                    "type": "string",
+                    "description": "The field location in the Auth0 schema.\n"
+                },
+                "idp": {
+                    "type": "string",
+                    "description": "The field location in the IDP schema.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "auth0",
+                "idp"
             ]
         },
         "auth0:index/ConnectionOptions:ConnectionOptions": {
@@ -4852,6 +4907,44 @@
                 "html"
             ]
         },
+        "auth0:index/PhoneNotificationTemplateContent:PhoneNotificationTemplateContent": {
+            "properties": {
+                "body": {
+                    "$ref": "#/types/auth0:index/PhoneNotificationTemplateContentBody:PhoneNotificationTemplateContentBody",
+                    "description": "The body content of the phone notification template.\n"
+                },
+                "from": {
+                    "type": "string",
+                    "description": "The sender phone number for SMS or voice notifications.\n"
+                },
+                "syntax": {
+                    "type": "string",
+                    "description": "The syntax of the phone notification template.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "body",
+                        "syntax"
+                    ]
+                }
+            }
+        },
+        "auth0:index/PhoneNotificationTemplateContentBody:PhoneNotificationTemplateContentBody": {
+            "properties": {
+                "text": {
+                    "type": "string",
+                    "description": "The text content for SMS notifications.\n"
+                },
+                "voice": {
+                    "type": "string",
+                    "description": "The voice content for voice notifications.\n"
+                }
+            },
+            "type": "object"
+        },
         "auth0:index/PhoneProviderConfiguration:PhoneProviderConfiguration": {
             "properties": {
                 "defaultFrom": {
@@ -6360,6 +6453,58 @@
             "type": "object",
             "required": [
                 "url"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getBrandingPhoneNotificationTemplateContent:getBrandingPhoneNotificationTemplateContent": {
+            "properties": {
+                "bodies": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/getBrandingPhoneNotificationTemplateContentBody:getBrandingPhoneNotificationTemplateContentBody"
+                    },
+                    "description": "The body content of the phone notification template.\n"
+                },
+                "from": {
+                    "type": "string",
+                    "description": "The sender phone number for SMS or voice notifications.\n"
+                },
+                "syntax": {
+                    "type": "string",
+                    "description": "The syntax of the phone notification template.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "bodies",
+                "from",
+                "syntax"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getBrandingPhoneNotificationTemplateContentBody:getBrandingPhoneNotificationTemplateContentBody": {
+            "properties": {
+                "text": {
+                    "type": "string",
+                    "description": "The text content for SMS notifications.\n"
+                },
+                "voice": {
+                    "type": "string",
+                    "description": "The voice content for voice notifications.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "text",
+                "voice"
             ],
             "language": {
                 "nodejs": {
@@ -9151,6 +9296,50 @@
                 }
             }
         },
+        "auth0:index/getConnectionDirectoryDefaultMappingMapping:getConnectionDirectoryDefaultMappingMapping": {
+            "properties": {
+                "auth0": {
+                    "type": "string",
+                    "description": "The field location in the Auth0 schema.\n"
+                },
+                "idp": {
+                    "type": "string",
+                    "description": "The field location in the IDP schema.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "auth0",
+                "idp"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getConnectionDirectoryMapping:getConnectionDirectoryMapping": {
+            "properties": {
+                "auth0": {
+                    "type": "string",
+                    "description": "The field location in the Auth0 schema.\n"
+                },
+                "idp": {
+                    "type": "string",
+                    "description": "The field location in the IDP schema.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "auth0",
+                "idp"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "auth0:index/getConnectionKeysKey:getConnectionKeysKey": {
             "properties": {
                 "algorithm": {
@@ -11802,6 +11991,58 @@
                 }
             }
         },
+        "auth0:index/getPhoneNotificationTemplateContent:getPhoneNotificationTemplateContent": {
+            "properties": {
+                "bodies": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/getPhoneNotificationTemplateContentBody:getPhoneNotificationTemplateContentBody"
+                    },
+                    "description": "The body content of the phone notification template.\n"
+                },
+                "from": {
+                    "type": "string",
+                    "description": "The sender phone number for SMS or voice notifications.\n"
+                },
+                "syntax": {
+                    "type": "string",
+                    "description": "The syntax of the phone notification template.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "bodies",
+                "from",
+                "syntax"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getPhoneNotificationTemplateContentBody:getPhoneNotificationTemplateContentBody": {
+            "properties": {
+                "text": {
+                    "type": "string",
+                    "description": "The text content for SMS notifications.\n"
+                },
+                "voice": {
+                    "type": "string",
+                    "description": "The voice content for voice notifications.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "text",
+                "voice"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "auth0:index/getPhoneProviderConfiguration:getPhoneProviderConfiguration": {
             "properties": {
                 "defaultFrom": {
@@ -13317,6 +13558,101 @@
                 "type": "object"
             }
         },
+        "auth0:index/brandingPhoneNotificationTemplate:BrandingPhoneNotificationTemplate": {
+            "description": "Manages phone notification templates used for SMS and voice communications in Auth0.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\n// Phone Notification Template - OTP Enrollment\n// Configure the OTP enrollment phone notification template with SMS and voice support.\nconst otpEnrollment = new auth0.BrandingPhoneNotificationTemplate(\"otp_enrollment\", {\n    type: \"otp_enroll\",\n    disabled: false,\n    content: {\n        from: \"+1234567890\",\n        body: {\n            text: \"Your enrollment code is: @{code}\",\n            voice: \"Your enrollment code is @{code}\",\n        },\n    },\n});\n// Phone Notification Template - OTP Verification\n// Configure the OTP verification phone notification template.\nconst otpVerification = new auth0.BrandingPhoneNotificationTemplate(\"otp_verification\", {\n    type: \"otp_verify\",\n    disabled: false,\n    content: {\n        from: \"+1234567890\",\n        body: {\n            text: \"Your verification code is: @{code}\",\n            voice: \"Your verification code is @{code}\",\n        },\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\n# Phone Notification Template - OTP Enrollment\n# Configure the OTP enrollment phone notification template with SMS and voice support.\notp_enrollment = auth0.BrandingPhoneNotificationTemplate(\"otp_enrollment\",\n    type=\"otp_enroll\",\n    disabled=False,\n    content={\n        \"from_\": \"+1234567890\",\n        \"body\": {\n            \"text\": \"Your enrollment code is: @{code}\",\n            \"voice\": \"Your enrollment code is @{code}\",\n        },\n    })\n# Phone Notification Template - OTP Verification\n# Configure the OTP verification phone notification template.\notp_verification = auth0.BrandingPhoneNotificationTemplate(\"otp_verification\",\n    type=\"otp_verify\",\n    disabled=False,\n    content={\n        \"from_\": \"+1234567890\",\n        \"body\": {\n            \"text\": \"Your verification code is: @{code}\",\n            \"voice\": \"Your verification code is @{code}\",\n        },\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Phone Notification Template - OTP Enrollment\n    // Configure the OTP enrollment phone notification template with SMS and voice support.\n    var otpEnrollment = new Auth0.BrandingPhoneNotificationTemplate(\"otp_enrollment\", new()\n    {\n        Type = \"otp_enroll\",\n        Disabled = false,\n        Content = new Auth0.Inputs.BrandingPhoneNotificationTemplateContentArgs\n        {\n            From = \"+1234567890\",\n            Body = new Auth0.Inputs.BrandingPhoneNotificationTemplateContentBodyArgs\n            {\n                Text = \"Your enrollment code is: @{code}\",\n                Voice = \"Your enrollment code is @{code}\",\n            },\n        },\n    });\n\n    // Phone Notification Template - OTP Verification\n    // Configure the OTP verification phone notification template.\n    var otpVerification = new Auth0.BrandingPhoneNotificationTemplate(\"otp_verification\", new()\n    {\n        Type = \"otp_verify\",\n        Disabled = false,\n        Content = new Auth0.Inputs.BrandingPhoneNotificationTemplateContentArgs\n        {\n            From = \"+1234567890\",\n            Body = new Auth0.Inputs.BrandingPhoneNotificationTemplateContentBodyArgs\n            {\n                Text = \"Your verification code is: @{code}\",\n                Voice = \"Your verification code is @{code}\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Phone Notification Template - OTP Enrollment\n\t\t// Configure the OTP enrollment phone notification template with SMS and voice support.\n\t\t_, err := auth0.NewBrandingPhoneNotificationTemplate(ctx, \"otp_enrollment\", \u0026auth0.BrandingPhoneNotificationTemplateArgs{\n\t\t\tType:     pulumi.String(\"otp_enroll\"),\n\t\t\tDisabled: pulumi.Bool(false),\n\t\t\tContent: \u0026auth0.BrandingPhoneNotificationTemplateContentArgs{\n\t\t\t\tFrom: pulumi.String(\"+1234567890\"),\n\t\t\t\tBody: \u0026auth0.BrandingPhoneNotificationTemplateContentBodyArgs{\n\t\t\t\t\tText:  pulumi.String(\"Your enrollment code is: @{code}\"),\n\t\t\t\t\tVoice: pulumi.String(\"Your enrollment code is @{code}\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Phone Notification Template - OTP Verification\n\t\t// Configure the OTP verification phone notification template.\n\t\t_, err = auth0.NewBrandingPhoneNotificationTemplate(ctx, \"otp_verification\", \u0026auth0.BrandingPhoneNotificationTemplateArgs{\n\t\t\tType:     pulumi.String(\"otp_verify\"),\n\t\t\tDisabled: pulumi.Bool(false),\n\t\t\tContent: \u0026auth0.BrandingPhoneNotificationTemplateContentArgs{\n\t\t\t\tFrom: pulumi.String(\"+1234567890\"),\n\t\t\t\tBody: \u0026auth0.BrandingPhoneNotificationTemplateContentBodyArgs{\n\t\t\t\t\tText:  pulumi.String(\"Your verification code is: @{code}\"),\n\t\t\t\t\tVoice: pulumi.String(\"Your verification code is @{code}\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.BrandingPhoneNotificationTemplate;\nimport com.pulumi.auth0.BrandingPhoneNotificationTemplateArgs;\nimport com.pulumi.auth0.inputs.BrandingPhoneNotificationTemplateContentArgs;\nimport com.pulumi.auth0.inputs.BrandingPhoneNotificationTemplateContentBodyArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Phone Notification Template - OTP Enrollment\n        // Configure the OTP enrollment phone notification template with SMS and voice support.\n        var otpEnrollment = new BrandingPhoneNotificationTemplate(\"otpEnrollment\", BrandingPhoneNotificationTemplateArgs.builder()\n            .type(\"otp_enroll\")\n            .disabled(false)\n            .content(BrandingPhoneNotificationTemplateContentArgs.builder()\n                .from(\"+1234567890\")\n                .body(BrandingPhoneNotificationTemplateContentBodyArgs.builder()\n                    .text(\"Your enrollment code is: @{code}\")\n                    .voice(\"Your enrollment code is @{code}\")\n                    .build())\n                .build())\n            .build());\n\n        // Phone Notification Template - OTP Verification\n        // Configure the OTP verification phone notification template.\n        var otpVerification = new BrandingPhoneNotificationTemplate(\"otpVerification\", BrandingPhoneNotificationTemplateArgs.builder()\n            .type(\"otp_verify\")\n            .disabled(false)\n            .content(BrandingPhoneNotificationTemplateContentArgs.builder()\n                .from(\"+1234567890\")\n                .body(BrandingPhoneNotificationTemplateContentBodyArgs.builder()\n                    .text(\"Your verification code is: @{code}\")\n                    .voice(\"Your verification code is @{code}\")\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Phone Notification Template - OTP Enrollment\n  # Configure the OTP enrollment phone notification template with SMS and voice support.\n  otpEnrollment:\n    type: auth0:BrandingPhoneNotificationTemplate\n    name: otp_enrollment\n    properties:\n      type: otp_enroll\n      disabled: false\n      content:\n        from: '+1234567890'\n        body:\n          text: 'Your enrollment code is: @{code}'\n          voice: Your enrollment code is @{code}\n  # Phone Notification Template - OTP Verification\n  # Configure the OTP verification phone notification template.\n  otpVerification:\n    type: auth0:BrandingPhoneNotificationTemplate\n    name: otp_verification\n    properties:\n      type: otp_verify\n      disabled: false\n      content:\n        from: '+1234567890'\n        body:\n          text: 'Your verification code is: @{code}'\n          voice: Your verification code is @{code}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n#!/bin/bash\n\nExample: Import an existing Auth0 phone notification template into Terraform state\n\nReplace TEMPLATE_ID with the actual template ID from your Auth0 tenant\n\n```sh\n$ pulumi import auth0:index/brandingPhoneNotificationTemplate:BrandingPhoneNotificationTemplate otp_enrollment \"tem_xxxxxxxxxxxxxxxxxxx\"\n```\n\n",
+            "properties": {
+                "channel": {
+                    "type": "string",
+                    "description": "The channel of the phone notification template (e.g., \u003cspan pulumi-lang-nodejs=\"`sms`\" pulumi-lang-dotnet=\"`Sms`\" pulumi-lang-go=\"`sms`\" pulumi-lang-python=\"`sms`\" pulumi-lang-yaml=\"`sms`\" pulumi-lang-java=\"`sms`\"\u003e`sms`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`voice`\" pulumi-lang-dotnet=\"`Voice`\" pulumi-lang-go=\"`voice`\" pulumi-lang-python=\"`voice`\" pulumi-lang-yaml=\"`voice`\" pulumi-lang-java=\"`voice`\"\u003e`voice`\u003c/span\u003e).\n"
+                },
+                "content": {
+                    "$ref": "#/types/auth0:index/BrandingPhoneNotificationTemplateContent:BrandingPhoneNotificationTemplateContent",
+                    "description": "The content of the phone notification template.\n"
+                },
+                "customizable": {
+                    "type": "boolean",
+                    "description": "Indicates whether the phone notification template is customizable.\n"
+                },
+                "disabled": {
+                    "type": "boolean",
+                    "description": "Indicates whether the phone notification template is disabled.\n"
+                },
+                "templateId": {
+                    "type": "string",
+                    "description": "The ID of the phone notification template.\n"
+                },
+                "tenant": {
+                    "type": "string",
+                    "description": "The tenant of the phone notification template.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of the phone notification template.\n"
+                }
+            },
+            "required": [
+                "channel",
+                "content",
+                "customizable",
+                "disabled",
+                "templateId",
+                "tenant",
+                "type"
+            ],
+            "inputProperties": {
+                "content": {
+                    "$ref": "#/types/auth0:index/BrandingPhoneNotificationTemplateContent:BrandingPhoneNotificationTemplateContent",
+                    "description": "The content of the phone notification template.\n"
+                },
+                "disabled": {
+                    "type": "boolean",
+                    "description": "Indicates whether the phone notification template is disabled.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of the phone notification template.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "type"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering BrandingPhoneNotificationTemplate resources.\n",
+                "properties": {
+                    "channel": {
+                        "type": "string",
+                        "description": "The channel of the phone notification template (e.g., \u003cspan pulumi-lang-nodejs=\"`sms`\" pulumi-lang-dotnet=\"`Sms`\" pulumi-lang-go=\"`sms`\" pulumi-lang-python=\"`sms`\" pulumi-lang-yaml=\"`sms`\" pulumi-lang-java=\"`sms`\"\u003e`sms`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`voice`\" pulumi-lang-dotnet=\"`Voice`\" pulumi-lang-go=\"`voice`\" pulumi-lang-python=\"`voice`\" pulumi-lang-yaml=\"`voice`\" pulumi-lang-java=\"`voice`\"\u003e`voice`\u003c/span\u003e).\n"
+                    },
+                    "content": {
+                        "$ref": "#/types/auth0:index/BrandingPhoneNotificationTemplateContent:BrandingPhoneNotificationTemplateContent",
+                        "description": "The content of the phone notification template.\n"
+                    },
+                    "customizable": {
+                        "type": "boolean",
+                        "description": "Indicates whether the phone notification template is customizable.\n"
+                    },
+                    "disabled": {
+                        "type": "boolean",
+                        "description": "Indicates whether the phone notification template is disabled.\n"
+                    },
+                    "templateId": {
+                        "type": "string",
+                        "description": "The ID of the phone notification template.\n"
+                    },
+                    "tenant": {
+                        "type": "string",
+                        "description": "The tenant of the phone notification template.\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The type of the phone notification template.\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
         "auth0:index/brandingTheme:BrandingTheme": {
             "description": "This resource allows you to manage branding themes for your Universal Login page within your Auth0 tenant.\n\n## Import\n\nThis resource can be imported by specifying the Branding Theme ID.\n\nExample:\n\n```sh\n$ pulumi import auth0:index/brandingTheme:BrandingTheme my_theme \"XXXXXXXXXXXXXXXXXXXX\"\n```\n\n",
             "properties": {
@@ -14670,6 +15006,137 @@
                     "strategy": {
                         "type": "string",
                         "description": "The strategy of the connection on which to enable the client.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "auth0:index/connectionDirectory:ConnectionDirectory": {
+            "description": "With this resource, you can configure directory provisioning (directory sync) for `Google Workspace` Enterprise connections. This enables automatic user provisioning from the identity provider to Auth0.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst googleWorkspace = new auth0.Connection(\"google_workspace\", {\n    name: \"google-workspace-connection\",\n    displayName: \"Google Workspace\",\n    strategy: \"google-apps\",\n    options: {\n        clientId: \"your-google-client-id\",\n        clientSecret: \"your-google-client-secret\",\n        domain: \"example.com\",\n        apiEnableUsers: true,\n    },\n});\n// Configure directory provisioning with default settings\nconst _default = new auth0.ConnectionDirectory(\"default\", {connectionId: googleWorkspace.id});\n// Configure directory provisioning with custom mapping and auto-sync enabled\nconst custom = new auth0.ConnectionDirectory(\"custom\", {\n    connectionId: googleWorkspace.id,\n    synchronizeAutomatically: true,\n    mappings: [\n        {\n            auth0: \"email\",\n            idp: \"primaryEmail\",\n        },\n        {\n            auth0: \"family_name\",\n            idp: \"name.familyName\",\n        },\n        {\n            auth0: \"given_name\",\n            idp: \"name.givenName\",\n        },\n        {\n            auth0: \"external_id\",\n            idp: \"id\",\n        },\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\ngoogle_workspace = auth0.Connection(\"google_workspace\",\n    name=\"google-workspace-connection\",\n    display_name=\"Google Workspace\",\n    strategy=\"google-apps\",\n    options={\n        \"client_id\": \"your-google-client-id\",\n        \"client_secret\": \"your-google-client-secret\",\n        \"domain\": \"example.com\",\n        \"api_enable_users\": True,\n    })\n# Configure directory provisioning with default settings\ndefault = auth0.ConnectionDirectory(\"default\", connection_id=google_workspace.id)\n# Configure directory provisioning with custom mapping and auto-sync enabled\ncustom = auth0.ConnectionDirectory(\"custom\",\n    connection_id=google_workspace.id,\n    synchronize_automatically=True,\n    mappings=[\n        {\n            \"auth0\": \"email\",\n            \"idp\": \"primaryEmail\",\n        },\n        {\n            \"auth0\": \"family_name\",\n            \"idp\": \"name.familyName\",\n        },\n        {\n            \"auth0\": \"given_name\",\n            \"idp\": \"name.givenName\",\n        },\n        {\n            \"auth0\": \"external_id\",\n            \"idp\": \"id\",\n        },\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var googleWorkspace = new Auth0.Connection(\"google_workspace\", new()\n    {\n        Name = \"google-workspace-connection\",\n        DisplayName = \"Google Workspace\",\n        Strategy = \"google-apps\",\n        Options = new Auth0.Inputs.ConnectionOptionsArgs\n        {\n            ClientId = \"your-google-client-id\",\n            ClientSecret = \"your-google-client-secret\",\n            Domain = \"example.com\",\n            ApiEnableUsers = true,\n        },\n    });\n\n    // Configure directory provisioning with default settings\n    var @default = new Auth0.ConnectionDirectory(\"default\", new()\n    {\n        ConnectionId = googleWorkspace.Id,\n    });\n\n    // Configure directory provisioning with custom mapping and auto-sync enabled\n    var custom = new Auth0.ConnectionDirectory(\"custom\", new()\n    {\n        ConnectionId = googleWorkspace.Id,\n        SynchronizeAutomatically = true,\n        Mappings = new[]\n        {\n            new Auth0.Inputs.ConnectionDirectoryMappingArgs\n            {\n                Auth0 = \"email\",\n                Idp = \"primaryEmail\",\n            },\n            new Auth0.Inputs.ConnectionDirectoryMappingArgs\n            {\n                Auth0 = \"family_name\",\n                Idp = \"name.familyName\",\n            },\n            new Auth0.Inputs.ConnectionDirectoryMappingArgs\n            {\n                Auth0 = \"given_name\",\n                Idp = \"name.givenName\",\n            },\n            new Auth0.Inputs.ConnectionDirectoryMappingArgs\n            {\n                Auth0 = \"external_id\",\n                Idp = \"id\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tgoogleWorkspace, err := auth0.NewConnection(ctx, \"google_workspace\", \u0026auth0.ConnectionArgs{\n\t\t\tName:        pulumi.String(\"google-workspace-connection\"),\n\t\t\tDisplayName: pulumi.String(\"Google Workspace\"),\n\t\t\tStrategy:    pulumi.String(\"google-apps\"),\n\t\t\tOptions: \u0026auth0.ConnectionOptionsArgs{\n\t\t\t\tClientId:       pulumi.String(\"your-google-client-id\"),\n\t\t\t\tClientSecret:   pulumi.String(\"your-google-client-secret\"),\n\t\t\t\tDomain:         pulumi.String(\"example.com\"),\n\t\t\t\tApiEnableUsers: pulumi.Bool(true),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Configure directory provisioning with default settings\n\t\t_, err = auth0.NewConnectionDirectory(ctx, \"default\", \u0026auth0.ConnectionDirectoryArgs{\n\t\t\tConnectionId: googleWorkspace.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Configure directory provisioning with custom mapping and auto-sync enabled\n\t\t_, err = auth0.NewConnectionDirectory(ctx, \"custom\", \u0026auth0.ConnectionDirectoryArgs{\n\t\t\tConnectionId:             googleWorkspace.ID(),\n\t\t\tSynchronizeAutomatically: pulumi.Bool(true),\n\t\t\tMappings: auth0.ConnectionDirectoryMappingArray{\n\t\t\t\t\u0026auth0.ConnectionDirectoryMappingArgs{\n\t\t\t\t\tAuth0: pulumi.String(\"email\"),\n\t\t\t\t\tIdp:   pulumi.String(\"primaryEmail\"),\n\t\t\t\t},\n\t\t\t\t\u0026auth0.ConnectionDirectoryMappingArgs{\n\t\t\t\t\tAuth0: pulumi.String(\"family_name\"),\n\t\t\t\t\tIdp:   pulumi.String(\"name.familyName\"),\n\t\t\t\t},\n\t\t\t\t\u0026auth0.ConnectionDirectoryMappingArgs{\n\t\t\t\t\tAuth0: pulumi.String(\"given_name\"),\n\t\t\t\t\tIdp:   pulumi.String(\"name.givenName\"),\n\t\t\t\t},\n\t\t\t\t\u0026auth0.ConnectionDirectoryMappingArgs{\n\t\t\t\t\tAuth0: pulumi.String(\"external_id\"),\n\t\t\t\t\tIdp:   pulumi.String(\"id\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.Connection;\nimport com.pulumi.auth0.ConnectionArgs;\nimport com.pulumi.auth0.inputs.ConnectionOptionsArgs;\nimport com.pulumi.auth0.ConnectionDirectory;\nimport com.pulumi.auth0.ConnectionDirectoryArgs;\nimport com.pulumi.auth0.inputs.ConnectionDirectoryMappingArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var googleWorkspace = new Connection(\"googleWorkspace\", ConnectionArgs.builder()\n            .name(\"google-workspace-connection\")\n            .displayName(\"Google Workspace\")\n            .strategy(\"google-apps\")\n            .options(ConnectionOptionsArgs.builder()\n                .clientId(\"your-google-client-id\")\n                .clientSecret(\"your-google-client-secret\")\n                .domain(\"example.com\")\n                .apiEnableUsers(true)\n                .build())\n            .build());\n\n        // Configure directory provisioning with default settings\n        var default_ = new ConnectionDirectory(\"default\", ConnectionDirectoryArgs.builder()\n            .connectionId(googleWorkspace.id())\n            .build());\n\n        // Configure directory provisioning with custom mapping and auto-sync enabled\n        var custom = new ConnectionDirectory(\"custom\", ConnectionDirectoryArgs.builder()\n            .connectionId(googleWorkspace.id())\n            .synchronizeAutomatically(true)\n            .mappings(            \n                ConnectionDirectoryMappingArgs.builder()\n                    .auth0(\"email\")\n                    .idp(\"primaryEmail\")\n                    .build(),\n                ConnectionDirectoryMappingArgs.builder()\n                    .auth0(\"family_name\")\n                    .idp(\"name.familyName\")\n                    .build(),\n                ConnectionDirectoryMappingArgs.builder()\n                    .auth0(\"given_name\")\n                    .idp(\"name.givenName\")\n                    .build(),\n                ConnectionDirectoryMappingArgs.builder()\n                    .auth0(\"external_id\")\n                    .idp(\"id\")\n                    .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  googleWorkspace:\n    type: auth0:Connection\n    name: google_workspace\n    properties:\n      name: google-workspace-connection\n      displayName: Google Workspace\n      strategy: google-apps\n      options:\n        clientId: your-google-client-id\n        clientSecret: your-google-client-secret\n        domain: example.com\n        apiEnableUsers: true\n  # Configure directory provisioning with default settings\n  default:\n    type: auth0:ConnectionDirectory\n    properties:\n      connectionId: ${googleWorkspace.id}\n  # Configure directory provisioning with custom mapping and auto-sync enabled\n  custom:\n    type: auth0:ConnectionDirectory\n    properties:\n      connectionId: ${googleWorkspace.id}\n      synchronizeAutomatically: true\n      mappings:\n        - auth0: email\n          idp: primaryEmail\n        - auth0: family_name\n          idp: name.familyName\n        - auth0: given_name\n          idp: name.givenName\n        - auth0: external_id\n          idp: id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import auth0:index/connectionDirectory:ConnectionDirectory custom \"con_XXXXXXXXXXXXXX\"\n```\n\n",
+            "properties": {
+                "connectionId": {
+                    "type": "string",
+                    "description": "ID of the connection for this directory provisioning configuration.\n"
+                },
+                "connectionName": {
+                    "type": "string",
+                    "description": "Name of the connection for this directory provisioning configuration.\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "The timestamp at which the directory provisioning configuration was created.\n"
+                },
+                "lastSynchronizationAt": {
+                    "type": "string",
+                    "description": "The timestamp at which the connection was last synchronized.\n"
+                },
+                "lastSynchronizationError": {
+                    "type": "string",
+                    "description": "The error message of the last synchronization, if any.\n"
+                },
+                "lastSynchronizationStatus": {
+                    "type": "string",
+                    "description": "The status of the last synchronization.\n"
+                },
+                "mappings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/ConnectionDirectoryMapping:ConnectionDirectoryMapping"
+                    },
+                    "description": "Mapping between Auth0 attributes and IDP user attributes. Defaults to default mapping for the connection type if not specified.\n"
+                },
+                "strategy": {
+                    "type": "string",
+                    "description": "Strategy of the connection for this directory provisioning configuration.\n"
+                },
+                "synchronizeAutomatically": {
+                    "type": "boolean",
+                    "description": "Whether periodic automatic synchronization is enabled. Defaults to false.\n"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "description": "The timestamp at which the directory provisioning configuration was last updated.\n"
+                }
+            },
+            "required": [
+                "connectionId",
+                "connectionName",
+                "createdAt",
+                "lastSynchronizationAt",
+                "lastSynchronizationError",
+                "lastSynchronizationStatus",
+                "mappings",
+                "strategy",
+                "synchronizeAutomatically",
+                "updatedAt"
+            ],
+            "inputProperties": {
+                "connectionId": {
+                    "type": "string",
+                    "description": "ID of the connection for this directory provisioning configuration.\n",
+                    "willReplaceOnChanges": true
+                },
+                "mappings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/ConnectionDirectoryMapping:ConnectionDirectoryMapping"
+                    },
+                    "description": "Mapping between Auth0 attributes and IDP user attributes. Defaults to default mapping for the connection type if not specified.\n"
+                },
+                "synchronizeAutomatically": {
+                    "type": "boolean",
+                    "description": "Whether periodic automatic synchronization is enabled. Defaults to false.\n"
+                }
+            },
+            "requiredInputs": [
+                "connectionId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ConnectionDirectory resources.\n",
+                "properties": {
+                    "connectionId": {
+                        "type": "string",
+                        "description": "ID of the connection for this directory provisioning configuration.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "connectionName": {
+                        "type": "string",
+                        "description": "Name of the connection for this directory provisioning configuration.\n"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "The timestamp at which the directory provisioning configuration was created.\n"
+                    },
+                    "lastSynchronizationAt": {
+                        "type": "string",
+                        "description": "The timestamp at which the connection was last synchronized.\n"
+                    },
+                    "lastSynchronizationError": {
+                        "type": "string",
+                        "description": "The error message of the last synchronization, if any.\n"
+                    },
+                    "lastSynchronizationStatus": {
+                        "type": "string",
+                        "description": "The status of the last synchronization.\n"
+                    },
+                    "mappings": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/auth0:index/ConnectionDirectoryMapping:ConnectionDirectoryMapping"
+                        },
+                        "description": "Mapping between Auth0 attributes and IDP user attributes. Defaults to default mapping for the connection type if not specified.\n"
+                    },
+                    "strategy": {
+                        "type": "string",
+                        "description": "Strategy of the connection for this directory provisioning configuration.\n"
+                    },
+                    "synchronizeAutomatically": {
+                        "type": "boolean",
+                        "description": "Whether periodic automatic synchronization is enabled. Defaults to false.\n"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "description": "The timestamp at which the directory provisioning configuration was last updated.\n"
                     }
                 },
                 "type": "object"
@@ -17220,6 +17687,101 @@
                 "type": "object"
             }
         },
+        "auth0:index/phoneNotificationTemplate:PhoneNotificationTemplate": {
+            "description": "Manages phone notification templates used for SMS and voice communications in Auth0.\n",
+            "properties": {
+                "channel": {
+                    "type": "string",
+                    "description": "The channel of the phone notification template (e.g., \u003cspan pulumi-lang-nodejs=\"`sms`\" pulumi-lang-dotnet=\"`Sms`\" pulumi-lang-go=\"`sms`\" pulumi-lang-python=\"`sms`\" pulumi-lang-yaml=\"`sms`\" pulumi-lang-java=\"`sms`\"\u003e`sms`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`voice`\" pulumi-lang-dotnet=\"`Voice`\" pulumi-lang-go=\"`voice`\" pulumi-lang-python=\"`voice`\" pulumi-lang-yaml=\"`voice`\" pulumi-lang-java=\"`voice`\"\u003e`voice`\u003c/span\u003e).\n"
+                },
+                "content": {
+                    "$ref": "#/types/auth0:index/PhoneNotificationTemplateContent:PhoneNotificationTemplateContent",
+                    "description": "The content of the phone notification template.\n"
+                },
+                "customizable": {
+                    "type": "boolean",
+                    "description": "Indicates whether the phone notification template is customizable.\n"
+                },
+                "disabled": {
+                    "type": "boolean",
+                    "description": "Indicates whether the phone notification template is disabled.\n"
+                },
+                "templateId": {
+                    "type": "string",
+                    "description": "The ID of the phone notification template.\n"
+                },
+                "tenant": {
+                    "type": "string",
+                    "description": "The tenant of the phone notification template.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of the phone notification template.\n"
+                }
+            },
+            "required": [
+                "channel",
+                "content",
+                "customizable",
+                "disabled",
+                "templateId",
+                "tenant",
+                "type"
+            ],
+            "inputProperties": {
+                "content": {
+                    "$ref": "#/types/auth0:index/PhoneNotificationTemplateContent:PhoneNotificationTemplateContent",
+                    "description": "The content of the phone notification template.\n"
+                },
+                "disabled": {
+                    "type": "boolean",
+                    "description": "Indicates whether the phone notification template is disabled.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of the phone notification template.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "type"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering PhoneNotificationTemplate resources.\n",
+                "properties": {
+                    "channel": {
+                        "type": "string",
+                        "description": "The channel of the phone notification template (e.g., \u003cspan pulumi-lang-nodejs=\"`sms`\" pulumi-lang-dotnet=\"`Sms`\" pulumi-lang-go=\"`sms`\" pulumi-lang-python=\"`sms`\" pulumi-lang-yaml=\"`sms`\" pulumi-lang-java=\"`sms`\"\u003e`sms`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`voice`\" pulumi-lang-dotnet=\"`Voice`\" pulumi-lang-go=\"`voice`\" pulumi-lang-python=\"`voice`\" pulumi-lang-yaml=\"`voice`\" pulumi-lang-java=\"`voice`\"\u003e`voice`\u003c/span\u003e).\n"
+                    },
+                    "content": {
+                        "$ref": "#/types/auth0:index/PhoneNotificationTemplateContent:PhoneNotificationTemplateContent",
+                        "description": "The content of the phone notification template.\n"
+                    },
+                    "customizable": {
+                        "type": "boolean",
+                        "description": "Indicates whether the phone notification template is customizable.\n"
+                    },
+                    "disabled": {
+                        "type": "boolean",
+                        "description": "Indicates whether the phone notification template is disabled.\n"
+                    },
+                    "templateId": {
+                        "type": "string",
+                        "description": "The ID of the phone notification template.\n"
+                    },
+                    "tenant": {
+                        "type": "string",
+                        "description": "The tenant of the phone notification template.\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The type of the phone notification template.\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
         "auth0:index/phoneProvider:PhoneProvider": {
             "description": "Auth0 allows you to configure your own phone messaging provider to help you manage, monitor, and troubleshoot your SMS and voice communications. You can only configure one phone provider for all SMS and voice communications per tenant.\n\n!\u003e This resource manages to create a max of 1 phone provider for a tenant.\nTo avoid potential issues, it is recommended not to try creating multiple phone providers on the same tenant.\n\n!\u003e If you are using the \u003cspan pulumi-lang-nodejs=\"`auth0.PhoneProvider`\" pulumi-lang-dotnet=\"`auth0.PhoneProvider`\" pulumi-lang-go=\"`PhoneProvider`\" pulumi-lang-python=\"`PhoneProvider`\" pulumi-lang-yaml=\"`auth0.PhoneProvider`\" pulumi-lang-java=\"`auth0.PhoneProvider`\"\u003e`auth0.PhoneProvider`\u003c/span\u003e resource to create a \u003cspan pulumi-lang-nodejs=\"`custom`\" pulumi-lang-dotnet=\"`Custom`\" pulumi-lang-go=\"`custom`\" pulumi-lang-python=\"`custom`\" pulumi-lang-yaml=\"`custom`\" pulumi-lang-java=\"`custom`\"\u003e`custom`\u003c/span\u003e phone provider, you must ensure an action is created first with `custom-phone-provider` as the\u003cspan pulumi-lang-nodejs=\" supportedTriggers\n\" pulumi-lang-dotnet=\" SupportedTriggers\n\" pulumi-lang-go=\" supportedTriggers\n\" pulumi-lang-python=\" supported_triggers\n\" pulumi-lang-yaml=\" supportedTriggers\n\" pulumi-lang-java=\" supportedTriggers\n\"\u003e supported_triggers\n\u003c/span\u003e\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\n// This is an example on how to set up the phone provider with Twilio.\nconst twilioPhoneProvider = new auth0.PhoneProvider(\"twilio_phone_provider\", {\n    name: \"twilio\",\n    disabled: false,\n    credentials: {\n        authToken: \"secretAuthToken\",\n    },\n    configuration: {\n        deliveryMethods: [\n            \"text\",\n            \"voice\",\n        ],\n        defaultFrom: \"+1234567890\",\n        sid: \"ACXXXXXXXXXXXXXXXX\",\n        mssid: \"MSXXXXXXXXXXXXXXXX\",\n    },\n});\n// This is an example on how to set up the phone provider with a custom action.\n// Make sure a corresponding action exists with custom-phone-provider as supported triggers\nconst sendCustomPhone = new auth0.Action(\"send_custom_phone\", {\n    name: \"Custom Phone Provider\",\n    runtime: \"node22\",\n    deploy: true,\n    code: `/**\n * Handler to be executed while sending a phone notification\n * @param {Event} event - Details about the user and the context in which they are logging in.\n * @param {CustomPhoneProviderAPI} api - Methods and utilities to help change the behavior of sending a phone notification.\n */\nexports.onExecuteCustomPhoneProvider = async (event, api) =\u003e {\n    // Code goes here\n    return;\n};\n`,\n    supportedTriggers: {\n        id: \"custom-phone-provider\",\n        version: \"v1\",\n    },\n});\nconst customPhoneProvider = new auth0.PhoneProvider(\"custom_phone_provider\", {\n    name: \"custom\",\n    disabled: false,\n    configuration: {\n        deliveryMethods: [\n            \"text\",\n            \"voice\",\n        ],\n    },\n    credentials: {},\n}, {\n    dependsOn: [sendCustomPhone],\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\n# This is an example on how to set up the phone provider with Twilio.\ntwilio_phone_provider = auth0.PhoneProvider(\"twilio_phone_provider\",\n    name=\"twilio\",\n    disabled=False,\n    credentials={\n        \"auth_token\": \"secretAuthToken\",\n    },\n    configuration={\n        \"delivery_methods\": [\n            \"text\",\n            \"voice\",\n        ],\n        \"default_from\": \"+1234567890\",\n        \"sid\": \"ACXXXXXXXXXXXXXXXX\",\n        \"mssid\": \"MSXXXXXXXXXXXXXXXX\",\n    })\n# This is an example on how to set up the phone provider with a custom action.\n# Make sure a corresponding action exists with custom-phone-provider as supported triggers\nsend_custom_phone = auth0.Action(\"send_custom_phone\",\n    name=\"Custom Phone Provider\",\n    runtime=\"node22\",\n    deploy=True,\n    code=\"\"\"/**\n * Handler to be executed while sending a phone notification\n * @param {Event} event - Details about the user and the context in which they are logging in.\n * @param {CustomPhoneProviderAPI} api - Methods and utilities to help change the behavior of sending a phone notification.\n */\nexports.onExecuteCustomPhoneProvider = async (event, api) =\u003e {\n    // Code goes here\n    return;\n};\n\"\"\",\n    supported_triggers={\n        \"id\": \"custom-phone-provider\",\n        \"version\": \"v1\",\n    })\ncustom_phone_provider = auth0.PhoneProvider(\"custom_phone_provider\",\n    name=\"custom\",\n    disabled=False,\n    configuration={\n        \"delivery_methods\": [\n            \"text\",\n            \"voice\",\n        ],\n    },\n    credentials={},\n    opts = pulumi.ResourceOptions(depends_on=[send_custom_phone]))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // This is an example on how to set up the phone provider with Twilio.\n    var twilioPhoneProvider = new Auth0.PhoneProvider(\"twilio_phone_provider\", new()\n    {\n        Name = \"twilio\",\n        Disabled = false,\n        Credentials = new Auth0.Inputs.PhoneProviderCredentialsArgs\n        {\n            AuthToken = \"secretAuthToken\",\n        },\n        Configuration = new Auth0.Inputs.PhoneProviderConfigurationArgs\n        {\n            DeliveryMethods = new[]\n            {\n                \"text\",\n                \"voice\",\n            },\n            DefaultFrom = \"+1234567890\",\n            Sid = \"ACXXXXXXXXXXXXXXXX\",\n            Mssid = \"MSXXXXXXXXXXXXXXXX\",\n        },\n    });\n\n    // This is an example on how to set up the phone provider with a custom action.\n    // Make sure a corresponding action exists with custom-phone-provider as supported triggers\n    var sendCustomPhone = new Auth0.Action(\"send_custom_phone\", new()\n    {\n        Name = \"Custom Phone Provider\",\n        Runtime = \"node22\",\n        Deploy = true,\n        Code = @\"/**\n * Handler to be executed while sending a phone notification\n * @param {Event} event - Details about the user and the context in which they are logging in.\n * @param {CustomPhoneProviderAPI} api - Methods and utilities to help change the behavior of sending a phone notification.\n */\nexports.onExecuteCustomPhoneProvider = async (event, api) =\u003e {\n    // Code goes here\n    return;\n};\n\",\n        SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs\n        {\n            Id = \"custom-phone-provider\",\n            Version = \"v1\",\n        },\n    });\n\n    var customPhoneProvider = new Auth0.PhoneProvider(\"custom_phone_provider\", new()\n    {\n        Name = \"custom\",\n        Disabled = false,\n        Configuration = new Auth0.Inputs.PhoneProviderConfigurationArgs\n        {\n            DeliveryMethods = new[]\n            {\n                \"text\",\n                \"voice\",\n            },\n        },\n        Credentials = null,\n    }, new CustomResourceOptions\n    {\n        DependsOn =\n        {\n            sendCustomPhone,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// This is an example on how to set up the phone provider with Twilio.\n\t\t_, err := auth0.NewPhoneProvider(ctx, \"twilio_phone_provider\", \u0026auth0.PhoneProviderArgs{\n\t\t\tName:     pulumi.String(\"twilio\"),\n\t\t\tDisabled: pulumi.Bool(false),\n\t\t\tCredentials: \u0026auth0.PhoneProviderCredentialsArgs{\n\t\t\t\tAuthToken: pulumi.String(\"secretAuthToken\"),\n\t\t\t},\n\t\t\tConfiguration: \u0026auth0.PhoneProviderConfigurationArgs{\n\t\t\t\tDeliveryMethods: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"text\"),\n\t\t\t\t\tpulumi.String(\"voice\"),\n\t\t\t\t},\n\t\t\t\tDefaultFrom: pulumi.String(\"+1234567890\"),\n\t\t\t\tSid:         pulumi.String(\"ACXXXXXXXXXXXXXXXX\"),\n\t\t\t\tMssid:       pulumi.String(\"MSXXXXXXXXXXXXXXXX\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// This is an example on how to set up the phone provider with a custom action.\n\t\t// Make sure a corresponding action exists with custom-phone-provider as supported triggers\n\t\tsendCustomPhone, err := auth0.NewAction(ctx, \"send_custom_phone\", \u0026auth0.ActionArgs{\n\t\t\tName:    pulumi.String(\"Custom Phone Provider\"),\n\t\t\tRuntime: pulumi.String(\"node22\"),\n\t\t\tDeploy:  pulumi.Bool(true),\n\t\t\tCode: pulumi.String(`/**\n * Handler to be executed while sending a phone notification\n * @param {Event} event - Details about the user and the context in which they are logging in.\n * @param {CustomPhoneProviderAPI} api - Methods and utilities to help change the behavior of sending a phone notification.\n */\nexports.onExecuteCustomPhoneProvider = async (event, api) =\u003e {\n    // Code goes here\n    return;\n};\n`),\n\t\t\tSupportedTriggers: \u0026auth0.ActionSupportedTriggersArgs{\n\t\t\t\tId:      pulumi.String(\"custom-phone-provider\"),\n\t\t\t\tVersion: pulumi.String(\"v1\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = auth0.NewPhoneProvider(ctx, \"custom_phone_provider\", \u0026auth0.PhoneProviderArgs{\n\t\t\tName:     pulumi.String(\"custom\"),\n\t\t\tDisabled: pulumi.Bool(false),\n\t\t\tConfiguration: \u0026auth0.PhoneProviderConfigurationArgs{\n\t\t\t\tDeliveryMethods: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"text\"),\n\t\t\t\t\tpulumi.String(\"voice\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tCredentials: \u0026auth0.PhoneProviderCredentialsArgs{},\n\t\t}, pulumi.DependsOn([]pulumi.Resource{\n\t\t\tsendCustomPhone,\n\t\t}))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.PhoneProvider;\nimport com.pulumi.auth0.PhoneProviderArgs;\nimport com.pulumi.auth0.inputs.PhoneProviderCredentialsArgs;\nimport com.pulumi.auth0.inputs.PhoneProviderConfigurationArgs;\nimport com.pulumi.auth0.Action;\nimport com.pulumi.auth0.ActionArgs;\nimport com.pulumi.auth0.inputs.ActionSupportedTriggersArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // This is an example on how to set up the phone provider with Twilio.\n        var twilioPhoneProvider = new PhoneProvider(\"twilioPhoneProvider\", PhoneProviderArgs.builder()\n            .name(\"twilio\")\n            .disabled(false)\n            .credentials(PhoneProviderCredentialsArgs.builder()\n                .authToken(\"secretAuthToken\")\n                .build())\n            .configuration(PhoneProviderConfigurationArgs.builder()\n                .deliveryMethods(                \n                    \"text\",\n                    \"voice\")\n                .defaultFrom(\"+1234567890\")\n                .sid(\"ACXXXXXXXXXXXXXXXX\")\n                .mssid(\"MSXXXXXXXXXXXXXXXX\")\n                .build())\n            .build());\n\n        // This is an example on how to set up the phone provider with a custom action.\n        // Make sure a corresponding action exists with custom-phone-provider as supported triggers\n        var sendCustomPhone = new Action(\"sendCustomPhone\", ActionArgs.builder()\n            .name(\"Custom Phone Provider\")\n            .runtime(\"node22\")\n            .deploy(true)\n            .code(\"\"\"\n/**\n * Handler to be executed while sending a phone notification\n * @param {Event} event - Details about the user and the context in which they are logging in.\n * @param {CustomPhoneProviderAPI} api - Methods and utilities to help change the behavior of sending a phone notification.\n */\nexports.onExecuteCustomPhoneProvider = async (event, api) =\u003e {\n    // Code goes here\n    return;\n};\n            \"\"\")\n            .supportedTriggers(ActionSupportedTriggersArgs.builder()\n                .id(\"custom-phone-provider\")\n                .version(\"v1\")\n                .build())\n            .build());\n\n        var customPhoneProvider = new PhoneProvider(\"customPhoneProvider\", PhoneProviderArgs.builder()\n            .name(\"custom\")\n            .disabled(false)\n            .configuration(PhoneProviderConfigurationArgs.builder()\n                .deliveryMethods(                \n                    \"text\",\n                    \"voice\")\n                .build())\n            .credentials(PhoneProviderCredentialsArgs.builder()\n                .build())\n            .build(), CustomResourceOptions.builder()\n                .dependsOn(sendCustomPhone)\n                .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # This is an example on how to set up the phone provider with Twilio.\n  twilioPhoneProvider:\n    type: auth0:PhoneProvider\n    name: twilio_phone_provider\n    properties:\n      name: twilio\n      disabled: false\n      credentials:\n        authToken: secretAuthToken\n      configuration:\n        deliveryMethods:\n          - text\n          - voice\n        defaultFrom: '+1234567890'\n        sid: ACXXXXXXXXXXXXXXXX\n        mssid: MSXXXXXXXXXXXXXXXX\n  # This is an example on how to set up the phone provider with a custom action.\n  # Make sure a corresponding action exists with custom-phone-provider as supported triggers\n  sendCustomPhone:\n    type: auth0:Action\n    name: send_custom_phone\n    properties:\n      name: Custom Phone Provider\n      runtime: node22\n      deploy: true\n      code: |\n        /**\n         * Handler to be executed while sending a phone notification\n         * @param {Event} event - Details about the user and the context in which they are logging in.\n         * @param {CustomPhoneProviderAPI} api - Methods and utilities to help change the behavior of sending a phone notification.\n         */\n        exports.onExecuteCustomPhoneProvider = async (event, api) =\u003e {\n            // Code goes here\n            return;\n        };\n      supportedTriggers:\n        id: custom-phone-provider\n        version: v1\n  customPhoneProvider:\n    type: auth0:PhoneProvider\n    name: custom_phone_provider\n    properties:\n      name: custom\n      disabled: false # Disable the default phone provider\n      configuration:\n        deliveryMethods:\n          - text\n          - voice\n      credentials: {}\n    options:\n      dependsOn:\n        - ${sendCustomPhone}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThis resource can be imported by specifying the phone Provider ID.\n\nExample:\n\n```sh\n$ pulumi import auth0:index/phoneProvider:PhoneProvider my_phone_provider \"pro_XXXXXXXXXXXXXXXX\"\n```\n\n",
             "properties": {
@@ -17789,7 +18351,7 @@
             }
         },
         "auth0:index/resourceServer:ResourceServer": {
-            "description": "With this resource, you can set up APIs that can be consumed from your authorized applications.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myResourceServer = new auth0.ResourceServer(\"my_resource_server\", {\n    name: \"Example Resource Server (Managed by Terraform)\",\n    identifier: \"https://api.example.com\",\n    signingAlg: \"RS256\",\n    allowOfflineAccess: true,\n    tokenLifetime: 8600,\n    skipConsentForVerifiableFirstPartyClients: true,\n    consentPolicy: \"transactional-authorization-with-mfa\",\n    tokenEncryption: {\n        format: \"compact-nested-jwe\",\n        encryptionKey: {\n            name: \"keyname\",\n            algorithm: \"RSA-OAEP-256\",\n            pem: `-----BEGIN CERTIFICATE-----\nMIIFWDCCA0ACCQDXqpBo3R...G9w0BAQsFADBuMQswCQYDVQQGEwJl\n-----END CERTIFICATE-----\n`,\n        },\n    },\n    authorizationDetails: [\n        {\n            type: \"payment\",\n        },\n        {\n            type: \"non-payment\",\n        },\n    ],\n    proofOfPossession: {\n        mechanism: \"mtls\",\n        required: true,\n    },\n    subjectTypeAuthorization: {\n        user: {\n            policy: \"allow_all\",\n        },\n        client: {\n            policy: \"require_client_grant\",\n        },\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_resource_server = auth0.ResourceServer(\"my_resource_server\",\n    name=\"Example Resource Server (Managed by Terraform)\",\n    identifier=\"https://api.example.com\",\n    signing_alg=\"RS256\",\n    allow_offline_access=True,\n    token_lifetime=8600,\n    skip_consent_for_verifiable_first_party_clients=True,\n    consent_policy=\"transactional-authorization-with-mfa\",\n    token_encryption={\n        \"format\": \"compact-nested-jwe\",\n        \"encryption_key\": {\n            \"name\": \"keyname\",\n            \"algorithm\": \"RSA-OAEP-256\",\n            \"pem\": \"\"\"-----BEGIN CERTIFICATE-----\nMIIFWDCCA0ACCQDXqpBo3R...G9w0BAQsFADBuMQswCQYDVQQGEwJl\n-----END CERTIFICATE-----\n\"\"\",\n        },\n    },\n    authorization_details=[\n        {\n            \"type\": \"payment\",\n        },\n        {\n            \"type\": \"non-payment\",\n        },\n    ],\n    proof_of_possession={\n        \"mechanism\": \"mtls\",\n        \"required\": True,\n    },\n    subject_type_authorization={\n        \"user\": {\n            \"policy\": \"allow_all\",\n        },\n        \"client\": {\n            \"policy\": \"require_client_grant\",\n        },\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myResourceServer = new Auth0.ResourceServer(\"my_resource_server\", new()\n    {\n        Name = \"Example Resource Server (Managed by Terraform)\",\n        Identifier = \"https://api.example.com\",\n        SigningAlg = \"RS256\",\n        AllowOfflineAccess = true,\n        TokenLifetime = 8600,\n        SkipConsentForVerifiableFirstPartyClients = true,\n        ConsentPolicy = \"transactional-authorization-with-mfa\",\n        TokenEncryption = new Auth0.Inputs.ResourceServerTokenEncryptionArgs\n        {\n            Format = \"compact-nested-jwe\",\n            EncryptionKey = new Auth0.Inputs.ResourceServerTokenEncryptionEncryptionKeyArgs\n            {\n                Name = \"keyname\",\n                Algorithm = \"RSA-OAEP-256\",\n                Pem = @\"-----BEGIN CERTIFICATE-----\nMIIFWDCCA0ACCQDXqpBo3R...G9w0BAQsFADBuMQswCQYDVQQGEwJl\n-----END CERTIFICATE-----\n\",\n            },\n        },\n        AuthorizationDetails = new[]\n        {\n            new Auth0.Inputs.ResourceServerAuthorizationDetailArgs\n            {\n                Type = \"payment\",\n            },\n            new Auth0.Inputs.ResourceServerAuthorizationDetailArgs\n            {\n                Type = \"non-payment\",\n            },\n        },\n        ProofOfPossession = new Auth0.Inputs.ResourceServerProofOfPossessionArgs\n        {\n            Mechanism = \"mtls\",\n            Required = true,\n        },\n        SubjectTypeAuthorization = new Auth0.Inputs.ResourceServerSubjectTypeAuthorizationArgs\n        {\n            User = new Auth0.Inputs.ResourceServerSubjectTypeAuthorizationUserArgs\n            {\n                Policy = \"allow_all\",\n            },\n            Client = new Auth0.Inputs.ResourceServerSubjectTypeAuthorizationClientArgs\n            {\n                Policy = \"require_client_grant\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewResourceServer(ctx, \"my_resource_server\", \u0026auth0.ResourceServerArgs{\n\t\t\tName:               pulumi.String(\"Example Resource Server (Managed by Terraform)\"),\n\t\t\tIdentifier:         pulumi.String(\"https://api.example.com\"),\n\t\t\tSigningAlg:         pulumi.String(\"RS256\"),\n\t\t\tAllowOfflineAccess: pulumi.Bool(true),\n\t\t\tTokenLifetime:      pulumi.Int(8600),\n\t\t\tSkipConsentForVerifiableFirstPartyClients: pulumi.Bool(true),\n\t\t\tConsentPolicy: pulumi.String(\"transactional-authorization-with-mfa\"),\n\t\t\tTokenEncryption: \u0026auth0.ResourceServerTokenEncryptionArgs{\n\t\t\t\tFormat: pulumi.String(\"compact-nested-jwe\"),\n\t\t\t\tEncryptionKey: \u0026auth0.ResourceServerTokenEncryptionEncryptionKeyArgs{\n\t\t\t\t\tName:      pulumi.String(\"keyname\"),\n\t\t\t\t\tAlgorithm: pulumi.String(\"RSA-OAEP-256\"),\n\t\t\t\t\tPem:       pulumi.String(\"-----BEGIN CERTIFICATE-----\\nMIIFWDCCA0ACCQDXqpBo3R...G9w0BAQsFADBuMQswCQYDVQQGEwJl\\n-----END CERTIFICATE-----\\n\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tAuthorizationDetails: auth0.ResourceServerAuthorizationDetailArray{\n\t\t\t\t\u0026auth0.ResourceServerAuthorizationDetailArgs{\n\t\t\t\t\tType: pulumi.String(\"payment\"),\n\t\t\t\t},\n\t\t\t\t\u0026auth0.ResourceServerAuthorizationDetailArgs{\n\t\t\t\t\tType: pulumi.String(\"non-payment\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tProofOfPossession: \u0026auth0.ResourceServerProofOfPossessionArgs{\n\t\t\t\tMechanism: pulumi.String(\"mtls\"),\n\t\t\t\tRequired:  pulumi.Bool(true),\n\t\t\t},\n\t\t\tSubjectTypeAuthorization: \u0026auth0.ResourceServerSubjectTypeAuthorizationArgs{\n\t\t\t\tUser: \u0026auth0.ResourceServerSubjectTypeAuthorizationUserArgs{\n\t\t\t\t\tPolicy: pulumi.String(\"allow_all\"),\n\t\t\t\t},\n\t\t\t\tClient: \u0026auth0.ResourceServerSubjectTypeAuthorizationClientArgs{\n\t\t\t\t\tPolicy: pulumi.String(\"require_client_grant\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.ResourceServer;\nimport com.pulumi.auth0.ResourceServerArgs;\nimport com.pulumi.auth0.inputs.ResourceServerTokenEncryptionArgs;\nimport com.pulumi.auth0.inputs.ResourceServerTokenEncryptionEncryptionKeyArgs;\nimport com.pulumi.auth0.inputs.ResourceServerAuthorizationDetailArgs;\nimport com.pulumi.auth0.inputs.ResourceServerProofOfPossessionArgs;\nimport com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationArgs;\nimport com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationUserArgs;\nimport com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationClientArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myResourceServer = new ResourceServer(\"myResourceServer\", ResourceServerArgs.builder()\n            .name(\"Example Resource Server (Managed by Terraform)\")\n            .identifier(\"https://api.example.com\")\n            .signingAlg(\"RS256\")\n            .allowOfflineAccess(true)\n            .tokenLifetime(8600)\n            .skipConsentForVerifiableFirstPartyClients(true)\n            .consentPolicy(\"transactional-authorization-with-mfa\")\n            .tokenEncryption(ResourceServerTokenEncryptionArgs.builder()\n                .format(\"compact-nested-jwe\")\n                .encryptionKey(ResourceServerTokenEncryptionEncryptionKeyArgs.builder()\n                    .name(\"keyname\")\n                    .algorithm(\"RSA-OAEP-256\")\n                    .pem(\"\"\"\n-----BEGIN CERTIFICATE-----\nMIIFWDCCA0ACCQDXqpBo3R...G9w0BAQsFADBuMQswCQYDVQQGEwJl\n-----END CERTIFICATE-----\n                    \"\"\")\n                    .build())\n                .build())\n            .authorizationDetails(            \n                ResourceServerAuthorizationDetailArgs.builder()\n                    .type(\"payment\")\n                    .build(),\n                ResourceServerAuthorizationDetailArgs.builder()\n                    .type(\"non-payment\")\n                    .build())\n            .proofOfPossession(ResourceServerProofOfPossessionArgs.builder()\n                .mechanism(\"mtls\")\n                .required(true)\n                .build())\n            .subjectTypeAuthorization(ResourceServerSubjectTypeAuthorizationArgs.builder()\n                .user(ResourceServerSubjectTypeAuthorizationUserArgs.builder()\n                    .policy(\"allow_all\")\n                    .build())\n                .client(ResourceServerSubjectTypeAuthorizationClientArgs.builder()\n                    .policy(\"require_client_grant\")\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myResourceServer:\n    type: auth0:ResourceServer\n    name: my_resource_server\n    properties:\n      name: Example Resource Server (Managed by Terraform)\n      identifier: https://api.example.com\n      signingAlg: RS256\n      allowOfflineAccess: true\n      tokenLifetime: 8600\n      skipConsentForVerifiableFirstPartyClients: true\n      consentPolicy: transactional-authorization-with-mfa\n      tokenEncryption:\n        format: compact-nested-jwe\n        encryptionKey:\n          name: keyname\n          algorithm: RSA-OAEP-256\n          pem: |\n            -----BEGIN CERTIFICATE-----\n            MIIFWDCCA0ACCQDXqpBo3R...G9w0BAQsFADBuMQswCQYDVQQGEwJl\n            -----END CERTIFICATE-----\n      authorizationDetails:\n        - type: payment\n        - type: non-payment\n      proofOfPossession:\n        mechanism: mtls\n        required: true\n      subjectTypeAuthorization:\n        user:\n          policy: allow_all\n        client:\n          policy: require_client_grant\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nExisting resource servers can be imported using their ID.\n\nExample:\n\n```sh\n$ pulumi import auth0:index/resourceServer:ResourceServer my_resource_server \"XXXXXXXXXXXXXXXXXXXXXXX\"\n```\n\n",
+            "description": "With this resource, you can set up APIs that can be consumed from your authorized applications.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myResourceServer = new auth0.ResourceServer(\"my_resource_server\", {\n    name: \"Example Resource Server (Managed by Terraform)\",\n    identifier: \"https://api.example.com\",\n    signingAlg: \"RS256\",\n    allowOfflineAccess: true,\n    tokenLifetime: 8600,\n    skipConsentForVerifiableFirstPartyClients: true,\n    consentPolicy: \"transactional-authorization-with-mfa\",\n    tokenEncryption: {\n        format: \"compact-nested-jwe\",\n        encryptionKey: {\n            name: \"keyname\",\n            algorithm: \"RSA-OAEP-256\",\n            pem: `-----BEGIN CERTIFICATE-----\nMIIFWDCCA0ACCQDXqpBo3R...G9w0BAQsFADBuMQswCQYDVQQGEwJl\n-----END CERTIFICATE-----\n`,\n        },\n    },\n    authorizationDetails: [\n        {\n            type: \"payment\",\n        },\n        {\n            type: \"non-payment\",\n        },\n    ],\n    proofOfPossession: {\n        mechanism: \"mtls\",\n        required: true,\n    },\n    subjectTypeAuthorization: {\n        user: {\n            policy: \"allow_all\",\n        },\n        client: {\n            policy: \"require_client_grant\",\n        },\n    },\n});\n// Sample OIN resource server configuration\nconst oktaOinExpressConfigurationApi = new auth0.ResourceServer(\"okta_oin_express_configuration_api\", {\n    identifier: \"urn:auth0:express-configure\",\n    name: \"Okta OIN Express Configuration API\",\n    signingAlg: \"RS256\",\n    signingSecret: null,\n    skipConsentForVerifiableFirstPartyClients: false,\n    tokenDialect: null,\n    tokenLifetime: 86400,\n    verificationLocation: null,\n    proofOfPossession: {\n        disable: true,\n        mechanism: null,\n        required: false,\n    },\n    tokenEncryption: {\n        disable: true,\n        format: null,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_resource_server = auth0.ResourceServer(\"my_resource_server\",\n    name=\"Example Resource Server (Managed by Terraform)\",\n    identifier=\"https://api.example.com\",\n    signing_alg=\"RS256\",\n    allow_offline_access=True,\n    token_lifetime=8600,\n    skip_consent_for_verifiable_first_party_clients=True,\n    consent_policy=\"transactional-authorization-with-mfa\",\n    token_encryption={\n        \"format\": \"compact-nested-jwe\",\n        \"encryption_key\": {\n            \"name\": \"keyname\",\n            \"algorithm\": \"RSA-OAEP-256\",\n            \"pem\": \"\"\"-----BEGIN CERTIFICATE-----\nMIIFWDCCA0ACCQDXqpBo3R...G9w0BAQsFADBuMQswCQYDVQQGEwJl\n-----END CERTIFICATE-----\n\"\"\",\n        },\n    },\n    authorization_details=[\n        {\n            \"type\": \"payment\",\n        },\n        {\n            \"type\": \"non-payment\",\n        },\n    ],\n    proof_of_possession={\n        \"mechanism\": \"mtls\",\n        \"required\": True,\n    },\n    subject_type_authorization={\n        \"user\": {\n            \"policy\": \"allow_all\",\n        },\n        \"client\": {\n            \"policy\": \"require_client_grant\",\n        },\n    })\n# Sample OIN resource server configuration\nokta_oin_express_configuration_api = auth0.ResourceServer(\"okta_oin_express_configuration_api\",\n    identifier=\"urn:auth0:express-configure\",\n    name=\"Okta OIN Express Configuration API\",\n    signing_alg=\"RS256\",\n    signing_secret=None,\n    skip_consent_for_verifiable_first_party_clients=False,\n    token_dialect=None,\n    token_lifetime=86400,\n    verification_location=None,\n    proof_of_possession={\n        \"disable\": True,\n        \"mechanism\": None,\n        \"required\": False,\n    },\n    token_encryption={\n        \"disable\": True,\n        \"format\": None,\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myResourceServer = new Auth0.ResourceServer(\"my_resource_server\", new()\n    {\n        Name = \"Example Resource Server (Managed by Terraform)\",\n        Identifier = \"https://api.example.com\",\n        SigningAlg = \"RS256\",\n        AllowOfflineAccess = true,\n        TokenLifetime = 8600,\n        SkipConsentForVerifiableFirstPartyClients = true,\n        ConsentPolicy = \"transactional-authorization-with-mfa\",\n        TokenEncryption = new Auth0.Inputs.ResourceServerTokenEncryptionArgs\n        {\n            Format = \"compact-nested-jwe\",\n            EncryptionKey = new Auth0.Inputs.ResourceServerTokenEncryptionEncryptionKeyArgs\n            {\n                Name = \"keyname\",\n                Algorithm = \"RSA-OAEP-256\",\n                Pem = @\"-----BEGIN CERTIFICATE-----\nMIIFWDCCA0ACCQDXqpBo3R...G9w0BAQsFADBuMQswCQYDVQQGEwJl\n-----END CERTIFICATE-----\n\",\n            },\n        },\n        AuthorizationDetails = new[]\n        {\n            new Auth0.Inputs.ResourceServerAuthorizationDetailArgs\n            {\n                Type = \"payment\",\n            },\n            new Auth0.Inputs.ResourceServerAuthorizationDetailArgs\n            {\n                Type = \"non-payment\",\n            },\n        },\n        ProofOfPossession = new Auth0.Inputs.ResourceServerProofOfPossessionArgs\n        {\n            Mechanism = \"mtls\",\n            Required = true,\n        },\n        SubjectTypeAuthorization = new Auth0.Inputs.ResourceServerSubjectTypeAuthorizationArgs\n        {\n            User = new Auth0.Inputs.ResourceServerSubjectTypeAuthorizationUserArgs\n            {\n                Policy = \"allow_all\",\n            },\n            Client = new Auth0.Inputs.ResourceServerSubjectTypeAuthorizationClientArgs\n            {\n                Policy = \"require_client_grant\",\n            },\n        },\n    });\n\n    // Sample OIN resource server configuration\n    var oktaOinExpressConfigurationApi = new Auth0.ResourceServer(\"okta_oin_express_configuration_api\", new()\n    {\n        Identifier = \"urn:auth0:express-configure\",\n        Name = \"Okta OIN Express Configuration API\",\n        SigningAlg = \"RS256\",\n        SigningSecret = null,\n        SkipConsentForVerifiableFirstPartyClients = false,\n        TokenDialect = null,\n        TokenLifetime = 86400,\n        VerificationLocation = null,\n        ProofOfPossession = new Auth0.Inputs.ResourceServerProofOfPossessionArgs\n        {\n            Disable = true,\n            Mechanism = null,\n            Required = false,\n        },\n        TokenEncryption = new Auth0.Inputs.ResourceServerTokenEncryptionArgs\n        {\n            Disable = true,\n            Format = null,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewResourceServer(ctx, \"my_resource_server\", \u0026auth0.ResourceServerArgs{\n\t\t\tName:               pulumi.String(\"Example Resource Server (Managed by Terraform)\"),\n\t\t\tIdentifier:         pulumi.String(\"https://api.example.com\"),\n\t\t\tSigningAlg:         pulumi.String(\"RS256\"),\n\t\t\tAllowOfflineAccess: pulumi.Bool(true),\n\t\t\tTokenLifetime:      pulumi.Int(8600),\n\t\t\tSkipConsentForVerifiableFirstPartyClients: pulumi.Bool(true),\n\t\t\tConsentPolicy: pulumi.String(\"transactional-authorization-with-mfa\"),\n\t\t\tTokenEncryption: \u0026auth0.ResourceServerTokenEncryptionArgs{\n\t\t\t\tFormat: pulumi.String(\"compact-nested-jwe\"),\n\t\t\t\tEncryptionKey: \u0026auth0.ResourceServerTokenEncryptionEncryptionKeyArgs{\n\t\t\t\t\tName:      pulumi.String(\"keyname\"),\n\t\t\t\t\tAlgorithm: pulumi.String(\"RSA-OAEP-256\"),\n\t\t\t\t\tPem:       pulumi.String(\"-----BEGIN CERTIFICATE-----\\nMIIFWDCCA0ACCQDXqpBo3R...G9w0BAQsFADBuMQswCQYDVQQGEwJl\\n-----END CERTIFICATE-----\\n\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tAuthorizationDetails: auth0.ResourceServerAuthorizationDetailArray{\n\t\t\t\t\u0026auth0.ResourceServerAuthorizationDetailArgs{\n\t\t\t\t\tType: pulumi.String(\"payment\"),\n\t\t\t\t},\n\t\t\t\t\u0026auth0.ResourceServerAuthorizationDetailArgs{\n\t\t\t\t\tType: pulumi.String(\"non-payment\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tProofOfPossession: \u0026auth0.ResourceServerProofOfPossessionArgs{\n\t\t\t\tMechanism: pulumi.String(\"mtls\"),\n\t\t\t\tRequired:  pulumi.Bool(true),\n\t\t\t},\n\t\t\tSubjectTypeAuthorization: \u0026auth0.ResourceServerSubjectTypeAuthorizationArgs{\n\t\t\t\tUser: \u0026auth0.ResourceServerSubjectTypeAuthorizationUserArgs{\n\t\t\t\t\tPolicy: pulumi.String(\"allow_all\"),\n\t\t\t\t},\n\t\t\t\tClient: \u0026auth0.ResourceServerSubjectTypeAuthorizationClientArgs{\n\t\t\t\t\tPolicy: pulumi.String(\"require_client_grant\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Sample OIN resource server configuration\n\t\t_, err = auth0.NewResourceServer(ctx, \"okta_oin_express_configuration_api\", \u0026auth0.ResourceServerArgs{\n\t\t\tIdentifier:    pulumi.String(\"urn:auth0:express-configure\"),\n\t\t\tName:          pulumi.String(\"Okta OIN Express Configuration API\"),\n\t\t\tSigningAlg:    pulumi.String(\"RS256\"),\n\t\t\tSigningSecret: nil,\n\t\t\tSkipConsentForVerifiableFirstPartyClients: pulumi.Bool(false),\n\t\t\tTokenDialect:         nil,\n\t\t\tTokenLifetime:        pulumi.Int(86400),\n\t\t\tVerificationLocation: nil,\n\t\t\tProofOfPossession: \u0026auth0.ResourceServerProofOfPossessionArgs{\n\t\t\t\tDisable:   pulumi.Bool(true),\n\t\t\t\tMechanism: nil,\n\t\t\t\tRequired:  pulumi.Bool(false),\n\t\t\t},\n\t\t\tTokenEncryption: \u0026auth0.ResourceServerTokenEncryptionArgs{\n\t\t\t\tDisable: pulumi.Bool(true),\n\t\t\t\tFormat:  nil,\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.ResourceServer;\nimport com.pulumi.auth0.ResourceServerArgs;\nimport com.pulumi.auth0.inputs.ResourceServerTokenEncryptionArgs;\nimport com.pulumi.auth0.inputs.ResourceServerTokenEncryptionEncryptionKeyArgs;\nimport com.pulumi.auth0.inputs.ResourceServerAuthorizationDetailArgs;\nimport com.pulumi.auth0.inputs.ResourceServerProofOfPossessionArgs;\nimport com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationArgs;\nimport com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationUserArgs;\nimport com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationClientArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myResourceServer = new ResourceServer(\"myResourceServer\", ResourceServerArgs.builder()\n            .name(\"Example Resource Server (Managed by Terraform)\")\n            .identifier(\"https://api.example.com\")\n            .signingAlg(\"RS256\")\n            .allowOfflineAccess(true)\n            .tokenLifetime(8600)\n            .skipConsentForVerifiableFirstPartyClients(true)\n            .consentPolicy(\"transactional-authorization-with-mfa\")\n            .tokenEncryption(ResourceServerTokenEncryptionArgs.builder()\n                .format(\"compact-nested-jwe\")\n                .encryptionKey(ResourceServerTokenEncryptionEncryptionKeyArgs.builder()\n                    .name(\"keyname\")\n                    .algorithm(\"RSA-OAEP-256\")\n                    .pem(\"\"\"\n-----BEGIN CERTIFICATE-----\nMIIFWDCCA0ACCQDXqpBo3R...G9w0BAQsFADBuMQswCQYDVQQGEwJl\n-----END CERTIFICATE-----\n                    \"\"\")\n                    .build())\n                .build())\n            .authorizationDetails(            \n                ResourceServerAuthorizationDetailArgs.builder()\n                    .type(\"payment\")\n                    .build(),\n                ResourceServerAuthorizationDetailArgs.builder()\n                    .type(\"non-payment\")\n                    .build())\n            .proofOfPossession(ResourceServerProofOfPossessionArgs.builder()\n                .mechanism(\"mtls\")\n                .required(true)\n                .build())\n            .subjectTypeAuthorization(ResourceServerSubjectTypeAuthorizationArgs.builder()\n                .user(ResourceServerSubjectTypeAuthorizationUserArgs.builder()\n                    .policy(\"allow_all\")\n                    .build())\n                .client(ResourceServerSubjectTypeAuthorizationClientArgs.builder()\n                    .policy(\"require_client_grant\")\n                    .build())\n                .build())\n            .build());\n\n        // Sample OIN resource server configuration\n        var oktaOinExpressConfigurationApi = new ResourceServer(\"oktaOinExpressConfigurationApi\", ResourceServerArgs.builder()\n            .identifier(\"urn:auth0:express-configure\")\n            .name(\"Okta OIN Express Configuration API\")\n            .signingAlg(\"RS256\")\n            .signingSecret(null)\n            .skipConsentForVerifiableFirstPartyClients(false)\n            .tokenDialect(null)\n            .tokenLifetime(86400)\n            .verificationLocation(null)\n            .proofOfPossession(ResourceServerProofOfPossessionArgs.builder()\n                .disable(true)\n                .mechanism(null)\n                .required(false)\n                .build())\n            .tokenEncryption(ResourceServerTokenEncryptionArgs.builder()\n                .disable(true)\n                .format(null)\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myResourceServer:\n    type: auth0:ResourceServer\n    name: my_resource_server\n    properties:\n      name: Example Resource Server (Managed by Terraform)\n      identifier: https://api.example.com\n      signingAlg: RS256\n      allowOfflineAccess: true\n      tokenLifetime: 8600\n      skipConsentForVerifiableFirstPartyClients: true\n      consentPolicy: transactional-authorization-with-mfa\n      tokenEncryption:\n        format: compact-nested-jwe\n        encryptionKey:\n          name: keyname\n          algorithm: RSA-OAEP-256\n          pem: |\n            -----BEGIN CERTIFICATE-----\n            MIIFWDCCA0ACCQDXqpBo3R...G9w0BAQsFADBuMQswCQYDVQQGEwJl\n            -----END CERTIFICATE-----\n      authorizationDetails:\n        - type: payment\n        - type: non-payment\n      proofOfPossession:\n        mechanism: mtls\n        required: true\n      subjectTypeAuthorization:\n        user:\n          policy: allow_all\n        client:\n          policy: require_client_grant\n  # Sample OIN resource server configuration\n  oktaOinExpressConfigurationApi:\n    type: auth0:ResourceServer\n    name: okta_oin_express_configuration_api\n    properties:\n      identifier: urn:auth0:express-configure\n      name: Okta OIN Express Configuration API\n      signingAlg: RS256\n      signingSecret: null\n      skipConsentForVerifiableFirstPartyClients: false\n      tokenDialect: null\n      tokenLifetime: 86400\n      verificationLocation: null\n      proofOfPossession:\n        disable: true\n        mechanism: null\n        required: false\n      tokenEncryption:\n        disable: true\n        format: null\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nExisting resource servers can be imported using their ID.\n\nExample:\n\n```sh\n$ pulumi import auth0:index/resourceServer:ResourceServer my_resource_server \"XXXXXXXXXXXXXXXXXXXXXXX\"\n```\n\n",
             "properties": {
                 "allowOfflineAccess": {
                     "type": "boolean",
@@ -20038,6 +20600,73 @@
                 "type": "object"
             }
         },
+        "auth0:index/getBrandingPhoneNotificationTemplate:getBrandingPhoneNotificationTemplate": {
+            "description": "Data source to retrieve a specific Auth0 Phone Notification Template by \u003cspan pulumi-lang-nodejs=\"`templateId`\" pulumi-lang-dotnet=\"`TemplateId`\" pulumi-lang-go=\"`templateId`\" pulumi-lang-python=\"`template_id`\" pulumi-lang-yaml=\"`templateId`\" pulumi-lang-java=\"`templateId`\"\u003e`template_id`\u003c/span\u003e.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\n// Data Source Example: Retrieve Auth0 Phone Notification Templates\n// This example shows how to fetch existing phone notification templates from your Auth0 tenant\n// Retrieve the OTP enrollment template\nconst otpEnrollment = auth0.getBrandingPhoneNotificationTemplate({\n    templateId: \"tem_xxxxxxxxxxxxxxxxx\",\n});\nexport const otpEnrollmentId = otpEnrollment.then(otpEnrollment =\u003e otpEnrollment.id);\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\n# Data Source Example: Retrieve Auth0 Phone Notification Templates\n# This example shows how to fetch existing phone notification templates from your Auth0 tenant\n# Retrieve the OTP enrollment template\notp_enrollment = auth0.get_branding_phone_notification_template(template_id=\"tem_xxxxxxxxxxxxxxxxx\")\npulumi.export(\"otpEnrollmentId\", otp_enrollment.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Data Source Example: Retrieve Auth0 Phone Notification Templates\n    // This example shows how to fetch existing phone notification templates from your Auth0 tenant\n    // Retrieve the OTP enrollment template\n    var otpEnrollment = Auth0.GetBrandingPhoneNotificationTemplate.Invoke(new()\n    {\n        TemplateId = \"tem_xxxxxxxxxxxxxxxxx\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"otpEnrollmentId\"] = otpEnrollment.Apply(getBrandingPhoneNotificationTemplateResult =\u003e getBrandingPhoneNotificationTemplateResult.Id),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Data Source Example: Retrieve Auth0 Phone Notification Templates\n\t\t// This example shows how to fetch existing phone notification templates from your Auth0 tenant\n\t\t// Retrieve the OTP enrollment template\n\t\totpEnrollment, err := auth0.LookupBrandingPhoneNotificationTemplate(ctx, \u0026auth0.LookupBrandingPhoneNotificationTemplateArgs{\n\t\t\tTemplateId: \"tem_xxxxxxxxxxxxxxxxx\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"otpEnrollmentId\", otpEnrollment.Id)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.Auth0Functions;\nimport com.pulumi.auth0.inputs.GetBrandingPhoneNotificationTemplateArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Data Source Example: Retrieve Auth0 Phone Notification Templates\n        // This example shows how to fetch existing phone notification templates from your Auth0 tenant\n        // Retrieve the OTP enrollment template\n        final var otpEnrollment = Auth0Functions.getBrandingPhoneNotificationTemplate(GetBrandingPhoneNotificationTemplateArgs.builder()\n            .templateId(\"tem_xxxxxxxxxxxxxxxxx\")\n            .build());\n\n        ctx.export(\"otpEnrollmentId\", otpEnrollment.id());\n    }\n}\n```\n```yaml\nvariables:\n  # Data Source Example: Retrieve Auth0 Phone Notification Templates\n  # This example shows how to fetch existing phone notification templates from your Auth0 tenant\n\n  # Retrieve the OTP enrollment template\n  otpEnrollment:\n    fn::invoke:\n      function: auth0:getBrandingPhoneNotificationTemplate\n      arguments:\n        templateId: tem_xxxxxxxxxxxxxxxxx\noutputs:\n  # Output the template ID\n  otpEnrollmentId: ${otpEnrollment.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getBrandingPhoneNotificationTemplate.\n",
+                "properties": {
+                    "templateId": {
+                        "type": "string",
+                        "description": "The ID of the Phone Notification Template.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "templateId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getBrandingPhoneNotificationTemplate.\n",
+                "properties": {
+                    "channel": {
+                        "description": "The channel of the phone notification template (e.g., \u003cspan pulumi-lang-nodejs=\"`sms`\" pulumi-lang-dotnet=\"`Sms`\" pulumi-lang-go=\"`sms`\" pulumi-lang-python=\"`sms`\" pulumi-lang-yaml=\"`sms`\" pulumi-lang-java=\"`sms`\"\u003e`sms`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`voice`\" pulumi-lang-dotnet=\"`Voice`\" pulumi-lang-go=\"`voice`\" pulumi-lang-python=\"`voice`\" pulumi-lang-yaml=\"`voice`\" pulumi-lang-java=\"`voice`\"\u003e`voice`\u003c/span\u003e).\n",
+                        "type": "string"
+                    },
+                    "contents": {
+                        "description": "The content of the phone notification template.\n",
+                        "items": {
+                            "$ref": "#/types/auth0:index/getBrandingPhoneNotificationTemplateContent:getBrandingPhoneNotificationTemplateContent"
+                        },
+                        "type": "array"
+                    },
+                    "customizable": {
+                        "description": "Indicates whether the phone notification template is customizable.\n",
+                        "type": "boolean"
+                    },
+                    "disabled": {
+                        "description": "Indicates whether the phone notification template is disabled.\n",
+                        "type": "boolean"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "type": "string"
+                    },
+                    "templateId": {
+                        "description": "The ID of the Phone Notification Template.\n",
+                        "type": "string"
+                    },
+                    "tenant": {
+                        "description": "The tenant of the phone notification template.\n",
+                        "type": "string"
+                    },
+                    "type": {
+                        "description": "The type of the phone notification template.\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "channel",
+                    "contents",
+                    "customizable",
+                    "disabled",
+                    "templateId",
+                    "tenant",
+                    "type",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
         "auth0:index/getBrandingTheme:getBrandingTheme": {
             "description": "Use this data source to access information about the tenant's branding theme settings.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myBrandingTheme = auth0.getBrandingTheme({});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_branding_theme = auth0.get_branding_theme()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myBrandingTheme = Auth0.GetBrandingTheme.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.LookupBrandingTheme(ctx, map[string]interface{}{}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.Auth0Functions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var myBrandingTheme = Auth0Functions.getBrandingTheme(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);\n\n    }\n}\n```\n```yaml\nvariables:\n  myBrandingTheme:\n    fn::invoke:\n      function: auth0:getBrandingTheme\n      arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "outputs": {
@@ -20664,6 +21293,130 @@
                     "realms",
                     "showAsButton",
                     "strategy",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "auth0:index/getConnectionDirectory:getConnectionDirectory": {
+            "description": "Data source to retrieve directory provisioning configuration for an Auth0 connection by \u003cspan pulumi-lang-nodejs=\"`connectionId`\" pulumi-lang-dotnet=\"`ConnectionId`\" pulumi-lang-go=\"`connectionId`\" pulumi-lang-python=\"`connection_id`\" pulumi-lang-yaml=\"`connectionId`\" pulumi-lang-java=\"`connectionId`\"\u003e`connection_id`\u003c/span\u003e.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myDirectoryConfig = auth0.getConnectionDirectory({\n    connectionId: \"con_xxxxxxxxxxxxx\",\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_directory_config = auth0.get_connection_directory(connection_id=\"con_xxxxxxxxxxxxx\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myDirectoryConfig = Auth0.GetConnectionDirectory.Invoke(new()\n    {\n        ConnectionId = \"con_xxxxxxxxxxxxx\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.LookupConnectionDirectory(ctx, \u0026auth0.LookupConnectionDirectoryArgs{\n\t\t\tConnectionId: \"con_xxxxxxxxxxxxx\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.Auth0Functions;\nimport com.pulumi.auth0.inputs.GetConnectionDirectoryArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var myDirectoryConfig = Auth0Functions.getConnectionDirectory(GetConnectionDirectoryArgs.builder()\n            .connectionId(\"con_xxxxxxxxxxxxx\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  myDirectoryConfig:\n    fn::invoke:\n      function: auth0:getConnectionDirectory\n      arguments:\n        connectionId: con_xxxxxxxxxxxxx\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getConnectionDirectory.\n",
+                "properties": {
+                    "connectionId": {
+                        "type": "string",
+                        "description": "ID of the connection for this directory provisioning configuration.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "connectionId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getConnectionDirectory.\n",
+                "properties": {
+                    "connectionId": {
+                        "description": "ID of the connection for this directory provisioning configuration.\n",
+                        "type": "string"
+                    },
+                    "connectionName": {
+                        "description": "Name of the connection for this directory provisioning configuration.\n",
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "description": "The timestamp at which the directory provisioning configuration was created.\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "type": "string"
+                    },
+                    "lastSynchronizationAt": {
+                        "description": "The timestamp at which the connection was last synchronized.\n",
+                        "type": "string"
+                    },
+                    "lastSynchronizationError": {
+                        "description": "The error message of the last synchronization, if any.\n",
+                        "type": "string"
+                    },
+                    "lastSynchronizationStatus": {
+                        "description": "The status of the last synchronization.\n",
+                        "type": "string"
+                    },
+                    "mappings": {
+                        "description": "Mapping between Auth0 attributes and IDP user attributes. Defaults to default mapping for the connection type if not specified.\n",
+                        "items": {
+                            "$ref": "#/types/auth0:index/getConnectionDirectoryMapping:getConnectionDirectoryMapping"
+                        },
+                        "type": "array"
+                    },
+                    "strategy": {
+                        "description": "Strategy of the connection for this directory provisioning configuration.\n",
+                        "type": "string"
+                    },
+                    "synchronizeAutomatically": {
+                        "description": "Whether periodic automatic synchronization is enabled. Defaults to false.\n",
+                        "type": "boolean"
+                    },
+                    "updatedAt": {
+                        "description": "The timestamp at which the directory provisioning configuration was last updated.\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "connectionId",
+                    "connectionName",
+                    "createdAt",
+                    "lastSynchronizationAt",
+                    "lastSynchronizationError",
+                    "lastSynchronizationStatus",
+                    "mappings",
+                    "strategy",
+                    "synchronizeAutomatically",
+                    "updatedAt",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "auth0:index/getConnectionDirectoryDefaultMapping:getConnectionDirectoryDefaultMapping": {
+            "description": "Data source to retrieve the default attribute mapping for directory provisioning on an Auth0 connection by \u003cspan pulumi-lang-nodejs=\"`connectionId`\" pulumi-lang-dotnet=\"`ConnectionId`\" pulumi-lang-go=\"`connectionId`\" pulumi-lang-python=\"`connection_id`\" pulumi-lang-yaml=\"`connectionId`\" pulumi-lang-java=\"`connectionId`\"\u003e`connection_id`\u003c/span\u003e. This shows the standard mapping that would be used if no custom mapping is specified.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myDirectoryConfigMapping = auth0.getConnectionDirectoryDefaultMapping({\n    connectionId: \"con_xxxxxxxxxxxxx\",\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_directory_config_mapping = auth0.get_connection_directory_default_mapping(connection_id=\"con_xxxxxxxxxxxxx\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myDirectoryConfigMapping = Auth0.GetConnectionDirectoryDefaultMapping.Invoke(new()\n    {\n        ConnectionId = \"con_xxxxxxxxxxxxx\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.GetConnectionDirectoryDefaultMapping(ctx, \u0026auth0.GetConnectionDirectoryDefaultMappingArgs{\n\t\t\tConnectionId: \"con_xxxxxxxxxxxxx\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.Auth0Functions;\nimport com.pulumi.auth0.inputs.GetConnectionDirectoryDefaultMappingArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var myDirectoryConfigMapping = Auth0Functions.getConnectionDirectoryDefaultMapping(GetConnectionDirectoryDefaultMappingArgs.builder()\n            .connectionId(\"con_xxxxxxxxxxxxx\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  myDirectoryConfigMapping:\n    fn::invoke:\n      function: auth0:getConnectionDirectoryDefaultMapping\n      arguments:\n        connectionId: con_xxxxxxxxxxxxx\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getConnectionDirectoryDefaultMapping.\n",
+                "properties": {
+                    "connectionId": {
+                        "type": "string",
+                        "description": "ID of the connection to retrieve the default directory provisioning mapping.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "connectionId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getConnectionDirectoryDefaultMapping.\n",
+                "properties": {
+                    "connectionId": {
+                        "description": "ID of the connection to retrieve the default directory provisioning mapping.\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "type": "string"
+                    },
+                    "mappings": {
+                        "description": "Default mapping between Auth0 attributes and IDP user attributes for this connection type.\n",
+                        "items": {
+                            "$ref": "#/types/auth0:index/getConnectionDirectoryDefaultMappingMapping:getConnectionDirectoryDefaultMappingMapping"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "connectionId",
+                    "mappings",
                     "id"
                 ],
                 "type": "object"
@@ -21466,6 +22219,73 @@
                     "errors",
                     "guardianMfas",
                     "logins",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "auth0:index/getPhoneNotificationTemplate:getPhoneNotificationTemplate": {
+            "description": "Data source to retrieve a specific Auth0 Phone Notification Template by \u003cspan pulumi-lang-nodejs=\"`templateId`\" pulumi-lang-dotnet=\"`TemplateId`\" pulumi-lang-go=\"`templateId`\" pulumi-lang-python=\"`template_id`\" pulumi-lang-yaml=\"`templateId`\" pulumi-lang-java=\"`templateId`\"\u003e`template_id`\u003c/span\u003e.\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getPhoneNotificationTemplate.\n",
+                "properties": {
+                    "templateId": {
+                        "type": "string",
+                        "description": "The ID of the Phone Notification Template.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "templateId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getPhoneNotificationTemplate.\n",
+                "properties": {
+                    "channel": {
+                        "description": "The channel of the phone notification template (e.g., \u003cspan pulumi-lang-nodejs=\"`sms`\" pulumi-lang-dotnet=\"`Sms`\" pulumi-lang-go=\"`sms`\" pulumi-lang-python=\"`sms`\" pulumi-lang-yaml=\"`sms`\" pulumi-lang-java=\"`sms`\"\u003e`sms`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`voice`\" pulumi-lang-dotnet=\"`Voice`\" pulumi-lang-go=\"`voice`\" pulumi-lang-python=\"`voice`\" pulumi-lang-yaml=\"`voice`\" pulumi-lang-java=\"`voice`\"\u003e`voice`\u003c/span\u003e).\n",
+                        "type": "string"
+                    },
+                    "contents": {
+                        "description": "The content of the phone notification template.\n",
+                        "items": {
+                            "$ref": "#/types/auth0:index/getPhoneNotificationTemplateContent:getPhoneNotificationTemplateContent"
+                        },
+                        "type": "array"
+                    },
+                    "customizable": {
+                        "description": "Indicates whether the phone notification template is customizable.\n",
+                        "type": "boolean"
+                    },
+                    "disabled": {
+                        "description": "Indicates whether the phone notification template is disabled.\n",
+                        "type": "boolean"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "type": "string"
+                    },
+                    "templateId": {
+                        "description": "The ID of the Phone Notification Template.\n",
+                        "type": "string"
+                    },
+                    "tenant": {
+                        "description": "The tenant of the phone notification template.\n",
+                        "type": "string"
+                    },
+                    "type": {
+                        "description": "The type of the phone notification template.\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "channel",
+                    "contents",
+                    "customizable",
+                    "disabled",
+                    "templateId",
+                    "tenant",
+                    "type",
                     "id"
                 ],
                 "type": "object"

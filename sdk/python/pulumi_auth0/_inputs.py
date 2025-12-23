@@ -55,6 +55,10 @@ __all__ = [
     'BrandingColorsArgsDict',
     'BrandingFontArgs',
     'BrandingFontArgsDict',
+    'BrandingPhoneNotificationTemplateContentArgs',
+    'BrandingPhoneNotificationTemplateContentArgsDict',
+    'BrandingPhoneNotificationTemplateContentBodyArgs',
+    'BrandingPhoneNotificationTemplateContentBodyArgsDict',
     'BrandingThemeBordersArgs',
     'BrandingThemeBordersArgsDict',
     'BrandingThemeColorsArgs',
@@ -199,6 +203,8 @@ __all__ = [
     'ConnectionAuthenticationArgsDict',
     'ConnectionConnectedAccountsArgs',
     'ConnectionConnectedAccountsArgsDict',
+    'ConnectionDirectoryMappingArgs',
+    'ConnectionDirectoryMappingArgsDict',
     'ConnectionOptionsArgs',
     'ConnectionOptionsArgsDict',
     'ConnectionOptionsAttributeArgs',
@@ -383,6 +389,10 @@ __all__ = [
     'PagesGuardianMfaArgsDict',
     'PagesLoginArgs',
     'PagesLoginArgsDict',
+    'PhoneNotificationTemplateContentArgs',
+    'PhoneNotificationTemplateContentArgsDict',
+    'PhoneNotificationTemplateContentBodyArgs',
+    'PhoneNotificationTemplateContentBodyArgsDict',
     'PhoneProviderConfigurationArgs',
     'PhoneProviderConfigurationArgsDict',
     'PhoneProviderCredentialsArgs',
@@ -1866,6 +1876,130 @@ class BrandingFontArgs:
     @url.setter
     def url(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "url", value)
+
+
+if not MYPY:
+    class BrandingPhoneNotificationTemplateContentArgsDict(TypedDict):
+        body: NotRequired[pulumi.Input['BrandingPhoneNotificationTemplateContentBodyArgsDict']]
+        """
+        The body content of the phone notification template.
+        """
+        from_: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The sender phone number for SMS or voice notifications.
+        """
+        syntax: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The syntax of the phone notification template.
+        """
+elif False:
+    BrandingPhoneNotificationTemplateContentArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BrandingPhoneNotificationTemplateContentArgs:
+    def __init__(__self__, *,
+                 body: Optional[pulumi.Input['BrandingPhoneNotificationTemplateContentBodyArgs']] = None,
+                 from_: Optional[pulumi.Input[_builtins.str]] = None,
+                 syntax: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input['BrandingPhoneNotificationTemplateContentBodyArgs'] body: The body content of the phone notification template.
+        :param pulumi.Input[_builtins.str] from_: The sender phone number for SMS or voice notifications.
+        :param pulumi.Input[_builtins.str] syntax: The syntax of the phone notification template.
+        """
+        if body is not None:
+            pulumi.set(__self__, "body", body)
+        if from_ is not None:
+            pulumi.set(__self__, "from_", from_)
+        if syntax is not None:
+            pulumi.set(__self__, "syntax", syntax)
+
+    @_builtins.property
+    @pulumi.getter
+    def body(self) -> Optional[pulumi.Input['BrandingPhoneNotificationTemplateContentBodyArgs']]:
+        """
+        The body content of the phone notification template.
+        """
+        return pulumi.get(self, "body")
+
+    @body.setter
+    def body(self, value: Optional[pulumi.Input['BrandingPhoneNotificationTemplateContentBodyArgs']]):
+        pulumi.set(self, "body", value)
+
+    @_builtins.property
+    @pulumi.getter(name="from")
+    def from_(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The sender phone number for SMS or voice notifications.
+        """
+        return pulumi.get(self, "from_")
+
+    @from_.setter
+    def from_(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "from_", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def syntax(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The syntax of the phone notification template.
+        """
+        return pulumi.get(self, "syntax")
+
+    @syntax.setter
+    def syntax(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "syntax", value)
+
+
+if not MYPY:
+    class BrandingPhoneNotificationTemplateContentBodyArgsDict(TypedDict):
+        text: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The text content for SMS notifications.
+        """
+        voice: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The voice content for voice notifications.
+        """
+elif False:
+    BrandingPhoneNotificationTemplateContentBodyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BrandingPhoneNotificationTemplateContentBodyArgs:
+    def __init__(__self__, *,
+                 text: Optional[pulumi.Input[_builtins.str]] = None,
+                 voice: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] text: The text content for SMS notifications.
+        :param pulumi.Input[_builtins.str] voice: The voice content for voice notifications.
+        """
+        if text is not None:
+            pulumi.set(__self__, "text", text)
+        if voice is not None:
+            pulumi.set(__self__, "voice", voice)
+
+    @_builtins.property
+    @pulumi.getter
+    def text(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The text content for SMS notifications.
+        """
+        return pulumi.get(self, "text")
+
+    @text.setter
+    def text(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "text", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def voice(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The voice content for voice notifications.
+        """
+        return pulumi.get(self, "voice")
+
+    @voice.setter
+    def voice(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "voice", value)
 
 
 if not MYPY:
@@ -8013,6 +8147,56 @@ class ConnectionConnectedAccountsArgs:
     @active.setter
     def active(self, value: pulumi.Input[_builtins.bool]):
         pulumi.set(self, "active", value)
+
+
+if not MYPY:
+    class ConnectionDirectoryMappingArgsDict(TypedDict):
+        auth0: pulumi.Input[_builtins.str]
+        """
+        The field location in the Auth0 schema.
+        """
+        idp: pulumi.Input[_builtins.str]
+        """
+        The field location in the IDP schema.
+        """
+elif False:
+    ConnectionDirectoryMappingArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConnectionDirectoryMappingArgs:
+    def __init__(__self__, *,
+                 auth0: pulumi.Input[_builtins.str],
+                 idp: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] auth0: The field location in the Auth0 schema.
+        :param pulumi.Input[_builtins.str] idp: The field location in the IDP schema.
+        """
+        pulumi.set(__self__, "auth0", auth0)
+        pulumi.set(__self__, "idp", idp)
+
+    @_builtins.property
+    @pulumi.getter
+    def auth0(self) -> pulumi.Input[_builtins.str]:
+        """
+        The field location in the Auth0 schema.
+        """
+        return pulumi.get(self, "auth0")
+
+    @auth0.setter
+    def auth0(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "auth0", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def idp(self) -> pulumi.Input[_builtins.str]:
+        """
+        The field location in the IDP schema.
+        """
+        return pulumi.get(self, "idp")
+
+    @idp.setter
+    def idp(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "idp", value)
 
 
 if not MYPY:
@@ -16424,6 +16608,130 @@ class PagesLoginArgs:
     @html.setter
     def html(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "html", value)
+
+
+if not MYPY:
+    class PhoneNotificationTemplateContentArgsDict(TypedDict):
+        body: NotRequired[pulumi.Input['PhoneNotificationTemplateContentBodyArgsDict']]
+        """
+        The body content of the phone notification template.
+        """
+        from_: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The sender phone number for SMS or voice notifications.
+        """
+        syntax: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The syntax of the phone notification template.
+        """
+elif False:
+    PhoneNotificationTemplateContentArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PhoneNotificationTemplateContentArgs:
+    def __init__(__self__, *,
+                 body: Optional[pulumi.Input['PhoneNotificationTemplateContentBodyArgs']] = None,
+                 from_: Optional[pulumi.Input[_builtins.str]] = None,
+                 syntax: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input['PhoneNotificationTemplateContentBodyArgs'] body: The body content of the phone notification template.
+        :param pulumi.Input[_builtins.str] from_: The sender phone number for SMS or voice notifications.
+        :param pulumi.Input[_builtins.str] syntax: The syntax of the phone notification template.
+        """
+        if body is not None:
+            pulumi.set(__self__, "body", body)
+        if from_ is not None:
+            pulumi.set(__self__, "from_", from_)
+        if syntax is not None:
+            pulumi.set(__self__, "syntax", syntax)
+
+    @_builtins.property
+    @pulumi.getter
+    def body(self) -> Optional[pulumi.Input['PhoneNotificationTemplateContentBodyArgs']]:
+        """
+        The body content of the phone notification template.
+        """
+        return pulumi.get(self, "body")
+
+    @body.setter
+    def body(self, value: Optional[pulumi.Input['PhoneNotificationTemplateContentBodyArgs']]):
+        pulumi.set(self, "body", value)
+
+    @_builtins.property
+    @pulumi.getter(name="from")
+    def from_(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The sender phone number for SMS or voice notifications.
+        """
+        return pulumi.get(self, "from_")
+
+    @from_.setter
+    def from_(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "from_", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def syntax(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The syntax of the phone notification template.
+        """
+        return pulumi.get(self, "syntax")
+
+    @syntax.setter
+    def syntax(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "syntax", value)
+
+
+if not MYPY:
+    class PhoneNotificationTemplateContentBodyArgsDict(TypedDict):
+        text: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The text content for SMS notifications.
+        """
+        voice: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The voice content for voice notifications.
+        """
+elif False:
+    PhoneNotificationTemplateContentBodyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PhoneNotificationTemplateContentBodyArgs:
+    def __init__(__self__, *,
+                 text: Optional[pulumi.Input[_builtins.str]] = None,
+                 voice: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] text: The text content for SMS notifications.
+        :param pulumi.Input[_builtins.str] voice: The voice content for voice notifications.
+        """
+        if text is not None:
+            pulumi.set(__self__, "text", text)
+        if voice is not None:
+            pulumi.set(__self__, "voice", voice)
+
+    @_builtins.property
+    @pulumi.getter
+    def text(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The text content for SMS notifications.
+        """
+        return pulumi.get(self, "text")
+
+    @text.setter
+    def text(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "text", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def voice(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The voice content for voice notifications.
+        """
+        return pulumi.get(self, "voice")
+
+    @voice.setter
+    def voice(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "voice", value)
 
 
 if not MYPY:

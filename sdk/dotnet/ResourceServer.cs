@@ -73,6 +73,30 @@ namespace Pulumi.Auth0
     ///         },
     ///     });
     /// 
+    ///     // Sample OIN resource server configuration
+    ///     var oktaOinExpressConfigurationApi = new Auth0.ResourceServer("okta_oin_express_configuration_api", new()
+    ///     {
+    ///         Identifier = "urn:auth0:express-configure",
+    ///         Name = "Okta OIN Express Configuration API",
+    ///         SigningAlg = "RS256",
+    ///         SigningSecret = null,
+    ///         SkipConsentForVerifiableFirstPartyClients = false,
+    ///         TokenDialect = null,
+    ///         TokenLifetime = 86400,
+    ///         VerificationLocation = null,
+    ///         ProofOfPossession = new Auth0.Inputs.ResourceServerProofOfPossessionArgs
+    ///         {
+    ///             Disable = true,
+    ///             Mechanism = null,
+    ///             Required = false,
+    ///         },
+    ///         TokenEncryption = new Auth0.Inputs.ResourceServerTokenEncryptionArgs
+    ///         {
+    ///             Disable = true,
+    ///             Format = null,
+    ///         },
+    ///     });
+    /// 
     /// });
     /// ```
     /// 

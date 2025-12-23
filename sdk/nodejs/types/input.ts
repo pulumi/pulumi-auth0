@@ -301,6 +301,32 @@ export interface BrandingFont {
     url: pulumi.Input<string>;
 }
 
+export interface BrandingPhoneNotificationTemplateContent {
+    /**
+     * The body content of the phone notification template.
+     */
+    body?: pulumi.Input<inputs.BrandingPhoneNotificationTemplateContentBody>;
+    /**
+     * The sender phone number for SMS or voice notifications.
+     */
+    from?: pulumi.Input<string>;
+    /**
+     * The syntax of the phone notification template.
+     */
+    syntax?: pulumi.Input<string>;
+}
+
+export interface BrandingPhoneNotificationTemplateContentBody {
+    /**
+     * The text content for SMS notifications.
+     */
+    text?: pulumi.Input<string>;
+    /**
+     * The voice content for voice notifications.
+     */
+    voice?: pulumi.Input<string>;
+}
+
 export interface BrandingThemeBorders {
     /**
      * Button border radius. Value needs to be between `1` and `10`. Defaults to `3.0`.
@@ -1560,6 +1586,17 @@ export interface ConnectionAuthentication {
 
 export interface ConnectionConnectedAccounts {
     active: pulumi.Input<boolean>;
+}
+
+export interface ConnectionDirectoryMapping {
+    /**
+     * The field location in the Auth0 schema.
+     */
+    auth0: pulumi.Input<string>;
+    /**
+     * The field location in the IDP schema.
+     */
+    idp: pulumi.Input<string>;
 }
 
 export interface ConnectionOptions {
@@ -3401,6 +3438,32 @@ export interface PagesLogin {
      * Customized content for the Login page. HTML format with supported [Liquid syntax](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
      */
     html: pulumi.Input<string>;
+}
+
+export interface PhoneNotificationTemplateContent {
+    /**
+     * The body content of the phone notification template.
+     */
+    body?: pulumi.Input<inputs.PhoneNotificationTemplateContentBody>;
+    /**
+     * The sender phone number for SMS or voice notifications.
+     */
+    from?: pulumi.Input<string>;
+    /**
+     * The syntax of the phone notification template.
+     */
+    syntax?: pulumi.Input<string>;
+}
+
+export interface PhoneNotificationTemplateContentBody {
+    /**
+     * The text content for SMS notifications.
+     */
+    text?: pulumi.Input<string>;
+    /**
+     * The voice content for voice notifications.
+     */
+    voice?: pulumi.Input<string>;
 }
 
 export interface PhoneProviderConfiguration {

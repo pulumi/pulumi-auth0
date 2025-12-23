@@ -36,6 +36,8 @@ __all__ = [
     'AttackProtectionSuspiciousIpThrottlingPreUserRegistration',
     'BrandingColors',
     'BrandingFont',
+    'BrandingPhoneNotificationTemplateContent',
+    'BrandingPhoneNotificationTemplateContentBody',
     'BrandingThemeBorders',
     'BrandingThemeColors',
     'BrandingThemeFonts',
@@ -108,6 +110,7 @@ __all__ = [
     'ClientTokenQuotaClientCredentials',
     'ConnectionAuthentication',
     'ConnectionConnectedAccounts',
+    'ConnectionDirectoryMapping',
     'ConnectionOptions',
     'ConnectionOptionsAttribute',
     'ConnectionOptionsAttributeEmail',
@@ -200,6 +203,8 @@ __all__ = [
     'PagesError',
     'PagesGuardianMfa',
     'PagesLogin',
+    'PhoneNotificationTemplateContent',
+    'PhoneNotificationTemplateContentBody',
     'PhoneProviderConfiguration',
     'PhoneProviderCredentials',
     'PromptScreenPartialInsertionPoints',
@@ -257,6 +262,8 @@ __all__ = [
     'GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationResult',
     'GetBrandingColorResult',
     'GetBrandingFontResult',
+    'GetBrandingPhoneNotificationTemplateContentResult',
+    'GetBrandingPhoneNotificationTemplateContentBodyResult',
     'GetBrandingThemeBorderResult',
     'GetBrandingThemeColorResult',
     'GetBrandingThemeFontResult',
@@ -340,6 +347,8 @@ __all__ = [
     'GetClientsClientTokenQuotaClientCredentialResult',
     'GetConnectionAuthenticationResult',
     'GetConnectionConnectedAccountResult',
+    'GetConnectionDirectoryDefaultMappingMappingResult',
+    'GetConnectionDirectoryMappingResult',
     'GetConnectionKeysKeyResult',
     'GetConnectionOptionResult',
     'GetConnectionOptionAttributeResult',
@@ -420,6 +429,8 @@ __all__ = [
     'GetPagesErrorResult',
     'GetPagesGuardianMfaResult',
     'GetPagesLoginResult',
+    'GetPhoneNotificationTemplateContentResult',
+    'GetPhoneNotificationTemplateContentBodyResult',
     'GetPhoneProviderConfigurationResult',
     'GetPhoneProviderCredentialResult',
     'GetPromptScreenPartialsScreenPartialResult',
@@ -1553,6 +1564,97 @@ class BrandingFont(dict):
         URL for the custom font.
         """
         return pulumi.get(self, "url")
+
+
+@pulumi.output_type
+class BrandingPhoneNotificationTemplateContent(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "from":
+            suggest = "from_"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BrandingPhoneNotificationTemplateContent. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BrandingPhoneNotificationTemplateContent.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BrandingPhoneNotificationTemplateContent.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 body: Optional['outputs.BrandingPhoneNotificationTemplateContentBody'] = None,
+                 from_: Optional[_builtins.str] = None,
+                 syntax: Optional[_builtins.str] = None):
+        """
+        :param 'BrandingPhoneNotificationTemplateContentBodyArgs' body: The body content of the phone notification template.
+        :param _builtins.str from_: The sender phone number for SMS or voice notifications.
+        :param _builtins.str syntax: The syntax of the phone notification template.
+        """
+        if body is not None:
+            pulumi.set(__self__, "body", body)
+        if from_ is not None:
+            pulumi.set(__self__, "from_", from_)
+        if syntax is not None:
+            pulumi.set(__self__, "syntax", syntax)
+
+    @_builtins.property
+    @pulumi.getter
+    def body(self) -> Optional['outputs.BrandingPhoneNotificationTemplateContentBody']:
+        """
+        The body content of the phone notification template.
+        """
+        return pulumi.get(self, "body")
+
+    @_builtins.property
+    @pulumi.getter(name="from")
+    def from_(self) -> Optional[_builtins.str]:
+        """
+        The sender phone number for SMS or voice notifications.
+        """
+        return pulumi.get(self, "from_")
+
+    @_builtins.property
+    @pulumi.getter
+    def syntax(self) -> Optional[_builtins.str]:
+        """
+        The syntax of the phone notification template.
+        """
+        return pulumi.get(self, "syntax")
+
+
+@pulumi.output_type
+class BrandingPhoneNotificationTemplateContentBody(dict):
+    def __init__(__self__, *,
+                 text: Optional[_builtins.str] = None,
+                 voice: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str text: The text content for SMS notifications.
+        :param _builtins.str voice: The voice content for voice notifications.
+        """
+        if text is not None:
+            pulumi.set(__self__, "text", text)
+        if voice is not None:
+            pulumi.set(__self__, "voice", voice)
+
+    @_builtins.property
+    @pulumi.getter
+    def text(self) -> Optional[_builtins.str]:
+        """
+        The text content for SMS notifications.
+        """
+        return pulumi.get(self, "text")
+
+    @_builtins.property
+    @pulumi.getter
+    def voice(self) -> Optional[_builtins.str]:
+        """
+        The voice content for voice notifications.
+        """
+        return pulumi.get(self, "voice")
 
 
 @pulumi.output_type
@@ -6107,6 +6209,35 @@ class ConnectionConnectedAccounts(dict):
     @pulumi.getter
     def active(self) -> _builtins.bool:
         return pulumi.get(self, "active")
+
+
+@pulumi.output_type
+class ConnectionDirectoryMapping(dict):
+    def __init__(__self__, *,
+                 auth0: _builtins.str,
+                 idp: _builtins.str):
+        """
+        :param _builtins.str auth0: The field location in the Auth0 schema.
+        :param _builtins.str idp: The field location in the IDP schema.
+        """
+        pulumi.set(__self__, "auth0", auth0)
+        pulumi.set(__self__, "idp", idp)
+
+    @_builtins.property
+    @pulumi.getter
+    def auth0(self) -> _builtins.str:
+        """
+        The field location in the Auth0 schema.
+        """
+        return pulumi.get(self, "auth0")
+
+    @_builtins.property
+    @pulumi.getter
+    def idp(self) -> _builtins.str:
+        """
+        The field location in the IDP schema.
+        """
+        return pulumi.get(self, "idp")
 
 
 @pulumi.output_type
@@ -12422,6 +12553,97 @@ class PagesLogin(dict):
 
 
 @pulumi.output_type
+class PhoneNotificationTemplateContent(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "from":
+            suggest = "from_"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PhoneNotificationTemplateContent. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PhoneNotificationTemplateContent.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PhoneNotificationTemplateContent.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 body: Optional['outputs.PhoneNotificationTemplateContentBody'] = None,
+                 from_: Optional[_builtins.str] = None,
+                 syntax: Optional[_builtins.str] = None):
+        """
+        :param 'PhoneNotificationTemplateContentBodyArgs' body: The body content of the phone notification template.
+        :param _builtins.str from_: The sender phone number for SMS or voice notifications.
+        :param _builtins.str syntax: The syntax of the phone notification template.
+        """
+        if body is not None:
+            pulumi.set(__self__, "body", body)
+        if from_ is not None:
+            pulumi.set(__self__, "from_", from_)
+        if syntax is not None:
+            pulumi.set(__self__, "syntax", syntax)
+
+    @_builtins.property
+    @pulumi.getter
+    def body(self) -> Optional['outputs.PhoneNotificationTemplateContentBody']:
+        """
+        The body content of the phone notification template.
+        """
+        return pulumi.get(self, "body")
+
+    @_builtins.property
+    @pulumi.getter(name="from")
+    def from_(self) -> Optional[_builtins.str]:
+        """
+        The sender phone number for SMS or voice notifications.
+        """
+        return pulumi.get(self, "from_")
+
+    @_builtins.property
+    @pulumi.getter
+    def syntax(self) -> Optional[_builtins.str]:
+        """
+        The syntax of the phone notification template.
+        """
+        return pulumi.get(self, "syntax")
+
+
+@pulumi.output_type
+class PhoneNotificationTemplateContentBody(dict):
+    def __init__(__self__, *,
+                 text: Optional[_builtins.str] = None,
+                 voice: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str text: The text content for SMS notifications.
+        :param _builtins.str voice: The voice content for voice notifications.
+        """
+        if text is not None:
+            pulumi.set(__self__, "text", text)
+        if voice is not None:
+            pulumi.set(__self__, "voice", voice)
+
+    @_builtins.property
+    @pulumi.getter
+    def text(self) -> Optional[_builtins.str]:
+        """
+        The text content for SMS notifications.
+        """
+        return pulumi.get(self, "text")
+
+    @_builtins.property
+    @pulumi.getter
+    def voice(self) -> Optional[_builtins.str]:
+        """
+        The voice content for voice notifications.
+        """
+        return pulumi.get(self, "voice")
+
+
+@pulumi.output_type
 class PhoneProviderConfiguration(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -15526,6 +15748,75 @@ class GetBrandingFontResult(dict):
         URL for the custom font.
         """
         return pulumi.get(self, "url")
+
+
+@pulumi.output_type
+class GetBrandingPhoneNotificationTemplateContentResult(dict):
+    def __init__(__self__, *,
+                 bodies: Sequence['outputs.GetBrandingPhoneNotificationTemplateContentBodyResult'],
+                 from_: _builtins.str,
+                 syntax: _builtins.str):
+        """
+        :param Sequence['GetBrandingPhoneNotificationTemplateContentBodyArgs'] bodies: The body content of the phone notification template.
+        :param _builtins.str from_: The sender phone number for SMS or voice notifications.
+        :param _builtins.str syntax: The syntax of the phone notification template.
+        """
+        pulumi.set(__self__, "bodies", bodies)
+        pulumi.set(__self__, "from_", from_)
+        pulumi.set(__self__, "syntax", syntax)
+
+    @_builtins.property
+    @pulumi.getter
+    def bodies(self) -> Sequence['outputs.GetBrandingPhoneNotificationTemplateContentBodyResult']:
+        """
+        The body content of the phone notification template.
+        """
+        return pulumi.get(self, "bodies")
+
+    @_builtins.property
+    @pulumi.getter(name="from")
+    def from_(self) -> _builtins.str:
+        """
+        The sender phone number for SMS or voice notifications.
+        """
+        return pulumi.get(self, "from_")
+
+    @_builtins.property
+    @pulumi.getter
+    def syntax(self) -> _builtins.str:
+        """
+        The syntax of the phone notification template.
+        """
+        return pulumi.get(self, "syntax")
+
+
+@pulumi.output_type
+class GetBrandingPhoneNotificationTemplateContentBodyResult(dict):
+    def __init__(__self__, *,
+                 text: _builtins.str,
+                 voice: _builtins.str):
+        """
+        :param _builtins.str text: The text content for SMS notifications.
+        :param _builtins.str voice: The voice content for voice notifications.
+        """
+        pulumi.set(__self__, "text", text)
+        pulumi.set(__self__, "voice", voice)
+
+    @_builtins.property
+    @pulumi.getter
+    def text(self) -> _builtins.str:
+        """
+        The text content for SMS notifications.
+        """
+        return pulumi.get(self, "text")
+
+    @_builtins.property
+    @pulumi.getter
+    def voice(self) -> _builtins.str:
+        """
+        The voice content for voice notifications.
+        """
+        return pulumi.get(self, "voice")
 
 
 @pulumi.output_type
@@ -19536,6 +19827,64 @@ class GetConnectionConnectedAccountResult(dict):
 
 
 @pulumi.output_type
+class GetConnectionDirectoryDefaultMappingMappingResult(dict):
+    def __init__(__self__, *,
+                 auth0: _builtins.str,
+                 idp: _builtins.str):
+        """
+        :param _builtins.str auth0: The field location in the Auth0 schema.
+        :param _builtins.str idp: The field location in the IDP schema.
+        """
+        pulumi.set(__self__, "auth0", auth0)
+        pulumi.set(__self__, "idp", idp)
+
+    @_builtins.property
+    @pulumi.getter
+    def auth0(self) -> _builtins.str:
+        """
+        The field location in the Auth0 schema.
+        """
+        return pulumi.get(self, "auth0")
+
+    @_builtins.property
+    @pulumi.getter
+    def idp(self) -> _builtins.str:
+        """
+        The field location in the IDP schema.
+        """
+        return pulumi.get(self, "idp")
+
+
+@pulumi.output_type
+class GetConnectionDirectoryMappingResult(dict):
+    def __init__(__self__, *,
+                 auth0: _builtins.str,
+                 idp: _builtins.str):
+        """
+        :param _builtins.str auth0: The field location in the Auth0 schema.
+        :param _builtins.str idp: The field location in the IDP schema.
+        """
+        pulumi.set(__self__, "auth0", auth0)
+        pulumi.set(__self__, "idp", idp)
+
+    @_builtins.property
+    @pulumi.getter
+    def auth0(self) -> _builtins.str:
+        """
+        The field location in the Auth0 schema.
+        """
+        return pulumi.get(self, "auth0")
+
+    @_builtins.property
+    @pulumi.getter
+    def idp(self) -> _builtins.str:
+        """
+        The field location in the IDP schema.
+        """
+        return pulumi.get(self, "idp")
+
+
+@pulumi.output_type
 class GetConnectionKeysKeyResult(dict):
     def __init__(__self__, *,
                  algorithm: _builtins.str,
@@ -23391,6 +23740,75 @@ class GetPagesLoginResult(dict):
         Customized content for the Login page. HTML format with supported [Liquid syntax](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
         """
         return pulumi.get(self, "html")
+
+
+@pulumi.output_type
+class GetPhoneNotificationTemplateContentResult(dict):
+    def __init__(__self__, *,
+                 bodies: Sequence['outputs.GetPhoneNotificationTemplateContentBodyResult'],
+                 from_: _builtins.str,
+                 syntax: _builtins.str):
+        """
+        :param Sequence['GetPhoneNotificationTemplateContentBodyArgs'] bodies: The body content of the phone notification template.
+        :param _builtins.str from_: The sender phone number for SMS or voice notifications.
+        :param _builtins.str syntax: The syntax of the phone notification template.
+        """
+        pulumi.set(__self__, "bodies", bodies)
+        pulumi.set(__self__, "from_", from_)
+        pulumi.set(__self__, "syntax", syntax)
+
+    @_builtins.property
+    @pulumi.getter
+    def bodies(self) -> Sequence['outputs.GetPhoneNotificationTemplateContentBodyResult']:
+        """
+        The body content of the phone notification template.
+        """
+        return pulumi.get(self, "bodies")
+
+    @_builtins.property
+    @pulumi.getter(name="from")
+    def from_(self) -> _builtins.str:
+        """
+        The sender phone number for SMS or voice notifications.
+        """
+        return pulumi.get(self, "from_")
+
+    @_builtins.property
+    @pulumi.getter
+    def syntax(self) -> _builtins.str:
+        """
+        The syntax of the phone notification template.
+        """
+        return pulumi.get(self, "syntax")
+
+
+@pulumi.output_type
+class GetPhoneNotificationTemplateContentBodyResult(dict):
+    def __init__(__self__, *,
+                 text: _builtins.str,
+                 voice: _builtins.str):
+        """
+        :param _builtins.str text: The text content for SMS notifications.
+        :param _builtins.str voice: The voice content for voice notifications.
+        """
+        pulumi.set(__self__, "text", text)
+        pulumi.set(__self__, "voice", voice)
+
+    @_builtins.property
+    @pulumi.getter
+    def text(self) -> _builtins.str:
+        """
+        The text content for SMS notifications.
+        """
+        return pulumi.get(self, "text")
+
+    @_builtins.property
+    @pulumi.getter
+    def voice(self) -> _builtins.str:
+        """
+        The voice content for voice notifications.
+        """
+        return pulumi.get(self, "voice")
 
 
 @pulumi.output_type

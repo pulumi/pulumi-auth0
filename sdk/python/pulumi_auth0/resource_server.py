@@ -648,6 +648,25 @@ class ResourceServer(pulumi.CustomResource):
                     "policy": "require_client_grant",
                 },
             })
+        # Sample OIN resource server configuration
+        okta_oin_express_configuration_api = auth0.ResourceServer("okta_oin_express_configuration_api",
+            identifier="urn:auth0:express-configure",
+            name="Okta OIN Express Configuration API",
+            signing_alg="RS256",
+            signing_secret=None,
+            skip_consent_for_verifiable_first_party_clients=False,
+            token_dialect=None,
+            token_lifetime=86400,
+            verification_location=None,
+            proof_of_possession={
+                "disable": True,
+                "mechanism": None,
+                "required": False,
+            },
+            token_encryption={
+                "disable": True,
+                "format": None,
+            })
         ```
 
         ## Import
@@ -732,6 +751,25 @@ class ResourceServer(pulumi.CustomResource):
                 "client": {
                     "policy": "require_client_grant",
                 },
+            })
+        # Sample OIN resource server configuration
+        okta_oin_express_configuration_api = auth0.ResourceServer("okta_oin_express_configuration_api",
+            identifier="urn:auth0:express-configure",
+            name="Okta OIN Express Configuration API",
+            signing_alg="RS256",
+            signing_secret=None,
+            skip_consent_for_verifiable_first_party_clients=False,
+            token_dialect=None,
+            token_lifetime=86400,
+            verification_location=None,
+            proof_of_possession={
+                "disable": True,
+                "mechanism": None,
+                "required": False,
+            },
+            token_encryption={
+                "disable": True,
+                "format": None,
             })
         ```
 

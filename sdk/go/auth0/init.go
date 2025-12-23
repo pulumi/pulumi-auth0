@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AttackProtection{}
 	case "auth0:index/branding:Branding":
 		r = &Branding{}
+	case "auth0:index/brandingPhoneNotificationTemplate:BrandingPhoneNotificationTemplate":
+		r = &BrandingPhoneNotificationTemplate{}
 	case "auth0:index/brandingTheme:BrandingTheme":
 		r = &BrandingTheme{}
 	case "auth0:index/client:Client":
@@ -41,6 +43,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ConnectionClient{}
 	case "auth0:index/connectionClients:ConnectionClients":
 		r = &ConnectionClients{}
+	case "auth0:index/connectionDirectory:ConnectionDirectory":
+		r = &ConnectionDirectory{}
 	case "auth0:index/connectionKeys:ConnectionKeys":
 		r = &ConnectionKeys{}
 	case "auth0:index/connectionProfile:ConnectionProfile":
@@ -97,6 +101,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &OrganizationMembers{}
 	case "auth0:index/pages:Pages":
 		r = &Pages{}
+	case "auth0:index/phoneNotificationTemplate:PhoneNotificationTemplate":
+		r = &PhoneNotificationTemplate{}
 	case "auth0:index/phoneProvider:PhoneProvider":
 		r = &PhoneProvider{}
 	case "auth0:index/prompt:Prompt":
@@ -203,6 +209,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"auth0",
+		"index/brandingPhoneNotificationTemplate",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"auth0",
 		"index/brandingTheme",
 		&module{version},
 	)
@@ -234,6 +245,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"auth0",
 		"index/connectionClients",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"auth0",
+		"index/connectionDirectory",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -374,6 +390,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"auth0",
 		"index/pages",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"auth0",
+		"index/phoneNotificationTemplate",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
