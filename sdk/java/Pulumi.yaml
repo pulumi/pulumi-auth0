@@ -1,0 +1,3 @@
+name: auth0
+description: A Pulumi resource provider for auth0.
+language: java
