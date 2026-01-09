@@ -15843,11 +15843,11 @@ type ClientSessionTransfer struct {
 	AllowedAuthenticationMethods []string `pulumi:"allowedAuthenticationMethods"`
 	// Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session*transfer*token
 	CanCreateSessionTransferToken *bool `pulumi:"canCreateSessionTransferToken"`
-	// Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are.
+	// Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities. Usually configured in the native application.
 	EnforceCascadeRevocation *bool `pulumi:"enforceCascadeRevocation"`
 	// Configures the level of device binding enforced when a session*transfer*token is consumed. Can be one of `ip`, `asn` or `none`.
 	EnforceDeviceBinding *string `pulumi:"enforceDeviceBinding"`
-	// Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities.
+	// Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are. Usually configured in the web application.
 	EnforceOnlineRefreshTokens *bool `pulumi:"enforceOnlineRefreshTokens"`
 }
 
@@ -15868,11 +15868,11 @@ type ClientSessionTransferArgs struct {
 	AllowedAuthenticationMethods pulumi.StringArrayInput `pulumi:"allowedAuthenticationMethods"`
 	// Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session*transfer*token
 	CanCreateSessionTransferToken pulumi.BoolPtrInput `pulumi:"canCreateSessionTransferToken"`
-	// Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are.
+	// Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities. Usually configured in the native application.
 	EnforceCascadeRevocation pulumi.BoolPtrInput `pulumi:"enforceCascadeRevocation"`
 	// Configures the level of device binding enforced when a session*transfer*token is consumed. Can be one of `ip`, `asn` or `none`.
 	EnforceDeviceBinding pulumi.StringPtrInput `pulumi:"enforceDeviceBinding"`
-	// Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities.
+	// Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are. Usually configured in the web application.
 	EnforceOnlineRefreshTokens pulumi.BoolPtrInput `pulumi:"enforceOnlineRefreshTokens"`
 }
 
@@ -15967,7 +15967,7 @@ func (o ClientSessionTransferOutput) CanCreateSessionTransferToken() pulumi.Bool
 	return o.ApplyT(func(v ClientSessionTransfer) *bool { return v.CanCreateSessionTransferToken }).(pulumi.BoolPtrOutput)
 }
 
-// Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are.
+// Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities. Usually configured in the native application.
 func (o ClientSessionTransferOutput) EnforceCascadeRevocation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClientSessionTransfer) *bool { return v.EnforceCascadeRevocation }).(pulumi.BoolPtrOutput)
 }
@@ -15977,7 +15977,7 @@ func (o ClientSessionTransferOutput) EnforceDeviceBinding() pulumi.StringPtrOutp
 	return o.ApplyT(func(v ClientSessionTransfer) *string { return v.EnforceDeviceBinding }).(pulumi.StringPtrOutput)
 }
 
-// Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities.
+// Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are. Usually configured in the web application.
 func (o ClientSessionTransferOutput) EnforceOnlineRefreshTokens() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClientSessionTransfer) *bool { return v.EnforceOnlineRefreshTokens }).(pulumi.BoolPtrOutput)
 }
@@ -16035,7 +16035,7 @@ func (o ClientSessionTransferPtrOutput) CanCreateSessionTransferToken() pulumi.B
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are.
+// Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities. Usually configured in the native application.
 func (o ClientSessionTransferPtrOutput) EnforceCascadeRevocation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClientSessionTransfer) *bool {
 		if v == nil {
@@ -16055,7 +16055,7 @@ func (o ClientSessionTransferPtrOutput) EnforceDeviceBinding() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities.
+// Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are. Usually configured in the web application.
 func (o ClientSessionTransferPtrOutput) EnforceOnlineRefreshTokens() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClientSessionTransfer) *bool {
 		if v == nil {
@@ -50335,11 +50335,11 @@ type GetClientSessionTransfer struct {
 	AllowedAuthenticationMethods []string `pulumi:"allowedAuthenticationMethods"`
 	// Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session_transfer_token
 	CanCreateSessionTransferToken bool `pulumi:"canCreateSessionTransferToken"`
-	// Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are.
+	// Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities. Usually configured in the native application.
 	EnforceCascadeRevocation bool `pulumi:"enforceCascadeRevocation"`
 	// Configures the level of device binding enforced when a sessionTransferToken is consumed. Can be one of `ip`, `asn` or `none`.
 	EnforceDeviceBinding string `pulumi:"enforceDeviceBinding"`
-	// Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities.
+	// Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are. Usually configured in the web application.
 	EnforceOnlineRefreshTokens bool `pulumi:"enforceOnlineRefreshTokens"`
 }
 
@@ -50360,11 +50360,11 @@ type GetClientSessionTransferArgs struct {
 	AllowedAuthenticationMethods pulumi.StringArrayInput `pulumi:"allowedAuthenticationMethods"`
 	// Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session_transfer_token
 	CanCreateSessionTransferToken pulumi.BoolInput `pulumi:"canCreateSessionTransferToken"`
-	// Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are.
+	// Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities. Usually configured in the native application.
 	EnforceCascadeRevocation pulumi.BoolInput `pulumi:"enforceCascadeRevocation"`
 	// Configures the level of device binding enforced when a sessionTransferToken is consumed. Can be one of `ip`, `asn` or `none`.
 	EnforceDeviceBinding pulumi.StringInput `pulumi:"enforceDeviceBinding"`
-	// Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities.
+	// Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are. Usually configured in the web application.
 	EnforceOnlineRefreshTokens pulumi.BoolInput `pulumi:"enforceOnlineRefreshTokens"`
 }
 
@@ -50433,7 +50433,7 @@ func (o GetClientSessionTransferOutput) CanCreateSessionTransferToken() pulumi.B
 	return o.ApplyT(func(v GetClientSessionTransfer) bool { return v.CanCreateSessionTransferToken }).(pulumi.BoolOutput)
 }
 
-// Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are.
+// Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities. Usually configured in the native application.
 func (o GetClientSessionTransferOutput) EnforceCascadeRevocation() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetClientSessionTransfer) bool { return v.EnforceCascadeRevocation }).(pulumi.BoolOutput)
 }
@@ -50443,7 +50443,7 @@ func (o GetClientSessionTransferOutput) EnforceDeviceBinding() pulumi.StringOutp
 	return o.ApplyT(func(v GetClientSessionTransfer) string { return v.EnforceDeviceBinding }).(pulumi.StringOutput)
 }
 
-// Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities.
+// Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are. Usually configured in the web application.
 func (o GetClientSessionTransferOutput) EnforceOnlineRefreshTokens() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetClientSessionTransfer) bool { return v.EnforceOnlineRefreshTokens }).(pulumi.BoolOutput)
 }
@@ -51820,11 +51820,11 @@ type GetClientsClientSessionTransfer struct {
 	AllowedAuthenticationMethods []string `pulumi:"allowedAuthenticationMethods"`
 	// Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session_transfer_token
 	CanCreateSessionTransferToken bool `pulumi:"canCreateSessionTransferToken"`
-	// Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are.
+	// Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities. Usually configured in the native application.
 	EnforceCascadeRevocation bool `pulumi:"enforceCascadeRevocation"`
 	// Configures the level of device binding enforced when a sessionTransferToken is consumed. Can be one of `ip`, `asn` or `none`.
 	EnforceDeviceBinding string `pulumi:"enforceDeviceBinding"`
-	// Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities.
+	// Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are. Usually configured in the web application.
 	EnforceOnlineRefreshTokens bool `pulumi:"enforceOnlineRefreshTokens"`
 }
 
@@ -51845,11 +51845,11 @@ type GetClientsClientSessionTransferArgs struct {
 	AllowedAuthenticationMethods pulumi.StringArrayInput `pulumi:"allowedAuthenticationMethods"`
 	// Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session_transfer_token
 	CanCreateSessionTransferToken pulumi.BoolInput `pulumi:"canCreateSessionTransferToken"`
-	// Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are.
+	// Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities. Usually configured in the native application.
 	EnforceCascadeRevocation pulumi.BoolInput `pulumi:"enforceCascadeRevocation"`
 	// Configures the level of device binding enforced when a sessionTransferToken is consumed. Can be one of `ip`, `asn` or `none`.
 	EnforceDeviceBinding pulumi.StringInput `pulumi:"enforceDeviceBinding"`
-	// Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities.
+	// Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are. Usually configured in the web application.
 	EnforceOnlineRefreshTokens pulumi.BoolInput `pulumi:"enforceOnlineRefreshTokens"`
 }
 
@@ -51918,7 +51918,7 @@ func (o GetClientsClientSessionTransferOutput) CanCreateSessionTransferToken() p
 	return o.ApplyT(func(v GetClientsClientSessionTransfer) bool { return v.CanCreateSessionTransferToken }).(pulumi.BoolOutput)
 }
 
-// Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are.
+// Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities. Usually configured in the native application.
 func (o GetClientsClientSessionTransferOutput) EnforceCascadeRevocation() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetClientsClientSessionTransfer) bool { return v.EnforceCascadeRevocation }).(pulumi.BoolOutput)
 }
@@ -51928,7 +51928,7 @@ func (o GetClientsClientSessionTransferOutput) EnforceDeviceBinding() pulumi.Str
 	return o.ApplyT(func(v GetClientsClientSessionTransfer) string { return v.EnforceDeviceBinding }).(pulumi.StringOutput)
 }
 
-// Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities.
+// Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are. Usually configured in the web application.
 func (o GetClientsClientSessionTransferOutput) EnforceOnlineRefreshTokens() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetClientsClientSessionTransfer) bool { return v.EnforceOnlineRefreshTokens }).(pulumi.BoolOutput)
 }

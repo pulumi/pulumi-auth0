@@ -5992,9 +5992,9 @@ class ClientSessionTransfer(dict):
         """
         :param _builtins.bool allow_refresh_token: Indicates whether the application is allowed to use a refresh token when using a session*transfer*token session.
         :param _builtins.bool can_create_session_transfer_token: Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session*transfer*token
-        :param _builtins.bool enforce_cascade_revocation: Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are.
+        :param _builtins.bool enforce_cascade_revocation: Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities. Usually configured in the native application.
         :param _builtins.str enforce_device_binding: Configures the level of device binding enforced when a session*transfer*token is consumed. Can be one of `ip`, `asn` or `none`.
-        :param _builtins.bool enforce_online_refresh_tokens: Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities.
+        :param _builtins.bool enforce_online_refresh_tokens: Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are. Usually configured in the web application.
         """
         if allow_refresh_token is not None:
             pulumi.set(__self__, "allow_refresh_token", allow_refresh_token)
@@ -6034,7 +6034,7 @@ class ClientSessionTransfer(dict):
     @pulumi.getter(name="enforceCascadeRevocation")
     def enforce_cascade_revocation(self) -> Optional[_builtins.bool]:
         """
-        Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are.
+        Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities. Usually configured in the native application.
         """
         return pulumi.get(self, "enforce_cascade_revocation")
 
@@ -6050,7 +6050,7 @@ class ClientSessionTransfer(dict):
     @pulumi.getter(name="enforceOnlineRefreshTokens")
     def enforce_online_refresh_tokens(self) -> Optional[_builtins.bool]:
         """
-        Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities.
+        Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are. Usually configured in the web application.
         """
         return pulumi.get(self, "enforce_online_refresh_tokens")
 
@@ -18964,9 +18964,9 @@ class GetClientSessionTransferResult(dict):
         """
         :param _builtins.bool allow_refresh_token: Indicates whether the application is allowed to use a refresh token when using a session_transfer_token session.
         :param _builtins.bool can_create_session_transfer_token: Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session_transfer_token
-        :param _builtins.bool enforce_cascade_revocation: Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are.
+        :param _builtins.bool enforce_cascade_revocation: Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities. Usually configured in the native application.
         :param _builtins.str enforce_device_binding: Configures the level of device binding enforced when a session_transfer_token is consumed. Can be one of `ip`, `asn` or `none`.
-        :param _builtins.bool enforce_online_refresh_tokens: Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities.
+        :param _builtins.bool enforce_online_refresh_tokens: Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are. Usually configured in the web application.
         """
         pulumi.set(__self__, "allow_refresh_token", allow_refresh_token)
         pulumi.set(__self__, "allowed_authentication_methods", allowed_authentication_methods)
@@ -19000,7 +19000,7 @@ class GetClientSessionTransferResult(dict):
     @pulumi.getter(name="enforceCascadeRevocation")
     def enforce_cascade_revocation(self) -> _builtins.bool:
         """
-        Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are.
+        Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities. Usually configured in the native application.
         """
         return pulumi.get(self, "enforce_cascade_revocation")
 
@@ -19016,7 +19016,7 @@ class GetClientSessionTransferResult(dict):
     @pulumi.getter(name="enforceOnlineRefreshTokens")
     def enforce_online_refresh_tokens(self) -> _builtins.bool:
         """
-        Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities.
+        Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are. Usually configured in the web application.
         """
         return pulumi.get(self, "enforce_online_refresh_tokens")
 
@@ -19669,9 +19669,9 @@ class GetClientsClientSessionTransferResult(dict):
         """
         :param _builtins.bool allow_refresh_token: Indicates whether the application is allowed to use a refresh token when using a session_transfer_token session.
         :param _builtins.bool can_create_session_transfer_token: Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session_transfer_token
-        :param _builtins.bool enforce_cascade_revocation: Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are.
+        :param _builtins.bool enforce_cascade_revocation: Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities. Usually configured in the native application.
         :param _builtins.str enforce_device_binding: Configures the level of device binding enforced when a session_transfer_token is consumed. Can be one of `ip`, `asn` or `none`.
-        :param _builtins.bool enforce_online_refresh_tokens: Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities.
+        :param _builtins.bool enforce_online_refresh_tokens: Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are. Usually configured in the web application.
         """
         pulumi.set(__self__, "allow_refresh_token", allow_refresh_token)
         pulumi.set(__self__, "allowed_authentication_methods", allowed_authentication_methods)
@@ -19705,7 +19705,7 @@ class GetClientsClientSessionTransferResult(dict):
     @pulumi.getter(name="enforceCascadeRevocation")
     def enforce_cascade_revocation(self) -> _builtins.bool:
         """
-        Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are.
+        Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities. Usually configured in the native application.
         """
         return pulumi.get(self, "enforce_cascade_revocation")
 
@@ -19721,7 +19721,7 @@ class GetClientsClientSessionTransferResult(dict):
     @pulumi.getter(name="enforceOnlineRefreshTokens")
     def enforce_online_refresh_tokens(self) -> _builtins.bool:
         """
-        Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities.
+        Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are. Usually configured in the web application.
         """
         return pulumi.get(self, "enforce_online_refresh_tokens")
 
