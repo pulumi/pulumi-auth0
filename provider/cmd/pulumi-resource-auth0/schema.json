@@ -2270,7 +2270,7 @@
                 },
                 "enforceCascadeRevocation": {
                     "type": "boolean",
-                    "description": "Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are.\n"
+                    "description": "Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities. Usually configured in the native application.\n"
                 },
                 "enforceDeviceBinding": {
                     "type": "string",
@@ -2278,7 +2278,7 @@
                 },
                 "enforceOnlineRefreshTokens": {
                     "type": "boolean",
-                    "description": "Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities.\n"
+                    "description": "Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are. Usually configured in the web application.\n"
                 }
             },
             "type": "object",
@@ -2288,9 +2288,7 @@
                         "allowRefreshToken",
                         "allowedAuthenticationMethods",
                         "canCreateSessionTransferToken",
-                        "enforceCascadeRevocation",
-                        "enforceDeviceBinding",
-                        "enforceOnlineRefreshTokens"
+                        "enforceDeviceBinding"
                     ]
                 }
             }
@@ -8687,7 +8685,7 @@
                 },
                 "enforceCascadeRevocation": {
                     "type": "boolean",
-                    "description": "Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are.\n"
+                    "description": "Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities. Usually configured in the native application.\n"
                 },
                 "enforceDeviceBinding": {
                     "type": "string",
@@ -8695,7 +8693,7 @@
                 },
                 "enforceOnlineRefreshTokens": {
                     "type": "boolean",
-                    "description": "Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities.\n"
+                    "description": "Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are. Usually configured in the web application.\n"
                 }
             },
             "type": "object",
@@ -9171,7 +9169,7 @@
                 },
                 "enforceCascadeRevocation": {
                     "type": "boolean",
-                    "description": "Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are.\n"
+                    "description": "Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities. Usually configured in the native application.\n"
                 },
                 "enforceDeviceBinding": {
                     "type": "string",
@@ -9179,7 +9177,7 @@
                 },
                 "enforceOnlineRefreshTokens": {
                     "type": "boolean",
-                    "description": "Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities.\n"
+                    "description": "Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are. Usually configured in the web application.\n"
                 }
             },
             "type": "object",
