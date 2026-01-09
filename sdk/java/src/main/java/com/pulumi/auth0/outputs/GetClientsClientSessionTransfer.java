@@ -24,7 +24,7 @@ public final class GetClientsClientSessionTransfer {
      */
     private Boolean canCreateSessionTransferToken;
     /**
-     * @return Indicates whether Refresh Tokens created during a native-to-web session are tied to that session&#39;s lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are.
+     * @return Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities. Usually configured in the native application.
      * 
      */
     private Boolean enforceCascadeRevocation;
@@ -34,7 +34,7 @@ public final class GetClientsClientSessionTransfer {
      */
     private String enforceDeviceBinding;
     /**
-     * @return Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities.
+     * @return Indicates whether Refresh Tokens created during a native-to-web session are tied to that session&#39;s lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are. Usually configured in the web application.
      * 
      */
     private Boolean enforceOnlineRefreshTokens;
@@ -58,7 +58,7 @@ public final class GetClientsClientSessionTransfer {
         return this.canCreateSessionTransferToken;
     }
     /**
-     * @return Indicates whether Refresh Tokens created during a native-to-web session are tied to that session&#39;s lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are.
+     * @return Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities. Usually configured in the native application.
      * 
      */
     public Boolean enforceCascadeRevocation() {
@@ -72,7 +72,7 @@ public final class GetClientsClientSessionTransfer {
         return this.enforceDeviceBinding;
     }
     /**
-     * @return Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities.
+     * @return Indicates whether Refresh Tokens created during a native-to-web session are tied to that session&#39;s lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are. Usually configured in the web application.
      * 
      */
     public Boolean enforceOnlineRefreshTokens() {

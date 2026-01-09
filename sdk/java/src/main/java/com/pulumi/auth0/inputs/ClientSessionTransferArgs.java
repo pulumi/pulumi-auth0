@@ -55,14 +55,14 @@ public final class ClientSessionTransferArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Indicates whether Refresh Tokens created during a native-to-web session are tied to that session&#39;s lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are.
+     * Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities. Usually configured in the native application.
      * 
      */
     @Import(name="enforceCascadeRevocation")
     private @Nullable Output<Boolean> enforceCascadeRevocation;
 
     /**
-     * @return Indicates whether Refresh Tokens created during a native-to-web session are tied to that session&#39;s lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are.
+     * @return Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities. Usually configured in the native application.
      * 
      */
     public Optional<Output<Boolean>> enforceCascadeRevocation() {
@@ -85,14 +85,14 @@ public final class ClientSessionTransferArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities.
+     * Indicates whether Refresh Tokens created during a native-to-web session are tied to that session&#39;s lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are. Usually configured in the web application.
      * 
      */
     @Import(name="enforceOnlineRefreshTokens")
     private @Nullable Output<Boolean> enforceOnlineRefreshTokens;
 
     /**
-     * @return Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities.
+     * @return Indicates whether Refresh Tokens created during a native-to-web session are tied to that session&#39;s lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are. Usually configured in the web application.
      * 
      */
     public Optional<Output<Boolean>> enforceOnlineRefreshTokens() {
@@ -184,7 +184,7 @@ public final class ClientSessionTransferArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param enforceCascadeRevocation Indicates whether Refresh Tokens created during a native-to-web session are tied to that session&#39;s lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are.
+         * @param enforceCascadeRevocation Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities. Usually configured in the native application.
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class ClientSessionTransferArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param enforceCascadeRevocation Indicates whether Refresh Tokens created during a native-to-web session are tied to that session&#39;s lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are.
+         * @param enforceCascadeRevocation Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities. Usually configured in the native application.
          * 
          * @return builder
          * 
@@ -226,7 +226,7 @@ public final class ClientSessionTransferArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param enforceOnlineRefreshTokens Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities.
+         * @param enforceOnlineRefreshTokens Indicates whether Refresh Tokens created during a native-to-web session are tied to that session&#39;s lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are. Usually configured in the web application.
          * 
          * @return builder
          * 
@@ -237,7 +237,7 @@ public final class ClientSessionTransferArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param enforceOnlineRefreshTokens Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities.
+         * @param enforceOnlineRefreshTokens Indicates whether Refresh Tokens created during a native-to-web session are tied to that session&#39;s lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are. Usually configured in the web application.
          * 
          * @return builder
          * 
