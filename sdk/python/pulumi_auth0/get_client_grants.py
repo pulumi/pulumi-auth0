@@ -92,6 +92,42 @@ def get_client_grants(audience: Optional[_builtins.str] = None,
     """
     Data source to retrieve a client grants based on client_id and/or audience
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_auth0 as auth0
+
+    my_client = auth0.Client("my_client", name="Example Application (Managed by Terraform)")
+    my_resource_server = auth0.ResourceServer("my_resource_server",
+        name="Example Resource Server (Managed by Terraform)",
+        identifier="https://api.example.com/client-grant",
+        authorization_details=[{
+            "type": "payment",
+        }],
+        subject_type_authorization={
+            "user": {
+                "policy": "allow_all",
+            },
+        })
+    my_scopes = auth0.ResourceServerScopes("my_scopes",
+        resource_server_identifier=my_resource_server.identifier,
+        scopes=[{
+            "name": "create:foo",
+        }],
+        opts = pulumi.ResourceOptions(depends_on=[my_resource_server]))
+    my_client_grant = auth0.ClientGrant("my_client_grant",
+        client_id=my_client.id,
+        audience=my_resource_server.identifier,
+        authorization_details_types=["payment"],
+        subject_type="user",
+        allow_all_scopes=True)
+    filter_by_client_id = auth0.get_client_grants_output(client_id=my_client.id)
+    filter_by_audience = auth0.get_client_grants_output(audience=my_resource_server.identifier)
+    filter_by_client_id_and_audience = auth0.get_client_grants_output(client_id=my_client.id,
+        audience=my_resource_server.identifier)
+    ```
+
 
     :param _builtins.str audience: The audience to filter by.
     :param _builtins.str client_id: The ID of the client to filter by.
@@ -112,6 +148,42 @@ def get_client_grants_output(audience: Optional[pulumi.Input[Optional[_builtins.
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClientGrantsResult]:
     """
     Data source to retrieve a client grants based on client_id and/or audience
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_auth0 as auth0
+
+    my_client = auth0.Client("my_client", name="Example Application (Managed by Terraform)")
+    my_resource_server = auth0.ResourceServer("my_resource_server",
+        name="Example Resource Server (Managed by Terraform)",
+        identifier="https://api.example.com/client-grant",
+        authorization_details=[{
+            "type": "payment",
+        }],
+        subject_type_authorization={
+            "user": {
+                "policy": "allow_all",
+            },
+        })
+    my_scopes = auth0.ResourceServerScopes("my_scopes",
+        resource_server_identifier=my_resource_server.identifier,
+        scopes=[{
+            "name": "create:foo",
+        }],
+        opts = pulumi.ResourceOptions(depends_on=[my_resource_server]))
+    my_client_grant = auth0.ClientGrant("my_client_grant",
+        client_id=my_client.id,
+        audience=my_resource_server.identifier,
+        authorization_details_types=["payment"],
+        subject_type="user",
+        allow_all_scopes=True)
+    filter_by_client_id = auth0.get_client_grants_output(client_id=my_client.id)
+    filter_by_audience = auth0.get_client_grants_output(audience=my_resource_server.identifier)
+    filter_by_client_id_and_audience = auth0.get_client_grants_output(client_id=my_client.id,
+        audience=my_resource_server.identifier)
+    ```
 
 
     :param _builtins.str audience: The audience to filter by.

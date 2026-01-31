@@ -6,6 +6,7 @@ package com.pulumi.auth0.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -31,45 +32,89 @@ public final class EventStreamWebhookConfigurationWebhookAuthorizationArgs exten
         return this.method;
     }
 
-    /**
-     * The password for `basic` authentication. Required when `method` is set to `basic`.
-     * 
-     */
     @Import(name="password")
     private @Nullable Output<String> password;
 
-    /**
-     * @return The password for `basic` authentication. Required when `method` is set to `basic`.
-     * 
-     */
     public Optional<Output<String>> password() {
         return Optional.ofNullable(this.password);
     }
 
     /**
-     * The token used for `bearer` authentication. Required when `method` is set to `bearer`.
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * 
      */
+    @Import(name="passwordWo")
+    private @Nullable Output<String> passwordWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * 
+     */
+    public Optional<Output<String>> passwordWo() {
+        return Optional.ofNullable(this.passwordWo);
+    }
+
+    /**
+     * Version number for password changes. Update this value to trigger a password change when using `passwordWo`.
+     * 
+     */
+    @Import(name="passwordWoVersion")
+    private @Nullable Output<Integer> passwordWoVersion;
+
+    /**
+     * @return Version number for password changes. Update this value to trigger a password change when using `passwordWo`.
+     * 
+     */
+    public Optional<Output<Integer>> passwordWoVersion() {
+        return Optional.ofNullable(this.passwordWoVersion);
+    }
+
     @Import(name="token")
     private @Nullable Output<String> token;
 
-    /**
-     * @return The token used for `bearer` authentication. Required when `method` is set to `bearer`.
-     * 
-     */
     public Optional<Output<String>> token() {
         return Optional.ofNullable(this.token);
     }
 
     /**
-     * The username for `basic` authentication. Required when `method` is set to `basic`.
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * 
+     */
+    @Import(name="tokenWo")
+    private @Nullable Output<String> tokenWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * 
+     */
+    public Optional<Output<String>> tokenWo() {
+        return Optional.ofNullable(this.tokenWo);
+    }
+
+    /**
+     * Version number for token changes. Update this value to trigger a token change when using `tokenWo`.
+     * 
+     */
+    @Import(name="tokenWoVersion")
+    private @Nullable Output<Integer> tokenWoVersion;
+
+    /**
+     * @return Version number for token changes. Update this value to trigger a token change when using `tokenWo`.
+     * 
+     */
+    public Optional<Output<Integer>> tokenWoVersion() {
+        return Optional.ofNullable(this.tokenWoVersion);
+    }
+
+    /**
+     * The username for `basic` authentication. Required only when `method` is set to `basic`.
      * 
      */
     @Import(name="username")
     private @Nullable Output<String> username;
 
     /**
-     * @return The username for `basic` authentication. Required when `method` is set to `basic`.
+     * @return The username for `basic` authentication. Required only when `method` is set to `basic`.
      * 
      */
     public Optional<Output<String>> username() {
@@ -81,7 +126,11 @@ public final class EventStreamWebhookConfigurationWebhookAuthorizationArgs exten
     private EventStreamWebhookConfigurationWebhookAuthorizationArgs(EventStreamWebhookConfigurationWebhookAuthorizationArgs $) {
         this.method = $.method;
         this.password = $.password;
+        this.passwordWo = $.passwordWo;
+        this.passwordWoVersion = $.passwordWoVersion;
         this.token = $.token;
+        this.tokenWo = $.tokenWo;
+        this.tokenWoVersion = $.tokenWoVersion;
         this.username = $.username;
     }
 
@@ -124,50 +173,110 @@ public final class EventStreamWebhookConfigurationWebhookAuthorizationArgs exten
             return method(Output.of(method));
         }
 
-        /**
-         * @param password The password for `basic` authentication. Required when `method` is set to `basic`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder password(@Nullable Output<String> password) {
             $.password = password;
             return this;
         }
 
-        /**
-         * @param password The password for `basic` authentication. Required when `method` is set to `basic`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder password(String password) {
             return password(Output.of(password));
         }
 
         /**
-         * @param token The token used for `bearer` authentication. Required when `method` is set to `bearer`.
+         * @param passwordWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
          * 
          * @return builder
          * 
          */
+        public Builder passwordWo(@Nullable Output<String> passwordWo) {
+            $.passwordWo = passwordWo;
+            return this;
+        }
+
+        /**
+         * @param passwordWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordWo(String passwordWo) {
+            return passwordWo(Output.of(passwordWo));
+        }
+
+        /**
+         * @param passwordWoVersion Version number for password changes. Update this value to trigger a password change when using `passwordWo`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordWoVersion(@Nullable Output<Integer> passwordWoVersion) {
+            $.passwordWoVersion = passwordWoVersion;
+            return this;
+        }
+
+        /**
+         * @param passwordWoVersion Version number for password changes. Update this value to trigger a password change when using `passwordWo`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordWoVersion(Integer passwordWoVersion) {
+            return passwordWoVersion(Output.of(passwordWoVersion));
+        }
+
         public Builder token(@Nullable Output<String> token) {
             $.token = token;
             return this;
         }
 
-        /**
-         * @param token The token used for `bearer` authentication. Required when `method` is set to `bearer`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder token(String token) {
             return token(Output.of(token));
         }
 
         /**
-         * @param username The username for `basic` authentication. Required when `method` is set to `basic`.
+         * @param tokenWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tokenWo(@Nullable Output<String> tokenWo) {
+            $.tokenWo = tokenWo;
+            return this;
+        }
+
+        /**
+         * @param tokenWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tokenWo(String tokenWo) {
+            return tokenWo(Output.of(tokenWo));
+        }
+
+        /**
+         * @param tokenWoVersion Version number for token changes. Update this value to trigger a token change when using `tokenWo`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tokenWoVersion(@Nullable Output<Integer> tokenWoVersion) {
+            $.tokenWoVersion = tokenWoVersion;
+            return this;
+        }
+
+        /**
+         * @param tokenWoVersion Version number for token changes. Update this value to trigger a token change when using `tokenWo`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tokenWoVersion(Integer tokenWoVersion) {
+            return tokenWoVersion(Output.of(tokenWoVersion));
+        }
+
+        /**
+         * @param username The username for `basic` authentication. Required only when `method` is set to `basic`.
          * 
          * @return builder
          * 
@@ -178,7 +287,7 @@ public final class EventStreamWebhookConfigurationWebhookAuthorizationArgs exten
         }
 
         /**
-         * @param username The username for `basic` authentication. Required when `method` is set to `basic`.
+         * @param username The username for `basic` authentication. Required only when `method` is set to `basic`.
          * 
          * @return builder
          * 

@@ -62,6 +62,7 @@ import * as utilities from "./utilities";
  *         "payment",
  *         "shipping",
  *     ],
+ *     allowAllScopes: false,
  * });
  * ```
  *
@@ -106,6 +107,10 @@ export class ClientGrant extends pulumi.CustomResource {
     }
 
     /**
+     * When set to `true`, all scopes configured on the resource server are allowed for this client grant. `scopes` can not be provided when this is set to `true`. EA Only.
+     */
+    declare public readonly allowAllScopes: pulumi.Output<boolean | undefined>;
+    /**
      * If enabled, any organization can be used with this grant. If disabled (default), the grant must be explicitly assigned to the desired organizations.
      */
     declare public readonly allowAnyOrganization: pulumi.Output<boolean | undefined>;
@@ -130,9 +135,9 @@ export class ClientGrant extends pulumi.CustomResource {
      */
     declare public readonly organizationUsage: pulumi.Output<string | undefined>;
     /**
-     * Permissions (scopes) included in this grant.
+     * Permissions (scopes) included in this grant. Can not be provided when `allowAllScopes` is set to `true`.
      */
-    declare public readonly scopes: pulumi.Output<string[]>;
+    declare public readonly scopes: pulumi.Output<string[] | undefined>;
     /**
      * Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
      */
@@ -151,6 +156,7 @@ export class ClientGrant extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClientGrantState | undefined;
+            resourceInputs["allowAllScopes"] = state?.allowAllScopes;
             resourceInputs["allowAnyOrganization"] = state?.allowAnyOrganization;
             resourceInputs["audience"] = state?.audience;
             resourceInputs["authorizationDetailsTypes"] = state?.authorizationDetailsTypes;
@@ -167,9 +173,7 @@ export class ClientGrant extends pulumi.CustomResource {
             if (args?.clientId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clientId'");
             }
-            if (args?.scopes === undefined && !opts.urn) {
-                throw new Error("Missing required property 'scopes'");
-            }
+            resourceInputs["allowAllScopes"] = args?.allowAllScopes;
             resourceInputs["allowAnyOrganization"] = args?.allowAnyOrganization;
             resourceInputs["audience"] = args?.audience;
             resourceInputs["authorizationDetailsTypes"] = args?.authorizationDetailsTypes;
@@ -188,6 +192,10 @@ export class ClientGrant extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ClientGrant resources.
  */
 export interface ClientGrantState {
+    /**
+     * When set to `true`, all scopes configured on the resource server are allowed for this client grant. `scopes` can not be provided when this is set to `true`. EA Only.
+     */
+    allowAllScopes?: pulumi.Input<boolean>;
     /**
      * If enabled, any organization can be used with this grant. If disabled (default), the grant must be explicitly assigned to the desired organizations.
      */
@@ -213,7 +221,7 @@ export interface ClientGrantState {
      */
     organizationUsage?: pulumi.Input<string>;
     /**
-     * Permissions (scopes) included in this grant.
+     * Permissions (scopes) included in this grant. Can not be provided when `allowAllScopes` is set to `true`.
      */
     scopes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -226,6 +234,10 @@ export interface ClientGrantState {
  * The set of arguments for constructing a ClientGrant resource.
  */
 export interface ClientGrantArgs {
+    /**
+     * When set to `true`, all scopes configured on the resource server are allowed for this client grant. `scopes` can not be provided when this is set to `true`. EA Only.
+     */
+    allowAllScopes?: pulumi.Input<boolean>;
     /**
      * If enabled, any organization can be used with this grant. If disabled (default), the grant must be explicitly assigned to the desired organizations.
      */
@@ -247,9 +259,9 @@ export interface ClientGrantArgs {
      */
     organizationUsage?: pulumi.Input<string>;
     /**
-     * Permissions (scopes) included in this grant.
+     * Permissions (scopes) included in this grant. Can not be provided when `allowAllScopes` is set to `true`.
      */
-    scopes: pulumi.Input<pulumi.Input<string>[]>;
+    scopes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
      */

@@ -176,7 +176,7 @@ export class Client extends pulumi.CustomResource {
     /**
      * Configure OIDC logout for the Client
      */
-    declare public readonly oidcLogout: pulumi.Output<outputs.ClientOidcLogout>;
+    declare public readonly oidcLogout: pulumi.Output<outputs.ClientOidcLogout | undefined>;
     /**
      * Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
      */

@@ -21,30 +21,35 @@ class ClientGrantArgs:
     def __init__(__self__, *,
                  audience: pulumi.Input[_builtins.str],
                  client_id: pulumi.Input[_builtins.str],
-                 scopes: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
+                 allow_all_scopes: Optional[pulumi.Input[_builtins.bool]] = None,
                  allow_any_organization: Optional[pulumi.Input[_builtins.bool]] = None,
                  authorization_details_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  organization_usage: Optional[pulumi.Input[_builtins.str]] = None,
+                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  subject_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ClientGrant resource.
         :param pulumi.Input[_builtins.str] audience: Audience or API Identifier for this grant.
         :param pulumi.Input[_builtins.str] client_id: ID of the client for this grant.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: Permissions (scopes) included in this grant.
+        :param pulumi.Input[_builtins.bool] allow_all_scopes: When set to `true`, all scopes configured on the resource server are allowed for this client grant. `scopes` can not be provided when this is set to `true`. EA Only.
         :param pulumi.Input[_builtins.bool] allow_any_organization: If enabled, any organization can be used with this grant. If disabled (default), the grant must be explicitly assigned to the desired organizations.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorization_details_types: Defines the types of authorization details allowed for this client grant.
         :param pulumi.Input[_builtins.str] organization_usage: Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: Permissions (scopes) included in this grant. Can not be provided when `allow_all_scopes` is set to `true`.
         :param pulumi.Input[_builtins.str] subject_type: Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
         """
         pulumi.set(__self__, "audience", audience)
         pulumi.set(__self__, "client_id", client_id)
-        pulumi.set(__self__, "scopes", scopes)
+        if allow_all_scopes is not None:
+            pulumi.set(__self__, "allow_all_scopes", allow_all_scopes)
         if allow_any_organization is not None:
             pulumi.set(__self__, "allow_any_organization", allow_any_organization)
         if authorization_details_types is not None:
             pulumi.set(__self__, "authorization_details_types", authorization_details_types)
         if organization_usage is not None:
             pulumi.set(__self__, "organization_usage", organization_usage)
+        if scopes is not None:
+            pulumi.set(__self__, "scopes", scopes)
         if subject_type is not None:
             pulumi.set(__self__, "subject_type", subject_type)
 
@@ -73,16 +78,16 @@ class ClientGrantArgs:
         pulumi.set(self, "client_id", value)
 
     @_builtins.property
-    @pulumi.getter
-    def scopes(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+    @pulumi.getter(name="allowAllScopes")
+    def allow_all_scopes(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Permissions (scopes) included in this grant.
+        When set to `true`, all scopes configured on the resource server are allowed for this client grant. `scopes` can not be provided when this is set to `true`. EA Only.
         """
-        return pulumi.get(self, "scopes")
+        return pulumi.get(self, "allow_all_scopes")
 
-    @scopes.setter
-    def scopes(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
-        pulumi.set(self, "scopes", value)
+    @allow_all_scopes.setter
+    def allow_all_scopes(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "allow_all_scopes", value)
 
     @_builtins.property
     @pulumi.getter(name="allowAnyOrganization")
@@ -121,6 +126,18 @@ class ClientGrantArgs:
         pulumi.set(self, "organization_usage", value)
 
     @_builtins.property
+    @pulumi.getter
+    def scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Permissions (scopes) included in this grant. Can not be provided when `allow_all_scopes` is set to `true`.
+        """
+        return pulumi.get(self, "scopes")
+
+    @scopes.setter
+    def scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "scopes", value)
+
+    @_builtins.property
     @pulumi.getter(name="subjectType")
     def subject_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -136,6 +153,7 @@ class ClientGrantArgs:
 @pulumi.input_type
 class _ClientGrantState:
     def __init__(__self__, *,
+                 allow_all_scopes: Optional[pulumi.Input[_builtins.bool]] = None,
                  allow_any_organization: Optional[pulumi.Input[_builtins.bool]] = None,
                  audience: Optional[pulumi.Input[_builtins.str]] = None,
                  authorization_details_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -146,15 +164,18 @@ class _ClientGrantState:
                  subject_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ClientGrant resources.
+        :param pulumi.Input[_builtins.bool] allow_all_scopes: When set to `true`, all scopes configured on the resource server are allowed for this client grant. `scopes` can not be provided when this is set to `true`. EA Only.
         :param pulumi.Input[_builtins.bool] allow_any_organization: If enabled, any organization can be used with this grant. If disabled (default), the grant must be explicitly assigned to the desired organizations.
         :param pulumi.Input[_builtins.str] audience: Audience or API Identifier for this grant.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorization_details_types: Defines the types of authorization details allowed for this client grant.
         :param pulumi.Input[_builtins.str] client_id: ID of the client for this grant.
         :param pulumi.Input[_builtins.bool] is_system: Indicates whether this grant is a special grant created by Auth0. It cannot be modified or deleted directly.
         :param pulumi.Input[_builtins.str] organization_usage: Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: Permissions (scopes) included in this grant.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: Permissions (scopes) included in this grant. Can not be provided when `allow_all_scopes` is set to `true`.
         :param pulumi.Input[_builtins.str] subject_type: Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
         """
+        if allow_all_scopes is not None:
+            pulumi.set(__self__, "allow_all_scopes", allow_all_scopes)
         if allow_any_organization is not None:
             pulumi.set(__self__, "allow_any_organization", allow_any_organization)
         if audience is not None:
@@ -171,6 +192,18 @@ class _ClientGrantState:
             pulumi.set(__self__, "scopes", scopes)
         if subject_type is not None:
             pulumi.set(__self__, "subject_type", subject_type)
+
+    @_builtins.property
+    @pulumi.getter(name="allowAllScopes")
+    def allow_all_scopes(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        When set to `true`, all scopes configured on the resource server are allowed for this client grant. `scopes` can not be provided when this is set to `true`. EA Only.
+        """
+        return pulumi.get(self, "allow_all_scopes")
+
+    @allow_all_scopes.setter
+    def allow_all_scopes(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "allow_all_scopes", value)
 
     @_builtins.property
     @pulumi.getter(name="allowAnyOrganization")
@@ -248,7 +281,7 @@ class _ClientGrantState:
     @pulumi.getter
     def scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Permissions (scopes) included in this grant.
+        Permissions (scopes) included in this grant. Can not be provided when `allow_all_scopes` is set to `true`.
         """
         return pulumi.get(self, "scopes")
 
@@ -275,6 +308,7 @@ class ClientGrant(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 allow_all_scopes: Optional[pulumi.Input[_builtins.bool]] = None,
                  allow_any_organization: Optional[pulumi.Input[_builtins.bool]] = None,
                  audience: Optional[pulumi.Input[_builtins.str]] = None,
                  authorization_details_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -337,7 +371,8 @@ class ClientGrant(pulumi.CustomResource):
             authorization_details_types=[
                 "payment",
                 "shipping",
-            ])
+            ],
+            allow_all_scopes=False)
         ```
 
         ## Import
@@ -354,12 +389,13 @@ class ClientGrant(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.bool] allow_all_scopes: When set to `true`, all scopes configured on the resource server are allowed for this client grant. `scopes` can not be provided when this is set to `true`. EA Only.
         :param pulumi.Input[_builtins.bool] allow_any_organization: If enabled, any organization can be used with this grant. If disabled (default), the grant must be explicitly assigned to the desired organizations.
         :param pulumi.Input[_builtins.str] audience: Audience or API Identifier for this grant.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorization_details_types: Defines the types of authorization details allowed for this client grant.
         :param pulumi.Input[_builtins.str] client_id: ID of the client for this grant.
         :param pulumi.Input[_builtins.str] organization_usage: Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: Permissions (scopes) included in this grant.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: Permissions (scopes) included in this grant. Can not be provided when `allow_all_scopes` is set to `true`.
         :param pulumi.Input[_builtins.str] subject_type: Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
         """
         ...
@@ -422,7 +458,8 @@ class ClientGrant(pulumi.CustomResource):
             authorization_details_types=[
                 "payment",
                 "shipping",
-            ])
+            ],
+            allow_all_scopes=False)
         ```
 
         ## Import
@@ -452,6 +489,7 @@ class ClientGrant(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 allow_all_scopes: Optional[pulumi.Input[_builtins.bool]] = None,
                  allow_any_organization: Optional[pulumi.Input[_builtins.bool]] = None,
                  audience: Optional[pulumi.Input[_builtins.str]] = None,
                  authorization_details_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -468,6 +506,7 @@ class ClientGrant(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ClientGrantArgs.__new__(ClientGrantArgs)
 
+            __props__.__dict__["allow_all_scopes"] = allow_all_scopes
             __props__.__dict__["allow_any_organization"] = allow_any_organization
             if audience is None and not opts.urn:
                 raise TypeError("Missing required property 'audience'")
@@ -477,8 +516,6 @@ class ClientGrant(pulumi.CustomResource):
                 raise TypeError("Missing required property 'client_id'")
             __props__.__dict__["client_id"] = client_id
             __props__.__dict__["organization_usage"] = organization_usage
-            if scopes is None and not opts.urn:
-                raise TypeError("Missing required property 'scopes'")
             __props__.__dict__["scopes"] = scopes
             __props__.__dict__["subject_type"] = subject_type
             __props__.__dict__["is_system"] = None
@@ -492,6 +529,7 @@ class ClientGrant(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            allow_all_scopes: Optional[pulumi.Input[_builtins.bool]] = None,
             allow_any_organization: Optional[pulumi.Input[_builtins.bool]] = None,
             audience: Optional[pulumi.Input[_builtins.str]] = None,
             authorization_details_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -507,19 +545,21 @@ class ClientGrant(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.bool] allow_all_scopes: When set to `true`, all scopes configured on the resource server are allowed for this client grant. `scopes` can not be provided when this is set to `true`. EA Only.
         :param pulumi.Input[_builtins.bool] allow_any_organization: If enabled, any organization can be used with this grant. If disabled (default), the grant must be explicitly assigned to the desired organizations.
         :param pulumi.Input[_builtins.str] audience: Audience or API Identifier for this grant.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorization_details_types: Defines the types of authorization details allowed for this client grant.
         :param pulumi.Input[_builtins.str] client_id: ID of the client for this grant.
         :param pulumi.Input[_builtins.bool] is_system: Indicates whether this grant is a special grant created by Auth0. It cannot be modified or deleted directly.
         :param pulumi.Input[_builtins.str] organization_usage: Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: Permissions (scopes) included in this grant.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: Permissions (scopes) included in this grant. Can not be provided when `allow_all_scopes` is set to `true`.
         :param pulumi.Input[_builtins.str] subject_type: Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _ClientGrantState.__new__(_ClientGrantState)
 
+        __props__.__dict__["allow_all_scopes"] = allow_all_scopes
         __props__.__dict__["allow_any_organization"] = allow_any_organization
         __props__.__dict__["audience"] = audience
         __props__.__dict__["authorization_details_types"] = authorization_details_types
@@ -529,6 +569,14 @@ class ClientGrant(pulumi.CustomResource):
         __props__.__dict__["scopes"] = scopes
         __props__.__dict__["subject_type"] = subject_type
         return ClientGrant(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="allowAllScopes")
+    def allow_all_scopes(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        When set to `true`, all scopes configured on the resource server are allowed for this client grant. `scopes` can not be provided when this is set to `true`. EA Only.
+        """
+        return pulumi.get(self, "allow_all_scopes")
 
     @_builtins.property
     @pulumi.getter(name="allowAnyOrganization")
@@ -580,9 +628,9 @@ class ClientGrant(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def scopes(self) -> pulumi.Output[Sequence[_builtins.str]]:
+    def scopes(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        Permissions (scopes) included in this grant.
+        Permissions (scopes) included in this grant. Can not be provided when `allow_all_scopes` is set to `true`.
         """
         return pulumi.get(self, "scopes")
 

@@ -47,6 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
  *         // Creates an event stream of type eventbridge
  *         var myEventStreamEventBridge = new EventStream("myEventStreamEventBridge", EventStreamArgs.builder()
  *             .name("my-eventbridge")
@@ -72,6 +73,23 @@ import javax.annotation.Nullable;
  *                 .webhookAuthorization(EventStreamWebhookConfigurationWebhookAuthorizationArgs.builder()
  *                     .method("bearer")
  *                     .token("123456789")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         final var webhookToken = config.get("webhookToken");
+ *         var myEventStreamWebhookSecure = new EventStream("myEventStreamWebhookSecure", EventStreamArgs.builder()
+ *             .name("my-webhook-secure")
+ *             .destinationType("webhook")
+ *             .subscriptions(            
+ *                 "user.created",
+ *                 "user.updated")
+ *             .webhookConfiguration(EventStreamWebhookConfigurationArgs.builder()
+ *                 .webhookEndpoint("https://eof28wtn4v4506o.m.pipedream.net")
+ *                 .webhookAuthorization(EventStreamWebhookConfigurationWebhookAuthorizationArgs.builder()
+ *                     .method("bearer")
+ *                     .tokenWo(webhookToken)
+ *                     .tokenWoVersion(1)
  *                     .build())
  *                 .build())
  *             .build());

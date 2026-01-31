@@ -48,6 +48,10 @@ export class OrganizationDiscoveryDomain extends pulumi.CustomResource {
      */
     declare public readonly status: pulumi.Output<string>;
     /**
+     * Indicates whether this domain should be used for organization discovery during login.
+     */
+    declare public readonly useForOrganizationDiscovery: pulumi.Output<boolean>;
+    /**
      * The full domain where the TXT record should be added.
      */
     declare public /*out*/ readonly verificationHost: pulumi.Output<string>;
@@ -72,6 +76,7 @@ export class OrganizationDiscoveryDomain extends pulumi.CustomResource {
             resourceInputs["domain"] = state?.domain;
             resourceInputs["organizationId"] = state?.organizationId;
             resourceInputs["status"] = state?.status;
+            resourceInputs["useForOrganizationDiscovery"] = state?.useForOrganizationDiscovery;
             resourceInputs["verificationHost"] = state?.verificationHost;
             resourceInputs["verificationTxt"] = state?.verificationTxt;
         } else {
@@ -88,6 +93,7 @@ export class OrganizationDiscoveryDomain extends pulumi.CustomResource {
             resourceInputs["domain"] = args?.domain;
             resourceInputs["organizationId"] = args?.organizationId;
             resourceInputs["status"] = args?.status;
+            resourceInputs["useForOrganizationDiscovery"] = args?.useForOrganizationDiscovery;
             resourceInputs["verificationHost"] = undefined /*out*/;
             resourceInputs["verificationTxt"] = undefined /*out*/;
         }
@@ -112,6 +118,10 @@ export interface OrganizationDiscoveryDomainState {
      * Verification status. Must be either 'pending' or 'verified'.
      */
     status?: pulumi.Input<string>;
+    /**
+     * Indicates whether this domain should be used for organization discovery during login.
+     */
+    useForOrganizationDiscovery?: pulumi.Input<boolean>;
     /**
      * The full domain where the TXT record should be added.
      */
@@ -138,4 +148,8 @@ export interface OrganizationDiscoveryDomainArgs {
      * Verification status. Must be either 'pending' or 'verified'.
      */
     status: pulumi.Input<string>;
+    /**
+     * Indicates whether this domain should be used for organization discovery during login.
+     */
+    useForOrganizationDiscovery?: pulumi.Input<boolean>;
 }

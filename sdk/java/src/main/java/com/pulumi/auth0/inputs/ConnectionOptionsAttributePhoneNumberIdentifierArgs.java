@@ -6,6 +6,7 @@ package com.pulumi.auth0.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -30,10 +31,26 @@ public final class ConnectionOptionsAttributePhoneNumberIdentifierArgs extends c
         return Optional.ofNullable(this.active);
     }
 
+    /**
+     * Gets and Sets the default authentication method for the phoneNumber identifier type. Valid values: `password`, `phoneOtp`
+     * 
+     */
+    @Import(name="defaultMethod")
+    private @Nullable Output<String> defaultMethod;
+
+    /**
+     * @return Gets and Sets the default authentication method for the phoneNumber identifier type. Valid values: `password`, `phoneOtp`
+     * 
+     */
+    public Optional<Output<String>> defaultMethod() {
+        return Optional.ofNullable(this.defaultMethod);
+    }
+
     private ConnectionOptionsAttributePhoneNumberIdentifierArgs() {}
 
     private ConnectionOptionsAttributePhoneNumberIdentifierArgs(ConnectionOptionsAttributePhoneNumberIdentifierArgs $) {
         this.active = $.active;
+        this.defaultMethod = $.defaultMethod;
     }
 
     public static Builder builder() {
@@ -73,6 +90,27 @@ public final class ConnectionOptionsAttributePhoneNumberIdentifierArgs extends c
          */
         public Builder active(Boolean active) {
             return active(Output.of(active));
+        }
+
+        /**
+         * @param defaultMethod Gets and Sets the default authentication method for the phoneNumber identifier type. Valid values: `password`, `phoneOtp`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultMethod(@Nullable Output<String> defaultMethod) {
+            $.defaultMethod = defaultMethod;
+            return this;
+        }
+
+        /**
+         * @param defaultMethod Gets and Sets the default authentication method for the phoneNumber identifier type. Valid values: `password`, `phoneOtp`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultMethod(String defaultMethod) {
+            return defaultMethod(Output.of(defaultMethod));
         }
 
         public ConnectionOptionsAttributePhoneNumberIdentifierArgs build() {

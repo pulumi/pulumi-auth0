@@ -31,6 +31,12 @@ namespace Pulumi.Auth0.Inputs
         public Input<string> Status { get; set; } = null!;
 
         /// <summary>
+        /// Indicates whether this domain should be used for organization discovery during login.
+        /// </summary>
+        [Input("useForOrganizationDiscovery")]
+        public Input<bool>? UseForOrganizationDiscovery { get; set; }
+
+        /// <summary>
         /// The full domain where the TXT record should be added.
         /// </summary>
         [Input("verificationHost")]

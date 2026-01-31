@@ -18,6 +18,12 @@ namespace Pulumi.Auth0.Inputs
         [Input("active")]
         public Input<bool>? Active { get; set; }
 
+        /// <summary>
+        /// Gets and Sets the default authentication method for the username identifier type. Valid value: `Password`
+        /// </summary>
+        [Input("defaultMethod")]
+        public Input<string>? DefaultMethod { get; set; }
+
         public ConnectionOptionsAttributeUsernameIdentifierArgs()
         {
         }

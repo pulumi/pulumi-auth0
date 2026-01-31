@@ -215,7 +215,7 @@ namespace Pulumi.Auth0
         /// Configure OIDC logout for the Client
         /// </summary>
         [Output("oidcLogout")]
-        public Output<Outputs.ClientOidcLogout> OidcLogout { get; private set; } = null!;
+        public Output<Outputs.ClientOidcLogout?> OidcLogout { get; private set; } = null!;
 
         /// <summary>
         /// Methods for discovering organizations during the pre*login*prompt. Can include `Email` (allows users to find their organization by entering their email address) and/or `OrganizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `OrganizationRequireBehavior` is set to `PreLoginPrompt`.

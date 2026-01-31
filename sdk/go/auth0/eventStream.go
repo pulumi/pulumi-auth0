@@ -23,6 +23,7 @@ import (
 //
 //	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
@@ -57,6 +58,28 @@ import (
 //					WebhookAuthorization: &auth0.EventStreamWebhookConfigurationWebhookAuthorizationArgs{
 //						Method: pulumi.String("bearer"),
 //						Token:  pulumi.String("123456789"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			cfg := config.New(ctx, "")
+//			// The webhook token
+//			webhookToken := cfg.Require("webhookToken")
+//			_, err = auth0.NewEventStream(ctx, "my_event_stream_webhook_secure", &auth0.EventStreamArgs{
+//				Name:            pulumi.String("my-webhook-secure"),
+//				DestinationType: pulumi.String("webhook"),
+//				Subscriptions: pulumi.StringArray{
+//					pulumi.String("user.created"),
+//					pulumi.String("user.updated"),
+//				},
+//				WebhookConfiguration: &auth0.EventStreamWebhookConfigurationArgs{
+//					WebhookEndpoint: pulumi.String("https://eof28wtn4v4506o.m.pipedream.net"),
+//					WebhookAuthorization: &auth0.EventStreamWebhookConfigurationWebhookAuthorizationArgs{
+//						Method:         pulumi.String("bearer"),
+//						TokenWo:        pulumi.String(webhookToken),
+//						TokenWoVersion: pulumi.Int(1),
 //					},
 //				},
 //			})

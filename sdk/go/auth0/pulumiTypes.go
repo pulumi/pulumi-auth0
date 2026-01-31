@@ -15150,6 +15150,8 @@ func (o ClientNativeSocialLoginGooglePtrOutput) Enabled() pulumi.BoolPtrOutput {
 type ClientOidcLogout struct {
 	// Configure OIDC logout initiators for the Client
 	BackchannelLogoutInitiators *ClientOidcLogoutBackchannelLogoutInitiators `pulumi:"backchannelLogoutInitiators"`
+	// Controls whether session metadata is included in the logout token. Default value is null.
+	BackchannelLogoutSessionMetadata *ClientOidcLogoutBackchannelLogoutSessionMetadata `pulumi:"backchannelLogoutSessionMetadata"`
 	// Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
 	BackchannelLogoutUrls []string `pulumi:"backchannelLogoutUrls"`
 }
@@ -15168,6 +15170,8 @@ type ClientOidcLogoutInput interface {
 type ClientOidcLogoutArgs struct {
 	// Configure OIDC logout initiators for the Client
 	BackchannelLogoutInitiators ClientOidcLogoutBackchannelLogoutInitiatorsPtrInput `pulumi:"backchannelLogoutInitiators"`
+	// Controls whether session metadata is included in the logout token. Default value is null.
+	BackchannelLogoutSessionMetadata ClientOidcLogoutBackchannelLogoutSessionMetadataPtrInput `pulumi:"backchannelLogoutSessionMetadata"`
 	// Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
 	BackchannelLogoutUrls pulumi.StringArrayInput `pulumi:"backchannelLogoutUrls"`
 }
@@ -15256,6 +15260,13 @@ func (o ClientOidcLogoutOutput) BackchannelLogoutInitiators() ClientOidcLogoutBa
 	}).(ClientOidcLogoutBackchannelLogoutInitiatorsPtrOutput)
 }
 
+// Controls whether session metadata is included in the logout token. Default value is null.
+func (o ClientOidcLogoutOutput) BackchannelLogoutSessionMetadata() ClientOidcLogoutBackchannelLogoutSessionMetadataPtrOutput {
+	return o.ApplyT(func(v ClientOidcLogout) *ClientOidcLogoutBackchannelLogoutSessionMetadata {
+		return v.BackchannelLogoutSessionMetadata
+	}).(ClientOidcLogoutBackchannelLogoutSessionMetadataPtrOutput)
+}
+
 // Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
 func (o ClientOidcLogoutOutput) BackchannelLogoutUrls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClientOidcLogout) []string { return v.BackchannelLogoutUrls }).(pulumi.StringArrayOutput)
@@ -15293,6 +15304,16 @@ func (o ClientOidcLogoutPtrOutput) BackchannelLogoutInitiators() ClientOidcLogou
 		}
 		return v.BackchannelLogoutInitiators
 	}).(ClientOidcLogoutBackchannelLogoutInitiatorsPtrOutput)
+}
+
+// Controls whether session metadata is included in the logout token. Default value is null.
+func (o ClientOidcLogoutPtrOutput) BackchannelLogoutSessionMetadata() ClientOidcLogoutBackchannelLogoutSessionMetadataPtrOutput {
+	return o.ApplyT(func(v *ClientOidcLogout) *ClientOidcLogoutBackchannelLogoutSessionMetadata {
+		if v == nil {
+			return nil
+		}
+		return v.BackchannelLogoutSessionMetadata
+	}).(ClientOidcLogoutBackchannelLogoutSessionMetadataPtrOutput)
 }
 
 // Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
@@ -15459,6 +15480,143 @@ func (o ClientOidcLogoutBackchannelLogoutInitiatorsPtrOutput) SelectedInitiators
 		}
 		return v.SelectedInitiators
 	}).(pulumi.StringArrayOutput)
+}
+
+type ClientOidcLogoutBackchannelLogoutSessionMetadata struct {
+	// The `include` property determines whether session metadata is included in the logout token.
+	Include bool `pulumi:"include"`
+}
+
+// ClientOidcLogoutBackchannelLogoutSessionMetadataInput is an input type that accepts ClientOidcLogoutBackchannelLogoutSessionMetadataArgs and ClientOidcLogoutBackchannelLogoutSessionMetadataOutput values.
+// You can construct a concrete instance of `ClientOidcLogoutBackchannelLogoutSessionMetadataInput` via:
+//
+//	ClientOidcLogoutBackchannelLogoutSessionMetadataArgs{...}
+type ClientOidcLogoutBackchannelLogoutSessionMetadataInput interface {
+	pulumi.Input
+
+	ToClientOidcLogoutBackchannelLogoutSessionMetadataOutput() ClientOidcLogoutBackchannelLogoutSessionMetadataOutput
+	ToClientOidcLogoutBackchannelLogoutSessionMetadataOutputWithContext(context.Context) ClientOidcLogoutBackchannelLogoutSessionMetadataOutput
+}
+
+type ClientOidcLogoutBackchannelLogoutSessionMetadataArgs struct {
+	// The `include` property determines whether session metadata is included in the logout token.
+	Include pulumi.BoolInput `pulumi:"include"`
+}
+
+func (ClientOidcLogoutBackchannelLogoutSessionMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientOidcLogoutBackchannelLogoutSessionMetadata)(nil)).Elem()
+}
+
+func (i ClientOidcLogoutBackchannelLogoutSessionMetadataArgs) ToClientOidcLogoutBackchannelLogoutSessionMetadataOutput() ClientOidcLogoutBackchannelLogoutSessionMetadataOutput {
+	return i.ToClientOidcLogoutBackchannelLogoutSessionMetadataOutputWithContext(context.Background())
+}
+
+func (i ClientOidcLogoutBackchannelLogoutSessionMetadataArgs) ToClientOidcLogoutBackchannelLogoutSessionMetadataOutputWithContext(ctx context.Context) ClientOidcLogoutBackchannelLogoutSessionMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientOidcLogoutBackchannelLogoutSessionMetadataOutput)
+}
+
+func (i ClientOidcLogoutBackchannelLogoutSessionMetadataArgs) ToClientOidcLogoutBackchannelLogoutSessionMetadataPtrOutput() ClientOidcLogoutBackchannelLogoutSessionMetadataPtrOutput {
+	return i.ToClientOidcLogoutBackchannelLogoutSessionMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i ClientOidcLogoutBackchannelLogoutSessionMetadataArgs) ToClientOidcLogoutBackchannelLogoutSessionMetadataPtrOutputWithContext(ctx context.Context) ClientOidcLogoutBackchannelLogoutSessionMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientOidcLogoutBackchannelLogoutSessionMetadataOutput).ToClientOidcLogoutBackchannelLogoutSessionMetadataPtrOutputWithContext(ctx)
+}
+
+// ClientOidcLogoutBackchannelLogoutSessionMetadataPtrInput is an input type that accepts ClientOidcLogoutBackchannelLogoutSessionMetadataArgs, ClientOidcLogoutBackchannelLogoutSessionMetadataPtr and ClientOidcLogoutBackchannelLogoutSessionMetadataPtrOutput values.
+// You can construct a concrete instance of `ClientOidcLogoutBackchannelLogoutSessionMetadataPtrInput` via:
+//
+//	        ClientOidcLogoutBackchannelLogoutSessionMetadataArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientOidcLogoutBackchannelLogoutSessionMetadataPtrInput interface {
+	pulumi.Input
+
+	ToClientOidcLogoutBackchannelLogoutSessionMetadataPtrOutput() ClientOidcLogoutBackchannelLogoutSessionMetadataPtrOutput
+	ToClientOidcLogoutBackchannelLogoutSessionMetadataPtrOutputWithContext(context.Context) ClientOidcLogoutBackchannelLogoutSessionMetadataPtrOutput
+}
+
+type clientOidcLogoutBackchannelLogoutSessionMetadataPtrType ClientOidcLogoutBackchannelLogoutSessionMetadataArgs
+
+func ClientOidcLogoutBackchannelLogoutSessionMetadataPtr(v *ClientOidcLogoutBackchannelLogoutSessionMetadataArgs) ClientOidcLogoutBackchannelLogoutSessionMetadataPtrInput {
+	return (*clientOidcLogoutBackchannelLogoutSessionMetadataPtrType)(v)
+}
+
+func (*clientOidcLogoutBackchannelLogoutSessionMetadataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientOidcLogoutBackchannelLogoutSessionMetadata)(nil)).Elem()
+}
+
+func (i *clientOidcLogoutBackchannelLogoutSessionMetadataPtrType) ToClientOidcLogoutBackchannelLogoutSessionMetadataPtrOutput() ClientOidcLogoutBackchannelLogoutSessionMetadataPtrOutput {
+	return i.ToClientOidcLogoutBackchannelLogoutSessionMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i *clientOidcLogoutBackchannelLogoutSessionMetadataPtrType) ToClientOidcLogoutBackchannelLogoutSessionMetadataPtrOutputWithContext(ctx context.Context) ClientOidcLogoutBackchannelLogoutSessionMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientOidcLogoutBackchannelLogoutSessionMetadataPtrOutput)
+}
+
+type ClientOidcLogoutBackchannelLogoutSessionMetadataOutput struct{ *pulumi.OutputState }
+
+func (ClientOidcLogoutBackchannelLogoutSessionMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientOidcLogoutBackchannelLogoutSessionMetadata)(nil)).Elem()
+}
+
+func (o ClientOidcLogoutBackchannelLogoutSessionMetadataOutput) ToClientOidcLogoutBackchannelLogoutSessionMetadataOutput() ClientOidcLogoutBackchannelLogoutSessionMetadataOutput {
+	return o
+}
+
+func (o ClientOidcLogoutBackchannelLogoutSessionMetadataOutput) ToClientOidcLogoutBackchannelLogoutSessionMetadataOutputWithContext(ctx context.Context) ClientOidcLogoutBackchannelLogoutSessionMetadataOutput {
+	return o
+}
+
+func (o ClientOidcLogoutBackchannelLogoutSessionMetadataOutput) ToClientOidcLogoutBackchannelLogoutSessionMetadataPtrOutput() ClientOidcLogoutBackchannelLogoutSessionMetadataPtrOutput {
+	return o.ToClientOidcLogoutBackchannelLogoutSessionMetadataPtrOutputWithContext(context.Background())
+}
+
+func (o ClientOidcLogoutBackchannelLogoutSessionMetadataOutput) ToClientOidcLogoutBackchannelLogoutSessionMetadataPtrOutputWithContext(ctx context.Context) ClientOidcLogoutBackchannelLogoutSessionMetadataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientOidcLogoutBackchannelLogoutSessionMetadata) *ClientOidcLogoutBackchannelLogoutSessionMetadata {
+		return &v
+	}).(ClientOidcLogoutBackchannelLogoutSessionMetadataPtrOutput)
+}
+
+// The `include` property determines whether session metadata is included in the logout token.
+func (o ClientOidcLogoutBackchannelLogoutSessionMetadataOutput) Include() pulumi.BoolOutput {
+	return o.ApplyT(func(v ClientOidcLogoutBackchannelLogoutSessionMetadata) bool { return v.Include }).(pulumi.BoolOutput)
+}
+
+type ClientOidcLogoutBackchannelLogoutSessionMetadataPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientOidcLogoutBackchannelLogoutSessionMetadataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientOidcLogoutBackchannelLogoutSessionMetadata)(nil)).Elem()
+}
+
+func (o ClientOidcLogoutBackchannelLogoutSessionMetadataPtrOutput) ToClientOidcLogoutBackchannelLogoutSessionMetadataPtrOutput() ClientOidcLogoutBackchannelLogoutSessionMetadataPtrOutput {
+	return o
+}
+
+func (o ClientOidcLogoutBackchannelLogoutSessionMetadataPtrOutput) ToClientOidcLogoutBackchannelLogoutSessionMetadataPtrOutputWithContext(ctx context.Context) ClientOidcLogoutBackchannelLogoutSessionMetadataPtrOutput {
+	return o
+}
+
+func (o ClientOidcLogoutBackchannelLogoutSessionMetadataPtrOutput) Elem() ClientOidcLogoutBackchannelLogoutSessionMetadataOutput {
+	return o.ApplyT(func(v *ClientOidcLogoutBackchannelLogoutSessionMetadata) ClientOidcLogoutBackchannelLogoutSessionMetadata {
+		if v != nil {
+			return *v
+		}
+		var ret ClientOidcLogoutBackchannelLogoutSessionMetadata
+		return ret
+	}).(ClientOidcLogoutBackchannelLogoutSessionMetadataOutput)
+}
+
+// The `include` property determines whether session metadata is included in the logout token.
+func (o ClientOidcLogoutBackchannelLogoutSessionMetadataPtrOutput) Include() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClientOidcLogoutBackchannelLogoutSessionMetadata) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Include
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ClientRefreshToken struct {
@@ -16925,6 +17083,8 @@ type ConnectionOptions struct {
 	ConsumerSecret *string `pulumi:"consumerSecret"`
 	// Configure extra headers to the Token endpoint of an OAuth 2.0 provider
 	CustomHeaders []ConnectionOptionsCustomHeader `pulumi:"customHeaders"`
+	// Configure custom password hashing within a connection. (EA only)
+	CustomPasswordHash *ConnectionOptionsCustomPasswordHash `pulumi:"customPasswordHash"`
 	// A map of scripts used to integrate with a custom database.
 	CustomScripts map[string]string `pulumi:"customScripts"`
 	// When enabled, additional debug information will be generated.
@@ -16947,6 +17107,8 @@ type ConnectionOptions struct {
 	Domain *string `pulumi:"domain"`
 	// List of the domains that can be authenticated using the identity provider. Only needed for Identifier First authentication flows.
 	DomainAliases []string `pulumi:"domainAliases"`
+	// Indicates whether to request the email scope. Used by some OAuth2 connections (e.g., LINE).
+	Email *bool `pulumi:"email"`
 	// Set to `true` to inject context into custom DB scripts (warning: cannot be disabled once enabled).
 	EnableScriptContext *bool `pulumi:"enableScriptContext"`
 	// Set to `true` to use a legacy user store.
@@ -17153,6 +17315,8 @@ type ConnectionOptionsArgs struct {
 	ConsumerSecret pulumi.StringPtrInput `pulumi:"consumerSecret"`
 	// Configure extra headers to the Token endpoint of an OAuth 2.0 provider
 	CustomHeaders ConnectionOptionsCustomHeaderArrayInput `pulumi:"customHeaders"`
+	// Configure custom password hashing within a connection. (EA only)
+	CustomPasswordHash ConnectionOptionsCustomPasswordHashPtrInput `pulumi:"customPasswordHash"`
 	// A map of scripts used to integrate with a custom database.
 	CustomScripts pulumi.StringMapInput `pulumi:"customScripts"`
 	// When enabled, additional debug information will be generated.
@@ -17175,6 +17339,8 @@ type ConnectionOptionsArgs struct {
 	Domain pulumi.StringPtrInput `pulumi:"domain"`
 	// List of the domains that can be authenticated using the identity provider. Only needed for Identifier First authentication flows.
 	DomainAliases pulumi.StringArrayInput `pulumi:"domainAliases"`
+	// Indicates whether to request the email scope. Used by some OAuth2 connections (e.g., LINE).
+	Email pulumi.BoolPtrInput `pulumi:"email"`
 	// Set to `true` to inject context into custom DB scripts (warning: cannot be disabled once enabled).
 	EnableScriptContext pulumi.BoolPtrInput `pulumi:"enableScriptContext"`
 	// Set to `true` to use a legacy user store.
@@ -17503,6 +17669,11 @@ func (o ConnectionOptionsOutput) CustomHeaders() ConnectionOptionsCustomHeaderAr
 	return o.ApplyT(func(v ConnectionOptions) []ConnectionOptionsCustomHeader { return v.CustomHeaders }).(ConnectionOptionsCustomHeaderArrayOutput)
 }
 
+// Configure custom password hashing within a connection. (EA only)
+func (o ConnectionOptionsOutput) CustomPasswordHash() ConnectionOptionsCustomPasswordHashPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *ConnectionOptionsCustomPasswordHash { return v.CustomPasswordHash }).(ConnectionOptionsCustomPasswordHashPtrOutput)
+}
+
 // A map of scripts used to integrate with a custom database.
 func (o ConnectionOptionsOutput) CustomScripts() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ConnectionOptions) map[string]string { return v.CustomScripts }).(pulumi.StringMapOutput)
@@ -17556,6 +17727,11 @@ func (o ConnectionOptionsOutput) Domain() pulumi.StringPtrOutput {
 // List of the domains that can be authenticated using the identity provider. Only needed for Identifier First authentication flows.
 func (o ConnectionOptionsOutput) DomainAliases() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConnectionOptions) []string { return v.DomainAliases }).(pulumi.StringArrayOutput)
+}
+
+// Indicates whether to request the email scope. Used by some OAuth2 connections (e.g., LINE).
+func (o ConnectionOptionsOutput) Email() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *bool { return v.Email }).(pulumi.BoolPtrOutput)
 }
 
 // Set to `true` to inject context into custom DB scripts (warning: cannot be disabled once enabled).
@@ -18159,6 +18335,16 @@ func (o ConnectionOptionsPtrOutput) CustomHeaders() ConnectionOptionsCustomHeade
 	}).(ConnectionOptionsCustomHeaderArrayOutput)
 }
 
+// Configure custom password hashing within a connection. (EA only)
+func (o ConnectionOptionsPtrOutput) CustomPasswordHash() ConnectionOptionsCustomPasswordHashPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *ConnectionOptionsCustomPasswordHash {
+		if v == nil {
+			return nil
+		}
+		return v.CustomPasswordHash
+	}).(ConnectionOptionsCustomPasswordHashPtrOutput)
+}
+
 // A map of scripts used to integrate with a custom database.
 func (o ConnectionOptionsPtrOutput) CustomScripts() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ConnectionOptions) map[string]string {
@@ -18267,6 +18453,16 @@ func (o ConnectionOptionsPtrOutput) DomainAliases() pulumi.StringArrayOutput {
 		}
 		return v.DomainAliases
 	}).(pulumi.StringArrayOutput)
+}
+
+// Indicates whether to request the email scope. Used by some OAuth2 connections (e.g., LINE).
+func (o ConnectionOptionsPtrOutput) Email() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Email
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Set to `true` to inject context into custom DB scripts (warning: cannot be disabled once enabled).
@@ -19292,6 +19488,8 @@ func (o ConnectionOptionsAttributeEmailArrayOutput) Index(i pulumi.IntInput) Con
 type ConnectionOptionsAttributeEmailIdentifier struct {
 	// Defines whether email attribute is active as an identifier
 	Active *bool `pulumi:"active"`
+	// Gets and Sets the default authentication method for the email identifier type. Valid values: `password`, `emailOtp`
+	DefaultMethod *string `pulumi:"defaultMethod"`
 }
 
 // ConnectionOptionsAttributeEmailIdentifierInput is an input type that accepts ConnectionOptionsAttributeEmailIdentifierArgs and ConnectionOptionsAttributeEmailIdentifierOutput values.
@@ -19308,6 +19506,8 @@ type ConnectionOptionsAttributeEmailIdentifierInput interface {
 type ConnectionOptionsAttributeEmailIdentifierArgs struct {
 	// Defines whether email attribute is active as an identifier
 	Active pulumi.BoolPtrInput `pulumi:"active"`
+	// Gets and Sets the default authentication method for the email identifier type. Valid values: `password`, `emailOtp`
+	DefaultMethod pulumi.StringPtrInput `pulumi:"defaultMethod"`
 }
 
 func (ConnectionOptionsAttributeEmailIdentifierArgs) ElementType() reflect.Type {
@@ -19364,6 +19564,11 @@ func (o ConnectionOptionsAttributeEmailIdentifierOutput) ToConnectionOptionsAttr
 // Defines whether email attribute is active as an identifier
 func (o ConnectionOptionsAttributeEmailIdentifierOutput) Active() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionOptionsAttributeEmailIdentifier) *bool { return v.Active }).(pulumi.BoolPtrOutput)
+}
+
+// Gets and Sets the default authentication method for the email identifier type. Valid values: `password`, `emailOtp`
+func (o ConnectionOptionsAttributeEmailIdentifierOutput) DefaultMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptionsAttributeEmailIdentifier) *string { return v.DefaultMethod }).(pulumi.StringPtrOutput)
 }
 
 type ConnectionOptionsAttributeEmailIdentifierArrayOutput struct{ *pulumi.OutputState }
@@ -19888,6 +20093,8 @@ func (o ConnectionOptionsAttributePhoneNumberArrayOutput) Index(i pulumi.IntInpu
 type ConnectionOptionsAttributePhoneNumberIdentifier struct {
 	// Defines whether Phone Number attribute is active as an identifier
 	Active *bool `pulumi:"active"`
+	// Gets and Sets the default authentication method for the phoneNumber identifier type. Valid values: `password`, `phoneOtp`
+	DefaultMethod *string `pulumi:"defaultMethod"`
 }
 
 // ConnectionOptionsAttributePhoneNumberIdentifierInput is an input type that accepts ConnectionOptionsAttributePhoneNumberIdentifierArgs and ConnectionOptionsAttributePhoneNumberIdentifierOutput values.
@@ -19904,6 +20111,8 @@ type ConnectionOptionsAttributePhoneNumberIdentifierInput interface {
 type ConnectionOptionsAttributePhoneNumberIdentifierArgs struct {
 	// Defines whether Phone Number attribute is active as an identifier
 	Active pulumi.BoolPtrInput `pulumi:"active"`
+	// Gets and Sets the default authentication method for the phoneNumber identifier type. Valid values: `password`, `phoneOtp`
+	DefaultMethod pulumi.StringPtrInput `pulumi:"defaultMethod"`
 }
 
 func (ConnectionOptionsAttributePhoneNumberIdentifierArgs) ElementType() reflect.Type {
@@ -19960,6 +20169,11 @@ func (o ConnectionOptionsAttributePhoneNumberIdentifierOutput) ToConnectionOptio
 // Defines whether Phone Number attribute is active as an identifier
 func (o ConnectionOptionsAttributePhoneNumberIdentifierOutput) Active() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionOptionsAttributePhoneNumberIdentifier) *bool { return v.Active }).(pulumi.BoolPtrOutput)
+}
+
+// Gets and Sets the default authentication method for the phoneNumber identifier type. Valid values: `password`, `phoneOtp`
+func (o ConnectionOptionsAttributePhoneNumberIdentifierOutput) DefaultMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptionsAttributePhoneNumberIdentifier) *string { return v.DefaultMethod }).(pulumi.StringPtrOutput)
 }
 
 type ConnectionOptionsAttributePhoneNumberIdentifierArrayOutput struct{ *pulumi.OutputState }
@@ -20320,6 +20534,8 @@ func (o ConnectionOptionsAttributeUsernameArrayOutput) Index(i pulumi.IntInput) 
 type ConnectionOptionsAttributeUsernameIdentifier struct {
 	// Defines whether UserName attribute is active as an identifier
 	Active *bool `pulumi:"active"`
+	// Gets and Sets the default authentication method for the username identifier type. Valid value: `password`
+	DefaultMethod *string `pulumi:"defaultMethod"`
 }
 
 // ConnectionOptionsAttributeUsernameIdentifierInput is an input type that accepts ConnectionOptionsAttributeUsernameIdentifierArgs and ConnectionOptionsAttributeUsernameIdentifierOutput values.
@@ -20336,6 +20552,8 @@ type ConnectionOptionsAttributeUsernameIdentifierInput interface {
 type ConnectionOptionsAttributeUsernameIdentifierArgs struct {
 	// Defines whether UserName attribute is active as an identifier
 	Active pulumi.BoolPtrInput `pulumi:"active"`
+	// Gets and Sets the default authentication method for the username identifier type. Valid value: `password`
+	DefaultMethod pulumi.StringPtrInput `pulumi:"defaultMethod"`
 }
 
 func (ConnectionOptionsAttributeUsernameIdentifierArgs) ElementType() reflect.Type {
@@ -20392,6 +20610,11 @@ func (o ConnectionOptionsAttributeUsernameIdentifierOutput) ToConnectionOptionsA
 // Defines whether UserName attribute is active as an identifier
 func (o ConnectionOptionsAttributeUsernameIdentifierOutput) Active() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionOptionsAttributeUsernameIdentifier) *bool { return v.Active }).(pulumi.BoolPtrOutput)
+}
+
+// Gets and Sets the default authentication method for the username identifier type. Valid value: `password`
+func (o ConnectionOptionsAttributeUsernameIdentifierOutput) DefaultMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptionsAttributeUsernameIdentifier) *string { return v.DefaultMethod }).(pulumi.StringPtrOutput)
 }
 
 type ConnectionOptionsAttributeUsernameIdentifierArrayOutput struct{ *pulumi.OutputState }
@@ -20735,10 +20958,14 @@ func (o ConnectionOptionsAttributeUsernameValidationAllowedTypeArrayOutput) Inde
 }
 
 type ConnectionOptionsAuthenticationMethod struct {
+	// Configures Email OTP authentication
+	EmailOtp *ConnectionOptionsAuthenticationMethodEmailOtp `pulumi:"emailOtp"`
 	// Configures passkey authentication
 	Passkey *ConnectionOptionsAuthenticationMethodPasskey `pulumi:"passkey"`
 	// Configures password authentication
 	Password *ConnectionOptionsAuthenticationMethodPassword `pulumi:"password"`
+	// Configures Phone OTP authentication
+	PhoneOtp *ConnectionOptionsAuthenticationMethodPhoneOtp `pulumi:"phoneOtp"`
 }
 
 // ConnectionOptionsAuthenticationMethodInput is an input type that accepts ConnectionOptionsAuthenticationMethodArgs and ConnectionOptionsAuthenticationMethodOutput values.
@@ -20753,10 +20980,14 @@ type ConnectionOptionsAuthenticationMethodInput interface {
 }
 
 type ConnectionOptionsAuthenticationMethodArgs struct {
+	// Configures Email OTP authentication
+	EmailOtp ConnectionOptionsAuthenticationMethodEmailOtpPtrInput `pulumi:"emailOtp"`
 	// Configures passkey authentication
 	Passkey ConnectionOptionsAuthenticationMethodPasskeyPtrInput `pulumi:"passkey"`
 	// Configures password authentication
 	Password ConnectionOptionsAuthenticationMethodPasswordPtrInput `pulumi:"password"`
+	// Configures Phone OTP authentication
+	PhoneOtp ConnectionOptionsAuthenticationMethodPhoneOtpPtrInput `pulumi:"phoneOtp"`
 }
 
 func (ConnectionOptionsAuthenticationMethodArgs) ElementType() reflect.Type {
@@ -20810,6 +21041,13 @@ func (o ConnectionOptionsAuthenticationMethodOutput) ToConnectionOptionsAuthenti
 	return o
 }
 
+// Configures Email OTP authentication
+func (o ConnectionOptionsAuthenticationMethodOutput) EmailOtp() ConnectionOptionsAuthenticationMethodEmailOtpPtrOutput {
+	return o.ApplyT(func(v ConnectionOptionsAuthenticationMethod) *ConnectionOptionsAuthenticationMethodEmailOtp {
+		return v.EmailOtp
+	}).(ConnectionOptionsAuthenticationMethodEmailOtpPtrOutput)
+}
+
 // Configures passkey authentication
 func (o ConnectionOptionsAuthenticationMethodOutput) Passkey() ConnectionOptionsAuthenticationMethodPasskeyPtrOutput {
 	return o.ApplyT(func(v ConnectionOptionsAuthenticationMethod) *ConnectionOptionsAuthenticationMethodPasskey {
@@ -20822,6 +21060,13 @@ func (o ConnectionOptionsAuthenticationMethodOutput) Password() ConnectionOption
 	return o.ApplyT(func(v ConnectionOptionsAuthenticationMethod) *ConnectionOptionsAuthenticationMethodPassword {
 		return v.Password
 	}).(ConnectionOptionsAuthenticationMethodPasswordPtrOutput)
+}
+
+// Configures Phone OTP authentication
+func (o ConnectionOptionsAuthenticationMethodOutput) PhoneOtp() ConnectionOptionsAuthenticationMethodPhoneOtpPtrOutput {
+	return o.ApplyT(func(v ConnectionOptionsAuthenticationMethod) *ConnectionOptionsAuthenticationMethodPhoneOtp {
+		return v.PhoneOtp
+	}).(ConnectionOptionsAuthenticationMethodPhoneOtpPtrOutput)
 }
 
 type ConnectionOptionsAuthenticationMethodArrayOutput struct{ *pulumi.OutputState }
@@ -20842,6 +21087,143 @@ func (o ConnectionOptionsAuthenticationMethodArrayOutput) Index(i pulumi.IntInpu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionOptionsAuthenticationMethod {
 		return vs[0].([]ConnectionOptionsAuthenticationMethod)[vs[1].(int)]
 	}).(ConnectionOptionsAuthenticationMethodOutput)
+}
+
+type ConnectionOptionsAuthenticationMethodEmailOtp struct {
+	// Enables Email OTP authentication
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// ConnectionOptionsAuthenticationMethodEmailOtpInput is an input type that accepts ConnectionOptionsAuthenticationMethodEmailOtpArgs and ConnectionOptionsAuthenticationMethodEmailOtpOutput values.
+// You can construct a concrete instance of `ConnectionOptionsAuthenticationMethodEmailOtpInput` via:
+//
+//	ConnectionOptionsAuthenticationMethodEmailOtpArgs{...}
+type ConnectionOptionsAuthenticationMethodEmailOtpInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsAuthenticationMethodEmailOtpOutput() ConnectionOptionsAuthenticationMethodEmailOtpOutput
+	ToConnectionOptionsAuthenticationMethodEmailOtpOutputWithContext(context.Context) ConnectionOptionsAuthenticationMethodEmailOtpOutput
+}
+
+type ConnectionOptionsAuthenticationMethodEmailOtpArgs struct {
+	// Enables Email OTP authentication
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (ConnectionOptionsAuthenticationMethodEmailOtpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsAuthenticationMethodEmailOtp)(nil)).Elem()
+}
+
+func (i ConnectionOptionsAuthenticationMethodEmailOtpArgs) ToConnectionOptionsAuthenticationMethodEmailOtpOutput() ConnectionOptionsAuthenticationMethodEmailOtpOutput {
+	return i.ToConnectionOptionsAuthenticationMethodEmailOtpOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsAuthenticationMethodEmailOtpArgs) ToConnectionOptionsAuthenticationMethodEmailOtpOutputWithContext(ctx context.Context) ConnectionOptionsAuthenticationMethodEmailOtpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsAuthenticationMethodEmailOtpOutput)
+}
+
+func (i ConnectionOptionsAuthenticationMethodEmailOtpArgs) ToConnectionOptionsAuthenticationMethodEmailOtpPtrOutput() ConnectionOptionsAuthenticationMethodEmailOtpPtrOutput {
+	return i.ToConnectionOptionsAuthenticationMethodEmailOtpPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsAuthenticationMethodEmailOtpArgs) ToConnectionOptionsAuthenticationMethodEmailOtpPtrOutputWithContext(ctx context.Context) ConnectionOptionsAuthenticationMethodEmailOtpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsAuthenticationMethodEmailOtpOutput).ToConnectionOptionsAuthenticationMethodEmailOtpPtrOutputWithContext(ctx)
+}
+
+// ConnectionOptionsAuthenticationMethodEmailOtpPtrInput is an input type that accepts ConnectionOptionsAuthenticationMethodEmailOtpArgs, ConnectionOptionsAuthenticationMethodEmailOtpPtr and ConnectionOptionsAuthenticationMethodEmailOtpPtrOutput values.
+// You can construct a concrete instance of `ConnectionOptionsAuthenticationMethodEmailOtpPtrInput` via:
+//
+//	        ConnectionOptionsAuthenticationMethodEmailOtpArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionOptionsAuthenticationMethodEmailOtpPtrInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsAuthenticationMethodEmailOtpPtrOutput() ConnectionOptionsAuthenticationMethodEmailOtpPtrOutput
+	ToConnectionOptionsAuthenticationMethodEmailOtpPtrOutputWithContext(context.Context) ConnectionOptionsAuthenticationMethodEmailOtpPtrOutput
+}
+
+type connectionOptionsAuthenticationMethodEmailOtpPtrType ConnectionOptionsAuthenticationMethodEmailOtpArgs
+
+func ConnectionOptionsAuthenticationMethodEmailOtpPtr(v *ConnectionOptionsAuthenticationMethodEmailOtpArgs) ConnectionOptionsAuthenticationMethodEmailOtpPtrInput {
+	return (*connectionOptionsAuthenticationMethodEmailOtpPtrType)(v)
+}
+
+func (*connectionOptionsAuthenticationMethodEmailOtpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionOptionsAuthenticationMethodEmailOtp)(nil)).Elem()
+}
+
+func (i *connectionOptionsAuthenticationMethodEmailOtpPtrType) ToConnectionOptionsAuthenticationMethodEmailOtpPtrOutput() ConnectionOptionsAuthenticationMethodEmailOtpPtrOutput {
+	return i.ToConnectionOptionsAuthenticationMethodEmailOtpPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionOptionsAuthenticationMethodEmailOtpPtrType) ToConnectionOptionsAuthenticationMethodEmailOtpPtrOutputWithContext(ctx context.Context) ConnectionOptionsAuthenticationMethodEmailOtpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsAuthenticationMethodEmailOtpPtrOutput)
+}
+
+type ConnectionOptionsAuthenticationMethodEmailOtpOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsAuthenticationMethodEmailOtpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsAuthenticationMethodEmailOtp)(nil)).Elem()
+}
+
+func (o ConnectionOptionsAuthenticationMethodEmailOtpOutput) ToConnectionOptionsAuthenticationMethodEmailOtpOutput() ConnectionOptionsAuthenticationMethodEmailOtpOutput {
+	return o
+}
+
+func (o ConnectionOptionsAuthenticationMethodEmailOtpOutput) ToConnectionOptionsAuthenticationMethodEmailOtpOutputWithContext(ctx context.Context) ConnectionOptionsAuthenticationMethodEmailOtpOutput {
+	return o
+}
+
+func (o ConnectionOptionsAuthenticationMethodEmailOtpOutput) ToConnectionOptionsAuthenticationMethodEmailOtpPtrOutput() ConnectionOptionsAuthenticationMethodEmailOtpPtrOutput {
+	return o.ToConnectionOptionsAuthenticationMethodEmailOtpPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionOptionsAuthenticationMethodEmailOtpOutput) ToConnectionOptionsAuthenticationMethodEmailOtpPtrOutputWithContext(ctx context.Context) ConnectionOptionsAuthenticationMethodEmailOtpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionOptionsAuthenticationMethodEmailOtp) *ConnectionOptionsAuthenticationMethodEmailOtp {
+		return &v
+	}).(ConnectionOptionsAuthenticationMethodEmailOtpPtrOutput)
+}
+
+// Enables Email OTP authentication
+func (o ConnectionOptionsAuthenticationMethodEmailOtpOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectionOptionsAuthenticationMethodEmailOtp) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type ConnectionOptionsAuthenticationMethodEmailOtpPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsAuthenticationMethodEmailOtpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionOptionsAuthenticationMethodEmailOtp)(nil)).Elem()
+}
+
+func (o ConnectionOptionsAuthenticationMethodEmailOtpPtrOutput) ToConnectionOptionsAuthenticationMethodEmailOtpPtrOutput() ConnectionOptionsAuthenticationMethodEmailOtpPtrOutput {
+	return o
+}
+
+func (o ConnectionOptionsAuthenticationMethodEmailOtpPtrOutput) ToConnectionOptionsAuthenticationMethodEmailOtpPtrOutputWithContext(ctx context.Context) ConnectionOptionsAuthenticationMethodEmailOtpPtrOutput {
+	return o
+}
+
+func (o ConnectionOptionsAuthenticationMethodEmailOtpPtrOutput) Elem() ConnectionOptionsAuthenticationMethodEmailOtpOutput {
+	return o.ApplyT(func(v *ConnectionOptionsAuthenticationMethodEmailOtp) ConnectionOptionsAuthenticationMethodEmailOtp {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionOptionsAuthenticationMethodEmailOtp
+		return ret
+	}).(ConnectionOptionsAuthenticationMethodEmailOtpOutput)
+}
+
+// Enables Email OTP authentication
+func (o ConnectionOptionsAuthenticationMethodEmailOtpPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptionsAuthenticationMethodEmailOtp) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ConnectionOptionsAuthenticationMethodPasskey struct {
@@ -21118,6 +21500,143 @@ func (o ConnectionOptionsAuthenticationMethodPasswordPtrOutput) Enabled() pulumi
 	}).(pulumi.BoolPtrOutput)
 }
 
+type ConnectionOptionsAuthenticationMethodPhoneOtp struct {
+	// Enables Phone OTP authentication
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// ConnectionOptionsAuthenticationMethodPhoneOtpInput is an input type that accepts ConnectionOptionsAuthenticationMethodPhoneOtpArgs and ConnectionOptionsAuthenticationMethodPhoneOtpOutput values.
+// You can construct a concrete instance of `ConnectionOptionsAuthenticationMethodPhoneOtpInput` via:
+//
+//	ConnectionOptionsAuthenticationMethodPhoneOtpArgs{...}
+type ConnectionOptionsAuthenticationMethodPhoneOtpInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsAuthenticationMethodPhoneOtpOutput() ConnectionOptionsAuthenticationMethodPhoneOtpOutput
+	ToConnectionOptionsAuthenticationMethodPhoneOtpOutputWithContext(context.Context) ConnectionOptionsAuthenticationMethodPhoneOtpOutput
+}
+
+type ConnectionOptionsAuthenticationMethodPhoneOtpArgs struct {
+	// Enables Phone OTP authentication
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (ConnectionOptionsAuthenticationMethodPhoneOtpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsAuthenticationMethodPhoneOtp)(nil)).Elem()
+}
+
+func (i ConnectionOptionsAuthenticationMethodPhoneOtpArgs) ToConnectionOptionsAuthenticationMethodPhoneOtpOutput() ConnectionOptionsAuthenticationMethodPhoneOtpOutput {
+	return i.ToConnectionOptionsAuthenticationMethodPhoneOtpOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsAuthenticationMethodPhoneOtpArgs) ToConnectionOptionsAuthenticationMethodPhoneOtpOutputWithContext(ctx context.Context) ConnectionOptionsAuthenticationMethodPhoneOtpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsAuthenticationMethodPhoneOtpOutput)
+}
+
+func (i ConnectionOptionsAuthenticationMethodPhoneOtpArgs) ToConnectionOptionsAuthenticationMethodPhoneOtpPtrOutput() ConnectionOptionsAuthenticationMethodPhoneOtpPtrOutput {
+	return i.ToConnectionOptionsAuthenticationMethodPhoneOtpPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsAuthenticationMethodPhoneOtpArgs) ToConnectionOptionsAuthenticationMethodPhoneOtpPtrOutputWithContext(ctx context.Context) ConnectionOptionsAuthenticationMethodPhoneOtpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsAuthenticationMethodPhoneOtpOutput).ToConnectionOptionsAuthenticationMethodPhoneOtpPtrOutputWithContext(ctx)
+}
+
+// ConnectionOptionsAuthenticationMethodPhoneOtpPtrInput is an input type that accepts ConnectionOptionsAuthenticationMethodPhoneOtpArgs, ConnectionOptionsAuthenticationMethodPhoneOtpPtr and ConnectionOptionsAuthenticationMethodPhoneOtpPtrOutput values.
+// You can construct a concrete instance of `ConnectionOptionsAuthenticationMethodPhoneOtpPtrInput` via:
+//
+//	        ConnectionOptionsAuthenticationMethodPhoneOtpArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionOptionsAuthenticationMethodPhoneOtpPtrInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsAuthenticationMethodPhoneOtpPtrOutput() ConnectionOptionsAuthenticationMethodPhoneOtpPtrOutput
+	ToConnectionOptionsAuthenticationMethodPhoneOtpPtrOutputWithContext(context.Context) ConnectionOptionsAuthenticationMethodPhoneOtpPtrOutput
+}
+
+type connectionOptionsAuthenticationMethodPhoneOtpPtrType ConnectionOptionsAuthenticationMethodPhoneOtpArgs
+
+func ConnectionOptionsAuthenticationMethodPhoneOtpPtr(v *ConnectionOptionsAuthenticationMethodPhoneOtpArgs) ConnectionOptionsAuthenticationMethodPhoneOtpPtrInput {
+	return (*connectionOptionsAuthenticationMethodPhoneOtpPtrType)(v)
+}
+
+func (*connectionOptionsAuthenticationMethodPhoneOtpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionOptionsAuthenticationMethodPhoneOtp)(nil)).Elem()
+}
+
+func (i *connectionOptionsAuthenticationMethodPhoneOtpPtrType) ToConnectionOptionsAuthenticationMethodPhoneOtpPtrOutput() ConnectionOptionsAuthenticationMethodPhoneOtpPtrOutput {
+	return i.ToConnectionOptionsAuthenticationMethodPhoneOtpPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionOptionsAuthenticationMethodPhoneOtpPtrType) ToConnectionOptionsAuthenticationMethodPhoneOtpPtrOutputWithContext(ctx context.Context) ConnectionOptionsAuthenticationMethodPhoneOtpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsAuthenticationMethodPhoneOtpPtrOutput)
+}
+
+type ConnectionOptionsAuthenticationMethodPhoneOtpOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsAuthenticationMethodPhoneOtpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsAuthenticationMethodPhoneOtp)(nil)).Elem()
+}
+
+func (o ConnectionOptionsAuthenticationMethodPhoneOtpOutput) ToConnectionOptionsAuthenticationMethodPhoneOtpOutput() ConnectionOptionsAuthenticationMethodPhoneOtpOutput {
+	return o
+}
+
+func (o ConnectionOptionsAuthenticationMethodPhoneOtpOutput) ToConnectionOptionsAuthenticationMethodPhoneOtpOutputWithContext(ctx context.Context) ConnectionOptionsAuthenticationMethodPhoneOtpOutput {
+	return o
+}
+
+func (o ConnectionOptionsAuthenticationMethodPhoneOtpOutput) ToConnectionOptionsAuthenticationMethodPhoneOtpPtrOutput() ConnectionOptionsAuthenticationMethodPhoneOtpPtrOutput {
+	return o.ToConnectionOptionsAuthenticationMethodPhoneOtpPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionOptionsAuthenticationMethodPhoneOtpOutput) ToConnectionOptionsAuthenticationMethodPhoneOtpPtrOutputWithContext(ctx context.Context) ConnectionOptionsAuthenticationMethodPhoneOtpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionOptionsAuthenticationMethodPhoneOtp) *ConnectionOptionsAuthenticationMethodPhoneOtp {
+		return &v
+	}).(ConnectionOptionsAuthenticationMethodPhoneOtpPtrOutput)
+}
+
+// Enables Phone OTP authentication
+func (o ConnectionOptionsAuthenticationMethodPhoneOtpOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectionOptionsAuthenticationMethodPhoneOtp) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type ConnectionOptionsAuthenticationMethodPhoneOtpPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsAuthenticationMethodPhoneOtpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionOptionsAuthenticationMethodPhoneOtp)(nil)).Elem()
+}
+
+func (o ConnectionOptionsAuthenticationMethodPhoneOtpPtrOutput) ToConnectionOptionsAuthenticationMethodPhoneOtpPtrOutput() ConnectionOptionsAuthenticationMethodPhoneOtpPtrOutput {
+	return o
+}
+
+func (o ConnectionOptionsAuthenticationMethodPhoneOtpPtrOutput) ToConnectionOptionsAuthenticationMethodPhoneOtpPtrOutputWithContext(ctx context.Context) ConnectionOptionsAuthenticationMethodPhoneOtpPtrOutput {
+	return o
+}
+
+func (o ConnectionOptionsAuthenticationMethodPhoneOtpPtrOutput) Elem() ConnectionOptionsAuthenticationMethodPhoneOtpOutput {
+	return o.ApplyT(func(v *ConnectionOptionsAuthenticationMethodPhoneOtp) ConnectionOptionsAuthenticationMethodPhoneOtp {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionOptionsAuthenticationMethodPhoneOtp
+		return ret
+	}).(ConnectionOptionsAuthenticationMethodPhoneOtpOutput)
+}
+
+// Enables Phone OTP authentication
+func (o ConnectionOptionsAuthenticationMethodPhoneOtpPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptionsAuthenticationMethodPhoneOtp) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 type ConnectionOptionsConnectionSettings struct {
 	// PKCE configuration. Possible values: `auto` (uses the strongest algorithm available), `S256` (uses the SHA-256 algorithm), `plain` (uses plaintext as described in the PKCE specification) or `disabled` (disables support for PKCE).
 	Pkce string `pulumi:"pkce"`
@@ -21353,6 +21872,143 @@ func (o ConnectionOptionsCustomHeaderArrayOutput) Index(i pulumi.IntInput) Conne
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionOptionsCustomHeader {
 		return vs[0].([]ConnectionOptionsCustomHeader)[vs[1].(int)]
 	}).(ConnectionOptionsCustomHeaderOutput)
+}
+
+type ConnectionOptionsCustomPasswordHash struct {
+	// Id of an existing action that should be invoked when validating a universal password hash. This action must support password-hash-migration trigger
+	ActionId string `pulumi:"actionId"`
+}
+
+// ConnectionOptionsCustomPasswordHashInput is an input type that accepts ConnectionOptionsCustomPasswordHashArgs and ConnectionOptionsCustomPasswordHashOutput values.
+// You can construct a concrete instance of `ConnectionOptionsCustomPasswordHashInput` via:
+//
+//	ConnectionOptionsCustomPasswordHashArgs{...}
+type ConnectionOptionsCustomPasswordHashInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsCustomPasswordHashOutput() ConnectionOptionsCustomPasswordHashOutput
+	ToConnectionOptionsCustomPasswordHashOutputWithContext(context.Context) ConnectionOptionsCustomPasswordHashOutput
+}
+
+type ConnectionOptionsCustomPasswordHashArgs struct {
+	// Id of an existing action that should be invoked when validating a universal password hash. This action must support password-hash-migration trigger
+	ActionId pulumi.StringInput `pulumi:"actionId"`
+}
+
+func (ConnectionOptionsCustomPasswordHashArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsCustomPasswordHash)(nil)).Elem()
+}
+
+func (i ConnectionOptionsCustomPasswordHashArgs) ToConnectionOptionsCustomPasswordHashOutput() ConnectionOptionsCustomPasswordHashOutput {
+	return i.ToConnectionOptionsCustomPasswordHashOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsCustomPasswordHashArgs) ToConnectionOptionsCustomPasswordHashOutputWithContext(ctx context.Context) ConnectionOptionsCustomPasswordHashOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsCustomPasswordHashOutput)
+}
+
+func (i ConnectionOptionsCustomPasswordHashArgs) ToConnectionOptionsCustomPasswordHashPtrOutput() ConnectionOptionsCustomPasswordHashPtrOutput {
+	return i.ToConnectionOptionsCustomPasswordHashPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsCustomPasswordHashArgs) ToConnectionOptionsCustomPasswordHashPtrOutputWithContext(ctx context.Context) ConnectionOptionsCustomPasswordHashPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsCustomPasswordHashOutput).ToConnectionOptionsCustomPasswordHashPtrOutputWithContext(ctx)
+}
+
+// ConnectionOptionsCustomPasswordHashPtrInput is an input type that accepts ConnectionOptionsCustomPasswordHashArgs, ConnectionOptionsCustomPasswordHashPtr and ConnectionOptionsCustomPasswordHashPtrOutput values.
+// You can construct a concrete instance of `ConnectionOptionsCustomPasswordHashPtrInput` via:
+//
+//	        ConnectionOptionsCustomPasswordHashArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionOptionsCustomPasswordHashPtrInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsCustomPasswordHashPtrOutput() ConnectionOptionsCustomPasswordHashPtrOutput
+	ToConnectionOptionsCustomPasswordHashPtrOutputWithContext(context.Context) ConnectionOptionsCustomPasswordHashPtrOutput
+}
+
+type connectionOptionsCustomPasswordHashPtrType ConnectionOptionsCustomPasswordHashArgs
+
+func ConnectionOptionsCustomPasswordHashPtr(v *ConnectionOptionsCustomPasswordHashArgs) ConnectionOptionsCustomPasswordHashPtrInput {
+	return (*connectionOptionsCustomPasswordHashPtrType)(v)
+}
+
+func (*connectionOptionsCustomPasswordHashPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionOptionsCustomPasswordHash)(nil)).Elem()
+}
+
+func (i *connectionOptionsCustomPasswordHashPtrType) ToConnectionOptionsCustomPasswordHashPtrOutput() ConnectionOptionsCustomPasswordHashPtrOutput {
+	return i.ToConnectionOptionsCustomPasswordHashPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionOptionsCustomPasswordHashPtrType) ToConnectionOptionsCustomPasswordHashPtrOutputWithContext(ctx context.Context) ConnectionOptionsCustomPasswordHashPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsCustomPasswordHashPtrOutput)
+}
+
+type ConnectionOptionsCustomPasswordHashOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsCustomPasswordHashOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsCustomPasswordHash)(nil)).Elem()
+}
+
+func (o ConnectionOptionsCustomPasswordHashOutput) ToConnectionOptionsCustomPasswordHashOutput() ConnectionOptionsCustomPasswordHashOutput {
+	return o
+}
+
+func (o ConnectionOptionsCustomPasswordHashOutput) ToConnectionOptionsCustomPasswordHashOutputWithContext(ctx context.Context) ConnectionOptionsCustomPasswordHashOutput {
+	return o
+}
+
+func (o ConnectionOptionsCustomPasswordHashOutput) ToConnectionOptionsCustomPasswordHashPtrOutput() ConnectionOptionsCustomPasswordHashPtrOutput {
+	return o.ToConnectionOptionsCustomPasswordHashPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionOptionsCustomPasswordHashOutput) ToConnectionOptionsCustomPasswordHashPtrOutputWithContext(ctx context.Context) ConnectionOptionsCustomPasswordHashPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionOptionsCustomPasswordHash) *ConnectionOptionsCustomPasswordHash {
+		return &v
+	}).(ConnectionOptionsCustomPasswordHashPtrOutput)
+}
+
+// Id of an existing action that should be invoked when validating a universal password hash. This action must support password-hash-migration trigger
+func (o ConnectionOptionsCustomPasswordHashOutput) ActionId() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionOptionsCustomPasswordHash) string { return v.ActionId }).(pulumi.StringOutput)
+}
+
+type ConnectionOptionsCustomPasswordHashPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsCustomPasswordHashPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionOptionsCustomPasswordHash)(nil)).Elem()
+}
+
+func (o ConnectionOptionsCustomPasswordHashPtrOutput) ToConnectionOptionsCustomPasswordHashPtrOutput() ConnectionOptionsCustomPasswordHashPtrOutput {
+	return o
+}
+
+func (o ConnectionOptionsCustomPasswordHashPtrOutput) ToConnectionOptionsCustomPasswordHashPtrOutputWithContext(ctx context.Context) ConnectionOptionsCustomPasswordHashPtrOutput {
+	return o
+}
+
+func (o ConnectionOptionsCustomPasswordHashPtrOutput) Elem() ConnectionOptionsCustomPasswordHashOutput {
+	return o.ApplyT(func(v *ConnectionOptionsCustomPasswordHash) ConnectionOptionsCustomPasswordHash {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionOptionsCustomPasswordHash
+		return ret
+	}).(ConnectionOptionsCustomPasswordHashOutput)
+}
+
+// Id of an existing action that should be invoked when validating a universal password hash. This action must support password-hash-migration trigger
+func (o ConnectionOptionsCustomPasswordHashPtrOutput) ActionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptionsCustomPasswordHash) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ActionId
+	}).(pulumi.StringPtrOutput)
 }
 
 type ConnectionOptionsDecryptionKey struct {
@@ -28037,12 +28693,18 @@ func (o EventStreamWebhookConfigurationPtrOutput) WebhookEndpoint() pulumi.Strin
 
 type EventStreamWebhookConfigurationWebhookAuthorization struct {
 	// The authorization method used to secure the webhook endpoint. Can be either `basic` or `bearer`.
-	Method string `pulumi:"method"`
-	// The password for `basic` authentication. Required when `method` is set to `basic`.
+	Method   string  `pulumi:"method"`
 	Password *string `pulumi:"password"`
-	// The token used for `bearer` authentication. Required when `method` is set to `bearer`.
-	Token *string `pulumi:"token"`
-	// The username for `basic` authentication. Required when `method` is set to `basic`.
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	PasswordWo *string `pulumi:"passwordWo"`
+	// Version number for password changes. Update this value to trigger a password change when using `passwordWo`.
+	PasswordWoVersion *int    `pulumi:"passwordWoVersion"`
+	Token             *string `pulumi:"token"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	TokenWo *string `pulumi:"tokenWo"`
+	// Version number for token changes. Update this value to trigger a token change when using `tokenWo`.
+	TokenWoVersion *int `pulumi:"tokenWoVersion"`
+	// The username for `basic` authentication. Required only when `method` is set to `basic`.
 	Username *string `pulumi:"username"`
 }
 
@@ -28059,12 +28721,18 @@ type EventStreamWebhookConfigurationWebhookAuthorizationInput interface {
 
 type EventStreamWebhookConfigurationWebhookAuthorizationArgs struct {
 	// The authorization method used to secure the webhook endpoint. Can be either `basic` or `bearer`.
-	Method pulumi.StringInput `pulumi:"method"`
-	// The password for `basic` authentication. Required when `method` is set to `basic`.
+	Method   pulumi.StringInput    `pulumi:"method"`
 	Password pulumi.StringPtrInput `pulumi:"password"`
-	// The token used for `bearer` authentication. Required when `method` is set to `bearer`.
-	Token pulumi.StringPtrInput `pulumi:"token"`
-	// The username for `basic` authentication. Required when `method` is set to `basic`.
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	PasswordWo pulumi.StringPtrInput `pulumi:"passwordWo"`
+	// Version number for password changes. Update this value to trigger a password change when using `passwordWo`.
+	PasswordWoVersion pulumi.IntPtrInput    `pulumi:"passwordWoVersion"`
+	Token             pulumi.StringPtrInput `pulumi:"token"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	TokenWo pulumi.StringPtrInput `pulumi:"tokenWo"`
+	// Version number for token changes. Update this value to trigger a token change when using `tokenWo`.
+	TokenWoVersion pulumi.IntPtrInput `pulumi:"tokenWoVersion"`
+	// The username for `basic` authentication. Required only when `method` is set to `basic`.
 	Username pulumi.StringPtrInput `pulumi:"username"`
 }
 
@@ -28150,17 +28818,35 @@ func (o EventStreamWebhookConfigurationWebhookAuthorizationOutput) Method() pulu
 	return o.ApplyT(func(v EventStreamWebhookConfigurationWebhookAuthorization) string { return v.Method }).(pulumi.StringOutput)
 }
 
-// The password for `basic` authentication. Required when `method` is set to `basic`.
 func (o EventStreamWebhookConfigurationWebhookAuthorizationOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EventStreamWebhookConfigurationWebhookAuthorization) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
-// The token used for `bearer` authentication. Required when `method` is set to `bearer`.
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+func (o EventStreamWebhookConfigurationWebhookAuthorizationOutput) PasswordWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventStreamWebhookConfigurationWebhookAuthorization) *string { return v.PasswordWo }).(pulumi.StringPtrOutput)
+}
+
+// Version number for password changes. Update this value to trigger a password change when using `passwordWo`.
+func (o EventStreamWebhookConfigurationWebhookAuthorizationOutput) PasswordWoVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EventStreamWebhookConfigurationWebhookAuthorization) *int { return v.PasswordWoVersion }).(pulumi.IntPtrOutput)
+}
+
 func (o EventStreamWebhookConfigurationWebhookAuthorizationOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EventStreamWebhookConfigurationWebhookAuthorization) *string { return v.Token }).(pulumi.StringPtrOutput)
 }
 
-// The username for `basic` authentication. Required when `method` is set to `basic`.
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+func (o EventStreamWebhookConfigurationWebhookAuthorizationOutput) TokenWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventStreamWebhookConfigurationWebhookAuthorization) *string { return v.TokenWo }).(pulumi.StringPtrOutput)
+}
+
+// Version number for token changes. Update this value to trigger a token change when using `tokenWo`.
+func (o EventStreamWebhookConfigurationWebhookAuthorizationOutput) TokenWoVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EventStreamWebhookConfigurationWebhookAuthorization) *int { return v.TokenWoVersion }).(pulumi.IntPtrOutput)
+}
+
+// The username for `basic` authentication. Required only when `method` is set to `basic`.
 func (o EventStreamWebhookConfigurationWebhookAuthorizationOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EventStreamWebhookConfigurationWebhookAuthorization) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
@@ -28199,7 +28885,6 @@ func (o EventStreamWebhookConfigurationWebhookAuthorizationPtrOutput) Method() p
 	}).(pulumi.StringPtrOutput)
 }
 
-// The password for `basic` authentication. Required when `method` is set to `basic`.
 func (o EventStreamWebhookConfigurationWebhookAuthorizationPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EventStreamWebhookConfigurationWebhookAuthorization) *string {
 		if v == nil {
@@ -28209,7 +28894,26 @@ func (o EventStreamWebhookConfigurationWebhookAuthorizationPtrOutput) Password()
 	}).(pulumi.StringPtrOutput)
 }
 
-// The token used for `bearer` authentication. Required when `method` is set to `bearer`.
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+func (o EventStreamWebhookConfigurationWebhookAuthorizationPtrOutput) PasswordWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventStreamWebhookConfigurationWebhookAuthorization) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PasswordWo
+	}).(pulumi.StringPtrOutput)
+}
+
+// Version number for password changes. Update this value to trigger a password change when using `passwordWo`.
+func (o EventStreamWebhookConfigurationWebhookAuthorizationPtrOutput) PasswordWoVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EventStreamWebhookConfigurationWebhookAuthorization) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PasswordWoVersion
+	}).(pulumi.IntPtrOutput)
+}
+
 func (o EventStreamWebhookConfigurationWebhookAuthorizationPtrOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EventStreamWebhookConfigurationWebhookAuthorization) *string {
 		if v == nil {
@@ -28219,7 +28923,27 @@ func (o EventStreamWebhookConfigurationWebhookAuthorizationPtrOutput) Token() pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The username for `basic` authentication. Required when `method` is set to `basic`.
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+func (o EventStreamWebhookConfigurationWebhookAuthorizationPtrOutput) TokenWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventStreamWebhookConfigurationWebhookAuthorization) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TokenWo
+	}).(pulumi.StringPtrOutput)
+}
+
+// Version number for token changes. Update this value to trigger a token change when using `tokenWo`.
+func (o EventStreamWebhookConfigurationWebhookAuthorizationPtrOutput) TokenWoVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EventStreamWebhookConfigurationWebhookAuthorization) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TokenWoVersion
+	}).(pulumi.IntPtrOutput)
+}
+
+// The username for `basic` authentication. Required only when `method` is set to `basic`.
 func (o EventStreamWebhookConfigurationWebhookAuthorizationPtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EventStreamWebhookConfigurationWebhookAuthorization) *string {
 		if v == nil {
@@ -32360,6 +33084,8 @@ type OrganizationDiscoveryDomainsDiscoveryDomain struct {
 	Id *string `pulumi:"id"`
 	// Verification status. Must be either 'pending' or 'verified'.
 	Status string `pulumi:"status"`
+	// Indicates whether this domain should be used for organization discovery during login.
+	UseForOrganizationDiscovery *bool `pulumi:"useForOrganizationDiscovery"`
 	// The full domain where the TXT record should be added.
 	VerificationHost *string `pulumi:"verificationHost"`
 	// TXT record value for domain verification.
@@ -32384,6 +33110,8 @@ type OrganizationDiscoveryDomainsDiscoveryDomainArgs struct {
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Verification status. Must be either 'pending' or 'verified'.
 	Status pulumi.StringInput `pulumi:"status"`
+	// Indicates whether this domain should be used for organization discovery during login.
+	UseForOrganizationDiscovery pulumi.BoolPtrInput `pulumi:"useForOrganizationDiscovery"`
 	// The full domain where the TXT record should be added.
 	VerificationHost pulumi.StringPtrInput `pulumi:"verificationHost"`
 	// TXT record value for domain verification.
@@ -32454,6 +33182,11 @@ func (o OrganizationDiscoveryDomainsDiscoveryDomainOutput) Id() pulumi.StringPtr
 // Verification status. Must be either 'pending' or 'verified'.
 func (o OrganizationDiscoveryDomainsDiscoveryDomainOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v OrganizationDiscoveryDomainsDiscoveryDomain) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Indicates whether this domain should be used for organization discovery during login.
+func (o OrganizationDiscoveryDomainsDiscoveryDomainOutput) UseForOrganizationDiscovery() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OrganizationDiscoveryDomainsDiscoveryDomain) *bool { return v.UseForOrganizationDiscovery }).(pulumi.BoolPtrOutput)
 }
 
 // The full domain where the TXT record should be added.
@@ -48899,6 +49632,8 @@ func (o GetClientExpressConfigurationLinkedClientArrayOutput) Index(i pulumi.Int
 }
 
 type GetClientGrantsClientGrant struct {
+	// When enabled, all scopes configured on the resource server are allowed for this client grant. EA Only.
+	AllowAllScopes bool `pulumi:"allowAllScopes"`
 	// The audience of the client grant.
 	Audience string `pulumi:"audience"`
 	// The client ID associated with the grant.
@@ -48923,6 +49658,8 @@ type GetClientGrantsClientGrantInput interface {
 }
 
 type GetClientGrantsClientGrantArgs struct {
+	// When enabled, all scopes configured on the resource server are allowed for this client grant. EA Only.
+	AllowAllScopes pulumi.BoolInput `pulumi:"allowAllScopes"`
 	// The audience of the client grant.
 	Audience pulumi.StringInput `pulumi:"audience"`
 	// The client ID associated with the grant.
@@ -48984,6 +49721,11 @@ func (o GetClientGrantsClientGrantOutput) ToGetClientGrantsClientGrantOutput() G
 
 func (o GetClientGrantsClientGrantOutput) ToGetClientGrantsClientGrantOutputWithContext(ctx context.Context) GetClientGrantsClientGrantOutput {
 	return o
+}
+
+// When enabled, all scopes configured on the resource server are allowed for this client grant. EA Only.
+func (o GetClientGrantsClientGrantOutput) AllowAllScopes() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientGrantsClientGrant) bool { return v.AllowAllScopes }).(pulumi.BoolOutput)
 }
 
 // The audience of the client grant.
@@ -49852,6 +50594,8 @@ func (o GetClientNativeSocialLoginGoogleArrayOutput) Index(i pulumi.IntInput) Ge
 type GetClientOidcLogout struct {
 	// Configure OIDC logout initiators for the Client
 	BackchannelLogoutInitiators []GetClientOidcLogoutBackchannelLogoutInitiator `pulumi:"backchannelLogoutInitiators"`
+	// Controls whether session metadata is included in the logout token. Default value is null.
+	BackchannelLogoutSessionMetadatas []GetClientOidcLogoutBackchannelLogoutSessionMetadata `pulumi:"backchannelLogoutSessionMetadatas"`
 	// Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
 	BackchannelLogoutUrls []string `pulumi:"backchannelLogoutUrls"`
 }
@@ -49870,6 +50614,8 @@ type GetClientOidcLogoutInput interface {
 type GetClientOidcLogoutArgs struct {
 	// Configure OIDC logout initiators for the Client
 	BackchannelLogoutInitiators GetClientOidcLogoutBackchannelLogoutInitiatorArrayInput `pulumi:"backchannelLogoutInitiators"`
+	// Controls whether session metadata is included in the logout token. Default value is null.
+	BackchannelLogoutSessionMetadatas GetClientOidcLogoutBackchannelLogoutSessionMetadataArrayInput `pulumi:"backchannelLogoutSessionMetadatas"`
 	// Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
 	BackchannelLogoutUrls pulumi.StringArrayInput `pulumi:"backchannelLogoutUrls"`
 }
@@ -49930,6 +50676,13 @@ func (o GetClientOidcLogoutOutput) BackchannelLogoutInitiators() GetClientOidcLo
 	return o.ApplyT(func(v GetClientOidcLogout) []GetClientOidcLogoutBackchannelLogoutInitiator {
 		return v.BackchannelLogoutInitiators
 	}).(GetClientOidcLogoutBackchannelLogoutInitiatorArrayOutput)
+}
+
+// Controls whether session metadata is included in the logout token. Default value is null.
+func (o GetClientOidcLogoutOutput) BackchannelLogoutSessionMetadatas() GetClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput {
+	return o.ApplyT(func(v GetClientOidcLogout) []GetClientOidcLogoutBackchannelLogoutSessionMetadata {
+		return v.BackchannelLogoutSessionMetadatas
+	}).(GetClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput)
 }
 
 // Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
@@ -50061,6 +50814,103 @@ func (o GetClientOidcLogoutBackchannelLogoutInitiatorArrayOutput) Index(i pulumi
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientOidcLogoutBackchannelLogoutInitiator {
 		return vs[0].([]GetClientOidcLogoutBackchannelLogoutInitiator)[vs[1].(int)]
 	}).(GetClientOidcLogoutBackchannelLogoutInitiatorOutput)
+}
+
+type GetClientOidcLogoutBackchannelLogoutSessionMetadata struct {
+	// The `include` property determines whether session metadata is included in the logout token.
+	Include bool `pulumi:"include"`
+}
+
+// GetClientOidcLogoutBackchannelLogoutSessionMetadataInput is an input type that accepts GetClientOidcLogoutBackchannelLogoutSessionMetadataArgs and GetClientOidcLogoutBackchannelLogoutSessionMetadataOutput values.
+// You can construct a concrete instance of `GetClientOidcLogoutBackchannelLogoutSessionMetadataInput` via:
+//
+//	GetClientOidcLogoutBackchannelLogoutSessionMetadataArgs{...}
+type GetClientOidcLogoutBackchannelLogoutSessionMetadataInput interface {
+	pulumi.Input
+
+	ToGetClientOidcLogoutBackchannelLogoutSessionMetadataOutput() GetClientOidcLogoutBackchannelLogoutSessionMetadataOutput
+	ToGetClientOidcLogoutBackchannelLogoutSessionMetadataOutputWithContext(context.Context) GetClientOidcLogoutBackchannelLogoutSessionMetadataOutput
+}
+
+type GetClientOidcLogoutBackchannelLogoutSessionMetadataArgs struct {
+	// The `include` property determines whether session metadata is included in the logout token.
+	Include pulumi.BoolInput `pulumi:"include"`
+}
+
+func (GetClientOidcLogoutBackchannelLogoutSessionMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientOidcLogoutBackchannelLogoutSessionMetadata)(nil)).Elem()
+}
+
+func (i GetClientOidcLogoutBackchannelLogoutSessionMetadataArgs) ToGetClientOidcLogoutBackchannelLogoutSessionMetadataOutput() GetClientOidcLogoutBackchannelLogoutSessionMetadataOutput {
+	return i.ToGetClientOidcLogoutBackchannelLogoutSessionMetadataOutputWithContext(context.Background())
+}
+
+func (i GetClientOidcLogoutBackchannelLogoutSessionMetadataArgs) ToGetClientOidcLogoutBackchannelLogoutSessionMetadataOutputWithContext(ctx context.Context) GetClientOidcLogoutBackchannelLogoutSessionMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientOidcLogoutBackchannelLogoutSessionMetadataOutput)
+}
+
+// GetClientOidcLogoutBackchannelLogoutSessionMetadataArrayInput is an input type that accepts GetClientOidcLogoutBackchannelLogoutSessionMetadataArray and GetClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput values.
+// You can construct a concrete instance of `GetClientOidcLogoutBackchannelLogoutSessionMetadataArrayInput` via:
+//
+//	GetClientOidcLogoutBackchannelLogoutSessionMetadataArray{ GetClientOidcLogoutBackchannelLogoutSessionMetadataArgs{...} }
+type GetClientOidcLogoutBackchannelLogoutSessionMetadataArrayInput interface {
+	pulumi.Input
+
+	ToGetClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput() GetClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput
+	ToGetClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutputWithContext(context.Context) GetClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput
+}
+
+type GetClientOidcLogoutBackchannelLogoutSessionMetadataArray []GetClientOidcLogoutBackchannelLogoutSessionMetadataInput
+
+func (GetClientOidcLogoutBackchannelLogoutSessionMetadataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientOidcLogoutBackchannelLogoutSessionMetadata)(nil)).Elem()
+}
+
+func (i GetClientOidcLogoutBackchannelLogoutSessionMetadataArray) ToGetClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput() GetClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput {
+	return i.ToGetClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientOidcLogoutBackchannelLogoutSessionMetadataArray) ToGetClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutputWithContext(ctx context.Context) GetClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput)
+}
+
+type GetClientOidcLogoutBackchannelLogoutSessionMetadataOutput struct{ *pulumi.OutputState }
+
+func (GetClientOidcLogoutBackchannelLogoutSessionMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientOidcLogoutBackchannelLogoutSessionMetadata)(nil)).Elem()
+}
+
+func (o GetClientOidcLogoutBackchannelLogoutSessionMetadataOutput) ToGetClientOidcLogoutBackchannelLogoutSessionMetadataOutput() GetClientOidcLogoutBackchannelLogoutSessionMetadataOutput {
+	return o
+}
+
+func (o GetClientOidcLogoutBackchannelLogoutSessionMetadataOutput) ToGetClientOidcLogoutBackchannelLogoutSessionMetadataOutputWithContext(ctx context.Context) GetClientOidcLogoutBackchannelLogoutSessionMetadataOutput {
+	return o
+}
+
+// The `include` property determines whether session metadata is included in the logout token.
+func (o GetClientOidcLogoutBackchannelLogoutSessionMetadataOutput) Include() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientOidcLogoutBackchannelLogoutSessionMetadata) bool { return v.Include }).(pulumi.BoolOutput)
+}
+
+type GetClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientOidcLogoutBackchannelLogoutSessionMetadata)(nil)).Elem()
+}
+
+func (o GetClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput) ToGetClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput() GetClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput {
+	return o
+}
+
+func (o GetClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput) ToGetClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutputWithContext(ctx context.Context) GetClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput {
+	return o
+}
+
+func (o GetClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput) Index(i pulumi.IntInput) GetClientOidcLogoutBackchannelLogoutSessionMetadataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientOidcLogoutBackchannelLogoutSessionMetadata {
+		return vs[0].([]GetClientOidcLogoutBackchannelLogoutSessionMetadata)[vs[1].(int)]
+	}).(GetClientOidcLogoutBackchannelLogoutSessionMetadataOutput)
 }
 
 type GetClientRefreshToken struct {
@@ -51603,6 +52453,8 @@ func (o GetClientsClientExpressConfigurationLinkedClientArrayOutput) Index(i pul
 type GetClientsClientOidcLogout struct {
 	// Configure OIDC logout initiators for the Client
 	BackchannelLogoutInitiators []GetClientsClientOidcLogoutBackchannelLogoutInitiator `pulumi:"backchannelLogoutInitiators"`
+	// Controls whether session metadata is included in the logout token. Default value is null.
+	BackchannelLogoutSessionMetadatas []GetClientsClientOidcLogoutBackchannelLogoutSessionMetadata `pulumi:"backchannelLogoutSessionMetadatas"`
 	// Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
 	BackchannelLogoutUrls []string `pulumi:"backchannelLogoutUrls"`
 }
@@ -51621,6 +52473,8 @@ type GetClientsClientOidcLogoutInput interface {
 type GetClientsClientOidcLogoutArgs struct {
 	// Configure OIDC logout initiators for the Client
 	BackchannelLogoutInitiators GetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayInput `pulumi:"backchannelLogoutInitiators"`
+	// Controls whether session metadata is included in the logout token. Default value is null.
+	BackchannelLogoutSessionMetadatas GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArrayInput `pulumi:"backchannelLogoutSessionMetadatas"`
 	// Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
 	BackchannelLogoutUrls pulumi.StringArrayInput `pulumi:"backchannelLogoutUrls"`
 }
@@ -51681,6 +52535,13 @@ func (o GetClientsClientOidcLogoutOutput) BackchannelLogoutInitiators() GetClien
 	return o.ApplyT(func(v GetClientsClientOidcLogout) []GetClientsClientOidcLogoutBackchannelLogoutInitiator {
 		return v.BackchannelLogoutInitiators
 	}).(GetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayOutput)
+}
+
+// Controls whether session metadata is included in the logout token. Default value is null.
+func (o GetClientsClientOidcLogoutOutput) BackchannelLogoutSessionMetadatas() GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput {
+	return o.ApplyT(func(v GetClientsClientOidcLogout) []GetClientsClientOidcLogoutBackchannelLogoutSessionMetadata {
+		return v.BackchannelLogoutSessionMetadatas
+	}).(GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput)
 }
 
 // Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
@@ -51812,6 +52673,103 @@ func (o GetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayOutput) Index(i
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientsClientOidcLogoutBackchannelLogoutInitiator {
 		return vs[0].([]GetClientsClientOidcLogoutBackchannelLogoutInitiator)[vs[1].(int)]
 	}).(GetClientsClientOidcLogoutBackchannelLogoutInitiatorOutput)
+}
+
+type GetClientsClientOidcLogoutBackchannelLogoutSessionMetadata struct {
+	// The `include` property determines whether session metadata is included in the logout token.
+	Include bool `pulumi:"include"`
+}
+
+// GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataInput is an input type that accepts GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArgs and GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataOutput values.
+// You can construct a concrete instance of `GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataInput` via:
+//
+//	GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArgs{...}
+type GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataInput interface {
+	pulumi.Input
+
+	ToGetClientsClientOidcLogoutBackchannelLogoutSessionMetadataOutput() GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataOutput
+	ToGetClientsClientOidcLogoutBackchannelLogoutSessionMetadataOutputWithContext(context.Context) GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataOutput
+}
+
+type GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArgs struct {
+	// The `include` property determines whether session metadata is included in the logout token.
+	Include pulumi.BoolInput `pulumi:"include"`
+}
+
+func (GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClientOidcLogoutBackchannelLogoutSessionMetadata)(nil)).Elem()
+}
+
+func (i GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArgs) ToGetClientsClientOidcLogoutBackchannelLogoutSessionMetadataOutput() GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataOutput {
+	return i.ToGetClientsClientOidcLogoutBackchannelLogoutSessionMetadataOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArgs) ToGetClientsClientOidcLogoutBackchannelLogoutSessionMetadataOutputWithContext(ctx context.Context) GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataOutput)
+}
+
+// GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArrayInput is an input type that accepts GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArray and GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput values.
+// You can construct a concrete instance of `GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArrayInput` via:
+//
+//	GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArray{ GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArgs{...} }
+type GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArrayInput interface {
+	pulumi.Input
+
+	ToGetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput() GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput
+	ToGetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutputWithContext(context.Context) GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput
+}
+
+type GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArray []GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataInput
+
+func (GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClientOidcLogoutBackchannelLogoutSessionMetadata)(nil)).Elem()
+}
+
+func (i GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArray) ToGetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput() GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput {
+	return i.ToGetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArray) ToGetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutputWithContext(ctx context.Context) GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput)
+}
+
+type GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClientOidcLogoutBackchannelLogoutSessionMetadata)(nil)).Elem()
+}
+
+func (o GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataOutput) ToGetClientsClientOidcLogoutBackchannelLogoutSessionMetadataOutput() GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataOutput {
+	return o
+}
+
+func (o GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataOutput) ToGetClientsClientOidcLogoutBackchannelLogoutSessionMetadataOutputWithContext(ctx context.Context) GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataOutput {
+	return o
+}
+
+// The `include` property determines whether session metadata is included in the logout token.
+func (o GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataOutput) Include() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientsClientOidcLogoutBackchannelLogoutSessionMetadata) bool { return v.Include }).(pulumi.BoolOutput)
+}
+
+type GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClientOidcLogoutBackchannelLogoutSessionMetadata)(nil)).Elem()
+}
+
+func (o GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput) ToGetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput() GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput {
+	return o
+}
+
+func (o GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput) ToGetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutputWithContext(ctx context.Context) GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput {
+	return o
+}
+
+func (o GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput) Index(i pulumi.IntInput) GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientsClientOidcLogoutBackchannelLogoutSessionMetadata {
+		return vs[0].([]GetClientsClientOidcLogoutBackchannelLogoutSessionMetadata)[vs[1].(int)]
+	}).(GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataOutput)
 }
 
 type GetClientsClientSessionTransfer struct {
@@ -52914,6 +53872,8 @@ type GetConnectionOption struct {
 	ConsumerSecret string `pulumi:"consumerSecret"`
 	// Configure extra headers to the Token endpoint of an OAuth 2.0 provider
 	CustomHeaders []GetConnectionOptionCustomHeader `pulumi:"customHeaders"`
+	// Configure custom password hashing within a connection. (EA only)
+	CustomPasswordHashes []GetConnectionOptionCustomPasswordHash `pulumi:"customPasswordHashes"`
 	// A map of scripts used to integrate with a custom database.
 	CustomScripts map[string]string `pulumi:"customScripts"`
 	// When enabled, additional debug information will be generated.
@@ -52936,6 +53896,8 @@ type GetConnectionOption struct {
 	Domain string `pulumi:"domain"`
 	// List of the domains that can be authenticated using the identity provider. Only needed for Identifier First authentication flows.
 	DomainAliases []string `pulumi:"domainAliases"`
+	// Indicates whether to request the email scope. Used by some OAuth2 connections (e.g., LINE).
+	Email bool `pulumi:"email"`
 	// Set to `true` to inject context into custom DB scripts (warning: cannot be disabled once enabled).
 	EnableScriptContext bool `pulumi:"enableScriptContext"`
 	// Set to `true` to use a legacy user store.
@@ -53142,6 +54104,8 @@ type GetConnectionOptionArgs struct {
 	ConsumerSecret pulumi.StringInput `pulumi:"consumerSecret"`
 	// Configure extra headers to the Token endpoint of an OAuth 2.0 provider
 	CustomHeaders GetConnectionOptionCustomHeaderArrayInput `pulumi:"customHeaders"`
+	// Configure custom password hashing within a connection. (EA only)
+	CustomPasswordHashes GetConnectionOptionCustomPasswordHashArrayInput `pulumi:"customPasswordHashes"`
 	// A map of scripts used to integrate with a custom database.
 	CustomScripts pulumi.StringMapInput `pulumi:"customScripts"`
 	// When enabled, additional debug information will be generated.
@@ -53164,6 +54128,8 @@ type GetConnectionOptionArgs struct {
 	Domain pulumi.StringInput `pulumi:"domain"`
 	// List of the domains that can be authenticated using the identity provider. Only needed for Identifier First authentication flows.
 	DomainAliases pulumi.StringArrayInput `pulumi:"domainAliases"`
+	// Indicates whether to request the email scope. Used by some OAuth2 connections (e.g., LINE).
+	Email pulumi.BoolInput `pulumi:"email"`
 	// Set to `true` to inject context into custom DB scripts (warning: cannot be disabled once enabled).
 	EnableScriptContext pulumi.BoolInput `pulumi:"enableScriptContext"`
 	// Set to `true` to use a legacy user store.
@@ -53466,6 +54432,11 @@ func (o GetConnectionOptionOutput) CustomHeaders() GetConnectionOptionCustomHead
 	return o.ApplyT(func(v GetConnectionOption) []GetConnectionOptionCustomHeader { return v.CustomHeaders }).(GetConnectionOptionCustomHeaderArrayOutput)
 }
 
+// Configure custom password hashing within a connection. (EA only)
+func (o GetConnectionOptionOutput) CustomPasswordHashes() GetConnectionOptionCustomPasswordHashArrayOutput {
+	return o.ApplyT(func(v GetConnectionOption) []GetConnectionOptionCustomPasswordHash { return v.CustomPasswordHashes }).(GetConnectionOptionCustomPasswordHashArrayOutput)
+}
+
 // A map of scripts used to integrate with a custom database.
 func (o GetConnectionOptionOutput) CustomScripts() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetConnectionOption) map[string]string { return v.CustomScripts }).(pulumi.StringMapOutput)
@@ -53519,6 +54490,11 @@ func (o GetConnectionOptionOutput) Domain() pulumi.StringOutput {
 // List of the domains that can be authenticated using the identity provider. Only needed for Identifier First authentication flows.
 func (o GetConnectionOptionOutput) DomainAliases() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetConnectionOption) []string { return v.DomainAliases }).(pulumi.StringArrayOutput)
+}
+
+// Indicates whether to request the email scope. Used by some OAuth2 connections (e.g., LINE).
+func (o GetConnectionOptionOutput) Email() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOption) bool { return v.Email }).(pulumi.BoolOutput)
 }
 
 // Set to `true` to inject context into custom DB scripts (warning: cannot be disabled once enabled).
@@ -54185,6 +55161,8 @@ func (o GetConnectionOptionAttributeEmailArrayOutput) Index(i pulumi.IntInput) G
 type GetConnectionOptionAttributeEmailIdentifier struct {
 	// Defines whether email attribute is active as an identifier
 	Active bool `pulumi:"active"`
+	// Gets and Sets the default authentication method for the email identifier type. Valid values: `password`, `emailOtp`
+	DefaultMethod string `pulumi:"defaultMethod"`
 }
 
 // GetConnectionOptionAttributeEmailIdentifierInput is an input type that accepts GetConnectionOptionAttributeEmailIdentifierArgs and GetConnectionOptionAttributeEmailIdentifierOutput values.
@@ -54201,6 +55179,8 @@ type GetConnectionOptionAttributeEmailIdentifierInput interface {
 type GetConnectionOptionAttributeEmailIdentifierArgs struct {
 	// Defines whether email attribute is active as an identifier
 	Active pulumi.BoolInput `pulumi:"active"`
+	// Gets and Sets the default authentication method for the email identifier type. Valid values: `password`, `emailOtp`
+	DefaultMethod pulumi.StringInput `pulumi:"defaultMethod"`
 }
 
 func (GetConnectionOptionAttributeEmailIdentifierArgs) ElementType() reflect.Type {
@@ -54257,6 +55237,11 @@ func (o GetConnectionOptionAttributeEmailIdentifierOutput) ToGetConnectionOption
 // Defines whether email attribute is active as an identifier
 func (o GetConnectionOptionAttributeEmailIdentifierOutput) Active() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetConnectionOptionAttributeEmailIdentifier) bool { return v.Active }).(pulumi.BoolOutput)
+}
+
+// Gets and Sets the default authentication method for the email identifier type. Valid values: `password`, `emailOtp`
+func (o GetConnectionOptionAttributeEmailIdentifierOutput) DefaultMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttributeEmailIdentifier) string { return v.DefaultMethod }).(pulumi.StringOutput)
 }
 
 type GetConnectionOptionAttributeEmailIdentifierArrayOutput struct{ *pulumi.OutputState }
@@ -54721,6 +55706,8 @@ func (o GetConnectionOptionAttributePhoneNumberArrayOutput) Index(i pulumi.IntIn
 type GetConnectionOptionAttributePhoneNumberIdentifier struct {
 	// Defines whether Phone Number attribute is active as an identifier
 	Active bool `pulumi:"active"`
+	// Gets and Sets the default authentication method for the phoneNumber identifier type. Valid values: `password`, `phoneOtp`
+	DefaultMethod string `pulumi:"defaultMethod"`
 }
 
 // GetConnectionOptionAttributePhoneNumberIdentifierInput is an input type that accepts GetConnectionOptionAttributePhoneNumberIdentifierArgs and GetConnectionOptionAttributePhoneNumberIdentifierOutput values.
@@ -54737,6 +55724,8 @@ type GetConnectionOptionAttributePhoneNumberIdentifierInput interface {
 type GetConnectionOptionAttributePhoneNumberIdentifierArgs struct {
 	// Defines whether Phone Number attribute is active as an identifier
 	Active pulumi.BoolInput `pulumi:"active"`
+	// Gets and Sets the default authentication method for the phoneNumber identifier type. Valid values: `password`, `phoneOtp`
+	DefaultMethod pulumi.StringInput `pulumi:"defaultMethod"`
 }
 
 func (GetConnectionOptionAttributePhoneNumberIdentifierArgs) ElementType() reflect.Type {
@@ -54793,6 +55782,11 @@ func (o GetConnectionOptionAttributePhoneNumberIdentifierOutput) ToGetConnection
 // Defines whether Phone Number attribute is active as an identifier
 func (o GetConnectionOptionAttributePhoneNumberIdentifierOutput) Active() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetConnectionOptionAttributePhoneNumberIdentifier) bool { return v.Active }).(pulumi.BoolOutput)
+}
+
+// Gets and Sets the default authentication method for the phoneNumber identifier type. Valid values: `password`, `phoneOtp`
+func (o GetConnectionOptionAttributePhoneNumberIdentifierOutput) DefaultMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttributePhoneNumberIdentifier) string { return v.DefaultMethod }).(pulumi.StringOutput)
 }
 
 type GetConnectionOptionAttributePhoneNumberIdentifierArrayOutput struct{ *pulumi.OutputState }
@@ -55153,6 +56147,8 @@ func (o GetConnectionOptionAttributeUsernameArrayOutput) Index(i pulumi.IntInput
 type GetConnectionOptionAttributeUsernameIdentifier struct {
 	// Defines whether UserName attribute is active as an identifier
 	Active bool `pulumi:"active"`
+	// Gets and Sets the default authentication method for the username identifier type. Valid value: `password`
+	DefaultMethod string `pulumi:"defaultMethod"`
 }
 
 // GetConnectionOptionAttributeUsernameIdentifierInput is an input type that accepts GetConnectionOptionAttributeUsernameIdentifierArgs and GetConnectionOptionAttributeUsernameIdentifierOutput values.
@@ -55169,6 +56165,8 @@ type GetConnectionOptionAttributeUsernameIdentifierInput interface {
 type GetConnectionOptionAttributeUsernameIdentifierArgs struct {
 	// Defines whether UserName attribute is active as an identifier
 	Active pulumi.BoolInput `pulumi:"active"`
+	// Gets and Sets the default authentication method for the username identifier type. Valid value: `password`
+	DefaultMethod pulumi.StringInput `pulumi:"defaultMethod"`
 }
 
 func (GetConnectionOptionAttributeUsernameIdentifierArgs) ElementType() reflect.Type {
@@ -55225,6 +56223,11 @@ func (o GetConnectionOptionAttributeUsernameIdentifierOutput) ToGetConnectionOpt
 // Defines whether UserName attribute is active as an identifier
 func (o GetConnectionOptionAttributeUsernameIdentifierOutput) Active() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetConnectionOptionAttributeUsernameIdentifier) bool { return v.Active }).(pulumi.BoolOutput)
+}
+
+// Gets and Sets the default authentication method for the username identifier type. Valid value: `password`
+func (o GetConnectionOptionAttributeUsernameIdentifierOutput) DefaultMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttributeUsernameIdentifier) string { return v.DefaultMethod }).(pulumi.StringOutput)
 }
 
 type GetConnectionOptionAttributeUsernameIdentifierArrayOutput struct{ *pulumi.OutputState }
@@ -55568,10 +56571,14 @@ func (o GetConnectionOptionAttributeUsernameValidationAllowedTypeArrayOutput) In
 }
 
 type GetConnectionOptionAuthenticationMethod struct {
+	// Configures Email OTP authentication
+	EmailOtps []GetConnectionOptionAuthenticationMethodEmailOtp `pulumi:"emailOtps"`
 	// Configures passkey authentication
 	Passkeys []GetConnectionOptionAuthenticationMethodPasskey `pulumi:"passkeys"`
 	// Configures password authentication
 	Passwords []GetConnectionOptionAuthenticationMethodPassword `pulumi:"passwords"`
+	// Configures Phone OTP authentication
+	PhoneOtps []GetConnectionOptionAuthenticationMethodPhoneOtp `pulumi:"phoneOtps"`
 }
 
 // GetConnectionOptionAuthenticationMethodInput is an input type that accepts GetConnectionOptionAuthenticationMethodArgs and GetConnectionOptionAuthenticationMethodOutput values.
@@ -55586,10 +56593,14 @@ type GetConnectionOptionAuthenticationMethodInput interface {
 }
 
 type GetConnectionOptionAuthenticationMethodArgs struct {
+	// Configures Email OTP authentication
+	EmailOtps GetConnectionOptionAuthenticationMethodEmailOtpArrayInput `pulumi:"emailOtps"`
 	// Configures passkey authentication
 	Passkeys GetConnectionOptionAuthenticationMethodPasskeyArrayInput `pulumi:"passkeys"`
 	// Configures password authentication
 	Passwords GetConnectionOptionAuthenticationMethodPasswordArrayInput `pulumi:"passwords"`
+	// Configures Phone OTP authentication
+	PhoneOtps GetConnectionOptionAuthenticationMethodPhoneOtpArrayInput `pulumi:"phoneOtps"`
 }
 
 func (GetConnectionOptionAuthenticationMethodArgs) ElementType() reflect.Type {
@@ -55643,6 +56654,13 @@ func (o GetConnectionOptionAuthenticationMethodOutput) ToGetConnectionOptionAuth
 	return o
 }
 
+// Configures Email OTP authentication
+func (o GetConnectionOptionAuthenticationMethodOutput) EmailOtps() GetConnectionOptionAuthenticationMethodEmailOtpArrayOutput {
+	return o.ApplyT(func(v GetConnectionOptionAuthenticationMethod) []GetConnectionOptionAuthenticationMethodEmailOtp {
+		return v.EmailOtps
+	}).(GetConnectionOptionAuthenticationMethodEmailOtpArrayOutput)
+}
+
 // Configures passkey authentication
 func (o GetConnectionOptionAuthenticationMethodOutput) Passkeys() GetConnectionOptionAuthenticationMethodPasskeyArrayOutput {
 	return o.ApplyT(func(v GetConnectionOptionAuthenticationMethod) []GetConnectionOptionAuthenticationMethodPasskey {
@@ -55655,6 +56673,13 @@ func (o GetConnectionOptionAuthenticationMethodOutput) Passwords() GetConnection
 	return o.ApplyT(func(v GetConnectionOptionAuthenticationMethod) []GetConnectionOptionAuthenticationMethodPassword {
 		return v.Passwords
 	}).(GetConnectionOptionAuthenticationMethodPasswordArrayOutput)
+}
+
+// Configures Phone OTP authentication
+func (o GetConnectionOptionAuthenticationMethodOutput) PhoneOtps() GetConnectionOptionAuthenticationMethodPhoneOtpArrayOutput {
+	return o.ApplyT(func(v GetConnectionOptionAuthenticationMethod) []GetConnectionOptionAuthenticationMethodPhoneOtp {
+		return v.PhoneOtps
+	}).(GetConnectionOptionAuthenticationMethodPhoneOtpArrayOutput)
 }
 
 type GetConnectionOptionAuthenticationMethodArrayOutput struct{ *pulumi.OutputState }
@@ -55675,6 +56700,103 @@ func (o GetConnectionOptionAuthenticationMethodArrayOutput) Index(i pulumi.IntIn
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionAuthenticationMethod {
 		return vs[0].([]GetConnectionOptionAuthenticationMethod)[vs[1].(int)]
 	}).(GetConnectionOptionAuthenticationMethodOutput)
+}
+
+type GetConnectionOptionAuthenticationMethodEmailOtp struct {
+	// Enables Email OTP authentication
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetConnectionOptionAuthenticationMethodEmailOtpInput is an input type that accepts GetConnectionOptionAuthenticationMethodEmailOtpArgs and GetConnectionOptionAuthenticationMethodEmailOtpOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAuthenticationMethodEmailOtpInput` via:
+//
+//	GetConnectionOptionAuthenticationMethodEmailOtpArgs{...}
+type GetConnectionOptionAuthenticationMethodEmailOtpInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAuthenticationMethodEmailOtpOutput() GetConnectionOptionAuthenticationMethodEmailOtpOutput
+	ToGetConnectionOptionAuthenticationMethodEmailOtpOutputWithContext(context.Context) GetConnectionOptionAuthenticationMethodEmailOtpOutput
+}
+
+type GetConnectionOptionAuthenticationMethodEmailOtpArgs struct {
+	// Enables Email OTP authentication
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetConnectionOptionAuthenticationMethodEmailOtpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAuthenticationMethodEmailOtp)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAuthenticationMethodEmailOtpArgs) ToGetConnectionOptionAuthenticationMethodEmailOtpOutput() GetConnectionOptionAuthenticationMethodEmailOtpOutput {
+	return i.ToGetConnectionOptionAuthenticationMethodEmailOtpOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAuthenticationMethodEmailOtpArgs) ToGetConnectionOptionAuthenticationMethodEmailOtpOutputWithContext(ctx context.Context) GetConnectionOptionAuthenticationMethodEmailOtpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAuthenticationMethodEmailOtpOutput)
+}
+
+// GetConnectionOptionAuthenticationMethodEmailOtpArrayInput is an input type that accepts GetConnectionOptionAuthenticationMethodEmailOtpArray and GetConnectionOptionAuthenticationMethodEmailOtpArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAuthenticationMethodEmailOtpArrayInput` via:
+//
+//	GetConnectionOptionAuthenticationMethodEmailOtpArray{ GetConnectionOptionAuthenticationMethodEmailOtpArgs{...} }
+type GetConnectionOptionAuthenticationMethodEmailOtpArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAuthenticationMethodEmailOtpArrayOutput() GetConnectionOptionAuthenticationMethodEmailOtpArrayOutput
+	ToGetConnectionOptionAuthenticationMethodEmailOtpArrayOutputWithContext(context.Context) GetConnectionOptionAuthenticationMethodEmailOtpArrayOutput
+}
+
+type GetConnectionOptionAuthenticationMethodEmailOtpArray []GetConnectionOptionAuthenticationMethodEmailOtpInput
+
+func (GetConnectionOptionAuthenticationMethodEmailOtpArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAuthenticationMethodEmailOtp)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAuthenticationMethodEmailOtpArray) ToGetConnectionOptionAuthenticationMethodEmailOtpArrayOutput() GetConnectionOptionAuthenticationMethodEmailOtpArrayOutput {
+	return i.ToGetConnectionOptionAuthenticationMethodEmailOtpArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAuthenticationMethodEmailOtpArray) ToGetConnectionOptionAuthenticationMethodEmailOtpArrayOutputWithContext(ctx context.Context) GetConnectionOptionAuthenticationMethodEmailOtpArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAuthenticationMethodEmailOtpArrayOutput)
+}
+
+type GetConnectionOptionAuthenticationMethodEmailOtpOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAuthenticationMethodEmailOtpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAuthenticationMethodEmailOtp)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAuthenticationMethodEmailOtpOutput) ToGetConnectionOptionAuthenticationMethodEmailOtpOutput() GetConnectionOptionAuthenticationMethodEmailOtpOutput {
+	return o
+}
+
+func (o GetConnectionOptionAuthenticationMethodEmailOtpOutput) ToGetConnectionOptionAuthenticationMethodEmailOtpOutputWithContext(ctx context.Context) GetConnectionOptionAuthenticationMethodEmailOtpOutput {
+	return o
+}
+
+// Enables Email OTP authentication
+func (o GetConnectionOptionAuthenticationMethodEmailOtpOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOptionAuthenticationMethodEmailOtp) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetConnectionOptionAuthenticationMethodEmailOtpArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAuthenticationMethodEmailOtpArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAuthenticationMethodEmailOtp)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAuthenticationMethodEmailOtpArrayOutput) ToGetConnectionOptionAuthenticationMethodEmailOtpArrayOutput() GetConnectionOptionAuthenticationMethodEmailOtpArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAuthenticationMethodEmailOtpArrayOutput) ToGetConnectionOptionAuthenticationMethodEmailOtpArrayOutputWithContext(ctx context.Context) GetConnectionOptionAuthenticationMethodEmailOtpArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAuthenticationMethodEmailOtpArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionAuthenticationMethodEmailOtpOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionAuthenticationMethodEmailOtp {
+		return vs[0].([]GetConnectionOptionAuthenticationMethodEmailOtp)[vs[1].(int)]
+	}).(GetConnectionOptionAuthenticationMethodEmailOtpOutput)
 }
 
 type GetConnectionOptionAuthenticationMethodPasskey struct {
@@ -55869,6 +56991,103 @@ func (o GetConnectionOptionAuthenticationMethodPasswordArrayOutput) Index(i pulu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionAuthenticationMethodPassword {
 		return vs[0].([]GetConnectionOptionAuthenticationMethodPassword)[vs[1].(int)]
 	}).(GetConnectionOptionAuthenticationMethodPasswordOutput)
+}
+
+type GetConnectionOptionAuthenticationMethodPhoneOtp struct {
+	// Enables Phone OTP authentication
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetConnectionOptionAuthenticationMethodPhoneOtpInput is an input type that accepts GetConnectionOptionAuthenticationMethodPhoneOtpArgs and GetConnectionOptionAuthenticationMethodPhoneOtpOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAuthenticationMethodPhoneOtpInput` via:
+//
+//	GetConnectionOptionAuthenticationMethodPhoneOtpArgs{...}
+type GetConnectionOptionAuthenticationMethodPhoneOtpInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAuthenticationMethodPhoneOtpOutput() GetConnectionOptionAuthenticationMethodPhoneOtpOutput
+	ToGetConnectionOptionAuthenticationMethodPhoneOtpOutputWithContext(context.Context) GetConnectionOptionAuthenticationMethodPhoneOtpOutput
+}
+
+type GetConnectionOptionAuthenticationMethodPhoneOtpArgs struct {
+	// Enables Phone OTP authentication
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetConnectionOptionAuthenticationMethodPhoneOtpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAuthenticationMethodPhoneOtp)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAuthenticationMethodPhoneOtpArgs) ToGetConnectionOptionAuthenticationMethodPhoneOtpOutput() GetConnectionOptionAuthenticationMethodPhoneOtpOutput {
+	return i.ToGetConnectionOptionAuthenticationMethodPhoneOtpOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAuthenticationMethodPhoneOtpArgs) ToGetConnectionOptionAuthenticationMethodPhoneOtpOutputWithContext(ctx context.Context) GetConnectionOptionAuthenticationMethodPhoneOtpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAuthenticationMethodPhoneOtpOutput)
+}
+
+// GetConnectionOptionAuthenticationMethodPhoneOtpArrayInput is an input type that accepts GetConnectionOptionAuthenticationMethodPhoneOtpArray and GetConnectionOptionAuthenticationMethodPhoneOtpArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAuthenticationMethodPhoneOtpArrayInput` via:
+//
+//	GetConnectionOptionAuthenticationMethodPhoneOtpArray{ GetConnectionOptionAuthenticationMethodPhoneOtpArgs{...} }
+type GetConnectionOptionAuthenticationMethodPhoneOtpArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAuthenticationMethodPhoneOtpArrayOutput() GetConnectionOptionAuthenticationMethodPhoneOtpArrayOutput
+	ToGetConnectionOptionAuthenticationMethodPhoneOtpArrayOutputWithContext(context.Context) GetConnectionOptionAuthenticationMethodPhoneOtpArrayOutput
+}
+
+type GetConnectionOptionAuthenticationMethodPhoneOtpArray []GetConnectionOptionAuthenticationMethodPhoneOtpInput
+
+func (GetConnectionOptionAuthenticationMethodPhoneOtpArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAuthenticationMethodPhoneOtp)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAuthenticationMethodPhoneOtpArray) ToGetConnectionOptionAuthenticationMethodPhoneOtpArrayOutput() GetConnectionOptionAuthenticationMethodPhoneOtpArrayOutput {
+	return i.ToGetConnectionOptionAuthenticationMethodPhoneOtpArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAuthenticationMethodPhoneOtpArray) ToGetConnectionOptionAuthenticationMethodPhoneOtpArrayOutputWithContext(ctx context.Context) GetConnectionOptionAuthenticationMethodPhoneOtpArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAuthenticationMethodPhoneOtpArrayOutput)
+}
+
+type GetConnectionOptionAuthenticationMethodPhoneOtpOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAuthenticationMethodPhoneOtpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAuthenticationMethodPhoneOtp)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAuthenticationMethodPhoneOtpOutput) ToGetConnectionOptionAuthenticationMethodPhoneOtpOutput() GetConnectionOptionAuthenticationMethodPhoneOtpOutput {
+	return o
+}
+
+func (o GetConnectionOptionAuthenticationMethodPhoneOtpOutput) ToGetConnectionOptionAuthenticationMethodPhoneOtpOutputWithContext(ctx context.Context) GetConnectionOptionAuthenticationMethodPhoneOtpOutput {
+	return o
+}
+
+// Enables Phone OTP authentication
+func (o GetConnectionOptionAuthenticationMethodPhoneOtpOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOptionAuthenticationMethodPhoneOtp) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetConnectionOptionAuthenticationMethodPhoneOtpArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAuthenticationMethodPhoneOtpArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAuthenticationMethodPhoneOtp)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAuthenticationMethodPhoneOtpArrayOutput) ToGetConnectionOptionAuthenticationMethodPhoneOtpArrayOutput() GetConnectionOptionAuthenticationMethodPhoneOtpArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAuthenticationMethodPhoneOtpArrayOutput) ToGetConnectionOptionAuthenticationMethodPhoneOtpArrayOutputWithContext(ctx context.Context) GetConnectionOptionAuthenticationMethodPhoneOtpArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAuthenticationMethodPhoneOtpArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionAuthenticationMethodPhoneOtpOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionAuthenticationMethodPhoneOtp {
+		return vs[0].([]GetConnectionOptionAuthenticationMethodPhoneOtp)[vs[1].(int)]
+	}).(GetConnectionOptionAuthenticationMethodPhoneOtpOutput)
 }
 
 type GetConnectionOptionConnectionSetting struct {
@@ -56066,6 +57285,103 @@ func (o GetConnectionOptionCustomHeaderArrayOutput) Index(i pulumi.IntInput) Get
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionCustomHeader {
 		return vs[0].([]GetConnectionOptionCustomHeader)[vs[1].(int)]
 	}).(GetConnectionOptionCustomHeaderOutput)
+}
+
+type GetConnectionOptionCustomPasswordHash struct {
+	// Id of an existing action that should be invoked when validating a universal password hash. This action must support password-hash-migration trigger
+	ActionId string `pulumi:"actionId"`
+}
+
+// GetConnectionOptionCustomPasswordHashInput is an input type that accepts GetConnectionOptionCustomPasswordHashArgs and GetConnectionOptionCustomPasswordHashOutput values.
+// You can construct a concrete instance of `GetConnectionOptionCustomPasswordHashInput` via:
+//
+//	GetConnectionOptionCustomPasswordHashArgs{...}
+type GetConnectionOptionCustomPasswordHashInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionCustomPasswordHashOutput() GetConnectionOptionCustomPasswordHashOutput
+	ToGetConnectionOptionCustomPasswordHashOutputWithContext(context.Context) GetConnectionOptionCustomPasswordHashOutput
+}
+
+type GetConnectionOptionCustomPasswordHashArgs struct {
+	// Id of an existing action that should be invoked when validating a universal password hash. This action must support password-hash-migration trigger
+	ActionId pulumi.StringInput `pulumi:"actionId"`
+}
+
+func (GetConnectionOptionCustomPasswordHashArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionCustomPasswordHash)(nil)).Elem()
+}
+
+func (i GetConnectionOptionCustomPasswordHashArgs) ToGetConnectionOptionCustomPasswordHashOutput() GetConnectionOptionCustomPasswordHashOutput {
+	return i.ToGetConnectionOptionCustomPasswordHashOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionCustomPasswordHashArgs) ToGetConnectionOptionCustomPasswordHashOutputWithContext(ctx context.Context) GetConnectionOptionCustomPasswordHashOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionCustomPasswordHashOutput)
+}
+
+// GetConnectionOptionCustomPasswordHashArrayInput is an input type that accepts GetConnectionOptionCustomPasswordHashArray and GetConnectionOptionCustomPasswordHashArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionCustomPasswordHashArrayInput` via:
+//
+//	GetConnectionOptionCustomPasswordHashArray{ GetConnectionOptionCustomPasswordHashArgs{...} }
+type GetConnectionOptionCustomPasswordHashArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionCustomPasswordHashArrayOutput() GetConnectionOptionCustomPasswordHashArrayOutput
+	ToGetConnectionOptionCustomPasswordHashArrayOutputWithContext(context.Context) GetConnectionOptionCustomPasswordHashArrayOutput
+}
+
+type GetConnectionOptionCustomPasswordHashArray []GetConnectionOptionCustomPasswordHashInput
+
+func (GetConnectionOptionCustomPasswordHashArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionCustomPasswordHash)(nil)).Elem()
+}
+
+func (i GetConnectionOptionCustomPasswordHashArray) ToGetConnectionOptionCustomPasswordHashArrayOutput() GetConnectionOptionCustomPasswordHashArrayOutput {
+	return i.ToGetConnectionOptionCustomPasswordHashArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionCustomPasswordHashArray) ToGetConnectionOptionCustomPasswordHashArrayOutputWithContext(ctx context.Context) GetConnectionOptionCustomPasswordHashArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionCustomPasswordHashArrayOutput)
+}
+
+type GetConnectionOptionCustomPasswordHashOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionCustomPasswordHashOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionCustomPasswordHash)(nil)).Elem()
+}
+
+func (o GetConnectionOptionCustomPasswordHashOutput) ToGetConnectionOptionCustomPasswordHashOutput() GetConnectionOptionCustomPasswordHashOutput {
+	return o
+}
+
+func (o GetConnectionOptionCustomPasswordHashOutput) ToGetConnectionOptionCustomPasswordHashOutputWithContext(ctx context.Context) GetConnectionOptionCustomPasswordHashOutput {
+	return o
+}
+
+// Id of an existing action that should be invoked when validating a universal password hash. This action must support password-hash-migration trigger
+func (o GetConnectionOptionCustomPasswordHashOutput) ActionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionCustomPasswordHash) string { return v.ActionId }).(pulumi.StringOutput)
+}
+
+type GetConnectionOptionCustomPasswordHashArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionCustomPasswordHashArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionCustomPasswordHash)(nil)).Elem()
+}
+
+func (o GetConnectionOptionCustomPasswordHashArrayOutput) ToGetConnectionOptionCustomPasswordHashArrayOutput() GetConnectionOptionCustomPasswordHashArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionCustomPasswordHashArrayOutput) ToGetConnectionOptionCustomPasswordHashArrayOutputWithContext(ctx context.Context) GetConnectionOptionCustomPasswordHashArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionCustomPasswordHashArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionCustomPasswordHashOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionCustomPasswordHash {
+		return vs[0].([]GetConnectionOptionCustomPasswordHash)[vs[1].(int)]
+	}).(GetConnectionOptionCustomPasswordHashOutput)
 }
 
 type GetConnectionOptionDecryptionKey struct {
@@ -59113,6 +60429,8 @@ type GetCustomDomainsCustomDomain struct {
 	OriginDomainName string `pulumi:"originDomainName"`
 	// Indicates whether this is a primary domain.
 	Primary bool `pulumi:"primary"`
+	// Relying Party ID (rpId) to be used for Passkeys on this custom domain. If not provided or set to null, the full domain will be used.
+	RelyingPartyIdentifier string `pulumi:"relyingPartyIdentifier"`
 	// Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, `ready` and `failed`.
 	Status string `pulumi:"status"`
 	// TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on selfManaged domains.
@@ -59147,6 +60465,8 @@ type GetCustomDomainsCustomDomainArgs struct {
 	OriginDomainName pulumi.StringInput `pulumi:"originDomainName"`
 	// Indicates whether this is a primary domain.
 	Primary pulumi.BoolInput `pulumi:"primary"`
+	// Relying Party ID (rpId) to be used for Passkeys on this custom domain. If not provided or set to null, the full domain will be used.
+	RelyingPartyIdentifier pulumi.StringInput `pulumi:"relyingPartyIdentifier"`
 	// Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, `ready` and `failed`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on selfManaged domains.
@@ -59236,6 +60556,11 @@ func (o GetCustomDomainsCustomDomainOutput) OriginDomainName() pulumi.StringOutp
 // Indicates whether this is a primary domain.
 func (o GetCustomDomainsCustomDomainOutput) Primary() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetCustomDomainsCustomDomain) bool { return v.Primary }).(pulumi.BoolOutput)
+}
+
+// Relying Party ID (rpId) to be used for Passkeys on this custom domain. If not provided or set to null, the full domain will be used.
+func (o GetCustomDomainsCustomDomainOutput) RelyingPartyIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomDomainsCustomDomain) string { return v.RelyingPartyIdentifier }).(pulumi.StringOutput)
 }
 
 // Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, `ready` and `failed`.
@@ -59744,12 +61069,16 @@ func (o GetEventStreamWebhookConfigurationArrayOutput) Index(i pulumi.IntInput) 
 
 type GetEventStreamWebhookConfigurationWebhookAuthorization struct {
 	// The authorization method used to secure the webhook endpoint. Can be either `basic` or `bearer`.
-	Method string `pulumi:"method"`
-	// The password for `basic` authentication. Required when `method` is set to `basic`.
-	Password string `pulumi:"password"`
-	// The token used for `bearer` authentication. Required when `method` is set to `bearer`.
-	Token string `pulumi:"token"`
-	// The username for `basic` authentication. Required when `method` is set to `basic`.
+	Method     string `pulumi:"method"`
+	Password   string `pulumi:"password"`
+	PasswordWo string `pulumi:"passwordWo"`
+	// Version number for password changes. Update this value to trigger a password change when using `passwordWo`.
+	PasswordWoVersion int    `pulumi:"passwordWoVersion"`
+	Token             string `pulumi:"token"`
+	TokenWo           string `pulumi:"tokenWo"`
+	// Version number for token changes. Update this value to trigger a token change when using `tokenWo`.
+	TokenWoVersion int `pulumi:"tokenWoVersion"`
+	// The username for `basic` authentication. Required only when `method` is set to `basic`.
 	Username string `pulumi:"username"`
 }
 
@@ -59766,12 +61095,16 @@ type GetEventStreamWebhookConfigurationWebhookAuthorizationInput interface {
 
 type GetEventStreamWebhookConfigurationWebhookAuthorizationArgs struct {
 	// The authorization method used to secure the webhook endpoint. Can be either `basic` or `bearer`.
-	Method pulumi.StringInput `pulumi:"method"`
-	// The password for `basic` authentication. Required when `method` is set to `basic`.
-	Password pulumi.StringInput `pulumi:"password"`
-	// The token used for `bearer` authentication. Required when `method` is set to `bearer`.
-	Token pulumi.StringInput `pulumi:"token"`
-	// The username for `basic` authentication. Required when `method` is set to `basic`.
+	Method     pulumi.StringInput `pulumi:"method"`
+	Password   pulumi.StringInput `pulumi:"password"`
+	PasswordWo pulumi.StringInput `pulumi:"passwordWo"`
+	// Version number for password changes. Update this value to trigger a password change when using `passwordWo`.
+	PasswordWoVersion pulumi.IntInput    `pulumi:"passwordWoVersion"`
+	Token             pulumi.StringInput `pulumi:"token"`
+	TokenWo           pulumi.StringInput `pulumi:"tokenWo"`
+	// Version number for token changes. Update this value to trigger a token change when using `tokenWo`.
+	TokenWoVersion pulumi.IntInput `pulumi:"tokenWoVersion"`
+	// The username for `basic` authentication. Required only when `method` is set to `basic`.
 	Username pulumi.StringInput `pulumi:"username"`
 }
 
@@ -59831,17 +61164,33 @@ func (o GetEventStreamWebhookConfigurationWebhookAuthorizationOutput) Method() p
 	return o.ApplyT(func(v GetEventStreamWebhookConfigurationWebhookAuthorization) string { return v.Method }).(pulumi.StringOutput)
 }
 
-// The password for `basic` authentication. Required when `method` is set to `basic`.
 func (o GetEventStreamWebhookConfigurationWebhookAuthorizationOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEventStreamWebhookConfigurationWebhookAuthorization) string { return v.Password }).(pulumi.StringOutput)
 }
 
-// The token used for `bearer` authentication. Required when `method` is set to `bearer`.
+func (o GetEventStreamWebhookConfigurationWebhookAuthorizationOutput) PasswordWo() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventStreamWebhookConfigurationWebhookAuthorization) string { return v.PasswordWo }).(pulumi.StringOutput)
+}
+
+// Version number for password changes. Update this value to trigger a password change when using `passwordWo`.
+func (o GetEventStreamWebhookConfigurationWebhookAuthorizationOutput) PasswordWoVersion() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEventStreamWebhookConfigurationWebhookAuthorization) int { return v.PasswordWoVersion }).(pulumi.IntOutput)
+}
+
 func (o GetEventStreamWebhookConfigurationWebhookAuthorizationOutput) Token() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEventStreamWebhookConfigurationWebhookAuthorization) string { return v.Token }).(pulumi.StringOutput)
 }
 
-// The username for `basic` authentication. Required when `method` is set to `basic`.
+func (o GetEventStreamWebhookConfigurationWebhookAuthorizationOutput) TokenWo() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventStreamWebhookConfigurationWebhookAuthorization) string { return v.TokenWo }).(pulumi.StringOutput)
+}
+
+// Version number for token changes. Update this value to trigger a token change when using `tokenWo`.
+func (o GetEventStreamWebhookConfigurationWebhookAuthorizationOutput) TokenWoVersion() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEventStreamWebhookConfigurationWebhookAuthorization) int { return v.TokenWoVersion }).(pulumi.IntOutput)
+}
+
+// The username for `basic` authentication. Required only when `method` is set to `basic`.
 func (o GetEventStreamWebhookConfigurationWebhookAuthorizationOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEventStreamWebhookConfigurationWebhookAuthorization) string { return v.Username }).(pulumi.StringOutput)
 }
@@ -66484,6 +67833,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientOidcLogoutPtrInput)(nil)).Elem(), ClientOidcLogoutArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientOidcLogoutBackchannelLogoutInitiatorsInput)(nil)).Elem(), ClientOidcLogoutBackchannelLogoutInitiatorsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientOidcLogoutBackchannelLogoutInitiatorsPtrInput)(nil)).Elem(), ClientOidcLogoutBackchannelLogoutInitiatorsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientOidcLogoutBackchannelLogoutSessionMetadataInput)(nil)).Elem(), ClientOidcLogoutBackchannelLogoutSessionMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientOidcLogoutBackchannelLogoutSessionMetadataPtrInput)(nil)).Elem(), ClientOidcLogoutBackchannelLogoutSessionMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientRefreshTokenInput)(nil)).Elem(), ClientRefreshTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientRefreshTokenPtrInput)(nil)).Elem(), ClientRefreshTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientRefreshTokenPolicyInput)(nil)).Elem(), ClientRefreshTokenPolicyArgs{})
@@ -66536,14 +67887,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsAttributeUsernameValidationAllowedTypeArrayInput)(nil)).Elem(), ConnectionOptionsAttributeUsernameValidationAllowedTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsAuthenticationMethodInput)(nil)).Elem(), ConnectionOptionsAuthenticationMethodArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsAuthenticationMethodArrayInput)(nil)).Elem(), ConnectionOptionsAuthenticationMethodArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsAuthenticationMethodEmailOtpInput)(nil)).Elem(), ConnectionOptionsAuthenticationMethodEmailOtpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsAuthenticationMethodEmailOtpPtrInput)(nil)).Elem(), ConnectionOptionsAuthenticationMethodEmailOtpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsAuthenticationMethodPasskeyInput)(nil)).Elem(), ConnectionOptionsAuthenticationMethodPasskeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsAuthenticationMethodPasskeyPtrInput)(nil)).Elem(), ConnectionOptionsAuthenticationMethodPasskeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsAuthenticationMethodPasswordInput)(nil)).Elem(), ConnectionOptionsAuthenticationMethodPasswordArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsAuthenticationMethodPasswordPtrInput)(nil)).Elem(), ConnectionOptionsAuthenticationMethodPasswordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsAuthenticationMethodPhoneOtpInput)(nil)).Elem(), ConnectionOptionsAuthenticationMethodPhoneOtpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsAuthenticationMethodPhoneOtpPtrInput)(nil)).Elem(), ConnectionOptionsAuthenticationMethodPhoneOtpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsConnectionSettingsInput)(nil)).Elem(), ConnectionOptionsConnectionSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsConnectionSettingsPtrInput)(nil)).Elem(), ConnectionOptionsConnectionSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsCustomHeaderInput)(nil)).Elem(), ConnectionOptionsCustomHeaderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsCustomHeaderArrayInput)(nil)).Elem(), ConnectionOptionsCustomHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsCustomPasswordHashInput)(nil)).Elem(), ConnectionOptionsCustomPasswordHashArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsCustomPasswordHashPtrInput)(nil)).Elem(), ConnectionOptionsCustomPasswordHashArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsDecryptionKeyInput)(nil)).Elem(), ConnectionOptionsDecryptionKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsDecryptionKeyPtrInput)(nil)).Elem(), ConnectionOptionsDecryptionKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsGatewayAuthenticationInput)(nil)).Elem(), ConnectionOptionsGatewayAuthenticationArgs{})
@@ -66935,6 +68292,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientOidcLogoutArrayInput)(nil)).Elem(), GetClientOidcLogoutArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientOidcLogoutBackchannelLogoutInitiatorInput)(nil)).Elem(), GetClientOidcLogoutBackchannelLogoutInitiatorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientOidcLogoutBackchannelLogoutInitiatorArrayInput)(nil)).Elem(), GetClientOidcLogoutBackchannelLogoutInitiatorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientOidcLogoutBackchannelLogoutSessionMetadataInput)(nil)).Elem(), GetClientOidcLogoutBackchannelLogoutSessionMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientOidcLogoutBackchannelLogoutSessionMetadataArrayInput)(nil)).Elem(), GetClientOidcLogoutBackchannelLogoutSessionMetadataArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientRefreshTokenInput)(nil)).Elem(), GetClientRefreshTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientRefreshTokenArrayInput)(nil)).Elem(), GetClientRefreshTokenArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientRefreshTokenPolicyInput)(nil)).Elem(), GetClientRefreshTokenPolicyArgs{})
@@ -66961,6 +68320,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientOidcLogoutArrayInput)(nil)).Elem(), GetClientsClientOidcLogoutArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientOidcLogoutBackchannelLogoutInitiatorInput)(nil)).Elem(), GetClientsClientOidcLogoutBackchannelLogoutInitiatorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayInput)(nil)).Elem(), GetClientsClientOidcLogoutBackchannelLogoutInitiatorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataInput)(nil)).Elem(), GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArrayInput)(nil)).Elem(), GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientSessionTransferInput)(nil)).Elem(), GetClientsClientSessionTransferArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientSessionTransferArrayInput)(nil)).Elem(), GetClientsClientSessionTransferArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientTokenExchangeInput)(nil)).Elem(), GetClientsClientTokenExchangeArgs{})
@@ -67013,14 +68374,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributeUsernameValidationAllowedTypeArrayInput)(nil)).Elem(), GetConnectionOptionAttributeUsernameValidationAllowedTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAuthenticationMethodInput)(nil)).Elem(), GetConnectionOptionAuthenticationMethodArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAuthenticationMethodArrayInput)(nil)).Elem(), GetConnectionOptionAuthenticationMethodArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAuthenticationMethodEmailOtpInput)(nil)).Elem(), GetConnectionOptionAuthenticationMethodEmailOtpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAuthenticationMethodEmailOtpArrayInput)(nil)).Elem(), GetConnectionOptionAuthenticationMethodEmailOtpArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAuthenticationMethodPasskeyInput)(nil)).Elem(), GetConnectionOptionAuthenticationMethodPasskeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAuthenticationMethodPasskeyArrayInput)(nil)).Elem(), GetConnectionOptionAuthenticationMethodPasskeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAuthenticationMethodPasswordInput)(nil)).Elem(), GetConnectionOptionAuthenticationMethodPasswordArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAuthenticationMethodPasswordArrayInput)(nil)).Elem(), GetConnectionOptionAuthenticationMethodPasswordArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAuthenticationMethodPhoneOtpInput)(nil)).Elem(), GetConnectionOptionAuthenticationMethodPhoneOtpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAuthenticationMethodPhoneOtpArrayInput)(nil)).Elem(), GetConnectionOptionAuthenticationMethodPhoneOtpArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionConnectionSettingInput)(nil)).Elem(), GetConnectionOptionConnectionSettingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionConnectionSettingArrayInput)(nil)).Elem(), GetConnectionOptionConnectionSettingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionCustomHeaderInput)(nil)).Elem(), GetConnectionOptionCustomHeaderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionCustomHeaderArrayInput)(nil)).Elem(), GetConnectionOptionCustomHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionCustomPasswordHashInput)(nil)).Elem(), GetConnectionOptionCustomPasswordHashArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionCustomPasswordHashArrayInput)(nil)).Elem(), GetConnectionOptionCustomPasswordHashArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionDecryptionKeyInput)(nil)).Elem(), GetConnectionOptionDecryptionKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionDecryptionKeyArrayInput)(nil)).Elem(), GetConnectionOptionDecryptionKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionGatewayAuthenticationInput)(nil)).Elem(), GetConnectionOptionGatewayAuthenticationArgs{})
@@ -67369,6 +68736,8 @@ func init() {
 	pulumi.RegisterOutputType(ClientOidcLogoutPtrOutput{})
 	pulumi.RegisterOutputType(ClientOidcLogoutBackchannelLogoutInitiatorsOutput{})
 	pulumi.RegisterOutputType(ClientOidcLogoutBackchannelLogoutInitiatorsPtrOutput{})
+	pulumi.RegisterOutputType(ClientOidcLogoutBackchannelLogoutSessionMetadataOutput{})
+	pulumi.RegisterOutputType(ClientOidcLogoutBackchannelLogoutSessionMetadataPtrOutput{})
 	pulumi.RegisterOutputType(ClientRefreshTokenOutput{})
 	pulumi.RegisterOutputType(ClientRefreshTokenPtrOutput{})
 	pulumi.RegisterOutputType(ClientRefreshTokenPolicyOutput{})
@@ -67421,14 +68790,20 @@ func init() {
 	pulumi.RegisterOutputType(ConnectionOptionsAttributeUsernameValidationAllowedTypeArrayOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsAuthenticationMethodOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsAuthenticationMethodArrayOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsAuthenticationMethodEmailOtpOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsAuthenticationMethodEmailOtpPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsAuthenticationMethodPasskeyOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsAuthenticationMethodPasskeyPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsAuthenticationMethodPasswordOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsAuthenticationMethodPasswordPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsAuthenticationMethodPhoneOtpOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsAuthenticationMethodPhoneOtpPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsConnectionSettingsOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsConnectionSettingsPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsCustomHeaderOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsCustomHeaderArrayOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsCustomPasswordHashOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsCustomPasswordHashPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsDecryptionKeyOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsDecryptionKeyPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsGatewayAuthenticationOutput{})
@@ -67820,6 +69195,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClientOidcLogoutArrayOutput{})
 	pulumi.RegisterOutputType(GetClientOidcLogoutBackchannelLogoutInitiatorOutput{})
 	pulumi.RegisterOutputType(GetClientOidcLogoutBackchannelLogoutInitiatorArrayOutput{})
+	pulumi.RegisterOutputType(GetClientOidcLogoutBackchannelLogoutSessionMetadataOutput{})
+	pulumi.RegisterOutputType(GetClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput{})
 	pulumi.RegisterOutputType(GetClientRefreshTokenOutput{})
 	pulumi.RegisterOutputType(GetClientRefreshTokenArrayOutput{})
 	pulumi.RegisterOutputType(GetClientRefreshTokenPolicyOutput{})
@@ -67846,6 +69223,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClientsClientOidcLogoutArrayOutput{})
 	pulumi.RegisterOutputType(GetClientsClientOidcLogoutBackchannelLogoutInitiatorOutput{})
 	pulumi.RegisterOutputType(GetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayOutput{})
+	pulumi.RegisterOutputType(GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataOutput{})
+	pulumi.RegisterOutputType(GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput{})
 	pulumi.RegisterOutputType(GetClientsClientSessionTransferOutput{})
 	pulumi.RegisterOutputType(GetClientsClientSessionTransferArrayOutput{})
 	pulumi.RegisterOutputType(GetClientsClientTokenExchangeOutput{})
@@ -67898,14 +69277,20 @@ func init() {
 	pulumi.RegisterOutputType(GetConnectionOptionAttributeUsernameValidationAllowedTypeArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionAuthenticationMethodOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionAuthenticationMethodArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAuthenticationMethodEmailOtpOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAuthenticationMethodEmailOtpArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionAuthenticationMethodPasskeyOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionAuthenticationMethodPasskeyArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionAuthenticationMethodPasswordOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionAuthenticationMethodPasswordArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAuthenticationMethodPhoneOtpOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAuthenticationMethodPhoneOtpArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionConnectionSettingOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionConnectionSettingArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionCustomHeaderOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionCustomHeaderArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionCustomPasswordHashOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionCustomPasswordHashArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionDecryptionKeyOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionDecryptionKeyArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionGatewayAuthenticationOutput{})

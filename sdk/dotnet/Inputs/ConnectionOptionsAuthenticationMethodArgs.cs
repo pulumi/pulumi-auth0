@@ -13,6 +13,12 @@ namespace Pulumi.Auth0.Inputs
     public sealed class ConnectionOptionsAuthenticationMethodArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Configures Email OTP authentication
+        /// </summary>
+        [Input("emailOtp")]
+        public Input<Inputs.ConnectionOptionsAuthenticationMethodEmailOtpArgs>? EmailOtp { get; set; }
+
+        /// <summary>
         /// Configures passkey authentication
         /// </summary>
         [Input("passkey")]
@@ -23,6 +29,12 @@ namespace Pulumi.Auth0.Inputs
         /// </summary>
         [Input("password")]
         public Input<Inputs.ConnectionOptionsAuthenticationMethodPasswordArgs>? Password { get; set; }
+
+        /// <summary>
+        /// Configures Phone OTP authentication
+        /// </summary>
+        [Input("phoneOtp")]
+        public Input<Inputs.ConnectionOptionsAuthenticationMethodPhoneOtpArgs>? PhoneOtp { get; set; }
 
         public ConnectionOptionsAuthenticationMethodArgs()
         {

@@ -18,6 +18,10 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClientOidcLogoutBackchannelLogoutInitiatorResult> BackchannelLogoutInitiators;
         /// <summary>
+        /// Controls whether session metadata is included in the logout token. Default value is null.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetClientOidcLogoutBackchannelLogoutSessionMetadataResult> BackchannelLogoutSessionMetadatas;
+        /// <summary>
         /// Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
         /// </summary>
         public readonly ImmutableArray<string> BackchannelLogoutUrls;
@@ -26,9 +30,12 @@ namespace Pulumi.Auth0.Outputs
         private GetClientOidcLogoutResult(
             ImmutableArray<Outputs.GetClientOidcLogoutBackchannelLogoutInitiatorResult> backchannelLogoutInitiators,
 
+            ImmutableArray<Outputs.GetClientOidcLogoutBackchannelLogoutSessionMetadataResult> backchannelLogoutSessionMetadatas,
+
             ImmutableArray<string> backchannelLogoutUrls)
         {
             BackchannelLogoutInitiators = backchannelLogoutInitiators;
+            BackchannelLogoutSessionMetadatas = backchannelLogoutSessionMetadatas;
             BackchannelLogoutUrls = backchannelLogoutUrls;
         }
     }

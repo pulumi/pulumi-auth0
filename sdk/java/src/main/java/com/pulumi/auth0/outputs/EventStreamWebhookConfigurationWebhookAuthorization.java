@@ -5,6 +5,7 @@ package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,18 +18,30 @@ public final class EventStreamWebhookConfigurationWebhookAuthorization {
      * 
      */
     private String method;
-    /**
-     * @return The password for `basic` authentication. Required when `method` is set to `basic`.
-     * 
-     */
     private @Nullable String password;
     /**
-     * @return The token used for `bearer` authentication. Required when `method` is set to `bearer`.
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * 
      */
+    private @Nullable String passwordWo;
+    /**
+     * @return Version number for password changes. Update this value to trigger a password change when using `passwordWo`.
+     * 
+     */
+    private @Nullable Integer passwordWoVersion;
     private @Nullable String token;
     /**
-     * @return The username for `basic` authentication. Required when `method` is set to `basic`.
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * 
+     */
+    private @Nullable String tokenWo;
+    /**
+     * @return Version number for token changes. Update this value to trigger a token change when using `tokenWo`.
+     * 
+     */
+    private @Nullable Integer tokenWoVersion;
+    /**
+     * @return The username for `basic` authentication. Required only when `method` is set to `basic`.
      * 
      */
     private @Nullable String username;
@@ -41,22 +54,42 @@ public final class EventStreamWebhookConfigurationWebhookAuthorization {
     public String method() {
         return this.method;
     }
-    /**
-     * @return The password for `basic` authentication. Required when `method` is set to `basic`.
-     * 
-     */
     public Optional<String> password() {
         return Optional.ofNullable(this.password);
     }
     /**
-     * @return The token used for `bearer` authentication. Required when `method` is set to `bearer`.
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * 
      */
+    public Optional<String> passwordWo() {
+        return Optional.ofNullable(this.passwordWo);
+    }
+    /**
+     * @return Version number for password changes. Update this value to trigger a password change when using `passwordWo`.
+     * 
+     */
+    public Optional<Integer> passwordWoVersion() {
+        return Optional.ofNullable(this.passwordWoVersion);
+    }
     public Optional<String> token() {
         return Optional.ofNullable(this.token);
     }
     /**
-     * @return The username for `basic` authentication. Required when `method` is set to `basic`.
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * 
+     */
+    public Optional<String> tokenWo() {
+        return Optional.ofNullable(this.tokenWo);
+    }
+    /**
+     * @return Version number for token changes. Update this value to trigger a token change when using `tokenWo`.
+     * 
+     */
+    public Optional<Integer> tokenWoVersion() {
+        return Optional.ofNullable(this.tokenWoVersion);
+    }
+    /**
+     * @return The username for `basic` authentication. Required only when `method` is set to `basic`.
      * 
      */
     public Optional<String> username() {
@@ -74,14 +107,22 @@ public final class EventStreamWebhookConfigurationWebhookAuthorization {
     public static final class Builder {
         private String method;
         private @Nullable String password;
+        private @Nullable String passwordWo;
+        private @Nullable Integer passwordWoVersion;
         private @Nullable String token;
+        private @Nullable String tokenWo;
+        private @Nullable Integer tokenWoVersion;
         private @Nullable String username;
         public Builder() {}
         public Builder(EventStreamWebhookConfigurationWebhookAuthorization defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.method = defaults.method;
     	      this.password = defaults.password;
+    	      this.passwordWo = defaults.passwordWo;
+    	      this.passwordWoVersion = defaults.passwordWoVersion;
     	      this.token = defaults.token;
+    	      this.tokenWo = defaults.tokenWo;
+    	      this.tokenWoVersion = defaults.tokenWoVersion;
     	      this.username = defaults.username;
         }
 
@@ -100,9 +141,33 @@ public final class EventStreamWebhookConfigurationWebhookAuthorization {
             return this;
         }
         @CustomType.Setter
+        public Builder passwordWo(@Nullable String passwordWo) {
+
+            this.passwordWo = passwordWo;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder passwordWoVersion(@Nullable Integer passwordWoVersion) {
+
+            this.passwordWoVersion = passwordWoVersion;
+            return this;
+        }
+        @CustomType.Setter
         public Builder token(@Nullable String token) {
 
             this.token = token;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder tokenWo(@Nullable String tokenWo) {
+
+            this.tokenWo = tokenWo;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder tokenWoVersion(@Nullable Integer tokenWoVersion) {
+
+            this.tokenWoVersion = tokenWoVersion;
             return this;
         }
         @CustomType.Setter
@@ -115,7 +180,11 @@ public final class EventStreamWebhookConfigurationWebhookAuthorization {
             final var _resultValue = new EventStreamWebhookConfigurationWebhookAuthorization();
             _resultValue.method = method;
             _resultValue.password = password;
+            _resultValue.passwordWo = passwordWo;
+            _resultValue.passwordWoVersion = passwordWoVersion;
             _resultValue.token = token;
+            _resultValue.tokenWo = tokenWo;
+            _resultValue.tokenWoVersion = tokenWoVersion;
             _resultValue.username = username;
             return _resultValue;
         }

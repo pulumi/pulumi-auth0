@@ -167,6 +167,20 @@ public class CustomDomain extends com.pulumi.resources.CustomResource {
         return this.primary;
     }
     /**
+     * Relying Party ID (rpId) to be used for Passkeys on this custom domain. If not provided or set to null, the full domain will be used.
+     * 
+     */
+    @Export(name="relyingPartyIdentifier", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> relyingPartyIdentifier;
+
+    /**
+     * @return Relying Party ID (rpId) to be used for Passkeys on this custom domain. If not provided or set to null, the full domain will be used.
+     * 
+     */
+    public Output<Optional<String>> relyingPartyIdentifier() {
+        return Codegen.optional(this.relyingPartyIdentifier);
+    }
+    /**
      * Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, `ready` and `failed`.
      * 
      */

@@ -18,6 +18,12 @@ namespace Pulumi.Auth0.Inputs
         [Input("backchannelLogoutInitiators")]
         public Input<Inputs.ClientOidcLogoutBackchannelLogoutInitiatorsArgs>? BackchannelLogoutInitiators { get; set; }
 
+        /// <summary>
+        /// Controls whether session metadata is included in the logout token. Default value is null.
+        /// </summary>
+        [Input("backchannelLogoutSessionMetadata")]
+        public Input<Inputs.ClientOidcLogoutBackchannelLogoutSessionMetadataArgs>? BackchannelLogoutSessionMetadata { get; set; }
+
         [Input("backchannelLogoutUrls", required: true)]
         private InputList<string>? _backchannelLogoutUrls;
 

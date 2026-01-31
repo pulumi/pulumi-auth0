@@ -3,8 +3,10 @@
 
 package com.pulumi.auth0.outputs;
 
+import com.pulumi.auth0.outputs.ConnectionOptionsAuthenticationMethodEmailOtp;
 import com.pulumi.auth0.outputs.ConnectionOptionsAuthenticationMethodPasskey;
 import com.pulumi.auth0.outputs.ConnectionOptionsAuthenticationMethodPassword;
+import com.pulumi.auth0.outputs.ConnectionOptionsAuthenticationMethodPhoneOtp;
 import com.pulumi.core.annotations.CustomType;
 import java.util.Objects;
 import java.util.Optional;
@@ -12,6 +14,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ConnectionOptionsAuthenticationMethod {
+    /**
+     * @return Configures Email OTP authentication
+     * 
+     */
+    private @Nullable ConnectionOptionsAuthenticationMethodEmailOtp emailOtp;
     /**
      * @return Configures passkey authentication
      * 
@@ -22,8 +29,20 @@ public final class ConnectionOptionsAuthenticationMethod {
      * 
      */
     private @Nullable ConnectionOptionsAuthenticationMethodPassword password;
+    /**
+     * @return Configures Phone OTP authentication
+     * 
+     */
+    private @Nullable ConnectionOptionsAuthenticationMethodPhoneOtp phoneOtp;
 
     private ConnectionOptionsAuthenticationMethod() {}
+    /**
+     * @return Configures Email OTP authentication
+     * 
+     */
+    public Optional<ConnectionOptionsAuthenticationMethodEmailOtp> emailOtp() {
+        return Optional.ofNullable(this.emailOtp);
+    }
     /**
      * @return Configures passkey authentication
      * 
@@ -38,6 +57,13 @@ public final class ConnectionOptionsAuthenticationMethod {
     public Optional<ConnectionOptionsAuthenticationMethodPassword> password() {
         return Optional.ofNullable(this.password);
     }
+    /**
+     * @return Configures Phone OTP authentication
+     * 
+     */
+    public Optional<ConnectionOptionsAuthenticationMethodPhoneOtp> phoneOtp() {
+        return Optional.ofNullable(this.phoneOtp);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -48,15 +74,25 @@ public final class ConnectionOptionsAuthenticationMethod {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable ConnectionOptionsAuthenticationMethodEmailOtp emailOtp;
         private @Nullable ConnectionOptionsAuthenticationMethodPasskey passkey;
         private @Nullable ConnectionOptionsAuthenticationMethodPassword password;
+        private @Nullable ConnectionOptionsAuthenticationMethodPhoneOtp phoneOtp;
         public Builder() {}
         public Builder(ConnectionOptionsAuthenticationMethod defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.emailOtp = defaults.emailOtp;
     	      this.passkey = defaults.passkey;
     	      this.password = defaults.password;
+    	      this.phoneOtp = defaults.phoneOtp;
         }
 
+        @CustomType.Setter
+        public Builder emailOtp(@Nullable ConnectionOptionsAuthenticationMethodEmailOtp emailOtp) {
+
+            this.emailOtp = emailOtp;
+            return this;
+        }
         @CustomType.Setter
         public Builder passkey(@Nullable ConnectionOptionsAuthenticationMethodPasskey passkey) {
 
@@ -69,10 +105,18 @@ public final class ConnectionOptionsAuthenticationMethod {
             this.password = password;
             return this;
         }
+        @CustomType.Setter
+        public Builder phoneOtp(@Nullable ConnectionOptionsAuthenticationMethodPhoneOtp phoneOtp) {
+
+            this.phoneOtp = phoneOtp;
+            return this;
+        }
         public ConnectionOptionsAuthenticationMethod build() {
             final var _resultValue = new ConnectionOptionsAuthenticationMethod();
+            _resultValue.emailOtp = emailOtp;
             _resultValue.passkey = passkey;
             _resultValue.password = password;
+            _resultValue.phoneOtp = phoneOtp;
             return _resultValue;
         }
     }

@@ -17,11 +17,19 @@ namespace Pulumi.Auth0.Outputs
         /// Defines whether email attribute is active as an identifier
         /// </summary>
         public readonly bool Active;
+        /// <summary>
+        /// Gets and Sets the default authentication method for the email identifier type. Valid values: `Password`, `EmailOtp`
+        /// </summary>
+        public readonly string DefaultMethod;
 
         [OutputConstructor]
-        private GetConnectionOptionAttributeEmailIdentifierResult(bool active)
+        private GetConnectionOptionAttributeEmailIdentifierResult(
+            bool active,
+
+            string defaultMethod)
         {
             Active = active;
+            DefaultMethod = defaultMethod;
         }
     }
 }

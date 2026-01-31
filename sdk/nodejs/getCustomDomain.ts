@@ -84,6 +84,10 @@ export interface GetCustomDomainResult {
      */
     readonly primary: boolean;
     /**
+     * Relying Party ID (rpId) to be used for Passkeys on this custom domain. If not provided or set to null, the full domain will be used.
+     */
+    readonly relyingPartyIdentifier: string;
+    /**
      * Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, `ready` and `failed`.
      */
     readonly status: string;

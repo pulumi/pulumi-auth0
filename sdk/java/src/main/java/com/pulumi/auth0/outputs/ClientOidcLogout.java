@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.auth0.outputs.ClientOidcLogoutBackchannelLogoutInitiators;
+import com.pulumi.auth0.outputs.ClientOidcLogoutBackchannelLogoutSessionMetadata;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
@@ -20,6 +21,11 @@ public final class ClientOidcLogout {
      */
     private @Nullable ClientOidcLogoutBackchannelLogoutInitiators backchannelLogoutInitiators;
     /**
+     * @return Controls whether session metadata is included in the logout token. Default value is null.
+     * 
+     */
+    private @Nullable ClientOidcLogoutBackchannelLogoutSessionMetadata backchannelLogoutSessionMetadata;
+    /**
      * @return Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
      * 
      */
@@ -32,6 +38,13 @@ public final class ClientOidcLogout {
      */
     public Optional<ClientOidcLogoutBackchannelLogoutInitiators> backchannelLogoutInitiators() {
         return Optional.ofNullable(this.backchannelLogoutInitiators);
+    }
+    /**
+     * @return Controls whether session metadata is included in the logout token. Default value is null.
+     * 
+     */
+    public Optional<ClientOidcLogoutBackchannelLogoutSessionMetadata> backchannelLogoutSessionMetadata() {
+        return Optional.ofNullable(this.backchannelLogoutSessionMetadata);
     }
     /**
      * @return Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
@@ -51,11 +64,13 @@ public final class ClientOidcLogout {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable ClientOidcLogoutBackchannelLogoutInitiators backchannelLogoutInitiators;
+        private @Nullable ClientOidcLogoutBackchannelLogoutSessionMetadata backchannelLogoutSessionMetadata;
         private List<String> backchannelLogoutUrls;
         public Builder() {}
         public Builder(ClientOidcLogout defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.backchannelLogoutInitiators = defaults.backchannelLogoutInitiators;
+    	      this.backchannelLogoutSessionMetadata = defaults.backchannelLogoutSessionMetadata;
     	      this.backchannelLogoutUrls = defaults.backchannelLogoutUrls;
         }
 
@@ -63,6 +78,12 @@ public final class ClientOidcLogout {
         public Builder backchannelLogoutInitiators(@Nullable ClientOidcLogoutBackchannelLogoutInitiators backchannelLogoutInitiators) {
 
             this.backchannelLogoutInitiators = backchannelLogoutInitiators;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder backchannelLogoutSessionMetadata(@Nullable ClientOidcLogoutBackchannelLogoutSessionMetadata backchannelLogoutSessionMetadata) {
+
+            this.backchannelLogoutSessionMetadata = backchannelLogoutSessionMetadata;
             return this;
         }
         @CustomType.Setter
@@ -79,6 +100,7 @@ public final class ClientOidcLogout {
         public ClientOidcLogout build() {
             final var _resultValue = new ClientOidcLogout();
             _resultValue.backchannelLogoutInitiators = backchannelLogoutInitiators;
+            _resultValue.backchannelLogoutSessionMetadata = backchannelLogoutSessionMetadata;
             _resultValue.backchannelLogoutUrls = backchannelLogoutUrls;
             return _resultValue;
         }

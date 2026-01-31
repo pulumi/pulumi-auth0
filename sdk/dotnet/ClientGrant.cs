@@ -95,6 +95,7 @@ namespace Pulumi.Auth0
     ///             "payment",
     ///             "shipping",
     ///         },
+    ///         AllowAllScopes = false,
     ///     });
     /// 
     /// });
@@ -115,6 +116,12 @@ namespace Pulumi.Auth0
     [Auth0ResourceType("auth0:index/clientGrant:ClientGrant")]
     public partial class ClientGrant : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// When set to `True`, all scopes configured on the resource server are allowed for this client grant. `Scopes` can not be provided when this is set to `True`. EA Only.
+        /// </summary>
+        [Output("allowAllScopes")]
+        public Output<bool?> AllowAllScopes { get; private set; } = null!;
+
         /// <summary>
         /// If enabled, any organization can be used with this grant. If disabled (default), the grant must be explicitly assigned to the desired organizations.
         /// </summary>
@@ -152,7 +159,7 @@ namespace Pulumi.Auth0
         public Output<string?> OrganizationUsage { get; private set; } = null!;
 
         /// <summary>
-        /// Permissions (scopes) included in this grant.
+        /// Permissions (scopes) included in this grant. Can not be provided when `AllowAllScopes` is set to `True`.
         /// </summary>
         [Output("scopes")]
         public Output<ImmutableArray<string>> Scopes { get; private set; } = null!;
@@ -210,6 +217,12 @@ namespace Pulumi.Auth0
     public sealed class ClientGrantArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// When set to `True`, all scopes configured on the resource server are allowed for this client grant. `Scopes` can not be provided when this is set to `True`. EA Only.
+        /// </summary>
+        [Input("allowAllScopes")]
+        public Input<bool>? AllowAllScopes { get; set; }
+
+        /// <summary>
         /// If enabled, any organization can be used with this grant. If disabled (default), the grant must be explicitly assigned to the desired organizations.
         /// </summary>
         [Input("allowAnyOrganization")]
@@ -245,11 +258,11 @@ namespace Pulumi.Auth0
         [Input("organizationUsage")]
         public Input<string>? OrganizationUsage { get; set; }
 
-        [Input("scopes", required: true)]
+        [Input("scopes")]
         private InputList<string>? _scopes;
 
         /// <summary>
-        /// Permissions (scopes) included in this grant.
+        /// Permissions (scopes) included in this grant. Can not be provided when `AllowAllScopes` is set to `True`.
         /// </summary>
         public InputList<string> Scopes
         {
@@ -271,6 +284,12 @@ namespace Pulumi.Auth0
 
     public sealed class ClientGrantState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// When set to `True`, all scopes configured on the resource server are allowed for this client grant. `Scopes` can not be provided when this is set to `True`. EA Only.
+        /// </summary>
+        [Input("allowAllScopes")]
+        public Input<bool>? AllowAllScopes { get; set; }
+
         /// <summary>
         /// If enabled, any organization can be used with this grant. If disabled (default), the grant must be explicitly assigned to the desired organizations.
         /// </summary>
@@ -317,7 +336,7 @@ namespace Pulumi.Auth0
         private InputList<string>? _scopes;
 
         /// <summary>
-        /// Permissions (scopes) included in this grant.
+        /// Permissions (scopes) included in this grant. Can not be provided when `AllowAllScopes` is set to `True`.
         /// </summary>
         public InputList<string> Scopes
         {

@@ -105,6 +105,7 @@ import javax.annotation.Nullable;
  *             .authorizationDetailsTypes(            
  *                 "payment",
  *                 "shipping")
+ *             .allowAllScopes(false)
  *             .build());
  * 
  *     }
@@ -127,6 +128,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="auth0:index/clientGrant:ClientGrant")
 public class ClientGrant extends com.pulumi.resources.CustomResource {
+    /**
+     * When set to `true`, all scopes configured on the resource server are allowed for this client grant. `scopes` can not be provided when this is set to `true`. EA Only.
+     * 
+     */
+    @Export(name="allowAllScopes", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> allowAllScopes;
+
+    /**
+     * @return When set to `true`, all scopes configured on the resource server are allowed for this client grant. `scopes` can not be provided when this is set to `true`. EA Only.
+     * 
+     */
+    public Output<Optional<Boolean>> allowAllScopes() {
+        return Codegen.optional(this.allowAllScopes);
+    }
     /**
      * If enabled, any organization can be used with this grant. If disabled (default), the grant must be explicitly assigned to the desired organizations.
      * 
@@ -212,18 +227,18 @@ public class ClientGrant extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.organizationUsage);
     }
     /**
-     * Permissions (scopes) included in this grant.
+     * Permissions (scopes) included in this grant. Can not be provided when `allowAllScopes` is set to `true`.
      * 
      */
     @Export(name="scopes", refs={List.class,String.class}, tree="[0,1]")
-    private Output<List<String>> scopes;
+    private Output</* @Nullable */ List<String>> scopes;
 
     /**
-     * @return Permissions (scopes) included in this grant.
+     * @return Permissions (scopes) included in this grant. Can not be provided when `allowAllScopes` is set to `true`.
      * 
      */
-    public Output<List<String>> scopes() {
-        return this.scopes;
+    public Output<Optional<List<String>>> scopes() {
+        return Codegen.optional(this.scopes);
     }
     /**
      * Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.

@@ -14,6 +14,10 @@ namespace Pulumi.Auth0.Outputs
     public sealed class GetClientGrantsClientGrantResult
     {
         /// <summary>
+        /// When enabled, all scopes configured on the resource server are allowed for this client grant. EA Only.
+        /// </summary>
+        public readonly bool AllowAllScopes;
+        /// <summary>
         /// The audience of the client grant.
         /// </summary>
         public readonly string Audience;
@@ -36,6 +40,8 @@ namespace Pulumi.Auth0.Outputs
 
         [OutputConstructor]
         private GetClientGrantsClientGrantResult(
+            bool allowAllScopes,
+
             string audience,
 
             string clientId,
@@ -46,6 +52,7 @@ namespace Pulumi.Auth0.Outputs
 
             string subjectType)
         {
+            AllowAllScopes = allowAllScopes;
             Audience = audience;
             ClientId = clientId;
             Id = id;

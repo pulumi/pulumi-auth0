@@ -38,6 +38,10 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly bool Primary;
         /// <summary>
+        /// Relying Party ID (rpId) to be used for Passkeys on this custom domain. If not provided or set to null, the full domain will be used.
+        /// </summary>
+        public readonly string RelyingPartyIdentifier;
+        /// <summary>
         /// Configuration status for the custom domain. Options include `Disabled`, `Pending`, `PendingVerification`, `Ready` and `Failed`.
         /// </summary>
         public readonly string Status;
@@ -68,6 +72,8 @@ namespace Pulumi.Auth0.Outputs
 
             bool primary,
 
+            string relyingPartyIdentifier,
+
             string status,
 
             string tlsPolicy,
@@ -82,6 +88,7 @@ namespace Pulumi.Auth0.Outputs
             DomainMetadata = domainMetadata;
             OriginDomainName = originDomainName;
             Primary = primary;
+            RelyingPartyIdentifier = relyingPartyIdentifier;
             Status = status;
             TlsPolicy = tlsPolicy;
             Type = type;

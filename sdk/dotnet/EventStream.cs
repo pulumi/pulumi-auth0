@@ -60,6 +60,30 @@ namespace Pulumi.Auth0
     ///         },
     ///     });
     /// 
+    ///     var config = new Config();
+    ///     // The webhook token
+    ///     var webhookToken = config.Require("webhookToken");
+    ///     var myEventStreamWebhookSecure = new Auth0.EventStream("my_event_stream_webhook_secure", new()
+    ///     {
+    ///         Name = "my-webhook-secure",
+    ///         DestinationType = "webhook",
+    ///         Subscriptions = new[]
+    ///         {
+    ///             "user.created",
+    ///             "user.updated",
+    ///         },
+    ///         WebhookConfiguration = new Auth0.Inputs.EventStreamWebhookConfigurationArgs
+    ///         {
+    ///             WebhookEndpoint = "https://eof28wtn4v4506o.m.pipedream.net",
+    ///             WebhookAuthorization = new Auth0.Inputs.EventStreamWebhookConfigurationWebhookAuthorizationArgs
+    ///             {
+    ///                 Method = "bearer",
+    ///                 TokenWo = webhookToken,
+    ///                 TokenWoVersion = 1,
+    ///             },
+    ///         },
+    ///     });
+    /// 
     /// });
     /// ```
     /// 

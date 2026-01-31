@@ -58,6 +58,11 @@ public final class GetCustomDomainResult {
      */
     private Boolean primary;
     /**
+     * @return Relying Party ID (rpId) to be used for Passkeys on this custom domain. If not provided or set to null, the full domain will be used.
+     * 
+     */
+    private String relyingPartyIdentifier;
+    /**
      * @return Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, `ready` and `failed`.
      * 
      */
@@ -136,6 +141,13 @@ public final class GetCustomDomainResult {
         return this.primary;
     }
     /**
+     * @return Relying Party ID (rpId) to be used for Passkeys on this custom domain. If not provided or set to null, the full domain will be used.
+     * 
+     */
+    public String relyingPartyIdentifier() {
+        return this.relyingPartyIdentifier;
+    }
+    /**
      * @return Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, `ready` and `failed`.
      * 
      */
@@ -181,6 +193,7 @@ public final class GetCustomDomainResult {
         private String id;
         private String originDomainName;
         private Boolean primary;
+        private String relyingPartyIdentifier;
         private String status;
         private String tlsPolicy;
         private String type;
@@ -196,6 +209,7 @@ public final class GetCustomDomainResult {
     	      this.id = defaults.id;
     	      this.originDomainName = defaults.originDomainName;
     	      this.primary = defaults.primary;
+    	      this.relyingPartyIdentifier = defaults.relyingPartyIdentifier;
     	      this.status = defaults.status;
     	      this.tlsPolicy = defaults.tlsPolicy;
     	      this.type = defaults.type;
@@ -268,6 +282,14 @@ public final class GetCustomDomainResult {
             return this;
         }
         @CustomType.Setter
+        public Builder relyingPartyIdentifier(String relyingPartyIdentifier) {
+            if (relyingPartyIdentifier == null) {
+              throw new MissingRequiredPropertyException("GetCustomDomainResult", "relyingPartyIdentifier");
+            }
+            this.relyingPartyIdentifier = relyingPartyIdentifier;
+            return this;
+        }
+        @CustomType.Setter
         public Builder status(String status) {
             if (status == null) {
               throw new MissingRequiredPropertyException("GetCustomDomainResult", "status");
@@ -312,6 +334,7 @@ public final class GetCustomDomainResult {
             _resultValue.id = id;
             _resultValue.originDomainName = originDomainName;
             _resultValue.primary = primary;
+            _resultValue.relyingPartyIdentifier = relyingPartyIdentifier;
             _resultValue.status = status;
             _resultValue.tlsPolicy = tlsPolicy;
             _resultValue.type = type;

@@ -8,6 +8,52 @@ import * as utilities from "./utilities";
 
 /**
  * Data source to retrieve a client grants based on clientId and/or audience
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * const myClient = new auth0.Client("my_client", {name: "Example Application (Managed by Terraform)"});
+ * const myResourceServer = new auth0.ResourceServer("my_resource_server", {
+ *     name: "Example Resource Server (Managed by Terraform)",
+ *     identifier: "https://api.example.com/client-grant",
+ *     authorizationDetails: [{
+ *         type: "payment",
+ *     }],
+ *     subjectTypeAuthorization: {
+ *         user: {
+ *             policy: "allow_all",
+ *         },
+ *     },
+ * });
+ * const myScopes = new auth0.ResourceServerScopes("my_scopes", {
+ *     resourceServerIdentifier: myResourceServer.identifier,
+ *     scopes: [{
+ *         name: "create:foo",
+ *     }],
+ * }, {
+ *     dependsOn: [myResourceServer],
+ * });
+ * const myClientGrant = new auth0.ClientGrant("my_client_grant", {
+ *     clientId: myClient.id,
+ *     audience: myResourceServer.identifier,
+ *     authorizationDetailsTypes: ["payment"],
+ *     subjectType: "user",
+ *     allowAllScopes: true,
+ * });
+ * const filterByClientId = auth0.getClientGrantsOutput({
+ *     clientId: myClient.id,
+ * });
+ * const filterByAudience = auth0.getClientGrantsOutput({
+ *     audience: myResourceServer.identifier,
+ * });
+ * const filterByClientIdAndAudience = auth0.getClientGrantsOutput({
+ *     clientId: myClient.id,
+ *     audience: myResourceServer.identifier,
+ * });
+ * ```
  */
 export function getClientGrants(args?: GetClientGrantsArgs, opts?: pulumi.InvokeOptions): Promise<GetClientGrantsResult> {
     args = args || {};
@@ -55,6 +101,52 @@ export interface GetClientGrantsResult {
 }
 /**
  * Data source to retrieve a client grants based on clientId and/or audience
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * const myClient = new auth0.Client("my_client", {name: "Example Application (Managed by Terraform)"});
+ * const myResourceServer = new auth0.ResourceServer("my_resource_server", {
+ *     name: "Example Resource Server (Managed by Terraform)",
+ *     identifier: "https://api.example.com/client-grant",
+ *     authorizationDetails: [{
+ *         type: "payment",
+ *     }],
+ *     subjectTypeAuthorization: {
+ *         user: {
+ *             policy: "allow_all",
+ *         },
+ *     },
+ * });
+ * const myScopes = new auth0.ResourceServerScopes("my_scopes", {
+ *     resourceServerIdentifier: myResourceServer.identifier,
+ *     scopes: [{
+ *         name: "create:foo",
+ *     }],
+ * }, {
+ *     dependsOn: [myResourceServer],
+ * });
+ * const myClientGrant = new auth0.ClientGrant("my_client_grant", {
+ *     clientId: myClient.id,
+ *     audience: myResourceServer.identifier,
+ *     authorizationDetailsTypes: ["payment"],
+ *     subjectType: "user",
+ *     allowAllScopes: true,
+ * });
+ * const filterByClientId = auth0.getClientGrantsOutput({
+ *     clientId: myClient.id,
+ * });
+ * const filterByAudience = auth0.getClientGrantsOutput({
+ *     audience: myResourceServer.identifier,
+ * });
+ * const filterByClientIdAndAudience = auth0.getClientGrantsOutput({
+ *     clientId: myClient.id,
+ *     audience: myResourceServer.identifier,
+ * });
+ * ```
  */
 export function getClientGrantsOutput(args?: GetClientGrantsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetClientGrantsResult> {
     args = args || {};

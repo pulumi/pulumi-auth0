@@ -5,6 +5,7 @@ package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,6 +17,11 @@ public final class ConnectionOptionsAttributeEmailIdentifier {
      * 
      */
     private @Nullable Boolean active;
+    /**
+     * @return Gets and Sets the default authentication method for the email identifier type. Valid values: `password`, `emailOtp`
+     * 
+     */
+    private @Nullable String defaultMethod;
 
     private ConnectionOptionsAttributeEmailIdentifier() {}
     /**
@@ -24,6 +30,13 @@ public final class ConnectionOptionsAttributeEmailIdentifier {
      */
     public Optional<Boolean> active() {
         return Optional.ofNullable(this.active);
+    }
+    /**
+     * @return Gets and Sets the default authentication method for the email identifier type. Valid values: `password`, `emailOtp`
+     * 
+     */
+    public Optional<String> defaultMethod() {
+        return Optional.ofNullable(this.defaultMethod);
     }
 
     public static Builder builder() {
@@ -36,10 +49,12 @@ public final class ConnectionOptionsAttributeEmailIdentifier {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean active;
+        private @Nullable String defaultMethod;
         public Builder() {}
         public Builder(ConnectionOptionsAttributeEmailIdentifier defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.active = defaults.active;
+    	      this.defaultMethod = defaults.defaultMethod;
         }
 
         @CustomType.Setter
@@ -48,9 +63,16 @@ public final class ConnectionOptionsAttributeEmailIdentifier {
             this.active = active;
             return this;
         }
+        @CustomType.Setter
+        public Builder defaultMethod(@Nullable String defaultMethod) {
+
+            this.defaultMethod = defaultMethod;
+            return this;
+        }
         public ConnectionOptionsAttributeEmailIdentifier build() {
             final var _resultValue = new ConnectionOptionsAttributeEmailIdentifier();
             _resultValue.active = active;
+            _resultValue.defaultMethod = defaultMethod;
             return _resultValue;
         }
     }

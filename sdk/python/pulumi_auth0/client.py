@@ -2176,7 +2176,7 @@ class Client(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="oidcLogout")
-    def oidc_logout(self) -> pulumi.Output['outputs.ClientOidcLogout']:
+    def oidc_logout(self) -> pulumi.Output[Optional['outputs.ClientOidcLogout']]:
         """
         Configure OIDC logout for the Client
         """

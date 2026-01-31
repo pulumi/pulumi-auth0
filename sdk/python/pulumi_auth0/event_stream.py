@@ -288,6 +288,24 @@ class EventStream(pulumi.CustomResource):
                     "token": "123456789",
                 },
             })
+        config = pulumi.Config()
+        # The webhook token
+        webhook_token = config.require("webhookToken")
+        my_event_stream_webhook_secure = auth0.EventStream("my_event_stream_webhook_secure",
+            name="my-webhook-secure",
+            destination_type="webhook",
+            subscriptions=[
+                "user.created",
+                "user.updated",
+            ],
+            webhook_configuration={
+                "webhook_endpoint": "https://eof28wtn4v4506o.m.pipedream.net",
+                "webhook_authorization": {
+                    "method": "bearer",
+                    "token_wo": webhook_token,
+                    "token_wo_version": 1,
+                },
+            })
         ```
 
         ## Import
@@ -348,6 +366,24 @@ class EventStream(pulumi.CustomResource):
                 "webhook_authorization": {
                     "method": "bearer",
                     "token": "123456789",
+                },
+            })
+        config = pulumi.Config()
+        # The webhook token
+        webhook_token = config.require("webhookToken")
+        my_event_stream_webhook_secure = auth0.EventStream("my_event_stream_webhook_secure",
+            name="my-webhook-secure",
+            destination_type="webhook",
+            subscriptions=[
+                "user.created",
+                "user.updated",
+            ],
+            webhook_configuration={
+                "webhook_endpoint": "https://eof28wtn4v4506o.m.pipedream.net",
+                "webhook_authorization": {
+                    "method": "bearer",
+                    "token_wo": webhook_token,
+                    "token_wo_version": 1,
                 },
             })
         ```

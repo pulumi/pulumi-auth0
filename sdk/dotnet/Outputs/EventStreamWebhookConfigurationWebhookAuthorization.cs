@@ -17,16 +17,26 @@ namespace Pulumi.Auth0.Outputs
         /// The authorization method used to secure the webhook endpoint. Can be either `Basic` or `Bearer`.
         /// </summary>
         public readonly string Method;
-        /// <summary>
-        /// The password for `Basic` authentication. Required when `Method` is set to `Basic`.
-        /// </summary>
         public readonly string? Password;
         /// <summary>
-        /// The token used for `Bearer` authentication. Required when `Method` is set to `Bearer`.
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
         /// </summary>
+        public readonly string? PasswordWo;
+        /// <summary>
+        /// Version number for password changes. Update this value to trigger a password change when using `PasswordWo`.
+        /// </summary>
+        public readonly int? PasswordWoVersion;
         public readonly string? Token;
         /// <summary>
-        /// The username for `Basic` authentication. Required when `Method` is set to `Basic`.
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// </summary>
+        public readonly string? TokenWo;
+        /// <summary>
+        /// Version number for token changes. Update this value to trigger a token change when using `TokenWo`.
+        /// </summary>
+        public readonly int? TokenWoVersion;
+        /// <summary>
+        /// The username for `Basic` authentication. Required only when `Method` is set to `Basic`.
         /// </summary>
         public readonly string? Username;
 
@@ -36,13 +46,25 @@ namespace Pulumi.Auth0.Outputs
 
             string? password,
 
+            string? passwordWo,
+
+            int? passwordWoVersion,
+
             string? token,
+
+            string? tokenWo,
+
+            int? tokenWoVersion,
 
             string? username)
         {
             Method = method;
             Password = password;
+            PasswordWo = passwordWo;
+            PasswordWoVersion = passwordWoVersion;
             Token = token;
+            TokenWo = tokenWo;
+            TokenWoVersion = tokenWoVersion;
             Username = username;
         }
     }

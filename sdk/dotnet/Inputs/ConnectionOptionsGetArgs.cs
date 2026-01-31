@@ -176,6 +176,12 @@ namespace Pulumi.Auth0.Inputs
             set => _customHeaders = value;
         }
 
+        /// <summary>
+        /// Configure custom password hashing within a connection. (EA only)
+        /// </summary>
+        [Input("customPasswordHash")]
+        public Input<Inputs.ConnectionOptionsCustomPasswordHashGetArgs>? CustomPasswordHash { get; set; }
+
         [Input("customScripts")]
         private InputMap<string>? _customScripts;
 
@@ -253,6 +259,12 @@ namespace Pulumi.Auth0.Inputs
             get => _domainAliases ?? (_domainAliases = new InputList<string>());
             set => _domainAliases = value;
         }
+
+        /// <summary>
+        /// Indicates whether to request the email scope. Used by some OAuth2 connections (e.g., LINE).
+        /// </summary>
+        [Input("email")]
+        public Input<bool>? Email { get; set; }
 
         /// <summary>
         /// Set to `True` to inject context into custom DB scripts (warning: cannot be disabled once enabled).

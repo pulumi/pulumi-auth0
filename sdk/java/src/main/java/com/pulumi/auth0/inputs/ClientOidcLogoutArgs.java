@@ -4,6 +4,7 @@
 package com.pulumi.auth0.inputs;
 
 import com.pulumi.auth0.inputs.ClientOidcLogoutBackchannelLogoutInitiatorsArgs;
+import com.pulumi.auth0.inputs.ClientOidcLogoutBackchannelLogoutSessionMetadataArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -34,6 +35,21 @@ public final class ClientOidcLogoutArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Controls whether session metadata is included in the logout token. Default value is null.
+     * 
+     */
+    @Import(name="backchannelLogoutSessionMetadata")
+    private @Nullable Output<ClientOidcLogoutBackchannelLogoutSessionMetadataArgs> backchannelLogoutSessionMetadata;
+
+    /**
+     * @return Controls whether session metadata is included in the logout token. Default value is null.
+     * 
+     */
+    public Optional<Output<ClientOidcLogoutBackchannelLogoutSessionMetadataArgs>> backchannelLogoutSessionMetadata() {
+        return Optional.ofNullable(this.backchannelLogoutSessionMetadata);
+    }
+
+    /**
      * Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
      * 
      */
@@ -52,6 +68,7 @@ public final class ClientOidcLogoutArgs extends com.pulumi.resources.ResourceArg
 
     private ClientOidcLogoutArgs(ClientOidcLogoutArgs $) {
         this.backchannelLogoutInitiators = $.backchannelLogoutInitiators;
+        this.backchannelLogoutSessionMetadata = $.backchannelLogoutSessionMetadata;
         this.backchannelLogoutUrls = $.backchannelLogoutUrls;
     }
 
@@ -92,6 +109,27 @@ public final class ClientOidcLogoutArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder backchannelLogoutInitiators(ClientOidcLogoutBackchannelLogoutInitiatorsArgs backchannelLogoutInitiators) {
             return backchannelLogoutInitiators(Output.of(backchannelLogoutInitiators));
+        }
+
+        /**
+         * @param backchannelLogoutSessionMetadata Controls whether session metadata is included in the logout token. Default value is null.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backchannelLogoutSessionMetadata(@Nullable Output<ClientOidcLogoutBackchannelLogoutSessionMetadataArgs> backchannelLogoutSessionMetadata) {
+            $.backchannelLogoutSessionMetadata = backchannelLogoutSessionMetadata;
+            return this;
+        }
+
+        /**
+         * @param backchannelLogoutSessionMetadata Controls whether session metadata is included in the logout token. Default value is null.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backchannelLogoutSessionMetadata(ClientOidcLogoutBackchannelLogoutSessionMetadataArgs backchannelLogoutSessionMetadata) {
+            return backchannelLogoutSessionMetadata(Output.of(backchannelLogoutSessionMetadata));
         }
 
         /**

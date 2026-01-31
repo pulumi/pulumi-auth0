@@ -102,6 +102,7 @@ __all__ = [
     'ClientNativeSocialLoginGoogle',
     'ClientOidcLogout',
     'ClientOidcLogoutBackchannelLogoutInitiators',
+    'ClientOidcLogoutBackchannelLogoutSessionMetadata',
     'ClientRefreshToken',
     'ClientRefreshTokenPolicy',
     'ClientSessionTransfer',
@@ -128,10 +129,13 @@ __all__ = [
     'ConnectionOptionsAttributeUsernameValidation',
     'ConnectionOptionsAttributeUsernameValidationAllowedType',
     'ConnectionOptionsAuthenticationMethod',
+    'ConnectionOptionsAuthenticationMethodEmailOtp',
     'ConnectionOptionsAuthenticationMethodPasskey',
     'ConnectionOptionsAuthenticationMethodPassword',
+    'ConnectionOptionsAuthenticationMethodPhoneOtp',
     'ConnectionOptionsConnectionSettings',
     'ConnectionOptionsCustomHeader',
+    'ConnectionOptionsCustomPasswordHash',
     'ConnectionOptionsDecryptionKey',
     'ConnectionOptionsGatewayAuthentication',
     'ConnectionOptionsIdpInitiated',
@@ -328,6 +332,7 @@ __all__ = [
     'GetClientNativeSocialLoginGoogleResult',
     'GetClientOidcLogoutResult',
     'GetClientOidcLogoutBackchannelLogoutInitiatorResult',
+    'GetClientOidcLogoutBackchannelLogoutSessionMetadataResult',
     'GetClientRefreshTokenResult',
     'GetClientRefreshTokenPolicyResult',
     'GetClientSessionTransferResult',
@@ -341,6 +346,7 @@ __all__ = [
     'GetClientsClientExpressConfigurationLinkedClientResult',
     'GetClientsClientOidcLogoutResult',
     'GetClientsClientOidcLogoutBackchannelLogoutInitiatorResult',
+    'GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataResult',
     'GetClientsClientSessionTransferResult',
     'GetClientsClientTokenExchangeResult',
     'GetClientsClientTokenQuotaResult',
@@ -367,10 +373,13 @@ __all__ = [
     'GetConnectionOptionAttributeUsernameValidationResult',
     'GetConnectionOptionAttributeUsernameValidationAllowedTypeResult',
     'GetConnectionOptionAuthenticationMethodResult',
+    'GetConnectionOptionAuthenticationMethodEmailOtpResult',
     'GetConnectionOptionAuthenticationMethodPasskeyResult',
     'GetConnectionOptionAuthenticationMethodPasswordResult',
+    'GetConnectionOptionAuthenticationMethodPhoneOtpResult',
     'GetConnectionOptionConnectionSettingResult',
     'GetConnectionOptionCustomHeaderResult',
+    'GetConnectionOptionCustomPasswordHashResult',
     'GetConnectionOptionDecryptionKeyResult',
     'GetConnectionOptionGatewayAuthenticationResult',
     'GetConnectionOptionIdpInitiatedResult',
@@ -5709,6 +5718,8 @@ class ClientOidcLogout(dict):
             suggest = "backchannel_logout_urls"
         elif key == "backchannelLogoutInitiators":
             suggest = "backchannel_logout_initiators"
+        elif key == "backchannelLogoutSessionMetadata":
+            suggest = "backchannel_logout_session_metadata"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ClientOidcLogout. Access the value via the '{suggest}' property getter instead.")
@@ -5723,14 +5734,18 @@ class ClientOidcLogout(dict):
 
     def __init__(__self__, *,
                  backchannel_logout_urls: Sequence[_builtins.str],
-                 backchannel_logout_initiators: Optional['outputs.ClientOidcLogoutBackchannelLogoutInitiators'] = None):
+                 backchannel_logout_initiators: Optional['outputs.ClientOidcLogoutBackchannelLogoutInitiators'] = None,
+                 backchannel_logout_session_metadata: Optional['outputs.ClientOidcLogoutBackchannelLogoutSessionMetadata'] = None):
         """
         :param Sequence[_builtins.str] backchannel_logout_urls: Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
         :param 'ClientOidcLogoutBackchannelLogoutInitiatorsArgs' backchannel_logout_initiators: Configure OIDC logout initiators for the Client
+        :param 'ClientOidcLogoutBackchannelLogoutSessionMetadataArgs' backchannel_logout_session_metadata: Controls whether session metadata is included in the logout token. Default value is null.
         """
         pulumi.set(__self__, "backchannel_logout_urls", backchannel_logout_urls)
         if backchannel_logout_initiators is not None:
             pulumi.set(__self__, "backchannel_logout_initiators", backchannel_logout_initiators)
+        if backchannel_logout_session_metadata is not None:
+            pulumi.set(__self__, "backchannel_logout_session_metadata", backchannel_logout_session_metadata)
 
     @_builtins.property
     @pulumi.getter(name="backchannelLogoutUrls")
@@ -5747,6 +5762,14 @@ class ClientOidcLogout(dict):
         Configure OIDC logout initiators for the Client
         """
         return pulumi.get(self, "backchannel_logout_initiators")
+
+    @_builtins.property
+    @pulumi.getter(name="backchannelLogoutSessionMetadata")
+    def backchannel_logout_session_metadata(self) -> Optional['outputs.ClientOidcLogoutBackchannelLogoutSessionMetadata']:
+        """
+        Controls whether session metadata is included in the logout token. Default value is null.
+        """
+        return pulumi.get(self, "backchannel_logout_session_metadata")
 
 
 @pulumi.output_type
@@ -5794,6 +5817,24 @@ class ClientOidcLogoutBackchannelLogoutInitiators(dict):
         Contains the list of initiators to be enabled for the given client.
         """
         return pulumi.get(self, "selected_initiators")
+
+
+@pulumi.output_type
+class ClientOidcLogoutBackchannelLogoutSessionMetadata(dict):
+    def __init__(__self__, *,
+                 include: _builtins.bool):
+        """
+        :param _builtins.bool include: The `include` property determines whether session metadata is included in the logout token.
+        """
+        pulumi.set(__self__, "include", include)
+
+    @_builtins.property
+    @pulumi.getter
+    def include(self) -> _builtins.bool:
+        """
+        The `include` property determines whether session metadata is included in the logout token.
+        """
+        return pulumi.get(self, "include")
 
 
 @pulumi.output_type
@@ -6279,6 +6320,8 @@ class ConnectionOptions(dict):
             suggest = "consumer_secret"
         elif key == "customHeaders":
             suggest = "custom_headers"
+        elif key == "customPasswordHash":
+            suggest = "custom_password_hash"
         elif key == "customScripts":
             suggest = "custom_scripts"
         elif key == "decryptionKey":
@@ -6455,6 +6498,7 @@ class ConnectionOptions(dict):
                  consumer_key: Optional[_builtins.str] = None,
                  consumer_secret: Optional[_builtins.str] = None,
                  custom_headers: Optional[Sequence['outputs.ConnectionOptionsCustomHeader']] = None,
+                 custom_password_hash: Optional['outputs.ConnectionOptionsCustomPasswordHash'] = None,
                  custom_scripts: Optional[Mapping[str, _builtins.str]] = None,
                  debug: Optional[_builtins.bool] = None,
                  decryption_key: Optional['outputs.ConnectionOptionsDecryptionKey'] = None,
@@ -6466,6 +6510,7 @@ class ConnectionOptions(dict):
                  discovery_url: Optional[_builtins.str] = None,
                  domain: Optional[_builtins.str] = None,
                  domain_aliases: Optional[Sequence[_builtins.str]] = None,
+                 email: Optional[_builtins.bool] = None,
                  enable_script_context: Optional[_builtins.bool] = None,
                  enabled_database_customization: Optional[_builtins.bool] = None,
                  entity_id: Optional[_builtins.str] = None,
@@ -6563,6 +6608,7 @@ class ConnectionOptions(dict):
         :param _builtins.str consumer_key: Identifies the client to the service provider
         :param _builtins.str consumer_secret: Secret used to establish ownership of the consumer key.
         :param Sequence['ConnectionOptionsCustomHeaderArgs'] custom_headers: Configure extra headers to the Token endpoint of an OAuth 2.0 provider
+        :param 'ConnectionOptionsCustomPasswordHashArgs' custom_password_hash: Configure custom password hashing within a connection. (EA only)
         :param Mapping[str, _builtins.str] custom_scripts: A map of scripts used to integrate with a custom database.
         :param _builtins.bool debug: When enabled, additional debug information will be generated.
         :param 'ConnectionOptionsDecryptionKeyArgs' decryption_key: The key used to decrypt encrypted responses from the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
@@ -6574,6 +6620,7 @@ class ConnectionOptions(dict):
         :param _builtins.str discovery_url: OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`.
         :param _builtins.str domain: Domain name.
         :param Sequence[_builtins.str] domain_aliases: List of the domains that can be authenticated using the identity provider. Only needed for Identifier First authentication flows.
+        :param _builtins.bool email: Indicates whether to request the email scope. Used by some OAuth2 connections (e.g., LINE).
         :param _builtins.bool enable_script_context: Set to `true` to inject context into custom DB scripts (warning: cannot be disabled once enabled).
         :param _builtins.bool enabled_database_customization: Set to `true` to use a legacy user store.
         :param _builtins.str entity_id: Custom Entity ID for the connection.
@@ -6690,6 +6737,8 @@ class ConnectionOptions(dict):
             pulumi.set(__self__, "consumer_secret", consumer_secret)
         if custom_headers is not None:
             pulumi.set(__self__, "custom_headers", custom_headers)
+        if custom_password_hash is not None:
+            pulumi.set(__self__, "custom_password_hash", custom_password_hash)
         if custom_scripts is not None:
             pulumi.set(__self__, "custom_scripts", custom_scripts)
         if debug is not None:
@@ -6712,6 +6761,8 @@ class ConnectionOptions(dict):
             pulumi.set(__self__, "domain", domain)
         if domain_aliases is not None:
             pulumi.set(__self__, "domain_aliases", domain_aliases)
+        if email is not None:
+            pulumi.set(__self__, "email", email)
         if enable_script_context is not None:
             pulumi.set(__self__, "enable_script_context", enable_script_context)
         if enabled_database_customization is not None:
@@ -7020,6 +7071,14 @@ class ConnectionOptions(dict):
         return pulumi.get(self, "custom_headers")
 
     @_builtins.property
+    @pulumi.getter(name="customPasswordHash")
+    def custom_password_hash(self) -> Optional['outputs.ConnectionOptionsCustomPasswordHash']:
+        """
+        Configure custom password hashing within a connection. (EA only)
+        """
+        return pulumi.get(self, "custom_password_hash")
+
+    @_builtins.property
     @pulumi.getter(name="customScripts")
     def custom_scripts(self) -> Optional[Mapping[str, _builtins.str]]:
         """
@@ -7106,6 +7165,14 @@ class ConnectionOptions(dict):
         List of the domains that can be authenticated using the identity provider. Only needed for Identifier First authentication flows.
         """
         return pulumi.get(self, "domain_aliases")
+
+    @_builtins.property
+    @pulumi.getter
+    def email(self) -> Optional[_builtins.bool]:
+        """
+        Indicates whether to request the email scope. Used by some OAuth2 connections (e.g., LINE).
+        """
+        return pulumi.get(self, "email")
 
     @_builtins.property
     @pulumi.getter(name="enableScriptContext")
@@ -7872,13 +7939,34 @@ class ConnectionOptionsAttributeEmail(dict):
 
 @pulumi.output_type
 class ConnectionOptionsAttributeEmailIdentifier(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultMethod":
+            suggest = "default_method"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionOptionsAttributeEmailIdentifier. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionOptionsAttributeEmailIdentifier.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionOptionsAttributeEmailIdentifier.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 active: Optional[_builtins.bool] = None):
+                 active: Optional[_builtins.bool] = None,
+                 default_method: Optional[_builtins.str] = None):
         """
         :param _builtins.bool active: Defines whether email attribute is active as an identifier
+        :param _builtins.str default_method: Gets and Sets the default authentication method for the email identifier type. Valid values: `password`, `email_otp`
         """
         if active is not None:
             pulumi.set(__self__, "active", active)
+        if default_method is not None:
+            pulumi.set(__self__, "default_method", default_method)
 
     @_builtins.property
     @pulumi.getter
@@ -7887,6 +7975,14 @@ class ConnectionOptionsAttributeEmailIdentifier(dict):
         Defines whether email attribute is active as an identifier
         """
         return pulumi.get(self, "active")
+
+    @_builtins.property
+    @pulumi.getter(name="defaultMethod")
+    def default_method(self) -> Optional[_builtins.str]:
+        """
+        Gets and Sets the default authentication method for the email identifier type. Valid values: `password`, `email_otp`
+        """
+        return pulumi.get(self, "default_method")
 
 
 @pulumi.output_type
@@ -8062,13 +8158,34 @@ class ConnectionOptionsAttributePhoneNumber(dict):
 
 @pulumi.output_type
 class ConnectionOptionsAttributePhoneNumberIdentifier(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultMethod":
+            suggest = "default_method"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionOptionsAttributePhoneNumberIdentifier. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionOptionsAttributePhoneNumberIdentifier.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionOptionsAttributePhoneNumberIdentifier.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 active: Optional[_builtins.bool] = None):
+                 active: Optional[_builtins.bool] = None,
+                 default_method: Optional[_builtins.str] = None):
         """
         :param _builtins.bool active: Defines whether Phone Number attribute is active as an identifier
+        :param _builtins.str default_method: Gets and Sets the default authentication method for the phone_number identifier type. Valid values: `password`, `phone_otp`
         """
         if active is not None:
             pulumi.set(__self__, "active", active)
+        if default_method is not None:
+            pulumi.set(__self__, "default_method", default_method)
 
     @_builtins.property
     @pulumi.getter
@@ -8077,6 +8194,14 @@ class ConnectionOptionsAttributePhoneNumberIdentifier(dict):
         Defines whether Phone Number attribute is active as an identifier
         """
         return pulumi.get(self, "active")
+
+    @_builtins.property
+    @pulumi.getter(name="defaultMethod")
+    def default_method(self) -> Optional[_builtins.str]:
+        """
+        Gets and Sets the default authentication method for the phone_number identifier type. Valid values: `password`, `phone_otp`
+        """
+        return pulumi.get(self, "default_method")
 
 
 @pulumi.output_type
@@ -8203,13 +8328,34 @@ class ConnectionOptionsAttributeUsername(dict):
 
 @pulumi.output_type
 class ConnectionOptionsAttributeUsernameIdentifier(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultMethod":
+            suggest = "default_method"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionOptionsAttributeUsernameIdentifier. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionOptionsAttributeUsernameIdentifier.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionOptionsAttributeUsernameIdentifier.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 active: Optional[_builtins.bool] = None):
+                 active: Optional[_builtins.bool] = None,
+                 default_method: Optional[_builtins.str] = None):
         """
         :param _builtins.bool active: Defines whether UserName attribute is active as an identifier
+        :param _builtins.str default_method: Gets and Sets the default authentication method for the username identifier type. Valid value: `password`
         """
         if active is not None:
             pulumi.set(__self__, "active", active)
+        if default_method is not None:
+            pulumi.set(__self__, "default_method", default_method)
 
     @_builtins.property
     @pulumi.getter
@@ -8218,6 +8364,14 @@ class ConnectionOptionsAttributeUsernameIdentifier(dict):
         Defines whether UserName attribute is active as an identifier
         """
         return pulumi.get(self, "active")
+
+    @_builtins.property
+    @pulumi.getter(name="defaultMethod")
+    def default_method(self) -> Optional[_builtins.str]:
+        """
+        Gets and Sets the default authentication method for the username identifier type. Valid value: `password`
+        """
+        return pulumi.get(self, "default_method")
 
 
 @pulumi.output_type
@@ -8353,17 +8507,52 @@ class ConnectionOptionsAttributeUsernameValidationAllowedType(dict):
 
 @pulumi.output_type
 class ConnectionOptionsAuthenticationMethod(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "emailOtp":
+            suggest = "email_otp"
+        elif key == "phoneOtp":
+            suggest = "phone_otp"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionOptionsAuthenticationMethod. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionOptionsAuthenticationMethod.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionOptionsAuthenticationMethod.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
+                 email_otp: Optional['outputs.ConnectionOptionsAuthenticationMethodEmailOtp'] = None,
                  passkey: Optional['outputs.ConnectionOptionsAuthenticationMethodPasskey'] = None,
-                 password: Optional['outputs.ConnectionOptionsAuthenticationMethodPassword'] = None):
+                 password: Optional['outputs.ConnectionOptionsAuthenticationMethodPassword'] = None,
+                 phone_otp: Optional['outputs.ConnectionOptionsAuthenticationMethodPhoneOtp'] = None):
         """
+        :param 'ConnectionOptionsAuthenticationMethodEmailOtpArgs' email_otp: Configures Email OTP authentication
         :param 'ConnectionOptionsAuthenticationMethodPasskeyArgs' passkey: Configures passkey authentication
         :param 'ConnectionOptionsAuthenticationMethodPasswordArgs' password: Configures password authentication
+        :param 'ConnectionOptionsAuthenticationMethodPhoneOtpArgs' phone_otp: Configures Phone OTP authentication
         """
+        if email_otp is not None:
+            pulumi.set(__self__, "email_otp", email_otp)
         if passkey is not None:
             pulumi.set(__self__, "passkey", passkey)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if phone_otp is not None:
+            pulumi.set(__self__, "phone_otp", phone_otp)
+
+    @_builtins.property
+    @pulumi.getter(name="emailOtp")
+    def email_otp(self) -> Optional['outputs.ConnectionOptionsAuthenticationMethodEmailOtp']:
+        """
+        Configures Email OTP authentication
+        """
+        return pulumi.get(self, "email_otp")
 
     @_builtins.property
     @pulumi.getter
@@ -8380,6 +8569,33 @@ class ConnectionOptionsAuthenticationMethod(dict):
         Configures password authentication
         """
         return pulumi.get(self, "password")
+
+    @_builtins.property
+    @pulumi.getter(name="phoneOtp")
+    def phone_otp(self) -> Optional['outputs.ConnectionOptionsAuthenticationMethodPhoneOtp']:
+        """
+        Configures Phone OTP authentication
+        """
+        return pulumi.get(self, "phone_otp")
+
+
+@pulumi.output_type
+class ConnectionOptionsAuthenticationMethodEmailOtp(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.bool enabled: Enables Email OTP authentication
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Enables Email OTP authentication
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -8421,6 +8637,25 @@ class ConnectionOptionsAuthenticationMethodPassword(dict):
 
 
 @pulumi.output_type
+class ConnectionOptionsAuthenticationMethodPhoneOtp(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.bool enabled: Enables Phone OTP authentication
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Enables Phone OTP authentication
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
 class ConnectionOptionsConnectionSettings(dict):
     def __init__(__self__, *,
                  pkce: _builtins.str):
@@ -8455,6 +8690,41 @@ class ConnectionOptionsCustomHeader(dict):
     @pulumi.getter
     def value(self) -> _builtins.str:
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class ConnectionOptionsCustomPasswordHash(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "actionId":
+            suggest = "action_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionOptionsCustomPasswordHash. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionOptionsCustomPasswordHash.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionOptionsCustomPasswordHash.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 action_id: _builtins.str):
+        """
+        :param _builtins.str action_id: Id of an existing action that should be invoked when validating a universal password hash. This action must support password-hash-migration trigger
+        """
+        pulumi.set(__self__, "action_id", action_id)
+
+    @_builtins.property
+    @pulumi.getter(name="actionId")
+    def action_id(self) -> _builtins.str:
+        """
+        Id of an existing action that should be invoked when validating a universal password hash. This action must support password-hash-migration trigger
+        """
+        return pulumi.get(self, "action_id")
 
 
 @pulumi.output_type
@@ -10416,22 +10686,59 @@ class EventStreamWebhookConfiguration(dict):
 
 @pulumi.output_type
 class EventStreamWebhookConfigurationWebhookAuthorization(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "passwordWo":
+            suggest = "password_wo"
+        elif key == "passwordWoVersion":
+            suggest = "password_wo_version"
+        elif key == "tokenWo":
+            suggest = "token_wo"
+        elif key == "tokenWoVersion":
+            suggest = "token_wo_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EventStreamWebhookConfigurationWebhookAuthorization. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EventStreamWebhookConfigurationWebhookAuthorization.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EventStreamWebhookConfigurationWebhookAuthorization.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  method: _builtins.str,
                  password: Optional[_builtins.str] = None,
+                 password_wo: Optional[_builtins.str] = None,
+                 password_wo_version: Optional[_builtins.int] = None,
                  token: Optional[_builtins.str] = None,
+                 token_wo: Optional[_builtins.str] = None,
+                 token_wo_version: Optional[_builtins.int] = None,
                  username: Optional[_builtins.str] = None):
         """
         :param _builtins.str method: The authorization method used to secure the webhook endpoint. Can be either `basic` or `bearer`.
-        :param _builtins.str password: The password for `basic` authentication. Required when `method` is set to `basic`.
-        :param _builtins.str token: The token used for `bearer` authentication. Required when `method` is set to `bearer`.
-        :param _builtins.str username: The username for `basic` authentication. Required when `method` is set to `basic`.
+        :param _builtins.str password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        :param _builtins.int password_wo_version: Version number for password changes. Update this value to trigger a password change when using `password_wo`.
+        :param _builtins.str token_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        :param _builtins.int token_wo_version: Version number for token changes. Update this value to trigger a token change when using `token_wo`.
+        :param _builtins.str username: The username for `basic` authentication. Required only when `method` is set to `basic`.
         """
         pulumi.set(__self__, "method", method)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if password_wo is not None:
+            pulumi.set(__self__, "password_wo", password_wo)
+        if password_wo_version is not None:
+            pulumi.set(__self__, "password_wo_version", password_wo_version)
         if token is not None:
             pulumi.set(__self__, "token", token)
+        if token_wo is not None:
+            pulumi.set(__self__, "token_wo", token_wo)
+        if token_wo_version is not None:
+            pulumi.set(__self__, "token_wo_version", token_wo_version)
         if username is not None:
             pulumi.set(__self__, "username", username)
 
@@ -10446,24 +10753,50 @@ class EventStreamWebhookConfigurationWebhookAuthorization(dict):
     @_builtins.property
     @pulumi.getter
     def password(self) -> Optional[_builtins.str]:
-        """
-        The password for `basic` authentication. Required when `method` is set to `basic`.
-        """
         return pulumi.get(self, "password")
+
+    @_builtins.property
+    @pulumi.getter(name="passwordWo")
+    def password_wo(self) -> Optional[_builtins.str]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+        return pulumi.get(self, "password_wo")
+
+    @_builtins.property
+    @pulumi.getter(name="passwordWoVersion")
+    def password_wo_version(self) -> Optional[_builtins.int]:
+        """
+        Version number for password changes. Update this value to trigger a password change when using `password_wo`.
+        """
+        return pulumi.get(self, "password_wo_version")
 
     @_builtins.property
     @pulumi.getter
     def token(self) -> Optional[_builtins.str]:
-        """
-        The token used for `bearer` authentication. Required when `method` is set to `bearer`.
-        """
         return pulumi.get(self, "token")
+
+    @_builtins.property
+    @pulumi.getter(name="tokenWo")
+    def token_wo(self) -> Optional[_builtins.str]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+        return pulumi.get(self, "token_wo")
+
+    @_builtins.property
+    @pulumi.getter(name="tokenWoVersion")
+    def token_wo_version(self) -> Optional[_builtins.int]:
+        """
+        Version number for token changes. Update this value to trigger a token change when using `token_wo`.
+        """
+        return pulumi.get(self, "token_wo_version")
 
     @_builtins.property
     @pulumi.getter
     def username(self) -> Optional[_builtins.str]:
         """
-        The username for `basic` authentication. Required when `method` is set to `basic`.
+        The username for `basic` authentication. Required only when `method` is set to `basic`.
         """
         return pulumi.get(self, "username")
 
@@ -12230,7 +12563,9 @@ class OrganizationDiscoveryDomainsDiscoveryDomain(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "verificationHost":
+        if key == "useForOrganizationDiscovery":
+            suggest = "use_for_organization_discovery"
+        elif key == "verificationHost":
             suggest = "verification_host"
         elif key == "verificationTxt":
             suggest = "verification_txt"
@@ -12250,12 +12585,14 @@ class OrganizationDiscoveryDomainsDiscoveryDomain(dict):
                  domain: _builtins.str,
                  status: _builtins.str,
                  id: Optional[_builtins.str] = None,
+                 use_for_organization_discovery: Optional[_builtins.bool] = None,
                  verification_host: Optional[_builtins.str] = None,
                  verification_txt: Optional[_builtins.str] = None):
         """
         :param _builtins.str domain: The domain name for organization discovery.
         :param _builtins.str status: Verification status. Must be either 'pending' or 'verified'.
         :param _builtins.str id: The ID of the discovery domain.
+        :param _builtins.bool use_for_organization_discovery: Indicates whether this domain should be used for organization discovery during login.
         :param _builtins.str verification_host: The full domain where the TXT record should be added.
         :param _builtins.str verification_txt: TXT record value for domain verification.
         """
@@ -12263,6 +12600,8 @@ class OrganizationDiscoveryDomainsDiscoveryDomain(dict):
         pulumi.set(__self__, "status", status)
         if id is not None:
             pulumi.set(__self__, "id", id)
+        if use_for_organization_discovery is not None:
+            pulumi.set(__self__, "use_for_organization_discovery", use_for_organization_discovery)
         if verification_host is not None:
             pulumi.set(__self__, "verification_host", verification_host)
         if verification_txt is not None:
@@ -12291,6 +12630,14 @@ class OrganizationDiscoveryDomainsDiscoveryDomain(dict):
         The ID of the discovery domain.
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="useForOrganizationDiscovery")
+    def use_for_organization_discovery(self) -> Optional[_builtins.bool]:
+        """
+        Indicates whether this domain should be used for organization discovery during login.
+        """
+        return pulumi.get(self, "use_for_organization_discovery")
 
     @_builtins.property
     @pulumi.getter(name="verificationHost")
@@ -18531,23 +18878,34 @@ class GetClientExpressConfigurationLinkedClientResult(dict):
 @pulumi.output_type
 class GetClientGrantsClientGrantResult(dict):
     def __init__(__self__, *,
+                 allow_all_scopes: _builtins.bool,
                  audience: _builtins.str,
                  client_id: _builtins.str,
                  id: _builtins.str,
                  scopes: Sequence[_builtins.str],
                  subject_type: _builtins.str):
         """
+        :param _builtins.bool allow_all_scopes: When enabled, all scopes configured on the resource server are allowed for this client grant. EA Only.
         :param _builtins.str audience: The audience of the client grant.
         :param _builtins.str client_id: The client ID associated with the grant.
         :param _builtins.str id: The ID of the client grant.
         :param Sequence[_builtins.str] scopes: List of granted scopes.
         :param _builtins.str subject_type: The subject type (usually 'client').
         """
+        pulumi.set(__self__, "allow_all_scopes", allow_all_scopes)
         pulumi.set(__self__, "audience", audience)
         pulumi.set(__self__, "client_id", client_id)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "scopes", scopes)
         pulumi.set(__self__, "subject_type", subject_type)
+
+    @_builtins.property
+    @pulumi.getter(name="allowAllScopes")
+    def allow_all_scopes(self) -> _builtins.bool:
+        """
+        When enabled, all scopes configured on the resource server are allowed for this client grant. EA Only.
+        """
+        return pulumi.get(self, "allow_all_scopes")
 
     @_builtins.property
     @pulumi.getter
@@ -18774,12 +19132,15 @@ class GetClientNativeSocialLoginGoogleResult(dict):
 class GetClientOidcLogoutResult(dict):
     def __init__(__self__, *,
                  backchannel_logout_initiators: Sequence['outputs.GetClientOidcLogoutBackchannelLogoutInitiatorResult'],
+                 backchannel_logout_session_metadatas: Sequence['outputs.GetClientOidcLogoutBackchannelLogoutSessionMetadataResult'],
                  backchannel_logout_urls: Sequence[_builtins.str]):
         """
         :param Sequence['GetClientOidcLogoutBackchannelLogoutInitiatorArgs'] backchannel_logout_initiators: Configure OIDC logout initiators for the Client
+        :param Sequence['GetClientOidcLogoutBackchannelLogoutSessionMetadataArgs'] backchannel_logout_session_metadatas: Controls whether session metadata is included in the logout token. Default value is null.
         :param Sequence[_builtins.str] backchannel_logout_urls: Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
         """
         pulumi.set(__self__, "backchannel_logout_initiators", backchannel_logout_initiators)
+        pulumi.set(__self__, "backchannel_logout_session_metadatas", backchannel_logout_session_metadatas)
         pulumi.set(__self__, "backchannel_logout_urls", backchannel_logout_urls)
 
     @_builtins.property
@@ -18789,6 +19150,14 @@ class GetClientOidcLogoutResult(dict):
         Configure OIDC logout initiators for the Client
         """
         return pulumi.get(self, "backchannel_logout_initiators")
+
+    @_builtins.property
+    @pulumi.getter(name="backchannelLogoutSessionMetadatas")
+    def backchannel_logout_session_metadatas(self) -> Sequence['outputs.GetClientOidcLogoutBackchannelLogoutSessionMetadataResult']:
+        """
+        Controls whether session metadata is included in the logout token. Default value is null.
+        """
+        return pulumi.get(self, "backchannel_logout_session_metadatas")
 
     @_builtins.property
     @pulumi.getter(name="backchannelLogoutUrls")
@@ -18826,6 +19195,24 @@ class GetClientOidcLogoutBackchannelLogoutInitiatorResult(dict):
         Contains the list of initiators to be enabled for the given client.
         """
         return pulumi.get(self, "selected_initiators")
+
+
+@pulumi.output_type
+class GetClientOidcLogoutBackchannelLogoutSessionMetadataResult(dict):
+    def __init__(__self__, *,
+                 include: _builtins.bool):
+        """
+        :param _builtins.bool include: The `include` property determines whether session metadata is included in the logout token.
+        """
+        pulumi.set(__self__, "include", include)
+
+    @_builtins.property
+    @pulumi.getter
+    def include(self) -> _builtins.bool:
+        """
+        The `include` property determines whether session metadata is included in the logout token.
+        """
+        return pulumi.get(self, "include")
 
 
 @pulumi.output_type
@@ -19603,12 +19990,15 @@ class GetClientsClientExpressConfigurationLinkedClientResult(dict):
 class GetClientsClientOidcLogoutResult(dict):
     def __init__(__self__, *,
                  backchannel_logout_initiators: Sequence['outputs.GetClientsClientOidcLogoutBackchannelLogoutInitiatorResult'],
+                 backchannel_logout_session_metadatas: Sequence['outputs.GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataResult'],
                  backchannel_logout_urls: Sequence[_builtins.str]):
         """
         :param Sequence['GetClientsClientOidcLogoutBackchannelLogoutInitiatorArgs'] backchannel_logout_initiators: Configure OIDC logout initiators for the Client
+        :param Sequence['GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArgs'] backchannel_logout_session_metadatas: Controls whether session metadata is included in the logout token. Default value is null.
         :param Sequence[_builtins.str] backchannel_logout_urls: Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
         """
         pulumi.set(__self__, "backchannel_logout_initiators", backchannel_logout_initiators)
+        pulumi.set(__self__, "backchannel_logout_session_metadatas", backchannel_logout_session_metadatas)
         pulumi.set(__self__, "backchannel_logout_urls", backchannel_logout_urls)
 
     @_builtins.property
@@ -19618,6 +20008,14 @@ class GetClientsClientOidcLogoutResult(dict):
         Configure OIDC logout initiators for the Client
         """
         return pulumi.get(self, "backchannel_logout_initiators")
+
+    @_builtins.property
+    @pulumi.getter(name="backchannelLogoutSessionMetadatas")
+    def backchannel_logout_session_metadatas(self) -> Sequence['outputs.GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataResult']:
+        """
+        Controls whether session metadata is included in the logout token. Default value is null.
+        """
+        return pulumi.get(self, "backchannel_logout_session_metadatas")
 
     @_builtins.property
     @pulumi.getter(name="backchannelLogoutUrls")
@@ -19655,6 +20053,24 @@ class GetClientsClientOidcLogoutBackchannelLogoutInitiatorResult(dict):
         Contains the list of initiators to be enabled for the given client.
         """
         return pulumi.get(self, "selected_initiators")
+
+
+@pulumi.output_type
+class GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataResult(dict):
+    def __init__(__self__, *,
+                 include: _builtins.bool):
+        """
+        :param _builtins.bool include: The `include` property determines whether session metadata is included in the logout token.
+        """
+        pulumi.set(__self__, "include", include)
+
+    @_builtins.property
+    @pulumi.getter
+    def include(self) -> _builtins.bool:
+        """
+        The `include` property determines whether session metadata is included in the logout token.
+        """
+        return pulumi.get(self, "include")
 
 
 @pulumi.output_type
@@ -20063,6 +20479,7 @@ class GetConnectionOptionResult(dict):
                  consumer_key: _builtins.str,
                  consumer_secret: _builtins.str,
                  custom_headers: Sequence['outputs.GetConnectionOptionCustomHeaderResult'],
+                 custom_password_hashes: Sequence['outputs.GetConnectionOptionCustomPasswordHashResult'],
                  custom_scripts: Mapping[str, _builtins.str],
                  debug: _builtins.bool,
                  decryption_keys: Sequence['outputs.GetConnectionOptionDecryptionKeyResult'],
@@ -20074,6 +20491,7 @@ class GetConnectionOptionResult(dict):
                  discovery_url: _builtins.str,
                  domain: _builtins.str,
                  domain_aliases: Sequence[_builtins.str],
+                 email: _builtins.bool,
                  enable_script_context: _builtins.bool,
                  enabled_database_customization: _builtins.bool,
                  entity_id: _builtins.str,
@@ -20171,6 +20589,7 @@ class GetConnectionOptionResult(dict):
         :param _builtins.str consumer_key: Identifies the client to the service provider
         :param _builtins.str consumer_secret: Secret used to establish ownership of the consumer key.
         :param Sequence['GetConnectionOptionCustomHeaderArgs'] custom_headers: Configure extra headers to the Token endpoint of an OAuth 2.0 provider
+        :param Sequence['GetConnectionOptionCustomPasswordHashArgs'] custom_password_hashes: Configure custom password hashing within a connection. (EA only)
         :param Mapping[str, _builtins.str] custom_scripts: A map of scripts used to integrate with a custom database.
         :param _builtins.bool debug: When enabled, additional debug information will be generated.
         :param Sequence['GetConnectionOptionDecryptionKeyArgs'] decryption_keys: The key used to decrypt encrypted responses from the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
@@ -20182,6 +20601,7 @@ class GetConnectionOptionResult(dict):
         :param _builtins.str discovery_url: OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`.
         :param _builtins.str domain: Domain name.
         :param Sequence[_builtins.str] domain_aliases: List of the domains that can be authenticated using the identity provider. Only needed for Identifier First authentication flows.
+        :param _builtins.bool email: Indicates whether to request the email scope. Used by some OAuth2 connections (e.g., LINE).
         :param _builtins.bool enable_script_context: Set to `true` to inject context into custom DB scripts (warning: cannot be disabled once enabled).
         :param _builtins.bool enabled_database_customization: Set to `true` to use a legacy user store.
         :param _builtins.str entity_id: Custom Entity ID for the connection.
@@ -20279,6 +20699,7 @@ class GetConnectionOptionResult(dict):
         pulumi.set(__self__, "consumer_key", consumer_key)
         pulumi.set(__self__, "consumer_secret", consumer_secret)
         pulumi.set(__self__, "custom_headers", custom_headers)
+        pulumi.set(__self__, "custom_password_hashes", custom_password_hashes)
         pulumi.set(__self__, "custom_scripts", custom_scripts)
         pulumi.set(__self__, "debug", debug)
         pulumi.set(__self__, "decryption_keys", decryption_keys)
@@ -20290,6 +20711,7 @@ class GetConnectionOptionResult(dict):
         pulumi.set(__self__, "discovery_url", discovery_url)
         pulumi.set(__self__, "domain", domain)
         pulumi.set(__self__, "domain_aliases", domain_aliases)
+        pulumi.set(__self__, "email", email)
         pulumi.set(__self__, "enable_script_context", enable_script_context)
         pulumi.set(__self__, "enabled_database_customization", enabled_database_customization)
         pulumi.set(__self__, "entity_id", entity_id)
@@ -20521,6 +20943,14 @@ class GetConnectionOptionResult(dict):
         return pulumi.get(self, "custom_headers")
 
     @_builtins.property
+    @pulumi.getter(name="customPasswordHashes")
+    def custom_password_hashes(self) -> Sequence['outputs.GetConnectionOptionCustomPasswordHashResult']:
+        """
+        Configure custom password hashing within a connection. (EA only)
+        """
+        return pulumi.get(self, "custom_password_hashes")
+
+    @_builtins.property
     @pulumi.getter(name="customScripts")
     def custom_scripts(self) -> Mapping[str, _builtins.str]:
         """
@@ -20607,6 +21037,14 @@ class GetConnectionOptionResult(dict):
         List of the domains that can be authenticated using the identity provider. Only needed for Identifier First authentication flows.
         """
         return pulumi.get(self, "domain_aliases")
+
+    @_builtins.property
+    @pulumi.getter
+    def email(self) -> _builtins.bool:
+        """
+        Indicates whether to request the email scope. Used by some OAuth2 connections (e.g., LINE).
+        """
+        return pulumi.get(self, "email")
 
     @_builtins.property
     @pulumi.getter(name="enableScriptContext")
@@ -21330,11 +21768,14 @@ class GetConnectionOptionAttributeEmailResult(dict):
 @pulumi.output_type
 class GetConnectionOptionAttributeEmailIdentifierResult(dict):
     def __init__(__self__, *,
-                 active: _builtins.bool):
+                 active: _builtins.bool,
+                 default_method: _builtins.str):
         """
         :param _builtins.bool active: Defines whether email attribute is active as an identifier
+        :param _builtins.str default_method: Gets and Sets the default authentication method for the email identifier type. Valid values: `password`, `email_otp`
         """
         pulumi.set(__self__, "active", active)
+        pulumi.set(__self__, "default_method", default_method)
 
     @_builtins.property
     @pulumi.getter
@@ -21343,6 +21784,14 @@ class GetConnectionOptionAttributeEmailIdentifierResult(dict):
         Defines whether email attribute is active as an identifier
         """
         return pulumi.get(self, "active")
+
+    @_builtins.property
+    @pulumi.getter(name="defaultMethod")
+    def default_method(self) -> _builtins.str:
+        """
+        Gets and Sets the default authentication method for the email identifier type. Valid values: `password`, `email_otp`
+        """
+        return pulumi.get(self, "default_method")
 
 
 @pulumi.output_type
@@ -21475,11 +21924,14 @@ class GetConnectionOptionAttributePhoneNumberResult(dict):
 @pulumi.output_type
 class GetConnectionOptionAttributePhoneNumberIdentifierResult(dict):
     def __init__(__self__, *,
-                 active: _builtins.bool):
+                 active: _builtins.bool,
+                 default_method: _builtins.str):
         """
         :param _builtins.bool active: Defines whether Phone Number attribute is active as an identifier
+        :param _builtins.str default_method: Gets and Sets the default authentication method for the phone_number identifier type. Valid values: `password`, `phone_otp`
         """
         pulumi.set(__self__, "active", active)
+        pulumi.set(__self__, "default_method", default_method)
 
     @_builtins.property
     @pulumi.getter
@@ -21488,6 +21940,14 @@ class GetConnectionOptionAttributePhoneNumberIdentifierResult(dict):
         Defines whether Phone Number attribute is active as an identifier
         """
         return pulumi.get(self, "active")
+
+    @_builtins.property
+    @pulumi.getter(name="defaultMethod")
+    def default_method(self) -> _builtins.str:
+        """
+        Gets and Sets the default authentication method for the phone_number identifier type. Valid values: `password`, `phone_otp`
+        """
+        return pulumi.get(self, "default_method")
 
 
 @pulumi.output_type
@@ -21591,11 +22051,14 @@ class GetConnectionOptionAttributeUsernameResult(dict):
 @pulumi.output_type
 class GetConnectionOptionAttributeUsernameIdentifierResult(dict):
     def __init__(__self__, *,
-                 active: _builtins.bool):
+                 active: _builtins.bool,
+                 default_method: _builtins.str):
         """
         :param _builtins.bool active: Defines whether UserName attribute is active as an identifier
+        :param _builtins.str default_method: Gets and Sets the default authentication method for the username identifier type. Valid value: `password`
         """
         pulumi.set(__self__, "active", active)
+        pulumi.set(__self__, "default_method", default_method)
 
     @_builtins.property
     @pulumi.getter
@@ -21604,6 +22067,14 @@ class GetConnectionOptionAttributeUsernameIdentifierResult(dict):
         Defines whether UserName attribute is active as an identifier
         """
         return pulumi.get(self, "active")
+
+    @_builtins.property
+    @pulumi.getter(name="defaultMethod")
+    def default_method(self) -> _builtins.str:
+        """
+        Gets and Sets the default authentication method for the username identifier type. Valid value: `password`
+        """
+        return pulumi.get(self, "default_method")
 
 
 @pulumi.output_type
@@ -21696,14 +22167,28 @@ class GetConnectionOptionAttributeUsernameValidationAllowedTypeResult(dict):
 @pulumi.output_type
 class GetConnectionOptionAuthenticationMethodResult(dict):
     def __init__(__self__, *,
+                 email_otps: Sequence['outputs.GetConnectionOptionAuthenticationMethodEmailOtpResult'],
                  passkeys: Sequence['outputs.GetConnectionOptionAuthenticationMethodPasskeyResult'],
-                 passwords: Sequence['outputs.GetConnectionOptionAuthenticationMethodPasswordResult']):
+                 passwords: Sequence['outputs.GetConnectionOptionAuthenticationMethodPasswordResult'],
+                 phone_otps: Sequence['outputs.GetConnectionOptionAuthenticationMethodPhoneOtpResult']):
         """
+        :param Sequence['GetConnectionOptionAuthenticationMethodEmailOtpArgs'] email_otps: Configures Email OTP authentication
         :param Sequence['GetConnectionOptionAuthenticationMethodPasskeyArgs'] passkeys: Configures passkey authentication
         :param Sequence['GetConnectionOptionAuthenticationMethodPasswordArgs'] passwords: Configures password authentication
+        :param Sequence['GetConnectionOptionAuthenticationMethodPhoneOtpArgs'] phone_otps: Configures Phone OTP authentication
         """
+        pulumi.set(__self__, "email_otps", email_otps)
         pulumi.set(__self__, "passkeys", passkeys)
         pulumi.set(__self__, "passwords", passwords)
+        pulumi.set(__self__, "phone_otps", phone_otps)
+
+    @_builtins.property
+    @pulumi.getter(name="emailOtps")
+    def email_otps(self) -> Sequence['outputs.GetConnectionOptionAuthenticationMethodEmailOtpResult']:
+        """
+        Configures Email OTP authentication
+        """
+        return pulumi.get(self, "email_otps")
 
     @_builtins.property
     @pulumi.getter
@@ -21720,6 +22205,32 @@ class GetConnectionOptionAuthenticationMethodResult(dict):
         Configures password authentication
         """
         return pulumi.get(self, "passwords")
+
+    @_builtins.property
+    @pulumi.getter(name="phoneOtps")
+    def phone_otps(self) -> Sequence['outputs.GetConnectionOptionAuthenticationMethodPhoneOtpResult']:
+        """
+        Configures Phone OTP authentication
+        """
+        return pulumi.get(self, "phone_otps")
+
+
+@pulumi.output_type
+class GetConnectionOptionAuthenticationMethodEmailOtpResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        """
+        :param _builtins.bool enabled: Enables Email OTP authentication
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Enables Email OTP authentication
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -21759,6 +22270,24 @@ class GetConnectionOptionAuthenticationMethodPasswordResult(dict):
 
 
 @pulumi.output_type
+class GetConnectionOptionAuthenticationMethodPhoneOtpResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        """
+        :param _builtins.bool enabled: Enables Phone OTP authentication
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Enables Phone OTP authentication
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
 class GetConnectionOptionConnectionSettingResult(dict):
     def __init__(__self__, *,
                  pkce: _builtins.str):
@@ -21793,6 +22322,24 @@ class GetConnectionOptionCustomHeaderResult(dict):
     @pulumi.getter
     def value(self) -> _builtins.str:
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetConnectionOptionCustomPasswordHashResult(dict):
+    def __init__(__self__, *,
+                 action_id: _builtins.str):
+        """
+        :param _builtins.str action_id: Id of an existing action that should be invoked when validating a universal password hash. This action must support password-hash-migration trigger
+        """
+        pulumi.set(__self__, "action_id", action_id)
+
+    @_builtins.property
+    @pulumi.getter(name="actionId")
+    def action_id(self) -> _builtins.str:
+        """
+        Id of an existing action that should be invoked when validating a universal password hash. This action must support password-hash-migration trigger
+        """
+        return pulumi.get(self, "action_id")
 
 
 @pulumi.output_type
@@ -22720,6 +23267,7 @@ class GetCustomDomainsCustomDomainResult(dict):
                  domain_metadata: Mapping[str, _builtins.str],
                  origin_domain_name: _builtins.str,
                  primary: _builtins.bool,
+                 relying_party_identifier: _builtins.str,
                  status: _builtins.str,
                  tls_policy: _builtins.str,
                  type: _builtins.str,
@@ -22731,6 +23279,7 @@ class GetCustomDomainsCustomDomainResult(dict):
         :param Mapping[str, _builtins.str] domain_metadata: Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
         :param _builtins.str origin_domain_name: Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
         :param _builtins.bool primary: Indicates whether this is a primary domain.
+        :param _builtins.str relying_party_identifier: Relying Party ID (rpId) to be used for Passkeys on this custom domain. If not provided or set to null, the full domain will be used.
         :param _builtins.str status: Configuration status for the custom domain. Options include `disabled`, `pending`, `pending_verification`, `ready` and `failed`.
         :param _builtins.str tls_policy: TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on self_managed domains.
         :param _builtins.str type: Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
@@ -22742,6 +23291,7 @@ class GetCustomDomainsCustomDomainResult(dict):
         pulumi.set(__self__, "domain_metadata", domain_metadata)
         pulumi.set(__self__, "origin_domain_name", origin_domain_name)
         pulumi.set(__self__, "primary", primary)
+        pulumi.set(__self__, "relying_party_identifier", relying_party_identifier)
         pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "tls_policy", tls_policy)
         pulumi.set(__self__, "type", type)
@@ -22794,6 +23344,14 @@ class GetCustomDomainsCustomDomainResult(dict):
         Indicates whether this is a primary domain.
         """
         return pulumi.get(self, "primary")
+
+    @_builtins.property
+    @pulumi.getter(name="relyingPartyIdentifier")
+    def relying_party_identifier(self) -> _builtins.str:
+        """
+        Relying Party ID (rpId) to be used for Passkeys on this custom domain. If not provided or set to null, the full domain will be used.
+        """
+        return pulumi.get(self, "relying_party_identifier")
 
     @_builtins.property
     @pulumi.getter
@@ -22990,17 +23548,25 @@ class GetEventStreamWebhookConfigurationWebhookAuthorizationResult(dict):
     def __init__(__self__, *,
                  method: _builtins.str,
                  password: _builtins.str,
+                 password_wo: _builtins.str,
+                 password_wo_version: _builtins.int,
                  token: _builtins.str,
+                 token_wo: _builtins.str,
+                 token_wo_version: _builtins.int,
                  username: _builtins.str):
         """
         :param _builtins.str method: The authorization method used to secure the webhook endpoint. Can be either `basic` or `bearer`.
-        :param _builtins.str password: The password for `basic` authentication. Required when `method` is set to `basic`.
-        :param _builtins.str token: The token used for `bearer` authentication. Required when `method` is set to `bearer`.
-        :param _builtins.str username: The username for `basic` authentication. Required when `method` is set to `basic`.
+        :param _builtins.int password_wo_version: Version number for password changes. Update this value to trigger a password change when using `password_wo`.
+        :param _builtins.int token_wo_version: Version number for token changes. Update this value to trigger a token change when using `token_wo`.
+        :param _builtins.str username: The username for `basic` authentication. Required only when `method` is set to `basic`.
         """
         pulumi.set(__self__, "method", method)
         pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "password_wo", password_wo)
+        pulumi.set(__self__, "password_wo_version", password_wo_version)
         pulumi.set(__self__, "token", token)
+        pulumi.set(__self__, "token_wo", token_wo)
+        pulumi.set(__self__, "token_wo_version", token_wo_version)
         pulumi.set(__self__, "username", username)
 
     @_builtins.property
@@ -23014,24 +23580,44 @@ class GetEventStreamWebhookConfigurationWebhookAuthorizationResult(dict):
     @_builtins.property
     @pulumi.getter
     def password(self) -> _builtins.str:
-        """
-        The password for `basic` authentication. Required when `method` is set to `basic`.
-        """
         return pulumi.get(self, "password")
+
+    @_builtins.property
+    @pulumi.getter(name="passwordWo")
+    def password_wo(self) -> _builtins.str:
+        return pulumi.get(self, "password_wo")
+
+    @_builtins.property
+    @pulumi.getter(name="passwordWoVersion")
+    def password_wo_version(self) -> _builtins.int:
+        """
+        Version number for password changes. Update this value to trigger a password change when using `password_wo`.
+        """
+        return pulumi.get(self, "password_wo_version")
 
     @_builtins.property
     @pulumi.getter
     def token(self) -> _builtins.str:
-        """
-        The token used for `bearer` authentication. Required when `method` is set to `bearer`.
-        """
         return pulumi.get(self, "token")
+
+    @_builtins.property
+    @pulumi.getter(name="tokenWo")
+    def token_wo(self) -> _builtins.str:
+        return pulumi.get(self, "token_wo")
+
+    @_builtins.property
+    @pulumi.getter(name="tokenWoVersion")
+    def token_wo_version(self) -> _builtins.int:
+        """
+        Version number for token changes. Update this value to trigger a token change when using `token_wo`.
+        """
+        return pulumi.get(self, "token_wo_version")
 
     @_builtins.property
     @pulumi.getter
     def username(self) -> _builtins.str:
         """
-        The username for `basic` authentication. Required when `method` is set to `basic`.
+        The username for `basic` authentication. Required only when `method` is set to `basic`.
         """
         return pulumi.get(self, "username")
 

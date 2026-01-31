@@ -90,7 +90,7 @@ type Client struct {
 	// Indicates whether this client will conform to strict OIDC specifications.
 	OidcConformant pulumi.BoolOutput `pulumi:"oidcConformant"`
 	// Configure OIDC logout for the Client
-	OidcLogout ClientOidcLogoutOutput `pulumi:"oidcLogout"`
+	OidcLogout ClientOidcLogoutPtrOutput `pulumi:"oidcLogout"`
 	// Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
 	OrganizationDiscoveryMethods pulumi.StringArrayOutput `pulumi:"organizationDiscoveryMethods"`
 	// Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default), `preLoginPrompt` or  `postLoginPrompt`.
@@ -792,8 +792,8 @@ func (o ClientOutput) OidcConformant() pulumi.BoolOutput {
 }
 
 // Configure OIDC logout for the Client
-func (o ClientOutput) OidcLogout() ClientOidcLogoutOutput {
-	return o.ApplyT(func(v *Client) ClientOidcLogoutOutput { return v.OidcLogout }).(ClientOidcLogoutOutput)
+func (o ClientOutput) OidcLogout() ClientOidcLogoutPtrOutput {
+	return o.ApplyT(func(v *Client) ClientOidcLogoutPtrOutput { return v.OidcLogout }).(ClientOidcLogoutPtrOutput)
 }
 
 // Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
