@@ -81,6 +81,8 @@ type LookupCustomDomainResult struct {
 	OriginDomainName string `pulumi:"originDomainName"`
 	// Indicates whether this is a primary domain.
 	Primary bool `pulumi:"primary"`
+	// Relying Party ID (rpId) to be used for Passkeys on this custom domain. If not provided or set to null, the full domain will be used.
+	RelyingPartyIdentifier string `pulumi:"relyingPartyIdentifier"`
 	// Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, `ready` and `failed`.
 	Status string `pulumi:"status"`
 	// TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on selfManaged domains.
@@ -163,6 +165,11 @@ func (o LookupCustomDomainResultOutput) OriginDomainName() pulumi.StringOutput {
 // Indicates whether this is a primary domain.
 func (o LookupCustomDomainResultOutput) Primary() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupCustomDomainResult) bool { return v.Primary }).(pulumi.BoolOutput)
+}
+
+// Relying Party ID (rpId) to be used for Passkeys on this custom domain. If not provided or set to null, the full domain will be used.
+func (o LookupCustomDomainResultOutput) RelyingPartyIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCustomDomainResult) string { return v.RelyingPartyIdentifier }).(pulumi.StringOutput)
 }
 
 // Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, `ready` and `failed`.

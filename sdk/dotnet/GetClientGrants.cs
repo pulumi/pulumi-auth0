@@ -13,18 +13,270 @@ namespace Pulumi.Auth0
     {
         /// <summary>
         /// Data source to retrieve a client grants based on ClientId and/or audience
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Auth0 = Pulumi.Auth0;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myClient = new Auth0.Client("my_client", new()
+        ///     {
+        ///         Name = "Example Application (Managed by Terraform)",
+        ///     });
+        /// 
+        ///     var myResourceServer = new Auth0.ResourceServer("my_resource_server", new()
+        ///     {
+        ///         Name = "Example Resource Server (Managed by Terraform)",
+        ///         Identifier = "https://api.example.com/client-grant",
+        ///         AuthorizationDetails = new[]
+        ///         {
+        ///             new Auth0.Inputs.ResourceServerAuthorizationDetailArgs
+        ///             {
+        ///                 Type = "payment",
+        ///             },
+        ///         },
+        ///         SubjectTypeAuthorization = new Auth0.Inputs.ResourceServerSubjectTypeAuthorizationArgs
+        ///         {
+        ///             User = new Auth0.Inputs.ResourceServerSubjectTypeAuthorizationUserArgs
+        ///             {
+        ///                 Policy = "allow_all",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     var myScopes = new Auth0.ResourceServerScopes("my_scopes", new()
+        ///     {
+        ///         ResourceServerIdentifier = myResourceServer.Identifier,
+        ///         Scopes = new[]
+        ///         {
+        ///             new Auth0.Inputs.ResourceServerScopesScopeArgs
+        ///             {
+        ///                 Name = "create:foo",
+        ///             },
+        ///         },
+        ///     }, new CustomResourceOptions
+        ///     {
+        ///         DependsOn =
+        ///         {
+        ///             myResourceServer,
+        ///         },
+        ///     });
+        /// 
+        ///     var myClientGrant = new Auth0.ClientGrant("my_client_grant", new()
+        ///     {
+        ///         ClientId = myClient.Id,
+        ///         Audience = myResourceServer.Identifier,
+        ///         AuthorizationDetailsTypes = new[]
+        ///         {
+        ///             "payment",
+        ///         },
+        ///         SubjectType = "user",
+        ///         AllowAllScopes = true,
+        ///     });
+        /// 
+        ///     var filterByClientId = Auth0.GetClientGrants.Invoke(new()
+        ///     {
+        ///         ClientId = myClient.Id,
+        ///     });
+        /// 
+        ///     var filterByAudience = Auth0.GetClientGrants.Invoke(new()
+        ///     {
+        ///         Audience = myResourceServer.Identifier,
+        ///     });
+        /// 
+        ///     var filterByClientIdAndAudience = Auth0.GetClientGrants.Invoke(new()
+        ///     {
+        ///         ClientId = myClient.Id,
+        ///         Audience = myResourceServer.Identifier,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetClientGrantsResult> InvokeAsync(GetClientGrantsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetClientGrantsResult>("auth0:index/getClientGrants:getClientGrants", args ?? new GetClientGrantsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Data source to retrieve a client grants based on ClientId and/or audience
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Auth0 = Pulumi.Auth0;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myClient = new Auth0.Client("my_client", new()
+        ///     {
+        ///         Name = "Example Application (Managed by Terraform)",
+        ///     });
+        /// 
+        ///     var myResourceServer = new Auth0.ResourceServer("my_resource_server", new()
+        ///     {
+        ///         Name = "Example Resource Server (Managed by Terraform)",
+        ///         Identifier = "https://api.example.com/client-grant",
+        ///         AuthorizationDetails = new[]
+        ///         {
+        ///             new Auth0.Inputs.ResourceServerAuthorizationDetailArgs
+        ///             {
+        ///                 Type = "payment",
+        ///             },
+        ///         },
+        ///         SubjectTypeAuthorization = new Auth0.Inputs.ResourceServerSubjectTypeAuthorizationArgs
+        ///         {
+        ///             User = new Auth0.Inputs.ResourceServerSubjectTypeAuthorizationUserArgs
+        ///             {
+        ///                 Policy = "allow_all",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     var myScopes = new Auth0.ResourceServerScopes("my_scopes", new()
+        ///     {
+        ///         ResourceServerIdentifier = myResourceServer.Identifier,
+        ///         Scopes = new[]
+        ///         {
+        ///             new Auth0.Inputs.ResourceServerScopesScopeArgs
+        ///             {
+        ///                 Name = "create:foo",
+        ///             },
+        ///         },
+        ///     }, new CustomResourceOptions
+        ///     {
+        ///         DependsOn =
+        ///         {
+        ///             myResourceServer,
+        ///         },
+        ///     });
+        /// 
+        ///     var myClientGrant = new Auth0.ClientGrant("my_client_grant", new()
+        ///     {
+        ///         ClientId = myClient.Id,
+        ///         Audience = myResourceServer.Identifier,
+        ///         AuthorizationDetailsTypes = new[]
+        ///         {
+        ///             "payment",
+        ///         },
+        ///         SubjectType = "user",
+        ///         AllowAllScopes = true,
+        ///     });
+        /// 
+        ///     var filterByClientId = Auth0.GetClientGrants.Invoke(new()
+        ///     {
+        ///         ClientId = myClient.Id,
+        ///     });
+        /// 
+        ///     var filterByAudience = Auth0.GetClientGrants.Invoke(new()
+        ///     {
+        ///         Audience = myResourceServer.Identifier,
+        ///     });
+        /// 
+        ///     var filterByClientIdAndAudience = Auth0.GetClientGrants.Invoke(new()
+        ///     {
+        ///         ClientId = myClient.Id,
+        ///         Audience = myResourceServer.Identifier,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetClientGrantsResult> Invoke(GetClientGrantsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetClientGrantsResult>("auth0:index/getClientGrants:getClientGrants", args ?? new GetClientGrantsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Data source to retrieve a client grants based on ClientId and/or audience
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Auth0 = Pulumi.Auth0;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myClient = new Auth0.Client("my_client", new()
+        ///     {
+        ///         Name = "Example Application (Managed by Terraform)",
+        ///     });
+        /// 
+        ///     var myResourceServer = new Auth0.ResourceServer("my_resource_server", new()
+        ///     {
+        ///         Name = "Example Resource Server (Managed by Terraform)",
+        ///         Identifier = "https://api.example.com/client-grant",
+        ///         AuthorizationDetails = new[]
+        ///         {
+        ///             new Auth0.Inputs.ResourceServerAuthorizationDetailArgs
+        ///             {
+        ///                 Type = "payment",
+        ///             },
+        ///         },
+        ///         SubjectTypeAuthorization = new Auth0.Inputs.ResourceServerSubjectTypeAuthorizationArgs
+        ///         {
+        ///             User = new Auth0.Inputs.ResourceServerSubjectTypeAuthorizationUserArgs
+        ///             {
+        ///                 Policy = "allow_all",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     var myScopes = new Auth0.ResourceServerScopes("my_scopes", new()
+        ///     {
+        ///         ResourceServerIdentifier = myResourceServer.Identifier,
+        ///         Scopes = new[]
+        ///         {
+        ///             new Auth0.Inputs.ResourceServerScopesScopeArgs
+        ///             {
+        ///                 Name = "create:foo",
+        ///             },
+        ///         },
+        ///     }, new CustomResourceOptions
+        ///     {
+        ///         DependsOn =
+        ///         {
+        ///             myResourceServer,
+        ///         },
+        ///     });
+        /// 
+        ///     var myClientGrant = new Auth0.ClientGrant("my_client_grant", new()
+        ///     {
+        ///         ClientId = myClient.Id,
+        ///         Audience = myResourceServer.Identifier,
+        ///         AuthorizationDetailsTypes = new[]
+        ///         {
+        ///             "payment",
+        ///         },
+        ///         SubjectType = "user",
+        ///         AllowAllScopes = true,
+        ///     });
+        /// 
+        ///     var filterByClientId = Auth0.GetClientGrants.Invoke(new()
+        ///     {
+        ///         ClientId = myClient.Id,
+        ///     });
+        /// 
+        ///     var filterByAudience = Auth0.GetClientGrants.Invoke(new()
+        ///     {
+        ///         Audience = myResourceServer.Identifier,
+        ///     });
+        /// 
+        ///     var filterByClientIdAndAudience = Auth0.GetClientGrants.Invoke(new()
+        ///     {
+        ///         ClientId = myClient.Id,
+        ///         Audience = myResourceServer.Identifier,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetClientGrantsResult> Invoke(GetClientGrantsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetClientGrantsResult>("auth0:index/getClientGrants:getClientGrants", args ?? new GetClientGrantsInvokeArgs(), options.WithDefaults());

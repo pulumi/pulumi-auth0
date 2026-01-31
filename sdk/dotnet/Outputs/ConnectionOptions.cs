@@ -90,6 +90,10 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.ConnectionOptionsCustomHeader> CustomHeaders;
         /// <summary>
+        /// Configure custom password hashing within a connection. (EA only)
+        /// </summary>
+        public readonly Outputs.ConnectionOptionsCustomPasswordHash? CustomPasswordHash;
+        /// <summary>
         /// A map of scripts used to integrate with a custom database.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? CustomScripts;
@@ -133,6 +137,10 @@ namespace Pulumi.Auth0.Outputs
         /// List of the domains that can be authenticated using the identity provider. Only needed for Identifier First authentication flows.
         /// </summary>
         public readonly ImmutableArray<string> DomainAliases;
+        /// <summary>
+        /// Indicates whether to request the email scope. Used by some OAuth2 connections (e.g., LINE).
+        /// </summary>
+        public readonly bool? Email;
         /// <summary>
         /// Set to `True` to inject context into custom DB scripts (warning: cannot be disabled once enabled).
         /// </summary>
@@ -482,6 +490,8 @@ namespace Pulumi.Auth0.Outputs
 
             ImmutableArray<Outputs.ConnectionOptionsCustomHeader> customHeaders,
 
+            Outputs.ConnectionOptionsCustomPasswordHash? customPasswordHash,
+
             ImmutableDictionary<string, string>? customScripts,
 
             bool? debug,
@@ -503,6 +513,8 @@ namespace Pulumi.Auth0.Outputs
             string? domain,
 
             ImmutableArray<string> domainAliases,
+
+            bool? email,
 
             bool? enableScriptContext,
 
@@ -677,6 +689,7 @@ namespace Pulumi.Auth0.Outputs
             ConsumerKey = consumerKey;
             ConsumerSecret = consumerSecret;
             CustomHeaders = customHeaders;
+            CustomPasswordHash = customPasswordHash;
             CustomScripts = customScripts;
             Debug = debug;
             DecryptionKey = decryptionKey;
@@ -688,6 +701,7 @@ namespace Pulumi.Auth0.Outputs
             DiscoveryUrl = discoveryUrl;
             Domain = domain;
             DomainAliases = domainAliases;
+            Email = email;
             EnableScriptContext = enableScriptContext;
             EnabledDatabaseCustomization = enabledDatabaseCustomization;
             EntityId = entityId;

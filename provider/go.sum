@@ -1463,10 +1463,10 @@ github.com/armon/go-socks5 v0.0.0-20160902184237-e75332964ef5/go.mod h1:wHh0iHkY
 github.com/aryann/difflib v0.0.0-20170710044230-e206f873d14a/go.mod h1:DAHtR1m6lCRdSC2Tm3DSWRPvIPr6xNKyeHdqDQSQT+A=
 github.com/atotto/clipboard v0.1.4 h1:EH0zSVneZPSuFR11BlR9YppQTVDbh5+16AmcJi4g1z4=
 github.com/atotto/clipboard v0.1.4/go.mod h1:ZY9tmq7sm5xIbd9bOK4onWV4S6X0u6GY7Vn0Yu86PYI=
-github.com/auth0/go-auth0 v1.32.1 h1:AAXQqaNaFZWkRm2bg5mVVXpqDLmusv7v238uIaxuFpo=
-github.com/auth0/go-auth0 v1.32.1/go.mod h1:32sQB1uAn+99fJo6N819EniKq8h785p0ag0lMWhiTaE=
-github.com/auth0/go-auth0/v2 v2.3.0 h1:Gkw6mAxkCh2aot2Re3Zde7I5/RkTF9lkB3JRtFZtleI=
-github.com/auth0/go-auth0/v2 v2.3.0/go.mod h1:4GvvYxDvjiOoglqYngCUOUZWzE4iXNczLID5NDA2tYg=
+github.com/auth0/go-auth0 v1.33.0 h1:7qx0UCA6Tn2udnEVA35xzKsseh/R9559f+nnGcUI0Ss=
+github.com/auth0/go-auth0 v1.33.0/go.mod h1:32sQB1uAn+99fJo6N819EniKq8h785p0ag0lMWhiTaE=
+github.com/auth0/go-auth0/v2 v2.4.0 h1:5fy8XAh/nlfaOppYWanJQk3M0hhE5433cQCt/Gfsktw=
+github.com/auth0/go-auth0/v2 v2.4.0/go.mod h1:4GvvYxDvjiOoglqYngCUOUZWzE4iXNczLID5NDA2tYg=
 github.com/aws/aws-lambda-go v1.13.3/go.mod h1:4UKl9IzQMoD+QF79YdCuzCwp8VbmG4VAQwij/eHl5CU=
 github.com/aws/aws-sdk-go v1.15.78/go.mod h1:E3/ieXAlvM0XWO57iftYVDLLvQ824smPP3ATZkfNZeM=
 github.com/aws/aws-sdk-go v1.25.3/go.mod h1:KmX6BPdI08NWTb3/sm4ZGu5ShLoqVDhKgpiN924inxo=

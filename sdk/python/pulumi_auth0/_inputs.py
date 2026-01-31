@@ -187,6 +187,8 @@ __all__ = [
     'ClientOidcLogoutArgsDict',
     'ClientOidcLogoutBackchannelLogoutInitiatorsArgs',
     'ClientOidcLogoutBackchannelLogoutInitiatorsArgsDict',
+    'ClientOidcLogoutBackchannelLogoutSessionMetadataArgs',
+    'ClientOidcLogoutBackchannelLogoutSessionMetadataArgsDict',
     'ClientRefreshTokenArgs',
     'ClientRefreshTokenArgsDict',
     'ClientRefreshTokenPolicyArgs',
@@ -239,14 +241,20 @@ __all__ = [
     'ConnectionOptionsAttributeUsernameValidationAllowedTypeArgsDict',
     'ConnectionOptionsAuthenticationMethodArgs',
     'ConnectionOptionsAuthenticationMethodArgsDict',
+    'ConnectionOptionsAuthenticationMethodEmailOtpArgs',
+    'ConnectionOptionsAuthenticationMethodEmailOtpArgsDict',
     'ConnectionOptionsAuthenticationMethodPasskeyArgs',
     'ConnectionOptionsAuthenticationMethodPasskeyArgsDict',
     'ConnectionOptionsAuthenticationMethodPasswordArgs',
     'ConnectionOptionsAuthenticationMethodPasswordArgsDict',
+    'ConnectionOptionsAuthenticationMethodPhoneOtpArgs',
+    'ConnectionOptionsAuthenticationMethodPhoneOtpArgsDict',
     'ConnectionOptionsConnectionSettingsArgs',
     'ConnectionOptionsConnectionSettingsArgsDict',
     'ConnectionOptionsCustomHeaderArgs',
     'ConnectionOptionsCustomHeaderArgsDict',
+    'ConnectionOptionsCustomPasswordHashArgs',
+    'ConnectionOptionsCustomPasswordHashArgsDict',
     'ConnectionOptionsDecryptionKeyArgs',
     'ConnectionOptionsDecryptionKeyArgsDict',
     'ConnectionOptionsGatewayAuthenticationArgs',
@@ -7534,6 +7542,10 @@ if not MYPY:
         """
         Configure OIDC logout initiators for the Client
         """
+        backchannel_logout_session_metadata: NotRequired[pulumi.Input['ClientOidcLogoutBackchannelLogoutSessionMetadataArgsDict']]
+        """
+        Controls whether session metadata is included in the logout token. Default value is null.
+        """
 elif False:
     ClientOidcLogoutArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -7541,14 +7553,18 @@ elif False:
 class ClientOidcLogoutArgs:
     def __init__(__self__, *,
                  backchannel_logout_urls: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 backchannel_logout_initiators: Optional[pulumi.Input['ClientOidcLogoutBackchannelLogoutInitiatorsArgs']] = None):
+                 backchannel_logout_initiators: Optional[pulumi.Input['ClientOidcLogoutBackchannelLogoutInitiatorsArgs']] = None,
+                 backchannel_logout_session_metadata: Optional[pulumi.Input['ClientOidcLogoutBackchannelLogoutSessionMetadataArgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] backchannel_logout_urls: Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
         :param pulumi.Input['ClientOidcLogoutBackchannelLogoutInitiatorsArgs'] backchannel_logout_initiators: Configure OIDC logout initiators for the Client
+        :param pulumi.Input['ClientOidcLogoutBackchannelLogoutSessionMetadataArgs'] backchannel_logout_session_metadata: Controls whether session metadata is included in the logout token. Default value is null.
         """
         pulumi.set(__self__, "backchannel_logout_urls", backchannel_logout_urls)
         if backchannel_logout_initiators is not None:
             pulumi.set(__self__, "backchannel_logout_initiators", backchannel_logout_initiators)
+        if backchannel_logout_session_metadata is not None:
+            pulumi.set(__self__, "backchannel_logout_session_metadata", backchannel_logout_session_metadata)
 
     @_builtins.property
     @pulumi.getter(name="backchannelLogoutUrls")
@@ -7573,6 +7589,18 @@ class ClientOidcLogoutArgs:
     @backchannel_logout_initiators.setter
     def backchannel_logout_initiators(self, value: Optional[pulumi.Input['ClientOidcLogoutBackchannelLogoutInitiatorsArgs']]):
         pulumi.set(self, "backchannel_logout_initiators", value)
+
+    @_builtins.property
+    @pulumi.getter(name="backchannelLogoutSessionMetadata")
+    def backchannel_logout_session_metadata(self) -> Optional[pulumi.Input['ClientOidcLogoutBackchannelLogoutSessionMetadataArgs']]:
+        """
+        Controls whether session metadata is included in the logout token. Default value is null.
+        """
+        return pulumi.get(self, "backchannel_logout_session_metadata")
+
+    @backchannel_logout_session_metadata.setter
+    def backchannel_logout_session_metadata(self, value: Optional[pulumi.Input['ClientOidcLogoutBackchannelLogoutSessionMetadataArgs']]):
+        pulumi.set(self, "backchannel_logout_session_metadata", value)
 
 
 if not MYPY:
@@ -7624,6 +7652,37 @@ class ClientOidcLogoutBackchannelLogoutInitiatorsArgs:
     @selected_initiators.setter
     def selected_initiators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "selected_initiators", value)
+
+
+if not MYPY:
+    class ClientOidcLogoutBackchannelLogoutSessionMetadataArgsDict(TypedDict):
+        include: pulumi.Input[_builtins.bool]
+        """
+        The `include` property determines whether session metadata is included in the logout token.
+        """
+elif False:
+    ClientOidcLogoutBackchannelLogoutSessionMetadataArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClientOidcLogoutBackchannelLogoutSessionMetadataArgs:
+    def __init__(__self__, *,
+                 include: pulumi.Input[_builtins.bool]):
+        """
+        :param pulumi.Input[_builtins.bool] include: The `include` property determines whether session metadata is included in the logout token.
+        """
+        pulumi.set(__self__, "include", include)
+
+    @_builtins.property
+    @pulumi.getter
+    def include(self) -> pulumi.Input[_builtins.bool]:
+        """
+        The `include` property determines whether session metadata is included in the logout token.
+        """
+        return pulumi.get(self, "include")
+
+    @include.setter
+    def include(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "include", value)
 
 
 if not MYPY:
@@ -8277,6 +8336,10 @@ if not MYPY:
         """
         Configure extra headers to the Token endpoint of an OAuth 2.0 provider
         """
+        custom_password_hash: NotRequired[pulumi.Input['ConnectionOptionsCustomPasswordHashArgsDict']]
+        """
+        Configure custom password hashing within a connection. (EA only)
+        """
         custom_scripts: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
         A map of scripts used to integrate with a custom database.
@@ -8320,6 +8383,10 @@ if not MYPY:
         domain_aliases: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         """
         List of the domains that can be authenticated using the identity provider. Only needed for Identifier First authentication flows.
+        """
+        email: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Indicates whether to request the email scope. Used by some OAuth2 connections (e.g., LINE).
         """
         enable_script_context: NotRequired[pulumi.Input[_builtins.bool]]
         """
@@ -8654,6 +8721,7 @@ class ConnectionOptionsArgs:
                  consumer_key: Optional[pulumi.Input[_builtins.str]] = None,
                  consumer_secret: Optional[pulumi.Input[_builtins.str]] = None,
                  custom_headers: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsCustomHeaderArgs']]]] = None,
+                 custom_password_hash: Optional[pulumi.Input['ConnectionOptionsCustomPasswordHashArgs']] = None,
                  custom_scripts: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  debug: Optional[pulumi.Input[_builtins.bool]] = None,
                  decryption_key: Optional[pulumi.Input['ConnectionOptionsDecryptionKeyArgs']] = None,
@@ -8665,6 +8733,7 @@ class ConnectionOptionsArgs:
                  discovery_url: Optional[pulumi.Input[_builtins.str]] = None,
                  domain: Optional[pulumi.Input[_builtins.str]] = None,
                  domain_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 email: Optional[pulumi.Input[_builtins.bool]] = None,
                  enable_script_context: Optional[pulumi.Input[_builtins.bool]] = None,
                  enabled_database_customization: Optional[pulumi.Input[_builtins.bool]] = None,
                  entity_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -8762,6 +8831,7 @@ class ConnectionOptionsArgs:
         :param pulumi.Input[_builtins.str] consumer_key: Identifies the client to the service provider
         :param pulumi.Input[_builtins.str] consumer_secret: Secret used to establish ownership of the consumer key.
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsCustomHeaderArgs']]] custom_headers: Configure extra headers to the Token endpoint of an OAuth 2.0 provider
+        :param pulumi.Input['ConnectionOptionsCustomPasswordHashArgs'] custom_password_hash: Configure custom password hashing within a connection. (EA only)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_scripts: A map of scripts used to integrate with a custom database.
         :param pulumi.Input[_builtins.bool] debug: When enabled, additional debug information will be generated.
         :param pulumi.Input['ConnectionOptionsDecryptionKeyArgs'] decryption_key: The key used to decrypt encrypted responses from the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
@@ -8773,6 +8843,7 @@ class ConnectionOptionsArgs:
         :param pulumi.Input[_builtins.str] discovery_url: OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`.
         :param pulumi.Input[_builtins.str] domain: Domain name.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] domain_aliases: List of the domains that can be authenticated using the identity provider. Only needed for Identifier First authentication flows.
+        :param pulumi.Input[_builtins.bool] email: Indicates whether to request the email scope. Used by some OAuth2 connections (e.g., LINE).
         :param pulumi.Input[_builtins.bool] enable_script_context: Set to `true` to inject context into custom DB scripts (warning: cannot be disabled once enabled).
         :param pulumi.Input[_builtins.bool] enabled_database_customization: Set to `true` to use a legacy user store.
         :param pulumi.Input[_builtins.str] entity_id: Custom Entity ID for the connection.
@@ -8889,6 +8960,8 @@ class ConnectionOptionsArgs:
             pulumi.set(__self__, "consumer_secret", consumer_secret)
         if custom_headers is not None:
             pulumi.set(__self__, "custom_headers", custom_headers)
+        if custom_password_hash is not None:
+            pulumi.set(__self__, "custom_password_hash", custom_password_hash)
         if custom_scripts is not None:
             pulumi.set(__self__, "custom_scripts", custom_scripts)
         if debug is not None:
@@ -8911,6 +8984,8 @@ class ConnectionOptionsArgs:
             pulumi.set(__self__, "domain", domain)
         if domain_aliases is not None:
             pulumi.set(__self__, "domain_aliases", domain_aliases)
+        if email is not None:
+            pulumi.set(__self__, "email", email)
         if enable_script_context is not None:
             pulumi.set(__self__, "enable_script_context", enable_script_context)
         if enabled_database_customization is not None:
@@ -9295,6 +9370,18 @@ class ConnectionOptionsArgs:
         pulumi.set(self, "custom_headers", value)
 
     @_builtins.property
+    @pulumi.getter(name="customPasswordHash")
+    def custom_password_hash(self) -> Optional[pulumi.Input['ConnectionOptionsCustomPasswordHashArgs']]:
+        """
+        Configure custom password hashing within a connection. (EA only)
+        """
+        return pulumi.get(self, "custom_password_hash")
+
+    @custom_password_hash.setter
+    def custom_password_hash(self, value: Optional[pulumi.Input['ConnectionOptionsCustomPasswordHashArgs']]):
+        pulumi.set(self, "custom_password_hash", value)
+
+    @_builtins.property
     @pulumi.getter(name="customScripts")
     def custom_scripts(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -9425,6 +9512,18 @@ class ConnectionOptionsArgs:
     @domain_aliases.setter
     def domain_aliases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "domain_aliases", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def email(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Indicates whether to request the email scope. Used by some OAuth2 connections (e.g., LINE).
+        """
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "email", value)
 
     @_builtins.property
     @pulumi.getter(name="enableScriptContext")
@@ -10541,18 +10640,26 @@ if not MYPY:
         """
         Defines whether email attribute is active as an identifier
         """
+        default_method: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Gets and Sets the default authentication method for the email identifier type. Valid values: `password`, `email_otp`
+        """
 elif False:
     ConnectionOptionsAttributeEmailIdentifierArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionOptionsAttributeEmailIdentifierArgs:
     def __init__(__self__, *,
-                 active: Optional[pulumi.Input[_builtins.bool]] = None):
+                 active: Optional[pulumi.Input[_builtins.bool]] = None,
+                 default_method: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] active: Defines whether email attribute is active as an identifier
+        :param pulumi.Input[_builtins.str] default_method: Gets and Sets the default authentication method for the email identifier type. Valid values: `password`, `email_otp`
         """
         if active is not None:
             pulumi.set(__self__, "active", active)
+        if default_method is not None:
+            pulumi.set(__self__, "default_method", default_method)
 
     @_builtins.property
     @pulumi.getter
@@ -10565,6 +10672,18 @@ class ConnectionOptionsAttributeEmailIdentifierArgs:
     @active.setter
     def active(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "active", value)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultMethod")
+    def default_method(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Gets and Sets the default authentication method for the email identifier type. Valid values: `password`, `email_otp`
+        """
+        return pulumi.get(self, "default_method")
+
+    @default_method.setter
+    def default_method(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "default_method", value)
 
 
 if not MYPY:
@@ -10800,18 +10919,26 @@ if not MYPY:
         """
         Defines whether Phone Number attribute is active as an identifier
         """
+        default_method: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Gets and Sets the default authentication method for the phone_number identifier type. Valid values: `password`, `phone_otp`
+        """
 elif False:
     ConnectionOptionsAttributePhoneNumberIdentifierArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionOptionsAttributePhoneNumberIdentifierArgs:
     def __init__(__self__, *,
-                 active: Optional[pulumi.Input[_builtins.bool]] = None):
+                 active: Optional[pulumi.Input[_builtins.bool]] = None,
+                 default_method: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] active: Defines whether Phone Number attribute is active as an identifier
+        :param pulumi.Input[_builtins.str] default_method: Gets and Sets the default authentication method for the phone_number identifier type. Valid values: `password`, `phone_otp`
         """
         if active is not None:
             pulumi.set(__self__, "active", active)
+        if default_method is not None:
+            pulumi.set(__self__, "default_method", default_method)
 
     @_builtins.property
     @pulumi.getter
@@ -10824,6 +10951,18 @@ class ConnectionOptionsAttributePhoneNumberIdentifierArgs:
     @active.setter
     def active(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "active", value)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultMethod")
+    def default_method(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Gets and Sets the default authentication method for the phone_number identifier type. Valid values: `password`, `phone_otp`
+        """
+        return pulumi.get(self, "default_method")
+
+    @default_method.setter
+    def default_method(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "default_method", value)
 
 
 if not MYPY:
@@ -11008,18 +11147,26 @@ if not MYPY:
         """
         Defines whether UserName attribute is active as an identifier
         """
+        default_method: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Gets and Sets the default authentication method for the username identifier type. Valid value: `password`
+        """
 elif False:
     ConnectionOptionsAttributeUsernameIdentifierArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionOptionsAttributeUsernameIdentifierArgs:
     def __init__(__self__, *,
-                 active: Optional[pulumi.Input[_builtins.bool]] = None):
+                 active: Optional[pulumi.Input[_builtins.bool]] = None,
+                 default_method: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] active: Defines whether UserName attribute is active as an identifier
+        :param pulumi.Input[_builtins.str] default_method: Gets and Sets the default authentication method for the username identifier type. Valid value: `password`
         """
         if active is not None:
             pulumi.set(__self__, "active", active)
+        if default_method is not None:
+            pulumi.set(__self__, "default_method", default_method)
 
     @_builtins.property
     @pulumi.getter
@@ -11032,6 +11179,18 @@ class ConnectionOptionsAttributeUsernameIdentifierArgs:
     @active.setter
     def active(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "active", value)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultMethod")
+    def default_method(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Gets and Sets the default authentication method for the username identifier type. Valid value: `password`
+        """
+        return pulumi.get(self, "default_method")
+
+    @default_method.setter
+    def default_method(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "default_method", value)
 
 
 if not MYPY:
@@ -11192,6 +11351,10 @@ class ConnectionOptionsAttributeUsernameValidationAllowedTypeArgs:
 
 if not MYPY:
     class ConnectionOptionsAuthenticationMethodArgsDict(TypedDict):
+        email_otp: NotRequired[pulumi.Input['ConnectionOptionsAuthenticationMethodEmailOtpArgsDict']]
+        """
+        Configures Email OTP authentication
+        """
         passkey: NotRequired[pulumi.Input['ConnectionOptionsAuthenticationMethodPasskeyArgsDict']]
         """
         Configures passkey authentication
@@ -11200,22 +11363,46 @@ if not MYPY:
         """
         Configures password authentication
         """
+        phone_otp: NotRequired[pulumi.Input['ConnectionOptionsAuthenticationMethodPhoneOtpArgsDict']]
+        """
+        Configures Phone OTP authentication
+        """
 elif False:
     ConnectionOptionsAuthenticationMethodArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionOptionsAuthenticationMethodArgs:
     def __init__(__self__, *,
+                 email_otp: Optional[pulumi.Input['ConnectionOptionsAuthenticationMethodEmailOtpArgs']] = None,
                  passkey: Optional[pulumi.Input['ConnectionOptionsAuthenticationMethodPasskeyArgs']] = None,
-                 password: Optional[pulumi.Input['ConnectionOptionsAuthenticationMethodPasswordArgs']] = None):
+                 password: Optional[pulumi.Input['ConnectionOptionsAuthenticationMethodPasswordArgs']] = None,
+                 phone_otp: Optional[pulumi.Input['ConnectionOptionsAuthenticationMethodPhoneOtpArgs']] = None):
         """
+        :param pulumi.Input['ConnectionOptionsAuthenticationMethodEmailOtpArgs'] email_otp: Configures Email OTP authentication
         :param pulumi.Input['ConnectionOptionsAuthenticationMethodPasskeyArgs'] passkey: Configures passkey authentication
         :param pulumi.Input['ConnectionOptionsAuthenticationMethodPasswordArgs'] password: Configures password authentication
+        :param pulumi.Input['ConnectionOptionsAuthenticationMethodPhoneOtpArgs'] phone_otp: Configures Phone OTP authentication
         """
+        if email_otp is not None:
+            pulumi.set(__self__, "email_otp", email_otp)
         if passkey is not None:
             pulumi.set(__self__, "passkey", passkey)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if phone_otp is not None:
+            pulumi.set(__self__, "phone_otp", phone_otp)
+
+    @_builtins.property
+    @pulumi.getter(name="emailOtp")
+    def email_otp(self) -> Optional[pulumi.Input['ConnectionOptionsAuthenticationMethodEmailOtpArgs']]:
+        """
+        Configures Email OTP authentication
+        """
+        return pulumi.get(self, "email_otp")
+
+    @email_otp.setter
+    def email_otp(self, value: Optional[pulumi.Input['ConnectionOptionsAuthenticationMethodEmailOtpArgs']]):
+        pulumi.set(self, "email_otp", value)
 
     @_builtins.property
     @pulumi.getter
@@ -11240,6 +11427,50 @@ class ConnectionOptionsAuthenticationMethodArgs:
     @password.setter
     def password(self, value: Optional[pulumi.Input['ConnectionOptionsAuthenticationMethodPasswordArgs']]):
         pulumi.set(self, "password", value)
+
+    @_builtins.property
+    @pulumi.getter(name="phoneOtp")
+    def phone_otp(self) -> Optional[pulumi.Input['ConnectionOptionsAuthenticationMethodPhoneOtpArgs']]:
+        """
+        Configures Phone OTP authentication
+        """
+        return pulumi.get(self, "phone_otp")
+
+    @phone_otp.setter
+    def phone_otp(self, value: Optional[pulumi.Input['ConnectionOptionsAuthenticationMethodPhoneOtpArgs']]):
+        pulumi.set(self, "phone_otp", value)
+
+
+if not MYPY:
+    class ConnectionOptionsAuthenticationMethodEmailOtpArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Enables Email OTP authentication
+        """
+elif False:
+    ConnectionOptionsAuthenticationMethodEmailOtpArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConnectionOptionsAuthenticationMethodEmailOtpArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Enables Email OTP authentication
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Enables Email OTP authentication
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enabled", value)
 
 
 if not MYPY:
@@ -11298,6 +11529,38 @@ class ConnectionOptionsAuthenticationMethodPasswordArgs:
     def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
         Enables password authentication
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+if not MYPY:
+    class ConnectionOptionsAuthenticationMethodPhoneOtpArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Enables Phone OTP authentication
+        """
+elif False:
+    ConnectionOptionsAuthenticationMethodPhoneOtpArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConnectionOptionsAuthenticationMethodPhoneOtpArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Enables Phone OTP authentication
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Enables Phone OTP authentication
         """
         return pulumi.get(self, "enabled")
 
@@ -11369,6 +11632,37 @@ class ConnectionOptionsCustomHeaderArgs:
     @value.setter
     def value(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class ConnectionOptionsCustomPasswordHashArgsDict(TypedDict):
+        action_id: pulumi.Input[_builtins.str]
+        """
+        Id of an existing action that should be invoked when validating a universal password hash. This action must support password-hash-migration trigger
+        """
+elif False:
+    ConnectionOptionsCustomPasswordHashArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConnectionOptionsCustomPasswordHashArgs:
+    def __init__(__self__, *,
+                 action_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] action_id: Id of an existing action that should be invoked when validating a universal password hash. This action must support password-hash-migration trigger
+        """
+        pulumi.set(__self__, "action_id", action_id)
+
+    @_builtins.property
+    @pulumi.getter(name="actionId")
+    def action_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Id of an existing action that should be invoked when validating a universal password hash. This action must support password-hash-migration trigger
+        """
+        return pulumi.get(self, "action_id")
+
+    @action_id.setter
+    def action_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "action_id", value)
 
 
 if not MYPY:
@@ -13838,16 +14132,26 @@ if not MYPY:
         The authorization method used to secure the webhook endpoint. Can be either `basic` or `bearer`.
         """
         password: NotRequired[pulumi.Input[_builtins.str]]
+        password_wo: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The password for `basic` authentication. Required when `method` is set to `basic`.
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+        password_wo_version: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Version number for password changes. Update this value to trigger a password change when using `password_wo`.
         """
         token: NotRequired[pulumi.Input[_builtins.str]]
+        token_wo: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The token used for `bearer` authentication. Required when `method` is set to `bearer`.
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+        token_wo_version: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Version number for token changes. Update this value to trigger a token change when using `token_wo`.
         """
         username: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The username for `basic` authentication. Required when `method` is set to `basic`.
+        The username for `basic` authentication. Required only when `method` is set to `basic`.
         """
 elif False:
     EventStreamWebhookConfigurationWebhookAuthorizationArgsDict: TypeAlias = Mapping[str, Any]
@@ -13857,19 +14161,33 @@ class EventStreamWebhookConfigurationWebhookAuthorizationArgs:
     def __init__(__self__, *,
                  method: pulumi.Input[_builtins.str],
                  password: Optional[pulumi.Input[_builtins.str]] = None,
+                 password_wo: Optional[pulumi.Input[_builtins.str]] = None,
+                 password_wo_version: Optional[pulumi.Input[_builtins.int]] = None,
                  token: Optional[pulumi.Input[_builtins.str]] = None,
+                 token_wo: Optional[pulumi.Input[_builtins.str]] = None,
+                 token_wo_version: Optional[pulumi.Input[_builtins.int]] = None,
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] method: The authorization method used to secure the webhook endpoint. Can be either `basic` or `bearer`.
-        :param pulumi.Input[_builtins.str] password: The password for `basic` authentication. Required when `method` is set to `basic`.
-        :param pulumi.Input[_builtins.str] token: The token used for `bearer` authentication. Required when `method` is set to `bearer`.
-        :param pulumi.Input[_builtins.str] username: The username for `basic` authentication. Required when `method` is set to `basic`.
+        :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        :param pulumi.Input[_builtins.int] password_wo_version: Version number for password changes. Update this value to trigger a password change when using `password_wo`.
+        :param pulumi.Input[_builtins.str] token_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        :param pulumi.Input[_builtins.int] token_wo_version: Version number for token changes. Update this value to trigger a token change when using `token_wo`.
+        :param pulumi.Input[_builtins.str] username: The username for `basic` authentication. Required only when `method` is set to `basic`.
         """
         pulumi.set(__self__, "method", method)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if password_wo is not None:
+            pulumi.set(__self__, "password_wo", password_wo)
+        if password_wo_version is not None:
+            pulumi.set(__self__, "password_wo_version", password_wo_version)
         if token is not None:
             pulumi.set(__self__, "token", token)
+        if token_wo is not None:
+            pulumi.set(__self__, "token_wo", token_wo)
+        if token_wo_version is not None:
+            pulumi.set(__self__, "token_wo_version", token_wo_version)
         if username is not None:
             pulumi.set(__self__, "username", username)
 
@@ -13888,9 +14206,6 @@ class EventStreamWebhookConfigurationWebhookAuthorizationArgs:
     @_builtins.property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The password for `basic` authentication. Required when `method` is set to `basic`.
-        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -13898,11 +14213,32 @@ class EventStreamWebhookConfigurationWebhookAuthorizationArgs:
         pulumi.set(self, "password", value)
 
     @_builtins.property
+    @pulumi.getter(name="passwordWo")
+    def password_wo(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+        return pulumi.get(self, "password_wo")
+
+    @password_wo.setter
+    def password_wo(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "password_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="passwordWoVersion")
+    def password_wo_version(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Version number for password changes. Update this value to trigger a password change when using `password_wo`.
+        """
+        return pulumi.get(self, "password_wo_version")
+
+    @password_wo_version.setter
+    def password_wo_version(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "password_wo_version", value)
+
+    @_builtins.property
     @pulumi.getter
     def token(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The token used for `bearer` authentication. Required when `method` is set to `bearer`.
-        """
         return pulumi.get(self, "token")
 
     @token.setter
@@ -13910,10 +14246,34 @@ class EventStreamWebhookConfigurationWebhookAuthorizationArgs:
         pulumi.set(self, "token", value)
 
     @_builtins.property
+    @pulumi.getter(name="tokenWo")
+    def token_wo(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+        return pulumi.get(self, "token_wo")
+
+    @token_wo.setter
+    def token_wo(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "token_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tokenWoVersion")
+    def token_wo_version(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Version number for token changes. Update this value to trigger a token change when using `token_wo`.
+        """
+        return pulumi.get(self, "token_wo_version")
+
+    @token_wo_version.setter
+    def token_wo_version(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "token_wo_version", value)
+
+    @_builtins.property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The username for `basic` authentication. Required when `method` is set to `basic`.
+        The username for `basic` authentication. Required only when `method` is set to `basic`.
         """
         return pulumi.get(self, "username")
 
@@ -16190,6 +16550,10 @@ if not MYPY:
         """
         The ID of the discovery domain.
         """
+        use_for_organization_discovery: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Indicates whether this domain should be used for organization discovery during login.
+        """
         verification_host: NotRequired[pulumi.Input[_builtins.str]]
         """
         The full domain where the TXT record should be added.
@@ -16207,12 +16571,14 @@ class OrganizationDiscoveryDomainsDiscoveryDomainArgs:
                  domain: pulumi.Input[_builtins.str],
                  status: pulumi.Input[_builtins.str],
                  id: Optional[pulumi.Input[_builtins.str]] = None,
+                 use_for_organization_discovery: Optional[pulumi.Input[_builtins.bool]] = None,
                  verification_host: Optional[pulumi.Input[_builtins.str]] = None,
                  verification_txt: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] domain: The domain name for organization discovery.
         :param pulumi.Input[_builtins.str] status: Verification status. Must be either 'pending' or 'verified'.
         :param pulumi.Input[_builtins.str] id: The ID of the discovery domain.
+        :param pulumi.Input[_builtins.bool] use_for_organization_discovery: Indicates whether this domain should be used for organization discovery during login.
         :param pulumi.Input[_builtins.str] verification_host: The full domain where the TXT record should be added.
         :param pulumi.Input[_builtins.str] verification_txt: TXT record value for domain verification.
         """
@@ -16220,6 +16586,8 @@ class OrganizationDiscoveryDomainsDiscoveryDomainArgs:
         pulumi.set(__self__, "status", status)
         if id is not None:
             pulumi.set(__self__, "id", id)
+        if use_for_organization_discovery is not None:
+            pulumi.set(__self__, "use_for_organization_discovery", use_for_organization_discovery)
         if verification_host is not None:
             pulumi.set(__self__, "verification_host", verification_host)
         if verification_txt is not None:
@@ -16260,6 +16628,18 @@ class OrganizationDiscoveryDomainsDiscoveryDomainArgs:
     @id.setter
     def id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="useForOrganizationDiscovery")
+    def use_for_organization_discovery(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Indicates whether this domain should be used for organization discovery during login.
+        """
+        return pulumi.get(self, "use_for_organization_discovery")
+
+    @use_for_organization_discovery.setter
+    def use_for_organization_discovery(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "use_for_organization_discovery", value)
 
     @_builtins.property
     @pulumi.getter(name="verificationHost")

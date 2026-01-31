@@ -25,6 +25,7 @@ class CustomDomainArgs:
                  type: pulumi.Input[_builtins.str],
                  custom_client_ip_header: Optional[pulumi.Input[_builtins.str]] = None,
                  domain_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 relying_party_identifier: Optional[pulumi.Input[_builtins.str]] = None,
                  tls_policy: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CustomDomain resource.
@@ -32,6 +33,7 @@ class CustomDomainArgs:
         :param pulumi.Input[_builtins.str] type: Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
         :param pulumi.Input[_builtins.str] custom_client_ip_header: The HTTP header to fetch the client's IP address. Cannot be set on auth0_managed domains.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] domain_metadata: Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
+        :param pulumi.Input[_builtins.str] relying_party_identifier: Relying Party ID (rpId) to be used for Passkeys on this custom domain. If not provided or set to null, the full domain will be used.
         :param pulumi.Input[_builtins.str] tls_policy: TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on self_managed domains.
         """
         pulumi.set(__self__, "domain", domain)
@@ -40,6 +42,8 @@ class CustomDomainArgs:
             pulumi.set(__self__, "custom_client_ip_header", custom_client_ip_header)
         if domain_metadata is not None:
             pulumi.set(__self__, "domain_metadata", domain_metadata)
+        if relying_party_identifier is not None:
+            pulumi.set(__self__, "relying_party_identifier", relying_party_identifier)
         if tls_policy is not None:
             pulumi.set(__self__, "tls_policy", tls_policy)
 
@@ -92,6 +96,18 @@ class CustomDomainArgs:
         pulumi.set(self, "domain_metadata", value)
 
     @_builtins.property
+    @pulumi.getter(name="relyingPartyIdentifier")
+    def relying_party_identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Relying Party ID (rpId) to be used for Passkeys on this custom domain. If not provided or set to null, the full domain will be used.
+        """
+        return pulumi.get(self, "relying_party_identifier")
+
+    @relying_party_identifier.setter
+    def relying_party_identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "relying_party_identifier", value)
+
+    @_builtins.property
     @pulumi.getter(name="tlsPolicy")
     def tls_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -113,6 +129,7 @@ class _CustomDomainState:
                  domain_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  origin_domain_name: Optional[pulumi.Input[_builtins.str]] = None,
                  primary: Optional[pulumi.Input[_builtins.bool]] = None,
+                 relying_party_identifier: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  tls_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -125,6 +142,7 @@ class _CustomDomainState:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] domain_metadata: Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
         :param pulumi.Input[_builtins.str] origin_domain_name: Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
         :param pulumi.Input[_builtins.bool] primary: Indicates whether this is a primary domain.
+        :param pulumi.Input[_builtins.str] relying_party_identifier: Relying Party ID (rpId) to be used for Passkeys on this custom domain. If not provided or set to null, the full domain will be used.
         :param pulumi.Input[_builtins.str] status: Configuration status for the custom domain. Options include `disabled`, `pending`, `pending_verification`, `ready` and `failed`.
         :param pulumi.Input[_builtins.str] tls_policy: TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on self_managed domains.
         :param pulumi.Input[_builtins.str] type: Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
@@ -145,6 +163,8 @@ class _CustomDomainState:
             pulumi.log.warn("""primary is deprecated: Primary field is no longer used and will be removed in a future release.""")
         if primary is not None:
             pulumi.set(__self__, "primary", primary)
+        if relying_party_identifier is not None:
+            pulumi.set(__self__, "relying_party_identifier", relying_party_identifier)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if tls_policy is not None:
@@ -228,6 +248,18 @@ class _CustomDomainState:
         pulumi.set(self, "primary", value)
 
     @_builtins.property
+    @pulumi.getter(name="relyingPartyIdentifier")
+    def relying_party_identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Relying Party ID (rpId) to be used for Passkeys on this custom domain. If not provided or set to null, the full domain will be used.
+        """
+        return pulumi.get(self, "relying_party_identifier")
+
+    @relying_party_identifier.setter
+    def relying_party_identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "relying_party_identifier", value)
+
+    @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -285,6 +317,7 @@ class CustomDomain(pulumi.CustomResource):
                  custom_client_ip_header: Optional[pulumi.Input[_builtins.str]] = None,
                  domain: Optional[pulumi.Input[_builtins.str]] = None,
                  domain_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 relying_party_identifier: Optional[pulumi.Input[_builtins.str]] = None,
                  tls_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -326,6 +359,7 @@ class CustomDomain(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] custom_client_ip_header: The HTTP header to fetch the client's IP address. Cannot be set on auth0_managed domains.
         :param pulumi.Input[_builtins.str] domain: Name of the custom domain.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] domain_metadata: Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
+        :param pulumi.Input[_builtins.str] relying_party_identifier: Relying Party ID (rpId) to be used for Passkeys on this custom domain. If not provided or set to null, the full domain will be used.
         :param pulumi.Input[_builtins.str] tls_policy: TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on self_managed domains.
         :param pulumi.Input[_builtins.str] type: Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
         """
@@ -386,6 +420,7 @@ class CustomDomain(pulumi.CustomResource):
                  custom_client_ip_header: Optional[pulumi.Input[_builtins.str]] = None,
                  domain: Optional[pulumi.Input[_builtins.str]] = None,
                  domain_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 relying_party_identifier: Optional[pulumi.Input[_builtins.str]] = None,
                  tls_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -402,6 +437,7 @@ class CustomDomain(pulumi.CustomResource):
                 raise TypeError("Missing required property 'domain'")
             __props__.__dict__["domain"] = domain
             __props__.__dict__["domain_metadata"] = domain_metadata
+            __props__.__dict__["relying_party_identifier"] = relying_party_identifier
             __props__.__dict__["tls_policy"] = tls_policy
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
@@ -427,6 +463,7 @@ class CustomDomain(pulumi.CustomResource):
             domain_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             origin_domain_name: Optional[pulumi.Input[_builtins.str]] = None,
             primary: Optional[pulumi.Input[_builtins.bool]] = None,
+            relying_party_identifier: Optional[pulumi.Input[_builtins.str]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None,
             tls_policy: Optional[pulumi.Input[_builtins.str]] = None,
             type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -444,6 +481,7 @@ class CustomDomain(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] domain_metadata: Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
         :param pulumi.Input[_builtins.str] origin_domain_name: Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
         :param pulumi.Input[_builtins.bool] primary: Indicates whether this is a primary domain.
+        :param pulumi.Input[_builtins.str] relying_party_identifier: Relying Party ID (rpId) to be used for Passkeys on this custom domain. If not provided or set to null, the full domain will be used.
         :param pulumi.Input[_builtins.str] status: Configuration status for the custom domain. Options include `disabled`, `pending`, `pending_verification`, `ready` and `failed`.
         :param pulumi.Input[_builtins.str] tls_policy: TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on self_managed domains.
         :param pulumi.Input[_builtins.str] type: Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
@@ -459,6 +497,7 @@ class CustomDomain(pulumi.CustomResource):
         __props__.__dict__["domain_metadata"] = domain_metadata
         __props__.__dict__["origin_domain_name"] = origin_domain_name
         __props__.__dict__["primary"] = primary
+        __props__.__dict__["relying_party_identifier"] = relying_party_identifier
         __props__.__dict__["status"] = status
         __props__.__dict__["tls_policy"] = tls_policy
         __props__.__dict__["type"] = type
@@ -513,6 +552,14 @@ class CustomDomain(pulumi.CustomResource):
         Indicates whether this is a primary domain.
         """
         return pulumi.get(self, "primary")
+
+    @_builtins.property
+    @pulumi.getter(name="relyingPartyIdentifier")
+    def relying_party_identifier(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Relying Party ID (rpId) to be used for Passkeys on this custom domain. If not provided or set to null, the full domain will be used.
+        """
+        return pulumi.get(self, "relying_party_identifier")
 
     @_builtins.property
     @pulumi.getter

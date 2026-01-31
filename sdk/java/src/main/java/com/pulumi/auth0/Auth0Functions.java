@@ -1478,12 +1478,190 @@ public final class Auth0Functions {
     /**
      * Data source to retrieve a client grants based on clientId and/or audience
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Client;
+     * import com.pulumi.auth0.ClientArgs;
+     * import com.pulumi.auth0.ResourceServer;
+     * import com.pulumi.auth0.ResourceServerArgs;
+     * import com.pulumi.auth0.inputs.ResourceServerAuthorizationDetailArgs;
+     * import com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationArgs;
+     * import com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationUserArgs;
+     * import com.pulumi.auth0.ResourceServerScopes;
+     * import com.pulumi.auth0.ResourceServerScopesArgs;
+     * import com.pulumi.auth0.inputs.ResourceServerScopesScopeArgs;
+     * import com.pulumi.auth0.ClientGrant;
+     * import com.pulumi.auth0.ClientGrantArgs;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetClientGrantsArgs;
+     * import com.pulumi.resources.CustomResourceOptions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var myClient = new Client("myClient", ClientArgs.builder()
+     *             .name("Example Application (Managed by Terraform)")
+     *             .build());
+     * 
+     *         var myResourceServer = new ResourceServer("myResourceServer", ResourceServerArgs.builder()
+     *             .name("Example Resource Server (Managed by Terraform)")
+     *             .identifier("https://api.example.com/client-grant")
+     *             .authorizationDetails(ResourceServerAuthorizationDetailArgs.builder()
+     *                 .type("payment")
+     *                 .build())
+     *             .subjectTypeAuthorization(ResourceServerSubjectTypeAuthorizationArgs.builder()
+     *                 .user(ResourceServerSubjectTypeAuthorizationUserArgs.builder()
+     *                     .policy("allow_all")
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         var myScopes = new ResourceServerScopes("myScopes", ResourceServerScopesArgs.builder()
+     *             .resourceServerIdentifier(myResourceServer.identifier())
+     *             .scopes(ResourceServerScopesScopeArgs.builder()
+     *                 .name("create:foo")
+     *                 .build())
+     *             .build(), CustomResourceOptions.builder()
+     *                 .dependsOn(myResourceServer)
+     *                 .build());
+     * 
+     *         var myClientGrant = new ClientGrant("myClientGrant", ClientGrantArgs.builder()
+     *             .clientId(myClient.id())
+     *             .audience(myResourceServer.identifier())
+     *             .authorizationDetailsTypes("payment")
+     *             .subjectType("user")
+     *             .allowAllScopes(true)
+     *             .build());
+     * 
+     *         final var filterByClientId = Auth0Functions.getClientGrants(GetClientGrantsArgs.builder()
+     *             .clientId(myClient.id())
+     *             .build());
+     * 
+     *         final var filterByAudience = Auth0Functions.getClientGrants(GetClientGrantsArgs.builder()
+     *             .audience(myResourceServer.identifier())
+     *             .build());
+     * 
+     *         final var filterByClientIdAndAudience = Auth0Functions.getClientGrants(GetClientGrantsArgs.builder()
+     *             .clientId(myClient.id())
+     *             .audience(myResourceServer.identifier())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetClientGrantsResult> getClientGrants() {
         return getClientGrants(GetClientGrantsArgs.Empty, InvokeOptions.Empty);
     }
     /**
      * Data source to retrieve a client grants based on clientId and/or audience
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Client;
+     * import com.pulumi.auth0.ClientArgs;
+     * import com.pulumi.auth0.ResourceServer;
+     * import com.pulumi.auth0.ResourceServerArgs;
+     * import com.pulumi.auth0.inputs.ResourceServerAuthorizationDetailArgs;
+     * import com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationArgs;
+     * import com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationUserArgs;
+     * import com.pulumi.auth0.ResourceServerScopes;
+     * import com.pulumi.auth0.ResourceServerScopesArgs;
+     * import com.pulumi.auth0.inputs.ResourceServerScopesScopeArgs;
+     * import com.pulumi.auth0.ClientGrant;
+     * import com.pulumi.auth0.ClientGrantArgs;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetClientGrantsArgs;
+     * import com.pulumi.resources.CustomResourceOptions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var myClient = new Client("myClient", ClientArgs.builder()
+     *             .name("Example Application (Managed by Terraform)")
+     *             .build());
+     * 
+     *         var myResourceServer = new ResourceServer("myResourceServer", ResourceServerArgs.builder()
+     *             .name("Example Resource Server (Managed by Terraform)")
+     *             .identifier("https://api.example.com/client-grant")
+     *             .authorizationDetails(ResourceServerAuthorizationDetailArgs.builder()
+     *                 .type("payment")
+     *                 .build())
+     *             .subjectTypeAuthorization(ResourceServerSubjectTypeAuthorizationArgs.builder()
+     *                 .user(ResourceServerSubjectTypeAuthorizationUserArgs.builder()
+     *                     .policy("allow_all")
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         var myScopes = new ResourceServerScopes("myScopes", ResourceServerScopesArgs.builder()
+     *             .resourceServerIdentifier(myResourceServer.identifier())
+     *             .scopes(ResourceServerScopesScopeArgs.builder()
+     *                 .name("create:foo")
+     *                 .build())
+     *             .build(), CustomResourceOptions.builder()
+     *                 .dependsOn(myResourceServer)
+     *                 .build());
+     * 
+     *         var myClientGrant = new ClientGrant("myClientGrant", ClientGrantArgs.builder()
+     *             .clientId(myClient.id())
+     *             .audience(myResourceServer.identifier())
+     *             .authorizationDetailsTypes("payment")
+     *             .subjectType("user")
+     *             .allowAllScopes(true)
+     *             .build());
+     * 
+     *         final var filterByClientId = Auth0Functions.getClientGrants(GetClientGrantsArgs.builder()
+     *             .clientId(myClient.id())
+     *             .build());
+     * 
+     *         final var filterByAudience = Auth0Functions.getClientGrants(GetClientGrantsArgs.builder()
+     *             .audience(myResourceServer.identifier())
+     *             .build());
+     * 
+     *         final var filterByClientIdAndAudience = Auth0Functions.getClientGrants(GetClientGrantsArgs.builder()
+     *             .clientId(myClient.id())
+     *             .audience(myResourceServer.identifier())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetClientGrantsResult> getClientGrantsPlain() {
@@ -1492,12 +1670,190 @@ public final class Auth0Functions {
     /**
      * Data source to retrieve a client grants based on clientId and/or audience
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Client;
+     * import com.pulumi.auth0.ClientArgs;
+     * import com.pulumi.auth0.ResourceServer;
+     * import com.pulumi.auth0.ResourceServerArgs;
+     * import com.pulumi.auth0.inputs.ResourceServerAuthorizationDetailArgs;
+     * import com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationArgs;
+     * import com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationUserArgs;
+     * import com.pulumi.auth0.ResourceServerScopes;
+     * import com.pulumi.auth0.ResourceServerScopesArgs;
+     * import com.pulumi.auth0.inputs.ResourceServerScopesScopeArgs;
+     * import com.pulumi.auth0.ClientGrant;
+     * import com.pulumi.auth0.ClientGrantArgs;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetClientGrantsArgs;
+     * import com.pulumi.resources.CustomResourceOptions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var myClient = new Client("myClient", ClientArgs.builder()
+     *             .name("Example Application (Managed by Terraform)")
+     *             .build());
+     * 
+     *         var myResourceServer = new ResourceServer("myResourceServer", ResourceServerArgs.builder()
+     *             .name("Example Resource Server (Managed by Terraform)")
+     *             .identifier("https://api.example.com/client-grant")
+     *             .authorizationDetails(ResourceServerAuthorizationDetailArgs.builder()
+     *                 .type("payment")
+     *                 .build())
+     *             .subjectTypeAuthorization(ResourceServerSubjectTypeAuthorizationArgs.builder()
+     *                 .user(ResourceServerSubjectTypeAuthorizationUserArgs.builder()
+     *                     .policy("allow_all")
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         var myScopes = new ResourceServerScopes("myScopes", ResourceServerScopesArgs.builder()
+     *             .resourceServerIdentifier(myResourceServer.identifier())
+     *             .scopes(ResourceServerScopesScopeArgs.builder()
+     *                 .name("create:foo")
+     *                 .build())
+     *             .build(), CustomResourceOptions.builder()
+     *                 .dependsOn(myResourceServer)
+     *                 .build());
+     * 
+     *         var myClientGrant = new ClientGrant("myClientGrant", ClientGrantArgs.builder()
+     *             .clientId(myClient.id())
+     *             .audience(myResourceServer.identifier())
+     *             .authorizationDetailsTypes("payment")
+     *             .subjectType("user")
+     *             .allowAllScopes(true)
+     *             .build());
+     * 
+     *         final var filterByClientId = Auth0Functions.getClientGrants(GetClientGrantsArgs.builder()
+     *             .clientId(myClient.id())
+     *             .build());
+     * 
+     *         final var filterByAudience = Auth0Functions.getClientGrants(GetClientGrantsArgs.builder()
+     *             .audience(myResourceServer.identifier())
+     *             .build());
+     * 
+     *         final var filterByClientIdAndAudience = Auth0Functions.getClientGrants(GetClientGrantsArgs.builder()
+     *             .clientId(myClient.id())
+     *             .audience(myResourceServer.identifier())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetClientGrantsResult> getClientGrants(GetClientGrantsArgs args) {
         return getClientGrants(args, InvokeOptions.Empty);
     }
     /**
      * Data source to retrieve a client grants based on clientId and/or audience
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Client;
+     * import com.pulumi.auth0.ClientArgs;
+     * import com.pulumi.auth0.ResourceServer;
+     * import com.pulumi.auth0.ResourceServerArgs;
+     * import com.pulumi.auth0.inputs.ResourceServerAuthorizationDetailArgs;
+     * import com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationArgs;
+     * import com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationUserArgs;
+     * import com.pulumi.auth0.ResourceServerScopes;
+     * import com.pulumi.auth0.ResourceServerScopesArgs;
+     * import com.pulumi.auth0.inputs.ResourceServerScopesScopeArgs;
+     * import com.pulumi.auth0.ClientGrant;
+     * import com.pulumi.auth0.ClientGrantArgs;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetClientGrantsArgs;
+     * import com.pulumi.resources.CustomResourceOptions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var myClient = new Client("myClient", ClientArgs.builder()
+     *             .name("Example Application (Managed by Terraform)")
+     *             .build());
+     * 
+     *         var myResourceServer = new ResourceServer("myResourceServer", ResourceServerArgs.builder()
+     *             .name("Example Resource Server (Managed by Terraform)")
+     *             .identifier("https://api.example.com/client-grant")
+     *             .authorizationDetails(ResourceServerAuthorizationDetailArgs.builder()
+     *                 .type("payment")
+     *                 .build())
+     *             .subjectTypeAuthorization(ResourceServerSubjectTypeAuthorizationArgs.builder()
+     *                 .user(ResourceServerSubjectTypeAuthorizationUserArgs.builder()
+     *                     .policy("allow_all")
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         var myScopes = new ResourceServerScopes("myScopes", ResourceServerScopesArgs.builder()
+     *             .resourceServerIdentifier(myResourceServer.identifier())
+     *             .scopes(ResourceServerScopesScopeArgs.builder()
+     *                 .name("create:foo")
+     *                 .build())
+     *             .build(), CustomResourceOptions.builder()
+     *                 .dependsOn(myResourceServer)
+     *                 .build());
+     * 
+     *         var myClientGrant = new ClientGrant("myClientGrant", ClientGrantArgs.builder()
+     *             .clientId(myClient.id())
+     *             .audience(myResourceServer.identifier())
+     *             .authorizationDetailsTypes("payment")
+     *             .subjectType("user")
+     *             .allowAllScopes(true)
+     *             .build());
+     * 
+     *         final var filterByClientId = Auth0Functions.getClientGrants(GetClientGrantsArgs.builder()
+     *             .clientId(myClient.id())
+     *             .build());
+     * 
+     *         final var filterByAudience = Auth0Functions.getClientGrants(GetClientGrantsArgs.builder()
+     *             .audience(myResourceServer.identifier())
+     *             .build());
+     * 
+     *         final var filterByClientIdAndAudience = Auth0Functions.getClientGrants(GetClientGrantsArgs.builder()
+     *             .clientId(myClient.id())
+     *             .audience(myResourceServer.identifier())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetClientGrantsResult> getClientGrantsPlain(GetClientGrantsPlainArgs args) {
@@ -1506,6 +1862,95 @@ public final class Auth0Functions {
     /**
      * Data source to retrieve a client grants based on clientId and/or audience
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Client;
+     * import com.pulumi.auth0.ClientArgs;
+     * import com.pulumi.auth0.ResourceServer;
+     * import com.pulumi.auth0.ResourceServerArgs;
+     * import com.pulumi.auth0.inputs.ResourceServerAuthorizationDetailArgs;
+     * import com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationArgs;
+     * import com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationUserArgs;
+     * import com.pulumi.auth0.ResourceServerScopes;
+     * import com.pulumi.auth0.ResourceServerScopesArgs;
+     * import com.pulumi.auth0.inputs.ResourceServerScopesScopeArgs;
+     * import com.pulumi.auth0.ClientGrant;
+     * import com.pulumi.auth0.ClientGrantArgs;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetClientGrantsArgs;
+     * import com.pulumi.resources.CustomResourceOptions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var myClient = new Client("myClient", ClientArgs.builder()
+     *             .name("Example Application (Managed by Terraform)")
+     *             .build());
+     * 
+     *         var myResourceServer = new ResourceServer("myResourceServer", ResourceServerArgs.builder()
+     *             .name("Example Resource Server (Managed by Terraform)")
+     *             .identifier("https://api.example.com/client-grant")
+     *             .authorizationDetails(ResourceServerAuthorizationDetailArgs.builder()
+     *                 .type("payment")
+     *                 .build())
+     *             .subjectTypeAuthorization(ResourceServerSubjectTypeAuthorizationArgs.builder()
+     *                 .user(ResourceServerSubjectTypeAuthorizationUserArgs.builder()
+     *                     .policy("allow_all")
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         var myScopes = new ResourceServerScopes("myScopes", ResourceServerScopesArgs.builder()
+     *             .resourceServerIdentifier(myResourceServer.identifier())
+     *             .scopes(ResourceServerScopesScopeArgs.builder()
+     *                 .name("create:foo")
+     *                 .build())
+     *             .build(), CustomResourceOptions.builder()
+     *                 .dependsOn(myResourceServer)
+     *                 .build());
+     * 
+     *         var myClientGrant = new ClientGrant("myClientGrant", ClientGrantArgs.builder()
+     *             .clientId(myClient.id())
+     *             .audience(myResourceServer.identifier())
+     *             .authorizationDetailsTypes("payment")
+     *             .subjectType("user")
+     *             .allowAllScopes(true)
+     *             .build());
+     * 
+     *         final var filterByClientId = Auth0Functions.getClientGrants(GetClientGrantsArgs.builder()
+     *             .clientId(myClient.id())
+     *             .build());
+     * 
+     *         final var filterByAudience = Auth0Functions.getClientGrants(GetClientGrantsArgs.builder()
+     *             .audience(myResourceServer.identifier())
+     *             .build());
+     * 
+     *         final var filterByClientIdAndAudience = Auth0Functions.getClientGrants(GetClientGrantsArgs.builder()
+     *             .clientId(myClient.id())
+     *             .audience(myResourceServer.identifier())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetClientGrantsResult> getClientGrants(GetClientGrantsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("auth0:index/getClientGrants:getClientGrants", TypeShape.of(GetClientGrantsResult.class), args, Utilities.withVersion(options));
@@ -1513,12 +1958,190 @@ public final class Auth0Functions {
     /**
      * Data source to retrieve a client grants based on clientId and/or audience
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Client;
+     * import com.pulumi.auth0.ClientArgs;
+     * import com.pulumi.auth0.ResourceServer;
+     * import com.pulumi.auth0.ResourceServerArgs;
+     * import com.pulumi.auth0.inputs.ResourceServerAuthorizationDetailArgs;
+     * import com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationArgs;
+     * import com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationUserArgs;
+     * import com.pulumi.auth0.ResourceServerScopes;
+     * import com.pulumi.auth0.ResourceServerScopesArgs;
+     * import com.pulumi.auth0.inputs.ResourceServerScopesScopeArgs;
+     * import com.pulumi.auth0.ClientGrant;
+     * import com.pulumi.auth0.ClientGrantArgs;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetClientGrantsArgs;
+     * import com.pulumi.resources.CustomResourceOptions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var myClient = new Client("myClient", ClientArgs.builder()
+     *             .name("Example Application (Managed by Terraform)")
+     *             .build());
+     * 
+     *         var myResourceServer = new ResourceServer("myResourceServer", ResourceServerArgs.builder()
+     *             .name("Example Resource Server (Managed by Terraform)")
+     *             .identifier("https://api.example.com/client-grant")
+     *             .authorizationDetails(ResourceServerAuthorizationDetailArgs.builder()
+     *                 .type("payment")
+     *                 .build())
+     *             .subjectTypeAuthorization(ResourceServerSubjectTypeAuthorizationArgs.builder()
+     *                 .user(ResourceServerSubjectTypeAuthorizationUserArgs.builder()
+     *                     .policy("allow_all")
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         var myScopes = new ResourceServerScopes("myScopes", ResourceServerScopesArgs.builder()
+     *             .resourceServerIdentifier(myResourceServer.identifier())
+     *             .scopes(ResourceServerScopesScopeArgs.builder()
+     *                 .name("create:foo")
+     *                 .build())
+     *             .build(), CustomResourceOptions.builder()
+     *                 .dependsOn(myResourceServer)
+     *                 .build());
+     * 
+     *         var myClientGrant = new ClientGrant("myClientGrant", ClientGrantArgs.builder()
+     *             .clientId(myClient.id())
+     *             .audience(myResourceServer.identifier())
+     *             .authorizationDetailsTypes("payment")
+     *             .subjectType("user")
+     *             .allowAllScopes(true)
+     *             .build());
+     * 
+     *         final var filterByClientId = Auth0Functions.getClientGrants(GetClientGrantsArgs.builder()
+     *             .clientId(myClient.id())
+     *             .build());
+     * 
+     *         final var filterByAudience = Auth0Functions.getClientGrants(GetClientGrantsArgs.builder()
+     *             .audience(myResourceServer.identifier())
+     *             .build());
+     * 
+     *         final var filterByClientIdAndAudience = Auth0Functions.getClientGrants(GetClientGrantsArgs.builder()
+     *             .clientId(myClient.id())
+     *             .audience(myResourceServer.identifier())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetClientGrantsResult> getClientGrants(GetClientGrantsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("auth0:index/getClientGrants:getClientGrants", TypeShape.of(GetClientGrantsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source to retrieve a client grants based on clientId and/or audience
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Client;
+     * import com.pulumi.auth0.ClientArgs;
+     * import com.pulumi.auth0.ResourceServer;
+     * import com.pulumi.auth0.ResourceServerArgs;
+     * import com.pulumi.auth0.inputs.ResourceServerAuthorizationDetailArgs;
+     * import com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationArgs;
+     * import com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationUserArgs;
+     * import com.pulumi.auth0.ResourceServerScopes;
+     * import com.pulumi.auth0.ResourceServerScopesArgs;
+     * import com.pulumi.auth0.inputs.ResourceServerScopesScopeArgs;
+     * import com.pulumi.auth0.ClientGrant;
+     * import com.pulumi.auth0.ClientGrantArgs;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetClientGrantsArgs;
+     * import com.pulumi.resources.CustomResourceOptions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var myClient = new Client("myClient", ClientArgs.builder()
+     *             .name("Example Application (Managed by Terraform)")
+     *             .build());
+     * 
+     *         var myResourceServer = new ResourceServer("myResourceServer", ResourceServerArgs.builder()
+     *             .name("Example Resource Server (Managed by Terraform)")
+     *             .identifier("https://api.example.com/client-grant")
+     *             .authorizationDetails(ResourceServerAuthorizationDetailArgs.builder()
+     *                 .type("payment")
+     *                 .build())
+     *             .subjectTypeAuthorization(ResourceServerSubjectTypeAuthorizationArgs.builder()
+     *                 .user(ResourceServerSubjectTypeAuthorizationUserArgs.builder()
+     *                     .policy("allow_all")
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         var myScopes = new ResourceServerScopes("myScopes", ResourceServerScopesArgs.builder()
+     *             .resourceServerIdentifier(myResourceServer.identifier())
+     *             .scopes(ResourceServerScopesScopeArgs.builder()
+     *                 .name("create:foo")
+     *                 .build())
+     *             .build(), CustomResourceOptions.builder()
+     *                 .dependsOn(myResourceServer)
+     *                 .build());
+     * 
+     *         var myClientGrant = new ClientGrant("myClientGrant", ClientGrantArgs.builder()
+     *             .clientId(myClient.id())
+     *             .audience(myResourceServer.identifier())
+     *             .authorizationDetailsTypes("payment")
+     *             .subjectType("user")
+     *             .allowAllScopes(true)
+     *             .build());
+     * 
+     *         final var filterByClientId = Auth0Functions.getClientGrants(GetClientGrantsArgs.builder()
+     *             .clientId(myClient.id())
+     *             .build());
+     * 
+     *         final var filterByAudience = Auth0Functions.getClientGrants(GetClientGrantsArgs.builder()
+     *             .audience(myResourceServer.identifier())
+     *             .build());
+     * 
+     *         final var filterByClientIdAndAudience = Auth0Functions.getClientGrants(GetClientGrantsArgs.builder()
+     *             .clientId(myClient.id())
+     *             .audience(myResourceServer.identifier())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetClientGrantsResult> getClientGrantsPlain(GetClientGrantsPlainArgs args, InvokeOptions options) {

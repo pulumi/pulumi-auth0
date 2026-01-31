@@ -6,6 +6,7 @@ package com.pulumi.auth0.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
 
 @CustomType
@@ -15,6 +16,11 @@ public final class GetConnectionOptionAttributePhoneNumberIdentifier {
      * 
      */
     private Boolean active;
+    /**
+     * @return Gets and Sets the default authentication method for the phoneNumber identifier type. Valid values: `password`, `phoneOtp`
+     * 
+     */
+    private String defaultMethod;
 
     private GetConnectionOptionAttributePhoneNumberIdentifier() {}
     /**
@@ -23,6 +29,13 @@ public final class GetConnectionOptionAttributePhoneNumberIdentifier {
      */
     public Boolean active() {
         return this.active;
+    }
+    /**
+     * @return Gets and Sets the default authentication method for the phoneNumber identifier type. Valid values: `password`, `phoneOtp`
+     * 
+     */
+    public String defaultMethod() {
+        return this.defaultMethod;
     }
 
     public static Builder builder() {
@@ -35,10 +48,12 @@ public final class GetConnectionOptionAttributePhoneNumberIdentifier {
     @CustomType.Builder
     public static final class Builder {
         private Boolean active;
+        private String defaultMethod;
         public Builder() {}
         public Builder(GetConnectionOptionAttributePhoneNumberIdentifier defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.active = defaults.active;
+    	      this.defaultMethod = defaults.defaultMethod;
         }
 
         @CustomType.Setter
@@ -49,9 +64,18 @@ public final class GetConnectionOptionAttributePhoneNumberIdentifier {
             this.active = active;
             return this;
         }
+        @CustomType.Setter
+        public Builder defaultMethod(String defaultMethod) {
+            if (defaultMethod == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOptionAttributePhoneNumberIdentifier", "defaultMethod");
+            }
+            this.defaultMethod = defaultMethod;
+            return this;
+        }
         public GetConnectionOptionAttributePhoneNumberIdentifier build() {
             final var _resultValue = new GetConnectionOptionAttributePhoneNumberIdentifier();
             _resultValue.active = active;
+            _resultValue.defaultMethod = defaultMethod;
             return _resultValue;
         }
     }

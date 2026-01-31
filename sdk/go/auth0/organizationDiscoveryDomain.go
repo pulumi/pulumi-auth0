@@ -22,6 +22,8 @@ type OrganizationDiscoveryDomain struct {
 	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
 	// Verification status. Must be either 'pending' or 'verified'.
 	Status pulumi.StringOutput `pulumi:"status"`
+	// Indicates whether this domain should be used for organization discovery during login.
+	UseForOrganizationDiscovery pulumi.BoolOutput `pulumi:"useForOrganizationDiscovery"`
 	// The full domain where the TXT record should be added.
 	VerificationHost pulumi.StringOutput `pulumi:"verificationHost"`
 	// TXT record value for domain verification.
@@ -73,6 +75,8 @@ type organizationDiscoveryDomainState struct {
 	OrganizationId *string `pulumi:"organizationId"`
 	// Verification status. Must be either 'pending' or 'verified'.
 	Status *string `pulumi:"status"`
+	// Indicates whether this domain should be used for organization discovery during login.
+	UseForOrganizationDiscovery *bool `pulumi:"useForOrganizationDiscovery"`
 	// The full domain where the TXT record should be added.
 	VerificationHost *string `pulumi:"verificationHost"`
 	// TXT record value for domain verification.
@@ -86,6 +90,8 @@ type OrganizationDiscoveryDomainState struct {
 	OrganizationId pulumi.StringPtrInput
 	// Verification status. Must be either 'pending' or 'verified'.
 	Status pulumi.StringPtrInput
+	// Indicates whether this domain should be used for organization discovery during login.
+	UseForOrganizationDiscovery pulumi.BoolPtrInput
 	// The full domain where the TXT record should be added.
 	VerificationHost pulumi.StringPtrInput
 	// TXT record value for domain verification.
@@ -103,6 +109,8 @@ type organizationDiscoveryDomainArgs struct {
 	OrganizationId string `pulumi:"organizationId"`
 	// Verification status. Must be either 'pending' or 'verified'.
 	Status string `pulumi:"status"`
+	// Indicates whether this domain should be used for organization discovery during login.
+	UseForOrganizationDiscovery *bool `pulumi:"useForOrganizationDiscovery"`
 }
 
 // The set of arguments for constructing a OrganizationDiscoveryDomain resource.
@@ -113,6 +121,8 @@ type OrganizationDiscoveryDomainArgs struct {
 	OrganizationId pulumi.StringInput
 	// Verification status. Must be either 'pending' or 'verified'.
 	Status pulumi.StringInput
+	// Indicates whether this domain should be used for organization discovery during login.
+	UseForOrganizationDiscovery pulumi.BoolPtrInput
 }
 
 func (OrganizationDiscoveryDomainArgs) ElementType() reflect.Type {
@@ -215,6 +225,11 @@ func (o OrganizationDiscoveryDomainOutput) OrganizationId() pulumi.StringOutput 
 // Verification status. Must be either 'pending' or 'verified'.
 func (o OrganizationDiscoveryDomainOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationDiscoveryDomain) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// Indicates whether this domain should be used for organization discovery during login.
+func (o OrganizationDiscoveryDomainOutput) UseForOrganizationDiscovery() pulumi.BoolOutput {
+	return o.ApplyT(func(v *OrganizationDiscoveryDomain) pulumi.BoolOutput { return v.UseForOrganizationDiscovery }).(pulumi.BoolOutput)
 }
 
 // The full domain where the TXT record should be added.

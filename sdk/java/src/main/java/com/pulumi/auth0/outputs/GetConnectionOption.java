@@ -8,6 +8,7 @@ import com.pulumi.auth0.outputs.GetConnectionOptionAttributeMap;
 import com.pulumi.auth0.outputs.GetConnectionOptionAuthenticationMethod;
 import com.pulumi.auth0.outputs.GetConnectionOptionConnectionSetting;
 import com.pulumi.auth0.outputs.GetConnectionOptionCustomHeader;
+import com.pulumi.auth0.outputs.GetConnectionOptionCustomPasswordHash;
 import com.pulumi.auth0.outputs.GetConnectionOptionDecryptionKey;
 import com.pulumi.auth0.outputs.GetConnectionOptionGatewayAuthentication;
 import com.pulumi.auth0.outputs.GetConnectionOptionIdpInitiated;
@@ -127,6 +128,11 @@ public final class GetConnectionOption {
      */
     private List<GetConnectionOptionCustomHeader> customHeaders;
     /**
+     * @return Configure custom password hashing within a connection. (EA only)
+     * 
+     */
+    private List<GetConnectionOptionCustomPasswordHash> customPasswordHashes;
+    /**
      * @return A map of scripts used to integrate with a custom database.
      * 
      */
@@ -181,6 +187,11 @@ public final class GetConnectionOption {
      * 
      */
     private List<String> domainAliases;
+    /**
+     * @return Indicates whether to request the email scope. Used by some OAuth2 connections (e.g., LINE).
+     * 
+     */
+    private Boolean email;
     /**
      * @return Set to `true` to inject context into custom DB scripts (warning: cannot be disabled once enabled).
      * 
@@ -702,6 +713,13 @@ public final class GetConnectionOption {
         return this.customHeaders;
     }
     /**
+     * @return Configure custom password hashing within a connection. (EA only)
+     * 
+     */
+    public List<GetConnectionOptionCustomPasswordHash> customPasswordHashes() {
+        return this.customPasswordHashes;
+    }
+    /**
      * @return A map of scripts used to integrate with a custom database.
      * 
      */
@@ -777,6 +795,13 @@ public final class GetConnectionOption {
      */
     public List<String> domainAliases() {
         return this.domainAliases;
+    }
+    /**
+     * @return Indicates whether to request the email scope. Used by some OAuth2 connections (e.g., LINE).
+     * 
+     */
+    public Boolean email() {
+        return this.email;
     }
     /**
      * @return Set to `true` to inject context into custom DB scripts (warning: cannot be disabled once enabled).
@@ -1346,6 +1371,7 @@ public final class GetConnectionOption {
         private String consumerKey;
         private String consumerSecret;
         private List<GetConnectionOptionCustomHeader> customHeaders;
+        private List<GetConnectionOptionCustomPasswordHash> customPasswordHashes;
         private Map<String,String> customScripts;
         private Boolean debug;
         private List<GetConnectionOptionDecryptionKey> decryptionKeys;
@@ -1357,6 +1383,7 @@ public final class GetConnectionOption {
         private String discoveryUrl;
         private String domain;
         private List<String> domainAliases;
+        private Boolean email;
         private Boolean enableScriptContext;
         private Boolean enabledDatabaseCustomization;
         private String entityId;
@@ -1456,6 +1483,7 @@ public final class GetConnectionOption {
     	      this.consumerKey = defaults.consumerKey;
     	      this.consumerSecret = defaults.consumerSecret;
     	      this.customHeaders = defaults.customHeaders;
+    	      this.customPasswordHashes = defaults.customPasswordHashes;
     	      this.customScripts = defaults.customScripts;
     	      this.debug = defaults.debug;
     	      this.decryptionKeys = defaults.decryptionKeys;
@@ -1467,6 +1495,7 @@ public final class GetConnectionOption {
     	      this.discoveryUrl = defaults.discoveryUrl;
     	      this.domain = defaults.domain;
     	      this.domainAliases = defaults.domainAliases;
+    	      this.email = defaults.email;
     	      this.enableScriptContext = defaults.enableScriptContext;
     	      this.enabledDatabaseCustomization = defaults.enabledDatabaseCustomization;
     	      this.entityId = defaults.entityId;
@@ -1717,6 +1746,17 @@ public final class GetConnectionOption {
             return customHeaders(List.of(customHeaders));
         }
         @CustomType.Setter
+        public Builder customPasswordHashes(List<GetConnectionOptionCustomPasswordHash> customPasswordHashes) {
+            if (customPasswordHashes == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOption", "customPasswordHashes");
+            }
+            this.customPasswordHashes = customPasswordHashes;
+            return this;
+        }
+        public Builder customPasswordHashes(GetConnectionOptionCustomPasswordHash... customPasswordHashes) {
+            return customPasswordHashes(List.of(customPasswordHashes));
+        }
+        @CustomType.Setter
         public Builder customScripts(Map<String,String> customScripts) {
             if (customScripts == null) {
               throw new MissingRequiredPropertyException("GetConnectionOption", "customScripts");
@@ -1809,6 +1849,14 @@ public final class GetConnectionOption {
         }
         public Builder domainAliases(String... domainAliases) {
             return domainAliases(List.of(domainAliases));
+        }
+        @CustomType.Setter
+        public Builder email(Boolean email) {
+            if (email == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOption", "email");
+            }
+            this.email = email;
+            return this;
         }
         @CustomType.Setter
         public Builder enableScriptContext(Boolean enableScriptContext) {
@@ -2492,6 +2540,7 @@ public final class GetConnectionOption {
             _resultValue.consumerKey = consumerKey;
             _resultValue.consumerSecret = consumerSecret;
             _resultValue.customHeaders = customHeaders;
+            _resultValue.customPasswordHashes = customPasswordHashes;
             _resultValue.customScripts = customScripts;
             _resultValue.debug = debug;
             _resultValue.decryptionKeys = decryptionKeys;
@@ -2503,6 +2552,7 @@ public final class GetConnectionOption {
             _resultValue.discoveryUrl = discoveryUrl;
             _resultValue.domain = domain;
             _resultValue.domainAliases = domainAliases;
+            _resultValue.email = email;
             _resultValue.enableScriptContext = enableScriptContext;
             _resultValue.enabledDatabaseCustomization = enabledDatabaseCustomization;
             _resultValue.entityId = entityId;

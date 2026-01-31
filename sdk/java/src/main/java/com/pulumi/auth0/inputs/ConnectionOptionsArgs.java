@@ -8,6 +8,7 @@ import com.pulumi.auth0.inputs.ConnectionOptionsAttributeMapArgs;
 import com.pulumi.auth0.inputs.ConnectionOptionsAuthenticationMethodArgs;
 import com.pulumi.auth0.inputs.ConnectionOptionsConnectionSettingsArgs;
 import com.pulumi.auth0.inputs.ConnectionOptionsCustomHeaderArgs;
+import com.pulumi.auth0.inputs.ConnectionOptionsCustomPasswordHashArgs;
 import com.pulumi.auth0.inputs.ConnectionOptionsDecryptionKeyArgs;
 import com.pulumi.auth0.inputs.ConnectionOptionsGatewayAuthenticationArgs;
 import com.pulumi.auth0.inputs.ConnectionOptionsIdpInitiatedArgs;
@@ -322,6 +323,21 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Configure custom password hashing within a connection. (EA only)
+     * 
+     */
+    @Import(name="customPasswordHash")
+    private @Nullable Output<ConnectionOptionsCustomPasswordHashArgs> customPasswordHash;
+
+    /**
+     * @return Configure custom password hashing within a connection. (EA only)
+     * 
+     */
+    public Optional<Output<ConnectionOptionsCustomPasswordHashArgs>> customPasswordHash() {
+        return Optional.ofNullable(this.customPasswordHash);
+    }
+
+    /**
      * A map of scripts used to integrate with a custom database.
      * 
      */
@@ -484,6 +500,21 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<List<String>>> domainAliases() {
         return Optional.ofNullable(this.domainAliases);
+    }
+
+    /**
+     * Indicates whether to request the email scope. Used by some OAuth2 connections (e.g., LINE).
+     * 
+     */
+    @Import(name="email")
+    private @Nullable Output<Boolean> email;
+
+    /**
+     * @return Indicates whether to request the email scope. Used by some OAuth2 connections (e.g., LINE).
+     * 
+     */
+    public Optional<Output<Boolean>> email() {
+        return Optional.ofNullable(this.email);
     }
 
     /**
@@ -1663,6 +1694,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         this.consumerKey = $.consumerKey;
         this.consumerSecret = $.consumerSecret;
         this.customHeaders = $.customHeaders;
+        this.customPasswordHash = $.customPasswordHash;
         this.customScripts = $.customScripts;
         this.debug = $.debug;
         this.decryptionKey = $.decryptionKey;
@@ -1674,6 +1706,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         this.discoveryUrl = $.discoveryUrl;
         this.domain = $.domain;
         this.domainAliases = $.domainAliases;
+        this.email = $.email;
         this.enableScriptContext = $.enableScriptContext;
         this.enabledDatabaseCustomization = $.enabledDatabaseCustomization;
         this.entityId = $.entityId;
@@ -2211,6 +2244,27 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param customPasswordHash Configure custom password hashing within a connection. (EA only)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customPasswordHash(@Nullable Output<ConnectionOptionsCustomPasswordHashArgs> customPasswordHash) {
+            $.customPasswordHash = customPasswordHash;
+            return this;
+        }
+
+        /**
+         * @param customPasswordHash Configure custom password hashing within a connection. (EA only)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customPasswordHash(ConnectionOptionsCustomPasswordHashArgs customPasswordHash) {
+            return customPasswordHash(Output.of(customPasswordHash));
+        }
+
+        /**
          * @param customScripts A map of scripts used to integrate with a custom database.
          * 
          * @return builder
@@ -2449,6 +2503,27 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder domainAliases(String... domainAliases) {
             return domainAliases(List.of(domainAliases));
+        }
+
+        /**
+         * @param email Indicates whether to request the email scope. Used by some OAuth2 connections (e.g., LINE).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder email(@Nullable Output<Boolean> email) {
+            $.email = email;
+            return this;
+        }
+
+        /**
+         * @param email Indicates whether to request the email scope. Used by some OAuth2 connections (e.g., LINE).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder email(Boolean email) {
+            return email(Output.of(email));
         }
 
         /**

@@ -88,6 +88,7 @@ import (
 //					pulumi.String("payment"),
 //					pulumi.String("shipping"),
 //				},
+//				AllowAllScopes: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
@@ -112,6 +113,8 @@ import (
 type ClientGrant struct {
 	pulumi.CustomResourceState
 
+	// When set to `true`, all scopes configured on the resource server are allowed for this client grant. `scopes` can not be provided when this is set to `true`. EA Only.
+	AllowAllScopes pulumi.BoolPtrOutput `pulumi:"allowAllScopes"`
 	// If enabled, any organization can be used with this grant. If disabled (default), the grant must be explicitly assigned to the desired organizations.
 	AllowAnyOrganization pulumi.BoolPtrOutput `pulumi:"allowAnyOrganization"`
 	// Audience or API Identifier for this grant.
@@ -124,7 +127,7 @@ type ClientGrant struct {
 	IsSystem pulumi.BoolOutput `pulumi:"isSystem"`
 	// Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
 	OrganizationUsage pulumi.StringPtrOutput `pulumi:"organizationUsage"`
-	// Permissions (scopes) included in this grant.
+	// Permissions (scopes) included in this grant. Can not be provided when `allowAllScopes` is set to `true`.
 	Scopes pulumi.StringArrayOutput `pulumi:"scopes"`
 	// Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
 	SubjectType pulumi.StringOutput `pulumi:"subjectType"`
@@ -142,9 +145,6 @@ func NewClientGrant(ctx *pulumi.Context,
 	}
 	if args.ClientId == nil {
 		return nil, errors.New("invalid value for required argument 'ClientId'")
-	}
-	if args.Scopes == nil {
-		return nil, errors.New("invalid value for required argument 'Scopes'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ClientGrant
@@ -169,6 +169,8 @@ func GetClientGrant(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ClientGrant resources.
 type clientGrantState struct {
+	// When set to `true`, all scopes configured on the resource server are allowed for this client grant. `scopes` can not be provided when this is set to `true`. EA Only.
+	AllowAllScopes *bool `pulumi:"allowAllScopes"`
 	// If enabled, any organization can be used with this grant. If disabled (default), the grant must be explicitly assigned to the desired organizations.
 	AllowAnyOrganization *bool `pulumi:"allowAnyOrganization"`
 	// Audience or API Identifier for this grant.
@@ -181,13 +183,15 @@ type clientGrantState struct {
 	IsSystem *bool `pulumi:"isSystem"`
 	// Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
 	OrganizationUsage *string `pulumi:"organizationUsage"`
-	// Permissions (scopes) included in this grant.
+	// Permissions (scopes) included in this grant. Can not be provided when `allowAllScopes` is set to `true`.
 	Scopes []string `pulumi:"scopes"`
 	// Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
 	SubjectType *string `pulumi:"subjectType"`
 }
 
 type ClientGrantState struct {
+	// When set to `true`, all scopes configured on the resource server are allowed for this client grant. `scopes` can not be provided when this is set to `true`. EA Only.
+	AllowAllScopes pulumi.BoolPtrInput
 	// If enabled, any organization can be used with this grant. If disabled (default), the grant must be explicitly assigned to the desired organizations.
 	AllowAnyOrganization pulumi.BoolPtrInput
 	// Audience or API Identifier for this grant.
@@ -200,7 +204,7 @@ type ClientGrantState struct {
 	IsSystem pulumi.BoolPtrInput
 	// Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
 	OrganizationUsage pulumi.StringPtrInput
-	// Permissions (scopes) included in this grant.
+	// Permissions (scopes) included in this grant. Can not be provided when `allowAllScopes` is set to `true`.
 	Scopes pulumi.StringArrayInput
 	// Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
 	SubjectType pulumi.StringPtrInput
@@ -211,6 +215,8 @@ func (ClientGrantState) ElementType() reflect.Type {
 }
 
 type clientGrantArgs struct {
+	// When set to `true`, all scopes configured on the resource server are allowed for this client grant. `scopes` can not be provided when this is set to `true`. EA Only.
+	AllowAllScopes *bool `pulumi:"allowAllScopes"`
 	// If enabled, any organization can be used with this grant. If disabled (default), the grant must be explicitly assigned to the desired organizations.
 	AllowAnyOrganization *bool `pulumi:"allowAnyOrganization"`
 	// Audience or API Identifier for this grant.
@@ -221,7 +227,7 @@ type clientGrantArgs struct {
 	ClientId string `pulumi:"clientId"`
 	// Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
 	OrganizationUsage *string `pulumi:"organizationUsage"`
-	// Permissions (scopes) included in this grant.
+	// Permissions (scopes) included in this grant. Can not be provided when `allowAllScopes` is set to `true`.
 	Scopes []string `pulumi:"scopes"`
 	// Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
 	SubjectType *string `pulumi:"subjectType"`
@@ -229,6 +235,8 @@ type clientGrantArgs struct {
 
 // The set of arguments for constructing a ClientGrant resource.
 type ClientGrantArgs struct {
+	// When set to `true`, all scopes configured on the resource server are allowed for this client grant. `scopes` can not be provided when this is set to `true`. EA Only.
+	AllowAllScopes pulumi.BoolPtrInput
 	// If enabled, any organization can be used with this grant. If disabled (default), the grant must be explicitly assigned to the desired organizations.
 	AllowAnyOrganization pulumi.BoolPtrInput
 	// Audience or API Identifier for this grant.
@@ -239,7 +247,7 @@ type ClientGrantArgs struct {
 	ClientId pulumi.StringInput
 	// Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
 	OrganizationUsage pulumi.StringPtrInput
-	// Permissions (scopes) included in this grant.
+	// Permissions (scopes) included in this grant. Can not be provided when `allowAllScopes` is set to `true`.
 	Scopes pulumi.StringArrayInput
 	// Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
 	SubjectType pulumi.StringPtrInput
@@ -332,6 +340,11 @@ func (o ClientGrantOutput) ToClientGrantOutputWithContext(ctx context.Context) C
 	return o
 }
 
+// When set to `true`, all scopes configured on the resource server are allowed for this client grant. `scopes` can not be provided when this is set to `true`. EA Only.
+func (o ClientGrantOutput) AllowAllScopes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClientGrant) pulumi.BoolPtrOutput { return v.AllowAllScopes }).(pulumi.BoolPtrOutput)
+}
+
 // If enabled, any organization can be used with this grant. If disabled (default), the grant must be explicitly assigned to the desired organizations.
 func (o ClientGrantOutput) AllowAnyOrganization() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClientGrant) pulumi.BoolPtrOutput { return v.AllowAnyOrganization }).(pulumi.BoolPtrOutput)
@@ -362,7 +375,7 @@ func (o ClientGrantOutput) OrganizationUsage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientGrant) pulumi.StringPtrOutput { return v.OrganizationUsage }).(pulumi.StringPtrOutput)
 }
 
-// Permissions (scopes) included in this grant.
+// Permissions (scopes) included in this grant. Can not be provided when `allowAllScopes` is set to `true`.
 func (o ClientGrantOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ClientGrant) pulumi.StringArrayOutput { return v.Scopes }).(pulumi.StringArrayOutput)
 }

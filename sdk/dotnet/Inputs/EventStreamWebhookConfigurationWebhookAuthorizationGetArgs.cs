@@ -20,10 +20,6 @@ namespace Pulumi.Auth0.Inputs
 
         [Input("password")]
         private Input<string>? _password;
-
-        /// <summary>
-        /// The password for `Basic` authentication. Required when `Method` is set to `Basic`.
-        /// </summary>
         public Input<string>? Password
         {
             get => _password;
@@ -34,12 +30,30 @@ namespace Pulumi.Auth0.Inputs
             }
         }
 
-        [Input("token")]
-        private Input<string>? _token;
+        [Input("passwordWo")]
+        private Input<string>? _passwordWo;
 
         /// <summary>
-        /// The token used for `Bearer` authentication. Required when `Method` is set to `Bearer`.
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
         /// </summary>
+        public Input<string>? PasswordWo
+        {
+            get => _passwordWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _passwordWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Version number for password changes. Update this value to trigger a password change when using `PasswordWo`.
+        /// </summary>
+        [Input("passwordWoVersion")]
+        public Input<int>? PasswordWoVersion { get; set; }
+
+        [Input("token")]
+        private Input<string>? _token;
         public Input<string>? Token
         {
             get => _token;
@@ -50,8 +64,30 @@ namespace Pulumi.Auth0.Inputs
             }
         }
 
+        [Input("tokenWo")]
+        private Input<string>? _tokenWo;
+
         /// <summary>
-        /// The username for `Basic` authentication. Required when `Method` is set to `Basic`.
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// </summary>
+        public Input<string>? TokenWo
+        {
+            get => _tokenWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _tokenWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Version number for token changes. Update this value to trigger a token change when using `TokenWo`.
+        /// </summary>
+        [Input("tokenWoVersion")]
+        public Input<int>? TokenWoVersion { get; set; }
+
+        /// <summary>
+        /// The username for `Basic` authentication. Required only when `Method` is set to `Basic`.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }

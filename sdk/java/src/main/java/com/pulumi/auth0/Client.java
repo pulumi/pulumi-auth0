@@ -487,14 +487,14 @@ public class Client extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="oidcLogout", refs={ClientOidcLogout.class}, tree="[0]")
-    private Output<ClientOidcLogout> oidcLogout;
+    private Output</* @Nullable */ ClientOidcLogout> oidcLogout;
 
     /**
      * @return Configure OIDC logout for the Client
      * 
      */
-    public Output<ClientOidcLogout> oidcLogout() {
-        return this.oidcLogout;
+    public Output<Optional<ClientOidcLogout>> oidcLogout() {
+        return Codegen.optional(this.oidcLogout);
     }
     /**
      * Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.

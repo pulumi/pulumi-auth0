@@ -17,11 +17,19 @@ namespace Pulumi.Auth0.Outputs
         /// Defines whether UserName attribute is active as an identifier
         /// </summary>
         public readonly bool Active;
+        /// <summary>
+        /// Gets and Sets the default authentication method for the username identifier type. Valid value: `Password`
+        /// </summary>
+        public readonly string DefaultMethod;
 
         [OutputConstructor]
-        private GetConnectionOptionAttributeUsernameIdentifierResult(bool active)
+        private GetConnectionOptionAttributeUsernameIdentifierResult(
+            bool active,
+
+            string defaultMethod)
         {
             Active = active;
+            DefaultMethod = defaultMethod;
         }
     }
 }

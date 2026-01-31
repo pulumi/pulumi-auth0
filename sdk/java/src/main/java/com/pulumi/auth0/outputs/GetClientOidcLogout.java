@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.auth0.outputs.GetClientOidcLogoutBackchannelLogoutInitiator;
+import com.pulumi.auth0.outputs.GetClientOidcLogoutBackchannelLogoutSessionMetadata;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
@@ -18,6 +19,11 @@ public final class GetClientOidcLogout {
      */
     private List<GetClientOidcLogoutBackchannelLogoutInitiator> backchannelLogoutInitiators;
     /**
+     * @return Controls whether session metadata is included in the logout token. Default value is null.
+     * 
+     */
+    private List<GetClientOidcLogoutBackchannelLogoutSessionMetadata> backchannelLogoutSessionMetadatas;
+    /**
      * @return Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
      * 
      */
@@ -30,6 +36,13 @@ public final class GetClientOidcLogout {
      */
     public List<GetClientOidcLogoutBackchannelLogoutInitiator> backchannelLogoutInitiators() {
         return this.backchannelLogoutInitiators;
+    }
+    /**
+     * @return Controls whether session metadata is included in the logout token. Default value is null.
+     * 
+     */
+    public List<GetClientOidcLogoutBackchannelLogoutSessionMetadata> backchannelLogoutSessionMetadatas() {
+        return this.backchannelLogoutSessionMetadatas;
     }
     /**
      * @return Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
@@ -49,11 +62,13 @@ public final class GetClientOidcLogout {
     @CustomType.Builder
     public static final class Builder {
         private List<GetClientOidcLogoutBackchannelLogoutInitiator> backchannelLogoutInitiators;
+        private List<GetClientOidcLogoutBackchannelLogoutSessionMetadata> backchannelLogoutSessionMetadatas;
         private List<String> backchannelLogoutUrls;
         public Builder() {}
         public Builder(GetClientOidcLogout defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.backchannelLogoutInitiators = defaults.backchannelLogoutInitiators;
+    	      this.backchannelLogoutSessionMetadatas = defaults.backchannelLogoutSessionMetadatas;
     	      this.backchannelLogoutUrls = defaults.backchannelLogoutUrls;
         }
 
@@ -69,6 +84,17 @@ public final class GetClientOidcLogout {
             return backchannelLogoutInitiators(List.of(backchannelLogoutInitiators));
         }
         @CustomType.Setter
+        public Builder backchannelLogoutSessionMetadatas(List<GetClientOidcLogoutBackchannelLogoutSessionMetadata> backchannelLogoutSessionMetadatas) {
+            if (backchannelLogoutSessionMetadatas == null) {
+              throw new MissingRequiredPropertyException("GetClientOidcLogout", "backchannelLogoutSessionMetadatas");
+            }
+            this.backchannelLogoutSessionMetadatas = backchannelLogoutSessionMetadatas;
+            return this;
+        }
+        public Builder backchannelLogoutSessionMetadatas(GetClientOidcLogoutBackchannelLogoutSessionMetadata... backchannelLogoutSessionMetadatas) {
+            return backchannelLogoutSessionMetadatas(List.of(backchannelLogoutSessionMetadatas));
+        }
+        @CustomType.Setter
         public Builder backchannelLogoutUrls(List<String> backchannelLogoutUrls) {
             if (backchannelLogoutUrls == null) {
               throw new MissingRequiredPropertyException("GetClientOidcLogout", "backchannelLogoutUrls");
@@ -82,6 +108,7 @@ public final class GetClientOidcLogout {
         public GetClientOidcLogout build() {
             final var _resultValue = new GetClientOidcLogout();
             _resultValue.backchannelLogoutInitiators = backchannelLogoutInitiators;
+            _resultValue.backchannelLogoutSessionMetadatas = backchannelLogoutSessionMetadatas;
             _resultValue.backchannelLogoutUrls = backchannelLogoutUrls;
             return _resultValue;
         }

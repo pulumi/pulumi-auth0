@@ -17,11 +17,19 @@ namespace Pulumi.Auth0.Outputs
         /// Defines whether Phone Number attribute is active as an identifier
         /// </summary>
         public readonly bool? Active;
+        /// <summary>
+        /// Gets and Sets the default authentication method for the PhoneNumber identifier type. Valid values: `Password`, `PhoneOtp`
+        /// </summary>
+        public readonly string? DefaultMethod;
 
         [OutputConstructor]
-        private ConnectionOptionsAttributePhoneNumberIdentifier(bool? active)
+        private ConnectionOptionsAttributePhoneNumberIdentifier(
+            bool? active,
+
+            string? defaultMethod)
         {
             Active = active;
+            DefaultMethod = defaultMethod;
         }
     }
 }

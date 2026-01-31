@@ -14,6 +14,10 @@ namespace Pulumi.Auth0.Outputs
     public sealed class GetConnectionOptionAuthenticationMethodResult
     {
         /// <summary>
+        /// Configures Email OTP authentication
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetConnectionOptionAuthenticationMethodEmailOtpResult> EmailOtps;
+        /// <summary>
         /// Configures passkey authentication
         /// </summary>
         public readonly ImmutableArray<Outputs.GetConnectionOptionAuthenticationMethodPasskeyResult> Passkeys;
@@ -21,15 +25,25 @@ namespace Pulumi.Auth0.Outputs
         /// Configures password authentication
         /// </summary>
         public readonly ImmutableArray<Outputs.GetConnectionOptionAuthenticationMethodPasswordResult> Passwords;
+        /// <summary>
+        /// Configures Phone OTP authentication
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetConnectionOptionAuthenticationMethodPhoneOtpResult> PhoneOtps;
 
         [OutputConstructor]
         private GetConnectionOptionAuthenticationMethodResult(
+            ImmutableArray<Outputs.GetConnectionOptionAuthenticationMethodEmailOtpResult> emailOtps,
+
             ImmutableArray<Outputs.GetConnectionOptionAuthenticationMethodPasskeyResult> passkeys,
 
-            ImmutableArray<Outputs.GetConnectionOptionAuthenticationMethodPasswordResult> passwords)
+            ImmutableArray<Outputs.GetConnectionOptionAuthenticationMethodPasswordResult> passwords,
+
+            ImmutableArray<Outputs.GetConnectionOptionAuthenticationMethodPhoneOtpResult> phoneOtps)
         {
+            EmailOtps = emailOtps;
             Passkeys = passkeys;
             Passwords = passwords;
+            PhoneOtps = phoneOtps;
         }
     }
 }

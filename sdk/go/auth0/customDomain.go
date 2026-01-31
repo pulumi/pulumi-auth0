@@ -76,6 +76,8 @@ type CustomDomain struct {
 	//
 	// Deprecated: Primary field is no longer used and will be removed in a future release.
 	Primary pulumi.BoolOutput `pulumi:"primary"`
+	// Relying Party ID (rpId) to be used for Passkeys on this custom domain. If not provided or set to null, the full domain will be used.
+	RelyingPartyIdentifier pulumi.StringPtrOutput `pulumi:"relyingPartyIdentifier"`
 	// Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, `ready` and `failed`.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on selfManaged domains.
@@ -136,6 +138,8 @@ type customDomainState struct {
 	//
 	// Deprecated: Primary field is no longer used and will be removed in a future release.
 	Primary *bool `pulumi:"primary"`
+	// Relying Party ID (rpId) to be used for Passkeys on this custom domain. If not provided or set to null, the full domain will be used.
+	RelyingPartyIdentifier *string `pulumi:"relyingPartyIdentifier"`
 	// Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, `ready` and `failed`.
 	Status *string `pulumi:"status"`
 	// TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on selfManaged domains.
@@ -161,6 +165,8 @@ type CustomDomainState struct {
 	//
 	// Deprecated: Primary field is no longer used and will be removed in a future release.
 	Primary pulumi.BoolPtrInput
+	// Relying Party ID (rpId) to be used for Passkeys on this custom domain. If not provided or set to null, the full domain will be used.
+	RelyingPartyIdentifier pulumi.StringPtrInput
 	// Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, `ready` and `failed`.
 	Status pulumi.StringPtrInput
 	// TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on selfManaged domains.
@@ -182,6 +188,8 @@ type customDomainArgs struct {
 	Domain string `pulumi:"domain"`
 	// Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
 	DomainMetadata map[string]string `pulumi:"domainMetadata"`
+	// Relying Party ID (rpId) to be used for Passkeys on this custom domain. If not provided or set to null, the full domain will be used.
+	RelyingPartyIdentifier *string `pulumi:"relyingPartyIdentifier"`
 	// TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on selfManaged domains.
 	TlsPolicy *string `pulumi:"tlsPolicy"`
 	// Provisioning type for the custom domain. Options include `auth0ManagedCerts` and `selfManagedCerts`.
@@ -196,6 +204,8 @@ type CustomDomainArgs struct {
 	Domain pulumi.StringInput
 	// Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
 	DomainMetadata pulumi.StringMapInput
+	// Relying Party ID (rpId) to be used for Passkeys on this custom domain. If not provided or set to null, the full domain will be used.
+	RelyingPartyIdentifier pulumi.StringPtrInput
 	// TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on selfManaged domains.
 	TlsPolicy pulumi.StringPtrInput
 	// Provisioning type for the custom domain. Options include `auth0ManagedCerts` and `selfManagedCerts`.
@@ -319,6 +329,11 @@ func (o CustomDomainOutput) OriginDomainName() pulumi.StringOutput {
 // Deprecated: Primary field is no longer used and will be removed in a future release.
 func (o CustomDomainOutput) Primary() pulumi.BoolOutput {
 	return o.ApplyT(func(v *CustomDomain) pulumi.BoolOutput { return v.Primary }).(pulumi.BoolOutput)
+}
+
+// Relying Party ID (rpId) to be used for Passkeys on this custom domain. If not provided or set to null, the full domain will be used.
+func (o CustomDomainOutput) RelyingPartyIdentifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomDomain) pulumi.StringPtrOutput { return v.RelyingPartyIdentifier }).(pulumi.StringPtrOutput)
 }
 
 // Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, `ready` and `failed`.

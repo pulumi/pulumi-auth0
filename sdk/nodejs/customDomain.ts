@@ -95,6 +95,10 @@ export class CustomDomain extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly primary: pulumi.Output<boolean>;
     /**
+     * Relying Party ID (rpId) to be used for Passkeys on this custom domain. If not provided or set to null, the full domain will be used.
+     */
+    declare public readonly relyingPartyIdentifier: pulumi.Output<string | undefined>;
+    /**
      * Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, `ready` and `failed`.
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
@@ -130,6 +134,7 @@ export class CustomDomain extends pulumi.CustomResource {
             resourceInputs["domainMetadata"] = state?.domainMetadata;
             resourceInputs["originDomainName"] = state?.originDomainName;
             resourceInputs["primary"] = state?.primary;
+            resourceInputs["relyingPartyIdentifier"] = state?.relyingPartyIdentifier;
             resourceInputs["status"] = state?.status;
             resourceInputs["tlsPolicy"] = state?.tlsPolicy;
             resourceInputs["type"] = state?.type;
@@ -145,6 +150,7 @@ export class CustomDomain extends pulumi.CustomResource {
             resourceInputs["customClientIpHeader"] = args?.customClientIpHeader;
             resourceInputs["domain"] = args?.domain;
             resourceInputs["domainMetadata"] = args?.domainMetadata;
+            resourceInputs["relyingPartyIdentifier"] = args?.relyingPartyIdentifier;
             resourceInputs["tlsPolicy"] = args?.tlsPolicy;
             resourceInputs["type"] = args?.type;
             resourceInputs["certificates"] = undefined /*out*/;
@@ -189,6 +195,10 @@ export interface CustomDomainState {
      */
     primary?: pulumi.Input<boolean>;
     /**
+     * Relying Party ID (rpId) to be used for Passkeys on this custom domain. If not provided or set to null, the full domain will be used.
+     */
+    relyingPartyIdentifier?: pulumi.Input<string>;
+    /**
      * Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, `ready` and `failed`.
      */
     status?: pulumi.Input<string>;
@@ -222,6 +232,10 @@ export interface CustomDomainArgs {
      * Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
      */
     domainMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Relying Party ID (rpId) to be used for Passkeys on this custom domain. If not provided or set to null, the full domain will be used.
+     */
+    relyingPartyIdentifier?: pulumi.Input<string>;
     /**
      * TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on selfManaged domains.
      */

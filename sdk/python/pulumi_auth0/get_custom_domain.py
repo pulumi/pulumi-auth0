@@ -27,7 +27,7 @@ class GetCustomDomainResult:
     """
     A collection of values returned by getCustomDomain.
     """
-    def __init__(__self__, certificates=None, custom_client_ip_header=None, custom_domain_id=None, domain=None, domain_metadata=None, id=None, origin_domain_name=None, primary=None, status=None, tls_policy=None, type=None, verifications=None):
+    def __init__(__self__, certificates=None, custom_client_ip_header=None, custom_domain_id=None, domain=None, domain_metadata=None, id=None, origin_domain_name=None, primary=None, relying_party_identifier=None, status=None, tls_policy=None, type=None, verifications=None):
         if certificates and not isinstance(certificates, list):
             raise TypeError("Expected argument 'certificates' to be a list")
         pulumi.set(__self__, "certificates", certificates)
@@ -52,6 +52,9 @@ class GetCustomDomainResult:
         if primary and not isinstance(primary, bool):
             raise TypeError("Expected argument 'primary' to be a bool")
         pulumi.set(__self__, "primary", primary)
+        if relying_party_identifier and not isinstance(relying_party_identifier, str):
+            raise TypeError("Expected argument 'relying_party_identifier' to be a str")
+        pulumi.set(__self__, "relying_party_identifier", relying_party_identifier)
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         pulumi.set(__self__, "status", status)
@@ -130,6 +133,14 @@ class GetCustomDomainResult:
         return pulumi.get(self, "primary")
 
     @_builtins.property
+    @pulumi.getter(name="relyingPartyIdentifier")
+    def relying_party_identifier(self) -> _builtins.str:
+        """
+        Relying Party ID (rpId) to be used for Passkeys on this custom domain. If not provided or set to null, the full domain will be used.
+        """
+        return pulumi.get(self, "relying_party_identifier")
+
+    @_builtins.property
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
@@ -176,6 +187,7 @@ class AwaitableGetCustomDomainResult(GetCustomDomainResult):
             id=self.id,
             origin_domain_name=self.origin_domain_name,
             primary=self.primary,
+            relying_party_identifier=self.relying_party_identifier,
             status=self.status,
             tls_policy=self.tls_policy,
             type=self.type,
@@ -221,6 +233,7 @@ def get_custom_domain(custom_domain_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         origin_domain_name=pulumi.get(__ret__, 'origin_domain_name'),
         primary=pulumi.get(__ret__, 'primary'),
+        relying_party_identifier=pulumi.get(__ret__, 'relying_party_identifier'),
         status=pulumi.get(__ret__, 'status'),
         tls_policy=pulumi.get(__ret__, 'tls_policy'),
         type=pulumi.get(__ret__, 'type'),
@@ -263,6 +276,7 @@ def get_custom_domain_output(custom_domain_id: Optional[pulumi.Input[Optional[_b
         id=pulumi.get(__response__, 'id'),
         origin_domain_name=pulumi.get(__response__, 'origin_domain_name'),
         primary=pulumi.get(__response__, 'primary'),
+        relying_party_identifier=pulumi.get(__response__, 'relying_party_identifier'),
         status=pulumi.get(__response__, 'status'),
         tls_policy=pulumi.get(__response__, 'tls_policy'),
         type=pulumi.get(__response__, 'type'),

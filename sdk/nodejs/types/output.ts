@@ -1465,6 +1465,10 @@ export interface ClientOidcLogout {
      */
     backchannelLogoutInitiators?: outputs.ClientOidcLogoutBackchannelLogoutInitiators;
     /**
+     * Controls whether session metadata is included in the logout token. Default value is null.
+     */
+    backchannelLogoutSessionMetadata?: outputs.ClientOidcLogoutBackchannelLogoutSessionMetadata;
+    /**
      * Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
      */
     backchannelLogoutUrls: string[];
@@ -1479,6 +1483,13 @@ export interface ClientOidcLogoutBackchannelLogoutInitiators {
      * Contains the list of initiators to be enabled for the given client.
      */
     selectedInitiators?: string[];
+}
+
+export interface ClientOidcLogoutBackchannelLogoutSessionMetadata {
+    /**
+     * The `include` property determines whether session metadata is included in the logout token.
+     */
+    include: boolean;
 }
 
 export interface ClientRefreshToken {
@@ -1643,7 +1654,7 @@ export interface ConnectionOptions {
     /**
      * Indicates whether to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
      */
-    bruteForceProtection?: boolean;
+    bruteForceProtection: boolean;
     /**
      * The strategy's client ID.
      */
@@ -1676,6 +1687,10 @@ export interface ConnectionOptions {
      * Configure extra headers to the Token endpoint of an OAuth 2.0 provider
      */
     customHeaders?: outputs.ConnectionOptionsCustomHeader[];
+    /**
+     * Configure custom password hashing within a connection. (EA only)
+     */
+    customPasswordHash?: outputs.ConnectionOptionsCustomPasswordHash;
     /**
      * A map of scripts used to integrate with a custom database.
      */
@@ -1720,6 +1735,10 @@ export interface ConnectionOptions {
      * List of the domains that can be authenticated using the identity provider. Only needed for Identifier First authentication flows.
      */
     domainAliases: string[];
+    /**
+     * Indicates whether to request the email scope. Used by some OAuth2 connections (e.g., LINE).
+     */
+    email: boolean;
     /**
      * Set to `true` to inject context into custom DB scripts (warning: cannot be disabled once enabled).
      */
@@ -2049,19 +2068,19 @@ export interface ConnectionOptionsAttributeEmail {
     /**
      * Connection Options Email Attribute Identifier
      */
-    identifiers?: outputs.ConnectionOptionsAttributeEmailIdentifier[];
+    identifiers: outputs.ConnectionOptionsAttributeEmailIdentifier[];
     /**
      * Defines whether Profile is required
      */
-    profileRequired?: boolean;
+    profileRequired: boolean;
     /**
      * Defines signup settings for Email attribute
      */
-    signups?: outputs.ConnectionOptionsAttributeEmailSignup[];
+    signups: outputs.ConnectionOptionsAttributeEmailSignup[];
     /**
      * If set to false, it allow multiple accounts with the same email address
      */
-    unique?: boolean;
+    unique: boolean;
     /**
      * Defines whether whether user will receive a link or an OTP during user signup for email verification and password reset for email verification
      */
@@ -2072,25 +2091,29 @@ export interface ConnectionOptionsAttributeEmailIdentifier {
     /**
      * Defines whether email attribute is active as an identifier
      */
-    active?: boolean;
+    active: boolean;
+    /**
+     * Gets and Sets the default authentication method for the email identifier type. Valid values: `password`, `emailOtp`
+     */
+    defaultMethod?: string;
 }
 
 export interface ConnectionOptionsAttributeEmailSignup {
     /**
      * Defines signup status for Email Attribute
      */
-    status?: string;
+    status: string;
     /**
      * Defines settings for Verification under Email attribute
      */
-    verifications?: outputs.ConnectionOptionsAttributeEmailSignupVerification[];
+    verifications: outputs.ConnectionOptionsAttributeEmailSignupVerification[];
 }
 
 export interface ConnectionOptionsAttributeEmailSignupVerification {
     /**
      * Defines verification settings for signup attribute
      */
-    active?: boolean;
+    active: boolean;
 }
 
 export interface ConnectionOptionsAttributeMap {
@@ -2112,55 +2135,59 @@ export interface ConnectionOptionsAttributePhoneNumber {
     /**
      * Connection Options Phone Number Attribute Identifier
      */
-    identifiers?: outputs.ConnectionOptionsAttributePhoneNumberIdentifier[];
+    identifiers: outputs.ConnectionOptionsAttributePhoneNumberIdentifier[];
     /**
      * Defines whether Profile is required
      */
-    profileRequired?: boolean;
+    profileRequired: boolean;
     /**
      * Defines signup settings for Phone Number attribute
      */
-    signups?: outputs.ConnectionOptionsAttributePhoneNumberSignup[];
+    signups: outputs.ConnectionOptionsAttributePhoneNumberSignup[];
 }
 
 export interface ConnectionOptionsAttributePhoneNumberIdentifier {
     /**
      * Defines whether Phone Number attribute is active as an identifier
      */
-    active?: boolean;
+    active: boolean;
+    /**
+     * Gets and Sets the default authentication method for the phoneNumber identifier type. Valid values: `password`, `phoneOtp`
+     */
+    defaultMethod: string;
 }
 
 export interface ConnectionOptionsAttributePhoneNumberSignup {
     /**
      * Defines status of signup for Phone Number attribute
      */
-    status?: string;
+    status: string;
     /**
      * Defines verification settings for Phone Number attribute
      */
-    verifications?: outputs.ConnectionOptionsAttributePhoneNumberSignupVerification[];
+    verifications: outputs.ConnectionOptionsAttributePhoneNumberSignupVerification[];
 }
 
 export interface ConnectionOptionsAttributePhoneNumberSignupVerification {
     /**
      * Defines verification settings for Phone Number attribute
      */
-    active?: boolean;
+    active: boolean;
 }
 
 export interface ConnectionOptionsAttributeUsername {
     /**
      * Connection options for User Name Attribute Identifier
      */
-    identifiers?: outputs.ConnectionOptionsAttributeUsernameIdentifier[];
+    identifiers: outputs.ConnectionOptionsAttributeUsernameIdentifier[];
     /**
      * Defines whether Profile is required
      */
-    profileRequired?: boolean;
+    profileRequired: boolean;
     /**
      * Defines signup settings for User Name attribute
      */
-    signups?: outputs.ConnectionOptionsAttributeUsernameSignup[];
+    signups: outputs.ConnectionOptionsAttributeUsernameSignup[];
     /**
      * Defines validation settings for User Name attribute
      */
@@ -2171,14 +2198,18 @@ export interface ConnectionOptionsAttributeUsernameIdentifier {
     /**
      * Defines whether UserName attribute is active as an identifier
      */
-    active?: boolean;
+    active: boolean;
+    /**
+     * Gets and Sets the default authentication method for the username identifier type. Valid value: `password`
+     */
+    defaultMethod?: string;
 }
 
 export interface ConnectionOptionsAttributeUsernameSignup {
     /**
      * Defines whether User Name attribute is active as an identifier
      */
-    status?: string;
+    status: string;
 }
 
 export interface ConnectionOptionsAttributeUsernameValidation {
@@ -2209,6 +2240,10 @@ export interface ConnectionOptionsAttributeUsernameValidationAllowedType {
 
 export interface ConnectionOptionsAuthenticationMethod {
     /**
+     * Configures Email OTP authentication
+     */
+    emailOtp: outputs.ConnectionOptionsAuthenticationMethodEmailOtp;
+    /**
      * Configures passkey authentication
      */
     passkey: outputs.ConnectionOptionsAuthenticationMethodPasskey;
@@ -2216,6 +2251,17 @@ export interface ConnectionOptionsAuthenticationMethod {
      * Configures password authentication
      */
     password: outputs.ConnectionOptionsAuthenticationMethodPassword;
+    /**
+     * Configures Phone OTP authentication
+     */
+    phoneOtp: outputs.ConnectionOptionsAuthenticationMethodPhoneOtp;
+}
+
+export interface ConnectionOptionsAuthenticationMethodEmailOtp {
+    /**
+     * Enables Email OTP authentication
+     */
+    enabled: boolean;
 }
 
 export interface ConnectionOptionsAuthenticationMethodPasskey {
@@ -2232,6 +2278,13 @@ export interface ConnectionOptionsAuthenticationMethodPassword {
     enabled: boolean;
 }
 
+export interface ConnectionOptionsAuthenticationMethodPhoneOtp {
+    /**
+     * Enables Phone OTP authentication
+     */
+    enabled: boolean;
+}
+
 export interface ConnectionOptionsConnectionSettings {
     /**
      * PKCE configuration. Possible values: `auto` (uses the strongest algorithm available), `S256` (uses the SHA-256 algorithm), `plain` (uses plaintext as described in the PKCE specification) or `disabled` (disables support for PKCE).
@@ -2242,6 +2295,13 @@ export interface ConnectionOptionsConnectionSettings {
 export interface ConnectionOptionsCustomHeader {
     header: string;
     value: string;
+}
+
+export interface ConnectionOptionsCustomPasswordHash {
+    /**
+     * Id of an existing action that should be invoked when validating a universal password hash. This action must support password-hash-migration trigger
+     */
+    actionId: string;
 }
 
 export interface ConnectionOptionsDecryptionKey {
@@ -2746,16 +2806,26 @@ export interface EventStreamWebhookConfigurationWebhookAuthorization {
      * The authorization method used to secure the webhook endpoint. Can be either `basic` or `bearer`.
      */
     method: string;
-    /**
-     * The password for `basic` authentication. Required when `method` is set to `basic`.
-     */
     password?: string;
     /**
-     * The token used for `bearer` authentication. Required when `method` is set to `bearer`.
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      */
+    passwordWo?: string;
+    /**
+     * Version number for password changes. Update this value to trigger a password change when using `passwordWo`.
+     */
+    passwordWoVersion?: number;
     token?: string;
     /**
-     * The username for `basic` authentication. Required when `method` is set to `basic`.
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     */
+    tokenWo?: string;
+    /**
+     * Version number for token changes. Update this value to trigger a token change when using `tokenWo`.
+     */
+    tokenWoVersion?: number;
+    /**
+     * The username for `basic` authentication. Required only when `method` is set to `basic`.
      */
     username?: string;
 }
@@ -4117,6 +4187,10 @@ export interface GetClientExpressConfigurationLinkedClient {
 
 export interface GetClientGrantsClientGrant {
     /**
+     * When enabled, all scopes configured on the resource server are allowed for this client grant. EA Only.
+     */
+    allowAllScopes: boolean;
+    /**
      * The audience of the client grant.
      */
     audience: string;
@@ -4202,6 +4276,10 @@ export interface GetClientOidcLogout {
      */
     backchannelLogoutInitiators: outputs.GetClientOidcLogoutBackchannelLogoutInitiator[];
     /**
+     * Controls whether session metadata is included in the logout token. Default value is null.
+     */
+    backchannelLogoutSessionMetadatas: outputs.GetClientOidcLogoutBackchannelLogoutSessionMetadata[];
+    /**
      * Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
      */
     backchannelLogoutUrls: string[];
@@ -4216,6 +4294,13 @@ export interface GetClientOidcLogoutBackchannelLogoutInitiator {
      * Contains the list of initiators to be enabled for the given client.
      */
     selectedInitiators: string[];
+}
+
+export interface GetClientOidcLogoutBackchannelLogoutSessionMetadata {
+    /**
+     * The `include` property determines whether session metadata is included in the logout token.
+     */
+    include: boolean;
 }
 
 export interface GetClientRefreshToken {
@@ -4504,6 +4589,10 @@ export interface GetClientsClientOidcLogout {
      */
     backchannelLogoutInitiators: outputs.GetClientsClientOidcLogoutBackchannelLogoutInitiator[];
     /**
+     * Controls whether session metadata is included in the logout token. Default value is null.
+     */
+    backchannelLogoutSessionMetadatas: outputs.GetClientsClientOidcLogoutBackchannelLogoutSessionMetadata[];
+    /**
      * Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
      */
     backchannelLogoutUrls: string[];
@@ -4518,6 +4607,13 @@ export interface GetClientsClientOidcLogoutBackchannelLogoutInitiator {
      * Contains the list of initiators to be enabled for the given client.
      */
     selectedInitiators: string[];
+}
+
+export interface GetClientsClientOidcLogoutBackchannelLogoutSessionMetadata {
+    /**
+     * The `include` property determines whether session metadata is included in the logout token.
+     */
+    include: boolean;
 }
 
 export interface GetClientsClientSessionTransfer {
@@ -4737,6 +4833,10 @@ export interface GetConnectionOption {
      */
     customHeaders: outputs.GetConnectionOptionCustomHeader[];
     /**
+     * Configure custom password hashing within a connection. (EA only)
+     */
+    customPasswordHashes: outputs.GetConnectionOptionCustomPasswordHash[];
+    /**
      * A map of scripts used to integrate with a custom database.
      */
     customScripts: {[key: string]: string};
@@ -4780,6 +4880,10 @@ export interface GetConnectionOption {
      * List of the domains that can be authenticated using the identity provider. Only needed for Identifier First authentication flows.
      */
     domainAliases: string[];
+    /**
+     * Indicates whether to request the email scope. Used by some OAuth2 connections (e.g., LINE).
+     */
+    email: boolean;
     /**
      * Set to `true` to inject context into custom DB scripts (warning: cannot be disabled once enabled).
      */
@@ -5133,6 +5237,10 @@ export interface GetConnectionOptionAttributeEmailIdentifier {
      * Defines whether email attribute is active as an identifier
      */
     active: boolean;
+    /**
+     * Gets and Sets the default authentication method for the email identifier type. Valid values: `password`, `emailOtp`
+     */
+    defaultMethod: string;
 }
 
 export interface GetConnectionOptionAttributeEmailSignup {
@@ -5188,6 +5296,10 @@ export interface GetConnectionOptionAttributePhoneNumberIdentifier {
      * Defines whether Phone Number attribute is active as an identifier
      */
     active: boolean;
+    /**
+     * Gets and Sets the default authentication method for the phoneNumber identifier type. Valid values: `password`, `phoneOtp`
+     */
+    defaultMethod: string;
 }
 
 export interface GetConnectionOptionAttributePhoneNumberSignup {
@@ -5232,6 +5344,10 @@ export interface GetConnectionOptionAttributeUsernameIdentifier {
      * Defines whether UserName attribute is active as an identifier
      */
     active: boolean;
+    /**
+     * Gets and Sets the default authentication method for the username identifier type. Valid value: `password`
+     */
+    defaultMethod: string;
 }
 
 export interface GetConnectionOptionAttributeUsernameSignup {
@@ -5269,6 +5385,10 @@ export interface GetConnectionOptionAttributeUsernameValidationAllowedType {
 
 export interface GetConnectionOptionAuthenticationMethod {
     /**
+     * Configures Email OTP authentication
+     */
+    emailOtps: outputs.GetConnectionOptionAuthenticationMethodEmailOtp[];
+    /**
      * Configures passkey authentication
      */
     passkeys: outputs.GetConnectionOptionAuthenticationMethodPasskey[];
@@ -5276,6 +5396,17 @@ export interface GetConnectionOptionAuthenticationMethod {
      * Configures password authentication
      */
     passwords: outputs.GetConnectionOptionAuthenticationMethodPassword[];
+    /**
+     * Configures Phone OTP authentication
+     */
+    phoneOtps: outputs.GetConnectionOptionAuthenticationMethodPhoneOtp[];
+}
+
+export interface GetConnectionOptionAuthenticationMethodEmailOtp {
+    /**
+     * Enables Email OTP authentication
+     */
+    enabled: boolean;
 }
 
 export interface GetConnectionOptionAuthenticationMethodPasskey {
@@ -5292,6 +5423,13 @@ export interface GetConnectionOptionAuthenticationMethodPassword {
     enabled: boolean;
 }
 
+export interface GetConnectionOptionAuthenticationMethodPhoneOtp {
+    /**
+     * Enables Phone OTP authentication
+     */
+    enabled: boolean;
+}
+
 export interface GetConnectionOptionConnectionSetting {
     /**
      * PKCE configuration. Possible values: `auto` (uses the strongest algorithm available), `S256` (uses the SHA-256 algorithm), `plain` (uses plaintext as described in the PKCE specification) or `disabled` (disables support for PKCE).
@@ -5302,6 +5440,13 @@ export interface GetConnectionOptionConnectionSetting {
 export interface GetConnectionOptionCustomHeader {
     header: string;
     value: string;
+}
+
+export interface GetConnectionOptionCustomPasswordHash {
+    /**
+     * Id of an existing action that should be invoked when validating a universal password hash. This action must support password-hash-migration trigger
+     */
+    actionId: string;
 }
 
 export interface GetConnectionOptionDecryptionKey {
@@ -5667,6 +5812,10 @@ export interface GetCustomDomainsCustomDomain {
      */
     primary: boolean;
     /**
+     * Relying Party ID (rpId) to be used for Passkeys on this custom domain. If not provided or set to null, the full domain will be used.
+     */
+    relyingPartyIdentifier: string;
+    /**
      * Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, `ready` and `failed`.
      */
     status: string;
@@ -5744,16 +5893,20 @@ export interface GetEventStreamWebhookConfigurationWebhookAuthorization {
      * The authorization method used to secure the webhook endpoint. Can be either `basic` or `bearer`.
      */
     method: string;
-    /**
-     * The password for `basic` authentication. Required when `method` is set to `basic`.
-     */
     password: string;
+    passwordWo: string;
     /**
-     * The token used for `bearer` authentication. Required when `method` is set to `bearer`.
+     * Version number for password changes. Update this value to trigger a password change when using `passwordWo`.
      */
+    passwordWoVersion: number;
     token: string;
+    tokenWo: string;
     /**
-     * The username for `basic` authentication. Required when `method` is set to `basic`.
+     * Version number for token changes. Update this value to trigger a token change when using `tokenWo`.
+     */
+    tokenWoVersion: number;
+    /**
+     * The username for `basic` authentication. Required only when `method` is set to `basic`.
      */
     username: string;
 }
@@ -7117,6 +7270,10 @@ export interface OrganizationDiscoveryDomainsDiscoveryDomain {
      * Verification status. Must be either 'pending' or 'verified'.
      */
     status: string;
+    /**
+     * Indicates whether this domain should be used for organization discovery during login.
+     */
+    useForOrganizationDiscovery: boolean;
     /**
      * The full domain where the TXT record should be added.
      */

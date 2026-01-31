@@ -21,16 +21,20 @@ class OrganizationDiscoveryDomainArgs:
     def __init__(__self__, *,
                  domain: pulumi.Input[_builtins.str],
                  organization_id: pulumi.Input[_builtins.str],
-                 status: pulumi.Input[_builtins.str]):
+                 status: pulumi.Input[_builtins.str],
+                 use_for_organization_discovery: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a OrganizationDiscoveryDomain resource.
         :param pulumi.Input[_builtins.str] domain: The domain name for organization discovery.
         :param pulumi.Input[_builtins.str] organization_id: The ID of the organization.
         :param pulumi.Input[_builtins.str] status: Verification status. Must be either 'pending' or 'verified'.
+        :param pulumi.Input[_builtins.bool] use_for_organization_discovery: Indicates whether this domain should be used for organization discovery during login.
         """
         pulumi.set(__self__, "domain", domain)
         pulumi.set(__self__, "organization_id", organization_id)
         pulumi.set(__self__, "status", status)
+        if use_for_organization_discovery is not None:
+            pulumi.set(__self__, "use_for_organization_discovery", use_for_organization_discovery)
 
     @_builtins.property
     @pulumi.getter
@@ -68,6 +72,18 @@ class OrganizationDiscoveryDomainArgs:
     def status(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "status", value)
 
+    @_builtins.property
+    @pulumi.getter(name="useForOrganizationDiscovery")
+    def use_for_organization_discovery(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Indicates whether this domain should be used for organization discovery during login.
+        """
+        return pulumi.get(self, "use_for_organization_discovery")
+
+    @use_for_organization_discovery.setter
+    def use_for_organization_discovery(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "use_for_organization_discovery", value)
+
 
 @pulumi.input_type
 class _OrganizationDiscoveryDomainState:
@@ -75,6 +91,7 @@ class _OrganizationDiscoveryDomainState:
                  domain: Optional[pulumi.Input[_builtins.str]] = None,
                  organization_id: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
+                 use_for_organization_discovery: Optional[pulumi.Input[_builtins.bool]] = None,
                  verification_host: Optional[pulumi.Input[_builtins.str]] = None,
                  verification_txt: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -82,6 +99,7 @@ class _OrganizationDiscoveryDomainState:
         :param pulumi.Input[_builtins.str] domain: The domain name for organization discovery.
         :param pulumi.Input[_builtins.str] organization_id: The ID of the organization.
         :param pulumi.Input[_builtins.str] status: Verification status. Must be either 'pending' or 'verified'.
+        :param pulumi.Input[_builtins.bool] use_for_organization_discovery: Indicates whether this domain should be used for organization discovery during login.
         :param pulumi.Input[_builtins.str] verification_host: The full domain where the TXT record should be added.
         :param pulumi.Input[_builtins.str] verification_txt: TXT record value for domain verification.
         """
@@ -91,6 +109,8 @@ class _OrganizationDiscoveryDomainState:
             pulumi.set(__self__, "organization_id", organization_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if use_for_organization_discovery is not None:
+            pulumi.set(__self__, "use_for_organization_discovery", use_for_organization_discovery)
         if verification_host is not None:
             pulumi.set(__self__, "verification_host", verification_host)
         if verification_txt is not None:
@@ -133,6 +153,18 @@ class _OrganizationDiscoveryDomainState:
         pulumi.set(self, "status", value)
 
     @_builtins.property
+    @pulumi.getter(name="useForOrganizationDiscovery")
+    def use_for_organization_discovery(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Indicates whether this domain should be used for organization discovery during login.
+        """
+        return pulumi.get(self, "use_for_organization_discovery")
+
+    @use_for_organization_discovery.setter
+    def use_for_organization_discovery(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "use_for_organization_discovery", value)
+
+    @_builtins.property
     @pulumi.getter(name="verificationHost")
     def verification_host(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -166,6 +198,7 @@ class OrganizationDiscoveryDomain(pulumi.CustomResource):
                  domain: Optional[pulumi.Input[_builtins.str]] = None,
                  organization_id: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
+                 use_for_organization_discovery: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
         Manage organization discovery domains for Home Realm Discovery. These domains help automatically route users to the correct organization based on their email domain.
@@ -175,6 +208,7 @@ class OrganizationDiscoveryDomain(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] domain: The domain name for organization discovery.
         :param pulumi.Input[_builtins.str] organization_id: The ID of the organization.
         :param pulumi.Input[_builtins.str] status: Verification status. Must be either 'pending' or 'verified'.
+        :param pulumi.Input[_builtins.bool] use_for_organization_discovery: Indicates whether this domain should be used for organization discovery during login.
         """
         ...
     @overload
@@ -203,6 +237,7 @@ class OrganizationDiscoveryDomain(pulumi.CustomResource):
                  domain: Optional[pulumi.Input[_builtins.str]] = None,
                  organization_id: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
+                 use_for_organization_discovery: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -221,6 +256,7 @@ class OrganizationDiscoveryDomain(pulumi.CustomResource):
             if status is None and not opts.urn:
                 raise TypeError("Missing required property 'status'")
             __props__.__dict__["status"] = status
+            __props__.__dict__["use_for_organization_discovery"] = use_for_organization_discovery
             __props__.__dict__["verification_host"] = None
             __props__.__dict__["verification_txt"] = None
         super(OrganizationDiscoveryDomain, __self__).__init__(
@@ -236,6 +272,7 @@ class OrganizationDiscoveryDomain(pulumi.CustomResource):
             domain: Optional[pulumi.Input[_builtins.str]] = None,
             organization_id: Optional[pulumi.Input[_builtins.str]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None,
+            use_for_organization_discovery: Optional[pulumi.Input[_builtins.bool]] = None,
             verification_host: Optional[pulumi.Input[_builtins.str]] = None,
             verification_txt: Optional[pulumi.Input[_builtins.str]] = None) -> 'OrganizationDiscoveryDomain':
         """
@@ -248,6 +285,7 @@ class OrganizationDiscoveryDomain(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] domain: The domain name for organization discovery.
         :param pulumi.Input[_builtins.str] organization_id: The ID of the organization.
         :param pulumi.Input[_builtins.str] status: Verification status. Must be either 'pending' or 'verified'.
+        :param pulumi.Input[_builtins.bool] use_for_organization_discovery: Indicates whether this domain should be used for organization discovery during login.
         :param pulumi.Input[_builtins.str] verification_host: The full domain where the TXT record should be added.
         :param pulumi.Input[_builtins.str] verification_txt: TXT record value for domain verification.
         """
@@ -258,6 +296,7 @@ class OrganizationDiscoveryDomain(pulumi.CustomResource):
         __props__.__dict__["domain"] = domain
         __props__.__dict__["organization_id"] = organization_id
         __props__.__dict__["status"] = status
+        __props__.__dict__["use_for_organization_discovery"] = use_for_organization_discovery
         __props__.__dict__["verification_host"] = verification_host
         __props__.__dict__["verification_txt"] = verification_txt
         return OrganizationDiscoveryDomain(resource_name, opts=opts, __props__=__props__)
@@ -285,6 +324,14 @@ class OrganizationDiscoveryDomain(pulumi.CustomResource):
         Verification status. Must be either 'pending' or 'verified'.
         """
         return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter(name="useForOrganizationDiscovery")
+    def use_for_organization_discovery(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Indicates whether this domain should be used for organization discovery during login.
+        """
+        return pulumi.get(self, "use_for_organization_discovery")
 
     @_builtins.property
     @pulumi.getter(name="verificationHost")

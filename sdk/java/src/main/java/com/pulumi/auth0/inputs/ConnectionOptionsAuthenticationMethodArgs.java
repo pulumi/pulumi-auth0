@@ -3,8 +3,10 @@
 
 package com.pulumi.auth0.inputs;
 
+import com.pulumi.auth0.inputs.ConnectionOptionsAuthenticationMethodEmailOtpArgs;
 import com.pulumi.auth0.inputs.ConnectionOptionsAuthenticationMethodPasskeyArgs;
 import com.pulumi.auth0.inputs.ConnectionOptionsAuthenticationMethodPasswordArgs;
+import com.pulumi.auth0.inputs.ConnectionOptionsAuthenticationMethodPhoneOtpArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.util.Objects;
@@ -15,6 +17,21 @@ import javax.annotation.Nullable;
 public final class ConnectionOptionsAuthenticationMethodArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ConnectionOptionsAuthenticationMethodArgs Empty = new ConnectionOptionsAuthenticationMethodArgs();
+
+    /**
+     * Configures Email OTP authentication
+     * 
+     */
+    @Import(name="emailOtp")
+    private @Nullable Output<ConnectionOptionsAuthenticationMethodEmailOtpArgs> emailOtp;
+
+    /**
+     * @return Configures Email OTP authentication
+     * 
+     */
+    public Optional<Output<ConnectionOptionsAuthenticationMethodEmailOtpArgs>> emailOtp() {
+        return Optional.ofNullable(this.emailOtp);
+    }
 
     /**
      * Configures passkey authentication
@@ -46,11 +63,28 @@ public final class ConnectionOptionsAuthenticationMethodArgs extends com.pulumi.
         return Optional.ofNullable(this.password);
     }
 
+    /**
+     * Configures Phone OTP authentication
+     * 
+     */
+    @Import(name="phoneOtp")
+    private @Nullable Output<ConnectionOptionsAuthenticationMethodPhoneOtpArgs> phoneOtp;
+
+    /**
+     * @return Configures Phone OTP authentication
+     * 
+     */
+    public Optional<Output<ConnectionOptionsAuthenticationMethodPhoneOtpArgs>> phoneOtp() {
+        return Optional.ofNullable(this.phoneOtp);
+    }
+
     private ConnectionOptionsAuthenticationMethodArgs() {}
 
     private ConnectionOptionsAuthenticationMethodArgs(ConnectionOptionsAuthenticationMethodArgs $) {
+        this.emailOtp = $.emailOtp;
         this.passkey = $.passkey;
         this.password = $.password;
+        this.phoneOtp = $.phoneOtp;
     }
 
     public static Builder builder() {
@@ -69,6 +103,27 @@ public final class ConnectionOptionsAuthenticationMethodArgs extends com.pulumi.
 
         public Builder(ConnectionOptionsAuthenticationMethodArgs defaults) {
             $ = new ConnectionOptionsAuthenticationMethodArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param emailOtp Configures Email OTP authentication
+         * 
+         * @return builder
+         * 
+         */
+        public Builder emailOtp(@Nullable Output<ConnectionOptionsAuthenticationMethodEmailOtpArgs> emailOtp) {
+            $.emailOtp = emailOtp;
+            return this;
+        }
+
+        /**
+         * @param emailOtp Configures Email OTP authentication
+         * 
+         * @return builder
+         * 
+         */
+        public Builder emailOtp(ConnectionOptionsAuthenticationMethodEmailOtpArgs emailOtp) {
+            return emailOtp(Output.of(emailOtp));
         }
 
         /**
@@ -111,6 +166,27 @@ public final class ConnectionOptionsAuthenticationMethodArgs extends com.pulumi.
          */
         public Builder password(ConnectionOptionsAuthenticationMethodPasswordArgs password) {
             return password(Output.of(password));
+        }
+
+        /**
+         * @param phoneOtp Configures Phone OTP authentication
+         * 
+         * @return builder
+         * 
+         */
+        public Builder phoneOtp(@Nullable Output<ConnectionOptionsAuthenticationMethodPhoneOtpArgs> phoneOtp) {
+            $.phoneOtp = phoneOtp;
+            return this;
+        }
+
+        /**
+         * @param phoneOtp Configures Phone OTP authentication
+         * 
+         * @return builder
+         * 
+         */
+        public Builder phoneOtp(ConnectionOptionsAuthenticationMethodPhoneOtpArgs phoneOtp) {
+            return phoneOtp(Output.of(phoneOtp));
         }
 
         public ConnectionOptionsAuthenticationMethodArgs build() {

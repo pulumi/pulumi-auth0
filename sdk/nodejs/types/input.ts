@@ -1465,6 +1465,10 @@ export interface ClientOidcLogout {
      */
     backchannelLogoutInitiators?: pulumi.Input<inputs.ClientOidcLogoutBackchannelLogoutInitiators>;
     /**
+     * Controls whether session metadata is included in the logout token. Default value is null.
+     */
+    backchannelLogoutSessionMetadata?: pulumi.Input<inputs.ClientOidcLogoutBackchannelLogoutSessionMetadata>;
+    /**
      * Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
      */
     backchannelLogoutUrls: pulumi.Input<pulumi.Input<string>[]>;
@@ -1479,6 +1483,13 @@ export interface ClientOidcLogoutBackchannelLogoutInitiators {
      * Contains the list of initiators to be enabled for the given client.
      */
     selectedInitiators?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface ClientOidcLogoutBackchannelLogoutSessionMetadata {
+    /**
+     * The `include` property determines whether session metadata is included in the logout token.
+     */
+    include: pulumi.Input<boolean>;
 }
 
 export interface ClientRefreshToken {
@@ -1677,6 +1688,10 @@ export interface ConnectionOptions {
      */
     customHeaders?: pulumi.Input<pulumi.Input<inputs.ConnectionOptionsCustomHeader>[]>;
     /**
+     * Configure custom password hashing within a connection. (EA only)
+     */
+    customPasswordHash?: pulumi.Input<inputs.ConnectionOptionsCustomPasswordHash>;
+    /**
      * A map of scripts used to integrate with a custom database.
      */
     customScripts?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -1720,6 +1735,10 @@ export interface ConnectionOptions {
      * List of the domains that can be authenticated using the identity provider. Only needed for Identifier First authentication flows.
      */
     domainAliases?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Indicates whether to request the email scope. Used by some OAuth2 connections (e.g., LINE).
+     */
+    email?: pulumi.Input<boolean>;
     /**
      * Set to `true` to inject context into custom DB scripts (warning: cannot be disabled once enabled).
      */
@@ -2073,6 +2092,10 @@ export interface ConnectionOptionsAttributeEmailIdentifier {
      * Defines whether email attribute is active as an identifier
      */
     active?: pulumi.Input<boolean>;
+    /**
+     * Gets and Sets the default authentication method for the email identifier type. Valid values: `password`, `emailOtp`
+     */
+    defaultMethod?: pulumi.Input<string>;
 }
 
 export interface ConnectionOptionsAttributeEmailSignup {
@@ -2128,6 +2151,10 @@ export interface ConnectionOptionsAttributePhoneNumberIdentifier {
      * Defines whether Phone Number attribute is active as an identifier
      */
     active?: pulumi.Input<boolean>;
+    /**
+     * Gets and Sets the default authentication method for the phoneNumber identifier type. Valid values: `password`, `phoneOtp`
+     */
+    defaultMethod?: pulumi.Input<string>;
 }
 
 export interface ConnectionOptionsAttributePhoneNumberSignup {
@@ -2172,6 +2199,10 @@ export interface ConnectionOptionsAttributeUsernameIdentifier {
      * Defines whether UserName attribute is active as an identifier
      */
     active?: pulumi.Input<boolean>;
+    /**
+     * Gets and Sets the default authentication method for the username identifier type. Valid value: `password`
+     */
+    defaultMethod?: pulumi.Input<string>;
 }
 
 export interface ConnectionOptionsAttributeUsernameSignup {
@@ -2209,6 +2240,10 @@ export interface ConnectionOptionsAttributeUsernameValidationAllowedType {
 
 export interface ConnectionOptionsAuthenticationMethod {
     /**
+     * Configures Email OTP authentication
+     */
+    emailOtp?: pulumi.Input<inputs.ConnectionOptionsAuthenticationMethodEmailOtp>;
+    /**
      * Configures passkey authentication
      */
     passkey?: pulumi.Input<inputs.ConnectionOptionsAuthenticationMethodPasskey>;
@@ -2216,6 +2251,17 @@ export interface ConnectionOptionsAuthenticationMethod {
      * Configures password authentication
      */
     password?: pulumi.Input<inputs.ConnectionOptionsAuthenticationMethodPassword>;
+    /**
+     * Configures Phone OTP authentication
+     */
+    phoneOtp?: pulumi.Input<inputs.ConnectionOptionsAuthenticationMethodPhoneOtp>;
+}
+
+export interface ConnectionOptionsAuthenticationMethodEmailOtp {
+    /**
+     * Enables Email OTP authentication
+     */
+    enabled?: pulumi.Input<boolean>;
 }
 
 export interface ConnectionOptionsAuthenticationMethodPasskey {
@@ -2232,6 +2278,13 @@ export interface ConnectionOptionsAuthenticationMethodPassword {
     enabled?: pulumi.Input<boolean>;
 }
 
+export interface ConnectionOptionsAuthenticationMethodPhoneOtp {
+    /**
+     * Enables Phone OTP authentication
+     */
+    enabled?: pulumi.Input<boolean>;
+}
+
 export interface ConnectionOptionsConnectionSettings {
     /**
      * PKCE configuration. Possible values: `auto` (uses the strongest algorithm available), `S256` (uses the SHA-256 algorithm), `plain` (uses plaintext as described in the PKCE specification) or `disabled` (disables support for PKCE).
@@ -2242,6 +2295,13 @@ export interface ConnectionOptionsConnectionSettings {
 export interface ConnectionOptionsCustomHeader {
     header: pulumi.Input<string>;
     value: pulumi.Input<string>;
+}
+
+export interface ConnectionOptionsCustomPasswordHash {
+    /**
+     * Id of an existing action that should be invoked when validating a universal password hash. This action must support password-hash-migration trigger
+     */
+    actionId: pulumi.Input<string>;
 }
 
 export interface ConnectionOptionsDecryptionKey {
@@ -2746,16 +2806,26 @@ export interface EventStreamWebhookConfigurationWebhookAuthorization {
      * The authorization method used to secure the webhook endpoint. Can be either `basic` or `bearer`.
      */
     method: pulumi.Input<string>;
-    /**
-     * The password for `basic` authentication. Required when `method` is set to `basic`.
-     */
     password?: pulumi.Input<string>;
     /**
-     * The token used for `bearer` authentication. Required when `method` is set to `bearer`.
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      */
+    passwordWo?: pulumi.Input<string>;
+    /**
+     * Version number for password changes. Update this value to trigger a password change when using `passwordWo`.
+     */
+    passwordWoVersion?: pulumi.Input<number>;
     token?: pulumi.Input<string>;
     /**
-     * The username for `basic` authentication. Required when `method` is set to `basic`.
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     */
+    tokenWo?: pulumi.Input<string>;
+    /**
+     * Version number for token changes. Update this value to trigger a token change when using `tokenWo`.
+     */
+    tokenWoVersion?: pulumi.Input<number>;
+    /**
+     * The username for `basic` authentication. Required only when `method` is set to `basic`.
      */
     username?: pulumi.Input<string>;
 }
@@ -3360,6 +3430,10 @@ export interface OrganizationDiscoveryDomainsDiscoveryDomain {
      * Verification status. Must be either 'pending' or 'verified'.
      */
     status: pulumi.Input<string>;
+    /**
+     * Indicates whether this domain should be used for organization discovery during login.
+     */
+    useForOrganizationDiscovery?: pulumi.Input<boolean>;
     /**
      * The full domain where the TXT record should be added.
      */

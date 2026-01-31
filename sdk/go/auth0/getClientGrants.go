@@ -12,6 +12,84 @@ import (
 )
 
 // Data source to retrieve a client grants based on clientId and/or audience
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myClient, err := auth0.NewClient(ctx, "my_client", &auth0.ClientArgs{
+//				Name: pulumi.String("Example Application (Managed by Terraform)"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			myResourceServer, err := auth0.NewResourceServer(ctx, "my_resource_server", &auth0.ResourceServerArgs{
+//				Name:       pulumi.String("Example Resource Server (Managed by Terraform)"),
+//				Identifier: pulumi.String("https://api.example.com/client-grant"),
+//				AuthorizationDetails: auth0.ResourceServerAuthorizationDetailArray{
+//					&auth0.ResourceServerAuthorizationDetailArgs{
+//						Type: pulumi.String("payment"),
+//					},
+//				},
+//				SubjectTypeAuthorization: &auth0.ResourceServerSubjectTypeAuthorizationArgs{
+//					User: &auth0.ResourceServerSubjectTypeAuthorizationUserArgs{
+//						Policy: pulumi.String("allow_all"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = auth0.NewResourceServerScopes(ctx, "my_scopes", &auth0.ResourceServerScopesArgs{
+//				ResourceServerIdentifier: myResourceServer.Identifier,
+//				Scopes: auth0.ResourceServerScopesScopeArray{
+//					&auth0.ResourceServerScopesScopeArgs{
+//						Name: pulumi.String("create:foo"),
+//					},
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				myResourceServer,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = auth0.NewClientGrant(ctx, "my_client_grant", &auth0.ClientGrantArgs{
+//				ClientId: myClient.ID(),
+//				Audience: myResourceServer.Identifier,
+//				AuthorizationDetailsTypes: pulumi.StringArray{
+//					pulumi.String("payment"),
+//				},
+//				SubjectType:    pulumi.String("user"),
+//				AllowAllScopes: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_ = auth0.GetClientGrantsOutput(ctx, auth0.GetClientGrantsOutputArgs{
+//				ClientId: myClient.ID(),
+//			}, nil)
+//			_ = auth0.GetClientGrantsOutput(ctx, auth0.GetClientGrantsOutputArgs{
+//				Audience: myResourceServer.Identifier,
+//			}, nil)
+//			_ = auth0.GetClientGrantsOutput(ctx, auth0.GetClientGrantsOutputArgs{
+//				ClientId: myClient.ID(),
+//				Audience: myResourceServer.Identifier,
+//			}, nil)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetClientGrants(ctx *pulumi.Context, args *GetClientGrantsArgs, opts ...pulumi.InvokeOption) (*GetClientGrantsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetClientGrantsResult

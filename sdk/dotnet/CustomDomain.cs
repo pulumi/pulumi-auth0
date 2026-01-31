@@ -91,6 +91,12 @@ namespace Pulumi.Auth0
         public Output<bool> Primary { get; private set; } = null!;
 
         /// <summary>
+        /// Relying Party ID (rpId) to be used for Passkeys on this custom domain. If not provided or set to null, the full domain will be used.
+        /// </summary>
+        [Output("relyingPartyIdentifier")]
+        public Output<string?> RelyingPartyIdentifier { get; private set; } = null!;
+
+        /// <summary>
         /// Configuration status for the custom domain. Options include `Disabled`, `Pending`, `PendingVerification`, `Ready` and `Failed`.
         /// </summary>
         [Output("status")]
@@ -185,6 +191,12 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
+        /// Relying Party ID (rpId) to be used for Passkeys on this custom domain. If not provided or set to null, the full domain will be used.
+        /// </summary>
+        [Input("relyingPartyIdentifier")]
+        public Input<string>? RelyingPartyIdentifier { get; set; }
+
+        /// <summary>
         /// TLS policy for the custom domain. Available options are: `Compatible` or `Recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on SelfManaged domains.
         /// </summary>
         [Input("tlsPolicy")]
@@ -251,6 +263,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("primary")]
         public Input<bool>? Primary { get; set; }
+
+        /// <summary>
+        /// Relying Party ID (rpId) to be used for Passkeys on this custom domain. If not provided or set to null, the full domain will be used.
+        /// </summary>
+        [Input("relyingPartyIdentifier")]
+        public Input<string>? RelyingPartyIdentifier { get; set; }
 
         /// <summary>
         /// Configuration status for the custom domain. Options include `Disabled`, `Pending`, `PendingVerification`, `Ready` and `Failed`.

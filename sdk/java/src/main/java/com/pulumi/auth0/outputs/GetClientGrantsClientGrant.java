@@ -5,12 +5,18 @@ package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetClientGrantsClientGrant {
+    /**
+     * @return When enabled, all scopes configured on the resource server are allowed for this client grant. EA Only.
+     * 
+     */
+    private Boolean allowAllScopes;
     /**
      * @return The audience of the client grant.
      * 
@@ -38,6 +44,13 @@ public final class GetClientGrantsClientGrant {
     private String subjectType;
 
     private GetClientGrantsClientGrant() {}
+    /**
+     * @return When enabled, all scopes configured on the resource server are allowed for this client grant. EA Only.
+     * 
+     */
+    public Boolean allowAllScopes() {
+        return this.allowAllScopes;
+    }
     /**
      * @return The audience of the client grant.
      * 
@@ -83,6 +96,7 @@ public final class GetClientGrantsClientGrant {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Boolean allowAllScopes;
         private String audience;
         private String clientId;
         private String id;
@@ -91,6 +105,7 @@ public final class GetClientGrantsClientGrant {
         public Builder() {}
         public Builder(GetClientGrantsClientGrant defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.allowAllScopes = defaults.allowAllScopes;
     	      this.audience = defaults.audience;
     	      this.clientId = defaults.clientId;
     	      this.id = defaults.id;
@@ -98,6 +113,14 @@ public final class GetClientGrantsClientGrant {
     	      this.subjectType = defaults.subjectType;
         }
 
+        @CustomType.Setter
+        public Builder allowAllScopes(Boolean allowAllScopes) {
+            if (allowAllScopes == null) {
+              throw new MissingRequiredPropertyException("GetClientGrantsClientGrant", "allowAllScopes");
+            }
+            this.allowAllScopes = allowAllScopes;
+            return this;
+        }
         @CustomType.Setter
         public Builder audience(String audience) {
             if (audience == null) {
@@ -143,6 +166,7 @@ public final class GetClientGrantsClientGrant {
         }
         public GetClientGrantsClientGrant build() {
             final var _resultValue = new GetClientGrantsClientGrant();
+            _resultValue.allowAllScopes = allowAllScopes;
             _resultValue.audience = audience;
             _resultValue.clientId = clientId;
             _resultValue.id = id;

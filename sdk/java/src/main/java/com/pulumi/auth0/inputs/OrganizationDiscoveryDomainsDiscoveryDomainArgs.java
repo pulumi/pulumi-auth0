@@ -6,6 +6,7 @@ package com.pulumi.auth0.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -62,6 +63,21 @@ public final class OrganizationDiscoveryDomainsDiscoveryDomainArgs extends com.p
     }
 
     /**
+     * Indicates whether this domain should be used for organization discovery during login.
+     * 
+     */
+    @Import(name="useForOrganizationDiscovery")
+    private @Nullable Output<Boolean> useForOrganizationDiscovery;
+
+    /**
+     * @return Indicates whether this domain should be used for organization discovery during login.
+     * 
+     */
+    public Optional<Output<Boolean>> useForOrganizationDiscovery() {
+        return Optional.ofNullable(this.useForOrganizationDiscovery);
+    }
+
+    /**
      * The full domain where the TXT record should be added.
      * 
      */
@@ -97,6 +113,7 @@ public final class OrganizationDiscoveryDomainsDiscoveryDomainArgs extends com.p
         this.domain = $.domain;
         this.id = $.id;
         this.status = $.status;
+        this.useForOrganizationDiscovery = $.useForOrganizationDiscovery;
         this.verificationHost = $.verificationHost;
         this.verificationTxt = $.verificationTxt;
     }
@@ -180,6 +197,27 @@ public final class OrganizationDiscoveryDomainsDiscoveryDomainArgs extends com.p
          */
         public Builder status(String status) {
             return status(Output.of(status));
+        }
+
+        /**
+         * @param useForOrganizationDiscovery Indicates whether this domain should be used for organization discovery during login.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder useForOrganizationDiscovery(@Nullable Output<Boolean> useForOrganizationDiscovery) {
+            $.useForOrganizationDiscovery = useForOrganizationDiscovery;
+            return this;
+        }
+
+        /**
+         * @param useForOrganizationDiscovery Indicates whether this domain should be used for organization discovery during login.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder useForOrganizationDiscovery(Boolean useForOrganizationDiscovery) {
+            return useForOrganizationDiscovery(Output.of(useForOrganizationDiscovery));
         }
 
         /**

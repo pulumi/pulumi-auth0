@@ -18,6 +18,21 @@ public final class ClientGrantState extends com.pulumi.resources.ResourceArgs {
     public static final ClientGrantState Empty = new ClientGrantState();
 
     /**
+     * When set to `true`, all scopes configured on the resource server are allowed for this client grant. `scopes` can not be provided when this is set to `true`. EA Only.
+     * 
+     */
+    @Import(name="allowAllScopes")
+    private @Nullable Output<Boolean> allowAllScopes;
+
+    /**
+     * @return When set to `true`, all scopes configured on the resource server are allowed for this client grant. `scopes` can not be provided when this is set to `true`. EA Only.
+     * 
+     */
+    public Optional<Output<Boolean>> allowAllScopes() {
+        return Optional.ofNullable(this.allowAllScopes);
+    }
+
+    /**
      * If enabled, any organization can be used with this grant. If disabled (default), the grant must be explicitly assigned to the desired organizations.
      * 
      */
@@ -108,14 +123,14 @@ public final class ClientGrantState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Permissions (scopes) included in this grant.
+     * Permissions (scopes) included in this grant. Can not be provided when `allowAllScopes` is set to `true`.
      * 
      */
     @Import(name="scopes")
     private @Nullable Output<List<String>> scopes;
 
     /**
-     * @return Permissions (scopes) included in this grant.
+     * @return Permissions (scopes) included in this grant. Can not be provided when `allowAllScopes` is set to `true`.
      * 
      */
     public Optional<Output<List<String>>> scopes() {
@@ -140,6 +155,7 @@ public final class ClientGrantState extends com.pulumi.resources.ResourceArgs {
     private ClientGrantState() {}
 
     private ClientGrantState(ClientGrantState $) {
+        this.allowAllScopes = $.allowAllScopes;
         this.allowAnyOrganization = $.allowAnyOrganization;
         this.audience = $.audience;
         this.authorizationDetailsTypes = $.authorizationDetailsTypes;
@@ -166,6 +182,27 @@ public final class ClientGrantState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(ClientGrantState defaults) {
             $ = new ClientGrantState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param allowAllScopes When set to `true`, all scopes configured on the resource server are allowed for this client grant. `scopes` can not be provided when this is set to `true`. EA Only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowAllScopes(@Nullable Output<Boolean> allowAllScopes) {
+            $.allowAllScopes = allowAllScopes;
+            return this;
+        }
+
+        /**
+         * @param allowAllScopes When set to `true`, all scopes configured on the resource server are allowed for this client grant. `scopes` can not be provided when this is set to `true`. EA Only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowAllScopes(Boolean allowAllScopes) {
+            return allowAllScopes(Output.of(allowAllScopes));
         }
 
         /**
@@ -305,7 +342,7 @@ public final class ClientGrantState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scopes Permissions (scopes) included in this grant.
+         * @param scopes Permissions (scopes) included in this grant. Can not be provided when `allowAllScopes` is set to `true`.
          * 
          * @return builder
          * 
@@ -316,7 +353,7 @@ public final class ClientGrantState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scopes Permissions (scopes) included in this grant.
+         * @param scopes Permissions (scopes) included in this grant. Can not be provided when `allowAllScopes` is set to `true`.
          * 
          * @return builder
          * 
@@ -326,7 +363,7 @@ public final class ClientGrantState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scopes Permissions (scopes) included in this grant.
+         * @param scopes Permissions (scopes) included in this grant. Can not be provided when `allowAllScopes` is set to `true`.
          * 
          * @return builder
          * 

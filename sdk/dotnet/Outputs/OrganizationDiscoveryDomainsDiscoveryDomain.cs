@@ -26,6 +26,10 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string Status;
         /// <summary>
+        /// Indicates whether this domain should be used for organization discovery during login.
+        /// </summary>
+        public readonly bool? UseForOrganizationDiscovery;
+        /// <summary>
         /// The full domain where the TXT record should be added.
         /// </summary>
         public readonly string? VerificationHost;
@@ -42,6 +46,8 @@ namespace Pulumi.Auth0.Outputs
 
             string status,
 
+            bool? useForOrganizationDiscovery,
+
             string? verificationHost,
 
             string? verificationTxt)
@@ -49,6 +55,7 @@ namespace Pulumi.Auth0.Outputs
             Domain = domain;
             Id = id;
             Status = status;
+            UseForOrganizationDiscovery = useForOrganizationDiscovery;
             VerificationHost = verificationHost;
             VerificationTxt = verificationTxt;
         }

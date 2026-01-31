@@ -10,6 +10,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.String;
 import javax.annotation.Nullable;
 
@@ -60,6 +61,20 @@ public class OrganizationDiscoveryDomain extends com.pulumi.resources.CustomReso
      */
     public Output<String> status() {
         return this.status;
+    }
+    /**
+     * Indicates whether this domain should be used for organization discovery during login.
+     * 
+     */
+    @Export(name="useForOrganizationDiscovery", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> useForOrganizationDiscovery;
+
+    /**
+     * @return Indicates whether this domain should be used for organization discovery during login.
+     * 
+     */
+    public Output<Boolean> useForOrganizationDiscovery() {
+        return this.useForOrganizationDiscovery;
     }
     /**
      * The full domain where the TXT record should be added.

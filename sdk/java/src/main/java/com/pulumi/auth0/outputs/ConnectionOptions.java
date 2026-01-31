@@ -8,6 +8,7 @@ import com.pulumi.auth0.outputs.ConnectionOptionsAttributeMap;
 import com.pulumi.auth0.outputs.ConnectionOptionsAuthenticationMethod;
 import com.pulumi.auth0.outputs.ConnectionOptionsConnectionSettings;
 import com.pulumi.auth0.outputs.ConnectionOptionsCustomHeader;
+import com.pulumi.auth0.outputs.ConnectionOptionsCustomPasswordHash;
 import com.pulumi.auth0.outputs.ConnectionOptionsDecryptionKey;
 import com.pulumi.auth0.outputs.ConnectionOptionsGatewayAuthentication;
 import com.pulumi.auth0.outputs.ConnectionOptionsIdpInitiated;
@@ -128,6 +129,11 @@ public final class ConnectionOptions {
      */
     private @Nullable List<ConnectionOptionsCustomHeader> customHeaders;
     /**
+     * @return Configure custom password hashing within a connection. (EA only)
+     * 
+     */
+    private @Nullable ConnectionOptionsCustomPasswordHash customPasswordHash;
+    /**
      * @return A map of scripts used to integrate with a custom database.
      * 
      */
@@ -182,6 +188,11 @@ public final class ConnectionOptions {
      * 
      */
     private @Nullable List<String> domainAliases;
+    /**
+     * @return Indicates whether to request the email scope. Used by some OAuth2 connections (e.g., LINE).
+     * 
+     */
+    private @Nullable Boolean email;
     /**
      * @return Set to `true` to inject context into custom DB scripts (warning: cannot be disabled once enabled).
      * 
@@ -703,6 +714,13 @@ public final class ConnectionOptions {
         return this.customHeaders == null ? List.of() : this.customHeaders;
     }
     /**
+     * @return Configure custom password hashing within a connection. (EA only)
+     * 
+     */
+    public Optional<ConnectionOptionsCustomPasswordHash> customPasswordHash() {
+        return Optional.ofNullable(this.customPasswordHash);
+    }
+    /**
      * @return A map of scripts used to integrate with a custom database.
      * 
      */
@@ -778,6 +796,13 @@ public final class ConnectionOptions {
      */
     public List<String> domainAliases() {
         return this.domainAliases == null ? List.of() : this.domainAliases;
+    }
+    /**
+     * @return Indicates whether to request the email scope. Used by some OAuth2 connections (e.g., LINE).
+     * 
+     */
+    public Optional<Boolean> email() {
+        return Optional.ofNullable(this.email);
     }
     /**
      * @return Set to `true` to inject context into custom DB scripts (warning: cannot be disabled once enabled).
@@ -1347,6 +1372,7 @@ public final class ConnectionOptions {
         private @Nullable String consumerKey;
         private @Nullable String consumerSecret;
         private @Nullable List<ConnectionOptionsCustomHeader> customHeaders;
+        private @Nullable ConnectionOptionsCustomPasswordHash customPasswordHash;
         private @Nullable Map<String,String> customScripts;
         private @Nullable Boolean debug;
         private @Nullable ConnectionOptionsDecryptionKey decryptionKey;
@@ -1358,6 +1384,7 @@ public final class ConnectionOptions {
         private @Nullable String discoveryUrl;
         private @Nullable String domain;
         private @Nullable List<String> domainAliases;
+        private @Nullable Boolean email;
         private @Nullable Boolean enableScriptContext;
         private @Nullable Boolean enabledDatabaseCustomization;
         private @Nullable String entityId;
@@ -1457,6 +1484,7 @@ public final class ConnectionOptions {
     	      this.consumerKey = defaults.consumerKey;
     	      this.consumerSecret = defaults.consumerSecret;
     	      this.customHeaders = defaults.customHeaders;
+    	      this.customPasswordHash = defaults.customPasswordHash;
     	      this.customScripts = defaults.customScripts;
     	      this.debug = defaults.debug;
     	      this.decryptionKey = defaults.decryptionKey;
@@ -1468,6 +1496,7 @@ public final class ConnectionOptions {
     	      this.discoveryUrl = defaults.discoveryUrl;
     	      this.domain = defaults.domain;
     	      this.domainAliases = defaults.domainAliases;
+    	      this.email = defaults.email;
     	      this.enableScriptContext = defaults.enableScriptContext;
     	      this.enabledDatabaseCustomization = defaults.enabledDatabaseCustomization;
     	      this.entityId = defaults.entityId;
@@ -1674,6 +1703,12 @@ public final class ConnectionOptions {
             return customHeaders(List.of(customHeaders));
         }
         @CustomType.Setter
+        public Builder customPasswordHash(@Nullable ConnectionOptionsCustomPasswordHash customPasswordHash) {
+
+            this.customPasswordHash = customPasswordHash;
+            return this;
+        }
+        @CustomType.Setter
         public Builder customScripts(@Nullable Map<String,String> customScripts) {
 
             this.customScripts = customScripts;
@@ -1741,6 +1776,12 @@ public final class ConnectionOptions {
         }
         public Builder domainAliases(String... domainAliases) {
             return domainAliases(List.of(domainAliases));
+        }
+        @CustomType.Setter
+        public Builder email(@Nullable Boolean email) {
+
+            this.email = email;
+            return this;
         }
         @CustomType.Setter
         public Builder enableScriptContext(@Nullable Boolean enableScriptContext) {
@@ -2240,6 +2281,7 @@ public final class ConnectionOptions {
             _resultValue.consumerKey = consumerKey;
             _resultValue.consumerSecret = consumerSecret;
             _resultValue.customHeaders = customHeaders;
+            _resultValue.customPasswordHash = customPasswordHash;
             _resultValue.customScripts = customScripts;
             _resultValue.debug = debug;
             _resultValue.decryptionKey = decryptionKey;
@@ -2251,6 +2293,7 @@ public final class ConnectionOptions {
             _resultValue.discoveryUrl = discoveryUrl;
             _resultValue.domain = domain;
             _resultValue.domainAliases = domainAliases;
+            _resultValue.email = email;
             _resultValue.enableScriptContext = enableScriptContext;
             _resultValue.enabledDatabaseCustomization = enabledDatabaseCustomization;
             _resultValue.entityId = entityId;

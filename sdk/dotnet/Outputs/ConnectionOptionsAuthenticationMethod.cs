@@ -14,6 +14,10 @@ namespace Pulumi.Auth0.Outputs
     public sealed class ConnectionOptionsAuthenticationMethod
     {
         /// <summary>
+        /// Configures Email OTP authentication
+        /// </summary>
+        public readonly Outputs.ConnectionOptionsAuthenticationMethodEmailOtp? EmailOtp;
+        /// <summary>
         /// Configures passkey authentication
         /// </summary>
         public readonly Outputs.ConnectionOptionsAuthenticationMethodPasskey? Passkey;
@@ -21,15 +25,25 @@ namespace Pulumi.Auth0.Outputs
         /// Configures password authentication
         /// </summary>
         public readonly Outputs.ConnectionOptionsAuthenticationMethodPassword? Password;
+        /// <summary>
+        /// Configures Phone OTP authentication
+        /// </summary>
+        public readonly Outputs.ConnectionOptionsAuthenticationMethodPhoneOtp? PhoneOtp;
 
         [OutputConstructor]
         private ConnectionOptionsAuthenticationMethod(
+            Outputs.ConnectionOptionsAuthenticationMethodEmailOtp? emailOtp,
+
             Outputs.ConnectionOptionsAuthenticationMethodPasskey? passkey,
 
-            Outputs.ConnectionOptionsAuthenticationMethodPassword? password)
+            Outputs.ConnectionOptionsAuthenticationMethodPassword? password,
+
+            Outputs.ConnectionOptionsAuthenticationMethodPhoneOtp? phoneOtp)
         {
+            EmailOtp = emailOtp;
             Passkey = passkey;
             Password = password;
+            PhoneOtp = phoneOtp;
         }
     }
 }

@@ -63,6 +63,21 @@ public final class CustomDomainArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Relying Party ID (rpId) to be used for Passkeys on this custom domain. If not provided or set to null, the full domain will be used.
+     * 
+     */
+    @Import(name="relyingPartyIdentifier")
+    private @Nullable Output<String> relyingPartyIdentifier;
+
+    /**
+     * @return Relying Party ID (rpId) to be used for Passkeys on this custom domain. If not provided or set to null, the full domain will be used.
+     * 
+     */
+    public Optional<Output<String>> relyingPartyIdentifier() {
+        return Optional.ofNullable(this.relyingPartyIdentifier);
+    }
+
+    /**
      * TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on selfManaged domains.
      * 
      */
@@ -98,6 +113,7 @@ public final class CustomDomainArgs extends com.pulumi.resources.ResourceArgs {
         this.customClientIpHeader = $.customClientIpHeader;
         this.domain = $.domain;
         this.domainMetadata = $.domainMetadata;
+        this.relyingPartyIdentifier = $.relyingPartyIdentifier;
         this.tlsPolicy = $.tlsPolicy;
         this.type = $.type;
     }
@@ -181,6 +197,27 @@ public final class CustomDomainArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder domainMetadata(Map<String,String> domainMetadata) {
             return domainMetadata(Output.of(domainMetadata));
+        }
+
+        /**
+         * @param relyingPartyIdentifier Relying Party ID (rpId) to be used for Passkeys on this custom domain. If not provided or set to null, the full domain will be used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder relyingPartyIdentifier(@Nullable Output<String> relyingPartyIdentifier) {
+            $.relyingPartyIdentifier = relyingPartyIdentifier;
+            return this;
+        }
+
+        /**
+         * @param relyingPartyIdentifier Relying Party ID (rpId) to be used for Passkeys on this custom domain. If not provided or set to null, the full domain will be used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder relyingPartyIdentifier(String relyingPartyIdentifier) {
+            return relyingPartyIdentifier(Output.of(relyingPartyIdentifier));
         }
 
         /**

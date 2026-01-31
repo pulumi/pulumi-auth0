@@ -34,6 +34,12 @@ namespace Pulumi.Auth0
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
+        /// Indicates whether this domain should be used for organization discovery during login.
+        /// </summary>
+        [Output("useForOrganizationDiscovery")]
+        public Output<bool> UseForOrganizationDiscovery { get; private set; } = null!;
+
+        /// <summary>
         /// The full domain where the TXT record should be added.
         /// </summary>
         [Output("verificationHost")]
@@ -109,6 +115,12 @@ namespace Pulumi.Auth0
         [Input("status", required: true)]
         public Input<string> Status { get; set; } = null!;
 
+        /// <summary>
+        /// Indicates whether this domain should be used for organization discovery during login.
+        /// </summary>
+        [Input("useForOrganizationDiscovery")]
+        public Input<bool>? UseForOrganizationDiscovery { get; set; }
+
         public OrganizationDiscoveryDomainArgs()
         {
         }
@@ -134,6 +146,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// Indicates whether this domain should be used for organization discovery during login.
+        /// </summary>
+        [Input("useForOrganizationDiscovery")]
+        public Input<bool>? UseForOrganizationDiscovery { get; set; }
 
         /// <summary>
         /// The full domain where the TXT record should be added.

@@ -5,6 +5,7 @@ package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -27,6 +28,11 @@ public final class OrganizationDiscoveryDomainsDiscoveryDomain {
      * 
      */
     private String status;
+    /**
+     * @return Indicates whether this domain should be used for organization discovery during login.
+     * 
+     */
+    private @Nullable Boolean useForOrganizationDiscovery;
     /**
      * @return The full domain where the TXT record should be added.
      * 
@@ -61,6 +67,13 @@ public final class OrganizationDiscoveryDomainsDiscoveryDomain {
         return this.status;
     }
     /**
+     * @return Indicates whether this domain should be used for organization discovery during login.
+     * 
+     */
+    public Optional<Boolean> useForOrganizationDiscovery() {
+        return Optional.ofNullable(this.useForOrganizationDiscovery);
+    }
+    /**
      * @return The full domain where the TXT record should be added.
      * 
      */
@@ -87,6 +100,7 @@ public final class OrganizationDiscoveryDomainsDiscoveryDomain {
         private String domain;
         private @Nullable String id;
         private String status;
+        private @Nullable Boolean useForOrganizationDiscovery;
         private @Nullable String verificationHost;
         private @Nullable String verificationTxt;
         public Builder() {}
@@ -95,6 +109,7 @@ public final class OrganizationDiscoveryDomainsDiscoveryDomain {
     	      this.domain = defaults.domain;
     	      this.id = defaults.id;
     	      this.status = defaults.status;
+    	      this.useForOrganizationDiscovery = defaults.useForOrganizationDiscovery;
     	      this.verificationHost = defaults.verificationHost;
     	      this.verificationTxt = defaults.verificationTxt;
         }
@@ -122,6 +137,12 @@ public final class OrganizationDiscoveryDomainsDiscoveryDomain {
             return this;
         }
         @CustomType.Setter
+        public Builder useForOrganizationDiscovery(@Nullable Boolean useForOrganizationDiscovery) {
+
+            this.useForOrganizationDiscovery = useForOrganizationDiscovery;
+            return this;
+        }
+        @CustomType.Setter
         public Builder verificationHost(@Nullable String verificationHost) {
 
             this.verificationHost = verificationHost;
@@ -138,6 +159,7 @@ public final class OrganizationDiscoveryDomainsDiscoveryDomain {
             _resultValue.domain = domain;
             _resultValue.id = id;
             _resultValue.status = status;
+            _resultValue.useForOrganizationDiscovery = useForOrganizationDiscovery;
             _resultValue.verificationHost = verificationHost;
             _resultValue.verificationTxt = verificationTxt;
             return _resultValue;

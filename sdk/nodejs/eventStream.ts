@@ -44,6 +44,25 @@ import * as utilities from "./utilities";
  *         },
  *     },
  * });
+ * const config = new pulumi.Config();
+ * // The webhook token
+ * const webhookToken = config.require("webhookToken");
+ * const myEventStreamWebhookSecure = new auth0.EventStream("my_event_stream_webhook_secure", {
+ *     name: "my-webhook-secure",
+ *     destinationType: "webhook",
+ *     subscriptions: [
+ *         "user.created",
+ *         "user.updated",
+ *     ],
+ *     webhookConfiguration: {
+ *         webhookEndpoint: "https://eof28wtn4v4506o.m.pipedream.net",
+ *         webhookAuthorization: {
+ *             method: "bearer",
+ *             tokenWo: webhookToken,
+ *             tokenWoVersion: 1,
+ *         },
+ *     },
+ * });
  * ```
  *
  * ## Import

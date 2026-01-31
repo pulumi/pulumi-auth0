@@ -3,8 +3,10 @@
 
 package com.pulumi.auth0.outputs;
 
+import com.pulumi.auth0.outputs.GetConnectionOptionAuthenticationMethodEmailOtp;
 import com.pulumi.auth0.outputs.GetConnectionOptionAuthenticationMethodPasskey;
 import com.pulumi.auth0.outputs.GetConnectionOptionAuthenticationMethodPassword;
+import com.pulumi.auth0.outputs.GetConnectionOptionAuthenticationMethodPhoneOtp;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.List;
@@ -12,6 +14,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetConnectionOptionAuthenticationMethod {
+    /**
+     * @return Configures Email OTP authentication
+     * 
+     */
+    private List<GetConnectionOptionAuthenticationMethodEmailOtp> emailOtps;
     /**
      * @return Configures passkey authentication
      * 
@@ -22,8 +29,20 @@ public final class GetConnectionOptionAuthenticationMethod {
      * 
      */
     private List<GetConnectionOptionAuthenticationMethodPassword> passwords;
+    /**
+     * @return Configures Phone OTP authentication
+     * 
+     */
+    private List<GetConnectionOptionAuthenticationMethodPhoneOtp> phoneOtps;
 
     private GetConnectionOptionAuthenticationMethod() {}
+    /**
+     * @return Configures Email OTP authentication
+     * 
+     */
+    public List<GetConnectionOptionAuthenticationMethodEmailOtp> emailOtps() {
+        return this.emailOtps;
+    }
     /**
      * @return Configures passkey authentication
      * 
@@ -38,6 +57,13 @@ public final class GetConnectionOptionAuthenticationMethod {
     public List<GetConnectionOptionAuthenticationMethodPassword> passwords() {
         return this.passwords;
     }
+    /**
+     * @return Configures Phone OTP authentication
+     * 
+     */
+    public List<GetConnectionOptionAuthenticationMethodPhoneOtp> phoneOtps() {
+        return this.phoneOtps;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -48,15 +74,30 @@ public final class GetConnectionOptionAuthenticationMethod {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetConnectionOptionAuthenticationMethodEmailOtp> emailOtps;
         private List<GetConnectionOptionAuthenticationMethodPasskey> passkeys;
         private List<GetConnectionOptionAuthenticationMethodPassword> passwords;
+        private List<GetConnectionOptionAuthenticationMethodPhoneOtp> phoneOtps;
         public Builder() {}
         public Builder(GetConnectionOptionAuthenticationMethod defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.emailOtps = defaults.emailOtps;
     	      this.passkeys = defaults.passkeys;
     	      this.passwords = defaults.passwords;
+    	      this.phoneOtps = defaults.phoneOtps;
         }
 
+        @CustomType.Setter
+        public Builder emailOtps(List<GetConnectionOptionAuthenticationMethodEmailOtp> emailOtps) {
+            if (emailOtps == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOptionAuthenticationMethod", "emailOtps");
+            }
+            this.emailOtps = emailOtps;
+            return this;
+        }
+        public Builder emailOtps(GetConnectionOptionAuthenticationMethodEmailOtp... emailOtps) {
+            return emailOtps(List.of(emailOtps));
+        }
         @CustomType.Setter
         public Builder passkeys(List<GetConnectionOptionAuthenticationMethodPasskey> passkeys) {
             if (passkeys == null) {
@@ -79,10 +120,23 @@ public final class GetConnectionOptionAuthenticationMethod {
         public Builder passwords(GetConnectionOptionAuthenticationMethodPassword... passwords) {
             return passwords(List.of(passwords));
         }
+        @CustomType.Setter
+        public Builder phoneOtps(List<GetConnectionOptionAuthenticationMethodPhoneOtp> phoneOtps) {
+            if (phoneOtps == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOptionAuthenticationMethod", "phoneOtps");
+            }
+            this.phoneOtps = phoneOtps;
+            return this;
+        }
+        public Builder phoneOtps(GetConnectionOptionAuthenticationMethodPhoneOtp... phoneOtps) {
+            return phoneOtps(List.of(phoneOtps));
+        }
         public GetConnectionOptionAuthenticationMethod build() {
             final var _resultValue = new GetConnectionOptionAuthenticationMethod();
+            _resultValue.emailOtps = emailOtps;
             _resultValue.passkeys = passkeys;
             _resultValue.passwords = passwords;
+            _resultValue.phoneOtps = phoneOtps;
             return _resultValue;
         }
     }
