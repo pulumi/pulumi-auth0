@@ -408,6 +408,9 @@
                                         }
                                     }
                                 },
+                                "backchannel_logout_session_metadata": {
+                                    "maxItemsOne": true
+                                },
                                 "backchannel_logout_urls": {
                                     "maxItemsOne": false
                                 }
@@ -624,10 +627,16 @@
                                     "maxItemsOne": false,
                                     "elem": {
                                         "fields": {
+                                            "email_otp": {
+                                                "maxItemsOne": true
+                                            },
                                             "passkey": {
                                                 "maxItemsOne": true
                                             },
                                             "password": {
+                                                "maxItemsOne": true
+                                            },
+                                            "phone_otp": {
                                                 "maxItemsOne": true
                                             }
                                         }
@@ -638,6 +647,9 @@
                                 },
                                 "custom_headers": {
                                     "maxItemsOne": false
+                                },
+                                "custom_password_hash": {
+                                    "maxItemsOne": true
                                 },
                                 "decryption_key": {
                                     "maxItemsOne": true
@@ -2032,6 +2044,9 @@
                                         }
                                     }
                                 },
+                                "backchannel_logout_session_metadata": {
+                                    "maxItemsOne": false
+                                },
                                 "backchannel_logout_urls": {
                                     "maxItemsOne": false
                                 }
@@ -2174,6 +2189,9 @@
                                                         }
                                                     }
                                                 }
+                                            },
+                                            "backchannel_logout_session_metadata": {
+                                                "maxItemsOne": false
                                             },
                                             "backchannel_logout_urls": {
                                                 "maxItemsOne": false
@@ -2319,10 +2337,16 @@
                                     "maxItemsOne": false,
                                     "elem": {
                                         "fields": {
+                                            "email_otp": {
+                                                "maxItemsOne": false
+                                            },
                                             "passkey": {
                                                 "maxItemsOne": false
                                             },
                                             "password": {
+                                                "maxItemsOne": false
+                                            },
+                                            "phone_otp": {
                                                 "maxItemsOne": false
                                             }
                                         }
@@ -2332,6 +2356,9 @@
                                     "maxItemsOne": false
                                 },
                                 "custom_headers": {
+                                    "maxItemsOne": false
+                                },
+                                "custom_password_hash": {
                                     "maxItemsOne": false
                                 },
                                 "decryption_key": {
