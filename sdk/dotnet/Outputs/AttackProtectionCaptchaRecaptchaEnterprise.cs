@@ -14,9 +14,9 @@ namespace Pulumi.Auth0.Outputs
     public sealed class AttackProtectionCaptchaRecaptchaEnterprise
     {
         /// <summary>
-        /// API key for reCAPTCHA Enterprise.
+        /// API key for reCAPTCHA Enterprise. Required when configuring reCAPTCHA Enterprise.
         /// </summary>
-        public readonly string ApiKey;
+        public readonly string? ApiKey;
         /// <summary>
         /// Project ID for reCAPTCHA Enterprise.
         /// </summary>
@@ -28,7 +28,7 @@ namespace Pulumi.Auth0.Outputs
 
         [OutputConstructor]
         private AttackProtectionCaptchaRecaptchaEnterprise(
-            string apiKey,
+            string? apiKey,
 
             string projectId,
 

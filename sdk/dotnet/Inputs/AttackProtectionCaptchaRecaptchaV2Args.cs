@@ -12,11 +12,11 @@ namespace Pulumi.Auth0.Inputs
 
     public sealed class AttackProtectionCaptchaRecaptchaV2Args : global::Pulumi.ResourceArgs
     {
-        [Input("secret", required: true)]
+        [Input("secret")]
         private Input<string>? _secret;
 
         /// <summary>
-        /// Secret for reCAPTCHA v2.
+        /// Secret for reCAPTCHA v2. Required when configuring reCAPTCHA v2.
         /// </summary>
         public Input<string>? Secret
         {

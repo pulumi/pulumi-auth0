@@ -24,11 +24,11 @@ namespace Pulumi.Auth0.Inputs
         [Input("failOpen")]
         public Input<bool>? FailOpen { get; set; }
 
-        [Input("secret", required: true)]
+        [Input("secret")]
         private Input<string>? _secret;
 
         /// <summary>
-        /// Secret for Arkose Labs.
+        /// Secret for Arkose Labs. Required when configuring Arkose Labs.
         /// </summary>
         public Input<string>? Secret
         {

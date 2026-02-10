@@ -14,7 +14,7 @@ namespace Pulumi.Auth0.Outputs
     public sealed class GetAttackProtectionCaptchaRecaptchaV2Result
     {
         /// <summary>
-        /// Secret for reCAPTCHA v2.
+        /// Secret for reCAPTCHA v2. Required when configuring reCAPTCHA v2.
         /// </summary>
         public readonly string Secret;
         /// <summary>

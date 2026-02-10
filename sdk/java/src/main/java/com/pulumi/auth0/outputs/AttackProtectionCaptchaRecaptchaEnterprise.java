@@ -7,14 +7,16 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class AttackProtectionCaptchaRecaptchaEnterprise {
     /**
-     * @return API key for reCAPTCHA Enterprise.
+     * @return API key for reCAPTCHA Enterprise. Required when configuring reCAPTCHA Enterprise.
      * 
      */
-    private String apiKey;
+    private @Nullable String apiKey;
     /**
      * @return Project ID for reCAPTCHA Enterprise.
      * 
@@ -28,11 +30,11 @@ public final class AttackProtectionCaptchaRecaptchaEnterprise {
 
     private AttackProtectionCaptchaRecaptchaEnterprise() {}
     /**
-     * @return API key for reCAPTCHA Enterprise.
+     * @return API key for reCAPTCHA Enterprise. Required when configuring reCAPTCHA Enterprise.
      * 
      */
-    public String apiKey() {
-        return this.apiKey;
+    public Optional<String> apiKey() {
+        return Optional.ofNullable(this.apiKey);
     }
     /**
      * @return Project ID for reCAPTCHA Enterprise.
@@ -58,7 +60,7 @@ public final class AttackProtectionCaptchaRecaptchaEnterprise {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String apiKey;
+        private @Nullable String apiKey;
         private String projectId;
         private String siteKey;
         public Builder() {}
@@ -70,10 +72,8 @@ public final class AttackProtectionCaptchaRecaptchaEnterprise {
         }
 
         @CustomType.Setter
-        public Builder apiKey(String apiKey) {
-            if (apiKey == null) {
-              throw new MissingRequiredPropertyException("AttackProtectionCaptchaRecaptchaEnterprise", "apiKey");
-            }
+        public Builder apiKey(@Nullable String apiKey) {
+
             this.apiKey = apiKey;
             return this;
         }

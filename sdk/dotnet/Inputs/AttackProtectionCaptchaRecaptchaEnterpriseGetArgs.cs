@@ -12,11 +12,11 @@ namespace Pulumi.Auth0.Inputs
 
     public sealed class AttackProtectionCaptchaRecaptchaEnterpriseGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("apiKey", required: true)]
+        [Input("apiKey")]
         private Input<string>? _apiKey;
 
         /// <summary>
-        /// API key for reCAPTCHA Enterprise.
+        /// API key for reCAPTCHA Enterprise. Required when configuring reCAPTCHA Enterprise.
         /// </summary>
         public Input<string>? ApiKey
         {

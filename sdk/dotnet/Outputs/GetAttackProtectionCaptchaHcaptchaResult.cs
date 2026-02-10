@@ -14,7 +14,7 @@ namespace Pulumi.Auth0.Outputs
     public sealed class GetAttackProtectionCaptchaHcaptchaResult
     {
         /// <summary>
-        /// Secret for hCaptcha.
+        /// Secret for hCaptcha. Required when configuring hCaptcha.
         /// </summary>
         public readonly string Secret;
         /// <summary>

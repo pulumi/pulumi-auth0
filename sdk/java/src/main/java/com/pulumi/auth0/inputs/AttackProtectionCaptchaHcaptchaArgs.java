@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class AttackProtectionCaptchaHcaptchaArgs extends com.pulumi.resources.ResourceArgs {
@@ -15,18 +17,18 @@ public final class AttackProtectionCaptchaHcaptchaArgs extends com.pulumi.resour
     public static final AttackProtectionCaptchaHcaptchaArgs Empty = new AttackProtectionCaptchaHcaptchaArgs();
 
     /**
-     * Secret for hCaptcha.
+     * Secret for hCaptcha. Required when configuring hCaptcha.
      * 
      */
-    @Import(name="secret", required=true)
-    private Output<String> secret;
+    @Import(name="secret")
+    private @Nullable Output<String> secret;
 
     /**
-     * @return Secret for hCaptcha.
+     * @return Secret for hCaptcha. Required when configuring hCaptcha.
      * 
      */
-    public Output<String> secret() {
-        return this.secret;
+    public Optional<Output<String>> secret() {
+        return Optional.ofNullable(this.secret);
     }
 
     /**
@@ -70,18 +72,18 @@ public final class AttackProtectionCaptchaHcaptchaArgs extends com.pulumi.resour
         }
 
         /**
-         * @param secret Secret for hCaptcha.
+         * @param secret Secret for hCaptcha. Required when configuring hCaptcha.
          * 
          * @return builder
          * 
          */
-        public Builder secret(Output<String> secret) {
+        public Builder secret(@Nullable Output<String> secret) {
             $.secret = secret;
             return this;
         }
 
         /**
-         * @param secret Secret for hCaptcha.
+         * @param secret Secret for hCaptcha. Required when configuring hCaptcha.
          * 
          * @return builder
          * 
@@ -112,9 +114,6 @@ public final class AttackProtectionCaptchaHcaptchaArgs extends com.pulumi.resour
         }
 
         public AttackProtectionCaptchaHcaptchaArgs build() {
-            if ($.secret == null) {
-                throw new MissingRequiredPropertyException("AttackProtectionCaptchaHcaptchaArgs", "secret");
-            }
             if ($.siteKey == null) {
                 throw new MissingRequiredPropertyException("AttackProtectionCaptchaHcaptchaArgs", "siteKey");
             }

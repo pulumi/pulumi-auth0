@@ -1031,34 +1031,27 @@ class AttackProtectionCaptchaArkose(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 secret: _builtins.str,
                  site_key: _builtins.str,
                  client_subdomain: Optional[_builtins.str] = None,
                  fail_open: Optional[_builtins.bool] = None,
+                 secret: Optional[_builtins.str] = None,
                  verify_subdomain: Optional[_builtins.str] = None):
         """
-        :param _builtins.str secret: Secret for Arkose Labs.
         :param _builtins.str site_key: Site key for Arkose Labs.
         :param _builtins.str client_subdomain: Client subdomain for Arkose Labs.
         :param _builtins.bool fail_open: Whether the captcha should fail open.
+        :param _builtins.str secret: Secret for Arkose Labs. Required when configuring Arkose Labs.
         :param _builtins.str verify_subdomain: Verify subdomain for Arkose Labs.
         """
-        pulumi.set(__self__, "secret", secret)
         pulumi.set(__self__, "site_key", site_key)
         if client_subdomain is not None:
             pulumi.set(__self__, "client_subdomain", client_subdomain)
         if fail_open is not None:
             pulumi.set(__self__, "fail_open", fail_open)
+        if secret is not None:
+            pulumi.set(__self__, "secret", secret)
         if verify_subdomain is not None:
             pulumi.set(__self__, "verify_subdomain", verify_subdomain)
-
-    @_builtins.property
-    @pulumi.getter
-    def secret(self) -> _builtins.str:
-        """
-        Secret for Arkose Labs.
-        """
-        return pulumi.get(self, "secret")
 
     @_builtins.property
     @pulumi.getter(name="siteKey")
@@ -1083,6 +1076,14 @@ class AttackProtectionCaptchaArkose(dict):
         Whether the captcha should fail open.
         """
         return pulumi.get(self, "fail_open")
+
+    @_builtins.property
+    @pulumi.getter
+    def secret(self) -> Optional[_builtins.str]:
+        """
+        Secret for Arkose Labs. Required when configuring Arkose Labs.
+        """
+        return pulumi.get(self, "secret")
 
     @_builtins.property
     @pulumi.getter(name="verifySubdomain")
@@ -1149,22 +1150,15 @@ class AttackProtectionCaptchaFriendlyCaptcha(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 secret: _builtins.str,
-                 site_key: _builtins.str):
+                 site_key: _builtins.str,
+                 secret: Optional[_builtins.str] = None):
         """
-        :param _builtins.str secret: Secret for Friendly Captcha.
         :param _builtins.str site_key: Site key for Friendly Captcha.
+        :param _builtins.str secret: Secret for Friendly Captcha. Required when configuring Friendly Captcha.
         """
-        pulumi.set(__self__, "secret", secret)
         pulumi.set(__self__, "site_key", site_key)
-
-    @_builtins.property
-    @pulumi.getter
-    def secret(self) -> _builtins.str:
-        """
-        Secret for Friendly Captcha.
-        """
-        return pulumi.get(self, "secret")
+        if secret is not None:
+            pulumi.set(__self__, "secret", secret)
 
     @_builtins.property
     @pulumi.getter(name="siteKey")
@@ -1173,6 +1167,14 @@ class AttackProtectionCaptchaFriendlyCaptcha(dict):
         Site key for Friendly Captcha.
         """
         return pulumi.get(self, "site_key")
+
+    @_builtins.property
+    @pulumi.getter
+    def secret(self) -> Optional[_builtins.str]:
+        """
+        Secret for Friendly Captcha. Required when configuring Friendly Captcha.
+        """
+        return pulumi.get(self, "secret")
 
 
 @pulumi.output_type
@@ -1195,22 +1197,15 @@ class AttackProtectionCaptchaHcaptcha(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 secret: _builtins.str,
-                 site_key: _builtins.str):
+                 site_key: _builtins.str,
+                 secret: Optional[_builtins.str] = None):
         """
-        :param _builtins.str secret: Secret for hCaptcha.
         :param _builtins.str site_key: Site key for hCaptcha.
+        :param _builtins.str secret: Secret for hCaptcha. Required when configuring hCaptcha.
         """
-        pulumi.set(__self__, "secret", secret)
         pulumi.set(__self__, "site_key", site_key)
-
-    @_builtins.property
-    @pulumi.getter
-    def secret(self) -> _builtins.str:
-        """
-        Secret for hCaptcha.
-        """
-        return pulumi.get(self, "secret")
+        if secret is not None:
+            pulumi.set(__self__, "secret", secret)
 
     @_builtins.property
     @pulumi.getter(name="siteKey")
@@ -1220,18 +1215,26 @@ class AttackProtectionCaptchaHcaptcha(dict):
         """
         return pulumi.get(self, "site_key")
 
+    @_builtins.property
+    @pulumi.getter
+    def secret(self) -> Optional[_builtins.str]:
+        """
+        Secret for hCaptcha. Required when configuring hCaptcha.
+        """
+        return pulumi.get(self, "secret")
+
 
 @pulumi.output_type
 class AttackProtectionCaptchaRecaptchaEnterprise(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "apiKey":
-            suggest = "api_key"
-        elif key == "projectId":
+        if key == "projectId":
             suggest = "project_id"
         elif key == "siteKey":
             suggest = "site_key"
+        elif key == "apiKey":
+            suggest = "api_key"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AttackProtectionCaptchaRecaptchaEnterprise. Access the value via the '{suggest}' property getter instead.")
@@ -1245,25 +1248,18 @@ class AttackProtectionCaptchaRecaptchaEnterprise(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 api_key: _builtins.str,
                  project_id: _builtins.str,
-                 site_key: _builtins.str):
+                 site_key: _builtins.str,
+                 api_key: Optional[_builtins.str] = None):
         """
-        :param _builtins.str api_key: API key for reCAPTCHA Enterprise.
         :param _builtins.str project_id: Project ID for reCAPTCHA Enterprise.
         :param _builtins.str site_key: Site key for reCAPTCHA Enterprise.
+        :param _builtins.str api_key: API key for reCAPTCHA Enterprise. Required when configuring reCAPTCHA Enterprise.
         """
-        pulumi.set(__self__, "api_key", api_key)
         pulumi.set(__self__, "project_id", project_id)
         pulumi.set(__self__, "site_key", site_key)
-
-    @_builtins.property
-    @pulumi.getter(name="apiKey")
-    def api_key(self) -> _builtins.str:
-        """
-        API key for reCAPTCHA Enterprise.
-        """
-        return pulumi.get(self, "api_key")
+        if api_key is not None:
+            pulumi.set(__self__, "api_key", api_key)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
@@ -1280,6 +1276,14 @@ class AttackProtectionCaptchaRecaptchaEnterprise(dict):
         Site key for reCAPTCHA Enterprise.
         """
         return pulumi.get(self, "site_key")
+
+    @_builtins.property
+    @pulumi.getter(name="apiKey")
+    def api_key(self) -> Optional[_builtins.str]:
+        """
+        API key for reCAPTCHA Enterprise. Required when configuring reCAPTCHA Enterprise.
+        """
+        return pulumi.get(self, "api_key")
 
 
 @pulumi.output_type
@@ -1302,22 +1306,15 @@ class AttackProtectionCaptchaRecaptchaV2(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 secret: _builtins.str,
-                 site_key: _builtins.str):
+                 site_key: _builtins.str,
+                 secret: Optional[_builtins.str] = None):
         """
-        :param _builtins.str secret: Secret for reCAPTCHA v2.
         :param _builtins.str site_key: Site key for reCAPTCHA v2.
+        :param _builtins.str secret: Secret for reCAPTCHA v2. Required when configuring reCAPTCHA v2.
         """
-        pulumi.set(__self__, "secret", secret)
         pulumi.set(__self__, "site_key", site_key)
-
-    @_builtins.property
-    @pulumi.getter
-    def secret(self) -> _builtins.str:
-        """
-        Secret for reCAPTCHA v2.
-        """
-        return pulumi.get(self, "secret")
+        if secret is not None:
+            pulumi.set(__self__, "secret", secret)
 
     @_builtins.property
     @pulumi.getter(name="siteKey")
@@ -1326,6 +1323,14 @@ class AttackProtectionCaptchaRecaptchaV2(dict):
         Site key for reCAPTCHA v2.
         """
         return pulumi.get(self, "site_key")
+
+    @_builtins.property
+    @pulumi.getter
+    def secret(self) -> Optional[_builtins.str]:
+        """
+        Secret for reCAPTCHA v2. Required when configuring reCAPTCHA v2.
+        """
+        return pulumi.get(self, "secret")
 
 
 @pulumi.output_type
@@ -15734,7 +15739,7 @@ class GetAttackProtectionCaptchaArkoseResult(dict):
         """
         :param _builtins.str client_subdomain: Client subdomain for Arkose Labs.
         :param _builtins.bool fail_open: Whether the captcha should fail open.
-        :param _builtins.str secret: Secret for Arkose Labs.
+        :param _builtins.str secret: Secret for Arkose Labs. Required when configuring Arkose Labs.
         :param _builtins.str site_key: Site key for Arkose Labs.
         :param _builtins.str verify_subdomain: Verify subdomain for Arkose Labs.
         """
@@ -15764,7 +15769,7 @@ class GetAttackProtectionCaptchaArkoseResult(dict):
     @pulumi.getter
     def secret(self) -> _builtins.str:
         """
-        Secret for Arkose Labs.
+        Secret for Arkose Labs. Required when configuring Arkose Labs.
         """
         return pulumi.get(self, "secret")
 
@@ -15809,7 +15814,7 @@ class GetAttackProtectionCaptchaFriendlyCaptchaResult(dict):
                  secret: _builtins.str,
                  site_key: _builtins.str):
         """
-        :param _builtins.str secret: Secret for Friendly Captcha.
+        :param _builtins.str secret: Secret for Friendly Captcha. Required when configuring Friendly Captcha.
         :param _builtins.str site_key: Site key for Friendly Captcha.
         """
         pulumi.set(__self__, "secret", secret)
@@ -15819,7 +15824,7 @@ class GetAttackProtectionCaptchaFriendlyCaptchaResult(dict):
     @pulumi.getter
     def secret(self) -> _builtins.str:
         """
-        Secret for Friendly Captcha.
+        Secret for Friendly Captcha. Required when configuring Friendly Captcha.
         """
         return pulumi.get(self, "secret")
 
@@ -15838,7 +15843,7 @@ class GetAttackProtectionCaptchaHcaptchaResult(dict):
                  secret: _builtins.str,
                  site_key: _builtins.str):
         """
-        :param _builtins.str secret: Secret for hCaptcha.
+        :param _builtins.str secret: Secret for hCaptcha. Required when configuring hCaptcha.
         :param _builtins.str site_key: Site key for hCaptcha.
         """
         pulumi.set(__self__, "secret", secret)
@@ -15848,7 +15853,7 @@ class GetAttackProtectionCaptchaHcaptchaResult(dict):
     @pulumi.getter
     def secret(self) -> _builtins.str:
         """
-        Secret for hCaptcha.
+        Secret for hCaptcha. Required when configuring hCaptcha.
         """
         return pulumi.get(self, "secret")
 
@@ -15868,7 +15873,7 @@ class GetAttackProtectionCaptchaRecaptchaEnterpriseResult(dict):
                  project_id: _builtins.str,
                  site_key: _builtins.str):
         """
-        :param _builtins.str api_key: API key for reCAPTCHA Enterprise.
+        :param _builtins.str api_key: API key for reCAPTCHA Enterprise. Required when configuring reCAPTCHA Enterprise.
         :param _builtins.str project_id: Project ID for reCAPTCHA Enterprise.
         :param _builtins.str site_key: Site key for reCAPTCHA Enterprise.
         """
@@ -15880,7 +15885,7 @@ class GetAttackProtectionCaptchaRecaptchaEnterpriseResult(dict):
     @pulumi.getter(name="apiKey")
     def api_key(self) -> _builtins.str:
         """
-        API key for reCAPTCHA Enterprise.
+        API key for reCAPTCHA Enterprise. Required when configuring reCAPTCHA Enterprise.
         """
         return pulumi.get(self, "api_key")
 
@@ -15907,7 +15912,7 @@ class GetAttackProtectionCaptchaRecaptchaV2Result(dict):
                  secret: _builtins.str,
                  site_key: _builtins.str):
         """
-        :param _builtins.str secret: Secret for reCAPTCHA v2.
+        :param _builtins.str secret: Secret for reCAPTCHA v2. Required when configuring reCAPTCHA v2.
         :param _builtins.str site_key: Site key for reCAPTCHA v2.
         """
         pulumi.set(__self__, "secret", secret)
@@ -15917,7 +15922,7 @@ class GetAttackProtectionCaptchaRecaptchaV2Result(dict):
     @pulumi.getter
     def secret(self) -> _builtins.str:
         """
-        Secret for reCAPTCHA v2.
+        Secret for reCAPTCHA v2. Required when configuring reCAPTCHA v2.
         """
         return pulumi.get(self, "secret")
 

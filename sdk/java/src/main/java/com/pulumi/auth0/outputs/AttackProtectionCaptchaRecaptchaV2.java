@@ -7,14 +7,16 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class AttackProtectionCaptchaRecaptchaV2 {
     /**
-     * @return Secret for reCAPTCHA v2.
+     * @return Secret for reCAPTCHA v2. Required when configuring reCAPTCHA v2.
      * 
      */
-    private String secret;
+    private @Nullable String secret;
     /**
      * @return Site key for reCAPTCHA v2.
      * 
@@ -23,11 +25,11 @@ public final class AttackProtectionCaptchaRecaptchaV2 {
 
     private AttackProtectionCaptchaRecaptchaV2() {}
     /**
-     * @return Secret for reCAPTCHA v2.
+     * @return Secret for reCAPTCHA v2. Required when configuring reCAPTCHA v2.
      * 
      */
-    public String secret() {
-        return this.secret;
+    public Optional<String> secret() {
+        return Optional.ofNullable(this.secret);
     }
     /**
      * @return Site key for reCAPTCHA v2.
@@ -46,7 +48,7 @@ public final class AttackProtectionCaptchaRecaptchaV2 {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String secret;
+        private @Nullable String secret;
         private String siteKey;
         public Builder() {}
         public Builder(AttackProtectionCaptchaRecaptchaV2 defaults) {
@@ -56,10 +58,8 @@ public final class AttackProtectionCaptchaRecaptchaV2 {
         }
 
         @CustomType.Setter
-        public Builder secret(String secret) {
-            if (secret == null) {
-              throw new MissingRequiredPropertyException("AttackProtectionCaptchaRecaptchaV2", "secret");
-            }
+        public Builder secret(@Nullable String secret) {
+
             this.secret = secret;
             return this;
         }

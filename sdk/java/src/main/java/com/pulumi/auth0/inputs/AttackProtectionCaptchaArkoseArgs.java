@@ -48,18 +48,18 @@ public final class AttackProtectionCaptchaArkoseArgs extends com.pulumi.resource
     }
 
     /**
-     * Secret for Arkose Labs.
+     * Secret for Arkose Labs. Required when configuring Arkose Labs.
      * 
      */
-    @Import(name="secret", required=true)
-    private Output<String> secret;
+    @Import(name="secret")
+    private @Nullable Output<String> secret;
 
     /**
-     * @return Secret for Arkose Labs.
+     * @return Secret for Arkose Labs. Required when configuring Arkose Labs.
      * 
      */
-    public Output<String> secret() {
-        return this.secret;
+    public Optional<Output<String>> secret() {
+        return Optional.ofNullable(this.secret);
     }
 
     /**
@@ -163,18 +163,18 @@ public final class AttackProtectionCaptchaArkoseArgs extends com.pulumi.resource
         }
 
         /**
-         * @param secret Secret for Arkose Labs.
+         * @param secret Secret for Arkose Labs. Required when configuring Arkose Labs.
          * 
          * @return builder
          * 
          */
-        public Builder secret(Output<String> secret) {
+        public Builder secret(@Nullable Output<String> secret) {
             $.secret = secret;
             return this;
         }
 
         /**
-         * @param secret Secret for Arkose Labs.
+         * @param secret Secret for Arkose Labs. Required when configuring Arkose Labs.
          * 
          * @return builder
          * 
@@ -226,9 +226,6 @@ public final class AttackProtectionCaptchaArkoseArgs extends com.pulumi.resource
         }
 
         public AttackProtectionCaptchaArkoseArgs build() {
-            if ($.secret == null) {
-                throw new MissingRequiredPropertyException("AttackProtectionCaptchaArkoseArgs", "secret");
-            }
             if ($.siteKey == null) {
                 throw new MissingRequiredPropertyException("AttackProtectionCaptchaArkoseArgs", "siteKey");
             }

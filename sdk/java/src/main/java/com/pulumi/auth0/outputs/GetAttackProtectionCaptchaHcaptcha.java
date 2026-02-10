@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetAttackProtectionCaptchaHcaptcha {
     /**
-     * @return Secret for hCaptcha.
+     * @return Secret for hCaptcha. Required when configuring hCaptcha.
      * 
      */
     private String secret;
@@ -23,7 +23,7 @@ public final class GetAttackProtectionCaptchaHcaptcha {
 
     private GetAttackProtectionCaptchaHcaptcha() {}
     /**
-     * @return Secret for hCaptcha.
+     * @return Secret for hCaptcha. Required when configuring hCaptcha.
      * 
      */
     public String secret() {

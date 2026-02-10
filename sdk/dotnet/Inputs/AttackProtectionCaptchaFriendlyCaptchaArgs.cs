@@ -12,11 +12,11 @@ namespace Pulumi.Auth0.Inputs
 
     public sealed class AttackProtectionCaptchaFriendlyCaptchaArgs : global::Pulumi.ResourceArgs
     {
-        [Input("secret", required: true)]
+        [Input("secret")]
         private Input<string>? _secret;
 
         /// <summary>
-        /// Secret for Friendly Captcha.
+        /// Secret for Friendly Captcha. Required when configuring Friendly Captcha.
         /// </summary>
         public Input<string>? Secret
         {

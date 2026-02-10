@@ -1594,8 +1594,8 @@ type AttackProtectionCaptchaArkose struct {
 	ClientSubdomain *string `pulumi:"clientSubdomain"`
 	// Whether the captcha should fail open.
 	FailOpen *bool `pulumi:"failOpen"`
-	// Secret for Arkose Labs.
-	Secret string `pulumi:"secret"`
+	// Secret for Arkose Labs. Required when configuring Arkose Labs.
+	Secret *string `pulumi:"secret"`
 	// Site key for Arkose Labs.
 	SiteKey string `pulumi:"siteKey"`
 	// Verify subdomain for Arkose Labs.
@@ -1618,8 +1618,8 @@ type AttackProtectionCaptchaArkoseArgs struct {
 	ClientSubdomain pulumi.StringPtrInput `pulumi:"clientSubdomain"`
 	// Whether the captcha should fail open.
 	FailOpen pulumi.BoolPtrInput `pulumi:"failOpen"`
-	// Secret for Arkose Labs.
-	Secret pulumi.StringInput `pulumi:"secret"`
+	// Secret for Arkose Labs. Required when configuring Arkose Labs.
+	Secret pulumi.StringPtrInput `pulumi:"secret"`
 	// Site key for Arkose Labs.
 	SiteKey pulumi.StringInput `pulumi:"siteKey"`
 	// Verify subdomain for Arkose Labs.
@@ -1713,9 +1713,9 @@ func (o AttackProtectionCaptchaArkoseOutput) FailOpen() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AttackProtectionCaptchaArkose) *bool { return v.FailOpen }).(pulumi.BoolPtrOutput)
 }
 
-// Secret for Arkose Labs.
-func (o AttackProtectionCaptchaArkoseOutput) Secret() pulumi.StringOutput {
-	return o.ApplyT(func(v AttackProtectionCaptchaArkose) string { return v.Secret }).(pulumi.StringOutput)
+// Secret for Arkose Labs. Required when configuring Arkose Labs.
+func (o AttackProtectionCaptchaArkoseOutput) Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AttackProtectionCaptchaArkose) *string { return v.Secret }).(pulumi.StringPtrOutput)
 }
 
 // Site key for Arkose Labs.
@@ -1772,13 +1772,13 @@ func (o AttackProtectionCaptchaArkosePtrOutput) FailOpen() pulumi.BoolPtrOutput 
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Secret for Arkose Labs.
+// Secret for Arkose Labs. Required when configuring Arkose Labs.
 func (o AttackProtectionCaptchaArkosePtrOutput) Secret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AttackProtectionCaptchaArkose) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.Secret
+		return v.Secret
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1940,8 +1940,8 @@ func (o AttackProtectionCaptchaAuthChallengePtrOutput) FailOpen() pulumi.BoolPtr
 }
 
 type AttackProtectionCaptchaFriendlyCaptcha struct {
-	// Secret for Friendly Captcha.
-	Secret string `pulumi:"secret"`
+	// Secret for Friendly Captcha. Required when configuring Friendly Captcha.
+	Secret *string `pulumi:"secret"`
 	// Site key for Friendly Captcha.
 	SiteKey string `pulumi:"siteKey"`
 }
@@ -1958,8 +1958,8 @@ type AttackProtectionCaptchaFriendlyCaptchaInput interface {
 }
 
 type AttackProtectionCaptchaFriendlyCaptchaArgs struct {
-	// Secret for Friendly Captcha.
-	Secret pulumi.StringInput `pulumi:"secret"`
+	// Secret for Friendly Captcha. Required when configuring Friendly Captcha.
+	Secret pulumi.StringPtrInput `pulumi:"secret"`
 	// Site key for Friendly Captcha.
 	SiteKey pulumi.StringInput `pulumi:"siteKey"`
 }
@@ -2041,9 +2041,9 @@ func (o AttackProtectionCaptchaFriendlyCaptchaOutput) ToAttackProtectionCaptchaF
 	}).(AttackProtectionCaptchaFriendlyCaptchaPtrOutput)
 }
 
-// Secret for Friendly Captcha.
-func (o AttackProtectionCaptchaFriendlyCaptchaOutput) Secret() pulumi.StringOutput {
-	return o.ApplyT(func(v AttackProtectionCaptchaFriendlyCaptcha) string { return v.Secret }).(pulumi.StringOutput)
+// Secret for Friendly Captcha. Required when configuring Friendly Captcha.
+func (o AttackProtectionCaptchaFriendlyCaptchaOutput) Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AttackProtectionCaptchaFriendlyCaptcha) *string { return v.Secret }).(pulumi.StringPtrOutput)
 }
 
 // Site key for Friendly Captcha.
@@ -2075,13 +2075,13 @@ func (o AttackProtectionCaptchaFriendlyCaptchaPtrOutput) Elem() AttackProtection
 	}).(AttackProtectionCaptchaFriendlyCaptchaOutput)
 }
 
-// Secret for Friendly Captcha.
+// Secret for Friendly Captcha. Required when configuring Friendly Captcha.
 func (o AttackProtectionCaptchaFriendlyCaptchaPtrOutput) Secret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AttackProtectionCaptchaFriendlyCaptcha) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.Secret
+		return v.Secret
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2096,8 +2096,8 @@ func (o AttackProtectionCaptchaFriendlyCaptchaPtrOutput) SiteKey() pulumi.String
 }
 
 type AttackProtectionCaptchaHcaptcha struct {
-	// Secret for hCaptcha.
-	Secret string `pulumi:"secret"`
+	// Secret for hCaptcha. Required when configuring hCaptcha.
+	Secret *string `pulumi:"secret"`
 	// Site key for hCaptcha.
 	SiteKey string `pulumi:"siteKey"`
 }
@@ -2114,8 +2114,8 @@ type AttackProtectionCaptchaHcaptchaInput interface {
 }
 
 type AttackProtectionCaptchaHcaptchaArgs struct {
-	// Secret for hCaptcha.
-	Secret pulumi.StringInput `pulumi:"secret"`
+	// Secret for hCaptcha. Required when configuring hCaptcha.
+	Secret pulumi.StringPtrInput `pulumi:"secret"`
 	// Site key for hCaptcha.
 	SiteKey pulumi.StringInput `pulumi:"siteKey"`
 }
@@ -2197,9 +2197,9 @@ func (o AttackProtectionCaptchaHcaptchaOutput) ToAttackProtectionCaptchaHcaptcha
 	}).(AttackProtectionCaptchaHcaptchaPtrOutput)
 }
 
-// Secret for hCaptcha.
-func (o AttackProtectionCaptchaHcaptchaOutput) Secret() pulumi.StringOutput {
-	return o.ApplyT(func(v AttackProtectionCaptchaHcaptcha) string { return v.Secret }).(pulumi.StringOutput)
+// Secret for hCaptcha. Required when configuring hCaptcha.
+func (o AttackProtectionCaptchaHcaptchaOutput) Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AttackProtectionCaptchaHcaptcha) *string { return v.Secret }).(pulumi.StringPtrOutput)
 }
 
 // Site key for hCaptcha.
@@ -2231,13 +2231,13 @@ func (o AttackProtectionCaptchaHcaptchaPtrOutput) Elem() AttackProtectionCaptcha
 	}).(AttackProtectionCaptchaHcaptchaOutput)
 }
 
-// Secret for hCaptcha.
+// Secret for hCaptcha. Required when configuring hCaptcha.
 func (o AttackProtectionCaptchaHcaptchaPtrOutput) Secret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AttackProtectionCaptchaHcaptcha) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.Secret
+		return v.Secret
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2252,8 +2252,8 @@ func (o AttackProtectionCaptchaHcaptchaPtrOutput) SiteKey() pulumi.StringPtrOutp
 }
 
 type AttackProtectionCaptchaRecaptchaEnterprise struct {
-	// API key for reCAPTCHA Enterprise.
-	ApiKey string `pulumi:"apiKey"`
+	// API key for reCAPTCHA Enterprise. Required when configuring reCAPTCHA Enterprise.
+	ApiKey *string `pulumi:"apiKey"`
 	// Project ID for reCAPTCHA Enterprise.
 	ProjectId string `pulumi:"projectId"`
 	// Site key for reCAPTCHA Enterprise.
@@ -2272,8 +2272,8 @@ type AttackProtectionCaptchaRecaptchaEnterpriseInput interface {
 }
 
 type AttackProtectionCaptchaRecaptchaEnterpriseArgs struct {
-	// API key for reCAPTCHA Enterprise.
-	ApiKey pulumi.StringInput `pulumi:"apiKey"`
+	// API key for reCAPTCHA Enterprise. Required when configuring reCAPTCHA Enterprise.
+	ApiKey pulumi.StringPtrInput `pulumi:"apiKey"`
 	// Project ID for reCAPTCHA Enterprise.
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
 	// Site key for reCAPTCHA Enterprise.
@@ -2357,9 +2357,9 @@ func (o AttackProtectionCaptchaRecaptchaEnterpriseOutput) ToAttackProtectionCapt
 	}).(AttackProtectionCaptchaRecaptchaEnterprisePtrOutput)
 }
 
-// API key for reCAPTCHA Enterprise.
-func (o AttackProtectionCaptchaRecaptchaEnterpriseOutput) ApiKey() pulumi.StringOutput {
-	return o.ApplyT(func(v AttackProtectionCaptchaRecaptchaEnterprise) string { return v.ApiKey }).(pulumi.StringOutput)
+// API key for reCAPTCHA Enterprise. Required when configuring reCAPTCHA Enterprise.
+func (o AttackProtectionCaptchaRecaptchaEnterpriseOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AttackProtectionCaptchaRecaptchaEnterprise) *string { return v.ApiKey }).(pulumi.StringPtrOutput)
 }
 
 // Project ID for reCAPTCHA Enterprise.
@@ -2396,13 +2396,13 @@ func (o AttackProtectionCaptchaRecaptchaEnterprisePtrOutput) Elem() AttackProtec
 	}).(AttackProtectionCaptchaRecaptchaEnterpriseOutput)
 }
 
-// API key for reCAPTCHA Enterprise.
+// API key for reCAPTCHA Enterprise. Required when configuring reCAPTCHA Enterprise.
 func (o AttackProtectionCaptchaRecaptchaEnterprisePtrOutput) ApiKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AttackProtectionCaptchaRecaptchaEnterprise) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.ApiKey
+		return v.ApiKey
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2427,8 +2427,8 @@ func (o AttackProtectionCaptchaRecaptchaEnterprisePtrOutput) SiteKey() pulumi.St
 }
 
 type AttackProtectionCaptchaRecaptchaV2 struct {
-	// Secret for reCAPTCHA v2.
-	Secret string `pulumi:"secret"`
+	// Secret for reCAPTCHA v2. Required when configuring reCAPTCHA v2.
+	Secret *string `pulumi:"secret"`
 	// Site key for reCAPTCHA v2.
 	SiteKey string `pulumi:"siteKey"`
 }
@@ -2445,8 +2445,8 @@ type AttackProtectionCaptchaRecaptchaV2Input interface {
 }
 
 type AttackProtectionCaptchaRecaptchaV2Args struct {
-	// Secret for reCAPTCHA v2.
-	Secret pulumi.StringInput `pulumi:"secret"`
+	// Secret for reCAPTCHA v2. Required when configuring reCAPTCHA v2.
+	Secret pulumi.StringPtrInput `pulumi:"secret"`
 	// Site key for reCAPTCHA v2.
 	SiteKey pulumi.StringInput `pulumi:"siteKey"`
 }
@@ -2528,9 +2528,9 @@ func (o AttackProtectionCaptchaRecaptchaV2Output) ToAttackProtectionCaptchaRecap
 	}).(AttackProtectionCaptchaRecaptchaV2PtrOutput)
 }
 
-// Secret for reCAPTCHA v2.
-func (o AttackProtectionCaptchaRecaptchaV2Output) Secret() pulumi.StringOutput {
-	return o.ApplyT(func(v AttackProtectionCaptchaRecaptchaV2) string { return v.Secret }).(pulumi.StringOutput)
+// Secret for reCAPTCHA v2. Required when configuring reCAPTCHA v2.
+func (o AttackProtectionCaptchaRecaptchaV2Output) Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AttackProtectionCaptchaRecaptchaV2) *string { return v.Secret }).(pulumi.StringPtrOutput)
 }
 
 // Site key for reCAPTCHA v2.
@@ -2562,13 +2562,13 @@ func (o AttackProtectionCaptchaRecaptchaV2PtrOutput) Elem() AttackProtectionCapt
 	}).(AttackProtectionCaptchaRecaptchaV2Output)
 }
 
-// Secret for reCAPTCHA v2.
+// Secret for reCAPTCHA v2. Required when configuring reCAPTCHA v2.
 func (o AttackProtectionCaptchaRecaptchaV2PtrOutput) Secret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AttackProtectionCaptchaRecaptchaV2) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.Secret
+		return v.Secret
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -41597,7 +41597,7 @@ type GetAttackProtectionCaptchaArkose struct {
 	ClientSubdomain string `pulumi:"clientSubdomain"`
 	// Whether the captcha should fail open.
 	FailOpen bool `pulumi:"failOpen"`
-	// Secret for Arkose Labs.
+	// Secret for Arkose Labs. Required when configuring Arkose Labs.
 	Secret string `pulumi:"secret"`
 	// Site key for Arkose Labs.
 	SiteKey string `pulumi:"siteKey"`
@@ -41621,7 +41621,7 @@ type GetAttackProtectionCaptchaArkoseArgs struct {
 	ClientSubdomain pulumi.StringInput `pulumi:"clientSubdomain"`
 	// Whether the captcha should fail open.
 	FailOpen pulumi.BoolInput `pulumi:"failOpen"`
-	// Secret for Arkose Labs.
+	// Secret for Arkose Labs. Required when configuring Arkose Labs.
 	Secret pulumi.StringInput `pulumi:"secret"`
 	// Site key for Arkose Labs.
 	SiteKey pulumi.StringInput `pulumi:"siteKey"`
@@ -41690,7 +41690,7 @@ func (o GetAttackProtectionCaptchaArkoseOutput) FailOpen() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetAttackProtectionCaptchaArkose) bool { return v.FailOpen }).(pulumi.BoolOutput)
 }
 
-// Secret for Arkose Labs.
+// Secret for Arkose Labs. Required when configuring Arkose Labs.
 func (o GetAttackProtectionCaptchaArkoseOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAttackProtectionCaptchaArkose) string { return v.Secret }).(pulumi.StringOutput)
 }
@@ -41823,7 +41823,7 @@ func (o GetAttackProtectionCaptchaAuthChallengeArrayOutput) Index(i pulumi.IntIn
 }
 
 type GetAttackProtectionCaptchaFriendlyCaptcha struct {
-	// Secret for Friendly Captcha.
+	// Secret for Friendly Captcha. Required when configuring Friendly Captcha.
 	Secret string `pulumi:"secret"`
 	// Site key for Friendly Captcha.
 	SiteKey string `pulumi:"siteKey"`
@@ -41841,7 +41841,7 @@ type GetAttackProtectionCaptchaFriendlyCaptchaInput interface {
 }
 
 type GetAttackProtectionCaptchaFriendlyCaptchaArgs struct {
-	// Secret for Friendly Captcha.
+	// Secret for Friendly Captcha. Required when configuring Friendly Captcha.
 	Secret pulumi.StringInput `pulumi:"secret"`
 	// Site key for Friendly Captcha.
 	SiteKey pulumi.StringInput `pulumi:"siteKey"`
@@ -41898,7 +41898,7 @@ func (o GetAttackProtectionCaptchaFriendlyCaptchaOutput) ToGetAttackProtectionCa
 	return o
 }
 
-// Secret for Friendly Captcha.
+// Secret for Friendly Captcha. Required when configuring Friendly Captcha.
 func (o GetAttackProtectionCaptchaFriendlyCaptchaOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAttackProtectionCaptchaFriendlyCaptcha) string { return v.Secret }).(pulumi.StringOutput)
 }
@@ -41929,7 +41929,7 @@ func (o GetAttackProtectionCaptchaFriendlyCaptchaArrayOutput) Index(i pulumi.Int
 }
 
 type GetAttackProtectionCaptchaHcaptcha struct {
-	// Secret for hCaptcha.
+	// Secret for hCaptcha. Required when configuring hCaptcha.
 	Secret string `pulumi:"secret"`
 	// Site key for hCaptcha.
 	SiteKey string `pulumi:"siteKey"`
@@ -41947,7 +41947,7 @@ type GetAttackProtectionCaptchaHcaptchaInput interface {
 }
 
 type GetAttackProtectionCaptchaHcaptchaArgs struct {
-	// Secret for hCaptcha.
+	// Secret for hCaptcha. Required when configuring hCaptcha.
 	Secret pulumi.StringInput `pulumi:"secret"`
 	// Site key for hCaptcha.
 	SiteKey pulumi.StringInput `pulumi:"siteKey"`
@@ -42004,7 +42004,7 @@ func (o GetAttackProtectionCaptchaHcaptchaOutput) ToGetAttackProtectionCaptchaHc
 	return o
 }
 
-// Secret for hCaptcha.
+// Secret for hCaptcha. Required when configuring hCaptcha.
 func (o GetAttackProtectionCaptchaHcaptchaOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAttackProtectionCaptchaHcaptcha) string { return v.Secret }).(pulumi.StringOutput)
 }
@@ -42035,7 +42035,7 @@ func (o GetAttackProtectionCaptchaHcaptchaArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type GetAttackProtectionCaptchaRecaptchaEnterprise struct {
-	// API key for reCAPTCHA Enterprise.
+	// API key for reCAPTCHA Enterprise. Required when configuring reCAPTCHA Enterprise.
 	ApiKey string `pulumi:"apiKey"`
 	// Project ID for reCAPTCHA Enterprise.
 	ProjectId string `pulumi:"projectId"`
@@ -42055,7 +42055,7 @@ type GetAttackProtectionCaptchaRecaptchaEnterpriseInput interface {
 }
 
 type GetAttackProtectionCaptchaRecaptchaEnterpriseArgs struct {
-	// API key for reCAPTCHA Enterprise.
+	// API key for reCAPTCHA Enterprise. Required when configuring reCAPTCHA Enterprise.
 	ApiKey pulumi.StringInput `pulumi:"apiKey"`
 	// Project ID for reCAPTCHA Enterprise.
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
@@ -42114,7 +42114,7 @@ func (o GetAttackProtectionCaptchaRecaptchaEnterpriseOutput) ToGetAttackProtecti
 	return o
 }
 
-// API key for reCAPTCHA Enterprise.
+// API key for reCAPTCHA Enterprise. Required when configuring reCAPTCHA Enterprise.
 func (o GetAttackProtectionCaptchaRecaptchaEnterpriseOutput) ApiKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAttackProtectionCaptchaRecaptchaEnterprise) string { return v.ApiKey }).(pulumi.StringOutput)
 }
@@ -42150,7 +42150,7 @@ func (o GetAttackProtectionCaptchaRecaptchaEnterpriseArrayOutput) Index(i pulumi
 }
 
 type GetAttackProtectionCaptchaRecaptchaV2 struct {
-	// Secret for reCAPTCHA v2.
+	// Secret for reCAPTCHA v2. Required when configuring reCAPTCHA v2.
 	Secret string `pulumi:"secret"`
 	// Site key for reCAPTCHA v2.
 	SiteKey string `pulumi:"siteKey"`
@@ -42168,7 +42168,7 @@ type GetAttackProtectionCaptchaRecaptchaV2Input interface {
 }
 
 type GetAttackProtectionCaptchaRecaptchaV2Args struct {
-	// Secret for reCAPTCHA v2.
+	// Secret for reCAPTCHA v2. Required when configuring reCAPTCHA v2.
 	Secret pulumi.StringInput `pulumi:"secret"`
 	// Site key for reCAPTCHA v2.
 	SiteKey pulumi.StringInput `pulumi:"siteKey"`
@@ -42225,7 +42225,7 @@ func (o GetAttackProtectionCaptchaRecaptchaV2Output) ToGetAttackProtectionCaptch
 	return o
 }
 
-// Secret for reCAPTCHA v2.
+// Secret for reCAPTCHA v2. Required when configuring reCAPTCHA v2.
 func (o GetAttackProtectionCaptchaRecaptchaV2Output) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAttackProtectionCaptchaRecaptchaV2) string { return v.Secret }).(pulumi.StringOutput)
 }

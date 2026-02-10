@@ -22,7 +22,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly bool FailOpen;
         /// <summary>
-        /// Secret for Arkose Labs.
+        /// Secret for Arkose Labs. Required when configuring Arkose Labs.
         /// </summary>
         public readonly string Secret;
         /// <summary>

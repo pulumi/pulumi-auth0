@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetAttackProtectionCaptchaRecaptchaEnterprise {
     /**
-     * @return API key for reCAPTCHA Enterprise.
+     * @return API key for reCAPTCHA Enterprise. Required when configuring reCAPTCHA Enterprise.
      * 
      */
     private String apiKey;
@@ -28,7 +28,7 @@ public final class GetAttackProtectionCaptchaRecaptchaEnterprise {
 
     private GetAttackProtectionCaptchaRecaptchaEnterprise() {}
     /**
-     * @return API key for reCAPTCHA Enterprise.
+     * @return API key for reCAPTCHA Enterprise. Required when configuring reCAPTCHA Enterprise.
      * 
      */
     public String apiKey() {

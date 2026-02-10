@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetAttackProtectionCaptchaFriendlyCaptcha {
     /**
-     * @return Secret for Friendly Captcha.
+     * @return Secret for Friendly Captcha. Required when configuring Friendly Captcha.
      * 
      */
     private String secret;
@@ -23,7 +23,7 @@ public final class GetAttackProtectionCaptchaFriendlyCaptcha {
 
     private GetAttackProtectionCaptchaFriendlyCaptcha() {}
     /**
-     * @return Secret for Friendly Captcha.
+     * @return Secret for Friendly Captcha. Required when configuring Friendly Captcha.
      * 
      */
     public String secret() {
