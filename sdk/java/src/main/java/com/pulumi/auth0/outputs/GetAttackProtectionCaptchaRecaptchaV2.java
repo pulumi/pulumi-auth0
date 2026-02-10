@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetAttackProtectionCaptchaRecaptchaV2 {
     /**
-     * @return Secret for reCAPTCHA v2.
+     * @return Secret for reCAPTCHA v2. Required when configuring reCAPTCHA v2.
      * 
      */
     private String secret;
@@ -23,7 +23,7 @@ public final class GetAttackProtectionCaptchaRecaptchaV2 {
 
     private GetAttackProtectionCaptchaRecaptchaV2() {}
     /**
-     * @return Secret for reCAPTCHA v2.
+     * @return Secret for reCAPTCHA v2. Required when configuring reCAPTCHA v2.
      * 
      */
     public String secret() {

@@ -170,9 +170,9 @@ export interface AttackProtectionCaptchaArkose {
      */
     failOpen: boolean;
     /**
-     * Secret for Arkose Labs.
+     * Secret for Arkose Labs. Required when configuring Arkose Labs.
      */
-    secret: string;
+    secret?: string;
     /**
      * Site key for Arkose Labs.
      */
@@ -192,9 +192,9 @@ export interface AttackProtectionCaptchaAuthChallenge {
 
 export interface AttackProtectionCaptchaFriendlyCaptcha {
     /**
-     * Secret for Friendly Captcha.
+     * Secret for Friendly Captcha. Required when configuring Friendly Captcha.
      */
-    secret: string;
+    secret?: string;
     /**
      * Site key for Friendly Captcha.
      */
@@ -203,9 +203,9 @@ export interface AttackProtectionCaptchaFriendlyCaptcha {
 
 export interface AttackProtectionCaptchaHcaptcha {
     /**
-     * Secret for hCaptcha.
+     * Secret for hCaptcha. Required when configuring hCaptcha.
      */
-    secret: string;
+    secret?: string;
     /**
      * Site key for hCaptcha.
      */
@@ -214,9 +214,9 @@ export interface AttackProtectionCaptchaHcaptcha {
 
 export interface AttackProtectionCaptchaRecaptchaEnterprise {
     /**
-     * API key for reCAPTCHA Enterprise.
+     * API key for reCAPTCHA Enterprise. Required when configuring reCAPTCHA Enterprise.
      */
-    apiKey: string;
+    apiKey?: string;
     /**
      * Project ID for reCAPTCHA Enterprise.
      */
@@ -229,9 +229,9 @@ export interface AttackProtectionCaptchaRecaptchaEnterprise {
 
 export interface AttackProtectionCaptchaRecaptchaV2 {
     /**
-     * Secret for reCAPTCHA v2.
+     * Secret for reCAPTCHA v2. Required when configuring reCAPTCHA v2.
      */
-    secret: string;
+    secret?: string;
     /**
      * Site key for reCAPTCHA v2.
      */
@@ -3017,7 +3017,7 @@ export interface GetAttackProtectionCaptchaArkose {
      */
     failOpen: boolean;
     /**
-     * Secret for Arkose Labs.
+     * Secret for Arkose Labs. Required when configuring Arkose Labs.
      */
     secret: string;
     /**
@@ -3039,7 +3039,7 @@ export interface GetAttackProtectionCaptchaAuthChallenge {
 
 export interface GetAttackProtectionCaptchaFriendlyCaptcha {
     /**
-     * Secret for Friendly Captcha.
+     * Secret for Friendly Captcha. Required when configuring Friendly Captcha.
      */
     secret: string;
     /**
@@ -3050,7 +3050,7 @@ export interface GetAttackProtectionCaptchaFriendlyCaptcha {
 
 export interface GetAttackProtectionCaptchaHcaptcha {
     /**
-     * Secret for hCaptcha.
+     * Secret for hCaptcha. Required when configuring hCaptcha.
      */
     secret: string;
     /**
@@ -3061,7 +3061,7 @@ export interface GetAttackProtectionCaptchaHcaptcha {
 
 export interface GetAttackProtectionCaptchaRecaptchaEnterprise {
     /**
-     * API key for reCAPTCHA Enterprise.
+     * API key for reCAPTCHA Enterprise. Required when configuring reCAPTCHA Enterprise.
      */
     apiKey: string;
     /**
@@ -3076,7 +3076,7 @@ export interface GetAttackProtectionCaptchaRecaptchaEnterprise {
 
 export interface GetAttackProtectionCaptchaRecaptchaV2 {
     /**
-     * Secret for reCAPTCHA v2.
+     * Secret for reCAPTCHA v2. Required when configuring reCAPTCHA v2.
      */
     secret: string;
     /**

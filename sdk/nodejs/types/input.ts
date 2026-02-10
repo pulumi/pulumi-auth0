@@ -170,9 +170,9 @@ export interface AttackProtectionCaptchaArkose {
      */
     failOpen?: pulumi.Input<boolean>;
     /**
-     * Secret for Arkose Labs.
+     * Secret for Arkose Labs. Required when configuring Arkose Labs.
      */
-    secret: pulumi.Input<string>;
+    secret?: pulumi.Input<string>;
     /**
      * Site key for Arkose Labs.
      */
@@ -192,9 +192,9 @@ export interface AttackProtectionCaptchaAuthChallenge {
 
 export interface AttackProtectionCaptchaFriendlyCaptcha {
     /**
-     * Secret for Friendly Captcha.
+     * Secret for Friendly Captcha. Required when configuring Friendly Captcha.
      */
-    secret: pulumi.Input<string>;
+    secret?: pulumi.Input<string>;
     /**
      * Site key for Friendly Captcha.
      */
@@ -203,9 +203,9 @@ export interface AttackProtectionCaptchaFriendlyCaptcha {
 
 export interface AttackProtectionCaptchaHcaptcha {
     /**
-     * Secret for hCaptcha.
+     * Secret for hCaptcha. Required when configuring hCaptcha.
      */
-    secret: pulumi.Input<string>;
+    secret?: pulumi.Input<string>;
     /**
      * Site key for hCaptcha.
      */
@@ -214,9 +214,9 @@ export interface AttackProtectionCaptchaHcaptcha {
 
 export interface AttackProtectionCaptchaRecaptchaEnterprise {
     /**
-     * API key for reCAPTCHA Enterprise.
+     * API key for reCAPTCHA Enterprise. Required when configuring reCAPTCHA Enterprise.
      */
-    apiKey: pulumi.Input<string>;
+    apiKey?: pulumi.Input<string>;
     /**
      * Project ID for reCAPTCHA Enterprise.
      */
@@ -229,9 +229,9 @@ export interface AttackProtectionCaptchaRecaptchaEnterprise {
 
 export interface AttackProtectionCaptchaRecaptchaV2 {
     /**
-     * Secret for reCAPTCHA v2.
+     * Secret for reCAPTCHA v2. Required when configuring reCAPTCHA v2.
      */
-    secret: pulumi.Input<string>;
+    secret?: pulumi.Input<string>;
     /**
      * Site key for reCAPTCHA v2.
      */

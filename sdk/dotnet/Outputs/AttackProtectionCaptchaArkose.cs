@@ -22,9 +22,9 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly bool? FailOpen;
         /// <summary>
-        /// Secret for Arkose Labs.
+        /// Secret for Arkose Labs. Required when configuring Arkose Labs.
         /// </summary>
-        public readonly string Secret;
+        public readonly string? Secret;
         /// <summary>
         /// Site key for Arkose Labs.
         /// </summary>
@@ -40,7 +40,7 @@ namespace Pulumi.Auth0.Outputs
 
             bool? failOpen,
 
-            string secret,
+            string? secret,
 
             string siteKey,
 

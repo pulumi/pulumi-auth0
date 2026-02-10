@@ -24,10 +24,10 @@ public final class AttackProtectionCaptchaArkose {
      */
     private @Nullable Boolean failOpen;
     /**
-     * @return Secret for Arkose Labs.
+     * @return Secret for Arkose Labs. Required when configuring Arkose Labs.
      * 
      */
-    private String secret;
+    private @Nullable String secret;
     /**
      * @return Site key for Arkose Labs.
      * 
@@ -55,11 +55,11 @@ public final class AttackProtectionCaptchaArkose {
         return Optional.ofNullable(this.failOpen);
     }
     /**
-     * @return Secret for Arkose Labs.
+     * @return Secret for Arkose Labs. Required when configuring Arkose Labs.
      * 
      */
-    public String secret() {
-        return this.secret;
+    public Optional<String> secret() {
+        return Optional.ofNullable(this.secret);
     }
     /**
      * @return Site key for Arkose Labs.
@@ -87,7 +87,7 @@ public final class AttackProtectionCaptchaArkose {
     public static final class Builder {
         private @Nullable String clientSubdomain;
         private @Nullable Boolean failOpen;
-        private String secret;
+        private @Nullable String secret;
         private String siteKey;
         private @Nullable String verifySubdomain;
         public Builder() {}
@@ -113,10 +113,8 @@ public final class AttackProtectionCaptchaArkose {
             return this;
         }
         @CustomType.Setter
-        public Builder secret(String secret) {
-            if (secret == null) {
-              throw new MissingRequiredPropertyException("AttackProtectionCaptchaArkose", "secret");
-            }
+        public Builder secret(@Nullable String secret) {
+
             this.secret = secret;
             return this;
         }

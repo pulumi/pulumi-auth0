@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class AttackProtectionCaptchaRecaptchaV2Args extends com.pulumi.resources.ResourceArgs {
@@ -15,18 +17,18 @@ public final class AttackProtectionCaptchaRecaptchaV2Args extends com.pulumi.res
     public static final AttackProtectionCaptchaRecaptchaV2Args Empty = new AttackProtectionCaptchaRecaptchaV2Args();
 
     /**
-     * Secret for reCAPTCHA v2.
+     * Secret for reCAPTCHA v2. Required when configuring reCAPTCHA v2.
      * 
      */
-    @Import(name="secret", required=true)
-    private Output<String> secret;
+    @Import(name="secret")
+    private @Nullable Output<String> secret;
 
     /**
-     * @return Secret for reCAPTCHA v2.
+     * @return Secret for reCAPTCHA v2. Required when configuring reCAPTCHA v2.
      * 
      */
-    public Output<String> secret() {
-        return this.secret;
+    public Optional<Output<String>> secret() {
+        return Optional.ofNullable(this.secret);
     }
 
     /**
@@ -70,18 +72,18 @@ public final class AttackProtectionCaptchaRecaptchaV2Args extends com.pulumi.res
         }
 
         /**
-         * @param secret Secret for reCAPTCHA v2.
+         * @param secret Secret for reCAPTCHA v2. Required when configuring reCAPTCHA v2.
          * 
          * @return builder
          * 
          */
-        public Builder secret(Output<String> secret) {
+        public Builder secret(@Nullable Output<String> secret) {
             $.secret = secret;
             return this;
         }
 
         /**
-         * @param secret Secret for reCAPTCHA v2.
+         * @param secret Secret for reCAPTCHA v2. Required when configuring reCAPTCHA v2.
          * 
          * @return builder
          * 
@@ -112,9 +114,6 @@ public final class AttackProtectionCaptchaRecaptchaV2Args extends com.pulumi.res
         }
 
         public AttackProtectionCaptchaRecaptchaV2Args build() {
-            if ($.secret == null) {
-                throw new MissingRequiredPropertyException("AttackProtectionCaptchaRecaptchaV2Args", "secret");
-            }
             if ($.siteKey == null) {
                 throw new MissingRequiredPropertyException("AttackProtectionCaptchaRecaptchaV2Args", "siteKey");
             }

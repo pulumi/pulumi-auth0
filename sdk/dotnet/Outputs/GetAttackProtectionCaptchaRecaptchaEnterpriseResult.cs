@@ -14,7 +14,7 @@ namespace Pulumi.Auth0.Outputs
     public sealed class GetAttackProtectionCaptchaRecaptchaEnterpriseResult
     {
         /// <summary>
-        /// API key for reCAPTCHA Enterprise.
+        /// API key for reCAPTCHA Enterprise. Required when configuring reCAPTCHA Enterprise.
         /// </summary>
         public readonly string ApiKey;
         /// <summary>

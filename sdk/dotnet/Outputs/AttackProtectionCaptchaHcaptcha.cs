@@ -14,9 +14,9 @@ namespace Pulumi.Auth0.Outputs
     public sealed class AttackProtectionCaptchaHcaptcha
     {
         /// <summary>
-        /// Secret for hCaptcha.
+        /// Secret for hCaptcha. Required when configuring hCaptcha.
         /// </summary>
-        public readonly string Secret;
+        public readonly string? Secret;
         /// <summary>
         /// Site key for hCaptcha.
         /// </summary>
@@ -24,7 +24,7 @@ namespace Pulumi.Auth0.Outputs
 
         [OutputConstructor]
         private AttackProtectionCaptchaHcaptcha(
-            string secret,
+            string? secret,
 
             string siteKey)
         {

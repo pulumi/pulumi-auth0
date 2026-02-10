@@ -22,7 +22,7 @@ public final class GetAttackProtectionCaptchaArkose {
      */
     private Boolean failOpen;
     /**
-     * @return Secret for Arkose Labs.
+     * @return Secret for Arkose Labs. Required when configuring Arkose Labs.
      * 
      */
     private String secret;
@@ -53,7 +53,7 @@ public final class GetAttackProtectionCaptchaArkose {
         return this.failOpen;
     }
     /**
-     * @return Secret for Arkose Labs.
+     * @return Secret for Arkose Labs. Required when configuring Arkose Labs.
      * 
      */
     public String secret() {

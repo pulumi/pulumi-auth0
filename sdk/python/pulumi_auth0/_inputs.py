@@ -1229,10 +1229,6 @@ class AttackProtectionCaptchaArgs:
 
 if not MYPY:
     class AttackProtectionCaptchaArkoseArgsDict(TypedDict):
-        secret: pulumi.Input[_builtins.str]
-        """
-        Secret for Arkose Labs.
-        """
         site_key: pulumi.Input[_builtins.str]
         """
         Site key for Arkose Labs.
@@ -1245,6 +1241,10 @@ if not MYPY:
         """
         Whether the captcha should fail open.
         """
+        secret: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Secret for Arkose Labs. Required when configuring Arkose Labs.
+        """
         verify_subdomain: NotRequired[pulumi.Input[_builtins.str]]
         """
         Verify subdomain for Arkose Labs.
@@ -1255,38 +1255,27 @@ elif False:
 @pulumi.input_type
 class AttackProtectionCaptchaArkoseArgs:
     def __init__(__self__, *,
-                 secret: pulumi.Input[_builtins.str],
                  site_key: pulumi.Input[_builtins.str],
                  client_subdomain: Optional[pulumi.Input[_builtins.str]] = None,
                  fail_open: Optional[pulumi.Input[_builtins.bool]] = None,
+                 secret: Optional[pulumi.Input[_builtins.str]] = None,
                  verify_subdomain: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] secret: Secret for Arkose Labs.
         :param pulumi.Input[_builtins.str] site_key: Site key for Arkose Labs.
         :param pulumi.Input[_builtins.str] client_subdomain: Client subdomain for Arkose Labs.
         :param pulumi.Input[_builtins.bool] fail_open: Whether the captcha should fail open.
+        :param pulumi.Input[_builtins.str] secret: Secret for Arkose Labs. Required when configuring Arkose Labs.
         :param pulumi.Input[_builtins.str] verify_subdomain: Verify subdomain for Arkose Labs.
         """
-        pulumi.set(__self__, "secret", secret)
         pulumi.set(__self__, "site_key", site_key)
         if client_subdomain is not None:
             pulumi.set(__self__, "client_subdomain", client_subdomain)
         if fail_open is not None:
             pulumi.set(__self__, "fail_open", fail_open)
+        if secret is not None:
+            pulumi.set(__self__, "secret", secret)
         if verify_subdomain is not None:
             pulumi.set(__self__, "verify_subdomain", verify_subdomain)
-
-    @_builtins.property
-    @pulumi.getter
-    def secret(self) -> pulumi.Input[_builtins.str]:
-        """
-        Secret for Arkose Labs.
-        """
-        return pulumi.get(self, "secret")
-
-    @secret.setter
-    def secret(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "secret", value)
 
     @_builtins.property
     @pulumi.getter(name="siteKey")
@@ -1323,6 +1312,18 @@ class AttackProtectionCaptchaArkoseArgs:
     @fail_open.setter
     def fail_open(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "fail_open", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Secret for Arkose Labs. Required when configuring Arkose Labs.
+        """
+        return pulumi.get(self, "secret")
+
+    @secret.setter
+    def secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "secret", value)
 
     @_builtins.property
     @pulumi.getter(name="verifySubdomain")
@@ -1371,13 +1372,13 @@ class AttackProtectionCaptchaAuthChallengeArgs:
 
 if not MYPY:
     class AttackProtectionCaptchaFriendlyCaptchaArgsDict(TypedDict):
-        secret: pulumi.Input[_builtins.str]
-        """
-        Secret for Friendly Captcha.
-        """
         site_key: pulumi.Input[_builtins.str]
         """
         Site key for Friendly Captcha.
+        """
+        secret: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Secret for Friendly Captcha. Required when configuring Friendly Captcha.
         """
 elif False:
     AttackProtectionCaptchaFriendlyCaptchaArgsDict: TypeAlias = Mapping[str, Any]
@@ -1385,26 +1386,15 @@ elif False:
 @pulumi.input_type
 class AttackProtectionCaptchaFriendlyCaptchaArgs:
     def __init__(__self__, *,
-                 secret: pulumi.Input[_builtins.str],
-                 site_key: pulumi.Input[_builtins.str]):
+                 site_key: pulumi.Input[_builtins.str],
+                 secret: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] secret: Secret for Friendly Captcha.
         :param pulumi.Input[_builtins.str] site_key: Site key for Friendly Captcha.
+        :param pulumi.Input[_builtins.str] secret: Secret for Friendly Captcha. Required when configuring Friendly Captcha.
         """
-        pulumi.set(__self__, "secret", secret)
         pulumi.set(__self__, "site_key", site_key)
-
-    @_builtins.property
-    @pulumi.getter
-    def secret(self) -> pulumi.Input[_builtins.str]:
-        """
-        Secret for Friendly Captcha.
-        """
-        return pulumi.get(self, "secret")
-
-    @secret.setter
-    def secret(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "secret", value)
+        if secret is not None:
+            pulumi.set(__self__, "secret", secret)
 
     @_builtins.property
     @pulumi.getter(name="siteKey")
@@ -1418,16 +1408,28 @@ class AttackProtectionCaptchaFriendlyCaptchaArgs:
     def site_key(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "site_key", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Secret for Friendly Captcha. Required when configuring Friendly Captcha.
+        """
+        return pulumi.get(self, "secret")
+
+    @secret.setter
+    def secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "secret", value)
+
 
 if not MYPY:
     class AttackProtectionCaptchaHcaptchaArgsDict(TypedDict):
-        secret: pulumi.Input[_builtins.str]
-        """
-        Secret for hCaptcha.
-        """
         site_key: pulumi.Input[_builtins.str]
         """
         Site key for hCaptcha.
+        """
+        secret: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Secret for hCaptcha. Required when configuring hCaptcha.
         """
 elif False:
     AttackProtectionCaptchaHcaptchaArgsDict: TypeAlias = Mapping[str, Any]
@@ -1435,26 +1437,15 @@ elif False:
 @pulumi.input_type
 class AttackProtectionCaptchaHcaptchaArgs:
     def __init__(__self__, *,
-                 secret: pulumi.Input[_builtins.str],
-                 site_key: pulumi.Input[_builtins.str]):
+                 site_key: pulumi.Input[_builtins.str],
+                 secret: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] secret: Secret for hCaptcha.
         :param pulumi.Input[_builtins.str] site_key: Site key for hCaptcha.
+        :param pulumi.Input[_builtins.str] secret: Secret for hCaptcha. Required when configuring hCaptcha.
         """
-        pulumi.set(__self__, "secret", secret)
         pulumi.set(__self__, "site_key", site_key)
-
-    @_builtins.property
-    @pulumi.getter
-    def secret(self) -> pulumi.Input[_builtins.str]:
-        """
-        Secret for hCaptcha.
-        """
-        return pulumi.get(self, "secret")
-
-    @secret.setter
-    def secret(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "secret", value)
+        if secret is not None:
+            pulumi.set(__self__, "secret", secret)
 
     @_builtins.property
     @pulumi.getter(name="siteKey")
@@ -1468,13 +1459,21 @@ class AttackProtectionCaptchaHcaptchaArgs:
     def site_key(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "site_key", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Secret for hCaptcha. Required when configuring hCaptcha.
+        """
+        return pulumi.get(self, "secret")
+
+    @secret.setter
+    def secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "secret", value)
+
 
 if not MYPY:
     class AttackProtectionCaptchaRecaptchaEnterpriseArgsDict(TypedDict):
-        api_key: pulumi.Input[_builtins.str]
-        """
-        API key for reCAPTCHA Enterprise.
-        """
         project_id: pulumi.Input[_builtins.str]
         """
         Project ID for reCAPTCHA Enterprise.
@@ -1483,35 +1482,28 @@ if not MYPY:
         """
         Site key for reCAPTCHA Enterprise.
         """
+        api_key: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        API key for reCAPTCHA Enterprise. Required when configuring reCAPTCHA Enterprise.
+        """
 elif False:
     AttackProtectionCaptchaRecaptchaEnterpriseArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AttackProtectionCaptchaRecaptchaEnterpriseArgs:
     def __init__(__self__, *,
-                 api_key: pulumi.Input[_builtins.str],
                  project_id: pulumi.Input[_builtins.str],
-                 site_key: pulumi.Input[_builtins.str]):
+                 site_key: pulumi.Input[_builtins.str],
+                 api_key: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] api_key: API key for reCAPTCHA Enterprise.
         :param pulumi.Input[_builtins.str] project_id: Project ID for reCAPTCHA Enterprise.
         :param pulumi.Input[_builtins.str] site_key: Site key for reCAPTCHA Enterprise.
+        :param pulumi.Input[_builtins.str] api_key: API key for reCAPTCHA Enterprise. Required when configuring reCAPTCHA Enterprise.
         """
-        pulumi.set(__self__, "api_key", api_key)
         pulumi.set(__self__, "project_id", project_id)
         pulumi.set(__self__, "site_key", site_key)
-
-    @_builtins.property
-    @pulumi.getter(name="apiKey")
-    def api_key(self) -> pulumi.Input[_builtins.str]:
-        """
-        API key for reCAPTCHA Enterprise.
-        """
-        return pulumi.get(self, "api_key")
-
-    @api_key.setter
-    def api_key(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "api_key", value)
+        if api_key is not None:
+            pulumi.set(__self__, "api_key", api_key)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
@@ -1537,16 +1529,28 @@ class AttackProtectionCaptchaRecaptchaEnterpriseArgs:
     def site_key(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "site_key", value)
 
+    @_builtins.property
+    @pulumi.getter(name="apiKey")
+    def api_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        API key for reCAPTCHA Enterprise. Required when configuring reCAPTCHA Enterprise.
+        """
+        return pulumi.get(self, "api_key")
+
+    @api_key.setter
+    def api_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "api_key", value)
+
 
 if not MYPY:
     class AttackProtectionCaptchaRecaptchaV2ArgsDict(TypedDict):
-        secret: pulumi.Input[_builtins.str]
-        """
-        Secret for reCAPTCHA v2.
-        """
         site_key: pulumi.Input[_builtins.str]
         """
         Site key for reCAPTCHA v2.
+        """
+        secret: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Secret for reCAPTCHA v2. Required when configuring reCAPTCHA v2.
         """
 elif False:
     AttackProtectionCaptchaRecaptchaV2ArgsDict: TypeAlias = Mapping[str, Any]
@@ -1554,26 +1558,15 @@ elif False:
 @pulumi.input_type
 class AttackProtectionCaptchaRecaptchaV2Args:
     def __init__(__self__, *,
-                 secret: pulumi.Input[_builtins.str],
-                 site_key: pulumi.Input[_builtins.str]):
+                 site_key: pulumi.Input[_builtins.str],
+                 secret: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] secret: Secret for reCAPTCHA v2.
         :param pulumi.Input[_builtins.str] site_key: Site key for reCAPTCHA v2.
+        :param pulumi.Input[_builtins.str] secret: Secret for reCAPTCHA v2. Required when configuring reCAPTCHA v2.
         """
-        pulumi.set(__self__, "secret", secret)
         pulumi.set(__self__, "site_key", site_key)
-
-    @_builtins.property
-    @pulumi.getter
-    def secret(self) -> pulumi.Input[_builtins.str]:
-        """
-        Secret for reCAPTCHA v2.
-        """
-        return pulumi.get(self, "secret")
-
-    @secret.setter
-    def secret(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "secret", value)
+        if secret is not None:
+            pulumi.set(__self__, "secret", secret)
 
     @_builtins.property
     @pulumi.getter(name="siteKey")
@@ -1586,6 +1579,18 @@ class AttackProtectionCaptchaRecaptchaV2Args:
     @site_key.setter
     def site_key(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "site_key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Secret for reCAPTCHA v2. Required when configuring reCAPTCHA v2.
+        """
+        return pulumi.get(self, "secret")
+
+    @secret.setter
+    def secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "secret", value)
 
 
 if not MYPY:

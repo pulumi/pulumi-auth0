@@ -14,9 +14,9 @@ namespace Pulumi.Auth0.Outputs
     public sealed class AttackProtectionCaptchaFriendlyCaptcha
     {
         /// <summary>
-        /// Secret for Friendly Captcha.
+        /// Secret for Friendly Captcha. Required when configuring Friendly Captcha.
         /// </summary>
-        public readonly string Secret;
+        public readonly string? Secret;
         /// <summary>
         /// Site key for Friendly Captcha.
         /// </summary>
@@ -24,7 +24,7 @@ namespace Pulumi.Auth0.Outputs
 
         [OutputConstructor]
         private AttackProtectionCaptchaFriendlyCaptcha(
-            string secret,
+            string? secret,
 
             string siteKey)
         {

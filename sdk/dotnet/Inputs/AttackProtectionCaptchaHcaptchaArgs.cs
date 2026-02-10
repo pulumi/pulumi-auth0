@@ -12,11 +12,11 @@ namespace Pulumi.Auth0.Inputs
 
     public sealed class AttackProtectionCaptchaHcaptchaArgs : global::Pulumi.ResourceArgs
     {
-        [Input("secret", required: true)]
+        [Input("secret")]
         private Input<string>? _secret;
 
         /// <summary>
-        /// Secret for hCaptcha.
+        /// Secret for hCaptcha. Required when configuring hCaptcha.
         /// </summary>
         public Input<string>? Secret
         {

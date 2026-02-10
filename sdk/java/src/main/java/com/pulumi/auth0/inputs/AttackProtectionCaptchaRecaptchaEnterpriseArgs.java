@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class AttackProtectionCaptchaRecaptchaEnterpriseArgs extends com.pulumi.resources.ResourceArgs {
@@ -15,18 +17,18 @@ public final class AttackProtectionCaptchaRecaptchaEnterpriseArgs extends com.pu
     public static final AttackProtectionCaptchaRecaptchaEnterpriseArgs Empty = new AttackProtectionCaptchaRecaptchaEnterpriseArgs();
 
     /**
-     * API key for reCAPTCHA Enterprise.
+     * API key for reCAPTCHA Enterprise. Required when configuring reCAPTCHA Enterprise.
      * 
      */
-    @Import(name="apiKey", required=true)
-    private Output<String> apiKey;
+    @Import(name="apiKey")
+    private @Nullable Output<String> apiKey;
 
     /**
-     * @return API key for reCAPTCHA Enterprise.
+     * @return API key for reCAPTCHA Enterprise. Required when configuring reCAPTCHA Enterprise.
      * 
      */
-    public Output<String> apiKey() {
-        return this.apiKey;
+    public Optional<Output<String>> apiKey() {
+        return Optional.ofNullable(this.apiKey);
     }
 
     /**
@@ -86,18 +88,18 @@ public final class AttackProtectionCaptchaRecaptchaEnterpriseArgs extends com.pu
         }
 
         /**
-         * @param apiKey API key for reCAPTCHA Enterprise.
+         * @param apiKey API key for reCAPTCHA Enterprise. Required when configuring reCAPTCHA Enterprise.
          * 
          * @return builder
          * 
          */
-        public Builder apiKey(Output<String> apiKey) {
+        public Builder apiKey(@Nullable Output<String> apiKey) {
             $.apiKey = apiKey;
             return this;
         }
 
         /**
-         * @param apiKey API key for reCAPTCHA Enterprise.
+         * @param apiKey API key for reCAPTCHA Enterprise. Required when configuring reCAPTCHA Enterprise.
          * 
          * @return builder
          * 
@@ -149,9 +151,6 @@ public final class AttackProtectionCaptchaRecaptchaEnterpriseArgs extends com.pu
         }
 
         public AttackProtectionCaptchaRecaptchaEnterpriseArgs build() {
-            if ($.apiKey == null) {
-                throw new MissingRequiredPropertyException("AttackProtectionCaptchaRecaptchaEnterpriseArgs", "apiKey");
-            }
             if ($.projectId == null) {
                 throw new MissingRequiredPropertyException("AttackProtectionCaptchaRecaptchaEnterpriseArgs", "projectId");
             }

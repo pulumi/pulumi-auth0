@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class AttackProtectionCaptchaFriendlyCaptchaArgs extends com.pulumi.resources.ResourceArgs {
@@ -15,18 +17,18 @@ public final class AttackProtectionCaptchaFriendlyCaptchaArgs extends com.pulumi
     public static final AttackProtectionCaptchaFriendlyCaptchaArgs Empty = new AttackProtectionCaptchaFriendlyCaptchaArgs();
 
     /**
-     * Secret for Friendly Captcha.
+     * Secret for Friendly Captcha. Required when configuring Friendly Captcha.
      * 
      */
-    @Import(name="secret", required=true)
-    private Output<String> secret;
+    @Import(name="secret")
+    private @Nullable Output<String> secret;
 
     /**
-     * @return Secret for Friendly Captcha.
+     * @return Secret for Friendly Captcha. Required when configuring Friendly Captcha.
      * 
      */
-    public Output<String> secret() {
-        return this.secret;
+    public Optional<Output<String>> secret() {
+        return Optional.ofNullable(this.secret);
     }
 
     /**
@@ -70,18 +72,18 @@ public final class AttackProtectionCaptchaFriendlyCaptchaArgs extends com.pulumi
         }
 
         /**
-         * @param secret Secret for Friendly Captcha.
+         * @param secret Secret for Friendly Captcha. Required when configuring Friendly Captcha.
          * 
          * @return builder
          * 
          */
-        public Builder secret(Output<String> secret) {
+        public Builder secret(@Nullable Output<String> secret) {
             $.secret = secret;
             return this;
         }
 
         /**
-         * @param secret Secret for Friendly Captcha.
+         * @param secret Secret for Friendly Captcha. Required when configuring Friendly Captcha.
          * 
          * @return builder
          * 
@@ -112,9 +114,6 @@ public final class AttackProtectionCaptchaFriendlyCaptchaArgs extends com.pulumi
         }
 
         public AttackProtectionCaptchaFriendlyCaptchaArgs build() {
-            if ($.secret == null) {
-                throw new MissingRequiredPropertyException("AttackProtectionCaptchaFriendlyCaptchaArgs", "secret");
-            }
             if ($.siteKey == null) {
                 throw new MissingRequiredPropertyException("AttackProtectionCaptchaFriendlyCaptchaArgs", "siteKey");
             }

@@ -7,14 +7,16 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class AttackProtectionCaptchaHcaptcha {
     /**
-     * @return Secret for hCaptcha.
+     * @return Secret for hCaptcha. Required when configuring hCaptcha.
      * 
      */
-    private String secret;
+    private @Nullable String secret;
     /**
      * @return Site key for hCaptcha.
      * 
@@ -23,11 +25,11 @@ public final class AttackProtectionCaptchaHcaptcha {
 
     private AttackProtectionCaptchaHcaptcha() {}
     /**
-     * @return Secret for hCaptcha.
+     * @return Secret for hCaptcha. Required when configuring hCaptcha.
      * 
      */
-    public String secret() {
-        return this.secret;
+    public Optional<String> secret() {
+        return Optional.ofNullable(this.secret);
     }
     /**
      * @return Site key for hCaptcha.
@@ -46,7 +48,7 @@ public final class AttackProtectionCaptchaHcaptcha {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String secret;
+        private @Nullable String secret;
         private String siteKey;
         public Builder() {}
         public Builder(AttackProtectionCaptchaHcaptcha defaults) {
@@ -56,10 +58,8 @@ public final class AttackProtectionCaptchaHcaptcha {
         }
 
         @CustomType.Setter
-        public Builder secret(String secret) {
-            if (secret == null) {
-              throw new MissingRequiredPropertyException("AttackProtectionCaptchaHcaptcha", "secret");
-            }
+        public Builder secret(@Nullable String secret) {
+
             this.secret = secret;
             return this;
         }

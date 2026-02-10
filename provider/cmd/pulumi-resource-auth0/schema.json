@@ -387,7 +387,7 @@
                 },
                 "secret": {
                     "type": "string",
-                    "description": "Secret for Arkose Labs.\n",
+                    "description": "Secret for Arkose Labs. Required when configuring Arkose Labs.\n",
                     "secret": true
                 },
                 "siteKey": {
@@ -401,7 +401,6 @@
             },
             "type": "object",
             "required": [
-                "secret",
                 "siteKey"
             ],
             "language": {
@@ -409,7 +408,6 @@
                     "requiredOutputs": [
                         "clientSubdomain",
                         "failOpen",
-                        "secret",
                         "siteKey",
                         "verifySubdomain"
                     ]
@@ -436,7 +434,7 @@
             "properties": {
                 "secret": {
                     "type": "string",
-                    "description": "Secret for Friendly Captcha.\n",
+                    "description": "Secret for Friendly Captcha. Required when configuring Friendly Captcha.\n",
                     "secret": true
                 },
                 "siteKey": {
@@ -446,7 +444,6 @@
             },
             "type": "object",
             "required": [
-                "secret",
                 "siteKey"
             ]
         },
@@ -454,7 +451,7 @@
             "properties": {
                 "secret": {
                     "type": "string",
-                    "description": "Secret for hCaptcha.\n",
+                    "description": "Secret for hCaptcha. Required when configuring hCaptcha.\n",
                     "secret": true
                 },
                 "siteKey": {
@@ -464,7 +461,6 @@
             },
             "type": "object",
             "required": [
-                "secret",
                 "siteKey"
             ]
         },
@@ -472,7 +468,7 @@
             "properties": {
                 "apiKey": {
                     "type": "string",
-                    "description": "API key for reCAPTCHA Enterprise.\n",
+                    "description": "API key for reCAPTCHA Enterprise. Required when configuring reCAPTCHA Enterprise.\n",
                     "secret": true
                 },
                 "projectId": {
@@ -486,7 +482,6 @@
             },
             "type": "object",
             "required": [
-                "apiKey",
                 "projectId",
                 "siteKey"
             ]
@@ -495,7 +490,7 @@
             "properties": {
                 "secret": {
                     "type": "string",
-                    "description": "Secret for reCAPTCHA v2.\n",
+                    "description": "Secret for reCAPTCHA v2. Required when configuring reCAPTCHA v2.\n",
                     "secret": true
                 },
                 "siteKey": {
@@ -505,7 +500,6 @@
             },
             "type": "object",
             "required": [
-                "secret",
                 "siteKey"
             ]
         },
@@ -6379,7 +6373,7 @@
                 },
                 "secret": {
                     "type": "string",
-                    "description": "Secret for Arkose Labs.\n"
+                    "description": "Secret for Arkose Labs. Required when configuring Arkose Labs.\n"
                 },
                 "siteKey": {
                     "type": "string",
@@ -6425,7 +6419,7 @@
             "properties": {
                 "secret": {
                     "type": "string",
-                    "description": "Secret for Friendly Captcha.\n"
+                    "description": "Secret for Friendly Captcha. Required when configuring Friendly Captcha.\n"
                 },
                 "siteKey": {
                     "type": "string",
@@ -6447,7 +6441,7 @@
             "properties": {
                 "secret": {
                     "type": "string",
-                    "description": "Secret for hCaptcha.\n"
+                    "description": "Secret for hCaptcha. Required when configuring hCaptcha.\n"
                 },
                 "siteKey": {
                     "type": "string",
@@ -6469,7 +6463,7 @@
             "properties": {
                 "apiKey": {
                     "type": "string",
-                    "description": "API key for reCAPTCHA Enterprise.\n"
+                    "description": "API key for reCAPTCHA Enterprise. Required when configuring reCAPTCHA Enterprise.\n"
                 },
                 "projectId": {
                     "type": "string",
@@ -6496,7 +6490,7 @@
             "properties": {
                 "secret": {
                     "type": "string",
-                    "description": "Secret for reCAPTCHA v2.\n"
+                    "description": "Secret for reCAPTCHA v2. Required when configuring reCAPTCHA v2.\n"
                 },
                 "siteKey": {
                     "type": "string",
