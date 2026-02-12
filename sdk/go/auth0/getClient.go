@@ -88,7 +88,8 @@ type LookupClientResult struct {
 	ClientId *string `pulumi:"clientId"`
 	// Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
 	ClientMetadata map[string]string `pulumi:"clientMetadata"`
-	ClientSecret   string            `pulumi:"clientSecret"`
+	// Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string.
+	ClientSecret string `pulumi:"clientSecret"`
 	// Defines the compliance level for this client, which may restrict it's capabilities. Can be one of `none`, `fapi1AdvPkjPar`, `fapi1AdvMtlsPar`.
 	ComplianceLevel string `pulumi:"complianceLevel"`
 	// Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
@@ -261,6 +262,7 @@ func (o LookupClientResultOutput) ClientMetadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupClientResult) map[string]string { return v.ClientMetadata }).(pulumi.StringMapOutput)
 }
 
+// Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string.
 func (o LookupClientResultOutput) ClientSecret() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClientResult) string { return v.ClientSecret }).(pulumi.StringOutput)
 }

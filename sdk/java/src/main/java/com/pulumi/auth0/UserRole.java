@@ -75,9 +75,7 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * This resource can be imported by specifying the
- * 
  * user ID and role ID separated by &#34;::&#34; (note the double colon)
- * 
  * &lt;userID&gt;::&lt;roleID&gt;
  * 
  * Example:

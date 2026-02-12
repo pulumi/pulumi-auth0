@@ -2806,18 +2806,26 @@ export interface EventStreamWebhookConfigurationWebhookAuthorization {
      * The authorization method used to secure the webhook endpoint. Can be either `basic` or `bearer`.
      */
     method: string;
+    /**
+     * The password for `basic` authentication. Required only when `method` is set to `basic`. **Note:** For better security, consider using `passwordWo` instead to prevent storing the password in Terraform state.
+     */
     password?: string;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The password for `basic` authentication (write-only). This value is only available during resource creation and update, and is **not** stored in Terraform state. To change the password, update the `passwordWoVersion` attribute. Required only when `method` is set to `basic` and `password` is not provided.
      */
     passwordWo?: string;
     /**
      * Version number for password changes. Update this value to trigger a password change when using `passwordWo`.
      */
     passwordWoVersion?: number;
+    /**
+     * The token used for `bearer` authentication. Required only when `method` is set to `bearer`. **Note:** For better security, consider using `tokenWo` instead to prevent storing the token in Terraform state.
+     */
     token?: string;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The token used for `bearer` authentication (write-only). This value is only available during resource creation and update, and is **not** stored in Terraform state. To change the token, update the `tokenWoVersion` attribute. Required only when `method` is set to `bearer` and `token` is not provided.
      */
     tokenWo?: string;
     /**
@@ -4481,6 +4489,9 @@ export interface GetClientsClient {
      * Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
      */
     clientMetadata: {[key: string]: string};
+    /**
+     * Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string.
+     */
     clientSecret: string;
     /**
      * Description of the purpose of the client.
@@ -5893,13 +5904,25 @@ export interface GetEventStreamWebhookConfigurationWebhookAuthorization {
      * The authorization method used to secure the webhook endpoint. Can be either `basic` or `bearer`.
      */
     method: string;
+    /**
+     * The password for `basic` authentication. Required only when `method` is set to `basic`. **Note:** For better security, consider using `passwordWo` instead to prevent storing the password in Terraform state.
+     */
     password: string;
+    /**
+     * The password for `basic` authentication (write-only). This value is only available during resource creation and update, and is **not** stored in Terraform state. To change the password, update the `passwordWoVersion` attribute. Required only when `method` is set to `basic` and `password` is not provided.
+     */
     passwordWo: string;
     /**
      * Version number for password changes. Update this value to trigger a password change when using `passwordWo`.
      */
     passwordWoVersion: number;
+    /**
+     * The token used for `bearer` authentication. Required only when `method` is set to `bearer`. **Note:** For better security, consider using `tokenWo` instead to prevent storing the token in Terraform state.
+     */
     token: string;
+    /**
+     * The token used for `bearer` authentication (write-only). This value is only available during resource creation and update, and is **not** stored in Terraform state. To change the token, update the `tokenWoVersion` attribute. Required only when `method` is set to `bearer` and `token` is not provided.
+     */
     tokenWo: string;
     /**
      * Version number for token changes. Update this value to trigger a token change when using `tokenWo`.

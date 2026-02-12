@@ -104,8 +104,7 @@ namespace Pulumi.Auth0
     /// ## Import
     /// 
     /// This resource can be imported by specifying the client grant ID.
-    /// 
-    /// You can find this within the Management Dashboard in Application -&gt; APIs -&gt; Expand the required API.
+    /// You can find this within the Management Dashboard in Application &gt; APIs &gt; Expand the required API.
     /// 
     /// Example:
     /// 

@@ -88,9 +88,7 @@ namespace Pulumi.Auth0
     /// ## Import
     /// 
     /// This resource can be imported by specifying the
-    /// 
     /// role ID, resource identifier, and permission name separated by "::" (note the double colon)
-    /// 
     /// &lt;roleID&gt;::&lt;resourceServerIdentifier&gt;::&lt;permission&gt;
     /// 
     /// Example:

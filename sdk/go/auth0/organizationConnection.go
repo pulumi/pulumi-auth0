@@ -65,10 +65,8 @@ import (
 //
 // ## Import
 //
-// # This resource can be imported by specifying the
-//
+// This resource can be imported by specifying the
 // organization ID and connection ID separated by "::" (note the double colon)
-//
 // <organizationID>::<connectionID>
 //
 // Example:

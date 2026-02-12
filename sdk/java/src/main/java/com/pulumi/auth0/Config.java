@@ -81,6 +81,10 @@ public final class Config {
     public Optional<String> domain() {
         return Codegen.stringProp("domain").config(config).get();
     }
+/**
+ * Indicates whether credentials will be dynamically passed to the provider from other terraform resources.
+ * 
+ */
     public Optional<Boolean> dynamicCredentials() {
         return Codegen.booleanProp("dynamicCredentials").config(config).get();
     }

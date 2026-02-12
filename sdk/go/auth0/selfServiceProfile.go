@@ -55,8 +55,7 @@ import (
 //
 // ## Import
 //
-// # This resource can be imported using the id
-//
+// This resource can be imported using the id
 // Example:
 //
 // ```sh

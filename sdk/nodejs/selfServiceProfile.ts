@@ -35,7 +35,6 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * This resource can be imported using the id
- *
  * Example:
  *
  * ```sh

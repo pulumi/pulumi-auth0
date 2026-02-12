@@ -59,9 +59,7 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * This resource can be imported by specifying the
- * 
  * sso-profile-id, language and page separated by &#34;::&#34; (note the double colon)
- * 
  * &lt;sso-profile-id&gt;::&lt;language&gt;::&lt;page&gt;
  * 
  * Example

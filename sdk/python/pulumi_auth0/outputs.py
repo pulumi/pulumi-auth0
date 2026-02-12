@@ -10725,9 +10725,13 @@ class EventStreamWebhookConfigurationWebhookAuthorization(dict):
                  username: Optional[_builtins.str] = None):
         """
         :param _builtins.str method: The authorization method used to secure the webhook endpoint. Can be either `basic` or `bearer`.
+        :param _builtins.str password: The password for `basic` authentication. Required only when `method` is set to `basic`. **Note:** For better security, consider using `password_wo` instead to prevent storing the password in Terraform state.
         :param _builtins.str password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The password for `basic` authentication (write-only). This value is only available during resource creation and update, and is **not** stored in Terraform state. To change the password, update the `password_wo_version` attribute. Required only when `method` is set to `basic` and `password` is not provided.
         :param _builtins.int password_wo_version: Version number for password changes. Update this value to trigger a password change when using `password_wo`.
+        :param _builtins.str token: The token used for `bearer` authentication. Required only when `method` is set to `bearer`. **Note:** For better security, consider using `token_wo` instead to prevent storing the token in Terraform state.
         :param _builtins.str token_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The token used for `bearer` authentication (write-only). This value is only available during resource creation and update, and is **not** stored in Terraform state. To change the token, update the `token_wo_version` attribute. Required only when `method` is set to `bearer` and `token` is not provided.
         :param _builtins.int token_wo_version: Version number for token changes. Update this value to trigger a token change when using `token_wo`.
         :param _builtins.str username: The username for `basic` authentication. Required only when `method` is set to `basic`.
         """
@@ -10758,6 +10762,9 @@ class EventStreamWebhookConfigurationWebhookAuthorization(dict):
     @_builtins.property
     @pulumi.getter
     def password(self) -> Optional[_builtins.str]:
+        """
+        The password for `basic` authentication. Required only when `method` is set to `basic`. **Note:** For better security, consider using `password_wo` instead to prevent storing the password in Terraform state.
+        """
         return pulumi.get(self, "password")
 
     @_builtins.property
@@ -10765,6 +10772,7 @@ class EventStreamWebhookConfigurationWebhookAuthorization(dict):
     def password_wo(self) -> Optional[_builtins.str]:
         """
         **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        The password for `basic` authentication (write-only). This value is only available during resource creation and update, and is **not** stored in Terraform state. To change the password, update the `password_wo_version` attribute. Required only when `method` is set to `basic` and `password` is not provided.
         """
         return pulumi.get(self, "password_wo")
 
@@ -10779,6 +10787,9 @@ class EventStreamWebhookConfigurationWebhookAuthorization(dict):
     @_builtins.property
     @pulumi.getter
     def token(self) -> Optional[_builtins.str]:
+        """
+        The token used for `bearer` authentication. Required only when `method` is set to `bearer`. **Note:** For better security, consider using `token_wo` instead to prevent storing the token in Terraform state.
+        """
         return pulumi.get(self, "token")
 
     @_builtins.property
@@ -10786,6 +10797,7 @@ class EventStreamWebhookConfigurationWebhookAuthorization(dict):
     def token_wo(self) -> Optional[_builtins.str]:
         """
         **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        The token used for `bearer` authentication (write-only). This value is only available during resource creation and update, and is **not** stored in Terraform state. To change the token, update the `token_wo_version` attribute. Required only when `method` is set to `bearer` and `token` is not provided.
         """
         return pulumi.get(self, "token_wo")
 
@@ -19647,6 +19659,7 @@ class GetClientsClientResult(dict):
         :param Sequence[_builtins.str] async_approval_notification_channels: List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `["guardian-push"]` if not specified.
         :param Sequence[_builtins.str] callbacks: URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
         :param Mapping[str, _builtins.str] client_metadata: Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
+        :param _builtins.str client_secret: Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string.
         :param _builtins.str description: Description of the purpose of the client.
         :param Sequence['GetClientsClientExpressConfigurationArgs'] express_configurations: Express Configuration settings for the client. Used with OIN Express Configuration.
         :param Sequence[_builtins.str] grant_types: Types of grants that this client is authorized to use.
@@ -19747,6 +19760,9 @@ class GetClientsClientResult(dict):
     @_builtins.property
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> _builtins.str:
+        """
+        Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string.
+        """
         return pulumi.get(self, "client_secret")
 
     @_builtins.property
@@ -23561,7 +23577,11 @@ class GetEventStreamWebhookConfigurationWebhookAuthorizationResult(dict):
                  username: _builtins.str):
         """
         :param _builtins.str method: The authorization method used to secure the webhook endpoint. Can be either `basic` or `bearer`.
+        :param _builtins.str password: The password for `basic` authentication. Required only when `method` is set to `basic`. **Note:** For better security, consider using `password_wo` instead to prevent storing the password in Terraform state.
+        :param _builtins.str password_wo: The password for `basic` authentication (write-only). This value is only available during resource creation and update, and is **not** stored in Terraform state. To change the password, update the `password_wo_version` attribute. Required only when `method` is set to `basic` and `password` is not provided.
         :param _builtins.int password_wo_version: Version number for password changes. Update this value to trigger a password change when using `password_wo`.
+        :param _builtins.str token: The token used for `bearer` authentication. Required only when `method` is set to `bearer`. **Note:** For better security, consider using `token_wo` instead to prevent storing the token in Terraform state.
+        :param _builtins.str token_wo: The token used for `bearer` authentication (write-only). This value is only available during resource creation and update, and is **not** stored in Terraform state. To change the token, update the `token_wo_version` attribute. Required only when `method` is set to `bearer` and `token` is not provided.
         :param _builtins.int token_wo_version: Version number for token changes. Update this value to trigger a token change when using `token_wo`.
         :param _builtins.str username: The username for `basic` authentication. Required only when `method` is set to `basic`.
         """
@@ -23585,11 +23605,17 @@ class GetEventStreamWebhookConfigurationWebhookAuthorizationResult(dict):
     @_builtins.property
     @pulumi.getter
     def password(self) -> _builtins.str:
+        """
+        The password for `basic` authentication. Required only when `method` is set to `basic`. **Note:** For better security, consider using `password_wo` instead to prevent storing the password in Terraform state.
+        """
         return pulumi.get(self, "password")
 
     @_builtins.property
     @pulumi.getter(name="passwordWo")
     def password_wo(self) -> _builtins.str:
+        """
+        The password for `basic` authentication (write-only). This value is only available during resource creation and update, and is **not** stored in Terraform state. To change the password, update the `password_wo_version` attribute. Required only when `method` is set to `basic` and `password` is not provided.
+        """
         return pulumi.get(self, "password_wo")
 
     @_builtins.property
@@ -23603,11 +23629,17 @@ class GetEventStreamWebhookConfigurationWebhookAuthorizationResult(dict):
     @_builtins.property
     @pulumi.getter
     def token(self) -> _builtins.str:
+        """
+        The token used for `bearer` authentication. Required only when `method` is set to `bearer`. **Note:** For better security, consider using `token_wo` instead to prevent storing the token in Terraform state.
+        """
         return pulumi.get(self, "token")
 
     @_builtins.property
     @pulumi.getter(name="tokenWo")
     def token_wo(self) -> _builtins.str:
+        """
+        The token used for `bearer` authentication (write-only). This value is only available during resource creation and update, and is **not** stored in Terraform state. To change the token, update the `token_wo_version` attribute. Required only when `method` is set to `bearer` and `token` is not provided.
+        """
         return pulumi.get(self, "token_wo")
 
     @_builtins.property

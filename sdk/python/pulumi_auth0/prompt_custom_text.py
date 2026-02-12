@@ -176,9 +176,7 @@ class PromptCustomText(pulumi.CustomResource):
         ## Import
 
         This resource can be imported by specifying the
-
         prompt and language separated by "::" (note the double colon)
-
         <prompt>::<language>
 
         Example
@@ -240,9 +238,7 @@ class PromptCustomText(pulumi.CustomResource):
         ## Import
 
         This resource can be imported by specifying the
-
         prompt and language separated by "::" (note the double colon)
-
         <prompt>::<language>
 
         Example

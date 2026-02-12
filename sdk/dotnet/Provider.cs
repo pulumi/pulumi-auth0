@@ -160,6 +160,9 @@ namespace Pulumi.Auth0
         [Input("domain")]
         public Input<string>? Domain { get; set; }
 
+        /// <summary>
+        /// Indicates whether credentials will be dynamically passed to the provider from other terraform resources.
+        /// </summary>
         [Input("dynamicCredentials", json: true)]
         public Input<bool>? DynamicCredentials { get; set; }
 

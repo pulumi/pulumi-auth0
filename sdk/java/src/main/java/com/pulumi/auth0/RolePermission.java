@@ -25,9 +25,7 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * This resource can be imported by specifying the
- * 
  * role ID, resource identifier, and permission name separated by &#34;::&#34; (note the double colon)
- * 
  * &lt;roleID&gt;::&lt;resourceServerIdentifier&gt;::&lt;permission&gt;
  * 
  * Example:

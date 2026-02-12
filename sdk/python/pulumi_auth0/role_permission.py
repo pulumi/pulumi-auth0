@@ -214,9 +214,7 @@ class RolePermission(pulumi.CustomResource):
         ## Import
 
         This resource can be imported by specifying the
-
         role ID, resource identifier, and permission name separated by "::" (note the double colon)
-
         <roleID>::<resourceServerIdentifier>::<permission>
 
         Example:
@@ -284,9 +282,7 @@ class RolePermission(pulumi.CustomResource):
         ## Import
 
         This resource can be imported by specifying the
-
         role ID, resource identifier, and permission name separated by "::" (note the double colon)
-
         <roleID>::<resourceServerIdentifier>::<permission>
 
         Example:

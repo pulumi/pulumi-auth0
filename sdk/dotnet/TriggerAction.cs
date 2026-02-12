@@ -55,9 +55,7 @@ namespace Pulumi.Auth0
     /// ## Import
     /// 
     /// This resource can be imported by specifying the
-    /// 
     /// trigger and action ID separated by "::" (note the double colon)
-    /// 
     /// &lt;trigger&gt;::&lt;actionID&gt;
     /// 
     /// Example:

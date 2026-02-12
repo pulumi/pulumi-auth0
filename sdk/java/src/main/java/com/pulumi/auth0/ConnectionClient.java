@@ -73,9 +73,7 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * This resource can be imported by specifying the
- * 
  * connection ID and client ID separated by &#34;::&#34; (note the double colon)
- * 
  * &lt;connectionID&gt;::&lt;clientID&gt;
  * 
  * Example:

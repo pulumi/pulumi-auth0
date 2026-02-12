@@ -22,8 +22,7 @@ import * as utilities from "./utilities";
  * $ pulumi import auth0:index/clientCredentials:ClientCredentials my_creds "AaiyAPdpYdesoKnqjj8HJqRn4T5titww"
  * ```
  *
- * ~> Importing this resource when the `authentication_method` is set to `private_key_jwt` will force the resource to be recreated.
- *
+ * > Importing this resource when the `authenticationMethod` is set to `privateKeyJwt` will force the resource to be recreated.
  * This is to be expected, because the pem file can't be checked for differences.
  */
 export class ClientCredentials extends pulumi.CustomResource {
@@ -62,6 +61,9 @@ export class ClientCredentials extends pulumi.CustomResource {
      * The ID of the client for which to configure the authentication method.
      */
     declare public readonly clientId: pulumi.Output<string>;
+    /**
+     * Secret for the client when using `clientSecretPost` or `clientSecretBasic` authentication method. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string. The attribute will also be an empty string in case `privateKeyJwt` is selected as an authentication method.
+     */
     declare public readonly clientSecret: pulumi.Output<string>;
     /**
      * Defines `privateKeyJwt` client authentication method.
@@ -132,6 +134,9 @@ export interface ClientCredentialsState {
      * The ID of the client for which to configure the authentication method.
      */
     clientId?: pulumi.Input<string>;
+    /**
+     * Secret for the client when using `clientSecretPost` or `clientSecretBasic` authentication method. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string. The attribute will also be an empty string in case `privateKeyJwt` is selected as an authentication method.
+     */
     clientSecret?: pulumi.Input<string>;
     /**
      * Defines `privateKeyJwt` client authentication method.
@@ -163,6 +168,9 @@ export interface ClientCredentialsArgs {
      * The ID of the client for which to configure the authentication method.
      */
     clientId: pulumi.Input<string>;
+    /**
+     * Secret for the client when using `clientSecretPost` or `clientSecretBasic` authentication method. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string. The attribute will also be an empty string in case `privateKeyJwt` is selected as an authentication method.
+     */
     clientSecret?: pulumi.Input<string>;
     /**
      * Defines `privateKeyJwt` client authentication method.

@@ -40,9 +40,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * This resource can be imported by specifying the
- *
  * trigger and action ID separated by "::" (note the double colon)
- *
  * <trigger>::<actionID>
  *
  * Example:

@@ -65,9 +65,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * This resource can be imported by specifying the
- *
  * organization ID and client grant ID separated by "::" (note the double colon)
- *
  * <organizationID>::<clientGrantID>
  *
  * Example:

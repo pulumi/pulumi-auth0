@@ -69,8 +69,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * This resource can be imported by specifying the client grant ID.
- *
- * You can find this within the Management Dashboard in Application -> APIs -> Expand the required API.
+ * You can find this within the Management Dashboard in Application > APIs > Expand the required API.
  *
  * Example:
  *

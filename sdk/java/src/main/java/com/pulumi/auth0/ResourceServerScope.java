@@ -70,9 +70,7 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * This resource can be imported by specifying the
- * 
  * resource identifier and scope name separated by &#34;::&#34; (note the double colon)
- * 
  * &lt;resourceServerIdentifier&gt;::&lt;scope&gt;
  * 
  * Example:

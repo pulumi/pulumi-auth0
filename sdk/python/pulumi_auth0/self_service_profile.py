@@ -299,7 +299,6 @@ class SelfServiceProfile(pulumi.CustomResource):
         ## Import
 
         This resource can be imported using the id
-
         Example:
 
         ```sh
@@ -349,7 +348,6 @@ class SelfServiceProfile(pulumi.CustomResource):
         ## Import
 
         This resource can be imported using the id
-
         Example:
 
         ```sh

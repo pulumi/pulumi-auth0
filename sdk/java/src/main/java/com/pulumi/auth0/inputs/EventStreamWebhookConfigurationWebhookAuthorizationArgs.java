@@ -32,15 +32,24 @@ public final class EventStreamWebhookConfigurationWebhookAuthorizationArgs exten
         return this.method;
     }
 
+    /**
+     * The password for `basic` authentication. Required only when `method` is set to `basic`. **Note:** For better security, consider using `passwordWo` instead to prevent storing the password in Terraform state.
+     * 
+     */
     @Import(name="password")
     private @Nullable Output<String> password;
 
+    /**
+     * @return The password for `basic` authentication. Required only when `method` is set to `basic`. **Note:** For better security, consider using `passwordWo` instead to prevent storing the password in Terraform state.
+     * 
+     */
     public Optional<Output<String>> password() {
         return Optional.ofNullable(this.password);
     }
 
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The password for `basic` authentication (write-only). This value is only available during resource creation and update, and is **not** stored in Terraform state. To change the password, update the `passwordWoVersion` attribute. Required only when `method` is set to `basic` and `password` is not provided.
      * 
      */
     @Import(name="passwordWo")
@@ -48,6 +57,7 @@ public final class EventStreamWebhookConfigurationWebhookAuthorizationArgs exten
 
     /**
      * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The password for `basic` authentication (write-only). This value is only available during resource creation and update, and is **not** stored in Terraform state. To change the password, update the `passwordWoVersion` attribute. Required only when `method` is set to `basic` and `password` is not provided.
      * 
      */
     public Optional<Output<String>> passwordWo() {
@@ -69,15 +79,24 @@ public final class EventStreamWebhookConfigurationWebhookAuthorizationArgs exten
         return Optional.ofNullable(this.passwordWoVersion);
     }
 
+    /**
+     * The token used for `bearer` authentication. Required only when `method` is set to `bearer`. **Note:** For better security, consider using `tokenWo` instead to prevent storing the token in Terraform state.
+     * 
+     */
     @Import(name="token")
     private @Nullable Output<String> token;
 
+    /**
+     * @return The token used for `bearer` authentication. Required only when `method` is set to `bearer`. **Note:** For better security, consider using `tokenWo` instead to prevent storing the token in Terraform state.
+     * 
+     */
     public Optional<Output<String>> token() {
         return Optional.ofNullable(this.token);
     }
 
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The token used for `bearer` authentication (write-only). This value is only available during resource creation and update, and is **not** stored in Terraform state. To change the token, update the `tokenWoVersion` attribute. Required only when `method` is set to `bearer` and `token` is not provided.
      * 
      */
     @Import(name="tokenWo")
@@ -85,6 +104,7 @@ public final class EventStreamWebhookConfigurationWebhookAuthorizationArgs exten
 
     /**
      * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The token used for `bearer` authentication (write-only). This value is only available during resource creation and update, and is **not** stored in Terraform state. To change the token, update the `tokenWoVersion` attribute. Required only when `method` is set to `bearer` and `token` is not provided.
      * 
      */
     public Optional<Output<String>> tokenWo() {
@@ -173,17 +193,30 @@ public final class EventStreamWebhookConfigurationWebhookAuthorizationArgs exten
             return method(Output.of(method));
         }
 
+        /**
+         * @param password The password for `basic` authentication. Required only when `method` is set to `basic`. **Note:** For better security, consider using `passwordWo` instead to prevent storing the password in Terraform state.
+         * 
+         * @return builder
+         * 
+         */
         public Builder password(@Nullable Output<String> password) {
             $.password = password;
             return this;
         }
 
+        /**
+         * @param password The password for `basic` authentication. Required only when `method` is set to `basic`. **Note:** For better security, consider using `passwordWo` instead to prevent storing the password in Terraform state.
+         * 
+         * @return builder
+         * 
+         */
         public Builder password(String password) {
             return password(Output.of(password));
         }
 
         /**
          * @param passwordWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * The password for `basic` authentication (write-only). This value is only available during resource creation and update, and is **not** stored in Terraform state. To change the password, update the `passwordWoVersion` attribute. Required only when `method` is set to `basic` and `password` is not provided.
          * 
          * @return builder
          * 
@@ -195,6 +228,7 @@ public final class EventStreamWebhookConfigurationWebhookAuthorizationArgs exten
 
         /**
          * @param passwordWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * The password for `basic` authentication (write-only). This value is only available during resource creation and update, and is **not** stored in Terraform state. To change the password, update the `passwordWoVersion` attribute. Required only when `method` is set to `basic` and `password` is not provided.
          * 
          * @return builder
          * 
@@ -224,17 +258,30 @@ public final class EventStreamWebhookConfigurationWebhookAuthorizationArgs exten
             return passwordWoVersion(Output.of(passwordWoVersion));
         }
 
+        /**
+         * @param token The token used for `bearer` authentication. Required only when `method` is set to `bearer`. **Note:** For better security, consider using `tokenWo` instead to prevent storing the token in Terraform state.
+         * 
+         * @return builder
+         * 
+         */
         public Builder token(@Nullable Output<String> token) {
             $.token = token;
             return this;
         }
 
+        /**
+         * @param token The token used for `bearer` authentication. Required only when `method` is set to `bearer`. **Note:** For better security, consider using `tokenWo` instead to prevent storing the token in Terraform state.
+         * 
+         * @return builder
+         * 
+         */
         public Builder token(String token) {
             return token(Output.of(token));
         }
 
         /**
          * @param tokenWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * The token used for `bearer` authentication (write-only). This value is only available during resource creation and update, and is **not** stored in Terraform state. To change the token, update the `tokenWoVersion` attribute. Required only when `method` is set to `bearer` and `token` is not provided.
          * 
          * @return builder
          * 
@@ -246,6 +293,7 @@ public final class EventStreamWebhookConfigurationWebhookAuthorizationArgs exten
 
         /**
          * @param tokenWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * The token used for `bearer` authentication (write-only). This value is only available during resource creation and update, and is **not** stored in Terraform state. To change the token, update the `tokenWoVersion` attribute. Required only when `method` is set to `bearer` and `token` is not provided.
          * 
          * @return builder
          * 

@@ -34,9 +34,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * This resource can be imported by specifying the
- *
  * connection ID and client ID separated by "::" (note the double colon)
- *
  * <connectionID>::<clientID>
  *
  * Example:

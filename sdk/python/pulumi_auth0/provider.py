@@ -42,6 +42,7 @@ class ProviderArgs:
         :param pulumi.Input[_builtins.str] custom_domain_header: When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting overrides all resource specific `custom_domain_header` value
         :param pulumi.Input[_builtins.bool] debug: Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG` environment variable.
         :param pulumi.Input[_builtins.str] domain: Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
+        :param pulumi.Input[_builtins.bool] dynamic_credentials: Indicates whether credentials will be dynamically passed to the provider from other terraform resources.
         """
         if api_token is not None:
             pulumi.set(__self__, "api_token", api_token)
@@ -191,6 +192,9 @@ class ProviderArgs:
     @_builtins.property
     @pulumi.getter(name="dynamicCredentials")
     def dynamic_credentials(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Indicates whether credentials will be dynamically passed to the provider from other terraform resources.
+        """
         return pulumi.get(self, "dynamic_credentials")
 
     @dynamic_credentials.setter
@@ -234,6 +238,7 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[_builtins.str] custom_domain_header: When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting overrides all resource specific `custom_domain_header` value
         :param pulumi.Input[_builtins.bool] debug: Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG` environment variable.
         :param pulumi.Input[_builtins.str] domain: Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
+        :param pulumi.Input[_builtins.bool] dynamic_credentials: Indicates whether credentials will be dynamically passed to the provider from other terraform resources.
         """
         ...
     @overload

@@ -92,5 +92,8 @@ class _ExportableConfig(types.ModuleType):
 
     @_builtins.property
     def dynamic_credentials(self) -> Optional[bool]:
+        """
+        Indicates whether credentials will be dynamically passed to the provider from other terraform resources.
+        """
         return __config__.get_bool('dynamicCredentials')
 

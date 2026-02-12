@@ -378,8 +378,7 @@ class ClientGrant(pulumi.CustomResource):
         ## Import
 
         This resource can be imported by specifying the client grant ID.
-
-        You can find this within the Management Dashboard in Application -> APIs -> Expand the required API.
+        You can find this within the Management Dashboard in Application > APIs > Expand the required API.
 
         Example:
 
@@ -465,8 +464,7 @@ class ClientGrant(pulumi.CustomResource):
         ## Import
 
         This resource can be imported by specifying the client grant ID.
-
-        You can find this within the Management Dashboard in Application -> APIs -> Expand the required API.
+        You can find this within the Management Dashboard in Application > APIs > Expand the required API.
 
         Example:
 

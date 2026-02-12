@@ -46,7 +46,6 @@ namespace Pulumi.Auth0
     /// ## Import
     /// 
     /// As this is not a resource identifiable by an ID within the Auth0 Management API,
-    /// 
     /// branding can be imported using a random string.
     /// 
     /// We recommend [Version 4 UUID](https://www.uuidgenerator.net/version4)

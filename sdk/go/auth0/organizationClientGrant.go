@@ -96,10 +96,8 @@ import (
 //
 // ## Import
 //
-// # This resource can be imported by specifying the
-//
+// This resource can be imported by specifying the
 // organization ID and client grant ID separated by "::" (note the double colon)
-//
 // <organizationID>::<clientGrantID>
 //
 // Example:

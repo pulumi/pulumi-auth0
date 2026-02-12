@@ -31,7 +31,6 @@ import * as utilities from "./utilities";
  * Custom domains can be imported using their ID.
  *
  * You can find existing custom domain IDs using the Auth0 Management API.
- *
  * https://auth0.com/docs/api/management/v2#!/Custom_Domains/get_custom_domains
  *
  * Example:

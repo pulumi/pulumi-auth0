@@ -45,6 +45,9 @@ namespace Pulumi.Auth0.Outputs
         /// Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()&lt;&gt;@ [Tab] [Space]`.
         /// </summary>
         public readonly ImmutableDictionary<string, string> ClientMetadata;
+        /// <summary>
+        /// Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string.
+        /// </summary>
         public readonly string ClientSecret;
         /// <summary>
         /// Description of the purpose of the client.

@@ -65,4 +65,7 @@ Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environme
 """
 
 dynamicCredentials: Optional[bool]
+"""
+Indicates whether credentials will be dynamically passed to the provider from other terraform resources.
+"""
 

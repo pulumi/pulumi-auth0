@@ -54,10 +54,8 @@ import (
 //
 // ## Import
 //
-// # This resource can be imported by specifying the
-//
+// This resource can be imported by specifying the
 // sso-profile-id, language and page separated by "::" (note the double colon)
-//
 // <sso-profile-id>::<language>::<page>
 //
 // # Example

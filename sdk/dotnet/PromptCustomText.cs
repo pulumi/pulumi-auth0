@@ -60,9 +60,7 @@ namespace Pulumi.Auth0
     /// ## Import
     /// 
     /// This resource can be imported by specifying the
-    /// 
     /// prompt and language separated by "::" (note the double colon)
-    /// 
     /// &lt;prompt&gt;::&lt;language&gt;
     /// 
     /// Example

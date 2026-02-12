@@ -73,6 +73,9 @@ namespace Pulumi.Auth0
     [Auth0ResourceType("auth0:index/customDomainVerification:CustomDomainVerification")]
     public partial class CustomDomainVerification : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The value of the `cname-api-key` header to send when forwarding requests. Only present if the type of the custom domain is `SelfManagedCerts` and Terraform originally managed the domain's verification.
+        /// </summary>
         [Output("cnameApiKey")]
         public Output<string> CnameApiKey { get; private set; } = null!;
 
@@ -154,6 +157,10 @@ namespace Pulumi.Auth0
     {
         [Input("cnameApiKey")]
         private Input<string>? _cnameApiKey;
+
+        /// <summary>
+        /// The value of the `cname-api-key` header to send when forwarding requests. Only present if the type of the custom domain is `SelfManagedCerts` and Terraform originally managed the domain's verification.
+        /// </summary>
         public Input<string>? CnameApiKey
         {
             get => _cnameApiKey;
