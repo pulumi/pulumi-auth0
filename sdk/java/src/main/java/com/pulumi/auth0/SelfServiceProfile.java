@@ -71,7 +71,6 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * This resource can be imported using the id
- * 
  * Example:
  * 
  * ```sh

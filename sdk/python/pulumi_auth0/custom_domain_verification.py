@@ -47,6 +47,7 @@ class _CustomDomainVerificationState:
                  origin_domain_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CustomDomainVerification resources.
+        :param pulumi.Input[_builtins.str] cname_api_key: The value of the `cname-api-key` header to send when forwarding requests. Only present if the type of the custom domain is `self_managed_certs` and Terraform originally managed the domain's verification.
         :param pulumi.Input[_builtins.str] custom_domain_id: ID of the custom domain resource.
         :param pulumi.Input[_builtins.str] origin_domain_name: The DNS name of the Auth0 origin server that handles traffic for the custom domain.
         """
@@ -60,6 +61,9 @@ class _CustomDomainVerificationState:
     @_builtins.property
     @pulumi.getter(name="cnameApiKey")
     def cname_api_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The value of the `cname-api-key` header to send when forwarding requests. Only present if the type of the custom domain is `self_managed_certs` and Terraform originally managed the domain's verification.
+        """
         return pulumi.get(self, "cname_api_key")
 
     @cname_api_key.setter
@@ -231,6 +235,7 @@ class CustomDomainVerification(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] cname_api_key: The value of the `cname-api-key` header to send when forwarding requests. Only present if the type of the custom domain is `self_managed_certs` and Terraform originally managed the domain's verification.
         :param pulumi.Input[_builtins.str] custom_domain_id: ID of the custom domain resource.
         :param pulumi.Input[_builtins.str] origin_domain_name: The DNS name of the Auth0 origin server that handles traffic for the custom domain.
         """
@@ -246,6 +251,9 @@ class CustomDomainVerification(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="cnameApiKey")
     def cname_api_key(self) -> pulumi.Output[_builtins.str]:
+        """
+        The value of the `cname-api-key` header to send when forwarding requests. Only present if the type of the custom domain is `self_managed_certs` and Terraform originally managed the domain's verification.
+        """
         return pulumi.get(self, "cname_api_key")
 
     @_builtins.property

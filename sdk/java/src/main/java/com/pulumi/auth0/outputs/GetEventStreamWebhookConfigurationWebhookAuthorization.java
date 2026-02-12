@@ -16,14 +16,30 @@ public final class GetEventStreamWebhookConfigurationWebhookAuthorization {
      * 
      */
     private String method;
+    /**
+     * @return The password for `basic` authentication. Required only when `method` is set to `basic`. **Note:** For better security, consider using `passwordWo` instead to prevent storing the password in Terraform state.
+     * 
+     */
     private String password;
+    /**
+     * @return The password for `basic` authentication (write-only). This value is only available during resource creation and update, and is **not** stored in Terraform state. To change the password, update the `passwordWoVersion` attribute. Required only when `method` is set to `basic` and `password` is not provided.
+     * 
+     */
     private String passwordWo;
     /**
      * @return Version number for password changes. Update this value to trigger a password change when using `passwordWo`.
      * 
      */
     private Integer passwordWoVersion;
+    /**
+     * @return The token used for `bearer` authentication. Required only when `method` is set to `bearer`. **Note:** For better security, consider using `tokenWo` instead to prevent storing the token in Terraform state.
+     * 
+     */
     private String token;
+    /**
+     * @return The token used for `bearer` authentication (write-only). This value is only available during resource creation and update, and is **not** stored in Terraform state. To change the token, update the `tokenWoVersion` attribute. Required only when `method` is set to `bearer` and `token` is not provided.
+     * 
+     */
     private String tokenWo;
     /**
      * @return Version number for token changes. Update this value to trigger a token change when using `tokenWo`.
@@ -44,9 +60,17 @@ public final class GetEventStreamWebhookConfigurationWebhookAuthorization {
     public String method() {
         return this.method;
     }
+    /**
+     * @return The password for `basic` authentication. Required only when `method` is set to `basic`. **Note:** For better security, consider using `passwordWo` instead to prevent storing the password in Terraform state.
+     * 
+     */
     public String password() {
         return this.password;
     }
+    /**
+     * @return The password for `basic` authentication (write-only). This value is only available during resource creation and update, and is **not** stored in Terraform state. To change the password, update the `passwordWoVersion` attribute. Required only when `method` is set to `basic` and `password` is not provided.
+     * 
+     */
     public String passwordWo() {
         return this.passwordWo;
     }
@@ -57,9 +81,17 @@ public final class GetEventStreamWebhookConfigurationWebhookAuthorization {
     public Integer passwordWoVersion() {
         return this.passwordWoVersion;
     }
+    /**
+     * @return The token used for `bearer` authentication. Required only when `method` is set to `bearer`. **Note:** For better security, consider using `tokenWo` instead to prevent storing the token in Terraform state.
+     * 
+     */
     public String token() {
         return this.token;
     }
+    /**
+     * @return The token used for `bearer` authentication (write-only). This value is only available during resource creation and update, and is **not** stored in Terraform state. To change the token, update the `tokenWoVersion` attribute. Required only when `method` is set to `bearer` and `token` is not provided.
+     * 
+     */
     public String tokenWo() {
         return this.tokenWo;
     }

@@ -50,9 +50,17 @@ public final class ClientCredentialsArgs extends com.pulumi.resources.ResourceAr
         return this.clientId;
     }
 
+    /**
+     * Secret for the client when using `clientSecretPost` or `clientSecretBasic` authentication method. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string. The attribute will also be an empty string in case `privateKeyJwt` is selected as an authentication method.
+     * 
+     */
     @Import(name="clientSecret")
     private @Nullable Output<String> clientSecret;
 
+    /**
+     * @return Secret for the client when using `clientSecretPost` or `clientSecretBasic` authentication method. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string. The attribute will also be an empty string in case `privateKeyJwt` is selected as an authentication method.
+     * 
+     */
     public Optional<Output<String>> clientSecret() {
         return Optional.ofNullable(this.clientSecret);
     }
@@ -189,11 +197,23 @@ public final class ClientCredentialsArgs extends com.pulumi.resources.ResourceAr
             return clientId(Output.of(clientId));
         }
 
+        /**
+         * @param clientSecret Secret for the client when using `clientSecretPost` or `clientSecretBasic` authentication method. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string. The attribute will also be an empty string in case `privateKeyJwt` is selected as an authentication method.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clientSecret(@Nullable Output<String> clientSecret) {
             $.clientSecret = clientSecret;
             return this;
         }
 
+        /**
+         * @param clientSecret Secret for the client when using `clientSecretPost` or `clientSecretBasic` authentication method. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string. The attribute will also be an empty string in case `privateKeyJwt` is selected as an authentication method.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clientSecret(String clientSecret) {
             return clientSecret(Output.of(clientSecret));
         }

@@ -78,6 +78,7 @@ import (
 type CustomDomainVerification struct {
 	pulumi.CustomResourceState
 
+	// The value of the `cname-api-key` header to send when forwarding requests. Only present if the type of the custom domain is `selfManagedCerts` and Terraform originally managed the domain's verification.
 	CnameApiKey pulumi.StringOutput `pulumi:"cnameApiKey"`
 	// ID of the custom domain resource.
 	CustomDomainId pulumi.StringOutput `pulumi:"customDomainId"`
@@ -122,6 +123,7 @@ func GetCustomDomainVerification(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CustomDomainVerification resources.
 type customDomainVerificationState struct {
+	// The value of the `cname-api-key` header to send when forwarding requests. Only present if the type of the custom domain is `selfManagedCerts` and Terraform originally managed the domain's verification.
 	CnameApiKey *string `pulumi:"cnameApiKey"`
 	// ID of the custom domain resource.
 	CustomDomainId *string `pulumi:"customDomainId"`
@@ -130,6 +132,7 @@ type customDomainVerificationState struct {
 }
 
 type CustomDomainVerificationState struct {
+	// The value of the `cname-api-key` header to send when forwarding requests. Only present if the type of the custom domain is `selfManagedCerts` and Terraform originally managed the domain's verification.
 	CnameApiKey pulumi.StringPtrInput
 	// ID of the custom domain resource.
 	CustomDomainId pulumi.StringPtrInput
@@ -239,6 +242,7 @@ func (o CustomDomainVerificationOutput) ToCustomDomainVerificationOutputWithCont
 	return o
 }
 
+// The value of the `cname-api-key` header to send when forwarding requests. Only present if the type of the custom domain is `selfManagedCerts` and Terraform originally managed the domain's verification.
 func (o CustomDomainVerificationOutput) CnameApiKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomDomainVerification) pulumi.StringOutput { return v.CnameApiKey }).(pulumi.StringOutput)
 }

@@ -60,6 +60,10 @@ public final class GetClientsClient {
      * 
      */
     private Map<String,String> clientMetadata;
+    /**
+     * @return Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string.
+     * 
+     */
     private String clientSecret;
     /**
      * @return Description of the purpose of the client.
@@ -185,6 +189,10 @@ public final class GetClientsClient {
     public Map<String,String> clientMetadata() {
         return this.clientMetadata;
     }
+    /**
+     * @return Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string.
+     * 
+     */
     public String clientSecret() {
         return this.clientSecret;
     }

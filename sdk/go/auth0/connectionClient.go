@@ -63,10 +63,8 @@ import (
 //
 // ## Import
 //
-// # This resource can be imported by specifying the
-//
+// This resource can be imported by specifying the
 // connection ID and client ID separated by "::" (note the double colon)
-//
 // <connectionID>::<clientID>
 //
 // Example:

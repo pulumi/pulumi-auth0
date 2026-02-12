@@ -133,6 +133,9 @@ namespace Pulumi.Auth0
         }
 
         private static readonly __Value<bool?> _dynamicCredentials = new __Value<bool?>(() => __config.GetBoolean("dynamicCredentials"));
+        /// <summary>
+        /// Indicates whether credentials will be dynamically passed to the provider from other terraform resources.
+        /// </summary>
         public static bool? DynamicCredentials
         {
             get => _dynamicCredentials.Get();

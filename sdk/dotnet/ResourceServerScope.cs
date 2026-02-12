@@ -50,9 +50,7 @@ namespace Pulumi.Auth0
     /// ## Import
     /// 
     /// This resource can be imported by specifying the
-    /// 
     /// resource identifier and scope name separated by "::" (note the double colon)
-    /// 
     /// &lt;resourceServerIdentifier&gt;::&lt;scope&gt;
     /// 
     /// Example:

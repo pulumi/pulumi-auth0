@@ -87,9 +87,17 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="auth0:index/customDomainVerification:CustomDomainVerification")
 public class CustomDomainVerification extends com.pulumi.resources.CustomResource {
+    /**
+     * The value of the `cname-api-key` header to send when forwarding requests. Only present if the type of the custom domain is `selfManagedCerts` and Terraform originally managed the domain&#39;s verification.
+     * 
+     */
     @Export(name="cnameApiKey", refs={String.class}, tree="[0]")
     private Output<String> cnameApiKey;
 
+    /**
+     * @return The value of the `cname-api-key` header to send when forwarding requests. Only present if the type of the custom domain is `selfManagedCerts` and Terraform originally managed the domain&#39;s verification.
+     * 
+     */
     public Output<String> cnameApiKey() {
         return this.cnameApiKey;
     }

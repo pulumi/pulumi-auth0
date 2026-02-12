@@ -167,9 +167,17 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.domain);
     }
 
+    /**
+     * Indicates whether credentials will be dynamically passed to the provider from other terraform resources.
+     * 
+     */
     @Import(name="dynamicCredentials", json=true)
     private @Nullable Output<Boolean> dynamicCredentials;
 
+    /**
+     * @return Indicates whether credentials will be dynamically passed to the provider from other terraform resources.
+     * 
+     */
     public Optional<Output<Boolean>> dynamicCredentials() {
         return Optional.ofNullable(this.dynamicCredentials);
     }
@@ -418,11 +426,23 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
             return domain(Output.of(domain));
         }
 
+        /**
+         * @param dynamicCredentials Indicates whether credentials will be dynamically passed to the provider from other terraform resources.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dynamicCredentials(@Nullable Output<Boolean> dynamicCredentials) {
             $.dynamicCredentials = dynamicCredentials;
             return this;
         }
 
+        /**
+         * @param dynamicCredentials Indicates whether credentials will be dynamically passed to the provider from other terraform resources.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dynamicCredentials(Boolean dynamicCredentials) {
             return dynamicCredentials(Output.of(dynamicCredentials));
         }

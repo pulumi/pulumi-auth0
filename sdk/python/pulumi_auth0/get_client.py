@@ -276,6 +276,9 @@ class GetClientResult:
     @_builtins.property
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> _builtins.str:
+        """
+        Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string.
+        """
         return pulumi.get(self, "client_secret")
 
     @_builtins.property

@@ -163,9 +163,7 @@ class ResourceServerScope(pulumi.CustomResource):
         ## Import
 
         This resource can be imported by specifying the
-
         resource identifier and scope name separated by "::" (note the double colon)
-
         <resourceServerIdentifier>::<scope>
 
         Example:
@@ -213,9 +211,7 @@ class ResourceServerScope(pulumi.CustomResource):
         ## Import
 
         This resource can be imported by specifying the
-
         resource identifier and scope name separated by "::" (note the double colon)
-
         <resourceServerIdentifier>::<scope>
 
         Example:

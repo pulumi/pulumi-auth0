@@ -52,9 +52,7 @@ namespace Pulumi.Auth0
     /// ## Import
     /// 
     /// This resource can be imported by specifying the
-    /// 
     /// connection ID and client ID separated by "::" (note the double colon)
-    /// 
     /// &lt;connectionID&gt;::&lt;clientID&gt;
     /// 
     /// Example:

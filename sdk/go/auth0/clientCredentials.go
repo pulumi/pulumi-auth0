@@ -27,8 +27,7 @@ import (
 // $ pulumi import auth0:index/clientCredentials:ClientCredentials my_creds "AaiyAPdpYdesoKnqjj8HJqRn4T5titww"
 // ```
 //
-// ~> Importing this resource when the `authentication_method` is set to `private_key_jwt` will force the resource to be recreated.
-//
+// > Importing this resource when the `authenticationMethod` is set to `privateKeyJwt` will force the resource to be recreated.
 // This is to be expected, because the pem file can't be checked for differences.
 type ClientCredentials struct {
 	pulumi.CustomResourceState
@@ -36,7 +35,8 @@ type ClientCredentials struct {
 	// Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `clientSecretPost` (confidential client using HTTP POST parameters), `clientSecretBasic` (confidential client using HTTP Basic), `privateKeyJwt` (confidential client using a Private Key JWT), `tlsClientAuth` (confidential client using CA-based mTLS authentication), `selfSignedTlsClientAuth` (confidential client using mTLS authentication utilizing a self-signed certificate).
 	AuthenticationMethod pulumi.StringOutput `pulumi:"authenticationMethod"`
 	// The ID of the client for which to configure the authentication method.
-	ClientId     pulumi.StringOutput `pulumi:"clientId"`
+	ClientId pulumi.StringOutput `pulumi:"clientId"`
+	// Secret for the client when using `clientSecretPost` or `clientSecretBasic` authentication method. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string. The attribute will also be an empty string in case `privateKeyJwt` is selected as an authentication method.
 	ClientSecret pulumi.StringOutput `pulumi:"clientSecret"`
 	// Defines `privateKeyJwt` client authentication method.
 	PrivateKeyJwt ClientCredentialsPrivateKeyJwtPtrOutput `pulumi:"privateKeyJwt"`
@@ -91,7 +91,8 @@ type clientCredentialsState struct {
 	// Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `clientSecretPost` (confidential client using HTTP POST parameters), `clientSecretBasic` (confidential client using HTTP Basic), `privateKeyJwt` (confidential client using a Private Key JWT), `tlsClientAuth` (confidential client using CA-based mTLS authentication), `selfSignedTlsClientAuth` (confidential client using mTLS authentication utilizing a self-signed certificate).
 	AuthenticationMethod *string `pulumi:"authenticationMethod"`
 	// The ID of the client for which to configure the authentication method.
-	ClientId     *string `pulumi:"clientId"`
+	ClientId *string `pulumi:"clientId"`
+	// Secret for the client when using `clientSecretPost` or `clientSecretBasic` authentication method. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string. The attribute will also be an empty string in case `privateKeyJwt` is selected as an authentication method.
 	ClientSecret *string `pulumi:"clientSecret"`
 	// Defines `privateKeyJwt` client authentication method.
 	PrivateKeyJwt *ClientCredentialsPrivateKeyJwt `pulumi:"privateKeyJwt"`
@@ -107,7 +108,8 @@ type ClientCredentialsState struct {
 	// Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `clientSecretPost` (confidential client using HTTP POST parameters), `clientSecretBasic` (confidential client using HTTP Basic), `privateKeyJwt` (confidential client using a Private Key JWT), `tlsClientAuth` (confidential client using CA-based mTLS authentication), `selfSignedTlsClientAuth` (confidential client using mTLS authentication utilizing a self-signed certificate).
 	AuthenticationMethod pulumi.StringPtrInput
 	// The ID of the client for which to configure the authentication method.
-	ClientId     pulumi.StringPtrInput
+	ClientId pulumi.StringPtrInput
+	// Secret for the client when using `clientSecretPost` or `clientSecretBasic` authentication method. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string. The attribute will also be an empty string in case `privateKeyJwt` is selected as an authentication method.
 	ClientSecret pulumi.StringPtrInput
 	// Defines `privateKeyJwt` client authentication method.
 	PrivateKeyJwt ClientCredentialsPrivateKeyJwtPtrInput
@@ -127,7 +129,8 @@ type clientCredentialsArgs struct {
 	// Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `clientSecretPost` (confidential client using HTTP POST parameters), `clientSecretBasic` (confidential client using HTTP Basic), `privateKeyJwt` (confidential client using a Private Key JWT), `tlsClientAuth` (confidential client using CA-based mTLS authentication), `selfSignedTlsClientAuth` (confidential client using mTLS authentication utilizing a self-signed certificate).
 	AuthenticationMethod *string `pulumi:"authenticationMethod"`
 	// The ID of the client for which to configure the authentication method.
-	ClientId     string  `pulumi:"clientId"`
+	ClientId string `pulumi:"clientId"`
+	// Secret for the client when using `clientSecretPost` or `clientSecretBasic` authentication method. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string. The attribute will also be an empty string in case `privateKeyJwt` is selected as an authentication method.
 	ClientSecret *string `pulumi:"clientSecret"`
 	// Defines `privateKeyJwt` client authentication method.
 	PrivateKeyJwt *ClientCredentialsPrivateKeyJwt `pulumi:"privateKeyJwt"`
@@ -144,7 +147,8 @@ type ClientCredentialsArgs struct {
 	// Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `clientSecretPost` (confidential client using HTTP POST parameters), `clientSecretBasic` (confidential client using HTTP Basic), `privateKeyJwt` (confidential client using a Private Key JWT), `tlsClientAuth` (confidential client using CA-based mTLS authentication), `selfSignedTlsClientAuth` (confidential client using mTLS authentication utilizing a self-signed certificate).
 	AuthenticationMethod pulumi.StringPtrInput
 	// The ID of the client for which to configure the authentication method.
-	ClientId     pulumi.StringInput
+	ClientId pulumi.StringInput
+	// Secret for the client when using `clientSecretPost` or `clientSecretBasic` authentication method. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string. The attribute will also be an empty string in case `privateKeyJwt` is selected as an authentication method.
 	ClientSecret pulumi.StringPtrInput
 	// Defines `privateKeyJwt` client authentication method.
 	PrivateKeyJwt ClientCredentialsPrivateKeyJwtPtrInput
@@ -253,6 +257,7 @@ func (o ClientCredentialsOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClientCredentials) pulumi.StringOutput { return v.ClientId }).(pulumi.StringOutput)
 }
 
+// Secret for the client when using `clientSecretPost` or `clientSecretBasic` authentication method. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string. The attribute will also be an empty string in case `privateKeyJwt` is selected as an authentication method.
 func (o ClientCredentialsOutput) ClientSecret() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClientCredentials) pulumi.StringOutput { return v.ClientSecret }).(pulumi.StringOutput)
 }

@@ -168,9 +168,7 @@ class OrganizationMemberRoles(pulumi.CustomResource):
         ## Import
 
         This resource can be imported by specifying the
-
         organization ID and user ID separated by "::" (note the double colon)
-
         <organizationID>::<userID>
 
         Example:
@@ -224,9 +222,7 @@ class OrganizationMemberRoles(pulumi.CustomResource):
         ## Import
 
         This resource can be imported by specifying the
-
         organization ID and user ID separated by "::" (note the double colon)
-
         <organizationID>::<userID>
 
         Example:

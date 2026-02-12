@@ -17,18 +17,26 @@ namespace Pulumi.Auth0.Outputs
         /// The authorization method used to secure the webhook endpoint. Can be either `Basic` or `Bearer`.
         /// </summary>
         public readonly string Method;
+        /// <summary>
+        /// The password for `Basic` authentication. Required only when `Method` is set to `Basic`. **Note:** For better security, consider using `PasswordWo` instead to prevent storing the password in Terraform state.
+        /// </summary>
         public readonly string? Password;
         /// <summary>
         /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The password for `Basic` authentication (write-only). This value is only available during resource creation and update, and is **not** stored in Terraform state. To change the password, update the `PasswordWoVersion` attribute. Required only when `Method` is set to `Basic` and `Password` is not provided.
         /// </summary>
         public readonly string? PasswordWo;
         /// <summary>
         /// Version number for password changes. Update this value to trigger a password change when using `PasswordWo`.
         /// </summary>
         public readonly int? PasswordWoVersion;
+        /// <summary>
+        /// The token used for `Bearer` authentication. Required only when `Method` is set to `Bearer`. **Note:** For better security, consider using `TokenWo` instead to prevent storing the token in Terraform state.
+        /// </summary>
         public readonly string? Token;
         /// <summary>
         /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The token used for `Bearer` authentication (write-only). This value is only available during resource creation and update, and is **not** stored in Terraform state. To change the token, update the `TokenWoVersion` attribute. Required only when `Method` is set to `Bearer` and `Token` is not provided.
         /// </summary>
         public readonly string? TokenWo;
         /// <summary>

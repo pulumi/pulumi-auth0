@@ -139,6 +139,9 @@ export interface ProviderArgs {
      * Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
      */
     domain?: pulumi.Input<string>;
+    /**
+     * Indicates whether credentials will be dynamically passed to the provider from other terraform resources.
+     */
     dynamicCredentials?: pulumi.Input<boolean>;
 }
 

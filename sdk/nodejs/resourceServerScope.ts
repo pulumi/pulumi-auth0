@@ -34,9 +34,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * This resource can be imported by specifying the
- *
  * resource identifier and scope name separated by "::" (note the double colon)
- *
  * <resourceServerIdentifier>::<scope>
  *
  * Example:

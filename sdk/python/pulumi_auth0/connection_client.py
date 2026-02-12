@@ -163,9 +163,7 @@ class ConnectionClient(pulumi.CustomResource):
         ## Import
 
         This resource can be imported by specifying the
-
         connection ID and client ID separated by "::" (note the double colon)
-
         <connectionID>::<clientID>
 
         Example:
@@ -213,9 +211,7 @@ class ConnectionClient(pulumi.CustomResource):
         ## Import
 
         This resource can be imported by specifying the
-
         connection ID and client ID separated by "::" (note the double colon)
-
         <connectionID>::<clientID>
 
         Example:

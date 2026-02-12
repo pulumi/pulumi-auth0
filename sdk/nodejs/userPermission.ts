@@ -52,9 +52,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * This resource can be imported by specifying the
- *
  * user ID, resource identifier and permission name separated by "::" (note the double colon)
- *
  * <userID>::<resourceServerIdentifier>::<permission>
  *
  * Example:

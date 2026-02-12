@@ -68,6 +68,8 @@ func GetDebug(ctx *pulumi.Context) bool {
 func GetDomain(ctx *pulumi.Context) string {
 	return config.Get(ctx, "auth0:domain")
 }
+
+// Indicates whether credentials will be dynamically passed to the provider from other terraform resources.
 func GetDynamicCredentials(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "auth0:dynamicCredentials")
 }

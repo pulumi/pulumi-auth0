@@ -117,6 +117,9 @@ Object.defineProperty(exports, "domain", {
     enumerable: true,
 });
 
+/**
+ * Indicates whether credentials will be dynamically passed to the provider from other terraform resources.
+ */
 export declare const dynamicCredentials: boolean | undefined;
 Object.defineProperty(exports, "dynamicCredentials", {
     get() {

@@ -77,8 +77,9 @@ type providerArgs struct {
 	// Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG` environment variable.
 	Debug *bool `pulumi:"debug"`
 	// Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
-	Domain             *string `pulumi:"domain"`
-	DynamicCredentials *bool   `pulumi:"dynamicCredentials"`
+	Domain *string `pulumi:"domain"`
+	// Indicates whether credentials will be dynamically passed to the provider from other terraform resources.
+	DynamicCredentials *bool `pulumi:"dynamicCredentials"`
 }
 
 // The set of arguments for constructing a Provider resource.
@@ -102,7 +103,8 @@ type ProviderArgs struct {
 	// Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG` environment variable.
 	Debug pulumi.BoolPtrInput
 	// Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
-	Domain             pulumi.StringPtrInput
+	Domain pulumi.StringPtrInput
+	// Indicates whether credentials will be dynamically passed to the provider from other terraform resources.
 	DynamicCredentials pulumi.BoolPtrInput
 }
 

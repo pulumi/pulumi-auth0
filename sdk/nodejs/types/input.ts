@@ -2806,18 +2806,26 @@ export interface EventStreamWebhookConfigurationWebhookAuthorization {
      * The authorization method used to secure the webhook endpoint. Can be either `basic` or `bearer`.
      */
     method: pulumi.Input<string>;
+    /**
+     * The password for `basic` authentication. Required only when `method` is set to `basic`. **Note:** For better security, consider using `passwordWo` instead to prevent storing the password in Terraform state.
+     */
     password?: pulumi.Input<string>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The password for `basic` authentication (write-only). This value is only available during resource creation and update, and is **not** stored in Terraform state. To change the password, update the `passwordWoVersion` attribute. Required only when `method` is set to `basic` and `password` is not provided.
      */
     passwordWo?: pulumi.Input<string>;
     /**
      * Version number for password changes. Update this value to trigger a password change when using `passwordWo`.
      */
     passwordWoVersion?: pulumi.Input<number>;
+    /**
+     * The token used for `bearer` authentication. Required only when `method` is set to `bearer`. **Note:** For better security, consider using `tokenWo` instead to prevent storing the token in Terraform state.
+     */
     token?: pulumi.Input<string>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The token used for `bearer` authentication (write-only). This value is only available during resource creation and update, and is **not** stored in Terraform state. To change the token, update the `tokenWoVersion` attribute. Required only when `method` is set to `bearer` and `token` is not provided.
      */
     tokenWo?: pulumi.Input<string>;
     /**

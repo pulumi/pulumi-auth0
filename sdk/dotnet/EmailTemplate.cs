@@ -60,14 +60,11 @@ namespace Pulumi.Auth0
     /// 
     /// This resource can be imported using the pre-defined template name.
     /// 
-    /// These names are `verify_email`, `verify_email_by_code`, `reset_email`, `reset_email_by_code`,
+    /// These names are `VerifyEmail`, `VerifyEmailByCode`, `ResetEmail`, `ResetEmailByCode`,
+    /// `WelcomeEmail`, `BlockedAccount`, `StolenCredentials`, `EnrollmentEmail`,
+    /// `MfaOobCode`, `UserInvitation`, and `AsyncApproval`.
     /// 
-    /// `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`,
-    /// 
-    /// `mfa_oob_code`, `user_invitation`, and `async_approval`.
-    /// 
-    /// The names `change_password`, and `password_reset` are also supported
-    /// 
+    /// The names `ChangePassword`, and `PasswordReset` are also supported
     /// for legacy scenarios.
     /// 
     /// Example:

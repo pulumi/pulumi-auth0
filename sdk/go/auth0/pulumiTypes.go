@@ -28693,14 +28693,18 @@ func (o EventStreamWebhookConfigurationPtrOutput) WebhookEndpoint() pulumi.Strin
 
 type EventStreamWebhookConfigurationWebhookAuthorization struct {
 	// The authorization method used to secure the webhook endpoint. Can be either `basic` or `bearer`.
-	Method   string  `pulumi:"method"`
+	Method string `pulumi:"method"`
+	// The password for `basic` authentication. Required only when `method` is set to `basic`. **Note:** For better security, consider using `passwordWo` instead to prevent storing the password in Terraform state.
 	Password *string `pulumi:"password"`
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The password for `basic` authentication (write-only). This value is only available during resource creation and update, and is **not** stored in Terraform state. To change the password, update the `passwordWoVersion` attribute. Required only when `method` is set to `basic` and `password` is not provided.
 	PasswordWo *string `pulumi:"passwordWo"`
 	// Version number for password changes. Update this value to trigger a password change when using `passwordWo`.
-	PasswordWoVersion *int    `pulumi:"passwordWoVersion"`
-	Token             *string `pulumi:"token"`
+	PasswordWoVersion *int `pulumi:"passwordWoVersion"`
+	// The token used for `bearer` authentication. Required only when `method` is set to `bearer`. **Note:** For better security, consider using `tokenWo` instead to prevent storing the token in Terraform state.
+	Token *string `pulumi:"token"`
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The token used for `bearer` authentication (write-only). This value is only available during resource creation and update, and is **not** stored in Terraform state. To change the token, update the `tokenWoVersion` attribute. Required only when `method` is set to `bearer` and `token` is not provided.
 	TokenWo *string `pulumi:"tokenWo"`
 	// Version number for token changes. Update this value to trigger a token change when using `tokenWo`.
 	TokenWoVersion *int `pulumi:"tokenWoVersion"`
@@ -28721,14 +28725,18 @@ type EventStreamWebhookConfigurationWebhookAuthorizationInput interface {
 
 type EventStreamWebhookConfigurationWebhookAuthorizationArgs struct {
 	// The authorization method used to secure the webhook endpoint. Can be either `basic` or `bearer`.
-	Method   pulumi.StringInput    `pulumi:"method"`
+	Method pulumi.StringInput `pulumi:"method"`
+	// The password for `basic` authentication. Required only when `method` is set to `basic`. **Note:** For better security, consider using `passwordWo` instead to prevent storing the password in Terraform state.
 	Password pulumi.StringPtrInput `pulumi:"password"`
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The password for `basic` authentication (write-only). This value is only available during resource creation and update, and is **not** stored in Terraform state. To change the password, update the `passwordWoVersion` attribute. Required only when `method` is set to `basic` and `password` is not provided.
 	PasswordWo pulumi.StringPtrInput `pulumi:"passwordWo"`
 	// Version number for password changes. Update this value to trigger a password change when using `passwordWo`.
-	PasswordWoVersion pulumi.IntPtrInput    `pulumi:"passwordWoVersion"`
-	Token             pulumi.StringPtrInput `pulumi:"token"`
+	PasswordWoVersion pulumi.IntPtrInput `pulumi:"passwordWoVersion"`
+	// The token used for `bearer` authentication. Required only when `method` is set to `bearer`. **Note:** For better security, consider using `tokenWo` instead to prevent storing the token in Terraform state.
+	Token pulumi.StringPtrInput `pulumi:"token"`
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The token used for `bearer` authentication (write-only). This value is only available during resource creation and update, and is **not** stored in Terraform state. To change the token, update the `tokenWoVersion` attribute. Required only when `method` is set to `bearer` and `token` is not provided.
 	TokenWo pulumi.StringPtrInput `pulumi:"tokenWo"`
 	// Version number for token changes. Update this value to trigger a token change when using `tokenWo`.
 	TokenWoVersion pulumi.IntPtrInput `pulumi:"tokenWoVersion"`
@@ -28818,11 +28826,13 @@ func (o EventStreamWebhookConfigurationWebhookAuthorizationOutput) Method() pulu
 	return o.ApplyT(func(v EventStreamWebhookConfigurationWebhookAuthorization) string { return v.Method }).(pulumi.StringOutput)
 }
 
+// The password for `basic` authentication. Required only when `method` is set to `basic`. **Note:** For better security, consider using `passwordWo` instead to prevent storing the password in Terraform state.
 func (o EventStreamWebhookConfigurationWebhookAuthorizationOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EventStreamWebhookConfigurationWebhookAuthorization) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
 // **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// The password for `basic` authentication (write-only). This value is only available during resource creation and update, and is **not** stored in Terraform state. To change the password, update the `passwordWoVersion` attribute. Required only when `method` is set to `basic` and `password` is not provided.
 func (o EventStreamWebhookConfigurationWebhookAuthorizationOutput) PasswordWo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EventStreamWebhookConfigurationWebhookAuthorization) *string { return v.PasswordWo }).(pulumi.StringPtrOutput)
 }
@@ -28832,11 +28842,13 @@ func (o EventStreamWebhookConfigurationWebhookAuthorizationOutput) PasswordWoVer
 	return o.ApplyT(func(v EventStreamWebhookConfigurationWebhookAuthorization) *int { return v.PasswordWoVersion }).(pulumi.IntPtrOutput)
 }
 
+// The token used for `bearer` authentication. Required only when `method` is set to `bearer`. **Note:** For better security, consider using `tokenWo` instead to prevent storing the token in Terraform state.
 func (o EventStreamWebhookConfigurationWebhookAuthorizationOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EventStreamWebhookConfigurationWebhookAuthorization) *string { return v.Token }).(pulumi.StringPtrOutput)
 }
 
 // **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// The token used for `bearer` authentication (write-only). This value is only available during resource creation and update, and is **not** stored in Terraform state. To change the token, update the `tokenWoVersion` attribute. Required only when `method` is set to `bearer` and `token` is not provided.
 func (o EventStreamWebhookConfigurationWebhookAuthorizationOutput) TokenWo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EventStreamWebhookConfigurationWebhookAuthorization) *string { return v.TokenWo }).(pulumi.StringPtrOutput)
 }
@@ -28885,6 +28897,7 @@ func (o EventStreamWebhookConfigurationWebhookAuthorizationPtrOutput) Method() p
 	}).(pulumi.StringPtrOutput)
 }
 
+// The password for `basic` authentication. Required only when `method` is set to `basic`. **Note:** For better security, consider using `passwordWo` instead to prevent storing the password in Terraform state.
 func (o EventStreamWebhookConfigurationWebhookAuthorizationPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EventStreamWebhookConfigurationWebhookAuthorization) *string {
 		if v == nil {
@@ -28895,6 +28908,7 @@ func (o EventStreamWebhookConfigurationWebhookAuthorizationPtrOutput) Password()
 }
 
 // **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// The password for `basic` authentication (write-only). This value is only available during resource creation and update, and is **not** stored in Terraform state. To change the password, update the `passwordWoVersion` attribute. Required only when `method` is set to `basic` and `password` is not provided.
 func (o EventStreamWebhookConfigurationWebhookAuthorizationPtrOutput) PasswordWo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EventStreamWebhookConfigurationWebhookAuthorization) *string {
 		if v == nil {
@@ -28914,6 +28928,7 @@ func (o EventStreamWebhookConfigurationWebhookAuthorizationPtrOutput) PasswordWo
 	}).(pulumi.IntPtrOutput)
 }
 
+// The token used for `bearer` authentication. Required only when `method` is set to `bearer`. **Note:** For better security, consider using `tokenWo` instead to prevent storing the token in Terraform state.
 func (o EventStreamWebhookConfigurationWebhookAuthorizationPtrOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EventStreamWebhookConfigurationWebhookAuthorization) *string {
 		if v == nil {
@@ -28924,6 +28939,7 @@ func (o EventStreamWebhookConfigurationWebhookAuthorizationPtrOutput) Token() pu
 }
 
 // **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// The token used for `bearer` authentication (write-only). This value is only available during resource creation and update, and is **not** stored in Terraform state. To change the token, update the `tokenWoVersion` attribute. Required only when `method` is set to `bearer` and `token` is not provided.
 func (o EventStreamWebhookConfigurationWebhookAuthorizationPtrOutput) TokenWo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EventStreamWebhookConfigurationWebhookAuthorization) *string {
 		if v == nil {
@@ -51910,7 +51926,8 @@ type GetClientsClient struct {
 	ClientId *string `pulumi:"clientId"`
 	// Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
 	ClientMetadata map[string]string `pulumi:"clientMetadata"`
-	ClientSecret   string            `pulumi:"clientSecret"`
+	// Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string.
+	ClientSecret string `pulumi:"clientSecret"`
 	// Description of the purpose of the client.
 	Description string `pulumi:"description"`
 	// Express Configuration settings for the client. Used with OIN Express Configuration.
@@ -51968,7 +51985,8 @@ type GetClientsClientArgs struct {
 	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
 	// Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
 	ClientMetadata pulumi.StringMapInput `pulumi:"clientMetadata"`
-	ClientSecret   pulumi.StringInput    `pulumi:"clientSecret"`
+	// Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string.
+	ClientSecret pulumi.StringInput `pulumi:"clientSecret"`
 	// Description of the purpose of the client.
 	Description pulumi.StringInput `pulumi:"description"`
 	// Express Configuration settings for the client. Used with OIN Express Configuration.
@@ -52089,6 +52107,7 @@ func (o GetClientsClientOutput) ClientMetadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetClientsClient) map[string]string { return v.ClientMetadata }).(pulumi.StringMapOutput)
 }
 
+// Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string.
 func (o GetClientsClientOutput) ClientSecret() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClientsClient) string { return v.ClientSecret }).(pulumi.StringOutput)
 }
@@ -61069,13 +61088,17 @@ func (o GetEventStreamWebhookConfigurationArrayOutput) Index(i pulumi.IntInput) 
 
 type GetEventStreamWebhookConfigurationWebhookAuthorization struct {
 	// The authorization method used to secure the webhook endpoint. Can be either `basic` or `bearer`.
-	Method     string `pulumi:"method"`
-	Password   string `pulumi:"password"`
+	Method string `pulumi:"method"`
+	// The password for `basic` authentication. Required only when `method` is set to `basic`. **Note:** For better security, consider using `passwordWo` instead to prevent storing the password in Terraform state.
+	Password string `pulumi:"password"`
+	// The password for `basic` authentication (write-only). This value is only available during resource creation and update, and is **not** stored in Terraform state. To change the password, update the `passwordWoVersion` attribute. Required only when `method` is set to `basic` and `password` is not provided.
 	PasswordWo string `pulumi:"passwordWo"`
 	// Version number for password changes. Update this value to trigger a password change when using `passwordWo`.
-	PasswordWoVersion int    `pulumi:"passwordWoVersion"`
-	Token             string `pulumi:"token"`
-	TokenWo           string `pulumi:"tokenWo"`
+	PasswordWoVersion int `pulumi:"passwordWoVersion"`
+	// The token used for `bearer` authentication. Required only when `method` is set to `bearer`. **Note:** For better security, consider using `tokenWo` instead to prevent storing the token in Terraform state.
+	Token string `pulumi:"token"`
+	// The token used for `bearer` authentication (write-only). This value is only available during resource creation and update, and is **not** stored in Terraform state. To change the token, update the `tokenWoVersion` attribute. Required only when `method` is set to `bearer` and `token` is not provided.
+	TokenWo string `pulumi:"tokenWo"`
 	// Version number for token changes. Update this value to trigger a token change when using `tokenWo`.
 	TokenWoVersion int `pulumi:"tokenWoVersion"`
 	// The username for `basic` authentication. Required only when `method` is set to `basic`.
@@ -61095,13 +61118,17 @@ type GetEventStreamWebhookConfigurationWebhookAuthorizationInput interface {
 
 type GetEventStreamWebhookConfigurationWebhookAuthorizationArgs struct {
 	// The authorization method used to secure the webhook endpoint. Can be either `basic` or `bearer`.
-	Method     pulumi.StringInput `pulumi:"method"`
-	Password   pulumi.StringInput `pulumi:"password"`
+	Method pulumi.StringInput `pulumi:"method"`
+	// The password for `basic` authentication. Required only when `method` is set to `basic`. **Note:** For better security, consider using `passwordWo` instead to prevent storing the password in Terraform state.
+	Password pulumi.StringInput `pulumi:"password"`
+	// The password for `basic` authentication (write-only). This value is only available during resource creation and update, and is **not** stored in Terraform state. To change the password, update the `passwordWoVersion` attribute. Required only when `method` is set to `basic` and `password` is not provided.
 	PasswordWo pulumi.StringInput `pulumi:"passwordWo"`
 	// Version number for password changes. Update this value to trigger a password change when using `passwordWo`.
-	PasswordWoVersion pulumi.IntInput    `pulumi:"passwordWoVersion"`
-	Token             pulumi.StringInput `pulumi:"token"`
-	TokenWo           pulumi.StringInput `pulumi:"tokenWo"`
+	PasswordWoVersion pulumi.IntInput `pulumi:"passwordWoVersion"`
+	// The token used for `bearer` authentication. Required only when `method` is set to `bearer`. **Note:** For better security, consider using `tokenWo` instead to prevent storing the token in Terraform state.
+	Token pulumi.StringInput `pulumi:"token"`
+	// The token used for `bearer` authentication (write-only). This value is only available during resource creation and update, and is **not** stored in Terraform state. To change the token, update the `tokenWoVersion` attribute. Required only when `method` is set to `bearer` and `token` is not provided.
+	TokenWo pulumi.StringInput `pulumi:"tokenWo"`
 	// Version number for token changes. Update this value to trigger a token change when using `tokenWo`.
 	TokenWoVersion pulumi.IntInput `pulumi:"tokenWoVersion"`
 	// The username for `basic` authentication. Required only when `method` is set to `basic`.
@@ -61164,10 +61191,12 @@ func (o GetEventStreamWebhookConfigurationWebhookAuthorizationOutput) Method() p
 	return o.ApplyT(func(v GetEventStreamWebhookConfigurationWebhookAuthorization) string { return v.Method }).(pulumi.StringOutput)
 }
 
+// The password for `basic` authentication. Required only when `method` is set to `basic`. **Note:** For better security, consider using `passwordWo` instead to prevent storing the password in Terraform state.
 func (o GetEventStreamWebhookConfigurationWebhookAuthorizationOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEventStreamWebhookConfigurationWebhookAuthorization) string { return v.Password }).(pulumi.StringOutput)
 }
 
+// The password for `basic` authentication (write-only). This value is only available during resource creation and update, and is **not** stored in Terraform state. To change the password, update the `passwordWoVersion` attribute. Required only when `method` is set to `basic` and `password` is not provided.
 func (o GetEventStreamWebhookConfigurationWebhookAuthorizationOutput) PasswordWo() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEventStreamWebhookConfigurationWebhookAuthorization) string { return v.PasswordWo }).(pulumi.StringOutput)
 }
@@ -61177,10 +61206,12 @@ func (o GetEventStreamWebhookConfigurationWebhookAuthorizationOutput) PasswordWo
 	return o.ApplyT(func(v GetEventStreamWebhookConfigurationWebhookAuthorization) int { return v.PasswordWoVersion }).(pulumi.IntOutput)
 }
 
+// The token used for `bearer` authentication. Required only when `method` is set to `bearer`. **Note:** For better security, consider using `tokenWo` instead to prevent storing the token in Terraform state.
 func (o GetEventStreamWebhookConfigurationWebhookAuthorizationOutput) Token() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEventStreamWebhookConfigurationWebhookAuthorization) string { return v.Token }).(pulumi.StringOutput)
 }
 
+// The token used for `bearer` authentication (write-only). This value is only available during resource creation and update, and is **not** stored in Terraform state. To change the token, update the `tokenWoVersion` attribute. Required only when `method` is set to `bearer` and `token` is not provided.
 func (o GetEventStreamWebhookConfigurationWebhookAuthorizationOutput) TokenWo() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEventStreamWebhookConfigurationWebhookAuthorization) string { return v.TokenWo }).(pulumi.StringOutput)
 }

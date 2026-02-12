@@ -45,8 +45,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * #!/bin/bash
- *
+ * !/bin/bash
  * Example: Import an existing Auth0 phone notification template into Terraform state
  *
  * Replace TEMPLATE_ID with the actual template ID from your Auth0 tenant
