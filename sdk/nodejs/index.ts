@@ -10,6 +10,11 @@ export type Action = import("./action").Action;
 export const Action: typeof import("./action").Action = null as any;
 utilities.lazyLoad(exports, ["Action"], () => require("./action"));
 
+export { ActionModuleArgs, ActionModuleState } from "./actionModule";
+export type ActionModule = import("./actionModule").ActionModule;
+export const ActionModule: typeof import("./actionModule").ActionModule = null as any;
+utilities.lazyLoad(exports, ["ActionModule"], () => require("./actionModule"));
+
 export { AttackProtectionArgs, AttackProtectionState } from "./attackProtection";
 export type AttackProtection = import("./attackProtection").AttackProtection;
 export const AttackProtection: typeof import("./attackProtection").AttackProtection = null as any;
@@ -134,6 +139,26 @@ export { GetActionArgs, GetActionResult, GetActionOutputArgs } from "./getAction
 export const getAction: typeof import("./getAction").getAction = null as any;
 export const getActionOutput: typeof import("./getAction").getActionOutput = null as any;
 utilities.lazyLoad(exports, ["getAction","getActionOutput"], () => require("./getAction"));
+
+export { GetActionModuleArgs, GetActionModuleResult, GetActionModuleOutputArgs } from "./getActionModule";
+export const getActionModule: typeof import("./getActionModule").getActionModule = null as any;
+export const getActionModuleOutput: typeof import("./getActionModule").getActionModuleOutput = null as any;
+utilities.lazyLoad(exports, ["getActionModule","getActionModuleOutput"], () => require("./getActionModule"));
+
+export { GetActionModuleActionsArgs, GetActionModuleActionsResult, GetActionModuleActionsOutputArgs } from "./getActionModuleActions";
+export const getActionModuleActions: typeof import("./getActionModuleActions").getActionModuleActions = null as any;
+export const getActionModuleActionsOutput: typeof import("./getActionModuleActions").getActionModuleActionsOutput = null as any;
+utilities.lazyLoad(exports, ["getActionModuleActions","getActionModuleActionsOutput"], () => require("./getActionModuleActions"));
+
+export { GetActionModuleVersionArgs, GetActionModuleVersionResult, GetActionModuleVersionOutputArgs } from "./getActionModuleVersion";
+export const getActionModuleVersion: typeof import("./getActionModuleVersion").getActionModuleVersion = null as any;
+export const getActionModuleVersionOutput: typeof import("./getActionModuleVersion").getActionModuleVersionOutput = null as any;
+utilities.lazyLoad(exports, ["getActionModuleVersion","getActionModuleVersionOutput"], () => require("./getActionModuleVersion"));
+
+export { GetActionModuleVersionsArgs, GetActionModuleVersionsResult, GetActionModuleVersionsOutputArgs } from "./getActionModuleVersions";
+export const getActionModuleVersions: typeof import("./getActionModuleVersions").getActionModuleVersions = null as any;
+export const getActionModuleVersionsOutput: typeof import("./getActionModuleVersions").getActionModuleVersionsOutput = null as any;
+utilities.lazyLoad(exports, ["getActionModuleVersions","getActionModuleVersionsOutput"], () => require("./getActionModuleVersions"));
 
 export { GetAttackProtectionResult } from "./getAttackProtection";
 export const getAttackProtection: typeof import("./getAttackProtection").getAttackProtection = null as any;
@@ -488,6 +513,11 @@ export type SelfServiceProfileCustomText = import("./selfServiceProfileCustomTex
 export const SelfServiceProfileCustomText: typeof import("./selfServiceProfileCustomText").SelfServiceProfileCustomText = null as any;
 utilities.lazyLoad(exports, ["SelfServiceProfileCustomText"], () => require("./selfServiceProfileCustomText"));
 
+export { SupplementalSignalsArgs, SupplementalSignalsState } from "./supplementalSignals";
+export type SupplementalSignals = import("./supplementalSignals").SupplementalSignals;
+export const SupplementalSignals: typeof import("./supplementalSignals").SupplementalSignals = null as any;
+utilities.lazyLoad(exports, ["SupplementalSignals"], () => require("./supplementalSignals"));
+
 export { TenantArgs, TenantState } from "./tenant";
 export type Tenant = import("./tenant").Tenant;
 export const Tenant: typeof import("./tenant").Tenant = null as any;
@@ -554,6 +584,8 @@ const _module = {
         switch (type) {
             case "auth0:index/action:Action":
                 return new Action(name, <any>undefined, { urn })
+            case "auth0:index/actionModule:ActionModule":
+                return new ActionModule(name, <any>undefined, { urn })
             case "auth0:index/attackProtection:AttackProtection":
                 return new AttackProtection(name, <any>undefined, { urn })
             case "auth0:index/branding:Branding":
@@ -672,6 +704,8 @@ const _module = {
                 return new SelfServiceProfile(name, <any>undefined, { urn })
             case "auth0:index/selfServiceProfileCustomText:SelfServiceProfileCustomText":
                 return new SelfServiceProfileCustomText(name, <any>undefined, { urn })
+            case "auth0:index/supplementalSignals:SupplementalSignals":
+                return new SupplementalSignals(name, <any>undefined, { urn })
             case "auth0:index/tenant:Tenant":
                 return new Tenant(name, <any>undefined, { urn })
             case "auth0:index/tokenExchangeProfile:TokenExchangeProfile":
@@ -698,6 +732,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("auth0", "index/action", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/actionModule", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/attackProtection", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/branding", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/brandingPhoneNotificationTemplate", _module)
@@ -757,6 +792,7 @@ pulumi.runtime.registerResourceModule("auth0", "index/rule", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/ruleConfig", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/selfServiceProfile", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/selfServiceProfileCustomText", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/supplementalSignals", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/tenant", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/tokenExchangeProfile", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/triggerAction", _module)

@@ -318,6 +318,10 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Scripts;
         /// <summary>
+        /// When true and `Type` is 'back_channel', includes a cryptographic nonce in authorization requests to prevent replay attacks. The identity provider must include this nonce in the ID token for validation.
+        /// </summary>
+        public readonly bool? SendBackChannelNonce;
+        /// <summary>
         /// Session Key for storing the request token.
         /// </summary>
         public readonly string? SessionKey;
@@ -421,6 +425,10 @@ namespace Pulumi.Auth0.Outputs
         /// Indicates whether to use Kerberos or not.
         /// </summary>
         public readonly bool? UseKerberos;
+        /// <summary>
+        /// Determines the `Scopes` format: `True` makes it a space-separated string (per OAuth2 specification); `False` makes it an array.
+        /// </summary>
+        public readonly bool? UseOauthSpecScope;
         /// <summary>
         /// Whether to use WS-Fed.
         /// </summary>
@@ -604,6 +612,8 @@ namespace Pulumi.Auth0.Outputs
 
             ImmutableDictionary<string, string>? scripts,
 
+            bool? sendBackChannelNonce,
+
             string? sessionKey,
 
             string? setUserRootAttributes,
@@ -655,6 +665,8 @@ namespace Pulumi.Auth0.Outputs
             bool? useCertAuth,
 
             bool? useKerberos,
+
+            bool? useOauthSpecScope,
 
             bool? useWsfed,
 
@@ -746,6 +758,7 @@ namespace Pulumi.Auth0.Outputs
             RequiresUsername = requiresUsername;
             Scopes = scopes;
             Scripts = scripts;
+            SendBackChannelNonce = sendBackChannelNonce;
             SessionKey = sessionKey;
             SetUserRootAttributes = setUserRootAttributes;
             ShouldTrustEmailVerifiedConnection = shouldTrustEmailVerifiedConnection;
@@ -772,6 +785,7 @@ namespace Pulumi.Auth0.Outputs
             UpstreamParams = upstreamParams;
             UseCertAuth = useCertAuth;
             UseKerberos = useKerberos;
+            UseOauthSpecScope = useOauthSpecScope;
             UseWsfed = useWsfed;
             UserAuthorizationUrl = userAuthorizationUrl;
             UserIdAttribute = userIdAttribute;

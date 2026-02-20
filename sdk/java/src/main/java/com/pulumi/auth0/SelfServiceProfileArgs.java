@@ -19,14 +19,14 @@ public final class SelfServiceProfileArgs extends com.pulumi.resources.ResourceA
     public static final SelfServiceProfileArgs Empty = new SelfServiceProfileArgs();
 
     /**
-     * List of IdP strategies that will be shown to users during the Self-Service SSO flow.
+     * List of IdP strategies that will be shown to users during the Self-Service SSO flow. Valid values are: oidc, samlp, waad, google-apps, adfs, okta, keycloak-samlp, pingfederate, auth0-samlp, okta-samlp.
      * 
      */
     @Import(name="allowedStrategies")
     private @Nullable Output<List<String>> allowedStrategies;
 
     /**
-     * @return List of IdP strategies that will be shown to users during the Self-Service SSO flow.
+     * @return List of IdP strategies that will be shown to users during the Self-Service SSO flow. Valid values are: oidc, samlp, waad, google-apps, adfs, okta, keycloak-samlp, pingfederate, auth0-samlp, okta-samlp.
      * 
      */
     public Optional<Output<List<String>>> allowedStrategies() {
@@ -138,7 +138,7 @@ public final class SelfServiceProfileArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param allowedStrategies List of IdP strategies that will be shown to users during the Self-Service SSO flow.
+         * @param allowedStrategies List of IdP strategies that will be shown to users during the Self-Service SSO flow. Valid values are: oidc, samlp, waad, google-apps, adfs, okta, keycloak-samlp, pingfederate, auth0-samlp, okta-samlp.
          * 
          * @return builder
          * 
@@ -149,7 +149,7 @@ public final class SelfServiceProfileArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param allowedStrategies List of IdP strategies that will be shown to users during the Self-Service SSO flow.
+         * @param allowedStrategies List of IdP strategies that will be shown to users during the Self-Service SSO flow. Valid values are: oidc, samlp, waad, google-apps, adfs, okta, keycloak-samlp, pingfederate, auth0-samlp, okta-samlp.
          * 
          * @return builder
          * 
@@ -159,7 +159,7 @@ public final class SelfServiceProfileArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param allowedStrategies List of IdP strategies that will be shown to users during the Self-Service SSO flow.
+         * @param allowedStrategies List of IdP strategies that will be shown to users during the Self-Service SSO flow. Valid values are: oidc, samlp, waad, google-apps, adfs, okta, keycloak-samlp, pingfederate, auth0-samlp, okta-samlp.
          * 
          * @return builder
          * 

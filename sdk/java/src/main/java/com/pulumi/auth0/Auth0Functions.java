@@ -5,6 +5,14 @@ package com.pulumi.auth0;
 
 import com.pulumi.auth0.Utilities;
 import com.pulumi.auth0.inputs.GetActionArgs;
+import com.pulumi.auth0.inputs.GetActionModuleActionsArgs;
+import com.pulumi.auth0.inputs.GetActionModuleActionsPlainArgs;
+import com.pulumi.auth0.inputs.GetActionModuleArgs;
+import com.pulumi.auth0.inputs.GetActionModulePlainArgs;
+import com.pulumi.auth0.inputs.GetActionModuleVersionArgs;
+import com.pulumi.auth0.inputs.GetActionModuleVersionPlainArgs;
+import com.pulumi.auth0.inputs.GetActionModuleVersionsArgs;
+import com.pulumi.auth0.inputs.GetActionModuleVersionsPlainArgs;
 import com.pulumi.auth0.inputs.GetActionPlainArgs;
 import com.pulumi.auth0.inputs.GetBrandingPhoneNotificationTemplateArgs;
 import com.pulumi.auth0.inputs.GetBrandingPhoneNotificationTemplatePlainArgs;
@@ -62,6 +70,10 @@ import com.pulumi.auth0.inputs.GetUserArgs;
 import com.pulumi.auth0.inputs.GetUserAttributeProfileArgs;
 import com.pulumi.auth0.inputs.GetUserAttributeProfilePlainArgs;
 import com.pulumi.auth0.inputs.GetUserPlainArgs;
+import com.pulumi.auth0.outputs.GetActionModuleActionsResult;
+import com.pulumi.auth0.outputs.GetActionModuleResult;
+import com.pulumi.auth0.outputs.GetActionModuleVersionResult;
+import com.pulumi.auth0.outputs.GetActionModuleVersionsResult;
 import com.pulumi.auth0.outputs.GetActionResult;
 import com.pulumi.auth0.outputs.GetAttackProtectionResult;
 import com.pulumi.auth0.outputs.GetBrandingPhoneNotificationTemplateResult;
@@ -155,6 +167,651 @@ public final class Auth0Functions {
      */
     public static CompletableFuture<GetActionResult> getActionPlain(GetActionPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("auth0:index/getAction:getAction", TypeShape.of(GetActionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Auth0 action module by `id`.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetActionModuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myModule = Auth0Functions.getActionModule(GetActionModuleArgs.builder()
+     *             .id("mod_XXXXXXXXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetActionModuleResult> getActionModule(GetActionModuleArgs args) {
+        return getActionModule(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Auth0 action module by `id`.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetActionModuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myModule = Auth0Functions.getActionModule(GetActionModuleArgs.builder()
+     *             .id("mod_XXXXXXXXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetActionModuleResult> getActionModulePlain(GetActionModulePlainArgs args) {
+        return getActionModulePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Auth0 action module by `id`.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetActionModuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myModule = Auth0Functions.getActionModule(GetActionModuleArgs.builder()
+     *             .id("mod_XXXXXXXXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetActionModuleResult> getActionModule(GetActionModuleArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getActionModule:getActionModule", TypeShape.of(GetActionModuleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Auth0 action module by `id`.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetActionModuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myModule = Auth0Functions.getActionModule(GetActionModuleArgs.builder()
+     *             .id("mod_XXXXXXXXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetActionModuleResult> getActionModule(GetActionModuleArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getActionModule:getActionModule", TypeShape.of(GetActionModuleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Auth0 action module by `id`.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetActionModuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myModule = Auth0Functions.getActionModule(GetActionModuleArgs.builder()
+     *             .id("mod_XXXXXXXXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetActionModuleResult> getActionModulePlain(GetActionModulePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("auth0:index/getActionModule:getActionModule", TypeShape.of(GetActionModuleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve all actions that are using a specific Auth0 action module.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetActionModuleActionsResult> getActionModuleActions(GetActionModuleActionsArgs args) {
+        return getActionModuleActions(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve all actions that are using a specific Auth0 action module.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetActionModuleActionsResult> getActionModuleActionsPlain(GetActionModuleActionsPlainArgs args) {
+        return getActionModuleActionsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve all actions that are using a specific Auth0 action module.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetActionModuleActionsResult> getActionModuleActions(GetActionModuleActionsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getActionModuleActions:getActionModuleActions", TypeShape.of(GetActionModuleActionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve all actions that are using a specific Auth0 action module.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetActionModuleActionsResult> getActionModuleActions(GetActionModuleActionsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getActionModuleActions:getActionModuleActions", TypeShape.of(GetActionModuleActionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve all actions that are using a specific Auth0 action module.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetActionModuleActionsResult> getActionModuleActionsPlain(GetActionModuleActionsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("auth0:index/getActionModuleActions:getActionModuleActions", TypeShape.of(GetActionModuleActionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific version of an Auth0 action module.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.ActionModule;
+     * import com.pulumi.auth0.ActionModuleArgs;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetActionModuleVersionsArgs;
+     * import com.pulumi.auth0.inputs.GetActionModuleVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Example: Retrieve a specific version of an action module
+     *         // Create and publish an action module
+     *         var myModule = new ActionModule("myModule", ActionModuleArgs.builder()
+     *             .name("My Shared Module")
+     *             .publish(true)
+     *             .code("""
+     * module.exports = {
+     *   greet: function(name) {
+     *     return \"Hello, \" + name + \"!\";
+     *   }
+     * };
+     *             """)
+     *             .build());
+     * 
+     *         // Get all versions to find the version ID
+     *         final var myModuleVersions = Auth0Functions.getActionModuleVersions(GetActionModuleVersionsArgs.builder()
+     *             .moduleId(myModule.id())
+     *             .build());
+     * 
+     *         // Retrieve a specific version by its ID
+     *         final var myModuleVersion = Output.tuple(myModule.id(), myModuleVersions).applyValue(values -> {
+     *             var id = values.t1;
+     *             var myModuleVersions = values.t2;
+     *             return Auth0Functions.getActionModuleVersion(GetActionModuleVersionArgs.builder()
+     *                 .moduleId(id)
+     *                 .versionId(myModuleVersions.versions()[0].id())
+     *                 .build());
+     *         });
+     * 
+     *         ctx.export("versionNumber", myModuleVersion.applyValue(_myModuleVersion -> _myModuleVersion.versionNumber()));
+     *         ctx.export("versionCode", myModuleVersion.applyValue(_myModuleVersion -> _myModuleVersion.code()));
+     *         ctx.export("versionCreatedAt", myModuleVersion.applyValue(_myModuleVersion -> _myModuleVersion.createdAt()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetActionModuleVersionResult> getActionModuleVersion(GetActionModuleVersionArgs args) {
+        return getActionModuleVersion(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific version of an Auth0 action module.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.ActionModule;
+     * import com.pulumi.auth0.ActionModuleArgs;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetActionModuleVersionsArgs;
+     * import com.pulumi.auth0.inputs.GetActionModuleVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Example: Retrieve a specific version of an action module
+     *         // Create and publish an action module
+     *         var myModule = new ActionModule("myModule", ActionModuleArgs.builder()
+     *             .name("My Shared Module")
+     *             .publish(true)
+     *             .code("""
+     * module.exports = {
+     *   greet: function(name) {
+     *     return \"Hello, \" + name + \"!\";
+     *   }
+     * };
+     *             """)
+     *             .build());
+     * 
+     *         // Get all versions to find the version ID
+     *         final var myModuleVersions = Auth0Functions.getActionModuleVersions(GetActionModuleVersionsArgs.builder()
+     *             .moduleId(myModule.id())
+     *             .build());
+     * 
+     *         // Retrieve a specific version by its ID
+     *         final var myModuleVersion = Output.tuple(myModule.id(), myModuleVersions).applyValue(values -> {
+     *             var id = values.t1;
+     *             var myModuleVersions = values.t2;
+     *             return Auth0Functions.getActionModuleVersion(GetActionModuleVersionArgs.builder()
+     *                 .moduleId(id)
+     *                 .versionId(myModuleVersions.versions()[0].id())
+     *                 .build());
+     *         });
+     * 
+     *         ctx.export("versionNumber", myModuleVersion.applyValue(_myModuleVersion -> _myModuleVersion.versionNumber()));
+     *         ctx.export("versionCode", myModuleVersion.applyValue(_myModuleVersion -> _myModuleVersion.code()));
+     *         ctx.export("versionCreatedAt", myModuleVersion.applyValue(_myModuleVersion -> _myModuleVersion.createdAt()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetActionModuleVersionResult> getActionModuleVersionPlain(GetActionModuleVersionPlainArgs args) {
+        return getActionModuleVersionPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific version of an Auth0 action module.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.ActionModule;
+     * import com.pulumi.auth0.ActionModuleArgs;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetActionModuleVersionsArgs;
+     * import com.pulumi.auth0.inputs.GetActionModuleVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Example: Retrieve a specific version of an action module
+     *         // Create and publish an action module
+     *         var myModule = new ActionModule("myModule", ActionModuleArgs.builder()
+     *             .name("My Shared Module")
+     *             .publish(true)
+     *             .code("""
+     * module.exports = {
+     *   greet: function(name) {
+     *     return \"Hello, \" + name + \"!\";
+     *   }
+     * };
+     *             """)
+     *             .build());
+     * 
+     *         // Get all versions to find the version ID
+     *         final var myModuleVersions = Auth0Functions.getActionModuleVersions(GetActionModuleVersionsArgs.builder()
+     *             .moduleId(myModule.id())
+     *             .build());
+     * 
+     *         // Retrieve a specific version by its ID
+     *         final var myModuleVersion = Output.tuple(myModule.id(), myModuleVersions).applyValue(values -> {
+     *             var id = values.t1;
+     *             var myModuleVersions = values.t2;
+     *             return Auth0Functions.getActionModuleVersion(GetActionModuleVersionArgs.builder()
+     *                 .moduleId(id)
+     *                 .versionId(myModuleVersions.versions()[0].id())
+     *                 .build());
+     *         });
+     * 
+     *         ctx.export("versionNumber", myModuleVersion.applyValue(_myModuleVersion -> _myModuleVersion.versionNumber()));
+     *         ctx.export("versionCode", myModuleVersion.applyValue(_myModuleVersion -> _myModuleVersion.code()));
+     *         ctx.export("versionCreatedAt", myModuleVersion.applyValue(_myModuleVersion -> _myModuleVersion.createdAt()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetActionModuleVersionResult> getActionModuleVersion(GetActionModuleVersionArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getActionModuleVersion:getActionModuleVersion", TypeShape.of(GetActionModuleVersionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific version of an Auth0 action module.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.ActionModule;
+     * import com.pulumi.auth0.ActionModuleArgs;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetActionModuleVersionsArgs;
+     * import com.pulumi.auth0.inputs.GetActionModuleVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Example: Retrieve a specific version of an action module
+     *         // Create and publish an action module
+     *         var myModule = new ActionModule("myModule", ActionModuleArgs.builder()
+     *             .name("My Shared Module")
+     *             .publish(true)
+     *             .code("""
+     * module.exports = {
+     *   greet: function(name) {
+     *     return \"Hello, \" + name + \"!\";
+     *   }
+     * };
+     *             """)
+     *             .build());
+     * 
+     *         // Get all versions to find the version ID
+     *         final var myModuleVersions = Auth0Functions.getActionModuleVersions(GetActionModuleVersionsArgs.builder()
+     *             .moduleId(myModule.id())
+     *             .build());
+     * 
+     *         // Retrieve a specific version by its ID
+     *         final var myModuleVersion = Output.tuple(myModule.id(), myModuleVersions).applyValue(values -> {
+     *             var id = values.t1;
+     *             var myModuleVersions = values.t2;
+     *             return Auth0Functions.getActionModuleVersion(GetActionModuleVersionArgs.builder()
+     *                 .moduleId(id)
+     *                 .versionId(myModuleVersions.versions()[0].id())
+     *                 .build());
+     *         });
+     * 
+     *         ctx.export("versionNumber", myModuleVersion.applyValue(_myModuleVersion -> _myModuleVersion.versionNumber()));
+     *         ctx.export("versionCode", myModuleVersion.applyValue(_myModuleVersion -> _myModuleVersion.code()));
+     *         ctx.export("versionCreatedAt", myModuleVersion.applyValue(_myModuleVersion -> _myModuleVersion.createdAt()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetActionModuleVersionResult> getActionModuleVersion(GetActionModuleVersionArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getActionModuleVersion:getActionModuleVersion", TypeShape.of(GetActionModuleVersionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific version of an Auth0 action module.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.ActionModule;
+     * import com.pulumi.auth0.ActionModuleArgs;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetActionModuleVersionsArgs;
+     * import com.pulumi.auth0.inputs.GetActionModuleVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Example: Retrieve a specific version of an action module
+     *         // Create and publish an action module
+     *         var myModule = new ActionModule("myModule", ActionModuleArgs.builder()
+     *             .name("My Shared Module")
+     *             .publish(true)
+     *             .code("""
+     * module.exports = {
+     *   greet: function(name) {
+     *     return \"Hello, \" + name + \"!\";
+     *   }
+     * };
+     *             """)
+     *             .build());
+     * 
+     *         // Get all versions to find the version ID
+     *         final var myModuleVersions = Auth0Functions.getActionModuleVersions(GetActionModuleVersionsArgs.builder()
+     *             .moduleId(myModule.id())
+     *             .build());
+     * 
+     *         // Retrieve a specific version by its ID
+     *         final var myModuleVersion = Output.tuple(myModule.id(), myModuleVersions).applyValue(values -> {
+     *             var id = values.t1;
+     *             var myModuleVersions = values.t2;
+     *             return Auth0Functions.getActionModuleVersion(GetActionModuleVersionArgs.builder()
+     *                 .moduleId(id)
+     *                 .versionId(myModuleVersions.versions()[0].id())
+     *                 .build());
+     *         });
+     * 
+     *         ctx.export("versionNumber", myModuleVersion.applyValue(_myModuleVersion -> _myModuleVersion.versionNumber()));
+     *         ctx.export("versionCode", myModuleVersion.applyValue(_myModuleVersion -> _myModuleVersion.code()));
+     *         ctx.export("versionCreatedAt", myModuleVersion.applyValue(_myModuleVersion -> _myModuleVersion.createdAt()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetActionModuleVersionResult> getActionModuleVersionPlain(GetActionModuleVersionPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("auth0:index/getActionModuleVersion:getActionModuleVersion", TypeShape.of(GetActionModuleVersionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve all published versions of a specific Auth0 action module.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetActionModuleVersionsResult> getActionModuleVersions(GetActionModuleVersionsArgs args) {
+        return getActionModuleVersions(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve all published versions of a specific Auth0 action module.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetActionModuleVersionsResult> getActionModuleVersionsPlain(GetActionModuleVersionsPlainArgs args) {
+        return getActionModuleVersionsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve all published versions of a specific Auth0 action module.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetActionModuleVersionsResult> getActionModuleVersions(GetActionModuleVersionsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getActionModuleVersions:getActionModuleVersions", TypeShape.of(GetActionModuleVersionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve all published versions of a specific Auth0 action module.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetActionModuleVersionsResult> getActionModuleVersions(GetActionModuleVersionsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getActionModuleVersions:getActionModuleVersions", TypeShape.of(GetActionModuleVersionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve all published versions of a specific Auth0 action module.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetActionModuleVersionsResult> getActionModuleVersionsPlain(GetActionModuleVersionsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("auth0:index/getActionModuleVersions:getActionModuleVersions", TypeShape.of(GetActionModuleVersionsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to access information about the tenant&#39;s attack protection settings.

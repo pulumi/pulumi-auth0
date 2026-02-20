@@ -251,6 +251,20 @@ public class Tenant extends com.pulumi.resources.CustomResource {
         return this.enabledLocales;
     }
     /**
+     * Number of hours an ephemeral (non-persistent) session will stay valid.
+     * 
+     */
+    @Export(name="ephemeralSessionLifetime", refs={Double.class}, tree="[0]")
+    private Output</* @Nullable */ Double> ephemeralSessionLifetime;
+
+    /**
+     * @return Number of hours an ephemeral (non-persistent) session will stay valid.
+     * 
+     */
+    public Output<Optional<Double>> ephemeralSessionLifetime() {
+        return Codegen.optional(this.ephemeralSessionLifetime);
+    }
+    /**
      * Configuration for the error page
      * 
      */
@@ -291,6 +305,20 @@ public class Tenant extends com.pulumi.resources.CustomResource {
      */
     public Output<String> friendlyName() {
         return this.friendlyName;
+    }
+    /**
+     * Number of hours for which an ephemeral (non-persistent) session can be inactive before the user must log in again.
+     * 
+     */
+    @Export(name="idleEphemeralSessionLifetime", refs={Double.class}, tree="[0]")
+    private Output</* @Nullable */ Double> idleEphemeralSessionLifetime;
+
+    /**
+     * @return Number of hours for which an ephemeral (non-persistent) session can be inactive before the user must log in again.
+     * 
+     */
+    public Output<Optional<Double>> idleEphemeralSessionLifetime() {
+        return Codegen.optional(this.idleEphemeralSessionLifetime);
     }
     /**
      * Number of hours during which a session can be inactive before the user must log in again.

@@ -61,7 +61,7 @@ namespace Pulumi.Auth0
     public partial class SelfServiceProfile : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// List of IdP strategies that will be shown to users during the Self-Service SSO flow.
+        /// List of IdP strategies that will be shown to users during the Self-Service SSO flow. Valid values are: oidc, samlp, waad, google-apps, adfs, okta, keycloak-samlp, pingfederate, auth0-samlp, okta-samlp.
         /// </summary>
         [Output("allowedStrategies")]
         public Output<ImmutableArray<string>> AllowedStrategies { get; private set; } = null!;
@@ -158,7 +158,7 @@ namespace Pulumi.Auth0
         private InputList<string>? _allowedStrategies;
 
         /// <summary>
-        /// List of IdP strategies that will be shown to users during the Self-Service SSO flow.
+        /// List of IdP strategies that will be shown to users during the Self-Service SSO flow. Valid values are: oidc, samlp, waad, google-apps, adfs, okta, keycloak-samlp, pingfederate, auth0-samlp, okta-samlp.
         /// </summary>
         public InputList<string> AllowedStrategies
         {
@@ -214,7 +214,7 @@ namespace Pulumi.Auth0
         private InputList<string>? _allowedStrategies;
 
         /// <summary>
-        /// List of IdP strategies that will be shown to users during the Self-Service SSO flow.
+        /// List of IdP strategies that will be shown to users during the Self-Service SSO flow. Valid values are: oidc, samlp, waad, google-apps, adfs, okta, keycloak-samlp, pingfederate, auth0-samlp, okta-samlp.
         /// </summary>
         public InputList<string> AllowedStrategies
         {

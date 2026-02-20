@@ -40,6 +40,8 @@ type LookupActionResult struct {
 	Deploy bool `pulumi:"deploy"`
 	// The ID of the action. If not provided, `name` must be set.
 	Id *string `pulumi:"id"`
+	// List of action modules and their versions that this action depends on.
+	Modules []GetActionModuleType `pulumi:"modules"`
 	// The name of the action. If not provided, `id` must be set.
 	Name *string `pulumi:"name"`
 	// The Node runtime. Possible values are: `node12`, `node16` (not recommended), `node18`, `node22`
@@ -106,6 +108,11 @@ func (o LookupActionResultOutput) Deploy() pulumi.BoolOutput {
 // The ID of the action. If not provided, `name` must be set.
 func (o LookupActionResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupActionResult) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// List of action modules and their versions that this action depends on.
+func (o LookupActionResultOutput) Modules() GetActionModuleTypeArrayOutput {
+	return o.ApplyT(func(v LookupActionResult) []GetActionModuleType { return v.Modules }).(GetActionModuleTypeArrayOutput)
 }
 
 // The name of the action. If not provided, `id` must be set.

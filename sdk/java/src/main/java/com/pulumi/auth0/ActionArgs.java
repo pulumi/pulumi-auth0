@@ -4,6 +4,7 @@
 package com.pulumi.auth0;
 
 import com.pulumi.auth0.inputs.ActionDependencyArgs;
+import com.pulumi.auth0.inputs.ActionModuleArgs;
 import com.pulumi.auth0.inputs.ActionSecretArgs;
 import com.pulumi.auth0.inputs.ActionSupportedTriggersArgs;
 import com.pulumi.core.Output;
@@ -64,6 +65,21 @@ public final class ActionArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> deploy() {
         return Optional.ofNullable(this.deploy);
+    }
+
+    /**
+     * List of action modules and their versions that this action depends on.
+     * 
+     */
+    @Import(name="modules")
+    private @Nullable Output<List<ActionModuleArgs>> modules;
+
+    /**
+     * @return List of action modules and their versions that this action depends on.
+     * 
+     */
+    public Optional<Output<List<ActionModuleArgs>>> modules() {
+        return Optional.ofNullable(this.modules);
     }
 
     /**
@@ -132,6 +148,7 @@ public final class ActionArgs extends com.pulumi.resources.ResourceArgs {
         this.code = $.code;
         this.dependencies = $.dependencies;
         this.deploy = $.deploy;
+        this.modules = $.modules;
         this.name = $.name;
         this.runtime = $.runtime;
         this.secrets = $.secrets;
@@ -227,6 +244,37 @@ public final class ActionArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder deploy(Boolean deploy) {
             return deploy(Output.of(deploy));
+        }
+
+        /**
+         * @param modules List of action modules and their versions that this action depends on.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modules(@Nullable Output<List<ActionModuleArgs>> modules) {
+            $.modules = modules;
+            return this;
+        }
+
+        /**
+         * @param modules List of action modules and their versions that this action depends on.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modules(List<ActionModuleArgs> modules) {
+            return modules(Output.of(modules));
+        }
+
+        /**
+         * @param modules List of action modules and their versions that this action depends on.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modules(ActionModuleArgs... modules) {
+            return modules(List.of(modules));
         }
 
         /**

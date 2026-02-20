@@ -70,7 +70,7 @@ export class SelfServiceProfile extends pulumi.CustomResource {
     }
 
     /**
-     * List of IdP strategies that will be shown to users during the Self-Service SSO flow.
+     * List of IdP strategies that will be shown to users during the Self-Service SSO flow. Valid values are: oidc, samlp, waad, google-apps, adfs, okta, keycloak-samlp, pingfederate, auth0-samlp, okta-samlp.
      */
     declare public readonly allowedStrategies: pulumi.Output<string[] | undefined>;
     /**
@@ -144,7 +144,7 @@ export class SelfServiceProfile extends pulumi.CustomResource {
  */
 export interface SelfServiceProfileState {
     /**
-     * List of IdP strategies that will be shown to users during the Self-Service SSO flow.
+     * List of IdP strategies that will be shown to users during the Self-Service SSO flow. Valid values are: oidc, samlp, waad, google-apps, adfs, okta, keycloak-samlp, pingfederate, auth0-samlp, okta-samlp.
      */
     allowedStrategies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -182,7 +182,7 @@ export interface SelfServiceProfileState {
  */
 export interface SelfServiceProfileArgs {
     /**
-     * List of IdP strategies that will be shown to users during the Self-Service SSO flow.
+     * List of IdP strategies that will be shown to users during the Self-Service SSO flow. Valid values are: oidc, samlp, waad, google-apps, adfs, okta, keycloak-samlp, pingfederate, auth0-samlp, okta-samlp.
      */
     allowedStrategies?: pulumi.Input<pulumi.Input<string>[]>;
     /**

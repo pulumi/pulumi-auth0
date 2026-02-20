@@ -567,6 +567,12 @@ namespace Pulumi.Auth0.Inputs
         }
 
         /// <summary>
+        /// When true and `Type` is 'back_channel', includes a cryptographic nonce in authorization requests to prevent replay attacks. The identity provider must include this nonce in the ID token for validation.
+        /// </summary>
+        [Input("sendBackChannelNonce")]
+        public Input<bool>? SendBackChannelNonce { get; set; }
+
+        /// <summary>
         /// Session Key for storing the request token.
         /// </summary>
         [Input("sessionKey")]
@@ -731,6 +737,12 @@ namespace Pulumi.Auth0.Inputs
         /// </summary>
         [Input("useKerberos")]
         public Input<bool>? UseKerberos { get; set; }
+
+        /// <summary>
+        /// Determines the `Scopes` format: `True` makes it a space-separated string (per OAuth2 specification); `False` makes it an array.
+        /// </summary>
+        [Input("useOauthSpecScope")]
+        public Input<bool>? UseOauthSpecScope { get; set; }
 
         /// <summary>
         /// Whether to use WS-Fed.

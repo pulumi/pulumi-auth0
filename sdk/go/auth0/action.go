@@ -117,6 +117,8 @@ type Action struct {
 	Dependencies ActionDependencyArrayOutput `pulumi:"dependencies"`
 	// Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately.
 	Deploy pulumi.BoolPtrOutput `pulumi:"deploy"`
+	// List of action modules and their versions that this action depends on.
+	Modules ActionModuleTypeArrayOutput `pulumi:"modules"`
 	// The name of the action.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The Node runtime. Possible values are: `node12`, `node16` (not recommended), `node18`, `node22`
@@ -171,6 +173,8 @@ type actionState struct {
 	Dependencies []ActionDependency `pulumi:"dependencies"`
 	// Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately.
 	Deploy *bool `pulumi:"deploy"`
+	// List of action modules and their versions that this action depends on.
+	Modules []ActionModuleType `pulumi:"modules"`
 	// The name of the action.
 	Name *string `pulumi:"name"`
 	// The Node runtime. Possible values are: `node12`, `node16` (not recommended), `node18`, `node22`
@@ -190,6 +194,8 @@ type ActionState struct {
 	Dependencies ActionDependencyArrayInput
 	// Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately.
 	Deploy pulumi.BoolPtrInput
+	// List of action modules and their versions that this action depends on.
+	Modules ActionModuleTypeArrayInput
 	// The name of the action.
 	Name pulumi.StringPtrInput
 	// The Node runtime. Possible values are: `node12`, `node16` (not recommended), `node18`, `node22`
@@ -213,6 +219,8 @@ type actionArgs struct {
 	Dependencies []ActionDependency `pulumi:"dependencies"`
 	// Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately.
 	Deploy *bool `pulumi:"deploy"`
+	// List of action modules and their versions that this action depends on.
+	Modules []ActionModuleType `pulumi:"modules"`
 	// The name of the action.
 	Name *string `pulumi:"name"`
 	// The Node runtime. Possible values are: `node12`, `node16` (not recommended), `node18`, `node22`
@@ -231,6 +239,8 @@ type ActionArgs struct {
 	Dependencies ActionDependencyArrayInput
 	// Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately.
 	Deploy pulumi.BoolPtrInput
+	// List of action modules and their versions that this action depends on.
+	Modules ActionModuleTypeArrayInput
 	// The name of the action.
 	Name pulumi.StringPtrInput
 	// The Node runtime. Possible values are: `node12`, `node16` (not recommended), `node18`, `node22`
@@ -341,6 +351,11 @@ func (o ActionOutput) Dependencies() ActionDependencyArrayOutput {
 // Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately.
 func (o ActionOutput) Deploy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Action) pulumi.BoolPtrOutput { return v.Deploy }).(pulumi.BoolPtrOutput)
+}
+
+// List of action modules and their versions that this action depends on.
+func (o ActionOutput) Modules() ActionModuleTypeArrayOutput {
+	return o.ApplyT(func(v *Action) ActionModuleTypeArrayOutput { return v.Modules }).(ActionModuleTypeArrayOutput)
 }
 
 // The name of the action.

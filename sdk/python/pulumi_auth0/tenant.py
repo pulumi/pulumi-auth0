@@ -31,9 +31,11 @@ class TenantArgs:
                  default_token_quota: Optional[pulumi.Input['TenantDefaultTokenQuotaArgs']] = None,
                  disable_acr_values_supported: Optional[pulumi.Input[_builtins.bool]] = None,
                  enabled_locales: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ephemeral_session_lifetime: Optional[pulumi.Input[_builtins.float]] = None,
                  error_page: Optional[pulumi.Input['TenantErrorPageArgs']] = None,
                  flags: Optional[pulumi.Input['TenantFlagsArgs']] = None,
                  friendly_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 idle_ephemeral_session_lifetime: Optional[pulumi.Input[_builtins.float]] = None,
                  idle_session_lifetime: Optional[pulumi.Input[_builtins.float]] = None,
                  mtls: Optional[pulumi.Input['TenantMtlsArgs']] = None,
                  oidc_logout: Optional[pulumi.Input['TenantOidcLogoutArgs']] = None,
@@ -58,9 +60,11 @@ class TenantArgs:
         :param pulumi.Input['TenantDefaultTokenQuotaArgs'] default_token_quota: Token Quota configuration.
         :param pulumi.Input[_builtins.bool] disable_acr_values_supported: Disable list of supported ACR values.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] enabled_locales: Supported locales for the user interface. The first locale in the list will be used to set the default locale.
+        :param pulumi.Input[_builtins.float] ephemeral_session_lifetime: Number of hours an ephemeral (non-persistent) session will stay valid.
         :param pulumi.Input['TenantErrorPageArgs'] error_page: Configuration for the error page
         :param pulumi.Input['TenantFlagsArgs'] flags: Configuration settings for tenant flags.
         :param pulumi.Input[_builtins.str] friendly_name: Friendly name for the tenant.
+        :param pulumi.Input[_builtins.float] idle_ephemeral_session_lifetime: Number of hours for which an ephemeral (non-persistent) session can be inactive before the user must log in again.
         :param pulumi.Input[_builtins.float] idle_session_lifetime: Number of hours during which a session can be inactive before the user must log in again.
         :param pulumi.Input['TenantMtlsArgs'] mtls: Configuration for mTLS.
         :param pulumi.Input['TenantOidcLogoutArgs'] oidc_logout: Settings related to OIDC RP-initiated Logout.
@@ -94,12 +98,16 @@ class TenantArgs:
             pulumi.set(__self__, "disable_acr_values_supported", disable_acr_values_supported)
         if enabled_locales is not None:
             pulumi.set(__self__, "enabled_locales", enabled_locales)
+        if ephemeral_session_lifetime is not None:
+            pulumi.set(__self__, "ephemeral_session_lifetime", ephemeral_session_lifetime)
         if error_page is not None:
             pulumi.set(__self__, "error_page", error_page)
         if flags is not None:
             pulumi.set(__self__, "flags", flags)
         if friendly_name is not None:
             pulumi.set(__self__, "friendly_name", friendly_name)
+        if idle_ephemeral_session_lifetime is not None:
+            pulumi.set(__self__, "idle_ephemeral_session_lifetime", idle_ephemeral_session_lifetime)
         if idle_session_lifetime is not None:
             pulumi.set(__self__, "idle_session_lifetime", idle_session_lifetime)
         if mtls is not None:
@@ -246,6 +254,18 @@ class TenantArgs:
         pulumi.set(self, "enabled_locales", value)
 
     @_builtins.property
+    @pulumi.getter(name="ephemeralSessionLifetime")
+    def ephemeral_session_lifetime(self) -> Optional[pulumi.Input[_builtins.float]]:
+        """
+        Number of hours an ephemeral (non-persistent) session will stay valid.
+        """
+        return pulumi.get(self, "ephemeral_session_lifetime")
+
+    @ephemeral_session_lifetime.setter
+    def ephemeral_session_lifetime(self, value: Optional[pulumi.Input[_builtins.float]]):
+        pulumi.set(self, "ephemeral_session_lifetime", value)
+
+    @_builtins.property
     @pulumi.getter(name="errorPage")
     def error_page(self) -> Optional[pulumi.Input['TenantErrorPageArgs']]:
         """
@@ -280,6 +300,18 @@ class TenantArgs:
     @friendly_name.setter
     def friendly_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "friendly_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="idleEphemeralSessionLifetime")
+    def idle_ephemeral_session_lifetime(self) -> Optional[pulumi.Input[_builtins.float]]:
+        """
+        Number of hours for which an ephemeral (non-persistent) session can be inactive before the user must log in again.
+        """
+        return pulumi.get(self, "idle_ephemeral_session_lifetime")
+
+    @idle_ephemeral_session_lifetime.setter
+    def idle_ephemeral_session_lifetime(self, value: Optional[pulumi.Input[_builtins.float]]):
+        pulumi.set(self, "idle_ephemeral_session_lifetime", value)
 
     @_builtins.property
     @pulumi.getter(name="idleSessionLifetime")
@@ -439,9 +471,11 @@ class _TenantState:
                  default_token_quota: Optional[pulumi.Input['TenantDefaultTokenQuotaArgs']] = None,
                  disable_acr_values_supported: Optional[pulumi.Input[_builtins.bool]] = None,
                  enabled_locales: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ephemeral_session_lifetime: Optional[pulumi.Input[_builtins.float]] = None,
                  error_page: Optional[pulumi.Input['TenantErrorPageArgs']] = None,
                  flags: Optional[pulumi.Input['TenantFlagsArgs']] = None,
                  friendly_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 idle_ephemeral_session_lifetime: Optional[pulumi.Input[_builtins.float]] = None,
                  idle_session_lifetime: Optional[pulumi.Input[_builtins.float]] = None,
                  mtls: Optional[pulumi.Input['TenantMtlsArgs']] = None,
                  oidc_logout: Optional[pulumi.Input['TenantOidcLogoutArgs']] = None,
@@ -466,9 +500,11 @@ class _TenantState:
         :param pulumi.Input['TenantDefaultTokenQuotaArgs'] default_token_quota: Token Quota configuration.
         :param pulumi.Input[_builtins.bool] disable_acr_values_supported: Disable list of supported ACR values.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] enabled_locales: Supported locales for the user interface. The first locale in the list will be used to set the default locale.
+        :param pulumi.Input[_builtins.float] ephemeral_session_lifetime: Number of hours an ephemeral (non-persistent) session will stay valid.
         :param pulumi.Input['TenantErrorPageArgs'] error_page: Configuration for the error page
         :param pulumi.Input['TenantFlagsArgs'] flags: Configuration settings for tenant flags.
         :param pulumi.Input[_builtins.str] friendly_name: Friendly name for the tenant.
+        :param pulumi.Input[_builtins.float] idle_ephemeral_session_lifetime: Number of hours for which an ephemeral (non-persistent) session can be inactive before the user must log in again.
         :param pulumi.Input[_builtins.float] idle_session_lifetime: Number of hours during which a session can be inactive before the user must log in again.
         :param pulumi.Input['TenantMtlsArgs'] mtls: Configuration for mTLS.
         :param pulumi.Input['TenantOidcLogoutArgs'] oidc_logout: Settings related to OIDC RP-initiated Logout.
@@ -502,12 +538,16 @@ class _TenantState:
             pulumi.set(__self__, "disable_acr_values_supported", disable_acr_values_supported)
         if enabled_locales is not None:
             pulumi.set(__self__, "enabled_locales", enabled_locales)
+        if ephemeral_session_lifetime is not None:
+            pulumi.set(__self__, "ephemeral_session_lifetime", ephemeral_session_lifetime)
         if error_page is not None:
             pulumi.set(__self__, "error_page", error_page)
         if flags is not None:
             pulumi.set(__self__, "flags", flags)
         if friendly_name is not None:
             pulumi.set(__self__, "friendly_name", friendly_name)
+        if idle_ephemeral_session_lifetime is not None:
+            pulumi.set(__self__, "idle_ephemeral_session_lifetime", idle_ephemeral_session_lifetime)
         if idle_session_lifetime is not None:
             pulumi.set(__self__, "idle_session_lifetime", idle_session_lifetime)
         if mtls is not None:
@@ -654,6 +694,18 @@ class _TenantState:
         pulumi.set(self, "enabled_locales", value)
 
     @_builtins.property
+    @pulumi.getter(name="ephemeralSessionLifetime")
+    def ephemeral_session_lifetime(self) -> Optional[pulumi.Input[_builtins.float]]:
+        """
+        Number of hours an ephemeral (non-persistent) session will stay valid.
+        """
+        return pulumi.get(self, "ephemeral_session_lifetime")
+
+    @ephemeral_session_lifetime.setter
+    def ephemeral_session_lifetime(self, value: Optional[pulumi.Input[_builtins.float]]):
+        pulumi.set(self, "ephemeral_session_lifetime", value)
+
+    @_builtins.property
     @pulumi.getter(name="errorPage")
     def error_page(self) -> Optional[pulumi.Input['TenantErrorPageArgs']]:
         """
@@ -688,6 +740,18 @@ class _TenantState:
     @friendly_name.setter
     def friendly_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "friendly_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="idleEphemeralSessionLifetime")
+    def idle_ephemeral_session_lifetime(self) -> Optional[pulumi.Input[_builtins.float]]:
+        """
+        Number of hours for which an ephemeral (non-persistent) session can be inactive before the user must log in again.
+        """
+        return pulumi.get(self, "idle_ephemeral_session_lifetime")
+
+    @idle_ephemeral_session_lifetime.setter
+    def idle_ephemeral_session_lifetime(self, value: Optional[pulumi.Input[_builtins.float]]):
+        pulumi.set(self, "idle_ephemeral_session_lifetime", value)
 
     @_builtins.property
     @pulumi.getter(name="idleSessionLifetime")
@@ -850,9 +914,11 @@ class Tenant(pulumi.CustomResource):
                  default_token_quota: Optional[pulumi.Input[Union['TenantDefaultTokenQuotaArgs', 'TenantDefaultTokenQuotaArgsDict']]] = None,
                  disable_acr_values_supported: Optional[pulumi.Input[_builtins.bool]] = None,
                  enabled_locales: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ephemeral_session_lifetime: Optional[pulumi.Input[_builtins.float]] = None,
                  error_page: Optional[pulumi.Input[Union['TenantErrorPageArgs', 'TenantErrorPageArgsDict']]] = None,
                  flags: Optional[pulumi.Input[Union['TenantFlagsArgs', 'TenantFlagsArgsDict']]] = None,
                  friendly_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 idle_ephemeral_session_lifetime: Optional[pulumi.Input[_builtins.float]] = None,
                  idle_session_lifetime: Optional[pulumi.Input[_builtins.float]] = None,
                  mtls: Optional[pulumi.Input[Union['TenantMtlsArgs', 'TenantMtlsArgsDict']]] = None,
                  oidc_logout: Optional[pulumi.Input[Union['TenantOidcLogoutArgs', 'TenantOidcLogoutArgsDict']]] = None,
@@ -934,9 +1000,11 @@ class Tenant(pulumi.CustomResource):
         :param pulumi.Input[Union['TenantDefaultTokenQuotaArgs', 'TenantDefaultTokenQuotaArgsDict']] default_token_quota: Token Quota configuration.
         :param pulumi.Input[_builtins.bool] disable_acr_values_supported: Disable list of supported ACR values.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] enabled_locales: Supported locales for the user interface. The first locale in the list will be used to set the default locale.
+        :param pulumi.Input[_builtins.float] ephemeral_session_lifetime: Number of hours an ephemeral (non-persistent) session will stay valid.
         :param pulumi.Input[Union['TenantErrorPageArgs', 'TenantErrorPageArgsDict']] error_page: Configuration for the error page
         :param pulumi.Input[Union['TenantFlagsArgs', 'TenantFlagsArgsDict']] flags: Configuration settings for tenant flags.
         :param pulumi.Input[_builtins.str] friendly_name: Friendly name for the tenant.
+        :param pulumi.Input[_builtins.float] idle_ephemeral_session_lifetime: Number of hours for which an ephemeral (non-persistent) session can be inactive before the user must log in again.
         :param pulumi.Input[_builtins.float] idle_session_lifetime: Number of hours during which a session can be inactive before the user must log in again.
         :param pulumi.Input[Union['TenantMtlsArgs', 'TenantMtlsArgsDict']] mtls: Configuration for mTLS.
         :param pulumi.Input[Union['TenantOidcLogoutArgs', 'TenantOidcLogoutArgsDict']] oidc_logout: Settings related to OIDC RP-initiated Logout.
@@ -1037,9 +1105,11 @@ class Tenant(pulumi.CustomResource):
                  default_token_quota: Optional[pulumi.Input[Union['TenantDefaultTokenQuotaArgs', 'TenantDefaultTokenQuotaArgsDict']]] = None,
                  disable_acr_values_supported: Optional[pulumi.Input[_builtins.bool]] = None,
                  enabled_locales: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ephemeral_session_lifetime: Optional[pulumi.Input[_builtins.float]] = None,
                  error_page: Optional[pulumi.Input[Union['TenantErrorPageArgs', 'TenantErrorPageArgsDict']]] = None,
                  flags: Optional[pulumi.Input[Union['TenantFlagsArgs', 'TenantFlagsArgsDict']]] = None,
                  friendly_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 idle_ephemeral_session_lifetime: Optional[pulumi.Input[_builtins.float]] = None,
                  idle_session_lifetime: Optional[pulumi.Input[_builtins.float]] = None,
                  mtls: Optional[pulumi.Input[Union['TenantMtlsArgs', 'TenantMtlsArgsDict']]] = None,
                  oidc_logout: Optional[pulumi.Input[Union['TenantOidcLogoutArgs', 'TenantOidcLogoutArgsDict']]] = None,
@@ -1071,9 +1141,11 @@ class Tenant(pulumi.CustomResource):
             __props__.__dict__["default_token_quota"] = default_token_quota
             __props__.__dict__["disable_acr_values_supported"] = disable_acr_values_supported
             __props__.__dict__["enabled_locales"] = enabled_locales
+            __props__.__dict__["ephemeral_session_lifetime"] = ephemeral_session_lifetime
             __props__.__dict__["error_page"] = error_page
             __props__.__dict__["flags"] = flags
             __props__.__dict__["friendly_name"] = friendly_name
+            __props__.__dict__["idle_ephemeral_session_lifetime"] = idle_ephemeral_session_lifetime
             __props__.__dict__["idle_session_lifetime"] = idle_session_lifetime
             __props__.__dict__["mtls"] = mtls
             __props__.__dict__["oidc_logout"] = oidc_logout
@@ -1106,9 +1178,11 @@ class Tenant(pulumi.CustomResource):
             default_token_quota: Optional[pulumi.Input[Union['TenantDefaultTokenQuotaArgs', 'TenantDefaultTokenQuotaArgsDict']]] = None,
             disable_acr_values_supported: Optional[pulumi.Input[_builtins.bool]] = None,
             enabled_locales: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            ephemeral_session_lifetime: Optional[pulumi.Input[_builtins.float]] = None,
             error_page: Optional[pulumi.Input[Union['TenantErrorPageArgs', 'TenantErrorPageArgsDict']]] = None,
             flags: Optional[pulumi.Input[Union['TenantFlagsArgs', 'TenantFlagsArgsDict']]] = None,
             friendly_name: Optional[pulumi.Input[_builtins.str]] = None,
+            idle_ephemeral_session_lifetime: Optional[pulumi.Input[_builtins.float]] = None,
             idle_session_lifetime: Optional[pulumi.Input[_builtins.float]] = None,
             mtls: Optional[pulumi.Input[Union['TenantMtlsArgs', 'TenantMtlsArgsDict']]] = None,
             oidc_logout: Optional[pulumi.Input[Union['TenantOidcLogoutArgs', 'TenantOidcLogoutArgsDict']]] = None,
@@ -1138,9 +1212,11 @@ class Tenant(pulumi.CustomResource):
         :param pulumi.Input[Union['TenantDefaultTokenQuotaArgs', 'TenantDefaultTokenQuotaArgsDict']] default_token_quota: Token Quota configuration.
         :param pulumi.Input[_builtins.bool] disable_acr_values_supported: Disable list of supported ACR values.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] enabled_locales: Supported locales for the user interface. The first locale in the list will be used to set the default locale.
+        :param pulumi.Input[_builtins.float] ephemeral_session_lifetime: Number of hours an ephemeral (non-persistent) session will stay valid.
         :param pulumi.Input[Union['TenantErrorPageArgs', 'TenantErrorPageArgsDict']] error_page: Configuration for the error page
         :param pulumi.Input[Union['TenantFlagsArgs', 'TenantFlagsArgsDict']] flags: Configuration settings for tenant flags.
         :param pulumi.Input[_builtins.str] friendly_name: Friendly name for the tenant.
+        :param pulumi.Input[_builtins.float] idle_ephemeral_session_lifetime: Number of hours for which an ephemeral (non-persistent) session can be inactive before the user must log in again.
         :param pulumi.Input[_builtins.float] idle_session_lifetime: Number of hours during which a session can be inactive before the user must log in again.
         :param pulumi.Input[Union['TenantMtlsArgs', 'TenantMtlsArgsDict']] mtls: Configuration for mTLS.
         :param pulumi.Input[Union['TenantOidcLogoutArgs', 'TenantOidcLogoutArgsDict']] oidc_logout: Settings related to OIDC RP-initiated Logout.
@@ -1168,9 +1244,11 @@ class Tenant(pulumi.CustomResource):
         __props__.__dict__["default_token_quota"] = default_token_quota
         __props__.__dict__["disable_acr_values_supported"] = disable_acr_values_supported
         __props__.__dict__["enabled_locales"] = enabled_locales
+        __props__.__dict__["ephemeral_session_lifetime"] = ephemeral_session_lifetime
         __props__.__dict__["error_page"] = error_page
         __props__.__dict__["flags"] = flags
         __props__.__dict__["friendly_name"] = friendly_name
+        __props__.__dict__["idle_ephemeral_session_lifetime"] = idle_ephemeral_session_lifetime
         __props__.__dict__["idle_session_lifetime"] = idle_session_lifetime
         __props__.__dict__["mtls"] = mtls
         __props__.__dict__["oidc_logout"] = oidc_logout
@@ -1266,6 +1344,14 @@ class Tenant(pulumi.CustomResource):
         return pulumi.get(self, "enabled_locales")
 
     @_builtins.property
+    @pulumi.getter(name="ephemeralSessionLifetime")
+    def ephemeral_session_lifetime(self) -> pulumi.Output[Optional[_builtins.float]]:
+        """
+        Number of hours an ephemeral (non-persistent) session will stay valid.
+        """
+        return pulumi.get(self, "ephemeral_session_lifetime")
+
+    @_builtins.property
     @pulumi.getter(name="errorPage")
     def error_page(self) -> pulumi.Output[Optional['outputs.TenantErrorPage']]:
         """
@@ -1288,6 +1374,14 @@ class Tenant(pulumi.CustomResource):
         Friendly name for the tenant.
         """
         return pulumi.get(self, "friendly_name")
+
+    @_builtins.property
+    @pulumi.getter(name="idleEphemeralSessionLifetime")
+    def idle_ephemeral_session_lifetime(self) -> pulumi.Output[Optional[_builtins.float]]:
+        """
+        Number of hours for which an ephemeral (non-persistent) session can be inactive before the user must log in again.
+        """
+        return pulumi.get(self, "idle_ephemeral_session_lifetime")
 
     @_builtins.property
     @pulumi.getter(name="idleSessionLifetime")

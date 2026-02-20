@@ -92,6 +92,10 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly string? Id;
         /// <summary>
+        /// List of action modules and their versions that this action depends on.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetActionModuleResult> Modules;
+        /// <summary>
         /// The name of the action. If not provided, `Id` must be set.
         /// </summary>
         public readonly string? Name;
@@ -122,6 +126,8 @@ namespace Pulumi.Auth0
 
             string? id,
 
+            ImmutableArray<Outputs.GetActionModuleResult> modules,
+
             string? name,
 
             string runtime,
@@ -136,6 +142,7 @@ namespace Pulumi.Auth0
             Dependencies = dependencies;
             Deploy = deploy;
             Id = id;
+            Modules = modules;
             Name = name;
             Runtime = runtime;
             Secrets = secrets;

@@ -122,6 +122,10 @@ export class Action extends pulumi.CustomResource {
      */
     declare public readonly deploy: pulumi.Output<boolean | undefined>;
     /**
+     * List of action modules and their versions that this action depends on.
+     */
+    declare public readonly modules: pulumi.Output<outputs.ActionModule[] | undefined>;
+    /**
      * The name of the action.
      */
     declare public readonly name: pulumi.Output<string>;
@@ -158,6 +162,7 @@ export class Action extends pulumi.CustomResource {
             resourceInputs["code"] = state?.code;
             resourceInputs["dependencies"] = state?.dependencies;
             resourceInputs["deploy"] = state?.deploy;
+            resourceInputs["modules"] = state?.modules;
             resourceInputs["name"] = state?.name;
             resourceInputs["runtime"] = state?.runtime;
             resourceInputs["secrets"] = state?.secrets;
@@ -174,6 +179,7 @@ export class Action extends pulumi.CustomResource {
             resourceInputs["code"] = args?.code;
             resourceInputs["dependencies"] = args?.dependencies;
             resourceInputs["deploy"] = args?.deploy;
+            resourceInputs["modules"] = args?.modules;
             resourceInputs["name"] = args?.name;
             resourceInputs["runtime"] = args?.runtime;
             resourceInputs["secrets"] = args?.secrets;
@@ -201,6 +207,10 @@ export interface ActionState {
      * Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately.
      */
     deploy?: pulumi.Input<boolean>;
+    /**
+     * List of action modules and their versions that this action depends on.
+     */
+    modules?: pulumi.Input<pulumi.Input<inputs.ActionModule>[]>;
     /**
      * The name of the action.
      */
@@ -239,6 +249,10 @@ export interface ActionArgs {
      * Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately.
      */
     deploy?: pulumi.Input<boolean>;
+    /**
+     * List of action modules and their versions that this action depends on.
+     */
+    modules?: pulumi.Input<pulumi.Input<inputs.ActionModule>[]>;
     /**
      * The name of the action.
      */

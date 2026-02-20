@@ -70,6 +70,8 @@ type LookupTenantResult struct {
 	Domain string `pulumi:"domain"`
 	// Supported locales for the user interface. The first locale in the list will be used to set the default locale.
 	EnabledLocales []string `pulumi:"enabledLocales"`
+	// Number of hours an ephemeral (non-persistent) session will stay valid.
+	EphemeralSessionLifetime float64 `pulumi:"ephemeralSessionLifetime"`
 	// Configuration for the error page
 	ErrorPages []GetTenantErrorPage `pulumi:"errorPages"`
 	// Configuration settings for tenant flags.
@@ -78,6 +80,8 @@ type LookupTenantResult struct {
 	FriendlyName string `pulumi:"friendlyName"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
+	// Number of hours for which an ephemeral (non-persistent) session can be inactive before the user must log in again.
+	IdleEphemeralSessionLifetime float64 `pulumi:"idleEphemeralSessionLifetime"`
 	// Number of hours during which a session can be inactive before the user must log in again.
 	IdleSessionLifetime float64 `pulumi:"idleSessionLifetime"`
 	// The identifier value of the built-in Management API resource server, which can be used as an audience when configuring client grants.
@@ -183,6 +187,11 @@ func (o LookupTenantResultOutput) EnabledLocales() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupTenantResult) []string { return v.EnabledLocales }).(pulumi.StringArrayOutput)
 }
 
+// Number of hours an ephemeral (non-persistent) session will stay valid.
+func (o LookupTenantResultOutput) EphemeralSessionLifetime() pulumi.Float64Output {
+	return o.ApplyT(func(v LookupTenantResult) float64 { return v.EphemeralSessionLifetime }).(pulumi.Float64Output)
+}
+
 // Configuration for the error page
 func (o LookupTenantResultOutput) ErrorPages() GetTenantErrorPageArrayOutput {
 	return o.ApplyT(func(v LookupTenantResult) []GetTenantErrorPage { return v.ErrorPages }).(GetTenantErrorPageArrayOutput)
@@ -201,6 +210,11 @@ func (o LookupTenantResultOutput) FriendlyName() pulumi.StringOutput {
 // The provider-assigned unique ID for this managed resource.
 func (o LookupTenantResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTenantResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Number of hours for which an ephemeral (non-persistent) session can be inactive before the user must log in again.
+func (o LookupTenantResultOutput) IdleEphemeralSessionLifetime() pulumi.Float64Output {
+	return o.ApplyT(func(v LookupTenantResult) float64 { return v.IdleEphemeralSessionLifetime }).(pulumi.Float64Output)
 }
 
 // Number of hours during which a session can be inactive before the user must log in again.

@@ -124,6 +124,12 @@ namespace Pulumi.Auth0
         public Output<bool?> Deploy { get; private set; } = null!;
 
         /// <summary>
+        /// List of action modules and their versions that this action depends on.
+        /// </summary>
+        [Output("modules")]
+        public Output<ImmutableArray<Outputs.ActionModule>> Modules { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the action.
         /// </summary>
         [Output("name")]
@@ -223,6 +229,18 @@ namespace Pulumi.Auth0
         [Input("deploy")]
         public Input<bool>? Deploy { get; set; }
 
+        [Input("modules")]
+        private InputList<Inputs.ActionModuleArgs>? _modules;
+
+        /// <summary>
+        /// List of action modules and their versions that this action depends on.
+        /// </summary>
+        public InputList<Inputs.ActionModuleArgs> Modules
+        {
+            get => _modules ?? (_modules = new InputList<Inputs.ActionModuleArgs>());
+            set => _modules = value;
+        }
+
         /// <summary>
         /// The name of the action.
         /// </summary>
@@ -284,6 +302,18 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("deploy")]
         public Input<bool>? Deploy { get; set; }
+
+        [Input("modules")]
+        private InputList<Inputs.ActionModuleGetArgs>? _modules;
+
+        /// <summary>
+        /// List of action modules and their versions that this action depends on.
+        /// </summary>
+        public InputList<Inputs.ActionModuleGetArgs> Modules
+        {
+            get => _modules ?? (_modules = new InputList<Inputs.ActionModuleGetArgs>());
+            set => _modules = value;
+        }
 
         /// <summary>
         /// The name of the action.

@@ -16,6 +16,100 @@ export interface ActionDependency {
     version: string;
 }
 
+export interface ActionModule {
+    /**
+     * The unique ID of the module.
+     */
+    moduleId: string;
+    /**
+     * The name of the module.
+     */
+    moduleName: string;
+    /**
+     * The ID of the specific module version to use.
+     */
+    moduleVersionId: string;
+    /**
+     * The version number of the module.
+     */
+    moduleVersionNumber: number;
+}
+
+export interface ActionModuleDependency {
+    /**
+     * Dependency name, e.g. `lodash`.
+     */
+    name: string;
+    /**
+     * Dependency version, e.g. `latest` or `4.17.21`.
+     */
+    version: string;
+}
+
+export interface ActionModuleLatestVersion {
+    /**
+     * The source code of this version.
+     */
+    code: string;
+    /**
+     * The time when this version was created.
+     */
+    createdAt: string;
+    /**
+     * List of third party npm modules, and their versions, that this version depends on.
+     */
+    dependencies: outputs.ActionModuleLatestVersionDependency[];
+    /**
+     * The unique identifier of the version.
+     */
+    id: string;
+    /**
+     * List of secrets that are included in this version.
+     */
+    secrets: outputs.ActionModuleLatestVersionSecret[];
+    /**
+     * The version number.
+     */
+    versionNumber: number;
+}
+
+export interface ActionModuleLatestVersionDependency {
+    /**
+     * Dependency name.
+     */
+    name: string;
+    /**
+     * Dependency version.
+     */
+    version: string;
+}
+
+export interface ActionModuleLatestVersionSecret {
+    /**
+     * Secret name.
+     */
+    name: string;
+    /**
+     * The time when this secret was last updated.
+     */
+    updatedAt: string;
+}
+
+export interface ActionModuleSecret {
+    /**
+     * Secret name. Required when configuring secrets
+     */
+    name?: string;
+    /**
+     * Last update time
+     */
+    updatedAt: string;
+    /**
+     * Secret value. Required when configuring secrets
+     */
+    value?: string;
+}
+
 export interface ActionSecret {
     /**
      * Secret name.
@@ -1916,6 +2010,10 @@ export interface ConnectionOptions {
      */
     scripts?: {[key: string]: string};
     /**
+     * When true and `type` is 'back_channel', includes a cryptographic nonce in authorization requests to prevent replay attacks. The identity provider must include this nonce in the ID token for validation.
+     */
+    sendBackChannelNonce?: boolean;
+    /**
      * Session Key for storing the request token.
      */
     sessionKey?: string;
@@ -2019,6 +2117,10 @@ export interface ConnectionOptions {
      * Indicates whether to use Kerberos or not.
      */
     useKerberos?: boolean;
+    /**
+     * Determines the `scopes` format: `true` makes it a space-separated string (per OAuth2 specification); `false` makes it an array.
+     */
+    useOauthSpecScope?: boolean;
     /**
      * Whether to use WS-Fed.
      */
@@ -2869,6 +2971,209 @@ export interface GetActionDependency {
      * Dependency version, e.g. `latest` or `4.17.21`.
      */
     version: string;
+}
+
+export interface GetActionModule {
+    /**
+     * The unique ID of the module.
+     */
+    moduleId: string;
+    /**
+     * The name of the module.
+     */
+    moduleName: string;
+    /**
+     * The ID of the specific module version to use.
+     */
+    moduleVersionId: string;
+    /**
+     * The version number of the module.
+     */
+    moduleVersionNumber: number;
+}
+
+export interface GetActionModuleActionsAction {
+    /**
+     * The ID of the action.
+     */
+    actionId: string;
+    /**
+     * The name of the action.
+     */
+    actionName: string;
+    /**
+     * The ID of the module version this action is using.
+     */
+    moduleVersionId: string;
+    /**
+     * The version number of the module this action is using.
+     */
+    moduleVersionNumber: number;
+    /**
+     * The triggers that this action supports.
+     */
+    supportedTriggers: outputs.GetActionModuleActionsActionSupportedTrigger[];
+}
+
+export interface GetActionModuleActionsActionSupportedTrigger {
+    /**
+     * The trigger ID.
+     */
+    id: string;
+    /**
+     * The trigger version.
+     */
+    version: string;
+}
+
+export interface GetActionModuleDependency {
+    /**
+     * Dependency name, e.g. `lodash`.
+     */
+    name: string;
+    /**
+     * Dependency version, e.g. `latest` or `4.17.21`.
+     */
+    version: string;
+}
+
+export interface GetActionModuleLatestVersion {
+    /**
+     * The source code of this version.
+     */
+    code: string;
+    /**
+     * The time when this version was created.
+     */
+    createdAt: string;
+    /**
+     * List of third party npm modules, and their versions, that this version depends on.
+     */
+    dependencies: outputs.GetActionModuleLatestVersionDependency[];
+    /**
+     * The unique identifier of the version.
+     */
+    id: string;
+    /**
+     * List of secrets that are included in this version.
+     */
+    secrets: outputs.GetActionModuleLatestVersionSecret[];
+    /**
+     * The version number.
+     */
+    versionNumber: number;
+}
+
+export interface GetActionModuleLatestVersionDependency {
+    /**
+     * Dependency name.
+     */
+    name: string;
+    /**
+     * Dependency version.
+     */
+    version: string;
+}
+
+export interface GetActionModuleLatestVersionSecret {
+    /**
+     * Secret name.
+     */
+    name: string;
+    /**
+     * The time when this secret was last updated.
+     */
+    updatedAt: string;
+}
+
+export interface GetActionModuleSecret {
+    /**
+     * Secret name. Required when configuring secrets
+     */
+    name: string;
+    /**
+     * Last update time
+     */
+    updatedAt: string;
+    /**
+     * Secret value. Required when configuring secrets
+     */
+    value: string;
+}
+
+export interface GetActionModuleVersionDependency {
+    /**
+     * Dependency name.
+     */
+    name: string;
+    /**
+     * Dependency version.
+     */
+    version: string;
+}
+
+export interface GetActionModuleVersionSecret {
+    /**
+     * Secret name.
+     */
+    name: string;
+    /**
+     * The time when this secret was last updated.
+     */
+    updatedAt: string;
+}
+
+export interface GetActionModuleVersionsVersion {
+    /**
+     * The exact source code that was published with this version.
+     */
+    code: string;
+    /**
+     * The timestamp when this version was created.
+     */
+    createdAt: string;
+    /**
+     * Dependencies locked to this version.
+     */
+    dependencies: outputs.GetActionModuleVersionsVersionDependency[];
+    /**
+     * The unique identifier of the version.
+     */
+    id: string;
+    /**
+     * The ID of the parent module.
+     */
+    moduleId: string;
+    /**
+     * Secrets available to this version (name and updatedAt only, values never returned).
+     */
+    secrets: outputs.GetActionModuleVersionsVersionSecret[];
+    /**
+     * The sequential version number.
+     */
+    versionNumber: number;
+}
+
+export interface GetActionModuleVersionsVersionDependency {
+    /**
+     * Dependency name.
+     */
+    name: string;
+    /**
+     * Dependency version.
+     */
+    version: string;
+}
+
+export interface GetActionModuleVersionsVersionSecret {
+    /**
+     * Secret name.
+     */
+    name: string;
+    /**
+     * The time when this secret was last updated.
+     */
+    updatedAt: string;
 }
 
 export interface GetActionSecret {
@@ -5072,6 +5377,10 @@ export interface GetConnectionOption {
      */
     scripts: {[key: string]: string};
     /**
+     * When true and `type` is 'back_channel', includes a cryptographic nonce in authorization requests to prevent replay attacks. The identity provider must include this nonce in the ID token for validation.
+     */
+    sendBackChannelNonce: boolean;
+    /**
      * Session Key for storing the request token.
      */
     sessionKey: string;
@@ -5175,6 +5484,10 @@ export interface GetConnectionOption {
      * Indicates whether to use Kerberos or not.
      */
     useKerberos: boolean;
+    /**
+     * Determines the `scopes` format: `true` makes it a space-separated string (per OAuth2 specification); `false` makes it an array.
+     */
+    useOauthSpecScope: boolean;
     /**
      * Whether to use WS-Fed.
      */

@@ -124,6 +124,10 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly ImmutableArray<string> EnabledLocales;
         /// <summary>
+        /// Number of hours an ephemeral (non-persistent) session will stay valid.
+        /// </summary>
+        public readonly double EphemeralSessionLifetime;
+        /// <summary>
         /// Configuration for the error page
         /// </summary>
         public readonly ImmutableArray<Outputs.GetTenantErrorPageResult> ErrorPages;
@@ -139,6 +143,10 @@ namespace Pulumi.Auth0
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Number of hours for which an ephemeral (non-persistent) session can be inactive before the user must log in again.
+        /// </summary>
+        public readonly double IdleEphemeralSessionLifetime;
         /// <summary>
         /// Number of hours during which a session can be inactive before the user must log in again.
         /// </summary>
@@ -216,6 +224,8 @@ namespace Pulumi.Auth0
 
             ImmutableArray<string> enabledLocales,
 
+            double ephemeralSessionLifetime,
+
             ImmutableArray<Outputs.GetTenantErrorPageResult> errorPages,
 
             ImmutableArray<Outputs.GetTenantFlagResult> flags,
@@ -223,6 +233,8 @@ namespace Pulumi.Auth0
             string friendlyName,
 
             string id,
+
+            double idleEphemeralSessionLifetime,
 
             double idleSessionLifetime,
 
@@ -261,10 +273,12 @@ namespace Pulumi.Auth0
             DisableAcrValuesSupported = disableAcrValuesSupported;
             Domain = domain;
             EnabledLocales = enabledLocales;
+            EphemeralSessionLifetime = ephemeralSessionLifetime;
             ErrorPages = errorPages;
             Flags = flags;
             FriendlyName = friendlyName;
             Id = id;
+            IdleEphemeralSessionLifetime = idleEphemeralSessionLifetime;
             IdleSessionLifetime = idleSessionLifetime;
             ManagementApiIdentifier = managementApiIdentifier;
             Mtls = mtls;

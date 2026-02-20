@@ -108,12 +108,16 @@ type Tenant struct {
 	DisableAcrValuesSupported pulumi.BoolOutput `pulumi:"disableAcrValuesSupported"`
 	// Supported locales for the user interface. The first locale in the list will be used to set the default locale.
 	EnabledLocales pulumi.StringArrayOutput `pulumi:"enabledLocales"`
+	// Number of hours an ephemeral (non-persistent) session will stay valid.
+	EphemeralSessionLifetime pulumi.Float64PtrOutput `pulumi:"ephemeralSessionLifetime"`
 	// Configuration for the error page
 	ErrorPage TenantErrorPagePtrOutput `pulumi:"errorPage"`
 	// Configuration settings for tenant flags.
 	Flags TenantFlagsOutput `pulumi:"flags"`
 	// Friendly name for the tenant.
 	FriendlyName pulumi.StringOutput `pulumi:"friendlyName"`
+	// Number of hours for which an ephemeral (non-persistent) session can be inactive before the user must log in again.
+	IdleEphemeralSessionLifetime pulumi.Float64PtrOutput `pulumi:"idleEphemeralSessionLifetime"`
 	// Number of hours during which a session can be inactive before the user must log in again.
 	IdleSessionLifetime pulumi.Float64PtrOutput `pulumi:"idleSessionLifetime"`
 	// Configuration for mTLS.
@@ -190,12 +194,16 @@ type tenantState struct {
 	DisableAcrValuesSupported *bool `pulumi:"disableAcrValuesSupported"`
 	// Supported locales for the user interface. The first locale in the list will be used to set the default locale.
 	EnabledLocales []string `pulumi:"enabledLocales"`
+	// Number of hours an ephemeral (non-persistent) session will stay valid.
+	EphemeralSessionLifetime *float64 `pulumi:"ephemeralSessionLifetime"`
 	// Configuration for the error page
 	ErrorPage *TenantErrorPage `pulumi:"errorPage"`
 	// Configuration settings for tenant flags.
 	Flags *TenantFlags `pulumi:"flags"`
 	// Friendly name for the tenant.
 	FriendlyName *string `pulumi:"friendlyName"`
+	// Number of hours for which an ephemeral (non-persistent) session can be inactive before the user must log in again.
+	IdleEphemeralSessionLifetime *float64 `pulumi:"idleEphemeralSessionLifetime"`
 	// Number of hours during which a session can be inactive before the user must log in again.
 	IdleSessionLifetime *float64 `pulumi:"idleSessionLifetime"`
 	// Configuration for mTLS.
@@ -243,12 +251,16 @@ type TenantState struct {
 	DisableAcrValuesSupported pulumi.BoolPtrInput
 	// Supported locales for the user interface. The first locale in the list will be used to set the default locale.
 	EnabledLocales pulumi.StringArrayInput
+	// Number of hours an ephemeral (non-persistent) session will stay valid.
+	EphemeralSessionLifetime pulumi.Float64PtrInput
 	// Configuration for the error page
 	ErrorPage TenantErrorPagePtrInput
 	// Configuration settings for tenant flags.
 	Flags TenantFlagsPtrInput
 	// Friendly name for the tenant.
 	FriendlyName pulumi.StringPtrInput
+	// Number of hours for which an ephemeral (non-persistent) session can be inactive before the user must log in again.
+	IdleEphemeralSessionLifetime pulumi.Float64PtrInput
 	// Number of hours during which a session can be inactive before the user must log in again.
 	IdleSessionLifetime pulumi.Float64PtrInput
 	// Configuration for mTLS.
@@ -300,12 +312,16 @@ type tenantArgs struct {
 	DisableAcrValuesSupported *bool `pulumi:"disableAcrValuesSupported"`
 	// Supported locales for the user interface. The first locale in the list will be used to set the default locale.
 	EnabledLocales []string `pulumi:"enabledLocales"`
+	// Number of hours an ephemeral (non-persistent) session will stay valid.
+	EphemeralSessionLifetime *float64 `pulumi:"ephemeralSessionLifetime"`
 	// Configuration for the error page
 	ErrorPage *TenantErrorPage `pulumi:"errorPage"`
 	// Configuration settings for tenant flags.
 	Flags *TenantFlags `pulumi:"flags"`
 	// Friendly name for the tenant.
 	FriendlyName *string `pulumi:"friendlyName"`
+	// Number of hours for which an ephemeral (non-persistent) session can be inactive before the user must log in again.
+	IdleEphemeralSessionLifetime *float64 `pulumi:"idleEphemeralSessionLifetime"`
 	// Number of hours during which a session can be inactive before the user must log in again.
 	IdleSessionLifetime *float64 `pulumi:"idleSessionLifetime"`
 	// Configuration for mTLS.
@@ -354,12 +370,16 @@ type TenantArgs struct {
 	DisableAcrValuesSupported pulumi.BoolPtrInput
 	// Supported locales for the user interface. The first locale in the list will be used to set the default locale.
 	EnabledLocales pulumi.StringArrayInput
+	// Number of hours an ephemeral (non-persistent) session will stay valid.
+	EphemeralSessionLifetime pulumi.Float64PtrInput
 	// Configuration for the error page
 	ErrorPage TenantErrorPagePtrInput
 	// Configuration settings for tenant flags.
 	Flags TenantFlagsPtrInput
 	// Friendly name for the tenant.
 	FriendlyName pulumi.StringPtrInput
+	// Number of hours for which an ephemeral (non-persistent) session can be inactive before the user must log in again.
+	IdleEphemeralSessionLifetime pulumi.Float64PtrInput
 	// Number of hours during which a session can be inactive before the user must log in again.
 	IdleSessionLifetime pulumi.Float64PtrInput
 	// Configuration for mTLS.
@@ -523,6 +543,11 @@ func (o TenantOutput) EnabledLocales() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Tenant) pulumi.StringArrayOutput { return v.EnabledLocales }).(pulumi.StringArrayOutput)
 }
 
+// Number of hours an ephemeral (non-persistent) session will stay valid.
+func (o TenantOutput) EphemeralSessionLifetime() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *Tenant) pulumi.Float64PtrOutput { return v.EphemeralSessionLifetime }).(pulumi.Float64PtrOutput)
+}
+
 // Configuration for the error page
 func (o TenantOutput) ErrorPage() TenantErrorPagePtrOutput {
 	return o.ApplyT(func(v *Tenant) TenantErrorPagePtrOutput { return v.ErrorPage }).(TenantErrorPagePtrOutput)
@@ -536,6 +561,11 @@ func (o TenantOutput) Flags() TenantFlagsOutput {
 // Friendly name for the tenant.
 func (o TenantOutput) FriendlyName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Tenant) pulumi.StringOutput { return v.FriendlyName }).(pulumi.StringOutput)
+}
+
+// Number of hours for which an ephemeral (non-persistent) session can be inactive before the user must log in again.
+func (o TenantOutput) IdleEphemeralSessionLifetime() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *Tenant) pulumi.Float64PtrOutput { return v.IdleEphemeralSessionLifetime }).(pulumi.Float64PtrOutput)
 }
 
 // Number of hours during which a session can be inactive before the user must log in again.

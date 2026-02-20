@@ -16,6 +16,100 @@ export interface ActionDependency {
     version: pulumi.Input<string>;
 }
 
+export interface ActionModule {
+    /**
+     * The unique ID of the module.
+     */
+    moduleId: pulumi.Input<string>;
+    /**
+     * The name of the module.
+     */
+    moduleName?: pulumi.Input<string>;
+    /**
+     * The ID of the specific module version to use.
+     */
+    moduleVersionId: pulumi.Input<string>;
+    /**
+     * The version number of the module.
+     */
+    moduleVersionNumber?: pulumi.Input<number>;
+}
+
+export interface ActionModuleDependency {
+    /**
+     * Dependency name, e.g. `lodash`.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Dependency version, e.g. `latest` or `4.17.21`.
+     */
+    version: pulumi.Input<string>;
+}
+
+export interface ActionModuleLatestVersion {
+    /**
+     * The source code of this version.
+     */
+    code?: pulumi.Input<string>;
+    /**
+     * The time when this version was created.
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * List of third party npm modules, and their versions, that this version depends on.
+     */
+    dependencies?: pulumi.Input<pulumi.Input<inputs.ActionModuleLatestVersionDependency>[]>;
+    /**
+     * The unique identifier of the version.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * List of secrets that are included in this version.
+     */
+    secrets?: pulumi.Input<pulumi.Input<inputs.ActionModuleLatestVersionSecret>[]>;
+    /**
+     * The version number.
+     */
+    versionNumber?: pulumi.Input<number>;
+}
+
+export interface ActionModuleLatestVersionDependency {
+    /**
+     * Dependency name.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Dependency version.
+     */
+    version?: pulumi.Input<string>;
+}
+
+export interface ActionModuleLatestVersionSecret {
+    /**
+     * Secret name.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The time when this secret was last updated.
+     */
+    updatedAt?: pulumi.Input<string>;
+}
+
+export interface ActionModuleSecret {
+    /**
+     * Secret name. Required when configuring secrets
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Last update time
+     */
+    updatedAt?: pulumi.Input<string>;
+    /**
+     * Secret value. Required when configuring secrets
+     */
+    value?: pulumi.Input<string>;
+}
+
 export interface ActionSecret {
     /**
      * Secret name.
@@ -1916,6 +2010,10 @@ export interface ConnectionOptions {
      */
     scripts?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * When true and `type` is 'back_channel', includes a cryptographic nonce in authorization requests to prevent replay attacks. The identity provider must include this nonce in the ID token for validation.
+     */
+    sendBackChannelNonce?: pulumi.Input<boolean>;
+    /**
      * Session Key for storing the request token.
      */
     sessionKey?: pulumi.Input<string>;
@@ -2019,6 +2117,10 @@ export interface ConnectionOptions {
      * Indicates whether to use Kerberos or not.
      */
     useKerberos?: pulumi.Input<boolean>;
+    /**
+     * Determines the `scopes` format: `true` makes it a space-separated string (per OAuth2 specification); `false` makes it an array.
+     */
+    useOauthSpecScope?: pulumi.Input<boolean>;
     /**
      * Whether to use WS-Fed.
      */

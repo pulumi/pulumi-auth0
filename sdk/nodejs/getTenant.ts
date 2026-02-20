@@ -73,6 +73,10 @@ export interface GetTenantResult {
      */
     readonly enabledLocales: string[];
     /**
+     * Number of hours an ephemeral (non-persistent) session will stay valid.
+     */
+    readonly ephemeralSessionLifetime: number;
+    /**
      * Configuration for the error page
      */
     readonly errorPages: outputs.GetTenantErrorPage[];
@@ -88,6 +92,10 @@ export interface GetTenantResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * Number of hours for which an ephemeral (non-persistent) session can be inactive before the user must log in again.
+     */
+    readonly idleEphemeralSessionLifetime: number;
     /**
      * Number of hours during which a session can be inactive before the user must log in again.
      */

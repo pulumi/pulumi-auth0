@@ -27,7 +27,7 @@ class GetTenantResult:
     """
     A collection of values returned by getTenant.
     """
-    def __init__(__self__, acr_values_supporteds=None, allow_organization_name_in_authentication_api=None, allowed_logout_urls=None, customize_mfa_in_postlogin_action=None, default_audience=None, default_directory=None, default_redirection_uri=None, default_token_quotas=None, disable_acr_values_supported=None, domain=None, enabled_locales=None, error_pages=None, flags=None, friendly_name=None, id=None, idle_session_lifetime=None, management_api_identifier=None, mtls=None, oidc_logouts=None, picture_url=None, pushed_authorization_requests_supported=None, sandbox_version=None, session_cookies=None, session_lifetime=None, sessions=None, skip_non_verifiable_callback_uri_confirmation_prompt=None, support_email=None, support_url=None):
+    def __init__(__self__, acr_values_supporteds=None, allow_organization_name_in_authentication_api=None, allowed_logout_urls=None, customize_mfa_in_postlogin_action=None, default_audience=None, default_directory=None, default_redirection_uri=None, default_token_quotas=None, disable_acr_values_supported=None, domain=None, enabled_locales=None, ephemeral_session_lifetime=None, error_pages=None, flags=None, friendly_name=None, id=None, idle_ephemeral_session_lifetime=None, idle_session_lifetime=None, management_api_identifier=None, mtls=None, oidc_logouts=None, picture_url=None, pushed_authorization_requests_supported=None, sandbox_version=None, session_cookies=None, session_lifetime=None, sessions=None, skip_non_verifiable_callback_uri_confirmation_prompt=None, support_email=None, support_url=None):
         if acr_values_supporteds and not isinstance(acr_values_supporteds, list):
             raise TypeError("Expected argument 'acr_values_supporteds' to be a list")
         pulumi.set(__self__, "acr_values_supporteds", acr_values_supporteds)
@@ -61,6 +61,9 @@ class GetTenantResult:
         if enabled_locales and not isinstance(enabled_locales, list):
             raise TypeError("Expected argument 'enabled_locales' to be a list")
         pulumi.set(__self__, "enabled_locales", enabled_locales)
+        if ephemeral_session_lifetime and not isinstance(ephemeral_session_lifetime, float):
+            raise TypeError("Expected argument 'ephemeral_session_lifetime' to be a float")
+        pulumi.set(__self__, "ephemeral_session_lifetime", ephemeral_session_lifetime)
         if error_pages and not isinstance(error_pages, list):
             raise TypeError("Expected argument 'error_pages' to be a list")
         pulumi.set(__self__, "error_pages", error_pages)
@@ -73,6 +76,9 @@ class GetTenantResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if idle_ephemeral_session_lifetime and not isinstance(idle_ephemeral_session_lifetime, float):
+            raise TypeError("Expected argument 'idle_ephemeral_session_lifetime' to be a float")
+        pulumi.set(__self__, "idle_ephemeral_session_lifetime", idle_ephemeral_session_lifetime)
         if idle_session_lifetime and not isinstance(idle_session_lifetime, float):
             raise TypeError("Expected argument 'idle_session_lifetime' to be a float")
         pulumi.set(__self__, "idle_session_lifetime", idle_session_lifetime)
@@ -202,6 +208,14 @@ class GetTenantResult:
         return pulumi.get(self, "enabled_locales")
 
     @_builtins.property
+    @pulumi.getter(name="ephemeralSessionLifetime")
+    def ephemeral_session_lifetime(self) -> _builtins.float:
+        """
+        Number of hours an ephemeral (non-persistent) session will stay valid.
+        """
+        return pulumi.get(self, "ephemeral_session_lifetime")
+
+    @_builtins.property
     @pulumi.getter(name="errorPages")
     def error_pages(self) -> Sequence['outputs.GetTenantErrorPageResult']:
         """
@@ -232,6 +246,14 @@ class GetTenantResult:
         The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="idleEphemeralSessionLifetime")
+    def idle_ephemeral_session_lifetime(self) -> _builtins.float:
+        """
+        Number of hours for which an ephemeral (non-persistent) session can be inactive before the user must log in again.
+        """
+        return pulumi.get(self, "idle_ephemeral_session_lifetime")
 
     @_builtins.property
     @pulumi.getter(name="idleSessionLifetime")
@@ -355,10 +377,12 @@ class AwaitableGetTenantResult(GetTenantResult):
             disable_acr_values_supported=self.disable_acr_values_supported,
             domain=self.domain,
             enabled_locales=self.enabled_locales,
+            ephemeral_session_lifetime=self.ephemeral_session_lifetime,
             error_pages=self.error_pages,
             flags=self.flags,
             friendly_name=self.friendly_name,
             id=self.id,
+            idle_ephemeral_session_lifetime=self.idle_ephemeral_session_lifetime,
             idle_session_lifetime=self.idle_session_lifetime,
             management_api_identifier=self.management_api_identifier,
             mtls=self.mtls,
@@ -403,10 +427,12 @@ def get_tenant(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTenan
         disable_acr_values_supported=pulumi.get(__ret__, 'disable_acr_values_supported'),
         domain=pulumi.get(__ret__, 'domain'),
         enabled_locales=pulumi.get(__ret__, 'enabled_locales'),
+        ephemeral_session_lifetime=pulumi.get(__ret__, 'ephemeral_session_lifetime'),
         error_pages=pulumi.get(__ret__, 'error_pages'),
         flags=pulumi.get(__ret__, 'flags'),
         friendly_name=pulumi.get(__ret__, 'friendly_name'),
         id=pulumi.get(__ret__, 'id'),
+        idle_ephemeral_session_lifetime=pulumi.get(__ret__, 'idle_ephemeral_session_lifetime'),
         idle_session_lifetime=pulumi.get(__ret__, 'idle_session_lifetime'),
         management_api_identifier=pulumi.get(__ret__, 'management_api_identifier'),
         mtls=pulumi.get(__ret__, 'mtls'),
@@ -448,10 +474,12 @@ def get_tenant_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOu
         disable_acr_values_supported=pulumi.get(__response__, 'disable_acr_values_supported'),
         domain=pulumi.get(__response__, 'domain'),
         enabled_locales=pulumi.get(__response__, 'enabled_locales'),
+        ephemeral_session_lifetime=pulumi.get(__response__, 'ephemeral_session_lifetime'),
         error_pages=pulumi.get(__response__, 'error_pages'),
         flags=pulumi.get(__response__, 'flags'),
         friendly_name=pulumi.get(__response__, 'friendly_name'),
         id=pulumi.get(__response__, 'id'),
+        idle_ephemeral_session_lifetime=pulumi.get(__response__, 'idle_ephemeral_session_lifetime'),
         idle_session_lifetime=pulumi.get(__response__, 'idle_session_lifetime'),
         management_api_identifier=pulumi.get(__response__, 'management_api_identifier'),
         mtls=pulumi.get(__response__, 'mtls'),
