@@ -147,6 +147,12 @@ namespace Pulumi.Auth0
         public Output<ImmutableArray<string>> EnabledLocales { get; private set; } = null!;
 
         /// <summary>
+        /// Number of hours an ephemeral (non-persistent) session will stay valid.
+        /// </summary>
+        [Output("ephemeralSessionLifetime")]
+        public Output<double?> EphemeralSessionLifetime { get; private set; } = null!;
+
+        /// <summary>
         /// Configuration for the error page
         /// </summary>
         [Output("errorPage")]
@@ -163,6 +169,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Output("friendlyName")]
         public Output<string> FriendlyName { get; private set; } = null!;
+
+        /// <summary>
+        /// Number of hours for which an ephemeral (non-persistent) session can be inactive before the user must log in again.
+        /// </summary>
+        [Output("idleEphemeralSessionLifetime")]
+        public Output<double?> IdleEphemeralSessionLifetime { get; private set; } = null!;
 
         /// <summary>
         /// Number of hours during which a session can be inactive before the user must log in again.
@@ -361,6 +373,12 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
+        /// Number of hours an ephemeral (non-persistent) session will stay valid.
+        /// </summary>
+        [Input("ephemeralSessionLifetime")]
+        public Input<double>? EphemeralSessionLifetime { get; set; }
+
+        /// <summary>
         /// Configuration for the error page
         /// </summary>
         [Input("errorPage")]
@@ -377,6 +395,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("friendlyName")]
         public Input<string>? FriendlyName { get; set; }
+
+        /// <summary>
+        /// Number of hours for which an ephemeral (non-persistent) session can be inactive before the user must log in again.
+        /// </summary>
+        [Input("idleEphemeralSessionLifetime")]
+        public Input<double>? IdleEphemeralSessionLifetime { get; set; }
 
         /// <summary>
         /// Number of hours during which a session can be inactive before the user must log in again.
@@ -537,6 +561,12 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
+        /// Number of hours an ephemeral (non-persistent) session will stay valid.
+        /// </summary>
+        [Input("ephemeralSessionLifetime")]
+        public Input<double>? EphemeralSessionLifetime { get; set; }
+
+        /// <summary>
         /// Configuration for the error page
         /// </summary>
         [Input("errorPage")]
@@ -553,6 +583,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("friendlyName")]
         public Input<string>? FriendlyName { get; set; }
+
+        /// <summary>
+        /// Number of hours for which an ephemeral (non-persistent) session can be inactive before the user must log in again.
+        /// </summary>
+        [Input("idleEphemeralSessionLifetime")]
+        public Input<double>? IdleEphemeralSessionLifetime { get; set; }
 
         /// <summary>
         /// Number of hours during which a session can be inactive before the user must log in again.

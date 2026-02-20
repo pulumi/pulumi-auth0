@@ -132,6 +132,10 @@ export class Tenant extends pulumi.CustomResource {
      */
     declare public readonly enabledLocales: pulumi.Output<string[]>;
     /**
+     * Number of hours an ephemeral (non-persistent) session will stay valid.
+     */
+    declare public readonly ephemeralSessionLifetime: pulumi.Output<number | undefined>;
+    /**
      * Configuration for the error page
      */
     declare public readonly errorPage: pulumi.Output<outputs.TenantErrorPage | undefined>;
@@ -143,6 +147,10 @@ export class Tenant extends pulumi.CustomResource {
      * Friendly name for the tenant.
      */
     declare public readonly friendlyName: pulumi.Output<string>;
+    /**
+     * Number of hours for which an ephemeral (non-persistent) session can be inactive before the user must log in again.
+     */
+    declare public readonly idleEphemeralSessionLifetime: pulumi.Output<number | undefined>;
     /**
      * Number of hours during which a session can be inactive before the user must log in again.
      */
@@ -215,9 +223,11 @@ export class Tenant extends pulumi.CustomResource {
             resourceInputs["defaultTokenQuota"] = state?.defaultTokenQuota;
             resourceInputs["disableAcrValuesSupported"] = state?.disableAcrValuesSupported;
             resourceInputs["enabledLocales"] = state?.enabledLocales;
+            resourceInputs["ephemeralSessionLifetime"] = state?.ephemeralSessionLifetime;
             resourceInputs["errorPage"] = state?.errorPage;
             resourceInputs["flags"] = state?.flags;
             resourceInputs["friendlyName"] = state?.friendlyName;
+            resourceInputs["idleEphemeralSessionLifetime"] = state?.idleEphemeralSessionLifetime;
             resourceInputs["idleSessionLifetime"] = state?.idleSessionLifetime;
             resourceInputs["mtls"] = state?.mtls;
             resourceInputs["oidcLogout"] = state?.oidcLogout;
@@ -242,9 +252,11 @@ export class Tenant extends pulumi.CustomResource {
             resourceInputs["defaultTokenQuota"] = args?.defaultTokenQuota;
             resourceInputs["disableAcrValuesSupported"] = args?.disableAcrValuesSupported;
             resourceInputs["enabledLocales"] = args?.enabledLocales;
+            resourceInputs["ephemeralSessionLifetime"] = args?.ephemeralSessionLifetime;
             resourceInputs["errorPage"] = args?.errorPage;
             resourceInputs["flags"] = args?.flags;
             resourceInputs["friendlyName"] = args?.friendlyName;
+            resourceInputs["idleEphemeralSessionLifetime"] = args?.idleEphemeralSessionLifetime;
             resourceInputs["idleSessionLifetime"] = args?.idleSessionLifetime;
             resourceInputs["mtls"] = args?.mtls;
             resourceInputs["oidcLogout"] = args?.oidcLogout;
@@ -308,6 +320,10 @@ export interface TenantState {
      */
     enabledLocales?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Number of hours an ephemeral (non-persistent) session will stay valid.
+     */
+    ephemeralSessionLifetime?: pulumi.Input<number>;
+    /**
      * Configuration for the error page
      */
     errorPage?: pulumi.Input<inputs.TenantErrorPage>;
@@ -319,6 +335,10 @@ export interface TenantState {
      * Friendly name for the tenant.
      */
     friendlyName?: pulumi.Input<string>;
+    /**
+     * Number of hours for which an ephemeral (non-persistent) session can be inactive before the user must log in again.
+     */
+    idleEphemeralSessionLifetime?: pulumi.Input<number>;
     /**
      * Number of hours during which a session can be inactive before the user must log in again.
      */
@@ -414,6 +434,10 @@ export interface TenantArgs {
      */
     enabledLocales?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Number of hours an ephemeral (non-persistent) session will stay valid.
+     */
+    ephemeralSessionLifetime?: pulumi.Input<number>;
+    /**
      * Configuration for the error page
      */
     errorPage?: pulumi.Input<inputs.TenantErrorPage>;
@@ -425,6 +449,10 @@ export interface TenantArgs {
      * Friendly name for the tenant.
      */
     friendlyName?: pulumi.Input<string>;
+    /**
+     * Number of hours for which an ephemeral (non-persistent) session can be inactive before the user must log in again.
+     */
+    idleEphemeralSessionLifetime?: pulumi.Input<number>;
     /**
      * Number of hours during which a session can be inactive before the user must log in again.
      */

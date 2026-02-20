@@ -121,7 +121,7 @@ namespace Pulumi.Auth0
     public sealed class GetSelfServiceProfileResult
     {
         /// <summary>
-        /// List of IdP strategies that will be shown to users during the Self-Service SSO flow.
+        /// List of IdP strategies that will be shown to users during the Self-Service SSO flow. Valid values are: oidc, samlp, waad, google-apps, adfs, okta, keycloak-samlp, pingfederate, auth0-samlp, okta-samlp.
         /// </summary>
         public readonly ImmutableArray<string> AllowedStrategies;
         /// <summary>

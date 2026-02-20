@@ -14,7 +14,7 @@ import java.util.Objects;
 @CustomType
 public final class GetSelfServiceProfileResult {
     /**
-     * @return List of IdP strategies that will be shown to users during the Self-Service SSO flow.
+     * @return List of IdP strategies that will be shown to users during the Self-Service SSO flow. Valid values are: oidc, samlp, waad, google-apps, adfs, okta, keycloak-samlp, pingfederate, auth0-samlp, okta-samlp.
      * 
      */
     private List<String> allowedStrategies;
@@ -61,7 +61,7 @@ public final class GetSelfServiceProfileResult {
 
     private GetSelfServiceProfileResult() {}
     /**
-     * @return List of IdP strategies that will be shown to users during the Self-Service SSO flow.
+     * @return List of IdP strategies that will be shown to users during the Self-Service SSO flow. Valid values are: oidc, samlp, waad, google-apps, adfs, okta, keycloak-samlp, pingfederate, auth0-samlp, okta-samlp.
      * 
      */
     public List<String> allowedStrategies() {

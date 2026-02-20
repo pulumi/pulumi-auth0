@@ -7,6 +7,7 @@ import com.pulumi.auth0.ActionArgs;
 import com.pulumi.auth0.Utilities;
 import com.pulumi.auth0.inputs.ActionState;
 import com.pulumi.auth0.outputs.ActionDependency;
+import com.pulumi.auth0.outputs.ActionModule;
 import com.pulumi.auth0.outputs.ActionSecret;
 import com.pulumi.auth0.outputs.ActionSupportedTriggers;
 import com.pulumi.core.Output;
@@ -163,6 +164,20 @@ public class Action extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> deploy() {
         return Codegen.optional(this.deploy);
+    }
+    /**
+     * List of action modules and their versions that this action depends on.
+     * 
+     */
+    @Export(name="modules", refs={List.class,ActionModule.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<ActionModule>> modules;
+
+    /**
+     * @return List of action modules and their versions that this action depends on.
+     * 
+     */
+    public Output<Optional<List<ActionModule>>> modules() {
+        return Codegen.optional(this.modules);
     }
     /**
      * The name of the action.

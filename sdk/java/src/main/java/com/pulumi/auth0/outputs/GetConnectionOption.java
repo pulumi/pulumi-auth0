@@ -413,6 +413,11 @@ public final class GetConnectionOption {
      */
     private Map<String,String> scripts;
     /**
+     * @return When true and `type` is &#39;back_channel&#39;, includes a cryptographic nonce in authorization requests to prevent replay attacks. The identity provider must include this nonce in the ID token for validation.
+     * 
+     */
+    private Boolean sendBackChannelNonce;
+    /**
      * @return Session Key for storing the request token.
      * 
      */
@@ -542,6 +547,11 @@ public final class GetConnectionOption {
      * 
      */
     private Boolean useKerberos;
+    /**
+     * @return Determines the `scopes` format: `true` makes it a space-separated string (per OAuth2 specification); `false` makes it an array.
+     * 
+     */
+    private Boolean useOauthSpecScope;
     /**
      * @return Whether to use WS-Fed.
      * 
@@ -1112,6 +1122,13 @@ public final class GetConnectionOption {
         return this.scripts;
     }
     /**
+     * @return When true and `type` is &#39;back_channel&#39;, includes a cryptographic nonce in authorization requests to prevent replay attacks. The identity provider must include this nonce in the ID token for validation.
+     * 
+     */
+    public Boolean sendBackChannelNonce() {
+        return this.sendBackChannelNonce;
+    }
+    /**
      * @return Session Key for storing the request token.
      * 
      */
@@ -1294,6 +1311,13 @@ public final class GetConnectionOption {
         return this.useKerberos;
     }
     /**
+     * @return Determines the `scopes` format: `true` makes it a space-separated string (per OAuth2 specification); `false` makes it an array.
+     * 
+     */
+    public Boolean useOauthSpecScope() {
+        return this.useOauthSpecScope;
+    }
+    /**
      * @return Whether to use WS-Fed.
      * 
      */
@@ -1428,6 +1452,7 @@ public final class GetConnectionOption {
         private Boolean requiresUsername;
         private List<String> scopes;
         private Map<String,String> scripts;
+        private Boolean sendBackChannelNonce;
         private String sessionKey;
         private String setUserRootAttributes;
         private String shouldTrustEmailVerifiedConnection;
@@ -1454,6 +1479,7 @@ public final class GetConnectionOption {
         private String upstreamParams;
         private Boolean useCertAuth;
         private Boolean useKerberos;
+        private Boolean useOauthSpecScope;
         private Boolean useWsfed;
         private String userAuthorizationUrl;
         private String userIdAttribute;
@@ -1540,6 +1566,7 @@ public final class GetConnectionOption {
     	      this.requiresUsername = defaults.requiresUsername;
     	      this.scopes = defaults.scopes;
     	      this.scripts = defaults.scripts;
+    	      this.sendBackChannelNonce = defaults.sendBackChannelNonce;
     	      this.sessionKey = defaults.sessionKey;
     	      this.setUserRootAttributes = defaults.setUserRootAttributes;
     	      this.shouldTrustEmailVerifiedConnection = defaults.shouldTrustEmailVerifiedConnection;
@@ -1566,6 +1593,7 @@ public final class GetConnectionOption {
     	      this.upstreamParams = defaults.upstreamParams;
     	      this.useCertAuth = defaults.useCertAuth;
     	      this.useKerberos = defaults.useKerberos;
+    	      this.useOauthSpecScope = defaults.useOauthSpecScope;
     	      this.useWsfed = defaults.useWsfed;
     	      this.userAuthorizationUrl = defaults.userAuthorizationUrl;
     	      this.userIdAttribute = defaults.userIdAttribute;
@@ -2247,6 +2275,14 @@ public final class GetConnectionOption {
             return this;
         }
         @CustomType.Setter
+        public Builder sendBackChannelNonce(Boolean sendBackChannelNonce) {
+            if (sendBackChannelNonce == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOption", "sendBackChannelNonce");
+            }
+            this.sendBackChannelNonce = sendBackChannelNonce;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sessionKey(String sessionKey) {
             if (sessionKey == null) {
               throw new MissingRequiredPropertyException("GetConnectionOption", "sessionKey");
@@ -2461,6 +2497,14 @@ public final class GetConnectionOption {
             return this;
         }
         @CustomType.Setter
+        public Builder useOauthSpecScope(Boolean useOauthSpecScope) {
+            if (useOauthSpecScope == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOption", "useOauthSpecScope");
+            }
+            this.useOauthSpecScope = useOauthSpecScope;
+            return this;
+        }
+        @CustomType.Setter
         public Builder useWsfed(Boolean useWsfed) {
             if (useWsfed == null) {
               throw new MissingRequiredPropertyException("GetConnectionOption", "useWsfed");
@@ -2597,6 +2641,7 @@ public final class GetConnectionOption {
             _resultValue.requiresUsername = requiresUsername;
             _resultValue.scopes = scopes;
             _resultValue.scripts = scripts;
+            _resultValue.sendBackChannelNonce = sendBackChannelNonce;
             _resultValue.sessionKey = sessionKey;
             _resultValue.setUserRootAttributes = setUserRootAttributes;
             _resultValue.shouldTrustEmailVerifiedConnection = shouldTrustEmailVerifiedConnection;
@@ -2623,6 +2668,7 @@ public final class GetConnectionOption {
             _resultValue.upstreamParams = upstreamParams;
             _resultValue.useCertAuth = useCertAuth;
             _resultValue.useKerberos = useKerberos;
+            _resultValue.useOauthSpecScope = useOauthSpecScope;
             _resultValue.useWsfed = useWsfed;
             _resultValue.userAuthorizationUrl = userAuthorizationUrl;
             _resultValue.userIdAttribute = userIdAttribute;

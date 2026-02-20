@@ -27,7 +27,7 @@ class GetActionResult:
     """
     A collection of values returned by getAction.
     """
-    def __init__(__self__, code=None, dependencies=None, deploy=None, id=None, name=None, runtime=None, secrets=None, supported_triggers=None, version_id=None):
+    def __init__(__self__, code=None, dependencies=None, deploy=None, id=None, modules=None, name=None, runtime=None, secrets=None, supported_triggers=None, version_id=None):
         if code and not isinstance(code, str):
             raise TypeError("Expected argument 'code' to be a str")
         pulumi.set(__self__, "code", code)
@@ -40,6 +40,9 @@ class GetActionResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if modules and not isinstance(modules, list):
+            raise TypeError("Expected argument 'modules' to be a list")
+        pulumi.set(__self__, "modules", modules)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -87,6 +90,14 @@ class GetActionResult:
         The ID of the action. If not provided, `name` must be set.
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def modules(self) -> Sequence['outputs.GetActionModuleResult']:
+        """
+        List of action modules and their versions that this action depends on.
+        """
+        return pulumi.get(self, "modules")
 
     @_builtins.property
     @pulumi.getter
@@ -139,6 +150,7 @@ class AwaitableGetActionResult(GetActionResult):
             dependencies=self.dependencies,
             deploy=self.deploy,
             id=self.id,
+            modules=self.modules,
             name=self.name,
             runtime=self.runtime,
             secrets=self.secrets,
@@ -167,6 +179,7 @@ def get_action(id: Optional[_builtins.str] = None,
         dependencies=pulumi.get(__ret__, 'dependencies'),
         deploy=pulumi.get(__ret__, 'deploy'),
         id=pulumi.get(__ret__, 'id'),
+        modules=pulumi.get(__ret__, 'modules'),
         name=pulumi.get(__ret__, 'name'),
         runtime=pulumi.get(__ret__, 'runtime'),
         secrets=pulumi.get(__ret__, 'secrets'),
@@ -192,6 +205,7 @@ def get_action_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] = None
         dependencies=pulumi.get(__response__, 'dependencies'),
         deploy=pulumi.get(__response__, 'deploy'),
         id=pulumi.get(__response__, 'id'),
+        modules=pulumi.get(__response__, 'modules'),
         name=pulumi.get(__response__, 'name'),
         runtime=pulumi.get(__response__, 'runtime'),
         secrets=pulumi.get(__response__, 'secrets'),

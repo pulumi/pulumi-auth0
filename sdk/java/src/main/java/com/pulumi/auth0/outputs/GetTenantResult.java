@@ -76,6 +76,11 @@ public final class GetTenantResult {
      */
     private List<String> enabledLocales;
     /**
+     * @return Number of hours an ephemeral (non-persistent) session will stay valid.
+     * 
+     */
+    private Double ephemeralSessionLifetime;
+    /**
      * @return Configuration for the error page
      * 
      */
@@ -95,6 +100,11 @@ public final class GetTenantResult {
      * 
      */
     private String id;
+    /**
+     * @return Number of hours for which an ephemeral (non-persistent) session can be inactive before the user must log in again.
+     * 
+     */
+    private Double idleEphemeralSessionLifetime;
     /**
      * @return Number of hours during which a session can be inactive before the user must log in again.
      * 
@@ -240,6 +250,13 @@ public final class GetTenantResult {
         return this.enabledLocales;
     }
     /**
+     * @return Number of hours an ephemeral (non-persistent) session will stay valid.
+     * 
+     */
+    public Double ephemeralSessionLifetime() {
+        return this.ephemeralSessionLifetime;
+    }
+    /**
      * @return Configuration for the error page
      * 
      */
@@ -266,6 +283,13 @@ public final class GetTenantResult {
      */
     public String id() {
         return this.id;
+    }
+    /**
+     * @return Number of hours for which an ephemeral (non-persistent) session can be inactive before the user must log in again.
+     * 
+     */
+    public Double idleEphemeralSessionLifetime() {
+        return this.idleEphemeralSessionLifetime;
     }
     /**
      * @return Number of hours during which a session can be inactive before the user must log in again.
@@ -379,10 +403,12 @@ public final class GetTenantResult {
         private Boolean disableAcrValuesSupported;
         private String domain;
         private List<String> enabledLocales;
+        private Double ephemeralSessionLifetime;
         private List<GetTenantErrorPage> errorPages;
         private List<GetTenantFlag> flags;
         private String friendlyName;
         private String id;
+        private Double idleEphemeralSessionLifetime;
         private Double idleSessionLifetime;
         private String managementApiIdentifier;
         private List<GetTenantMtl> mtls;
@@ -410,10 +436,12 @@ public final class GetTenantResult {
     	      this.disableAcrValuesSupported = defaults.disableAcrValuesSupported;
     	      this.domain = defaults.domain;
     	      this.enabledLocales = defaults.enabledLocales;
+    	      this.ephemeralSessionLifetime = defaults.ephemeralSessionLifetime;
     	      this.errorPages = defaults.errorPages;
     	      this.flags = defaults.flags;
     	      this.friendlyName = defaults.friendlyName;
     	      this.id = defaults.id;
+    	      this.idleEphemeralSessionLifetime = defaults.idleEphemeralSessionLifetime;
     	      this.idleSessionLifetime = defaults.idleSessionLifetime;
     	      this.managementApiIdentifier = defaults.managementApiIdentifier;
     	      this.mtls = defaults.mtls;
@@ -530,6 +558,14 @@ public final class GetTenantResult {
             return enabledLocales(List.of(enabledLocales));
         }
         @CustomType.Setter
+        public Builder ephemeralSessionLifetime(Double ephemeralSessionLifetime) {
+            if (ephemeralSessionLifetime == null) {
+              throw new MissingRequiredPropertyException("GetTenantResult", "ephemeralSessionLifetime");
+            }
+            this.ephemeralSessionLifetime = ephemeralSessionLifetime;
+            return this;
+        }
+        @CustomType.Setter
         public Builder errorPages(List<GetTenantErrorPage> errorPages) {
             if (errorPages == null) {
               throw new MissingRequiredPropertyException("GetTenantResult", "errorPages");
@@ -565,6 +601,14 @@ public final class GetTenantResult {
               throw new MissingRequiredPropertyException("GetTenantResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder idleEphemeralSessionLifetime(Double idleEphemeralSessionLifetime) {
+            if (idleEphemeralSessionLifetime == null) {
+              throw new MissingRequiredPropertyException("GetTenantResult", "idleEphemeralSessionLifetime");
+            }
+            this.idleEphemeralSessionLifetime = idleEphemeralSessionLifetime;
             return this;
         }
         @CustomType.Setter
@@ -696,10 +740,12 @@ public final class GetTenantResult {
             _resultValue.disableAcrValuesSupported = disableAcrValuesSupported;
             _resultValue.domain = domain;
             _resultValue.enabledLocales = enabledLocales;
+            _resultValue.ephemeralSessionLifetime = ephemeralSessionLifetime;
             _resultValue.errorPages = errorPages;
             _resultValue.flags = flags;
             _resultValue.friendlyName = friendlyName;
             _resultValue.id = id;
+            _resultValue.idleEphemeralSessionLifetime = idleEphemeralSessionLifetime;
             _resultValue.idleSessionLifetime = idleSessionLifetime;
             _resultValue.managementApiIdentifier = managementApiIdentifier;
             _resultValue.mtls = mtls;

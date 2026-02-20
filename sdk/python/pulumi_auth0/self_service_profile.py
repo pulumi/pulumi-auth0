@@ -29,7 +29,7 @@ class SelfServiceProfileArgs:
                  user_attributes: Optional[pulumi.Input[Sequence[pulumi.Input['SelfServiceProfileUserAttributeArgs']]]] = None):
         """
         The set of arguments for constructing a SelfServiceProfile resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_strategies: List of IdP strategies that will be shown to users during the Self-Service SSO flow.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_strategies: List of IdP strategies that will be shown to users during the Self-Service SSO flow. Valid values are: oidc, samlp, waad, google-apps, adfs, okta, keycloak-samlp, pingfederate, auth0-samlp, okta-samlp.
         :param pulumi.Input['SelfServiceProfileBrandingArgs'] branding: Field can be used to customize the look and feel of the wizard.
         :param pulumi.Input[_builtins.str] description: The description of the self-service Profile
         :param pulumi.Input[_builtins.str] name: The name of the self-service Profile
@@ -53,7 +53,7 @@ class SelfServiceProfileArgs:
     @pulumi.getter(name="allowedStrategies")
     def allowed_strategies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        List of IdP strategies that will be shown to users during the Self-Service SSO flow.
+        List of IdP strategies that will be shown to users during the Self-Service SSO flow. Valid values are: oidc, samlp, waad, google-apps, adfs, okta, keycloak-samlp, pingfederate, auth0-samlp, okta-samlp.
         """
         return pulumi.get(self, "allowed_strategies")
 
@@ -135,7 +135,7 @@ class _SelfServiceProfileState:
                  user_attributes: Optional[pulumi.Input[Sequence[pulumi.Input['SelfServiceProfileUserAttributeArgs']]]] = None):
         """
         Input properties used for looking up and filtering SelfServiceProfile resources.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_strategies: List of IdP strategies that will be shown to users during the Self-Service SSO flow.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_strategies: List of IdP strategies that will be shown to users during the Self-Service SSO flow. Valid values are: oidc, samlp, waad, google-apps, adfs, okta, keycloak-samlp, pingfederate, auth0-samlp, okta-samlp.
         :param pulumi.Input['SelfServiceProfileBrandingArgs'] branding: Field can be used to customize the look and feel of the wizard.
         :param pulumi.Input[_builtins.str] created_at: The ISO 8601 formatted date the profile was created.
         :param pulumi.Input[_builtins.str] description: The description of the self-service Profile
@@ -165,7 +165,7 @@ class _SelfServiceProfileState:
     @pulumi.getter(name="allowedStrategies")
     def allowed_strategies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        List of IdP strategies that will be shown to users during the Self-Service SSO flow.
+        List of IdP strategies that will be shown to users during the Self-Service SSO flow. Valid values are: oidc, samlp, waad, google-apps, adfs, okta, keycloak-samlp, pingfederate, auth0-samlp, okta-samlp.
         """
         return pulumi.get(self, "allowed_strategies")
 
@@ -307,7 +307,7 @@ class SelfServiceProfile(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_strategies: List of IdP strategies that will be shown to users during the Self-Service SSO flow.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_strategies: List of IdP strategies that will be shown to users during the Self-Service SSO flow. Valid values are: oidc, samlp, waad, google-apps, adfs, okta, keycloak-samlp, pingfederate, auth0-samlp, okta-samlp.
         :param pulumi.Input[Union['SelfServiceProfileBrandingArgs', 'SelfServiceProfileBrandingArgsDict']] branding: Field can be used to customize the look and feel of the wizard.
         :param pulumi.Input[_builtins.str] description: The description of the self-service Profile
         :param pulumi.Input[_builtins.str] name: The name of the self-service Profile
@@ -417,7 +417,7 @@ class SelfServiceProfile(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_strategies: List of IdP strategies that will be shown to users during the Self-Service SSO flow.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_strategies: List of IdP strategies that will be shown to users during the Self-Service SSO flow. Valid values are: oidc, samlp, waad, google-apps, adfs, okta, keycloak-samlp, pingfederate, auth0-samlp, okta-samlp.
         :param pulumi.Input[Union['SelfServiceProfileBrandingArgs', 'SelfServiceProfileBrandingArgsDict']] branding: Field can be used to customize the look and feel of the wizard.
         :param pulumi.Input[_builtins.str] created_at: The ISO 8601 formatted date the profile was created.
         :param pulumi.Input[_builtins.str] description: The description of the self-service Profile
@@ -444,7 +444,7 @@ class SelfServiceProfile(pulumi.CustomResource):
     @pulumi.getter(name="allowedStrategies")
     def allowed_strategies(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        List of IdP strategies that will be shown to users during the Self-Service SSO flow.
+        List of IdP strategies that will be shown to users during the Self-Service SSO flow. Valid values are: oidc, samlp, waad, google-apps, adfs, okta, keycloak-samlp, pingfederate, auth0-samlp, okta-samlp.
         """
         return pulumi.get(self, "allowed_strategies")
 

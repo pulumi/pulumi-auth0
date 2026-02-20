@@ -32,7 +32,7 @@ class ClientCredentialsArgs:
         The set of arguments for constructing a ClientCredentials resource.
         :param pulumi.Input[_builtins.str] client_id: The ID of the client for which to configure the authentication method.
         :param pulumi.Input[_builtins.str] authentication_method: Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `client_secret_post` (confidential client using HTTP POST parameters), `client_secret_basic` (confidential client using HTTP Basic), `private_key_jwt` (confidential client using a Private Key JWT), `tls_client_auth` (confidential client using CA-based mTLS authentication), `self_signed_tls_client_auth` (confidential client using mTLS authentication utilizing a self-signed certificate).
-        :param pulumi.Input[_builtins.str] client_secret: Secret for the client when using `client_secret_post` or `client_secret_basic` authentication method. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string. The attribute will also be an empty string in case `private_key_jwt` is selected as an authentication method.
+        :param pulumi.Input[_builtins.str] client_secret: Secret for the client when using `client_secret_post` or `client_secret_basic` authentication method. Keep this private. To access this attribute you need to add either `read:client_keys` or `read:client_credentials` scope to the Terraform client. Otherwise, the attribute will contain an empty string. The attribute will also be an empty string in case `private_key_jwt` is selected as an authentication method.
         :param pulumi.Input['ClientCredentialsPrivateKeyJwtArgs'] private_key_jwt: Defines `private_key_jwt` client authentication method.
         :param pulumi.Input['ClientCredentialsSelfSignedTlsClientAuthArgs'] self_signed_tls_client_auth: Defines `tls_client_auth` client authentication method.
         :param pulumi.Input['ClientCredentialsSignedRequestObjectArgs'] signed_request_object: Configuration for JWT-secured Authorization Requests(JAR).
@@ -80,7 +80,7 @@ class ClientCredentialsArgs:
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Secret for the client when using `client_secret_post` or `client_secret_basic` authentication method. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string. The attribute will also be an empty string in case `private_key_jwt` is selected as an authentication method.
+        Secret for the client when using `client_secret_post` or `client_secret_basic` authentication method. Keep this private. To access this attribute you need to add either `read:client_keys` or `read:client_credentials` scope to the Terraform client. Otherwise, the attribute will contain an empty string. The attribute will also be an empty string in case `private_key_jwt` is selected as an authentication method.
         """
         return pulumi.get(self, "client_secret")
 
@@ -151,7 +151,7 @@ class _ClientCredentialsState:
         Input properties used for looking up and filtering ClientCredentials resources.
         :param pulumi.Input[_builtins.str] authentication_method: Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `client_secret_post` (confidential client using HTTP POST parameters), `client_secret_basic` (confidential client using HTTP Basic), `private_key_jwt` (confidential client using a Private Key JWT), `tls_client_auth` (confidential client using CA-based mTLS authentication), `self_signed_tls_client_auth` (confidential client using mTLS authentication utilizing a self-signed certificate).
         :param pulumi.Input[_builtins.str] client_id: The ID of the client for which to configure the authentication method.
-        :param pulumi.Input[_builtins.str] client_secret: Secret for the client when using `client_secret_post` or `client_secret_basic` authentication method. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string. The attribute will also be an empty string in case `private_key_jwt` is selected as an authentication method.
+        :param pulumi.Input[_builtins.str] client_secret: Secret for the client when using `client_secret_post` or `client_secret_basic` authentication method. Keep this private. To access this attribute you need to add either `read:client_keys` or `read:client_credentials` scope to the Terraform client. Otherwise, the attribute will contain an empty string. The attribute will also be an empty string in case `private_key_jwt` is selected as an authentication method.
         :param pulumi.Input['ClientCredentialsPrivateKeyJwtArgs'] private_key_jwt: Defines `private_key_jwt` client authentication method.
         :param pulumi.Input['ClientCredentialsSelfSignedTlsClientAuthArgs'] self_signed_tls_client_auth: Defines `tls_client_auth` client authentication method.
         :param pulumi.Input['ClientCredentialsSignedRequestObjectArgs'] signed_request_object: Configuration for JWT-secured Authorization Requests(JAR).
@@ -200,7 +200,7 @@ class _ClientCredentialsState:
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Secret for the client when using `client_secret_post` or `client_secret_basic` authentication method. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string. The attribute will also be an empty string in case `private_key_jwt` is selected as an authentication method.
+        Secret for the client when using `client_secret_post` or `client_secret_basic` authentication method. Keep this private. To access this attribute you need to add either `read:client_keys` or `read:client_credentials` scope to the Terraform client. Otherwise, the attribute will contain an empty string. The attribute will also be an empty string in case `private_key_jwt` is selected as an authentication method.
         """
         return pulumi.get(self, "client_secret")
 
@@ -294,7 +294,7 @@ class ClientCredentials(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] authentication_method: Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `client_secret_post` (confidential client using HTTP POST parameters), `client_secret_basic` (confidential client using HTTP Basic), `private_key_jwt` (confidential client using a Private Key JWT), `tls_client_auth` (confidential client using CA-based mTLS authentication), `self_signed_tls_client_auth` (confidential client using mTLS authentication utilizing a self-signed certificate).
         :param pulumi.Input[_builtins.str] client_id: The ID of the client for which to configure the authentication method.
-        :param pulumi.Input[_builtins.str] client_secret: Secret for the client when using `client_secret_post` or `client_secret_basic` authentication method. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string. The attribute will also be an empty string in case `private_key_jwt` is selected as an authentication method.
+        :param pulumi.Input[_builtins.str] client_secret: Secret for the client when using `client_secret_post` or `client_secret_basic` authentication method. Keep this private. To access this attribute you need to add either `read:client_keys` or `read:client_credentials` scope to the Terraform client. Otherwise, the attribute will contain an empty string. The attribute will also be an empty string in case `private_key_jwt` is selected as an authentication method.
         :param pulumi.Input[Union['ClientCredentialsPrivateKeyJwtArgs', 'ClientCredentialsPrivateKeyJwtArgsDict']] private_key_jwt: Defines `private_key_jwt` client authentication method.
         :param pulumi.Input[Union['ClientCredentialsSelfSignedTlsClientAuthArgs', 'ClientCredentialsSelfSignedTlsClientAuthArgsDict']] self_signed_tls_client_auth: Defines `tls_client_auth` client authentication method.
         :param pulumi.Input[Union['ClientCredentialsSignedRequestObjectArgs', 'ClientCredentialsSignedRequestObjectArgsDict']] signed_request_object: Configuration for JWT-secured Authorization Requests(JAR).
@@ -393,7 +393,7 @@ class ClientCredentials(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] authentication_method: Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `client_secret_post` (confidential client using HTTP POST parameters), `client_secret_basic` (confidential client using HTTP Basic), `private_key_jwt` (confidential client using a Private Key JWT), `tls_client_auth` (confidential client using CA-based mTLS authentication), `self_signed_tls_client_auth` (confidential client using mTLS authentication utilizing a self-signed certificate).
         :param pulumi.Input[_builtins.str] client_id: The ID of the client for which to configure the authentication method.
-        :param pulumi.Input[_builtins.str] client_secret: Secret for the client when using `client_secret_post` or `client_secret_basic` authentication method. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string. The attribute will also be an empty string in case `private_key_jwt` is selected as an authentication method.
+        :param pulumi.Input[_builtins.str] client_secret: Secret for the client when using `client_secret_post` or `client_secret_basic` authentication method. Keep this private. To access this attribute you need to add either `read:client_keys` or `read:client_credentials` scope to the Terraform client. Otherwise, the attribute will contain an empty string. The attribute will also be an empty string in case `private_key_jwt` is selected as an authentication method.
         :param pulumi.Input[Union['ClientCredentialsPrivateKeyJwtArgs', 'ClientCredentialsPrivateKeyJwtArgsDict']] private_key_jwt: Defines `private_key_jwt` client authentication method.
         :param pulumi.Input[Union['ClientCredentialsSelfSignedTlsClientAuthArgs', 'ClientCredentialsSelfSignedTlsClientAuthArgsDict']] self_signed_tls_client_auth: Defines `tls_client_auth` client authentication method.
         :param pulumi.Input[Union['ClientCredentialsSignedRequestObjectArgs', 'ClientCredentialsSignedRequestObjectArgsDict']] signed_request_object: Configuration for JWT-secured Authorization Requests(JAR).
@@ -432,7 +432,7 @@ class ClientCredentials(pulumi.CustomResource):
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> pulumi.Output[_builtins.str]:
         """
-        Secret for the client when using `client_secret_post` or `client_secret_basic` authentication method. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string. The attribute will also be an empty string in case `private_key_jwt` is selected as an authentication method.
+        Secret for the client when using `client_secret_post` or `client_secret_basic` authentication method. Keep this private. To access this attribute you need to add either `read:client_keys` or `read:client_credentials` scope to the Terraform client. Otherwise, the attribute will contain an empty string. The attribute will also be an empty string in case `private_key_jwt` is selected as an authentication method.
         """
         return pulumi.get(self, "client_secret")
 

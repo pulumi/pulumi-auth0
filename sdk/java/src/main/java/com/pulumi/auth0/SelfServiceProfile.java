@@ -81,14 +81,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="auth0:index/selfServiceProfile:SelfServiceProfile")
 public class SelfServiceProfile extends com.pulumi.resources.CustomResource {
     /**
-     * List of IdP strategies that will be shown to users during the Self-Service SSO flow.
+     * List of IdP strategies that will be shown to users during the Self-Service SSO flow. Valid values are: oidc, samlp, waad, google-apps, adfs, okta, keycloak-samlp, pingfederate, auth0-samlp, okta-samlp.
      * 
      */
     @Export(name="allowedStrategies", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> allowedStrategies;
 
     /**
-     * @return List of IdP strategies that will be shown to users during the Self-Service SSO flow.
+     * @return List of IdP strategies that will be shown to users during the Self-Service SSO flow. Valid values are: oidc, samlp, waad, google-apps, adfs, okta, keycloak-samlp, pingfederate, auth0-samlp, okta-samlp.
      * 
      */
     public Output<Optional<List<String>>> allowedStrategies() {

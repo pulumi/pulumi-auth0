@@ -36,7 +36,7 @@ type ClientCredentials struct {
 	AuthenticationMethod pulumi.StringOutput `pulumi:"authenticationMethod"`
 	// The ID of the client for which to configure the authentication method.
 	ClientId pulumi.StringOutput `pulumi:"clientId"`
-	// Secret for the client when using `clientSecretPost` or `clientSecretBasic` authentication method. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string. The attribute will also be an empty string in case `privateKeyJwt` is selected as an authentication method.
+	// Secret for the client when using `clientSecretPost` or `clientSecretBasic` authentication method. Keep this private. To access this attribute you need to add either `read:client_keys` or `read:client_credentials` scope to the Terraform client. Otherwise, the attribute will contain an empty string. The attribute will also be an empty string in case `privateKeyJwt` is selected as an authentication method.
 	ClientSecret pulumi.StringOutput `pulumi:"clientSecret"`
 	// Defines `privateKeyJwt` client authentication method.
 	PrivateKeyJwt ClientCredentialsPrivateKeyJwtPtrOutput `pulumi:"privateKeyJwt"`
@@ -92,7 +92,7 @@ type clientCredentialsState struct {
 	AuthenticationMethod *string `pulumi:"authenticationMethod"`
 	// The ID of the client for which to configure the authentication method.
 	ClientId *string `pulumi:"clientId"`
-	// Secret for the client when using `clientSecretPost` or `clientSecretBasic` authentication method. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string. The attribute will also be an empty string in case `privateKeyJwt` is selected as an authentication method.
+	// Secret for the client when using `clientSecretPost` or `clientSecretBasic` authentication method. Keep this private. To access this attribute you need to add either `read:client_keys` or `read:client_credentials` scope to the Terraform client. Otherwise, the attribute will contain an empty string. The attribute will also be an empty string in case `privateKeyJwt` is selected as an authentication method.
 	ClientSecret *string `pulumi:"clientSecret"`
 	// Defines `privateKeyJwt` client authentication method.
 	PrivateKeyJwt *ClientCredentialsPrivateKeyJwt `pulumi:"privateKeyJwt"`
@@ -109,7 +109,7 @@ type ClientCredentialsState struct {
 	AuthenticationMethod pulumi.StringPtrInput
 	// The ID of the client for which to configure the authentication method.
 	ClientId pulumi.StringPtrInput
-	// Secret for the client when using `clientSecretPost` or `clientSecretBasic` authentication method. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string. The attribute will also be an empty string in case `privateKeyJwt` is selected as an authentication method.
+	// Secret for the client when using `clientSecretPost` or `clientSecretBasic` authentication method. Keep this private. To access this attribute you need to add either `read:client_keys` or `read:client_credentials` scope to the Terraform client. Otherwise, the attribute will contain an empty string. The attribute will also be an empty string in case `privateKeyJwt` is selected as an authentication method.
 	ClientSecret pulumi.StringPtrInput
 	// Defines `privateKeyJwt` client authentication method.
 	PrivateKeyJwt ClientCredentialsPrivateKeyJwtPtrInput
@@ -130,7 +130,7 @@ type clientCredentialsArgs struct {
 	AuthenticationMethod *string `pulumi:"authenticationMethod"`
 	// The ID of the client for which to configure the authentication method.
 	ClientId string `pulumi:"clientId"`
-	// Secret for the client when using `clientSecretPost` or `clientSecretBasic` authentication method. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string. The attribute will also be an empty string in case `privateKeyJwt` is selected as an authentication method.
+	// Secret for the client when using `clientSecretPost` or `clientSecretBasic` authentication method. Keep this private. To access this attribute you need to add either `read:client_keys` or `read:client_credentials` scope to the Terraform client. Otherwise, the attribute will contain an empty string. The attribute will also be an empty string in case `privateKeyJwt` is selected as an authentication method.
 	ClientSecret *string `pulumi:"clientSecret"`
 	// Defines `privateKeyJwt` client authentication method.
 	PrivateKeyJwt *ClientCredentialsPrivateKeyJwt `pulumi:"privateKeyJwt"`
@@ -148,7 +148,7 @@ type ClientCredentialsArgs struct {
 	AuthenticationMethod pulumi.StringPtrInput
 	// The ID of the client for which to configure the authentication method.
 	ClientId pulumi.StringInput
-	// Secret for the client when using `clientSecretPost` or `clientSecretBasic` authentication method. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string. The attribute will also be an empty string in case `privateKeyJwt` is selected as an authentication method.
+	// Secret for the client when using `clientSecretPost` or `clientSecretBasic` authentication method. Keep this private. To access this attribute you need to add either `read:client_keys` or `read:client_credentials` scope to the Terraform client. Otherwise, the attribute will contain an empty string. The attribute will also be an empty string in case `privateKeyJwt` is selected as an authentication method.
 	ClientSecret pulumi.StringPtrInput
 	// Defines `privateKeyJwt` client authentication method.
 	PrivateKeyJwt ClientCredentialsPrivateKeyJwtPtrInput
@@ -257,7 +257,7 @@ func (o ClientCredentialsOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClientCredentials) pulumi.StringOutput { return v.ClientId }).(pulumi.StringOutput)
 }
 
-// Secret for the client when using `clientSecretPost` or `clientSecretBasic` authentication method. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string. The attribute will also be an empty string in case `privateKeyJwt` is selected as an authentication method.
+// Secret for the client when using `clientSecretPost` or `clientSecretBasic` authentication method. Keep this private. To access this attribute you need to add either `read:client_keys` or `read:client_credentials` scope to the Terraform client. Otherwise, the attribute will contain an empty string. The attribute will also be an empty string in case `privateKeyJwt` is selected as an authentication method.
 func (o ClientCredentialsOutput) ClientSecret() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClientCredentials) pulumi.StringOutput { return v.ClientSecret }).(pulumi.StringOutput)
 }

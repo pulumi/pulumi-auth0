@@ -57,7 +57,7 @@ type LookupSelfServiceProfileArgs struct {
 
 // A collection of values returned by getSelfServiceProfile.
 type LookupSelfServiceProfileResult struct {
-	// List of IdP strategies that will be shown to users during the Self-Service SSO flow.
+	// List of IdP strategies that will be shown to users during the Self-Service SSO flow. Valid values are: oidc, samlp, waad, google-apps, adfs, okta, keycloak-samlp, pingfederate, auth0-samlp, okta-samlp.
 	AllowedStrategies []string `pulumi:"allowedStrategies"`
 	// Field can be used to customize the look and feel of the wizard.
 	Brandings []GetSelfServiceProfileBranding `pulumi:"brandings"`
@@ -111,7 +111,7 @@ func (o LookupSelfServiceProfileResultOutput) ToLookupSelfServiceProfileResultOu
 	return o
 }
 
-// List of IdP strategies that will be shown to users during the Self-Service SSO flow.
+// List of IdP strategies that will be shown to users during the Self-Service SSO flow. Valid values are: oidc, samlp, waad, google-apps, adfs, okta, keycloak-samlp, pingfederate, auth0-samlp, okta-samlp.
 func (o LookupSelfServiceProfileResultOutput) AllowedStrategies() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupSelfServiceProfileResult) []string { return v.AllowedStrategies }).(pulumi.StringArrayOutput)
 }

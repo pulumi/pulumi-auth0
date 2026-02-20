@@ -414,6 +414,11 @@ public final class ConnectionOptions {
      */
     private @Nullable Map<String,String> scripts;
     /**
+     * @return When true and `type` is &#39;back_channel&#39;, includes a cryptographic nonce in authorization requests to prevent replay attacks. The identity provider must include this nonce in the ID token for validation.
+     * 
+     */
+    private @Nullable Boolean sendBackChannelNonce;
+    /**
      * @return Session Key for storing the request token.
      * 
      */
@@ -543,6 +548,11 @@ public final class ConnectionOptions {
      * 
      */
     private @Nullable Boolean useKerberos;
+    /**
+     * @return Determines the `scopes` format: `true` makes it a space-separated string (per OAuth2 specification); `false` makes it an array.
+     * 
+     */
+    private @Nullable Boolean useOauthSpecScope;
     /**
      * @return Whether to use WS-Fed.
      * 
@@ -1113,6 +1123,13 @@ public final class ConnectionOptions {
         return this.scripts == null ? Map.of() : this.scripts;
     }
     /**
+     * @return When true and `type` is &#39;back_channel&#39;, includes a cryptographic nonce in authorization requests to prevent replay attacks. The identity provider must include this nonce in the ID token for validation.
+     * 
+     */
+    public Optional<Boolean> sendBackChannelNonce() {
+        return Optional.ofNullable(this.sendBackChannelNonce);
+    }
+    /**
      * @return Session Key for storing the request token.
      * 
      */
@@ -1295,6 +1312,13 @@ public final class ConnectionOptions {
         return Optional.ofNullable(this.useKerberos);
     }
     /**
+     * @return Determines the `scopes` format: `true` makes it a space-separated string (per OAuth2 specification); `false` makes it an array.
+     * 
+     */
+    public Optional<Boolean> useOauthSpecScope() {
+        return Optional.ofNullable(this.useOauthSpecScope);
+    }
+    /**
      * @return Whether to use WS-Fed.
      * 
      */
@@ -1429,6 +1453,7 @@ public final class ConnectionOptions {
         private @Nullable Boolean requiresUsername;
         private @Nullable List<String> scopes;
         private @Nullable Map<String,String> scripts;
+        private @Nullable Boolean sendBackChannelNonce;
         private @Nullable String sessionKey;
         private @Nullable String setUserRootAttributes;
         private @Nullable String shouldTrustEmailVerifiedConnection;
@@ -1455,6 +1480,7 @@ public final class ConnectionOptions {
         private @Nullable String upstreamParams;
         private @Nullable Boolean useCertAuth;
         private @Nullable Boolean useKerberos;
+        private @Nullable Boolean useOauthSpecScope;
         private @Nullable Boolean useWsfed;
         private @Nullable String userAuthorizationUrl;
         private @Nullable String userIdAttribute;
@@ -1541,6 +1567,7 @@ public final class ConnectionOptions {
     	      this.requiresUsername = defaults.requiresUsername;
     	      this.scopes = defaults.scopes;
     	      this.scripts = defaults.scripts;
+    	      this.sendBackChannelNonce = defaults.sendBackChannelNonce;
     	      this.sessionKey = defaults.sessionKey;
     	      this.setUserRootAttributes = defaults.setUserRootAttributes;
     	      this.shouldTrustEmailVerifiedConnection = defaults.shouldTrustEmailVerifiedConnection;
@@ -1567,6 +1594,7 @@ public final class ConnectionOptions {
     	      this.upstreamParams = defaults.upstreamParams;
     	      this.useCertAuth = defaults.useCertAuth;
     	      this.useKerberos = defaults.useKerberos;
+    	      this.useOauthSpecScope = defaults.useOauthSpecScope;
     	      this.useWsfed = defaults.useWsfed;
     	      this.userAuthorizationUrl = defaults.userAuthorizationUrl;
     	      this.userIdAttribute = defaults.userIdAttribute;
@@ -2063,6 +2091,12 @@ public final class ConnectionOptions {
             return this;
         }
         @CustomType.Setter
+        public Builder sendBackChannelNonce(@Nullable Boolean sendBackChannelNonce) {
+
+            this.sendBackChannelNonce = sendBackChannelNonce;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sessionKey(@Nullable String sessionKey) {
 
             this.sessionKey = sessionKey;
@@ -2219,6 +2253,12 @@ public final class ConnectionOptions {
             return this;
         }
         @CustomType.Setter
+        public Builder useOauthSpecScope(@Nullable Boolean useOauthSpecScope) {
+
+            this.useOauthSpecScope = useOauthSpecScope;
+            return this;
+        }
+        @CustomType.Setter
         public Builder useWsfed(@Nullable Boolean useWsfed) {
 
             this.useWsfed = useWsfed;
@@ -2338,6 +2378,7 @@ public final class ConnectionOptions {
             _resultValue.requiresUsername = requiresUsername;
             _resultValue.scopes = scopes;
             _resultValue.scripts = scripts;
+            _resultValue.sendBackChannelNonce = sendBackChannelNonce;
             _resultValue.sessionKey = sessionKey;
             _resultValue.setUserRootAttributes = setUserRootAttributes;
             _resultValue.shouldTrustEmailVerifiedConnection = shouldTrustEmailVerifiedConnection;
@@ -2364,6 +2405,7 @@ public final class ConnectionOptions {
             _resultValue.upstreamParams = upstreamParams;
             _resultValue.useCertAuth = useCertAuth;
             _resultValue.useKerberos = useKerberos;
+            _resultValue.useOauthSpecScope = useOauthSpecScope;
             _resultValue.useWsfed = useWsfed;
             _resultValue.userAuthorizationUrl = userAuthorizationUrl;
             _resultValue.userIdAttribute = userIdAttribute;

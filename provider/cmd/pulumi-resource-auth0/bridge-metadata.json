@@ -8,11 +8,39 @@
                     "dependencies": {
                         "maxItemsOne": false
                     },
+                    "modules": {
+                        "maxItemsOne": false
+                    },
                     "secrets": {
                         "maxItemsOne": false
                     },
                     "supported_triggers": {
                         "maxItemsOne": true
+                    }
+                }
+            },
+            "auth0_action_module": {
+                "current": "auth0:index/actionModule:ActionModule",
+                "majorVersion": 3,
+                "fields": {
+                    "dependencies": {
+                        "maxItemsOne": false
+                    },
+                    "latest_version": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "dependencies": {
+                                    "maxItemsOne": false
+                                },
+                                "secrets": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "secrets": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -1439,6 +1467,10 @@
                 "current": "auth0:index/selfServiceProfileCustomText:SelfServiceProfileCustomText",
                 "majorVersion": 3
             },
+            "auth0_supplemental_signals": {
+                "current": "auth0:index/supplementalSignals:SupplementalSignals",
+                "majorVersion": 3
+            },
             "auth0_tenant": {
                 "current": "auth0:index/tenant:Tenant",
                 "majorVersion": 3,
@@ -1607,11 +1639,86 @@
                     "dependencies": {
                         "maxItemsOne": false
                     },
+                    "modules": {
+                        "maxItemsOne": false
+                    },
                     "secrets": {
                         "maxItemsOne": false
                     },
                     "supported_triggers": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "auth0_action_module": {
+                "current": "auth0:index/getActionModule:getActionModule",
+                "majorVersion": 3,
+                "fields": {
+                    "dependencies": {
+                        "maxItemsOne": false
+                    },
+                    "latest_version": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "dependencies": {
+                                    "maxItemsOne": false
+                                },
+                                "secrets": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "secrets": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "auth0_action_module_actions": {
+                "current": "auth0:index/getActionModuleActions:getActionModuleActions",
+                "majorVersion": 3,
+                "fields": {
+                    "actions": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "supported_triggers": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "auth0_action_module_version": {
+                "current": "auth0:index/getActionModuleVersion:getActionModuleVersion",
+                "majorVersion": 3,
+                "fields": {
+                    "dependencies": {
+                        "maxItemsOne": false
+                    },
+                    "secrets": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "auth0_action_module_versions": {
+                "current": "auth0:index/getActionModuleVersions:getActionModuleVersions",
+                "majorVersion": 3,
+                "fields": {
+                    "versions": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "dependencies": {
+                                    "maxItemsOne": false
+                                },
+                                "secrets": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },

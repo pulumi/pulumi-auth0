@@ -25,6 +25,7 @@ class ActionArgs:
                  supported_triggers: pulumi.Input['ActionSupportedTriggersArgs'],
                  dependencies: Optional[pulumi.Input[Sequence[pulumi.Input['ActionDependencyArgs']]]] = None,
                  deploy: Optional[pulumi.Input[_builtins.bool]] = None,
+                 modules: Optional[pulumi.Input[Sequence[pulumi.Input['ActionModuleArgs']]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  runtime: Optional[pulumi.Input[_builtins.str]] = None,
                  secrets: Optional[pulumi.Input[Sequence[pulumi.Input['ActionSecretArgs']]]] = None):
@@ -34,6 +35,7 @@ class ActionArgs:
         :param pulumi.Input['ActionSupportedTriggersArgs'] supported_triggers: List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
         :param pulumi.Input[Sequence[pulumi.Input['ActionDependencyArgs']]] dependencies: List of third party npm modules, and their versions, that this action depends on.
         :param pulumi.Input[_builtins.bool] deploy: Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately.
+        :param pulumi.Input[Sequence[pulumi.Input['ActionModuleArgs']]] modules: List of action modules and their versions that this action depends on.
         :param pulumi.Input[_builtins.str] name: The name of the action.
         :param pulumi.Input[_builtins.str] runtime: The Node runtime. Possible values are: `node12`, `node16` (not recommended), `node18`, `node22`
         :param pulumi.Input[Sequence[pulumi.Input['ActionSecretArgs']]] secrets: List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
@@ -44,6 +46,8 @@ class ActionArgs:
             pulumi.set(__self__, "dependencies", dependencies)
         if deploy is not None:
             pulumi.set(__self__, "deploy", deploy)
+        if modules is not None:
+            pulumi.set(__self__, "modules", modules)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if runtime is not None:
@@ -101,6 +105,18 @@ class ActionArgs:
 
     @_builtins.property
     @pulumi.getter
+    def modules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ActionModuleArgs']]]]:
+        """
+        List of action modules and their versions that this action depends on.
+        """
+        return pulumi.get(self, "modules")
+
+    @modules.setter
+    def modules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ActionModuleArgs']]]]):
+        pulumi.set(self, "modules", value)
+
+    @_builtins.property
+    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The name of the action.
@@ -142,6 +158,7 @@ class _ActionState:
                  code: Optional[pulumi.Input[_builtins.str]] = None,
                  dependencies: Optional[pulumi.Input[Sequence[pulumi.Input['ActionDependencyArgs']]]] = None,
                  deploy: Optional[pulumi.Input[_builtins.bool]] = None,
+                 modules: Optional[pulumi.Input[Sequence[pulumi.Input['ActionModuleArgs']]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  runtime: Optional[pulumi.Input[_builtins.str]] = None,
                  secrets: Optional[pulumi.Input[Sequence[pulumi.Input['ActionSecretArgs']]]] = None,
@@ -152,6 +169,7 @@ class _ActionState:
         :param pulumi.Input[_builtins.str] code: The source code of the action.
         :param pulumi.Input[Sequence[pulumi.Input['ActionDependencyArgs']]] dependencies: List of third party npm modules, and their versions, that this action depends on.
         :param pulumi.Input[_builtins.bool] deploy: Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately.
+        :param pulumi.Input[Sequence[pulumi.Input['ActionModuleArgs']]] modules: List of action modules and their versions that this action depends on.
         :param pulumi.Input[_builtins.str] name: The name of the action.
         :param pulumi.Input[_builtins.str] runtime: The Node runtime. Possible values are: `node12`, `node16` (not recommended), `node18`, `node22`
         :param pulumi.Input[Sequence[pulumi.Input['ActionSecretArgs']]] secrets: List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
@@ -164,6 +182,8 @@ class _ActionState:
             pulumi.set(__self__, "dependencies", dependencies)
         if deploy is not None:
             pulumi.set(__self__, "deploy", deploy)
+        if modules is not None:
+            pulumi.set(__self__, "modules", modules)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if runtime is not None:
@@ -210,6 +230,18 @@ class _ActionState:
     @deploy.setter
     def deploy(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "deploy", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def modules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ActionModuleArgs']]]]:
+        """
+        List of action modules and their versions that this action depends on.
+        """
+        return pulumi.get(self, "modules")
+
+    @modules.setter
+    def modules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ActionModuleArgs']]]]):
+        pulumi.set(self, "modules", value)
 
     @_builtins.property
     @pulumi.getter
@@ -281,6 +313,7 @@ class Action(pulumi.CustomResource):
                  code: Optional[pulumi.Input[_builtins.str]] = None,
                  dependencies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ActionDependencyArgs', 'ActionDependencyArgsDict']]]]] = None,
                  deploy: Optional[pulumi.Input[_builtins.bool]] = None,
+                 modules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ActionModuleArgs', 'ActionModuleArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  runtime: Optional[pulumi.Input[_builtins.str]] = None,
                  secrets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ActionSecretArgs', 'ActionSecretArgsDict']]]]] = None,
@@ -363,6 +396,7 @@ class Action(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] code: The source code of the action.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ActionDependencyArgs', 'ActionDependencyArgsDict']]]] dependencies: List of third party npm modules, and their versions, that this action depends on.
         :param pulumi.Input[_builtins.bool] deploy: Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ActionModuleArgs', 'ActionModuleArgsDict']]]] modules: List of action modules and their versions that this action depends on.
         :param pulumi.Input[_builtins.str] name: The name of the action.
         :param pulumi.Input[_builtins.str] runtime: The Node runtime. Possible values are: `node12`, `node16` (not recommended), `node18`, `node22`
         :param pulumi.Input[Sequence[pulumi.Input[Union['ActionSecretArgs', 'ActionSecretArgsDict']]]] secrets: List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
@@ -464,6 +498,7 @@ class Action(pulumi.CustomResource):
                  code: Optional[pulumi.Input[_builtins.str]] = None,
                  dependencies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ActionDependencyArgs', 'ActionDependencyArgsDict']]]]] = None,
                  deploy: Optional[pulumi.Input[_builtins.bool]] = None,
+                 modules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ActionModuleArgs', 'ActionModuleArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  runtime: Optional[pulumi.Input[_builtins.str]] = None,
                  secrets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ActionSecretArgs', 'ActionSecretArgsDict']]]]] = None,
@@ -482,6 +517,7 @@ class Action(pulumi.CustomResource):
             __props__.__dict__["code"] = code
             __props__.__dict__["dependencies"] = dependencies
             __props__.__dict__["deploy"] = deploy
+            __props__.__dict__["modules"] = modules
             __props__.__dict__["name"] = name
             __props__.__dict__["runtime"] = runtime
             __props__.__dict__["secrets"] = secrets
@@ -502,6 +538,7 @@ class Action(pulumi.CustomResource):
             code: Optional[pulumi.Input[_builtins.str]] = None,
             dependencies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ActionDependencyArgs', 'ActionDependencyArgsDict']]]]] = None,
             deploy: Optional[pulumi.Input[_builtins.bool]] = None,
+            modules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ActionModuleArgs', 'ActionModuleArgsDict']]]]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             runtime: Optional[pulumi.Input[_builtins.str]] = None,
             secrets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ActionSecretArgs', 'ActionSecretArgsDict']]]]] = None,
@@ -517,6 +554,7 @@ class Action(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] code: The source code of the action.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ActionDependencyArgs', 'ActionDependencyArgsDict']]]] dependencies: List of third party npm modules, and their versions, that this action depends on.
         :param pulumi.Input[_builtins.bool] deploy: Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ActionModuleArgs', 'ActionModuleArgsDict']]]] modules: List of action modules and their versions that this action depends on.
         :param pulumi.Input[_builtins.str] name: The name of the action.
         :param pulumi.Input[_builtins.str] runtime: The Node runtime. Possible values are: `node12`, `node16` (not recommended), `node18`, `node22`
         :param pulumi.Input[Sequence[pulumi.Input[Union['ActionSecretArgs', 'ActionSecretArgsDict']]]] secrets: List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
@@ -530,6 +568,7 @@ class Action(pulumi.CustomResource):
         __props__.__dict__["code"] = code
         __props__.__dict__["dependencies"] = dependencies
         __props__.__dict__["deploy"] = deploy
+        __props__.__dict__["modules"] = modules
         __props__.__dict__["name"] = name
         __props__.__dict__["runtime"] = runtime
         __props__.__dict__["secrets"] = secrets
@@ -560,6 +599,14 @@ class Action(pulumi.CustomResource):
         Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately.
         """
         return pulumi.get(self, "deploy")
+
+    @_builtins.property
+    @pulumi.getter
+    def modules(self) -> pulumi.Output[Optional[Sequence['outputs.ActionModule']]]:
+        """
+        List of action modules and their versions that this action depends on.
+        """
+        return pulumi.get(self, "modules")
 
     @_builtins.property
     @pulumi.getter

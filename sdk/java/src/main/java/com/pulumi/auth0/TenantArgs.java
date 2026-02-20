@@ -176,6 +176,21 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Number of hours an ephemeral (non-persistent) session will stay valid.
+     * 
+     */
+    @Import(name="ephemeralSessionLifetime")
+    private @Nullable Output<Double> ephemeralSessionLifetime;
+
+    /**
+     * @return Number of hours an ephemeral (non-persistent) session will stay valid.
+     * 
+     */
+    public Optional<Output<Double>> ephemeralSessionLifetime() {
+        return Optional.ofNullable(this.ephemeralSessionLifetime);
+    }
+
+    /**
      * Configuration for the error page
      * 
      */
@@ -218,6 +233,21 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> friendlyName() {
         return Optional.ofNullable(this.friendlyName);
+    }
+
+    /**
+     * Number of hours for which an ephemeral (non-persistent) session can be inactive before the user must log in again.
+     * 
+     */
+    @Import(name="idleEphemeralSessionLifetime")
+    private @Nullable Output<Double> idleEphemeralSessionLifetime;
+
+    /**
+     * @return Number of hours for which an ephemeral (non-persistent) session can be inactive before the user must log in again.
+     * 
+     */
+    public Optional<Output<Double>> idleEphemeralSessionLifetime() {
+        return Optional.ofNullable(this.idleEphemeralSessionLifetime);
     }
 
     /**
@@ -413,9 +443,11 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
         this.defaultTokenQuota = $.defaultTokenQuota;
         this.disableAcrValuesSupported = $.disableAcrValuesSupported;
         this.enabledLocales = $.enabledLocales;
+        this.ephemeralSessionLifetime = $.ephemeralSessionLifetime;
         this.errorPage = $.errorPage;
         this.flags = $.flags;
         this.friendlyName = $.friendlyName;
+        this.idleEphemeralSessionLifetime = $.idleEphemeralSessionLifetime;
         this.idleSessionLifetime = $.idleSessionLifetime;
         this.mtls = $.mtls;
         this.oidcLogout = $.oidcLogout;
@@ -689,6 +721,27 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param ephemeralSessionLifetime Number of hours an ephemeral (non-persistent) session will stay valid.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ephemeralSessionLifetime(@Nullable Output<Double> ephemeralSessionLifetime) {
+            $.ephemeralSessionLifetime = ephemeralSessionLifetime;
+            return this;
+        }
+
+        /**
+         * @param ephemeralSessionLifetime Number of hours an ephemeral (non-persistent) session will stay valid.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ephemeralSessionLifetime(Double ephemeralSessionLifetime) {
+            return ephemeralSessionLifetime(Output.of(ephemeralSessionLifetime));
+        }
+
+        /**
          * @param errorPage Configuration for the error page
          * 
          * @return builder
@@ -749,6 +802,27 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder friendlyName(String friendlyName) {
             return friendlyName(Output.of(friendlyName));
+        }
+
+        /**
+         * @param idleEphemeralSessionLifetime Number of hours for which an ephemeral (non-persistent) session can be inactive before the user must log in again.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder idleEphemeralSessionLifetime(@Nullable Output<Double> idleEphemeralSessionLifetime) {
+            $.idleEphemeralSessionLifetime = idleEphemeralSessionLifetime;
+            return this;
+        }
+
+        /**
+         * @param idleEphemeralSessionLifetime Number of hours for which an ephemeral (non-persistent) session can be inactive before the user must log in again.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder idleEphemeralSessionLifetime(Double idleEphemeralSessionLifetime) {
+            return idleEphemeralSessionLifetime(Output.of(idleEphemeralSessionLifetime));
         }
 
         /**

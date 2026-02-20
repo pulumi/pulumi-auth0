@@ -1178,6 +1178,21 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * When true and `type` is &#39;back_channel&#39;, includes a cryptographic nonce in authorization requests to prevent replay attacks. The identity provider must include this nonce in the ID token for validation.
+     * 
+     */
+    @Import(name="sendBackChannelNonce")
+    private @Nullable Output<Boolean> sendBackChannelNonce;
+
+    /**
+     * @return When true and `type` is &#39;back_channel&#39;, includes a cryptographic nonce in authorization requests to prevent replay attacks. The identity provider must include this nonce in the ID token for validation.
+     * 
+     */
+    public Optional<Output<Boolean>> sendBackChannelNonce() {
+        return Optional.ofNullable(this.sendBackChannelNonce);
+    }
+
+    /**
      * Session Key for storing the request token.
      * 
      */
@@ -1568,6 +1583,21 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Determines the `scopes` format: `true` makes it a space-separated string (per OAuth2 specification); `false` makes it an array.
+     * 
+     */
+    @Import(name="useOauthSpecScope")
+    private @Nullable Output<Boolean> useOauthSpecScope;
+
+    /**
+     * @return Determines the `scopes` format: `true` makes it a space-separated string (per OAuth2 specification); `false` makes it an array.
+     * 
+     */
+    public Optional<Output<Boolean>> useOauthSpecScope() {
+        return Optional.ofNullable(this.useOauthSpecScope);
+    }
+
+    /**
      * Whether to use WS-Fed.
      * 
      */
@@ -1751,6 +1781,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         this.requiresUsername = $.requiresUsername;
         this.scopes = $.scopes;
         this.scripts = $.scripts;
+        this.sendBackChannelNonce = $.sendBackChannelNonce;
         this.sessionKey = $.sessionKey;
         this.setUserRootAttributes = $.setUserRootAttributes;
         this.shouldTrustEmailVerifiedConnection = $.shouldTrustEmailVerifiedConnection;
@@ -1777,6 +1808,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         this.upstreamParams = $.upstreamParams;
         this.useCertAuth = $.useCertAuth;
         this.useKerberos = $.useKerberos;
+        this.useOauthSpecScope = $.useOauthSpecScope;
         this.useWsfed = $.useWsfed;
         this.userAuthorizationUrl = $.userAuthorizationUrl;
         this.userIdAttribute = $.userIdAttribute;
@@ -3501,6 +3533,27 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param sendBackChannelNonce When true and `type` is &#39;back_channel&#39;, includes a cryptographic nonce in authorization requests to prevent replay attacks. The identity provider must include this nonce in the ID token for validation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sendBackChannelNonce(@Nullable Output<Boolean> sendBackChannelNonce) {
+            $.sendBackChannelNonce = sendBackChannelNonce;
+            return this;
+        }
+
+        /**
+         * @param sendBackChannelNonce When true and `type` is &#39;back_channel&#39;, includes a cryptographic nonce in authorization requests to prevent replay attacks. The identity provider must include this nonce in the ID token for validation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sendBackChannelNonce(Boolean sendBackChannelNonce) {
+            return sendBackChannelNonce(Output.of(sendBackChannelNonce));
+        }
+
+        /**
          * @param sessionKey Session Key for storing the request token.
          * 
          * @return builder
@@ -4044,6 +4097,27 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder useKerberos(Boolean useKerberos) {
             return useKerberos(Output.of(useKerberos));
+        }
+
+        /**
+         * @param useOauthSpecScope Determines the `scopes` format: `true` makes it a space-separated string (per OAuth2 specification); `false` makes it an array.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder useOauthSpecScope(@Nullable Output<Boolean> useOauthSpecScope) {
+            $.useOauthSpecScope = useOauthSpecScope;
+            return this;
+        }
+
+        /**
+         * @param useOauthSpecScope Determines the `scopes` format: `true` makes it a space-separated string (per OAuth2 specification); `false` makes it an array.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder useOauthSpecScope(Boolean useOauthSpecScope) {
+            return useOauthSpecScope(Output.of(useOauthSpecScope));
         }
 
         /**

@@ -119,6 +119,705 @@ func (o ActionDependencyArrayOutput) Index(i pulumi.IntInput) ActionDependencyOu
 	}).(ActionDependencyOutput)
 }
 
+type ActionModuleType struct {
+	// The unique ID of the module.
+	ModuleId string `pulumi:"moduleId"`
+	// The name of the module.
+	ModuleName *string `pulumi:"moduleName"`
+	// The ID of the specific module version to use.
+	ModuleVersionId string `pulumi:"moduleVersionId"`
+	// The version number of the module.
+	ModuleVersionNumber *int `pulumi:"moduleVersionNumber"`
+}
+
+// ActionModuleTypeInput is an input type that accepts ActionModuleTypeArgs and ActionModuleTypeOutput values.
+// You can construct a concrete instance of `ActionModuleTypeInput` via:
+//
+//	ActionModuleTypeArgs{...}
+type ActionModuleTypeInput interface {
+	pulumi.Input
+
+	ToActionModuleTypeOutput() ActionModuleTypeOutput
+	ToActionModuleTypeOutputWithContext(context.Context) ActionModuleTypeOutput
+}
+
+type ActionModuleTypeArgs struct {
+	// The unique ID of the module.
+	ModuleId pulumi.StringInput `pulumi:"moduleId"`
+	// The name of the module.
+	ModuleName pulumi.StringPtrInput `pulumi:"moduleName"`
+	// The ID of the specific module version to use.
+	ModuleVersionId pulumi.StringInput `pulumi:"moduleVersionId"`
+	// The version number of the module.
+	ModuleVersionNumber pulumi.IntPtrInput `pulumi:"moduleVersionNumber"`
+}
+
+func (ActionModuleTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionModuleType)(nil)).Elem()
+}
+
+func (i ActionModuleTypeArgs) ToActionModuleTypeOutput() ActionModuleTypeOutput {
+	return i.ToActionModuleTypeOutputWithContext(context.Background())
+}
+
+func (i ActionModuleTypeArgs) ToActionModuleTypeOutputWithContext(ctx context.Context) ActionModuleTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionModuleTypeOutput)
+}
+
+// ActionModuleTypeArrayInput is an input type that accepts ActionModuleTypeArray and ActionModuleTypeArrayOutput values.
+// You can construct a concrete instance of `ActionModuleTypeArrayInput` via:
+//
+//	ActionModuleTypeArray{ ActionModuleTypeArgs{...} }
+type ActionModuleTypeArrayInput interface {
+	pulumi.Input
+
+	ToActionModuleTypeArrayOutput() ActionModuleTypeArrayOutput
+	ToActionModuleTypeArrayOutputWithContext(context.Context) ActionModuleTypeArrayOutput
+}
+
+type ActionModuleTypeArray []ActionModuleTypeInput
+
+func (ActionModuleTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ActionModuleType)(nil)).Elem()
+}
+
+func (i ActionModuleTypeArray) ToActionModuleTypeArrayOutput() ActionModuleTypeArrayOutput {
+	return i.ToActionModuleTypeArrayOutputWithContext(context.Background())
+}
+
+func (i ActionModuleTypeArray) ToActionModuleTypeArrayOutputWithContext(ctx context.Context) ActionModuleTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionModuleTypeArrayOutput)
+}
+
+type ActionModuleTypeOutput struct{ *pulumi.OutputState }
+
+func (ActionModuleTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionModuleType)(nil)).Elem()
+}
+
+func (o ActionModuleTypeOutput) ToActionModuleTypeOutput() ActionModuleTypeOutput {
+	return o
+}
+
+func (o ActionModuleTypeOutput) ToActionModuleTypeOutputWithContext(ctx context.Context) ActionModuleTypeOutput {
+	return o
+}
+
+// The unique ID of the module.
+func (o ActionModuleTypeOutput) ModuleId() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionModuleType) string { return v.ModuleId }).(pulumi.StringOutput)
+}
+
+// The name of the module.
+func (o ActionModuleTypeOutput) ModuleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionModuleType) *string { return v.ModuleName }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the specific module version to use.
+func (o ActionModuleTypeOutput) ModuleVersionId() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionModuleType) string { return v.ModuleVersionId }).(pulumi.StringOutput)
+}
+
+// The version number of the module.
+func (o ActionModuleTypeOutput) ModuleVersionNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ActionModuleType) *int { return v.ModuleVersionNumber }).(pulumi.IntPtrOutput)
+}
+
+type ActionModuleTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (ActionModuleTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ActionModuleType)(nil)).Elem()
+}
+
+func (o ActionModuleTypeArrayOutput) ToActionModuleTypeArrayOutput() ActionModuleTypeArrayOutput {
+	return o
+}
+
+func (o ActionModuleTypeArrayOutput) ToActionModuleTypeArrayOutputWithContext(ctx context.Context) ActionModuleTypeArrayOutput {
+	return o
+}
+
+func (o ActionModuleTypeArrayOutput) Index(i pulumi.IntInput) ActionModuleTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ActionModuleType {
+		return vs[0].([]ActionModuleType)[vs[1].(int)]
+	}).(ActionModuleTypeOutput)
+}
+
+type ActionModuleDependency struct {
+	// Dependency name, e.g. `lodash`.
+	Name string `pulumi:"name"`
+	// Dependency version, e.g. `latest` or `4.17.21`.
+	Version string `pulumi:"version"`
+}
+
+// ActionModuleDependencyInput is an input type that accepts ActionModuleDependencyArgs and ActionModuleDependencyOutput values.
+// You can construct a concrete instance of `ActionModuleDependencyInput` via:
+//
+//	ActionModuleDependencyArgs{...}
+type ActionModuleDependencyInput interface {
+	pulumi.Input
+
+	ToActionModuleDependencyOutput() ActionModuleDependencyOutput
+	ToActionModuleDependencyOutputWithContext(context.Context) ActionModuleDependencyOutput
+}
+
+type ActionModuleDependencyArgs struct {
+	// Dependency name, e.g. `lodash`.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Dependency version, e.g. `latest` or `4.17.21`.
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (ActionModuleDependencyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionModuleDependency)(nil)).Elem()
+}
+
+func (i ActionModuleDependencyArgs) ToActionModuleDependencyOutput() ActionModuleDependencyOutput {
+	return i.ToActionModuleDependencyOutputWithContext(context.Background())
+}
+
+func (i ActionModuleDependencyArgs) ToActionModuleDependencyOutputWithContext(ctx context.Context) ActionModuleDependencyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionModuleDependencyOutput)
+}
+
+// ActionModuleDependencyArrayInput is an input type that accepts ActionModuleDependencyArray and ActionModuleDependencyArrayOutput values.
+// You can construct a concrete instance of `ActionModuleDependencyArrayInput` via:
+//
+//	ActionModuleDependencyArray{ ActionModuleDependencyArgs{...} }
+type ActionModuleDependencyArrayInput interface {
+	pulumi.Input
+
+	ToActionModuleDependencyArrayOutput() ActionModuleDependencyArrayOutput
+	ToActionModuleDependencyArrayOutputWithContext(context.Context) ActionModuleDependencyArrayOutput
+}
+
+type ActionModuleDependencyArray []ActionModuleDependencyInput
+
+func (ActionModuleDependencyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ActionModuleDependency)(nil)).Elem()
+}
+
+func (i ActionModuleDependencyArray) ToActionModuleDependencyArrayOutput() ActionModuleDependencyArrayOutput {
+	return i.ToActionModuleDependencyArrayOutputWithContext(context.Background())
+}
+
+func (i ActionModuleDependencyArray) ToActionModuleDependencyArrayOutputWithContext(ctx context.Context) ActionModuleDependencyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionModuleDependencyArrayOutput)
+}
+
+type ActionModuleDependencyOutput struct{ *pulumi.OutputState }
+
+func (ActionModuleDependencyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionModuleDependency)(nil)).Elem()
+}
+
+func (o ActionModuleDependencyOutput) ToActionModuleDependencyOutput() ActionModuleDependencyOutput {
+	return o
+}
+
+func (o ActionModuleDependencyOutput) ToActionModuleDependencyOutputWithContext(ctx context.Context) ActionModuleDependencyOutput {
+	return o
+}
+
+// Dependency name, e.g. `lodash`.
+func (o ActionModuleDependencyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionModuleDependency) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Dependency version, e.g. `latest` or `4.17.21`.
+func (o ActionModuleDependencyOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionModuleDependency) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type ActionModuleDependencyArrayOutput struct{ *pulumi.OutputState }
+
+func (ActionModuleDependencyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ActionModuleDependency)(nil)).Elem()
+}
+
+func (o ActionModuleDependencyArrayOutput) ToActionModuleDependencyArrayOutput() ActionModuleDependencyArrayOutput {
+	return o
+}
+
+func (o ActionModuleDependencyArrayOutput) ToActionModuleDependencyArrayOutputWithContext(ctx context.Context) ActionModuleDependencyArrayOutput {
+	return o
+}
+
+func (o ActionModuleDependencyArrayOutput) Index(i pulumi.IntInput) ActionModuleDependencyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ActionModuleDependency {
+		return vs[0].([]ActionModuleDependency)[vs[1].(int)]
+	}).(ActionModuleDependencyOutput)
+}
+
+type ActionModuleLatestVersion struct {
+	// The source code of this version.
+	Code *string `pulumi:"code"`
+	// The time when this version was created.
+	CreatedAt *string `pulumi:"createdAt"`
+	// List of third party npm modules, and their versions, that this version depends on.
+	Dependencies []ActionModuleLatestVersionDependency `pulumi:"dependencies"`
+	// The unique identifier of the version.
+	Id *string `pulumi:"id"`
+	// List of secrets that are included in this version.
+	Secrets []ActionModuleLatestVersionSecret `pulumi:"secrets"`
+	// The version number.
+	VersionNumber *int `pulumi:"versionNumber"`
+}
+
+// ActionModuleLatestVersionInput is an input type that accepts ActionModuleLatestVersionArgs and ActionModuleLatestVersionOutput values.
+// You can construct a concrete instance of `ActionModuleLatestVersionInput` via:
+//
+//	ActionModuleLatestVersionArgs{...}
+type ActionModuleLatestVersionInput interface {
+	pulumi.Input
+
+	ToActionModuleLatestVersionOutput() ActionModuleLatestVersionOutput
+	ToActionModuleLatestVersionOutputWithContext(context.Context) ActionModuleLatestVersionOutput
+}
+
+type ActionModuleLatestVersionArgs struct {
+	// The source code of this version.
+	Code pulumi.StringPtrInput `pulumi:"code"`
+	// The time when this version was created.
+	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
+	// List of third party npm modules, and their versions, that this version depends on.
+	Dependencies ActionModuleLatestVersionDependencyArrayInput `pulumi:"dependencies"`
+	// The unique identifier of the version.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// List of secrets that are included in this version.
+	Secrets ActionModuleLatestVersionSecretArrayInput `pulumi:"secrets"`
+	// The version number.
+	VersionNumber pulumi.IntPtrInput `pulumi:"versionNumber"`
+}
+
+func (ActionModuleLatestVersionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionModuleLatestVersion)(nil)).Elem()
+}
+
+func (i ActionModuleLatestVersionArgs) ToActionModuleLatestVersionOutput() ActionModuleLatestVersionOutput {
+	return i.ToActionModuleLatestVersionOutputWithContext(context.Background())
+}
+
+func (i ActionModuleLatestVersionArgs) ToActionModuleLatestVersionOutputWithContext(ctx context.Context) ActionModuleLatestVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionModuleLatestVersionOutput)
+}
+
+// ActionModuleLatestVersionArrayInput is an input type that accepts ActionModuleLatestVersionArray and ActionModuleLatestVersionArrayOutput values.
+// You can construct a concrete instance of `ActionModuleLatestVersionArrayInput` via:
+//
+//	ActionModuleLatestVersionArray{ ActionModuleLatestVersionArgs{...} }
+type ActionModuleLatestVersionArrayInput interface {
+	pulumi.Input
+
+	ToActionModuleLatestVersionArrayOutput() ActionModuleLatestVersionArrayOutput
+	ToActionModuleLatestVersionArrayOutputWithContext(context.Context) ActionModuleLatestVersionArrayOutput
+}
+
+type ActionModuleLatestVersionArray []ActionModuleLatestVersionInput
+
+func (ActionModuleLatestVersionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ActionModuleLatestVersion)(nil)).Elem()
+}
+
+func (i ActionModuleLatestVersionArray) ToActionModuleLatestVersionArrayOutput() ActionModuleLatestVersionArrayOutput {
+	return i.ToActionModuleLatestVersionArrayOutputWithContext(context.Background())
+}
+
+func (i ActionModuleLatestVersionArray) ToActionModuleLatestVersionArrayOutputWithContext(ctx context.Context) ActionModuleLatestVersionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionModuleLatestVersionArrayOutput)
+}
+
+type ActionModuleLatestVersionOutput struct{ *pulumi.OutputState }
+
+func (ActionModuleLatestVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionModuleLatestVersion)(nil)).Elem()
+}
+
+func (o ActionModuleLatestVersionOutput) ToActionModuleLatestVersionOutput() ActionModuleLatestVersionOutput {
+	return o
+}
+
+func (o ActionModuleLatestVersionOutput) ToActionModuleLatestVersionOutputWithContext(ctx context.Context) ActionModuleLatestVersionOutput {
+	return o
+}
+
+// The source code of this version.
+func (o ActionModuleLatestVersionOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionModuleLatestVersion) *string { return v.Code }).(pulumi.StringPtrOutput)
+}
+
+// The time when this version was created.
+func (o ActionModuleLatestVersionOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionModuleLatestVersion) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+}
+
+// List of third party npm modules, and their versions, that this version depends on.
+func (o ActionModuleLatestVersionOutput) Dependencies() ActionModuleLatestVersionDependencyArrayOutput {
+	return o.ApplyT(func(v ActionModuleLatestVersion) []ActionModuleLatestVersionDependency { return v.Dependencies }).(ActionModuleLatestVersionDependencyArrayOutput)
+}
+
+// The unique identifier of the version.
+func (o ActionModuleLatestVersionOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionModuleLatestVersion) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// List of secrets that are included in this version.
+func (o ActionModuleLatestVersionOutput) Secrets() ActionModuleLatestVersionSecretArrayOutput {
+	return o.ApplyT(func(v ActionModuleLatestVersion) []ActionModuleLatestVersionSecret { return v.Secrets }).(ActionModuleLatestVersionSecretArrayOutput)
+}
+
+// The version number.
+func (o ActionModuleLatestVersionOutput) VersionNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ActionModuleLatestVersion) *int { return v.VersionNumber }).(pulumi.IntPtrOutput)
+}
+
+type ActionModuleLatestVersionArrayOutput struct{ *pulumi.OutputState }
+
+func (ActionModuleLatestVersionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ActionModuleLatestVersion)(nil)).Elem()
+}
+
+func (o ActionModuleLatestVersionArrayOutput) ToActionModuleLatestVersionArrayOutput() ActionModuleLatestVersionArrayOutput {
+	return o
+}
+
+func (o ActionModuleLatestVersionArrayOutput) ToActionModuleLatestVersionArrayOutputWithContext(ctx context.Context) ActionModuleLatestVersionArrayOutput {
+	return o
+}
+
+func (o ActionModuleLatestVersionArrayOutput) Index(i pulumi.IntInput) ActionModuleLatestVersionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ActionModuleLatestVersion {
+		return vs[0].([]ActionModuleLatestVersion)[vs[1].(int)]
+	}).(ActionModuleLatestVersionOutput)
+}
+
+type ActionModuleLatestVersionDependency struct {
+	// Dependency name.
+	Name *string `pulumi:"name"`
+	// Dependency version.
+	Version *string `pulumi:"version"`
+}
+
+// ActionModuleLatestVersionDependencyInput is an input type that accepts ActionModuleLatestVersionDependencyArgs and ActionModuleLatestVersionDependencyOutput values.
+// You can construct a concrete instance of `ActionModuleLatestVersionDependencyInput` via:
+//
+//	ActionModuleLatestVersionDependencyArgs{...}
+type ActionModuleLatestVersionDependencyInput interface {
+	pulumi.Input
+
+	ToActionModuleLatestVersionDependencyOutput() ActionModuleLatestVersionDependencyOutput
+	ToActionModuleLatestVersionDependencyOutputWithContext(context.Context) ActionModuleLatestVersionDependencyOutput
+}
+
+type ActionModuleLatestVersionDependencyArgs struct {
+	// Dependency name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Dependency version.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (ActionModuleLatestVersionDependencyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionModuleLatestVersionDependency)(nil)).Elem()
+}
+
+func (i ActionModuleLatestVersionDependencyArgs) ToActionModuleLatestVersionDependencyOutput() ActionModuleLatestVersionDependencyOutput {
+	return i.ToActionModuleLatestVersionDependencyOutputWithContext(context.Background())
+}
+
+func (i ActionModuleLatestVersionDependencyArgs) ToActionModuleLatestVersionDependencyOutputWithContext(ctx context.Context) ActionModuleLatestVersionDependencyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionModuleLatestVersionDependencyOutput)
+}
+
+// ActionModuleLatestVersionDependencyArrayInput is an input type that accepts ActionModuleLatestVersionDependencyArray and ActionModuleLatestVersionDependencyArrayOutput values.
+// You can construct a concrete instance of `ActionModuleLatestVersionDependencyArrayInput` via:
+//
+//	ActionModuleLatestVersionDependencyArray{ ActionModuleLatestVersionDependencyArgs{...} }
+type ActionModuleLatestVersionDependencyArrayInput interface {
+	pulumi.Input
+
+	ToActionModuleLatestVersionDependencyArrayOutput() ActionModuleLatestVersionDependencyArrayOutput
+	ToActionModuleLatestVersionDependencyArrayOutputWithContext(context.Context) ActionModuleLatestVersionDependencyArrayOutput
+}
+
+type ActionModuleLatestVersionDependencyArray []ActionModuleLatestVersionDependencyInput
+
+func (ActionModuleLatestVersionDependencyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ActionModuleLatestVersionDependency)(nil)).Elem()
+}
+
+func (i ActionModuleLatestVersionDependencyArray) ToActionModuleLatestVersionDependencyArrayOutput() ActionModuleLatestVersionDependencyArrayOutput {
+	return i.ToActionModuleLatestVersionDependencyArrayOutputWithContext(context.Background())
+}
+
+func (i ActionModuleLatestVersionDependencyArray) ToActionModuleLatestVersionDependencyArrayOutputWithContext(ctx context.Context) ActionModuleLatestVersionDependencyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionModuleLatestVersionDependencyArrayOutput)
+}
+
+type ActionModuleLatestVersionDependencyOutput struct{ *pulumi.OutputState }
+
+func (ActionModuleLatestVersionDependencyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionModuleLatestVersionDependency)(nil)).Elem()
+}
+
+func (o ActionModuleLatestVersionDependencyOutput) ToActionModuleLatestVersionDependencyOutput() ActionModuleLatestVersionDependencyOutput {
+	return o
+}
+
+func (o ActionModuleLatestVersionDependencyOutput) ToActionModuleLatestVersionDependencyOutputWithContext(ctx context.Context) ActionModuleLatestVersionDependencyOutput {
+	return o
+}
+
+// Dependency name.
+func (o ActionModuleLatestVersionDependencyOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionModuleLatestVersionDependency) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Dependency version.
+func (o ActionModuleLatestVersionDependencyOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionModuleLatestVersionDependency) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type ActionModuleLatestVersionDependencyArrayOutput struct{ *pulumi.OutputState }
+
+func (ActionModuleLatestVersionDependencyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ActionModuleLatestVersionDependency)(nil)).Elem()
+}
+
+func (o ActionModuleLatestVersionDependencyArrayOutput) ToActionModuleLatestVersionDependencyArrayOutput() ActionModuleLatestVersionDependencyArrayOutput {
+	return o
+}
+
+func (o ActionModuleLatestVersionDependencyArrayOutput) ToActionModuleLatestVersionDependencyArrayOutputWithContext(ctx context.Context) ActionModuleLatestVersionDependencyArrayOutput {
+	return o
+}
+
+func (o ActionModuleLatestVersionDependencyArrayOutput) Index(i pulumi.IntInput) ActionModuleLatestVersionDependencyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ActionModuleLatestVersionDependency {
+		return vs[0].([]ActionModuleLatestVersionDependency)[vs[1].(int)]
+	}).(ActionModuleLatestVersionDependencyOutput)
+}
+
+type ActionModuleLatestVersionSecret struct {
+	// Secret name.
+	Name *string `pulumi:"name"`
+	// The time when this secret was last updated.
+	UpdatedAt *string `pulumi:"updatedAt"`
+}
+
+// ActionModuleLatestVersionSecretInput is an input type that accepts ActionModuleLatestVersionSecretArgs and ActionModuleLatestVersionSecretOutput values.
+// You can construct a concrete instance of `ActionModuleLatestVersionSecretInput` via:
+//
+//	ActionModuleLatestVersionSecretArgs{...}
+type ActionModuleLatestVersionSecretInput interface {
+	pulumi.Input
+
+	ToActionModuleLatestVersionSecretOutput() ActionModuleLatestVersionSecretOutput
+	ToActionModuleLatestVersionSecretOutputWithContext(context.Context) ActionModuleLatestVersionSecretOutput
+}
+
+type ActionModuleLatestVersionSecretArgs struct {
+	// Secret name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The time when this secret was last updated.
+	UpdatedAt pulumi.StringPtrInput `pulumi:"updatedAt"`
+}
+
+func (ActionModuleLatestVersionSecretArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionModuleLatestVersionSecret)(nil)).Elem()
+}
+
+func (i ActionModuleLatestVersionSecretArgs) ToActionModuleLatestVersionSecretOutput() ActionModuleLatestVersionSecretOutput {
+	return i.ToActionModuleLatestVersionSecretOutputWithContext(context.Background())
+}
+
+func (i ActionModuleLatestVersionSecretArgs) ToActionModuleLatestVersionSecretOutputWithContext(ctx context.Context) ActionModuleLatestVersionSecretOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionModuleLatestVersionSecretOutput)
+}
+
+// ActionModuleLatestVersionSecretArrayInput is an input type that accepts ActionModuleLatestVersionSecretArray and ActionModuleLatestVersionSecretArrayOutput values.
+// You can construct a concrete instance of `ActionModuleLatestVersionSecretArrayInput` via:
+//
+//	ActionModuleLatestVersionSecretArray{ ActionModuleLatestVersionSecretArgs{...} }
+type ActionModuleLatestVersionSecretArrayInput interface {
+	pulumi.Input
+
+	ToActionModuleLatestVersionSecretArrayOutput() ActionModuleLatestVersionSecretArrayOutput
+	ToActionModuleLatestVersionSecretArrayOutputWithContext(context.Context) ActionModuleLatestVersionSecretArrayOutput
+}
+
+type ActionModuleLatestVersionSecretArray []ActionModuleLatestVersionSecretInput
+
+func (ActionModuleLatestVersionSecretArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ActionModuleLatestVersionSecret)(nil)).Elem()
+}
+
+func (i ActionModuleLatestVersionSecretArray) ToActionModuleLatestVersionSecretArrayOutput() ActionModuleLatestVersionSecretArrayOutput {
+	return i.ToActionModuleLatestVersionSecretArrayOutputWithContext(context.Background())
+}
+
+func (i ActionModuleLatestVersionSecretArray) ToActionModuleLatestVersionSecretArrayOutputWithContext(ctx context.Context) ActionModuleLatestVersionSecretArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionModuleLatestVersionSecretArrayOutput)
+}
+
+type ActionModuleLatestVersionSecretOutput struct{ *pulumi.OutputState }
+
+func (ActionModuleLatestVersionSecretOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionModuleLatestVersionSecret)(nil)).Elem()
+}
+
+func (o ActionModuleLatestVersionSecretOutput) ToActionModuleLatestVersionSecretOutput() ActionModuleLatestVersionSecretOutput {
+	return o
+}
+
+func (o ActionModuleLatestVersionSecretOutput) ToActionModuleLatestVersionSecretOutputWithContext(ctx context.Context) ActionModuleLatestVersionSecretOutput {
+	return o
+}
+
+// Secret name.
+func (o ActionModuleLatestVersionSecretOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionModuleLatestVersionSecret) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The time when this secret was last updated.
+func (o ActionModuleLatestVersionSecretOutput) UpdatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionModuleLatestVersionSecret) *string { return v.UpdatedAt }).(pulumi.StringPtrOutput)
+}
+
+type ActionModuleLatestVersionSecretArrayOutput struct{ *pulumi.OutputState }
+
+func (ActionModuleLatestVersionSecretArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ActionModuleLatestVersionSecret)(nil)).Elem()
+}
+
+func (o ActionModuleLatestVersionSecretArrayOutput) ToActionModuleLatestVersionSecretArrayOutput() ActionModuleLatestVersionSecretArrayOutput {
+	return o
+}
+
+func (o ActionModuleLatestVersionSecretArrayOutput) ToActionModuleLatestVersionSecretArrayOutputWithContext(ctx context.Context) ActionModuleLatestVersionSecretArrayOutput {
+	return o
+}
+
+func (o ActionModuleLatestVersionSecretArrayOutput) Index(i pulumi.IntInput) ActionModuleLatestVersionSecretOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ActionModuleLatestVersionSecret {
+		return vs[0].([]ActionModuleLatestVersionSecret)[vs[1].(int)]
+	}).(ActionModuleLatestVersionSecretOutput)
+}
+
+type ActionModuleSecret struct {
+	// Secret name. Required when configuring secrets
+	Name *string `pulumi:"name"`
+	// Last update time
+	UpdatedAt *string `pulumi:"updatedAt"`
+	// Secret value. Required when configuring secrets
+	Value *string `pulumi:"value"`
+}
+
+// ActionModuleSecretInput is an input type that accepts ActionModuleSecretArgs and ActionModuleSecretOutput values.
+// You can construct a concrete instance of `ActionModuleSecretInput` via:
+//
+//	ActionModuleSecretArgs{...}
+type ActionModuleSecretInput interface {
+	pulumi.Input
+
+	ToActionModuleSecretOutput() ActionModuleSecretOutput
+	ToActionModuleSecretOutputWithContext(context.Context) ActionModuleSecretOutput
+}
+
+type ActionModuleSecretArgs struct {
+	// Secret name. Required when configuring secrets
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Last update time
+	UpdatedAt pulumi.StringPtrInput `pulumi:"updatedAt"`
+	// Secret value. Required when configuring secrets
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (ActionModuleSecretArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionModuleSecret)(nil)).Elem()
+}
+
+func (i ActionModuleSecretArgs) ToActionModuleSecretOutput() ActionModuleSecretOutput {
+	return i.ToActionModuleSecretOutputWithContext(context.Background())
+}
+
+func (i ActionModuleSecretArgs) ToActionModuleSecretOutputWithContext(ctx context.Context) ActionModuleSecretOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionModuleSecretOutput)
+}
+
+// ActionModuleSecretArrayInput is an input type that accepts ActionModuleSecretArray and ActionModuleSecretArrayOutput values.
+// You can construct a concrete instance of `ActionModuleSecretArrayInput` via:
+//
+//	ActionModuleSecretArray{ ActionModuleSecretArgs{...} }
+type ActionModuleSecretArrayInput interface {
+	pulumi.Input
+
+	ToActionModuleSecretArrayOutput() ActionModuleSecretArrayOutput
+	ToActionModuleSecretArrayOutputWithContext(context.Context) ActionModuleSecretArrayOutput
+}
+
+type ActionModuleSecretArray []ActionModuleSecretInput
+
+func (ActionModuleSecretArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ActionModuleSecret)(nil)).Elem()
+}
+
+func (i ActionModuleSecretArray) ToActionModuleSecretArrayOutput() ActionModuleSecretArrayOutput {
+	return i.ToActionModuleSecretArrayOutputWithContext(context.Background())
+}
+
+func (i ActionModuleSecretArray) ToActionModuleSecretArrayOutputWithContext(ctx context.Context) ActionModuleSecretArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionModuleSecretArrayOutput)
+}
+
+type ActionModuleSecretOutput struct{ *pulumi.OutputState }
+
+func (ActionModuleSecretOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionModuleSecret)(nil)).Elem()
+}
+
+func (o ActionModuleSecretOutput) ToActionModuleSecretOutput() ActionModuleSecretOutput {
+	return o
+}
+
+func (o ActionModuleSecretOutput) ToActionModuleSecretOutputWithContext(ctx context.Context) ActionModuleSecretOutput {
+	return o
+}
+
+// Secret name. Required when configuring secrets
+func (o ActionModuleSecretOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionModuleSecret) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Last update time
+func (o ActionModuleSecretOutput) UpdatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionModuleSecret) *string { return v.UpdatedAt }).(pulumi.StringPtrOutput)
+}
+
+// Secret value. Required when configuring secrets
+func (o ActionModuleSecretOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionModuleSecret) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type ActionModuleSecretArrayOutput struct{ *pulumi.OutputState }
+
+func (ActionModuleSecretArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ActionModuleSecret)(nil)).Elem()
+}
+
+func (o ActionModuleSecretArrayOutput) ToActionModuleSecretArrayOutput() ActionModuleSecretArrayOutput {
+	return o
+}
+
+func (o ActionModuleSecretArrayOutput) ToActionModuleSecretArrayOutputWithContext(ctx context.Context) ActionModuleSecretArrayOutput {
+	return o
+}
+
+func (o ActionModuleSecretArrayOutput) Index(i pulumi.IntInput) ActionModuleSecretOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ActionModuleSecret {
+		return vs[0].([]ActionModuleSecret)[vs[1].(int)]
+	}).(ActionModuleSecretOutput)
+}
+
 type ActionSecret struct {
 	// Secret name.
 	Name string `pulumi:"name"`
@@ -17197,6 +17896,8 @@ type ConnectionOptions struct {
 	Scopes []string `pulumi:"scopes"`
 	// A map of scripts used for an OAuth connection. Only accepts a `fetchUserProfile` script.
 	Scripts map[string]string `pulumi:"scripts"`
+	// When true and `type` is 'back_channel', includes a cryptographic nonce in authorization requests to prevent replay attacks. The identity provider must include this nonce in the ID token for validation.
+	SendBackChannelNonce *bool `pulumi:"sendBackChannelNonce"`
 	// Session Key for storing the request token.
 	SessionKey *string `pulumi:"sessionKey"`
 	// Determines whether to sync user profile attributes (`name`, `givenName`, `familyName`, `nickname`, `picture`) at each login or only on the first login. Options include: `onEachLogin`, `onFirstLogin`, `neverOnLogin`. Default value: `onEachLogin`.
@@ -17249,6 +17950,8 @@ type ConnectionOptions struct {
 	UseCertAuth *bool `pulumi:"useCertAuth"`
 	// Indicates whether to use Kerberos or not.
 	UseKerberos *bool `pulumi:"useKerberos"`
+	// Determines the `scopes` format: `true` makes it a space-separated string (per OAuth2 specification); `false` makes it an array.
+	UseOauthSpecScope *bool `pulumi:"useOauthSpecScope"`
 	// Whether to use WS-Fed.
 	UseWsfed *bool `pulumi:"useWsfed"`
 	// URL used to obtain user authorization.
@@ -17429,6 +18132,8 @@ type ConnectionOptionsArgs struct {
 	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
 	// A map of scripts used for an OAuth connection. Only accepts a `fetchUserProfile` script.
 	Scripts pulumi.StringMapInput `pulumi:"scripts"`
+	// When true and `type` is 'back_channel', includes a cryptographic nonce in authorization requests to prevent replay attacks. The identity provider must include this nonce in the ID token for validation.
+	SendBackChannelNonce pulumi.BoolPtrInput `pulumi:"sendBackChannelNonce"`
 	// Session Key for storing the request token.
 	SessionKey pulumi.StringPtrInput `pulumi:"sessionKey"`
 	// Determines whether to sync user profile attributes (`name`, `givenName`, `familyName`, `nickname`, `picture`) at each login or only on the first login. Options include: `onEachLogin`, `onFirstLogin`, `neverOnLogin`. Default value: `onEachLogin`.
@@ -17481,6 +18186,8 @@ type ConnectionOptionsArgs struct {
 	UseCertAuth pulumi.BoolPtrInput `pulumi:"useCertAuth"`
 	// Indicates whether to use Kerberos or not.
 	UseKerberos pulumi.BoolPtrInput `pulumi:"useKerberos"`
+	// Determines the `scopes` format: `true` makes it a space-separated string (per OAuth2 specification); `false` makes it an array.
+	UseOauthSpecScope pulumi.BoolPtrInput `pulumi:"useOauthSpecScope"`
 	// Whether to use WS-Fed.
 	UseWsfed pulumi.BoolPtrInput `pulumi:"useWsfed"`
 	// URL used to obtain user authorization.
@@ -17956,6 +18663,11 @@ func (o ConnectionOptionsOutput) Scripts() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ConnectionOptions) map[string]string { return v.Scripts }).(pulumi.StringMapOutput)
 }
 
+// When true and `type` is 'back_channel', includes a cryptographic nonce in authorization requests to prevent replay attacks. The identity provider must include this nonce in the ID token for validation.
+func (o ConnectionOptionsOutput) SendBackChannelNonce() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *bool { return v.SendBackChannelNonce }).(pulumi.BoolPtrOutput)
+}
+
 // Session Key for storing the request token.
 func (o ConnectionOptionsOutput) SessionKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.SessionKey }).(pulumi.StringPtrOutput)
@@ -18084,6 +18796,11 @@ func (o ConnectionOptionsOutput) UseCertAuth() pulumi.BoolPtrOutput {
 // Indicates whether to use Kerberos or not.
 func (o ConnectionOptionsOutput) UseKerberos() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *bool { return v.UseKerberos }).(pulumi.BoolPtrOutput)
+}
+
+// Determines the `scopes` format: `true` makes it a space-separated string (per OAuth2 specification); `false` makes it an array.
+func (o ConnectionOptionsOutput) UseOauthSpecScope() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *bool { return v.UseOauthSpecScope }).(pulumi.BoolPtrOutput)
 }
 
 // Whether to use WS-Fed.
@@ -18905,6 +19622,16 @@ func (o ConnectionOptionsPtrOutput) Scripts() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+// When true and `type` is 'back_channel', includes a cryptographic nonce in authorization requests to prevent replay attacks. The identity provider must include this nonce in the ID token for validation.
+func (o ConnectionOptionsPtrOutput) SendBackChannelNonce() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SendBackChannelNonce
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Session Key for storing the request token.
 func (o ConnectionOptionsPtrOutput) SessionKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *string {
@@ -19162,6 +19889,16 @@ func (o ConnectionOptionsPtrOutput) UseKerberos() pulumi.BoolPtrOutput {
 			return nil
 		}
 		return v.UseKerberos
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Determines the `scopes` format: `true` makes it a space-separated string (per OAuth2 specification); `false` makes it an array.
+func (o ConnectionOptionsPtrOutput) UseOauthSpecScope() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseOauthSpecScope
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -40626,6 +41363,1523 @@ func (o GetActionDependencyArrayOutput) Index(i pulumi.IntInput) GetActionDepend
 	}).(GetActionDependencyOutput)
 }
 
+type GetActionModuleType struct {
+	// The unique ID of the module.
+	ModuleId string `pulumi:"moduleId"`
+	// The name of the module.
+	ModuleName string `pulumi:"moduleName"`
+	// The ID of the specific module version to use.
+	ModuleVersionId string `pulumi:"moduleVersionId"`
+	// The version number of the module.
+	ModuleVersionNumber int `pulumi:"moduleVersionNumber"`
+}
+
+// GetActionModuleTypeInput is an input type that accepts GetActionModuleTypeArgs and GetActionModuleTypeOutput values.
+// You can construct a concrete instance of `GetActionModuleTypeInput` via:
+//
+//	GetActionModuleTypeArgs{...}
+type GetActionModuleTypeInput interface {
+	pulumi.Input
+
+	ToGetActionModuleTypeOutput() GetActionModuleTypeOutput
+	ToGetActionModuleTypeOutputWithContext(context.Context) GetActionModuleTypeOutput
+}
+
+type GetActionModuleTypeArgs struct {
+	// The unique ID of the module.
+	ModuleId pulumi.StringInput `pulumi:"moduleId"`
+	// The name of the module.
+	ModuleName pulumi.StringInput `pulumi:"moduleName"`
+	// The ID of the specific module version to use.
+	ModuleVersionId pulumi.StringInput `pulumi:"moduleVersionId"`
+	// The version number of the module.
+	ModuleVersionNumber pulumi.IntInput `pulumi:"moduleVersionNumber"`
+}
+
+func (GetActionModuleTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetActionModuleType)(nil)).Elem()
+}
+
+func (i GetActionModuleTypeArgs) ToGetActionModuleTypeOutput() GetActionModuleTypeOutput {
+	return i.ToGetActionModuleTypeOutputWithContext(context.Background())
+}
+
+func (i GetActionModuleTypeArgs) ToGetActionModuleTypeOutputWithContext(ctx context.Context) GetActionModuleTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetActionModuleTypeOutput)
+}
+
+// GetActionModuleTypeArrayInput is an input type that accepts GetActionModuleTypeArray and GetActionModuleTypeArrayOutput values.
+// You can construct a concrete instance of `GetActionModuleTypeArrayInput` via:
+//
+//	GetActionModuleTypeArray{ GetActionModuleTypeArgs{...} }
+type GetActionModuleTypeArrayInput interface {
+	pulumi.Input
+
+	ToGetActionModuleTypeArrayOutput() GetActionModuleTypeArrayOutput
+	ToGetActionModuleTypeArrayOutputWithContext(context.Context) GetActionModuleTypeArrayOutput
+}
+
+type GetActionModuleTypeArray []GetActionModuleTypeInput
+
+func (GetActionModuleTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetActionModuleType)(nil)).Elem()
+}
+
+func (i GetActionModuleTypeArray) ToGetActionModuleTypeArrayOutput() GetActionModuleTypeArrayOutput {
+	return i.ToGetActionModuleTypeArrayOutputWithContext(context.Background())
+}
+
+func (i GetActionModuleTypeArray) ToGetActionModuleTypeArrayOutputWithContext(ctx context.Context) GetActionModuleTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetActionModuleTypeArrayOutput)
+}
+
+type GetActionModuleTypeOutput struct{ *pulumi.OutputState }
+
+func (GetActionModuleTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetActionModuleType)(nil)).Elem()
+}
+
+func (o GetActionModuleTypeOutput) ToGetActionModuleTypeOutput() GetActionModuleTypeOutput {
+	return o
+}
+
+func (o GetActionModuleTypeOutput) ToGetActionModuleTypeOutputWithContext(ctx context.Context) GetActionModuleTypeOutput {
+	return o
+}
+
+// The unique ID of the module.
+func (o GetActionModuleTypeOutput) ModuleId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetActionModuleType) string { return v.ModuleId }).(pulumi.StringOutput)
+}
+
+// The name of the module.
+func (o GetActionModuleTypeOutput) ModuleName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetActionModuleType) string { return v.ModuleName }).(pulumi.StringOutput)
+}
+
+// The ID of the specific module version to use.
+func (o GetActionModuleTypeOutput) ModuleVersionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetActionModuleType) string { return v.ModuleVersionId }).(pulumi.StringOutput)
+}
+
+// The version number of the module.
+func (o GetActionModuleTypeOutput) ModuleVersionNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v GetActionModuleType) int { return v.ModuleVersionNumber }).(pulumi.IntOutput)
+}
+
+type GetActionModuleTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetActionModuleTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetActionModuleType)(nil)).Elem()
+}
+
+func (o GetActionModuleTypeArrayOutput) ToGetActionModuleTypeArrayOutput() GetActionModuleTypeArrayOutput {
+	return o
+}
+
+func (o GetActionModuleTypeArrayOutput) ToGetActionModuleTypeArrayOutputWithContext(ctx context.Context) GetActionModuleTypeArrayOutput {
+	return o
+}
+
+func (o GetActionModuleTypeArrayOutput) Index(i pulumi.IntInput) GetActionModuleTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetActionModuleType {
+		return vs[0].([]GetActionModuleType)[vs[1].(int)]
+	}).(GetActionModuleTypeOutput)
+}
+
+type GetActionModuleActionsAction struct {
+	// The ID of the action.
+	ActionId string `pulumi:"actionId"`
+	// The name of the action.
+	ActionName string `pulumi:"actionName"`
+	// The ID of the module version this action is using.
+	ModuleVersionId string `pulumi:"moduleVersionId"`
+	// The version number of the module this action is using.
+	ModuleVersionNumber int `pulumi:"moduleVersionNumber"`
+	// The triggers that this action supports.
+	SupportedTriggers []GetActionModuleActionsActionSupportedTrigger `pulumi:"supportedTriggers"`
+}
+
+// GetActionModuleActionsActionInput is an input type that accepts GetActionModuleActionsActionArgs and GetActionModuleActionsActionOutput values.
+// You can construct a concrete instance of `GetActionModuleActionsActionInput` via:
+//
+//	GetActionModuleActionsActionArgs{...}
+type GetActionModuleActionsActionInput interface {
+	pulumi.Input
+
+	ToGetActionModuleActionsActionOutput() GetActionModuleActionsActionOutput
+	ToGetActionModuleActionsActionOutputWithContext(context.Context) GetActionModuleActionsActionOutput
+}
+
+type GetActionModuleActionsActionArgs struct {
+	// The ID of the action.
+	ActionId pulumi.StringInput `pulumi:"actionId"`
+	// The name of the action.
+	ActionName pulumi.StringInput `pulumi:"actionName"`
+	// The ID of the module version this action is using.
+	ModuleVersionId pulumi.StringInput `pulumi:"moduleVersionId"`
+	// The version number of the module this action is using.
+	ModuleVersionNumber pulumi.IntInput `pulumi:"moduleVersionNumber"`
+	// The triggers that this action supports.
+	SupportedTriggers GetActionModuleActionsActionSupportedTriggerArrayInput `pulumi:"supportedTriggers"`
+}
+
+func (GetActionModuleActionsActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetActionModuleActionsAction)(nil)).Elem()
+}
+
+func (i GetActionModuleActionsActionArgs) ToGetActionModuleActionsActionOutput() GetActionModuleActionsActionOutput {
+	return i.ToGetActionModuleActionsActionOutputWithContext(context.Background())
+}
+
+func (i GetActionModuleActionsActionArgs) ToGetActionModuleActionsActionOutputWithContext(ctx context.Context) GetActionModuleActionsActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetActionModuleActionsActionOutput)
+}
+
+// GetActionModuleActionsActionArrayInput is an input type that accepts GetActionModuleActionsActionArray and GetActionModuleActionsActionArrayOutput values.
+// You can construct a concrete instance of `GetActionModuleActionsActionArrayInput` via:
+//
+//	GetActionModuleActionsActionArray{ GetActionModuleActionsActionArgs{...} }
+type GetActionModuleActionsActionArrayInput interface {
+	pulumi.Input
+
+	ToGetActionModuleActionsActionArrayOutput() GetActionModuleActionsActionArrayOutput
+	ToGetActionModuleActionsActionArrayOutputWithContext(context.Context) GetActionModuleActionsActionArrayOutput
+}
+
+type GetActionModuleActionsActionArray []GetActionModuleActionsActionInput
+
+func (GetActionModuleActionsActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetActionModuleActionsAction)(nil)).Elem()
+}
+
+func (i GetActionModuleActionsActionArray) ToGetActionModuleActionsActionArrayOutput() GetActionModuleActionsActionArrayOutput {
+	return i.ToGetActionModuleActionsActionArrayOutputWithContext(context.Background())
+}
+
+func (i GetActionModuleActionsActionArray) ToGetActionModuleActionsActionArrayOutputWithContext(ctx context.Context) GetActionModuleActionsActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetActionModuleActionsActionArrayOutput)
+}
+
+type GetActionModuleActionsActionOutput struct{ *pulumi.OutputState }
+
+func (GetActionModuleActionsActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetActionModuleActionsAction)(nil)).Elem()
+}
+
+func (o GetActionModuleActionsActionOutput) ToGetActionModuleActionsActionOutput() GetActionModuleActionsActionOutput {
+	return o
+}
+
+func (o GetActionModuleActionsActionOutput) ToGetActionModuleActionsActionOutputWithContext(ctx context.Context) GetActionModuleActionsActionOutput {
+	return o
+}
+
+// The ID of the action.
+func (o GetActionModuleActionsActionOutput) ActionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetActionModuleActionsAction) string { return v.ActionId }).(pulumi.StringOutput)
+}
+
+// The name of the action.
+func (o GetActionModuleActionsActionOutput) ActionName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetActionModuleActionsAction) string { return v.ActionName }).(pulumi.StringOutput)
+}
+
+// The ID of the module version this action is using.
+func (o GetActionModuleActionsActionOutput) ModuleVersionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetActionModuleActionsAction) string { return v.ModuleVersionId }).(pulumi.StringOutput)
+}
+
+// The version number of the module this action is using.
+func (o GetActionModuleActionsActionOutput) ModuleVersionNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v GetActionModuleActionsAction) int { return v.ModuleVersionNumber }).(pulumi.IntOutput)
+}
+
+// The triggers that this action supports.
+func (o GetActionModuleActionsActionOutput) SupportedTriggers() GetActionModuleActionsActionSupportedTriggerArrayOutput {
+	return o.ApplyT(func(v GetActionModuleActionsAction) []GetActionModuleActionsActionSupportedTrigger {
+		return v.SupportedTriggers
+	}).(GetActionModuleActionsActionSupportedTriggerArrayOutput)
+}
+
+type GetActionModuleActionsActionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetActionModuleActionsActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetActionModuleActionsAction)(nil)).Elem()
+}
+
+func (o GetActionModuleActionsActionArrayOutput) ToGetActionModuleActionsActionArrayOutput() GetActionModuleActionsActionArrayOutput {
+	return o
+}
+
+func (o GetActionModuleActionsActionArrayOutput) ToGetActionModuleActionsActionArrayOutputWithContext(ctx context.Context) GetActionModuleActionsActionArrayOutput {
+	return o
+}
+
+func (o GetActionModuleActionsActionArrayOutput) Index(i pulumi.IntInput) GetActionModuleActionsActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetActionModuleActionsAction {
+		return vs[0].([]GetActionModuleActionsAction)[vs[1].(int)]
+	}).(GetActionModuleActionsActionOutput)
+}
+
+type GetActionModuleActionsActionSupportedTrigger struct {
+	// The trigger ID.
+	Id string `pulumi:"id"`
+	// The trigger version.
+	Version string `pulumi:"version"`
+}
+
+// GetActionModuleActionsActionSupportedTriggerInput is an input type that accepts GetActionModuleActionsActionSupportedTriggerArgs and GetActionModuleActionsActionSupportedTriggerOutput values.
+// You can construct a concrete instance of `GetActionModuleActionsActionSupportedTriggerInput` via:
+//
+//	GetActionModuleActionsActionSupportedTriggerArgs{...}
+type GetActionModuleActionsActionSupportedTriggerInput interface {
+	pulumi.Input
+
+	ToGetActionModuleActionsActionSupportedTriggerOutput() GetActionModuleActionsActionSupportedTriggerOutput
+	ToGetActionModuleActionsActionSupportedTriggerOutputWithContext(context.Context) GetActionModuleActionsActionSupportedTriggerOutput
+}
+
+type GetActionModuleActionsActionSupportedTriggerArgs struct {
+	// The trigger ID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The trigger version.
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetActionModuleActionsActionSupportedTriggerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetActionModuleActionsActionSupportedTrigger)(nil)).Elem()
+}
+
+func (i GetActionModuleActionsActionSupportedTriggerArgs) ToGetActionModuleActionsActionSupportedTriggerOutput() GetActionModuleActionsActionSupportedTriggerOutput {
+	return i.ToGetActionModuleActionsActionSupportedTriggerOutputWithContext(context.Background())
+}
+
+func (i GetActionModuleActionsActionSupportedTriggerArgs) ToGetActionModuleActionsActionSupportedTriggerOutputWithContext(ctx context.Context) GetActionModuleActionsActionSupportedTriggerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetActionModuleActionsActionSupportedTriggerOutput)
+}
+
+// GetActionModuleActionsActionSupportedTriggerArrayInput is an input type that accepts GetActionModuleActionsActionSupportedTriggerArray and GetActionModuleActionsActionSupportedTriggerArrayOutput values.
+// You can construct a concrete instance of `GetActionModuleActionsActionSupportedTriggerArrayInput` via:
+//
+//	GetActionModuleActionsActionSupportedTriggerArray{ GetActionModuleActionsActionSupportedTriggerArgs{...} }
+type GetActionModuleActionsActionSupportedTriggerArrayInput interface {
+	pulumi.Input
+
+	ToGetActionModuleActionsActionSupportedTriggerArrayOutput() GetActionModuleActionsActionSupportedTriggerArrayOutput
+	ToGetActionModuleActionsActionSupportedTriggerArrayOutputWithContext(context.Context) GetActionModuleActionsActionSupportedTriggerArrayOutput
+}
+
+type GetActionModuleActionsActionSupportedTriggerArray []GetActionModuleActionsActionSupportedTriggerInput
+
+func (GetActionModuleActionsActionSupportedTriggerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetActionModuleActionsActionSupportedTrigger)(nil)).Elem()
+}
+
+func (i GetActionModuleActionsActionSupportedTriggerArray) ToGetActionModuleActionsActionSupportedTriggerArrayOutput() GetActionModuleActionsActionSupportedTriggerArrayOutput {
+	return i.ToGetActionModuleActionsActionSupportedTriggerArrayOutputWithContext(context.Background())
+}
+
+func (i GetActionModuleActionsActionSupportedTriggerArray) ToGetActionModuleActionsActionSupportedTriggerArrayOutputWithContext(ctx context.Context) GetActionModuleActionsActionSupportedTriggerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetActionModuleActionsActionSupportedTriggerArrayOutput)
+}
+
+type GetActionModuleActionsActionSupportedTriggerOutput struct{ *pulumi.OutputState }
+
+func (GetActionModuleActionsActionSupportedTriggerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetActionModuleActionsActionSupportedTrigger)(nil)).Elem()
+}
+
+func (o GetActionModuleActionsActionSupportedTriggerOutput) ToGetActionModuleActionsActionSupportedTriggerOutput() GetActionModuleActionsActionSupportedTriggerOutput {
+	return o
+}
+
+func (o GetActionModuleActionsActionSupportedTriggerOutput) ToGetActionModuleActionsActionSupportedTriggerOutputWithContext(ctx context.Context) GetActionModuleActionsActionSupportedTriggerOutput {
+	return o
+}
+
+// The trigger ID.
+func (o GetActionModuleActionsActionSupportedTriggerOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetActionModuleActionsActionSupportedTrigger) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The trigger version.
+func (o GetActionModuleActionsActionSupportedTriggerOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetActionModuleActionsActionSupportedTrigger) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetActionModuleActionsActionSupportedTriggerArrayOutput struct{ *pulumi.OutputState }
+
+func (GetActionModuleActionsActionSupportedTriggerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetActionModuleActionsActionSupportedTrigger)(nil)).Elem()
+}
+
+func (o GetActionModuleActionsActionSupportedTriggerArrayOutput) ToGetActionModuleActionsActionSupportedTriggerArrayOutput() GetActionModuleActionsActionSupportedTriggerArrayOutput {
+	return o
+}
+
+func (o GetActionModuleActionsActionSupportedTriggerArrayOutput) ToGetActionModuleActionsActionSupportedTriggerArrayOutputWithContext(ctx context.Context) GetActionModuleActionsActionSupportedTriggerArrayOutput {
+	return o
+}
+
+func (o GetActionModuleActionsActionSupportedTriggerArrayOutput) Index(i pulumi.IntInput) GetActionModuleActionsActionSupportedTriggerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetActionModuleActionsActionSupportedTrigger {
+		return vs[0].([]GetActionModuleActionsActionSupportedTrigger)[vs[1].(int)]
+	}).(GetActionModuleActionsActionSupportedTriggerOutput)
+}
+
+type GetActionModuleDependency struct {
+	// Dependency name, e.g. `lodash`.
+	Name string `pulumi:"name"`
+	// Dependency version, e.g. `latest` or `4.17.21`.
+	Version string `pulumi:"version"`
+}
+
+// GetActionModuleDependencyInput is an input type that accepts GetActionModuleDependencyArgs and GetActionModuleDependencyOutput values.
+// You can construct a concrete instance of `GetActionModuleDependencyInput` via:
+//
+//	GetActionModuleDependencyArgs{...}
+type GetActionModuleDependencyInput interface {
+	pulumi.Input
+
+	ToGetActionModuleDependencyOutput() GetActionModuleDependencyOutput
+	ToGetActionModuleDependencyOutputWithContext(context.Context) GetActionModuleDependencyOutput
+}
+
+type GetActionModuleDependencyArgs struct {
+	// Dependency name, e.g. `lodash`.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Dependency version, e.g. `latest` or `4.17.21`.
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetActionModuleDependencyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetActionModuleDependency)(nil)).Elem()
+}
+
+func (i GetActionModuleDependencyArgs) ToGetActionModuleDependencyOutput() GetActionModuleDependencyOutput {
+	return i.ToGetActionModuleDependencyOutputWithContext(context.Background())
+}
+
+func (i GetActionModuleDependencyArgs) ToGetActionModuleDependencyOutputWithContext(ctx context.Context) GetActionModuleDependencyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetActionModuleDependencyOutput)
+}
+
+// GetActionModuleDependencyArrayInput is an input type that accepts GetActionModuleDependencyArray and GetActionModuleDependencyArrayOutput values.
+// You can construct a concrete instance of `GetActionModuleDependencyArrayInput` via:
+//
+//	GetActionModuleDependencyArray{ GetActionModuleDependencyArgs{...} }
+type GetActionModuleDependencyArrayInput interface {
+	pulumi.Input
+
+	ToGetActionModuleDependencyArrayOutput() GetActionModuleDependencyArrayOutput
+	ToGetActionModuleDependencyArrayOutputWithContext(context.Context) GetActionModuleDependencyArrayOutput
+}
+
+type GetActionModuleDependencyArray []GetActionModuleDependencyInput
+
+func (GetActionModuleDependencyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetActionModuleDependency)(nil)).Elem()
+}
+
+func (i GetActionModuleDependencyArray) ToGetActionModuleDependencyArrayOutput() GetActionModuleDependencyArrayOutput {
+	return i.ToGetActionModuleDependencyArrayOutputWithContext(context.Background())
+}
+
+func (i GetActionModuleDependencyArray) ToGetActionModuleDependencyArrayOutputWithContext(ctx context.Context) GetActionModuleDependencyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetActionModuleDependencyArrayOutput)
+}
+
+type GetActionModuleDependencyOutput struct{ *pulumi.OutputState }
+
+func (GetActionModuleDependencyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetActionModuleDependency)(nil)).Elem()
+}
+
+func (o GetActionModuleDependencyOutput) ToGetActionModuleDependencyOutput() GetActionModuleDependencyOutput {
+	return o
+}
+
+func (o GetActionModuleDependencyOutput) ToGetActionModuleDependencyOutputWithContext(ctx context.Context) GetActionModuleDependencyOutput {
+	return o
+}
+
+// Dependency name, e.g. `lodash`.
+func (o GetActionModuleDependencyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetActionModuleDependency) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Dependency version, e.g. `latest` or `4.17.21`.
+func (o GetActionModuleDependencyOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetActionModuleDependency) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetActionModuleDependencyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetActionModuleDependencyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetActionModuleDependency)(nil)).Elem()
+}
+
+func (o GetActionModuleDependencyArrayOutput) ToGetActionModuleDependencyArrayOutput() GetActionModuleDependencyArrayOutput {
+	return o
+}
+
+func (o GetActionModuleDependencyArrayOutput) ToGetActionModuleDependencyArrayOutputWithContext(ctx context.Context) GetActionModuleDependencyArrayOutput {
+	return o
+}
+
+func (o GetActionModuleDependencyArrayOutput) Index(i pulumi.IntInput) GetActionModuleDependencyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetActionModuleDependency {
+		return vs[0].([]GetActionModuleDependency)[vs[1].(int)]
+	}).(GetActionModuleDependencyOutput)
+}
+
+type GetActionModuleLatestVersion struct {
+	// The source code of this version.
+	Code string `pulumi:"code"`
+	// The time when this version was created.
+	CreatedAt string `pulumi:"createdAt"`
+	// List of third party npm modules, and their versions, that this version depends on.
+	Dependencies []GetActionModuleLatestVersionDependency `pulumi:"dependencies"`
+	// The unique identifier of the version.
+	Id string `pulumi:"id"`
+	// List of secrets that are included in this version.
+	Secrets []GetActionModuleLatestVersionSecret `pulumi:"secrets"`
+	// The version number.
+	VersionNumber int `pulumi:"versionNumber"`
+}
+
+// GetActionModuleLatestVersionInput is an input type that accepts GetActionModuleLatestVersionArgs and GetActionModuleLatestVersionOutput values.
+// You can construct a concrete instance of `GetActionModuleLatestVersionInput` via:
+//
+//	GetActionModuleLatestVersionArgs{...}
+type GetActionModuleLatestVersionInput interface {
+	pulumi.Input
+
+	ToGetActionModuleLatestVersionOutput() GetActionModuleLatestVersionOutput
+	ToGetActionModuleLatestVersionOutputWithContext(context.Context) GetActionModuleLatestVersionOutput
+}
+
+type GetActionModuleLatestVersionArgs struct {
+	// The source code of this version.
+	Code pulumi.StringInput `pulumi:"code"`
+	// The time when this version was created.
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// List of third party npm modules, and their versions, that this version depends on.
+	Dependencies GetActionModuleLatestVersionDependencyArrayInput `pulumi:"dependencies"`
+	// The unique identifier of the version.
+	Id pulumi.StringInput `pulumi:"id"`
+	// List of secrets that are included in this version.
+	Secrets GetActionModuleLatestVersionSecretArrayInput `pulumi:"secrets"`
+	// The version number.
+	VersionNumber pulumi.IntInput `pulumi:"versionNumber"`
+}
+
+func (GetActionModuleLatestVersionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetActionModuleLatestVersion)(nil)).Elem()
+}
+
+func (i GetActionModuleLatestVersionArgs) ToGetActionModuleLatestVersionOutput() GetActionModuleLatestVersionOutput {
+	return i.ToGetActionModuleLatestVersionOutputWithContext(context.Background())
+}
+
+func (i GetActionModuleLatestVersionArgs) ToGetActionModuleLatestVersionOutputWithContext(ctx context.Context) GetActionModuleLatestVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetActionModuleLatestVersionOutput)
+}
+
+// GetActionModuleLatestVersionArrayInput is an input type that accepts GetActionModuleLatestVersionArray and GetActionModuleLatestVersionArrayOutput values.
+// You can construct a concrete instance of `GetActionModuleLatestVersionArrayInput` via:
+//
+//	GetActionModuleLatestVersionArray{ GetActionModuleLatestVersionArgs{...} }
+type GetActionModuleLatestVersionArrayInput interface {
+	pulumi.Input
+
+	ToGetActionModuleLatestVersionArrayOutput() GetActionModuleLatestVersionArrayOutput
+	ToGetActionModuleLatestVersionArrayOutputWithContext(context.Context) GetActionModuleLatestVersionArrayOutput
+}
+
+type GetActionModuleLatestVersionArray []GetActionModuleLatestVersionInput
+
+func (GetActionModuleLatestVersionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetActionModuleLatestVersion)(nil)).Elem()
+}
+
+func (i GetActionModuleLatestVersionArray) ToGetActionModuleLatestVersionArrayOutput() GetActionModuleLatestVersionArrayOutput {
+	return i.ToGetActionModuleLatestVersionArrayOutputWithContext(context.Background())
+}
+
+func (i GetActionModuleLatestVersionArray) ToGetActionModuleLatestVersionArrayOutputWithContext(ctx context.Context) GetActionModuleLatestVersionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetActionModuleLatestVersionArrayOutput)
+}
+
+type GetActionModuleLatestVersionOutput struct{ *pulumi.OutputState }
+
+func (GetActionModuleLatestVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetActionModuleLatestVersion)(nil)).Elem()
+}
+
+func (o GetActionModuleLatestVersionOutput) ToGetActionModuleLatestVersionOutput() GetActionModuleLatestVersionOutput {
+	return o
+}
+
+func (o GetActionModuleLatestVersionOutput) ToGetActionModuleLatestVersionOutputWithContext(ctx context.Context) GetActionModuleLatestVersionOutput {
+	return o
+}
+
+// The source code of this version.
+func (o GetActionModuleLatestVersionOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v GetActionModuleLatestVersion) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// The time when this version was created.
+func (o GetActionModuleLatestVersionOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetActionModuleLatestVersion) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// List of third party npm modules, and their versions, that this version depends on.
+func (o GetActionModuleLatestVersionOutput) Dependencies() GetActionModuleLatestVersionDependencyArrayOutput {
+	return o.ApplyT(func(v GetActionModuleLatestVersion) []GetActionModuleLatestVersionDependency { return v.Dependencies }).(GetActionModuleLatestVersionDependencyArrayOutput)
+}
+
+// The unique identifier of the version.
+func (o GetActionModuleLatestVersionOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetActionModuleLatestVersion) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// List of secrets that are included in this version.
+func (o GetActionModuleLatestVersionOutput) Secrets() GetActionModuleLatestVersionSecretArrayOutput {
+	return o.ApplyT(func(v GetActionModuleLatestVersion) []GetActionModuleLatestVersionSecret { return v.Secrets }).(GetActionModuleLatestVersionSecretArrayOutput)
+}
+
+// The version number.
+func (o GetActionModuleLatestVersionOutput) VersionNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v GetActionModuleLatestVersion) int { return v.VersionNumber }).(pulumi.IntOutput)
+}
+
+type GetActionModuleLatestVersionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetActionModuleLatestVersionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetActionModuleLatestVersion)(nil)).Elem()
+}
+
+func (o GetActionModuleLatestVersionArrayOutput) ToGetActionModuleLatestVersionArrayOutput() GetActionModuleLatestVersionArrayOutput {
+	return o
+}
+
+func (o GetActionModuleLatestVersionArrayOutput) ToGetActionModuleLatestVersionArrayOutputWithContext(ctx context.Context) GetActionModuleLatestVersionArrayOutput {
+	return o
+}
+
+func (o GetActionModuleLatestVersionArrayOutput) Index(i pulumi.IntInput) GetActionModuleLatestVersionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetActionModuleLatestVersion {
+		return vs[0].([]GetActionModuleLatestVersion)[vs[1].(int)]
+	}).(GetActionModuleLatestVersionOutput)
+}
+
+type GetActionModuleLatestVersionDependency struct {
+	// Dependency name.
+	Name string `pulumi:"name"`
+	// Dependency version.
+	Version string `pulumi:"version"`
+}
+
+// GetActionModuleLatestVersionDependencyInput is an input type that accepts GetActionModuleLatestVersionDependencyArgs and GetActionModuleLatestVersionDependencyOutput values.
+// You can construct a concrete instance of `GetActionModuleLatestVersionDependencyInput` via:
+//
+//	GetActionModuleLatestVersionDependencyArgs{...}
+type GetActionModuleLatestVersionDependencyInput interface {
+	pulumi.Input
+
+	ToGetActionModuleLatestVersionDependencyOutput() GetActionModuleLatestVersionDependencyOutput
+	ToGetActionModuleLatestVersionDependencyOutputWithContext(context.Context) GetActionModuleLatestVersionDependencyOutput
+}
+
+type GetActionModuleLatestVersionDependencyArgs struct {
+	// Dependency name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Dependency version.
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetActionModuleLatestVersionDependencyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetActionModuleLatestVersionDependency)(nil)).Elem()
+}
+
+func (i GetActionModuleLatestVersionDependencyArgs) ToGetActionModuleLatestVersionDependencyOutput() GetActionModuleLatestVersionDependencyOutput {
+	return i.ToGetActionModuleLatestVersionDependencyOutputWithContext(context.Background())
+}
+
+func (i GetActionModuleLatestVersionDependencyArgs) ToGetActionModuleLatestVersionDependencyOutputWithContext(ctx context.Context) GetActionModuleLatestVersionDependencyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetActionModuleLatestVersionDependencyOutput)
+}
+
+// GetActionModuleLatestVersionDependencyArrayInput is an input type that accepts GetActionModuleLatestVersionDependencyArray and GetActionModuleLatestVersionDependencyArrayOutput values.
+// You can construct a concrete instance of `GetActionModuleLatestVersionDependencyArrayInput` via:
+//
+//	GetActionModuleLatestVersionDependencyArray{ GetActionModuleLatestVersionDependencyArgs{...} }
+type GetActionModuleLatestVersionDependencyArrayInput interface {
+	pulumi.Input
+
+	ToGetActionModuleLatestVersionDependencyArrayOutput() GetActionModuleLatestVersionDependencyArrayOutput
+	ToGetActionModuleLatestVersionDependencyArrayOutputWithContext(context.Context) GetActionModuleLatestVersionDependencyArrayOutput
+}
+
+type GetActionModuleLatestVersionDependencyArray []GetActionModuleLatestVersionDependencyInput
+
+func (GetActionModuleLatestVersionDependencyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetActionModuleLatestVersionDependency)(nil)).Elem()
+}
+
+func (i GetActionModuleLatestVersionDependencyArray) ToGetActionModuleLatestVersionDependencyArrayOutput() GetActionModuleLatestVersionDependencyArrayOutput {
+	return i.ToGetActionModuleLatestVersionDependencyArrayOutputWithContext(context.Background())
+}
+
+func (i GetActionModuleLatestVersionDependencyArray) ToGetActionModuleLatestVersionDependencyArrayOutputWithContext(ctx context.Context) GetActionModuleLatestVersionDependencyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetActionModuleLatestVersionDependencyArrayOutput)
+}
+
+type GetActionModuleLatestVersionDependencyOutput struct{ *pulumi.OutputState }
+
+func (GetActionModuleLatestVersionDependencyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetActionModuleLatestVersionDependency)(nil)).Elem()
+}
+
+func (o GetActionModuleLatestVersionDependencyOutput) ToGetActionModuleLatestVersionDependencyOutput() GetActionModuleLatestVersionDependencyOutput {
+	return o
+}
+
+func (o GetActionModuleLatestVersionDependencyOutput) ToGetActionModuleLatestVersionDependencyOutputWithContext(ctx context.Context) GetActionModuleLatestVersionDependencyOutput {
+	return o
+}
+
+// Dependency name.
+func (o GetActionModuleLatestVersionDependencyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetActionModuleLatestVersionDependency) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Dependency version.
+func (o GetActionModuleLatestVersionDependencyOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetActionModuleLatestVersionDependency) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetActionModuleLatestVersionDependencyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetActionModuleLatestVersionDependencyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetActionModuleLatestVersionDependency)(nil)).Elem()
+}
+
+func (o GetActionModuleLatestVersionDependencyArrayOutput) ToGetActionModuleLatestVersionDependencyArrayOutput() GetActionModuleLatestVersionDependencyArrayOutput {
+	return o
+}
+
+func (o GetActionModuleLatestVersionDependencyArrayOutput) ToGetActionModuleLatestVersionDependencyArrayOutputWithContext(ctx context.Context) GetActionModuleLatestVersionDependencyArrayOutput {
+	return o
+}
+
+func (o GetActionModuleLatestVersionDependencyArrayOutput) Index(i pulumi.IntInput) GetActionModuleLatestVersionDependencyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetActionModuleLatestVersionDependency {
+		return vs[0].([]GetActionModuleLatestVersionDependency)[vs[1].(int)]
+	}).(GetActionModuleLatestVersionDependencyOutput)
+}
+
+type GetActionModuleLatestVersionSecret struct {
+	// Secret name.
+	Name string `pulumi:"name"`
+	// The time when this secret was last updated.
+	UpdatedAt string `pulumi:"updatedAt"`
+}
+
+// GetActionModuleLatestVersionSecretInput is an input type that accepts GetActionModuleLatestVersionSecretArgs and GetActionModuleLatestVersionSecretOutput values.
+// You can construct a concrete instance of `GetActionModuleLatestVersionSecretInput` via:
+//
+//	GetActionModuleLatestVersionSecretArgs{...}
+type GetActionModuleLatestVersionSecretInput interface {
+	pulumi.Input
+
+	ToGetActionModuleLatestVersionSecretOutput() GetActionModuleLatestVersionSecretOutput
+	ToGetActionModuleLatestVersionSecretOutputWithContext(context.Context) GetActionModuleLatestVersionSecretOutput
+}
+
+type GetActionModuleLatestVersionSecretArgs struct {
+	// Secret name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The time when this secret was last updated.
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+}
+
+func (GetActionModuleLatestVersionSecretArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetActionModuleLatestVersionSecret)(nil)).Elem()
+}
+
+func (i GetActionModuleLatestVersionSecretArgs) ToGetActionModuleLatestVersionSecretOutput() GetActionModuleLatestVersionSecretOutput {
+	return i.ToGetActionModuleLatestVersionSecretOutputWithContext(context.Background())
+}
+
+func (i GetActionModuleLatestVersionSecretArgs) ToGetActionModuleLatestVersionSecretOutputWithContext(ctx context.Context) GetActionModuleLatestVersionSecretOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetActionModuleLatestVersionSecretOutput)
+}
+
+// GetActionModuleLatestVersionSecretArrayInput is an input type that accepts GetActionModuleLatestVersionSecretArray and GetActionModuleLatestVersionSecretArrayOutput values.
+// You can construct a concrete instance of `GetActionModuleLatestVersionSecretArrayInput` via:
+//
+//	GetActionModuleLatestVersionSecretArray{ GetActionModuleLatestVersionSecretArgs{...} }
+type GetActionModuleLatestVersionSecretArrayInput interface {
+	pulumi.Input
+
+	ToGetActionModuleLatestVersionSecretArrayOutput() GetActionModuleLatestVersionSecretArrayOutput
+	ToGetActionModuleLatestVersionSecretArrayOutputWithContext(context.Context) GetActionModuleLatestVersionSecretArrayOutput
+}
+
+type GetActionModuleLatestVersionSecretArray []GetActionModuleLatestVersionSecretInput
+
+func (GetActionModuleLatestVersionSecretArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetActionModuleLatestVersionSecret)(nil)).Elem()
+}
+
+func (i GetActionModuleLatestVersionSecretArray) ToGetActionModuleLatestVersionSecretArrayOutput() GetActionModuleLatestVersionSecretArrayOutput {
+	return i.ToGetActionModuleLatestVersionSecretArrayOutputWithContext(context.Background())
+}
+
+func (i GetActionModuleLatestVersionSecretArray) ToGetActionModuleLatestVersionSecretArrayOutputWithContext(ctx context.Context) GetActionModuleLatestVersionSecretArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetActionModuleLatestVersionSecretArrayOutput)
+}
+
+type GetActionModuleLatestVersionSecretOutput struct{ *pulumi.OutputState }
+
+func (GetActionModuleLatestVersionSecretOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetActionModuleLatestVersionSecret)(nil)).Elem()
+}
+
+func (o GetActionModuleLatestVersionSecretOutput) ToGetActionModuleLatestVersionSecretOutput() GetActionModuleLatestVersionSecretOutput {
+	return o
+}
+
+func (o GetActionModuleLatestVersionSecretOutput) ToGetActionModuleLatestVersionSecretOutputWithContext(ctx context.Context) GetActionModuleLatestVersionSecretOutput {
+	return o
+}
+
+// Secret name.
+func (o GetActionModuleLatestVersionSecretOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetActionModuleLatestVersionSecret) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The time when this secret was last updated.
+func (o GetActionModuleLatestVersionSecretOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetActionModuleLatestVersionSecret) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+type GetActionModuleLatestVersionSecretArrayOutput struct{ *pulumi.OutputState }
+
+func (GetActionModuleLatestVersionSecretArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetActionModuleLatestVersionSecret)(nil)).Elem()
+}
+
+func (o GetActionModuleLatestVersionSecretArrayOutput) ToGetActionModuleLatestVersionSecretArrayOutput() GetActionModuleLatestVersionSecretArrayOutput {
+	return o
+}
+
+func (o GetActionModuleLatestVersionSecretArrayOutput) ToGetActionModuleLatestVersionSecretArrayOutputWithContext(ctx context.Context) GetActionModuleLatestVersionSecretArrayOutput {
+	return o
+}
+
+func (o GetActionModuleLatestVersionSecretArrayOutput) Index(i pulumi.IntInput) GetActionModuleLatestVersionSecretOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetActionModuleLatestVersionSecret {
+		return vs[0].([]GetActionModuleLatestVersionSecret)[vs[1].(int)]
+	}).(GetActionModuleLatestVersionSecretOutput)
+}
+
+type GetActionModuleSecret struct {
+	// Secret name. Required when configuring secrets
+	Name string `pulumi:"name"`
+	// Last update time
+	UpdatedAt string `pulumi:"updatedAt"`
+	// Secret value. Required when configuring secrets
+	Value string `pulumi:"value"`
+}
+
+// GetActionModuleSecretInput is an input type that accepts GetActionModuleSecretArgs and GetActionModuleSecretOutput values.
+// You can construct a concrete instance of `GetActionModuleSecretInput` via:
+//
+//	GetActionModuleSecretArgs{...}
+type GetActionModuleSecretInput interface {
+	pulumi.Input
+
+	ToGetActionModuleSecretOutput() GetActionModuleSecretOutput
+	ToGetActionModuleSecretOutputWithContext(context.Context) GetActionModuleSecretOutput
+}
+
+type GetActionModuleSecretArgs struct {
+	// Secret name. Required when configuring secrets
+	Name pulumi.StringInput `pulumi:"name"`
+	// Last update time
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+	// Secret value. Required when configuring secrets
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetActionModuleSecretArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetActionModuleSecret)(nil)).Elem()
+}
+
+func (i GetActionModuleSecretArgs) ToGetActionModuleSecretOutput() GetActionModuleSecretOutput {
+	return i.ToGetActionModuleSecretOutputWithContext(context.Background())
+}
+
+func (i GetActionModuleSecretArgs) ToGetActionModuleSecretOutputWithContext(ctx context.Context) GetActionModuleSecretOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetActionModuleSecretOutput)
+}
+
+// GetActionModuleSecretArrayInput is an input type that accepts GetActionModuleSecretArray and GetActionModuleSecretArrayOutput values.
+// You can construct a concrete instance of `GetActionModuleSecretArrayInput` via:
+//
+//	GetActionModuleSecretArray{ GetActionModuleSecretArgs{...} }
+type GetActionModuleSecretArrayInput interface {
+	pulumi.Input
+
+	ToGetActionModuleSecretArrayOutput() GetActionModuleSecretArrayOutput
+	ToGetActionModuleSecretArrayOutputWithContext(context.Context) GetActionModuleSecretArrayOutput
+}
+
+type GetActionModuleSecretArray []GetActionModuleSecretInput
+
+func (GetActionModuleSecretArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetActionModuleSecret)(nil)).Elem()
+}
+
+func (i GetActionModuleSecretArray) ToGetActionModuleSecretArrayOutput() GetActionModuleSecretArrayOutput {
+	return i.ToGetActionModuleSecretArrayOutputWithContext(context.Background())
+}
+
+func (i GetActionModuleSecretArray) ToGetActionModuleSecretArrayOutputWithContext(ctx context.Context) GetActionModuleSecretArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetActionModuleSecretArrayOutput)
+}
+
+type GetActionModuleSecretOutput struct{ *pulumi.OutputState }
+
+func (GetActionModuleSecretOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetActionModuleSecret)(nil)).Elem()
+}
+
+func (o GetActionModuleSecretOutput) ToGetActionModuleSecretOutput() GetActionModuleSecretOutput {
+	return o
+}
+
+func (o GetActionModuleSecretOutput) ToGetActionModuleSecretOutputWithContext(ctx context.Context) GetActionModuleSecretOutput {
+	return o
+}
+
+// Secret name. Required when configuring secrets
+func (o GetActionModuleSecretOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetActionModuleSecret) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Last update time
+func (o GetActionModuleSecretOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetActionModuleSecret) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// Secret value. Required when configuring secrets
+func (o GetActionModuleSecretOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetActionModuleSecret) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetActionModuleSecretArrayOutput struct{ *pulumi.OutputState }
+
+func (GetActionModuleSecretArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetActionModuleSecret)(nil)).Elem()
+}
+
+func (o GetActionModuleSecretArrayOutput) ToGetActionModuleSecretArrayOutput() GetActionModuleSecretArrayOutput {
+	return o
+}
+
+func (o GetActionModuleSecretArrayOutput) ToGetActionModuleSecretArrayOutputWithContext(ctx context.Context) GetActionModuleSecretArrayOutput {
+	return o
+}
+
+func (o GetActionModuleSecretArrayOutput) Index(i pulumi.IntInput) GetActionModuleSecretOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetActionModuleSecret {
+		return vs[0].([]GetActionModuleSecret)[vs[1].(int)]
+	}).(GetActionModuleSecretOutput)
+}
+
+type GetActionModuleVersionDependency struct {
+	// Dependency name.
+	Name string `pulumi:"name"`
+	// Dependency version.
+	Version string `pulumi:"version"`
+}
+
+// GetActionModuleVersionDependencyInput is an input type that accepts GetActionModuleVersionDependencyArgs and GetActionModuleVersionDependencyOutput values.
+// You can construct a concrete instance of `GetActionModuleVersionDependencyInput` via:
+//
+//	GetActionModuleVersionDependencyArgs{...}
+type GetActionModuleVersionDependencyInput interface {
+	pulumi.Input
+
+	ToGetActionModuleVersionDependencyOutput() GetActionModuleVersionDependencyOutput
+	ToGetActionModuleVersionDependencyOutputWithContext(context.Context) GetActionModuleVersionDependencyOutput
+}
+
+type GetActionModuleVersionDependencyArgs struct {
+	// Dependency name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Dependency version.
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetActionModuleVersionDependencyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetActionModuleVersionDependency)(nil)).Elem()
+}
+
+func (i GetActionModuleVersionDependencyArgs) ToGetActionModuleVersionDependencyOutput() GetActionModuleVersionDependencyOutput {
+	return i.ToGetActionModuleVersionDependencyOutputWithContext(context.Background())
+}
+
+func (i GetActionModuleVersionDependencyArgs) ToGetActionModuleVersionDependencyOutputWithContext(ctx context.Context) GetActionModuleVersionDependencyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetActionModuleVersionDependencyOutput)
+}
+
+// GetActionModuleVersionDependencyArrayInput is an input type that accepts GetActionModuleVersionDependencyArray and GetActionModuleVersionDependencyArrayOutput values.
+// You can construct a concrete instance of `GetActionModuleVersionDependencyArrayInput` via:
+//
+//	GetActionModuleVersionDependencyArray{ GetActionModuleVersionDependencyArgs{...} }
+type GetActionModuleVersionDependencyArrayInput interface {
+	pulumi.Input
+
+	ToGetActionModuleVersionDependencyArrayOutput() GetActionModuleVersionDependencyArrayOutput
+	ToGetActionModuleVersionDependencyArrayOutputWithContext(context.Context) GetActionModuleVersionDependencyArrayOutput
+}
+
+type GetActionModuleVersionDependencyArray []GetActionModuleVersionDependencyInput
+
+func (GetActionModuleVersionDependencyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetActionModuleVersionDependency)(nil)).Elem()
+}
+
+func (i GetActionModuleVersionDependencyArray) ToGetActionModuleVersionDependencyArrayOutput() GetActionModuleVersionDependencyArrayOutput {
+	return i.ToGetActionModuleVersionDependencyArrayOutputWithContext(context.Background())
+}
+
+func (i GetActionModuleVersionDependencyArray) ToGetActionModuleVersionDependencyArrayOutputWithContext(ctx context.Context) GetActionModuleVersionDependencyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetActionModuleVersionDependencyArrayOutput)
+}
+
+type GetActionModuleVersionDependencyOutput struct{ *pulumi.OutputState }
+
+func (GetActionModuleVersionDependencyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetActionModuleVersionDependency)(nil)).Elem()
+}
+
+func (o GetActionModuleVersionDependencyOutput) ToGetActionModuleVersionDependencyOutput() GetActionModuleVersionDependencyOutput {
+	return o
+}
+
+func (o GetActionModuleVersionDependencyOutput) ToGetActionModuleVersionDependencyOutputWithContext(ctx context.Context) GetActionModuleVersionDependencyOutput {
+	return o
+}
+
+// Dependency name.
+func (o GetActionModuleVersionDependencyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetActionModuleVersionDependency) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Dependency version.
+func (o GetActionModuleVersionDependencyOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetActionModuleVersionDependency) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetActionModuleVersionDependencyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetActionModuleVersionDependencyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetActionModuleVersionDependency)(nil)).Elem()
+}
+
+func (o GetActionModuleVersionDependencyArrayOutput) ToGetActionModuleVersionDependencyArrayOutput() GetActionModuleVersionDependencyArrayOutput {
+	return o
+}
+
+func (o GetActionModuleVersionDependencyArrayOutput) ToGetActionModuleVersionDependencyArrayOutputWithContext(ctx context.Context) GetActionModuleVersionDependencyArrayOutput {
+	return o
+}
+
+func (o GetActionModuleVersionDependencyArrayOutput) Index(i pulumi.IntInput) GetActionModuleVersionDependencyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetActionModuleVersionDependency {
+		return vs[0].([]GetActionModuleVersionDependency)[vs[1].(int)]
+	}).(GetActionModuleVersionDependencyOutput)
+}
+
+type GetActionModuleVersionSecret struct {
+	// Secret name.
+	Name string `pulumi:"name"`
+	// The time when this secret was last updated.
+	UpdatedAt string `pulumi:"updatedAt"`
+}
+
+// GetActionModuleVersionSecretInput is an input type that accepts GetActionModuleVersionSecretArgs and GetActionModuleVersionSecretOutput values.
+// You can construct a concrete instance of `GetActionModuleVersionSecretInput` via:
+//
+//	GetActionModuleVersionSecretArgs{...}
+type GetActionModuleVersionSecretInput interface {
+	pulumi.Input
+
+	ToGetActionModuleVersionSecretOutput() GetActionModuleVersionSecretOutput
+	ToGetActionModuleVersionSecretOutputWithContext(context.Context) GetActionModuleVersionSecretOutput
+}
+
+type GetActionModuleVersionSecretArgs struct {
+	// Secret name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The time when this secret was last updated.
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+}
+
+func (GetActionModuleVersionSecretArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetActionModuleVersionSecret)(nil)).Elem()
+}
+
+func (i GetActionModuleVersionSecretArgs) ToGetActionModuleVersionSecretOutput() GetActionModuleVersionSecretOutput {
+	return i.ToGetActionModuleVersionSecretOutputWithContext(context.Background())
+}
+
+func (i GetActionModuleVersionSecretArgs) ToGetActionModuleVersionSecretOutputWithContext(ctx context.Context) GetActionModuleVersionSecretOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetActionModuleVersionSecretOutput)
+}
+
+// GetActionModuleVersionSecretArrayInput is an input type that accepts GetActionModuleVersionSecretArray and GetActionModuleVersionSecretArrayOutput values.
+// You can construct a concrete instance of `GetActionModuleVersionSecretArrayInput` via:
+//
+//	GetActionModuleVersionSecretArray{ GetActionModuleVersionSecretArgs{...} }
+type GetActionModuleVersionSecretArrayInput interface {
+	pulumi.Input
+
+	ToGetActionModuleVersionSecretArrayOutput() GetActionModuleVersionSecretArrayOutput
+	ToGetActionModuleVersionSecretArrayOutputWithContext(context.Context) GetActionModuleVersionSecretArrayOutput
+}
+
+type GetActionModuleVersionSecretArray []GetActionModuleVersionSecretInput
+
+func (GetActionModuleVersionSecretArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetActionModuleVersionSecret)(nil)).Elem()
+}
+
+func (i GetActionModuleVersionSecretArray) ToGetActionModuleVersionSecretArrayOutput() GetActionModuleVersionSecretArrayOutput {
+	return i.ToGetActionModuleVersionSecretArrayOutputWithContext(context.Background())
+}
+
+func (i GetActionModuleVersionSecretArray) ToGetActionModuleVersionSecretArrayOutputWithContext(ctx context.Context) GetActionModuleVersionSecretArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetActionModuleVersionSecretArrayOutput)
+}
+
+type GetActionModuleVersionSecretOutput struct{ *pulumi.OutputState }
+
+func (GetActionModuleVersionSecretOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetActionModuleVersionSecret)(nil)).Elem()
+}
+
+func (o GetActionModuleVersionSecretOutput) ToGetActionModuleVersionSecretOutput() GetActionModuleVersionSecretOutput {
+	return o
+}
+
+func (o GetActionModuleVersionSecretOutput) ToGetActionModuleVersionSecretOutputWithContext(ctx context.Context) GetActionModuleVersionSecretOutput {
+	return o
+}
+
+// Secret name.
+func (o GetActionModuleVersionSecretOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetActionModuleVersionSecret) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The time when this secret was last updated.
+func (o GetActionModuleVersionSecretOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetActionModuleVersionSecret) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+type GetActionModuleVersionSecretArrayOutput struct{ *pulumi.OutputState }
+
+func (GetActionModuleVersionSecretArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetActionModuleVersionSecret)(nil)).Elem()
+}
+
+func (o GetActionModuleVersionSecretArrayOutput) ToGetActionModuleVersionSecretArrayOutput() GetActionModuleVersionSecretArrayOutput {
+	return o
+}
+
+func (o GetActionModuleVersionSecretArrayOutput) ToGetActionModuleVersionSecretArrayOutputWithContext(ctx context.Context) GetActionModuleVersionSecretArrayOutput {
+	return o
+}
+
+func (o GetActionModuleVersionSecretArrayOutput) Index(i pulumi.IntInput) GetActionModuleVersionSecretOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetActionModuleVersionSecret {
+		return vs[0].([]GetActionModuleVersionSecret)[vs[1].(int)]
+	}).(GetActionModuleVersionSecretOutput)
+}
+
+type GetActionModuleVersionsVersion struct {
+	// The exact source code that was published with this version.
+	Code string `pulumi:"code"`
+	// The timestamp when this version was created.
+	CreatedAt string `pulumi:"createdAt"`
+	// Dependencies locked to this version.
+	Dependencies []GetActionModuleVersionsVersionDependency `pulumi:"dependencies"`
+	// The unique identifier of the version.
+	Id string `pulumi:"id"`
+	// The ID of the parent module.
+	ModuleId string `pulumi:"moduleId"`
+	// Secrets available to this version (name and updatedAt only, values never returned).
+	Secrets []GetActionModuleVersionsVersionSecret `pulumi:"secrets"`
+	// The sequential version number.
+	VersionNumber int `pulumi:"versionNumber"`
+}
+
+// GetActionModuleVersionsVersionInput is an input type that accepts GetActionModuleVersionsVersionArgs and GetActionModuleVersionsVersionOutput values.
+// You can construct a concrete instance of `GetActionModuleVersionsVersionInput` via:
+//
+//	GetActionModuleVersionsVersionArgs{...}
+type GetActionModuleVersionsVersionInput interface {
+	pulumi.Input
+
+	ToGetActionModuleVersionsVersionOutput() GetActionModuleVersionsVersionOutput
+	ToGetActionModuleVersionsVersionOutputWithContext(context.Context) GetActionModuleVersionsVersionOutput
+}
+
+type GetActionModuleVersionsVersionArgs struct {
+	// The exact source code that was published with this version.
+	Code pulumi.StringInput `pulumi:"code"`
+	// The timestamp when this version was created.
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Dependencies locked to this version.
+	Dependencies GetActionModuleVersionsVersionDependencyArrayInput `pulumi:"dependencies"`
+	// The unique identifier of the version.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the parent module.
+	ModuleId pulumi.StringInput `pulumi:"moduleId"`
+	// Secrets available to this version (name and updatedAt only, values never returned).
+	Secrets GetActionModuleVersionsVersionSecretArrayInput `pulumi:"secrets"`
+	// The sequential version number.
+	VersionNumber pulumi.IntInput `pulumi:"versionNumber"`
+}
+
+func (GetActionModuleVersionsVersionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetActionModuleVersionsVersion)(nil)).Elem()
+}
+
+func (i GetActionModuleVersionsVersionArgs) ToGetActionModuleVersionsVersionOutput() GetActionModuleVersionsVersionOutput {
+	return i.ToGetActionModuleVersionsVersionOutputWithContext(context.Background())
+}
+
+func (i GetActionModuleVersionsVersionArgs) ToGetActionModuleVersionsVersionOutputWithContext(ctx context.Context) GetActionModuleVersionsVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetActionModuleVersionsVersionOutput)
+}
+
+// GetActionModuleVersionsVersionArrayInput is an input type that accepts GetActionModuleVersionsVersionArray and GetActionModuleVersionsVersionArrayOutput values.
+// You can construct a concrete instance of `GetActionModuleVersionsVersionArrayInput` via:
+//
+//	GetActionModuleVersionsVersionArray{ GetActionModuleVersionsVersionArgs{...} }
+type GetActionModuleVersionsVersionArrayInput interface {
+	pulumi.Input
+
+	ToGetActionModuleVersionsVersionArrayOutput() GetActionModuleVersionsVersionArrayOutput
+	ToGetActionModuleVersionsVersionArrayOutputWithContext(context.Context) GetActionModuleVersionsVersionArrayOutput
+}
+
+type GetActionModuleVersionsVersionArray []GetActionModuleVersionsVersionInput
+
+func (GetActionModuleVersionsVersionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetActionModuleVersionsVersion)(nil)).Elem()
+}
+
+func (i GetActionModuleVersionsVersionArray) ToGetActionModuleVersionsVersionArrayOutput() GetActionModuleVersionsVersionArrayOutput {
+	return i.ToGetActionModuleVersionsVersionArrayOutputWithContext(context.Background())
+}
+
+func (i GetActionModuleVersionsVersionArray) ToGetActionModuleVersionsVersionArrayOutputWithContext(ctx context.Context) GetActionModuleVersionsVersionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetActionModuleVersionsVersionArrayOutput)
+}
+
+type GetActionModuleVersionsVersionOutput struct{ *pulumi.OutputState }
+
+func (GetActionModuleVersionsVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetActionModuleVersionsVersion)(nil)).Elem()
+}
+
+func (o GetActionModuleVersionsVersionOutput) ToGetActionModuleVersionsVersionOutput() GetActionModuleVersionsVersionOutput {
+	return o
+}
+
+func (o GetActionModuleVersionsVersionOutput) ToGetActionModuleVersionsVersionOutputWithContext(ctx context.Context) GetActionModuleVersionsVersionOutput {
+	return o
+}
+
+// The exact source code that was published with this version.
+func (o GetActionModuleVersionsVersionOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v GetActionModuleVersionsVersion) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// The timestamp when this version was created.
+func (o GetActionModuleVersionsVersionOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetActionModuleVersionsVersion) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Dependencies locked to this version.
+func (o GetActionModuleVersionsVersionOutput) Dependencies() GetActionModuleVersionsVersionDependencyArrayOutput {
+	return o.ApplyT(func(v GetActionModuleVersionsVersion) []GetActionModuleVersionsVersionDependency {
+		return v.Dependencies
+	}).(GetActionModuleVersionsVersionDependencyArrayOutput)
+}
+
+// The unique identifier of the version.
+func (o GetActionModuleVersionsVersionOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetActionModuleVersionsVersion) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the parent module.
+func (o GetActionModuleVersionsVersionOutput) ModuleId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetActionModuleVersionsVersion) string { return v.ModuleId }).(pulumi.StringOutput)
+}
+
+// Secrets available to this version (name and updatedAt only, values never returned).
+func (o GetActionModuleVersionsVersionOutput) Secrets() GetActionModuleVersionsVersionSecretArrayOutput {
+	return o.ApplyT(func(v GetActionModuleVersionsVersion) []GetActionModuleVersionsVersionSecret { return v.Secrets }).(GetActionModuleVersionsVersionSecretArrayOutput)
+}
+
+// The sequential version number.
+func (o GetActionModuleVersionsVersionOutput) VersionNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v GetActionModuleVersionsVersion) int { return v.VersionNumber }).(pulumi.IntOutput)
+}
+
+type GetActionModuleVersionsVersionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetActionModuleVersionsVersionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetActionModuleVersionsVersion)(nil)).Elem()
+}
+
+func (o GetActionModuleVersionsVersionArrayOutput) ToGetActionModuleVersionsVersionArrayOutput() GetActionModuleVersionsVersionArrayOutput {
+	return o
+}
+
+func (o GetActionModuleVersionsVersionArrayOutput) ToGetActionModuleVersionsVersionArrayOutputWithContext(ctx context.Context) GetActionModuleVersionsVersionArrayOutput {
+	return o
+}
+
+func (o GetActionModuleVersionsVersionArrayOutput) Index(i pulumi.IntInput) GetActionModuleVersionsVersionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetActionModuleVersionsVersion {
+		return vs[0].([]GetActionModuleVersionsVersion)[vs[1].(int)]
+	}).(GetActionModuleVersionsVersionOutput)
+}
+
+type GetActionModuleVersionsVersionDependency struct {
+	// Dependency name.
+	Name string `pulumi:"name"`
+	// Dependency version.
+	Version string `pulumi:"version"`
+}
+
+// GetActionModuleVersionsVersionDependencyInput is an input type that accepts GetActionModuleVersionsVersionDependencyArgs and GetActionModuleVersionsVersionDependencyOutput values.
+// You can construct a concrete instance of `GetActionModuleVersionsVersionDependencyInput` via:
+//
+//	GetActionModuleVersionsVersionDependencyArgs{...}
+type GetActionModuleVersionsVersionDependencyInput interface {
+	pulumi.Input
+
+	ToGetActionModuleVersionsVersionDependencyOutput() GetActionModuleVersionsVersionDependencyOutput
+	ToGetActionModuleVersionsVersionDependencyOutputWithContext(context.Context) GetActionModuleVersionsVersionDependencyOutput
+}
+
+type GetActionModuleVersionsVersionDependencyArgs struct {
+	// Dependency name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Dependency version.
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetActionModuleVersionsVersionDependencyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetActionModuleVersionsVersionDependency)(nil)).Elem()
+}
+
+func (i GetActionModuleVersionsVersionDependencyArgs) ToGetActionModuleVersionsVersionDependencyOutput() GetActionModuleVersionsVersionDependencyOutput {
+	return i.ToGetActionModuleVersionsVersionDependencyOutputWithContext(context.Background())
+}
+
+func (i GetActionModuleVersionsVersionDependencyArgs) ToGetActionModuleVersionsVersionDependencyOutputWithContext(ctx context.Context) GetActionModuleVersionsVersionDependencyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetActionModuleVersionsVersionDependencyOutput)
+}
+
+// GetActionModuleVersionsVersionDependencyArrayInput is an input type that accepts GetActionModuleVersionsVersionDependencyArray and GetActionModuleVersionsVersionDependencyArrayOutput values.
+// You can construct a concrete instance of `GetActionModuleVersionsVersionDependencyArrayInput` via:
+//
+//	GetActionModuleVersionsVersionDependencyArray{ GetActionModuleVersionsVersionDependencyArgs{...} }
+type GetActionModuleVersionsVersionDependencyArrayInput interface {
+	pulumi.Input
+
+	ToGetActionModuleVersionsVersionDependencyArrayOutput() GetActionModuleVersionsVersionDependencyArrayOutput
+	ToGetActionModuleVersionsVersionDependencyArrayOutputWithContext(context.Context) GetActionModuleVersionsVersionDependencyArrayOutput
+}
+
+type GetActionModuleVersionsVersionDependencyArray []GetActionModuleVersionsVersionDependencyInput
+
+func (GetActionModuleVersionsVersionDependencyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetActionModuleVersionsVersionDependency)(nil)).Elem()
+}
+
+func (i GetActionModuleVersionsVersionDependencyArray) ToGetActionModuleVersionsVersionDependencyArrayOutput() GetActionModuleVersionsVersionDependencyArrayOutput {
+	return i.ToGetActionModuleVersionsVersionDependencyArrayOutputWithContext(context.Background())
+}
+
+func (i GetActionModuleVersionsVersionDependencyArray) ToGetActionModuleVersionsVersionDependencyArrayOutputWithContext(ctx context.Context) GetActionModuleVersionsVersionDependencyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetActionModuleVersionsVersionDependencyArrayOutput)
+}
+
+type GetActionModuleVersionsVersionDependencyOutput struct{ *pulumi.OutputState }
+
+func (GetActionModuleVersionsVersionDependencyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetActionModuleVersionsVersionDependency)(nil)).Elem()
+}
+
+func (o GetActionModuleVersionsVersionDependencyOutput) ToGetActionModuleVersionsVersionDependencyOutput() GetActionModuleVersionsVersionDependencyOutput {
+	return o
+}
+
+func (o GetActionModuleVersionsVersionDependencyOutput) ToGetActionModuleVersionsVersionDependencyOutputWithContext(ctx context.Context) GetActionModuleVersionsVersionDependencyOutput {
+	return o
+}
+
+// Dependency name.
+func (o GetActionModuleVersionsVersionDependencyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetActionModuleVersionsVersionDependency) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Dependency version.
+func (o GetActionModuleVersionsVersionDependencyOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetActionModuleVersionsVersionDependency) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetActionModuleVersionsVersionDependencyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetActionModuleVersionsVersionDependencyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetActionModuleVersionsVersionDependency)(nil)).Elem()
+}
+
+func (o GetActionModuleVersionsVersionDependencyArrayOutput) ToGetActionModuleVersionsVersionDependencyArrayOutput() GetActionModuleVersionsVersionDependencyArrayOutput {
+	return o
+}
+
+func (o GetActionModuleVersionsVersionDependencyArrayOutput) ToGetActionModuleVersionsVersionDependencyArrayOutputWithContext(ctx context.Context) GetActionModuleVersionsVersionDependencyArrayOutput {
+	return o
+}
+
+func (o GetActionModuleVersionsVersionDependencyArrayOutput) Index(i pulumi.IntInput) GetActionModuleVersionsVersionDependencyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetActionModuleVersionsVersionDependency {
+		return vs[0].([]GetActionModuleVersionsVersionDependency)[vs[1].(int)]
+	}).(GetActionModuleVersionsVersionDependencyOutput)
+}
+
+type GetActionModuleVersionsVersionSecret struct {
+	// Secret name.
+	Name string `pulumi:"name"`
+	// The time when this secret was last updated.
+	UpdatedAt string `pulumi:"updatedAt"`
+}
+
+// GetActionModuleVersionsVersionSecretInput is an input type that accepts GetActionModuleVersionsVersionSecretArgs and GetActionModuleVersionsVersionSecretOutput values.
+// You can construct a concrete instance of `GetActionModuleVersionsVersionSecretInput` via:
+//
+//	GetActionModuleVersionsVersionSecretArgs{...}
+type GetActionModuleVersionsVersionSecretInput interface {
+	pulumi.Input
+
+	ToGetActionModuleVersionsVersionSecretOutput() GetActionModuleVersionsVersionSecretOutput
+	ToGetActionModuleVersionsVersionSecretOutputWithContext(context.Context) GetActionModuleVersionsVersionSecretOutput
+}
+
+type GetActionModuleVersionsVersionSecretArgs struct {
+	// Secret name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The time when this secret was last updated.
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+}
+
+func (GetActionModuleVersionsVersionSecretArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetActionModuleVersionsVersionSecret)(nil)).Elem()
+}
+
+func (i GetActionModuleVersionsVersionSecretArgs) ToGetActionModuleVersionsVersionSecretOutput() GetActionModuleVersionsVersionSecretOutput {
+	return i.ToGetActionModuleVersionsVersionSecretOutputWithContext(context.Background())
+}
+
+func (i GetActionModuleVersionsVersionSecretArgs) ToGetActionModuleVersionsVersionSecretOutputWithContext(ctx context.Context) GetActionModuleVersionsVersionSecretOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetActionModuleVersionsVersionSecretOutput)
+}
+
+// GetActionModuleVersionsVersionSecretArrayInput is an input type that accepts GetActionModuleVersionsVersionSecretArray and GetActionModuleVersionsVersionSecretArrayOutput values.
+// You can construct a concrete instance of `GetActionModuleVersionsVersionSecretArrayInput` via:
+//
+//	GetActionModuleVersionsVersionSecretArray{ GetActionModuleVersionsVersionSecretArgs{...} }
+type GetActionModuleVersionsVersionSecretArrayInput interface {
+	pulumi.Input
+
+	ToGetActionModuleVersionsVersionSecretArrayOutput() GetActionModuleVersionsVersionSecretArrayOutput
+	ToGetActionModuleVersionsVersionSecretArrayOutputWithContext(context.Context) GetActionModuleVersionsVersionSecretArrayOutput
+}
+
+type GetActionModuleVersionsVersionSecretArray []GetActionModuleVersionsVersionSecretInput
+
+func (GetActionModuleVersionsVersionSecretArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetActionModuleVersionsVersionSecret)(nil)).Elem()
+}
+
+func (i GetActionModuleVersionsVersionSecretArray) ToGetActionModuleVersionsVersionSecretArrayOutput() GetActionModuleVersionsVersionSecretArrayOutput {
+	return i.ToGetActionModuleVersionsVersionSecretArrayOutputWithContext(context.Background())
+}
+
+func (i GetActionModuleVersionsVersionSecretArray) ToGetActionModuleVersionsVersionSecretArrayOutputWithContext(ctx context.Context) GetActionModuleVersionsVersionSecretArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetActionModuleVersionsVersionSecretArrayOutput)
+}
+
+type GetActionModuleVersionsVersionSecretOutput struct{ *pulumi.OutputState }
+
+func (GetActionModuleVersionsVersionSecretOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetActionModuleVersionsVersionSecret)(nil)).Elem()
+}
+
+func (o GetActionModuleVersionsVersionSecretOutput) ToGetActionModuleVersionsVersionSecretOutput() GetActionModuleVersionsVersionSecretOutput {
+	return o
+}
+
+func (o GetActionModuleVersionsVersionSecretOutput) ToGetActionModuleVersionsVersionSecretOutputWithContext(ctx context.Context) GetActionModuleVersionsVersionSecretOutput {
+	return o
+}
+
+// Secret name.
+func (o GetActionModuleVersionsVersionSecretOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetActionModuleVersionsVersionSecret) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The time when this secret was last updated.
+func (o GetActionModuleVersionsVersionSecretOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetActionModuleVersionsVersionSecret) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+type GetActionModuleVersionsVersionSecretArrayOutput struct{ *pulumi.OutputState }
+
+func (GetActionModuleVersionsVersionSecretArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetActionModuleVersionsVersionSecret)(nil)).Elem()
+}
+
+func (o GetActionModuleVersionsVersionSecretArrayOutput) ToGetActionModuleVersionsVersionSecretArrayOutput() GetActionModuleVersionsVersionSecretArrayOutput {
+	return o
+}
+
+func (o GetActionModuleVersionsVersionSecretArrayOutput) ToGetActionModuleVersionsVersionSecretArrayOutputWithContext(ctx context.Context) GetActionModuleVersionsVersionSecretArrayOutput {
+	return o
+}
+
+func (o GetActionModuleVersionsVersionSecretArrayOutput) Index(i pulumi.IntInput) GetActionModuleVersionsVersionSecretOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetActionModuleVersionsVersionSecret {
+		return vs[0].([]GetActionModuleVersionsVersionSecret)[vs[1].(int)]
+	}).(GetActionModuleVersionsVersionSecretOutput)
+}
+
 type GetActionSecret struct {
 	// Secret name.
 	Name string `pulumi:"name"`
@@ -54005,6 +56259,8 @@ type GetConnectionOption struct {
 	Scopes []string `pulumi:"scopes"`
 	// A map of scripts used for an OAuth connection. Only accepts a `fetchUserProfile` script.
 	Scripts map[string]string `pulumi:"scripts"`
+	// When true and `type` is 'back_channel', includes a cryptographic nonce in authorization requests to prevent replay attacks. The identity provider must include this nonce in the ID token for validation.
+	SendBackChannelNonce bool `pulumi:"sendBackChannelNonce"`
 	// Session Key for storing the request token.
 	SessionKey string `pulumi:"sessionKey"`
 	// Determines whether to sync user profile attributes (`name`, `givenName`, `familyName`, `nickname`, `picture`) at each login or only on the first login. Options include: `onEachLogin`, `onFirstLogin`, `neverOnLogin`. Default value: `onEachLogin`.
@@ -54057,6 +56313,8 @@ type GetConnectionOption struct {
 	UseCertAuth bool `pulumi:"useCertAuth"`
 	// Indicates whether to use Kerberos or not.
 	UseKerberos bool `pulumi:"useKerberos"`
+	// Determines the `scopes` format: `true` makes it a space-separated string (per OAuth2 specification); `false` makes it an array.
+	UseOauthSpecScope bool `pulumi:"useOauthSpecScope"`
 	// Whether to use WS-Fed.
 	UseWsfed bool `pulumi:"useWsfed"`
 	// URL used to obtain user authorization.
@@ -54237,6 +56495,8 @@ type GetConnectionOptionArgs struct {
 	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
 	// A map of scripts used for an OAuth connection. Only accepts a `fetchUserProfile` script.
 	Scripts pulumi.StringMapInput `pulumi:"scripts"`
+	// When true and `type` is 'back_channel', includes a cryptographic nonce in authorization requests to prevent replay attacks. The identity provider must include this nonce in the ID token for validation.
+	SendBackChannelNonce pulumi.BoolInput `pulumi:"sendBackChannelNonce"`
 	// Session Key for storing the request token.
 	SessionKey pulumi.StringInput `pulumi:"sessionKey"`
 	// Determines whether to sync user profile attributes (`name`, `givenName`, `familyName`, `nickname`, `picture`) at each login or only on the first login. Options include: `onEachLogin`, `onFirstLogin`, `neverOnLogin`. Default value: `onEachLogin`.
@@ -54289,6 +56549,8 @@ type GetConnectionOptionArgs struct {
 	UseCertAuth pulumi.BoolInput `pulumi:"useCertAuth"`
 	// Indicates whether to use Kerberos or not.
 	UseKerberos pulumi.BoolInput `pulumi:"useKerberos"`
+	// Determines the `scopes` format: `true` makes it a space-separated string (per OAuth2 specification); `false` makes it an array.
+	UseOauthSpecScope pulumi.BoolInput `pulumi:"useOauthSpecScope"`
 	// Whether to use WS-Fed.
 	UseWsfed pulumi.BoolInput `pulumi:"useWsfed"`
 	// URL used to obtain user authorization.
@@ -54742,6 +57004,11 @@ func (o GetConnectionOptionOutput) Scripts() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetConnectionOption) map[string]string { return v.Scripts }).(pulumi.StringMapOutput)
 }
 
+// When true and `type` is 'back_channel', includes a cryptographic nonce in authorization requests to prevent replay attacks. The identity provider must include this nonce in the ID token for validation.
+func (o GetConnectionOptionOutput) SendBackChannelNonce() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOption) bool { return v.SendBackChannelNonce }).(pulumi.BoolOutput)
+}
+
 // Session Key for storing the request token.
 func (o GetConnectionOptionOutput) SessionKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionOption) string { return v.SessionKey }).(pulumi.StringOutput)
@@ -54870,6 +57137,11 @@ func (o GetConnectionOptionOutput) UseCertAuth() pulumi.BoolOutput {
 // Indicates whether to use Kerberos or not.
 func (o GetConnectionOptionOutput) UseKerberos() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetConnectionOption) bool { return v.UseKerberos }).(pulumi.BoolOutput)
+}
+
+// Determines the `scopes` format: `true` makes it a space-separated string (per OAuth2 specification); `false` makes it an array.
+func (o GetConnectionOptionOutput) UseOauthSpecScope() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOption) bool { return v.UseOauthSpecScope }).(pulumi.BoolOutput)
 }
 
 // Whether to use WS-Fed.
@@ -67694,6 +69966,18 @@ func (o GetUserPermissionTypeArrayOutput) Index(i pulumi.IntInput) GetUserPermis
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionDependencyInput)(nil)).Elem(), ActionDependencyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionDependencyArrayInput)(nil)).Elem(), ActionDependencyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionModuleTypeInput)(nil)).Elem(), ActionModuleTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionModuleTypeArrayInput)(nil)).Elem(), ActionModuleTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionModuleDependencyInput)(nil)).Elem(), ActionModuleDependencyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionModuleDependencyArrayInput)(nil)).Elem(), ActionModuleDependencyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionModuleLatestVersionInput)(nil)).Elem(), ActionModuleLatestVersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionModuleLatestVersionArrayInput)(nil)).Elem(), ActionModuleLatestVersionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionModuleLatestVersionDependencyInput)(nil)).Elem(), ActionModuleLatestVersionDependencyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionModuleLatestVersionDependencyArrayInput)(nil)).Elem(), ActionModuleLatestVersionDependencyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionModuleLatestVersionSecretInput)(nil)).Elem(), ActionModuleLatestVersionSecretArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionModuleLatestVersionSecretArrayInput)(nil)).Elem(), ActionModuleLatestVersionSecretArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionModuleSecretInput)(nil)).Elem(), ActionModuleSecretArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionModuleSecretArrayInput)(nil)).Elem(), ActionModuleSecretArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionSecretInput)(nil)).Elem(), ActionSecretArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionSecretArrayInput)(nil)).Elem(), ActionSecretArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionSupportedTriggersInput)(nil)).Elem(), ActionSupportedTriggersArgs{})
@@ -68153,6 +70437,32 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*UserPermissionsPermissionArrayInput)(nil)).Elem(), UserPermissionsPermissionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetActionDependencyInput)(nil)).Elem(), GetActionDependencyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetActionDependencyArrayInput)(nil)).Elem(), GetActionDependencyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetActionModuleTypeInput)(nil)).Elem(), GetActionModuleTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetActionModuleTypeArrayInput)(nil)).Elem(), GetActionModuleTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetActionModuleActionsActionInput)(nil)).Elem(), GetActionModuleActionsActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetActionModuleActionsActionArrayInput)(nil)).Elem(), GetActionModuleActionsActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetActionModuleActionsActionSupportedTriggerInput)(nil)).Elem(), GetActionModuleActionsActionSupportedTriggerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetActionModuleActionsActionSupportedTriggerArrayInput)(nil)).Elem(), GetActionModuleActionsActionSupportedTriggerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetActionModuleDependencyInput)(nil)).Elem(), GetActionModuleDependencyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetActionModuleDependencyArrayInput)(nil)).Elem(), GetActionModuleDependencyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetActionModuleLatestVersionInput)(nil)).Elem(), GetActionModuleLatestVersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetActionModuleLatestVersionArrayInput)(nil)).Elem(), GetActionModuleLatestVersionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetActionModuleLatestVersionDependencyInput)(nil)).Elem(), GetActionModuleLatestVersionDependencyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetActionModuleLatestVersionDependencyArrayInput)(nil)).Elem(), GetActionModuleLatestVersionDependencyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetActionModuleLatestVersionSecretInput)(nil)).Elem(), GetActionModuleLatestVersionSecretArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetActionModuleLatestVersionSecretArrayInput)(nil)).Elem(), GetActionModuleLatestVersionSecretArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetActionModuleSecretInput)(nil)).Elem(), GetActionModuleSecretArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetActionModuleSecretArrayInput)(nil)).Elem(), GetActionModuleSecretArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetActionModuleVersionDependencyInput)(nil)).Elem(), GetActionModuleVersionDependencyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetActionModuleVersionDependencyArrayInput)(nil)).Elem(), GetActionModuleVersionDependencyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetActionModuleVersionSecretInput)(nil)).Elem(), GetActionModuleVersionSecretArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetActionModuleVersionSecretArrayInput)(nil)).Elem(), GetActionModuleVersionSecretArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetActionModuleVersionsVersionInput)(nil)).Elem(), GetActionModuleVersionsVersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetActionModuleVersionsVersionArrayInput)(nil)).Elem(), GetActionModuleVersionsVersionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetActionModuleVersionsVersionDependencyInput)(nil)).Elem(), GetActionModuleVersionsVersionDependencyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetActionModuleVersionsVersionDependencyArrayInput)(nil)).Elem(), GetActionModuleVersionsVersionDependencyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetActionModuleVersionsVersionSecretInput)(nil)).Elem(), GetActionModuleVersionsVersionSecretArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetActionModuleVersionsVersionSecretArrayInput)(nil)).Elem(), GetActionModuleVersionsVersionSecretArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetActionSecretInput)(nil)).Elem(), GetActionSecretArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetActionSecretArrayInput)(nil)).Elem(), GetActionSecretArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetActionSupportedTriggerInput)(nil)).Elem(), GetActionSupportedTriggerArgs{})
@@ -68597,6 +70907,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserPermissionTypeArrayInput)(nil)).Elem(), GetUserPermissionTypeArray{})
 	pulumi.RegisterOutputType(ActionDependencyOutput{})
 	pulumi.RegisterOutputType(ActionDependencyArrayOutput{})
+	pulumi.RegisterOutputType(ActionModuleTypeOutput{})
+	pulumi.RegisterOutputType(ActionModuleTypeArrayOutput{})
+	pulumi.RegisterOutputType(ActionModuleDependencyOutput{})
+	pulumi.RegisterOutputType(ActionModuleDependencyArrayOutput{})
+	pulumi.RegisterOutputType(ActionModuleLatestVersionOutput{})
+	pulumi.RegisterOutputType(ActionModuleLatestVersionArrayOutput{})
+	pulumi.RegisterOutputType(ActionModuleLatestVersionDependencyOutput{})
+	pulumi.RegisterOutputType(ActionModuleLatestVersionDependencyArrayOutput{})
+	pulumi.RegisterOutputType(ActionModuleLatestVersionSecretOutput{})
+	pulumi.RegisterOutputType(ActionModuleLatestVersionSecretArrayOutput{})
+	pulumi.RegisterOutputType(ActionModuleSecretOutput{})
+	pulumi.RegisterOutputType(ActionModuleSecretArrayOutput{})
 	pulumi.RegisterOutputType(ActionSecretOutput{})
 	pulumi.RegisterOutputType(ActionSecretArrayOutput{})
 	pulumi.RegisterOutputType(ActionSupportedTriggersOutput{})
@@ -69056,6 +71378,32 @@ func init() {
 	pulumi.RegisterOutputType(UserPermissionsPermissionArrayOutput{})
 	pulumi.RegisterOutputType(GetActionDependencyOutput{})
 	pulumi.RegisterOutputType(GetActionDependencyArrayOutput{})
+	pulumi.RegisterOutputType(GetActionModuleTypeOutput{})
+	pulumi.RegisterOutputType(GetActionModuleTypeArrayOutput{})
+	pulumi.RegisterOutputType(GetActionModuleActionsActionOutput{})
+	pulumi.RegisterOutputType(GetActionModuleActionsActionArrayOutput{})
+	pulumi.RegisterOutputType(GetActionModuleActionsActionSupportedTriggerOutput{})
+	pulumi.RegisterOutputType(GetActionModuleActionsActionSupportedTriggerArrayOutput{})
+	pulumi.RegisterOutputType(GetActionModuleDependencyOutput{})
+	pulumi.RegisterOutputType(GetActionModuleDependencyArrayOutput{})
+	pulumi.RegisterOutputType(GetActionModuleLatestVersionOutput{})
+	pulumi.RegisterOutputType(GetActionModuleLatestVersionArrayOutput{})
+	pulumi.RegisterOutputType(GetActionModuleLatestVersionDependencyOutput{})
+	pulumi.RegisterOutputType(GetActionModuleLatestVersionDependencyArrayOutput{})
+	pulumi.RegisterOutputType(GetActionModuleLatestVersionSecretOutput{})
+	pulumi.RegisterOutputType(GetActionModuleLatestVersionSecretArrayOutput{})
+	pulumi.RegisterOutputType(GetActionModuleSecretOutput{})
+	pulumi.RegisterOutputType(GetActionModuleSecretArrayOutput{})
+	pulumi.RegisterOutputType(GetActionModuleVersionDependencyOutput{})
+	pulumi.RegisterOutputType(GetActionModuleVersionDependencyArrayOutput{})
+	pulumi.RegisterOutputType(GetActionModuleVersionSecretOutput{})
+	pulumi.RegisterOutputType(GetActionModuleVersionSecretArrayOutput{})
+	pulumi.RegisterOutputType(GetActionModuleVersionsVersionOutput{})
+	pulumi.RegisterOutputType(GetActionModuleVersionsVersionArrayOutput{})
+	pulumi.RegisterOutputType(GetActionModuleVersionsVersionDependencyOutput{})
+	pulumi.RegisterOutputType(GetActionModuleVersionsVersionDependencyArrayOutput{})
+	pulumi.RegisterOutputType(GetActionModuleVersionsVersionSecretOutput{})
+	pulumi.RegisterOutputType(GetActionModuleVersionsVersionSecretArrayOutput{})
 	pulumi.RegisterOutputType(GetActionSecretOutput{})
 	pulumi.RegisterOutputType(GetActionSecretArrayOutput{})
 	pulumi.RegisterOutputType(GetActionSupportedTriggerOutput{})

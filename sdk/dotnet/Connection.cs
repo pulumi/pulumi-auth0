@@ -815,6 +815,7 @@ namespace Pulumi.Auth0
     ///             TenantDomain = "",
     ///             IconUrl = "https://example.com/assets/logo.png",
     ///             Type = "back_channel",
+    ///             SendBackChannelNonce = true,
     ///             Issuer = "https://www.paypalobjects.com",
     ///             JwksUri = "https://api.paypal.com/v1/oauth2/certs",
     ///             DiscoveryUrl = "https://www.paypalobjects.com/.well-known/openid-configuration",

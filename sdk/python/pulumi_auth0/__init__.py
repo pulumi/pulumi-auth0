@@ -7,6 +7,7 @@ from . import _utilities
 import typing
 # Export this package's modules as members:
 from .action import *
+from .action_module import *
 from .attack_protection import *
 from .branding import *
 from .branding_phone_notification_template import *
@@ -32,6 +33,10 @@ from .flow import *
 from .flow_vault_connection import *
 from .form import *
 from .get_action import *
+from .get_action_module import *
+from .get_action_module_actions import *
+from .get_action_module_version import *
+from .get_action_module_versions import *
 from .get_attack_protection import *
 from .get_branding import *
 from .get_branding_phone_notification_template import *
@@ -103,6 +108,7 @@ from .rule import *
 from .rule_config import *
 from .self_service_profile import *
 from .self_service_profile_custom_text import *
+from .supplemental_signals import *
 from .tenant import *
 from .token_exchange_profile import *
 from .trigger_action import *
@@ -132,6 +138,14 @@ _utilities.register(
   "fqn": "pulumi_auth0",
   "classes": {
    "auth0:index/action:Action": "Action"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/actionModule",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/actionModule:ActionModule": "ActionModule"
   }
  },
  {
@@ -604,6 +618,14 @@ _utilities.register(
   "fqn": "pulumi_auth0",
   "classes": {
    "auth0:index/selfServiceProfileCustomText:SelfServiceProfileCustomText": "SelfServiceProfileCustomText"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/supplementalSignals",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/supplementalSignals:SupplementalSignals": "SupplementalSignals"
   }
  },
  {

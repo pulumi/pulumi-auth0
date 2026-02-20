@@ -60,7 +60,7 @@ class GetSelfServiceProfileResult:
     @pulumi.getter(name="allowedStrategies")
     def allowed_strategies(self) -> Sequence[_builtins.str]:
         """
-        List of IdP strategies that will be shown to users during the Self-Service SSO flow.
+        List of IdP strategies that will be shown to users during the Self-Service SSO flow. Valid values are: oidc, samlp, waad, google-apps, adfs, okta, keycloak-samlp, pingfederate, auth0-samlp, okta-samlp.
         """
         return pulumi.get(self, "allowed_strategies")
 

@@ -17,6 +17,18 @@ from . import _utilities
 __all__ = [
     'ActionDependencyArgs',
     'ActionDependencyArgsDict',
+    'ActionModuleArgs',
+    'ActionModuleArgsDict',
+    'ActionModuleDependencyArgs',
+    'ActionModuleDependencyArgsDict',
+    'ActionModuleLatestVersionArgs',
+    'ActionModuleLatestVersionArgsDict',
+    'ActionModuleLatestVersionDependencyArgs',
+    'ActionModuleLatestVersionDependencyArgsDict',
+    'ActionModuleLatestVersionSecretArgs',
+    'ActionModuleLatestVersionSecretArgsDict',
+    'ActionModuleSecretArgs',
+    'ActionModuleSecretArgsDict',
     'ActionSecretArgs',
     'ActionSecretArgsDict',
     'ActionSupportedTriggersArgs',
@@ -530,6 +542,436 @@ class ActionDependencyArgs:
     @version.setter
     def version(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "version", value)
+
+
+class ActionModuleArgsDict(TypedDict):
+    module_id: pulumi.Input[_builtins.str]
+    """
+    The unique ID of the module.
+    """
+    module_version_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the specific module version to use.
+    """
+    module_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the module.
+    """
+    module_version_number: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The version number of the module.
+    """
+
+@pulumi.input_type
+class ActionModuleArgs:
+    def __init__(__self__, *,
+                 module_id: pulumi.Input[_builtins.str],
+                 module_version_id: pulumi.Input[_builtins.str],
+                 module_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 module_version_number: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.str] module_id: The unique ID of the module.
+        :param pulumi.Input[_builtins.str] module_version_id: The ID of the specific module version to use.
+        :param pulumi.Input[_builtins.str] module_name: The name of the module.
+        :param pulumi.Input[_builtins.int] module_version_number: The version number of the module.
+        """
+        pulumi.set(__self__, "module_id", module_id)
+        pulumi.set(__self__, "module_version_id", module_version_id)
+        if module_name is not None:
+            pulumi.set(__self__, "module_name", module_name)
+        if module_version_number is not None:
+            pulumi.set(__self__, "module_version_number", module_version_number)
+
+    @_builtins.property
+    @pulumi.getter(name="moduleId")
+    def module_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The unique ID of the module.
+        """
+        return pulumi.get(self, "module_id")
+
+    @module_id.setter
+    def module_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "module_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="moduleVersionId")
+    def module_version_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The ID of the specific module version to use.
+        """
+        return pulumi.get(self, "module_version_id")
+
+    @module_version_id.setter
+    def module_version_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "module_version_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="moduleName")
+    def module_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the module.
+        """
+        return pulumi.get(self, "module_name")
+
+    @module_name.setter
+    def module_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "module_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="moduleVersionNumber")
+    def module_version_number(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The version number of the module.
+        """
+        return pulumi.get(self, "module_version_number")
+
+    @module_version_number.setter
+    def module_version_number(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "module_version_number", value)
+
+
+class ActionModuleDependencyArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Dependency name, e.g. `lodash`.
+    """
+    version: pulumi.Input[_builtins.str]
+    """
+    Dependency version, e.g. `latest` or `4.17.21`.
+    """
+
+@pulumi.input_type
+class ActionModuleDependencyArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str],
+                 version: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] name: Dependency name, e.g. `lodash`.
+        :param pulumi.Input[_builtins.str] version: Dependency version, e.g. `latest` or `4.17.21`.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "version", version)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Dependency name, e.g. `lodash`.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> pulumi.Input[_builtins.str]:
+        """
+        Dependency version, e.g. `latest` or `4.17.21`.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "version", value)
+
+
+class ActionModuleLatestVersionArgsDict(TypedDict):
+    code: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The source code of this version.
+    """
+    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The time when this version was created.
+    """
+    dependencies: NotRequired[pulumi.Input[Sequence[pulumi.Input['ActionModuleLatestVersionDependencyArgsDict']]]]
+    """
+    List of third party npm modules, and their versions, that this version depends on.
+    """
+    id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The unique identifier of the version.
+    """
+    secrets: NotRequired[pulumi.Input[Sequence[pulumi.Input['ActionModuleLatestVersionSecretArgsDict']]]]
+    """
+    List of secrets that are included in this version.
+    """
+    version_number: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The version number.
+    """
+
+@pulumi.input_type
+class ActionModuleLatestVersionArgs:
+    def __init__(__self__, *,
+                 code: Optional[pulumi.Input[_builtins.str]] = None,
+                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 dependencies: Optional[pulumi.Input[Sequence[pulumi.Input['ActionModuleLatestVersionDependencyArgs']]]] = None,
+                 id: Optional[pulumi.Input[_builtins.str]] = None,
+                 secrets: Optional[pulumi.Input[Sequence[pulumi.Input['ActionModuleLatestVersionSecretArgs']]]] = None,
+                 version_number: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.str] code: The source code of this version.
+        :param pulumi.Input[_builtins.str] created_at: The time when this version was created.
+        :param pulumi.Input[Sequence[pulumi.Input['ActionModuleLatestVersionDependencyArgs']]] dependencies: List of third party npm modules, and their versions, that this version depends on.
+        :param pulumi.Input[_builtins.str] id: The unique identifier of the version.
+        :param pulumi.Input[Sequence[pulumi.Input['ActionModuleLatestVersionSecretArgs']]] secrets: List of secrets that are included in this version.
+        :param pulumi.Input[_builtins.int] version_number: The version number.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if dependencies is not None:
+            pulumi.set(__self__, "dependencies", dependencies)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if secrets is not None:
+            pulumi.set(__self__, "secrets", secrets)
+        if version_number is not None:
+            pulumi.set(__self__, "version_number", version_number)
+
+    @_builtins.property
+    @pulumi.getter
+    def code(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The source code of this version.
+        """
+        return pulumi.get(self, "code")
+
+    @code.setter
+    def code(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "code", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The time when this version was created.
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def dependencies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ActionModuleLatestVersionDependencyArgs']]]]:
+        """
+        List of third party npm modules, and their versions, that this version depends on.
+        """
+        return pulumi.get(self, "dependencies")
+
+    @dependencies.setter
+    def dependencies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ActionModuleLatestVersionDependencyArgs']]]]):
+        pulumi.set(self, "dependencies", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The unique identifier of the version.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def secrets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ActionModuleLatestVersionSecretArgs']]]]:
+        """
+        List of secrets that are included in this version.
+        """
+        return pulumi.get(self, "secrets")
+
+    @secrets.setter
+    def secrets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ActionModuleLatestVersionSecretArgs']]]]):
+        pulumi.set(self, "secrets", value)
+
+    @_builtins.property
+    @pulumi.getter(name="versionNumber")
+    def version_number(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The version number.
+        """
+        return pulumi.get(self, "version_number")
+
+    @version_number.setter
+    def version_number(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "version_number", value)
+
+
+class ActionModuleLatestVersionDependencyArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Dependency name.
+    """
+    version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Dependency version.
+    """
+
+@pulumi.input_type
+class ActionModuleLatestVersionDependencyArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 version: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: Dependency name.
+        :param pulumi.Input[_builtins.str] version: Dependency version.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Dependency name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Dependency version.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "version", value)
+
+
+class ActionModuleLatestVersionSecretArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Secret name.
+    """
+    updated_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The time when this secret was last updated.
+    """
+
+@pulumi.input_type
+class ActionModuleLatestVersionSecretArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 updated_at: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: Secret name.
+        :param pulumi.Input[_builtins.str] updated_at: The time when this secret was last updated.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Secret name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The time when this secret was last updated.
+        """
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "updated_at", value)
+
+
+class ActionModuleSecretArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Secret name. Required when configuring secrets
+    """
+    updated_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Last update time
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Secret value. Required when configuring secrets
+    """
+
+@pulumi.input_type
+class ActionModuleSecretArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 value: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: Secret name. Required when configuring secrets
+        :param pulumi.Input[_builtins.str] updated_at: Last update time
+        :param pulumi.Input[_builtins.str] value: Secret value. Required when configuring secrets
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Secret name. Required when configuring secrets
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Last update time
+        """
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "updated_at", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Secret value. Required when configuring secrets
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "value", value)
 
 
 class ActionSecretArgsDict(TypedDict):
@@ -8278,6 +8720,10 @@ class ConnectionOptionsArgsDict(TypedDict):
     """
     A map of scripts used for an OAuth connection. Only accepts a `fetchUserProfile` script.
     """
+    send_back_channel_nonce: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    When true and `type` is 'back_channel', includes a cryptographic nonce in authorization requests to prevent replay attacks. The identity provider must include this nonce in the ID token for validation.
+    """
     session_key: NotRequired[pulumi.Input[_builtins.str]]
     """
     Session Key for storing the request token.
@@ -8381,6 +8827,10 @@ class ConnectionOptionsArgsDict(TypedDict):
     use_kerberos: NotRequired[pulumi.Input[_builtins.bool]]
     """
     Indicates whether to use Kerberos or not.
+    """
+    use_oauth_spec_scope: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Determines the `scopes` format: `true` makes it a space-separated string (per OAuth2 specification); `false` makes it an array.
     """
     use_wsfed: NotRequired[pulumi.Input[_builtins.bool]]
     """
@@ -8490,6 +8940,7 @@ class ConnectionOptionsArgs:
                  requires_username: Optional[pulumi.Input[_builtins.bool]] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  scripts: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 send_back_channel_nonce: Optional[pulumi.Input[_builtins.bool]] = None,
                  session_key: Optional[pulumi.Input[_builtins.str]] = None,
                  set_user_root_attributes: Optional[pulumi.Input[_builtins.str]] = None,
                  should_trust_email_verified_connection: Optional[pulumi.Input[_builtins.str]] = None,
@@ -8516,6 +8967,7 @@ class ConnectionOptionsArgs:
                  upstream_params: Optional[pulumi.Input[_builtins.str]] = None,
                  use_cert_auth: Optional[pulumi.Input[_builtins.bool]] = None,
                  use_kerberos: Optional[pulumi.Input[_builtins.bool]] = None,
+                 use_oauth_spec_scope: Optional[pulumi.Input[_builtins.bool]] = None,
                  use_wsfed: Optional[pulumi.Input[_builtins.bool]] = None,
                  user_authorization_url: Optional[pulumi.Input[_builtins.str]] = None,
                  user_id_attribute: Optional[pulumi.Input[_builtins.str]] = None,
@@ -8600,6 +9052,7 @@ class ConnectionOptionsArgs:
         :param pulumi.Input[_builtins.bool] requires_username: Indicates whether the user is required to provide a username in addition to an email address.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: Permissions to grant to the connection. Within the Auth0 dashboard these appear under the "Attributes" and "Extended Attributes" sections. Some examples: `basic_profile`, `ext_profile`, `ext_nested_groups`, etc.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] scripts: A map of scripts used for an OAuth connection. Only accepts a `fetchUserProfile` script.
+        :param pulumi.Input[_builtins.bool] send_back_channel_nonce: When true and `type` is 'back_channel', includes a cryptographic nonce in authorization requests to prevent replay attacks. The identity provider must include this nonce in the ID token for validation.
         :param pulumi.Input[_builtins.str] session_key: Session Key for storing the request token.
         :param pulumi.Input[_builtins.str] set_user_root_attributes: Determines whether to sync user profile attributes (`name`, `given_name`, `family_name`, `nickname`, `picture`) at each login or only on the first login. Options include: `on_each_login`, `on_first_login`, `never_on_login`. Default value: `on_each_login`.
         :param pulumi.Input[_builtins.str] should_trust_email_verified_connection: Choose how Auth0 sets the email_verified field in the user profile.
@@ -8626,6 +9079,7 @@ class ConnectionOptionsArgs:
         :param pulumi.Input[_builtins.str] upstream_params: You can pass provider-specific parameters to an identity provider during authentication. The values can either be static per connection or dynamic per user.
         :param pulumi.Input[_builtins.bool] use_cert_auth: Indicates whether to use cert auth or not.
         :param pulumi.Input[_builtins.bool] use_kerberos: Indicates whether to use Kerberos or not.
+        :param pulumi.Input[_builtins.bool] use_oauth_spec_scope: Determines the `scopes` format: `true` makes it a space-separated string (per OAuth2 specification); `false` makes it an array.
         :param pulumi.Input[_builtins.bool] use_wsfed: Whether to use WS-Fed.
         :param pulumi.Input[_builtins.str] user_authorization_url: URL used to obtain user authorization.
         :param pulumi.Input[_builtins.str] user_id_attribute: Attribute in the token that will be mapped to the user_id property in Auth0.
@@ -8786,6 +9240,8 @@ class ConnectionOptionsArgs:
             pulumi.set(__self__, "scopes", scopes)
         if scripts is not None:
             pulumi.set(__self__, "scripts", scripts)
+        if send_back_channel_nonce is not None:
+            pulumi.set(__self__, "send_back_channel_nonce", send_back_channel_nonce)
         if session_key is not None:
             pulumi.set(__self__, "session_key", session_key)
         if set_user_root_attributes is not None:
@@ -8838,6 +9294,8 @@ class ConnectionOptionsArgs:
             pulumi.set(__self__, "use_cert_auth", use_cert_auth)
         if use_kerberos is not None:
             pulumi.set(__self__, "use_kerberos", use_kerberos)
+        if use_oauth_spec_scope is not None:
+            pulumi.set(__self__, "use_oauth_spec_scope", use_oauth_spec_scope)
         if use_wsfed is not None:
             pulumi.set(__self__, "use_wsfed", use_wsfed)
         if user_authorization_url is not None:
@@ -9766,6 +10224,18 @@ class ConnectionOptionsArgs:
         pulumi.set(self, "scripts", value)
 
     @_builtins.property
+    @pulumi.getter(name="sendBackChannelNonce")
+    def send_back_channel_nonce(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        When true and `type` is 'back_channel', includes a cryptographic nonce in authorization requests to prevent replay attacks. The identity provider must include this nonce in the ID token for validation.
+        """
+        return pulumi.get(self, "send_back_channel_nonce")
+
+    @send_back_channel_nonce.setter
+    def send_back_channel_nonce(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "send_back_channel_nonce", value)
+
+    @_builtins.property
     @pulumi.getter(name="sessionKey")
     def session_key(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -10076,6 +10546,18 @@ class ConnectionOptionsArgs:
     @use_kerberos.setter
     def use_kerberos(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "use_kerberos", value)
+
+    @_builtins.property
+    @pulumi.getter(name="useOauthSpecScope")
+    def use_oauth_spec_scope(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Determines the `scopes` format: `true` makes it a space-separated string (per OAuth2 specification); `false` makes it an array.
+        """
+        return pulumi.get(self, "use_oauth_spec_scope")
+
+    @use_oauth_spec_scope.setter
+    def use_oauth_spec_scope(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "use_oauth_spec_scope", value)
 
     @_builtins.property
     @pulumi.getter(name="useWsfed")

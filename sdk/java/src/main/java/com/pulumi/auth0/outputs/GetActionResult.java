@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.auth0.outputs.GetActionDependency;
+import com.pulumi.auth0.outputs.GetActionModule;
 import com.pulumi.auth0.outputs.GetActionSecret;
 import com.pulumi.auth0.outputs.GetActionSupportedTrigger;
 import com.pulumi.core.annotations.CustomType;
@@ -37,6 +38,11 @@ public final class GetActionResult {
      * 
      */
     private @Nullable String id;
+    /**
+     * @return List of action modules and their versions that this action depends on.
+     * 
+     */
+    private List<GetActionModule> modules;
     /**
      * @return The name of the action. If not provided, `id` must be set.
      * 
@@ -93,6 +99,13 @@ public final class GetActionResult {
         return Optional.ofNullable(this.id);
     }
     /**
+     * @return List of action modules and their versions that this action depends on.
+     * 
+     */
+    public List<GetActionModule> modules() {
+        return this.modules;
+    }
+    /**
      * @return The name of the action. If not provided, `id` must be set.
      * 
      */
@@ -141,6 +154,7 @@ public final class GetActionResult {
         private List<GetActionDependency> dependencies;
         private Boolean deploy;
         private @Nullable String id;
+        private List<GetActionModule> modules;
         private @Nullable String name;
         private String runtime;
         private List<GetActionSecret> secrets;
@@ -153,6 +167,7 @@ public final class GetActionResult {
     	      this.dependencies = defaults.dependencies;
     	      this.deploy = defaults.deploy;
     	      this.id = defaults.id;
+    	      this.modules = defaults.modules;
     	      this.name = defaults.name;
     	      this.runtime = defaults.runtime;
     	      this.secrets = defaults.secrets;
@@ -192,6 +207,17 @@ public final class GetActionResult {
 
             this.id = id;
             return this;
+        }
+        @CustomType.Setter
+        public Builder modules(List<GetActionModule> modules) {
+            if (modules == null) {
+              throw new MissingRequiredPropertyException("GetActionResult", "modules");
+            }
+            this.modules = modules;
+            return this;
+        }
+        public Builder modules(GetActionModule... modules) {
+            return modules(List.of(modules));
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
@@ -243,6 +269,7 @@ public final class GetActionResult {
             _resultValue.dependencies = dependencies;
             _resultValue.deploy = deploy;
             _resultValue.id = id;
+            _resultValue.modules = modules;
             _resultValue.name = name;
             _resultValue.runtime = runtime;
             _resultValue.secrets = secrets;

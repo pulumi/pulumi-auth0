@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "auth0:index/action:Action":
 		r = &Action{}
+	case "auth0:index/actionModule:ActionModule":
+		r = &ActionModule{}
 	case "auth0:index/attackProtection:AttackProtection":
 		r = &AttackProtection{}
 	case "auth0:index/branding:Branding":
@@ -141,6 +143,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SelfServiceProfile{}
 	case "auth0:index/selfServiceProfileCustomText:SelfServiceProfileCustomText":
 		r = &SelfServiceProfileCustomText{}
+	case "auth0:index/supplementalSignals:SupplementalSignals":
+		r = &SupplementalSignals{}
 	case "auth0:index/tenant:Tenant":
 		r = &Tenant{}
 	case "auth0:index/tokenExchangeProfile:TokenExchangeProfile":
@@ -195,6 +199,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"auth0",
 		"index/action",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"auth0",
+		"index/actionModule",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -490,6 +499,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"auth0",
 		"index/selfServiceProfileCustomText",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"auth0",
+		"index/supplementalSignals",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

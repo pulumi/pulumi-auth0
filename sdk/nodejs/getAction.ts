@@ -53,6 +53,10 @@ export interface GetActionResult {
      */
     readonly id?: string;
     /**
+     * List of action modules and their versions that this action depends on.
+     */
+    readonly modules: outputs.GetActionModule[];
+    /**
      * The name of the action. If not provided, `id` must be set.
      */
     readonly name?: string;

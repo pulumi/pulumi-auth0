@@ -617,6 +617,7 @@ import * as utilities from "./utilities";
  *         tenantDomain: "",
  *         iconUrl: "https://example.com/assets/logo.png",
  *         type: "back_channel",
+ *         sendBackChannelNonce: true,
  *         issuer: "https://www.paypalobjects.com",
  *         jwksUri: "https://api.paypal.com/v1/oauth2/certs",
  *         discoveryUrl: "https://www.paypalobjects.com/.well-known/openid-configuration",

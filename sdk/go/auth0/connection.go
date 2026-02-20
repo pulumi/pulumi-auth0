@@ -886,6 +886,7 @@ import (
 //					TenantDomain:          pulumi.String(""),
 //					IconUrl:               pulumi.String("https://example.com/assets/logo.png"),
 //					Type:                  pulumi.String("back_channel"),
+//					SendBackChannelNonce:  pulumi.Bool(true),
 //					Issuer:                pulumi.String("https://www.paypalobjects.com"),
 //					JwksUri:               pulumi.String("https://api.paypal.com/v1/oauth2/certs"),
 //					DiscoveryUrl:          pulumi.String("https://www.paypalobjects.com/.well-known/openid-configuration"),
