@@ -25,6 +25,7 @@ class PromptScreenPartialsArgs:
                  screen_partials: Optional[pulumi.Input[Sequence[pulumi.Input['PromptScreenPartialsScreenPartialArgs']]]] = None):
         """
         The set of arguments for constructing a PromptScreenPartials resource.
+
         :param pulumi.Input[_builtins.str] prompt_type: The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
         """
         pulumi.set(__self__, "prompt_type", prompt_type)
@@ -60,6 +61,7 @@ class _PromptScreenPartialsState:
                  screen_partials: Optional[pulumi.Input[Sequence[pulumi.Input['PromptScreenPartialsScreenPartialArgs']]]] = None):
         """
         Input properties used for looking up and filtering PromptScreenPartials resources.
+
         :param pulumi.Input[_builtins.str] prompt_type: The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
         """
         if prompt_type is not None:
@@ -150,6 +152,7 @@ class PromptScreenPartials(pulumi.CustomResource):
         $ pulumi import auth0:index/promptScreenPartials:PromptScreenPartials prompt_screen_partials "login-passwordless"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] prompt_type: The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
@@ -211,6 +214,7 @@ class PromptScreenPartials(pulumi.CustomResource):
         ```sh
         $ pulumi import auth0:index/promptScreenPartials:PromptScreenPartials prompt_screen_partials "login-passwordless"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PromptScreenPartialsArgs args: The arguments to use to populate this resource's properties.

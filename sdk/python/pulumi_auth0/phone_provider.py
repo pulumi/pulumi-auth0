@@ -27,6 +27,7 @@ class PhoneProviderArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PhoneProvider resource.
+
         :param pulumi.Input['PhoneProviderConfigurationArgs'] configuration: Specific phone provider settings.
         :param pulumi.Input['PhoneProviderCredentialsArgs'] credentials: Provider credentials required to use authenticate to the provider.
         :param pulumi.Input[_builtins.bool] disabled: Indicates whether the phone provider is enabled (false) or disabled (true).
@@ -99,6 +100,7 @@ class _PhoneProviderState:
                  tenant: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PhoneProvider resources.
+
         :param pulumi.Input[_builtins.str] channel: The channel of the phone provider.
         :param pulumi.Input['PhoneProviderConfigurationArgs'] configuration: Specific phone provider settings.
         :param pulumi.Input['PhoneProviderCredentialsArgs'] credentials: Provider credentials required to use authenticate to the provider.
@@ -276,6 +278,7 @@ class PhoneProvider(pulumi.CustomResource):
         $ pulumi import auth0:index/phoneProvider:PhoneProvider my_phone_provider "pro_XXXXXXXXXXXXXXXX"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['PhoneProviderConfigurationArgs', 'PhoneProviderConfigurationArgsDict']] configuration: Specific phone provider settings.
@@ -361,6 +364,7 @@ class PhoneProvider(pulumi.CustomResource):
         ```sh
         $ pulumi import auth0:index/phoneProvider:PhoneProvider my_phone_provider "pro_XXXXXXXXXXXXXXXX"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PhoneProviderArgs args: The arguments to use to populate this resource's properties.

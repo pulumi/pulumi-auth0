@@ -28,6 +28,7 @@ class BrandingArgs:
                  universal_login: Optional[pulumi.Input['BrandingUniversalLoginArgs']] = None):
         """
         The set of arguments for constructing a Branding resource.
+
         :param pulumi.Input['BrandingColorsArgs'] colors: Configuration settings for colors for branding.
         :param pulumi.Input[_builtins.str] favicon_url: URL for the favicon.
         :param pulumi.Input['BrandingFontArgs'] font: Configuration settings to customize the font.
@@ -116,6 +117,7 @@ class _BrandingState:
                  universal_login: Optional[pulumi.Input['BrandingUniversalLoginArgs']] = None):
         """
         Input properties used for looking up and filtering Branding resources.
+
         :param pulumi.Input['BrandingColorsArgs'] colors: Configuration settings for colors for branding.
         :param pulumi.Input[_builtins.str] favicon_url: URL for the favicon.
         :param pulumi.Input['BrandingFontArgs'] font: Configuration settings to customize the font.
@@ -240,6 +242,7 @@ class Branding(pulumi.CustomResource):
         $ pulumi import auth0:index/branding:Branding my_brand "22f4f21b-017a-319d-92e7-2291c1ca36c4"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['BrandingColorsArgs', 'BrandingColorsArgsDict']] colors: Configuration settings for colors for branding.
@@ -287,6 +290,7 @@ class Branding(pulumi.CustomResource):
         ```sh
         $ pulumi import auth0:index/branding:Branding my_brand "22f4f21b-017a-319d-92e7-2291c1ca36c4"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BrandingArgs args: The arguments to use to populate this resource's properties.

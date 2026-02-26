@@ -25,6 +25,7 @@ class UserPermissionsArgs:
                  user_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a UserPermissions resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['UserPermissionsPermissionArgs']]] permissions: List of API permissions granted to the user.
         :param pulumi.Input[_builtins.str] user_id: ID of the user to associate the permission to.
         """
@@ -63,6 +64,7 @@ class _UserPermissionsState:
                  user_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering UserPermissions resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['UserPermissionsPermissionArgs']]] permissions: List of API permissions granted to the user.
         :param pulumi.Input[_builtins.str] user_id: ID of the user to associate the permission to.
         """
@@ -165,6 +167,7 @@ class UserPermissions(pulumi.CustomResource):
         $ pulumi import auth0:index/userPermissions:UserPermissions all_user_permissions "auth0|111111111111111111111111"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['UserPermissionsPermissionArgs', 'UserPermissionsPermissionArgsDict']]]] permissions: List of API permissions granted to the user.
@@ -235,6 +238,7 @@ class UserPermissions(pulumi.CustomResource):
         ```sh
         $ pulumi import auth0:index/userPermissions:UserPermissions all_user_permissions "auth0|111111111111111111111111"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param UserPermissionsArgs args: The arguments to use to populate this resource's properties.

@@ -32,6 +32,7 @@ class ProviderArgs:
                  dynamic_credentials: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Provider resource.
+
         :param pulumi.Input[_builtins.str] api_token: Your Auth0 [management api access token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from the `AUTH0_API_TOKEN` environment variable. It can be used instead of `client_id` + `client_secret`. If both are specified, `api_token` will be used over `client_id` + `client_secret` fields.
         :param pulumi.Input[_builtins.str] audience: Your Auth0 audience when using a custom domain. It can also be sourced from the `AUTH0_AUDIENCE` environment variable.
         :param pulumi.Input[_builtins.bool] cli_login: While toggled on, the API token gets fetched from the keyring for the given domain
@@ -226,6 +227,7 @@ class Provider(pulumi.ProviderResource):
         construction to achieve fine-grained programmatic control over provider settings. See the
         [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] api_token: Your Auth0 [management api access token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from the `AUTH0_API_TOKEN` environment variable. It can be used instead of `client_id` + `client_secret`. If both are specified, `api_token` will be used over `client_id` + `client_secret` fields.
@@ -251,6 +253,7 @@ class Provider(pulumi.ProviderResource):
         settings, however an explicit `Provider` instance may be created and passed during resource
         construction to achieve fine-grained programmatic control over provider settings. See the
         [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
+
 
         :param str resource_name: The name of the resource.
         :param ProviderArgs args: The arguments to use to populate this resource's properties.

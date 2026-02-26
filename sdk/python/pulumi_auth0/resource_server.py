@@ -39,6 +39,7 @@ class ResourceServerArgs:
                  verification_location: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ResourceServer resource.
+
         :param pulumi.Input[_builtins.str] identifier: Unique identifier for the resource server. Used as the audience parameter for authorization calls. Cannot be changed once set.
         :param pulumi.Input[_builtins.bool] allow_offline_access: Indicates whether refresh tokens can be issued for this resource server.
         :param pulumi.Input[Sequence[pulumi.Input['ResourceServerAuthorizationDetailArgs']]] authorization_details: Authorization details for this resource server.
@@ -304,6 +305,7 @@ class _ResourceServerState:
                  verification_location: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ResourceServer resources.
+
         :param pulumi.Input[_builtins.bool] allow_offline_access: Indicates whether refresh tokens can be issued for this resource server.
         :param pulumi.Input[Sequence[pulumi.Input['ResourceServerAuthorizationDetailArgs']]] authorization_details: Authorization details for this resource server.
         :param pulumi.Input[_builtins.str] client_id: The ID of the client associated with this resource server. If a client has been created and linked to this resource server, this field will be populated with that client's ID.
@@ -679,6 +681,7 @@ class ResourceServer(pulumi.CustomResource):
         $ pulumi import auth0:index/resourceServer:ResourceServer my_resource_server "XXXXXXXXXXXXXXXXXXXXXXX"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] allow_offline_access: Indicates whether refresh tokens can be issued for this resource server.
@@ -782,6 +785,7 @@ class ResourceServer(pulumi.CustomResource):
         ```sh
         $ pulumi import auth0:index/resourceServer:ResourceServer my_resource_server "XXXXXXXXXXXXXXXXXXXXXXX"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ResourceServerArgs args: The arguments to use to populate this resource's properties.

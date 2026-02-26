@@ -24,6 +24,7 @@ class OrganizationMemberRolesArgs:
                  user_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a OrganizationMemberRoles resource.
+
         :param pulumi.Input[_builtins.str] organization_id: The ID of the organization.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] roles: The role ID(s) to assign to the organization member.
         :param pulumi.Input[_builtins.str] user_id: The user ID of the organization member.
@@ -77,6 +78,7 @@ class _OrganizationMemberRolesState:
                  user_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OrganizationMemberRoles resources.
+
         :param pulumi.Input[_builtins.str] organization_id: The ID of the organization.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] roles: The role ID(s) to assign to the organization member.
         :param pulumi.Input[_builtins.str] user_id: The user ID of the organization member.
@@ -177,6 +179,7 @@ class OrganizationMemberRoles(pulumi.CustomResource):
         $ pulumi import auth0:index/organizationMemberRoles:OrganizationMemberRoles my_org_member_roles "org_XXXXX::auth0|XXXXX"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] organization_id: The ID of the organization.
@@ -230,6 +233,7 @@ class OrganizationMemberRoles(pulumi.CustomResource):
         ```sh
         $ pulumi import auth0:index/organizationMemberRoles:OrganizationMemberRoles my_org_member_roles "org_XXXXX::auth0|XXXXX"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param OrganizationMemberRolesArgs args: The arguments to use to populate this resource's properties.

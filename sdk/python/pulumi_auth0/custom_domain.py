@@ -29,6 +29,7 @@ class CustomDomainArgs:
                  tls_policy: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CustomDomain resource.
+
         :param pulumi.Input[_builtins.str] domain: Name of the custom domain.
         :param pulumi.Input[_builtins.str] type: Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
         :param pulumi.Input[_builtins.str] custom_client_ip_header: The HTTP header to fetch the client's IP address. Cannot be set on auth0_managed domains.
@@ -136,6 +137,7 @@ class _CustomDomainState:
                  verifications: Optional[pulumi.Input[Sequence[pulumi.Input['CustomDomainVerificationArgs']]]] = None):
         """
         Input properties used for looking up and filtering CustomDomain resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['CustomDomainCertificateArgs']]] certificates: The Custom Domain certificate.
         :param pulumi.Input[_builtins.str] custom_client_ip_header: The HTTP header to fetch the client's IP address. Cannot be set on auth0_managed domains.
         :param pulumi.Input[_builtins.str] domain: Name of the custom domain.
@@ -353,6 +355,7 @@ class CustomDomain(pulumi.CustomResource):
         $ pulumi import auth0:index/customDomain:CustomDomain my_custom_domain "cd_XXXXXXXXXXXXXXXX"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] custom_client_ip_header: The HTTP header to fetch the client's IP address. Cannot be set on auth0_managed domains.
@@ -399,6 +402,7 @@ class CustomDomain(pulumi.CustomResource):
         ```sh
         $ pulumi import auth0:index/customDomain:CustomDomain my_custom_domain "cd_XXXXXXXXXXXXXXXX"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CustomDomainArgs args: The arguments to use to populate this resource's properties.

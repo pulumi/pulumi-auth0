@@ -24,6 +24,7 @@ class UserPermissionArgs:
                  user_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a UserPermission resource.
+
         :param pulumi.Input[_builtins.str] permission: Name of the permission.
         :param pulumi.Input[_builtins.str] resource_server_identifier: Identifier of the resource server that the permission is associated with.
         :param pulumi.Input[_builtins.str] user_id: ID of the user to associate the permission to.
@@ -79,6 +80,7 @@ class _UserPermissionState:
                  user_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering UserPermission resources.
+
         :param pulumi.Input[_builtins.str] description: Description of the permission.
         :param pulumi.Input[_builtins.str] permission: Name of the permission.
         :param pulumi.Input[_builtins.str] resource_server_identifier: Identifier of the resource server that the permission is associated with.
@@ -221,6 +223,7 @@ class UserPermission(pulumi.CustomResource):
         $ pulumi import auth0:index/userPermission:UserPermission permission "auth0|111111111111111111111111::https://api.travel0.com/v1::read:posts"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] permission: Name of the permission.
@@ -286,6 +289,7 @@ class UserPermission(pulumi.CustomResource):
         ```sh
         $ pulumi import auth0:index/userPermission:UserPermission permission "auth0|111111111111111111111111::https://api.travel0.com/v1::read:posts"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param UserPermissionArgs args: The arguments to use to populate this resource's properties.

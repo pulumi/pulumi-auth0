@@ -28,6 +28,7 @@ class ActionModuleInitArgs:
                  secrets: Optional[pulumi.Input[Sequence[pulumi.Input['ActionModuleSecretArgs']]]] = None):
         """
         The set of arguments for constructing a ActionModule resource.
+
         :param pulumi.Input[_builtins.str] code: The source code of the action module.
         :param pulumi.Input[Sequence[pulumi.Input['ActionModuleDependencyArgs']]] dependencies: List of third party npm modules, and their versions, that this action module depends on.
         :param pulumi.Input[_builtins.str] name: The name of the action module.
@@ -120,6 +121,7 @@ class _ActionModuleState:
                  version_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ActionModule resources.
+
         :param pulumi.Input[_builtins.int] actions_using_module_total: The number of deployed actions using this module.
         :param pulumi.Input[_builtins.bool] all_changes_published: Whether all draft changes have been published as a version.
         :param pulumi.Input[_builtins.str] code: The source code of the action module.
@@ -318,6 +320,7 @@ class ActionModule(pulumi.CustomResource):
             }])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] code: The source code of the action module.
@@ -364,6 +367,7 @@ class ActionModule(pulumi.CustomResource):
                 "value": "my-secret-api-key",
             }])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ActionModuleInitArgs args: The arguments to use to populate this resource's properties.

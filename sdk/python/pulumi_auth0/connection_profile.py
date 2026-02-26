@@ -29,6 +29,7 @@ class ConnectionProfileArgs:
                  strategy_overrides: Optional[pulumi.Input['ConnectionProfileStrategyOverridesArgs']] = None):
         """
         The set of arguments for constructing a ConnectionProfile resource.
+
         :param pulumi.Input['ConnectionProfileConnectionConfigArgs'] connection_config: Connection configuration for the profile.
         :param pulumi.Input[_builtins.str] connection_name_prefix_template: Template for generating connection names from the profile.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] enabled_features: List of enabled features for the connection profile.
@@ -133,6 +134,7 @@ class _ConnectionProfileState:
                  strategy_overrides: Optional[pulumi.Input['ConnectionProfileStrategyOverridesArgs']] = None):
         """
         Input properties used for looking up and filtering ConnectionProfile resources.
+
         :param pulumi.Input['ConnectionProfileConnectionConfigArgs'] connection_config: Connection configuration for the profile.
         :param pulumi.Input[_builtins.str] connection_name_prefix_template: Template for generating connection names from the profile.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] enabled_features: List of enabled features for the connection profile.
@@ -271,6 +273,7 @@ class ConnectionProfile(pulumi.CustomResource):
         $ pulumi import auth0:index/connectionProfile:ConnectionProfile my_profile "cop_xxxxxxxxxxxxxxxxx"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ConnectionProfileConnectionConfigArgs', 'ConnectionProfileConnectionConfigArgsDict']] connection_config: Connection configuration for the profile.
@@ -317,6 +320,7 @@ class ConnectionProfile(pulumi.CustomResource):
         ```sh
         $ pulumi import auth0:index/connectionProfile:ConnectionProfile my_profile "cop_xxxxxxxxxxxxxxxxx"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ConnectionProfileArgs args: The arguments to use to populate this resource's properties.

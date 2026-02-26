@@ -26,6 +26,7 @@ class PhoneNotificationTemplateArgs:
                  disabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a PhoneNotificationTemplate resource.
+
         :param pulumi.Input[_builtins.str] type: The type of the phone notification template.
         :param pulumi.Input['PhoneNotificationTemplateContentArgs'] content: The content of the phone notification template.
         :param pulumi.Input[_builtins.bool] disabled: Indicates whether the phone notification template is disabled.
@@ -85,6 +86,7 @@ class _PhoneNotificationTemplateState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PhoneNotificationTemplate resources.
+
         :param pulumi.Input[_builtins.str] channel: The channel of the phone notification template (e.g., `sms`, `voice`).
         :param pulumi.Input['PhoneNotificationTemplateContentArgs'] content: The content of the phone notification template.
         :param pulumi.Input[_builtins.bool] customizable: Indicates whether the phone notification template is customizable.
@@ -206,6 +208,7 @@ class PhoneNotificationTemplate(pulumi.CustomResource):
         """
         Manages phone notification templates used for SMS and voice communications in Auth0.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['PhoneNotificationTemplateContentArgs', 'PhoneNotificationTemplateContentArgsDict']] content: The content of the phone notification template.
@@ -220,6 +223,7 @@ class PhoneNotificationTemplate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages phone notification templates used for SMS and voice communications in Auth0.
+
 
         :param str resource_name: The name of the resource.
         :param PhoneNotificationTemplateArgs args: The arguments to use to populate this resource's properties.

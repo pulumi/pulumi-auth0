@@ -68,6 +68,7 @@ class ClientArgs:
                  web_origins: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Client resource.
+
         :param pulumi.Input['ClientAddonsArgs'] addons: Addons enabled for this client and their associated configurations.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_clients: List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
@@ -800,6 +801,7 @@ class _ClientState:
                  web_origins: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Client resources.
+
         :param pulumi.Input['ClientAddonsArgs'] addons: Addons enabled for this client and their associated configurations.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_clients: List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
@@ -1575,6 +1577,7 @@ class Client(pulumi.CustomResource):
         $ pulumi import auth0:index/client:Client my_client "AaiyAPdpYdesoKnqjj8HJqRn4T5titww"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ClientAddonsArgs', 'ClientAddonsArgsDict']] addons: Addons enabled for this client and their associated configurations.
@@ -1640,6 +1643,7 @@ class Client(pulumi.CustomResource):
         ```sh
         $ pulumi import auth0:index/client:Client my_client "AaiyAPdpYdesoKnqjj8HJqRn4T5titww"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ClientArgs args: The arguments to use to populate this resource's properties.

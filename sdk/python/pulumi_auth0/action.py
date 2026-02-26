@@ -31,6 +31,7 @@ class ActionArgs:
                  secrets: Optional[pulumi.Input[Sequence[pulumi.Input['ActionSecretArgs']]]] = None):
         """
         The set of arguments for constructing a Action resource.
+
         :param pulumi.Input[_builtins.str] code: The source code of the action.
         :param pulumi.Input['ActionSupportedTriggersArgs'] supported_triggers: List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
         :param pulumi.Input[Sequence[pulumi.Input['ActionDependencyArgs']]] dependencies: List of third party npm modules, and their versions, that this action depends on.
@@ -166,6 +167,7 @@ class _ActionState:
                  version_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Action resources.
+
         :param pulumi.Input[_builtins.str] code: The source code of the action.
         :param pulumi.Input[Sequence[pulumi.Input['ActionDependencyArgs']]] dependencies: List of third party npm modules, and their versions, that this action depends on.
         :param pulumi.Input[_builtins.bool] deploy: Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately.
@@ -391,6 +393,7 @@ class Action(pulumi.CustomResource):
         > For security reasons importing `secrets` is not allowed. Therefore, it is advised to import
         the action without secrets and adding them back after the action has been imported.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] code: The source code of the action.
@@ -479,6 +482,7 @@ class Action(pulumi.CustomResource):
 
         > For security reasons importing `secrets` is not allowed. Therefore, it is advised to import
         the action without secrets and adding them back after the action has been imported.
+
 
         :param str resource_name: The name of the resource.
         :param ActionArgs args: The arguments to use to populate this resource's properties.

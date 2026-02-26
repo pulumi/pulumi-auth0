@@ -27,6 +27,7 @@ class HookArgs:
                  secrets: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Hook resource.
+
         :param pulumi.Input[_builtins.str] script: Code to be executed when this hook runs.
         :param pulumi.Input[_builtins.str] trigger_id: Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] dependencies: Dependencies of this hook used by the WebTask server.
@@ -129,6 +130,7 @@ class _HookState:
                  trigger_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Hook resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] dependencies: Dependencies of this hook used by the WebTask server.
         :param pulumi.Input[_builtins.bool] enabled: Whether the hook is enabled, or disabled.
         :param pulumi.Input[_builtins.str] name: Name of this hook.
@@ -272,6 +274,7 @@ class Hook(pulumi.CustomResource):
         $ pulumi import auth0:index/hook:Hook my_hook "00001"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] dependencies: Dependencies of this hook used by the WebTask server.
@@ -323,6 +326,7 @@ class Hook(pulumi.CustomResource):
         ```sh
         $ pulumi import auth0:index/hook:Hook my_hook "00001"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param HookArgs args: The arguments to use to populate this resource's properties.

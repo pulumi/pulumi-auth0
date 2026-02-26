@@ -25,6 +25,7 @@ class TriggerActionsArgs:
                  trigger: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a TriggerActions resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['TriggerActionsActionArgs']]] actions: The list of actions bound to this trigger.
         :param pulumi.Input[_builtins.str] trigger: The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-email-provider`, `custom-phone-provider`.
         """
@@ -63,6 +64,7 @@ class _TriggerActionsState:
                  trigger: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TriggerActions resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['TriggerActionsActionArgs']]] actions: The list of actions bound to this trigger.
         :param pulumi.Input[_builtins.str] trigger: The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-email-provider`, `custom-phone-provider`.
         """
@@ -166,6 +168,7 @@ class TriggerActions(pulumi.CustomResource):
         $ pulumi import auth0:index/triggerActions:TriggerActions example "post-login"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['TriggerActionsActionArgs', 'TriggerActionsActionArgsDict']]]] actions: The list of actions bound to this trigger.
@@ -237,6 +240,7 @@ class TriggerActions(pulumi.CustomResource):
         ```sh
         $ pulumi import auth0:index/triggerActions:TriggerActions example "post-login"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TriggerActionsArgs args: The arguments to use to populate this resource's properties.

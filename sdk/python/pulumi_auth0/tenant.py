@@ -50,6 +50,7 @@ class TenantArgs:
                  support_url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Tenant resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] acr_values_supporteds: List of supported ACR values.
         :param pulumi.Input[_builtins.bool] allow_organization_name_in_authentication_api: Whether to accept an organization name instead of an ID on auth endpoints.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
@@ -490,6 +491,7 @@ class _TenantState:
                  support_url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Tenant resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] acr_values_supporteds: List of supported ACR values.
         :param pulumi.Input[_builtins.bool] allow_organization_name_in_authentication_api: Whether to accept an organization name instead of an ID on auth endpoints.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
@@ -988,6 +990,7 @@ class Tenant(pulumi.CustomResource):
         $ pulumi import auth0:index/tenant:Tenant my_tenant "82f4f21b-017a-319d-92e7-2291c1ca36c4"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] acr_values_supporteds: List of supported ACR values.
@@ -1079,6 +1082,7 @@ class Tenant(pulumi.CustomResource):
         ```sh
         $ pulumi import auth0:index/tenant:Tenant my_tenant "82f4f21b-017a-319d-92e7-2291c1ca36c4"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TenantArgs args: The arguments to use to populate this resource's properties.

@@ -23,6 +23,7 @@ class UserRoleArgs:
                  user_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a UserRole resource.
+
         :param pulumi.Input[_builtins.str] role_id: ID of the role assigned to the user.
         :param pulumi.Input[_builtins.str] user_id: ID of the user.
         """
@@ -63,6 +64,7 @@ class _UserRoleState:
                  user_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering UserRole resources.
+
         :param pulumi.Input[_builtins.str] role_description: Description of the role.
         :param pulumi.Input[_builtins.str] role_id: ID of the role assigned to the user.
         :param pulumi.Input[_builtins.str] role_name: Name of the role.
@@ -175,6 +177,7 @@ class UserRole(pulumi.CustomResource):
         $ pulumi import auth0:index/userRole:UserRole user_role "auth0|111111111111111111111111::role_123"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] role_id: ID of the role assigned to the user.
@@ -225,6 +228,7 @@ class UserRole(pulumi.CustomResource):
         ```sh
         $ pulumi import auth0:index/userRole:UserRole user_role "auth0|111111111111111111111111::role_123"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param UserRoleArgs args: The arguments to use to populate this resource's properties.

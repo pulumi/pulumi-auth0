@@ -31,6 +31,7 @@ class FormArgs:
                  translations: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Form resource.
+
         :param pulumi.Input[_builtins.str] ending: Submission configuration of the form. (JSON encoded)
         :param pulumi.Input[Sequence[pulumi.Input['FormLanguageArgs']]] languages: Language specific configuration for the form.
         :param pulumi.Input[Sequence[pulumi.Input['FormMessageArgs']]] messages: Message specific configuration for the form.
@@ -167,6 +168,7 @@ class _FormState:
                  translations: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Form resources.
+
         :param pulumi.Input[_builtins.str] ending: Submission configuration of the form. (JSON encoded)
         :param pulumi.Input[Sequence[pulumi.Input['FormLanguageArgs']]] languages: Language specific configuration for the form.
         :param pulumi.Input[Sequence[pulumi.Input['FormMessageArgs']]] messages: Message specific configuration for the form.
@@ -414,6 +416,7 @@ class Form(pulumi.CustomResource):
         $ pulumi import auth0:index/form:Form my_form "ap_ojkKbiPMG6J5E5VCKdeCzK"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] ending: Submission configuration of the form. (JSON encoded)
@@ -539,6 +542,7 @@ class Form(pulumi.CustomResource):
         ```sh
         $ pulumi import auth0:index/form:Form my_form "ap_ojkKbiPMG6J5E5VCKdeCzK"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FormArgs args: The arguments to use to populate this resource's properties.

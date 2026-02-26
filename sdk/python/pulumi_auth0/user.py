@@ -39,6 +39,7 @@ class UserArgs:
                  verify_email: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a User resource.
+
         :param pulumi.Input[_builtins.str] connection_name: Name of the connection from which the user information was sourced.
         :param pulumi.Input[_builtins.str] app_metadata: Custom fields that store info about the user that impact the user's core functionality, such as how an application functions or what the user can access. Examples include support plans and IDs for external accounts.
         :param pulumi.Input[_builtins.bool] blocked: Indicates whether the user is blocked or not.
@@ -334,6 +335,7 @@ class _UserState:
                  verify_email: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering User resources.
+
         :param pulumi.Input[_builtins.str] app_metadata: Custom fields that store info about the user that impact the user's core functionality, such as how an application functions or what the user can access. Examples include support plans and IDs for external accounts.
         :param pulumi.Input[_builtins.bool] blocked: Indicates whether the user is blocked or not.
         :param pulumi.Input[_builtins.str] connection_name: Name of the connection from which the user information was sourced.
@@ -671,6 +673,7 @@ class User(pulumi.CustomResource):
         $ pulumi import auth0:index/user:User user "auth0|111111111111111111111111"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app_metadata: Custom fields that store info about the user that impact the user's core functionality, such as how an application functions or what the user can access. Examples include support plans and IDs for external accounts.
@@ -736,6 +739,7 @@ class User(pulumi.CustomResource):
         ```sh
         $ pulumi import auth0:index/user:User user "auth0|111111111111111111111111"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param UserArgs args: The arguments to use to populate this resource's properties.

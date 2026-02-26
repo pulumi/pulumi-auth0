@@ -25,6 +25,7 @@ class RolePermissionsArgs:
                  role_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a RolePermissions resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['RolePermissionsPermissionArgs']]] permissions: List of API permissions granted to the role.
         :param pulumi.Input[_builtins.str] role_id: ID of the role to associate the permission to.
         """
@@ -63,6 +64,7 @@ class _RolePermissionsState:
                  role_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RolePermissions resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['RolePermissionsPermissionArgs']]] permissions: List of API permissions granted to the role.
         :param pulumi.Input[_builtins.str] role_id: ID of the role to associate the permission to.
         """
@@ -157,6 +159,7 @@ class RolePermissions(pulumi.CustomResource):
         $ pulumi import auth0:index/rolePermissions:RolePermissions all_role_permissions "rol_XXXXXXXXXXXX"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['RolePermissionsPermissionArgs', 'RolePermissionsPermissionArgsDict']]]] permissions: List of API permissions granted to the role.
@@ -219,6 +222,7 @@ class RolePermissions(pulumi.CustomResource):
         ```sh
         $ pulumi import auth0:index/rolePermissions:RolePermissions all_role_permissions "rol_XXXXXXXXXXXX"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RolePermissionsArgs args: The arguments to use to populate this resource's properties.

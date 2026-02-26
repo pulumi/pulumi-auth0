@@ -26,6 +26,7 @@ class ConnectionDirectoryArgs:
                  synchronize_automatically: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ConnectionDirectory resource.
+
         :param pulumi.Input[_builtins.str] connection_id: ID of the connection for this directory provisioning configuration.
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionDirectoryMappingArgs']]] mappings: Mapping between Auth0 attributes and IDP user attributes. Defaults to default mapping for the connection type if not specified.
         :param pulumi.Input[_builtins.bool] synchronize_automatically: Whether periodic automatic synchronization is enabled. Defaults to false.
@@ -88,6 +89,7 @@ class _ConnectionDirectoryState:
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ConnectionDirectory resources.
+
         :param pulumi.Input[_builtins.str] connection_id: ID of the connection for this directory provisioning configuration.
         :param pulumi.Input[_builtins.str] connection_name: Name of the connection for this directory provisioning configuration.
         :param pulumi.Input[_builtins.str] created_at: The timestamp at which the directory provisioning configuration was created.
@@ -302,6 +304,7 @@ class ConnectionDirectory(pulumi.CustomResource):
         $ pulumi import auth0:index/connectionDirectory:ConnectionDirectory custom "con_XXXXXXXXXXXXXX"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] connection_id: ID of the connection for this directory provisioning configuration.
@@ -364,6 +367,7 @@ class ConnectionDirectory(pulumi.CustomResource):
         ```sh
         $ pulumi import auth0:index/connectionDirectory:ConnectionDirectory custom "con_XXXXXXXXXXXXXX"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ConnectionDirectoryArgs args: The arguments to use to populate this resource's properties.

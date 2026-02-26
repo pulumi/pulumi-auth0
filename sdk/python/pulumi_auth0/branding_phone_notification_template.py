@@ -26,6 +26,7 @@ class BrandingPhoneNotificationTemplateArgs:
                  disabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a BrandingPhoneNotificationTemplate resource.
+
         :param pulumi.Input[_builtins.str] type: The type of the phone notification template.
         :param pulumi.Input['BrandingPhoneNotificationTemplateContentArgs'] content: The content of the phone notification template.
         :param pulumi.Input[_builtins.bool] disabled: Indicates whether the phone notification template is disabled.
@@ -85,6 +86,7 @@ class _BrandingPhoneNotificationTemplateState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BrandingPhoneNotificationTemplate resources.
+
         :param pulumi.Input[_builtins.str] channel: The channel of the phone notification template (e.g., `sms`, `voice`).
         :param pulumi.Input['BrandingPhoneNotificationTemplateContentArgs'] content: The content of the phone notification template.
         :param pulumi.Input[_builtins.bool] customizable: Indicates whether the phone notification template is customizable.
@@ -249,6 +251,7 @@ class BrandingPhoneNotificationTemplate(pulumi.CustomResource):
         $ pulumi import auth0:index/brandingPhoneNotificationTemplate:BrandingPhoneNotificationTemplate otp_enrollment "tem_xxxxxxxxxxxxxxxxxxx"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['BrandingPhoneNotificationTemplateContentArgs', 'BrandingPhoneNotificationTemplateContentArgsDict']] content: The content of the phone notification template.
@@ -306,6 +309,7 @@ class BrandingPhoneNotificationTemplate(pulumi.CustomResource):
         ```sh
         $ pulumi import auth0:index/brandingPhoneNotificationTemplate:BrandingPhoneNotificationTemplate otp_enrollment "tem_xxxxxxxxxxxxxxxxxxx"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BrandingPhoneNotificationTemplateArgs args: The arguments to use to populate this resource's properties.

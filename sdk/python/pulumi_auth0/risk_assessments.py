@@ -22,6 +22,7 @@ class RiskAssessmentsArgs:
                  enabled: pulumi.Input[_builtins.bool]):
         """
         The set of arguments for constructing a RiskAssessments resource.
+
         :param pulumi.Input[_builtins.bool] enabled: Whether risk assessment is enabled or not.
         """
         pulumi.set(__self__, "enabled", enabled)
@@ -45,6 +46,7 @@ class _RiskAssessmentsState:
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering RiskAssessments resources.
+
         :param pulumi.Input[_builtins.bool] enabled: Whether risk assessment is enabled or not.
         """
         if enabled is not None:
@@ -74,6 +76,7 @@ class RiskAssessments(pulumi.CustomResource):
         """
         Resource for managing general Risk Assessment settings.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] enabled: Whether risk assessment is enabled or not.
@@ -86,6 +89,7 @@ class RiskAssessments(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for managing general Risk Assessment settings.
+
 
         :param str resource_name: The name of the resource.
         :param RiskAssessmentsArgs args: The arguments to use to populate this resource's properties.

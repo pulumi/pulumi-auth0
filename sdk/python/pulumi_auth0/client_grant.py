@@ -29,6 +29,7 @@ class ClientGrantArgs:
                  subject_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ClientGrant resource.
+
         :param pulumi.Input[_builtins.str] audience: Audience or API Identifier for this grant.
         :param pulumi.Input[_builtins.str] client_id: ID of the client for this grant.
         :param pulumi.Input[_builtins.bool] allow_all_scopes: When set to `true`, all scopes configured on the resource server are allowed for this client grant. `scopes` can not be provided when this is set to `true`. EA Only.
@@ -164,6 +165,7 @@ class _ClientGrantState:
                  subject_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ClientGrant resources.
+
         :param pulumi.Input[_builtins.bool] allow_all_scopes: When set to `true`, all scopes configured on the resource server are allowed for this client grant. `scopes` can not be provided when this is set to `true`. EA Only.
         :param pulumi.Input[_builtins.bool] allow_any_organization: If enabled, any organization can be used with this grant. If disabled (default), the grant must be explicitly assigned to the desired organizations.
         :param pulumi.Input[_builtins.str] audience: Audience or API Identifier for this grant.
@@ -386,6 +388,7 @@ class ClientGrant(pulumi.CustomResource):
         $ pulumi import auth0:index/clientGrant:ClientGrant my_client_grant "cgr_XXXXXXXXXXXXXXXX"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] allow_all_scopes: When set to `true`, all scopes configured on the resource server are allowed for this client grant. `scopes` can not be provided when this is set to `true`. EA Only.
@@ -471,6 +474,7 @@ class ClientGrant(pulumi.CustomResource):
         ```sh
         $ pulumi import auth0:index/clientGrant:ClientGrant my_client_grant "cgr_XXXXXXXXXXXXXXXX"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ClientGrantArgs args: The arguments to use to populate this resource's properties.

@@ -27,6 +27,7 @@ class PagesArgs:
                  login: Optional[pulumi.Input['PagesLoginArgs']] = None):
         """
         The set of arguments for constructing a Pages resource.
+
         :param pulumi.Input['PagesChangePasswordArgs'] change_password: Configuration settings for customizing the Password Reset page.
         :param pulumi.Input['PagesErrorArgs'] error: Configuration settings for the Error pages.
         :param pulumi.Input['PagesGuardianMfaArgs'] guardian_mfa: Configuration settings for customizing the Guardian Multi-Factor Authentication page.
@@ -99,6 +100,7 @@ class _PagesState:
                  login: Optional[pulumi.Input['PagesLoginArgs']] = None):
         """
         Input properties used for looking up and filtering Pages resources.
+
         :param pulumi.Input['PagesChangePasswordArgs'] change_password: Configuration settings for customizing the Password Reset page.
         :param pulumi.Input['PagesErrorArgs'] error: Configuration settings for the Error pages.
         :param pulumi.Input['PagesGuardianMfaArgs'] guardian_mfa: Configuration settings for customizing the Guardian Multi-Factor Authentication page.
@@ -218,6 +220,7 @@ class Pages(pulumi.CustomResource):
         $ pulumi import auth0:index/pages:Pages my_pages "22f4f21b-017a-319d-92e7-2291c1ca36c4"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['PagesChangePasswordArgs', 'PagesChangePasswordArgsDict']] change_password: Configuration settings for customizing the Password Reset page.
@@ -275,6 +278,7 @@ class Pages(pulumi.CustomResource):
         ```sh
         $ pulumi import auth0:index/pages:Pages my_pages "22f4f21b-017a-319d-92e7-2291c1ca36c4"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PagesArgs args: The arguments to use to populate this resource's properties.

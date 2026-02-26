@@ -25,6 +25,7 @@ class OrganizationDiscoveryDomainsArgs:
                  organization_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a OrganizationDiscoveryDomains resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['OrganizationDiscoveryDomainsDiscoveryDomainArgs']]] discovery_domains: Discovery domains that are configured for the organization.
         :param pulumi.Input[_builtins.str] organization_id: ID of the organization on which to manage the discovery domains.
         """
@@ -63,6 +64,7 @@ class _OrganizationDiscoveryDomainsState:
                  organization_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OrganizationDiscoveryDomains resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['OrganizationDiscoveryDomainsDiscoveryDomainArgs']]] discovery_domains: Discovery domains that are configured for the organization.
         :param pulumi.Input[_builtins.str] organization_id: ID of the organization on which to manage the discovery domains.
         """
@@ -108,6 +110,7 @@ class OrganizationDiscoveryDomains(pulumi.CustomResource):
         """
         With this resource, you can manage discovery domains on an organization.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OrganizationDiscoveryDomainsDiscoveryDomainArgs', 'OrganizationDiscoveryDomainsDiscoveryDomainArgsDict']]]] discovery_domains: Discovery domains that are configured for the organization.
@@ -121,6 +124,7 @@ class OrganizationDiscoveryDomains(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         With this resource, you can manage discovery domains on an organization.
+
 
         :param str resource_name: The name of the resource.
         :param OrganizationDiscoveryDomainsArgs args: The arguments to use to populate this resource's properties.

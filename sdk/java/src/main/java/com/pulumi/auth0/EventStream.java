@@ -77,7 +77,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         final var webhookToken = config.get("webhookToken");
+ *         final var webhookToken = config.require("webhookToken");
  *         var myEventStreamWebhookSecure = new EventStream("myEventStreamWebhookSecure", EventStreamArgs.builder()
  *             .name("my-webhook-secure")
  *             .destinationType("webhook")

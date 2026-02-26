@@ -27,6 +27,7 @@ class NetworkAclArgs:
                  rule: pulumi.Input['NetworkAclRuleArgs']):
         """
         The set of arguments for constructing a NetworkAcl resource.
+
         :param pulumi.Input[_builtins.bool] active: Whether the Network ACL is active
         :param pulumi.Input[_builtins.str] description: The description of the Network ACL
         :param pulumi.Input[_builtins.int] priority: The priority of the Network ACL. Must be unique between 1 and 10.
@@ -95,6 +96,7 @@ class _NetworkAclState:
                  rule: Optional[pulumi.Input['NetworkAclRuleArgs']] = None):
         """
         Input properties used for looking up and filtering NetworkAcl resources.
+
         :param pulumi.Input[_builtins.bool] active: Whether the Network ACL is active
         :param pulumi.Input[_builtins.str] description: The description of the Network ACL
         :param pulumi.Input[_builtins.int] priority: The priority of the Network ACL. Must be unique between 1 and 10.
@@ -230,6 +232,7 @@ class NetworkAcl(pulumi.CustomResource):
         $ pulumi import auth0:index/networkAcl:NetworkAcl my_network_acl "167f9a50-4444-3333-1111-ndfdaf953ab4"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] active: Whether the Network ACL is active
@@ -303,6 +306,7 @@ class NetworkAcl(pulumi.CustomResource):
         ```sh
         $ pulumi import auth0:index/networkAcl:NetworkAcl my_network_acl "167f9a50-4444-3333-1111-ndfdaf953ab4"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NetworkAclArgs args: The arguments to use to populate this resource's properties.

@@ -29,6 +29,7 @@ class BrandingThemeArgs:
                  display_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a BrandingTheme resource.
+
         :param pulumi.Input[_builtins.str] display_name: The display name for the branding theme.
         """
         pulumi.set(__self__, "borders", borders)
@@ -108,6 +109,7 @@ class _BrandingThemeState:
                  widget: Optional[pulumi.Input['BrandingThemeWidgetArgs']] = None):
         """
         Input properties used for looking up and filtering BrandingTheme resources.
+
         :param pulumi.Input[_builtins.str] display_name: The display name for the branding theme.
         """
         if borders is not None:
@@ -207,6 +209,7 @@ class BrandingTheme(pulumi.CustomResource):
         $ pulumi import auth0:index/brandingTheme:BrandingTheme my_theme "XXXXXXXXXXXXXXXXXXXX"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] display_name: The display name for the branding theme.
@@ -229,6 +232,7 @@ class BrandingTheme(pulumi.CustomResource):
         ```sh
         $ pulumi import auth0:index/brandingTheme:BrandingTheme my_theme "XXXXXXXXXXXXXXXXXXXX"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BrandingThemeArgs args: The arguments to use to populate this resource's properties.

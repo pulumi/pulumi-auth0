@@ -28,6 +28,7 @@ class OrganizationArgs:
                  token_quota: Optional[pulumi.Input['OrganizationTokenQuotaArgs']] = None):
         """
         The set of arguments for constructing a Organization resource.
+
         :param pulumi.Input['OrganizationBrandingArgs'] branding: Defines how to style the login pages.
         :param pulumi.Input[_builtins.str] display_name: Friendly name of this organization.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Metadata associated with the organization. Maximum of 10 metadata properties allowed.
@@ -116,6 +117,7 @@ class _OrganizationState:
                  token_quota: Optional[pulumi.Input['OrganizationTokenQuotaArgs']] = None):
         """
         Input properties used for looking up and filtering Organization resources.
+
         :param pulumi.Input['OrganizationBrandingArgs'] branding: Defines how to style the login pages.
         :param pulumi.Input[_builtins.str] display_name: Friendly name of this organization.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Metadata associated with the organization. Maximum of 10 metadata properties allowed.
@@ -243,6 +245,7 @@ class Organization(pulumi.CustomResource):
         $ pulumi import auth0:index/organization:Organization my_organization "org_XXXXXXXXXXXXXX"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['OrganizationBrandingArgs', 'OrganizationBrandingArgsDict']] branding: Defines how to style the login pages.
@@ -293,6 +296,7 @@ class Organization(pulumi.CustomResource):
         ```sh
         $ pulumi import auth0:index/organization:Organization my_organization "org_XXXXXXXXXXXXXX"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param OrganizationArgs args: The arguments to use to populate this resource's properties.

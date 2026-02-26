@@ -23,6 +23,7 @@ class FlowArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Flow resource.
+
         :param pulumi.Input[_builtins.str] actions: Actions of the flow.
         :param pulumi.Input[_builtins.str] name: Name of the flow.
         """
@@ -63,6 +64,7 @@ class _FlowState:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Flow resources.
+
         :param pulumi.Input[_builtins.str] actions: Actions of the flow.
         :param pulumi.Input[_builtins.str] name: Name of the flow.
         """
@@ -147,6 +149,7 @@ class Flow(pulumi.CustomResource):
         $ pulumi import auth0:index/flow:Flow my_flow "af_4JwsAjokf6DpK8xJCkTRjK"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] actions: Actions of the flow.
@@ -199,6 +202,7 @@ class Flow(pulumi.CustomResource):
         ```sh
         $ pulumi import auth0:index/flow:Flow my_flow "af_4JwsAjokf6DpK8xJCkTRjK"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FlowArgs args: The arguments to use to populate this resource's properties.

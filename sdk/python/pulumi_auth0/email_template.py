@@ -30,6 +30,7 @@ class EmailTemplateArgs:
                  url_lifetime_in_seconds: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a EmailTemplate resource.
+
         :param pulumi.Input[_builtins.str] body: Body of the email template. You can include [common variables](https://auth0.com/docs/customize/email/email-templates#common-variables).
         :param pulumi.Input[_builtins.bool] enabled: Indicates whether the template is enabled.
         :param pulumi.Input[_builtins.str] from_: Email address to use as the sender. You can include [common variables](https://auth0.com/docs/customize/email/email-templates#common-variables).
@@ -176,6 +177,7 @@ class _EmailTemplateState:
                  url_lifetime_in_seconds: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering EmailTemplate resources.
+
         :param pulumi.Input[_builtins.str] body: Body of the email template. You can include [common variables](https://auth0.com/docs/customize/email/email-templates#common-variables).
         :param pulumi.Input[_builtins.bool] enabled: Indicates whether the template is enabled.
         :param pulumi.Input[_builtins.str] from_: Email address to use as the sender. You can include [common variables](https://auth0.com/docs/customize/email/email-templates#common-variables).
@@ -377,6 +379,7 @@ class EmailTemplate(pulumi.CustomResource):
         $ pulumi import auth0:index/emailTemplate:EmailTemplate my_email_template "welcome_email"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] body: Body of the email template. You can include [common variables](https://auth0.com/docs/customize/email/email-templates#common-variables).
@@ -441,6 +444,7 @@ class EmailTemplate(pulumi.CustomResource):
         ```sh
         $ pulumi import auth0:index/emailTemplate:EmailTemplate my_email_template "welcome_email"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EmailTemplateArgs args: The arguments to use to populate this resource's properties.

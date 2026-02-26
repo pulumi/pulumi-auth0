@@ -22,6 +22,7 @@ class CustomDomainVerificationInitArgs:
                  custom_domain_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a CustomDomainVerification resource.
+
         :param pulumi.Input[_builtins.str] custom_domain_id: ID of the custom domain resource.
         """
         pulumi.set(__self__, "custom_domain_id", custom_domain_id)
@@ -47,6 +48,7 @@ class _CustomDomainVerificationState:
                  origin_domain_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CustomDomainVerification resources.
+
         :param pulumi.Input[_builtins.str] cname_api_key: The value of the `cname-api-key` header to send when forwarding requests. Only present if the type of the custom domain is `self_managed_certs` and Terraform originally managed the domain's verification.
         :param pulumi.Input[_builtins.str] custom_domain_id: ID of the custom domain resource.
         :param pulumi.Input[_builtins.str] origin_domain_name: The DNS name of the Auth0 origin server that handles traffic for the custom domain.
@@ -138,6 +140,7 @@ class CustomDomainVerification(pulumi.CustomResource):
         $ pulumi import auth0:index/customDomainVerification:CustomDomainVerification my_custom_domain_verification "cd_XXXXXXXXXXXXXXXX"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] custom_domain_id: ID of the custom domain resource.
@@ -182,6 +185,7 @@ class CustomDomainVerification(pulumi.CustomResource):
         ```sh
         $ pulumi import auth0:index/customDomainVerification:CustomDomainVerification my_custom_domain_verification "cd_XXXXXXXXXXXXXXXX"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CustomDomainVerificationInitArgs args: The arguments to use to populate this resource's properties.

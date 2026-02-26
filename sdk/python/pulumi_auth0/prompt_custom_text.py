@@ -24,6 +24,7 @@ class PromptCustomTextArgs:
                  prompt: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a PromptCustomText resource.
+
         :param pulumi.Input[_builtins.str] body: JSON containing the custom texts. You can check the options for each prompt [here](https://auth0.com/docs/customize/universal-login-pages/customize-login-text-prompts#prompt-values).
         :param pulumi.Input[_builtins.str] language: Language of the custom text. Options include: `am`, `ar`, `ar-EG`, `ar-SA`, `az`, `bg`, `bn`, `bs`, `ca-ES`, `cnr`, `cs`, `cy`, `da`, `de`, `el`, `en`, `en-CA`, `es`, `es-419`, `es-AR`, `es-MX`, `et`, `eu-ES`, `fa`, `fi`, `fr`, `fr-CA`, `fr-FR`, `gl-ES`, `gu`, `he`, `hi`, `hr`, `hu`, `hy`, `id`, `is`, `it`, `ja`, `ka`, `kk`, `kn`, `ko`, `lt`, `lv`, `mk`, `ml`, `mn`, `mr`, `ms`, `my`, `nb`, `nl`, `nn`, `no`, `pa`, `pl`, `pt`, `pt-BR`, `pt-PT`, `ro`, `ru`, `sk`, `sl`, `so`, `sq`, `sr`, `sv`, `sw`, `ta`, `te`, `th`, `tl`, `tr`, `uk`, `ur`, `vi`, `zgh`, `zh-CN`, `zh-HK`, `zh-TW`.
         :param pulumi.Input[_builtins.str] prompt: The term `prompt` is used to refer to a specific step in the login flow. Options include: `login`, `login-id`, `login-password`, `login-passwordless`, `login-email-verification`, `signup`, `signup-id`, `signup-password`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `reset-password`, `custom-form`, `consent`, `customized-consent`, `logout`, `mfa-push`, `mfa-otp`, `mfa-voice`, `mfa-phone`, `mfa-webauthn`, `mfa-sms`, `mfa-email`, `mfa-recovery-code`, `mfa`, `status`, `device-flow`, `email-verification`, `email-otp-challenge`, `organizations`, `invitation`, `common`, `passkeys`, `captcha`, `brute-force-protection`.
@@ -77,6 +78,7 @@ class _PromptCustomTextState:
                  prompt: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PromptCustomText resources.
+
         :param pulumi.Input[_builtins.str] body: JSON containing the custom texts. You can check the options for each prompt [here](https://auth0.com/docs/customize/universal-login-pages/customize-login-text-prompts#prompt-values).
         :param pulumi.Input[_builtins.str] language: Language of the custom text. Options include: `am`, `ar`, `ar-EG`, `ar-SA`, `az`, `bg`, `bn`, `bs`, `ca-ES`, `cnr`, `cs`, `cy`, `da`, `de`, `el`, `en`, `en-CA`, `es`, `es-419`, `es-AR`, `es-MX`, `et`, `eu-ES`, `fa`, `fi`, `fr`, `fr-CA`, `fr-FR`, `gl-ES`, `gu`, `he`, `hi`, `hr`, `hu`, `hy`, `id`, `is`, `it`, `ja`, `ka`, `kk`, `kn`, `ko`, `lt`, `lv`, `mk`, `ml`, `mn`, `mr`, `ms`, `my`, `nb`, `nl`, `nn`, `no`, `pa`, `pl`, `pt`, `pt-BR`, `pt-PT`, `ro`, `ru`, `sk`, `sl`, `so`, `sq`, `sr`, `sv`, `sw`, `ta`, `te`, `th`, `tl`, `tr`, `uk`, `ur`, `vi`, `zgh`, `zh-CN`, `zh-HK`, `zh-TW`.
         :param pulumi.Input[_builtins.str] prompt: The term `prompt` is used to refer to a specific step in the login flow. Options include: `login`, `login-id`, `login-password`, `login-passwordless`, `login-email-verification`, `signup`, `signup-id`, `signup-password`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `reset-password`, `custom-form`, `consent`, `customized-consent`, `logout`, `mfa-push`, `mfa-otp`, `mfa-voice`, `mfa-phone`, `mfa-webauthn`, `mfa-sms`, `mfa-email`, `mfa-recovery-code`, `mfa`, `status`, `device-flow`, `email-verification`, `email-otp-challenge`, `organizations`, `invitation`, `common`, `passkeys`, `captcha`, `brute-force-protection`.
@@ -185,6 +187,7 @@ class PromptCustomText(pulumi.CustomResource):
         $ pulumi import auth0:index/promptCustomText:PromptCustomText example "login::en"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] body: JSON containing the custom texts. You can check the options for each prompt [here](https://auth0.com/docs/customize/universal-login-pages/customize-login-text-prompts#prompt-values).
@@ -246,6 +249,7 @@ class PromptCustomText(pulumi.CustomResource):
         ```sh
         $ pulumi import auth0:index/promptCustomText:PromptCustomText example "login::en"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PromptCustomTextArgs args: The arguments to use to populate this resource's properties.

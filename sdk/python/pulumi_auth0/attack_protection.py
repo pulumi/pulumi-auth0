@@ -28,6 +28,7 @@ class AttackProtectionArgs:
                  suspicious_ip_throttling: Optional[pulumi.Input['AttackProtectionSuspiciousIpThrottlingArgs']] = None):
         """
         The set of arguments for constructing a AttackProtection resource.
+
         :param pulumi.Input['AttackProtectionBotDetectionArgs'] bot_detection: Bot detection configuration to identify and prevent automated threats.
         :param pulumi.Input['AttackProtectionBreachedPasswordDetectionArgs'] breached_password_detection: Breached password detection protects your applications from bad actors logging in with stolen credentials.
         :param pulumi.Input['AttackProtectionBruteForceProtectionArgs'] brute_force_protection: Brute-force protection safeguards against a single IP address attacking a single user account.
@@ -116,6 +117,7 @@ class _AttackProtectionState:
                  suspicious_ip_throttling: Optional[pulumi.Input['AttackProtectionSuspiciousIpThrottlingArgs']] = None):
         """
         Input properties used for looking up and filtering AttackProtection resources.
+
         :param pulumi.Input['AttackProtectionBotDetectionArgs'] bot_detection: Bot detection configuration to identify and prevent automated threats.
         :param pulumi.Input['AttackProtectionBreachedPasswordDetectionArgs'] breached_password_detection: Breached password detection protects your applications from bad actors logging in with stolen credentials.
         :param pulumi.Input['AttackProtectionBruteForceProtectionArgs'] brute_force_protection: Brute-force protection safeguards against a single IP address attacking a single user account.
@@ -362,6 +364,7 @@ class AttackProtection(pulumi.CustomResource):
         $ pulumi import auth0:index/attackProtection:AttackProtection my_protection "24940d4b-4bd4-44e7-894e-f92e4de36a40"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['AttackProtectionBotDetectionArgs', 'AttackProtectionBotDetectionArgsDict']] bot_detection: Bot detection configuration to identify and prevent automated threats.
@@ -531,6 +534,7 @@ class AttackProtection(pulumi.CustomResource):
         ```sh
         $ pulumi import auth0:index/attackProtection:AttackProtection my_protection "24940d4b-4bd4-44e7-894e-f92e4de36a40"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AttackProtectionArgs args: The arguments to use to populate this resource's properties.

@@ -25,6 +25,7 @@ class OrganizationConnectionsArgs:
                  organization_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a OrganizationConnections resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['OrganizationConnectionsEnabledConnectionArgs']]] enabled_connections: Connections that are enabled for the organization.
         :param pulumi.Input[_builtins.str] organization_id: ID of the organization on which to enable the connections.
         """
@@ -63,6 +64,7 @@ class _OrganizationConnectionsState:
                  organization_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OrganizationConnections resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['OrganizationConnectionsEnabledConnectionArgs']]] enabled_connections: Connections that are enabled for the organization.
         :param pulumi.Input[_builtins.str] organization_id: ID of the organization on which to enable the connections.
         """
@@ -156,6 +158,7 @@ class OrganizationConnections(pulumi.CustomResource):
         $ pulumi import auth0:index/organizationConnections:OrganizationConnections my_org_conns "org_XXXXX"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OrganizationConnectionsEnabledConnectionArgs', 'OrganizationConnectionsEnabledConnectionArgsDict']]]] enabled_connections: Connections that are enabled for the organization.
@@ -217,6 +220,7 @@ class OrganizationConnections(pulumi.CustomResource):
         ```sh
         $ pulumi import auth0:index/organizationConnections:OrganizationConnections my_org_conns "org_XXXXX"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param OrganizationConnectionsArgs args: The arguments to use to populate this resource's properties.
