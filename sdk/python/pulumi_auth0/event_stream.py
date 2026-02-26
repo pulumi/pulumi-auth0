@@ -28,6 +28,7 @@ class EventStreamArgs:
                  webhook_configuration: Optional[pulumi.Input['EventStreamWebhookConfigurationArgs']] = None):
         """
         The set of arguments for constructing a EventStream resource.
+
         :param pulumi.Input[_builtins.str] destination_type: The type of event stream destination (either 'eventbridge' or 'webhook').
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] subscriptions: List of event types this stream is subscribed to.
         :param pulumi.Input['EventStreamEventbridgeConfigurationArgs'] eventbridge_configuration: Configuration for the EventBridge destination. This block is only applicable when `destination_type` is set to `eventbridge`. EventBridge configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
@@ -117,6 +118,7 @@ class _EventStreamState:
                  webhook_configuration: Optional[pulumi.Input['EventStreamWebhookConfigurationArgs']] = None):
         """
         Input properties used for looking up and filtering EventStream resources.
+
         :param pulumi.Input[_builtins.str] created_at: The ISO 8601 timestamp when the stream was created.
         :param pulumi.Input[_builtins.str] destination_type: The type of event stream destination (either 'eventbridge' or 'webhook').
         :param pulumi.Input['EventStreamEventbridgeConfigurationArgs'] eventbridge_configuration: Configuration for the EventBridge destination. This block is only applicable when `destination_type` is set to `eventbridge`. EventBridge configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
@@ -318,6 +320,7 @@ class EventStream(pulumi.CustomResource):
         $ pulumi import auth0:index/eventStream:EventStream my_stream "est_XXXXXXXXXXXXXXXX"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] destination_type: The type of event stream destination (either 'eventbridge' or 'webhook').
@@ -397,6 +400,7 @@ class EventStream(pulumi.CustomResource):
         ```sh
         $ pulumi import auth0:index/eventStream:EventStream my_stream "est_XXXXXXXXXXXXXXXX"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EventStreamArgs args: The arguments to use to populate this resource's properties.

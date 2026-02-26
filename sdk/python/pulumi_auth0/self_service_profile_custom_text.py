@@ -25,6 +25,7 @@ class SelfServiceProfileCustomTextArgs:
                  sso_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a SelfServiceProfileCustomText resource.
+
         :param pulumi.Input[_builtins.str] body: The list of text keys and values to customize the self-service SSO page. Values can be plain text or rich HTML content limited to basic styling tags and hyperlinks
         :param pulumi.Input[_builtins.str] language: The language of the custom text
         :param pulumi.Input[_builtins.str] page: The page where the custom text is shown
@@ -93,6 +94,7 @@ class _SelfServiceProfileCustomTextState:
                  sso_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SelfServiceProfileCustomText resources.
+
         :param pulumi.Input[_builtins.str] body: The list of text keys and values to customize the self-service SSO page. Values can be plain text or rich HTML content limited to basic styling tags and hyperlinks
         :param pulumi.Input[_builtins.str] language: The language of the custom text
         :param pulumi.Input[_builtins.str] page: The page where the custom text is shown
@@ -198,6 +200,7 @@ class SelfServiceProfileCustomText(pulumi.CustomResource):
         $ pulumi import auth0:index/selfServiceProfileCustomText:SelfServiceProfileCustomText example "some-sso-id::en::get-started"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] body: The list of text keys and values to customize the self-service SSO page. Values can be plain text or rich HTML content limited to basic styling tags and hyperlinks
@@ -241,6 +244,7 @@ class SelfServiceProfileCustomText(pulumi.CustomResource):
         ```sh
         $ pulumi import auth0:index/selfServiceProfileCustomText:SelfServiceProfileCustomText example "some-sso-id::en::get-started"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SelfServiceProfileCustomTextArgs args: The arguments to use to populate this resource's properties.

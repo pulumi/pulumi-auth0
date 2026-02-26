@@ -28,6 +28,7 @@ class EmailProviderArgs:
                  settings: Optional[pulumi.Input['EmailProviderSettingsArgs']] = None):
         """
         The set of arguments for constructing a EmailProvider resource.
+
         :param pulumi.Input['EmailProviderCredentialsArgs'] credentials: Configuration settings for the credentials for the email provider.
         :param pulumi.Input[_builtins.str] default_from_address: Email address to use as the sender when no other "from" address is specified.
         :param pulumi.Input[_builtins.bool] enabled: Indicates whether the email provider is enabled.
@@ -114,6 +115,7 @@ class _EmailProviderState:
                  settings: Optional[pulumi.Input['EmailProviderSettingsArgs']] = None):
         """
         Input properties used for looking up and filtering EmailProvider resources.
+
         :param pulumi.Input['EmailProviderCredentialsArgs'] credentials: Configuration settings for the credentials for the email provider.
         :param pulumi.Input[_builtins.str] default_from_address: Email address to use as the sender when no other "from" address is specified.
         :param pulumi.Input[_builtins.bool] enabled: Indicates whether the email provider is enabled.
@@ -308,6 +310,7 @@ class EmailProvider(pulumi.CustomResource):
         $ pulumi import auth0:index/emailProvider:EmailProvider my_email_provider "b4213dc2-2eed-42c3-9516-c6131a9ce0b0"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['EmailProviderCredentialsArgs', 'EmailProviderCredentialsArgsDict']] credentials: Configuration settings for the credentials for the email provider.
@@ -425,6 +428,7 @@ class EmailProvider(pulumi.CustomResource):
         ```sh
         $ pulumi import auth0:index/emailProvider:EmailProvider my_email_provider "b4213dc2-2eed-42c3-9516-c6131a9ce0b0"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EmailProviderArgs args: The arguments to use to populate this resource's properties.

@@ -23,6 +23,7 @@ class RuleConfigArgs:
                  value: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a RuleConfig resource.
+
         :param pulumi.Input[_builtins.str] key: Key for a rules configuration variable.
         :param pulumi.Input[_builtins.str] value: Value for a rules configuration variable.
         """
@@ -61,6 +62,7 @@ class _RuleConfigState:
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RuleConfig resources.
+
         :param pulumi.Input[_builtins.str] key: Key for a rules configuration variable.
         :param pulumi.Input[_builtins.str] value: Value for a rules configuration variable.
         """
@@ -134,6 +136,7 @@ class RuleConfig(pulumi.CustomResource):
         $ pulumi import auth0:index/ruleConfig:RuleConfig my_rule_config "foo"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] key: Key for a rules configuration variable.
@@ -175,6 +178,7 @@ class RuleConfig(pulumi.CustomResource):
         ```sh
         $ pulumi import auth0:index/ruleConfig:RuleConfig my_rule_config "foo"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RuleConfigArgs args: The arguments to use to populate this resource's properties.

@@ -23,6 +23,7 @@ class ConnectionScimTokenArgs:
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ConnectionScimToken resource.
+
         :param pulumi.Input[_builtins.str] connection_id: ID of the connection for this SCIM token.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The scopes associated with the SCIM token.
         """
@@ -65,6 +66,7 @@ class _ConnectionScimTokenState:
                  token_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ConnectionScimToken resources.
+
         :param pulumi.Input[_builtins.str] connection_id: ID of the connection for this SCIM token.
         :param pulumi.Input[_builtins.str] created_at: The date and time when the token was created (ISO8601 format).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The scopes associated with the SCIM token.
@@ -205,6 +207,7 @@ class ConnectionScimToken(pulumi.CustomResource):
             opts = pulumi.ResourceOptions(depends_on=[my_scim_config]))
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] connection_id: ID of the connection for this SCIM token.
@@ -268,6 +271,7 @@ class ConnectionScimToken(pulumi.CustomResource):
             ],
             opts = pulumi.ResourceOptions(depends_on=[my_scim_config]))
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ConnectionScimTokenArgs args: The arguments to use to populate this resource's properties.

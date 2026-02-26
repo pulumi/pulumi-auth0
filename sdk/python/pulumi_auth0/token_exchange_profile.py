@@ -25,6 +25,7 @@ class TokenExchangeProfileArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TokenExchangeProfile resource.
+
         :param pulumi.Input[_builtins.str] action_id: Unique identifier of the Action
         :param pulumi.Input[_builtins.str] name: Name of the token exchange profile.
         :param pulumi.Input[_builtins.str] subject_token_type: Type of the subject token
@@ -99,6 +100,7 @@ class _TokenExchangeProfileState:
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TokenExchangeProfile resources.
+
         :param pulumi.Input[_builtins.str] action_id: Unique identifier of the Action
         :param pulumi.Input[_builtins.str] created_at: The ISO 8601 formatted date the credential was created.
         :param pulumi.Input[_builtins.str] name: Name of the token exchange profile.
@@ -242,6 +244,7 @@ class TokenExchangeProfile(pulumi.CustomResource):
         $ pulumi import auth0:index/tokenExchangeProfile:TokenExchangeProfile profile "tep_XXXXXXXXXXXXXX"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] action_id: Unique identifier of the Action
@@ -293,6 +296,7 @@ class TokenExchangeProfile(pulumi.CustomResource):
         ```sh
         $ pulumi import auth0:index/tokenExchangeProfile:TokenExchangeProfile profile "tep_XXXXXXXXXXXXXX"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TokenExchangeProfileArgs args: The arguments to use to populate this resource's properties.

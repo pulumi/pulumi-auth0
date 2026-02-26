@@ -26,6 +26,7 @@ class ConnectionScimConfigurationArgs:
                  user_id_attribute: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ConnectionScimConfiguration resource.
+
         :param pulumi.Input[_builtins.str] connection_id: ID of the connection for this SCIM configuration.
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionScimConfigurationMappingArgs']]] mappings: Mapping between Auth0 attributes and SCIM attributes. If `user_id_attribute` is set, `mapping` must be set as well.
         :param pulumi.Input[_builtins.str] user_id_attribute: User ID attribute for generation unique of user ids. If `user_id_attribute` is set, `mapping` must be set as well. Defaults to `userName` for SAML connections and `externalId` for OIDC connections.
@@ -84,6 +85,7 @@ class _ConnectionScimConfigurationState:
                  user_id_attribute: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ConnectionScimConfiguration resources.
+
         :param pulumi.Input[_builtins.str] connection_id: ID of the connection for this SCIM configuration.
         :param pulumi.Input[_builtins.str] connection_name: Name of the connection for this SCIM configuration.
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionScimConfigurationMappingArgs']]] mappings: Mapping between Auth0 attributes and SCIM attributes. If `user_id_attribute` is set, `mapping` must be set as well.
@@ -250,6 +252,7 @@ class ConnectionScimConfiguration(pulumi.CustomResource):
         $ pulumi import auth0:index/connectionScimConfiguration:ConnectionScimConfiguration my_conn_scim_conf "con_XXXXX"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] connection_id: ID of the connection for this SCIM configuration.
@@ -324,6 +327,7 @@ class ConnectionScimConfiguration(pulumi.CustomResource):
         ```sh
         $ pulumi import auth0:index/connectionScimConfiguration:ConnectionScimConfiguration my_conn_scim_conf "con_XXXXX"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ConnectionScimConfigurationArgs args: The arguments to use to populate this resource's properties.

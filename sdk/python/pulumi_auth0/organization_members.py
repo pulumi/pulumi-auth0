@@ -23,6 +23,7 @@ class OrganizationMembersArgs:
                  organization_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a OrganizationMembers resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] members: Add user ID(s) directly from the tenant to become members of the organization.
         :param pulumi.Input[_builtins.str] organization_id: The ID of the organization to assign the members to.
         """
@@ -61,6 +62,7 @@ class _OrganizationMembersState:
                  organization_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OrganizationMembers resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] members: Add user ID(s) directly from the tenant to become members of the organization.
         :param pulumi.Input[_builtins.str] organization_id: The ID of the organization to assign the members to.
         """
@@ -146,6 +148,7 @@ class OrganizationMembers(pulumi.CustomResource):
         $ pulumi import auth0:index/organizationMembers:OrganizationMembers my_org_members "org_XXXXX"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] members: Add user ID(s) directly from the tenant to become members of the organization.
@@ -199,6 +202,7 @@ class OrganizationMembers(pulumi.CustomResource):
         ```sh
         $ pulumi import auth0:index/organizationMembers:OrganizationMembers my_org_members "org_XXXXX"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param OrganizationMembersArgs args: The arguments to use to populate this resource's properties.

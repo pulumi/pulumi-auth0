@@ -25,6 +25,7 @@ class RuleArgs:
                  order: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a Rule resource.
+
         :param pulumi.Input[_builtins.str] script: Code to be executed when the rule runs.
         :param pulumi.Input[_builtins.bool] enabled: Indicates whether the rule is enabled.
         :param pulumi.Input[_builtins.str] name: Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
@@ -96,6 +97,7 @@ class _RuleState:
                  script: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Rule resources.
+
         :param pulumi.Input[_builtins.bool] enabled: Indicates whether the rule is enabled.
         :param pulumi.Input[_builtins.str] name: Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
         :param pulumi.Input[_builtins.int] order: Order in which the rule executes relative to other rules. Lower-valued rules execute first.
@@ -200,6 +202,7 @@ class Rule(pulumi.CustomResource):
         $ pulumi import auth0:index/rule:Rule my_rule "rul_XXXXXXXXXXXXX"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] enabled: Indicates whether the rule is enabled.
@@ -242,6 +245,7 @@ class Rule(pulumi.CustomResource):
         ```sh
         $ pulumi import auth0:index/rule:Rule my_rule "rul_XXXXXXXXXXXXX"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RuleArgs args: The arguments to use to populate this resource's properties.

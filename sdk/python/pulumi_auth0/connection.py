@@ -33,6 +33,7 @@ class ConnectionArgs:
                  show_as_button: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Connection resource.
+
         :param pulumi.Input[_builtins.str] strategy: Type of the connection, which indicates the identity provider.
         :param pulumi.Input['ConnectionAuthenticationArgs'] authentication: Configure the purpose of a connection to be used for authentication during login.
         :param pulumi.Input['ConnectionConnectedAccountsArgs'] connected_accounts: Configure the purpose of a connection to be used for connected accounts and Token Vault.
@@ -200,6 +201,7 @@ class _ConnectionState:
                  strategy: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Connection resources.
+
         :param pulumi.Input['ConnectionAuthenticationArgs'] authentication: Configure the purpose of a connection to be used for authentication during login.
         :param pulumi.Input['ConnectionConnectedAccountsArgs'] connected_accounts: Configure the purpose of a connection to be used for connected accounts and Token Vault.
         :param pulumi.Input[_builtins.str] display_name: Name used in login screen.
@@ -1078,6 +1080,7 @@ class Connection(pulumi.CustomResource):
         $ pulumi import auth0:index/connection:Connection google "con_a17f21fdb24d48a0"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ConnectionAuthenticationArgs', 'ConnectionAuthenticationArgsDict']] authentication: Configure the purpose of a connection to be used for authentication during login.
@@ -1804,6 +1807,7 @@ class Connection(pulumi.CustomResource):
         ```sh
         $ pulumi import auth0:index/connection:Connection google "con_a17f21fdb24d48a0"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ConnectionArgs args: The arguments to use to populate this resource's properties.

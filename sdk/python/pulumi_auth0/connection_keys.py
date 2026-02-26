@@ -23,6 +23,7 @@ class ConnectionKeysArgs:
                  triggers: pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]):
         """
         The set of arguments for constructing a ConnectionKeys resource.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] triggers: This is an arbitrary map, which when edited shall perform rotation of keys for the corresponding connection. It can host keys like version, timestamp of last rotation etc.The field has no association with API
         """
         pulumi.set(__self__, "connection_id", connection_id)
@@ -69,6 +70,7 @@ class _ConnectionKeysState:
                  triggers: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ConnectionKeys resources.
+
         :param pulumi.Input[_builtins.str] algorithm: The signing key algorithm.
         :param pulumi.Input[_builtins.str] cert: The public certificate of the signing key.
         :param pulumi.Input[_builtins.bool] current: True if the key is the current key.
@@ -327,6 +329,7 @@ class ConnectionKeys(pulumi.CustomResource):
             })
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] triggers: This is an arbitrary map, which when edited shall perform rotation of keys for the corresponding connection. It can host keys like version, timestamp of last rotation etc.The field has no association with API
@@ -376,6 +379,7 @@ class ConnectionKeys(pulumi.CustomResource):
                 "date": "2023-10-01T00:00:00Z",
             })
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ConnectionKeysArgs args: The arguments to use to populate this resource's properties.

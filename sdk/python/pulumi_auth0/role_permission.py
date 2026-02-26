@@ -24,6 +24,7 @@ class RolePermissionArgs:
                  role_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a RolePermission resource.
+
         :param pulumi.Input[_builtins.str] permission: Name of the permission.
         :param pulumi.Input[_builtins.str] resource_server_identifier: Identifier of the resource server that the permission is associated with.
         :param pulumi.Input[_builtins.str] role_id: ID of the role to associate the permission to.
@@ -79,6 +80,7 @@ class _RolePermissionState:
                  role_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RolePermission resources.
+
         :param pulumi.Input[_builtins.str] description: Description of the permission.
         :param pulumi.Input[_builtins.str] permission: Name of the permission.
         :param pulumi.Input[_builtins.str] resource_server_identifier: Identifier of the resource server that the permission is associated with.
@@ -223,6 +225,7 @@ class RolePermission(pulumi.CustomResource):
         $ pulumi import auth0:index/rolePermission:RolePermission permission "rol_XXXXXXXXXXXXX::https://example.com::read:foo"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] permission: Name of the permission.
@@ -290,6 +293,7 @@ class RolePermission(pulumi.CustomResource):
         ```sh
         $ pulumi import auth0:index/rolePermission:RolePermission permission "rol_XXXXXXXXXXXXX::https://example.com::read:foo"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RolePermissionArgs args: The arguments to use to populate this resource's properties.

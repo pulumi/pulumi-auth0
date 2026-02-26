@@ -26,6 +26,7 @@ class UserAttributeProfileArgs:
                  user_id: Optional[pulumi.Input['UserAttributeProfileUserIdArgs']] = None):
         """
         The set of arguments for constructing a UserAttributeProfile resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['UserAttributeProfileUserAttributeArgs']]] user_attributes: List of user attribute configurations.
         :param pulumi.Input[_builtins.str] name: The name of the User Attribute Profile.
         :param pulumi.Input['UserAttributeProfileUserIdArgs'] user_id: Configuration for mapping the user ID from identity providers.
@@ -81,6 +82,7 @@ class _UserAttributeProfileState:
                  user_id: Optional[pulumi.Input['UserAttributeProfileUserIdArgs']] = None):
         """
         Input properties used for looking up and filtering UserAttributeProfile resources.
+
         :param pulumi.Input[_builtins.str] name: The name of the User Attribute Profile.
         :param pulumi.Input[Sequence[pulumi.Input['UserAttributeProfileUserAttributeArgs']]] user_attributes: List of user attribute configurations.
         :param pulumi.Input['UserAttributeProfileUserIdArgs'] user_id: Configuration for mapping the user ID from identity providers.
@@ -144,6 +146,7 @@ class UserAttributeProfile(pulumi.CustomResource):
 
         > This resource is only available for [EA](https://auth0.com/docs/troubleshoot/product-lifecycle/product-release-stages#early-access) users.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: The name of the User Attribute Profile.
@@ -160,6 +163,7 @@ class UserAttributeProfile(pulumi.CustomResource):
         With this resource, you can manage User Attribute Profiles within Auth0. User Attribute Profiles allow you to define how user attributes are mapped between different identity providers and Auth0.
 
         > This resource is only available for [EA](https://auth0.com/docs/troubleshoot/product-lifecycle/product-release-stages#early-access) users.
+
 
         :param str resource_name: The name of the resource.
         :param UserAttributeProfileArgs args: The arguments to use to populate this resource's properties.

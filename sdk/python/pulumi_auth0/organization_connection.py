@@ -26,6 +26,7 @@ class OrganizationConnectionArgs:
                  show_as_button: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a OrganizationConnection resource.
+
         :param pulumi.Input[_builtins.str] connection_id: The ID of the connection to enable for the organization.
         :param pulumi.Input[_builtins.str] organization_id: The ID of the organization to enable the connection for.
         :param pulumi.Input[_builtins.bool] assign_membership_on_login: When `true`, all users that log in with this connection will be automatically granted membership in the organization. When `false`, users must be granted membership in the organization before logging in with this connection.
@@ -114,6 +115,7 @@ class _OrganizationConnectionState:
                  strategy: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OrganizationConnection resources.
+
         :param pulumi.Input[_builtins.bool] assign_membership_on_login: When `true`, all users that log in with this connection will be automatically granted membership in the organization. When `false`, users must be granted membership in the organization before logging in with this connection.
         :param pulumi.Input[_builtins.str] connection_id: The ID of the connection to enable for the organization.
         :param pulumi.Input[_builtins.bool] is_signup_enabled: Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `is_signup_enabled` can only be `true` if `assign_membership_on_login` is `true`.
@@ -274,6 +276,7 @@ class OrganizationConnection(pulumi.CustomResource):
         $ pulumi import auth0:index/organizationConnection:OrganizationConnection my_org_conn "org_XXXXX::con_XXXXX"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] assign_membership_on_login: When `true`, all users that log in with this connection will be automatically granted membership in the organization. When `false`, users must be granted membership in the organization before logging in with this connection.
@@ -327,6 +330,7 @@ class OrganizationConnection(pulumi.CustomResource):
         ```sh
         $ pulumi import auth0:index/organizationConnection:OrganizationConnection my_org_conn "org_XXXXX::con_XXXXX"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param OrganizationConnectionArgs args: The arguments to use to populate this resource's properties.

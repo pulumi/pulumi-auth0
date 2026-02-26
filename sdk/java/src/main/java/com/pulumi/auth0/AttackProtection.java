@@ -117,8 +117,8 @@ import javax.annotation.Nullable;
  *         // ============================================================================
  *         // CAPTCHA PROVIDER EXAMPLES - One per Provider
  *         // ============================================================================
- *         final var recaptchaV2SiteKey = config.get("recaptchaV2SiteKey");
- *         final var recaptchaV2Secret = config.get("recaptchaV2Secret");
+ *         final var recaptchaV2SiteKey = config.require("recaptchaV2SiteKey");
+ *         final var recaptchaV2Secret = config.require("recaptchaV2Secret");
  *         // Example 1: reCAPTCHA v2
  *         var captchaRecaptchaV2 = new AttackProtection("captchaRecaptchaV2", AttackProtectionArgs.builder()
  *             .captcha(AttackProtectionCaptchaArgs.builder()
@@ -130,9 +130,9 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         final var recaptchaEnterpriseSiteKey = config.get("recaptchaEnterpriseSiteKey");
- *         final var recaptchaEnterpriseApiKey = config.get("recaptchaEnterpriseApiKey");
- *         final var recaptchaEnterpriseProjectId = config.get("recaptchaEnterpriseProjectId");
+ *         final var recaptchaEnterpriseSiteKey = config.require("recaptchaEnterpriseSiteKey");
+ *         final var recaptchaEnterpriseApiKey = config.require("recaptchaEnterpriseApiKey");
+ *         final var recaptchaEnterpriseProjectId = config.require("recaptchaEnterpriseProjectId");
  *         // Example 2: reCAPTCHA Enterprise
  *         var captchaRecaptchaEnterprise = new AttackProtection("captchaRecaptchaEnterprise", AttackProtectionArgs.builder()
  *             .captcha(AttackProtectionCaptchaArgs.builder()
@@ -145,8 +145,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         final var hcaptchaSiteKey = config.get("hcaptchaSiteKey");
- *         final var hcaptchaSecret = config.get("hcaptchaSecret");
+ *         final var hcaptchaSiteKey = config.require("hcaptchaSiteKey");
+ *         final var hcaptchaSecret = config.require("hcaptchaSecret");
  *         // Example 3: hCaptcha
  *         var captchaHcaptcha = new AttackProtection("captchaHcaptcha", AttackProtectionArgs.builder()
  *             .captcha(AttackProtectionCaptchaArgs.builder()
@@ -158,8 +158,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         final var friendlyCaptchaSiteKey = config.get("friendlyCaptchaSiteKey");
- *         final var friendlyCaptchaSecret = config.get("friendlyCaptchaSecret");
+ *         final var friendlyCaptchaSiteKey = config.require("friendlyCaptchaSiteKey");
+ *         final var friendlyCaptchaSecret = config.require("friendlyCaptchaSecret");
  *         // Example 4: Friendly Captcha
  *         var captchaFriendlyCaptcha = new AttackProtection("captchaFriendlyCaptcha", AttackProtectionArgs.builder()
  *             .captcha(AttackProtectionCaptchaArgs.builder()
@@ -171,8 +171,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         final var arkoseSiteKey = config.get("arkoseSiteKey");
- *         final var arkoseSecret = config.get("arkoseSecret");
+ *         final var arkoseSiteKey = config.require("arkoseSiteKey");
+ *         final var arkoseSecret = config.require("arkoseSecret");
  *         // Example 5: Arkose Labs
  *         var captchaArkose = new AttackProtection("captchaArkose", AttackProtectionArgs.builder()
  *             .captcha(AttackProtectionCaptchaArgs.builder()

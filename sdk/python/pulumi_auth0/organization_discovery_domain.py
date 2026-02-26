@@ -25,6 +25,7 @@ class OrganizationDiscoveryDomainArgs:
                  use_for_organization_discovery: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a OrganizationDiscoveryDomain resource.
+
         :param pulumi.Input[_builtins.str] domain: The domain name for organization discovery.
         :param pulumi.Input[_builtins.str] organization_id: The ID of the organization.
         :param pulumi.Input[_builtins.str] status: Verification status. Must be either 'pending' or 'verified'.
@@ -96,6 +97,7 @@ class _OrganizationDiscoveryDomainState:
                  verification_txt: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OrganizationDiscoveryDomain resources.
+
         :param pulumi.Input[_builtins.str] domain: The domain name for organization discovery.
         :param pulumi.Input[_builtins.str] organization_id: The ID of the organization.
         :param pulumi.Input[_builtins.str] status: Verification status. Must be either 'pending' or 'verified'.
@@ -203,6 +205,7 @@ class OrganizationDiscoveryDomain(pulumi.CustomResource):
         """
         Manage organization discovery domains for Home Realm Discovery. These domains help automatically route users to the correct organization based on their email domain.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] domain: The domain name for organization discovery.
@@ -218,6 +221,7 @@ class OrganizationDiscoveryDomain(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manage organization discovery domains for Home Realm Discovery. These domains help automatically route users to the correct organization based on their email domain.
+
 
         :param str resource_name: The name of the resource.
         :param OrganizationDiscoveryDomainArgs args: The arguments to use to populate this resource's properties.

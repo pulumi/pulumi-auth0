@@ -29,6 +29,7 @@ class SelfServiceProfileArgs:
                  user_attributes: Optional[pulumi.Input[Sequence[pulumi.Input['SelfServiceProfileUserAttributeArgs']]]] = None):
         """
         The set of arguments for constructing a SelfServiceProfile resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_strategies: List of IdP strategies that will be shown to users during the Self-Service SSO flow. Valid values are: oidc, samlp, waad, google-apps, adfs, okta, keycloak-samlp, pingfederate, auth0-samlp, okta-samlp.
         :param pulumi.Input['SelfServiceProfileBrandingArgs'] branding: Field can be used to customize the look and feel of the wizard.
         :param pulumi.Input[_builtins.str] description: The description of the self-service Profile
@@ -135,6 +136,7 @@ class _SelfServiceProfileState:
                  user_attributes: Optional[pulumi.Input[Sequence[pulumi.Input['SelfServiceProfileUserAttributeArgs']]]] = None):
         """
         Input properties used for looking up and filtering SelfServiceProfile resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_strategies: List of IdP strategies that will be shown to users during the Self-Service SSO flow. Valid values are: oidc, samlp, waad, google-apps, adfs, okta, keycloak-samlp, pingfederate, auth0-samlp, okta-samlp.
         :param pulumi.Input['SelfServiceProfileBrandingArgs'] branding: Field can be used to customize the look and feel of the wizard.
         :param pulumi.Input[_builtins.str] created_at: The ISO 8601 formatted date the profile was created.
@@ -305,6 +307,7 @@ class SelfServiceProfile(pulumi.CustomResource):
         $ pulumi import auth0:index/selfServiceProfile:SelfServiceProfile id "ssp_32oi5unksja93124"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_strategies: List of IdP strategies that will be shown to users during the Self-Service SSO flow. Valid values are: oidc, samlp, waad, google-apps, adfs, okta, keycloak-samlp, pingfederate, auth0-samlp, okta-samlp.
@@ -353,6 +356,7 @@ class SelfServiceProfile(pulumi.CustomResource):
         ```sh
         $ pulumi import auth0:index/selfServiceProfile:SelfServiceProfile id "ssp_32oi5unksja93124"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SelfServiceProfileArgs args: The arguments to use to populate this resource's properties.

@@ -23,6 +23,7 @@ class OrganizationClientGrantArgs:
                  organization_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a OrganizationClientGrant resource.
+
         :param pulumi.Input[_builtins.str] grant_id: A Client Grant ID to add to the organization.
         :param pulumi.Input[_builtins.str] organization_id: The ID of the organization to associate the client grant.
         """
@@ -61,6 +62,7 @@ class _OrganizationClientGrantState:
                  organization_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OrganizationClientGrant resources.
+
         :param pulumi.Input[_builtins.str] grant_id: A Client Grant ID to add to the organization.
         :param pulumi.Input[_builtins.str] organization_id: The ID of the organization to associate the client grant.
         """
@@ -165,6 +167,7 @@ class OrganizationClientGrant(pulumi.CustomResource):
         $ pulumi import auth0:index/organizationClientGrant:OrganizationClientGrant my_org_client_grant "org_XXXXX::cgr_XXXXX"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] grant_id: A Client Grant ID to add to the organization.
@@ -237,6 +240,7 @@ class OrganizationClientGrant(pulumi.CustomResource):
         ```sh
         $ pulumi import auth0:index/organizationClientGrant:OrganizationClientGrant my_org_client_grant "org_XXXXX::cgr_XXXXX"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param OrganizationClientGrantArgs args: The arguments to use to populate this resource's properties.

@@ -24,6 +24,7 @@ class TriggerActionArgs:
                  display_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TriggerAction resource.
+
         :param pulumi.Input[_builtins.str] action_id: The ID of the action to bind to the trigger.
         :param pulumi.Input[_builtins.str] trigger: The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-email-provider`, `custom-phone-provider`.
         :param pulumi.Input[_builtins.str] display_name: The name for this action within the trigger. This can be useful for distinguishing between multiple instances of the same action bound to a trigger. Defaults to action name when not provided.
@@ -78,6 +79,7 @@ class _TriggerActionState:
                  trigger: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TriggerAction resources.
+
         :param pulumi.Input[_builtins.str] action_id: The ID of the action to bind to the trigger.
         :param pulumi.Input[_builtins.str] display_name: The name for this action within the trigger. This can be useful for distinguishing between multiple instances of the same action bound to a trigger. Defaults to action name when not provided.
         :param pulumi.Input[_builtins.str] trigger: The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-email-provider`, `custom-phone-provider`.
@@ -179,6 +181,7 @@ class TriggerAction(pulumi.CustomResource):
         $ pulumi import auth0:index/triggerAction:TriggerAction post_login_action "post-login::28b5c8fa-d371-5734-acf6-d0cf80ead918"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] action_id: The ID of the action to bind to the trigger.
@@ -233,6 +236,7 @@ class TriggerAction(pulumi.CustomResource):
         ```sh
         $ pulumi import auth0:index/triggerAction:TriggerAction post_login_action "post-login::28b5c8fa-d371-5734-acf6-d0cf80ead918"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TriggerActionArgs args: The arguments to use to populate this resource's properties.

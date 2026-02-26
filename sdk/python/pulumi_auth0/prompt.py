@@ -24,6 +24,7 @@ class PromptArgs:
                  webauthn_platform_first_factor: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Prompt resource.
+
         :param pulumi.Input[_builtins.bool] identifier_first: Indicates whether the identifier first is used when using the new Universal Login experience.
         :param pulumi.Input[_builtins.str] universal_login_experience: Which login experience to use. Options include `classic` and `new`.
         :param pulumi.Input[_builtins.bool] webauthn_platform_first_factor: Determines if the login screen uses identifier and biometrics first. Setting this property to `true`, requires MFA factors enabled for enrollment; use the `Guardian` resource to set one up.
@@ -80,6 +81,7 @@ class _PromptState:
                  webauthn_platform_first_factor: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Prompt resources.
+
         :param pulumi.Input[_builtins.bool] identifier_first: Indicates whether the identifier first is used when using the new Universal Login experience.
         :param pulumi.Input[_builtins.str] universal_login_experience: Which login experience to use. Options include `classic` and `new`.
         :param pulumi.Input[_builtins.bool] webauthn_platform_first_factor: Determines if the login screen uses identifier and biometrics first. Setting this property to `true`, requires MFA factors enabled for enrollment; use the `Guardian` resource to set one up.
@@ -166,6 +168,7 @@ class Prompt(pulumi.CustomResource):
         $ pulumi import auth0:index/prompt:Prompt my_prompt "22f4f21b-017a-319d-92e7-2291c1ca36c4"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] identifier_first: Indicates whether the identifier first is used when using the new Universal Login experience.
@@ -205,6 +208,7 @@ class Prompt(pulumi.CustomResource):
         ```sh
         $ pulumi import auth0:index/prompt:Prompt my_prompt "22f4f21b-017a-319d-92e7-2291c1ca36c4"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PromptArgs args: The arguments to use to populate this resource's properties.

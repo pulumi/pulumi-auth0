@@ -26,6 +26,7 @@ class PromptScreenPartialArgs:
                  insertion_points: Optional[pulumi.Input['PromptScreenPartialInsertionPointsArgs']] = None):
         """
         The set of arguments for constructing a PromptScreenPartial resource.
+
         :param pulumi.Input[_builtins.str] prompt_type: The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
         :param pulumi.Input[_builtins.str] screen_name: The name of the screen associated with the partials
         :param pulumi.Input['PromptScreenPartialInsertionPointsArgs'] insertion_points: The insertion points for the partials.
@@ -80,6 +81,7 @@ class _PromptScreenPartialState:
                  screen_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PromptScreenPartial resources.
+
         :param pulumi.Input['PromptScreenPartialInsertionPointsArgs'] insertion_points: The insertion points for the partials.
         :param pulumi.Input[_builtins.str] prompt_type: The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
         :param pulumi.Input[_builtins.str] screen_name: The name of the screen associated with the partials
@@ -181,6 +183,7 @@ class PromptScreenPartial(pulumi.CustomResource):
         $ pulumi import auth0:index/promptScreenPartial:PromptScreenPartial login "login:login"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['PromptScreenPartialInsertionPointsArgs', 'PromptScreenPartialInsertionPointsArgsDict']] insertion_points: The insertion points for the partials.
@@ -235,6 +238,7 @@ class PromptScreenPartial(pulumi.CustomResource):
         ```sh
         $ pulumi import auth0:index/promptScreenPartial:PromptScreenPartial login "login:login"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PromptScreenPartialArgs args: The arguments to use to populate this resource's properties.

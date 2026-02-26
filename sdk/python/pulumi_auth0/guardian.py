@@ -32,6 +32,7 @@ class GuardianArgs:
                  webauthn_roaming: Optional[pulumi.Input['GuardianWebauthnRoamingArgs']] = None):
         """
         The set of arguments for constructing a Guardian resource.
+
         :param pulumi.Input[_builtins.str] policy: Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
         :param pulumi.Input['GuardianDuoArgs'] duo: Configuration settings for the Duo MFA. If this block is present, Duo MFA will be enabled, and disabled otherwise.
         :param pulumi.Input[_builtins.bool] email: Indicates whether email MFA is enabled.
@@ -183,6 +184,7 @@ class _GuardianState:
                  webauthn_roaming: Optional[pulumi.Input['GuardianWebauthnRoamingArgs']] = None):
         """
         Input properties used for looking up and filtering Guardian resources.
+
         :param pulumi.Input['GuardianDuoArgs'] duo: Configuration settings for the Duo MFA. If this block is present, Duo MFA will be enabled, and disabled otherwise.
         :param pulumi.Input[_builtins.bool] email: Indicates whether email MFA is enabled.
         :param pulumi.Input[_builtins.bool] otp: Indicates whether one time password MFA is enabled.
@@ -407,6 +409,7 @@ class Guardian(pulumi.CustomResource):
         $ pulumi import auth0:index/guardian:Guardian my_guardian "24940d4b-4bd4-44e7-894e-f92e4de36a40"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['GuardianDuoArgs', 'GuardianDuoArgsDict']] duo: Configuration settings for the Duo MFA. If this block is present, Duo MFA will be enabled, and disabled otherwise.
@@ -494,6 +497,7 @@ class Guardian(pulumi.CustomResource):
         ```sh
         $ pulumi import auth0:index/guardian:Guardian my_guardian "24940d4b-4bd4-44e7-894e-f92e4de36a40"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GuardianArgs args: The arguments to use to populate this resource's properties.

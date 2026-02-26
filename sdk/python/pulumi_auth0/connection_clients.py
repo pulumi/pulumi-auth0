@@ -23,6 +23,7 @@ class ConnectionClientsArgs:
                  enabled_clients: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
         """
         The set of arguments for constructing a ConnectionClients resource.
+
         :param pulumi.Input[_builtins.str] connection_id: ID of the connection on which to enable the client.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] enabled_clients: IDs of the clients for which the connection is enabled.
         """
@@ -63,6 +64,7 @@ class _ConnectionClientsState:
                  strategy: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ConnectionClients resources.
+
         :param pulumi.Input[_builtins.str] connection_id: ID of the connection on which to enable the client.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] enabled_clients: IDs of the clients for which the connection is enabled.
         :param pulumi.Input[_builtins.str] name: The name of the connection on which to enable the client.
@@ -174,6 +176,7 @@ class ConnectionClients(pulumi.CustomResource):
         $ pulumi import auth0:index/connectionClients:ConnectionClients my_conn_clients_assoc "con_XXXXX"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] connection_id: ID of the connection on which to enable the client.
@@ -223,6 +226,7 @@ class ConnectionClients(pulumi.CustomResource):
         ```sh
         $ pulumi import auth0:index/connectionClients:ConnectionClients my_conn_clients_assoc "con_XXXXX"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ConnectionClientsArgs args: The arguments to use to populate this resource's properties.

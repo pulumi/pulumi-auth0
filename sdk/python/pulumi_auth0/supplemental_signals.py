@@ -22,6 +22,7 @@ class SupplementalSignalsArgs:
                  akamai_enabled: pulumi.Input[_builtins.bool]):
         """
         The set of arguments for constructing a SupplementalSignals resource.
+
         :param pulumi.Input[_builtins.bool] akamai_enabled: Indicates if incoming Akamai Headers should be processed.
         """
         pulumi.set(__self__, "akamai_enabled", akamai_enabled)
@@ -45,6 +46,7 @@ class _SupplementalSignalsState:
                  akamai_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering SupplementalSignals resources.
+
         :param pulumi.Input[_builtins.bool] akamai_enabled: Indicates if incoming Akamai Headers should be processed.
         """
         if akamai_enabled is not None:
@@ -83,6 +85,7 @@ class SupplementalSignals(pulumi.CustomResource):
         my_supplemental_signals = auth0.SupplementalSignals("my_supplemental_signals", akamai_enabled=True)
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] akamai_enabled: Indicates if incoming Akamai Headers should be processed.
@@ -104,6 +107,7 @@ class SupplementalSignals(pulumi.CustomResource):
 
         my_supplemental_signals = auth0.SupplementalSignals("my_supplemental_signals", akamai_enabled=True)
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SupplementalSignalsArgs args: The arguments to use to populate this resource's properties.

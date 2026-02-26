@@ -28,6 +28,7 @@ class PromptPartialsArgs:
                  secondary_actions_start: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PromptPartials resource.
+
         :param pulumi.Input[_builtins.str] prompt: The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
         :param pulumi.Input[_builtins.str] form_content_end: Content that goes at the end of the form.
         :param pulumi.Input[_builtins.str] form_content_start: Content that goes at the start of the form.
@@ -175,6 +176,7 @@ class _PromptPartialsState:
                  secondary_actions_start: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PromptPartials resources.
+
         :param pulumi.Input[_builtins.str] form_content_end: Content that goes at the end of the form.
         :param pulumi.Input[_builtins.str] form_content_start: Content that goes at the start of the form.
         :param pulumi.Input[_builtins.str] form_footer_end: Footer content for the end of the footer.
@@ -357,6 +359,7 @@ class PromptPartials(pulumi.CustomResource):
         $ pulumi import auth0:index/promptPartials:PromptPartials my_login_prompt_partials "login"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] form_content_end: Content that goes at the end of the form.
@@ -404,6 +407,7 @@ class PromptPartials(pulumi.CustomResource):
         ```sh
         $ pulumi import auth0:index/promptPartials:PromptPartials my_login_prompt_partials "login"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PromptPartialsArgs args: The arguments to use to populate this resource's properties.

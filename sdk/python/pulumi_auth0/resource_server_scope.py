@@ -24,6 +24,7 @@ class ResourceServerScopeArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ResourceServerScope resource.
+
         :param pulumi.Input[_builtins.str] resource_server_identifier: Identifier of the resource server that the scope (permission) is associated with.
         :param pulumi.Input[_builtins.str] scope: Name of the scope (permission).
         :param pulumi.Input[_builtins.str] description: Description of the scope (permission).
@@ -78,6 +79,7 @@ class _ResourceServerScopeState:
                  scope: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ResourceServerScope resources.
+
         :param pulumi.Input[_builtins.str] description: Description of the scope (permission).
         :param pulumi.Input[_builtins.str] resource_server_identifier: Identifier of the resource server that the scope (permission) is associated with.
         :param pulumi.Input[_builtins.str] scope: Name of the scope (permission).
@@ -172,6 +174,7 @@ class ResourceServerScope(pulumi.CustomResource):
         $ pulumi import auth0:index/resourceServerScope:ResourceServerScope scope "https://api.travel0.com/v1::read:posts"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the scope (permission).
@@ -219,6 +222,7 @@ class ResourceServerScope(pulumi.CustomResource):
         ```sh
         $ pulumi import auth0:index/resourceServerScope:ResourceServerScope scope "https://api.travel0.com/v1::read:posts"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ResourceServerScopeArgs args: The arguments to use to populate this resource's properties.

@@ -22,6 +22,7 @@ class RiskAssessmentsNewDeviceArgs:
                  remember_for: pulumi.Input[_builtins.int]):
         """
         The set of arguments for constructing a RiskAssessmentsNewDevice resource.
+
         :param pulumi.Input[_builtins.int] remember_for: Length of time to remember devices for, in days
         """
         pulumi.set(__self__, "remember_for", remember_for)
@@ -45,6 +46,7 @@ class _RiskAssessmentsNewDeviceState:
                  remember_for: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering RiskAssessmentsNewDevice resources.
+
         :param pulumi.Input[_builtins.int] remember_for: Length of time to remember devices for, in days
         """
         if remember_for is not None:
@@ -74,6 +76,7 @@ class RiskAssessmentsNewDevice(pulumi.CustomResource):
         """
         Resource for managing Risk Assessment settings for new devices.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] remember_for: Length of time to remember devices for, in days
@@ -86,6 +89,7 @@ class RiskAssessmentsNewDevice(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for managing Risk Assessment settings for new devices.
+
 
         :param str resource_name: The name of the resource.
         :param RiskAssessmentsNewDeviceArgs args: The arguments to use to populate this resource's properties.

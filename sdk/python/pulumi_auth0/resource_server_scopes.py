@@ -25,6 +25,7 @@ class ResourceServerScopesArgs:
                  scopes: pulumi.Input[Sequence[pulumi.Input['ResourceServerScopesScopeArgs']]]):
         """
         The set of arguments for constructing a ResourceServerScopes resource.
+
         :param pulumi.Input[_builtins.str] resource_server_identifier: Identifier of the resource server that the scopes (permission) are associated with.
         """
         pulumi.set(__self__, "resource_server_identifier", resource_server_identifier)
@@ -59,6 +60,7 @@ class _ResourceServerScopesState:
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceServerScopesScopeArgs']]]] = None):
         """
         Input properties used for looking up and filtering ResourceServerScopes resources.
+
         :param pulumi.Input[_builtins.str] resource_server_identifier: Identifier of the resource server that the scopes (permission) are associated with.
         """
         if resource_server_identifier is not None:
@@ -138,6 +140,7 @@ class ResourceServerScopes(pulumi.CustomResource):
         $ pulumi import auth0:index/resourceServerScopes:ResourceServerScopes my_api_scopes "https://api.travel0.com/v1"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] resource_server_identifier: Identifier of the resource server that the scopes (permission) are associated with.
@@ -188,6 +191,7 @@ class ResourceServerScopes(pulumi.CustomResource):
         ```sh
         $ pulumi import auth0:index/resourceServerScopes:ResourceServerScopes my_api_scopes "https://api.travel0.com/v1"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ResourceServerScopesArgs args: The arguments to use to populate this resource's properties.

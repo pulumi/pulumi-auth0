@@ -27,6 +27,7 @@ class FlowVaultConnectionArgs:
                  setup: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a FlowVaultConnection resource.
+
         :param pulumi.Input[_builtins.str] app_id: App identifier of the vault connection.
         :param pulumi.Input[_builtins.str] account_name: Custom account name of the vault connection.
         :param pulumi.Input[_builtins.str] environment: Environment of the vault connection.
@@ -131,6 +132,7 @@ class _FlowVaultConnectionState:
                  setup: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering FlowVaultConnection resources.
+
         :param pulumi.Input[_builtins.str] account_name: Custom account name of the vault connection.
         :param pulumi.Input[_builtins.str] app_id: App identifier of the vault connection.
         :param pulumi.Input[_builtins.str] environment: Environment of the vault connection.
@@ -283,6 +285,7 @@ class FlowVaultConnection(pulumi.CustomResource):
         $ pulumi import auth0:index/flowVaultConnection:FlowVaultConnection my_connection "ac_42HT5oiobDyUs8ASwEEWK0"
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_name: Custom account name of the vault connection.
@@ -328,6 +331,7 @@ class FlowVaultConnection(pulumi.CustomResource):
         ```sh
         $ pulumi import auth0:index/flowVaultConnection:FlowVaultConnection my_connection "ac_42HT5oiobDyUs8ASwEEWK0"
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FlowVaultConnectionArgs args: The arguments to use to populate this resource's properties.
