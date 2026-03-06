@@ -145,7 +145,7 @@ class RolePermissions(pulumi.CustomResource):
             permissions=resource_server.identifier.apply(lambda identifier: [{
                 "name": entry["value"].name,
                 "resourceServerIdentifier": identifier,
-            } for entry in resource_server_scopes.scopes.apply(lambda scopes: [{"key": k, "value": v} for k, v in scopes])]),
+            } for entry in resource_server_scopes.scopes.apply(lambda scopes: [{"key": k, "value": v} for k, v in scopes.items()])]),
             role_id=my_role.id)
         ```
 
@@ -209,7 +209,7 @@ class RolePermissions(pulumi.CustomResource):
             permissions=resource_server.identifier.apply(lambda identifier: [{
                 "name": entry["value"].name,
                 "resourceServerIdentifier": identifier,
-            } for entry in resource_server_scopes.scopes.apply(lambda scopes: [{"key": k, "value": v} for k, v in scopes])]),
+            } for entry in resource_server_scopes.scopes.apply(lambda scopes: [{"key": k, "value": v} for k, v in scopes.items()])]),
             role_id=my_role.id)
         ```
 
