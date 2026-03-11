@@ -1,0 +1,16 @@
+name: auth0-user-import-create
+runtime: yaml
+description: Creates an Auth0 user for import regression testing.
+config:
+  suffix:
+    type: string
+resources:
+  importedUser:
+    type: auth0:User
+    properties:
+      connectionName: Username-Password-Authentication
+      userId: ${suffix}
+      password: passpass$12$12
+      email: ${suffix}@acceptance.test.com
+outputs:
+  importedUserId: ${importedUser.id}

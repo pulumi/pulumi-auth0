@@ -4,9 +4,12 @@
 package auth0
 
 import (
+	"fmt"
 	"os"
 	"path/filepath"
+	"strings"
 	"testing"
+	"time"
 
 	"github.com/stretchr/testify/require"
 
@@ -88,4 +91,35 @@ func TestOrganizationConnection(t *testing.T) {
 		opttest.SkipInstall(),
 	)
 	pt.Up(t)
+}
+
+func TestUserImport(t *testing.T) {
+	if testing.Short() {
+		t.Skipf("Skipping in testing.Short() mode, assuming this is a CI run without credentials")
+	}
+
+	cwd, err := os.Getwd()
+	require.NoError(t, err)
+
+	suffix := fmt.Sprintf("user-import-%d", time.Now().UnixNano())
+	suffix = strings.ToLower(strings.ReplaceAll(suffix, "_", "-"))
+
+	create := pulumitest.NewPulumiTest(t, "test-programs/user_import_create",
+		opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")),
+		opttest.SkipInstall(),
+	)
+	create.SetConfig(t, "suffix", suffix)
+	up := create.Up(t)
+
+	importedUserID, ok := up.Outputs["importedUserId"].Value.(string)
+	require.True(t, ok, "expected importedUserId output to be a string")
+	require.NotEmpty(t, importedUserID)
+
+	importer := pulumitest.NewPulumiTest(t, "test-programs/yaml_empty",
+		opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")),
+		opttest.SkipInstall(),
+	)
+	res := importer.Import(t, "auth0:index/user:User", "importedUser", importedUserID, "")
+
+	require.Contains(t, res.Stdout, "type: auth0:User")
 }
