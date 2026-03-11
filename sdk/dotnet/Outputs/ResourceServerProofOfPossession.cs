@@ -25,6 +25,10 @@ namespace Pulumi.Auth0.Outputs
         /// Indicates whether proof-of-possession is required with this resource server.
         /// </summary>
         public readonly bool? Required;
+        /// <summary>
+        /// Specifies which client types require Proof-of-Possession`AllClients` or `PublicClients` is supported.
+        /// </summary>
+        public readonly string? RequiredFor;
 
         [OutputConstructor]
         private ResourceServerProofOfPossession(
@@ -32,11 +36,14 @@ namespace Pulumi.Auth0.Outputs
 
             string? mechanism,
 
-            bool? required)
+            bool? required,
+
+            string? requiredFor)
         {
             Disable = disable;
             Mechanism = mechanism;
             Required = required;
+            RequiredFor = requiredFor;
         }
     }
 }

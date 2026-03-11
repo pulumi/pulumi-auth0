@@ -124,6 +124,8 @@ type Tenant struct {
 	Mtls TenantMtlsOutput `pulumi:"mtls"`
 	// Settings related to OIDC RP-initiated Logout.
 	OidcLogout TenantOidcLogoutOutput `pulumi:"oidcLogout"`
+	// When enabled, the tenant-level Phone Provider is used for Multi-Factor Authentication (MFA) and Passwordless phone notifications.
+	PhoneConsolidatedExperience pulumi.BoolOutput `pulumi:"phoneConsolidatedExperience"`
 	// URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
 	PictureUrl pulumi.StringOutput `pulumi:"pictureUrl"`
 	// Enable pushed authorization requests.
@@ -210,6 +212,8 @@ type tenantState struct {
 	Mtls *TenantMtls `pulumi:"mtls"`
 	// Settings related to OIDC RP-initiated Logout.
 	OidcLogout *TenantOidcLogout `pulumi:"oidcLogout"`
+	// When enabled, the tenant-level Phone Provider is used for Multi-Factor Authentication (MFA) and Passwordless phone notifications.
+	PhoneConsolidatedExperience *bool `pulumi:"phoneConsolidatedExperience"`
 	// URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
 	PictureUrl *string `pulumi:"pictureUrl"`
 	// Enable pushed authorization requests.
@@ -267,6 +271,8 @@ type TenantState struct {
 	Mtls TenantMtlsPtrInput
 	// Settings related to OIDC RP-initiated Logout.
 	OidcLogout TenantOidcLogoutPtrInput
+	// When enabled, the tenant-level Phone Provider is used for Multi-Factor Authentication (MFA) and Passwordless phone notifications.
+	PhoneConsolidatedExperience pulumi.BoolPtrInput
 	// URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
 	PictureUrl pulumi.StringPtrInput
 	// Enable pushed authorization requests.
@@ -328,6 +334,8 @@ type tenantArgs struct {
 	Mtls *TenantMtls `pulumi:"mtls"`
 	// Settings related to OIDC RP-initiated Logout.
 	OidcLogout *TenantOidcLogout `pulumi:"oidcLogout"`
+	// When enabled, the tenant-level Phone Provider is used for Multi-Factor Authentication (MFA) and Passwordless phone notifications.
+	PhoneConsolidatedExperience *bool `pulumi:"phoneConsolidatedExperience"`
 	// URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
 	PictureUrl *string `pulumi:"pictureUrl"`
 	// Enable pushed authorization requests.
@@ -386,6 +394,8 @@ type TenantArgs struct {
 	Mtls TenantMtlsPtrInput
 	// Settings related to OIDC RP-initiated Logout.
 	OidcLogout TenantOidcLogoutPtrInput
+	// When enabled, the tenant-level Phone Provider is used for Multi-Factor Authentication (MFA) and Passwordless phone notifications.
+	PhoneConsolidatedExperience pulumi.BoolPtrInput
 	// URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
 	PictureUrl pulumi.StringPtrInput
 	// Enable pushed authorization requests.
@@ -581,6 +591,11 @@ func (o TenantOutput) Mtls() TenantMtlsOutput {
 // Settings related to OIDC RP-initiated Logout.
 func (o TenantOutput) OidcLogout() TenantOidcLogoutOutput {
 	return o.ApplyT(func(v *Tenant) TenantOidcLogoutOutput { return v.OidcLogout }).(TenantOidcLogoutOutput)
+}
+
+// When enabled, the tenant-level Phone Provider is used for Multi-Factor Authentication (MFA) and Passwordless phone notifications.
+func (o TenantOutput) PhoneConsolidatedExperience() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Tenant) pulumi.BoolOutput { return v.PhoneConsolidatedExperience }).(pulumi.BoolOutput)
 }
 
 // URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.

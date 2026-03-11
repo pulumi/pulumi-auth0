@@ -195,6 +195,12 @@ namespace Pulumi.Auth0
         public Output<Outputs.TenantOidcLogout> OidcLogout { get; private set; } = null!;
 
         /// <summary>
+        /// When enabled, the tenant-level Phone Provider is used for Multi-Factor Authentication (MFA) and Passwordless phone notifications.
+        /// </summary>
+        [Output("phoneConsolidatedExperience")]
+        public Output<bool> PhoneConsolidatedExperience { get; private set; } = null!;
+
+        /// <summary>
         /// URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
         /// </summary>
         [Output("pictureUrl")]
@@ -421,6 +427,12 @@ namespace Pulumi.Auth0
         public Input<Inputs.TenantOidcLogoutArgs>? OidcLogout { get; set; }
 
         /// <summary>
+        /// When enabled, the tenant-level Phone Provider is used for Multi-Factor Authentication (MFA) and Passwordless phone notifications.
+        /// </summary>
+        [Input("phoneConsolidatedExperience")]
+        public Input<bool>? PhoneConsolidatedExperience { get; set; }
+
+        /// <summary>
         /// URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
         /// </summary>
         [Input("pictureUrl")]
@@ -607,6 +619,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("oidcLogout")]
         public Input<Inputs.TenantOidcLogoutGetArgs>? OidcLogout { get; set; }
+
+        /// <summary>
+        /// When enabled, the tenant-level Phone Provider is used for Multi-Factor Authentication (MFA) and Passwordless phone notifications.
+        /// </summary>
+        [Input("phoneConsolidatedExperience")]
+        public Input<bool>? PhoneConsolidatedExperience { get; set; }
 
         /// <summary>
         /// URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.

@@ -6,6 +6,7 @@ package com.pulumi.auth0.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -14,6 +15,21 @@ import javax.annotation.Nullable;
 public final class ConnectionOptionsAuthenticationMethodPasswordArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ConnectionOptionsAuthenticationMethodPasswordArgs Empty = new ConnectionOptionsAuthenticationMethodPasswordArgs();
+
+    /**
+     * Specifies whether password is required or optional when creating users via API. Possible values: &#34;required&#34;, &#34;optional&#34;. Defaults to &#34;required&#34;.
+     * 
+     */
+    @Import(name="apiBehavior")
+    private @Nullable Output<String> apiBehavior;
+
+    /**
+     * @return Specifies whether password is required or optional when creating users via API. Possible values: &#34;required&#34;, &#34;optional&#34;. Defaults to &#34;required&#34;.
+     * 
+     */
+    public Optional<Output<String>> apiBehavior() {
+        return Optional.ofNullable(this.apiBehavior);
+    }
 
     /**
      * Enables password authentication
@@ -30,10 +46,27 @@ public final class ConnectionOptionsAuthenticationMethodPasswordArgs extends com
         return Optional.ofNullable(this.enabled);
     }
 
+    /**
+     * Specifies whether password is allowed or blocked during signup flows. Possible values: &#34;allow&#34;, &#34;block&#34;. Defaults to &#34;allow&#34;.
+     * 
+     */
+    @Import(name="signupBehavior")
+    private @Nullable Output<String> signupBehavior;
+
+    /**
+     * @return Specifies whether password is allowed or blocked during signup flows. Possible values: &#34;allow&#34;, &#34;block&#34;. Defaults to &#34;allow&#34;.
+     * 
+     */
+    public Optional<Output<String>> signupBehavior() {
+        return Optional.ofNullable(this.signupBehavior);
+    }
+
     private ConnectionOptionsAuthenticationMethodPasswordArgs() {}
 
     private ConnectionOptionsAuthenticationMethodPasswordArgs(ConnectionOptionsAuthenticationMethodPasswordArgs $) {
+        this.apiBehavior = $.apiBehavior;
         this.enabled = $.enabled;
+        this.signupBehavior = $.signupBehavior;
     }
 
     public static Builder builder() {
@@ -55,6 +88,27 @@ public final class ConnectionOptionsAuthenticationMethodPasswordArgs extends com
         }
 
         /**
+         * @param apiBehavior Specifies whether password is required or optional when creating users via API. Possible values: &#34;required&#34;, &#34;optional&#34;. Defaults to &#34;required&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder apiBehavior(@Nullable Output<String> apiBehavior) {
+            $.apiBehavior = apiBehavior;
+            return this;
+        }
+
+        /**
+         * @param apiBehavior Specifies whether password is required or optional when creating users via API. Possible values: &#34;required&#34;, &#34;optional&#34;. Defaults to &#34;required&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder apiBehavior(String apiBehavior) {
+            return apiBehavior(Output.of(apiBehavior));
+        }
+
+        /**
          * @param enabled Enables password authentication
          * 
          * @return builder
@@ -73,6 +127,27 @@ public final class ConnectionOptionsAuthenticationMethodPasswordArgs extends com
          */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
+        }
+
+        /**
+         * @param signupBehavior Specifies whether password is allowed or blocked during signup flows. Possible values: &#34;allow&#34;, &#34;block&#34;. Defaults to &#34;allow&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder signupBehavior(@Nullable Output<String> signupBehavior) {
+            $.signupBehavior = signupBehavior;
+            return this;
+        }
+
+        /**
+         * @param signupBehavior Specifies whether password is allowed or blocked during signup flows. Possible values: &#34;allow&#34;, &#34;block&#34;. Defaults to &#34;allow&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder signupBehavior(String signupBehavior) {
+            return signupBehavior(Output.of(signupBehavior));
         }
 
         public ConnectionOptionsAuthenticationMethodPasswordArgs build() {

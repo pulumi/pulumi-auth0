@@ -115,18 +115,18 @@ public class Client extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.appType);
     }
     /**
-     * List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `[&#34;guardian-push&#34;]` if not specified.
+     * List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated.
      * 
      */
     @Export(name="asyncApprovalNotificationChannels", refs={List.class,String.class}, tree="[0,1]")
-    private Output<List<String>> asyncApprovalNotificationChannels;
+    private Output</* @Nullable */ List<String>> asyncApprovalNotificationChannels;
 
     /**
-     * @return List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `[&#34;guardian-push&#34;]` if not specified.
+     * @return List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated.
      * 
      */
-    public Output<List<String>> asyncApprovalNotificationChannels() {
-        return this.asyncApprovalNotificationChannels;
+    public Output<Optional<List<String>>> asyncApprovalNotificationChannels() {
+        return Codegen.optional(this.asyncApprovalNotificationChannels);
     }
     /**
      * URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.

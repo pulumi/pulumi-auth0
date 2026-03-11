@@ -126,6 +126,11 @@ public final class GetTenantResult {
      */
     private List<GetTenantOidcLogout> oidcLogouts;
     /**
+     * @return When enabled, the tenant-level Phone Provider is used for Multi-Factor Authentication (MFA) and Passwordless phone notifications.
+     * 
+     */
+    private Boolean phoneConsolidatedExperience;
+    /**
      * @return URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
      * 
      */
@@ -320,6 +325,13 @@ public final class GetTenantResult {
         return this.oidcLogouts;
     }
     /**
+     * @return When enabled, the tenant-level Phone Provider is used for Multi-Factor Authentication (MFA) and Passwordless phone notifications.
+     * 
+     */
+    public Boolean phoneConsolidatedExperience() {
+        return this.phoneConsolidatedExperience;
+    }
+    /**
      * @return URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
      * 
      */
@@ -413,6 +425,7 @@ public final class GetTenantResult {
         private String managementApiIdentifier;
         private List<GetTenantMtl> mtls;
         private List<GetTenantOidcLogout> oidcLogouts;
+        private Boolean phoneConsolidatedExperience;
         private String pictureUrl;
         private Boolean pushedAuthorizationRequestsSupported;
         private String sandboxVersion;
@@ -446,6 +459,7 @@ public final class GetTenantResult {
     	      this.managementApiIdentifier = defaults.managementApiIdentifier;
     	      this.mtls = defaults.mtls;
     	      this.oidcLogouts = defaults.oidcLogouts;
+    	      this.phoneConsolidatedExperience = defaults.phoneConsolidatedExperience;
     	      this.pictureUrl = defaults.pictureUrl;
     	      this.pushedAuthorizationRequestsSupported = defaults.pushedAuthorizationRequestsSupported;
     	      this.sandboxVersion = defaults.sandboxVersion;
@@ -650,6 +664,14 @@ public final class GetTenantResult {
             return oidcLogouts(List.of(oidcLogouts));
         }
         @CustomType.Setter
+        public Builder phoneConsolidatedExperience(Boolean phoneConsolidatedExperience) {
+            if (phoneConsolidatedExperience == null) {
+              throw new MissingRequiredPropertyException("GetTenantResult", "phoneConsolidatedExperience");
+            }
+            this.phoneConsolidatedExperience = phoneConsolidatedExperience;
+            return this;
+        }
+        @CustomType.Setter
         public Builder pictureUrl(String pictureUrl) {
             if (pictureUrl == null) {
               throw new MissingRequiredPropertyException("GetTenantResult", "pictureUrl");
@@ -750,6 +772,7 @@ public final class GetTenantResult {
             _resultValue.managementApiIdentifier = managementApiIdentifier;
             _resultValue.mtls = mtls;
             _resultValue.oidcLogouts = oidcLogouts;
+            _resultValue.phoneConsolidatedExperience = phoneConsolidatedExperience;
             _resultValue.pictureUrl = pictureUrl;
             _resultValue.pushedAuthorizationRequestsSupported = pushedAuthorizationRequestsSupported;
             _resultValue.sandboxVersion = sandboxVersion;

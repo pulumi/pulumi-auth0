@@ -27,6 +27,11 @@ public final class ResourceServerProofOfPossession {
      * 
      */
     private @Nullable Boolean required;
+    /**
+     * @return Specifies which client types require Proof-of-Possession`allClients` or `publicClients` is supported.
+     * 
+     */
+    private @Nullable String requiredFor;
 
     private ResourceServerProofOfPossession() {}
     /**
@@ -50,6 +55,13 @@ public final class ResourceServerProofOfPossession {
     public Optional<Boolean> required() {
         return Optional.ofNullable(this.required);
     }
+    /**
+     * @return Specifies which client types require Proof-of-Possession`allClients` or `publicClients` is supported.
+     * 
+     */
+    public Optional<String> requiredFor() {
+        return Optional.ofNullable(this.requiredFor);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -63,12 +75,14 @@ public final class ResourceServerProofOfPossession {
         private @Nullable Boolean disable;
         private @Nullable String mechanism;
         private @Nullable Boolean required;
+        private @Nullable String requiredFor;
         public Builder() {}
         public Builder(ResourceServerProofOfPossession defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.disable = defaults.disable;
     	      this.mechanism = defaults.mechanism;
     	      this.required = defaults.required;
+    	      this.requiredFor = defaults.requiredFor;
         }
 
         @CustomType.Setter
@@ -89,11 +103,18 @@ public final class ResourceServerProofOfPossession {
             this.required = required;
             return this;
         }
+        @CustomType.Setter
+        public Builder requiredFor(@Nullable String requiredFor) {
+
+            this.requiredFor = requiredFor;
+            return this;
+        }
         public ResourceServerProofOfPossession build() {
             final var _resultValue = new ResourceServerProofOfPossession();
             _resultValue.disable = disable;
             _resultValue.mechanism = mechanism;
             _resultValue.required = required;
+            _resultValue.requiredFor = requiredFor;
             return _resultValue;
         }
     }

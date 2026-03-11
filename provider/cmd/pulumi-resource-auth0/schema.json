@@ -3513,9 +3513,17 @@
         },
         "auth0:index/ConnectionOptionsAuthenticationMethodPassword:ConnectionOptionsAuthenticationMethodPassword": {
             "properties": {
+                "apiBehavior": {
+                    "type": "string",
+                    "description": "Specifies whether password is required or optional when creating users via API. Possible values: \"required\", \"optional\". Defaults to \"required\".\n"
+                },
                 "enabled": {
                     "type": "boolean",
                     "description": "Enables password authentication\n"
+                },
+                "signupBehavior": {
+                    "type": "string",
+                    "description": "Specifies whether password is allowed or blocked during signup flows. Possible values: \"allow\", \"block\". Defaults to \"allow\".\n"
                 }
             },
             "type": "object",
@@ -5471,6 +5479,10 @@
                 "required": {
                     "type": "boolean",
                     "description": "Indicates whether proof-of-possession is required with this resource server.\n"
+                },
+                "requiredFor": {
+                    "type": "string",
+                    "description": "Specifies which client types require Proof-of-Possession\u003cspan pulumi-lang-nodejs=\"`allClients`\" pulumi-lang-dotnet=\"`AllClients`\" pulumi-lang-go=\"`allClients`\" pulumi-lang-python=\"`all_clients`\" pulumi-lang-yaml=\"`allClients`\" pulumi-lang-java=\"`allClients`\"\u003e`all_clients`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`publicClients`\" pulumi-lang-dotnet=\"`PublicClients`\" pulumi-lang-go=\"`publicClients`\" pulumi-lang-python=\"`public_clients`\" pulumi-lang-yaml=\"`publicClients`\" pulumi-lang-java=\"`publicClients`\"\u003e`public_clients`\u003c/span\u003e is supported.\n"
                 }
             },
             "type": "object",
@@ -9652,7 +9664,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and \u003cspan pulumi-lang-nodejs=\"`email`\" pulumi-lang-dotnet=\"`Email`\" pulumi-lang-go=\"`email`\" pulumi-lang-python=\"`email`\" pulumi-lang-yaml=\"`email`\" pulumi-lang-java=\"`email`\"\u003e`email`\u003c/span\u003e. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `[\"guardian-push\"]` if not specified.\n"
+                    "description": "List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and \u003cspan pulumi-lang-nodejs=\"`email`\" pulumi-lang-dotnet=\"`Email`\" pulumi-lang-go=\"`email`\" pulumi-lang-python=\"`email`\" pulumi-lang-yaml=\"`email`\" pulumi-lang-java=\"`email`\"\u003e`email`\u003c/span\u003e. The order is significant as this is the order in which notification channels will be evaluated.\n"
                 },
                 "callbacks": {
                     "type": "array",
@@ -11343,14 +11355,24 @@
         },
         "auth0:index/getConnectionOptionAuthenticationMethodPassword:getConnectionOptionAuthenticationMethodPassword": {
             "properties": {
+                "apiBehavior": {
+                    "type": "string",
+                    "description": "Specifies whether password is required or optional when creating users via API. Possible values: \"required\", \"optional\". Defaults to \"required\".\n"
+                },
                 "enabled": {
                     "type": "boolean",
                     "description": "Enables password authentication\n"
+                },
+                "signupBehavior": {
+                    "type": "string",
+                    "description": "Specifies whether password is allowed or blocked during signup flows. Possible values: \"allow\", \"block\". Defaults to \"allow\".\n"
                 }
             },
             "type": "object",
             "required": [
-                "enabled"
+                "apiBehavior",
+                "enabled",
+                "signupBehavior"
             ],
             "language": {
                 "nodejs": {
@@ -13152,13 +13174,18 @@
                 "required": {
                     "type": "boolean",
                     "description": "Indicates whether proof-of-possession is required with this resource server.\n"
+                },
+                "requiredFor": {
+                    "type": "string",
+                    "description": "Specifies which client types require Proof-of-Possession\u003cspan pulumi-lang-nodejs=\"`allClients`\" pulumi-lang-dotnet=\"`AllClients`\" pulumi-lang-go=\"`allClients`\" pulumi-lang-python=\"`all_clients`\" pulumi-lang-yaml=\"`allClients`\" pulumi-lang-java=\"`allClients`\"\u003e`all_clients`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`publicClients`\" pulumi-lang-dotnet=\"`PublicClients`\" pulumi-lang-go=\"`publicClients`\" pulumi-lang-python=\"`public_clients`\" pulumi-lang-yaml=\"`publicClients`\" pulumi-lang-java=\"`publicClients`\"\u003e`public_clients`\u003c/span\u003e is supported.\n"
                 }
             },
             "type": "object",
             "required": [
                 "disable",
                 "mechanism",
-                "required"
+                "required",
+                "requiredFor"
             ],
             "language": {
                 "nodejs": {
@@ -14865,7 +14892,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and \u003cspan pulumi-lang-nodejs=\"`email`\" pulumi-lang-dotnet=\"`Email`\" pulumi-lang-go=\"`email`\" pulumi-lang-python=\"`email`\" pulumi-lang-yaml=\"`email`\" pulumi-lang-java=\"`email`\"\u003e`email`\u003c/span\u003e. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `[\"guardian-push\"]` if not specified.\n"
+                    "description": "List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and \u003cspan pulumi-lang-nodejs=\"`email`\" pulumi-lang-dotnet=\"`Email`\" pulumi-lang-go=\"`email`\" pulumi-lang-python=\"`email`\" pulumi-lang-yaml=\"`email`\" pulumi-lang-java=\"`email`\"\u003e`email`\u003c/span\u003e. The order is significant as this is the order in which notification channels will be evaluated.\n"
                 },
                 "callbacks": {
                     "type": "array",
@@ -15065,7 +15092,6 @@
                 }
             },
             "required": [
-                "asyncApprovalNotificationChannels",
                 "callbacks",
                 "clientId",
                 "customLoginPageOn",
@@ -15121,7 +15147,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and \u003cspan pulumi-lang-nodejs=\"`email`\" pulumi-lang-dotnet=\"`Email`\" pulumi-lang-go=\"`email`\" pulumi-lang-python=\"`email`\" pulumi-lang-yaml=\"`email`\" pulumi-lang-java=\"`email`\"\u003e`email`\u003c/span\u003e. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `[\"guardian-push\"]` if not specified.\n"
+                    "description": "List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and \u003cspan pulumi-lang-nodejs=\"`email`\" pulumi-lang-dotnet=\"`Email`\" pulumi-lang-go=\"`email`\" pulumi-lang-python=\"`email`\" pulumi-lang-yaml=\"`email`\" pulumi-lang-java=\"`email`\"\u003e`email`\u003c/span\u003e. The order is significant as this is the order in which notification channels will be evaluated.\n"
                 },
                 "callbacks": {
                     "type": "array",
@@ -15342,7 +15368,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and \u003cspan pulumi-lang-nodejs=\"`email`\" pulumi-lang-dotnet=\"`Email`\" pulumi-lang-go=\"`email`\" pulumi-lang-python=\"`email`\" pulumi-lang-yaml=\"`email`\" pulumi-lang-java=\"`email`\"\u003e`email`\u003c/span\u003e. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `[\"guardian-push\"]` if not specified.\n"
+                        "description": "List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and \u003cspan pulumi-lang-nodejs=\"`email`\" pulumi-lang-dotnet=\"`Email`\" pulumi-lang-go=\"`email`\" pulumi-lang-python=\"`email`\" pulumi-lang-yaml=\"`email`\" pulumi-lang-java=\"`email`\"\u003e`email`\u003c/span\u003e. The order is significant as this is the order in which notification channels will be evaluated.\n"
                     },
                     "callbacks": {
                         "type": "array",
@@ -20527,6 +20553,10 @@
                     "$ref": "#/types/auth0:index/TenantOidcLogout:TenantOidcLogout",
                     "description": "Settings related to OIDC RP-initiated Logout.\n"
                 },
+                "phoneConsolidatedExperience": {
+                    "type": "boolean",
+                    "description": "When enabled, the tenant-level Phone Provider is used for Multi-Factor Authentication (MFA) and Passwordless phone notifications.\n"
+                },
                 "pictureUrl": {
                     "type": "string",
                     "description": "URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.\n"
@@ -20578,6 +20608,7 @@
                 "friendlyName",
                 "mtls",
                 "oidcLogout",
+                "phoneConsolidatedExperience",
                 "pictureUrl",
                 "pushedAuthorizationRequestsSupported",
                 "sandboxVersion",
@@ -20667,6 +20698,10 @@
                 "oidcLogout": {
                     "$ref": "#/types/auth0:index/TenantOidcLogout:TenantOidcLogout",
                     "description": "Settings related to OIDC RP-initiated Logout.\n"
+                },
+                "phoneConsolidatedExperience": {
+                    "type": "boolean",
+                    "description": "When enabled, the tenant-level Phone Provider is used for Multi-Factor Authentication (MFA) and Passwordless phone notifications.\n"
                 },
                 "pictureUrl": {
                     "type": "string",
@@ -20788,6 +20823,10 @@
                     "oidcLogout": {
                         "$ref": "#/types/auth0:index/TenantOidcLogout:TenantOidcLogout",
                         "description": "Settings related to OIDC RP-initiated Logout.\n"
+                    },
+                    "phoneConsolidatedExperience": {
+                        "type": "boolean",
+                        "description": "When enabled, the tenant-level Phone Provider is used for Multi-Factor Authentication (MFA) and Passwordless phone notifications.\n"
                     },
                     "pictureUrl": {
                         "type": "string",
@@ -22220,7 +22259,7 @@
                         "type": "string"
                     },
                     "asyncApprovalNotificationChannels": {
-                        "description": "List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and \u003cspan pulumi-lang-nodejs=\"`email`\" pulumi-lang-dotnet=\"`Email`\" pulumi-lang-go=\"`email`\" pulumi-lang-python=\"`email`\" pulumi-lang-yaml=\"`email`\" pulumi-lang-java=\"`email`\"\u003e`email`\u003c/span\u003e. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `[\"guardian-push\"]` if not specified.\n",
+                        "description": "List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and \u003cspan pulumi-lang-nodejs=\"`email`\" pulumi-lang-dotnet=\"`Email`\" pulumi-lang-go=\"`email`\" pulumi-lang-python=\"`email`\" pulumi-lang-yaml=\"`email`\" pulumi-lang-java=\"`email`\"\u003e`email`\u003c/span\u003e. The order is significant as this is the order in which notification channels will be evaluated.\n",
                         "items": {
                             "type": "string"
                         },
@@ -24358,6 +24397,10 @@
                         },
                         "type": "array"
                     },
+                    "phoneConsolidatedExperience": {
+                        "description": "When enabled, the tenant-level Phone Provider is used for Multi-Factor Authentication (MFA) and Passwordless phone notifications.\n",
+                        "type": "boolean"
+                    },
                     "pictureUrl": {
                         "description": "URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.\n",
                         "type": "string"
@@ -24422,6 +24465,7 @@
                     "managementApiIdentifier",
                     "mtls",
                     "oidcLogouts",
+                    "phoneConsolidatedExperience",
                     "pictureUrl",
                     "pushedAuthorizationRequestsSupported",
                     "sandboxVersion",

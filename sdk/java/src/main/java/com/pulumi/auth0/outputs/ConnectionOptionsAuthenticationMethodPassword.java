@@ -5,6 +5,7 @@ package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -12,18 +13,42 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ConnectionOptionsAuthenticationMethodPassword {
     /**
+     * @return Specifies whether password is required or optional when creating users via API. Possible values: &#34;required&#34;, &#34;optional&#34;. Defaults to &#34;required&#34;.
+     * 
+     */
+    private @Nullable String apiBehavior;
+    /**
      * @return Enables password authentication
      * 
      */
     private @Nullable Boolean enabled;
+    /**
+     * @return Specifies whether password is allowed or blocked during signup flows. Possible values: &#34;allow&#34;, &#34;block&#34;. Defaults to &#34;allow&#34;.
+     * 
+     */
+    private @Nullable String signupBehavior;
 
     private ConnectionOptionsAuthenticationMethodPassword() {}
+    /**
+     * @return Specifies whether password is required or optional when creating users via API. Possible values: &#34;required&#34;, &#34;optional&#34;. Defaults to &#34;required&#34;.
+     * 
+     */
+    public Optional<String> apiBehavior() {
+        return Optional.ofNullable(this.apiBehavior);
+    }
     /**
      * @return Enables password authentication
      * 
      */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
+    }
+    /**
+     * @return Specifies whether password is allowed or blocked during signup flows. Possible values: &#34;allow&#34;, &#34;block&#34;. Defaults to &#34;allow&#34;.
+     * 
+     */
+    public Optional<String> signupBehavior() {
+        return Optional.ofNullable(this.signupBehavior);
     }
 
     public static Builder builder() {
@@ -35,22 +60,40 @@ public final class ConnectionOptionsAuthenticationMethodPassword {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String apiBehavior;
         private @Nullable Boolean enabled;
+        private @Nullable String signupBehavior;
         public Builder() {}
         public Builder(ConnectionOptionsAuthenticationMethodPassword defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.apiBehavior = defaults.apiBehavior;
     	      this.enabled = defaults.enabled;
+    	      this.signupBehavior = defaults.signupBehavior;
         }
 
+        @CustomType.Setter
+        public Builder apiBehavior(@Nullable String apiBehavior) {
+
+            this.apiBehavior = apiBehavior;
+            return this;
+        }
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
 
             this.enabled = enabled;
             return this;
         }
+        @CustomType.Setter
+        public Builder signupBehavior(@Nullable String signupBehavior) {
+
+            this.signupBehavior = signupBehavior;
+            return this;
+        }
         public ConnectionOptionsAuthenticationMethodPassword build() {
             final var _resultValue = new ConnectionOptionsAuthenticationMethodPassword();
+            _resultValue.apiBehavior = apiBehavior;
             _resultValue.enabled = enabled;
+            _resultValue.signupBehavior = signupBehavior;
             return _resultValue;
         }
     }

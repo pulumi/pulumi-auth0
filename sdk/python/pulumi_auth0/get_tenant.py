@@ -27,7 +27,7 @@ class GetTenantResult:
     """
     A collection of values returned by getTenant.
     """
-    def __init__(__self__, acr_values_supporteds=None, allow_organization_name_in_authentication_api=None, allowed_logout_urls=None, customize_mfa_in_postlogin_action=None, default_audience=None, default_directory=None, default_redirection_uri=None, default_token_quotas=None, disable_acr_values_supported=None, domain=None, enabled_locales=None, ephemeral_session_lifetime=None, error_pages=None, flags=None, friendly_name=None, id=None, idle_ephemeral_session_lifetime=None, idle_session_lifetime=None, management_api_identifier=None, mtls=None, oidc_logouts=None, picture_url=None, pushed_authorization_requests_supported=None, sandbox_version=None, session_cookies=None, session_lifetime=None, sessions=None, skip_non_verifiable_callback_uri_confirmation_prompt=None, support_email=None, support_url=None):
+    def __init__(__self__, acr_values_supporteds=None, allow_organization_name_in_authentication_api=None, allowed_logout_urls=None, customize_mfa_in_postlogin_action=None, default_audience=None, default_directory=None, default_redirection_uri=None, default_token_quotas=None, disable_acr_values_supported=None, domain=None, enabled_locales=None, ephemeral_session_lifetime=None, error_pages=None, flags=None, friendly_name=None, id=None, idle_ephemeral_session_lifetime=None, idle_session_lifetime=None, management_api_identifier=None, mtls=None, oidc_logouts=None, phone_consolidated_experience=None, picture_url=None, pushed_authorization_requests_supported=None, sandbox_version=None, session_cookies=None, session_lifetime=None, sessions=None, skip_non_verifiable_callback_uri_confirmation_prompt=None, support_email=None, support_url=None):
         if acr_values_supporteds and not isinstance(acr_values_supporteds, list):
             raise TypeError("Expected argument 'acr_values_supporteds' to be a list")
         pulumi.set(__self__, "acr_values_supporteds", acr_values_supporteds)
@@ -91,6 +91,9 @@ class GetTenantResult:
         if oidc_logouts and not isinstance(oidc_logouts, list):
             raise TypeError("Expected argument 'oidc_logouts' to be a list")
         pulumi.set(__self__, "oidc_logouts", oidc_logouts)
+        if phone_consolidated_experience and not isinstance(phone_consolidated_experience, bool):
+            raise TypeError("Expected argument 'phone_consolidated_experience' to be a bool")
+        pulumi.set(__self__, "phone_consolidated_experience", phone_consolidated_experience)
         if picture_url and not isinstance(picture_url, str):
             raise TypeError("Expected argument 'picture_url' to be a str")
         pulumi.set(__self__, "picture_url", picture_url)
@@ -288,6 +291,14 @@ class GetTenantResult:
         return pulumi.get(self, "oidc_logouts")
 
     @_builtins.property
+    @pulumi.getter(name="phoneConsolidatedExperience")
+    def phone_consolidated_experience(self) -> _builtins.bool:
+        """
+        When enabled, the tenant-level Phone Provider is used for Multi-Factor Authentication (MFA) and Passwordless phone notifications.
+        """
+        return pulumi.get(self, "phone_consolidated_experience")
+
+    @_builtins.property
     @pulumi.getter(name="pictureUrl")
     def picture_url(self) -> _builtins.str:
         """
@@ -387,6 +398,7 @@ class AwaitableGetTenantResult(GetTenantResult):
             management_api_identifier=self.management_api_identifier,
             mtls=self.mtls,
             oidc_logouts=self.oidc_logouts,
+            phone_consolidated_experience=self.phone_consolidated_experience,
             picture_url=self.picture_url,
             pushed_authorization_requests_supported=self.pushed_authorization_requests_supported,
             sandbox_version=self.sandbox_version,
@@ -437,6 +449,7 @@ def get_tenant(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTenan
         management_api_identifier=pulumi.get(__ret__, 'management_api_identifier'),
         mtls=pulumi.get(__ret__, 'mtls'),
         oidc_logouts=pulumi.get(__ret__, 'oidc_logouts'),
+        phone_consolidated_experience=pulumi.get(__ret__, 'phone_consolidated_experience'),
         picture_url=pulumi.get(__ret__, 'picture_url'),
         pushed_authorization_requests_supported=pulumi.get(__ret__, 'pushed_authorization_requests_supported'),
         sandbox_version=pulumi.get(__ret__, 'sandbox_version'),
@@ -484,6 +497,7 @@ def get_tenant_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOu
         management_api_identifier=pulumi.get(__response__, 'management_api_identifier'),
         mtls=pulumi.get(__response__, 'mtls'),
         oidc_logouts=pulumi.get(__response__, 'oidc_logouts'),
+        phone_consolidated_experience=pulumi.get(__response__, 'phone_consolidated_experience'),
         picture_url=pulumi.get(__response__, 'picture_url'),
         pushed_authorization_requests_supported=pulumi.get(__response__, 'pushed_authorization_requests_supported'),
         sandbox_version=pulumi.get(__response__, 'sandbox_version'),

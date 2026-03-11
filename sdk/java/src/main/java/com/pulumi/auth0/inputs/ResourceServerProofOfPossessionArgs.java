@@ -61,12 +61,28 @@ public final class ResourceServerProofOfPossessionArgs extends com.pulumi.resour
         return Optional.ofNullable(this.required);
     }
 
+    /**
+     * Specifies which client types require Proof-of-Possession`allClients` or `publicClients` is supported.
+     * 
+     */
+    @Import(name="requiredFor")
+    private @Nullable Output<String> requiredFor;
+
+    /**
+     * @return Specifies which client types require Proof-of-Possession`allClients` or `publicClients` is supported.
+     * 
+     */
+    public Optional<Output<String>> requiredFor() {
+        return Optional.ofNullable(this.requiredFor);
+    }
+
     private ResourceServerProofOfPossessionArgs() {}
 
     private ResourceServerProofOfPossessionArgs(ResourceServerProofOfPossessionArgs $) {
         this.disable = $.disable;
         this.mechanism = $.mechanism;
         this.required = $.required;
+        this.requiredFor = $.requiredFor;
     }
 
     public static Builder builder() {
@@ -148,6 +164,27 @@ public final class ResourceServerProofOfPossessionArgs extends com.pulumi.resour
          */
         public Builder required(Boolean required) {
             return required(Output.of(required));
+        }
+
+        /**
+         * @param requiredFor Specifies which client types require Proof-of-Possession`allClients` or `publicClients` is supported.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requiredFor(@Nullable Output<String> requiredFor) {
+            $.requiredFor = requiredFor;
+            return this;
+        }
+
+        /**
+         * @param requiredFor Specifies which client types require Proof-of-Possession`allClients` or `publicClients` is supported.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requiredFor(String requiredFor) {
+            return requiredFor(Output.of(requiredFor));
         }
 
         public ResourceServerProofOfPossessionArgs build() {

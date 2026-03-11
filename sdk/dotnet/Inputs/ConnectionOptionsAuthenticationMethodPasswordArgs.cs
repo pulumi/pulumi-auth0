@@ -13,10 +13,22 @@ namespace Pulumi.Auth0.Inputs
     public sealed class ConnectionOptionsAuthenticationMethodPasswordArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Specifies whether password is required or optional when creating users via API. Possible values: "required", "optional". Defaults to "required".
+        /// </summary>
+        [Input("apiBehavior")]
+        public Input<string>? ApiBehavior { get; set; }
+
+        /// <summary>
         /// Enables password authentication
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
+
+        /// <summary>
+        /// Specifies whether password is allowed or blocked during signup flows. Possible values: "allow", "block". Defaults to "allow".
+        /// </summary>
+        [Input("signupBehavior")]
+        public Input<string>? SignupBehavior { get; set; }
 
         public ConnectionOptionsAuthenticationMethodPasswordArgs()
         {

@@ -2375,9 +2375,17 @@ export interface ConnectionOptionsAuthenticationMethodPasskey {
 
 export interface ConnectionOptionsAuthenticationMethodPassword {
     /**
+     * Specifies whether password is required or optional when creating users via API. Possible values: "required", "optional". Defaults to "required".
+     */
+    apiBehavior?: pulumi.Input<string>;
+    /**
      * Enables password authentication
      */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * Specifies whether password is allowed or blocked during signup flows. Possible values: "allow", "block". Defaults to "allow".
+     */
+    signupBehavior?: pulumi.Input<string>;
 }
 
 export interface ConnectionOptionsAuthenticationMethodPhoneOtp {
@@ -3789,6 +3797,10 @@ export interface ResourceServerProofOfPossession {
      * Indicates whether proof-of-possession is required with this resource server.
      */
     required?: pulumi.Input<boolean>;
+    /**
+     * Specifies which client types require Proof-of-Possession`allClients` or `publicClients` is supported.
+     */
+    requiredFor?: pulumi.Input<string>;
 }
 
 export interface ResourceServerScopesScope {

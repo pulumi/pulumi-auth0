@@ -56,7 +56,7 @@ namespace Pulumi.Auth0
         public Output<string?> AppType { get; private set; } = null!;
 
         /// <summary>
-        /// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `Email`. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `["guardian-push"]` if not specified.
+        /// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `Email`. The order is significant as this is the order in which notification channels will be evaluated.
         /// </summary>
         [Output("asyncApprovalNotificationChannels")]
         public Output<ImmutableArray<string>> AsyncApprovalNotificationChannels { get; private set; } = null!;
@@ -406,7 +406,7 @@ namespace Pulumi.Auth0
         private InputList<string>? _asyncApprovalNotificationChannels;
 
         /// <summary>
-        /// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `Email`. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `["guardian-push"]` if not specified.
+        /// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `Email`. The order is significant as this is the order in which notification channels will be evaluated.
         /// </summary>
         public InputList<string> AsyncApprovalNotificationChannels
         {
@@ -755,7 +755,7 @@ namespace Pulumi.Auth0
         private InputList<string>? _asyncApprovalNotificationChannels;
 
         /// <summary>
-        /// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `Email`. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `["guardian-push"]` if not specified.
+        /// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `Email`. The order is significant as this is the order in which notification channels will be evaluated.
         /// </summary>
         public InputList<string> AsyncApprovalNotificationChannels
         {

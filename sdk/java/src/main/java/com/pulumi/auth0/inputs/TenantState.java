@@ -296,6 +296,21 @@ public final class TenantState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * When enabled, the tenant-level Phone Provider is used for Multi-Factor Authentication (MFA) and Passwordless phone notifications.
+     * 
+     */
+    @Import(name="phoneConsolidatedExperience")
+    private @Nullable Output<Boolean> phoneConsolidatedExperience;
+
+    /**
+     * @return When enabled, the tenant-level Phone Provider is used for Multi-Factor Authentication (MFA) and Passwordless phone notifications.
+     * 
+     */
+    public Optional<Output<Boolean>> phoneConsolidatedExperience() {
+        return Optional.ofNullable(this.phoneConsolidatedExperience);
+    }
+
+    /**
      * URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
      * 
      */
@@ -451,6 +466,7 @@ public final class TenantState extends com.pulumi.resources.ResourceArgs {
         this.idleSessionLifetime = $.idleSessionLifetime;
         this.mtls = $.mtls;
         this.oidcLogout = $.oidcLogout;
+        this.phoneConsolidatedExperience = $.phoneConsolidatedExperience;
         this.pictureUrl = $.pictureUrl;
         this.pushedAuthorizationRequestsSupported = $.pushedAuthorizationRequestsSupported;
         this.sandboxVersion = $.sandboxVersion;
@@ -886,6 +902,27 @@ public final class TenantState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder oidcLogout(TenantOidcLogoutArgs oidcLogout) {
             return oidcLogout(Output.of(oidcLogout));
+        }
+
+        /**
+         * @param phoneConsolidatedExperience When enabled, the tenant-level Phone Provider is used for Multi-Factor Authentication (MFA) and Passwordless phone notifications.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder phoneConsolidatedExperience(@Nullable Output<Boolean> phoneConsolidatedExperience) {
+            $.phoneConsolidatedExperience = phoneConsolidatedExperience;
+            return this;
+        }
+
+        /**
+         * @param phoneConsolidatedExperience When enabled, the tenant-level Phone Provider is used for Multi-Factor Authentication (MFA) and Passwordless phone notifications.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder phoneConsolidatedExperience(Boolean phoneConsolidatedExperience) {
+            return phoneConsolidatedExperience(Output.of(phoneConsolidatedExperience));
         }
 
         /**
