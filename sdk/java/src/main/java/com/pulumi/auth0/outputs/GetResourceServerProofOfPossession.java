@@ -26,6 +26,11 @@ public final class GetResourceServerProofOfPossession {
      * 
      */
     private Boolean required;
+    /**
+     * @return Specifies which client types require Proof-of-Possession`allClients` or `publicClients` is supported.
+     * 
+     */
+    private String requiredFor;
 
     private GetResourceServerProofOfPossession() {}
     /**
@@ -49,6 +54,13 @@ public final class GetResourceServerProofOfPossession {
     public Boolean required() {
         return this.required;
     }
+    /**
+     * @return Specifies which client types require Proof-of-Possession`allClients` or `publicClients` is supported.
+     * 
+     */
+    public String requiredFor() {
+        return this.requiredFor;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -62,12 +74,14 @@ public final class GetResourceServerProofOfPossession {
         private Boolean disable;
         private String mechanism;
         private Boolean required;
+        private String requiredFor;
         public Builder() {}
         public Builder(GetResourceServerProofOfPossession defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.disable = defaults.disable;
     	      this.mechanism = defaults.mechanism;
     	      this.required = defaults.required;
+    	      this.requiredFor = defaults.requiredFor;
         }
 
         @CustomType.Setter
@@ -94,11 +108,20 @@ public final class GetResourceServerProofOfPossession {
             this.required = required;
             return this;
         }
+        @CustomType.Setter
+        public Builder requiredFor(String requiredFor) {
+            if (requiredFor == null) {
+              throw new MissingRequiredPropertyException("GetResourceServerProofOfPossession", "requiredFor");
+            }
+            this.requiredFor = requiredFor;
+            return this;
+        }
         public GetResourceServerProofOfPossession build() {
             final var _resultValue = new GetResourceServerProofOfPossession();
             _resultValue.disable = disable;
             _resultValue.mechanism = mechanism;
             _resultValue.required = required;
+            _resultValue.requiredFor = requiredFor;
             return _resultValue;
         }
     }

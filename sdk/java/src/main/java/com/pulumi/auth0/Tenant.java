@@ -363,6 +363,20 @@ public class Tenant extends com.pulumi.resources.CustomResource {
         return this.oidcLogout;
     }
     /**
+     * When enabled, the tenant-level Phone Provider is used for Multi-Factor Authentication (MFA) and Passwordless phone notifications.
+     * 
+     */
+    @Export(name="phoneConsolidatedExperience", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> phoneConsolidatedExperience;
+
+    /**
+     * @return When enabled, the tenant-level Phone Provider is used for Multi-Factor Authentication (MFA) and Passwordless phone notifications.
+     * 
+     */
+    public Output<Boolean> phoneConsolidatedExperience() {
+        return this.phoneConsolidatedExperience;
+    }
+    /**
      * URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
      * 
      */

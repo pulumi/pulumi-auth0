@@ -30,6 +30,12 @@ namespace Pulumi.Auth0.Inputs
         [Input("required")]
         public Input<bool>? Required { get; set; }
 
+        /// <summary>
+        /// Specifies which client types require Proof-of-Possession`AllClients` or `PublicClients` is supported.
+        /// </summary>
+        [Input("requiredFor")]
+        public Input<string>? RequiredFor { get; set; }
+
         public ResourceServerProofOfPossessionArgs()
         {
         }

@@ -113,6 +113,10 @@ export interface GetTenantResult {
      */
     readonly oidcLogouts: outputs.GetTenantOidcLogout[];
     /**
+     * When enabled, the tenant-level Phone Provider is used for Multi-Factor Authentication (MFA) and Passwordless phone notifications.
+     */
+    readonly phoneConsolidatedExperience: boolean;
+    /**
      * URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
      */
     readonly pictureUrl: string;

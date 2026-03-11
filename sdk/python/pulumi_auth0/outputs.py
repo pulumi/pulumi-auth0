@@ -9013,13 +9013,48 @@ class ConnectionOptionsAuthenticationMethodPasskey(dict):
 
 @pulumi.output_type
 class ConnectionOptionsAuthenticationMethodPassword(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "apiBehavior":
+            suggest = "api_behavior"
+        elif key == "signupBehavior":
+            suggest = "signup_behavior"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionOptionsAuthenticationMethodPassword. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionOptionsAuthenticationMethodPassword.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionOptionsAuthenticationMethodPassword.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 enabled: Optional[_builtins.bool] = None):
+                 api_behavior: Optional[_builtins.str] = None,
+                 enabled: Optional[_builtins.bool] = None,
+                 signup_behavior: Optional[_builtins.str] = None):
         """
+        :param _builtins.str api_behavior: Specifies whether password is required or optional when creating users via API. Possible values: "required", "optional". Defaults to "required".
         :param _builtins.bool enabled: Enables password authentication
+        :param _builtins.str signup_behavior: Specifies whether password is allowed or blocked during signup flows. Possible values: "allow", "block". Defaults to "allow".
         """
+        if api_behavior is not None:
+            pulumi.set(__self__, "api_behavior", api_behavior)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if signup_behavior is not None:
+            pulumi.set(__self__, "signup_behavior", signup_behavior)
+
+    @_builtins.property
+    @pulumi.getter(name="apiBehavior")
+    def api_behavior(self) -> Optional[_builtins.str]:
+        """
+        Specifies whether password is required or optional when creating users via API. Possible values: "required", "optional". Defaults to "required".
+        """
+        return pulumi.get(self, "api_behavior")
 
     @_builtins.property
     @pulumi.getter
@@ -9028,6 +9063,14 @@ class ConnectionOptionsAuthenticationMethodPassword(dict):
         Enables password authentication
         """
         return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="signupBehavior")
+    def signup_behavior(self) -> Optional[_builtins.str]:
+        """
+        Specifies whether password is allowed or blocked during signup flows. Possible values: "allow", "block". Defaults to "allow".
+        """
+        return pulumi.get(self, "signup_behavior")
 
 
 @pulumi.output_type
@@ -13893,14 +13936,33 @@ class ResourceServerAuthorizationDetail(dict):
 
 @pulumi.output_type
 class ResourceServerProofOfPossession(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "requiredFor":
+            suggest = "required_for"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResourceServerProofOfPossession. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResourceServerProofOfPossession.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResourceServerProofOfPossession.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  disable: Optional[_builtins.bool] = None,
                  mechanism: Optional[_builtins.str] = None,
-                 required: Optional[_builtins.bool] = None):
+                 required: Optional[_builtins.bool] = None,
+                 required_for: Optional[_builtins.str] = None):
         """
         :param _builtins.bool disable: Disable proof-of-possession.
         :param _builtins.str mechanism: Mechanism used for proof-of-possession. `mtls` or `dpop` is supported.
         :param _builtins.bool required: Indicates whether proof-of-possession is required with this resource server.
+        :param _builtins.str required_for: Specifies which client types require Proof-of-Possession`all_clients` or `public_clients` is supported.
         """
         if disable is not None:
             pulumi.set(__self__, "disable", disable)
@@ -13908,6 +13970,8 @@ class ResourceServerProofOfPossession(dict):
             pulumi.set(__self__, "mechanism", mechanism)
         if required is not None:
             pulumi.set(__self__, "required", required)
+        if required_for is not None:
+            pulumi.set(__self__, "required_for", required_for)
 
     @_builtins.property
     @pulumi.getter
@@ -13932,6 +13996,14 @@ class ResourceServerProofOfPossession(dict):
         Indicates whether proof-of-possession is required with this resource server.
         """
         return pulumi.get(self, "required")
+
+    @_builtins.property
+    @pulumi.getter(name="requiredFor")
+    def required_for(self) -> Optional[_builtins.str]:
+        """
+        Specifies which client types require Proof-of-Possession`all_clients` or `public_clients` is supported.
+        """
+        return pulumi.get(self, "required_for")
 
 
 @pulumi.output_type
@@ -20587,7 +20659,7 @@ class GetClientsClientResult(dict):
         :param Sequence[_builtins.str] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
         :param Sequence[_builtins.str] allowed_origins: URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
         :param _builtins.str app_type: Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `express_configuration`
-        :param Sequence[_builtins.str] async_approval_notification_channels: List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `["guardian-push"]` if not specified.
+        :param Sequence[_builtins.str] async_approval_notification_channels: List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated.
         :param Sequence[_builtins.str] callbacks: URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
         :param Mapping[str, _builtins.str] client_metadata: Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
         :param _builtins.str client_secret: Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string.
@@ -20668,7 +20740,7 @@ class GetClientsClientResult(dict):
     @pulumi.getter(name="asyncApprovalNotificationChannels")
     def async_approval_notification_channels(self) -> Sequence[_builtins.str]:
         """
-        List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `["guardian-push"]` if not specified.
+        List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated.
         """
         return pulumi.get(self, "async_approval_notification_channels")
 
@@ -23228,11 +23300,25 @@ class GetConnectionOptionAuthenticationMethodPasskeyResult(dict):
 @pulumi.output_type
 class GetConnectionOptionAuthenticationMethodPasswordResult(dict):
     def __init__(__self__, *,
-                 enabled: _builtins.bool):
+                 api_behavior: _builtins.str,
+                 enabled: _builtins.bool,
+                 signup_behavior: _builtins.str):
         """
+        :param _builtins.str api_behavior: Specifies whether password is required or optional when creating users via API. Possible values: "required", "optional". Defaults to "required".
         :param _builtins.bool enabled: Enables password authentication
+        :param _builtins.str signup_behavior: Specifies whether password is allowed or blocked during signup flows. Possible values: "allow", "block". Defaults to "allow".
         """
+        pulumi.set(__self__, "api_behavior", api_behavior)
         pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "signup_behavior", signup_behavior)
+
+    @_builtins.property
+    @pulumi.getter(name="apiBehavior")
+    def api_behavior(self) -> _builtins.str:
+        """
+        Specifies whether password is required or optional when creating users via API. Possible values: "required", "optional". Defaults to "required".
+        """
+        return pulumi.get(self, "api_behavior")
 
     @_builtins.property
     @pulumi.getter
@@ -23241,6 +23327,14 @@ class GetConnectionOptionAuthenticationMethodPasswordResult(dict):
         Enables password authentication
         """
         return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="signupBehavior")
+    def signup_behavior(self) -> _builtins.str:
+        """
+        Specifies whether password is allowed or blocked during signup flows. Possible values: "allow", "block". Defaults to "allow".
+        """
+        return pulumi.get(self, "signup_behavior")
 
 
 @pulumi.output_type
@@ -25650,15 +25744,18 @@ class GetResourceServerProofOfPossessionResult(dict):
     def __init__(__self__, *,
                  disable: _builtins.bool,
                  mechanism: _builtins.str,
-                 required: _builtins.bool):
+                 required: _builtins.bool,
+                 required_for: _builtins.str):
         """
         :param _builtins.bool disable: Disable proof-of-possession.
         :param _builtins.str mechanism: Mechanism used for proof-of-possession. `mtls` or `dpop` is supported.
         :param _builtins.bool required: Indicates whether proof-of-possession is required with this resource server.
+        :param _builtins.str required_for: Specifies which client types require Proof-of-Possession`all_clients` or `public_clients` is supported.
         """
         pulumi.set(__self__, "disable", disable)
         pulumi.set(__self__, "mechanism", mechanism)
         pulumi.set(__self__, "required", required)
+        pulumi.set(__self__, "required_for", required_for)
 
     @_builtins.property
     @pulumi.getter
@@ -25683,6 +25780,14 @@ class GetResourceServerProofOfPossessionResult(dict):
         Indicates whether proof-of-possession is required with this resource server.
         """
         return pulumi.get(self, "required")
+
+    @_builtins.property
+    @pulumi.getter(name="requiredFor")
+    def required_for(self) -> _builtins.str:
+        """
+        Specifies which client types require Proof-of-Possession`all_clients` or `public_clients` is supported.
+        """
+        return pulumi.get(self, "required_for")
 
 
 @pulumi.output_type

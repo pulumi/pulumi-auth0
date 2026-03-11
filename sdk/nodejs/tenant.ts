@@ -164,6 +164,10 @@ export class Tenant extends pulumi.CustomResource {
      */
     declare public readonly oidcLogout: pulumi.Output<outputs.TenantOidcLogout>;
     /**
+     * When enabled, the tenant-level Phone Provider is used for Multi-Factor Authentication (MFA) and Passwordless phone notifications.
+     */
+    declare public readonly phoneConsolidatedExperience: pulumi.Output<boolean>;
+    /**
      * URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
      */
     declare public readonly pictureUrl: pulumi.Output<string>;
@@ -231,6 +235,7 @@ export class Tenant extends pulumi.CustomResource {
             resourceInputs["idleSessionLifetime"] = state?.idleSessionLifetime;
             resourceInputs["mtls"] = state?.mtls;
             resourceInputs["oidcLogout"] = state?.oidcLogout;
+            resourceInputs["phoneConsolidatedExperience"] = state?.phoneConsolidatedExperience;
             resourceInputs["pictureUrl"] = state?.pictureUrl;
             resourceInputs["pushedAuthorizationRequestsSupported"] = state?.pushedAuthorizationRequestsSupported;
             resourceInputs["sandboxVersion"] = state?.sandboxVersion;
@@ -260,6 +265,7 @@ export class Tenant extends pulumi.CustomResource {
             resourceInputs["idleSessionLifetime"] = args?.idleSessionLifetime;
             resourceInputs["mtls"] = args?.mtls;
             resourceInputs["oidcLogout"] = args?.oidcLogout;
+            resourceInputs["phoneConsolidatedExperience"] = args?.phoneConsolidatedExperience;
             resourceInputs["pictureUrl"] = args?.pictureUrl;
             resourceInputs["pushedAuthorizationRequestsSupported"] = args?.pushedAuthorizationRequestsSupported;
             resourceInputs["sandboxVersion"] = args?.sandboxVersion;
@@ -351,6 +357,10 @@ export interface TenantState {
      * Settings related to OIDC RP-initiated Logout.
      */
     oidcLogout?: pulumi.Input<inputs.TenantOidcLogout>;
+    /**
+     * When enabled, the tenant-level Phone Provider is used for Multi-Factor Authentication (MFA) and Passwordless phone notifications.
+     */
+    phoneConsolidatedExperience?: pulumi.Input<boolean>;
     /**
      * URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
      */
@@ -465,6 +475,10 @@ export interface TenantArgs {
      * Settings related to OIDC RP-initiated Logout.
      */
     oidcLogout?: pulumi.Input<inputs.TenantOidcLogout>;
+    /**
+     * When enabled, the tenant-level Phone Provider is used for Multi-Factor Authentication (MFA) and Passwordless phone notifications.
+     */
+    phoneConsolidatedExperience?: pulumi.Input<boolean>;
     /**
      * URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
      */

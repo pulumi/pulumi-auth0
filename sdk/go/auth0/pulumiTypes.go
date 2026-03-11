@@ -22101,8 +22101,12 @@ func (o ConnectionOptionsAuthenticationMethodPasskeyPtrOutput) Enabled() pulumi.
 }
 
 type ConnectionOptionsAuthenticationMethodPassword struct {
+	// Specifies whether password is required or optional when creating users via API. Possible values: "required", "optional". Defaults to "required".
+	ApiBehavior *string `pulumi:"apiBehavior"`
 	// Enables password authentication
 	Enabled *bool `pulumi:"enabled"`
+	// Specifies whether password is allowed or blocked during signup flows. Possible values: "allow", "block". Defaults to "allow".
+	SignupBehavior *string `pulumi:"signupBehavior"`
 }
 
 // ConnectionOptionsAuthenticationMethodPasswordInput is an input type that accepts ConnectionOptionsAuthenticationMethodPasswordArgs and ConnectionOptionsAuthenticationMethodPasswordOutput values.
@@ -22117,8 +22121,12 @@ type ConnectionOptionsAuthenticationMethodPasswordInput interface {
 }
 
 type ConnectionOptionsAuthenticationMethodPasswordArgs struct {
+	// Specifies whether password is required or optional when creating users via API. Possible values: "required", "optional". Defaults to "required".
+	ApiBehavior pulumi.StringPtrInput `pulumi:"apiBehavior"`
 	// Enables password authentication
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Specifies whether password is allowed or blocked during signup flows. Possible values: "allow", "block". Defaults to "allow".
+	SignupBehavior pulumi.StringPtrInput `pulumi:"signupBehavior"`
 }
 
 func (ConnectionOptionsAuthenticationMethodPasswordArgs) ElementType() reflect.Type {
@@ -22198,9 +22206,19 @@ func (o ConnectionOptionsAuthenticationMethodPasswordOutput) ToConnectionOptions
 	}).(ConnectionOptionsAuthenticationMethodPasswordPtrOutput)
 }
 
+// Specifies whether password is required or optional when creating users via API. Possible values: "required", "optional". Defaults to "required".
+func (o ConnectionOptionsAuthenticationMethodPasswordOutput) ApiBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptionsAuthenticationMethodPassword) *string { return v.ApiBehavior }).(pulumi.StringPtrOutput)
+}
+
 // Enables password authentication
 func (o ConnectionOptionsAuthenticationMethodPasswordOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionOptionsAuthenticationMethodPassword) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether password is allowed or blocked during signup flows. Possible values: "allow", "block". Defaults to "allow".
+func (o ConnectionOptionsAuthenticationMethodPasswordOutput) SignupBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptionsAuthenticationMethodPassword) *string { return v.SignupBehavior }).(pulumi.StringPtrOutput)
 }
 
 type ConnectionOptionsAuthenticationMethodPasswordPtrOutput struct{ *pulumi.OutputState }
@@ -22227,6 +22245,16 @@ func (o ConnectionOptionsAuthenticationMethodPasswordPtrOutput) Elem() Connectio
 	}).(ConnectionOptionsAuthenticationMethodPasswordOutput)
 }
 
+// Specifies whether password is required or optional when creating users via API. Possible values: "required", "optional". Defaults to "required".
+func (o ConnectionOptionsAuthenticationMethodPasswordPtrOutput) ApiBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptionsAuthenticationMethodPassword) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiBehavior
+	}).(pulumi.StringPtrOutput)
+}
+
 // Enables password authentication
 func (o ConnectionOptionsAuthenticationMethodPasswordPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptionsAuthenticationMethodPassword) *bool {
@@ -22235,6 +22263,16 @@ func (o ConnectionOptionsAuthenticationMethodPasswordPtrOutput) Enabled() pulumi
 		}
 		return v.Enabled
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether password is allowed or blocked during signup flows. Possible values: "allow", "block". Defaults to "allow".
+func (o ConnectionOptionsAuthenticationMethodPasswordPtrOutput) SignupBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptionsAuthenticationMethodPassword) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SignupBehavior
+	}).(pulumi.StringPtrOutput)
 }
 
 type ConnectionOptionsAuthenticationMethodPhoneOtp struct {
@@ -36358,6 +36396,8 @@ type ResourceServerProofOfPossession struct {
 	Mechanism *string `pulumi:"mechanism"`
 	// Indicates whether proof-of-possession is required with this resource server.
 	Required *bool `pulumi:"required"`
+	// Specifies which client types require Proof-of-Possession`allClients` or `publicClients` is supported.
+	RequiredFor *string `pulumi:"requiredFor"`
 }
 
 // ResourceServerProofOfPossessionInput is an input type that accepts ResourceServerProofOfPossessionArgs and ResourceServerProofOfPossessionOutput values.
@@ -36378,6 +36418,8 @@ type ResourceServerProofOfPossessionArgs struct {
 	Mechanism pulumi.StringPtrInput `pulumi:"mechanism"`
 	// Indicates whether proof-of-possession is required with this resource server.
 	Required pulumi.BoolPtrInput `pulumi:"required"`
+	// Specifies which client types require Proof-of-Possession`allClients` or `publicClients` is supported.
+	RequiredFor pulumi.StringPtrInput `pulumi:"requiredFor"`
 }
 
 func (ResourceServerProofOfPossessionArgs) ElementType() reflect.Type {
@@ -36472,6 +36514,11 @@ func (o ResourceServerProofOfPossessionOutput) Required() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ResourceServerProofOfPossession) *bool { return v.Required }).(pulumi.BoolPtrOutput)
 }
 
+// Specifies which client types require Proof-of-Possession`allClients` or `publicClients` is supported.
+func (o ResourceServerProofOfPossessionOutput) RequiredFor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceServerProofOfPossession) *string { return v.RequiredFor }).(pulumi.StringPtrOutput)
+}
+
 type ResourceServerProofOfPossessionPtrOutput struct{ *pulumi.OutputState }
 
 func (ResourceServerProofOfPossessionPtrOutput) ElementType() reflect.Type {
@@ -36524,6 +36571,16 @@ func (o ResourceServerProofOfPossessionPtrOutput) Required() pulumi.BoolPtrOutpu
 		}
 		return v.Required
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies which client types require Proof-of-Possession`allClients` or `publicClients` is supported.
+func (o ResourceServerProofOfPossessionPtrOutput) RequiredFor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceServerProofOfPossession) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RequiredFor
+	}).(pulumi.StringPtrOutput)
 }
 
 type ResourceServerScopesScope struct {
@@ -54172,7 +54229,7 @@ type GetClientsClient struct {
 	AllowedOrigins []string `pulumi:"allowedOrigins"`
 	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `expressConfiguration`
 	AppType string `pulumi:"appType"`
-	// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `["guardian-push"]` if not specified.
+	// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated.
 	AsyncApprovalNotificationChannels []string `pulumi:"asyncApprovalNotificationChannels"`
 	// URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
 	Callbacks []string `pulumi:"callbacks"`
@@ -54231,7 +54288,7 @@ type GetClientsClientArgs struct {
 	AllowedOrigins pulumi.StringArrayInput `pulumi:"allowedOrigins"`
 	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `expressConfiguration`
 	AppType pulumi.StringInput `pulumi:"appType"`
-	// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `["guardian-push"]` if not specified.
+	// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated.
 	AsyncApprovalNotificationChannels pulumi.StringArrayInput `pulumi:"asyncApprovalNotificationChannels"`
 	// URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
 	Callbacks pulumi.StringArrayInput `pulumi:"callbacks"`
@@ -54341,7 +54398,7 @@ func (o GetClientsClientOutput) AppType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClientsClient) string { return v.AppType }).(pulumi.StringOutput)
 }
 
-// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `["guardian-push"]` if not specified.
+// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated.
 func (o GetClientsClientOutput) AsyncApprovalNotificationChannels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetClientsClient) []string { return v.AsyncApprovalNotificationChannels }).(pulumi.StringArrayOutput)
 }
@@ -59188,8 +59245,12 @@ func (o GetConnectionOptionAuthenticationMethodPasskeyArrayOutput) Index(i pulum
 }
 
 type GetConnectionOptionAuthenticationMethodPassword struct {
+	// Specifies whether password is required or optional when creating users via API. Possible values: "required", "optional". Defaults to "required".
+	ApiBehavior string `pulumi:"apiBehavior"`
 	// Enables password authentication
 	Enabled bool `pulumi:"enabled"`
+	// Specifies whether password is allowed or blocked during signup flows. Possible values: "allow", "block". Defaults to "allow".
+	SignupBehavior string `pulumi:"signupBehavior"`
 }
 
 // GetConnectionOptionAuthenticationMethodPasswordInput is an input type that accepts GetConnectionOptionAuthenticationMethodPasswordArgs and GetConnectionOptionAuthenticationMethodPasswordOutput values.
@@ -59204,8 +59265,12 @@ type GetConnectionOptionAuthenticationMethodPasswordInput interface {
 }
 
 type GetConnectionOptionAuthenticationMethodPasswordArgs struct {
+	// Specifies whether password is required or optional when creating users via API. Possible values: "required", "optional". Defaults to "required".
+	ApiBehavior pulumi.StringInput `pulumi:"apiBehavior"`
 	// Enables password authentication
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Specifies whether password is allowed or blocked during signup flows. Possible values: "allow", "block". Defaults to "allow".
+	SignupBehavior pulumi.StringInput `pulumi:"signupBehavior"`
 }
 
 func (GetConnectionOptionAuthenticationMethodPasswordArgs) ElementType() reflect.Type {
@@ -59259,9 +59324,19 @@ func (o GetConnectionOptionAuthenticationMethodPasswordOutput) ToGetConnectionOp
 	return o
 }
 
+// Specifies whether password is required or optional when creating users via API. Possible values: "required", "optional". Defaults to "required".
+func (o GetConnectionOptionAuthenticationMethodPasswordOutput) ApiBehavior() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionAuthenticationMethodPassword) string { return v.ApiBehavior }).(pulumi.StringOutput)
+}
+
 // Enables password authentication
 func (o GetConnectionOptionAuthenticationMethodPasswordOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetConnectionOptionAuthenticationMethodPassword) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Specifies whether password is allowed or blocked during signup flows. Possible values: "allow", "block". Defaults to "allow".
+func (o GetConnectionOptionAuthenticationMethodPasswordOutput) SignupBehavior() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionAuthenticationMethodPassword) string { return v.SignupBehavior }).(pulumi.StringOutput)
 }
 
 type GetConnectionOptionAuthenticationMethodPasswordArrayOutput struct{ *pulumi.OutputState }
@@ -66349,6 +66424,8 @@ type GetResourceServerProofOfPossession struct {
 	Mechanism string `pulumi:"mechanism"`
 	// Indicates whether proof-of-possession is required with this resource server.
 	Required bool `pulumi:"required"`
+	// Specifies which client types require Proof-of-Possession`allClients` or `publicClients` is supported.
+	RequiredFor string `pulumi:"requiredFor"`
 }
 
 // GetResourceServerProofOfPossessionInput is an input type that accepts GetResourceServerProofOfPossessionArgs and GetResourceServerProofOfPossessionOutput values.
@@ -66369,6 +66446,8 @@ type GetResourceServerProofOfPossessionArgs struct {
 	Mechanism pulumi.StringInput `pulumi:"mechanism"`
 	// Indicates whether proof-of-possession is required with this resource server.
 	Required pulumi.BoolInput `pulumi:"required"`
+	// Specifies which client types require Proof-of-Possession`allClients` or `publicClients` is supported.
+	RequiredFor pulumi.StringInput `pulumi:"requiredFor"`
 }
 
 func (GetResourceServerProofOfPossessionArgs) ElementType() reflect.Type {
@@ -66435,6 +66514,11 @@ func (o GetResourceServerProofOfPossessionOutput) Mechanism() pulumi.StringOutpu
 // Indicates whether proof-of-possession is required with this resource server.
 func (o GetResourceServerProofOfPossessionOutput) Required() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetResourceServerProofOfPossession) bool { return v.Required }).(pulumi.BoolOutput)
+}
+
+// Specifies which client types require Proof-of-Possession`allClients` or `publicClients` is supported.
+func (o GetResourceServerProofOfPossessionOutput) RequiredFor() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceServerProofOfPossession) string { return v.RequiredFor }).(pulumi.StringOutput)
 }
 
 type GetResourceServerProofOfPossessionArrayOutput struct{ *pulumi.OutputState }

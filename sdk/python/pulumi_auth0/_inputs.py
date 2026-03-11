@@ -11646,20 +11646,48 @@ class ConnectionOptionsAuthenticationMethodPasskeyArgs:
 
 
 class ConnectionOptionsAuthenticationMethodPasswordArgsDict(TypedDict):
+    api_behavior: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies whether password is required or optional when creating users via API. Possible values: "required", "optional". Defaults to "required".
+    """
     enabled: NotRequired[pulumi.Input[_builtins.bool]]
     """
     Enables password authentication
+    """
+    signup_behavior: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies whether password is allowed or blocked during signup flows. Possible values: "allow", "block". Defaults to "allow".
     """
 
 @pulumi.input_type
 class ConnectionOptionsAuthenticationMethodPasswordArgs:
     def __init__(__self__, *,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 api_behavior: Optional[pulumi.Input[_builtins.str]] = None,
+                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 signup_behavior: Optional[pulumi.Input[_builtins.str]] = None):
         """
+        :param pulumi.Input[_builtins.str] api_behavior: Specifies whether password is required or optional when creating users via API. Possible values: "required", "optional". Defaults to "required".
         :param pulumi.Input[_builtins.bool] enabled: Enables password authentication
+        :param pulumi.Input[_builtins.str] signup_behavior: Specifies whether password is allowed or blocked during signup flows. Possible values: "allow", "block". Defaults to "allow".
         """
+        if api_behavior is not None:
+            pulumi.set(__self__, "api_behavior", api_behavior)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if signup_behavior is not None:
+            pulumi.set(__self__, "signup_behavior", signup_behavior)
+
+    @_builtins.property
+    @pulumi.getter(name="apiBehavior")
+    def api_behavior(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Specifies whether password is required or optional when creating users via API. Possible values: "required", "optional". Defaults to "required".
+        """
+        return pulumi.get(self, "api_behavior")
+
+    @api_behavior.setter
+    def api_behavior(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "api_behavior", value)
 
     @_builtins.property
     @pulumi.getter
@@ -11672,6 +11700,18 @@ class ConnectionOptionsAuthenticationMethodPasswordArgs:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="signupBehavior")
+    def signup_behavior(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Specifies whether password is allowed or blocked during signup flows. Possible values: "allow", "block". Defaults to "allow".
+        """
+        return pulumi.get(self, "signup_behavior")
+
+    @signup_behavior.setter
+    def signup_behavior(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "signup_behavior", value)
 
 
 class ConnectionOptionsAuthenticationMethodPhoneOtpArgsDict(TypedDict):
@@ -17645,17 +17685,23 @@ class ResourceServerProofOfPossessionArgsDict(TypedDict):
     """
     Indicates whether proof-of-possession is required with this resource server.
     """
+    required_for: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies which client types require Proof-of-Possession`all_clients` or `public_clients` is supported.
+    """
 
 @pulumi.input_type
 class ResourceServerProofOfPossessionArgs:
     def __init__(__self__, *,
                  disable: Optional[pulumi.Input[_builtins.bool]] = None,
                  mechanism: Optional[pulumi.Input[_builtins.str]] = None,
-                 required: Optional[pulumi.Input[_builtins.bool]] = None):
+                 required: Optional[pulumi.Input[_builtins.bool]] = None,
+                 required_for: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] disable: Disable proof-of-possession.
         :param pulumi.Input[_builtins.str] mechanism: Mechanism used for proof-of-possession. `mtls` or `dpop` is supported.
         :param pulumi.Input[_builtins.bool] required: Indicates whether proof-of-possession is required with this resource server.
+        :param pulumi.Input[_builtins.str] required_for: Specifies which client types require Proof-of-Possession`all_clients` or `public_clients` is supported.
         """
         if disable is not None:
             pulumi.set(__self__, "disable", disable)
@@ -17663,6 +17709,8 @@ class ResourceServerProofOfPossessionArgs:
             pulumi.set(__self__, "mechanism", mechanism)
         if required is not None:
             pulumi.set(__self__, "required", required)
+        if required_for is not None:
+            pulumi.set(__self__, "required_for", required_for)
 
     @_builtins.property
     @pulumi.getter
@@ -17699,6 +17747,18 @@ class ResourceServerProofOfPossessionArgs:
     @required.setter
     def required(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "required", value)
+
+    @_builtins.property
+    @pulumi.getter(name="requiredFor")
+    def required_for(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Specifies which client types require Proof-of-Possession`all_clients` or `public_clients` is supported.
+        """
+        return pulumi.get(self, "required_for")
+
+    @required_for.setter
+    def required_for(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "required_for", value)
 
 
 class ResourceServerScopesScopeArgsDict(TypedDict):

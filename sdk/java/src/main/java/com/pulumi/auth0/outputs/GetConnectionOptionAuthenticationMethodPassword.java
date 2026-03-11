@@ -6,23 +6,48 @@ package com.pulumi.auth0.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
 
 @CustomType
 public final class GetConnectionOptionAuthenticationMethodPassword {
     /**
+     * @return Specifies whether password is required or optional when creating users via API. Possible values: &#34;required&#34;, &#34;optional&#34;. Defaults to &#34;required&#34;.
+     * 
+     */
+    private String apiBehavior;
+    /**
      * @return Enables password authentication
      * 
      */
     private Boolean enabled;
+    /**
+     * @return Specifies whether password is allowed or blocked during signup flows. Possible values: &#34;allow&#34;, &#34;block&#34;. Defaults to &#34;allow&#34;.
+     * 
+     */
+    private String signupBehavior;
 
     private GetConnectionOptionAuthenticationMethodPassword() {}
+    /**
+     * @return Specifies whether password is required or optional when creating users via API. Possible values: &#34;required&#34;, &#34;optional&#34;. Defaults to &#34;required&#34;.
+     * 
+     */
+    public String apiBehavior() {
+        return this.apiBehavior;
+    }
     /**
      * @return Enables password authentication
      * 
      */
     public Boolean enabled() {
         return this.enabled;
+    }
+    /**
+     * @return Specifies whether password is allowed or blocked during signup flows. Possible values: &#34;allow&#34;, &#34;block&#34;. Defaults to &#34;allow&#34;.
+     * 
+     */
+    public String signupBehavior() {
+        return this.signupBehavior;
     }
 
     public static Builder builder() {
@@ -34,13 +59,25 @@ public final class GetConnectionOptionAuthenticationMethodPassword {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String apiBehavior;
         private Boolean enabled;
+        private String signupBehavior;
         public Builder() {}
         public Builder(GetConnectionOptionAuthenticationMethodPassword defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.apiBehavior = defaults.apiBehavior;
     	      this.enabled = defaults.enabled;
+    	      this.signupBehavior = defaults.signupBehavior;
         }
 
+        @CustomType.Setter
+        public Builder apiBehavior(String apiBehavior) {
+            if (apiBehavior == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOptionAuthenticationMethodPassword", "apiBehavior");
+            }
+            this.apiBehavior = apiBehavior;
+            return this;
+        }
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             if (enabled == null) {
@@ -49,9 +86,19 @@ public final class GetConnectionOptionAuthenticationMethodPassword {
             this.enabled = enabled;
             return this;
         }
+        @CustomType.Setter
+        public Builder signupBehavior(String signupBehavior) {
+            if (signupBehavior == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOptionAuthenticationMethodPassword", "signupBehavior");
+            }
+            this.signupBehavior = signupBehavior;
+            return this;
+        }
         public GetConnectionOptionAuthenticationMethodPassword build() {
             final var _resultValue = new GetConnectionOptionAuthenticationMethodPassword();
+            _resultValue.apiBehavior = apiBehavior;
             _resultValue.enabled = enabled;
+            _resultValue.signupBehavior = signupBehavior;
             return _resultValue;
         }
     }

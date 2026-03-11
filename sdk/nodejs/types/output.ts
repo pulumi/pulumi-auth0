@@ -2375,9 +2375,17 @@ export interface ConnectionOptionsAuthenticationMethodPasskey {
 
 export interface ConnectionOptionsAuthenticationMethodPassword {
     /**
+     * Specifies whether password is required or optional when creating users via API. Possible values: "required", "optional". Defaults to "required".
+     */
+    apiBehavior?: string;
+    /**
      * Enables password authentication
      */
     enabled: boolean;
+    /**
+     * Specifies whether password is allowed or blocked during signup flows. Possible values: "allow", "block". Defaults to "allow".
+     */
+    signupBehavior?: string;
 }
 
 export interface ConnectionOptionsAuthenticationMethodPhoneOtp {
@@ -4779,7 +4787,7 @@ export interface GetClientsClient {
      */
     appType: string;
     /**
-     * List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `["guardian-push"]` if not specified.
+     * List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated.
      */
     asyncApprovalNotificationChannels: string[];
     /**
@@ -5742,9 +5750,17 @@ export interface GetConnectionOptionAuthenticationMethodPasskey {
 
 export interface GetConnectionOptionAuthenticationMethodPassword {
     /**
+     * Specifies whether password is required or optional when creating users via API. Possible values: "required", "optional". Defaults to "required".
+     */
+    apiBehavior: string;
+    /**
      * Enables password authentication
      */
     enabled: boolean;
+    /**
+     * Specifies whether password is allowed or blocked during signup flows. Possible values: "allow", "block". Defaults to "allow".
+     */
+    signupBehavior: string;
 }
 
 export interface GetConnectionOptionAuthenticationMethodPhoneOtp {
@@ -6645,6 +6661,10 @@ export interface GetResourceServerProofOfPossession {
      * Indicates whether proof-of-possession is required with this resource server.
      */
     required: boolean;
+    /**
+     * Specifies which client types require Proof-of-Possession`allClients` or `publicClients` is supported.
+     */
+    requiredFor: string;
 }
 
 export interface GetResourceServerScope {
@@ -7855,6 +7875,10 @@ export interface ResourceServerProofOfPossession {
      * Indicates whether proof-of-possession is required with this resource server.
      */
     required: boolean;
+    /**
+     * Specifies which client types require Proof-of-Possession`allClients` or `publicClients` is supported.
+     */
+    requiredFor?: string;
 }
 
 export interface ResourceServerScopesScope {

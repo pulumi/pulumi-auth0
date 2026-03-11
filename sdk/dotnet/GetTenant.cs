@@ -164,6 +164,10 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly ImmutableArray<Outputs.GetTenantOidcLogoutResult> OidcLogouts;
         /// <summary>
+        /// When enabled, the tenant-level Phone Provider is used for Multi-Factor Authentication (MFA) and Passwordless phone notifications.
+        /// </summary>
+        public readonly bool PhoneConsolidatedExperience;
+        /// <summary>
         /// URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
         /// </summary>
         public readonly string PictureUrl;
@@ -244,6 +248,8 @@ namespace Pulumi.Auth0
 
             ImmutableArray<Outputs.GetTenantOidcLogoutResult> oidcLogouts,
 
+            bool phoneConsolidatedExperience,
+
             string pictureUrl,
 
             bool pushedAuthorizationRequestsSupported,
@@ -283,6 +289,7 @@ namespace Pulumi.Auth0
             ManagementApiIdentifier = managementApiIdentifier;
             Mtls = mtls;
             OidcLogouts = oidcLogouts;
+            PhoneConsolidatedExperience = phoneConsolidatedExperience;
             PictureUrl = pictureUrl;
             PushedAuthorizationRequestsSupported = pushedAuthorizationRequestsSupported;
             SandboxVersion = sandboxVersion;

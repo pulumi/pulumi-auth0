@@ -41,7 +41,7 @@ public final class GetClientsClient {
      */
     private String appType;
     /**
-     * @return List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `[&#34;guardian-push&#34;]` if not specified.
+     * @return List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated.
      * 
      */
     private List<String> asyncApprovalNotificationChannels;
@@ -162,7 +162,7 @@ public final class GetClientsClient {
         return this.appType;
     }
     /**
-     * @return List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated. Defaults to `[&#34;guardian-push&#34;]` if not specified.
+     * @return List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated.
      * 
      */
     public List<String> asyncApprovalNotificationChannels() {

@@ -39,6 +39,7 @@ class TenantArgs:
                  idle_session_lifetime: Optional[pulumi.Input[_builtins.float]] = None,
                  mtls: Optional[pulumi.Input['TenantMtlsArgs']] = None,
                  oidc_logout: Optional[pulumi.Input['TenantOidcLogoutArgs']] = None,
+                 phone_consolidated_experience: Optional[pulumi.Input[_builtins.bool]] = None,
                  picture_url: Optional[pulumi.Input[_builtins.str]] = None,
                  pushed_authorization_requests_supported: Optional[pulumi.Input[_builtins.bool]] = None,
                  sandbox_version: Optional[pulumi.Input[_builtins.str]] = None,
@@ -69,6 +70,7 @@ class TenantArgs:
         :param pulumi.Input[_builtins.float] idle_session_lifetime: Number of hours during which a session can be inactive before the user must log in again.
         :param pulumi.Input['TenantMtlsArgs'] mtls: Configuration for mTLS.
         :param pulumi.Input['TenantOidcLogoutArgs'] oidc_logout: Settings related to OIDC RP-initiated Logout.
+        :param pulumi.Input[_builtins.bool] phone_consolidated_experience: When enabled, the tenant-level Phone Provider is used for Multi-Factor Authentication (MFA) and Passwordless phone notifications.
         :param pulumi.Input[_builtins.str] picture_url: URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
         :param pulumi.Input[_builtins.bool] pushed_authorization_requests_supported: Enable pushed authorization requests.
         :param pulumi.Input[_builtins.str] sandbox_version: Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
@@ -115,6 +117,8 @@ class TenantArgs:
             pulumi.set(__self__, "mtls", mtls)
         if oidc_logout is not None:
             pulumi.set(__self__, "oidc_logout", oidc_logout)
+        if phone_consolidated_experience is not None:
+            pulumi.set(__self__, "phone_consolidated_experience", phone_consolidated_experience)
         if picture_url is not None:
             pulumi.set(__self__, "picture_url", picture_url)
         if pushed_authorization_requests_supported is not None:
@@ -349,6 +353,18 @@ class TenantArgs:
     @oidc_logout.setter
     def oidc_logout(self, value: Optional[pulumi.Input['TenantOidcLogoutArgs']]):
         pulumi.set(self, "oidc_logout", value)
+
+    @_builtins.property
+    @pulumi.getter(name="phoneConsolidatedExperience")
+    def phone_consolidated_experience(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        When enabled, the tenant-level Phone Provider is used for Multi-Factor Authentication (MFA) and Passwordless phone notifications.
+        """
+        return pulumi.get(self, "phone_consolidated_experience")
+
+    @phone_consolidated_experience.setter
+    def phone_consolidated_experience(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "phone_consolidated_experience", value)
 
     @_builtins.property
     @pulumi.getter(name="pictureUrl")
@@ -480,6 +496,7 @@ class _TenantState:
                  idle_session_lifetime: Optional[pulumi.Input[_builtins.float]] = None,
                  mtls: Optional[pulumi.Input['TenantMtlsArgs']] = None,
                  oidc_logout: Optional[pulumi.Input['TenantOidcLogoutArgs']] = None,
+                 phone_consolidated_experience: Optional[pulumi.Input[_builtins.bool]] = None,
                  picture_url: Optional[pulumi.Input[_builtins.str]] = None,
                  pushed_authorization_requests_supported: Optional[pulumi.Input[_builtins.bool]] = None,
                  sandbox_version: Optional[pulumi.Input[_builtins.str]] = None,
@@ -510,6 +527,7 @@ class _TenantState:
         :param pulumi.Input[_builtins.float] idle_session_lifetime: Number of hours during which a session can be inactive before the user must log in again.
         :param pulumi.Input['TenantMtlsArgs'] mtls: Configuration for mTLS.
         :param pulumi.Input['TenantOidcLogoutArgs'] oidc_logout: Settings related to OIDC RP-initiated Logout.
+        :param pulumi.Input[_builtins.bool] phone_consolidated_experience: When enabled, the tenant-level Phone Provider is used for Multi-Factor Authentication (MFA) and Passwordless phone notifications.
         :param pulumi.Input[_builtins.str] picture_url: URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
         :param pulumi.Input[_builtins.bool] pushed_authorization_requests_supported: Enable pushed authorization requests.
         :param pulumi.Input[_builtins.str] sandbox_version: Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
@@ -556,6 +574,8 @@ class _TenantState:
             pulumi.set(__self__, "mtls", mtls)
         if oidc_logout is not None:
             pulumi.set(__self__, "oidc_logout", oidc_logout)
+        if phone_consolidated_experience is not None:
+            pulumi.set(__self__, "phone_consolidated_experience", phone_consolidated_experience)
         if picture_url is not None:
             pulumi.set(__self__, "picture_url", picture_url)
         if pushed_authorization_requests_supported is not None:
@@ -790,6 +810,18 @@ class _TenantState:
     @oidc_logout.setter
     def oidc_logout(self, value: Optional[pulumi.Input['TenantOidcLogoutArgs']]):
         pulumi.set(self, "oidc_logout", value)
+
+    @_builtins.property
+    @pulumi.getter(name="phoneConsolidatedExperience")
+    def phone_consolidated_experience(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        When enabled, the tenant-level Phone Provider is used for Multi-Factor Authentication (MFA) and Passwordless phone notifications.
+        """
+        return pulumi.get(self, "phone_consolidated_experience")
+
+    @phone_consolidated_experience.setter
+    def phone_consolidated_experience(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "phone_consolidated_experience", value)
 
     @_builtins.property
     @pulumi.getter(name="pictureUrl")
@@ -924,6 +956,7 @@ class Tenant(pulumi.CustomResource):
                  idle_session_lifetime: Optional[pulumi.Input[_builtins.float]] = None,
                  mtls: Optional[pulumi.Input[Union['TenantMtlsArgs', 'TenantMtlsArgsDict']]] = None,
                  oidc_logout: Optional[pulumi.Input[Union['TenantOidcLogoutArgs', 'TenantOidcLogoutArgsDict']]] = None,
+                 phone_consolidated_experience: Optional[pulumi.Input[_builtins.bool]] = None,
                  picture_url: Optional[pulumi.Input[_builtins.str]] = None,
                  pushed_authorization_requests_supported: Optional[pulumi.Input[_builtins.bool]] = None,
                  sandbox_version: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1011,6 +1044,7 @@ class Tenant(pulumi.CustomResource):
         :param pulumi.Input[_builtins.float] idle_session_lifetime: Number of hours during which a session can be inactive before the user must log in again.
         :param pulumi.Input[Union['TenantMtlsArgs', 'TenantMtlsArgsDict']] mtls: Configuration for mTLS.
         :param pulumi.Input[Union['TenantOidcLogoutArgs', 'TenantOidcLogoutArgsDict']] oidc_logout: Settings related to OIDC RP-initiated Logout.
+        :param pulumi.Input[_builtins.bool] phone_consolidated_experience: When enabled, the tenant-level Phone Provider is used for Multi-Factor Authentication (MFA) and Passwordless phone notifications.
         :param pulumi.Input[_builtins.str] picture_url: URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
         :param pulumi.Input[_builtins.bool] pushed_authorization_requests_supported: Enable pushed authorization requests.
         :param pulumi.Input[_builtins.str] sandbox_version: Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
@@ -1117,6 +1151,7 @@ class Tenant(pulumi.CustomResource):
                  idle_session_lifetime: Optional[pulumi.Input[_builtins.float]] = None,
                  mtls: Optional[pulumi.Input[Union['TenantMtlsArgs', 'TenantMtlsArgsDict']]] = None,
                  oidc_logout: Optional[pulumi.Input[Union['TenantOidcLogoutArgs', 'TenantOidcLogoutArgsDict']]] = None,
+                 phone_consolidated_experience: Optional[pulumi.Input[_builtins.bool]] = None,
                  picture_url: Optional[pulumi.Input[_builtins.str]] = None,
                  pushed_authorization_requests_supported: Optional[pulumi.Input[_builtins.bool]] = None,
                  sandbox_version: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1153,6 +1188,7 @@ class Tenant(pulumi.CustomResource):
             __props__.__dict__["idle_session_lifetime"] = idle_session_lifetime
             __props__.__dict__["mtls"] = mtls
             __props__.__dict__["oidc_logout"] = oidc_logout
+            __props__.__dict__["phone_consolidated_experience"] = phone_consolidated_experience
             __props__.__dict__["picture_url"] = picture_url
             __props__.__dict__["pushed_authorization_requests_supported"] = pushed_authorization_requests_supported
             __props__.__dict__["sandbox_version"] = sandbox_version
@@ -1190,6 +1226,7 @@ class Tenant(pulumi.CustomResource):
             idle_session_lifetime: Optional[pulumi.Input[_builtins.float]] = None,
             mtls: Optional[pulumi.Input[Union['TenantMtlsArgs', 'TenantMtlsArgsDict']]] = None,
             oidc_logout: Optional[pulumi.Input[Union['TenantOidcLogoutArgs', 'TenantOidcLogoutArgsDict']]] = None,
+            phone_consolidated_experience: Optional[pulumi.Input[_builtins.bool]] = None,
             picture_url: Optional[pulumi.Input[_builtins.str]] = None,
             pushed_authorization_requests_supported: Optional[pulumi.Input[_builtins.bool]] = None,
             sandbox_version: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1224,6 +1261,7 @@ class Tenant(pulumi.CustomResource):
         :param pulumi.Input[_builtins.float] idle_session_lifetime: Number of hours during which a session can be inactive before the user must log in again.
         :param pulumi.Input[Union['TenantMtlsArgs', 'TenantMtlsArgsDict']] mtls: Configuration for mTLS.
         :param pulumi.Input[Union['TenantOidcLogoutArgs', 'TenantOidcLogoutArgsDict']] oidc_logout: Settings related to OIDC RP-initiated Logout.
+        :param pulumi.Input[_builtins.bool] phone_consolidated_experience: When enabled, the tenant-level Phone Provider is used for Multi-Factor Authentication (MFA) and Passwordless phone notifications.
         :param pulumi.Input[_builtins.str] picture_url: URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
         :param pulumi.Input[_builtins.bool] pushed_authorization_requests_supported: Enable pushed authorization requests.
         :param pulumi.Input[_builtins.str] sandbox_version: Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
@@ -1256,6 +1294,7 @@ class Tenant(pulumi.CustomResource):
         __props__.__dict__["idle_session_lifetime"] = idle_session_lifetime
         __props__.__dict__["mtls"] = mtls
         __props__.__dict__["oidc_logout"] = oidc_logout
+        __props__.__dict__["phone_consolidated_experience"] = phone_consolidated_experience
         __props__.__dict__["picture_url"] = picture_url
         __props__.__dict__["pushed_authorization_requests_supported"] = pushed_authorization_requests_supported
         __props__.__dict__["sandbox_version"] = sandbox_version
@@ -1410,6 +1449,14 @@ class Tenant(pulumi.CustomResource):
         Settings related to OIDC RP-initiated Logout.
         """
         return pulumi.get(self, "oidc_logout")
+
+    @_builtins.property
+    @pulumi.getter(name="phoneConsolidatedExperience")
+    def phone_consolidated_experience(self) -> pulumi.Output[_builtins.bool]:
+        """
+        When enabled, the tenant-level Phone Provider is used for Multi-Factor Authentication (MFA) and Passwordless phone notifications.
+        """
+        return pulumi.get(self, "phone_consolidated_experience")
 
     @_builtins.property
     @pulumi.getter(name="pictureUrl")

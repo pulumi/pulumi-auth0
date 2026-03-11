@@ -14,14 +14,29 @@ namespace Pulumi.Auth0.Outputs
     public sealed class GetConnectionOptionAuthenticationMethodPasswordResult
     {
         /// <summary>
+        /// Specifies whether password is required or optional when creating users via API. Possible values: "required", "optional". Defaults to "required".
+        /// </summary>
+        public readonly string ApiBehavior;
+        /// <summary>
         /// Enables password authentication
         /// </summary>
         public readonly bool Enabled;
+        /// <summary>
+        /// Specifies whether password is allowed or blocked during signup flows. Possible values: "allow", "block". Defaults to "allow".
+        /// </summary>
+        public readonly string SignupBehavior;
 
         [OutputConstructor]
-        private GetConnectionOptionAuthenticationMethodPasswordResult(bool enabled)
+        private GetConnectionOptionAuthenticationMethodPasswordResult(
+            string apiBehavior,
+
+            bool enabled,
+
+            string signupBehavior)
         {
+            ApiBehavior = apiBehavior;
             Enabled = enabled;
+            SignupBehavior = signupBehavior;
         }
     }
 }
