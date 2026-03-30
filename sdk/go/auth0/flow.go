@@ -54,7 +54,7 @@ import (
 //			json0 := string(tmpJSON0)
 //			// Example:
 //			_, err = auth0.NewFlow(ctx, "my_flow", &auth0.FlowArgs{
-//				Actions: pulumi.String(json0),
+//				Actions: pulumi.String(pulumi.String(json0)),
 //				Name:    pulumi.String("Flow KYC update data"),
 //			})
 //			if err != nil {

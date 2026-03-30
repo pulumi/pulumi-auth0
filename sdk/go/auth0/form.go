@@ -133,14 +133,14 @@ import (
 //			// Example:
 //			_, err = auth0.NewForm(ctx, "my_form", &auth0.FormArgs{
 //				Name:         pulumi.String("My KYC Form"),
-//				Start:        pulumi.String(json0),
-//				Nodes:        pulumi.String(json1),
-//				Ending:       pulumi.String(json2),
-//				Style:        pulumi.String(json3),
-//				Translations: pulumi.String(json4),
+//				Start:        pulumi.String(pulumi.String(json0)),
+//				Nodes:        pulumi.String(pulumi.String(json1)),
+//				Ending:       pulumi.String(pulumi.String(json2)),
+//				Style:        pulumi.String(pulumi.String(json3)),
+//				Translations: pulumi.String(pulumi.String(json4)),
 //				Messages: auth0.FormMessageArray{
 //					&auth0.FormMessageArgs{
-//						Errors: pulumi.String(json5),
+//						Errors: pulumi.String(pulumi.String(json5)),
 //					},
 //				},
 //				Languages: auth0.FormLanguageArray{

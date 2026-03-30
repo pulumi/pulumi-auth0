@@ -41,7 +41,7 @@ import (
 //				SsoId:    pulumi.String("some-sso-id"),
 //				Language: pulumi.String("en"),
 //				Page:     pulumi.String("get-started"),
-//				Body:     pulumi.String(json0),
+//				Body:     pulumi.String(pulumi.String(json0)),
 //			})
 //			if err != nil {
 //				return err

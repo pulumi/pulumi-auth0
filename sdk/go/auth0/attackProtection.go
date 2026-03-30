@@ -107,8 +107,8 @@ import (
 //				Captcha: &auth0.AttackProtectionCaptchaArgs{
 //					ActiveProviderId: pulumi.String("recaptcha_v2"),
 //					RecaptchaV2: &auth0.AttackProtectionCaptchaRecaptchaV2Args{
-//						SiteKey: pulumi.String(recaptchaV2SiteKey),
-//						Secret:  pulumi.String(recaptchaV2Secret),
+//						SiteKey: pulumi.String(pulumi.String(recaptchaV2SiteKey)),
+//						Secret:  pulumi.String(pulumi.String(recaptchaV2Secret)),
 //					},
 //				},
 //			})
@@ -126,9 +126,9 @@ import (
 //				Captcha: &auth0.AttackProtectionCaptchaArgs{
 //					ActiveProviderId: pulumi.String("recaptcha_enterprise"),
 //					RecaptchaEnterprise: &auth0.AttackProtectionCaptchaRecaptchaEnterpriseArgs{
-//						SiteKey:   pulumi.String(recaptchaEnterpriseSiteKey),
-//						ApiKey:    pulumi.String(recaptchaEnterpriseApiKey),
-//						ProjectId: pulumi.String(recaptchaEnterpriseProjectId),
+//						SiteKey:   pulumi.String(pulumi.String(recaptchaEnterpriseSiteKey)),
+//						ApiKey:    pulumi.String(pulumi.String(recaptchaEnterpriseApiKey)),
+//						ProjectId: pulumi.String(pulumi.String(recaptchaEnterpriseProjectId)),
 //					},
 //				},
 //			})
@@ -144,8 +144,8 @@ import (
 //				Captcha: &auth0.AttackProtectionCaptchaArgs{
 //					ActiveProviderId: pulumi.String("hcaptcha"),
 //					Hcaptcha: &auth0.AttackProtectionCaptchaHcaptchaArgs{
-//						SiteKey: pulumi.String(hcaptchaSiteKey),
-//						Secret:  pulumi.String(hcaptchaSecret),
+//						SiteKey: pulumi.String(pulumi.String(hcaptchaSiteKey)),
+//						Secret:  pulumi.String(pulumi.String(hcaptchaSecret)),
 //					},
 //				},
 //			})
@@ -161,8 +161,8 @@ import (
 //				Captcha: &auth0.AttackProtectionCaptchaArgs{
 //					ActiveProviderId: pulumi.String("friendly_captcha"),
 //					FriendlyCaptcha: &auth0.AttackProtectionCaptchaFriendlyCaptchaArgs{
-//						SiteKey: pulumi.String(friendlyCaptchaSiteKey),
-//						Secret:  pulumi.String(friendlyCaptchaSecret),
+//						SiteKey: pulumi.String(pulumi.String(friendlyCaptchaSiteKey)),
+//						Secret:  pulumi.String(pulumi.String(friendlyCaptchaSecret)),
 //					},
 //				},
 //			})
@@ -178,8 +178,8 @@ import (
 //				Captcha: &auth0.AttackProtectionCaptchaArgs{
 //					ActiveProviderId: pulumi.String("arkose"),
 //					Arkose: &auth0.AttackProtectionCaptchaArkoseArgs{
-//						SiteKey:         pulumi.String(arkoseSiteKey),
-//						Secret:          pulumi.String(arkoseSecret),
+//						SiteKey:         pulumi.String(pulumi.String(arkoseSiteKey)),
+//						Secret:          pulumi.String(pulumi.String(arkoseSecret)),
 //						ClientSubdomain: pulumi.String("client.example.com"),
 //						VerifySubdomain: pulumi.String("verify.example.com"),
 //						FailOpen:        pulumi.Bool(false),

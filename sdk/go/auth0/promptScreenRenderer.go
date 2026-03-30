@@ -71,7 +71,7 @@ import (
 //					pulumi.String("untrusted_data.authorization_params.ui_locales"),
 //					pulumi.String("untrusted_data.authorization_params.ext-key"),
 //				},
-//				HeadTags: pulumi.String(json0),
+//				HeadTags: pulumi.String(pulumi.String(json0)),
 //			})
 //			if err != nil {
 //				return err
