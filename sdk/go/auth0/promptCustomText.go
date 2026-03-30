@@ -60,7 +60,7 @@ import (
 //			_, err = auth0.NewPromptCustomText(ctx, "example", &auth0.PromptCustomTextArgs{
 //				Prompt:   pulumi.String("login"),
 //				Language: pulumi.String("en"),
-//				Body:     pulumi.String(json0),
+//				Body:     pulumi.String(pulumi.String(json0)),
 //			})
 //			if err != nil {
 //				return err

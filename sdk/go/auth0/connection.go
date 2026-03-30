@@ -70,7 +70,7 @@ import (
 //						"foo": pulumi.String("bar"),
 //						"bar": pulumi.String("baz"),
 //					},
-//					UpstreamParams: pulumi.String(json0),
+//					UpstreamParams: pulumi.String(pulumi.String(json0)),
 //					PasswordHistories: auth0.ConnectionOptionsPasswordHistoryArray{
 //						&auth0.ConnectionOptionsPasswordHistoryArgs{
 //							Enable: pulumi.Bool(true),
@@ -221,7 +221,7 @@ import (
 //						pulumi.String("ext_groups"),
 //					},
 //					IconUrl:               pulumi.String("https://example.com/assets/logo.png"),
-//					UpstreamParams:        pulumi.String(json0),
+//					UpstreamParams:        pulumi.String(pulumi.String(json0)),
 //					SetUserRootAttributes: pulumi.String("on_each_login"),
 //					NonPersistentAttrs: pulumi.StringArray{
 //						pulumi.String("ethnicity"),
@@ -563,7 +563,7 @@ import (
 //						pulumi.String("ethnicity"),
 //						pulumi.String("gender"),
 //					},
-//					UpstreamParams: pulumi.String(json0),
+//					UpstreamParams: pulumi.String(pulumi.String(json0)),
 //					UseCertAuth:    pulumi.Bool(false),
 //					UseKerberos:    pulumi.Bool(false),
 //					DisableCache:   pulumi.Bool(false),
@@ -633,7 +633,7 @@ import (
 //					},
 //					SetUserRootAttributes:              pulumi.String("on_each_login"),
 //					ShouldTrustEmailVerifiedConnection: pulumi.String("never_set_emails_as_verified"),
-//					UpstreamParams:                     pulumi.String(json0),
+//					UpstreamParams:                     pulumi.String(pulumi.String(json0)),
 //					NonPersistentAttrs: pulumi.StringArray{
 //						pulumi.String("ethnicity"),
 //						pulumi.String("gender"),
@@ -775,7 +775,7 @@ import (
 // `),
 //
 //					MetadataUrl: pulumi.String("https://saml.provider/imi/ns/FederationMetadata.xml"),
-//					FieldsMap:   pulumi.String(json0),
+//					FieldsMap:   pulumi.String(pulumi.String(json0)),
 //					SigningKey: &auth0.ConnectionOptionsSigningKeyArgs{
 //						Key:  pulumi.String("-----BEGIN PRIVATE KEY-----\n...{your private key here}...\n-----END PRIVATE KEY-----"),
 //						Cert: pulumi.String("-----BEGIN CERTIFICATE-----\n...{your public key cert here}...\n-----END CERTIFICATE-----"),
@@ -908,7 +908,7 @@ import (
 //					AttributeMap: &auth0.ConnectionOptionsAttributeMapArgs{
 //						MappingMode:   pulumi.String("use_map"),
 //						UserinfoScope: pulumi.String("openid email profile groups"),
-//						Attributes:    pulumi.String(json0),
+//						Attributes:    pulumi.String(pulumi.String(json0)),
 //					},
 //				},
 //			})
@@ -990,14 +990,14 @@ import (
 //						pulumi.String("ethnicity"),
 //						pulumi.String("gender"),
 //					},
-//					UpstreamParams: pulumi.String(json0),
+//					UpstreamParams: pulumi.String(pulumi.String(json0)),
 //					ConnectionSettings: &auth0.ConnectionOptionsConnectionSettingsArgs{
 //						Pkce: pulumi.String("auto"),
 //					},
 //					AttributeMap: &auth0.ConnectionOptionsAttributeMapArgs{
 //						MappingMode:   pulumi.String("basic_profile"),
 //						UserinfoScope: pulumi.String("openid email profile groups"),
-//						Attributes:    pulumi.String(json1),
+//						Attributes:    pulumi.String(pulumi.String(json1)),
 //					},
 //				},
 //			})

@@ -142,10 +142,10 @@ class RolePermissions(pulumi.CustomResource):
             ])
         my_role = auth0.Role("my_role", name="My Role")
         my_role_perms = auth0.RolePermissions("my_role_perms",
-            permissions=resource_server.identifier.apply(lambda identifier: [{
-                "name": entry["value"].name,
-                "resourceServerIdentifier": identifier,
-            } for entry in resource_server_scopes.scopes.apply(lambda scopes: [{"key": k, "value": v} for k, v in scopes.items()])]),
+            permissions=resource_server.identifier.apply(lambda identifier: [auth0.RolePermissionsPermissionArgs(
+                name=entry["value"].name,
+                resource_server_identifier=identifier,
+            ) for entry in resource_server_scopes.scopes.apply(lambda scopes: [{"key": k, "value": v} for k, v in scopes.items()])]),
             role_id=my_role.id)
         ```
 
@@ -206,10 +206,10 @@ class RolePermissions(pulumi.CustomResource):
             ])
         my_role = auth0.Role("my_role", name="My Role")
         my_role_perms = auth0.RolePermissions("my_role_perms",
-            permissions=resource_server.identifier.apply(lambda identifier: [{
-                "name": entry["value"].name,
-                "resourceServerIdentifier": identifier,
-            } for entry in resource_server_scopes.scopes.apply(lambda scopes: [{"key": k, "value": v} for k, v in scopes.items()])]),
+            permissions=resource_server.identifier.apply(lambda identifier: [auth0.RolePermissionsPermissionArgs(
+                name=entry["value"].name,
+                resource_server_identifier=identifier,
+            ) for entry in resource_server_scopes.scopes.apply(lambda scopes: [{"key": k, "value": v} for k, v in scopes.items()])]),
             role_id=my_role.id)
         ```
 

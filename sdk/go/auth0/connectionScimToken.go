@@ -66,7 +66,7 @@ import (
 //					},
 //					SetUserRootAttributes:              pulumi.String("on_each_login"),
 //					ShouldTrustEmailVerifiedConnection: pulumi.String("never_set_emails_as_verified"),
-//					UpstreamParams:                     pulumi.String(json0),
+//					UpstreamParams:                     pulumi.String(pulumi.String(json0)),
 //				},
 //			})
 //			if err != nil {

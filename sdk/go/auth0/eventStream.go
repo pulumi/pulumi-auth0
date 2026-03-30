@@ -78,7 +78,7 @@ import (
 //					WebhookEndpoint: pulumi.String("https://eof28wtn4v4506o.m.pipedream.net"),
 //					WebhookAuthorization: &auth0.EventStreamWebhookConfigurationWebhookAuthorizationArgs{
 //						Method:         pulumi.String("bearer"),
-//						TokenWo:        pulumi.String(webhookToken),
+//						TokenWo:        pulumi.String(pulumi.String(webhookToken)),
 //						TokenWoVersion: pulumi.Int(1),
 //					},
 //				},
