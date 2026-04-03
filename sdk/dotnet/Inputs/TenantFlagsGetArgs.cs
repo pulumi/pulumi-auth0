@@ -73,7 +73,7 @@ namespace Pulumi.Auth0.Inputs
         public Input<bool>? EnableApisSection { get; set; }
 
         /// <summary>
-        /// Indicates whether all current connections should be enabled when a new client is created.
+        /// Indicates whether all current connections should be enabled when a new client is created. (Default: `True`)
         /// </summary>
         [Input("enableClientConnections")]
         public Input<bool>? EnableClientConnections { get; set; }

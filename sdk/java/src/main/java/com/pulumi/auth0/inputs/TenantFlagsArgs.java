@@ -166,14 +166,14 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Indicates whether all current connections should be enabled when a new client is created.
+     * Indicates whether all current connections should be enabled when a new client is created. (Default: `true`)
      * 
      */
     @Import(name="enableClientConnections")
     private @Nullable Output<Boolean> enableClientConnections;
 
     /**
-     * @return Indicates whether all current connections should be enabled when a new client is created.
+     * @return Indicates whether all current connections should be enabled when a new client is created. (Default: `true`)
      * 
      */
     public Optional<Output<Boolean>> enableClientConnections() {
@@ -657,7 +657,7 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableClientConnections Indicates whether all current connections should be enabled when a new client is created.
+         * @param enableClientConnections Indicates whether all current connections should be enabled when a new client is created. (Default: `true`)
          * 
          * @return builder
          * 
@@ -668,7 +668,7 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableClientConnections Indicates whether all current connections should be enabled when a new client is created.
+         * @param enableClientConnections Indicates whether all current connections should be enabled when a new client is created. (Default: `true`)
          * 
          * @return builder
          * 

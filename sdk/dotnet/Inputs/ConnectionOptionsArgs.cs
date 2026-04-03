@@ -261,6 +261,12 @@ namespace Pulumi.Auth0.Inputs
         }
 
         /// <summary>
+        /// Signature method used to sign the request. EA Only
+        /// </summary>
+        [Input("dpopSigningAlg")]
+        public Input<string>? DpopSigningAlg { get; set; }
+
+        /// <summary>
         /// Indicates whether to request the email scope. Used by some OAuth2 connections (e.g., LINE).
         /// </summary>
         [Input("email")]

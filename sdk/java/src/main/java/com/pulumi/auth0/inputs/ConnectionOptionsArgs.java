@@ -503,6 +503,21 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Signature method used to sign the request. EA Only
+     * 
+     */
+    @Import(name="dpopSigningAlg")
+    private @Nullable Output<String> dpopSigningAlg;
+
+    /**
+     * @return Signature method used to sign the request. EA Only
+     * 
+     */
+    public Optional<Output<String>> dpopSigningAlg() {
+        return Optional.ofNullable(this.dpopSigningAlg);
+    }
+
+    /**
      * Indicates whether to request the email scope. Used by some OAuth2 connections (e.g., LINE).
      * 
      */
@@ -1736,6 +1751,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         this.discoveryUrl = $.discoveryUrl;
         this.domain = $.domain;
         this.domainAliases = $.domainAliases;
+        this.dpopSigningAlg = $.dpopSigningAlg;
         this.email = $.email;
         this.enableScriptContext = $.enableScriptContext;
         this.enabledDatabaseCustomization = $.enabledDatabaseCustomization;
@@ -2535,6 +2551,27 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder domainAliases(String... domainAliases) {
             return domainAliases(List.of(domainAliases));
+        }
+
+        /**
+         * @param dpopSigningAlg Signature method used to sign the request. EA Only
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dpopSigningAlg(@Nullable Output<String> dpopSigningAlg) {
+            $.dpopSigningAlg = dpopSigningAlg;
+            return this;
+        }
+
+        /**
+         * @param dpopSigningAlg Signature method used to sign the request. EA Only
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dpopSigningAlg(String dpopSigningAlg) {
+            return dpopSigningAlg(Output.of(dpopSigningAlg));
         }
 
         /**

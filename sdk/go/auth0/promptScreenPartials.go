@@ -88,7 +88,7 @@ import (
 type PromptScreenPartials struct {
 	pulumi.CustomResourceState
 
-	// The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
+	// The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`, `passkeys`.
 	PromptType     pulumi.StringOutput                          `pulumi:"promptType"`
 	ScreenPartials PromptScreenPartialsScreenPartialArrayOutput `pulumi:"screenPartials"`
 }
@@ -126,13 +126,13 @@ func GetPromptScreenPartials(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PromptScreenPartials resources.
 type promptScreenPartialsState struct {
-	// The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
+	// The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`, `passkeys`.
 	PromptType     *string                             `pulumi:"promptType"`
 	ScreenPartials []PromptScreenPartialsScreenPartial `pulumi:"screenPartials"`
 }
 
 type PromptScreenPartialsState struct {
-	// The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
+	// The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`, `passkeys`.
 	PromptType     pulumi.StringPtrInput
 	ScreenPartials PromptScreenPartialsScreenPartialArrayInput
 }
@@ -142,14 +142,14 @@ func (PromptScreenPartialsState) ElementType() reflect.Type {
 }
 
 type promptScreenPartialsArgs struct {
-	// The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
+	// The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`, `passkeys`.
 	PromptType     string                              `pulumi:"promptType"`
 	ScreenPartials []PromptScreenPartialsScreenPartial `pulumi:"screenPartials"`
 }
 
 // The set of arguments for constructing a PromptScreenPartials resource.
 type PromptScreenPartialsArgs struct {
-	// The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
+	// The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`, `passkeys`.
 	PromptType     pulumi.StringInput
 	ScreenPartials PromptScreenPartialsScreenPartialArrayInput
 }
@@ -241,7 +241,7 @@ func (o PromptScreenPartialsOutput) ToPromptScreenPartialsOutputWithContext(ctx 
 	return o
 }
 
-// The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
+// The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`, `passkeys`.
 func (o PromptScreenPartialsOutput) PromptType() pulumi.StringOutput {
 	return o.ApplyT(func(v *PromptScreenPartials) pulumi.StringOutput { return v.PromptType }).(pulumi.StringOutput)
 }

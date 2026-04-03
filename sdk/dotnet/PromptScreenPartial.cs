@@ -75,7 +75,7 @@ namespace Pulumi.Auth0
         public Output<Outputs.PromptScreenPartialInsertionPoints?> InsertionPoints { get; private set; } = null!;
 
         /// <summary>
-        /// The prompt that you are adding partials for. Options are: `login-id`, `Login`, `login-password`, `Signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
+        /// The prompt that you are adding partials for. Options are: `login-id`, `Login`, `login-password`, `Signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`, `Passkeys`.
         /// </summary>
         [Output("promptType")]
         public Output<string> PromptType { get; private set; } = null!;
@@ -139,7 +139,7 @@ namespace Pulumi.Auth0
         public Input<Inputs.PromptScreenPartialInsertionPointsArgs>? InsertionPoints { get; set; }
 
         /// <summary>
-        /// The prompt that you are adding partials for. Options are: `login-id`, `Login`, `login-password`, `Signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
+        /// The prompt that you are adding partials for. Options are: `login-id`, `Login`, `login-password`, `Signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`, `Passkeys`.
         /// </summary>
         [Input("promptType", required: true)]
         public Input<string> PromptType { get; set; } = null!;
@@ -165,7 +165,7 @@ namespace Pulumi.Auth0
         public Input<Inputs.PromptScreenPartialInsertionPointsGetArgs>? InsertionPoints { get; set; }
 
         /// <summary>
-        /// The prompt that you are adding partials for. Options are: `login-id`, `Login`, `login-password`, `Signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
+        /// The prompt that you are adding partials for. Options are: `login-id`, `Login`, `login-password`, `Signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`, `Passkeys`.
         /// </summary>
         [Input("promptType")]
         public Input<string>? PromptType { get; set; }

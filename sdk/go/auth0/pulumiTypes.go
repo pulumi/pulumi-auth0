@@ -17806,6 +17806,8 @@ type ConnectionOptions struct {
 	Domain *string `pulumi:"domain"`
 	// List of the domains that can be authenticated using the identity provider. Only needed for Identifier First authentication flows.
 	DomainAliases []string `pulumi:"domainAliases"`
+	// Signature method used to sign the request. EA Only
+	DpopSigningAlg *string `pulumi:"dpopSigningAlg"`
 	// Indicates whether to request the email scope. Used by some OAuth2 connections (e.g., LINE).
 	Email *bool `pulumi:"email"`
 	// Set to `true` to inject context into custom DB scripts (warning: cannot be disabled once enabled).
@@ -18042,6 +18044,8 @@ type ConnectionOptionsArgs struct {
 	Domain pulumi.StringPtrInput `pulumi:"domain"`
 	// List of the domains that can be authenticated using the identity provider. Only needed for Identifier First authentication flows.
 	DomainAliases pulumi.StringArrayInput `pulumi:"domainAliases"`
+	// Signature method used to sign the request. EA Only
+	DpopSigningAlg pulumi.StringPtrInput `pulumi:"dpopSigningAlg"`
 	// Indicates whether to request the email scope. Used by some OAuth2 connections (e.g., LINE).
 	Email pulumi.BoolPtrInput `pulumi:"email"`
 	// Set to `true` to inject context into custom DB scripts (warning: cannot be disabled once enabled).
@@ -18434,6 +18438,11 @@ func (o ConnectionOptionsOutput) Domain() pulumi.StringPtrOutput {
 // List of the domains that can be authenticated using the identity provider. Only needed for Identifier First authentication flows.
 func (o ConnectionOptionsOutput) DomainAliases() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConnectionOptions) []string { return v.DomainAliases }).(pulumi.StringArrayOutput)
+}
+
+// Signature method used to sign the request. EA Only
+func (o ConnectionOptionsOutput) DpopSigningAlg() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *string { return v.DpopSigningAlg }).(pulumi.StringPtrOutput)
 }
 
 // Indicates whether to request the email scope. Used by some OAuth2 connections (e.g., LINE).
@@ -19170,6 +19179,16 @@ func (o ConnectionOptionsPtrOutput) DomainAliases() pulumi.StringArrayOutput {
 		}
 		return v.DomainAliases
 	}).(pulumi.StringArrayOutput)
+}
+
+// Signature method used to sign the request. EA Only
+func (o ConnectionOptionsPtrOutput) DpopSigningAlg() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DpopSigningAlg
+	}).(pulumi.StringPtrOutput)
 }
 
 // Indicates whether to request the email scope. Used by some OAuth2 connections (e.g., LINE).
@@ -39006,7 +39025,7 @@ type TenantFlags struct {
 	EnableAdfsWaadEmailVerification *bool `pulumi:"enableAdfsWaadEmailVerification"`
 	// Indicates whether the APIs section is enabled for the tenant.
 	EnableApisSection *bool `pulumi:"enableApisSection"`
-	// Indicates whether all current connections should be enabled when a new client is created.
+	// Indicates whether all current connections should be enabled when a new client is created. (Default: `true`)
 	EnableClientConnections *bool `pulumi:"enableClientConnections"`
 	// Indicates whether the tenant allows custom domains in emails. Before enabling this flag, you must have a custom domain with status: `ready`.
 	EnableCustomDomainInEmails *bool `pulumi:"enableCustomDomainInEmails"`
@@ -39072,7 +39091,7 @@ type TenantFlagsArgs struct {
 	EnableAdfsWaadEmailVerification pulumi.BoolPtrInput `pulumi:"enableAdfsWaadEmailVerification"`
 	// Indicates whether the APIs section is enabled for the tenant.
 	EnableApisSection pulumi.BoolPtrInput `pulumi:"enableApisSection"`
-	// Indicates whether all current connections should be enabled when a new client is created.
+	// Indicates whether all current connections should be enabled when a new client is created. (Default: `true`)
 	EnableClientConnections pulumi.BoolPtrInput `pulumi:"enableClientConnections"`
 	// Indicates whether the tenant allows custom domains in emails. Before enabling this flag, you must have a custom domain with status: `ready`.
 	EnableCustomDomainInEmails pulumi.BoolPtrInput `pulumi:"enableCustomDomainInEmails"`
@@ -39233,7 +39252,7 @@ func (o TenantFlagsOutput) EnableApisSection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TenantFlags) *bool { return v.EnableApisSection }).(pulumi.BoolPtrOutput)
 }
 
-// Indicates whether all current connections should be enabled when a new client is created.
+// Indicates whether all current connections should be enabled when a new client is created. (Default: `true`)
 func (o TenantFlagsOutput) EnableClientConnections() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TenantFlags) *bool { return v.EnableClientConnections }).(pulumi.BoolPtrOutput)
 }
@@ -39434,7 +39453,7 @@ func (o TenantFlagsPtrOutput) EnableApisSection() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Indicates whether all current connections should be enabled when a new client is created.
+// Indicates whether all current connections should be enabled when a new client is created. (Default: `true`)
 func (o TenantFlagsPtrOutput) EnableClientConnections() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TenantFlags) *bool {
 		if v == nil {
@@ -56226,6 +56245,8 @@ type GetConnectionOption struct {
 	Domain string `pulumi:"domain"`
 	// List of the domains that can be authenticated using the identity provider. Only needed for Identifier First authentication flows.
 	DomainAliases []string `pulumi:"domainAliases"`
+	// Signature method used to sign the request. EA Only
+	DpopSigningAlg string `pulumi:"dpopSigningAlg"`
 	// Indicates whether to request the email scope. Used by some OAuth2 connections (e.g., LINE).
 	Email bool `pulumi:"email"`
 	// Set to `true` to inject context into custom DB scripts (warning: cannot be disabled once enabled).
@@ -56462,6 +56483,8 @@ type GetConnectionOptionArgs struct {
 	Domain pulumi.StringInput `pulumi:"domain"`
 	// List of the domains that can be authenticated using the identity provider. Only needed for Identifier First authentication flows.
 	DomainAliases pulumi.StringArrayInput `pulumi:"domainAliases"`
+	// Signature method used to sign the request. EA Only
+	DpopSigningAlg pulumi.StringInput `pulumi:"dpopSigningAlg"`
 	// Indicates whether to request the email scope. Used by some OAuth2 connections (e.g., LINE).
 	Email pulumi.BoolInput `pulumi:"email"`
 	// Set to `true` to inject context into custom DB scripts (warning: cannot be disabled once enabled).
@@ -56828,6 +56851,11 @@ func (o GetConnectionOptionOutput) Domain() pulumi.StringOutput {
 // List of the domains that can be authenticated using the identity provider. Only needed for Identifier First authentication flows.
 func (o GetConnectionOptionOutput) DomainAliases() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetConnectionOption) []string { return v.DomainAliases }).(pulumi.StringArrayOutput)
+}
+
+// Signature method used to sign the request. EA Only
+func (o GetConnectionOptionOutput) DpopSigningAlg() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.DpopSigningAlg }).(pulumi.StringOutput)
 }
 
 // Indicates whether to request the email scope. Used by some OAuth2 connections (e.g., LINE).
@@ -68473,7 +68501,7 @@ type GetTenantFlag struct {
 	EnableAdfsWaadEmailVerification bool `pulumi:"enableAdfsWaadEmailVerification"`
 	// Indicates whether the APIs section is enabled for the tenant.
 	EnableApisSection bool `pulumi:"enableApisSection"`
-	// Indicates whether all current connections should be enabled when a new client is created.
+	// Indicates whether all current connections should be enabled when a new client is created. (Default: `true`)
 	EnableClientConnections bool `pulumi:"enableClientConnections"`
 	// Indicates whether the tenant allows custom domains in emails. Before enabling this flag, you must have a custom domain with status: `ready`.
 	EnableCustomDomainInEmails bool `pulumi:"enableCustomDomainInEmails"`
@@ -68537,7 +68565,7 @@ type GetTenantFlagArgs struct {
 	EnableAdfsWaadEmailVerification pulumi.BoolInput `pulumi:"enableAdfsWaadEmailVerification"`
 	// Indicates whether the APIs section is enabled for the tenant.
 	EnableApisSection pulumi.BoolInput `pulumi:"enableApisSection"`
-	// Indicates whether all current connections should be enabled when a new client is created.
+	// Indicates whether all current connections should be enabled when a new client is created. (Default: `true`)
 	EnableClientConnections pulumi.BoolInput `pulumi:"enableClientConnections"`
 	// Indicates whether the tenant allows custom domains in emails. Before enabling this flag, you must have a custom domain with status: `ready`.
 	EnableCustomDomainInEmails pulumi.BoolInput `pulumi:"enableCustomDomainInEmails"`
@@ -68670,7 +68698,7 @@ func (o GetTenantFlagOutput) EnableApisSection() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetTenantFlag) bool { return v.EnableApisSection }).(pulumi.BoolOutput)
 }
 
-// Indicates whether all current connections should be enabled when a new client is created.
+// Indicates whether all current connections should be enabled when a new client is created. (Default: `true`)
 func (o GetTenantFlagOutput) EnableClientConnections() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetTenantFlag) bool { return v.EnableClientConnections }).(pulumi.BoolOutput)
 }

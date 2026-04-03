@@ -1830,6 +1830,10 @@ export interface ConnectionOptions {
      */
     domainAliases: string[];
     /**
+     * Signature method used to sign the request. EA Only
+     */
+    dpopSigningAlg?: string;
+    /**
      * Indicates whether to request the email scope. Used by some OAuth2 connections (e.g., LINE).
      */
     email: boolean;
@@ -5205,6 +5209,10 @@ export interface GetConnectionOption {
      */
     domainAliases: string[];
     /**
+     * Signature method used to sign the request. EA Only
+     */
+    dpopSigningAlg: string;
+    /**
      * Indicates whether to request the email scope. Used by some OAuth2 connections (e.g., LINE).
      */
     email: boolean;
@@ -6940,7 +6948,7 @@ export interface GetTenantFlag {
      */
     enableApisSection: boolean;
     /**
-     * Indicates whether all current connections should be enabled when a new client is created.
+     * Indicates whether all current connections should be enabled when a new client is created. (Default: `true`)
      */
     enableClientConnections: boolean;
     /**
@@ -8115,9 +8123,9 @@ export interface TenantFlags {
      */
     enableApisSection: boolean;
     /**
-     * Indicates whether all current connections should be enabled when a new client is created.
+     * Indicates whether all current connections should be enabled when a new client is created. (Default: `true`)
      */
-    enableClientConnections: boolean;
+    enableClientConnections?: boolean;
     /**
      * Indicates whether the tenant allows custom domains in emails. Before enabling this flag, you must have a custom domain with status: `ready`.
      */

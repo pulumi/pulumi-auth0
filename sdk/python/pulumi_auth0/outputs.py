@@ -6706,6 +6706,8 @@ class ConnectionOptions(dict):
             suggest = "discovery_url"
         elif key == "domainAliases":
             suggest = "domain_aliases"
+        elif key == "dpopSigningAlg":
+            suggest = "dpop_signing_alg"
         elif key == "enableScriptContext":
             suggest = "enable_script_context"
         elif key == "enabledDatabaseCustomization":
@@ -6880,6 +6882,7 @@ class ConnectionOptions(dict):
                  discovery_url: Optional[_builtins.str] = None,
                  domain: Optional[_builtins.str] = None,
                  domain_aliases: Optional[Sequence[_builtins.str]] = None,
+                 dpop_signing_alg: Optional[_builtins.str] = None,
                  email: Optional[_builtins.bool] = None,
                  enable_script_context: Optional[_builtins.bool] = None,
                  enabled_database_customization: Optional[_builtins.bool] = None,
@@ -6992,6 +6995,7 @@ class ConnectionOptions(dict):
         :param _builtins.str discovery_url: OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`.
         :param _builtins.str domain: Domain name.
         :param Sequence[_builtins.str] domain_aliases: List of the domains that can be authenticated using the identity provider. Only needed for Identifier First authentication flows.
+        :param _builtins.str dpop_signing_alg: Signature method used to sign the request. EA Only
         :param _builtins.bool email: Indicates whether to request the email scope. Used by some OAuth2 connections (e.g., LINE).
         :param _builtins.bool enable_script_context: Set to `true` to inject context into custom DB scripts (warning: cannot be disabled once enabled).
         :param _builtins.bool enabled_database_customization: Set to `true` to use a legacy user store.
@@ -7135,6 +7139,8 @@ class ConnectionOptions(dict):
             pulumi.set(__self__, "domain", domain)
         if domain_aliases is not None:
             pulumi.set(__self__, "domain_aliases", domain_aliases)
+        if dpop_signing_alg is not None:
+            pulumi.set(__self__, "dpop_signing_alg", dpop_signing_alg)
         if email is not None:
             pulumi.set(__self__, "email", email)
         if enable_script_context is not None:
@@ -7543,6 +7549,14 @@ class ConnectionOptions(dict):
         List of the domains that can be authenticated using the identity provider. Only needed for Identifier First authentication flows.
         """
         return pulumi.get(self, "domain_aliases")
+
+    @_builtins.property
+    @pulumi.getter(name="dpopSigningAlg")
+    def dpop_signing_alg(self) -> Optional[_builtins.str]:
+        """
+        Signature method used to sign the request. EA Only
+        """
+        return pulumi.get(self, "dpop_signing_alg")
 
     @_builtins.property
     @pulumi.getter
@@ -14803,7 +14817,7 @@ class TenantFlags(dict):
         :param _builtins.bool disable_management_api_sms_obfuscation: If true, SMS phone numbers will not be obfuscated in Management API GET calls.
         :param _builtins.bool enable_adfs_waad_email_verification: If enabled, users will be presented with an email verification prompt during their first login when using Azure AD or ADFS connections.
         :param _builtins.bool enable_apis_section: Indicates whether the APIs section is enabled for the tenant.
-        :param _builtins.bool enable_client_connections: Indicates whether all current connections should be enabled when a new client is created.
+        :param _builtins.bool enable_client_connections: Indicates whether all current connections should be enabled when a new client is created. (Default: `true`)
         :param _builtins.bool enable_custom_domain_in_emails: Indicates whether the tenant allows custom domains in emails. Before enabling this flag, you must have a custom domain with status: `ready`.
         :param _builtins.bool enable_dynamic_client_registration: Indicates whether the tenant allows dynamic client registration.
         :param _builtins.bool enable_idtoken_api2: Whether ID tokens can be used to authorize some types of requests to API v2 (true) or not (false).
@@ -14954,7 +14968,7 @@ class TenantFlags(dict):
     @pulumi.getter(name="enableClientConnections")
     def enable_client_connections(self) -> Optional[_builtins.bool]:
         """
-        Indicates whether all current connections should be enabled when a new client is created.
+        Indicates whether all current connections should be enabled when a new client is created. (Default: `true`)
         """
         return pulumi.get(self, "enable_client_connections")
 
@@ -21515,6 +21529,7 @@ class GetConnectionOptionResult(dict):
                  discovery_url: _builtins.str,
                  domain: _builtins.str,
                  domain_aliases: Sequence[_builtins.str],
+                 dpop_signing_alg: _builtins.str,
                  email: _builtins.bool,
                  enable_script_context: _builtins.bool,
                  enabled_database_customization: _builtins.bool,
@@ -21627,6 +21642,7 @@ class GetConnectionOptionResult(dict):
         :param _builtins.str discovery_url: OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`.
         :param _builtins.str domain: Domain name.
         :param Sequence[_builtins.str] domain_aliases: List of the domains that can be authenticated using the identity provider. Only needed for Identifier First authentication flows.
+        :param _builtins.str dpop_signing_alg: Signature method used to sign the request. EA Only
         :param _builtins.bool email: Indicates whether to request the email scope. Used by some OAuth2 connections (e.g., LINE).
         :param _builtins.bool enable_script_context: Set to `true` to inject context into custom DB scripts (warning: cannot be disabled once enabled).
         :param _builtins.bool enabled_database_customization: Set to `true` to use a legacy user store.
@@ -21739,6 +21755,7 @@ class GetConnectionOptionResult(dict):
         pulumi.set(__self__, "discovery_url", discovery_url)
         pulumi.set(__self__, "domain", domain)
         pulumi.set(__self__, "domain_aliases", domain_aliases)
+        pulumi.set(__self__, "dpop_signing_alg", dpop_signing_alg)
         pulumi.set(__self__, "email", email)
         pulumi.set(__self__, "enable_script_context", enable_script_context)
         pulumi.set(__self__, "enabled_database_customization", enabled_database_customization)
@@ -22067,6 +22084,14 @@ class GetConnectionOptionResult(dict):
         List of the domains that can be authenticated using the identity provider. Only needed for Identifier First authentication flows.
         """
         return pulumi.get(self, "domain_aliases")
+
+    @_builtins.property
+    @pulumi.getter(name="dpopSigningAlg")
+    def dpop_signing_alg(self) -> _builtins.str:
+        """
+        Signature method used to sign the request. EA Only
+        """
+        return pulumi.get(self, "dpop_signing_alg")
 
     @_builtins.property
     @pulumi.getter
@@ -26443,7 +26468,7 @@ class GetTenantFlagResult(dict):
         :param _builtins.bool disable_management_api_sms_obfuscation: If true, SMS phone numbers will not be obfuscated in Management API GET calls.
         :param _builtins.bool enable_adfs_waad_email_verification: If enabled, users will be presented with an email verification prompt during their first login when using Azure AD or ADFS connections.
         :param _builtins.bool enable_apis_section: Indicates whether the APIs section is enabled for the tenant.
-        :param _builtins.bool enable_client_connections: Indicates whether all current connections should be enabled when a new client is created.
+        :param _builtins.bool enable_client_connections: Indicates whether all current connections should be enabled when a new client is created. (Default: `true`)
         :param _builtins.bool enable_custom_domain_in_emails: Indicates whether the tenant allows custom domains in emails. Before enabling this flag, you must have a custom domain with status: `ready`.
         :param _builtins.bool enable_dynamic_client_registration: Indicates whether the tenant allows dynamic client registration.
         :param _builtins.bool enable_idtoken_api2: Whether ID tokens can be used to authorize some types of requests to API v2 (true) or not (false).
@@ -26569,7 +26594,7 @@ class GetTenantFlagResult(dict):
     @pulumi.getter(name="enableClientConnections")
     def enable_client_connections(self) -> _builtins.bool:
         """
-        Indicates whether all current connections should be enabled when a new client is created.
+        Indicates whether all current connections should be enabled when a new client is created. (Default: `true`)
         """
         return pulumi.get(self, "enable_client_connections")
 

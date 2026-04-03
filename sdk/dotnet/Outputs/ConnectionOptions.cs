@@ -138,6 +138,10 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly ImmutableArray<string> DomainAliases;
         /// <summary>
+        /// Signature method used to sign the request. EA Only
+        /// </summary>
+        public readonly string? DpopSigningAlg;
+        /// <summary>
         /// Indicates whether to request the email scope. Used by some OAuth2 connections (e.g., LINE).
         /// </summary>
         public readonly bool? Email;
@@ -522,6 +526,8 @@ namespace Pulumi.Auth0.Outputs
 
             ImmutableArray<string> domainAliases,
 
+            string? dpopSigningAlg,
+
             bool? email,
 
             bool? enableScriptContext,
@@ -713,6 +719,7 @@ namespace Pulumi.Auth0.Outputs
             DiscoveryUrl = discoveryUrl;
             Domain = domain;
             DomainAliases = domainAliases;
+            DpopSigningAlg = dpopSigningAlg;
             Email = email;
             EnableScriptContext = enableScriptContext;
             EnabledDatabaseCustomization = enabledDatabaseCustomization;
