@@ -61,7 +61,7 @@ public final class GetTenantFlag {
      */
     private Boolean enableApisSection;
     /**
-     * @return Indicates whether all current connections should be enabled when a new client is created.
+     * @return Indicates whether all current connections should be enabled when a new client is created. (Default: `true`)
      * 
      */
     private Boolean enableClientConnections;
@@ -208,7 +208,7 @@ public final class GetTenantFlag {
         return this.enableApisSection;
     }
     /**
-     * @return Indicates whether all current connections should be enabled when a new client is created.
+     * @return Indicates whether all current connections should be enabled when a new client is created. (Default: `true`)
      * 
      */
     public Boolean enableClientConnections() {

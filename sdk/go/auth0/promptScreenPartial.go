@@ -79,7 +79,7 @@ type PromptScreenPartial struct {
 
 	// The insertion points for the partials.
 	InsertionPoints PromptScreenPartialInsertionPointsPtrOutput `pulumi:"insertionPoints"`
-	// The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
+	// The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`, `passkeys`.
 	PromptType pulumi.StringOutput `pulumi:"promptType"`
 	// The name of the screen associated with the partials
 	ScreenName pulumi.StringOutput `pulumi:"screenName"`
@@ -123,7 +123,7 @@ func GetPromptScreenPartial(ctx *pulumi.Context,
 type promptScreenPartialState struct {
 	// The insertion points for the partials.
 	InsertionPoints *PromptScreenPartialInsertionPoints `pulumi:"insertionPoints"`
-	// The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
+	// The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`, `passkeys`.
 	PromptType *string `pulumi:"promptType"`
 	// The name of the screen associated with the partials
 	ScreenName *string `pulumi:"screenName"`
@@ -132,7 +132,7 @@ type promptScreenPartialState struct {
 type PromptScreenPartialState struct {
 	// The insertion points for the partials.
 	InsertionPoints PromptScreenPartialInsertionPointsPtrInput
-	// The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
+	// The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`, `passkeys`.
 	PromptType pulumi.StringPtrInput
 	// The name of the screen associated with the partials
 	ScreenName pulumi.StringPtrInput
@@ -145,7 +145,7 @@ func (PromptScreenPartialState) ElementType() reflect.Type {
 type promptScreenPartialArgs struct {
 	// The insertion points for the partials.
 	InsertionPoints *PromptScreenPartialInsertionPoints `pulumi:"insertionPoints"`
-	// The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
+	// The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`, `passkeys`.
 	PromptType string `pulumi:"promptType"`
 	// The name of the screen associated with the partials
 	ScreenName string `pulumi:"screenName"`
@@ -155,7 +155,7 @@ type promptScreenPartialArgs struct {
 type PromptScreenPartialArgs struct {
 	// The insertion points for the partials.
 	InsertionPoints PromptScreenPartialInsertionPointsPtrInput
-	// The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
+	// The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`, `passkeys`.
 	PromptType pulumi.StringInput
 	// The name of the screen associated with the partials
 	ScreenName pulumi.StringInput
@@ -253,7 +253,7 @@ func (o PromptScreenPartialOutput) InsertionPoints() PromptScreenPartialInsertio
 	return o.ApplyT(func(v *PromptScreenPartial) PromptScreenPartialInsertionPointsPtrOutput { return v.InsertionPoints }).(PromptScreenPartialInsertionPointsPtrOutput)
 }
 
-// The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`.
+// The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`, `passkeys`.
 func (o PromptScreenPartialOutput) PromptType() pulumi.StringOutput {
 	return o.ApplyT(func(v *PromptScreenPartial) pulumi.StringOutput { return v.PromptType }).(pulumi.StringOutput)
 }

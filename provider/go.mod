@@ -43,7 +43,7 @@ require (
 	github.com/apparentlymart/go-textseg/v15 v15.0.0 // indirect
 	github.com/armon/go-radix v1.0.0 // indirect
 	github.com/atotto/clipboard v0.1.4 // indirect
-	github.com/auth0/go-auth0 v1.35.1-0.20260309122841-a8337284a4ce // indirect
+	github.com/auth0/go-auth0 v1.36.1-0.20260326052527-34201e3752a9 // indirect
 	github.com/auth0/go-auth0/v2 v2.5.0 // indirect
 	github.com/aws/aws-sdk-go v1.50.36 // indirect
 	github.com/aymanbagabas/go-osc52/v2 v2.0.1 // indirect

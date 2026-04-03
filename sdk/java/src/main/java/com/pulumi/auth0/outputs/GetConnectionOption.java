@@ -188,6 +188,11 @@ public final class GetConnectionOption {
      */
     private List<String> domainAliases;
     /**
+     * @return Signature method used to sign the request. EA Only
+     * 
+     */
+    private String dpopSigningAlg;
+    /**
      * @return Indicates whether to request the email scope. Used by some OAuth2 connections (e.g., LINE).
      * 
      */
@@ -807,6 +812,13 @@ public final class GetConnectionOption {
         return this.domainAliases;
     }
     /**
+     * @return Signature method used to sign the request. EA Only
+     * 
+     */
+    public String dpopSigningAlg() {
+        return this.dpopSigningAlg;
+    }
+    /**
      * @return Indicates whether to request the email scope. Used by some OAuth2 connections (e.g., LINE).
      * 
      */
@@ -1407,6 +1419,7 @@ public final class GetConnectionOption {
         private String discoveryUrl;
         private String domain;
         private List<String> domainAliases;
+        private String dpopSigningAlg;
         private Boolean email;
         private Boolean enableScriptContext;
         private Boolean enabledDatabaseCustomization;
@@ -1521,6 +1534,7 @@ public final class GetConnectionOption {
     	      this.discoveryUrl = defaults.discoveryUrl;
     	      this.domain = defaults.domain;
     	      this.domainAliases = defaults.domainAliases;
+    	      this.dpopSigningAlg = defaults.dpopSigningAlg;
     	      this.email = defaults.email;
     	      this.enableScriptContext = defaults.enableScriptContext;
     	      this.enabledDatabaseCustomization = defaults.enabledDatabaseCustomization;
@@ -1877,6 +1891,14 @@ public final class GetConnectionOption {
         }
         public Builder domainAliases(String... domainAliases) {
             return domainAliases(List.of(domainAliases));
+        }
+        @CustomType.Setter
+        public Builder dpopSigningAlg(String dpopSigningAlg) {
+            if (dpopSigningAlg == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOption", "dpopSigningAlg");
+            }
+            this.dpopSigningAlg = dpopSigningAlg;
+            return this;
         }
         @CustomType.Setter
         public Builder email(Boolean email) {
@@ -2596,6 +2618,7 @@ public final class GetConnectionOption {
             _resultValue.discoveryUrl = discoveryUrl;
             _resultValue.domain = domain;
             _resultValue.domainAliases = domainAliases;
+            _resultValue.dpopSigningAlg = dpopSigningAlg;
             _resultValue.email = email;
             _resultValue.enableScriptContext = enableScriptContext;
             _resultValue.enabledDatabaseCustomization = enabledDatabaseCustomization;

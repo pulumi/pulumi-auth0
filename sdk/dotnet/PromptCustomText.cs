@@ -79,7 +79,7 @@ namespace Pulumi.Auth0
         public Output<string> Body { get; private set; } = null!;
 
         /// <summary>
-        /// Language of the custom text. Options include: `Am`, `Ar`, `ar-EG`, `ar-SA`, `Az`, `Bg`, `Bn`, `Bs`, `ca-ES`, `Cnr`, `Cs`, `Cy`, `Da`, `De`, `El`, `En`, `en-CA`, `Es`, `es-419`, `es-AR`, `es-MX`, `Et`, `eu-ES`, `Fa`, `Fi`, `Fr`, `fr-CA`, `fr-FR`, `gl-ES`, `Gu`, `He`, `Hi`, `Hr`, `Hu`, `Hy`, `Id`, `Is`, `It`, `Ja`, `Ka`, `Kk`, `Kn`, `Ko`, `Lt`, `Lv`, `Mk`, `Ml`, `Mn`, `Mr`, `Ms`, `My`, `Nb`, `Nl`, `Nn`, `No`, `Pa`, `Pl`, `Pt`, `pt-BR`, `pt-PT`, `Ro`, `Ru`, `Sk`, `Sl`, `So`, `Sq`, `Sr`, `Sv`, `Sw`, `Ta`, `Te`, `Th`, `Tl`, `Tr`, `Uk`, `Ur`, `Vi`, `Zgh`, `zh-CN`, `zh-HK`, `zh-TW`.
+        /// Language of the custom text. Options include: `Am`, `Ar`, `ar-EG`, `ar-SA`, `Az`, `Bg`, `Bn`, `Bs`, `ca-ES`, `Cnr`, `Cs`, `Cy`, `Da`, `De`, `El`, `En`, `en-CA`, `Es`, `es-419`, `es-AR`, `es-MX`, `Et`, `eu-ES`, `Fa`, `Fi`, `Fr`, `fr-CA`, `fr-FR`, `gl-ES`, `Gu`, `He`, `Hi`, `Hr`, `Hu`, `Hy`, `Id`, `Is`, `It`, `Ja`, `Ka`, `Kk`, `Kn`, `Ko`, `Lt`, `Lv`, `Mk`, `Ml`, `Mn`, `Mr`, `Ms`, `My`, `Nb`, `Nl`, `Nn`, `No`, `Pa`, `Pl`, `Pt`, `pt-BR`, `pt-PT`, `Ro`, `Ru`, `Sk`, `Sl`, `So`, `Sq`, `Sr`, `Sv`, `Sw`, `Ta`, `Te`, `Th`, `Tl`, `Tr`, `Uk`, `Ur`, `Vi`, `Zgh`, `zh-CN`, `zh-HK`, `zh-MO`, `zh-TW`.
         /// </summary>
         [Output("language")]
         public Output<string> Language { get; private set; } = null!;
@@ -143,7 +143,7 @@ namespace Pulumi.Auth0
         public Input<string> Body { get; set; } = null!;
 
         /// <summary>
-        /// Language of the custom text. Options include: `Am`, `Ar`, `ar-EG`, `ar-SA`, `Az`, `Bg`, `Bn`, `Bs`, `ca-ES`, `Cnr`, `Cs`, `Cy`, `Da`, `De`, `El`, `En`, `en-CA`, `Es`, `es-419`, `es-AR`, `es-MX`, `Et`, `eu-ES`, `Fa`, `Fi`, `Fr`, `fr-CA`, `fr-FR`, `gl-ES`, `Gu`, `He`, `Hi`, `Hr`, `Hu`, `Hy`, `Id`, `Is`, `It`, `Ja`, `Ka`, `Kk`, `Kn`, `Ko`, `Lt`, `Lv`, `Mk`, `Ml`, `Mn`, `Mr`, `Ms`, `My`, `Nb`, `Nl`, `Nn`, `No`, `Pa`, `Pl`, `Pt`, `pt-BR`, `pt-PT`, `Ro`, `Ru`, `Sk`, `Sl`, `So`, `Sq`, `Sr`, `Sv`, `Sw`, `Ta`, `Te`, `Th`, `Tl`, `Tr`, `Uk`, `Ur`, `Vi`, `Zgh`, `zh-CN`, `zh-HK`, `zh-TW`.
+        /// Language of the custom text. Options include: `Am`, `Ar`, `ar-EG`, `ar-SA`, `Az`, `Bg`, `Bn`, `Bs`, `ca-ES`, `Cnr`, `Cs`, `Cy`, `Da`, `De`, `El`, `En`, `en-CA`, `Es`, `es-419`, `es-AR`, `es-MX`, `Et`, `eu-ES`, `Fa`, `Fi`, `Fr`, `fr-CA`, `fr-FR`, `gl-ES`, `Gu`, `He`, `Hi`, `Hr`, `Hu`, `Hy`, `Id`, `Is`, `It`, `Ja`, `Ka`, `Kk`, `Kn`, `Ko`, `Lt`, `Lv`, `Mk`, `Ml`, `Mn`, `Mr`, `Ms`, `My`, `Nb`, `Nl`, `Nn`, `No`, `Pa`, `Pl`, `Pt`, `pt-BR`, `pt-PT`, `Ro`, `Ru`, `Sk`, `Sl`, `So`, `Sq`, `Sr`, `Sv`, `Sw`, `Ta`, `Te`, `Th`, `Tl`, `Tr`, `Uk`, `Ur`, `Vi`, `Zgh`, `zh-CN`, `zh-HK`, `zh-MO`, `zh-TW`.
         /// </summary>
         [Input("language", required: true)]
         public Input<string> Language { get; set; } = null!;
@@ -169,7 +169,7 @@ namespace Pulumi.Auth0
         public Input<string>? Body { get; set; }
 
         /// <summary>
-        /// Language of the custom text. Options include: `Am`, `Ar`, `ar-EG`, `ar-SA`, `Az`, `Bg`, `Bn`, `Bs`, `ca-ES`, `Cnr`, `Cs`, `Cy`, `Da`, `De`, `El`, `En`, `en-CA`, `Es`, `es-419`, `es-AR`, `es-MX`, `Et`, `eu-ES`, `Fa`, `Fi`, `Fr`, `fr-CA`, `fr-FR`, `gl-ES`, `Gu`, `He`, `Hi`, `Hr`, `Hu`, `Hy`, `Id`, `Is`, `It`, `Ja`, `Ka`, `Kk`, `Kn`, `Ko`, `Lt`, `Lv`, `Mk`, `Ml`, `Mn`, `Mr`, `Ms`, `My`, `Nb`, `Nl`, `Nn`, `No`, `Pa`, `Pl`, `Pt`, `pt-BR`, `pt-PT`, `Ro`, `Ru`, `Sk`, `Sl`, `So`, `Sq`, `Sr`, `Sv`, `Sw`, `Ta`, `Te`, `Th`, `Tl`, `Tr`, `Uk`, `Ur`, `Vi`, `Zgh`, `zh-CN`, `zh-HK`, `zh-TW`.
+        /// Language of the custom text. Options include: `Am`, `Ar`, `ar-EG`, `ar-SA`, `Az`, `Bg`, `Bn`, `Bs`, `ca-ES`, `Cnr`, `Cs`, `Cy`, `Da`, `De`, `El`, `En`, `en-CA`, `Es`, `es-419`, `es-AR`, `es-MX`, `Et`, `eu-ES`, `Fa`, `Fi`, `Fr`, `fr-CA`, `fr-FR`, `gl-ES`, `Gu`, `He`, `Hi`, `Hr`, `Hu`, `Hy`, `Id`, `Is`, `It`, `Ja`, `Ka`, `Kk`, `Kn`, `Ko`, `Lt`, `Lv`, `Mk`, `Ml`, `Mn`, `Mr`, `Ms`, `My`, `Nb`, `Nl`, `Nn`, `No`, `Pa`, `Pl`, `Pt`, `pt-BR`, `pt-PT`, `Ro`, `Ru`, `Sk`, `Sl`, `So`, `Sq`, `Sr`, `Sv`, `Sw`, `Ta`, `Te`, `Th`, `Tl`, `Tr`, `Uk`, `Ur`, `Vi`, `Zgh`, `zh-CN`, `zh-HK`, `zh-MO`, `zh-TW`.
         /// </summary>
         [Input("language")]
         public Input<string>? Language { get; set; }

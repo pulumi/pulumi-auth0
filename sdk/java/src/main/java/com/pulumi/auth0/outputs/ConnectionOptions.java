@@ -189,6 +189,11 @@ public final class ConnectionOptions {
      */
     private @Nullable List<String> domainAliases;
     /**
+     * @return Signature method used to sign the request. EA Only
+     * 
+     */
+    private @Nullable String dpopSigningAlg;
+    /**
      * @return Indicates whether to request the email scope. Used by some OAuth2 connections (e.g., LINE).
      * 
      */
@@ -808,6 +813,13 @@ public final class ConnectionOptions {
         return this.domainAliases == null ? List.of() : this.domainAliases;
     }
     /**
+     * @return Signature method used to sign the request. EA Only
+     * 
+     */
+    public Optional<String> dpopSigningAlg() {
+        return Optional.ofNullable(this.dpopSigningAlg);
+    }
+    /**
      * @return Indicates whether to request the email scope. Used by some OAuth2 connections (e.g., LINE).
      * 
      */
@@ -1408,6 +1420,7 @@ public final class ConnectionOptions {
         private @Nullable String discoveryUrl;
         private @Nullable String domain;
         private @Nullable List<String> domainAliases;
+        private @Nullable String dpopSigningAlg;
         private @Nullable Boolean email;
         private @Nullable Boolean enableScriptContext;
         private @Nullable Boolean enabledDatabaseCustomization;
@@ -1522,6 +1535,7 @@ public final class ConnectionOptions {
     	      this.discoveryUrl = defaults.discoveryUrl;
     	      this.domain = defaults.domain;
     	      this.domainAliases = defaults.domainAliases;
+    	      this.dpopSigningAlg = defaults.dpopSigningAlg;
     	      this.email = defaults.email;
     	      this.enableScriptContext = defaults.enableScriptContext;
     	      this.enabledDatabaseCustomization = defaults.enabledDatabaseCustomization;
@@ -1804,6 +1818,12 @@ public final class ConnectionOptions {
         }
         public Builder domainAliases(String... domainAliases) {
             return domainAliases(List.of(domainAliases));
+        }
+        @CustomType.Setter
+        public Builder dpopSigningAlg(@Nullable String dpopSigningAlg) {
+
+            this.dpopSigningAlg = dpopSigningAlg;
+            return this;
         }
         @CustomType.Setter
         public Builder email(@Nullable Boolean email) {
@@ -2333,6 +2353,7 @@ public final class ConnectionOptions {
             _resultValue.discoveryUrl = discoveryUrl;
             _resultValue.domain = domain;
             _resultValue.domainAliases = domainAliases;
+            _resultValue.dpopSigningAlg = dpopSigningAlg;
             _resultValue.email = email;
             _resultValue.enableScriptContext = enableScriptContext;
             _resultValue.enabledDatabaseCustomization = enabledDatabaseCustomization;

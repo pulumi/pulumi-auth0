@@ -1830,6 +1830,10 @@ export interface ConnectionOptions {
      */
     domainAliases?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Signature method used to sign the request. EA Only
+     */
+    dpopSigningAlg?: pulumi.Input<string>;
+    /**
      * Indicates whether to request the email scope. Used by some OAuth2 connections (e.g., LINE).
      */
     email?: pulumi.Input<boolean>;
@@ -4037,7 +4041,7 @@ export interface TenantFlags {
      */
     enableApisSection?: pulumi.Input<boolean>;
     /**
-     * Indicates whether all current connections should be enabled when a new client is created.
+     * Indicates whether all current connections should be enabled when a new client is created. (Default: `true`)
      */
     enableClientConnections?: pulumi.Input<boolean>;
     /**
