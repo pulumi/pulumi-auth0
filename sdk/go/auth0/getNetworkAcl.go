@@ -28,7 +28,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// An Auth0 network acl loaded using its ID.
-//			_, err := auth0.LookupNetworkAcl(ctx, &auth0.LookupNetworkAclArgs{
+//			_, err := auth0.GetNetworkAcl(ctx, &auth0.LookupNetworkAclArgs{
 //				Id: "167f9a50-4444-3333-1111-ndfdaf953ab4",
 //			}, nil)
 //			if err != nil {

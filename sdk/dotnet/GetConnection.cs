@@ -25,13 +25,13 @@ namespace Pulumi.Auth0
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // An Auth0 Connection loaded using its name.
-        ///     var some_connection_by_name = Auth0.GetConnection.Invoke(new()
+        ///     var some_connection_by_name = Auth0.Index.GetConnection.Invoke(new()
         ///     {
         ///         Name = "Acceptance-Test-Connection-{{.testName}}",
         ///     });
         /// 
         ///     // An Auth0 Connection loaded using its ID.
-        ///     var some_connection_by_id = Auth0.GetConnection.Invoke(new()
+        ///     var some_connection_by_id = Auth0.Index.GetConnection.Invoke(new()
         ///     {
         ///         ConnectionId = "con_abcdefghkijklmnopqrstuvwxyz0123456789",
         ///     });
@@ -56,13 +56,13 @@ namespace Pulumi.Auth0
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // An Auth0 Connection loaded using its name.
-        ///     var some_connection_by_name = Auth0.GetConnection.Invoke(new()
+        ///     var some_connection_by_name = Auth0.Index.GetConnection.Invoke(new()
         ///     {
         ///         Name = "Acceptance-Test-Connection-{{.testName}}",
         ///     });
         /// 
         ///     // An Auth0 Connection loaded using its ID.
-        ///     var some_connection_by_id = Auth0.GetConnection.Invoke(new()
+        ///     var some_connection_by_id = Auth0.Index.GetConnection.Invoke(new()
         ///     {
         ///         ConnectionId = "con_abcdefghkijklmnopqrstuvwxyz0123456789",
         ///     });
@@ -87,13 +87,13 @@ namespace Pulumi.Auth0
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // An Auth0 Connection loaded using its name.
-        ///     var some_connection_by_name = Auth0.GetConnection.Invoke(new()
+        ///     var some_connection_by_name = Auth0.Index.GetConnection.Invoke(new()
         ///     {
         ///         Name = "Acceptance-Test-Connection-{{.testName}}",
         ///     });
         /// 
         ///     // An Auth0 Connection loaded using its ID.
-        ///     var some_connection_by_id = Auth0.GetConnection.Invoke(new()
+        ///     var some_connection_by_id = Auth0.Index.GetConnection.Invoke(new()
         ///     {
         ///         ConnectionId = "con_abcdefghkijklmnopqrstuvwxyz0123456789",
         ///     });

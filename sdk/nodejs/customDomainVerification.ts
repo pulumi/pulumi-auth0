@@ -22,10 +22,10 @@ import * as utilities from "./utilities";
  * });
  * const myDomainNameRecord = new digitalocean.index.Record("my_domain_name_record", {
  *     domain: "example.com",
- *     type: std.index.upper({
+ *     type: std.upper({
  *         input: myCustomDomain.verifications[0].methods?.[0]?.name,
  *     }).result,
- *     name: std.index.trimsuffix({
+ *     name: std.trimsuffix({
  *         input: myCustomDomain.verifications[0].methods?.[0]?.domain,
  *         suffix: ".example.com",
  *     }).result,

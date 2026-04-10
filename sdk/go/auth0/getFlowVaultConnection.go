@@ -28,7 +28,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// An Auth0 flow vault connection loaded using its ID.
-//			_, err := auth0.LookupFlowVaultConnection(ctx, &auth0.LookupFlowVaultConnectionArgs{
+//			_, err := auth0.GetFlowVaultConnection(ctx, &auth0.LookupFlowVaultConnectionArgs{
 //				Id: "ac_9m2uqjHsqs19riN9N6sZQ7",
 //			}, nil)
 //			if err != nil {

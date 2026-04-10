@@ -28,7 +28,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// An Auth0 Event Stream loaded using its ID.
-//			_, err := auth0.LookupEventStream(ctx, &auth0.LookupEventStreamArgs{
+//			_, err := auth0.GetEventStream(ctx, &auth0.LookupEventStreamArgs{
 //				Id: "est_XXXXXXXXXXXXXXX",
 //			}, nil)
 //			if err != nil {

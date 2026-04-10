@@ -24,7 +24,7 @@ namespace Pulumi.Auth0
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myModule = Auth0.GetActionModule.Invoke(new()
+        ///     var myModule = Auth0.Index.GetActionModule.Invoke(new()
         ///     {
         ///         Id = "mod_XXXXXXXXXXXX",
         ///     });
@@ -48,7 +48,7 @@ namespace Pulumi.Auth0
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myModule = Auth0.GetActionModule.Invoke(new()
+        ///     var myModule = Auth0.Index.GetActionModule.Invoke(new()
         ///     {
         ///         Id = "mod_XXXXXXXXXXXX",
         ///     });
@@ -72,7 +72,7 @@ namespace Pulumi.Auth0
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myModule = Auth0.GetActionModule.Invoke(new()
+        ///     var myModule = Auth0.Index.GetActionModule.Invoke(new()
         ///     {
         ///         Id = "mod_XXXXXXXXXXXX",
         ///     });

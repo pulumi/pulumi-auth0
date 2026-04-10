@@ -340,8 +340,8 @@ class Action(pulumi.CustomResource):
         import pulumi_std as std
 
         my_action = auth0.Action("my_action",
-            name=std.index.format(input="Test Action %s",
-                args=[std.index.timestamp()["result"]])["result"],
+            name=std.format(input="Test Action %s",
+                args=[std.timestamp()["result"]])["result"],
             runtime="node22",
             deploy=True,
             code=\"\"\"/**
@@ -430,8 +430,8 @@ class Action(pulumi.CustomResource):
         import pulumi_std as std
 
         my_action = auth0.Action("my_action",
-            name=std.index.format(input="Test Action %s",
-                args=[std.index.timestamp()["result"]])["result"],
+            name=std.format(input="Test Action %s",
+                args=[std.timestamp()["result"]])["result"],
             runtime="node22",
             deploy=True,
             code=\"\"\"/**

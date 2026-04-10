@@ -27,27 +27,27 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var user1 = new Auth0.User("user_1", new()
+    ///     var user1 = new Auth0.Index.User("user_1", new()
     ///     {
     ///         ConnectionName = "Username-Password-Authentication",
     ///         Email = "myuser1@auth0.com",
     ///         Password = "MyPass123$",
     ///     });
     /// 
-    ///     var user2 = new Auth0.User("user_2", new()
+    ///     var user2 = new Auth0.Index.User("user_2", new()
     ///     {
     ///         ConnectionName = "Username-Password-Authentication",
     ///         Email = "myuser2@auth0.com",
     ///         Password = "MyPass123$",
     ///     });
     /// 
-    ///     var myOrg = new Auth0.Organization("my_org", new()
+    ///     var myOrg = new Auth0.Index.Organization("my_org", new()
     ///     {
     ///         Name = "some-org",
     ///         DisplayName = "Some Organization",
     ///     });
     /// 
-    ///     var myMembers = new Auth0.OrganizationMembers("my_members", new()
+    ///     var myMembers = new Auth0.Index.OrganizationMembers("my_members", new()
     ///     {
     ///         OrganizationId = myOrg.Id,
     ///         Members = new[]

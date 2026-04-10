@@ -26,7 +26,7 @@ namespace Pulumi.Auth0
         /// {
         ///     // Example: Retrieve a specific version of an action module
         ///     // Create and publish an action module
-        ///     var myModule = new Auth0.ActionModule("my_module", new()
+        ///     var myModule = new Auth0.Index.ActionModule("my_module", new()
         ///     {
         ///         Name = "My Shared Module",
         ///         Publish = true,
@@ -39,13 +39,13 @@ namespace Pulumi.Auth0
         ///     });
         /// 
         ///     // Get all versions to find the version ID
-        ///     var myModuleVersions = Auth0.GetActionModuleVersions.Invoke(new()
+        ///     var myModuleVersions = Auth0.Index.GetActionModuleVersions.Invoke(new()
         ///     {
         ///         ModuleId = myModule.Id,
         ///     });
         /// 
         ///     // Retrieve a specific version by its ID
-        ///     var myModuleVersion = Auth0.GetActionModuleVersion.Invoke(new()
+        ///     var myModuleVersion = Auth0.Index.GetActionModuleVersion.Invoke(new()
         ///     {
         ///         ModuleId = myModule.Id,
         ///         VersionId = myModuleVersions.Apply(getActionModuleVersionsResult =&gt; getActionModuleVersionsResult.Versions[0]?.Id),
@@ -78,7 +78,7 @@ namespace Pulumi.Auth0
         /// {
         ///     // Example: Retrieve a specific version of an action module
         ///     // Create and publish an action module
-        ///     var myModule = new Auth0.ActionModule("my_module", new()
+        ///     var myModule = new Auth0.Index.ActionModule("my_module", new()
         ///     {
         ///         Name = "My Shared Module",
         ///         Publish = true,
@@ -91,13 +91,13 @@ namespace Pulumi.Auth0
         ///     });
         /// 
         ///     // Get all versions to find the version ID
-        ///     var myModuleVersions = Auth0.GetActionModuleVersions.Invoke(new()
+        ///     var myModuleVersions = Auth0.Index.GetActionModuleVersions.Invoke(new()
         ///     {
         ///         ModuleId = myModule.Id,
         ///     });
         /// 
         ///     // Retrieve a specific version by its ID
-        ///     var myModuleVersion = Auth0.GetActionModuleVersion.Invoke(new()
+        ///     var myModuleVersion = Auth0.Index.GetActionModuleVersion.Invoke(new()
         ///     {
         ///         ModuleId = myModule.Id,
         ///         VersionId = myModuleVersions.Apply(getActionModuleVersionsResult =&gt; getActionModuleVersionsResult.Versions[0]?.Id),
@@ -130,7 +130,7 @@ namespace Pulumi.Auth0
         /// {
         ///     // Example: Retrieve a specific version of an action module
         ///     // Create and publish an action module
-        ///     var myModule = new Auth0.ActionModule("my_module", new()
+        ///     var myModule = new Auth0.Index.ActionModule("my_module", new()
         ///     {
         ///         Name = "My Shared Module",
         ///         Publish = true,
@@ -143,13 +143,13 @@ namespace Pulumi.Auth0
         ///     });
         /// 
         ///     // Get all versions to find the version ID
-        ///     var myModuleVersions = Auth0.GetActionModuleVersions.Invoke(new()
+        ///     var myModuleVersions = Auth0.Index.GetActionModuleVersions.Invoke(new()
         ///     {
         ///         ModuleId = myModule.Id,
         ///     });
         /// 
         ///     // Retrieve a specific version by its ID
-        ///     var myModuleVersion = Auth0.GetActionModuleVersion.Invoke(new()
+        ///     var myModuleVersion = Auth0.Index.GetActionModuleVersion.Invoke(new()
         ///     {
         ///         ModuleId = myModule.Id,
         ///         VersionId = myModuleVersions.Apply(getActionModuleVersionsResult =&gt; getActionModuleVersionsResult.Versions[0]?.Id),

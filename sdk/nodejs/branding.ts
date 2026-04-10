@@ -23,7 +23,7 @@ import * as utilities from "./utilities";
  *         pageBackground: "#000000",
  *     },
  *     universalLogin: {
- *         body: std.index.file({
+ *         body: std.file({
  *             input: "universal_login_body.html",
  *         }).result,
  *     },

@@ -28,7 +28,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// An Auth0 Token Exchange Profile loaded using its ID.
-//			_, err := auth0.LookupTokenExchangeProfile(ctx, &auth0.LookupTokenExchangeProfileArgs{
+//			_, err := auth0.GetTokenExchangeProfile(ctx, &auth0.LookupTokenExchangeProfileArgs{
 //				Id: "tep_Tnvl88SKv98TkMmr",
 //			}, nil)
 //			if err != nil {

@@ -25,7 +25,7 @@ namespace Pulumi.Auth0
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // An Auth0 Token Exchange Profile loaded using its ID.
-        ///     var myProfile = Auth0.GetTokenExchangeProfile.Invoke(new()
+        ///     var myProfile = Auth0.Index.GetTokenExchangeProfile.Invoke(new()
         ///     {
         ///         Id = "tep_Tnvl88SKv98TkMmr",
         ///     });
@@ -50,7 +50,7 @@ namespace Pulumi.Auth0
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // An Auth0 Token Exchange Profile loaded using its ID.
-        ///     var myProfile = Auth0.GetTokenExchangeProfile.Invoke(new()
+        ///     var myProfile = Auth0.Index.GetTokenExchangeProfile.Invoke(new()
         ///     {
         ///         Id = "tep_Tnvl88SKv98TkMmr",
         ///     });
@@ -75,7 +75,7 @@ namespace Pulumi.Auth0
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // An Auth0 Token Exchange Profile loaded using its ID.
-        ///     var myProfile = Auth0.GetTokenExchangeProfile.Invoke(new()
+        ///     var myProfile = Auth0.Index.GetTokenExchangeProfile.Invoke(new()
         ///     {
         ///         Id = "tep_Tnvl88SKv98TkMmr",
         ///     });

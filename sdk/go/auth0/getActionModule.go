@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := auth0.LookupActionModule(ctx, &auth0.LookupActionModuleArgs{
+//			_, err := auth0.GetActionModule(ctx, &auth0.LookupActionModuleArgs{
 //				Id: "mod_XXXXXXXXXXXX",
 //			}, nil)
 //			if err != nil {

@@ -22,7 +22,7 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myGuardian = new Auth0.Guardian("my_guardian", new()
+    ///     var myGuardian = new Auth0.Index.Guardian("my_guardian", new()
     ///     {
     ///         Policy = "all-applications",
     ///         Email = true,

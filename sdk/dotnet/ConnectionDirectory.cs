@@ -22,7 +22,7 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var googleWorkspace = new Auth0.Connection("google_workspace", new()
+    ///     var googleWorkspace = new Auth0.Index.Connection("google_workspace", new()
     ///     {
     ///         Name = "google-workspace-connection",
     ///         DisplayName = "Google Workspace",
@@ -37,13 +37,13 @@ namespace Pulumi.Auth0
     ///     });
     /// 
     ///     // Configure directory provisioning with default settings
-    ///     var @default = new Auth0.ConnectionDirectory("default", new()
+    ///     var @default = new Auth0.Index.ConnectionDirectory("default", new()
     ///     {
     ///         ConnectionId = googleWorkspace.Id,
     ///     });
     /// 
     ///     // Configure directory provisioning with custom mapping and auto-sync enabled
-    ///     var custom = new Auth0.ConnectionDirectory("custom", new()
+    ///     var custom = new Auth0.Index.ConnectionDirectory("custom", new()
     ///     {
     ///         ConnectionId = googleWorkspace.Id,
     ///         SynchronizeAutomatically = true,

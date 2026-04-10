@@ -24,7 +24,7 @@ namespace Pulumi.Auth0
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myPages = Auth0.GetPages.Invoke();
+        ///     var myPages = Auth0.Index.GetPages.Invoke();
         /// 
         /// });
         /// ```
@@ -45,7 +45,7 @@ namespace Pulumi.Auth0
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myPages = Auth0.GetPages.Invoke();
+        ///     var myPages = Auth0.Index.GetPages.Invoke();
         /// 
         /// });
         /// ```
@@ -66,7 +66,7 @@ namespace Pulumi.Auth0
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myPages = Auth0.GetPages.Invoke();
+        ///     var myPages = Auth0.Index.GetPages.Invoke();
         /// 
         /// });
         /// ```

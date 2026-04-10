@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := auth0.LookupPromptScreenPartials(ctx, &auth0.LookupPromptScreenPartialsArgs{
+//			_, err := auth0.GetPromptScreenPartials(ctx, &auth0.LookupPromptScreenPartialsArgs{
 //				PromptType: "prompt-name",
 //			}, nil)
 //			if err != nil {

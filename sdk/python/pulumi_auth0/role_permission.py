@@ -206,7 +206,7 @@ class RolePermission(pulumi.CustomResource):
         my_role = auth0.Role("my_role", name="My Role")
         scopes_list = resource_server_scopes.scopes.apply(lambda scopes: [scope.name for scope in scopes])
         my_role_perm = []
-        for range in [{"value": i} for i in range(0, std.index.toset(input=scopes_list).result)]:
+        for range in [{"value": i} for i in range(0, std.toset(input=scopes_list).result)]:
             my_role_perm.append(auth0.RolePermission(f"my_role_perm-{range['value']}",
                 role_id=my_role.id,
                 resource_server_identifier=resource_server.identifier,
@@ -275,7 +275,7 @@ class RolePermission(pulumi.CustomResource):
         my_role = auth0.Role("my_role", name="My Role")
         scopes_list = resource_server_scopes.scopes.apply(lambda scopes: [scope.name for scope in scopes])
         my_role_perm = []
-        for range in [{"value": i} for i in range(0, std.index.toset(input=scopes_list).result)]:
+        for range in [{"value": i} for i in range(0, std.toset(input=scopes_list).result)]:
             my_role_perm.append(auth0.RolePermission(f"my_role_perm-{range['value']}",
                 role_id=my_role.id,
                 resource_server_identifier=resource_server.identifier,

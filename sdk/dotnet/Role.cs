@@ -22,7 +22,7 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myRole = new Auth0.Role("my_role", new()
+    ///     var myRole = new Auth0.Index.Role("my_role", new()
     ///     {
     ///         Name = "My Role - (Managed by Terraform)",
     ///         Description = "Role Description...",

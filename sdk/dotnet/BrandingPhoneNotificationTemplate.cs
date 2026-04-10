@@ -24,7 +24,7 @@ namespace Pulumi.Auth0
     /// {
     ///     // Phone Notification Template - OTP Enrollment
     ///     // Configure the OTP enrollment phone notification template with SMS and voice support.
-    ///     var otpEnrollment = new Auth0.BrandingPhoneNotificationTemplate("otp_enrollment", new()
+    ///     var otpEnrollment = new Auth0.Index.BrandingPhoneNotificationTemplate("otp_enrollment", new()
     ///     {
     ///         Type = "otp_enroll",
     ///         Disabled = false,
@@ -41,7 +41,7 @@ namespace Pulumi.Auth0
     /// 
     ///     // Phone Notification Template - OTP Verification
     ///     // Configure the OTP verification phone notification template.
-    ///     var otpVerification = new Auth0.BrandingPhoneNotificationTemplate("otp_verification", new()
+    ///     var otpVerification = new Auth0.Index.BrandingPhoneNotificationTemplate("otp_verification", new()
     ///     {
     ///         Type = "otp_verify",
     ///         Disabled = false,

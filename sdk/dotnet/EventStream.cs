@@ -23,7 +23,7 @@ namespace Pulumi.Auth0
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Creates an event stream of type eventbridge
-    ///     var myEventStreamEventBridge = new Auth0.EventStream("my_event_stream_event_bridge", new()
+    ///     var myEventStreamEventBridge = new Auth0.Index.EventStream("my_event_stream_event_bridge", new()
     ///     {
     ///         Name = "my-eventbridge",
     ///         DestinationType = "eventbridge",
@@ -40,7 +40,7 @@ namespace Pulumi.Auth0
     ///     });
     /// 
     ///     // Creates an event stream of type webhook
-    ///     var myEventStreamWebhook = new Auth0.EventStream("my_event_stream_webhook", new()
+    ///     var myEventStreamWebhook = new Auth0.Index.EventStream("my_event_stream_webhook", new()
     ///     {
     ///         Name = "my-webhook",
     ///         DestinationType = "webhook",
@@ -63,7 +63,7 @@ namespace Pulumi.Auth0
     ///     var config = new Config();
     ///     // The webhook token
     ///     var webhookToken = config.Require("webhookToken");
-    ///     var myEventStreamWebhookSecure = new Auth0.EventStream("my_event_stream_webhook_secure", new()
+    ///     var myEventStreamWebhookSecure = new Auth0.Index.EventStream("my_event_stream_webhook_secure", new()
     ///     {
     ///         Name = "my-webhook-secure",
     ///         DestinationType = "webhook",

@@ -39,7 +39,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_ = auth0.LookupCustomDomainOutput(ctx, auth0.GetCustomDomainOutputArgs{
+//			_ = auth0.GetCustomDomainOutput(ctx, auth0.GetCustomDomainOutputArgs{
 //				CustomDomainId: myCustomDomain.ID(),
 //			}, nil)
 //			return nil

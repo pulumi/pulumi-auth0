@@ -22,7 +22,7 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myProtection = new Auth0.AttackProtection("my_protection", new()
+    ///     var myProtection = new Auth0.Index.AttackProtection("my_protection", new()
     ///     {
     ///         SuspiciousIpThrottling = new Auth0.Inputs.AttackProtectionSuspiciousIpThrottlingArgs
     ///         {
@@ -116,7 +116,7 @@ namespace Pulumi.Auth0
     ///     // Google reCAPTCHA v2 secret key
     ///     var recaptchaV2Secret = config.Require("recaptchaV2Secret");
     ///     // Example 1: reCAPTCHA v2
-    ///     var captchaRecaptchaV2 = new Auth0.AttackProtection("captcha_recaptcha_v2", new()
+    ///     var captchaRecaptchaV2 = new Auth0.Index.AttackProtection("captcha_recaptcha_v2", new()
     ///     {
     ///         Captcha = new Auth0.Inputs.AttackProtectionCaptchaArgs
     ///         {
@@ -136,7 +136,7 @@ namespace Pulumi.Auth0
     ///     // Google reCAPTCHA Enterprise project ID
     ///     var recaptchaEnterpriseProjectId = config.Require("recaptchaEnterpriseProjectId");
     ///     // Example 2: reCAPTCHA Enterprise
-    ///     var captchaRecaptchaEnterprise = new Auth0.AttackProtection("captcha_recaptcha_enterprise", new()
+    ///     var captchaRecaptchaEnterprise = new Auth0.Index.AttackProtection("captcha_recaptcha_enterprise", new()
     ///     {
     ///         Captcha = new Auth0.Inputs.AttackProtectionCaptchaArgs
     ///         {
@@ -155,7 +155,7 @@ namespace Pulumi.Auth0
     ///     // hCaptcha secret key
     ///     var hcaptchaSecret = config.Require("hcaptchaSecret");
     ///     // Example 3: hCaptcha
-    ///     var captchaHcaptcha = new Auth0.AttackProtection("captcha_hcaptcha", new()
+    ///     var captchaHcaptcha = new Auth0.Index.AttackProtection("captcha_hcaptcha", new()
     ///     {
     ///         Captcha = new Auth0.Inputs.AttackProtectionCaptchaArgs
     ///         {
@@ -173,7 +173,7 @@ namespace Pulumi.Auth0
     ///     // Friendly Captcha secret key
     ///     var friendlyCaptchaSecret = config.Require("friendlyCaptchaSecret");
     ///     // Example 4: Friendly Captcha
-    ///     var captchaFriendlyCaptcha = new Auth0.AttackProtection("captcha_friendly_captcha", new()
+    ///     var captchaFriendlyCaptcha = new Auth0.Index.AttackProtection("captcha_friendly_captcha", new()
     ///     {
     ///         Captcha = new Auth0.Inputs.AttackProtectionCaptchaArgs
     ///         {
@@ -191,7 +191,7 @@ namespace Pulumi.Auth0
     ///     // Arkose Labs secret key
     ///     var arkoseSecret = config.Require("arkoseSecret");
     ///     // Example 5: Arkose Labs
-    ///     var captchaArkose = new Auth0.AttackProtection("captcha_arkose", new()
+    ///     var captchaArkose = new Auth0.Index.AttackProtection("captcha_arkose", new()
     ///     {
     ///         Captcha = new Auth0.Inputs.AttackProtectionCaptchaArgs
     ///         {
