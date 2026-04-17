@@ -28,7 +28,7 @@ namespace Pulumi.Auth0
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // This is an example on how to set up the email provider with Amazon SES.
-    ///     var amazonSesEmailProvider = new Auth0.EmailProvider("amazon_ses_email_provider", new()
+    ///     var amazonSesEmailProvider = new Auth0.Index.EmailProvider("amazon_ses_email_provider", new()
     ///     {
     ///         Name = "ses",
     ///         Enabled = true,
@@ -42,7 +42,7 @@ namespace Pulumi.Auth0
     ///     });
     /// 
     ///     // This is an example on how to set up the email provider with SMTP.
-    ///     var smtpEmailProvider = new Auth0.EmailProvider("smtp_email_provider", new()
+    ///     var smtpEmailProvider = new Auth0.Index.EmailProvider("smtp_email_provider", new()
     ///     {
     ///         Name = "smtp",
     ///         Enabled = true,
@@ -57,7 +57,7 @@ namespace Pulumi.Auth0
     ///     });
     /// 
     ///     // This is an example on how to set up the email provider with Sendgrid.
-    ///     var sendgridEmailProvider = new Auth0.EmailProvider("sendgrid_email_provider", new()
+    ///     var sendgridEmailProvider = new Auth0.Index.EmailProvider("sendgrid_email_provider", new()
     ///     {
     ///         Name = "sendgrid",
     ///         Enabled = true,
@@ -69,7 +69,7 @@ namespace Pulumi.Auth0
     ///     });
     /// 
     ///     // This is an example on how to set up the email provider with Azure CS.
-    ///     var azureCsEmailProvider = new Auth0.EmailProvider("azure_cs_email_provider", new()
+    ///     var azureCsEmailProvider = new Auth0.Index.EmailProvider("azure_cs_email_provider", new()
     ///     {
     ///         Name = "azure_cs",
     ///         Enabled = true,
@@ -81,7 +81,7 @@ namespace Pulumi.Auth0
     ///     });
     /// 
     ///     // This is an example on how to set up the email provider with MS365.
-    ///     var ms365EmailProvider = new Auth0.EmailProvider("ms365_email_provider", new()
+    ///     var ms365EmailProvider = new Auth0.Index.EmailProvider("ms365_email_provider", new()
     ///     {
     ///         Name = "ms365",
     ///         Enabled = true,
@@ -96,7 +96,7 @@ namespace Pulumi.Auth0
     /// 
     ///     // Below is an example of how to set up a custom email provider.
     ///     // The action with custom-email-provider as supported_triggers is a prerequisite.
-    ///     var customEmailProviderAction = new Auth0.Action("custom_email_provider_action", new()
+    ///     var customEmailProviderAction = new Auth0.Index.Action("custom_email_provider_action", new()
     ///     {
     ///         Name = "custom-email-provider-action",
     ///         Runtime = "node22",
@@ -120,7 +120,7 @@ namespace Pulumi.Auth0
     ///         },
     ///     });
     /// 
-    ///     var customEmailProvider = new Auth0.EmailProvider("custom_email_provider", new()
+    ///     var customEmailProvider = new Auth0.Index.EmailProvider("custom_email_provider", new()
     ///     {
     ///         Name = "custom",
     ///         Enabled = true,

@@ -50,7 +50,7 @@ import (
 //				return err
 //			}
 //			// A data source for an Auth0 Connection SCIM Configuration.
-//			_ = auth0.LookupConnectionScimConfigurationOutput(ctx, auth0.GetConnectionScimConfigurationOutputArgs{
+//			_ = auth0.GetConnectionScimConfigurationOutput(ctx, auth0.GetConnectionScimConfigurationOutputArgs{
 //				ConnectionId: myConnScimConfiguration.ID(),
 //			}, nil)
 //			return nil

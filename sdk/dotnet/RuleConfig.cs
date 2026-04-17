@@ -22,7 +22,7 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myRule = new Auth0.Rule("my_rule", new()
+    ///     var myRule = new Auth0.Index.Rule("my_rule", new()
     ///     {
     ///         Name = "empty-rule",
     ///         Script = @"    function (user, context, callback) {
@@ -32,7 +32,7 @@ namespace Pulumi.Auth0
     ///         Enabled = true,
     ///     });
     /// 
-    ///     var myRuleConfig = new Auth0.RuleConfig("my_rule_config", new()
+    ///     var myRuleConfig = new Auth0.Index.RuleConfig("my_rule_config", new()
     ///     {
     ///         Key = "foo",
     ///         Value = "bar",

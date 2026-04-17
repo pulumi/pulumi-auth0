@@ -26,7 +26,7 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var resourceServer = new Auth0.ResourceServer("resource_server", new()
+    ///     var resourceServer = new Auth0.Index.ResourceServer("resource_server", new()
     ///     {
     ///         Name = "Example Resource Server (Managed by Terraform)",
     ///         Identifier = "https://api.example.com",
@@ -45,7 +45,7 @@ namespace Pulumi.Auth0
     ///         },
     ///     });
     /// 
-    ///     var user = new Auth0.User("user", new()
+    ///     var user = new Auth0.Index.User("user", new()
     ///     {
     ///         ConnectionName = "Username-Password-Authentication",
     ///         UserId = "12345",
@@ -58,7 +58,7 @@ namespace Pulumi.Auth0
     ///         Picture = "https://www.example.com/a-valid-picture-url.jpg",
     ///     });
     /// 
-    ///     var allUserPermissions = new Auth0.UserPermissions("all_user_permissions", new()
+    ///     var allUserPermissions = new Auth0.Index.UserPermissions("all_user_permissions", new()
     ///     {
     ///         UserId = user.Id,
     ///         Permissions = new[]

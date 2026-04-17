@@ -28,14 +28,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// An Auth0 Connection loaded using its name.
-//			_, err := auth0.LookupConnection(ctx, &auth0.LookupConnectionArgs{
+//			_, err := auth0.GetConnection(ctx, &auth0.LookupConnectionArgs{
 //				Name: pulumi.StringRef("Acceptance-Test-Connection-{{.testName}}"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			// An Auth0 Connection loaded using its ID.
-//			_, err = auth0.LookupConnection(ctx, &auth0.LookupConnectionArgs{
+//			_, err = auth0.GetConnection(ctx, &auth0.LookupConnectionArgs{
 //				ConnectionId: pulumi.StringRef("con_abcdefghkijklmnopqrstuvwxyz0123456789"),
 //			}, nil)
 //			if err != nil {

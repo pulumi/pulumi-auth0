@@ -30,7 +30,7 @@ import (
 //			// Data Source Example: Retrieve Auth0 Phone Notification Templates
 //			// This example shows how to fetch existing phone notification templates from your Auth0 tenant
 //			// Retrieve the OTP enrollment template
-//			otpEnrollment, err := auth0.LookupBrandingPhoneNotificationTemplate(ctx, &auth0.LookupBrandingPhoneNotificationTemplateArgs{
+//			otpEnrollment, err := auth0.GetBrandingPhoneNotificationTemplate(ctx, &auth0.LookupBrandingPhoneNotificationTemplateArgs{
 //				TemplateId: "tem_xxxxxxxxxxxxxxxxx",
 //			}, nil)
 //			if err != nil {

@@ -22,7 +22,7 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var user = new Auth0.User("user", new()
+    ///     var user = new Auth0.Index.User("user", new()
     ///     {
     ///         ConnectionName = "Username-Password-Authentication",
     ///         UserId = "12345",
@@ -36,7 +36,7 @@ namespace Pulumi.Auth0
     ///     });
     /// 
     ///     // Create a user with custom_domain_header
-    ///     var auth0UserWithCustomDomain = new Auth0.User("auth0_user_with_custom_domain", new()
+    ///     var auth0UserWithCustomDomain = new Auth0.Index.User("auth0_user_with_custom_domain", new()
     ///     {
     ///         ConnectionName = "Username-Password-Authentication",
     ///         Username = "your_new_user_",

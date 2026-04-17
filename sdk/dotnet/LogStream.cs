@@ -26,7 +26,7 @@ namespace Pulumi.Auth0
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // This is an example of an http log stream.
-    ///     var myWebhook = new Auth0.LogStream("my_webhook", new()
+    ///     var myWebhook = new Auth0.Index.LogStream("my_webhook", new()
     ///     {
     ///         Name = "HTTP log stream",
     ///         Type = "http",
@@ -61,7 +61,7 @@ namespace Pulumi.Auth0
     ///     });
     /// 
     ///     // This is an example of an Amazon EventBridge log stream.
-    ///     var exampleAws = new Auth0.LogStream("example_aws", new()
+    ///     var exampleAws = new Auth0.Index.LogStream("example_aws", new()
     ///     {
     ///         Name = "AWS Eventbridge",
     ///         Type = "eventbridge",

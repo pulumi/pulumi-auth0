@@ -28,7 +28,7 @@ namespace Pulumi.Auth0
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // This is an example on how to set up the phone provider with Twilio.
-    ///     var twilioPhoneProvider = new Auth0.PhoneProvider("twilio_phone_provider", new()
+    ///     var twilioPhoneProvider = new Auth0.Index.PhoneProvider("twilio_phone_provider", new()
     ///     {
     ///         Name = "twilio",
     ///         Disabled = false,
@@ -51,7 +51,7 @@ namespace Pulumi.Auth0
     /// 
     ///     // This is an example on how to set up the phone provider with a custom action.
     ///     // Make sure a corresponding action exists with custom-phone-provider as supported triggers
-    ///     var sendCustomPhone = new Auth0.Action("send_custom_phone", new()
+    ///     var sendCustomPhone = new Auth0.Index.Action("send_custom_phone", new()
     ///     {
     ///         Name = "Custom Phone Provider",
     ///         Runtime = "node22",
@@ -73,7 +73,7 @@ namespace Pulumi.Auth0
     ///         },
     ///     });
     /// 
-    ///     var customPhoneProvider = new Auth0.PhoneProvider("custom_phone_provider", new()
+    ///     var customPhoneProvider = new Auth0.Index.PhoneProvider("custom_phone_provider", new()
     ///     {
     ///         Name = "custom",
     ///         Disabled = false,

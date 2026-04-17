@@ -28,7 +28,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// An Auth0 Connection Keys loaded using its Connection ID.
-//			_, err := auth0.LookupConnectionKeys(ctx, &auth0.LookupConnectionKeysArgs{
+//			_, err := auth0.GetConnectionKeys(ctx, &auth0.LookupConnectionKeysArgs{
 //				ConnectionId: "con_xxxxxxxxxxxxx",
 //			}, nil)
 //			if err != nil {

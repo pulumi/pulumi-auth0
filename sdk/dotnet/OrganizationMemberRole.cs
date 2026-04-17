@@ -22,43 +22,43 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var reader = new Auth0.Role("reader", new()
+    ///     var reader = new Auth0.Index.Role("reader", new()
     ///     {
     ///         Name = "Reader",
     ///     });
     /// 
-    ///     var writer = new Auth0.Role("writer", new()
+    ///     var writer = new Auth0.Index.Role("writer", new()
     ///     {
     ///         Name = "Writer",
     ///     });
     /// 
-    ///     var user = new Auth0.User("user", new()
+    ///     var user = new Auth0.Index.User("user", new()
     ///     {
     ///         ConnectionName = "Username-Password-Authentication",
     ///         Email = "test-user@auth0.com",
     ///         Password = "MyPass123$",
     ///     });
     /// 
-    ///     var myOrg = new Auth0.Organization("my_org", new()
+    ///     var myOrg = new Auth0.Index.Organization("my_org", new()
     ///     {
     ///         Name = "some-org",
     ///         DisplayName = "Some Org",
     ///     });
     /// 
-    ///     var myOrgMember = new Auth0.OrganizationMember("my_org_member", new()
+    ///     var myOrgMember = new Auth0.Index.OrganizationMember("my_org_member", new()
     ///     {
     ///         OrganizationId = myOrg.Id,
     ///         UserId = user.Id,
     ///     });
     /// 
-    ///     var role1 = new Auth0.OrganizationMemberRole("role1", new()
+    ///     var role1 = new Auth0.Index.OrganizationMemberRole("role1", new()
     ///     {
     ///         OrganizationId = myOrg.Id,
     ///         UserId = user.Id,
     ///         RoleId = reader.Id,
     ///     });
     /// 
-    ///     var role2 = new Auth0.OrganizationMemberRole("role2", new()
+    ///     var role2 = new Auth0.Index.OrganizationMemberRole("role2", new()
     ///     {
     ///         OrganizationId = myOrg.Id,
     ///         UserId = user.Id,

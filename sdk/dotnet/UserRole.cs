@@ -27,13 +27,13 @@ namespace Pulumi.Auth0
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Example:
-    ///     var admin = new Auth0.Role("admin", new()
+    ///     var admin = new Auth0.Index.Role("admin", new()
     ///     {
     ///         Name = "admin",
     ///         Description = "Administrator",
     ///     });
     /// 
-    ///     var user = new Auth0.User("user", new()
+    ///     var user = new Auth0.Index.User("user", new()
     ///     {
     ///         ConnectionName = "Username-Password-Authentication",
     ///         Username = "unique_username",
@@ -42,7 +42,7 @@ namespace Pulumi.Auth0
     ///         Password = "passpass$12$12",
     ///     });
     /// 
-    ///     var userRoles = new Auth0.UserRole("user_roles", new()
+    ///     var userRoles = new Auth0.Index.UserRole("user_roles", new()
     ///     {
     ///         UserId = user.Id,
     ///         RoleId = admin.Id,

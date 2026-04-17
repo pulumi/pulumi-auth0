@@ -22,7 +22,7 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var mySupplementalSignals = new Auth0.SupplementalSignals("my_supplemental_signals", new()
+    ///     var mySupplementalSignals = new Auth0.Index.SupplementalSignals("my_supplemental_signals", new()
     ///     {
     ///         AkamaiEnabled = true,
     ///     });

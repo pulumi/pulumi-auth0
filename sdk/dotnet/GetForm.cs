@@ -25,7 +25,7 @@ namespace Pulumi.Auth0
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // An Auth0 form loaded using its ID.
-        ///     var myFormData = Auth0.GetForm.Invoke(new()
+        ///     var myFormData = Auth0.Index.GetForm.Invoke(new()
         ///     {
         ///         Id = "ap_31LxRJphZF1Kqzf2zBgmgA",
         ///     });
@@ -50,7 +50,7 @@ namespace Pulumi.Auth0
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // An Auth0 form loaded using its ID.
-        ///     var myFormData = Auth0.GetForm.Invoke(new()
+        ///     var myFormData = Auth0.Index.GetForm.Invoke(new()
         ///     {
         ///         Id = "ap_31LxRJphZF1Kqzf2zBgmgA",
         ///     });
@@ -75,7 +75,7 @@ namespace Pulumi.Auth0
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // An Auth0 form loaded using its ID.
-        ///     var myFormData = Auth0.GetForm.Invoke(new()
+        ///     var myFormData = Auth0.Index.GetForm.Invoke(new()
         ///     {
         ///         Id = "ap_31LxRJphZF1Kqzf2zBgmgA",
         ///     });

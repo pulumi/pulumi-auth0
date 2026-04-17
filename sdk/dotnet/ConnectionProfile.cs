@@ -22,7 +22,7 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myProfile = new Auth0.ConnectionProfile("my_profile", new()
+    ///     var myProfile = new Auth0.Index.ConnectionProfile("my_profile", new()
     ///     {
     ///         Name = "My-Profile",
     ///         Organization = new Auth0.Inputs.ConnectionProfileOrganizationArgs

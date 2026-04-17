@@ -27,13 +27,13 @@ namespace Pulumi.Auth0
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Example:
-    ///     var resourceServer = new Auth0.ResourceServer("resource_server", new()
+    ///     var resourceServer = new Auth0.Index.ResourceServer("resource_server", new()
     ///     {
     ///         Name = "test",
     ///         Identifier = "test.example.com",
     ///     });
     /// 
-    ///     var resourceServerScopes = new Auth0.ResourceServerScopes("resource_server_scopes", new()
+    ///     var resourceServerScopes = new Auth0.Index.ResourceServerScopes("resource_server_scopes", new()
     ///     {
     ///         ResourceServerIdentifier = resourceServer.Identifier,
     ///         Scopes = new[]
@@ -57,12 +57,12 @@ namespace Pulumi.Auth0
     ///         },
     ///     });
     /// 
-    ///     var myRole = new Auth0.Role("my_role", new()
+    ///     var myRole = new Auth0.Index.Role("my_role", new()
     ///     {
     ///         Name = "My Role",
     ///     });
     /// 
-    ///     var myRolePerms = new Auth0.RolePermissions("my_role_perms", new()
+    ///     var myRolePerms = new Auth0.Index.RolePermissions("my_role_perms", new()
     ///     {
     ///         Permissions = resourceServer.Identifier.Apply(identifier =&gt; ),
     ///         RoleId = myRole.Id,

@@ -25,7 +25,7 @@ namespace Pulumi.Auth0
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // An Auth0 flow vault connection loaded using its ID.
-        ///     var dataConnection = Auth0.GetFlowVaultConnection.Invoke(new()
+        ///     var dataConnection = Auth0.Index.GetFlowVaultConnection.Invoke(new()
         ///     {
         ///         Id = "ac_9m2uqjHsqs19riN9N6sZQ7",
         ///     });
@@ -50,7 +50,7 @@ namespace Pulumi.Auth0
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // An Auth0 flow vault connection loaded using its ID.
-        ///     var dataConnection = Auth0.GetFlowVaultConnection.Invoke(new()
+        ///     var dataConnection = Auth0.Index.GetFlowVaultConnection.Invoke(new()
         ///     {
         ///         Id = "ac_9m2uqjHsqs19riN9N6sZQ7",
         ///     });
@@ -75,7 +75,7 @@ namespace Pulumi.Auth0
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // An Auth0 flow vault connection loaded using its ID.
-        ///     var dataConnection = Auth0.GetFlowVaultConnection.Invoke(new()
+        ///     var dataConnection = Auth0.Index.GetFlowVaultConnection.Invoke(new()
         ///     {
         ///         Id = "ac_9m2uqjHsqs19riN9N6sZQ7",
         ///     });

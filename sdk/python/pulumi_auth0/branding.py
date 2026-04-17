@@ -225,7 +225,7 @@ class Branding(pulumi.CustomResource):
                 "page_background": "#000000",
             },
             universal_login={
-                "body": std.index.file(input="universal_login_body.html")["result"],
+                "body": std.file(input="universal_login_body.html")["result"],
             })
         ```
 
@@ -274,7 +274,7 @@ class Branding(pulumi.CustomResource):
                 "page_background": "#000000",
             },
             universal_login={
-                "body": std.index.file(input="universal_login_body.html")["result"],
+                "body": std.file(input="universal_login_body.html")["result"],
             })
         ```
 

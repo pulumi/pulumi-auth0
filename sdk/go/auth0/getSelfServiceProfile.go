@@ -28,7 +28,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// An Auth0 Self-Service- Profile loaded using it's ID.
-//			_, err := auth0.LookupSelfServiceProfile(ctx, &auth0.LookupSelfServiceProfileArgs{
+//			_, err := auth0.GetSelfServiceProfile(ctx, &auth0.LookupSelfServiceProfileArgs{
 //				Id: "some-profile-id",
 //			}, nil)
 //			if err != nil {

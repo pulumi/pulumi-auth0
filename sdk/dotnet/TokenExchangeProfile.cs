@@ -24,7 +24,7 @@ namespace Pulumi.Auth0
     /// {
     ///     // Below action is created with custom-token-exchange as supported_triggers
     ///     // This action is then linked using the action_id param to the token-exchange profile
-    ///     var myAction = new Auth0.Action("my_action", new()
+    ///     var myAction = new Auth0.Index.Action("my_action", new()
     ///     {
     ///         Name = "TokenExchange-Action",
     ///         Code = @"exports.onExecuteCustomTokenExchange = async (event, api) =&gt; {
@@ -39,7 +39,7 @@ namespace Pulumi.Auth0
     ///         },
     ///     });
     /// 
-    ///     var myTokenExchangeProfile = new Auth0.TokenExchangeProfile("my_token_exchange_profile", new()
+    ///     var myTokenExchangeProfile = new Auth0.Index.TokenExchangeProfile("my_token_exchange_profile", new()
     ///     {
     ///         Name = "token-exchange-prof",
     ///         SubjectTokenType = "https://acme.com/cis-token",

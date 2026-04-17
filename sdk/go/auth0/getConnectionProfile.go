@@ -42,7 +42,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_ = auth0.LookupConnectionProfileOutput(ctx, auth0.GetConnectionProfileOutputArgs{
+//			_ = auth0.GetConnectionProfileOutput(ctx, auth0.GetConnectionProfileOutputArgs{
 //				Id: myProfile.ID(),
 //			}, nil)
 //			return nil

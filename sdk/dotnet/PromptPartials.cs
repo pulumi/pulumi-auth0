@@ -25,7 +25,7 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myLoginPromptPartials = new Auth0.PromptPartials("my_login_prompt_partials", new()
+    ///     var myLoginPromptPartials = new Auth0.Index.PromptPartials("my_login_prompt_partials", new()
     ///     {
     ///         Prompt = "login",
     ///         FormContentStart = "&lt;div&gt;Updated Form Content Start&lt;/div&gt;",

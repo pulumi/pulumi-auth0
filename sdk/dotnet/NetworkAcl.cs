@@ -23,7 +23,7 @@ namespace Pulumi.Auth0
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Example of auth0_network_acl with match criteria
-    ///     var myNetworkAclMatch = new Auth0.NetworkAcl("my_network_acl_match", new()
+    ///     var myNetworkAclMatch = new Auth0.Index.NetworkAcl("my_network_acl_match", new()
     ///     {
     ///         Description = "Example with match network ACL",
     ///         Active = true,
@@ -52,7 +52,7 @@ namespace Pulumi.Auth0
     ///     });
     /// 
     ///     // Example of auth0_network_acl with not-match criteria
-    ///     var myNetworkAclNotMatch = new Auth0.NetworkAcl("my_network_acl_not_match", new()
+    ///     var myNetworkAclNotMatch = new Auth0.Index.NetworkAcl("my_network_acl_not_match", new()
     ///     {
     ///         Description = "Example with not match network ACL",
     ///         Active = true,

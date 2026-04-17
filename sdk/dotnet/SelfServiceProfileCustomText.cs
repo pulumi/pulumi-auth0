@@ -23,7 +23,7 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var ssoCustomText = new Auth0.SelfServiceProfileCustomText("sso_custom_text", new()
+    ///     var ssoCustomText = new Auth0.Index.SelfServiceProfileCustomText("sso_custom_text", new()
     ///     {
     ///         SsoId = "some-sso-id",
     ///         Language = "en",

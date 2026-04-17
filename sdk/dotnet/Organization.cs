@@ -28,7 +28,7 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myOrganization = new Auth0.Organization("my_organization", new()
+    ///     var myOrganization = new Auth0.Index.Organization("my_organization", new()
     ///     {
     ///         Name = "auth0-inc",
     ///         DisplayName = "Auth0 Inc.",

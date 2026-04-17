@@ -24,7 +24,7 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myHook = new Auth0.Hook("my_hook", new()
+    ///     var myHook = new Auth0.Index.Hook("my_hook", new()
     ///     {
     ///         Name = "My Pre User Registration Hook",
     ///         Script = @"    function (user, context, callback) {

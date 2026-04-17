@@ -24,7 +24,7 @@ namespace Pulumi.Auth0
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var promptScreenPartials = Auth0.GetPromptScreenPartials.Invoke(new()
+        ///     var promptScreenPartials = Auth0.Index.GetPromptScreenPartials.Invoke(new()
         ///     {
         ///         PromptType = "prompt-name",
         ///     });
@@ -48,7 +48,7 @@ namespace Pulumi.Auth0
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var promptScreenPartials = Auth0.GetPromptScreenPartials.Invoke(new()
+        ///     var promptScreenPartials = Auth0.Index.GetPromptScreenPartials.Invoke(new()
         ///     {
         ///         PromptType = "prompt-name",
         ///     });
@@ -72,7 +72,7 @@ namespace Pulumi.Auth0
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var promptScreenPartials = Auth0.GetPromptScreenPartials.Invoke(new()
+        ///     var promptScreenPartials = Auth0.Index.GetPromptScreenPartials.Invoke(new()
         ///     {
         ///         PromptType = "prompt-name",
         ///     });

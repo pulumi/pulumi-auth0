@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := auth0.LookupConnectionDirectory(ctx, &auth0.LookupConnectionDirectoryArgs{
+//			_, err := auth0.GetConnectionDirectory(ctx, &auth0.LookupConnectionDirectoryArgs{
 //				ConnectionId: "con_xxxxxxxxxxxxx",
 //			}, nil)
 //			if err != nil {

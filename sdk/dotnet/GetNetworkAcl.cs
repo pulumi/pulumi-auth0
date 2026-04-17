@@ -25,7 +25,7 @@ namespace Pulumi.Auth0
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // An Auth0 network acl loaded using its ID.
-        ///     var myNetworkAcl = Auth0.GetNetworkAcl.Invoke(new()
+        ///     var myNetworkAcl = Auth0.Index.GetNetworkAcl.Invoke(new()
         ///     {
         ///         Id = "167f9a50-4444-3333-1111-ndfdaf953ab4",
         ///     });
@@ -50,7 +50,7 @@ namespace Pulumi.Auth0
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // An Auth0 network acl loaded using its ID.
-        ///     var myNetworkAcl = Auth0.GetNetworkAcl.Invoke(new()
+        ///     var myNetworkAcl = Auth0.Index.GetNetworkAcl.Invoke(new()
         ///     {
         ///         Id = "167f9a50-4444-3333-1111-ndfdaf953ab4",
         ///     });
@@ -75,7 +75,7 @@ namespace Pulumi.Auth0
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // An Auth0 network acl loaded using its ID.
-        ///     var myNetworkAcl = Auth0.GetNetworkAcl.Invoke(new()
+        ///     var myNetworkAcl = Auth0.Index.GetNetworkAcl.Invoke(new()
         ///     {
         ///         Id = "167f9a50-4444-3333-1111-ndfdaf953ab4",
         ///     });

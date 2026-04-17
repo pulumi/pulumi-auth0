@@ -28,13 +28,13 @@ namespace Pulumi.Auth0
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Example:
-    ///     var resourceServer = new Auth0.ResourceServer("resource_server", new()
+    ///     var resourceServer = new Auth0.Index.ResourceServer("resource_server", new()
     ///     {
     ///         Name = "test",
     ///         Identifier = "test.example.com",
     ///     });
     /// 
-    ///     var resourceServerScopes = new Auth0.ResourceServerScopes("resource_server_scopes", new()
+    ///     var resourceServerScopes = new Auth0.Index.ResourceServerScopes("resource_server_scopes", new()
     ///     {
     ///         ResourceServerIdentifier = resourceServer.Identifier,
     ///         Scopes = new[]
@@ -58,7 +58,7 @@ namespace Pulumi.Auth0
     ///         },
     ///     });
     /// 
-    ///     var myRole = new Auth0.Role("my_role", new()
+    ///     var myRole = new Auth0.Index.Role("my_role", new()
     ///     {
     ///         Name = "My Role",
     ///     });
@@ -68,14 +68,14 @@ namespace Pulumi.Auth0
     ///         return scope.Name;
     ///     }).ToList());
     /// 
-    ///     var myRolePerm = new List&lt;Auth0.RolePermission&gt;();
+    ///     var myRolePerm = new List&lt;Auth0.Index.RolePermission&gt;();
     ///     for (var rangeIndex = 0; rangeIndex &lt; Std.Index.Toset.Invoke(new()
     ///     {
     ///         Input = scopesList,
     ///     }).Result; rangeIndex++)
     ///     {
     ///         var range = new { Value = rangeIndex };
-    ///         myRolePerm.Add(new Auth0.RolePermission($"my_role_perm-{range.Value}", new()
+    ///         myRolePerm.Add(new Auth0.Index.RolePermission($"my_role_perm-{range.Value}", new()
     ///         {
     ///             RoleId = myRole.Id,
     ///             ResourceServerIdentifier = resourceServer.Identifier,

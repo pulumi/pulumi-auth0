@@ -120,10 +120,10 @@ class CustomDomainVerification(pulumi.CustomResource):
         my_custom_domain = auth0.CustomDomain("my_custom_domain",
             domain="login.example.com",
             type="auth0_managed_certs")
-        my_domain_name_record = digitalocean.index.Record("my_domain_name_record",
+        my_domain_name_record = digitalocean.Record("my_domain_name_record",
             domain=example.com,
-            type=std.index.upper(input=my_custom_domain.verifications[0].methods[0].name).result,
-            name=std.index.trimsuffix(input=my_custom_domain.verifications[0].methods[0].domain,
+            type=std.upper(input=my_custom_domain.verifications[0].methods[0].name).result,
+            name=std.trimsuffix(input=my_custom_domain.verifications[0].methods[0].domain,
                 suffix=.example.com).result,
             value=my_custom_domain.verifications[0].methods[0].record)
         my_custom_domain_verification = auth0.CustomDomainVerification("my_custom_domain_verification", custom_domain_id=my_custom_domain.id,
@@ -166,10 +166,10 @@ class CustomDomainVerification(pulumi.CustomResource):
         my_custom_domain = auth0.CustomDomain("my_custom_domain",
             domain="login.example.com",
             type="auth0_managed_certs")
-        my_domain_name_record = digitalocean.index.Record("my_domain_name_record",
+        my_domain_name_record = digitalocean.Record("my_domain_name_record",
             domain=example.com,
-            type=std.index.upper(input=my_custom_domain.verifications[0].methods[0].name).result,
-            name=std.index.trimsuffix(input=my_custom_domain.verifications[0].methods[0].domain,
+            type=std.upper(input=my_custom_domain.verifications[0].methods[0].name).result,
+            name=std.trimsuffix(input=my_custom_domain.verifications[0].methods[0].domain,
                 suffix=.example.com).result,
             value=my_custom_domain.verifications[0].methods[0].record)
         my_custom_domain_verification = auth0.CustomDomainVerification("my_custom_domain_verification", custom_domain_id=my_custom_domain.id,

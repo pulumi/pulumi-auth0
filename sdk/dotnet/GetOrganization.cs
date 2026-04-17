@@ -25,13 +25,13 @@ namespace Pulumi.Auth0
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // An Auth0 Organization loaded using its name.
-        ///     var some_organization_by_name = Auth0.GetOrganization.Invoke(new()
+        ///     var some_organization_by_name = Auth0.Index.GetOrganization.Invoke(new()
         ///     {
         ///         Name = "my-org",
         ///     });
         /// 
         ///     // An Auth0 Organization loaded using its ID.
-        ///     var some_organization_by_id = Auth0.GetOrganization.Invoke(new()
+        ///     var some_organization_by_id = Auth0.Index.GetOrganization.Invoke(new()
         ///     {
         ///         OrganizationId = "org_abcdefghkijklmnopqrstuvwxyz0123456789",
         ///     });
@@ -56,13 +56,13 @@ namespace Pulumi.Auth0
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // An Auth0 Organization loaded using its name.
-        ///     var some_organization_by_name = Auth0.GetOrganization.Invoke(new()
+        ///     var some_organization_by_name = Auth0.Index.GetOrganization.Invoke(new()
         ///     {
         ///         Name = "my-org",
         ///     });
         /// 
         ///     // An Auth0 Organization loaded using its ID.
-        ///     var some_organization_by_id = Auth0.GetOrganization.Invoke(new()
+        ///     var some_organization_by_id = Auth0.Index.GetOrganization.Invoke(new()
         ///     {
         ///         OrganizationId = "org_abcdefghkijklmnopqrstuvwxyz0123456789",
         ///     });
@@ -87,13 +87,13 @@ namespace Pulumi.Auth0
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // An Auth0 Organization loaded using its name.
-        ///     var some_organization_by_name = Auth0.GetOrganization.Invoke(new()
+        ///     var some_organization_by_name = Auth0.Index.GetOrganization.Invoke(new()
         ///     {
         ///         Name = "my-org",
         ///     });
         /// 
         ///     // An Auth0 Organization loaded using its ID.
-        ///     var some_organization_by_id = Auth0.GetOrganization.Invoke(new()
+        ///     var some_organization_by_id = Auth0.Index.GetOrganization.Invoke(new()
         ///     {
         ///         OrganizationId = "org_abcdefghkijklmnopqrstuvwxyz0123456789",
         ///     });

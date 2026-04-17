@@ -31,7 +31,7 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myAction = new Auth0.Action("my_action", new()
+    ///     var myAction = new Auth0.Index.Action("my_action", new()
     ///     {
     ///         Name = Std.Index.Format.Invoke(new()
     ///         {

@@ -25,9 +25,9 @@ import * as utilities from "./utilities";
  * import * as std from "@pulumi/std";
  *
  * const myAction = new auth0.Action("my_action", {
- *     name: std.index.format({
+ *     name: std.format({
  *         input: "Test Action %s",
- *         args: [std.index.timestamp({}).result],
+ *         args: [std.timestamp({}).result],
  *     }).result,
  *     runtime: "node22",
  *     deploy: true,
