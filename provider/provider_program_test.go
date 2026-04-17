@@ -1,5 +1,5 @@
-//go:build !go && !nodejs && !python && !dotnet
-// +build !go,!nodejs,!python,!dotnet
+//go:build !go && !nodejs && !python && !dotnet && !java
+// +build !go,!nodejs,!python,!dotnet,!java
 
 package auth0
 
