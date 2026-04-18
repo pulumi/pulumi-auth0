@@ -27,7 +27,7 @@ class GetCustomDomainResult:
     """
     A collection of values returned by getCustomDomain.
     """
-    def __init__(__self__, certificates=None, custom_client_ip_header=None, custom_domain_id=None, domain=None, domain_metadata=None, id=None, origin_domain_name=None, primary=None, relying_party_identifier=None, status=None, tls_policy=None, type=None, verifications=None):
+    def __init__(__self__, certificates=None, custom_client_ip_header=None, custom_domain_id=None, domain=None, domain_metadata=None, id=None, is_default=None, origin_domain_name=None, primary=None, relying_party_identifier=None, status=None, tls_policy=None, type=None, verifications=None):
         if certificates and not isinstance(certificates, list):
             raise TypeError("Expected argument 'certificates' to be a list")
         pulumi.set(__self__, "certificates", certificates)
@@ -46,6 +46,9 @@ class GetCustomDomainResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if is_default and not isinstance(is_default, bool):
+            raise TypeError("Expected argument 'is_default' to be a bool")
+        pulumi.set(__self__, "is_default", is_default)
         if origin_domain_name and not isinstance(origin_domain_name, str):
             raise TypeError("Expected argument 'origin_domain_name' to be a str")
         pulumi.set(__self__, "origin_domain_name", origin_domain_name)
@@ -117,6 +120,14 @@ class GetCustomDomainResult:
         return pulumi.get(self, "id")
 
     @_builtins.property
+    @pulumi.getter(name="isDefault")
+    def is_default(self) -> _builtins.bool:
+        """
+        Indicates whether this custom domain is the default domain for the tenant
+        """
+        return pulumi.get(self, "is_default")
+
+    @_builtins.property
     @pulumi.getter(name="originDomainName")
     def origin_domain_name(self) -> _builtins.str:
         """
@@ -185,6 +196,7 @@ class AwaitableGetCustomDomainResult(GetCustomDomainResult):
             domain=self.domain,
             domain_metadata=self.domain_metadata,
             id=self.id,
+            is_default=self.is_default,
             origin_domain_name=self.origin_domain_name,
             primary=self.primary,
             relying_party_identifier=self.relying_party_identifier,
@@ -231,6 +243,7 @@ def get_custom_domain(custom_domain_id: Optional[_builtins.str] = None,
         domain=pulumi.get(__ret__, 'domain'),
         domain_metadata=pulumi.get(__ret__, 'domain_metadata'),
         id=pulumi.get(__ret__, 'id'),
+        is_default=pulumi.get(__ret__, 'is_default'),
         origin_domain_name=pulumi.get(__ret__, 'origin_domain_name'),
         primary=pulumi.get(__ret__, 'primary'),
         relying_party_identifier=pulumi.get(__ret__, 'relying_party_identifier'),
@@ -274,6 +287,7 @@ def get_custom_domain_output(custom_domain_id: Optional[pulumi.Input[Optional[_b
         domain=pulumi.get(__response__, 'domain'),
         domain_metadata=pulumi.get(__response__, 'domain_metadata'),
         id=pulumi.get(__response__, 'id'),
+        is_default=pulumi.get(__response__, 'is_default'),
         origin_domain_name=pulumi.get(__response__, 'origin_domain_name'),
         primary=pulumi.get(__response__, 'primary'),
         relying_party_identifier=pulumi.get(__response__, 'relying_party_identifier'),

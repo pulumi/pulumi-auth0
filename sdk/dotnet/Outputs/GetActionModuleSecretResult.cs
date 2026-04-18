@@ -14,7 +14,7 @@ namespace Pulumi.Auth0.Outputs
     public sealed class GetActionModuleSecretResult
     {
         /// <summary>
-        /// Secret name. Required when configuring secrets
+        /// Secret name.
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string UpdatedAt;
         /// <summary>
-        /// Secret value. Required when configuring secrets
+        /// Secret value.
         /// </summary>
         public readonly string Value;
 

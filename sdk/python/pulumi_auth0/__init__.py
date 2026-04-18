@@ -24,6 +24,7 @@ from .connection_profile import *
 from .connection_scim_configuration import *
 from .connection_scim_token import *
 from .custom_domain import *
+from .custom_domain_default import *
 from .custom_domain_verification import *
 from .email_provider import *
 from .email_template import *
@@ -274,6 +275,14 @@ _utilities.register(
   "fqn": "pulumi_auth0",
   "classes": {
    "auth0:index/customDomain:CustomDomain": "CustomDomain"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/customDomainDefault",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/customDomainDefault:CustomDomainDefault": "CustomDomainDefault"
   }
  },
  {

@@ -36,6 +36,11 @@ public final class GetCustomDomainsCustomDomain {
      */
     private Map<String,String> domainMetadata;
     /**
+     * @return Indicates whether this custom domain is the default domain for the tenant
+     * 
+     */
+    private Boolean isDefault;
+    /**
      * @return Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
      * 
      */
@@ -101,6 +106,13 @@ public final class GetCustomDomainsCustomDomain {
         return this.domainMetadata;
     }
     /**
+     * @return Indicates whether this custom domain is the default domain for the tenant
+     * 
+     */
+    public Boolean isDefault() {
+        return this.isDefault;
+    }
+    /**
      * @return Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
      * 
      */
@@ -163,6 +175,7 @@ public final class GetCustomDomainsCustomDomain {
         private String customClientIpHeader;
         private String domain;
         private Map<String,String> domainMetadata;
+        private Boolean isDefault;
         private String originDomainName;
         private Boolean primary;
         private String relyingPartyIdentifier;
@@ -177,6 +190,7 @@ public final class GetCustomDomainsCustomDomain {
     	      this.customClientIpHeader = defaults.customClientIpHeader;
     	      this.domain = defaults.domain;
     	      this.domainMetadata = defaults.domainMetadata;
+    	      this.isDefault = defaults.isDefault;
     	      this.originDomainName = defaults.originDomainName;
     	      this.primary = defaults.primary;
     	      this.relyingPartyIdentifier = defaults.relyingPartyIdentifier;
@@ -219,6 +233,14 @@ public final class GetCustomDomainsCustomDomain {
               throw new MissingRequiredPropertyException("GetCustomDomainsCustomDomain", "domainMetadata");
             }
             this.domainMetadata = domainMetadata;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder isDefault(Boolean isDefault) {
+            if (isDefault == null) {
+              throw new MissingRequiredPropertyException("GetCustomDomainsCustomDomain", "isDefault");
+            }
+            this.isDefault = isDefault;
             return this;
         }
         @CustomType.Setter
@@ -286,6 +308,7 @@ public final class GetCustomDomainsCustomDomain {
             _resultValue.customClientIpHeader = customClientIpHeader;
             _resultValue.domain = domain;
             _resultValue.domainMetadata = domainMetadata;
+            _resultValue.isDefault = isDefault;
             _resultValue.originDomainName = originDomainName;
             _resultValue.primary = primary;
             _resultValue.relyingPartyIdentifier = relyingPartyIdentifier;

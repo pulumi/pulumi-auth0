@@ -30,6 +30,10 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string> DomainMetadata;
         /// <summary>
+        /// Indicates whether this custom domain is the default domain for the tenant
+        /// </summary>
+        public readonly bool IsDefault;
+        /// <summary>
         /// Once the configuration status is `Ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
         /// </summary>
         public readonly string OriginDomainName;
@@ -68,6 +72,8 @@ namespace Pulumi.Auth0.Outputs
 
             ImmutableDictionary<string, string> domainMetadata,
 
+            bool isDefault,
+
             string originDomainName,
 
             bool primary,
@@ -86,6 +92,7 @@ namespace Pulumi.Auth0.Outputs
             CustomClientIpHeader = customClientIpHeader;
             Domain = domain;
             DomainMetadata = domainMetadata;
+            IsDefault = isDefault;
             OriginDomainName = originDomainName;
             Primary = primary;
             RelyingPartyIdentifier = relyingPartyIdentifier;

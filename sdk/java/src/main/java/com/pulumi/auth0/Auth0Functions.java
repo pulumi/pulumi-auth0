@@ -5066,6 +5066,59 @@ public final class Auth0Functions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.CustomDomain;
+     * import com.pulumi.auth0.CustomDomainArgs;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetCustomDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var myCustomDomain1 = new CustomDomain("myCustomDomain1", CustomDomainArgs.builder()
+     *             .domain("example1.auth.tempdomain.com")
+     *             .type("auth0_managed_certs")
+     *             .tlsPolicy("recommended")
+     *             .domainMetadata(Map.ofEntries(
+     *                 Map.entry("key1", "foo1"),
+     *                 Map.entry("key2", "bar1")
+     *             ))
+     *             .build());
+     * 
+     *         var myCustomDomain2 = new CustomDomain("myCustomDomain2", CustomDomainArgs.builder()
+     *             .domain("example2.auth.tempdomain.com")
+     *             .type("auth0_managed_certs")
+     *             .tlsPolicy("recommended")
+     *             .domainMetadata(Map.ofEntries(
+     *                 Map.entry("key1", "foo2"),
+     *                 Map.entry("key2", "bar2")
+     *             ))
+     *             .build());
+     * 
+     *         final var test = Auth0Functions.getCustomDomains(GetCustomDomainsArgs.builder()
+     *             .query("domain:example1* AND status:pending_verification")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetCustomDomainsResult> getCustomDomains() {
         return getCustomDomains(GetCustomDomainsArgs.Empty, InvokeOptions.Empty);
@@ -5074,6 +5127,59 @@ public final class Auth0Functions {
      * Data source to retrieve multiple custom domains based on a search query. EA Only.
      * 
      * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.CustomDomain;
+     * import com.pulumi.auth0.CustomDomainArgs;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetCustomDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var myCustomDomain1 = new CustomDomain("myCustomDomain1", CustomDomainArgs.builder()
+     *             .domain("example1.auth.tempdomain.com")
+     *             .type("auth0_managed_certs")
+     *             .tlsPolicy("recommended")
+     *             .domainMetadata(Map.ofEntries(
+     *                 Map.entry("key1", "foo1"),
+     *                 Map.entry("key2", "bar1")
+     *             ))
+     *             .build());
+     * 
+     *         var myCustomDomain2 = new CustomDomain("myCustomDomain2", CustomDomainArgs.builder()
+     *             .domain("example2.auth.tempdomain.com")
+     *             .type("auth0_managed_certs")
+     *             .tlsPolicy("recommended")
+     *             .domainMetadata(Map.ofEntries(
+     *                 Map.entry("key1", "foo2"),
+     *                 Map.entry("key2", "bar2")
+     *             ))
+     *             .build());
+     * 
+     *         final var test = Auth0Functions.getCustomDomains(GetCustomDomainsArgs.builder()
+     *             .query("domain:example1* AND status:pending_verification")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetCustomDomainsResult> getCustomDomainsPlain() {
@@ -5084,6 +5190,59 @@ public final class Auth0Functions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.CustomDomain;
+     * import com.pulumi.auth0.CustomDomainArgs;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetCustomDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var myCustomDomain1 = new CustomDomain("myCustomDomain1", CustomDomainArgs.builder()
+     *             .domain("example1.auth.tempdomain.com")
+     *             .type("auth0_managed_certs")
+     *             .tlsPolicy("recommended")
+     *             .domainMetadata(Map.ofEntries(
+     *                 Map.entry("key1", "foo1"),
+     *                 Map.entry("key2", "bar1")
+     *             ))
+     *             .build());
+     * 
+     *         var myCustomDomain2 = new CustomDomain("myCustomDomain2", CustomDomainArgs.builder()
+     *             .domain("example2.auth.tempdomain.com")
+     *             .type("auth0_managed_certs")
+     *             .tlsPolicy("recommended")
+     *             .domainMetadata(Map.ofEntries(
+     *                 Map.entry("key1", "foo2"),
+     *                 Map.entry("key2", "bar2")
+     *             ))
+     *             .build());
+     * 
+     *         final var test = Auth0Functions.getCustomDomains(GetCustomDomainsArgs.builder()
+     *             .query("domain:example1* AND status:pending_verification")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetCustomDomainsResult> getCustomDomains(GetCustomDomainsArgs args) {
         return getCustomDomains(args, InvokeOptions.Empty);
@@ -5092,6 +5251,59 @@ public final class Auth0Functions {
      * Data source to retrieve multiple custom domains based on a search query. EA Only.
      * 
      * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.CustomDomain;
+     * import com.pulumi.auth0.CustomDomainArgs;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetCustomDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var myCustomDomain1 = new CustomDomain("myCustomDomain1", CustomDomainArgs.builder()
+     *             .domain("example1.auth.tempdomain.com")
+     *             .type("auth0_managed_certs")
+     *             .tlsPolicy("recommended")
+     *             .domainMetadata(Map.ofEntries(
+     *                 Map.entry("key1", "foo1"),
+     *                 Map.entry("key2", "bar1")
+     *             ))
+     *             .build());
+     * 
+     *         var myCustomDomain2 = new CustomDomain("myCustomDomain2", CustomDomainArgs.builder()
+     *             .domain("example2.auth.tempdomain.com")
+     *             .type("auth0_managed_certs")
+     *             .tlsPolicy("recommended")
+     *             .domainMetadata(Map.ofEntries(
+     *                 Map.entry("key1", "foo2"),
+     *                 Map.entry("key2", "bar2")
+     *             ))
+     *             .build());
+     * 
+     *         final var test = Auth0Functions.getCustomDomains(GetCustomDomainsArgs.builder()
+     *             .query("domain:example1* AND status:pending_verification")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetCustomDomainsResult> getCustomDomainsPlain(GetCustomDomainsPlainArgs args) {
@@ -5102,6 +5314,59 @@ public final class Auth0Functions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.CustomDomain;
+     * import com.pulumi.auth0.CustomDomainArgs;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetCustomDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var myCustomDomain1 = new CustomDomain("myCustomDomain1", CustomDomainArgs.builder()
+     *             .domain("example1.auth.tempdomain.com")
+     *             .type("auth0_managed_certs")
+     *             .tlsPolicy("recommended")
+     *             .domainMetadata(Map.ofEntries(
+     *                 Map.entry("key1", "foo1"),
+     *                 Map.entry("key2", "bar1")
+     *             ))
+     *             .build());
+     * 
+     *         var myCustomDomain2 = new CustomDomain("myCustomDomain2", CustomDomainArgs.builder()
+     *             .domain("example2.auth.tempdomain.com")
+     *             .type("auth0_managed_certs")
+     *             .tlsPolicy("recommended")
+     *             .domainMetadata(Map.ofEntries(
+     *                 Map.entry("key1", "foo2"),
+     *                 Map.entry("key2", "bar2")
+     *             ))
+     *             .build());
+     * 
+     *         final var test = Auth0Functions.getCustomDomains(GetCustomDomainsArgs.builder()
+     *             .query("domain:example1* AND status:pending_verification")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetCustomDomainsResult> getCustomDomains(GetCustomDomainsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("auth0:index/getCustomDomains:getCustomDomains", TypeShape.of(GetCustomDomainsResult.class), args, Utilities.withVersion(options));
@@ -5111,6 +5376,59 @@ public final class Auth0Functions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.CustomDomain;
+     * import com.pulumi.auth0.CustomDomainArgs;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetCustomDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var myCustomDomain1 = new CustomDomain("myCustomDomain1", CustomDomainArgs.builder()
+     *             .domain("example1.auth.tempdomain.com")
+     *             .type("auth0_managed_certs")
+     *             .tlsPolicy("recommended")
+     *             .domainMetadata(Map.ofEntries(
+     *                 Map.entry("key1", "foo1"),
+     *                 Map.entry("key2", "bar1")
+     *             ))
+     *             .build());
+     * 
+     *         var myCustomDomain2 = new CustomDomain("myCustomDomain2", CustomDomainArgs.builder()
+     *             .domain("example2.auth.tempdomain.com")
+     *             .type("auth0_managed_certs")
+     *             .tlsPolicy("recommended")
+     *             .domainMetadata(Map.ofEntries(
+     *                 Map.entry("key1", "foo2"),
+     *                 Map.entry("key2", "bar2")
+     *             ))
+     *             .build());
+     * 
+     *         final var test = Auth0Functions.getCustomDomains(GetCustomDomainsArgs.builder()
+     *             .query("domain:example1* AND status:pending_verification")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetCustomDomainsResult> getCustomDomains(GetCustomDomainsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("auth0:index/getCustomDomains:getCustomDomains", TypeShape.of(GetCustomDomainsResult.class), args, Utilities.withVersion(options));
@@ -5119,6 +5437,59 @@ public final class Auth0Functions {
      * Data source to retrieve multiple custom domains based on a search query. EA Only.
      * 
      * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.CustomDomain;
+     * import com.pulumi.auth0.CustomDomainArgs;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetCustomDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var myCustomDomain1 = new CustomDomain("myCustomDomain1", CustomDomainArgs.builder()
+     *             .domain("example1.auth.tempdomain.com")
+     *             .type("auth0_managed_certs")
+     *             .tlsPolicy("recommended")
+     *             .domainMetadata(Map.ofEntries(
+     *                 Map.entry("key1", "foo1"),
+     *                 Map.entry("key2", "bar1")
+     *             ))
+     *             .build());
+     * 
+     *         var myCustomDomain2 = new CustomDomain("myCustomDomain2", CustomDomainArgs.builder()
+     *             .domain("example2.auth.tempdomain.com")
+     *             .type("auth0_managed_certs")
+     *             .tlsPolicy("recommended")
+     *             .domainMetadata(Map.ofEntries(
+     *                 Map.entry("key1", "foo2"),
+     *                 Map.entry("key2", "bar2")
+     *             ))
+     *             .build());
+     * 
+     *         final var test = Auth0Functions.getCustomDomains(GetCustomDomainsArgs.builder()
+     *             .query("domain:example1* AND status:pending_verification")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetCustomDomainsResult> getCustomDomainsPlain(GetCustomDomainsPlainArgs args, InvokeOptions options) {

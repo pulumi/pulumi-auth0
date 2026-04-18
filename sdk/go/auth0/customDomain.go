@@ -69,6 +69,8 @@ type CustomDomain struct {
 	Domain pulumi.StringOutput `pulumi:"domain"`
 	// Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
 	DomainMetadata pulumi.StringMapOutput `pulumi:"domainMetadata"`
+	// Indicates whether this custom domain is the default domain for the tenant
+	IsDefault pulumi.BoolOutput `pulumi:"isDefault"`
 	// Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
 	OriginDomainName pulumi.StringOutput `pulumi:"originDomainName"`
 	// Indicates whether this is a primary domain.
@@ -131,6 +133,8 @@ type customDomainState struct {
 	Domain *string `pulumi:"domain"`
 	// Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
 	DomainMetadata map[string]string `pulumi:"domainMetadata"`
+	// Indicates whether this custom domain is the default domain for the tenant
+	IsDefault *bool `pulumi:"isDefault"`
 	// Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
 	OriginDomainName *string `pulumi:"originDomainName"`
 	// Indicates whether this is a primary domain.
@@ -158,6 +162,8 @@ type CustomDomainState struct {
 	Domain pulumi.StringPtrInput
 	// Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
 	DomainMetadata pulumi.StringMapInput
+	// Indicates whether this custom domain is the default domain for the tenant
+	IsDefault pulumi.BoolPtrInput
 	// Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
 	OriginDomainName pulumi.StringPtrInput
 	// Indicates whether this is a primary domain.
@@ -316,6 +322,11 @@ func (o CustomDomainOutput) Domain() pulumi.StringOutput {
 // Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
 func (o CustomDomainOutput) DomainMetadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *CustomDomain) pulumi.StringMapOutput { return v.DomainMetadata }).(pulumi.StringMapOutput)
+}
+
+// Indicates whether this custom domain is the default domain for the tenant
+func (o CustomDomainOutput) IsDefault() pulumi.BoolOutput {
+	return o.ApplyT(func(v *CustomDomain) pulumi.BoolOutput { return v.IsDefault }).(pulumi.BoolOutput)
 }
 
 // Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.

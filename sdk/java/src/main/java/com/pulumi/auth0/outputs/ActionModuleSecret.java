@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -12,28 +13,28 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ActionModuleSecret {
     /**
-     * @return Secret name. Required when configuring secrets
+     * @return Secret name.
      * 
      */
-    private @Nullable String name;
+    private String name;
     /**
      * @return Last update time
      * 
      */
     private @Nullable String updatedAt;
     /**
-     * @return Secret value. Required when configuring secrets
+     * @return Secret value.
      * 
      */
-    private @Nullable String value;
+    private String value;
 
     private ActionModuleSecret() {}
     /**
-     * @return Secret name. Required when configuring secrets
+     * @return Secret name.
      * 
      */
-    public Optional<String> name() {
-        return Optional.ofNullable(this.name);
+    public String name() {
+        return this.name;
     }
     /**
      * @return Last update time
@@ -43,11 +44,11 @@ public final class ActionModuleSecret {
         return Optional.ofNullable(this.updatedAt);
     }
     /**
-     * @return Secret value. Required when configuring secrets
+     * @return Secret value.
      * 
      */
-    public Optional<String> value() {
-        return Optional.ofNullable(this.value);
+    public String value() {
+        return this.value;
     }
 
     public static Builder builder() {
@@ -59,9 +60,9 @@ public final class ActionModuleSecret {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String name;
+        private String name;
         private @Nullable String updatedAt;
-        private @Nullable String value;
+        private String value;
         public Builder() {}
         public Builder(ActionModuleSecret defaults) {
     	      Objects.requireNonNull(defaults);
@@ -71,8 +72,10 @@ public final class ActionModuleSecret {
         }
 
         @CustomType.Setter
-        public Builder name(@Nullable String name) {
-
+        public Builder name(String name) {
+            if (name == null) {
+              throw new MissingRequiredPropertyException("ActionModuleSecret", "name");
+            }
             this.name = name;
             return this;
         }
@@ -83,8 +86,10 @@ public final class ActionModuleSecret {
             return this;
         }
         @CustomType.Setter
-        public Builder value(@Nullable String value) {
-
+        public Builder value(String value) {
+            if (value == null) {
+              throw new MissingRequiredPropertyException("ActionModuleSecret", "value");
+            }
             this.value = value;
             return this;
         }

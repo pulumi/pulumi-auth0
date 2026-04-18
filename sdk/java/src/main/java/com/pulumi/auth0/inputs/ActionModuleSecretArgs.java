@@ -5,6 +5,7 @@ package com.pulumi.auth0.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,18 +17,18 @@ public final class ActionModuleSecretArgs extends com.pulumi.resources.ResourceA
     public static final ActionModuleSecretArgs Empty = new ActionModuleSecretArgs();
 
     /**
-     * Secret name. Required when configuring secrets
+     * Secret name.
      * 
      */
-    @Import(name="name")
-    private @Nullable Output<String> name;
+    @Import(name="name", required=true)
+    private Output<String> name;
 
     /**
-     * @return Secret name. Required when configuring secrets
+     * @return Secret name.
      * 
      */
-    public Optional<Output<String>> name() {
-        return Optional.ofNullable(this.name);
+    public Output<String> name() {
+        return this.name;
     }
 
     /**
@@ -46,18 +47,18 @@ public final class ActionModuleSecretArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Secret value. Required when configuring secrets
+     * Secret value.
      * 
      */
-    @Import(name="value")
-    private @Nullable Output<String> value;
+    @Import(name="value", required=true)
+    private Output<String> value;
 
     /**
-     * @return Secret value. Required when configuring secrets
+     * @return Secret value.
      * 
      */
-    public Optional<Output<String>> value() {
-        return Optional.ofNullable(this.value);
+    public Output<String> value() {
+        return this.value;
     }
 
     private ActionModuleSecretArgs() {}
@@ -87,18 +88,18 @@ public final class ActionModuleSecretArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param name Secret name. Required when configuring secrets
+         * @param name Secret name.
          * 
          * @return builder
          * 
          */
-        public Builder name(@Nullable Output<String> name) {
+        public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
         /**
-         * @param name Secret name. Required when configuring secrets
+         * @param name Secret name.
          * 
          * @return builder
          * 
@@ -129,18 +130,18 @@ public final class ActionModuleSecretArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param value Secret value. Required when configuring secrets
+         * @param value Secret value.
          * 
          * @return builder
          * 
          */
-        public Builder value(@Nullable Output<String> value) {
+        public Builder value(Output<String> value) {
             $.value = value;
             return this;
         }
 
         /**
-         * @param value Secret value. Required when configuring secrets
+         * @param value Secret value.
          * 
          * @return builder
          * 
@@ -150,6 +151,12 @@ public final class ActionModuleSecretArgs extends com.pulumi.resources.ResourceA
         }
 
         public ActionModuleSecretArgs build() {
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("ActionModuleSecretArgs", "name");
+            }
+            if ($.value == null) {
+                throw new MissingRequiredPropertyException("ActionModuleSecretArgs", "value");
+            }
             return $;
         }
     }

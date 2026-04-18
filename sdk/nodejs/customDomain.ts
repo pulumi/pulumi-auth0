@@ -84,6 +84,10 @@ export class CustomDomain extends pulumi.CustomResource {
      */
     declare public readonly domainMetadata: pulumi.Output<{[key: string]: string} | undefined>;
     /**
+     * Indicates whether this custom domain is the default domain for the tenant
+     */
+    declare public /*out*/ readonly isDefault: pulumi.Output<boolean>;
+    /**
      * Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
      */
     declare public /*out*/ readonly originDomainName: pulumi.Output<string>;
@@ -131,6 +135,7 @@ export class CustomDomain extends pulumi.CustomResource {
             resourceInputs["customClientIpHeader"] = state?.customClientIpHeader;
             resourceInputs["domain"] = state?.domain;
             resourceInputs["domainMetadata"] = state?.domainMetadata;
+            resourceInputs["isDefault"] = state?.isDefault;
             resourceInputs["originDomainName"] = state?.originDomainName;
             resourceInputs["primary"] = state?.primary;
             resourceInputs["relyingPartyIdentifier"] = state?.relyingPartyIdentifier;
@@ -153,6 +158,7 @@ export class CustomDomain extends pulumi.CustomResource {
             resourceInputs["tlsPolicy"] = args?.tlsPolicy;
             resourceInputs["type"] = args?.type;
             resourceInputs["certificates"] = undefined /*out*/;
+            resourceInputs["isDefault"] = undefined /*out*/;
             resourceInputs["originDomainName"] = undefined /*out*/;
             resourceInputs["primary"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
@@ -183,6 +189,10 @@ export interface CustomDomainState {
      * Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
      */
     domainMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Indicates whether this custom domain is the default domain for the tenant
+     */
+    isDefault?: pulumi.Input<boolean>;
     /**
      * Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
      */

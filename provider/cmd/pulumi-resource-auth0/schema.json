@@ -263,7 +263,7 @@
             "properties": {
                 "name": {
                     "type": "string",
-                    "description": "Secret name. Required when configuring secrets\n"
+                    "description": "Secret name.\n"
                 },
                 "updatedAt": {
                     "type": "string",
@@ -271,15 +271,21 @@
                 },
                 "value": {
                     "type": "string",
-                    "description": "Secret value. Required when configuring secrets\n",
+                    "description": "Secret value.\n",
                     "secret": true
                 }
             },
             "type": "object",
+            "required": [
+                "name",
+                "value"
+            ],
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "updatedAt"
+                        "name",
+                        "updatedAt",
+                        "value"
                     ]
                 }
             }
@@ -6474,7 +6480,7 @@
             "properties": {
                 "name": {
                     "type": "string",
-                    "description": "Secret name. Required when configuring secrets\n"
+                    "description": "Secret name.\n"
                 },
                 "updatedAt": {
                     "type": "string",
@@ -6482,7 +6488,7 @@
                 },
                 "value": {
                     "type": "string",
-                    "description": "Secret value. Required when configuring secrets\n"
+                    "description": "Secret value.\n"
                 }
             },
             "type": "object",
@@ -12189,6 +12195,10 @@
                     },
                     "description": "Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).\n"
                 },
+                "isDefault": {
+                    "type": "boolean",
+                    "description": "Indicates whether this custom domain is the default domain for the tenant\n"
+                },
                 "originDomainName": {
                     "type": "string",
                     "description": "Once the configuration status is \u003cspan pulumi-lang-nodejs=\"`ready`\" pulumi-lang-dotnet=\"`Ready`\" pulumi-lang-go=\"`ready`\" pulumi-lang-python=\"`ready`\" pulumi-lang-yaml=\"`ready`\" pulumi-lang-java=\"`ready`\"\u003e`ready`\u003c/span\u003e, the DNS name of the Auth0 origin server that handles traffic for the custom domain.\n"
@@ -12227,6 +12237,7 @@
                 "customClientIpHeader",
                 "domain",
                 "domainMetadata",
+                "isDefault",
                 "originDomainName",
                 "primary",
                 "relyingPartyIdentifier",
@@ -16746,6 +16757,10 @@
                     },
                     "description": "Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).\n"
                 },
+                "isDefault": {
+                    "type": "boolean",
+                    "description": "Indicates whether this custom domain is the default domain for the tenant\n"
+                },
                 "originDomainName": {
                     "type": "string",
                     "description": "Once the configuration status is \u003cspan pulumi-lang-nodejs=\"`ready`\" pulumi-lang-dotnet=\"`Ready`\" pulumi-lang-go=\"`ready`\" pulumi-lang-python=\"`ready`\" pulumi-lang-yaml=\"`ready`\" pulumi-lang-java=\"`ready`\"\u003e`ready`\u003c/span\u003e, the DNS name of the Auth0 origin server that handles traffic for the custom domain.\n"
@@ -16782,6 +16797,7 @@
             "required": [
                 "certificates",
                 "domain",
+                "isDefault",
                 "originDomainName",
                 "primary",
                 "status",
@@ -16850,6 +16866,10 @@
                         },
                         "description": "Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).\n"
                     },
+                    "isDefault": {
+                        "type": "boolean",
+                        "description": "Indicates whether this custom domain is the default domain for the tenant\n"
+                    },
                     "originDomainName": {
                         "type": "string",
                         "description": "Once the configuration status is \u003cspan pulumi-lang-nodejs=\"`ready`\" pulumi-lang-dotnet=\"`Ready`\" pulumi-lang-go=\"`ready`\" pulumi-lang-python=\"`ready`\" pulumi-lang-yaml=\"`ready`\" pulumi-lang-java=\"`ready`\"\u003e`ready`\u003c/span\u003e, the DNS name of the Auth0 origin server that handles traffic for the custom domain.\n"
@@ -16882,6 +16902,37 @@
                             "$ref": "#/types/auth0:index/CustomDomainVerification:CustomDomainVerification"
                         },
                         "description": "Configuration settings for verification.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "auth0:index/customDomainDefault:CustomDomainDefault": {
+            "description": "With this resource, you can configure the default domain for your Auth0 tenant. The default domain is the domain that Auth0 will use for various tenant-level operations. This resource manages the default domain configuration via the custom domains API.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myCustomDomain = new auth0.CustomDomain(\"my_custom_domain\", {\n    domain: \"auth.example.com\",\n    type: \"auth0_managed_certs\",\n});\nconst _default = new auth0.CustomDomainDefault(\"default\", {domain: myCustomDomain.domain});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_custom_domain = auth0.CustomDomain(\"my_custom_domain\",\n    domain=\"auth.example.com\",\n    type=\"auth0_managed_certs\")\ndefault = auth0.CustomDomainDefault(\"default\", domain=my_custom_domain.domain)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myCustomDomain = new Auth0.Index.CustomDomain(\"my_custom_domain\", new()\n    {\n        Domain = \"auth.example.com\",\n        Type = \"auth0_managed_certs\",\n    });\n\n    var @default = new Auth0.Index.CustomDomainDefault(\"default\", new()\n    {\n        Domain = myCustomDomain.Domain,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmyCustomDomain, err := auth0.NewCustomDomain(ctx, \"my_custom_domain\", \u0026auth0.CustomDomainArgs{\n\t\t\tDomain: pulumi.String(\"auth.example.com\"),\n\t\t\tType:   pulumi.String(\"auth0_managed_certs\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = auth0.NewCustomDomainDefault(ctx, \"default\", \u0026auth0.CustomDomainDefaultArgs{\n\t\t\tDomain: myCustomDomain.Domain,\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.CustomDomain;\nimport com.pulumi.auth0.CustomDomainArgs;\nimport com.pulumi.auth0.CustomDomainDefault;\nimport com.pulumi.auth0.CustomDomainDefaultArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myCustomDomain = new CustomDomain(\"myCustomDomain\", CustomDomainArgs.builder()\n            .domain(\"auth.example.com\")\n            .type(\"auth0_managed_certs\")\n            .build());\n\n        var default_ = new CustomDomainDefault(\"default\", CustomDomainDefaultArgs.builder()\n            .domain(myCustomDomain.domain())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myCustomDomain:\n    type: auth0:CustomDomain\n    name: my_custom_domain\n    properties:\n      domain: auth.example.com\n      type: auth0_managed_certs\n  default:\n    type: auth0:CustomDomainDefault\n    properties:\n      domain: ${myCustomDomain.domain}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nAs this is a singleton resource (one per tenant), it can be imported using the\nfixed identifier \u003cspan pulumi-lang-nodejs=\"\"customDomainDefault\"\" pulumi-lang-dotnet=\"\"CustomDomainDefault\"\" pulumi-lang-go=\"\"customDomainDefault\"\" pulumi-lang-python=\"\"custom_domain_default\"\" pulumi-lang-yaml=\"\"customDomainDefault\"\" pulumi-lang-java=\"\"customDomainDefault\"\"\u003e\"customDomainDefault\"\u003c/span\u003e.\n\nExample:\n\n```sh\n$ pulumi import auth0:index/customDomainDefault:CustomDomainDefault default \"custom_domain_default\"\n```\n\n",
+            "properties": {
+                "domain": {
+                    "type": "string",
+                    "description": "The custom domain name or canonical domain name to set as the default domain for the tenant.\n"
+                }
+            },
+            "required": [
+                "domain"
+            ],
+            "inputProperties": {
+                "domain": {
+                    "type": "string",
+                    "description": "The custom domain name or canonical domain name to set as the default domain for the tenant.\n"
+                }
+            },
+            "requiredInputs": [
+                "domain"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering CustomDomainDefault resources.\n",
+                "properties": {
+                    "domain": {
+                        "type": "string",
+                        "description": "The custom domain name or canonical domain name to set as the default domain for the tenant.\n"
                     }
                 },
                 "type": "object"
@@ -23149,6 +23200,10 @@
                         "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
+                    "isDefault": {
+                        "description": "Indicates whether this custom domain is the default domain for the tenant\n",
+                        "type": "boolean"
+                    },
                     "originDomainName": {
                         "description": "Once the configuration status is \u003cspan pulumi-lang-nodejs=\"`ready`\" pulumi-lang-dotnet=\"`Ready`\" pulumi-lang-go=\"`ready`\" pulumi-lang-python=\"`ready`\" pulumi-lang-yaml=\"`ready`\" pulumi-lang-java=\"`ready`\"\u003e`ready`\u003c/span\u003e, the DNS name of the Auth0 origin server that handles traffic for the custom domain.\n",
                         "type": "string"
@@ -23186,6 +23241,7 @@
                     "customClientIpHeader",
                     "domain",
                     "domainMetadata",
+                    "isDefault",
                     "originDomainName",
                     "primary",
                     "relyingPartyIdentifier",
@@ -23199,7 +23255,7 @@
             }
         },
         "auth0:index/getCustomDomains:getCustomDomains": {
-            "description": "Data source to retrieve multiple custom domains based on a search query. EA Only.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```yaml\nresources:\n  myCustomDomain1:\n    type: auth0:CustomDomain\n    name: my_custom_domain_1\n    properties:\n      domain: example1.auth.tempdomain.com\n      type: auth0_managed_certs\n      tlsPolicy: recommended\n      domainMetadata:\n        key1: foo1\n        key2: bar1\n  myCustomDomain2:\n    type: auth0:CustomDomain\n    name: my_custom_domain_2\n    properties:\n      domain: example2.auth.tempdomain.com\n      type: auth0_managed_certs\n      tlsPolicy: recommended\n      domainMetadata:\n        key1: foo2\n        key2: bar2\nvariables:\n  test:\n    fn::invoke:\n      function: auth0:getCustomDomains\n      arguments:\n        q: domain:example1* AND status:pending_verification\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Data source to retrieve multiple custom domains based on a search query. EA Only.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myCustomDomain1 = new auth0.CustomDomain(\"my_custom_domain_1\", {\n    domain: \"example1.auth.tempdomain.com\",\n    type: \"auth0_managed_certs\",\n    tlsPolicy: \"recommended\",\n    domainMetadata: {\n        key1: \"foo1\",\n        key2: \"bar1\",\n    },\n});\nconst myCustomDomain2 = new auth0.CustomDomain(\"my_custom_domain_2\", {\n    domain: \"example2.auth.tempdomain.com\",\n    type: \"auth0_managed_certs\",\n    tlsPolicy: \"recommended\",\n    domainMetadata: {\n        key1: \"foo2\",\n        key2: \"bar2\",\n    },\n});\nconst test = auth0.getCustomDomains({\n    query: \"domain:example1* AND status:pending_verification\",\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_custom_domain1 = auth0.CustomDomain(\"my_custom_domain_1\",\n    domain=\"example1.auth.tempdomain.com\",\n    type=\"auth0_managed_certs\",\n    tls_policy=\"recommended\",\n    domain_metadata={\n        \"key1\": \"foo1\",\n        \"key2\": \"bar1\",\n    })\nmy_custom_domain2 = auth0.CustomDomain(\"my_custom_domain_2\",\n    domain=\"example2.auth.tempdomain.com\",\n    type=\"auth0_managed_certs\",\n    tls_policy=\"recommended\",\n    domain_metadata={\n        \"key1\": \"foo2\",\n        \"key2\": \"bar2\",\n    })\ntest = auth0.get_custom_domains(query=\"domain:example1* AND status:pending_verification\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myCustomDomain1 = new Auth0.Index.CustomDomain(\"my_custom_domain_1\", new()\n    {\n        Domain = \"example1.auth.tempdomain.com\",\n        Type = \"auth0_managed_certs\",\n        TlsPolicy = \"recommended\",\n        DomainMetadata = \n        {\n            { \"key1\", \"foo1\" },\n            { \"key2\", \"bar1\" },\n        },\n    });\n\n    var myCustomDomain2 = new Auth0.Index.CustomDomain(\"my_custom_domain_2\", new()\n    {\n        Domain = \"example2.auth.tempdomain.com\",\n        Type = \"auth0_managed_certs\",\n        TlsPolicy = \"recommended\",\n        DomainMetadata = \n        {\n            { \"key1\", \"foo2\" },\n            { \"key2\", \"bar2\" },\n        },\n    });\n\n    var test = Auth0.Index.GetCustomDomains.Invoke(new()\n    {\n        Query = \"domain:example1* AND status:pending_verification\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewCustomDomain(ctx, \"my_custom_domain_1\", \u0026auth0.CustomDomainArgs{\n\t\t\tDomain:    pulumi.String(\"example1.auth.tempdomain.com\"),\n\t\t\tType:      pulumi.String(\"auth0_managed_certs\"),\n\t\t\tTlsPolicy: pulumi.String(\"recommended\"),\n\t\t\tDomainMetadata: pulumi.StringMap{\n\t\t\t\t\"key1\": pulumi.String(\"foo1\"),\n\t\t\t\t\"key2\": pulumi.String(\"bar1\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = auth0.NewCustomDomain(ctx, \"my_custom_domain_2\", \u0026auth0.CustomDomainArgs{\n\t\t\tDomain:    pulumi.String(\"example2.auth.tempdomain.com\"),\n\t\t\tType:      pulumi.String(\"auth0_managed_certs\"),\n\t\t\tTlsPolicy: pulumi.String(\"recommended\"),\n\t\t\tDomainMetadata: pulumi.StringMap{\n\t\t\t\t\"key1\": pulumi.String(\"foo2\"),\n\t\t\t\t\"key2\": pulumi.String(\"bar2\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = auth0.GetCustomDomains(ctx, \u0026auth0.GetCustomDomainsArgs{\n\t\t\tQuery: pulumi.StringRef(\"domain:example1* AND status:pending_verification\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.CustomDomain;\nimport com.pulumi.auth0.CustomDomainArgs;\nimport com.pulumi.auth0.Auth0Functions;\nimport com.pulumi.auth0.inputs.GetCustomDomainsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myCustomDomain1 = new CustomDomain(\"myCustomDomain1\", CustomDomainArgs.builder()\n            .domain(\"example1.auth.tempdomain.com\")\n            .type(\"auth0_managed_certs\")\n            .tlsPolicy(\"recommended\")\n            .domainMetadata(Map.ofEntries(\n                Map.entry(\"key1\", \"foo1\"),\n                Map.entry(\"key2\", \"bar1\")\n            ))\n            .build());\n\n        var myCustomDomain2 = new CustomDomain(\"myCustomDomain2\", CustomDomainArgs.builder()\n            .domain(\"example2.auth.tempdomain.com\")\n            .type(\"auth0_managed_certs\")\n            .tlsPolicy(\"recommended\")\n            .domainMetadata(Map.ofEntries(\n                Map.entry(\"key1\", \"foo2\"),\n                Map.entry(\"key2\", \"bar2\")\n            ))\n            .build());\n\n        final var test = Auth0Functions.getCustomDomains(GetCustomDomainsArgs.builder()\n            .query(\"domain:example1* AND status:pending_verification\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myCustomDomain1:\n    type: auth0:CustomDomain\n    name: my_custom_domain_1\n    properties:\n      domain: example1.auth.tempdomain.com\n      type: auth0_managed_certs\n      tlsPolicy: recommended\n      domainMetadata:\n        key1: foo1\n        key2: bar1\n  myCustomDomain2:\n    type: auth0:CustomDomain\n    name: my_custom_domain_2\n    properties:\n      domain: example2.auth.tempdomain.com\n      type: auth0_managed_certs\n      tlsPolicy: recommended\n      domainMetadata:\n        key1: foo2\n        key2: bar2\nvariables:\n  test:\n    fn::invoke:\n      function: auth0:getCustomDomains\n      arguments:\n        query: domain:example1* AND status:pending_verification\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getCustomDomains.\n",
                 "properties": {

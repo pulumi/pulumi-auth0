@@ -15,6 +15,46 @@ namespace Pulumi.Auth0
         /// Data source to retrieve multiple custom domains based on a search query. EA Only.
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Auth0 = Pulumi.Auth0;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myCustomDomain1 = new Auth0.Index.CustomDomain("my_custom_domain_1", new()
+        ///     {
+        ///         Domain = "example1.auth.tempdomain.com",
+        ///         Type = "auth0_managed_certs",
+        ///         TlsPolicy = "recommended",
+        ///         DomainMetadata = 
+        ///         {
+        ///             { "key1", "foo1" },
+        ///             { "key2", "bar1" },
+        ///         },
+        ///     });
+        /// 
+        ///     var myCustomDomain2 = new Auth0.Index.CustomDomain("my_custom_domain_2", new()
+        ///     {
+        ///         Domain = "example2.auth.tempdomain.com",
+        ///         Type = "auth0_managed_certs",
+        ///         TlsPolicy = "recommended",
+        ///         DomainMetadata = 
+        ///         {
+        ///             { "key1", "foo2" },
+        ///             { "key2", "bar2" },
+        ///         },
+        ///     });
+        /// 
+        ///     var test = Auth0.Index.GetCustomDomains.Invoke(new()
+        ///     {
+        ///         Query = "domain:example1* AND status:pending_verification",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetCustomDomainsResult> InvokeAsync(GetCustomDomainsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCustomDomainsResult>("auth0:index/getCustomDomains:getCustomDomains", args ?? new GetCustomDomainsArgs(), options.WithDefaults());
@@ -23,6 +63,46 @@ namespace Pulumi.Auth0
         /// Data source to retrieve multiple custom domains based on a search query. EA Only.
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Auth0 = Pulumi.Auth0;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myCustomDomain1 = new Auth0.Index.CustomDomain("my_custom_domain_1", new()
+        ///     {
+        ///         Domain = "example1.auth.tempdomain.com",
+        ///         Type = "auth0_managed_certs",
+        ///         TlsPolicy = "recommended",
+        ///         DomainMetadata = 
+        ///         {
+        ///             { "key1", "foo1" },
+        ///             { "key2", "bar1" },
+        ///         },
+        ///     });
+        /// 
+        ///     var myCustomDomain2 = new Auth0.Index.CustomDomain("my_custom_domain_2", new()
+        ///     {
+        ///         Domain = "example2.auth.tempdomain.com",
+        ///         Type = "auth0_managed_certs",
+        ///         TlsPolicy = "recommended",
+        ///         DomainMetadata = 
+        ///         {
+        ///             { "key1", "foo2" },
+        ///             { "key2", "bar2" },
+        ///         },
+        ///     });
+        /// 
+        ///     var test = Auth0.Index.GetCustomDomains.Invoke(new()
+        ///     {
+        ///         Query = "domain:example1* AND status:pending_verification",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetCustomDomainsResult> Invoke(GetCustomDomainsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCustomDomainsResult>("auth0:index/getCustomDomains:getCustomDomains", args ?? new GetCustomDomainsInvokeArgs(), options.WithDefaults());
@@ -31,6 +111,46 @@ namespace Pulumi.Auth0
         /// Data source to retrieve multiple custom domains based on a search query. EA Only.
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Auth0 = Pulumi.Auth0;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myCustomDomain1 = new Auth0.Index.CustomDomain("my_custom_domain_1", new()
+        ///     {
+        ///         Domain = "example1.auth.tempdomain.com",
+        ///         Type = "auth0_managed_certs",
+        ///         TlsPolicy = "recommended",
+        ///         DomainMetadata = 
+        ///         {
+        ///             { "key1", "foo1" },
+        ///             { "key2", "bar1" },
+        ///         },
+        ///     });
+        /// 
+        ///     var myCustomDomain2 = new Auth0.Index.CustomDomain("my_custom_domain_2", new()
+        ///     {
+        ///         Domain = "example2.auth.tempdomain.com",
+        ///         Type = "auth0_managed_certs",
+        ///         TlsPolicy = "recommended",
+        ///         DomainMetadata = 
+        ///         {
+        ///             { "key1", "foo2" },
+        ///             { "key2", "bar2" },
+        ///         },
+        ///     });
+        /// 
+        ///     var test = Auth0.Index.GetCustomDomains.Invoke(new()
+        ///     {
+        ///         Query = "domain:example1* AND status:pending_verification",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetCustomDomainsResult> Invoke(GetCustomDomainsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetCustomDomainsResult>("auth0:index/getCustomDomains:getCustomDomains", args ?? new GetCustomDomainsInvokeArgs(), options.WithDefaults());

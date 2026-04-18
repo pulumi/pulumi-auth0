@@ -33,6 +33,7 @@
         "connectionScimConfiguration.ts",
         "connectionScimToken.ts",
         "customDomain.ts",
+        "customDomainDefault.ts",
         "customDomainVerification.ts",
         "emailProvider.ts",
         "emailTemplate.ts",
