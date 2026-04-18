@@ -77,6 +77,8 @@ type LookupCustomDomainResult struct {
 	DomainMetadata map[string]string `pulumi:"domainMetadata"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
+	// Indicates whether this custom domain is the default domain for the tenant
+	IsDefault bool `pulumi:"isDefault"`
 	// Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
 	OriginDomainName string `pulumi:"originDomainName"`
 	// Indicates whether this is a primary domain.
@@ -155,6 +157,11 @@ func (o LookupCustomDomainResultOutput) DomainMetadata() pulumi.StringMapOutput 
 // The provider-assigned unique ID for this managed resource.
 func (o LookupCustomDomainResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomDomainResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Indicates whether this custom domain is the default domain for the tenant
+func (o LookupCustomDomainResultOutput) IsDefault() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupCustomDomainResult) bool { return v.IsDefault }).(pulumi.BoolOutput)
 }
 
 // Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.

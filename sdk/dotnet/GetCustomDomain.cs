@@ -178,6 +178,10 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// Indicates whether this custom domain is the default domain for the tenant
+        /// </summary>
+        public readonly bool IsDefault;
+        /// <summary>
         /// Once the configuration status is `Ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
         /// </summary>
         public readonly string OriginDomainName;
@@ -220,6 +224,8 @@ namespace Pulumi.Auth0
 
             string id,
 
+            bool isDefault,
+
             string originDomainName,
 
             bool primary,
@@ -240,6 +246,7 @@ namespace Pulumi.Auth0
             Domain = domain;
             DomainMetadata = domainMetadata;
             Id = id;
+            IsDefault = isDefault;
             OriginDomainName = originDomainName;
             Primary = primary;
             RelyingPartyIdentifier = relyingPartyIdentifier;

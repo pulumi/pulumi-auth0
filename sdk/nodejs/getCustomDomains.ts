@@ -10,6 +10,33 @@ import * as utilities from "./utilities";
  * Data source to retrieve multiple custom domains based on a search query. EA Only.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * const myCustomDomain1 = new auth0.CustomDomain("my_custom_domain_1", {
+ *     domain: "example1.auth.tempdomain.com",
+ *     type: "auth0_managed_certs",
+ *     tlsPolicy: "recommended",
+ *     domainMetadata: {
+ *         key1: "foo1",
+ *         key2: "bar1",
+ *     },
+ * });
+ * const myCustomDomain2 = new auth0.CustomDomain("my_custom_domain_2", {
+ *     domain: "example2.auth.tempdomain.com",
+ *     type: "auth0_managed_certs",
+ *     tlsPolicy: "recommended",
+ *     domainMetadata: {
+ *         key1: "foo2",
+ *         key2: "bar2",
+ *     },
+ * });
+ * const test = auth0.getCustomDomains({
+ *     query: "domain:example1* AND status:pending_verification",
+ * });
+ * ```
  */
 export function getCustomDomains(args?: GetCustomDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomDomainsResult> {
     args = args || {};
@@ -50,6 +77,33 @@ export interface GetCustomDomainsResult {
  * Data source to retrieve multiple custom domains based on a search query. EA Only.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * const myCustomDomain1 = new auth0.CustomDomain("my_custom_domain_1", {
+ *     domain: "example1.auth.tempdomain.com",
+ *     type: "auth0_managed_certs",
+ *     tlsPolicy: "recommended",
+ *     domainMetadata: {
+ *         key1: "foo1",
+ *         key2: "bar1",
+ *     },
+ * });
+ * const myCustomDomain2 = new auth0.CustomDomain("my_custom_domain_2", {
+ *     domain: "example2.auth.tempdomain.com",
+ *     type: "auth0_managed_certs",
+ *     tlsPolicy: "recommended",
+ *     domainMetadata: {
+ *         key1: "foo2",
+ *         key2: "bar2",
+ *     },
+ * });
+ * const test = auth0.getCustomDomains({
+ *     query: "domain:example1* AND status:pending_verification",
+ * });
+ * ```
  */
 export function getCustomDomainsOutput(args?: GetCustomDomainsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCustomDomainsResult> {
     args = args || {};

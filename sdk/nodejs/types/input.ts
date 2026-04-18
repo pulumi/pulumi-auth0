@@ -97,17 +97,17 @@ export interface ActionModuleLatestVersionSecret {
 
 export interface ActionModuleSecret {
     /**
-     * Secret name. Required when configuring secrets
+     * Secret name.
      */
-    name?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     /**
      * Last update time
      */
     updatedAt?: pulumi.Input<string>;
     /**
-     * Secret value. Required when configuring secrets
+     * Secret value.
      */
-    value?: pulumi.Input<string>;
+    value: pulumi.Input<string>;
 }
 
 export interface ActionSecret {

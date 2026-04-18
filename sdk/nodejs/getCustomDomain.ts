@@ -76,6 +76,10 @@ export interface GetCustomDomainResult {
      */
     readonly id: string;
     /**
+     * Indicates whether this custom domain is the default domain for the tenant
+     */
+    readonly isDefault: boolean;
+    /**
      * Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
      */
     readonly originDomainName: string;

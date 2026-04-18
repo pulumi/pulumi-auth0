@@ -57,6 +57,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ConnectionScimToken{}
 	case "auth0:index/customDomain:CustomDomain":
 		r = &CustomDomain{}
+	case "auth0:index/customDomainDefault:CustomDomainDefault":
+		r = &CustomDomainDefault{}
 	case "auth0:index/customDomainVerification:CustomDomainVerification":
 		r = &CustomDomainVerification{}
 	case "auth0:index/emailProvider:EmailProvider":
@@ -284,6 +286,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"auth0",
 		"index/customDomain",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"auth0",
+		"index/customDomainDefault",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

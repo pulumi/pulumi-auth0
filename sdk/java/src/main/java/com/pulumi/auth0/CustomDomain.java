@@ -134,6 +134,20 @@ public class CustomDomain extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.domainMetadata);
     }
     /**
+     * Indicates whether this custom domain is the default domain for the tenant
+     * 
+     */
+    @Export(name="isDefault", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> isDefault;
+
+    /**
+     * @return Indicates whether this custom domain is the default domain for the tenant
+     * 
+     */
+    public Output<Boolean> isDefault() {
+        return this.isDefault;
+    }
+    /**
      * Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
      * 
      */

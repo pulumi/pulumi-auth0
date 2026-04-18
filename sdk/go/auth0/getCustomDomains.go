@@ -14,6 +14,54 @@ import (
 // Data source to retrieve multiple custom domains based on a search query. EA Only.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := auth0.NewCustomDomain(ctx, "my_custom_domain_1", &auth0.CustomDomainArgs{
+//				Domain:    pulumi.String("example1.auth.tempdomain.com"),
+//				Type:      pulumi.String("auth0_managed_certs"),
+//				TlsPolicy: pulumi.String("recommended"),
+//				DomainMetadata: pulumi.StringMap{
+//					"key1": pulumi.String("foo1"),
+//					"key2": pulumi.String("bar1"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = auth0.NewCustomDomain(ctx, "my_custom_domain_2", &auth0.CustomDomainArgs{
+//				Domain:    pulumi.String("example2.auth.tempdomain.com"),
+//				Type:      pulumi.String("auth0_managed_certs"),
+//				TlsPolicy: pulumi.String("recommended"),
+//				DomainMetadata: pulumi.StringMap{
+//					"key1": pulumi.String("foo2"),
+//					"key2": pulumi.String("bar2"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = auth0.GetCustomDomains(ctx, &auth0.GetCustomDomainsArgs{
+//				Query: pulumi.StringRef("domain:example1* AND status:pending_verification"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetCustomDomains(ctx *pulumi.Context, args *GetCustomDomainsArgs, opts ...pulumi.InvokeOption) (*GetCustomDomainsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCustomDomainsResult

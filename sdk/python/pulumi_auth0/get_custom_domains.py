@@ -81,6 +81,29 @@ def get_custom_domains(query: Optional[_builtins.str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_auth0 as auth0
+
+    my_custom_domain1 = auth0.CustomDomain("my_custom_domain_1",
+        domain="example1.auth.tempdomain.com",
+        type="auth0_managed_certs",
+        tls_policy="recommended",
+        domain_metadata={
+            "key1": "foo1",
+            "key2": "bar1",
+        })
+    my_custom_domain2 = auth0.CustomDomain("my_custom_domain_2",
+        domain="example2.auth.tempdomain.com",
+        type="auth0_managed_certs",
+        tls_policy="recommended",
+        domain_metadata={
+            "key1": "foo2",
+            "key2": "bar2",
+        })
+    test = auth0.get_custom_domains(query="domain:example1* AND status:pending_verification")
+    ```
+
 
     :param _builtins.str query: Search query string to filter custom domains.
     """
@@ -99,6 +122,29 @@ def get_custom_domains_output(query: Optional[pulumi.Input[Optional[_builtins.st
     Data source to retrieve multiple custom domains based on a search query. EA Only.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_auth0 as auth0
+
+    my_custom_domain1 = auth0.CustomDomain("my_custom_domain_1",
+        domain="example1.auth.tempdomain.com",
+        type="auth0_managed_certs",
+        tls_policy="recommended",
+        domain_metadata={
+            "key1": "foo1",
+            "key2": "bar1",
+        })
+    my_custom_domain2 = auth0.CustomDomain("my_custom_domain_2",
+        domain="example2.auth.tempdomain.com",
+        type="auth0_managed_certs",
+        tls_policy="recommended",
+        domain_metadata={
+            "key1": "foo2",
+            "key2": "bar2",
+        })
+    test = auth0.get_custom_domains(query="domain:example1* AND status:pending_verification")
+    ```
 
 
     :param _builtins.str query: Search query string to filter custom domains.

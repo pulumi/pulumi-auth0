@@ -906,48 +906,58 @@ class ActionModuleLatestVersionSecretArgs:
 
 
 class ActionModuleSecretArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: pulumi.Input[_builtins.str]
     """
-    Secret name. Required when configuring secrets
+    Secret name.
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    Secret value.
     """
     updated_at: NotRequired[pulumi.Input[_builtins.str]]
     """
     Last update time
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Secret value. Required when configuring secrets
-    """
 
 @pulumi.input_type
 class ActionModuleSecretArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[_builtins.str],
+                 value: pulumi.Input[_builtins.str],
+                 updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] name: Secret name. Required when configuring secrets
+        :param pulumi.Input[_builtins.str] name: Secret name.
+        :param pulumi.Input[_builtins.str] value: Secret value.
         :param pulumi.Input[_builtins.str] updated_at: Last update time
-        :param pulumi.Input[_builtins.str] value: Secret value. Required when configuring secrets
         """
-        if name is not None:
-            pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
         if updated_at is not None:
             pulumi.set(__self__, "updated_at", updated_at)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[_builtins.str]:
         """
-        Secret name. Required when configuring secrets
+        Secret name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[_builtins.str]:
+        """
+        Secret value.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "value", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
@@ -960,18 +970,6 @@ class ActionModuleSecretArgs:
     @updated_at.setter
     def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "updated_at", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Secret value. Required when configuring secrets
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "value", value)
 
 
 class ActionSecretArgsDict(TypedDict):

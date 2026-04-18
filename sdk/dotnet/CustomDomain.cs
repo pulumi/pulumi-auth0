@@ -78,6 +78,12 @@ namespace Pulumi.Auth0
         public Output<ImmutableDictionary<string, string>?> DomainMetadata { get; private set; } = null!;
 
         /// <summary>
+        /// Indicates whether this custom domain is the default domain for the tenant
+        /// </summary>
+        [Output("isDefault")]
+        public Output<bool> IsDefault { get; private set; } = null!;
+
+        /// <summary>
         /// Once the configuration status is `Ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
         /// </summary>
         [Output("originDomainName")]
@@ -250,6 +256,12 @@ namespace Pulumi.Auth0
             get => _domainMetadata ?? (_domainMetadata = new InputMap<string>());
             set => _domainMetadata = value;
         }
+
+        /// <summary>
+        /// Indicates whether this custom domain is the default domain for the tenant
+        /// </summary>
+        [Input("isDefault")]
+        public Input<bool>? IsDefault { get; set; }
 
         /// <summary>
         /// Once the configuration status is `Ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.

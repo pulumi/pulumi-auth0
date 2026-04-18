@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetActionModuleSecret {
     /**
-     * @return Secret name. Required when configuring secrets
+     * @return Secret name.
      * 
      */
     private String name;
@@ -21,14 +21,14 @@ public final class GetActionModuleSecret {
      */
     private String updatedAt;
     /**
-     * @return Secret value. Required when configuring secrets
+     * @return Secret value.
      * 
      */
     private String value;
 
     private GetActionModuleSecret() {}
     /**
-     * @return Secret name. Required when configuring secrets
+     * @return Secret name.
      * 
      */
     public String name() {
@@ -42,7 +42,7 @@ public final class GetActionModuleSecret {
         return this.updatedAt;
     }
     /**
-     * @return Secret value. Required when configuring secrets
+     * @return Secret value.
      * 
      */
     public String value() {

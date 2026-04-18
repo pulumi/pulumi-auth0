@@ -13,10 +13,10 @@ namespace Pulumi.Auth0.Inputs
     public sealed class ActionModuleSecretArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Secret name. Required when configuring secrets
+        /// Secret name.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         /// <summary>
         /// Last update time
@@ -24,11 +24,11 @@ namespace Pulumi.Auth0.Inputs
         [Input("updatedAt")]
         public Input<string>? UpdatedAt { get; set; }
 
-        [Input("value")]
+        [Input("value", required: true)]
         private Input<string>? _value;
 
         /// <summary>
-        /// Secret value. Required when configuring secrets
+        /// Secret value.
         /// </summary>
         public Input<string>? Value
         {

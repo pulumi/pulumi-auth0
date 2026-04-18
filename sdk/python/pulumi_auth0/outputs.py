@@ -828,28 +828,34 @@ class ActionModuleSecret(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 name: Optional[_builtins.str] = None,
-                 updated_at: Optional[_builtins.str] = None,
-                 value: Optional[_builtins.str] = None):
+                 name: _builtins.str,
+                 value: _builtins.str,
+                 updated_at: Optional[_builtins.str] = None):
         """
-        :param _builtins.str name: Secret name. Required when configuring secrets
+        :param _builtins.str name: Secret name.
+        :param _builtins.str value: Secret value.
         :param _builtins.str updated_at: Last update time
-        :param _builtins.str value: Secret value. Required when configuring secrets
         """
-        if name is not None:
-            pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
         if updated_at is not None:
             pulumi.set(__self__, "updated_at", updated_at)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[_builtins.str]:
+    def name(self) -> _builtins.str:
         """
-        Secret name. Required when configuring secrets
+        Secret name.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        Secret value.
+        """
+        return pulumi.get(self, "value")
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
@@ -858,14 +864,6 @@ class ActionModuleSecret(dict):
         Last update time
         """
         return pulumi.get(self, "updated_at")
-
-    @_builtins.property
-    @pulumi.getter
-    def value(self) -> Optional[_builtins.str]:
-        """
-        Secret value. Required when configuring secrets
-        """
-        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -16138,9 +16136,9 @@ class GetActionModuleSecretResult(dict):
                  updated_at: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str name: Secret name. Required when configuring secrets
+        :param _builtins.str name: Secret name.
         :param _builtins.str updated_at: Last update time
-        :param _builtins.str value: Secret value. Required when configuring secrets
+        :param _builtins.str value: Secret value.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "updated_at", updated_at)
@@ -16150,7 +16148,7 @@ class GetActionModuleSecretResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Secret name. Required when configuring secrets
+        Secret name.
         """
         return pulumi.get(self, "name")
 
@@ -16166,7 +16164,7 @@ class GetActionModuleSecretResult(dict):
     @pulumi.getter
     def value(self) -> _builtins.str:
         """
-        Secret value. Required when configuring secrets
+        Secret value.
         """
         return pulumi.get(self, "value")
 
@@ -24358,6 +24356,7 @@ class GetCustomDomainsCustomDomainResult(dict):
                  custom_client_ip_header: _builtins.str,
                  domain: _builtins.str,
                  domain_metadata: Mapping[str, _builtins.str],
+                 is_default: _builtins.bool,
                  origin_domain_name: _builtins.str,
                  primary: _builtins.bool,
                  relying_party_identifier: _builtins.str,
@@ -24370,6 +24369,7 @@ class GetCustomDomainsCustomDomainResult(dict):
         :param _builtins.str custom_client_ip_header: The HTTP header to fetch the client's IP address. Cannot be set on auth0_managed domains.
         :param _builtins.str domain: Name of the custom domain.
         :param Mapping[str, _builtins.str] domain_metadata: Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
+        :param _builtins.bool is_default: Indicates whether this custom domain is the default domain for the tenant
         :param _builtins.str origin_domain_name: Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
         :param _builtins.bool primary: Indicates whether this is a primary domain.
         :param _builtins.str relying_party_identifier: Relying Party ID (rpId) to be used for Passkeys on this custom domain. If not provided or set to null, the full domain will be used.
@@ -24382,6 +24382,7 @@ class GetCustomDomainsCustomDomainResult(dict):
         pulumi.set(__self__, "custom_client_ip_header", custom_client_ip_header)
         pulumi.set(__self__, "domain", domain)
         pulumi.set(__self__, "domain_metadata", domain_metadata)
+        pulumi.set(__self__, "is_default", is_default)
         pulumi.set(__self__, "origin_domain_name", origin_domain_name)
         pulumi.set(__self__, "primary", primary)
         pulumi.set(__self__, "relying_party_identifier", relying_party_identifier)
@@ -24421,6 +24422,14 @@ class GetCustomDomainsCustomDomainResult(dict):
         Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
         """
         return pulumi.get(self, "domain_metadata")
+
+    @_builtins.property
+    @pulumi.getter(name="isDefault")
+    def is_default(self) -> _builtins.bool:
+        """
+        Indicates whether this custom domain is the default domain for the tenant
+        """
+        return pulumi.get(self, "is_default")
 
     @_builtins.property
     @pulumi.getter(name="originDomainName")

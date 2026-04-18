@@ -14,25 +14,25 @@ namespace Pulumi.Auth0.Outputs
     public sealed class ActionModuleSecret
     {
         /// <summary>
-        /// Secret name. Required when configuring secrets
+        /// Secret name.
         /// </summary>
-        public readonly string? Name;
+        public readonly string Name;
         /// <summary>
         /// Last update time
         /// </summary>
         public readonly string? UpdatedAt;
         /// <summary>
-        /// Secret value. Required when configuring secrets
+        /// Secret value.
         /// </summary>
-        public readonly string? Value;
+        public readonly string Value;
 
         [OutputConstructor]
         private ActionModuleSecret(
-            string? name,
+            string name,
 
             string? updatedAt,
 
-            string? value)
+            string value)
         {
             Name = name;
             UpdatedAt = updatedAt;

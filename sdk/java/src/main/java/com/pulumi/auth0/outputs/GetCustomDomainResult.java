@@ -48,6 +48,11 @@ public final class GetCustomDomainResult {
      */
     private String id;
     /**
+     * @return Indicates whether this custom domain is the default domain for the tenant
+     * 
+     */
+    private Boolean isDefault;
+    /**
      * @return Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
      * 
      */
@@ -127,6 +132,13 @@ public final class GetCustomDomainResult {
         return this.id;
     }
     /**
+     * @return Indicates whether this custom domain is the default domain for the tenant
+     * 
+     */
+    public Boolean isDefault() {
+        return this.isDefault;
+    }
+    /**
      * @return Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
      * 
      */
@@ -191,6 +203,7 @@ public final class GetCustomDomainResult {
         private String domain;
         private Map<String,String> domainMetadata;
         private String id;
+        private Boolean isDefault;
         private String originDomainName;
         private Boolean primary;
         private String relyingPartyIdentifier;
@@ -207,6 +220,7 @@ public final class GetCustomDomainResult {
     	      this.domain = defaults.domain;
     	      this.domainMetadata = defaults.domainMetadata;
     	      this.id = defaults.id;
+    	      this.isDefault = defaults.isDefault;
     	      this.originDomainName = defaults.originDomainName;
     	      this.primary = defaults.primary;
     	      this.relyingPartyIdentifier = defaults.relyingPartyIdentifier;
@@ -263,6 +277,14 @@ public final class GetCustomDomainResult {
               throw new MissingRequiredPropertyException("GetCustomDomainResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder isDefault(Boolean isDefault) {
+            if (isDefault == null) {
+              throw new MissingRequiredPropertyException("GetCustomDomainResult", "isDefault");
+            }
+            this.isDefault = isDefault;
             return this;
         }
         @CustomType.Setter
@@ -332,6 +354,7 @@ public final class GetCustomDomainResult {
             _resultValue.domain = domain;
             _resultValue.domainMetadata = domainMetadata;
             _resultValue.id = id;
+            _resultValue.isDefault = isDefault;
             _resultValue.originDomainName = originDomainName;
             _resultValue.primary = primary;
             _resultValue.relyingPartyIdentifier = relyingPartyIdentifier;

@@ -97,17 +97,17 @@ export interface ActionModuleLatestVersionSecret {
 
 export interface ActionModuleSecret {
     /**
-     * Secret name. Required when configuring secrets
+     * Secret name.
      */
-    name?: string;
+    name: string;
     /**
      * Last update time
      */
     updatedAt: string;
     /**
-     * Secret value. Required when configuring secrets
+     * Secret value.
      */
-    value?: string;
+    value: string;
 }
 
 export interface ActionSecret {
@@ -3100,7 +3100,7 @@ export interface GetActionModuleLatestVersionSecret {
 
 export interface GetActionModuleSecret {
     /**
-     * Secret name. Required when configuring secrets
+     * Secret name.
      */
     name: string;
     /**
@@ -3108,7 +3108,7 @@ export interface GetActionModuleSecret {
      */
     updatedAt: string;
     /**
-     * Secret value. Required when configuring secrets
+     * Secret value.
      */
     value: string;
 }
@@ -6151,6 +6151,10 @@ export interface GetCustomDomainsCustomDomain {
      * Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
      */
     domainMetadata: {[key: string]: string};
+    /**
+     * Indicates whether this custom domain is the default domain for the tenant
+     */
+    isDefault: boolean;
     /**
      * Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
      */

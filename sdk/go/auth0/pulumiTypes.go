@@ -704,12 +704,12 @@ func (o ActionModuleLatestVersionSecretArrayOutput) Index(i pulumi.IntInput) Act
 }
 
 type ActionModuleSecret struct {
-	// Secret name. Required when configuring secrets
-	Name *string `pulumi:"name"`
+	// Secret name.
+	Name string `pulumi:"name"`
 	// Last update time
 	UpdatedAt *string `pulumi:"updatedAt"`
-	// Secret value. Required when configuring secrets
-	Value *string `pulumi:"value"`
+	// Secret value.
+	Value string `pulumi:"value"`
 }
 
 // ActionModuleSecretInput is an input type that accepts ActionModuleSecretArgs and ActionModuleSecretOutput values.
@@ -724,12 +724,12 @@ type ActionModuleSecretInput interface {
 }
 
 type ActionModuleSecretArgs struct {
-	// Secret name. Required when configuring secrets
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Secret name.
+	Name pulumi.StringInput `pulumi:"name"`
 	// Last update time
 	UpdatedAt pulumi.StringPtrInput `pulumi:"updatedAt"`
-	// Secret value. Required when configuring secrets
-	Value pulumi.StringPtrInput `pulumi:"value"`
+	// Secret value.
+	Value pulumi.StringInput `pulumi:"value"`
 }
 
 func (ActionModuleSecretArgs) ElementType() reflect.Type {
@@ -783,9 +783,9 @@ func (o ActionModuleSecretOutput) ToActionModuleSecretOutputWithContext(ctx cont
 	return o
 }
 
-// Secret name. Required when configuring secrets
-func (o ActionModuleSecretOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionModuleSecret) *string { return v.Name }).(pulumi.StringPtrOutput)
+// Secret name.
+func (o ActionModuleSecretOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionModuleSecret) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Last update time
@@ -793,9 +793,9 @@ func (o ActionModuleSecretOutput) UpdatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionModuleSecret) *string { return v.UpdatedAt }).(pulumi.StringPtrOutput)
 }
 
-// Secret value. Required when configuring secrets
-func (o ActionModuleSecretOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ActionModuleSecret) *string { return v.Value }).(pulumi.StringPtrOutput)
+// Secret value.
+func (o ActionModuleSecretOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionModuleSecret) string { return v.Value }).(pulumi.StringOutput)
 }
 
 type ActionModuleSecretArrayOutput struct{ *pulumi.OutputState }
@@ -42265,11 +42265,11 @@ func (o GetActionModuleLatestVersionSecretArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type GetActionModuleSecret struct {
-	// Secret name. Required when configuring secrets
+	// Secret name.
 	Name string `pulumi:"name"`
 	// Last update time
 	UpdatedAt string `pulumi:"updatedAt"`
-	// Secret value. Required when configuring secrets
+	// Secret value.
 	Value string `pulumi:"value"`
 }
 
@@ -42285,11 +42285,11 @@ type GetActionModuleSecretInput interface {
 }
 
 type GetActionModuleSecretArgs struct {
-	// Secret name. Required when configuring secrets
+	// Secret name.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Last update time
 	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
-	// Secret value. Required when configuring secrets
+	// Secret value.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -42344,7 +42344,7 @@ func (o GetActionModuleSecretOutput) ToGetActionModuleSecretOutputWithContext(ct
 	return o
 }
 
-// Secret name. Required when configuring secrets
+// Secret name.
 func (o GetActionModuleSecretOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetActionModuleSecret) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -42354,7 +42354,7 @@ func (o GetActionModuleSecretOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetActionModuleSecret) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
-// Secret value. Required when configuring secrets
+// Secret value.
 func (o GetActionModuleSecretOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetActionModuleSecret) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -62819,6 +62819,8 @@ type GetCustomDomainsCustomDomain struct {
 	Domain string `pulumi:"domain"`
 	// Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
 	DomainMetadata map[string]string `pulumi:"domainMetadata"`
+	// Indicates whether this custom domain is the default domain for the tenant
+	IsDefault bool `pulumi:"isDefault"`
 	// Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
 	OriginDomainName string `pulumi:"originDomainName"`
 	// Indicates whether this is a primary domain.
@@ -62855,6 +62857,8 @@ type GetCustomDomainsCustomDomainArgs struct {
 	Domain pulumi.StringInput `pulumi:"domain"`
 	// Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
 	DomainMetadata pulumi.StringMapInput `pulumi:"domainMetadata"`
+	// Indicates whether this custom domain is the default domain for the tenant
+	IsDefault pulumi.BoolInput `pulumi:"isDefault"`
 	// Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
 	OriginDomainName pulumi.StringInput `pulumi:"originDomainName"`
 	// Indicates whether this is a primary domain.
@@ -62940,6 +62944,11 @@ func (o GetCustomDomainsCustomDomainOutput) Domain() pulumi.StringOutput {
 // Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
 func (o GetCustomDomainsCustomDomainOutput) DomainMetadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetCustomDomainsCustomDomain) map[string]string { return v.DomainMetadata }).(pulumi.StringMapOutput)
+}
+
+// Indicates whether this custom domain is the default domain for the tenant
+func (o GetCustomDomainsCustomDomainOutput) IsDefault() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCustomDomainsCustomDomain) bool { return v.IsDefault }).(pulumi.BoolOutput)
 }
 
 // Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.

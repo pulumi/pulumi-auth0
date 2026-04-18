@@ -128,6 +128,7 @@ class _CustomDomainState:
                  custom_client_ip_header: Optional[pulumi.Input[_builtins.str]] = None,
                  domain: Optional[pulumi.Input[_builtins.str]] = None,
                  domain_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 is_default: Optional[pulumi.Input[_builtins.bool]] = None,
                  origin_domain_name: Optional[pulumi.Input[_builtins.str]] = None,
                  primary: Optional[pulumi.Input[_builtins.bool]] = None,
                  relying_party_identifier: Optional[pulumi.Input[_builtins.str]] = None,
@@ -142,6 +143,7 @@ class _CustomDomainState:
         :param pulumi.Input[_builtins.str] custom_client_ip_header: The HTTP header to fetch the client's IP address. Cannot be set on auth0_managed domains.
         :param pulumi.Input[_builtins.str] domain: Name of the custom domain.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] domain_metadata: Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
+        :param pulumi.Input[_builtins.bool] is_default: Indicates whether this custom domain is the default domain for the tenant
         :param pulumi.Input[_builtins.str] origin_domain_name: Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
         :param pulumi.Input[_builtins.bool] primary: Indicates whether this is a primary domain.
         :param pulumi.Input[_builtins.str] relying_party_identifier: Relying Party ID (rpId) to be used for Passkeys on this custom domain. If not provided or set to null, the full domain will be used.
@@ -158,6 +160,8 @@ class _CustomDomainState:
             pulumi.set(__self__, "domain", domain)
         if domain_metadata is not None:
             pulumi.set(__self__, "domain_metadata", domain_metadata)
+        if is_default is not None:
+            pulumi.set(__self__, "is_default", is_default)
         if origin_domain_name is not None:
             pulumi.set(__self__, "origin_domain_name", origin_domain_name)
         if primary is not None:
@@ -223,6 +227,18 @@ class _CustomDomainState:
     @domain_metadata.setter
     def domain_metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "domain_metadata", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isDefault")
+    def is_default(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Indicates whether this custom domain is the default domain for the tenant
+        """
+        return pulumi.get(self, "is_default")
+
+    @is_default.setter
+    def is_default(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "is_default", value)
 
     @_builtins.property
     @pulumi.getter(name="originDomainName")
@@ -445,6 +461,7 @@ class CustomDomain(pulumi.CustomResource):
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
             __props__.__dict__["certificates"] = None
+            __props__.__dict__["is_default"] = None
             __props__.__dict__["origin_domain_name"] = None
             __props__.__dict__["primary"] = None
             __props__.__dict__["status"] = None
@@ -463,6 +480,7 @@ class CustomDomain(pulumi.CustomResource):
             custom_client_ip_header: Optional[pulumi.Input[_builtins.str]] = None,
             domain: Optional[pulumi.Input[_builtins.str]] = None,
             domain_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            is_default: Optional[pulumi.Input[_builtins.bool]] = None,
             origin_domain_name: Optional[pulumi.Input[_builtins.str]] = None,
             primary: Optional[pulumi.Input[_builtins.bool]] = None,
             relying_party_identifier: Optional[pulumi.Input[_builtins.str]] = None,
@@ -481,6 +499,7 @@ class CustomDomain(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] custom_client_ip_header: The HTTP header to fetch the client's IP address. Cannot be set on auth0_managed domains.
         :param pulumi.Input[_builtins.str] domain: Name of the custom domain.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] domain_metadata: Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
+        :param pulumi.Input[_builtins.bool] is_default: Indicates whether this custom domain is the default domain for the tenant
         :param pulumi.Input[_builtins.str] origin_domain_name: Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
         :param pulumi.Input[_builtins.bool] primary: Indicates whether this is a primary domain.
         :param pulumi.Input[_builtins.str] relying_party_identifier: Relying Party ID (rpId) to be used for Passkeys on this custom domain. If not provided or set to null, the full domain will be used.
@@ -497,6 +516,7 @@ class CustomDomain(pulumi.CustomResource):
         __props__.__dict__["custom_client_ip_header"] = custom_client_ip_header
         __props__.__dict__["domain"] = domain
         __props__.__dict__["domain_metadata"] = domain_metadata
+        __props__.__dict__["is_default"] = is_default
         __props__.__dict__["origin_domain_name"] = origin_domain_name
         __props__.__dict__["primary"] = primary
         __props__.__dict__["relying_party_identifier"] = relying_party_identifier
@@ -537,6 +557,14 @@ class CustomDomain(pulumi.CustomResource):
         Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
         """
         return pulumi.get(self, "domain_metadata")
+
+    @_builtins.property
+    @pulumi.getter(name="isDefault")
+    def is_default(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Indicates whether this custom domain is the default domain for the tenant
+        """
+        return pulumi.get(self, "is_default")
 
     @_builtins.property
     @pulumi.getter(name="originDomainName")

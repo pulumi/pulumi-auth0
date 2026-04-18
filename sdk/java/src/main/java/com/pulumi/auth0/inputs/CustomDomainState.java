@@ -81,6 +81,21 @@ public final class CustomDomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Indicates whether this custom domain is the default domain for the tenant
+     * 
+     */
+    @Import(name="isDefault")
+    private @Nullable Output<Boolean> isDefault;
+
+    /**
+     * @return Indicates whether this custom domain is the default domain for the tenant
+     * 
+     */
+    public Optional<Output<Boolean>> isDefault() {
+        return Optional.ofNullable(this.isDefault);
+    }
+
+    /**
      * Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
      * 
      */
@@ -200,6 +215,7 @@ public final class CustomDomainState extends com.pulumi.resources.ResourceArgs {
         this.customClientIpHeader = $.customClientIpHeader;
         this.domain = $.domain;
         this.domainMetadata = $.domainMetadata;
+        this.isDefault = $.isDefault;
         this.originDomainName = $.originDomainName;
         this.primary = $.primary;
         this.relyingPartyIdentifier = $.relyingPartyIdentifier;
@@ -319,6 +335,27 @@ public final class CustomDomainState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder domainMetadata(Map<String,String> domainMetadata) {
             return domainMetadata(Output.of(domainMetadata));
+        }
+
+        /**
+         * @param isDefault Indicates whether this custom domain is the default domain for the tenant
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isDefault(@Nullable Output<Boolean> isDefault) {
+            $.isDefault = isDefault;
+            return this;
+        }
+
+        /**
+         * @param isDefault Indicates whether this custom domain is the default domain for the tenant
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isDefault(Boolean isDefault) {
+            return isDefault(Output.of(isDefault));
         }
 
         /**
