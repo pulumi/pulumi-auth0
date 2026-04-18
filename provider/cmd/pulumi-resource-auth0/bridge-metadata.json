@@ -941,6 +941,10 @@
                     }
                 }
             },
+            "auth0_custom_domain_default": {
+                "current": "auth0:index/customDomainDefault:CustomDomainDefault",
+                "majorVersion": 3
+            },
             "auth0_custom_domain_verification": {
                 "current": "auth0:index/customDomainVerification:CustomDomainVerification",
                 "majorVersion": 3
