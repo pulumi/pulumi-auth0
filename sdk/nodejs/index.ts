@@ -40,6 +40,11 @@ export type Client = import("./client").Client;
 export const Client: typeof import("./client").Client = null as any;
 utilities.lazyLoad(exports, ["Client"], () => require("./client"));
 
+export { ClientCimdArgs, ClientCimdState } from "./clientCimd";
+export type ClientCimd = import("./clientCimd").ClientCimd;
+export const ClientCimd: typeof import("./clientCimd").ClientCimd = null as any;
+utilities.lazyLoad(exports, ["ClientCimd"], () => require("./clientCimd"));
+
 export { ClientCredentialsArgs, ClientCredentialsState } from "./clientCredentials";
 export type ClientCredentials = import("./clientCredentials").ClientCredentials;
 export const ClientCredentials: typeof import("./clientCredentials").ClientCredentials = null as any;
@@ -601,6 +606,8 @@ const _module = {
                 return new BrandingTheme(name, <any>undefined, { urn })
             case "auth0:index/client:Client":
                 return new Client(name, <any>undefined, { urn })
+            case "auth0:index/clientCimd:ClientCimd":
+                return new ClientCimd(name, <any>undefined, { urn })
             case "auth0:index/clientCredentials:ClientCredentials":
                 return new ClientCredentials(name, <any>undefined, { urn })
             case "auth0:index/clientGrant:ClientGrant":
@@ -745,6 +752,7 @@ pulumi.runtime.registerResourceModule("auth0", "index/branding", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/brandingPhoneNotificationTemplate", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/brandingTheme", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/client", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/clientCimd", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/clientCredentials", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/clientGrant", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/connection", _module)

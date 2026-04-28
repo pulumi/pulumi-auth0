@@ -1250,6 +1250,100 @@ export interface ClientAddonsZoom {
     account?: pulumi.Input<string>;
 }
 
+export interface ClientCimdDefaultOrganization {
+    /**
+     * Definition of the flow that needs to be configured. Eg. client_credentials
+     */
+    flows: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The unique identifier of the organization
+     */
+    organizationId: pulumi.Input<string>;
+}
+
+export interface ClientCimdJwtConfiguration {
+    /**
+     * Algorithm used to sign JWTs. CIMD clients support `RS256`, `RS512`, and `PS256` (asymmetric only).
+     */
+    alg?: pulumi.Input<string>;
+    /**
+     * Number of seconds during which the JWT will be valid.
+     */
+    lifetimeInSeconds?: pulumi.Input<number>;
+    /**
+     * Indicates whether the client secret is Base64-encoded.
+     */
+    secretEncoded?: pulumi.Input<boolean>;
+}
+
+export interface ClientCimdRefreshToken {
+    /**
+     * Refresh token expiration type. Must be `expiring` for CIMD clients.
+     */
+    expirationType?: pulumi.Input<string>;
+    /**
+     * The time in seconds after which inactive refresh tokens will expire.
+     */
+    idleTokenLifetime?: pulumi.Input<number>;
+    /**
+     * Whether inactive refresh tokens should remain valid indefinitely. Must be `false` for CIMD clients.
+     */
+    infiniteIdleTokenLifetime?: pulumi.Input<boolean>;
+    /**
+     * Whether refresh tokens should remain valid indefinitely. If false, `tokenLifetime` should also be set.
+     */
+    infiniteTokenLifetime?: pulumi.Input<boolean>;
+    /**
+     * The amount of time in seconds in which a refresh token may be reused without triggering reuse detection.
+     */
+    leeway?: pulumi.Input<number>;
+    /**
+     * Refresh token rotation type.Valid values are `rotating` and `non-rotating`
+     */
+    rotationType?: pulumi.Input<string>;
+    /**
+     * The absolute lifetime of a refresh token in seconds.
+     */
+    tokenLifetime?: pulumi.Input<number>;
+}
+
+export interface ClientCimdTokenQuota {
+    /**
+     * The token quota configuration for client credentials.
+     */
+    clientCredentials: pulumi.Input<inputs.ClientCimdTokenQuotaClientCredentials>;
+}
+
+export interface ClientCimdTokenQuotaClientCredentials {
+    /**
+     * If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+     */
+    enforce?: pulumi.Input<boolean>;
+    /**
+     * Maximum number of issued tokens per day
+     */
+    perDay?: pulumi.Input<number>;
+    /**
+     * Maximum number of issued tokens per hour
+     */
+    perHour?: pulumi.Input<number>;
+}
+
+export interface ClientCimdValidation {
+    /**
+     * Whether the metadata document passed validation.
+     */
+    valid?: pulumi.Input<boolean>;
+    /**
+     * Array of validation violation messages, if any. Violations indicate issues that prevented the metadata document from being fully processed.
+     */
+    violations?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Array of warning messages, if any. Warnings indicate non-critical issues such as unsupported properties being ignored.
+     */
+    warnings?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface ClientCredentialsPrivateKeyJwt {
     /**
      * Client credentials available for use when Private Key JWT is in use as the client authentication method. A maximum of 2 client credentials can be set.
@@ -1535,6 +1629,25 @@ export interface ClientMobileIos {
     teamId?: pulumi.Input<string>;
 }
 
+export interface ClientMyOrganizationConfiguration {
+    /**
+     * The list of connection strategies that are allowed when creating organizations for this client (e.g. "okta", "samlp").
+     */
+    allowedStrategies?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Controls the behavior when deleting connections associated with organizations for this client. Possible values: `allow`, `allowIfEmpty`.
+     */
+    connectionDeletionBehavior?: pulumi.Input<string>;
+    /**
+     * The ID of the connection profile to use when creating organizations for this client.
+     */
+    connectionProfileId?: pulumi.Input<string>;
+    /**
+     * The ID of the user attribute profile to use when creating organizations for this client.
+     */
+    userAttributeProfileId?: pulumi.Input<string>;
+}
+
 export interface ClientNativeSocialLogin {
     apple?: pulumi.Input<inputs.ClientNativeSocialLoginApple>;
     facebook?: pulumi.Input<inputs.ClientNativeSocialLoginFacebook>;
@@ -1658,7 +1771,7 @@ export interface ClientSessionTransfer {
 
 export interface ClientTokenExchange {
     /**
-     * List of allowed profile types for token exchange
+     * List of allowed profile types for token exchange. Supported values include: custom*authentication, on*behalf*of*token_exchange.
      */
     allowAnyProfileOfTypes: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -3530,11 +3643,23 @@ export interface OrganizationConnectionsEnabledConnection {
      */
     connectionId: pulumi.Input<string>;
     /**
+     * Whether the connection is enabled for the organization.
+     */
+    isEnabled?: pulumi.Input<boolean>;
+    /**
      * Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `isSignupEnabled` can only be `true` if `assignMembershipOnLogin` is `true`.
      */
     isSignupEnabled?: pulumi.Input<boolean>;
     /**
-     * Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+     * The access level for this organization connection. Can be `none`, `readonly`, `limited`, or `full`.
+     */
+    organizationAccessLevel?: pulumi.Input<string>;
+    /**
+     * Name of the connection in the scope of this organization.
+     */
+    organizationConnectionName?: pulumi.Input<string>;
+    /**
+     * Determines whether a connection should be displayed on this organization's login prompt. Only applicable for enterprise connections.
      */
     showAsButton?: pulumi.Input<boolean>;
 }

@@ -22,12 +22,27 @@ public final class GetOrganizationConnection {
      */
     private String connectionId;
     /**
+     * @return Whether the connection is enabled for the organization.
+     * 
+     */
+    private Boolean isEnabled;
+    /**
      * @return Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `isSignupEnabled` can only be `true` if `assignMembershipOnLogin` is `true`.
      * 
      */
     private Boolean isSignupEnabled;
     /**
-     * @return Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+     * @return The access level for this organization connection. Can be `none`, `readonly`, `limited`, or `full`.
+     * 
+     */
+    private String organizationAccessLevel;
+    /**
+     * @return Name of the connection in the scope of this organization.
+     * 
+     */
+    private String organizationConnectionName;
+    /**
+     * @return Determines whether a connection should be displayed on this organization&#39;s login prompt. Only applicable for enterprise connections.
      * 
      */
     private Boolean showAsButton;
@@ -48,6 +63,13 @@ public final class GetOrganizationConnection {
         return this.connectionId;
     }
     /**
+     * @return Whether the connection is enabled for the organization.
+     * 
+     */
+    public Boolean isEnabled() {
+        return this.isEnabled;
+    }
+    /**
      * @return Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `isSignupEnabled` can only be `true` if `assignMembershipOnLogin` is `true`.
      * 
      */
@@ -55,7 +77,21 @@ public final class GetOrganizationConnection {
         return this.isSignupEnabled;
     }
     /**
-     * @return Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+     * @return The access level for this organization connection. Can be `none`, `readonly`, `limited`, or `full`.
+     * 
+     */
+    public String organizationAccessLevel() {
+        return this.organizationAccessLevel;
+    }
+    /**
+     * @return Name of the connection in the scope of this organization.
+     * 
+     */
+    public String organizationConnectionName() {
+        return this.organizationConnectionName;
+    }
+    /**
+     * @return Determines whether a connection should be displayed on this organization&#39;s login prompt. Only applicable for enterprise connections.
      * 
      */
     public Boolean showAsButton() {
@@ -73,14 +109,20 @@ public final class GetOrganizationConnection {
     public static final class Builder {
         private Boolean assignMembershipOnLogin;
         private String connectionId;
+        private Boolean isEnabled;
         private Boolean isSignupEnabled;
+        private String organizationAccessLevel;
+        private String organizationConnectionName;
         private Boolean showAsButton;
         public Builder() {}
         public Builder(GetOrganizationConnection defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.assignMembershipOnLogin = defaults.assignMembershipOnLogin;
     	      this.connectionId = defaults.connectionId;
+    	      this.isEnabled = defaults.isEnabled;
     	      this.isSignupEnabled = defaults.isSignupEnabled;
+    	      this.organizationAccessLevel = defaults.organizationAccessLevel;
+    	      this.organizationConnectionName = defaults.organizationConnectionName;
     	      this.showAsButton = defaults.showAsButton;
         }
 
@@ -101,11 +143,35 @@ public final class GetOrganizationConnection {
             return this;
         }
         @CustomType.Setter
+        public Builder isEnabled(Boolean isEnabled) {
+            if (isEnabled == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationConnection", "isEnabled");
+            }
+            this.isEnabled = isEnabled;
+            return this;
+        }
+        @CustomType.Setter
         public Builder isSignupEnabled(Boolean isSignupEnabled) {
             if (isSignupEnabled == null) {
               throw new MissingRequiredPropertyException("GetOrganizationConnection", "isSignupEnabled");
             }
             this.isSignupEnabled = isSignupEnabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder organizationAccessLevel(String organizationAccessLevel) {
+            if (organizationAccessLevel == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationConnection", "organizationAccessLevel");
+            }
+            this.organizationAccessLevel = organizationAccessLevel;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder organizationConnectionName(String organizationConnectionName) {
+            if (organizationConnectionName == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationConnection", "organizationConnectionName");
+            }
+            this.organizationConnectionName = organizationConnectionName;
             return this;
         }
         @CustomType.Setter
@@ -120,7 +186,10 @@ public final class GetOrganizationConnection {
             final var _resultValue = new GetOrganizationConnection();
             _resultValue.assignMembershipOnLogin = assignMembershipOnLogin;
             _resultValue.connectionId = connectionId;
+            _resultValue.isEnabled = isEnabled;
             _resultValue.isSignupEnabled = isSignupEnabled;
+            _resultValue.organizationAccessLevel = organizationAccessLevel;
+            _resultValue.organizationConnectionName = organizationConnectionName;
             _resultValue.showAsButton = showAsButton;
             return _resultValue;
         }

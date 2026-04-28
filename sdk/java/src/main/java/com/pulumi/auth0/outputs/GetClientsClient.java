@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.auth0.outputs.GetClientsClientExpressConfiguration;
+import com.pulumi.auth0.outputs.GetClientsClientMyOrganizationConfiguration;
 import com.pulumi.auth0.outputs.GetClientsClientOidcLogout;
 import com.pulumi.auth0.outputs.GetClientsClientSessionTransfer;
 import com.pulumi.auth0.outputs.GetClientsClientTokenExchange;
@@ -76,12 +77,27 @@ public final class GetClientsClient {
      */
     private List<GetClientsClientExpressConfiguration> expressConfigurations;
     /**
+     * @return The URL of the Client ID Metadata Document. Only present for CIMD-registered clients.
+     * 
+     */
+    private String externalClientId;
+    /**
+     * @return Who created the external metadata client: `admin` (via Management API), `client` (self-registered), or `unknown`.
+     * 
+     */
+    private String externalMetadataCreatedBy;
+    /**
+     * @return Type of external metadata. Value is `cimd` for CIMD-registered clients.
+     * 
+     */
+    private String externalMetadataType;
+    /**
      * @return Types of grants that this client is authorized to use.
      * 
      */
     private List<String> grantTypes;
     /**
-     * @return Indicates whether this client is a first-party client.Defaults to true from the API
+     * @return Indicates whether this client is a first-party client.
      * 
      */
     private Boolean isFirstParty;
@@ -90,6 +106,16 @@ public final class GetClientsClient {
      * 
      */
     private Boolean isTokenEndpointIpHeaderTrusted;
+    /**
+     * @return URL for the JSON Web Key Set (JWKS) containing the public keys used for `privateKeyJwt` authentication. Only present for CIMD clients using `privateKeyJwt` authentication.
+     * 
+     */
+    private String jwksUri;
+    /**
+     * @return Configuration for self-service organization features, controlling how organizations are created and managed for this client.
+     * 
+     */
+    private List<GetClientsClientMyOrganizationConfiguration> myOrganizationConfigurations;
     /**
      * @return The name of the client. If not provided, `clientId` must be set.
      * 
@@ -211,6 +237,27 @@ public final class GetClientsClient {
         return this.expressConfigurations;
     }
     /**
+     * @return The URL of the Client ID Metadata Document. Only present for CIMD-registered clients.
+     * 
+     */
+    public String externalClientId() {
+        return this.externalClientId;
+    }
+    /**
+     * @return Who created the external metadata client: `admin` (via Management API), `client` (self-registered), or `unknown`.
+     * 
+     */
+    public String externalMetadataCreatedBy() {
+        return this.externalMetadataCreatedBy;
+    }
+    /**
+     * @return Type of external metadata. Value is `cimd` for CIMD-registered clients.
+     * 
+     */
+    public String externalMetadataType() {
+        return this.externalMetadataType;
+    }
+    /**
      * @return Types of grants that this client is authorized to use.
      * 
      */
@@ -218,7 +265,7 @@ public final class GetClientsClient {
         return this.grantTypes;
     }
     /**
-     * @return Indicates whether this client is a first-party client.Defaults to true from the API
+     * @return Indicates whether this client is a first-party client.
      * 
      */
     public Boolean isFirstParty() {
@@ -230,6 +277,20 @@ public final class GetClientsClient {
      */
     public Boolean isTokenEndpointIpHeaderTrusted() {
         return this.isTokenEndpointIpHeaderTrusted;
+    }
+    /**
+     * @return URL for the JSON Web Key Set (JWKS) containing the public keys used for `privateKeyJwt` authentication. Only present for CIMD clients using `privateKeyJwt` authentication.
+     * 
+     */
+    public String jwksUri() {
+        return this.jwksUri;
+    }
+    /**
+     * @return Configuration for self-service organization features, controlling how organizations are created and managed for this client.
+     * 
+     */
+    public List<GetClientsClientMyOrganizationConfiguration> myOrganizationConfigurations() {
+        return this.myOrganizationConfigurations;
     }
     /**
      * @return The name of the client. If not provided, `clientId` must be set.
@@ -311,9 +372,14 @@ public final class GetClientsClient {
         private String clientSecret;
         private String description;
         private List<GetClientsClientExpressConfiguration> expressConfigurations;
+        private String externalClientId;
+        private String externalMetadataCreatedBy;
+        private String externalMetadataType;
         private List<String> grantTypes;
         private Boolean isFirstParty;
         private Boolean isTokenEndpointIpHeaderTrusted;
+        private String jwksUri;
+        private List<GetClientsClientMyOrganizationConfiguration> myOrganizationConfigurations;
         private @Nullable String name;
         private List<GetClientsClientOidcLogout> oidcLogouts;
         private List<String> organizationDiscoveryMethods;
@@ -337,9 +403,14 @@ public final class GetClientsClient {
     	      this.clientSecret = defaults.clientSecret;
     	      this.description = defaults.description;
     	      this.expressConfigurations = defaults.expressConfigurations;
+    	      this.externalClientId = defaults.externalClientId;
+    	      this.externalMetadataCreatedBy = defaults.externalMetadataCreatedBy;
+    	      this.externalMetadataType = defaults.externalMetadataType;
     	      this.grantTypes = defaults.grantTypes;
     	      this.isFirstParty = defaults.isFirstParty;
     	      this.isTokenEndpointIpHeaderTrusted = defaults.isTokenEndpointIpHeaderTrusted;
+    	      this.jwksUri = defaults.jwksUri;
+    	      this.myOrganizationConfigurations = defaults.myOrganizationConfigurations;
     	      this.name = defaults.name;
     	      this.oidcLogouts = defaults.oidcLogouts;
     	      this.organizationDiscoveryMethods = defaults.organizationDiscoveryMethods;
@@ -456,6 +527,30 @@ public final class GetClientsClient {
             return expressConfigurations(List.of(expressConfigurations));
         }
         @CustomType.Setter
+        public Builder externalClientId(String externalClientId) {
+            if (externalClientId == null) {
+              throw new MissingRequiredPropertyException("GetClientsClient", "externalClientId");
+            }
+            this.externalClientId = externalClientId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder externalMetadataCreatedBy(String externalMetadataCreatedBy) {
+            if (externalMetadataCreatedBy == null) {
+              throw new MissingRequiredPropertyException("GetClientsClient", "externalMetadataCreatedBy");
+            }
+            this.externalMetadataCreatedBy = externalMetadataCreatedBy;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder externalMetadataType(String externalMetadataType) {
+            if (externalMetadataType == null) {
+              throw new MissingRequiredPropertyException("GetClientsClient", "externalMetadataType");
+            }
+            this.externalMetadataType = externalMetadataType;
+            return this;
+        }
+        @CustomType.Setter
         public Builder grantTypes(List<String> grantTypes) {
             if (grantTypes == null) {
               throw new MissingRequiredPropertyException("GetClientsClient", "grantTypes");
@@ -481,6 +576,25 @@ public final class GetClientsClient {
             }
             this.isTokenEndpointIpHeaderTrusted = isTokenEndpointIpHeaderTrusted;
             return this;
+        }
+        @CustomType.Setter
+        public Builder jwksUri(String jwksUri) {
+            if (jwksUri == null) {
+              throw new MissingRequiredPropertyException("GetClientsClient", "jwksUri");
+            }
+            this.jwksUri = jwksUri;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder myOrganizationConfigurations(List<GetClientsClientMyOrganizationConfiguration> myOrganizationConfigurations) {
+            if (myOrganizationConfigurations == null) {
+              throw new MissingRequiredPropertyException("GetClientsClient", "myOrganizationConfigurations");
+            }
+            this.myOrganizationConfigurations = myOrganizationConfigurations;
+            return this;
+        }
+        public Builder myOrganizationConfigurations(GetClientsClientMyOrganizationConfiguration... myOrganizationConfigurations) {
+            return myOrganizationConfigurations(List.of(myOrganizationConfigurations));
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
@@ -583,9 +697,14 @@ public final class GetClientsClient {
             _resultValue.clientSecret = clientSecret;
             _resultValue.description = description;
             _resultValue.expressConfigurations = expressConfigurations;
+            _resultValue.externalClientId = externalClientId;
+            _resultValue.externalMetadataCreatedBy = externalMetadataCreatedBy;
+            _resultValue.externalMetadataType = externalMetadataType;
             _resultValue.grantTypes = grantTypes;
             _resultValue.isFirstParty = isFirstParty;
             _resultValue.isTokenEndpointIpHeaderTrusted = isTokenEndpointIpHeaderTrusted;
+            _resultValue.jwksUri = jwksUri;
+            _resultValue.myOrganizationConfigurations = myOrganizationConfigurations;
             _resultValue.name = name;
             _resultValue.oidcLogouts = oidcLogouts;
             _resultValue.organizationDiscoveryMethods = organizationDiscoveryMethods;

@@ -22,11 +22,23 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string ConnectionId;
         /// <summary>
+        /// Whether the connection is enabled for the organization.
+        /// </summary>
+        public readonly bool IsEnabled;
+        /// <summary>
         /// Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `IsSignupEnabled` can only be `True` if `AssignMembershipOnLogin` is `True`.
         /// </summary>
         public readonly bool IsSignupEnabled;
         /// <summary>
-        /// Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+        /// The access level for this organization connection. Can be `None`, `Readonly`, `Limited`, or `Full`.
+        /// </summary>
+        public readonly string OrganizationAccessLevel;
+        /// <summary>
+        /// Name of the connection in the scope of this organization.
+        /// </summary>
+        public readonly string OrganizationConnectionName;
+        /// <summary>
+        /// Determines whether a connection should be displayed on this organization's login prompt. Only applicable for enterprise connections.
         /// </summary>
         public readonly bool ShowAsButton;
 
@@ -36,13 +48,22 @@ namespace Pulumi.Auth0.Outputs
 
             string connectionId,
 
+            bool isEnabled,
+
             bool isSignupEnabled,
+
+            string organizationAccessLevel,
+
+            string organizationConnectionName,
 
             bool showAsButton)
         {
             AssignMembershipOnLogin = assignMembershipOnLogin;
             ConnectionId = connectionId;
+            IsEnabled = isEnabled;
             IsSignupEnabled = isSignupEnabled;
+            OrganizationAccessLevel = organizationAccessLevel;
+            OrganizationConnectionName = organizationConnectionName;
             ShowAsButton = showAsButton;
         }
     }

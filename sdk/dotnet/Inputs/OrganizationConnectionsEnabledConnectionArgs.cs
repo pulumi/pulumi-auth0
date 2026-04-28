@@ -25,13 +25,31 @@ namespace Pulumi.Auth0.Inputs
         public Input<string> ConnectionId { get; set; } = null!;
 
         /// <summary>
+        /// Whether the connection is enabled for the organization.
+        /// </summary>
+        [Input("isEnabled")]
+        public Input<bool>? IsEnabled { get; set; }
+
+        /// <summary>
         /// Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `IsSignupEnabled` can only be `True` if `AssignMembershipOnLogin` is `True`.
         /// </summary>
         [Input("isSignupEnabled")]
         public Input<bool>? IsSignupEnabled { get; set; }
 
         /// <summary>
-        /// Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+        /// The access level for this organization connection. Can be `None`, `Readonly`, `Limited`, or `Full`.
+        /// </summary>
+        [Input("organizationAccessLevel")]
+        public Input<string>? OrganizationAccessLevel { get; set; }
+
+        /// <summary>
+        /// Name of the connection in the scope of this organization.
+        /// </summary>
+        [Input("organizationConnectionName")]
+        public Input<string>? OrganizationConnectionName { get; set; }
+
+        /// <summary>
+        /// Determines whether a connection should be displayed on this organization's login prompt. Only applicable for enterprise connections.
         /// </summary>
         [Input("showAsButton")]
         public Input<bool>? ShowAsButton { get; set; }

@@ -12835,6 +12835,1015 @@ func (o ClientAddonsZoomPtrOutput) Account() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ClientCimdDefaultOrganization struct {
+	// Definition of the flow that needs to be configured. Eg. client_credentials
+	Flows []string `pulumi:"flows"`
+	// The unique identifier of the organization
+	OrganizationId string `pulumi:"organizationId"`
+}
+
+// ClientCimdDefaultOrganizationInput is an input type that accepts ClientCimdDefaultOrganizationArgs and ClientCimdDefaultOrganizationOutput values.
+// You can construct a concrete instance of `ClientCimdDefaultOrganizationInput` via:
+//
+//	ClientCimdDefaultOrganizationArgs{...}
+type ClientCimdDefaultOrganizationInput interface {
+	pulumi.Input
+
+	ToClientCimdDefaultOrganizationOutput() ClientCimdDefaultOrganizationOutput
+	ToClientCimdDefaultOrganizationOutputWithContext(context.Context) ClientCimdDefaultOrganizationOutput
+}
+
+type ClientCimdDefaultOrganizationArgs struct {
+	// Definition of the flow that needs to be configured. Eg. client_credentials
+	Flows pulumi.StringArrayInput `pulumi:"flows"`
+	// The unique identifier of the organization
+	OrganizationId pulumi.StringInput `pulumi:"organizationId"`
+}
+
+func (ClientCimdDefaultOrganizationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientCimdDefaultOrganization)(nil)).Elem()
+}
+
+func (i ClientCimdDefaultOrganizationArgs) ToClientCimdDefaultOrganizationOutput() ClientCimdDefaultOrganizationOutput {
+	return i.ToClientCimdDefaultOrganizationOutputWithContext(context.Background())
+}
+
+func (i ClientCimdDefaultOrganizationArgs) ToClientCimdDefaultOrganizationOutputWithContext(ctx context.Context) ClientCimdDefaultOrganizationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientCimdDefaultOrganizationOutput)
+}
+
+func (i ClientCimdDefaultOrganizationArgs) ToClientCimdDefaultOrganizationPtrOutput() ClientCimdDefaultOrganizationPtrOutput {
+	return i.ToClientCimdDefaultOrganizationPtrOutputWithContext(context.Background())
+}
+
+func (i ClientCimdDefaultOrganizationArgs) ToClientCimdDefaultOrganizationPtrOutputWithContext(ctx context.Context) ClientCimdDefaultOrganizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientCimdDefaultOrganizationOutput).ToClientCimdDefaultOrganizationPtrOutputWithContext(ctx)
+}
+
+// ClientCimdDefaultOrganizationPtrInput is an input type that accepts ClientCimdDefaultOrganizationArgs, ClientCimdDefaultOrganizationPtr and ClientCimdDefaultOrganizationPtrOutput values.
+// You can construct a concrete instance of `ClientCimdDefaultOrganizationPtrInput` via:
+//
+//	        ClientCimdDefaultOrganizationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientCimdDefaultOrganizationPtrInput interface {
+	pulumi.Input
+
+	ToClientCimdDefaultOrganizationPtrOutput() ClientCimdDefaultOrganizationPtrOutput
+	ToClientCimdDefaultOrganizationPtrOutputWithContext(context.Context) ClientCimdDefaultOrganizationPtrOutput
+}
+
+type clientCimdDefaultOrganizationPtrType ClientCimdDefaultOrganizationArgs
+
+func ClientCimdDefaultOrganizationPtr(v *ClientCimdDefaultOrganizationArgs) ClientCimdDefaultOrganizationPtrInput {
+	return (*clientCimdDefaultOrganizationPtrType)(v)
+}
+
+func (*clientCimdDefaultOrganizationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientCimdDefaultOrganization)(nil)).Elem()
+}
+
+func (i *clientCimdDefaultOrganizationPtrType) ToClientCimdDefaultOrganizationPtrOutput() ClientCimdDefaultOrganizationPtrOutput {
+	return i.ToClientCimdDefaultOrganizationPtrOutputWithContext(context.Background())
+}
+
+func (i *clientCimdDefaultOrganizationPtrType) ToClientCimdDefaultOrganizationPtrOutputWithContext(ctx context.Context) ClientCimdDefaultOrganizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientCimdDefaultOrganizationPtrOutput)
+}
+
+type ClientCimdDefaultOrganizationOutput struct{ *pulumi.OutputState }
+
+func (ClientCimdDefaultOrganizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientCimdDefaultOrganization)(nil)).Elem()
+}
+
+func (o ClientCimdDefaultOrganizationOutput) ToClientCimdDefaultOrganizationOutput() ClientCimdDefaultOrganizationOutput {
+	return o
+}
+
+func (o ClientCimdDefaultOrganizationOutput) ToClientCimdDefaultOrganizationOutputWithContext(ctx context.Context) ClientCimdDefaultOrganizationOutput {
+	return o
+}
+
+func (o ClientCimdDefaultOrganizationOutput) ToClientCimdDefaultOrganizationPtrOutput() ClientCimdDefaultOrganizationPtrOutput {
+	return o.ToClientCimdDefaultOrganizationPtrOutputWithContext(context.Background())
+}
+
+func (o ClientCimdDefaultOrganizationOutput) ToClientCimdDefaultOrganizationPtrOutputWithContext(ctx context.Context) ClientCimdDefaultOrganizationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientCimdDefaultOrganization) *ClientCimdDefaultOrganization {
+		return &v
+	}).(ClientCimdDefaultOrganizationPtrOutput)
+}
+
+// Definition of the flow that needs to be configured. Eg. client_credentials
+func (o ClientCimdDefaultOrganizationOutput) Flows() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClientCimdDefaultOrganization) []string { return v.Flows }).(pulumi.StringArrayOutput)
+}
+
+// The unique identifier of the organization
+func (o ClientCimdDefaultOrganizationOutput) OrganizationId() pulumi.StringOutput {
+	return o.ApplyT(func(v ClientCimdDefaultOrganization) string { return v.OrganizationId }).(pulumi.StringOutput)
+}
+
+type ClientCimdDefaultOrganizationPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientCimdDefaultOrganizationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientCimdDefaultOrganization)(nil)).Elem()
+}
+
+func (o ClientCimdDefaultOrganizationPtrOutput) ToClientCimdDefaultOrganizationPtrOutput() ClientCimdDefaultOrganizationPtrOutput {
+	return o
+}
+
+func (o ClientCimdDefaultOrganizationPtrOutput) ToClientCimdDefaultOrganizationPtrOutputWithContext(ctx context.Context) ClientCimdDefaultOrganizationPtrOutput {
+	return o
+}
+
+func (o ClientCimdDefaultOrganizationPtrOutput) Elem() ClientCimdDefaultOrganizationOutput {
+	return o.ApplyT(func(v *ClientCimdDefaultOrganization) ClientCimdDefaultOrganization {
+		if v != nil {
+			return *v
+		}
+		var ret ClientCimdDefaultOrganization
+		return ret
+	}).(ClientCimdDefaultOrganizationOutput)
+}
+
+// Definition of the flow that needs to be configured. Eg. client_credentials
+func (o ClientCimdDefaultOrganizationPtrOutput) Flows() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClientCimdDefaultOrganization) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Flows
+	}).(pulumi.StringArrayOutput)
+}
+
+// The unique identifier of the organization
+func (o ClientCimdDefaultOrganizationPtrOutput) OrganizationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientCimdDefaultOrganization) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.OrganizationId
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClientCimdJwtConfiguration struct {
+	// Algorithm used to sign JWTs. CIMD clients support `RS256`, `RS512`, and `PS256` (asymmetric only).
+	Alg *string `pulumi:"alg"`
+	// Number of seconds during which the JWT will be valid.
+	LifetimeInSeconds *int `pulumi:"lifetimeInSeconds"`
+	// Indicates whether the client secret is Base64-encoded.
+	SecretEncoded *bool `pulumi:"secretEncoded"`
+}
+
+// ClientCimdJwtConfigurationInput is an input type that accepts ClientCimdJwtConfigurationArgs and ClientCimdJwtConfigurationOutput values.
+// You can construct a concrete instance of `ClientCimdJwtConfigurationInput` via:
+//
+//	ClientCimdJwtConfigurationArgs{...}
+type ClientCimdJwtConfigurationInput interface {
+	pulumi.Input
+
+	ToClientCimdJwtConfigurationOutput() ClientCimdJwtConfigurationOutput
+	ToClientCimdJwtConfigurationOutputWithContext(context.Context) ClientCimdJwtConfigurationOutput
+}
+
+type ClientCimdJwtConfigurationArgs struct {
+	// Algorithm used to sign JWTs. CIMD clients support `RS256`, `RS512`, and `PS256` (asymmetric only).
+	Alg pulumi.StringPtrInput `pulumi:"alg"`
+	// Number of seconds during which the JWT will be valid.
+	LifetimeInSeconds pulumi.IntPtrInput `pulumi:"lifetimeInSeconds"`
+	// Indicates whether the client secret is Base64-encoded.
+	SecretEncoded pulumi.BoolPtrInput `pulumi:"secretEncoded"`
+}
+
+func (ClientCimdJwtConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientCimdJwtConfiguration)(nil)).Elem()
+}
+
+func (i ClientCimdJwtConfigurationArgs) ToClientCimdJwtConfigurationOutput() ClientCimdJwtConfigurationOutput {
+	return i.ToClientCimdJwtConfigurationOutputWithContext(context.Background())
+}
+
+func (i ClientCimdJwtConfigurationArgs) ToClientCimdJwtConfigurationOutputWithContext(ctx context.Context) ClientCimdJwtConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientCimdJwtConfigurationOutput)
+}
+
+func (i ClientCimdJwtConfigurationArgs) ToClientCimdJwtConfigurationPtrOutput() ClientCimdJwtConfigurationPtrOutput {
+	return i.ToClientCimdJwtConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i ClientCimdJwtConfigurationArgs) ToClientCimdJwtConfigurationPtrOutputWithContext(ctx context.Context) ClientCimdJwtConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientCimdJwtConfigurationOutput).ToClientCimdJwtConfigurationPtrOutputWithContext(ctx)
+}
+
+// ClientCimdJwtConfigurationPtrInput is an input type that accepts ClientCimdJwtConfigurationArgs, ClientCimdJwtConfigurationPtr and ClientCimdJwtConfigurationPtrOutput values.
+// You can construct a concrete instance of `ClientCimdJwtConfigurationPtrInput` via:
+//
+//	        ClientCimdJwtConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientCimdJwtConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToClientCimdJwtConfigurationPtrOutput() ClientCimdJwtConfigurationPtrOutput
+	ToClientCimdJwtConfigurationPtrOutputWithContext(context.Context) ClientCimdJwtConfigurationPtrOutput
+}
+
+type clientCimdJwtConfigurationPtrType ClientCimdJwtConfigurationArgs
+
+func ClientCimdJwtConfigurationPtr(v *ClientCimdJwtConfigurationArgs) ClientCimdJwtConfigurationPtrInput {
+	return (*clientCimdJwtConfigurationPtrType)(v)
+}
+
+func (*clientCimdJwtConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientCimdJwtConfiguration)(nil)).Elem()
+}
+
+func (i *clientCimdJwtConfigurationPtrType) ToClientCimdJwtConfigurationPtrOutput() ClientCimdJwtConfigurationPtrOutput {
+	return i.ToClientCimdJwtConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *clientCimdJwtConfigurationPtrType) ToClientCimdJwtConfigurationPtrOutputWithContext(ctx context.Context) ClientCimdJwtConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientCimdJwtConfigurationPtrOutput)
+}
+
+type ClientCimdJwtConfigurationOutput struct{ *pulumi.OutputState }
+
+func (ClientCimdJwtConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientCimdJwtConfiguration)(nil)).Elem()
+}
+
+func (o ClientCimdJwtConfigurationOutput) ToClientCimdJwtConfigurationOutput() ClientCimdJwtConfigurationOutput {
+	return o
+}
+
+func (o ClientCimdJwtConfigurationOutput) ToClientCimdJwtConfigurationOutputWithContext(ctx context.Context) ClientCimdJwtConfigurationOutput {
+	return o
+}
+
+func (o ClientCimdJwtConfigurationOutput) ToClientCimdJwtConfigurationPtrOutput() ClientCimdJwtConfigurationPtrOutput {
+	return o.ToClientCimdJwtConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o ClientCimdJwtConfigurationOutput) ToClientCimdJwtConfigurationPtrOutputWithContext(ctx context.Context) ClientCimdJwtConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientCimdJwtConfiguration) *ClientCimdJwtConfiguration {
+		return &v
+	}).(ClientCimdJwtConfigurationPtrOutput)
+}
+
+// Algorithm used to sign JWTs. CIMD clients support `RS256`, `RS512`, and `PS256` (asymmetric only).
+func (o ClientCimdJwtConfigurationOutput) Alg() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientCimdJwtConfiguration) *string { return v.Alg }).(pulumi.StringPtrOutput)
+}
+
+// Number of seconds during which the JWT will be valid.
+func (o ClientCimdJwtConfigurationOutput) LifetimeInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClientCimdJwtConfiguration) *int { return v.LifetimeInSeconds }).(pulumi.IntPtrOutput)
+}
+
+// Indicates whether the client secret is Base64-encoded.
+func (o ClientCimdJwtConfigurationOutput) SecretEncoded() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClientCimdJwtConfiguration) *bool { return v.SecretEncoded }).(pulumi.BoolPtrOutput)
+}
+
+type ClientCimdJwtConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientCimdJwtConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientCimdJwtConfiguration)(nil)).Elem()
+}
+
+func (o ClientCimdJwtConfigurationPtrOutput) ToClientCimdJwtConfigurationPtrOutput() ClientCimdJwtConfigurationPtrOutput {
+	return o
+}
+
+func (o ClientCimdJwtConfigurationPtrOutput) ToClientCimdJwtConfigurationPtrOutputWithContext(ctx context.Context) ClientCimdJwtConfigurationPtrOutput {
+	return o
+}
+
+func (o ClientCimdJwtConfigurationPtrOutput) Elem() ClientCimdJwtConfigurationOutput {
+	return o.ApplyT(func(v *ClientCimdJwtConfiguration) ClientCimdJwtConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret ClientCimdJwtConfiguration
+		return ret
+	}).(ClientCimdJwtConfigurationOutput)
+}
+
+// Algorithm used to sign JWTs. CIMD clients support `RS256`, `RS512`, and `PS256` (asymmetric only).
+func (o ClientCimdJwtConfigurationPtrOutput) Alg() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientCimdJwtConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Alg
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of seconds during which the JWT will be valid.
+func (o ClientCimdJwtConfigurationPtrOutput) LifetimeInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClientCimdJwtConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LifetimeInSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// Indicates whether the client secret is Base64-encoded.
+func (o ClientCimdJwtConfigurationPtrOutput) SecretEncoded() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClientCimdJwtConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SecretEncoded
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ClientCimdRefreshToken struct {
+	// Refresh token expiration type. Must be `expiring` for CIMD clients.
+	ExpirationType *string `pulumi:"expirationType"`
+	// The time in seconds after which inactive refresh tokens will expire.
+	IdleTokenLifetime *int `pulumi:"idleTokenLifetime"`
+	// Whether inactive refresh tokens should remain valid indefinitely. Must be `false` for CIMD clients.
+	InfiniteIdleTokenLifetime *bool `pulumi:"infiniteIdleTokenLifetime"`
+	// Whether refresh tokens should remain valid indefinitely. If false, `tokenLifetime` should also be set.
+	InfiniteTokenLifetime *bool `pulumi:"infiniteTokenLifetime"`
+	// The amount of time in seconds in which a refresh token may be reused without triggering reuse detection.
+	Leeway *int `pulumi:"leeway"`
+	// Refresh token rotation type.Valid values are `rotating` and `non-rotating`
+	RotationType *string `pulumi:"rotationType"`
+	// The absolute lifetime of a refresh token in seconds.
+	TokenLifetime *int `pulumi:"tokenLifetime"`
+}
+
+// ClientCimdRefreshTokenInput is an input type that accepts ClientCimdRefreshTokenArgs and ClientCimdRefreshTokenOutput values.
+// You can construct a concrete instance of `ClientCimdRefreshTokenInput` via:
+//
+//	ClientCimdRefreshTokenArgs{...}
+type ClientCimdRefreshTokenInput interface {
+	pulumi.Input
+
+	ToClientCimdRefreshTokenOutput() ClientCimdRefreshTokenOutput
+	ToClientCimdRefreshTokenOutputWithContext(context.Context) ClientCimdRefreshTokenOutput
+}
+
+type ClientCimdRefreshTokenArgs struct {
+	// Refresh token expiration type. Must be `expiring` for CIMD clients.
+	ExpirationType pulumi.StringPtrInput `pulumi:"expirationType"`
+	// The time in seconds after which inactive refresh tokens will expire.
+	IdleTokenLifetime pulumi.IntPtrInput `pulumi:"idleTokenLifetime"`
+	// Whether inactive refresh tokens should remain valid indefinitely. Must be `false` for CIMD clients.
+	InfiniteIdleTokenLifetime pulumi.BoolPtrInput `pulumi:"infiniteIdleTokenLifetime"`
+	// Whether refresh tokens should remain valid indefinitely. If false, `tokenLifetime` should also be set.
+	InfiniteTokenLifetime pulumi.BoolPtrInput `pulumi:"infiniteTokenLifetime"`
+	// The amount of time in seconds in which a refresh token may be reused without triggering reuse detection.
+	Leeway pulumi.IntPtrInput `pulumi:"leeway"`
+	// Refresh token rotation type.Valid values are `rotating` and `non-rotating`
+	RotationType pulumi.StringPtrInput `pulumi:"rotationType"`
+	// The absolute lifetime of a refresh token in seconds.
+	TokenLifetime pulumi.IntPtrInput `pulumi:"tokenLifetime"`
+}
+
+func (ClientCimdRefreshTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientCimdRefreshToken)(nil)).Elem()
+}
+
+func (i ClientCimdRefreshTokenArgs) ToClientCimdRefreshTokenOutput() ClientCimdRefreshTokenOutput {
+	return i.ToClientCimdRefreshTokenOutputWithContext(context.Background())
+}
+
+func (i ClientCimdRefreshTokenArgs) ToClientCimdRefreshTokenOutputWithContext(ctx context.Context) ClientCimdRefreshTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientCimdRefreshTokenOutput)
+}
+
+func (i ClientCimdRefreshTokenArgs) ToClientCimdRefreshTokenPtrOutput() ClientCimdRefreshTokenPtrOutput {
+	return i.ToClientCimdRefreshTokenPtrOutputWithContext(context.Background())
+}
+
+func (i ClientCimdRefreshTokenArgs) ToClientCimdRefreshTokenPtrOutputWithContext(ctx context.Context) ClientCimdRefreshTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientCimdRefreshTokenOutput).ToClientCimdRefreshTokenPtrOutputWithContext(ctx)
+}
+
+// ClientCimdRefreshTokenPtrInput is an input type that accepts ClientCimdRefreshTokenArgs, ClientCimdRefreshTokenPtr and ClientCimdRefreshTokenPtrOutput values.
+// You can construct a concrete instance of `ClientCimdRefreshTokenPtrInput` via:
+//
+//	        ClientCimdRefreshTokenArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientCimdRefreshTokenPtrInput interface {
+	pulumi.Input
+
+	ToClientCimdRefreshTokenPtrOutput() ClientCimdRefreshTokenPtrOutput
+	ToClientCimdRefreshTokenPtrOutputWithContext(context.Context) ClientCimdRefreshTokenPtrOutput
+}
+
+type clientCimdRefreshTokenPtrType ClientCimdRefreshTokenArgs
+
+func ClientCimdRefreshTokenPtr(v *ClientCimdRefreshTokenArgs) ClientCimdRefreshTokenPtrInput {
+	return (*clientCimdRefreshTokenPtrType)(v)
+}
+
+func (*clientCimdRefreshTokenPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientCimdRefreshToken)(nil)).Elem()
+}
+
+func (i *clientCimdRefreshTokenPtrType) ToClientCimdRefreshTokenPtrOutput() ClientCimdRefreshTokenPtrOutput {
+	return i.ToClientCimdRefreshTokenPtrOutputWithContext(context.Background())
+}
+
+func (i *clientCimdRefreshTokenPtrType) ToClientCimdRefreshTokenPtrOutputWithContext(ctx context.Context) ClientCimdRefreshTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientCimdRefreshTokenPtrOutput)
+}
+
+type ClientCimdRefreshTokenOutput struct{ *pulumi.OutputState }
+
+func (ClientCimdRefreshTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientCimdRefreshToken)(nil)).Elem()
+}
+
+func (o ClientCimdRefreshTokenOutput) ToClientCimdRefreshTokenOutput() ClientCimdRefreshTokenOutput {
+	return o
+}
+
+func (o ClientCimdRefreshTokenOutput) ToClientCimdRefreshTokenOutputWithContext(ctx context.Context) ClientCimdRefreshTokenOutput {
+	return o
+}
+
+func (o ClientCimdRefreshTokenOutput) ToClientCimdRefreshTokenPtrOutput() ClientCimdRefreshTokenPtrOutput {
+	return o.ToClientCimdRefreshTokenPtrOutputWithContext(context.Background())
+}
+
+func (o ClientCimdRefreshTokenOutput) ToClientCimdRefreshTokenPtrOutputWithContext(ctx context.Context) ClientCimdRefreshTokenPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientCimdRefreshToken) *ClientCimdRefreshToken {
+		return &v
+	}).(ClientCimdRefreshTokenPtrOutput)
+}
+
+// Refresh token expiration type. Must be `expiring` for CIMD clients.
+func (o ClientCimdRefreshTokenOutput) ExpirationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientCimdRefreshToken) *string { return v.ExpirationType }).(pulumi.StringPtrOutput)
+}
+
+// The time in seconds after which inactive refresh tokens will expire.
+func (o ClientCimdRefreshTokenOutput) IdleTokenLifetime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClientCimdRefreshToken) *int { return v.IdleTokenLifetime }).(pulumi.IntPtrOutput)
+}
+
+// Whether inactive refresh tokens should remain valid indefinitely. Must be `false` for CIMD clients.
+func (o ClientCimdRefreshTokenOutput) InfiniteIdleTokenLifetime() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClientCimdRefreshToken) *bool { return v.InfiniteIdleTokenLifetime }).(pulumi.BoolPtrOutput)
+}
+
+// Whether refresh tokens should remain valid indefinitely. If false, `tokenLifetime` should also be set.
+func (o ClientCimdRefreshTokenOutput) InfiniteTokenLifetime() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClientCimdRefreshToken) *bool { return v.InfiniteTokenLifetime }).(pulumi.BoolPtrOutput)
+}
+
+// The amount of time in seconds in which a refresh token may be reused without triggering reuse detection.
+func (o ClientCimdRefreshTokenOutput) Leeway() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClientCimdRefreshToken) *int { return v.Leeway }).(pulumi.IntPtrOutput)
+}
+
+// Refresh token rotation type.Valid values are `rotating` and `non-rotating`
+func (o ClientCimdRefreshTokenOutput) RotationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientCimdRefreshToken) *string { return v.RotationType }).(pulumi.StringPtrOutput)
+}
+
+// The absolute lifetime of a refresh token in seconds.
+func (o ClientCimdRefreshTokenOutput) TokenLifetime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClientCimdRefreshToken) *int { return v.TokenLifetime }).(pulumi.IntPtrOutput)
+}
+
+type ClientCimdRefreshTokenPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientCimdRefreshTokenPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientCimdRefreshToken)(nil)).Elem()
+}
+
+func (o ClientCimdRefreshTokenPtrOutput) ToClientCimdRefreshTokenPtrOutput() ClientCimdRefreshTokenPtrOutput {
+	return o
+}
+
+func (o ClientCimdRefreshTokenPtrOutput) ToClientCimdRefreshTokenPtrOutputWithContext(ctx context.Context) ClientCimdRefreshTokenPtrOutput {
+	return o
+}
+
+func (o ClientCimdRefreshTokenPtrOutput) Elem() ClientCimdRefreshTokenOutput {
+	return o.ApplyT(func(v *ClientCimdRefreshToken) ClientCimdRefreshToken {
+		if v != nil {
+			return *v
+		}
+		var ret ClientCimdRefreshToken
+		return ret
+	}).(ClientCimdRefreshTokenOutput)
+}
+
+// Refresh token expiration type. Must be `expiring` for CIMD clients.
+func (o ClientCimdRefreshTokenPtrOutput) ExpirationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientCimdRefreshToken) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExpirationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The time in seconds after which inactive refresh tokens will expire.
+func (o ClientCimdRefreshTokenPtrOutput) IdleTokenLifetime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClientCimdRefreshToken) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IdleTokenLifetime
+	}).(pulumi.IntPtrOutput)
+}
+
+// Whether inactive refresh tokens should remain valid indefinitely. Must be `false` for CIMD clients.
+func (o ClientCimdRefreshTokenPtrOutput) InfiniteIdleTokenLifetime() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClientCimdRefreshToken) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.InfiniteIdleTokenLifetime
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether refresh tokens should remain valid indefinitely. If false, `tokenLifetime` should also be set.
+func (o ClientCimdRefreshTokenPtrOutput) InfiniteTokenLifetime() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClientCimdRefreshToken) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.InfiniteTokenLifetime
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The amount of time in seconds in which a refresh token may be reused without triggering reuse detection.
+func (o ClientCimdRefreshTokenPtrOutput) Leeway() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClientCimdRefreshToken) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Leeway
+	}).(pulumi.IntPtrOutput)
+}
+
+// Refresh token rotation type.Valid values are `rotating` and `non-rotating`
+func (o ClientCimdRefreshTokenPtrOutput) RotationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientCimdRefreshToken) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RotationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The absolute lifetime of a refresh token in seconds.
+func (o ClientCimdRefreshTokenPtrOutput) TokenLifetime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClientCimdRefreshToken) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TokenLifetime
+	}).(pulumi.IntPtrOutput)
+}
+
+type ClientCimdTokenQuota struct {
+	// The token quota configuration for client credentials.
+	ClientCredentials ClientCimdTokenQuotaClientCredentials `pulumi:"clientCredentials"`
+}
+
+// ClientCimdTokenQuotaInput is an input type that accepts ClientCimdTokenQuotaArgs and ClientCimdTokenQuotaOutput values.
+// You can construct a concrete instance of `ClientCimdTokenQuotaInput` via:
+//
+//	ClientCimdTokenQuotaArgs{...}
+type ClientCimdTokenQuotaInput interface {
+	pulumi.Input
+
+	ToClientCimdTokenQuotaOutput() ClientCimdTokenQuotaOutput
+	ToClientCimdTokenQuotaOutputWithContext(context.Context) ClientCimdTokenQuotaOutput
+}
+
+type ClientCimdTokenQuotaArgs struct {
+	// The token quota configuration for client credentials.
+	ClientCredentials ClientCimdTokenQuotaClientCredentialsInput `pulumi:"clientCredentials"`
+}
+
+func (ClientCimdTokenQuotaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientCimdTokenQuota)(nil)).Elem()
+}
+
+func (i ClientCimdTokenQuotaArgs) ToClientCimdTokenQuotaOutput() ClientCimdTokenQuotaOutput {
+	return i.ToClientCimdTokenQuotaOutputWithContext(context.Background())
+}
+
+func (i ClientCimdTokenQuotaArgs) ToClientCimdTokenQuotaOutputWithContext(ctx context.Context) ClientCimdTokenQuotaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientCimdTokenQuotaOutput)
+}
+
+func (i ClientCimdTokenQuotaArgs) ToClientCimdTokenQuotaPtrOutput() ClientCimdTokenQuotaPtrOutput {
+	return i.ToClientCimdTokenQuotaPtrOutputWithContext(context.Background())
+}
+
+func (i ClientCimdTokenQuotaArgs) ToClientCimdTokenQuotaPtrOutputWithContext(ctx context.Context) ClientCimdTokenQuotaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientCimdTokenQuotaOutput).ToClientCimdTokenQuotaPtrOutputWithContext(ctx)
+}
+
+// ClientCimdTokenQuotaPtrInput is an input type that accepts ClientCimdTokenQuotaArgs, ClientCimdTokenQuotaPtr and ClientCimdTokenQuotaPtrOutput values.
+// You can construct a concrete instance of `ClientCimdTokenQuotaPtrInput` via:
+//
+//	        ClientCimdTokenQuotaArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientCimdTokenQuotaPtrInput interface {
+	pulumi.Input
+
+	ToClientCimdTokenQuotaPtrOutput() ClientCimdTokenQuotaPtrOutput
+	ToClientCimdTokenQuotaPtrOutputWithContext(context.Context) ClientCimdTokenQuotaPtrOutput
+}
+
+type clientCimdTokenQuotaPtrType ClientCimdTokenQuotaArgs
+
+func ClientCimdTokenQuotaPtr(v *ClientCimdTokenQuotaArgs) ClientCimdTokenQuotaPtrInput {
+	return (*clientCimdTokenQuotaPtrType)(v)
+}
+
+func (*clientCimdTokenQuotaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientCimdTokenQuota)(nil)).Elem()
+}
+
+func (i *clientCimdTokenQuotaPtrType) ToClientCimdTokenQuotaPtrOutput() ClientCimdTokenQuotaPtrOutput {
+	return i.ToClientCimdTokenQuotaPtrOutputWithContext(context.Background())
+}
+
+func (i *clientCimdTokenQuotaPtrType) ToClientCimdTokenQuotaPtrOutputWithContext(ctx context.Context) ClientCimdTokenQuotaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientCimdTokenQuotaPtrOutput)
+}
+
+type ClientCimdTokenQuotaOutput struct{ *pulumi.OutputState }
+
+func (ClientCimdTokenQuotaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientCimdTokenQuota)(nil)).Elem()
+}
+
+func (o ClientCimdTokenQuotaOutput) ToClientCimdTokenQuotaOutput() ClientCimdTokenQuotaOutput {
+	return o
+}
+
+func (o ClientCimdTokenQuotaOutput) ToClientCimdTokenQuotaOutputWithContext(ctx context.Context) ClientCimdTokenQuotaOutput {
+	return o
+}
+
+func (o ClientCimdTokenQuotaOutput) ToClientCimdTokenQuotaPtrOutput() ClientCimdTokenQuotaPtrOutput {
+	return o.ToClientCimdTokenQuotaPtrOutputWithContext(context.Background())
+}
+
+func (o ClientCimdTokenQuotaOutput) ToClientCimdTokenQuotaPtrOutputWithContext(ctx context.Context) ClientCimdTokenQuotaPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientCimdTokenQuota) *ClientCimdTokenQuota {
+		return &v
+	}).(ClientCimdTokenQuotaPtrOutput)
+}
+
+// The token quota configuration for client credentials.
+func (o ClientCimdTokenQuotaOutput) ClientCredentials() ClientCimdTokenQuotaClientCredentialsOutput {
+	return o.ApplyT(func(v ClientCimdTokenQuota) ClientCimdTokenQuotaClientCredentials { return v.ClientCredentials }).(ClientCimdTokenQuotaClientCredentialsOutput)
+}
+
+type ClientCimdTokenQuotaPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientCimdTokenQuotaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientCimdTokenQuota)(nil)).Elem()
+}
+
+func (o ClientCimdTokenQuotaPtrOutput) ToClientCimdTokenQuotaPtrOutput() ClientCimdTokenQuotaPtrOutput {
+	return o
+}
+
+func (o ClientCimdTokenQuotaPtrOutput) ToClientCimdTokenQuotaPtrOutputWithContext(ctx context.Context) ClientCimdTokenQuotaPtrOutput {
+	return o
+}
+
+func (o ClientCimdTokenQuotaPtrOutput) Elem() ClientCimdTokenQuotaOutput {
+	return o.ApplyT(func(v *ClientCimdTokenQuota) ClientCimdTokenQuota {
+		if v != nil {
+			return *v
+		}
+		var ret ClientCimdTokenQuota
+		return ret
+	}).(ClientCimdTokenQuotaOutput)
+}
+
+// The token quota configuration for client credentials.
+func (o ClientCimdTokenQuotaPtrOutput) ClientCredentials() ClientCimdTokenQuotaClientCredentialsPtrOutput {
+	return o.ApplyT(func(v *ClientCimdTokenQuota) *ClientCimdTokenQuotaClientCredentials {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientCredentials
+	}).(ClientCimdTokenQuotaClientCredentialsPtrOutput)
+}
+
+type ClientCimdTokenQuotaClientCredentials struct {
+	// If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+	Enforce *bool `pulumi:"enforce"`
+	// Maximum number of issued tokens per day
+	PerDay *int `pulumi:"perDay"`
+	// Maximum number of issued tokens per hour
+	PerHour *int `pulumi:"perHour"`
+}
+
+// ClientCimdTokenQuotaClientCredentialsInput is an input type that accepts ClientCimdTokenQuotaClientCredentialsArgs and ClientCimdTokenQuotaClientCredentialsOutput values.
+// You can construct a concrete instance of `ClientCimdTokenQuotaClientCredentialsInput` via:
+//
+//	ClientCimdTokenQuotaClientCredentialsArgs{...}
+type ClientCimdTokenQuotaClientCredentialsInput interface {
+	pulumi.Input
+
+	ToClientCimdTokenQuotaClientCredentialsOutput() ClientCimdTokenQuotaClientCredentialsOutput
+	ToClientCimdTokenQuotaClientCredentialsOutputWithContext(context.Context) ClientCimdTokenQuotaClientCredentialsOutput
+}
+
+type ClientCimdTokenQuotaClientCredentialsArgs struct {
+	// If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+	Enforce pulumi.BoolPtrInput `pulumi:"enforce"`
+	// Maximum number of issued tokens per day
+	PerDay pulumi.IntPtrInput `pulumi:"perDay"`
+	// Maximum number of issued tokens per hour
+	PerHour pulumi.IntPtrInput `pulumi:"perHour"`
+}
+
+func (ClientCimdTokenQuotaClientCredentialsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientCimdTokenQuotaClientCredentials)(nil)).Elem()
+}
+
+func (i ClientCimdTokenQuotaClientCredentialsArgs) ToClientCimdTokenQuotaClientCredentialsOutput() ClientCimdTokenQuotaClientCredentialsOutput {
+	return i.ToClientCimdTokenQuotaClientCredentialsOutputWithContext(context.Background())
+}
+
+func (i ClientCimdTokenQuotaClientCredentialsArgs) ToClientCimdTokenQuotaClientCredentialsOutputWithContext(ctx context.Context) ClientCimdTokenQuotaClientCredentialsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientCimdTokenQuotaClientCredentialsOutput)
+}
+
+func (i ClientCimdTokenQuotaClientCredentialsArgs) ToClientCimdTokenQuotaClientCredentialsPtrOutput() ClientCimdTokenQuotaClientCredentialsPtrOutput {
+	return i.ToClientCimdTokenQuotaClientCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i ClientCimdTokenQuotaClientCredentialsArgs) ToClientCimdTokenQuotaClientCredentialsPtrOutputWithContext(ctx context.Context) ClientCimdTokenQuotaClientCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientCimdTokenQuotaClientCredentialsOutput).ToClientCimdTokenQuotaClientCredentialsPtrOutputWithContext(ctx)
+}
+
+// ClientCimdTokenQuotaClientCredentialsPtrInput is an input type that accepts ClientCimdTokenQuotaClientCredentialsArgs, ClientCimdTokenQuotaClientCredentialsPtr and ClientCimdTokenQuotaClientCredentialsPtrOutput values.
+// You can construct a concrete instance of `ClientCimdTokenQuotaClientCredentialsPtrInput` via:
+//
+//	        ClientCimdTokenQuotaClientCredentialsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientCimdTokenQuotaClientCredentialsPtrInput interface {
+	pulumi.Input
+
+	ToClientCimdTokenQuotaClientCredentialsPtrOutput() ClientCimdTokenQuotaClientCredentialsPtrOutput
+	ToClientCimdTokenQuotaClientCredentialsPtrOutputWithContext(context.Context) ClientCimdTokenQuotaClientCredentialsPtrOutput
+}
+
+type clientCimdTokenQuotaClientCredentialsPtrType ClientCimdTokenQuotaClientCredentialsArgs
+
+func ClientCimdTokenQuotaClientCredentialsPtr(v *ClientCimdTokenQuotaClientCredentialsArgs) ClientCimdTokenQuotaClientCredentialsPtrInput {
+	return (*clientCimdTokenQuotaClientCredentialsPtrType)(v)
+}
+
+func (*clientCimdTokenQuotaClientCredentialsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientCimdTokenQuotaClientCredentials)(nil)).Elem()
+}
+
+func (i *clientCimdTokenQuotaClientCredentialsPtrType) ToClientCimdTokenQuotaClientCredentialsPtrOutput() ClientCimdTokenQuotaClientCredentialsPtrOutput {
+	return i.ToClientCimdTokenQuotaClientCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i *clientCimdTokenQuotaClientCredentialsPtrType) ToClientCimdTokenQuotaClientCredentialsPtrOutputWithContext(ctx context.Context) ClientCimdTokenQuotaClientCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientCimdTokenQuotaClientCredentialsPtrOutput)
+}
+
+type ClientCimdTokenQuotaClientCredentialsOutput struct{ *pulumi.OutputState }
+
+func (ClientCimdTokenQuotaClientCredentialsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientCimdTokenQuotaClientCredentials)(nil)).Elem()
+}
+
+func (o ClientCimdTokenQuotaClientCredentialsOutput) ToClientCimdTokenQuotaClientCredentialsOutput() ClientCimdTokenQuotaClientCredentialsOutput {
+	return o
+}
+
+func (o ClientCimdTokenQuotaClientCredentialsOutput) ToClientCimdTokenQuotaClientCredentialsOutputWithContext(ctx context.Context) ClientCimdTokenQuotaClientCredentialsOutput {
+	return o
+}
+
+func (o ClientCimdTokenQuotaClientCredentialsOutput) ToClientCimdTokenQuotaClientCredentialsPtrOutput() ClientCimdTokenQuotaClientCredentialsPtrOutput {
+	return o.ToClientCimdTokenQuotaClientCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (o ClientCimdTokenQuotaClientCredentialsOutput) ToClientCimdTokenQuotaClientCredentialsPtrOutputWithContext(ctx context.Context) ClientCimdTokenQuotaClientCredentialsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientCimdTokenQuotaClientCredentials) *ClientCimdTokenQuotaClientCredentials {
+		return &v
+	}).(ClientCimdTokenQuotaClientCredentialsPtrOutput)
+}
+
+// If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+func (o ClientCimdTokenQuotaClientCredentialsOutput) Enforce() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClientCimdTokenQuotaClientCredentials) *bool { return v.Enforce }).(pulumi.BoolPtrOutput)
+}
+
+// Maximum number of issued tokens per day
+func (o ClientCimdTokenQuotaClientCredentialsOutput) PerDay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClientCimdTokenQuotaClientCredentials) *int { return v.PerDay }).(pulumi.IntPtrOutput)
+}
+
+// Maximum number of issued tokens per hour
+func (o ClientCimdTokenQuotaClientCredentialsOutput) PerHour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClientCimdTokenQuotaClientCredentials) *int { return v.PerHour }).(pulumi.IntPtrOutput)
+}
+
+type ClientCimdTokenQuotaClientCredentialsPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientCimdTokenQuotaClientCredentialsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientCimdTokenQuotaClientCredentials)(nil)).Elem()
+}
+
+func (o ClientCimdTokenQuotaClientCredentialsPtrOutput) ToClientCimdTokenQuotaClientCredentialsPtrOutput() ClientCimdTokenQuotaClientCredentialsPtrOutput {
+	return o
+}
+
+func (o ClientCimdTokenQuotaClientCredentialsPtrOutput) ToClientCimdTokenQuotaClientCredentialsPtrOutputWithContext(ctx context.Context) ClientCimdTokenQuotaClientCredentialsPtrOutput {
+	return o
+}
+
+func (o ClientCimdTokenQuotaClientCredentialsPtrOutput) Elem() ClientCimdTokenQuotaClientCredentialsOutput {
+	return o.ApplyT(func(v *ClientCimdTokenQuotaClientCredentials) ClientCimdTokenQuotaClientCredentials {
+		if v != nil {
+			return *v
+		}
+		var ret ClientCimdTokenQuotaClientCredentials
+		return ret
+	}).(ClientCimdTokenQuotaClientCredentialsOutput)
+}
+
+// If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+func (o ClientCimdTokenQuotaClientCredentialsPtrOutput) Enforce() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClientCimdTokenQuotaClientCredentials) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enforce
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Maximum number of issued tokens per day
+func (o ClientCimdTokenQuotaClientCredentialsPtrOutput) PerDay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClientCimdTokenQuotaClientCredentials) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PerDay
+	}).(pulumi.IntPtrOutput)
+}
+
+// Maximum number of issued tokens per hour
+func (o ClientCimdTokenQuotaClientCredentialsPtrOutput) PerHour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClientCimdTokenQuotaClientCredentials) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PerHour
+	}).(pulumi.IntPtrOutput)
+}
+
+type ClientCimdValidation struct {
+	// Whether the metadata document passed validation.
+	Valid *bool `pulumi:"valid"`
+	// Array of validation violation messages, if any. Violations indicate issues that prevented the metadata document from being fully processed.
+	Violations []string `pulumi:"violations"`
+	// Array of warning messages, if any. Warnings indicate non-critical issues such as unsupported properties being ignored.
+	Warnings []string `pulumi:"warnings"`
+}
+
+// ClientCimdValidationInput is an input type that accepts ClientCimdValidationArgs and ClientCimdValidationOutput values.
+// You can construct a concrete instance of `ClientCimdValidationInput` via:
+//
+//	ClientCimdValidationArgs{...}
+type ClientCimdValidationInput interface {
+	pulumi.Input
+
+	ToClientCimdValidationOutput() ClientCimdValidationOutput
+	ToClientCimdValidationOutputWithContext(context.Context) ClientCimdValidationOutput
+}
+
+type ClientCimdValidationArgs struct {
+	// Whether the metadata document passed validation.
+	Valid pulumi.BoolPtrInput `pulumi:"valid"`
+	// Array of validation violation messages, if any. Violations indicate issues that prevented the metadata document from being fully processed.
+	Violations pulumi.StringArrayInput `pulumi:"violations"`
+	// Array of warning messages, if any. Warnings indicate non-critical issues such as unsupported properties being ignored.
+	Warnings pulumi.StringArrayInput `pulumi:"warnings"`
+}
+
+func (ClientCimdValidationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientCimdValidation)(nil)).Elem()
+}
+
+func (i ClientCimdValidationArgs) ToClientCimdValidationOutput() ClientCimdValidationOutput {
+	return i.ToClientCimdValidationOutputWithContext(context.Background())
+}
+
+func (i ClientCimdValidationArgs) ToClientCimdValidationOutputWithContext(ctx context.Context) ClientCimdValidationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientCimdValidationOutput)
+}
+
+// ClientCimdValidationArrayInput is an input type that accepts ClientCimdValidationArray and ClientCimdValidationArrayOutput values.
+// You can construct a concrete instance of `ClientCimdValidationArrayInput` via:
+//
+//	ClientCimdValidationArray{ ClientCimdValidationArgs{...} }
+type ClientCimdValidationArrayInput interface {
+	pulumi.Input
+
+	ToClientCimdValidationArrayOutput() ClientCimdValidationArrayOutput
+	ToClientCimdValidationArrayOutputWithContext(context.Context) ClientCimdValidationArrayOutput
+}
+
+type ClientCimdValidationArray []ClientCimdValidationInput
+
+func (ClientCimdValidationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClientCimdValidation)(nil)).Elem()
+}
+
+func (i ClientCimdValidationArray) ToClientCimdValidationArrayOutput() ClientCimdValidationArrayOutput {
+	return i.ToClientCimdValidationArrayOutputWithContext(context.Background())
+}
+
+func (i ClientCimdValidationArray) ToClientCimdValidationArrayOutputWithContext(ctx context.Context) ClientCimdValidationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientCimdValidationArrayOutput)
+}
+
+type ClientCimdValidationOutput struct{ *pulumi.OutputState }
+
+func (ClientCimdValidationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientCimdValidation)(nil)).Elem()
+}
+
+func (o ClientCimdValidationOutput) ToClientCimdValidationOutput() ClientCimdValidationOutput {
+	return o
+}
+
+func (o ClientCimdValidationOutput) ToClientCimdValidationOutputWithContext(ctx context.Context) ClientCimdValidationOutput {
+	return o
+}
+
+// Whether the metadata document passed validation.
+func (o ClientCimdValidationOutput) Valid() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClientCimdValidation) *bool { return v.Valid }).(pulumi.BoolPtrOutput)
+}
+
+// Array of validation violation messages, if any. Violations indicate issues that prevented the metadata document from being fully processed.
+func (o ClientCimdValidationOutput) Violations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClientCimdValidation) []string { return v.Violations }).(pulumi.StringArrayOutput)
+}
+
+// Array of warning messages, if any. Warnings indicate non-critical issues such as unsupported properties being ignored.
+func (o ClientCimdValidationOutput) Warnings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClientCimdValidation) []string { return v.Warnings }).(pulumi.StringArrayOutput)
+}
+
+type ClientCimdValidationArrayOutput struct{ *pulumi.OutputState }
+
+func (ClientCimdValidationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClientCimdValidation)(nil)).Elem()
+}
+
+func (o ClientCimdValidationArrayOutput) ToClientCimdValidationArrayOutput() ClientCimdValidationArrayOutput {
+	return o
+}
+
+func (o ClientCimdValidationArrayOutput) ToClientCimdValidationArrayOutputWithContext(ctx context.Context) ClientCimdValidationArrayOutput {
+	return o
+}
+
+func (o ClientCimdValidationArrayOutput) Index(i pulumi.IntInput) ClientCimdValidationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClientCimdValidation {
+		return vs[0].([]ClientCimdValidation)[vs[1].(int)]
+	}).(ClientCimdValidationOutput)
+}
+
 type ClientCredentialsPrivateKeyJwt struct {
 	// Client credentials available for use when Private Key JWT is in use as the client authentication method. A maximum of 2 client credentials can be set.
 	Credentials []ClientCredentialsPrivateKeyJwtCredential `pulumi:"credentials"`
@@ -15284,6 +16293,200 @@ func (o ClientMobileIosPtrOutput) TeamId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ClientMyOrganizationConfiguration struct {
+	// The list of connection strategies that are allowed when creating organizations for this client (e.g. "okta", "samlp").
+	AllowedStrategies []string `pulumi:"allowedStrategies"`
+	// Controls the behavior when deleting connections associated with organizations for this client. Possible values: `allow`, `allowIfEmpty`.
+	ConnectionDeletionBehavior *string `pulumi:"connectionDeletionBehavior"`
+	// The ID of the connection profile to use when creating organizations for this client.
+	ConnectionProfileId *string `pulumi:"connectionProfileId"`
+	// The ID of the user attribute profile to use when creating organizations for this client.
+	UserAttributeProfileId *string `pulumi:"userAttributeProfileId"`
+}
+
+// ClientMyOrganizationConfigurationInput is an input type that accepts ClientMyOrganizationConfigurationArgs and ClientMyOrganizationConfigurationOutput values.
+// You can construct a concrete instance of `ClientMyOrganizationConfigurationInput` via:
+//
+//	ClientMyOrganizationConfigurationArgs{...}
+type ClientMyOrganizationConfigurationInput interface {
+	pulumi.Input
+
+	ToClientMyOrganizationConfigurationOutput() ClientMyOrganizationConfigurationOutput
+	ToClientMyOrganizationConfigurationOutputWithContext(context.Context) ClientMyOrganizationConfigurationOutput
+}
+
+type ClientMyOrganizationConfigurationArgs struct {
+	// The list of connection strategies that are allowed when creating organizations for this client (e.g. "okta", "samlp").
+	AllowedStrategies pulumi.StringArrayInput `pulumi:"allowedStrategies"`
+	// Controls the behavior when deleting connections associated with organizations for this client. Possible values: `allow`, `allowIfEmpty`.
+	ConnectionDeletionBehavior pulumi.StringPtrInput `pulumi:"connectionDeletionBehavior"`
+	// The ID of the connection profile to use when creating organizations for this client.
+	ConnectionProfileId pulumi.StringPtrInput `pulumi:"connectionProfileId"`
+	// The ID of the user attribute profile to use when creating organizations for this client.
+	UserAttributeProfileId pulumi.StringPtrInput `pulumi:"userAttributeProfileId"`
+}
+
+func (ClientMyOrganizationConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientMyOrganizationConfiguration)(nil)).Elem()
+}
+
+func (i ClientMyOrganizationConfigurationArgs) ToClientMyOrganizationConfigurationOutput() ClientMyOrganizationConfigurationOutput {
+	return i.ToClientMyOrganizationConfigurationOutputWithContext(context.Background())
+}
+
+func (i ClientMyOrganizationConfigurationArgs) ToClientMyOrganizationConfigurationOutputWithContext(ctx context.Context) ClientMyOrganizationConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientMyOrganizationConfigurationOutput)
+}
+
+func (i ClientMyOrganizationConfigurationArgs) ToClientMyOrganizationConfigurationPtrOutput() ClientMyOrganizationConfigurationPtrOutput {
+	return i.ToClientMyOrganizationConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i ClientMyOrganizationConfigurationArgs) ToClientMyOrganizationConfigurationPtrOutputWithContext(ctx context.Context) ClientMyOrganizationConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientMyOrganizationConfigurationOutput).ToClientMyOrganizationConfigurationPtrOutputWithContext(ctx)
+}
+
+// ClientMyOrganizationConfigurationPtrInput is an input type that accepts ClientMyOrganizationConfigurationArgs, ClientMyOrganizationConfigurationPtr and ClientMyOrganizationConfigurationPtrOutput values.
+// You can construct a concrete instance of `ClientMyOrganizationConfigurationPtrInput` via:
+//
+//	        ClientMyOrganizationConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientMyOrganizationConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToClientMyOrganizationConfigurationPtrOutput() ClientMyOrganizationConfigurationPtrOutput
+	ToClientMyOrganizationConfigurationPtrOutputWithContext(context.Context) ClientMyOrganizationConfigurationPtrOutput
+}
+
+type clientMyOrganizationConfigurationPtrType ClientMyOrganizationConfigurationArgs
+
+func ClientMyOrganizationConfigurationPtr(v *ClientMyOrganizationConfigurationArgs) ClientMyOrganizationConfigurationPtrInput {
+	return (*clientMyOrganizationConfigurationPtrType)(v)
+}
+
+func (*clientMyOrganizationConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientMyOrganizationConfiguration)(nil)).Elem()
+}
+
+func (i *clientMyOrganizationConfigurationPtrType) ToClientMyOrganizationConfigurationPtrOutput() ClientMyOrganizationConfigurationPtrOutput {
+	return i.ToClientMyOrganizationConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *clientMyOrganizationConfigurationPtrType) ToClientMyOrganizationConfigurationPtrOutputWithContext(ctx context.Context) ClientMyOrganizationConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientMyOrganizationConfigurationPtrOutput)
+}
+
+type ClientMyOrganizationConfigurationOutput struct{ *pulumi.OutputState }
+
+func (ClientMyOrganizationConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientMyOrganizationConfiguration)(nil)).Elem()
+}
+
+func (o ClientMyOrganizationConfigurationOutput) ToClientMyOrganizationConfigurationOutput() ClientMyOrganizationConfigurationOutput {
+	return o
+}
+
+func (o ClientMyOrganizationConfigurationOutput) ToClientMyOrganizationConfigurationOutputWithContext(ctx context.Context) ClientMyOrganizationConfigurationOutput {
+	return o
+}
+
+func (o ClientMyOrganizationConfigurationOutput) ToClientMyOrganizationConfigurationPtrOutput() ClientMyOrganizationConfigurationPtrOutput {
+	return o.ToClientMyOrganizationConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o ClientMyOrganizationConfigurationOutput) ToClientMyOrganizationConfigurationPtrOutputWithContext(ctx context.Context) ClientMyOrganizationConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientMyOrganizationConfiguration) *ClientMyOrganizationConfiguration {
+		return &v
+	}).(ClientMyOrganizationConfigurationPtrOutput)
+}
+
+// The list of connection strategies that are allowed when creating organizations for this client (e.g. "okta", "samlp").
+func (o ClientMyOrganizationConfigurationOutput) AllowedStrategies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClientMyOrganizationConfiguration) []string { return v.AllowedStrategies }).(pulumi.StringArrayOutput)
+}
+
+// Controls the behavior when deleting connections associated with organizations for this client. Possible values: `allow`, `allowIfEmpty`.
+func (o ClientMyOrganizationConfigurationOutput) ConnectionDeletionBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientMyOrganizationConfiguration) *string { return v.ConnectionDeletionBehavior }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the connection profile to use when creating organizations for this client.
+func (o ClientMyOrganizationConfigurationOutput) ConnectionProfileId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientMyOrganizationConfiguration) *string { return v.ConnectionProfileId }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the user attribute profile to use when creating organizations for this client.
+func (o ClientMyOrganizationConfigurationOutput) UserAttributeProfileId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientMyOrganizationConfiguration) *string { return v.UserAttributeProfileId }).(pulumi.StringPtrOutput)
+}
+
+type ClientMyOrganizationConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientMyOrganizationConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientMyOrganizationConfiguration)(nil)).Elem()
+}
+
+func (o ClientMyOrganizationConfigurationPtrOutput) ToClientMyOrganizationConfigurationPtrOutput() ClientMyOrganizationConfigurationPtrOutput {
+	return o
+}
+
+func (o ClientMyOrganizationConfigurationPtrOutput) ToClientMyOrganizationConfigurationPtrOutputWithContext(ctx context.Context) ClientMyOrganizationConfigurationPtrOutput {
+	return o
+}
+
+func (o ClientMyOrganizationConfigurationPtrOutput) Elem() ClientMyOrganizationConfigurationOutput {
+	return o.ApplyT(func(v *ClientMyOrganizationConfiguration) ClientMyOrganizationConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret ClientMyOrganizationConfiguration
+		return ret
+	}).(ClientMyOrganizationConfigurationOutput)
+}
+
+// The list of connection strategies that are allowed when creating organizations for this client (e.g. "okta", "samlp").
+func (o ClientMyOrganizationConfigurationPtrOutput) AllowedStrategies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClientMyOrganizationConfiguration) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedStrategies
+	}).(pulumi.StringArrayOutput)
+}
+
+// Controls the behavior when deleting connections associated with organizations for this client. Possible values: `allow`, `allowIfEmpty`.
+func (o ClientMyOrganizationConfigurationPtrOutput) ConnectionDeletionBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientMyOrganizationConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectionDeletionBehavior
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the connection profile to use when creating organizations for this client.
+func (o ClientMyOrganizationConfigurationPtrOutput) ConnectionProfileId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientMyOrganizationConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectionProfileId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the user attribute profile to use when creating organizations for this client.
+func (o ClientMyOrganizationConfigurationPtrOutput) UserAttributeProfileId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientMyOrganizationConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAttributeProfileId
+	}).(pulumi.StringPtrOutput)
+}
+
 type ClientNativeSocialLogin struct {
 	Apple    *ClientNativeSocialLoginApple    `pulumi:"apple"`
 	Facebook *ClientNativeSocialLoginFacebook `pulumi:"facebook"`
@@ -16923,7 +18126,7 @@ func (o ClientSessionTransferPtrOutput) EnforceOnlineRefreshTokens() pulumi.Bool
 }
 
 type ClientTokenExchange struct {
-	// List of allowed profile types for token exchange
+	// List of allowed profile types for token exchange. Supported values include: custom*authentication, on*behalf*of*token_exchange.
 	AllowAnyProfileOfTypes []string `pulumi:"allowAnyProfileOfTypes"`
 }
 
@@ -16939,7 +18142,7 @@ type ClientTokenExchangeInput interface {
 }
 
 type ClientTokenExchangeArgs struct {
-	// List of allowed profile types for token exchange
+	// List of allowed profile types for token exchange. Supported values include: custom*authentication, on*behalf*of*token_exchange.
 	AllowAnyProfileOfTypes pulumi.StringArrayInput `pulumi:"allowAnyProfileOfTypes"`
 }
 
@@ -17020,7 +18223,7 @@ func (o ClientTokenExchangeOutput) ToClientTokenExchangePtrOutputWithContext(ctx
 	}).(ClientTokenExchangePtrOutput)
 }
 
-// List of allowed profile types for token exchange
+// List of allowed profile types for token exchange. Supported values include: custom*authentication, on*behalf*of*token_exchange.
 func (o ClientTokenExchangeOutput) AllowAnyProfileOfTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClientTokenExchange) []string { return v.AllowAnyProfileOfTypes }).(pulumi.StringArrayOutput)
 }
@@ -17049,7 +18252,7 @@ func (o ClientTokenExchangePtrOutput) Elem() ClientTokenExchangeOutput {
 	}).(ClientTokenExchangeOutput)
 }
 
-// List of allowed profile types for token exchange
+// List of allowed profile types for token exchange. Supported values include: custom*authentication, on*behalf*of*token_exchange.
 func (o ClientTokenExchangePtrOutput) AllowAnyProfileOfTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ClientTokenExchange) []string {
 		if v == nil {
@@ -33768,9 +34971,15 @@ type OrganizationConnectionsEnabledConnection struct {
 	AssignMembershipOnLogin *bool `pulumi:"assignMembershipOnLogin"`
 	// The ID of the connection to enable for the organization.
 	ConnectionId string `pulumi:"connectionId"`
+	// Whether the connection is enabled for the organization.
+	IsEnabled *bool `pulumi:"isEnabled"`
 	// Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `isSignupEnabled` can only be `true` if `assignMembershipOnLogin` is `true`.
 	IsSignupEnabled *bool `pulumi:"isSignupEnabled"`
-	// Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+	// The access level for this organization connection. Can be `none`, `readonly`, `limited`, or `full`.
+	OrganizationAccessLevel *string `pulumi:"organizationAccessLevel"`
+	// Name of the connection in the scope of this organization.
+	OrganizationConnectionName *string `pulumi:"organizationConnectionName"`
+	// Determines whether a connection should be displayed on this organization's login prompt. Only applicable for enterprise connections.
 	ShowAsButton *bool `pulumi:"showAsButton"`
 }
 
@@ -33790,9 +34999,15 @@ type OrganizationConnectionsEnabledConnectionArgs struct {
 	AssignMembershipOnLogin pulumi.BoolPtrInput `pulumi:"assignMembershipOnLogin"`
 	// The ID of the connection to enable for the organization.
 	ConnectionId pulumi.StringInput `pulumi:"connectionId"`
+	// Whether the connection is enabled for the organization.
+	IsEnabled pulumi.BoolPtrInput `pulumi:"isEnabled"`
 	// Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `isSignupEnabled` can only be `true` if `assignMembershipOnLogin` is `true`.
 	IsSignupEnabled pulumi.BoolPtrInput `pulumi:"isSignupEnabled"`
-	// Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+	// The access level for this organization connection. Can be `none`, `readonly`, `limited`, or `full`.
+	OrganizationAccessLevel pulumi.StringPtrInput `pulumi:"organizationAccessLevel"`
+	// Name of the connection in the scope of this organization.
+	OrganizationConnectionName pulumi.StringPtrInput `pulumi:"organizationConnectionName"`
+	// Determines whether a connection should be displayed on this organization's login prompt. Only applicable for enterprise connections.
 	ShowAsButton pulumi.BoolPtrInput `pulumi:"showAsButton"`
 }
 
@@ -33857,12 +35072,27 @@ func (o OrganizationConnectionsEnabledConnectionOutput) ConnectionId() pulumi.St
 	return o.ApplyT(func(v OrganizationConnectionsEnabledConnection) string { return v.ConnectionId }).(pulumi.StringOutput)
 }
 
+// Whether the connection is enabled for the organization.
+func (o OrganizationConnectionsEnabledConnectionOutput) IsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OrganizationConnectionsEnabledConnection) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
+}
+
 // Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `isSignupEnabled` can only be `true` if `assignMembershipOnLogin` is `true`.
 func (o OrganizationConnectionsEnabledConnectionOutput) IsSignupEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OrganizationConnectionsEnabledConnection) *bool { return v.IsSignupEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+// The access level for this organization connection. Can be `none`, `readonly`, `limited`, or `full`.
+func (o OrganizationConnectionsEnabledConnectionOutput) OrganizationAccessLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OrganizationConnectionsEnabledConnection) *string { return v.OrganizationAccessLevel }).(pulumi.StringPtrOutput)
+}
+
+// Name of the connection in the scope of this organization.
+func (o OrganizationConnectionsEnabledConnectionOutput) OrganizationConnectionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OrganizationConnectionsEnabledConnection) *string { return v.OrganizationConnectionName }).(pulumi.StringPtrOutput)
+}
+
+// Determines whether a connection should be displayed on this organization's login prompt. Only applicable for enterprise connections.
 func (o OrganizationConnectionsEnabledConnectionOutput) ShowAsButton() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OrganizationConnectionsEnabledConnection) *bool { return v.ShowAsButton }).(pulumi.BoolPtrOutput)
 }
@@ -52549,6 +53779,130 @@ func (o GetClientMobileIoArrayOutput) Index(i pulumi.IntInput) GetClientMobileIo
 	}).(GetClientMobileIoOutput)
 }
 
+type GetClientMyOrganizationConfiguration struct {
+	// The list of connection strategies that are allowed when creating organizations for this client (e.g. "okta", "samlp").
+	AllowedStrategies []string `pulumi:"allowedStrategies"`
+	// Controls the behavior when deleting connections associated with organizations for this client. Possible values: `allow`, `allowIfEmpty`.
+	ConnectionDeletionBehavior string `pulumi:"connectionDeletionBehavior"`
+	// The ID of the connection profile to use when creating organizations for this client.
+	ConnectionProfileId string `pulumi:"connectionProfileId"`
+	// The ID of the user attribute profile to use when creating organizations for this client.
+	UserAttributeProfileId string `pulumi:"userAttributeProfileId"`
+}
+
+// GetClientMyOrganizationConfigurationInput is an input type that accepts GetClientMyOrganizationConfigurationArgs and GetClientMyOrganizationConfigurationOutput values.
+// You can construct a concrete instance of `GetClientMyOrganizationConfigurationInput` via:
+//
+//	GetClientMyOrganizationConfigurationArgs{...}
+type GetClientMyOrganizationConfigurationInput interface {
+	pulumi.Input
+
+	ToGetClientMyOrganizationConfigurationOutput() GetClientMyOrganizationConfigurationOutput
+	ToGetClientMyOrganizationConfigurationOutputWithContext(context.Context) GetClientMyOrganizationConfigurationOutput
+}
+
+type GetClientMyOrganizationConfigurationArgs struct {
+	// The list of connection strategies that are allowed when creating organizations for this client (e.g. "okta", "samlp").
+	AllowedStrategies pulumi.StringArrayInput `pulumi:"allowedStrategies"`
+	// Controls the behavior when deleting connections associated with organizations for this client. Possible values: `allow`, `allowIfEmpty`.
+	ConnectionDeletionBehavior pulumi.StringInput `pulumi:"connectionDeletionBehavior"`
+	// The ID of the connection profile to use when creating organizations for this client.
+	ConnectionProfileId pulumi.StringInput `pulumi:"connectionProfileId"`
+	// The ID of the user attribute profile to use when creating organizations for this client.
+	UserAttributeProfileId pulumi.StringInput `pulumi:"userAttributeProfileId"`
+}
+
+func (GetClientMyOrganizationConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientMyOrganizationConfiguration)(nil)).Elem()
+}
+
+func (i GetClientMyOrganizationConfigurationArgs) ToGetClientMyOrganizationConfigurationOutput() GetClientMyOrganizationConfigurationOutput {
+	return i.ToGetClientMyOrganizationConfigurationOutputWithContext(context.Background())
+}
+
+func (i GetClientMyOrganizationConfigurationArgs) ToGetClientMyOrganizationConfigurationOutputWithContext(ctx context.Context) GetClientMyOrganizationConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientMyOrganizationConfigurationOutput)
+}
+
+// GetClientMyOrganizationConfigurationArrayInput is an input type that accepts GetClientMyOrganizationConfigurationArray and GetClientMyOrganizationConfigurationArrayOutput values.
+// You can construct a concrete instance of `GetClientMyOrganizationConfigurationArrayInput` via:
+//
+//	GetClientMyOrganizationConfigurationArray{ GetClientMyOrganizationConfigurationArgs{...} }
+type GetClientMyOrganizationConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToGetClientMyOrganizationConfigurationArrayOutput() GetClientMyOrganizationConfigurationArrayOutput
+	ToGetClientMyOrganizationConfigurationArrayOutputWithContext(context.Context) GetClientMyOrganizationConfigurationArrayOutput
+}
+
+type GetClientMyOrganizationConfigurationArray []GetClientMyOrganizationConfigurationInput
+
+func (GetClientMyOrganizationConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientMyOrganizationConfiguration)(nil)).Elem()
+}
+
+func (i GetClientMyOrganizationConfigurationArray) ToGetClientMyOrganizationConfigurationArrayOutput() GetClientMyOrganizationConfigurationArrayOutput {
+	return i.ToGetClientMyOrganizationConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientMyOrganizationConfigurationArray) ToGetClientMyOrganizationConfigurationArrayOutputWithContext(ctx context.Context) GetClientMyOrganizationConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientMyOrganizationConfigurationArrayOutput)
+}
+
+type GetClientMyOrganizationConfigurationOutput struct{ *pulumi.OutputState }
+
+func (GetClientMyOrganizationConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientMyOrganizationConfiguration)(nil)).Elem()
+}
+
+func (o GetClientMyOrganizationConfigurationOutput) ToGetClientMyOrganizationConfigurationOutput() GetClientMyOrganizationConfigurationOutput {
+	return o
+}
+
+func (o GetClientMyOrganizationConfigurationOutput) ToGetClientMyOrganizationConfigurationOutputWithContext(ctx context.Context) GetClientMyOrganizationConfigurationOutput {
+	return o
+}
+
+// The list of connection strategies that are allowed when creating organizations for this client (e.g. "okta", "samlp").
+func (o GetClientMyOrganizationConfigurationOutput) AllowedStrategies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClientMyOrganizationConfiguration) []string { return v.AllowedStrategies }).(pulumi.StringArrayOutput)
+}
+
+// Controls the behavior when deleting connections associated with organizations for this client. Possible values: `allow`, `allowIfEmpty`.
+func (o GetClientMyOrganizationConfigurationOutput) ConnectionDeletionBehavior() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientMyOrganizationConfiguration) string { return v.ConnectionDeletionBehavior }).(pulumi.StringOutput)
+}
+
+// The ID of the connection profile to use when creating organizations for this client.
+func (o GetClientMyOrganizationConfigurationOutput) ConnectionProfileId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientMyOrganizationConfiguration) string { return v.ConnectionProfileId }).(pulumi.StringOutput)
+}
+
+// The ID of the user attribute profile to use when creating organizations for this client.
+func (o GetClientMyOrganizationConfigurationOutput) UserAttributeProfileId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientMyOrganizationConfiguration) string { return v.UserAttributeProfileId }).(pulumi.StringOutput)
+}
+
+type GetClientMyOrganizationConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientMyOrganizationConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientMyOrganizationConfiguration)(nil)).Elem()
+}
+
+func (o GetClientMyOrganizationConfigurationArrayOutput) ToGetClientMyOrganizationConfigurationArrayOutput() GetClientMyOrganizationConfigurationArrayOutput {
+	return o
+}
+
+func (o GetClientMyOrganizationConfigurationArrayOutput) ToGetClientMyOrganizationConfigurationArrayOutputWithContext(ctx context.Context) GetClientMyOrganizationConfigurationArrayOutput {
+	return o
+}
+
+func (o GetClientMyOrganizationConfigurationArrayOutput) Index(i pulumi.IntInput) GetClientMyOrganizationConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientMyOrganizationConfiguration {
+		return vs[0].([]GetClientMyOrganizationConfiguration)[vs[1].(int)]
+	}).(GetClientMyOrganizationConfigurationOutput)
+}
+
 type GetClientNativeSocialLogin struct {
 	Apples    []GetClientNativeSocialLoginApple    `pulumi:"apples"`
 	Facebooks []GetClientNativeSocialLoginFacebook `pulumi:"facebooks"`
@@ -53931,7 +55285,7 @@ func (o GetClientSignedRequestObjectCredentialArrayOutput) Index(i pulumi.IntInp
 }
 
 type GetClientTokenExchange struct {
-	// List of allowed profile types for token exchange
+	// List of allowed profile types for token exchange. Supported values include: custom_authentication, on_behalf_of_token_exchange.
 	AllowAnyProfileOfTypes []string `pulumi:"allowAnyProfileOfTypes"`
 }
 
@@ -53947,7 +55301,7 @@ type GetClientTokenExchangeInput interface {
 }
 
 type GetClientTokenExchangeArgs struct {
-	// List of allowed profile types for token exchange
+	// List of allowed profile types for token exchange. Supported values include: custom_authentication, on_behalf_of_token_exchange.
 	AllowAnyProfileOfTypes pulumi.StringArrayInput `pulumi:"allowAnyProfileOfTypes"`
 }
 
@@ -54002,7 +55356,7 @@ func (o GetClientTokenExchangeOutput) ToGetClientTokenExchangeOutputWithContext(
 	return o
 }
 
-// List of allowed profile types for token exchange
+// List of allowed profile types for token exchange. Supported values include: custom_authentication, on_behalf_of_token_exchange.
 func (o GetClientTokenExchangeOutput) AllowAnyProfileOfTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetClientTokenExchange) []string { return v.AllowAnyProfileOfTypes }).(pulumi.StringArrayOutput)
 }
@@ -54262,12 +55616,22 @@ type GetClientsClient struct {
 	Description string `pulumi:"description"`
 	// Express Configuration settings for the client. Used with OIN Express Configuration.
 	ExpressConfigurations []GetClientsClientExpressConfiguration `pulumi:"expressConfigurations"`
+	// The URL of the Client ID Metadata Document. Only present for CIMD-registered clients.
+	ExternalClientId string `pulumi:"externalClientId"`
+	// Who created the external metadata client: `admin` (via Management API), `client` (self-registered), or `unknown`.
+	ExternalMetadataCreatedBy string `pulumi:"externalMetadataCreatedBy"`
+	// Type of external metadata. Value is `cimd` for CIMD-registered clients.
+	ExternalMetadataType string `pulumi:"externalMetadataType"`
 	// Types of grants that this client is authorized to use.
 	GrantTypes []string `pulumi:"grantTypes"`
-	// Indicates whether this client is a first-party client.Defaults to true from the API
+	// Indicates whether this client is a first-party client.
 	IsFirstParty bool `pulumi:"isFirstParty"`
 	// Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `clientSecretPost` or `clientSecretBasic`. Setting this property when creating the resource, will default the authentication method to `clientSecretPost`. To change the authentication method to `clientSecretBasic` use the `ClientCredentials` resource.
 	IsTokenEndpointIpHeaderTrusted bool `pulumi:"isTokenEndpointIpHeaderTrusted"`
+	// URL for the JSON Web Key Set (JWKS) containing the public keys used for `privateKeyJwt` authentication. Only present for CIMD clients using `privateKeyJwt` authentication.
+	JwksUri string `pulumi:"jwksUri"`
+	// Configuration for self-service organization features, controlling how organizations are created and managed for this client.
+	MyOrganizationConfigurations []GetClientsClientMyOrganizationConfiguration `pulumi:"myOrganizationConfigurations"`
 	// The name of the client. If not provided, `clientId` must be set.
 	Name *string `pulumi:"name"`
 	// Configure OIDC logout for the Client
@@ -54321,12 +55685,22 @@ type GetClientsClientArgs struct {
 	Description pulumi.StringInput `pulumi:"description"`
 	// Express Configuration settings for the client. Used with OIN Express Configuration.
 	ExpressConfigurations GetClientsClientExpressConfigurationArrayInput `pulumi:"expressConfigurations"`
+	// The URL of the Client ID Metadata Document. Only present for CIMD-registered clients.
+	ExternalClientId pulumi.StringInput `pulumi:"externalClientId"`
+	// Who created the external metadata client: `admin` (via Management API), `client` (self-registered), or `unknown`.
+	ExternalMetadataCreatedBy pulumi.StringInput `pulumi:"externalMetadataCreatedBy"`
+	// Type of external metadata. Value is `cimd` for CIMD-registered clients.
+	ExternalMetadataType pulumi.StringInput `pulumi:"externalMetadataType"`
 	// Types of grants that this client is authorized to use.
 	GrantTypes pulumi.StringArrayInput `pulumi:"grantTypes"`
-	// Indicates whether this client is a first-party client.Defaults to true from the API
+	// Indicates whether this client is a first-party client.
 	IsFirstParty pulumi.BoolInput `pulumi:"isFirstParty"`
 	// Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `clientSecretPost` or `clientSecretBasic`. Setting this property when creating the resource, will default the authentication method to `clientSecretPost`. To change the authentication method to `clientSecretBasic` use the `ClientCredentials` resource.
 	IsTokenEndpointIpHeaderTrusted pulumi.BoolInput `pulumi:"isTokenEndpointIpHeaderTrusted"`
+	// URL for the JSON Web Key Set (JWKS) containing the public keys used for `privateKeyJwt` authentication. Only present for CIMD clients using `privateKeyJwt` authentication.
+	JwksUri pulumi.StringInput `pulumi:"jwksUri"`
+	// Configuration for self-service organization features, controlling how organizations are created and managed for this client.
+	MyOrganizationConfigurations GetClientsClientMyOrganizationConfigurationArrayInput `pulumi:"myOrganizationConfigurations"`
 	// The name of the client. If not provided, `clientId` must be set.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Configure OIDC logout for the Client
@@ -54452,12 +55826,27 @@ func (o GetClientsClientOutput) ExpressConfigurations() GetClientsClientExpressC
 	return o.ApplyT(func(v GetClientsClient) []GetClientsClientExpressConfiguration { return v.ExpressConfigurations }).(GetClientsClientExpressConfigurationArrayOutput)
 }
 
+// The URL of the Client ID Metadata Document. Only present for CIMD-registered clients.
+func (o GetClientsClientOutput) ExternalClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientsClient) string { return v.ExternalClientId }).(pulumi.StringOutput)
+}
+
+// Who created the external metadata client: `admin` (via Management API), `client` (self-registered), or `unknown`.
+func (o GetClientsClientOutput) ExternalMetadataCreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientsClient) string { return v.ExternalMetadataCreatedBy }).(pulumi.StringOutput)
+}
+
+// Type of external metadata. Value is `cimd` for CIMD-registered clients.
+func (o GetClientsClientOutput) ExternalMetadataType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientsClient) string { return v.ExternalMetadataType }).(pulumi.StringOutput)
+}
+
 // Types of grants that this client is authorized to use.
 func (o GetClientsClientOutput) GrantTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetClientsClient) []string { return v.GrantTypes }).(pulumi.StringArrayOutput)
 }
 
-// Indicates whether this client is a first-party client.Defaults to true from the API
+// Indicates whether this client is a first-party client.
 func (o GetClientsClientOutput) IsFirstParty() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetClientsClient) bool { return v.IsFirstParty }).(pulumi.BoolOutput)
 }
@@ -54465,6 +55854,18 @@ func (o GetClientsClientOutput) IsFirstParty() pulumi.BoolOutput {
 // Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `clientSecretPost` or `clientSecretBasic`. Setting this property when creating the resource, will default the authentication method to `clientSecretPost`. To change the authentication method to `clientSecretBasic` use the `ClientCredentials` resource.
 func (o GetClientsClientOutput) IsTokenEndpointIpHeaderTrusted() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetClientsClient) bool { return v.IsTokenEndpointIpHeaderTrusted }).(pulumi.BoolOutput)
+}
+
+// URL for the JSON Web Key Set (JWKS) containing the public keys used for `privateKeyJwt` authentication. Only present for CIMD clients using `privateKeyJwt` authentication.
+func (o GetClientsClientOutput) JwksUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientsClient) string { return v.JwksUri }).(pulumi.StringOutput)
+}
+
+// Configuration for self-service organization features, controlling how organizations are created and managed for this client.
+func (o GetClientsClientOutput) MyOrganizationConfigurations() GetClientsClientMyOrganizationConfigurationArrayOutput {
+	return o.ApplyT(func(v GetClientsClient) []GetClientsClientMyOrganizationConfiguration {
+		return v.MyOrganizationConfigurations
+	}).(GetClientsClientMyOrganizationConfigurationArrayOutput)
 }
 
 // The name of the client. If not provided, `clientId` must be set.
@@ -54797,6 +56198,130 @@ func (o GetClientsClientExpressConfigurationLinkedClientArrayOutput) Index(i pul
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientsClientExpressConfigurationLinkedClient {
 		return vs[0].([]GetClientsClientExpressConfigurationLinkedClient)[vs[1].(int)]
 	}).(GetClientsClientExpressConfigurationLinkedClientOutput)
+}
+
+type GetClientsClientMyOrganizationConfiguration struct {
+	// The list of connection strategies that are allowed when creating organizations for this client (e.g. "okta", "samlp").
+	AllowedStrategies []string `pulumi:"allowedStrategies"`
+	// Controls the behavior when deleting connections associated with organizations for this client. Possible values: `allow`, `allowIfEmpty`.
+	ConnectionDeletionBehavior string `pulumi:"connectionDeletionBehavior"`
+	// The ID of the connection profile to use when creating organizations for this client.
+	ConnectionProfileId string `pulumi:"connectionProfileId"`
+	// The ID of the user attribute profile to use when creating organizations for this client.
+	UserAttributeProfileId string `pulumi:"userAttributeProfileId"`
+}
+
+// GetClientsClientMyOrganizationConfigurationInput is an input type that accepts GetClientsClientMyOrganizationConfigurationArgs and GetClientsClientMyOrganizationConfigurationOutput values.
+// You can construct a concrete instance of `GetClientsClientMyOrganizationConfigurationInput` via:
+//
+//	GetClientsClientMyOrganizationConfigurationArgs{...}
+type GetClientsClientMyOrganizationConfigurationInput interface {
+	pulumi.Input
+
+	ToGetClientsClientMyOrganizationConfigurationOutput() GetClientsClientMyOrganizationConfigurationOutput
+	ToGetClientsClientMyOrganizationConfigurationOutputWithContext(context.Context) GetClientsClientMyOrganizationConfigurationOutput
+}
+
+type GetClientsClientMyOrganizationConfigurationArgs struct {
+	// The list of connection strategies that are allowed when creating organizations for this client (e.g. "okta", "samlp").
+	AllowedStrategies pulumi.StringArrayInput `pulumi:"allowedStrategies"`
+	// Controls the behavior when deleting connections associated with organizations for this client. Possible values: `allow`, `allowIfEmpty`.
+	ConnectionDeletionBehavior pulumi.StringInput `pulumi:"connectionDeletionBehavior"`
+	// The ID of the connection profile to use when creating organizations for this client.
+	ConnectionProfileId pulumi.StringInput `pulumi:"connectionProfileId"`
+	// The ID of the user attribute profile to use when creating organizations for this client.
+	UserAttributeProfileId pulumi.StringInput `pulumi:"userAttributeProfileId"`
+}
+
+func (GetClientsClientMyOrganizationConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClientMyOrganizationConfiguration)(nil)).Elem()
+}
+
+func (i GetClientsClientMyOrganizationConfigurationArgs) ToGetClientsClientMyOrganizationConfigurationOutput() GetClientsClientMyOrganizationConfigurationOutput {
+	return i.ToGetClientsClientMyOrganizationConfigurationOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientMyOrganizationConfigurationArgs) ToGetClientsClientMyOrganizationConfigurationOutputWithContext(ctx context.Context) GetClientsClientMyOrganizationConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientMyOrganizationConfigurationOutput)
+}
+
+// GetClientsClientMyOrganizationConfigurationArrayInput is an input type that accepts GetClientsClientMyOrganizationConfigurationArray and GetClientsClientMyOrganizationConfigurationArrayOutput values.
+// You can construct a concrete instance of `GetClientsClientMyOrganizationConfigurationArrayInput` via:
+//
+//	GetClientsClientMyOrganizationConfigurationArray{ GetClientsClientMyOrganizationConfigurationArgs{...} }
+type GetClientsClientMyOrganizationConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToGetClientsClientMyOrganizationConfigurationArrayOutput() GetClientsClientMyOrganizationConfigurationArrayOutput
+	ToGetClientsClientMyOrganizationConfigurationArrayOutputWithContext(context.Context) GetClientsClientMyOrganizationConfigurationArrayOutput
+}
+
+type GetClientsClientMyOrganizationConfigurationArray []GetClientsClientMyOrganizationConfigurationInput
+
+func (GetClientsClientMyOrganizationConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClientMyOrganizationConfiguration)(nil)).Elem()
+}
+
+func (i GetClientsClientMyOrganizationConfigurationArray) ToGetClientsClientMyOrganizationConfigurationArrayOutput() GetClientsClientMyOrganizationConfigurationArrayOutput {
+	return i.ToGetClientsClientMyOrganizationConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientMyOrganizationConfigurationArray) ToGetClientsClientMyOrganizationConfigurationArrayOutputWithContext(ctx context.Context) GetClientsClientMyOrganizationConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientMyOrganizationConfigurationArrayOutput)
+}
+
+type GetClientsClientMyOrganizationConfigurationOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientMyOrganizationConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClientMyOrganizationConfiguration)(nil)).Elem()
+}
+
+func (o GetClientsClientMyOrganizationConfigurationOutput) ToGetClientsClientMyOrganizationConfigurationOutput() GetClientsClientMyOrganizationConfigurationOutput {
+	return o
+}
+
+func (o GetClientsClientMyOrganizationConfigurationOutput) ToGetClientsClientMyOrganizationConfigurationOutputWithContext(ctx context.Context) GetClientsClientMyOrganizationConfigurationOutput {
+	return o
+}
+
+// The list of connection strategies that are allowed when creating organizations for this client (e.g. "okta", "samlp").
+func (o GetClientsClientMyOrganizationConfigurationOutput) AllowedStrategies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClientsClientMyOrganizationConfiguration) []string { return v.AllowedStrategies }).(pulumi.StringArrayOutput)
+}
+
+// Controls the behavior when deleting connections associated with organizations for this client. Possible values: `allow`, `allowIfEmpty`.
+func (o GetClientsClientMyOrganizationConfigurationOutput) ConnectionDeletionBehavior() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientsClientMyOrganizationConfiguration) string { return v.ConnectionDeletionBehavior }).(pulumi.StringOutput)
+}
+
+// The ID of the connection profile to use when creating organizations for this client.
+func (o GetClientsClientMyOrganizationConfigurationOutput) ConnectionProfileId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientsClientMyOrganizationConfiguration) string { return v.ConnectionProfileId }).(pulumi.StringOutput)
+}
+
+// The ID of the user attribute profile to use when creating organizations for this client.
+func (o GetClientsClientMyOrganizationConfigurationOutput) UserAttributeProfileId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientsClientMyOrganizationConfiguration) string { return v.UserAttributeProfileId }).(pulumi.StringOutput)
+}
+
+type GetClientsClientMyOrganizationConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientMyOrganizationConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClientMyOrganizationConfiguration)(nil)).Elem()
+}
+
+func (o GetClientsClientMyOrganizationConfigurationArrayOutput) ToGetClientsClientMyOrganizationConfigurationArrayOutput() GetClientsClientMyOrganizationConfigurationArrayOutput {
+	return o
+}
+
+func (o GetClientsClientMyOrganizationConfigurationArrayOutput) ToGetClientsClientMyOrganizationConfigurationArrayOutputWithContext(ctx context.Context) GetClientsClientMyOrganizationConfigurationArrayOutput {
+	return o
+}
+
+func (o GetClientsClientMyOrganizationConfigurationArrayOutput) Index(i pulumi.IntInput) GetClientsClientMyOrganizationConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientsClientMyOrganizationConfiguration {
+		return vs[0].([]GetClientsClientMyOrganizationConfiguration)[vs[1].(int)]
+	}).(GetClientsClientMyOrganizationConfigurationOutput)
 }
 
 type GetClientsClientOidcLogout struct {
@@ -55261,7 +56786,7 @@ func (o GetClientsClientSessionTransferArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 type GetClientsClientTokenExchange struct {
-	// List of allowed profile types for token exchange
+	// List of allowed profile types for token exchange. Supported values include: custom_authentication, on_behalf_of_token_exchange.
 	AllowAnyProfileOfTypes []string `pulumi:"allowAnyProfileOfTypes"`
 }
 
@@ -55277,7 +56802,7 @@ type GetClientsClientTokenExchangeInput interface {
 }
 
 type GetClientsClientTokenExchangeArgs struct {
-	// List of allowed profile types for token exchange
+	// List of allowed profile types for token exchange. Supported values include: custom_authentication, on_behalf_of_token_exchange.
 	AllowAnyProfileOfTypes pulumi.StringArrayInput `pulumi:"allowAnyProfileOfTypes"`
 }
 
@@ -55332,7 +56857,7 @@ func (o GetClientsClientTokenExchangeOutput) ToGetClientsClientTokenExchangeOutp
 	return o
 }
 
-// List of allowed profile types for token exchange
+// List of allowed profile types for token exchange. Supported values include: custom_authentication, on_behalf_of_token_exchange.
 func (o GetClientsClientTokenExchangeOutput) AllowAnyProfileOfTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetClientsClientTokenExchange) []string { return v.AllowAnyProfileOfTypes }).(pulumi.StringArrayOutput)
 }
@@ -64530,9 +66055,15 @@ type GetOrganizationConnectionType struct {
 	AssignMembershipOnLogin bool `pulumi:"assignMembershipOnLogin"`
 	// The ID of the enabled connection on the organization.
 	ConnectionId string `pulumi:"connectionId"`
+	// Whether the connection is enabled for the organization.
+	IsEnabled bool `pulumi:"isEnabled"`
 	// Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `isSignupEnabled` can only be `true` if `assignMembershipOnLogin` is `true`.
 	IsSignupEnabled bool `pulumi:"isSignupEnabled"`
-	// Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+	// The access level for this organization connection. Can be `none`, `readonly`, `limited`, or `full`.
+	OrganizationAccessLevel string `pulumi:"organizationAccessLevel"`
+	// Name of the connection in the scope of this organization.
+	OrganizationConnectionName string `pulumi:"organizationConnectionName"`
+	// Determines whether a connection should be displayed on this organization's login prompt. Only applicable for enterprise connections.
 	ShowAsButton bool `pulumi:"showAsButton"`
 }
 
@@ -64552,9 +66083,15 @@ type GetOrganizationConnectionTypeArgs struct {
 	AssignMembershipOnLogin pulumi.BoolInput `pulumi:"assignMembershipOnLogin"`
 	// The ID of the enabled connection on the organization.
 	ConnectionId pulumi.StringInput `pulumi:"connectionId"`
+	// Whether the connection is enabled for the organization.
+	IsEnabled pulumi.BoolInput `pulumi:"isEnabled"`
 	// Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `isSignupEnabled` can only be `true` if `assignMembershipOnLogin` is `true`.
 	IsSignupEnabled pulumi.BoolInput `pulumi:"isSignupEnabled"`
-	// Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+	// The access level for this organization connection. Can be `none`, `readonly`, `limited`, or `full`.
+	OrganizationAccessLevel pulumi.StringInput `pulumi:"organizationAccessLevel"`
+	// Name of the connection in the scope of this organization.
+	OrganizationConnectionName pulumi.StringInput `pulumi:"organizationConnectionName"`
+	// Determines whether a connection should be displayed on this organization's login prompt. Only applicable for enterprise connections.
 	ShowAsButton pulumi.BoolInput `pulumi:"showAsButton"`
 }
 
@@ -64619,12 +66156,27 @@ func (o GetOrganizationConnectionTypeOutput) ConnectionId() pulumi.StringOutput 
 	return o.ApplyT(func(v GetOrganizationConnectionType) string { return v.ConnectionId }).(pulumi.StringOutput)
 }
 
+// Whether the connection is enabled for the organization.
+func (o GetOrganizationConnectionTypeOutput) IsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetOrganizationConnectionType) bool { return v.IsEnabled }).(pulumi.BoolOutput)
+}
+
 // Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `isSignupEnabled` can only be `true` if `assignMembershipOnLogin` is `true`.
 func (o GetOrganizationConnectionTypeOutput) IsSignupEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetOrganizationConnectionType) bool { return v.IsSignupEnabled }).(pulumi.BoolOutput)
 }
 
-// Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+// The access level for this organization connection. Can be `none`, `readonly`, `limited`, or `full`.
+func (o GetOrganizationConnectionTypeOutput) OrganizationAccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationConnectionType) string { return v.OrganizationAccessLevel }).(pulumi.StringOutput)
+}
+
+// Name of the connection in the scope of this organization.
+func (o GetOrganizationConnectionTypeOutput) OrganizationConnectionName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationConnectionType) string { return v.OrganizationConnectionName }).(pulumi.StringOutput)
+}
+
+// Determines whether a connection should be displayed on this organization's login prompt. Only applicable for enterprise connections.
 func (o GetOrganizationConnectionTypeOutput) ShowAsButton() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetOrganizationConnectionType) bool { return v.ShowAsButton }).(pulumi.BoolOutput)
 }
@@ -70227,6 +71779,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsZendeskPtrInput)(nil)).Elem(), ClientAddonsZendeskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsZoomInput)(nil)).Elem(), ClientAddonsZoomArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientAddonsZoomPtrInput)(nil)).Elem(), ClientAddonsZoomArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientCimdDefaultOrganizationInput)(nil)).Elem(), ClientCimdDefaultOrganizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientCimdDefaultOrganizationPtrInput)(nil)).Elem(), ClientCimdDefaultOrganizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientCimdJwtConfigurationInput)(nil)).Elem(), ClientCimdJwtConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientCimdJwtConfigurationPtrInput)(nil)).Elem(), ClientCimdJwtConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientCimdRefreshTokenInput)(nil)).Elem(), ClientCimdRefreshTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientCimdRefreshTokenPtrInput)(nil)).Elem(), ClientCimdRefreshTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientCimdTokenQuotaInput)(nil)).Elem(), ClientCimdTokenQuotaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientCimdTokenQuotaPtrInput)(nil)).Elem(), ClientCimdTokenQuotaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientCimdTokenQuotaClientCredentialsInput)(nil)).Elem(), ClientCimdTokenQuotaClientCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientCimdTokenQuotaClientCredentialsPtrInput)(nil)).Elem(), ClientCimdTokenQuotaClientCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientCimdValidationInput)(nil)).Elem(), ClientCimdValidationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientCimdValidationArrayInput)(nil)).Elem(), ClientCimdValidationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientCredentialsPrivateKeyJwtInput)(nil)).Elem(), ClientCredentialsPrivateKeyJwtArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientCredentialsPrivateKeyJwtPtrInput)(nil)).Elem(), ClientCredentialsPrivateKeyJwtArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientCredentialsPrivateKeyJwtCredentialInput)(nil)).Elem(), ClientCredentialsPrivateKeyJwtCredentialArgs{})
@@ -70257,6 +71821,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientMobileAndroidPtrInput)(nil)).Elem(), ClientMobileAndroidArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientMobileIosInput)(nil)).Elem(), ClientMobileIosArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientMobileIosPtrInput)(nil)).Elem(), ClientMobileIosArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientMyOrganizationConfigurationInput)(nil)).Elem(), ClientMyOrganizationConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientMyOrganizationConfigurationPtrInput)(nil)).Elem(), ClientMyOrganizationConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientNativeSocialLoginInput)(nil)).Elem(), ClientNativeSocialLoginArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientNativeSocialLoginPtrInput)(nil)).Elem(), ClientNativeSocialLoginArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientNativeSocialLoginAppleInput)(nil)).Elem(), ClientNativeSocialLoginAppleArgs{})
@@ -70742,6 +72308,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientMobileAndroidArrayInput)(nil)).Elem(), GetClientMobileAndroidArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientMobileIoInput)(nil)).Elem(), GetClientMobileIoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientMobileIoArrayInput)(nil)).Elem(), GetClientMobileIoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientMyOrganizationConfigurationInput)(nil)).Elem(), GetClientMyOrganizationConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientMyOrganizationConfigurationArrayInput)(nil)).Elem(), GetClientMyOrganizationConfigurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientNativeSocialLoginInput)(nil)).Elem(), GetClientNativeSocialLoginArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientNativeSocialLoginArrayInput)(nil)).Elem(), GetClientNativeSocialLoginArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientNativeSocialLoginAppleInput)(nil)).Elem(), GetClientNativeSocialLoginAppleArgs{})
@@ -70778,6 +72346,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientExpressConfigurationArrayInput)(nil)).Elem(), GetClientsClientExpressConfigurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientExpressConfigurationLinkedClientInput)(nil)).Elem(), GetClientsClientExpressConfigurationLinkedClientArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientExpressConfigurationLinkedClientArrayInput)(nil)).Elem(), GetClientsClientExpressConfigurationLinkedClientArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientMyOrganizationConfigurationInput)(nil)).Elem(), GetClientsClientMyOrganizationConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientMyOrganizationConfigurationArrayInput)(nil)).Elem(), GetClientsClientMyOrganizationConfigurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientOidcLogoutInput)(nil)).Elem(), GetClientsClientOidcLogoutArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientOidcLogoutArrayInput)(nil)).Elem(), GetClientsClientOidcLogoutArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientOidcLogoutBackchannelLogoutInitiatorInput)(nil)).Elem(), GetClientsClientOidcLogoutBackchannelLogoutInitiatorArgs{})
@@ -71168,6 +72738,18 @@ func init() {
 	pulumi.RegisterOutputType(ClientAddonsZendeskPtrOutput{})
 	pulumi.RegisterOutputType(ClientAddonsZoomOutput{})
 	pulumi.RegisterOutputType(ClientAddonsZoomPtrOutput{})
+	pulumi.RegisterOutputType(ClientCimdDefaultOrganizationOutput{})
+	pulumi.RegisterOutputType(ClientCimdDefaultOrganizationPtrOutput{})
+	pulumi.RegisterOutputType(ClientCimdJwtConfigurationOutput{})
+	pulumi.RegisterOutputType(ClientCimdJwtConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(ClientCimdRefreshTokenOutput{})
+	pulumi.RegisterOutputType(ClientCimdRefreshTokenPtrOutput{})
+	pulumi.RegisterOutputType(ClientCimdTokenQuotaOutput{})
+	pulumi.RegisterOutputType(ClientCimdTokenQuotaPtrOutput{})
+	pulumi.RegisterOutputType(ClientCimdTokenQuotaClientCredentialsOutput{})
+	pulumi.RegisterOutputType(ClientCimdTokenQuotaClientCredentialsPtrOutput{})
+	pulumi.RegisterOutputType(ClientCimdValidationOutput{})
+	pulumi.RegisterOutputType(ClientCimdValidationArrayOutput{})
 	pulumi.RegisterOutputType(ClientCredentialsPrivateKeyJwtOutput{})
 	pulumi.RegisterOutputType(ClientCredentialsPrivateKeyJwtPtrOutput{})
 	pulumi.RegisterOutputType(ClientCredentialsPrivateKeyJwtCredentialOutput{})
@@ -71198,6 +72780,8 @@ func init() {
 	pulumi.RegisterOutputType(ClientMobileAndroidPtrOutput{})
 	pulumi.RegisterOutputType(ClientMobileIosOutput{})
 	pulumi.RegisterOutputType(ClientMobileIosPtrOutput{})
+	pulumi.RegisterOutputType(ClientMyOrganizationConfigurationOutput{})
+	pulumi.RegisterOutputType(ClientMyOrganizationConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(ClientNativeSocialLoginOutput{})
 	pulumi.RegisterOutputType(ClientNativeSocialLoginPtrOutput{})
 	pulumi.RegisterOutputType(ClientNativeSocialLoginAppleOutput{})
@@ -71683,6 +73267,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClientMobileAndroidArrayOutput{})
 	pulumi.RegisterOutputType(GetClientMobileIoOutput{})
 	pulumi.RegisterOutputType(GetClientMobileIoArrayOutput{})
+	pulumi.RegisterOutputType(GetClientMyOrganizationConfigurationOutput{})
+	pulumi.RegisterOutputType(GetClientMyOrganizationConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(GetClientNativeSocialLoginOutput{})
 	pulumi.RegisterOutputType(GetClientNativeSocialLoginArrayOutput{})
 	pulumi.RegisterOutputType(GetClientNativeSocialLoginAppleOutput{})
@@ -71719,6 +73305,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClientsClientExpressConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(GetClientsClientExpressConfigurationLinkedClientOutput{})
 	pulumi.RegisterOutputType(GetClientsClientExpressConfigurationLinkedClientArrayOutput{})
+	pulumi.RegisterOutputType(GetClientsClientMyOrganizationConfigurationOutput{})
+	pulumi.RegisterOutputType(GetClientsClientMyOrganizationConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(GetClientsClientOidcLogoutOutput{})
 	pulumi.RegisterOutputType(GetClientsClientOidcLogoutArrayOutput{})
 	pulumi.RegisterOutputType(GetClientsClientOidcLogoutBackchannelLogoutInitiatorOutput{})

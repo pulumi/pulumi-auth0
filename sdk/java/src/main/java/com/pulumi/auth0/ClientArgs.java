@@ -8,6 +8,7 @@ import com.pulumi.auth0.inputs.ClientDefaultOrganizationArgs;
 import com.pulumi.auth0.inputs.ClientExpressConfigurationArgs;
 import com.pulumi.auth0.inputs.ClientJwtConfigurationArgs;
 import com.pulumi.auth0.inputs.ClientMobileArgs;
+import com.pulumi.auth0.inputs.ClientMyOrganizationConfigurationArgs;
 import com.pulumi.auth0.inputs.ClientNativeSocialLoginArgs;
 import com.pulumi.auth0.inputs.ClientOidcLogoutArgs;
 import com.pulumi.auth0.inputs.ClientRefreshTokenArgs;
@@ -346,14 +347,14 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Indicates whether this client is a first-party client.Defaults to true from the API
+     * Indicates whether this client is a first-party client.
      * 
      */
     @Import(name="isFirstParty")
     private @Nullable Output<Boolean> isFirstParty;
 
     /**
-     * @return Indicates whether this client is a first-party client.Defaults to true from the API
+     * @return Indicates whether this client is a first-party client.
      * 
      */
     public Optional<Output<Boolean>> isFirstParty() {
@@ -418,6 +419,21 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<ClientMobileArgs>> mobile() {
         return Optional.ofNullable(this.mobile);
+    }
+
+    /**
+     * Configuration for self-service organization features, controlling how organizations are created and managed for this client.
+     * 
+     */
+    @Import(name="myOrganizationConfiguration")
+    private @Nullable Output<ClientMyOrganizationConfigurationArgs> myOrganizationConfiguration;
+
+    /**
+     * @return Configuration for self-service organization features, controlling how organizations are created and managed for this client.
+     * 
+     */
+    public Optional<Output<ClientMyOrganizationConfigurationArgs>> myOrganizationConfiguration() {
+        return Optional.ofNullable(this.myOrganizationConfiguration);
     }
 
     /**
@@ -734,6 +750,7 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
         this.jwtConfiguration = $.jwtConfiguration;
         this.logoUri = $.logoUri;
         this.mobile = $.mobile;
+        this.myOrganizationConfiguration = $.myOrganizationConfiguration;
         this.name = $.name;
         this.nativeSocialLogin = $.nativeSocialLogin;
         this.oidcBackchannelLogoutUrls = $.oidcBackchannelLogoutUrls;
@@ -1285,7 +1302,7 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param isFirstParty Indicates whether this client is a first-party client.Defaults to true from the API
+         * @param isFirstParty Indicates whether this client is a first-party client.
          * 
          * @return builder
          * 
@@ -1296,7 +1313,7 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param isFirstParty Indicates whether this client is a first-party client.Defaults to true from the API
+         * @param isFirstParty Indicates whether this client is a first-party client.
          * 
          * @return builder
          * 
@@ -1387,6 +1404,27 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder mobile(ClientMobileArgs mobile) {
             return mobile(Output.of(mobile));
+        }
+
+        /**
+         * @param myOrganizationConfiguration Configuration for self-service organization features, controlling how organizations are created and managed for this client.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder myOrganizationConfiguration(@Nullable Output<ClientMyOrganizationConfigurationArgs> myOrganizationConfiguration) {
+            $.myOrganizationConfiguration = myOrganizationConfiguration;
+            return this;
+        }
+
+        /**
+         * @param myOrganizationConfiguration Configuration for self-service organization features, controlling how organizations are created and managed for this client.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder myOrganizationConfiguration(ClientMyOrganizationConfigurationArgs myOrganizationConfiguration) {
+            return myOrganizationConfiguration(Output.of(myOrganizationConfiguration));
         }
 
         /**

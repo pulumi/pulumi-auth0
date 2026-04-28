@@ -70,7 +70,7 @@ namespace Pulumi.Auth0
         /// When `True`, all users that log in with this connection will be automatically granted membership in the organization. When `False`, users must be granted membership in the organization before logging in with this connection.
         /// </summary>
         [Output("assignMembershipOnLogin")]
-        public Output<bool?> AssignMembershipOnLogin { get; private set; } = null!;
+        public Output<bool> AssignMembershipOnLogin { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the connection to enable for the organization.
@@ -79,10 +79,16 @@ namespace Pulumi.Auth0
         public Output<string> ConnectionId { get; private set; } = null!;
 
         /// <summary>
+        /// Whether the connection is enabled for the organization.
+        /// </summary>
+        [Output("isEnabled")]
+        public Output<bool?> IsEnabled { get; private set; } = null!;
+
+        /// <summary>
         /// Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `IsSignupEnabled` can only be `True` if `AssignMembershipOnLogin` is `True`.
         /// </summary>
         [Output("isSignupEnabled")]
-        public Output<bool?> IsSignupEnabled { get; private set; } = null!;
+        public Output<bool> IsSignupEnabled { get; private set; } = null!;
 
         /// <summary>
         /// The name of the enabled connection.
@@ -91,16 +97,28 @@ namespace Pulumi.Auth0
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// The access level for this organization connection. Can be `None`, `Readonly`, `Limited` or `Full`.
+        /// </summary>
+        [Output("organizationAccessLevel")]
+        public Output<string> OrganizationAccessLevel { get; private set; } = null!;
+
+        /// <summary>
+        /// Name of the connection in the scope of this organization.
+        /// </summary>
+        [Output("organizationConnectionName")]
+        public Output<string> OrganizationConnectionName { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the organization to enable the connection for.
         /// </summary>
         [Output("organizationId")]
         public Output<string> OrganizationId { get; private set; } = null!;
 
         /// <summary>
-        /// Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+        /// Determines whether a connection should be displayed on this organization's login prompt. Only applicable for enterprise connections.
         /// </summary>
         [Output("showAsButton")]
-        public Output<bool?> ShowAsButton { get; private set; } = null!;
+        public Output<bool> ShowAsButton { get; private set; } = null!;
 
         /// <summary>
         /// The strategy of the enabled connection.
@@ -167,10 +185,22 @@ namespace Pulumi.Auth0
         public Input<string> ConnectionId { get; set; } = null!;
 
         /// <summary>
+        /// Whether the connection is enabled for the organization.
+        /// </summary>
+        [Input("isEnabled")]
+        public Input<bool>? IsEnabled { get; set; }
+
+        /// <summary>
         /// Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `IsSignupEnabled` can only be `True` if `AssignMembershipOnLogin` is `True`.
         /// </summary>
         [Input("isSignupEnabled")]
         public Input<bool>? IsSignupEnabled { get; set; }
+
+        /// <summary>
+        /// The access level for this organization connection. Can be `None`, `Readonly`, `Limited` or `Full`.
+        /// </summary>
+        [Input("organizationAccessLevel")]
+        public Input<string>? OrganizationAccessLevel { get; set; }
 
         /// <summary>
         /// The ID of the organization to enable the connection for.
@@ -179,7 +209,7 @@ namespace Pulumi.Auth0
         public Input<string> OrganizationId { get; set; } = null!;
 
         /// <summary>
-        /// Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+        /// Determines whether a connection should be displayed on this organization's login prompt. Only applicable for enterprise connections.
         /// </summary>
         [Input("showAsButton")]
         public Input<bool>? ShowAsButton { get; set; }
@@ -205,6 +235,12 @@ namespace Pulumi.Auth0
         public Input<string>? ConnectionId { get; set; }
 
         /// <summary>
+        /// Whether the connection is enabled for the organization.
+        /// </summary>
+        [Input("isEnabled")]
+        public Input<bool>? IsEnabled { get; set; }
+
+        /// <summary>
         /// Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `IsSignupEnabled` can only be `True` if `AssignMembershipOnLogin` is `True`.
         /// </summary>
         [Input("isSignupEnabled")]
@@ -217,13 +253,25 @@ namespace Pulumi.Auth0
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// The access level for this organization connection. Can be `None`, `Readonly`, `Limited` or `Full`.
+        /// </summary>
+        [Input("organizationAccessLevel")]
+        public Input<string>? OrganizationAccessLevel { get; set; }
+
+        /// <summary>
+        /// Name of the connection in the scope of this organization.
+        /// </summary>
+        [Input("organizationConnectionName")]
+        public Input<string>? OrganizationConnectionName { get; set; }
+
+        /// <summary>
         /// The ID of the organization to enable the connection for.
         /// </summary>
         [Input("organizationId")]
         public Input<string>? OrganizationId { get; set; }
 
         /// <summary>
-        /// Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+        /// Determines whether a connection should be displayed on this organization's login prompt. Only applicable for enterprise connections.
         /// </summary>
         [Input("showAsButton")]
         public Input<bool>? ShowAsButton { get; set; }

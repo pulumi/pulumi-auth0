@@ -137,6 +137,18 @@ export interface GetClientResult {
      */
     readonly expressConfigurations: outputs.GetClientExpressConfiguration[];
     /**
+     * The URL of the Client ID Metadata Document. Only present for CIMD-registered clients.
+     */
+    readonly externalClientId: string;
+    /**
+     * Who created the external metadata client: `admin` (via Management API), `client` (self-registered), or `unknown`.
+     */
+    readonly externalMetadataCreatedBy: string;
+    /**
+     * Type of external metadata. Value is `cimd` for CIMD-registered clients.
+     */
+    readonly externalMetadataType: string;
+    /**
      * HTML form template to be used for WS-Federation.
      */
     readonly formTemplate: string;
@@ -153,13 +165,17 @@ export interface GetClientResult {
      */
     readonly initiateLoginUri: string;
     /**
-     * Indicates whether this client is a first-party client.Defaults to true from the API
+     * Indicates whether this client is a first-party client.
      */
     readonly isFirstParty: boolean;
     /**
      * Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `clientSecretPost` or `clientSecretBasic`. Setting this property when creating the resource, will default the authentication method to `clientSecretPost`. To change the authentication method to `clientSecretBasic` use the `auth0.ClientCredentials` resource.
      */
     readonly isTokenEndpointIpHeaderTrusted: boolean;
+    /**
+     * URL for the JSON Web Key Set (JWKS) containing the public keys used for `privateKeyJwt` authentication. Only present for CIMD clients using `privateKeyJwt` authentication.
+     */
+    readonly jwksUri: string;
     /**
      * Configuration settings for the JWTs issued for this client.
      */
@@ -172,6 +188,10 @@ export interface GetClientResult {
      * Additional configuration for native mobile apps.
      */
     readonly mobiles: outputs.GetClientMobile[];
+    /**
+     * Configuration for self-service organization features, controlling how organizations are created and managed for this client.
+     */
+    readonly myOrganizationConfigurations: outputs.GetClientMyOrganizationConfiguration[];
     /**
      * The name of the client. If not provided, `clientId` must be set.
      */

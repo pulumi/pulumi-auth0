@@ -78,27 +78,39 @@ export class OrganizationConnection extends pulumi.CustomResource {
     /**
      * When `true`, all users that log in with this connection will be automatically granted membership in the organization. When `false`, users must be granted membership in the organization before logging in with this connection.
      */
-    declare public readonly assignMembershipOnLogin: pulumi.Output<boolean | undefined>;
+    declare public readonly assignMembershipOnLogin: pulumi.Output<boolean>;
     /**
      * The ID of the connection to enable for the organization.
      */
     declare public readonly connectionId: pulumi.Output<string>;
     /**
+     * Whether the connection is enabled for the organization.
+     */
+    declare public readonly isEnabled: pulumi.Output<boolean | undefined>;
+    /**
      * Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `isSignupEnabled` can only be `true` if `assignMembershipOnLogin` is `true`.
      */
-    declare public readonly isSignupEnabled: pulumi.Output<boolean | undefined>;
+    declare public readonly isSignupEnabled: pulumi.Output<boolean>;
     /**
      * The name of the enabled connection.
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
+     * The access level for this organization connection. Can be `none`, `readonly`, `limited` or `full`.
+     */
+    declare public readonly organizationAccessLevel: pulumi.Output<string>;
+    /**
+     * Name of the connection in the scope of this organization.
+     */
+    declare public /*out*/ readonly organizationConnectionName: pulumi.Output<string>;
+    /**
      * The ID of the organization to enable the connection for.
      */
     declare public readonly organizationId: pulumi.Output<string>;
     /**
-     * Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+     * Determines whether a connection should be displayed on this organization's login prompt. Only applicable for enterprise connections.
      */
-    declare public readonly showAsButton: pulumi.Output<boolean | undefined>;
+    declare public readonly showAsButton: pulumi.Output<boolean>;
     /**
      * The strategy of the enabled connection.
      */
@@ -119,8 +131,11 @@ export class OrganizationConnection extends pulumi.CustomResource {
             const state = argsOrState as OrganizationConnectionState | undefined;
             resourceInputs["assignMembershipOnLogin"] = state?.assignMembershipOnLogin;
             resourceInputs["connectionId"] = state?.connectionId;
+            resourceInputs["isEnabled"] = state?.isEnabled;
             resourceInputs["isSignupEnabled"] = state?.isSignupEnabled;
             resourceInputs["name"] = state?.name;
+            resourceInputs["organizationAccessLevel"] = state?.organizationAccessLevel;
+            resourceInputs["organizationConnectionName"] = state?.organizationConnectionName;
             resourceInputs["organizationId"] = state?.organizationId;
             resourceInputs["showAsButton"] = state?.showAsButton;
             resourceInputs["strategy"] = state?.strategy;
@@ -134,10 +149,13 @@ export class OrganizationConnection extends pulumi.CustomResource {
             }
             resourceInputs["assignMembershipOnLogin"] = args?.assignMembershipOnLogin;
             resourceInputs["connectionId"] = args?.connectionId;
+            resourceInputs["isEnabled"] = args?.isEnabled;
             resourceInputs["isSignupEnabled"] = args?.isSignupEnabled;
+            resourceInputs["organizationAccessLevel"] = args?.organizationAccessLevel;
             resourceInputs["organizationId"] = args?.organizationId;
             resourceInputs["showAsButton"] = args?.showAsButton;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["organizationConnectionName"] = undefined /*out*/;
             resourceInputs["strategy"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -158,6 +176,10 @@ export interface OrganizationConnectionState {
      */
     connectionId?: pulumi.Input<string>;
     /**
+     * Whether the connection is enabled for the organization.
+     */
+    isEnabled?: pulumi.Input<boolean>;
+    /**
      * Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `isSignupEnabled` can only be `true` if `assignMembershipOnLogin` is `true`.
      */
     isSignupEnabled?: pulumi.Input<boolean>;
@@ -166,11 +188,19 @@ export interface OrganizationConnectionState {
      */
     name?: pulumi.Input<string>;
     /**
+     * The access level for this organization connection. Can be `none`, `readonly`, `limited` or `full`.
+     */
+    organizationAccessLevel?: pulumi.Input<string>;
+    /**
+     * Name of the connection in the scope of this organization.
+     */
+    organizationConnectionName?: pulumi.Input<string>;
+    /**
      * The ID of the organization to enable the connection for.
      */
     organizationId?: pulumi.Input<string>;
     /**
-     * Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+     * Determines whether a connection should be displayed on this organization's login prompt. Only applicable for enterprise connections.
      */
     showAsButton?: pulumi.Input<boolean>;
     /**
@@ -192,15 +222,23 @@ export interface OrganizationConnectionArgs {
      */
     connectionId: pulumi.Input<string>;
     /**
+     * Whether the connection is enabled for the organization.
+     */
+    isEnabled?: pulumi.Input<boolean>;
+    /**
      * Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `isSignupEnabled` can only be `true` if `assignMembershipOnLogin` is `true`.
      */
     isSignupEnabled?: pulumi.Input<boolean>;
+    /**
+     * The access level for this organization connection. Can be `none`, `readonly`, `limited` or `full`.
+     */
+    organizationAccessLevel?: pulumi.Input<string>;
     /**
      * The ID of the organization to enable the connection for.
      */
     organizationId: pulumi.Input<string>;
     /**
-     * Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+     * Determines whether a connection should be displayed on this organization's login prompt. Only applicable for enterprise connections.
      */
     showAsButton?: pulumi.Input<boolean>;
 }

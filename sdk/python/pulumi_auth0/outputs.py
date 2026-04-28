@@ -87,6 +87,12 @@ __all__ = [
     'ClientAddonsWsfed',
     'ClientAddonsZendesk',
     'ClientAddonsZoom',
+    'ClientCimdDefaultOrganization',
+    'ClientCimdJwtConfiguration',
+    'ClientCimdRefreshToken',
+    'ClientCimdTokenQuota',
+    'ClientCimdTokenQuotaClientCredentials',
+    'ClientCimdValidation',
     'ClientCredentialsPrivateKeyJwt',
     'ClientCredentialsPrivateKeyJwtCredential',
     'ClientCredentialsSelfSignedTlsClientAuth',
@@ -102,6 +108,7 @@ __all__ = [
     'ClientMobile',
     'ClientMobileAndroid',
     'ClientMobileIos',
+    'ClientMyOrganizationConfiguration',
     'ClientNativeSocialLogin',
     'ClientNativeSocialLoginApple',
     'ClientNativeSocialLoginFacebook',
@@ -345,6 +352,7 @@ __all__ = [
     'GetClientMobileResult',
     'GetClientMobileAndroidResult',
     'GetClientMobileIoResult',
+    'GetClientMyOrganizationConfigurationResult',
     'GetClientNativeSocialLoginResult',
     'GetClientNativeSocialLoginAppleResult',
     'GetClientNativeSocialLoginFacebookResult',
@@ -363,6 +371,7 @@ __all__ = [
     'GetClientsClientResult',
     'GetClientsClientExpressConfigurationResult',
     'GetClientsClientExpressConfigurationLinkedClientResult',
+    'GetClientsClientMyOrganizationConfigurationResult',
     'GetClientsClientOidcLogoutResult',
     'GetClientsClientOidcLogoutBackchannelLogoutInitiatorResult',
     'GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataResult',
@@ -4949,6 +4958,372 @@ class ClientAddonsZoom(dict):
 
 
 @pulumi.output_type
+class ClientCimdDefaultOrganization(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "organizationId":
+            suggest = "organization_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClientCimdDefaultOrganization. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClientCimdDefaultOrganization.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClientCimdDefaultOrganization.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 flows: Sequence[_builtins.str],
+                 organization_id: _builtins.str):
+        """
+        :param Sequence[_builtins.str] flows: Definition of the flow that needs to be configured. Eg. client_credentials
+        :param _builtins.str organization_id: The unique identifier of the organization
+        """
+        pulumi.set(__self__, "flows", flows)
+        pulumi.set(__self__, "organization_id", organization_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def flows(self) -> Sequence[_builtins.str]:
+        """
+        Definition of the flow that needs to be configured. Eg. client_credentials
+        """
+        return pulumi.get(self, "flows")
+
+    @_builtins.property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> _builtins.str:
+        """
+        The unique identifier of the organization
+        """
+        return pulumi.get(self, "organization_id")
+
+
+@pulumi.output_type
+class ClientCimdJwtConfiguration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "lifetimeInSeconds":
+            suggest = "lifetime_in_seconds"
+        elif key == "secretEncoded":
+            suggest = "secret_encoded"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClientCimdJwtConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClientCimdJwtConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClientCimdJwtConfiguration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 alg: Optional[_builtins.str] = None,
+                 lifetime_in_seconds: Optional[_builtins.int] = None,
+                 secret_encoded: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str alg: Algorithm used to sign JWTs. CIMD clients support `RS256`, `RS512`, and `PS256` (asymmetric only).
+        :param _builtins.int lifetime_in_seconds: Number of seconds during which the JWT will be valid.
+        :param _builtins.bool secret_encoded: Indicates whether the client secret is Base64-encoded.
+        """
+        if alg is not None:
+            pulumi.set(__self__, "alg", alg)
+        if lifetime_in_seconds is not None:
+            pulumi.set(__self__, "lifetime_in_seconds", lifetime_in_seconds)
+        if secret_encoded is not None:
+            pulumi.set(__self__, "secret_encoded", secret_encoded)
+
+    @_builtins.property
+    @pulumi.getter
+    def alg(self) -> Optional[_builtins.str]:
+        """
+        Algorithm used to sign JWTs. CIMD clients support `RS256`, `RS512`, and `PS256` (asymmetric only).
+        """
+        return pulumi.get(self, "alg")
+
+    @_builtins.property
+    @pulumi.getter(name="lifetimeInSeconds")
+    def lifetime_in_seconds(self) -> Optional[_builtins.int]:
+        """
+        Number of seconds during which the JWT will be valid.
+        """
+        return pulumi.get(self, "lifetime_in_seconds")
+
+    @_builtins.property
+    @pulumi.getter(name="secretEncoded")
+    def secret_encoded(self) -> Optional[_builtins.bool]:
+        """
+        Indicates whether the client secret is Base64-encoded.
+        """
+        return pulumi.get(self, "secret_encoded")
+
+
+@pulumi.output_type
+class ClientCimdRefreshToken(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "expirationType":
+            suggest = "expiration_type"
+        elif key == "idleTokenLifetime":
+            suggest = "idle_token_lifetime"
+        elif key == "infiniteIdleTokenLifetime":
+            suggest = "infinite_idle_token_lifetime"
+        elif key == "infiniteTokenLifetime":
+            suggest = "infinite_token_lifetime"
+        elif key == "rotationType":
+            suggest = "rotation_type"
+        elif key == "tokenLifetime":
+            suggest = "token_lifetime"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClientCimdRefreshToken. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClientCimdRefreshToken.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClientCimdRefreshToken.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 expiration_type: Optional[_builtins.str] = None,
+                 idle_token_lifetime: Optional[_builtins.int] = None,
+                 infinite_idle_token_lifetime: Optional[_builtins.bool] = None,
+                 infinite_token_lifetime: Optional[_builtins.bool] = None,
+                 leeway: Optional[_builtins.int] = None,
+                 rotation_type: Optional[_builtins.str] = None,
+                 token_lifetime: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str expiration_type: Refresh token expiration type. Must be `expiring` for CIMD clients.
+        :param _builtins.int idle_token_lifetime: The time in seconds after which inactive refresh tokens will expire.
+        :param _builtins.bool infinite_idle_token_lifetime: Whether inactive refresh tokens should remain valid indefinitely. Must be `false` for CIMD clients.
+        :param _builtins.bool infinite_token_lifetime: Whether refresh tokens should remain valid indefinitely. If false, `token_lifetime` should also be set.
+        :param _builtins.int leeway: The amount of time in seconds in which a refresh token may be reused without triggering reuse detection.
+        :param _builtins.str rotation_type: Refresh token rotation type.Valid values are `rotating` and `non-rotating`
+        :param _builtins.int token_lifetime: The absolute lifetime of a refresh token in seconds.
+        """
+        if expiration_type is not None:
+            pulumi.set(__self__, "expiration_type", expiration_type)
+        if idle_token_lifetime is not None:
+            pulumi.set(__self__, "idle_token_lifetime", idle_token_lifetime)
+        if infinite_idle_token_lifetime is not None:
+            pulumi.set(__self__, "infinite_idle_token_lifetime", infinite_idle_token_lifetime)
+        if infinite_token_lifetime is not None:
+            pulumi.set(__self__, "infinite_token_lifetime", infinite_token_lifetime)
+        if leeway is not None:
+            pulumi.set(__self__, "leeway", leeway)
+        if rotation_type is not None:
+            pulumi.set(__self__, "rotation_type", rotation_type)
+        if token_lifetime is not None:
+            pulumi.set(__self__, "token_lifetime", token_lifetime)
+
+    @_builtins.property
+    @pulumi.getter(name="expirationType")
+    def expiration_type(self) -> Optional[_builtins.str]:
+        """
+        Refresh token expiration type. Must be `expiring` for CIMD clients.
+        """
+        return pulumi.get(self, "expiration_type")
+
+    @_builtins.property
+    @pulumi.getter(name="idleTokenLifetime")
+    def idle_token_lifetime(self) -> Optional[_builtins.int]:
+        """
+        The time in seconds after which inactive refresh tokens will expire.
+        """
+        return pulumi.get(self, "idle_token_lifetime")
+
+    @_builtins.property
+    @pulumi.getter(name="infiniteIdleTokenLifetime")
+    def infinite_idle_token_lifetime(self) -> Optional[_builtins.bool]:
+        """
+        Whether inactive refresh tokens should remain valid indefinitely. Must be `false` for CIMD clients.
+        """
+        return pulumi.get(self, "infinite_idle_token_lifetime")
+
+    @_builtins.property
+    @pulumi.getter(name="infiniteTokenLifetime")
+    def infinite_token_lifetime(self) -> Optional[_builtins.bool]:
+        """
+        Whether refresh tokens should remain valid indefinitely. If false, `token_lifetime` should also be set.
+        """
+        return pulumi.get(self, "infinite_token_lifetime")
+
+    @_builtins.property
+    @pulumi.getter
+    def leeway(self) -> Optional[_builtins.int]:
+        """
+        The amount of time in seconds in which a refresh token may be reused without triggering reuse detection.
+        """
+        return pulumi.get(self, "leeway")
+
+    @_builtins.property
+    @pulumi.getter(name="rotationType")
+    def rotation_type(self) -> Optional[_builtins.str]:
+        """
+        Refresh token rotation type.Valid values are `rotating` and `non-rotating`
+        """
+        return pulumi.get(self, "rotation_type")
+
+    @_builtins.property
+    @pulumi.getter(name="tokenLifetime")
+    def token_lifetime(self) -> Optional[_builtins.int]:
+        """
+        The absolute lifetime of a refresh token in seconds.
+        """
+        return pulumi.get(self, "token_lifetime")
+
+
+@pulumi.output_type
+class ClientCimdTokenQuota(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clientCredentials":
+            suggest = "client_credentials"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClientCimdTokenQuota. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClientCimdTokenQuota.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClientCimdTokenQuota.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 client_credentials: 'outputs.ClientCimdTokenQuotaClientCredentials'):
+        """
+        :param 'ClientCimdTokenQuotaClientCredentialsArgs' client_credentials: The token quota configuration for client credentials.
+        """
+        pulumi.set(__self__, "client_credentials", client_credentials)
+
+    @_builtins.property
+    @pulumi.getter(name="clientCredentials")
+    def client_credentials(self) -> 'outputs.ClientCimdTokenQuotaClientCredentials':
+        """
+        The token quota configuration for client credentials.
+        """
+        return pulumi.get(self, "client_credentials")
+
+
+@pulumi.output_type
+class ClientCimdTokenQuotaClientCredentials(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "perDay":
+            suggest = "per_day"
+        elif key == "perHour":
+            suggest = "per_hour"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClientCimdTokenQuotaClientCredentials. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClientCimdTokenQuotaClientCredentials.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClientCimdTokenQuotaClientCredentials.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enforce: Optional[_builtins.bool] = None,
+                 per_day: Optional[_builtins.int] = None,
+                 per_hour: Optional[_builtins.int] = None):
+        """
+        :param _builtins.bool enforce: If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+        :param _builtins.int per_day: Maximum number of issued tokens per day
+        :param _builtins.int per_hour: Maximum number of issued tokens per hour
+        """
+        if enforce is not None:
+            pulumi.set(__self__, "enforce", enforce)
+        if per_day is not None:
+            pulumi.set(__self__, "per_day", per_day)
+        if per_hour is not None:
+            pulumi.set(__self__, "per_hour", per_hour)
+
+    @_builtins.property
+    @pulumi.getter
+    def enforce(self) -> Optional[_builtins.bool]:
+        """
+        If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+        """
+        return pulumi.get(self, "enforce")
+
+    @_builtins.property
+    @pulumi.getter(name="perDay")
+    def per_day(self) -> Optional[_builtins.int]:
+        """
+        Maximum number of issued tokens per day
+        """
+        return pulumi.get(self, "per_day")
+
+    @_builtins.property
+    @pulumi.getter(name="perHour")
+    def per_hour(self) -> Optional[_builtins.int]:
+        """
+        Maximum number of issued tokens per hour
+        """
+        return pulumi.get(self, "per_hour")
+
+
+@pulumi.output_type
+class ClientCimdValidation(dict):
+    def __init__(__self__, *,
+                 valid: Optional[_builtins.bool] = None,
+                 violations: Optional[Sequence[_builtins.str]] = None,
+                 warnings: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.bool valid: Whether the metadata document passed validation.
+        :param Sequence[_builtins.str] violations: Array of validation violation messages, if any. Violations indicate issues that prevented the metadata document from being fully processed.
+        :param Sequence[_builtins.str] warnings: Array of warning messages, if any. Warnings indicate non-critical issues such as unsupported properties being ignored.
+        """
+        if valid is not None:
+            pulumi.set(__self__, "valid", valid)
+        if violations is not None:
+            pulumi.set(__self__, "violations", violations)
+        if warnings is not None:
+            pulumi.set(__self__, "warnings", warnings)
+
+    @_builtins.property
+    @pulumi.getter
+    def valid(self) -> Optional[_builtins.bool]:
+        """
+        Whether the metadata document passed validation.
+        """
+        return pulumi.get(self, "valid")
+
+    @_builtins.property
+    @pulumi.getter
+    def violations(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Array of validation violation messages, if any. Violations indicate issues that prevented the metadata document from being fully processed.
+        """
+        return pulumi.get(self, "violations")
+
+    @_builtins.property
+    @pulumi.getter
+    def warnings(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Array of warning messages, if any. Warnings indicate non-critical issues such as unsupported properties being ignored.
+        """
+        return pulumi.get(self, "warnings")
+
+
+@pulumi.output_type
 class ClientCredentialsPrivateKeyJwt(dict):
     def __init__(__self__, *,
                  credentials: Sequence['outputs.ClientCredentialsPrivateKeyJwtCredential']):
@@ -6006,6 +6381,84 @@ class ClientMobileIos(dict):
 
 
 @pulumi.output_type
+class ClientMyOrganizationConfiguration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedStrategies":
+            suggest = "allowed_strategies"
+        elif key == "connectionDeletionBehavior":
+            suggest = "connection_deletion_behavior"
+        elif key == "connectionProfileId":
+            suggest = "connection_profile_id"
+        elif key == "userAttributeProfileId":
+            suggest = "user_attribute_profile_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClientMyOrganizationConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClientMyOrganizationConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClientMyOrganizationConfiguration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allowed_strategies: Optional[Sequence[_builtins.str]] = None,
+                 connection_deletion_behavior: Optional[_builtins.str] = None,
+                 connection_profile_id: Optional[_builtins.str] = None,
+                 user_attribute_profile_id: Optional[_builtins.str] = None):
+        """
+        :param Sequence[_builtins.str] allowed_strategies: The list of connection strategies that are allowed when creating organizations for this client (e.g. "okta", "samlp").
+        :param _builtins.str connection_deletion_behavior: Controls the behavior when deleting connections associated with organizations for this client. Possible values: `allow`, `allow_if_empty`.
+        :param _builtins.str connection_profile_id: The ID of the connection profile to use when creating organizations for this client.
+        :param _builtins.str user_attribute_profile_id: The ID of the user attribute profile to use when creating organizations for this client.
+        """
+        if allowed_strategies is not None:
+            pulumi.set(__self__, "allowed_strategies", allowed_strategies)
+        if connection_deletion_behavior is not None:
+            pulumi.set(__self__, "connection_deletion_behavior", connection_deletion_behavior)
+        if connection_profile_id is not None:
+            pulumi.set(__self__, "connection_profile_id", connection_profile_id)
+        if user_attribute_profile_id is not None:
+            pulumi.set(__self__, "user_attribute_profile_id", user_attribute_profile_id)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedStrategies")
+    def allowed_strategies(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The list of connection strategies that are allowed when creating organizations for this client (e.g. "okta", "samlp").
+        """
+        return pulumi.get(self, "allowed_strategies")
+
+    @_builtins.property
+    @pulumi.getter(name="connectionDeletionBehavior")
+    def connection_deletion_behavior(self) -> Optional[_builtins.str]:
+        """
+        Controls the behavior when deleting connections associated with organizations for this client. Possible values: `allow`, `allow_if_empty`.
+        """
+        return pulumi.get(self, "connection_deletion_behavior")
+
+    @_builtins.property
+    @pulumi.getter(name="connectionProfileId")
+    def connection_profile_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the connection profile to use when creating organizations for this client.
+        """
+        return pulumi.get(self, "connection_profile_id")
+
+    @_builtins.property
+    @pulumi.getter(name="userAttributeProfileId")
+    def user_attribute_profile_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the user attribute profile to use when creating organizations for this client.
+        """
+        return pulumi.get(self, "user_attribute_profile_id")
+
+
+@pulumi.output_type
 class ClientNativeSocialLogin(dict):
     def __init__(__self__, *,
                  apple: Optional['outputs.ClientNativeSocialLoginApple'] = None,
@@ -6482,7 +6935,7 @@ class ClientTokenExchange(dict):
     def __init__(__self__, *,
                  allow_any_profile_of_types: Sequence[_builtins.str]):
         """
-        :param Sequence[_builtins.str] allow_any_profile_of_types: List of allowed profile types for token exchange
+        :param Sequence[_builtins.str] allow_any_profile_of_types: List of allowed profile types for token exchange. Supported values include: custom*authentication, on*behalf*of*token_exchange.
         """
         pulumi.set(__self__, "allow_any_profile_of_types", allow_any_profile_of_types)
 
@@ -6490,7 +6943,7 @@ class ClientTokenExchange(dict):
     @pulumi.getter(name="allowAnyProfileOfTypes")
     def allow_any_profile_of_types(self) -> Sequence[_builtins.str]:
         """
-        List of allowed profile types for token exchange
+        List of allowed profile types for token exchange. Supported values include: custom*authentication, on*behalf*of*token_exchange.
         """
         return pulumi.get(self, "allow_any_profile_of_types")
 
@@ -12951,8 +13404,14 @@ class OrganizationConnectionsEnabledConnection(dict):
             suggest = "connection_id"
         elif key == "assignMembershipOnLogin":
             suggest = "assign_membership_on_login"
+        elif key == "isEnabled":
+            suggest = "is_enabled"
         elif key == "isSignupEnabled":
             suggest = "is_signup_enabled"
+        elif key == "organizationAccessLevel":
+            suggest = "organization_access_level"
+        elif key == "organizationConnectionName":
+            suggest = "organization_connection_name"
         elif key == "showAsButton":
             suggest = "show_as_button"
 
@@ -12970,19 +13429,31 @@ class OrganizationConnectionsEnabledConnection(dict):
     def __init__(__self__, *,
                  connection_id: _builtins.str,
                  assign_membership_on_login: Optional[_builtins.bool] = None,
+                 is_enabled: Optional[_builtins.bool] = None,
                  is_signup_enabled: Optional[_builtins.bool] = None,
+                 organization_access_level: Optional[_builtins.str] = None,
+                 organization_connection_name: Optional[_builtins.str] = None,
                  show_as_button: Optional[_builtins.bool] = None):
         """
         :param _builtins.str connection_id: The ID of the connection to enable for the organization.
         :param _builtins.bool assign_membership_on_login: When `true`, all users that log in with this connection will be automatically granted membership in the organization. When `false`, users must be granted membership in the organization before logging in with this connection.
+        :param _builtins.bool is_enabled: Whether the connection is enabled for the organization.
         :param _builtins.bool is_signup_enabled: Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `is_signup_enabled` can only be `true` if `assign_membership_on_login` is `true`.
-        :param _builtins.bool show_as_button: Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+        :param _builtins.str organization_access_level: The access level for this organization connection. Can be `none`, `readonly`, `limited`, or `full`.
+        :param _builtins.str organization_connection_name: Name of the connection in the scope of this organization.
+        :param _builtins.bool show_as_button: Determines whether a connection should be displayed on this organization's login prompt. Only applicable for enterprise connections.
         """
         pulumi.set(__self__, "connection_id", connection_id)
         if assign_membership_on_login is not None:
             pulumi.set(__self__, "assign_membership_on_login", assign_membership_on_login)
+        if is_enabled is not None:
+            pulumi.set(__self__, "is_enabled", is_enabled)
         if is_signup_enabled is not None:
             pulumi.set(__self__, "is_signup_enabled", is_signup_enabled)
+        if organization_access_level is not None:
+            pulumi.set(__self__, "organization_access_level", organization_access_level)
+        if organization_connection_name is not None:
+            pulumi.set(__self__, "organization_connection_name", organization_connection_name)
         if show_as_button is not None:
             pulumi.set(__self__, "show_as_button", show_as_button)
 
@@ -13003,6 +13474,14 @@ class OrganizationConnectionsEnabledConnection(dict):
         return pulumi.get(self, "assign_membership_on_login")
 
     @_builtins.property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether the connection is enabled for the organization.
+        """
+        return pulumi.get(self, "is_enabled")
+
+    @_builtins.property
     @pulumi.getter(name="isSignupEnabled")
     def is_signup_enabled(self) -> Optional[_builtins.bool]:
         """
@@ -13011,10 +13490,26 @@ class OrganizationConnectionsEnabledConnection(dict):
         return pulumi.get(self, "is_signup_enabled")
 
     @_builtins.property
+    @pulumi.getter(name="organizationAccessLevel")
+    def organization_access_level(self) -> Optional[_builtins.str]:
+        """
+        The access level for this organization connection. Can be `none`, `readonly`, `limited`, or `full`.
+        """
+        return pulumi.get(self, "organization_access_level")
+
+    @_builtins.property
+    @pulumi.getter(name="organizationConnectionName")
+    def organization_connection_name(self) -> Optional[_builtins.str]:
+        """
+        Name of the connection in the scope of this organization.
+        """
+        return pulumi.get(self, "organization_connection_name")
+
+    @_builtins.property
     @pulumi.getter(name="showAsButton")
     def show_as_button(self) -> Optional[_builtins.bool]:
         """
-        Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+        Determines whether a connection should be displayed on this organization's login prompt. Only applicable for enterprise connections.
         """
         return pulumi.get(self, "show_as_button")
 
@@ -20099,6 +20594,57 @@ class GetClientMobileIoResult(dict):
 
 
 @pulumi.output_type
+class GetClientMyOrganizationConfigurationResult(dict):
+    def __init__(__self__, *,
+                 allowed_strategies: Sequence[_builtins.str],
+                 connection_deletion_behavior: _builtins.str,
+                 connection_profile_id: _builtins.str,
+                 user_attribute_profile_id: _builtins.str):
+        """
+        :param Sequence[_builtins.str] allowed_strategies: The list of connection strategies that are allowed when creating organizations for this client (e.g. "okta", "samlp").
+        :param _builtins.str connection_deletion_behavior: Controls the behavior when deleting connections associated with organizations for this client. Possible values: `allow`, `allow_if_empty`.
+        :param _builtins.str connection_profile_id: The ID of the connection profile to use when creating organizations for this client.
+        :param _builtins.str user_attribute_profile_id: The ID of the user attribute profile to use when creating organizations for this client.
+        """
+        pulumi.set(__self__, "allowed_strategies", allowed_strategies)
+        pulumi.set(__self__, "connection_deletion_behavior", connection_deletion_behavior)
+        pulumi.set(__self__, "connection_profile_id", connection_profile_id)
+        pulumi.set(__self__, "user_attribute_profile_id", user_attribute_profile_id)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedStrategies")
+    def allowed_strategies(self) -> Sequence[_builtins.str]:
+        """
+        The list of connection strategies that are allowed when creating organizations for this client (e.g. "okta", "samlp").
+        """
+        return pulumi.get(self, "allowed_strategies")
+
+    @_builtins.property
+    @pulumi.getter(name="connectionDeletionBehavior")
+    def connection_deletion_behavior(self) -> _builtins.str:
+        """
+        Controls the behavior when deleting connections associated with organizations for this client. Possible values: `allow`, `allow_if_empty`.
+        """
+        return pulumi.get(self, "connection_deletion_behavior")
+
+    @_builtins.property
+    @pulumi.getter(name="connectionProfileId")
+    def connection_profile_id(self) -> _builtins.str:
+        """
+        The ID of the connection profile to use when creating organizations for this client.
+        """
+        return pulumi.get(self, "connection_profile_id")
+
+    @_builtins.property
+    @pulumi.getter(name="userAttributeProfileId")
+    def user_attribute_profile_id(self) -> _builtins.str:
+        """
+        The ID of the user attribute profile to use when creating organizations for this client.
+        """
+        return pulumi.get(self, "user_attribute_profile_id")
+
+
+@pulumi.output_type
 class GetClientNativeSocialLoginResult(dict):
     def __init__(__self__, *,
                  apples: Sequence['outputs.GetClientNativeSocialLoginAppleResult'],
@@ -20569,7 +21115,7 @@ class GetClientTokenExchangeResult(dict):
     def __init__(__self__, *,
                  allow_any_profile_of_types: Sequence[_builtins.str]):
         """
-        :param Sequence[_builtins.str] allow_any_profile_of_types: List of allowed profile types for token exchange
+        :param Sequence[_builtins.str] allow_any_profile_of_types: List of allowed profile types for token exchange. Supported values include: custom_authentication, on_behalf_of_token_exchange.
         """
         pulumi.set(__self__, "allow_any_profile_of_types", allow_any_profile_of_types)
 
@@ -20577,7 +21123,7 @@ class GetClientTokenExchangeResult(dict):
     @pulumi.getter(name="allowAnyProfileOfTypes")
     def allow_any_profile_of_types(self) -> Sequence[_builtins.str]:
         """
-        List of allowed profile types for token exchange
+        List of allowed profile types for token exchange. Supported values include: custom_authentication, on_behalf_of_token_exchange.
         """
         return pulumi.get(self, "allow_any_profile_of_types")
 
@@ -20653,9 +21199,14 @@ class GetClientsClientResult(dict):
                  client_secret: _builtins.str,
                  description: _builtins.str,
                  express_configurations: Sequence['outputs.GetClientsClientExpressConfigurationResult'],
+                 external_client_id: _builtins.str,
+                 external_metadata_created_by: _builtins.str,
+                 external_metadata_type: _builtins.str,
                  grant_types: Sequence[_builtins.str],
                  is_first_party: _builtins.bool,
                  is_token_endpoint_ip_header_trusted: _builtins.bool,
+                 jwks_uri: _builtins.str,
+                 my_organization_configurations: Sequence['outputs.GetClientsClientMyOrganizationConfigurationResult'],
                  oidc_logouts: Sequence['outputs.GetClientsClientOidcLogoutResult'],
                  organization_discovery_methods: Sequence[_builtins.str],
                  resource_server_identifier: _builtins.str,
@@ -20677,9 +21228,14 @@ class GetClientsClientResult(dict):
         :param _builtins.str client_secret: Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string.
         :param _builtins.str description: Description of the purpose of the client.
         :param Sequence['GetClientsClientExpressConfigurationArgs'] express_configurations: Express Configuration settings for the client. Used with OIN Express Configuration.
+        :param _builtins.str external_client_id: The URL of the Client ID Metadata Document. Only present for CIMD-registered clients.
+        :param _builtins.str external_metadata_created_by: Who created the external metadata client: `admin` (via Management API), `client` (self-registered), or `unknown`.
+        :param _builtins.str external_metadata_type: Type of external metadata. Value is `cimd` for CIMD-registered clients.
         :param Sequence[_builtins.str] grant_types: Types of grants that this client is authorized to use.
-        :param _builtins.bool is_first_party: Indicates whether this client is a first-party client.Defaults to true from the API
+        :param _builtins.bool is_first_party: Indicates whether this client is a first-party client.
         :param _builtins.bool is_token_endpoint_ip_header_trusted: Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `client_secret_post` or `client_secret_basic`. Setting this property when creating the resource, will default the authentication method to `client_secret_post`. To change the authentication method to `client_secret_basic` use the `ClientCredentials` resource.
+        :param _builtins.str jwks_uri: URL for the JSON Web Key Set (JWKS) containing the public keys used for `private_key_jwt` authentication. Only present for CIMD clients using `private_key_jwt` authentication.
+        :param Sequence['GetClientsClientMyOrganizationConfigurationArgs'] my_organization_configurations: Configuration for self-service organization features, controlling how organizations are created and managed for this client.
         :param Sequence['GetClientsClientOidcLogoutArgs'] oidc_logouts: Configure OIDC logout for the Client
         :param Sequence[_builtins.str] organization_discovery_methods: Methods for discovering organizations during the pre_login_prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organization_name` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organization_require_behavior` is set to `pre_login_prompt`.
         :param _builtins.str resource_server_identifier: The identifier of a resource server that client is associated withThis property can be sent only when app_type=resource_server.This property can not be changed, once the client is created.
@@ -20700,9 +21256,14 @@ class GetClientsClientResult(dict):
         pulumi.set(__self__, "client_secret", client_secret)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "express_configurations", express_configurations)
+        pulumi.set(__self__, "external_client_id", external_client_id)
+        pulumi.set(__self__, "external_metadata_created_by", external_metadata_created_by)
+        pulumi.set(__self__, "external_metadata_type", external_metadata_type)
         pulumi.set(__self__, "grant_types", grant_types)
         pulumi.set(__self__, "is_first_party", is_first_party)
         pulumi.set(__self__, "is_token_endpoint_ip_header_trusted", is_token_endpoint_ip_header_trusted)
+        pulumi.set(__self__, "jwks_uri", jwks_uri)
+        pulumi.set(__self__, "my_organization_configurations", my_organization_configurations)
         pulumi.set(__self__, "oidc_logouts", oidc_logouts)
         pulumi.set(__self__, "organization_discovery_methods", organization_discovery_methods)
         pulumi.set(__self__, "resource_server_identifier", resource_server_identifier)
@@ -20797,6 +21358,30 @@ class GetClientsClientResult(dict):
         return pulumi.get(self, "express_configurations")
 
     @_builtins.property
+    @pulumi.getter(name="externalClientId")
+    def external_client_id(self) -> _builtins.str:
+        """
+        The URL of the Client ID Metadata Document. Only present for CIMD-registered clients.
+        """
+        return pulumi.get(self, "external_client_id")
+
+    @_builtins.property
+    @pulumi.getter(name="externalMetadataCreatedBy")
+    def external_metadata_created_by(self) -> _builtins.str:
+        """
+        Who created the external metadata client: `admin` (via Management API), `client` (self-registered), or `unknown`.
+        """
+        return pulumi.get(self, "external_metadata_created_by")
+
+    @_builtins.property
+    @pulumi.getter(name="externalMetadataType")
+    def external_metadata_type(self) -> _builtins.str:
+        """
+        Type of external metadata. Value is `cimd` for CIMD-registered clients.
+        """
+        return pulumi.get(self, "external_metadata_type")
+
+    @_builtins.property
     @pulumi.getter(name="grantTypes")
     def grant_types(self) -> Sequence[_builtins.str]:
         """
@@ -20808,7 +21393,7 @@ class GetClientsClientResult(dict):
     @pulumi.getter(name="isFirstParty")
     def is_first_party(self) -> _builtins.bool:
         """
-        Indicates whether this client is a first-party client.Defaults to true from the API
+        Indicates whether this client is a first-party client.
         """
         return pulumi.get(self, "is_first_party")
 
@@ -20819,6 +21404,22 @@ class GetClientsClientResult(dict):
         Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `client_secret_post` or `client_secret_basic`. Setting this property when creating the resource, will default the authentication method to `client_secret_post`. To change the authentication method to `client_secret_basic` use the `ClientCredentials` resource.
         """
         return pulumi.get(self, "is_token_endpoint_ip_header_trusted")
+
+    @_builtins.property
+    @pulumi.getter(name="jwksUri")
+    def jwks_uri(self) -> _builtins.str:
+        """
+        URL for the JSON Web Key Set (JWKS) containing the public keys used for `private_key_jwt` authentication. Only present for CIMD clients using `private_key_jwt` authentication.
+        """
+        return pulumi.get(self, "jwks_uri")
+
+    @_builtins.property
+    @pulumi.getter(name="myOrganizationConfigurations")
+    def my_organization_configurations(self) -> Sequence['outputs.GetClientsClientMyOrganizationConfigurationResult']:
+        """
+        Configuration for self-service organization features, controlling how organizations are created and managed for this client.
+        """
+        return pulumi.get(self, "my_organization_configurations")
 
     @_builtins.property
     @pulumi.getter(name="oidcLogouts")
@@ -21023,6 +21624,57 @@ class GetClientsClientExpressConfigurationLinkedClientResult(dict):
 
 
 @pulumi.output_type
+class GetClientsClientMyOrganizationConfigurationResult(dict):
+    def __init__(__self__, *,
+                 allowed_strategies: Sequence[_builtins.str],
+                 connection_deletion_behavior: _builtins.str,
+                 connection_profile_id: _builtins.str,
+                 user_attribute_profile_id: _builtins.str):
+        """
+        :param Sequence[_builtins.str] allowed_strategies: The list of connection strategies that are allowed when creating organizations for this client (e.g. "okta", "samlp").
+        :param _builtins.str connection_deletion_behavior: Controls the behavior when deleting connections associated with organizations for this client. Possible values: `allow`, `allow_if_empty`.
+        :param _builtins.str connection_profile_id: The ID of the connection profile to use when creating organizations for this client.
+        :param _builtins.str user_attribute_profile_id: The ID of the user attribute profile to use when creating organizations for this client.
+        """
+        pulumi.set(__self__, "allowed_strategies", allowed_strategies)
+        pulumi.set(__self__, "connection_deletion_behavior", connection_deletion_behavior)
+        pulumi.set(__self__, "connection_profile_id", connection_profile_id)
+        pulumi.set(__self__, "user_attribute_profile_id", user_attribute_profile_id)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedStrategies")
+    def allowed_strategies(self) -> Sequence[_builtins.str]:
+        """
+        The list of connection strategies that are allowed when creating organizations for this client (e.g. "okta", "samlp").
+        """
+        return pulumi.get(self, "allowed_strategies")
+
+    @_builtins.property
+    @pulumi.getter(name="connectionDeletionBehavior")
+    def connection_deletion_behavior(self) -> _builtins.str:
+        """
+        Controls the behavior when deleting connections associated with organizations for this client. Possible values: `allow`, `allow_if_empty`.
+        """
+        return pulumi.get(self, "connection_deletion_behavior")
+
+    @_builtins.property
+    @pulumi.getter(name="connectionProfileId")
+    def connection_profile_id(self) -> _builtins.str:
+        """
+        The ID of the connection profile to use when creating organizations for this client.
+        """
+        return pulumi.get(self, "connection_profile_id")
+
+    @_builtins.property
+    @pulumi.getter(name="userAttributeProfileId")
+    def user_attribute_profile_id(self) -> _builtins.str:
+        """
+        The ID of the user attribute profile to use when creating organizations for this client.
+        """
+        return pulumi.get(self, "user_attribute_profile_id")
+
+
+@pulumi.output_type
 class GetClientsClientOidcLogoutResult(dict):
     def __init__(__self__, *,
                  backchannel_logout_initiators: Sequence['outputs.GetClientsClientOidcLogoutBackchannelLogoutInitiatorResult'],
@@ -21183,7 +21835,7 @@ class GetClientsClientTokenExchangeResult(dict):
     def __init__(__self__, *,
                  allow_any_profile_of_types: Sequence[_builtins.str]):
         """
-        :param Sequence[_builtins.str] allow_any_profile_of_types: List of allowed profile types for token exchange
+        :param Sequence[_builtins.str] allow_any_profile_of_types: List of allowed profile types for token exchange. Supported values include: custom_authentication, on_behalf_of_token_exchange.
         """
         pulumi.set(__self__, "allow_any_profile_of_types", allow_any_profile_of_types)
 
@@ -21191,7 +21843,7 @@ class GetClientsClientTokenExchangeResult(dict):
     @pulumi.getter(name="allowAnyProfileOfTypes")
     def allow_any_profile_of_types(self) -> Sequence[_builtins.str]:
         """
-        List of allowed profile types for token exchange
+        List of allowed profile types for token exchange. Supported values include: custom_authentication, on_behalf_of_token_exchange.
         """
         return pulumi.get(self, "allow_any_profile_of_types")
 
@@ -25135,17 +25787,26 @@ class GetOrganizationConnectionResult(dict):
     def __init__(__self__, *,
                  assign_membership_on_login: _builtins.bool,
                  connection_id: _builtins.str,
+                 is_enabled: _builtins.bool,
                  is_signup_enabled: _builtins.bool,
+                 organization_access_level: _builtins.str,
+                 organization_connection_name: _builtins.str,
                  show_as_button: _builtins.bool):
         """
         :param _builtins.bool assign_membership_on_login: When `true`, all users that log in with this connection will be automatically granted membership in the organization. When `false`, users must be granted membership in the organization before logging in with this connection.
         :param _builtins.str connection_id: The ID of the enabled connection on the organization.
+        :param _builtins.bool is_enabled: Whether the connection is enabled for the organization.
         :param _builtins.bool is_signup_enabled: Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `is_signup_enabled` can only be `true` if `assign_membership_on_login` is `true`.
-        :param _builtins.bool show_as_button: Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+        :param _builtins.str organization_access_level: The access level for this organization connection. Can be `none`, `readonly`, `limited`, or `full`.
+        :param _builtins.str organization_connection_name: Name of the connection in the scope of this organization.
+        :param _builtins.bool show_as_button: Determines whether a connection should be displayed on this organization's login prompt. Only applicable for enterprise connections.
         """
         pulumi.set(__self__, "assign_membership_on_login", assign_membership_on_login)
         pulumi.set(__self__, "connection_id", connection_id)
+        pulumi.set(__self__, "is_enabled", is_enabled)
         pulumi.set(__self__, "is_signup_enabled", is_signup_enabled)
+        pulumi.set(__self__, "organization_access_level", organization_access_level)
+        pulumi.set(__self__, "organization_connection_name", organization_connection_name)
         pulumi.set(__self__, "show_as_button", show_as_button)
 
     @_builtins.property
@@ -25165,6 +25826,14 @@ class GetOrganizationConnectionResult(dict):
         return pulumi.get(self, "connection_id")
 
     @_builtins.property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> _builtins.bool:
+        """
+        Whether the connection is enabled for the organization.
+        """
+        return pulumi.get(self, "is_enabled")
+
+    @_builtins.property
     @pulumi.getter(name="isSignupEnabled")
     def is_signup_enabled(self) -> _builtins.bool:
         """
@@ -25173,10 +25842,26 @@ class GetOrganizationConnectionResult(dict):
         return pulumi.get(self, "is_signup_enabled")
 
     @_builtins.property
+    @pulumi.getter(name="organizationAccessLevel")
+    def organization_access_level(self) -> _builtins.str:
+        """
+        The access level for this organization connection. Can be `none`, `readonly`, `limited`, or `full`.
+        """
+        return pulumi.get(self, "organization_access_level")
+
+    @_builtins.property
+    @pulumi.getter(name="organizationConnectionName")
+    def organization_connection_name(self) -> _builtins.str:
+        """
+        Name of the connection in the scope of this organization.
+        """
+        return pulumi.get(self, "organization_connection_name")
+
+    @_builtins.property
     @pulumi.getter(name="showAsButton")
     def show_as_button(self) -> _builtins.bool:
         """
-        Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+        Determines whether a connection should be displayed on this organization's login prompt. Only applicable for enterprise connections.
         """
         return pulumi.get(self, "show_as_button")
 

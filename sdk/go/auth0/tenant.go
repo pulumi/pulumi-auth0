@@ -94,6 +94,8 @@ type Tenant struct {
 	AllowOrganizationNameInAuthenticationApi pulumi.BoolOutput `pulumi:"allowOrganizationNameInAuthenticationApi"`
 	// URLs that Auth0 may redirect to after logout.
 	AllowedLogoutUrls pulumi.StringArrayOutput `pulumi:"allowedLogoutUrls"`
+	// Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
+	ClientIdMetadataDocumentSupported pulumi.BoolOutput `pulumi:"clientIdMetadataDocumentSupported"`
 	// Whether to enable flexible factors for MFA in the PostLogin action.
 	CustomizeMfaInPostloginAction pulumi.BoolOutput `pulumi:"customizeMfaInPostloginAction"`
 	// API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
@@ -130,6 +132,8 @@ type Tenant struct {
 	PictureUrl pulumi.StringOutput `pulumi:"pictureUrl"`
 	// Enable pushed authorization requests.
 	PushedAuthorizationRequestsSupported pulumi.BoolOutput `pulumi:"pushedAuthorizationRequestsSupported"`
+	// Profile that determines how the protected resource identity is specified in OAuth endpoints. When set to `audience` (default), the `audience` parameter is used. When set to `compatibility`, the `resource` parameter is used as fallback if `audience` is not provided.
+	ResourceParameterProfile pulumi.StringOutput `pulumi:"resourceParameterProfile"`
 	// Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
 	SandboxVersion pulumi.StringOutput `pulumi:"sandboxVersion"`
 	// Alters behavior of tenant's session cookie. Contains a single `mode` property.
@@ -182,6 +186,8 @@ type tenantState struct {
 	AllowOrganizationNameInAuthenticationApi *bool `pulumi:"allowOrganizationNameInAuthenticationApi"`
 	// URLs that Auth0 may redirect to after logout.
 	AllowedLogoutUrls []string `pulumi:"allowedLogoutUrls"`
+	// Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
+	ClientIdMetadataDocumentSupported *bool `pulumi:"clientIdMetadataDocumentSupported"`
 	// Whether to enable flexible factors for MFA in the PostLogin action.
 	CustomizeMfaInPostloginAction *bool `pulumi:"customizeMfaInPostloginAction"`
 	// API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
@@ -218,6 +224,8 @@ type tenantState struct {
 	PictureUrl *string `pulumi:"pictureUrl"`
 	// Enable pushed authorization requests.
 	PushedAuthorizationRequestsSupported *bool `pulumi:"pushedAuthorizationRequestsSupported"`
+	// Profile that determines how the protected resource identity is specified in OAuth endpoints. When set to `audience` (default), the `audience` parameter is used. When set to `compatibility`, the `resource` parameter is used as fallback if `audience` is not provided.
+	ResourceParameterProfile *string `pulumi:"resourceParameterProfile"`
 	// Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
 	SandboxVersion *string `pulumi:"sandboxVersion"`
 	// Alters behavior of tenant's session cookie. Contains a single `mode` property.
@@ -241,6 +249,8 @@ type TenantState struct {
 	AllowOrganizationNameInAuthenticationApi pulumi.BoolPtrInput
 	// URLs that Auth0 may redirect to after logout.
 	AllowedLogoutUrls pulumi.StringArrayInput
+	// Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
+	ClientIdMetadataDocumentSupported pulumi.BoolPtrInput
 	// Whether to enable flexible factors for MFA in the PostLogin action.
 	CustomizeMfaInPostloginAction pulumi.BoolPtrInput
 	// API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
@@ -277,6 +287,8 @@ type TenantState struct {
 	PictureUrl pulumi.StringPtrInput
 	// Enable pushed authorization requests.
 	PushedAuthorizationRequestsSupported pulumi.BoolPtrInput
+	// Profile that determines how the protected resource identity is specified in OAuth endpoints. When set to `audience` (default), the `audience` parameter is used. When set to `compatibility`, the `resource` parameter is used as fallback if `audience` is not provided.
+	ResourceParameterProfile pulumi.StringPtrInput
 	// Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
 	SandboxVersion pulumi.StringPtrInput
 	// Alters behavior of tenant's session cookie. Contains a single `mode` property.
@@ -304,6 +316,8 @@ type tenantArgs struct {
 	AllowOrganizationNameInAuthenticationApi *bool `pulumi:"allowOrganizationNameInAuthenticationApi"`
 	// URLs that Auth0 may redirect to after logout.
 	AllowedLogoutUrls []string `pulumi:"allowedLogoutUrls"`
+	// Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
+	ClientIdMetadataDocumentSupported *bool `pulumi:"clientIdMetadataDocumentSupported"`
 	// Whether to enable flexible factors for MFA in the PostLogin action.
 	CustomizeMfaInPostloginAction *bool `pulumi:"customizeMfaInPostloginAction"`
 	// API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
@@ -340,6 +354,8 @@ type tenantArgs struct {
 	PictureUrl *string `pulumi:"pictureUrl"`
 	// Enable pushed authorization requests.
 	PushedAuthorizationRequestsSupported *bool `pulumi:"pushedAuthorizationRequestsSupported"`
+	// Profile that determines how the protected resource identity is specified in OAuth endpoints. When set to `audience` (default), the `audience` parameter is used. When set to `compatibility`, the `resource` parameter is used as fallback if `audience` is not provided.
+	ResourceParameterProfile *string `pulumi:"resourceParameterProfile"`
 	// Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
 	SandboxVersion *string `pulumi:"sandboxVersion"`
 	// Alters behavior of tenant's session cookie. Contains a single `mode` property.
@@ -364,6 +380,8 @@ type TenantArgs struct {
 	AllowOrganizationNameInAuthenticationApi pulumi.BoolPtrInput
 	// URLs that Auth0 may redirect to after logout.
 	AllowedLogoutUrls pulumi.StringArrayInput
+	// Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
+	ClientIdMetadataDocumentSupported pulumi.BoolPtrInput
 	// Whether to enable flexible factors for MFA in the PostLogin action.
 	CustomizeMfaInPostloginAction pulumi.BoolPtrInput
 	// API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
@@ -400,6 +418,8 @@ type TenantArgs struct {
 	PictureUrl pulumi.StringPtrInput
 	// Enable pushed authorization requests.
 	PushedAuthorizationRequestsSupported pulumi.BoolPtrInput
+	// Profile that determines how the protected resource identity is specified in OAuth endpoints. When set to `audience` (default), the `audience` parameter is used. When set to `compatibility`, the `resource` parameter is used as fallback if `audience` is not provided.
+	ResourceParameterProfile pulumi.StringPtrInput
 	// Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
 	SandboxVersion pulumi.StringPtrInput
 	// Alters behavior of tenant's session cookie. Contains a single `mode` property.
@@ -518,6 +538,11 @@ func (o TenantOutput) AllowedLogoutUrls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Tenant) pulumi.StringArrayOutput { return v.AllowedLogoutUrls }).(pulumi.StringArrayOutput)
 }
 
+// Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
+func (o TenantOutput) ClientIdMetadataDocumentSupported() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Tenant) pulumi.BoolOutput { return v.ClientIdMetadataDocumentSupported }).(pulumi.BoolOutput)
+}
+
 // Whether to enable flexible factors for MFA in the PostLogin action.
 func (o TenantOutput) CustomizeMfaInPostloginAction() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Tenant) pulumi.BoolOutput { return v.CustomizeMfaInPostloginAction }).(pulumi.BoolOutput)
@@ -606,6 +631,11 @@ func (o TenantOutput) PictureUrl() pulumi.StringOutput {
 // Enable pushed authorization requests.
 func (o TenantOutput) PushedAuthorizationRequestsSupported() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Tenant) pulumi.BoolOutput { return v.PushedAuthorizationRequestsSupported }).(pulumi.BoolOutput)
+}
+
+// Profile that determines how the protected resource identity is specified in OAuth endpoints. When set to `audience` (default), the `audience` parameter is used. When set to `compatibility`, the `resource` parameter is used as fallback if `audience` is not provided.
+func (o TenantOutput) ResourceParameterProfile() pulumi.StringOutput {
+	return o.ApplyT(func(v *Tenant) pulumi.StringOutput { return v.ResourceParameterProfile }).(pulumi.StringOutput)
 }
 
 // Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.

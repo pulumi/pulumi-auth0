@@ -48,6 +48,21 @@ public final class OrganizationConnectionsEnabledConnectionArgs extends com.pulu
     }
 
     /**
+     * Whether the connection is enabled for the organization.
+     * 
+     */
+    @Import(name="isEnabled")
+    private @Nullable Output<Boolean> isEnabled;
+
+    /**
+     * @return Whether the connection is enabled for the organization.
+     * 
+     */
+    public Optional<Output<Boolean>> isEnabled() {
+        return Optional.ofNullable(this.isEnabled);
+    }
+
+    /**
      * Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `isSignupEnabled` can only be `true` if `assignMembershipOnLogin` is `true`.
      * 
      */
@@ -63,14 +78,44 @@ public final class OrganizationConnectionsEnabledConnectionArgs extends com.pulu
     }
 
     /**
-     * Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+     * The access level for this organization connection. Can be `none`, `readonly`, `limited`, or `full`.
+     * 
+     */
+    @Import(name="organizationAccessLevel")
+    private @Nullable Output<String> organizationAccessLevel;
+
+    /**
+     * @return The access level for this organization connection. Can be `none`, `readonly`, `limited`, or `full`.
+     * 
+     */
+    public Optional<Output<String>> organizationAccessLevel() {
+        return Optional.ofNullable(this.organizationAccessLevel);
+    }
+
+    /**
+     * Name of the connection in the scope of this organization.
+     * 
+     */
+    @Import(name="organizationConnectionName")
+    private @Nullable Output<String> organizationConnectionName;
+
+    /**
+     * @return Name of the connection in the scope of this organization.
+     * 
+     */
+    public Optional<Output<String>> organizationConnectionName() {
+        return Optional.ofNullable(this.organizationConnectionName);
+    }
+
+    /**
+     * Determines whether a connection should be displayed on this organization&#39;s login prompt. Only applicable for enterprise connections.
      * 
      */
     @Import(name="showAsButton")
     private @Nullable Output<Boolean> showAsButton;
 
     /**
-     * @return Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+     * @return Determines whether a connection should be displayed on this organization&#39;s login prompt. Only applicable for enterprise connections.
      * 
      */
     public Optional<Output<Boolean>> showAsButton() {
@@ -82,7 +127,10 @@ public final class OrganizationConnectionsEnabledConnectionArgs extends com.pulu
     private OrganizationConnectionsEnabledConnectionArgs(OrganizationConnectionsEnabledConnectionArgs $) {
         this.assignMembershipOnLogin = $.assignMembershipOnLogin;
         this.connectionId = $.connectionId;
+        this.isEnabled = $.isEnabled;
         this.isSignupEnabled = $.isSignupEnabled;
+        this.organizationAccessLevel = $.organizationAccessLevel;
+        this.organizationConnectionName = $.organizationConnectionName;
         this.showAsButton = $.showAsButton;
     }
 
@@ -147,6 +195,27 @@ public final class OrganizationConnectionsEnabledConnectionArgs extends com.pulu
         }
 
         /**
+         * @param isEnabled Whether the connection is enabled for the organization.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isEnabled(@Nullable Output<Boolean> isEnabled) {
+            $.isEnabled = isEnabled;
+            return this;
+        }
+
+        /**
+         * @param isEnabled Whether the connection is enabled for the organization.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isEnabled(Boolean isEnabled) {
+            return isEnabled(Output.of(isEnabled));
+        }
+
+        /**
          * @param isSignupEnabled Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `isSignupEnabled` can only be `true` if `assignMembershipOnLogin` is `true`.
          * 
          * @return builder
@@ -168,7 +237,49 @@ public final class OrganizationConnectionsEnabledConnectionArgs extends com.pulu
         }
 
         /**
-         * @param showAsButton Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+         * @param organizationAccessLevel The access level for this organization connection. Can be `none`, `readonly`, `limited`, or `full`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder organizationAccessLevel(@Nullable Output<String> organizationAccessLevel) {
+            $.organizationAccessLevel = organizationAccessLevel;
+            return this;
+        }
+
+        /**
+         * @param organizationAccessLevel The access level for this organization connection. Can be `none`, `readonly`, `limited`, or `full`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder organizationAccessLevel(String organizationAccessLevel) {
+            return organizationAccessLevel(Output.of(organizationAccessLevel));
+        }
+
+        /**
+         * @param organizationConnectionName Name of the connection in the scope of this organization.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder organizationConnectionName(@Nullable Output<String> organizationConnectionName) {
+            $.organizationConnectionName = organizationConnectionName;
+            return this;
+        }
+
+        /**
+         * @param organizationConnectionName Name of the connection in the scope of this organization.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder organizationConnectionName(String organizationConnectionName) {
+            return organizationConnectionName(Output.of(organizationConnectionName));
+        }
+
+        /**
+         * @param showAsButton Determines whether a connection should be displayed on this organization&#39;s login prompt. Only applicable for enterprise connections.
          * 
          * @return builder
          * 
@@ -179,7 +290,7 @@ public final class OrganizationConnectionsEnabledConnectionArgs extends com.pulu
         }
 
         /**
-         * @param showAsButton Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+         * @param showAsButton Determines whether a connection should be displayed on this organization&#39;s login prompt. Only applicable for enterprise connections.
          * 
          * @return builder
          * 

@@ -94,14 +94,14 @@ public class OrganizationConnection extends com.pulumi.resources.CustomResource 
      * 
      */
     @Export(name="assignMembershipOnLogin", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> assignMembershipOnLogin;
+    private Output<Boolean> assignMembershipOnLogin;
 
     /**
      * @return When `true`, all users that log in with this connection will be automatically granted membership in the organization. When `false`, users must be granted membership in the organization before logging in with this connection.
      * 
      */
-    public Output<Optional<Boolean>> assignMembershipOnLogin() {
-        return Codegen.optional(this.assignMembershipOnLogin);
+    public Output<Boolean> assignMembershipOnLogin() {
+        return this.assignMembershipOnLogin;
     }
     /**
      * The ID of the connection to enable for the organization.
@@ -118,18 +118,32 @@ public class OrganizationConnection extends com.pulumi.resources.CustomResource 
         return this.connectionId;
     }
     /**
+     * Whether the connection is enabled for the organization.
+     * 
+     */
+    @Export(name="isEnabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> isEnabled;
+
+    /**
+     * @return Whether the connection is enabled for the organization.
+     * 
+     */
+    public Output<Optional<Boolean>> isEnabled() {
+        return Codegen.optional(this.isEnabled);
+    }
+    /**
      * Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `isSignupEnabled` can only be `true` if `assignMembershipOnLogin` is `true`.
      * 
      */
     @Export(name="isSignupEnabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> isSignupEnabled;
+    private Output<Boolean> isSignupEnabled;
 
     /**
      * @return Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `isSignupEnabled` can only be `true` if `assignMembershipOnLogin` is `true`.
      * 
      */
-    public Output<Optional<Boolean>> isSignupEnabled() {
-        return Codegen.optional(this.isSignupEnabled);
+    public Output<Boolean> isSignupEnabled() {
+        return this.isSignupEnabled;
     }
     /**
      * The name of the enabled connection.
@@ -146,6 +160,34 @@ public class OrganizationConnection extends com.pulumi.resources.CustomResource 
         return this.name;
     }
     /**
+     * The access level for this organization connection. Can be `none`, `readonly`, `limited` or `full`.
+     * 
+     */
+    @Export(name="organizationAccessLevel", refs={String.class}, tree="[0]")
+    private Output<String> organizationAccessLevel;
+
+    /**
+     * @return The access level for this organization connection. Can be `none`, `readonly`, `limited` or `full`.
+     * 
+     */
+    public Output<String> organizationAccessLevel() {
+        return this.organizationAccessLevel;
+    }
+    /**
+     * Name of the connection in the scope of this organization.
+     * 
+     */
+    @Export(name="organizationConnectionName", refs={String.class}, tree="[0]")
+    private Output<String> organizationConnectionName;
+
+    /**
+     * @return Name of the connection in the scope of this organization.
+     * 
+     */
+    public Output<String> organizationConnectionName() {
+        return this.organizationConnectionName;
+    }
+    /**
      * The ID of the organization to enable the connection for.
      * 
      */
@@ -160,18 +202,18 @@ public class OrganizationConnection extends com.pulumi.resources.CustomResource 
         return this.organizationId;
     }
     /**
-     * Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+     * Determines whether a connection should be displayed on this organization&#39;s login prompt. Only applicable for enterprise connections.
      * 
      */
     @Export(name="showAsButton", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> showAsButton;
+    private Output<Boolean> showAsButton;
 
     /**
-     * @return Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+     * @return Determines whether a connection should be displayed on this organization&#39;s login prompt. Only applicable for enterprise connections.
      * 
      */
-    public Output<Optional<Boolean>> showAsButton() {
-        return Codegen.optional(this.showAsButton);
+    public Output<Boolean> showAsButton() {
+        return this.showAsButton;
     }
     /**
      * The strategy of the enabled connection.

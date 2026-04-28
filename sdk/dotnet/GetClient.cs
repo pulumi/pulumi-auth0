@@ -235,6 +235,18 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClientExpressConfigurationResult> ExpressConfigurations;
         /// <summary>
+        /// The URL of the Client ID Metadata Document. Only present for CIMD-registered clients.
+        /// </summary>
+        public readonly string ExternalClientId;
+        /// <summary>
+        /// Who created the external metadata client: `Admin` (via Management API), `Client` (self-registered), or `Unknown`.
+        /// </summary>
+        public readonly string ExternalMetadataCreatedBy;
+        /// <summary>
+        /// Type of external metadata. Value is `Cimd` for CIMD-registered clients.
+        /// </summary>
+        public readonly string ExternalMetadataType;
+        /// <summary>
         /// HTML form template to be used for WS-Federation.
         /// </summary>
         public readonly string FormTemplate;
@@ -251,13 +263,17 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly string InitiateLoginUri;
         /// <summary>
-        /// Indicates whether this client is a first-party client.Defaults to true from the API
+        /// Indicates whether this client is a first-party client.
         /// </summary>
         public readonly bool IsFirstParty;
         /// <summary>
         /// Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `ClientSecretPost` or `ClientSecretBasic`. Setting this property when creating the resource, will default the authentication method to `ClientSecretPost`. To change the authentication method to `ClientSecretBasic` use the `auth0.ClientCredentials` resource.
         /// </summary>
         public readonly bool IsTokenEndpointIpHeaderTrusted;
+        /// <summary>
+        /// URL for the JSON Web Key Set (JWKS) containing the public keys used for `PrivateKeyJwt` authentication. Only present for CIMD clients using `PrivateKeyJwt` authentication.
+        /// </summary>
+        public readonly string JwksUri;
         /// <summary>
         /// Configuration settings for the JWTs issued for this client.
         /// </summary>
@@ -270,6 +286,10 @@ namespace Pulumi.Auth0
         /// Additional configuration for native mobile apps.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClientMobileResult> Mobiles;
+        /// <summary>
+        /// Configuration for self-service organization features, controlling how organizations are created and managed for this client.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetClientMyOrganizationConfigurationResult> MyOrganizationConfigurations;
         /// <summary>
         /// The name of the client. If not provided, `ClientId` must be set.
         /// </summary>
@@ -400,6 +420,12 @@ namespace Pulumi.Auth0
 
             ImmutableArray<Outputs.GetClientExpressConfigurationResult> expressConfigurations,
 
+            string externalClientId,
+
+            string externalMetadataCreatedBy,
+
+            string externalMetadataType,
+
             string formTemplate,
 
             ImmutableArray<string> grantTypes,
@@ -412,11 +438,15 @@ namespace Pulumi.Auth0
 
             bool isTokenEndpointIpHeaderTrusted,
 
+            string jwksUri,
+
             ImmutableArray<Outputs.GetClientJwtConfigurationResult> jwtConfigurations,
 
             string logoUri,
 
             ImmutableArray<Outputs.GetClientMobileResult> mobiles,
+
+            ImmutableArray<Outputs.GetClientMyOrganizationConfigurationResult> myOrganizationConfigurations,
 
             string? name,
 
@@ -483,15 +513,20 @@ namespace Pulumi.Auth0
             Description = description;
             EncryptionKey = encryptionKey;
             ExpressConfigurations = expressConfigurations;
+            ExternalClientId = externalClientId;
+            ExternalMetadataCreatedBy = externalMetadataCreatedBy;
+            ExternalMetadataType = externalMetadataType;
             FormTemplate = formTemplate;
             GrantTypes = grantTypes;
             Id = id;
             InitiateLoginUri = initiateLoginUri;
             IsFirstParty = isFirstParty;
             IsTokenEndpointIpHeaderTrusted = isTokenEndpointIpHeaderTrusted;
+            JwksUri = jwksUri;
             JwtConfigurations = jwtConfigurations;
             LogoUri = logoUri;
             Mobiles = mobiles;
+            MyOrganizationConfigurations = myOrganizationConfigurations;
             Name = name;
             NativeSocialLogins = nativeSocialLogins;
             OidcBackchannelLogoutUrls = oidcBackchannelLogoutUrls;

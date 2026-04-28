@@ -37,6 +37,7 @@ export function getClients(args?: GetClientsArgs, opts?: pulumi.InvokeOptions): 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("auth0:index/getClients:getClients", {
         "appTypes": args.appTypes,
+        "externalClientId": args.externalClientId,
         "isFirstParty": args.isFirstParty,
         "nameFilter": args.nameFilter,
     }, opts);
@@ -50,6 +51,10 @@ export interface GetClientsArgs {
      * Filter clients by application types.
      */
     appTypes?: string[];
+    /**
+     * Filter clients by CIMD external client ID URL.
+     */
+    externalClientId?: string;
     /**
      * Filter clients by first party status.
      */
@@ -72,6 +77,10 @@ export interface GetClientsResult {
      * List of clients matching the filter criteria.
      */
     readonly clients: outputs.GetClientsClient[];
+    /**
+     * Filter clients by CIMD external client ID URL.
+     */
+    readonly externalClientId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -116,6 +125,7 @@ export function getClientsOutput(args?: GetClientsOutputArgs, opts?: pulumi.Invo
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("auth0:index/getClients:getClients", {
         "appTypes": args.appTypes,
+        "externalClientId": args.externalClientId,
         "isFirstParty": args.isFirstParty,
         "nameFilter": args.nameFilter,
     }, opts);
@@ -129,6 +139,10 @@ export interface GetClientsOutputArgs {
      * Filter clients by application types.
      */
     appTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Filter clients by CIMD external client ID URL.
+     */
+    externalClientId?: pulumi.Input<string>;
     /**
      * Filter clients by first party status.
      */

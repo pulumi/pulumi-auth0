@@ -27,7 +27,7 @@ class GetTenantResult:
     """
     A collection of values returned by getTenant.
     """
-    def __init__(__self__, acr_values_supporteds=None, allow_organization_name_in_authentication_api=None, allowed_logout_urls=None, customize_mfa_in_postlogin_action=None, default_audience=None, default_directory=None, default_redirection_uri=None, default_token_quotas=None, disable_acr_values_supported=None, domain=None, enabled_locales=None, ephemeral_session_lifetime=None, error_pages=None, flags=None, friendly_name=None, id=None, idle_ephemeral_session_lifetime=None, idle_session_lifetime=None, management_api_identifier=None, mtls=None, oidc_logouts=None, phone_consolidated_experience=None, picture_url=None, pushed_authorization_requests_supported=None, sandbox_version=None, session_cookies=None, session_lifetime=None, sessions=None, skip_non_verifiable_callback_uri_confirmation_prompt=None, support_email=None, support_url=None):
+    def __init__(__self__, acr_values_supporteds=None, allow_organization_name_in_authentication_api=None, allowed_logout_urls=None, client_id_metadata_document_supported=None, customize_mfa_in_postlogin_action=None, default_audience=None, default_directory=None, default_redirection_uri=None, default_token_quotas=None, disable_acr_values_supported=None, domain=None, enabled_locales=None, ephemeral_session_lifetime=None, error_pages=None, flags=None, friendly_name=None, id=None, idle_ephemeral_session_lifetime=None, idle_session_lifetime=None, management_api_identifier=None, mtls=None, oidc_logouts=None, phone_consolidated_experience=None, picture_url=None, pushed_authorization_requests_supported=None, resource_parameter_profile=None, sandbox_version=None, session_cookies=None, session_lifetime=None, sessions=None, skip_non_verifiable_callback_uri_confirmation_prompt=None, support_email=None, support_url=None):
         if acr_values_supporteds and not isinstance(acr_values_supporteds, list):
             raise TypeError("Expected argument 'acr_values_supporteds' to be a list")
         pulumi.set(__self__, "acr_values_supporteds", acr_values_supporteds)
@@ -37,6 +37,9 @@ class GetTenantResult:
         if allowed_logout_urls and not isinstance(allowed_logout_urls, list):
             raise TypeError("Expected argument 'allowed_logout_urls' to be a list")
         pulumi.set(__self__, "allowed_logout_urls", allowed_logout_urls)
+        if client_id_metadata_document_supported and not isinstance(client_id_metadata_document_supported, bool):
+            raise TypeError("Expected argument 'client_id_metadata_document_supported' to be a bool")
+        pulumi.set(__self__, "client_id_metadata_document_supported", client_id_metadata_document_supported)
         if customize_mfa_in_postlogin_action and not isinstance(customize_mfa_in_postlogin_action, bool):
             raise TypeError("Expected argument 'customize_mfa_in_postlogin_action' to be a bool")
         pulumi.set(__self__, "customize_mfa_in_postlogin_action", customize_mfa_in_postlogin_action)
@@ -100,6 +103,9 @@ class GetTenantResult:
         if pushed_authorization_requests_supported and not isinstance(pushed_authorization_requests_supported, bool):
             raise TypeError("Expected argument 'pushed_authorization_requests_supported' to be a bool")
         pulumi.set(__self__, "pushed_authorization_requests_supported", pushed_authorization_requests_supported)
+        if resource_parameter_profile and not isinstance(resource_parameter_profile, str):
+            raise TypeError("Expected argument 'resource_parameter_profile' to be a str")
+        pulumi.set(__self__, "resource_parameter_profile", resource_parameter_profile)
         if sandbox_version and not isinstance(sandbox_version, str):
             raise TypeError("Expected argument 'sandbox_version' to be a str")
         pulumi.set(__self__, "sandbox_version", sandbox_version)
@@ -145,6 +151,14 @@ class GetTenantResult:
         URLs that Auth0 may redirect to after logout.
         """
         return pulumi.get(self, "allowed_logout_urls")
+
+    @_builtins.property
+    @pulumi.getter(name="clientIdMetadataDocumentSupported")
+    def client_id_metadata_document_supported(self) -> _builtins.bool:
+        """
+        Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
+        """
+        return pulumi.get(self, "client_id_metadata_document_supported")
 
     @_builtins.property
     @pulumi.getter(name="customizeMfaInPostloginAction")
@@ -315,6 +329,14 @@ class GetTenantResult:
         return pulumi.get(self, "pushed_authorization_requests_supported")
 
     @_builtins.property
+    @pulumi.getter(name="resourceParameterProfile")
+    def resource_parameter_profile(self) -> _builtins.str:
+        """
+        Profile that determines how the protected resource identity is specified in OAuth endpoints. When set to `audience` (default), the `audience` parameter is used. When set to `compatibility`, the `resource` parameter is used as fallback if `audience` is not provided.
+        """
+        return pulumi.get(self, "resource_parameter_profile")
+
+    @_builtins.property
     @pulumi.getter(name="sandboxVersion")
     def sandbox_version(self) -> _builtins.str:
         """
@@ -380,6 +402,7 @@ class AwaitableGetTenantResult(GetTenantResult):
             acr_values_supporteds=self.acr_values_supporteds,
             allow_organization_name_in_authentication_api=self.allow_organization_name_in_authentication_api,
             allowed_logout_urls=self.allowed_logout_urls,
+            client_id_metadata_document_supported=self.client_id_metadata_document_supported,
             customize_mfa_in_postlogin_action=self.customize_mfa_in_postlogin_action,
             default_audience=self.default_audience,
             default_directory=self.default_directory,
@@ -401,6 +424,7 @@ class AwaitableGetTenantResult(GetTenantResult):
             phone_consolidated_experience=self.phone_consolidated_experience,
             picture_url=self.picture_url,
             pushed_authorization_requests_supported=self.pushed_authorization_requests_supported,
+            resource_parameter_profile=self.resource_parameter_profile,
             sandbox_version=self.sandbox_version,
             session_cookies=self.session_cookies,
             session_lifetime=self.session_lifetime,
@@ -431,6 +455,7 @@ def get_tenant(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTenan
         acr_values_supporteds=pulumi.get(__ret__, 'acr_values_supporteds'),
         allow_organization_name_in_authentication_api=pulumi.get(__ret__, 'allow_organization_name_in_authentication_api'),
         allowed_logout_urls=pulumi.get(__ret__, 'allowed_logout_urls'),
+        client_id_metadata_document_supported=pulumi.get(__ret__, 'client_id_metadata_document_supported'),
         customize_mfa_in_postlogin_action=pulumi.get(__ret__, 'customize_mfa_in_postlogin_action'),
         default_audience=pulumi.get(__ret__, 'default_audience'),
         default_directory=pulumi.get(__ret__, 'default_directory'),
@@ -452,6 +477,7 @@ def get_tenant(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTenan
         phone_consolidated_experience=pulumi.get(__ret__, 'phone_consolidated_experience'),
         picture_url=pulumi.get(__ret__, 'picture_url'),
         pushed_authorization_requests_supported=pulumi.get(__ret__, 'pushed_authorization_requests_supported'),
+        resource_parameter_profile=pulumi.get(__ret__, 'resource_parameter_profile'),
         sandbox_version=pulumi.get(__ret__, 'sandbox_version'),
         session_cookies=pulumi.get(__ret__, 'session_cookies'),
         session_lifetime=pulumi.get(__ret__, 'session_lifetime'),
@@ -479,6 +505,7 @@ def get_tenant_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOu
         acr_values_supporteds=pulumi.get(__response__, 'acr_values_supporteds'),
         allow_organization_name_in_authentication_api=pulumi.get(__response__, 'allow_organization_name_in_authentication_api'),
         allowed_logout_urls=pulumi.get(__response__, 'allowed_logout_urls'),
+        client_id_metadata_document_supported=pulumi.get(__response__, 'client_id_metadata_document_supported'),
         customize_mfa_in_postlogin_action=pulumi.get(__response__, 'customize_mfa_in_postlogin_action'),
         default_audience=pulumi.get(__response__, 'default_audience'),
         default_directory=pulumi.get(__response__, 'default_directory'),
@@ -500,6 +527,7 @@ def get_tenant_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOu
         phone_consolidated_experience=pulumi.get(__response__, 'phone_consolidated_experience'),
         picture_url=pulumi.get(__response__, 'picture_url'),
         pushed_authorization_requests_supported=pulumi.get(__response__, 'pushed_authorization_requests_supported'),
+        resource_parameter_profile=pulumi.get(__response__, 'resource_parameter_profile'),
         sandbox_version=pulumi.get(__response__, 'sandbox_version'),
         session_cookies=pulumi.get(__response__, 'session_cookies'),
         session_lifetime=pulumi.get(__response__, 'session_lifetime'),

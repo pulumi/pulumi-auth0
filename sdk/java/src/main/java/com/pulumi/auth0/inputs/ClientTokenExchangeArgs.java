@@ -16,14 +16,14 @@ public final class ClientTokenExchangeArgs extends com.pulumi.resources.Resource
     public static final ClientTokenExchangeArgs Empty = new ClientTokenExchangeArgs();
 
     /**
-     * List of allowed profile types for token exchange
+     * List of allowed profile types for token exchange. Supported values include: custom*authentication, on*behalf*of*token_exchange.
      * 
      */
     @Import(name="allowAnyProfileOfTypes", required=true)
     private Output<List<String>> allowAnyProfileOfTypes;
 
     /**
-     * @return List of allowed profile types for token exchange
+     * @return List of allowed profile types for token exchange. Supported values include: custom*authentication, on*behalf*of*token_exchange.
      * 
      */
     public Output<List<String>> allowAnyProfileOfTypes() {
@@ -55,7 +55,7 @@ public final class ClientTokenExchangeArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param allowAnyProfileOfTypes List of allowed profile types for token exchange
+         * @param allowAnyProfileOfTypes List of allowed profile types for token exchange. Supported values include: custom*authentication, on*behalf*of*token_exchange.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class ClientTokenExchangeArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param allowAnyProfileOfTypes List of allowed profile types for token exchange
+         * @param allowAnyProfileOfTypes List of allowed profile types for token exchange. Supported values include: custom*authentication, on*behalf*of*token_exchange.
          * 
          * @return builder
          * 
@@ -76,7 +76,7 @@ public final class ClientTokenExchangeArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param allowAnyProfileOfTypes List of allowed profile types for token exchange
+         * @param allowAnyProfileOfTypes List of allowed profile types for token exchange. Supported values include: custom*authentication, on*behalf*of*token_exchange.
          * 
          * @return builder
          * 

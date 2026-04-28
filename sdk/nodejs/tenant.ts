@@ -104,6 +104,10 @@ export class Tenant extends pulumi.CustomResource {
      */
     declare public readonly allowedLogoutUrls: pulumi.Output<string[]>;
     /**
+     * Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
+     */
+    declare public readonly clientIdMetadataDocumentSupported: pulumi.Output<boolean>;
+    /**
      * Whether to enable flexible factors for MFA in the PostLogin action.
      */
     declare public readonly customizeMfaInPostloginAction: pulumi.Output<boolean>;
@@ -176,6 +180,10 @@ export class Tenant extends pulumi.CustomResource {
      */
     declare public readonly pushedAuthorizationRequestsSupported: pulumi.Output<boolean>;
     /**
+     * Profile that determines how the protected resource identity is specified in OAuth endpoints. When set to `audience` (default), the `audience` parameter is used. When set to `compatibility`, the `resource` parameter is used as fallback if `audience` is not provided.
+     */
+    declare public readonly resourceParameterProfile: pulumi.Output<string>;
+    /**
      * Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
      */
     declare public readonly sandboxVersion: pulumi.Output<string>;
@@ -220,6 +228,7 @@ export class Tenant extends pulumi.CustomResource {
             resourceInputs["acrValuesSupporteds"] = state?.acrValuesSupporteds;
             resourceInputs["allowOrganizationNameInAuthenticationApi"] = state?.allowOrganizationNameInAuthenticationApi;
             resourceInputs["allowedLogoutUrls"] = state?.allowedLogoutUrls;
+            resourceInputs["clientIdMetadataDocumentSupported"] = state?.clientIdMetadataDocumentSupported;
             resourceInputs["customizeMfaInPostloginAction"] = state?.customizeMfaInPostloginAction;
             resourceInputs["defaultAudience"] = state?.defaultAudience;
             resourceInputs["defaultDirectory"] = state?.defaultDirectory;
@@ -238,6 +247,7 @@ export class Tenant extends pulumi.CustomResource {
             resourceInputs["phoneConsolidatedExperience"] = state?.phoneConsolidatedExperience;
             resourceInputs["pictureUrl"] = state?.pictureUrl;
             resourceInputs["pushedAuthorizationRequestsSupported"] = state?.pushedAuthorizationRequestsSupported;
+            resourceInputs["resourceParameterProfile"] = state?.resourceParameterProfile;
             resourceInputs["sandboxVersion"] = state?.sandboxVersion;
             resourceInputs["sessionCookie"] = state?.sessionCookie;
             resourceInputs["sessionLifetime"] = state?.sessionLifetime;
@@ -250,6 +260,7 @@ export class Tenant extends pulumi.CustomResource {
             resourceInputs["acrValuesSupporteds"] = args?.acrValuesSupporteds;
             resourceInputs["allowOrganizationNameInAuthenticationApi"] = args?.allowOrganizationNameInAuthenticationApi;
             resourceInputs["allowedLogoutUrls"] = args?.allowedLogoutUrls;
+            resourceInputs["clientIdMetadataDocumentSupported"] = args?.clientIdMetadataDocumentSupported;
             resourceInputs["customizeMfaInPostloginAction"] = args?.customizeMfaInPostloginAction;
             resourceInputs["defaultAudience"] = args?.defaultAudience;
             resourceInputs["defaultDirectory"] = args?.defaultDirectory;
@@ -268,6 +279,7 @@ export class Tenant extends pulumi.CustomResource {
             resourceInputs["phoneConsolidatedExperience"] = args?.phoneConsolidatedExperience;
             resourceInputs["pictureUrl"] = args?.pictureUrl;
             resourceInputs["pushedAuthorizationRequestsSupported"] = args?.pushedAuthorizationRequestsSupported;
+            resourceInputs["resourceParameterProfile"] = args?.resourceParameterProfile;
             resourceInputs["sandboxVersion"] = args?.sandboxVersion;
             resourceInputs["sessionCookie"] = args?.sessionCookie;
             resourceInputs["sessionLifetime"] = args?.sessionLifetime;
@@ -297,6 +309,10 @@ export interface TenantState {
      * URLs that Auth0 may redirect to after logout.
      */
     allowedLogoutUrls?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
+     */
+    clientIdMetadataDocumentSupported?: pulumi.Input<boolean>;
     /**
      * Whether to enable flexible factors for MFA in the PostLogin action.
      */
@@ -369,6 +385,10 @@ export interface TenantState {
      * Enable pushed authorization requests.
      */
     pushedAuthorizationRequestsSupported?: pulumi.Input<boolean>;
+    /**
+     * Profile that determines how the protected resource identity is specified in OAuth endpoints. When set to `audience` (default), the `audience` parameter is used. When set to `compatibility`, the `resource` parameter is used as fallback if `audience` is not provided.
+     */
+    resourceParameterProfile?: pulumi.Input<string>;
     /**
      * Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
      */
@@ -416,6 +436,10 @@ export interface TenantArgs {
      */
     allowedLogoutUrls?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
+     */
+    clientIdMetadataDocumentSupported?: pulumi.Input<boolean>;
+    /**
      * Whether to enable flexible factors for MFA in the PostLogin action.
      */
     customizeMfaInPostloginAction?: pulumi.Input<boolean>;
@@ -487,6 +511,10 @@ export interface TenantArgs {
      * Enable pushed authorization requests.
      */
     pushedAuthorizationRequestsSupported?: pulumi.Input<boolean>;
+    /**
+     * Profile that determines how the protected resource identity is specified in OAuth endpoints. When set to `audience` (default), the `audience` parameter is used. When set to `compatibility`, the `resource` parameter is used as fallback if `audience` is not provided.
+     */
+    resourceParameterProfile?: pulumi.Input<string>;
     /**
      * Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
      */
