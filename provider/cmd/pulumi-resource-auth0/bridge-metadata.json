@@ -403,6 +403,16 @@
                             }
                         }
                     },
+                    "my_organization_configuration": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "allowed_strategies": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "native_social_login": {
                         "maxItemsOne": true,
                         "elem": {
@@ -494,6 +504,69 @@
                             "fields": {
                                 "client_credentials": {
                                     "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "web_origins": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "auth0_client_cimd": {
+                "current": "auth0:index/clientCimd:ClientCimd",
+                "majorVersion": 3,
+                "fields": {
+                    "allowed_origins": {
+                        "maxItemsOne": false
+                    },
+                    "callbacks": {
+                        "maxItemsOne": false
+                    },
+                    "default_organization": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "flows": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "grant_types": {
+                        "maxItemsOne": false
+                    },
+                    "jwt_configuration": {
+                        "maxItemsOne": true
+                    },
+                    "organization_discovery_methods": {
+                        "maxItemsOne": false
+                    },
+                    "refresh_token": {
+                        "maxItemsOne": true
+                    },
+                    "signing_keys": {
+                        "maxItemsOne": false
+                    },
+                    "token_quota": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "client_credentials": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "validation": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "violations": {
+                                    "maxItemsOne": false
+                                },
+                                "warnings": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }
@@ -2122,6 +2195,16 @@
                             }
                         }
                     },
+                    "my_organization_configuration": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "allowed_strategies": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "native_social_login": {
                         "maxItemsOne": false,
                         "elem": {
@@ -2286,6 +2369,16 @@
                                 },
                                 "grant_types": {
                                     "maxItemsOne": false
+                                },
+                                "my_organization_configuration": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "allowed_strategies": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 },
                                 "oidc_logout": {
                                     "maxItemsOne": false,
