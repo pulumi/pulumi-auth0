@@ -54,6 +54,8 @@ type LookupTenantResult struct {
 	AllowOrganizationNameInAuthenticationApi bool `pulumi:"allowOrganizationNameInAuthenticationApi"`
 	// URLs that Auth0 may redirect to after logout.
 	AllowedLogoutUrls []string `pulumi:"allowedLogoutUrls"`
+	// Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
+	ClientIdMetadataDocumentSupported bool `pulumi:"clientIdMetadataDocumentSupported"`
 	// Whether to enable flexible factors for MFA in the PostLogin action.
 	CustomizeMfaInPostloginAction bool `pulumi:"customizeMfaInPostloginAction"`
 	// API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
@@ -96,6 +98,8 @@ type LookupTenantResult struct {
 	PictureUrl string `pulumi:"pictureUrl"`
 	// Enable pushed authorization requests.
 	PushedAuthorizationRequestsSupported bool `pulumi:"pushedAuthorizationRequestsSupported"`
+	// Profile that determines how the protected resource identity is specified in OAuth endpoints. When set to `audience` (default), the `audience` parameter is used. When set to `compatibility`, the `resource` parameter is used as fallback if `audience` is not provided.
+	ResourceParameterProfile string `pulumi:"resourceParameterProfile"`
 	// Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
 	SandboxVersion string `pulumi:"sandboxVersion"`
 	// Alters behavior of tenant's session cookie. Contains a single `mode` property.
@@ -147,6 +151,11 @@ func (o LookupTenantResultOutput) AllowOrganizationNameInAuthenticationApi() pul
 // URLs that Auth0 may redirect to after logout.
 func (o LookupTenantResultOutput) AllowedLogoutUrls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupTenantResult) []string { return v.AllowedLogoutUrls }).(pulumi.StringArrayOutput)
+}
+
+// Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
+func (o LookupTenantResultOutput) ClientIdMetadataDocumentSupported() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupTenantResult) bool { return v.ClientIdMetadataDocumentSupported }).(pulumi.BoolOutput)
 }
 
 // Whether to enable flexible factors for MFA in the PostLogin action.
@@ -252,6 +261,11 @@ func (o LookupTenantResultOutput) PictureUrl() pulumi.StringOutput {
 // Enable pushed authorization requests.
 func (o LookupTenantResultOutput) PushedAuthorizationRequestsSupported() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupTenantResult) bool { return v.PushedAuthorizationRequestsSupported }).(pulumi.BoolOutput)
+}
+
+// Profile that determines how the protected resource identity is specified in OAuth endpoints. When set to `audience` (default), the `audience` parameter is used. When set to `compatibility`, the `resource` parameter is used as fallback if `audience` is not provided.
+func (o LookupTenantResultOutput) ResourceParameterProfile() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTenantResult) string { return v.ResourceParameterProfile }).(pulumi.StringOutput)
 }
 
 // Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.

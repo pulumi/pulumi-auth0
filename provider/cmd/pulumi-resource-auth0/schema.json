@@ -1777,6 +1777,159 @@
             },
             "type": "object"
         },
+        "auth0:index/ClientCimdDefaultOrganization:ClientCimdDefaultOrganization": {
+            "properties": {
+                "flows": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Definition of the flow that needs to be configured. Eg. client_credentials\n"
+                },
+                "organizationId": {
+                    "type": "string",
+                    "description": "The unique identifier of the organization\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "flows",
+                "organizationId"
+            ]
+        },
+        "auth0:index/ClientCimdJwtConfiguration:ClientCimdJwtConfiguration": {
+            "properties": {
+                "alg": {
+                    "type": "string",
+                    "description": "Algorithm used to sign JWTs. CIMD clients support `RS256`, `RS512`, and `PS256` (asymmetric only).\n"
+                },
+                "lifetimeInSeconds": {
+                    "type": "integer",
+                    "description": "Number of seconds during which the JWT will be valid.\n"
+                },
+                "secretEncoded": {
+                    "type": "boolean",
+                    "description": "Indicates whether the client secret is Base64-encoded.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "alg",
+                        "lifetimeInSeconds",
+                        "secretEncoded"
+                    ]
+                }
+            }
+        },
+        "auth0:index/ClientCimdRefreshToken:ClientCimdRefreshToken": {
+            "properties": {
+                "expirationType": {
+                    "type": "string",
+                    "description": "Refresh token expiration type. Must be \u003cspan pulumi-lang-nodejs=\"`expiring`\" pulumi-lang-dotnet=\"`Expiring`\" pulumi-lang-go=\"`expiring`\" pulumi-lang-python=\"`expiring`\" pulumi-lang-yaml=\"`expiring`\" pulumi-lang-java=\"`expiring`\"\u003e`expiring`\u003c/span\u003e for CIMD clients.\n"
+                },
+                "idleTokenLifetime": {
+                    "type": "integer",
+                    "description": "The time in seconds after which inactive refresh tokens will expire.\n"
+                },
+                "infiniteIdleTokenLifetime": {
+                    "type": "boolean",
+                    "description": "Whether inactive refresh tokens should remain valid indefinitely. Must be \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e for CIMD clients.\n"
+                },
+                "infiniteTokenLifetime": {
+                    "type": "boolean",
+                    "description": "Whether refresh tokens should remain valid indefinitely. If false, \u003cspan pulumi-lang-nodejs=\"`tokenLifetime`\" pulumi-lang-dotnet=\"`TokenLifetime`\" pulumi-lang-go=\"`tokenLifetime`\" pulumi-lang-python=\"`token_lifetime`\" pulumi-lang-yaml=\"`tokenLifetime`\" pulumi-lang-java=\"`tokenLifetime`\"\u003e`tokenLifetime`\u003c/span\u003e should also be set.\n"
+                },
+                "leeway": {
+                    "type": "integer",
+                    "description": "The amount of time in seconds in which a refresh token may be reused without triggering reuse detection.\n"
+                },
+                "rotationType": {
+                    "type": "string",
+                    "description": "Refresh token rotation type.Valid values are \u003cspan pulumi-lang-nodejs=\"`rotating`\" pulumi-lang-dotnet=\"`Rotating`\" pulumi-lang-go=\"`rotating`\" pulumi-lang-python=\"`rotating`\" pulumi-lang-yaml=\"`rotating`\" pulumi-lang-java=\"`rotating`\"\u003e`rotating`\u003c/span\u003e and `non-rotating`\n"
+                },
+                "tokenLifetime": {
+                    "type": "integer",
+                    "description": "The absolute lifetime of a refresh token in seconds.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "expirationType",
+                        "idleTokenLifetime",
+                        "infiniteIdleTokenLifetime",
+                        "infiniteTokenLifetime",
+                        "leeway",
+                        "rotationType",
+                        "tokenLifetime"
+                    ]
+                }
+            }
+        },
+        "auth0:index/ClientCimdTokenQuota:ClientCimdTokenQuota": {
+            "properties": {
+                "clientCredentials": {
+                    "$ref": "#/types/auth0:index/ClientCimdTokenQuotaClientCredentials:ClientCimdTokenQuotaClientCredentials",
+                    "description": "The token quota configuration for client credentials.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "clientCredentials"
+            ]
+        },
+        "auth0:index/ClientCimdTokenQuotaClientCredentials:ClientCimdTokenQuotaClientCredentials": {
+            "properties": {
+                "enforce": {
+                    "type": "boolean",
+                    "description": "If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.\n"
+                },
+                "perDay": {
+                    "type": "integer",
+                    "description": "Maximum number of issued tokens per day\n"
+                },
+                "perHour": {
+                    "type": "integer",
+                    "description": "Maximum number of issued tokens per hour\n"
+                }
+            },
+            "type": "object"
+        },
+        "auth0:index/ClientCimdValidation:ClientCimdValidation": {
+            "properties": {
+                "valid": {
+                    "type": "boolean",
+                    "description": "Whether the metadata document passed validation.\n"
+                },
+                "violations": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Array of validation violation messages, if any. Violations indicate issues that prevented the metadata document from being fully processed.\n"
+                },
+                "warnings": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Array of warning messages, if any. Warnings indicate non-critical issues such as unsupported properties being ignored.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "valid",
+                        "violations",
+                        "warnings"
+                    ]
+                }
+            }
+        },
         "auth0:index/ClientCredentialsPrivateKeyJwt:ClientCredentialsPrivateKeyJwt": {
             "properties": {
                 "credentials": {
@@ -2257,6 +2410,30 @@
             },
             "type": "object"
         },
+        "auth0:index/ClientMyOrganizationConfiguration:ClientMyOrganizationConfiguration": {
+            "properties": {
+                "allowedStrategies": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The list of connection strategies that are allowed when creating organizations for this client (e.g. \"okta\", \"samlp\").\n"
+                },
+                "connectionDeletionBehavior": {
+                    "type": "string",
+                    "description": "Controls the behavior when deleting connections associated with organizations for this client. Possible values: \u003cspan pulumi-lang-nodejs=\"`allow`\" pulumi-lang-dotnet=\"`Allow`\" pulumi-lang-go=\"`allow`\" pulumi-lang-python=\"`allow`\" pulumi-lang-yaml=\"`allow`\" pulumi-lang-java=\"`allow`\"\u003e`allow`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`allowIfEmpty`\" pulumi-lang-dotnet=\"`AllowIfEmpty`\" pulumi-lang-go=\"`allowIfEmpty`\" pulumi-lang-python=\"`allow_if_empty`\" pulumi-lang-yaml=\"`allowIfEmpty`\" pulumi-lang-java=\"`allowIfEmpty`\"\u003e`allowIfEmpty`\u003c/span\u003e.\n"
+                },
+                "connectionProfileId": {
+                    "type": "string",
+                    "description": "The ID of the connection profile to use when creating organizations for this client.\n"
+                },
+                "userAttributeProfileId": {
+                    "type": "string",
+                    "description": "The ID of the user attribute profile to use when creating organizations for this client.\n"
+                }
+            },
+            "type": "object"
+        },
         "auth0:index/ClientNativeSocialLogin:ClientNativeSocialLogin": {
             "properties": {
                 "apple": {
@@ -2483,7 +2660,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "List of allowed profile types for token exchange\n"
+                    "description": "List of allowed profile types for token exchange. Supported values include: custom*authentication, on*behalf*of*token_exchange.\n"
                 }
             },
             "type": "object",
@@ -5123,19 +5300,39 @@
                     "type": "string",
                     "description": "The ID of the connection to enable for the organization.\n"
                 },
+                "isEnabled": {
+                    "type": "boolean",
+                    "description": "Whether the connection is enabled for the organization.\n"
+                },
                 "isSignupEnabled": {
                     "type": "boolean",
                     "description": "Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: \u003cspan pulumi-lang-nodejs=\"`isSignupEnabled`\" pulumi-lang-dotnet=\"`IsSignupEnabled`\" pulumi-lang-go=\"`isSignupEnabled`\" pulumi-lang-python=\"`is_signup_enabled`\" pulumi-lang-yaml=\"`isSignupEnabled`\" pulumi-lang-java=\"`isSignupEnabled`\"\u003e`isSignupEnabled`\u003c/span\u003e can only be \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e if \u003cspan pulumi-lang-nodejs=\"`assignMembershipOnLogin`\" pulumi-lang-dotnet=\"`AssignMembershipOnLogin`\" pulumi-lang-go=\"`assignMembershipOnLogin`\" pulumi-lang-python=\"`assign_membership_on_login`\" pulumi-lang-yaml=\"`assignMembershipOnLogin`\" pulumi-lang-java=\"`assignMembershipOnLogin`\"\u003e`assignMembershipOnLogin`\u003c/span\u003e is \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e.\n"
                 },
+                "organizationAccessLevel": {
+                    "type": "string",
+                    "description": "The access level for this organization connection. Can be \u003cspan pulumi-lang-nodejs=\"`none`\" pulumi-lang-dotnet=\"`None`\" pulumi-lang-go=\"`none`\" pulumi-lang-python=\"`none`\" pulumi-lang-yaml=\"`none`\" pulumi-lang-java=\"`none`\"\u003e`none`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`readonly`\" pulumi-lang-dotnet=\"`Readonly`\" pulumi-lang-go=\"`readonly`\" pulumi-lang-python=\"`readonly`\" pulumi-lang-yaml=\"`readonly`\" pulumi-lang-java=\"`readonly`\"\u003e`readonly`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`limited`\" pulumi-lang-dotnet=\"`Limited`\" pulumi-lang-go=\"`limited`\" pulumi-lang-python=\"`limited`\" pulumi-lang-yaml=\"`limited`\" pulumi-lang-java=\"`limited`\"\u003e`limited`\u003c/span\u003e, or \u003cspan pulumi-lang-nodejs=\"`full`\" pulumi-lang-dotnet=\"`Full`\" pulumi-lang-go=\"`full`\" pulumi-lang-python=\"`full`\" pulumi-lang-yaml=\"`full`\" pulumi-lang-java=\"`full`\"\u003e`full`\u003c/span\u003e.\n"
+                },
+                "organizationConnectionName": {
+                    "type": "string",
+                    "description": "Name of the connection in the scope of this organization.\n"
+                },
                 "showAsButton": {
                     "type": "boolean",
-                    "description": "Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.\n"
+                    "description": "Determines whether a connection should be displayed on this organization's login prompt. Only applicable for enterprise connections.\n"
                 }
             },
             "type": "object",
             "required": [
                 "connectionId"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "connectionId",
+                        "organizationAccessLevel"
+                    ]
+                }
+            }
         },
         "auth0:index/OrganizationDiscoveryDomainsDiscoveryDomain:OrganizationDiscoveryDomainsDiscoveryDomain": {
             "properties": {
@@ -9214,6 +9411,41 @@
                 }
             }
         },
+        "auth0:index/getClientMyOrganizationConfiguration:getClientMyOrganizationConfiguration": {
+            "properties": {
+                "allowedStrategies": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The list of connection strategies that are allowed when creating organizations for this client (e.g. \"okta\", \"samlp\").\n"
+                },
+                "connectionDeletionBehavior": {
+                    "type": "string",
+                    "description": "Controls the behavior when deleting connections associated with organizations for this client. Possible values: \u003cspan pulumi-lang-nodejs=\"`allow`\" pulumi-lang-dotnet=\"`Allow`\" pulumi-lang-go=\"`allow`\" pulumi-lang-python=\"`allow`\" pulumi-lang-yaml=\"`allow`\" pulumi-lang-java=\"`allow`\"\u003e`allow`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`allowIfEmpty`\" pulumi-lang-dotnet=\"`AllowIfEmpty`\" pulumi-lang-go=\"`allowIfEmpty`\" pulumi-lang-python=\"`allow_if_empty`\" pulumi-lang-yaml=\"`allowIfEmpty`\" pulumi-lang-java=\"`allowIfEmpty`\"\u003e`allowIfEmpty`\u003c/span\u003e.\n"
+                },
+                "connectionProfileId": {
+                    "type": "string",
+                    "description": "The ID of the connection profile to use when creating organizations for this client.\n"
+                },
+                "userAttributeProfileId": {
+                    "type": "string",
+                    "description": "The ID of the user attribute profile to use when creating organizations for this client.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "allowedStrategies",
+                "connectionDeletionBehavior",
+                "connectionProfileId",
+                "userAttributeProfileId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "auth0:index/getClientNativeSocialLogin:getClientNativeSocialLogin": {
             "properties": {
                 "apples": {
@@ -9581,7 +9813,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "List of allowed profile types for token exchange\n"
+                    "description": "List of allowed profile types for token exchange. Supported values include: custom_authentication, on_behalf_of_token_exchange.\n"
                 }
             },
             "type": "object",
@@ -9709,6 +9941,18 @@
                     },
                     "description": "Express Configuration settings for the client. Used with OIN Express Configuration.\n"
                 },
+                "externalClientId": {
+                    "type": "string",
+                    "description": "The URL of the Client ID Metadata Document. Only present for CIMD-registered clients.\n"
+                },
+                "externalMetadataCreatedBy": {
+                    "type": "string",
+                    "description": "Who created the external metadata client: \u003cspan pulumi-lang-nodejs=\"`admin`\" pulumi-lang-dotnet=\"`Admin`\" pulumi-lang-go=\"`admin`\" pulumi-lang-python=\"`admin`\" pulumi-lang-yaml=\"`admin`\" pulumi-lang-java=\"`admin`\"\u003e`admin`\u003c/span\u003e (via Management API), \u003cspan pulumi-lang-nodejs=\"`client`\" pulumi-lang-dotnet=\"`Client`\" pulumi-lang-go=\"`client`\" pulumi-lang-python=\"`client`\" pulumi-lang-yaml=\"`client`\" pulumi-lang-java=\"`client`\"\u003e`client`\u003c/span\u003e (self-registered), or \u003cspan pulumi-lang-nodejs=\"`unknown`\" pulumi-lang-dotnet=\"`Unknown`\" pulumi-lang-go=\"`unknown`\" pulumi-lang-python=\"`unknown`\" pulumi-lang-yaml=\"`unknown`\" pulumi-lang-java=\"`unknown`\"\u003e`unknown`\u003c/span\u003e.\n"
+                },
+                "externalMetadataType": {
+                    "type": "string",
+                    "description": "Type of external metadata. Value is \u003cspan pulumi-lang-nodejs=\"`cimd`\" pulumi-lang-dotnet=\"`Cimd`\" pulumi-lang-go=\"`cimd`\" pulumi-lang-python=\"`cimd`\" pulumi-lang-yaml=\"`cimd`\" pulumi-lang-java=\"`cimd`\"\u003e`cimd`\u003c/span\u003e for CIMD-registered clients.\n"
+                },
                 "grantTypes": {
                     "type": "array",
                     "items": {
@@ -9718,11 +9962,22 @@
                 },
                 "isFirstParty": {
                     "type": "boolean",
-                    "description": "Indicates whether this client is a first-party client.Defaults to true from the API\n"
+                    "description": "Indicates whether this client is a first-party client.\n"
                 },
                 "isTokenEndpointIpHeaderTrusted": {
                     "type": "boolean",
                     "description": "Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to \u003cspan pulumi-lang-nodejs=\"`clientSecretPost`\" pulumi-lang-dotnet=\"`ClientSecretPost`\" pulumi-lang-go=\"`clientSecretPost`\" pulumi-lang-python=\"`client_secret_post`\" pulumi-lang-yaml=\"`clientSecretPost`\" pulumi-lang-java=\"`clientSecretPost`\"\u003e`clientSecretPost`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`clientSecretBasic`\" pulumi-lang-dotnet=\"`ClientSecretBasic`\" pulumi-lang-go=\"`clientSecretBasic`\" pulumi-lang-python=\"`client_secret_basic`\" pulumi-lang-yaml=\"`clientSecretBasic`\" pulumi-lang-java=\"`clientSecretBasic`\"\u003e`clientSecretBasic`\u003c/span\u003e. Setting this property when creating the resource, will default the authentication method to \u003cspan pulumi-lang-nodejs=\"`clientSecretPost`\" pulumi-lang-dotnet=\"`ClientSecretPost`\" pulumi-lang-go=\"`clientSecretPost`\" pulumi-lang-python=\"`client_secret_post`\" pulumi-lang-yaml=\"`clientSecretPost`\" pulumi-lang-java=\"`clientSecretPost`\"\u003e`clientSecretPost`\u003c/span\u003e. To change the authentication method to \u003cspan pulumi-lang-nodejs=\"`clientSecretBasic`\" pulumi-lang-dotnet=\"`ClientSecretBasic`\" pulumi-lang-go=\"`clientSecretBasic`\" pulumi-lang-python=\"`client_secret_basic`\" pulumi-lang-yaml=\"`clientSecretBasic`\" pulumi-lang-java=\"`clientSecretBasic`\"\u003e`clientSecretBasic`\u003c/span\u003e use the \u003cspan pulumi-lang-nodejs=\"`auth0.ClientCredentials`\" pulumi-lang-dotnet=\"`auth0.ClientCredentials`\" pulumi-lang-go=\"`ClientCredentials`\" pulumi-lang-python=\"`ClientCredentials`\" pulumi-lang-yaml=\"`auth0.ClientCredentials`\" pulumi-lang-java=\"`auth0.ClientCredentials`\"\u003e`auth0.ClientCredentials`\u003c/span\u003e resource.\n"
+                },
+                "jwksUri": {
+                    "type": "string",
+                    "description": "URL for the JSON Web Key Set (JWKS) containing the public keys used for \u003cspan pulumi-lang-nodejs=\"`privateKeyJwt`\" pulumi-lang-dotnet=\"`PrivateKeyJwt`\" pulumi-lang-go=\"`privateKeyJwt`\" pulumi-lang-python=\"`private_key_jwt`\" pulumi-lang-yaml=\"`privateKeyJwt`\" pulumi-lang-java=\"`privateKeyJwt`\"\u003e`privateKeyJwt`\u003c/span\u003e authentication. Only present for CIMD clients using \u003cspan pulumi-lang-nodejs=\"`privateKeyJwt`\" pulumi-lang-dotnet=\"`PrivateKeyJwt`\" pulumi-lang-go=\"`privateKeyJwt`\" pulumi-lang-python=\"`private_key_jwt`\" pulumi-lang-yaml=\"`privateKeyJwt`\" pulumi-lang-java=\"`privateKeyJwt`\"\u003e`privateKeyJwt`\u003c/span\u003e authentication.\n"
+                },
+                "myOrganizationConfigurations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/getClientsClientMyOrganizationConfiguration:getClientsClientMyOrganizationConfiguration"
+                    },
+                    "description": "Configuration for self-service organization features, controlling how organizations are created and managed for this client.\n"
                 },
                 "name": {
                     "type": "string",
@@ -9790,9 +10045,14 @@
                 "clientSecret",
                 "description",
                 "expressConfigurations",
+                "externalClientId",
+                "externalMetadataCreatedBy",
+                "externalMetadataType",
                 "grantTypes",
                 "isFirstParty",
                 "isTokenEndpointIpHeaderTrusted",
+                "jwksUri",
+                "myOrganizationConfigurations",
                 "oidcLogouts",
                 "organizationDiscoveryMethods",
                 "resourceServerIdentifier",
@@ -9878,6 +10138,41 @@
             "type": "object",
             "required": [
                 "clientId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getClientsClientMyOrganizationConfiguration:getClientsClientMyOrganizationConfiguration": {
+            "properties": {
+                "allowedStrategies": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The list of connection strategies that are allowed when creating organizations for this client (e.g. \"okta\", \"samlp\").\n"
+                },
+                "connectionDeletionBehavior": {
+                    "type": "string",
+                    "description": "Controls the behavior when deleting connections associated with organizations for this client. Possible values: \u003cspan pulumi-lang-nodejs=\"`allow`\" pulumi-lang-dotnet=\"`Allow`\" pulumi-lang-go=\"`allow`\" pulumi-lang-python=\"`allow`\" pulumi-lang-yaml=\"`allow`\" pulumi-lang-java=\"`allow`\"\u003e`allow`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`allowIfEmpty`\" pulumi-lang-dotnet=\"`AllowIfEmpty`\" pulumi-lang-go=\"`allowIfEmpty`\" pulumi-lang-python=\"`allow_if_empty`\" pulumi-lang-yaml=\"`allowIfEmpty`\" pulumi-lang-java=\"`allowIfEmpty`\"\u003e`allowIfEmpty`\u003c/span\u003e.\n"
+                },
+                "connectionProfileId": {
+                    "type": "string",
+                    "description": "The ID of the connection profile to use when creating organizations for this client.\n"
+                },
+                "userAttributeProfileId": {
+                    "type": "string",
+                    "description": "The ID of the user attribute profile to use when creating organizations for this client.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "allowedStrategies",
+                "connectionDeletionBehavior",
+                "connectionProfileId",
+                "userAttributeProfileId"
             ],
             "language": {
                 "nodejs": {
@@ -10014,7 +10309,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "List of allowed profile types for token exchange\n"
+                    "description": "List of allowed profile types for token exchange. Supported values include: custom_authentication, on_behalf_of_token_exchange.\n"
                 }
             },
             "type": "object",
@@ -12729,20 +13024,35 @@
                     "type": "string",
                     "description": "The ID of the enabled connection on the organization.\n"
                 },
+                "isEnabled": {
+                    "type": "boolean",
+                    "description": "Whether the connection is enabled for the organization.\n"
+                },
                 "isSignupEnabled": {
                     "type": "boolean",
                     "description": "Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: \u003cspan pulumi-lang-nodejs=\"`isSignupEnabled`\" pulumi-lang-dotnet=\"`IsSignupEnabled`\" pulumi-lang-go=\"`isSignupEnabled`\" pulumi-lang-python=\"`is_signup_enabled`\" pulumi-lang-yaml=\"`isSignupEnabled`\" pulumi-lang-java=\"`isSignupEnabled`\"\u003e`isSignupEnabled`\u003c/span\u003e can only be \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e if \u003cspan pulumi-lang-nodejs=\"`assignMembershipOnLogin`\" pulumi-lang-dotnet=\"`AssignMembershipOnLogin`\" pulumi-lang-go=\"`assignMembershipOnLogin`\" pulumi-lang-python=\"`assign_membership_on_login`\" pulumi-lang-yaml=\"`assignMembershipOnLogin`\" pulumi-lang-java=\"`assignMembershipOnLogin`\"\u003e`assignMembershipOnLogin`\u003c/span\u003e is \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e.\n"
                 },
+                "organizationAccessLevel": {
+                    "type": "string",
+                    "description": "The access level for this organization connection. Can be \u003cspan pulumi-lang-nodejs=\"`none`\" pulumi-lang-dotnet=\"`None`\" pulumi-lang-go=\"`none`\" pulumi-lang-python=\"`none`\" pulumi-lang-yaml=\"`none`\" pulumi-lang-java=\"`none`\"\u003e`none`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`readonly`\" pulumi-lang-dotnet=\"`Readonly`\" pulumi-lang-go=\"`readonly`\" pulumi-lang-python=\"`readonly`\" pulumi-lang-yaml=\"`readonly`\" pulumi-lang-java=\"`readonly`\"\u003e`readonly`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`limited`\" pulumi-lang-dotnet=\"`Limited`\" pulumi-lang-go=\"`limited`\" pulumi-lang-python=\"`limited`\" pulumi-lang-yaml=\"`limited`\" pulumi-lang-java=\"`limited`\"\u003e`limited`\u003c/span\u003e, or \u003cspan pulumi-lang-nodejs=\"`full`\" pulumi-lang-dotnet=\"`Full`\" pulumi-lang-go=\"`full`\" pulumi-lang-python=\"`full`\" pulumi-lang-yaml=\"`full`\" pulumi-lang-java=\"`full`\"\u003e`full`\u003c/span\u003e.\n"
+                },
+                "organizationConnectionName": {
+                    "type": "string",
+                    "description": "Name of the connection in the scope of this organization.\n"
+                },
                 "showAsButton": {
                     "type": "boolean",
-                    "description": "Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.\n"
+                    "description": "Determines whether a connection should be displayed on this organization's login prompt. Only applicable for enterprise connections.\n"
                 }
             },
             "type": "object",
             "required": [
                 "assignMembershipOnLogin",
                 "connectionId",
+                "isEnabled",
                 "isSignupEnabled",
+                "organizationAccessLevel",
+                "organizationConnectionName",
                 "showAsButton"
             ],
             "language": {
@@ -14978,6 +15288,18 @@
                     "$ref": "#/types/auth0:index/ClientExpressConfiguration:ClientExpressConfiguration",
                     "description": "Express Configuration settings for the client. Used with OIN Express Configuration.\n"
                 },
+                "externalClientId": {
+                    "type": "string",
+                    "description": "The URL of the Client ID Metadata Document. Only present for CIMD-registered clients.\n"
+                },
+                "externalMetadataCreatedBy": {
+                    "type": "string",
+                    "description": "Who created the external metadata client: \u003cspan pulumi-lang-nodejs=\"`admin`\" pulumi-lang-dotnet=\"`Admin`\" pulumi-lang-go=\"`admin`\" pulumi-lang-python=\"`admin`\" pulumi-lang-yaml=\"`admin`\" pulumi-lang-java=\"`admin`\"\u003e`admin`\u003c/span\u003e (via Management API), \u003cspan pulumi-lang-nodejs=\"`client`\" pulumi-lang-dotnet=\"`Client`\" pulumi-lang-go=\"`client`\" pulumi-lang-python=\"`client`\" pulumi-lang-yaml=\"`client`\" pulumi-lang-java=\"`client`\"\u003e`client`\u003c/span\u003e (self-registered), or \u003cspan pulumi-lang-nodejs=\"`unknown`\" pulumi-lang-dotnet=\"`Unknown`\" pulumi-lang-go=\"`unknown`\" pulumi-lang-python=\"`unknown`\" pulumi-lang-yaml=\"`unknown`\" pulumi-lang-java=\"`unknown`\"\u003e`unknown`\u003c/span\u003e.\n"
+                },
+                "externalMetadataType": {
+                    "type": "string",
+                    "description": "Type of external metadata. Value is \u003cspan pulumi-lang-nodejs=\"`cimd`\" pulumi-lang-dotnet=\"`Cimd`\" pulumi-lang-go=\"`cimd`\" pulumi-lang-python=\"`cimd`\" pulumi-lang-yaml=\"`cimd`\" pulumi-lang-java=\"`cimd`\"\u003e`cimd`\u003c/span\u003e for CIMD-registered clients.\n"
+                },
                 "formTemplate": {
                     "type": "string",
                     "description": "HTML form template to be used for WS-Federation.\n"
@@ -14995,11 +15317,15 @@
                 },
                 "isFirstParty": {
                     "type": "boolean",
-                    "description": "Indicates whether this client is a first-party client.Defaults to true from the API\n"
+                    "description": "Indicates whether this client is a first-party client.\n"
                 },
                 "isTokenEndpointIpHeaderTrusted": {
                     "type": "boolean",
                     "description": "Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to \u003cspan pulumi-lang-nodejs=\"`clientSecretPost`\" pulumi-lang-dotnet=\"`ClientSecretPost`\" pulumi-lang-go=\"`clientSecretPost`\" pulumi-lang-python=\"`client_secret_post`\" pulumi-lang-yaml=\"`clientSecretPost`\" pulumi-lang-java=\"`clientSecretPost`\"\u003e`clientSecretPost`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`clientSecretBasic`\" pulumi-lang-dotnet=\"`ClientSecretBasic`\" pulumi-lang-go=\"`clientSecretBasic`\" pulumi-lang-python=\"`client_secret_basic`\" pulumi-lang-yaml=\"`clientSecretBasic`\" pulumi-lang-java=\"`clientSecretBasic`\"\u003e`clientSecretBasic`\u003c/span\u003e. Setting this property when creating the resource, will default the authentication method to \u003cspan pulumi-lang-nodejs=\"`clientSecretPost`\" pulumi-lang-dotnet=\"`ClientSecretPost`\" pulumi-lang-go=\"`clientSecretPost`\" pulumi-lang-python=\"`client_secret_post`\" pulumi-lang-yaml=\"`clientSecretPost`\" pulumi-lang-java=\"`clientSecretPost`\"\u003e`clientSecretPost`\u003c/span\u003e. To change the authentication method to \u003cspan pulumi-lang-nodejs=\"`clientSecretBasic`\" pulumi-lang-dotnet=\"`ClientSecretBasic`\" pulumi-lang-go=\"`clientSecretBasic`\" pulumi-lang-python=\"`client_secret_basic`\" pulumi-lang-yaml=\"`clientSecretBasic`\" pulumi-lang-java=\"`clientSecretBasic`\"\u003e`clientSecretBasic`\u003c/span\u003e use the \u003cspan pulumi-lang-nodejs=\"`auth0.ClientCredentials`\" pulumi-lang-dotnet=\"`auth0.ClientCredentials`\" pulumi-lang-go=\"`ClientCredentials`\" pulumi-lang-python=\"`ClientCredentials`\" pulumi-lang-yaml=\"`auth0.ClientCredentials`\" pulumi-lang-java=\"`auth0.ClientCredentials`\"\u003e`auth0.ClientCredentials`\u003c/span\u003e resource.\n"
+                },
+                "jwksUri": {
+                    "type": "string",
+                    "description": "URL for the JSON Web Key Set (JWKS) containing the public keys used for \u003cspan pulumi-lang-nodejs=\"`privateKeyJwt`\" pulumi-lang-dotnet=\"`PrivateKeyJwt`\" pulumi-lang-go=\"`privateKeyJwt`\" pulumi-lang-python=\"`private_key_jwt`\" pulumi-lang-yaml=\"`privateKeyJwt`\" pulumi-lang-java=\"`privateKeyJwt`\"\u003e`privateKeyJwt`\u003c/span\u003e authentication. Only present for CIMD clients using \u003cspan pulumi-lang-nodejs=\"`privateKeyJwt`\" pulumi-lang-dotnet=\"`PrivateKeyJwt`\" pulumi-lang-go=\"`privateKeyJwt`\" pulumi-lang-python=\"`private_key_jwt`\" pulumi-lang-yaml=\"`privateKeyJwt`\" pulumi-lang-java=\"`privateKeyJwt`\"\u003e`privateKeyJwt`\u003c/span\u003e authentication.\n"
                 },
                 "jwtConfiguration": {
                     "$ref": "#/types/auth0:index/ClientJwtConfiguration:ClientJwtConfiguration",
@@ -15012,6 +15338,10 @@
                 "mobile": {
                     "$ref": "#/types/auth0:index/ClientMobile:ClientMobile",
                     "description": "Additional configuration for native mobile apps.\n"
+                },
+                "myOrganizationConfiguration": {
+                    "$ref": "#/types/auth0:index/ClientMyOrganizationConfiguration:ClientMyOrganizationConfiguration",
+                    "description": "Configuration for self-service organization features, controlling how organizations are created and managed for this client.\n"
                 },
                 "name": {
                     "type": "string",
@@ -15117,11 +15447,16 @@
                 "defaultOrganization",
                 "description",
                 "expressConfiguration",
+                "externalClientId",
+                "externalMetadataCreatedBy",
+                "externalMetadataType",
                 "grantTypes",
                 "isFirstParty",
                 "isTokenEndpointIpHeaderTrusted",
+                "jwksUri",
                 "jwtConfiguration",
                 "mobile",
+                "myOrganizationConfiguration",
                 "name",
                 "nativeSocialLogin",
                 "oidcBackchannelLogoutUrls",
@@ -15246,7 +15581,7 @@
                 },
                 "isFirstParty": {
                     "type": "boolean",
-                    "description": "Indicates whether this client is a first-party client.Defaults to true from the API\n"
+                    "description": "Indicates whether this client is a first-party client.\n"
                 },
                 "isTokenEndpointIpHeaderTrusted": {
                     "type": "boolean",
@@ -15263,6 +15598,10 @@
                 "mobile": {
                     "$ref": "#/types/auth0:index/ClientMobile:ClientMobile",
                     "description": "Additional configuration for native mobile apps.\n"
+                },
+                "myOrganizationConfiguration": {
+                    "$ref": "#/types/auth0:index/ClientMyOrganizationConfiguration:ClientMyOrganizationConfiguration",
+                    "description": "Configuration for self-service organization features, controlling how organizations are created and managed for this client.\n"
                 },
                 "name": {
                     "type": "string",
@@ -15454,6 +15793,18 @@
                         "$ref": "#/types/auth0:index/ClientExpressConfiguration:ClientExpressConfiguration",
                         "description": "Express Configuration settings for the client. Used with OIN Express Configuration.\n"
                     },
+                    "externalClientId": {
+                        "type": "string",
+                        "description": "The URL of the Client ID Metadata Document. Only present for CIMD-registered clients.\n"
+                    },
+                    "externalMetadataCreatedBy": {
+                        "type": "string",
+                        "description": "Who created the external metadata client: \u003cspan pulumi-lang-nodejs=\"`admin`\" pulumi-lang-dotnet=\"`Admin`\" pulumi-lang-go=\"`admin`\" pulumi-lang-python=\"`admin`\" pulumi-lang-yaml=\"`admin`\" pulumi-lang-java=\"`admin`\"\u003e`admin`\u003c/span\u003e (via Management API), \u003cspan pulumi-lang-nodejs=\"`client`\" pulumi-lang-dotnet=\"`Client`\" pulumi-lang-go=\"`client`\" pulumi-lang-python=\"`client`\" pulumi-lang-yaml=\"`client`\" pulumi-lang-java=\"`client`\"\u003e`client`\u003c/span\u003e (self-registered), or \u003cspan pulumi-lang-nodejs=\"`unknown`\" pulumi-lang-dotnet=\"`Unknown`\" pulumi-lang-go=\"`unknown`\" pulumi-lang-python=\"`unknown`\" pulumi-lang-yaml=\"`unknown`\" pulumi-lang-java=\"`unknown`\"\u003e`unknown`\u003c/span\u003e.\n"
+                    },
+                    "externalMetadataType": {
+                        "type": "string",
+                        "description": "Type of external metadata. Value is \u003cspan pulumi-lang-nodejs=\"`cimd`\" pulumi-lang-dotnet=\"`Cimd`\" pulumi-lang-go=\"`cimd`\" pulumi-lang-python=\"`cimd`\" pulumi-lang-yaml=\"`cimd`\" pulumi-lang-java=\"`cimd`\"\u003e`cimd`\u003c/span\u003e for CIMD-registered clients.\n"
+                    },
                     "formTemplate": {
                         "type": "string",
                         "description": "HTML form template to be used for WS-Federation.\n"
@@ -15471,11 +15822,15 @@
                     },
                     "isFirstParty": {
                         "type": "boolean",
-                        "description": "Indicates whether this client is a first-party client.Defaults to true from the API\n"
+                        "description": "Indicates whether this client is a first-party client.\n"
                     },
                     "isTokenEndpointIpHeaderTrusted": {
                         "type": "boolean",
                         "description": "Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to \u003cspan pulumi-lang-nodejs=\"`clientSecretPost`\" pulumi-lang-dotnet=\"`ClientSecretPost`\" pulumi-lang-go=\"`clientSecretPost`\" pulumi-lang-python=\"`client_secret_post`\" pulumi-lang-yaml=\"`clientSecretPost`\" pulumi-lang-java=\"`clientSecretPost`\"\u003e`clientSecretPost`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`clientSecretBasic`\" pulumi-lang-dotnet=\"`ClientSecretBasic`\" pulumi-lang-go=\"`clientSecretBasic`\" pulumi-lang-python=\"`client_secret_basic`\" pulumi-lang-yaml=\"`clientSecretBasic`\" pulumi-lang-java=\"`clientSecretBasic`\"\u003e`clientSecretBasic`\u003c/span\u003e. Setting this property when creating the resource, will default the authentication method to \u003cspan pulumi-lang-nodejs=\"`clientSecretPost`\" pulumi-lang-dotnet=\"`ClientSecretPost`\" pulumi-lang-go=\"`clientSecretPost`\" pulumi-lang-python=\"`client_secret_post`\" pulumi-lang-yaml=\"`clientSecretPost`\" pulumi-lang-java=\"`clientSecretPost`\"\u003e`clientSecretPost`\u003c/span\u003e. To change the authentication method to \u003cspan pulumi-lang-nodejs=\"`clientSecretBasic`\" pulumi-lang-dotnet=\"`ClientSecretBasic`\" pulumi-lang-go=\"`clientSecretBasic`\" pulumi-lang-python=\"`client_secret_basic`\" pulumi-lang-yaml=\"`clientSecretBasic`\" pulumi-lang-java=\"`clientSecretBasic`\"\u003e`clientSecretBasic`\u003c/span\u003e use the \u003cspan pulumi-lang-nodejs=\"`auth0.ClientCredentials`\" pulumi-lang-dotnet=\"`auth0.ClientCredentials`\" pulumi-lang-go=\"`ClientCredentials`\" pulumi-lang-python=\"`ClientCredentials`\" pulumi-lang-yaml=\"`auth0.ClientCredentials`\" pulumi-lang-java=\"`auth0.ClientCredentials`\"\u003e`auth0.ClientCredentials`\u003c/span\u003e resource.\n"
+                    },
+                    "jwksUri": {
+                        "type": "string",
+                        "description": "URL for the JSON Web Key Set (JWKS) containing the public keys used for \u003cspan pulumi-lang-nodejs=\"`privateKeyJwt`\" pulumi-lang-dotnet=\"`PrivateKeyJwt`\" pulumi-lang-go=\"`privateKeyJwt`\" pulumi-lang-python=\"`private_key_jwt`\" pulumi-lang-yaml=\"`privateKeyJwt`\" pulumi-lang-java=\"`privateKeyJwt`\"\u003e`privateKeyJwt`\u003c/span\u003e authentication. Only present for CIMD clients using \u003cspan pulumi-lang-nodejs=\"`privateKeyJwt`\" pulumi-lang-dotnet=\"`PrivateKeyJwt`\" pulumi-lang-go=\"`privateKeyJwt`\" pulumi-lang-python=\"`private_key_jwt`\" pulumi-lang-yaml=\"`privateKeyJwt`\" pulumi-lang-java=\"`privateKeyJwt`\"\u003e`privateKeyJwt`\u003c/span\u003e authentication.\n"
                     },
                     "jwtConfiguration": {
                         "$ref": "#/types/auth0:index/ClientJwtConfiguration:ClientJwtConfiguration",
@@ -15488,6 +15843,10 @@
                     "mobile": {
                         "$ref": "#/types/auth0:index/ClientMobile:ClientMobile",
                         "description": "Additional configuration for native mobile apps.\n"
+                    },
+                    "myOrganizationConfiguration": {
+                        "$ref": "#/types/auth0:index/ClientMyOrganizationConfiguration:ClientMyOrganizationConfiguration",
+                        "description": "Configuration for self-service organization features, controlling how organizations are created and managed for this client.\n"
                     },
                     "name": {
                         "type": "string",
@@ -15577,6 +15936,407 @@
                     "tokenQuota": {
                         "$ref": "#/types/auth0:index/ClientTokenQuota:ClientTokenQuota",
                         "description": "The token quota configuration.\n"
+                    },
+                    "webOrigins": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "URLs that represent valid web origins for use with web message response mode.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "auth0:index/clientCimd:ClientCimd": {
+            "description": "With this resource, you can register an Auth0 client from a Client ID Metadata Document (CIMD) URL. CIMD enables tenant admins to onboard MCP agent clients by providing a URL to an externally-hosted metadata document instead of using Dynamic Client Registration.\n\nRequires the \u003cspan pulumi-lang-nodejs=\"`clientIdMetadataDocumentSupported`\" pulumi-lang-dotnet=\"`ClientIdMetadataDocumentSupported`\" pulumi-lang-go=\"`clientIdMetadataDocumentSupported`\" pulumi-lang-python=\"`client_id_metadata_document_supported`\" pulumi-lang-yaml=\"`clientIdMetadataDocumentSupported`\" pulumi-lang-java=\"`clientIdMetadataDocumentSupported`\"\u003e`clientIdMetadataDocumentSupported`\u003c/span\u003e tenant setting to be enabled.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst minimalClient = new auth0.ClientCimd(\"minimal_client\", {externalClientId: \"https://mcp-agent1.example.com/oauth/metadata.json\"});\nconst myMcpAgent = new auth0.ClientCimd(\"my_mcp_agent\", {\n    externalClientId: \"https://mcp-agent2.example.com/.well-known/client.json\",\n    externalClientIdVersion: 1,\n    description: \"MCP Agent - Production\",\n    appType: \"spa\",\n    oidcConformant: true,\n    allowedOrigins: [\"https://mcp-agent2.example.com\"],\n    webOrigins: [\"https://mcp-agent2.example.com\"],\n    grantTypes: [\n        \"authorization_code\",\n        \"refresh_token\",\n    ],\n    clientMetadata: {\n        environment: \"production\",\n    },\n    jwtConfiguration: {\n        lifetimeInSeconds: 300,\n        alg: \"RS256\",\n    },\n    refreshToken: {\n        rotationType: \"rotating\",\n        expirationType: \"expiring\",\n        tokenLifetime: 2592000,\n        idleTokenLifetime: 1296000,\n        infiniteTokenLifetime: false,\n        infiniteIdleTokenLifetime: false,\n        leeway: 0,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nminimal_client = auth0.ClientCimd(\"minimal_client\", external_client_id=\"https://mcp-agent1.example.com/oauth/metadata.json\")\nmy_mcp_agent = auth0.ClientCimd(\"my_mcp_agent\",\n    external_client_id=\"https://mcp-agent2.example.com/.well-known/client.json\",\n    external_client_id_version=1,\n    description=\"MCP Agent - Production\",\n    app_type=\"spa\",\n    oidc_conformant=True,\n    allowed_origins=[\"https://mcp-agent2.example.com\"],\n    web_origins=[\"https://mcp-agent2.example.com\"],\n    grant_types=[\n        \"authorization_code\",\n        \"refresh_token\",\n    ],\n    client_metadata={\n        \"environment\": \"production\",\n    },\n    jwt_configuration={\n        \"lifetime_in_seconds\": 300,\n        \"alg\": \"RS256\",\n    },\n    refresh_token={\n        \"rotation_type\": \"rotating\",\n        \"expiration_type\": \"expiring\",\n        \"token_lifetime\": 2592000,\n        \"idle_token_lifetime\": 1296000,\n        \"infinite_token_lifetime\": False,\n        \"infinite_idle_token_lifetime\": False,\n        \"leeway\": 0,\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var minimalClient = new Auth0.Index.ClientCimd(\"minimal_client\", new()\n    {\n        ExternalClientId = \"https://mcp-agent1.example.com/oauth/metadata.json\",\n    });\n\n    var myMcpAgent = new Auth0.Index.ClientCimd(\"my_mcp_agent\", new()\n    {\n        ExternalClientId = \"https://mcp-agent2.example.com/.well-known/client.json\",\n        ExternalClientIdVersion = 1,\n        Description = \"MCP Agent - Production\",\n        AppType = \"spa\",\n        OidcConformant = true,\n        AllowedOrigins = new[]\n        {\n            \"https://mcp-agent2.example.com\",\n        },\n        WebOrigins = new[]\n        {\n            \"https://mcp-agent2.example.com\",\n        },\n        GrantTypes = new[]\n        {\n            \"authorization_code\",\n            \"refresh_token\",\n        },\n        ClientMetadata = \n        {\n            { \"environment\", \"production\" },\n        },\n        JwtConfiguration = new Auth0.Inputs.ClientCimdJwtConfigurationArgs\n        {\n            LifetimeInSeconds = 300,\n            Alg = \"RS256\",\n        },\n        RefreshToken = new Auth0.Inputs.ClientCimdRefreshTokenArgs\n        {\n            RotationType = \"rotating\",\n            ExpirationType = \"expiring\",\n            TokenLifetime = 2592000,\n            IdleTokenLifetime = 1296000,\n            InfiniteTokenLifetime = false,\n            InfiniteIdleTokenLifetime = false,\n            Leeway = 0,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewClientCimd(ctx, \"minimal_client\", \u0026auth0.ClientCimdArgs{\n\t\t\tExternalClientId: pulumi.String(\"https://mcp-agent1.example.com/oauth/metadata.json\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = auth0.NewClientCimd(ctx, \"my_mcp_agent\", \u0026auth0.ClientCimdArgs{\n\t\t\tExternalClientId:        pulumi.String(\"https://mcp-agent2.example.com/.well-known/client.json\"),\n\t\t\tExternalClientIdVersion: pulumi.Int(1),\n\t\t\tDescription:             pulumi.String(\"MCP Agent - Production\"),\n\t\t\tAppType:                 pulumi.String(\"spa\"),\n\t\t\tOidcConformant:          pulumi.Bool(true),\n\t\t\tAllowedOrigins: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"https://mcp-agent2.example.com\"),\n\t\t\t},\n\t\t\tWebOrigins: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"https://mcp-agent2.example.com\"),\n\t\t\t},\n\t\t\tGrantTypes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"authorization_code\"),\n\t\t\t\tpulumi.String(\"refresh_token\"),\n\t\t\t},\n\t\t\tClientMetadata: pulumi.StringMap{\n\t\t\t\t\"environment\": pulumi.String(\"production\"),\n\t\t\t},\n\t\t\tJwtConfiguration: \u0026auth0.ClientCimdJwtConfigurationArgs{\n\t\t\t\tLifetimeInSeconds: pulumi.Int(300),\n\t\t\t\tAlg:               pulumi.String(\"RS256\"),\n\t\t\t},\n\t\t\tRefreshToken: \u0026auth0.ClientCimdRefreshTokenArgs{\n\t\t\t\tRotationType:              pulumi.String(\"rotating\"),\n\t\t\t\tExpirationType:            pulumi.String(\"expiring\"),\n\t\t\t\tTokenLifetime:             pulumi.Int(2592000),\n\t\t\t\tIdleTokenLifetime:         pulumi.Int(1296000),\n\t\t\t\tInfiniteTokenLifetime:     pulumi.Bool(false),\n\t\t\t\tInfiniteIdleTokenLifetime: pulumi.Bool(false),\n\t\t\t\tLeeway:                    pulumi.Int(0),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.ClientCimd;\nimport com.pulumi.auth0.ClientCimdArgs;\nimport com.pulumi.auth0.inputs.ClientCimdJwtConfigurationArgs;\nimport com.pulumi.auth0.inputs.ClientCimdRefreshTokenArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var minimalClient = new ClientCimd(\"minimalClient\", ClientCimdArgs.builder()\n            .externalClientId(\"https://mcp-agent1.example.com/oauth/metadata.json\")\n            .build());\n\n        var myMcpAgent = new ClientCimd(\"myMcpAgent\", ClientCimdArgs.builder()\n            .externalClientId(\"https://mcp-agent2.example.com/.well-known/client.json\")\n            .externalClientIdVersion(1)\n            .description(\"MCP Agent - Production\")\n            .appType(\"spa\")\n            .oidcConformant(true)\n            .allowedOrigins(\"https://mcp-agent2.example.com\")\n            .webOrigins(\"https://mcp-agent2.example.com\")\n            .grantTypes(            \n                \"authorization_code\",\n                \"refresh_token\")\n            .clientMetadata(Map.of(\"environment\", \"production\"))\n            .jwtConfiguration(ClientCimdJwtConfigurationArgs.builder()\n                .lifetimeInSeconds(300)\n                .alg(\"RS256\")\n                .build())\n            .refreshToken(ClientCimdRefreshTokenArgs.builder()\n                .rotationType(\"rotating\")\n                .expirationType(\"expiring\")\n                .tokenLifetime(2592000)\n                .idleTokenLifetime(1296000)\n                .infiniteTokenLifetime(false)\n                .infiniteIdleTokenLifetime(false)\n                .leeway(0)\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  minimalClient:\n    type: auth0:ClientCimd\n    name: minimal_client\n    properties:\n      externalClientId: https://mcp-agent1.example.com/oauth/metadata.json\n  myMcpAgent:\n    type: auth0:ClientCimd\n    name: my_mcp_agent\n    properties:\n      externalClientId: https://mcp-agent2.example.com/.well-known/client.json\n      externalClientIdVersion: 1\n      description: MCP Agent - Production\n      appType: spa\n      oidcConformant: true\n      allowedOrigins:\n        - https://mcp-agent2.example.com\n      webOrigins:\n        - https://mcp-agent2.example.com\n      grantTypes:\n        - authorization_code\n        - refresh_token\n      clientMetadata:\n        environment: production\n      jwtConfiguration:\n        lifetimeInSeconds: 300\n        alg: RS256\n      refreshToken:\n        rotationType: rotating\n        expirationType: expiring\n        tokenLifetime: 2.592e+06\n        idleTokenLifetime: 1.296e+06\n        infiniteTokenLifetime: false\n        infiniteIdleTokenLifetime: false\n        leeway: 0\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThis resource can be imported by specifying the client ID.\nGenerally CIMD clients have a \"tpc_\" prefix in their client ID.\n\nExample:\n\n```sh\n$ pulumi import auth0:index/clientCimd:ClientCimd my_mcp_agent \"tpc_5FPpaVyZGSNRCBzTb2zURZ\"\n```\n\n",
+            "properties": {
+                "allowedOrigins": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.\n"
+                },
+                "appType": {
+                    "type": "string",
+                    "description": "Type of application the client represents. CIMD clients only support \u003cspan pulumi-lang-nodejs=\"`native`\" pulumi-lang-dotnet=\"`Native`\" pulumi-lang-go=\"`native`\" pulumi-lang-python=\"`native`\" pulumi-lang-yaml=\"`native`\" pulumi-lang-java=\"`native`\"\u003e`native`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`spa`\" pulumi-lang-dotnet=\"`Spa`\" pulumi-lang-go=\"`spa`\" pulumi-lang-python=\"`spa`\" pulumi-lang-yaml=\"`spa`\" pulumi-lang-java=\"`spa`\"\u003e`spa`\u003c/span\u003e, and \u003cspan pulumi-lang-nodejs=\"`regularWeb`\" pulumi-lang-dotnet=\"`RegularWeb`\" pulumi-lang-go=\"`regularWeb`\" pulumi-lang-python=\"`regular_web`\" pulumi-lang-yaml=\"`regularWeb`\" pulumi-lang-java=\"`regularWeb`\"\u003e`regularWeb`\u003c/span\u003e.\n"
+                },
+                "callbacks": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "URLs that Auth0 may call back after authentication. Derived from the CIMD metadata document.\n"
+                },
+                "clientId": {
+                    "type": "string",
+                    "description": "The ID of the client.\n"
+                },
+                "clientMetadata": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?\"/\\()\u003c\u003e@ [Tab] [Space]`.\n"
+                },
+                "defaultOrganization": {
+                    "$ref": "#/types/auth0:index/ClientCimdDefaultOrganization:ClientCimdDefaultOrganization",
+                    "description": "Configure and associate an organization with the Client\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the purpose of the client.\n"
+                },
+                "externalClientId": {
+                    "type": "string",
+                    "description": "The HTTPS URL of the Client ID Metadata Document. Must include a path component (e.g. `https://app.example.com/client.json`). This value is immutable after creation.\n"
+                },
+                "externalClientIdVersion": {
+                    "type": "integer",
+                    "description": "Version number for external*client*id metadata document changes. Update this value to sync the client with the latest values of the json metadata document.\n"
+                },
+                "externalMetadataCreatedBy": {
+                    "type": "string",
+                    "description": "Who created the external metadata client: \u003cspan pulumi-lang-nodejs=\"`admin`\" pulumi-lang-dotnet=\"`Admin`\" pulumi-lang-go=\"`admin`\" pulumi-lang-python=\"`admin`\" pulumi-lang-yaml=\"`admin`\" pulumi-lang-java=\"`admin`\"\u003e`admin`\u003c/span\u003e (via Management API) or \u003cspan pulumi-lang-nodejs=\"`client`\" pulumi-lang-dotnet=\"`Client`\" pulumi-lang-go=\"`client`\" pulumi-lang-python=\"`client`\" pulumi-lang-yaml=\"`client`\" pulumi-lang-java=\"`client`\"\u003e`client`\u003c/span\u003e (self-registered).\n"
+                },
+                "externalMetadataType": {
+                    "type": "string",
+                    "description": "Type of external metadata. Always \u003cspan pulumi-lang-nodejs=\"`cimd`\" pulumi-lang-dotnet=\"`Cimd`\" pulumi-lang-go=\"`cimd`\" pulumi-lang-python=\"`cimd`\" pulumi-lang-yaml=\"`cimd`\" pulumi-lang-java=\"`cimd`\"\u003e`cimd`\u003c/span\u003e for CIMD-registered clients.\n"
+                },
+                "grantTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Types of grants that this client is authorized to use. CIMD clients support \u003cspan pulumi-lang-nodejs=\"`authorizationCode`\" pulumi-lang-dotnet=\"`AuthorizationCode`\" pulumi-lang-go=\"`authorizationCode`\" pulumi-lang-python=\"`authorization_code`\" pulumi-lang-yaml=\"`authorizationCode`\" pulumi-lang-java=\"`authorizationCode`\"\u003e`authorizationCode`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`refreshToken`\" pulumi-lang-dotnet=\"`RefreshToken`\" pulumi-lang-go=\"`refreshToken`\" pulumi-lang-python=\"`refresh_token`\" pulumi-lang-yaml=\"`refreshToken`\" pulumi-lang-java=\"`refreshToken`\"\u003e`refreshToken`\u003c/span\u003e.\n"
+                },
+                "isFirstParty": {
+                    "type": "boolean",
+                    "description": "Whether this is a first-party client. Always \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e for CIMD clients.\n"
+                },
+                "jwksUri": {
+                    "type": "string",
+                    "description": "URL for the JSON Web Key Set (JWKS) containing the public keys used for \u003cspan pulumi-lang-nodejs=\"`privateKeyJwt`\" pulumi-lang-dotnet=\"`PrivateKeyJwt`\" pulumi-lang-go=\"`privateKeyJwt`\" pulumi-lang-python=\"`private_key_jwt`\" pulumi-lang-yaml=\"`privateKeyJwt`\" pulumi-lang-java=\"`privateKeyJwt`\"\u003e`privateKeyJwt`\u003c/span\u003e authentication.\n"
+                },
+                "jwtConfiguration": {
+                    "$ref": "#/types/auth0:index/ClientCimdJwtConfiguration:ClientCimdJwtConfiguration",
+                    "description": "Configuration settings for the JWTs issued for this client.\n"
+                },
+                "logoUri": {
+                    "type": "string",
+                    "description": "URL of the logo for this client, derived from the CIMD metadata document.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the client, derived from the CIMD metadata document.\n"
+                },
+                "oidcConformant": {
+                    "type": "boolean",
+                    "description": "Whether this client conforms to strict OIDC specifications. Must be \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e for CIMD clients.\n"
+                },
+                "organizationDiscoveryMethods": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Methods for discovering organizations during the pre*login*prompt. Can include \u003cspan pulumi-lang-nodejs=\"`email`\" pulumi-lang-dotnet=\"`Email`\" pulumi-lang-go=\"`email`\" pulumi-lang-python=\"`email`\" pulumi-lang-yaml=\"`email`\" pulumi-lang-java=\"`email`\"\u003e`email`\u003c/span\u003e (allows users to find their organization by entering their email address) and/or \u003cspan pulumi-lang-nodejs=\"`organizationName`\" pulumi-lang-dotnet=\"`OrganizationName`\" pulumi-lang-go=\"`organizationName`\" pulumi-lang-python=\"`organization_name`\" pulumi-lang-yaml=\"`organizationName`\" pulumi-lang-java=\"`organizationName`\"\u003e`organizationName`\u003c/span\u003e (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that \u003cspan pulumi-lang-nodejs=\"`organizationRequireBehavior`\" pulumi-lang-dotnet=\"`OrganizationRequireBehavior`\" pulumi-lang-go=\"`organizationRequireBehavior`\" pulumi-lang-python=\"`organization_require_behavior`\" pulumi-lang-yaml=\"`organizationRequireBehavior`\" pulumi-lang-java=\"`organizationRequireBehavior`\"\u003e`organizationRequireBehavior`\u003c/span\u003e is set to \u003cspan pulumi-lang-nodejs=\"`preLoginPrompt`\" pulumi-lang-dotnet=\"`PreLoginPrompt`\" pulumi-lang-go=\"`preLoginPrompt`\" pulumi-lang-python=\"`pre_login_prompt`\" pulumi-lang-yaml=\"`preLoginPrompt`\" pulumi-lang-java=\"`preLoginPrompt`\"\u003e`preLoginPrompt`\u003c/span\u003e.\n"
+                },
+                "redirectionPolicy": {
+                    "type": "string",
+                    "description": "Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.\n"
+                },
+                "refreshToken": {
+                    "$ref": "#/types/auth0:index/ClientCimdRefreshToken:ClientCimdRefreshToken",
+                    "description": "Configuration settings for the refresh tokens issued for this client.\n"
+                },
+                "requireProofOfPossession": {
+                    "type": "boolean",
+                    "description": "Makes the use of Proof-of-Possession mandatory for this client.\n"
+                },
+                "signingKeys": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    },
+                    "description": "List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.\n",
+                    "secret": true
+                },
+                "skipNonVerifiableCallbackUriConfirmationPrompt": {
+                    "type": "boolean",
+                    "description": "Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it.\n"
+                },
+                "thirdPartySecurityMode": {
+                    "type": "string",
+                    "description": "Security mode for third-party clients. \u003cspan pulumi-lang-nodejs=\"`strict`\" pulumi-lang-dotnet=\"`Strict`\" pulumi-lang-go=\"`strict`\" pulumi-lang-python=\"`strict`\" pulumi-lang-yaml=\"`strict`\" pulumi-lang-java=\"`strict`\"\u003e`strict`\u003c/span\u003e enforces enhanced security controls\n"
+                },
+                "tokenQuota": {
+                    "$ref": "#/types/auth0:index/ClientCimdTokenQuota:ClientCimdTokenQuota",
+                    "description": "The token quota configuration.\n"
+                },
+                "validations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/ClientCimdValidation:ClientCimdValidation"
+                    },
+                    "description": "Validation result of the CIMD metadata document.\n"
+                },
+                "webOrigins": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "URLs that represent valid web origins for use with web message response mode.\n"
+                }
+            },
+            "required": [
+                "appType",
+                "callbacks",
+                "clientId",
+                "externalClientId",
+                "externalMetadataCreatedBy",
+                "externalMetadataType",
+                "grantTypes",
+                "isFirstParty",
+                "jwksUri",
+                "jwtConfiguration",
+                "logoUri",
+                "name",
+                "oidcConformant",
+                "redirectionPolicy",
+                "refreshToken",
+                "signingKeys",
+                "thirdPartySecurityMode",
+                "validations"
+            ],
+            "inputProperties": {
+                "allowedOrigins": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.\n"
+                },
+                "appType": {
+                    "type": "string",
+                    "description": "Type of application the client represents. CIMD clients only support \u003cspan pulumi-lang-nodejs=\"`native`\" pulumi-lang-dotnet=\"`Native`\" pulumi-lang-go=\"`native`\" pulumi-lang-python=\"`native`\" pulumi-lang-yaml=\"`native`\" pulumi-lang-java=\"`native`\"\u003e`native`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`spa`\" pulumi-lang-dotnet=\"`Spa`\" pulumi-lang-go=\"`spa`\" pulumi-lang-python=\"`spa`\" pulumi-lang-yaml=\"`spa`\" pulumi-lang-java=\"`spa`\"\u003e`spa`\u003c/span\u003e, and \u003cspan pulumi-lang-nodejs=\"`regularWeb`\" pulumi-lang-dotnet=\"`RegularWeb`\" pulumi-lang-go=\"`regularWeb`\" pulumi-lang-python=\"`regular_web`\" pulumi-lang-yaml=\"`regularWeb`\" pulumi-lang-java=\"`regularWeb`\"\u003e`regularWeb`\u003c/span\u003e.\n"
+                },
+                "clientMetadata": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?\"/\\()\u003c\u003e@ [Tab] [Space]`.\n"
+                },
+                "defaultOrganization": {
+                    "$ref": "#/types/auth0:index/ClientCimdDefaultOrganization:ClientCimdDefaultOrganization",
+                    "description": "Configure and associate an organization with the Client\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the purpose of the client.\n"
+                },
+                "externalClientId": {
+                    "type": "string",
+                    "description": "The HTTPS URL of the Client ID Metadata Document. Must include a path component (e.g. `https://app.example.com/client.json`). This value is immutable after creation.\n",
+                    "willReplaceOnChanges": true
+                },
+                "externalClientIdVersion": {
+                    "type": "integer",
+                    "description": "Version number for external*client*id metadata document changes. Update this value to sync the client with the latest values of the json metadata document.\n"
+                },
+                "grantTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Types of grants that this client is authorized to use. CIMD clients support \u003cspan pulumi-lang-nodejs=\"`authorizationCode`\" pulumi-lang-dotnet=\"`AuthorizationCode`\" pulumi-lang-go=\"`authorizationCode`\" pulumi-lang-python=\"`authorization_code`\" pulumi-lang-yaml=\"`authorizationCode`\" pulumi-lang-java=\"`authorizationCode`\"\u003e`authorizationCode`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`refreshToken`\" pulumi-lang-dotnet=\"`RefreshToken`\" pulumi-lang-go=\"`refreshToken`\" pulumi-lang-python=\"`refresh_token`\" pulumi-lang-yaml=\"`refreshToken`\" pulumi-lang-java=\"`refreshToken`\"\u003e`refreshToken`\u003c/span\u003e.\n"
+                },
+                "jwtConfiguration": {
+                    "$ref": "#/types/auth0:index/ClientCimdJwtConfiguration:ClientCimdJwtConfiguration",
+                    "description": "Configuration settings for the JWTs issued for this client.\n"
+                },
+                "oidcConformant": {
+                    "type": "boolean",
+                    "description": "Whether this client conforms to strict OIDC specifications. Must be \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e for CIMD clients.\n"
+                },
+                "organizationDiscoveryMethods": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Methods for discovering organizations during the pre*login*prompt. Can include \u003cspan pulumi-lang-nodejs=\"`email`\" pulumi-lang-dotnet=\"`Email`\" pulumi-lang-go=\"`email`\" pulumi-lang-python=\"`email`\" pulumi-lang-yaml=\"`email`\" pulumi-lang-java=\"`email`\"\u003e`email`\u003c/span\u003e (allows users to find their organization by entering their email address) and/or \u003cspan pulumi-lang-nodejs=\"`organizationName`\" pulumi-lang-dotnet=\"`OrganizationName`\" pulumi-lang-go=\"`organizationName`\" pulumi-lang-python=\"`organization_name`\" pulumi-lang-yaml=\"`organizationName`\" pulumi-lang-java=\"`organizationName`\"\u003e`organizationName`\u003c/span\u003e (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that \u003cspan pulumi-lang-nodejs=\"`organizationRequireBehavior`\" pulumi-lang-dotnet=\"`OrganizationRequireBehavior`\" pulumi-lang-go=\"`organizationRequireBehavior`\" pulumi-lang-python=\"`organization_require_behavior`\" pulumi-lang-yaml=\"`organizationRequireBehavior`\" pulumi-lang-java=\"`organizationRequireBehavior`\"\u003e`organizationRequireBehavior`\u003c/span\u003e is set to \u003cspan pulumi-lang-nodejs=\"`preLoginPrompt`\" pulumi-lang-dotnet=\"`PreLoginPrompt`\" pulumi-lang-go=\"`preLoginPrompt`\" pulumi-lang-python=\"`pre_login_prompt`\" pulumi-lang-yaml=\"`preLoginPrompt`\" pulumi-lang-java=\"`preLoginPrompt`\"\u003e`preLoginPrompt`\u003c/span\u003e.\n"
+                },
+                "redirectionPolicy": {
+                    "type": "string",
+                    "description": "Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.\n"
+                },
+                "refreshToken": {
+                    "$ref": "#/types/auth0:index/ClientCimdRefreshToken:ClientCimdRefreshToken",
+                    "description": "Configuration settings for the refresh tokens issued for this client.\n"
+                },
+                "requireProofOfPossession": {
+                    "type": "boolean",
+                    "description": "Makes the use of Proof-of-Possession mandatory for this client.\n"
+                },
+                "skipNonVerifiableCallbackUriConfirmationPrompt": {
+                    "type": "boolean",
+                    "description": "Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it.\n"
+                },
+                "tokenQuota": {
+                    "$ref": "#/types/auth0:index/ClientCimdTokenQuota:ClientCimdTokenQuota",
+                    "description": "The token quota configuration.\n"
+                },
+                "webOrigins": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "URLs that represent valid web origins for use with web message response mode.\n"
+                }
+            },
+            "requiredInputs": [
+                "externalClientId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ClientCimd resources.\n",
+                "properties": {
+                    "allowedOrigins": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.\n"
+                    },
+                    "appType": {
+                        "type": "string",
+                        "description": "Type of application the client represents. CIMD clients only support \u003cspan pulumi-lang-nodejs=\"`native`\" pulumi-lang-dotnet=\"`Native`\" pulumi-lang-go=\"`native`\" pulumi-lang-python=\"`native`\" pulumi-lang-yaml=\"`native`\" pulumi-lang-java=\"`native`\"\u003e`native`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`spa`\" pulumi-lang-dotnet=\"`Spa`\" pulumi-lang-go=\"`spa`\" pulumi-lang-python=\"`spa`\" pulumi-lang-yaml=\"`spa`\" pulumi-lang-java=\"`spa`\"\u003e`spa`\u003c/span\u003e, and \u003cspan pulumi-lang-nodejs=\"`regularWeb`\" pulumi-lang-dotnet=\"`RegularWeb`\" pulumi-lang-go=\"`regularWeb`\" pulumi-lang-python=\"`regular_web`\" pulumi-lang-yaml=\"`regularWeb`\" pulumi-lang-java=\"`regularWeb`\"\u003e`regularWeb`\u003c/span\u003e.\n"
+                    },
+                    "callbacks": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "URLs that Auth0 may call back after authentication. Derived from the CIMD metadata document.\n"
+                    },
+                    "clientId": {
+                        "type": "string",
+                        "description": "The ID of the client.\n"
+                    },
+                    "clientMetadata": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?\"/\\()\u003c\u003e@ [Tab] [Space]`.\n"
+                    },
+                    "defaultOrganization": {
+                        "$ref": "#/types/auth0:index/ClientCimdDefaultOrganization:ClientCimdDefaultOrganization",
+                        "description": "Configure and associate an organization with the Client\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Description of the purpose of the client.\n"
+                    },
+                    "externalClientId": {
+                        "type": "string",
+                        "description": "The HTTPS URL of the Client ID Metadata Document. Must include a path component (e.g. `https://app.example.com/client.json`). This value is immutable after creation.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "externalClientIdVersion": {
+                        "type": "integer",
+                        "description": "Version number for external*client*id metadata document changes. Update this value to sync the client with the latest values of the json metadata document.\n"
+                    },
+                    "externalMetadataCreatedBy": {
+                        "type": "string",
+                        "description": "Who created the external metadata client: \u003cspan pulumi-lang-nodejs=\"`admin`\" pulumi-lang-dotnet=\"`Admin`\" pulumi-lang-go=\"`admin`\" pulumi-lang-python=\"`admin`\" pulumi-lang-yaml=\"`admin`\" pulumi-lang-java=\"`admin`\"\u003e`admin`\u003c/span\u003e (via Management API) or \u003cspan pulumi-lang-nodejs=\"`client`\" pulumi-lang-dotnet=\"`Client`\" pulumi-lang-go=\"`client`\" pulumi-lang-python=\"`client`\" pulumi-lang-yaml=\"`client`\" pulumi-lang-java=\"`client`\"\u003e`client`\u003c/span\u003e (self-registered).\n"
+                    },
+                    "externalMetadataType": {
+                        "type": "string",
+                        "description": "Type of external metadata. Always \u003cspan pulumi-lang-nodejs=\"`cimd`\" pulumi-lang-dotnet=\"`Cimd`\" pulumi-lang-go=\"`cimd`\" pulumi-lang-python=\"`cimd`\" pulumi-lang-yaml=\"`cimd`\" pulumi-lang-java=\"`cimd`\"\u003e`cimd`\u003c/span\u003e for CIMD-registered clients.\n"
+                    },
+                    "grantTypes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Types of grants that this client is authorized to use. CIMD clients support \u003cspan pulumi-lang-nodejs=\"`authorizationCode`\" pulumi-lang-dotnet=\"`AuthorizationCode`\" pulumi-lang-go=\"`authorizationCode`\" pulumi-lang-python=\"`authorization_code`\" pulumi-lang-yaml=\"`authorizationCode`\" pulumi-lang-java=\"`authorizationCode`\"\u003e`authorizationCode`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`refreshToken`\" pulumi-lang-dotnet=\"`RefreshToken`\" pulumi-lang-go=\"`refreshToken`\" pulumi-lang-python=\"`refresh_token`\" pulumi-lang-yaml=\"`refreshToken`\" pulumi-lang-java=\"`refreshToken`\"\u003e`refreshToken`\u003c/span\u003e.\n"
+                    },
+                    "isFirstParty": {
+                        "type": "boolean",
+                        "description": "Whether this is a first-party client. Always \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e for CIMD clients.\n"
+                    },
+                    "jwksUri": {
+                        "type": "string",
+                        "description": "URL for the JSON Web Key Set (JWKS) containing the public keys used for \u003cspan pulumi-lang-nodejs=\"`privateKeyJwt`\" pulumi-lang-dotnet=\"`PrivateKeyJwt`\" pulumi-lang-go=\"`privateKeyJwt`\" pulumi-lang-python=\"`private_key_jwt`\" pulumi-lang-yaml=\"`privateKeyJwt`\" pulumi-lang-java=\"`privateKeyJwt`\"\u003e`privateKeyJwt`\u003c/span\u003e authentication.\n"
+                    },
+                    "jwtConfiguration": {
+                        "$ref": "#/types/auth0:index/ClientCimdJwtConfiguration:ClientCimdJwtConfiguration",
+                        "description": "Configuration settings for the JWTs issued for this client.\n"
+                    },
+                    "logoUri": {
+                        "type": "string",
+                        "description": "URL of the logo for this client, derived from the CIMD metadata document.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the client, derived from the CIMD metadata document.\n"
+                    },
+                    "oidcConformant": {
+                        "type": "boolean",
+                        "description": "Whether this client conforms to strict OIDC specifications. Must be \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e for CIMD clients.\n"
+                    },
+                    "organizationDiscoveryMethods": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Methods for discovering organizations during the pre*login*prompt. Can include \u003cspan pulumi-lang-nodejs=\"`email`\" pulumi-lang-dotnet=\"`Email`\" pulumi-lang-go=\"`email`\" pulumi-lang-python=\"`email`\" pulumi-lang-yaml=\"`email`\" pulumi-lang-java=\"`email`\"\u003e`email`\u003c/span\u003e (allows users to find their organization by entering their email address) and/or \u003cspan pulumi-lang-nodejs=\"`organizationName`\" pulumi-lang-dotnet=\"`OrganizationName`\" pulumi-lang-go=\"`organizationName`\" pulumi-lang-python=\"`organization_name`\" pulumi-lang-yaml=\"`organizationName`\" pulumi-lang-java=\"`organizationName`\"\u003e`organizationName`\u003c/span\u003e (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that \u003cspan pulumi-lang-nodejs=\"`organizationRequireBehavior`\" pulumi-lang-dotnet=\"`OrganizationRequireBehavior`\" pulumi-lang-go=\"`organizationRequireBehavior`\" pulumi-lang-python=\"`organization_require_behavior`\" pulumi-lang-yaml=\"`organizationRequireBehavior`\" pulumi-lang-java=\"`organizationRequireBehavior`\"\u003e`organizationRequireBehavior`\u003c/span\u003e is set to \u003cspan pulumi-lang-nodejs=\"`preLoginPrompt`\" pulumi-lang-dotnet=\"`PreLoginPrompt`\" pulumi-lang-go=\"`preLoginPrompt`\" pulumi-lang-python=\"`pre_login_prompt`\" pulumi-lang-yaml=\"`preLoginPrompt`\" pulumi-lang-java=\"`preLoginPrompt`\"\u003e`preLoginPrompt`\u003c/span\u003e.\n"
+                    },
+                    "redirectionPolicy": {
+                        "type": "string",
+                        "description": "Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.\n"
+                    },
+                    "refreshToken": {
+                        "$ref": "#/types/auth0:index/ClientCimdRefreshToken:ClientCimdRefreshToken",
+                        "description": "Configuration settings for the refresh tokens issued for this client.\n"
+                    },
+                    "requireProofOfPossession": {
+                        "type": "boolean",
+                        "description": "Makes the use of Proof-of-Possession mandatory for this client.\n"
+                    },
+                    "signingKeys": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        },
+                        "description": "List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.\n",
+                        "secret": true
+                    },
+                    "skipNonVerifiableCallbackUriConfirmationPrompt": {
+                        "type": "boolean",
+                        "description": "Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it.\n"
+                    },
+                    "thirdPartySecurityMode": {
+                        "type": "string",
+                        "description": "Security mode for third-party clients. \u003cspan pulumi-lang-nodejs=\"`strict`\" pulumi-lang-dotnet=\"`Strict`\" pulumi-lang-go=\"`strict`\" pulumi-lang-python=\"`strict`\" pulumi-lang-yaml=\"`strict`\" pulumi-lang-java=\"`strict`\"\u003e`strict`\u003c/span\u003e enforces enhanced security controls\n"
+                    },
+                    "tokenQuota": {
+                        "$ref": "#/types/auth0:index/ClientCimdTokenQuota:ClientCimdTokenQuota",
+                        "description": "The token quota configuration.\n"
+                    },
+                    "validations": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/auth0:index/ClientCimdValidation:ClientCimdValidation"
+                        },
+                        "description": "Validation result of the CIMD metadata document.\n"
                     },
                     "webOrigins": {
                         "type": "array",
@@ -18281,6 +19041,10 @@
                     "type": "string",
                     "description": "The ID of the connection to enable for the organization.\n"
                 },
+                "isEnabled": {
+                    "type": "boolean",
+                    "description": "Whether the connection is enabled for the organization.\n"
+                },
                 "isSignupEnabled": {
                     "type": "boolean",
                     "description": "Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: \u003cspan pulumi-lang-nodejs=\"`isSignupEnabled`\" pulumi-lang-dotnet=\"`IsSignupEnabled`\" pulumi-lang-go=\"`isSignupEnabled`\" pulumi-lang-python=\"`is_signup_enabled`\" pulumi-lang-yaml=\"`isSignupEnabled`\" pulumi-lang-java=\"`isSignupEnabled`\"\u003e`isSignupEnabled`\u003c/span\u003e can only be \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e if \u003cspan pulumi-lang-nodejs=\"`assignMembershipOnLogin`\" pulumi-lang-dotnet=\"`AssignMembershipOnLogin`\" pulumi-lang-go=\"`assignMembershipOnLogin`\" pulumi-lang-python=\"`assign_membership_on_login`\" pulumi-lang-yaml=\"`assignMembershipOnLogin`\" pulumi-lang-java=\"`assignMembershipOnLogin`\"\u003e`assignMembershipOnLogin`\u003c/span\u003e is \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e.\n"
@@ -18289,13 +19053,21 @@
                     "type": "string",
                     "description": "The name of the enabled connection.\n"
                 },
+                "organizationAccessLevel": {
+                    "type": "string",
+                    "description": "The access level for this organization connection. Can be \u003cspan pulumi-lang-nodejs=\"`none`\" pulumi-lang-dotnet=\"`None`\" pulumi-lang-go=\"`none`\" pulumi-lang-python=\"`none`\" pulumi-lang-yaml=\"`none`\" pulumi-lang-java=\"`none`\"\u003e`none`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`readonly`\" pulumi-lang-dotnet=\"`Readonly`\" pulumi-lang-go=\"`readonly`\" pulumi-lang-python=\"`readonly`\" pulumi-lang-yaml=\"`readonly`\" pulumi-lang-java=\"`readonly`\"\u003e`readonly`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`limited`\" pulumi-lang-dotnet=\"`Limited`\" pulumi-lang-go=\"`limited`\" pulumi-lang-python=\"`limited`\" pulumi-lang-yaml=\"`limited`\" pulumi-lang-java=\"`limited`\"\u003e`limited`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`full`\" pulumi-lang-dotnet=\"`Full`\" pulumi-lang-go=\"`full`\" pulumi-lang-python=\"`full`\" pulumi-lang-yaml=\"`full`\" pulumi-lang-java=\"`full`\"\u003e`full`\u003c/span\u003e.\n"
+                },
+                "organizationConnectionName": {
+                    "type": "string",
+                    "description": "Name of the connection in the scope of this organization.\n"
+                },
                 "organizationId": {
                     "type": "string",
                     "description": "The ID of the organization to enable the connection for.\n"
                 },
                 "showAsButton": {
                     "type": "boolean",
-                    "description": "Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.\n"
+                    "description": "Determines whether a connection should be displayed on this organization's login prompt. Only applicable for enterprise connections.\n"
                 },
                 "strategy": {
                     "type": "string",
@@ -18303,9 +19075,14 @@
                 }
             },
             "required": [
+                "assignMembershipOnLogin",
                 "connectionId",
+                "isSignupEnabled",
                 "name",
+                "organizationAccessLevel",
+                "organizationConnectionName",
                 "organizationId",
+                "showAsButton",
                 "strategy"
             ],
             "inputProperties": {
@@ -18317,9 +19094,17 @@
                     "type": "string",
                     "description": "The ID of the connection to enable for the organization.\n"
                 },
+                "isEnabled": {
+                    "type": "boolean",
+                    "description": "Whether the connection is enabled for the organization.\n"
+                },
                 "isSignupEnabled": {
                     "type": "boolean",
                     "description": "Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: \u003cspan pulumi-lang-nodejs=\"`isSignupEnabled`\" pulumi-lang-dotnet=\"`IsSignupEnabled`\" pulumi-lang-go=\"`isSignupEnabled`\" pulumi-lang-python=\"`is_signup_enabled`\" pulumi-lang-yaml=\"`isSignupEnabled`\" pulumi-lang-java=\"`isSignupEnabled`\"\u003e`isSignupEnabled`\u003c/span\u003e can only be \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e if \u003cspan pulumi-lang-nodejs=\"`assignMembershipOnLogin`\" pulumi-lang-dotnet=\"`AssignMembershipOnLogin`\" pulumi-lang-go=\"`assignMembershipOnLogin`\" pulumi-lang-python=\"`assign_membership_on_login`\" pulumi-lang-yaml=\"`assignMembershipOnLogin`\" pulumi-lang-java=\"`assignMembershipOnLogin`\"\u003e`assignMembershipOnLogin`\u003c/span\u003e is \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e.\n"
+                },
+                "organizationAccessLevel": {
+                    "type": "string",
+                    "description": "The access level for this organization connection. Can be \u003cspan pulumi-lang-nodejs=\"`none`\" pulumi-lang-dotnet=\"`None`\" pulumi-lang-go=\"`none`\" pulumi-lang-python=\"`none`\" pulumi-lang-yaml=\"`none`\" pulumi-lang-java=\"`none`\"\u003e`none`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`readonly`\" pulumi-lang-dotnet=\"`Readonly`\" pulumi-lang-go=\"`readonly`\" pulumi-lang-python=\"`readonly`\" pulumi-lang-yaml=\"`readonly`\" pulumi-lang-java=\"`readonly`\"\u003e`readonly`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`limited`\" pulumi-lang-dotnet=\"`Limited`\" pulumi-lang-go=\"`limited`\" pulumi-lang-python=\"`limited`\" pulumi-lang-yaml=\"`limited`\" pulumi-lang-java=\"`limited`\"\u003e`limited`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`full`\" pulumi-lang-dotnet=\"`Full`\" pulumi-lang-go=\"`full`\" pulumi-lang-python=\"`full`\" pulumi-lang-yaml=\"`full`\" pulumi-lang-java=\"`full`\"\u003e`full`\u003c/span\u003e.\n"
                 },
                 "organizationId": {
                     "type": "string",
@@ -18327,7 +19112,7 @@
                 },
                 "showAsButton": {
                     "type": "boolean",
-                    "description": "Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.\n"
+                    "description": "Determines whether a connection should be displayed on this organization's login prompt. Only applicable for enterprise connections.\n"
                 }
             },
             "requiredInputs": [
@@ -18345,6 +19130,10 @@
                         "type": "string",
                         "description": "The ID of the connection to enable for the organization.\n"
                     },
+                    "isEnabled": {
+                        "type": "boolean",
+                        "description": "Whether the connection is enabled for the organization.\n"
+                    },
                     "isSignupEnabled": {
                         "type": "boolean",
                         "description": "Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: \u003cspan pulumi-lang-nodejs=\"`isSignupEnabled`\" pulumi-lang-dotnet=\"`IsSignupEnabled`\" pulumi-lang-go=\"`isSignupEnabled`\" pulumi-lang-python=\"`is_signup_enabled`\" pulumi-lang-yaml=\"`isSignupEnabled`\" pulumi-lang-java=\"`isSignupEnabled`\"\u003e`isSignupEnabled`\u003c/span\u003e can only be \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e if \u003cspan pulumi-lang-nodejs=\"`assignMembershipOnLogin`\" pulumi-lang-dotnet=\"`AssignMembershipOnLogin`\" pulumi-lang-go=\"`assignMembershipOnLogin`\" pulumi-lang-python=\"`assign_membership_on_login`\" pulumi-lang-yaml=\"`assignMembershipOnLogin`\" pulumi-lang-java=\"`assignMembershipOnLogin`\"\u003e`assignMembershipOnLogin`\u003c/span\u003e is \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e.\n"
@@ -18353,13 +19142,21 @@
                         "type": "string",
                         "description": "The name of the enabled connection.\n"
                     },
+                    "organizationAccessLevel": {
+                        "type": "string",
+                        "description": "The access level for this organization connection. Can be \u003cspan pulumi-lang-nodejs=\"`none`\" pulumi-lang-dotnet=\"`None`\" pulumi-lang-go=\"`none`\" pulumi-lang-python=\"`none`\" pulumi-lang-yaml=\"`none`\" pulumi-lang-java=\"`none`\"\u003e`none`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`readonly`\" pulumi-lang-dotnet=\"`Readonly`\" pulumi-lang-go=\"`readonly`\" pulumi-lang-python=\"`readonly`\" pulumi-lang-yaml=\"`readonly`\" pulumi-lang-java=\"`readonly`\"\u003e`readonly`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`limited`\" pulumi-lang-dotnet=\"`Limited`\" pulumi-lang-go=\"`limited`\" pulumi-lang-python=\"`limited`\" pulumi-lang-yaml=\"`limited`\" pulumi-lang-java=\"`limited`\"\u003e`limited`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`full`\" pulumi-lang-dotnet=\"`Full`\" pulumi-lang-go=\"`full`\" pulumi-lang-python=\"`full`\" pulumi-lang-yaml=\"`full`\" pulumi-lang-java=\"`full`\"\u003e`full`\u003c/span\u003e.\n"
+                    },
+                    "organizationConnectionName": {
+                        "type": "string",
+                        "description": "Name of the connection in the scope of this organization.\n"
+                    },
                     "organizationId": {
                         "type": "string",
                         "description": "The ID of the organization to enable the connection for.\n"
                     },
                     "showAsButton": {
                         "type": "boolean",
-                        "description": "Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.\n"
+                        "description": "Determines whether a connection should be displayed on this organization's login prompt. Only applicable for enterprise connections.\n"
                     },
                     "strategy": {
                         "type": "string",
@@ -20549,6 +21346,10 @@
                     },
                     "description": "URLs that Auth0 may redirect to after logout.\n"
                 },
+                "clientIdMetadataDocumentSupported": {
+                    "type": "boolean",
+                    "description": "Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.\n"
+                },
                 "customizeMfaInPostloginAction": {
                     "type": "boolean",
                     "description": "Whether to enable flexible factors for MFA in the PostLogin action.\n"
@@ -20623,6 +21424,10 @@
                 "pushedAuthorizationRequestsSupported": {
                     "type": "boolean",
                     "description": "Enable pushed authorization requests.\n"
+                },
+                "resourceParameterProfile": {
+                    "type": "string",
+                    "description": "Profile that determines how the protected resource identity is specified in OAuth endpoints. When set to \u003cspan pulumi-lang-nodejs=\"`audience`\" pulumi-lang-dotnet=\"`Audience`\" pulumi-lang-go=\"`audience`\" pulumi-lang-python=\"`audience`\" pulumi-lang-yaml=\"`audience`\" pulumi-lang-java=\"`audience`\"\u003e`audience`\u003c/span\u003e (default), the \u003cspan pulumi-lang-nodejs=\"`audience`\" pulumi-lang-dotnet=\"`Audience`\" pulumi-lang-go=\"`audience`\" pulumi-lang-python=\"`audience`\" pulumi-lang-yaml=\"`audience`\" pulumi-lang-java=\"`audience`\"\u003e`audience`\u003c/span\u003e parameter is used. When set to \u003cspan pulumi-lang-nodejs=\"`compatibility`\" pulumi-lang-dotnet=\"`Compatibility`\" pulumi-lang-go=\"`compatibility`\" pulumi-lang-python=\"`compatibility`\" pulumi-lang-yaml=\"`compatibility`\" pulumi-lang-java=\"`compatibility`\"\u003e`compatibility`\u003c/span\u003e, the \u003cspan pulumi-lang-nodejs=\"`resource`\" pulumi-lang-dotnet=\"`Resource`\" pulumi-lang-go=\"`resource`\" pulumi-lang-python=\"`resource`\" pulumi-lang-yaml=\"`resource`\" pulumi-lang-java=\"`resource`\"\u003e`resource`\u003c/span\u003e parameter is used as fallback if \u003cspan pulumi-lang-nodejs=\"`audience`\" pulumi-lang-dotnet=\"`Audience`\" pulumi-lang-go=\"`audience`\" pulumi-lang-python=\"`audience`\" pulumi-lang-yaml=\"`audience`\" pulumi-lang-java=\"`audience`\"\u003e`audience`\u003c/span\u003e is not provided.\n"
                 },
                 "sandboxVersion": {
                     "type": "string",
@@ -20657,6 +21462,7 @@
                 "acrValuesSupporteds",
                 "allowOrganizationNameInAuthenticationApi",
                 "allowedLogoutUrls",
+                "clientIdMetadataDocumentSupported",
                 "customizeMfaInPostloginAction",
                 "defaultAudience",
                 "defaultDirectory",
@@ -20670,6 +21476,7 @@
                 "phoneConsolidatedExperience",
                 "pictureUrl",
                 "pushedAuthorizationRequestsSupported",
+                "resourceParameterProfile",
                 "sandboxVersion",
                 "sessionCookie",
                 "sessions",
@@ -20694,6 +21501,10 @@
                         "type": "string"
                     },
                     "description": "URLs that Auth0 may redirect to after logout.\n"
+                },
+                "clientIdMetadataDocumentSupported": {
+                    "type": "boolean",
+                    "description": "Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.\n"
                 },
                 "customizeMfaInPostloginAction": {
                     "type": "boolean",
@@ -20769,6 +21580,10 @@
                 "pushedAuthorizationRequestsSupported": {
                     "type": "boolean",
                     "description": "Enable pushed authorization requests.\n"
+                },
+                "resourceParameterProfile": {
+                    "type": "string",
+                    "description": "Profile that determines how the protected resource identity is specified in OAuth endpoints. When set to \u003cspan pulumi-lang-nodejs=\"`audience`\" pulumi-lang-dotnet=\"`Audience`\" pulumi-lang-go=\"`audience`\" pulumi-lang-python=\"`audience`\" pulumi-lang-yaml=\"`audience`\" pulumi-lang-java=\"`audience`\"\u003e`audience`\u003c/span\u003e (default), the \u003cspan pulumi-lang-nodejs=\"`audience`\" pulumi-lang-dotnet=\"`Audience`\" pulumi-lang-go=\"`audience`\" pulumi-lang-python=\"`audience`\" pulumi-lang-yaml=\"`audience`\" pulumi-lang-java=\"`audience`\"\u003e`audience`\u003c/span\u003e parameter is used. When set to \u003cspan pulumi-lang-nodejs=\"`compatibility`\" pulumi-lang-dotnet=\"`Compatibility`\" pulumi-lang-go=\"`compatibility`\" pulumi-lang-python=\"`compatibility`\" pulumi-lang-yaml=\"`compatibility`\" pulumi-lang-java=\"`compatibility`\"\u003e`compatibility`\u003c/span\u003e, the \u003cspan pulumi-lang-nodejs=\"`resource`\" pulumi-lang-dotnet=\"`Resource`\" pulumi-lang-go=\"`resource`\" pulumi-lang-python=\"`resource`\" pulumi-lang-yaml=\"`resource`\" pulumi-lang-java=\"`resource`\"\u003e`resource`\u003c/span\u003e parameter is used as fallback if \u003cspan pulumi-lang-nodejs=\"`audience`\" pulumi-lang-dotnet=\"`Audience`\" pulumi-lang-go=\"`audience`\" pulumi-lang-python=\"`audience`\" pulumi-lang-yaml=\"`audience`\" pulumi-lang-java=\"`audience`\"\u003e`audience`\u003c/span\u003e is not provided.\n"
                 },
                 "sandboxVersion": {
                     "type": "string",
@@ -20819,6 +21634,10 @@
                             "type": "string"
                         },
                         "description": "URLs that Auth0 may redirect to after logout.\n"
+                    },
+                    "clientIdMetadataDocumentSupported": {
+                        "type": "boolean",
+                        "description": "Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.\n"
                     },
                     "customizeMfaInPostloginAction": {
                         "type": "boolean",
@@ -20894,6 +21713,10 @@
                     "pushedAuthorizationRequestsSupported": {
                         "type": "boolean",
                         "description": "Enable pushed authorization requests.\n"
+                    },
+                    "resourceParameterProfile": {
+                        "type": "string",
+                        "description": "Profile that determines how the protected resource identity is specified in OAuth endpoints. When set to \u003cspan pulumi-lang-nodejs=\"`audience`\" pulumi-lang-dotnet=\"`Audience`\" pulumi-lang-go=\"`audience`\" pulumi-lang-python=\"`audience`\" pulumi-lang-yaml=\"`audience`\" pulumi-lang-java=\"`audience`\"\u003e`audience`\u003c/span\u003e (default), the \u003cspan pulumi-lang-nodejs=\"`audience`\" pulumi-lang-dotnet=\"`Audience`\" pulumi-lang-go=\"`audience`\" pulumi-lang-python=\"`audience`\" pulumi-lang-yaml=\"`audience`\" pulumi-lang-java=\"`audience`\"\u003e`audience`\u003c/span\u003e parameter is used. When set to \u003cspan pulumi-lang-nodejs=\"`compatibility`\" pulumi-lang-dotnet=\"`Compatibility`\" pulumi-lang-go=\"`compatibility`\" pulumi-lang-python=\"`compatibility`\" pulumi-lang-yaml=\"`compatibility`\" pulumi-lang-java=\"`compatibility`\"\u003e`compatibility`\u003c/span\u003e, the \u003cspan pulumi-lang-nodejs=\"`resource`\" pulumi-lang-dotnet=\"`Resource`\" pulumi-lang-go=\"`resource`\" pulumi-lang-python=\"`resource`\" pulumi-lang-yaml=\"`resource`\" pulumi-lang-java=\"`resource`\"\u003e`resource`\u003c/span\u003e parameter is used as fallback if \u003cspan pulumi-lang-nodejs=\"`audience`\" pulumi-lang-dotnet=\"`Audience`\" pulumi-lang-go=\"`audience`\" pulumi-lang-python=\"`audience`\" pulumi-lang-yaml=\"`audience`\" pulumi-lang-java=\"`audience`\"\u003e`audience`\u003c/span\u003e is not provided.\n"
                     },
                     "sandboxVersion": {
                         "type": "string",
@@ -22406,6 +23229,18 @@
                         },
                         "type": "array"
                     },
+                    "externalClientId": {
+                        "description": "The URL of the Client ID Metadata Document. Only present for CIMD-registered clients.\n",
+                        "type": "string"
+                    },
+                    "externalMetadataCreatedBy": {
+                        "description": "Who created the external metadata client: \u003cspan pulumi-lang-nodejs=\"`admin`\" pulumi-lang-dotnet=\"`Admin`\" pulumi-lang-go=\"`admin`\" pulumi-lang-python=\"`admin`\" pulumi-lang-yaml=\"`admin`\" pulumi-lang-java=\"`admin`\"\u003e`admin`\u003c/span\u003e (via Management API), \u003cspan pulumi-lang-nodejs=\"`client`\" pulumi-lang-dotnet=\"`Client`\" pulumi-lang-go=\"`client`\" pulumi-lang-python=\"`client`\" pulumi-lang-yaml=\"`client`\" pulumi-lang-java=\"`client`\"\u003e`client`\u003c/span\u003e (self-registered), or \u003cspan pulumi-lang-nodejs=\"`unknown`\" pulumi-lang-dotnet=\"`Unknown`\" pulumi-lang-go=\"`unknown`\" pulumi-lang-python=\"`unknown`\" pulumi-lang-yaml=\"`unknown`\" pulumi-lang-java=\"`unknown`\"\u003e`unknown`\u003c/span\u003e.\n",
+                        "type": "string"
+                    },
+                    "externalMetadataType": {
+                        "description": "Type of external metadata. Value is \u003cspan pulumi-lang-nodejs=\"`cimd`\" pulumi-lang-dotnet=\"`Cimd`\" pulumi-lang-go=\"`cimd`\" pulumi-lang-python=\"`cimd`\" pulumi-lang-yaml=\"`cimd`\" pulumi-lang-java=\"`cimd`\"\u003e`cimd`\u003c/span\u003e for CIMD-registered clients.\n",
+                        "type": "string"
+                    },
                     "formTemplate": {
                         "description": "HTML form template to be used for WS-Federation.\n",
                         "type": "string"
@@ -22426,12 +23261,16 @@
                         "type": "string"
                     },
                     "isFirstParty": {
-                        "description": "Indicates whether this client is a first-party client.Defaults to true from the API\n",
+                        "description": "Indicates whether this client is a first-party client.\n",
                         "type": "boolean"
                     },
                     "isTokenEndpointIpHeaderTrusted": {
                         "description": "Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to \u003cspan pulumi-lang-nodejs=\"`clientSecretPost`\" pulumi-lang-dotnet=\"`ClientSecretPost`\" pulumi-lang-go=\"`clientSecretPost`\" pulumi-lang-python=\"`client_secret_post`\" pulumi-lang-yaml=\"`clientSecretPost`\" pulumi-lang-java=\"`clientSecretPost`\"\u003e`clientSecretPost`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`clientSecretBasic`\" pulumi-lang-dotnet=\"`ClientSecretBasic`\" pulumi-lang-go=\"`clientSecretBasic`\" pulumi-lang-python=\"`client_secret_basic`\" pulumi-lang-yaml=\"`clientSecretBasic`\" pulumi-lang-java=\"`clientSecretBasic`\"\u003e`clientSecretBasic`\u003c/span\u003e. Setting this property when creating the resource, will default the authentication method to \u003cspan pulumi-lang-nodejs=\"`clientSecretPost`\" pulumi-lang-dotnet=\"`ClientSecretPost`\" pulumi-lang-go=\"`clientSecretPost`\" pulumi-lang-python=\"`client_secret_post`\" pulumi-lang-yaml=\"`clientSecretPost`\" pulumi-lang-java=\"`clientSecretPost`\"\u003e`clientSecretPost`\u003c/span\u003e. To change the authentication method to \u003cspan pulumi-lang-nodejs=\"`clientSecretBasic`\" pulumi-lang-dotnet=\"`ClientSecretBasic`\" pulumi-lang-go=\"`clientSecretBasic`\" pulumi-lang-python=\"`client_secret_basic`\" pulumi-lang-yaml=\"`clientSecretBasic`\" pulumi-lang-java=\"`clientSecretBasic`\"\u003e`clientSecretBasic`\u003c/span\u003e use the \u003cspan pulumi-lang-nodejs=\"`auth0.ClientCredentials`\" pulumi-lang-dotnet=\"`auth0.ClientCredentials`\" pulumi-lang-go=\"`ClientCredentials`\" pulumi-lang-python=\"`ClientCredentials`\" pulumi-lang-yaml=\"`auth0.ClientCredentials`\" pulumi-lang-java=\"`auth0.ClientCredentials`\"\u003e`auth0.ClientCredentials`\u003c/span\u003e resource.\n",
                         "type": "boolean"
+                    },
+                    "jwksUri": {
+                        "description": "URL for the JSON Web Key Set (JWKS) containing the public keys used for \u003cspan pulumi-lang-nodejs=\"`privateKeyJwt`\" pulumi-lang-dotnet=\"`PrivateKeyJwt`\" pulumi-lang-go=\"`privateKeyJwt`\" pulumi-lang-python=\"`private_key_jwt`\" pulumi-lang-yaml=\"`privateKeyJwt`\" pulumi-lang-java=\"`privateKeyJwt`\"\u003e`privateKeyJwt`\u003c/span\u003e authentication. Only present for CIMD clients using \u003cspan pulumi-lang-nodejs=\"`privateKeyJwt`\" pulumi-lang-dotnet=\"`PrivateKeyJwt`\" pulumi-lang-go=\"`privateKeyJwt`\" pulumi-lang-python=\"`private_key_jwt`\" pulumi-lang-yaml=\"`privateKeyJwt`\" pulumi-lang-java=\"`privateKeyJwt`\"\u003e`privateKeyJwt`\u003c/span\u003e authentication.\n",
+                        "type": "string"
                     },
                     "jwtConfigurations": {
                         "description": "Configuration settings for the JWTs issued for this client.\n",
@@ -22448,6 +23287,13 @@
                         "description": "Additional configuration for native mobile apps.\n",
                         "items": {
                             "$ref": "#/types/auth0:index/getClientMobile:getClientMobile"
+                        },
+                        "type": "array"
+                    },
+                    "myOrganizationConfigurations": {
+                        "description": "Configuration for self-service organization features, controlling how organizations are created and managed for this client.\n",
+                        "items": {
+                            "$ref": "#/types/auth0:index/getClientMyOrganizationConfiguration:getClientMyOrganizationConfiguration"
                         },
                         "type": "array"
                     },
@@ -22596,14 +23442,19 @@
                     "description",
                     "encryptionKey",
                     "expressConfigurations",
+                    "externalClientId",
+                    "externalMetadataCreatedBy",
+                    "externalMetadataType",
                     "formTemplate",
                     "grantTypes",
                     "initiateLoginUri",
                     "isFirstParty",
                     "isTokenEndpointIpHeaderTrusted",
+                    "jwksUri",
                     "jwtConfigurations",
                     "logoUri",
                     "mobiles",
+                    "myOrganizationConfigurations",
                     "nativeSocialLogins",
                     "oidcBackchannelLogoutUrls",
                     "oidcConformant",
@@ -22688,6 +23539,10 @@
                         },
                         "description": "Filter clients by application types.\n"
                     },
+                    "externalClientId": {
+                        "type": "string",
+                        "description": "Filter clients by CIMD external client ID URL.\n"
+                    },
                     "isFirstParty": {
                         "type": "boolean",
                         "description": "Filter clients by first party status.\n"
@@ -22715,6 +23570,10 @@
                             "$ref": "#/types/auth0:index/getClientsClient:getClientsClient"
                         },
                         "type": "array"
+                    },
+                    "externalClientId": {
+                        "description": "Filter clients by CIMD external client ID URL.\n",
+                        "type": "string"
                     },
                     "id": {
                         "description": "The provider-assigned unique ID for this managed resource.",
@@ -24371,6 +25230,10 @@
                         },
                         "type": "array"
                     },
+                    "clientIdMetadataDocumentSupported": {
+                        "description": "Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.\n",
+                        "type": "boolean"
+                    },
                     "customizeMfaInPostloginAction": {
                         "description": "Whether to enable flexible factors for MFA in the PostLogin action.\n",
                         "type": "boolean"
@@ -24473,6 +25336,10 @@
                         "description": "Enable pushed authorization requests.\n",
                         "type": "boolean"
                     },
+                    "resourceParameterProfile": {
+                        "description": "Profile that determines how the protected resource identity is specified in OAuth endpoints. When set to \u003cspan pulumi-lang-nodejs=\"`audience`\" pulumi-lang-dotnet=\"`Audience`\" pulumi-lang-go=\"`audience`\" pulumi-lang-python=\"`audience`\" pulumi-lang-yaml=\"`audience`\" pulumi-lang-java=\"`audience`\"\u003e`audience`\u003c/span\u003e (default), the \u003cspan pulumi-lang-nodejs=\"`audience`\" pulumi-lang-dotnet=\"`Audience`\" pulumi-lang-go=\"`audience`\" pulumi-lang-python=\"`audience`\" pulumi-lang-yaml=\"`audience`\" pulumi-lang-java=\"`audience`\"\u003e`audience`\u003c/span\u003e parameter is used. When set to \u003cspan pulumi-lang-nodejs=\"`compatibility`\" pulumi-lang-dotnet=\"`Compatibility`\" pulumi-lang-go=\"`compatibility`\" pulumi-lang-python=\"`compatibility`\" pulumi-lang-yaml=\"`compatibility`\" pulumi-lang-java=\"`compatibility`\"\u003e`compatibility`\u003c/span\u003e, the \u003cspan pulumi-lang-nodejs=\"`resource`\" pulumi-lang-dotnet=\"`Resource`\" pulumi-lang-go=\"`resource`\" pulumi-lang-python=\"`resource`\" pulumi-lang-yaml=\"`resource`\" pulumi-lang-java=\"`resource`\"\u003e`resource`\u003c/span\u003e parameter is used as fallback if \u003cspan pulumi-lang-nodejs=\"`audience`\" pulumi-lang-dotnet=\"`Audience`\" pulumi-lang-go=\"`audience`\" pulumi-lang-python=\"`audience`\" pulumi-lang-yaml=\"`audience`\" pulumi-lang-java=\"`audience`\"\u003e`audience`\u003c/span\u003e is not provided.\n",
+                        "type": "string"
+                    },
                     "sandboxVersion": {
                         "description": "Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.\n",
                         "type": "string"
@@ -24512,6 +25379,7 @@
                     "acrValuesSupporteds",
                     "allowOrganizationNameInAuthenticationApi",
                     "allowedLogoutUrls",
+                    "clientIdMetadataDocumentSupported",
                     "customizeMfaInPostloginAction",
                     "defaultAudience",
                     "defaultDirectory",
@@ -24532,6 +25400,7 @@
                     "phoneConsolidatedExperience",
                     "pictureUrl",
                     "pushedAuthorizationRequestsSupported",
+                    "resourceParameterProfile",
                     "sandboxVersion",
                     "sessionCookies",
                     "sessionLifetime",

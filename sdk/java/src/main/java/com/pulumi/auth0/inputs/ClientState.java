@@ -8,6 +8,7 @@ import com.pulumi.auth0.inputs.ClientDefaultOrganizationArgs;
 import com.pulumi.auth0.inputs.ClientExpressConfigurationArgs;
 import com.pulumi.auth0.inputs.ClientJwtConfigurationArgs;
 import com.pulumi.auth0.inputs.ClientMobileArgs;
+import com.pulumi.auth0.inputs.ClientMyOrganizationConfigurationArgs;
 import com.pulumi.auth0.inputs.ClientNativeSocialLoginArgs;
 import com.pulumi.auth0.inputs.ClientOidcLogoutArgs;
 import com.pulumi.auth0.inputs.ClientRefreshTokenArgs;
@@ -316,6 +317,51 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The URL of the Client ID Metadata Document. Only present for CIMD-registered clients.
+     * 
+     */
+    @Import(name="externalClientId")
+    private @Nullable Output<String> externalClientId;
+
+    /**
+     * @return The URL of the Client ID Metadata Document. Only present for CIMD-registered clients.
+     * 
+     */
+    public Optional<Output<String>> externalClientId() {
+        return Optional.ofNullable(this.externalClientId);
+    }
+
+    /**
+     * Who created the external metadata client: `admin` (via Management API), `client` (self-registered), or `unknown`.
+     * 
+     */
+    @Import(name="externalMetadataCreatedBy")
+    private @Nullable Output<String> externalMetadataCreatedBy;
+
+    /**
+     * @return Who created the external metadata client: `admin` (via Management API), `client` (self-registered), or `unknown`.
+     * 
+     */
+    public Optional<Output<String>> externalMetadataCreatedBy() {
+        return Optional.ofNullable(this.externalMetadataCreatedBy);
+    }
+
+    /**
+     * Type of external metadata. Value is `cimd` for CIMD-registered clients.
+     * 
+     */
+    @Import(name="externalMetadataType")
+    private @Nullable Output<String> externalMetadataType;
+
+    /**
+     * @return Type of external metadata. Value is `cimd` for CIMD-registered clients.
+     * 
+     */
+    public Optional<Output<String>> externalMetadataType() {
+        return Optional.ofNullable(this.externalMetadataType);
+    }
+
+    /**
      * HTML form template to be used for WS-Federation.
      * 
      */
@@ -361,14 +407,14 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Indicates whether this client is a first-party client.Defaults to true from the API
+     * Indicates whether this client is a first-party client.
      * 
      */
     @Import(name="isFirstParty")
     private @Nullable Output<Boolean> isFirstParty;
 
     /**
-     * @return Indicates whether this client is a first-party client.Defaults to true from the API
+     * @return Indicates whether this client is a first-party client.
      * 
      */
     public Optional<Output<Boolean>> isFirstParty() {
@@ -388,6 +434,21 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> isTokenEndpointIpHeaderTrusted() {
         return Optional.ofNullable(this.isTokenEndpointIpHeaderTrusted);
+    }
+
+    /**
+     * URL for the JSON Web Key Set (JWKS) containing the public keys used for `privateKeyJwt` authentication. Only present for CIMD clients using `privateKeyJwt` authentication.
+     * 
+     */
+    @Import(name="jwksUri")
+    private @Nullable Output<String> jwksUri;
+
+    /**
+     * @return URL for the JSON Web Key Set (JWKS) containing the public keys used for `privateKeyJwt` authentication. Only present for CIMD clients using `privateKeyJwt` authentication.
+     * 
+     */
+    public Optional<Output<String>> jwksUri() {
+        return Optional.ofNullable(this.jwksUri);
     }
 
     /**
@@ -433,6 +494,21 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<ClientMobileArgs>> mobile() {
         return Optional.ofNullable(this.mobile);
+    }
+
+    /**
+     * Configuration for self-service organization features, controlling how organizations are created and managed for this client.
+     * 
+     */
+    @Import(name="myOrganizationConfiguration")
+    private @Nullable Output<ClientMyOrganizationConfigurationArgs> myOrganizationConfiguration;
+
+    /**
+     * @return Configuration for self-service organization features, controlling how organizations are created and managed for this client.
+     * 
+     */
+    public Optional<Output<ClientMyOrganizationConfigurationArgs>> myOrganizationConfiguration() {
+        return Optional.ofNullable(this.myOrganizationConfiguration);
     }
 
     /**
@@ -757,14 +833,19 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.encryptionKey = $.encryptionKey;
         this.expressConfiguration = $.expressConfiguration;
+        this.externalClientId = $.externalClientId;
+        this.externalMetadataCreatedBy = $.externalMetadataCreatedBy;
+        this.externalMetadataType = $.externalMetadataType;
         this.formTemplate = $.formTemplate;
         this.grantTypes = $.grantTypes;
         this.initiateLoginUri = $.initiateLoginUri;
         this.isFirstParty = $.isFirstParty;
         this.isTokenEndpointIpHeaderTrusted = $.isTokenEndpointIpHeaderTrusted;
+        this.jwksUri = $.jwksUri;
         this.jwtConfiguration = $.jwtConfiguration;
         this.logoUri = $.logoUri;
         this.mobile = $.mobile;
+        this.myOrganizationConfiguration = $.myOrganizationConfiguration;
         this.name = $.name;
         this.nativeSocialLogin = $.nativeSocialLogin;
         this.oidcBackchannelLogoutUrls = $.oidcBackchannelLogoutUrls;
@@ -1265,6 +1346,69 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param externalClientId The URL of the Client ID Metadata Document. Only present for CIMD-registered clients.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalClientId(@Nullable Output<String> externalClientId) {
+            $.externalClientId = externalClientId;
+            return this;
+        }
+
+        /**
+         * @param externalClientId The URL of the Client ID Metadata Document. Only present for CIMD-registered clients.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalClientId(String externalClientId) {
+            return externalClientId(Output.of(externalClientId));
+        }
+
+        /**
+         * @param externalMetadataCreatedBy Who created the external metadata client: `admin` (via Management API), `client` (self-registered), or `unknown`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalMetadataCreatedBy(@Nullable Output<String> externalMetadataCreatedBy) {
+            $.externalMetadataCreatedBy = externalMetadataCreatedBy;
+            return this;
+        }
+
+        /**
+         * @param externalMetadataCreatedBy Who created the external metadata client: `admin` (via Management API), `client` (self-registered), or `unknown`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalMetadataCreatedBy(String externalMetadataCreatedBy) {
+            return externalMetadataCreatedBy(Output.of(externalMetadataCreatedBy));
+        }
+
+        /**
+         * @param externalMetadataType Type of external metadata. Value is `cimd` for CIMD-registered clients.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalMetadataType(@Nullable Output<String> externalMetadataType) {
+            $.externalMetadataType = externalMetadataType;
+            return this;
+        }
+
+        /**
+         * @param externalMetadataType Type of external metadata. Value is `cimd` for CIMD-registered clients.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalMetadataType(String externalMetadataType) {
+            return externalMetadataType(Output.of(externalMetadataType));
+        }
+
+        /**
          * @param formTemplate HTML form template to be used for WS-Federation.
          * 
          * @return builder
@@ -1338,7 +1482,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param isFirstParty Indicates whether this client is a first-party client.Defaults to true from the API
+         * @param isFirstParty Indicates whether this client is a first-party client.
          * 
          * @return builder
          * 
@@ -1349,7 +1493,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param isFirstParty Indicates whether this client is a first-party client.Defaults to true from the API
+         * @param isFirstParty Indicates whether this client is a first-party client.
          * 
          * @return builder
          * 
@@ -1377,6 +1521,27 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder isTokenEndpointIpHeaderTrusted(Boolean isTokenEndpointIpHeaderTrusted) {
             return isTokenEndpointIpHeaderTrusted(Output.of(isTokenEndpointIpHeaderTrusted));
+        }
+
+        /**
+         * @param jwksUri URL for the JSON Web Key Set (JWKS) containing the public keys used for `privateKeyJwt` authentication. Only present for CIMD clients using `privateKeyJwt` authentication.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jwksUri(@Nullable Output<String> jwksUri) {
+            $.jwksUri = jwksUri;
+            return this;
+        }
+
+        /**
+         * @param jwksUri URL for the JSON Web Key Set (JWKS) containing the public keys used for `privateKeyJwt` authentication. Only present for CIMD clients using `privateKeyJwt` authentication.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jwksUri(String jwksUri) {
+            return jwksUri(Output.of(jwksUri));
         }
 
         /**
@@ -1440,6 +1605,27 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder mobile(ClientMobileArgs mobile) {
             return mobile(Output.of(mobile));
+        }
+
+        /**
+         * @param myOrganizationConfiguration Configuration for self-service organization features, controlling how organizations are created and managed for this client.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder myOrganizationConfiguration(@Nullable Output<ClientMyOrganizationConfigurationArgs> myOrganizationConfiguration) {
+            $.myOrganizationConfiguration = myOrganizationConfiguration;
+            return this;
+        }
+
+        /**
+         * @param myOrganizationConfiguration Configuration for self-service organization features, controlling how organizations are created and managed for this client.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder myOrganizationConfiguration(ClientMyOrganizationConfigurationArgs myOrganizationConfiguration) {
+            return myOrganizationConfiguration(Output.of(myOrganizationConfiguration));
         }
 
         /**

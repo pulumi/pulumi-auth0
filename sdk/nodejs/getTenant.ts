@@ -41,6 +41,10 @@ export interface GetTenantResult {
      */
     readonly allowedLogoutUrls: string[];
     /**
+     * Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
+     */
+    readonly clientIdMetadataDocumentSupported: boolean;
+    /**
      * Whether to enable flexible factors for MFA in the PostLogin action.
      */
     readonly customizeMfaInPostloginAction: boolean;
@@ -124,6 +128,10 @@ export interface GetTenantResult {
      * Enable pushed authorization requests.
      */
     readonly pushedAuthorizationRequestsSupported: boolean;
+    /**
+     * Profile that determines how the protected resource identity is specified in OAuth endpoints. When set to `audience` (default), the `audience` parameter is used. When set to `compatibility`, the `resource` parameter is used as fallback if `audience` is not provided.
+     */
+    readonly resourceParameterProfile: string;
     /**
      * Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
      */

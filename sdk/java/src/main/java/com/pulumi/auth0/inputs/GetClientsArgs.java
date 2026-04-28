@@ -33,6 +33,21 @@ public final class GetClientsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * Filter clients by CIMD external client ID URL.
+     * 
+     */
+    @Import(name="externalClientId")
+    private @Nullable Output<String> externalClientId;
+
+    /**
+     * @return Filter clients by CIMD external client ID URL.
+     * 
+     */
+    public Optional<Output<String>> externalClientId() {
+        return Optional.ofNullable(this.externalClientId);
+    }
+
+    /**
      * Filter clients by first party status.
      * 
      */
@@ -66,6 +81,7 @@ public final class GetClientsArgs extends com.pulumi.resources.InvokeArgs {
 
     private GetClientsArgs(GetClientsArgs $) {
         this.appTypes = $.appTypes;
+        this.externalClientId = $.externalClientId;
         this.isFirstParty = $.isFirstParty;
         this.nameFilter = $.nameFilter;
     }
@@ -117,6 +133,27 @@ public final class GetClientsArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder appTypes(String... appTypes) {
             return appTypes(List.of(appTypes));
+        }
+
+        /**
+         * @param externalClientId Filter clients by CIMD external client ID URL.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalClientId(@Nullable Output<String> externalClientId) {
+            $.externalClientId = externalClientId;
+            return this;
+        }
+
+        /**
+         * @param externalClientId Filter clients by CIMD external client ID URL.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalClientId(String externalClientId) {
+            return externalClientId(Output.of(externalClientId));
         }
 
         /**

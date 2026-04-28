@@ -71,6 +71,21 @@ public final class TenantState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
+     * 
+     */
+    @Import(name="clientIdMetadataDocumentSupported")
+    private @Nullable Output<Boolean> clientIdMetadataDocumentSupported;
+
+    /**
+     * @return Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
+     * 
+     */
+    public Optional<Output<Boolean>> clientIdMetadataDocumentSupported() {
+        return Optional.ofNullable(this.clientIdMetadataDocumentSupported);
+    }
+
+    /**
      * Whether to enable flexible factors for MFA in the PostLogin action.
      * 
      */
@@ -341,6 +356,21 @@ public final class TenantState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Profile that determines how the protected resource identity is specified in OAuth endpoints. When set to `audience` (default), the `audience` parameter is used. When set to `compatibility`, the `resource` parameter is used as fallback if `audience` is not provided.
+     * 
+     */
+    @Import(name="resourceParameterProfile")
+    private @Nullable Output<String> resourceParameterProfile;
+
+    /**
+     * @return Profile that determines how the protected resource identity is specified in OAuth endpoints. When set to `audience` (default), the `audience` parameter is used. When set to `compatibility`, the `resource` parameter is used as fallback if `audience` is not provided.
+     * 
+     */
+    public Optional<Output<String>> resourceParameterProfile() {
+        return Optional.ofNullable(this.resourceParameterProfile);
+    }
+
+    /**
      * Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0&#39;s functionality.
      * 
      */
@@ -451,6 +481,7 @@ public final class TenantState extends com.pulumi.resources.ResourceArgs {
         this.acrValuesSupporteds = $.acrValuesSupporteds;
         this.allowOrganizationNameInAuthenticationApi = $.allowOrganizationNameInAuthenticationApi;
         this.allowedLogoutUrls = $.allowedLogoutUrls;
+        this.clientIdMetadataDocumentSupported = $.clientIdMetadataDocumentSupported;
         this.customizeMfaInPostloginAction = $.customizeMfaInPostloginAction;
         this.defaultAudience = $.defaultAudience;
         this.defaultDirectory = $.defaultDirectory;
@@ -469,6 +500,7 @@ public final class TenantState extends com.pulumi.resources.ResourceArgs {
         this.phoneConsolidatedExperience = $.phoneConsolidatedExperience;
         this.pictureUrl = $.pictureUrl;
         this.pushedAuthorizationRequestsSupported = $.pushedAuthorizationRequestsSupported;
+        this.resourceParameterProfile = $.resourceParameterProfile;
         this.sandboxVersion = $.sandboxVersion;
         this.sessionCookie = $.sessionCookie;
         this.sessionLifetime = $.sessionLifetime;
@@ -577,6 +609,27 @@ public final class TenantState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder allowedLogoutUrls(String... allowedLogoutUrls) {
             return allowedLogoutUrls(List.of(allowedLogoutUrls));
+        }
+
+        /**
+         * @param clientIdMetadataDocumentSupported Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientIdMetadataDocumentSupported(@Nullable Output<Boolean> clientIdMetadataDocumentSupported) {
+            $.clientIdMetadataDocumentSupported = clientIdMetadataDocumentSupported;
+            return this;
+        }
+
+        /**
+         * @param clientIdMetadataDocumentSupported Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientIdMetadataDocumentSupported(Boolean clientIdMetadataDocumentSupported) {
+            return clientIdMetadataDocumentSupported(Output.of(clientIdMetadataDocumentSupported));
         }
 
         /**
@@ -965,6 +1018,27 @@ public final class TenantState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder pushedAuthorizationRequestsSupported(Boolean pushedAuthorizationRequestsSupported) {
             return pushedAuthorizationRequestsSupported(Output.of(pushedAuthorizationRequestsSupported));
+        }
+
+        /**
+         * @param resourceParameterProfile Profile that determines how the protected resource identity is specified in OAuth endpoints. When set to `audience` (default), the `audience` parameter is used. When set to `compatibility`, the `resource` parameter is used as fallback if `audience` is not provided.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceParameterProfile(@Nullable Output<String> resourceParameterProfile) {
+            $.resourceParameterProfile = resourceParameterProfile;
+            return this;
+        }
+
+        /**
+         * @param resourceParameterProfile Profile that determines how the protected resource identity is specified in OAuth endpoints. When set to `audience` (default), the `audience` parameter is used. When set to `compatibility`, the `resource` parameter is used as fallback if `audience` is not provided.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceParameterProfile(String resourceParameterProfile) {
+            return resourceParameterProfile(Output.of(resourceParameterProfile));
         }
 
         /**

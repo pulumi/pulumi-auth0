@@ -92,6 +92,10 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly ImmutableArray<string> AllowedLogoutUrls;
         /// <summary>
+        /// Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
+        /// </summary>
+        public readonly bool ClientIdMetadataDocumentSupported;
+        /// <summary>
         /// Whether to enable flexible factors for MFA in the PostLogin action.
         /// </summary>
         public readonly bool CustomizeMfaInPostloginAction;
@@ -176,6 +180,10 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly bool PushedAuthorizationRequestsSupported;
         /// <summary>
+        /// Profile that determines how the protected resource identity is specified in OAuth endpoints. When set to `Audience` (default), the `Audience` parameter is used. When set to `Compatibility`, the `Resource` parameter is used as fallback if `Audience` is not provided.
+        /// </summary>
+        public readonly string ResourceParameterProfile;
+        /// <summary>
         /// Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
         /// </summary>
         public readonly string SandboxVersion;
@@ -211,6 +219,8 @@ namespace Pulumi.Auth0
             bool allowOrganizationNameInAuthenticationApi,
 
             ImmutableArray<string> allowedLogoutUrls,
+
+            bool clientIdMetadataDocumentSupported,
 
             bool customizeMfaInPostloginAction,
 
@@ -254,6 +264,8 @@ namespace Pulumi.Auth0
 
             bool pushedAuthorizationRequestsSupported,
 
+            string resourceParameterProfile,
+
             string sandboxVersion,
 
             ImmutableArray<Outputs.GetTenantSessionCookyResult> sessionCookies,
@@ -271,6 +283,7 @@ namespace Pulumi.Auth0
             AcrValuesSupporteds = acrValuesSupporteds;
             AllowOrganizationNameInAuthenticationApi = allowOrganizationNameInAuthenticationApi;
             AllowedLogoutUrls = allowedLogoutUrls;
+            ClientIdMetadataDocumentSupported = clientIdMetadataDocumentSupported;
             CustomizeMfaInPostloginAction = customizeMfaInPostloginAction;
             DefaultAudience = defaultAudience;
             DefaultDirectory = defaultDirectory;
@@ -292,6 +305,7 @@ namespace Pulumi.Auth0
             PhoneConsolidatedExperience = phoneConsolidatedExperience;
             PictureUrl = pictureUrl;
             PushedAuthorizationRequestsSupported = pushedAuthorizationRequestsSupported;
+            ResourceParameterProfile = resourceParameterProfile;
             SandboxVersion = sandboxVersion;
             SessionCookies = sessionCookies;
             SessionLifetime = sessionLifetime;

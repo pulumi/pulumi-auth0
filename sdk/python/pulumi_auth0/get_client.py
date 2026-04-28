@@ -27,7 +27,7 @@ class GetClientResult:
     """
     A collection of values returned by getClient.
     """
-    def __init__(__self__, addons=None, allowed_clients=None, allowed_logout_urls=None, allowed_origins=None, app_type=None, async_approval_notification_channels=None, callbacks=None, client_aliases=None, client_authentication_methods=None, client_id=None, client_metadata=None, client_secret=None, compliance_level=None, cross_origin_auth=None, cross_origin_loc=None, custom_login_page=None, custom_login_page_on=None, default_organizations=None, description=None, encryption_key=None, express_configurations=None, form_template=None, grant_types=None, id=None, initiate_login_uri=None, is_first_party=None, is_token_endpoint_ip_header_trusted=None, jwt_configurations=None, logo_uri=None, mobiles=None, name=None, native_social_logins=None, oidc_backchannel_logout_urls=None, oidc_conformant=None, oidc_logouts=None, organization_discovery_methods=None, organization_require_behavior=None, organization_usage=None, refresh_tokens=None, require_proof_of_possession=None, require_pushed_authorization_requests=None, resource_server_identifier=None, session_transfers=None, signed_request_objects=None, signing_keys=None, skip_non_verifiable_callback_uri_confirmation_prompt=None, sso=None, sso_disabled=None, token_endpoint_auth_method=None, token_exchanges=None, token_quotas=None, web_origins=None):
+    def __init__(__self__, addons=None, allowed_clients=None, allowed_logout_urls=None, allowed_origins=None, app_type=None, async_approval_notification_channels=None, callbacks=None, client_aliases=None, client_authentication_methods=None, client_id=None, client_metadata=None, client_secret=None, compliance_level=None, cross_origin_auth=None, cross_origin_loc=None, custom_login_page=None, custom_login_page_on=None, default_organizations=None, description=None, encryption_key=None, express_configurations=None, external_client_id=None, external_metadata_created_by=None, external_metadata_type=None, form_template=None, grant_types=None, id=None, initiate_login_uri=None, is_first_party=None, is_token_endpoint_ip_header_trusted=None, jwks_uri=None, jwt_configurations=None, logo_uri=None, mobiles=None, my_organization_configurations=None, name=None, native_social_logins=None, oidc_backchannel_logout_urls=None, oidc_conformant=None, oidc_logouts=None, organization_discovery_methods=None, organization_require_behavior=None, organization_usage=None, refresh_tokens=None, require_proof_of_possession=None, require_pushed_authorization_requests=None, resource_server_identifier=None, session_transfers=None, signed_request_objects=None, signing_keys=None, skip_non_verifiable_callback_uri_confirmation_prompt=None, sso=None, sso_disabled=None, token_endpoint_auth_method=None, token_exchanges=None, token_quotas=None, web_origins=None):
         if addons and not isinstance(addons, list):
             raise TypeError("Expected argument 'addons' to be a list")
         pulumi.set(__self__, "addons", addons)
@@ -91,6 +91,15 @@ class GetClientResult:
         if express_configurations and not isinstance(express_configurations, list):
             raise TypeError("Expected argument 'express_configurations' to be a list")
         pulumi.set(__self__, "express_configurations", express_configurations)
+        if external_client_id and not isinstance(external_client_id, str):
+            raise TypeError("Expected argument 'external_client_id' to be a str")
+        pulumi.set(__self__, "external_client_id", external_client_id)
+        if external_metadata_created_by and not isinstance(external_metadata_created_by, str):
+            raise TypeError("Expected argument 'external_metadata_created_by' to be a str")
+        pulumi.set(__self__, "external_metadata_created_by", external_metadata_created_by)
+        if external_metadata_type and not isinstance(external_metadata_type, str):
+            raise TypeError("Expected argument 'external_metadata_type' to be a str")
+        pulumi.set(__self__, "external_metadata_type", external_metadata_type)
         if form_template and not isinstance(form_template, str):
             raise TypeError("Expected argument 'form_template' to be a str")
         pulumi.set(__self__, "form_template", form_template)
@@ -109,6 +118,9 @@ class GetClientResult:
         if is_token_endpoint_ip_header_trusted and not isinstance(is_token_endpoint_ip_header_trusted, bool):
             raise TypeError("Expected argument 'is_token_endpoint_ip_header_trusted' to be a bool")
         pulumi.set(__self__, "is_token_endpoint_ip_header_trusted", is_token_endpoint_ip_header_trusted)
+        if jwks_uri and not isinstance(jwks_uri, str):
+            raise TypeError("Expected argument 'jwks_uri' to be a str")
+        pulumi.set(__self__, "jwks_uri", jwks_uri)
         if jwt_configurations and not isinstance(jwt_configurations, list):
             raise TypeError("Expected argument 'jwt_configurations' to be a list")
         pulumi.set(__self__, "jwt_configurations", jwt_configurations)
@@ -118,6 +130,9 @@ class GetClientResult:
         if mobiles and not isinstance(mobiles, list):
             raise TypeError("Expected argument 'mobiles' to be a list")
         pulumi.set(__self__, "mobiles", mobiles)
+        if my_organization_configurations and not isinstance(my_organization_configurations, list):
+            raise TypeError("Expected argument 'my_organization_configurations' to be a list")
+        pulumi.set(__self__, "my_organization_configurations", my_organization_configurations)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -354,6 +369,30 @@ class GetClientResult:
         return pulumi.get(self, "express_configurations")
 
     @_builtins.property
+    @pulumi.getter(name="externalClientId")
+    def external_client_id(self) -> _builtins.str:
+        """
+        The URL of the Client ID Metadata Document. Only present for CIMD-registered clients.
+        """
+        return pulumi.get(self, "external_client_id")
+
+    @_builtins.property
+    @pulumi.getter(name="externalMetadataCreatedBy")
+    def external_metadata_created_by(self) -> _builtins.str:
+        """
+        Who created the external metadata client: `admin` (via Management API), `client` (self-registered), or `unknown`.
+        """
+        return pulumi.get(self, "external_metadata_created_by")
+
+    @_builtins.property
+    @pulumi.getter(name="externalMetadataType")
+    def external_metadata_type(self) -> _builtins.str:
+        """
+        Type of external metadata. Value is `cimd` for CIMD-registered clients.
+        """
+        return pulumi.get(self, "external_metadata_type")
+
+    @_builtins.property
     @pulumi.getter(name="formTemplate")
     def form_template(self) -> _builtins.str:
         """
@@ -389,7 +428,7 @@ class GetClientResult:
     @pulumi.getter(name="isFirstParty")
     def is_first_party(self) -> _builtins.bool:
         """
-        Indicates whether this client is a first-party client.Defaults to true from the API
+        Indicates whether this client is a first-party client.
         """
         return pulumi.get(self, "is_first_party")
 
@@ -400,6 +439,14 @@ class GetClientResult:
         Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `client_secret_post` or `client_secret_basic`. Setting this property when creating the resource, will default the authentication method to `client_secret_post`. To change the authentication method to `client_secret_basic` use the `ClientCredentials` resource.
         """
         return pulumi.get(self, "is_token_endpoint_ip_header_trusted")
+
+    @_builtins.property
+    @pulumi.getter(name="jwksUri")
+    def jwks_uri(self) -> _builtins.str:
+        """
+        URL for the JSON Web Key Set (JWKS) containing the public keys used for `private_key_jwt` authentication. Only present for CIMD clients using `private_key_jwt` authentication.
+        """
+        return pulumi.get(self, "jwks_uri")
 
     @_builtins.property
     @pulumi.getter(name="jwtConfigurations")
@@ -424,6 +471,14 @@ class GetClientResult:
         Additional configuration for native mobile apps.
         """
         return pulumi.get(self, "mobiles")
+
+    @_builtins.property
+    @pulumi.getter(name="myOrganizationConfigurations")
+    def my_organization_configurations(self) -> Sequence['outputs.GetClientMyOrganizationConfigurationResult']:
+        """
+        Configuration for self-service organization features, controlling how organizations are created and managed for this client.
+        """
+        return pulumi.get(self, "my_organization_configurations")
 
     @_builtins.property
     @pulumi.getter
@@ -626,15 +681,20 @@ class AwaitableGetClientResult(GetClientResult):
             description=self.description,
             encryption_key=self.encryption_key,
             express_configurations=self.express_configurations,
+            external_client_id=self.external_client_id,
+            external_metadata_created_by=self.external_metadata_created_by,
+            external_metadata_type=self.external_metadata_type,
             form_template=self.form_template,
             grant_types=self.grant_types,
             id=self.id,
             initiate_login_uri=self.initiate_login_uri,
             is_first_party=self.is_first_party,
             is_token_endpoint_ip_header_trusted=self.is_token_endpoint_ip_header_trusted,
+            jwks_uri=self.jwks_uri,
             jwt_configurations=self.jwt_configurations,
             logo_uri=self.logo_uri,
             mobiles=self.mobiles,
+            my_organization_configurations=self.my_organization_configurations,
             name=self.name,
             native_social_logins=self.native_social_logins,
             oidc_backchannel_logout_urls=self.oidc_backchannel_logout_urls,
@@ -709,15 +769,20 @@ def get_client(client_id: Optional[_builtins.str] = None,
         description=pulumi.get(__ret__, 'description'),
         encryption_key=pulumi.get(__ret__, 'encryption_key'),
         express_configurations=pulumi.get(__ret__, 'express_configurations'),
+        external_client_id=pulumi.get(__ret__, 'external_client_id'),
+        external_metadata_created_by=pulumi.get(__ret__, 'external_metadata_created_by'),
+        external_metadata_type=pulumi.get(__ret__, 'external_metadata_type'),
         form_template=pulumi.get(__ret__, 'form_template'),
         grant_types=pulumi.get(__ret__, 'grant_types'),
         id=pulumi.get(__ret__, 'id'),
         initiate_login_uri=pulumi.get(__ret__, 'initiate_login_uri'),
         is_first_party=pulumi.get(__ret__, 'is_first_party'),
         is_token_endpoint_ip_header_trusted=pulumi.get(__ret__, 'is_token_endpoint_ip_header_trusted'),
+        jwks_uri=pulumi.get(__ret__, 'jwks_uri'),
         jwt_configurations=pulumi.get(__ret__, 'jwt_configurations'),
         logo_uri=pulumi.get(__ret__, 'logo_uri'),
         mobiles=pulumi.get(__ret__, 'mobiles'),
+        my_organization_configurations=pulumi.get(__ret__, 'my_organization_configurations'),
         name=pulumi.get(__ret__, 'name'),
         native_social_logins=pulumi.get(__ret__, 'native_social_logins'),
         oidc_backchannel_logout_urls=pulumi.get(__ret__, 'oidc_backchannel_logout_urls'),
@@ -789,15 +854,20 @@ def get_client_output(client_id: Optional[pulumi.Input[Optional[_builtins.str]]]
         description=pulumi.get(__response__, 'description'),
         encryption_key=pulumi.get(__response__, 'encryption_key'),
         express_configurations=pulumi.get(__response__, 'express_configurations'),
+        external_client_id=pulumi.get(__response__, 'external_client_id'),
+        external_metadata_created_by=pulumi.get(__response__, 'external_metadata_created_by'),
+        external_metadata_type=pulumi.get(__response__, 'external_metadata_type'),
         form_template=pulumi.get(__response__, 'form_template'),
         grant_types=pulumi.get(__response__, 'grant_types'),
         id=pulumi.get(__response__, 'id'),
         initiate_login_uri=pulumi.get(__response__, 'initiate_login_uri'),
         is_first_party=pulumi.get(__response__, 'is_first_party'),
         is_token_endpoint_ip_header_trusted=pulumi.get(__response__, 'is_token_endpoint_ip_header_trusted'),
+        jwks_uri=pulumi.get(__response__, 'jwks_uri'),
         jwt_configurations=pulumi.get(__response__, 'jwt_configurations'),
         logo_uri=pulumi.get(__response__, 'logo_uri'),
         mobiles=pulumi.get(__response__, 'mobiles'),
+        my_organization_configurations=pulumi.get(__response__, 'my_organization_configurations'),
         name=pulumi.get(__response__, 'name'),
         native_social_logins=pulumi.get(__response__, 'native_social_logins'),
         oidc_backchannel_logout_urls=pulumi.get(__response__, 'oidc_backchannel_logout_urls'),

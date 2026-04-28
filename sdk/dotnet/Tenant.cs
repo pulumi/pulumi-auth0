@@ -105,6 +105,12 @@ namespace Pulumi.Auth0
         public Output<ImmutableArray<string>> AllowedLogoutUrls { get; private set; } = null!;
 
         /// <summary>
+        /// Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
+        /// </summary>
+        [Output("clientIdMetadataDocumentSupported")]
+        public Output<bool> ClientIdMetadataDocumentSupported { get; private set; } = null!;
+
+        /// <summary>
         /// Whether to enable flexible factors for MFA in the PostLogin action.
         /// </summary>
         [Output("customizeMfaInPostloginAction")]
@@ -211,6 +217,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Output("pushedAuthorizationRequestsSupported")]
         public Output<bool> PushedAuthorizationRequestsSupported { get; private set; } = null!;
+
+        /// <summary>
+        /// Profile that determines how the protected resource identity is specified in OAuth endpoints. When set to `Audience` (default), the `Audience` parameter is used. When set to `Compatibility`, the `Resource` parameter is used as fallback if `Audience` is not provided.
+        /// </summary>
+        [Output("resourceParameterProfile")]
+        public Output<string> ResourceParameterProfile { get; private set; } = null!;
 
         /// <summary>
         /// Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
@@ -331,6 +343,12 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
+        /// Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
+        /// </summary>
+        [Input("clientIdMetadataDocumentSupported")]
+        public Input<bool>? ClientIdMetadataDocumentSupported { get; set; }
+
+        /// <summary>
         /// Whether to enable flexible factors for MFA in the PostLogin action.
         /// </summary>
         [Input("customizeMfaInPostloginAction")]
@@ -445,6 +463,12 @@ namespace Pulumi.Auth0
         public Input<bool>? PushedAuthorizationRequestsSupported { get; set; }
 
         /// <summary>
+        /// Profile that determines how the protected resource identity is specified in OAuth endpoints. When set to `Audience` (default), the `Audience` parameter is used. When set to `Compatibility`, the `Resource` parameter is used as fallback if `Audience` is not provided.
+        /// </summary>
+        [Input("resourceParameterProfile")]
+        public Input<string>? ResourceParameterProfile { get; set; }
+
+        /// <summary>
         /// Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
         /// </summary>
         [Input("sandboxVersion")]
@@ -523,6 +547,12 @@ namespace Pulumi.Auth0
             get => _allowedLogoutUrls ?? (_allowedLogoutUrls = new InputList<string>());
             set => _allowedLogoutUrls = value;
         }
+
+        /// <summary>
+        /// Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
+        /// </summary>
+        [Input("clientIdMetadataDocumentSupported")]
+        public Input<bool>? ClientIdMetadataDocumentSupported { get; set; }
 
         /// <summary>
         /// Whether to enable flexible factors for MFA in the PostLogin action.
@@ -637,6 +667,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("pushedAuthorizationRequestsSupported")]
         public Input<bool>? PushedAuthorizationRequestsSupported { get; set; }
+
+        /// <summary>
+        /// Profile that determines how the protected resource identity is specified in OAuth endpoints. When set to `Audience` (default), the `Audience` parameter is used. When set to `Compatibility`, the `Resource` parameter is used as fallback if `Audience` is not provided.
+        /// </summary>
+        [Input("resourceParameterProfile")]
+        public Input<string>? ResourceParameterProfile { get; set; }
 
         /// <summary>
         /// Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.

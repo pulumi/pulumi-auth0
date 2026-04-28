@@ -36,6 +36,11 @@ public final class GetTenantResult {
      */
     private List<String> allowedLogoutUrls;
     /**
+     * @return Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
+     * 
+     */
+    private Boolean clientIdMetadataDocumentSupported;
+    /**
      * @return Whether to enable flexible factors for MFA in the PostLogin action.
      * 
      */
@@ -141,6 +146,11 @@ public final class GetTenantResult {
      */
     private Boolean pushedAuthorizationRequestsSupported;
     /**
+     * @return Profile that determines how the protected resource identity is specified in OAuth endpoints. When set to `audience` (default), the `audience` parameter is used. When set to `compatibility`, the `resource` parameter is used as fallback if `audience` is not provided.
+     * 
+     */
+    private String resourceParameterProfile;
+    /**
      * @return Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0&#39;s functionality.
      * 
      */
@@ -197,6 +207,13 @@ public final class GetTenantResult {
      */
     public List<String> allowedLogoutUrls() {
         return this.allowedLogoutUrls;
+    }
+    /**
+     * @return Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
+     * 
+     */
+    public Boolean clientIdMetadataDocumentSupported() {
+        return this.clientIdMetadataDocumentSupported;
     }
     /**
      * @return Whether to enable flexible factors for MFA in the PostLogin action.
@@ -346,6 +363,13 @@ public final class GetTenantResult {
         return this.pushedAuthorizationRequestsSupported;
     }
     /**
+     * @return Profile that determines how the protected resource identity is specified in OAuth endpoints. When set to `audience` (default), the `audience` parameter is used. When set to `compatibility`, the `resource` parameter is used as fallback if `audience` is not provided.
+     * 
+     */
+    public String resourceParameterProfile() {
+        return this.resourceParameterProfile;
+    }
+    /**
      * @return Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0&#39;s functionality.
      * 
      */
@@ -407,6 +431,7 @@ public final class GetTenantResult {
         private List<String> acrValuesSupporteds;
         private Boolean allowOrganizationNameInAuthenticationApi;
         private List<String> allowedLogoutUrls;
+        private Boolean clientIdMetadataDocumentSupported;
         private Boolean customizeMfaInPostloginAction;
         private String defaultAudience;
         private String defaultDirectory;
@@ -428,6 +453,7 @@ public final class GetTenantResult {
         private Boolean phoneConsolidatedExperience;
         private String pictureUrl;
         private Boolean pushedAuthorizationRequestsSupported;
+        private String resourceParameterProfile;
         private String sandboxVersion;
         private List<GetTenantSessionCooky> sessionCookies;
         private Double sessionLifetime;
@@ -441,6 +467,7 @@ public final class GetTenantResult {
     	      this.acrValuesSupporteds = defaults.acrValuesSupporteds;
     	      this.allowOrganizationNameInAuthenticationApi = defaults.allowOrganizationNameInAuthenticationApi;
     	      this.allowedLogoutUrls = defaults.allowedLogoutUrls;
+    	      this.clientIdMetadataDocumentSupported = defaults.clientIdMetadataDocumentSupported;
     	      this.customizeMfaInPostloginAction = defaults.customizeMfaInPostloginAction;
     	      this.defaultAudience = defaults.defaultAudience;
     	      this.defaultDirectory = defaults.defaultDirectory;
@@ -462,6 +489,7 @@ public final class GetTenantResult {
     	      this.phoneConsolidatedExperience = defaults.phoneConsolidatedExperience;
     	      this.pictureUrl = defaults.pictureUrl;
     	      this.pushedAuthorizationRequestsSupported = defaults.pushedAuthorizationRequestsSupported;
+    	      this.resourceParameterProfile = defaults.resourceParameterProfile;
     	      this.sandboxVersion = defaults.sandboxVersion;
     	      this.sessionCookies = defaults.sessionCookies;
     	      this.sessionLifetime = defaults.sessionLifetime;
@@ -500,6 +528,14 @@ public final class GetTenantResult {
         }
         public Builder allowedLogoutUrls(String... allowedLogoutUrls) {
             return allowedLogoutUrls(List.of(allowedLogoutUrls));
+        }
+        @CustomType.Setter
+        public Builder clientIdMetadataDocumentSupported(Boolean clientIdMetadataDocumentSupported) {
+            if (clientIdMetadataDocumentSupported == null) {
+              throw new MissingRequiredPropertyException("GetTenantResult", "clientIdMetadataDocumentSupported");
+            }
+            this.clientIdMetadataDocumentSupported = clientIdMetadataDocumentSupported;
+            return this;
         }
         @CustomType.Setter
         public Builder customizeMfaInPostloginAction(Boolean customizeMfaInPostloginAction) {
@@ -688,6 +724,14 @@ public final class GetTenantResult {
             return this;
         }
         @CustomType.Setter
+        public Builder resourceParameterProfile(String resourceParameterProfile) {
+            if (resourceParameterProfile == null) {
+              throw new MissingRequiredPropertyException("GetTenantResult", "resourceParameterProfile");
+            }
+            this.resourceParameterProfile = resourceParameterProfile;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sandboxVersion(String sandboxVersion) {
             if (sandboxVersion == null) {
               throw new MissingRequiredPropertyException("GetTenantResult", "sandboxVersion");
@@ -754,6 +798,7 @@ public final class GetTenantResult {
             _resultValue.acrValuesSupporteds = acrValuesSupporteds;
             _resultValue.allowOrganizationNameInAuthenticationApi = allowOrganizationNameInAuthenticationApi;
             _resultValue.allowedLogoutUrls = allowedLogoutUrls;
+            _resultValue.clientIdMetadataDocumentSupported = clientIdMetadataDocumentSupported;
             _resultValue.customizeMfaInPostloginAction = customizeMfaInPostloginAction;
             _resultValue.defaultAudience = defaultAudience;
             _resultValue.defaultDirectory = defaultDirectory;
@@ -775,6 +820,7 @@ public final class GetTenantResult {
             _resultValue.phoneConsolidatedExperience = phoneConsolidatedExperience;
             _resultValue.pictureUrl = pictureUrl;
             _resultValue.pushedAuthorizationRequestsSupported = pushedAuthorizationRequestsSupported;
+            _resultValue.resourceParameterProfile = resourceParameterProfile;
             _resultValue.sandboxVersion = sandboxVersion;
             _resultValue.sessionCookies = sessionCookies;
             _resultValue.sessionLifetime = sessionLifetime;

@@ -140,6 +140,24 @@ namespace Pulumi.Auth0
         public Output<Outputs.ClientExpressConfiguration> ExpressConfiguration { get; private set; } = null!;
 
         /// <summary>
+        /// The URL of the Client ID Metadata Document. Only present for CIMD-registered clients.
+        /// </summary>
+        [Output("externalClientId")]
+        public Output<string> ExternalClientId { get; private set; } = null!;
+
+        /// <summary>
+        /// Who created the external metadata client: `Admin` (via Management API), `Client` (self-registered), or `Unknown`.
+        /// </summary>
+        [Output("externalMetadataCreatedBy")]
+        public Output<string> ExternalMetadataCreatedBy { get; private set; } = null!;
+
+        /// <summary>
+        /// Type of external metadata. Value is `Cimd` for CIMD-registered clients.
+        /// </summary>
+        [Output("externalMetadataType")]
+        public Output<string> ExternalMetadataType { get; private set; } = null!;
+
+        /// <summary>
         /// HTML form template to be used for WS-Federation.
         /// </summary>
         [Output("formTemplate")]
@@ -158,7 +176,7 @@ namespace Pulumi.Auth0
         public Output<string?> InitiateLoginUri { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether this client is a first-party client.Defaults to true from the API
+        /// Indicates whether this client is a first-party client.
         /// </summary>
         [Output("isFirstParty")]
         public Output<bool> IsFirstParty { get; private set; } = null!;
@@ -168,6 +186,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Output("isTokenEndpointIpHeaderTrusted")]
         public Output<bool> IsTokenEndpointIpHeaderTrusted { get; private set; } = null!;
+
+        /// <summary>
+        /// URL for the JSON Web Key Set (JWKS) containing the public keys used for `PrivateKeyJwt` authentication. Only present for CIMD clients using `PrivateKeyJwt` authentication.
+        /// </summary>
+        [Output("jwksUri")]
+        public Output<string> JwksUri { get; private set; } = null!;
 
         /// <summary>
         /// Configuration settings for the JWTs issued for this client.
@@ -186,6 +210,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Output("mobile")]
         public Output<Outputs.ClientMobile> Mobile { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration for self-service organization features, controlling how organizations are created and managed for this client.
+        /// </summary>
+        [Output("myOrganizationConfiguration")]
+        public Output<Outputs.ClientMyOrganizationConfiguration> MyOrganizationConfiguration { get; private set; } = null!;
 
         /// <summary>
         /// Name of the client.
@@ -535,7 +565,7 @@ namespace Pulumi.Auth0
         public Input<string>? InitiateLoginUri { get; set; }
 
         /// <summary>
-        /// Indicates whether this client is a first-party client.Defaults to true from the API
+        /// Indicates whether this client is a first-party client.
         /// </summary>
         [Input("isFirstParty")]
         public Input<bool>? IsFirstParty { get; set; }
@@ -563,6 +593,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("mobile")]
         public Input<Inputs.ClientMobileArgs>? Mobile { get; set; }
+
+        /// <summary>
+        /// Configuration for self-service organization features, controlling how organizations are created and managed for this client.
+        /// </summary>
+        [Input("myOrganizationConfiguration")]
+        public Input<Inputs.ClientMyOrganizationConfigurationArgs>? MyOrganizationConfiguration { get; set; }
 
         /// <summary>
         /// Name of the client.
@@ -866,6 +902,24 @@ namespace Pulumi.Auth0
         public Input<Inputs.ClientExpressConfigurationGetArgs>? ExpressConfiguration { get; set; }
 
         /// <summary>
+        /// The URL of the Client ID Metadata Document. Only present for CIMD-registered clients.
+        /// </summary>
+        [Input("externalClientId")]
+        public Input<string>? ExternalClientId { get; set; }
+
+        /// <summary>
+        /// Who created the external metadata client: `Admin` (via Management API), `Client` (self-registered), or `Unknown`.
+        /// </summary>
+        [Input("externalMetadataCreatedBy")]
+        public Input<string>? ExternalMetadataCreatedBy { get; set; }
+
+        /// <summary>
+        /// Type of external metadata. Value is `Cimd` for CIMD-registered clients.
+        /// </summary>
+        [Input("externalMetadataType")]
+        public Input<string>? ExternalMetadataType { get; set; }
+
+        /// <summary>
         /// HTML form template to be used for WS-Federation.
         /// </summary>
         [Input("formTemplate")]
@@ -890,7 +944,7 @@ namespace Pulumi.Auth0
         public Input<string>? InitiateLoginUri { get; set; }
 
         /// <summary>
-        /// Indicates whether this client is a first-party client.Defaults to true from the API
+        /// Indicates whether this client is a first-party client.
         /// </summary>
         [Input("isFirstParty")]
         public Input<bool>? IsFirstParty { get; set; }
@@ -900,6 +954,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("isTokenEndpointIpHeaderTrusted")]
         public Input<bool>? IsTokenEndpointIpHeaderTrusted { get; set; }
+
+        /// <summary>
+        /// URL for the JSON Web Key Set (JWKS) containing the public keys used for `PrivateKeyJwt` authentication. Only present for CIMD clients using `PrivateKeyJwt` authentication.
+        /// </summary>
+        [Input("jwksUri")]
+        public Input<string>? JwksUri { get; set; }
 
         /// <summary>
         /// Configuration settings for the JWTs issued for this client.
@@ -918,6 +978,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("mobile")]
         public Input<Inputs.ClientMobileGetArgs>? Mobile { get; set; }
+
+        /// <summary>
+        /// Configuration for self-service organization features, controlling how organizations are created and managed for this client.
+        /// </summary>
+        [Input("myOrganizationConfiguration")]
+        public Input<Inputs.ClientMyOrganizationConfigurationGetArgs>? MyOrganizationConfiguration { get; set; }
 
         /// <summary>
         /// Name of the client.

@@ -153,6 +153,20 @@ public class Tenant extends com.pulumi.resources.CustomResource {
         return this.allowedLogoutUrls;
     }
     /**
+     * Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
+     * 
+     */
+    @Export(name="clientIdMetadataDocumentSupported", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> clientIdMetadataDocumentSupported;
+
+    /**
+     * @return Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
+     * 
+     */
+    public Output<Boolean> clientIdMetadataDocumentSupported() {
+        return this.clientIdMetadataDocumentSupported;
+    }
+    /**
      * Whether to enable flexible factors for MFA in the PostLogin action.
      * 
      */
@@ -403,6 +417,20 @@ public class Tenant extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> pushedAuthorizationRequestsSupported() {
         return this.pushedAuthorizationRequestsSupported;
+    }
+    /**
+     * Profile that determines how the protected resource identity is specified in OAuth endpoints. When set to `audience` (default), the `audience` parameter is used. When set to `compatibility`, the `resource` parameter is used as fallback if `audience` is not provided.
+     * 
+     */
+    @Export(name="resourceParameterProfile", refs={String.class}, tree="[0]")
+    private Output<String> resourceParameterProfile;
+
+    /**
+     * @return Profile that determines how the protected resource identity is specified in OAuth endpoints. When set to `audience` (default), the `audience` parameter is used. When set to `compatibility`, the `resource` parameter is used as fallback if `audience` is not provided.
+     * 
+     */
+    public Output<String> resourceParameterProfile() {
+        return this.resourceParameterProfile;
     }
     /**
      * Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0&#39;s functionality.

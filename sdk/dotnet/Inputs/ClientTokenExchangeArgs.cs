@@ -16,7 +16,7 @@ namespace Pulumi.Auth0.Inputs
         private InputList<string>? _allowAnyProfileOfTypes;
 
         /// <summary>
-        /// List of allowed profile types for token exchange
+        /// List of allowed profile types for token exchange. Supported values include: custom*authentication, on*behalf*of*token_exchange.
         /// </summary>
         public InputList<string> AllowAnyProfileOfTypes
         {

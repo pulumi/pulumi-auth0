@@ -11,6 +11,7 @@ import com.pulumi.auth0.outputs.ClientDefaultOrganization;
 import com.pulumi.auth0.outputs.ClientExpressConfiguration;
 import com.pulumi.auth0.outputs.ClientJwtConfiguration;
 import com.pulumi.auth0.outputs.ClientMobile;
+import com.pulumi.auth0.outputs.ClientMyOrganizationConfiguration;
 import com.pulumi.auth0.outputs.ClientNativeSocialLogin;
 import com.pulumi.auth0.outputs.ClientOidcLogout;
 import com.pulumi.auth0.outputs.ClientRefreshToken;
@@ -311,6 +312,48 @@ public class Client extends com.pulumi.resources.CustomResource {
         return this.expressConfiguration;
     }
     /**
+     * The URL of the Client ID Metadata Document. Only present for CIMD-registered clients.
+     * 
+     */
+    @Export(name="externalClientId", refs={String.class}, tree="[0]")
+    private Output<String> externalClientId;
+
+    /**
+     * @return The URL of the Client ID Metadata Document. Only present for CIMD-registered clients.
+     * 
+     */
+    public Output<String> externalClientId() {
+        return this.externalClientId;
+    }
+    /**
+     * Who created the external metadata client: `admin` (via Management API), `client` (self-registered), or `unknown`.
+     * 
+     */
+    @Export(name="externalMetadataCreatedBy", refs={String.class}, tree="[0]")
+    private Output<String> externalMetadataCreatedBy;
+
+    /**
+     * @return Who created the external metadata client: `admin` (via Management API), `client` (self-registered), or `unknown`.
+     * 
+     */
+    public Output<String> externalMetadataCreatedBy() {
+        return this.externalMetadataCreatedBy;
+    }
+    /**
+     * Type of external metadata. Value is `cimd` for CIMD-registered clients.
+     * 
+     */
+    @Export(name="externalMetadataType", refs={String.class}, tree="[0]")
+    private Output<String> externalMetadataType;
+
+    /**
+     * @return Type of external metadata. Value is `cimd` for CIMD-registered clients.
+     * 
+     */
+    public Output<String> externalMetadataType() {
+        return this.externalMetadataType;
+    }
+    /**
      * HTML form template to be used for WS-Federation.
      * 
      */
@@ -353,14 +396,14 @@ public class Client extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.initiateLoginUri);
     }
     /**
-     * Indicates whether this client is a first-party client.Defaults to true from the API
+     * Indicates whether this client is a first-party client.
      * 
      */
     @Export(name="isFirstParty", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> isFirstParty;
 
     /**
-     * @return Indicates whether this client is a first-party client.Defaults to true from the API
+     * @return Indicates whether this client is a first-party client.
      * 
      */
     public Output<Boolean> isFirstParty() {
@@ -379,6 +422,20 @@ public class Client extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> isTokenEndpointIpHeaderTrusted() {
         return this.isTokenEndpointIpHeaderTrusted;
+    }
+    /**
+     * URL for the JSON Web Key Set (JWKS) containing the public keys used for `privateKeyJwt` authentication. Only present for CIMD clients using `privateKeyJwt` authentication.
+     * 
+     */
+    @Export(name="jwksUri", refs={String.class}, tree="[0]")
+    private Output<String> jwksUri;
+
+    /**
+     * @return URL for the JSON Web Key Set (JWKS) containing the public keys used for `privateKeyJwt` authentication. Only present for CIMD clients using `privateKeyJwt` authentication.
+     * 
+     */
+    public Output<String> jwksUri() {
+        return this.jwksUri;
     }
     /**
      * Configuration settings for the JWTs issued for this client.
@@ -421,6 +478,20 @@ public class Client extends com.pulumi.resources.CustomResource {
      */
     public Output<ClientMobile> mobile() {
         return this.mobile;
+    }
+    /**
+     * Configuration for self-service organization features, controlling how organizations are created and managed for this client.
+     * 
+     */
+    @Export(name="myOrganizationConfiguration", refs={ClientMyOrganizationConfiguration.class}, tree="[0]")
+    private Output<ClientMyOrganizationConfiguration> myOrganizationConfiguration;
+
+    /**
+     * @return Configuration for self-service organization features, controlling how organizations are created and managed for this client.
+     * 
+     */
+    public Output<ClientMyOrganizationConfiguration> myOrganizationConfiguration() {
+        return this.myOrganizationConfiguration;
     }
     /**
      * Name of the client.

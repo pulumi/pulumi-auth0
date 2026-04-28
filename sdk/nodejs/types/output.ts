@@ -1250,6 +1250,100 @@ export interface ClientAddonsZoom {
     account?: string;
 }
 
+export interface ClientCimdDefaultOrganization {
+    /**
+     * Definition of the flow that needs to be configured. Eg. client_credentials
+     */
+    flows: string[];
+    /**
+     * The unique identifier of the organization
+     */
+    organizationId: string;
+}
+
+export interface ClientCimdJwtConfiguration {
+    /**
+     * Algorithm used to sign JWTs. CIMD clients support `RS256`, `RS512`, and `PS256` (asymmetric only).
+     */
+    alg: string;
+    /**
+     * Number of seconds during which the JWT will be valid.
+     */
+    lifetimeInSeconds: number;
+    /**
+     * Indicates whether the client secret is Base64-encoded.
+     */
+    secretEncoded: boolean;
+}
+
+export interface ClientCimdRefreshToken {
+    /**
+     * Refresh token expiration type. Must be `expiring` for CIMD clients.
+     */
+    expirationType: string;
+    /**
+     * The time in seconds after which inactive refresh tokens will expire.
+     */
+    idleTokenLifetime: number;
+    /**
+     * Whether inactive refresh tokens should remain valid indefinitely. Must be `false` for CIMD clients.
+     */
+    infiniteIdleTokenLifetime: boolean;
+    /**
+     * Whether refresh tokens should remain valid indefinitely. If false, `tokenLifetime` should also be set.
+     */
+    infiniteTokenLifetime: boolean;
+    /**
+     * The amount of time in seconds in which a refresh token may be reused without triggering reuse detection.
+     */
+    leeway: number;
+    /**
+     * Refresh token rotation type.Valid values are `rotating` and `non-rotating`
+     */
+    rotationType: string;
+    /**
+     * The absolute lifetime of a refresh token in seconds.
+     */
+    tokenLifetime: number;
+}
+
+export interface ClientCimdTokenQuota {
+    /**
+     * The token quota configuration for client credentials.
+     */
+    clientCredentials: outputs.ClientCimdTokenQuotaClientCredentials;
+}
+
+export interface ClientCimdTokenQuotaClientCredentials {
+    /**
+     * If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+     */
+    enforce?: boolean;
+    /**
+     * Maximum number of issued tokens per day
+     */
+    perDay?: number;
+    /**
+     * Maximum number of issued tokens per hour
+     */
+    perHour?: number;
+}
+
+export interface ClientCimdValidation {
+    /**
+     * Whether the metadata document passed validation.
+     */
+    valid: boolean;
+    /**
+     * Array of validation violation messages, if any. Violations indicate issues that prevented the metadata document from being fully processed.
+     */
+    violations: string[];
+    /**
+     * Array of warning messages, if any. Warnings indicate non-critical issues such as unsupported properties being ignored.
+     */
+    warnings: string[];
+}
+
 export interface ClientCredentialsPrivateKeyJwt {
     /**
      * Client credentials available for use when Private Key JWT is in use as the client authentication method. A maximum of 2 client credentials can be set.
@@ -1535,6 +1629,25 @@ export interface ClientMobileIos {
     teamId?: string;
 }
 
+export interface ClientMyOrganizationConfiguration {
+    /**
+     * The list of connection strategies that are allowed when creating organizations for this client (e.g. "okta", "samlp").
+     */
+    allowedStrategies?: string[];
+    /**
+     * Controls the behavior when deleting connections associated with organizations for this client. Possible values: `allow`, `allowIfEmpty`.
+     */
+    connectionDeletionBehavior?: string;
+    /**
+     * The ID of the connection profile to use when creating organizations for this client.
+     */
+    connectionProfileId?: string;
+    /**
+     * The ID of the user attribute profile to use when creating organizations for this client.
+     */
+    userAttributeProfileId?: string;
+}
+
 export interface ClientNativeSocialLogin {
     apple: outputs.ClientNativeSocialLoginApple;
     facebook: outputs.ClientNativeSocialLoginFacebook;
@@ -1658,7 +1771,7 @@ export interface ClientSessionTransfer {
 
 export interface ClientTokenExchange {
     /**
-     * List of allowed profile types for token exchange
+     * List of allowed profile types for token exchange. Supported values include: custom*authentication, on*behalf*of*token_exchange.
      */
     allowAnyProfileOfTypes: string[];
 }
@@ -4577,6 +4690,25 @@ export interface GetClientMobileIo {
     teamId: string;
 }
 
+export interface GetClientMyOrganizationConfiguration {
+    /**
+     * The list of connection strategies that are allowed when creating organizations for this client (e.g. "okta", "samlp").
+     */
+    allowedStrategies: string[];
+    /**
+     * Controls the behavior when deleting connections associated with organizations for this client. Possible values: `allow`, `allowIfEmpty`.
+     */
+    connectionDeletionBehavior: string;
+    /**
+     * The ID of the connection profile to use when creating organizations for this client.
+     */
+    connectionProfileId: string;
+    /**
+     * The ID of the user attribute profile to use when creating organizations for this client.
+     */
+    userAttributeProfileId: string;
+}
+
 export interface GetClientNativeSocialLogin {
     apples: outputs.GetClientNativeSocialLoginApple[];
     facebooks: outputs.GetClientNativeSocialLoginFacebook[];
@@ -4746,7 +4878,7 @@ export interface GetClientSignedRequestObjectCredential {
 
 export interface GetClientTokenExchange {
     /**
-     * List of allowed profile types for token exchange
+     * List of allowed profile types for token exchange. Supported values include: custom_authentication, on_behalf_of_token_exchange.
      */
     allowAnyProfileOfTypes: string[];
 }
@@ -4819,17 +4951,37 @@ export interface GetClientsClient {
      */
     expressConfigurations: outputs.GetClientsClientExpressConfiguration[];
     /**
+     * The URL of the Client ID Metadata Document. Only present for CIMD-registered clients.
+     */
+    externalClientId: string;
+    /**
+     * Who created the external metadata client: `admin` (via Management API), `client` (self-registered), or `unknown`.
+     */
+    externalMetadataCreatedBy: string;
+    /**
+     * Type of external metadata. Value is `cimd` for CIMD-registered clients.
+     */
+    externalMetadataType: string;
+    /**
      * Types of grants that this client is authorized to use.
      */
     grantTypes: string[];
     /**
-     * Indicates whether this client is a first-party client.Defaults to true from the API
+     * Indicates whether this client is a first-party client.
      */
     isFirstParty: boolean;
     /**
      * Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `clientSecretPost` or `clientSecretBasic`. Setting this property when creating the resource, will default the authentication method to `clientSecretPost`. To change the authentication method to `clientSecretBasic` use the `auth0.ClientCredentials` resource.
      */
     isTokenEndpointIpHeaderTrusted: boolean;
+    /**
+     * URL for the JSON Web Key Set (JWKS) containing the public keys used for `privateKeyJwt` authentication. Only present for CIMD clients using `privateKeyJwt` authentication.
+     */
+    jwksUri: string;
+    /**
+     * Configuration for self-service organization features, controlling how organizations are created and managed for this client.
+     */
+    myOrganizationConfigurations: outputs.GetClientsClientMyOrganizationConfiguration[];
     /**
      * The name of the client. If not provided, `clientId` must be set.
      */
@@ -4911,6 +5063,25 @@ export interface GetClientsClientExpressConfigurationLinkedClient {
     clientId: string;
 }
 
+export interface GetClientsClientMyOrganizationConfiguration {
+    /**
+     * The list of connection strategies that are allowed when creating organizations for this client (e.g. "okta", "samlp").
+     */
+    allowedStrategies: string[];
+    /**
+     * Controls the behavior when deleting connections associated with organizations for this client. Possible values: `allow`, `allowIfEmpty`.
+     */
+    connectionDeletionBehavior: string;
+    /**
+     * The ID of the connection profile to use when creating organizations for this client.
+     */
+    connectionProfileId: string;
+    /**
+     * The ID of the user attribute profile to use when creating organizations for this client.
+     */
+    userAttributeProfileId: string;
+}
+
 export interface GetClientsClientOidcLogout {
     /**
      * Configure OIDC logout initiators for the Client
@@ -4970,7 +5141,7 @@ export interface GetClientsClientSessionTransfer {
 
 export interface GetClientsClientTokenExchange {
     /**
-     * List of allowed profile types for token exchange
+     * List of allowed profile types for token exchange. Supported values include: custom_authentication, on_behalf_of_token_exchange.
      */
     allowAnyProfileOfTypes: string[];
 }
@@ -6430,11 +6601,23 @@ export interface GetOrganizationConnection {
      */
     connectionId: string;
     /**
+     * Whether the connection is enabled for the organization.
+     */
+    isEnabled: boolean;
+    /**
      * Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `isSignupEnabled` can only be `true` if `assignMembershipOnLogin` is `true`.
      */
     isSignupEnabled: boolean;
     /**
-     * Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+     * The access level for this organization connection. Can be `none`, `readonly`, `limited`, or `full`.
+     */
+    organizationAccessLevel: string;
+    /**
+     * Name of the connection in the scope of this organization.
+     */
+    organizationConnectionName: string;
+    /**
+     * Determines whether a connection should be displayed on this organization's login prompt. Only applicable for enterprise connections.
      */
     showAsButton: boolean;
 }
@@ -7616,11 +7799,23 @@ export interface OrganizationConnectionsEnabledConnection {
      */
     connectionId: string;
     /**
+     * Whether the connection is enabled for the organization.
+     */
+    isEnabled?: boolean;
+    /**
      * Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `isSignupEnabled` can only be `true` if `assignMembershipOnLogin` is `true`.
      */
     isSignupEnabled?: boolean;
     /**
-     * Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+     * The access level for this organization connection. Can be `none`, `readonly`, `limited`, or `full`.
+     */
+    organizationAccessLevel: string;
+    /**
+     * Name of the connection in the scope of this organization.
+     */
+    organizationConnectionName?: string;
+    /**
+     * Determines whether a connection should be displayed on this organization's login prompt. Only applicable for enterprise connections.
      */
     showAsButton?: boolean;
 }

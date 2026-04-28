@@ -48,6 +48,21 @@ public final class OrganizationConnectionArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * Whether the connection is enabled for the organization.
+     * 
+     */
+    @Import(name="isEnabled")
+    private @Nullable Output<Boolean> isEnabled;
+
+    /**
+     * @return Whether the connection is enabled for the organization.
+     * 
+     */
+    public Optional<Output<Boolean>> isEnabled() {
+        return Optional.ofNullable(this.isEnabled);
+    }
+
+    /**
      * Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `isSignupEnabled` can only be `true` if `assignMembershipOnLogin` is `true`.
      * 
      */
@@ -60,6 +75,21 @@ public final class OrganizationConnectionArgs extends com.pulumi.resources.Resou
      */
     public Optional<Output<Boolean>> isSignupEnabled() {
         return Optional.ofNullable(this.isSignupEnabled);
+    }
+
+    /**
+     * The access level for this organization connection. Can be `none`, `readonly`, `limited` or `full`.
+     * 
+     */
+    @Import(name="organizationAccessLevel")
+    private @Nullable Output<String> organizationAccessLevel;
+
+    /**
+     * @return The access level for this organization connection. Can be `none`, `readonly`, `limited` or `full`.
+     * 
+     */
+    public Optional<Output<String>> organizationAccessLevel() {
+        return Optional.ofNullable(this.organizationAccessLevel);
     }
 
     /**
@@ -78,14 +108,14 @@ public final class OrganizationConnectionArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+     * Determines whether a connection should be displayed on this organization&#39;s login prompt. Only applicable for enterprise connections.
      * 
      */
     @Import(name="showAsButton")
     private @Nullable Output<Boolean> showAsButton;
 
     /**
-     * @return Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+     * @return Determines whether a connection should be displayed on this organization&#39;s login prompt. Only applicable for enterprise connections.
      * 
      */
     public Optional<Output<Boolean>> showAsButton() {
@@ -97,7 +127,9 @@ public final class OrganizationConnectionArgs extends com.pulumi.resources.Resou
     private OrganizationConnectionArgs(OrganizationConnectionArgs $) {
         this.assignMembershipOnLogin = $.assignMembershipOnLogin;
         this.connectionId = $.connectionId;
+        this.isEnabled = $.isEnabled;
         this.isSignupEnabled = $.isSignupEnabled;
+        this.organizationAccessLevel = $.organizationAccessLevel;
         this.organizationId = $.organizationId;
         this.showAsButton = $.showAsButton;
     }
@@ -163,6 +195,27 @@ public final class OrganizationConnectionArgs extends com.pulumi.resources.Resou
         }
 
         /**
+         * @param isEnabled Whether the connection is enabled for the organization.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isEnabled(@Nullable Output<Boolean> isEnabled) {
+            $.isEnabled = isEnabled;
+            return this;
+        }
+
+        /**
+         * @param isEnabled Whether the connection is enabled for the organization.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isEnabled(Boolean isEnabled) {
+            return isEnabled(Output.of(isEnabled));
+        }
+
+        /**
          * @param isSignupEnabled Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `isSignupEnabled` can only be `true` if `assignMembershipOnLogin` is `true`.
          * 
          * @return builder
@@ -181,6 +234,27 @@ public final class OrganizationConnectionArgs extends com.pulumi.resources.Resou
          */
         public Builder isSignupEnabled(Boolean isSignupEnabled) {
             return isSignupEnabled(Output.of(isSignupEnabled));
+        }
+
+        /**
+         * @param organizationAccessLevel The access level for this organization connection. Can be `none`, `readonly`, `limited` or `full`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder organizationAccessLevel(@Nullable Output<String> organizationAccessLevel) {
+            $.organizationAccessLevel = organizationAccessLevel;
+            return this;
+        }
+
+        /**
+         * @param organizationAccessLevel The access level for this organization connection. Can be `none`, `readonly`, `limited` or `full`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder organizationAccessLevel(String organizationAccessLevel) {
+            return organizationAccessLevel(Output.of(organizationAccessLevel));
         }
 
         /**
@@ -205,7 +279,7 @@ public final class OrganizationConnectionArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param showAsButton Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+         * @param showAsButton Determines whether a connection should be displayed on this organization&#39;s login prompt. Only applicable for enterprise connections.
          * 
          * @return builder
          * 
@@ -216,7 +290,7 @@ public final class OrganizationConnectionArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param showAsButton Determines whether a connection should be displayed on this organization’s login prompt. Only applicable for enterprise connections.
+         * @param showAsButton Determines whether a connection should be displayed on this organization&#39;s login prompt. Only applicable for enterprise connections.
          * 
          * @return builder
          * 

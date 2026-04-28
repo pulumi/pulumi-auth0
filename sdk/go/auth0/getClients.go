@@ -70,6 +70,8 @@ func GetClients(ctx *pulumi.Context, args *GetClientsArgs, opts ...pulumi.Invoke
 type GetClientsArgs struct {
 	// Filter clients by application types.
 	AppTypes []string `pulumi:"appTypes"`
+	// Filter clients by CIMD external client ID URL.
+	ExternalClientId *string `pulumi:"externalClientId"`
 	// Filter clients by first party status.
 	IsFirstParty *bool `pulumi:"isFirstParty"`
 	// Filter clients by name (partial matches supported).
@@ -82,6 +84,8 @@ type GetClientsResult struct {
 	AppTypes []string `pulumi:"appTypes"`
 	// List of clients matching the filter criteria.
 	Clients []GetClientsClient `pulumi:"clients"`
+	// Filter clients by CIMD external client ID URL.
+	ExternalClientId *string `pulumi:"externalClientId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Filter clients by first party status.
@@ -103,6 +107,8 @@ func GetClientsOutput(ctx *pulumi.Context, args GetClientsOutputArgs, opts ...pu
 type GetClientsOutputArgs struct {
 	// Filter clients by application types.
 	AppTypes pulumi.StringArrayInput `pulumi:"appTypes"`
+	// Filter clients by CIMD external client ID URL.
+	ExternalClientId pulumi.StringPtrInput `pulumi:"externalClientId"`
 	// Filter clients by first party status.
 	IsFirstParty pulumi.BoolPtrInput `pulumi:"isFirstParty"`
 	// Filter clients by name (partial matches supported).
@@ -136,6 +142,11 @@ func (o GetClientsResultOutput) AppTypes() pulumi.StringArrayOutput {
 // List of clients matching the filter criteria.
 func (o GetClientsResultOutput) Clients() GetClientsClientArrayOutput {
 	return o.ApplyT(func(v GetClientsResult) []GetClientsClient { return v.Clients }).(GetClientsClientArrayOutput)
+}
+
+// Filter clients by CIMD external client ID URL.
+func (o GetClientsResultOutput) ExternalClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClientsResult) *string { return v.ExternalClientId }).(pulumi.StringPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

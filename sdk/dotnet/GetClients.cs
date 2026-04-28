@@ -151,6 +151,12 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
+        /// Filter clients by CIMD external client ID URL.
+        /// </summary>
+        [Input("externalClientId")]
+        public string? ExternalClientId { get; set; }
+
+        /// <summary>
         /// Filter clients by first party status.
         /// </summary>
         [Input("isFirstParty")]
@@ -183,6 +189,12 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
+        /// Filter clients by CIMD external client ID URL.
+        /// </summary>
+        [Input("externalClientId")]
+        public Input<string>? ExternalClientId { get; set; }
+
+        /// <summary>
         /// Filter clients by first party status.
         /// </summary>
         [Input("isFirstParty")]
@@ -213,6 +225,10 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClientsClientResult> Clients;
         /// <summary>
+        /// Filter clients by CIMD external client ID URL.
+        /// </summary>
+        public readonly string? ExternalClientId;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -231,6 +247,8 @@ namespace Pulumi.Auth0
 
             ImmutableArray<Outputs.GetClientsClientResult> clients,
 
+            string? externalClientId,
+
             string id,
 
             bool? isFirstParty,
@@ -239,6 +257,7 @@ namespace Pulumi.Auth0
         {
             AppTypes = appTypes;
             Clients = clients;
+            ExternalClientId = externalClientId;
             Id = id;
             IsFirstParty = isFirstParty;
             NameFilter = nameFilter;

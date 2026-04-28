@@ -24,6 +24,7 @@ class TenantArgs:
                  acr_values_supporteds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  allow_organization_name_in_authentication_api: Optional[pulumi.Input[_builtins.bool]] = None,
                  allowed_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 client_id_metadata_document_supported: Optional[pulumi.Input[_builtins.bool]] = None,
                  customize_mfa_in_postlogin_action: Optional[pulumi.Input[_builtins.bool]] = None,
                  default_audience: Optional[pulumi.Input[_builtins.str]] = None,
                  default_directory: Optional[pulumi.Input[_builtins.str]] = None,
@@ -42,6 +43,7 @@ class TenantArgs:
                  phone_consolidated_experience: Optional[pulumi.Input[_builtins.bool]] = None,
                  picture_url: Optional[pulumi.Input[_builtins.str]] = None,
                  pushed_authorization_requests_supported: Optional[pulumi.Input[_builtins.bool]] = None,
+                 resource_parameter_profile: Optional[pulumi.Input[_builtins.str]] = None,
                  sandbox_version: Optional[pulumi.Input[_builtins.str]] = None,
                  session_cookie: Optional[pulumi.Input['TenantSessionCookieArgs']] = None,
                  session_lifetime: Optional[pulumi.Input[_builtins.float]] = None,
@@ -55,6 +57,7 @@ class TenantArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] acr_values_supporteds: List of supported ACR values.
         :param pulumi.Input[_builtins.bool] allow_organization_name_in_authentication_api: Whether to accept an organization name instead of an ID on auth endpoints.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
+        :param pulumi.Input[_builtins.bool] client_id_metadata_document_supported: Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
         :param pulumi.Input[_builtins.bool] customize_mfa_in_postlogin_action: Whether to enable flexible factors for MFA in the PostLogin action.
         :param pulumi.Input[_builtins.str] default_audience: API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
         :param pulumi.Input[_builtins.str] default_directory: Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
@@ -73,6 +76,7 @@ class TenantArgs:
         :param pulumi.Input[_builtins.bool] phone_consolidated_experience: When enabled, the tenant-level Phone Provider is used for Multi-Factor Authentication (MFA) and Passwordless phone notifications.
         :param pulumi.Input[_builtins.str] picture_url: URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
         :param pulumi.Input[_builtins.bool] pushed_authorization_requests_supported: Enable pushed authorization requests.
+        :param pulumi.Input[_builtins.str] resource_parameter_profile: Profile that determines how the protected resource identity is specified in OAuth endpoints. When set to `audience` (default), the `audience` parameter is used. When set to `compatibility`, the `resource` parameter is used as fallback if `audience` is not provided.
         :param pulumi.Input[_builtins.str] sandbox_version: Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
         :param pulumi.Input['TenantSessionCookieArgs'] session_cookie: Alters behavior of tenant's session cookie. Contains a single `mode` property.
         :param pulumi.Input[_builtins.float] session_lifetime: Number of hours during which a session will stay valid.
@@ -87,6 +91,8 @@ class TenantArgs:
             pulumi.set(__self__, "allow_organization_name_in_authentication_api", allow_organization_name_in_authentication_api)
         if allowed_logout_urls is not None:
             pulumi.set(__self__, "allowed_logout_urls", allowed_logout_urls)
+        if client_id_metadata_document_supported is not None:
+            pulumi.set(__self__, "client_id_metadata_document_supported", client_id_metadata_document_supported)
         if customize_mfa_in_postlogin_action is not None:
             pulumi.set(__self__, "customize_mfa_in_postlogin_action", customize_mfa_in_postlogin_action)
         if default_audience is not None:
@@ -123,6 +129,8 @@ class TenantArgs:
             pulumi.set(__self__, "picture_url", picture_url)
         if pushed_authorization_requests_supported is not None:
             pulumi.set(__self__, "pushed_authorization_requests_supported", pushed_authorization_requests_supported)
+        if resource_parameter_profile is not None:
+            pulumi.set(__self__, "resource_parameter_profile", resource_parameter_profile)
         if sandbox_version is not None:
             pulumi.set(__self__, "sandbox_version", sandbox_version)
         if session_cookie is not None:
@@ -173,6 +181,18 @@ class TenantArgs:
     @allowed_logout_urls.setter
     def allowed_logout_urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_logout_urls", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clientIdMetadataDocumentSupported")
+    def client_id_metadata_document_supported(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
+        """
+        return pulumi.get(self, "client_id_metadata_document_supported")
+
+    @client_id_metadata_document_supported.setter
+    def client_id_metadata_document_supported(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "client_id_metadata_document_supported", value)
 
     @_builtins.property
     @pulumi.getter(name="customizeMfaInPostloginAction")
@@ -389,6 +409,18 @@ class TenantArgs:
     @pushed_authorization_requests_supported.setter
     def pushed_authorization_requests_supported(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "pushed_authorization_requests_supported", value)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceParameterProfile")
+    def resource_parameter_profile(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Profile that determines how the protected resource identity is specified in OAuth endpoints. When set to `audience` (default), the `audience` parameter is used. When set to `compatibility`, the `resource` parameter is used as fallback if `audience` is not provided.
+        """
+        return pulumi.get(self, "resource_parameter_profile")
+
+    @resource_parameter_profile.setter
+    def resource_parameter_profile(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "resource_parameter_profile", value)
 
     @_builtins.property
     @pulumi.getter(name="sandboxVersion")
@@ -481,6 +513,7 @@ class _TenantState:
                  acr_values_supporteds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  allow_organization_name_in_authentication_api: Optional[pulumi.Input[_builtins.bool]] = None,
                  allowed_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 client_id_metadata_document_supported: Optional[pulumi.Input[_builtins.bool]] = None,
                  customize_mfa_in_postlogin_action: Optional[pulumi.Input[_builtins.bool]] = None,
                  default_audience: Optional[pulumi.Input[_builtins.str]] = None,
                  default_directory: Optional[pulumi.Input[_builtins.str]] = None,
@@ -499,6 +532,7 @@ class _TenantState:
                  phone_consolidated_experience: Optional[pulumi.Input[_builtins.bool]] = None,
                  picture_url: Optional[pulumi.Input[_builtins.str]] = None,
                  pushed_authorization_requests_supported: Optional[pulumi.Input[_builtins.bool]] = None,
+                 resource_parameter_profile: Optional[pulumi.Input[_builtins.str]] = None,
                  sandbox_version: Optional[pulumi.Input[_builtins.str]] = None,
                  session_cookie: Optional[pulumi.Input['TenantSessionCookieArgs']] = None,
                  session_lifetime: Optional[pulumi.Input[_builtins.float]] = None,
@@ -512,6 +546,7 @@ class _TenantState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] acr_values_supporteds: List of supported ACR values.
         :param pulumi.Input[_builtins.bool] allow_organization_name_in_authentication_api: Whether to accept an organization name instead of an ID on auth endpoints.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
+        :param pulumi.Input[_builtins.bool] client_id_metadata_document_supported: Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
         :param pulumi.Input[_builtins.bool] customize_mfa_in_postlogin_action: Whether to enable flexible factors for MFA in the PostLogin action.
         :param pulumi.Input[_builtins.str] default_audience: API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
         :param pulumi.Input[_builtins.str] default_directory: Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
@@ -530,6 +565,7 @@ class _TenantState:
         :param pulumi.Input[_builtins.bool] phone_consolidated_experience: When enabled, the tenant-level Phone Provider is used for Multi-Factor Authentication (MFA) and Passwordless phone notifications.
         :param pulumi.Input[_builtins.str] picture_url: URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
         :param pulumi.Input[_builtins.bool] pushed_authorization_requests_supported: Enable pushed authorization requests.
+        :param pulumi.Input[_builtins.str] resource_parameter_profile: Profile that determines how the protected resource identity is specified in OAuth endpoints. When set to `audience` (default), the `audience` parameter is used. When set to `compatibility`, the `resource` parameter is used as fallback if `audience` is not provided.
         :param pulumi.Input[_builtins.str] sandbox_version: Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
         :param pulumi.Input['TenantSessionCookieArgs'] session_cookie: Alters behavior of tenant's session cookie. Contains a single `mode` property.
         :param pulumi.Input[_builtins.float] session_lifetime: Number of hours during which a session will stay valid.
@@ -544,6 +580,8 @@ class _TenantState:
             pulumi.set(__self__, "allow_organization_name_in_authentication_api", allow_organization_name_in_authentication_api)
         if allowed_logout_urls is not None:
             pulumi.set(__self__, "allowed_logout_urls", allowed_logout_urls)
+        if client_id_metadata_document_supported is not None:
+            pulumi.set(__self__, "client_id_metadata_document_supported", client_id_metadata_document_supported)
         if customize_mfa_in_postlogin_action is not None:
             pulumi.set(__self__, "customize_mfa_in_postlogin_action", customize_mfa_in_postlogin_action)
         if default_audience is not None:
@@ -580,6 +618,8 @@ class _TenantState:
             pulumi.set(__self__, "picture_url", picture_url)
         if pushed_authorization_requests_supported is not None:
             pulumi.set(__self__, "pushed_authorization_requests_supported", pushed_authorization_requests_supported)
+        if resource_parameter_profile is not None:
+            pulumi.set(__self__, "resource_parameter_profile", resource_parameter_profile)
         if sandbox_version is not None:
             pulumi.set(__self__, "sandbox_version", sandbox_version)
         if session_cookie is not None:
@@ -630,6 +670,18 @@ class _TenantState:
     @allowed_logout_urls.setter
     def allowed_logout_urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_logout_urls", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clientIdMetadataDocumentSupported")
+    def client_id_metadata_document_supported(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
+        """
+        return pulumi.get(self, "client_id_metadata_document_supported")
+
+    @client_id_metadata_document_supported.setter
+    def client_id_metadata_document_supported(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "client_id_metadata_document_supported", value)
 
     @_builtins.property
     @pulumi.getter(name="customizeMfaInPostloginAction")
@@ -846,6 +898,18 @@ class _TenantState:
     @pushed_authorization_requests_supported.setter
     def pushed_authorization_requests_supported(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "pushed_authorization_requests_supported", value)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceParameterProfile")
+    def resource_parameter_profile(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Profile that determines how the protected resource identity is specified in OAuth endpoints. When set to `audience` (default), the `audience` parameter is used. When set to `compatibility`, the `resource` parameter is used as fallback if `audience` is not provided.
+        """
+        return pulumi.get(self, "resource_parameter_profile")
+
+    @resource_parameter_profile.setter
+    def resource_parameter_profile(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "resource_parameter_profile", value)
 
     @_builtins.property
     @pulumi.getter(name="sandboxVersion")
@@ -941,6 +1005,7 @@ class Tenant(pulumi.CustomResource):
                  acr_values_supporteds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  allow_organization_name_in_authentication_api: Optional[pulumi.Input[_builtins.bool]] = None,
                  allowed_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 client_id_metadata_document_supported: Optional[pulumi.Input[_builtins.bool]] = None,
                  customize_mfa_in_postlogin_action: Optional[pulumi.Input[_builtins.bool]] = None,
                  default_audience: Optional[pulumi.Input[_builtins.str]] = None,
                  default_directory: Optional[pulumi.Input[_builtins.str]] = None,
@@ -959,6 +1024,7 @@ class Tenant(pulumi.CustomResource):
                  phone_consolidated_experience: Optional[pulumi.Input[_builtins.bool]] = None,
                  picture_url: Optional[pulumi.Input[_builtins.str]] = None,
                  pushed_authorization_requests_supported: Optional[pulumi.Input[_builtins.bool]] = None,
+                 resource_parameter_profile: Optional[pulumi.Input[_builtins.str]] = None,
                  sandbox_version: Optional[pulumi.Input[_builtins.str]] = None,
                  session_cookie: Optional[pulumi.Input[Union['TenantSessionCookieArgs', 'TenantSessionCookieArgsDict']]] = None,
                  session_lifetime: Optional[pulumi.Input[_builtins.float]] = None,
@@ -1029,6 +1095,7 @@ class Tenant(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] acr_values_supporteds: List of supported ACR values.
         :param pulumi.Input[_builtins.bool] allow_organization_name_in_authentication_api: Whether to accept an organization name instead of an ID on auth endpoints.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
+        :param pulumi.Input[_builtins.bool] client_id_metadata_document_supported: Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
         :param pulumi.Input[_builtins.bool] customize_mfa_in_postlogin_action: Whether to enable flexible factors for MFA in the PostLogin action.
         :param pulumi.Input[_builtins.str] default_audience: API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
         :param pulumi.Input[_builtins.str] default_directory: Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
@@ -1047,6 +1114,7 @@ class Tenant(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] phone_consolidated_experience: When enabled, the tenant-level Phone Provider is used for Multi-Factor Authentication (MFA) and Passwordless phone notifications.
         :param pulumi.Input[_builtins.str] picture_url: URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
         :param pulumi.Input[_builtins.bool] pushed_authorization_requests_supported: Enable pushed authorization requests.
+        :param pulumi.Input[_builtins.str] resource_parameter_profile: Profile that determines how the protected resource identity is specified in OAuth endpoints. When set to `audience` (default), the `audience` parameter is used. When set to `compatibility`, the `resource` parameter is used as fallback if `audience` is not provided.
         :param pulumi.Input[_builtins.str] sandbox_version: Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
         :param pulumi.Input[Union['TenantSessionCookieArgs', 'TenantSessionCookieArgsDict']] session_cookie: Alters behavior of tenant's session cookie. Contains a single `mode` property.
         :param pulumi.Input[_builtins.float] session_lifetime: Number of hours during which a session will stay valid.
@@ -1136,6 +1204,7 @@ class Tenant(pulumi.CustomResource):
                  acr_values_supporteds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  allow_organization_name_in_authentication_api: Optional[pulumi.Input[_builtins.bool]] = None,
                  allowed_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 client_id_metadata_document_supported: Optional[pulumi.Input[_builtins.bool]] = None,
                  customize_mfa_in_postlogin_action: Optional[pulumi.Input[_builtins.bool]] = None,
                  default_audience: Optional[pulumi.Input[_builtins.str]] = None,
                  default_directory: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1154,6 +1223,7 @@ class Tenant(pulumi.CustomResource):
                  phone_consolidated_experience: Optional[pulumi.Input[_builtins.bool]] = None,
                  picture_url: Optional[pulumi.Input[_builtins.str]] = None,
                  pushed_authorization_requests_supported: Optional[pulumi.Input[_builtins.bool]] = None,
+                 resource_parameter_profile: Optional[pulumi.Input[_builtins.str]] = None,
                  sandbox_version: Optional[pulumi.Input[_builtins.str]] = None,
                  session_cookie: Optional[pulumi.Input[Union['TenantSessionCookieArgs', 'TenantSessionCookieArgsDict']]] = None,
                  session_lifetime: Optional[pulumi.Input[_builtins.float]] = None,
@@ -1173,6 +1243,7 @@ class Tenant(pulumi.CustomResource):
             __props__.__dict__["acr_values_supporteds"] = acr_values_supporteds
             __props__.__dict__["allow_organization_name_in_authentication_api"] = allow_organization_name_in_authentication_api
             __props__.__dict__["allowed_logout_urls"] = allowed_logout_urls
+            __props__.__dict__["client_id_metadata_document_supported"] = client_id_metadata_document_supported
             __props__.__dict__["customize_mfa_in_postlogin_action"] = customize_mfa_in_postlogin_action
             __props__.__dict__["default_audience"] = default_audience
             __props__.__dict__["default_directory"] = default_directory
@@ -1191,6 +1262,7 @@ class Tenant(pulumi.CustomResource):
             __props__.__dict__["phone_consolidated_experience"] = phone_consolidated_experience
             __props__.__dict__["picture_url"] = picture_url
             __props__.__dict__["pushed_authorization_requests_supported"] = pushed_authorization_requests_supported
+            __props__.__dict__["resource_parameter_profile"] = resource_parameter_profile
             __props__.__dict__["sandbox_version"] = sandbox_version
             __props__.__dict__["session_cookie"] = session_cookie
             __props__.__dict__["session_lifetime"] = session_lifetime
@@ -1211,6 +1283,7 @@ class Tenant(pulumi.CustomResource):
             acr_values_supporteds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             allow_organization_name_in_authentication_api: Optional[pulumi.Input[_builtins.bool]] = None,
             allowed_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            client_id_metadata_document_supported: Optional[pulumi.Input[_builtins.bool]] = None,
             customize_mfa_in_postlogin_action: Optional[pulumi.Input[_builtins.bool]] = None,
             default_audience: Optional[pulumi.Input[_builtins.str]] = None,
             default_directory: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1229,6 +1302,7 @@ class Tenant(pulumi.CustomResource):
             phone_consolidated_experience: Optional[pulumi.Input[_builtins.bool]] = None,
             picture_url: Optional[pulumi.Input[_builtins.str]] = None,
             pushed_authorization_requests_supported: Optional[pulumi.Input[_builtins.bool]] = None,
+            resource_parameter_profile: Optional[pulumi.Input[_builtins.str]] = None,
             sandbox_version: Optional[pulumi.Input[_builtins.str]] = None,
             session_cookie: Optional[pulumi.Input[Union['TenantSessionCookieArgs', 'TenantSessionCookieArgsDict']]] = None,
             session_lifetime: Optional[pulumi.Input[_builtins.float]] = None,
@@ -1246,6 +1320,7 @@ class Tenant(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] acr_values_supporteds: List of supported ACR values.
         :param pulumi.Input[_builtins.bool] allow_organization_name_in_authentication_api: Whether to accept an organization name instead of an ID on auth endpoints.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
+        :param pulumi.Input[_builtins.bool] client_id_metadata_document_supported: Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
         :param pulumi.Input[_builtins.bool] customize_mfa_in_postlogin_action: Whether to enable flexible factors for MFA in the PostLogin action.
         :param pulumi.Input[_builtins.str] default_audience: API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
         :param pulumi.Input[_builtins.str] default_directory: Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
@@ -1264,6 +1339,7 @@ class Tenant(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] phone_consolidated_experience: When enabled, the tenant-level Phone Provider is used for Multi-Factor Authentication (MFA) and Passwordless phone notifications.
         :param pulumi.Input[_builtins.str] picture_url: URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
         :param pulumi.Input[_builtins.bool] pushed_authorization_requests_supported: Enable pushed authorization requests.
+        :param pulumi.Input[_builtins.str] resource_parameter_profile: Profile that determines how the protected resource identity is specified in OAuth endpoints. When set to `audience` (default), the `audience` parameter is used. When set to `compatibility`, the `resource` parameter is used as fallback if `audience` is not provided.
         :param pulumi.Input[_builtins.str] sandbox_version: Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
         :param pulumi.Input[Union['TenantSessionCookieArgs', 'TenantSessionCookieArgsDict']] session_cookie: Alters behavior of tenant's session cookie. Contains a single `mode` property.
         :param pulumi.Input[_builtins.float] session_lifetime: Number of hours during which a session will stay valid.
@@ -1279,6 +1355,7 @@ class Tenant(pulumi.CustomResource):
         __props__.__dict__["acr_values_supporteds"] = acr_values_supporteds
         __props__.__dict__["allow_organization_name_in_authentication_api"] = allow_organization_name_in_authentication_api
         __props__.__dict__["allowed_logout_urls"] = allowed_logout_urls
+        __props__.__dict__["client_id_metadata_document_supported"] = client_id_metadata_document_supported
         __props__.__dict__["customize_mfa_in_postlogin_action"] = customize_mfa_in_postlogin_action
         __props__.__dict__["default_audience"] = default_audience
         __props__.__dict__["default_directory"] = default_directory
@@ -1297,6 +1374,7 @@ class Tenant(pulumi.CustomResource):
         __props__.__dict__["phone_consolidated_experience"] = phone_consolidated_experience
         __props__.__dict__["picture_url"] = picture_url
         __props__.__dict__["pushed_authorization_requests_supported"] = pushed_authorization_requests_supported
+        __props__.__dict__["resource_parameter_profile"] = resource_parameter_profile
         __props__.__dict__["sandbox_version"] = sandbox_version
         __props__.__dict__["session_cookie"] = session_cookie
         __props__.__dict__["session_lifetime"] = session_lifetime
@@ -1329,6 +1407,14 @@ class Tenant(pulumi.CustomResource):
         URLs that Auth0 may redirect to after logout.
         """
         return pulumi.get(self, "allowed_logout_urls")
+
+    @_builtins.property
+    @pulumi.getter(name="clientIdMetadataDocumentSupported")
+    def client_id_metadata_document_supported(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
+        """
+        return pulumi.get(self, "client_id_metadata_document_supported")
 
     @_builtins.property
     @pulumi.getter(name="customizeMfaInPostloginAction")
@@ -1473,6 +1559,14 @@ class Tenant(pulumi.CustomResource):
         Enable pushed authorization requests.
         """
         return pulumi.get(self, "pushed_authorization_requests_supported")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceParameterProfile")
+    def resource_parameter_profile(self) -> pulumi.Output[_builtins.str]:
+        """
+        Profile that determines how the protected resource identity is specified in OAuth endpoints. When set to `audience` (default), the `audience` parameter is used. When set to `compatibility`, the `resource` parameter is used as fallback if `audience` is not provided.
+        """
+        return pulumi.get(self, "resource_parameter_profile")
 
     @_builtins.property
     @pulumi.getter(name="sandboxVersion")

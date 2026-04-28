@@ -26,6 +26,11 @@ public final class GetClientsResult {
      */
     private List<GetClientsClient> clients;
     /**
+     * @return Filter clients by CIMD external client ID URL.
+     * 
+     */
+    private @Nullable String externalClientId;
+    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
@@ -55,6 +60,13 @@ public final class GetClientsResult {
      */
     public List<GetClientsClient> clients() {
         return this.clients;
+    }
+    /**
+     * @return Filter clients by CIMD external client ID URL.
+     * 
+     */
+    public Optional<String> externalClientId() {
+        return Optional.ofNullable(this.externalClientId);
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -89,6 +101,7 @@ public final class GetClientsResult {
     public static final class Builder {
         private @Nullable List<String> appTypes;
         private List<GetClientsClient> clients;
+        private @Nullable String externalClientId;
         private String id;
         private @Nullable Boolean isFirstParty;
         private @Nullable String nameFilter;
@@ -97,6 +110,7 @@ public final class GetClientsResult {
     	      Objects.requireNonNull(defaults);
     	      this.appTypes = defaults.appTypes;
     	      this.clients = defaults.clients;
+    	      this.externalClientId = defaults.externalClientId;
     	      this.id = defaults.id;
     	      this.isFirstParty = defaults.isFirstParty;
     	      this.nameFilter = defaults.nameFilter;
@@ -123,6 +137,12 @@ public final class GetClientsResult {
             return clients(List.of(clients));
         }
         @CustomType.Setter
+        public Builder externalClientId(@Nullable String externalClientId) {
+
+            this.externalClientId = externalClientId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetClientsResult", "id");
@@ -146,6 +166,7 @@ public final class GetClientsResult {
             final var _resultValue = new GetClientsResult();
             _resultValue.appTypes = appTypes;
             _resultValue.clients = clients;
+            _resultValue.externalClientId = externalClientId;
             _resultValue.id = id;
             _resultValue.isFirstParty = isFirstParty;
             _resultValue.nameFilter = nameFilter;

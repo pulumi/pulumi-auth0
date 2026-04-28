@@ -13,6 +13,7 @@ from .branding import *
 from .branding_phone_notification_template import *
 from .branding_theme import *
 from .client import *
+from .client_cimd import *
 from .client_credentials import *
 from .client_grant import *
 from .connection import *
@@ -187,6 +188,14 @@ _utilities.register(
   "fqn": "pulumi_auth0",
   "classes": {
    "auth0:index/client:Client": "Client"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/clientCimd",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/clientCimd:ClientCimd": "ClientCimd"
   }
  },
  {

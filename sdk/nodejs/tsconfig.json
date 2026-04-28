@@ -20,6 +20,7 @@
         "brandingPhoneNotificationTemplate.ts",
         "brandingTheme.ts",
         "client.ts",
+        "clientCimd.ts",
         "clientCredentials.ts",
         "clientGrant.ts",
         "config/index.ts",

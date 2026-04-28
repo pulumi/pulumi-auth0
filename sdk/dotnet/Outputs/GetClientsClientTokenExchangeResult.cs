@@ -14,7 +14,7 @@ namespace Pulumi.Auth0.Outputs
     public sealed class GetClientsClientTokenExchangeResult
     {
         /// <summary>
-        /// List of allowed profile types for token exchange
+        /// List of allowed profile types for token exchange. Supported values include: custom_authentication, on_behalf_of_token_exchange.
         /// </summary>
         public readonly ImmutableArray<string> AllowAnyProfileOfTypes;
 

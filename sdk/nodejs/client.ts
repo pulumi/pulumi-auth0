@@ -124,6 +124,18 @@ export class Client extends pulumi.CustomResource {
      */
     declare public readonly expressConfiguration: pulumi.Output<outputs.ClientExpressConfiguration>;
     /**
+     * The URL of the Client ID Metadata Document. Only present for CIMD-registered clients.
+     */
+    declare public /*out*/ readonly externalClientId: pulumi.Output<string>;
+    /**
+     * Who created the external metadata client: `admin` (via Management API), `client` (self-registered), or `unknown`.
+     */
+    declare public /*out*/ readonly externalMetadataCreatedBy: pulumi.Output<string>;
+    /**
+     * Type of external metadata. Value is `cimd` for CIMD-registered clients.
+     */
+    declare public /*out*/ readonly externalMetadataType: pulumi.Output<string>;
+    /**
      * HTML form template to be used for WS-Federation.
      */
     declare public readonly formTemplate: pulumi.Output<string | undefined>;
@@ -136,13 +148,17 @@ export class Client extends pulumi.CustomResource {
      */
     declare public readonly initiateLoginUri: pulumi.Output<string | undefined>;
     /**
-     * Indicates whether this client is a first-party client.Defaults to true from the API
+     * Indicates whether this client is a first-party client.
      */
     declare public readonly isFirstParty: pulumi.Output<boolean>;
     /**
      * Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `clientSecretPost` or `clientSecretBasic`. Setting this property when creating the resource, will default the authentication method to `clientSecretPost`. To change the authentication method to `clientSecretBasic` use the `auth0.ClientCredentials` resource.
      */
     declare public readonly isTokenEndpointIpHeaderTrusted: pulumi.Output<boolean>;
+    /**
+     * URL for the JSON Web Key Set (JWKS) containing the public keys used for `privateKeyJwt` authentication. Only present for CIMD clients using `privateKeyJwt` authentication.
+     */
+    declare public /*out*/ readonly jwksUri: pulumi.Output<string>;
     /**
      * Configuration settings for the JWTs issued for this client.
      */
@@ -155,6 +171,10 @@ export class Client extends pulumi.CustomResource {
      * Additional configuration for native mobile apps.
      */
     declare public readonly mobile: pulumi.Output<outputs.ClientMobile>;
+    /**
+     * Configuration for self-service organization features, controlling how organizations are created and managed for this client.
+     */
+    declare public readonly myOrganizationConfiguration: pulumi.Output<outputs.ClientMyOrganizationConfiguration>;
     /**
      * Name of the client.
      */
@@ -267,14 +287,19 @@ export class Client extends pulumi.CustomResource {
             resourceInputs["description"] = state?.description;
             resourceInputs["encryptionKey"] = state?.encryptionKey;
             resourceInputs["expressConfiguration"] = state?.expressConfiguration;
+            resourceInputs["externalClientId"] = state?.externalClientId;
+            resourceInputs["externalMetadataCreatedBy"] = state?.externalMetadataCreatedBy;
+            resourceInputs["externalMetadataType"] = state?.externalMetadataType;
             resourceInputs["formTemplate"] = state?.formTemplate;
             resourceInputs["grantTypes"] = state?.grantTypes;
             resourceInputs["initiateLoginUri"] = state?.initiateLoginUri;
             resourceInputs["isFirstParty"] = state?.isFirstParty;
             resourceInputs["isTokenEndpointIpHeaderTrusted"] = state?.isTokenEndpointIpHeaderTrusted;
+            resourceInputs["jwksUri"] = state?.jwksUri;
             resourceInputs["jwtConfiguration"] = state?.jwtConfiguration;
             resourceInputs["logoUri"] = state?.logoUri;
             resourceInputs["mobile"] = state?.mobile;
+            resourceInputs["myOrganizationConfiguration"] = state?.myOrganizationConfiguration;
             resourceInputs["name"] = state?.name;
             resourceInputs["nativeSocialLogin"] = state?.nativeSocialLogin;
             resourceInputs["oidcBackchannelLogoutUrls"] = state?.oidcBackchannelLogoutUrls;
@@ -323,6 +348,7 @@ export class Client extends pulumi.CustomResource {
             resourceInputs["jwtConfiguration"] = args?.jwtConfiguration;
             resourceInputs["logoUri"] = args?.logoUri;
             resourceInputs["mobile"] = args?.mobile;
+            resourceInputs["myOrganizationConfiguration"] = args?.myOrganizationConfiguration;
             resourceInputs["name"] = args?.name;
             resourceInputs["nativeSocialLogin"] = args?.nativeSocialLogin;
             resourceInputs["oidcBackchannelLogoutUrls"] = args?.oidcBackchannelLogoutUrls;
@@ -343,6 +369,10 @@ export class Client extends pulumi.CustomResource {
             resourceInputs["tokenQuota"] = args?.tokenQuota;
             resourceInputs["webOrigins"] = args?.webOrigins;
             resourceInputs["clientId"] = undefined /*out*/;
+            resourceInputs["externalClientId"] = undefined /*out*/;
+            resourceInputs["externalMetadataCreatedBy"] = undefined /*out*/;
+            resourceInputs["externalMetadataType"] = undefined /*out*/;
+            resourceInputs["jwksUri"] = undefined /*out*/;
             resourceInputs["signingKeys"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -433,6 +463,18 @@ export interface ClientState {
      */
     expressConfiguration?: pulumi.Input<inputs.ClientExpressConfiguration>;
     /**
+     * The URL of the Client ID Metadata Document. Only present for CIMD-registered clients.
+     */
+    externalClientId?: pulumi.Input<string>;
+    /**
+     * Who created the external metadata client: `admin` (via Management API), `client` (self-registered), or `unknown`.
+     */
+    externalMetadataCreatedBy?: pulumi.Input<string>;
+    /**
+     * Type of external metadata. Value is `cimd` for CIMD-registered clients.
+     */
+    externalMetadataType?: pulumi.Input<string>;
+    /**
      * HTML form template to be used for WS-Federation.
      */
     formTemplate?: pulumi.Input<string>;
@@ -445,13 +487,17 @@ export interface ClientState {
      */
     initiateLoginUri?: pulumi.Input<string>;
     /**
-     * Indicates whether this client is a first-party client.Defaults to true from the API
+     * Indicates whether this client is a first-party client.
      */
     isFirstParty?: pulumi.Input<boolean>;
     /**
      * Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `clientSecretPost` or `clientSecretBasic`. Setting this property when creating the resource, will default the authentication method to `clientSecretPost`. To change the authentication method to `clientSecretBasic` use the `auth0.ClientCredentials` resource.
      */
     isTokenEndpointIpHeaderTrusted?: pulumi.Input<boolean>;
+    /**
+     * URL for the JSON Web Key Set (JWKS) containing the public keys used for `privateKeyJwt` authentication. Only present for CIMD clients using `privateKeyJwt` authentication.
+     */
+    jwksUri?: pulumi.Input<string>;
     /**
      * Configuration settings for the JWTs issued for this client.
      */
@@ -464,6 +510,10 @@ export interface ClientState {
      * Additional configuration for native mobile apps.
      */
     mobile?: pulumi.Input<inputs.ClientMobile>;
+    /**
+     * Configuration for self-service organization features, controlling how organizations are created and managed for this client.
+     */
+    myOrganizationConfiguration?: pulumi.Input<inputs.ClientMyOrganizationConfiguration>;
     /**
      * Name of the client.
      */
@@ -634,7 +684,7 @@ export interface ClientArgs {
      */
     initiateLoginUri?: pulumi.Input<string>;
     /**
-     * Indicates whether this client is a first-party client.Defaults to true from the API
+     * Indicates whether this client is a first-party client.
      */
     isFirstParty?: pulumi.Input<boolean>;
     /**
@@ -653,6 +703,10 @@ export interface ClientArgs {
      * Additional configuration for native mobile apps.
      */
     mobile?: pulumi.Input<inputs.ClientMobile>;
+    /**
+     * Configuration for self-service organization features, controlling how organizations are created and managed for this client.
+     */
+    myOrganizationConfiguration?: pulumi.Input<inputs.ClientMyOrganizationConfiguration>;
     /**
      * Name of the client.
      */

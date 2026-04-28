@@ -47,6 +47,7 @@ class ClientArgs:
                  jwt_configuration: Optional[pulumi.Input['ClientJwtConfigurationArgs']] = None,
                  logo_uri: Optional[pulumi.Input[_builtins.str]] = None,
                  mobile: Optional[pulumi.Input['ClientMobileArgs']] = None,
+                 my_organization_configuration: Optional[pulumi.Input['ClientMyOrganizationConfigurationArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  native_social_login: Optional[pulumi.Input['ClientNativeSocialLoginArgs']] = None,
                  oidc_backchannel_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -90,11 +91,12 @@ class ClientArgs:
         :param pulumi.Input[_builtins.str] form_template: HTML form template to be used for WS-Federation.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] grant_types: Types of grants that this client is authorized to use.
         :param pulumi.Input[_builtins.str] initiate_login_uri: Initiate login URI. Must be HTTPS or an empty string.
-        :param pulumi.Input[_builtins.bool] is_first_party: Indicates whether this client is a first-party client.Defaults to true from the API
+        :param pulumi.Input[_builtins.bool] is_first_party: Indicates whether this client is a first-party client.
         :param pulumi.Input[_builtins.bool] is_token_endpoint_ip_header_trusted: Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `client_secret_post` or `client_secret_basic`. Setting this property when creating the resource, will default the authentication method to `client_secret_post`. To change the authentication method to `client_secret_basic` use the `ClientCredentials` resource.
         :param pulumi.Input['ClientJwtConfigurationArgs'] jwt_configuration: Configuration settings for the JWTs issued for this client.
         :param pulumi.Input[_builtins.str] logo_uri: URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
         :param pulumi.Input['ClientMobileArgs'] mobile: Additional configuration for native mobile apps.
+        :param pulumi.Input['ClientMyOrganizationConfigurationArgs'] my_organization_configuration: Configuration for self-service organization features, controlling how organizations are created and managed for this client.
         :param pulumi.Input[_builtins.str] name: Name of the client.
         :param pulumi.Input['ClientNativeSocialLoginArgs'] native_social_login: Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `app_type`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] oidc_backchannel_logout_urls: Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
@@ -168,6 +170,8 @@ class ClientArgs:
             pulumi.set(__self__, "logo_uri", logo_uri)
         if mobile is not None:
             pulumi.set(__self__, "mobile", mobile)
+        if my_organization_configuration is not None:
+            pulumi.set(__self__, "my_organization_configuration", my_organization_configuration)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if native_social_login is not None:
@@ -466,7 +470,7 @@ class ClientArgs:
     @pulumi.getter(name="isFirstParty")
     def is_first_party(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Indicates whether this client is a first-party client.Defaults to true from the API
+        Indicates whether this client is a first-party client.
         """
         return pulumi.get(self, "is_first_party")
 
@@ -521,6 +525,18 @@ class ClientArgs:
     @mobile.setter
     def mobile(self, value: Optional[pulumi.Input['ClientMobileArgs']]):
         pulumi.set(self, "mobile", value)
+
+    @_builtins.property
+    @pulumi.getter(name="myOrganizationConfiguration")
+    def my_organization_configuration(self) -> Optional[pulumi.Input['ClientMyOrganizationConfigurationArgs']]:
+        """
+        Configuration for self-service organization features, controlling how organizations are created and managed for this client.
+        """
+        return pulumi.get(self, "my_organization_configuration")
+
+    @my_organization_configuration.setter
+    def my_organization_configuration(self, value: Optional[pulumi.Input['ClientMyOrganizationConfigurationArgs']]):
+        pulumi.set(self, "my_organization_configuration", value)
 
     @_builtins.property
     @pulumi.getter
@@ -771,14 +787,19 @@ class _ClientState:
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  encryption_key: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  express_configuration: Optional[pulumi.Input['ClientExpressConfigurationArgs']] = None,
+                 external_client_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 external_metadata_created_by: Optional[pulumi.Input[_builtins.str]] = None,
+                 external_metadata_type: Optional[pulumi.Input[_builtins.str]] = None,
                  form_template: Optional[pulumi.Input[_builtins.str]] = None,
                  grant_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  initiate_login_uri: Optional[pulumi.Input[_builtins.str]] = None,
                  is_first_party: Optional[pulumi.Input[_builtins.bool]] = None,
                  is_token_endpoint_ip_header_trusted: Optional[pulumi.Input[_builtins.bool]] = None,
+                 jwks_uri: Optional[pulumi.Input[_builtins.str]] = None,
                  jwt_configuration: Optional[pulumi.Input['ClientJwtConfigurationArgs']] = None,
                  logo_uri: Optional[pulumi.Input[_builtins.str]] = None,
                  mobile: Optional[pulumi.Input['ClientMobileArgs']] = None,
+                 my_organization_configuration: Optional[pulumi.Input['ClientMyOrganizationConfigurationArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  native_social_login: Optional[pulumi.Input['ClientNativeSocialLoginArgs']] = None,
                  oidc_backchannel_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -821,14 +842,19 @@ class _ClientState:
         :param pulumi.Input[_builtins.str] description: Description of the purpose of the client.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] encryption_key: Encryption used for WS-Fed responses with this client.
         :param pulumi.Input['ClientExpressConfigurationArgs'] express_configuration: Express Configuration settings for the client. Used with OIN Express Configuration.
+        :param pulumi.Input[_builtins.str] external_client_id: The URL of the Client ID Metadata Document. Only present for CIMD-registered clients.
+        :param pulumi.Input[_builtins.str] external_metadata_created_by: Who created the external metadata client: `admin` (via Management API), `client` (self-registered), or `unknown`.
+        :param pulumi.Input[_builtins.str] external_metadata_type: Type of external metadata. Value is `cimd` for CIMD-registered clients.
         :param pulumi.Input[_builtins.str] form_template: HTML form template to be used for WS-Federation.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] grant_types: Types of grants that this client is authorized to use.
         :param pulumi.Input[_builtins.str] initiate_login_uri: Initiate login URI. Must be HTTPS or an empty string.
-        :param pulumi.Input[_builtins.bool] is_first_party: Indicates whether this client is a first-party client.Defaults to true from the API
+        :param pulumi.Input[_builtins.bool] is_first_party: Indicates whether this client is a first-party client.
         :param pulumi.Input[_builtins.bool] is_token_endpoint_ip_header_trusted: Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `client_secret_post` or `client_secret_basic`. Setting this property when creating the resource, will default the authentication method to `client_secret_post`. To change the authentication method to `client_secret_basic` use the `ClientCredentials` resource.
+        :param pulumi.Input[_builtins.str] jwks_uri: URL for the JSON Web Key Set (JWKS) containing the public keys used for `private_key_jwt` authentication. Only present for CIMD clients using `private_key_jwt` authentication.
         :param pulumi.Input['ClientJwtConfigurationArgs'] jwt_configuration: Configuration settings for the JWTs issued for this client.
         :param pulumi.Input[_builtins.str] logo_uri: URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
         :param pulumi.Input['ClientMobileArgs'] mobile: Additional configuration for native mobile apps.
+        :param pulumi.Input['ClientMyOrganizationConfigurationArgs'] my_organization_configuration: Configuration for self-service organization features, controlling how organizations are created and managed for this client.
         :param pulumi.Input[_builtins.str] name: Name of the client.
         :param pulumi.Input['ClientNativeSocialLoginArgs'] native_social_login: Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `app_type`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] oidc_backchannel_logout_urls: Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
@@ -889,6 +915,12 @@ class _ClientState:
             pulumi.set(__self__, "encryption_key", encryption_key)
         if express_configuration is not None:
             pulumi.set(__self__, "express_configuration", express_configuration)
+        if external_client_id is not None:
+            pulumi.set(__self__, "external_client_id", external_client_id)
+        if external_metadata_created_by is not None:
+            pulumi.set(__self__, "external_metadata_created_by", external_metadata_created_by)
+        if external_metadata_type is not None:
+            pulumi.set(__self__, "external_metadata_type", external_metadata_type)
         if form_template is not None:
             pulumi.set(__self__, "form_template", form_template)
         if grant_types is not None:
@@ -899,12 +931,16 @@ class _ClientState:
             pulumi.set(__self__, "is_first_party", is_first_party)
         if is_token_endpoint_ip_header_trusted is not None:
             pulumi.set(__self__, "is_token_endpoint_ip_header_trusted", is_token_endpoint_ip_header_trusted)
+        if jwks_uri is not None:
+            pulumi.set(__self__, "jwks_uri", jwks_uri)
         if jwt_configuration is not None:
             pulumi.set(__self__, "jwt_configuration", jwt_configuration)
         if logo_uri is not None:
             pulumi.set(__self__, "logo_uri", logo_uri)
         if mobile is not None:
             pulumi.set(__self__, "mobile", mobile)
+        if my_organization_configuration is not None:
+            pulumi.set(__self__, "my_organization_configuration", my_organization_configuration)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if native_social_login is not None:
@@ -1178,6 +1214,42 @@ class _ClientState:
         pulumi.set(self, "express_configuration", value)
 
     @_builtins.property
+    @pulumi.getter(name="externalClientId")
+    def external_client_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The URL of the Client ID Metadata Document. Only present for CIMD-registered clients.
+        """
+        return pulumi.get(self, "external_client_id")
+
+    @external_client_id.setter
+    def external_client_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "external_client_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="externalMetadataCreatedBy")
+    def external_metadata_created_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Who created the external metadata client: `admin` (via Management API), `client` (self-registered), or `unknown`.
+        """
+        return pulumi.get(self, "external_metadata_created_by")
+
+    @external_metadata_created_by.setter
+    def external_metadata_created_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "external_metadata_created_by", value)
+
+    @_builtins.property
+    @pulumi.getter(name="externalMetadataType")
+    def external_metadata_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Type of external metadata. Value is `cimd` for CIMD-registered clients.
+        """
+        return pulumi.get(self, "external_metadata_type")
+
+    @external_metadata_type.setter
+    def external_metadata_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "external_metadata_type", value)
+
+    @_builtins.property
     @pulumi.getter(name="formTemplate")
     def form_template(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -1217,7 +1289,7 @@ class _ClientState:
     @pulumi.getter(name="isFirstParty")
     def is_first_party(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Indicates whether this client is a first-party client.Defaults to true from the API
+        Indicates whether this client is a first-party client.
         """
         return pulumi.get(self, "is_first_party")
 
@@ -1236,6 +1308,18 @@ class _ClientState:
     @is_token_endpoint_ip_header_trusted.setter
     def is_token_endpoint_ip_header_trusted(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "is_token_endpoint_ip_header_trusted", value)
+
+    @_builtins.property
+    @pulumi.getter(name="jwksUri")
+    def jwks_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        URL for the JSON Web Key Set (JWKS) containing the public keys used for `private_key_jwt` authentication. Only present for CIMD clients using `private_key_jwt` authentication.
+        """
+        return pulumi.get(self, "jwks_uri")
+
+    @jwks_uri.setter
+    def jwks_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "jwks_uri", value)
 
     @_builtins.property
     @pulumi.getter(name="jwtConfiguration")
@@ -1272,6 +1356,18 @@ class _ClientState:
     @mobile.setter
     def mobile(self, value: Optional[pulumi.Input['ClientMobileArgs']]):
         pulumi.set(self, "mobile", value)
+
+    @_builtins.property
+    @pulumi.getter(name="myOrganizationConfiguration")
+    def my_organization_configuration(self) -> Optional[pulumi.Input['ClientMyOrganizationConfigurationArgs']]:
+        """
+        Configuration for self-service organization features, controlling how organizations are created and managed for this client.
+        """
+        return pulumi.get(self, "my_organization_configuration")
+
+    @my_organization_configuration.setter
+    def my_organization_configuration(self, value: Optional[pulumi.Input['ClientMyOrganizationConfigurationArgs']]):
+        pulumi.set(self, "my_organization_configuration", value)
 
     @_builtins.property
     @pulumi.getter
@@ -1544,6 +1640,7 @@ class Client(pulumi.CustomResource):
                  jwt_configuration: Optional[pulumi.Input[Union['ClientJwtConfigurationArgs', 'ClientJwtConfigurationArgsDict']]] = None,
                  logo_uri: Optional[pulumi.Input[_builtins.str]] = None,
                  mobile: Optional[pulumi.Input[Union['ClientMobileArgs', 'ClientMobileArgsDict']]] = None,
+                 my_organization_configuration: Optional[pulumi.Input[Union['ClientMyOrganizationConfigurationArgs', 'ClientMyOrganizationConfigurationArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  native_social_login: Optional[pulumi.Input[Union['ClientNativeSocialLoginArgs', 'ClientNativeSocialLoginArgsDict']]] = None,
                  oidc_backchannel_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1601,11 +1698,12 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] form_template: HTML form template to be used for WS-Federation.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] grant_types: Types of grants that this client is authorized to use.
         :param pulumi.Input[_builtins.str] initiate_login_uri: Initiate login URI. Must be HTTPS or an empty string.
-        :param pulumi.Input[_builtins.bool] is_first_party: Indicates whether this client is a first-party client.Defaults to true from the API
+        :param pulumi.Input[_builtins.bool] is_first_party: Indicates whether this client is a first-party client.
         :param pulumi.Input[_builtins.bool] is_token_endpoint_ip_header_trusted: Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `client_secret_post` or `client_secret_basic`. Setting this property when creating the resource, will default the authentication method to `client_secret_post`. To change the authentication method to `client_secret_basic` use the `ClientCredentials` resource.
         :param pulumi.Input[Union['ClientJwtConfigurationArgs', 'ClientJwtConfigurationArgsDict']] jwt_configuration: Configuration settings for the JWTs issued for this client.
         :param pulumi.Input[_builtins.str] logo_uri: URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
         :param pulumi.Input[Union['ClientMobileArgs', 'ClientMobileArgsDict']] mobile: Additional configuration for native mobile apps.
+        :param pulumi.Input[Union['ClientMyOrganizationConfigurationArgs', 'ClientMyOrganizationConfigurationArgsDict']] my_organization_configuration: Configuration for self-service organization features, controlling how organizations are created and managed for this client.
         :param pulumi.Input[_builtins.str] name: Name of the client.
         :param pulumi.Input[Union['ClientNativeSocialLoginArgs', 'ClientNativeSocialLoginArgsDict']] native_social_login: Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `app_type`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] oidc_backchannel_logout_urls: Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
@@ -1686,6 +1784,7 @@ class Client(pulumi.CustomResource):
                  jwt_configuration: Optional[pulumi.Input[Union['ClientJwtConfigurationArgs', 'ClientJwtConfigurationArgsDict']]] = None,
                  logo_uri: Optional[pulumi.Input[_builtins.str]] = None,
                  mobile: Optional[pulumi.Input[Union['ClientMobileArgs', 'ClientMobileArgsDict']]] = None,
+                 my_organization_configuration: Optional[pulumi.Input[Union['ClientMyOrganizationConfigurationArgs', 'ClientMyOrganizationConfigurationArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  native_social_login: Optional[pulumi.Input[Union['ClientNativeSocialLoginArgs', 'ClientNativeSocialLoginArgsDict']]] = None,
                  oidc_backchannel_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1742,6 +1841,7 @@ class Client(pulumi.CustomResource):
             __props__.__dict__["jwt_configuration"] = jwt_configuration
             __props__.__dict__["logo_uri"] = logo_uri
             __props__.__dict__["mobile"] = mobile
+            __props__.__dict__["my_organization_configuration"] = my_organization_configuration
             __props__.__dict__["name"] = name
             __props__.__dict__["native_social_login"] = native_social_login
             __props__.__dict__["oidc_backchannel_logout_urls"] = oidc_backchannel_logout_urls
@@ -1762,6 +1862,10 @@ class Client(pulumi.CustomResource):
             __props__.__dict__["token_quota"] = token_quota
             __props__.__dict__["web_origins"] = web_origins
             __props__.__dict__["client_id"] = None
+            __props__.__dict__["external_client_id"] = None
+            __props__.__dict__["external_metadata_created_by"] = None
+            __props__.__dict__["external_metadata_type"] = None
+            __props__.__dict__["jwks_uri"] = None
             __props__.__dict__["signing_keys"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["signingKeys"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
@@ -1794,14 +1898,19 @@ class Client(pulumi.CustomResource):
             description: Optional[pulumi.Input[_builtins.str]] = None,
             encryption_key: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             express_configuration: Optional[pulumi.Input[Union['ClientExpressConfigurationArgs', 'ClientExpressConfigurationArgsDict']]] = None,
+            external_client_id: Optional[pulumi.Input[_builtins.str]] = None,
+            external_metadata_created_by: Optional[pulumi.Input[_builtins.str]] = None,
+            external_metadata_type: Optional[pulumi.Input[_builtins.str]] = None,
             form_template: Optional[pulumi.Input[_builtins.str]] = None,
             grant_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             initiate_login_uri: Optional[pulumi.Input[_builtins.str]] = None,
             is_first_party: Optional[pulumi.Input[_builtins.bool]] = None,
             is_token_endpoint_ip_header_trusted: Optional[pulumi.Input[_builtins.bool]] = None,
+            jwks_uri: Optional[pulumi.Input[_builtins.str]] = None,
             jwt_configuration: Optional[pulumi.Input[Union['ClientJwtConfigurationArgs', 'ClientJwtConfigurationArgsDict']]] = None,
             logo_uri: Optional[pulumi.Input[_builtins.str]] = None,
             mobile: Optional[pulumi.Input[Union['ClientMobileArgs', 'ClientMobileArgsDict']]] = None,
+            my_organization_configuration: Optional[pulumi.Input[Union['ClientMyOrganizationConfigurationArgs', 'ClientMyOrganizationConfigurationArgsDict']]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             native_social_login: Optional[pulumi.Input[Union['ClientNativeSocialLoginArgs', 'ClientNativeSocialLoginArgsDict']]] = None,
             oidc_backchannel_logout_urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1848,14 +1957,19 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: Description of the purpose of the client.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] encryption_key: Encryption used for WS-Fed responses with this client.
         :param pulumi.Input[Union['ClientExpressConfigurationArgs', 'ClientExpressConfigurationArgsDict']] express_configuration: Express Configuration settings for the client. Used with OIN Express Configuration.
+        :param pulumi.Input[_builtins.str] external_client_id: The URL of the Client ID Metadata Document. Only present for CIMD-registered clients.
+        :param pulumi.Input[_builtins.str] external_metadata_created_by: Who created the external metadata client: `admin` (via Management API), `client` (self-registered), or `unknown`.
+        :param pulumi.Input[_builtins.str] external_metadata_type: Type of external metadata. Value is `cimd` for CIMD-registered clients.
         :param pulumi.Input[_builtins.str] form_template: HTML form template to be used for WS-Federation.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] grant_types: Types of grants that this client is authorized to use.
         :param pulumi.Input[_builtins.str] initiate_login_uri: Initiate login URI. Must be HTTPS or an empty string.
-        :param pulumi.Input[_builtins.bool] is_first_party: Indicates whether this client is a first-party client.Defaults to true from the API
+        :param pulumi.Input[_builtins.bool] is_first_party: Indicates whether this client is a first-party client.
         :param pulumi.Input[_builtins.bool] is_token_endpoint_ip_header_trusted: Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `client_secret_post` or `client_secret_basic`. Setting this property when creating the resource, will default the authentication method to `client_secret_post`. To change the authentication method to `client_secret_basic` use the `ClientCredentials` resource.
+        :param pulumi.Input[_builtins.str] jwks_uri: URL for the JSON Web Key Set (JWKS) containing the public keys used for `private_key_jwt` authentication. Only present for CIMD clients using `private_key_jwt` authentication.
         :param pulumi.Input[Union['ClientJwtConfigurationArgs', 'ClientJwtConfigurationArgsDict']] jwt_configuration: Configuration settings for the JWTs issued for this client.
         :param pulumi.Input[_builtins.str] logo_uri: URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
         :param pulumi.Input[Union['ClientMobileArgs', 'ClientMobileArgsDict']] mobile: Additional configuration for native mobile apps.
+        :param pulumi.Input[Union['ClientMyOrganizationConfigurationArgs', 'ClientMyOrganizationConfigurationArgsDict']] my_organization_configuration: Configuration for self-service organization features, controlling how organizations are created and managed for this client.
         :param pulumi.Input[_builtins.str] name: Name of the client.
         :param pulumi.Input[Union['ClientNativeSocialLoginArgs', 'ClientNativeSocialLoginArgsDict']] native_social_login: Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `app_type`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] oidc_backchannel_logout_urls: Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
@@ -1899,14 +2013,19 @@ class Client(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["encryption_key"] = encryption_key
         __props__.__dict__["express_configuration"] = express_configuration
+        __props__.__dict__["external_client_id"] = external_client_id
+        __props__.__dict__["external_metadata_created_by"] = external_metadata_created_by
+        __props__.__dict__["external_metadata_type"] = external_metadata_type
         __props__.__dict__["form_template"] = form_template
         __props__.__dict__["grant_types"] = grant_types
         __props__.__dict__["initiate_login_uri"] = initiate_login_uri
         __props__.__dict__["is_first_party"] = is_first_party
         __props__.__dict__["is_token_endpoint_ip_header_trusted"] = is_token_endpoint_ip_header_trusted
+        __props__.__dict__["jwks_uri"] = jwks_uri
         __props__.__dict__["jwt_configuration"] = jwt_configuration
         __props__.__dict__["logo_uri"] = logo_uri
         __props__.__dict__["mobile"] = mobile
+        __props__.__dict__["my_organization_configuration"] = my_organization_configuration
         __props__.__dict__["name"] = name
         __props__.__dict__["native_social_login"] = native_social_login
         __props__.__dict__["oidc_backchannel_logout_urls"] = oidc_backchannel_logout_urls
@@ -2082,6 +2201,30 @@ class Client(pulumi.CustomResource):
         return pulumi.get(self, "express_configuration")
 
     @_builtins.property
+    @pulumi.getter(name="externalClientId")
+    def external_client_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The URL of the Client ID Metadata Document. Only present for CIMD-registered clients.
+        """
+        return pulumi.get(self, "external_client_id")
+
+    @_builtins.property
+    @pulumi.getter(name="externalMetadataCreatedBy")
+    def external_metadata_created_by(self) -> pulumi.Output[_builtins.str]:
+        """
+        Who created the external metadata client: `admin` (via Management API), `client` (self-registered), or `unknown`.
+        """
+        return pulumi.get(self, "external_metadata_created_by")
+
+    @_builtins.property
+    @pulumi.getter(name="externalMetadataType")
+    def external_metadata_type(self) -> pulumi.Output[_builtins.str]:
+        """
+        Type of external metadata. Value is `cimd` for CIMD-registered clients.
+        """
+        return pulumi.get(self, "external_metadata_type")
+
+    @_builtins.property
     @pulumi.getter(name="formTemplate")
     def form_template(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
@@ -2109,7 +2252,7 @@ class Client(pulumi.CustomResource):
     @pulumi.getter(name="isFirstParty")
     def is_first_party(self) -> pulumi.Output[_builtins.bool]:
         """
-        Indicates whether this client is a first-party client.Defaults to true from the API
+        Indicates whether this client is a first-party client.
         """
         return pulumi.get(self, "is_first_party")
 
@@ -2120,6 +2263,14 @@ class Client(pulumi.CustomResource):
         Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `client_secret_post` or `client_secret_basic`. Setting this property when creating the resource, will default the authentication method to `client_secret_post`. To change the authentication method to `client_secret_basic` use the `ClientCredentials` resource.
         """
         return pulumi.get(self, "is_token_endpoint_ip_header_trusted")
+
+    @_builtins.property
+    @pulumi.getter(name="jwksUri")
+    def jwks_uri(self) -> pulumi.Output[_builtins.str]:
+        """
+        URL for the JSON Web Key Set (JWKS) containing the public keys used for `private_key_jwt` authentication. Only present for CIMD clients using `private_key_jwt` authentication.
+        """
+        return pulumi.get(self, "jwks_uri")
 
     @_builtins.property
     @pulumi.getter(name="jwtConfiguration")
@@ -2144,6 +2295,14 @@ class Client(pulumi.CustomResource):
         Additional configuration for native mobile apps.
         """
         return pulumi.get(self, "mobile")
+
+    @_builtins.property
+    @pulumi.getter(name="myOrganizationConfiguration")
+    def my_organization_configuration(self) -> pulumi.Output['outputs.ClientMyOrganizationConfiguration']:
+        """
+        Configuration for self-service organization features, controlling how organizations are created and managed for this client.
+        """
+        return pulumi.get(self, "my_organization_configuration")
 
     @_builtins.property
     @pulumi.getter

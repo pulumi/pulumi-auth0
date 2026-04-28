@@ -63,22 +63,32 @@ type Client struct {
 	EncryptionKey pulumi.StringMapOutput `pulumi:"encryptionKey"`
 	// Express Configuration settings for the client. Used with OIN Express Configuration.
 	ExpressConfiguration ClientExpressConfigurationOutput `pulumi:"expressConfiguration"`
+	// The URL of the Client ID Metadata Document. Only present for CIMD-registered clients.
+	ExternalClientId pulumi.StringOutput `pulumi:"externalClientId"`
+	// Who created the external metadata client: `admin` (via Management API), `client` (self-registered), or `unknown`.
+	ExternalMetadataCreatedBy pulumi.StringOutput `pulumi:"externalMetadataCreatedBy"`
+	// Type of external metadata. Value is `cimd` for CIMD-registered clients.
+	ExternalMetadataType pulumi.StringOutput `pulumi:"externalMetadataType"`
 	// HTML form template to be used for WS-Federation.
 	FormTemplate pulumi.StringPtrOutput `pulumi:"formTemplate"`
 	// Types of grants that this client is authorized to use.
 	GrantTypes pulumi.StringArrayOutput `pulumi:"grantTypes"`
 	// Initiate login URI. Must be HTTPS or an empty string.
 	InitiateLoginUri pulumi.StringPtrOutput `pulumi:"initiateLoginUri"`
-	// Indicates whether this client is a first-party client.Defaults to true from the API
+	// Indicates whether this client is a first-party client.
 	IsFirstParty pulumi.BoolOutput `pulumi:"isFirstParty"`
 	// Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `clientSecretPost` or `clientSecretBasic`. Setting this property when creating the resource, will default the authentication method to `clientSecretPost`. To change the authentication method to `clientSecretBasic` use the `ClientCredentials` resource.
 	IsTokenEndpointIpHeaderTrusted pulumi.BoolOutput `pulumi:"isTokenEndpointIpHeaderTrusted"`
+	// URL for the JSON Web Key Set (JWKS) containing the public keys used for `privateKeyJwt` authentication. Only present for CIMD clients using `privateKeyJwt` authentication.
+	JwksUri pulumi.StringOutput `pulumi:"jwksUri"`
 	// Configuration settings for the JWTs issued for this client.
 	JwtConfiguration ClientJwtConfigurationOutput `pulumi:"jwtConfiguration"`
 	// URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
 	LogoUri pulumi.StringPtrOutput `pulumi:"logoUri"`
 	// Additional configuration for native mobile apps.
 	Mobile ClientMobileOutput `pulumi:"mobile"`
+	// Configuration for self-service organization features, controlling how organizations are created and managed for this client.
+	MyOrganizationConfiguration ClientMyOrganizationConfigurationOutput `pulumi:"myOrganizationConfiguration"`
 	// Name of the client.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `appType`.
@@ -197,22 +207,32 @@ type clientState struct {
 	EncryptionKey map[string]string `pulumi:"encryptionKey"`
 	// Express Configuration settings for the client. Used with OIN Express Configuration.
 	ExpressConfiguration *ClientExpressConfiguration `pulumi:"expressConfiguration"`
+	// The URL of the Client ID Metadata Document. Only present for CIMD-registered clients.
+	ExternalClientId *string `pulumi:"externalClientId"`
+	// Who created the external metadata client: `admin` (via Management API), `client` (self-registered), or `unknown`.
+	ExternalMetadataCreatedBy *string `pulumi:"externalMetadataCreatedBy"`
+	// Type of external metadata. Value is `cimd` for CIMD-registered clients.
+	ExternalMetadataType *string `pulumi:"externalMetadataType"`
 	// HTML form template to be used for WS-Federation.
 	FormTemplate *string `pulumi:"formTemplate"`
 	// Types of grants that this client is authorized to use.
 	GrantTypes []string `pulumi:"grantTypes"`
 	// Initiate login URI. Must be HTTPS or an empty string.
 	InitiateLoginUri *string `pulumi:"initiateLoginUri"`
-	// Indicates whether this client is a first-party client.Defaults to true from the API
+	// Indicates whether this client is a first-party client.
 	IsFirstParty *bool `pulumi:"isFirstParty"`
 	// Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `clientSecretPost` or `clientSecretBasic`. Setting this property when creating the resource, will default the authentication method to `clientSecretPost`. To change the authentication method to `clientSecretBasic` use the `ClientCredentials` resource.
 	IsTokenEndpointIpHeaderTrusted *bool `pulumi:"isTokenEndpointIpHeaderTrusted"`
+	// URL for the JSON Web Key Set (JWKS) containing the public keys used for `privateKeyJwt` authentication. Only present for CIMD clients using `privateKeyJwt` authentication.
+	JwksUri *string `pulumi:"jwksUri"`
 	// Configuration settings for the JWTs issued for this client.
 	JwtConfiguration *ClientJwtConfiguration `pulumi:"jwtConfiguration"`
 	// URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
 	LogoUri *string `pulumi:"logoUri"`
 	// Additional configuration for native mobile apps.
 	Mobile *ClientMobile `pulumi:"mobile"`
+	// Configuration for self-service organization features, controlling how organizations are created and managed for this client.
+	MyOrganizationConfiguration *ClientMyOrganizationConfiguration `pulumi:"myOrganizationConfiguration"`
 	// Name of the client.
 	Name *string `pulumi:"name"`
 	// Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `appType`.
@@ -295,22 +315,32 @@ type ClientState struct {
 	EncryptionKey pulumi.StringMapInput
 	// Express Configuration settings for the client. Used with OIN Express Configuration.
 	ExpressConfiguration ClientExpressConfigurationPtrInput
+	// The URL of the Client ID Metadata Document. Only present for CIMD-registered clients.
+	ExternalClientId pulumi.StringPtrInput
+	// Who created the external metadata client: `admin` (via Management API), `client` (self-registered), or `unknown`.
+	ExternalMetadataCreatedBy pulumi.StringPtrInput
+	// Type of external metadata. Value is `cimd` for CIMD-registered clients.
+	ExternalMetadataType pulumi.StringPtrInput
 	// HTML form template to be used for WS-Federation.
 	FormTemplate pulumi.StringPtrInput
 	// Types of grants that this client is authorized to use.
 	GrantTypes pulumi.StringArrayInput
 	// Initiate login URI. Must be HTTPS or an empty string.
 	InitiateLoginUri pulumi.StringPtrInput
-	// Indicates whether this client is a first-party client.Defaults to true from the API
+	// Indicates whether this client is a first-party client.
 	IsFirstParty pulumi.BoolPtrInput
 	// Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `clientSecretPost` or `clientSecretBasic`. Setting this property when creating the resource, will default the authentication method to `clientSecretPost`. To change the authentication method to `clientSecretBasic` use the `ClientCredentials` resource.
 	IsTokenEndpointIpHeaderTrusted pulumi.BoolPtrInput
+	// URL for the JSON Web Key Set (JWKS) containing the public keys used for `privateKeyJwt` authentication. Only present for CIMD clients using `privateKeyJwt` authentication.
+	JwksUri pulumi.StringPtrInput
 	// Configuration settings for the JWTs issued for this client.
 	JwtConfiguration ClientJwtConfigurationPtrInput
 	// URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
 	LogoUri pulumi.StringPtrInput
 	// Additional configuration for native mobile apps.
 	Mobile ClientMobilePtrInput
+	// Configuration for self-service organization features, controlling how organizations are created and managed for this client.
+	MyOrganizationConfiguration ClientMyOrganizationConfigurationPtrInput
 	// Name of the client.
 	Name pulumi.StringPtrInput
 	// Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `appType`.
@@ -401,7 +431,7 @@ type clientArgs struct {
 	GrantTypes []string `pulumi:"grantTypes"`
 	// Initiate login URI. Must be HTTPS or an empty string.
 	InitiateLoginUri *string `pulumi:"initiateLoginUri"`
-	// Indicates whether this client is a first-party client.Defaults to true from the API
+	// Indicates whether this client is a first-party client.
 	IsFirstParty *bool `pulumi:"isFirstParty"`
 	// Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `clientSecretPost` or `clientSecretBasic`. Setting this property when creating the resource, will default the authentication method to `clientSecretPost`. To change the authentication method to `clientSecretBasic` use the `ClientCredentials` resource.
 	IsTokenEndpointIpHeaderTrusted *bool `pulumi:"isTokenEndpointIpHeaderTrusted"`
@@ -411,6 +441,8 @@ type clientArgs struct {
 	LogoUri *string `pulumi:"logoUri"`
 	// Additional configuration for native mobile apps.
 	Mobile *ClientMobile `pulumi:"mobile"`
+	// Configuration for self-service organization features, controlling how organizations are created and managed for this client.
+	MyOrganizationConfiguration *ClientMyOrganizationConfiguration `pulumi:"myOrganizationConfiguration"`
 	// Name of the client.
 	Name *string `pulumi:"name"`
 	// Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `appType`.
@@ -496,7 +528,7 @@ type ClientArgs struct {
 	GrantTypes pulumi.StringArrayInput
 	// Initiate login URI. Must be HTTPS or an empty string.
 	InitiateLoginUri pulumi.StringPtrInput
-	// Indicates whether this client is a first-party client.Defaults to true from the API
+	// Indicates whether this client is a first-party client.
 	IsFirstParty pulumi.BoolPtrInput
 	// Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `clientSecretPost` or `clientSecretBasic`. Setting this property when creating the resource, will default the authentication method to `clientSecretPost`. To change the authentication method to `clientSecretBasic` use the `ClientCredentials` resource.
 	IsTokenEndpointIpHeaderTrusted pulumi.BoolPtrInput
@@ -506,6 +538,8 @@ type ClientArgs struct {
 	LogoUri pulumi.StringPtrInput
 	// Additional configuration for native mobile apps.
 	Mobile ClientMobilePtrInput
+	// Configuration for self-service organization features, controlling how organizations are created and managed for this client.
+	MyOrganizationConfiguration ClientMyOrganizationConfigurationPtrInput
 	// Name of the client.
 	Name pulumi.StringPtrInput
 	// Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `appType`.
@@ -729,6 +763,21 @@ func (o ClientOutput) ExpressConfiguration() ClientExpressConfigurationOutput {
 	return o.ApplyT(func(v *Client) ClientExpressConfigurationOutput { return v.ExpressConfiguration }).(ClientExpressConfigurationOutput)
 }
 
+// The URL of the Client ID Metadata Document. Only present for CIMD-registered clients.
+func (o ClientOutput) ExternalClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Client) pulumi.StringOutput { return v.ExternalClientId }).(pulumi.StringOutput)
+}
+
+// Who created the external metadata client: `admin` (via Management API), `client` (self-registered), or `unknown`.
+func (o ClientOutput) ExternalMetadataCreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Client) pulumi.StringOutput { return v.ExternalMetadataCreatedBy }).(pulumi.StringOutput)
+}
+
+// Type of external metadata. Value is `cimd` for CIMD-registered clients.
+func (o ClientOutput) ExternalMetadataType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Client) pulumi.StringOutput { return v.ExternalMetadataType }).(pulumi.StringOutput)
+}
+
 // HTML form template to be used for WS-Federation.
 func (o ClientOutput) FormTemplate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Client) pulumi.StringPtrOutput { return v.FormTemplate }).(pulumi.StringPtrOutput)
@@ -744,7 +793,7 @@ func (o ClientOutput) InitiateLoginUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Client) pulumi.StringPtrOutput { return v.InitiateLoginUri }).(pulumi.StringPtrOutput)
 }
 
-// Indicates whether this client is a first-party client.Defaults to true from the API
+// Indicates whether this client is a first-party client.
 func (o ClientOutput) IsFirstParty() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Client) pulumi.BoolOutput { return v.IsFirstParty }).(pulumi.BoolOutput)
 }
@@ -752,6 +801,11 @@ func (o ClientOutput) IsFirstParty() pulumi.BoolOutput {
 // Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `clientSecretPost` or `clientSecretBasic`. Setting this property when creating the resource, will default the authentication method to `clientSecretPost`. To change the authentication method to `clientSecretBasic` use the `ClientCredentials` resource.
 func (o ClientOutput) IsTokenEndpointIpHeaderTrusted() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Client) pulumi.BoolOutput { return v.IsTokenEndpointIpHeaderTrusted }).(pulumi.BoolOutput)
+}
+
+// URL for the JSON Web Key Set (JWKS) containing the public keys used for `privateKeyJwt` authentication. Only present for CIMD clients using `privateKeyJwt` authentication.
+func (o ClientOutput) JwksUri() pulumi.StringOutput {
+	return o.ApplyT(func(v *Client) pulumi.StringOutput { return v.JwksUri }).(pulumi.StringOutput)
 }
 
 // Configuration settings for the JWTs issued for this client.
@@ -767,6 +821,11 @@ func (o ClientOutput) LogoUri() pulumi.StringPtrOutput {
 // Additional configuration for native mobile apps.
 func (o ClientOutput) Mobile() ClientMobileOutput {
 	return o.ApplyT(func(v *Client) ClientMobileOutput { return v.Mobile }).(ClientMobileOutput)
+}
+
+// Configuration for self-service organization features, controlling how organizations are created and managed for this client.
+func (o ClientOutput) MyOrganizationConfiguration() ClientMyOrganizationConfigurationOutput {
+	return o.ApplyT(func(v *Client) ClientMyOrganizationConfigurationOutput { return v.MyOrganizationConfiguration }).(ClientMyOrganizationConfigurationOutput)
 }
 
 // Name of the client.

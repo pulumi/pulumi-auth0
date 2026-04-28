@@ -12,14 +12,14 @@ import java.util.Objects;
 @CustomType
 public final class ClientTokenExchange {
     /**
-     * @return List of allowed profile types for token exchange
+     * @return List of allowed profile types for token exchange. Supported values include: custom*authentication, on*behalf*of*token_exchange.
      * 
      */
     private List<String> allowAnyProfileOfTypes;
 
     private ClientTokenExchange() {}
     /**
-     * @return List of allowed profile types for token exchange
+     * @return List of allowed profile types for token exchange. Supported values include: custom*authentication, on*behalf*of*token_exchange.
      * 
      */
     public List<String> allowAnyProfileOfTypes() {
