@@ -27,25 +27,25 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myConnection_1 = new Auth0.Index.Connection("my_connection-1", new()
+    ///     var myConnection_1 = new Auth0.Connection("my_connection-1", new()
     ///     {
     ///         Name = "My Connection 1",
     ///         Strategy = "auth0",
     ///     });
     /// 
-    ///     var myConnection_2 = new Auth0.Index.Connection("my_connection-2", new()
+    ///     var myConnection_2 = new Auth0.Connection("my_connection-2", new()
     ///     {
     ///         Name = "My Connection 2",
     ///         Strategy = "auth0",
     ///     });
     /// 
-    ///     var myOrganization = new Auth0.Index.Organization("my_organization", new()
+    ///     var myOrganization = new Auth0.Organization("my_organization", new()
     ///     {
     ///         Name = "my-organization",
     ///         DisplayName = "My Organization",
     ///     });
     /// 
-    ///     var one_to_many = new Auth0.Index.OrganizationConnections("one-to-many", new()
+    ///     var one_to_many = new Auth0.OrganizationConnections("one-to-many", new()
     ///     {
     ///         OrganizationId = myOrganization.Id,
     ///         EnabledConnections = new[]

@@ -24,7 +24,7 @@ namespace Pulumi.Auth0
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Example:
-    ///     var myForm = new Auth0.Index.Form("my_form", new()
+    ///     var myForm = new Auth0.Form("my_form", new()
     ///     {
     ///         Name = "My KYC Form",
     ///         Start = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;

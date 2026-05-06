@@ -23,7 +23,7 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var azureAd = new Auth0.Index.Connection("azure_ad", new()
+    ///     var azureAd = new Auth0.Connection("azure_ad", new()
     ///     {
     ///         Name = "Acceptance-Test-Azure-AD",
     ///         Strategy = "waad",
@@ -64,12 +64,12 @@ namespace Pulumi.Auth0
     ///         },
     ///     });
     /// 
-    ///     var myScimConfig = new Auth0.Index.ConnectionScimConfiguration("my_scim_config", new()
+    ///     var myScimConfig = new Auth0.ConnectionScimConfiguration("my_scim_config", new()
     ///     {
     ///         ConnectionId = azureAd.Id,
     ///     });
     /// 
-    ///     var myScimToken = new Auth0.Index.ConnectionScimToken("my_scim_token", new()
+    ///     var myScimToken = new Auth0.ConnectionScimToken("my_scim_token", new()
     ///     {
     ///         ConnectionId = azureAd.Id,
     ///         Scopes = new[]

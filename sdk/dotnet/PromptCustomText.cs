@@ -23,7 +23,7 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Auth0.Index.PromptCustomText("example", new()
+    ///     var example = new Auth0.PromptCustomText("example", new()
     ///     {
     ///         Prompt = "login",
     ///         Language = "en",

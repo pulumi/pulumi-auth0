@@ -46,8 +46,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.auth0.inputs.ActionDependencyArgs;
  * import com.pulumi.auth0.inputs.ActionSecretArgs;
  * import com.pulumi.std.StdFunctions;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -62,8 +62,8 @@ import javax.annotation.Nullable;
  *         var myAction = new Action("myAction", ActionArgs.builder()
  *             .name(StdFunctions.format(Map.ofEntries(
  *                 Map.entry("input", "Test Action %s"),
- *                 Map.entry("args", StdFunctions.timestamp(Map.ofEntries(
- *                 )).result())
+ *                 Map.entry("args", Arrays.asList(StdFunctions.timestamp(Map.ofEntries(
+ *                 )).result()))
  *             )).result())
  *             .runtime("node22")
  *             .deploy(true)

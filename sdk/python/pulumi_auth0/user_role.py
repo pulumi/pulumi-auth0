@@ -159,7 +159,8 @@ class UserRole(pulumi.CustomResource):
             username="unique_username",
             name="Firstname Lastname",
             email="test@test.com",
-            password="passpass$12$12")
+            password="passpass$12$12",
+            opts = pulumi.ResourceOptions(ignore_changes=[roles]))
         user_roles = auth0.UserRole("user_roles",
             user_id=user.id,
             role_id=admin.id)
@@ -211,7 +212,8 @@ class UserRole(pulumi.CustomResource):
             username="unique_username",
             name="Firstname Lastname",
             email="test@test.com",
-            password="passpass$12$12")
+            password="passpass$12$12",
+            opts = pulumi.ResourceOptions(ignore_changes=[roles]))
         user_roles = auth0.UserRole("user_roles",
             user_id=user.id,
             role_id=admin.id)

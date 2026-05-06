@@ -24,7 +24,7 @@ namespace Pulumi.Auth0
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myEnterpriseConnection = new Auth0.Index.Connection("my_enterprise_connection", new()
+        ///     var myEnterpriseConnection = new Auth0.Connection("my_enterprise_connection", new()
         ///     {
         ///         Name = "my-enterprise-connection",
         ///         DisplayName = "My Enterprise Connection",
@@ -40,13 +40,13 @@ namespace Pulumi.Auth0
         ///         },
         ///     });
         /// 
-        ///     var myConnScimConfiguration = new Auth0.Index.ConnectionScimConfiguration("my_conn_scim_configuration", new()
+        ///     var myConnScimConfiguration = new Auth0.ConnectionScimConfiguration("my_conn_scim_configuration", new()
         ///     {
         ///         ConnectionId = myEnterpriseConnection.Id,
         ///     });
         /// 
         ///     // A data source for an Auth0 Connection SCIM Configuration.
-        ///     var myConnScimConfigurationData = Auth0.Index.GetConnectionScimConfiguration.Invoke(new()
+        ///     var myConnScimConfigurationData = Auth0.GetConnectionScimConfiguration.Invoke(new()
         ///     {
         ///         ConnectionId = myConnScimConfiguration.Id,
         ///     });
@@ -70,7 +70,7 @@ namespace Pulumi.Auth0
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myEnterpriseConnection = new Auth0.Index.Connection("my_enterprise_connection", new()
+        ///     var myEnterpriseConnection = new Auth0.Connection("my_enterprise_connection", new()
         ///     {
         ///         Name = "my-enterprise-connection",
         ///         DisplayName = "My Enterprise Connection",
@@ -86,13 +86,13 @@ namespace Pulumi.Auth0
         ///         },
         ///     });
         /// 
-        ///     var myConnScimConfiguration = new Auth0.Index.ConnectionScimConfiguration("my_conn_scim_configuration", new()
+        ///     var myConnScimConfiguration = new Auth0.ConnectionScimConfiguration("my_conn_scim_configuration", new()
         ///     {
         ///         ConnectionId = myEnterpriseConnection.Id,
         ///     });
         /// 
         ///     // A data source for an Auth0 Connection SCIM Configuration.
-        ///     var myConnScimConfigurationData = Auth0.Index.GetConnectionScimConfiguration.Invoke(new()
+        ///     var myConnScimConfigurationData = Auth0.GetConnectionScimConfiguration.Invoke(new()
         ///     {
         ///         ConnectionId = myConnScimConfiguration.Id,
         ///     });
@@ -116,7 +116,7 @@ namespace Pulumi.Auth0
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myEnterpriseConnection = new Auth0.Index.Connection("my_enterprise_connection", new()
+        ///     var myEnterpriseConnection = new Auth0.Connection("my_enterprise_connection", new()
         ///     {
         ///         Name = "my-enterprise-connection",
         ///         DisplayName = "My Enterprise Connection",
@@ -132,13 +132,13 @@ namespace Pulumi.Auth0
         ///         },
         ///     });
         /// 
-        ///     var myConnScimConfiguration = new Auth0.Index.ConnectionScimConfiguration("my_conn_scim_configuration", new()
+        ///     var myConnScimConfiguration = new Auth0.ConnectionScimConfiguration("my_conn_scim_configuration", new()
         ///     {
         ///         ConnectionId = myEnterpriseConnection.Id,
         ///     });
         /// 
         ///     // A data source for an Auth0 Connection SCIM Configuration.
-        ///     var myConnScimConfigurationData = Auth0.Index.GetConnectionScimConfiguration.Invoke(new()
+        ///     var myConnScimConfigurationData = Auth0.GetConnectionScimConfiguration.Invoke(new()
         ///     {
         ///         ConnectionId = myConnScimConfiguration.Id,
         ///     });

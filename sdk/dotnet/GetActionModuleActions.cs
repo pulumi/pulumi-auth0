@@ -26,7 +26,7 @@ namespace Pulumi.Auth0
         /// {
         ///     // Example: Retrieve all actions using a specific action module
         ///     // Create and publish an action module
-        ///     var myModule = new Auth0.Index.ActionModule("my_module", new()
+        ///     var myModule = new Auth0.ActionModule("my_module", new()
         ///     {
         ///         Name = "My Shared Module",
         ///         Publish = true,
@@ -39,13 +39,13 @@ namespace Pulumi.Auth0
         ///     });
         /// 
         ///     // Get the published versions of the module
-        ///     var myModuleVersions = Auth0.Index.GetActionModuleVersions.Invoke(new()
+        ///     var myModuleVersions = Auth0.GetActionModuleVersions.Invoke(new()
         ///     {
         ///         ModuleId = myModule.Id,
         ///     });
         /// 
         ///     // Create an action that uses the module
-        ///     var myAction1 = new Auth0.Index.Action("my_action_1", new()
+        ///     var myAction1 = new Auth0.Action("my_action_1", new()
         ///     {
         ///         Name = "My Action Using Module 1",
         ///         Deploy = true,
@@ -70,7 +70,7 @@ namespace Pulumi.Auth0
         ///     });
         /// 
         ///     // Create another action that uses the same module
-        ///     var myAction2 = new Auth0.Index.Action("my_action_2", new()
+        ///     var myAction2 = new Auth0.Action("my_action_2", new()
         ///     {
         ///         Name = "My Action Using Module 2",
         ///         Deploy = true,
@@ -95,7 +95,7 @@ namespace Pulumi.Auth0
         ///     });
         /// 
         ///     // Retrieve all actions that are using this module
-        ///     var myModuleActions = Auth0.Index.GetActionModuleActions.Invoke(new()
+        ///     var myModuleActions = Auth0.GetActionModuleActions.Invoke(new()
         ///     {
         ///         ModuleId = myModule.Id,
         ///     });
@@ -129,7 +129,7 @@ namespace Pulumi.Auth0
         /// {
         ///     // Example: Retrieve all actions using a specific action module
         ///     // Create and publish an action module
-        ///     var myModule = new Auth0.Index.ActionModule("my_module", new()
+        ///     var myModule = new Auth0.ActionModule("my_module", new()
         ///     {
         ///         Name = "My Shared Module",
         ///         Publish = true,
@@ -142,13 +142,13 @@ namespace Pulumi.Auth0
         ///     });
         /// 
         ///     // Get the published versions of the module
-        ///     var myModuleVersions = Auth0.Index.GetActionModuleVersions.Invoke(new()
+        ///     var myModuleVersions = Auth0.GetActionModuleVersions.Invoke(new()
         ///     {
         ///         ModuleId = myModule.Id,
         ///     });
         /// 
         ///     // Create an action that uses the module
-        ///     var myAction1 = new Auth0.Index.Action("my_action_1", new()
+        ///     var myAction1 = new Auth0.Action("my_action_1", new()
         ///     {
         ///         Name = "My Action Using Module 1",
         ///         Deploy = true,
@@ -173,7 +173,7 @@ namespace Pulumi.Auth0
         ///     });
         /// 
         ///     // Create another action that uses the same module
-        ///     var myAction2 = new Auth0.Index.Action("my_action_2", new()
+        ///     var myAction2 = new Auth0.Action("my_action_2", new()
         ///     {
         ///         Name = "My Action Using Module 2",
         ///         Deploy = true,
@@ -198,7 +198,7 @@ namespace Pulumi.Auth0
         ///     });
         /// 
         ///     // Retrieve all actions that are using this module
-        ///     var myModuleActions = Auth0.Index.GetActionModuleActions.Invoke(new()
+        ///     var myModuleActions = Auth0.GetActionModuleActions.Invoke(new()
         ///     {
         ///         ModuleId = myModule.Id,
         ///     });
@@ -232,7 +232,7 @@ namespace Pulumi.Auth0
         /// {
         ///     // Example: Retrieve all actions using a specific action module
         ///     // Create and publish an action module
-        ///     var myModule = new Auth0.Index.ActionModule("my_module", new()
+        ///     var myModule = new Auth0.ActionModule("my_module", new()
         ///     {
         ///         Name = "My Shared Module",
         ///         Publish = true,
@@ -245,13 +245,13 @@ namespace Pulumi.Auth0
         ///     });
         /// 
         ///     // Get the published versions of the module
-        ///     var myModuleVersions = Auth0.Index.GetActionModuleVersions.Invoke(new()
+        ///     var myModuleVersions = Auth0.GetActionModuleVersions.Invoke(new()
         ///     {
         ///         ModuleId = myModule.Id,
         ///     });
         /// 
         ///     // Create an action that uses the module
-        ///     var myAction1 = new Auth0.Index.Action("my_action_1", new()
+        ///     var myAction1 = new Auth0.Action("my_action_1", new()
         ///     {
         ///         Name = "My Action Using Module 1",
         ///         Deploy = true,
@@ -276,7 +276,7 @@ namespace Pulumi.Auth0
         ///     });
         /// 
         ///     // Create another action that uses the same module
-        ///     var myAction2 = new Auth0.Index.Action("my_action_2", new()
+        ///     var myAction2 = new Auth0.Action("my_action_2", new()
         ///     {
         ///         Name = "My Action Using Module 2",
         ///         Deploy = true,
@@ -301,7 +301,7 @@ namespace Pulumi.Auth0
         ///     });
         /// 
         ///     // Retrieve all actions that are using this module
-        ///     var myModuleActions = Auth0.Index.GetActionModuleActions.Invoke(new()
+        ///     var myModuleActions = Auth0.GetActionModuleActions.Invoke(new()
         ///     {
         ///         ModuleId = myModule.Id,
         ///     });

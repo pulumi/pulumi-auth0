@@ -24,7 +24,7 @@ namespace Pulumi.Auth0
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myDirectoryConfig = Auth0.Index.GetConnectionDirectory.Invoke(new()
+        ///     var myDirectoryConfig = Auth0.GetConnectionDirectory.Invoke(new()
         ///     {
         ///         ConnectionId = "con_xxxxxxxxxxxxx",
         ///     });
@@ -48,7 +48,7 @@ namespace Pulumi.Auth0
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myDirectoryConfig = Auth0.Index.GetConnectionDirectory.Invoke(new()
+        ///     var myDirectoryConfig = Auth0.GetConnectionDirectory.Invoke(new()
         ///     {
         ///         ConnectionId = "con_xxxxxxxxxxxxx",
         ///     });
@@ -72,7 +72,7 @@ namespace Pulumi.Auth0
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myDirectoryConfig = Auth0.Index.GetConnectionDirectory.Invoke(new()
+        ///     var myDirectoryConfig = Auth0.GetConnectionDirectory.Invoke(new()
         ///     {
         ///         ConnectionId = "con_xxxxxxxxxxxxx",
         ///     });

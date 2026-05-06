@@ -24,7 +24,7 @@ namespace Pulumi.Auth0
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myTenant = Auth0.Index.GetTenant.Invoke();
+        ///     var myTenant = Auth0.GetTenant.Invoke();
         /// 
         /// });
         /// ```
@@ -45,7 +45,7 @@ namespace Pulumi.Auth0
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myTenant = Auth0.Index.GetTenant.Invoke();
+        ///     var myTenant = Auth0.GetTenant.Invoke();
         /// 
         /// });
         /// ```
@@ -66,7 +66,7 @@ namespace Pulumi.Auth0
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myTenant = Auth0.Index.GetTenant.Invoke();
+        ///     var myTenant = Auth0.GetTenant.Invoke();
         /// 
         /// });
         /// ```
