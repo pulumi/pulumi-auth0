@@ -2,5 +2,6 @@
 
 ---
 upstream-provider-name: terraform-provider-auth0
+allow-major: true
 pulumi-infer-version: true
 remove-plugins: true
