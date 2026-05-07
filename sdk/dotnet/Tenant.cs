@@ -25,7 +25,7 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myTenant = new Auth0.Index.Tenant("my_tenant", new()
+    ///     var myTenant = new Auth0.Tenant("my_tenant", new()
     ///     {
     ///         FriendlyName = "Tenant Name",
     ///         PictureUrl = "http://example.com/logo.png",

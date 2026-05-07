@@ -22,7 +22,7 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myCustomDomain = new Auth0.Index.CustomDomain("my_custom_domain", new()
+    ///     var myCustomDomain = new Auth0.CustomDomain("my_custom_domain", new()
     ///     {
     ///         Domain = "auth.example.com",
     ///         Type = "auth0_managed_certs",

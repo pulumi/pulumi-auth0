@@ -22,7 +22,7 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myResourceServer = new Auth0.Index.ResourceServer("my_resource_server", new()
+    ///     var myResourceServer = new Auth0.ResourceServer("my_resource_server", new()
     ///     {
     ///         Name = "Example Resource Server (Managed by Terraform)",
     ///         Identifier = "https://api.example.com",
@@ -74,7 +74,7 @@ namespace Pulumi.Auth0
     ///     });
     /// 
     ///     // Sample OIN resource server configuration
-    ///     var oktaOinExpressConfigurationApi = new Auth0.Index.ResourceServer("okta_oin_express_configuration_api", new()
+    ///     var oktaOinExpressConfigurationApi = new Auth0.ResourceServer("okta_oin_express_configuration_api", new()
     ///     {
     ///         Identifier = "urn:auth0:express-configure",
     ///         Name = "Okta OIN Express Configuration API",

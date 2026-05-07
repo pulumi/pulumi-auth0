@@ -38,8 +38,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.auth0.UserPermissions;
  * import com.pulumi.auth0.UserPermissionsArgs;
  * import com.pulumi.auth0.inputs.UserPermissionsPermissionArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *         var resourceServer = new ResourceServer("resourceServer", ResourceServerArgs.builder()
  *             .name("Example Resource Server (Managed by Terraform)")
  *             .identifier("https://api.example.com")
- *             .scopes(List.of(            
+ *             .scopes(Arrays.asList(            
  *                 Map.ofEntries(
  *                     Map.entry("value", "create:foo"),
  *                     Map.entry("description", "Create foos")

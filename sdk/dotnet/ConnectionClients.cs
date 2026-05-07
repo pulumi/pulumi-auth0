@@ -27,25 +27,25 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myConn = new Auth0.Index.Connection("my_conn", new()
+    ///     var myConn = new Auth0.Connection("my_conn", new()
     ///     {
     ///         Name = "My-Auth0-Connection",
     ///         Strategy = "auth0",
     ///     });
     /// 
-    ///     var myFirstClient = new Auth0.Index.Client("my_first_client", new()
+    ///     var myFirstClient = new Auth0.Client("my_first_client", new()
     ///     {
     ///         Name = "My-First-Auth0-Client",
     ///     });
     /// 
-    ///     var mySecondClient = new Auth0.Index.Client("my_second_client", new()
+    ///     var mySecondClient = new Auth0.Client("my_second_client", new()
     ///     {
     ///         Name = "My-Second-Auth0-Client",
     ///     });
     /// 
     ///     // One connection to many clients association.
     ///     // To prevent issues, avoid using this resource together with the `auth0_connection_client` resource.
-    ///     var myConnClientsAssoc = new Auth0.Index.ConnectionClients("my_conn_clients_assoc", new()
+    ///     var myConnClientsAssoc = new Auth0.ConnectionClients("my_conn_clients_assoc", new()
     ///     {
     ///         ConnectionId = myConn.Id,
     ///         EnabledClients = new[]

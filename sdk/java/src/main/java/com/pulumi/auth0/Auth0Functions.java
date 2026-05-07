@@ -182,8 +182,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetActionModuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -222,8 +222,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetActionModuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -262,8 +262,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetActionModuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -302,8 +302,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetActionModuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -342,8 +342,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetActionModuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -430,8 +430,8 @@ public final class Auth0Functions {
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetActionModuleVersionsArgs;
      * import com.pulumi.auth0.inputs.GetActionModuleVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -501,8 +501,8 @@ public final class Auth0Functions {
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetActionModuleVersionsArgs;
      * import com.pulumi.auth0.inputs.GetActionModuleVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -572,8 +572,8 @@ public final class Auth0Functions {
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetActionModuleVersionsArgs;
      * import com.pulumi.auth0.inputs.GetActionModuleVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -643,8 +643,8 @@ public final class Auth0Functions {
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetActionModuleVersionsArgs;
      * import com.pulumi.auth0.inputs.GetActionModuleVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -714,8 +714,8 @@ public final class Auth0Functions {
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetActionModuleVersionsArgs;
      * import com.pulumi.auth0.inputs.GetActionModuleVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -826,8 +826,8 @@ public final class Auth0Functions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -863,8 +863,8 @@ public final class Auth0Functions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -900,8 +900,8 @@ public final class Auth0Functions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -937,8 +937,8 @@ public final class Auth0Functions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -974,8 +974,8 @@ public final class Auth0Functions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1011,8 +1011,8 @@ public final class Auth0Functions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1048,8 +1048,8 @@ public final class Auth0Functions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1085,8 +1085,8 @@ public final class Auth0Functions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1122,8 +1122,8 @@ public final class Auth0Functions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1159,8 +1159,8 @@ public final class Auth0Functions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1196,8 +1196,8 @@ public final class Auth0Functions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1233,8 +1233,8 @@ public final class Auth0Functions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1270,8 +1270,8 @@ public final class Auth0Functions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1307,8 +1307,8 @@ public final class Auth0Functions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1345,8 +1345,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetBrandingPhoneNotificationTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1389,8 +1389,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetBrandingPhoneNotificationTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1433,8 +1433,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetBrandingPhoneNotificationTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1477,8 +1477,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetBrandingPhoneNotificationTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1521,8 +1521,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetBrandingPhoneNotificationTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1564,8 +1564,8 @@ public final class Auth0Functions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1601,8 +1601,8 @@ public final class Auth0Functions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1638,8 +1638,8 @@ public final class Auth0Functions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1675,8 +1675,8 @@ public final class Auth0Functions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1712,8 +1712,8 @@ public final class Auth0Functions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1749,8 +1749,8 @@ public final class Auth0Functions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1786,8 +1786,8 @@ public final class Auth0Functions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1824,8 +1824,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetClientArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1870,8 +1870,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetClientArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1916,8 +1916,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetClientArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1962,8 +1962,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetClientArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2008,8 +2008,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetClientArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2054,8 +2054,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetClientArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2100,8 +2100,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetClientArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2159,8 +2159,8 @@ public final class Auth0Functions {
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetClientGrantsArgs;
      * import com.pulumi.resources.CustomResourceOptions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2255,8 +2255,8 @@ public final class Auth0Functions {
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetClientGrantsArgs;
      * import com.pulumi.resources.CustomResourceOptions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2351,8 +2351,8 @@ public final class Auth0Functions {
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetClientGrantsArgs;
      * import com.pulumi.resources.CustomResourceOptions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2447,8 +2447,8 @@ public final class Auth0Functions {
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetClientGrantsArgs;
      * import com.pulumi.resources.CustomResourceOptions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2543,8 +2543,8 @@ public final class Auth0Functions {
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetClientGrantsArgs;
      * import com.pulumi.resources.CustomResourceOptions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2639,8 +2639,8 @@ public final class Auth0Functions {
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetClientGrantsArgs;
      * import com.pulumi.resources.CustomResourceOptions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2735,8 +2735,8 @@ public final class Auth0Functions {
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetClientGrantsArgs;
      * import com.pulumi.resources.CustomResourceOptions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2818,8 +2818,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetClientsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2871,8 +2871,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetClientsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2924,8 +2924,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetClientsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2977,8 +2977,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetClientsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3030,8 +3030,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetClientsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3083,8 +3083,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetClientsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3136,8 +3136,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetClientsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3189,8 +3189,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetConnectionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3235,8 +3235,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetConnectionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3281,8 +3281,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetConnectionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3327,8 +3327,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetConnectionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3373,8 +3373,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetConnectionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3419,8 +3419,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetConnectionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3465,8 +3465,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetConnectionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3511,8 +3511,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetConnectionDirectoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3551,8 +3551,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetConnectionDirectoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3591,8 +3591,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetConnectionDirectoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3631,8 +3631,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetConnectionDirectoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3671,8 +3671,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetConnectionDirectoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3711,8 +3711,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetConnectionDirectoryDefaultMappingArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3751,8 +3751,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetConnectionDirectoryDefaultMappingArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3791,8 +3791,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetConnectionDirectoryDefaultMappingArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3831,8 +3831,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetConnectionDirectoryDefaultMappingArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3871,8 +3871,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetConnectionDirectoryDefaultMappingArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3911,8 +3911,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetConnectionKeysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3952,8 +3952,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetConnectionKeysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3993,8 +3993,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetConnectionKeysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4034,8 +4034,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetConnectionKeysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4075,8 +4075,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetConnectionKeysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4119,8 +4119,8 @@ public final class Auth0Functions {
      * import com.pulumi.auth0.inputs.ConnectionProfileOrganizationArgs;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetConnectionProfileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4174,8 +4174,8 @@ public final class Auth0Functions {
      * import com.pulumi.auth0.inputs.ConnectionProfileOrganizationArgs;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetConnectionProfileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4229,8 +4229,8 @@ public final class Auth0Functions {
      * import com.pulumi.auth0.inputs.ConnectionProfileOrganizationArgs;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetConnectionProfileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4284,8 +4284,8 @@ public final class Auth0Functions {
      * import com.pulumi.auth0.inputs.ConnectionProfileOrganizationArgs;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetConnectionProfileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4339,8 +4339,8 @@ public final class Auth0Functions {
      * import com.pulumi.auth0.inputs.ConnectionProfileOrganizationArgs;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetConnectionProfileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4396,8 +4396,8 @@ public final class Auth0Functions {
      * import com.pulumi.auth0.ConnectionScimConfigurationArgs;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetConnectionScimConfigurationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4460,8 +4460,8 @@ public final class Auth0Functions {
      * import com.pulumi.auth0.ConnectionScimConfigurationArgs;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetConnectionScimConfigurationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4524,8 +4524,8 @@ public final class Auth0Functions {
      * import com.pulumi.auth0.ConnectionScimConfigurationArgs;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetConnectionScimConfigurationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4588,8 +4588,8 @@ public final class Auth0Functions {
      * import com.pulumi.auth0.ConnectionScimConfigurationArgs;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetConnectionScimConfigurationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4652,8 +4652,8 @@ public final class Auth0Functions {
      * import com.pulumi.auth0.ConnectionScimConfigurationArgs;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetConnectionScimConfigurationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4713,8 +4713,8 @@ public final class Auth0Functions {
      * import com.pulumi.auth0.CustomDomainArgs;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetCustomDomainArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4765,8 +4765,8 @@ public final class Auth0Functions {
      * import com.pulumi.auth0.CustomDomainArgs;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetCustomDomainArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4817,8 +4817,8 @@ public final class Auth0Functions {
      * import com.pulumi.auth0.CustomDomainArgs;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetCustomDomainArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4869,8 +4869,8 @@ public final class Auth0Functions {
      * import com.pulumi.auth0.CustomDomainArgs;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetCustomDomainArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4921,8 +4921,8 @@ public final class Auth0Functions {
      * import com.pulumi.auth0.CustomDomainArgs;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetCustomDomainArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4973,8 +4973,8 @@ public final class Auth0Functions {
      * import com.pulumi.auth0.CustomDomainArgs;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetCustomDomainArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5025,8 +5025,8 @@ public final class Auth0Functions {
      * import com.pulumi.auth0.CustomDomainArgs;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetCustomDomainArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5077,8 +5077,8 @@ public final class Auth0Functions {
      * import com.pulumi.auth0.CustomDomainArgs;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetCustomDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5139,8 +5139,8 @@ public final class Auth0Functions {
      * import com.pulumi.auth0.CustomDomainArgs;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetCustomDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5201,8 +5201,8 @@ public final class Auth0Functions {
      * import com.pulumi.auth0.CustomDomainArgs;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetCustomDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5263,8 +5263,8 @@ public final class Auth0Functions {
      * import com.pulumi.auth0.CustomDomainArgs;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetCustomDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5325,8 +5325,8 @@ public final class Auth0Functions {
      * import com.pulumi.auth0.CustomDomainArgs;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetCustomDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5387,8 +5387,8 @@ public final class Auth0Functions {
      * import com.pulumi.auth0.CustomDomainArgs;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetCustomDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5449,8 +5449,8 @@ public final class Auth0Functions {
      * import com.pulumi.auth0.CustomDomainArgs;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetCustomDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5509,8 +5509,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetEventStreamArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5550,8 +5550,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetEventStreamArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5591,8 +5591,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetEventStreamArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5632,8 +5632,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetEventStreamArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5673,8 +5673,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetEventStreamArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5714,8 +5714,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetFlowArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5755,8 +5755,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetFlowArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5796,8 +5796,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetFlowArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5837,8 +5837,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetFlowArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5878,8 +5878,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetFlowArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5919,8 +5919,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetFlowVaultConnectionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5960,8 +5960,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetFlowVaultConnectionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6001,8 +6001,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetFlowVaultConnectionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6042,8 +6042,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetFlowVaultConnectionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6083,8 +6083,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetFlowVaultConnectionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6124,8 +6124,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetFormArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6165,8 +6165,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetFormArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6206,8 +6206,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetFormArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6247,8 +6247,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetFormArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6288,8 +6288,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetFormArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6329,8 +6329,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetNetworkAclArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6370,8 +6370,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetNetworkAclArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6411,8 +6411,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetNetworkAclArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6452,8 +6452,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetNetworkAclArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6493,8 +6493,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetNetworkAclArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6534,8 +6534,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetOrganizationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6580,8 +6580,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetOrganizationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6626,8 +6626,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetOrganizationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6672,8 +6672,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetOrganizationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6718,8 +6718,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetOrganizationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6764,8 +6764,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetOrganizationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6810,8 +6810,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetOrganizationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6904,8 +6904,8 @@ public final class Auth0Functions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6941,8 +6941,8 @@ public final class Auth0Functions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6978,8 +6978,8 @@ public final class Auth0Functions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7015,8 +7015,8 @@ public final class Auth0Functions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7052,8 +7052,8 @@ public final class Auth0Functions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7089,8 +7089,8 @@ public final class Auth0Functions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7126,8 +7126,8 @@ public final class Auth0Functions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7234,8 +7234,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetPromptScreenPartialsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7274,8 +7274,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetPromptScreenPartialsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7314,8 +7314,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetPromptScreenPartialsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7354,8 +7354,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetPromptScreenPartialsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7394,8 +7394,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetPromptScreenPartialsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7469,8 +7469,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetResourceServerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7515,8 +7515,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetResourceServerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7561,8 +7561,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetResourceServerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7607,8 +7607,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetResourceServerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7653,8 +7653,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetResourceServerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7699,8 +7699,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetResourceServerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7745,8 +7745,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetResourceServerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7791,8 +7791,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetRoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7837,8 +7837,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetRoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7883,8 +7883,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetRoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7929,8 +7929,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetRoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7975,8 +7975,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetRoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8021,8 +8021,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetRoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8067,8 +8067,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetRoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8113,8 +8113,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetSelfServiceProfileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8154,8 +8154,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetSelfServiceProfileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8195,8 +8195,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetSelfServiceProfileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8236,8 +8236,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetSelfServiceProfileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8277,8 +8277,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetSelfServiceProfileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8307,12 +8307,16 @@ public final class Auth0Functions {
     /**
      * Data source to retrieve signing keys used by the applications in your tenant. [Learn more](https://auth0.com/docs/get-started/tenant-settings/signing-keys).
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetSigningKeysResult> getSigningKeys() {
         return getSigningKeys(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
      * Data source to retrieve signing keys used by the applications in your tenant. [Learn more](https://auth0.com/docs/get-started/tenant-settings/signing-keys).
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetSigningKeysResult> getSigningKeysPlain() {
@@ -8321,12 +8325,16 @@ public final class Auth0Functions {
     /**
      * Data source to retrieve signing keys used by the applications in your tenant. [Learn more](https://auth0.com/docs/get-started/tenant-settings/signing-keys).
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetSigningKeysResult> getSigningKeys(InvokeArgs args) {
         return getSigningKeys(args, InvokeOptions.Empty);
     }
     /**
      * Data source to retrieve signing keys used by the applications in your tenant. [Learn more](https://auth0.com/docs/get-started/tenant-settings/signing-keys).
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetSigningKeysResult> getSigningKeysPlain(InvokeArgs args) {
@@ -8335,6 +8343,8 @@ public final class Auth0Functions {
     /**
      * Data source to retrieve signing keys used by the applications in your tenant. [Learn more](https://auth0.com/docs/get-started/tenant-settings/signing-keys).
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetSigningKeysResult> getSigningKeys(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("auth0:index/getSigningKeys:getSigningKeys", TypeShape.of(GetSigningKeysResult.class), args, Utilities.withVersion(options));
@@ -8342,12 +8352,16 @@ public final class Auth0Functions {
     /**
      * Data source to retrieve signing keys used by the applications in your tenant. [Learn more](https://auth0.com/docs/get-started/tenant-settings/signing-keys).
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetSigningKeysResult> getSigningKeys(InvokeArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("auth0:index/getSigningKeys:getSigningKeys", TypeShape.of(GetSigningKeysResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source to retrieve signing keys used by the applications in your tenant. [Learn more](https://auth0.com/docs/get-started/tenant-settings/signing-keys).
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetSigningKeysResult> getSigningKeysPlain(InvokeArgs args, InvokeOptions options) {
@@ -8366,8 +8380,8 @@ public final class Auth0Functions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8403,8 +8417,8 @@ public final class Auth0Functions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8440,8 +8454,8 @@ public final class Auth0Functions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8477,8 +8491,8 @@ public final class Auth0Functions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8514,8 +8528,8 @@ public final class Auth0Functions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8551,8 +8565,8 @@ public final class Auth0Functions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8588,8 +8602,8 @@ public final class Auth0Functions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8626,8 +8640,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetTokenExchangeProfileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8667,8 +8681,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetTokenExchangeProfileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8708,8 +8722,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetTokenExchangeProfileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8749,8 +8763,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetTokenExchangeProfileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8790,8 +8804,8 @@ public final class Auth0Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetTokenExchangeProfileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

@@ -26,7 +26,7 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var user = new Auth0.Index.User("user", new()
+    ///     var user = new Auth0.User("user", new()
     ///     {
     ///         Email = "test-user@auth0.com",
     ///         ConnectionName = "Username-Password-Authentication",
@@ -34,13 +34,13 @@ namespace Pulumi.Auth0
     ///         Password = "MyPass123$",
     ///     });
     /// 
-    ///     var myOrg = new Auth0.Index.Organization("my_org", new()
+    ///     var myOrg = new Auth0.Organization("my_org", new()
     ///     {
     ///         Name = "org-admin",
     ///         DisplayName = "Admin",
     ///     });
     /// 
-    ///     var myOrgMember = new Auth0.Index.OrganizationMember("my_org_member", new()
+    ///     var myOrgMember = new Auth0.OrganizationMember("my_org_member", new()
     ///     {
     ///         OrganizationId = myOrg.Id,
     ///         UserId = user.Id,

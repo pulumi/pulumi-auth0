@@ -23,12 +23,12 @@ namespace Pulumi.Auth0
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // The following example grants a client the "create:foo" and "create:bar" permissions (scopes).
-    ///     var myClient = new Auth0.Index.Client("my_client", new()
+    ///     var myClient = new Auth0.Client("my_client", new()
     ///     {
     ///         Name = "Example Application - Client Grant (Managed by Terraform)",
     ///     });
     /// 
-    ///     var myResourceServer = new Auth0.Index.ResourceServer("my_resource_server", new()
+    ///     var myResourceServer = new Auth0.ResourceServer("my_resource_server", new()
     ///     {
     ///         Name = "Example Resource Server - Client Grant (Managed by Terraform)",
     ///         Identifier = "https://api.example.com/client-grant",
@@ -56,7 +56,7 @@ namespace Pulumi.Auth0
     ///         },
     ///     });
     /// 
-    ///     var myScopes = new Auth0.Index.ResourceServerScopes("my_scopes", new()
+    ///     var myScopes = new Auth0.ResourceServerScopes("my_scopes", new()
     ///     {
     ///         ResourceServerIdentifier = myResourceServer.Identifier,
     ///         Scopes = new[]
@@ -80,7 +80,7 @@ namespace Pulumi.Auth0
     ///         },
     ///     });
     /// 
-    ///     var myClientGrant = new Auth0.Index.ClientGrant("my_client_grant", new()
+    ///     var myClientGrant = new Auth0.ClientGrant("my_client_grant", new()
     ///     {
     ///         ClientId = myClient.Id,
     ///         Audience = myResourceServer.Identifier,

@@ -31,7 +31,7 @@ namespace Pulumi.Auth0
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // This is an example of an Auth0 connection.
-    ///     var myConnection = new Auth0.Index.Connection("my_connection", new()
+    ///     var myConnection = new Auth0.Connection("my_connection", new()
     ///     {
     ///         Name = "Example-Connection",
     ///         IsDomainConnection = true,
@@ -147,7 +147,7 @@ namespace Pulumi.Auth0
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // This is an example of a Google OAuth2 connection.
-    ///     var googleOauth2 = new Auth0.Index.Connection("google_oauth2", new()
+    ///     var googleOauth2 = new Auth0.Connection("google_oauth2", new()
     ///     {
     ///         Name = "Google-OAuth2-Connection",
     ///         Strategy = "google-oauth2",
@@ -190,7 +190,7 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var googleApps = new Auth0.Index.Connection("google_apps", new()
+    ///     var googleApps = new Auth0.Connection("google_apps", new()
     ///     {
     ///         Name = "connection-google-apps",
     ///         IsDomainConnection = false,
@@ -244,7 +244,7 @@ namespace Pulumi.Auth0
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // This is an example of a Facebook connection.
-    ///     var facebook = new Auth0.Index.Connection("facebook", new()
+    ///     var facebook = new Auth0.Connection("facebook", new()
     ///     {
     ///         Name = "Facebook-Connection",
     ///         Strategy = "facebook",
@@ -282,7 +282,7 @@ namespace Pulumi.Auth0
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // This is an example of an Apple connection.
-    ///     var apple = new Auth0.Index.Connection("apple", new()
+    ///     var apple = new Auth0.Connection("apple", new()
     ///     {
     ///         Name = "Apple-Connection",
     ///         Strategy = "apple",
@@ -322,7 +322,7 @@ namespace Pulumi.Auth0
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // This is an example of an LinkedIn connection.
-    ///     var linkedin = new Auth0.Index.Connection("linkedin", new()
+    ///     var linkedin = new Auth0.Connection("linkedin", new()
     ///     {
     ///         Name = "Linkedin-Connection",
     ///         Strategy = "linkedin",
@@ -360,7 +360,7 @@ namespace Pulumi.Auth0
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // This is an example of an GitHub connection.
-    ///     var github = new Auth0.Index.Connection("github", new()
+    ///     var github = new Auth0.Connection("github", new()
     ///     {
     ///         Name = "GitHub-Connection",
     ///         Strategy = "github",
@@ -398,7 +398,7 @@ namespace Pulumi.Auth0
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // This is an example of an SalesForce connection.
-    ///     var salesforce = new Auth0.Index.Connection("salesforce", new()
+    ///     var salesforce = new Auth0.Connection("salesforce", new()
     ///     {
     ///         Name = "Salesforce-Connection",
     ///         Strategy = "salesforce",
@@ -437,7 +437,7 @@ namespace Pulumi.Auth0
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // This is an example of an OAuth2 connection.
-    ///     var oauth2 = new Auth0.Index.Connection("oauth2", new()
+    ///     var oauth2 = new Auth0.Connection("oauth2", new()
     ///     {
     ///         Name = "OAuth2-Connection",
     ///         Strategy = "oauth2",
@@ -499,7 +499,7 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var ad = new Auth0.Index.Connection("ad", new()
+    ///     var ad = new Auth0.Connection("ad", new()
     ///     {
     ///         Name = "connection-active-directory",
     ///         DisplayName = "Active Directory Connection",
@@ -555,7 +555,7 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var azureAd = new Auth0.Index.Connection("azure_ad", new()
+    ///     var azureAd = new Auth0.Connection("azure_ad", new()
     ///     {
     ///         Name = "connection-azure-ad",
     ///         Strategy = "waad",
@@ -620,7 +620,7 @@ namespace Pulumi.Auth0
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // This is an example of an Email connection.
-    ///     var passwordlessEmail = new Auth0.Index.Connection("passwordless_email", new()
+    ///     var passwordlessEmail = new Auth0.Connection("passwordless_email", new()
     ///     {
     ///         Strategy = "email",
     ///         Name = "email",
@@ -663,7 +663,7 @@ namespace Pulumi.Auth0
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // This is an example of a SAML connection.
-    ///     var samlp = new Auth0.Index.Connection("samlp", new()
+    ///     var samlp = new Auth0.Connection("samlp", new()
     ///     {
     ///         Name = "SAML-Connection",
     ///         Strategy = "samlp",
@@ -760,7 +760,7 @@ namespace Pulumi.Auth0
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // This is an example of a WindowsLive connection.
-    ///     var windowslive = new Auth0.Index.Connection("windowslive", new()
+    ///     var windowslive = new Auth0.Connection("windowslive", new()
     ///     {
     ///         Name = "Windowslive-Connection",
     ///         Strategy = "windowslive",
@@ -798,7 +798,7 @@ namespace Pulumi.Auth0
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // This is an example of an OIDC connection.
-    ///     var oidc = new Auth0.Index.Connection("oidc", new()
+    ///     var oidc = new Auth0.Connection("oidc", new()
     ///     {
     ///         Name = "oidc-connection",
     ///         DisplayName = "OIDC Connection",
@@ -873,7 +873,7 @@ namespace Pulumi.Auth0
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // This is an example of an Okta Workforce connection.
-    ///     var okta = new Auth0.Index.Connection("okta", new()
+    ///     var okta = new Auth0.Connection("okta", new()
     ///     {
     ///         Name = "okta-connection",
     ///         DisplayName = "Okta Workforce Connection",

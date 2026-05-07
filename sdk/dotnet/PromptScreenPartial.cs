@@ -27,7 +27,7 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var login = new Auth0.Index.PromptScreenPartial("login", new()
+    ///     var login = new Auth0.PromptScreenPartial("login", new()
     ///     {
     ///         PromptType = "login",
     ///         ScreenName = "login",
@@ -38,7 +38,7 @@ namespace Pulumi.Auth0
     ///         },
     ///     });
     /// 
-    ///     var customized_consent = new Auth0.Index.PromptScreenPartial("customized-consent", new()
+    ///     var customized_consent = new Auth0.PromptScreenPartial("customized-consent", new()
     ///     {
     ///         PromptType = "customized-consent",
     ///         ScreenName = "customized-consent",
