@@ -26,12 +26,12 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myClient = new Auth0.Index.Client("my_client", new()
+    ///     var myClient = new Auth0.Client("my_client", new()
     ///     {
     ///         Name = "My-Auth0-Client",
     ///     });
     /// 
-    ///     var oidc = new Auth0.Index.Connection("oidc", new()
+    ///     var oidc = new Auth0.Connection("oidc", new()
     ///     {
     ///         Name = "OIDC-Connection",
     ///         Strategy = "oidc",
@@ -54,7 +54,7 @@ namespace Pulumi.Auth0
     ///     });
     /// 
     ///     // Resource used to rotate the keys for above OIDC connection
-    ///     var myKeys = new Auth0.Index.ConnectionKeys("my_keys", new()
+    ///     var myKeys = new Auth0.ConnectionKeys("my_keys", new()
     ///     {
     ///         ConnectionId = oidc.Id,
     ///         Triggers = 

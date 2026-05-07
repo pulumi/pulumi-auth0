@@ -25,13 +25,13 @@ namespace Pulumi.Auth0
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // An Auth0 Resource Server loaded using its identifier.
-        ///     var some_resource_server_by_identifier = Auth0.Index.GetResourceServer.Invoke(new()
+        ///     var some_resource_server_by_identifier = Auth0.GetResourceServer.Invoke(new()
         ///     {
         ///         Identifier = "https://my-api.com/v1",
         ///     });
         /// 
         ///     // An Auth0 Resource Server loaded using its ID.
-        ///     var some_resource_server_by_id = Auth0.Index.GetResourceServer.Invoke(new()
+        ///     var some_resource_server_by_id = Auth0.GetResourceServer.Invoke(new()
         ///     {
         ///         ResourceServerId = "abcdefghkijklmnopqrstuvwxyz0123456789",
         ///     });
@@ -56,13 +56,13 @@ namespace Pulumi.Auth0
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // An Auth0 Resource Server loaded using its identifier.
-        ///     var some_resource_server_by_identifier = Auth0.Index.GetResourceServer.Invoke(new()
+        ///     var some_resource_server_by_identifier = Auth0.GetResourceServer.Invoke(new()
         ///     {
         ///         Identifier = "https://my-api.com/v1",
         ///     });
         /// 
         ///     // An Auth0 Resource Server loaded using its ID.
-        ///     var some_resource_server_by_id = Auth0.Index.GetResourceServer.Invoke(new()
+        ///     var some_resource_server_by_id = Auth0.GetResourceServer.Invoke(new()
         ///     {
         ///         ResourceServerId = "abcdefghkijklmnopqrstuvwxyz0123456789",
         ///     });
@@ -87,13 +87,13 @@ namespace Pulumi.Auth0
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // An Auth0 Resource Server loaded using its identifier.
-        ///     var some_resource_server_by_identifier = Auth0.Index.GetResourceServer.Invoke(new()
+        ///     var some_resource_server_by_identifier = Auth0.GetResourceServer.Invoke(new()
         ///     {
         ///         Identifier = "https://my-api.com/v1",
         ///     });
         /// 
         ///     // An Auth0 Resource Server loaded using its ID.
-        ///     var some_resource_server_by_id = Auth0.Index.GetResourceServer.Invoke(new()
+        ///     var some_resource_server_by_id = Auth0.GetResourceServer.Invoke(new()
         ///     {
         ///         ResourceServerId = "abcdefghkijklmnopqrstuvwxyz0123456789",
         ///     });

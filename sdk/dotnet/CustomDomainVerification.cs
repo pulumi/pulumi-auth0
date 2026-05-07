@@ -25,20 +25,20 @@ namespace Pulumi.Auth0
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Example of a custom domain managed through DigitalOcean and verified using this resource.
-    ///     var myCustomDomain = new Auth0.Index.CustomDomain("my_custom_domain", new()
+    ///     var myCustomDomain = new Auth0.CustomDomain("my_custom_domain", new()
     ///     {
     ///         Domain = "login.example.com",
     ///         Type = "auth0_managed_certs",
     ///     });
     /// 
-    ///     var myDomainNameRecord = new Digitalocean.Index.Record("my_domain_name_record", new()
+    ///     var myDomainNameRecord = new Digitalocean.Record("my_domain_name_record", new()
     ///     {
     ///         Domain = "example.com",
-    ///         Type = Std.Index.Upper.Invoke(new()
+    ///         Type = Std.Upper.Invoke(new()
     ///         {
     ///             Input = myCustomDomain.Verifications[0].Methods[0]?.Name,
     ///         }).Result,
-    ///         Name = Std.Index.Trimsuffix.Invoke(new()
+    ///         Name = Std.Trimsuffix.Invoke(new()
     ///         {
     ///             Input = myCustomDomain.Verifications[0].Methods[0]?.Domain,
     ///             Suffix = ".example.com",
@@ -46,7 +46,7 @@ namespace Pulumi.Auth0
     ///         Value = myCustomDomain.Verifications[0].Methods[0]?.Record,
     ///     });
     /// 
-    ///     var myCustomDomainVerification = new Auth0.Index.CustomDomainVerification("my_custom_domain_verification", new()
+    ///     var myCustomDomainVerification = new Auth0.CustomDomainVerification("my_custom_domain_verification", new()
     ///     {
     ///         CustomDomainId = myCustomDomain.Id,
     ///     }, new CustomResourceOptions

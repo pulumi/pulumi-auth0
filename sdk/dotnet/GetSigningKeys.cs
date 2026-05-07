@@ -13,18 +13,24 @@ namespace Pulumi.Auth0
     {
         /// <summary>
         /// Data source to retrieve signing keys used by the applications in your tenant. [Learn more](https://auth0.com/docs/get-started/tenant-settings/signing-keys).
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Task<GetSigningKeysResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSigningKeysResult>("auth0:index/getSigningKeys:getSigningKeys", InvokeArgs.Empty, options.WithDefaults());
 
         /// <summary>
         /// Data source to retrieve signing keys used by the applications in your tenant. [Learn more](https://auth0.com/docs/get-started/tenant-settings/signing-keys).
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Output<GetSigningKeysResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSigningKeysResult>("auth0:index/getSigningKeys:getSigningKeys", InvokeArgs.Empty, options.WithDefaults());
 
         /// <summary>
         /// Data source to retrieve signing keys used by the applications in your tenant. [Learn more](https://auth0.com/docs/get-started/tenant-settings/signing-keys).
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Output<GetSigningKeysResult> Invoke(InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetSigningKeysResult>("auth0:index/getSigningKeys:getSigningKeys", InvokeArgs.Empty, options.WithDefaults());

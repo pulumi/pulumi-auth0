@@ -28,6 +28,8 @@ import * as utilities from "./utilities";
  *     name: "Firstname Lastname",
  *     email: "test@test.com",
  *     password: "passpass$12$12",
+ * }, {
+ *     ignoreChanges: [roles],
  * });
  * const userRoles = new auth0.UserRoles("user_roles", {
  *     userId: user.id,

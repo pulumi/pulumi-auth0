@@ -22,7 +22,7 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myEnterpriseConnection = new Auth0.Index.Connection("my_enterprise_connection", new()
+    ///     var myEnterpriseConnection = new Auth0.Connection("my_enterprise_connection", new()
     ///     {
     ///         Name = "my-enterprise-connection",
     ///         DisplayName = "My Enterprise Connection",
@@ -38,7 +38,7 @@ namespace Pulumi.Auth0
     ///         },
     ///     });
     /// 
-    ///     var myEnterpriseConnection2 = new Auth0.Index.Connection("my_enterprise_connection_2", new()
+    ///     var myEnterpriseConnection2 = new Auth0.Connection("my_enterprise_connection_2", new()
     ///     {
     ///         Name = "my-enterprise-connection-2",
     ///         DisplayName = "My Enterprise Connection 2",
@@ -56,14 +56,14 @@ namespace Pulumi.Auth0
     /// 
     ///     // A resource for configuring an Auth0 Connection SCIM Configuration, using default values.
     ///     // Only one can be specified for a connection.
-    ///     var myConnScimConfigurationDefault = new Auth0.Index.ConnectionScimConfiguration("my_conn_scim_configuration_default", new()
+    ///     var myConnScimConfigurationDefault = new Auth0.ConnectionScimConfiguration("my_conn_scim_configuration_default", new()
     ///     {
     ///         ConnectionId = myEnterpriseConnection.Id,
     ///     });
     /// 
     ///     // A resource for configuring an Auth0 Connection SCIM Configuration, specifying `user_id_attribute` and `mapping`.
     ///     // Only one can be specified for a connection.
-    ///     var myConnScimConfiguration = new Auth0.Index.ConnectionScimConfiguration("my_conn_scim_configuration", new()
+    ///     var myConnScimConfiguration = new Auth0.ConnectionScimConfiguration("my_conn_scim_configuration", new()
     ///     {
     ///         ConnectionId = myEnterpriseConnection2.Id,
     ///         UserIdAttribute = "attribute1",

@@ -23,7 +23,7 @@ namespace Pulumi.Auth0
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Example:
-    ///     var myConnection = new Auth0.Index.FlowVaultConnection("my_connection", new()
+    ///     var myConnection = new Auth0.FlowVaultConnection("my_connection", new()
     ///     {
     ///         AppId = "AUTH0",
     ///         Name = "Auth0 M2M Connection",

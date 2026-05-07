@@ -25,7 +25,7 @@ namespace Pulumi.Auth0
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // An Auth0 Connection Keys loaded using its Connection ID.
-        ///     var myKeys = Auth0.Index.GetConnectionKeys.Invoke(new()
+        ///     var myKeys = Auth0.GetConnectionKeys.Invoke(new()
         ///     {
         ///         ConnectionId = "con_xxxxxxxxxxxxx",
         ///     });
@@ -50,7 +50,7 @@ namespace Pulumi.Auth0
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // An Auth0 Connection Keys loaded using its Connection ID.
-        ///     var myKeys = Auth0.Index.GetConnectionKeys.Invoke(new()
+        ///     var myKeys = Auth0.GetConnectionKeys.Invoke(new()
         ///     {
         ///         ConnectionId = "con_xxxxxxxxxxxxx",
         ///     });
@@ -75,7 +75,7 @@ namespace Pulumi.Auth0
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // An Auth0 Connection Keys loaded using its Connection ID.
-        ///     var myKeys = Auth0.Index.GetConnectionKeys.Invoke(new()
+        ///     var myKeys = Auth0.GetConnectionKeys.Invoke(new()
         ///     {
         ///         ConnectionId = "con_xxxxxxxxxxxxx",
         ///     });

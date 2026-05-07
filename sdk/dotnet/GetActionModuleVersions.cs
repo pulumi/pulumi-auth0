@@ -26,7 +26,7 @@ namespace Pulumi.Auth0
         /// {
         ///     // Example: Retrieve all published versions of an action module
         ///     // Create and publish an action module
-        ///     var myModule = new Auth0.Index.ActionModule("my_module", new()
+        ///     var myModule = new Auth0.ActionModule("my_module", new()
         ///     {
         ///         Name = "My Shared Module",
         ///         Publish = true,
@@ -39,14 +39,14 @@ namespace Pulumi.Auth0
         ///     });
         /// 
         ///     // Retrieve all published versions of the module
-        ///     var myModuleVersions = Auth0.Index.GetActionModuleVersions.Invoke(new()
+        ///     var myModuleVersions = Auth0.GetActionModuleVersions.Invoke(new()
         ///     {
         ///         ModuleId = myModule.Id,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["totalVersions"] = myModuleVersions.Apply(getActionModuleVersionsResult =&gt; getActionModuleVersionsResult.Versions).Length,
+        ///         ["totalVersions"] = myModuleVersions.Apply(getActionModuleVersionsResult =&gt; getActionModuleVersionsResult.Versions).Length(),
         ///         ["latestVersionNumber"] = myModuleVersions.Apply(getActionModuleVersionsResult =&gt; getActionModuleVersionsResult.Versions[0]?.VersionNumber),
         ///         ["versionIds"] = .Select(v =&gt; 
         ///         {
@@ -74,7 +74,7 @@ namespace Pulumi.Auth0
         /// {
         ///     // Example: Retrieve all published versions of an action module
         ///     // Create and publish an action module
-        ///     var myModule = new Auth0.Index.ActionModule("my_module", new()
+        ///     var myModule = new Auth0.ActionModule("my_module", new()
         ///     {
         ///         Name = "My Shared Module",
         ///         Publish = true,
@@ -87,14 +87,14 @@ namespace Pulumi.Auth0
         ///     });
         /// 
         ///     // Retrieve all published versions of the module
-        ///     var myModuleVersions = Auth0.Index.GetActionModuleVersions.Invoke(new()
+        ///     var myModuleVersions = Auth0.GetActionModuleVersions.Invoke(new()
         ///     {
         ///         ModuleId = myModule.Id,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["totalVersions"] = myModuleVersions.Apply(getActionModuleVersionsResult =&gt; getActionModuleVersionsResult.Versions).Length,
+        ///         ["totalVersions"] = myModuleVersions.Apply(getActionModuleVersionsResult =&gt; getActionModuleVersionsResult.Versions).Length(),
         ///         ["latestVersionNumber"] = myModuleVersions.Apply(getActionModuleVersionsResult =&gt; getActionModuleVersionsResult.Versions[0]?.VersionNumber),
         ///         ["versionIds"] = .Select(v =&gt; 
         ///         {
@@ -122,7 +122,7 @@ namespace Pulumi.Auth0
         /// {
         ///     // Example: Retrieve all published versions of an action module
         ///     // Create and publish an action module
-        ///     var myModule = new Auth0.Index.ActionModule("my_module", new()
+        ///     var myModule = new Auth0.ActionModule("my_module", new()
         ///     {
         ///         Name = "My Shared Module",
         ///         Publish = true,
@@ -135,14 +135,14 @@ namespace Pulumi.Auth0
         ///     });
         /// 
         ///     // Retrieve all published versions of the module
-        ///     var myModuleVersions = Auth0.Index.GetActionModuleVersions.Invoke(new()
+        ///     var myModuleVersions = Auth0.GetActionModuleVersions.Invoke(new()
         ///     {
         ///         ModuleId = myModule.Id,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["totalVersions"] = myModuleVersions.Apply(getActionModuleVersionsResult =&gt; getActionModuleVersionsResult.Versions).Length,
+        ///         ["totalVersions"] = myModuleVersions.Apply(getActionModuleVersionsResult =&gt; getActionModuleVersionsResult.Versions).Length(),
         ///         ["latestVersionNumber"] = myModuleVersions.Apply(getActionModuleVersionsResult =&gt; getActionModuleVersionsResult.Versions[0]?.VersionNumber),
         ///         ["versionIds"] = .Select(v =&gt; 
         ///         {

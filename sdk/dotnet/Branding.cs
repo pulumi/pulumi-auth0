@@ -23,7 +23,7 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myBrand = new Auth0.Index.Branding("my_brand", new()
+    ///     var myBrand = new Auth0.Branding("my_brand", new()
     ///     {
     ///         LogoUrl = "https://mycompany.org/logo.png",
     ///         Colors = new Auth0.Inputs.BrandingColorsArgs
@@ -33,7 +33,7 @@ namespace Pulumi.Auth0
     ///         },
     ///         UniversalLogin = new Auth0.Inputs.BrandingUniversalLoginArgs
     ///         {
-    ///             Body = Std.Index.File.Invoke(new()
+    ///             Body = Std.File.Invoke(new()
     ///             {
     ///                 Input = "universal_login_body.html",
     ///             }).Result,

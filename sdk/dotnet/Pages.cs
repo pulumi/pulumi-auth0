@@ -25,7 +25,7 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myPages = new Auth0.Index.Pages("my_pages", new()
+    ///     var myPages = new Auth0.Pages("my_pages", new()
     ///     {
     ///         Login = new Auth0.Inputs.PagesLoginArgs
     ///         {
