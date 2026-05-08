@@ -183,39 +183,39 @@ export interface EmailTemplateState {
     /**
      * Body of the email template. You can include [common variables](https://auth0.com/docs/customize/email/email-templates#common-variables).
      */
-    body?: pulumi.Input<string>;
+    body?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the template is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Email address to use as the sender. You can include [common variables](https://auth0.com/docs/customize/email/email-templates#common-variables).
      */
-    from?: pulumi.Input<string>;
+    from?: pulumi.Input<string | undefined>;
     /**
      * Whether the `resetEmail` and `verifyEmail` templates should include the user's email address as the email parameter in the `returnUrl` (true) or whether no email address should be included in the redirect (false). Defaults to `true`.
      */
-    includeEmailInRedirect?: pulumi.Input<boolean>;
+    includeEmailInRedirect?: pulumi.Input<boolean | undefined>;
     /**
      * URL to redirect the user to after a successful action. [Learn more](https://auth0.com/docs/customize/email/email-templates#configure-template-fields).
      */
-    resultUrl?: pulumi.Input<string>;
+    resultUrl?: pulumi.Input<string | undefined>;
     /**
      * Subject line of the email. You can include [common variables](https://auth0.com/docs/customize/email/email-templates#common-variables).
      */
-    subject?: pulumi.Input<string>;
+    subject?: pulumi.Input<string | undefined>;
     /**
      * Syntax of the template body. You can use either text or HTML with Liquid syntax.
      */
-    syntax?: pulumi.Input<string>;
+    syntax?: pulumi.Input<string | undefined>;
     /**
      * Template name. Options include `verifyEmail`, `verifyEmailByCode`, `resetEmail`, `resetEmailByCode`, `welcomeEmail`, `blockedAccount`, `stolenCredentials`, `enrollmentEmail`, `mfaOobCode`, `userInvitation`, `changePassword` (legacy), `passwordReset` (legacy), or `asyncApproval`.
      */
-    template?: pulumi.Input<string>;
+    template?: pulumi.Input<string | undefined>;
     /**
      * Number of seconds during which the link within the email will be valid.
      */
-    urlLifetimeInSeconds?: pulumi.Input<number>;
+    urlLifetimeInSeconds?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -237,11 +237,11 @@ export interface EmailTemplateArgs {
     /**
      * Whether the `resetEmail` and `verifyEmail` templates should include the user's email address as the email parameter in the `returnUrl` (true) or whether no email address should be included in the redirect (false). Defaults to `true`.
      */
-    includeEmailInRedirect?: pulumi.Input<boolean>;
+    includeEmailInRedirect?: pulumi.Input<boolean | undefined>;
     /**
      * URL to redirect the user to after a successful action. [Learn more](https://auth0.com/docs/customize/email/email-templates#configure-template-fields).
      */
-    resultUrl?: pulumi.Input<string>;
+    resultUrl?: pulumi.Input<string | undefined>;
     /**
      * Subject line of the email. You can include [common variables](https://auth0.com/docs/customize/email/email-templates#common-variables).
      */
@@ -257,5 +257,5 @@ export interface EmailTemplateArgs {
     /**
      * Number of seconds during which the link within the email will be valid.
      */
-    urlLifetimeInSeconds?: pulumi.Input<number>;
+    urlLifetimeInSeconds?: pulumi.Input<number | undefined>;
 }

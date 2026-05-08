@@ -162,19 +162,19 @@ export interface NetworkAclState {
     /**
      * Whether the Network ACL is active
      */
-    active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean | undefined>;
     /**
      * The description of the Network ACL
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The priority of the Network ACL. Must be unique between 1 and 10.
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * The rule of the Network ACL
      */
-    rule?: pulumi.Input<inputs.NetworkAclRule>;
+    rule?: pulumi.Input<inputs.NetworkAclRule | undefined>;
 }
 
 /**

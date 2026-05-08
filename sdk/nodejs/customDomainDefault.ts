@@ -97,7 +97,7 @@ export interface CustomDomainDefaultState {
     /**
      * The custom domain name or canonical domain name to set as the default domain for the tenant.
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
 }
 
 /**

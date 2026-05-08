@@ -8,6 +8,35 @@ import * as utilities from "./utilities";
 
 /**
  * Data source to retrieve signing keys used by the applications in your tenant. [Learn more](https://auth0.com/docs/get-started/tenant-settings/signing-keys).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * function tryOutput_(
+ * 	...fns: Array<() => pulumi.Input<any>>
+ * ): pulumi.Output<any> {
+ * 	if (fns.length === 0) {
+ * 		throw new Error("try: all parameters failed");
+ * 	}
+ * 	const [fn, ...rest] = fns;
+ * 	try {
+ * 		return pulumi.output(fn()).apply(result => result !== undefined ? result : tryOutput_(...rest));
+ * 	} catch {
+ * 		return tryOutput_(...rest);
+ * 	}
+ * 	throw new Error("try: all parameters failed");
+ * }
+ *
+ *
+ * const myKeys = auth0.getSigningKeys({});
+ * export const currentKey = tryOutput_(
+ *     () => myKeys.then(myKeys => .filter(key => key.current).map(key => (key.kid)))[0],
+ *     () => "No current key found"
+ * );
+ * ```
  */
 export function getSigningKeys(opts?: pulumi.InvokeOptions): Promise<GetSigningKeysResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -30,6 +59,35 @@ export interface GetSigningKeysResult {
 }
 /**
  * Data source to retrieve signing keys used by the applications in your tenant. [Learn more](https://auth0.com/docs/get-started/tenant-settings/signing-keys).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as auth0 from "@pulumi/auth0";
+ *
+ * function tryOutput_(
+ * 	...fns: Array<() => pulumi.Input<any>>
+ * ): pulumi.Output<any> {
+ * 	if (fns.length === 0) {
+ * 		throw new Error("try: all parameters failed");
+ * 	}
+ * 	const [fn, ...rest] = fns;
+ * 	try {
+ * 		return pulumi.output(fn()).apply(result => result !== undefined ? result : tryOutput_(...rest));
+ * 	} catch {
+ * 		return tryOutput_(...rest);
+ * 	}
+ * 	throw new Error("try: all parameters failed");
+ * }
+ *
+ *
+ * const myKeys = auth0.getSigningKeys({});
+ * export const currentKey = tryOutput_(
+ *     () => myKeys.then(myKeys => .filter(key => key.current).map(key => (key.kid)))[0],
+ *     () => "No current key found"
+ * );
+ * ```
  */
 export function getSigningKeysOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSigningKeysResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

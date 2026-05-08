@@ -73,7 +73,7 @@ export interface RiskAssessmentsState {
     /**
      * Whether risk assessment is enabled or not.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**

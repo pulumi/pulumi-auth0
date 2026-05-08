@@ -313,9 +313,9 @@ export interface GetClientOutputArgs {
     /**
      * The ID of the client. If not provided, `name` must be set.
      */
-    clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
     /**
      * The name of the client. If not provided, `clientId` must be set.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

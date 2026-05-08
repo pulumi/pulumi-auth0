@@ -116,7 +116,7 @@ def get_custom_domains(query: Optional[_builtins.str] = None,
         custom_domains=pulumi.get(__ret__, 'custom_domains'),
         id=pulumi.get(__ret__, 'id'),
         query=pulumi.get(__ret__, 'query'))
-def get_custom_domains_output(query: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_custom_domains_output(query: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCustomDomainsResult]:
     """
     Data source to retrieve multiple custom domains based on a search query. EA Only.

@@ -23,21 +23,21 @@ namespace Pulumi.Auth0
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create an Organization
-    ///     var myOrganization = new Auth0.Index.Organization("my_organization", new()
+    ///     var myOrganization = new Auth0.Organization("my_organization", new()
     ///     {
     ///         Name = "test-org-acceptance-testing",
     ///         DisplayName = "Test Org Acceptance Testing",
     ///     });
     /// 
     ///     // Create a Resource Server
-    ///     var newResourceServer = new Auth0.Index.ResourceServer("new_resource_server", new()
+    ///     var newResourceServer = new Auth0.ResourceServer("new_resource_server", new()
     ///     {
     ///         Name = "Example API",
     ///         Identifier = "https://api.travel00123.com/",
     ///     });
     /// 
     ///     // Create a Client by referencing the newly created organisation or by reference an existing one.
-    ///     var myTestClient = new Auth0.Index.Client("my_test_client", new()
+    ///     var myTestClient = new Auth0.Client("my_test_client", new()
     ///     {
     ///         Name = "test_client",
     ///         OrganizationUsage = "allow",
@@ -59,7 +59,7 @@ namespace Pulumi.Auth0
     ///     });
     /// 
     ///     // Create a client grant which is associated with the client and resource server.
-    ///     var myClientGrant = new Auth0.Index.ClientGrant("my_client_grant", new()
+    ///     var myClientGrant = new Auth0.ClientGrant("my_client_grant", new()
     ///     {
     ///         ClientId = myTestClient.Id,
     ///         Audience = newResourceServer.Identifier,
@@ -80,7 +80,7 @@ namespace Pulumi.Auth0
     ///     });
     /// 
     ///     // Create the organization and client grant association
-    ///     var associateOrgClientGrant = new Auth0.Index.OrganizationClientGrant("associate_org_client_grant", new()
+    ///     var associateOrgClientGrant = new Auth0.OrganizationClientGrant("associate_org_client_grant", new()
     ///     {
     ///         OrganizationId = myOrganization.Id,
     ///         GrantId = myClientGrant.Id,

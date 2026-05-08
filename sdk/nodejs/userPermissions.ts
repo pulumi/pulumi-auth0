@@ -144,11 +144,11 @@ export interface UserPermissionsState {
     /**
      * List of API permissions granted to the user.
      */
-    permissions?: pulumi.Input<pulumi.Input<inputs.UserPermissionsPermission>[]>;
+    permissions?: pulumi.Input<pulumi.Input<inputs.UserPermissionsPermission>[] | undefined>;
     /**
      * ID of the user to associate the permission to.
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
 }
 
 /**

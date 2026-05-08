@@ -115,11 +115,11 @@ export interface FlowState {
     /**
      * Actions of the flow.
      */
-    actions?: pulumi.Input<string>;
+    actions?: pulumi.Input<string | undefined>;
     /**
      * Name of the flow.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -129,9 +129,9 @@ export interface FlowArgs {
     /**
      * Actions of the flow.
      */
-    actions?: pulumi.Input<string>;
+    actions?: pulumi.Input<string | undefined>;
     /**
      * Name of the flow.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

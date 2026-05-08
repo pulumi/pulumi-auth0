@@ -22,21 +22,21 @@ __all__ = ['ResourceServerArgs', 'ResourceServer']
 class ResourceServerArgs:
     def __init__(__self__, *,
                  identifier: pulumi.Input[_builtins.str],
-                 allow_offline_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 authorization_details: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceServerAuthorizationDetailArgs']]]] = None,
-                 consent_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 enforce_policies: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 proof_of_possession: Optional[pulumi.Input['ResourceServerProofOfPossessionArgs']] = None,
-                 signing_alg: Optional[pulumi.Input[_builtins.str]] = None,
-                 signing_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_consent_for_verifiable_first_party_clients: Optional[pulumi.Input[_builtins.bool]] = None,
-                 subject_type_authorization: Optional[pulumi.Input['ResourceServerSubjectTypeAuthorizationArgs']] = None,
-                 token_dialect: Optional[pulumi.Input[_builtins.str]] = None,
-                 token_encryption: Optional[pulumi.Input['ResourceServerTokenEncryptionArgs']] = None,
-                 token_lifetime: Optional[pulumi.Input[_builtins.int]] = None,
-                 token_lifetime_for_web: Optional[pulumi.Input[_builtins.int]] = None,
-                 verification_location: Optional[pulumi.Input[_builtins.str]] = None):
+                 allow_offline_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 authorization_details: pulumi.Input[Optional[Sequence[pulumi.Input['ResourceServerAuthorizationDetailArgs']]]] = None,
+                 consent_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 enforce_policies: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 proof_of_possession: pulumi.Input[Optional['ResourceServerProofOfPossessionArgs']] = None,
+                 signing_alg: pulumi.Input[Optional[_builtins.str]] = None,
+                 signing_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_consent_for_verifiable_first_party_clients: pulumi.Input[Optional[_builtins.bool]] = None,
+                 subject_type_authorization: pulumi.Input[Optional['ResourceServerSubjectTypeAuthorizationArgs']] = None,
+                 token_dialect: pulumi.Input[Optional[_builtins.str]] = None,
+                 token_encryption: pulumi.Input[Optional['ResourceServerTokenEncryptionArgs']] = None,
+                 token_lifetime: pulumi.Input[Optional[_builtins.int]] = None,
+                 token_lifetime_for_web: pulumi.Input[Optional[_builtins.int]] = None,
+                 verification_location: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ResourceServer resource.
 
@@ -103,206 +103,206 @@ class ResourceServerArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowOfflineAccess")
-    def allow_offline_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_offline_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether refresh tokens can be issued for this resource server.
         """
         return pulumi.get(self, "allow_offline_access")
 
     @allow_offline_access.setter
-    def allow_offline_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_offline_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_offline_access", value)
 
     @_builtins.property
     @pulumi.getter(name="authorizationDetails")
-    def authorization_details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ResourceServerAuthorizationDetailArgs']]]]:
+    def authorization_details(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ResourceServerAuthorizationDetailArgs']]]]:
         """
         Authorization details for this resource server.
         """
         return pulumi.get(self, "authorization_details")
 
     @authorization_details.setter
-    def authorization_details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceServerAuthorizationDetailArgs']]]]):
+    def authorization_details(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ResourceServerAuthorizationDetailArgs']]]]):
         pulumi.set(self, "authorization_details", value)
 
     @_builtins.property
     @pulumi.getter(name="consentPolicy")
-    def consent_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def consent_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
         """
         return pulumi.get(self, "consent_policy")
 
     @consent_policy.setter
-    def consent_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def consent_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "consent_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="enforcePolicies")
-    def enforce_policies(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enforce_policies(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If this setting is enabled, RBAC authorization policies will be enforced for this API. Role and permission assignments will be evaluated during the login transaction.
         """
         return pulumi.get(self, "enforce_policies")
 
     @enforce_policies.setter
-    def enforce_policies(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enforce_policies(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enforce_policies", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Friendly name for the resource server. Cannot include `<` or `>` characters.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="proofOfPossession")
-    def proof_of_possession(self) -> Optional[pulumi.Input['ResourceServerProofOfPossessionArgs']]:
+    def proof_of_possession(self) -> pulumi.Input[Optional['ResourceServerProofOfPossessionArgs']]:
         """
         Configuration settings for proof-of-possession for this resource server.
         """
         return pulumi.get(self, "proof_of_possession")
 
     @proof_of_possession.setter
-    def proof_of_possession(self, value: Optional[pulumi.Input['ResourceServerProofOfPossessionArgs']]):
+    def proof_of_possession(self, value: pulumi.Input[Optional['ResourceServerProofOfPossessionArgs']]):
         pulumi.set(self, "proof_of_possession", value)
 
     @_builtins.property
     @pulumi.getter(name="signingAlg")
-    def signing_alg(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def signing_alg(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Algorithm used to sign JWTs. Options include `HS256`, `RS256`, and `PS256`.
         """
         return pulumi.get(self, "signing_alg")
 
     @signing_alg.setter
-    def signing_alg(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def signing_alg(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "signing_alg", value)
 
     @_builtins.property
     @pulumi.getter(name="signingSecret")
-    def signing_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def signing_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Secret used to sign tokens when using symmetric algorithms (HS256).
         """
         return pulumi.get(self, "signing_secret")
 
     @signing_secret.setter
-    def signing_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def signing_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "signing_secret", value)
 
     @_builtins.property
     @pulumi.getter(name="skipConsentForVerifiableFirstPartyClients")
-    def skip_consent_for_verifiable_first_party_clients(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_consent_for_verifiable_first_party_clients(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether to skip user consent for applications flagged as first party.
         """
         return pulumi.get(self, "skip_consent_for_verifiable_first_party_clients")
 
     @skip_consent_for_verifiable_first_party_clients.setter
-    def skip_consent_for_verifiable_first_party_clients(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_consent_for_verifiable_first_party_clients(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "skip_consent_for_verifiable_first_party_clients", value)
 
     @_builtins.property
     @pulumi.getter(name="subjectTypeAuthorization")
-    def subject_type_authorization(self) -> Optional[pulumi.Input['ResourceServerSubjectTypeAuthorizationArgs']]:
+    def subject_type_authorization(self) -> pulumi.Input[Optional['ResourceServerSubjectTypeAuthorizationArgs']]:
         """
         Authorization policies for user and client flows.
         """
         return pulumi.get(self, "subject_type_authorization")
 
     @subject_type_authorization.setter
-    def subject_type_authorization(self, value: Optional[pulumi.Input['ResourceServerSubjectTypeAuthorizationArgs']]):
+    def subject_type_authorization(self, value: pulumi.Input[Optional['ResourceServerSubjectTypeAuthorizationArgs']]):
         pulumi.set(self, "subject_type_authorization", value)
 
     @_builtins.property
     @pulumi.getter(name="tokenDialect")
-    def token_dialect(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token_dialect(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Dialect of access tokens that should be issued for this resource server. Options include `access_token`, `rfc9068_profile`, `access_token_authz`, and `rfc9068_profile_authz`. `access_token` is a JWT containing standard Auth0 claims. `rfc9068_profile` is a JWT conforming to the IETF JWT Access Token Profile. `access_token_authz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068_profile_authz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforce_policies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).
         """
         return pulumi.get(self, "token_dialect")
 
     @token_dialect.setter
-    def token_dialect(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token_dialect(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token_dialect", value)
 
     @_builtins.property
     @pulumi.getter(name="tokenEncryption")
-    def token_encryption(self) -> Optional[pulumi.Input['ResourceServerTokenEncryptionArgs']]:
+    def token_encryption(self) -> pulumi.Input[Optional['ResourceServerTokenEncryptionArgs']]:
         """
         Configuration for JSON Web Encryption(JWE) of tokens for this resource server.
         """
         return pulumi.get(self, "token_encryption")
 
     @token_encryption.setter
-    def token_encryption(self, value: Optional[pulumi.Input['ResourceServerTokenEncryptionArgs']]):
+    def token_encryption(self, value: pulumi.Input[Optional['ResourceServerTokenEncryptionArgs']]):
         pulumi.set(self, "token_encryption", value)
 
     @_builtins.property
     @pulumi.getter(name="tokenLifetime")
-    def token_lifetime(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def token_lifetime(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
         """
         return pulumi.get(self, "token_lifetime")
 
     @token_lifetime.setter
-    def token_lifetime(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def token_lifetime(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "token_lifetime", value)
 
     @_builtins.property
     @pulumi.getter(name="tokenLifetimeForWeb")
-    def token_lifetime_for_web(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def token_lifetime_for_web(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `token_lifetime` value.
         """
         return pulumi.get(self, "token_lifetime_for_web")
 
     @token_lifetime_for_web.setter
-    def token_lifetime_for_web(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def token_lifetime_for_web(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "token_lifetime_for_web", value)
 
     @_builtins.property
     @pulumi.getter(name="verificationLocation")
-    def verification_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def verification_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL from which to retrieve JWKs for this resource server. Used for verifying the JWT sent to Auth0 for token introspection.
         """
         return pulumi.get(self, "verification_location")
 
     @verification_location.setter
-    def verification_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def verification_location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "verification_location", value)
 
 
 @pulumi.input_type
 class _ResourceServerState:
     def __init__(__self__, *,
-                 allow_offline_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 authorization_details: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceServerAuthorizationDetailArgs']]]] = None,
-                 client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 consent_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 enforce_policies: Optional[pulumi.Input[_builtins.bool]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_system: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 proof_of_possession: Optional[pulumi.Input['ResourceServerProofOfPossessionArgs']] = None,
-                 signing_alg: Optional[pulumi.Input[_builtins.str]] = None,
-                 signing_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_consent_for_verifiable_first_party_clients: Optional[pulumi.Input[_builtins.bool]] = None,
-                 subject_type_authorization: Optional[pulumi.Input['ResourceServerSubjectTypeAuthorizationArgs']] = None,
-                 token_dialect: Optional[pulumi.Input[_builtins.str]] = None,
-                 token_encryption: Optional[pulumi.Input['ResourceServerTokenEncryptionArgs']] = None,
-                 token_lifetime: Optional[pulumi.Input[_builtins.int]] = None,
-                 token_lifetime_for_web: Optional[pulumi.Input[_builtins.int]] = None,
-                 verification_location: Optional[pulumi.Input[_builtins.str]] = None):
+                 allow_offline_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 authorization_details: pulumi.Input[Optional[Sequence[pulumi.Input['ResourceServerAuthorizationDetailArgs']]]] = None,
+                 client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 consent_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 enforce_policies: pulumi.Input[Optional[_builtins.bool]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_system: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 proof_of_possession: pulumi.Input[Optional['ResourceServerProofOfPossessionArgs']] = None,
+                 signing_alg: pulumi.Input[Optional[_builtins.str]] = None,
+                 signing_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_consent_for_verifiable_first_party_clients: pulumi.Input[Optional[_builtins.bool]] = None,
+                 subject_type_authorization: pulumi.Input[Optional['ResourceServerSubjectTypeAuthorizationArgs']] = None,
+                 token_dialect: pulumi.Input[Optional[_builtins.str]] = None,
+                 token_encryption: pulumi.Input[Optional['ResourceServerTokenEncryptionArgs']] = None,
+                 token_lifetime: pulumi.Input[Optional[_builtins.int]] = None,
+                 token_lifetime_for_web: pulumi.Input[Optional[_builtins.int]] = None,
+                 verification_location: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ResourceServer resources.
 
@@ -364,218 +364,218 @@ class _ResourceServerState:
 
     @_builtins.property
     @pulumi.getter(name="allowOfflineAccess")
-    def allow_offline_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_offline_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether refresh tokens can be issued for this resource server.
         """
         return pulumi.get(self, "allow_offline_access")
 
     @allow_offline_access.setter
-    def allow_offline_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_offline_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_offline_access", value)
 
     @_builtins.property
     @pulumi.getter(name="authorizationDetails")
-    def authorization_details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ResourceServerAuthorizationDetailArgs']]]]:
+    def authorization_details(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ResourceServerAuthorizationDetailArgs']]]]:
         """
         Authorization details for this resource server.
         """
         return pulumi.get(self, "authorization_details")
 
     @authorization_details.setter
-    def authorization_details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceServerAuthorizationDetailArgs']]]]):
+    def authorization_details(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ResourceServerAuthorizationDetailArgs']]]]):
         pulumi.set(self, "authorization_details", value)
 
     @_builtins.property
     @pulumi.getter(name="clientId")
-    def client_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the client associated with this resource server. If a client has been created and linked to this resource server, this field will be populated with that client's ID.
         """
         return pulumi.get(self, "client_id")
 
     @client_id.setter
-    def client_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_id", value)
 
     @_builtins.property
     @pulumi.getter(name="consentPolicy")
-    def consent_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def consent_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
         """
         return pulumi.get(self, "consent_policy")
 
     @consent_policy.setter
-    def consent_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def consent_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "consent_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="enforcePolicies")
-    def enforce_policies(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enforce_policies(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If this setting is enabled, RBAC authorization policies will be enforced for this API. Role and permission assignments will be evaluated during the login transaction.
         """
         return pulumi.get(self, "enforce_policies")
 
     @enforce_policies.setter
-    def enforce_policies(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enforce_policies(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enforce_policies", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier for the resource server. Used as the audience parameter for authorization calls. Cannot be changed once set.
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="isSystem")
-    def is_system(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_system(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether this resource server is a special resource server created by Auth0. It cannot be modified or deleted directly.
         """
         return pulumi.get(self, "is_system")
 
     @is_system.setter
-    def is_system(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_system(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_system", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Friendly name for the resource server. Cannot include `<` or `>` characters.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="proofOfPossession")
-    def proof_of_possession(self) -> Optional[pulumi.Input['ResourceServerProofOfPossessionArgs']]:
+    def proof_of_possession(self) -> pulumi.Input[Optional['ResourceServerProofOfPossessionArgs']]:
         """
         Configuration settings for proof-of-possession for this resource server.
         """
         return pulumi.get(self, "proof_of_possession")
 
     @proof_of_possession.setter
-    def proof_of_possession(self, value: Optional[pulumi.Input['ResourceServerProofOfPossessionArgs']]):
+    def proof_of_possession(self, value: pulumi.Input[Optional['ResourceServerProofOfPossessionArgs']]):
         pulumi.set(self, "proof_of_possession", value)
 
     @_builtins.property
     @pulumi.getter(name="signingAlg")
-    def signing_alg(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def signing_alg(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Algorithm used to sign JWTs. Options include `HS256`, `RS256`, and `PS256`.
         """
         return pulumi.get(self, "signing_alg")
 
     @signing_alg.setter
-    def signing_alg(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def signing_alg(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "signing_alg", value)
 
     @_builtins.property
     @pulumi.getter(name="signingSecret")
-    def signing_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def signing_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Secret used to sign tokens when using symmetric algorithms (HS256).
         """
         return pulumi.get(self, "signing_secret")
 
     @signing_secret.setter
-    def signing_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def signing_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "signing_secret", value)
 
     @_builtins.property
     @pulumi.getter(name="skipConsentForVerifiableFirstPartyClients")
-    def skip_consent_for_verifiable_first_party_clients(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_consent_for_verifiable_first_party_clients(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether to skip user consent for applications flagged as first party.
         """
         return pulumi.get(self, "skip_consent_for_verifiable_first_party_clients")
 
     @skip_consent_for_verifiable_first_party_clients.setter
-    def skip_consent_for_verifiable_first_party_clients(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_consent_for_verifiable_first_party_clients(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "skip_consent_for_verifiable_first_party_clients", value)
 
     @_builtins.property
     @pulumi.getter(name="subjectTypeAuthorization")
-    def subject_type_authorization(self) -> Optional[pulumi.Input['ResourceServerSubjectTypeAuthorizationArgs']]:
+    def subject_type_authorization(self) -> pulumi.Input[Optional['ResourceServerSubjectTypeAuthorizationArgs']]:
         """
         Authorization policies for user and client flows.
         """
         return pulumi.get(self, "subject_type_authorization")
 
     @subject_type_authorization.setter
-    def subject_type_authorization(self, value: Optional[pulumi.Input['ResourceServerSubjectTypeAuthorizationArgs']]):
+    def subject_type_authorization(self, value: pulumi.Input[Optional['ResourceServerSubjectTypeAuthorizationArgs']]):
         pulumi.set(self, "subject_type_authorization", value)
 
     @_builtins.property
     @pulumi.getter(name="tokenDialect")
-    def token_dialect(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token_dialect(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Dialect of access tokens that should be issued for this resource server. Options include `access_token`, `rfc9068_profile`, `access_token_authz`, and `rfc9068_profile_authz`. `access_token` is a JWT containing standard Auth0 claims. `rfc9068_profile` is a JWT conforming to the IETF JWT Access Token Profile. `access_token_authz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068_profile_authz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforce_policies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).
         """
         return pulumi.get(self, "token_dialect")
 
     @token_dialect.setter
-    def token_dialect(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token_dialect(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token_dialect", value)
 
     @_builtins.property
     @pulumi.getter(name="tokenEncryption")
-    def token_encryption(self) -> Optional[pulumi.Input['ResourceServerTokenEncryptionArgs']]:
+    def token_encryption(self) -> pulumi.Input[Optional['ResourceServerTokenEncryptionArgs']]:
         """
         Configuration for JSON Web Encryption(JWE) of tokens for this resource server.
         """
         return pulumi.get(self, "token_encryption")
 
     @token_encryption.setter
-    def token_encryption(self, value: Optional[pulumi.Input['ResourceServerTokenEncryptionArgs']]):
+    def token_encryption(self, value: pulumi.Input[Optional['ResourceServerTokenEncryptionArgs']]):
         pulumi.set(self, "token_encryption", value)
 
     @_builtins.property
     @pulumi.getter(name="tokenLifetime")
-    def token_lifetime(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def token_lifetime(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
         """
         return pulumi.get(self, "token_lifetime")
 
     @token_lifetime.setter
-    def token_lifetime(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def token_lifetime(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "token_lifetime", value)
 
     @_builtins.property
     @pulumi.getter(name="tokenLifetimeForWeb")
-    def token_lifetime_for_web(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def token_lifetime_for_web(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `token_lifetime` value.
         """
         return pulumi.get(self, "token_lifetime_for_web")
 
     @token_lifetime_for_web.setter
-    def token_lifetime_for_web(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def token_lifetime_for_web(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "token_lifetime_for_web", value)
 
     @_builtins.property
     @pulumi.getter(name="verificationLocation")
-    def verification_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def verification_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL from which to retrieve JWKs for this resource server. Used for verifying the JWT sent to Auth0 for token introspection.
         """
         return pulumi.get(self, "verification_location")
 
     @verification_location.setter
-    def verification_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def verification_location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "verification_location", value)
 
 
@@ -585,22 +585,22 @@ class ResourceServer(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allow_offline_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 authorization_details: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ResourceServerAuthorizationDetailArgs', 'ResourceServerAuthorizationDetailArgsDict']]]]] = None,
-                 consent_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 enforce_policies: Optional[pulumi.Input[_builtins.bool]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 proof_of_possession: Optional[pulumi.Input[Union['ResourceServerProofOfPossessionArgs', 'ResourceServerProofOfPossessionArgsDict']]] = None,
-                 signing_alg: Optional[pulumi.Input[_builtins.str]] = None,
-                 signing_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_consent_for_verifiable_first_party_clients: Optional[pulumi.Input[_builtins.bool]] = None,
-                 subject_type_authorization: Optional[pulumi.Input[Union['ResourceServerSubjectTypeAuthorizationArgs', 'ResourceServerSubjectTypeAuthorizationArgsDict']]] = None,
-                 token_dialect: Optional[pulumi.Input[_builtins.str]] = None,
-                 token_encryption: Optional[pulumi.Input[Union['ResourceServerTokenEncryptionArgs', 'ResourceServerTokenEncryptionArgsDict']]] = None,
-                 token_lifetime: Optional[pulumi.Input[_builtins.int]] = None,
-                 token_lifetime_for_web: Optional[pulumi.Input[_builtins.int]] = None,
-                 verification_location: Optional[pulumi.Input[_builtins.str]] = None,
+                 allow_offline_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 authorization_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResourceServerAuthorizationDetailArgs', 'ResourceServerAuthorizationDetailArgsDict']]]]] = None,
+                 consent_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 enforce_policies: pulumi.Input[Optional[_builtins.bool]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 proof_of_possession: pulumi.Input[Optional[Union['ResourceServerProofOfPossessionArgs', 'ResourceServerProofOfPossessionArgsDict']]] = None,
+                 signing_alg: pulumi.Input[Optional[_builtins.str]] = None,
+                 signing_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_consent_for_verifiable_first_party_clients: pulumi.Input[Optional[_builtins.bool]] = None,
+                 subject_type_authorization: pulumi.Input[Optional[Union['ResourceServerSubjectTypeAuthorizationArgs', 'ResourceServerSubjectTypeAuthorizationArgsDict']]] = None,
+                 token_dialect: pulumi.Input[Optional[_builtins.str]] = None,
+                 token_encryption: pulumi.Input[Optional[Union['ResourceServerTokenEncryptionArgs', 'ResourceServerTokenEncryptionArgsDict']]] = None,
+                 token_lifetime: pulumi.Input[Optional[_builtins.int]] = None,
+                 token_lifetime_for_web: pulumi.Input[Optional[_builtins.int]] = None,
+                 verification_location: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         With this resource, you can set up APIs that can be consumed from your authorized applications.
@@ -802,22 +802,22 @@ class ResourceServer(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allow_offline_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 authorization_details: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ResourceServerAuthorizationDetailArgs', 'ResourceServerAuthorizationDetailArgsDict']]]]] = None,
-                 consent_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 enforce_policies: Optional[pulumi.Input[_builtins.bool]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 proof_of_possession: Optional[pulumi.Input[Union['ResourceServerProofOfPossessionArgs', 'ResourceServerProofOfPossessionArgsDict']]] = None,
-                 signing_alg: Optional[pulumi.Input[_builtins.str]] = None,
-                 signing_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_consent_for_verifiable_first_party_clients: Optional[pulumi.Input[_builtins.bool]] = None,
-                 subject_type_authorization: Optional[pulumi.Input[Union['ResourceServerSubjectTypeAuthorizationArgs', 'ResourceServerSubjectTypeAuthorizationArgsDict']]] = None,
-                 token_dialect: Optional[pulumi.Input[_builtins.str]] = None,
-                 token_encryption: Optional[pulumi.Input[Union['ResourceServerTokenEncryptionArgs', 'ResourceServerTokenEncryptionArgsDict']]] = None,
-                 token_lifetime: Optional[pulumi.Input[_builtins.int]] = None,
-                 token_lifetime_for_web: Optional[pulumi.Input[_builtins.int]] = None,
-                 verification_location: Optional[pulumi.Input[_builtins.str]] = None,
+                 allow_offline_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 authorization_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResourceServerAuthorizationDetailArgs', 'ResourceServerAuthorizationDetailArgsDict']]]]] = None,
+                 consent_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 enforce_policies: pulumi.Input[Optional[_builtins.bool]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 proof_of_possession: pulumi.Input[Optional[Union['ResourceServerProofOfPossessionArgs', 'ResourceServerProofOfPossessionArgsDict']]] = None,
+                 signing_alg: pulumi.Input[Optional[_builtins.str]] = None,
+                 signing_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_consent_for_verifiable_first_party_clients: pulumi.Input[Optional[_builtins.bool]] = None,
+                 subject_type_authorization: pulumi.Input[Optional[Union['ResourceServerSubjectTypeAuthorizationArgs', 'ResourceServerSubjectTypeAuthorizationArgsDict']]] = None,
+                 token_dialect: pulumi.Input[Optional[_builtins.str]] = None,
+                 token_encryption: pulumi.Input[Optional[Union['ResourceServerTokenEncryptionArgs', 'ResourceServerTokenEncryptionArgsDict']]] = None,
+                 token_lifetime: pulumi.Input[Optional[_builtins.int]] = None,
+                 token_lifetime_for_web: pulumi.Input[Optional[_builtins.int]] = None,
+                 verification_location: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -857,24 +857,24 @@ class ResourceServer(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            allow_offline_access: Optional[pulumi.Input[_builtins.bool]] = None,
-            authorization_details: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ResourceServerAuthorizationDetailArgs', 'ResourceServerAuthorizationDetailArgsDict']]]]] = None,
-            client_id: Optional[pulumi.Input[_builtins.str]] = None,
-            consent_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            enforce_policies: Optional[pulumi.Input[_builtins.bool]] = None,
-            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            is_system: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            proof_of_possession: Optional[pulumi.Input[Union['ResourceServerProofOfPossessionArgs', 'ResourceServerProofOfPossessionArgsDict']]] = None,
-            signing_alg: Optional[pulumi.Input[_builtins.str]] = None,
-            signing_secret: Optional[pulumi.Input[_builtins.str]] = None,
-            skip_consent_for_verifiable_first_party_clients: Optional[pulumi.Input[_builtins.bool]] = None,
-            subject_type_authorization: Optional[pulumi.Input[Union['ResourceServerSubjectTypeAuthorizationArgs', 'ResourceServerSubjectTypeAuthorizationArgsDict']]] = None,
-            token_dialect: Optional[pulumi.Input[_builtins.str]] = None,
-            token_encryption: Optional[pulumi.Input[Union['ResourceServerTokenEncryptionArgs', 'ResourceServerTokenEncryptionArgsDict']]] = None,
-            token_lifetime: Optional[pulumi.Input[_builtins.int]] = None,
-            token_lifetime_for_web: Optional[pulumi.Input[_builtins.int]] = None,
-            verification_location: Optional[pulumi.Input[_builtins.str]] = None) -> 'ResourceServer':
+            allow_offline_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            authorization_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResourceServerAuthorizationDetailArgs', 'ResourceServerAuthorizationDetailArgsDict']]]]] = None,
+            client_id: pulumi.Input[Optional[_builtins.str]] = None,
+            consent_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            enforce_policies: pulumi.Input[Optional[_builtins.bool]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            is_system: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            proof_of_possession: pulumi.Input[Optional[Union['ResourceServerProofOfPossessionArgs', 'ResourceServerProofOfPossessionArgsDict']]] = None,
+            signing_alg: pulumi.Input[Optional[_builtins.str]] = None,
+            signing_secret: pulumi.Input[Optional[_builtins.str]] = None,
+            skip_consent_for_verifiable_first_party_clients: pulumi.Input[Optional[_builtins.bool]] = None,
+            subject_type_authorization: pulumi.Input[Optional[Union['ResourceServerSubjectTypeAuthorizationArgs', 'ResourceServerSubjectTypeAuthorizationArgsDict']]] = None,
+            token_dialect: pulumi.Input[Optional[_builtins.str]] = None,
+            token_encryption: pulumi.Input[Optional[Union['ResourceServerTokenEncryptionArgs', 'ResourceServerTokenEncryptionArgsDict']]] = None,
+            token_lifetime: pulumi.Input[Optional[_builtins.int]] = None,
+            token_lifetime_for_web: pulumi.Input[Optional[_builtins.int]] = None,
+            verification_location: pulumi.Input[Optional[_builtins.str]] = None) -> 'ResourceServer':
         """
         Get an existing ResourceServer resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

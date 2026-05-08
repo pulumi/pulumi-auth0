@@ -129,31 +129,31 @@ export interface ClientCredentialsState {
     /**
      * Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `clientSecretPost` (confidential client using HTTP POST parameters), `clientSecretBasic` (confidential client using HTTP Basic), `privateKeyJwt` (confidential client using a Private Key JWT), `tlsClientAuth` (confidential client using CA-based mTLS authentication), `selfSignedTlsClientAuth` (confidential client using mTLS authentication utilizing a self-signed certificate).
      */
-    authenticationMethod?: pulumi.Input<string>;
+    authenticationMethod?: pulumi.Input<string | undefined>;
     /**
      * The ID of the client for which to configure the authentication method.
      */
-    clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
     /**
      * Secret for the client when using `clientSecretPost` or `clientSecretBasic` authentication method. Keep this private. To access this attribute you need to add either `read:client_keys` or `read:client_credentials` scope to the Terraform client. Otherwise, the attribute will contain an empty string. The attribute will also be an empty string in case `privateKeyJwt` is selected as an authentication method.
      */
-    clientSecret?: pulumi.Input<string>;
+    clientSecret?: pulumi.Input<string | undefined>;
     /**
      * Defines `privateKeyJwt` client authentication method.
      */
-    privateKeyJwt?: pulumi.Input<inputs.ClientCredentialsPrivateKeyJwt>;
+    privateKeyJwt?: pulumi.Input<inputs.ClientCredentialsPrivateKeyJwt | undefined>;
     /**
      * Defines `tlsClientAuth` client authentication method.
      */
-    selfSignedTlsClientAuth?: pulumi.Input<inputs.ClientCredentialsSelfSignedTlsClientAuth>;
+    selfSignedTlsClientAuth?: pulumi.Input<inputs.ClientCredentialsSelfSignedTlsClientAuth | undefined>;
     /**
      * Configuration for JWT-secured Authorization Requests(JAR).
      */
-    signedRequestObject?: pulumi.Input<inputs.ClientCredentialsSignedRequestObject>;
+    signedRequestObject?: pulumi.Input<inputs.ClientCredentialsSignedRequestObject | undefined>;
     /**
      * Defines `tlsClientAuth` client authentication method.
      */
-    tlsClientAuth?: pulumi.Input<inputs.ClientCredentialsTlsClientAuth>;
+    tlsClientAuth?: pulumi.Input<inputs.ClientCredentialsTlsClientAuth | undefined>;
 }
 
 /**
@@ -163,7 +163,7 @@ export interface ClientCredentialsArgs {
     /**
      * Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `clientSecretPost` (confidential client using HTTP POST parameters), `clientSecretBasic` (confidential client using HTTP Basic), `privateKeyJwt` (confidential client using a Private Key JWT), `tlsClientAuth` (confidential client using CA-based mTLS authentication), `selfSignedTlsClientAuth` (confidential client using mTLS authentication utilizing a self-signed certificate).
      */
-    authenticationMethod?: pulumi.Input<string>;
+    authenticationMethod?: pulumi.Input<string | undefined>;
     /**
      * The ID of the client for which to configure the authentication method.
      */
@@ -171,21 +171,21 @@ export interface ClientCredentialsArgs {
     /**
      * Secret for the client when using `clientSecretPost` or `clientSecretBasic` authentication method. Keep this private. To access this attribute you need to add either `read:client_keys` or `read:client_credentials` scope to the Terraform client. Otherwise, the attribute will contain an empty string. The attribute will also be an empty string in case `privateKeyJwt` is selected as an authentication method.
      */
-    clientSecret?: pulumi.Input<string>;
+    clientSecret?: pulumi.Input<string | undefined>;
     /**
      * Defines `privateKeyJwt` client authentication method.
      */
-    privateKeyJwt?: pulumi.Input<inputs.ClientCredentialsPrivateKeyJwt>;
+    privateKeyJwt?: pulumi.Input<inputs.ClientCredentialsPrivateKeyJwt | undefined>;
     /**
      * Defines `tlsClientAuth` client authentication method.
      */
-    selfSignedTlsClientAuth?: pulumi.Input<inputs.ClientCredentialsSelfSignedTlsClientAuth>;
+    selfSignedTlsClientAuth?: pulumi.Input<inputs.ClientCredentialsSelfSignedTlsClientAuth | undefined>;
     /**
      * Configuration for JWT-secured Authorization Requests(JAR).
      */
-    signedRequestObject?: pulumi.Input<inputs.ClientCredentialsSignedRequestObject>;
+    signedRequestObject?: pulumi.Input<inputs.ClientCredentialsSignedRequestObject | undefined>;
     /**
      * Defines `tlsClientAuth` client authentication method.
      */
-    tlsClientAuth?: pulumi.Input<inputs.ClientCredentialsTlsClientAuth>;
+    tlsClientAuth?: pulumi.Input<inputs.ClientCredentialsTlsClientAuth | undefined>;
 }

@@ -19,9 +19,9 @@ __all__ = ['PromptArgs', 'Prompt']
 @pulumi.input_type
 class PromptArgs:
     def __init__(__self__, *,
-                 identifier_first: Optional[pulumi.Input[_builtins.bool]] = None,
-                 universal_login_experience: Optional[pulumi.Input[_builtins.str]] = None,
-                 webauthn_platform_first_factor: Optional[pulumi.Input[_builtins.bool]] = None):
+                 identifier_first: pulumi.Input[Optional[_builtins.bool]] = None,
+                 universal_login_experience: pulumi.Input[Optional[_builtins.str]] = None,
+                 webauthn_platform_first_factor: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Prompt resource.
 
@@ -38,47 +38,47 @@ class PromptArgs:
 
     @_builtins.property
     @pulumi.getter(name="identifierFirst")
-    def identifier_first(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def identifier_first(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the identifier first is used when using the new Universal Login experience.
         """
         return pulumi.get(self, "identifier_first")
 
     @identifier_first.setter
-    def identifier_first(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def identifier_first(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "identifier_first", value)
 
     @_builtins.property
     @pulumi.getter(name="universalLoginExperience")
-    def universal_login_experience(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def universal_login_experience(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Which login experience to use. Options include `classic` and `new`.
         """
         return pulumi.get(self, "universal_login_experience")
 
     @universal_login_experience.setter
-    def universal_login_experience(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def universal_login_experience(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "universal_login_experience", value)
 
     @_builtins.property
     @pulumi.getter(name="webauthnPlatformFirstFactor")
-    def webauthn_platform_first_factor(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def webauthn_platform_first_factor(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Determines if the login screen uses identifier and biometrics first. Setting this property to `true`, requires MFA factors enabled for enrollment; use the `Guardian` resource to set one up.
         """
         return pulumi.get(self, "webauthn_platform_first_factor")
 
     @webauthn_platform_first_factor.setter
-    def webauthn_platform_first_factor(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def webauthn_platform_first_factor(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "webauthn_platform_first_factor", value)
 
 
 @pulumi.input_type
 class _PromptState:
     def __init__(__self__, *,
-                 identifier_first: Optional[pulumi.Input[_builtins.bool]] = None,
-                 universal_login_experience: Optional[pulumi.Input[_builtins.str]] = None,
-                 webauthn_platform_first_factor: Optional[pulumi.Input[_builtins.bool]] = None):
+                 identifier_first: pulumi.Input[Optional[_builtins.bool]] = None,
+                 universal_login_experience: pulumi.Input[Optional[_builtins.str]] = None,
+                 webauthn_platform_first_factor: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Prompt resources.
 
@@ -95,38 +95,38 @@ class _PromptState:
 
     @_builtins.property
     @pulumi.getter(name="identifierFirst")
-    def identifier_first(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def identifier_first(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the identifier first is used when using the new Universal Login experience.
         """
         return pulumi.get(self, "identifier_first")
 
     @identifier_first.setter
-    def identifier_first(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def identifier_first(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "identifier_first", value)
 
     @_builtins.property
     @pulumi.getter(name="universalLoginExperience")
-    def universal_login_experience(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def universal_login_experience(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Which login experience to use. Options include `classic` and `new`.
         """
         return pulumi.get(self, "universal_login_experience")
 
     @universal_login_experience.setter
-    def universal_login_experience(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def universal_login_experience(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "universal_login_experience", value)
 
     @_builtins.property
     @pulumi.getter(name="webauthnPlatformFirstFactor")
-    def webauthn_platform_first_factor(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def webauthn_platform_first_factor(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Determines if the login screen uses identifier and biometrics first. Setting this property to `true`, requires MFA factors enabled for enrollment; use the `Guardian` resource to set one up.
         """
         return pulumi.get(self, "webauthn_platform_first_factor")
 
     @webauthn_platform_first_factor.setter
-    def webauthn_platform_first_factor(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def webauthn_platform_first_factor(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "webauthn_platform_first_factor", value)
 
 
@@ -136,9 +136,9 @@ class Prompt(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 identifier_first: Optional[pulumi.Input[_builtins.bool]] = None,
-                 universal_login_experience: Optional[pulumi.Input[_builtins.str]] = None,
-                 webauthn_platform_first_factor: Optional[pulumi.Input[_builtins.bool]] = None,
+                 identifier_first: pulumi.Input[Optional[_builtins.bool]] = None,
+                 universal_login_experience: pulumi.Input[Optional[_builtins.str]] = None,
+                 webauthn_platform_first_factor: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         With this resource, you can manage your Auth0 prompts, including choosing the login experience version.
@@ -225,9 +225,9 @@ class Prompt(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 identifier_first: Optional[pulumi.Input[_builtins.bool]] = None,
-                 universal_login_experience: Optional[pulumi.Input[_builtins.str]] = None,
-                 webauthn_platform_first_factor: Optional[pulumi.Input[_builtins.bool]] = None,
+                 identifier_first: pulumi.Input[Optional[_builtins.bool]] = None,
+                 universal_login_experience: pulumi.Input[Optional[_builtins.str]] = None,
+                 webauthn_platform_first_factor: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -250,9 +250,9 @@ class Prompt(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            identifier_first: Optional[pulumi.Input[_builtins.bool]] = None,
-            universal_login_experience: Optional[pulumi.Input[_builtins.str]] = None,
-            webauthn_platform_first_factor: Optional[pulumi.Input[_builtins.bool]] = None) -> 'Prompt':
+            identifier_first: pulumi.Input[Optional[_builtins.bool]] = None,
+            universal_login_experience: pulumi.Input[Optional[_builtins.str]] = None,
+            webauthn_platform_first_factor: pulumi.Input[Optional[_builtins.bool]] = None) -> 'Prompt':
         """
         Get an existing Prompt resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

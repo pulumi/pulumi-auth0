@@ -23,10 +23,10 @@ class CustomDomainArgs:
     def __init__(__self__, *,
                  domain: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
-                 custom_client_ip_header: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 relying_party_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls_policy: Optional[pulumi.Input[_builtins.str]] = None):
+                 custom_client_ip_header: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 relying_party_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls_policy: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a CustomDomain resource.
 
@@ -74,68 +74,68 @@ class CustomDomainArgs:
 
     @_builtins.property
     @pulumi.getter(name="customClientIpHeader")
-    def custom_client_ip_header(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_client_ip_header(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The HTTP header to fetch the client's IP address. Cannot be set on auth0_managed domains.
         """
         return pulumi.get(self, "custom_client_ip_header")
 
     @custom_client_ip_header.setter
-    def custom_client_ip_header(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_client_ip_header(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_client_ip_header", value)
 
     @_builtins.property
     @pulumi.getter(name="domainMetadata")
-    def domain_metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def domain_metadata(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
         """
         return pulumi.get(self, "domain_metadata")
 
     @domain_metadata.setter
-    def domain_metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def domain_metadata(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "domain_metadata", value)
 
     @_builtins.property
     @pulumi.getter(name="relyingPartyIdentifier")
-    def relying_party_identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def relying_party_identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Relying Party ID (rpId) to be used for Passkeys on this custom domain. If not provided or set to null, the full domain will be used.
         """
         return pulumi.get(self, "relying_party_identifier")
 
     @relying_party_identifier.setter
-    def relying_party_identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def relying_party_identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "relying_party_identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="tlsPolicy")
-    def tls_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tls_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on self_managed domains.
         """
         return pulumi.get(self, "tls_policy")
 
     @tls_policy.setter
-    def tls_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tls_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tls_policy", value)
 
 
 @pulumi.input_type
 class _CustomDomainState:
     def __init__(__self__, *,
-                 certificates: Optional[pulumi.Input[Sequence[pulumi.Input['CustomDomainCertificateArgs']]]] = None,
-                 custom_client_ip_header: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 is_default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 origin_domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary: Optional[pulumi.Input[_builtins.bool]] = None,
-                 relying_party_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 verifications: Optional[pulumi.Input[Sequence[pulumi.Input['CustomDomainVerificationArgs']]]] = None):
+                 certificates: pulumi.Input[Optional[Sequence[pulumi.Input['CustomDomainCertificateArgs']]]] = None,
+                 custom_client_ip_header: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 origin_domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary: pulumi.Input[Optional[_builtins.bool]] = None,
+                 relying_party_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 verifications: pulumi.Input[Optional[Sequence[pulumi.Input['CustomDomainVerificationArgs']]]] = None):
         """
         Input properties used for looking up and filtering CustomDomain resources.
 
@@ -182,147 +182,147 @@ class _CustomDomainState:
 
     @_builtins.property
     @pulumi.getter
-    def certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CustomDomainCertificateArgs']]]]:
+    def certificates(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['CustomDomainCertificateArgs']]]]:
         """
         The Custom Domain certificate.
         """
         return pulumi.get(self, "certificates")
 
     @certificates.setter
-    def certificates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CustomDomainCertificateArgs']]]]):
+    def certificates(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['CustomDomainCertificateArgs']]]]):
         pulumi.set(self, "certificates", value)
 
     @_builtins.property
     @pulumi.getter(name="customClientIpHeader")
-    def custom_client_ip_header(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_client_ip_header(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The HTTP header to fetch the client's IP address. Cannot be set on auth0_managed domains.
         """
         return pulumi.get(self, "custom_client_ip_header")
 
     @custom_client_ip_header.setter
-    def custom_client_ip_header(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_client_ip_header(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_client_ip_header", value)
 
     @_builtins.property
     @pulumi.getter
-    def domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the custom domain.
         """
         return pulumi.get(self, "domain")
 
     @domain.setter
-    def domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain", value)
 
     @_builtins.property
     @pulumi.getter(name="domainMetadata")
-    def domain_metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def domain_metadata(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
         """
         return pulumi.get(self, "domain_metadata")
 
     @domain_metadata.setter
-    def domain_metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def domain_metadata(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "domain_metadata", value)
 
     @_builtins.property
     @pulumi.getter(name="isDefault")
-    def is_default(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_default(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether this custom domain is the default domain for the tenant
         """
         return pulumi.get(self, "is_default")
 
     @is_default.setter
-    def is_default(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_default(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_default", value)
 
     @_builtins.property
     @pulumi.getter(name="originDomainName")
-    def origin_domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def origin_domain_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
         """
         return pulumi.get(self, "origin_domain_name")
 
     @origin_domain_name.setter
-    def origin_domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def origin_domain_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "origin_domain_name", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Primary field is no longer used and will be removed in a future release.""")
-    def primary(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def primary(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether this is a primary domain.
         """
         return pulumi.get(self, "primary")
 
     @primary.setter
-    def primary(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def primary(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "primary", value)
 
     @_builtins.property
     @pulumi.getter(name="relyingPartyIdentifier")
-    def relying_party_identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def relying_party_identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Relying Party ID (rpId) to be used for Passkeys on this custom domain. If not provided or set to null, the full domain will be used.
         """
         return pulumi.get(self, "relying_party_identifier")
 
     @relying_party_identifier.setter
-    def relying_party_identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def relying_party_identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "relying_party_identifier", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Configuration status for the custom domain. Options include `disabled`, `pending`, `pending_verification`, `ready` and `failed`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="tlsPolicy")
-    def tls_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tls_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on self_managed domains.
         """
         return pulumi.get(self, "tls_policy")
 
     @tls_policy.setter
-    def tls_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tls_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tls_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter
-    def verifications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CustomDomainVerificationArgs']]]]:
+    def verifications(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['CustomDomainVerificationArgs']]]]:
         """
         Configuration settings for verification.
         """
         return pulumi.get(self, "verifications")
 
     @verifications.setter
-    def verifications(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CustomDomainVerificationArgs']]]]):
+    def verifications(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['CustomDomainVerificationArgs']]]]):
         pulumi.set(self, "verifications", value)
 
 
@@ -332,12 +332,12 @@ class CustomDomain(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_client_ip_header: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 relying_party_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 custom_client_ip_header: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 relying_party_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         With Auth0, you can use a custom domain to maintain a consistent user experience. This resource allows you to create and manage a custom domain within your Auth0 tenant.
@@ -435,12 +435,12 @@ class CustomDomain(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_client_ip_header: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 relying_party_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 custom_client_ip_header: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 relying_party_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -476,18 +476,18 @@ class CustomDomain(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            certificates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CustomDomainCertificateArgs', 'CustomDomainCertificateArgsDict']]]]] = None,
-            custom_client_ip_header: Optional[pulumi.Input[_builtins.str]] = None,
-            domain: Optional[pulumi.Input[_builtins.str]] = None,
-            domain_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            is_default: Optional[pulumi.Input[_builtins.bool]] = None,
-            origin_domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-            primary: Optional[pulumi.Input[_builtins.bool]] = None,
-            relying_party_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tls_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            verifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CustomDomainVerificationArgs', 'CustomDomainVerificationArgsDict']]]]] = None) -> 'CustomDomain':
+            certificates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomDomainCertificateArgs', 'CustomDomainCertificateArgsDict']]]]] = None,
+            custom_client_ip_header: pulumi.Input[Optional[_builtins.str]] = None,
+            domain: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+            origin_domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+            primary: pulumi.Input[Optional[_builtins.bool]] = None,
+            relying_party_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tls_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            verifications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomDomainVerificationArgs', 'CustomDomainVerificationArgsDict']]]]] = None) -> 'CustomDomain':
         """
         Get an existing CustomDomain resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

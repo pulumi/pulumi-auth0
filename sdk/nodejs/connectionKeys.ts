@@ -190,56 +190,56 @@ export interface ConnectionKeysState {
     /**
      * The signing key algorithm.
      */
-    algorithm?: pulumi.Input<string>;
+    algorithm?: pulumi.Input<string | undefined>;
     /**
      * The public certificate of the signing key.
      */
-    cert?: pulumi.Input<string>;
-    connectionId?: pulumi.Input<string>;
+    cert?: pulumi.Input<string | undefined>;
+    connectionId?: pulumi.Input<string | undefined>;
     /**
      * True if the key is the current key.
      */
-    current?: pulumi.Input<boolean>;
+    current?: pulumi.Input<boolean | undefined>;
     /**
      * The date and time when the key became the current key.
      */
-    currentSince?: pulumi.Input<string>;
+    currentSince?: pulumi.Input<string | undefined>;
     /**
      * The certificate fingerprint.
      */
-    fingerprint?: pulumi.Input<string>;
+    fingerprint?: pulumi.Input<string | undefined>;
     /**
      * The signing key use, whether for encryption or signing.
      */
-    keyUse?: pulumi.Input<string>;
+    keyUse?: pulumi.Input<string | undefined>;
     /**
      * The key ID of the signing key.
      */
-    kid?: pulumi.Input<string>;
+    kid?: pulumi.Input<string | undefined>;
     /**
      * True if the key is the next key.
      */
-    next?: pulumi.Input<boolean>;
+    next?: pulumi.Input<boolean | undefined>;
     /**
      * The public certificate of the signing key in PKCS7 format.
      */
-    pkcs?: pulumi.Input<string>;
+    pkcs?: pulumi.Input<string | undefined>;
     /**
      * True if the key is the previous key.
      */
-    previous?: pulumi.Input<boolean>;
+    previous?: pulumi.Input<boolean | undefined>;
     /**
      * The subject distinguished name (DN) of the certificate.
      */
-    subjectDn?: pulumi.Input<string>;
+    subjectDn?: pulumi.Input<string | undefined>;
     /**
      * The certificate thumbprint.
      */
-    thumbprint?: pulumi.Input<string>;
+    thumbprint?: pulumi.Input<string | undefined>;
     /**
      * This is an arbitrary map, which when edited shall perform rotation of keys for the corresponding connection. It can host keys like version, timestamp of last rotation etc.The field has no association with API
      */
-    triggers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    triggers?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**

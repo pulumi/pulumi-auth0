@@ -146,5 +146,5 @@ export interface GetCustomDomainOutputArgs {
     /**
      * The ID of the Custom Domain.
      */
-    customDomainId?: pulumi.Input<string>;
+    customDomainId?: pulumi.Input<string | undefined>;
 }

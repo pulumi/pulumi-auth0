@@ -56,8 +56,8 @@ class ResourceServerScopesArgs:
 @pulumi.input_type
 class _ResourceServerScopesState:
     def __init__(__self__, *,
-                 resource_server_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceServerScopesScopeArgs']]]] = None):
+                 resource_server_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 scopes: pulumi.Input[Optional[Sequence[pulumi.Input['ResourceServerScopesScopeArgs']]]] = None):
         """
         Input properties used for looking up and filtering ResourceServerScopes resources.
 
@@ -70,23 +70,23 @@ class _ResourceServerScopesState:
 
     @_builtins.property
     @pulumi.getter(name="resourceServerIdentifier")
-    def resource_server_identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_server_identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier of the resource server that the scopes (permission) are associated with.
         """
         return pulumi.get(self, "resource_server_identifier")
 
     @resource_server_identifier.setter
-    def resource_server_identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_server_identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_server_identifier", value)
 
     @_builtins.property
     @pulumi.getter
-    def scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ResourceServerScopesScopeArgs']]]]:
+    def scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ResourceServerScopesScopeArgs']]]]:
         return pulumi.get(self, "scopes")
 
     @scopes.setter
-    def scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceServerScopesScopeArgs']]]]):
+    def scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ResourceServerScopesScopeArgs']]]]):
         pulumi.set(self, "scopes", value)
 
 
@@ -96,8 +96,8 @@ class ResourceServerScopes(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 resource_server_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ResourceServerScopesScopeArgs', 'ResourceServerScopesScopeArgsDict']]]]] = None,
+                 resource_server_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 scopes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResourceServerScopesScopeArgs', 'ResourceServerScopesScopeArgsDict']]]]] = None,
                  __props__=None):
         """
         With this resource, you can manage scopes (permissions) associated with a resource server (API).
@@ -208,8 +208,8 @@ class ResourceServerScopes(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 resource_server_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ResourceServerScopesScopeArgs', 'ResourceServerScopesScopeArgsDict']]]]] = None,
+                 resource_server_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 scopes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResourceServerScopesScopeArgs', 'ResourceServerScopesScopeArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -235,8 +235,8 @@ class ResourceServerScopes(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            resource_server_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            scopes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ResourceServerScopesScopeArgs', 'ResourceServerScopesScopeArgsDict']]]]] = None) -> 'ResourceServerScopes':
+            resource_server_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            scopes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResourceServerScopesScopeArgs', 'ResourceServerScopesScopeArgsDict']]]]] = None) -> 'ResourceServerScopes':
         """
         Get an existing ResourceServerScopes resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

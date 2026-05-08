@@ -179,43 +179,43 @@ export interface ConnectionDirectoryState {
     /**
      * ID of the connection for this directory provisioning configuration.
      */
-    connectionId?: pulumi.Input<string>;
+    connectionId?: pulumi.Input<string | undefined>;
     /**
      * Name of the connection for this directory provisioning configuration.
      */
-    connectionName?: pulumi.Input<string>;
+    connectionName?: pulumi.Input<string | undefined>;
     /**
      * The timestamp at which the directory provisioning configuration was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The timestamp at which the connection was last synchronized.
      */
-    lastSynchronizationAt?: pulumi.Input<string>;
+    lastSynchronizationAt?: pulumi.Input<string | undefined>;
     /**
      * The error message of the last synchronization, if any.
      */
-    lastSynchronizationError?: pulumi.Input<string>;
+    lastSynchronizationError?: pulumi.Input<string | undefined>;
     /**
      * The status of the last synchronization.
      */
-    lastSynchronizationStatus?: pulumi.Input<string>;
+    lastSynchronizationStatus?: pulumi.Input<string | undefined>;
     /**
      * Mapping between Auth0 attributes and IDP user attributes. Defaults to default mapping for the connection type if not specified.
      */
-    mappings?: pulumi.Input<pulumi.Input<inputs.ConnectionDirectoryMapping>[]>;
+    mappings?: pulumi.Input<pulumi.Input<inputs.ConnectionDirectoryMapping>[] | undefined>;
     /**
      * Strategy of the connection for this directory provisioning configuration.
      */
-    strategy?: pulumi.Input<string>;
+    strategy?: pulumi.Input<string | undefined>;
     /**
      * Whether periodic automatic synchronization is enabled. Defaults to false.
      */
-    synchronizeAutomatically?: pulumi.Input<boolean>;
+    synchronizeAutomatically?: pulumi.Input<boolean | undefined>;
     /**
      * The timestamp at which the directory provisioning configuration was last updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -229,9 +229,9 @@ export interface ConnectionDirectoryArgs {
     /**
      * Mapping between Auth0 attributes and IDP user attributes. Defaults to default mapping for the connection type if not specified.
      */
-    mappings?: pulumi.Input<pulumi.Input<inputs.ConnectionDirectoryMapping>[]>;
+    mappings?: pulumi.Input<pulumi.Input<inputs.ConnectionDirectoryMapping>[] | undefined>;
     /**
      * Whether periodic automatic synchronization is enabled. Defaults to false.
      */
-    synchronizeAutomatically?: pulumi.Input<boolean>;
+    synchronizeAutomatically?: pulumi.Input<boolean | undefined>;
 }

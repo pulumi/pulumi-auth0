@@ -73,7 +73,7 @@ export interface RiskAssessmentsNewDeviceState {
     /**
      * Length of time to remember devices for, in days
      */
-    rememberFor?: pulumi.Input<number>;
+    rememberFor?: pulumi.Input<number | undefined>;
 }
 
 /**

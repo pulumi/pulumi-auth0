@@ -127,7 +127,7 @@ def get_network_acl(id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         priority=pulumi.get(__ret__, 'priority'),
         rules=pulumi.get(__ret__, 'rules'))
-def get_network_acl_output(id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_network_acl_output(id: pulumi.Input[Optional[_builtins.str]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNetworkAclResult]:
     """
     Data source to retrieve a specific Auth0 Network ACL by ID.

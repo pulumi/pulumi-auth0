@@ -204,7 +204,7 @@ def get_connection_directory(connection_id: Optional[_builtins.str] = None,
         strategy=pulumi.get(__ret__, 'strategy'),
         synchronize_automatically=pulumi.get(__ret__, 'synchronize_automatically'),
         updated_at=pulumi.get(__ret__, 'updated_at'))
-def get_connection_directory_output(connection_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_connection_directory_output(connection_id: pulumi.Input[Optional[_builtins.str]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConnectionDirectoryResult]:
     """
     Data source to retrieve directory provisioning configuration for an Auth0 connection by `connection_id`.

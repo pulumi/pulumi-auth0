@@ -169,7 +169,7 @@ def get_branding_phone_notification_template(template_id: Optional[_builtins.str
         template_id=pulumi.get(__ret__, 'template_id'),
         tenant=pulumi.get(__ret__, 'tenant'),
         type=pulumi.get(__ret__, 'type'))
-def get_branding_phone_notification_template_output(template_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_branding_phone_notification_template_output(template_id: pulumi.Input[Optional[_builtins.str]] = None,
                                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBrandingPhoneNotificationTemplateResult]:
     """
     Data source to retrieve a specific Auth0 Phone Notification Template by `template_id`.

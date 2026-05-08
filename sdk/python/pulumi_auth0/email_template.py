@@ -25,9 +25,9 @@ class EmailTemplateArgs:
                  subject: pulumi.Input[_builtins.str],
                  syntax: pulumi.Input[_builtins.str],
                  template: pulumi.Input[_builtins.str],
-                 include_email_in_redirect: Optional[pulumi.Input[_builtins.bool]] = None,
-                 result_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 url_lifetime_in_seconds: Optional[pulumi.Input[_builtins.int]] = None):
+                 include_email_in_redirect: pulumi.Input[Optional[_builtins.bool]] = None,
+                 result_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 url_lifetime_in_seconds: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a EmailTemplate resource.
 
@@ -128,53 +128,53 @@ class EmailTemplateArgs:
 
     @_builtins.property
     @pulumi.getter(name="includeEmailInRedirect")
-    def include_email_in_redirect(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def include_email_in_redirect(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the `reset_email` and `verify_email` templates should include the user's email address as the email parameter in the `returnUrl` (true) or whether no email address should be included in the redirect (false). Defaults to `true`.
         """
         return pulumi.get(self, "include_email_in_redirect")
 
     @include_email_in_redirect.setter
-    def include_email_in_redirect(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def include_email_in_redirect(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "include_email_in_redirect", value)
 
     @_builtins.property
     @pulumi.getter(name="resultUrl")
-    def result_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def result_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL to redirect the user to after a successful action. [Learn more](https://auth0.com/docs/customize/email/email-templates#configure-template-fields).
         """
         return pulumi.get(self, "result_url")
 
     @result_url.setter
-    def result_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def result_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "result_url", value)
 
     @_builtins.property
     @pulumi.getter(name="urlLifetimeInSeconds")
-    def url_lifetime_in_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def url_lifetime_in_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of seconds during which the link within the email will be valid.
         """
         return pulumi.get(self, "url_lifetime_in_seconds")
 
     @url_lifetime_in_seconds.setter
-    def url_lifetime_in_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def url_lifetime_in_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "url_lifetime_in_seconds", value)
 
 
 @pulumi.input_type
 class _EmailTemplateState:
     def __init__(__self__, *,
-                 body: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 from_: Optional[pulumi.Input[_builtins.str]] = None,
-                 include_email_in_redirect: Optional[pulumi.Input[_builtins.bool]] = None,
-                 result_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 subject: Optional[pulumi.Input[_builtins.str]] = None,
-                 syntax: Optional[pulumi.Input[_builtins.str]] = None,
-                 template: Optional[pulumi.Input[_builtins.str]] = None,
-                 url_lifetime_in_seconds: Optional[pulumi.Input[_builtins.int]] = None):
+                 body: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 from_: pulumi.Input[Optional[_builtins.str]] = None,
+                 include_email_in_redirect: pulumi.Input[Optional[_builtins.bool]] = None,
+                 result_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 subject: pulumi.Input[Optional[_builtins.str]] = None,
+                 syntax: pulumi.Input[Optional[_builtins.str]] = None,
+                 template: pulumi.Input[Optional[_builtins.str]] = None,
+                 url_lifetime_in_seconds: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering EmailTemplate resources.
 
@@ -209,110 +209,110 @@ class _EmailTemplateState:
 
     @_builtins.property
     @pulumi.getter
-    def body(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def body(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Body of the email template. You can include [common variables](https://auth0.com/docs/customize/email/email-templates#common-variables).
         """
         return pulumi.get(self, "body")
 
     @body.setter
-    def body(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def body(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "body", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the template is enabled.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="from")
-    def from_(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def from_(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Email address to use as the sender. You can include [common variables](https://auth0.com/docs/customize/email/email-templates#common-variables).
         """
         return pulumi.get(self, "from_")
 
     @from_.setter
-    def from_(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def from_(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "from_", value)
 
     @_builtins.property
     @pulumi.getter(name="includeEmailInRedirect")
-    def include_email_in_redirect(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def include_email_in_redirect(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the `reset_email` and `verify_email` templates should include the user's email address as the email parameter in the `returnUrl` (true) or whether no email address should be included in the redirect (false). Defaults to `true`.
         """
         return pulumi.get(self, "include_email_in_redirect")
 
     @include_email_in_redirect.setter
-    def include_email_in_redirect(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def include_email_in_redirect(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "include_email_in_redirect", value)
 
     @_builtins.property
     @pulumi.getter(name="resultUrl")
-    def result_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def result_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL to redirect the user to after a successful action. [Learn more](https://auth0.com/docs/customize/email/email-templates#configure-template-fields).
         """
         return pulumi.get(self, "result_url")
 
     @result_url.setter
-    def result_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def result_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "result_url", value)
 
     @_builtins.property
     @pulumi.getter
-    def subject(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subject(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Subject line of the email. You can include [common variables](https://auth0.com/docs/customize/email/email-templates#common-variables).
         """
         return pulumi.get(self, "subject")
 
     @subject.setter
-    def subject(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subject(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subject", value)
 
     @_builtins.property
     @pulumi.getter
-    def syntax(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def syntax(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Syntax of the template body. You can use either text or HTML with Liquid syntax.
         """
         return pulumi.get(self, "syntax")
 
     @syntax.setter
-    def syntax(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def syntax(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "syntax", value)
 
     @_builtins.property
     @pulumi.getter
-    def template(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def template(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Template name. Options include `verify_email`, `verify_email_by_code`, `reset_email`, `reset_email_by_code`, `welcome_email`, `blocked_account`, `stolen_credentials`, `enrollment_email`, `mfa_oob_code`, `user_invitation`, `change_password` (legacy), `password_reset` (legacy), or `async_approval`.
         """
         return pulumi.get(self, "template")
 
     @template.setter
-    def template(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def template(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "template", value)
 
     @_builtins.property
     @pulumi.getter(name="urlLifetimeInSeconds")
-    def url_lifetime_in_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def url_lifetime_in_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of seconds during which the link within the email will be valid.
         """
         return pulumi.get(self, "url_lifetime_in_seconds")
 
     @url_lifetime_in_seconds.setter
-    def url_lifetime_in_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def url_lifetime_in_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "url_lifetime_in_seconds", value)
 
 
@@ -322,15 +322,15 @@ class EmailTemplate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 body: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 from_: Optional[pulumi.Input[_builtins.str]] = None,
-                 include_email_in_redirect: Optional[pulumi.Input[_builtins.bool]] = None,
-                 result_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 subject: Optional[pulumi.Input[_builtins.str]] = None,
-                 syntax: Optional[pulumi.Input[_builtins.str]] = None,
-                 template: Optional[pulumi.Input[_builtins.str]] = None,
-                 url_lifetime_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
+                 body: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 from_: pulumi.Input[Optional[_builtins.str]] = None,
+                 include_email_in_redirect: pulumi.Input[Optional[_builtins.bool]] = None,
+                 result_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 subject: pulumi.Input[Optional[_builtins.str]] = None,
+                 syntax: pulumi.Input[Optional[_builtins.str]] = None,
+                 template: pulumi.Input[Optional[_builtins.str]] = None,
+                 url_lifetime_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right into Auth0. This resource allows you to configure email templates to customize the look, feel, and sender identities of emails sent by Auth0. Used in conjunction with configured email providers.
@@ -461,15 +461,15 @@ class EmailTemplate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 body: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 from_: Optional[pulumi.Input[_builtins.str]] = None,
-                 include_email_in_redirect: Optional[pulumi.Input[_builtins.bool]] = None,
-                 result_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 subject: Optional[pulumi.Input[_builtins.str]] = None,
-                 syntax: Optional[pulumi.Input[_builtins.str]] = None,
-                 template: Optional[pulumi.Input[_builtins.str]] = None,
-                 url_lifetime_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
+                 body: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 from_: pulumi.Input[Optional[_builtins.str]] = None,
+                 include_email_in_redirect: pulumi.Input[Optional[_builtins.bool]] = None,
+                 result_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 subject: pulumi.Input[Optional[_builtins.str]] = None,
+                 syntax: pulumi.Input[Optional[_builtins.str]] = None,
+                 template: pulumi.Input[Optional[_builtins.str]] = None,
+                 url_lifetime_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -510,15 +510,15 @@ class EmailTemplate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            body: Optional[pulumi.Input[_builtins.str]] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            from_: Optional[pulumi.Input[_builtins.str]] = None,
-            include_email_in_redirect: Optional[pulumi.Input[_builtins.bool]] = None,
-            result_url: Optional[pulumi.Input[_builtins.str]] = None,
-            subject: Optional[pulumi.Input[_builtins.str]] = None,
-            syntax: Optional[pulumi.Input[_builtins.str]] = None,
-            template: Optional[pulumi.Input[_builtins.str]] = None,
-            url_lifetime_in_seconds: Optional[pulumi.Input[_builtins.int]] = None) -> 'EmailTemplate':
+            body: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            from_: pulumi.Input[Optional[_builtins.str]] = None,
+            include_email_in_redirect: pulumi.Input[Optional[_builtins.bool]] = None,
+            result_url: pulumi.Input[Optional[_builtins.str]] = None,
+            subject: pulumi.Input[Optional[_builtins.str]] = None,
+            syntax: pulumi.Input[Optional[_builtins.str]] = None,
+            template: pulumi.Input[Optional[_builtins.str]] = None,
+            url_lifetime_in_seconds: pulumi.Input[Optional[_builtins.int]] = None) -> 'EmailTemplate':
         """
         Get an existing EmailTemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

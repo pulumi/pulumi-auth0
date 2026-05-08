@@ -23,9 +23,9 @@ class EventStreamArgs:
     def __init__(__self__, *,
                  destination_type: pulumi.Input[_builtins.str],
                  subscriptions: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 eventbridge_configuration: Optional[pulumi.Input['EventStreamEventbridgeConfigurationArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 webhook_configuration: Optional[pulumi.Input['EventStreamWebhookConfigurationArgs']] = None):
+                 eventbridge_configuration: pulumi.Input[Optional['EventStreamEventbridgeConfigurationArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 webhook_configuration: pulumi.Input[Optional['EventStreamWebhookConfigurationArgs']] = None):
         """
         The set of arguments for constructing a EventStream resource.
 
@@ -70,52 +70,52 @@ class EventStreamArgs:
 
     @_builtins.property
     @pulumi.getter(name="eventbridgeConfiguration")
-    def eventbridge_configuration(self) -> Optional[pulumi.Input['EventStreamEventbridgeConfigurationArgs']]:
+    def eventbridge_configuration(self) -> pulumi.Input[Optional['EventStreamEventbridgeConfigurationArgs']]:
         """
         Configuration for the EventBridge destination. This block is only applicable when `destination_type` is set to `eventbridge`. EventBridge configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
         """
         return pulumi.get(self, "eventbridge_configuration")
 
     @eventbridge_configuration.setter
-    def eventbridge_configuration(self, value: Optional[pulumi.Input['EventStreamEventbridgeConfigurationArgs']]):
+    def eventbridge_configuration(self, value: pulumi.Input[Optional['EventStreamEventbridgeConfigurationArgs']]):
         pulumi.set(self, "eventbridge_configuration", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the event stream.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="webhookConfiguration")
-    def webhook_configuration(self) -> Optional[pulumi.Input['EventStreamWebhookConfigurationArgs']]:
+    def webhook_configuration(self) -> pulumi.Input[Optional['EventStreamWebhookConfigurationArgs']]:
         """
         Configuration for the Webhook destination. This block is only applicable when `destination_type` is set to `webhook`. Webhook configurations **can** be updated after creation, including the endpoint and authorization fields.
         """
         return pulumi.get(self, "webhook_configuration")
 
     @webhook_configuration.setter
-    def webhook_configuration(self, value: Optional[pulumi.Input['EventStreamWebhookConfigurationArgs']]):
+    def webhook_configuration(self, value: pulumi.Input[Optional['EventStreamWebhookConfigurationArgs']]):
         pulumi.set(self, "webhook_configuration", value)
 
 
 @pulumi.input_type
 class _EventStreamState:
     def __init__(__self__, *,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 eventbridge_configuration: Optional[pulumi.Input['EventStreamEventbridgeConfigurationArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 subscriptions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 webhook_configuration: Optional[pulumi.Input['EventStreamWebhookConfigurationArgs']] = None):
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 eventbridge_configuration: pulumi.Input[Optional['EventStreamEventbridgeConfigurationArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 subscriptions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 webhook_configuration: pulumi.Input[Optional['EventStreamWebhookConfigurationArgs']] = None):
         """
         Input properties used for looking up and filtering EventStream resources.
 
@@ -147,98 +147,98 @@ class _EventStreamState:
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ISO 8601 timestamp when the stream was created.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationType")
-    def destination_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of event stream destination (either 'eventbridge' or 'webhook').
         """
         return pulumi.get(self, "destination_type")
 
     @destination_type.setter
-    def destination_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_type", value)
 
     @_builtins.property
     @pulumi.getter(name="eventbridgeConfiguration")
-    def eventbridge_configuration(self) -> Optional[pulumi.Input['EventStreamEventbridgeConfigurationArgs']]:
+    def eventbridge_configuration(self) -> pulumi.Input[Optional['EventStreamEventbridgeConfigurationArgs']]:
         """
         Configuration for the EventBridge destination. This block is only applicable when `destination_type` is set to `eventbridge`. EventBridge configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
         """
         return pulumi.get(self, "eventbridge_configuration")
 
     @eventbridge_configuration.setter
-    def eventbridge_configuration(self, value: Optional[pulumi.Input['EventStreamEventbridgeConfigurationArgs']]):
+    def eventbridge_configuration(self, value: pulumi.Input[Optional['EventStreamEventbridgeConfigurationArgs']]):
         pulumi.set(self, "eventbridge_configuration", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the event stream.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The current status of the event stream.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def subscriptions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def subscriptions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of event types this stream is subscribed to.
         """
         return pulumi.get(self, "subscriptions")
 
     @subscriptions.setter
-    def subscriptions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def subscriptions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "subscriptions", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ISO 8601 timestamp when the stream was last updated.
         """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_at", value)
 
     @_builtins.property
     @pulumi.getter(name="webhookConfiguration")
-    def webhook_configuration(self) -> Optional[pulumi.Input['EventStreamWebhookConfigurationArgs']]:
+    def webhook_configuration(self) -> pulumi.Input[Optional['EventStreamWebhookConfigurationArgs']]:
         """
         Configuration for the Webhook destination. This block is only applicable when `destination_type` is set to `webhook`. Webhook configurations **can** be updated after creation, including the endpoint and authorization fields.
         """
         return pulumi.get(self, "webhook_configuration")
 
     @webhook_configuration.setter
-    def webhook_configuration(self, value: Optional[pulumi.Input['EventStreamWebhookConfigurationArgs']]):
+    def webhook_configuration(self, value: pulumi.Input[Optional['EventStreamWebhookConfigurationArgs']]):
         pulumi.set(self, "webhook_configuration", value)
 
 
@@ -248,11 +248,11 @@ class EventStream(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 destination_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 eventbridge_configuration: Optional[pulumi.Input[Union['EventStreamEventbridgeConfigurationArgs', 'EventStreamEventbridgeConfigurationArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 subscriptions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 webhook_configuration: Optional[pulumi.Input[Union['EventStreamWebhookConfigurationArgs', 'EventStreamWebhookConfigurationArgsDict']]] = None,
+                 destination_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 eventbridge_configuration: pulumi.Input[Optional[Union['EventStreamEventbridgeConfigurationArgs', 'EventStreamEventbridgeConfigurationArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 subscriptions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 webhook_configuration: pulumi.Input[Optional[Union['EventStreamWebhookConfigurationArgs', 'EventStreamWebhookConfigurationArgsDict']]] = None,
                  __props__=None):
         """
         Allows you to manage Auth0 Event Streams.
@@ -417,11 +417,11 @@ class EventStream(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 destination_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 eventbridge_configuration: Optional[pulumi.Input[Union['EventStreamEventbridgeConfigurationArgs', 'EventStreamEventbridgeConfigurationArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 subscriptions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 webhook_configuration: Optional[pulumi.Input[Union['EventStreamWebhookConfigurationArgs', 'EventStreamWebhookConfigurationArgsDict']]] = None,
+                 destination_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 eventbridge_configuration: pulumi.Input[Optional[Union['EventStreamEventbridgeConfigurationArgs', 'EventStreamEventbridgeConfigurationArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 subscriptions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 webhook_configuration: pulumi.Input[Optional[Union['EventStreamWebhookConfigurationArgs', 'EventStreamWebhookConfigurationArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -453,14 +453,14 @@ class EventStream(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            destination_type: Optional[pulumi.Input[_builtins.str]] = None,
-            eventbridge_configuration: Optional[pulumi.Input[Union['EventStreamEventbridgeConfigurationArgs', 'EventStreamEventbridgeConfigurationArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            subscriptions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.str]] = None,
-            webhook_configuration: Optional[pulumi.Input[Union['EventStreamWebhookConfigurationArgs', 'EventStreamWebhookConfigurationArgsDict']]] = None) -> 'EventStream':
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_type: pulumi.Input[Optional[_builtins.str]] = None,
+            eventbridge_configuration: pulumi.Input[Optional[Union['EventStreamEventbridgeConfigurationArgs', 'EventStreamEventbridgeConfigurationArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            subscriptions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            webhook_configuration: pulumi.Input[Optional[Union['EventStreamWebhookConfigurationArgs', 'EventStreamWebhookConfigurationArgsDict']]] = None) -> 'EventStream':
         """
         Get an existing EventStream resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

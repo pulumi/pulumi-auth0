@@ -23,12 +23,12 @@ class PromptScreenRendererArgs:
     def __init__(__self__, *,
                  prompt_type: pulumi.Input[_builtins.str],
                  screen_name: pulumi.Input[_builtins.str],
-                 context_configurations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 default_head_tags_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 filters: Optional[pulumi.Input['PromptScreenRendererFiltersArgs']] = None,
-                 head_tags: Optional[pulumi.Input[_builtins.str]] = None,
-                 rendering_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 use_page_template: Optional[pulumi.Input[_builtins.bool]] = None):
+                 context_configurations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 default_head_tags_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 filters: pulumi.Input[Optional['PromptScreenRendererFiltersArgs']] = None,
+                 head_tags: pulumi.Input[Optional[_builtins.str]] = None,
+                 rendering_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_page_template: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a PromptScreenRenderer resource.
 
@@ -82,89 +82,89 @@ class PromptScreenRendererArgs:
 
     @_builtins.property
     @pulumi.getter(name="contextConfigurations")
-    def context_configurations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def context_configurations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Context values to make available
         """
         return pulumi.get(self, "context_configurations")
 
     @context_configurations.setter
-    def context_configurations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def context_configurations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "context_configurations", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultHeadTagsDisabled")
-    def default_head_tags_disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def default_head_tags_disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Override Universal Login default head tags
         """
         return pulumi.get(self, "default_head_tags_disabled")
 
     @default_head_tags_disabled.setter
-    def default_head_tags_disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def default_head_tags_disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "default_head_tags_disabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def filters(self) -> Optional[pulumi.Input['PromptScreenRendererFiltersArgs']]:
+    def filters(self) -> pulumi.Input[Optional['PromptScreenRendererFiltersArgs']]:
         """
         Optional filters to apply rendering rules to specific entities. `match_type` and at least one of the entity arrays are required.
         """
         return pulumi.get(self, "filters")
 
     @filters.setter
-    def filters(self, value: Optional[pulumi.Input['PromptScreenRendererFiltersArgs']]):
+    def filters(self, value: pulumi.Input[Optional['PromptScreenRendererFiltersArgs']]):
         pulumi.set(self, "filters", value)
 
     @_builtins.property
     @pulumi.getter(name="headTags")
-    def head_tags(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def head_tags(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An array of head tags
         """
         return pulumi.get(self, "head_tags")
 
     @head_tags.setter
-    def head_tags(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def head_tags(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "head_tags", value)
 
     @_builtins.property
     @pulumi.getter(name="renderingMode")
-    def rendering_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rendering_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Rendering modeOptions are: `standard`, `advanced`.
         """
         return pulumi.get(self, "rendering_mode")
 
     @rendering_mode.setter
-    def rendering_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rendering_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rendering_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="usePageTemplate")
-    def use_page_template(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_page_template(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Use page template with ACUL
         """
         return pulumi.get(self, "use_page_template")
 
     @use_page_template.setter
-    def use_page_template(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_page_template(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_page_template", value)
 
 
 @pulumi.input_type
 class _PromptScreenRendererState:
     def __init__(__self__, *,
-                 context_configurations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 default_head_tags_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 filters: Optional[pulumi.Input['PromptScreenRendererFiltersArgs']] = None,
-                 head_tags: Optional[pulumi.Input[_builtins.str]] = None,
-                 prompt_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 rendering_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 screen_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant: Optional[pulumi.Input[_builtins.str]] = None,
-                 use_page_template: Optional[pulumi.Input[_builtins.bool]] = None):
+                 context_configurations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 default_head_tags_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 filters: pulumi.Input[Optional['PromptScreenRendererFiltersArgs']] = None,
+                 head_tags: pulumi.Input[Optional[_builtins.str]] = None,
+                 prompt_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 rendering_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 screen_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_page_template: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering PromptScreenRenderer resources.
 
@@ -199,110 +199,110 @@ class _PromptScreenRendererState:
 
     @_builtins.property
     @pulumi.getter(name="contextConfigurations")
-    def context_configurations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def context_configurations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Context values to make available
         """
         return pulumi.get(self, "context_configurations")
 
     @context_configurations.setter
-    def context_configurations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def context_configurations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "context_configurations", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultHeadTagsDisabled")
-    def default_head_tags_disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def default_head_tags_disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Override Universal Login default head tags
         """
         return pulumi.get(self, "default_head_tags_disabled")
 
     @default_head_tags_disabled.setter
-    def default_head_tags_disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def default_head_tags_disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "default_head_tags_disabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def filters(self) -> Optional[pulumi.Input['PromptScreenRendererFiltersArgs']]:
+    def filters(self) -> pulumi.Input[Optional['PromptScreenRendererFiltersArgs']]:
         """
         Optional filters to apply rendering rules to specific entities. `match_type` and at least one of the entity arrays are required.
         """
         return pulumi.get(self, "filters")
 
     @filters.setter
-    def filters(self, value: Optional[pulumi.Input['PromptScreenRendererFiltersArgs']]):
+    def filters(self, value: pulumi.Input[Optional['PromptScreenRendererFiltersArgs']]):
         pulumi.set(self, "filters", value)
 
     @_builtins.property
     @pulumi.getter(name="headTags")
-    def head_tags(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def head_tags(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An array of head tags
         """
         return pulumi.get(self, "head_tags")
 
     @head_tags.setter
-    def head_tags(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def head_tags(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "head_tags", value)
 
     @_builtins.property
     @pulumi.getter(name="promptType")
-    def prompt_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def prompt_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The prompt that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkeys`, `captcha`, `login`, `signup`, `reset-password`, `mfa`, `mfa-sms`, `mfa-email`, `mfa-push`, `invitation`, `organizations`, `mfa-otp`, `device-flow`, `mfa-phone`, `mfa-voice`, `mfa-recovery-code`, `common`, `email-verification`, `login-email-verification`, `logout`, `mfa-webauthn`, `consent`, `customized-consent`, `email-otp-challenge`.
         """
         return pulumi.get(self, "prompt_type")
 
     @prompt_type.setter
-    def prompt_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def prompt_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "prompt_type", value)
 
     @_builtins.property
     @pulumi.getter(name="renderingMode")
-    def rendering_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rendering_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Rendering modeOptions are: `standard`, `advanced`.
         """
         return pulumi.get(self, "rendering_mode")
 
     @rendering_mode.setter
-    def rendering_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rendering_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rendering_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="screenName")
-    def screen_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def screen_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The screen that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`, `login`, `signup`, `reset-password-request`, `reset-password-email`, `reset-password`, `reset-password-success`, `reset-password-error`, `reset-password-mfa-email-challenge`, `reset-password-mfa-otp-challenge`, `reset-password-mfa-push-challenge-push`, `reset-password-mfa-sms-challenge`, `mfa-detect-browser-capabilities`, `mfa-enroll-result`, `mfa-begin-enroll-options`, `mfa-login-options`, `mfa-country-codes`, `mfa-sms-challenge`, `mfa-sms-enrollment`, `mfa-sms-list`, `mfa-email-challenge`, `mfa-email-list`, `mfa-push-challenge-push`, `mfa-push-enrollment-qr`, `mfa-push-list`, `mfa-push-welcome`, `accept-invitation`, `organization-selection`, `organization-picker`, `pre-login-organization-picker`, `mfa-otp-challenge`, `mfa-otp-enrollment-code`, `mfa-otp-enrollment-qr`, `device-code-activation`, `device-code-activation-allowed`, `device-code-activation-denied`, `device-code-confirmation`, `mfa-phone-challenge`, `mfa-phone-enrollment`, `mfa-voice-challenge`, `mfa-voice-enrollment`, `reset-password-mfa-phone-challenge`, `reset-password-mfa-voice-challenge`, `mfa-recovery-code-challenge`, `mfa-recovery-code-enrollment`, `reset-password-mfa-recovery-code-challenge`, `redeem-ticket`, `mfa-recovery-code-challenge-new-code`, `email-verification-result`, `login-email-verification`, `logout`, `logout-aborted`, `logout-complete`, `mfa-webauthn-change-key-nickname`, `mfa-webauthn-enrollment-success`, `mfa-webauthn-error`, `mfa-webauthn-platform-challenge`, `mfa-webauthn-platform-enrollment`, `mfa-webauthn-roaming-challenge`, `mfa-webauthn-roaming-enrollment`, `reset-password-mfa-webauthn-platform-challenge`, `reset-password-mfa-webauthn-roaming-challenge`, `consent`, `customized-consent`, `email-otp-challenge`, `mfa-webauthn-not-available-error`.
         """
         return pulumi.get(self, "screen_name")
 
     @screen_name.setter
-    def screen_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def screen_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "screen_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def tenant(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tenant(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Tenant ID
         """
         return pulumi.get(self, "tenant")
 
     @tenant.setter
-    def tenant(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tenant(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenant", value)
 
     @_builtins.property
     @pulumi.getter(name="usePageTemplate")
-    def use_page_template(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_page_template(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Use page template with ACUL
         """
         return pulumi.get(self, "use_page_template")
 
     @use_page_template.setter
-    def use_page_template(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_page_template(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_page_template", value)
 
 
@@ -312,14 +312,14 @@ class PromptScreenRenderer(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 context_configurations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 default_head_tags_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 filters: Optional[pulumi.Input[Union['PromptScreenRendererFiltersArgs', 'PromptScreenRendererFiltersArgsDict']]] = None,
-                 head_tags: Optional[pulumi.Input[_builtins.str]] = None,
-                 prompt_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 rendering_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 screen_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 use_page_template: Optional[pulumi.Input[_builtins.bool]] = None,
+                 context_configurations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 default_head_tags_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 filters: pulumi.Input[Optional[Union['PromptScreenRendererFiltersArgs', 'PromptScreenRendererFiltersArgsDict']]] = None,
+                 head_tags: pulumi.Input[Optional[_builtins.str]] = None,
+                 prompt_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 rendering_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 screen_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_page_template: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         With this resource, you can Configure the render settings for a specific screen.You can read more about this [here](https://auth0.com/docs/customize/login-pages/advanced-customizations/getting-started/configure-acul-screens).
@@ -471,14 +471,14 @@ class PromptScreenRenderer(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 context_configurations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 default_head_tags_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 filters: Optional[pulumi.Input[Union['PromptScreenRendererFiltersArgs', 'PromptScreenRendererFiltersArgsDict']]] = None,
-                 head_tags: Optional[pulumi.Input[_builtins.str]] = None,
-                 prompt_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 rendering_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 screen_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 use_page_template: Optional[pulumi.Input[_builtins.bool]] = None,
+                 context_configurations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 default_head_tags_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 filters: pulumi.Input[Optional[Union['PromptScreenRendererFiltersArgs', 'PromptScreenRendererFiltersArgsDict']]] = None,
+                 head_tags: pulumi.Input[Optional[_builtins.str]] = None,
+                 prompt_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 rendering_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 screen_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_page_template: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -511,15 +511,15 @@ class PromptScreenRenderer(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            context_configurations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            default_head_tags_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            filters: Optional[pulumi.Input[Union['PromptScreenRendererFiltersArgs', 'PromptScreenRendererFiltersArgsDict']]] = None,
-            head_tags: Optional[pulumi.Input[_builtins.str]] = None,
-            prompt_type: Optional[pulumi.Input[_builtins.str]] = None,
-            rendering_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            screen_name: Optional[pulumi.Input[_builtins.str]] = None,
-            tenant: Optional[pulumi.Input[_builtins.str]] = None,
-            use_page_template: Optional[pulumi.Input[_builtins.bool]] = None) -> 'PromptScreenRenderer':
+            context_configurations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            default_head_tags_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            filters: pulumi.Input[Optional[Union['PromptScreenRendererFiltersArgs', 'PromptScreenRendererFiltersArgsDict']]] = None,
+            head_tags: pulumi.Input[Optional[_builtins.str]] = None,
+            prompt_type: pulumi.Input[Optional[_builtins.str]] = None,
+            rendering_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            screen_name: pulumi.Input[Optional[_builtins.str]] = None,
+            tenant: pulumi.Input[Optional[_builtins.str]] = None,
+            use_page_template: pulumi.Input[Optional[_builtins.bool]] = None) -> 'PromptScreenRenderer':
         """
         Get an existing PromptScreenRenderer resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

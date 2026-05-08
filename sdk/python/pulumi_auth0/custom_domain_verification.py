@@ -43,9 +43,9 @@ class CustomDomainVerificationInitArgs:
 @pulumi.input_type
 class _CustomDomainVerificationState:
     def __init__(__self__, *,
-                 cname_api_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_domain_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 origin_domain_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 cname_api_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_domain_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 origin_domain_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CustomDomainVerification resources.
 
@@ -62,38 +62,38 @@ class _CustomDomainVerificationState:
 
     @_builtins.property
     @pulumi.getter(name="cnameApiKey")
-    def cname_api_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cname_api_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The value of the `cname-api-key` header to send when forwarding requests. Only present if the type of the custom domain is `self_managed_certs` and Terraform originally managed the domain's verification.
         """
         return pulumi.get(self, "cname_api_key")
 
     @cname_api_key.setter
-    def cname_api_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cname_api_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cname_api_key", value)
 
     @_builtins.property
     @pulumi.getter(name="customDomainId")
-    def custom_domain_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_domain_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the custom domain resource.
         """
         return pulumi.get(self, "custom_domain_id")
 
     @custom_domain_id.setter
-    def custom_domain_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_domain_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_domain_id", value)
 
     @_builtins.property
     @pulumi.getter(name="originDomainName")
-    def origin_domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def origin_domain_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The DNS name of the Auth0 origin server that handles traffic for the custom domain.
         """
         return pulumi.get(self, "origin_domain_name")
 
     @origin_domain_name.setter
-    def origin_domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def origin_domain_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "origin_domain_name", value)
 
 
@@ -103,7 +103,7 @@ class CustomDomainVerification(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_domain_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 custom_domain_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         With Auth0, you can use a custom domain to maintain a consistent user experience. This is a three-step process; you must configure the custom domain in Auth0, then create a DNS record for the domain, then verify the DNS record in Auth0. This resource allows for automating the verification part of the process.
@@ -202,7 +202,7 @@ class CustomDomainVerification(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_domain_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 custom_domain_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -229,9 +229,9 @@ class CustomDomainVerification(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cname_api_key: Optional[pulumi.Input[_builtins.str]] = None,
-            custom_domain_id: Optional[pulumi.Input[_builtins.str]] = None,
-            origin_domain_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'CustomDomainVerification':
+            cname_api_key: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_domain_id: pulumi.Input[Optional[_builtins.str]] = None,
+            origin_domain_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'CustomDomainVerification':
         """
         Get an existing CustomDomainVerification resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

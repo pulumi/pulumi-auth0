@@ -21,11 +21,11 @@ class OrganizationConnectionArgs:
     def __init__(__self__, *,
                  connection_id: pulumi.Input[_builtins.str],
                  organization_id: pulumi.Input[_builtins.str],
-                 assign_membership_on_login: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_signup_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 organization_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 show_as_button: Optional[pulumi.Input[_builtins.bool]] = None):
+                 assign_membership_on_login: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_signup_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 organization_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 show_as_button: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a OrganizationConnection resource.
 
@@ -76,78 +76,78 @@ class OrganizationConnectionArgs:
 
     @_builtins.property
     @pulumi.getter(name="assignMembershipOnLogin")
-    def assign_membership_on_login(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def assign_membership_on_login(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When `true`, all users that log in with this connection will be automatically granted membership in the organization. When `false`, users must be granted membership in the organization before logging in with this connection.
         """
         return pulumi.get(self, "assign_membership_on_login")
 
     @assign_membership_on_login.setter
-    def assign_membership_on_login(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def assign_membership_on_login(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "assign_membership_on_login", value)
 
     @_builtins.property
     @pulumi.getter(name="isEnabled")
-    def is_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the connection is enabled for the organization.
         """
         return pulumi.get(self, "is_enabled")
 
     @is_enabled.setter
-    def is_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="isSignupEnabled")
-    def is_signup_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_signup_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `is_signup_enabled` can only be `true` if `assign_membership_on_login` is `true`.
         """
         return pulumi.get(self, "is_signup_enabled")
 
     @is_signup_enabled.setter
-    def is_signup_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_signup_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_signup_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="organizationAccessLevel")
-    def organization_access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def organization_access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access level for this organization connection. Can be `none`, `readonly`, `limited` or `full`.
         """
         return pulumi.get(self, "organization_access_level")
 
     @organization_access_level.setter
-    def organization_access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def organization_access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "organization_access_level", value)
 
     @_builtins.property
     @pulumi.getter(name="showAsButton")
-    def show_as_button(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def show_as_button(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Determines whether a connection should be displayed on this organization's login prompt. Only applicable for enterprise connections.
         """
         return pulumi.get(self, "show_as_button")
 
     @show_as_button.setter
-    def show_as_button(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def show_as_button(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "show_as_button", value)
 
 
 @pulumi.input_type
 class _OrganizationConnectionState:
     def __init__(__self__, *,
-                 assign_membership_on_login: Optional[pulumi.Input[_builtins.bool]] = None,
-                 connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_signup_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization_connection_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 show_as_button: Optional[pulumi.Input[_builtins.bool]] = None,
-                 strategy: Optional[pulumi.Input[_builtins.str]] = None):
+                 assign_membership_on_login: pulumi.Input[Optional[_builtins.bool]] = None,
+                 connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_signup_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization_connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 show_as_button: pulumi.Input[Optional[_builtins.bool]] = None,
+                 strategy: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OrganizationConnection resources.
 
@@ -185,122 +185,122 @@ class _OrganizationConnectionState:
 
     @_builtins.property
     @pulumi.getter(name="assignMembershipOnLogin")
-    def assign_membership_on_login(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def assign_membership_on_login(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When `true`, all users that log in with this connection will be automatically granted membership in the organization. When `false`, users must be granted membership in the organization before logging in with this connection.
         """
         return pulumi.get(self, "assign_membership_on_login")
 
     @assign_membership_on_login.setter
-    def assign_membership_on_login(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def assign_membership_on_login(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "assign_membership_on_login", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionId")
-    def connection_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the connection to enable for the organization.
         """
         return pulumi.get(self, "connection_id")
 
     @connection_id.setter
-    def connection_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_id", value)
 
     @_builtins.property
     @pulumi.getter(name="isEnabled")
-    def is_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the connection is enabled for the organization.
         """
         return pulumi.get(self, "is_enabled")
 
     @is_enabled.setter
-    def is_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="isSignupEnabled")
-    def is_signup_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_signup_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `is_signup_enabled` can only be `true` if `assign_membership_on_login` is `true`.
         """
         return pulumi.get(self, "is_signup_enabled")
 
     @is_signup_enabled.setter
-    def is_signup_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_signup_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_signup_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the enabled connection.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="organizationAccessLevel")
-    def organization_access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def organization_access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access level for this organization connection. Can be `none`, `readonly`, `limited` or `full`.
         """
         return pulumi.get(self, "organization_access_level")
 
     @organization_access_level.setter
-    def organization_access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def organization_access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "organization_access_level", value)
 
     @_builtins.property
     @pulumi.getter(name="organizationConnectionName")
-    def organization_connection_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def organization_connection_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the connection in the scope of this organization.
         """
         return pulumi.get(self, "organization_connection_name")
 
     @organization_connection_name.setter
-    def organization_connection_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def organization_connection_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "organization_connection_name", value)
 
     @_builtins.property
     @pulumi.getter(name="organizationId")
-    def organization_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def organization_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the organization to enable the connection for.
         """
         return pulumi.get(self, "organization_id")
 
     @organization_id.setter
-    def organization_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def organization_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "organization_id", value)
 
     @_builtins.property
     @pulumi.getter(name="showAsButton")
-    def show_as_button(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def show_as_button(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Determines whether a connection should be displayed on this organization's login prompt. Only applicable for enterprise connections.
         """
         return pulumi.get(self, "show_as_button")
 
     @show_as_button.setter
-    def show_as_button(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def show_as_button(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "show_as_button", value)
 
     @_builtins.property
     @pulumi.getter
-    def strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The strategy of the enabled connection.
         """
         return pulumi.get(self, "strategy")
 
     @strategy.setter
-    def strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "strategy", value)
 
 
@@ -310,13 +310,13 @@ class OrganizationConnection(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 assign_membership_on_login: Optional[pulumi.Input[_builtins.bool]] = None,
-                 connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_signup_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 organization_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 show_as_button: Optional[pulumi.Input[_builtins.bool]] = None,
+                 assign_membership_on_login: pulumi.Input[Optional[_builtins.bool]] = None,
+                 connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_signup_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 organization_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 show_as_button: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         With this resource, you can manage enabled connections on an organization.
@@ -431,13 +431,13 @@ class OrganizationConnection(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 assign_membership_on_login: Optional[pulumi.Input[_builtins.bool]] = None,
-                 connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_signup_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 organization_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 show_as_button: Optional[pulumi.Input[_builtins.bool]] = None,
+                 assign_membership_on_login: pulumi.Input[Optional[_builtins.bool]] = None,
+                 connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_signup_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 organization_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 show_as_button: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -471,16 +471,16 @@ class OrganizationConnection(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            assign_membership_on_login: Optional[pulumi.Input[_builtins.bool]] = None,
-            connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-            is_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            is_signup_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            organization_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-            organization_connection_name: Optional[pulumi.Input[_builtins.str]] = None,
-            organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-            show_as_button: Optional[pulumi.Input[_builtins.bool]] = None,
-            strategy: Optional[pulumi.Input[_builtins.str]] = None) -> 'OrganizationConnection':
+            assign_membership_on_login: pulumi.Input[Optional[_builtins.bool]] = None,
+            connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+            is_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_signup_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            organization_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+            organization_connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+            organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+            show_as_button: pulumi.Input[Optional[_builtins.bool]] = None,
+            strategy: pulumi.Input[Optional[_builtins.str]] = None) -> 'OrganizationConnection':
         """
         Get an existing OrganizationConnection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

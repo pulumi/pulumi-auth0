@@ -43,8 +43,8 @@ import * as utilities from "./utilities";
  * });
  * const myRole = new auth0.Role("my_role", {name: "My Role"});
  * const myRolePerms = new auth0.RolePermissions("my_role_perms", {
- *     permissions: resourceServer.identifier.apply(identifier => .map(entry => ({
- *         name: entry.value.name,
+ *     permissions: pulumi.all([resourceServerScopes.scopes, resourceServer.identifier]).apply(([scopes, identifier]) => scopes.map(entry => ({
+ *         name: entry.name,
  *         resourceServerIdentifier: identifier,
  *     }))),
  *     roleId: myRole.id,
@@ -136,11 +136,11 @@ export interface RolePermissionsState {
     /**
      * List of API permissions granted to the role.
      */
-    permissions?: pulumi.Input<pulumi.Input<inputs.RolePermissionsPermission>[]>;
+    permissions?: pulumi.Input<pulumi.Input<inputs.RolePermissionsPermission>[] | undefined>;
     /**
      * ID of the role to associate the permission to.
      */
-    roleId?: pulumi.Input<string>;
+    roleId?: pulumi.Input<string | undefined>;
 }
 
 /**

@@ -21,12 +21,12 @@ __all__ = ['SelfServiceProfileArgs', 'SelfServiceProfile']
 @pulumi.input_type
 class SelfServiceProfileArgs:
     def __init__(__self__, *,
-                 allowed_strategies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 branding: Optional[pulumi.Input['SelfServiceProfileBrandingArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_attribute_profile_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_attributes: Optional[pulumi.Input[Sequence[pulumi.Input['SelfServiceProfileUserAttributeArgs']]]] = None):
+                 allowed_strategies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 branding: pulumi.Input[Optional['SelfServiceProfileBrandingArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_attribute_profile_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_attributes: pulumi.Input[Optional[Sequence[pulumi.Input['SelfServiceProfileUserAttributeArgs']]]] = None):
         """
         The set of arguments for constructing a SelfServiceProfile resource.
 
@@ -52,88 +52,88 @@ class SelfServiceProfileArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedStrategies")
-    def allowed_strategies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_strategies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of IdP strategies that will be shown to users during the Self-Service SSO flow. Valid values are: oidc, samlp, waad, google-apps, adfs, okta, keycloak-samlp, pingfederate, auth0-samlp, okta-samlp.
         """
         return pulumi.get(self, "allowed_strategies")
 
     @allowed_strategies.setter
-    def allowed_strategies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_strategies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_strategies", value)
 
     @_builtins.property
     @pulumi.getter
-    def branding(self) -> Optional[pulumi.Input['SelfServiceProfileBrandingArgs']]:
+    def branding(self) -> pulumi.Input[Optional['SelfServiceProfileBrandingArgs']]:
         """
         Field can be used to customize the look and feel of the wizard.
         """
         return pulumi.get(self, "branding")
 
     @branding.setter
-    def branding(self, value: Optional[pulumi.Input['SelfServiceProfileBrandingArgs']]):
+    def branding(self, value: pulumi.Input[Optional['SelfServiceProfileBrandingArgs']]):
         pulumi.set(self, "branding", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the self-service Profile
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the self-service Profile
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="userAttributeProfileId")
-    def user_attribute_profile_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_attribute_profile_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the user attribute profile to use for this self-service profile. Cannot be used with user_attributes.
         """
         return pulumi.get(self, "user_attribute_profile_id")
 
     @user_attribute_profile_id.setter
-    def user_attribute_profile_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_attribute_profile_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_attribute_profile_id", value)
 
     @_builtins.property
     @pulumi.getter(name="userAttributes")
-    def user_attributes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SelfServiceProfileUserAttributeArgs']]]]:
+    def user_attributes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SelfServiceProfileUserAttributeArgs']]]]:
         """
         This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0. Cannot be used with user*attribute*profile*id.
         """
         return pulumi.get(self, "user_attributes")
 
     @user_attributes.setter
-    def user_attributes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SelfServiceProfileUserAttributeArgs']]]]):
+    def user_attributes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SelfServiceProfileUserAttributeArgs']]]]):
         pulumi.set(self, "user_attributes", value)
 
 
 @pulumi.input_type
 class _SelfServiceProfileState:
     def __init__(__self__, *,
-                 allowed_strategies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 branding: Optional[pulumi.Input['SelfServiceProfileBrandingArgs']] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_attribute_profile_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_attributes: Optional[pulumi.Input[Sequence[pulumi.Input['SelfServiceProfileUserAttributeArgs']]]] = None):
+                 allowed_strategies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 branding: pulumi.Input[Optional['SelfServiceProfileBrandingArgs']] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_attribute_profile_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_attributes: pulumi.Input[Optional[Sequence[pulumi.Input['SelfServiceProfileUserAttributeArgs']]]] = None):
         """
         Input properties used for looking up and filtering SelfServiceProfile resources.
 
@@ -165,98 +165,98 @@ class _SelfServiceProfileState:
 
     @_builtins.property
     @pulumi.getter(name="allowedStrategies")
-    def allowed_strategies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_strategies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of IdP strategies that will be shown to users during the Self-Service SSO flow. Valid values are: oidc, samlp, waad, google-apps, adfs, okta, keycloak-samlp, pingfederate, auth0-samlp, okta-samlp.
         """
         return pulumi.get(self, "allowed_strategies")
 
     @allowed_strategies.setter
-    def allowed_strategies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_strategies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_strategies", value)
 
     @_builtins.property
     @pulumi.getter
-    def branding(self) -> Optional[pulumi.Input['SelfServiceProfileBrandingArgs']]:
+    def branding(self) -> pulumi.Input[Optional['SelfServiceProfileBrandingArgs']]:
         """
         Field can be used to customize the look and feel of the wizard.
         """
         return pulumi.get(self, "branding")
 
     @branding.setter
-    def branding(self, value: Optional[pulumi.Input['SelfServiceProfileBrandingArgs']]):
+    def branding(self, value: pulumi.Input[Optional['SelfServiceProfileBrandingArgs']]):
         pulumi.set(self, "branding", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ISO 8601 formatted date the profile was created.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the self-service Profile
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the self-service Profile
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ISO 8601 formatted date the profile was updated.
         """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_at", value)
 
     @_builtins.property
     @pulumi.getter(name="userAttributeProfileId")
-    def user_attribute_profile_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_attribute_profile_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the user attribute profile to use for this self-service profile. Cannot be used with user_attributes.
         """
         return pulumi.get(self, "user_attribute_profile_id")
 
     @user_attribute_profile_id.setter
-    def user_attribute_profile_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_attribute_profile_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_attribute_profile_id", value)
 
     @_builtins.property
     @pulumi.getter(name="userAttributes")
-    def user_attributes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SelfServiceProfileUserAttributeArgs']]]]:
+    def user_attributes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SelfServiceProfileUserAttributeArgs']]]]:
         """
         This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0. Cannot be used with user*attribute*profile*id.
         """
         return pulumi.get(self, "user_attributes")
 
     @user_attributes.setter
-    def user_attributes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SelfServiceProfileUserAttributeArgs']]]]):
+    def user_attributes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SelfServiceProfileUserAttributeArgs']]]]):
         pulumi.set(self, "user_attributes", value)
 
 
@@ -266,12 +266,12 @@ class SelfServiceProfile(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allowed_strategies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 branding: Optional[pulumi.Input[Union['SelfServiceProfileBrandingArgs', 'SelfServiceProfileBrandingArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_attribute_profile_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SelfServiceProfileUserAttributeArgs', 'SelfServiceProfileUserAttributeArgsDict']]]]] = None,
+                 allowed_strategies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 branding: pulumi.Input[Optional[Union['SelfServiceProfileBrandingArgs', 'SelfServiceProfileBrandingArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_attribute_profile_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SelfServiceProfileUserAttributeArgs', 'SelfServiceProfileUserAttributeArgsDict']]]]] = None,
                  __props__=None):
         """
         With this resource, you can create and manage Self-Service Profile for a tenant.
@@ -373,12 +373,12 @@ class SelfServiceProfile(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allowed_strategies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 branding: Optional[pulumi.Input[Union['SelfServiceProfileBrandingArgs', 'SelfServiceProfileBrandingArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_attribute_profile_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SelfServiceProfileUserAttributeArgs', 'SelfServiceProfileUserAttributeArgsDict']]]]] = None,
+                 allowed_strategies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 branding: pulumi.Input[Optional[Union['SelfServiceProfileBrandingArgs', 'SelfServiceProfileBrandingArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_attribute_profile_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SelfServiceProfileUserAttributeArgs', 'SelfServiceProfileUserAttributeArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -406,14 +406,14 @@ class SelfServiceProfile(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            allowed_strategies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            branding: Optional[pulumi.Input[Union['SelfServiceProfileBrandingArgs', 'SelfServiceProfileBrandingArgsDict']]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.str]] = None,
-            user_attribute_profile_id: Optional[pulumi.Input[_builtins.str]] = None,
-            user_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SelfServiceProfileUserAttributeArgs', 'SelfServiceProfileUserAttributeArgsDict']]]]] = None) -> 'SelfServiceProfile':
+            allowed_strategies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            branding: pulumi.Input[Optional[Union['SelfServiceProfileBrandingArgs', 'SelfServiceProfileBrandingArgsDict']]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            user_attribute_profile_id: pulumi.Input[Optional[_builtins.str]] = None,
+            user_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SelfServiceProfileUserAttributeArgs', 'SelfServiceProfileUserAttributeArgsDict']]]]] = None) -> 'SelfServiceProfile':
         """
         Get an existing SelfServiceProfile resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

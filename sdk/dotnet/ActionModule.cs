@@ -22,7 +22,7 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myModule = new Auth0.Index.ActionModule("my_module", new()
+    ///     var myModule = new Auth0.ActionModule("my_module", new()
     ///     {
     ///         Name = "My Shared Module",
     ///         Code = @"/**

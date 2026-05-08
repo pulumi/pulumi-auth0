@@ -21,11 +21,11 @@ __all__ = ['OrganizationArgs', 'Organization']
 @pulumi.input_type
 class OrganizationArgs:
     def __init__(__self__, *,
-                 branding: Optional[pulumi.Input['OrganizationBrandingArgs']] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 token_quota: Optional[pulumi.Input['OrganizationTokenQuotaArgs']] = None):
+                 branding: pulumi.Input[Optional['OrganizationBrandingArgs']] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 token_quota: pulumi.Input[Optional['OrganizationTokenQuotaArgs']] = None):
         """
         The set of arguments for constructing a Organization resource.
 
@@ -48,73 +48,73 @@ class OrganizationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def branding(self) -> Optional[pulumi.Input['OrganizationBrandingArgs']]:
+    def branding(self) -> pulumi.Input[Optional['OrganizationBrandingArgs']]:
         """
         Defines how to style the login pages.
         """
         return pulumi.get(self, "branding")
 
     @branding.setter
-    def branding(self, value: Optional[pulumi.Input['OrganizationBrandingArgs']]):
+    def branding(self, value: pulumi.Input[Optional['OrganizationBrandingArgs']]):
         pulumi.set(self, "branding", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Friendly name of this organization.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def metadata(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Metadata associated with the organization. Maximum of 10 metadata properties allowed.
         """
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def metadata(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "metadata", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of this organization.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="tokenQuota")
-    def token_quota(self) -> Optional[pulumi.Input['OrganizationTokenQuotaArgs']]:
+    def token_quota(self) -> pulumi.Input[Optional['OrganizationTokenQuotaArgs']]:
         """
         The token quota configuration.
         """
         return pulumi.get(self, "token_quota")
 
     @token_quota.setter
-    def token_quota(self, value: Optional[pulumi.Input['OrganizationTokenQuotaArgs']]):
+    def token_quota(self, value: pulumi.Input[Optional['OrganizationTokenQuotaArgs']]):
         pulumi.set(self, "token_quota", value)
 
 
 @pulumi.input_type
 class _OrganizationState:
     def __init__(__self__, *,
-                 branding: Optional[pulumi.Input['OrganizationBrandingArgs']] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 token_quota: Optional[pulumi.Input['OrganizationTokenQuotaArgs']] = None):
+                 branding: pulumi.Input[Optional['OrganizationBrandingArgs']] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 token_quota: pulumi.Input[Optional['OrganizationTokenQuotaArgs']] = None):
         """
         Input properties used for looking up and filtering Organization resources.
 
@@ -137,62 +137,62 @@ class _OrganizationState:
 
     @_builtins.property
     @pulumi.getter
-    def branding(self) -> Optional[pulumi.Input['OrganizationBrandingArgs']]:
+    def branding(self) -> pulumi.Input[Optional['OrganizationBrandingArgs']]:
         """
         Defines how to style the login pages.
         """
         return pulumi.get(self, "branding")
 
     @branding.setter
-    def branding(self, value: Optional[pulumi.Input['OrganizationBrandingArgs']]):
+    def branding(self, value: pulumi.Input[Optional['OrganizationBrandingArgs']]):
         pulumi.set(self, "branding", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Friendly name of this organization.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def metadata(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Metadata associated with the organization. Maximum of 10 metadata properties allowed.
         """
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def metadata(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "metadata", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of this organization.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="tokenQuota")
-    def token_quota(self) -> Optional[pulumi.Input['OrganizationTokenQuotaArgs']]:
+    def token_quota(self) -> pulumi.Input[Optional['OrganizationTokenQuotaArgs']]:
         """
         The token quota configuration.
         """
         return pulumi.get(self, "token_quota")
 
     @token_quota.setter
-    def token_quota(self, value: Optional[pulumi.Input['OrganizationTokenQuotaArgs']]):
+    def token_quota(self, value: pulumi.Input[Optional['OrganizationTokenQuotaArgs']]):
         pulumi.set(self, "token_quota", value)
 
 
@@ -202,11 +202,11 @@ class Organization(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 branding: Optional[pulumi.Input[Union['OrganizationBrandingArgs', 'OrganizationBrandingArgsDict']]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 token_quota: Optional[pulumi.Input[Union['OrganizationTokenQuotaArgs', 'OrganizationTokenQuotaArgsDict']]] = None,
+                 branding: pulumi.Input[Optional[Union['OrganizationBrandingArgs', 'OrganizationBrandingArgsDict']]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 token_quota: pulumi.Input[Optional[Union['OrganizationTokenQuotaArgs', 'OrganizationTokenQuotaArgsDict']]] = None,
                  __props__=None):
         """
         The Organizations feature represents a broad update to the Auth0 platform that allows our business-to-business (B2B) customers to better manage their partners and customers, and to customize the ways that end-users access their applications. Auth0 customers can use Organizations to:
@@ -313,11 +313,11 @@ class Organization(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 branding: Optional[pulumi.Input[Union['OrganizationBrandingArgs', 'OrganizationBrandingArgsDict']]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 token_quota: Optional[pulumi.Input[Union['OrganizationTokenQuotaArgs', 'OrganizationTokenQuotaArgsDict']]] = None,
+                 branding: pulumi.Input[Optional[Union['OrganizationBrandingArgs', 'OrganizationBrandingArgsDict']]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 token_quota: pulumi.Input[Optional[Union['OrganizationTokenQuotaArgs', 'OrganizationTokenQuotaArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -342,11 +342,11 @@ class Organization(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            branding: Optional[pulumi.Input[Union['OrganizationBrandingArgs', 'OrganizationBrandingArgsDict']]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            token_quota: Optional[pulumi.Input[Union['OrganizationTokenQuotaArgs', 'OrganizationTokenQuotaArgsDict']]] = None) -> 'Organization':
+            branding: pulumi.Input[Optional[Union['OrganizationBrandingArgs', 'OrganizationBrandingArgsDict']]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            token_quota: pulumi.Input[Optional[Union['OrganizationTokenQuotaArgs', 'OrganizationTokenQuotaArgsDict']]] = None) -> 'Organization':
         """
         Get an existing Organization resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

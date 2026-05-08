@@ -60,8 +60,8 @@ class UserPermissionsArgs:
 @pulumi.input_type
 class _UserPermissionsState:
     def __init__(__self__, *,
-                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input['UserPermissionsPermissionArgs']]]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 permissions: pulumi.Input[Optional[Sequence[pulumi.Input['UserPermissionsPermissionArgs']]]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering UserPermissions resources.
 
@@ -75,26 +75,26 @@ class _UserPermissionsState:
 
     @_builtins.property
     @pulumi.getter
-    def permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserPermissionsPermissionArgs']]]]:
+    def permissions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UserPermissionsPermissionArgs']]]]:
         """
         List of API permissions granted to the user.
         """
         return pulumi.get(self, "permissions")
 
     @permissions.setter
-    def permissions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UserPermissionsPermissionArgs']]]]):
+    def permissions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['UserPermissionsPermissionArgs']]]]):
         pulumi.set(self, "permissions", value)
 
     @_builtins.property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the user to associate the permission to.
         """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
-    def user_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_id", value)
 
 
@@ -104,8 +104,8 @@ class UserPermissions(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserPermissionsPermissionArgs', 'UserPermissionsPermissionArgsDict']]]]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserPermissionsPermissionArgs', 'UserPermissionsPermissionArgsDict']]]]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         With this resource, you can manage all of a user's permissions.
@@ -255,8 +255,8 @@ class UserPermissions(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserPermissionsPermissionArgs', 'UserPermissionsPermissionArgsDict']]]]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserPermissionsPermissionArgs', 'UserPermissionsPermissionArgsDict']]]]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -282,8 +282,8 @@ class UserPermissions(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            permissions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserPermissionsPermissionArgs', 'UserPermissionsPermissionArgsDict']]]]] = None,
-            user_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'UserPermissions':
+            permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserPermissionsPermissionArgs', 'UserPermissionsPermissionArgsDict']]]]] = None,
+            user_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'UserPermissions':
         """
         Get an existing UserPermissions resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

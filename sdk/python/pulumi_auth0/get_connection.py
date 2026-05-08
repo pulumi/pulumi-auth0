@@ -236,8 +236,8 @@ def get_connection(connection_id: Optional[_builtins.str] = None,
         realms=pulumi.get(__ret__, 'realms'),
         show_as_button=pulumi.get(__ret__, 'show_as_button'),
         strategy=pulumi.get(__ret__, 'strategy'))
-def get_connection_output(connection_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_connection_output(connection_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConnectionResult]:
     """
     Data source to retrieve a specific Auth0 connection by `connection_id` or `name`.

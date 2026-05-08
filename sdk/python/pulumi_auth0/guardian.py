@@ -22,14 +22,14 @@ __all__ = ['GuardianArgs', 'Guardian']
 class GuardianArgs:
     def __init__(__self__, *,
                  policy: pulumi.Input[_builtins.str],
-                 duo: Optional[pulumi.Input['GuardianDuoArgs']] = None,
-                 email: Optional[pulumi.Input[_builtins.bool]] = None,
-                 otp: Optional[pulumi.Input[_builtins.bool]] = None,
-                 phone: Optional[pulumi.Input['GuardianPhoneArgs']] = None,
-                 push: Optional[pulumi.Input['GuardianPushArgs']] = None,
-                 recovery_code: Optional[pulumi.Input[_builtins.bool]] = None,
-                 webauthn_platform: Optional[pulumi.Input['GuardianWebauthnPlatformArgs']] = None,
-                 webauthn_roaming: Optional[pulumi.Input['GuardianWebauthnRoamingArgs']] = None):
+                 duo: pulumi.Input[Optional['GuardianDuoArgs']] = None,
+                 email: pulumi.Input[Optional[_builtins.bool]] = None,
+                 otp: pulumi.Input[Optional[_builtins.bool]] = None,
+                 phone: pulumi.Input[Optional['GuardianPhoneArgs']] = None,
+                 push: pulumi.Input[Optional['GuardianPushArgs']] = None,
+                 recovery_code: pulumi.Input[Optional[_builtins.bool]] = None,
+                 webauthn_platform: pulumi.Input[Optional['GuardianWebauthnPlatformArgs']] = None,
+                 webauthn_roaming: pulumi.Input[Optional['GuardianWebauthnRoamingArgs']] = None):
         """
         The set of arguments for constructing a Guardian resource.
 
@@ -75,113 +75,113 @@ class GuardianArgs:
 
     @_builtins.property
     @pulumi.getter
-    def duo(self) -> Optional[pulumi.Input['GuardianDuoArgs']]:
+    def duo(self) -> pulumi.Input[Optional['GuardianDuoArgs']]:
         """
         Configuration settings for the Duo MFA. If this block is present, Duo MFA will be enabled, and disabled otherwise.
         """
         return pulumi.get(self, "duo")
 
     @duo.setter
-    def duo(self, value: Optional[pulumi.Input['GuardianDuoArgs']]):
+    def duo(self, value: pulumi.Input[Optional['GuardianDuoArgs']]):
         pulumi.set(self, "duo", value)
 
     @_builtins.property
     @pulumi.getter
-    def email(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def email(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether email MFA is enabled.
         """
         return pulumi.get(self, "email")
 
     @email.setter
-    def email(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def email(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "email", value)
 
     @_builtins.property
     @pulumi.getter
-    def otp(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def otp(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether one time password MFA is enabled.
         """
         return pulumi.get(self, "otp")
 
     @otp.setter
-    def otp(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def otp(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "otp", value)
 
     @_builtins.property
     @pulumi.getter
-    def phone(self) -> Optional[pulumi.Input['GuardianPhoneArgs']]:
+    def phone(self) -> pulumi.Input[Optional['GuardianPhoneArgs']]:
         """
         Configuration settings for the phone MFA. If this block is present, Phone MFA will be enabled, and disabled otherwise.
         """
         return pulumi.get(self, "phone")
 
     @phone.setter
-    def phone(self, value: Optional[pulumi.Input['GuardianPhoneArgs']]):
+    def phone(self, value: pulumi.Input[Optional['GuardianPhoneArgs']]):
         pulumi.set(self, "phone", value)
 
     @_builtins.property
     @pulumi.getter
-    def push(self) -> Optional[pulumi.Input['GuardianPushArgs']]:
+    def push(self) -> pulumi.Input[Optional['GuardianPushArgs']]:
         """
         Configuration settings for the Push MFA. If this block is present, Push MFA will be enabled, and disabled otherwise.
         """
         return pulumi.get(self, "push")
 
     @push.setter
-    def push(self, value: Optional[pulumi.Input['GuardianPushArgs']]):
+    def push(self, value: pulumi.Input[Optional['GuardianPushArgs']]):
         pulumi.set(self, "push", value)
 
     @_builtins.property
     @pulumi.getter(name="recoveryCode")
-    def recovery_code(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def recovery_code(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether recovery code MFA is enabled.
         """
         return pulumi.get(self, "recovery_code")
 
     @recovery_code.setter
-    def recovery_code(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def recovery_code(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "recovery_code", value)
 
     @_builtins.property
     @pulumi.getter(name="webauthnPlatform")
-    def webauthn_platform(self) -> Optional[pulumi.Input['GuardianWebauthnPlatformArgs']]:
+    def webauthn_platform(self) -> pulumi.Input[Optional['GuardianWebauthnPlatformArgs']]:
         """
         Configuration settings for the WebAuthn with FIDO Device Biometrics MFA. If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.
         """
         return pulumi.get(self, "webauthn_platform")
 
     @webauthn_platform.setter
-    def webauthn_platform(self, value: Optional[pulumi.Input['GuardianWebauthnPlatformArgs']]):
+    def webauthn_platform(self, value: pulumi.Input[Optional['GuardianWebauthnPlatformArgs']]):
         pulumi.set(self, "webauthn_platform", value)
 
     @_builtins.property
     @pulumi.getter(name="webauthnRoaming")
-    def webauthn_roaming(self) -> Optional[pulumi.Input['GuardianWebauthnRoamingArgs']]:
+    def webauthn_roaming(self) -> pulumi.Input[Optional['GuardianWebauthnRoamingArgs']]:
         """
         Configuration settings for the WebAuthn with FIDO Security Keys MFA. If this block is present, WebAuthn with FIDO Security Keys MFA will be enabled, and disabled otherwise.
         """
         return pulumi.get(self, "webauthn_roaming")
 
     @webauthn_roaming.setter
-    def webauthn_roaming(self, value: Optional[pulumi.Input['GuardianWebauthnRoamingArgs']]):
+    def webauthn_roaming(self, value: pulumi.Input[Optional['GuardianWebauthnRoamingArgs']]):
         pulumi.set(self, "webauthn_roaming", value)
 
 
 @pulumi.input_type
 class _GuardianState:
     def __init__(__self__, *,
-                 duo: Optional[pulumi.Input['GuardianDuoArgs']] = None,
-                 email: Optional[pulumi.Input[_builtins.bool]] = None,
-                 otp: Optional[pulumi.Input[_builtins.bool]] = None,
-                 phone: Optional[pulumi.Input['GuardianPhoneArgs']] = None,
-                 policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 push: Optional[pulumi.Input['GuardianPushArgs']] = None,
-                 recovery_code: Optional[pulumi.Input[_builtins.bool]] = None,
-                 webauthn_platform: Optional[pulumi.Input['GuardianWebauthnPlatformArgs']] = None,
-                 webauthn_roaming: Optional[pulumi.Input['GuardianWebauthnRoamingArgs']] = None):
+                 duo: pulumi.Input[Optional['GuardianDuoArgs']] = None,
+                 email: pulumi.Input[Optional[_builtins.bool]] = None,
+                 otp: pulumi.Input[Optional[_builtins.bool]] = None,
+                 phone: pulumi.Input[Optional['GuardianPhoneArgs']] = None,
+                 policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 push: pulumi.Input[Optional['GuardianPushArgs']] = None,
+                 recovery_code: pulumi.Input[Optional[_builtins.bool]] = None,
+                 webauthn_platform: pulumi.Input[Optional['GuardianWebauthnPlatformArgs']] = None,
+                 webauthn_roaming: pulumi.Input[Optional['GuardianWebauthnRoamingArgs']] = None):
         """
         Input properties used for looking up and filtering Guardian resources.
 
@@ -216,110 +216,110 @@ class _GuardianState:
 
     @_builtins.property
     @pulumi.getter
-    def duo(self) -> Optional[pulumi.Input['GuardianDuoArgs']]:
+    def duo(self) -> pulumi.Input[Optional['GuardianDuoArgs']]:
         """
         Configuration settings for the Duo MFA. If this block is present, Duo MFA will be enabled, and disabled otherwise.
         """
         return pulumi.get(self, "duo")
 
     @duo.setter
-    def duo(self, value: Optional[pulumi.Input['GuardianDuoArgs']]):
+    def duo(self, value: pulumi.Input[Optional['GuardianDuoArgs']]):
         pulumi.set(self, "duo", value)
 
     @_builtins.property
     @pulumi.getter
-    def email(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def email(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether email MFA is enabled.
         """
         return pulumi.get(self, "email")
 
     @email.setter
-    def email(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def email(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "email", value)
 
     @_builtins.property
     @pulumi.getter
-    def otp(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def otp(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether one time password MFA is enabled.
         """
         return pulumi.get(self, "otp")
 
     @otp.setter
-    def otp(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def otp(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "otp", value)
 
     @_builtins.property
     @pulumi.getter
-    def phone(self) -> Optional[pulumi.Input['GuardianPhoneArgs']]:
+    def phone(self) -> pulumi.Input[Optional['GuardianPhoneArgs']]:
         """
         Configuration settings for the phone MFA. If this block is present, Phone MFA will be enabled, and disabled otherwise.
         """
         return pulumi.get(self, "phone")
 
     @phone.setter
-    def phone(self, value: Optional[pulumi.Input['GuardianPhoneArgs']]):
+    def phone(self, value: pulumi.Input[Optional['GuardianPhoneArgs']]):
         pulumi.set(self, "phone", value)
 
     @_builtins.property
     @pulumi.getter
-    def policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
         """
         return pulumi.get(self, "policy")
 
     @policy.setter
-    def policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def push(self) -> Optional[pulumi.Input['GuardianPushArgs']]:
+    def push(self) -> pulumi.Input[Optional['GuardianPushArgs']]:
         """
         Configuration settings for the Push MFA. If this block is present, Push MFA will be enabled, and disabled otherwise.
         """
         return pulumi.get(self, "push")
 
     @push.setter
-    def push(self, value: Optional[pulumi.Input['GuardianPushArgs']]):
+    def push(self, value: pulumi.Input[Optional['GuardianPushArgs']]):
         pulumi.set(self, "push", value)
 
     @_builtins.property
     @pulumi.getter(name="recoveryCode")
-    def recovery_code(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def recovery_code(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether recovery code MFA is enabled.
         """
         return pulumi.get(self, "recovery_code")
 
     @recovery_code.setter
-    def recovery_code(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def recovery_code(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "recovery_code", value)
 
     @_builtins.property
     @pulumi.getter(name="webauthnPlatform")
-    def webauthn_platform(self) -> Optional[pulumi.Input['GuardianWebauthnPlatformArgs']]:
+    def webauthn_platform(self) -> pulumi.Input[Optional['GuardianWebauthnPlatformArgs']]:
         """
         Configuration settings for the WebAuthn with FIDO Device Biometrics MFA. If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.
         """
         return pulumi.get(self, "webauthn_platform")
 
     @webauthn_platform.setter
-    def webauthn_platform(self, value: Optional[pulumi.Input['GuardianWebauthnPlatformArgs']]):
+    def webauthn_platform(self, value: pulumi.Input[Optional['GuardianWebauthnPlatformArgs']]):
         pulumi.set(self, "webauthn_platform", value)
 
     @_builtins.property
     @pulumi.getter(name="webauthnRoaming")
-    def webauthn_roaming(self) -> Optional[pulumi.Input['GuardianWebauthnRoamingArgs']]:
+    def webauthn_roaming(self) -> pulumi.Input[Optional['GuardianWebauthnRoamingArgs']]:
         """
         Configuration settings for the WebAuthn with FIDO Security Keys MFA. If this block is present, WebAuthn with FIDO Security Keys MFA will be enabled, and disabled otherwise.
         """
         return pulumi.get(self, "webauthn_roaming")
 
     @webauthn_roaming.setter
-    def webauthn_roaming(self, value: Optional[pulumi.Input['GuardianWebauthnRoamingArgs']]):
+    def webauthn_roaming(self, value: pulumi.Input[Optional['GuardianWebauthnRoamingArgs']]):
         pulumi.set(self, "webauthn_roaming", value)
 
 
@@ -329,15 +329,15 @@ class Guardian(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 duo: Optional[pulumi.Input[Union['GuardianDuoArgs', 'GuardianDuoArgsDict']]] = None,
-                 email: Optional[pulumi.Input[_builtins.bool]] = None,
-                 otp: Optional[pulumi.Input[_builtins.bool]] = None,
-                 phone: Optional[pulumi.Input[Union['GuardianPhoneArgs', 'GuardianPhoneArgsDict']]] = None,
-                 policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 push: Optional[pulumi.Input[Union['GuardianPushArgs', 'GuardianPushArgsDict']]] = None,
-                 recovery_code: Optional[pulumi.Input[_builtins.bool]] = None,
-                 webauthn_platform: Optional[pulumi.Input[Union['GuardianWebauthnPlatformArgs', 'GuardianWebauthnPlatformArgsDict']]] = None,
-                 webauthn_roaming: Optional[pulumi.Input[Union['GuardianWebauthnRoamingArgs', 'GuardianWebauthnRoamingArgsDict']]] = None,
+                 duo: pulumi.Input[Optional[Union['GuardianDuoArgs', 'GuardianDuoArgsDict']]] = None,
+                 email: pulumi.Input[Optional[_builtins.bool]] = None,
+                 otp: pulumi.Input[Optional[_builtins.bool]] = None,
+                 phone: pulumi.Input[Optional[Union['GuardianPhoneArgs', 'GuardianPhoneArgsDict']]] = None,
+                 policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 push: pulumi.Input[Optional[Union['GuardianPushArgs', 'GuardianPushArgsDict']]] = None,
+                 recovery_code: pulumi.Input[Optional[_builtins.bool]] = None,
+                 webauthn_platform: pulumi.Input[Optional[Union['GuardianWebauthnPlatformArgs', 'GuardianWebauthnPlatformArgsDict']]] = None,
+                 webauthn_roaming: pulumi.Input[Optional[Union['GuardianWebauthnRoamingArgs', 'GuardianWebauthnRoamingArgsDict']]] = None,
                  __props__=None):
         """
         Multi-Factor Authentication works by requiring additional factors during the login process to prevent unauthorized access. With this resource you can configure some options available for MFA.
@@ -514,15 +514,15 @@ class Guardian(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 duo: Optional[pulumi.Input[Union['GuardianDuoArgs', 'GuardianDuoArgsDict']]] = None,
-                 email: Optional[pulumi.Input[_builtins.bool]] = None,
-                 otp: Optional[pulumi.Input[_builtins.bool]] = None,
-                 phone: Optional[pulumi.Input[Union['GuardianPhoneArgs', 'GuardianPhoneArgsDict']]] = None,
-                 policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 push: Optional[pulumi.Input[Union['GuardianPushArgs', 'GuardianPushArgsDict']]] = None,
-                 recovery_code: Optional[pulumi.Input[_builtins.bool]] = None,
-                 webauthn_platform: Optional[pulumi.Input[Union['GuardianWebauthnPlatformArgs', 'GuardianWebauthnPlatformArgsDict']]] = None,
-                 webauthn_roaming: Optional[pulumi.Input[Union['GuardianWebauthnRoamingArgs', 'GuardianWebauthnRoamingArgsDict']]] = None,
+                 duo: pulumi.Input[Optional[Union['GuardianDuoArgs', 'GuardianDuoArgsDict']]] = None,
+                 email: pulumi.Input[Optional[_builtins.bool]] = None,
+                 otp: pulumi.Input[Optional[_builtins.bool]] = None,
+                 phone: pulumi.Input[Optional[Union['GuardianPhoneArgs', 'GuardianPhoneArgsDict']]] = None,
+                 policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 push: pulumi.Input[Optional[Union['GuardianPushArgs', 'GuardianPushArgsDict']]] = None,
+                 recovery_code: pulumi.Input[Optional[_builtins.bool]] = None,
+                 webauthn_platform: pulumi.Input[Optional[Union['GuardianWebauthnPlatformArgs', 'GuardianWebauthnPlatformArgsDict']]] = None,
+                 webauthn_roaming: pulumi.Input[Optional[Union['GuardianWebauthnRoamingArgs', 'GuardianWebauthnRoamingArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -553,15 +553,15 @@ class Guardian(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            duo: Optional[pulumi.Input[Union['GuardianDuoArgs', 'GuardianDuoArgsDict']]] = None,
-            email: Optional[pulumi.Input[_builtins.bool]] = None,
-            otp: Optional[pulumi.Input[_builtins.bool]] = None,
-            phone: Optional[pulumi.Input[Union['GuardianPhoneArgs', 'GuardianPhoneArgsDict']]] = None,
-            policy: Optional[pulumi.Input[_builtins.str]] = None,
-            push: Optional[pulumi.Input[Union['GuardianPushArgs', 'GuardianPushArgsDict']]] = None,
-            recovery_code: Optional[pulumi.Input[_builtins.bool]] = None,
-            webauthn_platform: Optional[pulumi.Input[Union['GuardianWebauthnPlatformArgs', 'GuardianWebauthnPlatformArgsDict']]] = None,
-            webauthn_roaming: Optional[pulumi.Input[Union['GuardianWebauthnRoamingArgs', 'GuardianWebauthnRoamingArgsDict']]] = None) -> 'Guardian':
+            duo: pulumi.Input[Optional[Union['GuardianDuoArgs', 'GuardianDuoArgsDict']]] = None,
+            email: pulumi.Input[Optional[_builtins.bool]] = None,
+            otp: pulumi.Input[Optional[_builtins.bool]] = None,
+            phone: pulumi.Input[Optional[Union['GuardianPhoneArgs', 'GuardianPhoneArgsDict']]] = None,
+            policy: pulumi.Input[Optional[_builtins.str]] = None,
+            push: pulumi.Input[Optional[Union['GuardianPushArgs', 'GuardianPushArgsDict']]] = None,
+            recovery_code: pulumi.Input[Optional[_builtins.bool]] = None,
+            webauthn_platform: pulumi.Input[Optional[Union['GuardianWebauthnPlatformArgs', 'GuardianWebauthnPlatformArgsDict']]] = None,
+            webauthn_roaming: pulumi.Input[Optional[Union['GuardianWebauthnRoamingArgs', 'GuardianWebauthnRoamingArgsDict']]] = None) -> 'Guardian':
         """
         Get an existing Guardian resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

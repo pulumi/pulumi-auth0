@@ -82,7 +82,7 @@ export interface SupplementalSignalsState {
     /**
      * Indicates if incoming Akamai Headers should be processed.
      */
-    akamaiEnabled?: pulumi.Input<boolean>;
+    akamaiEnabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**

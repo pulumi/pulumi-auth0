@@ -176,53 +176,53 @@ export interface CustomDomainState {
     /**
      * The Custom Domain certificate.
      */
-    certificates?: pulumi.Input<pulumi.Input<inputs.CustomDomainCertificate>[]>;
+    certificates?: pulumi.Input<pulumi.Input<inputs.CustomDomainCertificate>[] | undefined>;
     /**
      * The HTTP header to fetch the client's IP address. Cannot be set on auth0Managed domains.
      */
-    customClientIpHeader?: pulumi.Input<string>;
+    customClientIpHeader?: pulumi.Input<string | undefined>;
     /**
      * Name of the custom domain.
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
     /**
      * Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
      */
-    domainMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    domainMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Indicates whether this custom domain is the default domain for the tenant
      */
-    isDefault?: pulumi.Input<boolean>;
+    isDefault?: pulumi.Input<boolean | undefined>;
     /**
      * Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
      */
-    originDomainName?: pulumi.Input<string>;
+    originDomainName?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether this is a primary domain.
      *
      * @deprecated Primary field is no longer used and will be removed in a future release.
      */
-    primary?: pulumi.Input<boolean>;
+    primary?: pulumi.Input<boolean | undefined>;
     /**
      * Relying Party ID (rpId) to be used for Passkeys on this custom domain. If not provided or set to null, the full domain will be used.
      */
-    relyingPartyIdentifier?: pulumi.Input<string>;
+    relyingPartyIdentifier?: pulumi.Input<string | undefined>;
     /**
      * Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, `ready` and `failed`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on selfManaged domains.
      */
-    tlsPolicy?: pulumi.Input<string>;
+    tlsPolicy?: pulumi.Input<string | undefined>;
     /**
      * Provisioning type for the custom domain. Options include `auth0ManagedCerts` and `selfManagedCerts`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Configuration settings for verification.
      */
-    verifications?: pulumi.Input<pulumi.Input<inputs.CustomDomainVerification>[]>;
+    verifications?: pulumi.Input<pulumi.Input<inputs.CustomDomainVerification>[] | undefined>;
 }
 
 /**
@@ -232,7 +232,7 @@ export interface CustomDomainArgs {
     /**
      * The HTTP header to fetch the client's IP address. Cannot be set on auth0Managed domains.
      */
-    customClientIpHeader?: pulumi.Input<string>;
+    customClientIpHeader?: pulumi.Input<string | undefined>;
     /**
      * Name of the custom domain.
      */
@@ -240,15 +240,15 @@ export interface CustomDomainArgs {
     /**
      * Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
      */
-    domainMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    domainMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Relying Party ID (rpId) to be used for Passkeys on this custom domain. If not provided or set to null, the full domain will be used.
      */
-    relyingPartyIdentifier?: pulumi.Input<string>;
+    relyingPartyIdentifier?: pulumi.Input<string | undefined>;
     /**
      * TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on selfManaged domains.
      */
-    tlsPolicy?: pulumi.Input<string>;
+    tlsPolicy?: pulumi.Input<string | undefined>;
     /**
      * Provisioning type for the custom domain. Options include `auth0ManagedCerts` and `selfManagedCerts`.
      */

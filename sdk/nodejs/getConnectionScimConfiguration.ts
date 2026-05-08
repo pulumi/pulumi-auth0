@@ -148,9 +148,9 @@ export interface GetConnectionScimConfigurationOutputArgs {
     /**
      * Default mapping between Auth0 attributes and SCIM attributes for this connection type.
      */
-    defaultMappings?: pulumi.Input<pulumi.Input<inputs.GetConnectionScimConfigurationDefaultMappingArgs>[]>;
+    defaultMappings?: pulumi.Input<pulumi.Input<inputs.GetConnectionScimConfigurationDefaultMappingArgs>[] | undefined>;
     /**
      * Mapping between Auth0 attributes and SCIM attributes.
      */
-    mappings?: pulumi.Input<pulumi.Input<inputs.GetConnectionScimConfigurationMappingArgs>[]>;
+    mappings?: pulumi.Input<pulumi.Input<inputs.GetConnectionScimConfigurationMappingArgs>[] | undefined>;
 }

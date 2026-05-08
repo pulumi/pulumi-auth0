@@ -22,8 +22,8 @@ __all__ = ['ConnectionScimConfigurationArgs', 'ConnectionScimConfiguration']
 class ConnectionScimConfigurationArgs:
     def __init__(__self__, *,
                  connection_id: pulumi.Input[_builtins.str],
-                 mappings: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionScimConfigurationMappingArgs']]]] = None,
-                 user_id_attribute: Optional[pulumi.Input[_builtins.str]] = None):
+                 mappings: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionScimConfigurationMappingArgs']]]] = None,
+                 user_id_attribute: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ConnectionScimConfiguration resource.
 
@@ -51,38 +51,38 @@ class ConnectionScimConfigurationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def mappings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionScimConfigurationMappingArgs']]]]:
+    def mappings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionScimConfigurationMappingArgs']]]]:
         """
         Mapping between Auth0 attributes and SCIM attributes. If `user_id_attribute` is set, `mapping` must be set as well.
         """
         return pulumi.get(self, "mappings")
 
     @mappings.setter
-    def mappings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionScimConfigurationMappingArgs']]]]):
+    def mappings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionScimConfigurationMappingArgs']]]]):
         pulumi.set(self, "mappings", value)
 
     @_builtins.property
     @pulumi.getter(name="userIdAttribute")
-    def user_id_attribute(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_id_attribute(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User ID attribute for generation unique of user ids. If `user_id_attribute` is set, `mapping` must be set as well. Defaults to `userName` for SAML connections and `externalId` for OIDC connections.
         """
         return pulumi.get(self, "user_id_attribute")
 
     @user_id_attribute.setter
-    def user_id_attribute(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_id_attribute(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_id_attribute", value)
 
 
 @pulumi.input_type
 class _ConnectionScimConfigurationState:
     def __init__(__self__, *,
-                 connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 connection_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 mappings: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionScimConfigurationMappingArgs']]]] = None,
-                 strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id_attribute: Optional[pulumi.Input[_builtins.str]] = None):
+                 connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 mappings: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionScimConfigurationMappingArgs']]]] = None,
+                 strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id_attribute: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ConnectionScimConfiguration resources.
 
@@ -108,74 +108,74 @@ class _ConnectionScimConfigurationState:
 
     @_builtins.property
     @pulumi.getter(name="connectionId")
-    def connection_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the connection for this SCIM configuration.
         """
         return pulumi.get(self, "connection_id")
 
     @connection_id.setter
-    def connection_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_id", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionName")
-    def connection_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the connection for this SCIM configuration.
         """
         return pulumi.get(self, "connection_name")
 
     @connection_name.setter
-    def connection_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def mappings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionScimConfigurationMappingArgs']]]]:
+    def mappings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionScimConfigurationMappingArgs']]]]:
         """
         Mapping between Auth0 attributes and SCIM attributes. If `user_id_attribute` is set, `mapping` must be set as well.
         """
         return pulumi.get(self, "mappings")
 
     @mappings.setter
-    def mappings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionScimConfigurationMappingArgs']]]]):
+    def mappings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionScimConfigurationMappingArgs']]]]):
         pulumi.set(self, "mappings", value)
 
     @_builtins.property
     @pulumi.getter
-    def strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Schema of the connection for this SCIM configuration.
         """
         return pulumi.get(self, "strategy")
 
     @strategy.setter
-    def strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="tenantName")
-    def tenant_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tenant_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the tenant for this SCIM configuration.
         """
         return pulumi.get(self, "tenant_name")
 
     @tenant_name.setter
-    def tenant_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tenant_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenant_name", value)
 
     @_builtins.property
     @pulumi.getter(name="userIdAttribute")
-    def user_id_attribute(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_id_attribute(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User ID attribute for generation unique of user ids. If `user_id_attribute` is set, `mapping` must be set as well. Defaults to `userName` for SAML connections and `externalId` for OIDC connections.
         """
         return pulumi.get(self, "user_id_attribute")
 
     @user_id_attribute.setter
-    def user_id_attribute(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_id_attribute(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_id_attribute", value)
 
 
@@ -185,9 +185,9 @@ class ConnectionScimConfiguration(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectionScimConfigurationMappingArgs', 'ConnectionScimConfigurationMappingArgsDict']]]]] = None,
-                 user_id_attribute: Optional[pulumi.Input[_builtins.str]] = None,
+                 connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionScimConfigurationMappingArgs', 'ConnectionScimConfigurationMappingArgsDict']]]]] = None,
+                 user_id_attribute: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         With this resource, you can configure [SCIM(System for Cross-domain Identity Management)](https://simplecloud.info/) support for `SAML` and `OpenID Connect` Enterprise connections.
@@ -344,9 +344,9 @@ class ConnectionScimConfiguration(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectionScimConfigurationMappingArgs', 'ConnectionScimConfigurationMappingArgsDict']]]]] = None,
-                 user_id_attribute: Optional[pulumi.Input[_builtins.str]] = None,
+                 connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionScimConfigurationMappingArgs', 'ConnectionScimConfigurationMappingArgsDict']]]]] = None,
+                 user_id_attribute: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -374,12 +374,12 @@ class ConnectionScimConfiguration(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-            connection_name: Optional[pulumi.Input[_builtins.str]] = None,
-            mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectionScimConfigurationMappingArgs', 'ConnectionScimConfigurationMappingArgsDict']]]]] = None,
-            strategy: Optional[pulumi.Input[_builtins.str]] = None,
-            tenant_name: Optional[pulumi.Input[_builtins.str]] = None,
-            user_id_attribute: Optional[pulumi.Input[_builtins.str]] = None) -> 'ConnectionScimConfiguration':
+            connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+            connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+            mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionScimConfigurationMappingArgs', 'ConnectionScimConfigurationMappingArgsDict']]]]] = None,
+            strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            tenant_name: pulumi.Input[Optional[_builtins.str]] = None,
+            user_id_attribute: pulumi.Input[Optional[_builtins.str]] = None) -> 'ConnectionScimConfiguration':
         """
         Get an existing ConnectionScimConfiguration resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

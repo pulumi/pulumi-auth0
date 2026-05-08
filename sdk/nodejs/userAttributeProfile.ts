@@ -89,15 +89,15 @@ export interface UserAttributeProfileState {
     /**
      * The name of the User Attribute Profile.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * List of user attribute configurations.
      */
-    userAttributes?: pulumi.Input<pulumi.Input<inputs.UserAttributeProfileUserAttribute>[]>;
+    userAttributes?: pulumi.Input<pulumi.Input<inputs.UserAttributeProfileUserAttribute>[] | undefined>;
     /**
      * Configuration for mapping the user ID from identity providers.
      */
-    userId?: pulumi.Input<inputs.UserAttributeProfileUserId>;
+    userId?: pulumi.Input<inputs.UserAttributeProfileUserId | undefined>;
 }
 
 /**
@@ -107,7 +107,7 @@ export interface UserAttributeProfileArgs {
     /**
      * The name of the User Attribute Profile.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * List of user attribute configurations.
      */
@@ -115,5 +115,5 @@ export interface UserAttributeProfileArgs {
     /**
      * Configuration for mapping the user ID from identity providers.
      */
-    userId?: pulumi.Input<inputs.UserAttributeProfileUserId>;
+    userId?: pulumi.Input<inputs.UserAttributeProfileUserId | undefined>;
 }

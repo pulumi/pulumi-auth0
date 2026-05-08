@@ -25,7 +25,7 @@ namespace Pulumi.Auth0
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // An Auth0 Event Stream loaded using its ID.
-        ///     var test = Auth0.Index.GetEventStream.Invoke(new()
+        ///     var test = Auth0.GetEventStream.Invoke(new()
         ///     {
         ///         Id = "est_XXXXXXXXXXXXXXX",
         ///     });
@@ -50,7 +50,7 @@ namespace Pulumi.Auth0
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // An Auth0 Event Stream loaded using its ID.
-        ///     var test = Auth0.Index.GetEventStream.Invoke(new()
+        ///     var test = Auth0.GetEventStream.Invoke(new()
         ///     {
         ///         Id = "est_XXXXXXXXXXXXXXX",
         ///     });
@@ -75,7 +75,7 @@ namespace Pulumi.Auth0
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // An Auth0 Event Stream loaded using its ID.
-        ///     var test = Auth0.Index.GetEventStream.Invoke(new()
+        ///     var test = Auth0.GetEventStream.Invoke(new()
         ///     {
         ///         Id = "est_XXXXXXXXXXXXXXX",
         ///     });

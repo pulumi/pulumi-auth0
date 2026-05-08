@@ -21,11 +21,11 @@ __all__ = ['AttackProtectionArgs', 'AttackProtection']
 @pulumi.input_type
 class AttackProtectionArgs:
     def __init__(__self__, *,
-                 bot_detection: Optional[pulumi.Input['AttackProtectionBotDetectionArgs']] = None,
-                 breached_password_detection: Optional[pulumi.Input['AttackProtectionBreachedPasswordDetectionArgs']] = None,
-                 brute_force_protection: Optional[pulumi.Input['AttackProtectionBruteForceProtectionArgs']] = None,
-                 captcha: Optional[pulumi.Input['AttackProtectionCaptchaArgs']] = None,
-                 suspicious_ip_throttling: Optional[pulumi.Input['AttackProtectionSuspiciousIpThrottlingArgs']] = None):
+                 bot_detection: pulumi.Input[Optional['AttackProtectionBotDetectionArgs']] = None,
+                 breached_password_detection: pulumi.Input[Optional['AttackProtectionBreachedPasswordDetectionArgs']] = None,
+                 brute_force_protection: pulumi.Input[Optional['AttackProtectionBruteForceProtectionArgs']] = None,
+                 captcha: pulumi.Input[Optional['AttackProtectionCaptchaArgs']] = None,
+                 suspicious_ip_throttling: pulumi.Input[Optional['AttackProtectionSuspiciousIpThrottlingArgs']] = None):
         """
         The set of arguments for constructing a AttackProtection resource.
 
@@ -48,73 +48,73 @@ class AttackProtectionArgs:
 
     @_builtins.property
     @pulumi.getter(name="botDetection")
-    def bot_detection(self) -> Optional[pulumi.Input['AttackProtectionBotDetectionArgs']]:
+    def bot_detection(self) -> pulumi.Input[Optional['AttackProtectionBotDetectionArgs']]:
         """
         Bot detection configuration to identify and prevent automated threats.
         """
         return pulumi.get(self, "bot_detection")
 
     @bot_detection.setter
-    def bot_detection(self, value: Optional[pulumi.Input['AttackProtectionBotDetectionArgs']]):
+    def bot_detection(self, value: pulumi.Input[Optional['AttackProtectionBotDetectionArgs']]):
         pulumi.set(self, "bot_detection", value)
 
     @_builtins.property
     @pulumi.getter(name="breachedPasswordDetection")
-    def breached_password_detection(self) -> Optional[pulumi.Input['AttackProtectionBreachedPasswordDetectionArgs']]:
+    def breached_password_detection(self) -> pulumi.Input[Optional['AttackProtectionBreachedPasswordDetectionArgs']]:
         """
         Breached password detection protects your applications from bad actors logging in with stolen credentials.
         """
         return pulumi.get(self, "breached_password_detection")
 
     @breached_password_detection.setter
-    def breached_password_detection(self, value: Optional[pulumi.Input['AttackProtectionBreachedPasswordDetectionArgs']]):
+    def breached_password_detection(self, value: pulumi.Input[Optional['AttackProtectionBreachedPasswordDetectionArgs']]):
         pulumi.set(self, "breached_password_detection", value)
 
     @_builtins.property
     @pulumi.getter(name="bruteForceProtection")
-    def brute_force_protection(self) -> Optional[pulumi.Input['AttackProtectionBruteForceProtectionArgs']]:
+    def brute_force_protection(self) -> pulumi.Input[Optional['AttackProtectionBruteForceProtectionArgs']]:
         """
         Brute-force protection safeguards against a single IP address attacking a single user account.
         """
         return pulumi.get(self, "brute_force_protection")
 
     @brute_force_protection.setter
-    def brute_force_protection(self, value: Optional[pulumi.Input['AttackProtectionBruteForceProtectionArgs']]):
+    def brute_force_protection(self, value: pulumi.Input[Optional['AttackProtectionBruteForceProtectionArgs']]):
         pulumi.set(self, "brute_force_protection", value)
 
     @_builtins.property
     @pulumi.getter
-    def captcha(self) -> Optional[pulumi.Input['AttackProtectionCaptchaArgs']]:
+    def captcha(self) -> pulumi.Input[Optional['AttackProtectionCaptchaArgs']]:
         """
         CAPTCHA configuration for attack protection.
         """
         return pulumi.get(self, "captcha")
 
     @captcha.setter
-    def captcha(self, value: Optional[pulumi.Input['AttackProtectionCaptchaArgs']]):
+    def captcha(self, value: pulumi.Input[Optional['AttackProtectionCaptchaArgs']]):
         pulumi.set(self, "captcha", value)
 
     @_builtins.property
     @pulumi.getter(name="suspiciousIpThrottling")
-    def suspicious_ip_throttling(self) -> Optional[pulumi.Input['AttackProtectionSuspiciousIpThrottlingArgs']]:
+    def suspicious_ip_throttling(self) -> pulumi.Input[Optional['AttackProtectionSuspiciousIpThrottlingArgs']]:
         """
         Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.
         """
         return pulumi.get(self, "suspicious_ip_throttling")
 
     @suspicious_ip_throttling.setter
-    def suspicious_ip_throttling(self, value: Optional[pulumi.Input['AttackProtectionSuspiciousIpThrottlingArgs']]):
+    def suspicious_ip_throttling(self, value: pulumi.Input[Optional['AttackProtectionSuspiciousIpThrottlingArgs']]):
         pulumi.set(self, "suspicious_ip_throttling", value)
 
 
 @pulumi.input_type
 class _AttackProtectionState:
     def __init__(__self__, *,
-                 bot_detection: Optional[pulumi.Input['AttackProtectionBotDetectionArgs']] = None,
-                 breached_password_detection: Optional[pulumi.Input['AttackProtectionBreachedPasswordDetectionArgs']] = None,
-                 brute_force_protection: Optional[pulumi.Input['AttackProtectionBruteForceProtectionArgs']] = None,
-                 captcha: Optional[pulumi.Input['AttackProtectionCaptchaArgs']] = None,
-                 suspicious_ip_throttling: Optional[pulumi.Input['AttackProtectionSuspiciousIpThrottlingArgs']] = None):
+                 bot_detection: pulumi.Input[Optional['AttackProtectionBotDetectionArgs']] = None,
+                 breached_password_detection: pulumi.Input[Optional['AttackProtectionBreachedPasswordDetectionArgs']] = None,
+                 brute_force_protection: pulumi.Input[Optional['AttackProtectionBruteForceProtectionArgs']] = None,
+                 captcha: pulumi.Input[Optional['AttackProtectionCaptchaArgs']] = None,
+                 suspicious_ip_throttling: pulumi.Input[Optional['AttackProtectionSuspiciousIpThrottlingArgs']] = None):
         """
         Input properties used for looking up and filtering AttackProtection resources.
 
@@ -137,62 +137,62 @@ class _AttackProtectionState:
 
     @_builtins.property
     @pulumi.getter(name="botDetection")
-    def bot_detection(self) -> Optional[pulumi.Input['AttackProtectionBotDetectionArgs']]:
+    def bot_detection(self) -> pulumi.Input[Optional['AttackProtectionBotDetectionArgs']]:
         """
         Bot detection configuration to identify and prevent automated threats.
         """
         return pulumi.get(self, "bot_detection")
 
     @bot_detection.setter
-    def bot_detection(self, value: Optional[pulumi.Input['AttackProtectionBotDetectionArgs']]):
+    def bot_detection(self, value: pulumi.Input[Optional['AttackProtectionBotDetectionArgs']]):
         pulumi.set(self, "bot_detection", value)
 
     @_builtins.property
     @pulumi.getter(name="breachedPasswordDetection")
-    def breached_password_detection(self) -> Optional[pulumi.Input['AttackProtectionBreachedPasswordDetectionArgs']]:
+    def breached_password_detection(self) -> pulumi.Input[Optional['AttackProtectionBreachedPasswordDetectionArgs']]:
         """
         Breached password detection protects your applications from bad actors logging in with stolen credentials.
         """
         return pulumi.get(self, "breached_password_detection")
 
     @breached_password_detection.setter
-    def breached_password_detection(self, value: Optional[pulumi.Input['AttackProtectionBreachedPasswordDetectionArgs']]):
+    def breached_password_detection(self, value: pulumi.Input[Optional['AttackProtectionBreachedPasswordDetectionArgs']]):
         pulumi.set(self, "breached_password_detection", value)
 
     @_builtins.property
     @pulumi.getter(name="bruteForceProtection")
-    def brute_force_protection(self) -> Optional[pulumi.Input['AttackProtectionBruteForceProtectionArgs']]:
+    def brute_force_protection(self) -> pulumi.Input[Optional['AttackProtectionBruteForceProtectionArgs']]:
         """
         Brute-force protection safeguards against a single IP address attacking a single user account.
         """
         return pulumi.get(self, "brute_force_protection")
 
     @brute_force_protection.setter
-    def brute_force_protection(self, value: Optional[pulumi.Input['AttackProtectionBruteForceProtectionArgs']]):
+    def brute_force_protection(self, value: pulumi.Input[Optional['AttackProtectionBruteForceProtectionArgs']]):
         pulumi.set(self, "brute_force_protection", value)
 
     @_builtins.property
     @pulumi.getter
-    def captcha(self) -> Optional[pulumi.Input['AttackProtectionCaptchaArgs']]:
+    def captcha(self) -> pulumi.Input[Optional['AttackProtectionCaptchaArgs']]:
         """
         CAPTCHA configuration for attack protection.
         """
         return pulumi.get(self, "captcha")
 
     @captcha.setter
-    def captcha(self, value: Optional[pulumi.Input['AttackProtectionCaptchaArgs']]):
+    def captcha(self, value: pulumi.Input[Optional['AttackProtectionCaptchaArgs']]):
         pulumi.set(self, "captcha", value)
 
     @_builtins.property
     @pulumi.getter(name="suspiciousIpThrottling")
-    def suspicious_ip_throttling(self) -> Optional[pulumi.Input['AttackProtectionSuspiciousIpThrottlingArgs']]:
+    def suspicious_ip_throttling(self) -> pulumi.Input[Optional['AttackProtectionSuspiciousIpThrottlingArgs']]:
         """
         Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.
         """
         return pulumi.get(self, "suspicious_ip_throttling")
 
     @suspicious_ip_throttling.setter
-    def suspicious_ip_throttling(self, value: Optional[pulumi.Input['AttackProtectionSuspiciousIpThrottlingArgs']]):
+    def suspicious_ip_throttling(self, value: pulumi.Input[Optional['AttackProtectionSuspiciousIpThrottlingArgs']]):
         pulumi.set(self, "suspicious_ip_throttling", value)
 
 
@@ -202,11 +202,11 @@ class AttackProtection(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bot_detection: Optional[pulumi.Input[Union['AttackProtectionBotDetectionArgs', 'AttackProtectionBotDetectionArgsDict']]] = None,
-                 breached_password_detection: Optional[pulumi.Input[Union['AttackProtectionBreachedPasswordDetectionArgs', 'AttackProtectionBreachedPasswordDetectionArgsDict']]] = None,
-                 brute_force_protection: Optional[pulumi.Input[Union['AttackProtectionBruteForceProtectionArgs', 'AttackProtectionBruteForceProtectionArgsDict']]] = None,
-                 captcha: Optional[pulumi.Input[Union['AttackProtectionCaptchaArgs', 'AttackProtectionCaptchaArgsDict']]] = None,
-                 suspicious_ip_throttling: Optional[pulumi.Input[Union['AttackProtectionSuspiciousIpThrottlingArgs', 'AttackProtectionSuspiciousIpThrottlingArgsDict']]] = None,
+                 bot_detection: pulumi.Input[Optional[Union['AttackProtectionBotDetectionArgs', 'AttackProtectionBotDetectionArgsDict']]] = None,
+                 breached_password_detection: pulumi.Input[Optional[Union['AttackProtectionBreachedPasswordDetectionArgs', 'AttackProtectionBreachedPasswordDetectionArgsDict']]] = None,
+                 brute_force_protection: pulumi.Input[Optional[Union['AttackProtectionBruteForceProtectionArgs', 'AttackProtectionBruteForceProtectionArgsDict']]] = None,
+                 captcha: pulumi.Input[Optional[Union['AttackProtectionCaptchaArgs', 'AttackProtectionCaptchaArgsDict']]] = None,
+                 suspicious_ip_throttling: pulumi.Input[Optional[Union['AttackProtectionSuspiciousIpThrottlingArgs', 'AttackProtectionSuspiciousIpThrottlingArgsDict']]] = None,
                  __props__=None):
         """
         Auth0 can detect attacks and stop malicious attempts to access your application such as blocking traffic from certain IPs and displaying CAPTCHAs.
@@ -551,11 +551,11 @@ class AttackProtection(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bot_detection: Optional[pulumi.Input[Union['AttackProtectionBotDetectionArgs', 'AttackProtectionBotDetectionArgsDict']]] = None,
-                 breached_password_detection: Optional[pulumi.Input[Union['AttackProtectionBreachedPasswordDetectionArgs', 'AttackProtectionBreachedPasswordDetectionArgsDict']]] = None,
-                 brute_force_protection: Optional[pulumi.Input[Union['AttackProtectionBruteForceProtectionArgs', 'AttackProtectionBruteForceProtectionArgsDict']]] = None,
-                 captcha: Optional[pulumi.Input[Union['AttackProtectionCaptchaArgs', 'AttackProtectionCaptchaArgsDict']]] = None,
-                 suspicious_ip_throttling: Optional[pulumi.Input[Union['AttackProtectionSuspiciousIpThrottlingArgs', 'AttackProtectionSuspiciousIpThrottlingArgsDict']]] = None,
+                 bot_detection: pulumi.Input[Optional[Union['AttackProtectionBotDetectionArgs', 'AttackProtectionBotDetectionArgsDict']]] = None,
+                 breached_password_detection: pulumi.Input[Optional[Union['AttackProtectionBreachedPasswordDetectionArgs', 'AttackProtectionBreachedPasswordDetectionArgsDict']]] = None,
+                 brute_force_protection: pulumi.Input[Optional[Union['AttackProtectionBruteForceProtectionArgs', 'AttackProtectionBruteForceProtectionArgsDict']]] = None,
+                 captcha: pulumi.Input[Optional[Union['AttackProtectionCaptchaArgs', 'AttackProtectionCaptchaArgsDict']]] = None,
+                 suspicious_ip_throttling: pulumi.Input[Optional[Union['AttackProtectionSuspiciousIpThrottlingArgs', 'AttackProtectionSuspiciousIpThrottlingArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -580,11 +580,11 @@ class AttackProtection(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bot_detection: Optional[pulumi.Input[Union['AttackProtectionBotDetectionArgs', 'AttackProtectionBotDetectionArgsDict']]] = None,
-            breached_password_detection: Optional[pulumi.Input[Union['AttackProtectionBreachedPasswordDetectionArgs', 'AttackProtectionBreachedPasswordDetectionArgsDict']]] = None,
-            brute_force_protection: Optional[pulumi.Input[Union['AttackProtectionBruteForceProtectionArgs', 'AttackProtectionBruteForceProtectionArgsDict']]] = None,
-            captcha: Optional[pulumi.Input[Union['AttackProtectionCaptchaArgs', 'AttackProtectionCaptchaArgsDict']]] = None,
-            suspicious_ip_throttling: Optional[pulumi.Input[Union['AttackProtectionSuspiciousIpThrottlingArgs', 'AttackProtectionSuspiciousIpThrottlingArgsDict']]] = None) -> 'AttackProtection':
+            bot_detection: pulumi.Input[Optional[Union['AttackProtectionBotDetectionArgs', 'AttackProtectionBotDetectionArgsDict']]] = None,
+            breached_password_detection: pulumi.Input[Optional[Union['AttackProtectionBreachedPasswordDetectionArgs', 'AttackProtectionBreachedPasswordDetectionArgsDict']]] = None,
+            brute_force_protection: pulumi.Input[Optional[Union['AttackProtectionBruteForceProtectionArgs', 'AttackProtectionBruteForceProtectionArgsDict']]] = None,
+            captcha: pulumi.Input[Optional[Union['AttackProtectionCaptchaArgs', 'AttackProtectionCaptchaArgsDict']]] = None,
+            suspicious_ip_throttling: pulumi.Input[Optional[Union['AttackProtectionSuspiciousIpThrottlingArgs', 'AttackProtectionSuspiciousIpThrottlingArgsDict']]] = None) -> 'AttackProtection':
         """
         Get an existing AttackProtection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

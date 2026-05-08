@@ -112,9 +112,9 @@ export interface GetRoleOutputArgs {
     /**
      * The name of the role. If not provided, `roleId` must be set.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the role. If not provided, `name` must be set.
      */
-    roleId?: pulumi.Input<string>;
+    roleId?: pulumi.Input<string | undefined>;
 }

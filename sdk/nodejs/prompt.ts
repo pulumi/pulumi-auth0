@@ -108,15 +108,15 @@ export interface PromptState {
     /**
      * Indicates whether the identifier first is used when using the new Universal Login experience.
      */
-    identifierFirst?: pulumi.Input<boolean>;
+    identifierFirst?: pulumi.Input<boolean | undefined>;
     /**
      * Which login experience to use. Options include `classic` and `new`.
      */
-    universalLoginExperience?: pulumi.Input<string>;
+    universalLoginExperience?: pulumi.Input<string | undefined>;
     /**
      * Determines if the login screen uses identifier and biometrics first. Setting this property to `true`, requires MFA factors enabled for enrollment; use the `auth0.Guardian` resource to set one up.
      */
-    webauthnPlatformFirstFactor?: pulumi.Input<boolean>;
+    webauthnPlatformFirstFactor?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -126,13 +126,13 @@ export interface PromptArgs {
     /**
      * Indicates whether the identifier first is used when using the new Universal Login experience.
      */
-    identifierFirst?: pulumi.Input<boolean>;
+    identifierFirst?: pulumi.Input<boolean | undefined>;
     /**
      * Which login experience to use. Options include `classic` and `new`.
      */
-    universalLoginExperience?: pulumi.Input<string>;
+    universalLoginExperience?: pulumi.Input<string | undefined>;
     /**
      * Determines if the login screen uses identifier and biometrics first. Setting this property to `true`, requires MFA factors enabled for enrollment; use the `auth0.Guardian` resource to set one up.
      */
-    webauthnPlatformFirstFactor?: pulumi.Input<boolean>;
+    webauthnPlatformFirstFactor?: pulumi.Input<boolean | undefined>;
 }

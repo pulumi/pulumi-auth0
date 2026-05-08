@@ -54,20 +54,20 @@ class ConnectionKeysArgs:
 @pulumi.input_type
 class _ConnectionKeysState:
     def __init__(__self__, *,
-                 algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 current: Optional[pulumi.Input[_builtins.bool]] = None,
-                 current_since: Optional[pulumi.Input[_builtins.str]] = None,
-                 fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_use: Optional[pulumi.Input[_builtins.str]] = None,
-                 kid: Optional[pulumi.Input[_builtins.str]] = None,
-                 next: Optional[pulumi.Input[_builtins.bool]] = None,
-                 pkcs: Optional[pulumi.Input[_builtins.str]] = None,
-                 previous: Optional[pulumi.Input[_builtins.bool]] = None,
-                 subject_dn: Optional[pulumi.Input[_builtins.str]] = None,
-                 thumbprint: Optional[pulumi.Input[_builtins.str]] = None,
-                 triggers: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 current: pulumi.Input[Optional[_builtins.bool]] = None,
+                 current_since: pulumi.Input[Optional[_builtins.str]] = None,
+                 fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_use: pulumi.Input[Optional[_builtins.str]] = None,
+                 kid: pulumi.Input[Optional[_builtins.str]] = None,
+                 next: pulumi.Input[Optional[_builtins.bool]] = None,
+                 pkcs: pulumi.Input[Optional[_builtins.str]] = None,
+                 previous: pulumi.Input[Optional[_builtins.bool]] = None,
+                 subject_dn: pulumi.Input[Optional[_builtins.str]] = None,
+                 thumbprint: pulumi.Input[Optional[_builtins.str]] = None,
+                 triggers: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ConnectionKeys resources.
 
@@ -116,167 +116,167 @@ class _ConnectionKeysState:
 
     @_builtins.property
     @pulumi.getter
-    def algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def algorithm(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The signing key algorithm.
         """
         return pulumi.get(self, "algorithm")
 
     @algorithm.setter
-    def algorithm(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def algorithm(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "algorithm", value)
 
     @_builtins.property
     @pulumi.getter
-    def cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cert(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The public certificate of the signing key.
         """
         return pulumi.get(self, "cert")
 
     @cert.setter
-    def cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cert(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cert", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionId")
-    def connection_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "connection_id")
 
     @connection_id.setter
-    def connection_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def current(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def current(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         True if the key is the current key.
         """
         return pulumi.get(self, "current")
 
     @current.setter
-    def current(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def current(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "current", value)
 
     @_builtins.property
     @pulumi.getter(name="currentSince")
-    def current_since(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def current_since(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date and time when the key became the current key.
         """
         return pulumi.get(self, "current_since")
 
     @current_since.setter
-    def current_since(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def current_since(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "current_since", value)
 
     @_builtins.property
     @pulumi.getter
-    def fingerprint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fingerprint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The certificate fingerprint.
         """
         return pulumi.get(self, "fingerprint")
 
     @fingerprint.setter
-    def fingerprint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fingerprint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fingerprint", value)
 
     @_builtins.property
     @pulumi.getter(name="keyUse")
-    def key_use(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_use(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The signing key use, whether for encryption or signing.
         """
         return pulumi.get(self, "key_use")
 
     @key_use.setter
-    def key_use(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_use(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_use", value)
 
     @_builtins.property
     @pulumi.getter
-    def kid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The key ID of the signing key.
         """
         return pulumi.get(self, "kid")
 
     @kid.setter
-    def kid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kid", value)
 
     @_builtins.property
     @pulumi.getter
-    def next(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def next(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         True if the key is the next key.
         """
         return pulumi.get(self, "next")
 
     @next.setter
-    def next(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def next(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "next", value)
 
     @_builtins.property
     @pulumi.getter
-    def pkcs(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pkcs(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The public certificate of the signing key in PKCS7 format.
         """
         return pulumi.get(self, "pkcs")
 
     @pkcs.setter
-    def pkcs(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pkcs(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pkcs", value)
 
     @_builtins.property
     @pulumi.getter
-    def previous(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def previous(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         True if the key is the previous key.
         """
         return pulumi.get(self, "previous")
 
     @previous.setter
-    def previous(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def previous(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "previous", value)
 
     @_builtins.property
     @pulumi.getter(name="subjectDn")
-    def subject_dn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subject_dn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The subject distinguished name (DN) of the certificate.
         """
         return pulumi.get(self, "subject_dn")
 
     @subject_dn.setter
-    def subject_dn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subject_dn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subject_dn", value)
 
     @_builtins.property
     @pulumi.getter
-    def thumbprint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def thumbprint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The certificate thumbprint.
         """
         return pulumi.get(self, "thumbprint")
 
     @thumbprint.setter
-    def thumbprint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def thumbprint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "thumbprint", value)
 
     @_builtins.property
     @pulumi.getter
-    def triggers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def triggers(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         This is an arbitrary map, which when edited shall perform rotation of keys for the corresponding connection. It can host keys like version, timestamp of last rotation etc.The field has no association with API
         """
         return pulumi.get(self, "triggers")
 
     @triggers.setter
-    def triggers(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def triggers(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "triggers", value)
 
 
@@ -286,8 +286,8 @@ class ConnectionKeys(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 triggers: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 triggers: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Client Assertion JWT is a more secure alternative to client secret authentication for OIDC and Okta Workforce connections. It uses a signed JWT instead of a shared secret to authenticate the client. The resource only supports key rotation. Use the ConnectionKeys data source to read existing keys. Removing the resource from configuration will NOT DELETE the key.
@@ -396,8 +396,8 @@ class ConnectionKeys(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 triggers: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 triggers: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -435,20 +435,20 @@ class ConnectionKeys(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-            cert: Optional[pulumi.Input[_builtins.str]] = None,
-            connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-            current: Optional[pulumi.Input[_builtins.bool]] = None,
-            current_since: Optional[pulumi.Input[_builtins.str]] = None,
-            fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-            key_use: Optional[pulumi.Input[_builtins.str]] = None,
-            kid: Optional[pulumi.Input[_builtins.str]] = None,
-            next: Optional[pulumi.Input[_builtins.bool]] = None,
-            pkcs: Optional[pulumi.Input[_builtins.str]] = None,
-            previous: Optional[pulumi.Input[_builtins.bool]] = None,
-            subject_dn: Optional[pulumi.Input[_builtins.str]] = None,
-            thumbprint: Optional[pulumi.Input[_builtins.str]] = None,
-            triggers: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'ConnectionKeys':
+            algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+            cert: pulumi.Input[Optional[_builtins.str]] = None,
+            connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+            current: pulumi.Input[Optional[_builtins.bool]] = None,
+            current_since: pulumi.Input[Optional[_builtins.str]] = None,
+            fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            key_use: pulumi.Input[Optional[_builtins.str]] = None,
+            kid: pulumi.Input[Optional[_builtins.str]] = None,
+            next: pulumi.Input[Optional[_builtins.bool]] = None,
+            pkcs: pulumi.Input[Optional[_builtins.str]] = None,
+            previous: pulumi.Input[Optional[_builtins.bool]] = None,
+            subject_dn: pulumi.Input[Optional[_builtins.str]] = None,
+            thumbprint: pulumi.Input[Optional[_builtins.str]] = None,
+            triggers: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'ConnectionKeys':
         """
         Get an existing ConnectionKeys resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

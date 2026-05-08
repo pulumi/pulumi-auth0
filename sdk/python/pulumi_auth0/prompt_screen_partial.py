@@ -23,7 +23,7 @@ class PromptScreenPartialArgs:
     def __init__(__self__, *,
                  prompt_type: pulumi.Input[_builtins.str],
                  screen_name: pulumi.Input[_builtins.str],
-                 insertion_points: Optional[pulumi.Input['PromptScreenPartialInsertionPointsArgs']] = None):
+                 insertion_points: pulumi.Input[Optional['PromptScreenPartialInsertionPointsArgs']] = None):
         """
         The set of arguments for constructing a PromptScreenPartial resource.
 
@@ -62,23 +62,23 @@ class PromptScreenPartialArgs:
 
     @_builtins.property
     @pulumi.getter(name="insertionPoints")
-    def insertion_points(self) -> Optional[pulumi.Input['PromptScreenPartialInsertionPointsArgs']]:
+    def insertion_points(self) -> pulumi.Input[Optional['PromptScreenPartialInsertionPointsArgs']]:
         """
         The insertion points for the partials.
         """
         return pulumi.get(self, "insertion_points")
 
     @insertion_points.setter
-    def insertion_points(self, value: Optional[pulumi.Input['PromptScreenPartialInsertionPointsArgs']]):
+    def insertion_points(self, value: pulumi.Input[Optional['PromptScreenPartialInsertionPointsArgs']]):
         pulumi.set(self, "insertion_points", value)
 
 
 @pulumi.input_type
 class _PromptScreenPartialState:
     def __init__(__self__, *,
-                 insertion_points: Optional[pulumi.Input['PromptScreenPartialInsertionPointsArgs']] = None,
-                 prompt_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 screen_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 insertion_points: pulumi.Input[Optional['PromptScreenPartialInsertionPointsArgs']] = None,
+                 prompt_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 screen_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PromptScreenPartial resources.
 
@@ -95,38 +95,38 @@ class _PromptScreenPartialState:
 
     @_builtins.property
     @pulumi.getter(name="insertionPoints")
-    def insertion_points(self) -> Optional[pulumi.Input['PromptScreenPartialInsertionPointsArgs']]:
+    def insertion_points(self) -> pulumi.Input[Optional['PromptScreenPartialInsertionPointsArgs']]:
         """
         The insertion points for the partials.
         """
         return pulumi.get(self, "insertion_points")
 
     @insertion_points.setter
-    def insertion_points(self, value: Optional[pulumi.Input['PromptScreenPartialInsertionPointsArgs']]):
+    def insertion_points(self, value: pulumi.Input[Optional['PromptScreenPartialInsertionPointsArgs']]):
         pulumi.set(self, "insertion_points", value)
 
     @_builtins.property
     @pulumi.getter(name="promptType")
-    def prompt_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def prompt_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`, `passkeys`.
         """
         return pulumi.get(self, "prompt_type")
 
     @prompt_type.setter
-    def prompt_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def prompt_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "prompt_type", value)
 
     @_builtins.property
     @pulumi.getter(name="screenName")
-    def screen_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def screen_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the screen associated with the partials
         """
         return pulumi.get(self, "screen_name")
 
     @screen_name.setter
-    def screen_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def screen_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "screen_name", value)
 
 
@@ -136,9 +136,9 @@ class PromptScreenPartial(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 insertion_points: Optional[pulumi.Input[Union['PromptScreenPartialInsertionPointsArgs', 'PromptScreenPartialInsertionPointsArgsDict']]] = None,
-                 prompt_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 screen_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 insertion_points: pulumi.Input[Optional[Union['PromptScreenPartialInsertionPointsArgs', 'PromptScreenPartialInsertionPointsArgsDict']]] = None,
+                 prompt_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 screen_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         With this resource, you can manage a customized sign up and login experience by adding custom content, form elements and css/javascript. You can read more about this [here](https://auth0.com/docs/customize/universal-login-pages/customize-signup-and-login-prompts).
@@ -255,9 +255,9 @@ class PromptScreenPartial(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 insertion_points: Optional[pulumi.Input[Union['PromptScreenPartialInsertionPointsArgs', 'PromptScreenPartialInsertionPointsArgsDict']]] = None,
-                 prompt_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 screen_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 insertion_points: pulumi.Input[Optional[Union['PromptScreenPartialInsertionPointsArgs', 'PromptScreenPartialInsertionPointsArgsDict']]] = None,
+                 prompt_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 screen_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -284,9 +284,9 @@ class PromptScreenPartial(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            insertion_points: Optional[pulumi.Input[Union['PromptScreenPartialInsertionPointsArgs', 'PromptScreenPartialInsertionPointsArgsDict']]] = None,
-            prompt_type: Optional[pulumi.Input[_builtins.str]] = None,
-            screen_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'PromptScreenPartial':
+            insertion_points: pulumi.Input[Optional[Union['PromptScreenPartialInsertionPointsArgs', 'PromptScreenPartialInsertionPointsArgsDict']]] = None,
+            prompt_type: pulumi.Input[Optional[_builtins.str]] = None,
+            screen_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'PromptScreenPartial':
         """
         Get an existing PromptScreenPartial resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -179,7 +179,7 @@ def get_self_service_profile(id: Optional[_builtins.str] = None,
         updated_at=pulumi.get(__ret__, 'updated_at'),
         user_attribute_profile_id=pulumi.get(__ret__, 'user_attribute_profile_id'),
         user_attributes=pulumi.get(__ret__, 'user_attributes'))
-def get_self_service_profile_output(id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_self_service_profile_output(id: pulumi.Input[Optional[_builtins.str]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSelfServiceProfileResult]:
     """
     Data source to retrieve a specific Auth0 Self-Service Profile by `id`

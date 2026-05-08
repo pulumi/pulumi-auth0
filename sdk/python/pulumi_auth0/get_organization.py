@@ -194,8 +194,8 @@ def get_organization(name: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         organization_id=pulumi.get(__ret__, 'organization_id'),
         token_quotas=pulumi.get(__ret__, 'token_quotas'))
-def get_organization_output(name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            organization_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_organization_output(name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            organization_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationResult]:
     """
     Data source to retrieve a specific Auth0 organization by `organization_id` or `name`.

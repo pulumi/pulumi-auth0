@@ -65,6 +65,29 @@ class AwaitableGetSigningKeysResult(GetSigningKeysResult):
 def get_signing_keys(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSigningKeysResult:
     """
     Data source to retrieve signing keys used by the applications in your tenant. [Learn more](https://auth0.com/docs/get-started/tenant-settings/signing-keys).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_auth0 as auth0
+
+    def try_(*fns):
+        for fn in fns:
+            try:
+                result = fn()
+                return result
+            except:
+                continue
+        return None
+
+
+    my_keys = auth0.get_signing_keys()
+    pulumi.export("currentKey", try_(
+        lambda: [key.kid for key in my_keys.signing_keys if key.current][0],
+        lambda: "No current key found"
+    ))
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -76,6 +99,29 @@ def get_signing_keys(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGe
 def get_signing_keys_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSigningKeysResult]:
     """
     Data source to retrieve signing keys used by the applications in your tenant. [Learn more](https://auth0.com/docs/get-started/tenant-settings/signing-keys).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_auth0 as auth0
+
+    def try_(*fns):
+        for fn in fns:
+            try:
+                result = fn()
+                return result
+            except:
+                continue
+        return None
+
+
+    my_keys = auth0.get_signing_keys()
+    pulumi.export("currentKey", try_(
+        lambda: [key.kid for key in my_keys.signing_keys if key.current][0],
+        lambda: "No current key found"
+    ))
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

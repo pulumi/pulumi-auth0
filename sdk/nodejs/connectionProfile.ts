@@ -132,27 +132,27 @@ export interface ConnectionProfileState {
     /**
      * Connection configuration for the profile.
      */
-    connectionConfig?: pulumi.Input<inputs.ConnectionProfileConnectionConfig>;
+    connectionConfig?: pulumi.Input<inputs.ConnectionProfileConnectionConfig | undefined>;
     /**
      * Template for generating connection names from the profile.
      */
-    connectionNamePrefixTemplate?: pulumi.Input<string>;
+    connectionNamePrefixTemplate?: pulumi.Input<string | undefined>;
     /**
      * List of enabled features for the connection profile.
      */
-    enabledFeatures?: pulumi.Input<pulumi.Input<string>[]>;
+    enabledFeatures?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Name of the connection profile.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Organization associated with the connection profile.
      */
-    organization?: pulumi.Input<inputs.ConnectionProfileOrganization>;
+    organization?: pulumi.Input<inputs.ConnectionProfileOrganization | undefined>;
     /**
      * Strategy overrides for the connection profile.
      */
-    strategyOverrides?: pulumi.Input<inputs.ConnectionProfileStrategyOverrides>;
+    strategyOverrides?: pulumi.Input<inputs.ConnectionProfileStrategyOverrides | undefined>;
 }
 
 /**
@@ -162,25 +162,25 @@ export interface ConnectionProfileArgs {
     /**
      * Connection configuration for the profile.
      */
-    connectionConfig?: pulumi.Input<inputs.ConnectionProfileConnectionConfig>;
+    connectionConfig?: pulumi.Input<inputs.ConnectionProfileConnectionConfig | undefined>;
     /**
      * Template for generating connection names from the profile.
      */
-    connectionNamePrefixTemplate?: pulumi.Input<string>;
+    connectionNamePrefixTemplate?: pulumi.Input<string | undefined>;
     /**
      * List of enabled features for the connection profile.
      */
-    enabledFeatures?: pulumi.Input<pulumi.Input<string>[]>;
+    enabledFeatures?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Name of the connection profile.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Organization associated with the connection profile.
      */
-    organization?: pulumi.Input<inputs.ConnectionProfileOrganization>;
+    organization?: pulumi.Input<inputs.ConnectionProfileOrganization | undefined>;
     /**
      * Strategy overrides for the connection profile.
      */
-    strategyOverrides?: pulumi.Input<inputs.ConnectionProfileStrategyOverrides>;
+    strategyOverrides?: pulumi.Input<inputs.ConnectionProfileStrategyOverrides | undefined>;
 }

@@ -100,7 +100,7 @@ def get_flow(id: Optional[_builtins.str] = None,
         actions=pulumi.get(__ret__, 'actions'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'))
-def get_flow_output(id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_flow_output(id: pulumi.Input[Optional[_builtins.str]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFlowResult]:
     """
     Data source to retrieve a specific Auth0 Flow by `id`

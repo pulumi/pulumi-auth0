@@ -165,7 +165,7 @@ def get_flow_vault_connection(id: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         ready=pulumi.get(__ret__, 'ready'),
         setup=pulumi.get(__ret__, 'setup'))
-def get_flow_vault_connection_output(id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_flow_vault_connection_output(id: pulumi.Input[Optional[_builtins.str]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFlowVaultConnectionResult]:
     """
     Data source to retrieve a specific Auth0 Flow Vault Connection by `id`

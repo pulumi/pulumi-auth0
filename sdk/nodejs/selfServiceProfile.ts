@@ -146,35 +146,35 @@ export interface SelfServiceProfileState {
     /**
      * List of IdP strategies that will be shown to users during the Self-Service SSO flow. Valid values are: oidc, samlp, waad, google-apps, adfs, okta, keycloak-samlp, pingfederate, auth0-samlp, okta-samlp.
      */
-    allowedStrategies?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedStrategies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field can be used to customize the look and feel of the wizard.
      */
-    branding?: pulumi.Input<inputs.SelfServiceProfileBranding>;
+    branding?: pulumi.Input<inputs.SelfServiceProfileBranding | undefined>;
     /**
      * The ISO 8601 formatted date the profile was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The description of the self-service Profile
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the self-service Profile
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ISO 8601 formatted date the profile was updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * The ID of the user attribute profile to use for this self-service profile. Cannot be used with user_attributes.
      */
-    userAttributeProfileId?: pulumi.Input<string>;
+    userAttributeProfileId?: pulumi.Input<string | undefined>;
     /**
      * This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0. Cannot be used with user*attribute*profile*id.
      */
-    userAttributes?: pulumi.Input<pulumi.Input<inputs.SelfServiceProfileUserAttribute>[]>;
+    userAttributes?: pulumi.Input<pulumi.Input<inputs.SelfServiceProfileUserAttribute>[] | undefined>;
 }
 
 /**
@@ -184,25 +184,25 @@ export interface SelfServiceProfileArgs {
     /**
      * List of IdP strategies that will be shown to users during the Self-Service SSO flow. Valid values are: oidc, samlp, waad, google-apps, adfs, okta, keycloak-samlp, pingfederate, auth0-samlp, okta-samlp.
      */
-    allowedStrategies?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedStrategies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field can be used to customize the look and feel of the wizard.
      */
-    branding?: pulumi.Input<inputs.SelfServiceProfileBranding>;
+    branding?: pulumi.Input<inputs.SelfServiceProfileBranding | undefined>;
     /**
      * The description of the self-service Profile
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the self-service Profile
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the user attribute profile to use for this self-service profile. Cannot be used with user_attributes.
      */
-    userAttributeProfileId?: pulumi.Input<string>;
+    userAttributeProfileId?: pulumi.Input<string | undefined>;
     /**
      * This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0. Cannot be used with user*attribute*profile*id.
      */
-    userAttributes?: pulumi.Input<pulumi.Input<inputs.SelfServiceProfileUserAttribute>[]>;
+    userAttributes?: pulumi.Input<pulumi.Input<inputs.SelfServiceProfileUserAttribute>[] | undefined>;
 }

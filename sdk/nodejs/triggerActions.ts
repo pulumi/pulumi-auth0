@@ -145,11 +145,11 @@ export interface TriggerActionsState {
     /**
      * The list of actions bound to this trigger.
      */
-    actions?: pulumi.Input<pulumi.Input<inputs.TriggerActionsAction>[]>;
+    actions?: pulumi.Input<pulumi.Input<inputs.TriggerActionsAction>[] | undefined>;
     /**
      * The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-email-provider`, `custom-phone-provider`.
      */
-    trigger?: pulumi.Input<string>;
+    trigger?: pulumi.Input<string | undefined>;
 }
 
 /**

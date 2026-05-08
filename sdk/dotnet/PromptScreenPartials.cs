@@ -27,7 +27,7 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var promptScreenPartials = new Auth0.Index.PromptScreenPartials("prompt_screen_partials", new()
+    ///     var promptScreenPartials = new Auth0.PromptScreenPartials("prompt_screen_partials", new()
     ///     {
     ///         PromptType = "login-passwordless",
     ///         ScreenPartials = new[]
@@ -53,7 +53,7 @@ namespace Pulumi.Auth0
     ///         },
     ///     });
     /// 
-    ///     var customized_consent = new Auth0.Index.PromptScreenPartials("customized-consent", new()
+    ///     var customized_consent = new Auth0.PromptScreenPartials("customized-consent", new()
     ///     {
     ///         PromptType = "customized-consent",
     ///         ScreenPartials = new[]

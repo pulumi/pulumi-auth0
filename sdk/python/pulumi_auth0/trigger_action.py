@@ -21,7 +21,7 @@ class TriggerActionArgs:
     def __init__(__self__, *,
                  action_id: pulumi.Input[_builtins.str],
                  trigger: pulumi.Input[_builtins.str],
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a TriggerAction resource.
 
@@ -60,23 +60,23 @@ class TriggerActionArgs:
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name for this action within the trigger. This can be useful for distinguishing between multiple instances of the same action bound to a trigger. Defaults to action name when not provided.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
 
 @pulumi.input_type
 class _TriggerActionState:
     def __init__(__self__, *,
-                 action_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 trigger: Optional[pulumi.Input[_builtins.str]] = None):
+                 action_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 trigger: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TriggerAction resources.
 
@@ -93,38 +93,38 @@ class _TriggerActionState:
 
     @_builtins.property
     @pulumi.getter(name="actionId")
-    def action_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def action_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the action to bind to the trigger.
         """
         return pulumi.get(self, "action_id")
 
     @action_id.setter
-    def action_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def action_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "action_id", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name for this action within the trigger. This can be useful for distinguishing between multiple instances of the same action bound to a trigger. Defaults to action name when not provided.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def trigger(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def trigger(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-email-provider`, `custom-phone-provider`.
         """
         return pulumi.get(self, "trigger")
 
     @trigger.setter
-    def trigger(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def trigger(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "trigger", value)
 
 
@@ -134,9 +134,9 @@ class TriggerAction(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 trigger: Optional[pulumi.Input[_builtins.str]] = None,
+                 action_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 trigger: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         With this resource, you can bind an action to a trigger. Once an action is created and deployed, it can be attached (i.e. bound) to a trigger so that it will be executed as part of a flow.
@@ -253,9 +253,9 @@ class TriggerAction(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 trigger: Optional[pulumi.Input[_builtins.str]] = None,
+                 action_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 trigger: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -282,9 +282,9 @@ class TriggerAction(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            action_id: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            trigger: Optional[pulumi.Input[_builtins.str]] = None) -> 'TriggerAction':
+            action_id: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            trigger: pulumi.Input[Optional[_builtins.str]] = None) -> 'TriggerAction':
         """
         Get an existing TriggerAction resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

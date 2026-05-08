@@ -23,8 +23,8 @@ class PhoneProviderArgs:
     def __init__(__self__, *,
                  configuration: pulumi.Input['PhoneProviderConfigurationArgs'],
                  credentials: pulumi.Input['PhoneProviderCredentialsArgs'],
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a PhoneProvider resource.
 
@@ -66,38 +66,38 @@ class PhoneProviderArgs:
 
     @_builtins.property
     @pulumi.getter
-    def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the phone provider is enabled (false) or disabled (true).
         """
         return pulumi.get(self, "disabled")
 
     @disabled.setter
-    def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the phone provider. Options include `twilio`, `custom`.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _PhoneProviderState:
     def __init__(__self__, *,
-                 channel: Optional[pulumi.Input[_builtins.str]] = None,
-                 configuration: Optional[pulumi.Input['PhoneProviderConfigurationArgs']] = None,
-                 credentials: Optional[pulumi.Input['PhoneProviderCredentialsArgs']] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant: Optional[pulumi.Input[_builtins.str]] = None):
+                 channel: pulumi.Input[Optional[_builtins.str]] = None,
+                 configuration: pulumi.Input[Optional['PhoneProviderConfigurationArgs']] = None,
+                 credentials: pulumi.Input[Optional['PhoneProviderCredentialsArgs']] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PhoneProvider resources.
 
@@ -123,74 +123,74 @@ class _PhoneProviderState:
 
     @_builtins.property
     @pulumi.getter
-    def channel(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def channel(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The channel of the phone provider.
         """
         return pulumi.get(self, "channel")
 
     @channel.setter
-    def channel(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def channel(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "channel", value)
 
     @_builtins.property
     @pulumi.getter
-    def configuration(self) -> Optional[pulumi.Input['PhoneProviderConfigurationArgs']]:
+    def configuration(self) -> pulumi.Input[Optional['PhoneProviderConfigurationArgs']]:
         """
         Specific phone provider settings.
         """
         return pulumi.get(self, "configuration")
 
     @configuration.setter
-    def configuration(self, value: Optional[pulumi.Input['PhoneProviderConfigurationArgs']]):
+    def configuration(self, value: pulumi.Input[Optional['PhoneProviderConfigurationArgs']]):
         pulumi.set(self, "configuration", value)
 
     @_builtins.property
     @pulumi.getter
-    def credentials(self) -> Optional[pulumi.Input['PhoneProviderCredentialsArgs']]:
+    def credentials(self) -> pulumi.Input[Optional['PhoneProviderCredentialsArgs']]:
         """
         Provider credentials required to use authenticate to the provider.
         """
         return pulumi.get(self, "credentials")
 
     @credentials.setter
-    def credentials(self, value: Optional[pulumi.Input['PhoneProviderCredentialsArgs']]):
+    def credentials(self, value: pulumi.Input[Optional['PhoneProviderCredentialsArgs']]):
         pulumi.set(self, "credentials", value)
 
     @_builtins.property
     @pulumi.getter
-    def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the phone provider is enabled (false) or disabled (true).
         """
         return pulumi.get(self, "disabled")
 
     @disabled.setter
-    def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the phone provider. Options include `twilio`, `custom`.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def tenant(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tenant(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The tenant of the phone provider.
         """
         return pulumi.get(self, "tenant")
 
     @tenant.setter
-    def tenant(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tenant(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenant", value)
 
 
@@ -200,10 +200,10 @@ class PhoneProvider(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 configuration: Optional[pulumi.Input[Union['PhoneProviderConfigurationArgs', 'PhoneProviderConfigurationArgsDict']]] = None,
-                 credentials: Optional[pulumi.Input[Union['PhoneProviderCredentialsArgs', 'PhoneProviderCredentialsArgsDict']]] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 configuration: pulumi.Input[Optional[Union['PhoneProviderConfigurationArgs', 'PhoneProviderConfigurationArgsDict']]] = None,
+                 credentials: pulumi.Input[Optional[Union['PhoneProviderCredentialsArgs', 'PhoneProviderCredentialsArgsDict']]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Auth0 allows you to configure your own phone messaging provider to help you manage, monitor, and troubleshoot your SMS and voice communications. You can only configure one phone provider for all SMS and voice communications per tenant.
@@ -381,10 +381,10 @@ class PhoneProvider(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 configuration: Optional[pulumi.Input[Union['PhoneProviderConfigurationArgs', 'PhoneProviderConfigurationArgsDict']]] = None,
-                 credentials: Optional[pulumi.Input[Union['PhoneProviderCredentialsArgs', 'PhoneProviderCredentialsArgsDict']]] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 configuration: pulumi.Input[Optional[Union['PhoneProviderConfigurationArgs', 'PhoneProviderConfigurationArgsDict']]] = None,
+                 credentials: pulumi.Input[Optional[Union['PhoneProviderCredentialsArgs', 'PhoneProviderCredentialsArgsDict']]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -414,12 +414,12 @@ class PhoneProvider(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            channel: Optional[pulumi.Input[_builtins.str]] = None,
-            configuration: Optional[pulumi.Input[Union['PhoneProviderConfigurationArgs', 'PhoneProviderConfigurationArgsDict']]] = None,
-            credentials: Optional[pulumi.Input[Union['PhoneProviderCredentialsArgs', 'PhoneProviderCredentialsArgsDict']]] = None,
-            disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            tenant: Optional[pulumi.Input[_builtins.str]] = None) -> 'PhoneProvider':
+            channel: pulumi.Input[Optional[_builtins.str]] = None,
+            configuration: pulumi.Input[Optional[Union['PhoneProviderConfigurationArgs', 'PhoneProviderConfigurationArgsDict']]] = None,
+            credentials: pulumi.Input[Optional[Union['PhoneProviderCredentialsArgs', 'PhoneProviderCredentialsArgsDict']]] = None,
+            disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            tenant: pulumi.Input[Optional[_builtins.str]] = None) -> 'PhoneProvider':
         """
         Get an existing PhoneProvider resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

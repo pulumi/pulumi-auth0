@@ -21,10 +21,10 @@ __all__ = ['PagesArgs', 'Pages']
 @pulumi.input_type
 class PagesArgs:
     def __init__(__self__, *,
-                 change_password: Optional[pulumi.Input['PagesChangePasswordArgs']] = None,
-                 error: Optional[pulumi.Input['PagesErrorArgs']] = None,
-                 guardian_mfa: Optional[pulumi.Input['PagesGuardianMfaArgs']] = None,
-                 login: Optional[pulumi.Input['PagesLoginArgs']] = None):
+                 change_password: pulumi.Input[Optional['PagesChangePasswordArgs']] = None,
+                 error: pulumi.Input[Optional['PagesErrorArgs']] = None,
+                 guardian_mfa: pulumi.Input[Optional['PagesGuardianMfaArgs']] = None,
+                 login: pulumi.Input[Optional['PagesLoginArgs']] = None):
         """
         The set of arguments for constructing a Pages resource.
 
@@ -44,60 +44,60 @@ class PagesArgs:
 
     @_builtins.property
     @pulumi.getter(name="changePassword")
-    def change_password(self) -> Optional[pulumi.Input['PagesChangePasswordArgs']]:
+    def change_password(self) -> pulumi.Input[Optional['PagesChangePasswordArgs']]:
         """
         Configuration settings for customizing the Password Reset page.
         """
         return pulumi.get(self, "change_password")
 
     @change_password.setter
-    def change_password(self, value: Optional[pulumi.Input['PagesChangePasswordArgs']]):
+    def change_password(self, value: pulumi.Input[Optional['PagesChangePasswordArgs']]):
         pulumi.set(self, "change_password", value)
 
     @_builtins.property
     @pulumi.getter
-    def error(self) -> Optional[pulumi.Input['PagesErrorArgs']]:
+    def error(self) -> pulumi.Input[Optional['PagesErrorArgs']]:
         """
         Configuration settings for the Error pages.
         """
         return pulumi.get(self, "error")
 
     @error.setter
-    def error(self, value: Optional[pulumi.Input['PagesErrorArgs']]):
+    def error(self, value: pulumi.Input[Optional['PagesErrorArgs']]):
         pulumi.set(self, "error", value)
 
     @_builtins.property
     @pulumi.getter(name="guardianMfa")
-    def guardian_mfa(self) -> Optional[pulumi.Input['PagesGuardianMfaArgs']]:
+    def guardian_mfa(self) -> pulumi.Input[Optional['PagesGuardianMfaArgs']]:
         """
         Configuration settings for customizing the Guardian Multi-Factor Authentication page.
         """
         return pulumi.get(self, "guardian_mfa")
 
     @guardian_mfa.setter
-    def guardian_mfa(self, value: Optional[pulumi.Input['PagesGuardianMfaArgs']]):
+    def guardian_mfa(self, value: pulumi.Input[Optional['PagesGuardianMfaArgs']]):
         pulumi.set(self, "guardian_mfa", value)
 
     @_builtins.property
     @pulumi.getter
-    def login(self) -> Optional[pulumi.Input['PagesLoginArgs']]:
+    def login(self) -> pulumi.Input[Optional['PagesLoginArgs']]:
         """
         Configuration settings for customizing the Login page.
         """
         return pulumi.get(self, "login")
 
     @login.setter
-    def login(self, value: Optional[pulumi.Input['PagesLoginArgs']]):
+    def login(self, value: pulumi.Input[Optional['PagesLoginArgs']]):
         pulumi.set(self, "login", value)
 
 
 @pulumi.input_type
 class _PagesState:
     def __init__(__self__, *,
-                 change_password: Optional[pulumi.Input['PagesChangePasswordArgs']] = None,
-                 error: Optional[pulumi.Input['PagesErrorArgs']] = None,
-                 guardian_mfa: Optional[pulumi.Input['PagesGuardianMfaArgs']] = None,
-                 login: Optional[pulumi.Input['PagesLoginArgs']] = None):
+                 change_password: pulumi.Input[Optional['PagesChangePasswordArgs']] = None,
+                 error: pulumi.Input[Optional['PagesErrorArgs']] = None,
+                 guardian_mfa: pulumi.Input[Optional['PagesGuardianMfaArgs']] = None,
+                 login: pulumi.Input[Optional['PagesLoginArgs']] = None):
         """
         Input properties used for looking up and filtering Pages resources.
 
@@ -117,50 +117,50 @@ class _PagesState:
 
     @_builtins.property
     @pulumi.getter(name="changePassword")
-    def change_password(self) -> Optional[pulumi.Input['PagesChangePasswordArgs']]:
+    def change_password(self) -> pulumi.Input[Optional['PagesChangePasswordArgs']]:
         """
         Configuration settings for customizing the Password Reset page.
         """
         return pulumi.get(self, "change_password")
 
     @change_password.setter
-    def change_password(self, value: Optional[pulumi.Input['PagesChangePasswordArgs']]):
+    def change_password(self, value: pulumi.Input[Optional['PagesChangePasswordArgs']]):
         pulumi.set(self, "change_password", value)
 
     @_builtins.property
     @pulumi.getter
-    def error(self) -> Optional[pulumi.Input['PagesErrorArgs']]:
+    def error(self) -> pulumi.Input[Optional['PagesErrorArgs']]:
         """
         Configuration settings for the Error pages.
         """
         return pulumi.get(self, "error")
 
     @error.setter
-    def error(self, value: Optional[pulumi.Input['PagesErrorArgs']]):
+    def error(self, value: pulumi.Input[Optional['PagesErrorArgs']]):
         pulumi.set(self, "error", value)
 
     @_builtins.property
     @pulumi.getter(name="guardianMfa")
-    def guardian_mfa(self) -> Optional[pulumi.Input['PagesGuardianMfaArgs']]:
+    def guardian_mfa(self) -> pulumi.Input[Optional['PagesGuardianMfaArgs']]:
         """
         Configuration settings for customizing the Guardian Multi-Factor Authentication page.
         """
         return pulumi.get(self, "guardian_mfa")
 
     @guardian_mfa.setter
-    def guardian_mfa(self, value: Optional[pulumi.Input['PagesGuardianMfaArgs']]):
+    def guardian_mfa(self, value: pulumi.Input[Optional['PagesGuardianMfaArgs']]):
         pulumi.set(self, "guardian_mfa", value)
 
     @_builtins.property
     @pulumi.getter
-    def login(self) -> Optional[pulumi.Input['PagesLoginArgs']]:
+    def login(self) -> pulumi.Input[Optional['PagesLoginArgs']]:
         """
         Configuration settings for customizing the Login page.
         """
         return pulumi.get(self, "login")
 
     @login.setter
-    def login(self, value: Optional[pulumi.Input['PagesLoginArgs']]):
+    def login(self, value: pulumi.Input[Optional['PagesLoginArgs']]):
         pulumi.set(self, "login", value)
 
 
@@ -170,10 +170,10 @@ class Pages(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 change_password: Optional[pulumi.Input[Union['PagesChangePasswordArgs', 'PagesChangePasswordArgsDict']]] = None,
-                 error: Optional[pulumi.Input[Union['PagesErrorArgs', 'PagesErrorArgsDict']]] = None,
-                 guardian_mfa: Optional[pulumi.Input[Union['PagesGuardianMfaArgs', 'PagesGuardianMfaArgsDict']]] = None,
-                 login: Optional[pulumi.Input[Union['PagesLoginArgs', 'PagesLoginArgsDict']]] = None,
+                 change_password: pulumi.Input[Optional[Union['PagesChangePasswordArgs', 'PagesChangePasswordArgsDict']]] = None,
+                 error: pulumi.Input[Optional[Union['PagesErrorArgs', 'PagesErrorArgsDict']]] = None,
+                 guardian_mfa: pulumi.Input[Optional[Union['PagesGuardianMfaArgs', 'PagesGuardianMfaArgsDict']]] = None,
+                 login: pulumi.Input[Optional[Union['PagesLoginArgs', 'PagesLoginArgsDict']]] = None,
                  __props__=None):
         """
         With this resource you can manage custom HTML for the Login, Reset Password, Multi-Factor Authentication and Error pages.
@@ -295,10 +295,10 @@ class Pages(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 change_password: Optional[pulumi.Input[Union['PagesChangePasswordArgs', 'PagesChangePasswordArgsDict']]] = None,
-                 error: Optional[pulumi.Input[Union['PagesErrorArgs', 'PagesErrorArgsDict']]] = None,
-                 guardian_mfa: Optional[pulumi.Input[Union['PagesGuardianMfaArgs', 'PagesGuardianMfaArgsDict']]] = None,
-                 login: Optional[pulumi.Input[Union['PagesLoginArgs', 'PagesLoginArgsDict']]] = None,
+                 change_password: pulumi.Input[Optional[Union['PagesChangePasswordArgs', 'PagesChangePasswordArgsDict']]] = None,
+                 error: pulumi.Input[Optional[Union['PagesErrorArgs', 'PagesErrorArgsDict']]] = None,
+                 guardian_mfa: pulumi.Input[Optional[Union['PagesGuardianMfaArgs', 'PagesGuardianMfaArgsDict']]] = None,
+                 login: pulumi.Input[Optional[Union['PagesLoginArgs', 'PagesLoginArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -322,10 +322,10 @@ class Pages(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            change_password: Optional[pulumi.Input[Union['PagesChangePasswordArgs', 'PagesChangePasswordArgsDict']]] = None,
-            error: Optional[pulumi.Input[Union['PagesErrorArgs', 'PagesErrorArgsDict']]] = None,
-            guardian_mfa: Optional[pulumi.Input[Union['PagesGuardianMfaArgs', 'PagesGuardianMfaArgsDict']]] = None,
-            login: Optional[pulumi.Input[Union['PagesLoginArgs', 'PagesLoginArgsDict']]] = None) -> 'Pages':
+            change_password: pulumi.Input[Optional[Union['PagesChangePasswordArgs', 'PagesChangePasswordArgsDict']]] = None,
+            error: pulumi.Input[Optional[Union['PagesErrorArgs', 'PagesErrorArgsDict']]] = None,
+            guardian_mfa: pulumi.Input[Optional[Union['PagesGuardianMfaArgs', 'PagesGuardianMfaArgsDict']]] = None,
+            login: pulumi.Input[Optional[Union['PagesLoginArgs', 'PagesLoginArgsDict']]] = None) -> 'Pages':
         """
         Get an existing Pages resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

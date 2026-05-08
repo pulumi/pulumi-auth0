@@ -152,7 +152,7 @@ def get_token_exchange_profile(id: Optional[_builtins.str] = None,
         subject_token_type=pulumi.get(__ret__, 'subject_token_type'),
         type=pulumi.get(__ret__, 'type'),
         updated_at=pulumi.get(__ret__, 'updated_at'))
-def get_token_exchange_profile_output(id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_token_exchange_profile_output(id: pulumi.Input[Optional[_builtins.str]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTokenExchangeProfileResult]:
     """
     Data source to retrieve a specific Auth0 Token Exchange Profile by `id`

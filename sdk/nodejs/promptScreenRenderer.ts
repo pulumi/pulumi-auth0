@@ -181,39 +181,39 @@ export interface PromptScreenRendererState {
     /**
      * Context values to make available
      */
-    contextConfigurations?: pulumi.Input<pulumi.Input<string>[]>;
+    contextConfigurations?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Override Universal Login default head tags
      */
-    defaultHeadTagsDisabled?: pulumi.Input<boolean>;
+    defaultHeadTagsDisabled?: pulumi.Input<boolean | undefined>;
     /**
      * Optional filters to apply rendering rules to specific entities. `matchType` and at least one of the entity arrays are required.
      */
-    filters?: pulumi.Input<inputs.PromptScreenRendererFilters>;
+    filters?: pulumi.Input<inputs.PromptScreenRendererFilters | undefined>;
     /**
      * An array of head tags
      */
-    headTags?: pulumi.Input<string>;
+    headTags?: pulumi.Input<string | undefined>;
     /**
      * The prompt that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkeys`, `captcha`, `login`, `signup`, `reset-password`, `mfa`, `mfa-sms`, `mfa-email`, `mfa-push`, `invitation`, `organizations`, `mfa-otp`, `device-flow`, `mfa-phone`, `mfa-voice`, `mfa-recovery-code`, `common`, `email-verification`, `login-email-verification`, `logout`, `mfa-webauthn`, `consent`, `customized-consent`, `email-otp-challenge`.
      */
-    promptType?: pulumi.Input<string>;
+    promptType?: pulumi.Input<string | undefined>;
     /**
      * Rendering modeOptions are: `standard`, `advanced`.
      */
-    renderingMode?: pulumi.Input<string>;
+    renderingMode?: pulumi.Input<string | undefined>;
     /**
      * The screen that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`, `login`, `signup`, `reset-password-request`, `reset-password-email`, `reset-password`, `reset-password-success`, `reset-password-error`, `reset-password-mfa-email-challenge`, `reset-password-mfa-otp-challenge`, `reset-password-mfa-push-challenge-push`, `reset-password-mfa-sms-challenge`, `mfa-detect-browser-capabilities`, `mfa-enroll-result`, `mfa-begin-enroll-options`, `mfa-login-options`, `mfa-country-codes`, `mfa-sms-challenge`, `mfa-sms-enrollment`, `mfa-sms-list`, `mfa-email-challenge`, `mfa-email-list`, `mfa-push-challenge-push`, `mfa-push-enrollment-qr`, `mfa-push-list`, `mfa-push-welcome`, `accept-invitation`, `organization-selection`, `organization-picker`, `pre-login-organization-picker`, `mfa-otp-challenge`, `mfa-otp-enrollment-code`, `mfa-otp-enrollment-qr`, `device-code-activation`, `device-code-activation-allowed`, `device-code-activation-denied`, `device-code-confirmation`, `mfa-phone-challenge`, `mfa-phone-enrollment`, `mfa-voice-challenge`, `mfa-voice-enrollment`, `reset-password-mfa-phone-challenge`, `reset-password-mfa-voice-challenge`, `mfa-recovery-code-challenge`, `mfa-recovery-code-enrollment`, `reset-password-mfa-recovery-code-challenge`, `redeem-ticket`, `mfa-recovery-code-challenge-new-code`, `email-verification-result`, `login-email-verification`, `logout`, `logout-aborted`, `logout-complete`, `mfa-webauthn-change-key-nickname`, `mfa-webauthn-enrollment-success`, `mfa-webauthn-error`, `mfa-webauthn-platform-challenge`, `mfa-webauthn-platform-enrollment`, `mfa-webauthn-roaming-challenge`, `mfa-webauthn-roaming-enrollment`, `reset-password-mfa-webauthn-platform-challenge`, `reset-password-mfa-webauthn-roaming-challenge`, `consent`, `customized-consent`, `email-otp-challenge`, `mfa-webauthn-not-available-error`.
      */
-    screenName?: pulumi.Input<string>;
+    screenName?: pulumi.Input<string | undefined>;
     /**
      * Tenant ID
      */
-    tenant?: pulumi.Input<string>;
+    tenant?: pulumi.Input<string | undefined>;
     /**
      * Use page template with ACUL
      */
-    usePageTemplate?: pulumi.Input<boolean>;
+    usePageTemplate?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -223,19 +223,19 @@ export interface PromptScreenRendererArgs {
     /**
      * Context values to make available
      */
-    contextConfigurations?: pulumi.Input<pulumi.Input<string>[]>;
+    contextConfigurations?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Override Universal Login default head tags
      */
-    defaultHeadTagsDisabled?: pulumi.Input<boolean>;
+    defaultHeadTagsDisabled?: pulumi.Input<boolean | undefined>;
     /**
      * Optional filters to apply rendering rules to specific entities. `matchType` and at least one of the entity arrays are required.
      */
-    filters?: pulumi.Input<inputs.PromptScreenRendererFilters>;
+    filters?: pulumi.Input<inputs.PromptScreenRendererFilters | undefined>;
     /**
      * An array of head tags
      */
-    headTags?: pulumi.Input<string>;
+    headTags?: pulumi.Input<string | undefined>;
     /**
      * The prompt that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkeys`, `captcha`, `login`, `signup`, `reset-password`, `mfa`, `mfa-sms`, `mfa-email`, `mfa-push`, `invitation`, `organizations`, `mfa-otp`, `device-flow`, `mfa-phone`, `mfa-voice`, `mfa-recovery-code`, `common`, `email-verification`, `login-email-verification`, `logout`, `mfa-webauthn`, `consent`, `customized-consent`, `email-otp-challenge`.
      */
@@ -243,7 +243,7 @@ export interface PromptScreenRendererArgs {
     /**
      * Rendering modeOptions are: `standard`, `advanced`.
      */
-    renderingMode?: pulumi.Input<string>;
+    renderingMode?: pulumi.Input<string | undefined>;
     /**
      * The screen that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless-sms-otp`, `login-passwordless-email-code`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkey-enrollment`, `passkey-enrollment-local`, `interstitial-captcha`, `login`, `signup`, `reset-password-request`, `reset-password-email`, `reset-password`, `reset-password-success`, `reset-password-error`, `reset-password-mfa-email-challenge`, `reset-password-mfa-otp-challenge`, `reset-password-mfa-push-challenge-push`, `reset-password-mfa-sms-challenge`, `mfa-detect-browser-capabilities`, `mfa-enroll-result`, `mfa-begin-enroll-options`, `mfa-login-options`, `mfa-country-codes`, `mfa-sms-challenge`, `mfa-sms-enrollment`, `mfa-sms-list`, `mfa-email-challenge`, `mfa-email-list`, `mfa-push-challenge-push`, `mfa-push-enrollment-qr`, `mfa-push-list`, `mfa-push-welcome`, `accept-invitation`, `organization-selection`, `organization-picker`, `pre-login-organization-picker`, `mfa-otp-challenge`, `mfa-otp-enrollment-code`, `mfa-otp-enrollment-qr`, `device-code-activation`, `device-code-activation-allowed`, `device-code-activation-denied`, `device-code-confirmation`, `mfa-phone-challenge`, `mfa-phone-enrollment`, `mfa-voice-challenge`, `mfa-voice-enrollment`, `reset-password-mfa-phone-challenge`, `reset-password-mfa-voice-challenge`, `mfa-recovery-code-challenge`, `mfa-recovery-code-enrollment`, `reset-password-mfa-recovery-code-challenge`, `redeem-ticket`, `mfa-recovery-code-challenge-new-code`, `email-verification-result`, `login-email-verification`, `logout`, `logout-aborted`, `logout-complete`, `mfa-webauthn-change-key-nickname`, `mfa-webauthn-enrollment-success`, `mfa-webauthn-error`, `mfa-webauthn-platform-challenge`, `mfa-webauthn-platform-enrollment`, `mfa-webauthn-roaming-challenge`, `mfa-webauthn-roaming-enrollment`, `reset-password-mfa-webauthn-platform-challenge`, `reset-password-mfa-webauthn-roaming-challenge`, `consent`, `customized-consent`, `email-otp-challenge`, `mfa-webauthn-not-available-error`.
      */
@@ -251,5 +251,5 @@ export interface PromptScreenRendererArgs {
     /**
      * Use page template with ACUL
      */
-    usePageTemplate?: pulumi.Input<boolean>;
+    usePageTemplate?: pulumi.Input<boolean | undefined>;
 }

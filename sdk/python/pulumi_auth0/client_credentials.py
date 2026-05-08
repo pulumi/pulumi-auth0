@@ -22,12 +22,12 @@ __all__ = ['ClientCredentialsArgs', 'ClientCredentials']
 class ClientCredentialsArgs:
     def __init__(__self__, *,
                  client_id: pulumi.Input[_builtins.str],
-                 authentication_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_key_jwt: Optional[pulumi.Input['ClientCredentialsPrivateKeyJwtArgs']] = None,
-                 self_signed_tls_client_auth: Optional[pulumi.Input['ClientCredentialsSelfSignedTlsClientAuthArgs']] = None,
-                 signed_request_object: Optional[pulumi.Input['ClientCredentialsSignedRequestObjectArgs']] = None,
-                 tls_client_auth: Optional[pulumi.Input['ClientCredentialsTlsClientAuthArgs']] = None):
+                 authentication_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_key_jwt: pulumi.Input[Optional['ClientCredentialsPrivateKeyJwtArgs']] = None,
+                 self_signed_tls_client_auth: pulumi.Input[Optional['ClientCredentialsSelfSignedTlsClientAuthArgs']] = None,
+                 signed_request_object: pulumi.Input[Optional['ClientCredentialsSignedRequestObjectArgs']] = None,
+                 tls_client_auth: pulumi.Input[Optional['ClientCredentialsTlsClientAuthArgs']] = None):
         """
         The set of arguments for constructing a ClientCredentials resource.
 
@@ -67,87 +67,87 @@ class ClientCredentialsArgs:
 
     @_builtins.property
     @pulumi.getter(name="authenticationMethod")
-    def authentication_method(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def authentication_method(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `client_secret_post` (confidential client using HTTP POST parameters), `client_secret_basic` (confidential client using HTTP Basic), `private_key_jwt` (confidential client using a Private Key JWT), `tls_client_auth` (confidential client using CA-based mTLS authentication), `self_signed_tls_client_auth` (confidential client using mTLS authentication utilizing a self-signed certificate).
         """
         return pulumi.get(self, "authentication_method")
 
     @authentication_method.setter
-    def authentication_method(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def authentication_method(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "authentication_method", value)
 
     @_builtins.property
     @pulumi.getter(name="clientSecret")
-    def client_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Secret for the client when using `client_secret_post` or `client_secret_basic` authentication method. Keep this private. To access this attribute you need to add either `read:client_keys` or `read:client_credentials` scope to the Terraform client. Otherwise, the attribute will contain an empty string. The attribute will also be an empty string in case `private_key_jwt` is selected as an authentication method.
         """
         return pulumi.get(self, "client_secret")
 
     @client_secret.setter
-    def client_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_secret", value)
 
     @_builtins.property
     @pulumi.getter(name="privateKeyJwt")
-    def private_key_jwt(self) -> Optional[pulumi.Input['ClientCredentialsPrivateKeyJwtArgs']]:
+    def private_key_jwt(self) -> pulumi.Input[Optional['ClientCredentialsPrivateKeyJwtArgs']]:
         """
         Defines `private_key_jwt` client authentication method.
         """
         return pulumi.get(self, "private_key_jwt")
 
     @private_key_jwt.setter
-    def private_key_jwt(self, value: Optional[pulumi.Input['ClientCredentialsPrivateKeyJwtArgs']]):
+    def private_key_jwt(self, value: pulumi.Input[Optional['ClientCredentialsPrivateKeyJwtArgs']]):
         pulumi.set(self, "private_key_jwt", value)
 
     @_builtins.property
     @pulumi.getter(name="selfSignedTlsClientAuth")
-    def self_signed_tls_client_auth(self) -> Optional[pulumi.Input['ClientCredentialsSelfSignedTlsClientAuthArgs']]:
+    def self_signed_tls_client_auth(self) -> pulumi.Input[Optional['ClientCredentialsSelfSignedTlsClientAuthArgs']]:
         """
         Defines `tls_client_auth` client authentication method.
         """
         return pulumi.get(self, "self_signed_tls_client_auth")
 
     @self_signed_tls_client_auth.setter
-    def self_signed_tls_client_auth(self, value: Optional[pulumi.Input['ClientCredentialsSelfSignedTlsClientAuthArgs']]):
+    def self_signed_tls_client_auth(self, value: pulumi.Input[Optional['ClientCredentialsSelfSignedTlsClientAuthArgs']]):
         pulumi.set(self, "self_signed_tls_client_auth", value)
 
     @_builtins.property
     @pulumi.getter(name="signedRequestObject")
-    def signed_request_object(self) -> Optional[pulumi.Input['ClientCredentialsSignedRequestObjectArgs']]:
+    def signed_request_object(self) -> pulumi.Input[Optional['ClientCredentialsSignedRequestObjectArgs']]:
         """
         Configuration for JWT-secured Authorization Requests(JAR).
         """
         return pulumi.get(self, "signed_request_object")
 
     @signed_request_object.setter
-    def signed_request_object(self, value: Optional[pulumi.Input['ClientCredentialsSignedRequestObjectArgs']]):
+    def signed_request_object(self, value: pulumi.Input[Optional['ClientCredentialsSignedRequestObjectArgs']]):
         pulumi.set(self, "signed_request_object", value)
 
     @_builtins.property
     @pulumi.getter(name="tlsClientAuth")
-    def tls_client_auth(self) -> Optional[pulumi.Input['ClientCredentialsTlsClientAuthArgs']]:
+    def tls_client_auth(self) -> pulumi.Input[Optional['ClientCredentialsTlsClientAuthArgs']]:
         """
         Defines `tls_client_auth` client authentication method.
         """
         return pulumi.get(self, "tls_client_auth")
 
     @tls_client_auth.setter
-    def tls_client_auth(self, value: Optional[pulumi.Input['ClientCredentialsTlsClientAuthArgs']]):
+    def tls_client_auth(self, value: pulumi.Input[Optional['ClientCredentialsTlsClientAuthArgs']]):
         pulumi.set(self, "tls_client_auth", value)
 
 
 @pulumi.input_type
 class _ClientCredentialsState:
     def __init__(__self__, *,
-                 authentication_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_key_jwt: Optional[pulumi.Input['ClientCredentialsPrivateKeyJwtArgs']] = None,
-                 self_signed_tls_client_auth: Optional[pulumi.Input['ClientCredentialsSelfSignedTlsClientAuthArgs']] = None,
-                 signed_request_object: Optional[pulumi.Input['ClientCredentialsSignedRequestObjectArgs']] = None,
-                 tls_client_auth: Optional[pulumi.Input['ClientCredentialsTlsClientAuthArgs']] = None):
+                 authentication_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_key_jwt: pulumi.Input[Optional['ClientCredentialsPrivateKeyJwtArgs']] = None,
+                 self_signed_tls_client_auth: pulumi.Input[Optional['ClientCredentialsSelfSignedTlsClientAuthArgs']] = None,
+                 signed_request_object: pulumi.Input[Optional['ClientCredentialsSignedRequestObjectArgs']] = None,
+                 tls_client_auth: pulumi.Input[Optional['ClientCredentialsTlsClientAuthArgs']] = None):
         """
         Input properties used for looking up and filtering ClientCredentials resources.
 
@@ -176,86 +176,86 @@ class _ClientCredentialsState:
 
     @_builtins.property
     @pulumi.getter(name="authenticationMethod")
-    def authentication_method(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def authentication_method(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `client_secret_post` (confidential client using HTTP POST parameters), `client_secret_basic` (confidential client using HTTP Basic), `private_key_jwt` (confidential client using a Private Key JWT), `tls_client_auth` (confidential client using CA-based mTLS authentication), `self_signed_tls_client_auth` (confidential client using mTLS authentication utilizing a self-signed certificate).
         """
         return pulumi.get(self, "authentication_method")
 
     @authentication_method.setter
-    def authentication_method(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def authentication_method(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "authentication_method", value)
 
     @_builtins.property
     @pulumi.getter(name="clientId")
-    def client_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the client for which to configure the authentication method.
         """
         return pulumi.get(self, "client_id")
 
     @client_id.setter
-    def client_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_id", value)
 
     @_builtins.property
     @pulumi.getter(name="clientSecret")
-    def client_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Secret for the client when using `client_secret_post` or `client_secret_basic` authentication method. Keep this private. To access this attribute you need to add either `read:client_keys` or `read:client_credentials` scope to the Terraform client. Otherwise, the attribute will contain an empty string. The attribute will also be an empty string in case `private_key_jwt` is selected as an authentication method.
         """
         return pulumi.get(self, "client_secret")
 
     @client_secret.setter
-    def client_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_secret", value)
 
     @_builtins.property
     @pulumi.getter(name="privateKeyJwt")
-    def private_key_jwt(self) -> Optional[pulumi.Input['ClientCredentialsPrivateKeyJwtArgs']]:
+    def private_key_jwt(self) -> pulumi.Input[Optional['ClientCredentialsPrivateKeyJwtArgs']]:
         """
         Defines `private_key_jwt` client authentication method.
         """
         return pulumi.get(self, "private_key_jwt")
 
     @private_key_jwt.setter
-    def private_key_jwt(self, value: Optional[pulumi.Input['ClientCredentialsPrivateKeyJwtArgs']]):
+    def private_key_jwt(self, value: pulumi.Input[Optional['ClientCredentialsPrivateKeyJwtArgs']]):
         pulumi.set(self, "private_key_jwt", value)
 
     @_builtins.property
     @pulumi.getter(name="selfSignedTlsClientAuth")
-    def self_signed_tls_client_auth(self) -> Optional[pulumi.Input['ClientCredentialsSelfSignedTlsClientAuthArgs']]:
+    def self_signed_tls_client_auth(self) -> pulumi.Input[Optional['ClientCredentialsSelfSignedTlsClientAuthArgs']]:
         """
         Defines `tls_client_auth` client authentication method.
         """
         return pulumi.get(self, "self_signed_tls_client_auth")
 
     @self_signed_tls_client_auth.setter
-    def self_signed_tls_client_auth(self, value: Optional[pulumi.Input['ClientCredentialsSelfSignedTlsClientAuthArgs']]):
+    def self_signed_tls_client_auth(self, value: pulumi.Input[Optional['ClientCredentialsSelfSignedTlsClientAuthArgs']]):
         pulumi.set(self, "self_signed_tls_client_auth", value)
 
     @_builtins.property
     @pulumi.getter(name="signedRequestObject")
-    def signed_request_object(self) -> Optional[pulumi.Input['ClientCredentialsSignedRequestObjectArgs']]:
+    def signed_request_object(self) -> pulumi.Input[Optional['ClientCredentialsSignedRequestObjectArgs']]:
         """
         Configuration for JWT-secured Authorization Requests(JAR).
         """
         return pulumi.get(self, "signed_request_object")
 
     @signed_request_object.setter
-    def signed_request_object(self, value: Optional[pulumi.Input['ClientCredentialsSignedRequestObjectArgs']]):
+    def signed_request_object(self, value: pulumi.Input[Optional['ClientCredentialsSignedRequestObjectArgs']]):
         pulumi.set(self, "signed_request_object", value)
 
     @_builtins.property
     @pulumi.getter(name="tlsClientAuth")
-    def tls_client_auth(self) -> Optional[pulumi.Input['ClientCredentialsTlsClientAuthArgs']]:
+    def tls_client_auth(self) -> pulumi.Input[Optional['ClientCredentialsTlsClientAuthArgs']]:
         """
         Defines `tls_client_auth` client authentication method.
         """
         return pulumi.get(self, "tls_client_auth")
 
     @tls_client_auth.setter
-    def tls_client_auth(self, value: Optional[pulumi.Input['ClientCredentialsTlsClientAuthArgs']]):
+    def tls_client_auth(self, value: pulumi.Input[Optional['ClientCredentialsTlsClientAuthArgs']]):
         pulumi.set(self, "tls_client_auth", value)
 
 
@@ -265,13 +265,13 @@ class ClientCredentials(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authentication_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_key_jwt: Optional[pulumi.Input[Union['ClientCredentialsPrivateKeyJwtArgs', 'ClientCredentialsPrivateKeyJwtArgsDict']]] = None,
-                 self_signed_tls_client_auth: Optional[pulumi.Input[Union['ClientCredentialsSelfSignedTlsClientAuthArgs', 'ClientCredentialsSelfSignedTlsClientAuthArgsDict']]] = None,
-                 signed_request_object: Optional[pulumi.Input[Union['ClientCredentialsSignedRequestObjectArgs', 'ClientCredentialsSignedRequestObjectArgsDict']]] = None,
-                 tls_client_auth: Optional[pulumi.Input[Union['ClientCredentialsTlsClientAuthArgs', 'ClientCredentialsTlsClientAuthArgsDict']]] = None,
+                 authentication_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_key_jwt: pulumi.Input[Optional[Union['ClientCredentialsPrivateKeyJwtArgs', 'ClientCredentialsPrivateKeyJwtArgsDict']]] = None,
+                 self_signed_tls_client_auth: pulumi.Input[Optional[Union['ClientCredentialsSelfSignedTlsClientAuthArgs', 'ClientCredentialsSelfSignedTlsClientAuthArgsDict']]] = None,
+                 signed_request_object: pulumi.Input[Optional[Union['ClientCredentialsSignedRequestObjectArgs', 'ClientCredentialsSignedRequestObjectArgsDict']]] = None,
+                 tls_client_auth: pulumi.Input[Optional[Union['ClientCredentialsTlsClientAuthArgs', 'ClientCredentialsTlsClientAuthArgsDict']]] = None,
                  __props__=None):
         """
         With this resource, you can configure the method to use when making requests to any endpoint that requires this client to authenticate.
@@ -344,13 +344,13 @@ class ClientCredentials(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authentication_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_key_jwt: Optional[pulumi.Input[Union['ClientCredentialsPrivateKeyJwtArgs', 'ClientCredentialsPrivateKeyJwtArgsDict']]] = None,
-                 self_signed_tls_client_auth: Optional[pulumi.Input[Union['ClientCredentialsSelfSignedTlsClientAuthArgs', 'ClientCredentialsSelfSignedTlsClientAuthArgsDict']]] = None,
-                 signed_request_object: Optional[pulumi.Input[Union['ClientCredentialsSignedRequestObjectArgs', 'ClientCredentialsSignedRequestObjectArgsDict']]] = None,
-                 tls_client_auth: Optional[pulumi.Input[Union['ClientCredentialsTlsClientAuthArgs', 'ClientCredentialsTlsClientAuthArgsDict']]] = None,
+                 authentication_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_key_jwt: pulumi.Input[Optional[Union['ClientCredentialsPrivateKeyJwtArgs', 'ClientCredentialsPrivateKeyJwtArgsDict']]] = None,
+                 self_signed_tls_client_auth: pulumi.Input[Optional[Union['ClientCredentialsSelfSignedTlsClientAuthArgs', 'ClientCredentialsSelfSignedTlsClientAuthArgsDict']]] = None,
+                 signed_request_object: pulumi.Input[Optional[Union['ClientCredentialsSignedRequestObjectArgs', 'ClientCredentialsSignedRequestObjectArgsDict']]] = None,
+                 tls_client_auth: pulumi.Input[Optional[Union['ClientCredentialsTlsClientAuthArgs', 'ClientCredentialsTlsClientAuthArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -381,13 +381,13 @@ class ClientCredentials(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            authentication_method: Optional[pulumi.Input[_builtins.str]] = None,
-            client_id: Optional[pulumi.Input[_builtins.str]] = None,
-            client_secret: Optional[pulumi.Input[_builtins.str]] = None,
-            private_key_jwt: Optional[pulumi.Input[Union['ClientCredentialsPrivateKeyJwtArgs', 'ClientCredentialsPrivateKeyJwtArgsDict']]] = None,
-            self_signed_tls_client_auth: Optional[pulumi.Input[Union['ClientCredentialsSelfSignedTlsClientAuthArgs', 'ClientCredentialsSelfSignedTlsClientAuthArgsDict']]] = None,
-            signed_request_object: Optional[pulumi.Input[Union['ClientCredentialsSignedRequestObjectArgs', 'ClientCredentialsSignedRequestObjectArgsDict']]] = None,
-            tls_client_auth: Optional[pulumi.Input[Union['ClientCredentialsTlsClientAuthArgs', 'ClientCredentialsTlsClientAuthArgsDict']]] = None) -> 'ClientCredentials':
+            authentication_method: pulumi.Input[Optional[_builtins.str]] = None,
+            client_id: pulumi.Input[Optional[_builtins.str]] = None,
+            client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+            private_key_jwt: pulumi.Input[Optional[Union['ClientCredentialsPrivateKeyJwtArgs', 'ClientCredentialsPrivateKeyJwtArgsDict']]] = None,
+            self_signed_tls_client_auth: pulumi.Input[Optional[Union['ClientCredentialsSelfSignedTlsClientAuthArgs', 'ClientCredentialsSelfSignedTlsClientAuthArgsDict']]] = None,
+            signed_request_object: pulumi.Input[Optional[Union['ClientCredentialsSignedRequestObjectArgs', 'ClientCredentialsSignedRequestObjectArgsDict']]] = None,
+            tls_client_auth: pulumi.Input[Optional[Union['ClientCredentialsTlsClientAuthArgs', 'ClientCredentialsTlsClientAuthArgsDict']]] = None) -> 'ClientCredentials':
         """
         Get an existing ClientCredentials resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

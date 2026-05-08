@@ -27,22 +27,28 @@ namespace Pulumi.Auth0
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Example:
-    ///     var admin = new Auth0.Index.Role("admin", new()
+    ///     var admin = new Auth0.Role("admin", new()
     ///     {
     ///         Name = "admin",
     ///         Description = "Administrator",
     ///     });
     /// 
-    ///     var user = new Auth0.Index.User("user", new()
+    ///     var user = new Auth0.User("user", new()
     ///     {
     ///         ConnectionName = "Username-Password-Authentication",
     ///         Username = "unique_username",
     ///         Name = "Firstname Lastname",
     ///         Email = "test@test.com",
     ///         Password = "passpass$12$12",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         IgnoreChanges =
+    ///         {
+    ///             "roles",
+    ///         },
     ///     });
     /// 
-    ///     var userRoles = new Auth0.Index.UserRoles("user_roles", new()
+    ///     var userRoles = new Auth0.UserRoles("user_roles", new()
     ///     {
     ///         UserId = user.Id,
     ///         Roles = new[]

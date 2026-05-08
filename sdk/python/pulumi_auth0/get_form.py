@@ -179,7 +179,7 @@ def get_form(id: Optional[_builtins.str] = None,
         start=pulumi.get(__ret__, 'start'),
         style=pulumi.get(__ret__, 'style'),
         translations=pulumi.get(__ret__, 'translations'))
-def get_form_output(id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_form_output(id: pulumi.Input[Optional[_builtins.str]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFormResult]:
     """
     Data source to retrieve a specific Auth0 Form by `id`

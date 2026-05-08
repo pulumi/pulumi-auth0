@@ -119,19 +119,19 @@ export interface RuleState {
     /**
      * Indicates whether the rule is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Order in which the rule executes relative to other rules. Lower-valued rules execute first.
      */
-    order?: pulumi.Input<number>;
+    order?: pulumi.Input<number | undefined>;
     /**
      * Code to be executed when the rule runs.
      */
-    script?: pulumi.Input<string>;
+    script?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -141,15 +141,15 @@ export interface RuleArgs {
     /**
      * Indicates whether the rule is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the rule. May only contain alphanumeric characters, spaces, and hyphens. May neither start nor end with hyphens or spaces.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Order in which the rule executes relative to other rules. Lower-valued rules execute first.
      */
-    order?: pulumi.Input<number>;
+    order?: pulumi.Input<number | undefined>;
     /**
      * Code to be executed when the rule runs.
      */

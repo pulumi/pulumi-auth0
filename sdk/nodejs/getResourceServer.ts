@@ -172,9 +172,9 @@ export interface GetResourceServerOutputArgs {
     /**
      * Unique identifier for the resource server. Used as the audience parameter for authorization calls. If not provided, `resourceServerId` must be set.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource server. If not provided, `identifier` must be set.
      */
-    resourceServerId?: pulumi.Input<string>;
+    resourceServerId?: pulumi.Input<string | undefined>;
 }

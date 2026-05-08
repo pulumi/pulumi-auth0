@@ -163,7 +163,7 @@ def get_action_module_actions(module_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         module_id=pulumi.get(__ret__, 'module_id'),
         total=pulumi.get(__ret__, 'total'))
-def get_action_module_actions_output(module_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_action_module_actions_output(module_id: pulumi.Input[Optional[_builtins.str]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetActionModuleActionsResult]:
     """
     Data source to retrieve all actions that are using a specific Auth0 action module.

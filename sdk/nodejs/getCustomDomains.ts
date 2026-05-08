@@ -120,5 +120,5 @@ export interface GetCustomDomainsOutputArgs {
     /**
      * Search query string to filter custom domains.
      */
-    query?: pulumi.Input<string>;
+    query?: pulumi.Input<string | undefined>;
 }

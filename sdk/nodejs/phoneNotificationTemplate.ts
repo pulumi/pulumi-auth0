@@ -111,31 +111,31 @@ export interface PhoneNotificationTemplateState {
     /**
      * The channel of the phone notification template (e.g., `sms`, `voice`).
      */
-    channel?: pulumi.Input<string>;
+    channel?: pulumi.Input<string | undefined>;
     /**
      * The content of the phone notification template.
      */
-    content?: pulumi.Input<inputs.PhoneNotificationTemplateContent>;
+    content?: pulumi.Input<inputs.PhoneNotificationTemplateContent | undefined>;
     /**
      * Indicates whether the phone notification template is customizable.
      */
-    customizable?: pulumi.Input<boolean>;
+    customizable?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether the phone notification template is disabled.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the phone notification template.
      */
-    templateId?: pulumi.Input<string>;
+    templateId?: pulumi.Input<string | undefined>;
     /**
      * The tenant of the phone notification template.
      */
-    tenant?: pulumi.Input<string>;
+    tenant?: pulumi.Input<string | undefined>;
     /**
      * The type of the phone notification template.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -145,11 +145,11 @@ export interface PhoneNotificationTemplateArgs {
     /**
      * The content of the phone notification template.
      */
-    content?: pulumi.Input<inputs.PhoneNotificationTemplateContent>;
+    content?: pulumi.Input<inputs.PhoneNotificationTemplateContent | undefined>;
     /**
      * Indicates whether the phone notification template is disabled.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * The type of the phone notification template.
      */

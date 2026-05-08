@@ -24,7 +24,7 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myRule = new Auth0.Index.Rule("my_rule", new()
+    ///     var myRule = new Auth0.Rule("my_rule", new()
     ///     {
     ///         Name = "empty-rule",
     ///         Script = @"    function (user, context, callback) {

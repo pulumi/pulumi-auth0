@@ -73,11 +73,11 @@ class RolePermissionArgs:
 @pulumi.input_type
 class _RolePermissionState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 permission: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_server_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_server_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 permission: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_server_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_server_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RolePermission resources.
 
@@ -100,62 +100,62 @@ class _RolePermissionState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the permission.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def permission(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def permission(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the permission.
         """
         return pulumi.get(self, "permission")
 
     @permission.setter
-    def permission(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def permission(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "permission", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceServerIdentifier")
-    def resource_server_identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_server_identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier of the resource server that the permission is associated with.
         """
         return pulumi.get(self, "resource_server_identifier")
 
     @resource_server_identifier.setter
-    def resource_server_identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_server_identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_server_identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceServerName")
-    def resource_server_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_server_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource server that the permission is associated with.
         """
         return pulumi.get(self, "resource_server_name")
 
     @resource_server_name.setter
-    def resource_server_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_server_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_server_name", value)
 
     @_builtins.property
     @pulumi.getter(name="roleId")
-    def role_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the role to associate the permission to.
         """
         return pulumi.get(self, "role_id")
 
     @role_id.setter
-    def role_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role_id", value)
 
 
@@ -165,9 +165,9 @@ class RolePermission(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 permission: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_server_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 permission: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_server_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         With this resource, you can manage role permissions (1-1).
@@ -180,6 +180,7 @@ class RolePermission(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_auth0 as auth0
         import pulumi_std as std
 
@@ -205,7 +206,7 @@ class RolePermission(pulumi.CustomResource):
             ])
         my_role = auth0.Role("my_role", name="My Role")
         scopes_list = resource_server_scopes.scopes.apply(lambda scopes: [scope.name for scope in scopes])
-        my_role_perm = []
+        my_role_perm: list[Any] = []
         for range in [{"value": i} for i in range(0, std.toset(input=scopes_list).result)]:
             my_role_perm.append(auth0.RolePermission(f"my_role_perm-{range['value']}",
                 role_id=my_role.id,
@@ -249,6 +250,7 @@ class RolePermission(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_auth0 as auth0
         import pulumi_std as std
 
@@ -274,7 +276,7 @@ class RolePermission(pulumi.CustomResource):
             ])
         my_role = auth0.Role("my_role", name="My Role")
         scopes_list = resource_server_scopes.scopes.apply(lambda scopes: [scope.name for scope in scopes])
-        my_role_perm = []
+        my_role_perm: list[Any] = []
         for range in [{"value": i} for i in range(0, std.toset(input=scopes_list).result)]:
             my_role_perm.append(auth0.RolePermission(f"my_role_perm-{range['value']}",
                 role_id=my_role.id,
@@ -310,9 +312,9 @@ class RolePermission(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 permission: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_server_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 permission: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_server_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -343,11 +345,11 @@ class RolePermission(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            permission: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_server_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_server_name: Optional[pulumi.Input[_builtins.str]] = None,
-            role_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'RolePermission':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            permission: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_server_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_server_name: pulumi.Input[Optional[_builtins.str]] = None,
+            role_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'RolePermission':
         """
         Get an existing RolePermission resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

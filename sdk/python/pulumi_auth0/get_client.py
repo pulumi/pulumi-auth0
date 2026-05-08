@@ -805,8 +805,8 @@ def get_client(client_id: Optional[_builtins.str] = None,
         token_exchanges=pulumi.get(__ret__, 'token_exchanges'),
         token_quotas=pulumi.get(__ret__, 'token_quotas'),
         web_origins=pulumi.get(__ret__, 'web_origins'))
-def get_client_output(client_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                      name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_client_output(client_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                      name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClientResult]:
     """
     Data source to retrieve a specific Auth0 application client by `client_id` or `name`.

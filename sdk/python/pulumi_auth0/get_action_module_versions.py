@@ -115,7 +115,7 @@ def get_action_module_versions(module_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         module_id=pulumi.get(__ret__, 'module_id'),
         versions=pulumi.get(__ret__, 'versions'))
-def get_action_module_versions_output(module_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_action_module_versions_output(module_id: pulumi.Input[Optional[_builtins.str]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetActionModuleVersionsResult]:
     """
     Data source to retrieve all published versions of a specific Auth0 action module.

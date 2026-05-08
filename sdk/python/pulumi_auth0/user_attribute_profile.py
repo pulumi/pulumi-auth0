@@ -22,8 +22,8 @@ __all__ = ['UserAttributeProfileArgs', 'UserAttributeProfile']
 class UserAttributeProfileArgs:
     def __init__(__self__, *,
                  user_attributes: pulumi.Input[Sequence[pulumi.Input['UserAttributeProfileUserAttributeArgs']]],
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input['UserAttributeProfileUserIdArgs']] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional['UserAttributeProfileUserIdArgs']] = None):
         """
         The set of arguments for constructing a UserAttributeProfile resource.
 
@@ -51,35 +51,35 @@ class UserAttributeProfileArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the User Attribute Profile.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[pulumi.Input['UserAttributeProfileUserIdArgs']]:
+    def user_id(self) -> pulumi.Input[Optional['UserAttributeProfileUserIdArgs']]:
         """
         Configuration for mapping the user ID from identity providers.
         """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
-    def user_id(self, value: Optional[pulumi.Input['UserAttributeProfileUserIdArgs']]):
+    def user_id(self, value: pulumi.Input[Optional['UserAttributeProfileUserIdArgs']]):
         pulumi.set(self, "user_id", value)
 
 
 @pulumi.input_type
 class _UserAttributeProfileState:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_attributes: Optional[pulumi.Input[Sequence[pulumi.Input['UserAttributeProfileUserAttributeArgs']]]] = None,
-                 user_id: Optional[pulumi.Input['UserAttributeProfileUserIdArgs']] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_attributes: pulumi.Input[Optional[Sequence[pulumi.Input['UserAttributeProfileUserAttributeArgs']]]] = None,
+                 user_id: pulumi.Input[Optional['UserAttributeProfileUserIdArgs']] = None):
         """
         Input properties used for looking up and filtering UserAttributeProfile resources.
 
@@ -96,38 +96,38 @@ class _UserAttributeProfileState:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the User Attribute Profile.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="userAttributes")
-    def user_attributes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserAttributeProfileUserAttributeArgs']]]]:
+    def user_attributes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UserAttributeProfileUserAttributeArgs']]]]:
         """
         List of user attribute configurations.
         """
         return pulumi.get(self, "user_attributes")
 
     @user_attributes.setter
-    def user_attributes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UserAttributeProfileUserAttributeArgs']]]]):
+    def user_attributes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['UserAttributeProfileUserAttributeArgs']]]]):
         pulumi.set(self, "user_attributes", value)
 
     @_builtins.property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[pulumi.Input['UserAttributeProfileUserIdArgs']]:
+    def user_id(self) -> pulumi.Input[Optional['UserAttributeProfileUserIdArgs']]:
         """
         Configuration for mapping the user ID from identity providers.
         """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
-    def user_id(self, value: Optional[pulumi.Input['UserAttributeProfileUserIdArgs']]):
+    def user_id(self, value: pulumi.Input[Optional['UserAttributeProfileUserIdArgs']]):
         pulumi.set(self, "user_id", value)
 
 
@@ -137,9 +137,9 @@ class UserAttributeProfile(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserAttributeProfileUserAttributeArgs', 'UserAttributeProfileUserAttributeArgsDict']]]]] = None,
-                 user_id: Optional[pulumi.Input[Union['UserAttributeProfileUserIdArgs', 'UserAttributeProfileUserIdArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserAttributeProfileUserAttributeArgs', 'UserAttributeProfileUserAttributeArgsDict']]]]] = None,
+                 user_id: pulumi.Input[Optional[Union['UserAttributeProfileUserIdArgs', 'UserAttributeProfileUserIdArgsDict']]] = None,
                  __props__=None):
         """
         With this resource, you can manage User Attribute Profiles within Auth0. User Attribute Profiles allow you to define how user attributes are mapped between different identity providers and Auth0.
@@ -180,9 +180,9 @@ class UserAttributeProfile(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserAttributeProfileUserAttributeArgs', 'UserAttributeProfileUserAttributeArgsDict']]]]] = None,
-                 user_id: Optional[pulumi.Input[Union['UserAttributeProfileUserIdArgs', 'UserAttributeProfileUserIdArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserAttributeProfileUserAttributeArgs', 'UserAttributeProfileUserAttributeArgsDict']]]]] = None,
+                 user_id: pulumi.Input[Optional[Union['UserAttributeProfileUserIdArgs', 'UserAttributeProfileUserIdArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -207,9 +207,9 @@ class UserAttributeProfile(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            user_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserAttributeProfileUserAttributeArgs', 'UserAttributeProfileUserAttributeArgsDict']]]]] = None,
-            user_id: Optional[pulumi.Input[Union['UserAttributeProfileUserIdArgs', 'UserAttributeProfileUserIdArgsDict']]] = None) -> 'UserAttributeProfile':
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            user_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserAttributeProfileUserAttributeArgs', 'UserAttributeProfileUserAttributeArgsDict']]]]] = None,
+            user_id: pulumi.Input[Optional[Union['UserAttributeProfileUserIdArgs', 'UserAttributeProfileUserIdArgsDict']]] = None) -> 'UserAttributeProfile':
         """
         Get an existing UserAttributeProfile resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

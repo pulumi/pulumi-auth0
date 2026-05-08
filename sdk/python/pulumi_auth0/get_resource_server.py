@@ -340,8 +340,8 @@ def get_resource_server(identifier: Optional[_builtins.str] = None,
         token_lifetime=pulumi.get(__ret__, 'token_lifetime'),
         token_lifetime_for_web=pulumi.get(__ret__, 'token_lifetime_for_web'),
         verification_location=pulumi.get(__ret__, 'verification_location'))
-def get_resource_server_output(identifier: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               resource_server_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_resource_server_output(identifier: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               resource_server_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetResourceServerResult]:
     """
     Data source to retrieve a specific Auth0 resource server by `resource_server_id` or `identifier`.

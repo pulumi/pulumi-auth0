@@ -20,12 +20,12 @@ __all__ = ['PromptPartialsArgs', 'PromptPartials']
 class PromptPartialsArgs:
     def __init__(__self__, *,
                  prompt: pulumi.Input[_builtins.str],
-                 form_content_end: Optional[pulumi.Input[_builtins.str]] = None,
-                 form_content_start: Optional[pulumi.Input[_builtins.str]] = None,
-                 form_footer_end: Optional[pulumi.Input[_builtins.str]] = None,
-                 form_footer_start: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_actions_end: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_actions_start: Optional[pulumi.Input[_builtins.str]] = None):
+                 form_content_end: pulumi.Input[Optional[_builtins.str]] = None,
+                 form_content_start: pulumi.Input[Optional[_builtins.str]] = None,
+                 form_footer_end: pulumi.Input[Optional[_builtins.str]] = None,
+                 form_footer_start: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_actions_end: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_actions_start: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a PromptPartials resource.
 
@@ -88,92 +88,92 @@ class PromptPartialsArgs:
     @_builtins.property
     @pulumi.getter(name="formContentEnd")
     @_utilities.deprecated("""This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""")
-    def form_content_end(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def form_content_end(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Content that goes at the end of the form.
         """
         return pulumi.get(self, "form_content_end")
 
     @form_content_end.setter
-    def form_content_end(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def form_content_end(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "form_content_end", value)
 
     @_builtins.property
     @pulumi.getter(name="formContentStart")
     @_utilities.deprecated("""This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""")
-    def form_content_start(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def form_content_start(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Content that goes at the start of the form.
         """
         return pulumi.get(self, "form_content_start")
 
     @form_content_start.setter
-    def form_content_start(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def form_content_start(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "form_content_start", value)
 
     @_builtins.property
     @pulumi.getter(name="formFooterEnd")
     @_utilities.deprecated("""This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""")
-    def form_footer_end(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def form_footer_end(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Footer content for the end of the footer.
         """
         return pulumi.get(self, "form_footer_end")
 
     @form_footer_end.setter
-    def form_footer_end(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def form_footer_end(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "form_footer_end", value)
 
     @_builtins.property
     @pulumi.getter(name="formFooterStart")
     @_utilities.deprecated("""This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""")
-    def form_footer_start(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def form_footer_start(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Footer content for the start of the footer.
         """
         return pulumi.get(self, "form_footer_start")
 
     @form_footer_start.setter
-    def form_footer_start(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def form_footer_start(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "form_footer_start", value)
 
     @_builtins.property
     @pulumi.getter(name="secondaryActionsEnd")
     @_utilities.deprecated("""This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""")
-    def secondary_actions_end(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secondary_actions_end(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Actions that go at the end of secondary actions.
         """
         return pulumi.get(self, "secondary_actions_end")
 
     @secondary_actions_end.setter
-    def secondary_actions_end(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secondary_actions_end(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secondary_actions_end", value)
 
     @_builtins.property
     @pulumi.getter(name="secondaryActionsStart")
     @_utilities.deprecated("""This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""")
-    def secondary_actions_start(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secondary_actions_start(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Actions that go at the start of secondary actions.
         """
         return pulumi.get(self, "secondary_actions_start")
 
     @secondary_actions_start.setter
-    def secondary_actions_start(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secondary_actions_start(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secondary_actions_start", value)
 
 
 @pulumi.input_type
 class _PromptPartialsState:
     def __init__(__self__, *,
-                 form_content_end: Optional[pulumi.Input[_builtins.str]] = None,
-                 form_content_start: Optional[pulumi.Input[_builtins.str]] = None,
-                 form_footer_end: Optional[pulumi.Input[_builtins.str]] = None,
-                 form_footer_start: Optional[pulumi.Input[_builtins.str]] = None,
-                 prompt: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_actions_end: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_actions_start: Optional[pulumi.Input[_builtins.str]] = None):
+                 form_content_end: pulumi.Input[Optional[_builtins.str]] = None,
+                 form_content_start: pulumi.Input[Optional[_builtins.str]] = None,
+                 form_footer_end: pulumi.Input[Optional[_builtins.str]] = None,
+                 form_footer_start: pulumi.Input[Optional[_builtins.str]] = None,
+                 prompt: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_actions_end: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_actions_start: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PromptPartials resources.
 
@@ -224,92 +224,92 @@ class _PromptPartialsState:
     @_builtins.property
     @pulumi.getter(name="formContentEnd")
     @_utilities.deprecated("""This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""")
-    def form_content_end(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def form_content_end(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Content that goes at the end of the form.
         """
         return pulumi.get(self, "form_content_end")
 
     @form_content_end.setter
-    def form_content_end(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def form_content_end(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "form_content_end", value)
 
     @_builtins.property
     @pulumi.getter(name="formContentStart")
     @_utilities.deprecated("""This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""")
-    def form_content_start(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def form_content_start(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Content that goes at the start of the form.
         """
         return pulumi.get(self, "form_content_start")
 
     @form_content_start.setter
-    def form_content_start(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def form_content_start(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "form_content_start", value)
 
     @_builtins.property
     @pulumi.getter(name="formFooterEnd")
     @_utilities.deprecated("""This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""")
-    def form_footer_end(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def form_footer_end(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Footer content for the end of the footer.
         """
         return pulumi.get(self, "form_footer_end")
 
     @form_footer_end.setter
-    def form_footer_end(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def form_footer_end(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "form_footer_end", value)
 
     @_builtins.property
     @pulumi.getter(name="formFooterStart")
     @_utilities.deprecated("""This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""")
-    def form_footer_start(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def form_footer_start(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Footer content for the start of the footer.
         """
         return pulumi.get(self, "form_footer_start")
 
     @form_footer_start.setter
-    def form_footer_start(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def form_footer_start(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "form_footer_start", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""")
-    def prompt(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def prompt(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`, `passkeys`.
         """
         return pulumi.get(self, "prompt")
 
     @prompt.setter
-    def prompt(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def prompt(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "prompt", value)
 
     @_builtins.property
     @pulumi.getter(name="secondaryActionsEnd")
     @_utilities.deprecated("""This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""")
-    def secondary_actions_end(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secondary_actions_end(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Actions that go at the end of secondary actions.
         """
         return pulumi.get(self, "secondary_actions_end")
 
     @secondary_actions_end.setter
-    def secondary_actions_end(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secondary_actions_end(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secondary_actions_end", value)
 
     @_builtins.property
     @pulumi.getter(name="secondaryActionsStart")
     @_utilities.deprecated("""This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""")
-    def secondary_actions_start(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secondary_actions_start(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Actions that go at the start of secondary actions.
         """
         return pulumi.get(self, "secondary_actions_start")
 
     @secondary_actions_start.setter
-    def secondary_actions_start(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secondary_actions_start(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secondary_actions_start", value)
 
 
@@ -319,13 +319,13 @@ class PromptPartials(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 form_content_end: Optional[pulumi.Input[_builtins.str]] = None,
-                 form_content_start: Optional[pulumi.Input[_builtins.str]] = None,
-                 form_footer_end: Optional[pulumi.Input[_builtins.str]] = None,
-                 form_footer_start: Optional[pulumi.Input[_builtins.str]] = None,
-                 prompt: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_actions_end: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_actions_start: Optional[pulumi.Input[_builtins.str]] = None,
+                 form_content_end: pulumi.Input[Optional[_builtins.str]] = None,
+                 form_content_start: pulumi.Input[Optional[_builtins.str]] = None,
+                 form_footer_end: pulumi.Input[Optional[_builtins.str]] = None,
+                 form_footer_start: pulumi.Input[Optional[_builtins.str]] = None,
+                 prompt: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_actions_end: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_actions_start: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         With this resource, you can manage a customized sign up and login experience by adding custom content, form elements and css/javascript. You can read more about this [here](https://auth0.com/docs/customize/universal-login-pages/customize-signup-and-login-prompts).
@@ -424,13 +424,13 @@ class PromptPartials(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 form_content_end: Optional[pulumi.Input[_builtins.str]] = None,
-                 form_content_start: Optional[pulumi.Input[_builtins.str]] = None,
-                 form_footer_end: Optional[pulumi.Input[_builtins.str]] = None,
-                 form_footer_start: Optional[pulumi.Input[_builtins.str]] = None,
-                 prompt: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_actions_end: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_actions_start: Optional[pulumi.Input[_builtins.str]] = None,
+                 form_content_end: pulumi.Input[Optional[_builtins.str]] = None,
+                 form_content_start: pulumi.Input[Optional[_builtins.str]] = None,
+                 form_footer_end: pulumi.Input[Optional[_builtins.str]] = None,
+                 form_footer_start: pulumi.Input[Optional[_builtins.str]] = None,
+                 prompt: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_actions_end: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_actions_start: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -459,13 +459,13 @@ class PromptPartials(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            form_content_end: Optional[pulumi.Input[_builtins.str]] = None,
-            form_content_start: Optional[pulumi.Input[_builtins.str]] = None,
-            form_footer_end: Optional[pulumi.Input[_builtins.str]] = None,
-            form_footer_start: Optional[pulumi.Input[_builtins.str]] = None,
-            prompt: Optional[pulumi.Input[_builtins.str]] = None,
-            secondary_actions_end: Optional[pulumi.Input[_builtins.str]] = None,
-            secondary_actions_start: Optional[pulumi.Input[_builtins.str]] = None) -> 'PromptPartials':
+            form_content_end: pulumi.Input[Optional[_builtins.str]] = None,
+            form_content_start: pulumi.Input[Optional[_builtins.str]] = None,
+            form_footer_end: pulumi.Input[Optional[_builtins.str]] = None,
+            form_footer_start: pulumi.Input[Optional[_builtins.str]] = None,
+            prompt: pulumi.Input[Optional[_builtins.str]] = None,
+            secondary_actions_end: pulumi.Input[Optional[_builtins.str]] = None,
+            secondary_actions_start: pulumi.Input[Optional[_builtins.str]] = None) -> 'PromptPartials':
         """
         Get an existing PromptPartials resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

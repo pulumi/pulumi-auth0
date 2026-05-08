@@ -220,35 +220,35 @@ export interface FormState {
     /**
      * Submission configuration of the form. (JSON encoded)
      */
-    ending?: pulumi.Input<string>;
+    ending?: pulumi.Input<string | undefined>;
     /**
      * Language specific configuration for the form.
      */
-    languages?: pulumi.Input<pulumi.Input<inputs.FormLanguage>[]>;
+    languages?: pulumi.Input<pulumi.Input<inputs.FormLanguage>[] | undefined>;
     /**
      * Message specific configuration for the form.
      */
-    messages?: pulumi.Input<pulumi.Input<inputs.FormMessage>[]>;
+    messages?: pulumi.Input<pulumi.Input<inputs.FormMessage>[] | undefined>;
     /**
      * Name of the form.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Nodes of the form. (JSON encoded)
      */
-    nodes?: pulumi.Input<string>;
+    nodes?: pulumi.Input<string | undefined>;
     /**
      * Input setup of the form. (JSON encoded)
      */
-    start?: pulumi.Input<string>;
+    start?: pulumi.Input<string | undefined>;
     /**
      * Style specific configuration for the form. (JSON encoded)
      */
-    style?: pulumi.Input<string>;
+    style?: pulumi.Input<string | undefined>;
     /**
      * Translations of the form. (JSON encoded)
      */
-    translations?: pulumi.Input<string>;
+    translations?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -258,33 +258,33 @@ export interface FormArgs {
     /**
      * Submission configuration of the form. (JSON encoded)
      */
-    ending?: pulumi.Input<string>;
+    ending?: pulumi.Input<string | undefined>;
     /**
      * Language specific configuration for the form.
      */
-    languages?: pulumi.Input<pulumi.Input<inputs.FormLanguage>[]>;
+    languages?: pulumi.Input<pulumi.Input<inputs.FormLanguage>[] | undefined>;
     /**
      * Message specific configuration for the form.
      */
-    messages?: pulumi.Input<pulumi.Input<inputs.FormMessage>[]>;
+    messages?: pulumi.Input<pulumi.Input<inputs.FormMessage>[] | undefined>;
     /**
      * Name of the form.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Nodes of the form. (JSON encoded)
      */
-    nodes?: pulumi.Input<string>;
+    nodes?: pulumi.Input<string | undefined>;
     /**
      * Input setup of the form. (JSON encoded)
      */
-    start?: pulumi.Input<string>;
+    start?: pulumi.Input<string | undefined>;
     /**
      * Style specific configuration for the form. (JSON encoded)
      */
-    style?: pulumi.Input<string>;
+    style?: pulumi.Input<string | undefined>;
     /**
      * Translations of the form. (JSON encoded)
      */
-    translations?: pulumi.Input<string>;
+    translations?: pulumi.Input<string | undefined>;
 }

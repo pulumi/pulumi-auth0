@@ -132,19 +132,19 @@ export interface ConnectionClientsState {
     /**
      * ID of the connection on which to enable the client.
      */
-    connectionId?: pulumi.Input<string>;
+    connectionId?: pulumi.Input<string | undefined>;
     /**
      * IDs of the clients for which the connection is enabled.
      */
-    enabledClients?: pulumi.Input<pulumi.Input<string>[]>;
+    enabledClients?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the connection on which to enable the client.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The strategy of the connection on which to enable the client.
      */
-    strategy?: pulumi.Input<string>;
+    strategy?: pulumi.Input<string | undefined>;
 }
 
 /**

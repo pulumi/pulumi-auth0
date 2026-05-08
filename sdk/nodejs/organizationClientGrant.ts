@@ -149,11 +149,11 @@ export interface OrganizationClientGrantState {
     /**
      * A Client Grant ID to add to the organization.
      */
-    grantId?: pulumi.Input<string>;
+    grantId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the organization to associate the client grant.
      */
-    organizationId?: pulumi.Input<string>;
+    organizationId?: pulumi.Input<string | undefined>;
 }
 
 /**

@@ -26,7 +26,7 @@ class BrandingThemeArgs:
                  fonts: pulumi.Input['BrandingThemeFontsArgs'],
                  page_background: pulumi.Input['BrandingThemePageBackgroundArgs'],
                  widget: pulumi.Input['BrandingThemeWidgetArgs'],
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a BrandingTheme resource.
 
@@ -87,26 +87,26 @@ class BrandingThemeArgs:
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display name for the branding theme.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
 
 @pulumi.input_type
 class _BrandingThemeState:
     def __init__(__self__, *,
-                 borders: Optional[pulumi.Input['BrandingThemeBordersArgs']] = None,
-                 colors: Optional[pulumi.Input['BrandingThemeColorsArgs']] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 fonts: Optional[pulumi.Input['BrandingThemeFontsArgs']] = None,
-                 page_background: Optional[pulumi.Input['BrandingThemePageBackgroundArgs']] = None,
-                 widget: Optional[pulumi.Input['BrandingThemeWidgetArgs']] = None):
+                 borders: pulumi.Input[Optional['BrandingThemeBordersArgs']] = None,
+                 colors: pulumi.Input[Optional['BrandingThemeColorsArgs']] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 fonts: pulumi.Input[Optional['BrandingThemeFontsArgs']] = None,
+                 page_background: pulumi.Input[Optional['BrandingThemePageBackgroundArgs']] = None,
+                 widget: pulumi.Input[Optional['BrandingThemeWidgetArgs']] = None):
         """
         Input properties used for looking up and filtering BrandingTheme resources.
 
@@ -127,59 +127,59 @@ class _BrandingThemeState:
 
     @_builtins.property
     @pulumi.getter
-    def borders(self) -> Optional[pulumi.Input['BrandingThemeBordersArgs']]:
+    def borders(self) -> pulumi.Input[Optional['BrandingThemeBordersArgs']]:
         return pulumi.get(self, "borders")
 
     @borders.setter
-    def borders(self, value: Optional[pulumi.Input['BrandingThemeBordersArgs']]):
+    def borders(self, value: pulumi.Input[Optional['BrandingThemeBordersArgs']]):
         pulumi.set(self, "borders", value)
 
     @_builtins.property
     @pulumi.getter
-    def colors(self) -> Optional[pulumi.Input['BrandingThemeColorsArgs']]:
+    def colors(self) -> pulumi.Input[Optional['BrandingThemeColorsArgs']]:
         return pulumi.get(self, "colors")
 
     @colors.setter
-    def colors(self, value: Optional[pulumi.Input['BrandingThemeColorsArgs']]):
+    def colors(self, value: pulumi.Input[Optional['BrandingThemeColorsArgs']]):
         pulumi.set(self, "colors", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display name for the branding theme.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def fonts(self) -> Optional[pulumi.Input['BrandingThemeFontsArgs']]:
+    def fonts(self) -> pulumi.Input[Optional['BrandingThemeFontsArgs']]:
         return pulumi.get(self, "fonts")
 
     @fonts.setter
-    def fonts(self, value: Optional[pulumi.Input['BrandingThemeFontsArgs']]):
+    def fonts(self, value: pulumi.Input[Optional['BrandingThemeFontsArgs']]):
         pulumi.set(self, "fonts", value)
 
     @_builtins.property
     @pulumi.getter(name="pageBackground")
-    def page_background(self) -> Optional[pulumi.Input['BrandingThemePageBackgroundArgs']]:
+    def page_background(self) -> pulumi.Input[Optional['BrandingThemePageBackgroundArgs']]:
         return pulumi.get(self, "page_background")
 
     @page_background.setter
-    def page_background(self, value: Optional[pulumi.Input['BrandingThemePageBackgroundArgs']]):
+    def page_background(self, value: pulumi.Input[Optional['BrandingThemePageBackgroundArgs']]):
         pulumi.set(self, "page_background", value)
 
     @_builtins.property
     @pulumi.getter
-    def widget(self) -> Optional[pulumi.Input['BrandingThemeWidgetArgs']]:
+    def widget(self) -> pulumi.Input[Optional['BrandingThemeWidgetArgs']]:
         return pulumi.get(self, "widget")
 
     @widget.setter
-    def widget(self, value: Optional[pulumi.Input['BrandingThemeWidgetArgs']]):
+    def widget(self, value: pulumi.Input[Optional['BrandingThemeWidgetArgs']]):
         pulumi.set(self, "widget", value)
 
 
@@ -189,12 +189,12 @@ class BrandingTheme(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 borders: Optional[pulumi.Input[Union['BrandingThemeBordersArgs', 'BrandingThemeBordersArgsDict']]] = None,
-                 colors: Optional[pulumi.Input[Union['BrandingThemeColorsArgs', 'BrandingThemeColorsArgsDict']]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 fonts: Optional[pulumi.Input[Union['BrandingThemeFontsArgs', 'BrandingThemeFontsArgsDict']]] = None,
-                 page_background: Optional[pulumi.Input[Union['BrandingThemePageBackgroundArgs', 'BrandingThemePageBackgroundArgsDict']]] = None,
-                 widget: Optional[pulumi.Input[Union['BrandingThemeWidgetArgs', 'BrandingThemeWidgetArgsDict']]] = None,
+                 borders: pulumi.Input[Optional[Union['BrandingThemeBordersArgs', 'BrandingThemeBordersArgsDict']]] = None,
+                 colors: pulumi.Input[Optional[Union['BrandingThemeColorsArgs', 'BrandingThemeColorsArgsDict']]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 fonts: pulumi.Input[Optional[Union['BrandingThemeFontsArgs', 'BrandingThemeFontsArgsDict']]] = None,
+                 page_background: pulumi.Input[Optional[Union['BrandingThemePageBackgroundArgs', 'BrandingThemePageBackgroundArgsDict']]] = None,
+                 widget: pulumi.Input[Optional[Union['BrandingThemeWidgetArgs', 'BrandingThemeWidgetArgsDict']]] = None,
                  __props__=None):
         """
         This resource allows you to manage branding themes for your Universal Login page within your Auth0 tenant.
@@ -249,12 +249,12 @@ class BrandingTheme(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 borders: Optional[pulumi.Input[Union['BrandingThemeBordersArgs', 'BrandingThemeBordersArgsDict']]] = None,
-                 colors: Optional[pulumi.Input[Union['BrandingThemeColorsArgs', 'BrandingThemeColorsArgsDict']]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 fonts: Optional[pulumi.Input[Union['BrandingThemeFontsArgs', 'BrandingThemeFontsArgsDict']]] = None,
-                 page_background: Optional[pulumi.Input[Union['BrandingThemePageBackgroundArgs', 'BrandingThemePageBackgroundArgsDict']]] = None,
-                 widget: Optional[pulumi.Input[Union['BrandingThemeWidgetArgs', 'BrandingThemeWidgetArgsDict']]] = None,
+                 borders: pulumi.Input[Optional[Union['BrandingThemeBordersArgs', 'BrandingThemeBordersArgsDict']]] = None,
+                 colors: pulumi.Input[Optional[Union['BrandingThemeColorsArgs', 'BrandingThemeColorsArgsDict']]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 fonts: pulumi.Input[Optional[Union['BrandingThemeFontsArgs', 'BrandingThemeFontsArgsDict']]] = None,
+                 page_background: pulumi.Input[Optional[Union['BrandingThemePageBackgroundArgs', 'BrandingThemePageBackgroundArgsDict']]] = None,
+                 widget: pulumi.Input[Optional[Union['BrandingThemeWidgetArgs', 'BrandingThemeWidgetArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -290,12 +290,12 @@ class BrandingTheme(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            borders: Optional[pulumi.Input[Union['BrandingThemeBordersArgs', 'BrandingThemeBordersArgsDict']]] = None,
-            colors: Optional[pulumi.Input[Union['BrandingThemeColorsArgs', 'BrandingThemeColorsArgsDict']]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            fonts: Optional[pulumi.Input[Union['BrandingThemeFontsArgs', 'BrandingThemeFontsArgsDict']]] = None,
-            page_background: Optional[pulumi.Input[Union['BrandingThemePageBackgroundArgs', 'BrandingThemePageBackgroundArgsDict']]] = None,
-            widget: Optional[pulumi.Input[Union['BrandingThemeWidgetArgs', 'BrandingThemeWidgetArgsDict']]] = None) -> 'BrandingTheme':
+            borders: pulumi.Input[Optional[Union['BrandingThemeBordersArgs', 'BrandingThemeBordersArgsDict']]] = None,
+            colors: pulumi.Input[Optional[Union['BrandingThemeColorsArgs', 'BrandingThemeColorsArgsDict']]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            fonts: pulumi.Input[Optional[Union['BrandingThemeFontsArgs', 'BrandingThemeFontsArgsDict']]] = None,
+            page_background: pulumi.Input[Optional[Union['BrandingThemePageBackgroundArgs', 'BrandingThemePageBackgroundArgsDict']]] = None,
+            widget: pulumi.Input[Optional[Union['BrandingThemeWidgetArgs', 'BrandingThemeWidgetArgsDict']]] = None) -> 'BrandingTheme':
         """
         Get an existing BrandingTheme resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

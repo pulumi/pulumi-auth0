@@ -164,9 +164,9 @@ export interface GetClientGrantsOutputArgs {
     /**
      * The audience to filter by.
      */
-    audience?: pulumi.Input<string>;
+    audience?: pulumi.Input<string | undefined>;
     /**
      * The ID of the client to filter by.
      */
-    clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
 }

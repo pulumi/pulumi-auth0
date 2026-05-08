@@ -60,8 +60,8 @@ class TriggerActionsArgs:
 @pulumi.input_type
 class _TriggerActionsState:
     def __init__(__self__, *,
-                 actions: Optional[pulumi.Input[Sequence[pulumi.Input['TriggerActionsActionArgs']]]] = None,
-                 trigger: Optional[pulumi.Input[_builtins.str]] = None):
+                 actions: pulumi.Input[Optional[Sequence[pulumi.Input['TriggerActionsActionArgs']]]] = None,
+                 trigger: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TriggerActions resources.
 
@@ -75,26 +75,26 @@ class _TriggerActionsState:
 
     @_builtins.property
     @pulumi.getter
-    def actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TriggerActionsActionArgs']]]]:
+    def actions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TriggerActionsActionArgs']]]]:
         """
         The list of actions bound to this trigger.
         """
         return pulumi.get(self, "actions")
 
     @actions.setter
-    def actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TriggerActionsActionArgs']]]]):
+    def actions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TriggerActionsActionArgs']]]]):
         pulumi.set(self, "actions", value)
 
     @_builtins.property
     @pulumi.getter
-    def trigger(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def trigger(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-email-provider`, `custom-phone-provider`.
         """
         return pulumi.get(self, "trigger")
 
     @trigger.setter
-    def trigger(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def trigger(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "trigger", value)
 
 
@@ -104,8 +104,8 @@ class TriggerActions(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 actions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TriggerActionsActionArgs', 'TriggerActionsActionArgsDict']]]]] = None,
-                 trigger: Optional[pulumi.Input[_builtins.str]] = None,
+                 actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TriggerActionsActionArgs', 'TriggerActionsActionArgsDict']]]]] = None,
+                 trigger: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         With this resource, you can bind actions to a trigger. Once actions are created and deployed, they can be attached (i.e. bound) to a trigger so that it will be executed as part of a flow. The list of actions reflects the order in which they will be executed during the appropriate flow.
@@ -257,8 +257,8 @@ class TriggerActions(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 actions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TriggerActionsActionArgs', 'TriggerActionsActionArgsDict']]]]] = None,
-                 trigger: Optional[pulumi.Input[_builtins.str]] = None,
+                 actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TriggerActionsActionArgs', 'TriggerActionsActionArgsDict']]]]] = None,
+                 trigger: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -284,8 +284,8 @@ class TriggerActions(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            actions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TriggerActionsActionArgs', 'TriggerActionsActionArgsDict']]]]] = None,
-            trigger: Optional[pulumi.Input[_builtins.str]] = None) -> 'TriggerActions':
+            actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TriggerActionsActionArgs', 'TriggerActionsActionArgsDict']]]]] = None,
+            trigger: pulumi.Input[Optional[_builtins.str]] = None) -> 'TriggerActions':
         """
         Get an existing TriggerActions resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

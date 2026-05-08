@@ -124,15 +124,15 @@ export interface ResourceServerScopeState {
     /**
      * Description of the scope (permission).
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Identifier of the resource server that the scope (permission) is associated with.
      */
-    resourceServerIdentifier?: pulumi.Input<string>;
+    resourceServerIdentifier?: pulumi.Input<string | undefined>;
     /**
      * Name of the scope (permission).
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -142,7 +142,7 @@ export interface ResourceServerScopeArgs {
     /**
      * Description of the scope (permission).
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Identifier of the resource server that the scope (permission) is associated with.
      */

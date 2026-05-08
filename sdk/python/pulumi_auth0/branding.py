@@ -21,11 +21,11 @@ __all__ = ['BrandingArgs', 'Branding']
 @pulumi.input_type
 class BrandingArgs:
     def __init__(__self__, *,
-                 colors: Optional[pulumi.Input['BrandingColorsArgs']] = None,
-                 favicon_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 font: Optional[pulumi.Input['BrandingFontArgs']] = None,
-                 logo_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 universal_login: Optional[pulumi.Input['BrandingUniversalLoginArgs']] = None):
+                 colors: pulumi.Input[Optional['BrandingColorsArgs']] = None,
+                 favicon_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 font: pulumi.Input[Optional['BrandingFontArgs']] = None,
+                 logo_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 universal_login: pulumi.Input[Optional['BrandingUniversalLoginArgs']] = None):
         """
         The set of arguments for constructing a Branding resource.
 
@@ -48,73 +48,73 @@ class BrandingArgs:
 
     @_builtins.property
     @pulumi.getter
-    def colors(self) -> Optional[pulumi.Input['BrandingColorsArgs']]:
+    def colors(self) -> pulumi.Input[Optional['BrandingColorsArgs']]:
         """
         Configuration settings for colors for branding.
         """
         return pulumi.get(self, "colors")
 
     @colors.setter
-    def colors(self, value: Optional[pulumi.Input['BrandingColorsArgs']]):
+    def colors(self, value: pulumi.Input[Optional['BrandingColorsArgs']]):
         pulumi.set(self, "colors", value)
 
     @_builtins.property
     @pulumi.getter(name="faviconUrl")
-    def favicon_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def favicon_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL for the favicon.
         """
         return pulumi.get(self, "favicon_url")
 
     @favicon_url.setter
-    def favicon_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def favicon_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "favicon_url", value)
 
     @_builtins.property
     @pulumi.getter
-    def font(self) -> Optional[pulumi.Input['BrandingFontArgs']]:
+    def font(self) -> pulumi.Input[Optional['BrandingFontArgs']]:
         """
         Configuration settings to customize the font.
         """
         return pulumi.get(self, "font")
 
     @font.setter
-    def font(self, value: Optional[pulumi.Input['BrandingFontArgs']]):
+    def font(self, value: pulumi.Input[Optional['BrandingFontArgs']]):
         pulumi.set(self, "font", value)
 
     @_builtins.property
     @pulumi.getter(name="logoUrl")
-    def logo_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def logo_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of logo for branding.
         """
         return pulumi.get(self, "logo_url")
 
     @logo_url.setter
-    def logo_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def logo_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "logo_url", value)
 
     @_builtins.property
     @pulumi.getter(name="universalLogin")
-    def universal_login(self) -> Optional[pulumi.Input['BrandingUniversalLoginArgs']]:
+    def universal_login(self) -> pulumi.Input[Optional['BrandingUniversalLoginArgs']]:
         """
         Configuration settings for Universal Login.
         """
         return pulumi.get(self, "universal_login")
 
     @universal_login.setter
-    def universal_login(self, value: Optional[pulumi.Input['BrandingUniversalLoginArgs']]):
+    def universal_login(self, value: pulumi.Input[Optional['BrandingUniversalLoginArgs']]):
         pulumi.set(self, "universal_login", value)
 
 
 @pulumi.input_type
 class _BrandingState:
     def __init__(__self__, *,
-                 colors: Optional[pulumi.Input['BrandingColorsArgs']] = None,
-                 favicon_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 font: Optional[pulumi.Input['BrandingFontArgs']] = None,
-                 logo_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 universal_login: Optional[pulumi.Input['BrandingUniversalLoginArgs']] = None):
+                 colors: pulumi.Input[Optional['BrandingColorsArgs']] = None,
+                 favicon_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 font: pulumi.Input[Optional['BrandingFontArgs']] = None,
+                 logo_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 universal_login: pulumi.Input[Optional['BrandingUniversalLoginArgs']] = None):
         """
         Input properties used for looking up and filtering Branding resources.
 
@@ -137,62 +137,62 @@ class _BrandingState:
 
     @_builtins.property
     @pulumi.getter
-    def colors(self) -> Optional[pulumi.Input['BrandingColorsArgs']]:
+    def colors(self) -> pulumi.Input[Optional['BrandingColorsArgs']]:
         """
         Configuration settings for colors for branding.
         """
         return pulumi.get(self, "colors")
 
     @colors.setter
-    def colors(self, value: Optional[pulumi.Input['BrandingColorsArgs']]):
+    def colors(self, value: pulumi.Input[Optional['BrandingColorsArgs']]):
         pulumi.set(self, "colors", value)
 
     @_builtins.property
     @pulumi.getter(name="faviconUrl")
-    def favicon_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def favicon_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL for the favicon.
         """
         return pulumi.get(self, "favicon_url")
 
     @favicon_url.setter
-    def favicon_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def favicon_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "favicon_url", value)
 
     @_builtins.property
     @pulumi.getter
-    def font(self) -> Optional[pulumi.Input['BrandingFontArgs']]:
+    def font(self) -> pulumi.Input[Optional['BrandingFontArgs']]:
         """
         Configuration settings to customize the font.
         """
         return pulumi.get(self, "font")
 
     @font.setter
-    def font(self, value: Optional[pulumi.Input['BrandingFontArgs']]):
+    def font(self, value: pulumi.Input[Optional['BrandingFontArgs']]):
         pulumi.set(self, "font", value)
 
     @_builtins.property
     @pulumi.getter(name="logoUrl")
-    def logo_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def logo_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of logo for branding.
         """
         return pulumi.get(self, "logo_url")
 
     @logo_url.setter
-    def logo_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def logo_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "logo_url", value)
 
     @_builtins.property
     @pulumi.getter(name="universalLogin")
-    def universal_login(self) -> Optional[pulumi.Input['BrandingUniversalLoginArgs']]:
+    def universal_login(self) -> pulumi.Input[Optional['BrandingUniversalLoginArgs']]:
         """
         Configuration settings for Universal Login.
         """
         return pulumi.get(self, "universal_login")
 
     @universal_login.setter
-    def universal_login(self, value: Optional[pulumi.Input['BrandingUniversalLoginArgs']]):
+    def universal_login(self, value: pulumi.Input[Optional['BrandingUniversalLoginArgs']]):
         pulumi.set(self, "universal_login", value)
 
 
@@ -202,11 +202,11 @@ class Branding(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 colors: Optional[pulumi.Input[Union['BrandingColorsArgs', 'BrandingColorsArgsDict']]] = None,
-                 favicon_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 font: Optional[pulumi.Input[Union['BrandingFontArgs', 'BrandingFontArgsDict']]] = None,
-                 logo_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 universal_login: Optional[pulumi.Input[Union['BrandingUniversalLoginArgs', 'BrandingUniversalLoginArgsDict']]] = None,
+                 colors: pulumi.Input[Optional[Union['BrandingColorsArgs', 'BrandingColorsArgsDict']]] = None,
+                 favicon_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 font: pulumi.Input[Optional[Union['BrandingFontArgs', 'BrandingFontArgsDict']]] = None,
+                 logo_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 universal_login: pulumi.Input[Optional[Union['BrandingUniversalLoginArgs', 'BrandingUniversalLoginArgsDict']]] = None,
                  __props__=None):
         """
         This resource allows you to manage branding within your Auth0 tenant. Auth0 can be customized with a look and feel that aligns with your organization's brand requirements and user expectations.
@@ -307,11 +307,11 @@ class Branding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 colors: Optional[pulumi.Input[Union['BrandingColorsArgs', 'BrandingColorsArgsDict']]] = None,
-                 favicon_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 font: Optional[pulumi.Input[Union['BrandingFontArgs', 'BrandingFontArgsDict']]] = None,
-                 logo_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 universal_login: Optional[pulumi.Input[Union['BrandingUniversalLoginArgs', 'BrandingUniversalLoginArgsDict']]] = None,
+                 colors: pulumi.Input[Optional[Union['BrandingColorsArgs', 'BrandingColorsArgsDict']]] = None,
+                 favicon_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 font: pulumi.Input[Optional[Union['BrandingFontArgs', 'BrandingFontArgsDict']]] = None,
+                 logo_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 universal_login: pulumi.Input[Optional[Union['BrandingUniversalLoginArgs', 'BrandingUniversalLoginArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -336,11 +336,11 @@ class Branding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            colors: Optional[pulumi.Input[Union['BrandingColorsArgs', 'BrandingColorsArgsDict']]] = None,
-            favicon_url: Optional[pulumi.Input[_builtins.str]] = None,
-            font: Optional[pulumi.Input[Union['BrandingFontArgs', 'BrandingFontArgsDict']]] = None,
-            logo_url: Optional[pulumi.Input[_builtins.str]] = None,
-            universal_login: Optional[pulumi.Input[Union['BrandingUniversalLoginArgs', 'BrandingUniversalLoginArgsDict']]] = None) -> 'Branding':
+            colors: pulumi.Input[Optional[Union['BrandingColorsArgs', 'BrandingColorsArgsDict']]] = None,
+            favicon_url: pulumi.Input[Optional[_builtins.str]] = None,
+            font: pulumi.Input[Optional[Union['BrandingFontArgs', 'BrandingFontArgsDict']]] = None,
+            logo_url: pulumi.Input[Optional[_builtins.str]] = None,
+            universal_login: pulumi.Input[Optional[Union['BrandingUniversalLoginArgs', 'BrandingUniversalLoginArgsDict']]] = None) -> 'Branding':
         """
         Get an existing Branding resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

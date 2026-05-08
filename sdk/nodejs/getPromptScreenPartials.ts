@@ -92,5 +92,5 @@ export interface GetPromptScreenPartialsOutputArgs {
     /**
      * The screen partials associated with the prompt type.
      */
-    screenPartials?: pulumi.Input<pulumi.Input<inputs.GetPromptScreenPartialsScreenPartialArgs>[]>;
+    screenPartials?: pulumi.Input<pulumi.Input<inputs.GetPromptScreenPartialsScreenPartialArgs>[] | undefined>;
 }

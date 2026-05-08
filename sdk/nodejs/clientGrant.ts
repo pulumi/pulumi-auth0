@@ -194,39 +194,39 @@ export interface ClientGrantState {
     /**
      * When set to `true`, all scopes configured on the resource server are allowed for this client grant. `scopes` can not be provided when this is set to `true`. EA Only.
      */
-    allowAllScopes?: pulumi.Input<boolean>;
+    allowAllScopes?: pulumi.Input<boolean | undefined>;
     /**
      * If enabled, any organization can be used with this grant. If disabled (default), the grant must be explicitly assigned to the desired organizations.
      */
-    allowAnyOrganization?: pulumi.Input<boolean>;
+    allowAnyOrganization?: pulumi.Input<boolean | undefined>;
     /**
      * Audience or API Identifier for this grant.
      */
-    audience?: pulumi.Input<string>;
+    audience?: pulumi.Input<string | undefined>;
     /**
      * Defines the types of authorization details allowed for this client grant.
      */
-    authorizationDetailsTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    authorizationDetailsTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * ID of the client for this grant.
      */
-    clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether this grant is a special grant created by Auth0. It cannot be modified or deleted directly.
      */
-    isSystem?: pulumi.Input<boolean>;
+    isSystem?: pulumi.Input<boolean | undefined>;
     /**
      * Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
      */
-    organizationUsage?: pulumi.Input<string>;
+    organizationUsage?: pulumi.Input<string | undefined>;
     /**
      * Permissions (scopes) included in this grant. Can not be provided when `allowAllScopes` is set to `true`.
      */
-    scopes?: pulumi.Input<pulumi.Input<string>[]>;
+    scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
      */
-    subjectType?: pulumi.Input<string>;
+    subjectType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -236,11 +236,11 @@ export interface ClientGrantArgs {
     /**
      * When set to `true`, all scopes configured on the resource server are allowed for this client grant. `scopes` can not be provided when this is set to `true`. EA Only.
      */
-    allowAllScopes?: pulumi.Input<boolean>;
+    allowAllScopes?: pulumi.Input<boolean | undefined>;
     /**
      * If enabled, any organization can be used with this grant. If disabled (default), the grant must be explicitly assigned to the desired organizations.
      */
-    allowAnyOrganization?: pulumi.Input<boolean>;
+    allowAnyOrganization?: pulumi.Input<boolean | undefined>;
     /**
      * Audience or API Identifier for this grant.
      */
@@ -248,7 +248,7 @@ export interface ClientGrantArgs {
     /**
      * Defines the types of authorization details allowed for this client grant.
      */
-    authorizationDetailsTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    authorizationDetailsTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * ID of the client for this grant.
      */
@@ -256,13 +256,13 @@ export interface ClientGrantArgs {
     /**
      * Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
      */
-    organizationUsage?: pulumi.Input<string>;
+    organizationUsage?: pulumi.Input<string | undefined>;
     /**
      * Permissions (scopes) included in this grant. Can not be provided when `allowAllScopes` is set to `true`.
      */
-    scopes?: pulumi.Input<pulumi.Input<string>[]>;
+    scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
      */
-    subjectType?: pulumi.Input<string>;
+    subjectType?: pulumi.Input<string | undefined>;
 }
