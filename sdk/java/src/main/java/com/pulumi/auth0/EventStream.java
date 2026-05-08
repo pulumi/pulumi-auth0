@@ -6,6 +6,7 @@ package com.pulumi.auth0;
 import com.pulumi.auth0.EventStreamArgs;
 import com.pulumi.auth0.Utilities;
 import com.pulumi.auth0.inputs.EventStreamState;
+import com.pulumi.auth0.outputs.EventStreamActionConfiguration;
 import com.pulumi.auth0.outputs.EventStreamEventbridgeConfiguration;
 import com.pulumi.auth0.outputs.EventStreamWebhookConfiguration;
 import com.pulumi.core.Output;
@@ -34,6 +35,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.auth0.inputs.EventStreamEventbridgeConfigurationArgs;
  * import com.pulumi.auth0.inputs.EventStreamWebhookConfigurationArgs;
  * import com.pulumi.auth0.inputs.EventStreamWebhookConfigurationWebhookAuthorizationArgs;
+ * import com.pulumi.auth0.inputs.EventStreamActionConfigurationArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -94,6 +96,18 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // Creates an event stream of type action
+ *         var myEventStreamAction = new EventStream("myEventStreamAction", EventStreamArgs.builder()
+ *             .name("my-action-stream")
+ *             .destinationType("action")
+ *             .subscriptions(            
+ *                 "user.created",
+ *                 "user.updated")
+ *             .actionConfiguration(EventStreamActionConfigurationArgs.builder()
+ *                 .actionId(myAction.id())
+ *                 .build())
+ *             .build());
+ * 
  *     }
  * }
  * }
@@ -113,6 +127,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="auth0:index/eventStream:EventStream")
 public class EventStream extends com.pulumi.resources.CustomResource {
     /**
+     * Configuration for the Action destination. This block is only applicable when `destinationType` is set to `action`. Action configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
+     * 
+     */
+    @Export(name="actionConfiguration", refs={EventStreamActionConfiguration.class}, tree="[0]")
+    private Output</* @Nullable */ EventStreamActionConfiguration> actionConfiguration;
+
+    /**
+     * @return Configuration for the Action destination. This block is only applicable when `destinationType` is set to `action`. Action configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
+     * 
+     */
+    public Output<Optional<EventStreamActionConfiguration>> actionConfiguration() {
+        return Codegen.optional(this.actionConfiguration);
+    }
+    /**
      * The ISO 8601 timestamp when the stream was created.
      * 
      */
@@ -127,14 +155,14 @@ public class EventStream extends com.pulumi.resources.CustomResource {
         return this.createdAt;
     }
     /**
-     * The type of event stream destination (either &#39;eventbridge&#39; or &#39;webhook&#39;).
+     * The type of event stream destination. Possible values: `eventbridge`, `webhook`, or `action`.
      * 
      */
     @Export(name="destinationType", refs={String.class}, tree="[0]")
     private Output<String> destinationType;
 
     /**
-     * @return The type of event stream destination (either &#39;eventbridge&#39; or &#39;webhook&#39;).
+     * @return The type of event stream destination. Possible values: `eventbridge`, `webhook`, or `action`.
      * 
      */
     public Output<String> destinationType() {

@@ -24,6 +24,7 @@ class ResourceServerArgs:
                  identifier: pulumi.Input[_builtins.str],
                  allow_offline_access: Optional[pulumi.Input[_builtins.bool]] = None,
                  authorization_details: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceServerAuthorizationDetailArgs']]]] = None,
+                 authorization_policy: Optional[pulumi.Input['ResourceServerAuthorizationPolicyArgs']] = None,
                  consent_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  enforce_policies: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -43,6 +44,7 @@ class ResourceServerArgs:
         :param pulumi.Input[_builtins.str] identifier: Unique identifier for the resource server. Used as the audience parameter for authorization calls. Cannot be changed once set.
         :param pulumi.Input[_builtins.bool] allow_offline_access: Indicates whether refresh tokens can be issued for this resource server.
         :param pulumi.Input[Sequence[pulumi.Input['ResourceServerAuthorizationDetailArgs']]] authorization_details: Authorization details for this resource server.
+        :param pulumi.Input['ResourceServerAuthorizationPolicyArgs'] authorization_policy: Authorization policy for the resource server.(EA Only)
         :param pulumi.Input[_builtins.str] consent_policy: Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
         :param pulumi.Input[_builtins.bool] enforce_policies: If this setting is enabled, RBAC authorization policies will be enforced for this API. Role and permission assignments will be evaluated during the login transaction.
         :param pulumi.Input[_builtins.str] name: Friendly name for the resource server. Cannot include `<` or `>` characters.
@@ -62,6 +64,8 @@ class ResourceServerArgs:
             pulumi.set(__self__, "allow_offline_access", allow_offline_access)
         if authorization_details is not None:
             pulumi.set(__self__, "authorization_details", authorization_details)
+        if authorization_policy is not None:
+            pulumi.set(__self__, "authorization_policy", authorization_policy)
         if consent_policy is not None:
             pulumi.set(__self__, "consent_policy", consent_policy)
         if enforce_policies is not None:
@@ -124,6 +128,18 @@ class ResourceServerArgs:
     @authorization_details.setter
     def authorization_details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceServerAuthorizationDetailArgs']]]]):
         pulumi.set(self, "authorization_details", value)
+
+    @_builtins.property
+    @pulumi.getter(name="authorizationPolicy")
+    def authorization_policy(self) -> Optional[pulumi.Input['ResourceServerAuthorizationPolicyArgs']]:
+        """
+        Authorization policy for the resource server.(EA Only)
+        """
+        return pulumi.get(self, "authorization_policy")
+
+    @authorization_policy.setter
+    def authorization_policy(self, value: Optional[pulumi.Input['ResourceServerAuthorizationPolicyArgs']]):
+        pulumi.set(self, "authorization_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="consentPolicy")
@@ -287,6 +303,7 @@ class _ResourceServerState:
     def __init__(__self__, *,
                  allow_offline_access: Optional[pulumi.Input[_builtins.bool]] = None,
                  authorization_details: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceServerAuthorizationDetailArgs']]]] = None,
+                 authorization_policy: Optional[pulumi.Input['ResourceServerAuthorizationPolicyArgs']] = None,
                  client_id: Optional[pulumi.Input[_builtins.str]] = None,
                  consent_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  enforce_policies: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -308,6 +325,7 @@ class _ResourceServerState:
 
         :param pulumi.Input[_builtins.bool] allow_offline_access: Indicates whether refresh tokens can be issued for this resource server.
         :param pulumi.Input[Sequence[pulumi.Input['ResourceServerAuthorizationDetailArgs']]] authorization_details: Authorization details for this resource server.
+        :param pulumi.Input['ResourceServerAuthorizationPolicyArgs'] authorization_policy: Authorization policy for the resource server.(EA Only)
         :param pulumi.Input[_builtins.str] client_id: The ID of the client associated with this resource server. If a client has been created and linked to this resource server, this field will be populated with that client's ID.
         :param pulumi.Input[_builtins.str] consent_policy: Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
         :param pulumi.Input[_builtins.bool] enforce_policies: If this setting is enabled, RBAC authorization policies will be enforced for this API. Role and permission assignments will be evaluated during the login transaction.
@@ -329,6 +347,8 @@ class _ResourceServerState:
             pulumi.set(__self__, "allow_offline_access", allow_offline_access)
         if authorization_details is not None:
             pulumi.set(__self__, "authorization_details", authorization_details)
+        if authorization_policy is not None:
+            pulumi.set(__self__, "authorization_policy", authorization_policy)
         if client_id is not None:
             pulumi.set(__self__, "client_id", client_id)
         if consent_policy is not None:
@@ -385,6 +405,18 @@ class _ResourceServerState:
     @authorization_details.setter
     def authorization_details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceServerAuthorizationDetailArgs']]]]):
         pulumi.set(self, "authorization_details", value)
+
+    @_builtins.property
+    @pulumi.getter(name="authorizationPolicy")
+    def authorization_policy(self) -> Optional[pulumi.Input['ResourceServerAuthorizationPolicyArgs']]:
+        """
+        Authorization policy for the resource server.(EA Only)
+        """
+        return pulumi.get(self, "authorization_policy")
+
+    @authorization_policy.setter
+    def authorization_policy(self, value: Optional[pulumi.Input['ResourceServerAuthorizationPolicyArgs']]):
+        pulumi.set(self, "authorization_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="clientId")
@@ -587,6 +619,7 @@ class ResourceServer(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_offline_access: Optional[pulumi.Input[_builtins.bool]] = None,
                  authorization_details: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ResourceServerAuthorizationDetailArgs', 'ResourceServerAuthorizationDetailArgsDict']]]]] = None,
+                 authorization_policy: Optional[pulumi.Input[Union['ResourceServerAuthorizationPolicyArgs', 'ResourceServerAuthorizationPolicyArgsDict']]] = None,
                  consent_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  enforce_policies: Optional[pulumi.Input[_builtins.bool]] = None,
                  identifier: Optional[pulumi.Input[_builtins.str]] = None,
@@ -686,6 +719,7 @@ class ResourceServer(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] allow_offline_access: Indicates whether refresh tokens can be issued for this resource server.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ResourceServerAuthorizationDetailArgs', 'ResourceServerAuthorizationDetailArgsDict']]]] authorization_details: Authorization details for this resource server.
+        :param pulumi.Input[Union['ResourceServerAuthorizationPolicyArgs', 'ResourceServerAuthorizationPolicyArgsDict']] authorization_policy: Authorization policy for the resource server.(EA Only)
         :param pulumi.Input[_builtins.str] consent_policy: Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
         :param pulumi.Input[_builtins.bool] enforce_policies: If this setting is enabled, RBAC authorization policies will be enforced for this API. Role and permission assignments will be evaluated during the login transaction.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier for the resource server. Used as the audience parameter for authorization calls. Cannot be changed once set.
@@ -804,6 +838,7 @@ class ResourceServer(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_offline_access: Optional[pulumi.Input[_builtins.bool]] = None,
                  authorization_details: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ResourceServerAuthorizationDetailArgs', 'ResourceServerAuthorizationDetailArgsDict']]]]] = None,
+                 authorization_policy: Optional[pulumi.Input[Union['ResourceServerAuthorizationPolicyArgs', 'ResourceServerAuthorizationPolicyArgsDict']]] = None,
                  consent_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  enforce_policies: Optional[pulumi.Input[_builtins.bool]] = None,
                  identifier: Optional[pulumi.Input[_builtins.str]] = None,
@@ -829,6 +864,7 @@ class ResourceServer(pulumi.CustomResource):
 
             __props__.__dict__["allow_offline_access"] = allow_offline_access
             __props__.__dict__["authorization_details"] = authorization_details
+            __props__.__dict__["authorization_policy"] = authorization_policy
             __props__.__dict__["consent_policy"] = consent_policy
             __props__.__dict__["enforce_policies"] = enforce_policies
             if identifier is None and not opts.urn:
@@ -859,6 +895,7 @@ class ResourceServer(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             allow_offline_access: Optional[pulumi.Input[_builtins.bool]] = None,
             authorization_details: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ResourceServerAuthorizationDetailArgs', 'ResourceServerAuthorizationDetailArgsDict']]]]] = None,
+            authorization_policy: Optional[pulumi.Input[Union['ResourceServerAuthorizationPolicyArgs', 'ResourceServerAuthorizationPolicyArgsDict']]] = None,
             client_id: Optional[pulumi.Input[_builtins.str]] = None,
             consent_policy: Optional[pulumi.Input[_builtins.str]] = None,
             enforce_policies: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -884,6 +921,7 @@ class ResourceServer(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] allow_offline_access: Indicates whether refresh tokens can be issued for this resource server.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ResourceServerAuthorizationDetailArgs', 'ResourceServerAuthorizationDetailArgsDict']]]] authorization_details: Authorization details for this resource server.
+        :param pulumi.Input[Union['ResourceServerAuthorizationPolicyArgs', 'ResourceServerAuthorizationPolicyArgsDict']] authorization_policy: Authorization policy for the resource server.(EA Only)
         :param pulumi.Input[_builtins.str] client_id: The ID of the client associated with this resource server. If a client has been created and linked to this resource server, this field will be populated with that client's ID.
         :param pulumi.Input[_builtins.str] consent_policy: Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
         :param pulumi.Input[_builtins.bool] enforce_policies: If this setting is enabled, RBAC authorization policies will be enforced for this API. Role and permission assignments will be evaluated during the login transaction.
@@ -907,6 +945,7 @@ class ResourceServer(pulumi.CustomResource):
 
         __props__.__dict__["allow_offline_access"] = allow_offline_access
         __props__.__dict__["authorization_details"] = authorization_details
+        __props__.__dict__["authorization_policy"] = authorization_policy
         __props__.__dict__["client_id"] = client_id
         __props__.__dict__["consent_policy"] = consent_policy
         __props__.__dict__["enforce_policies"] = enforce_policies
@@ -927,7 +966,7 @@ class ResourceServer(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="allowOfflineAccess")
-    def allow_offline_access(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def allow_offline_access(self) -> pulumi.Output[_builtins.bool]:
         """
         Indicates whether refresh tokens can be issued for this resource server.
         """
@@ -940,6 +979,14 @@ class ResourceServer(pulumi.CustomResource):
         Authorization details for this resource server.
         """
         return pulumi.get(self, "authorization_details")
+
+    @_builtins.property
+    @pulumi.getter(name="authorizationPolicy")
+    def authorization_policy(self) -> pulumi.Output['outputs.ResourceServerAuthorizationPolicy']:
+        """
+        Authorization policy for the resource server.(EA Only)
+        """
+        return pulumi.get(self, "authorization_policy")
 
     @_builtins.property
     @pulumi.getter(name="clientId")

@@ -36,6 +36,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.auth0.UserArgs;
  * import com.pulumi.auth0.UserRoles;
  * import com.pulumi.auth0.UserRolesArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -61,7 +62,9 @@ import javax.annotation.Nullable;
  *             .name("Firstname Lastname")
  *             .email("test}{@literal @}{@code test.com")
  *             .password("passpass$12$12")
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .ignoreChanges("roles")
+ *                 .build());
  * 
  *         var userRoles = new UserRoles("userRoles", UserRolesArgs.builder()
  *             .userId(user.id())

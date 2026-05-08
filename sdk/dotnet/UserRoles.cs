@@ -40,6 +40,12 @@ namespace Pulumi.Auth0
     ///         Name = "Firstname Lastname",
     ///         Email = "test@test.com",
     ///         Password = "passpass$12$12",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         IgnoreChanges =
+    ///         {
+    ///             "roles",
+    ///         },
     ///     });
     /// 
     ///     var userRoles = new Auth0.Index.UserRoles("user_roles", new()

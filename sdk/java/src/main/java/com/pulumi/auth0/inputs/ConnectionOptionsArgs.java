@@ -18,6 +18,7 @@ import com.pulumi.auth0.inputs.ConnectionOptionsPasswordComplexityOptionsArgs;
 import com.pulumi.auth0.inputs.ConnectionOptionsPasswordDictionaryArgs;
 import com.pulumi.auth0.inputs.ConnectionOptionsPasswordHistoryArgs;
 import com.pulumi.auth0.inputs.ConnectionOptionsPasswordNoPersonalInfoArgs;
+import com.pulumi.auth0.inputs.ConnectionOptionsPasswordOptionsArgs;
 import com.pulumi.auth0.inputs.ConnectionOptionsSigningKeyArgs;
 import com.pulumi.auth0.inputs.ConnectionOptionsTotpArgs;
 import com.pulumi.auth0.inputs.ConnectionOptionsValidationArgs;
@@ -713,6 +714,21 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * List of allowed algorithms for the ID token signature. If not set, RS256 will be applied at runtime. (Okta/OIDC Connections)
+     * 
+     */
+    @Import(name="idTokenSignedResponseAlgs")
+    private @Nullable Output<List<String>> idTokenSignedResponseAlgs;
+
+    /**
+     * @return List of allowed algorithms for the ID token signature. If not set, RS256 will be applied at runtime. (Okta/OIDC Connections)
+     * 
+     */
+    public Optional<Output<List<String>>> idTokenSignedResponseAlgs() {
+        return Optional.ofNullable(this.idTokenSignedResponseAlgs);
+    }
+
+    /**
      * Azure AD Identity API. Available options are: `microsoft-identity-platform-v2.0` or `azure-active-directory-v1.0`.
      * 
      */
@@ -1010,6 +1026,21 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<ConnectionOptionsPasswordNoPersonalInfoArgs>> passwordNoPersonalInfo() {
         return Optional.ofNullable(this.passwordNoPersonalInfo);
+    }
+
+    /**
+     * Flexible password policy configuration. Only available for `auth0` strategy connections. Cannot be set together with legacy password policy fields (`passwordPolicy`, `passwordComplexityOptions`, `passwordHistory`, `passwordNoPersonalInfo`, `passwordDictionary`).
+     * 
+     */
+    @Import(name="passwordOptions")
+    private @Nullable Output<ConnectionOptionsPasswordOptionsArgs> passwordOptions;
+
+    /**
+     * @return Flexible password policy configuration. Only available for `auth0` strategy connections. Cannot be set together with legacy password policy fields (`passwordPolicy`, `passwordComplexityOptions`, `passwordHistory`, `passwordNoPersonalInfo`, `passwordDictionary`).
+     * 
+     */
+    public Optional<Output<ConnectionOptionsPasswordOptionsArgs>> passwordOptions() {
+        return Optional.ofNullable(this.passwordOptions);
     }
 
     /**
@@ -1493,6 +1524,21 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: &#39;issuer&#39; or &#39;token_endpoint&#39;. (Okta/OIDC Connections)
+     * 
+     */
+    @Import(name="tokenEndpointJwtcaAudFormat")
+    private @Nullable Output<String> tokenEndpointJwtcaAudFormat;
+
+    /**
+     * @return Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: &#39;issuer&#39; or &#39;token_endpoint&#39;. (Okta/OIDC Connections)
+     * 
+     */
+    public Optional<Output<String>> tokenEndpointJwtcaAudFormat() {
+        return Optional.ofNullable(this.tokenEndpointJwtcaAudFormat);
+    }
+
+    /**
      * Configuration options for one-time passwords.
      * 
      */
@@ -1765,6 +1811,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         this.globalTokenRevocationJwtIss = $.globalTokenRevocationJwtIss;
         this.globalTokenRevocationJwtSub = $.globalTokenRevocationJwtSub;
         this.iconUrl = $.iconUrl;
+        this.idTokenSignedResponseAlgs = $.idTokenSignedResponseAlgs;
         this.identityApi = $.identityApi;
         this.idpInitiated = $.idpInitiated;
         this.importMode = $.importMode;
@@ -1785,6 +1832,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         this.passwordDictionary = $.passwordDictionary;
         this.passwordHistories = $.passwordHistories;
         this.passwordNoPersonalInfo = $.passwordNoPersonalInfo;
+        this.passwordOptions = $.passwordOptions;
         this.passwordPolicy = $.passwordPolicy;
         this.pingFederateBaseUrl = $.pingFederateBaseUrl;
         this.pkceEnabled = $.pkceEnabled;
@@ -1817,6 +1865,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         this.tokenEndpoint = $.tokenEndpoint;
         this.tokenEndpointAuthMethod = $.tokenEndpointAuthMethod;
         this.tokenEndpointAuthSigningAlg = $.tokenEndpointAuthSigningAlg;
+        this.tokenEndpointJwtcaAudFormat = $.tokenEndpointJwtcaAudFormat;
         this.totp = $.totp;
         this.twilioSid = $.twilioSid;
         this.twilioToken = $.twilioToken;
@@ -2848,6 +2897,37 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param idTokenSignedResponseAlgs List of allowed algorithms for the ID token signature. If not set, RS256 will be applied at runtime. (Okta/OIDC Connections)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder idTokenSignedResponseAlgs(@Nullable Output<List<String>> idTokenSignedResponseAlgs) {
+            $.idTokenSignedResponseAlgs = idTokenSignedResponseAlgs;
+            return this;
+        }
+
+        /**
+         * @param idTokenSignedResponseAlgs List of allowed algorithms for the ID token signature. If not set, RS256 will be applied at runtime. (Okta/OIDC Connections)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder idTokenSignedResponseAlgs(List<String> idTokenSignedResponseAlgs) {
+            return idTokenSignedResponseAlgs(Output.of(idTokenSignedResponseAlgs));
+        }
+
+        /**
+         * @param idTokenSignedResponseAlgs List of allowed algorithms for the ID token signature. If not set, RS256 will be applied at runtime. (Okta/OIDC Connections)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder idTokenSignedResponseAlgs(String... idTokenSignedResponseAlgs) {
+            return idTokenSignedResponseAlgs(List.of(idTokenSignedResponseAlgs));
+        }
+
+        /**
          * @param identityApi Azure AD Identity API. Available options are: `microsoft-identity-platform-v2.0` or `azure-active-directory-v1.0`.
          * 
          * @return builder
@@ -3295,6 +3375,27 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder passwordNoPersonalInfo(ConnectionOptionsPasswordNoPersonalInfoArgs passwordNoPersonalInfo) {
             return passwordNoPersonalInfo(Output.of(passwordNoPersonalInfo));
+        }
+
+        /**
+         * @param passwordOptions Flexible password policy configuration. Only available for `auth0` strategy connections. Cannot be set together with legacy password policy fields (`passwordPolicy`, `passwordComplexityOptions`, `passwordHistory`, `passwordNoPersonalInfo`, `passwordDictionary`).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordOptions(@Nullable Output<ConnectionOptionsPasswordOptionsArgs> passwordOptions) {
+            $.passwordOptions = passwordOptions;
+            return this;
+        }
+
+        /**
+         * @param passwordOptions Flexible password policy configuration. Only available for `auth0` strategy connections. Cannot be set together with legacy password policy fields (`passwordPolicy`, `passwordComplexityOptions`, `passwordHistory`, `passwordNoPersonalInfo`, `passwordDictionary`).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordOptions(ConnectionOptionsPasswordOptionsArgs passwordOptions) {
+            return passwordOptions(Output.of(passwordOptions));
         }
 
         /**
@@ -3987,6 +4088,27 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder tokenEndpointAuthSigningAlg(String tokenEndpointAuthSigningAlg) {
             return tokenEndpointAuthSigningAlg(Output.of(tokenEndpointAuthSigningAlg));
+        }
+
+        /**
+         * @param tokenEndpointJwtcaAudFormat Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: &#39;issuer&#39; or &#39;token_endpoint&#39;. (Okta/OIDC Connections)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tokenEndpointJwtcaAudFormat(@Nullable Output<String> tokenEndpointJwtcaAudFormat) {
+            $.tokenEndpointJwtcaAudFormat = tokenEndpointJwtcaAudFormat;
+            return this;
+        }
+
+        /**
+         * @param tokenEndpointJwtcaAudFormat Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: &#39;issuer&#39; or &#39;token_endpoint&#39;. (Okta/OIDC Connections)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tokenEndpointJwtcaAudFormat(String tokenEndpointJwtcaAudFormat) {
+            return tokenEndpointJwtcaAudFormat(Output.of(tokenEndpointJwtcaAudFormat));
         }
 
         /**

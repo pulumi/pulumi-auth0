@@ -110,9 +110,11 @@ type ResourceServer struct {
 	pulumi.CustomResourceState
 
 	// Indicates whether refresh tokens can be issued for this resource server.
-	AllowOfflineAccess pulumi.BoolPtrOutput `pulumi:"allowOfflineAccess"`
+	AllowOfflineAccess pulumi.BoolOutput `pulumi:"allowOfflineAccess"`
 	// Authorization details for this resource server.
 	AuthorizationDetails ResourceServerAuthorizationDetailArrayOutput `pulumi:"authorizationDetails"`
+	// Authorization policy for the resource server.(EA Only)
+	AuthorizationPolicy ResourceServerAuthorizationPolicyOutput `pulumi:"authorizationPolicy"`
 	// The ID of the client associated with this resource server. If a client has been created and linked to this resource server, this field will be populated with that client's ID.
 	ClientId pulumi.StringOutput `pulumi:"clientId"`
 	// Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
@@ -184,6 +186,8 @@ type resourceServerState struct {
 	AllowOfflineAccess *bool `pulumi:"allowOfflineAccess"`
 	// Authorization details for this resource server.
 	AuthorizationDetails []ResourceServerAuthorizationDetail `pulumi:"authorizationDetails"`
+	// Authorization policy for the resource server.(EA Only)
+	AuthorizationPolicy *ResourceServerAuthorizationPolicy `pulumi:"authorizationPolicy"`
 	// The ID of the client associated with this resource server. If a client has been created and linked to this resource server, this field will be populated with that client's ID.
 	ClientId *string `pulumi:"clientId"`
 	// Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
@@ -223,6 +227,8 @@ type ResourceServerState struct {
 	AllowOfflineAccess pulumi.BoolPtrInput
 	// Authorization details for this resource server.
 	AuthorizationDetails ResourceServerAuthorizationDetailArrayInput
+	// Authorization policy for the resource server.(EA Only)
+	AuthorizationPolicy ResourceServerAuthorizationPolicyPtrInput
 	// The ID of the client associated with this resource server. If a client has been created and linked to this resource server, this field will be populated with that client's ID.
 	ClientId pulumi.StringPtrInput
 	// Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
@@ -266,6 +272,8 @@ type resourceServerArgs struct {
 	AllowOfflineAccess *bool `pulumi:"allowOfflineAccess"`
 	// Authorization details for this resource server.
 	AuthorizationDetails []ResourceServerAuthorizationDetail `pulumi:"authorizationDetails"`
+	// Authorization policy for the resource server.(EA Only)
+	AuthorizationPolicy *ResourceServerAuthorizationPolicy `pulumi:"authorizationPolicy"`
 	// Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
 	ConsentPolicy *string `pulumi:"consentPolicy"`
 	// If this setting is enabled, RBAC authorization policies will be enforced for this API. Role and permission assignments will be evaluated during the login transaction.
@@ -302,6 +310,8 @@ type ResourceServerArgs struct {
 	AllowOfflineAccess pulumi.BoolPtrInput
 	// Authorization details for this resource server.
 	AuthorizationDetails ResourceServerAuthorizationDetailArrayInput
+	// Authorization policy for the resource server.(EA Only)
+	AuthorizationPolicy ResourceServerAuthorizationPolicyPtrInput
 	// Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
 	ConsentPolicy pulumi.StringPtrInput
 	// If this setting is enabled, RBAC authorization policies will be enforced for this API. Role and permission assignments will be evaluated during the login transaction.
@@ -420,13 +430,18 @@ func (o ResourceServerOutput) ToResourceServerOutputWithContext(ctx context.Cont
 }
 
 // Indicates whether refresh tokens can be issued for this resource server.
-func (o ResourceServerOutput) AllowOfflineAccess() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ResourceServer) pulumi.BoolPtrOutput { return v.AllowOfflineAccess }).(pulumi.BoolPtrOutput)
+func (o ResourceServerOutput) AllowOfflineAccess() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ResourceServer) pulumi.BoolOutput { return v.AllowOfflineAccess }).(pulumi.BoolOutput)
 }
 
 // Authorization details for this resource server.
 func (o ResourceServerOutput) AuthorizationDetails() ResourceServerAuthorizationDetailArrayOutput {
 	return o.ApplyT(func(v *ResourceServer) ResourceServerAuthorizationDetailArrayOutput { return v.AuthorizationDetails }).(ResourceServerAuthorizationDetailArrayOutput)
+}
+
+// Authorization policy for the resource server.(EA Only)
+func (o ResourceServerOutput) AuthorizationPolicy() ResourceServerAuthorizationPolicyOutput {
+	return o.ApplyT(func(v *ResourceServer) ResourceServerAuthorizationPolicyOutput { return v.AuthorizationPolicy }).(ResourceServerAuthorizationPolicyOutput)
 }
 
 // The ID of the client associated with this resource server. If a client has been created and linked to this resource server, this field will be populated with that client's ID.

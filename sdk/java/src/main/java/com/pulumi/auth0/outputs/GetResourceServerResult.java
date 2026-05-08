@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.auth0.outputs.GetResourceServerAuthorizationDetail;
+import com.pulumi.auth0.outputs.GetResourceServerAuthorizationPolicy;
 import com.pulumi.auth0.outputs.GetResourceServerProofOfPossession;
 import com.pulumi.auth0.outputs.GetResourceServerScope;
 import com.pulumi.auth0.outputs.GetResourceServerSubjectTypeAuthorization;
@@ -30,6 +31,11 @@ public final class GetResourceServerResult {
      * 
      */
     private List<GetResourceServerAuthorizationDetail> authorizationDetails;
+    /**
+     * @return Authorization policy for the resource server.(EA Only)
+     * 
+     */
+    private List<GetResourceServerAuthorizationPolicy> authorizationPolicies;
     /**
      * @return The ID of the client associated with this resource server. If a client has been created and linked to this resource server, this field will be populated with that client&#39;s ID.
      * 
@@ -140,6 +146,13 @@ public final class GetResourceServerResult {
      */
     public List<GetResourceServerAuthorizationDetail> authorizationDetails() {
         return this.authorizationDetails;
+    }
+    /**
+     * @return Authorization policy for the resource server.(EA Only)
+     * 
+     */
+    public List<GetResourceServerAuthorizationPolicy> authorizationPolicies() {
+        return this.authorizationPolicies;
     }
     /**
      * @return The ID of the client associated with this resource server. If a client has been created and linked to this resource server, this field will be populated with that client&#39;s ID.
@@ -286,6 +299,7 @@ public final class GetResourceServerResult {
     public static final class Builder {
         private Boolean allowOfflineAccess;
         private List<GetResourceServerAuthorizationDetail> authorizationDetails;
+        private List<GetResourceServerAuthorizationPolicy> authorizationPolicies;
         private String clientId;
         private String consentPolicy;
         private Boolean enforcePolicies;
@@ -310,6 +324,7 @@ public final class GetResourceServerResult {
     	      Objects.requireNonNull(defaults);
     	      this.allowOfflineAccess = defaults.allowOfflineAccess;
     	      this.authorizationDetails = defaults.authorizationDetails;
+    	      this.authorizationPolicies = defaults.authorizationPolicies;
     	      this.clientId = defaults.clientId;
     	      this.consentPolicy = defaults.consentPolicy;
     	      this.enforcePolicies = defaults.enforcePolicies;
@@ -349,6 +364,17 @@ public final class GetResourceServerResult {
         }
         public Builder authorizationDetails(GetResourceServerAuthorizationDetail... authorizationDetails) {
             return authorizationDetails(List.of(authorizationDetails));
+        }
+        @CustomType.Setter
+        public Builder authorizationPolicies(List<GetResourceServerAuthorizationPolicy> authorizationPolicies) {
+            if (authorizationPolicies == null) {
+              throw new MissingRequiredPropertyException("GetResourceServerResult", "authorizationPolicies");
+            }
+            this.authorizationPolicies = authorizationPolicies;
+            return this;
+        }
+        public Builder authorizationPolicies(GetResourceServerAuthorizationPolicy... authorizationPolicies) {
+            return authorizationPolicies(List.of(authorizationPolicies));
         }
         @CustomType.Setter
         public Builder clientId(String clientId) {
@@ -514,6 +540,7 @@ public final class GetResourceServerResult {
             final var _resultValue = new GetResourceServerResult();
             _resultValue.allowOfflineAccess = allowOfflineAccess;
             _resultValue.authorizationDetails = authorizationDetails;
+            _resultValue.authorizationPolicies = authorizationPolicies;
             _resultValue.clientId = clientId;
             _resultValue.consentPolicy = consentPolicy;
             _resultValue.enforcePolicies = enforcePolicies;

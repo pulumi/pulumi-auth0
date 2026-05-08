@@ -27,7 +27,10 @@ class GetEventStreamResult:
     """
     A collection of values returned by getEventStream.
     """
-    def __init__(__self__, created_at=None, destination_type=None, eventbridge_configurations=None, id=None, name=None, status=None, subscriptions=None, updated_at=None, webhook_configurations=None):
+    def __init__(__self__, action_configurations=None, created_at=None, destination_type=None, eventbridge_configurations=None, id=None, name=None, status=None, subscriptions=None, updated_at=None, webhook_configurations=None):
+        if action_configurations and not isinstance(action_configurations, list):
+            raise TypeError("Expected argument 'action_configurations' to be a list")
+        pulumi.set(__self__, "action_configurations", action_configurations)
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
         pulumi.set(__self__, "created_at", created_at)
@@ -57,6 +60,14 @@ class GetEventStreamResult:
         pulumi.set(__self__, "webhook_configurations", webhook_configurations)
 
     @_builtins.property
+    @pulumi.getter(name="actionConfigurations")
+    def action_configurations(self) -> Sequence['outputs.GetEventStreamActionConfigurationResult']:
+        """
+        Configuration for the Action destination. This block is only applicable when `destination_type` is set to `action`. Action configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
+        """
+        return pulumi.get(self, "action_configurations")
+
+    @_builtins.property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> _builtins.str:
         """
@@ -68,7 +79,7 @@ class GetEventStreamResult:
     @pulumi.getter(name="destinationType")
     def destination_type(self) -> _builtins.str:
         """
-        The type of event stream destination (either 'eventbridge' or 'webhook').
+        The type of event stream destination. Possible values: `eventbridge`, `webhook`, or `action`.
         """
         return pulumi.get(self, "destination_type")
 
@@ -135,6 +146,7 @@ class AwaitableGetEventStreamResult(GetEventStreamResult):
         if False:
             yield self
         return GetEventStreamResult(
+            action_configurations=self.action_configurations,
             created_at=self.created_at,
             destination_type=self.destination_type,
             eventbridge_configurations=self.eventbridge_configurations,
@@ -170,6 +182,7 @@ def get_event_stream(id: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('auth0:index/getEventStream:getEventStream', __args__, opts=opts, typ=GetEventStreamResult).value
 
     return AwaitableGetEventStreamResult(
+        action_configurations=pulumi.get(__ret__, 'action_configurations'),
         created_at=pulumi.get(__ret__, 'created_at'),
         destination_type=pulumi.get(__ret__, 'destination_type'),
         eventbridge_configurations=pulumi.get(__ret__, 'eventbridge_configurations'),
@@ -202,6 +215,7 @@ def get_event_stream_output(id: Optional[pulumi.Input[_builtins.str]] = None,
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('auth0:index/getEventStream:getEventStream', __args__, opts=opts, typ=GetEventStreamResult)
     return __ret__.apply(lambda __response__: GetEventStreamResult(
+        action_configurations=pulumi.get(__response__, 'action_configurations'),
         created_at=pulumi.get(__response__, 'created_at'),
         destination_type=pulumi.get(__response__, 'destination_type'),
         eventbridge_configurations=pulumi.get(__response__, 'eventbridge_configurations'),

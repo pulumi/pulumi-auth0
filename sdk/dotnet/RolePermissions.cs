@@ -64,7 +64,19 @@ namespace Pulumi.Auth0
     /// 
     ///     var myRolePerms = new Auth0.Index.RolePermissions("my_role_perms", new()
     ///     {
-    ///         Permissions = resourceServer.Identifier.Apply(identifier =&gt; ),
+    ///         Permissions = Output.Tuple(resourceServerScopes.Scopes, resourceServer.Identifier).Apply(values =&gt;
+    ///         {
+    ///             var scopes = values.Item1;
+    ///             var identifier = values.Item2;
+    ///             return scopes.Select(entry =&gt; 
+    ///             {
+    ///                 return 
+    ///                 {
+    ///                     { "name", entry.Name },
+    ///                     { "resourceServerIdentifier", identifier },
+    ///                 };
+    ///             }).ToList();
+    ///         }),
     ///         RoleId = myRole.Id,
     ///     });
     /// 

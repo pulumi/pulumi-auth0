@@ -121,11 +121,15 @@ namespace Pulumi.Auth0
     public sealed class GetEventStreamResult
     {
         /// <summary>
+        /// Configuration for the Action destination. This block is only applicable when `DestinationType` is set to `Action`. Action configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetEventStreamActionConfigurationResult> ActionConfigurations;
+        /// <summary>
         /// The ISO 8601 timestamp when the stream was created.
         /// </summary>
         public readonly string CreatedAt;
         /// <summary>
-        /// The type of event stream destination (either 'eventbridge' or 'webhook').
+        /// The type of event stream destination. Possible values: `Eventbridge`, `Webhook`, or `Action`.
         /// </summary>
         public readonly string DestinationType;
         /// <summary>
@@ -159,6 +163,8 @@ namespace Pulumi.Auth0
 
         [OutputConstructor]
         private GetEventStreamResult(
+            ImmutableArray<Outputs.GetEventStreamActionConfigurationResult> actionConfigurations,
+
             string createdAt,
 
             string destinationType,
@@ -177,6 +183,7 @@ namespace Pulumi.Auth0
 
             ImmutableArray<Outputs.GetEventStreamWebhookConfigurationResult> webhookConfigurations)
         {
+            ActionConfigurations = actionConfigurations;
             CreatedAt = createdAt;
             DestinationType = destinationType;
             EventbridgeConfigurations = eventbridgeConfigurations;

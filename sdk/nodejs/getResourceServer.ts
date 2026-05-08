@@ -61,6 +61,10 @@ export interface GetResourceServerResult {
      */
     readonly authorizationDetails: outputs.GetResourceServerAuthorizationDetail[];
     /**
+     * Authorization policy for the resource server.(EA Only)
+     */
+    readonly authorizationPolicies: outputs.GetResourceServerAuthorizationPolicy[];
+    /**
      * The ID of the client associated with this resource server. If a client has been created and linked to this resource server, this field will be populated with that client's ID.
      */
     readonly clientId: string;

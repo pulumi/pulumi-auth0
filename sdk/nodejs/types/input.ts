@@ -1999,6 +1999,10 @@ export interface ConnectionOptions {
      */
     iconUrl?: pulumi.Input<string>;
     /**
+     * List of allowed algorithms for the ID token signature. If not set, RS256 will be applied at runtime. (Okta/OIDC Connections)
+     */
+    idTokenSignedResponseAlgs?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Azure AD Identity API. Available options are: `microsoft-identity-platform-v2.0` or `azure-active-directory-v1.0`.
      */
     identityApi?: pulumi.Input<string>;
@@ -2078,6 +2082,10 @@ export interface ConnectionOptions {
      * Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's `name`, `username`, `nickname`, `user_metadata.name`, `user_metadata.first`, `user_metadata.last`, user's `email`, or first part of the user's `email`.
      */
     passwordNoPersonalInfo?: pulumi.Input<inputs.ConnectionOptionsPasswordNoPersonalInfo>;
+    /**
+     * Flexible password policy configuration. Only available for `auth0` strategy connections. Cannot be set together with legacy password policy fields (`passwordPolicy`, `passwordComplexityOptions`, `passwordHistory`, `passwordNoPersonalInfo`, `passwordDictionary`).
+     */
+    passwordOptions?: pulumi.Input<inputs.ConnectionOptionsPasswordOptions>;
     /**
      * Indicates level of password strength to enforce during authentication. A strong password policy will make it difficult, if not improbable, for someone to guess a password through either manual or automated means. Options include `none`, `low`, `fair`, `good`, `excellent`.
      */
@@ -2206,6 +2214,10 @@ export interface ConnectionOptions {
      * Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
      */
     tokenEndpointAuthSigningAlg?: pulumi.Input<string>;
+    /**
+     * Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: 'issuer' or 'token_endpoint'. (Okta/OIDC Connections)
+     */
+    tokenEndpointJwtcaAudFormat?: pulumi.Input<string>;
     /**
      * Configuration options for one-time passwords.
      */
@@ -2619,6 +2631,89 @@ export interface ConnectionOptionsPasswordNoPersonalInfo {
     enable?: pulumi.Input<boolean>;
 }
 
+export interface ConnectionOptionsPasswordOptions {
+    /**
+     * Password complexity requirements.
+     */
+    complexity?: pulumi.Input<inputs.ConnectionOptionsPasswordOptionsComplexity>;
+    /**
+     * Dictionary-based password validation.
+     */
+    dictionary?: pulumi.Input<inputs.ConnectionOptionsPasswordOptionsDictionary>;
+    /**
+     * Password history enforcement.
+     */
+    history?: pulumi.Input<inputs.ConnectionOptionsPasswordOptionsHistory>;
+    /**
+     * Personal information restriction policy.
+     */
+    profileData?: pulumi.Input<inputs.ConnectionOptionsPasswordOptionsProfileData>;
+}
+
+export interface ConnectionOptionsPasswordOptionsComplexity {
+    /**
+     * When all 4 character types are specified, determines if all or 3 of 4 are required. Possible values: `all`, `threeOfFour`. Default: `all`.
+     */
+    characterTypeRule?: pulumi.Input<string>;
+    /**
+     * Required character types. Valid values: `uppercase`, `lowercase`, `number`, `special`.
+     */
+    characterTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Controls whether 3+ consecutive identical characters are allowed. Possible values: `allow`, `block`. Default: `allow`.
+     */
+    identicalCharacters?: pulumi.Input<string>;
+    /**
+     * Controls behavior when the password exceeds 72 bytes. Possible values: `truncate`, `error`. Default: `error`.
+     */
+    maxLengthExceeded?: pulumi.Input<string>;
+    /**
+     * Minimum password length. Must be between 1 and 72. Default: 15.
+     */
+    minLength?: pulumi.Input<number>;
+    /**
+     * Controls whether sequential characters (abc, 123, etc.) are allowed. Possible values: `allow`, `block`. Default: `allow`.
+     */
+    sequentialCharacters?: pulumi.Input<string>;
+}
+
+export interface ConnectionOptionsPasswordOptionsDictionary {
+    /**
+     * Enables dictionary checking.
+     */
+    active?: pulumi.Input<boolean>;
+    /**
+     * Custom list of disallowed terms.
+     */
+    customs?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Default dictionary to use. Possible values: `en10k`, `en100k`. Default: `en100k`.
+     */
+    default?: pulumi.Input<string>;
+}
+
+export interface ConnectionOptionsPasswordOptionsHistory {
+    /**
+     * Enables password history checking.
+     */
+    active?: pulumi.Input<boolean>;
+    /**
+     * Number of previous passwords to check against. Must be between 1 and 24. Default: 3.
+     */
+    size?: pulumi.Input<number>;
+}
+
+export interface ConnectionOptionsPasswordOptionsProfileData {
+    /**
+     * Prevents users from including profile data in passwords.
+     */
+    active?: pulumi.Input<boolean>;
+    /**
+     * User profile fields to block from passwords. Maximum 12 items, each max 100 characters.
+     */
+    blockedFields?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface ConnectionOptionsSigningKey {
     cert: pulumi.Input<string>;
     key: pulumi.Input<string>;
@@ -3009,6 +3104,13 @@ export interface EncryptionKeyManagerEncryptionKey {
      * The ISO 8601 formatted date the encryption key was updated.
      */
     updatedAt?: pulumi.Input<string>;
+}
+
+export interface EventStreamActionConfiguration {
+    /**
+     * The ID of the Auth0 Action to use as the event stream destination.
+     */
+    actionId: pulumi.Input<string>;
 }
 
 export interface EventStreamEventbridgeConfiguration {
@@ -3911,6 +4013,13 @@ export interface ResourceServerAuthorizationDetail {
      * Type of authorization details.
      */
     type?: pulumi.Input<string>;
+}
+
+export interface ResourceServerAuthorizationPolicy {
+    /**
+     * Identifier of the authorization policy.
+     */
+    policyId?: pulumi.Input<string>;
 }
 
 export interface ResourceServerProofOfPossession {

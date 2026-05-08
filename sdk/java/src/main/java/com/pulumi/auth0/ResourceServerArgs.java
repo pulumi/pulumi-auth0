@@ -4,6 +4,7 @@
 package com.pulumi.auth0;
 
 import com.pulumi.auth0.inputs.ResourceServerAuthorizationDetailArgs;
+import com.pulumi.auth0.inputs.ResourceServerAuthorizationPolicyArgs;
 import com.pulumi.auth0.inputs.ResourceServerProofOfPossessionArgs;
 import com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationArgs;
 import com.pulumi.auth0.inputs.ResourceServerTokenEncryptionArgs;
@@ -51,6 +52,21 @@ public final class ResourceServerArgs extends com.pulumi.resources.ResourceArgs 
      */
     public Optional<Output<List<ResourceServerAuthorizationDetailArgs>>> authorizationDetails() {
         return Optional.ofNullable(this.authorizationDetails);
+    }
+
+    /**
+     * Authorization policy for the resource server.(EA Only)
+     * 
+     */
+    @Import(name="authorizationPolicy")
+    private @Nullable Output<ResourceServerAuthorizationPolicyArgs> authorizationPolicy;
+
+    /**
+     * @return Authorization policy for the resource server.(EA Only)
+     * 
+     */
+    public Optional<Output<ResourceServerAuthorizationPolicyArgs>> authorizationPolicy() {
+        return Optional.ofNullable(this.authorizationPolicy);
     }
 
     /**
@@ -268,6 +284,7 @@ public final class ResourceServerArgs extends com.pulumi.resources.ResourceArgs 
     private ResourceServerArgs(ResourceServerArgs $) {
         this.allowOfflineAccess = $.allowOfflineAccess;
         this.authorizationDetails = $.authorizationDetails;
+        this.authorizationPolicy = $.authorizationPolicy;
         this.consentPolicy = $.consentPolicy;
         this.enforcePolicies = $.enforcePolicies;
         this.identifier = $.identifier;
@@ -352,6 +369,27 @@ public final class ResourceServerArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder authorizationDetails(ResourceServerAuthorizationDetailArgs... authorizationDetails) {
             return authorizationDetails(List.of(authorizationDetails));
+        }
+
+        /**
+         * @param authorizationPolicy Authorization policy for the resource server.(EA Only)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authorizationPolicy(@Nullable Output<ResourceServerAuthorizationPolicyArgs> authorizationPolicy) {
+            $.authorizationPolicy = authorizationPolicy;
+            return this;
+        }
+
+        /**
+         * @param authorizationPolicy Authorization policy for the resource server.(EA Only)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authorizationPolicy(ResourceServerAuthorizationPolicyArgs authorizationPolicy) {
+            return authorizationPolicy(Output.of(authorizationPolicy));
         }
 
         /**
