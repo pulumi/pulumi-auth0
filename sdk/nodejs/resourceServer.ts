@@ -118,11 +118,15 @@ export class ResourceServer extends pulumi.CustomResource {
     /**
      * Indicates whether refresh tokens can be issued for this resource server.
      */
-    declare public readonly allowOfflineAccess: pulumi.Output<boolean | undefined>;
+    declare public readonly allowOfflineAccess: pulumi.Output<boolean>;
     /**
      * Authorization details for this resource server.
      */
     declare public readonly authorizationDetails: pulumi.Output<outputs.ResourceServerAuthorizationDetail[]>;
+    /**
+     * Authorization policy for the resource server.(EA Only)
+     */
+    declare public readonly authorizationPolicy: pulumi.Output<outputs.ResourceServerAuthorizationPolicy>;
     /**
      * The ID of the client associated with this resource server. If a client has been created and linked to this resource server, this field will be populated with that client's ID.
      */
@@ -203,6 +207,7 @@ export class ResourceServer extends pulumi.CustomResource {
             const state = argsOrState as ResourceServerState | undefined;
             resourceInputs["allowOfflineAccess"] = state?.allowOfflineAccess;
             resourceInputs["authorizationDetails"] = state?.authorizationDetails;
+            resourceInputs["authorizationPolicy"] = state?.authorizationPolicy;
             resourceInputs["clientId"] = state?.clientId;
             resourceInputs["consentPolicy"] = state?.consentPolicy;
             resourceInputs["enforcePolicies"] = state?.enforcePolicies;
@@ -226,6 +231,7 @@ export class ResourceServer extends pulumi.CustomResource {
             }
             resourceInputs["allowOfflineAccess"] = args?.allowOfflineAccess;
             resourceInputs["authorizationDetails"] = args?.authorizationDetails;
+            resourceInputs["authorizationPolicy"] = args?.authorizationPolicy;
             resourceInputs["consentPolicy"] = args?.consentPolicy;
             resourceInputs["enforcePolicies"] = args?.enforcePolicies;
             resourceInputs["identifier"] = args?.identifier;
@@ -260,6 +266,10 @@ export interface ResourceServerState {
      * Authorization details for this resource server.
      */
     authorizationDetails?: pulumi.Input<pulumi.Input<inputs.ResourceServerAuthorizationDetail>[]>;
+    /**
+     * Authorization policy for the resource server.(EA Only)
+     */
+    authorizationPolicy?: pulumi.Input<inputs.ResourceServerAuthorizationPolicy>;
     /**
      * The ID of the client associated with this resource server. If a client has been created and linked to this resource server, this field will be populated with that client's ID.
      */
@@ -338,6 +348,10 @@ export interface ResourceServerArgs {
      * Authorization details for this resource server.
      */
     authorizationDetails?: pulumi.Input<pulumi.Input<inputs.ResourceServerAuthorizationDetail>[]>;
+    /**
+     * Authorization policy for the resource server.(EA Only)
+     */
+    authorizationPolicy?: pulumi.Input<inputs.ResourceServerAuthorizationPolicy>;
     /**
      * Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
      */

@@ -8307,12 +8307,16 @@ public final class Auth0Functions {
     /**
      * Data source to retrieve signing keys used by the applications in your tenant. [Learn more](https://auth0.com/docs/get-started/tenant-settings/signing-keys).
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetSigningKeysResult> getSigningKeys() {
         return getSigningKeys(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
      * Data source to retrieve signing keys used by the applications in your tenant. [Learn more](https://auth0.com/docs/get-started/tenant-settings/signing-keys).
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetSigningKeysResult> getSigningKeysPlain() {
@@ -8321,12 +8325,16 @@ public final class Auth0Functions {
     /**
      * Data source to retrieve signing keys used by the applications in your tenant. [Learn more](https://auth0.com/docs/get-started/tenant-settings/signing-keys).
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetSigningKeysResult> getSigningKeys(InvokeArgs args) {
         return getSigningKeys(args, InvokeOptions.Empty);
     }
     /**
      * Data source to retrieve signing keys used by the applications in your tenant. [Learn more](https://auth0.com/docs/get-started/tenant-settings/signing-keys).
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetSigningKeysResult> getSigningKeysPlain(InvokeArgs args) {
@@ -8335,6 +8343,8 @@ public final class Auth0Functions {
     /**
      * Data source to retrieve signing keys used by the applications in your tenant. [Learn more](https://auth0.com/docs/get-started/tenant-settings/signing-keys).
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetSigningKeysResult> getSigningKeys(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("auth0:index/getSigningKeys:getSigningKeys", TypeShape.of(GetSigningKeysResult.class), args, Utilities.withVersion(options));
@@ -8342,12 +8352,16 @@ public final class Auth0Functions {
     /**
      * Data source to retrieve signing keys used by the applications in your tenant. [Learn more](https://auth0.com/docs/get-started/tenant-settings/signing-keys).
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetSigningKeysResult> getSigningKeys(InvokeArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("auth0:index/getSigningKeys:getSigningKeys", TypeShape.of(GetSigningKeysResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source to retrieve signing keys used by the applications in your tenant. [Learn more](https://auth0.com/docs/get-started/tenant-settings/signing-keys).
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetSigningKeysResult> getSigningKeysPlain(InvokeArgs args, InvokeOptions options) {

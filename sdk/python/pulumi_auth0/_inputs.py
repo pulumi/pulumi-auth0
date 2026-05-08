@@ -299,6 +299,16 @@ __all__ = [
     'ConnectionOptionsPasswordHistoryArgsDict',
     'ConnectionOptionsPasswordNoPersonalInfoArgs',
     'ConnectionOptionsPasswordNoPersonalInfoArgsDict',
+    'ConnectionOptionsPasswordOptionsArgs',
+    'ConnectionOptionsPasswordOptionsArgsDict',
+    'ConnectionOptionsPasswordOptionsComplexityArgs',
+    'ConnectionOptionsPasswordOptionsComplexityArgsDict',
+    'ConnectionOptionsPasswordOptionsDictionaryArgs',
+    'ConnectionOptionsPasswordOptionsDictionaryArgsDict',
+    'ConnectionOptionsPasswordOptionsHistoryArgs',
+    'ConnectionOptionsPasswordOptionsHistoryArgsDict',
+    'ConnectionOptionsPasswordOptionsProfileDataArgs',
+    'ConnectionOptionsPasswordOptionsProfileDataArgsDict',
     'ConnectionOptionsSigningKeyArgs',
     'ConnectionOptionsSigningKeyArgsDict',
     'ConnectionOptionsTotpArgs',
@@ -363,6 +373,8 @@ __all__ = [
     'EncryptionKeyManagerCustomerProvidedRootKeyArgsDict',
     'EncryptionKeyManagerEncryptionKeyArgs',
     'EncryptionKeyManagerEncryptionKeyArgsDict',
+    'EventStreamActionConfigurationArgs',
+    'EventStreamActionConfigurationArgsDict',
     'EventStreamEventbridgeConfigurationArgs',
     'EventStreamEventbridgeConfigurationArgsDict',
     'EventStreamWebhookConfigurationArgs',
@@ -441,6 +453,8 @@ __all__ = [
     'PromptScreenRendererFiltersArgsDict',
     'ResourceServerAuthorizationDetailArgs',
     'ResourceServerAuthorizationDetailArgsDict',
+    'ResourceServerAuthorizationPolicyArgs',
+    'ResourceServerAuthorizationPolicyArgsDict',
     'ResourceServerProofOfPossessionArgs',
     'ResourceServerProofOfPossessionArgsDict',
     'ResourceServerScopesScopeArgs',
@@ -9128,6 +9142,10 @@ class ConnectionOptionsArgsDict(TypedDict):
     """
     Icon URL.
     """
+    id_token_signed_response_algs: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of allowed algorithms for the ID token signature. If not set, RS256 will be applied at runtime. (Okta/OIDC Connections)
+    """
     identity_api: NotRequired[pulumi.Input[_builtins.str]]
     """
     Azure AD Identity API. Available options are: `microsoft-identity-platform-v2.0` or `azure-active-directory-v1.0`.
@@ -9207,6 +9225,10 @@ class ConnectionOptionsArgsDict(TypedDict):
     password_no_personal_info: NotRequired[pulumi.Input['ConnectionOptionsPasswordNoPersonalInfoArgsDict']]
     """
     Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's `name`, `username`, `nickname`, `user_metadata.name`, `user_metadata.first`, `user_metadata.last`, user's `email`, or first part of the user's `email`.
+    """
+    password_options: NotRequired[pulumi.Input['ConnectionOptionsPasswordOptionsArgsDict']]
+    """
+    Flexible password policy configuration. Only available for `auth0` strategy connections. Cannot be set together with legacy password policy fields (`password_policy`, `password_complexity_options`, `password_history`, `password_no_personal_info`, `password_dictionary`).
     """
     password_policy: NotRequired[pulumi.Input[_builtins.str]]
     """
@@ -9336,6 +9358,10 @@ class ConnectionOptionsArgsDict(TypedDict):
     """
     Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
     """
+    token_endpoint_jwtca_aud_format: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: 'issuer' or 'token_endpoint'. (Okta/OIDC Connections)
+    """
     totp: NotRequired[pulumi.Input['ConnectionOptionsTotpArgsDict']]
     """
     Configuration options for one-time passwords.
@@ -9445,6 +9471,7 @@ class ConnectionOptionsArgs:
                  global_token_revocation_jwt_iss: Optional[pulumi.Input[_builtins.str]] = None,
                  global_token_revocation_jwt_sub: Optional[pulumi.Input[_builtins.str]] = None,
                  icon_url: Optional[pulumi.Input[_builtins.str]] = None,
+                 id_token_signed_response_algs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  identity_api: Optional[pulumi.Input[_builtins.str]] = None,
                  idp_initiated: Optional[pulumi.Input['ConnectionOptionsIdpInitiatedArgs']] = None,
                  import_mode: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -9465,6 +9492,7 @@ class ConnectionOptionsArgs:
                  password_dictionary: Optional[pulumi.Input['ConnectionOptionsPasswordDictionaryArgs']] = None,
                  password_histories: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsPasswordHistoryArgs']]]] = None,
                  password_no_personal_info: Optional[pulumi.Input['ConnectionOptionsPasswordNoPersonalInfoArgs']] = None,
+                 password_options: Optional[pulumi.Input['ConnectionOptionsPasswordOptionsArgs']] = None,
                  password_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  ping_federate_base_url: Optional[pulumi.Input[_builtins.str]] = None,
                  pkce_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -9497,6 +9525,7 @@ class ConnectionOptionsArgs:
                  token_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  token_endpoint_auth_method: Optional[pulumi.Input[_builtins.str]] = None,
                  token_endpoint_auth_signing_alg: Optional[pulumi.Input[_builtins.str]] = None,
+                 token_endpoint_jwtca_aud_format: Optional[pulumi.Input[_builtins.str]] = None,
                  totp: Optional[pulumi.Input['ConnectionOptionsTotpArgs']] = None,
                  twilio_sid: Optional[pulumi.Input[_builtins.str]] = None,
                  twilio_token: Optional[pulumi.Input[_builtins.str]] = None,
@@ -9558,6 +9587,7 @@ class ConnectionOptionsArgs:
         :param pulumi.Input[_builtins.str] global_token_revocation_jwt_iss: Specifies the issuer of the JWT used for global token revocation for the SAML connection.
         :param pulumi.Input[_builtins.str] global_token_revocation_jwt_sub: Specifies the subject of the JWT used for global token revocation for the SAML connection.
         :param pulumi.Input[_builtins.str] icon_url: Icon URL.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] id_token_signed_response_algs: List of allowed algorithms for the ID token signature. If not set, RS256 will be applied at runtime. (Okta/OIDC Connections)
         :param pulumi.Input[_builtins.str] identity_api: Azure AD Identity API. Available options are: `microsoft-identity-platform-v2.0` or `azure-active-directory-v1.0`.
         :param pulumi.Input['ConnectionOptionsIdpInitiatedArgs'] idp_initiated: Configuration options for IDP Initiated Authentication. This is an object with the properties: `client_id`, `client_protocol`, and `client_authorize_query`.
         :param pulumi.Input[_builtins.bool] import_mode: Indicates whether you have a legacy user store and want to gradually migrate those users to the Auth0 user store.
@@ -9578,6 +9608,7 @@ class ConnectionOptionsArgs:
         :param pulumi.Input['ConnectionOptionsPasswordDictionaryArgs'] password_dictionary: Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary.
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsPasswordHistoryArgs']]] password_histories: Configuration settings for the password history that is maintained for each user to prevent the reuse of passwords.
         :param pulumi.Input['ConnectionOptionsPasswordNoPersonalInfoArgs'] password_no_personal_info: Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's `name`, `username`, `nickname`, `user_metadata.name`, `user_metadata.first`, `user_metadata.last`, user's `email`, or first part of the user's `email`.
+        :param pulumi.Input['ConnectionOptionsPasswordOptionsArgs'] password_options: Flexible password policy configuration. Only available for `auth0` strategy connections. Cannot be set together with legacy password policy fields (`password_policy`, `password_complexity_options`, `password_history`, `password_no_personal_info`, `password_dictionary`).
         :param pulumi.Input[_builtins.str] password_policy: Indicates level of password strength to enforce during authentication. A strong password policy will make it difficult, if not improbable, for someone to guess a password through either manual or automated means. Options include `none`, `low`, `fair`, `good`, `excellent`.
         :param pulumi.Input[_builtins.str] ping_federate_base_url: Ping Federate Server URL.
         :param pulumi.Input[_builtins.bool] pkce_enabled: Enables Proof Key for Code Exchange (PKCE) functionality for OAuth2 connections.
@@ -9610,6 +9641,7 @@ class ConnectionOptionsArgs:
         :param pulumi.Input[_builtins.str] token_endpoint: Token endpoint.
         :param pulumi.Input[_builtins.str] token_endpoint_auth_method: Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
         :param pulumi.Input[_builtins.str] token_endpoint_auth_signing_alg: Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
+        :param pulumi.Input[_builtins.str] token_endpoint_jwtca_aud_format: Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: 'issuer' or 'token_endpoint'. (Okta/OIDC Connections)
         :param pulumi.Input['ConnectionOptionsTotpArgs'] totp: Configuration options for one-time passwords.
         :param pulumi.Input[_builtins.str] twilio_sid: SID for your Twilio account.
         :param pulumi.Input[_builtins.str] twilio_token: AuthToken for your Twilio account.
@@ -9716,6 +9748,8 @@ class ConnectionOptionsArgs:
             pulumi.set(__self__, "global_token_revocation_jwt_sub", global_token_revocation_jwt_sub)
         if icon_url is not None:
             pulumi.set(__self__, "icon_url", icon_url)
+        if id_token_signed_response_algs is not None:
+            pulumi.set(__self__, "id_token_signed_response_algs", id_token_signed_response_algs)
         if identity_api is not None:
             pulumi.set(__self__, "identity_api", identity_api)
         if idp_initiated is not None:
@@ -9756,6 +9790,8 @@ class ConnectionOptionsArgs:
             pulumi.set(__self__, "password_histories", password_histories)
         if password_no_personal_info is not None:
             pulumi.set(__self__, "password_no_personal_info", password_no_personal_info)
+        if password_options is not None:
+            pulumi.set(__self__, "password_options", password_options)
         if password_policy is not None:
             pulumi.set(__self__, "password_policy", password_policy)
         if ping_federate_base_url is not None:
@@ -9820,6 +9856,8 @@ class ConnectionOptionsArgs:
             pulumi.set(__self__, "token_endpoint_auth_method", token_endpoint_auth_method)
         if token_endpoint_auth_signing_alg is not None:
             pulumi.set(__self__, "token_endpoint_auth_signing_alg", token_endpoint_auth_signing_alg)
+        if token_endpoint_jwtca_aud_format is not None:
+            pulumi.set(__self__, "token_endpoint_jwtca_aud_format", token_endpoint_jwtca_aud_format)
         if totp is not None:
             pulumi.set(__self__, "totp", totp)
         if twilio_sid is not None:
@@ -10392,6 +10430,18 @@ class ConnectionOptionsArgs:
         pulumi.set(self, "icon_url", value)
 
     @_builtins.property
+    @pulumi.getter(name="idTokenSignedResponseAlgs")
+    def id_token_signed_response_algs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of allowed algorithms for the ID token signature. If not set, RS256 will be applied at runtime. (Okta/OIDC Connections)
+        """
+        return pulumi.get(self, "id_token_signed_response_algs")
+
+    @id_token_signed_response_algs.setter
+    def id_token_signed_response_algs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "id_token_signed_response_algs", value)
+
+    @_builtins.property
     @pulumi.getter(name="identityApi")
     def identity_api(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -10630,6 +10680,18 @@ class ConnectionOptionsArgs:
     @password_no_personal_info.setter
     def password_no_personal_info(self, value: Optional[pulumi.Input['ConnectionOptionsPasswordNoPersonalInfoArgs']]):
         pulumi.set(self, "password_no_personal_info", value)
+
+    @_builtins.property
+    @pulumi.getter(name="passwordOptions")
+    def password_options(self) -> Optional[pulumi.Input['ConnectionOptionsPasswordOptionsArgs']]:
+        """
+        Flexible password policy configuration. Only available for `auth0` strategy connections. Cannot be set together with legacy password policy fields (`password_policy`, `password_complexity_options`, `password_history`, `password_no_personal_info`, `password_dictionary`).
+        """
+        return pulumi.get(self, "password_options")
+
+    @password_options.setter
+    def password_options(self, value: Optional[pulumi.Input['ConnectionOptionsPasswordOptionsArgs']]):
+        pulumi.set(self, "password_options", value)
 
     @_builtins.property
     @pulumi.getter(name="passwordPolicy")
@@ -11014,6 +11076,18 @@ class ConnectionOptionsArgs:
     @token_endpoint_auth_signing_alg.setter
     def token_endpoint_auth_signing_alg(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "token_endpoint_auth_signing_alg", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tokenEndpointJwtcaAudFormat")
+    def token_endpoint_jwtca_aud_format(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: 'issuer' or 'token_endpoint'. (Okta/OIDC Connections)
+        """
+        return pulumi.get(self, "token_endpoint_jwtca_aud_format")
+
+    @token_endpoint_jwtca_aud_format.setter
+    def token_endpoint_jwtca_aud_format(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "token_endpoint_jwtca_aud_format", value)
 
     @_builtins.property
     @pulumi.getter
@@ -12830,6 +12904,391 @@ class ConnectionOptionsPasswordNoPersonalInfoArgs:
         pulumi.set(self, "enable", value)
 
 
+class ConnectionOptionsPasswordOptionsArgsDict(TypedDict):
+    complexity: NotRequired[pulumi.Input['ConnectionOptionsPasswordOptionsComplexityArgsDict']]
+    """
+    Password complexity requirements.
+    """
+    dictionary: NotRequired[pulumi.Input['ConnectionOptionsPasswordOptionsDictionaryArgsDict']]
+    """
+    Dictionary-based password validation.
+    """
+    history: NotRequired[pulumi.Input['ConnectionOptionsPasswordOptionsHistoryArgsDict']]
+    """
+    Password history enforcement.
+    """
+    profile_data: NotRequired[pulumi.Input['ConnectionOptionsPasswordOptionsProfileDataArgsDict']]
+    """
+    Personal information restriction policy.
+    """
+
+@pulumi.input_type
+class ConnectionOptionsPasswordOptionsArgs:
+    def __init__(__self__, *,
+                 complexity: Optional[pulumi.Input['ConnectionOptionsPasswordOptionsComplexityArgs']] = None,
+                 dictionary: Optional[pulumi.Input['ConnectionOptionsPasswordOptionsDictionaryArgs']] = None,
+                 history: Optional[pulumi.Input['ConnectionOptionsPasswordOptionsHistoryArgs']] = None,
+                 profile_data: Optional[pulumi.Input['ConnectionOptionsPasswordOptionsProfileDataArgs']] = None):
+        """
+        :param pulumi.Input['ConnectionOptionsPasswordOptionsComplexityArgs'] complexity: Password complexity requirements.
+        :param pulumi.Input['ConnectionOptionsPasswordOptionsDictionaryArgs'] dictionary: Dictionary-based password validation.
+        :param pulumi.Input['ConnectionOptionsPasswordOptionsHistoryArgs'] history: Password history enforcement.
+        :param pulumi.Input['ConnectionOptionsPasswordOptionsProfileDataArgs'] profile_data: Personal information restriction policy.
+        """
+        if complexity is not None:
+            pulumi.set(__self__, "complexity", complexity)
+        if dictionary is not None:
+            pulumi.set(__self__, "dictionary", dictionary)
+        if history is not None:
+            pulumi.set(__self__, "history", history)
+        if profile_data is not None:
+            pulumi.set(__self__, "profile_data", profile_data)
+
+    @_builtins.property
+    @pulumi.getter
+    def complexity(self) -> Optional[pulumi.Input['ConnectionOptionsPasswordOptionsComplexityArgs']]:
+        """
+        Password complexity requirements.
+        """
+        return pulumi.get(self, "complexity")
+
+    @complexity.setter
+    def complexity(self, value: Optional[pulumi.Input['ConnectionOptionsPasswordOptionsComplexityArgs']]):
+        pulumi.set(self, "complexity", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def dictionary(self) -> Optional[pulumi.Input['ConnectionOptionsPasswordOptionsDictionaryArgs']]:
+        """
+        Dictionary-based password validation.
+        """
+        return pulumi.get(self, "dictionary")
+
+    @dictionary.setter
+    def dictionary(self, value: Optional[pulumi.Input['ConnectionOptionsPasswordOptionsDictionaryArgs']]):
+        pulumi.set(self, "dictionary", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def history(self) -> Optional[pulumi.Input['ConnectionOptionsPasswordOptionsHistoryArgs']]:
+        """
+        Password history enforcement.
+        """
+        return pulumi.get(self, "history")
+
+    @history.setter
+    def history(self, value: Optional[pulumi.Input['ConnectionOptionsPasswordOptionsHistoryArgs']]):
+        pulumi.set(self, "history", value)
+
+    @_builtins.property
+    @pulumi.getter(name="profileData")
+    def profile_data(self) -> Optional[pulumi.Input['ConnectionOptionsPasswordOptionsProfileDataArgs']]:
+        """
+        Personal information restriction policy.
+        """
+        return pulumi.get(self, "profile_data")
+
+    @profile_data.setter
+    def profile_data(self, value: Optional[pulumi.Input['ConnectionOptionsPasswordOptionsProfileDataArgs']]):
+        pulumi.set(self, "profile_data", value)
+
+
+class ConnectionOptionsPasswordOptionsComplexityArgsDict(TypedDict):
+    character_type_rule: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    When all 4 character types are specified, determines if all or 3 of 4 are required. Possible values: `all`, `three_of_four`. Default: `all`.
+    """
+    character_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Required character types. Valid values: `uppercase`, `lowercase`, `number`, `special`.
+    """
+    identical_characters: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Controls whether 3+ consecutive identical characters are allowed. Possible values: `allow`, `block`. Default: `allow`.
+    """
+    max_length_exceeded: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Controls behavior when the password exceeds 72 bytes. Possible values: `truncate`, `error`. Default: `error`.
+    """
+    min_length: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Minimum password length. Must be between 1 and 72. Default: 15.
+    """
+    sequential_characters: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Controls whether sequential characters (abc, 123, etc.) are allowed. Possible values: `allow`, `block`. Default: `allow`.
+    """
+
+@pulumi.input_type
+class ConnectionOptionsPasswordOptionsComplexityArgs:
+    def __init__(__self__, *,
+                 character_type_rule: Optional[pulumi.Input[_builtins.str]] = None,
+                 character_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 identical_characters: Optional[pulumi.Input[_builtins.str]] = None,
+                 max_length_exceeded: Optional[pulumi.Input[_builtins.str]] = None,
+                 min_length: Optional[pulumi.Input[_builtins.int]] = None,
+                 sequential_characters: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] character_type_rule: When all 4 character types are specified, determines if all or 3 of 4 are required. Possible values: `all`, `three_of_four`. Default: `all`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] character_types: Required character types. Valid values: `uppercase`, `lowercase`, `number`, `special`.
+        :param pulumi.Input[_builtins.str] identical_characters: Controls whether 3+ consecutive identical characters are allowed. Possible values: `allow`, `block`. Default: `allow`.
+        :param pulumi.Input[_builtins.str] max_length_exceeded: Controls behavior when the password exceeds 72 bytes. Possible values: `truncate`, `error`. Default: `error`.
+        :param pulumi.Input[_builtins.int] min_length: Minimum password length. Must be between 1 and 72. Default: 15.
+        :param pulumi.Input[_builtins.str] sequential_characters: Controls whether sequential characters (abc, 123, etc.) are allowed. Possible values: `allow`, `block`. Default: `allow`.
+        """
+        if character_type_rule is not None:
+            pulumi.set(__self__, "character_type_rule", character_type_rule)
+        if character_types is not None:
+            pulumi.set(__self__, "character_types", character_types)
+        if identical_characters is not None:
+            pulumi.set(__self__, "identical_characters", identical_characters)
+        if max_length_exceeded is not None:
+            pulumi.set(__self__, "max_length_exceeded", max_length_exceeded)
+        if min_length is not None:
+            pulumi.set(__self__, "min_length", min_length)
+        if sequential_characters is not None:
+            pulumi.set(__self__, "sequential_characters", sequential_characters)
+
+    @_builtins.property
+    @pulumi.getter(name="characterTypeRule")
+    def character_type_rule(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        When all 4 character types are specified, determines if all or 3 of 4 are required. Possible values: `all`, `three_of_four`. Default: `all`.
+        """
+        return pulumi.get(self, "character_type_rule")
+
+    @character_type_rule.setter
+    def character_type_rule(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "character_type_rule", value)
+
+    @_builtins.property
+    @pulumi.getter(name="characterTypes")
+    def character_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Required character types. Valid values: `uppercase`, `lowercase`, `number`, `special`.
+        """
+        return pulumi.get(self, "character_types")
+
+    @character_types.setter
+    def character_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "character_types", value)
+
+    @_builtins.property
+    @pulumi.getter(name="identicalCharacters")
+    def identical_characters(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Controls whether 3+ consecutive identical characters are allowed. Possible values: `allow`, `block`. Default: `allow`.
+        """
+        return pulumi.get(self, "identical_characters")
+
+    @identical_characters.setter
+    def identical_characters(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "identical_characters", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxLengthExceeded")
+    def max_length_exceeded(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Controls behavior when the password exceeds 72 bytes. Possible values: `truncate`, `error`. Default: `error`.
+        """
+        return pulumi.get(self, "max_length_exceeded")
+
+    @max_length_exceeded.setter
+    def max_length_exceeded(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "max_length_exceeded", value)
+
+    @_builtins.property
+    @pulumi.getter(name="minLength")
+    def min_length(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Minimum password length. Must be between 1 and 72. Default: 15.
+        """
+        return pulumi.get(self, "min_length")
+
+    @min_length.setter
+    def min_length(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "min_length", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sequentialCharacters")
+    def sequential_characters(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Controls whether sequential characters (abc, 123, etc.) are allowed. Possible values: `allow`, `block`. Default: `allow`.
+        """
+        return pulumi.get(self, "sequential_characters")
+
+    @sequential_characters.setter
+    def sequential_characters(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "sequential_characters", value)
+
+
+class ConnectionOptionsPasswordOptionsDictionaryArgsDict(TypedDict):
+    active: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enables dictionary checking.
+    """
+    customs: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Custom list of disallowed terms.
+    """
+    default: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Default dictionary to use. Possible values: `en_10k`, `en_100k`. Default: `en_100k`.
+    """
+
+@pulumi.input_type
+class ConnectionOptionsPasswordOptionsDictionaryArgs:
+    def __init__(__self__, *,
+                 active: Optional[pulumi.Input[_builtins.bool]] = None,
+                 customs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 default: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] active: Enables dictionary checking.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] customs: Custom list of disallowed terms.
+        :param pulumi.Input[_builtins.str] default: Default dictionary to use. Possible values: `en_10k`, `en_100k`. Default: `en_100k`.
+        """
+        if active is not None:
+            pulumi.set(__self__, "active", active)
+        if customs is not None:
+            pulumi.set(__self__, "customs", customs)
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+
+    @_builtins.property
+    @pulumi.getter
+    def active(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Enables dictionary checking.
+        """
+        return pulumi.get(self, "active")
+
+    @active.setter
+    def active(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "active", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def customs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Custom list of disallowed terms.
+        """
+        return pulumi.get(self, "customs")
+
+    @customs.setter
+    def customs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "customs", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def default(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Default dictionary to use. Possible values: `en_10k`, `en_100k`. Default: `en_100k`.
+        """
+        return pulumi.get(self, "default")
+
+    @default.setter
+    def default(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "default", value)
+
+
+class ConnectionOptionsPasswordOptionsHistoryArgsDict(TypedDict):
+    active: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enables password history checking.
+    """
+    size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of previous passwords to check against. Must be between 1 and 24. Default: 3.
+    """
+
+@pulumi.input_type
+class ConnectionOptionsPasswordOptionsHistoryArgs:
+    def __init__(__self__, *,
+                 active: Optional[pulumi.Input[_builtins.bool]] = None,
+                 size: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] active: Enables password history checking.
+        :param pulumi.Input[_builtins.int] size: Number of previous passwords to check against. Must be between 1 and 24. Default: 3.
+        """
+        if active is not None:
+            pulumi.set(__self__, "active", active)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+
+    @_builtins.property
+    @pulumi.getter
+    def active(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Enables password history checking.
+        """
+        return pulumi.get(self, "active")
+
+    @active.setter
+    def active(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "active", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def size(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Number of previous passwords to check against. Must be between 1 and 24. Default: 3.
+        """
+        return pulumi.get(self, "size")
+
+    @size.setter
+    def size(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "size", value)
+
+
+class ConnectionOptionsPasswordOptionsProfileDataArgsDict(TypedDict):
+    active: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Prevents users from including profile data in passwords.
+    """
+    blocked_fields: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    User profile fields to block from passwords. Maximum 12 items, each max 100 characters.
+    """
+
+@pulumi.input_type
+class ConnectionOptionsPasswordOptionsProfileDataArgs:
+    def __init__(__self__, *,
+                 active: Optional[pulumi.Input[_builtins.bool]] = None,
+                 blocked_fields: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] active: Prevents users from including profile data in passwords.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] blocked_fields: User profile fields to block from passwords. Maximum 12 items, each max 100 characters.
+        """
+        if active is not None:
+            pulumi.set(__self__, "active", active)
+        if blocked_fields is not None:
+            pulumi.set(__self__, "blocked_fields", blocked_fields)
+
+    @_builtins.property
+    @pulumi.getter
+    def active(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Prevents users from including profile data in passwords.
+        """
+        return pulumi.get(self, "active")
+
+    @active.setter
+    def active(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "active", value)
+
+    @_builtins.property
+    @pulumi.getter(name="blockedFields")
+    def blocked_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        User profile fields to block from passwords. Maximum 12 items, each max 100 characters.
+        """
+        return pulumi.get(self, "blocked_fields")
+
+    @blocked_fields.setter
+    def blocked_fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "blocked_fields", value)
+
+
 class ConnectionOptionsSigningKeyArgsDict(TypedDict):
     cert: pulumi.Input[_builtins.str]
     key: pulumi.Input[_builtins.str]
@@ -14620,6 +15079,34 @@ class EncryptionKeyManagerEncryptionKeyArgs:
     @updated_at.setter
     def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "updated_at", value)
+
+
+class EventStreamActionConfigurationArgsDict(TypedDict):
+    action_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the Auth0 Action to use as the event stream destination.
+    """
+
+@pulumi.input_type
+class EventStreamActionConfigurationArgs:
+    def __init__(__self__, *,
+                 action_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] action_id: The ID of the Auth0 Action to use as the event stream destination.
+        """
+        pulumi.set(__self__, "action_id", action_id)
+
+    @_builtins.property
+    @pulumi.getter(name="actionId")
+    def action_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The ID of the Auth0 Action to use as the event stream destination.
+        """
+        return pulumi.get(self, "action_id")
+
+    @action_id.setter
+    def action_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "action_id", value)
 
 
 class EventStreamEventbridgeConfigurationArgsDict(TypedDict):
@@ -18282,6 +18769,35 @@ class ResourceServerAuthorizationDetailArgs:
     @type.setter
     def type(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "type", value)
+
+
+class ResourceServerAuthorizationPolicyArgsDict(TypedDict):
+    policy_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Identifier of the authorization policy.
+    """
+
+@pulumi.input_type
+class ResourceServerAuthorizationPolicyArgs:
+    def __init__(__self__, *,
+                 policy_id: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] policy_id: Identifier of the authorization policy.
+        """
+        if policy_id is not None:
+            pulumi.set(__self__, "policy_id", policy_id)
+
+    @_builtins.property
+    @pulumi.getter(name="policyId")
+    def policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Identifier of the authorization policy.
+        """
+        return pulumi.get(self, "policy_id")
+
+    @policy_id.setter
+    def policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "policy_id", value)
 
 
 class ResourceServerProofOfPossessionArgsDict(TypedDict):

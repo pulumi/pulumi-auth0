@@ -761,6 +761,9 @@
                                 "gateway_authentication": {
                                     "maxItemsOne": true
                                 },
+                                "id_token_signed_response_algs": {
+                                    "maxItemsOne": false
+                                },
                                 "idp_initiated": {
                                     "maxItemsOne": true
                                 },
@@ -794,6 +797,46 @@
                                 },
                                 "password_no_personal_info": {
                                     "maxItemsOne": true
+                                },
+                                "password_options": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "complexity": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "character_types": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "dictionary": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "custom": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "history": {
+                                                "maxItemsOne": true
+                                            },
+                                            "profile_data": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "blocked_fields": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
                                 },
                                 "precedence": {
                                     "maxItemsOne": false
@@ -1064,6 +1107,9 @@
                 "current": "auth0:index/eventStream:EventStream",
                 "majorVersion": 3,
                 "fields": {
+                    "action_configuration": {
+                        "maxItemsOne": true
+                    },
                     "eventbridge_configuration": {
                         "maxItemsOne": true
                     },
@@ -1443,6 +1489,9 @@
                 "fields": {
                     "authorization_details": {
                         "maxItemsOne": false
+                    },
+                    "authorization_policy": {
+                        "maxItemsOne": true
                     },
                     "proof_of_possession": {
                         "maxItemsOne": true
@@ -2574,6 +2623,9 @@
                                 "gateway_authentication": {
                                     "maxItemsOne": false
                                 },
+                                "id_token_signed_response_algs": {
+                                    "maxItemsOne": false
+                                },
                                 "idp_initiated": {
                                     "maxItemsOne": false
                                 },
@@ -2607,6 +2659,46 @@
                                 },
                                 "password_no_personal_info": {
                                     "maxItemsOne": false
+                                },
+                                "password_options": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "complexity": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "character_types": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "dictionary": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "custom": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "history": {
+                                                "maxItemsOne": false
+                                            },
+                                            "profile_data": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "blocked_fields": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
                                 },
                                 "precedence": {
                                     "maxItemsOne": false
@@ -2852,6 +2944,9 @@
                 "current": "auth0:index/getEventStream:getEventStream",
                 "majorVersion": 3,
                 "fields": {
+                    "action_configuration": {
+                        "maxItemsOne": false
+                    },
                     "eventbridge_configuration": {
                         "maxItemsOne": false
                     },
@@ -3108,6 +3203,9 @@
                 "majorVersion": 3,
                 "fields": {
                     "authorization_details": {
+                        "maxItemsOne": false
+                    },
+                    "authorization_policy": {
                         "maxItemsOne": false
                     },
                     "proof_of_possession": {

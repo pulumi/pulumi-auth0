@@ -84,6 +84,22 @@ namespace Pulumi.Auth0
     ///         },
     ///     });
     /// 
+    ///     // Creates an event stream of type action
+    ///     var myEventStreamAction = new Auth0.Index.EventStream("my_event_stream_action", new()
+    ///     {
+    ///         Name = "my-action-stream",
+    ///         DestinationType = "action",
+    ///         Subscriptions = new[]
+    ///         {
+    ///             "user.created",
+    ///             "user.updated",
+    ///         },
+    ///         ActionConfiguration = new Auth0.Inputs.EventStreamActionConfigurationArgs
+    ///         {
+    ///             ActionId = myAction.Id,
+    ///         },
+    ///     });
+    /// 
     /// });
     /// ```
     /// 
@@ -101,13 +117,19 @@ namespace Pulumi.Auth0
     public partial class EventStream : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Configuration for the Action destination. This block is only applicable when `DestinationType` is set to `Action`. Action configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
+        /// </summary>
+        [Output("actionConfiguration")]
+        public Output<Outputs.EventStreamActionConfiguration?> ActionConfiguration { get; private set; } = null!;
+
+        /// <summary>
         /// The ISO 8601 timestamp when the stream was created.
         /// </summary>
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// The type of event stream destination (either 'eventbridge' or 'webhook').
+        /// The type of event stream destination. Possible values: `Eventbridge`, `Webhook`, or `Action`.
         /// </summary>
         [Output("destinationType")]
         public Output<string> DestinationType { get; private set; } = null!;
@@ -195,7 +217,13 @@ namespace Pulumi.Auth0
     public sealed class EventStreamArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The type of event stream destination (either 'eventbridge' or 'webhook').
+        /// Configuration for the Action destination. This block is only applicable when `DestinationType` is set to `Action`. Action configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
+        /// </summary>
+        [Input("actionConfiguration")]
+        public Input<Inputs.EventStreamActionConfigurationArgs>? ActionConfiguration { get; set; }
+
+        /// <summary>
+        /// The type of event stream destination. Possible values: `Eventbridge`, `Webhook`, or `Action`.
         /// </summary>
         [Input("destinationType", required: true)]
         public Input<string> DestinationType { get; set; } = null!;
@@ -239,13 +267,19 @@ namespace Pulumi.Auth0
     public sealed class EventStreamState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Configuration for the Action destination. This block is only applicable when `DestinationType` is set to `Action`. Action configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
+        /// </summary>
+        [Input("actionConfiguration")]
+        public Input<Inputs.EventStreamActionConfigurationGetArgs>? ActionConfiguration { get; set; }
+
+        /// <summary>
         /// The ISO 8601 timestamp when the stream was created.
         /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// The type of event stream destination (either 'eventbridge' or 'webhook').
+        /// The type of event stream destination. Possible values: `Eventbridge`, `Webhook`, or `Action`.
         /// </summary>
         [Input("destinationType")]
         public Input<string>? DestinationType { get; set; }

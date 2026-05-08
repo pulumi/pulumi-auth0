@@ -3,6 +3,7 @@
 
 package com.pulumi.auth0.outputs;
 
+import com.pulumi.auth0.outputs.GetEventStreamActionConfiguration;
 import com.pulumi.auth0.outputs.GetEventStreamEventbridgeConfiguration;
 import com.pulumi.auth0.outputs.GetEventStreamWebhookConfiguration;
 import com.pulumi.core.annotations.CustomType;
@@ -14,12 +15,17 @@ import java.util.Objects;
 @CustomType
 public final class GetEventStreamResult {
     /**
+     * @return Configuration for the Action destination. This block is only applicable when `destinationType` is set to `action`. Action configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
+     * 
+     */
+    private List<GetEventStreamActionConfiguration> actionConfigurations;
+    /**
      * @return The ISO 8601 timestamp when the stream was created.
      * 
      */
     private String createdAt;
     /**
-     * @return The type of event stream destination (either &#39;eventbridge&#39; or &#39;webhook&#39;).
+     * @return The type of event stream destination. Possible values: `eventbridge`, `webhook`, or `action`.
      * 
      */
     private String destinationType;
@@ -61,6 +67,13 @@ public final class GetEventStreamResult {
 
     private GetEventStreamResult() {}
     /**
+     * @return Configuration for the Action destination. This block is only applicable when `destinationType` is set to `action`. Action configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
+     * 
+     */
+    public List<GetEventStreamActionConfiguration> actionConfigurations() {
+        return this.actionConfigurations;
+    }
+    /**
      * @return The ISO 8601 timestamp when the stream was created.
      * 
      */
@@ -68,7 +81,7 @@ public final class GetEventStreamResult {
         return this.createdAt;
     }
     /**
-     * @return The type of event stream destination (either &#39;eventbridge&#39; or &#39;webhook&#39;).
+     * @return The type of event stream destination. Possible values: `eventbridge`, `webhook`, or `action`.
      * 
      */
     public String destinationType() {
@@ -133,6 +146,7 @@ public final class GetEventStreamResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetEventStreamActionConfiguration> actionConfigurations;
         private String createdAt;
         private String destinationType;
         private List<GetEventStreamEventbridgeConfiguration> eventbridgeConfigurations;
@@ -145,6 +159,7 @@ public final class GetEventStreamResult {
         public Builder() {}
         public Builder(GetEventStreamResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.actionConfigurations = defaults.actionConfigurations;
     	      this.createdAt = defaults.createdAt;
     	      this.destinationType = defaults.destinationType;
     	      this.eventbridgeConfigurations = defaults.eventbridgeConfigurations;
@@ -156,6 +171,17 @@ public final class GetEventStreamResult {
     	      this.webhookConfigurations = defaults.webhookConfigurations;
         }
 
+        @CustomType.Setter
+        public Builder actionConfigurations(List<GetEventStreamActionConfiguration> actionConfigurations) {
+            if (actionConfigurations == null) {
+              throw new MissingRequiredPropertyException("GetEventStreamResult", "actionConfigurations");
+            }
+            this.actionConfigurations = actionConfigurations;
+            return this;
+        }
+        public Builder actionConfigurations(GetEventStreamActionConfiguration... actionConfigurations) {
+            return actionConfigurations(List.of(actionConfigurations));
+        }
         @CustomType.Setter
         public Builder createdAt(String createdAt) {
             if (createdAt == null) {
@@ -239,6 +265,7 @@ public final class GetEventStreamResult {
         }
         public GetEventStreamResult build() {
             final var _resultValue = new GetEventStreamResult();
+            _resultValue.actionConfigurations = actionConfigurations;
             _resultValue.createdAt = createdAt;
             _resultValue.destinationType = destinationType;
             _resultValue.eventbridgeConfigurations = eventbridgeConfigurations;

@@ -23,20 +23,24 @@ class EventStreamArgs:
     def __init__(__self__, *,
                  destination_type: pulumi.Input[_builtins.str],
                  subscriptions: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
+                 action_configuration: Optional[pulumi.Input['EventStreamActionConfigurationArgs']] = None,
                  eventbridge_configuration: Optional[pulumi.Input['EventStreamEventbridgeConfigurationArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  webhook_configuration: Optional[pulumi.Input['EventStreamWebhookConfigurationArgs']] = None):
         """
         The set of arguments for constructing a EventStream resource.
 
-        :param pulumi.Input[_builtins.str] destination_type: The type of event stream destination (either 'eventbridge' or 'webhook').
+        :param pulumi.Input[_builtins.str] destination_type: The type of event stream destination. Possible values: `eventbridge`, `webhook`, or `action`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] subscriptions: List of event types this stream is subscribed to.
+        :param pulumi.Input['EventStreamActionConfigurationArgs'] action_configuration: Configuration for the Action destination. This block is only applicable when `destination_type` is set to `action`. Action configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
         :param pulumi.Input['EventStreamEventbridgeConfigurationArgs'] eventbridge_configuration: Configuration for the EventBridge destination. This block is only applicable when `destination_type` is set to `eventbridge`. EventBridge configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
         :param pulumi.Input[_builtins.str] name: The name of the event stream.
         :param pulumi.Input['EventStreamWebhookConfigurationArgs'] webhook_configuration: Configuration for the Webhook destination. This block is only applicable when `destination_type` is set to `webhook`. Webhook configurations **can** be updated after creation, including the endpoint and authorization fields.
         """
         pulumi.set(__self__, "destination_type", destination_type)
         pulumi.set(__self__, "subscriptions", subscriptions)
+        if action_configuration is not None:
+            pulumi.set(__self__, "action_configuration", action_configuration)
         if eventbridge_configuration is not None:
             pulumi.set(__self__, "eventbridge_configuration", eventbridge_configuration)
         if name is not None:
@@ -48,7 +52,7 @@ class EventStreamArgs:
     @pulumi.getter(name="destinationType")
     def destination_type(self) -> pulumi.Input[_builtins.str]:
         """
-        The type of event stream destination (either 'eventbridge' or 'webhook').
+        The type of event stream destination. Possible values: `eventbridge`, `webhook`, or `action`.
         """
         return pulumi.get(self, "destination_type")
 
@@ -67,6 +71,18 @@ class EventStreamArgs:
     @subscriptions.setter
     def subscriptions(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
         pulumi.set(self, "subscriptions", value)
+
+    @_builtins.property
+    @pulumi.getter(name="actionConfiguration")
+    def action_configuration(self) -> Optional[pulumi.Input['EventStreamActionConfigurationArgs']]:
+        """
+        Configuration for the Action destination. This block is only applicable when `destination_type` is set to `action`. Action configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
+        """
+        return pulumi.get(self, "action_configuration")
+
+    @action_configuration.setter
+    def action_configuration(self, value: Optional[pulumi.Input['EventStreamActionConfigurationArgs']]):
+        pulumi.set(self, "action_configuration", value)
 
     @_builtins.property
     @pulumi.getter(name="eventbridgeConfiguration")
@@ -108,6 +124,7 @@ class EventStreamArgs:
 @pulumi.input_type
 class _EventStreamState:
     def __init__(__self__, *,
+                 action_configuration: Optional[pulumi.Input['EventStreamActionConfigurationArgs']] = None,
                  created_at: Optional[pulumi.Input[_builtins.str]] = None,
                  destination_type: Optional[pulumi.Input[_builtins.str]] = None,
                  eventbridge_configuration: Optional[pulumi.Input['EventStreamEventbridgeConfigurationArgs']] = None,
@@ -119,8 +136,9 @@ class _EventStreamState:
         """
         Input properties used for looking up and filtering EventStream resources.
 
+        :param pulumi.Input['EventStreamActionConfigurationArgs'] action_configuration: Configuration for the Action destination. This block is only applicable when `destination_type` is set to `action`. Action configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
         :param pulumi.Input[_builtins.str] created_at: The ISO 8601 timestamp when the stream was created.
-        :param pulumi.Input[_builtins.str] destination_type: The type of event stream destination (either 'eventbridge' or 'webhook').
+        :param pulumi.Input[_builtins.str] destination_type: The type of event stream destination. Possible values: `eventbridge`, `webhook`, or `action`.
         :param pulumi.Input['EventStreamEventbridgeConfigurationArgs'] eventbridge_configuration: Configuration for the EventBridge destination. This block is only applicable when `destination_type` is set to `eventbridge`. EventBridge configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
         :param pulumi.Input[_builtins.str] name: The name of the event stream.
         :param pulumi.Input[_builtins.str] status: The current status of the event stream.
@@ -128,6 +146,8 @@ class _EventStreamState:
         :param pulumi.Input[_builtins.str] updated_at: The ISO 8601 timestamp when the stream was last updated.
         :param pulumi.Input['EventStreamWebhookConfigurationArgs'] webhook_configuration: Configuration for the Webhook destination. This block is only applicable when `destination_type` is set to `webhook`. Webhook configurations **can** be updated after creation, including the endpoint and authorization fields.
         """
+        if action_configuration is not None:
+            pulumi.set(__self__, "action_configuration", action_configuration)
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
         if destination_type is not None:
@@ -146,6 +166,18 @@ class _EventStreamState:
             pulumi.set(__self__, "webhook_configuration", webhook_configuration)
 
     @_builtins.property
+    @pulumi.getter(name="actionConfiguration")
+    def action_configuration(self) -> Optional[pulumi.Input['EventStreamActionConfigurationArgs']]:
+        """
+        Configuration for the Action destination. This block is only applicable when `destination_type` is set to `action`. Action configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
+        """
+        return pulumi.get(self, "action_configuration")
+
+    @action_configuration.setter
+    def action_configuration(self, value: Optional[pulumi.Input['EventStreamActionConfigurationArgs']]):
+        pulumi.set(self, "action_configuration", value)
+
+    @_builtins.property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -161,7 +193,7 @@ class _EventStreamState:
     @pulumi.getter(name="destinationType")
     def destination_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The type of event stream destination (either 'eventbridge' or 'webhook').
+        The type of event stream destination. Possible values: `eventbridge`, `webhook`, or `action`.
         """
         return pulumi.get(self, "destination_type")
 
@@ -248,6 +280,7 @@ class EventStream(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 action_configuration: Optional[pulumi.Input[Union['EventStreamActionConfigurationArgs', 'EventStreamActionConfigurationArgsDict']]] = None,
                  destination_type: Optional[pulumi.Input[_builtins.str]] = None,
                  eventbridge_configuration: Optional[pulumi.Input[Union['EventStreamEventbridgeConfigurationArgs', 'EventStreamEventbridgeConfigurationArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -308,6 +341,17 @@ class EventStream(pulumi.CustomResource):
                     "token_wo_version": 1,
                 },
             })
+        # Creates an event stream of type action
+        my_event_stream_action = auth0.EventStream("my_event_stream_action",
+            name="my-action-stream",
+            destination_type="action",
+            subscriptions=[
+                "user.created",
+                "user.updated",
+            ],
+            action_configuration={
+                "action_id": my_action["id"],
+            })
         ```
 
         ## Import
@@ -323,7 +367,8 @@ class EventStream(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] destination_type: The type of event stream destination (either 'eventbridge' or 'webhook').
+        :param pulumi.Input[Union['EventStreamActionConfigurationArgs', 'EventStreamActionConfigurationArgsDict']] action_configuration: Configuration for the Action destination. This block is only applicable when `destination_type` is set to `action`. Action configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
+        :param pulumi.Input[_builtins.str] destination_type: The type of event stream destination. Possible values: `eventbridge`, `webhook`, or `action`.
         :param pulumi.Input[Union['EventStreamEventbridgeConfigurationArgs', 'EventStreamEventbridgeConfigurationArgsDict']] eventbridge_configuration: Configuration for the EventBridge destination. This block is only applicable when `destination_type` is set to `eventbridge`. EventBridge configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
         :param pulumi.Input[_builtins.str] name: The name of the event stream.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] subscriptions: List of event types this stream is subscribed to.
@@ -389,6 +434,17 @@ class EventStream(pulumi.CustomResource):
                     "token_wo_version": 1,
                 },
             })
+        # Creates an event stream of type action
+        my_event_stream_action = auth0.EventStream("my_event_stream_action",
+            name="my-action-stream",
+            destination_type="action",
+            subscriptions=[
+                "user.created",
+                "user.updated",
+            ],
+            action_configuration={
+                "action_id": my_action["id"],
+            })
         ```
 
         ## Import
@@ -417,6 +473,7 @@ class EventStream(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 action_configuration: Optional[pulumi.Input[Union['EventStreamActionConfigurationArgs', 'EventStreamActionConfigurationArgsDict']]] = None,
                  destination_type: Optional[pulumi.Input[_builtins.str]] = None,
                  eventbridge_configuration: Optional[pulumi.Input[Union['EventStreamEventbridgeConfigurationArgs', 'EventStreamEventbridgeConfigurationArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -431,6 +488,7 @@ class EventStream(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = EventStreamArgs.__new__(EventStreamArgs)
 
+            __props__.__dict__["action_configuration"] = action_configuration
             if destination_type is None and not opts.urn:
                 raise TypeError("Missing required property 'destination_type'")
             __props__.__dict__["destination_type"] = destination_type
@@ -453,6 +511,7 @@ class EventStream(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            action_configuration: Optional[pulumi.Input[Union['EventStreamActionConfigurationArgs', 'EventStreamActionConfigurationArgsDict']]] = None,
             created_at: Optional[pulumi.Input[_builtins.str]] = None,
             destination_type: Optional[pulumi.Input[_builtins.str]] = None,
             eventbridge_configuration: Optional[pulumi.Input[Union['EventStreamEventbridgeConfigurationArgs', 'EventStreamEventbridgeConfigurationArgsDict']]] = None,
@@ -468,8 +527,9 @@ class EventStream(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['EventStreamActionConfigurationArgs', 'EventStreamActionConfigurationArgsDict']] action_configuration: Configuration for the Action destination. This block is only applicable when `destination_type` is set to `action`. Action configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
         :param pulumi.Input[_builtins.str] created_at: The ISO 8601 timestamp when the stream was created.
-        :param pulumi.Input[_builtins.str] destination_type: The type of event stream destination (either 'eventbridge' or 'webhook').
+        :param pulumi.Input[_builtins.str] destination_type: The type of event stream destination. Possible values: `eventbridge`, `webhook`, or `action`.
         :param pulumi.Input[Union['EventStreamEventbridgeConfigurationArgs', 'EventStreamEventbridgeConfigurationArgsDict']] eventbridge_configuration: Configuration for the EventBridge destination. This block is only applicable when `destination_type` is set to `eventbridge`. EventBridge configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
         :param pulumi.Input[_builtins.str] name: The name of the event stream.
         :param pulumi.Input[_builtins.str] status: The current status of the event stream.
@@ -481,6 +541,7 @@ class EventStream(pulumi.CustomResource):
 
         __props__ = _EventStreamState.__new__(_EventStreamState)
 
+        __props__.__dict__["action_configuration"] = action_configuration
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["destination_type"] = destination_type
         __props__.__dict__["eventbridge_configuration"] = eventbridge_configuration
@@ -490,6 +551,14 @@ class EventStream(pulumi.CustomResource):
         __props__.__dict__["updated_at"] = updated_at
         __props__.__dict__["webhook_configuration"] = webhook_configuration
         return EventStream(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="actionConfiguration")
+    def action_configuration(self) -> pulumi.Output[Optional['outputs.EventStreamActionConfiguration']]:
+        """
+        Configuration for the Action destination. This block is only applicable when `destination_type` is set to `action`. Action configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
+        """
+        return pulumi.get(self, "action_configuration")
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
@@ -503,7 +572,7 @@ class EventStream(pulumi.CustomResource):
     @pulumi.getter(name="destinationType")
     def destination_type(self) -> pulumi.Output[_builtins.str]:
         """
-        The type of event stream destination (either 'eventbridge' or 'webhook').
+        The type of event stream destination. Possible values: `eventbridge`, `webhook`, or `action`.
         """
         return pulumi.get(self, "destination_type")
 

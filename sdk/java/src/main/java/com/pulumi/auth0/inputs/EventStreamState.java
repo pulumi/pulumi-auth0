@@ -3,6 +3,7 @@
 
 package com.pulumi.auth0.inputs;
 
+import com.pulumi.auth0.inputs.EventStreamActionConfigurationArgs;
 import com.pulumi.auth0.inputs.EventStreamEventbridgeConfigurationArgs;
 import com.pulumi.auth0.inputs.EventStreamWebhookConfigurationArgs;
 import com.pulumi.core.Output;
@@ -17,6 +18,21 @@ import javax.annotation.Nullable;
 public final class EventStreamState extends com.pulumi.resources.ResourceArgs {
 
     public static final EventStreamState Empty = new EventStreamState();
+
+    /**
+     * Configuration for the Action destination. This block is only applicable when `destinationType` is set to `action`. Action configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
+     * 
+     */
+    @Import(name="actionConfiguration")
+    private @Nullable Output<EventStreamActionConfigurationArgs> actionConfiguration;
+
+    /**
+     * @return Configuration for the Action destination. This block is only applicable when `destinationType` is set to `action`. Action configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
+     * 
+     */
+    public Optional<Output<EventStreamActionConfigurationArgs>> actionConfiguration() {
+        return Optional.ofNullable(this.actionConfiguration);
+    }
 
     /**
      * The ISO 8601 timestamp when the stream was created.
@@ -34,14 +50,14 @@ public final class EventStreamState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of event stream destination (either &#39;eventbridge&#39; or &#39;webhook&#39;).
+     * The type of event stream destination. Possible values: `eventbridge`, `webhook`, or `action`.
      * 
      */
     @Import(name="destinationType")
     private @Nullable Output<String> destinationType;
 
     /**
-     * @return The type of event stream destination (either &#39;eventbridge&#39; or &#39;webhook&#39;).
+     * @return The type of event stream destination. Possible values: `eventbridge`, `webhook`, or `action`.
      * 
      */
     public Optional<Output<String>> destinationType() {
@@ -141,6 +157,7 @@ public final class EventStreamState extends com.pulumi.resources.ResourceArgs {
     private EventStreamState() {}
 
     private EventStreamState(EventStreamState $) {
+        this.actionConfiguration = $.actionConfiguration;
         this.createdAt = $.createdAt;
         this.destinationType = $.destinationType;
         this.eventbridgeConfiguration = $.eventbridgeConfiguration;
@@ -170,6 +187,27 @@ public final class EventStreamState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param actionConfiguration Configuration for the Action destination. This block is only applicable when `destinationType` is set to `action`. Action configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder actionConfiguration(@Nullable Output<EventStreamActionConfigurationArgs> actionConfiguration) {
+            $.actionConfiguration = actionConfiguration;
+            return this;
+        }
+
+        /**
+         * @param actionConfiguration Configuration for the Action destination. This block is only applicable when `destinationType` is set to `action`. Action configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder actionConfiguration(EventStreamActionConfigurationArgs actionConfiguration) {
+            return actionConfiguration(Output.of(actionConfiguration));
+        }
+
+        /**
          * @param createdAt The ISO 8601 timestamp when the stream was created.
          * 
          * @return builder
@@ -191,7 +229,7 @@ public final class EventStreamState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param destinationType The type of event stream destination (either &#39;eventbridge&#39; or &#39;webhook&#39;).
+         * @param destinationType The type of event stream destination. Possible values: `eventbridge`, `webhook`, or `action`.
          * 
          * @return builder
          * 
@@ -202,7 +240,7 @@ public final class EventStreamState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param destinationType The type of event stream destination (either &#39;eventbridge&#39; or &#39;webhook&#39;).
+         * @param destinationType The type of event stream destination. Possible values: `eventbridge`, `webhook`, or `action`.
          * 
          * @return builder
          * 
