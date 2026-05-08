@@ -2944,6 +2944,13 @@
                     "type": "string",
                     "description": "Icon URL.\n"
                 },
+                "idTokenSignedResponseAlgs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of allowed algorithms for the ID token signature. If not set, RS256 will be applied at runtime. (Okta/OIDC Connections)\n"
+                },
                 "identityApi": {
                     "type": "string",
                     "description": "Azure AD Identity API. Available options are: `microsoft-identity-platform-v2.0` or `azure-active-directory-v1.0`.\n"
@@ -3032,6 +3039,10 @@
                 "passwordNoPersonalInfo": {
                     "$ref": "#/types/auth0:index/ConnectionOptionsPasswordNoPersonalInfo:ConnectionOptionsPasswordNoPersonalInfo",
                     "description": "Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\"\u003e`name`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`username`\" pulumi-lang-dotnet=\"`Username`\" pulumi-lang-go=\"`username`\" pulumi-lang-python=\"`username`\" pulumi-lang-yaml=\"`username`\" pulumi-lang-java=\"`username`\"\u003e`username`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`nickname`\" pulumi-lang-dotnet=\"`Nickname`\" pulumi-lang-go=\"`nickname`\" pulumi-lang-python=\"`nickname`\" pulumi-lang-yaml=\"`nickname`\" pulumi-lang-java=\"`nickname`\"\u003e`nickname`\u003c/span\u003e, `user_metadata.name`, `user_metadata.first`, `user_metadata.last`, user's \u003cspan pulumi-lang-nodejs=\"`email`\" pulumi-lang-dotnet=\"`Email`\" pulumi-lang-go=\"`email`\" pulumi-lang-python=\"`email`\" pulumi-lang-yaml=\"`email`\" pulumi-lang-java=\"`email`\"\u003e`email`\u003c/span\u003e, or first part of the user's \u003cspan pulumi-lang-nodejs=\"`email`\" pulumi-lang-dotnet=\"`Email`\" pulumi-lang-go=\"`email`\" pulumi-lang-python=\"`email`\" pulumi-lang-yaml=\"`email`\" pulumi-lang-java=\"`email`\"\u003e`email`\u003c/span\u003e.\n"
+                },
+                "passwordOptions": {
+                    "$ref": "#/types/auth0:index/ConnectionOptionsPasswordOptions:ConnectionOptionsPasswordOptions",
+                    "description": "Flexible password policy configuration. Only available for \u003cspan pulumi-lang-nodejs=\"`auth0`\" pulumi-lang-dotnet=\"`Auth0`\" pulumi-lang-go=\"`auth0`\" pulumi-lang-python=\"`auth0`\" pulumi-lang-yaml=\"`auth0`\" pulumi-lang-java=\"`auth0`\"\u003e`auth0`\u003c/span\u003e strategy connections. Cannot be set together with legacy password policy fields (\u003cspan pulumi-lang-nodejs=\"`passwordPolicy`\" pulumi-lang-dotnet=\"`PasswordPolicy`\" pulumi-lang-go=\"`passwordPolicy`\" pulumi-lang-python=\"`password_policy`\" pulumi-lang-yaml=\"`passwordPolicy`\" pulumi-lang-java=\"`passwordPolicy`\"\u003e`passwordPolicy`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`passwordComplexityOptions`\" pulumi-lang-dotnet=\"`PasswordComplexityOptions`\" pulumi-lang-go=\"`passwordComplexityOptions`\" pulumi-lang-python=\"`password_complexity_options`\" pulumi-lang-yaml=\"`passwordComplexityOptions`\" pulumi-lang-java=\"`passwordComplexityOptions`\"\u003e`passwordComplexityOptions`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`passwordHistory`\" pulumi-lang-dotnet=\"`PasswordHistory`\" pulumi-lang-go=\"`passwordHistory`\" pulumi-lang-python=\"`password_history`\" pulumi-lang-yaml=\"`passwordHistory`\" pulumi-lang-java=\"`passwordHistory`\"\u003e`passwordHistory`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`passwordNoPersonalInfo`\" pulumi-lang-dotnet=\"`PasswordNoPersonalInfo`\" pulumi-lang-go=\"`passwordNoPersonalInfo`\" pulumi-lang-python=\"`password_no_personal_info`\" pulumi-lang-yaml=\"`passwordNoPersonalInfo`\" pulumi-lang-java=\"`passwordNoPersonalInfo`\"\u003e`passwordNoPersonalInfo`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`passwordDictionary`\" pulumi-lang-dotnet=\"`PasswordDictionary`\" pulumi-lang-go=\"`passwordDictionary`\" pulumi-lang-python=\"`password_dictionary`\" pulumi-lang-yaml=\"`passwordDictionary`\" pulumi-lang-java=\"`passwordDictionary`\"\u003e`passwordDictionary`\u003c/span\u003e).\n"
                 },
                 "passwordPolicy": {
                     "type": "string",
@@ -3170,6 +3181,10 @@
                     "type": "string",
                     "description": "Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)\n"
                 },
+                "tokenEndpointJwtcaAudFormat": {
+                    "type": "string",
+                    "description": "Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: 'issuer' or 'token_endpoint'. (Okta/OIDC Connections)\n"
+                },
                 "totp": {
                     "$ref": "#/types/auth0:index/ConnectionOptionsTotp:ConnectionOptionsTotp",
                     "description": "Configuration options for one-time passwords.\n"
@@ -3255,6 +3270,7 @@
                         "passwordDictionary",
                         "passwordHistories",
                         "passwordNoPersonalInfo",
+                        "passwordOptions",
                         "passwordPolicy",
                         "scopes",
                         "setUserRootAttributes",
@@ -3918,6 +3934,155 @@
             },
             "type": "object"
         },
+        "auth0:index/ConnectionOptionsPasswordOptions:ConnectionOptionsPasswordOptions": {
+            "properties": {
+                "complexity": {
+                    "$ref": "#/types/auth0:index/ConnectionOptionsPasswordOptionsComplexity:ConnectionOptionsPasswordOptionsComplexity",
+                    "description": "Password complexity requirements.\n"
+                },
+                "dictionary": {
+                    "$ref": "#/types/auth0:index/ConnectionOptionsPasswordOptionsDictionary:ConnectionOptionsPasswordOptionsDictionary",
+                    "description": "Dictionary-based password validation.\n"
+                },
+                "history": {
+                    "$ref": "#/types/auth0:index/ConnectionOptionsPasswordOptionsHistory:ConnectionOptionsPasswordOptionsHistory",
+                    "description": "Password history enforcement.\n"
+                },
+                "profileData": {
+                    "$ref": "#/types/auth0:index/ConnectionOptionsPasswordOptionsProfileData:ConnectionOptionsPasswordOptionsProfileData",
+                    "description": "Personal information restriction policy.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "complexity",
+                        "dictionary",
+                        "history",
+                        "profileData"
+                    ]
+                }
+            }
+        },
+        "auth0:index/ConnectionOptionsPasswordOptionsComplexity:ConnectionOptionsPasswordOptionsComplexity": {
+            "properties": {
+                "characterTypeRule": {
+                    "type": "string",
+                    "description": "When all 4 character types are specified, determines if all or 3 of 4 are required. Possible values: \u003cspan pulumi-lang-nodejs=\"`all`\" pulumi-lang-dotnet=\"`All`\" pulumi-lang-go=\"`all`\" pulumi-lang-python=\"`all`\" pulumi-lang-yaml=\"`all`\" pulumi-lang-java=\"`all`\"\u003e`all`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`threeOfFour`\" pulumi-lang-dotnet=\"`ThreeOfFour`\" pulumi-lang-go=\"`threeOfFour`\" pulumi-lang-python=\"`three_of_four`\" pulumi-lang-yaml=\"`threeOfFour`\" pulumi-lang-java=\"`threeOfFour`\"\u003e`threeOfFour`\u003c/span\u003e. Default: \u003cspan pulumi-lang-nodejs=\"`all`\" pulumi-lang-dotnet=\"`All`\" pulumi-lang-go=\"`all`\" pulumi-lang-python=\"`all`\" pulumi-lang-yaml=\"`all`\" pulumi-lang-java=\"`all`\"\u003e`all`\u003c/span\u003e.\n"
+                },
+                "characterTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Required character types. Valid values: \u003cspan pulumi-lang-nodejs=\"`uppercase`\" pulumi-lang-dotnet=\"`Uppercase`\" pulumi-lang-go=\"`uppercase`\" pulumi-lang-python=\"`uppercase`\" pulumi-lang-yaml=\"`uppercase`\" pulumi-lang-java=\"`uppercase`\"\u003e`uppercase`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`lowercase`\" pulumi-lang-dotnet=\"`Lowercase`\" pulumi-lang-go=\"`lowercase`\" pulumi-lang-python=\"`lowercase`\" pulumi-lang-yaml=\"`lowercase`\" pulumi-lang-java=\"`lowercase`\"\u003e`lowercase`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`number`\" pulumi-lang-dotnet=\"`Number`\" pulumi-lang-go=\"`number`\" pulumi-lang-python=\"`number`\" pulumi-lang-yaml=\"`number`\" pulumi-lang-java=\"`number`\"\u003e`number`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`special`\" pulumi-lang-dotnet=\"`Special`\" pulumi-lang-go=\"`special`\" pulumi-lang-python=\"`special`\" pulumi-lang-yaml=\"`special`\" pulumi-lang-java=\"`special`\"\u003e`special`\u003c/span\u003e.\n"
+                },
+                "identicalCharacters": {
+                    "type": "string",
+                    "description": "Controls whether 3+ consecutive identical characters are allowed. Possible values: \u003cspan pulumi-lang-nodejs=\"`allow`\" pulumi-lang-dotnet=\"`Allow`\" pulumi-lang-go=\"`allow`\" pulumi-lang-python=\"`allow`\" pulumi-lang-yaml=\"`allow`\" pulumi-lang-java=\"`allow`\"\u003e`allow`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`block`\" pulumi-lang-dotnet=\"`Block`\" pulumi-lang-go=\"`block`\" pulumi-lang-python=\"`block`\" pulumi-lang-yaml=\"`block`\" pulumi-lang-java=\"`block`\"\u003e`block`\u003c/span\u003e. Default: \u003cspan pulumi-lang-nodejs=\"`allow`\" pulumi-lang-dotnet=\"`Allow`\" pulumi-lang-go=\"`allow`\" pulumi-lang-python=\"`allow`\" pulumi-lang-yaml=\"`allow`\" pulumi-lang-java=\"`allow`\"\u003e`allow`\u003c/span\u003e.\n"
+                },
+                "maxLengthExceeded": {
+                    "type": "string",
+                    "description": "Controls behavior when the password exceeds 72 bytes. Possible values: \u003cspan pulumi-lang-nodejs=\"`truncate`\" pulumi-lang-dotnet=\"`Truncate`\" pulumi-lang-go=\"`truncate`\" pulumi-lang-python=\"`truncate`\" pulumi-lang-yaml=\"`truncate`\" pulumi-lang-java=\"`truncate`\"\u003e`truncate`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`error`\" pulumi-lang-dotnet=\"`Error`\" pulumi-lang-go=\"`error`\" pulumi-lang-python=\"`error`\" pulumi-lang-yaml=\"`error`\" pulumi-lang-java=\"`error`\"\u003e`error`\u003c/span\u003e. Default: \u003cspan pulumi-lang-nodejs=\"`error`\" pulumi-lang-dotnet=\"`Error`\" pulumi-lang-go=\"`error`\" pulumi-lang-python=\"`error`\" pulumi-lang-yaml=\"`error`\" pulumi-lang-java=\"`error`\"\u003e`error`\u003c/span\u003e.\n"
+                },
+                "minLength": {
+                    "type": "integer",
+                    "description": "Minimum password length. Must be between 1 and 72. Default: 15.\n"
+                },
+                "sequentialCharacters": {
+                    "type": "string",
+                    "description": "Controls whether sequential characters (abc, 123, etc.) are allowed. Possible values: \u003cspan pulumi-lang-nodejs=\"`allow`\" pulumi-lang-dotnet=\"`Allow`\" pulumi-lang-go=\"`allow`\" pulumi-lang-python=\"`allow`\" pulumi-lang-yaml=\"`allow`\" pulumi-lang-java=\"`allow`\"\u003e`allow`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`block`\" pulumi-lang-dotnet=\"`Block`\" pulumi-lang-go=\"`block`\" pulumi-lang-python=\"`block`\" pulumi-lang-yaml=\"`block`\" pulumi-lang-java=\"`block`\"\u003e`block`\u003c/span\u003e. Default: \u003cspan pulumi-lang-nodejs=\"`allow`\" pulumi-lang-dotnet=\"`Allow`\" pulumi-lang-go=\"`allow`\" pulumi-lang-python=\"`allow`\" pulumi-lang-yaml=\"`allow`\" pulumi-lang-java=\"`allow`\"\u003e`allow`\u003c/span\u003e.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "characterTypeRule",
+                        "characterTypes",
+                        "identicalCharacters",
+                        "maxLengthExceeded",
+                        "minLength",
+                        "sequentialCharacters"
+                    ]
+                }
+            }
+        },
+        "auth0:index/ConnectionOptionsPasswordOptionsDictionary:ConnectionOptionsPasswordOptionsDictionary": {
+            "properties": {
+                "active": {
+                    "type": "boolean",
+                    "description": "Enables dictionary checking.\n"
+                },
+                "customs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Custom list of disallowed terms.\n"
+                },
+                "default": {
+                    "type": "string",
+                    "description": "Default dictionary to use. Possible values: \u003cspan pulumi-lang-nodejs=\"`en10k`\" pulumi-lang-dotnet=\"`En10k`\" pulumi-lang-go=\"`en10k`\" pulumi-lang-python=\"`en_10k`\" pulumi-lang-yaml=\"`en10k`\" pulumi-lang-java=\"`en10k`\"\u003e`en10k`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`en100k`\" pulumi-lang-dotnet=\"`En100k`\" pulumi-lang-go=\"`en100k`\" pulumi-lang-python=\"`en_100k`\" pulumi-lang-yaml=\"`en100k`\" pulumi-lang-java=\"`en100k`\"\u003e`en100k`\u003c/span\u003e. Default: \u003cspan pulumi-lang-nodejs=\"`en100k`\" pulumi-lang-dotnet=\"`En100k`\" pulumi-lang-go=\"`en100k`\" pulumi-lang-python=\"`en_100k`\" pulumi-lang-yaml=\"`en100k`\" pulumi-lang-java=\"`en100k`\"\u003e`en100k`\u003c/span\u003e.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "active",
+                        "customs",
+                        "default"
+                    ]
+                }
+            }
+        },
+        "auth0:index/ConnectionOptionsPasswordOptionsHistory:ConnectionOptionsPasswordOptionsHistory": {
+            "properties": {
+                "active": {
+                    "type": "boolean",
+                    "description": "Enables password history checking.\n"
+                },
+                "size": {
+                    "type": "integer",
+                    "description": "Number of previous passwords to check against. Must be between 1 and 24. Default: 3.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "active",
+                        "size"
+                    ]
+                }
+            }
+        },
+        "auth0:index/ConnectionOptionsPasswordOptionsProfileData:ConnectionOptionsPasswordOptionsProfileData": {
+            "properties": {
+                "active": {
+                    "type": "boolean",
+                    "description": "Prevents users from including profile data in passwords.\n"
+                },
+                "blockedFields": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "User profile fields to block from passwords. Maximum 12 items, each max 100 characters.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "active",
+                        "blockedFields"
+                    ]
+                }
+            }
+        },
         "auth0:index/ConnectionOptionsSigningKey:ConnectionOptionsSigningKey": {
             "properties": {
                 "cert": {
@@ -4538,6 +4703,18 @@
                     ]
                 }
             }
+        },
+        "auth0:index/EventStreamActionConfiguration:EventStreamActionConfiguration": {
+            "properties": {
+                "actionId": {
+                    "type": "string",
+                    "description": "The ID of the Auth0 Action to use as the event stream destination.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "actionId"
+            ]
         },
         "auth0:index/EventStreamEventbridgeConfiguration:EventStreamEventbridgeConfiguration": {
             "properties": {
@@ -5672,6 +5849,22 @@
                 }
             },
             "type": "object"
+        },
+        "auth0:index/ResourceServerAuthorizationPolicy:ResourceServerAuthorizationPolicy": {
+            "properties": {
+                "policyId": {
+                    "type": "string",
+                    "description": "Identifier of the authorization policy.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "policyId"
+                    ]
+                }
+            }
         },
         "auth0:index/ResourceServerProofOfPossession:ResourceServerProofOfPossession": {
             "properties": {
@@ -10750,6 +10943,13 @@
                     "type": "string",
                     "description": "Icon URL.\n"
                 },
+                "idTokenSignedResponseAlgs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of allowed algorithms for the ID token signature. If not set, RS256 will be applied at runtime. (Okta/OIDC Connections)\n"
+                },
                 "identityApi": {
                     "type": "string",
                     "description": "Azure AD Identity API. Available options are: `microsoft-identity-platform-v2.0` or `azure-active-directory-v1.0`.\n"
@@ -10856,6 +11056,13 @@
                         "$ref": "#/types/auth0:index/getConnectionOptionPasswordNoPersonalInfo:getConnectionOptionPasswordNoPersonalInfo"
                     },
                     "description": "Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\"\u003e`name`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`username`\" pulumi-lang-dotnet=\"`Username`\" pulumi-lang-go=\"`username`\" pulumi-lang-python=\"`username`\" pulumi-lang-yaml=\"`username`\" pulumi-lang-java=\"`username`\"\u003e`username`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`nickname`\" pulumi-lang-dotnet=\"`Nickname`\" pulumi-lang-go=\"`nickname`\" pulumi-lang-python=\"`nickname`\" pulumi-lang-yaml=\"`nickname`\" pulumi-lang-java=\"`nickname`\"\u003e`nickname`\u003c/span\u003e, `user_metadata.name`, `user_metadata.first`, `user_metadata.last`, user's \u003cspan pulumi-lang-nodejs=\"`email`\" pulumi-lang-dotnet=\"`Email`\" pulumi-lang-go=\"`email`\" pulumi-lang-python=\"`email`\" pulumi-lang-yaml=\"`email`\" pulumi-lang-java=\"`email`\"\u003e`email`\u003c/span\u003e, or first part of the user's \u003cspan pulumi-lang-nodejs=\"`email`\" pulumi-lang-dotnet=\"`Email`\" pulumi-lang-go=\"`email`\" pulumi-lang-python=\"`email`\" pulumi-lang-yaml=\"`email`\" pulumi-lang-java=\"`email`\"\u003e`email`\u003c/span\u003e.\n"
+                },
+                "passwordOptions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/getConnectionOptionPasswordOption:getConnectionOptionPasswordOption"
+                    },
+                    "description": "Flexible password policy configuration. Only available for \u003cspan pulumi-lang-nodejs=\"`auth0`\" pulumi-lang-dotnet=\"`Auth0`\" pulumi-lang-go=\"`auth0`\" pulumi-lang-python=\"`auth0`\" pulumi-lang-yaml=\"`auth0`\" pulumi-lang-java=\"`auth0`\"\u003e`auth0`\u003c/span\u003e strategy connections. Cannot be set together with legacy password policy fields (\u003cspan pulumi-lang-nodejs=\"`passwordPolicy`\" pulumi-lang-dotnet=\"`PasswordPolicy`\" pulumi-lang-go=\"`passwordPolicy`\" pulumi-lang-python=\"`password_policy`\" pulumi-lang-yaml=\"`passwordPolicy`\" pulumi-lang-java=\"`passwordPolicy`\"\u003e`passwordPolicy`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`passwordComplexityOptions`\" pulumi-lang-dotnet=\"`PasswordComplexityOptions`\" pulumi-lang-go=\"`passwordComplexityOptions`\" pulumi-lang-python=\"`password_complexity_options`\" pulumi-lang-yaml=\"`passwordComplexityOptions`\" pulumi-lang-java=\"`passwordComplexityOptions`\"\u003e`passwordComplexityOptions`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`passwordHistory`\" pulumi-lang-dotnet=\"`PasswordHistory`\" pulumi-lang-go=\"`passwordHistory`\" pulumi-lang-python=\"`password_history`\" pulumi-lang-yaml=\"`passwordHistory`\" pulumi-lang-java=\"`passwordHistory`\"\u003e`passwordHistory`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`passwordNoPersonalInfo`\" pulumi-lang-dotnet=\"`PasswordNoPersonalInfo`\" pulumi-lang-go=\"`passwordNoPersonalInfo`\" pulumi-lang-python=\"`password_no_personal_info`\" pulumi-lang-yaml=\"`passwordNoPersonalInfo`\" pulumi-lang-java=\"`passwordNoPersonalInfo`\"\u003e`passwordNoPersonalInfo`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`passwordDictionary`\" pulumi-lang-dotnet=\"`PasswordDictionary`\" pulumi-lang-go=\"`passwordDictionary`\" pulumi-lang-python=\"`password_dictionary`\" pulumi-lang-yaml=\"`passwordDictionary`\" pulumi-lang-java=\"`passwordDictionary`\"\u003e`passwordDictionary`\u003c/span\u003e).\n"
                 },
                 "passwordPolicy": {
                     "type": "string",
@@ -10997,6 +11204,10 @@
                     "type": "string",
                     "description": "Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)\n"
                 },
+                "tokenEndpointJwtcaAudFormat": {
+                    "type": "string",
+                    "description": "Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: 'issuer' or 'token_endpoint'. (Okta/OIDC Connections)\n"
+                },
                 "totps": {
                     "type": "array",
                     "items": {
@@ -11111,6 +11322,7 @@
                 "globalTokenRevocationJwtIss",
                 "globalTokenRevocationJwtSub",
                 "iconUrl",
+                "idTokenSignedResponseAlgs",
                 "identityApi",
                 "idpInitiateds",
                 "importMode",
@@ -11131,6 +11343,7 @@
                 "passwordDictionaries",
                 "passwordHistories",
                 "passwordNoPersonalInfos",
+                "passwordOptions",
                 "passwordPolicy",
                 "pingFederateBaseUrl",
                 "pkceEnabled",
@@ -11163,6 +11376,7 @@
                 "tokenEndpoint",
                 "tokenEndpointAuthMethod",
                 "tokenEndpointAuthSigningAlg",
+                "tokenEndpointJwtcaAudFormat",
                 "totps",
                 "twilioSid",
                 "twilioToken",
@@ -11972,6 +12186,172 @@
                 }
             }
         },
+        "auth0:index/getConnectionOptionPasswordOption:getConnectionOptionPasswordOption": {
+            "properties": {
+                "complexities": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/getConnectionOptionPasswordOptionComplexity:getConnectionOptionPasswordOptionComplexity"
+                    },
+                    "description": "Password complexity requirements.\n"
+                },
+                "dictionaries": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/getConnectionOptionPasswordOptionDictionary:getConnectionOptionPasswordOptionDictionary"
+                    },
+                    "description": "Dictionary-based password validation.\n"
+                },
+                "histories": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/getConnectionOptionPasswordOptionHistory:getConnectionOptionPasswordOptionHistory"
+                    },
+                    "description": "Password history enforcement.\n"
+                },
+                "profileDatas": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/getConnectionOptionPasswordOptionProfileData:getConnectionOptionPasswordOptionProfileData"
+                    },
+                    "description": "Personal information restriction policy.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "complexities",
+                "dictionaries",
+                "histories",
+                "profileDatas"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getConnectionOptionPasswordOptionComplexity:getConnectionOptionPasswordOptionComplexity": {
+            "properties": {
+                "characterTypeRule": {
+                    "type": "string",
+                    "description": "When all 4 character types are specified, determines if all or 3 of 4 are required. Possible values: \u003cspan pulumi-lang-nodejs=\"`all`\" pulumi-lang-dotnet=\"`All`\" pulumi-lang-go=\"`all`\" pulumi-lang-python=\"`all`\" pulumi-lang-yaml=\"`all`\" pulumi-lang-java=\"`all`\"\u003e`all`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`threeOfFour`\" pulumi-lang-dotnet=\"`ThreeOfFour`\" pulumi-lang-go=\"`threeOfFour`\" pulumi-lang-python=\"`three_of_four`\" pulumi-lang-yaml=\"`threeOfFour`\" pulumi-lang-java=\"`threeOfFour`\"\u003e`threeOfFour`\u003c/span\u003e. Default: \u003cspan pulumi-lang-nodejs=\"`all`\" pulumi-lang-dotnet=\"`All`\" pulumi-lang-go=\"`all`\" pulumi-lang-python=\"`all`\" pulumi-lang-yaml=\"`all`\" pulumi-lang-java=\"`all`\"\u003e`all`\u003c/span\u003e.\n"
+                },
+                "characterTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Required character types. Valid values: \u003cspan pulumi-lang-nodejs=\"`uppercase`\" pulumi-lang-dotnet=\"`Uppercase`\" pulumi-lang-go=\"`uppercase`\" pulumi-lang-python=\"`uppercase`\" pulumi-lang-yaml=\"`uppercase`\" pulumi-lang-java=\"`uppercase`\"\u003e`uppercase`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`lowercase`\" pulumi-lang-dotnet=\"`Lowercase`\" pulumi-lang-go=\"`lowercase`\" pulumi-lang-python=\"`lowercase`\" pulumi-lang-yaml=\"`lowercase`\" pulumi-lang-java=\"`lowercase`\"\u003e`lowercase`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`number`\" pulumi-lang-dotnet=\"`Number`\" pulumi-lang-go=\"`number`\" pulumi-lang-python=\"`number`\" pulumi-lang-yaml=\"`number`\" pulumi-lang-java=\"`number`\"\u003e`number`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`special`\" pulumi-lang-dotnet=\"`Special`\" pulumi-lang-go=\"`special`\" pulumi-lang-python=\"`special`\" pulumi-lang-yaml=\"`special`\" pulumi-lang-java=\"`special`\"\u003e`special`\u003c/span\u003e.\n"
+                },
+                "identicalCharacters": {
+                    "type": "string",
+                    "description": "Controls whether 3+ consecutive identical characters are allowed. Possible values: \u003cspan pulumi-lang-nodejs=\"`allow`\" pulumi-lang-dotnet=\"`Allow`\" pulumi-lang-go=\"`allow`\" pulumi-lang-python=\"`allow`\" pulumi-lang-yaml=\"`allow`\" pulumi-lang-java=\"`allow`\"\u003e`allow`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`block`\" pulumi-lang-dotnet=\"`Block`\" pulumi-lang-go=\"`block`\" pulumi-lang-python=\"`block`\" pulumi-lang-yaml=\"`block`\" pulumi-lang-java=\"`block`\"\u003e`block`\u003c/span\u003e. Default: \u003cspan pulumi-lang-nodejs=\"`allow`\" pulumi-lang-dotnet=\"`Allow`\" pulumi-lang-go=\"`allow`\" pulumi-lang-python=\"`allow`\" pulumi-lang-yaml=\"`allow`\" pulumi-lang-java=\"`allow`\"\u003e`allow`\u003c/span\u003e.\n"
+                },
+                "maxLengthExceeded": {
+                    "type": "string",
+                    "description": "Controls behavior when the password exceeds 72 bytes. Possible values: \u003cspan pulumi-lang-nodejs=\"`truncate`\" pulumi-lang-dotnet=\"`Truncate`\" pulumi-lang-go=\"`truncate`\" pulumi-lang-python=\"`truncate`\" pulumi-lang-yaml=\"`truncate`\" pulumi-lang-java=\"`truncate`\"\u003e`truncate`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`error`\" pulumi-lang-dotnet=\"`Error`\" pulumi-lang-go=\"`error`\" pulumi-lang-python=\"`error`\" pulumi-lang-yaml=\"`error`\" pulumi-lang-java=\"`error`\"\u003e`error`\u003c/span\u003e. Default: \u003cspan pulumi-lang-nodejs=\"`error`\" pulumi-lang-dotnet=\"`Error`\" pulumi-lang-go=\"`error`\" pulumi-lang-python=\"`error`\" pulumi-lang-yaml=\"`error`\" pulumi-lang-java=\"`error`\"\u003e`error`\u003c/span\u003e.\n"
+                },
+                "minLength": {
+                    "type": "integer",
+                    "description": "Minimum password length. Must be between 1 and 72. Default: 15.\n"
+                },
+                "sequentialCharacters": {
+                    "type": "string",
+                    "description": "Controls whether sequential characters (abc, 123, etc.) are allowed. Possible values: \u003cspan pulumi-lang-nodejs=\"`allow`\" pulumi-lang-dotnet=\"`Allow`\" pulumi-lang-go=\"`allow`\" pulumi-lang-python=\"`allow`\" pulumi-lang-yaml=\"`allow`\" pulumi-lang-java=\"`allow`\"\u003e`allow`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`block`\" pulumi-lang-dotnet=\"`Block`\" pulumi-lang-go=\"`block`\" pulumi-lang-python=\"`block`\" pulumi-lang-yaml=\"`block`\" pulumi-lang-java=\"`block`\"\u003e`block`\u003c/span\u003e. Default: \u003cspan pulumi-lang-nodejs=\"`allow`\" pulumi-lang-dotnet=\"`Allow`\" pulumi-lang-go=\"`allow`\" pulumi-lang-python=\"`allow`\" pulumi-lang-yaml=\"`allow`\" pulumi-lang-java=\"`allow`\"\u003e`allow`\u003c/span\u003e.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "characterTypeRule",
+                "characterTypes",
+                "identicalCharacters",
+                "maxLengthExceeded",
+                "minLength",
+                "sequentialCharacters"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getConnectionOptionPasswordOptionDictionary:getConnectionOptionPasswordOptionDictionary": {
+            "properties": {
+                "active": {
+                    "type": "boolean",
+                    "description": "Enables dictionary checking.\n"
+                },
+                "customs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Custom list of disallowed terms.\n"
+                },
+                "default": {
+                    "type": "string",
+                    "description": "Default dictionary to use. Possible values: \u003cspan pulumi-lang-nodejs=\"`en10k`\" pulumi-lang-dotnet=\"`En10k`\" pulumi-lang-go=\"`en10k`\" pulumi-lang-python=\"`en_10k`\" pulumi-lang-yaml=\"`en10k`\" pulumi-lang-java=\"`en10k`\"\u003e`en10k`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`en100k`\" pulumi-lang-dotnet=\"`En100k`\" pulumi-lang-go=\"`en100k`\" pulumi-lang-python=\"`en_100k`\" pulumi-lang-yaml=\"`en100k`\" pulumi-lang-java=\"`en100k`\"\u003e`en100k`\u003c/span\u003e. Default: \u003cspan pulumi-lang-nodejs=\"`en100k`\" pulumi-lang-dotnet=\"`En100k`\" pulumi-lang-go=\"`en100k`\" pulumi-lang-python=\"`en_100k`\" pulumi-lang-yaml=\"`en100k`\" pulumi-lang-java=\"`en100k`\"\u003e`en100k`\u003c/span\u003e.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "active",
+                "customs",
+                "default"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getConnectionOptionPasswordOptionHistory:getConnectionOptionPasswordOptionHistory": {
+            "properties": {
+                "active": {
+                    "type": "boolean",
+                    "description": "Enables password history checking.\n"
+                },
+                "size": {
+                    "type": "integer",
+                    "description": "Number of previous passwords to check against. Must be between 1 and 24. Default: 3.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "active",
+                "size"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getConnectionOptionPasswordOptionProfileData:getConnectionOptionPasswordOptionProfileData": {
+            "properties": {
+                "active": {
+                    "type": "boolean",
+                    "description": "Prevents users from including profile data in passwords.\n"
+                },
+                "blockedFields": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "User profile fields to block from passwords. Maximum 12 items, each max 100 characters.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "active",
+                "blockedFields"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "auth0:index/getConnectionOptionSigningKey:getConnectionOptionSigningKey": {
             "properties": {
                 "cert": {
@@ -12607,6 +12987,23 @@
                 "lastVerifiedAt",
                 "methods",
                 "status"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getEventStreamActionConfiguration:getEventStreamActionConfiguration": {
+            "properties": {
+                "actionId": {
+                    "type": "string",
+                    "description": "The ID of the Auth0 Action to use as the event stream destination.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "actionId"
             ],
             "language": {
                 "nodejs": {
@@ -13483,6 +13880,23 @@
             "required": [
                 "disable",
                 "type"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getResourceServerAuthorizationPolicy:getResourceServerAuthorizationPolicy": {
+            "properties": {
+                "policyId": {
+                    "type": "string",
+                    "description": "Identifier of the authorization policy.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "policyId"
             ],
             "language": {
                 "nodejs": {
@@ -18027,15 +18441,19 @@
             }
         },
         "auth0:index/eventStream:EventStream": {
-            "description": "Allows you to manage Auth0 Event Streams.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\n// Creates an event stream of type eventbridge\nconst myEventStreamEventBridge = new auth0.EventStream(\"my_event_stream_event_bridge\", {\n    name: \"my-eventbridge\",\n    destinationType: \"eventbridge\",\n    subscriptions: [\n        \"user.created\",\n        \"user.updated\",\n    ],\n    eventbridgeConfiguration: {\n        awsAccountId: \"242849305777\",\n        awsRegion: \"us-east-1\",\n    },\n});\n// Creates an event stream of type webhook\nconst myEventStreamWebhook = new auth0.EventStream(\"my_event_stream_webhook\", {\n    name: \"my-webhook\",\n    destinationType: \"webhook\",\n    subscriptions: [\n        \"user.created\",\n        \"user.updated\",\n    ],\n    webhookConfiguration: {\n        webhookEndpoint: \"https://eof28wtn4v4506o.m.pipedream.net\",\n        webhookAuthorization: {\n            method: \"bearer\",\n            token: \"123456789\",\n        },\n    },\n});\nconst config = new pulumi.Config();\n// The webhook token\nconst webhookToken = config.require(\"webhookToken\");\nconst myEventStreamWebhookSecure = new auth0.EventStream(\"my_event_stream_webhook_secure\", {\n    name: \"my-webhook-secure\",\n    destinationType: \"webhook\",\n    subscriptions: [\n        \"user.created\",\n        \"user.updated\",\n    ],\n    webhookConfiguration: {\n        webhookEndpoint: \"https://eof28wtn4v4506o.m.pipedream.net\",\n        webhookAuthorization: {\n            method: \"bearer\",\n            tokenWo: webhookToken,\n            tokenWoVersion: 1,\n        },\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\n# Creates an event stream of type eventbridge\nmy_event_stream_event_bridge = auth0.EventStream(\"my_event_stream_event_bridge\",\n    name=\"my-eventbridge\",\n    destination_type=\"eventbridge\",\n    subscriptions=[\n        \"user.created\",\n        \"user.updated\",\n    ],\n    eventbridge_configuration={\n        \"aws_account_id\": \"242849305777\",\n        \"aws_region\": \"us-east-1\",\n    })\n# Creates an event stream of type webhook\nmy_event_stream_webhook = auth0.EventStream(\"my_event_stream_webhook\",\n    name=\"my-webhook\",\n    destination_type=\"webhook\",\n    subscriptions=[\n        \"user.created\",\n        \"user.updated\",\n    ],\n    webhook_configuration={\n        \"webhook_endpoint\": \"https://eof28wtn4v4506o.m.pipedream.net\",\n        \"webhook_authorization\": {\n            \"method\": \"bearer\",\n            \"token\": \"123456789\",\n        },\n    })\nconfig = pulumi.Config()\n# The webhook token\nwebhook_token = config.require(\"webhookToken\")\nmy_event_stream_webhook_secure = auth0.EventStream(\"my_event_stream_webhook_secure\",\n    name=\"my-webhook-secure\",\n    destination_type=\"webhook\",\n    subscriptions=[\n        \"user.created\",\n        \"user.updated\",\n    ],\n    webhook_configuration={\n        \"webhook_endpoint\": \"https://eof28wtn4v4506o.m.pipedream.net\",\n        \"webhook_authorization\": {\n            \"method\": \"bearer\",\n            \"token_wo\": webhook_token,\n            \"token_wo_version\": 1,\n        },\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Creates an event stream of type eventbridge\n    var myEventStreamEventBridge = new Auth0.Index.EventStream(\"my_event_stream_event_bridge\", new()\n    {\n        Name = \"my-eventbridge\",\n        DestinationType = \"eventbridge\",\n        Subscriptions = new[]\n        {\n            \"user.created\",\n            \"user.updated\",\n        },\n        EventbridgeConfiguration = new Auth0.Inputs.EventStreamEventbridgeConfigurationArgs\n        {\n            AwsAccountId = \"242849305777\",\n            AwsRegion = \"us-east-1\",\n        },\n    });\n\n    // Creates an event stream of type webhook\n    var myEventStreamWebhook = new Auth0.Index.EventStream(\"my_event_stream_webhook\", new()\n    {\n        Name = \"my-webhook\",\n        DestinationType = \"webhook\",\n        Subscriptions = new[]\n        {\n            \"user.created\",\n            \"user.updated\",\n        },\n        WebhookConfiguration = new Auth0.Inputs.EventStreamWebhookConfigurationArgs\n        {\n            WebhookEndpoint = \"https://eof28wtn4v4506o.m.pipedream.net\",\n            WebhookAuthorization = new Auth0.Inputs.EventStreamWebhookConfigurationWebhookAuthorizationArgs\n            {\n                Method = \"bearer\",\n                Token = \"123456789\",\n            },\n        },\n    });\n\n    var config = new Config();\n    // The webhook token\n    var webhookToken = config.Require(\"webhookToken\");\n    var myEventStreamWebhookSecure = new Auth0.Index.EventStream(\"my_event_stream_webhook_secure\", new()\n    {\n        Name = \"my-webhook-secure\",\n        DestinationType = \"webhook\",\n        Subscriptions = new[]\n        {\n            \"user.created\",\n            \"user.updated\",\n        },\n        WebhookConfiguration = new Auth0.Inputs.EventStreamWebhookConfigurationArgs\n        {\n            WebhookEndpoint = \"https://eof28wtn4v4506o.m.pipedream.net\",\n            WebhookAuthorization = new Auth0.Inputs.EventStreamWebhookConfigurationWebhookAuthorizationArgs\n            {\n                Method = \"bearer\",\n                TokenWo = webhookToken,\n                TokenWoVersion = 1,\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Creates an event stream of type eventbridge\n\t\t_, err := auth0.NewEventStream(ctx, \"my_event_stream_event_bridge\", \u0026auth0.EventStreamArgs{\n\t\t\tName:            pulumi.String(\"my-eventbridge\"),\n\t\t\tDestinationType: pulumi.String(\"eventbridge\"),\n\t\t\tSubscriptions: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"user.created\"),\n\t\t\t\tpulumi.String(\"user.updated\"),\n\t\t\t},\n\t\t\tEventbridgeConfiguration: \u0026auth0.EventStreamEventbridgeConfigurationArgs{\n\t\t\t\tAwsAccountId: pulumi.String(\"242849305777\"),\n\t\t\t\tAwsRegion:    pulumi.String(\"us-east-1\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Creates an event stream of type webhook\n\t\t_, err = auth0.NewEventStream(ctx, \"my_event_stream_webhook\", \u0026auth0.EventStreamArgs{\n\t\t\tName:            pulumi.String(\"my-webhook\"),\n\t\t\tDestinationType: pulumi.String(\"webhook\"),\n\t\t\tSubscriptions: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"user.created\"),\n\t\t\t\tpulumi.String(\"user.updated\"),\n\t\t\t},\n\t\t\tWebhookConfiguration: \u0026auth0.EventStreamWebhookConfigurationArgs{\n\t\t\t\tWebhookEndpoint: pulumi.String(\"https://eof28wtn4v4506o.m.pipedream.net\"),\n\t\t\t\tWebhookAuthorization: \u0026auth0.EventStreamWebhookConfigurationWebhookAuthorizationArgs{\n\t\t\t\t\tMethod: pulumi.String(\"bearer\"),\n\t\t\t\t\tToken:  pulumi.String(\"123456789\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tcfg := config.New(ctx, \"\")\n\t\t// The webhook token\n\t\twebhookToken := cfg.Require(\"webhookToken\")\n\t\t_, err = auth0.NewEventStream(ctx, \"my_event_stream_webhook_secure\", \u0026auth0.EventStreamArgs{\n\t\t\tName:            pulumi.String(\"my-webhook-secure\"),\n\t\t\tDestinationType: pulumi.String(\"webhook\"),\n\t\t\tSubscriptions: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"user.created\"),\n\t\t\t\tpulumi.String(\"user.updated\"),\n\t\t\t},\n\t\t\tWebhookConfiguration: \u0026auth0.EventStreamWebhookConfigurationArgs{\n\t\t\t\tWebhookEndpoint: pulumi.String(\"https://eof28wtn4v4506o.m.pipedream.net\"),\n\t\t\t\tWebhookAuthorization: \u0026auth0.EventStreamWebhookConfigurationWebhookAuthorizationArgs{\n\t\t\t\t\tMethod:         pulumi.String(\"bearer\"),\n\t\t\t\t\tTokenWo:        pulumi.String(pulumi.String(webhookToken)),\n\t\t\t\t\tTokenWoVersion: pulumi.Int(1),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.EventStream;\nimport com.pulumi.auth0.EventStreamArgs;\nimport com.pulumi.auth0.inputs.EventStreamEventbridgeConfigurationArgs;\nimport com.pulumi.auth0.inputs.EventStreamWebhookConfigurationArgs;\nimport com.pulumi.auth0.inputs.EventStreamWebhookConfigurationWebhookAuthorizationArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var config = ctx.config();\n        // Creates an event stream of type eventbridge\n        var myEventStreamEventBridge = new EventStream(\"myEventStreamEventBridge\", EventStreamArgs.builder()\n            .name(\"my-eventbridge\")\n            .destinationType(\"eventbridge\")\n            .subscriptions(            \n                \"user.created\",\n                \"user.updated\")\n            .eventbridgeConfiguration(EventStreamEventbridgeConfigurationArgs.builder()\n                .awsAccountId(\"242849305777\")\n                .awsRegion(\"us-east-1\")\n                .build())\n            .build());\n\n        // Creates an event stream of type webhook\n        var myEventStreamWebhook = new EventStream(\"myEventStreamWebhook\", EventStreamArgs.builder()\n            .name(\"my-webhook\")\n            .destinationType(\"webhook\")\n            .subscriptions(            \n                \"user.created\",\n                \"user.updated\")\n            .webhookConfiguration(EventStreamWebhookConfigurationArgs.builder()\n                .webhookEndpoint(\"https://eof28wtn4v4506o.m.pipedream.net\")\n                .webhookAuthorization(EventStreamWebhookConfigurationWebhookAuthorizationArgs.builder()\n                    .method(\"bearer\")\n                    .token(\"123456789\")\n                    .build())\n                .build())\n            .build());\n\n        final var webhookToken = config.require(\"webhookToken\");\n        var myEventStreamWebhookSecure = new EventStream(\"myEventStreamWebhookSecure\", EventStreamArgs.builder()\n            .name(\"my-webhook-secure\")\n            .destinationType(\"webhook\")\n            .subscriptions(            \n                \"user.created\",\n                \"user.updated\")\n            .webhookConfiguration(EventStreamWebhookConfigurationArgs.builder()\n                .webhookEndpoint(\"https://eof28wtn4v4506o.m.pipedream.net\")\n                .webhookAuthorization(EventStreamWebhookConfigurationWebhookAuthorizationArgs.builder()\n                    .method(\"bearer\")\n                    .tokenWo(webhookToken)\n                    .tokenWoVersion(1)\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nconfiguration:\n  # Creates an event stream with write-only token (recommended for security)\n  # The token can be passed via variable or ephemeral resource\n  webhookToken:\n    type: string\nresources:\n  # Creates an event stream of type eventbridge\n  myEventStreamEventBridge:\n    type: auth0:EventStream\n    name: my_event_stream_event_bridge\n    properties:\n      name: my-eventbridge\n      destinationType: eventbridge\n      subscriptions:\n        - user.created\n        - user.updated\n      eventbridgeConfiguration:\n        awsAccountId: '242849305777'\n        awsRegion: us-east-1\n  # Creates an event stream of type webhook\n  myEventStreamWebhook:\n    type: auth0:EventStream\n    name: my_event_stream_webhook\n    properties:\n      name: my-webhook\n      destinationType: webhook\n      subscriptions:\n        - user.created\n        - user.updated\n      webhookConfiguration:\n        webhookEndpoint: https://eof28wtn4v4506o.m.pipedream.net\n        webhookAuthorization:\n          method: bearer\n          token: '123456789'\n  myEventStreamWebhookSecure:\n    type: auth0:EventStream\n    name: my_event_stream_webhook_secure\n    properties:\n      name: my-webhook-secure\n      destinationType: webhook\n      subscriptions:\n        - user.created\n        - user.updated\n      webhookConfiguration:\n        webhookEndpoint: https://eof28wtn4v4506o.m.pipedream.net\n        webhookAuthorization:\n          method: bearer\n          tokenWo: ${webhookToken}\n          tokenWoVersion: 1\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThis resource can be imported by specifying the Event Stream ID.\n\nExample:\n\n```sh\n$ pulumi import auth0:index/eventStream:EventStream my_stream \"est_XXXXXXXXXXXXXXXX\"\n```\n\n",
+            "description": "Allows you to manage Auth0 Event Streams.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\n// Creates an event stream of type eventbridge\nconst myEventStreamEventBridge = new auth0.EventStream(\"my_event_stream_event_bridge\", {\n    name: \"my-eventbridge\",\n    destinationType: \"eventbridge\",\n    subscriptions: [\n        \"user.created\",\n        \"user.updated\",\n    ],\n    eventbridgeConfiguration: {\n        awsAccountId: \"242849305777\",\n        awsRegion: \"us-east-1\",\n    },\n});\n// Creates an event stream of type webhook\nconst myEventStreamWebhook = new auth0.EventStream(\"my_event_stream_webhook\", {\n    name: \"my-webhook\",\n    destinationType: \"webhook\",\n    subscriptions: [\n        \"user.created\",\n        \"user.updated\",\n    ],\n    webhookConfiguration: {\n        webhookEndpoint: \"https://eof28wtn4v4506o.m.pipedream.net\",\n        webhookAuthorization: {\n            method: \"bearer\",\n            token: \"123456789\",\n        },\n    },\n});\nconst config = new pulumi.Config();\n// The webhook token\nconst webhookToken = config.require(\"webhookToken\");\nconst myEventStreamWebhookSecure = new auth0.EventStream(\"my_event_stream_webhook_secure\", {\n    name: \"my-webhook-secure\",\n    destinationType: \"webhook\",\n    subscriptions: [\n        \"user.created\",\n        \"user.updated\",\n    ],\n    webhookConfiguration: {\n        webhookEndpoint: \"https://eof28wtn4v4506o.m.pipedream.net\",\n        webhookAuthorization: {\n            method: \"bearer\",\n            tokenWo: webhookToken,\n            tokenWoVersion: 1,\n        },\n    },\n});\n// Creates an event stream of type action\nconst myEventStreamAction = new auth0.EventStream(\"my_event_stream_action\", {\n    name: \"my-action-stream\",\n    destinationType: \"action\",\n    subscriptions: [\n        \"user.created\",\n        \"user.updated\",\n    ],\n    actionConfiguration: {\n        actionId: myAction.id,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\n# Creates an event stream of type eventbridge\nmy_event_stream_event_bridge = auth0.EventStream(\"my_event_stream_event_bridge\",\n    name=\"my-eventbridge\",\n    destination_type=\"eventbridge\",\n    subscriptions=[\n        \"user.created\",\n        \"user.updated\",\n    ],\n    eventbridge_configuration={\n        \"aws_account_id\": \"242849305777\",\n        \"aws_region\": \"us-east-1\",\n    })\n# Creates an event stream of type webhook\nmy_event_stream_webhook = auth0.EventStream(\"my_event_stream_webhook\",\n    name=\"my-webhook\",\n    destination_type=\"webhook\",\n    subscriptions=[\n        \"user.created\",\n        \"user.updated\",\n    ],\n    webhook_configuration={\n        \"webhook_endpoint\": \"https://eof28wtn4v4506o.m.pipedream.net\",\n        \"webhook_authorization\": {\n            \"method\": \"bearer\",\n            \"token\": \"123456789\",\n        },\n    })\nconfig = pulumi.Config()\n# The webhook token\nwebhook_token = config.require(\"webhookToken\")\nmy_event_stream_webhook_secure = auth0.EventStream(\"my_event_stream_webhook_secure\",\n    name=\"my-webhook-secure\",\n    destination_type=\"webhook\",\n    subscriptions=[\n        \"user.created\",\n        \"user.updated\",\n    ],\n    webhook_configuration={\n        \"webhook_endpoint\": \"https://eof28wtn4v4506o.m.pipedream.net\",\n        \"webhook_authorization\": {\n            \"method\": \"bearer\",\n            \"token_wo\": webhook_token,\n            \"token_wo_version\": 1,\n        },\n    })\n# Creates an event stream of type action\nmy_event_stream_action = auth0.EventStream(\"my_event_stream_action\",\n    name=\"my-action-stream\",\n    destination_type=\"action\",\n    subscriptions=[\n        \"user.created\",\n        \"user.updated\",\n    ],\n    action_configuration={\n        \"action_id\": my_action[\"id\"],\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Creates an event stream of type eventbridge\n    var myEventStreamEventBridge = new Auth0.Index.EventStream(\"my_event_stream_event_bridge\", new()\n    {\n        Name = \"my-eventbridge\",\n        DestinationType = \"eventbridge\",\n        Subscriptions = new[]\n        {\n            \"user.created\",\n            \"user.updated\",\n        },\n        EventbridgeConfiguration = new Auth0.Inputs.EventStreamEventbridgeConfigurationArgs\n        {\n            AwsAccountId = \"242849305777\",\n            AwsRegion = \"us-east-1\",\n        },\n    });\n\n    // Creates an event stream of type webhook\n    var myEventStreamWebhook = new Auth0.Index.EventStream(\"my_event_stream_webhook\", new()\n    {\n        Name = \"my-webhook\",\n        DestinationType = \"webhook\",\n        Subscriptions = new[]\n        {\n            \"user.created\",\n            \"user.updated\",\n        },\n        WebhookConfiguration = new Auth0.Inputs.EventStreamWebhookConfigurationArgs\n        {\n            WebhookEndpoint = \"https://eof28wtn4v4506o.m.pipedream.net\",\n            WebhookAuthorization = new Auth0.Inputs.EventStreamWebhookConfigurationWebhookAuthorizationArgs\n            {\n                Method = \"bearer\",\n                Token = \"123456789\",\n            },\n        },\n    });\n\n    var config = new Config();\n    // The webhook token\n    var webhookToken = config.Require(\"webhookToken\");\n    var myEventStreamWebhookSecure = new Auth0.Index.EventStream(\"my_event_stream_webhook_secure\", new()\n    {\n        Name = \"my-webhook-secure\",\n        DestinationType = \"webhook\",\n        Subscriptions = new[]\n        {\n            \"user.created\",\n            \"user.updated\",\n        },\n        WebhookConfiguration = new Auth0.Inputs.EventStreamWebhookConfigurationArgs\n        {\n            WebhookEndpoint = \"https://eof28wtn4v4506o.m.pipedream.net\",\n            WebhookAuthorization = new Auth0.Inputs.EventStreamWebhookConfigurationWebhookAuthorizationArgs\n            {\n                Method = \"bearer\",\n                TokenWo = webhookToken,\n                TokenWoVersion = 1,\n            },\n        },\n    });\n\n    // Creates an event stream of type action\n    var myEventStreamAction = new Auth0.Index.EventStream(\"my_event_stream_action\", new()\n    {\n        Name = \"my-action-stream\",\n        DestinationType = \"action\",\n        Subscriptions = new[]\n        {\n            \"user.created\",\n            \"user.updated\",\n        },\n        ActionConfiguration = new Auth0.Inputs.EventStreamActionConfigurationArgs\n        {\n            ActionId = myAction.Id,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Creates an event stream of type eventbridge\n\t\t_, err := auth0.NewEventStream(ctx, \"my_event_stream_event_bridge\", \u0026auth0.EventStreamArgs{\n\t\t\tName:            pulumi.String(\"my-eventbridge\"),\n\t\t\tDestinationType: pulumi.String(\"eventbridge\"),\n\t\t\tSubscriptions: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"user.created\"),\n\t\t\t\tpulumi.String(\"user.updated\"),\n\t\t\t},\n\t\t\tEventbridgeConfiguration: \u0026auth0.EventStreamEventbridgeConfigurationArgs{\n\t\t\t\tAwsAccountId: pulumi.String(\"242849305777\"),\n\t\t\t\tAwsRegion:    pulumi.String(\"us-east-1\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Creates an event stream of type webhook\n\t\t_, err = auth0.NewEventStream(ctx, \"my_event_stream_webhook\", \u0026auth0.EventStreamArgs{\n\t\t\tName:            pulumi.String(\"my-webhook\"),\n\t\t\tDestinationType: pulumi.String(\"webhook\"),\n\t\t\tSubscriptions: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"user.created\"),\n\t\t\t\tpulumi.String(\"user.updated\"),\n\t\t\t},\n\t\t\tWebhookConfiguration: \u0026auth0.EventStreamWebhookConfigurationArgs{\n\t\t\t\tWebhookEndpoint: pulumi.String(\"https://eof28wtn4v4506o.m.pipedream.net\"),\n\t\t\t\tWebhookAuthorization: \u0026auth0.EventStreamWebhookConfigurationWebhookAuthorizationArgs{\n\t\t\t\t\tMethod: pulumi.String(\"bearer\"),\n\t\t\t\t\tToken:  pulumi.String(\"123456789\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tcfg := config.New(ctx, \"\")\n\t\t// The webhook token\n\t\twebhookToken := cfg.Require(\"webhookToken\")\n\t\t_, err = auth0.NewEventStream(ctx, \"my_event_stream_webhook_secure\", \u0026auth0.EventStreamArgs{\n\t\t\tName:            pulumi.String(\"my-webhook-secure\"),\n\t\t\tDestinationType: pulumi.String(\"webhook\"),\n\t\t\tSubscriptions: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"user.created\"),\n\t\t\t\tpulumi.String(\"user.updated\"),\n\t\t\t},\n\t\t\tWebhookConfiguration: \u0026auth0.EventStreamWebhookConfigurationArgs{\n\t\t\t\tWebhookEndpoint: pulumi.String(\"https://eof28wtn4v4506o.m.pipedream.net\"),\n\t\t\t\tWebhookAuthorization: \u0026auth0.EventStreamWebhookConfigurationWebhookAuthorizationArgs{\n\t\t\t\t\tMethod:         pulumi.String(\"bearer\"),\n\t\t\t\t\tTokenWo:        pulumi.String(pulumi.String(webhookToken)),\n\t\t\t\t\tTokenWoVersion: pulumi.Int(1),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Creates an event stream of type action\n\t\t_, err = auth0.NewEventStream(ctx, \"my_event_stream_action\", \u0026auth0.EventStreamArgs{\n\t\t\tName:            pulumi.String(\"my-action-stream\"),\n\t\t\tDestinationType: pulumi.String(\"action\"),\n\t\t\tSubscriptions: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"user.created\"),\n\t\t\t\tpulumi.String(\"user.updated\"),\n\t\t\t},\n\t\t\tActionConfiguration: \u0026auth0.EventStreamActionConfigurationArgs{\n\t\t\t\tActionId: pulumi.Any(myAction.Id),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.EventStream;\nimport com.pulumi.auth0.EventStreamArgs;\nimport com.pulumi.auth0.inputs.EventStreamEventbridgeConfigurationArgs;\nimport com.pulumi.auth0.inputs.EventStreamWebhookConfigurationArgs;\nimport com.pulumi.auth0.inputs.EventStreamWebhookConfigurationWebhookAuthorizationArgs;\nimport com.pulumi.auth0.inputs.EventStreamActionConfigurationArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var config = ctx.config();\n        // Creates an event stream of type eventbridge\n        var myEventStreamEventBridge = new EventStream(\"myEventStreamEventBridge\", EventStreamArgs.builder()\n            .name(\"my-eventbridge\")\n            .destinationType(\"eventbridge\")\n            .subscriptions(            \n                \"user.created\",\n                \"user.updated\")\n            .eventbridgeConfiguration(EventStreamEventbridgeConfigurationArgs.builder()\n                .awsAccountId(\"242849305777\")\n                .awsRegion(\"us-east-1\")\n                .build())\n            .build());\n\n        // Creates an event stream of type webhook\n        var myEventStreamWebhook = new EventStream(\"myEventStreamWebhook\", EventStreamArgs.builder()\n            .name(\"my-webhook\")\n            .destinationType(\"webhook\")\n            .subscriptions(            \n                \"user.created\",\n                \"user.updated\")\n            .webhookConfiguration(EventStreamWebhookConfigurationArgs.builder()\n                .webhookEndpoint(\"https://eof28wtn4v4506o.m.pipedream.net\")\n                .webhookAuthorization(EventStreamWebhookConfigurationWebhookAuthorizationArgs.builder()\n                    .method(\"bearer\")\n                    .token(\"123456789\")\n                    .build())\n                .build())\n            .build());\n\n        final var webhookToken = config.require(\"webhookToken\");\n        var myEventStreamWebhookSecure = new EventStream(\"myEventStreamWebhookSecure\", EventStreamArgs.builder()\n            .name(\"my-webhook-secure\")\n            .destinationType(\"webhook\")\n            .subscriptions(            \n                \"user.created\",\n                \"user.updated\")\n            .webhookConfiguration(EventStreamWebhookConfigurationArgs.builder()\n                .webhookEndpoint(\"https://eof28wtn4v4506o.m.pipedream.net\")\n                .webhookAuthorization(EventStreamWebhookConfigurationWebhookAuthorizationArgs.builder()\n                    .method(\"bearer\")\n                    .tokenWo(webhookToken)\n                    .tokenWoVersion(1)\n                    .build())\n                .build())\n            .build());\n\n        // Creates an event stream of type action\n        var myEventStreamAction = new EventStream(\"myEventStreamAction\", EventStreamArgs.builder()\n            .name(\"my-action-stream\")\n            .destinationType(\"action\")\n            .subscriptions(            \n                \"user.created\",\n                \"user.updated\")\n            .actionConfiguration(EventStreamActionConfigurationArgs.builder()\n                .actionId(myAction.id())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nconfiguration:\n  # Creates an event stream with write-only token (recommended for security)\n  # The token can be passed via variable or ephemeral resource\n  webhookToken:\n    type: string\nresources:\n  # Creates an event stream of type eventbridge\n  myEventStreamEventBridge:\n    type: auth0:EventStream\n    name: my_event_stream_event_bridge\n    properties:\n      name: my-eventbridge\n      destinationType: eventbridge\n      subscriptions:\n        - user.created\n        - user.updated\n      eventbridgeConfiguration:\n        awsAccountId: '242849305777'\n        awsRegion: us-east-1\n  # Creates an event stream of type webhook\n  myEventStreamWebhook:\n    type: auth0:EventStream\n    name: my_event_stream_webhook\n    properties:\n      name: my-webhook\n      destinationType: webhook\n      subscriptions:\n        - user.created\n        - user.updated\n      webhookConfiguration:\n        webhookEndpoint: https://eof28wtn4v4506o.m.pipedream.net\n        webhookAuthorization:\n          method: bearer\n          token: '123456789'\n  myEventStreamWebhookSecure:\n    type: auth0:EventStream\n    name: my_event_stream_webhook_secure\n    properties:\n      name: my-webhook-secure\n      destinationType: webhook\n      subscriptions:\n        - user.created\n        - user.updated\n      webhookConfiguration:\n        webhookEndpoint: https://eof28wtn4v4506o.m.pipedream.net\n        webhookAuthorization:\n          method: bearer\n          tokenWo: ${webhookToken}\n          tokenWoVersion: 1\n  # Creates an event stream of type action\n  myEventStreamAction:\n    type: auth0:EventStream\n    name: my_event_stream_action\n    properties:\n      name: my-action-stream\n      destinationType: action\n      subscriptions:\n        - user.created\n        - user.updated\n      actionConfiguration:\n        actionId: ${myAction.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThis resource can be imported by specifying the Event Stream ID.\n\nExample:\n\n```sh\n$ pulumi import auth0:index/eventStream:EventStream my_stream \"est_XXXXXXXXXXXXXXXX\"\n```\n\n",
             "properties": {
+                "actionConfiguration": {
+                    "$ref": "#/types/auth0:index/EventStreamActionConfiguration:EventStreamActionConfiguration",
+                    "description": "Configuration for the Action destination. This block is only applicable when \u003cspan pulumi-lang-nodejs=\"`destinationType`\" pulumi-lang-dotnet=\"`DestinationType`\" pulumi-lang-go=\"`destinationType`\" pulumi-lang-python=\"`destination_type`\" pulumi-lang-yaml=\"`destinationType`\" pulumi-lang-java=\"`destinationType`\"\u003e`destinationType`\u003c/span\u003e is set to \u003cspan pulumi-lang-nodejs=\"`action`\" pulumi-lang-dotnet=\"`Action`\" pulumi-lang-go=\"`action`\" pulumi-lang-python=\"`action`\" pulumi-lang-yaml=\"`action`\" pulumi-lang-java=\"`action`\"\u003e`action`\u003c/span\u003e. Action configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated."
+                },
                 "createdAt": {
                     "type": "string",
                     "description": "The ISO 8601 timestamp when the stream was created."
                 },
                 "destinationType": {
                     "type": "string",
-                    "description": "The type of event stream destination (either 'eventbridge' or 'webhook').\n"
+                    "description": "The type of event stream destination. Possible values: \u003cspan pulumi-lang-nodejs=\"`eventbridge`\" pulumi-lang-dotnet=\"`Eventbridge`\" pulumi-lang-go=\"`eventbridge`\" pulumi-lang-python=\"`eventbridge`\" pulumi-lang-yaml=\"`eventbridge`\" pulumi-lang-java=\"`eventbridge`\"\u003e`eventbridge`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`webhook`\" pulumi-lang-dotnet=\"`Webhook`\" pulumi-lang-go=\"`webhook`\" pulumi-lang-python=\"`webhook`\" pulumi-lang-yaml=\"`webhook`\" pulumi-lang-java=\"`webhook`\"\u003e`webhook`\u003c/span\u003e, or \u003cspan pulumi-lang-nodejs=\"`action`\" pulumi-lang-dotnet=\"`Action`\" pulumi-lang-go=\"`action`\" pulumi-lang-python=\"`action`\" pulumi-lang-yaml=\"`action`\" pulumi-lang-java=\"`action`\"\u003e`action`\u003c/span\u003e.\n"
                 },
                 "eventbridgeConfiguration": {
                     "$ref": "#/types/auth0:index/EventStreamEventbridgeConfiguration:EventStreamEventbridgeConfiguration",
@@ -18074,9 +18492,14 @@
                 "updatedAt"
             ],
             "inputProperties": {
+                "actionConfiguration": {
+                    "$ref": "#/types/auth0:index/EventStreamActionConfiguration:EventStreamActionConfiguration",
+                    "description": "Configuration for the Action destination. This block is only applicable when \u003cspan pulumi-lang-nodejs=\"`destinationType`\" pulumi-lang-dotnet=\"`DestinationType`\" pulumi-lang-go=\"`destinationType`\" pulumi-lang-python=\"`destination_type`\" pulumi-lang-yaml=\"`destinationType`\" pulumi-lang-java=\"`destinationType`\"\u003e`destinationType`\u003c/span\u003e is set to \u003cspan pulumi-lang-nodejs=\"`action`\" pulumi-lang-dotnet=\"`Action`\" pulumi-lang-go=\"`action`\" pulumi-lang-python=\"`action`\" pulumi-lang-yaml=\"`action`\" pulumi-lang-java=\"`action`\"\u003e`action`\u003c/span\u003e. Action configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.",
+                    "willReplaceOnChanges": true
+                },
                 "destinationType": {
                     "type": "string",
-                    "description": "The type of event stream destination (either 'eventbridge' or 'webhook').\n",
+                    "description": "The type of event stream destination. Possible values: \u003cspan pulumi-lang-nodejs=\"`eventbridge`\" pulumi-lang-dotnet=\"`Eventbridge`\" pulumi-lang-go=\"`eventbridge`\" pulumi-lang-python=\"`eventbridge`\" pulumi-lang-yaml=\"`eventbridge`\" pulumi-lang-java=\"`eventbridge`\"\u003e`eventbridge`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`webhook`\" pulumi-lang-dotnet=\"`Webhook`\" pulumi-lang-go=\"`webhook`\" pulumi-lang-python=\"`webhook`\" pulumi-lang-yaml=\"`webhook`\" pulumi-lang-java=\"`webhook`\"\u003e`webhook`\u003c/span\u003e, or \u003cspan pulumi-lang-nodejs=\"`action`\" pulumi-lang-dotnet=\"`Action`\" pulumi-lang-go=\"`action`\" pulumi-lang-python=\"`action`\" pulumi-lang-yaml=\"`action`\" pulumi-lang-java=\"`action`\"\u003e`action`\u003c/span\u003e.\n",
                     "willReplaceOnChanges": true
                 },
                 "eventbridgeConfiguration": {
@@ -18107,13 +18530,18 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering EventStream resources.\n",
                 "properties": {
+                    "actionConfiguration": {
+                        "$ref": "#/types/auth0:index/EventStreamActionConfiguration:EventStreamActionConfiguration",
+                        "description": "Configuration for the Action destination. This block is only applicable when \u003cspan pulumi-lang-nodejs=\"`destinationType`\" pulumi-lang-dotnet=\"`DestinationType`\" pulumi-lang-go=\"`destinationType`\" pulumi-lang-python=\"`destination_type`\" pulumi-lang-yaml=\"`destinationType`\" pulumi-lang-java=\"`destinationType`\"\u003e`destinationType`\u003c/span\u003e is set to \u003cspan pulumi-lang-nodejs=\"`action`\" pulumi-lang-dotnet=\"`Action`\" pulumi-lang-go=\"`action`\" pulumi-lang-python=\"`action`\" pulumi-lang-yaml=\"`action`\" pulumi-lang-java=\"`action`\"\u003e`action`\u003c/span\u003e. Action configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.",
+                        "willReplaceOnChanges": true
+                    },
                     "createdAt": {
                         "type": "string",
                         "description": "The ISO 8601 timestamp when the stream was created."
                     },
                     "destinationType": {
                         "type": "string",
-                        "description": "The type of event stream destination (either 'eventbridge' or 'webhook').\n",
+                        "description": "The type of event stream destination. Possible values: \u003cspan pulumi-lang-nodejs=\"`eventbridge`\" pulumi-lang-dotnet=\"`Eventbridge`\" pulumi-lang-go=\"`eventbridge`\" pulumi-lang-python=\"`eventbridge`\" pulumi-lang-yaml=\"`eventbridge`\" pulumi-lang-java=\"`eventbridge`\"\u003e`eventbridge`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`webhook`\" pulumi-lang-dotnet=\"`Webhook`\" pulumi-lang-go=\"`webhook`\" pulumi-lang-python=\"`webhook`\" pulumi-lang-yaml=\"`webhook`\" pulumi-lang-java=\"`webhook`\"\u003e`webhook`\u003c/span\u003e, or \u003cspan pulumi-lang-nodejs=\"`action`\" pulumi-lang-dotnet=\"`Action`\" pulumi-lang-go=\"`action`\" pulumi-lang-python=\"`action`\" pulumi-lang-yaml=\"`action`\" pulumi-lang-java=\"`action`\"\u003e`action`\u003c/span\u003e.\n",
                         "willReplaceOnChanges": true
                     },
                     "eventbridgeConfiguration": {
@@ -20376,6 +20804,10 @@
                     },
                     "description": "Authorization details for this resource server.\n"
                 },
+                "authorizationPolicy": {
+                    "$ref": "#/types/auth0:index/ResourceServerAuthorizationPolicy:ResourceServerAuthorizationPolicy",
+                    "description": "Authorization policy for the resource server.(EA Only)\n"
+                },
                 "clientId": {
                     "type": "string",
                     "description": "The ID of the client associated with this resource server. If a client has been created and linked to this resource server, this field will be populated with that client's ID.\n"
@@ -20442,7 +20874,9 @@
                 }
             },
             "required": [
+                "allowOfflineAccess",
                 "authorizationDetails",
+                "authorizationPolicy",
                 "clientId",
                 "consentPolicy",
                 "enforcePolicies",
@@ -20470,6 +20904,10 @@
                         "$ref": "#/types/auth0:index/ResourceServerAuthorizationDetail:ResourceServerAuthorizationDetail"
                     },
                     "description": "Authorization details for this resource server.\n"
+                },
+                "authorizationPolicy": {
+                    "$ref": "#/types/auth0:index/ResourceServerAuthorizationPolicy:ResourceServerAuthorizationPolicy",
+                    "description": "Authorization policy for the resource server.(EA Only)\n"
                 },
                 "consentPolicy": {
                     "type": "string",
@@ -20545,6 +20983,10 @@
                             "$ref": "#/types/auth0:index/ResourceServerAuthorizationDetail:ResourceServerAuthorizationDetail"
                         },
                         "description": "Authorization details for this resource server.\n"
+                    },
+                    "authorizationPolicy": {
+                        "$ref": "#/types/auth0:index/ResourceServerAuthorizationPolicy:ResourceServerAuthorizationPolicy",
+                        "description": "Authorization policy for the resource server.(EA Only)\n"
                     },
                     "clientId": {
                         "type": "string",
@@ -20919,7 +21361,7 @@
             }
         },
         "auth0:index/rolePermissions:RolePermissions": {
-            "description": "With this resource, you can manage role permissions (1-many).\n\n!\u003e This resource manages all the permissions assigned to a role. In contrast, the \u003cspan pulumi-lang-nodejs=\"`auth0.RolePermission`\" pulumi-lang-dotnet=\"`auth0.RolePermission`\" pulumi-lang-go=\"`RolePermission`\" pulumi-lang-python=\"`RolePermission`\" pulumi-lang-yaml=\"`auth0.RolePermission`\" pulumi-lang-java=\"`auth0.RolePermission`\"\u003e`auth0.RolePermission`\u003c/span\u003e resource only\nappends a permission to a role. To avoid potential issues, it is recommended not to use this resource in conjunction\nwith the \u003cspan pulumi-lang-nodejs=\"`auth0.RolePermission`\" pulumi-lang-dotnet=\"`auth0.RolePermission`\" pulumi-lang-go=\"`RolePermission`\" pulumi-lang-python=\"`RolePermission`\" pulumi-lang-yaml=\"`auth0.RolePermission`\" pulumi-lang-java=\"`auth0.RolePermission`\"\u003e`auth0.RolePermission`\u003c/span\u003e resource when managing permissions for the same role id.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\n// Example:\nconst resourceServer = new auth0.ResourceServer(\"resource_server\", {\n    name: \"test\",\n    identifier: \"test.example.com\",\n});\nconst resourceServerScopes = new auth0.ResourceServerScopes(\"resource_server_scopes\", {\n    resourceServerIdentifier: resourceServer.identifier,\n    scopes: [\n        {\n            name: \"store:create\",\n        },\n        {\n            name: \"store:read\",\n        },\n        {\n            name: \"store:update\",\n        },\n        {\n            name: \"store:delete\",\n        },\n    ],\n});\nconst myRole = new auth0.Role(\"my_role\", {name: \"My Role\"});\nconst myRolePerms = new auth0.RolePermissions(\"my_role_perms\", {\n    permissions: resourceServer.identifier.apply(identifier =\u003e .map(entry =\u003e ({\n        name: entry.value.name,\n        resourceServerIdentifier: identifier,\n    }))),\n    roleId: myRole.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\n# Example:\nresource_server = auth0.ResourceServer(\"resource_server\",\n    name=\"test\",\n    identifier=\"test.example.com\")\nresource_server_scopes = auth0.ResourceServerScopes(\"resource_server_scopes\",\n    resource_server_identifier=resource_server.identifier,\n    scopes=[\n        {\n            \"name\": \"store:create\",\n        },\n        {\n            \"name\": \"store:read\",\n        },\n        {\n            \"name\": \"store:update\",\n        },\n        {\n            \"name\": \"store:delete\",\n        },\n    ])\nmy_role = auth0.Role(\"my_role\", name=\"My Role\")\nmy_role_perms = auth0.RolePermissions(\"my_role_perms\",\n    permissions=resource_server.identifier.apply(lambda identifier: [auth0.RolePermissionsPermissionArgs(\n        name=entry[\"value\"].name,\n        resource_server_identifier=identifier,\n    ) for entry in resource_server_scopes.scopes.apply(lambda scopes: [{\"key\": k, \"value\": v} for k, v in scopes.items()])]),\n    role_id=my_role.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Example:\n    var resourceServer = new Auth0.Index.ResourceServer(\"resource_server\", new()\n    {\n        Name = \"test\",\n        Identifier = \"test.example.com\",\n    });\n\n    var resourceServerScopes = new Auth0.Index.ResourceServerScopes(\"resource_server_scopes\", new()\n    {\n        ResourceServerIdentifier = resourceServer.Identifier,\n        Scopes = new[]\n        {\n            new Auth0.Inputs.ResourceServerScopesScopeArgs\n            {\n                Name = \"store:create\",\n            },\n            new Auth0.Inputs.ResourceServerScopesScopeArgs\n            {\n                Name = \"store:read\",\n            },\n            new Auth0.Inputs.ResourceServerScopesScopeArgs\n            {\n                Name = \"store:update\",\n            },\n            new Auth0.Inputs.ResourceServerScopesScopeArgs\n            {\n                Name = \"store:delete\",\n            },\n        },\n    });\n\n    var myRole = new Auth0.Index.Role(\"my_role\", new()\n    {\n        Name = \"My Role\",\n    });\n\n    var myRolePerms = new Auth0.Index.RolePermissions(\"my_role_perms\", new()\n    {\n        Permissions = resourceServer.Identifier.Apply(identifier =\u003e ),\n        RoleId = myRole.Id,\n    });\n\n});\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThis resource can be imported by specifying the role ID\n\nExample:\n\n```sh\n$ pulumi import auth0:index/rolePermissions:RolePermissions all_role_permissions \"rol_XXXXXXXXXXXX\"\n```\n\n",
+            "description": "With this resource, you can manage role permissions (1-many).\n\n!\u003e This resource manages all the permissions assigned to a role. In contrast, the \u003cspan pulumi-lang-nodejs=\"`auth0.RolePermission`\" pulumi-lang-dotnet=\"`auth0.RolePermission`\" pulumi-lang-go=\"`RolePermission`\" pulumi-lang-python=\"`RolePermission`\" pulumi-lang-yaml=\"`auth0.RolePermission`\" pulumi-lang-java=\"`auth0.RolePermission`\"\u003e`auth0.RolePermission`\u003c/span\u003e resource only\nappends a permission to a role. To avoid potential issues, it is recommended not to use this resource in conjunction\nwith the \u003cspan pulumi-lang-nodejs=\"`auth0.RolePermission`\" pulumi-lang-dotnet=\"`auth0.RolePermission`\" pulumi-lang-go=\"`RolePermission`\" pulumi-lang-python=\"`RolePermission`\" pulumi-lang-yaml=\"`auth0.RolePermission`\" pulumi-lang-java=\"`auth0.RolePermission`\"\u003e`auth0.RolePermission`\u003c/span\u003e resource when managing permissions for the same role id.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\n// Example:\nconst resourceServer = new auth0.ResourceServer(\"resource_server\", {\n    name: \"test\",\n    identifier: \"test.example.com\",\n});\nconst resourceServerScopes = new auth0.ResourceServerScopes(\"resource_server_scopes\", {\n    resourceServerIdentifier: resourceServer.identifier,\n    scopes: [\n        {\n            name: \"store:create\",\n        },\n        {\n            name: \"store:read\",\n        },\n        {\n            name: \"store:update\",\n        },\n        {\n            name: \"store:delete\",\n        },\n    ],\n});\nconst myRole = new auth0.Role(\"my_role\", {name: \"My Role\"});\nconst myRolePerms = new auth0.RolePermissions(\"my_role_perms\", {\n    permissions: pulumi.all([resourceServerScopes.scopes, resourceServer.identifier]).apply(([scopes, identifier]) =\u003e scopes.map(entry =\u003e ({\n        name: entry.name,\n        resourceServerIdentifier: identifier,\n    }))),\n    roleId: myRole.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\n# Example:\nresource_server = auth0.ResourceServer(\"resource_server\",\n    name=\"test\",\n    identifier=\"test.example.com\")\nresource_server_scopes = auth0.ResourceServerScopes(\"resource_server_scopes\",\n    resource_server_identifier=resource_server.identifier,\n    scopes=[\n        {\n            \"name\": \"store:create\",\n        },\n        {\n            \"name\": \"store:read\",\n        },\n        {\n            \"name\": \"store:update\",\n        },\n        {\n            \"name\": \"store:delete\",\n        },\n    ])\nmy_role = auth0.Role(\"my_role\", name=\"My Role\")\nmy_role_perms = auth0.RolePermissions(\"my_role_perms\",\n    permissions=pulumi.Output.all(\n        scopes=resource_server_scopes.scopes,\n        identifier=resource_server.identifier\n).apply(lambda resolved_outputs: [auth0.RolePermissionsPermissionArgs(\n        name=entry.name,\n        resource_server_identifier=resolved_outputs['identifier'],\n    ) for entry in resolved_outputs['scopes']])\n,\n    role_id=my_role.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Example:\n    var resourceServer = new Auth0.Index.ResourceServer(\"resource_server\", new()\n    {\n        Name = \"test\",\n        Identifier = \"test.example.com\",\n    });\n\n    var resourceServerScopes = new Auth0.Index.ResourceServerScopes(\"resource_server_scopes\", new()\n    {\n        ResourceServerIdentifier = resourceServer.Identifier,\n        Scopes = new[]\n        {\n            new Auth0.Inputs.ResourceServerScopesScopeArgs\n            {\n                Name = \"store:create\",\n            },\n            new Auth0.Inputs.ResourceServerScopesScopeArgs\n            {\n                Name = \"store:read\",\n            },\n            new Auth0.Inputs.ResourceServerScopesScopeArgs\n            {\n                Name = \"store:update\",\n            },\n            new Auth0.Inputs.ResourceServerScopesScopeArgs\n            {\n                Name = \"store:delete\",\n            },\n        },\n    });\n\n    var myRole = new Auth0.Index.Role(\"my_role\", new()\n    {\n        Name = \"My Role\",\n    });\n\n    var myRolePerms = new Auth0.Index.RolePermissions(\"my_role_perms\", new()\n    {\n        Permissions = Output.Tuple(resourceServerScopes.Scopes, resourceServer.Identifier).Apply(values =\u003e\n        {\n            var scopes = values.Item1;\n            var identifier = values.Item2;\n            return scopes.Select(entry =\u003e \n            {\n                return \n                {\n                    { \"name\", entry.Name },\n                    { \"resourceServerIdentifier\", identifier },\n                };\n            }).ToList();\n        }),\n        RoleId = myRole.Id,\n    });\n\n});\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThis resource can be imported by specifying the role ID\n\nExample:\n\n```sh\n$ pulumi import auth0:index/rolePermissions:RolePermissions all_role_permissions \"rol_XXXXXXXXXXXX\"\n```\n\n",
             "properties": {
                 "permissions": {
                     "type": "array",
@@ -22399,7 +22841,7 @@
             }
         },
         "auth0:index/userRole:UserRole": {
-            "description": "With this resource, you can manage assigned roles for a user.\n\n!\u003e This resource appends a role to a user. In contrast, the \u003cspan pulumi-lang-nodejs=\"`auth0.UserRoles`\" pulumi-lang-dotnet=\"`auth0.UserRoles`\" pulumi-lang-go=\"`UserRoles`\" pulumi-lang-python=\"`UserRoles`\" pulumi-lang-yaml=\"`auth0.UserRoles`\" pulumi-lang-java=\"`auth0.UserRoles`\"\u003e`auth0.UserRoles`\u003c/span\u003e resource manages all the roles assigned\nto a user. To avoid potential issues, it is recommended not to use this resource in conjunction with the\n\u003cspan pulumi-lang-nodejs=\"`auth0.UserRoles`\" pulumi-lang-dotnet=\"`auth0.UserRoles`\" pulumi-lang-go=\"`UserRoles`\" pulumi-lang-python=\"`UserRoles`\" pulumi-lang-yaml=\"`auth0.UserRoles`\" pulumi-lang-java=\"`auth0.UserRoles`\"\u003e`auth0.UserRoles`\u003c/span\u003e resource when managing roles for the same user id.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\n// Example:\nconst admin = new auth0.Role(\"admin\", {\n    name: \"admin\",\n    description: \"Administrator\",\n});\nconst user = new auth0.User(\"user\", {\n    connectionName: \"Username-Password-Authentication\",\n    username: \"unique_username\",\n    name: \"Firstname Lastname\",\n    email: \"test@test.com\",\n    password: \"passpass$12$12\",\n});\nconst userRoles = new auth0.UserRole(\"user_roles\", {\n    userId: user.id,\n    roleId: admin.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\n# Example:\nadmin = auth0.Role(\"admin\",\n    name=\"admin\",\n    description=\"Administrator\")\nuser = auth0.User(\"user\",\n    connection_name=\"Username-Password-Authentication\",\n    username=\"unique_username\",\n    name=\"Firstname Lastname\",\n    email=\"test@test.com\",\n    password=\"passpass$12$12\")\nuser_roles = auth0.UserRole(\"user_roles\",\n    user_id=user.id,\n    role_id=admin.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Example:\n    var admin = new Auth0.Index.Role(\"admin\", new()\n    {\n        Name = \"admin\",\n        Description = \"Administrator\",\n    });\n\n    var user = new Auth0.Index.User(\"user\", new()\n    {\n        ConnectionName = \"Username-Password-Authentication\",\n        Username = \"unique_username\",\n        Name = \"Firstname Lastname\",\n        Email = \"test@test.com\",\n        Password = \"passpass$12$12\",\n    });\n\n    var userRoles = new Auth0.Index.UserRole(\"user_roles\", new()\n    {\n        UserId = user.Id,\n        RoleId = admin.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Example:\n\t\tadmin, err := auth0.NewRole(ctx, \"admin\", \u0026auth0.RoleArgs{\n\t\t\tName:        pulumi.String(\"admin\"),\n\t\t\tDescription: pulumi.String(\"Administrator\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tuser, err := auth0.NewUser(ctx, \"user\", \u0026auth0.UserArgs{\n\t\t\tConnectionName: pulumi.String(\"Username-Password-Authentication\"),\n\t\t\tUsername:       pulumi.String(\"unique_username\"),\n\t\t\tName:           pulumi.String(\"Firstname Lastname\"),\n\t\t\tEmail:          pulumi.String(\"test@test.com\"),\n\t\t\tPassword:       pulumi.String(\"passpass$12$12\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = auth0.NewUserRole(ctx, \"user_roles\", \u0026auth0.UserRoleArgs{\n\t\t\tUserId: user.ID(),\n\t\t\tRoleId: admin.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.Role;\nimport com.pulumi.auth0.RoleArgs;\nimport com.pulumi.auth0.User;\nimport com.pulumi.auth0.UserArgs;\nimport com.pulumi.auth0.UserRole;\nimport com.pulumi.auth0.UserRoleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Example:\n        var admin = new Role(\"admin\", RoleArgs.builder()\n            .name(\"admin\")\n            .description(\"Administrator\")\n            .build());\n\n        var user = new User(\"user\", UserArgs.builder()\n            .connectionName(\"Username-Password-Authentication\")\n            .username(\"unique_username\")\n            .name(\"Firstname Lastname\")\n            .email(\"test@test.com\")\n            .password(\"passpass$12$12\")\n            .build());\n\n        var userRoles = new UserRole(\"userRoles\", UserRoleArgs.builder()\n            .userId(user.id())\n            .roleId(admin.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Example:\n  admin:\n    type: auth0:Role\n    properties:\n      name: admin\n      description: Administrator\n  user:\n    type: auth0:User\n    properties:\n      connectionName: Username-Password-Authentication\n      username: unique_username\n      name: Firstname Lastname\n      email: test@test.com\n      password: passpass$12$12\n  userRoles:\n    type: auth0:UserRole\n    name: user_roles\n    properties:\n      userId: ${user.id}\n      roleId: ${admin.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThis resource can be imported by specifying the\nuser ID and role ID separated by \"::\" (note the double colon)\n\u003cuserID\u003e::\u003croleID\u003e\n\nExample:\n\n```sh\n$ pulumi import auth0:index/userRole:UserRole user_role \"auth0|111111111111111111111111::role_123\"\n```\n\n",
+            "description": "With this resource, you can manage assigned roles for a user.\n\n!\u003e This resource appends a role to a user. In contrast, the \u003cspan pulumi-lang-nodejs=\"`auth0.UserRoles`\" pulumi-lang-dotnet=\"`auth0.UserRoles`\" pulumi-lang-go=\"`UserRoles`\" pulumi-lang-python=\"`UserRoles`\" pulumi-lang-yaml=\"`auth0.UserRoles`\" pulumi-lang-java=\"`auth0.UserRoles`\"\u003e`auth0.UserRoles`\u003c/span\u003e resource manages all the roles assigned\nto a user. To avoid potential issues, it is recommended not to use this resource in conjunction with the\n\u003cspan pulumi-lang-nodejs=\"`auth0.UserRoles`\" pulumi-lang-dotnet=\"`auth0.UserRoles`\" pulumi-lang-go=\"`UserRoles`\" pulumi-lang-python=\"`UserRoles`\" pulumi-lang-yaml=\"`auth0.UserRoles`\" pulumi-lang-java=\"`auth0.UserRoles`\"\u003e`auth0.UserRoles`\u003c/span\u003e resource when managing roles for the same user id.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\n// Example:\nconst admin = new auth0.Role(\"admin\", {\n    name: \"admin\",\n    description: \"Administrator\",\n});\nconst user = new auth0.User(\"user\", {\n    connectionName: \"Username-Password-Authentication\",\n    username: \"unique_username\",\n    name: \"Firstname Lastname\",\n    email: \"test@test.com\",\n    password: \"passpass$12$12\",\n}, {\n    ignoreChanges: [roles],\n});\nconst userRoles = new auth0.UserRole(\"user_roles\", {\n    userId: user.id,\n    roleId: admin.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\n# Example:\nadmin = auth0.Role(\"admin\",\n    name=\"admin\",\n    description=\"Administrator\")\nuser = auth0.User(\"user\",\n    connection_name=\"Username-Password-Authentication\",\n    username=\"unique_username\",\n    name=\"Firstname Lastname\",\n    email=\"test@test.com\",\n    password=\"passpass$12$12\",\n    opts = pulumi.ResourceOptions(ignore_changes=[roles]))\nuser_roles = auth0.UserRole(\"user_roles\",\n    user_id=user.id,\n    role_id=admin.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Example:\n    var admin = new Auth0.Index.Role(\"admin\", new()\n    {\n        Name = \"admin\",\n        Description = \"Administrator\",\n    });\n\n    var user = new Auth0.Index.User(\"user\", new()\n    {\n        ConnectionName = \"Username-Password-Authentication\",\n        Username = \"unique_username\",\n        Name = \"Firstname Lastname\",\n        Email = \"test@test.com\",\n        Password = \"passpass$12$12\",\n    }, new CustomResourceOptions\n    {\n        IgnoreChanges =\n        {\n            \"roles\",\n        },\n    });\n\n    var userRoles = new Auth0.Index.UserRole(\"user_roles\", new()\n    {\n        UserId = user.Id,\n        RoleId = admin.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Example:\n\t\tadmin, err := auth0.NewRole(ctx, \"admin\", \u0026auth0.RoleArgs{\n\t\t\tName:        pulumi.String(\"admin\"),\n\t\t\tDescription: pulumi.String(\"Administrator\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tuser, err := auth0.NewUser(ctx, \"user\", \u0026auth0.UserArgs{\n\t\t\tConnectionName: pulumi.String(\"Username-Password-Authentication\"),\n\t\t\tUsername:       pulumi.String(\"unique_username\"),\n\t\t\tName:           pulumi.String(\"Firstname Lastname\"),\n\t\t\tEmail:          pulumi.String(\"test@test.com\"),\n\t\t\tPassword:       pulumi.String(\"passpass$12$12\"),\n\t\t}, pulumi.IgnoreChanges([]string{\n\t\t\troles,\n\t\t}))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = auth0.NewUserRole(ctx, \"user_roles\", \u0026auth0.UserRoleArgs{\n\t\t\tUserId: user.ID(),\n\t\t\tRoleId: admin.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.Role;\nimport com.pulumi.auth0.RoleArgs;\nimport com.pulumi.auth0.User;\nimport com.pulumi.auth0.UserArgs;\nimport com.pulumi.auth0.UserRole;\nimport com.pulumi.auth0.UserRoleArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Example:\n        var admin = new Role(\"admin\", RoleArgs.builder()\n            .name(\"admin\")\n            .description(\"Administrator\")\n            .build());\n\n        var user = new User(\"user\", UserArgs.builder()\n            .connectionName(\"Username-Password-Authentication\")\n            .username(\"unique_username\")\n            .name(\"Firstname Lastname\")\n            .email(\"test@test.com\")\n            .password(\"passpass$12$12\")\n            .build(), CustomResourceOptions.builder()\n                .ignoreChanges(\"roles\")\n                .build());\n\n        var userRoles = new UserRole(\"userRoles\", UserRoleArgs.builder()\n            .userId(user.id())\n            .roleId(admin.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Example:\n  admin:\n    type: auth0:Role\n    properties:\n      name: admin\n      description: Administrator\n  user:\n    type: auth0:User\n    properties:\n      connectionName: Username-Password-Authentication\n      username: unique_username\n      name: Firstname Lastname\n      email: test@test.com\n      password: passpass$12$12\n    options:\n      ignoreChanges:\n        - roles\n  userRoles:\n    type: auth0:UserRole\n    name: user_roles\n    properties:\n      userId: ${user.id}\n      roleId: ${admin.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThis resource can be imported by specifying the\nuser ID and role ID separated by \"::\" (note the double colon)\n\u003cuserID\u003e::\u003croleID\u003e\n\nExample:\n\n```sh\n$ pulumi import auth0:index/userRole:UserRole user_role \"auth0|111111111111111111111111::role_123\"\n```\n\n",
             "properties": {
                 "roleDescription": {
                     "type": "string",
@@ -22466,7 +22908,7 @@
             }
         },
         "auth0:index/userRoles:UserRoles": {
-            "description": "With this resource, you can manage assigned roles for a user.\n\n!\u003e This resource manages all the roles assigned to a user. In contrast, the \u003cspan pulumi-lang-nodejs=\"`auth0.UserRole`\" pulumi-lang-dotnet=\"`auth0.UserRole`\" pulumi-lang-go=\"`UserRole`\" pulumi-lang-python=\"`UserRole`\" pulumi-lang-yaml=\"`auth0.UserRole`\" pulumi-lang-java=\"`auth0.UserRole`\"\u003e`auth0.UserRole`\u003c/span\u003e resource only appends a\nrole to a user. To avoid potential issues, it is recommended not to use this resource in conjunction with the\n\u003cspan pulumi-lang-nodejs=\"`auth0.UserRole`\" pulumi-lang-dotnet=\"`auth0.UserRole`\" pulumi-lang-go=\"`UserRole`\" pulumi-lang-python=\"`UserRole`\" pulumi-lang-yaml=\"`auth0.UserRole`\" pulumi-lang-java=\"`auth0.UserRole`\"\u003e`auth0.UserRole`\u003c/span\u003e resource when managing roles for the same user id.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\n// Example:\nconst admin = new auth0.Role(\"admin\", {\n    name: \"admin\",\n    description: \"Administrator\",\n});\nconst user = new auth0.User(\"user\", {\n    connectionName: \"Username-Password-Authentication\",\n    username: \"unique_username\",\n    name: \"Firstname Lastname\",\n    email: \"test@test.com\",\n    password: \"passpass$12$12\",\n});\nconst userRoles = new auth0.UserRoles(\"user_roles\", {\n    userId: user.id,\n    roles: [admin.id],\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\n# Example:\nadmin = auth0.Role(\"admin\",\n    name=\"admin\",\n    description=\"Administrator\")\nuser = auth0.User(\"user\",\n    connection_name=\"Username-Password-Authentication\",\n    username=\"unique_username\",\n    name=\"Firstname Lastname\",\n    email=\"test@test.com\",\n    password=\"passpass$12$12\")\nuser_roles = auth0.UserRoles(\"user_roles\",\n    user_id=user.id,\n    roles=[admin.id])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Example:\n    var admin = new Auth0.Index.Role(\"admin\", new()\n    {\n        Name = \"admin\",\n        Description = \"Administrator\",\n    });\n\n    var user = new Auth0.Index.User(\"user\", new()\n    {\n        ConnectionName = \"Username-Password-Authentication\",\n        Username = \"unique_username\",\n        Name = \"Firstname Lastname\",\n        Email = \"test@test.com\",\n        Password = \"passpass$12$12\",\n    });\n\n    var userRoles = new Auth0.Index.UserRoles(\"user_roles\", new()\n    {\n        UserId = user.Id,\n        Roles = new[]\n        {\n            admin.Id,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Example:\n\t\tadmin, err := auth0.NewRole(ctx, \"admin\", \u0026auth0.RoleArgs{\n\t\t\tName:        pulumi.String(\"admin\"),\n\t\t\tDescription: pulumi.String(\"Administrator\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tuser, err := auth0.NewUser(ctx, \"user\", \u0026auth0.UserArgs{\n\t\t\tConnectionName: pulumi.String(\"Username-Password-Authentication\"),\n\t\t\tUsername:       pulumi.String(\"unique_username\"),\n\t\t\tName:           pulumi.String(\"Firstname Lastname\"),\n\t\t\tEmail:          pulumi.String(\"test@test.com\"),\n\t\t\tPassword:       pulumi.String(\"passpass$12$12\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = auth0.NewUserRoles(ctx, \"user_roles\", \u0026auth0.UserRolesArgs{\n\t\t\tUserId: user.ID(),\n\t\t\tRoles: pulumi.StringArray{\n\t\t\t\tadmin.ID(),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.Role;\nimport com.pulumi.auth0.RoleArgs;\nimport com.pulumi.auth0.User;\nimport com.pulumi.auth0.UserArgs;\nimport com.pulumi.auth0.UserRoles;\nimport com.pulumi.auth0.UserRolesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Example:\n        var admin = new Role(\"admin\", RoleArgs.builder()\n            .name(\"admin\")\n            .description(\"Administrator\")\n            .build());\n\n        var user = new User(\"user\", UserArgs.builder()\n            .connectionName(\"Username-Password-Authentication\")\n            .username(\"unique_username\")\n            .name(\"Firstname Lastname\")\n            .email(\"test@test.com\")\n            .password(\"passpass$12$12\")\n            .build());\n\n        var userRoles = new UserRoles(\"userRoles\", UserRolesArgs.builder()\n            .userId(user.id())\n            .roles(admin.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Example:\n  admin:\n    type: auth0:Role\n    properties:\n      name: admin\n      description: Administrator\n  user:\n    type: auth0:User\n    properties:\n      connectionName: Username-Password-Authentication\n      username: unique_username\n      name: Firstname Lastname\n      email: test@test.com\n      password: passpass$12$12\n  userRoles:\n    type: auth0:UserRoles\n    name: user_roles\n    properties:\n      userId: ${user.id}\n      roles:\n        - ${admin.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThis resource can be imported using the user ID.\n\nExample:\n\n```sh\n$ pulumi import auth0:index/userRoles:UserRoles user_roles \"auth0|111111111111111111111111\"\n```\n\n",
+            "description": "With this resource, you can manage assigned roles for a user.\n\n!\u003e This resource manages all the roles assigned to a user. In contrast, the \u003cspan pulumi-lang-nodejs=\"`auth0.UserRole`\" pulumi-lang-dotnet=\"`auth0.UserRole`\" pulumi-lang-go=\"`UserRole`\" pulumi-lang-python=\"`UserRole`\" pulumi-lang-yaml=\"`auth0.UserRole`\" pulumi-lang-java=\"`auth0.UserRole`\"\u003e`auth0.UserRole`\u003c/span\u003e resource only appends a\nrole to a user. To avoid potential issues, it is recommended not to use this resource in conjunction with the\n\u003cspan pulumi-lang-nodejs=\"`auth0.UserRole`\" pulumi-lang-dotnet=\"`auth0.UserRole`\" pulumi-lang-go=\"`UserRole`\" pulumi-lang-python=\"`UserRole`\" pulumi-lang-yaml=\"`auth0.UserRole`\" pulumi-lang-java=\"`auth0.UserRole`\"\u003e`auth0.UserRole`\u003c/span\u003e resource when managing roles for the same user id.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\n// Example:\nconst admin = new auth0.Role(\"admin\", {\n    name: \"admin\",\n    description: \"Administrator\",\n});\nconst user = new auth0.User(\"user\", {\n    connectionName: \"Username-Password-Authentication\",\n    username: \"unique_username\",\n    name: \"Firstname Lastname\",\n    email: \"test@test.com\",\n    password: \"passpass$12$12\",\n}, {\n    ignoreChanges: [roles],\n});\nconst userRoles = new auth0.UserRoles(\"user_roles\", {\n    userId: user.id,\n    roles: [admin.id],\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\n# Example:\nadmin = auth0.Role(\"admin\",\n    name=\"admin\",\n    description=\"Administrator\")\nuser = auth0.User(\"user\",\n    connection_name=\"Username-Password-Authentication\",\n    username=\"unique_username\",\n    name=\"Firstname Lastname\",\n    email=\"test@test.com\",\n    password=\"passpass$12$12\",\n    opts = pulumi.ResourceOptions(ignore_changes=[roles]))\nuser_roles = auth0.UserRoles(\"user_roles\",\n    user_id=user.id,\n    roles=[admin.id])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Example:\n    var admin = new Auth0.Index.Role(\"admin\", new()\n    {\n        Name = \"admin\",\n        Description = \"Administrator\",\n    });\n\n    var user = new Auth0.Index.User(\"user\", new()\n    {\n        ConnectionName = \"Username-Password-Authentication\",\n        Username = \"unique_username\",\n        Name = \"Firstname Lastname\",\n        Email = \"test@test.com\",\n        Password = \"passpass$12$12\",\n    }, new CustomResourceOptions\n    {\n        IgnoreChanges =\n        {\n            \"roles\",\n        },\n    });\n\n    var userRoles = new Auth0.Index.UserRoles(\"user_roles\", new()\n    {\n        UserId = user.Id,\n        Roles = new[]\n        {\n            admin.Id,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Example:\n\t\tadmin, err := auth0.NewRole(ctx, \"admin\", \u0026auth0.RoleArgs{\n\t\t\tName:        pulumi.String(\"admin\"),\n\t\t\tDescription: pulumi.String(\"Administrator\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tuser, err := auth0.NewUser(ctx, \"user\", \u0026auth0.UserArgs{\n\t\t\tConnectionName: pulumi.String(\"Username-Password-Authentication\"),\n\t\t\tUsername:       pulumi.String(\"unique_username\"),\n\t\t\tName:           pulumi.String(\"Firstname Lastname\"),\n\t\t\tEmail:          pulumi.String(\"test@test.com\"),\n\t\t\tPassword:       pulumi.String(\"passpass$12$12\"),\n\t\t}, pulumi.IgnoreChanges([]string{\n\t\t\troles,\n\t\t}))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = auth0.NewUserRoles(ctx, \"user_roles\", \u0026auth0.UserRolesArgs{\n\t\t\tUserId: user.ID(),\n\t\t\tRoles: pulumi.StringArray{\n\t\t\t\tadmin.ID(),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.Role;\nimport com.pulumi.auth0.RoleArgs;\nimport com.pulumi.auth0.User;\nimport com.pulumi.auth0.UserArgs;\nimport com.pulumi.auth0.UserRoles;\nimport com.pulumi.auth0.UserRolesArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Example:\n        var admin = new Role(\"admin\", RoleArgs.builder()\n            .name(\"admin\")\n            .description(\"Administrator\")\n            .build());\n\n        var user = new User(\"user\", UserArgs.builder()\n            .connectionName(\"Username-Password-Authentication\")\n            .username(\"unique_username\")\n            .name(\"Firstname Lastname\")\n            .email(\"test@test.com\")\n            .password(\"passpass$12$12\")\n            .build(), CustomResourceOptions.builder()\n                .ignoreChanges(\"roles\")\n                .build());\n\n        var userRoles = new UserRoles(\"userRoles\", UserRolesArgs.builder()\n            .userId(user.id())\n            .roles(admin.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Example:\n  admin:\n    type: auth0:Role\n    properties:\n      name: admin\n      description: Administrator\n  user:\n    type: auth0:User\n    properties:\n      connectionName: Username-Password-Authentication\n      username: unique_username\n      name: Firstname Lastname\n      email: test@test.com\n      password: passpass$12$12\n    options:\n      ignoreChanges:\n        - roles\n  userRoles:\n    type: auth0:UserRoles\n    name: user_roles\n    properties:\n      userId: ${user.id}\n      roles:\n        - ${admin.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThis resource can be imported using the user ID.\n\nExample:\n\n```sh\n$ pulumi import auth0:index/userRoles:UserRoles user_roles \"auth0|111111111111111111111111\"\n```\n\n",
             "properties": {
                 "roles": {
                     "type": "array",
@@ -24169,12 +24611,19 @@
             "outputs": {
                 "description": "A collection of values returned by getEventStream.\n",
                 "properties": {
+                    "actionConfigurations": {
+                        "description": "Configuration for the Action destination. This block is only applicable when \u003cspan pulumi-lang-nodejs=\"`destinationType`\" pulumi-lang-dotnet=\"`DestinationType`\" pulumi-lang-go=\"`destinationType`\" pulumi-lang-python=\"`destination_type`\" pulumi-lang-yaml=\"`destinationType`\" pulumi-lang-java=\"`destinationType`\"\u003e`destinationType`\u003c/span\u003e is set to \u003cspan pulumi-lang-nodejs=\"`action`\" pulumi-lang-dotnet=\"`Action`\" pulumi-lang-go=\"`action`\" pulumi-lang-python=\"`action`\" pulumi-lang-yaml=\"`action`\" pulumi-lang-java=\"`action`\"\u003e`action`\u003c/span\u003e. Action configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.\n",
+                        "items": {
+                            "$ref": "#/types/auth0:index/getEventStreamActionConfiguration:getEventStreamActionConfiguration"
+                        },
+                        "type": "array"
+                    },
                     "createdAt": {
                         "description": "The ISO 8601 timestamp when the stream was created.\n",
                         "type": "string"
                     },
                     "destinationType": {
-                        "description": "The type of event stream destination (either 'eventbridge' or 'webhook').\n",
+                        "description": "The type of event stream destination. Possible values: \u003cspan pulumi-lang-nodejs=\"`eventbridge`\" pulumi-lang-dotnet=\"`Eventbridge`\" pulumi-lang-go=\"`eventbridge`\" pulumi-lang-python=\"`eventbridge`\" pulumi-lang-yaml=\"`eventbridge`\" pulumi-lang-java=\"`eventbridge`\"\u003e`eventbridge`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`webhook`\" pulumi-lang-dotnet=\"`Webhook`\" pulumi-lang-go=\"`webhook`\" pulumi-lang-python=\"`webhook`\" pulumi-lang-yaml=\"`webhook`\" pulumi-lang-java=\"`webhook`\"\u003e`webhook`\u003c/span\u003e, or \u003cspan pulumi-lang-nodejs=\"`action`\" pulumi-lang-dotnet=\"`Action`\" pulumi-lang-go=\"`action`\" pulumi-lang-python=\"`action`\" pulumi-lang-yaml=\"`action`\" pulumi-lang-java=\"`action`\"\u003e`action`\u003c/span\u003e.\n",
                         "type": "string"
                     },
                     "eventbridgeConfigurations": {
@@ -24216,6 +24665,7 @@
                     }
                 },
                 "required": [
+                    "actionConfigurations",
                     "createdAt",
                     "destinationType",
                     "eventbridgeConfigurations",
@@ -24933,6 +25383,13 @@
                         },
                         "type": "array"
                     },
+                    "authorizationPolicies": {
+                        "description": "Authorization policy for the resource server.(EA Only)\n",
+                        "items": {
+                            "$ref": "#/types/auth0:index/getResourceServerAuthorizationPolicy:getResourceServerAuthorizationPolicy"
+                        },
+                        "type": "array"
+                    },
                     "clientId": {
                         "description": "The ID of the client associated with this resource server. If a client has been created and linked to this resource server, this field will be populated with that client's ID.\n",
                         "type": "string"
@@ -25025,6 +25482,7 @@
                 "required": [
                     "allowOfflineAccess",
                     "authorizationDetails",
+                    "authorizationPolicies",
                     "clientId",
                     "consentPolicy",
                     "enforcePolicies",
@@ -25184,7 +25642,7 @@
             }
         },
         "auth0:index/getSigningKeys:getSigningKeys": {
-            "description": "Data source to retrieve signing keys used by the applications in your tenant. [Learn more](https://auth0.com/docs/get-started/tenant-settings/signing-keys).\n\n",
+            "description": "Data source to retrieve signing keys used by the applications in your tenant. [Learn more](https://auth0.com/docs/get-started/tenant-settings/signing-keys).\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nfunction tryOutput_(\n\t...fns: Array\u003c() =\u003e pulumi.Input\u003cany\u003e\u003e\n): pulumi.Output\u003cany\u003e {\n\tif (fns.length === 0) {\n\t\tthrow new Error(\"try: all parameters failed\");\n\t}\n\tconst [fn, ...rest] = fns;\n\ttry {\n\t\treturn pulumi.output(fn()).apply(result =\u003e result !== undefined ? result : tryOutput_(...rest));\n\t} catch {\n\t\treturn tryOutput_(...rest);\n\t}\n\tthrow new Error(\"try: all parameters failed\");\n}\n\n\nconst myKeys = auth0.getSigningKeys({});\nexport const currentKey = tryOutput_(\n    () =\u003e myKeys.then(myKeys =\u003e .filter(key =\u003e key.current).map(key =\u003e (key.kid)))[0],\n    () =\u003e \"No current key found\"\n);\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\ndef try_(*fns):\n    for fn in fns:\n        try:\n            result = fn()\n            return result\n        except:\n            continue\n    return None\n\n\nmy_keys = auth0.get_signing_keys()\npulumi.export(\"currentKey\", try_(\n    lambda: [key.kid for key in my_keys.signing_keys if key.current][0],\n    lambda: \"No current key found\"\n))\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "outputs": {
                 "description": "A collection of values returned by getSigningKeys.\n",
                 "properties": {
