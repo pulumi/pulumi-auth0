@@ -24,12 +24,12 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var minimalClient = new Auth0.Index.ClientCimd("minimal_client", new()
+    ///     var minimalClient = new Auth0.ClientCimd("minimal_client", new()
     ///     {
     ///         ExternalClientId = "https://mcp-agent1.example.com/oauth/metadata.json",
     ///     });
     /// 
-    ///     var myMcpAgent = new Auth0.Index.ClientCimd("my_mcp_agent", new()
+    ///     var myMcpAgent = new Auth0.ClientCimd("my_mcp_agent", new()
     ///     {
     ///         ExternalClientId = "https://mcp-agent2.example.com/.well-known/client.json",
     ///         ExternalClientIdVersion = 1,

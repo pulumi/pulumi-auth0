@@ -168,27 +168,27 @@ export interface ConnectionScimConfigurationState {
     /**
      * ID of the connection for this SCIM configuration.
      */
-    connectionId?: pulumi.Input<string>;
+    connectionId?: pulumi.Input<string | undefined>;
     /**
      * Name of the connection for this SCIM configuration.
      */
-    connectionName?: pulumi.Input<string>;
+    connectionName?: pulumi.Input<string | undefined>;
     /**
      * Mapping between Auth0 attributes and SCIM attributes. If `userIdAttribute` is set, `mapping` must be set as well.
      */
-    mappings?: pulumi.Input<pulumi.Input<inputs.ConnectionScimConfigurationMapping>[]>;
+    mappings?: pulumi.Input<pulumi.Input<inputs.ConnectionScimConfigurationMapping>[] | undefined>;
     /**
      * Schema of the connection for this SCIM configuration.
      */
-    strategy?: pulumi.Input<string>;
+    strategy?: pulumi.Input<string | undefined>;
     /**
      * Name of the tenant for this SCIM configuration.
      */
-    tenantName?: pulumi.Input<string>;
+    tenantName?: pulumi.Input<string | undefined>;
     /**
      * User ID attribute for generation unique of user ids. If `userIdAttribute` is set, `mapping` must be set as well. Defaults to `userName` for SAML connections and `externalId` for OIDC connections.
      */
-    userIdAttribute?: pulumi.Input<string>;
+    userIdAttribute?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -202,9 +202,9 @@ export interface ConnectionScimConfigurationArgs {
     /**
      * Mapping between Auth0 attributes and SCIM attributes. If `userIdAttribute` is set, `mapping` must be set as well.
      */
-    mappings?: pulumi.Input<pulumi.Input<inputs.ConnectionScimConfigurationMapping>[]>;
+    mappings?: pulumi.Input<pulumi.Input<inputs.ConnectionScimConfigurationMapping>[] | undefined>;
     /**
      * User ID attribute for generation unique of user ids. If `userIdAttribute` is set, `mapping` must be set as well. Defaults to `userName` for SAML connections and `externalId` for OIDC connections.
      */
-    userIdAttribute?: pulumi.Input<string>;
+    userIdAttribute?: pulumi.Input<string | undefined>;
 }

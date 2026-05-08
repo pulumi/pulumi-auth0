@@ -109,15 +109,15 @@ export class BrandingTheme extends pulumi.CustomResource {
  * Input properties used for looking up and filtering BrandingTheme resources.
  */
 export interface BrandingThemeState {
-    borders?: pulumi.Input<inputs.BrandingThemeBorders>;
-    colors?: pulumi.Input<inputs.BrandingThemeColors>;
+    borders?: pulumi.Input<inputs.BrandingThemeBorders | undefined>;
+    colors?: pulumi.Input<inputs.BrandingThemeColors | undefined>;
     /**
      * The display name for the branding theme.
      */
-    displayName?: pulumi.Input<string>;
-    fonts?: pulumi.Input<inputs.BrandingThemeFonts>;
-    pageBackground?: pulumi.Input<inputs.BrandingThemePageBackground>;
-    widget?: pulumi.Input<inputs.BrandingThemeWidget>;
+    displayName?: pulumi.Input<string | undefined>;
+    fonts?: pulumi.Input<inputs.BrandingThemeFonts | undefined>;
+    pageBackground?: pulumi.Input<inputs.BrandingThemePageBackground | undefined>;
+    widget?: pulumi.Input<inputs.BrandingThemeWidget | undefined>;
 }
 
 /**
@@ -129,7 +129,7 @@ export interface BrandingThemeArgs {
     /**
      * The display name for the branding theme.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     fonts: pulumi.Input<inputs.BrandingThemeFonts>;
     pageBackground: pulumi.Input<inputs.BrandingThemePageBackground>;
     widget: pulumi.Input<inputs.BrandingThemeWidget>;

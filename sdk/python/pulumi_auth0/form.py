@@ -21,14 +21,14 @@ __all__ = ['FormArgs', 'Form']
 @pulumi.input_type
 class FormArgs:
     def __init__(__self__, *,
-                 ending: Optional[pulumi.Input[_builtins.str]] = None,
-                 languages: Optional[pulumi.Input[Sequence[pulumi.Input['FormLanguageArgs']]]] = None,
-                 messages: Optional[pulumi.Input[Sequence[pulumi.Input['FormMessageArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 nodes: Optional[pulumi.Input[_builtins.str]] = None,
-                 start: Optional[pulumi.Input[_builtins.str]] = None,
-                 style: Optional[pulumi.Input[_builtins.str]] = None,
-                 translations: Optional[pulumi.Input[_builtins.str]] = None):
+                 ending: pulumi.Input[Optional[_builtins.str]] = None,
+                 languages: pulumi.Input[Optional[Sequence[pulumi.Input['FormLanguageArgs']]]] = None,
+                 messages: pulumi.Input[Optional[Sequence[pulumi.Input['FormMessageArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 nodes: pulumi.Input[Optional[_builtins.str]] = None,
+                 start: pulumi.Input[Optional[_builtins.str]] = None,
+                 style: pulumi.Input[Optional[_builtins.str]] = None,
+                 translations: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Form resource.
 
@@ -60,112 +60,112 @@ class FormArgs:
 
     @_builtins.property
     @pulumi.getter
-    def ending(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ending(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Submission configuration of the form. (JSON encoded)
         """
         return pulumi.get(self, "ending")
 
     @ending.setter
-    def ending(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ending(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ending", value)
 
     @_builtins.property
     @pulumi.getter
-    def languages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FormLanguageArgs']]]]:
+    def languages(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FormLanguageArgs']]]]:
         """
         Language specific configuration for the form.
         """
         return pulumi.get(self, "languages")
 
     @languages.setter
-    def languages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FormLanguageArgs']]]]):
+    def languages(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FormLanguageArgs']]]]):
         pulumi.set(self, "languages", value)
 
     @_builtins.property
     @pulumi.getter
-    def messages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FormMessageArgs']]]]:
+    def messages(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FormMessageArgs']]]]:
         """
         Message specific configuration for the form.
         """
         return pulumi.get(self, "messages")
 
     @messages.setter
-    def messages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FormMessageArgs']]]]):
+    def messages(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FormMessageArgs']]]]):
         pulumi.set(self, "messages", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the form.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def nodes(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nodes(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Nodes of the form. (JSON encoded)
         """
         return pulumi.get(self, "nodes")
 
     @nodes.setter
-    def nodes(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nodes(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nodes", value)
 
     @_builtins.property
     @pulumi.getter
-    def start(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Input setup of the form. (JSON encoded)
         """
         return pulumi.get(self, "start")
 
     @start.setter
-    def start(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start", value)
 
     @_builtins.property
     @pulumi.getter
-    def style(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def style(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Style specific configuration for the form. (JSON encoded)
         """
         return pulumi.get(self, "style")
 
     @style.setter
-    def style(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def style(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "style", value)
 
     @_builtins.property
     @pulumi.getter
-    def translations(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def translations(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Translations of the form. (JSON encoded)
         """
         return pulumi.get(self, "translations")
 
     @translations.setter
-    def translations(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def translations(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "translations", value)
 
 
 @pulumi.input_type
 class _FormState:
     def __init__(__self__, *,
-                 ending: Optional[pulumi.Input[_builtins.str]] = None,
-                 languages: Optional[pulumi.Input[Sequence[pulumi.Input['FormLanguageArgs']]]] = None,
-                 messages: Optional[pulumi.Input[Sequence[pulumi.Input['FormMessageArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 nodes: Optional[pulumi.Input[_builtins.str]] = None,
-                 start: Optional[pulumi.Input[_builtins.str]] = None,
-                 style: Optional[pulumi.Input[_builtins.str]] = None,
-                 translations: Optional[pulumi.Input[_builtins.str]] = None):
+                 ending: pulumi.Input[Optional[_builtins.str]] = None,
+                 languages: pulumi.Input[Optional[Sequence[pulumi.Input['FormLanguageArgs']]]] = None,
+                 messages: pulumi.Input[Optional[Sequence[pulumi.Input['FormMessageArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 nodes: pulumi.Input[Optional[_builtins.str]] = None,
+                 start: pulumi.Input[Optional[_builtins.str]] = None,
+                 style: pulumi.Input[Optional[_builtins.str]] = None,
+                 translations: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Form resources.
 
@@ -197,98 +197,98 @@ class _FormState:
 
     @_builtins.property
     @pulumi.getter
-    def ending(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ending(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Submission configuration of the form. (JSON encoded)
         """
         return pulumi.get(self, "ending")
 
     @ending.setter
-    def ending(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ending(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ending", value)
 
     @_builtins.property
     @pulumi.getter
-    def languages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FormLanguageArgs']]]]:
+    def languages(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FormLanguageArgs']]]]:
         """
         Language specific configuration for the form.
         """
         return pulumi.get(self, "languages")
 
     @languages.setter
-    def languages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FormLanguageArgs']]]]):
+    def languages(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FormLanguageArgs']]]]):
         pulumi.set(self, "languages", value)
 
     @_builtins.property
     @pulumi.getter
-    def messages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FormMessageArgs']]]]:
+    def messages(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FormMessageArgs']]]]:
         """
         Message specific configuration for the form.
         """
         return pulumi.get(self, "messages")
 
     @messages.setter
-    def messages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FormMessageArgs']]]]):
+    def messages(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FormMessageArgs']]]]):
         pulumi.set(self, "messages", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the form.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def nodes(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nodes(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Nodes of the form. (JSON encoded)
         """
         return pulumi.get(self, "nodes")
 
     @nodes.setter
-    def nodes(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nodes(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nodes", value)
 
     @_builtins.property
     @pulumi.getter
-    def start(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Input setup of the form. (JSON encoded)
         """
         return pulumi.get(self, "start")
 
     @start.setter
-    def start(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start", value)
 
     @_builtins.property
     @pulumi.getter
-    def style(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def style(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Style specific configuration for the form. (JSON encoded)
         """
         return pulumi.get(self, "style")
 
     @style.setter
-    def style(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def style(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "style", value)
 
     @_builtins.property
     @pulumi.getter
-    def translations(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def translations(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Translations of the form. (JSON encoded)
         """
         return pulumi.get(self, "translations")
 
     @translations.setter
-    def translations(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def translations(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "translations", value)
 
 
@@ -298,14 +298,14 @@ class Form(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ending: Optional[pulumi.Input[_builtins.str]] = None,
-                 languages: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FormLanguageArgs', 'FormLanguageArgsDict']]]]] = None,
-                 messages: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FormMessageArgs', 'FormMessageArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 nodes: Optional[pulumi.Input[_builtins.str]] = None,
-                 start: Optional[pulumi.Input[_builtins.str]] = None,
-                 style: Optional[pulumi.Input[_builtins.str]] = None,
-                 translations: Optional[pulumi.Input[_builtins.str]] = None,
+                 ending: pulumi.Input[Optional[_builtins.str]] = None,
+                 languages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FormLanguageArgs', 'FormLanguageArgsDict']]]]] = None,
+                 messages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FormMessageArgs', 'FormMessageArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 nodes: pulumi.Input[Optional[_builtins.str]] = None,
+                 start: pulumi.Input[Optional[_builtins.str]] = None,
+                 style: pulumi.Input[Optional[_builtins.str]] = None,
+                 translations: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         With this resource, you can create and manage Forms for a tenant.
@@ -559,14 +559,14 @@ class Form(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ending: Optional[pulumi.Input[_builtins.str]] = None,
-                 languages: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FormLanguageArgs', 'FormLanguageArgsDict']]]]] = None,
-                 messages: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FormMessageArgs', 'FormMessageArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 nodes: Optional[pulumi.Input[_builtins.str]] = None,
-                 start: Optional[pulumi.Input[_builtins.str]] = None,
-                 style: Optional[pulumi.Input[_builtins.str]] = None,
-                 translations: Optional[pulumi.Input[_builtins.str]] = None,
+                 ending: pulumi.Input[Optional[_builtins.str]] = None,
+                 languages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FormLanguageArgs', 'FormLanguageArgsDict']]]]] = None,
+                 messages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FormMessageArgs', 'FormMessageArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 nodes: pulumi.Input[Optional[_builtins.str]] = None,
+                 start: pulumi.Input[Optional[_builtins.str]] = None,
+                 style: pulumi.Input[Optional[_builtins.str]] = None,
+                 translations: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -594,14 +594,14 @@ class Form(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            ending: Optional[pulumi.Input[_builtins.str]] = None,
-            languages: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FormLanguageArgs', 'FormLanguageArgsDict']]]]] = None,
-            messages: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FormMessageArgs', 'FormMessageArgsDict']]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            nodes: Optional[pulumi.Input[_builtins.str]] = None,
-            start: Optional[pulumi.Input[_builtins.str]] = None,
-            style: Optional[pulumi.Input[_builtins.str]] = None,
-            translations: Optional[pulumi.Input[_builtins.str]] = None) -> 'Form':
+            ending: pulumi.Input[Optional[_builtins.str]] = None,
+            languages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FormLanguageArgs', 'FormLanguageArgsDict']]]]] = None,
+            messages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FormMessageArgs', 'FormMessageArgsDict']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            nodes: pulumi.Input[Optional[_builtins.str]] = None,
+            start: pulumi.Input[Optional[_builtins.str]] = None,
+            style: pulumi.Input[Optional[_builtins.str]] = None,
+            translations: pulumi.Input[Optional[_builtins.str]] = None) -> 'Form':
         """
         Get an existing Form resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

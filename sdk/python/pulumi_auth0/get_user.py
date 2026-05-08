@@ -344,9 +344,9 @@ def get_user(custom_domain_header: Optional[_builtins.str] = None,
         user_metadata=pulumi.get(__ret__, 'user_metadata'),
         username=pulumi.get(__ret__, 'username'),
         verify_email=pulumi.get(__ret__, 'verify_email'))
-def get_user_output(custom_domain_header: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                    query: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                    user_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_user_output(custom_domain_header: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                    query: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                    user_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserResult]:
     """
     Data source to retrieve a specific Auth0 user by `user_id` or by `lucene query`. If filtered by Lucene Query, it should include sufficient filters to retrieve a unique user.

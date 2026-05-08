@@ -12,6 +12,8 @@ import (
 )
 
 // Data source to retrieve signing keys used by the applications in your tenant. [Learn more](https://auth0.com/docs/get-started/tenant-settings/signing-keys).
+//
+// ## Example Usage
 func GetSigningKeys(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetSigningKeysResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSigningKeysResult

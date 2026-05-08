@@ -19,10 +19,10 @@ __all__ = ['TokenExchangeProfileArgs', 'TokenExchangeProfile']
 @pulumi.input_type
 class TokenExchangeProfileArgs:
     def __init__(__self__, *,
-                 action_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 subject_token_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 action_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 subject_token_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a TokenExchangeProfile resource.
 
@@ -42,62 +42,62 @@ class TokenExchangeProfileArgs:
 
     @_builtins.property
     @pulumi.getter(name="actionId")
-    def action_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def action_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the Action
         """
         return pulumi.get(self, "action_id")
 
     @action_id.setter
-    def action_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def action_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "action_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the token exchange profile.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="subjectTokenType")
-    def subject_token_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subject_token_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of the subject token
         """
         return pulumi.get(self, "subject_token_type")
 
     @subject_token_type.setter
-    def subject_token_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subject_token_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subject_token_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of the token exchange profile
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 @pulumi.input_type
 class _TokenExchangeProfileState:
     def __init__(__self__, *,
-                 action_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 subject_token_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None):
+                 action_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 subject_token_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TokenExchangeProfile resources.
 
@@ -123,74 +123,74 @@ class _TokenExchangeProfileState:
 
     @_builtins.property
     @pulumi.getter(name="actionId")
-    def action_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def action_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the Action
         """
         return pulumi.get(self, "action_id")
 
     @action_id.setter
-    def action_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def action_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "action_id", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ISO 8601 formatted date the credential was created.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the token exchange profile.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="subjectTokenType")
-    def subject_token_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subject_token_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of the subject token
         """
         return pulumi.get(self, "subject_token_type")
 
     @subject_token_type.setter
-    def subject_token_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subject_token_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subject_token_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of the token exchange profile
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ISO 8601 formatted date the credential was updated.
         """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_at", value)
 
 
@@ -200,10 +200,10 @@ class TokenExchangeProfile(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 subject_token_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 action_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 subject_token_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         With this resource, you can manage Auth0 Custom Token Exchange Profiles
@@ -313,10 +313,10 @@ class TokenExchangeProfile(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 subject_token_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 action_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 subject_token_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -342,12 +342,12 @@ class TokenExchangeProfile(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            action_id: Optional[pulumi.Input[_builtins.str]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            subject_token_type: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.str]] = None) -> 'TokenExchangeProfile':
+            action_id: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            subject_token_type: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> 'TokenExchangeProfile':
         """
         Get an existing TokenExchangeProfile resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -160,43 +160,43 @@ export interface ActionModuleState {
     /**
      * The number of deployed actions using this module.
      */
-    actionsUsingModuleTotal?: pulumi.Input<number>;
+    actionsUsingModuleTotal?: pulumi.Input<number | undefined>;
     /**
      * Whether all draft changes have been published as a version.
      */
-    allChangesPublished?: pulumi.Input<boolean>;
+    allChangesPublished?: pulumi.Input<boolean | undefined>;
     /**
      * The source code of the action module.
      */
-    code?: pulumi.Input<string>;
+    code?: pulumi.Input<string | undefined>;
     /**
      * List of third party npm modules, and their versions, that this action module depends on.
      */
-    dependencies?: pulumi.Input<pulumi.Input<inputs.ActionModuleDependency>[]>;
+    dependencies?: pulumi.Input<pulumi.Input<inputs.ActionModuleDependency>[] | undefined>;
     /**
      * The version number of the latest published version.
      */
-    latestVersionNumber?: pulumi.Input<number>;
+    latestVersionNumber?: pulumi.Input<number | undefined>;
     /**
      * The latest published version of the action module.
      */
-    latestVersions?: pulumi.Input<pulumi.Input<inputs.ActionModuleLatestVersion>[]>;
+    latestVersions?: pulumi.Input<pulumi.Input<inputs.ActionModuleLatestVersion>[] | undefined>;
     /**
      * The name of the action module.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Publishing a module will create a new immutable version of the module from the current draft. Actions using this module can then reference the published version.
      */
-    publish?: pulumi.Input<boolean>;
+    publish?: pulumi.Input<boolean | undefined>;
     /**
      * List of secrets that are included in the action module. Partial management of secrets is not supported.
      */
-    secrets?: pulumi.Input<pulumi.Input<inputs.ActionModuleSecret>[]>;
+    secrets?: pulumi.Input<pulumi.Input<inputs.ActionModuleSecret>[] | undefined>;
     /**
      * Version ID of the module. This value is available if `publish` is set to true.
      */
-    versionId?: pulumi.Input<string>;
+    versionId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -210,17 +210,17 @@ export interface ActionModuleArgs {
     /**
      * List of third party npm modules, and their versions, that this action module depends on.
      */
-    dependencies?: pulumi.Input<pulumi.Input<inputs.ActionModuleDependency>[]>;
+    dependencies?: pulumi.Input<pulumi.Input<inputs.ActionModuleDependency>[] | undefined>;
     /**
      * The name of the action module.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Publishing a module will create a new immutable version of the module from the current draft. Actions using this module can then reference the published version.
      */
-    publish?: pulumi.Input<boolean>;
+    publish?: pulumi.Input<boolean | undefined>;
     /**
      * List of secrets that are included in the action module. Partial management of secrets is not supported.
      */
-    secrets?: pulumi.Input<pulumi.Input<inputs.ActionModuleSecret>[]>;
+    secrets?: pulumi.Input<pulumi.Input<inputs.ActionModuleSecret>[] | undefined>;
 }

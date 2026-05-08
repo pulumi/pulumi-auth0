@@ -22,15 +22,15 @@ __all__ = ['ConnectionArgs', 'Connection']
 class ConnectionArgs:
     def __init__(__self__, *,
                  strategy: pulumi.Input[_builtins.str],
-                 authentication: Optional[pulumi.Input['ConnectionAuthenticationArgs']] = None,
-                 connected_accounts: Optional[pulumi.Input['ConnectionConnectedAccountsArgs']] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_domain_connection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 options: Optional[pulumi.Input['ConnectionOptionsArgs']] = None,
-                 realms: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 show_as_button: Optional[pulumi.Input[_builtins.bool]] = None):
+                 authentication: pulumi.Input[Optional['ConnectionAuthenticationArgs']] = None,
+                 connected_accounts: pulumi.Input[Optional['ConnectionConnectedAccountsArgs']] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_domain_connection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 options: pulumi.Input[Optional['ConnectionOptionsArgs']] = None,
+                 realms: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 show_as_button: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Connection resource.
 
@@ -79,126 +79,126 @@ class ConnectionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['ConnectionAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['ConnectionAuthenticationArgs']]:
         """
         Configure the purpose of a connection to be used for authentication during login.
         """
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['ConnectionAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['ConnectionAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
     @_builtins.property
     @pulumi.getter(name="connectedAccounts")
-    def connected_accounts(self) -> Optional[pulumi.Input['ConnectionConnectedAccountsArgs']]:
+    def connected_accounts(self) -> pulumi.Input[Optional['ConnectionConnectedAccountsArgs']]:
         """
         Configure the purpose of a connection to be used for connected accounts and Token Vault.
         """
         return pulumi.get(self, "connected_accounts")
 
     @connected_accounts.setter
-    def connected_accounts(self, value: Optional[pulumi.Input['ConnectionConnectedAccountsArgs']]):
+    def connected_accounts(self, value: pulumi.Input[Optional['ConnectionConnectedAccountsArgs']]):
         pulumi.set(self, "connected_accounts", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name used in login screen.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="isDomainConnection")
-    def is_domain_connection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_domain_connection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the connection is domain level.
         """
         return pulumi.get(self, "is_domain_connection")
 
     @is_domain_connection.setter
-    def is_domain_connection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_domain_connection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_domain_connection", value)
 
     @_builtins.property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def metadata(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Metadata associated with the connection, in the form of a map of string values (max 255 chars).
         """
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def metadata(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "metadata", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the connection. This value is immutable and changing it requires the creation of a new resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def options(self) -> Optional[pulumi.Input['ConnectionOptionsArgs']]:
+    def options(self) -> pulumi.Input[Optional['ConnectionOptionsArgs']]:
         """
         Configuration settings for connection options.
         """
         return pulumi.get(self, "options")
 
     @options.setter
-    def options(self, value: Optional[pulumi.Input['ConnectionOptionsArgs']]):
+    def options(self, value: pulumi.Input[Optional['ConnectionOptionsArgs']]):
         pulumi.set(self, "options", value)
 
     @_builtins.property
     @pulumi.getter
-    def realms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def realms(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
         """
         return pulumi.get(self, "realms")
 
     @realms.setter
-    def realms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def realms(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "realms", value)
 
     @_builtins.property
     @pulumi.getter(name="showAsButton")
-    def show_as_button(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def show_as_button(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Display connection as a button. Only available on enterprise connections.
         """
         return pulumi.get(self, "show_as_button")
 
     @show_as_button.setter
-    def show_as_button(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def show_as_button(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "show_as_button", value)
 
 
 @pulumi.input_type
 class _ConnectionState:
     def __init__(__self__, *,
-                 authentication: Optional[pulumi.Input['ConnectionAuthenticationArgs']] = None,
-                 connected_accounts: Optional[pulumi.Input['ConnectionConnectedAccountsArgs']] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_domain_connection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 options: Optional[pulumi.Input['ConnectionOptionsArgs']] = None,
-                 realms: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 show_as_button: Optional[pulumi.Input[_builtins.bool]] = None,
-                 strategy: Optional[pulumi.Input[_builtins.str]] = None):
+                 authentication: pulumi.Input[Optional['ConnectionAuthenticationArgs']] = None,
+                 connected_accounts: pulumi.Input[Optional['ConnectionConnectedAccountsArgs']] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_domain_connection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 options: pulumi.Input[Optional['ConnectionOptionsArgs']] = None,
+                 realms: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 show_as_button: pulumi.Input[Optional[_builtins.bool]] = None,
+                 strategy: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Connection resources.
 
@@ -236,122 +236,122 @@ class _ConnectionState:
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['ConnectionAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['ConnectionAuthenticationArgs']]:
         """
         Configure the purpose of a connection to be used for authentication during login.
         """
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['ConnectionAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['ConnectionAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
     @_builtins.property
     @pulumi.getter(name="connectedAccounts")
-    def connected_accounts(self) -> Optional[pulumi.Input['ConnectionConnectedAccountsArgs']]:
+    def connected_accounts(self) -> pulumi.Input[Optional['ConnectionConnectedAccountsArgs']]:
         """
         Configure the purpose of a connection to be used for connected accounts and Token Vault.
         """
         return pulumi.get(self, "connected_accounts")
 
     @connected_accounts.setter
-    def connected_accounts(self, value: Optional[pulumi.Input['ConnectionConnectedAccountsArgs']]):
+    def connected_accounts(self, value: pulumi.Input[Optional['ConnectionConnectedAccountsArgs']]):
         pulumi.set(self, "connected_accounts", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name used in login screen.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="isDomainConnection")
-    def is_domain_connection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_domain_connection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the connection is domain level.
         """
         return pulumi.get(self, "is_domain_connection")
 
     @is_domain_connection.setter
-    def is_domain_connection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_domain_connection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_domain_connection", value)
 
     @_builtins.property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def metadata(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Metadata associated with the connection, in the form of a map of string values (max 255 chars).
         """
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def metadata(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "metadata", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the connection. This value is immutable and changing it requires the creation of a new resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def options(self) -> Optional[pulumi.Input['ConnectionOptionsArgs']]:
+    def options(self) -> pulumi.Input[Optional['ConnectionOptionsArgs']]:
         """
         Configuration settings for connection options.
         """
         return pulumi.get(self, "options")
 
     @options.setter
-    def options(self, value: Optional[pulumi.Input['ConnectionOptionsArgs']]):
+    def options(self, value: pulumi.Input[Optional['ConnectionOptionsArgs']]):
         pulumi.set(self, "options", value)
 
     @_builtins.property
     @pulumi.getter
-    def realms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def realms(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
         """
         return pulumi.get(self, "realms")
 
     @realms.setter
-    def realms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def realms(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "realms", value)
 
     @_builtins.property
     @pulumi.getter(name="showAsButton")
-    def show_as_button(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def show_as_button(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Display connection as a button. Only available on enterprise connections.
         """
         return pulumi.get(self, "show_as_button")
 
     @show_as_button.setter
-    def show_as_button(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def show_as_button(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "show_as_button", value)
 
     @_builtins.property
     @pulumi.getter
-    def strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of the connection, which indicates the identity provider.
         """
         return pulumi.get(self, "strategy")
 
     @strategy.setter
-    def strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "strategy", value)
 
 
@@ -361,16 +361,16 @@ class Connection(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authentication: Optional[pulumi.Input[Union['ConnectionAuthenticationArgs', 'ConnectionAuthenticationArgsDict']]] = None,
-                 connected_accounts: Optional[pulumi.Input[Union['ConnectionConnectedAccountsArgs', 'ConnectionConnectedAccountsArgsDict']]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_domain_connection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 options: Optional[pulumi.Input[Union['ConnectionOptionsArgs', 'ConnectionOptionsArgsDict']]] = None,
-                 realms: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 show_as_button: Optional[pulumi.Input[_builtins.bool]] = None,
-                 strategy: Optional[pulumi.Input[_builtins.str]] = None,
+                 authentication: pulumi.Input[Optional[Union['ConnectionAuthenticationArgs', 'ConnectionAuthenticationArgsDict']]] = None,
+                 connected_accounts: pulumi.Input[Optional[Union['ConnectionConnectedAccountsArgs', 'ConnectionConnectedAccountsArgsDict']]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_domain_connection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 options: pulumi.Input[Optional[Union['ConnectionOptionsArgs', 'ConnectionOptionsArgsDict']]] = None,
+                 realms: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 show_as_button: pulumi.Input[Optional[_builtins.bool]] = None,
+                 strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         With Auth0, you can define sources of users, otherwise known as connections, which may include identity providers (such as Google or LinkedIn), databases, or passwordless authentication methods. This resource allows you to configure and manage connections to be used with your clients and users.
@@ -1824,16 +1824,16 @@ class Connection(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authentication: Optional[pulumi.Input[Union['ConnectionAuthenticationArgs', 'ConnectionAuthenticationArgsDict']]] = None,
-                 connected_accounts: Optional[pulumi.Input[Union['ConnectionConnectedAccountsArgs', 'ConnectionConnectedAccountsArgsDict']]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_domain_connection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 options: Optional[pulumi.Input[Union['ConnectionOptionsArgs', 'ConnectionOptionsArgsDict']]] = None,
-                 realms: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 show_as_button: Optional[pulumi.Input[_builtins.bool]] = None,
-                 strategy: Optional[pulumi.Input[_builtins.str]] = None,
+                 authentication: pulumi.Input[Optional[Union['ConnectionAuthenticationArgs', 'ConnectionAuthenticationArgsDict']]] = None,
+                 connected_accounts: pulumi.Input[Optional[Union['ConnectionConnectedAccountsArgs', 'ConnectionConnectedAccountsArgsDict']]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_domain_connection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 options: pulumi.Input[Optional[Union['ConnectionOptionsArgs', 'ConnectionOptionsArgsDict']]] = None,
+                 realms: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 show_as_button: pulumi.Input[Optional[_builtins.bool]] = None,
+                 strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1865,16 +1865,16 @@ class Connection(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            authentication: Optional[pulumi.Input[Union['ConnectionAuthenticationArgs', 'ConnectionAuthenticationArgsDict']]] = None,
-            connected_accounts: Optional[pulumi.Input[Union['ConnectionConnectedAccountsArgs', 'ConnectionConnectedAccountsArgsDict']]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            is_domain_connection: Optional[pulumi.Input[_builtins.bool]] = None,
-            metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            options: Optional[pulumi.Input[Union['ConnectionOptionsArgs', 'ConnectionOptionsArgsDict']]] = None,
-            realms: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            show_as_button: Optional[pulumi.Input[_builtins.bool]] = None,
-            strategy: Optional[pulumi.Input[_builtins.str]] = None) -> 'Connection':
+            authentication: pulumi.Input[Optional[Union['ConnectionAuthenticationArgs', 'ConnectionAuthenticationArgsDict']]] = None,
+            connected_accounts: pulumi.Input[Optional[Union['ConnectionConnectedAccountsArgs', 'ConnectionConnectedAccountsArgsDict']]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            is_domain_connection: pulumi.Input[Optional[_builtins.bool]] = None,
+            metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            options: pulumi.Input[Optional[Union['ConnectionOptionsArgs', 'ConnectionOptionsArgsDict']]] = None,
+            realms: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            show_as_button: pulumi.Input[Optional[_builtins.bool]] = None,
+            strategy: pulumi.Input[Optional[_builtins.str]] = None) -> 'Connection':
         """
         Get an existing Connection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

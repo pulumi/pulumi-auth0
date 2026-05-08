@@ -300,123 +300,123 @@ export interface TenantState {
     /**
      * List of supported ACR values.
      */
-    acrValuesSupporteds?: pulumi.Input<pulumi.Input<string>[]>;
+    acrValuesSupporteds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether to accept an organization name instead of an ID on auth endpoints.
      */
-    allowOrganizationNameInAuthenticationApi?: pulumi.Input<boolean>;
+    allowOrganizationNameInAuthenticationApi?: pulumi.Input<boolean | undefined>;
     /**
      * URLs that Auth0 may redirect to after logout.
      */
-    allowedLogoutUrls?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedLogoutUrls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
      */
-    clientIdMetadataDocumentSupported?: pulumi.Input<boolean>;
+    clientIdMetadataDocumentSupported?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to enable flexible factors for MFA in the PostLogin action.
      */
-    customizeMfaInPostloginAction?: pulumi.Input<boolean>;
+    customizeMfaInPostloginAction?: pulumi.Input<boolean | undefined>;
     /**
      * API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
      */
-    defaultAudience?: pulumi.Input<string>;
+    defaultAudience?: pulumi.Input<string | undefined>;
     /**
      * Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
      */
-    defaultDirectory?: pulumi.Input<string>;
+    defaultDirectory?: pulumi.Input<string | undefined>;
     /**
      * The default absolute redirection URI. Must be HTTPS or an empty string.
      */
-    defaultRedirectionUri?: pulumi.Input<string>;
+    defaultRedirectionUri?: pulumi.Input<string | undefined>;
     /**
      * Token Quota configuration.
      */
-    defaultTokenQuota?: pulumi.Input<inputs.TenantDefaultTokenQuota>;
+    defaultTokenQuota?: pulumi.Input<inputs.TenantDefaultTokenQuota | undefined>;
     /**
      * Disable list of supported ACR values.
      */
-    disableAcrValuesSupported?: pulumi.Input<boolean>;
+    disableAcrValuesSupported?: pulumi.Input<boolean | undefined>;
     /**
      * Supported locales for the user interface. The first locale in the list will be used to set the default locale.
      */
-    enabledLocales?: pulumi.Input<pulumi.Input<string>[]>;
+    enabledLocales?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Number of hours an ephemeral (non-persistent) session will stay valid.
      */
-    ephemeralSessionLifetime?: pulumi.Input<number>;
+    ephemeralSessionLifetime?: pulumi.Input<number | undefined>;
     /**
      * Configuration for the error page
      */
-    errorPage?: pulumi.Input<inputs.TenantErrorPage>;
+    errorPage?: pulumi.Input<inputs.TenantErrorPage | undefined>;
     /**
      * Configuration settings for tenant flags.
      */
-    flags?: pulumi.Input<inputs.TenantFlags>;
+    flags?: pulumi.Input<inputs.TenantFlags | undefined>;
     /**
      * Friendly name for the tenant.
      */
-    friendlyName?: pulumi.Input<string>;
+    friendlyName?: pulumi.Input<string | undefined>;
     /**
      * Number of hours for which an ephemeral (non-persistent) session can be inactive before the user must log in again.
      */
-    idleEphemeralSessionLifetime?: pulumi.Input<number>;
+    idleEphemeralSessionLifetime?: pulumi.Input<number | undefined>;
     /**
      * Number of hours during which a session can be inactive before the user must log in again.
      */
-    idleSessionLifetime?: pulumi.Input<number>;
+    idleSessionLifetime?: pulumi.Input<number | undefined>;
     /**
      * Configuration for mTLS.
      */
-    mtls?: pulumi.Input<inputs.TenantMtls>;
+    mtls?: pulumi.Input<inputs.TenantMtls | undefined>;
     /**
      * Settings related to OIDC RP-initiated Logout.
      */
-    oidcLogout?: pulumi.Input<inputs.TenantOidcLogout>;
+    oidcLogout?: pulumi.Input<inputs.TenantOidcLogout | undefined>;
     /**
      * When enabled, the tenant-level Phone Provider is used for Multi-Factor Authentication (MFA) and Passwordless phone notifications.
      */
-    phoneConsolidatedExperience?: pulumi.Input<boolean>;
+    phoneConsolidatedExperience?: pulumi.Input<boolean | undefined>;
     /**
      * URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
      */
-    pictureUrl?: pulumi.Input<string>;
+    pictureUrl?: pulumi.Input<string | undefined>;
     /**
      * Enable pushed authorization requests.
      */
-    pushedAuthorizationRequestsSupported?: pulumi.Input<boolean>;
+    pushedAuthorizationRequestsSupported?: pulumi.Input<boolean | undefined>;
     /**
      * Profile that determines how the protected resource identity is specified in OAuth endpoints. When set to `audience` (default), the `audience` parameter is used. When set to `compatibility`, the `resource` parameter is used as fallback if `audience` is not provided.
      */
-    resourceParameterProfile?: pulumi.Input<string>;
+    resourceParameterProfile?: pulumi.Input<string | undefined>;
     /**
      * Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
      */
-    sandboxVersion?: pulumi.Input<string>;
+    sandboxVersion?: pulumi.Input<string | undefined>;
     /**
      * Alters behavior of tenant's session cookie. Contains a single `mode` property.
      */
-    sessionCookie?: pulumi.Input<inputs.TenantSessionCookie>;
+    sessionCookie?: pulumi.Input<inputs.TenantSessionCookie | undefined>;
     /**
      * Number of hours during which a session will stay valid.
      */
-    sessionLifetime?: pulumi.Input<number>;
+    sessionLifetime?: pulumi.Input<number | undefined>;
     /**
      * Sessions related settings for the tenant.
      */
-    sessions?: pulumi.Input<inputs.TenantSessions>;
+    sessions?: pulumi.Input<inputs.TenantSessions | undefined>;
     /**
      * Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
      */
-    skipNonVerifiableCallbackUriConfirmationPrompt?: pulumi.Input<string>;
+    skipNonVerifiableCallbackUriConfirmationPrompt?: pulumi.Input<string | undefined>;
     /**
      * Support email address for authenticating users.
      */
-    supportEmail?: pulumi.Input<string>;
+    supportEmail?: pulumi.Input<string | undefined>;
     /**
      * Support URL for authenticating users.
      */
-    supportUrl?: pulumi.Input<string>;
+    supportUrl?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -426,121 +426,121 @@ export interface TenantArgs {
     /**
      * List of supported ACR values.
      */
-    acrValuesSupporteds?: pulumi.Input<pulumi.Input<string>[]>;
+    acrValuesSupporteds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether to accept an organization name instead of an ID on auth endpoints.
      */
-    allowOrganizationNameInAuthenticationApi?: pulumi.Input<boolean>;
+    allowOrganizationNameInAuthenticationApi?: pulumi.Input<boolean | undefined>;
     /**
      * URLs that Auth0 may redirect to after logout.
      */
-    allowedLogoutUrls?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedLogoutUrls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
      */
-    clientIdMetadataDocumentSupported?: pulumi.Input<boolean>;
+    clientIdMetadataDocumentSupported?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to enable flexible factors for MFA in the PostLogin action.
      */
-    customizeMfaInPostloginAction?: pulumi.Input<boolean>;
+    customizeMfaInPostloginAction?: pulumi.Input<boolean | undefined>;
     /**
      * API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
      */
-    defaultAudience?: pulumi.Input<string>;
+    defaultAudience?: pulumi.Input<string | undefined>;
     /**
      * Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
      */
-    defaultDirectory?: pulumi.Input<string>;
+    defaultDirectory?: pulumi.Input<string | undefined>;
     /**
      * The default absolute redirection URI. Must be HTTPS or an empty string.
      */
-    defaultRedirectionUri?: pulumi.Input<string>;
+    defaultRedirectionUri?: pulumi.Input<string | undefined>;
     /**
      * Token Quota configuration.
      */
-    defaultTokenQuota?: pulumi.Input<inputs.TenantDefaultTokenQuota>;
+    defaultTokenQuota?: pulumi.Input<inputs.TenantDefaultTokenQuota | undefined>;
     /**
      * Disable list of supported ACR values.
      */
-    disableAcrValuesSupported?: pulumi.Input<boolean>;
+    disableAcrValuesSupported?: pulumi.Input<boolean | undefined>;
     /**
      * Supported locales for the user interface. The first locale in the list will be used to set the default locale.
      */
-    enabledLocales?: pulumi.Input<pulumi.Input<string>[]>;
+    enabledLocales?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Number of hours an ephemeral (non-persistent) session will stay valid.
      */
-    ephemeralSessionLifetime?: pulumi.Input<number>;
+    ephemeralSessionLifetime?: pulumi.Input<number | undefined>;
     /**
      * Configuration for the error page
      */
-    errorPage?: pulumi.Input<inputs.TenantErrorPage>;
+    errorPage?: pulumi.Input<inputs.TenantErrorPage | undefined>;
     /**
      * Configuration settings for tenant flags.
      */
-    flags?: pulumi.Input<inputs.TenantFlags>;
+    flags?: pulumi.Input<inputs.TenantFlags | undefined>;
     /**
      * Friendly name for the tenant.
      */
-    friendlyName?: pulumi.Input<string>;
+    friendlyName?: pulumi.Input<string | undefined>;
     /**
      * Number of hours for which an ephemeral (non-persistent) session can be inactive before the user must log in again.
      */
-    idleEphemeralSessionLifetime?: pulumi.Input<number>;
+    idleEphemeralSessionLifetime?: pulumi.Input<number | undefined>;
     /**
      * Number of hours during which a session can be inactive before the user must log in again.
      */
-    idleSessionLifetime?: pulumi.Input<number>;
+    idleSessionLifetime?: pulumi.Input<number | undefined>;
     /**
      * Configuration for mTLS.
      */
-    mtls?: pulumi.Input<inputs.TenantMtls>;
+    mtls?: pulumi.Input<inputs.TenantMtls | undefined>;
     /**
      * Settings related to OIDC RP-initiated Logout.
      */
-    oidcLogout?: pulumi.Input<inputs.TenantOidcLogout>;
+    oidcLogout?: pulumi.Input<inputs.TenantOidcLogout | undefined>;
     /**
      * When enabled, the tenant-level Phone Provider is used for Multi-Factor Authentication (MFA) and Passwordless phone notifications.
      */
-    phoneConsolidatedExperience?: pulumi.Input<boolean>;
+    phoneConsolidatedExperience?: pulumi.Input<boolean | undefined>;
     /**
      * URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
      */
-    pictureUrl?: pulumi.Input<string>;
+    pictureUrl?: pulumi.Input<string | undefined>;
     /**
      * Enable pushed authorization requests.
      */
-    pushedAuthorizationRequestsSupported?: pulumi.Input<boolean>;
+    pushedAuthorizationRequestsSupported?: pulumi.Input<boolean | undefined>;
     /**
      * Profile that determines how the protected resource identity is specified in OAuth endpoints. When set to `audience` (default), the `audience` parameter is used. When set to `compatibility`, the `resource` parameter is used as fallback if `audience` is not provided.
      */
-    resourceParameterProfile?: pulumi.Input<string>;
+    resourceParameterProfile?: pulumi.Input<string | undefined>;
     /**
      * Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
      */
-    sandboxVersion?: pulumi.Input<string>;
+    sandboxVersion?: pulumi.Input<string | undefined>;
     /**
      * Alters behavior of tenant's session cookie. Contains a single `mode` property.
      */
-    sessionCookie?: pulumi.Input<inputs.TenantSessionCookie>;
+    sessionCookie?: pulumi.Input<inputs.TenantSessionCookie | undefined>;
     /**
      * Number of hours during which a session will stay valid.
      */
-    sessionLifetime?: pulumi.Input<number>;
+    sessionLifetime?: pulumi.Input<number | undefined>;
     /**
      * Sessions related settings for the tenant.
      */
-    sessions?: pulumi.Input<inputs.TenantSessions>;
+    sessions?: pulumi.Input<inputs.TenantSessions | undefined>;
     /**
      * Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
      */
-    skipNonVerifiableCallbackUriConfirmationPrompt?: pulumi.Input<string>;
+    skipNonVerifiableCallbackUriConfirmationPrompt?: pulumi.Input<string | undefined>;
     /**
      * Support email address for authenticating users.
      */
-    supportEmail?: pulumi.Input<string>;
+    supportEmail?: pulumi.Input<string | undefined>;
     /**
      * Support URL for authenticating users.
      */
-    supportUrl?: pulumi.Input<string>;
+    supportUrl?: pulumi.Input<string | undefined>;
 }

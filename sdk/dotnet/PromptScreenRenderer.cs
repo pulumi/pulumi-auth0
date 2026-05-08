@@ -23,7 +23,7 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var promptScreenRenderer = new Auth0.Index.PromptScreenRenderer("prompt_screen_renderer", new()
+    ///     var promptScreenRenderer = new Auth0.PromptScreenRenderer("prompt_screen_renderer", new()
     ///     {
     ///         PromptType = "login-id",
     ///         ScreenName = "login-id",

@@ -136,11 +136,11 @@ export interface OrganizationConnectionsState {
     /**
      * Connections that are enabled for the organization.
      */
-    enabledConnections?: pulumi.Input<pulumi.Input<inputs.OrganizationConnectionsEnabledConnection>[]>;
+    enabledConnections?: pulumi.Input<pulumi.Input<inputs.OrganizationConnectionsEnabledConnection>[] | undefined>;
     /**
      * ID of the organization on which to enable the connections.
      */
-    organizationId?: pulumi.Input<string>;
+    organizationId?: pulumi.Input<string | undefined>;
 }
 
 /**

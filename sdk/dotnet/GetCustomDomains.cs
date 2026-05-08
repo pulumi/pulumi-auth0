@@ -24,7 +24,7 @@ namespace Pulumi.Auth0
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myCustomDomain1 = new Auth0.Index.CustomDomain("my_custom_domain_1", new()
+        ///     var myCustomDomain1 = new Auth0.CustomDomain("my_custom_domain_1", new()
         ///     {
         ///         Domain = "example1.auth.tempdomain.com",
         ///         Type = "auth0_managed_certs",
@@ -36,7 +36,7 @@ namespace Pulumi.Auth0
         ///         },
         ///     });
         /// 
-        ///     var myCustomDomain2 = new Auth0.Index.CustomDomain("my_custom_domain_2", new()
+        ///     var myCustomDomain2 = new Auth0.CustomDomain("my_custom_domain_2", new()
         ///     {
         ///         Domain = "example2.auth.tempdomain.com",
         ///         Type = "auth0_managed_certs",
@@ -48,7 +48,7 @@ namespace Pulumi.Auth0
         ///         },
         ///     });
         /// 
-        ///     var test = Auth0.Index.GetCustomDomains.Invoke(new()
+        ///     var test = Auth0.GetCustomDomains.Invoke(new()
         ///     {
         ///         Query = "domain:example1* AND status:pending_verification",
         ///     });
@@ -72,7 +72,7 @@ namespace Pulumi.Auth0
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myCustomDomain1 = new Auth0.Index.CustomDomain("my_custom_domain_1", new()
+        ///     var myCustomDomain1 = new Auth0.CustomDomain("my_custom_domain_1", new()
         ///     {
         ///         Domain = "example1.auth.tempdomain.com",
         ///         Type = "auth0_managed_certs",
@@ -84,7 +84,7 @@ namespace Pulumi.Auth0
         ///         },
         ///     });
         /// 
-        ///     var myCustomDomain2 = new Auth0.Index.CustomDomain("my_custom_domain_2", new()
+        ///     var myCustomDomain2 = new Auth0.CustomDomain("my_custom_domain_2", new()
         ///     {
         ///         Domain = "example2.auth.tempdomain.com",
         ///         Type = "auth0_managed_certs",
@@ -96,7 +96,7 @@ namespace Pulumi.Auth0
         ///         },
         ///     });
         /// 
-        ///     var test = Auth0.Index.GetCustomDomains.Invoke(new()
+        ///     var test = Auth0.GetCustomDomains.Invoke(new()
         ///     {
         ///         Query = "domain:example1* AND status:pending_verification",
         ///     });
@@ -120,7 +120,7 @@ namespace Pulumi.Auth0
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myCustomDomain1 = new Auth0.Index.CustomDomain("my_custom_domain_1", new()
+        ///     var myCustomDomain1 = new Auth0.CustomDomain("my_custom_domain_1", new()
         ///     {
         ///         Domain = "example1.auth.tempdomain.com",
         ///         Type = "auth0_managed_certs",
@@ -132,7 +132,7 @@ namespace Pulumi.Auth0
         ///         },
         ///     });
         /// 
-        ///     var myCustomDomain2 = new Auth0.Index.CustomDomain("my_custom_domain_2", new()
+        ///     var myCustomDomain2 = new Auth0.CustomDomain("my_custom_domain_2", new()
         ///     {
         ///         Domain = "example2.auth.tempdomain.com",
         ///         Type = "auth0_managed_certs",
@@ -144,7 +144,7 @@ namespace Pulumi.Auth0
         ///         },
         ///     });
         /// 
-        ///     var test = Auth0.Index.GetCustomDomains.Invoke(new()
+        ///     var test = Auth0.GetCustomDomains.Invoke(new()
         ///     {
         ///         Query = "domain:example1* AND status:pending_verification",
         ///     });

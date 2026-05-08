@@ -133,19 +133,19 @@ export interface PagesState {
     /**
      * Configuration settings for customizing the Password Reset page.
      */
-    changePassword?: pulumi.Input<inputs.PagesChangePassword>;
+    changePassword?: pulumi.Input<inputs.PagesChangePassword | undefined>;
     /**
      * Configuration settings for the Error pages.
      */
-    error?: pulumi.Input<inputs.PagesError>;
+    error?: pulumi.Input<inputs.PagesError | undefined>;
     /**
      * Configuration settings for customizing the Guardian Multi-Factor Authentication page.
      */
-    guardianMfa?: pulumi.Input<inputs.PagesGuardianMfa>;
+    guardianMfa?: pulumi.Input<inputs.PagesGuardianMfa | undefined>;
     /**
      * Configuration settings for customizing the Login page.
      */
-    login?: pulumi.Input<inputs.PagesLogin>;
+    login?: pulumi.Input<inputs.PagesLogin | undefined>;
 }
 
 /**
@@ -155,17 +155,17 @@ export interface PagesArgs {
     /**
      * Configuration settings for customizing the Password Reset page.
      */
-    changePassword?: pulumi.Input<inputs.PagesChangePassword>;
+    changePassword?: pulumi.Input<inputs.PagesChangePassword | undefined>;
     /**
      * Configuration settings for the Error pages.
      */
-    error?: pulumi.Input<inputs.PagesError>;
+    error?: pulumi.Input<inputs.PagesError | undefined>;
     /**
      * Configuration settings for customizing the Guardian Multi-Factor Authentication page.
      */
-    guardianMfa?: pulumi.Input<inputs.PagesGuardianMfa>;
+    guardianMfa?: pulumi.Input<inputs.PagesGuardianMfa | undefined>;
     /**
      * Configuration settings for customizing the Login page.
      */
-    login?: pulumi.Input<inputs.PagesLogin>;
+    login?: pulumi.Input<inputs.PagesLogin | undefined>;
 }

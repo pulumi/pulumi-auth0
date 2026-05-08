@@ -23,12 +23,12 @@ class LogStreamArgs:
     def __init__(__self__, *,
                  sink: pulumi.Input['LogStreamSinkArgs'],
                  type: pulumi.Input[_builtins.str],
-                 filters: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
-                 is_priority: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 pii_config: Optional[pulumi.Input['LogStreamPiiConfigArgs']] = None,
-                 start_from: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 filters: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
+                 is_priority: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 pii_config: pulumi.Input[Optional['LogStreamPiiConfigArgs']] = None,
+                 start_from: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a LogStream resource.
 
@@ -82,88 +82,88 @@ class LogStreamArgs:
 
     @_builtins.property
     @pulumi.getter
-    def filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]:
+    def filters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]:
         """
         Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered. Filters available: `auth.ancillary.fail`, `auth.ancillary.success`, `auth.login.fail`, `auth.login.notification`, `auth.login.success`, `auth.logout.fail`, `auth.logout.success`, `auth.signup.fail`, `auth.signup.success`, `auth.silent_auth.fail`, `auth.silent_auth.success`, `auth.token_exchange.fail`, `auth.token_exchange.success`, `management.fail`, `management.success`, `system.notification`, `user.fail`, `user.notification`, `user.success`, `other`.
         """
         return pulumi.get(self, "filters")
 
     @filters.setter
-    def filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]):
+    def filters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]):
         pulumi.set(self, "filters", value)
 
     @_builtins.property
     @pulumi.getter(name="isPriority")
-    def is_priority(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_priority(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set True for priority log streams, False for non-priority
         """
         return pulumi.get(self, "is_priority")
 
     @is_priority.setter
-    def is_priority(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_priority(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_priority", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the log stream.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="piiConfig")
-    def pii_config(self) -> Optional[pulumi.Input['LogStreamPiiConfigArgs']]:
+    def pii_config(self) -> pulumi.Input[Optional['LogStreamPiiConfigArgs']]:
         """
         Configuration for PII (Personally Identifiable Information) handling.
         """
         return pulumi.get(self, "pii_config")
 
     @pii_config.setter
-    def pii_config(self, value: Optional[pulumi.Input['LogStreamPiiConfigArgs']]):
+    def pii_config(self, value: pulumi.Input[Optional['LogStreamPiiConfigArgs']]):
         pulumi.set(self, "pii_config", value)
 
     @_builtins.property
     @pulumi.getter(name="startFrom")
-    def start_from(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_from(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The optional datetime (ISO 8601) to start streaming logs from.
         """
         return pulumi.get(self, "start_from")
 
     @start_from.setter
-    def start_from(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_from(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_from", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The current status of the log stream. Options are "active", "paused", "suspended".
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
 @pulumi.input_type
 class _LogStreamState:
     def __init__(__self__, *,
-                 filters: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
-                 is_priority: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 pii_config: Optional[pulumi.Input['LogStreamPiiConfigArgs']] = None,
-                 sink: Optional[pulumi.Input['LogStreamSinkArgs']] = None,
-                 start_from: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 filters: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
+                 is_priority: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 pii_config: pulumi.Input[Optional['LogStreamPiiConfigArgs']] = None,
+                 sink: pulumi.Input[Optional['LogStreamSinkArgs']] = None,
+                 start_from: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LogStream resources.
 
@@ -195,98 +195,98 @@ class _LogStreamState:
 
     @_builtins.property
     @pulumi.getter
-    def filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]:
+    def filters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]:
         """
         Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered. Filters available: `auth.ancillary.fail`, `auth.ancillary.success`, `auth.login.fail`, `auth.login.notification`, `auth.login.success`, `auth.logout.fail`, `auth.logout.success`, `auth.signup.fail`, `auth.signup.success`, `auth.silent_auth.fail`, `auth.silent_auth.success`, `auth.token_exchange.fail`, `auth.token_exchange.success`, `management.fail`, `management.success`, `system.notification`, `user.fail`, `user.notification`, `user.success`, `other`.
         """
         return pulumi.get(self, "filters")
 
     @filters.setter
-    def filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]):
+    def filters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]):
         pulumi.set(self, "filters", value)
 
     @_builtins.property
     @pulumi.getter(name="isPriority")
-    def is_priority(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_priority(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set True for priority log streams, False for non-priority
         """
         return pulumi.get(self, "is_priority")
 
     @is_priority.setter
-    def is_priority(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_priority(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_priority", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the log stream.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="piiConfig")
-    def pii_config(self) -> Optional[pulumi.Input['LogStreamPiiConfigArgs']]:
+    def pii_config(self) -> pulumi.Input[Optional['LogStreamPiiConfigArgs']]:
         """
         Configuration for PII (Personally Identifiable Information) handling.
         """
         return pulumi.get(self, "pii_config")
 
     @pii_config.setter
-    def pii_config(self, value: Optional[pulumi.Input['LogStreamPiiConfigArgs']]):
+    def pii_config(self, value: pulumi.Input[Optional['LogStreamPiiConfigArgs']]):
         pulumi.set(self, "pii_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def sink(self) -> Optional[pulumi.Input['LogStreamSinkArgs']]:
+    def sink(self) -> pulumi.Input[Optional['LogStreamSinkArgs']]:
         """
         The sink configuration for the log stream.
         """
         return pulumi.get(self, "sink")
 
     @sink.setter
-    def sink(self, value: Optional[pulumi.Input['LogStreamSinkArgs']]):
+    def sink(self, value: pulumi.Input[Optional['LogStreamSinkArgs']]):
         pulumi.set(self, "sink", value)
 
     @_builtins.property
     @pulumi.getter(name="startFrom")
-    def start_from(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_from(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The optional datetime (ISO 8601) to start streaming logs from.
         """
         return pulumi.get(self, "start_from")
 
     @start_from.setter
-    def start_from(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_from(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_from", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The current status of the log stream. Options are "active", "paused", "suspended".
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of the log stream, which indicates the sink provider. Options include: `eventbridge`, `eventgrid`, `http`, `datadog`, `splunk`, `sumo`, `mixpanel`, `segment`.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -296,14 +296,14 @@ class LogStream(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 filters: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
-                 is_priority: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 pii_config: Optional[pulumi.Input[Union['LogStreamPiiConfigArgs', 'LogStreamPiiConfigArgsDict']]] = None,
-                 sink: Optional[pulumi.Input[Union['LogStreamSinkArgs', 'LogStreamSinkArgsDict']]] = None,
-                 start_from: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 filters: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
+                 is_priority: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 pii_config: pulumi.Input[Optional[Union['LogStreamPiiConfigArgs', 'LogStreamPiiConfigArgsDict']]] = None,
+                 sink: pulumi.Input[Optional[Union['LogStreamSinkArgs', 'LogStreamSinkArgsDict']]] = None,
+                 start_from: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         With this resource, you can manage your Auth0 log streams.
@@ -453,14 +453,14 @@ class LogStream(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 filters: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
-                 is_priority: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 pii_config: Optional[pulumi.Input[Union['LogStreamPiiConfigArgs', 'LogStreamPiiConfigArgsDict']]] = None,
-                 sink: Optional[pulumi.Input[Union['LogStreamSinkArgs', 'LogStreamSinkArgsDict']]] = None,
-                 start_from: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 filters: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
+                 is_priority: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 pii_config: pulumi.Input[Optional[Union['LogStreamPiiConfigArgs', 'LogStreamPiiConfigArgsDict']]] = None,
+                 sink: pulumi.Input[Optional[Union['LogStreamSinkArgs', 'LogStreamSinkArgsDict']]] = None,
+                 start_from: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -492,14 +492,14 @@ class LogStream(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            filters: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
-            is_priority: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            pii_config: Optional[pulumi.Input[Union['LogStreamPiiConfigArgs', 'LogStreamPiiConfigArgsDict']]] = None,
-            sink: Optional[pulumi.Input[Union['LogStreamSinkArgs', 'LogStreamSinkArgsDict']]] = None,
-            start_from: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None) -> 'LogStream':
+            filters: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
+            is_priority: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            pii_config: pulumi.Input[Optional[Union['LogStreamPiiConfigArgs', 'LogStreamPiiConfigArgsDict']]] = None,
+            sink: pulumi.Input[Optional[Union['LogStreamSinkArgs', 'LogStreamSinkArgsDict']]] = None,
+            start_from: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> 'LogStream':
         """
         Get an existing LogStream resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

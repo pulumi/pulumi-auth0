@@ -126,15 +126,15 @@ export interface CustomDomainVerificationState {
     /**
      * The value of the `cname-api-key` header to send when forwarding requests. Only present if the type of the custom domain is `selfManagedCerts` and Terraform originally managed the domain's verification.
      */
-    cnameApiKey?: pulumi.Input<string>;
+    cnameApiKey?: pulumi.Input<string | undefined>;
     /**
      * ID of the custom domain resource.
      */
-    customDomainId?: pulumi.Input<string>;
+    customDomainId?: pulumi.Input<string | undefined>;
     /**
      * The DNS name of the Auth0 origin server that handles traffic for the custom domain.
      */
-    originDomainName?: pulumi.Input<string>;
+    originDomainName?: pulumi.Input<string | undefined>;
 }
 
 /**

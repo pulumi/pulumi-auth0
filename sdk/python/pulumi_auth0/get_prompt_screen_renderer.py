@@ -185,8 +185,8 @@ def get_prompt_screen_renderer(prompt_type: Optional[_builtins.str] = None,
         screen_name=pulumi.get(__ret__, 'screen_name'),
         tenant=pulumi.get(__ret__, 'tenant'),
         use_page_template=pulumi.get(__ret__, 'use_page_template'))
-def get_prompt_screen_renderer_output(prompt_type: Optional[pulumi.Input[_builtins.str]] = None,
-                                      screen_name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_prompt_screen_renderer_output(prompt_type: pulumi.Input[Optional[_builtins.str]] = None,
+                                      screen_name: pulumi.Input[Optional[_builtins.str]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPromptScreenRendererResult]:
     """
     Data source to retrieve a specific Auth0 prompt screen settings by `prompt_type` and `screen_name`

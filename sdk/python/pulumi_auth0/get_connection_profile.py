@@ -139,7 +139,7 @@ def get_connection_profile(id: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         organizations=pulumi.get(__ret__, 'organizations'),
         strategy_overrides=pulumi.get(__ret__, 'strategy_overrides'))
-def get_connection_profile_output(id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_connection_profile_output(id: pulumi.Input[Optional[_builtins.str]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConnectionProfileResult]:
     """
     Retrieve information about an Auth0 connection profile.

@@ -25,7 +25,7 @@ namespace Pulumi.Auth0
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // An Auth0 Self-Service- Profile loaded using it's ID.
-        ///     var auth0SelfServiceProfile = Auth0.Index.GetSelfServiceProfile.Invoke(new()
+        ///     var auth0SelfServiceProfile = Auth0.GetSelfServiceProfile.Invoke(new()
         ///     {
         ///         Id = "some-profile-id",
         ///     });
@@ -50,7 +50,7 @@ namespace Pulumi.Auth0
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // An Auth0 Self-Service- Profile loaded using it's ID.
-        ///     var auth0SelfServiceProfile = Auth0.Index.GetSelfServiceProfile.Invoke(new()
+        ///     var auth0SelfServiceProfile = Auth0.GetSelfServiceProfile.Invoke(new()
         ///     {
         ///         Id = "some-profile-id",
         ///     });
@@ -75,7 +75,7 @@ namespace Pulumi.Auth0
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // An Auth0 Self-Service- Profile loaded using it's ID.
-        ///     var auth0SelfServiceProfile = Auth0.Index.GetSelfServiceProfile.Invoke(new()
+        ///     var auth0SelfServiceProfile = Auth0.GetSelfServiceProfile.Invoke(new()
         ///     {
         ///         Id = "some-profile-id",
         ///     });

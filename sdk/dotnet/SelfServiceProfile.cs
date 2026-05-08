@@ -24,7 +24,7 @@ namespace Pulumi.Auth0
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var mySelfServiceProfile = new Auth0.Index.SelfServiceProfile("my_self_service_profile", new()
+    ///     var mySelfServiceProfile = new Auth0.SelfServiceProfile("my_self_service_profile", new()
     ///     {
     ///         UserAttributes = new[]
     ///         {

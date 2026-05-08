@@ -96,9 +96,9 @@ export interface GetActionOutputArgs {
     /**
      * The ID of the action. If not provided, `name` must be set.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The name of the action. If not provided, `id` must be set.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

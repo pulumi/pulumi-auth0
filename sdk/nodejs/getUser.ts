@@ -150,13 +150,13 @@ export interface GetUserOutputArgs {
     /**
      * Sets the `Auth0-Custom-Domain` header on all requests for this resource. Global setting of provider takes precedence over resource specific param, if both are set.
      */
-    customDomainHeader?: pulumi.Input<string>;
+    customDomainHeader?: pulumi.Input<string | undefined>;
     /**
      * Lucene Query for retrieving a user.
      */
-    query?: pulumi.Input<string>;
+    query?: pulumi.Input<string | undefined>;
     /**
      * ID of the user.
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
 }

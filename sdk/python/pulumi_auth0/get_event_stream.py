@@ -179,7 +179,7 @@ def get_event_stream(id: Optional[_builtins.str] = None,
         subscriptions=pulumi.get(__ret__, 'subscriptions'),
         updated_at=pulumi.get(__ret__, 'updated_at'),
         webhook_configurations=pulumi.get(__ret__, 'webhook_configurations'))
-def get_event_stream_output(id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_event_stream_output(id: pulumi.Input[Optional[_builtins.str]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEventStreamResult]:
     """
     Data source to retrieve a specific Auth0 Event Stream by `id`.

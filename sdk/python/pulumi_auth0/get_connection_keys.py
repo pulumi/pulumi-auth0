@@ -101,7 +101,7 @@ def get_connection_keys(connection_id: Optional[_builtins.str] = None,
         connection_id=pulumi.get(__ret__, 'connection_id'),
         id=pulumi.get(__ret__, 'id'),
         keys=pulumi.get(__ret__, 'keys'))
-def get_connection_keys_output(connection_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_connection_keys_output(connection_id: pulumi.Input[Optional[_builtins.str]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConnectionKeysResult]:
     """
     Retrieve the list of signing keys for a specific Auth0 connection. (Okta/OIDC only)

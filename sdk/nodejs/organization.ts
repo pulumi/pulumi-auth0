@@ -131,23 +131,23 @@ export interface OrganizationState {
     /**
      * Defines how to style the login pages.
      */
-    branding?: pulumi.Input<inputs.OrganizationBranding>;
+    branding?: pulumi.Input<inputs.OrganizationBranding | undefined>;
     /**
      * Friendly name of this organization.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Metadata associated with the organization. Maximum of 10 metadata properties allowed.
      */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of this organization.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The token quota configuration.
      */
-    tokenQuota?: pulumi.Input<inputs.OrganizationTokenQuota>;
+    tokenQuota?: pulumi.Input<inputs.OrganizationTokenQuota | undefined>;
 }
 
 /**
@@ -157,21 +157,21 @@ export interface OrganizationArgs {
     /**
      * Defines how to style the login pages.
      */
-    branding?: pulumi.Input<inputs.OrganizationBranding>;
+    branding?: pulumi.Input<inputs.OrganizationBranding | undefined>;
     /**
      * Friendly name of this organization.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Metadata associated with the organization. Maximum of 10 metadata properties allowed.
      */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of this organization.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The token quota configuration.
      */
-    tokenQuota?: pulumi.Input<inputs.OrganizationTokenQuota>;
+    tokenQuota?: pulumi.Input<inputs.OrganizationTokenQuota | undefined>;
 }

@@ -25,13 +25,13 @@ namespace Pulumi.Auth0
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // Auth0 clients with "External" in the name
-        ///     var externalApps = Auth0.Index.GetClients.Invoke(new()
+        ///     var externalApps = Auth0.GetClients.Invoke(new()
         ///     {
         ///         NameFilter = "External",
         ///     });
         /// 
         ///     // Auth0 clients filtered by non_interactive or spa app type
-        ///     var m2mApps = Auth0.Index.GetClients.Invoke(new()
+        ///     var m2mApps = Auth0.GetClients.Invoke(new()
         ///     {
         ///         AppTypes = new[]
         ///         {
@@ -41,7 +41,7 @@ namespace Pulumi.Auth0
         ///     });
         /// 
         ///     // Auth0 clients filtered by is_first_party equal to true
-        ///     var firstPartyApps = Auth0.Index.GetClients.Invoke(new()
+        ///     var firstPartyApps = Auth0.GetClients.Invoke(new()
         ///     {
         ///         IsFirstParty = true,
         ///     });
@@ -66,13 +66,13 @@ namespace Pulumi.Auth0
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // Auth0 clients with "External" in the name
-        ///     var externalApps = Auth0.Index.GetClients.Invoke(new()
+        ///     var externalApps = Auth0.GetClients.Invoke(new()
         ///     {
         ///         NameFilter = "External",
         ///     });
         /// 
         ///     // Auth0 clients filtered by non_interactive or spa app type
-        ///     var m2mApps = Auth0.Index.GetClients.Invoke(new()
+        ///     var m2mApps = Auth0.GetClients.Invoke(new()
         ///     {
         ///         AppTypes = new[]
         ///         {
@@ -82,7 +82,7 @@ namespace Pulumi.Auth0
         ///     });
         /// 
         ///     // Auth0 clients filtered by is_first_party equal to true
-        ///     var firstPartyApps = Auth0.Index.GetClients.Invoke(new()
+        ///     var firstPartyApps = Auth0.GetClients.Invoke(new()
         ///     {
         ///         IsFirstParty = true,
         ///     });
@@ -107,13 +107,13 @@ namespace Pulumi.Auth0
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // Auth0 clients with "External" in the name
-        ///     var externalApps = Auth0.Index.GetClients.Invoke(new()
+        ///     var externalApps = Auth0.GetClients.Invoke(new()
         ///     {
         ///         NameFilter = "External",
         ///     });
         /// 
         ///     // Auth0 clients filtered by non_interactive or spa app type
-        ///     var m2mApps = Auth0.Index.GetClients.Invoke(new()
+        ///     var m2mApps = Auth0.GetClients.Invoke(new()
         ///     {
         ///         AppTypes = new[]
         ///         {
@@ -123,7 +123,7 @@ namespace Pulumi.Auth0
         ///     });
         /// 
         ///     // Auth0 clients filtered by is_first_party equal to true
-        ///     var firstPartyApps = Auth0.Index.GetClients.Invoke(new()
+        ///     var firstPartyApps = Auth0.GetClients.Invoke(new()
         ///     {
         ///         IsFirstParty = true,
         ///     });

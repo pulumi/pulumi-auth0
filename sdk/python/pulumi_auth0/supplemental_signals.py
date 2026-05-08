@@ -43,7 +43,7 @@ class SupplementalSignalsArgs:
 @pulumi.input_type
 class _SupplementalSignalsState:
     def __init__(__self__, *,
-                 akamai_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 akamai_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering SupplementalSignals resources.
 
@@ -54,14 +54,14 @@ class _SupplementalSignalsState:
 
     @_builtins.property
     @pulumi.getter(name="akamaiEnabled")
-    def akamai_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def akamai_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates if incoming Akamai Headers should be processed.
         """
         return pulumi.get(self, "akamai_enabled")
 
     @akamai_enabled.setter
-    def akamai_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def akamai_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "akamai_enabled", value)
 
 
@@ -71,7 +71,7 @@ class SupplementalSignals(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 akamai_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 akamai_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         With this resource, you can configure Auth0 Supplemental Signals settings for your tenant. This resource is a singleton, meaning only one instance exists per tenant.
@@ -124,7 +124,7 @@ class SupplementalSignals(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 akamai_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 akamai_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -147,7 +147,7 @@ class SupplementalSignals(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            akamai_enabled: Optional[pulumi.Input[_builtins.bool]] = None) -> 'SupplementalSignals':
+            akamai_enabled: pulumi.Input[Optional[_builtins.bool]] = None) -> 'SupplementalSignals':
         """
         Get an existing SupplementalSignals resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

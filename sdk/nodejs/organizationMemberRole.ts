@@ -148,23 +148,23 @@ export interface OrganizationMemberRoleState {
     /**
      * The ID of the organization.
      */
-    organizationId?: pulumi.Input<string>;
+    organizationId?: pulumi.Input<string | undefined>;
     /**
      * Description of the role.
      */
-    roleDescription?: pulumi.Input<string>;
+    roleDescription?: pulumi.Input<string | undefined>;
     /**
      * The role ID to assign to the organization member.
      */
-    roleId?: pulumi.Input<string>;
+    roleId?: pulumi.Input<string | undefined>;
     /**
      * Name of the role.
      */
-    roleName?: pulumi.Input<string>;
+    roleName?: pulumi.Input<string | undefined>;
     /**
      * The user ID of the organization member.
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
 }
 
 /**

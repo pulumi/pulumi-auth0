@@ -43,7 +43,7 @@ class CustomDomainDefaultArgs:
 @pulumi.input_type
 class _CustomDomainDefaultState:
     def __init__(__self__, *,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None):
+                 domain: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CustomDomainDefault resources.
 
@@ -54,14 +54,14 @@ class _CustomDomainDefaultState:
 
     @_builtins.property
     @pulumi.getter
-    def domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The custom domain name or canonical domain name to set as the default domain for the tenant.
         """
         return pulumi.get(self, "domain")
 
     @domain.setter
-    def domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain", value)
 
 
@@ -71,7 +71,7 @@ class CustomDomainDefault(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         With this resource, you can configure the default domain for your Auth0 tenant. The default domain is the domain that Auth0 will use for various tenant-level operations. This resource manages the default domain configuration via the custom domains API.
@@ -152,7 +152,7 @@ class CustomDomainDefault(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -175,7 +175,7 @@ class CustomDomainDefault(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            domain: Optional[pulumi.Input[_builtins.str]] = None) -> 'CustomDomainDefault':
+            domain: pulumi.Input[Optional[_builtins.str]] = None) -> 'CustomDomainDefault':
         """
         Get an existing CustomDomainDefault resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

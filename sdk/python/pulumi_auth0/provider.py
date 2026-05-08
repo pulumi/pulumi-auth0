@@ -19,17 +19,17 @@ __all__ = ['ProviderArgs', 'Provider']
 @pulumi.input_type
 class ProviderArgs:
     def __init__(__self__, *,
-                 api_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 audience: Optional[pulumi.Input[_builtins.str]] = None,
-                 cli_login: Optional[pulumi.Input[_builtins.bool]] = None,
-                 client_assertion_private_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_assertion_signing_alg: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_domain_header: Optional[pulumi.Input[_builtins.str]] = None,
-                 debug: Optional[pulumi.Input[_builtins.bool]] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 dynamic_credentials: Optional[pulumi.Input[_builtins.bool]] = None):
+                 api_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 audience: pulumi.Input[Optional[_builtins.str]] = None,
+                 cli_login: pulumi.Input[Optional[_builtins.bool]] = None,
+                 client_assertion_private_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_assertion_signing_alg: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_domain_header: pulumi.Input[Optional[_builtins.str]] = None,
+                 debug: pulumi.Input[Optional[_builtins.bool]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 dynamic_credentials: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Provider resource.
 
@@ -72,134 +72,134 @@ class ProviderArgs:
 
     @_builtins.property
     @pulumi.getter(name="apiToken")
-    def api_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Your Auth0 [management api access token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from the `AUTH0_API_TOKEN` environment variable. It can be used instead of `client_id` + `client_secret`. If both are specified, `api_token` will be used over `client_id` + `client_secret` fields.
         """
         return pulumi.get(self, "api_token")
 
     @api_token.setter
-    def api_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api_token", value)
 
     @_builtins.property
     @pulumi.getter
-    def audience(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def audience(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Your Auth0 audience when using a custom domain. It can also be sourced from the `AUTH0_AUDIENCE` environment variable.
         """
         return pulumi.get(self, "audience")
 
     @audience.setter
-    def audience(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def audience(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "audience", value)
 
     @_builtins.property
     @pulumi.getter(name="cliLogin")
-    def cli_login(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def cli_login(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         While toggled on, the API token gets fetched from the keyring for the given domain
         """
         return pulumi.get(self, "cli_login")
 
     @cli_login.setter
-    def cli_login(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def cli_login(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "cli_login", value)
 
     @_builtins.property
     @pulumi.getter(name="clientAssertionPrivateKey")
-    def client_assertion_private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_assertion_private_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The private key used to sign the client assertion JWT. It can also be sourced from the `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
         """
         return pulumi.get(self, "client_assertion_private_key")
 
     @client_assertion_private_key.setter
-    def client_assertion_private_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_assertion_private_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_assertion_private_key", value)
 
     @_builtins.property
     @pulumi.getter(name="clientAssertionSigningAlg")
-    def client_assertion_signing_alg(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_assertion_signing_alg(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The algorithm used to sign the client assertion JWT. It can also be sourced from the `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
         """
         return pulumi.get(self, "client_assertion_signing_alg")
 
     @client_assertion_signing_alg.setter
-    def client_assertion_signing_alg(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_assertion_signing_alg(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_assertion_signing_alg", value)
 
     @_builtins.property
     @pulumi.getter(name="clientId")
-    def client_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.
         """
         return pulumi.get(self, "client_id")
 
     @client_id.setter
-    def client_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_id", value)
 
     @_builtins.property
     @pulumi.getter(name="clientSecret")
-    def client_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable.
         """
         return pulumi.get(self, "client_secret")
 
     @client_secret.setter
-    def client_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_secret", value)
 
     @_builtins.property
     @pulumi.getter(name="customDomainHeader")
-    def custom_domain_header(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_domain_header(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting overrides all resource specific `custom_domain_header` value
         """
         return pulumi.get(self, "custom_domain_header")
 
     @custom_domain_header.setter
-    def custom_domain_header(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_domain_header(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_domain_header", value)
 
     @_builtins.property
     @pulumi.getter
-    def debug(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def debug(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG` environment variable.
         """
         return pulumi.get(self, "debug")
 
     @debug.setter
-    def debug(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def debug(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "debug", value)
 
     @_builtins.property
     @pulumi.getter
-    def domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
         """
         return pulumi.get(self, "domain")
 
     @domain.setter
-    def domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain", value)
 
     @_builtins.property
     @pulumi.getter(name="dynamicCredentials")
-    def dynamic_credentials(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dynamic_credentials(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether credentials will be dynamically passed to the provider from other terraform resources.
         """
         return pulumi.get(self, "dynamic_credentials")
 
     @dynamic_credentials.setter
-    def dynamic_credentials(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dynamic_credentials(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dynamic_credentials", value)
 
 
@@ -209,17 +209,17 @@ class Provider(pulumi.ProviderResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 audience: Optional[pulumi.Input[_builtins.str]] = None,
-                 cli_login: Optional[pulumi.Input[_builtins.bool]] = None,
-                 client_assertion_private_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_assertion_signing_alg: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_domain_header: Optional[pulumi.Input[_builtins.str]] = None,
-                 debug: Optional[pulumi.Input[_builtins.bool]] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 dynamic_credentials: Optional[pulumi.Input[_builtins.bool]] = None,
+                 api_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 audience: pulumi.Input[Optional[_builtins.str]] = None,
+                 cli_login: pulumi.Input[Optional[_builtins.bool]] = None,
+                 client_assertion_private_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_assertion_signing_alg: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_domain_header: pulumi.Input[Optional[_builtins.str]] = None,
+                 debug: pulumi.Input[Optional[_builtins.bool]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 dynamic_credentials: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         The provider type for the auth0 package. By default, resources use package-wide configuration
@@ -270,17 +270,17 @@ class Provider(pulumi.ProviderResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 audience: Optional[pulumi.Input[_builtins.str]] = None,
-                 cli_login: Optional[pulumi.Input[_builtins.bool]] = None,
-                 client_assertion_private_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_assertion_signing_alg: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_domain_header: Optional[pulumi.Input[_builtins.str]] = None,
-                 debug: Optional[pulumi.Input[_builtins.bool]] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 dynamic_credentials: Optional[pulumi.Input[_builtins.bool]] = None,
+                 api_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 audience: pulumi.Input[Optional[_builtins.str]] = None,
+                 cli_login: pulumi.Input[Optional[_builtins.bool]] = None,
+                 client_assertion_private_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_assertion_signing_alg: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_domain_header: pulumi.Input[Optional[_builtins.str]] = None,
+                 debug: pulumi.Input[Optional[_builtins.bool]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 dynamic_credentials: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

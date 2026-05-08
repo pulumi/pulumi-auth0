@@ -43,7 +43,7 @@ class RiskAssessmentsNewDeviceArgs:
 @pulumi.input_type
 class _RiskAssessmentsNewDeviceState:
     def __init__(__self__, *,
-                 remember_for: Optional[pulumi.Input[_builtins.int]] = None):
+                 remember_for: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering RiskAssessmentsNewDevice resources.
 
@@ -54,14 +54,14 @@ class _RiskAssessmentsNewDeviceState:
 
     @_builtins.property
     @pulumi.getter(name="rememberFor")
-    def remember_for(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def remember_for(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Length of time to remember devices for, in days
         """
         return pulumi.get(self, "remember_for")
 
     @remember_for.setter
-    def remember_for(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def remember_for(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "remember_for", value)
 
 
@@ -71,7 +71,7 @@ class RiskAssessmentsNewDevice(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 remember_for: Optional[pulumi.Input[_builtins.int]] = None,
+                 remember_for: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Resource for managing Risk Assessment settings for new devices.
@@ -106,7 +106,7 @@ class RiskAssessmentsNewDevice(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 remember_for: Optional[pulumi.Input[_builtins.int]] = None,
+                 remember_for: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -129,7 +129,7 @@ class RiskAssessmentsNewDevice(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            remember_for: Optional[pulumi.Input[_builtins.int]] = None) -> 'RiskAssessmentsNewDevice':
+            remember_for: pulumi.Input[Optional[_builtins.int]] = None) -> 'RiskAssessmentsNewDevice':
         """
         Get an existing RiskAssessmentsNewDevice resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

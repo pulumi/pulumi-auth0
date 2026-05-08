@@ -23,12 +23,12 @@ class ActionArgs:
     def __init__(__self__, *,
                  code: pulumi.Input[_builtins.str],
                  supported_triggers: pulumi.Input['ActionSupportedTriggersArgs'],
-                 dependencies: Optional[pulumi.Input[Sequence[pulumi.Input['ActionDependencyArgs']]]] = None,
-                 deploy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 modules: Optional[pulumi.Input[Sequence[pulumi.Input['ActionModuleArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 runtime: Optional[pulumi.Input[_builtins.str]] = None,
-                 secrets: Optional[pulumi.Input[Sequence[pulumi.Input['ActionSecretArgs']]]] = None):
+                 dependencies: pulumi.Input[Optional[Sequence[pulumi.Input['ActionDependencyArgs']]]] = None,
+                 deploy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 modules: pulumi.Input[Optional[Sequence[pulumi.Input['ActionModuleArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 runtime: pulumi.Input[Optional[_builtins.str]] = None,
+                 secrets: pulumi.Input[Optional[Sequence[pulumi.Input['ActionSecretArgs']]]] = None):
         """
         The set of arguments for constructing a Action resource.
 
@@ -82,89 +82,89 @@ class ActionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def dependencies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ActionDependencyArgs']]]]:
+    def dependencies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ActionDependencyArgs']]]]:
         """
         List of third party npm modules, and their versions, that this action depends on.
         """
         return pulumi.get(self, "dependencies")
 
     @dependencies.setter
-    def dependencies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ActionDependencyArgs']]]]):
+    def dependencies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ActionDependencyArgs']]]]):
         pulumi.set(self, "dependencies", value)
 
     @_builtins.property
     @pulumi.getter
-    def deploy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deploy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately.
         """
         return pulumi.get(self, "deploy")
 
     @deploy.setter
-    def deploy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deploy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deploy", value)
 
     @_builtins.property
     @pulumi.getter
-    def modules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ActionModuleArgs']]]]:
+    def modules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ActionModuleArgs']]]]:
         """
         List of action modules and their versions that this action depends on.
         """
         return pulumi.get(self, "modules")
 
     @modules.setter
-    def modules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ActionModuleArgs']]]]):
+    def modules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ActionModuleArgs']]]]):
         pulumi.set(self, "modules", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the action.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def runtime(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def runtime(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Node runtime. Possible values are: `node12`, `node16` (not recommended), `node18`, `node22`
         """
         return pulumi.get(self, "runtime")
 
     @runtime.setter
-    def runtime(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def runtime(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "runtime", value)
 
     @_builtins.property
     @pulumi.getter
-    def secrets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ActionSecretArgs']]]]:
+    def secrets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ActionSecretArgs']]]]:
         """
         List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
         """
         return pulumi.get(self, "secrets")
 
     @secrets.setter
-    def secrets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ActionSecretArgs']]]]):
+    def secrets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ActionSecretArgs']]]]):
         pulumi.set(self, "secrets", value)
 
 
 @pulumi.input_type
 class _ActionState:
     def __init__(__self__, *,
-                 code: Optional[pulumi.Input[_builtins.str]] = None,
-                 dependencies: Optional[pulumi.Input[Sequence[pulumi.Input['ActionDependencyArgs']]]] = None,
-                 deploy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 modules: Optional[pulumi.Input[Sequence[pulumi.Input['ActionModuleArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 runtime: Optional[pulumi.Input[_builtins.str]] = None,
-                 secrets: Optional[pulumi.Input[Sequence[pulumi.Input['ActionSecretArgs']]]] = None,
-                 supported_triggers: Optional[pulumi.Input['ActionSupportedTriggersArgs']] = None,
-                 version_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 code: pulumi.Input[Optional[_builtins.str]] = None,
+                 dependencies: pulumi.Input[Optional[Sequence[pulumi.Input['ActionDependencyArgs']]]] = None,
+                 deploy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 modules: pulumi.Input[Optional[Sequence[pulumi.Input['ActionModuleArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 runtime: pulumi.Input[Optional[_builtins.str]] = None,
+                 secrets: pulumi.Input[Optional[Sequence[pulumi.Input['ActionSecretArgs']]]] = None,
+                 supported_triggers: pulumi.Input[Optional['ActionSupportedTriggersArgs']] = None,
+                 version_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Action resources.
 
@@ -199,110 +199,110 @@ class _ActionState:
 
     @_builtins.property
     @pulumi.getter
-    def code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source code of the action.
         """
         return pulumi.get(self, "code")
 
     @code.setter
-    def code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code", value)
 
     @_builtins.property
     @pulumi.getter
-    def dependencies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ActionDependencyArgs']]]]:
+    def dependencies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ActionDependencyArgs']]]]:
         """
         List of third party npm modules, and their versions, that this action depends on.
         """
         return pulumi.get(self, "dependencies")
 
     @dependencies.setter
-    def dependencies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ActionDependencyArgs']]]]):
+    def dependencies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ActionDependencyArgs']]]]):
         pulumi.set(self, "dependencies", value)
 
     @_builtins.property
     @pulumi.getter
-    def deploy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deploy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately.
         """
         return pulumi.get(self, "deploy")
 
     @deploy.setter
-    def deploy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deploy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deploy", value)
 
     @_builtins.property
     @pulumi.getter
-    def modules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ActionModuleArgs']]]]:
+    def modules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ActionModuleArgs']]]]:
         """
         List of action modules and their versions that this action depends on.
         """
         return pulumi.get(self, "modules")
 
     @modules.setter
-    def modules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ActionModuleArgs']]]]):
+    def modules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ActionModuleArgs']]]]):
         pulumi.set(self, "modules", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the action.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def runtime(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def runtime(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Node runtime. Possible values are: `node12`, `node16` (not recommended), `node18`, `node22`
         """
         return pulumi.get(self, "runtime")
 
     @runtime.setter
-    def runtime(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def runtime(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "runtime", value)
 
     @_builtins.property
     @pulumi.getter
-    def secrets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ActionSecretArgs']]]]:
+    def secrets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ActionSecretArgs']]]]:
         """
         List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
         """
         return pulumi.get(self, "secrets")
 
     @secrets.setter
-    def secrets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ActionSecretArgs']]]]):
+    def secrets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ActionSecretArgs']]]]):
         pulumi.set(self, "secrets", value)
 
     @_builtins.property
     @pulumi.getter(name="supportedTriggers")
-    def supported_triggers(self) -> Optional[pulumi.Input['ActionSupportedTriggersArgs']]:
+    def supported_triggers(self) -> pulumi.Input[Optional['ActionSupportedTriggersArgs']]:
         """
         List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
         """
         return pulumi.get(self, "supported_triggers")
 
     @supported_triggers.setter
-    def supported_triggers(self, value: Optional[pulumi.Input['ActionSupportedTriggersArgs']]):
+    def supported_triggers(self, value: pulumi.Input[Optional['ActionSupportedTriggersArgs']]):
         pulumi.set(self, "supported_triggers", value)
 
     @_builtins.property
     @pulumi.getter(name="versionId")
-    def version_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Version ID of the action. This value is available if `deploy` is set to true.
         """
         return pulumi.get(self, "version_id")
 
     @version_id.setter
-    def version_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version_id", value)
 
 
@@ -312,14 +312,14 @@ class Action(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 code: Optional[pulumi.Input[_builtins.str]] = None,
-                 dependencies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ActionDependencyArgs', 'ActionDependencyArgsDict']]]]] = None,
-                 deploy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 modules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ActionModuleArgs', 'ActionModuleArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 runtime: Optional[pulumi.Input[_builtins.str]] = None,
-                 secrets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ActionSecretArgs', 'ActionSecretArgsDict']]]]] = None,
-                 supported_triggers: Optional[pulumi.Input[Union['ActionSupportedTriggersArgs', 'ActionSupportedTriggersArgsDict']]] = None,
+                 code: pulumi.Input[Optional[_builtins.str]] = None,
+                 dependencies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionDependencyArgs', 'ActionDependencyArgsDict']]]]] = None,
+                 deploy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 modules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionModuleArgs', 'ActionModuleArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 runtime: pulumi.Input[Optional[_builtins.str]] = None,
+                 secrets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionSecretArgs', 'ActionSecretArgsDict']]]]] = None,
+                 supported_triggers: pulumi.Input[Optional[Union['ActionSupportedTriggersArgs', 'ActionSupportedTriggersArgsDict']]] = None,
                  __props__=None):
         """
         Actions are secure, tenant-specific, versioned functions written in Node.js that execute at certain points during the Auth0 runtime. Actions are used to customize and extend Auth0's capabilities with custom logic.
@@ -499,14 +499,14 @@ class Action(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 code: Optional[pulumi.Input[_builtins.str]] = None,
-                 dependencies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ActionDependencyArgs', 'ActionDependencyArgsDict']]]]] = None,
-                 deploy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 modules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ActionModuleArgs', 'ActionModuleArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 runtime: Optional[pulumi.Input[_builtins.str]] = None,
-                 secrets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ActionSecretArgs', 'ActionSecretArgsDict']]]]] = None,
-                 supported_triggers: Optional[pulumi.Input[Union['ActionSupportedTriggersArgs', 'ActionSupportedTriggersArgsDict']]] = None,
+                 code: pulumi.Input[Optional[_builtins.str]] = None,
+                 dependencies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionDependencyArgs', 'ActionDependencyArgsDict']]]]] = None,
+                 deploy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 modules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionModuleArgs', 'ActionModuleArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 runtime: pulumi.Input[Optional[_builtins.str]] = None,
+                 secrets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionSecretArgs', 'ActionSecretArgsDict']]]]] = None,
+                 supported_triggers: pulumi.Input[Optional[Union['ActionSupportedTriggersArgs', 'ActionSupportedTriggersArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -539,15 +539,15 @@ class Action(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            code: Optional[pulumi.Input[_builtins.str]] = None,
-            dependencies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ActionDependencyArgs', 'ActionDependencyArgsDict']]]]] = None,
-            deploy: Optional[pulumi.Input[_builtins.bool]] = None,
-            modules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ActionModuleArgs', 'ActionModuleArgsDict']]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            runtime: Optional[pulumi.Input[_builtins.str]] = None,
-            secrets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ActionSecretArgs', 'ActionSecretArgsDict']]]]] = None,
-            supported_triggers: Optional[pulumi.Input[Union['ActionSupportedTriggersArgs', 'ActionSupportedTriggersArgsDict']]] = None,
-            version_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'Action':
+            code: pulumi.Input[Optional[_builtins.str]] = None,
+            dependencies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionDependencyArgs', 'ActionDependencyArgsDict']]]]] = None,
+            deploy: pulumi.Input[Optional[_builtins.bool]] = None,
+            modules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionModuleArgs', 'ActionModuleArgsDict']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            runtime: pulumi.Input[Optional[_builtins.str]] = None,
+            secrets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionSecretArgs', 'ActionSecretArgsDict']]]]] = None,
+            supported_triggers: pulumi.Input[Optional[Union['ActionSupportedTriggersArgs', 'ActionSupportedTriggersArgsDict']]] = None,
+            version_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Action':
         """
         Get an existing Action resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

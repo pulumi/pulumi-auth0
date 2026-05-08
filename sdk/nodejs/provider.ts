@@ -102,47 +102,47 @@ export interface ProviderArgs {
     /**
      * Your Auth0 [management api access token](https://auth0.com/docs/security/tokens/access-tokens/management-api-access-tokens). It can also be sourced from the `AUTH0_API_TOKEN` environment variable. It can be used instead of `clientId` + `clientSecret`. If both are specified, `apiToken` will be used over `clientId` + `clientSecret` fields.
      */
-    apiToken?: pulumi.Input<string>;
+    apiToken?: pulumi.Input<string | undefined>;
     /**
      * Your Auth0 audience when using a custom domain. It can also be sourced from the `AUTH0_AUDIENCE` environment variable.
      */
-    audience?: pulumi.Input<string>;
+    audience?: pulumi.Input<string | undefined>;
     /**
      * While toggled on, the API token gets fetched from the keyring for the given domain
      */
-    cliLogin?: pulumi.Input<boolean>;
+    cliLogin?: pulumi.Input<boolean | undefined>;
     /**
      * The private key used to sign the client assertion JWT. It can also be sourced from the `AUTH0_CLIENT_ASSERTION_PRIVATE_KEY` environment variable.
      */
-    clientAssertionPrivateKey?: pulumi.Input<string>;
+    clientAssertionPrivateKey?: pulumi.Input<string | undefined>;
     /**
      * The algorithm used to sign the client assertion JWT. It can also be sourced from the `AUTH0_CLIENT_ASSERTION_SIGNING_ALG` environment variable.
      */
-    clientAssertionSigningAlg?: pulumi.Input<string>;
+    clientAssertionSigningAlg?: pulumi.Input<string | undefined>;
     /**
      * Your Auth0 client ID. It can also be sourced from the `AUTH0_CLIENT_ID` environment variable.
      */
-    clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
     /**
      * Your Auth0 client secret. It can also be sourced from the `AUTH0_CLIENT_SECRET` environment variable.
      */
-    clientSecret?: pulumi.Input<string>;
+    clientSecret?: pulumi.Input<string | undefined>;
     /**
      * When specified, this header is added to requests targeting a set of pre-defined whitelisted URLs Global setting overrides all resource specific `customDomainHeader` value
      */
-    customDomainHeader?: pulumi.Input<string>;
+    customDomainHeader?: pulumi.Input<string | undefined>;
     /**
      * Enables HTTP request and response logging when TF_LOG=DEBUG is set. It can also be sourced from the `AUTH0_DEBUG` environment variable.
      */
-    debug?: pulumi.Input<boolean>;
+    debug?: pulumi.Input<boolean | undefined>;
     /**
      * Your Auth0 domain name. It can also be sourced from the `AUTH0_DOMAIN` environment variable.
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether credentials will be dynamically passed to the provider from other terraform resources.
      */
-    dynamicCredentials?: pulumi.Input<boolean>;
+    dynamicCredentials?: pulumi.Input<boolean | undefined>;
 }
 
 export namespace Provider {

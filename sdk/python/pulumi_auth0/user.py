@@ -20,23 +20,23 @@ __all__ = ['UserArgs', 'User']
 class UserArgs:
     def __init__(__self__, *,
                  connection_name: pulumi.Input[_builtins.str],
-                 app_metadata: Optional[pulumi.Input[_builtins.str]] = None,
-                 blocked: Optional[pulumi.Input[_builtins.bool]] = None,
-                 custom_domain_header: Optional[pulumi.Input[_builtins.str]] = None,
-                 email: Optional[pulumi.Input[_builtins.str]] = None,
-                 email_verified: Optional[pulumi.Input[_builtins.bool]] = None,
-                 family_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 given_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 nickname: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 phone_number: Optional[pulumi.Input[_builtins.str]] = None,
-                 phone_verified: Optional[pulumi.Input[_builtins.bool]] = None,
-                 picture: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_metadata: Optional[pulumi.Input[_builtins.str]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
-                 verify_email: Optional[pulumi.Input[_builtins.bool]] = None):
+                 app_metadata: pulumi.Input[Optional[_builtins.str]] = None,
+                 blocked: pulumi.Input[Optional[_builtins.bool]] = None,
+                 custom_domain_header: pulumi.Input[Optional[_builtins.str]] = None,
+                 email: pulumi.Input[Optional[_builtins.str]] = None,
+                 email_verified: pulumi.Input[Optional[_builtins.bool]] = None,
+                 family_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 given_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 nickname: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 phone_number: pulumi.Input[Optional[_builtins.str]] = None,
+                 phone_verified: pulumi.Input[Optional[_builtins.bool]] = None,
+                 picture: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_metadata: pulumi.Input[Optional[_builtins.str]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
+                 verify_email: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a User resource.
 
@@ -109,230 +109,230 @@ class UserArgs:
 
     @_builtins.property
     @pulumi.getter(name="appMetadata")
-    def app_metadata(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_metadata(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom fields that store info about the user that impact the user's core functionality, such as how an application functions or what the user can access. Examples include support plans and IDs for external accounts.
         """
         return pulumi.get(self, "app_metadata")
 
     @app_metadata.setter
-    def app_metadata(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_metadata(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_metadata", value)
 
     @_builtins.property
     @pulumi.getter
-    def blocked(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def blocked(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the user is blocked or not.
         """
         return pulumi.get(self, "blocked")
 
     @blocked.setter
-    def blocked(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def blocked(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "blocked", value)
 
     @_builtins.property
     @pulumi.getter(name="customDomainHeader")
-    def custom_domain_header(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_domain_header(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Sets the `Auth0-Custom-Domain` header on all requests for this resource. Global setting of provider takes precedence over resource specific param, if both are set.
         """
         return pulumi.get(self, "custom_domain_header")
 
     @custom_domain_header.setter
-    def custom_domain_header(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_domain_header(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_domain_header", value)
 
     @_builtins.property
     @pulumi.getter
-    def email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Email address of the user.
         """
         return pulumi.get(self, "email")
 
     @email.setter
-    def email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "email", value)
 
     @_builtins.property
     @pulumi.getter(name="emailVerified")
-    def email_verified(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def email_verified(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the email address has been verified.
         """
         return pulumi.get(self, "email_verified")
 
     @email_verified.setter
-    def email_verified(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def email_verified(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "email_verified", value)
 
     @_builtins.property
     @pulumi.getter(name="familyName")
-    def family_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def family_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Family name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         """
         return pulumi.get(self, "family_name")
 
     @family_name.setter
-    def family_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def family_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "family_name", value)
 
     @_builtins.property
     @pulumi.getter(name="givenName")
-    def given_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def given_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Given name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         """
         return pulumi.get(self, "given_name")
 
     @given_name.setter
-    def given_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def given_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "given_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def nickname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nickname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Preferred nickname or alias of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         """
         return pulumi.get(self, "nickname")
 
     @nickname.setter
-    def nickname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nickname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nickname", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Initial password for this user. Required for non-passwordless connections (SMS and email).
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="phoneNumber")
-    def phone_number(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def phone_number(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
         """
         return pulumi.get(self, "phone_number")
 
     @phone_number.setter
-    def phone_number(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def phone_number(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "phone_number", value)
 
     @_builtins.property
     @pulumi.getter(name="phoneVerified")
-    def phone_verified(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def phone_verified(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the phone number has been verified.
         """
         return pulumi.get(self, "phone_verified")
 
     @phone_verified.setter
-    def phone_verified(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def phone_verified(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "phone_verified", value)
 
     @_builtins.property
     @pulumi.getter
-    def picture(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def picture(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Picture of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         """
         return pulumi.get(self, "picture")
 
     @picture.setter
-    def picture(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def picture(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "picture", value)
 
     @_builtins.property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the user.
         """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
-    def user_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_id", value)
 
     @_builtins.property
     @pulumi.getter(name="userMetadata")
-    def user_metadata(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_metadata(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom fields that store info about the user that does not impact a user's core functionality. Examples include work address, home address, and user preferences.
         """
         return pulumi.get(self, "user_metadata")
 
     @user_metadata.setter
-    def user_metadata(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_metadata(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_metadata", value)
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Username of the user. Only valid if the connection requires a username.
         """
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
     @_builtins.property
     @pulumi.getter(name="verifyEmail")
-    def verify_email(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def verify_email(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the user will receive a verification email after creation. Overrides behavior of `email_verified` parameter.
         """
         return pulumi.get(self, "verify_email")
 
     @verify_email.setter
-    def verify_email(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def verify_email(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "verify_email", value)
 
 
 @pulumi.input_type
 class _UserState:
     def __init__(__self__, *,
-                 app_metadata: Optional[pulumi.Input[_builtins.str]] = None,
-                 blocked: Optional[pulumi.Input[_builtins.bool]] = None,
-                 connection_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_domain_header: Optional[pulumi.Input[_builtins.str]] = None,
-                 email: Optional[pulumi.Input[_builtins.str]] = None,
-                 email_verified: Optional[pulumi.Input[_builtins.bool]] = None,
-                 family_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 given_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 nickname: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 phone_number: Optional[pulumi.Input[_builtins.str]] = None,
-                 phone_verified: Optional[pulumi.Input[_builtins.bool]] = None,
-                 picture: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_metadata: Optional[pulumi.Input[_builtins.str]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
-                 verify_email: Optional[pulumi.Input[_builtins.bool]] = None):
+                 app_metadata: pulumi.Input[Optional[_builtins.str]] = None,
+                 blocked: pulumi.Input[Optional[_builtins.bool]] = None,
+                 connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_domain_header: pulumi.Input[Optional[_builtins.str]] = None,
+                 email: pulumi.Input[Optional[_builtins.str]] = None,
+                 email_verified: pulumi.Input[Optional[_builtins.bool]] = None,
+                 family_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 given_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 nickname: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 phone_number: pulumi.Input[Optional[_builtins.str]] = None,
+                 phone_verified: pulumi.Input[Optional[_builtins.bool]] = None,
+                 picture: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_metadata: pulumi.Input[Optional[_builtins.str]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
+                 verify_email: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering User resources.
 
@@ -394,218 +394,218 @@ class _UserState:
 
     @_builtins.property
     @pulumi.getter(name="appMetadata")
-    def app_metadata(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_metadata(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom fields that store info about the user that impact the user's core functionality, such as how an application functions or what the user can access. Examples include support plans and IDs for external accounts.
         """
         return pulumi.get(self, "app_metadata")
 
     @app_metadata.setter
-    def app_metadata(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_metadata(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_metadata", value)
 
     @_builtins.property
     @pulumi.getter
-    def blocked(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def blocked(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the user is blocked or not.
         """
         return pulumi.get(self, "blocked")
 
     @blocked.setter
-    def blocked(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def blocked(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "blocked", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionName")
-    def connection_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the connection from which the user information was sourced.
         """
         return pulumi.get(self, "connection_name")
 
     @connection_name.setter
-    def connection_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_name", value)
 
     @_builtins.property
     @pulumi.getter(name="customDomainHeader")
-    def custom_domain_header(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_domain_header(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Sets the `Auth0-Custom-Domain` header on all requests for this resource. Global setting of provider takes precedence over resource specific param, if both are set.
         """
         return pulumi.get(self, "custom_domain_header")
 
     @custom_domain_header.setter
-    def custom_domain_header(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_domain_header(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_domain_header", value)
 
     @_builtins.property
     @pulumi.getter
-    def email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Email address of the user.
         """
         return pulumi.get(self, "email")
 
     @email.setter
-    def email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "email", value)
 
     @_builtins.property
     @pulumi.getter(name="emailVerified")
-    def email_verified(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def email_verified(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the email address has been verified.
         """
         return pulumi.get(self, "email_verified")
 
     @email_verified.setter
-    def email_verified(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def email_verified(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "email_verified", value)
 
     @_builtins.property
     @pulumi.getter(name="familyName")
-    def family_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def family_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Family name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         """
         return pulumi.get(self, "family_name")
 
     @family_name.setter
-    def family_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def family_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "family_name", value)
 
     @_builtins.property
     @pulumi.getter(name="givenName")
-    def given_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def given_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Given name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         """
         return pulumi.get(self, "given_name")
 
     @given_name.setter
-    def given_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def given_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "given_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def nickname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nickname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Preferred nickname or alias of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         """
         return pulumi.get(self, "nickname")
 
     @nickname.setter
-    def nickname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nickname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nickname", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Initial password for this user. Required for non-passwordless connections (SMS and email).
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="phoneNumber")
-    def phone_number(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def phone_number(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
         """
         return pulumi.get(self, "phone_number")
 
     @phone_number.setter
-    def phone_number(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def phone_number(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "phone_number", value)
 
     @_builtins.property
     @pulumi.getter(name="phoneVerified")
-    def phone_verified(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def phone_verified(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the phone number has been verified.
         """
         return pulumi.get(self, "phone_verified")
 
     @phone_verified.setter
-    def phone_verified(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def phone_verified(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "phone_verified", value)
 
     @_builtins.property
     @pulumi.getter
-    def picture(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def picture(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Picture of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         """
         return pulumi.get(self, "picture")
 
     @picture.setter
-    def picture(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def picture(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "picture", value)
 
     @_builtins.property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the user.
         """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
-    def user_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_id", value)
 
     @_builtins.property
     @pulumi.getter(name="userMetadata")
-    def user_metadata(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_metadata(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom fields that store info about the user that does not impact a user's core functionality. Examples include work address, home address, and user preferences.
         """
         return pulumi.get(self, "user_metadata")
 
     @user_metadata.setter
-    def user_metadata(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_metadata(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_metadata", value)
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Username of the user. Only valid if the connection requires a username.
         """
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
     @_builtins.property
     @pulumi.getter(name="verifyEmail")
-    def verify_email(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def verify_email(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the user will receive a verification email after creation. Overrides behavior of `email_verified` parameter.
         """
         return pulumi.get(self, "verify_email")
 
     @verify_email.setter
-    def verify_email(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def verify_email(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "verify_email", value)
 
 
@@ -615,24 +615,24 @@ class User(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app_metadata: Optional[pulumi.Input[_builtins.str]] = None,
-                 blocked: Optional[pulumi.Input[_builtins.bool]] = None,
-                 connection_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_domain_header: Optional[pulumi.Input[_builtins.str]] = None,
-                 email: Optional[pulumi.Input[_builtins.str]] = None,
-                 email_verified: Optional[pulumi.Input[_builtins.bool]] = None,
-                 family_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 given_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 nickname: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 phone_number: Optional[pulumi.Input[_builtins.str]] = None,
-                 phone_verified: Optional[pulumi.Input[_builtins.bool]] = None,
-                 picture: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_metadata: Optional[pulumi.Input[_builtins.str]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
-                 verify_email: Optional[pulumi.Input[_builtins.bool]] = None,
+                 app_metadata: pulumi.Input[Optional[_builtins.str]] = None,
+                 blocked: pulumi.Input[Optional[_builtins.bool]] = None,
+                 connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_domain_header: pulumi.Input[Optional[_builtins.str]] = None,
+                 email: pulumi.Input[Optional[_builtins.str]] = None,
+                 email_verified: pulumi.Input[Optional[_builtins.bool]] = None,
+                 family_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 given_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 nickname: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 phone_number: pulumi.Input[Optional[_builtins.str]] = None,
+                 phone_verified: pulumi.Input[Optional[_builtins.bool]] = None,
+                 picture: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_metadata: pulumi.Input[Optional[_builtins.str]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
+                 verify_email: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         With this resource, you can manage user identities, including resetting passwords, and creating, provisioning, blocking, and deleting users.
@@ -756,24 +756,24 @@ class User(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app_metadata: Optional[pulumi.Input[_builtins.str]] = None,
-                 blocked: Optional[pulumi.Input[_builtins.bool]] = None,
-                 connection_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_domain_header: Optional[pulumi.Input[_builtins.str]] = None,
-                 email: Optional[pulumi.Input[_builtins.str]] = None,
-                 email_verified: Optional[pulumi.Input[_builtins.bool]] = None,
-                 family_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 given_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 nickname: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 phone_number: Optional[pulumi.Input[_builtins.str]] = None,
-                 phone_verified: Optional[pulumi.Input[_builtins.bool]] = None,
-                 picture: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_metadata: Optional[pulumi.Input[_builtins.str]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
-                 verify_email: Optional[pulumi.Input[_builtins.bool]] = None,
+                 app_metadata: pulumi.Input[Optional[_builtins.str]] = None,
+                 blocked: pulumi.Input[Optional[_builtins.bool]] = None,
+                 connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_domain_header: pulumi.Input[Optional[_builtins.str]] = None,
+                 email: pulumi.Input[Optional[_builtins.str]] = None,
+                 email_verified: pulumi.Input[Optional[_builtins.bool]] = None,
+                 family_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 given_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 nickname: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 phone_number: pulumi.Input[Optional[_builtins.str]] = None,
+                 phone_verified: pulumi.Input[Optional[_builtins.bool]] = None,
+                 picture: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_metadata: pulumi.Input[Optional[_builtins.str]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
+                 verify_email: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -815,24 +815,24 @@ class User(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            app_metadata: Optional[pulumi.Input[_builtins.str]] = None,
-            blocked: Optional[pulumi.Input[_builtins.bool]] = None,
-            connection_name: Optional[pulumi.Input[_builtins.str]] = None,
-            custom_domain_header: Optional[pulumi.Input[_builtins.str]] = None,
-            email: Optional[pulumi.Input[_builtins.str]] = None,
-            email_verified: Optional[pulumi.Input[_builtins.bool]] = None,
-            family_name: Optional[pulumi.Input[_builtins.str]] = None,
-            given_name: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            nickname: Optional[pulumi.Input[_builtins.str]] = None,
-            password: Optional[pulumi.Input[_builtins.str]] = None,
-            phone_number: Optional[pulumi.Input[_builtins.str]] = None,
-            phone_verified: Optional[pulumi.Input[_builtins.bool]] = None,
-            picture: Optional[pulumi.Input[_builtins.str]] = None,
-            user_id: Optional[pulumi.Input[_builtins.str]] = None,
-            user_metadata: Optional[pulumi.Input[_builtins.str]] = None,
-            username: Optional[pulumi.Input[_builtins.str]] = None,
-            verify_email: Optional[pulumi.Input[_builtins.bool]] = None) -> 'User':
+            app_metadata: pulumi.Input[Optional[_builtins.str]] = None,
+            blocked: pulumi.Input[Optional[_builtins.bool]] = None,
+            connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_domain_header: pulumi.Input[Optional[_builtins.str]] = None,
+            email: pulumi.Input[Optional[_builtins.str]] = None,
+            email_verified: pulumi.Input[Optional[_builtins.bool]] = None,
+            family_name: pulumi.Input[Optional[_builtins.str]] = None,
+            given_name: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            nickname: pulumi.Input[Optional[_builtins.str]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            phone_number: pulumi.Input[Optional[_builtins.str]] = None,
+            phone_verified: pulumi.Input[Optional[_builtins.bool]] = None,
+            picture: pulumi.Input[Optional[_builtins.str]] = None,
+            user_id: pulumi.Input[Optional[_builtins.str]] = None,
+            user_metadata: pulumi.Input[Optional[_builtins.str]] = None,
+            username: pulumi.Input[Optional[_builtins.str]] = None,
+            verify_email: pulumi.Input[Optional[_builtins.bool]] = None) -> 'User':
         """
         Get an existing User resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

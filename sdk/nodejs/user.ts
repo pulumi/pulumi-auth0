@@ -215,75 +215,75 @@ export interface UserState {
     /**
      * Custom fields that store info about the user that impact the user's core functionality, such as how an application functions or what the user can access. Examples include support plans and IDs for external accounts.
      */
-    appMetadata?: pulumi.Input<string>;
+    appMetadata?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the user is blocked or not.
      */
-    blocked?: pulumi.Input<boolean>;
+    blocked?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the connection from which the user information was sourced.
      */
-    connectionName?: pulumi.Input<string>;
+    connectionName?: pulumi.Input<string | undefined>;
     /**
      * Sets the `Auth0-Custom-Domain` header on all requests for this resource. Global setting of provider takes precedence over resource specific param, if both are set.
      */
-    customDomainHeader?: pulumi.Input<string>;
+    customDomainHeader?: pulumi.Input<string | undefined>;
     /**
      * Email address of the user.
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the email address has been verified.
      */
-    emailVerified?: pulumi.Input<boolean>;
+    emailVerified?: pulumi.Input<boolean | undefined>;
     /**
      * Family name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
      */
-    familyName?: pulumi.Input<string>;
+    familyName?: pulumi.Input<string | undefined>;
     /**
      * Given name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
      */
-    givenName?: pulumi.Input<string>;
+    givenName?: pulumi.Input<string | undefined>;
     /**
      * Name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Preferred nickname or alias of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
      */
-    nickname?: pulumi.Input<string>;
+    nickname?: pulumi.Input<string | undefined>;
     /**
      * Initial password for this user. Required for non-passwordless connections (SMS and email).
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
      */
-    phoneNumber?: pulumi.Input<string>;
+    phoneNumber?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the phone number has been verified.
      */
-    phoneVerified?: pulumi.Input<boolean>;
+    phoneVerified?: pulumi.Input<boolean | undefined>;
     /**
      * Picture of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
      */
-    picture?: pulumi.Input<string>;
+    picture?: pulumi.Input<string | undefined>;
     /**
      * ID of the user.
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
     /**
      * Custom fields that store info about the user that does not impact a user's core functionality. Examples include work address, home address, and user preferences.
      */
-    userMetadata?: pulumi.Input<string>;
+    userMetadata?: pulumi.Input<string | undefined>;
     /**
      * Username of the user. Only valid if the connection requires a username.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the user will receive a verification email after creation. Overrides behavior of `emailVerified` parameter.
      */
-    verifyEmail?: pulumi.Input<boolean>;
+    verifyEmail?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -293,11 +293,11 @@ export interface UserArgs {
     /**
      * Custom fields that store info about the user that impact the user's core functionality, such as how an application functions or what the user can access. Examples include support plans and IDs for external accounts.
      */
-    appMetadata?: pulumi.Input<string>;
+    appMetadata?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the user is blocked or not.
      */
-    blocked?: pulumi.Input<boolean>;
+    blocked?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the connection from which the user information was sourced.
      */
@@ -305,61 +305,61 @@ export interface UserArgs {
     /**
      * Sets the `Auth0-Custom-Domain` header on all requests for this resource. Global setting of provider takes precedence over resource specific param, if both are set.
      */
-    customDomainHeader?: pulumi.Input<string>;
+    customDomainHeader?: pulumi.Input<string | undefined>;
     /**
      * Email address of the user.
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the email address has been verified.
      */
-    emailVerified?: pulumi.Input<boolean>;
+    emailVerified?: pulumi.Input<boolean | undefined>;
     /**
      * Family name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
      */
-    familyName?: pulumi.Input<string>;
+    familyName?: pulumi.Input<string | undefined>;
     /**
      * Given name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
      */
-    givenName?: pulumi.Input<string>;
+    givenName?: pulumi.Input<string | undefined>;
     /**
      * Name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Preferred nickname or alias of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
      */
-    nickname?: pulumi.Input<string>;
+    nickname?: pulumi.Input<string | undefined>;
     /**
      * Initial password for this user. Required for non-passwordless connections (SMS and email).
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
      */
-    phoneNumber?: pulumi.Input<string>;
+    phoneNumber?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the phone number has been verified.
      */
-    phoneVerified?: pulumi.Input<boolean>;
+    phoneVerified?: pulumi.Input<boolean | undefined>;
     /**
      * Picture of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
      */
-    picture?: pulumi.Input<string>;
+    picture?: pulumi.Input<string | undefined>;
     /**
      * ID of the user.
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
     /**
      * Custom fields that store info about the user that does not impact a user's core functionality. Examples include work address, home address, and user preferences.
      */
-    userMetadata?: pulumi.Input<string>;
+    userMetadata?: pulumi.Input<string | undefined>;
     /**
      * Username of the user. Only valid if the connection requires a username.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the user will receive a verification email after creation. Overrides behavior of `emailVerified` parameter.
      */
-    verifyEmail?: pulumi.Input<boolean>;
+    verifyEmail?: pulumi.Input<boolean | undefined>;
 }

@@ -255,75 +255,75 @@ export interface ResourceServerState {
     /**
      * Indicates whether refresh tokens can be issued for this resource server.
      */
-    allowOfflineAccess?: pulumi.Input<boolean>;
+    allowOfflineAccess?: pulumi.Input<boolean | undefined>;
     /**
      * Authorization details for this resource server.
      */
-    authorizationDetails?: pulumi.Input<pulumi.Input<inputs.ResourceServerAuthorizationDetail>[]>;
+    authorizationDetails?: pulumi.Input<pulumi.Input<inputs.ResourceServerAuthorizationDetail>[] | undefined>;
     /**
      * The ID of the client associated with this resource server. If a client has been created and linked to this resource server, this field will be populated with that client's ID.
      */
-    clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
     /**
      * Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
      */
-    consentPolicy?: pulumi.Input<string>;
+    consentPolicy?: pulumi.Input<string | undefined>;
     /**
      * If this setting is enabled, RBAC authorization policies will be enforced for this API. Role and permission assignments will be evaluated during the login transaction.
      */
-    enforcePolicies?: pulumi.Input<boolean>;
+    enforcePolicies?: pulumi.Input<boolean | undefined>;
     /**
      * Unique identifier for the resource server. Used as the audience parameter for authorization calls. Cannot be changed once set.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether this resource server is a special resource server created by Auth0. It cannot be modified or deleted directly.
      */
-    isSystem?: pulumi.Input<boolean>;
+    isSystem?: pulumi.Input<boolean | undefined>;
     /**
      * Friendly name for the resource server. Cannot include `<` or `>` characters.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Configuration settings for proof-of-possession for this resource server.
      */
-    proofOfPossession?: pulumi.Input<inputs.ResourceServerProofOfPossession>;
+    proofOfPossession?: pulumi.Input<inputs.ResourceServerProofOfPossession | undefined>;
     /**
      * Algorithm used to sign JWTs. Options include `HS256`, `RS256`, and `PS256`.
      */
-    signingAlg?: pulumi.Input<string>;
+    signingAlg?: pulumi.Input<string | undefined>;
     /**
      * Secret used to sign tokens when using symmetric algorithms (HS256).
      */
-    signingSecret?: pulumi.Input<string>;
+    signingSecret?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether to skip user consent for applications flagged as first party.
      */
-    skipConsentForVerifiableFirstPartyClients?: pulumi.Input<boolean>;
+    skipConsentForVerifiableFirstPartyClients?: pulumi.Input<boolean | undefined>;
     /**
      * Authorization policies for user and client flows.
      */
-    subjectTypeAuthorization?: pulumi.Input<inputs.ResourceServerSubjectTypeAuthorization>;
+    subjectTypeAuthorization?: pulumi.Input<inputs.ResourceServerSubjectTypeAuthorization | undefined>;
     /**
      * Dialect of access tokens that should be issued for this resource server. Options include `accessToken`, `rfc9068Profile`, `accessTokenAuthz`, and `rfc9068ProfileAuthz`. `accessToken` is a JWT containing standard Auth0 claims. `rfc9068Profile` is a JWT conforming to the IETF JWT Access Token Profile. `accessTokenAuthz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068ProfileAuthz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforcePolicies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).
      */
-    tokenDialect?: pulumi.Input<string>;
+    tokenDialect?: pulumi.Input<string | undefined>;
     /**
      * Configuration for JSON Web Encryption(JWE) of tokens for this resource server.
      */
-    tokenEncryption?: pulumi.Input<inputs.ResourceServerTokenEncryption>;
+    tokenEncryption?: pulumi.Input<inputs.ResourceServerTokenEncryption | undefined>;
     /**
      * Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
      */
-    tokenLifetime?: pulumi.Input<number>;
+    tokenLifetime?: pulumi.Input<number | undefined>;
     /**
      * Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `tokenLifetime` value.
      */
-    tokenLifetimeForWeb?: pulumi.Input<number>;
+    tokenLifetimeForWeb?: pulumi.Input<number | undefined>;
     /**
      * URL from which to retrieve JWKs for this resource server. Used for verifying the JWT sent to Auth0 for token introspection.
      */
-    verificationLocation?: pulumi.Input<string>;
+    verificationLocation?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -333,19 +333,19 @@ export interface ResourceServerArgs {
     /**
      * Indicates whether refresh tokens can be issued for this resource server.
      */
-    allowOfflineAccess?: pulumi.Input<boolean>;
+    allowOfflineAccess?: pulumi.Input<boolean | undefined>;
     /**
      * Authorization details for this resource server.
      */
-    authorizationDetails?: pulumi.Input<pulumi.Input<inputs.ResourceServerAuthorizationDetail>[]>;
+    authorizationDetails?: pulumi.Input<pulumi.Input<inputs.ResourceServerAuthorizationDetail>[] | undefined>;
     /**
      * Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
      */
-    consentPolicy?: pulumi.Input<string>;
+    consentPolicy?: pulumi.Input<string | undefined>;
     /**
      * If this setting is enabled, RBAC authorization policies will be enforced for this API. Role and permission assignments will be evaluated during the login transaction.
      */
-    enforcePolicies?: pulumi.Input<boolean>;
+    enforcePolicies?: pulumi.Input<boolean | undefined>;
     /**
      * Unique identifier for the resource server. Used as the audience parameter for authorization calls. Cannot be changed once set.
      */
@@ -353,45 +353,45 @@ export interface ResourceServerArgs {
     /**
      * Friendly name for the resource server. Cannot include `<` or `>` characters.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Configuration settings for proof-of-possession for this resource server.
      */
-    proofOfPossession?: pulumi.Input<inputs.ResourceServerProofOfPossession>;
+    proofOfPossession?: pulumi.Input<inputs.ResourceServerProofOfPossession | undefined>;
     /**
      * Algorithm used to sign JWTs. Options include `HS256`, `RS256`, and `PS256`.
      */
-    signingAlg?: pulumi.Input<string>;
+    signingAlg?: pulumi.Input<string | undefined>;
     /**
      * Secret used to sign tokens when using symmetric algorithms (HS256).
      */
-    signingSecret?: pulumi.Input<string>;
+    signingSecret?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether to skip user consent for applications flagged as first party.
      */
-    skipConsentForVerifiableFirstPartyClients?: pulumi.Input<boolean>;
+    skipConsentForVerifiableFirstPartyClients?: pulumi.Input<boolean | undefined>;
     /**
      * Authorization policies for user and client flows.
      */
-    subjectTypeAuthorization?: pulumi.Input<inputs.ResourceServerSubjectTypeAuthorization>;
+    subjectTypeAuthorization?: pulumi.Input<inputs.ResourceServerSubjectTypeAuthorization | undefined>;
     /**
      * Dialect of access tokens that should be issued for this resource server. Options include `accessToken`, `rfc9068Profile`, `accessTokenAuthz`, and `rfc9068ProfileAuthz`. `accessToken` is a JWT containing standard Auth0 claims. `rfc9068Profile` is a JWT conforming to the IETF JWT Access Token Profile. `accessTokenAuthz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068ProfileAuthz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforcePolicies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).
      */
-    tokenDialect?: pulumi.Input<string>;
+    tokenDialect?: pulumi.Input<string | undefined>;
     /**
      * Configuration for JSON Web Encryption(JWE) of tokens for this resource server.
      */
-    tokenEncryption?: pulumi.Input<inputs.ResourceServerTokenEncryption>;
+    tokenEncryption?: pulumi.Input<inputs.ResourceServerTokenEncryption | undefined>;
     /**
      * Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
      */
-    tokenLifetime?: pulumi.Input<number>;
+    tokenLifetime?: pulumi.Input<number | undefined>;
     /**
      * Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `tokenLifetime` value.
      */
-    tokenLifetimeForWeb?: pulumi.Input<number>;
+    tokenLifetimeForWeb?: pulumi.Input<number | undefined>;
     /**
      * URL from which to retrieve JWKs for this resource server. Used for verifying the JWT sent to Auth0 for token introspection.
      */
-    verificationLocation?: pulumi.Input<string>;
+    verificationLocation?: pulumi.Input<string | undefined>;
 }

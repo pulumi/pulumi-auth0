@@ -76,9 +76,9 @@ export interface GetUserAttributeProfileOutputArgs {
     /**
      * The name of the User Attribute Profile.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the User Attribute Profile.
      */
-    userAttributeProfileId?: pulumi.Input<string>;
+    userAttributeProfileId?: pulumi.Input<string | undefined>;
 }

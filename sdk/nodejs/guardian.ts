@@ -191,39 +191,39 @@ export interface GuardianState {
     /**
      * Configuration settings for the Duo MFA. If this block is present, Duo MFA will be enabled, and disabled otherwise.
      */
-    duo?: pulumi.Input<inputs.GuardianDuo>;
+    duo?: pulumi.Input<inputs.GuardianDuo | undefined>;
     /**
      * Indicates whether email MFA is enabled.
      */
-    email?: pulumi.Input<boolean>;
+    email?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether one time password MFA is enabled.
      */
-    otp?: pulumi.Input<boolean>;
+    otp?: pulumi.Input<boolean | undefined>;
     /**
      * Configuration settings for the phone MFA. If this block is present, Phone MFA will be enabled, and disabled otherwise.
      */
-    phone?: pulumi.Input<inputs.GuardianPhone>;
+    phone?: pulumi.Input<inputs.GuardianPhone | undefined>;
     /**
      * Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
      */
-    policy?: pulumi.Input<string>;
+    policy?: pulumi.Input<string | undefined>;
     /**
      * Configuration settings for the Push MFA. If this block is present, Push MFA will be enabled, and disabled otherwise.
      */
-    push?: pulumi.Input<inputs.GuardianPush>;
+    push?: pulumi.Input<inputs.GuardianPush | undefined>;
     /**
      * Indicates whether recovery code MFA is enabled.
      */
-    recoveryCode?: pulumi.Input<boolean>;
+    recoveryCode?: pulumi.Input<boolean | undefined>;
     /**
      * Configuration settings for the WebAuthn with FIDO Device Biometrics MFA. If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.
      */
-    webauthnPlatform?: pulumi.Input<inputs.GuardianWebauthnPlatform>;
+    webauthnPlatform?: pulumi.Input<inputs.GuardianWebauthnPlatform | undefined>;
     /**
      * Configuration settings for the WebAuthn with FIDO Security Keys MFA. If this block is present, WebAuthn with FIDO Security Keys MFA will be enabled, and disabled otherwise.
      */
-    webauthnRoaming?: pulumi.Input<inputs.GuardianWebauthnRoaming>;
+    webauthnRoaming?: pulumi.Input<inputs.GuardianWebauthnRoaming | undefined>;
 }
 
 /**
@@ -233,19 +233,19 @@ export interface GuardianArgs {
     /**
      * Configuration settings for the Duo MFA. If this block is present, Duo MFA will be enabled, and disabled otherwise.
      */
-    duo?: pulumi.Input<inputs.GuardianDuo>;
+    duo?: pulumi.Input<inputs.GuardianDuo | undefined>;
     /**
      * Indicates whether email MFA is enabled.
      */
-    email?: pulumi.Input<boolean>;
+    email?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether one time password MFA is enabled.
      */
-    otp?: pulumi.Input<boolean>;
+    otp?: pulumi.Input<boolean | undefined>;
     /**
      * Configuration settings for the phone MFA. If this block is present, Phone MFA will be enabled, and disabled otherwise.
      */
-    phone?: pulumi.Input<inputs.GuardianPhone>;
+    phone?: pulumi.Input<inputs.GuardianPhone | undefined>;
     /**
      * Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
      */
@@ -253,17 +253,17 @@ export interface GuardianArgs {
     /**
      * Configuration settings for the Push MFA. If this block is present, Push MFA will be enabled, and disabled otherwise.
      */
-    push?: pulumi.Input<inputs.GuardianPush>;
+    push?: pulumi.Input<inputs.GuardianPush | undefined>;
     /**
      * Indicates whether recovery code MFA is enabled.
      */
-    recoveryCode?: pulumi.Input<boolean>;
+    recoveryCode?: pulumi.Input<boolean | undefined>;
     /**
      * Configuration settings for the WebAuthn with FIDO Device Biometrics MFA. If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.
      */
-    webauthnPlatform?: pulumi.Input<inputs.GuardianWebauthnPlatform>;
+    webauthnPlatform?: pulumi.Input<inputs.GuardianWebauthnPlatform | undefined>;
     /**
      * Configuration settings for the WebAuthn with FIDO Security Keys MFA. If this block is present, WebAuthn with FIDO Security Keys MFA will be enabled, and disabled otherwise.
      */
-    webauthnRoaming?: pulumi.Input<inputs.GuardianWebauthnRoaming>;
+    webauthnRoaming?: pulumi.Input<inputs.GuardianWebauthnRoaming | undefined>;
 }

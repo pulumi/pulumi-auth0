@@ -126,11 +126,11 @@ export interface OrganizationMembersState {
     /**
      * Add user ID(s) directly from the tenant to become members of the organization.
      */
-    members?: pulumi.Input<pulumi.Input<string>[]>;
+    members?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the organization to assign the members to.
      */
-    organizationId?: pulumi.Input<string>;
+    organizationId?: pulumi.Input<string | undefined>;
 }
 
 /**

@@ -151,23 +151,23 @@ export interface ConnectionScimTokenState {
     /**
      * ID of the connection for this SCIM token.
      */
-    connectionId?: pulumi.Input<string>;
+    connectionId?: pulumi.Input<string | undefined>;
     /**
      * The date and time when the token was created (ISO8601 format).
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The scopes associated with the SCIM token.
      */
-    scopes?: pulumi.Input<pulumi.Input<string>[]>;
+    scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The SCIM bearer token value.
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
     /**
      * The ID of the SCIM token.
      */
-    tokenId?: pulumi.Input<string>;
+    tokenId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -181,5 +181,5 @@ export interface ConnectionScimTokenArgs {
     /**
      * The scopes associated with the SCIM token.
      */
-    scopes?: pulumi.Input<pulumi.Input<string>[]>;
+    scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

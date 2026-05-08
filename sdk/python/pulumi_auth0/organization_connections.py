@@ -60,8 +60,8 @@ class OrganizationConnectionsArgs:
 @pulumi.input_type
 class _OrganizationConnectionsState:
     def __init__(__self__, *,
-                 enabled_connections: Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationConnectionsEnabledConnectionArgs']]]] = None,
-                 organization_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 enabled_connections: pulumi.Input[Optional[Sequence[pulumi.Input['OrganizationConnectionsEnabledConnectionArgs']]]] = None,
+                 organization_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OrganizationConnections resources.
 
@@ -75,26 +75,26 @@ class _OrganizationConnectionsState:
 
     @_builtins.property
     @pulumi.getter(name="enabledConnections")
-    def enabled_connections(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationConnectionsEnabledConnectionArgs']]]]:
+    def enabled_connections(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OrganizationConnectionsEnabledConnectionArgs']]]]:
         """
         Connections that are enabled for the organization.
         """
         return pulumi.get(self, "enabled_connections")
 
     @enabled_connections.setter
-    def enabled_connections(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationConnectionsEnabledConnectionArgs']]]]):
+    def enabled_connections(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OrganizationConnectionsEnabledConnectionArgs']]]]):
         pulumi.set(self, "enabled_connections", value)
 
     @_builtins.property
     @pulumi.getter(name="organizationId")
-    def organization_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def organization_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the organization on which to enable the connections.
         """
         return pulumi.get(self, "organization_id")
 
     @organization_id.setter
-    def organization_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def organization_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "organization_id", value)
 
 
@@ -104,8 +104,8 @@ class OrganizationConnections(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enabled_connections: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OrganizationConnectionsEnabledConnectionArgs', 'OrganizationConnectionsEnabledConnectionArgsDict']]]]] = None,
-                 organization_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 enabled_connections: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationConnectionsEnabledConnectionArgs', 'OrganizationConnectionsEnabledConnectionArgsDict']]]]] = None,
+                 organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         With this resource, you can manage enabled connections on an organization.
@@ -237,8 +237,8 @@ class OrganizationConnections(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enabled_connections: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OrganizationConnectionsEnabledConnectionArgs', 'OrganizationConnectionsEnabledConnectionArgsDict']]]]] = None,
-                 organization_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 enabled_connections: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationConnectionsEnabledConnectionArgs', 'OrganizationConnectionsEnabledConnectionArgsDict']]]]] = None,
+                 organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -264,8 +264,8 @@ class OrganizationConnections(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            enabled_connections: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OrganizationConnectionsEnabledConnectionArgs', 'OrganizationConnectionsEnabledConnectionArgsDict']]]]] = None,
-            organization_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'OrganizationConnections':
+            enabled_connections: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationConnectionsEnabledConnectionArgs', 'OrganizationConnectionsEnabledConnectionArgsDict']]]]] = None,
+            organization_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'OrganizationConnections':
         """
         Get an existing OrganizationConnections resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

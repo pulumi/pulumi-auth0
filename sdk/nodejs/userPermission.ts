@@ -157,23 +157,23 @@ export interface UserPermissionState {
     /**
      * Description of the permission.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of the permission.
      */
-    permission?: pulumi.Input<string>;
+    permission?: pulumi.Input<string | undefined>;
     /**
      * Identifier of the resource server that the permission is associated with.
      */
-    resourceServerIdentifier?: pulumi.Input<string>;
+    resourceServerIdentifier?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource server that the permission is associated with.
      */
-    resourceServerName?: pulumi.Input<string>;
+    resourceServerName?: pulumi.Input<string | undefined>;
     /**
      * ID of the user to associate the permission to.
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
 }
 
 /**

@@ -120,11 +120,11 @@ export interface OrganizationMemberState {
     /**
      * The ID of the organization to assign the member to.
      */
-    organizationId?: pulumi.Input<string>;
+    organizationId?: pulumi.Input<string | undefined>;
     /**
      * ID of the user to add as an organization member.
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
 }
 
 /**

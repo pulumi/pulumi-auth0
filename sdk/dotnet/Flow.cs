@@ -24,7 +24,7 @@ namespace Pulumi.Auth0
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Example:
-    ///     var myFlow = new Auth0.Index.Flow("my_flow", new()
+    ///     var myFlow = new Auth0.Flow("my_flow", new()
     ///     {
     ///         Actions = JsonSerializer.Serialize(new[]
     ///         {

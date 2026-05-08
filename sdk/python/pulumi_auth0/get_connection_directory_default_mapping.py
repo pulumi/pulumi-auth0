@@ -100,7 +100,7 @@ def get_connection_directory_default_mapping(connection_id: Optional[_builtins.s
         connection_id=pulumi.get(__ret__, 'connection_id'),
         id=pulumi.get(__ret__, 'id'),
         mappings=pulumi.get(__ret__, 'mappings'))
-def get_connection_directory_default_mapping_output(connection_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_connection_directory_default_mapping_output(connection_id: pulumi.Input[Optional[_builtins.str]] = None,
                                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConnectionDirectoryDefaultMappingResult]:
     """
     Data source to retrieve the default attribute mapping for directory provisioning on an Auth0 connection by `connection_id`. This shows the standard mapping that would be used if no custom mapping is specified.

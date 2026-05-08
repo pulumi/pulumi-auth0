@@ -120,8 +120,8 @@ def get_user_attribute_profile(name: Optional[_builtins.str] = None,
         user_attribute_profile_id=pulumi.get(__ret__, 'user_attribute_profile_id'),
         user_attributes=pulumi.get(__ret__, 'user_attributes'),
         user_ids=pulumi.get(__ret__, 'user_ids'))
-def get_user_attribute_profile_output(name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                      user_attribute_profile_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_user_attribute_profile_output(name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                      user_attribute_profile_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserAttributeProfileResult]:
     """
     Data source to retrieve a specific Auth0 User Attribute Profile by `user_attribute_profile_id` or `name`.

@@ -204,7 +204,7 @@ def get_action_module(id: Optional[_builtins.str] = None,
         publish=pulumi.get(__ret__, 'publish'),
         secrets=pulumi.get(__ret__, 'secrets'),
         version_id=pulumi.get(__ret__, 'version_id'))
-def get_action_module_output(id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_action_module_output(id: pulumi.Input[Optional[_builtins.str]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetActionModuleResult]:
     """
     Data source to retrieve a specific Auth0 action module by `id`.

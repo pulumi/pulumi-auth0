@@ -88,10 +88,10 @@ class SelfServiceProfileCustomTextArgs:
 @pulumi.input_type
 class _SelfServiceProfileCustomTextState:
     def __init__(__self__, *,
-                 body: Optional[pulumi.Input[_builtins.str]] = None,
-                 language: Optional[pulumi.Input[_builtins.str]] = None,
-                 page: Optional[pulumi.Input[_builtins.str]] = None,
-                 sso_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 body: pulumi.Input[Optional[_builtins.str]] = None,
+                 language: pulumi.Input[Optional[_builtins.str]] = None,
+                 page: pulumi.Input[Optional[_builtins.str]] = None,
+                 sso_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SelfServiceProfileCustomText resources.
 
@@ -111,50 +111,50 @@ class _SelfServiceProfileCustomTextState:
 
     @_builtins.property
     @pulumi.getter
-    def body(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def body(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The list of text keys and values to customize the self-service SSO page. Values can be plain text or rich HTML content limited to basic styling tags and hyperlinks
         """
         return pulumi.get(self, "body")
 
     @body.setter
-    def body(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def body(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "body", value)
 
     @_builtins.property
     @pulumi.getter
-    def language(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def language(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The language of the custom text
         """
         return pulumi.get(self, "language")
 
     @language.setter
-    def language(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def language(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "language", value)
 
     @_builtins.property
     @pulumi.getter
-    def page(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def page(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The page where the custom text is shown
         """
         return pulumi.get(self, "page")
 
     @page.setter
-    def page(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def page(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "page", value)
 
     @_builtins.property
     @pulumi.getter(name="ssoId")
-    def sso_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sso_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the self-service profile
         """
         return pulumi.get(self, "sso_id")
 
     @sso_id.setter
-    def sso_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sso_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sso_id", value)
 
 
@@ -164,10 +164,10 @@ class SelfServiceProfileCustomText(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 body: Optional[pulumi.Input[_builtins.str]] = None,
-                 language: Optional[pulumi.Input[_builtins.str]] = None,
-                 page: Optional[pulumi.Input[_builtins.str]] = None,
-                 sso_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 body: pulumi.Input[Optional[_builtins.str]] = None,
+                 language: pulumi.Input[Optional[_builtins.str]] = None,
+                 page: pulumi.Input[Optional[_builtins.str]] = None,
+                 sso_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         With this resource, you can set custom text for Self-Service Profile
@@ -261,10 +261,10 @@ class SelfServiceProfileCustomText(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 body: Optional[pulumi.Input[_builtins.str]] = None,
-                 language: Optional[pulumi.Input[_builtins.str]] = None,
-                 page: Optional[pulumi.Input[_builtins.str]] = None,
-                 sso_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 body: pulumi.Input[Optional[_builtins.str]] = None,
+                 language: pulumi.Input[Optional[_builtins.str]] = None,
+                 page: pulumi.Input[Optional[_builtins.str]] = None,
+                 sso_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -296,10 +296,10 @@ class SelfServiceProfileCustomText(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            body: Optional[pulumi.Input[_builtins.str]] = None,
-            language: Optional[pulumi.Input[_builtins.str]] = None,
-            page: Optional[pulumi.Input[_builtins.str]] = None,
-            sso_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'SelfServiceProfileCustomText':
+            body: pulumi.Input[Optional[_builtins.str]] = None,
+            language: pulumi.Input[Optional[_builtins.str]] = None,
+            page: pulumi.Input[Optional[_builtins.str]] = None,
+            sso_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'SelfServiceProfileCustomText':
         """
         Get an existing SelfServiceProfileCustomText resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

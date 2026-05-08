@@ -109,27 +109,27 @@ export interface OrganizationDiscoveryDomainState {
     /**
      * The domain name for organization discovery.
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
     /**
      * The ID of the organization.
      */
-    organizationId?: pulumi.Input<string>;
+    organizationId?: pulumi.Input<string | undefined>;
     /**
      * Verification status. Must be either 'pending' or 'verified'.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether this domain should be used for organization discovery during login.
      */
-    useForOrganizationDiscovery?: pulumi.Input<boolean>;
+    useForOrganizationDiscovery?: pulumi.Input<boolean | undefined>;
     /**
      * The full domain where the TXT record should be added.
      */
-    verificationHost?: pulumi.Input<string>;
+    verificationHost?: pulumi.Input<string | undefined>;
     /**
      * TXT record value for domain verification.
      */
-    verificationTxt?: pulumi.Input<string>;
+    verificationTxt?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -151,5 +151,5 @@ export interface OrganizationDiscoveryDomainArgs {
     /**
      * Indicates whether this domain should be used for organization discovery during login.
      */
-    useForOrganizationDiscovery?: pulumi.Input<boolean>;
+    useForOrganizationDiscovery?: pulumi.Input<boolean | undefined>;
 }

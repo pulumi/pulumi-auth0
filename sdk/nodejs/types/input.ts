@@ -24,7 +24,7 @@ export interface ActionModule {
     /**
      * The name of the module.
      */
-    moduleName?: pulumi.Input<string>;
+    moduleName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the specific module version to use.
      */
@@ -32,7 +32,7 @@ export interface ActionModule {
     /**
      * The version number of the module.
      */
-    moduleVersionNumber?: pulumi.Input<number>;
+    moduleVersionNumber?: pulumi.Input<number | undefined>;
 }
 
 export interface ActionModuleDependency {
@@ -50,49 +50,49 @@ export interface ActionModuleLatestVersion {
     /**
      * The source code of this version.
      */
-    code?: pulumi.Input<string>;
+    code?: pulumi.Input<string | undefined>;
     /**
      * The time when this version was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * List of third party npm modules, and their versions, that this version depends on.
      */
-    dependencies?: pulumi.Input<pulumi.Input<inputs.ActionModuleLatestVersionDependency>[]>;
+    dependencies?: pulumi.Input<pulumi.Input<inputs.ActionModuleLatestVersionDependency>[] | undefined>;
     /**
      * The unique identifier of the version.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * List of secrets that are included in this version.
      */
-    secrets?: pulumi.Input<pulumi.Input<inputs.ActionModuleLatestVersionSecret>[]>;
+    secrets?: pulumi.Input<pulumi.Input<inputs.ActionModuleLatestVersionSecret>[] | undefined>;
     /**
      * The version number.
      */
-    versionNumber?: pulumi.Input<number>;
+    versionNumber?: pulumi.Input<number | undefined>;
 }
 
 export interface ActionModuleLatestVersionDependency {
     /**
      * Dependency name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Dependency version.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 export interface ActionModuleLatestVersionSecret {
     /**
      * Secret name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The time when this secret was last updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 export interface ActionModuleSecret {
@@ -103,7 +103,7 @@ export interface ActionModuleSecret {
     /**
      * Last update time
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * Secret value.
      */
@@ -136,34 +136,34 @@ export interface AttackProtectionBotDetection {
     /**
      * List of IP addresses or ranges that will not trigger bot detection.
      */
-    allowlists?: pulumi.Input<pulumi.Input<string>[]>;
+    allowlists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Bot detection level. Possible values: `low`, `medium`, `high`. Set to empty string to disable.
      */
-    botDetectionLevel?: pulumi.Input<string>;
+    botDetectionLevel?: pulumi.Input<string | undefined>;
     /**
      * Challenge policy for password flow. Possible values: `never`, `whenRisky`, `always`.
      */
-    challengePasswordPolicy?: pulumi.Input<string>;
+    challengePasswordPolicy?: pulumi.Input<string | undefined>;
     /**
      * Challenge policy for password reset flow. Possible values: `never`, `whenRisky`, `always`.
      */
-    challengePasswordResetPolicy?: pulumi.Input<string>;
+    challengePasswordResetPolicy?: pulumi.Input<string | undefined>;
     /**
      * Challenge policy for passwordless flow. Possible values: `never`, `whenRisky`, `always`.
      */
-    challengePasswordlessPolicy?: pulumi.Input<string>;
+    challengePasswordlessPolicy?: pulumi.Input<string | undefined>;
     /**
      * Whether monitoring mode is enabled for bot detection.
      */
-    monitoringModeEnabled?: pulumi.Input<boolean>;
+    monitoringModeEnabled?: pulumi.Input<boolean | undefined>;
 }
 
 export interface AttackProtectionBreachedPasswordDetection {
     /**
      * When `adminNotification` is enabled within the `shields` property, determines how often email notifications are sent. Possible values: `immediately`, `daily`, `weekly`, `monthly`.
      */
-    adminNotificationFrequencies?: pulumi.Input<pulumi.Input<string>[]>;
+    adminNotificationFrequencies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether breached password detection is active.
      */
@@ -171,40 +171,40 @@ export interface AttackProtectionBreachedPasswordDetection {
     /**
      * The subscription level for breached password detection methods. Use "enhanced" to enable Credential Guard. Possible values: `standard`, `enhanced`.
      */
-    method?: pulumi.Input<string>;
+    method?: pulumi.Input<string | undefined>;
     /**
      * Configuration options that apply before every password change attempt.
      */
-    preChangePassword?: pulumi.Input<inputs.AttackProtectionBreachedPasswordDetectionPreChangePassword>;
+    preChangePassword?: pulumi.Input<inputs.AttackProtectionBreachedPasswordDetectionPreChangePassword | undefined>;
     /**
      * Configuration options that apply before every user registration attempt. Only available on public tenants.
      */
-    preUserRegistration?: pulumi.Input<inputs.AttackProtectionBreachedPasswordDetectionPreUserRegistration>;
+    preUserRegistration?: pulumi.Input<inputs.AttackProtectionBreachedPasswordDetectionPreUserRegistration | undefined>;
     /**
      * Action to take when a breached password is detected. Options include: `block` (block compromised user accounts), `userNotification` (send an email to user when we detect that they are using compromised credentials) and `adminNotification` (send an email with a summary of the number of accounts logging in with compromised credentials).
      */
-    shields?: pulumi.Input<pulumi.Input<string>[]>;
+    shields?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface AttackProtectionBreachedPasswordDetectionPreChangePassword {
     /**
      * Action to take when a breached password is detected before the password is changed. Possible values: `block` (block compromised credentials for new accounts), `adminNotification` (send an email notification with a summary of compromised credentials in new accounts).
      */
-    shields?: pulumi.Input<pulumi.Input<string>[]>;
+    shields?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface AttackProtectionBreachedPasswordDetectionPreUserRegistration {
     /**
      * Action to take when a breached password is detected during a signup. Possible values: `block` (block compromised credentials for new accounts), `adminNotification` (send an email notification with a summary of compromised credentials in new accounts).
      */
-    shields?: pulumi.Input<pulumi.Input<string>[]>;
+    shields?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface AttackProtectionBruteForceProtection {
     /**
      * List of trusted IP addresses that will not have attack protection enforced against them. This field allows you to specify multiple IP addresses, or ranges. You can use IPv4 or IPv6 addresses and CIDR notation.
      */
-    allowlists?: pulumi.Input<pulumi.Input<string>[]>;
+    allowlists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether brute force attack protections are active.
      */
@@ -212,61 +212,61 @@ export interface AttackProtectionBruteForceProtection {
     /**
      * Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
      */
-    maxAttempts?: pulumi.Input<number>;
+    maxAttempts?: pulumi.Input<number | undefined>;
     /**
      * Determines whether the IP address is used when counting failed attempts. Possible values: `countPerIdentifierAndIp` (lockout an account from a given IP Address) or `countPerIdentifier` (lockout an account regardless of IP Address).
      */
-    mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
     /**
      * Action to take when a brute force protection threshold is violated. Possible values: `block` (block login attempts for a flagged user account), `userNotification` (send an email to user when their account has been blocked).
      */
-    shields?: pulumi.Input<pulumi.Input<string>[]>;
+    shields?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface AttackProtectionCaptcha {
     /**
      * Active CAPTCHA provider ID. Set to empty string to disable CAPTCHA. Possible values: `recaptchaV2`, `recaptchaEnterprise`, `hcaptcha`, `friendlyCaptcha`, `arkose`, `authChallenge`, `simpleCaptcha`.
      */
-    activeProviderId?: pulumi.Input<string>;
+    activeProviderId?: pulumi.Input<string | undefined>;
     /**
      * Configuration for Arkose Labs.
      */
-    arkose?: pulumi.Input<inputs.AttackProtectionCaptchaArkose>;
+    arkose?: pulumi.Input<inputs.AttackProtectionCaptchaArkose | undefined>;
     /**
      * Configuration for Auth0's Auth Challenge.
      */
-    authChallenge?: pulumi.Input<inputs.AttackProtectionCaptchaAuthChallenge>;
+    authChallenge?: pulumi.Input<inputs.AttackProtectionCaptchaAuthChallenge | undefined>;
     /**
      * Configuration for Friendly Captcha.
      */
-    friendlyCaptcha?: pulumi.Input<inputs.AttackProtectionCaptchaFriendlyCaptcha>;
+    friendlyCaptcha?: pulumi.Input<inputs.AttackProtectionCaptchaFriendlyCaptcha | undefined>;
     /**
      * Configuration for hCaptcha.
      */
-    hcaptcha?: pulumi.Input<inputs.AttackProtectionCaptchaHcaptcha>;
+    hcaptcha?: pulumi.Input<inputs.AttackProtectionCaptchaHcaptcha | undefined>;
     /**
      * Configuration for Google reCAPTCHA Enterprise.
      */
-    recaptchaEnterprise?: pulumi.Input<inputs.AttackProtectionCaptchaRecaptchaEnterprise>;
+    recaptchaEnterprise?: pulumi.Input<inputs.AttackProtectionCaptchaRecaptchaEnterprise | undefined>;
     /**
      * Configuration for Google reCAPTCHA v2.
      */
-    recaptchaV2?: pulumi.Input<inputs.AttackProtectionCaptchaRecaptchaV2>;
+    recaptchaV2?: pulumi.Input<inputs.AttackProtectionCaptchaRecaptchaV2 | undefined>;
 }
 
 export interface AttackProtectionCaptchaArkose {
     /**
      * Client subdomain for Arkose Labs.
      */
-    clientSubdomain?: pulumi.Input<string>;
+    clientSubdomain?: pulumi.Input<string | undefined>;
     /**
      * Whether the captcha should fail open.
      */
-    failOpen?: pulumi.Input<boolean>;
+    failOpen?: pulumi.Input<boolean | undefined>;
     /**
      * Secret for Arkose Labs. Required when configuring Arkose Labs.
      */
-    secret?: pulumi.Input<string>;
+    secret?: pulumi.Input<string | undefined>;
     /**
      * Site key for Arkose Labs.
      */
@@ -274,21 +274,21 @@ export interface AttackProtectionCaptchaArkose {
     /**
      * Verify subdomain for Arkose Labs.
      */
-    verifySubdomain?: pulumi.Input<string>;
+    verifySubdomain?: pulumi.Input<string | undefined>;
 }
 
 export interface AttackProtectionCaptchaAuthChallenge {
     /**
      * Whether the auth challenge should fail open.
      */
-    failOpen?: pulumi.Input<boolean>;
+    failOpen?: pulumi.Input<boolean | undefined>;
 }
 
 export interface AttackProtectionCaptchaFriendlyCaptcha {
     /**
      * Secret for Friendly Captcha. Required when configuring Friendly Captcha.
      */
-    secret?: pulumi.Input<string>;
+    secret?: pulumi.Input<string | undefined>;
     /**
      * Site key for Friendly Captcha.
      */
@@ -299,7 +299,7 @@ export interface AttackProtectionCaptchaHcaptcha {
     /**
      * Secret for hCaptcha. Required when configuring hCaptcha.
      */
-    secret?: pulumi.Input<string>;
+    secret?: pulumi.Input<string | undefined>;
     /**
      * Site key for hCaptcha.
      */
@@ -310,7 +310,7 @@ export interface AttackProtectionCaptchaRecaptchaEnterprise {
     /**
      * API key for reCAPTCHA Enterprise. Required when configuring reCAPTCHA Enterprise.
      */
-    apiKey?: pulumi.Input<string>;
+    apiKey?: pulumi.Input<string | undefined>;
     /**
      * Project ID for reCAPTCHA Enterprise.
      */
@@ -325,7 +325,7 @@ export interface AttackProtectionCaptchaRecaptchaV2 {
     /**
      * Secret for reCAPTCHA v2. Required when configuring reCAPTCHA v2.
      */
-    secret?: pulumi.Input<string>;
+    secret?: pulumi.Input<string | undefined>;
     /**
      * Site key for reCAPTCHA v2.
      */
@@ -336,7 +336,7 @@ export interface AttackProtectionSuspiciousIpThrottling {
     /**
      * List of trusted IP addresses that will not have attack protection enforced against them. This field allows you to specify multiple IP addresses, or ranges. You can use IPv4 or IPv6 addresses and CIDR notation.
      */
-    allowlists?: pulumi.Input<pulumi.Input<string>[]>;
+    allowlists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether suspicious IP throttling attack protections are active.
      */
@@ -344,48 +344,48 @@ export interface AttackProtectionSuspiciousIpThrottling {
     /**
      * Configuration options that apply before every login attempt. Only available on public tenants.
      */
-    preLogin?: pulumi.Input<inputs.AttackProtectionSuspiciousIpThrottlingPreLogin>;
+    preLogin?: pulumi.Input<inputs.AttackProtectionSuspiciousIpThrottlingPreLogin | undefined>;
     /**
      * Configuration options that apply before every user registration attempt. Only available on public tenants.
      */
-    preUserRegistration?: pulumi.Input<inputs.AttackProtectionSuspiciousIpThrottlingPreUserRegistration>;
+    preUserRegistration?: pulumi.Input<inputs.AttackProtectionSuspiciousIpThrottlingPreUserRegistration | undefined>;
     /**
      * Action to take when a suspicious IP throttling threshold is violated. Possible values: `block` (throttle traffic from an IP address when there is a high number of login attempts targeting too many different accounts), `adminNotification` (send an email notification when traffic is throttled on one or more IP addresses due to high-velocity traffic).
      */
-    shields?: pulumi.Input<pulumi.Input<string>[]>;
+    shields?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface AttackProtectionSuspiciousIpThrottlingPreLogin {
     /**
      * The maximum number of failed login attempts allowed from a single IP address.
      */
-    maxAttempts?: pulumi.Input<number>;
+    maxAttempts?: pulumi.Input<number | undefined>;
     /**
      * Interval of time, given in milliseconds at which new login tokens will become available after they have been used by an IP address. Each login attempt will be added on the defined throttling rate.
      */
-    rate?: pulumi.Input<number>;
+    rate?: pulumi.Input<number | undefined>;
 }
 
 export interface AttackProtectionSuspiciousIpThrottlingPreUserRegistration {
     /**
      * The maximum number of sign up attempts allowed from a single IP address.
      */
-    maxAttempts?: pulumi.Input<number>;
+    maxAttempts?: pulumi.Input<number | undefined>;
     /**
      * Interval of time, given in milliseconds at which new sign up tokens will become available after they have been used by an IP address. Each sign up attempt will be added on the defined throttling rate.
      */
-    rate?: pulumi.Input<number>;
+    rate?: pulumi.Input<number | undefined>;
 }
 
 export interface BrandingColors {
     /**
      * Background color of login pages in hexadecimal.
      */
-    pageBackground?: pulumi.Input<string>;
+    pageBackground?: pulumi.Input<string | undefined>;
     /**
      * Primary button background color in hexadecimal.
      */
-    primary?: pulumi.Input<string>;
+    primary?: pulumi.Input<string | undefined>;
 }
 
 export interface BrandingFont {
@@ -399,144 +399,144 @@ export interface BrandingPhoneNotificationTemplateContent {
     /**
      * The body content of the phone notification template.
      */
-    body?: pulumi.Input<inputs.BrandingPhoneNotificationTemplateContentBody>;
+    body?: pulumi.Input<inputs.BrandingPhoneNotificationTemplateContentBody | undefined>;
     /**
      * The sender phone number for SMS or voice notifications.
      */
-    from?: pulumi.Input<string>;
+    from?: pulumi.Input<string | undefined>;
     /**
      * The syntax of the phone notification template.
      */
-    syntax?: pulumi.Input<string>;
+    syntax?: pulumi.Input<string | undefined>;
 }
 
 export interface BrandingPhoneNotificationTemplateContentBody {
     /**
      * The text content for SMS notifications.
      */
-    text?: pulumi.Input<string>;
+    text?: pulumi.Input<string | undefined>;
     /**
      * The voice content for voice notifications.
      */
-    voice?: pulumi.Input<string>;
+    voice?: pulumi.Input<string | undefined>;
 }
 
 export interface BrandingThemeBorders {
     /**
      * Button border radius. Value needs to be between `1` and `10`. Defaults to `3.0`.
      */
-    buttonBorderRadius?: pulumi.Input<number>;
+    buttonBorderRadius?: pulumi.Input<number | undefined>;
     /**
      * Button border weight. Value needs to be between `0` and `10`. Defaults to `1.0`.
      */
-    buttonBorderWeight?: pulumi.Input<number>;
+    buttonBorderWeight?: pulumi.Input<number | undefined>;
     /**
      * Buttons style. Available options: `pill`, `rounded`, `sharp`. Defaults to `rounded`.
      */
-    buttonsStyle?: pulumi.Input<string>;
+    buttonsStyle?: pulumi.Input<string | undefined>;
     /**
      * Input border radius. Value needs to be between `0` and `10`. Defaults to `3.0`.
      */
-    inputBorderRadius?: pulumi.Input<number>;
+    inputBorderRadius?: pulumi.Input<number | undefined>;
     /**
      * Input border weight. Value needs to be between `0` and `3`. Defaults to `1.0`.
      */
-    inputBorderWeight?: pulumi.Input<number>;
+    inputBorderWeight?: pulumi.Input<number | undefined>;
     /**
      * Inputs style. Available options: `pill`, `rounded`, `sharp`. Defaults to `rounded`.
      */
-    inputsStyle?: pulumi.Input<string>;
+    inputsStyle?: pulumi.Input<string | undefined>;
     /**
      * Show widget shadow. Defaults to `true`.
      */
-    showWidgetShadow?: pulumi.Input<boolean>;
+    showWidgetShadow?: pulumi.Input<boolean | undefined>;
     /**
      * Widget border weight. Value needs to be between `0` and `10`. Defaults to `0.0`.
      */
-    widgetBorderWeight?: pulumi.Input<number>;
+    widgetBorderWeight?: pulumi.Input<number | undefined>;
     /**
      * Widget corner radius. Value needs to be between `0` and `50`. Defaults to `5.0`.
      */
-    widgetCornerRadius?: pulumi.Input<number>;
+    widgetCornerRadius?: pulumi.Input<number | undefined>;
 }
 
 export interface BrandingThemeColors {
     /**
      * Base focus color. Defaults to `#635dff`.
      */
-    baseFocusColor?: pulumi.Input<string>;
+    baseFocusColor?: pulumi.Input<string | undefined>;
     /**
      * Base hover color. Defaults to `#000000`.
      */
-    baseHoverColor?: pulumi.Input<string>;
+    baseHoverColor?: pulumi.Input<string | undefined>;
     /**
      * Body text. Defaults to `#1e212a`.
      */
-    bodyText?: pulumi.Input<string>;
+    bodyText?: pulumi.Input<string | undefined>;
     /**
      * Captcha Widget Theme.
      */
-    captchaWidgetTheme?: pulumi.Input<string>;
+    captchaWidgetTheme?: pulumi.Input<string | undefined>;
     /**
      * Error. Defaults to `#d03c38`.
      */
-    error?: pulumi.Input<string>;
+    error?: pulumi.Input<string | undefined>;
     /**
      * Header. Defaults to `#1e212a`.
      */
-    header?: pulumi.Input<string>;
+    header?: pulumi.Input<string | undefined>;
     /**
      * Icons. Defaults to `#65676e`.
      */
-    icons?: pulumi.Input<string>;
+    icons?: pulumi.Input<string | undefined>;
     /**
      * Input background. Defaults to `#ffffff`.
      */
-    inputBackground?: pulumi.Input<string>;
+    inputBackground?: pulumi.Input<string | undefined>;
     /**
      * Input border. Defaults to `#c9cace`.
      */
-    inputBorder?: pulumi.Input<string>;
+    inputBorder?: pulumi.Input<string | undefined>;
     /**
      * Input filled text. Defaults to `#000000`.
      */
-    inputFilledText?: pulumi.Input<string>;
+    inputFilledText?: pulumi.Input<string | undefined>;
     /**
      * Input labels & placeholders. Defaults to `#65676e`.
      */
-    inputLabelsPlaceholders?: pulumi.Input<string>;
+    inputLabelsPlaceholders?: pulumi.Input<string | undefined>;
     /**
      * Links & focused components. Defaults to `#635dff`.
      */
-    linksFocusedComponents?: pulumi.Input<string>;
+    linksFocusedComponents?: pulumi.Input<string | undefined>;
     /**
      * Primary button. Defaults to `#635dff`.
      */
-    primaryButton?: pulumi.Input<string>;
+    primaryButton?: pulumi.Input<string | undefined>;
     /**
      * Primary button label. Defaults to `#ffffff`.
      */
-    primaryButtonLabel?: pulumi.Input<string>;
+    primaryButtonLabel?: pulumi.Input<string | undefined>;
     /**
      * Secondary button border. Defaults to `#c9cace`.
      */
-    secondaryButtonBorder?: pulumi.Input<string>;
+    secondaryButtonBorder?: pulumi.Input<string | undefined>;
     /**
      * Secondary button label. Defaults to `#1e212a`.
      */
-    secondaryButtonLabel?: pulumi.Input<string>;
+    secondaryButtonLabel?: pulumi.Input<string | undefined>;
     /**
      * Success. Defaults to `#13a688`.
      */
-    success?: pulumi.Input<string>;
+    success?: pulumi.Input<string | undefined>;
     /**
      * Widget background. Defaults to `#ffffff`.
      */
-    widgetBackground?: pulumi.Input<string>;
+    widgetBackground?: pulumi.Input<string | undefined>;
     /**
      * Widget border. Defaults to `#c9cace`.
      */
-    widgetBorder?: pulumi.Input<string>;
+    widgetBorder?: pulumi.Input<string | undefined>;
 }
 
 export interface BrandingThemeFonts {
@@ -551,7 +551,7 @@ export interface BrandingThemeFonts {
     /**
      * Font URL. Defaults to an empty string.
      */
-    fontUrl?: pulumi.Input<string>;
+    fontUrl?: pulumi.Input<string | undefined>;
     /**
      * Input labels.
      */
@@ -563,11 +563,11 @@ export interface BrandingThemeFonts {
     /**
      * Links style. Defaults to `normal`.
      */
-    linksStyle?: pulumi.Input<string>;
+    linksStyle?: pulumi.Input<string | undefined>;
     /**
      * Reference text size. Value needs to be between `12` and `24`. Defaults to `16.0`.
      */
-    referenceTextSize?: pulumi.Input<number>;
+    referenceTextSize?: pulumi.Input<number | undefined>;
     /**
      * Subtitle.
      */
@@ -582,104 +582,104 @@ export interface BrandingThemeFontsBodyText {
     /**
      * Body text bold. Defaults to `false`.
      */
-    bold?: pulumi.Input<boolean>;
+    bold?: pulumi.Input<boolean | undefined>;
     /**
      * Body text size. Value needs to be between `0` and `150`. Defaults to `87.5`.
      */
-    size?: pulumi.Input<number>;
+    size?: pulumi.Input<number | undefined>;
 }
 
 export interface BrandingThemeFontsButtonsText {
     /**
      * Buttons text bold. Defaults to `false`.
      */
-    bold?: pulumi.Input<boolean>;
+    bold?: pulumi.Input<boolean | undefined>;
     /**
      * Buttons text size. Value needs to be between `0` and `150`. Defaults to `100.0`.
      */
-    size?: pulumi.Input<number>;
+    size?: pulumi.Input<number | undefined>;
 }
 
 export interface BrandingThemeFontsInputLabels {
     /**
      * Input labels bold. Defaults to `false`.
      */
-    bold?: pulumi.Input<boolean>;
+    bold?: pulumi.Input<boolean | undefined>;
     /**
      * Input labels size. Value needs to be between `0` and `150`. Defaults to `100.0`.
      */
-    size?: pulumi.Input<number>;
+    size?: pulumi.Input<number | undefined>;
 }
 
 export interface BrandingThemeFontsLinks {
     /**
      * Links bold. Defaults to `true`.
      */
-    bold?: pulumi.Input<boolean>;
+    bold?: pulumi.Input<boolean | undefined>;
     /**
      * Links size. Value needs to be between `0` and `150`. Defaults to `87.5`.
      */
-    size?: pulumi.Input<number>;
+    size?: pulumi.Input<number | undefined>;
 }
 
 export interface BrandingThemeFontsSubtitle {
     /**
      * Subtitle bold. Defaults to `false`.
      */
-    bold?: pulumi.Input<boolean>;
+    bold?: pulumi.Input<boolean | undefined>;
     /**
      * Subtitle size. Value needs to be between `0` and `150`. Defaults to `87.5`.
      */
-    size?: pulumi.Input<number>;
+    size?: pulumi.Input<number | undefined>;
 }
 
 export interface BrandingThemeFontsTitle {
     /**
      * Title bold. Defaults to `false`.
      */
-    bold?: pulumi.Input<boolean>;
+    bold?: pulumi.Input<boolean | undefined>;
     /**
      * Title size. Value needs to be between `75` and `150`. Defaults to `150.0`.
      */
-    size?: pulumi.Input<number>;
+    size?: pulumi.Input<number | undefined>;
 }
 
 export interface BrandingThemePageBackground {
     /**
      * Background color. Defaults to `#000000`.
      */
-    backgroundColor?: pulumi.Input<string>;
+    backgroundColor?: pulumi.Input<string | undefined>;
     /**
      * Background image url. Defaults to an empty string.
      */
-    backgroundImageUrl?: pulumi.Input<string>;
+    backgroundImageUrl?: pulumi.Input<string | undefined>;
     /**
      * Page layout. Available options: `center`, `left`, `right`. Defaults to `center`.
      */
-    pageLayout?: pulumi.Input<string>;
+    pageLayout?: pulumi.Input<string | undefined>;
 }
 
 export interface BrandingThemeWidget {
     /**
      * Header text alignment. Available options: `center`, `left`, `right`. Defaults to `center`.
      */
-    headerTextAlignment?: pulumi.Input<string>;
+    headerTextAlignment?: pulumi.Input<string | undefined>;
     /**
      * Logo height. Value needs to be between `1` and `100`. Defaults to `52.0`.
      */
-    logoHeight?: pulumi.Input<number>;
+    logoHeight?: pulumi.Input<number | undefined>;
     /**
      * Logo position. Available options: `center`, `left`, `right`, `none`. Defaults to `center`.
      */
-    logoPosition?: pulumi.Input<string>;
+    logoPosition?: pulumi.Input<string | undefined>;
     /**
      * Logo url. Defaults to an empty string.
      */
-    logoUrl?: pulumi.Input<string>;
+    logoUrl?: pulumi.Input<string | undefined>;
     /**
      * Social buttons layout. Available options: `bottom`, `top`. Defaults to `bottom`.
      */
-    socialButtonsLayout?: pulumi.Input<string>;
+    socialButtonsLayout?: pulumi.Input<string | undefined>;
 }
 
 export interface BrandingUniversalLogin {
@@ -693,212 +693,212 @@ export interface ClientAddons {
     /**
      * AWS Addon configuration.
      */
-    aws?: pulumi.Input<inputs.ClientAddonsAws>;
+    aws?: pulumi.Input<inputs.ClientAddonsAws | undefined>;
     /**
      * Azure Blob Storage Addon configuration.
      */
-    azureBlob?: pulumi.Input<inputs.ClientAddonsAzureBlob>;
+    azureBlob?: pulumi.Input<inputs.ClientAddonsAzureBlob | undefined>;
     /**
      * Azure Storage Bus Addon configuration.
      */
-    azureSb?: pulumi.Input<inputs.ClientAddonsAzureSb>;
+    azureSb?: pulumi.Input<inputs.ClientAddonsAzureSb | undefined>;
     /**
      * Box SSO indicator (no configuration settings needed for Box SSO).
      */
-    box?: pulumi.Input<inputs.ClientAddonsBox>;
+    box?: pulumi.Input<inputs.ClientAddonsBox | undefined>;
     /**
      * CloudBees SSO indicator (no configuration settings needed for CloudBees SSO).
      */
-    cloudbees?: pulumi.Input<inputs.ClientAddonsCloudbees>;
+    cloudbees?: pulumi.Input<inputs.ClientAddonsCloudbees | undefined>;
     /**
      * Concur SSO indicator (no configuration settings needed for Concur SSO).
      */
-    concur?: pulumi.Input<inputs.ClientAddonsConcur>;
+    concur?: pulumi.Input<inputs.ClientAddonsConcur | undefined>;
     /**
      * Dropbox SSO indicator (no configuration settings needed for Dropbox SSO).
      */
-    dropbox?: pulumi.Input<inputs.ClientAddonsDropbox>;
+    dropbox?: pulumi.Input<inputs.ClientAddonsDropbox | undefined>;
     /**
      * Adobe EchoSign SSO configuration.
      */
-    echosign?: pulumi.Input<inputs.ClientAddonsEchosign>;
+    echosign?: pulumi.Input<inputs.ClientAddonsEchosign | undefined>;
     /**
      * Egnyte SSO configuration.
      */
-    egnyte?: pulumi.Input<inputs.ClientAddonsEgnyte>;
+    egnyte?: pulumi.Input<inputs.ClientAddonsEgnyte | undefined>;
     /**
      * Google Firebase addon configuration.
      */
-    firebase?: pulumi.Input<inputs.ClientAddonsFirebase>;
+    firebase?: pulumi.Input<inputs.ClientAddonsFirebase | undefined>;
     /**
      * Layer addon configuration.
      */
-    layer?: pulumi.Input<inputs.ClientAddonsLayer>;
+    layer?: pulumi.Input<inputs.ClientAddonsLayer | undefined>;
     /**
      * Microsoft Dynamics CRM SSO configuration.
      */
-    mscrm?: pulumi.Input<inputs.ClientAddonsMscrm>;
+    mscrm?: pulumi.Input<inputs.ClientAddonsMscrm | undefined>;
     /**
      * New Relic SSO configuration.
      */
-    newrelic?: pulumi.Input<inputs.ClientAddonsNewrelic>;
+    newrelic?: pulumi.Input<inputs.ClientAddonsNewrelic | undefined>;
     /**
      * Microsoft Office 365 SSO configuration.
      */
-    office365?: pulumi.Input<inputs.ClientAddonsOffice365>;
+    office365?: pulumi.Input<inputs.ClientAddonsOffice365 | undefined>;
     /**
      * Active Directory Rights Management Service SSO configuration.
      */
-    rms?: pulumi.Input<inputs.ClientAddonsRms>;
+    rms?: pulumi.Input<inputs.ClientAddonsRms | undefined>;
     /**
      * Salesforce SSO configuration.
      */
-    salesforce?: pulumi.Input<inputs.ClientAddonsSalesforce>;
+    salesforce?: pulumi.Input<inputs.ClientAddonsSalesforce | undefined>;
     /**
      * Salesforce API addon configuration.
      */
-    salesforceApi?: pulumi.Input<inputs.ClientAddonsSalesforceApi>;
+    salesforceApi?: pulumi.Input<inputs.ClientAddonsSalesforceApi | undefined>;
     /**
      * Salesforce Sandbox addon configuration.
      */
-    salesforceSandboxApi?: pulumi.Input<inputs.ClientAddonsSalesforceSandboxApi>;
+    salesforceSandboxApi?: pulumi.Input<inputs.ClientAddonsSalesforceSandboxApi | undefined>;
     /**
      * Configuration settings for a SAML add-on.
      */
-    samlp?: pulumi.Input<inputs.ClientAddonsSamlp>;
+    samlp?: pulumi.Input<inputs.ClientAddonsSamlp | undefined>;
     /**
      * SAP API addon configuration.
      */
-    sapApi?: pulumi.Input<inputs.ClientAddonsSapApi>;
+    sapApi?: pulumi.Input<inputs.ClientAddonsSapApi | undefined>;
     /**
      * Sentry SSO configuration.
      */
-    sentry?: pulumi.Input<inputs.ClientAddonsSentry>;
+    sentry?: pulumi.Input<inputs.ClientAddonsSentry | undefined>;
     /**
      * SharePoint SSO configuration.
      */
-    sharepoint?: pulumi.Input<inputs.ClientAddonsSharepoint>;
+    sharepoint?: pulumi.Input<inputs.ClientAddonsSharepoint | undefined>;
     /**
      * Slack team or workspace name usually first segment in your Slack URL, for example `https://acme-org.slack.com` would be `acme-org`.
      */
-    slack?: pulumi.Input<inputs.ClientAddonsSlack>;
+    slack?: pulumi.Input<inputs.ClientAddonsSlack | undefined>;
     /**
      * SpringCM SSO configuration.
      */
-    springcm?: pulumi.Input<inputs.ClientAddonsSpringcm>;
+    springcm?: pulumi.Input<inputs.ClientAddonsSpringcm | undefined>;
     /**
      * Generic SSO configuration.
      */
-    ssoIntegration?: pulumi.Input<inputs.ClientAddonsSsoIntegration>;
+    ssoIntegration?: pulumi.Input<inputs.ClientAddonsSsoIntegration | undefined>;
     /**
      * Windows Azure Mobile Services addon configuration.
      */
-    wams?: pulumi.Input<inputs.ClientAddonsWams>;
+    wams?: pulumi.Input<inputs.ClientAddonsWams | undefined>;
     /**
      * WS-Fed (WIF) addon indicator. Actual configuration is stored in `callback` and `clientAliases` properties on the client.
      */
-    wsfed?: pulumi.Input<inputs.ClientAddonsWsfed>;
+    wsfed?: pulumi.Input<inputs.ClientAddonsWsfed | undefined>;
     /**
      * Zendesk SSO configuration.
      */
-    zendesk?: pulumi.Input<inputs.ClientAddonsZendesk>;
+    zendesk?: pulumi.Input<inputs.ClientAddonsZendesk | undefined>;
     /**
      * Zoom SSO configuration.
      */
-    zoom?: pulumi.Input<inputs.ClientAddonsZoom>;
+    zoom?: pulumi.Input<inputs.ClientAddonsZoom | undefined>;
 }
 
 export interface ClientAddonsAws {
     /**
      * AWS token lifetime in seconds.
      */
-    lifetimeInSeconds?: pulumi.Input<number>;
+    lifetimeInSeconds?: pulumi.Input<number | undefined>;
     /**
      * AWS principal ARN, for example `arn:aws:iam::010616021751:saml-provider/idpname`.
      */
-    principal?: pulumi.Input<string>;
+    principal?: pulumi.Input<string | undefined>;
     /**
      * AWS role ARN, for example `arn:aws:iam::010616021751:role/foo`.
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
 }
 
 export interface ClientAddonsAzureBlob {
     /**
      * Your Azure storage account name. Usually first segment in your Azure storage URL, for example `https://acme-org.blob.core.windows.net` would be the account name `acme-org`.
      */
-    accountName?: pulumi.Input<string>;
+    accountName?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the issued token has permission to delete the blob.
      */
-    blobDelete?: pulumi.Input<boolean>;
+    blobDelete?: pulumi.Input<boolean | undefined>;
     /**
      * Entity to request a token for, such as `my-blob`. If blank the computed SAS will apply to the entire storage container.
      */
-    blobName?: pulumi.Input<string>;
+    blobName?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the issued token has permission to read the content, properties, metadata and block list. Use the blob as the source of a copy operation.
      */
-    blobRead?: pulumi.Input<boolean>;
+    blobRead?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates if the issued token has permission to create or write content, properties, metadata, or block list. Snapshot or lease the blob. Resize the blob (page blob only). Use the blob as the destination of a copy operation within the same account.
      */
-    blobWrite?: pulumi.Input<boolean>;
+    blobWrite?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates if issued token has permission to delete any blob in the container.
      */
-    containerDelete?: pulumi.Input<boolean>;
+    containerDelete?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates if the issued token has permission to list blobs in the container.
      */
-    containerList?: pulumi.Input<boolean>;
+    containerList?: pulumi.Input<boolean | undefined>;
     /**
      * Container to request a token for, such as `my-container`.
      */
-    containerName?: pulumi.Input<string>;
+    containerName?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the issued token has permission to read the content, properties, metadata or block list of any blob in the container. Use any blob in the container as the source of a copy operation.
      */
-    containerRead?: pulumi.Input<boolean>;
+    containerRead?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates that for any blob in the container if the issued token has permission to create or write content, properties, metadata, or block list. Snapshot or lease the blob. Resize the blob (page blob only). Use the blob as the destination of a copy operation within the same account.
      */
-    containerWrite?: pulumi.Input<boolean>;
+    containerWrite?: pulumi.Input<boolean | undefined>;
     /**
      * Expiration in minutes for the generated token (default of 5 minutes).
      */
-    expiration?: pulumi.Input<number>;
+    expiration?: pulumi.Input<number | undefined>;
     /**
      * Shared access policy identifier defined in your storage account resource.
      */
-    signedIdentifier?: pulumi.Input<string>;
+    signedIdentifier?: pulumi.Input<string | undefined>;
     /**
      * Access key associated with this storage account.
      */
-    storageAccessKey?: pulumi.Input<string>;
+    storageAccessKey?: pulumi.Input<string | undefined>;
 }
 
 export interface ClientAddonsAzureSb {
     /**
      * Entity you want to request a token for, such as `my-queue`.
      */
-    entityPath?: pulumi.Input<string>;
+    entityPath?: pulumi.Input<string | undefined>;
     /**
      * Optional expiration in minutes for the generated token. Defaults to 5 minutes.
      */
-    expiration?: pulumi.Input<number>;
+    expiration?: pulumi.Input<number | undefined>;
     /**
      * Your Azure Service Bus namespace. Usually the first segment of your Service Bus URL (for example `https://acme-org.servicebus.windows.net` would be `acme-org`).
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * Primary Key associated with your shared access policy.
      */
-    sasKey?: pulumi.Input<string>;
+    sasKey?: pulumi.Input<string | undefined>;
     /**
      * Your shared access policy name defined in your Service Bus entity.
      */
-    sasKeyName?: pulumi.Input<string>;
+    sasKeyName?: pulumi.Input<string | undefined>;
 }
 
 export interface ClientAddonsBox {
@@ -917,44 +917,44 @@ export interface ClientAddonsEchosign {
     /**
      * Your custom domain found in your EchoSign URL, for example `https://acme-org.echosign.com` would be `acme-org`.
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
 }
 
 export interface ClientAddonsEgnyte {
     /**
      * Your custom domain found in your Egnyte URL, for example `https://acme-org.echosign.com` would be `acme-org`.
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
 }
 
 export interface ClientAddonsFirebase {
     /**
      * ID of the Service Account you have created (shown as `clientEmail` in the generated JSON file, SDK v3+ tokens only).
      */
-    clientEmail?: pulumi.Input<string>;
+    clientEmail?: pulumi.Input<string | undefined>;
     /**
      * Optional expiration in seconds for the generated token. Defaults to 3600 seconds (SDK v3+ tokens only).
      */
-    lifetimeInSeconds?: pulumi.Input<number>;
+    lifetimeInSeconds?: pulumi.Input<number | undefined>;
     /**
      * Private Key for signing the token (SDK v3+ tokens only).
      */
-    privateKey?: pulumi.Input<string>;
+    privateKey?: pulumi.Input<string | undefined>;
     /**
      * Optional ID of the private key to obtain the `kid` header claim from the issued token (SDK v3+ tokens only).
      */
-    privateKeyId?: pulumi.Input<string>;
+    privateKeyId?: pulumi.Input<string | undefined>;
     /**
      * Google Firebase Secret. (SDK v2 only).
      */
-    secret?: pulumi.Input<string>;
+    secret?: pulumi.Input<string | undefined>;
 }
 
 export interface ClientAddonsLayer {
     /**
      * Optional expiration in minutes for the generated token. Defaults to 5 minutes.
      */
-    expiration?: pulumi.Input<number>;
+    expiration?: pulumi.Input<number | undefined>;
     /**
      * Authentication Key identifier used to sign the Layer token.
      */
@@ -962,7 +962,7 @@ export interface ClientAddonsLayer {
     /**
      * Name of the property used as the unique user ID in Layer. If not specified `userId` is used.
      */
-    principal?: pulumi.Input<string>;
+    principal?: pulumi.Input<string | undefined>;
     /**
      * Private key for signing the Layer token.
      */
@@ -977,260 +977,260 @@ export interface ClientAddonsMscrm {
     /**
      * Microsoft Dynamics CRM application URL.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 export interface ClientAddonsNewrelic {
     /**
      * Your New Relic Account ID found in your New Relic URL after the `/accounts/` path, for example `https://rpm.newrelic.com/accounts/123456/query` would be `123456`.
      */
-    account?: pulumi.Input<string>;
+    account?: pulumi.Input<string | undefined>;
 }
 
 export interface ClientAddonsOffice365 {
     /**
      * Optional Auth0 database connection for testing an already-configured Office 365 tenant.
      */
-    connection?: pulumi.Input<string>;
+    connection?: pulumi.Input<string | undefined>;
     /**
      * Your Office 365 domain name, for example `acme-org.com`.
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
 }
 
 export interface ClientAddonsRms {
     /**
      * URL of your Rights Management Server. It can be internal or external, but users will have to be able to reach it.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 export interface ClientAddonsSalesforce {
     /**
      * Arbitrary logical URL that identifies the Saleforce resource, for example `https://acme-org.com`.
      */
-    entityId?: pulumi.Input<string>;
+    entityId?: pulumi.Input<string | undefined>;
 }
 
 export interface ClientAddonsSalesforceApi {
     /**
      * Consumer Key assigned by Salesforce to the Connected App.
      */
-    clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
     /**
      * Community name.
      */
-    communityName?: pulumi.Input<string>;
+    communityName?: pulumi.Input<string | undefined>;
     /**
      * Community URL section.
      */
-    communityUrlSection?: pulumi.Input<string>;
+    communityUrlSection?: pulumi.Input<string | undefined>;
     /**
      * Name of the property in the user object that maps to a Salesforce username, for example `email`.
      */
-    principal?: pulumi.Input<string>;
+    principal?: pulumi.Input<string | undefined>;
 }
 
 export interface ClientAddonsSalesforceSandboxApi {
     /**
      * Consumer Key assigned by Salesforce to the Connected App.
      */
-    clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
     /**
      * Community name.
      */
-    communityName?: pulumi.Input<string>;
+    communityName?: pulumi.Input<string | undefined>;
     /**
      * Community URL section.
      */
-    communityUrlSection?: pulumi.Input<string>;
+    communityUrlSection?: pulumi.Input<string | undefined>;
     /**
      * Name of the property in the user object that maps to a Salesforce username, for example `email`.
      */
-    principal?: pulumi.Input<string>;
+    principal?: pulumi.Input<string | undefined>;
 }
 
 export interface ClientAddonsSamlp {
     /**
      * Audience of the SAML Assertion. Default will be the Issuer on SAMLRequest.
      */
-    audience?: pulumi.Input<string>;
+    audience?: pulumi.Input<string | undefined>;
     /**
      * Class reference of the authentication context.
      */
-    authnContextClassRef?: pulumi.Input<string>;
+    authnContextClassRef?: pulumi.Input<string | undefined>;
     /**
      * Protocol binding used for SAML logout responses.
      */
-    binding?: pulumi.Input<string>;
+    binding?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether a UPN claim should be created. Defaults to `true`.
      */
-    createUpnClaim?: pulumi.Input<boolean>;
+    createUpnClaim?: pulumi.Input<boolean | undefined>;
     /**
      * Destination of the SAML Response. If not specified, it will be `AssertionConsumerUrl` of SAMLRequest or callback URL if there was no SAMLRequest.
      */
-    destination?: pulumi.Input<string>;
+    destination?: pulumi.Input<string | undefined>;
     /**
      * Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`. Defaults to `sha1`.
      */
-    digestAlgorithm?: pulumi.Input<string>;
+    digestAlgorithm?: pulumi.Input<string | undefined>;
     /**
      * This is a supporting attribute to `mappings` field.Please note this is an experimental field. It should only be used when needed to send a map with keys as slices.
      */
-    flexibleMappings?: pulumi.Input<string>;
+    flexibleMappings?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion. Defaults to `true`.
      */
-    includeAttributeNameFormat?: pulumi.Input<boolean>;
+    includeAttributeNameFormat?: pulumi.Input<boolean | undefined>;
     /**
      * Issuer of the SAML Assertion.
      */
-    issuer?: pulumi.Input<string>;
+    issuer?: pulumi.Input<string | undefined>;
     /**
      * Number of seconds during which the token is valid. Defaults to `3600` seconds.
      */
-    lifetimeInSeconds?: pulumi.Input<number>;
+    lifetimeInSeconds?: pulumi.Input<number | undefined>;
     /**
      * Configuration settings for logout.
      */
-    logout?: pulumi.Input<inputs.ClientAddonsSamlpLogout>;
+    logout?: pulumi.Input<inputs.ClientAddonsSamlpLogout | undefined>;
     /**
      * Indicates whether or not to add additional identity information in the token, such as the provider used and the `accessToken`, if available. Defaults to `true`.
      */
-    mapIdentities?: pulumi.Input<boolean>;
+    mapIdentities?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion. Defaults to `false`.
      */
-    mapUnknownClaimsAsIs?: pulumi.Input<boolean>;
+    mapUnknownClaimsAsIs?: pulumi.Input<boolean | undefined>;
     /**
      * Mappings between the Auth0 user profile property name (`name`) and the output attributes on the SAML attribute in the assertion (`value`).
      */
-    mappings?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    mappings?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
      */
-    nameIdentifierFormat?: pulumi.Input<string>;
+    nameIdentifierFormat?: pulumi.Input<string | undefined>;
     /**
      * Attributes that can be used for Subject/NameID. Auth0 will try each of the attributes of this array in order and use the first value it finds.
      */
-    nameIdentifierProbes?: pulumi.Input<pulumi.Input<string>[]>;
+    nameIdentifierProbes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion. Defaults to `true`.
      */
-    passthroughClaimsWithNoMapping?: pulumi.Input<boolean>;
+    passthroughClaimsWithNoMapping?: pulumi.Input<boolean | undefined>;
     /**
      * Recipient of the SAML Assertion (SubjectConfirmationData). Default is `AssertionConsumerUrl` on SAMLRequest or callback URL if no SAMLRequest was sent.
      */
-    recipient?: pulumi.Input<string>;
+    recipient?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether or not the SAML Response should be signed instead of the SAML Assertion.
      */
-    signResponse?: pulumi.Input<boolean>;
+    signResponse?: pulumi.Input<boolean | undefined>;
     /**
      * Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`. Defaults to `rsa-sha1`.
      */
-    signatureAlgorithm?: pulumi.Input<string>;
+    signatureAlgorithm?: pulumi.Input<string | undefined>;
     /**
      * Optionally indicates the public key certificate used to validate SAML requests. If set, SAML requests will be required to be signed. A sample value would be `-----BEGIN PUBLIC KEY-----\nMIGf...bpP/t3\n+JGNGIRMj1hF1rnb6QIDAQAB\n-----END PUBLIC KEY-----\n`.
      */
-    signingCert?: pulumi.Input<string>;
+    signingCert?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to `false`, all `xs:type` are `xs:anyType`. Defaults to `true`.
      */
-    typedAttributes?: pulumi.Input<boolean>;
+    typedAttributes?: pulumi.Input<boolean | undefined>;
 }
 
 export interface ClientAddonsSamlpLogout {
     /**
      * The service provider (client application)'s Single Logout Service URL, where Auth0 will send logout requests and responses.
      */
-    callback?: pulumi.Input<string>;
+    callback?: pulumi.Input<string | undefined>;
     /**
      * Controls whether Auth0 should notify service providers of session termination.
      */
-    sloEnabled?: pulumi.Input<boolean>;
+    sloEnabled?: pulumi.Input<boolean | undefined>;
 }
 
 export interface ClientAddonsSapApi {
     /**
      * If activated in the OAuth 2.0 client configuration (transaction `SOAUTH2) the SAML attribute`client*id`must be set and equal the`client*id` form parameter of the access token request.
      */
-    clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
     /**
      * NameID element of the Subject which can be used to express the user's identity. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
      */
-    nameIdentifierFormat?: pulumi.Input<string>;
+    nameIdentifierFormat?: pulumi.Input<string | undefined>;
     /**
      * Requested scope for SAP APIs.
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
     /**
      * Service account password to use to authenticate API calls to the token endpoint.
      */
-    servicePassword?: pulumi.Input<string>;
+    servicePassword?: pulumi.Input<string | undefined>;
     /**
      * The OAuth2 token endpoint URL of your SAP OData server.
      */
-    tokenEndpointUrl?: pulumi.Input<string>;
+    tokenEndpointUrl?: pulumi.Input<string | undefined>;
     /**
      * Name of the property in the user object that maps to a SAP username, for example `email`.
      */
-    usernameAttribute?: pulumi.Input<string>;
+    usernameAttribute?: pulumi.Input<string | undefined>;
 }
 
 export interface ClientAddonsSentry {
     /**
      * URL prefix only if running Sentry Community Edition, otherwise leave empty.
      */
-    baseUrl?: pulumi.Input<string>;
+    baseUrl?: pulumi.Input<string | undefined>;
     /**
      * Generated slug for your Sentry organization. Found in your Sentry URL, for example `https://sentry.acme.com/acme-org/` would be `acme-org`.
      */
-    orgSlug?: pulumi.Input<string>;
+    orgSlug?: pulumi.Input<string | undefined>;
 }
 
 export interface ClientAddonsSharepoint {
     /**
      * External SharePoint application URLs if exposed to the Internet.
      */
-    externalUrls?: pulumi.Input<pulumi.Input<string>[]>;
+    externalUrls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Internal SharePoint application URL.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 export interface ClientAddonsSlack {
     /**
      * Slack team name.
      */
-    team?: pulumi.Input<string>;
+    team?: pulumi.Input<string | undefined>;
 }
 
 export interface ClientAddonsSpringcm {
     /**
      * SpringCM ACS URL, for example `https://na11.springcm.com/atlas/sso/SSOEndpoint.ashx`.
      */
-    acsUrl?: pulumi.Input<string>;
+    acsUrl?: pulumi.Input<string | undefined>;
 }
 
 export interface ClientAddonsSsoIntegration {
     /**
      * SSO integration name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * SSO integration version installed.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 export interface ClientAddonsWams {
     /**
      * Your master key for Windows Azure Mobile Services.
      */
-    masterKey?: pulumi.Input<string>;
+    masterKey?: pulumi.Input<string | undefined>;
 }
 
 export interface ClientAddonsWsfed {
@@ -1240,14 +1240,14 @@ export interface ClientAddonsZendesk {
     /**
      * Zendesk account name. Usually the first segment in your Zendesk URL, for example `https://acme-org.zendesk.com` would be `acme-org`.
      */
-    accountName?: pulumi.Input<string>;
+    accountName?: pulumi.Input<string | undefined>;
 }
 
 export interface ClientAddonsZoom {
     /**
      * Zoom account name. Usually the first segment of your Zoom URL, for example `https://acme-org.zoom.us` would be `acme-org`.
      */
-    account?: pulumi.Input<string>;
+    account?: pulumi.Input<string | undefined>;
 }
 
 export interface ClientCimdDefaultOrganization {
@@ -1265,46 +1265,46 @@ export interface ClientCimdJwtConfiguration {
     /**
      * Algorithm used to sign JWTs. CIMD clients support `RS256`, `RS512`, and `PS256` (asymmetric only).
      */
-    alg?: pulumi.Input<string>;
+    alg?: pulumi.Input<string | undefined>;
     /**
      * Number of seconds during which the JWT will be valid.
      */
-    lifetimeInSeconds?: pulumi.Input<number>;
+    lifetimeInSeconds?: pulumi.Input<number | undefined>;
     /**
      * Indicates whether the client secret is Base64-encoded.
      */
-    secretEncoded?: pulumi.Input<boolean>;
+    secretEncoded?: pulumi.Input<boolean | undefined>;
 }
 
 export interface ClientCimdRefreshToken {
     /**
      * Refresh token expiration type. Must be `expiring` for CIMD clients.
      */
-    expirationType?: pulumi.Input<string>;
+    expirationType?: pulumi.Input<string | undefined>;
     /**
      * The time in seconds after which inactive refresh tokens will expire.
      */
-    idleTokenLifetime?: pulumi.Input<number>;
+    idleTokenLifetime?: pulumi.Input<number | undefined>;
     /**
      * Whether inactive refresh tokens should remain valid indefinitely. Must be `false` for CIMD clients.
      */
-    infiniteIdleTokenLifetime?: pulumi.Input<boolean>;
+    infiniteIdleTokenLifetime?: pulumi.Input<boolean | undefined>;
     /**
      * Whether refresh tokens should remain valid indefinitely. If false, `tokenLifetime` should also be set.
      */
-    infiniteTokenLifetime?: pulumi.Input<boolean>;
+    infiniteTokenLifetime?: pulumi.Input<boolean | undefined>;
     /**
      * The amount of time in seconds in which a refresh token may be reused without triggering reuse detection.
      */
-    leeway?: pulumi.Input<number>;
+    leeway?: pulumi.Input<number | undefined>;
     /**
      * Refresh token rotation type.Valid values are `rotating` and `non-rotating`
      */
-    rotationType?: pulumi.Input<string>;
+    rotationType?: pulumi.Input<string | undefined>;
     /**
      * The absolute lifetime of a refresh token in seconds.
      */
-    tokenLifetime?: pulumi.Input<number>;
+    tokenLifetime?: pulumi.Input<number | undefined>;
 }
 
 export interface ClientCimdTokenQuota {
@@ -1318,30 +1318,30 @@ export interface ClientCimdTokenQuotaClientCredentials {
     /**
      * If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
      */
-    enforce?: pulumi.Input<boolean>;
+    enforce?: pulumi.Input<boolean | undefined>;
     /**
      * Maximum number of issued tokens per day
      */
-    perDay?: pulumi.Input<number>;
+    perDay?: pulumi.Input<number | undefined>;
     /**
      * Maximum number of issued tokens per hour
      */
-    perHour?: pulumi.Input<number>;
+    perHour?: pulumi.Input<number | undefined>;
 }
 
 export interface ClientCimdValidation {
     /**
      * Whether the metadata document passed validation.
      */
-    valid?: pulumi.Input<boolean>;
+    valid?: pulumi.Input<boolean | undefined>;
     /**
      * Array of validation violation messages, if any. Violations indicate issues that prevented the metadata document from being fully processed.
      */
-    violations?: pulumi.Input<pulumi.Input<string>[]>;
+    violations?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Array of warning messages, if any. Warnings indicate non-critical issues such as unsupported properties being ignored.
      */
-    warnings?: pulumi.Input<pulumi.Input<string>[]>;
+    warnings?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface ClientCredentialsPrivateKeyJwt {
@@ -1355,11 +1355,11 @@ export interface ClientCredentialsPrivateKeyJwtCredential {
     /**
      * Algorithm which will be used with the credential. Can be one of `RS256`, `RS384`, `PS256`. If not specified, `RS256` will be used.
      */
-    algorithm?: pulumi.Input<string>;
+    algorithm?: pulumi.Input<string | undefined>;
     /**
      * The ISO 8601 formatted date the credential was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Credential type. Supported types: `publicKey`.
      */
@@ -1367,23 +1367,23 @@ export interface ClientCredentialsPrivateKeyJwtCredential {
     /**
      * The ISO 8601 formatted date representing the expiration of the credential. It is not possible to set this to never expire after it has been set. Recreate the certificate if needed.
      */
-    expiresAt?: pulumi.Input<string>;
+    expiresAt?: pulumi.Input<string | undefined>;
     /**
      * The ID of the client credential.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The key identifier of the credential, generated on creation.
      */
-    keyId?: pulumi.Input<string>;
+    keyId?: pulumi.Input<string | undefined>;
     /**
      * Friendly name for a credential.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Parse expiry from x509 certificate. If true, attempts to parse the expiry date from the provided PEM. If also the `expiresAt` is set the credential expiry will be set to the explicit `expiresAt` value.
      */
-    parseExpiryFromCert?: pulumi.Input<boolean>;
+    parseExpiryFromCert?: pulumi.Input<boolean | undefined>;
     /**
      * PEM-formatted public key (SPKI and PKCS1) or X509 certificate. Must be JSON escaped.
      */
@@ -1391,7 +1391,7 @@ export interface ClientCredentialsPrivateKeyJwtCredential {
     /**
      * The ISO 8601 formatted date the credential was updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 export interface ClientCredentialsSelfSignedTlsClientAuth {
@@ -1405,23 +1405,23 @@ export interface ClientCredentialsSelfSignedTlsClientAuthCredential {
     /**
      * The ISO 8601 formatted date the credential was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Credential type. Supported types: `x509Cert`.
      */
-    credentialType?: pulumi.Input<string>;
+    credentialType?: pulumi.Input<string | undefined>;
     /**
      * The ISO 8601 formatted date representing the expiration of the credential.
      */
-    expiresAt?: pulumi.Input<string>;
+    expiresAt?: pulumi.Input<string | undefined>;
     /**
      * The ID of the client credential.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Friendly name for a credential.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * PEM-formatted X509 certificate. Must be JSON escaped.
      */
@@ -1429,11 +1429,11 @@ export interface ClientCredentialsSelfSignedTlsClientAuthCredential {
     /**
      * The X509 certificate's SHA256 thumbprint.
      */
-    thumbprintSha256?: pulumi.Input<string>;
+    thumbprintSha256?: pulumi.Input<string | undefined>;
     /**
      * The ISO 8601 formatted date the credential was updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 export interface ClientCredentialsSignedRequestObject {
@@ -1444,18 +1444,18 @@ export interface ClientCredentialsSignedRequestObject {
     /**
      * Require JWT-secured authorization requests.
      */
-    required?: pulumi.Input<boolean>;
+    required?: pulumi.Input<boolean | undefined>;
 }
 
 export interface ClientCredentialsSignedRequestObjectCredential {
     /**
      * Algorithm which will be used with the credential. Can be one of `RS256`, `RS384`, `PS256`. If not specified, `RS256` will be used.
      */
-    algorithm?: pulumi.Input<string>;
+    algorithm?: pulumi.Input<string | undefined>;
     /**
      * The ISO 8601 formatted date the credential was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Credential type. Supported types: `publicKey`.
      */
@@ -1463,23 +1463,23 @@ export interface ClientCredentialsSignedRequestObjectCredential {
     /**
      * The ISO 8601 formatted date representing the expiration of the credential. It is not possible to set this to never expire after it has been set. Recreate the certificate if needed.
      */
-    expiresAt?: pulumi.Input<string>;
+    expiresAt?: pulumi.Input<string | undefined>;
     /**
      * The ID of the client credential.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The key identifier of the credential, generated on creation.
      */
-    keyId?: pulumi.Input<string>;
+    keyId?: pulumi.Input<string | undefined>;
     /**
      * Friendly name for a credential.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Parse expiry from x509 certificate. If true, attempts to parse the expiry date from the provided PEM. If also the `expiresAt` is set the credential expiry will be set to the explicit `expiresAt` value.
      */
-    parseExpiryFromCert?: pulumi.Input<boolean>;
+    parseExpiryFromCert?: pulumi.Input<boolean | undefined>;
     /**
      * PEM-formatted public key (SPKI and PKCS1) or X509 certificate. Must be JSON escaped.
      */
@@ -1487,7 +1487,7 @@ export interface ClientCredentialsSignedRequestObjectCredential {
     /**
      * The ISO 8601 formatted date the credential was updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 export interface ClientCredentialsTlsClientAuth {
@@ -1501,7 +1501,7 @@ export interface ClientCredentialsTlsClientAuthCredential {
     /**
      * The ISO 8601 formatted date the credential was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Credential type. Supported types: `certSubjectDn`.
      */
@@ -1509,172 +1509,172 @@ export interface ClientCredentialsTlsClientAuthCredential {
     /**
      * The ID of the client credential.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Friendly name for a credential.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * PEM-formatted X509 certificate. Must be JSON escaped. Mutually exlusive with `subjectDn` property.
      */
-    pem?: pulumi.Input<string>;
+    pem?: pulumi.Input<string | undefined>;
     /**
      * Subject Distinguished Name. Mutually exlusive with `pem` property.
      */
-    subjectDn?: pulumi.Input<string>;
+    subjectDn?: pulumi.Input<string | undefined>;
     /**
      * The ISO 8601 formatted date the credential was updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 export interface ClientDefaultOrganization {
     /**
      * If set, the `defaultOrganization` will be removed.
      */
-    disable?: pulumi.Input<boolean>;
+    disable?: pulumi.Input<boolean | undefined>;
     /**
      * Definition of the flow that needs to be configured. Eg. client_credentials
      */
-    flows?: pulumi.Input<pulumi.Input<string>[]>;
+    flows?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The unique identifier of the organization
      */
-    organizationId?: pulumi.Input<string>;
+    organizationId?: pulumi.Input<string | undefined>;
 }
 
 export interface ClientExpressConfiguration {
     /**
      * The domain that admins are expected to log in via for authenticating for express configuration.
      */
-    adminLoginDomain?: pulumi.Input<string>;
+    adminLoginDomain?: pulumi.Input<string | undefined>;
     /**
      * The ID of the connection profile to use for this application.
      */
-    connectionProfileId?: pulumi.Input<string>;
+    connectionProfileId?: pulumi.Input<string | undefined>;
     /**
      * When true, all connections made via express configuration will be enabled for this application.
      */
-    enableClient?: pulumi.Input<boolean>;
+    enableClient?: pulumi.Input<boolean | undefined>;
     /**
      * When true, all connections made via express configuration will have the associated organization enabled.
      */
-    enableOrganization?: pulumi.Input<boolean>;
+    enableOrganization?: pulumi.Input<boolean | undefined>;
     /**
      * The URI users should bookmark to log in to this application. Variable substitution is permitted for: organization*name, organization*id, and connection_name.
      */
-    initiateLoginUriTemplate?: pulumi.Input<string>;
+    initiateLoginUriTemplate?: pulumi.Input<string | undefined>;
     /**
      * List of client IDs that are linked to this express configuration (e.g. web or mobile clients).
      */
-    linkedClients?: pulumi.Input<pulumi.Input<inputs.ClientExpressConfigurationLinkedClient>[]>;
+    linkedClients?: pulumi.Input<pulumi.Input<inputs.ClientExpressConfigurationLinkedClient>[] | undefined>;
     /**
      * The identifier of the published application in the OKTA OIN.
      */
-    oinSubmissionId?: pulumi.Input<string>;
+    oinSubmissionId?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for the Okta OIN Express Configuration Client.
      */
-    oktaOinClientId?: pulumi.Input<string>;
+    oktaOinClientId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the user attribute profile to use for this application.
      */
-    userAttributeProfileId?: pulumi.Input<string>;
+    userAttributeProfileId?: pulumi.Input<string | undefined>;
 }
 
 export interface ClientExpressConfigurationLinkedClient {
     /**
      * The ID of the linked client.
      */
-    clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
 }
 
 export interface ClientJwtConfiguration {
     /**
      * Algorithm used to sign JWTs. Can be one of `HS256`, `RS256`, `PS256`.
      */
-    alg?: pulumi.Input<string>;
+    alg?: pulumi.Input<string | undefined>;
     /**
      * Number of seconds during which the JWT will be valid.
      */
-    lifetimeInSeconds?: pulumi.Input<number>;
+    lifetimeInSeconds?: pulumi.Input<number | undefined>;
     /**
      * Permissions (scopes) included in JWTs.
      */
-    scopes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    scopes?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Indicates whether the client secret is Base64-encoded.
      */
-    secretEncoded?: pulumi.Input<boolean>;
+    secretEncoded?: pulumi.Input<boolean | undefined>;
 }
 
 export interface ClientMobile {
     /**
      * Configuration settings for Android native apps.
      */
-    android?: pulumi.Input<inputs.ClientMobileAndroid>;
+    android?: pulumi.Input<inputs.ClientMobileAndroid | undefined>;
     /**
      * Configuration settings for i0S native apps.
      */
-    ios?: pulumi.Input<inputs.ClientMobileIos>;
+    ios?: pulumi.Input<inputs.ClientMobileIos | undefined>;
 }
 
 export interface ClientMobileAndroid {
-    appPackageName?: pulumi.Input<string>;
-    sha256CertFingerprints?: pulumi.Input<pulumi.Input<string>[]>;
+    appPackageName?: pulumi.Input<string | undefined>;
+    sha256CertFingerprints?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface ClientMobileIos {
-    appBundleIdentifier?: pulumi.Input<string>;
-    teamId?: pulumi.Input<string>;
+    appBundleIdentifier?: pulumi.Input<string | undefined>;
+    teamId?: pulumi.Input<string | undefined>;
 }
 
 export interface ClientMyOrganizationConfiguration {
     /**
      * The list of connection strategies that are allowed when creating organizations for this client (e.g. "okta", "samlp").
      */
-    allowedStrategies?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedStrategies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Controls the behavior when deleting connections associated with organizations for this client. Possible values: `allow`, `allowIfEmpty`.
      */
-    connectionDeletionBehavior?: pulumi.Input<string>;
+    connectionDeletionBehavior?: pulumi.Input<string | undefined>;
     /**
      * The ID of the connection profile to use when creating organizations for this client.
      */
-    connectionProfileId?: pulumi.Input<string>;
+    connectionProfileId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the user attribute profile to use when creating organizations for this client.
      */
-    userAttributeProfileId?: pulumi.Input<string>;
+    userAttributeProfileId?: pulumi.Input<string | undefined>;
 }
 
 export interface ClientNativeSocialLogin {
-    apple?: pulumi.Input<inputs.ClientNativeSocialLoginApple>;
-    facebook?: pulumi.Input<inputs.ClientNativeSocialLoginFacebook>;
-    google?: pulumi.Input<inputs.ClientNativeSocialLoginGoogle>;
+    apple?: pulumi.Input<inputs.ClientNativeSocialLoginApple | undefined>;
+    facebook?: pulumi.Input<inputs.ClientNativeSocialLoginFacebook | undefined>;
+    google?: pulumi.Input<inputs.ClientNativeSocialLoginGoogle | undefined>;
 }
 
 export interface ClientNativeSocialLoginApple {
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 export interface ClientNativeSocialLoginFacebook {
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 export interface ClientNativeSocialLoginGoogle {
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 export interface ClientOidcLogout {
     /**
      * Configure OIDC logout initiators for the Client
      */
-    backchannelLogoutInitiators?: pulumi.Input<inputs.ClientOidcLogoutBackchannelLogoutInitiators>;
+    backchannelLogoutInitiators?: pulumi.Input<inputs.ClientOidcLogoutBackchannelLogoutInitiators | undefined>;
     /**
      * Controls whether session metadata is included in the logout token. Default value is null.
      */
-    backchannelLogoutSessionMetadata?: pulumi.Input<inputs.ClientOidcLogoutBackchannelLogoutSessionMetadata>;
+    backchannelLogoutSessionMetadata?: pulumi.Input<inputs.ClientOidcLogoutBackchannelLogoutSessionMetadata | undefined>;
     /**
      * Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
      */
@@ -1689,7 +1689,7 @@ export interface ClientOidcLogoutBackchannelLogoutInitiators {
     /**
      * Contains the list of initiators to be enabled for the given client.
      */
-    selectedInitiators?: pulumi.Input<pulumi.Input<string>[]>;
+    selectedInitiators?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface ClientOidcLogoutBackchannelLogoutSessionMetadata {
@@ -1707,23 +1707,23 @@ export interface ClientRefreshToken {
     /**
      * The time in seconds after which inactive refresh tokens will expire.
      */
-    idleTokenLifetime?: pulumi.Input<number>;
+    idleTokenLifetime?: pulumi.Input<number | undefined>;
     /**
      * Whether inactive refresh tokens should remain valid indefinitely.
      */
-    infiniteIdleTokenLifetime?: pulumi.Input<boolean>;
+    infiniteIdleTokenLifetime?: pulumi.Input<boolean | undefined>;
     /**
      * Whether refresh tokens should remain valid indefinitely. If false, `tokenLifetime` should also be set.
      */
-    infiniteTokenLifetime?: pulumi.Input<boolean>;
+    infiniteTokenLifetime?: pulumi.Input<boolean | undefined>;
     /**
      * The amount of time in seconds in which a refresh token may be reused without triggering reuse detection.
      */
-    leeway?: pulumi.Input<number>;
+    leeway?: pulumi.Input<number | undefined>;
     /**
      * A collection of policies governing multi-resource refresh token exchange (MRRT), defining how refresh tokens can be used across different resource servers
      */
-    policies?: pulumi.Input<pulumi.Input<inputs.ClientRefreshTokenPolicy>[]>;
+    policies?: pulumi.Input<pulumi.Input<inputs.ClientRefreshTokenPolicy>[] | undefined>;
     /**
      * Options include `rotating`, `non-rotating`. When `rotating`, exchanging a refresh token will cause a new refresh token to be issued and the existing token will be invalidated. This allows for automatic detection of token reuse if the token is leaked.
      */
@@ -1731,7 +1731,7 @@ export interface ClientRefreshToken {
     /**
      * The absolute lifetime of a refresh token in seconds.
      */
-    tokenLifetime?: pulumi.Input<number>;
+    tokenLifetime?: pulumi.Input<number | undefined>;
 }
 
 export interface ClientRefreshTokenPolicy {
@@ -1749,24 +1749,24 @@ export interface ClientSessionTransfer {
     /**
      * Indicates whether the application is allowed to use a refresh token when using a session*transfer*token session.
      */
-    allowRefreshToken?: pulumi.Input<boolean>;
-    allowedAuthenticationMethods?: pulumi.Input<pulumi.Input<string>[]>;
+    allowRefreshToken?: pulumi.Input<boolean | undefined>;
+    allowedAuthenticationMethods?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session*transfer*token
      */
-    canCreateSessionTransferToken?: pulumi.Input<boolean>;
+    canCreateSessionTransferToken?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities. Usually configured in the native application.
      */
-    enforceCascadeRevocation?: pulumi.Input<boolean>;
+    enforceCascadeRevocation?: pulumi.Input<boolean | undefined>;
     /**
      * Configures the level of device binding enforced when a session*transfer*token is consumed. Can be one of `ip`, `asn` or `none`.
      */
-    enforceDeviceBinding?: pulumi.Input<string>;
+    enforceDeviceBinding?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are. Usually configured in the web application.
      */
-    enforceOnlineRefreshTokens?: pulumi.Input<boolean>;
+    enforceOnlineRefreshTokens?: pulumi.Input<boolean | undefined>;
 }
 
 export interface ClientTokenExchange {
@@ -1787,15 +1787,15 @@ export interface ClientTokenQuotaClientCredentials {
     /**
      * If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
      */
-    enforce?: pulumi.Input<boolean>;
+    enforce?: pulumi.Input<boolean | undefined>;
     /**
      * Maximum number of issued tokens per day
      */
-    perDay?: pulumi.Input<number>;
+    perDay?: pulumi.Input<number | undefined>;
     /**
      * Maximum number of issued tokens per hour
      */
-    perHour?: pulumi.Input<number>;
+    perHour?: pulumi.Input<number | undefined>;
 }
 
 export interface ConnectionAuthentication {
@@ -1821,525 +1821,525 @@ export interface ConnectionOptions {
     /**
      * URL used to exchange a user-authorized request token for an access token.
      */
-    accessTokenUrl?: pulumi.Input<string>;
+    accessTokenUrl?: pulumi.Input<string | undefined>;
     /**
      * ADFS URL where to fetch the metadata source.
      */
-    adfsServer?: pulumi.Input<string>;
+    adfsServer?: pulumi.Input<string | undefined>;
     /**
      * List of allowed audiences.
      */
-    allowedAudiences?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedAudiences?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Enable API Access to users.
      */
-    apiEnableUsers?: pulumi.Input<boolean>;
+    apiEnableUsers?: pulumi.Input<boolean | undefined>;
     /**
      * App ID.
      */
-    appId?: pulumi.Input<string>;
+    appId?: pulumi.Input<string | undefined>;
     /**
      * OpenID Connect and Okta Workforce connections can automatically map claims received from the identity provider (IdP). You can configure this mapping through a library template provided by Auth0 or by entering your own template directly. Click [here](https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc#map-claims-for-oidc-connections) for more info.
      */
-    attributeMap?: pulumi.Input<inputs.ConnectionOptionsAttributeMap>;
+    attributeMap?: pulumi.Input<inputs.ConnectionOptionsAttributeMap | undefined>;
     /**
      * Order of attributes for precedence in identification.Valid values: email, phone*number, username. If Precedence is set, it must contain all values (email, phone*number, username) in specific order
      */
-    attributes?: pulumi.Input<pulumi.Input<inputs.ConnectionOptionsAttribute>[]>;
+    attributes?: pulumi.Input<pulumi.Input<inputs.ConnectionOptionsAttribute>[] | undefined>;
     /**
      * Query string parameters to be included as part of the generated passwordless email link.
      */
-    authParams?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    authParams?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Specifies the authentication methods and their configuration (enabled or disabled)
      */
-    authenticationMethods?: pulumi.Input<pulumi.Input<inputs.ConnectionOptionsAuthenticationMethod>[]>;
+    authenticationMethods?: pulumi.Input<pulumi.Input<inputs.ConnectionOptionsAuthenticationMethod>[] | undefined>;
     /**
      * Authorization endpoint.
      */
-    authorizationEndpoint?: pulumi.Input<string>;
+    authorizationEndpoint?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
      */
-    bruteForceProtection?: pulumi.Input<boolean>;
+    bruteForceProtection?: pulumi.Input<boolean | undefined>;
     /**
      * The strategy's client ID.
      */
-    clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
     /**
      * The strategy's client secret.
      */
-    clientSecret?: pulumi.Input<string>;
+    clientSecret?: pulumi.Input<string | undefined>;
     /**
      * Salesforce community base URL.
      */
-    communityBaseUrl?: pulumi.Input<string>;
+    communityBaseUrl?: pulumi.Input<string | undefined>;
     /**
      * A case-sensitive map of key value pairs used as configuration variables for the `customScript`.
      */
-    configuration?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    configuration?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
      */
-    connectionSettings?: pulumi.Input<inputs.ConnectionOptionsConnectionSettings>;
+    connectionSettings?: pulumi.Input<inputs.ConnectionOptionsConnectionSettings | undefined>;
     /**
      * Identifies the client to the service provider
      */
-    consumerKey?: pulumi.Input<string>;
+    consumerKey?: pulumi.Input<string | undefined>;
     /**
      * Secret used to establish ownership of the consumer key.
      */
-    consumerSecret?: pulumi.Input<string>;
+    consumerSecret?: pulumi.Input<string | undefined>;
     /**
      * Configure extra headers to the Token endpoint of an OAuth 2.0 provider
      */
-    customHeaders?: pulumi.Input<pulumi.Input<inputs.ConnectionOptionsCustomHeader>[]>;
+    customHeaders?: pulumi.Input<pulumi.Input<inputs.ConnectionOptionsCustomHeader>[] | undefined>;
     /**
      * Configure custom password hashing within a connection. (EA only)
      */
-    customPasswordHash?: pulumi.Input<inputs.ConnectionOptionsCustomPasswordHash>;
+    customPasswordHash?: pulumi.Input<inputs.ConnectionOptionsCustomPasswordHash | undefined>;
     /**
      * A map of scripts used to integrate with a custom database.
      */
-    customScripts?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    customScripts?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * When enabled, additional debug information will be generated.
      */
-    debug?: pulumi.Input<boolean>;
+    debug?: pulumi.Input<boolean | undefined>;
     /**
      * The key used to decrypt encrypted responses from the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
      */
-    decryptionKey?: pulumi.Input<inputs.ConnectionOptionsDecryptionKey>;
+    decryptionKey?: pulumi.Input<inputs.ConnectionOptionsDecryptionKey | undefined>;
     /**
      * Sign Request Algorithm Digest.
      */
-    digestAlgorithm?: pulumi.Input<string>;
+    digestAlgorithm?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether to disable the cache or not.
      */
-    disableCache?: pulumi.Input<boolean>;
+    disableCache?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether to remove the forgot password link within the New Universal Login.
      */
-    disableSelfServiceChangePassword?: pulumi.Input<boolean>;
+    disableSelfServiceChangePassword?: pulumi.Input<boolean | undefined>;
     /**
      * When enabled, will disable sign out.
      */
-    disableSignOut?: pulumi.Input<boolean>;
+    disableSignOut?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether to allow user sign-ups to your application.
      */
-    disableSignup?: pulumi.Input<boolean>;
+    disableSignup?: pulumi.Input<boolean | undefined>;
     /**
      * OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`.
      */
-    discoveryUrl?: pulumi.Input<string>;
+    discoveryUrl?: pulumi.Input<string | undefined>;
     /**
      * Domain name.
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
     /**
      * List of the domains that can be authenticated using the identity provider. Only needed for Identifier First authentication flows.
      */
-    domainAliases?: pulumi.Input<pulumi.Input<string>[]>;
+    domainAliases?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Signature method used to sign the request. EA Only
      */
-    dpopSigningAlg?: pulumi.Input<string>;
+    dpopSigningAlg?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether to request the email scope. Used by some OAuth2 connections (e.g., LINE).
      */
-    email?: pulumi.Input<boolean>;
+    email?: pulumi.Input<boolean | undefined>;
     /**
      * Set to `true` to inject context into custom DB scripts (warning: cannot be disabled once enabled).
      */
-    enableScriptContext?: pulumi.Input<boolean>;
+    enableScriptContext?: pulumi.Input<boolean | undefined>;
     /**
      * Set to `true` to use a legacy user store.
      */
-    enabledDatabaseCustomization?: pulumi.Input<boolean>;
+    enabledDatabaseCustomization?: pulumi.Input<boolean | undefined>;
     /**
      * Custom Entity ID for the connection.
      */
-    entityId?: pulumi.Input<string>;
+    entityId?: pulumi.Input<string | undefined>;
     /**
      * Federation Metadata for the ADFS connection.
      */
-    fedMetadataXml?: pulumi.Input<string>;
+    fedMetadataXml?: pulumi.Input<string | undefined>;
     /**
      * If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
      */
-    fieldsMap?: pulumi.Input<string>;
+    fieldsMap?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether or not request info should be forwarded to sms gateway.
      */
-    forwardRequestInfo?: pulumi.Input<boolean>;
+    forwardRequestInfo?: pulumi.Input<boolean | undefined>;
     /**
      * Address to use as the sender.
      */
-    from?: pulumi.Input<string>;
+    from?: pulumi.Input<string | undefined>;
     /**
      * Defines the parameters used to generate the auth token for the custom gateway.
      */
-    gatewayAuthentication?: pulumi.Input<inputs.ConnectionOptionsGatewayAuthentication>;
+    gatewayAuthentication?: pulumi.Input<inputs.ConnectionOptionsGatewayAuthentication | undefined>;
     /**
      * Defines a custom sms gateway to use instead of Twilio.
      */
-    gatewayUrl?: pulumi.Input<string>;
+    gatewayUrl?: pulumi.Input<string | undefined>;
     /**
      * Specifies the issuer of the JWT used for global token revocation for the SAML connection.
      */
-    globalTokenRevocationJwtIss?: pulumi.Input<string>;
+    globalTokenRevocationJwtIss?: pulumi.Input<string | undefined>;
     /**
      * Specifies the subject of the JWT used for global token revocation for the SAML connection.
      */
-    globalTokenRevocationJwtSub?: pulumi.Input<string>;
+    globalTokenRevocationJwtSub?: pulumi.Input<string | undefined>;
     /**
      * Icon URL.
      */
-    iconUrl?: pulumi.Input<string>;
+    iconUrl?: pulumi.Input<string | undefined>;
     /**
      * Azure AD Identity API. Available options are: `microsoft-identity-platform-v2.0` or `azure-active-directory-v1.0`.
      */
-    identityApi?: pulumi.Input<string>;
+    identityApi?: pulumi.Input<string | undefined>;
     /**
      * Configuration options for IDP Initiated Authentication. This is an object with the properties: `clientId`, `clientProtocol`, and `clientAuthorizeQuery`.
      */
-    idpInitiated?: pulumi.Input<inputs.ConnectionOptionsIdpInitiated>;
+    idpInitiated?: pulumi.Input<inputs.ConnectionOptionsIdpInitiated | undefined>;
     /**
      * Indicates whether you have a legacy user store and want to gradually migrate those users to the Auth0 user store.
      */
-    importMode?: pulumi.Input<boolean>;
+    importMode?: pulumi.Input<boolean | undefined>;
     /**
      * A list of IPs.
      */
-    ips?: pulumi.Input<pulumi.Input<string>[]>;
+    ips?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Issuer URL, e.g. `https://auth.example.com`.
      */
-    issuer?: pulumi.Input<string>;
+    issuer?: pulumi.Input<string | undefined>;
     /**
      * JWKS URI.
      */
-    jwksUri?: pulumi.Input<string>;
+    jwksUri?: pulumi.Input<string | undefined>;
     /**
      * Apple Key ID.
      */
-    keyId?: pulumi.Input<string>;
+    keyId?: pulumi.Input<string | undefined>;
     /**
      * By default Auth0 maps `userId` to `email`. Enabling this setting changes the behavior to map `userId` to 'id' instead. This can only be defined on a new Google Workspace connection and can not be changed once set.
      */
-    mapUserIdToId?: pulumi.Input<boolean>;
+    mapUserIdToId?: pulumi.Input<boolean | undefined>;
     /**
      * Maximum number of groups to retrieve.
      */
-    maxGroupsToRetrieve?: pulumi.Input<string>;
+    maxGroupsToRetrieve?: pulumi.Input<string | undefined>;
     /**
      * SID for Copilot. Used when SMS Source is Copilot.
      */
-    messagingServiceSid?: pulumi.Input<string>;
+    messagingServiceSid?: pulumi.Input<string | undefined>;
     /**
      * The URL of the SAML metadata document.
      */
-    metadataUrl?: pulumi.Input<string>;
+    metadataUrl?: pulumi.Input<string | undefined>;
     /**
      * The XML content for the SAML metadata document. Values within the xml will take precedence over other attributes set on the options block.
      */
-    metadataXml?: pulumi.Input<string>;
+    metadataXml?: pulumi.Input<string | undefined>;
     /**
      * Configuration options for multifactor authentication.
      */
-    mfa?: pulumi.Input<inputs.ConnectionOptionsMfa>;
+    mfa?: pulumi.Input<inputs.ConnectionOptionsMfa | undefined>;
     /**
      * The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the DenyList here.
      */
-    nonPersistentAttrs?: pulumi.Input<pulumi.Input<string>[]>;
+    nonPersistentAttrs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Defines options for the passkey authentication method
      */
-    passkeyOptions?: pulumi.Input<inputs.ConnectionOptionsPasskeyOptions>;
+    passkeyOptions?: pulumi.Input<inputs.ConnectionOptionsPasskeyOptions | undefined>;
     /**
      * Configuration settings for password complexity.
      */
-    passwordComplexityOptions?: pulumi.Input<inputs.ConnectionOptionsPasswordComplexityOptions>;
+    passwordComplexityOptions?: pulumi.Input<inputs.ConnectionOptionsPasswordComplexityOptions | undefined>;
     /**
      * Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary.
      */
-    passwordDictionary?: pulumi.Input<inputs.ConnectionOptionsPasswordDictionary>;
+    passwordDictionary?: pulumi.Input<inputs.ConnectionOptionsPasswordDictionary | undefined>;
     /**
      * Configuration settings for the password history that is maintained for each user to prevent the reuse of passwords.
      */
-    passwordHistories?: pulumi.Input<pulumi.Input<inputs.ConnectionOptionsPasswordHistory>[]>;
+    passwordHistories?: pulumi.Input<pulumi.Input<inputs.ConnectionOptionsPasswordHistory>[] | undefined>;
     /**
      * Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's `name`, `username`, `nickname`, `user_metadata.name`, `user_metadata.first`, `user_metadata.last`, user's `email`, or first part of the user's `email`.
      */
-    passwordNoPersonalInfo?: pulumi.Input<inputs.ConnectionOptionsPasswordNoPersonalInfo>;
+    passwordNoPersonalInfo?: pulumi.Input<inputs.ConnectionOptionsPasswordNoPersonalInfo | undefined>;
     /**
      * Indicates level of password strength to enforce during authentication. A strong password policy will make it difficult, if not improbable, for someone to guess a password through either manual or automated means. Options include `none`, `low`, `fair`, `good`, `excellent`.
      */
-    passwordPolicy?: pulumi.Input<string>;
+    passwordPolicy?: pulumi.Input<string | undefined>;
     /**
      * Ping Federate Server URL.
      */
-    pingFederateBaseUrl?: pulumi.Input<string>;
+    pingFederateBaseUrl?: pulumi.Input<string | undefined>;
     /**
      * Enables Proof Key for Code Exchange (PKCE) functionality for OAuth2 connections.
      */
-    pkceEnabled?: pulumi.Input<boolean>;
+    pkceEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Order of attributes for precedence in identification.Valid values: email, phone*number, username. If Precedence is set, it must contain all values (email, phone*number, username) in specific order
      */
-    precedences?: pulumi.Input<pulumi.Input<string>[]>;
+    precedences?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The SAML Response Binding: how the SAML token is received by Auth0 from the IdP.
      */
-    protocolBinding?: pulumi.Input<string>;
+    protocolBinding?: pulumi.Input<string | undefined>;
     /**
      * Defines the custom `smsGateway` provider.
      */
-    provider?: pulumi.Input<string>;
+    provider?: pulumi.Input<string | undefined>;
     /**
      * Allows configuration if connections*realm*fallback flag is enabled for the tenant
      */
-    realmFallback?: pulumi.Input<boolean>;
+    realmFallback?: pulumi.Input<boolean | undefined>;
     /**
      * Template that formats the SAML request.
      */
-    requestTemplate?: pulumi.Input<string>;
+    requestTemplate?: pulumi.Input<string | undefined>;
     /**
      * URL used to obtain an unauthorized request token.
      */
-    requestTokenUrl?: pulumi.Input<string>;
+    requestTokenUrl?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the user is required to provide a username in addition to an email address.
      */
-    requiresUsername?: pulumi.Input<boolean>;
+    requiresUsername?: pulumi.Input<boolean | undefined>;
     /**
      * Permissions to grant to the connection. Within the Auth0 dashboard these appear under the "Attributes" and "Extended Attributes" sections. Some examples: `basicProfile`, `extProfile`, `extNestedGroups`, etc.
      */
-    scopes?: pulumi.Input<pulumi.Input<string>[]>;
+    scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A map of scripts used for an OAuth connection. Only accepts a `fetchUserProfile` script.
      */
-    scripts?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    scripts?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * When true and `type` is 'back_channel', includes a cryptographic nonce in authorization requests to prevent replay attacks. The identity provider must include this nonce in the ID token for validation.
      */
-    sendBackChannelNonce?: pulumi.Input<boolean>;
+    sendBackChannelNonce?: pulumi.Input<boolean | undefined>;
     /**
      * Session Key for storing the request token.
      */
-    sessionKey?: pulumi.Input<string>;
+    sessionKey?: pulumi.Input<string | undefined>;
     /**
      * Determines whether to sync user profile attributes (`name`, `givenName`, `familyName`, `nickname`, `picture`) at each login or only on the first login. Options include: `onEachLogin`, `onFirstLogin`, `neverOnLogin`. Default value: `onEachLogin`.
      */
-    setUserRootAttributes?: pulumi.Input<string>;
+    setUserRootAttributes?: pulumi.Input<string | undefined>;
     /**
      * Choose how Auth0 sets the emailVerified field in the user profile.
      */
-    shouldTrustEmailVerifiedConnection?: pulumi.Input<string>;
+    shouldTrustEmailVerifiedConnection?: pulumi.Input<string | undefined>;
     /**
      * SAML single login URL for the connection.
      */
-    signInEndpoint?: pulumi.Input<string>;
+    signInEndpoint?: pulumi.Input<string | undefined>;
     /**
      * SAML single logout URL for the connection.
      */
-    signOutEndpoint?: pulumi.Input<string>;
+    signOutEndpoint?: pulumi.Input<string | undefined>;
     /**
      * When enabled, the SAML authentication request will be signed.
      */
-    signSamlRequest?: pulumi.Input<boolean>;
+    signSamlRequest?: pulumi.Input<boolean | undefined>;
     /**
      * Sign Request Algorithm.
      */
-    signatureAlgorithm?: pulumi.Input<string>;
+    signatureAlgorithm?: pulumi.Input<string | undefined>;
     /**
      * Signature method used to sign the request
      */
-    signatureMethod?: pulumi.Input<string>;
+    signatureMethod?: pulumi.Input<string | undefined>;
     /**
      * X.509 signing certificate (encoded in PEM or CER) you retrieved from the IdP, Base64-encoded.
      */
-    signingCert?: pulumi.Input<string>;
+    signingCert?: pulumi.Input<string | undefined>;
     /**
      * The key used to sign requests in the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
      */
-    signingKey?: pulumi.Input<inputs.ConnectionOptionsSigningKey>;
+    signingKey?: pulumi.Input<inputs.ConnectionOptionsSigningKey | undefined>;
     /**
      * Version 1 is deprecated, use version 2.
      */
-    strategyVersion?: pulumi.Input<number>;
+    strategyVersion?: pulumi.Input<number | undefined>;
     /**
      * Subject line of the email.
      */
-    subject?: pulumi.Input<string>;
+    subject?: pulumi.Input<string | undefined>;
     /**
      * Syntax of the template body.
      */
-    syntax?: pulumi.Input<string>;
+    syntax?: pulumi.Input<string | undefined>;
     /**
      * Apple Team ID.
      */
-    teamId?: pulumi.Input<string>;
+    teamId?: pulumi.Input<string | undefined>;
     /**
      * Body of the template.
      */
-    template?: pulumi.Input<string>;
+    template?: pulumi.Input<string | undefined>;
     /**
      * Tenant domain name.
      */
-    tenantDomain?: pulumi.Input<string>;
+    tenantDomain?: pulumi.Input<string | undefined>;
     /**
      * Token endpoint.
      */
-    tokenEndpoint?: pulumi.Input<string>;
+    tokenEndpoint?: pulumi.Input<string | undefined>;
     /**
      * Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
      */
-    tokenEndpointAuthMethod?: pulumi.Input<string>;
+    tokenEndpointAuthMethod?: pulumi.Input<string | undefined>;
     /**
      * Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
      */
-    tokenEndpointAuthSigningAlg?: pulumi.Input<string>;
+    tokenEndpointAuthSigningAlg?: pulumi.Input<string | undefined>;
     /**
      * Configuration options for one-time passwords.
      */
-    totp?: pulumi.Input<inputs.ConnectionOptionsTotp>;
+    totp?: pulumi.Input<inputs.ConnectionOptionsTotp | undefined>;
     /**
      * SID for your Twilio account.
      */
-    twilioSid?: pulumi.Input<string>;
+    twilioSid?: pulumi.Input<string | undefined>;
     /**
      * AuthToken for your Twilio account.
      */
-    twilioToken?: pulumi.Input<string>;
+    twilioToken?: pulumi.Input<string | undefined>;
     /**
      * Value can be `backChannel` or `frontChannel`. Front Channel will use OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel will use `response_type=code`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * You can pass provider-specific parameters to an identity provider during authentication. The values can either be static per connection or dynamic per user.
      */
-    upstreamParams?: pulumi.Input<string>;
+    upstreamParams?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether to use cert auth or not.
      */
-    useCertAuth?: pulumi.Input<boolean>;
+    useCertAuth?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether to use Kerberos or not.
      */
-    useKerberos?: pulumi.Input<boolean>;
+    useKerberos?: pulumi.Input<boolean | undefined>;
     /**
      * Determines the `scopes` format: `true` makes it a space-separated string (per OAuth2 specification); `false` makes it an array.
      */
-    useOauthSpecScope?: pulumi.Input<boolean>;
+    useOauthSpecScope?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to use WS-Fed.
      */
-    useWsfed?: pulumi.Input<boolean>;
+    useWsfed?: pulumi.Input<boolean | undefined>;
     /**
      * URL used to obtain user authorization.
      */
-    userAuthorizationUrl?: pulumi.Input<string>;
+    userAuthorizationUrl?: pulumi.Input<string | undefined>;
     /**
      * Attribute in the token that will be mapped to the userId property in Auth0.
      */
-    userIdAttribute?: pulumi.Input<string>;
+    userIdAttribute?: pulumi.Input<string | undefined>;
     /**
      * User info endpoint.
      */
-    userinfoEndpoint?: pulumi.Input<string>;
+    userinfoEndpoint?: pulumi.Input<string | undefined>;
     /**
      * Validation of the minimum and maximum values allowed for a user to have as username.
      */
-    validation?: pulumi.Input<inputs.ConnectionOptionsValidation>;
+    validation?: pulumi.Input<inputs.ConnectionOptionsValidation | undefined>;
     /**
      * Indicates whether to use the common endpoint rather than the default endpoint. Typically enabled if you're using this for a multi-tenant application in Azure AD.
      */
-    waadCommonEndpoint?: pulumi.Input<boolean>;
+    waadCommonEndpoint?: pulumi.Input<boolean | undefined>;
     /**
      * Protocol to use.
      */
-    waadProtocol?: pulumi.Input<string>;
+    waadProtocol?: pulumi.Input<string | undefined>;
 }
 
 export interface ConnectionOptionsAttribute {
     /**
      * Connection Options for Email Attribute
      */
-    emails?: pulumi.Input<pulumi.Input<inputs.ConnectionOptionsAttributeEmail>[]>;
+    emails?: pulumi.Input<pulumi.Input<inputs.ConnectionOptionsAttributeEmail>[] | undefined>;
     /**
      * Connection Options for Phone Number Attribute
      */
-    phoneNumbers?: pulumi.Input<pulumi.Input<inputs.ConnectionOptionsAttributePhoneNumber>[]>;
+    phoneNumbers?: pulumi.Input<pulumi.Input<inputs.ConnectionOptionsAttributePhoneNumber>[] | undefined>;
     /**
      * Connection Options for User Name Attribute
      */
-    usernames?: pulumi.Input<pulumi.Input<inputs.ConnectionOptionsAttributeUsername>[]>;
+    usernames?: pulumi.Input<pulumi.Input<inputs.ConnectionOptionsAttributeUsername>[] | undefined>;
 }
 
 export interface ConnectionOptionsAttributeEmail {
     /**
      * Connection Options Email Attribute Identifier
      */
-    identifiers?: pulumi.Input<pulumi.Input<inputs.ConnectionOptionsAttributeEmailIdentifier>[]>;
+    identifiers?: pulumi.Input<pulumi.Input<inputs.ConnectionOptionsAttributeEmailIdentifier>[] | undefined>;
     /**
      * Defines whether Profile is required
      */
-    profileRequired?: pulumi.Input<boolean>;
+    profileRequired?: pulumi.Input<boolean | undefined>;
     /**
      * Defines signup settings for Email attribute
      */
-    signups?: pulumi.Input<pulumi.Input<inputs.ConnectionOptionsAttributeEmailSignup>[]>;
+    signups?: pulumi.Input<pulumi.Input<inputs.ConnectionOptionsAttributeEmailSignup>[] | undefined>;
     /**
      * If set to false, it allow multiple accounts with the same email address
      */
-    unique?: pulumi.Input<boolean>;
+    unique?: pulumi.Input<boolean | undefined>;
     /**
      * Defines whether whether user will receive a link or an OTP during user signup for email verification and password reset for email verification
      */
-    verificationMethod?: pulumi.Input<string>;
+    verificationMethod?: pulumi.Input<string | undefined>;
 }
 
 export interface ConnectionOptionsAttributeEmailIdentifier {
     /**
      * Defines whether email attribute is active as an identifier
      */
-    active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean | undefined>;
     /**
      * Gets and Sets the default authentication method for the email identifier type. Valid values: `password`, `emailOtp`
      */
-    defaultMethod?: pulumi.Input<string>;
+    defaultMethod?: pulumi.Input<string | undefined>;
 }
 
 export interface ConnectionOptionsAttributeEmailSignup {
     /**
      * Defines signup status for Email Attribute
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Defines settings for Verification under Email attribute
      */
-    verifications?: pulumi.Input<pulumi.Input<inputs.ConnectionOptionsAttributeEmailSignupVerification>[]>;
+    verifications?: pulumi.Input<pulumi.Input<inputs.ConnectionOptionsAttributeEmailSignupVerification>[] | undefined>;
 }
 
 export interface ConnectionOptionsAttributeEmailSignupVerification {
     /**
      * Defines verification settings for signup attribute
      */
-    active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean | undefined>;
 }
 
 export interface ConnectionOptionsAttributeMap {
     /**
      * This property is an object containing mapping information that allows Auth0 to interpret incoming claims from the IdP. Mapping information must be provided as key/value pairs.
      */
-    attributes?: pulumi.Input<string>;
+    attributes?: pulumi.Input<string | undefined>;
     /**
      * Method used to map incoming claims. Possible values: `useMap` (Okta or OIDC), `bindAll` (OIDC) or `basicProfile` (Okta).
      */
@@ -2347,169 +2347,169 @@ export interface ConnectionOptionsAttributeMap {
     /**
      * This property defines the scopes that Auth0 sends to the IdP’s UserInfo endpoint when requested.
      */
-    userinfoScope?: pulumi.Input<string>;
+    userinfoScope?: pulumi.Input<string | undefined>;
 }
 
 export interface ConnectionOptionsAttributePhoneNumber {
     /**
      * Connection Options Phone Number Attribute Identifier
      */
-    identifiers?: pulumi.Input<pulumi.Input<inputs.ConnectionOptionsAttributePhoneNumberIdentifier>[]>;
+    identifiers?: pulumi.Input<pulumi.Input<inputs.ConnectionOptionsAttributePhoneNumberIdentifier>[] | undefined>;
     /**
      * Defines whether Profile is required
      */
-    profileRequired?: pulumi.Input<boolean>;
+    profileRequired?: pulumi.Input<boolean | undefined>;
     /**
      * Defines signup settings for Phone Number attribute
      */
-    signups?: pulumi.Input<pulumi.Input<inputs.ConnectionOptionsAttributePhoneNumberSignup>[]>;
+    signups?: pulumi.Input<pulumi.Input<inputs.ConnectionOptionsAttributePhoneNumberSignup>[] | undefined>;
 }
 
 export interface ConnectionOptionsAttributePhoneNumberIdentifier {
     /**
      * Defines whether Phone Number attribute is active as an identifier
      */
-    active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean | undefined>;
     /**
      * Gets and Sets the default authentication method for the phoneNumber identifier type. Valid values: `password`, `phoneOtp`
      */
-    defaultMethod?: pulumi.Input<string>;
+    defaultMethod?: pulumi.Input<string | undefined>;
 }
 
 export interface ConnectionOptionsAttributePhoneNumberSignup {
     /**
      * Defines status of signup for Phone Number attribute
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Defines verification settings for Phone Number attribute
      */
-    verifications?: pulumi.Input<pulumi.Input<inputs.ConnectionOptionsAttributePhoneNumberSignupVerification>[]>;
+    verifications?: pulumi.Input<pulumi.Input<inputs.ConnectionOptionsAttributePhoneNumberSignupVerification>[] | undefined>;
 }
 
 export interface ConnectionOptionsAttributePhoneNumberSignupVerification {
     /**
      * Defines verification settings for Phone Number attribute
      */
-    active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean | undefined>;
 }
 
 export interface ConnectionOptionsAttributeUsername {
     /**
      * Connection options for User Name Attribute Identifier
      */
-    identifiers?: pulumi.Input<pulumi.Input<inputs.ConnectionOptionsAttributeUsernameIdentifier>[]>;
+    identifiers?: pulumi.Input<pulumi.Input<inputs.ConnectionOptionsAttributeUsernameIdentifier>[] | undefined>;
     /**
      * Defines whether Profile is required
      */
-    profileRequired?: pulumi.Input<boolean>;
+    profileRequired?: pulumi.Input<boolean | undefined>;
     /**
      * Defines signup settings for User Name attribute
      */
-    signups?: pulumi.Input<pulumi.Input<inputs.ConnectionOptionsAttributeUsernameSignup>[]>;
+    signups?: pulumi.Input<pulumi.Input<inputs.ConnectionOptionsAttributeUsernameSignup>[] | undefined>;
     /**
      * Defines validation settings for User Name attribute
      */
-    validations?: pulumi.Input<pulumi.Input<inputs.ConnectionOptionsAttributeUsernameValidation>[]>;
+    validations?: pulumi.Input<pulumi.Input<inputs.ConnectionOptionsAttributeUsernameValidation>[] | undefined>;
 }
 
 export interface ConnectionOptionsAttributeUsernameIdentifier {
     /**
      * Defines whether UserName attribute is active as an identifier
      */
-    active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean | undefined>;
     /**
      * Gets and Sets the default authentication method for the username identifier type. Valid value: `password`
      */
-    defaultMethod?: pulumi.Input<string>;
+    defaultMethod?: pulumi.Input<string | undefined>;
 }
 
 export interface ConnectionOptionsAttributeUsernameSignup {
     /**
      * Defines whether User Name attribute is active as an identifier
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 export interface ConnectionOptionsAttributeUsernameValidation {
     /**
      * Defines allowed types for for UserName attribute
      */
-    allowedTypes?: pulumi.Input<pulumi.Input<inputs.ConnectionOptionsAttributeUsernameValidationAllowedType>[]>;
+    allowedTypes?: pulumi.Input<pulumi.Input<inputs.ConnectionOptionsAttributeUsernameValidationAllowedType>[] | undefined>;
     /**
      * Defines Max Length for User Name attribute
      */
-    maxLength?: pulumi.Input<number>;
+    maxLength?: pulumi.Input<number | undefined>;
     /**
      * Defines Min Length for User Name attribute
      */
-    minLength?: pulumi.Input<number>;
+    minLength?: pulumi.Input<number | undefined>;
 }
 
 export interface ConnectionOptionsAttributeUsernameValidationAllowedType {
     /**
      * One of the allowed types for UserName signup attribute
      */
-    email?: pulumi.Input<boolean>;
+    email?: pulumi.Input<boolean | undefined>;
     /**
      * One of the allowed types for UserName signup attribute
      */
-    phoneNumber?: pulumi.Input<boolean>;
+    phoneNumber?: pulumi.Input<boolean | undefined>;
 }
 
 export interface ConnectionOptionsAuthenticationMethod {
     /**
      * Configures Email OTP authentication
      */
-    emailOtp?: pulumi.Input<inputs.ConnectionOptionsAuthenticationMethodEmailOtp>;
+    emailOtp?: pulumi.Input<inputs.ConnectionOptionsAuthenticationMethodEmailOtp | undefined>;
     /**
      * Configures passkey authentication
      */
-    passkey?: pulumi.Input<inputs.ConnectionOptionsAuthenticationMethodPasskey>;
+    passkey?: pulumi.Input<inputs.ConnectionOptionsAuthenticationMethodPasskey | undefined>;
     /**
      * Configures password authentication
      */
-    password?: pulumi.Input<inputs.ConnectionOptionsAuthenticationMethodPassword>;
+    password?: pulumi.Input<inputs.ConnectionOptionsAuthenticationMethodPassword | undefined>;
     /**
      * Configures Phone OTP authentication
      */
-    phoneOtp?: pulumi.Input<inputs.ConnectionOptionsAuthenticationMethodPhoneOtp>;
+    phoneOtp?: pulumi.Input<inputs.ConnectionOptionsAuthenticationMethodPhoneOtp | undefined>;
 }
 
 export interface ConnectionOptionsAuthenticationMethodEmailOtp {
     /**
      * Enables Email OTP authentication
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 export interface ConnectionOptionsAuthenticationMethodPasskey {
     /**
      * Enables passkey authentication
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 export interface ConnectionOptionsAuthenticationMethodPassword {
     /**
      * Specifies whether password is required or optional when creating users via API. Possible values: "required", "optional". Defaults to "required".
      */
-    apiBehavior?: pulumi.Input<string>;
+    apiBehavior?: pulumi.Input<string | undefined>;
     /**
      * Enables password authentication
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether password is allowed or blocked during signup flows. Possible values: "allow", "block". Defaults to "allow".
      */
-    signupBehavior?: pulumi.Input<string>;
+    signupBehavior?: pulumi.Input<string | undefined>;
 }
 
 export interface ConnectionOptionsAuthenticationMethodPhoneOtp {
     /**
      * Enables Phone OTP authentication
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 export interface ConnectionOptionsConnectionSettings {
@@ -2540,83 +2540,83 @@ export interface ConnectionOptionsGatewayAuthentication {
     /**
      * Audience claim for the HS256 token sent to `gatewayUrl`.
      */
-    audience?: pulumi.Input<string>;
+    audience?: pulumi.Input<string | undefined>;
     /**
      * Authentication method (default is `bearer` token).
      */
-    method?: pulumi.Input<string>;
+    method?: pulumi.Input<string | undefined>;
     /**
      * Secret used to sign the HS256 token sent to `gatewayUrl`.
      */
-    secret?: pulumi.Input<string>;
+    secret?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether or not the secret is Base64-encoded.
      */
-    secretBase64Encoded?: pulumi.Input<boolean>;
+    secretBase64Encoded?: pulumi.Input<boolean | undefined>;
     /**
      * Subject claim for the HS256 token sent to `gatewayUrl`.
      */
-    subject?: pulumi.Input<string>;
+    subject?: pulumi.Input<string | undefined>;
 }
 
 export interface ConnectionOptionsIdpInitiated {
-    clientAuthorizeQuery?: pulumi.Input<string>;
-    clientId?: pulumi.Input<string>;
-    clientProtocol?: pulumi.Input<string>;
-    enabled?: pulumi.Input<boolean>;
+    clientAuthorizeQuery?: pulumi.Input<string | undefined>;
+    clientId?: pulumi.Input<string | undefined>;
+    clientProtocol?: pulumi.Input<string | undefined>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 export interface ConnectionOptionsMfa {
     /**
      * Indicates whether multifactor authentication is enabled for this connection.
      */
-    active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether multifactor authentication enrollment settings will be returned.
      */
-    returnEnrollSettings?: pulumi.Input<boolean>;
+    returnEnrollSettings?: pulumi.Input<boolean | undefined>;
 }
 
 export interface ConnectionOptionsPasskeyOptions {
     /**
      * Controls the UI used to challenge the user for their passkey
      */
-    challengeUi?: pulumi.Input<string>;
+    challengeUi?: pulumi.Input<string | undefined>;
     /**
      * Enables or disables enrollment prompt for local passkey when user authenticates using a cross-device passkey for the connection
      */
-    localEnrollmentEnabled?: pulumi.Input<boolean>;
+    localEnrollmentEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Enables or disables progressive enrollment of passkeys for the connection
      */
-    progressiveEnrollmentEnabled?: pulumi.Input<boolean>;
+    progressiveEnrollmentEnabled?: pulumi.Input<boolean | undefined>;
 }
 
 export interface ConnectionOptionsPasswordComplexityOptions {
     /**
      * Minimum number of characters allowed in passwords.
      */
-    minLength?: pulumi.Input<number>;
+    minLength?: pulumi.Input<number | undefined>;
 }
 
 export interface ConnectionOptionsPasswordDictionary {
     /**
      * Customized contents of the password dictionary. By default, the password dictionary contains a list of the [10,000 most common passwords](https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10k-most-common.txt); your customized content is used in addition to the default password dictionary. Matching is not case-sensitive.
      */
-    dictionaries?: pulumi.Input<pulumi.Input<string>[]>;
+    dictionaries?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Indicates whether the password dictionary check is enabled for this connection.
      */
-    enable?: pulumi.Input<boolean>;
+    enable?: pulumi.Input<boolean | undefined>;
 }
 
 export interface ConnectionOptionsPasswordHistory {
-    enable?: pulumi.Input<boolean>;
-    size?: pulumi.Input<number>;
+    enable?: pulumi.Input<boolean | undefined>;
+    size?: pulumi.Input<number | undefined>;
 }
 
 export interface ConnectionOptionsPasswordNoPersonalInfo {
-    enable?: pulumi.Input<boolean>;
+    enable?: pulumi.Input<boolean | undefined>;
 }
 
 export interface ConnectionOptionsSigningKey {
@@ -2628,23 +2628,23 @@ export interface ConnectionOptionsTotp {
     /**
      * Length of the one-time password.
      */
-    length?: pulumi.Input<number>;
+    length?: pulumi.Input<number | undefined>;
     /**
      * Seconds between allowed generation of new passwords.
      */
-    timeStep?: pulumi.Input<number>;
+    timeStep?: pulumi.Input<number | undefined>;
 }
 
 export interface ConnectionOptionsValidation {
     /**
      * Specifies the `min` and `max` values of username length.
      */
-    username?: pulumi.Input<inputs.ConnectionOptionsValidationUsername>;
+    username?: pulumi.Input<inputs.ConnectionOptionsValidationUsername | undefined>;
 }
 
 export interface ConnectionOptionsValidationUsername {
-    max?: pulumi.Input<number>;
-    min?: pulumi.Input<number>;
+    max?: pulumi.Input<number | undefined>;
+    min?: pulumi.Input<number | undefined>;
 }
 
 export interface ConnectionProfileConnectionConfig {
@@ -2654,57 +2654,57 @@ export interface ConnectionProfileOrganization {
     /**
      * Whether to assign membership on login.
      */
-    assignMembershipOnLogin?: pulumi.Input<string>;
+    assignMembershipOnLogin?: pulumi.Input<string | undefined>;
     /**
      * Whether to show organization as a button.
      */
-    showAsButton?: pulumi.Input<string>;
+    showAsButton?: pulumi.Input<string | undefined>;
 }
 
 export interface ConnectionProfileStrategyOverrides {
     /**
      * Strategy override configuration.
      */
-    ad?: pulumi.Input<inputs.ConnectionProfileStrategyOverridesAd>;
+    ad?: pulumi.Input<inputs.ConnectionProfileStrategyOverridesAd | undefined>;
     /**
      * Strategy override configuration.
      */
-    adfs?: pulumi.Input<inputs.ConnectionProfileStrategyOverridesAdfs>;
+    adfs?: pulumi.Input<inputs.ConnectionProfileStrategyOverridesAdfs | undefined>;
     /**
      * Strategy override configuration.
      */
-    googleApps?: pulumi.Input<inputs.ConnectionProfileStrategyOverridesGoogleApps>;
+    googleApps?: pulumi.Input<inputs.ConnectionProfileStrategyOverridesGoogleApps | undefined>;
     /**
      * Strategy override configuration.
      */
-    oidc?: pulumi.Input<inputs.ConnectionProfileStrategyOverridesOidc>;
+    oidc?: pulumi.Input<inputs.ConnectionProfileStrategyOverridesOidc | undefined>;
     /**
      * Strategy override configuration.
      */
-    okta?: pulumi.Input<inputs.ConnectionProfileStrategyOverridesOkta>;
+    okta?: pulumi.Input<inputs.ConnectionProfileStrategyOverridesOkta | undefined>;
     /**
      * Strategy override configuration.
      */
-    pingfederate?: pulumi.Input<inputs.ConnectionProfileStrategyOverridesPingfederate>;
+    pingfederate?: pulumi.Input<inputs.ConnectionProfileStrategyOverridesPingfederate | undefined>;
     /**
      * Strategy override configuration.
      */
-    samlp?: pulumi.Input<inputs.ConnectionProfileStrategyOverridesSamlp>;
+    samlp?: pulumi.Input<inputs.ConnectionProfileStrategyOverridesSamlp | undefined>;
     /**
      * Strategy override configuration.
      */
-    waad?: pulumi.Input<inputs.ConnectionProfileStrategyOverridesWaad>;
+    waad?: pulumi.Input<inputs.ConnectionProfileStrategyOverridesWaad | undefined>;
 }
 
 export interface ConnectionProfileStrategyOverridesAd {
     /**
      * Connection config for the strategy override.
      */
-    connectionConfig?: pulumi.Input<inputs.ConnectionProfileStrategyOverridesAdConnectionConfig>;
+    connectionConfig?: pulumi.Input<inputs.ConnectionProfileStrategyOverridesAdConnectionConfig | undefined>;
     /**
      * Enabled features for the strategy override.
      */
-    enabledFeatures?: pulumi.Input<pulumi.Input<string>[]>;
+    enabledFeatures?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface ConnectionProfileStrategyOverridesAdConnectionConfig {
@@ -2714,11 +2714,11 @@ export interface ConnectionProfileStrategyOverridesAdfs {
     /**
      * Connection config for the strategy override.
      */
-    connectionConfig?: pulumi.Input<inputs.ConnectionProfileStrategyOverridesAdfsConnectionConfig>;
+    connectionConfig?: pulumi.Input<inputs.ConnectionProfileStrategyOverridesAdfsConnectionConfig | undefined>;
     /**
      * Enabled features for the strategy override.
      */
-    enabledFeatures?: pulumi.Input<pulumi.Input<string>[]>;
+    enabledFeatures?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface ConnectionProfileStrategyOverridesAdfsConnectionConfig {
@@ -2728,11 +2728,11 @@ export interface ConnectionProfileStrategyOverridesGoogleApps {
     /**
      * Connection config for the strategy override.
      */
-    connectionConfig?: pulumi.Input<inputs.ConnectionProfileStrategyOverridesGoogleAppsConnectionConfig>;
+    connectionConfig?: pulumi.Input<inputs.ConnectionProfileStrategyOverridesGoogleAppsConnectionConfig | undefined>;
     /**
      * Enabled features for the strategy override.
      */
-    enabledFeatures?: pulumi.Input<pulumi.Input<string>[]>;
+    enabledFeatures?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface ConnectionProfileStrategyOverridesGoogleAppsConnectionConfig {
@@ -2742,11 +2742,11 @@ export interface ConnectionProfileStrategyOverridesOidc {
     /**
      * Connection config for the strategy override.
      */
-    connectionConfig?: pulumi.Input<inputs.ConnectionProfileStrategyOverridesOidcConnectionConfig>;
+    connectionConfig?: pulumi.Input<inputs.ConnectionProfileStrategyOverridesOidcConnectionConfig | undefined>;
     /**
      * Enabled features for the strategy override.
      */
-    enabledFeatures?: pulumi.Input<pulumi.Input<string>[]>;
+    enabledFeatures?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface ConnectionProfileStrategyOverridesOidcConnectionConfig {
@@ -2756,11 +2756,11 @@ export interface ConnectionProfileStrategyOverridesOkta {
     /**
      * Connection config for the strategy override.
      */
-    connectionConfig?: pulumi.Input<inputs.ConnectionProfileStrategyOverridesOktaConnectionConfig>;
+    connectionConfig?: pulumi.Input<inputs.ConnectionProfileStrategyOverridesOktaConnectionConfig | undefined>;
     /**
      * Enabled features for the strategy override.
      */
-    enabledFeatures?: pulumi.Input<pulumi.Input<string>[]>;
+    enabledFeatures?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface ConnectionProfileStrategyOverridesOktaConnectionConfig {
@@ -2770,11 +2770,11 @@ export interface ConnectionProfileStrategyOverridesPingfederate {
     /**
      * Connection config for the strategy override.
      */
-    connectionConfig?: pulumi.Input<inputs.ConnectionProfileStrategyOverridesPingfederateConnectionConfig>;
+    connectionConfig?: pulumi.Input<inputs.ConnectionProfileStrategyOverridesPingfederateConnectionConfig | undefined>;
     /**
      * Enabled features for the strategy override.
      */
-    enabledFeatures?: pulumi.Input<pulumi.Input<string>[]>;
+    enabledFeatures?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface ConnectionProfileStrategyOverridesPingfederateConnectionConfig {
@@ -2784,11 +2784,11 @@ export interface ConnectionProfileStrategyOverridesSamlp {
     /**
      * Connection config for the strategy override.
      */
-    connectionConfig?: pulumi.Input<inputs.ConnectionProfileStrategyOverridesSamlpConnectionConfig>;
+    connectionConfig?: pulumi.Input<inputs.ConnectionProfileStrategyOverridesSamlpConnectionConfig | undefined>;
     /**
      * Enabled features for the strategy override.
      */
-    enabledFeatures?: pulumi.Input<pulumi.Input<string>[]>;
+    enabledFeatures?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface ConnectionProfileStrategyOverridesSamlpConnectionConfig {
@@ -2798,11 +2798,11 @@ export interface ConnectionProfileStrategyOverridesWaad {
     /**
      * Connection config for the strategy override.
      */
-    connectionConfig?: pulumi.Input<inputs.ConnectionProfileStrategyOverridesWaadConnectionConfig>;
+    connectionConfig?: pulumi.Input<inputs.ConnectionProfileStrategyOverridesWaadConnectionConfig | undefined>;
     /**
      * Enabled features for the strategy override.
      */
-    enabledFeatures?: pulumi.Input<pulumi.Input<string>[]>;
+    enabledFeatures?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface ConnectionProfileStrategyOverridesWaadConnectionConfig {
@@ -2823,197 +2823,197 @@ export interface CustomDomainCertificate {
     /**
      * Name of the certificate authority that issued the certificate.
      */
-    certificateAuthority?: pulumi.Input<string>;
+    certificateAuthority?: pulumi.Input<string | undefined>;
     /**
      * Contains the error message if the provisioning process fails.
      */
-    errorMsg?: pulumi.Input<string>;
+    errorMsg?: pulumi.Input<string | undefined>;
     /**
      * Specifies the date by which the certificate should be renewed.
      */
-    renewsBefore?: pulumi.Input<string>;
+    renewsBefore?: pulumi.Input<string | undefined>;
     /**
      * Indicates the current state of the certificate provisioning process.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 export interface CustomDomainVerification {
     /**
      * Contains error message, if any, from the last DNS verification check.
      */
-    errorMsg?: pulumi.Input<string>;
+    errorMsg?: pulumi.Input<string | undefined>;
     /**
      * Indicates the last time the domain was successfully verified.
      */
-    lastVerifiedAt?: pulumi.Input<string>;
+    lastVerifiedAt?: pulumi.Input<string | undefined>;
     /**
      * Defines the list of domain verification methods used.
      */
-    methods?: pulumi.Input<any[]>;
+    methods?: pulumi.Input<any[] | undefined>;
     /**
      * Represents the current status of the domain verification process.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 export interface EmailProviderCredentials {
     /**
      * AWS Access Key ID. Used only for AWS.
      */
-    accessKeyId?: pulumi.Input<string>;
+    accessKeyId?: pulumi.Input<string | undefined>;
     /**
      * API Key for your email service. Will always be encrypted in our database.
      */
-    apiKey?: pulumi.Input<string>;
+    apiKey?: pulumi.Input<string | undefined>;
     /**
      * Azure Communication Services Connection String.
      */
-    azureCsConnectionString?: pulumi.Input<string>;
+    azureCsConnectionString?: pulumi.Input<string | undefined>;
     /**
      * Domain name.
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
     /**
      * Microsoft 365 Client ID.
      */
-    ms365ClientId?: pulumi.Input<string>;
+    ms365ClientId?: pulumi.Input<string | undefined>;
     /**
      * Microsoft 365 Client Secret.
      */
-    ms365ClientSecret?: pulumi.Input<string>;
+    ms365ClientSecret?: pulumi.Input<string | undefined>;
     /**
      * Microsoft 365 Tenant ID.
      */
-    ms365TenantId?: pulumi.Input<string>;
+    ms365TenantId?: pulumi.Input<string | undefined>;
     /**
      * Default region. Used only for AWS, Mailgun, and SparkPost.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * AWS Secret Key. Will always be encrypted in our database. Used only for AWS.
      */
-    secretAccessKey?: pulumi.Input<string>;
+    secretAccessKey?: pulumi.Input<string | undefined>;
     /**
      * Hostname or IP address of your SMTP server. Used only for SMTP.
      */
-    smtpHost?: pulumi.Input<string>;
+    smtpHost?: pulumi.Input<string | undefined>;
     /**
      * SMTP password. Used only for SMTP.
      */
-    smtpPass?: pulumi.Input<string>;
+    smtpPass?: pulumi.Input<string | undefined>;
     /**
      * Port used by your SMTP server. Please avoid using port 25 if possible because many providers have limitations on this port. Used only for SMTP.
      */
-    smtpPort?: pulumi.Input<number>;
+    smtpPort?: pulumi.Input<number | undefined>;
     /**
      * SMTP username. Used only for SMTP.
      */
-    smtpUser?: pulumi.Input<string>;
+    smtpUser?: pulumi.Input<string | undefined>;
 }
 
 export interface EmailProviderSettings {
     /**
      * Headers settings for the `smtp` email provider.
      */
-    headers?: pulumi.Input<inputs.EmailProviderSettingsHeaders>;
+    headers?: pulumi.Input<inputs.EmailProviderSettingsHeaders | undefined>;
     /**
      * Message settings for the `mandrill` or `ses` email provider.
      */
-    message?: pulumi.Input<inputs.EmailProviderSettingsMessage>;
+    message?: pulumi.Input<inputs.EmailProviderSettingsMessage | undefined>;
 }
 
 export interface EmailProviderSettingsHeaders {
     /**
      * Disable or enable the default View Content Link for sensitive emails.
      */
-    xMcViewContentLink?: pulumi.Input<string>;
+    xMcViewContentLink?: pulumi.Input<string | undefined>;
     /**
      * SES Configuration set to include when sending emails.
      */
-    xSesConfigurationSet?: pulumi.Input<string>;
+    xSesConfigurationSet?: pulumi.Input<string | undefined>;
 }
 
 export interface EmailProviderSettingsMessage {
     /**
      * Setting for the `ses` email provider. The name of the configuration set to apply to the sent emails.
      */
-    configurationSetName?: pulumi.Input<string>;
+    configurationSetName?: pulumi.Input<string | undefined>;
     /**
      * Setting for the `mandrill` email provider. Set to `true` to see the content of individual emails sent to users.
      */
-    viewContentLink?: pulumi.Input<boolean>;
+    viewContentLink?: pulumi.Input<boolean | undefined>;
 }
 
 export interface EncryptionKeyManagerCustomerProvidedRootKey {
     /**
      * The ISO 8601 formatted date the customer provided root key was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The key ID of the customer provided root key.
      */
-    keyId?: pulumi.Input<string>;
+    keyId?: pulumi.Input<string | undefined>;
     /**
      * The key ID of the parent wrapping key.
      */
-    parentKeyId?: pulumi.Input<string>;
+    parentKeyId?: pulumi.Input<string | undefined>;
     /**
      * The public wrapping key in PEM format.
      */
-    publicWrappingKey?: pulumi.Input<string>;
+    publicWrappingKey?: pulumi.Input<string | undefined>;
     /**
      * The state of the encryption key. One of `pre-activation`, `active`, `deactivated`, or `destroyed`.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The type of the customer provided root key. Should be `customer-provided-root-key`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The ISO 8601 formatted date the customer provided root key was updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * The base64-encoded customer provided root key, wrapped using the `publicWrappingKey`. This can be removed after the wrapped key has been applied.
      */
-    wrappedKey?: pulumi.Input<string>;
+    wrappedKey?: pulumi.Input<string | undefined>;
     /**
      * The algorithm that should be used to wrap the customer provided root key. Should be `CKM_RSA_AES_KEY_WRAP`.
      */
-    wrappingAlgorithm?: pulumi.Input<string>;
+    wrappingAlgorithm?: pulumi.Input<string | undefined>;
 }
 
 export interface EncryptionKeyManagerEncryptionKey {
     /**
      * The ISO 8601 formatted date the encryption key was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The key ID of the encryption key.
      */
-    keyId?: pulumi.Input<string>;
+    keyId?: pulumi.Input<string | undefined>;
     /**
      * The key ID of the parent wrapping key.
      */
-    parentKeyId?: pulumi.Input<string>;
+    parentKeyId?: pulumi.Input<string | undefined>;
     /**
      * The state of the encryption key. One of `pre-activation`, `active`, `deactivated`, or `destroyed`.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The type of the encryption key. One of `customer-provided-root-key`, `environment-root-key`, or `tenant-master-key`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The ISO 8601 formatted date the encryption key was updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 export interface EventStreamEventbridgeConfiguration {
     awsAccountId: pulumi.Input<string>;
-    awsPartnerEventSource?: pulumi.Input<string>;
+    awsPartnerEventSource?: pulumi.Input<string | undefined>;
     awsRegion: pulumi.Input<string>;
 }
 
@@ -3036,40 +3036,40 @@ export interface EventStreamWebhookConfigurationWebhookAuthorization {
     /**
      * The password for `basic` authentication. Required only when `method` is set to `basic`. **Note:** For better security, consider using `passwordWo` instead to prevent storing the password in Terraform state.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * The password for `basic` authentication (write-only). This value is only available during resource creation and update, and is **not** stored in Terraform state. To change the password, update the `passwordWoVersion` attribute. Required only when `method` is set to `basic` and `password` is not provided.
      */
-    passwordWo?: pulumi.Input<string>;
+    passwordWo?: pulumi.Input<string | undefined>;
     /**
      * Version number for password changes. Update this value to trigger a password change when using `passwordWo`.
      */
-    passwordWoVersion?: pulumi.Input<number>;
+    passwordWoVersion?: pulumi.Input<number | undefined>;
     /**
      * The token used for `bearer` authentication. Required only when `method` is set to `bearer`. **Note:** For better security, consider using `tokenWo` instead to prevent storing the token in Terraform state.
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * The token used for `bearer` authentication (write-only). This value is only available during resource creation and update, and is **not** stored in Terraform state. To change the token, update the `tokenWoVersion` attribute. Required only when `method` is set to `bearer` and `token` is not provided.
      */
-    tokenWo?: pulumi.Input<string>;
+    tokenWo?: pulumi.Input<string | undefined>;
     /**
      * Version number for token changes. Update this value to trigger a token change when using `tokenWo`.
      */
-    tokenWoVersion?: pulumi.Input<number>;
+    tokenWoVersion?: pulumi.Input<number | undefined>;
     /**
      * The username for `basic` authentication. Required only when `method` is set to `basic`.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 export interface FormLanguage {
     /**
      * Default language for the form.
      */
-    default?: pulumi.Input<string>;
+    default?: pulumi.Input<string | undefined>;
     /**
      * Primary language for the form.
      */
@@ -3080,11 +3080,11 @@ export interface FormMessage {
     /**
      * Custom message for the form. (JSON encoded)
      */
-    custom?: pulumi.Input<string>;
+    custom?: pulumi.Input<string | undefined>;
     /**
      * Error message for the form. (JSON encoded)
      */
-    errors?: pulumi.Input<string>;
+    errors?: pulumi.Input<string | undefined>;
 }
 
 export interface GetConnectionScimConfigurationDefaultMapping {
@@ -3102,11 +3102,11 @@ export interface GetConnectionScimConfigurationDefaultMappingArgs {
     /**
      * The field location in the Auth0 schema.
      */
-    auth0?: pulumi.Input<string>;
+    auth0?: pulumi.Input<string | undefined>;
     /**
      * The field location in the SCIM schema.
      */
-    scim?: pulumi.Input<string>;
+    scim?: pulumi.Input<string | undefined>;
 }
 
 export interface GetConnectionScimConfigurationMapping {
@@ -3124,11 +3124,11 @@ export interface GetConnectionScimConfigurationMappingArgs {
     /**
      * The field location in the Auth0 schema.
      */
-    auth0?: pulumi.Input<string>;
+    auth0?: pulumi.Input<string | undefined>;
     /**
      * The field location in the SCIM schema.
      */
-    scim?: pulumi.Input<string>;
+    scim?: pulumi.Input<string | undefined>;
 }
 
 export interface GetPromptScreenPartialsScreenPartial {
@@ -3140,11 +3140,11 @@ export interface GetPromptScreenPartialsScreenPartial {
 }
 
 export interface GetPromptScreenPartialsScreenPartialArgs {
-    insertionPoints?: pulumi.Input<pulumi.Input<inputs.GetPromptScreenPartialsScreenPartialInsertionPointArgs>[]>;
+    insertionPoints?: pulumi.Input<pulumi.Input<inputs.GetPromptScreenPartialsScreenPartialInsertionPointArgs>[] | undefined>;
     /**
      * The name of the screen associated with the partials
      */
-    screenName?: pulumi.Input<string>;
+    screenName?: pulumi.Input<string | undefined>;
 }
 
 export interface GetPromptScreenPartialsScreenPartialInsertionPoint {
@@ -3182,31 +3182,31 @@ export interface GetPromptScreenPartialsScreenPartialInsertionPointArgs {
     /**
      * Content that goes inside the form
      */
-    formContent?: pulumi.Input<string>;
+    formContent?: pulumi.Input<string | undefined>;
     /**
      * Content that goes at the end of the form.
      */
-    formContentEnd?: pulumi.Input<string>;
+    formContentEnd?: pulumi.Input<string | undefined>;
     /**
      * Content that goes at the start of the form.
      */
-    formContentStart?: pulumi.Input<string>;
+    formContentStart?: pulumi.Input<string | undefined>;
     /**
      * Footer content for the end of the footer.
      */
-    formFooterEnd?: pulumi.Input<string>;
+    formFooterEnd?: pulumi.Input<string | undefined>;
     /**
      * Footer content for the start of the footer.
      */
-    formFooterStart?: pulumi.Input<string>;
+    formFooterStart?: pulumi.Input<string | undefined>;
     /**
      * Actions that go at the end of secondary actions.
      */
-    secondaryActionsEnd?: pulumi.Input<string>;
+    secondaryActionsEnd?: pulumi.Input<string | undefined>;
     /**
      * Actions that go at the start of secondary actions.
      */
-    secondaryActionsStart?: pulumi.Input<string>;
+    secondaryActionsStart?: pulumi.Input<string | undefined>;
 }
 
 export interface GuardianDuo {
@@ -3217,15 +3217,15 @@ export interface GuardianDuo {
     /**
      * Duo API Hostname, see the Duo documentation for more details on Duo setup.
      */
-    hostname?: pulumi.Input<string>;
+    hostname?: pulumi.Input<string | undefined>;
     /**
      * Duo client ID, see the Duo documentation for more details on Duo setup.
      */
-    integrationKey?: pulumi.Input<string>;
+    integrationKey?: pulumi.Input<string | undefined>;
     /**
      * Duo client secret, see the Duo documentation for more details on Duo setup.
      */
-    secretKey?: pulumi.Input<string>;
+    secretKey?: pulumi.Input<string | undefined>;
 }
 
 export interface GuardianPhone {
@@ -3236,61 +3236,61 @@ export interface GuardianPhone {
     /**
      * Message types to use, array of `sms` and/or `voice`. Adding both to the array should enable the user to choose.
      */
-    messageTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    messageTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Options for the various providers.
      */
-    options?: pulumi.Input<inputs.GuardianPhoneOptions>;
+    options?: pulumi.Input<inputs.GuardianPhoneOptions | undefined>;
     /**
      * Provider to use, one of `auth0`, `twilio` or `phone-message-hook`. Selecting `phone-message-hook` will require a Phone Message Action to be created before. [Learn how](https://auth0.com/docs/customize/actions/flows-and-triggers/send-phone-message-flow).
      */
-    provider?: pulumi.Input<string>;
+    provider?: pulumi.Input<string | undefined>;
 }
 
 export interface GuardianPhoneOptions {
     /**
      * AuthToken for your Twilio account.
      */
-    authToken?: pulumi.Input<string>;
+    authToken?: pulumi.Input<string | undefined>;
     /**
      * This message will be sent whenever a user enrolls a new device for the first time using MFA. Supports Liquid syntax, see [Auth0 docs](https://auth0.com/docs/customize/customize-sms-or-voice-messages).
      */
-    enrollmentMessage?: pulumi.Input<string>;
+    enrollmentMessage?: pulumi.Input<string | undefined>;
     /**
      * Phone number to use as the sender.
      */
-    from?: pulumi.Input<string>;
+    from?: pulumi.Input<string | undefined>;
     /**
      * Messaging service SID.
      */
-    messagingServiceSid?: pulumi.Input<string>;
+    messagingServiceSid?: pulumi.Input<string | undefined>;
     /**
      * SID for your Twilio account.
      */
-    sid?: pulumi.Input<string>;
+    sid?: pulumi.Input<string | undefined>;
     /**
      * This message will be sent whenever a user logs in after the enrollment. Supports Liquid syntax, see [Auth0 docs](https://auth0.com/docs/customize/customize-sms-or-voice-messages).
      */
-    verificationMessage?: pulumi.Input<string>;
+    verificationMessage?: pulumi.Input<string | undefined>;
 }
 
 export interface GuardianPush {
     /**
      * Configuration for Amazon SNS.
      */
-    amazonSns?: pulumi.Input<inputs.GuardianPushAmazonSns>;
+    amazonSns?: pulumi.Input<inputs.GuardianPushAmazonSns | undefined>;
     /**
      * Configuration for the Guardian Custom App.
      */
-    customApp?: pulumi.Input<inputs.GuardianPushCustomApp>;
+    customApp?: pulumi.Input<inputs.GuardianPushCustomApp | undefined>;
     /**
      * Configuration for the Apple Push Notification service (APNs) settings.
      */
-    directApns?: pulumi.Input<inputs.GuardianPushDirectApns>;
+    directApns?: pulumi.Input<inputs.GuardianPushDirectApns | undefined>;
     /**
      * Configuration for Firebase Cloud Messaging (FCM) settings.
      */
-    directFcm?: pulumi.Input<inputs.GuardianPushDirectFcm>;
+    directFcm?: pulumi.Input<inputs.GuardianPushDirectFcm | undefined>;
     /**
      * Indicates whether Push MFA is enabled.
      */
@@ -3298,7 +3298,7 @@ export interface GuardianPush {
     /**
      * Provider to use, one of `direct`, `guardian`, `sns`.
      */
-    provider?: pulumi.Input<string>;
+    provider?: pulumi.Input<string | undefined>;
 }
 
 export interface GuardianPushAmazonSns {
@@ -3328,15 +3328,15 @@ export interface GuardianPushCustomApp {
     /**
      * Custom Application Name.
      */
-    appName?: pulumi.Input<string>;
+    appName?: pulumi.Input<string | undefined>;
     /**
      * Apple App Store URL. Must be HTTPS or an empty string.
      */
-    appleAppLink?: pulumi.Input<string>;
+    appleAppLink?: pulumi.Input<string | undefined>;
     /**
      * Google Store URL. Must be HTTPS or an empty string.
      */
-    googleAppLink?: pulumi.Input<string>;
+    googleAppLink?: pulumi.Input<string | undefined>;
 }
 
 export interface GuardianPushDirectApns {
@@ -3347,7 +3347,7 @@ export interface GuardianPushDirectApns {
     /**
      * Indicates whether the Apple Push Notification service is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The base64 encoded certificate in P12 format.
      */
@@ -3373,11 +3373,11 @@ export interface GuardianWebauthnPlatform {
     /**
      * The Relying Party is the domain for which the WebAuthn keys will be issued, set to `true` if you are customizing the identifier.
      */
-    overrideRelyingParty?: pulumi.Input<boolean>;
+    overrideRelyingParty?: pulumi.Input<boolean | undefined>;
     /**
      * The Relying Party should be a suffix of the custom domain.
      */
-    relyingPartyIdentifier?: pulumi.Input<string>;
+    relyingPartyIdentifier?: pulumi.Input<string | undefined>;
 }
 
 export interface GuardianWebauthnRoaming {
@@ -3388,126 +3388,126 @@ export interface GuardianWebauthnRoaming {
     /**
      * The Relying Party is the domain for which the WebAuthn keys will be issued, set to `true` if you are customizing the identifier.
      */
-    overrideRelyingParty?: pulumi.Input<boolean>;
+    overrideRelyingParty?: pulumi.Input<boolean | undefined>;
     /**
      * The Relying Party should be a suffix of the custom domain.
      */
-    relyingPartyIdentifier?: pulumi.Input<string>;
+    relyingPartyIdentifier?: pulumi.Input<string | undefined>;
     /**
      * User verification, one of `discouraged`, `preferred` or `required`.
      */
-    userVerification?: pulumi.Input<string>;
+    userVerification?: pulumi.Input<string | undefined>;
 }
 
 export interface LogStreamPiiConfig {
     /**
      * The algorithm to use for PII handling. Currently, only `xxhash` is supported.
      */
-    algorithm?: pulumi.Input<string>;
+    algorithm?: pulumi.Input<string | undefined>;
     logFields: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The method to use for PII handling. Options are `hash` or `mask`.
      */
-    method?: pulumi.Input<string>;
+    method?: pulumi.Input<string | undefined>;
 }
 
 export interface LogStreamSink {
     /**
      * The AWS Account ID.
      */
-    awsAccountId?: pulumi.Input<string>;
+    awsAccountId?: pulumi.Input<string | undefined>;
     /**
      * Name of the Partner Event Source to be used with AWS. Generally generated by Auth0 and passed to AWS, so this should be an output attribute.
      */
-    awsPartnerEventSource?: pulumi.Input<string>;
+    awsPartnerEventSource?: pulumi.Input<string | undefined>;
     /**
      * The region in which the EventBridge event source will be created. Possible values: `ap-east-1`, `ap-northeast-1`, `ap-northeast-2`, `ap-northeast-3`, `ap-south-1`, `ap-southeast-1`, `ap-southeast-2`, `ca-central-1`, `cn-north-1`, `cn-northwest-1`, `eu-central-1`, `eu-north-1`, `eu-west-1`, `eu-west-2`, `eu-west-3`, `me-south-1`, `sa-east-1`, `us-gov-east-1`, `us-gov-west-1`, `us-east-1`, `us-east-2`, `us-west-1`, `us-west-2`.
      */
-    awsRegion?: pulumi.Input<string>;
+    awsRegion?: pulumi.Input<string | undefined>;
     /**
      * Name of the Partner Topic to be used with Azure. Generally should not be specified.
      */
-    azurePartnerTopic?: pulumi.Input<string>;
+    azurePartnerTopic?: pulumi.Input<string | undefined>;
     /**
      * The Azure region code. Possible values: `australiacentral`, `australiaeast`, `australiasoutheast`, `brazilsouth`, `canadacentral`, `canadaeast`, `centralindia`, `centralus`, `eastasia`, `eastus`, `eastus2`, `francecentral`, `germanywestcentral`, `japaneast`, `japanwest`, `koreacentral`, `koreasouth`, `northcentralus`, `northeurope`, `norwayeast`, `southafricanorth`, `southcentralus`, `southeastasia`, `southindia`, `switzerlandnorth`, `uaenorth`, `uksouth`, `ukwest`, `westcentralus`, `westeurope`, `westindia`, `westus`, `westus2`.
      */
-    azureRegion?: pulumi.Input<string>;
+    azureRegion?: pulumi.Input<string | undefined>;
     /**
      * The Azure EventGrid resource group which allows you to manage all Azure assets within one subscription.
      */
-    azureResourceGroup?: pulumi.Input<string>;
+    azureResourceGroup?: pulumi.Input<string | undefined>;
     /**
      * The unique alphanumeric string that identifies your Azure subscription.
      */
-    azureSubscriptionId?: pulumi.Input<string>;
+    azureSubscriptionId?: pulumi.Input<string | undefined>;
     /**
      * The Datadog API key.
      */
-    datadogApiKey?: pulumi.Input<string>;
+    datadogApiKey?: pulumi.Input<string | undefined>;
     /**
      * The Datadog region. Possible values: `us`, `eu`, `us3`, `us5`.
      */
-    datadogRegion?: pulumi.Input<string>;
+    datadogRegion?: pulumi.Input<string | undefined>;
     /**
      * Sent in the HTTP "Authorization" header with each request.
      */
-    httpAuthorization?: pulumi.Input<string>;
+    httpAuthorization?: pulumi.Input<string | undefined>;
     /**
      * The format of data sent over HTTP. Options are "JSONLINES", "JSONARRAY" or "JSONOBJECT"
      */
-    httpContentFormat?: pulumi.Input<string>;
+    httpContentFormat?: pulumi.Input<string | undefined>;
     /**
      * The "Content-Type" header to send over HTTP. Common value is "application/json".
      */
-    httpContentType?: pulumi.Input<string>;
+    httpContentType?: pulumi.Input<string | undefined>;
     /**
      * Additional HTTP headers to be included as part of the HTTP request.
      */
-    httpCustomHeaders?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+    httpCustomHeaders?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[] | undefined>;
     /**
      * The HTTP endpoint to send streaming logs.
      */
-    httpEndpoint?: pulumi.Input<string>;
+    httpEndpoint?: pulumi.Input<string | undefined>;
     /**
      * The Mixpanel project ID, found on the Project Settings page.
      */
-    mixpanelProjectId?: pulumi.Input<string>;
+    mixpanelProjectId?: pulumi.Input<string | undefined>;
     /**
      * The Mixpanel region. Options are ["us", "eu"]. EU is required for customers with EU data residency requirements.
      */
-    mixpanelRegion?: pulumi.Input<string>;
+    mixpanelRegion?: pulumi.Input<string | undefined>;
     /**
      * The Mixpanel Service Account password.
      */
-    mixpanelServiceAccountPassword?: pulumi.Input<string>;
+    mixpanelServiceAccountPassword?: pulumi.Input<string | undefined>;
     /**
      * The Mixpanel Service Account username. Services Accounts can be created in the Project Settings page.
      */
-    mixpanelServiceAccountUsername?: pulumi.Input<string>;
+    mixpanelServiceAccountUsername?: pulumi.Input<string | undefined>;
     /**
      * The [Segment Write Key](https://segment.com/docs/connections/find-writekey/).
      */
-    segmentWriteKey?: pulumi.Input<string>;
+    segmentWriteKey?: pulumi.Input<string | undefined>;
     /**
      * The Splunk domain name.
      */
-    splunkDomain?: pulumi.Input<string>;
+    splunkDomain?: pulumi.Input<string | undefined>;
     /**
      * The Splunk port.
      */
-    splunkPort?: pulumi.Input<string>;
+    splunkPort?: pulumi.Input<string | undefined>;
     /**
      * This toggle should be turned off when using self-signed certificates.
      */
-    splunkSecure?: pulumi.Input<boolean>;
+    splunkSecure?: pulumi.Input<boolean | undefined>;
     /**
      * The Splunk access token.
      */
-    splunkToken?: pulumi.Input<string>;
+    splunkToken?: pulumi.Input<string | undefined>;
     /**
      * Generated URL for your defined HTTP source in Sumo Logic for collecting streaming data from Auth0.
      */
-    sumoSourceAddress?: pulumi.Input<string>;
+    sumoSourceAddress?: pulumi.Input<string | undefined>;
 }
 
 export interface NetworkAclRule {
@@ -3518,11 +3518,11 @@ export interface NetworkAclRule {
     /**
      * The configuration for the Network ACL Rule
      */
-    match?: pulumi.Input<inputs.NetworkAclRuleMatch>;
+    match?: pulumi.Input<inputs.NetworkAclRuleMatch | undefined>;
     /**
      * The configuration for the Network ACL Rule
      */
-    notMatch?: pulumi.Input<inputs.NetworkAclRuleNotMatch>;
+    notMatch?: pulumi.Input<inputs.NetworkAclRuleNotMatch | undefined>;
     /**
      * The scope of the Network ACL Rule
      */
@@ -3533,111 +3533,111 @@ export interface NetworkAclRuleAction {
     /**
      * If true, allows the request. When using allow action, no other properties should be set.
      */
-    allow?: pulumi.Input<boolean>;
+    allow?: pulumi.Input<boolean | undefined>;
     /**
      * If true, blocks the request. When using block action, no other properties should be set.
      */
-    block?: pulumi.Input<boolean>;
+    block?: pulumi.Input<boolean | undefined>;
     /**
      * If true, logs the request. When using log action, no other properties should be set.
      */
-    log?: pulumi.Input<boolean>;
+    log?: pulumi.Input<boolean | undefined>;
     /**
      * If true, redirects the request. When using redirect action, redirectUri must also be specified.
      */
-    redirect?: pulumi.Input<boolean>;
+    redirect?: pulumi.Input<boolean | undefined>;
     /**
      * The URI to redirect to when redirect is true. Required when redirect is true. Must be between 1 and 2000 characters.
      */
-    redirectUri?: pulumi.Input<string>;
+    redirectUri?: pulumi.Input<string | undefined>;
 }
 
 export interface NetworkAclRuleMatch {
     /**
      * ASNs. Must contain between 1 and 10 unique items.
      */
-    asns?: pulumi.Input<pulumi.Input<number>[]>;
+    asns?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * Geo Country Codes. Must contain between 1 and 10 unique items.
      */
-    geoCountryCodes?: pulumi.Input<pulumi.Input<string>[]>;
+    geoCountryCodes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Geo Subdivision Codes. Must contain between 1 and 10 unique items.
      */
-    geoSubdivisionCodes?: pulumi.Input<pulumi.Input<string>[]>;
+    geoSubdivisionCodes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
      */
-    ipv4Cidrs?: pulumi.Input<pulumi.Input<string>[]>;
+    ipv4Cidrs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * IPv6 CIDRs. Must contain between 1 and 10 unique items. Can be IPv6 addresses or CIDR blocks.
      */
-    ipv6Cidrs?: pulumi.Input<pulumi.Input<string>[]>;
+    ipv6Cidrs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * JA3 Fingerprints. Must contain between 1 and 10 unique items.
      */
-    ja3Fingerprints?: pulumi.Input<pulumi.Input<string>[]>;
+    ja3Fingerprints?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * JA4 Fingerprints. Must contain between 1 and 10 unique items.
      */
-    ja4Fingerprints?: pulumi.Input<pulumi.Input<string>[]>;
+    ja4Fingerprints?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * User Agents. Must contain between 1 and 10 unique items.
      */
-    userAgents?: pulumi.Input<pulumi.Input<string>[]>;
+    userAgents?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface NetworkAclRuleNotMatch {
     /**
      * ASNs. Must contain between 1 and 10 unique items.
      */
-    asns?: pulumi.Input<pulumi.Input<number>[]>;
+    asns?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * Geo Country Codes. Must contain between 1 and 10 unique items.
      */
-    geoCountryCodes?: pulumi.Input<pulumi.Input<string>[]>;
+    geoCountryCodes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Geo Subdivision Codes. Must contain between 1 and 10 unique items.
      */
-    geoSubdivisionCodes?: pulumi.Input<pulumi.Input<string>[]>;
+    geoSubdivisionCodes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
      */
-    ipv4Cidrs?: pulumi.Input<pulumi.Input<string>[]>;
+    ipv4Cidrs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * IPv6 CIDRs. Must contain between 1 and 10 unique items. Can be IPv6 addresses or CIDR blocks.
      */
-    ipv6Cidrs?: pulumi.Input<pulumi.Input<string>[]>;
+    ipv6Cidrs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * JA3 Fingerprints. Must contain between 1 and 10 unique items.
      */
-    ja3Fingerprints?: pulumi.Input<pulumi.Input<string>[]>;
+    ja3Fingerprints?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * JA4 Fingerprints. Must contain between 1 and 10 unique items.
      */
-    ja4Fingerprints?: pulumi.Input<pulumi.Input<string>[]>;
+    ja4Fingerprints?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * User Agents. Must contain between 1 and 10 unique items.
      */
-    userAgents?: pulumi.Input<pulumi.Input<string>[]>;
+    userAgents?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface OrganizationBranding {
     /**
      * Color scheme used to customize the login pages.
      */
-    colors?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    colors?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * URL of logo to display on login page.
      */
-    logoUrl?: pulumi.Input<string>;
+    logoUrl?: pulumi.Input<string | undefined>;
 }
 
 export interface OrganizationConnectionsEnabledConnection {
     /**
      * When `true`, all users that log in with this connection will be automatically granted membership in the organization. When `false`, users must be granted membership in the organization before logging in with this connection.
      */
-    assignMembershipOnLogin?: pulumi.Input<boolean>;
+    assignMembershipOnLogin?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the connection to enable for the organization.
      */
@@ -3645,23 +3645,23 @@ export interface OrganizationConnectionsEnabledConnection {
     /**
      * Whether the connection is enabled for the organization.
      */
-    isEnabled?: pulumi.Input<boolean>;
+    isEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `isSignupEnabled` can only be `true` if `assignMembershipOnLogin` is `true`.
      */
-    isSignupEnabled?: pulumi.Input<boolean>;
+    isSignupEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The access level for this organization connection. Can be `none`, `readonly`, `limited`, or `full`.
      */
-    organizationAccessLevel?: pulumi.Input<string>;
+    organizationAccessLevel?: pulumi.Input<string | undefined>;
     /**
      * Name of the connection in the scope of this organization.
      */
-    organizationConnectionName?: pulumi.Input<string>;
+    organizationConnectionName?: pulumi.Input<string | undefined>;
     /**
      * Determines whether a connection should be displayed on this organization's login prompt. Only applicable for enterprise connections.
      */
-    showAsButton?: pulumi.Input<boolean>;
+    showAsButton?: pulumi.Input<boolean | undefined>;
 }
 
 export interface OrganizationDiscoveryDomainsDiscoveryDomain {
@@ -3672,7 +3672,7 @@ export interface OrganizationDiscoveryDomainsDiscoveryDomain {
     /**
      * The ID of the discovery domain.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Verification status. Must be either 'pending' or 'verified'.
      */
@@ -3680,15 +3680,15 @@ export interface OrganizationDiscoveryDomainsDiscoveryDomain {
     /**
      * Indicates whether this domain should be used for organization discovery during login.
      */
-    useForOrganizationDiscovery?: pulumi.Input<boolean>;
+    useForOrganizationDiscovery?: pulumi.Input<boolean | undefined>;
     /**
      * The full domain where the TXT record should be added.
      */
-    verificationHost?: pulumi.Input<string>;
+    verificationHost?: pulumi.Input<string | undefined>;
     /**
      * TXT record value for domain verification.
      */
-    verificationTxt?: pulumi.Input<string>;
+    verificationTxt?: pulumi.Input<string | undefined>;
 }
 
 export interface OrganizationTokenQuota {
@@ -3702,15 +3702,15 @@ export interface OrganizationTokenQuotaClientCredentials {
     /**
      * If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
      */
-    enforce?: pulumi.Input<boolean>;
+    enforce?: pulumi.Input<boolean | undefined>;
     /**
      * Maximum number of issued tokens per day
      */
-    perDay?: pulumi.Input<number>;
+    perDay?: pulumi.Input<number | undefined>;
     /**
      * Maximum number of issued tokens per hour
      */
-    perHour?: pulumi.Input<number>;
+    perHour?: pulumi.Input<number | undefined>;
 }
 
 export interface PagesChangePassword {
@@ -3728,7 +3728,7 @@ export interface PagesError {
     /**
      * Customized content for the Error page. HTML format with supported [Liquid syntax](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers).
      */
-    html?: pulumi.Input<string>;
+    html?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether to show the link to logs as part of the default error page.
      */
@@ -3736,7 +3736,7 @@ export interface PagesError {
     /**
      * URL to redirect to when an error occurs, instead of showing the default error page.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 export interface PagesGuardianMfa {
@@ -3765,33 +3765,33 @@ export interface PhoneNotificationTemplateContent {
     /**
      * The body content of the phone notification template.
      */
-    body?: pulumi.Input<inputs.PhoneNotificationTemplateContentBody>;
+    body?: pulumi.Input<inputs.PhoneNotificationTemplateContentBody | undefined>;
     /**
      * The sender phone number for SMS or voice notifications.
      */
-    from?: pulumi.Input<string>;
+    from?: pulumi.Input<string | undefined>;
     /**
      * The syntax of the phone notification template.
      */
-    syntax?: pulumi.Input<string>;
+    syntax?: pulumi.Input<string | undefined>;
 }
 
 export interface PhoneNotificationTemplateContentBody {
     /**
      * The text content for SMS notifications.
      */
-    text?: pulumi.Input<string>;
+    text?: pulumi.Input<string | undefined>;
     /**
      * The voice content for voice notifications.
      */
-    voice?: pulumi.Input<string>;
+    voice?: pulumi.Input<string | undefined>;
 }
 
 export interface PhoneProviderConfiguration {
     /**
      * Default sender subject as "from" when no other value is specified.
      */
-    defaultFrom?: pulumi.Input<string>;
+    defaultFrom?: pulumi.Input<string | undefined>;
     /**
      * Media set supported by a given provider to deliver a notification
      */
@@ -3799,49 +3799,49 @@ export interface PhoneProviderConfiguration {
     /**
      * Twilio Messaging Service SID
      */
-    mssid?: pulumi.Input<string>;
+    mssid?: pulumi.Input<string | undefined>;
     /**
      * Twilio Account SID.
      */
-    sid?: pulumi.Input<string>;
+    sid?: pulumi.Input<string | undefined>;
 }
 
 export interface PhoneProviderCredentials {
     /**
      * The Auth Token for the phone provider.
      */
-    authToken?: pulumi.Input<string>;
+    authToken?: pulumi.Input<string | undefined>;
 }
 
 export interface PromptScreenPartialInsertionPoints {
     /**
      * Content that goes inside the form
      */
-    formContent?: pulumi.Input<string>;
+    formContent?: pulumi.Input<string | undefined>;
     /**
      * Content that goes at the end of the form.
      */
-    formContentEnd?: pulumi.Input<string>;
+    formContentEnd?: pulumi.Input<string | undefined>;
     /**
      * Content that goes at the start of the form.
      */
-    formContentStart?: pulumi.Input<string>;
+    formContentStart?: pulumi.Input<string | undefined>;
     /**
      * Footer content for the end of the footer.
      */
-    formFooterEnd?: pulumi.Input<string>;
+    formFooterEnd?: pulumi.Input<string | undefined>;
     /**
      * Footer content for the start of the footer.
      */
-    formFooterStart?: pulumi.Input<string>;
+    formFooterStart?: pulumi.Input<string | undefined>;
     /**
      * Actions that go at the end of secondary actions.
      */
-    secondaryActionsEnd?: pulumi.Input<string>;
+    secondaryActionsEnd?: pulumi.Input<string | undefined>;
     /**
      * Actions that go at the start of secondary actions.
      */
-    secondaryActionsStart?: pulumi.Input<string>;
+    secondaryActionsStart?: pulumi.Input<string | undefined>;
 }
 
 export interface PromptScreenPartialsScreenPartial {
@@ -3856,42 +3856,42 @@ export interface PromptScreenPartialsScreenPartialInsertionPoints {
     /**
      * Content that goes inside the form
      */
-    formContent?: pulumi.Input<string>;
+    formContent?: pulumi.Input<string | undefined>;
     /**
      * Content that goes at the end of the form.
      */
-    formContentEnd?: pulumi.Input<string>;
+    formContentEnd?: pulumi.Input<string | undefined>;
     /**
      * Content that goes at the start of the form.
      */
-    formContentStart?: pulumi.Input<string>;
+    formContentStart?: pulumi.Input<string | undefined>;
     /**
      * Footer content for the end of the footer.
      */
-    formFooterEnd?: pulumi.Input<string>;
+    formFooterEnd?: pulumi.Input<string | undefined>;
     /**
      * Footer content for the start of the footer.
      */
-    formFooterStart?: pulumi.Input<string>;
+    formFooterStart?: pulumi.Input<string | undefined>;
     /**
      * Actions that go at the end of secondary actions.
      */
-    secondaryActionsEnd?: pulumi.Input<string>;
+    secondaryActionsEnd?: pulumi.Input<string | undefined>;
     /**
      * Actions that go at the start of secondary actions.
      */
-    secondaryActionsStart?: pulumi.Input<string>;
+    secondaryActionsStart?: pulumi.Input<string | undefined>;
 }
 
 export interface PromptScreenRendererFilters {
     /**
      * An array of clients (applications) identified by id or a metadata key/value pair. Entity Limit: 25.
      */
-    clients?: pulumi.Input<string>;
+    clients?: pulumi.Input<string | undefined>;
     /**
      * An array of domains identified by id or a metadata key/value pair. Entity Limit: 25.
      */
-    domains?: pulumi.Input<string>;
+    domains?: pulumi.Input<string | undefined>;
     /**
      * Type of match to apply. Options: `includesAny`, `excludesAny`.
      */
@@ -3899,44 +3899,44 @@ export interface PromptScreenRendererFilters {
     /**
      * An array of organizations identified by id or a metadata key/value pair. Entity Limit: 25.
      */
-    organizations?: pulumi.Input<string>;
+    organizations?: pulumi.Input<string | undefined>;
 }
 
 export interface ResourceServerAuthorizationDetail {
     /**
      * Disable authorization details.
      */
-    disable?: pulumi.Input<boolean>;
+    disable?: pulumi.Input<boolean | undefined>;
     /**
      * Type of authorization details.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 export interface ResourceServerProofOfPossession {
     /**
      * Disable proof-of-possession.
      */
-    disable?: pulumi.Input<boolean>;
+    disable?: pulumi.Input<boolean | undefined>;
     /**
      * Mechanism used for proof-of-possession. `mtls` or `dpop` is supported.
      */
-    mechanism?: pulumi.Input<string>;
+    mechanism?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether proof-of-possession is required with this resource server.
      */
-    required?: pulumi.Input<boolean>;
+    required?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies which client types require Proof-of-Possession`allClients` or `publicClients` is supported.
      */
-    requiredFor?: pulumi.Input<string>;
+    requiredFor?: pulumi.Input<string | undefined>;
 }
 
 export interface ResourceServerScopesScope {
     /**
      * User-friendly description of the scope (permission).
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of the scope (permission). Examples include `read:appointments` or `delete:appointments`.
      */
@@ -3947,40 +3947,40 @@ export interface ResourceServerSubjectTypeAuthorization {
     /**
      * Client authorization policies for the resource server.
      */
-    client?: pulumi.Input<inputs.ResourceServerSubjectTypeAuthorizationClient>;
+    client?: pulumi.Input<inputs.ResourceServerSubjectTypeAuthorizationClient | undefined>;
     /**
      * User authorization policies for the resource server.
      */
-    user?: pulumi.Input<inputs.ResourceServerSubjectTypeAuthorizationUser>;
+    user?: pulumi.Input<inputs.ResourceServerSubjectTypeAuthorizationUser | undefined>;
 }
 
 export interface ResourceServerSubjectTypeAuthorizationClient {
     /**
      * Client flows policy. One of `denyAll`, `requireClientGrant`.
      */
-    policy?: pulumi.Input<string>;
+    policy?: pulumi.Input<string | undefined>;
 }
 
 export interface ResourceServerSubjectTypeAuthorizationUser {
     /**
      * User flows policy. One of `allowAll`, `denyAll`, `requireClientGrant`.
      */
-    policy?: pulumi.Input<string>;
+    policy?: pulumi.Input<string | undefined>;
 }
 
 export interface ResourceServerTokenEncryption {
     /**
      * Disable token encryption.
      */
-    disable?: pulumi.Input<boolean>;
+    disable?: pulumi.Input<boolean | undefined>;
     /**
      * Authorization details for this resource server.
      */
-    encryptionKey?: pulumi.Input<inputs.ResourceServerTokenEncryptionEncryptionKey>;
+    encryptionKey?: pulumi.Input<inputs.ResourceServerTokenEncryptionEncryptionKey | undefined>;
     /**
      * Format of the token encryption. Only `compact-nested-jwe` is supported.
      */
-    format?: pulumi.Input<string>;
+    format?: pulumi.Input<string | undefined>;
 }
 
 export interface ResourceServerTokenEncryptionEncryptionKey {
@@ -3991,11 +3991,11 @@ export interface ResourceServerTokenEncryptionEncryptionKey {
     /**
      * Key ID.
      */
-    kid?: pulumi.Input<string>;
+    kid?: pulumi.Input<string | undefined>;
     /**
      * Name of the encryption key.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * PEM-formatted public key. Must be JSON escaped.
      */
@@ -4006,7 +4006,7 @@ export interface RolePermissionsPermission {
     /**
      * Description of the permission.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of permission.
      */
@@ -4018,25 +4018,25 @@ export interface RolePermissionsPermission {
     /**
      * Name of resource server that the permission is associated with.
      */
-    resourceServerName?: pulumi.Input<string>;
+    resourceServerName?: pulumi.Input<string | undefined>;
 }
 
 export interface SelfServiceProfileBranding {
     /**
      * Configuration settings for colors for branding.
      */
-    colors?: pulumi.Input<inputs.SelfServiceProfileBrandingColors>;
+    colors?: pulumi.Input<inputs.SelfServiceProfileBrandingColors | undefined>;
     /**
      * URL of logo to display on login page.
      */
-    logoUrl?: pulumi.Input<string>;
+    logoUrl?: pulumi.Input<string | undefined>;
 }
 
 export interface SelfServiceProfileBrandingColors {
     /**
      * Primary button background color in hexadecimal.
      */
-    primary?: pulumi.Input<string>;
+    primary?: pulumi.Input<string | undefined>;
 }
 
 export interface SelfServiceProfileUserAttribute {
@@ -4058,11 +4058,11 @@ export interface TenantDefaultTokenQuota {
     /**
      * The token quota configuration.
      */
-    clients?: pulumi.Input<inputs.TenantDefaultTokenQuotaClients>;
+    clients?: pulumi.Input<inputs.TenantDefaultTokenQuotaClients | undefined>;
     /**
      * The token quota configuration.
      */
-    organizations?: pulumi.Input<inputs.TenantDefaultTokenQuotaOrganizations>;
+    organizations?: pulumi.Input<inputs.TenantDefaultTokenQuotaOrganizations | undefined>;
 }
 
 export interface TenantDefaultTokenQuotaClients {
@@ -4076,15 +4076,15 @@ export interface TenantDefaultTokenQuotaClientsClientCredentials {
     /**
      * If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
      */
-    enforce?: pulumi.Input<boolean>;
+    enforce?: pulumi.Input<boolean | undefined>;
     /**
      * Maximum number of issued tokens per day
      */
-    perDay?: pulumi.Input<number>;
+    perDay?: pulumi.Input<number | undefined>;
     /**
      * Maximum number of issued tokens per hour
      */
-    perHour?: pulumi.Input<number>;
+    perHour?: pulumi.Input<number | undefined>;
 }
 
 export interface TenantDefaultTokenQuotaOrganizations {
@@ -4098,146 +4098,146 @@ export interface TenantDefaultTokenQuotaOrganizationsClientCredentials {
     /**
      * If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
      */
-    enforce?: pulumi.Input<boolean>;
+    enforce?: pulumi.Input<boolean | undefined>;
     /**
      * Maximum number of issued tokens per day
      */
-    perDay?: pulumi.Input<number>;
+    perDay?: pulumi.Input<number | undefined>;
     /**
      * Maximum number of issued tokens per hour
      */
-    perHour?: pulumi.Input<number>;
+    perHour?: pulumi.Input<number | undefined>;
 }
 
 export interface TenantErrorPage {
     /**
      * Custom Error HTML (Liquid syntax is supported)
      */
-    html?: pulumi.Input<string>;
+    html?: pulumi.Input<string | undefined>;
     /**
      * Whether to show the link to log as part of the default error page (true, default) or not to show the link (false).
      */
-    showLogLink?: pulumi.Input<boolean>;
+    showLogLink?: pulumi.Input<boolean | undefined>;
     /**
      * URL to redirect to when an error occurs instead of showing the default error page
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 export interface TenantFlags {
     /**
      * Whether the legacy delegation endpoint will be enabled for your account (true) or not available (false).
      */
-    allowLegacyDelegationGrantTypes?: pulumi.Input<boolean>;
+    allowLegacyDelegationGrantTypes?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the legacy `auth/ro` endpoint (used with resource owner password and passwordless features) will be enabled for your account (true) or not available (false).
      */
-    allowLegacyRoGrantTypes?: pulumi.Input<boolean>;
+    allowLegacyRoGrantTypes?: pulumi.Input<boolean | undefined>;
     /**
      * If enabled, customers can use Tokeninfo Endpoint, otherwise they can not use it.
      */
-    allowLegacyTokeninfoEndpoint?: pulumi.Input<boolean>;
+    allowLegacyTokeninfoEndpoint?: pulumi.Input<boolean | undefined>;
     /**
      * Enables new insights activity page view.
      */
-    dashboardInsightsView?: pulumi.Input<boolean>;
+    dashboardInsightsView?: pulumi.Input<boolean | undefined>;
     /**
      * Enables beta access to log streaming changes.
      */
-    dashboardLogStreamsNext?: pulumi.Input<boolean>;
+    dashboardLogStreamsNext?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether classic Universal Login prompts include additional security headers to prevent clickjacking.
      */
-    disableClickjackProtectionHeaders?: pulumi.Input<boolean>;
+    disableClickjackProtectionHeaders?: pulumi.Input<boolean | undefined>;
     /**
      * Disables SAML fields map fix for bad mappings with repeated attributes.
      */
-    disableFieldsMapFix?: pulumi.Input<boolean>;
+    disableFieldsMapFix?: pulumi.Input<boolean | undefined>;
     /**
      * If true, SMS phone numbers will not be obfuscated in Management API GET calls.
      */
-    disableManagementApiSmsObfuscation?: pulumi.Input<boolean>;
+    disableManagementApiSmsObfuscation?: pulumi.Input<boolean | undefined>;
     /**
      * If enabled, users will be presented with an email verification prompt during their first login when using Azure AD or ADFS connections.
      */
-    enableAdfsWaadEmailVerification?: pulumi.Input<boolean>;
+    enableAdfsWaadEmailVerification?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether the APIs section is enabled for the tenant.
      */
-    enableApisSection?: pulumi.Input<boolean>;
+    enableApisSection?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether all current connections should be enabled when a new client is created. (Default: `true`)
      */
-    enableClientConnections?: pulumi.Input<boolean>;
+    enableClientConnections?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether the tenant allows custom domains in emails. Before enabling this flag, you must have a custom domain with status: `ready`.
      */
-    enableCustomDomainInEmails?: pulumi.Input<boolean>;
+    enableCustomDomainInEmails?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether the tenant allows dynamic client registration.
      */
-    enableDynamicClientRegistration?: pulumi.Input<boolean>;
+    enableDynamicClientRegistration?: pulumi.Input<boolean | undefined>;
     /**
      * Whether ID tokens can be used to authorize some types of requests to API v2 (true) or not (false).
      */
-    enableIdtokenApi2?: pulumi.Input<boolean>;
+    enableIdtokenApi2?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether to use the older v2 legacy logs search.
      */
-    enableLegacyLogsSearchV2?: pulumi.Input<boolean>;
+    enableLegacyLogsSearchV2?: pulumi.Input<boolean | undefined>;
     /**
      * Whether ID tokens and the userinfo endpoint includes a complete user profile (true) or only OpenID Connect claims (false).
      */
-    enableLegacyProfile?: pulumi.Input<boolean>;
+    enableLegacyProfile?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether advanced API Authorization scenarios are enabled.
      */
-    enablePipeline2?: pulumi.Input<boolean>;
+    enablePipeline2?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether the public sign up process shows a `userExists` error if the user already exists.
      */
-    enablePublicSignupUserExistsError?: pulumi.Input<boolean>;
+    enablePublicSignupUserExistsError?: pulumi.Input<boolean | undefined>;
     /**
      * Flag indicating whether users will not be prompted to confirm log in before SSO redirection. This flag applies to existing tenants only; new tenants have it enforced as true.
      */
-    enableSso?: pulumi.Input<boolean>;
+    enableSso?: pulumi.Input<boolean | undefined>;
     /**
      * Used to allow users to pick which factor to enroll with from the list of available MFA factors.
      */
-    mfaShowFactorListOnEnrollment?: pulumi.Input<boolean>;
+    mfaShowFactorListOnEnrollment?: pulumi.Input<boolean | undefined>;
     /**
      * Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
      */
-    noDiscloseEnterpriseConnections?: pulumi.Input<boolean>;
+    noDiscloseEnterpriseConnections?: pulumi.Input<boolean | undefined>;
     /**
      * Remove `alg` from jwks(JSON Web Key Sets).
      */
-    removeAlgFromJwks?: pulumi.Input<boolean>;
+    removeAlgFromJwks?: pulumi.Input<boolean | undefined>;
     /**
      * This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
      *
      * @deprecated This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
      */
-    requirePushedAuthorizationRequests?: pulumi.Input<boolean>;
+    requirePushedAuthorizationRequests?: pulumi.Input<boolean | undefined>;
     /**
      * Delete underlying grant when a refresh token is revoked via the Authentication API.
      */
-    revokeRefreshTokenGrant?: pulumi.Input<boolean>;
+    revokeRefreshTokenGrant?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether to use scope descriptions for consent.
      */
-    useScopeDescriptionsForConsent?: pulumi.Input<boolean>;
+    useScopeDescriptionsForConsent?: pulumi.Input<boolean | undefined>;
 }
 
 export interface TenantMtls {
     /**
      * Disable mTLS settings.
      */
-    disable?: pulumi.Input<boolean>;
+    disable?: pulumi.Input<boolean | undefined>;
     /**
      * Enable mTLS endpoint aliases.
      */
-    enableEndpointAliases?: pulumi.Input<boolean>;
+    enableEndpointAliases?: pulumi.Input<boolean | undefined>;
 }
 
 export interface TenantOidcLogout {
@@ -4251,7 +4251,7 @@ export interface TenantSessionCookie {
     /**
      * Behavior of tenant session cookie. Accepts either "persistent" or "non-persistent".
      */
-    mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
 }
 
 export interface TenantSessions {
@@ -4292,7 +4292,7 @@ export interface UserAttributeProfileUserAttribute {
     /**
      * The OIDC mapping configuration for the user attribute.
      */
-    oidcMapping?: pulumi.Input<inputs.UserAttributeProfileUserAttributeOidcMapping>;
+    oidcMapping?: pulumi.Input<inputs.UserAttributeProfileUserAttributeOidcMapping | undefined>;
     /**
      * Whether the attribute is required in the profile.
      */
@@ -4300,22 +4300,22 @@ export interface UserAttributeProfileUserAttribute {
     /**
      * SAML mapping override for this strategy.
      */
-    samlMappings?: pulumi.Input<pulumi.Input<string>[]>;
+    samlMappings?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The SCIM mapping for the user attribute.
      */
-    scimMapping?: pulumi.Input<string>;
+    scimMapping?: pulumi.Input<string | undefined>;
     /**
      * Strategy-specific overrides for user attribute mapping.
      */
-    strategyOverrides?: pulumi.Input<pulumi.Input<inputs.UserAttributeProfileUserAttributeStrategyOverride>[]>;
+    strategyOverrides?: pulumi.Input<pulumi.Input<inputs.UserAttributeProfileUserAttributeStrategyOverride>[] | undefined>;
 }
 
 export interface UserAttributeProfileUserAttributeOidcMapping {
     /**
      * Display name for the OIDC mapping.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The OIDC mapping field.
      */
@@ -4326,15 +4326,15 @@ export interface UserAttributeProfileUserAttributeStrategyOverride {
     /**
      * OIDC mapping override for this strategy.
      */
-    oidcMapping?: pulumi.Input<inputs.UserAttributeProfileUserAttributeStrategyOverrideOidcMapping>;
+    oidcMapping?: pulumi.Input<inputs.UserAttributeProfileUserAttributeStrategyOverrideOidcMapping | undefined>;
     /**
      * SAML mapping override for this strategy.
      */
-    samlMappings?: pulumi.Input<pulumi.Input<string>[]>;
+    samlMappings?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * SCIM mapping override for this strategy.
      */
-    scimMapping?: pulumi.Input<string>;
+    scimMapping?: pulumi.Input<string | undefined>;
     /**
      * The strategy name (e.g., 'oidc', 'samlp', 'ad', etc.).
      */
@@ -4345,7 +4345,7 @@ export interface UserAttributeProfileUserAttributeStrategyOverrideOidcMapping {
     /**
      * Display name for the OIDC mapping.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The OIDC mapping field.
      */
@@ -4356,34 +4356,34 @@ export interface UserAttributeProfileUserId {
     /**
      * The OIDC mapping for the user ID.
      */
-    oidcMapping?: pulumi.Input<string>;
+    oidcMapping?: pulumi.Input<string | undefined>;
     /**
      * The SAML mapping for the user ID.
      */
-    samlMappings?: pulumi.Input<pulumi.Input<string>[]>;
+    samlMappings?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The SCIM mapping for the user ID.
      */
-    scimMapping?: pulumi.Input<string>;
+    scimMapping?: pulumi.Input<string | undefined>;
     /**
      * Strategy-specific overrides for user ID mapping.
      */
-    strategyOverrides?: pulumi.Input<pulumi.Input<inputs.UserAttributeProfileUserIdStrategyOverride>[]>;
+    strategyOverrides?: pulumi.Input<pulumi.Input<inputs.UserAttributeProfileUserIdStrategyOverride>[] | undefined>;
 }
 
 export interface UserAttributeProfileUserIdStrategyOverride {
     /**
      * OIDC mapping override for this strategy.
      */
-    oidcMapping?: pulumi.Input<string>;
+    oidcMapping?: pulumi.Input<string | undefined>;
     /**
      * SAML mapping override for this strategy.
      */
-    samlMappings?: pulumi.Input<pulumi.Input<string>[]>;
+    samlMappings?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * SCIM mapping override for this strategy.
      */
-    scimMapping?: pulumi.Input<string>;
+    scimMapping?: pulumi.Input<string | undefined>;
     /**
      * The strategy name (e.g., 'oidc', 'samlp', 'ad', etc.).
      */
@@ -4394,7 +4394,7 @@ export interface UserPermissionsPermission {
     /**
      * Description of the permission.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of permission.
      */
@@ -4406,5 +4406,5 @@ export interface UserPermissionsPermission {
     /**
      * Name of resource server that the permission is associated with.
      */
-    resourceServerName?: pulumi.Input<string>;
+    resourceServerName?: pulumi.Input<string | undefined>;
 }

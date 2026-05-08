@@ -389,210 +389,210 @@ export interface ClientState {
     /**
      * Addons enabled for this client and their associated configurations.
      */
-    addons?: pulumi.Input<inputs.ClientAddons>;
+    addons?: pulumi.Input<inputs.ClientAddons | undefined>;
     /**
      * List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
      */
-    allowedClients?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedClients?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * URLs that Auth0 may redirect to after logout.
      */
-    allowedLogoutUrls?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedLogoutUrls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
      */
-    allowedOrigins?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedOrigins?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `expressConfiguration`
      */
-    appType?: pulumi.Input<string>;
+    appType?: pulumi.Input<string | undefined>;
     /**
      * List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated.
      */
-    asyncApprovalNotificationChannels?: pulumi.Input<pulumi.Input<string>[]>;
+    asyncApprovalNotificationChannels?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
      */
-    callbacks?: pulumi.Input<pulumi.Input<string>[]>;
+    callbacks?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of audiences/realms for SAML protocol. Used by the wsfed addon.
      */
-    clientAliases?: pulumi.Input<pulumi.Input<string>[]>;
+    clientAliases?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the client.
      */
-    clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
     /**
      * Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
      */
-    clientMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    clientMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Defines the compliance level for this client, which may restrict it's capabilities. Can be one of `none`, `fapi1AdvPkjPar`, `fapi1AdvMtlsPar`.
      */
-    complianceLevel?: pulumi.Input<string>;
+    complianceLevel?: pulumi.Input<string | undefined>;
     /**
      * Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
      */
-    crossOriginAuth?: pulumi.Input<boolean>;
+    crossOriginAuth?: pulumi.Input<boolean | undefined>;
     /**
      * URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
      */
-    crossOriginLoc?: pulumi.Input<string>;
+    crossOriginLoc?: pulumi.Input<string | undefined>;
     /**
      * The content (HTML, CSS, JS) of the custom login page.
      */
-    customLoginPage?: pulumi.Input<string>;
+    customLoginPage?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether a custom login page is to be used.
      */
-    customLoginPageOn?: pulumi.Input<boolean>;
+    customLoginPageOn?: pulumi.Input<boolean | undefined>;
     /**
      * Configure and associate an organization with the Client
      */
-    defaultOrganization?: pulumi.Input<inputs.ClientDefaultOrganization>;
+    defaultOrganization?: pulumi.Input<inputs.ClientDefaultOrganization | undefined>;
     /**
      * Description of the purpose of the client.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Encryption used for WS-Fed responses with this client.
      */
-    encryptionKey?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    encryptionKey?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Express Configuration settings for the client. Used with OIN Express Configuration.
      */
-    expressConfiguration?: pulumi.Input<inputs.ClientExpressConfiguration>;
+    expressConfiguration?: pulumi.Input<inputs.ClientExpressConfiguration | undefined>;
     /**
      * The URL of the Client ID Metadata Document. Only present for CIMD-registered clients.
      */
-    externalClientId?: pulumi.Input<string>;
+    externalClientId?: pulumi.Input<string | undefined>;
     /**
      * Who created the external metadata client: `admin` (via Management API), `client` (self-registered), or `unknown`.
      */
-    externalMetadataCreatedBy?: pulumi.Input<string>;
+    externalMetadataCreatedBy?: pulumi.Input<string | undefined>;
     /**
      * Type of external metadata. Value is `cimd` for CIMD-registered clients.
      */
-    externalMetadataType?: pulumi.Input<string>;
+    externalMetadataType?: pulumi.Input<string | undefined>;
     /**
      * HTML form template to be used for WS-Federation.
      */
-    formTemplate?: pulumi.Input<string>;
+    formTemplate?: pulumi.Input<string | undefined>;
     /**
      * Types of grants that this client is authorized to use.
      */
-    grantTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    grantTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Initiate login URI. Must be HTTPS or an empty string.
      */
-    initiateLoginUri?: pulumi.Input<string>;
+    initiateLoginUri?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether this client is a first-party client.
      */
-    isFirstParty?: pulumi.Input<boolean>;
+    isFirstParty?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `clientSecretPost` or `clientSecretBasic`. Setting this property when creating the resource, will default the authentication method to `clientSecretPost`. To change the authentication method to `clientSecretBasic` use the `auth0.ClientCredentials` resource.
      */
-    isTokenEndpointIpHeaderTrusted?: pulumi.Input<boolean>;
+    isTokenEndpointIpHeaderTrusted?: pulumi.Input<boolean | undefined>;
     /**
      * URL for the JSON Web Key Set (JWKS) containing the public keys used for `privateKeyJwt` authentication. Only present for CIMD clients using `privateKeyJwt` authentication.
      */
-    jwksUri?: pulumi.Input<string>;
+    jwksUri?: pulumi.Input<string | undefined>;
     /**
      * Configuration settings for the JWTs issued for this client.
      */
-    jwtConfiguration?: pulumi.Input<inputs.ClientJwtConfiguration>;
+    jwtConfiguration?: pulumi.Input<inputs.ClientJwtConfiguration | undefined>;
     /**
      * URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
      */
-    logoUri?: pulumi.Input<string>;
+    logoUri?: pulumi.Input<string | undefined>;
     /**
      * Additional configuration for native mobile apps.
      */
-    mobile?: pulumi.Input<inputs.ClientMobile>;
+    mobile?: pulumi.Input<inputs.ClientMobile | undefined>;
     /**
      * Configuration for self-service organization features, controlling how organizations are created and managed for this client.
      */
-    myOrganizationConfiguration?: pulumi.Input<inputs.ClientMyOrganizationConfiguration>;
+    myOrganizationConfiguration?: pulumi.Input<inputs.ClientMyOrganizationConfiguration | undefined>;
     /**
      * Name of the client.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `appType`.
      */
-    nativeSocialLogin?: pulumi.Input<inputs.ClientNativeSocialLogin>;
+    nativeSocialLogin?: pulumi.Input<inputs.ClientNativeSocialLogin | undefined>;
     /**
      * Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
      *
      * @deprecated This resource is deprecated and will be removed in the next major version. Please use `oidcLogout` for managing OIDC backchannel logout URLs.
      */
-    oidcBackchannelLogoutUrls?: pulumi.Input<pulumi.Input<string>[]>;
+    oidcBackchannelLogoutUrls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Indicates whether this client will conform to strict OIDC specifications.
      */
-    oidcConformant?: pulumi.Input<boolean>;
+    oidcConformant?: pulumi.Input<boolean | undefined>;
     /**
      * Configure OIDC logout for the Client
      */
-    oidcLogout?: pulumi.Input<inputs.ClientOidcLogout>;
+    oidcLogout?: pulumi.Input<inputs.ClientOidcLogout | undefined>;
     /**
      * Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
      */
-    organizationDiscoveryMethods?: pulumi.Input<pulumi.Input<string>[]>;
+    organizationDiscoveryMethods?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default), `preLoginPrompt` or  `postLoginPrompt`.
      */
-    organizationRequireBehavior?: pulumi.Input<string>;
+    organizationRequireBehavior?: pulumi.Input<string | undefined>;
     /**
      * Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
      */
-    organizationUsage?: pulumi.Input<string>;
+    organizationUsage?: pulumi.Input<string | undefined>;
     /**
      * Configuration settings for the refresh tokens issued for this client.
      */
-    refreshToken?: pulumi.Input<inputs.ClientRefreshToken>;
+    refreshToken?: pulumi.Input<inputs.ClientRefreshToken | undefined>;
     /**
      * Makes the use of Proof-of-Possession mandatory for this client.
      */
-    requireProofOfPossession?: pulumi.Input<boolean>;
+    requireProofOfPossession?: pulumi.Input<boolean | undefined>;
     /**
      * Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
      */
-    requirePushedAuthorizationRequests?: pulumi.Input<boolean>;
+    requirePushedAuthorizationRequests?: pulumi.Input<boolean | undefined>;
     /**
      * The identifier of a resource server that client is associated withThis property can be sent only when app*type=resource*server.This property can not be changed, once the client is created.
      */
-    resourceServerIdentifier?: pulumi.Input<string>;
-    sessionTransfer?: pulumi.Input<inputs.ClientSessionTransfer>;
+    resourceServerIdentifier?: pulumi.Input<string | undefined>;
+    sessionTransfer?: pulumi.Input<inputs.ClientSessionTransfer | undefined>;
     /**
      * List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
      */
-    signingKeys?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+    signingKeys?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[] | undefined>;
     /**
      * Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
      */
-    skipNonVerifiableCallbackUriConfirmationPrompt?: pulumi.Input<string>;
+    skipNonVerifiableCallbackUriConfirmationPrompt?: pulumi.Input<string | undefined>;
     /**
      * Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
      */
-    sso?: pulumi.Input<boolean>;
+    sso?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether or not SSO is disabled.
      */
-    ssoDisabled?: pulumi.Input<boolean>;
+    ssoDisabled?: pulumi.Input<boolean | undefined>;
     /**
      * Allows configuration for token exchange
      */
-    tokenExchange?: pulumi.Input<inputs.ClientTokenExchange>;
+    tokenExchange?: pulumi.Input<inputs.ClientTokenExchange | undefined>;
     /**
      * The token quota configuration.
      */
-    tokenQuota?: pulumi.Input<inputs.ClientTokenQuota>;
+    tokenQuota?: pulumi.Input<inputs.ClientTokenQuota | undefined>;
     /**
      * URLs that represent valid web origins for use with web message response mode.
      */
-    webOrigins?: pulumi.Input<pulumi.Input<string>[]>;
+    webOrigins?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -602,184 +602,184 @@ export interface ClientArgs {
     /**
      * Addons enabled for this client and their associated configurations.
      */
-    addons?: pulumi.Input<inputs.ClientAddons>;
+    addons?: pulumi.Input<inputs.ClientAddons | undefined>;
     /**
      * List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
      */
-    allowedClients?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedClients?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * URLs that Auth0 may redirect to after logout.
      */
-    allowedLogoutUrls?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedLogoutUrls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
      */
-    allowedOrigins?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedOrigins?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `expressConfiguration`
      */
-    appType?: pulumi.Input<string>;
+    appType?: pulumi.Input<string | undefined>;
     /**
      * List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated.
      */
-    asyncApprovalNotificationChannels?: pulumi.Input<pulumi.Input<string>[]>;
+    asyncApprovalNotificationChannels?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
      */
-    callbacks?: pulumi.Input<pulumi.Input<string>[]>;
+    callbacks?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of audiences/realms for SAML protocol. Used by the wsfed addon.
      */
-    clientAliases?: pulumi.Input<pulumi.Input<string>[]>;
+    clientAliases?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
      */
-    clientMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    clientMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Defines the compliance level for this client, which may restrict it's capabilities. Can be one of `none`, `fapi1AdvPkjPar`, `fapi1AdvMtlsPar`.
      */
-    complianceLevel?: pulumi.Input<string>;
+    complianceLevel?: pulumi.Input<string | undefined>;
     /**
      * Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
      */
-    crossOriginAuth?: pulumi.Input<boolean>;
+    crossOriginAuth?: pulumi.Input<boolean | undefined>;
     /**
      * URL of the location in your site where the cross-origin verification takes place for the cross-origin auth flow when performing authentication in your own domain instead of Auth0 Universal Login page.
      */
-    crossOriginLoc?: pulumi.Input<string>;
+    crossOriginLoc?: pulumi.Input<string | undefined>;
     /**
      * The content (HTML, CSS, JS) of the custom login page.
      */
-    customLoginPage?: pulumi.Input<string>;
+    customLoginPage?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether a custom login page is to be used.
      */
-    customLoginPageOn?: pulumi.Input<boolean>;
+    customLoginPageOn?: pulumi.Input<boolean | undefined>;
     /**
      * Configure and associate an organization with the Client
      */
-    defaultOrganization?: pulumi.Input<inputs.ClientDefaultOrganization>;
+    defaultOrganization?: pulumi.Input<inputs.ClientDefaultOrganization | undefined>;
     /**
      * Description of the purpose of the client.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Encryption used for WS-Fed responses with this client.
      */
-    encryptionKey?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    encryptionKey?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Express Configuration settings for the client. Used with OIN Express Configuration.
      */
-    expressConfiguration?: pulumi.Input<inputs.ClientExpressConfiguration>;
+    expressConfiguration?: pulumi.Input<inputs.ClientExpressConfiguration | undefined>;
     /**
      * HTML form template to be used for WS-Federation.
      */
-    formTemplate?: pulumi.Input<string>;
+    formTemplate?: pulumi.Input<string | undefined>;
     /**
      * Types of grants that this client is authorized to use.
      */
-    grantTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    grantTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Initiate login URI. Must be HTTPS or an empty string.
      */
-    initiateLoginUri?: pulumi.Input<string>;
+    initiateLoginUri?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether this client is a first-party client.
      */
-    isFirstParty?: pulumi.Input<boolean>;
+    isFirstParty?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `clientSecretPost` or `clientSecretBasic`. Setting this property when creating the resource, will default the authentication method to `clientSecretPost`. To change the authentication method to `clientSecretBasic` use the `auth0.ClientCredentials` resource.
      */
-    isTokenEndpointIpHeaderTrusted?: pulumi.Input<boolean>;
+    isTokenEndpointIpHeaderTrusted?: pulumi.Input<boolean | undefined>;
     /**
      * Configuration settings for the JWTs issued for this client.
      */
-    jwtConfiguration?: pulumi.Input<inputs.ClientJwtConfiguration>;
+    jwtConfiguration?: pulumi.Input<inputs.ClientJwtConfiguration | undefined>;
     /**
      * URL of the logo for the client. Recommended size is 150px x 150px. If none is set, the default badge for the application type will be shown.
      */
-    logoUri?: pulumi.Input<string>;
+    logoUri?: pulumi.Input<string | undefined>;
     /**
      * Additional configuration for native mobile apps.
      */
-    mobile?: pulumi.Input<inputs.ClientMobile>;
+    mobile?: pulumi.Input<inputs.ClientMobile | undefined>;
     /**
      * Configuration for self-service organization features, controlling how organizations are created and managed for this client.
      */
-    myOrganizationConfiguration?: pulumi.Input<inputs.ClientMyOrganizationConfiguration>;
+    myOrganizationConfiguration?: pulumi.Input<inputs.ClientMyOrganizationConfiguration | undefined>;
     /**
      * Name of the client.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Configuration settings to toggle native social login for mobile native applications. Once this is set it must stay set, with both resources set to `false` in order to change the `appType`.
      */
-    nativeSocialLogin?: pulumi.Input<inputs.ClientNativeSocialLogin>;
+    nativeSocialLogin?: pulumi.Input<inputs.ClientNativeSocialLogin | undefined>;
     /**
      * Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
      *
      * @deprecated This resource is deprecated and will be removed in the next major version. Please use `oidcLogout` for managing OIDC backchannel logout URLs.
      */
-    oidcBackchannelLogoutUrls?: pulumi.Input<pulumi.Input<string>[]>;
+    oidcBackchannelLogoutUrls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Indicates whether this client will conform to strict OIDC specifications.
      */
-    oidcConformant?: pulumi.Input<boolean>;
+    oidcConformant?: pulumi.Input<boolean | undefined>;
     /**
      * Configure OIDC logout for the Client
      */
-    oidcLogout?: pulumi.Input<inputs.ClientOidcLogout>;
+    oidcLogout?: pulumi.Input<inputs.ClientOidcLogout | undefined>;
     /**
      * Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
      */
-    organizationDiscoveryMethods?: pulumi.Input<pulumi.Input<string>[]>;
+    organizationDiscoveryMethods?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default), `preLoginPrompt` or  `postLoginPrompt`.
      */
-    organizationRequireBehavior?: pulumi.Input<string>;
+    organizationRequireBehavior?: pulumi.Input<string | undefined>;
     /**
      * Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
      */
-    organizationUsage?: pulumi.Input<string>;
+    organizationUsage?: pulumi.Input<string | undefined>;
     /**
      * Configuration settings for the refresh tokens issued for this client.
      */
-    refreshToken?: pulumi.Input<inputs.ClientRefreshToken>;
+    refreshToken?: pulumi.Input<inputs.ClientRefreshToken | undefined>;
     /**
      * Makes the use of Proof-of-Possession mandatory for this client.
      */
-    requireProofOfPossession?: pulumi.Input<boolean>;
+    requireProofOfPossession?: pulumi.Input<boolean | undefined>;
     /**
      * Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
      */
-    requirePushedAuthorizationRequests?: pulumi.Input<boolean>;
+    requirePushedAuthorizationRequests?: pulumi.Input<boolean | undefined>;
     /**
      * The identifier of a resource server that client is associated withThis property can be sent only when app*type=resource*server.This property can not be changed, once the client is created.
      */
-    resourceServerIdentifier?: pulumi.Input<string>;
-    sessionTransfer?: pulumi.Input<inputs.ClientSessionTransfer>;
+    resourceServerIdentifier?: pulumi.Input<string | undefined>;
+    sessionTransfer?: pulumi.Input<inputs.ClientSessionTransfer | undefined>;
     /**
      * Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
      */
-    skipNonVerifiableCallbackUriConfirmationPrompt?: pulumi.Input<string>;
+    skipNonVerifiableCallbackUriConfirmationPrompt?: pulumi.Input<string | undefined>;
     /**
      * Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
      */
-    sso?: pulumi.Input<boolean>;
+    sso?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether or not SSO is disabled.
      */
-    ssoDisabled?: pulumi.Input<boolean>;
+    ssoDisabled?: pulumi.Input<boolean | undefined>;
     /**
      * Allows configuration for token exchange
      */
-    tokenExchange?: pulumi.Input<inputs.ClientTokenExchange>;
+    tokenExchange?: pulumi.Input<inputs.ClientTokenExchange | undefined>;
     /**
      * The token quota configuration.
      */
-    tokenQuota?: pulumi.Input<inputs.ClientTokenQuota>;
+    tokenQuota?: pulumi.Input<inputs.ClientTokenQuota | undefined>;
     /**
      * URLs that represent valid web origins for use with web message response mode.
      */
-    webOrigins?: pulumi.Input<pulumi.Input<string>[]>;
+    webOrigins?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

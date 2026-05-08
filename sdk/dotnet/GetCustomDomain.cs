@@ -24,7 +24,7 @@ namespace Pulumi.Auth0
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myCustomDomain = new Auth0.Index.CustomDomain("my_custom_domain", new()
+        ///     var myCustomDomain = new Auth0.CustomDomain("my_custom_domain", new()
         ///     {
         ///         Domain = "example.auth.tempdomain.com",
         ///         Type = "auth0_managed_certs",
@@ -36,7 +36,7 @@ namespace Pulumi.Auth0
         ///         },
         ///     });
         /// 
-        ///     var test = Auth0.Index.GetCustomDomain.Invoke(new()
+        ///     var test = Auth0.GetCustomDomain.Invoke(new()
         ///     {
         ///         CustomDomainId = myCustomDomain.Id,
         ///     });
@@ -60,7 +60,7 @@ namespace Pulumi.Auth0
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myCustomDomain = new Auth0.Index.CustomDomain("my_custom_domain", new()
+        ///     var myCustomDomain = new Auth0.CustomDomain("my_custom_domain", new()
         ///     {
         ///         Domain = "example.auth.tempdomain.com",
         ///         Type = "auth0_managed_certs",
@@ -72,7 +72,7 @@ namespace Pulumi.Auth0
         ///         },
         ///     });
         /// 
-        ///     var test = Auth0.Index.GetCustomDomain.Invoke(new()
+        ///     var test = Auth0.GetCustomDomain.Invoke(new()
         ///     {
         ///         CustomDomainId = myCustomDomain.Id,
         ///     });
@@ -96,7 +96,7 @@ namespace Pulumi.Auth0
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myCustomDomain = new Auth0.Index.CustomDomain("my_custom_domain", new()
+        ///     var myCustomDomain = new Auth0.CustomDomain("my_custom_domain", new()
         ///     {
         ///         Domain = "example.auth.tempdomain.com",
         ///         Type = "auth0_managed_certs",
@@ -108,7 +108,7 @@ namespace Pulumi.Auth0
         ///         },
         ///     });
         /// 
-        ///     var test = Auth0.Index.GetCustomDomain.Invoke(new()
+        ///     var test = Auth0.GetCustomDomain.Invoke(new()
         ///     {
         ///         CustomDomainId = myCustomDomain.Id,
         ///     });

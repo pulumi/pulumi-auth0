@@ -28,6 +28,8 @@ import * as utilities from "./utilities";
  *     name: "Firstname Lastname",
  *     email: "test@test.com",
  *     password: "passpass$12$12",
+ * }, {
+ *     ignoreChanges: [roles],
  * });
  * const userRoles = new auth0.UserRoles("user_roles", {
  *     userId: user.id,
@@ -120,11 +122,11 @@ export interface UserRolesState {
     /**
      * Set of IDs of roles assigned to the user.
      */
-    roles?: pulumi.Input<pulumi.Input<string>[]>;
+    roles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * ID of the user.
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
 }
 
 /**

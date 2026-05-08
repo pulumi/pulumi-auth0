@@ -22,7 +22,7 @@ __all__ = ['PromptScreenPartialsArgs', 'PromptScreenPartials']
 class PromptScreenPartialsArgs:
     def __init__(__self__, *,
                  prompt_type: pulumi.Input[_builtins.str],
-                 screen_partials: Optional[pulumi.Input[Sequence[pulumi.Input['PromptScreenPartialsScreenPartialArgs']]]] = None):
+                 screen_partials: pulumi.Input[Optional[Sequence[pulumi.Input['PromptScreenPartialsScreenPartialArgs']]]] = None):
         """
         The set of arguments for constructing a PromptScreenPartials resource.
 
@@ -46,19 +46,19 @@ class PromptScreenPartialsArgs:
 
     @_builtins.property
     @pulumi.getter(name="screenPartials")
-    def screen_partials(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PromptScreenPartialsScreenPartialArgs']]]]:
+    def screen_partials(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PromptScreenPartialsScreenPartialArgs']]]]:
         return pulumi.get(self, "screen_partials")
 
     @screen_partials.setter
-    def screen_partials(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PromptScreenPartialsScreenPartialArgs']]]]):
+    def screen_partials(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PromptScreenPartialsScreenPartialArgs']]]]):
         pulumi.set(self, "screen_partials", value)
 
 
 @pulumi.input_type
 class _PromptScreenPartialsState:
     def __init__(__self__, *,
-                 prompt_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 screen_partials: Optional[pulumi.Input[Sequence[pulumi.Input['PromptScreenPartialsScreenPartialArgs']]]] = None):
+                 prompt_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 screen_partials: pulumi.Input[Optional[Sequence[pulumi.Input['PromptScreenPartialsScreenPartialArgs']]]] = None):
         """
         Input properties used for looking up and filtering PromptScreenPartials resources.
 
@@ -71,23 +71,23 @@ class _PromptScreenPartialsState:
 
     @_builtins.property
     @pulumi.getter(name="promptType")
-    def prompt_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def prompt_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`, `passkeys`.
         """
         return pulumi.get(self, "prompt_type")
 
     @prompt_type.setter
-    def prompt_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def prompt_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "prompt_type", value)
 
     @_builtins.property
     @pulumi.getter(name="screenPartials")
-    def screen_partials(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PromptScreenPartialsScreenPartialArgs']]]]:
+    def screen_partials(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PromptScreenPartialsScreenPartialArgs']]]]:
         return pulumi.get(self, "screen_partials")
 
     @screen_partials.setter
-    def screen_partials(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PromptScreenPartialsScreenPartialArgs']]]]):
+    def screen_partials(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PromptScreenPartialsScreenPartialArgs']]]]):
         pulumi.set(self, "screen_partials", value)
 
 
@@ -97,8 +97,8 @@ class PromptScreenPartials(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 prompt_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 screen_partials: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PromptScreenPartialsScreenPartialArgs', 'PromptScreenPartialsScreenPartialArgsDict']]]]] = None,
+                 prompt_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 screen_partials: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PromptScreenPartialsScreenPartialArgs', 'PromptScreenPartialsScreenPartialArgsDict']]]]] = None,
                  __props__=None):
         """
         With this resource, you can manage a customized sign up and login experience by adding custom content, form elements and css/javascript. You can read more about this [here](https://auth0.com/docs/customize/universal-login-pages/customize-signup-and-login-prompts).
@@ -231,8 +231,8 @@ class PromptScreenPartials(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 prompt_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 screen_partials: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PromptScreenPartialsScreenPartialArgs', 'PromptScreenPartialsScreenPartialArgsDict']]]]] = None,
+                 prompt_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 screen_partials: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PromptScreenPartialsScreenPartialArgs', 'PromptScreenPartialsScreenPartialArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -256,8 +256,8 @@ class PromptScreenPartials(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            prompt_type: Optional[pulumi.Input[_builtins.str]] = None,
-            screen_partials: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PromptScreenPartialsScreenPartialArgs', 'PromptScreenPartialsScreenPartialArgsDict']]]]] = None) -> 'PromptScreenPartials':
+            prompt_type: pulumi.Input[Optional[_builtins.str]] = None,
+            screen_partials: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PromptScreenPartialsScreenPartialArgs', 'PromptScreenPartialsScreenPartialArgsDict']]]]] = None) -> 'PromptScreenPartials':
         """
         Get an existing PromptScreenPartials resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

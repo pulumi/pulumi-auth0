@@ -60,8 +60,8 @@ class OrganizationDiscoveryDomainsArgs:
 @pulumi.input_type
 class _OrganizationDiscoveryDomainsState:
     def __init__(__self__, *,
-                 discovery_domains: Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationDiscoveryDomainsDiscoveryDomainArgs']]]] = None,
-                 organization_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 discovery_domains: pulumi.Input[Optional[Sequence[pulumi.Input['OrganizationDiscoveryDomainsDiscoveryDomainArgs']]]] = None,
+                 organization_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OrganizationDiscoveryDomains resources.
 
@@ -75,26 +75,26 @@ class _OrganizationDiscoveryDomainsState:
 
     @_builtins.property
     @pulumi.getter(name="discoveryDomains")
-    def discovery_domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationDiscoveryDomainsDiscoveryDomainArgs']]]]:
+    def discovery_domains(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OrganizationDiscoveryDomainsDiscoveryDomainArgs']]]]:
         """
         Discovery domains that are configured for the organization.
         """
         return pulumi.get(self, "discovery_domains")
 
     @discovery_domains.setter
-    def discovery_domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationDiscoveryDomainsDiscoveryDomainArgs']]]]):
+    def discovery_domains(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OrganizationDiscoveryDomainsDiscoveryDomainArgs']]]]):
         pulumi.set(self, "discovery_domains", value)
 
     @_builtins.property
     @pulumi.getter(name="organizationId")
-    def organization_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def organization_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the organization on which to manage the discovery domains.
         """
         return pulumi.get(self, "organization_id")
 
     @organization_id.setter
-    def organization_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def organization_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "organization_id", value)
 
 
@@ -104,8 +104,8 @@ class OrganizationDiscoveryDomains(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 discovery_domains: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OrganizationDiscoveryDomainsDiscoveryDomainArgs', 'OrganizationDiscoveryDomainsDiscoveryDomainArgsDict']]]]] = None,
-                 organization_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 discovery_domains: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationDiscoveryDomainsDiscoveryDomainArgs', 'OrganizationDiscoveryDomainsDiscoveryDomainArgsDict']]]]] = None,
+                 organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         With this resource, you can manage discovery domains on an organization.
@@ -141,8 +141,8 @@ class OrganizationDiscoveryDomains(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 discovery_domains: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OrganizationDiscoveryDomainsDiscoveryDomainArgs', 'OrganizationDiscoveryDomainsDiscoveryDomainArgsDict']]]]] = None,
-                 organization_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 discovery_domains: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationDiscoveryDomainsDiscoveryDomainArgs', 'OrganizationDiscoveryDomainsDiscoveryDomainArgsDict']]]]] = None,
+                 organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -168,8 +168,8 @@ class OrganizationDiscoveryDomains(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            discovery_domains: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OrganizationDiscoveryDomainsDiscoveryDomainArgs', 'OrganizationDiscoveryDomainsDiscoveryDomainArgsDict']]]]] = None,
-            organization_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'OrganizationDiscoveryDomains':
+            discovery_domains: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationDiscoveryDomainsDiscoveryDomainArgs', 'OrganizationDiscoveryDomainsDiscoveryDomainArgsDict']]]]] = None,
+            organization_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'OrganizationDiscoveryDomains':
         """
         Get an existing OrganizationDiscoveryDomains resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

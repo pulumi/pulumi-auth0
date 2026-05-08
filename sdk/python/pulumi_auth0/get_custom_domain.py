@@ -251,7 +251,7 @@ def get_custom_domain(custom_domain_id: Optional[_builtins.str] = None,
         tls_policy=pulumi.get(__ret__, 'tls_policy'),
         type=pulumi.get(__ret__, 'type'),
         verifications=pulumi.get(__ret__, 'verifications'))
-def get_custom_domain_output(custom_domain_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_custom_domain_output(custom_domain_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCustomDomainResult]:
     """
     Data source to retrieve the custom domain configuration.

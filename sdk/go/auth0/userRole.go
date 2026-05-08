@@ -46,7 +46,9 @@ import (
 //				Name:           pulumi.String("Firstname Lastname"),
 //				Email:          pulumi.String("test@test.com"),
 //				Password:       pulumi.String("passpass$12$12"),
-//			})
+//			}, pulumi.IgnoreChanges([]string{
+//				roles,
+//			}))
 //			if err != nil {
 //				return err
 //			}

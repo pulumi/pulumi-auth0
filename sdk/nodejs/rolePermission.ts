@@ -162,23 +162,23 @@ export interface RolePermissionState {
     /**
      * Description of the permission.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of the permission.
      */
-    permission?: pulumi.Input<string>;
+    permission?: pulumi.Input<string | undefined>;
     /**
      * Identifier of the resource server that the permission is associated with.
      */
-    resourceServerIdentifier?: pulumi.Input<string>;
+    resourceServerIdentifier?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource server that the permission is associated with.
      */
-    resourceServerName?: pulumi.Input<string>;
+    resourceServerName?: pulumi.Input<string | undefined>;
     /**
      * ID of the role to associate the permission to.
      */
-    roleId?: pulumi.Input<string>;
+    roleId?: pulumi.Input<string | undefined>;
 }
 
 /**

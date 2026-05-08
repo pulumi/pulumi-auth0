@@ -27,7 +27,7 @@ namespace Pulumi.Auth0
         ///     // Data Source Example: Retrieve Auth0 Phone Notification Templates
         ///     // This example shows how to fetch existing phone notification templates from your Auth0 tenant
         ///     // Retrieve the OTP enrollment template
-        ///     var otpEnrollment = Auth0.Index.GetBrandingPhoneNotificationTemplate.Invoke(new()
+        ///     var otpEnrollment = Auth0.GetBrandingPhoneNotificationTemplate.Invoke(new()
         ///     {
         ///         TemplateId = "tem_xxxxxxxxxxxxxxxxx",
         ///     });
@@ -58,7 +58,7 @@ namespace Pulumi.Auth0
         ///     // Data Source Example: Retrieve Auth0 Phone Notification Templates
         ///     // This example shows how to fetch existing phone notification templates from your Auth0 tenant
         ///     // Retrieve the OTP enrollment template
-        ///     var otpEnrollment = Auth0.Index.GetBrandingPhoneNotificationTemplate.Invoke(new()
+        ///     var otpEnrollment = Auth0.GetBrandingPhoneNotificationTemplate.Invoke(new()
         ///     {
         ///         TemplateId = "tem_xxxxxxxxxxxxxxxxx",
         ///     });
@@ -89,7 +89,7 @@ namespace Pulumi.Auth0
         ///     // Data Source Example: Retrieve Auth0 Phone Notification Templates
         ///     // This example shows how to fetch existing phone notification templates from your Auth0 tenant
         ///     // Retrieve the OTP enrollment template
-        ///     var otpEnrollment = Auth0.Index.GetBrandingPhoneNotificationTemplate.Invoke(new()
+        ///     var otpEnrollment = Auth0.GetBrandingPhoneNotificationTemplate.Invoke(new()
         ///     {
         ///         TemplateId = "tem_xxxxxxxxxxxxxxxxx",
         ///     });

@@ -138,17 +138,17 @@ export interface GetClientsOutputArgs {
     /**
      * Filter clients by application types.
      */
-    appTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    appTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Filter clients by CIMD external client ID URL.
      */
-    externalClientId?: pulumi.Input<string>;
+    externalClientId?: pulumi.Input<string | undefined>;
     /**
      * Filter clients by first party status.
      */
-    isFirstParty?: pulumi.Input<boolean>;
+    isFirstParty?: pulumi.Input<boolean | undefined>;
     /**
      * Filter clients by name (partial matches supported).
      */
-    nameFilter?: pulumi.Input<string>;
+    nameFilter?: pulumi.Input<string | undefined>;
 }

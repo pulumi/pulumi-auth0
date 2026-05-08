@@ -138,27 +138,27 @@ export interface TokenExchangeProfileState {
     /**
      * Unique identifier of the Action
      */
-    actionId?: pulumi.Input<string>;
+    actionId?: pulumi.Input<string | undefined>;
     /**
      * The ISO 8601 formatted date the credential was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Name of the token exchange profile.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Type of the subject token
      */
-    subjectTokenType?: pulumi.Input<string>;
+    subjectTokenType?: pulumi.Input<string | undefined>;
     /**
      * Type of the token exchange profile
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The ISO 8601 formatted date the credential was updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -168,17 +168,17 @@ export interface TokenExchangeProfileArgs {
     /**
      * Unique identifier of the Action
      */
-    actionId?: pulumi.Input<string>;
+    actionId?: pulumi.Input<string | undefined>;
     /**
      * Name of the token exchange profile.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Type of the subject token
      */
-    subjectTokenType?: pulumi.Input<string>;
+    subjectTokenType?: pulumi.Input<string | undefined>;
     /**
      * Type of the token exchange profile
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }

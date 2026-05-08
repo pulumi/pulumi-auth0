@@ -211,23 +211,23 @@ export interface EmailProviderState {
     /**
      * Configuration settings for the credentials for the email provider.
      */
-    credentials?: pulumi.Input<inputs.EmailProviderCredentials>;
+    credentials?: pulumi.Input<inputs.EmailProviderCredentials | undefined>;
     /**
      * Email address to use as the sender when no other "from" address is specified.
      */
-    defaultFromAddress?: pulumi.Input<string>;
+    defaultFromAddress?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the email provider is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the email provider. Options include `azureCs`, `custom`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Specific email provider settings.
      */
-    settings?: pulumi.Input<inputs.EmailProviderSettings>;
+    settings?: pulumi.Input<inputs.EmailProviderSettings | undefined>;
 }
 
 /**
@@ -245,13 +245,13 @@ export interface EmailProviderArgs {
     /**
      * Indicates whether the email provider is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the email provider. Options include `azureCs`, `custom`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Specific email provider settings.
      */
-    settings?: pulumi.Input<inputs.EmailProviderSettings>;
+    settings?: pulumi.Input<inputs.EmailProviderSettings | undefined>;
 }

@@ -58,10 +58,10 @@ class UserRoleArgs:
 @pulumi.input_type
 class _UserRoleState:
     def __init__(__self__, *,
-                 role_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 role_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering UserRole resources.
 
@@ -81,50 +81,50 @@ class _UserRoleState:
 
     @_builtins.property
     @pulumi.getter(name="roleDescription")
-    def role_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the role.
         """
         return pulumi.get(self, "role_description")
 
     @role_description.setter
-    def role_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role_description", value)
 
     @_builtins.property
     @pulumi.getter(name="roleId")
-    def role_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the role assigned to the user.
         """
         return pulumi.get(self, "role_id")
 
     @role_id.setter
-    def role_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role_id", value)
 
     @_builtins.property
     @pulumi.getter(name="roleName")
-    def role_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the role.
         """
         return pulumi.get(self, "role_name")
 
     @role_name.setter
-    def role_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role_name", value)
 
     @_builtins.property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the user.
         """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
-    def user_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_id", value)
 
 
@@ -134,8 +134,8 @@ class UserRole(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 role_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 role_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         With this resource, you can manage assigned roles for a user.
@@ -159,7 +159,8 @@ class UserRole(pulumi.CustomResource):
             username="unique_username",
             name="Firstname Lastname",
             email="test@test.com",
-            password="passpass$12$12")
+            password="passpass$12$12",
+            opts = pulumi.ResourceOptions(ignore_changes=[roles]))
         user_roles = auth0.UserRole("user_roles",
             user_id=user.id,
             role_id=admin.id)
@@ -211,7 +212,8 @@ class UserRole(pulumi.CustomResource):
             username="unique_username",
             name="Firstname Lastname",
             email="test@test.com",
-            password="passpass$12$12")
+            password="passpass$12$12",
+            opts = pulumi.ResourceOptions(ignore_changes=[roles]))
         user_roles = auth0.UserRole("user_roles",
             user_id=user.id,
             role_id=admin.id)
@@ -245,8 +247,8 @@ class UserRole(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 role_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 role_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -274,10 +276,10 @@ class UserRole(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            role_description: Optional[pulumi.Input[_builtins.str]] = None,
-            role_id: Optional[pulumi.Input[_builtins.str]] = None,
-            role_name: Optional[pulumi.Input[_builtins.str]] = None,
-            user_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'UserRole':
+            role_description: pulumi.Input[Optional[_builtins.str]] = None,
+            role_id: pulumi.Input[Optional[_builtins.str]] = None,
+            role_name: pulumi.Input[Optional[_builtins.str]] = None,
+            user_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'UserRole':
         """
         Get an existing UserRole resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

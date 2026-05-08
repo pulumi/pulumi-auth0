@@ -176,35 +176,35 @@ export interface LogStreamState {
     /**
      * Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered. Filters available: `auth.ancillary.fail`, `auth.ancillary.success`, `auth.login.fail`, `auth.login.notification`, `auth.login.success`, `auth.logout.fail`, `auth.logout.success`, `auth.signup.fail`, `auth.signup.success`, `auth.silent_auth.fail`, `auth.silent_auth.success`, `auth.token_exchange.fail`, `auth.token_exchange.success`, `management.fail`, `management.success`, `system.notification`, `user.fail`, `user.notification`, `user.success`, `other`.
      */
-    filters?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+    filters?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[] | undefined>;
     /**
      * Set True for priority log streams, False for non-priority
      */
-    isPriority?: pulumi.Input<boolean>;
+    isPriority?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the log stream.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Configuration for PII (Personally Identifiable Information) handling.
      */
-    piiConfig?: pulumi.Input<inputs.LogStreamPiiConfig>;
+    piiConfig?: pulumi.Input<inputs.LogStreamPiiConfig | undefined>;
     /**
      * The sink configuration for the log stream.
      */
-    sink?: pulumi.Input<inputs.LogStreamSink>;
+    sink?: pulumi.Input<inputs.LogStreamSink | undefined>;
     /**
      * The optional datetime (ISO 8601) to start streaming logs from.
      */
-    startFrom?: pulumi.Input<string>;
+    startFrom?: pulumi.Input<string | undefined>;
     /**
      * The current status of the log stream. Options are "active", "paused", "suspended".
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Type of the log stream, which indicates the sink provider. Options include: `eventbridge`, `eventgrid`, `http`, `datadog`, `splunk`, `sumo`, `mixpanel`, `segment`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -214,19 +214,19 @@ export interface LogStreamArgs {
     /**
      * Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered. Filters available: `auth.ancillary.fail`, `auth.ancillary.success`, `auth.login.fail`, `auth.login.notification`, `auth.login.success`, `auth.logout.fail`, `auth.logout.success`, `auth.signup.fail`, `auth.signup.success`, `auth.silent_auth.fail`, `auth.silent_auth.success`, `auth.token_exchange.fail`, `auth.token_exchange.success`, `management.fail`, `management.success`, `system.notification`, `user.fail`, `user.notification`, `user.success`, `other`.
      */
-    filters?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+    filters?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[] | undefined>;
     /**
      * Set True for priority log streams, False for non-priority
      */
-    isPriority?: pulumi.Input<boolean>;
+    isPriority?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the log stream.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Configuration for PII (Personally Identifiable Information) handling.
      */
-    piiConfig?: pulumi.Input<inputs.LogStreamPiiConfig>;
+    piiConfig?: pulumi.Input<inputs.LogStreamPiiConfig | undefined>;
     /**
      * The sink configuration for the log stream.
      */
@@ -234,11 +234,11 @@ export interface LogStreamArgs {
     /**
      * The optional datetime (ISO 8601) to start streaming logs from.
      */
-    startFrom?: pulumi.Input<string>;
+    startFrom?: pulumi.Input<string | undefined>;
     /**
      * The current status of the log stream. Options are "active", "paused", "suspended".
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Type of the log stream, which indicates the sink provider. Options include: `eventbridge`, `eventgrid`, `http`, `datadog`, `splunk`, `sumo`, `mixpanel`, `segment`.
      */

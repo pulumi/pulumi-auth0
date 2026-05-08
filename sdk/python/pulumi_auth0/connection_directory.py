@@ -22,8 +22,8 @@ __all__ = ['ConnectionDirectoryArgs', 'ConnectionDirectory']
 class ConnectionDirectoryArgs:
     def __init__(__self__, *,
                  connection_id: pulumi.Input[_builtins.str],
-                 mappings: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionDirectoryMappingArgs']]]] = None,
-                 synchronize_automatically: Optional[pulumi.Input[_builtins.bool]] = None):
+                 mappings: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionDirectoryMappingArgs']]]] = None,
+                 synchronize_automatically: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ConnectionDirectory resource.
 
@@ -51,42 +51,42 @@ class ConnectionDirectoryArgs:
 
     @_builtins.property
     @pulumi.getter
-    def mappings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionDirectoryMappingArgs']]]]:
+    def mappings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionDirectoryMappingArgs']]]]:
         """
         Mapping between Auth0 attributes and IDP user attributes. Defaults to default mapping for the connection type if not specified.
         """
         return pulumi.get(self, "mappings")
 
     @mappings.setter
-    def mappings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionDirectoryMappingArgs']]]]):
+    def mappings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionDirectoryMappingArgs']]]]):
         pulumi.set(self, "mappings", value)
 
     @_builtins.property
     @pulumi.getter(name="synchronizeAutomatically")
-    def synchronize_automatically(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def synchronize_automatically(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether periodic automatic synchronization is enabled. Defaults to false.
         """
         return pulumi.get(self, "synchronize_automatically")
 
     @synchronize_automatically.setter
-    def synchronize_automatically(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def synchronize_automatically(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "synchronize_automatically", value)
 
 
 @pulumi.input_type
 class _ConnectionDirectoryState:
     def __init__(__self__, *,
-                 connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 connection_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_synchronization_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_synchronization_error: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_synchronization_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 mappings: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionDirectoryMappingArgs']]]] = None,
-                 strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 synchronize_automatically: Optional[pulumi.Input[_builtins.bool]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None):
+                 connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_synchronization_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_synchronization_error: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_synchronization_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 mappings: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionDirectoryMappingArgs']]]] = None,
+                 strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 synchronize_automatically: pulumi.Input[Optional[_builtins.bool]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ConnectionDirectory resources.
 
@@ -124,122 +124,122 @@ class _ConnectionDirectoryState:
 
     @_builtins.property
     @pulumi.getter(name="connectionId")
-    def connection_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the connection for this directory provisioning configuration.
         """
         return pulumi.get(self, "connection_id")
 
     @connection_id.setter
-    def connection_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_id", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionName")
-    def connection_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the connection for this directory provisioning configuration.
         """
         return pulumi.get(self, "connection_name")
 
     @connection_name.setter
-    def connection_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_name", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp at which the directory provisioning configuration was created.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="lastSynchronizationAt")
-    def last_synchronization_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_synchronization_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp at which the connection was last synchronized.
         """
         return pulumi.get(self, "last_synchronization_at")
 
     @last_synchronization_at.setter
-    def last_synchronization_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_synchronization_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_synchronization_at", value)
 
     @_builtins.property
     @pulumi.getter(name="lastSynchronizationError")
-    def last_synchronization_error(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_synchronization_error(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The error message of the last synchronization, if any.
         """
         return pulumi.get(self, "last_synchronization_error")
 
     @last_synchronization_error.setter
-    def last_synchronization_error(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_synchronization_error(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_synchronization_error", value)
 
     @_builtins.property
     @pulumi.getter(name="lastSynchronizationStatus")
-    def last_synchronization_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_synchronization_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the last synchronization.
         """
         return pulumi.get(self, "last_synchronization_status")
 
     @last_synchronization_status.setter
-    def last_synchronization_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_synchronization_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_synchronization_status", value)
 
     @_builtins.property
     @pulumi.getter
-    def mappings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionDirectoryMappingArgs']]]]:
+    def mappings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionDirectoryMappingArgs']]]]:
         """
         Mapping between Auth0 attributes and IDP user attributes. Defaults to default mapping for the connection type if not specified.
         """
         return pulumi.get(self, "mappings")
 
     @mappings.setter
-    def mappings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionDirectoryMappingArgs']]]]):
+    def mappings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionDirectoryMappingArgs']]]]):
         pulumi.set(self, "mappings", value)
 
     @_builtins.property
     @pulumi.getter
-    def strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Strategy of the connection for this directory provisioning configuration.
         """
         return pulumi.get(self, "strategy")
 
     @strategy.setter
-    def strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="synchronizeAutomatically")
-    def synchronize_automatically(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def synchronize_automatically(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether periodic automatic synchronization is enabled. Defaults to false.
         """
         return pulumi.get(self, "synchronize_automatically")
 
     @synchronize_automatically.setter
-    def synchronize_automatically(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def synchronize_automatically(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "synchronize_automatically", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp at which the directory provisioning configuration was last updated.
         """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_at", value)
 
 
@@ -249,9 +249,9 @@ class ConnectionDirectory(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectionDirectoryMappingArgs', 'ConnectionDirectoryMappingArgsDict']]]]] = None,
-                 synchronize_automatically: Optional[pulumi.Input[_builtins.bool]] = None,
+                 connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionDirectoryMappingArgs', 'ConnectionDirectoryMappingArgsDict']]]]] = None,
+                 synchronize_automatically: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         With this resource, you can configure directory provisioning (directory sync) for `Google Workspace` Enterprise connections. This enables automatic user provisioning from the identity provider to Auth0.
@@ -384,9 +384,9 @@ class ConnectionDirectory(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectionDirectoryMappingArgs', 'ConnectionDirectoryMappingArgsDict']]]]] = None,
-                 synchronize_automatically: Optional[pulumi.Input[_builtins.bool]] = None,
+                 connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionDirectoryMappingArgs', 'ConnectionDirectoryMappingArgsDict']]]]] = None,
+                 synchronize_automatically: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -418,16 +418,16 @@ class ConnectionDirectory(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-            connection_name: Optional[pulumi.Input[_builtins.str]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            last_synchronization_at: Optional[pulumi.Input[_builtins.str]] = None,
-            last_synchronization_error: Optional[pulumi.Input[_builtins.str]] = None,
-            last_synchronization_status: Optional[pulumi.Input[_builtins.str]] = None,
-            mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectionDirectoryMappingArgs', 'ConnectionDirectoryMappingArgsDict']]]]] = None,
-            strategy: Optional[pulumi.Input[_builtins.str]] = None,
-            synchronize_automatically: Optional[pulumi.Input[_builtins.bool]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.str]] = None) -> 'ConnectionDirectory':
+            connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+            connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            last_synchronization_at: pulumi.Input[Optional[_builtins.str]] = None,
+            last_synchronization_error: pulumi.Input[Optional[_builtins.str]] = None,
+            last_synchronization_status: pulumi.Input[Optional[_builtins.str]] = None,
+            mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionDirectoryMappingArgs', 'ConnectionDirectoryMappingArgsDict']]]]] = None,
+            strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            synchronize_automatically: pulumi.Input[Optional[_builtins.bool]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> 'ConnectionDirectory':
         """
         Get an existing ConnectionDirectory resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

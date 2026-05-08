@@ -84,11 +84,11 @@ export interface OrganizationDiscoveryDomainsState {
     /**
      * Discovery domains that are configured for the organization.
      */
-    discoveryDomains?: pulumi.Input<pulumi.Input<inputs.OrganizationDiscoveryDomainsDiscoveryDomain>[]>;
+    discoveryDomains?: pulumi.Input<pulumi.Input<inputs.OrganizationDiscoveryDomainsDiscoveryDomain>[] | undefined>;
     /**
      * ID of the organization on which to manage the discovery domains.
      */
-    organizationId?: pulumi.Input<string>;
+    organizationId?: pulumi.Input<string | undefined>;
 }
 
 /**

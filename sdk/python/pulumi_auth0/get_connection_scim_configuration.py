@@ -186,9 +186,9 @@ def get_connection_scim_configuration(connection_id: Optional[_builtins.str] = N
         strategy=pulumi.get(__ret__, 'strategy'),
         tenant_name=pulumi.get(__ret__, 'tenant_name'),
         user_id_attribute=pulumi.get(__ret__, 'user_id_attribute'))
-def get_connection_scim_configuration_output(connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                             default_mappings: Optional[pulumi.Input[Optional[Sequence[Union['GetConnectionScimConfigurationDefaultMappingArgs', 'GetConnectionScimConfigurationDefaultMappingArgsDict']]]]] = None,
-                                             mappings: Optional[pulumi.Input[Optional[Sequence[Union['GetConnectionScimConfigurationMappingArgs', 'GetConnectionScimConfigurationMappingArgsDict']]]]] = None,
+def get_connection_scim_configuration_output(connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                             default_mappings: pulumi.Input[Optional[Optional[Sequence[Union['GetConnectionScimConfigurationDefaultMappingArgs', 'GetConnectionScimConfigurationDefaultMappingArgsDict']]]]] = None,
+                                             mappings: pulumi.Input[Optional[Optional[Sequence[Union['GetConnectionScimConfigurationMappingArgs', 'GetConnectionScimConfigurationMappingArgsDict']]]]] = None,
                                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConnectionScimConfigurationResult]:
     """
     Data source to retrieve a SCIM configuration for an Auth0 connection by `connection_id`.

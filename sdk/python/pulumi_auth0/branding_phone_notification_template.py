@@ -22,8 +22,8 @@ __all__ = ['BrandingPhoneNotificationTemplateArgs', 'BrandingPhoneNotificationTe
 class BrandingPhoneNotificationTemplateArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[_builtins.str],
-                 content: Optional[pulumi.Input['BrandingPhoneNotificationTemplateContentArgs']] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 content: pulumi.Input[Optional['BrandingPhoneNotificationTemplateContentArgs']] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a BrandingPhoneNotificationTemplate resource.
 
@@ -51,39 +51,39 @@ class BrandingPhoneNotificationTemplateArgs:
 
     @_builtins.property
     @pulumi.getter
-    def content(self) -> Optional[pulumi.Input['BrandingPhoneNotificationTemplateContentArgs']]:
+    def content(self) -> pulumi.Input[Optional['BrandingPhoneNotificationTemplateContentArgs']]:
         """
         The content of the phone notification template.
         """
         return pulumi.get(self, "content")
 
     @content.setter
-    def content(self, value: Optional[pulumi.Input['BrandingPhoneNotificationTemplateContentArgs']]):
+    def content(self, value: pulumi.Input[Optional['BrandingPhoneNotificationTemplateContentArgs']]):
         pulumi.set(self, "content", value)
 
     @_builtins.property
     @pulumi.getter
-    def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the phone notification template is disabled.
         """
         return pulumi.get(self, "disabled")
 
     @disabled.setter
-    def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
 
 
 @pulumi.input_type
 class _BrandingPhoneNotificationTemplateState:
     def __init__(__self__, *,
-                 channel: Optional[pulumi.Input[_builtins.str]] = None,
-                 content: Optional[pulumi.Input['BrandingPhoneNotificationTemplateContentArgs']] = None,
-                 customizable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 template_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 channel: pulumi.Input[Optional[_builtins.str]] = None,
+                 content: pulumi.Input[Optional['BrandingPhoneNotificationTemplateContentArgs']] = None,
+                 customizable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 template_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BrandingPhoneNotificationTemplate resources.
 
@@ -112,86 +112,86 @@ class _BrandingPhoneNotificationTemplateState:
 
     @_builtins.property
     @pulumi.getter
-    def channel(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def channel(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The channel of the phone notification template (e.g., `sms`, `voice`).
         """
         return pulumi.get(self, "channel")
 
     @channel.setter
-    def channel(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def channel(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "channel", value)
 
     @_builtins.property
     @pulumi.getter
-    def content(self) -> Optional[pulumi.Input['BrandingPhoneNotificationTemplateContentArgs']]:
+    def content(self) -> pulumi.Input[Optional['BrandingPhoneNotificationTemplateContentArgs']]:
         """
         The content of the phone notification template.
         """
         return pulumi.get(self, "content")
 
     @content.setter
-    def content(self, value: Optional[pulumi.Input['BrandingPhoneNotificationTemplateContentArgs']]):
+    def content(self, value: pulumi.Input[Optional['BrandingPhoneNotificationTemplateContentArgs']]):
         pulumi.set(self, "content", value)
 
     @_builtins.property
     @pulumi.getter
-    def customizable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def customizable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the phone notification template is customizable.
         """
         return pulumi.get(self, "customizable")
 
     @customizable.setter
-    def customizable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def customizable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "customizable", value)
 
     @_builtins.property
     @pulumi.getter
-    def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the phone notification template is disabled.
         """
         return pulumi.get(self, "disabled")
 
     @disabled.setter
-    def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
 
     @_builtins.property
     @pulumi.getter(name="templateId")
-    def template_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def template_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the phone notification template.
         """
         return pulumi.get(self, "template_id")
 
     @template_id.setter
-    def template_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def template_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "template_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tenant(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tenant(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The tenant of the phone notification template.
         """
         return pulumi.get(self, "tenant")
 
     @tenant.setter
-    def tenant(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tenant(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenant", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the phone notification template.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -201,9 +201,9 @@ class BrandingPhoneNotificationTemplate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 content: Optional[pulumi.Input[Union['BrandingPhoneNotificationTemplateContentArgs', 'BrandingPhoneNotificationTemplateContentArgsDict']]] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 content: pulumi.Input[Optional[Union['BrandingPhoneNotificationTemplateContentArgs', 'BrandingPhoneNotificationTemplateContentArgsDict']]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages phone notification templates used for SMS and voice communications in Auth0.
@@ -326,9 +326,9 @@ class BrandingPhoneNotificationTemplate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 content: Optional[pulumi.Input[Union['BrandingPhoneNotificationTemplateContentArgs', 'BrandingPhoneNotificationTemplateContentArgsDict']]] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 content: pulumi.Input[Optional[Union['BrandingPhoneNotificationTemplateContentArgs', 'BrandingPhoneNotificationTemplateContentArgsDict']]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -357,13 +357,13 @@ class BrandingPhoneNotificationTemplate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            channel: Optional[pulumi.Input[_builtins.str]] = None,
-            content: Optional[pulumi.Input[Union['BrandingPhoneNotificationTemplateContentArgs', 'BrandingPhoneNotificationTemplateContentArgsDict']]] = None,
-            customizable: Optional[pulumi.Input[_builtins.bool]] = None,
-            disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            template_id: Optional[pulumi.Input[_builtins.str]] = None,
-            tenant: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None) -> 'BrandingPhoneNotificationTemplate':
+            channel: pulumi.Input[Optional[_builtins.str]] = None,
+            content: pulumi.Input[Optional[Union['BrandingPhoneNotificationTemplateContentArgs', 'BrandingPhoneNotificationTemplateContentArgsDict']]] = None,
+            customizable: pulumi.Input[Optional[_builtins.bool]] = None,
+            disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            template_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tenant: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> 'BrandingPhoneNotificationTemplate':
         """
         Get an existing BrandingPhoneNotificationTemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

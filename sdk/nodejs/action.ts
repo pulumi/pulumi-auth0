@@ -198,39 +198,39 @@ export interface ActionState {
     /**
      * The source code of the action.
      */
-    code?: pulumi.Input<string>;
+    code?: pulumi.Input<string | undefined>;
     /**
      * List of third party npm modules, and their versions, that this action depends on.
      */
-    dependencies?: pulumi.Input<pulumi.Input<inputs.ActionDependency>[]>;
+    dependencies?: pulumi.Input<pulumi.Input<inputs.ActionDependency>[] | undefined>;
     /**
      * Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately.
      */
-    deploy?: pulumi.Input<boolean>;
+    deploy?: pulumi.Input<boolean | undefined>;
     /**
      * List of action modules and their versions that this action depends on.
      */
-    modules?: pulumi.Input<pulumi.Input<inputs.ActionModule>[]>;
+    modules?: pulumi.Input<pulumi.Input<inputs.ActionModule>[] | undefined>;
     /**
      * The name of the action.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The Node runtime. Possible values are: `node12`, `node16` (not recommended), `node18`, `node22`
      */
-    runtime?: pulumi.Input<string>;
+    runtime?: pulumi.Input<string | undefined>;
     /**
      * List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
      */
-    secrets?: pulumi.Input<pulumi.Input<inputs.ActionSecret>[]>;
+    secrets?: pulumi.Input<pulumi.Input<inputs.ActionSecret>[] | undefined>;
     /**
      * List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
      */
-    supportedTriggers?: pulumi.Input<inputs.ActionSupportedTriggers>;
+    supportedTriggers?: pulumi.Input<inputs.ActionSupportedTriggers | undefined>;
     /**
      * Version ID of the action. This value is available if `deploy` is set to true.
      */
-    versionId?: pulumi.Input<string>;
+    versionId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -244,27 +244,27 @@ export interface ActionArgs {
     /**
      * List of third party npm modules, and their versions, that this action depends on.
      */
-    dependencies?: pulumi.Input<pulumi.Input<inputs.ActionDependency>[]>;
+    dependencies?: pulumi.Input<pulumi.Input<inputs.ActionDependency>[] | undefined>;
     /**
      * Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately.
      */
-    deploy?: pulumi.Input<boolean>;
+    deploy?: pulumi.Input<boolean | undefined>;
     /**
      * List of action modules and their versions that this action depends on.
      */
-    modules?: pulumi.Input<pulumi.Input<inputs.ActionModule>[]>;
+    modules?: pulumi.Input<pulumi.Input<inputs.ActionModule>[] | undefined>;
     /**
      * The name of the action.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The Node runtime. Possible values are: `node12`, `node16` (not recommended), `node18`, `node22`
      */
-    runtime?: pulumi.Input<string>;
+    runtime?: pulumi.Input<string | undefined>;
     /**
      * List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
      */
-    secrets?: pulumi.Input<pulumi.Input<inputs.ActionSecret>[]>;
+    secrets?: pulumi.Input<pulumi.Input<inputs.ActionSecret>[] | undefined>;
     /**
      * List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
      */

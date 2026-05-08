@@ -186,35 +186,35 @@ export interface EventStreamState {
     /**
      * The ISO 8601 timestamp when the stream was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The type of event stream destination (either 'eventbridge' or 'webhook').
      */
-    destinationType?: pulumi.Input<string>;
+    destinationType?: pulumi.Input<string | undefined>;
     /**
      * Configuration for the EventBridge destination. This block is only applicable when `destinationType` is set to `eventbridge`. EventBridge configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
      */
-    eventbridgeConfiguration?: pulumi.Input<inputs.EventStreamEventbridgeConfiguration>;
+    eventbridgeConfiguration?: pulumi.Input<inputs.EventStreamEventbridgeConfiguration | undefined>;
     /**
      * The name of the event stream.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The current status of the event stream.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * List of event types this stream is subscribed to.
      */
-    subscriptions?: pulumi.Input<pulumi.Input<string>[]>;
+    subscriptions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ISO 8601 timestamp when the stream was last updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * Configuration for the Webhook destination. This block is only applicable when `destinationType` is set to `webhook`. Webhook configurations **can** be updated after creation, including the endpoint and authorization fields.
      */
-    webhookConfiguration?: pulumi.Input<inputs.EventStreamWebhookConfiguration>;
+    webhookConfiguration?: pulumi.Input<inputs.EventStreamWebhookConfiguration | undefined>;
 }
 
 /**
@@ -228,11 +228,11 @@ export interface EventStreamArgs {
     /**
      * Configuration for the EventBridge destination. This block is only applicable when `destinationType` is set to `eventbridge`. EventBridge configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
      */
-    eventbridgeConfiguration?: pulumi.Input<inputs.EventStreamEventbridgeConfiguration>;
+    eventbridgeConfiguration?: pulumi.Input<inputs.EventStreamEventbridgeConfiguration | undefined>;
     /**
      * The name of the event stream.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * List of event types this stream is subscribed to.
      */
@@ -240,5 +240,5 @@ export interface EventStreamArgs {
     /**
      * Configuration for the Webhook destination. This block is only applicable when `destinationType` is set to `webhook`. Webhook configurations **can** be updated after creation, including the endpoint and authorization fields.
      */
-    webhookConfiguration?: pulumi.Input<inputs.EventStreamWebhookConfiguration>;
+    webhookConfiguration?: pulumi.Input<inputs.EventStreamWebhookConfiguration | undefined>;
 }

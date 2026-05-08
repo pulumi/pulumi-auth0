@@ -143,7 +143,7 @@ def get_phone_provider(id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         tenant=pulumi.get(__ret__, 'tenant'))
-def get_phone_provider_output(id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_phone_provider_output(id: pulumi.Input[Optional[_builtins.str]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPhoneProviderResult]:
     """
     Data source to retrieve a specific Auth0 Phone Provider by `id`.

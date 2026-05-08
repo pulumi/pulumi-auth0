@@ -128,19 +128,19 @@ export interface SelfServiceProfileCustomTextState {
     /**
      * The list of text keys and values to customize the self-service SSO page. Values can be plain text or rich HTML content limited to basic styling tags and hyperlinks
      */
-    body?: pulumi.Input<string>;
+    body?: pulumi.Input<string | undefined>;
     /**
      * The language of the custom text
      */
-    language?: pulumi.Input<string>;
+    language?: pulumi.Input<string | undefined>;
     /**
      * The page where the custom text is shown
      */
-    page?: pulumi.Input<string>;
+    page?: pulumi.Input<string | undefined>;
     /**
      * The id of the self-service profile
      */
-    ssoId?: pulumi.Input<string>;
+    ssoId?: pulumi.Input<string | undefined>;
 }
 
 /**

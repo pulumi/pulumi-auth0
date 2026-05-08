@@ -132,15 +132,15 @@ export interface PromptScreenPartialState {
     /**
      * The insertion points for the partials.
      */
-    insertionPoints?: pulumi.Input<inputs.PromptScreenPartialInsertionPoints>;
+    insertionPoints?: pulumi.Input<inputs.PromptScreenPartialInsertionPoints | undefined>;
     /**
      * The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`, `passkeys`.
      */
-    promptType?: pulumi.Input<string>;
+    promptType?: pulumi.Input<string | undefined>;
     /**
      * The name of the screen associated with the partials
      */
-    screenName?: pulumi.Input<string>;
+    screenName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -150,7 +150,7 @@ export interface PromptScreenPartialArgs {
     /**
      * The insertion points for the partials.
      */
-    insertionPoints?: pulumi.Input<inputs.PromptScreenPartialInsertionPoints>;
+    insertionPoints?: pulumi.Input<inputs.PromptScreenPartialInsertionPoints | undefined>;
     /**
      * The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`, `passkeys`.
      */

@@ -22,10 +22,10 @@ __all__ = ['ActionModuleInitArgs', 'ActionModule']
 class ActionModuleInitArgs:
     def __init__(__self__, *,
                  code: pulumi.Input[_builtins.str],
-                 dependencies: Optional[pulumi.Input[Sequence[pulumi.Input['ActionModuleDependencyArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 publish: Optional[pulumi.Input[_builtins.bool]] = None,
-                 secrets: Optional[pulumi.Input[Sequence[pulumi.Input['ActionModuleSecretArgs']]]] = None):
+                 dependencies: pulumi.Input[Optional[Sequence[pulumi.Input['ActionModuleDependencyArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 publish: pulumi.Input[Optional[_builtins.bool]] = None,
+                 secrets: pulumi.Input[Optional[Sequence[pulumi.Input['ActionModuleSecretArgs']]]] = None):
         """
         The set of arguments for constructing a ActionModule resource.
 
@@ -59,66 +59,66 @@ class ActionModuleInitArgs:
 
     @_builtins.property
     @pulumi.getter
-    def dependencies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ActionModuleDependencyArgs']]]]:
+    def dependencies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ActionModuleDependencyArgs']]]]:
         """
         List of third party npm modules, and their versions, that this action module depends on.
         """
         return pulumi.get(self, "dependencies")
 
     @dependencies.setter
-    def dependencies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ActionModuleDependencyArgs']]]]):
+    def dependencies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ActionModuleDependencyArgs']]]]):
         pulumi.set(self, "dependencies", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the action module.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def publish(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def publish(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Publishing a module will create a new immutable version of the module from the current draft. Actions using this module can then reference the published version.
         """
         return pulumi.get(self, "publish")
 
     @publish.setter
-    def publish(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def publish(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "publish", value)
 
     @_builtins.property
     @pulumi.getter
-    def secrets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ActionModuleSecretArgs']]]]:
+    def secrets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ActionModuleSecretArgs']]]]:
         """
         List of secrets that are included in the action module. Partial management of secrets is not supported.
         """
         return pulumi.get(self, "secrets")
 
     @secrets.setter
-    def secrets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ActionModuleSecretArgs']]]]):
+    def secrets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ActionModuleSecretArgs']]]]):
         pulumi.set(self, "secrets", value)
 
 
 @pulumi.input_type
 class _ActionModuleState:
     def __init__(__self__, *,
-                 actions_using_module_total: Optional[pulumi.Input[_builtins.int]] = None,
-                 all_changes_published: Optional[pulumi.Input[_builtins.bool]] = None,
-                 code: Optional[pulumi.Input[_builtins.str]] = None,
-                 dependencies: Optional[pulumi.Input[Sequence[pulumi.Input['ActionModuleDependencyArgs']]]] = None,
-                 latest_version_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 latest_versions: Optional[pulumi.Input[Sequence[pulumi.Input['ActionModuleLatestVersionArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 publish: Optional[pulumi.Input[_builtins.bool]] = None,
-                 secrets: Optional[pulumi.Input[Sequence[pulumi.Input['ActionModuleSecretArgs']]]] = None,
-                 version_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 actions_using_module_total: pulumi.Input[Optional[_builtins.int]] = None,
+                 all_changes_published: pulumi.Input[Optional[_builtins.bool]] = None,
+                 code: pulumi.Input[Optional[_builtins.str]] = None,
+                 dependencies: pulumi.Input[Optional[Sequence[pulumi.Input['ActionModuleDependencyArgs']]]] = None,
+                 latest_version_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 latest_versions: pulumi.Input[Optional[Sequence[pulumi.Input['ActionModuleLatestVersionArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 publish: pulumi.Input[Optional[_builtins.bool]] = None,
+                 secrets: pulumi.Input[Optional[Sequence[pulumi.Input['ActionModuleSecretArgs']]]] = None,
+                 version_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ActionModule resources.
 
@@ -156,122 +156,122 @@ class _ActionModuleState:
 
     @_builtins.property
     @pulumi.getter(name="actionsUsingModuleTotal")
-    def actions_using_module_total(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def actions_using_module_total(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of deployed actions using this module.
         """
         return pulumi.get(self, "actions_using_module_total")
 
     @actions_using_module_total.setter
-    def actions_using_module_total(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def actions_using_module_total(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "actions_using_module_total", value)
 
     @_builtins.property
     @pulumi.getter(name="allChangesPublished")
-    def all_changes_published(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def all_changes_published(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether all draft changes have been published as a version.
         """
         return pulumi.get(self, "all_changes_published")
 
     @all_changes_published.setter
-    def all_changes_published(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def all_changes_published(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "all_changes_published", value)
 
     @_builtins.property
     @pulumi.getter
-    def code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source code of the action module.
         """
         return pulumi.get(self, "code")
 
     @code.setter
-    def code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code", value)
 
     @_builtins.property
     @pulumi.getter
-    def dependencies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ActionModuleDependencyArgs']]]]:
+    def dependencies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ActionModuleDependencyArgs']]]]:
         """
         List of third party npm modules, and their versions, that this action module depends on.
         """
         return pulumi.get(self, "dependencies")
 
     @dependencies.setter
-    def dependencies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ActionModuleDependencyArgs']]]]):
+    def dependencies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ActionModuleDependencyArgs']]]]):
         pulumi.set(self, "dependencies", value)
 
     @_builtins.property
     @pulumi.getter(name="latestVersionNumber")
-    def latest_version_number(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def latest_version_number(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The version number of the latest published version.
         """
         return pulumi.get(self, "latest_version_number")
 
     @latest_version_number.setter
-    def latest_version_number(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def latest_version_number(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "latest_version_number", value)
 
     @_builtins.property
     @pulumi.getter(name="latestVersions")
-    def latest_versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ActionModuleLatestVersionArgs']]]]:
+    def latest_versions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ActionModuleLatestVersionArgs']]]]:
         """
         The latest published version of the action module.
         """
         return pulumi.get(self, "latest_versions")
 
     @latest_versions.setter
-    def latest_versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ActionModuleLatestVersionArgs']]]]):
+    def latest_versions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ActionModuleLatestVersionArgs']]]]):
         pulumi.set(self, "latest_versions", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the action module.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def publish(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def publish(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Publishing a module will create a new immutable version of the module from the current draft. Actions using this module can then reference the published version.
         """
         return pulumi.get(self, "publish")
 
     @publish.setter
-    def publish(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def publish(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "publish", value)
 
     @_builtins.property
     @pulumi.getter
-    def secrets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ActionModuleSecretArgs']]]]:
+    def secrets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ActionModuleSecretArgs']]]]:
         """
         List of secrets that are included in the action module. Partial management of secrets is not supported.
         """
         return pulumi.get(self, "secrets")
 
     @secrets.setter
-    def secrets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ActionModuleSecretArgs']]]]):
+    def secrets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ActionModuleSecretArgs']]]]):
         pulumi.set(self, "secrets", value)
 
     @_builtins.property
     @pulumi.getter(name="versionId")
-    def version_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Version ID of the module. This value is available if `publish` is set to true.
         """
         return pulumi.get(self, "version_id")
 
     @version_id.setter
-    def version_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version_id", value)
 
 
@@ -281,11 +281,11 @@ class ActionModule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 code: Optional[pulumi.Input[_builtins.str]] = None,
-                 dependencies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ActionModuleDependencyArgs', 'ActionModuleDependencyArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 publish: Optional[pulumi.Input[_builtins.bool]] = None,
-                 secrets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ActionModuleSecretArgs', 'ActionModuleSecretArgsDict']]]]] = None,
+                 code: pulumi.Input[Optional[_builtins.str]] = None,
+                 dependencies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionModuleDependencyArgs', 'ActionModuleDependencyArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 publish: pulumi.Input[Optional[_builtins.bool]] = None,
+                 secrets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionModuleSecretArgs', 'ActionModuleSecretArgsDict']]]]] = None,
                  __props__=None):
         """
         Action Modules are reusable code packages that can be shared across multiple actions. They allow you to write common functionality once and use it in any action that needs it.
@@ -384,11 +384,11 @@ class ActionModule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 code: Optional[pulumi.Input[_builtins.str]] = None,
-                 dependencies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ActionModuleDependencyArgs', 'ActionModuleDependencyArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 publish: Optional[pulumi.Input[_builtins.bool]] = None,
-                 secrets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ActionModuleSecretArgs', 'ActionModuleSecretArgsDict']]]]] = None,
+                 code: pulumi.Input[Optional[_builtins.str]] = None,
+                 dependencies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionModuleDependencyArgs', 'ActionModuleDependencyArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 publish: pulumi.Input[Optional[_builtins.bool]] = None,
+                 secrets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionModuleSecretArgs', 'ActionModuleSecretArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -420,16 +420,16 @@ class ActionModule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            actions_using_module_total: Optional[pulumi.Input[_builtins.int]] = None,
-            all_changes_published: Optional[pulumi.Input[_builtins.bool]] = None,
-            code: Optional[pulumi.Input[_builtins.str]] = None,
-            dependencies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ActionModuleDependencyArgs', 'ActionModuleDependencyArgsDict']]]]] = None,
-            latest_version_number: Optional[pulumi.Input[_builtins.int]] = None,
-            latest_versions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ActionModuleLatestVersionArgs', 'ActionModuleLatestVersionArgsDict']]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            publish: Optional[pulumi.Input[_builtins.bool]] = None,
-            secrets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ActionModuleSecretArgs', 'ActionModuleSecretArgsDict']]]]] = None,
-            version_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'ActionModule':
+            actions_using_module_total: pulumi.Input[Optional[_builtins.int]] = None,
+            all_changes_published: pulumi.Input[Optional[_builtins.bool]] = None,
+            code: pulumi.Input[Optional[_builtins.str]] = None,
+            dependencies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionModuleDependencyArgs', 'ActionModuleDependencyArgsDict']]]]] = None,
+            latest_version_number: pulumi.Input[Optional[_builtins.int]] = None,
+            latest_versions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionModuleLatestVersionArgs', 'ActionModuleLatestVersionArgsDict']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            publish: pulumi.Input[Optional[_builtins.bool]] = None,
+            secrets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionModuleSecretArgs', 'ActionModuleSecretArgsDict']]]]] = None,
+            version_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ActionModule':
         """
         Get an existing ActionModule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -143,27 +143,27 @@ export interface HookState {
     /**
      * Dependencies of this hook used by the WebTask server.
      */
-    dependencies?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    dependencies?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Whether the hook is enabled, or disabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Name of this hook.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Code to be executed when this hook runs.
      */
-    script?: pulumi.Input<string>;
+    script?: pulumi.Input<string | undefined>;
     /**
      * The secrets associated with the hook.
      */
-    secrets?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    secrets?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message.
      */
-    triggerId?: pulumi.Input<string>;
+    triggerId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -173,15 +173,15 @@ export interface HookArgs {
     /**
      * Dependencies of this hook used by the WebTask server.
      */
-    dependencies?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    dependencies?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Whether the hook is enabled, or disabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Name of this hook.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Code to be executed when this hook runs.
      */
@@ -189,7 +189,7 @@ export interface HookArgs {
     /**
      * The secrets associated with the hook.
      */
-    secrets?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    secrets?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Execution stage of this rule. Can be credentials-exchange, pre-user-registration, post-user-registration, post-change-password, or send-phone-message.
      */

@@ -290,115 +290,115 @@ export interface ClientCimdState {
     /**
      * URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
      */
-    allowedOrigins?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedOrigins?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Type of application the client represents. CIMD clients only support `native`, `spa`, and `regularWeb`.
      */
-    appType?: pulumi.Input<string>;
+    appType?: pulumi.Input<string | undefined>;
     /**
      * URLs that Auth0 may call back after authentication. Derived from the CIMD metadata document.
      */
-    callbacks?: pulumi.Input<pulumi.Input<string>[]>;
+    callbacks?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the client.
      */
-    clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
     /**
      * Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
      */
-    clientMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    clientMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Configure and associate an organization with the Client
      */
-    defaultOrganization?: pulumi.Input<inputs.ClientCimdDefaultOrganization>;
+    defaultOrganization?: pulumi.Input<inputs.ClientCimdDefaultOrganization | undefined>;
     /**
      * Description of the purpose of the client.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The HTTPS URL of the Client ID Metadata Document. Must include a path component (e.g. `https://app.example.com/client.json`). This value is immutable after creation.
      */
-    externalClientId?: pulumi.Input<string>;
+    externalClientId?: pulumi.Input<string | undefined>;
     /**
      * Version number for external*client*id metadata document changes. Update this value to sync the client with the latest values of the json metadata document.
      */
-    externalClientIdVersion?: pulumi.Input<number>;
+    externalClientIdVersion?: pulumi.Input<number | undefined>;
     /**
      * Who created the external metadata client: `admin` (via Management API) or `client` (self-registered).
      */
-    externalMetadataCreatedBy?: pulumi.Input<string>;
+    externalMetadataCreatedBy?: pulumi.Input<string | undefined>;
     /**
      * Type of external metadata. Always `cimd` for CIMD-registered clients.
      */
-    externalMetadataType?: pulumi.Input<string>;
+    externalMetadataType?: pulumi.Input<string | undefined>;
     /**
      * Types of grants that this client is authorized to use. CIMD clients support `authorizationCode` and `refreshToken`.
      */
-    grantTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    grantTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether this is a first-party client. Always `false` for CIMD clients.
      */
-    isFirstParty?: pulumi.Input<boolean>;
+    isFirstParty?: pulumi.Input<boolean | undefined>;
     /**
      * URL for the JSON Web Key Set (JWKS) containing the public keys used for `privateKeyJwt` authentication.
      */
-    jwksUri?: pulumi.Input<string>;
+    jwksUri?: pulumi.Input<string | undefined>;
     /**
      * Configuration settings for the JWTs issued for this client.
      */
-    jwtConfiguration?: pulumi.Input<inputs.ClientCimdJwtConfiguration>;
+    jwtConfiguration?: pulumi.Input<inputs.ClientCimdJwtConfiguration | undefined>;
     /**
      * URL of the logo for this client, derived from the CIMD metadata document.
      */
-    logoUri?: pulumi.Input<string>;
+    logoUri?: pulumi.Input<string | undefined>;
     /**
      * Name of the client, derived from the CIMD metadata document.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Whether this client conforms to strict OIDC specifications. Must be `true` for CIMD clients.
      */
-    oidcConformant?: pulumi.Input<boolean>;
+    oidcConformant?: pulumi.Input<boolean | undefined>;
     /**
      * Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
      */
-    organizationDiscoveryMethods?: pulumi.Input<pulumi.Input<string>[]>;
+    organizationDiscoveryMethods?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.
      */
-    redirectionPolicy?: pulumi.Input<string>;
+    redirectionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Configuration settings for the refresh tokens issued for this client.
      */
-    refreshToken?: pulumi.Input<inputs.ClientCimdRefreshToken>;
+    refreshToken?: pulumi.Input<inputs.ClientCimdRefreshToken | undefined>;
     /**
      * Makes the use of Proof-of-Possession mandatory for this client.
      */
-    requireProofOfPossession?: pulumi.Input<boolean>;
+    requireProofOfPossession?: pulumi.Input<boolean | undefined>;
     /**
      * List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
      */
-    signingKeys?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+    signingKeys?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[] | undefined>;
     /**
      * Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it.
      */
-    skipNonVerifiableCallbackUriConfirmationPrompt?: pulumi.Input<boolean>;
+    skipNonVerifiableCallbackUriConfirmationPrompt?: pulumi.Input<boolean | undefined>;
     /**
      * Security mode for third-party clients. `strict` enforces enhanced security controls
      */
-    thirdPartySecurityMode?: pulumi.Input<string>;
+    thirdPartySecurityMode?: pulumi.Input<string | undefined>;
     /**
      * The token quota configuration.
      */
-    tokenQuota?: pulumi.Input<inputs.ClientCimdTokenQuota>;
+    tokenQuota?: pulumi.Input<inputs.ClientCimdTokenQuota | undefined>;
     /**
      * Validation result of the CIMD metadata document.
      */
-    validations?: pulumi.Input<pulumi.Input<inputs.ClientCimdValidation>[]>;
+    validations?: pulumi.Input<pulumi.Input<inputs.ClientCimdValidation>[] | undefined>;
     /**
      * URLs that represent valid web origins for use with web message response mode.
      */
-    webOrigins?: pulumi.Input<pulumi.Input<string>[]>;
+    webOrigins?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -408,23 +408,23 @@ export interface ClientCimdArgs {
     /**
      * URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
      */
-    allowedOrigins?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedOrigins?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Type of application the client represents. CIMD clients only support `native`, `spa`, and `regularWeb`.
      */
-    appType?: pulumi.Input<string>;
+    appType?: pulumi.Input<string | undefined>;
     /**
      * Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
      */
-    clientMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    clientMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Configure and associate an organization with the Client
      */
-    defaultOrganization?: pulumi.Input<inputs.ClientCimdDefaultOrganization>;
+    defaultOrganization?: pulumi.Input<inputs.ClientCimdDefaultOrganization | undefined>;
     /**
      * Description of the purpose of the client.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The HTTPS URL of the Client ID Metadata Document. Must include a path component (e.g. `https://app.example.com/client.json`). This value is immutable after creation.
      */
@@ -432,45 +432,45 @@ export interface ClientCimdArgs {
     /**
      * Version number for external*client*id metadata document changes. Update this value to sync the client with the latest values of the json metadata document.
      */
-    externalClientIdVersion?: pulumi.Input<number>;
+    externalClientIdVersion?: pulumi.Input<number | undefined>;
     /**
      * Types of grants that this client is authorized to use. CIMD clients support `authorizationCode` and `refreshToken`.
      */
-    grantTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    grantTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Configuration settings for the JWTs issued for this client.
      */
-    jwtConfiguration?: pulumi.Input<inputs.ClientCimdJwtConfiguration>;
+    jwtConfiguration?: pulumi.Input<inputs.ClientCimdJwtConfiguration | undefined>;
     /**
      * Whether this client conforms to strict OIDC specifications. Must be `true` for CIMD clients.
      */
-    oidcConformant?: pulumi.Input<boolean>;
+    oidcConformant?: pulumi.Input<boolean | undefined>;
     /**
      * Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
      */
-    organizationDiscoveryMethods?: pulumi.Input<pulumi.Input<string>[]>;
+    organizationDiscoveryMethods?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.
      */
-    redirectionPolicy?: pulumi.Input<string>;
+    redirectionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Configuration settings for the refresh tokens issued for this client.
      */
-    refreshToken?: pulumi.Input<inputs.ClientCimdRefreshToken>;
+    refreshToken?: pulumi.Input<inputs.ClientCimdRefreshToken | undefined>;
     /**
      * Makes the use of Proof-of-Possession mandatory for this client.
      */
-    requireProofOfPossession?: pulumi.Input<boolean>;
+    requireProofOfPossession?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it.
      */
-    skipNonVerifiableCallbackUriConfirmationPrompt?: pulumi.Input<boolean>;
+    skipNonVerifiableCallbackUriConfirmationPrompt?: pulumi.Input<boolean | undefined>;
     /**
      * The token quota configuration.
      */
-    tokenQuota?: pulumi.Input<inputs.ClientCimdTokenQuota>;
+    tokenQuota?: pulumi.Input<inputs.ClientCimdTokenQuota | undefined>;
     /**
      * URLs that represent valid web origins for use with web message response mode.
      */
-    webOrigins?: pulumi.Input<pulumi.Input<string>[]>;
+    webOrigins?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

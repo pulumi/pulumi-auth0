@@ -250,23 +250,23 @@ export interface AttackProtectionState {
     /**
      * Bot detection configuration to identify and prevent automated threats.
      */
-    botDetection?: pulumi.Input<inputs.AttackProtectionBotDetection>;
+    botDetection?: pulumi.Input<inputs.AttackProtectionBotDetection | undefined>;
     /**
      * Breached password detection protects your applications from bad actors logging in with stolen credentials.
      */
-    breachedPasswordDetection?: pulumi.Input<inputs.AttackProtectionBreachedPasswordDetection>;
+    breachedPasswordDetection?: pulumi.Input<inputs.AttackProtectionBreachedPasswordDetection | undefined>;
     /**
      * Brute-force protection safeguards against a single IP address attacking a single user account.
      */
-    bruteForceProtection?: pulumi.Input<inputs.AttackProtectionBruteForceProtection>;
+    bruteForceProtection?: pulumi.Input<inputs.AttackProtectionBruteForceProtection | undefined>;
     /**
      * CAPTCHA configuration for attack protection.
      */
-    captcha?: pulumi.Input<inputs.AttackProtectionCaptcha>;
+    captcha?: pulumi.Input<inputs.AttackProtectionCaptcha | undefined>;
     /**
      * Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.
      */
-    suspiciousIpThrottling?: pulumi.Input<inputs.AttackProtectionSuspiciousIpThrottling>;
+    suspiciousIpThrottling?: pulumi.Input<inputs.AttackProtectionSuspiciousIpThrottling | undefined>;
 }
 
 /**
@@ -276,21 +276,21 @@ export interface AttackProtectionArgs {
     /**
      * Bot detection configuration to identify and prevent automated threats.
      */
-    botDetection?: pulumi.Input<inputs.AttackProtectionBotDetection>;
+    botDetection?: pulumi.Input<inputs.AttackProtectionBotDetection | undefined>;
     /**
      * Breached password detection protects your applications from bad actors logging in with stolen credentials.
      */
-    breachedPasswordDetection?: pulumi.Input<inputs.AttackProtectionBreachedPasswordDetection>;
+    breachedPasswordDetection?: pulumi.Input<inputs.AttackProtectionBreachedPasswordDetection | undefined>;
     /**
      * Brute-force protection safeguards against a single IP address attacking a single user account.
      */
-    bruteForceProtection?: pulumi.Input<inputs.AttackProtectionBruteForceProtection>;
+    bruteForceProtection?: pulumi.Input<inputs.AttackProtectionBruteForceProtection | undefined>;
     /**
      * CAPTCHA configuration for attack protection.
      */
-    captcha?: pulumi.Input<inputs.AttackProtectionCaptcha>;
+    captcha?: pulumi.Input<inputs.AttackProtectionCaptcha | undefined>;
     /**
      * Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.
      */
-    suspiciousIpThrottling?: pulumi.Input<inputs.AttackProtectionSuspiciousIpThrottling>;
+    suspiciousIpThrottling?: pulumi.Input<inputs.AttackProtectionSuspiciousIpThrottling | undefined>;
 }

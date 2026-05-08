@@ -182,27 +182,27 @@ export interface PhoneProviderState {
     /**
      * The channel of the phone provider.
      */
-    channel?: pulumi.Input<string>;
+    channel?: pulumi.Input<string | undefined>;
     /**
      * Specific phone provider settings.
      */
-    configuration?: pulumi.Input<inputs.PhoneProviderConfiguration>;
+    configuration?: pulumi.Input<inputs.PhoneProviderConfiguration | undefined>;
     /**
      * Provider credentials required to use authenticate to the provider.
      */
-    credentials?: pulumi.Input<inputs.PhoneProviderCredentials>;
+    credentials?: pulumi.Input<inputs.PhoneProviderCredentials | undefined>;
     /**
      * Indicates whether the phone provider is enabled (false) or disabled (true).
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the phone provider. Options include `twilio`, `custom`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The tenant of the phone provider.
      */
-    tenant?: pulumi.Input<string>;
+    tenant?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -220,9 +220,9 @@ export interface PhoneProviderArgs {
     /**
      * Indicates whether the phone provider is enabled (false) or disabled (true).
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the phone provider. Options include `twilio`, `custom`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

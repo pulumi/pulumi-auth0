@@ -185,8 +185,8 @@ def get_action(id: Optional[_builtins.str] = None,
         secrets=pulumi.get(__ret__, 'secrets'),
         supported_triggers=pulumi.get(__ret__, 'supported_triggers'),
         version_id=pulumi.get(__ret__, 'version_id'))
-def get_action_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                      name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_action_output(id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                      name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetActionResult]:
     """
     Data source to retrieve a specific Auth0 action by `name`.

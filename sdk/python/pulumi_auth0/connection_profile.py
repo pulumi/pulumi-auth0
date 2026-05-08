@@ -21,12 +21,12 @@ __all__ = ['ConnectionProfileArgs', 'ConnectionProfile']
 @pulumi.input_type
 class ConnectionProfileArgs:
     def __init__(__self__, *,
-                 connection_config: Optional[pulumi.Input['ConnectionProfileConnectionConfigArgs']] = None,
-                 connection_name_prefix_template: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled_features: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization: Optional[pulumi.Input['ConnectionProfileOrganizationArgs']] = None,
-                 strategy_overrides: Optional[pulumi.Input['ConnectionProfileStrategyOverridesArgs']] = None):
+                 connection_config: pulumi.Input[Optional['ConnectionProfileConnectionConfigArgs']] = None,
+                 connection_name_prefix_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled_features: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization: pulumi.Input[Optional['ConnectionProfileOrganizationArgs']] = None,
+                 strategy_overrides: pulumi.Input[Optional['ConnectionProfileStrategyOverridesArgs']] = None):
         """
         The set of arguments for constructing a ConnectionProfile resource.
 
@@ -52,86 +52,86 @@ class ConnectionProfileArgs:
 
     @_builtins.property
     @pulumi.getter(name="connectionConfig")
-    def connection_config(self) -> Optional[pulumi.Input['ConnectionProfileConnectionConfigArgs']]:
+    def connection_config(self) -> pulumi.Input[Optional['ConnectionProfileConnectionConfigArgs']]:
         """
         Connection configuration for the profile.
         """
         return pulumi.get(self, "connection_config")
 
     @connection_config.setter
-    def connection_config(self, value: Optional[pulumi.Input['ConnectionProfileConnectionConfigArgs']]):
+    def connection_config(self, value: pulumi.Input[Optional['ConnectionProfileConnectionConfigArgs']]):
         pulumi.set(self, "connection_config", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionNamePrefixTemplate")
-    def connection_name_prefix_template(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_name_prefix_template(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Template for generating connection names from the profile.
         """
         return pulumi.get(self, "connection_name_prefix_template")
 
     @connection_name_prefix_template.setter
-    def connection_name_prefix_template(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_name_prefix_template(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_name_prefix_template", value)
 
     @_builtins.property
     @pulumi.getter(name="enabledFeatures")
-    def enabled_features(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def enabled_features(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of enabled features for the connection profile.
         """
         return pulumi.get(self, "enabled_features")
 
     @enabled_features.setter
-    def enabled_features(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def enabled_features(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "enabled_features", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the connection profile.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def organization(self) -> Optional[pulumi.Input['ConnectionProfileOrganizationArgs']]:
+    def organization(self) -> pulumi.Input[Optional['ConnectionProfileOrganizationArgs']]:
         """
         Organization associated with the connection profile.
         """
         return pulumi.get(self, "organization")
 
     @organization.setter
-    def organization(self, value: Optional[pulumi.Input['ConnectionProfileOrganizationArgs']]):
+    def organization(self, value: pulumi.Input[Optional['ConnectionProfileOrganizationArgs']]):
         pulumi.set(self, "organization", value)
 
     @_builtins.property
     @pulumi.getter(name="strategyOverrides")
-    def strategy_overrides(self) -> Optional[pulumi.Input['ConnectionProfileStrategyOverridesArgs']]:
+    def strategy_overrides(self) -> pulumi.Input[Optional['ConnectionProfileStrategyOverridesArgs']]:
         """
         Strategy overrides for the connection profile.
         """
         return pulumi.get(self, "strategy_overrides")
 
     @strategy_overrides.setter
-    def strategy_overrides(self, value: Optional[pulumi.Input['ConnectionProfileStrategyOverridesArgs']]):
+    def strategy_overrides(self, value: pulumi.Input[Optional['ConnectionProfileStrategyOverridesArgs']]):
         pulumi.set(self, "strategy_overrides", value)
 
 
 @pulumi.input_type
 class _ConnectionProfileState:
     def __init__(__self__, *,
-                 connection_config: Optional[pulumi.Input['ConnectionProfileConnectionConfigArgs']] = None,
-                 connection_name_prefix_template: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled_features: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization: Optional[pulumi.Input['ConnectionProfileOrganizationArgs']] = None,
-                 strategy_overrides: Optional[pulumi.Input['ConnectionProfileStrategyOverridesArgs']] = None):
+                 connection_config: pulumi.Input[Optional['ConnectionProfileConnectionConfigArgs']] = None,
+                 connection_name_prefix_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled_features: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization: pulumi.Input[Optional['ConnectionProfileOrganizationArgs']] = None,
+                 strategy_overrides: pulumi.Input[Optional['ConnectionProfileStrategyOverridesArgs']] = None):
         """
         Input properties used for looking up and filtering ConnectionProfile resources.
 
@@ -157,74 +157,74 @@ class _ConnectionProfileState:
 
     @_builtins.property
     @pulumi.getter(name="connectionConfig")
-    def connection_config(self) -> Optional[pulumi.Input['ConnectionProfileConnectionConfigArgs']]:
+    def connection_config(self) -> pulumi.Input[Optional['ConnectionProfileConnectionConfigArgs']]:
         """
         Connection configuration for the profile.
         """
         return pulumi.get(self, "connection_config")
 
     @connection_config.setter
-    def connection_config(self, value: Optional[pulumi.Input['ConnectionProfileConnectionConfigArgs']]):
+    def connection_config(self, value: pulumi.Input[Optional['ConnectionProfileConnectionConfigArgs']]):
         pulumi.set(self, "connection_config", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionNamePrefixTemplate")
-    def connection_name_prefix_template(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_name_prefix_template(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Template for generating connection names from the profile.
         """
         return pulumi.get(self, "connection_name_prefix_template")
 
     @connection_name_prefix_template.setter
-    def connection_name_prefix_template(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_name_prefix_template(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_name_prefix_template", value)
 
     @_builtins.property
     @pulumi.getter(name="enabledFeatures")
-    def enabled_features(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def enabled_features(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of enabled features for the connection profile.
         """
         return pulumi.get(self, "enabled_features")
 
     @enabled_features.setter
-    def enabled_features(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def enabled_features(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "enabled_features", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the connection profile.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def organization(self) -> Optional[pulumi.Input['ConnectionProfileOrganizationArgs']]:
+    def organization(self) -> pulumi.Input[Optional['ConnectionProfileOrganizationArgs']]:
         """
         Organization associated with the connection profile.
         """
         return pulumi.get(self, "organization")
 
     @organization.setter
-    def organization(self, value: Optional[pulumi.Input['ConnectionProfileOrganizationArgs']]):
+    def organization(self, value: pulumi.Input[Optional['ConnectionProfileOrganizationArgs']]):
         pulumi.set(self, "organization", value)
 
     @_builtins.property
     @pulumi.getter(name="strategyOverrides")
-    def strategy_overrides(self) -> Optional[pulumi.Input['ConnectionProfileStrategyOverridesArgs']]:
+    def strategy_overrides(self) -> pulumi.Input[Optional['ConnectionProfileStrategyOverridesArgs']]:
         """
         Strategy overrides for the connection profile.
         """
         return pulumi.get(self, "strategy_overrides")
 
     @strategy_overrides.setter
-    def strategy_overrides(self, value: Optional[pulumi.Input['ConnectionProfileStrategyOverridesArgs']]):
+    def strategy_overrides(self, value: pulumi.Input[Optional['ConnectionProfileStrategyOverridesArgs']]):
         pulumi.set(self, "strategy_overrides", value)
 
 
@@ -234,12 +234,12 @@ class ConnectionProfile(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 connection_config: Optional[pulumi.Input[Union['ConnectionProfileConnectionConfigArgs', 'ConnectionProfileConnectionConfigArgsDict']]] = None,
-                 connection_name_prefix_template: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled_features: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization: Optional[pulumi.Input[Union['ConnectionProfileOrganizationArgs', 'ConnectionProfileOrganizationArgsDict']]] = None,
-                 strategy_overrides: Optional[pulumi.Input[Union['ConnectionProfileStrategyOverridesArgs', 'ConnectionProfileStrategyOverridesArgsDict']]] = None,
+                 connection_config: pulumi.Input[Optional[Union['ConnectionProfileConnectionConfigArgs', 'ConnectionProfileConnectionConfigArgsDict']]] = None,
+                 connection_name_prefix_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled_features: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization: pulumi.Input[Optional[Union['ConnectionProfileOrganizationArgs', 'ConnectionProfileOrganizationArgsDict']]] = None,
+                 strategy_overrides: pulumi.Input[Optional[Union['ConnectionProfileStrategyOverridesArgs', 'ConnectionProfileStrategyOverridesArgsDict']]] = None,
                  __props__=None):
         """
         Manage Auth0 connection profiles. Connection profiles allow you to store configuration templates for connections.
@@ -337,12 +337,12 @@ class ConnectionProfile(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 connection_config: Optional[pulumi.Input[Union['ConnectionProfileConnectionConfigArgs', 'ConnectionProfileConnectionConfigArgsDict']]] = None,
-                 connection_name_prefix_template: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled_features: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization: Optional[pulumi.Input[Union['ConnectionProfileOrganizationArgs', 'ConnectionProfileOrganizationArgsDict']]] = None,
-                 strategy_overrides: Optional[pulumi.Input[Union['ConnectionProfileStrategyOverridesArgs', 'ConnectionProfileStrategyOverridesArgsDict']]] = None,
+                 connection_config: pulumi.Input[Optional[Union['ConnectionProfileConnectionConfigArgs', 'ConnectionProfileConnectionConfigArgsDict']]] = None,
+                 connection_name_prefix_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled_features: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization: pulumi.Input[Optional[Union['ConnectionProfileOrganizationArgs', 'ConnectionProfileOrganizationArgsDict']]] = None,
+                 strategy_overrides: pulumi.Input[Optional[Union['ConnectionProfileStrategyOverridesArgs', 'ConnectionProfileStrategyOverridesArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -368,12 +368,12 @@ class ConnectionProfile(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            connection_config: Optional[pulumi.Input[Union['ConnectionProfileConnectionConfigArgs', 'ConnectionProfileConnectionConfigArgsDict']]] = None,
-            connection_name_prefix_template: Optional[pulumi.Input[_builtins.str]] = None,
-            enabled_features: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            organization: Optional[pulumi.Input[Union['ConnectionProfileOrganizationArgs', 'ConnectionProfileOrganizationArgsDict']]] = None,
-            strategy_overrides: Optional[pulumi.Input[Union['ConnectionProfileStrategyOverridesArgs', 'ConnectionProfileStrategyOverridesArgsDict']]] = None) -> 'ConnectionProfile':
+            connection_config: pulumi.Input[Optional[Union['ConnectionProfileConnectionConfigArgs', 'ConnectionProfileConnectionConfigArgsDict']]] = None,
+            connection_name_prefix_template: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled_features: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            organization: pulumi.Input[Optional[Union['ConnectionProfileOrganizationArgs', 'ConnectionProfileOrganizationArgsDict']]] = None,
+            strategy_overrides: pulumi.Input[Optional[Union['ConnectionProfileStrategyOverridesArgs', 'ConnectionProfileStrategyOverridesArgsDict']]] = None) -> 'ConnectionProfile':
         """
         Get an existing ConnectionProfile resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

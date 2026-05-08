@@ -843,43 +843,43 @@ export interface ConnectionState {
     /**
      * Configure the purpose of a connection to be used for authentication during login.
      */
-    authentication?: pulumi.Input<inputs.ConnectionAuthentication>;
+    authentication?: pulumi.Input<inputs.ConnectionAuthentication | undefined>;
     /**
      * Configure the purpose of a connection to be used for connected accounts and Token Vault.
      */
-    connectedAccounts?: pulumi.Input<inputs.ConnectionConnectedAccounts>;
+    connectedAccounts?: pulumi.Input<inputs.ConnectionConnectedAccounts | undefined>;
     /**
      * Name used in login screen.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the connection is domain level.
      */
-    isDomainConnection?: pulumi.Input<boolean>;
+    isDomainConnection?: pulumi.Input<boolean | undefined>;
     /**
      * Metadata associated with the connection, in the form of a map of string values (max 255 chars).
      */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Name of the connection. This value is immutable and changing it requires the creation of a new resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Configuration settings for connection options.
      */
-    options?: pulumi.Input<inputs.ConnectionOptions>;
+    options?: pulumi.Input<inputs.ConnectionOptions | undefined>;
     /**
      * Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
      */
-    realms?: pulumi.Input<pulumi.Input<string>[]>;
+    realms?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Display connection as a button. Only available on enterprise connections.
      */
-    showAsButton?: pulumi.Input<boolean>;
+    showAsButton?: pulumi.Input<boolean | undefined>;
     /**
      * Type of the connection, which indicates the identity provider.
      */
-    strategy?: pulumi.Input<string>;
+    strategy?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -889,39 +889,39 @@ export interface ConnectionArgs {
     /**
      * Configure the purpose of a connection to be used for authentication during login.
      */
-    authentication?: pulumi.Input<inputs.ConnectionAuthentication>;
+    authentication?: pulumi.Input<inputs.ConnectionAuthentication | undefined>;
     /**
      * Configure the purpose of a connection to be used for connected accounts and Token Vault.
      */
-    connectedAccounts?: pulumi.Input<inputs.ConnectionConnectedAccounts>;
+    connectedAccounts?: pulumi.Input<inputs.ConnectionConnectedAccounts | undefined>;
     /**
      * Name used in login screen.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the connection is domain level.
      */
-    isDomainConnection?: pulumi.Input<boolean>;
+    isDomainConnection?: pulumi.Input<boolean | undefined>;
     /**
      * Metadata associated with the connection, in the form of a map of string values (max 255 chars).
      */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Name of the connection. This value is immutable and changing it requires the creation of a new resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Configuration settings for connection options.
      */
-    options?: pulumi.Input<inputs.ConnectionOptions>;
+    options?: pulumi.Input<inputs.ConnectionOptions | undefined>;
     /**
      * Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
      */
-    realms?: pulumi.Input<pulumi.Input<string>[]>;
+    realms?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Display connection as a button. Only available on enterprise connections.
      */
-    showAsButton?: pulumi.Input<boolean>;
+    showAsButton?: pulumi.Input<boolean | undefined>;
     /**
      * Type of the connection, which indicates the identity provider.
      */

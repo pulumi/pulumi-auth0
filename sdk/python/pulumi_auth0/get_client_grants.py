@@ -143,8 +143,8 @@ def get_client_grants(audience: Optional[_builtins.str] = None,
         client_grants=pulumi.get(__ret__, 'client_grants'),
         client_id=pulumi.get(__ret__, 'client_id'),
         id=pulumi.get(__ret__, 'id'))
-def get_client_grants_output(audience: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             client_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_client_grants_output(audience: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             client_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClientGrantsResult]:
     """
     Data source to retrieve a client grants based on client_id and/or audience

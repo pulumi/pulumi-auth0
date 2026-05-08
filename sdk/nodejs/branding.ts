@@ -130,23 +130,23 @@ export interface BrandingState {
     /**
      * Configuration settings for colors for branding.
      */
-    colors?: pulumi.Input<inputs.BrandingColors>;
+    colors?: pulumi.Input<inputs.BrandingColors | undefined>;
     /**
      * URL for the favicon.
      */
-    faviconUrl?: pulumi.Input<string>;
+    faviconUrl?: pulumi.Input<string | undefined>;
     /**
      * Configuration settings to customize the font.
      */
-    font?: pulumi.Input<inputs.BrandingFont>;
+    font?: pulumi.Input<inputs.BrandingFont | undefined>;
     /**
      * URL of logo for branding.
      */
-    logoUrl?: pulumi.Input<string>;
+    logoUrl?: pulumi.Input<string | undefined>;
     /**
      * Configuration settings for Universal Login.
      */
-    universalLogin?: pulumi.Input<inputs.BrandingUniversalLogin>;
+    universalLogin?: pulumi.Input<inputs.BrandingUniversalLogin | undefined>;
 }
 
 /**
@@ -156,21 +156,21 @@ export interface BrandingArgs {
     /**
      * Configuration settings for colors for branding.
      */
-    colors?: pulumi.Input<inputs.BrandingColors>;
+    colors?: pulumi.Input<inputs.BrandingColors | undefined>;
     /**
      * URL for the favicon.
      */
-    faviconUrl?: pulumi.Input<string>;
+    faviconUrl?: pulumi.Input<string | undefined>;
     /**
      * Configuration settings to customize the font.
      */
-    font?: pulumi.Input<inputs.BrandingFont>;
+    font?: pulumi.Input<inputs.BrandingFont | undefined>;
     /**
      * URL of logo for branding.
      */
-    logoUrl?: pulumi.Input<string>;
+    logoUrl?: pulumi.Input<string | undefined>;
     /**
      * Configuration settings for Universal Login.
      */
-    universalLogin?: pulumi.Input<inputs.BrandingUniversalLogin>;
+    universalLogin?: pulumi.Input<inputs.BrandingUniversalLogin | undefined>;
 }

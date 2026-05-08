@@ -125,9 +125,9 @@ export interface GetOrganizationOutputArgs {
     /**
      * The name of the organization. If not provided, `organizationId` must be set. For performance, it is advised to use the `organizationId` as a lookup if possible.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the organization. If not provided, `name` must be set.
      */
-    organizationId?: pulumi.Input<string>;
+    organizationId?: pulumi.Input<string | undefined>;
 }

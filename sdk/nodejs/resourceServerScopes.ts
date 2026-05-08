@@ -121,8 +121,8 @@ export interface ResourceServerScopesState {
     /**
      * Identifier of the resource server that the scopes (permission) are associated with.
      */
-    resourceServerIdentifier?: pulumi.Input<string>;
-    scopes?: pulumi.Input<pulumi.Input<inputs.ResourceServerScopesScope>[]>;
+    resourceServerIdentifier?: pulumi.Input<string | undefined>;
+    scopes?: pulumi.Input<pulumi.Input<inputs.ResourceServerScopesScope>[] | undefined>;
 }
 
 /**

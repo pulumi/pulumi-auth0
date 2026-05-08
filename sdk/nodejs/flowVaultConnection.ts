@@ -140,31 +140,31 @@ export interface FlowVaultConnectionState {
     /**
      * Custom account name of the vault connection.
      */
-    accountName?: pulumi.Input<string>;
+    accountName?: pulumi.Input<string | undefined>;
     /**
      * App identifier of the vault connection.
      */
-    appId?: pulumi.Input<string>;
+    appId?: pulumi.Input<string | undefined>;
     /**
      * Environment of the vault connection.
      */
-    environment?: pulumi.Input<string>;
+    environment?: pulumi.Input<string | undefined>;
     /**
      * Fingerprint of the vault connection.
      */
-    fingerprint?: pulumi.Input<string>;
+    fingerprint?: pulumi.Input<string | undefined>;
     /**
      * Name of the vault connection.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the vault connection is configured.
      */
-    ready?: pulumi.Input<boolean>;
+    ready?: pulumi.Input<boolean | undefined>;
     /**
      * Configuration of the vault connection. (Mapping information must be provided as key/value pairs)
      */
-    setup?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    setup?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -174,7 +174,7 @@ export interface FlowVaultConnectionArgs {
     /**
      * Custom account name of the vault connection.
      */
-    accountName?: pulumi.Input<string>;
+    accountName?: pulumi.Input<string | undefined>;
     /**
      * App identifier of the vault connection.
      */
@@ -182,17 +182,17 @@ export interface FlowVaultConnectionArgs {
     /**
      * Environment of the vault connection.
      */
-    environment?: pulumi.Input<string>;
+    environment?: pulumi.Input<string | undefined>;
     /**
      * Fingerprint of the vault connection.
      */
-    fingerprint?: pulumi.Input<string>;
+    fingerprint?: pulumi.Input<string | undefined>;
     /**
      * Name of the vault connection.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Configuration of the vault connection. (Mapping information must be provided as key/value pairs)
      */
-    setup?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    setup?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

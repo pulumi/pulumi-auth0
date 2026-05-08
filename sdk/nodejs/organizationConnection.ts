@@ -170,43 +170,43 @@ export interface OrganizationConnectionState {
     /**
      * When `true`, all users that log in with this connection will be automatically granted membership in the organization. When `false`, users must be granted membership in the organization before logging in with this connection.
      */
-    assignMembershipOnLogin?: pulumi.Input<boolean>;
+    assignMembershipOnLogin?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the connection to enable for the organization.
      */
-    connectionId?: pulumi.Input<string>;
+    connectionId?: pulumi.Input<string | undefined>;
     /**
      * Whether the connection is enabled for the organization.
      */
-    isEnabled?: pulumi.Input<boolean>;
+    isEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `isSignupEnabled` can only be `true` if `assignMembershipOnLogin` is `true`.
      */
-    isSignupEnabled?: pulumi.Input<boolean>;
+    isSignupEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the enabled connection.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The access level for this organization connection. Can be `none`, `readonly`, `limited` or `full`.
      */
-    organizationAccessLevel?: pulumi.Input<string>;
+    organizationAccessLevel?: pulumi.Input<string | undefined>;
     /**
      * Name of the connection in the scope of this organization.
      */
-    organizationConnectionName?: pulumi.Input<string>;
+    organizationConnectionName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the organization to enable the connection for.
      */
-    organizationId?: pulumi.Input<string>;
+    organizationId?: pulumi.Input<string | undefined>;
     /**
      * Determines whether a connection should be displayed on this organization's login prompt. Only applicable for enterprise connections.
      */
-    showAsButton?: pulumi.Input<boolean>;
+    showAsButton?: pulumi.Input<boolean | undefined>;
     /**
      * The strategy of the enabled connection.
      */
-    strategy?: pulumi.Input<string>;
+    strategy?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -216,7 +216,7 @@ export interface OrganizationConnectionArgs {
     /**
      * When `true`, all users that log in with this connection will be automatically granted membership in the organization. When `false`, users must be granted membership in the organization before logging in with this connection.
      */
-    assignMembershipOnLogin?: pulumi.Input<boolean>;
+    assignMembershipOnLogin?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the connection to enable for the organization.
      */
@@ -224,15 +224,15 @@ export interface OrganizationConnectionArgs {
     /**
      * Whether the connection is enabled for the organization.
      */
-    isEnabled?: pulumi.Input<boolean>;
+    isEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `isSignupEnabled` can only be `true` if `assignMembershipOnLogin` is `true`.
      */
-    isSignupEnabled?: pulumi.Input<boolean>;
+    isSignupEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The access level for this organization connection. Can be `none`, `readonly`, `limited` or `full`.
      */
-    organizationAccessLevel?: pulumi.Input<string>;
+    organizationAccessLevel?: pulumi.Input<string | undefined>;
     /**
      * The ID of the organization to enable the connection for.
      */
@@ -240,5 +240,5 @@ export interface OrganizationConnectionArgs {
     /**
      * Determines whether a connection should be displayed on this organization's login prompt. Only applicable for enterprise connections.
      */
-    showAsButton?: pulumi.Input<boolean>;
+    showAsButton?: pulumi.Input<boolean | undefined>;
 }

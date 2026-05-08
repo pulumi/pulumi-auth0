@@ -60,8 +60,8 @@ class RolePermissionsArgs:
 @pulumi.input_type
 class _RolePermissionsState:
     def __init__(__self__, *,
-                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input['RolePermissionsPermissionArgs']]]] = None,
-                 role_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 permissions: pulumi.Input[Optional[Sequence[pulumi.Input['RolePermissionsPermissionArgs']]]] = None,
+                 role_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RolePermissions resources.
 
@@ -75,26 +75,26 @@ class _RolePermissionsState:
 
     @_builtins.property
     @pulumi.getter
-    def permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RolePermissionsPermissionArgs']]]]:
+    def permissions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RolePermissionsPermissionArgs']]]]:
         """
         List of API permissions granted to the role.
         """
         return pulumi.get(self, "permissions")
 
     @permissions.setter
-    def permissions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RolePermissionsPermissionArgs']]]]):
+    def permissions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RolePermissionsPermissionArgs']]]]):
         pulumi.set(self, "permissions", value)
 
     @_builtins.property
     @pulumi.getter(name="roleId")
-    def role_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the role to associate the permission to.
         """
         return pulumi.get(self, "role_id")
 
     @role_id.setter
-    def role_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role_id", value)
 
 
@@ -104,8 +104,8 @@ class RolePermissions(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RolePermissionsPermissionArgs', 'RolePermissionsPermissionArgsDict']]]]] = None,
-                 role_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RolePermissionsPermissionArgs', 'RolePermissionsPermissionArgsDict']]]]] = None,
+                 role_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         With this resource, you can manage role permissions (1-many).
@@ -142,10 +142,14 @@ class RolePermissions(pulumi.CustomResource):
             ])
         my_role = auth0.Role("my_role", name="My Role")
         my_role_perms = auth0.RolePermissions("my_role_perms",
-            permissions=resource_server.identifier.apply(lambda identifier: [auth0.RolePermissionsPermissionArgs(
-                name=entry["value"].name,
-                resource_server_identifier=identifier,
-            ) for entry in resource_server_scopes.scopes.apply(lambda scopes: [{"key": k, "value": v} for k, v in scopes.items()])]),
+            permissions=pulumi.Output.all(
+                scopes=resource_server_scopes.scopes,
+                identifier=resource_server.identifier
+        ).apply(lambda resolved_outputs: [auth0.RolePermissionsPermissionArgs(
+                name=entry.name,
+                resource_server_identifier=resolved_outputs['identifier'],
+            ) for entry in resolved_outputs['scopes']])
+        ,
             role_id=my_role.id)
         ```
 
@@ -206,10 +210,14 @@ class RolePermissions(pulumi.CustomResource):
             ])
         my_role = auth0.Role("my_role", name="My Role")
         my_role_perms = auth0.RolePermissions("my_role_perms",
-            permissions=resource_server.identifier.apply(lambda identifier: [auth0.RolePermissionsPermissionArgs(
-                name=entry["value"].name,
-                resource_server_identifier=identifier,
-            ) for entry in resource_server_scopes.scopes.apply(lambda scopes: [{"key": k, "value": v} for k, v in scopes.items()])]),
+            permissions=pulumi.Output.all(
+                scopes=resource_server_scopes.scopes,
+                identifier=resource_server.identifier
+        ).apply(lambda resolved_outputs: [auth0.RolePermissionsPermissionArgs(
+                name=entry.name,
+                resource_server_identifier=resolved_outputs['identifier'],
+            ) for entry in resolved_outputs['scopes']])
+        ,
             role_id=my_role.id)
         ```
 
@@ -239,8 +247,8 @@ class RolePermissions(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RolePermissionsPermissionArgs', 'RolePermissionsPermissionArgsDict']]]]] = None,
-                 role_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RolePermissionsPermissionArgs', 'RolePermissionsPermissionArgsDict']]]]] = None,
+                 role_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -266,8 +274,8 @@ class RolePermissions(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            permissions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RolePermissionsPermissionArgs', 'RolePermissionsPermissionArgsDict']]]]] = None,
-            role_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'RolePermissions':
+            permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RolePermissionsPermissionArgs', 'RolePermissionsPermissionArgsDict']]]]] = None,
+            role_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'RolePermissions':
         """
         Get an existing RolePermissions resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -114,11 +114,11 @@ export interface RuleConfigState {
     /**
      * Key for a rules configuration variable.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * Value for a rules configuration variable.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 /**

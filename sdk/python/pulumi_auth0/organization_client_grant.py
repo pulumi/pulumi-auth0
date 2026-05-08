@@ -58,8 +58,8 @@ class OrganizationClientGrantArgs:
 @pulumi.input_type
 class _OrganizationClientGrantState:
     def __init__(__self__, *,
-                 grant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 grant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OrganizationClientGrant resources.
 
@@ -73,26 +73,26 @@ class _OrganizationClientGrantState:
 
     @_builtins.property
     @pulumi.getter(name="grantId")
-    def grant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def grant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A Client Grant ID to add to the organization.
         """
         return pulumi.get(self, "grant_id")
 
     @grant_id.setter
-    def grant_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def grant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "grant_id", value)
 
     @_builtins.property
     @pulumi.getter(name="organizationId")
-    def organization_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def organization_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the organization to associate the client grant.
         """
         return pulumi.get(self, "organization_id")
 
     @organization_id.setter
-    def organization_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def organization_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "organization_id", value)
 
 
@@ -102,8 +102,8 @@ class OrganizationClientGrant(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 grant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 grant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         With this resource, you can manage a client grant associated with an organization.
@@ -257,8 +257,8 @@ class OrganizationClientGrant(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 grant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 grant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -284,8 +284,8 @@ class OrganizationClientGrant(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            grant_id: Optional[pulumi.Input[_builtins.str]] = None,
-            organization_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'OrganizationClientGrant':
+            grant_id: pulumi.Input[Optional[_builtins.str]] = None,
+            organization_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'OrganizationClientGrant':
         """
         Get an existing OrganizationClientGrant resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
