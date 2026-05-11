@@ -3,6 +3,7 @@
 
 package com.pulumi.auth0;
 
+import com.pulumi.auth0.inputs.EventStreamActionConfigurationArgs;
 import com.pulumi.auth0.inputs.EventStreamEventbridgeConfigurationArgs;
 import com.pulumi.auth0.inputs.EventStreamWebhookConfigurationArgs;
 import com.pulumi.core.Output;
@@ -20,14 +21,29 @@ public final class EventStreamArgs extends com.pulumi.resources.ResourceArgs {
     public static final EventStreamArgs Empty = new EventStreamArgs();
 
     /**
-     * The type of event stream destination (either &#39;eventbridge&#39; or &#39;webhook&#39;).
+     * Configuration for the Action destination. This block is only applicable when `destinationType` is set to `action`. Action configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
+     * 
+     */
+    @Import(name="actionConfiguration")
+    private @Nullable Output<EventStreamActionConfigurationArgs> actionConfiguration;
+
+    /**
+     * @return Configuration for the Action destination. This block is only applicable when `destinationType` is set to `action`. Action configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
+     * 
+     */
+    public Optional<Output<EventStreamActionConfigurationArgs>> actionConfiguration() {
+        return Optional.ofNullable(this.actionConfiguration);
+    }
+
+    /**
+     * The type of event stream destination. Possible values: `eventbridge`, `webhook`, or `action`.
      * 
      */
     @Import(name="destinationType", required=true)
     private Output<String> destinationType;
 
     /**
-     * @return The type of event stream destination (either &#39;eventbridge&#39; or &#39;webhook&#39;).
+     * @return The type of event stream destination. Possible values: `eventbridge`, `webhook`, or `action`.
      * 
      */
     public Output<String> destinationType() {
@@ -97,6 +113,7 @@ public final class EventStreamArgs extends com.pulumi.resources.ResourceArgs {
     private EventStreamArgs() {}
 
     private EventStreamArgs(EventStreamArgs $) {
+        this.actionConfiguration = $.actionConfiguration;
         this.destinationType = $.destinationType;
         this.eventbridgeConfiguration = $.eventbridgeConfiguration;
         this.name = $.name;
@@ -123,7 +140,28 @@ public final class EventStreamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param destinationType The type of event stream destination (either &#39;eventbridge&#39; or &#39;webhook&#39;).
+         * @param actionConfiguration Configuration for the Action destination. This block is only applicable when `destinationType` is set to `action`. Action configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder actionConfiguration(@Nullable Output<EventStreamActionConfigurationArgs> actionConfiguration) {
+            $.actionConfiguration = actionConfiguration;
+            return this;
+        }
+
+        /**
+         * @param actionConfiguration Configuration for the Action destination. This block is only applicable when `destinationType` is set to `action`. Action configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder actionConfiguration(EventStreamActionConfigurationArgs actionConfiguration) {
+            return actionConfiguration(Output.of(actionConfiguration));
+        }
+
+        /**
+         * @param destinationType The type of event stream destination. Possible values: `eventbridge`, `webhook`, or `action`.
          * 
          * @return builder
          * 
@@ -134,7 +172,7 @@ public final class EventStreamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param destinationType The type of event stream destination (either &#39;eventbridge&#39; or &#39;webhook&#39;).
+         * @param destinationType The type of event stream destination. Possible values: `eventbridge`, `webhook`, or `action`.
          * 
          * @return builder
          * 

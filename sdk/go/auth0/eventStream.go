@@ -86,6 +86,21 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Creates an event stream of type action
+//			_, err = auth0.NewEventStream(ctx, "my_event_stream_action", &auth0.EventStreamArgs{
+//				Name:            pulumi.String("my-action-stream"),
+//				DestinationType: pulumi.String("action"),
+//				Subscriptions: pulumi.StringArray{
+//					pulumi.String("user.created"),
+//					pulumi.String("user.updated"),
+//				},
+//				ActionConfiguration: &auth0.EventStreamActionConfigurationArgs{
+//					ActionId: pulumi.Any(myAction.Id),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			return nil
 //		})
 //	}
@@ -104,9 +119,11 @@ import (
 type EventStream struct {
 	pulumi.CustomResourceState
 
+	// Configuration for the Action destination. This block is only applicable when `destinationType` is set to `action`. Action configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
+	ActionConfiguration EventStreamActionConfigurationPtrOutput `pulumi:"actionConfiguration"`
 	// The ISO 8601 timestamp when the stream was created.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// The type of event stream destination (either 'eventbridge' or 'webhook').
+	// The type of event stream destination. Possible values: `eventbridge`, `webhook`, or `action`.
 	DestinationType pulumi.StringOutput `pulumi:"destinationType"`
 	// Configuration for the EventBridge destination. This block is only applicable when `destinationType` is set to `eventbridge`. EventBridge configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
 	EventbridgeConfiguration EventStreamEventbridgeConfigurationPtrOutput `pulumi:"eventbridgeConfiguration"`
@@ -158,9 +175,11 @@ func GetEventStream(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EventStream resources.
 type eventStreamState struct {
+	// Configuration for the Action destination. This block is only applicable when `destinationType` is set to `action`. Action configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
+	ActionConfiguration *EventStreamActionConfiguration `pulumi:"actionConfiguration"`
 	// The ISO 8601 timestamp when the stream was created.
 	CreatedAt *string `pulumi:"createdAt"`
-	// The type of event stream destination (either 'eventbridge' or 'webhook').
+	// The type of event stream destination. Possible values: `eventbridge`, `webhook`, or `action`.
 	DestinationType *string `pulumi:"destinationType"`
 	// Configuration for the EventBridge destination. This block is only applicable when `destinationType` is set to `eventbridge`. EventBridge configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
 	EventbridgeConfiguration *EventStreamEventbridgeConfiguration `pulumi:"eventbridgeConfiguration"`
@@ -177,9 +196,11 @@ type eventStreamState struct {
 }
 
 type EventStreamState struct {
+	// Configuration for the Action destination. This block is only applicable when `destinationType` is set to `action`. Action configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
+	ActionConfiguration EventStreamActionConfigurationPtrInput
 	// The ISO 8601 timestamp when the stream was created.
 	CreatedAt pulumi.StringPtrInput
-	// The type of event stream destination (either 'eventbridge' or 'webhook').
+	// The type of event stream destination. Possible values: `eventbridge`, `webhook`, or `action`.
 	DestinationType pulumi.StringPtrInput
 	// Configuration for the EventBridge destination. This block is only applicable when `destinationType` is set to `eventbridge`. EventBridge configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
 	EventbridgeConfiguration EventStreamEventbridgeConfigurationPtrInput
@@ -200,7 +221,9 @@ func (EventStreamState) ElementType() reflect.Type {
 }
 
 type eventStreamArgs struct {
-	// The type of event stream destination (either 'eventbridge' or 'webhook').
+	// Configuration for the Action destination. This block is only applicable when `destinationType` is set to `action`. Action configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
+	ActionConfiguration *EventStreamActionConfiguration `pulumi:"actionConfiguration"`
+	// The type of event stream destination. Possible values: `eventbridge`, `webhook`, or `action`.
 	DestinationType string `pulumi:"destinationType"`
 	// Configuration for the EventBridge destination. This block is only applicable when `destinationType` is set to `eventbridge`. EventBridge configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
 	EventbridgeConfiguration *EventStreamEventbridgeConfiguration `pulumi:"eventbridgeConfiguration"`
@@ -214,7 +237,9 @@ type eventStreamArgs struct {
 
 // The set of arguments for constructing a EventStream resource.
 type EventStreamArgs struct {
-	// The type of event stream destination (either 'eventbridge' or 'webhook').
+	// Configuration for the Action destination. This block is only applicable when `destinationType` is set to `action`. Action configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
+	ActionConfiguration EventStreamActionConfigurationPtrInput
+	// The type of event stream destination. Possible values: `eventbridge`, `webhook`, or `action`.
 	DestinationType pulumi.StringInput
 	// Configuration for the EventBridge destination. This block is only applicable when `destinationType` is set to `eventbridge`. EventBridge configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
 	EventbridgeConfiguration EventStreamEventbridgeConfigurationPtrInput
@@ -313,12 +338,17 @@ func (o EventStreamOutput) ToEventStreamOutputWithContext(ctx context.Context) E
 	return o
 }
 
+// Configuration for the Action destination. This block is only applicable when `destinationType` is set to `action`. Action configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
+func (o EventStreamOutput) ActionConfiguration() EventStreamActionConfigurationPtrOutput {
+	return o.ApplyT(func(v *EventStream) EventStreamActionConfigurationPtrOutput { return v.ActionConfiguration }).(EventStreamActionConfigurationPtrOutput)
+}
+
 // The ISO 8601 timestamp when the stream was created.
 func (o EventStreamOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *EventStream) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// The type of event stream destination (either 'eventbridge' or 'webhook').
+// The type of event stream destination. Possible values: `eventbridge`, `webhook`, or `action`.
 func (o EventStreamOutput) DestinationType() pulumi.StringOutput {
 	return o.ApplyT(func(v *EventStream) pulumi.StringOutput { return v.DestinationType }).(pulumi.StringOutput)
 }

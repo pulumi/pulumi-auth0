@@ -57,9 +57,11 @@ type LookupEventStreamArgs struct {
 
 // A collection of values returned by getEventStream.
 type LookupEventStreamResult struct {
+	// Configuration for the Action destination. This block is only applicable when `destinationType` is set to `action`. Action configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
+	ActionConfigurations []GetEventStreamActionConfiguration `pulumi:"actionConfigurations"`
 	// The ISO 8601 timestamp when the stream was created.
 	CreatedAt string `pulumi:"createdAt"`
-	// The type of event stream destination (either 'eventbridge' or 'webhook').
+	// The type of event stream destination. Possible values: `eventbridge`, `webhook`, or `action`.
 	DestinationType string `pulumi:"destinationType"`
 	// Configuration for the EventBridge destination. This block is only applicable when `destinationType` is set to `eventbridge`. EventBridge configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
 	EventbridgeConfigurations []GetEventStreamEventbridgeConfiguration `pulumi:"eventbridgeConfigurations"`
@@ -111,12 +113,17 @@ func (o LookupEventStreamResultOutput) ToLookupEventStreamResultOutputWithContex
 	return o
 }
 
+// Configuration for the Action destination. This block is only applicable when `destinationType` is set to `action`. Action configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
+func (o LookupEventStreamResultOutput) ActionConfigurations() GetEventStreamActionConfigurationArrayOutput {
+	return o.ApplyT(func(v LookupEventStreamResult) []GetEventStreamActionConfiguration { return v.ActionConfigurations }).(GetEventStreamActionConfigurationArrayOutput)
+}
+
 // The ISO 8601 timestamp when the stream was created.
 func (o LookupEventStreamResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEventStreamResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// The type of event stream destination (either 'eventbridge' or 'webhook').
+// The type of event stream destination. Possible values: `eventbridge`, `webhook`, or `action`.
 func (o LookupEventStreamResultOutput) DestinationType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEventStreamResult) string { return v.DestinationType }).(pulumi.StringOutput)
 }
