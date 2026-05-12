@@ -43,11 +43,15 @@ export interface GetEventStreamArgs {
  */
 export interface GetEventStreamResult {
     /**
+     * Configuration for the Action destination. This block is only applicable when `destinationType` is set to `action`. Action configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
+     */
+    readonly actionConfigurations: outputs.GetEventStreamActionConfiguration[];
+    /**
      * The ISO 8601 timestamp when the stream was created.
      */
     readonly createdAt: string;
     /**
-     * The type of event stream destination (either 'eventbridge' or 'webhook').
+     * The type of event stream destination. Possible values: `eventbridge`, `webhook`, or `action`.
      */
     readonly destinationType: string;
     /**
@@ -63,7 +67,7 @@ export interface GetEventStreamResult {
      */
     readonly name: string;
     /**
-     * The current status of the event stream.
+     * The current status of the event stream. Can be `enabled` or `disabled`.
      */
     readonly status: string;
     /**

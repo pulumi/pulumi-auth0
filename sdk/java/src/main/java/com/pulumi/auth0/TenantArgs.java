@@ -176,6 +176,21 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Sets the third*party*security_mode assigned to clients created via Dynamic Client Registration. Can only be configured by [customers with pre-existing third-party client usage before April 2026](https://auth0.com/docs/get-started/applications/third-party-applications/permissive-mode#dynamic-client-registration-in-permissive-mode).
+     * 
+     */
+    @Import(name="dynamicClientRegistrationSecurityMode")
+    private @Nullable Output<String> dynamicClientRegistrationSecurityMode;
+
+    /**
+     * @return Sets the third*party*security_mode assigned to clients created via Dynamic Client Registration. Can only be configured by [customers with pre-existing third-party client usage before April 2026](https://auth0.com/docs/get-started/applications/third-party-applications/permissive-mode#dynamic-client-registration-in-permissive-mode).
+     * 
+     */
+    public Optional<Output<String>> dynamicClientRegistrationSecurityMode() {
+        return Optional.ofNullable(this.dynamicClientRegistrationSecurityMode);
+    }
+
+    /**
      * Supported locales for the user interface. The first locale in the list will be used to set the default locale.
      * 
      */
@@ -488,6 +503,7 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
         this.defaultRedirectionUri = $.defaultRedirectionUri;
         this.defaultTokenQuota = $.defaultTokenQuota;
         this.disableAcrValuesSupported = $.disableAcrValuesSupported;
+        this.dynamicClientRegistrationSecurityMode = $.dynamicClientRegistrationSecurityMode;
         this.enabledLocales = $.enabledLocales;
         this.ephemeralSessionLifetime = $.ephemeralSessionLifetime;
         this.errorPage = $.errorPage;
@@ -756,6 +772,27 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder disableAcrValuesSupported(Boolean disableAcrValuesSupported) {
             return disableAcrValuesSupported(Output.of(disableAcrValuesSupported));
+        }
+
+        /**
+         * @param dynamicClientRegistrationSecurityMode Sets the third*party*security_mode assigned to clients created via Dynamic Client Registration. Can only be configured by [customers with pre-existing third-party client usage before April 2026](https://auth0.com/docs/get-started/applications/third-party-applications/permissive-mode#dynamic-client-registration-in-permissive-mode).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dynamicClientRegistrationSecurityMode(@Nullable Output<String> dynamicClientRegistrationSecurityMode) {
+            $.dynamicClientRegistrationSecurityMode = dynamicClientRegistrationSecurityMode;
+            return this;
+        }
+
+        /**
+         * @param dynamicClientRegistrationSecurityMode Sets the third*party*security_mode assigned to clients created via Dynamic Client Registration. Can only be configured by [customers with pre-existing third-party client usage before April 2026](https://auth0.com/docs/get-started/applications/third-party-applications/permissive-mode#dynamic-client-registration-in-permissive-mode).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dynamicClientRegistrationSecurityMode(String dynamicClientRegistrationSecurityMode) {
+            return dynamicClientRegistrationSecurityMode(Output.of(dynamicClientRegistrationSecurityMode));
         }
 
         /**

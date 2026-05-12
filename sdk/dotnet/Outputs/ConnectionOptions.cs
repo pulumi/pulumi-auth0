@@ -26,6 +26,10 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly ImmutableArray<string> AllowedAudiences;
         /// <summary>
+        /// Enable API Access to groups.
+        /// </summary>
+        public readonly bool? ApiEnableGroups;
+        /// <summary>
         /// Enable API Access to users.
         /// </summary>
         public readonly bool? ApiEnableUsers;
@@ -194,6 +198,10 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string? IconUrl;
         /// <summary>
+        /// List of allowed algorithms for the ID token signature. If not set, RS256 will be applied at runtime. (Okta/OIDC Connections)
+        /// </summary>
+        public readonly ImmutableArray<string> IdTokenSignedResponseAlgs;
+        /// <summary>
         /// Azure AD Identity API. Available options are: `microsoft-identity-platform-v2.0` or `azure-active-directory-v1.0`.
         /// </summary>
         public readonly string? IdentityApi;
@@ -273,6 +281,10 @@ namespace Pulumi.Auth0.Outputs
         /// Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's `Name`, `Username`, `Nickname`, `user_metadata.name`, `user_metadata.first`, `user_metadata.last`, user's `Email`, or first part of the user's `Email`.
         /// </summary>
         public readonly Outputs.ConnectionOptionsPasswordNoPersonalInfo? PasswordNoPersonalInfo;
+        /// <summary>
+        /// Flexible password policy configuration. Only available for `Auth0` strategy connections. Cannot be set together with legacy password policy fields (`PasswordPolicy`, `PasswordComplexityOptions`, `PasswordHistory`, `PasswordNoPersonalInfo`, `PasswordDictionary`).
+        /// </summary>
+        public readonly Outputs.ConnectionOptionsPasswordOptions? PasswordOptions;
         /// <summary>
         /// Indicates level of password strength to enforce during authentication. A strong password policy will make it difficult, if not improbable, for someone to guess a password through either manual or automated means. Options include `None`, `Low`, `Fair`, `Good`, `Excellent`.
         /// </summary>
@@ -402,6 +414,10 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string? TokenEndpointAuthSigningAlg;
         /// <summary>
+        /// Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: 'issuer' or 'token_endpoint'. (Okta/OIDC Connections)
+        /// </summary>
+        public readonly string? TokenEndpointJwtcaAudFormat;
+        /// <summary>
         /// Configuration options for one-time passwords.
         /// </summary>
         public readonly Outputs.ConnectionOptionsTotp? Totp;
@@ -469,6 +485,8 @@ namespace Pulumi.Auth0.Outputs
             string? adfsServer,
 
             ImmutableArray<string> allowedAudiences,
+
+            bool? apiEnableGroups,
 
             bool? apiEnableUsers,
 
@@ -554,6 +572,8 @@ namespace Pulumi.Auth0.Outputs
 
             string? iconUrl,
 
+            ImmutableArray<string> idTokenSignedResponseAlgs,
+
             string? identityApi,
 
             Outputs.ConnectionOptionsIdpInitiated? idpInitiated,
@@ -593,6 +613,8 @@ namespace Pulumi.Auth0.Outputs
             ImmutableArray<Outputs.ConnectionOptionsPasswordHistory> passwordHistories,
 
             Outputs.ConnectionOptionsPasswordNoPersonalInfo? passwordNoPersonalInfo,
+
+            Outputs.ConnectionOptionsPasswordOptions? passwordOptions,
 
             string? passwordPolicy,
 
@@ -658,6 +680,8 @@ namespace Pulumi.Auth0.Outputs
 
             string? tokenEndpointAuthSigningAlg,
 
+            string? tokenEndpointJwtcaAudFormat,
+
             Outputs.ConnectionOptionsTotp? totp,
 
             string? twilioSid,
@@ -691,6 +715,7 @@ namespace Pulumi.Auth0.Outputs
             AccessTokenUrl = accessTokenUrl;
             AdfsServer = adfsServer;
             AllowedAudiences = allowedAudiences;
+            ApiEnableGroups = apiEnableGroups;
             ApiEnableUsers = apiEnableUsers;
             AppId = appId;
             AttributeMap = attributeMap;
@@ -733,6 +758,7 @@ namespace Pulumi.Auth0.Outputs
             GlobalTokenRevocationJwtIss = globalTokenRevocationJwtIss;
             GlobalTokenRevocationJwtSub = globalTokenRevocationJwtSub;
             IconUrl = iconUrl;
+            IdTokenSignedResponseAlgs = idTokenSignedResponseAlgs;
             IdentityApi = identityApi;
             IdpInitiated = idpInitiated;
             ImportMode = importMode;
@@ -753,6 +779,7 @@ namespace Pulumi.Auth0.Outputs
             PasswordDictionary = passwordDictionary;
             PasswordHistories = passwordHistories;
             PasswordNoPersonalInfo = passwordNoPersonalInfo;
+            PasswordOptions = passwordOptions;
             PasswordPolicy = passwordPolicy;
             PingFederateBaseUrl = pingFederateBaseUrl;
             PkceEnabled = pkceEnabled;
@@ -785,6 +812,7 @@ namespace Pulumi.Auth0.Outputs
             TokenEndpoint = tokenEndpoint;
             TokenEndpointAuthMethod = tokenEndpointAuthMethod;
             TokenEndpointAuthSigningAlg = tokenEndpointAuthSigningAlg;
+            TokenEndpointJwtcaAudFormat = tokenEndpointJwtcaAudFormat;
             Totp = totp;
             TwilioSid = twilioSid;
             TwilioToken = twilioToken;

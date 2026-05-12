@@ -106,6 +106,8 @@ type GetClientGrantsArgs struct {
 	Audience *string `pulumi:"audience"`
 	// The ID of the client to filter by.
 	ClientId *string `pulumi:"clientId"`
+	// Filter by defaultFor value (e.g., `thirdPartyClients`).
+	DefaultFor *string `pulumi:"defaultFor"`
 }
 
 // A collection of values returned by getClientGrants.
@@ -116,6 +118,8 @@ type GetClientGrantsResult struct {
 	ClientGrants []GetClientGrantsClientGrant `pulumi:"clientGrants"`
 	// The ID of the client to filter by.
 	ClientId *string `pulumi:"clientId"`
+	// Filter by defaultFor value (e.g., `thirdPartyClients`).
+	DefaultFor *string `pulumi:"defaultFor"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 }
@@ -135,6 +139,8 @@ type GetClientGrantsOutputArgs struct {
 	Audience pulumi.StringPtrInput `pulumi:"audience"`
 	// The ID of the client to filter by.
 	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
+	// Filter by defaultFor value (e.g., `thirdPartyClients`).
+	DefaultFor pulumi.StringPtrInput `pulumi:"defaultFor"`
 }
 
 func (GetClientGrantsOutputArgs) ElementType() reflect.Type {
@@ -169,6 +175,11 @@ func (o GetClientGrantsResultOutput) ClientGrants() GetClientGrantsClientGrantAr
 // The ID of the client to filter by.
 func (o GetClientGrantsResultOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClientGrantsResult) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+// Filter by defaultFor value (e.g., `thirdPartyClients`).
+func (o GetClientGrantsResultOutput) DefaultFor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClientGrantsResult) *string { return v.DefaultFor }).(pulumi.StringPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

@@ -266,6 +266,12 @@ namespace Pulumi.Auth0
         public Output<string> OrganizationUsage { get; private set; } = null!;
 
         /// <summary>
+        /// Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.Allowed values: `AllowAlways` or `OpenRedirectProtection`.
+        /// </summary>
+        [Output("redirectionPolicy")]
+        public Output<string> RedirectionPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// Configuration settings for the refresh tokens issued for this client.
         /// </summary>
         [Output("refreshToken")]
@@ -315,6 +321,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Output("ssoDisabled")]
         public Output<bool?> SsoDisabled { get; private set; } = null!;
+
+        /// <summary>
+        /// Security mode for third-party clients. Allowed values: `Strict` or `Permissive`.
+        /// </summary>
+        [Output("thirdPartySecurityMode")]
+        public Output<string> ThirdPartySecurityMode { get; private set; } = null!;
 
         /// <summary>
         /// Allows configuration for token exchange
@@ -662,6 +674,12 @@ namespace Pulumi.Auth0
         public Input<string>? OrganizationUsage { get; set; }
 
         /// <summary>
+        /// Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.Allowed values: `AllowAlways` or `OpenRedirectProtection`.
+        /// </summary>
+        [Input("redirectionPolicy")]
+        public Input<string>? RedirectionPolicy { get; set; }
+
+        /// <summary>
         /// Configuration settings for the refresh tokens issued for this client.
         /// </summary>
         [Input("refreshToken")]
@@ -705,6 +723,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("ssoDisabled")]
         public Input<bool>? SsoDisabled { get; set; }
+
+        /// <summary>
+        /// Security mode for third-party clients. Allowed values: `Strict` or `Permissive`.
+        /// </summary>
+        [Input("thirdPartySecurityMode")]
+        public Input<string>? ThirdPartySecurityMode { get; set; }
 
         /// <summary>
         /// Allows configuration for token exchange
@@ -1047,6 +1071,12 @@ namespace Pulumi.Auth0
         public Input<string>? OrganizationUsage { get; set; }
 
         /// <summary>
+        /// Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.Allowed values: `AllowAlways` or `OpenRedirectProtection`.
+        /// </summary>
+        [Input("redirectionPolicy")]
+        public Input<string>? RedirectionPolicy { get; set; }
+
+        /// <summary>
         /// Configuration settings for the refresh tokens issued for this client.
         /// </summary>
         [Input("refreshToken")]
@@ -1106,6 +1136,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("ssoDisabled")]
         public Input<bool>? SsoDisabled { get; set; }
+
+        /// <summary>
+        /// Security mode for third-party clients. Allowed values: `Strict` or `Permissive`.
+        /// </summary>
+        [Input("thirdPartySecurityMode")]
+        public Input<string>? ThirdPartySecurityMode { get; set; }
 
         /// <summary>
         /// Allows configuration for token exchange

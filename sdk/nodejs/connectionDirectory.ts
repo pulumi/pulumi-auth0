@@ -24,6 +24,7 @@ import * as utilities from "./utilities";
  *         clientSecret: "your-google-client-secret",
  *         domain: "example.com",
  *         apiEnableUsers: true,
+ *         apiEnableGroups: true,
  *     },
  * });
  * // Configure directory provisioning with default settings
@@ -50,6 +51,11 @@ import * as utilities from "./utilities";
  *             idp: "id",
  *         },
  *     ],
+ * });
+ * // Configure directory provisioning with selective group synchronization
+ * const withSelectedGroups = new auth0.ConnectionDirectory("with_selected_groups", {
+ *     connectionId: googleWorkspace.id,
+ *     synchronizeGroups: "selected",
  * });
  * ```
  *
@@ -124,6 +130,10 @@ export class ConnectionDirectory extends pulumi.CustomResource {
      */
     declare public readonly synchronizeAutomatically: pulumi.Output<boolean>;
     /**
+     * Group synchronization configuration. Valid values are: off, all, selected. (EA only)
+     */
+    declare public readonly synchronizeGroups: pulumi.Output<string>;
+    /**
      * The timestamp at which the directory provisioning configuration was last updated.
      */
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
@@ -150,6 +160,7 @@ export class ConnectionDirectory extends pulumi.CustomResource {
             resourceInputs["mappings"] = state?.mappings;
             resourceInputs["strategy"] = state?.strategy;
             resourceInputs["synchronizeAutomatically"] = state?.synchronizeAutomatically;
+            resourceInputs["synchronizeGroups"] = state?.synchronizeGroups;
             resourceInputs["updatedAt"] = state?.updatedAt;
         } else {
             const args = argsOrState as ConnectionDirectoryArgs | undefined;
@@ -159,6 +170,7 @@ export class ConnectionDirectory extends pulumi.CustomResource {
             resourceInputs["connectionId"] = args?.connectionId;
             resourceInputs["mappings"] = args?.mappings;
             resourceInputs["synchronizeAutomatically"] = args?.synchronizeAutomatically;
+            resourceInputs["synchronizeGroups"] = args?.synchronizeGroups;
             resourceInputs["connectionName"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["lastSynchronizationAt"] = undefined /*out*/;
@@ -213,6 +225,10 @@ export interface ConnectionDirectoryState {
      */
     synchronizeAutomatically?: pulumi.Input<boolean | undefined>;
     /**
+     * Group synchronization configuration. Valid values are: off, all, selected. (EA only)
+     */
+    synchronizeGroups?: pulumi.Input<string | undefined>;
+    /**
      * The timestamp at which the directory provisioning configuration was last updated.
      */
     updatedAt?: pulumi.Input<string | undefined>;
@@ -234,4 +250,8 @@ export interface ConnectionDirectoryArgs {
      * Whether periodic automatic synchronization is enabled. Defaults to false.
      */
     synchronizeAutomatically?: pulumi.Input<boolean | undefined>;
+    /**
+     * Group synchronization configuration. Valid values are: off, all, selected. (EA only)
+     */
+    synchronizeGroups?: pulumi.Input<string | undefined>;
 }

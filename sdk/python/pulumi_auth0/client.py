@@ -56,6 +56,7 @@ class ClientArgs:
                  organization_discovery_methods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  organization_require_behavior: pulumi.Input[Optional[_builtins.str]] = None,
                  organization_usage: pulumi.Input[Optional[_builtins.str]] = None,
+                 redirection_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  refresh_token: pulumi.Input[Optional['ClientRefreshTokenArgs']] = None,
                  require_proof_of_possession: pulumi.Input[Optional[_builtins.bool]] = None,
                  require_pushed_authorization_requests: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -64,6 +65,7 @@ class ClientArgs:
                  skip_non_verifiable_callback_uri_confirmation_prompt: pulumi.Input[Optional[_builtins.str]] = None,
                  sso: pulumi.Input[Optional[_builtins.bool]] = None,
                  sso_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 third_party_security_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  token_exchange: pulumi.Input[Optional['ClientTokenExchangeArgs']] = None,
                  token_quota: pulumi.Input[Optional['ClientTokenQuotaArgs']] = None,
                  web_origins: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
@@ -105,6 +107,7 @@ class ClientArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] organization_discovery_methods: Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organization_name` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organization_require_behavior` is set to `pre_login_prompt`.
         :param pulumi.Input[_builtins.str] organization_require_behavior: Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.
         :param pulumi.Input[_builtins.str] organization_usage: Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+        :param pulumi.Input[_builtins.str] redirection_policy: Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.Allowed values: `allow_always` or `open_redirect_protection`.
         :param pulumi.Input['ClientRefreshTokenArgs'] refresh_token: Configuration settings for the refresh tokens issued for this client.
         :param pulumi.Input[_builtins.bool] require_proof_of_possession: Makes the use of Proof-of-Possession mandatory for this client.
         :param pulumi.Input[_builtins.bool] require_pushed_authorization_requests: Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
@@ -112,6 +115,7 @@ class ClientArgs:
         :param pulumi.Input[_builtins.str] skip_non_verifiable_callback_uri_confirmation_prompt: Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
         :param pulumi.Input[_builtins.bool] sso: Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
         :param pulumi.Input[_builtins.bool] sso_disabled: Indicates whether or not SSO is disabled.
+        :param pulumi.Input[_builtins.str] third_party_security_mode: Security mode for third-party clients. Allowed values: `strict` or `permissive`.
         :param pulumi.Input['ClientTokenExchangeArgs'] token_exchange: Allows configuration for token exchange
         :param pulumi.Input['ClientTokenQuotaArgs'] token_quota: The token quota configuration.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] web_origins: URLs that represent valid web origins for use with web message response mode.
@@ -191,6 +195,8 @@ class ClientArgs:
             pulumi.set(__self__, "organization_require_behavior", organization_require_behavior)
         if organization_usage is not None:
             pulumi.set(__self__, "organization_usage", organization_usage)
+        if redirection_policy is not None:
+            pulumi.set(__self__, "redirection_policy", redirection_policy)
         if refresh_token is not None:
             pulumi.set(__self__, "refresh_token", refresh_token)
         if require_proof_of_possession is not None:
@@ -207,6 +213,8 @@ class ClientArgs:
             pulumi.set(__self__, "sso", sso)
         if sso_disabled is not None:
             pulumi.set(__self__, "sso_disabled", sso_disabled)
+        if third_party_security_mode is not None:
+            pulumi.set(__self__, "third_party_security_mode", third_party_security_mode)
         if token_exchange is not None:
             pulumi.set(__self__, "token_exchange", token_exchange)
         if token_quota is not None:
@@ -636,6 +644,18 @@ class ClientArgs:
         pulumi.set(self, "organization_usage", value)
 
     @_builtins.property
+    @pulumi.getter(name="redirectionPolicy")
+    def redirection_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.Allowed values: `allow_always` or `open_redirect_protection`.
+        """
+        return pulumi.get(self, "redirection_policy")
+
+    @redirection_policy.setter
+    def redirection_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "redirection_policy", value)
+
+    @_builtins.property
     @pulumi.getter(name="refreshToken")
     def refresh_token(self) -> pulumi.Input[Optional['ClientRefreshTokenArgs']]:
         """
@@ -729,6 +749,18 @@ class ClientArgs:
         pulumi.set(self, "sso_disabled", value)
 
     @_builtins.property
+    @pulumi.getter(name="thirdPartySecurityMode")
+    def third_party_security_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Security mode for third-party clients. Allowed values: `strict` or `permissive`.
+        """
+        return pulumi.get(self, "third_party_security_mode")
+
+    @third_party_security_mode.setter
+    def third_party_security_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "third_party_security_mode", value)
+
+    @_builtins.property
     @pulumi.getter(name="tokenExchange")
     def token_exchange(self) -> pulumi.Input[Optional['ClientTokenExchangeArgs']]:
         """
@@ -808,6 +840,7 @@ class _ClientState:
                  organization_discovery_methods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  organization_require_behavior: pulumi.Input[Optional[_builtins.str]] = None,
                  organization_usage: pulumi.Input[Optional[_builtins.str]] = None,
+                 redirection_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  refresh_token: pulumi.Input[Optional['ClientRefreshTokenArgs']] = None,
                  require_proof_of_possession: pulumi.Input[Optional[_builtins.bool]] = None,
                  require_pushed_authorization_requests: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -817,6 +850,7 @@ class _ClientState:
                  skip_non_verifiable_callback_uri_confirmation_prompt: pulumi.Input[Optional[_builtins.str]] = None,
                  sso: pulumi.Input[Optional[_builtins.bool]] = None,
                  sso_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 third_party_security_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  token_exchange: pulumi.Input[Optional['ClientTokenExchangeArgs']] = None,
                  token_quota: pulumi.Input[Optional['ClientTokenQuotaArgs']] = None,
                  web_origins: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
@@ -863,6 +897,7 @@ class _ClientState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] organization_discovery_methods: Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organization_name` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organization_require_behavior` is set to `pre_login_prompt`.
         :param pulumi.Input[_builtins.str] organization_require_behavior: Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.
         :param pulumi.Input[_builtins.str] organization_usage: Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+        :param pulumi.Input[_builtins.str] redirection_policy: Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.Allowed values: `allow_always` or `open_redirect_protection`.
         :param pulumi.Input['ClientRefreshTokenArgs'] refresh_token: Configuration settings for the refresh tokens issued for this client.
         :param pulumi.Input[_builtins.bool] require_proof_of_possession: Makes the use of Proof-of-Possession mandatory for this client.
         :param pulumi.Input[_builtins.bool] require_pushed_authorization_requests: Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
@@ -871,6 +906,7 @@ class _ClientState:
         :param pulumi.Input[_builtins.str] skip_non_verifiable_callback_uri_confirmation_prompt: Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
         :param pulumi.Input[_builtins.bool] sso: Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
         :param pulumi.Input[_builtins.bool] sso_disabled: Indicates whether or not SSO is disabled.
+        :param pulumi.Input[_builtins.str] third_party_security_mode: Security mode for third-party clients. Allowed values: `strict` or `permissive`.
         :param pulumi.Input['ClientTokenExchangeArgs'] token_exchange: Allows configuration for token exchange
         :param pulumi.Input['ClientTokenQuotaArgs'] token_quota: The token quota configuration.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] web_origins: URLs that represent valid web origins for use with web message response mode.
@@ -960,6 +996,8 @@ class _ClientState:
             pulumi.set(__self__, "organization_require_behavior", organization_require_behavior)
         if organization_usage is not None:
             pulumi.set(__self__, "organization_usage", organization_usage)
+        if redirection_policy is not None:
+            pulumi.set(__self__, "redirection_policy", redirection_policy)
         if refresh_token is not None:
             pulumi.set(__self__, "refresh_token", refresh_token)
         if require_proof_of_possession is not None:
@@ -978,6 +1016,8 @@ class _ClientState:
             pulumi.set(__self__, "sso", sso)
         if sso_disabled is not None:
             pulumi.set(__self__, "sso_disabled", sso_disabled)
+        if third_party_security_mode is not None:
+            pulumi.set(__self__, "third_party_security_mode", third_party_security_mode)
         if token_exchange is not None:
             pulumi.set(__self__, "token_exchange", token_exchange)
         if token_quota is not None:
@@ -1467,6 +1507,18 @@ class _ClientState:
         pulumi.set(self, "organization_usage", value)
 
     @_builtins.property
+    @pulumi.getter(name="redirectionPolicy")
+    def redirection_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.Allowed values: `allow_always` or `open_redirect_protection`.
+        """
+        return pulumi.get(self, "redirection_policy")
+
+    @redirection_policy.setter
+    def redirection_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "redirection_policy", value)
+
+    @_builtins.property
     @pulumi.getter(name="refreshToken")
     def refresh_token(self) -> pulumi.Input[Optional['ClientRefreshTokenArgs']]:
         """
@@ -1572,6 +1624,18 @@ class _ClientState:
         pulumi.set(self, "sso_disabled", value)
 
     @_builtins.property
+    @pulumi.getter(name="thirdPartySecurityMode")
+    def third_party_security_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Security mode for third-party clients. Allowed values: `strict` or `permissive`.
+        """
+        return pulumi.get(self, "third_party_security_mode")
+
+    @third_party_security_mode.setter
+    def third_party_security_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "third_party_security_mode", value)
+
+    @_builtins.property
     @pulumi.getter(name="tokenExchange")
     def token_exchange(self) -> pulumi.Input[Optional['ClientTokenExchangeArgs']]:
         """
@@ -1649,6 +1713,7 @@ class Client(pulumi.CustomResource):
                  organization_discovery_methods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  organization_require_behavior: pulumi.Input[Optional[_builtins.str]] = None,
                  organization_usage: pulumi.Input[Optional[_builtins.str]] = None,
+                 redirection_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  refresh_token: pulumi.Input[Optional[Union['ClientRefreshTokenArgs', 'ClientRefreshTokenArgsDict']]] = None,
                  require_proof_of_possession: pulumi.Input[Optional[_builtins.bool]] = None,
                  require_pushed_authorization_requests: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1657,6 +1722,7 @@ class Client(pulumi.CustomResource):
                  skip_non_verifiable_callback_uri_confirmation_prompt: pulumi.Input[Optional[_builtins.str]] = None,
                  sso: pulumi.Input[Optional[_builtins.bool]] = None,
                  sso_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 third_party_security_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  token_exchange: pulumi.Input[Optional[Union['ClientTokenExchangeArgs', 'ClientTokenExchangeArgsDict']]] = None,
                  token_quota: pulumi.Input[Optional[Union['ClientTokenQuotaArgs', 'ClientTokenQuotaArgsDict']]] = None,
                  web_origins: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1712,6 +1778,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] organization_discovery_methods: Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organization_name` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organization_require_behavior` is set to `pre_login_prompt`.
         :param pulumi.Input[_builtins.str] organization_require_behavior: Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.
         :param pulumi.Input[_builtins.str] organization_usage: Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+        :param pulumi.Input[_builtins.str] redirection_policy: Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.Allowed values: `allow_always` or `open_redirect_protection`.
         :param pulumi.Input[Union['ClientRefreshTokenArgs', 'ClientRefreshTokenArgsDict']] refresh_token: Configuration settings for the refresh tokens issued for this client.
         :param pulumi.Input[_builtins.bool] require_proof_of_possession: Makes the use of Proof-of-Possession mandatory for this client.
         :param pulumi.Input[_builtins.bool] require_pushed_authorization_requests: Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
@@ -1719,6 +1786,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] skip_non_verifiable_callback_uri_confirmation_prompt: Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
         :param pulumi.Input[_builtins.bool] sso: Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
         :param pulumi.Input[_builtins.bool] sso_disabled: Indicates whether or not SSO is disabled.
+        :param pulumi.Input[_builtins.str] third_party_security_mode: Security mode for third-party clients. Allowed values: `strict` or `permissive`.
         :param pulumi.Input[Union['ClientTokenExchangeArgs', 'ClientTokenExchangeArgsDict']] token_exchange: Allows configuration for token exchange
         :param pulumi.Input[Union['ClientTokenQuotaArgs', 'ClientTokenQuotaArgsDict']] token_quota: The token quota configuration.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] web_origins: URLs that represent valid web origins for use with web message response mode.
@@ -1793,6 +1861,7 @@ class Client(pulumi.CustomResource):
                  organization_discovery_methods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  organization_require_behavior: pulumi.Input[Optional[_builtins.str]] = None,
                  organization_usage: pulumi.Input[Optional[_builtins.str]] = None,
+                 redirection_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  refresh_token: pulumi.Input[Optional[Union['ClientRefreshTokenArgs', 'ClientRefreshTokenArgsDict']]] = None,
                  require_proof_of_possession: pulumi.Input[Optional[_builtins.bool]] = None,
                  require_pushed_authorization_requests: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1801,6 +1870,7 @@ class Client(pulumi.CustomResource):
                  skip_non_verifiable_callback_uri_confirmation_prompt: pulumi.Input[Optional[_builtins.str]] = None,
                  sso: pulumi.Input[Optional[_builtins.bool]] = None,
                  sso_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 third_party_security_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  token_exchange: pulumi.Input[Optional[Union['ClientTokenExchangeArgs', 'ClientTokenExchangeArgsDict']]] = None,
                  token_quota: pulumi.Input[Optional[Union['ClientTokenQuotaArgs', 'ClientTokenQuotaArgsDict']]] = None,
                  web_origins: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1850,6 +1920,7 @@ class Client(pulumi.CustomResource):
             __props__.__dict__["organization_discovery_methods"] = organization_discovery_methods
             __props__.__dict__["organization_require_behavior"] = organization_require_behavior
             __props__.__dict__["organization_usage"] = organization_usage
+            __props__.__dict__["redirection_policy"] = redirection_policy
             __props__.__dict__["refresh_token"] = refresh_token
             __props__.__dict__["require_proof_of_possession"] = require_proof_of_possession
             __props__.__dict__["require_pushed_authorization_requests"] = require_pushed_authorization_requests
@@ -1858,6 +1929,7 @@ class Client(pulumi.CustomResource):
             __props__.__dict__["skip_non_verifiable_callback_uri_confirmation_prompt"] = skip_non_verifiable_callback_uri_confirmation_prompt
             __props__.__dict__["sso"] = sso
             __props__.__dict__["sso_disabled"] = sso_disabled
+            __props__.__dict__["third_party_security_mode"] = third_party_security_mode
             __props__.__dict__["token_exchange"] = token_exchange
             __props__.__dict__["token_quota"] = token_quota
             __props__.__dict__["web_origins"] = web_origins
@@ -1919,6 +1991,7 @@ class Client(pulumi.CustomResource):
             organization_discovery_methods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             organization_require_behavior: pulumi.Input[Optional[_builtins.str]] = None,
             organization_usage: pulumi.Input[Optional[_builtins.str]] = None,
+            redirection_policy: pulumi.Input[Optional[_builtins.str]] = None,
             refresh_token: pulumi.Input[Optional[Union['ClientRefreshTokenArgs', 'ClientRefreshTokenArgsDict']]] = None,
             require_proof_of_possession: pulumi.Input[Optional[_builtins.bool]] = None,
             require_pushed_authorization_requests: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1928,6 +2001,7 @@ class Client(pulumi.CustomResource):
             skip_non_verifiable_callback_uri_confirmation_prompt: pulumi.Input[Optional[_builtins.str]] = None,
             sso: pulumi.Input[Optional[_builtins.bool]] = None,
             sso_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            third_party_security_mode: pulumi.Input[Optional[_builtins.str]] = None,
             token_exchange: pulumi.Input[Optional[Union['ClientTokenExchangeArgs', 'ClientTokenExchangeArgsDict']]] = None,
             token_quota: pulumi.Input[Optional[Union['ClientTokenQuotaArgs', 'ClientTokenQuotaArgsDict']]] = None,
             web_origins: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Client':
@@ -1978,6 +2052,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] organization_discovery_methods: Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organization_name` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organization_require_behavior` is set to `pre_login_prompt`.
         :param pulumi.Input[_builtins.str] organization_require_behavior: Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.
         :param pulumi.Input[_builtins.str] organization_usage: Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+        :param pulumi.Input[_builtins.str] redirection_policy: Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.Allowed values: `allow_always` or `open_redirect_protection`.
         :param pulumi.Input[Union['ClientRefreshTokenArgs', 'ClientRefreshTokenArgsDict']] refresh_token: Configuration settings for the refresh tokens issued for this client.
         :param pulumi.Input[_builtins.bool] require_proof_of_possession: Makes the use of Proof-of-Possession mandatory for this client.
         :param pulumi.Input[_builtins.bool] require_pushed_authorization_requests: Makes the use of Pushed Authorization Requests mandatory for this client. This feature currently needs to be enabled on the tenant in order to make use of it.
@@ -1986,6 +2061,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] skip_non_verifiable_callback_uri_confirmation_prompt: Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
         :param pulumi.Input[_builtins.bool] sso: Applies only to SSO clients and determines whether Auth0 will handle Single Sign-On (true) or whether the identity provider will (false).
         :param pulumi.Input[_builtins.bool] sso_disabled: Indicates whether or not SSO is disabled.
+        :param pulumi.Input[_builtins.str] third_party_security_mode: Security mode for third-party clients. Allowed values: `strict` or `permissive`.
         :param pulumi.Input[Union['ClientTokenExchangeArgs', 'ClientTokenExchangeArgsDict']] token_exchange: Allows configuration for token exchange
         :param pulumi.Input[Union['ClientTokenQuotaArgs', 'ClientTokenQuotaArgsDict']] token_quota: The token quota configuration.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] web_origins: URLs that represent valid web origins for use with web message response mode.
@@ -2034,6 +2110,7 @@ class Client(pulumi.CustomResource):
         __props__.__dict__["organization_discovery_methods"] = organization_discovery_methods
         __props__.__dict__["organization_require_behavior"] = organization_require_behavior
         __props__.__dict__["organization_usage"] = organization_usage
+        __props__.__dict__["redirection_policy"] = redirection_policy
         __props__.__dict__["refresh_token"] = refresh_token
         __props__.__dict__["require_proof_of_possession"] = require_proof_of_possession
         __props__.__dict__["require_pushed_authorization_requests"] = require_pushed_authorization_requests
@@ -2043,6 +2120,7 @@ class Client(pulumi.CustomResource):
         __props__.__dict__["skip_non_verifiable_callback_uri_confirmation_prompt"] = skip_non_verifiable_callback_uri_confirmation_prompt
         __props__.__dict__["sso"] = sso
         __props__.__dict__["sso_disabled"] = sso_disabled
+        __props__.__dict__["third_party_security_mode"] = third_party_security_mode
         __props__.__dict__["token_exchange"] = token_exchange
         __props__.__dict__["token_quota"] = token_quota
         __props__.__dict__["web_origins"] = web_origins
@@ -2370,6 +2448,14 @@ class Client(pulumi.CustomResource):
         return pulumi.get(self, "organization_usage")
 
     @_builtins.property
+    @pulumi.getter(name="redirectionPolicy")
+    def redirection_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.Allowed values: `allow_always` or `open_redirect_protection`.
+        """
+        return pulumi.get(self, "redirection_policy")
+
+    @_builtins.property
     @pulumi.getter(name="refreshToken")
     def refresh_token(self) -> pulumi.Output['outputs.ClientRefreshToken']:
         """
@@ -2437,6 +2523,14 @@ class Client(pulumi.CustomResource):
         Indicates whether or not SSO is disabled.
         """
         return pulumi.get(self, "sso_disabled")
+
+    @_builtins.property
+    @pulumi.getter(name="thirdPartySecurityMode")
+    def third_party_security_mode(self) -> pulumi.Output[_builtins.str]:
+        """
+        Security mode for third-party clients. Allowed values: `strict` or `permissive`.
+        """
+        return pulumi.get(self, "third_party_security_mode")
 
     @_builtins.property
     @pulumi.getter(name="tokenExchange")

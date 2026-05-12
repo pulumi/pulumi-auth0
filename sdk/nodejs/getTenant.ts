@@ -73,6 +73,10 @@ export interface GetTenantResult {
      */
     readonly domain: string;
     /**
+     * Sets the third*party*security_mode assigned to clients created via Dynamic Client Registration. Can only be configured by [customers with pre-existing third-party client usage before April 2026](https://auth0.com/docs/get-started/applications/third-party-applications/permissive-mode#dynamic-client-registration-in-permissive-mode).
+     */
+    readonly dynamicClientRegistrationSecurityMode: string;
+    /**
      * Supported locales for the user interface. The first locale in the list will be used to set the default locale.
      */
     readonly enabledLocales: string[];

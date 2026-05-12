@@ -98,6 +98,16 @@ namespace Pulumi.Auth0
     ///         AllowAllScopes = false,
     ///     });
     /// 
+    ///     var default3pGrant = new Auth0.ClientGrant("default_3p_grant", new()
+    ///     {
+    ///         DefaultFor = "third_party_clients",
+    ///         Audience = myResourceServer.Identifier,
+    ///         Scopes = new[]
+    ///         {
+    ///             "read:foo",
+    ///         },
+    ///     });
+    /// 
     /// });
     /// ```
     /// 
@@ -140,10 +150,16 @@ namespace Pulumi.Auth0
         public Output<ImmutableArray<string>> AuthorizationDetailsTypes { get; private set; } = null!;
 
         /// <summary>
-        /// ID of the client for this grant.
+        /// ID of the client for this grant. Mutually exclusive with `DefaultFor`.
         /// </summary>
         [Output("clientId")]
-        public Output<string> ClientId { get; private set; } = null!;
+        public Output<string?> ClientId { get; private set; } = null!;
+
+        /// <summary>
+        /// Applies this client grant as the default for all clients in the specified group. The only accepted value is third*party*clients, which applies the grant to all third-party clients.
+        /// </summary>
+        [Output("defaultFor")]
+        public Output<string?> DefaultFor { get; private set; } = null!;
 
         /// <summary>
         /// Indicates whether this grant is a special grant created by Auth0. It cannot be modified or deleted directly.
@@ -246,10 +262,16 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// ID of the client for this grant.
+        /// ID of the client for this grant. Mutually exclusive with `DefaultFor`.
         /// </summary>
-        [Input("clientId", required: true)]
-        public Input<string> ClientId { get; set; } = null!;
+        [Input("clientId")]
+        public Input<string>? ClientId { get; set; }
+
+        /// <summary>
+        /// Applies this client grant as the default for all clients in the specified group. The only accepted value is third*party*clients, which applies the grant to all third-party clients.
+        /// </summary>
+        [Input("defaultFor")]
+        public Input<string>? DefaultFor { get; set; }
 
         /// <summary>
         /// Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
@@ -314,10 +336,16 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// ID of the client for this grant.
+        /// ID of the client for this grant. Mutually exclusive with `DefaultFor`.
         /// </summary>
         [Input("clientId")]
         public Input<string>? ClientId { get; set; }
+
+        /// <summary>
+        /// Applies this client grant as the default for all clients in the specified group. The only accepted value is third*party*clients, which applies the grant to all third-party clients.
+        /// </summary>
+        [Input("defaultFor")]
+        public Input<string>? DefaultFor { get; set; }
 
         /// <summary>
         /// Indicates whether this grant is a special grant created by Auth0. It cannot be modified or deleted directly.

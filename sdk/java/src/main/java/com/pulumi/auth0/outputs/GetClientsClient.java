@@ -132,6 +132,11 @@ public final class GetClientsClient {
      */
     private List<String> organizationDiscoveryMethods;
     /**
+     * @return Controls whether Auth0 redirects users to the application&#39;s callback URL on authentication errors or in email verification flows.Allowed values: `allowAlways` or `openRedirectProtection`.
+     * 
+     */
+    private String redirectionPolicy;
+    /**
      * @return The identifier of a resource server that client is associated withThis property can be sent only when app_type=resource_server.This property can not be changed, once the client is created.
      * 
      */
@@ -142,6 +147,11 @@ public final class GetClientsClient {
      * 
      */
     private String skipNonVerifiableCallbackUriConfirmationPrompt;
+    /**
+     * @return Security mode for third-party clients. Allowed values: `strict` or `permissive`.
+     * 
+     */
+    private String thirdPartySecurityMode;
     /**
      * @return Allows configuration for token exchange
      * 
@@ -314,6 +324,13 @@ public final class GetClientsClient {
         return this.organizationDiscoveryMethods;
     }
     /**
+     * @return Controls whether Auth0 redirects users to the application&#39;s callback URL on authentication errors or in email verification flows.Allowed values: `allowAlways` or `openRedirectProtection`.
+     * 
+     */
+    public String redirectionPolicy() {
+        return this.redirectionPolicy;
+    }
+    /**
      * @return The identifier of a resource server that client is associated withThis property can be sent only when app_type=resource_server.This property can not be changed, once the client is created.
      * 
      */
@@ -329,6 +346,13 @@ public final class GetClientsClient {
      */
     public String skipNonVerifiableCallbackUriConfirmationPrompt() {
         return this.skipNonVerifiableCallbackUriConfirmationPrompt;
+    }
+    /**
+     * @return Security mode for third-party clients. Allowed values: `strict` or `permissive`.
+     * 
+     */
+    public String thirdPartySecurityMode() {
+        return this.thirdPartySecurityMode;
     }
     /**
      * @return Allows configuration for token exchange
@@ -383,9 +407,11 @@ public final class GetClientsClient {
         private @Nullable String name;
         private List<GetClientsClientOidcLogout> oidcLogouts;
         private List<String> organizationDiscoveryMethods;
+        private String redirectionPolicy;
         private String resourceServerIdentifier;
         private List<GetClientsClientSessionTransfer> sessionTransfers;
         private String skipNonVerifiableCallbackUriConfirmationPrompt;
+        private String thirdPartySecurityMode;
         private List<GetClientsClientTokenExchange> tokenExchanges;
         private List<GetClientsClientTokenQuota> tokenQuotas;
         private List<String> webOrigins;
@@ -414,9 +440,11 @@ public final class GetClientsClient {
     	      this.name = defaults.name;
     	      this.oidcLogouts = defaults.oidcLogouts;
     	      this.organizationDiscoveryMethods = defaults.organizationDiscoveryMethods;
+    	      this.redirectionPolicy = defaults.redirectionPolicy;
     	      this.resourceServerIdentifier = defaults.resourceServerIdentifier;
     	      this.sessionTransfers = defaults.sessionTransfers;
     	      this.skipNonVerifiableCallbackUriConfirmationPrompt = defaults.skipNonVerifiableCallbackUriConfirmationPrompt;
+    	      this.thirdPartySecurityMode = defaults.thirdPartySecurityMode;
     	      this.tokenExchanges = defaults.tokenExchanges;
     	      this.tokenQuotas = defaults.tokenQuotas;
     	      this.webOrigins = defaults.webOrigins;
@@ -625,6 +653,14 @@ public final class GetClientsClient {
             return organizationDiscoveryMethods(List.of(organizationDiscoveryMethods));
         }
         @CustomType.Setter
+        public Builder redirectionPolicy(String redirectionPolicy) {
+            if (redirectionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetClientsClient", "redirectionPolicy");
+            }
+            this.redirectionPolicy = redirectionPolicy;
+            return this;
+        }
+        @CustomType.Setter
         public Builder resourceServerIdentifier(String resourceServerIdentifier) {
             if (resourceServerIdentifier == null) {
               throw new MissingRequiredPropertyException("GetClientsClient", "resourceServerIdentifier");
@@ -649,6 +685,14 @@ public final class GetClientsClient {
               throw new MissingRequiredPropertyException("GetClientsClient", "skipNonVerifiableCallbackUriConfirmationPrompt");
             }
             this.skipNonVerifiableCallbackUriConfirmationPrompt = skipNonVerifiableCallbackUriConfirmationPrompt;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder thirdPartySecurityMode(String thirdPartySecurityMode) {
+            if (thirdPartySecurityMode == null) {
+              throw new MissingRequiredPropertyException("GetClientsClient", "thirdPartySecurityMode");
+            }
+            this.thirdPartySecurityMode = thirdPartySecurityMode;
             return this;
         }
         @CustomType.Setter
@@ -708,9 +752,11 @@ public final class GetClientsClient {
             _resultValue.name = name;
             _resultValue.oidcLogouts = oidcLogouts;
             _resultValue.organizationDiscoveryMethods = organizationDiscoveryMethods;
+            _resultValue.redirectionPolicy = redirectionPolicy;
             _resultValue.resourceServerIdentifier = resourceServerIdentifier;
             _resultValue.sessionTransfers = sessionTransfers;
             _resultValue.skipNonVerifiableCallbackUriConfirmationPrompt = skipNonVerifiableCallbackUriConfirmationPrompt;
+            _resultValue.thirdPartySecurityMode = thirdPartySecurityMode;
             _resultValue.tokenExchanges = tokenExchanges;
             _resultValue.tokenQuotas = tokenQuotas;
             _resultValue.webOrigins = webOrigins;

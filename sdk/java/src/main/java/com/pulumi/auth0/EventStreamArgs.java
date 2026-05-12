@@ -3,6 +3,7 @@
 
 package com.pulumi.auth0;
 
+import com.pulumi.auth0.inputs.EventStreamActionConfigurationArgs;
 import com.pulumi.auth0.inputs.EventStreamEventbridgeConfigurationArgs;
 import com.pulumi.auth0.inputs.EventStreamWebhookConfigurationArgs;
 import com.pulumi.core.Output;
@@ -20,14 +21,29 @@ public final class EventStreamArgs extends com.pulumi.resources.ResourceArgs {
     public static final EventStreamArgs Empty = new EventStreamArgs();
 
     /**
-     * The type of event stream destination (either &#39;eventbridge&#39; or &#39;webhook&#39;).
+     * Configuration for the Action destination. This block is only applicable when `destinationType` is set to `action`. Action configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
+     * 
+     */
+    @Import(name="actionConfiguration")
+    private @Nullable Output<EventStreamActionConfigurationArgs> actionConfiguration;
+
+    /**
+     * @return Configuration for the Action destination. This block is only applicable when `destinationType` is set to `action`. Action configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
+     * 
+     */
+    public Optional<Output<EventStreamActionConfigurationArgs>> actionConfiguration() {
+        return Optional.ofNullable(this.actionConfiguration);
+    }
+
+    /**
+     * The type of event stream destination. Possible values: `eventbridge`, `webhook`, or `action`.
      * 
      */
     @Import(name="destinationType", required=true)
     private Output<String> destinationType;
 
     /**
-     * @return The type of event stream destination (either &#39;eventbridge&#39; or &#39;webhook&#39;).
+     * @return The type of event stream destination. Possible values: `eventbridge`, `webhook`, or `action`.
      * 
      */
     public Output<String> destinationType() {
@@ -65,6 +81,21 @@ public final class EventStreamArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The current status of the event stream. Can be `enabled` or `disabled`.
+     * 
+     */
+    @Import(name="status")
+    private @Nullable Output<String> status;
+
+    /**
+     * @return The current status of the event stream. Can be `enabled` or `disabled`.
+     * 
+     */
+    public Optional<Output<String>> status() {
+        return Optional.ofNullable(this.status);
+    }
+
+    /**
      * List of event types this stream is subscribed to.
      * 
      */
@@ -97,9 +128,11 @@ public final class EventStreamArgs extends com.pulumi.resources.ResourceArgs {
     private EventStreamArgs() {}
 
     private EventStreamArgs(EventStreamArgs $) {
+        this.actionConfiguration = $.actionConfiguration;
         this.destinationType = $.destinationType;
         this.eventbridgeConfiguration = $.eventbridgeConfiguration;
         this.name = $.name;
+        this.status = $.status;
         this.subscriptions = $.subscriptions;
         this.webhookConfiguration = $.webhookConfiguration;
     }
@@ -123,7 +156,28 @@ public final class EventStreamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param destinationType The type of event stream destination (either &#39;eventbridge&#39; or &#39;webhook&#39;).
+         * @param actionConfiguration Configuration for the Action destination. This block is only applicable when `destinationType` is set to `action`. Action configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder actionConfiguration(@Nullable Output<EventStreamActionConfigurationArgs> actionConfiguration) {
+            $.actionConfiguration = actionConfiguration;
+            return this;
+        }
+
+        /**
+         * @param actionConfiguration Configuration for the Action destination. This block is only applicable when `destinationType` is set to `action`. Action configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder actionConfiguration(EventStreamActionConfigurationArgs actionConfiguration) {
+            return actionConfiguration(Output.of(actionConfiguration));
+        }
+
+        /**
+         * @param destinationType The type of event stream destination. Possible values: `eventbridge`, `webhook`, or `action`.
          * 
          * @return builder
          * 
@@ -134,7 +188,7 @@ public final class EventStreamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param destinationType The type of event stream destination (either &#39;eventbridge&#39; or &#39;webhook&#39;).
+         * @param destinationType The type of event stream destination. Possible values: `eventbridge`, `webhook`, or `action`.
          * 
          * @return builder
          * 
@@ -183,6 +237,27 @@ public final class EventStreamArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param status The current status of the event stream. Can be `enabled` or `disabled`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(@Nullable Output<String> status) {
+            $.status = status;
+            return this;
+        }
+
+        /**
+         * @param status The current status of the event stream. Can be `enabled` or `disabled`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(String status) {
+            return status(Output.of(status));
         }
 
         /**

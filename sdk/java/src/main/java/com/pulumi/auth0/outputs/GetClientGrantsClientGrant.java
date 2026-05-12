@@ -28,6 +28,11 @@ public final class GetClientGrantsClientGrant {
      */
     private String clientId;
     /**
+     * @return Indicates this grant is the default for a category of clients.
+     * 
+     */
+    private String defaultFor;
+    /**
      * @return The ID of the client grant.
      * 
      */
@@ -66,6 +71,13 @@ public final class GetClientGrantsClientGrant {
         return this.clientId;
     }
     /**
+     * @return Indicates this grant is the default for a category of clients.
+     * 
+     */
+    public String defaultFor() {
+        return this.defaultFor;
+    }
+    /**
      * @return The ID of the client grant.
      * 
      */
@@ -99,6 +111,7 @@ public final class GetClientGrantsClientGrant {
         private Boolean allowAllScopes;
         private String audience;
         private String clientId;
+        private String defaultFor;
         private String id;
         private List<String> scopes;
         private String subjectType;
@@ -108,6 +121,7 @@ public final class GetClientGrantsClientGrant {
     	      this.allowAllScopes = defaults.allowAllScopes;
     	      this.audience = defaults.audience;
     	      this.clientId = defaults.clientId;
+    	      this.defaultFor = defaults.defaultFor;
     	      this.id = defaults.id;
     	      this.scopes = defaults.scopes;
     	      this.subjectType = defaults.subjectType;
@@ -135,6 +149,14 @@ public final class GetClientGrantsClientGrant {
               throw new MissingRequiredPropertyException("GetClientGrantsClientGrant", "clientId");
             }
             this.clientId = clientId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder defaultFor(String defaultFor) {
+            if (defaultFor == null) {
+              throw new MissingRequiredPropertyException("GetClientGrantsClientGrant", "defaultFor");
+            }
+            this.defaultFor = defaultFor;
             return this;
         }
         @CustomType.Setter
@@ -169,6 +191,7 @@ public final class GetClientGrantsClientGrant {
             _resultValue.allowAllScopes = allowAllScopes;
             _resultValue.audience = audience;
             _resultValue.clientId = clientId;
+            _resultValue.defaultFor = defaultFor;
             _resultValue.id = id;
             _resultValue.scopes = scopes;
             _resultValue.subjectType = subjectType;

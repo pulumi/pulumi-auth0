@@ -107,6 +107,8 @@ type Client struct {
 	OrganizationRequireBehavior pulumi.StringOutput `pulumi:"organizationRequireBehavior"`
 	// Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
 	OrganizationUsage pulumi.StringOutput `pulumi:"organizationUsage"`
+	// Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.Allowed values: `allowAlways` or `openRedirectProtection`.
+	RedirectionPolicy pulumi.StringOutput `pulumi:"redirectionPolicy"`
 	// Configuration settings for the refresh tokens issued for this client.
 	RefreshToken ClientRefreshTokenOutput `pulumi:"refreshToken"`
 	// Makes the use of Proof-of-Possession mandatory for this client.
@@ -124,6 +126,8 @@ type Client struct {
 	Sso pulumi.BoolPtrOutput `pulumi:"sso"`
 	// Indicates whether or not SSO is disabled.
 	SsoDisabled pulumi.BoolPtrOutput `pulumi:"ssoDisabled"`
+	// Security mode for third-party clients. Allowed values: `strict` or `permissive`.
+	ThirdPartySecurityMode pulumi.StringOutput `pulumi:"thirdPartySecurityMode"`
 	// Allows configuration for token exchange
 	TokenExchange ClientTokenExchangePtrOutput `pulumi:"tokenExchange"`
 	// The token quota configuration.
@@ -251,6 +255,8 @@ type clientState struct {
 	OrganizationRequireBehavior *string `pulumi:"organizationRequireBehavior"`
 	// Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
 	OrganizationUsage *string `pulumi:"organizationUsage"`
+	// Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.Allowed values: `allowAlways` or `openRedirectProtection`.
+	RedirectionPolicy *string `pulumi:"redirectionPolicy"`
 	// Configuration settings for the refresh tokens issued for this client.
 	RefreshToken *ClientRefreshToken `pulumi:"refreshToken"`
 	// Makes the use of Proof-of-Possession mandatory for this client.
@@ -268,6 +274,8 @@ type clientState struct {
 	Sso *bool `pulumi:"sso"`
 	// Indicates whether or not SSO is disabled.
 	SsoDisabled *bool `pulumi:"ssoDisabled"`
+	// Security mode for third-party clients. Allowed values: `strict` or `permissive`.
+	ThirdPartySecurityMode *string `pulumi:"thirdPartySecurityMode"`
 	// Allows configuration for token exchange
 	TokenExchange *ClientTokenExchange `pulumi:"tokenExchange"`
 	// The token quota configuration.
@@ -359,6 +367,8 @@ type ClientState struct {
 	OrganizationRequireBehavior pulumi.StringPtrInput
 	// Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
 	OrganizationUsage pulumi.StringPtrInput
+	// Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.Allowed values: `allowAlways` or `openRedirectProtection`.
+	RedirectionPolicy pulumi.StringPtrInput
 	// Configuration settings for the refresh tokens issued for this client.
 	RefreshToken ClientRefreshTokenPtrInput
 	// Makes the use of Proof-of-Possession mandatory for this client.
@@ -376,6 +386,8 @@ type ClientState struct {
 	Sso pulumi.BoolPtrInput
 	// Indicates whether or not SSO is disabled.
 	SsoDisabled pulumi.BoolPtrInput
+	// Security mode for third-party clients. Allowed values: `strict` or `permissive`.
+	ThirdPartySecurityMode pulumi.StringPtrInput
 	// Allows configuration for token exchange
 	TokenExchange ClientTokenExchangePtrInput
 	// The token quota configuration.
@@ -461,6 +473,8 @@ type clientArgs struct {
 	OrganizationRequireBehavior *string `pulumi:"organizationRequireBehavior"`
 	// Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
 	OrganizationUsage *string `pulumi:"organizationUsage"`
+	// Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.Allowed values: `allowAlways` or `openRedirectProtection`.
+	RedirectionPolicy *string `pulumi:"redirectionPolicy"`
 	// Configuration settings for the refresh tokens issued for this client.
 	RefreshToken *ClientRefreshToken `pulumi:"refreshToken"`
 	// Makes the use of Proof-of-Possession mandatory for this client.
@@ -476,6 +490,8 @@ type clientArgs struct {
 	Sso *bool `pulumi:"sso"`
 	// Indicates whether or not SSO is disabled.
 	SsoDisabled *bool `pulumi:"ssoDisabled"`
+	// Security mode for third-party clients. Allowed values: `strict` or `permissive`.
+	ThirdPartySecurityMode *string `pulumi:"thirdPartySecurityMode"`
 	// Allows configuration for token exchange
 	TokenExchange *ClientTokenExchange `pulumi:"tokenExchange"`
 	// The token quota configuration.
@@ -558,6 +574,8 @@ type ClientArgs struct {
 	OrganizationRequireBehavior pulumi.StringPtrInput
 	// Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
 	OrganizationUsage pulumi.StringPtrInput
+	// Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.Allowed values: `allowAlways` or `openRedirectProtection`.
+	RedirectionPolicy pulumi.StringPtrInput
 	// Configuration settings for the refresh tokens issued for this client.
 	RefreshToken ClientRefreshTokenPtrInput
 	// Makes the use of Proof-of-Possession mandatory for this client.
@@ -573,6 +591,8 @@ type ClientArgs struct {
 	Sso pulumi.BoolPtrInput
 	// Indicates whether or not SSO is disabled.
 	SsoDisabled pulumi.BoolPtrInput
+	// Security mode for third-party clients. Allowed values: `strict` or `permissive`.
+	ThirdPartySecurityMode pulumi.StringPtrInput
 	// Allows configuration for token exchange
 	TokenExchange ClientTokenExchangePtrInput
 	// The token quota configuration.
@@ -870,6 +890,11 @@ func (o ClientOutput) OrganizationUsage() pulumi.StringOutput {
 	return o.ApplyT(func(v *Client) pulumi.StringOutput { return v.OrganizationUsage }).(pulumi.StringOutput)
 }
 
+// Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.Allowed values: `allowAlways` or `openRedirectProtection`.
+func (o ClientOutput) RedirectionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Client) pulumi.StringOutput { return v.RedirectionPolicy }).(pulumi.StringOutput)
+}
+
 // Configuration settings for the refresh tokens issued for this client.
 func (o ClientOutput) RefreshToken() ClientRefreshTokenOutput {
 	return o.ApplyT(func(v *Client) ClientRefreshTokenOutput { return v.RefreshToken }).(ClientRefreshTokenOutput)
@@ -912,6 +937,11 @@ func (o ClientOutput) Sso() pulumi.BoolPtrOutput {
 // Indicates whether or not SSO is disabled.
 func (o ClientOutput) SsoDisabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Client) pulumi.BoolPtrOutput { return v.SsoDisabled }).(pulumi.BoolPtrOutput)
+}
+
+// Security mode for third-party clients. Allowed values: `strict` or `permissive`.
+func (o ClientOutput) ThirdPartySecurityMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *Client) pulumi.StringOutput { return v.ThirdPartySecurityMode }).(pulumi.StringOutput)
 }
 
 // Allows configuration for token exchange

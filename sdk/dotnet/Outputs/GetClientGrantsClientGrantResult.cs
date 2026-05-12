@@ -26,6 +26,10 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string ClientId;
         /// <summary>
+        /// Indicates this grant is the default for a category of clients.
+        /// </summary>
+        public readonly string DefaultFor;
+        /// <summary>
         /// The ID of the client grant.
         /// </summary>
         public readonly string Id;
@@ -46,6 +50,8 @@ namespace Pulumi.Auth0.Outputs
 
             string clientId,
 
+            string defaultFor,
+
             string id,
 
             ImmutableArray<string> scopes,
@@ -55,6 +61,7 @@ namespace Pulumi.Auth0.Outputs
             AllowAllScopes = allowAllScopes;
             Audience = audience;
             ClientId = clientId;
+            DefaultFor = defaultFor;
             Id = id;
             Scopes = scopes;
             SubjectType = subjectType;

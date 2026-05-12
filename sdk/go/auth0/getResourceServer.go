@@ -70,6 +70,8 @@ type LookupResourceServerResult struct {
 	AllowOfflineAccess bool `pulumi:"allowOfflineAccess"`
 	// Authorization details for this resource server.
 	AuthorizationDetails []GetResourceServerAuthorizationDetail `pulumi:"authorizationDetails"`
+	// Authorization policy for the resource server.(EA Only)
+	AuthorizationPolicies []GetResourceServerAuthorizationPolicy `pulumi:"authorizationPolicies"`
 	// The ID of the client associated with this resource server. If a client has been created and linked to this resource server, this field will be populated with that client's ID.
 	ClientId string `pulumi:"clientId"`
 	// Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
@@ -156,6 +158,13 @@ func (o LookupResourceServerResultOutput) AuthorizationDetails() GetResourceServ
 	return o.ApplyT(func(v LookupResourceServerResult) []GetResourceServerAuthorizationDetail {
 		return v.AuthorizationDetails
 	}).(GetResourceServerAuthorizationDetailArrayOutput)
+}
+
+// Authorization policy for the resource server.(EA Only)
+func (o LookupResourceServerResultOutput) AuthorizationPolicies() GetResourceServerAuthorizationPolicyArrayOutput {
+	return o.ApplyT(func(v LookupResourceServerResult) []GetResourceServerAuthorizationPolicy {
+		return v.AuthorizationPolicies
+	}).(GetResourceServerAuthorizationPolicyArrayOutput)
 }
 
 // The ID of the client associated with this resource server. If a client has been created and linked to this resource server, this field will be populated with that client's ID.

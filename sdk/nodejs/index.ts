@@ -75,6 +75,11 @@ export type ConnectionDirectory = import("./connectionDirectory").ConnectionDire
 export const ConnectionDirectory: typeof import("./connectionDirectory").ConnectionDirectory = null as any;
 utilities.lazyLoad(exports, ["ConnectionDirectory"], () => require("./connectionDirectory"));
 
+export { ConnectionDirectorySynchronizedGroupsArgs, ConnectionDirectorySynchronizedGroupsState } from "./connectionDirectorySynchronizedGroups";
+export type ConnectionDirectorySynchronizedGroups = import("./connectionDirectorySynchronizedGroups").ConnectionDirectorySynchronizedGroups;
+export const ConnectionDirectorySynchronizedGroups: typeof import("./connectionDirectorySynchronizedGroups").ConnectionDirectorySynchronizedGroups = null as any;
+utilities.lazyLoad(exports, ["ConnectionDirectorySynchronizedGroups"], () => require("./connectionDirectorySynchronizedGroups"));
+
 export { ConnectionKeysArgs, ConnectionKeysState } from "./connectionKeys";
 export type ConnectionKeys = import("./connectionKeys").ConnectionKeys;
 export const ConnectionKeys: typeof import("./connectionKeys").ConnectionKeys = null as any;
@@ -219,6 +224,11 @@ export { GetConnectionDirectoryDefaultMappingArgs, GetConnectionDirectoryDefault
 export const getConnectionDirectoryDefaultMapping: typeof import("./getConnectionDirectoryDefaultMapping").getConnectionDirectoryDefaultMapping = null as any;
 export const getConnectionDirectoryDefaultMappingOutput: typeof import("./getConnectionDirectoryDefaultMapping").getConnectionDirectoryDefaultMappingOutput = null as any;
 utilities.lazyLoad(exports, ["getConnectionDirectoryDefaultMapping","getConnectionDirectoryDefaultMappingOutput"], () => require("./getConnectionDirectoryDefaultMapping"));
+
+export { GetConnectionDirectorySynchronizedGroupsArgs, GetConnectionDirectorySynchronizedGroupsResult, GetConnectionDirectorySynchronizedGroupsOutputArgs } from "./getConnectionDirectorySynchronizedGroups";
+export const getConnectionDirectorySynchronizedGroups: typeof import("./getConnectionDirectorySynchronizedGroups").getConnectionDirectorySynchronizedGroups = null as any;
+export const getConnectionDirectorySynchronizedGroupsOutput: typeof import("./getConnectionDirectorySynchronizedGroups").getConnectionDirectorySynchronizedGroupsOutput = null as any;
+utilities.lazyLoad(exports, ["getConnectionDirectorySynchronizedGroups","getConnectionDirectorySynchronizedGroupsOutput"], () => require("./getConnectionDirectorySynchronizedGroups"));
 
 export { GetConnectionKeysArgs, GetConnectionKeysResult, GetConnectionKeysOutputArgs } from "./getConnectionKeys";
 export const getConnectionKeys: typeof import("./getConnectionKeys").getConnectionKeys = null as any;
@@ -620,6 +630,8 @@ const _module = {
                 return new ConnectionClients(name, <any>undefined, { urn })
             case "auth0:index/connectionDirectory:ConnectionDirectory":
                 return new ConnectionDirectory(name, <any>undefined, { urn })
+            case "auth0:index/connectionDirectorySynchronizedGroups:ConnectionDirectorySynchronizedGroups":
+                return new ConnectionDirectorySynchronizedGroups(name, <any>undefined, { urn })
             case "auth0:index/connectionKeys:ConnectionKeys":
                 return new ConnectionKeys(name, <any>undefined, { urn })
             case "auth0:index/connectionProfile:ConnectionProfile":
@@ -759,6 +771,7 @@ pulumi.runtime.registerResourceModule("auth0", "index/connection", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/connectionClient", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/connectionClients", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/connectionDirectory", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/connectionDirectorySynchronizedGroups", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/connectionKeys", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/connectionProfile", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/connectionScimConfiguration", _module)

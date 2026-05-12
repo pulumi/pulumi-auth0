@@ -31,6 +31,7 @@ class TenantArgs:
                  default_redirection_uri: pulumi.Input[Optional[_builtins.str]] = None,
                  default_token_quota: pulumi.Input[Optional['TenantDefaultTokenQuotaArgs']] = None,
                  disable_acr_values_supported: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dynamic_client_registration_security_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled_locales: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  ephemeral_session_lifetime: pulumi.Input[Optional[_builtins.float]] = None,
                  error_page: pulumi.Input[Optional['TenantErrorPageArgs']] = None,
@@ -64,6 +65,7 @@ class TenantArgs:
         :param pulumi.Input[_builtins.str] default_redirection_uri: The default absolute redirection URI. Must be HTTPS or an empty string.
         :param pulumi.Input['TenantDefaultTokenQuotaArgs'] default_token_quota: Token Quota configuration.
         :param pulumi.Input[_builtins.bool] disable_acr_values_supported: Disable list of supported ACR values.
+        :param pulumi.Input[_builtins.str] dynamic_client_registration_security_mode: Sets the third*party*security_mode assigned to clients created via Dynamic Client Registration. Can only be configured by [customers with pre-existing third-party client usage before April 2026](https://auth0.com/docs/get-started/applications/third-party-applications/permissive-mode#dynamic-client-registration-in-permissive-mode).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] enabled_locales: Supported locales for the user interface. The first locale in the list will be used to set the default locale.
         :param pulumi.Input[_builtins.float] ephemeral_session_lifetime: Number of hours an ephemeral (non-persistent) session will stay valid.
         :param pulumi.Input['TenantErrorPageArgs'] error_page: Configuration for the error page
@@ -105,6 +107,8 @@ class TenantArgs:
             pulumi.set(__self__, "default_token_quota", default_token_quota)
         if disable_acr_values_supported is not None:
             pulumi.set(__self__, "disable_acr_values_supported", disable_acr_values_supported)
+        if dynamic_client_registration_security_mode is not None:
+            pulumi.set(__self__, "dynamic_client_registration_security_mode", dynamic_client_registration_security_mode)
         if enabled_locales is not None:
             pulumi.set(__self__, "enabled_locales", enabled_locales)
         if ephemeral_session_lifetime is not None:
@@ -265,6 +269,18 @@ class TenantArgs:
     @disable_acr_values_supported.setter
     def disable_acr_values_supported(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_acr_values_supported", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dynamicClientRegistrationSecurityMode")
+    def dynamic_client_registration_security_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Sets the third*party*security_mode assigned to clients created via Dynamic Client Registration. Can only be configured by [customers with pre-existing third-party client usage before April 2026](https://auth0.com/docs/get-started/applications/third-party-applications/permissive-mode#dynamic-client-registration-in-permissive-mode).
+        """
+        return pulumi.get(self, "dynamic_client_registration_security_mode")
+
+    @dynamic_client_registration_security_mode.setter
+    def dynamic_client_registration_security_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "dynamic_client_registration_security_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="enabledLocales")
@@ -520,6 +536,7 @@ class _TenantState:
                  default_redirection_uri: pulumi.Input[Optional[_builtins.str]] = None,
                  default_token_quota: pulumi.Input[Optional['TenantDefaultTokenQuotaArgs']] = None,
                  disable_acr_values_supported: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dynamic_client_registration_security_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled_locales: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  ephemeral_session_lifetime: pulumi.Input[Optional[_builtins.float]] = None,
                  error_page: pulumi.Input[Optional['TenantErrorPageArgs']] = None,
@@ -553,6 +570,7 @@ class _TenantState:
         :param pulumi.Input[_builtins.str] default_redirection_uri: The default absolute redirection URI. Must be HTTPS or an empty string.
         :param pulumi.Input['TenantDefaultTokenQuotaArgs'] default_token_quota: Token Quota configuration.
         :param pulumi.Input[_builtins.bool] disable_acr_values_supported: Disable list of supported ACR values.
+        :param pulumi.Input[_builtins.str] dynamic_client_registration_security_mode: Sets the third*party*security_mode assigned to clients created via Dynamic Client Registration. Can only be configured by [customers with pre-existing third-party client usage before April 2026](https://auth0.com/docs/get-started/applications/third-party-applications/permissive-mode#dynamic-client-registration-in-permissive-mode).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] enabled_locales: Supported locales for the user interface. The first locale in the list will be used to set the default locale.
         :param pulumi.Input[_builtins.float] ephemeral_session_lifetime: Number of hours an ephemeral (non-persistent) session will stay valid.
         :param pulumi.Input['TenantErrorPageArgs'] error_page: Configuration for the error page
@@ -594,6 +612,8 @@ class _TenantState:
             pulumi.set(__self__, "default_token_quota", default_token_quota)
         if disable_acr_values_supported is not None:
             pulumi.set(__self__, "disable_acr_values_supported", disable_acr_values_supported)
+        if dynamic_client_registration_security_mode is not None:
+            pulumi.set(__self__, "dynamic_client_registration_security_mode", dynamic_client_registration_security_mode)
         if enabled_locales is not None:
             pulumi.set(__self__, "enabled_locales", enabled_locales)
         if ephemeral_session_lifetime is not None:
@@ -754,6 +774,18 @@ class _TenantState:
     @disable_acr_values_supported.setter
     def disable_acr_values_supported(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_acr_values_supported", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dynamicClientRegistrationSecurityMode")
+    def dynamic_client_registration_security_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Sets the third*party*security_mode assigned to clients created via Dynamic Client Registration. Can only be configured by [customers with pre-existing third-party client usage before April 2026](https://auth0.com/docs/get-started/applications/third-party-applications/permissive-mode#dynamic-client-registration-in-permissive-mode).
+        """
+        return pulumi.get(self, "dynamic_client_registration_security_mode")
+
+    @dynamic_client_registration_security_mode.setter
+    def dynamic_client_registration_security_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "dynamic_client_registration_security_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="enabledLocales")
@@ -1012,6 +1044,7 @@ class Tenant(pulumi.CustomResource):
                  default_redirection_uri: pulumi.Input[Optional[_builtins.str]] = None,
                  default_token_quota: pulumi.Input[Optional[Union['TenantDefaultTokenQuotaArgs', 'TenantDefaultTokenQuotaArgsDict']]] = None,
                  disable_acr_values_supported: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dynamic_client_registration_security_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled_locales: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  ephemeral_session_lifetime: pulumi.Input[Optional[_builtins.float]] = None,
                  error_page: pulumi.Input[Optional[Union['TenantErrorPageArgs', 'TenantErrorPageArgsDict']]] = None,
@@ -1102,6 +1135,7 @@ class Tenant(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] default_redirection_uri: The default absolute redirection URI. Must be HTTPS or an empty string.
         :param pulumi.Input[Union['TenantDefaultTokenQuotaArgs', 'TenantDefaultTokenQuotaArgsDict']] default_token_quota: Token Quota configuration.
         :param pulumi.Input[_builtins.bool] disable_acr_values_supported: Disable list of supported ACR values.
+        :param pulumi.Input[_builtins.str] dynamic_client_registration_security_mode: Sets the third*party*security_mode assigned to clients created via Dynamic Client Registration. Can only be configured by [customers with pre-existing third-party client usage before April 2026](https://auth0.com/docs/get-started/applications/third-party-applications/permissive-mode#dynamic-client-registration-in-permissive-mode).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] enabled_locales: Supported locales for the user interface. The first locale in the list will be used to set the default locale.
         :param pulumi.Input[_builtins.float] ephemeral_session_lifetime: Number of hours an ephemeral (non-persistent) session will stay valid.
         :param pulumi.Input[Union['TenantErrorPageArgs', 'TenantErrorPageArgsDict']] error_page: Configuration for the error page
@@ -1211,6 +1245,7 @@ class Tenant(pulumi.CustomResource):
                  default_redirection_uri: pulumi.Input[Optional[_builtins.str]] = None,
                  default_token_quota: pulumi.Input[Optional[Union['TenantDefaultTokenQuotaArgs', 'TenantDefaultTokenQuotaArgsDict']]] = None,
                  disable_acr_values_supported: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dynamic_client_registration_security_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled_locales: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  ephemeral_session_lifetime: pulumi.Input[Optional[_builtins.float]] = None,
                  error_page: pulumi.Input[Optional[Union['TenantErrorPageArgs', 'TenantErrorPageArgsDict']]] = None,
@@ -1250,6 +1285,7 @@ class Tenant(pulumi.CustomResource):
             __props__.__dict__["default_redirection_uri"] = default_redirection_uri
             __props__.__dict__["default_token_quota"] = default_token_quota
             __props__.__dict__["disable_acr_values_supported"] = disable_acr_values_supported
+            __props__.__dict__["dynamic_client_registration_security_mode"] = dynamic_client_registration_security_mode
             __props__.__dict__["enabled_locales"] = enabled_locales
             __props__.__dict__["ephemeral_session_lifetime"] = ephemeral_session_lifetime
             __props__.__dict__["error_page"] = error_page
@@ -1290,6 +1326,7 @@ class Tenant(pulumi.CustomResource):
             default_redirection_uri: pulumi.Input[Optional[_builtins.str]] = None,
             default_token_quota: pulumi.Input[Optional[Union['TenantDefaultTokenQuotaArgs', 'TenantDefaultTokenQuotaArgsDict']]] = None,
             disable_acr_values_supported: pulumi.Input[Optional[_builtins.bool]] = None,
+            dynamic_client_registration_security_mode: pulumi.Input[Optional[_builtins.str]] = None,
             enabled_locales: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             ephemeral_session_lifetime: pulumi.Input[Optional[_builtins.float]] = None,
             error_page: pulumi.Input[Optional[Union['TenantErrorPageArgs', 'TenantErrorPageArgsDict']]] = None,
@@ -1327,6 +1364,7 @@ class Tenant(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] default_redirection_uri: The default absolute redirection URI. Must be HTTPS or an empty string.
         :param pulumi.Input[Union['TenantDefaultTokenQuotaArgs', 'TenantDefaultTokenQuotaArgsDict']] default_token_quota: Token Quota configuration.
         :param pulumi.Input[_builtins.bool] disable_acr_values_supported: Disable list of supported ACR values.
+        :param pulumi.Input[_builtins.str] dynamic_client_registration_security_mode: Sets the third*party*security_mode assigned to clients created via Dynamic Client Registration. Can only be configured by [customers with pre-existing third-party client usage before April 2026](https://auth0.com/docs/get-started/applications/third-party-applications/permissive-mode#dynamic-client-registration-in-permissive-mode).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] enabled_locales: Supported locales for the user interface. The first locale in the list will be used to set the default locale.
         :param pulumi.Input[_builtins.float] ephemeral_session_lifetime: Number of hours an ephemeral (non-persistent) session will stay valid.
         :param pulumi.Input[Union['TenantErrorPageArgs', 'TenantErrorPageArgsDict']] error_page: Configuration for the error page
@@ -1362,6 +1400,7 @@ class Tenant(pulumi.CustomResource):
         __props__.__dict__["default_redirection_uri"] = default_redirection_uri
         __props__.__dict__["default_token_quota"] = default_token_quota
         __props__.__dict__["disable_acr_values_supported"] = disable_acr_values_supported
+        __props__.__dict__["dynamic_client_registration_security_mode"] = dynamic_client_registration_security_mode
         __props__.__dict__["enabled_locales"] = enabled_locales
         __props__.__dict__["ephemeral_session_lifetime"] = ephemeral_session_lifetime
         __props__.__dict__["error_page"] = error_page
@@ -1463,6 +1502,14 @@ class Tenant(pulumi.CustomResource):
         Disable list of supported ACR values.
         """
         return pulumi.get(self, "disable_acr_values_supported")
+
+    @_builtins.property
+    @pulumi.getter(name="dynamicClientRegistrationSecurityMode")
+    def dynamic_client_registration_security_mode(self) -> pulumi.Output[_builtins.str]:
+        """
+        Sets the third*party*security_mode assigned to clients created via Dynamic Client Registration. Can only be configured by [customers with pre-existing third-party client usage before April 2026](https://auth0.com/docs/get-started/applications/third-party-applications/permissive-mode#dynamic-client-registration-in-permissive-mode).
+        """
+        return pulumi.get(self, "dynamic_client_registration_security_mode")
 
     @_builtins.property
     @pulumi.getter(name="enabledLocales")

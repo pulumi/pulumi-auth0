@@ -108,6 +108,12 @@ import javax.annotation.Nullable;
  *             .allowAllScopes(false)
  *             .build());
  * 
+ *         var default3pGrant = new ClientGrant("default3pGrant", ClientGrantArgs.builder()
+ *             .defaultFor("third_party_clients")
+ *             .audience(myResourceServer.identifier())
+ *             .scopes("read:foo")
+ *             .build());
+ * 
  *     }
  * }
  * }
@@ -184,18 +190,32 @@ public class ClientGrant extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.authorizationDetailsTypes);
     }
     /**
-     * ID of the client for this grant.
+     * ID of the client for this grant. Mutually exclusive with `defaultFor`.
      * 
      */
     @Export(name="clientId", refs={String.class}, tree="[0]")
-    private Output<String> clientId;
+    private Output</* @Nullable */ String> clientId;
 
     /**
-     * @return ID of the client for this grant.
+     * @return ID of the client for this grant. Mutually exclusive with `defaultFor`.
      * 
      */
-    public Output<String> clientId() {
-        return this.clientId;
+    public Output<Optional<String>> clientId() {
+        return Codegen.optional(this.clientId);
+    }
+    /**
+     * Applies this client grant as the default for all clients in the specified group. The only accepted value is third*party*clients, which applies the grant to all third-party clients.
+     * 
+     */
+    @Export(name="defaultFor", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> defaultFor;
+
+    /**
+     * @return Applies this client grant as the default for all clients in the specified group. The only accepted value is third*party*clients, which applies the grant to all third-party clients.
+     * 
+     */
+    public Output<Optional<String>> defaultFor() {
+        return Codegen.optional(this.defaultFor);
     }
     /**
      * Indicates whether this grant is a special grant created by Auth0. It cannot be modified or deleted directly.

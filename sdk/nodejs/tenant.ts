@@ -132,6 +132,10 @@ export class Tenant extends pulumi.CustomResource {
      */
     declare public readonly disableAcrValuesSupported: pulumi.Output<boolean>;
     /**
+     * Sets the third*party*security_mode assigned to clients created via Dynamic Client Registration. Can only be configured by [customers with pre-existing third-party client usage before April 2026](https://auth0.com/docs/get-started/applications/third-party-applications/permissive-mode#dynamic-client-registration-in-permissive-mode).
+     */
+    declare public readonly dynamicClientRegistrationSecurityMode: pulumi.Output<string>;
+    /**
      * Supported locales for the user interface. The first locale in the list will be used to set the default locale.
      */
     declare public readonly enabledLocales: pulumi.Output<string[]>;
@@ -235,6 +239,7 @@ export class Tenant extends pulumi.CustomResource {
             resourceInputs["defaultRedirectionUri"] = state?.defaultRedirectionUri;
             resourceInputs["defaultTokenQuota"] = state?.defaultTokenQuota;
             resourceInputs["disableAcrValuesSupported"] = state?.disableAcrValuesSupported;
+            resourceInputs["dynamicClientRegistrationSecurityMode"] = state?.dynamicClientRegistrationSecurityMode;
             resourceInputs["enabledLocales"] = state?.enabledLocales;
             resourceInputs["ephemeralSessionLifetime"] = state?.ephemeralSessionLifetime;
             resourceInputs["errorPage"] = state?.errorPage;
@@ -267,6 +272,7 @@ export class Tenant extends pulumi.CustomResource {
             resourceInputs["defaultRedirectionUri"] = args?.defaultRedirectionUri;
             resourceInputs["defaultTokenQuota"] = args?.defaultTokenQuota;
             resourceInputs["disableAcrValuesSupported"] = args?.disableAcrValuesSupported;
+            resourceInputs["dynamicClientRegistrationSecurityMode"] = args?.dynamicClientRegistrationSecurityMode;
             resourceInputs["enabledLocales"] = args?.enabledLocales;
             resourceInputs["ephemeralSessionLifetime"] = args?.ephemeralSessionLifetime;
             resourceInputs["errorPage"] = args?.errorPage;
@@ -337,6 +343,10 @@ export interface TenantState {
      * Disable list of supported ACR values.
      */
     disableAcrValuesSupported?: pulumi.Input<boolean | undefined>;
+    /**
+     * Sets the third*party*security_mode assigned to clients created via Dynamic Client Registration. Can only be configured by [customers with pre-existing third-party client usage before April 2026](https://auth0.com/docs/get-started/applications/third-party-applications/permissive-mode#dynamic-client-registration-in-permissive-mode).
+     */
+    dynamicClientRegistrationSecurityMode?: pulumi.Input<string | undefined>;
     /**
      * Supported locales for the user interface. The first locale in the list will be used to set the default locale.
      */
@@ -463,6 +473,10 @@ export interface TenantArgs {
      * Disable list of supported ACR values.
      */
     disableAcrValuesSupported?: pulumi.Input<boolean | undefined>;
+    /**
+     * Sets the third*party*security_mode assigned to clients created via Dynamic Client Registration. Can only be configured by [customers with pre-existing third-party client usage before April 2026](https://auth0.com/docs/get-started/applications/third-party-applications/permissive-mode#dynamic-client-registration-in-permissive-mode).
+     */
+    dynamicClientRegistrationSecurityMode?: pulumi.Input<string | undefined>;
     /**
      * Supported locales for the user interface. The first locale in the list will be used to set the default locale.
      */

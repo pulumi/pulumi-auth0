@@ -79,18 +79,33 @@ public final class ClientGrantArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * ID of the client for this grant.
+     * ID of the client for this grant. Mutually exclusive with `defaultFor`.
      * 
      */
-    @Import(name="clientId", required=true)
-    private Output<String> clientId;
+    @Import(name="clientId")
+    private @Nullable Output<String> clientId;
 
     /**
-     * @return ID of the client for this grant.
+     * @return ID of the client for this grant. Mutually exclusive with `defaultFor`.
      * 
      */
-    public Output<String> clientId() {
-        return this.clientId;
+    public Optional<Output<String>> clientId() {
+        return Optional.ofNullable(this.clientId);
+    }
+
+    /**
+     * Applies this client grant as the default for all clients in the specified group. The only accepted value is third*party*clients, which applies the grant to all third-party clients.
+     * 
+     */
+    @Import(name="defaultFor")
+    private @Nullable Output<String> defaultFor;
+
+    /**
+     * @return Applies this client grant as the default for all clients in the specified group. The only accepted value is third*party*clients, which applies the grant to all third-party clients.
+     * 
+     */
+    public Optional<Output<String>> defaultFor() {
+        return Optional.ofNullable(this.defaultFor);
     }
 
     /**
@@ -146,6 +161,7 @@ public final class ClientGrantArgs extends com.pulumi.resources.ResourceArgs {
         this.audience = $.audience;
         this.authorizationDetailsTypes = $.authorizationDetailsTypes;
         this.clientId = $.clientId;
+        this.defaultFor = $.defaultFor;
         this.organizationUsage = $.organizationUsage;
         this.scopes = $.scopes;
         this.subjectType = $.subjectType;
@@ -264,24 +280,45 @@ public final class ClientGrantArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clientId ID of the client for this grant.
+         * @param clientId ID of the client for this grant. Mutually exclusive with `defaultFor`.
          * 
          * @return builder
          * 
          */
-        public Builder clientId(Output<String> clientId) {
+        public Builder clientId(@Nullable Output<String> clientId) {
             $.clientId = clientId;
             return this;
         }
 
         /**
-         * @param clientId ID of the client for this grant.
+         * @param clientId ID of the client for this grant. Mutually exclusive with `defaultFor`.
          * 
          * @return builder
          * 
          */
         public Builder clientId(String clientId) {
             return clientId(Output.of(clientId));
+        }
+
+        /**
+         * @param defaultFor Applies this client grant as the default for all clients in the specified group. The only accepted value is third*party*clients, which applies the grant to all third-party clients.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultFor(@Nullable Output<String> defaultFor) {
+            $.defaultFor = defaultFor;
+            return this;
+        }
+
+        /**
+         * @param defaultFor Applies this client grant as the default for all clients in the specified group. The only accepted value is third*party*clients, which applies the grant to all third-party clients.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultFor(String defaultFor) {
+            return defaultFor(Output.of(defaultFor));
         }
 
         /**
@@ -360,9 +397,6 @@ public final class ClientGrantArgs extends com.pulumi.resources.ResourceArgs {
         public ClientGrantArgs build() {
             if ($.audience == null) {
                 throw new MissingRequiredPropertyException("ClientGrantArgs", "audience");
-            }
-            if ($.clientId == null) {
-                throw new MissingRequiredPropertyException("ClientGrantArgs", "clientId");
             }
             return $;
         }

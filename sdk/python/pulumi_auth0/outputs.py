@@ -158,6 +158,11 @@ __all__ = [
     'ConnectionOptionsPasswordDictionary',
     'ConnectionOptionsPasswordHistory',
     'ConnectionOptionsPasswordNoPersonalInfo',
+    'ConnectionOptionsPasswordOptions',
+    'ConnectionOptionsPasswordOptionsComplexity',
+    'ConnectionOptionsPasswordOptionsDictionary',
+    'ConnectionOptionsPasswordOptionsHistory',
+    'ConnectionOptionsPasswordOptionsProfileData',
     'ConnectionOptionsSigningKey',
     'ConnectionOptionsTotp',
     'ConnectionOptionsValidation',
@@ -190,6 +195,7 @@ __all__ = [
     'EmailProviderSettingsMessage',
     'EncryptionKeyManagerCustomerProvidedRootKey',
     'EncryptionKeyManagerEncryptionKey',
+    'EventStreamActionConfiguration',
     'EventStreamEventbridgeConfiguration',
     'EventStreamWebhookConfiguration',
     'EventStreamWebhookConfigurationWebhookAuthorization',
@@ -229,6 +235,7 @@ __all__ = [
     'PromptScreenPartialsScreenPartialInsertionPoints',
     'PromptScreenRendererFilters',
     'ResourceServerAuthorizationDetail',
+    'ResourceServerAuthorizationPolicy',
     'ResourceServerProofOfPossession',
     'ResourceServerScopesScope',
     'ResourceServerSubjectTypeAuthorization',
@@ -417,6 +424,11 @@ __all__ = [
     'GetConnectionOptionPasswordDictionaryResult',
     'GetConnectionOptionPasswordHistoryResult',
     'GetConnectionOptionPasswordNoPersonalInfoResult',
+    'GetConnectionOptionPasswordOptionResult',
+    'GetConnectionOptionPasswordOptionComplexityResult',
+    'GetConnectionOptionPasswordOptionDictionaryResult',
+    'GetConnectionOptionPasswordOptionHistoryResult',
+    'GetConnectionOptionPasswordOptionProfileDataResult',
     'GetConnectionOptionSigningKeyResult',
     'GetConnectionOptionTotpResult',
     'GetConnectionOptionValidationResult',
@@ -447,6 +459,7 @@ __all__ = [
     'GetCustomDomainsCustomDomainResult',
     'GetCustomDomainsCustomDomainCertificateResult',
     'GetCustomDomainsCustomDomainVerificationResult',
+    'GetEventStreamActionConfigurationResult',
     'GetEventStreamEventbridgeConfigurationResult',
     'GetEventStreamWebhookConfigurationResult',
     'GetEventStreamWebhookConfigurationWebhookAuthorizationResult',
@@ -474,6 +487,7 @@ __all__ = [
     'GetPromptScreenPartialsScreenPartialInsertionPointResult',
     'GetPromptScreenRendererFilterResult',
     'GetResourceServerAuthorizationDetailResult',
+    'GetResourceServerAuthorizationPolicyResult',
     'GetResourceServerProofOfPossessionResult',
     'GetResourceServerScopeResult',
     'GetResourceServerSubjectTypeAuthorizationResult',
@@ -7109,6 +7123,8 @@ class ConnectionOptions(dict):
             suggest = "adfs_server"
         elif key == "allowedAudiences":
             suggest = "allowed_audiences"
+        elif key == "apiEnableGroups":
+            suggest = "api_enable_groups"
         elif key == "apiEnableUsers":
             suggest = "api_enable_users"
         elif key == "appId":
@@ -7183,6 +7199,8 @@ class ConnectionOptions(dict):
             suggest = "global_token_revocation_jwt_sub"
         elif key == "iconUrl":
             suggest = "icon_url"
+        elif key == "idTokenSignedResponseAlgs":
+            suggest = "id_token_signed_response_algs"
         elif key == "identityApi":
             suggest = "identity_api"
         elif key == "idpInitiated":
@@ -7215,6 +7233,8 @@ class ConnectionOptions(dict):
             suggest = "password_histories"
         elif key == "passwordNoPersonalInfo":
             suggest = "password_no_personal_info"
+        elif key == "passwordOptions":
+            suggest = "password_options"
         elif key == "passwordPolicy":
             suggest = "password_policy"
         elif key == "pingFederateBaseUrl":
@@ -7265,6 +7285,8 @@ class ConnectionOptions(dict):
             suggest = "token_endpoint_auth_method"
         elif key == "tokenEndpointAuthSigningAlg":
             suggest = "token_endpoint_auth_signing_alg"
+        elif key == "tokenEndpointJwtcaAudFormat":
+            suggest = "token_endpoint_jwtca_aud_format"
         elif key == "twilioSid":
             suggest = "twilio_sid"
         elif key == "twilioToken":
@@ -7305,6 +7327,7 @@ class ConnectionOptions(dict):
                  access_token_url: Optional[_builtins.str] = None,
                  adfs_server: Optional[_builtins.str] = None,
                  allowed_audiences: Optional[Sequence[_builtins.str]] = None,
+                 api_enable_groups: Optional[_builtins.bool] = None,
                  api_enable_users: Optional[_builtins.bool] = None,
                  app_id: Optional[_builtins.str] = None,
                  attribute_map: Optional['outputs.ConnectionOptionsAttributeMap'] = None,
@@ -7347,6 +7370,7 @@ class ConnectionOptions(dict):
                  global_token_revocation_jwt_iss: Optional[_builtins.str] = None,
                  global_token_revocation_jwt_sub: Optional[_builtins.str] = None,
                  icon_url: Optional[_builtins.str] = None,
+                 id_token_signed_response_algs: Optional[Sequence[_builtins.str]] = None,
                  identity_api: Optional[_builtins.str] = None,
                  idp_initiated: Optional['outputs.ConnectionOptionsIdpInitiated'] = None,
                  import_mode: Optional[_builtins.bool] = None,
@@ -7367,6 +7391,7 @@ class ConnectionOptions(dict):
                  password_dictionary: Optional['outputs.ConnectionOptionsPasswordDictionary'] = None,
                  password_histories: Optional[Sequence['outputs.ConnectionOptionsPasswordHistory']] = None,
                  password_no_personal_info: Optional['outputs.ConnectionOptionsPasswordNoPersonalInfo'] = None,
+                 password_options: Optional['outputs.ConnectionOptionsPasswordOptions'] = None,
                  password_policy: Optional[_builtins.str] = None,
                  ping_federate_base_url: Optional[_builtins.str] = None,
                  pkce_enabled: Optional[_builtins.bool] = None,
@@ -7399,6 +7424,7 @@ class ConnectionOptions(dict):
                  token_endpoint: Optional[_builtins.str] = None,
                  token_endpoint_auth_method: Optional[_builtins.str] = None,
                  token_endpoint_auth_signing_alg: Optional[_builtins.str] = None,
+                 token_endpoint_jwtca_aud_format: Optional[_builtins.str] = None,
                  totp: Optional['outputs.ConnectionOptionsTotp'] = None,
                  twilio_sid: Optional[_builtins.str] = None,
                  twilio_token: Optional[_builtins.str] = None,
@@ -7418,6 +7444,7 @@ class ConnectionOptions(dict):
         :param _builtins.str access_token_url: URL used to exchange a user-authorized request token for an access token.
         :param _builtins.str adfs_server: ADFS URL where to fetch the metadata source.
         :param Sequence[_builtins.str] allowed_audiences: List of allowed audiences.
+        :param _builtins.bool api_enable_groups: Enable API Access to groups.
         :param _builtins.bool api_enable_users: Enable API Access to users.
         :param _builtins.str app_id: App ID.
         :param 'ConnectionOptionsAttributeMapArgs' attribute_map: OpenID Connect and Okta Workforce connections can automatically map claims received from the identity provider (IdP). You can configure this mapping through a library template provided by Auth0 or by entering your own template directly. Click [here](https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc#map-claims-for-oidc-connections) for more info.
@@ -7460,6 +7487,7 @@ class ConnectionOptions(dict):
         :param _builtins.str global_token_revocation_jwt_iss: Specifies the issuer of the JWT used for global token revocation for the SAML connection.
         :param _builtins.str global_token_revocation_jwt_sub: Specifies the subject of the JWT used for global token revocation for the SAML connection.
         :param _builtins.str icon_url: Icon URL.
+        :param Sequence[_builtins.str] id_token_signed_response_algs: List of allowed algorithms for the ID token signature. If not set, RS256 will be applied at runtime. (Okta/OIDC Connections)
         :param _builtins.str identity_api: Azure AD Identity API. Available options are: `microsoft-identity-platform-v2.0` or `azure-active-directory-v1.0`.
         :param 'ConnectionOptionsIdpInitiatedArgs' idp_initiated: Configuration options for IDP Initiated Authentication. This is an object with the properties: `client_id`, `client_protocol`, and `client_authorize_query`.
         :param _builtins.bool import_mode: Indicates whether you have a legacy user store and want to gradually migrate those users to the Auth0 user store.
@@ -7480,6 +7508,7 @@ class ConnectionOptions(dict):
         :param 'ConnectionOptionsPasswordDictionaryArgs' password_dictionary: Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary.
         :param Sequence['ConnectionOptionsPasswordHistoryArgs'] password_histories: Configuration settings for the password history that is maintained for each user to prevent the reuse of passwords.
         :param 'ConnectionOptionsPasswordNoPersonalInfoArgs' password_no_personal_info: Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's `name`, `username`, `nickname`, `user_metadata.name`, `user_metadata.first`, `user_metadata.last`, user's `email`, or first part of the user's `email`.
+        :param 'ConnectionOptionsPasswordOptionsArgs' password_options: Flexible password policy configuration. Only available for `auth0` strategy connections. Cannot be set together with legacy password policy fields (`password_policy`, `password_complexity_options`, `password_history`, `password_no_personal_info`, `password_dictionary`).
         :param _builtins.str password_policy: Indicates level of password strength to enforce during authentication. A strong password policy will make it difficult, if not improbable, for someone to guess a password through either manual or automated means. Options include `none`, `low`, `fair`, `good`, `excellent`.
         :param _builtins.str ping_federate_base_url: Ping Federate Server URL.
         :param _builtins.bool pkce_enabled: Enables Proof Key for Code Exchange (PKCE) functionality for OAuth2 connections.
@@ -7512,6 +7541,7 @@ class ConnectionOptions(dict):
         :param _builtins.str token_endpoint: Token endpoint.
         :param _builtins.str token_endpoint_auth_method: Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
         :param _builtins.str token_endpoint_auth_signing_alg: Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
+        :param _builtins.str token_endpoint_jwtca_aud_format: Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: 'issuer' or 'token_endpoint'. (Okta/OIDC Connections)
         :param 'ConnectionOptionsTotpArgs' totp: Configuration options for one-time passwords.
         :param _builtins.str twilio_sid: SID for your Twilio account.
         :param _builtins.str twilio_token: AuthToken for your Twilio account.
@@ -7534,6 +7564,8 @@ class ConnectionOptions(dict):
             pulumi.set(__self__, "adfs_server", adfs_server)
         if allowed_audiences is not None:
             pulumi.set(__self__, "allowed_audiences", allowed_audiences)
+        if api_enable_groups is not None:
+            pulumi.set(__self__, "api_enable_groups", api_enable_groups)
         if api_enable_users is not None:
             pulumi.set(__self__, "api_enable_users", api_enable_users)
         if app_id is not None:
@@ -7618,6 +7650,8 @@ class ConnectionOptions(dict):
             pulumi.set(__self__, "global_token_revocation_jwt_sub", global_token_revocation_jwt_sub)
         if icon_url is not None:
             pulumi.set(__self__, "icon_url", icon_url)
+        if id_token_signed_response_algs is not None:
+            pulumi.set(__self__, "id_token_signed_response_algs", id_token_signed_response_algs)
         if identity_api is not None:
             pulumi.set(__self__, "identity_api", identity_api)
         if idp_initiated is not None:
@@ -7658,6 +7692,8 @@ class ConnectionOptions(dict):
             pulumi.set(__self__, "password_histories", password_histories)
         if password_no_personal_info is not None:
             pulumi.set(__self__, "password_no_personal_info", password_no_personal_info)
+        if password_options is not None:
+            pulumi.set(__self__, "password_options", password_options)
         if password_policy is not None:
             pulumi.set(__self__, "password_policy", password_policy)
         if ping_federate_base_url is not None:
@@ -7722,6 +7758,8 @@ class ConnectionOptions(dict):
             pulumi.set(__self__, "token_endpoint_auth_method", token_endpoint_auth_method)
         if token_endpoint_auth_signing_alg is not None:
             pulumi.set(__self__, "token_endpoint_auth_signing_alg", token_endpoint_auth_signing_alg)
+        if token_endpoint_jwtca_aud_format is not None:
+            pulumi.set(__self__, "token_endpoint_jwtca_aud_format", token_endpoint_jwtca_aud_format)
         if totp is not None:
             pulumi.set(__self__, "totp", totp)
         if twilio_sid is not None:
@@ -7776,6 +7814,14 @@ class ConnectionOptions(dict):
         List of allowed audiences.
         """
         return pulumi.get(self, "allowed_audiences")
+
+    @_builtins.property
+    @pulumi.getter(name="apiEnableGroups")
+    def api_enable_groups(self) -> Optional[_builtins.bool]:
+        """
+        Enable API Access to groups.
+        """
+        return pulumi.get(self, "api_enable_groups")
 
     @_builtins.property
     @pulumi.getter(name="apiEnableUsers")
@@ -8114,6 +8160,14 @@ class ConnectionOptions(dict):
         return pulumi.get(self, "icon_url")
 
     @_builtins.property
+    @pulumi.getter(name="idTokenSignedResponseAlgs")
+    def id_token_signed_response_algs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of allowed algorithms for the ID token signature. If not set, RS256 will be applied at runtime. (Okta/OIDC Connections)
+        """
+        return pulumi.get(self, "id_token_signed_response_algs")
+
+    @_builtins.property
     @pulumi.getter(name="identityApi")
     def identity_api(self) -> Optional[_builtins.str]:
         """
@@ -8272,6 +8326,14 @@ class ConnectionOptions(dict):
         Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's `name`, `username`, `nickname`, `user_metadata.name`, `user_metadata.first`, `user_metadata.last`, user's `email`, or first part of the user's `email`.
         """
         return pulumi.get(self, "password_no_personal_info")
+
+    @_builtins.property
+    @pulumi.getter(name="passwordOptions")
+    def password_options(self) -> Optional['outputs.ConnectionOptionsPasswordOptions']:
+        """
+        Flexible password policy configuration. Only available for `auth0` strategy connections. Cannot be set together with legacy password policy fields (`password_policy`, `password_complexity_options`, `password_history`, `password_no_personal_info`, `password_dictionary`).
+        """
+        return pulumi.get(self, "password_options")
 
     @_builtins.property
     @pulumi.getter(name="passwordPolicy")
@@ -8528,6 +8590,14 @@ class ConnectionOptions(dict):
         Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
         """
         return pulumi.get(self, "token_endpoint_auth_signing_alg")
+
+    @_builtins.property
+    @pulumi.getter(name="tokenEndpointJwtcaAudFormat")
+    def token_endpoint_jwtca_aud_format(self) -> Optional[_builtins.str]:
+        """
+        Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: 'issuer' or 'token_endpoint'. (Okta/OIDC Connections)
+        """
+        return pulumi.get(self, "token_endpoint_jwtca_aud_format")
 
     @_builtins.property
     @pulumi.getter
@@ -10001,6 +10071,306 @@ class ConnectionOptionsPasswordNoPersonalInfo(dict):
     @pulumi.getter
     def enable(self) -> Optional[_builtins.bool]:
         return pulumi.get(self, "enable")
+
+
+@pulumi.output_type
+class ConnectionOptionsPasswordOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "profileData":
+            suggest = "profile_data"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionOptionsPasswordOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionOptionsPasswordOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionOptionsPasswordOptions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 complexity: Optional['outputs.ConnectionOptionsPasswordOptionsComplexity'] = None,
+                 dictionary: Optional['outputs.ConnectionOptionsPasswordOptionsDictionary'] = None,
+                 history: Optional['outputs.ConnectionOptionsPasswordOptionsHistory'] = None,
+                 profile_data: Optional['outputs.ConnectionOptionsPasswordOptionsProfileData'] = None):
+        """
+        :param 'ConnectionOptionsPasswordOptionsComplexityArgs' complexity: Password complexity requirements.
+        :param 'ConnectionOptionsPasswordOptionsDictionaryArgs' dictionary: Dictionary-based password validation.
+        :param 'ConnectionOptionsPasswordOptionsHistoryArgs' history: Password history enforcement.
+        :param 'ConnectionOptionsPasswordOptionsProfileDataArgs' profile_data: Personal information restriction policy.
+        """
+        if complexity is not None:
+            pulumi.set(__self__, "complexity", complexity)
+        if dictionary is not None:
+            pulumi.set(__self__, "dictionary", dictionary)
+        if history is not None:
+            pulumi.set(__self__, "history", history)
+        if profile_data is not None:
+            pulumi.set(__self__, "profile_data", profile_data)
+
+    @_builtins.property
+    @pulumi.getter
+    def complexity(self) -> Optional['outputs.ConnectionOptionsPasswordOptionsComplexity']:
+        """
+        Password complexity requirements.
+        """
+        return pulumi.get(self, "complexity")
+
+    @_builtins.property
+    @pulumi.getter
+    def dictionary(self) -> Optional['outputs.ConnectionOptionsPasswordOptionsDictionary']:
+        """
+        Dictionary-based password validation.
+        """
+        return pulumi.get(self, "dictionary")
+
+    @_builtins.property
+    @pulumi.getter
+    def history(self) -> Optional['outputs.ConnectionOptionsPasswordOptionsHistory']:
+        """
+        Password history enforcement.
+        """
+        return pulumi.get(self, "history")
+
+    @_builtins.property
+    @pulumi.getter(name="profileData")
+    def profile_data(self) -> Optional['outputs.ConnectionOptionsPasswordOptionsProfileData']:
+        """
+        Personal information restriction policy.
+        """
+        return pulumi.get(self, "profile_data")
+
+
+@pulumi.output_type
+class ConnectionOptionsPasswordOptionsComplexity(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "characterTypeRule":
+            suggest = "character_type_rule"
+        elif key == "characterTypes":
+            suggest = "character_types"
+        elif key == "identicalCharacters":
+            suggest = "identical_characters"
+        elif key == "maxLengthExceeded":
+            suggest = "max_length_exceeded"
+        elif key == "minLength":
+            suggest = "min_length"
+        elif key == "sequentialCharacters":
+            suggest = "sequential_characters"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionOptionsPasswordOptionsComplexity. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionOptionsPasswordOptionsComplexity.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionOptionsPasswordOptionsComplexity.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 character_type_rule: Optional[_builtins.str] = None,
+                 character_types: Optional[Sequence[_builtins.str]] = None,
+                 identical_characters: Optional[_builtins.str] = None,
+                 max_length_exceeded: Optional[_builtins.str] = None,
+                 min_length: Optional[_builtins.int] = None,
+                 sequential_characters: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str character_type_rule: When all 4 character types are specified, determines if all or 3 of 4 are required. Possible values: `all`, `three_of_four`. Default: `all`.
+        :param Sequence[_builtins.str] character_types: Required character types. Valid values: `uppercase`, `lowercase`, `number`, `special`.
+        :param _builtins.str identical_characters: Controls whether 3+ consecutive identical characters are allowed. Possible values: `allow`, `block`. Default: `allow`.
+        :param _builtins.str max_length_exceeded: Controls behavior when the password exceeds 72 bytes. Possible values: `truncate`, `error`. Default: `error`.
+        :param _builtins.int min_length: Minimum password length. Must be between 1 and 72. Default: 15.
+        :param _builtins.str sequential_characters: Controls whether sequential characters (abc, 123, etc.) are allowed. Possible values: `allow`, `block`. Default: `allow`.
+        """
+        if character_type_rule is not None:
+            pulumi.set(__self__, "character_type_rule", character_type_rule)
+        if character_types is not None:
+            pulumi.set(__self__, "character_types", character_types)
+        if identical_characters is not None:
+            pulumi.set(__self__, "identical_characters", identical_characters)
+        if max_length_exceeded is not None:
+            pulumi.set(__self__, "max_length_exceeded", max_length_exceeded)
+        if min_length is not None:
+            pulumi.set(__self__, "min_length", min_length)
+        if sequential_characters is not None:
+            pulumi.set(__self__, "sequential_characters", sequential_characters)
+
+    @_builtins.property
+    @pulumi.getter(name="characterTypeRule")
+    def character_type_rule(self) -> Optional[_builtins.str]:
+        """
+        When all 4 character types are specified, determines if all or 3 of 4 are required. Possible values: `all`, `three_of_four`. Default: `all`.
+        """
+        return pulumi.get(self, "character_type_rule")
+
+    @_builtins.property
+    @pulumi.getter(name="characterTypes")
+    def character_types(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Required character types. Valid values: `uppercase`, `lowercase`, `number`, `special`.
+        """
+        return pulumi.get(self, "character_types")
+
+    @_builtins.property
+    @pulumi.getter(name="identicalCharacters")
+    def identical_characters(self) -> Optional[_builtins.str]:
+        """
+        Controls whether 3+ consecutive identical characters are allowed. Possible values: `allow`, `block`. Default: `allow`.
+        """
+        return pulumi.get(self, "identical_characters")
+
+    @_builtins.property
+    @pulumi.getter(name="maxLengthExceeded")
+    def max_length_exceeded(self) -> Optional[_builtins.str]:
+        """
+        Controls behavior when the password exceeds 72 bytes. Possible values: `truncate`, `error`. Default: `error`.
+        """
+        return pulumi.get(self, "max_length_exceeded")
+
+    @_builtins.property
+    @pulumi.getter(name="minLength")
+    def min_length(self) -> Optional[_builtins.int]:
+        """
+        Minimum password length. Must be between 1 and 72. Default: 15.
+        """
+        return pulumi.get(self, "min_length")
+
+    @_builtins.property
+    @pulumi.getter(name="sequentialCharacters")
+    def sequential_characters(self) -> Optional[_builtins.str]:
+        """
+        Controls whether sequential characters (abc, 123, etc.) are allowed. Possible values: `allow`, `block`. Default: `allow`.
+        """
+        return pulumi.get(self, "sequential_characters")
+
+
+@pulumi.output_type
+class ConnectionOptionsPasswordOptionsDictionary(dict):
+    def __init__(__self__, *,
+                 active: Optional[_builtins.bool] = None,
+                 customs: Optional[Sequence[_builtins.str]] = None,
+                 default: Optional[_builtins.str] = None):
+        """
+        :param _builtins.bool active: Enables dictionary checking.
+        :param Sequence[_builtins.str] customs: Custom list of disallowed terms.
+        :param _builtins.str default: Default dictionary to use. Possible values: `en_10k`, `en_100k`. Default: `en_100k`.
+        """
+        if active is not None:
+            pulumi.set(__self__, "active", active)
+        if customs is not None:
+            pulumi.set(__self__, "customs", customs)
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+
+    @_builtins.property
+    @pulumi.getter
+    def active(self) -> Optional[_builtins.bool]:
+        """
+        Enables dictionary checking.
+        """
+        return pulumi.get(self, "active")
+
+    @_builtins.property
+    @pulumi.getter
+    def customs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Custom list of disallowed terms.
+        """
+        return pulumi.get(self, "customs")
+
+    @_builtins.property
+    @pulumi.getter
+    def default(self) -> Optional[_builtins.str]:
+        """
+        Default dictionary to use. Possible values: `en_10k`, `en_100k`. Default: `en_100k`.
+        """
+        return pulumi.get(self, "default")
+
+
+@pulumi.output_type
+class ConnectionOptionsPasswordOptionsHistory(dict):
+    def __init__(__self__, *,
+                 active: Optional[_builtins.bool] = None,
+                 size: Optional[_builtins.int] = None):
+        """
+        :param _builtins.bool active: Enables password history checking.
+        :param _builtins.int size: Number of previous passwords to check against. Must be between 1 and 24. Default: 3.
+        """
+        if active is not None:
+            pulumi.set(__self__, "active", active)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+
+    @_builtins.property
+    @pulumi.getter
+    def active(self) -> Optional[_builtins.bool]:
+        """
+        Enables password history checking.
+        """
+        return pulumi.get(self, "active")
+
+    @_builtins.property
+    @pulumi.getter
+    def size(self) -> Optional[_builtins.int]:
+        """
+        Number of previous passwords to check against. Must be between 1 and 24. Default: 3.
+        """
+        return pulumi.get(self, "size")
+
+
+@pulumi.output_type
+class ConnectionOptionsPasswordOptionsProfileData(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "blockedFields":
+            suggest = "blocked_fields"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionOptionsPasswordOptionsProfileData. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionOptionsPasswordOptionsProfileData.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionOptionsPasswordOptionsProfileData.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 active: Optional[_builtins.bool] = None,
+                 blocked_fields: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.bool active: Prevents users from including profile data in passwords.
+        :param Sequence[_builtins.str] blocked_fields: User profile fields to block from passwords. Maximum 12 items, each max 100 characters.
+        """
+        if active is not None:
+            pulumi.set(__self__, "active", active)
+        if blocked_fields is not None:
+            pulumi.set(__self__, "blocked_fields", blocked_fields)
+
+    @_builtins.property
+    @pulumi.getter
+    def active(self) -> Optional[_builtins.bool]:
+        """
+        Prevents users from including profile data in passwords.
+        """
+        return pulumi.get(self, "active")
+
+    @_builtins.property
+    @pulumi.getter(name="blockedFields")
+    def blocked_fields(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        User profile fields to block from passwords. Maximum 12 items, each max 100 characters.
+        """
+        return pulumi.get(self, "blocked_fields")
 
 
 @pulumi.output_type
@@ -11488,6 +11858,41 @@ class EncryptionKeyManagerEncryptionKey(dict):
         The ISO 8601 formatted date the encryption key was updated.
         """
         return pulumi.get(self, "updated_at")
+
+
+@pulumi.output_type
+class EventStreamActionConfiguration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "actionId":
+            suggest = "action_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EventStreamActionConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EventStreamActionConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EventStreamActionConfiguration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 action_id: _builtins.str):
+        """
+        :param _builtins.str action_id: The ID of the Auth0 Action to use as the event stream destination.
+        """
+        pulumi.set(__self__, "action_id", action_id)
+
+    @_builtins.property
+    @pulumi.getter(name="actionId")
+    def action_id(self) -> _builtins.str:
+        """
+        The ID of the Auth0 Action to use as the event stream destination.
+        """
+        return pulumi.get(self, "action_id")
 
 
 @pulumi.output_type
@@ -14439,6 +14844,42 @@ class ResourceServerAuthorizationDetail(dict):
         Type of authorization details.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class ResourceServerAuthorizationPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "policyId":
+            suggest = "policy_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResourceServerAuthorizationPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResourceServerAuthorizationPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResourceServerAuthorizationPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 policy_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str policy_id: Identifier of the authorization policy.
+        """
+        if policy_id is not None:
+            pulumi.set(__self__, "policy_id", policy_id)
+
+    @_builtins.property
+    @pulumi.getter(name="policyId")
+    def policy_id(self) -> Optional[_builtins.str]:
+        """
+        Identifier of the authorization policy.
+        """
+        return pulumi.get(self, "policy_id")
 
 
 @pulumi.output_type
@@ -20408,6 +20849,7 @@ class GetClientGrantsClientGrantResult(dict):
                  allow_all_scopes: _builtins.bool,
                  audience: _builtins.str,
                  client_id: _builtins.str,
+                 default_for: _builtins.str,
                  id: _builtins.str,
                  scopes: Sequence[_builtins.str],
                  subject_type: _builtins.str):
@@ -20415,6 +20857,7 @@ class GetClientGrantsClientGrantResult(dict):
         :param _builtins.bool allow_all_scopes: When enabled, all scopes configured on the resource server are allowed for this client grant. EA Only.
         :param _builtins.str audience: The audience of the client grant.
         :param _builtins.str client_id: The client ID associated with the grant.
+        :param _builtins.str default_for: Indicates this grant is the default for a category of clients.
         :param _builtins.str id: The ID of the client grant.
         :param Sequence[_builtins.str] scopes: List of granted scopes.
         :param _builtins.str subject_type: The subject type (usually 'client').
@@ -20422,6 +20865,7 @@ class GetClientGrantsClientGrantResult(dict):
         pulumi.set(__self__, "allow_all_scopes", allow_all_scopes)
         pulumi.set(__self__, "audience", audience)
         pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "default_for", default_for)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "scopes", scopes)
         pulumi.set(__self__, "subject_type", subject_type)
@@ -20449,6 +20893,14 @@ class GetClientGrantsClientGrantResult(dict):
         The client ID associated with the grant.
         """
         return pulumi.get(self, "client_id")
+
+    @_builtins.property
+    @pulumi.getter(name="defaultFor")
+    def default_for(self) -> _builtins.str:
+        """
+        Indicates this grant is the default for a category of clients.
+        """
+        return pulumi.get(self, "default_for")
 
     @_builtins.property
     @pulumi.getter
@@ -21209,9 +21661,11 @@ class GetClientsClientResult(dict):
                  my_organization_configurations: Sequence['outputs.GetClientsClientMyOrganizationConfigurationResult'],
                  oidc_logouts: Sequence['outputs.GetClientsClientOidcLogoutResult'],
                  organization_discovery_methods: Sequence[_builtins.str],
+                 redirection_policy: _builtins.str,
                  resource_server_identifier: _builtins.str,
                  session_transfers: Sequence['outputs.GetClientsClientSessionTransferResult'],
                  skip_non_verifiable_callback_uri_confirmation_prompt: _builtins.str,
+                 third_party_security_mode: _builtins.str,
                  token_exchanges: Sequence['outputs.GetClientsClientTokenExchangeResult'],
                  token_quotas: Sequence['outputs.GetClientsClientTokenQuotaResult'],
                  web_origins: Sequence[_builtins.str],
@@ -21238,8 +21692,10 @@ class GetClientsClientResult(dict):
         :param Sequence['GetClientsClientMyOrganizationConfigurationArgs'] my_organization_configurations: Configuration for self-service organization features, controlling how organizations are created and managed for this client.
         :param Sequence['GetClientsClientOidcLogoutArgs'] oidc_logouts: Configure OIDC logout for the Client
         :param Sequence[_builtins.str] organization_discovery_methods: Methods for discovering organizations during the pre_login_prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organization_name` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organization_require_behavior` is set to `pre_login_prompt`.
+        :param _builtins.str redirection_policy: Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.Allowed values: `allow_always` or `open_redirect_protection`.
         :param _builtins.str resource_server_identifier: The identifier of a resource server that client is associated withThis property can be sent only when app_type=resource_server.This property can not be changed, once the client is created.
         :param _builtins.str skip_non_verifiable_callback_uri_confirmation_prompt: Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
+        :param _builtins.str third_party_security_mode: Security mode for third-party clients. Allowed values: `strict` or `permissive`.
         :param Sequence['GetClientsClientTokenExchangeArgs'] token_exchanges: Allows configuration for token exchange
         :param Sequence['GetClientsClientTokenQuotaArgs'] token_quotas: The token quota configuration.
         :param Sequence[_builtins.str] web_origins: URLs that represent valid web origins for use with web message response mode.
@@ -21266,9 +21722,11 @@ class GetClientsClientResult(dict):
         pulumi.set(__self__, "my_organization_configurations", my_organization_configurations)
         pulumi.set(__self__, "oidc_logouts", oidc_logouts)
         pulumi.set(__self__, "organization_discovery_methods", organization_discovery_methods)
+        pulumi.set(__self__, "redirection_policy", redirection_policy)
         pulumi.set(__self__, "resource_server_identifier", resource_server_identifier)
         pulumi.set(__self__, "session_transfers", session_transfers)
         pulumi.set(__self__, "skip_non_verifiable_callback_uri_confirmation_prompt", skip_non_verifiable_callback_uri_confirmation_prompt)
+        pulumi.set(__self__, "third_party_security_mode", third_party_security_mode)
         pulumi.set(__self__, "token_exchanges", token_exchanges)
         pulumi.set(__self__, "token_quotas", token_quotas)
         pulumi.set(__self__, "web_origins", web_origins)
@@ -21438,6 +21896,14 @@ class GetClientsClientResult(dict):
         return pulumi.get(self, "organization_discovery_methods")
 
     @_builtins.property
+    @pulumi.getter(name="redirectionPolicy")
+    def redirection_policy(self) -> _builtins.str:
+        """
+        Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.Allowed values: `allow_always` or `open_redirect_protection`.
+        """
+        return pulumi.get(self, "redirection_policy")
+
+    @_builtins.property
     @pulumi.getter(name="resourceServerIdentifier")
     def resource_server_identifier(self) -> _builtins.str:
         """
@@ -21457,6 +21923,14 @@ class GetClientsClientResult(dict):
         Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
         """
         return pulumi.get(self, "skip_non_verifiable_callback_uri_confirmation_prompt")
+
+    @_builtins.property
+    @pulumi.getter(name="thirdPartySecurityMode")
+    def third_party_security_mode(self) -> _builtins.str:
+        """
+        Security mode for third-party clients. Allowed values: `strict` or `permissive`.
+        """
+        return pulumi.get(self, "third_party_security_mode")
 
     @_builtins.property
     @pulumi.getter(name="tokenExchanges")
@@ -22151,6 +22625,7 @@ class GetConnectionOptionResult(dict):
                  access_token_url: _builtins.str,
                  adfs_server: _builtins.str,
                  allowed_audiences: Sequence[_builtins.str],
+                 api_enable_groups: _builtins.bool,
                  api_enable_users: _builtins.bool,
                  app_id: _builtins.str,
                  attribute_maps: Sequence['outputs.GetConnectionOptionAttributeMapResult'],
@@ -22193,6 +22668,7 @@ class GetConnectionOptionResult(dict):
                  global_token_revocation_jwt_iss: _builtins.str,
                  global_token_revocation_jwt_sub: _builtins.str,
                  icon_url: _builtins.str,
+                 id_token_signed_response_algs: Sequence[_builtins.str],
                  identity_api: _builtins.str,
                  idp_initiateds: Sequence['outputs.GetConnectionOptionIdpInitiatedResult'],
                  import_mode: _builtins.bool,
@@ -22213,6 +22689,7 @@ class GetConnectionOptionResult(dict):
                  password_dictionaries: Sequence['outputs.GetConnectionOptionPasswordDictionaryResult'],
                  password_histories: Sequence['outputs.GetConnectionOptionPasswordHistoryResult'],
                  password_no_personal_infos: Sequence['outputs.GetConnectionOptionPasswordNoPersonalInfoResult'],
+                 password_options: Sequence['outputs.GetConnectionOptionPasswordOptionResult'],
                  password_policy: _builtins.str,
                  ping_federate_base_url: _builtins.str,
                  pkce_enabled: _builtins.bool,
@@ -22245,6 +22722,7 @@ class GetConnectionOptionResult(dict):
                  token_endpoint: _builtins.str,
                  token_endpoint_auth_method: _builtins.str,
                  token_endpoint_auth_signing_alg: _builtins.str,
+                 token_endpoint_jwtca_aud_format: _builtins.str,
                  totps: Sequence['outputs.GetConnectionOptionTotpResult'],
                  twilio_sid: _builtins.str,
                  twilio_token: _builtins.str,
@@ -22264,6 +22742,7 @@ class GetConnectionOptionResult(dict):
         :param _builtins.str access_token_url: URL used to exchange a user-authorized request token for an access token.
         :param _builtins.str adfs_server: ADFS URL where to fetch the metadata source.
         :param Sequence[_builtins.str] allowed_audiences: List of allowed audiences.
+        :param _builtins.bool api_enable_groups: Enable API Access to groups.
         :param _builtins.bool api_enable_users: Enable API Access to users.
         :param _builtins.str app_id: App ID.
         :param Sequence['GetConnectionOptionAttributeMapArgs'] attribute_maps: OpenID Connect and Okta Workforce connections can automatically map claims received from the identity provider (IdP). You can configure this mapping through a library template provided by Auth0 or by entering your own template directly. Click [here](https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc#map-claims-for-oidc-connections) for more info.
@@ -22306,6 +22785,7 @@ class GetConnectionOptionResult(dict):
         :param _builtins.str global_token_revocation_jwt_iss: Specifies the issuer of the JWT used for global token revocation for the SAML connection.
         :param _builtins.str global_token_revocation_jwt_sub: Specifies the subject of the JWT used for global token revocation for the SAML connection.
         :param _builtins.str icon_url: Icon URL.
+        :param Sequence[_builtins.str] id_token_signed_response_algs: List of allowed algorithms for the ID token signature. If not set, RS256 will be applied at runtime. (Okta/OIDC Connections)
         :param _builtins.str identity_api: Azure AD Identity API. Available options are: `microsoft-identity-platform-v2.0` or `azure-active-directory-v1.0`.
         :param Sequence['GetConnectionOptionIdpInitiatedArgs'] idp_initiateds: Configuration options for IDP Initiated Authentication. This is an object with the properties: `client_id`, `client_protocol`, and `client_authorize_query`.
         :param _builtins.bool import_mode: Indicates whether you have a legacy user store and want to gradually migrate those users to the Auth0 user store.
@@ -22326,6 +22806,7 @@ class GetConnectionOptionResult(dict):
         :param Sequence['GetConnectionOptionPasswordDictionaryArgs'] password_dictionaries: Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary.
         :param Sequence['GetConnectionOptionPasswordHistoryArgs'] password_histories: Configuration settings for the password history that is maintained for each user to prevent the reuse of passwords.
         :param Sequence['GetConnectionOptionPasswordNoPersonalInfoArgs'] password_no_personal_infos: Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's `name`, `username`, `nickname`, `user_metadata.name`, `user_metadata.first`, `user_metadata.last`, user's `email`, or first part of the user's `email`.
+        :param Sequence['GetConnectionOptionPasswordOptionArgs'] password_options: Flexible password policy configuration. Only available for `auth0` strategy connections. Cannot be set together with legacy password policy fields (`password_policy`, `password_complexity_options`, `password_history`, `password_no_personal_info`, `password_dictionary`).
         :param _builtins.str password_policy: Indicates level of password strength to enforce during authentication. A strong password policy will make it difficult, if not improbable, for someone to guess a password through either manual or automated means. Options include `none`, `low`, `fair`, `good`, `excellent`.
         :param _builtins.str ping_federate_base_url: Ping Federate Server URL.
         :param _builtins.bool pkce_enabled: Enables Proof Key for Code Exchange (PKCE) functionality for OAuth2 connections.
@@ -22358,6 +22839,7 @@ class GetConnectionOptionResult(dict):
         :param _builtins.str token_endpoint: Token endpoint.
         :param _builtins.str token_endpoint_auth_method: Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
         :param _builtins.str token_endpoint_auth_signing_alg: Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
+        :param _builtins.str token_endpoint_jwtca_aud_format: Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: 'issuer' or 'token_endpoint'. (Okta/OIDC Connections)
         :param Sequence['GetConnectionOptionTotpArgs'] totps: Configuration options for one-time passwords.
         :param _builtins.str twilio_sid: SID for your Twilio account.
         :param _builtins.str twilio_token: AuthToken for your Twilio account.
@@ -22377,6 +22859,7 @@ class GetConnectionOptionResult(dict):
         pulumi.set(__self__, "access_token_url", access_token_url)
         pulumi.set(__self__, "adfs_server", adfs_server)
         pulumi.set(__self__, "allowed_audiences", allowed_audiences)
+        pulumi.set(__self__, "api_enable_groups", api_enable_groups)
         pulumi.set(__self__, "api_enable_users", api_enable_users)
         pulumi.set(__self__, "app_id", app_id)
         pulumi.set(__self__, "attribute_maps", attribute_maps)
@@ -22419,6 +22902,7 @@ class GetConnectionOptionResult(dict):
         pulumi.set(__self__, "global_token_revocation_jwt_iss", global_token_revocation_jwt_iss)
         pulumi.set(__self__, "global_token_revocation_jwt_sub", global_token_revocation_jwt_sub)
         pulumi.set(__self__, "icon_url", icon_url)
+        pulumi.set(__self__, "id_token_signed_response_algs", id_token_signed_response_algs)
         pulumi.set(__self__, "identity_api", identity_api)
         pulumi.set(__self__, "idp_initiateds", idp_initiateds)
         pulumi.set(__self__, "import_mode", import_mode)
@@ -22439,6 +22923,7 @@ class GetConnectionOptionResult(dict):
         pulumi.set(__self__, "password_dictionaries", password_dictionaries)
         pulumi.set(__self__, "password_histories", password_histories)
         pulumi.set(__self__, "password_no_personal_infos", password_no_personal_infos)
+        pulumi.set(__self__, "password_options", password_options)
         pulumi.set(__self__, "password_policy", password_policy)
         pulumi.set(__self__, "ping_federate_base_url", ping_federate_base_url)
         pulumi.set(__self__, "pkce_enabled", pkce_enabled)
@@ -22471,6 +22956,7 @@ class GetConnectionOptionResult(dict):
         pulumi.set(__self__, "token_endpoint", token_endpoint)
         pulumi.set(__self__, "token_endpoint_auth_method", token_endpoint_auth_method)
         pulumi.set(__self__, "token_endpoint_auth_signing_alg", token_endpoint_auth_signing_alg)
+        pulumi.set(__self__, "token_endpoint_jwtca_aud_format", token_endpoint_jwtca_aud_format)
         pulumi.set(__self__, "totps", totps)
         pulumi.set(__self__, "twilio_sid", twilio_sid)
         pulumi.set(__self__, "twilio_token", twilio_token)
@@ -22510,6 +22996,14 @@ class GetConnectionOptionResult(dict):
         List of allowed audiences.
         """
         return pulumi.get(self, "allowed_audiences")
+
+    @_builtins.property
+    @pulumi.getter(name="apiEnableGroups")
+    def api_enable_groups(self) -> _builtins.bool:
+        """
+        Enable API Access to groups.
+        """
+        return pulumi.get(self, "api_enable_groups")
 
     @_builtins.property
     @pulumi.getter(name="apiEnableUsers")
@@ -22848,6 +23342,14 @@ class GetConnectionOptionResult(dict):
         return pulumi.get(self, "icon_url")
 
     @_builtins.property
+    @pulumi.getter(name="idTokenSignedResponseAlgs")
+    def id_token_signed_response_algs(self) -> Sequence[_builtins.str]:
+        """
+        List of allowed algorithms for the ID token signature. If not set, RS256 will be applied at runtime. (Okta/OIDC Connections)
+        """
+        return pulumi.get(self, "id_token_signed_response_algs")
+
+    @_builtins.property
     @pulumi.getter(name="identityApi")
     def identity_api(self) -> _builtins.str:
         """
@@ -23006,6 +23508,14 @@ class GetConnectionOptionResult(dict):
         Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's `name`, `username`, `nickname`, `user_metadata.name`, `user_metadata.first`, `user_metadata.last`, user's `email`, or first part of the user's `email`.
         """
         return pulumi.get(self, "password_no_personal_infos")
+
+    @_builtins.property
+    @pulumi.getter(name="passwordOptions")
+    def password_options(self) -> Sequence['outputs.GetConnectionOptionPasswordOptionResult']:
+        """
+        Flexible password policy configuration. Only available for `auth0` strategy connections. Cannot be set together with legacy password policy fields (`password_policy`, `password_complexity_options`, `password_history`, `password_no_personal_info`, `password_dictionary`).
+        """
+        return pulumi.get(self, "password_options")
 
     @_builtins.property
     @pulumi.getter(name="passwordPolicy")
@@ -23262,6 +23772,14 @@ class GetConnectionOptionResult(dict):
         Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
         """
         return pulumi.get(self, "token_endpoint_auth_signing_alg")
+
+    @_builtins.property
+    @pulumi.getter(name="tokenEndpointJwtcaAudFormat")
+    def token_endpoint_jwtca_aud_format(self) -> _builtins.str:
+        """
+        Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: 'issuer' or 'token_endpoint'. (Okta/OIDC Connections)
+        """
+        return pulumi.get(self, "token_endpoint_jwtca_aud_format")
 
     @_builtins.property
     @pulumi.getter
@@ -24347,6 +24865,228 @@ class GetConnectionOptionPasswordNoPersonalInfoResult(dict):
 
 
 @pulumi.output_type
+class GetConnectionOptionPasswordOptionResult(dict):
+    def __init__(__self__, *,
+                 complexities: Sequence['outputs.GetConnectionOptionPasswordOptionComplexityResult'],
+                 dictionaries: Sequence['outputs.GetConnectionOptionPasswordOptionDictionaryResult'],
+                 histories: Sequence['outputs.GetConnectionOptionPasswordOptionHistoryResult'],
+                 profile_datas: Sequence['outputs.GetConnectionOptionPasswordOptionProfileDataResult']):
+        """
+        :param Sequence['GetConnectionOptionPasswordOptionComplexityArgs'] complexities: Password complexity requirements.
+        :param Sequence['GetConnectionOptionPasswordOptionDictionaryArgs'] dictionaries: Dictionary-based password validation.
+        :param Sequence['GetConnectionOptionPasswordOptionHistoryArgs'] histories: Password history enforcement.
+        :param Sequence['GetConnectionOptionPasswordOptionProfileDataArgs'] profile_datas: Personal information restriction policy.
+        """
+        pulumi.set(__self__, "complexities", complexities)
+        pulumi.set(__self__, "dictionaries", dictionaries)
+        pulumi.set(__self__, "histories", histories)
+        pulumi.set(__self__, "profile_datas", profile_datas)
+
+    @_builtins.property
+    @pulumi.getter
+    def complexities(self) -> Sequence['outputs.GetConnectionOptionPasswordOptionComplexityResult']:
+        """
+        Password complexity requirements.
+        """
+        return pulumi.get(self, "complexities")
+
+    @_builtins.property
+    @pulumi.getter
+    def dictionaries(self) -> Sequence['outputs.GetConnectionOptionPasswordOptionDictionaryResult']:
+        """
+        Dictionary-based password validation.
+        """
+        return pulumi.get(self, "dictionaries")
+
+    @_builtins.property
+    @pulumi.getter
+    def histories(self) -> Sequence['outputs.GetConnectionOptionPasswordOptionHistoryResult']:
+        """
+        Password history enforcement.
+        """
+        return pulumi.get(self, "histories")
+
+    @_builtins.property
+    @pulumi.getter(name="profileDatas")
+    def profile_datas(self) -> Sequence['outputs.GetConnectionOptionPasswordOptionProfileDataResult']:
+        """
+        Personal information restriction policy.
+        """
+        return pulumi.get(self, "profile_datas")
+
+
+@pulumi.output_type
+class GetConnectionOptionPasswordOptionComplexityResult(dict):
+    def __init__(__self__, *,
+                 character_type_rule: _builtins.str,
+                 character_types: Sequence[_builtins.str],
+                 identical_characters: _builtins.str,
+                 max_length_exceeded: _builtins.str,
+                 min_length: _builtins.int,
+                 sequential_characters: _builtins.str):
+        """
+        :param _builtins.str character_type_rule: When all 4 character types are specified, determines if all or 3 of 4 are required. Possible values: `all`, `three_of_four`. Default: `all`.
+        :param Sequence[_builtins.str] character_types: Required character types. Valid values: `uppercase`, `lowercase`, `number`, `special`.
+        :param _builtins.str identical_characters: Controls whether 3+ consecutive identical characters are allowed. Possible values: `allow`, `block`. Default: `allow`.
+        :param _builtins.str max_length_exceeded: Controls behavior when the password exceeds 72 bytes. Possible values: `truncate`, `error`. Default: `error`.
+        :param _builtins.int min_length: Minimum password length. Must be between 1 and 72. Default: 15.
+        :param _builtins.str sequential_characters: Controls whether sequential characters (abc, 123, etc.) are allowed. Possible values: `allow`, `block`. Default: `allow`.
+        """
+        pulumi.set(__self__, "character_type_rule", character_type_rule)
+        pulumi.set(__self__, "character_types", character_types)
+        pulumi.set(__self__, "identical_characters", identical_characters)
+        pulumi.set(__self__, "max_length_exceeded", max_length_exceeded)
+        pulumi.set(__self__, "min_length", min_length)
+        pulumi.set(__self__, "sequential_characters", sequential_characters)
+
+    @_builtins.property
+    @pulumi.getter(name="characterTypeRule")
+    def character_type_rule(self) -> _builtins.str:
+        """
+        When all 4 character types are specified, determines if all or 3 of 4 are required. Possible values: `all`, `three_of_four`. Default: `all`.
+        """
+        return pulumi.get(self, "character_type_rule")
+
+    @_builtins.property
+    @pulumi.getter(name="characterTypes")
+    def character_types(self) -> Sequence[_builtins.str]:
+        """
+        Required character types. Valid values: `uppercase`, `lowercase`, `number`, `special`.
+        """
+        return pulumi.get(self, "character_types")
+
+    @_builtins.property
+    @pulumi.getter(name="identicalCharacters")
+    def identical_characters(self) -> _builtins.str:
+        """
+        Controls whether 3+ consecutive identical characters are allowed. Possible values: `allow`, `block`. Default: `allow`.
+        """
+        return pulumi.get(self, "identical_characters")
+
+    @_builtins.property
+    @pulumi.getter(name="maxLengthExceeded")
+    def max_length_exceeded(self) -> _builtins.str:
+        """
+        Controls behavior when the password exceeds 72 bytes. Possible values: `truncate`, `error`. Default: `error`.
+        """
+        return pulumi.get(self, "max_length_exceeded")
+
+    @_builtins.property
+    @pulumi.getter(name="minLength")
+    def min_length(self) -> _builtins.int:
+        """
+        Minimum password length. Must be between 1 and 72. Default: 15.
+        """
+        return pulumi.get(self, "min_length")
+
+    @_builtins.property
+    @pulumi.getter(name="sequentialCharacters")
+    def sequential_characters(self) -> _builtins.str:
+        """
+        Controls whether sequential characters (abc, 123, etc.) are allowed. Possible values: `allow`, `block`. Default: `allow`.
+        """
+        return pulumi.get(self, "sequential_characters")
+
+
+@pulumi.output_type
+class GetConnectionOptionPasswordOptionDictionaryResult(dict):
+    def __init__(__self__, *,
+                 active: _builtins.bool,
+                 customs: Sequence[_builtins.str],
+                 default: _builtins.str):
+        """
+        :param _builtins.bool active: Enables dictionary checking.
+        :param Sequence[_builtins.str] customs: Custom list of disallowed terms.
+        :param _builtins.str default: Default dictionary to use. Possible values: `en_10k`, `en_100k`. Default: `en_100k`.
+        """
+        pulumi.set(__self__, "active", active)
+        pulumi.set(__self__, "customs", customs)
+        pulumi.set(__self__, "default", default)
+
+    @_builtins.property
+    @pulumi.getter
+    def active(self) -> _builtins.bool:
+        """
+        Enables dictionary checking.
+        """
+        return pulumi.get(self, "active")
+
+    @_builtins.property
+    @pulumi.getter
+    def customs(self) -> Sequence[_builtins.str]:
+        """
+        Custom list of disallowed terms.
+        """
+        return pulumi.get(self, "customs")
+
+    @_builtins.property
+    @pulumi.getter
+    def default(self) -> _builtins.str:
+        """
+        Default dictionary to use. Possible values: `en_10k`, `en_100k`. Default: `en_100k`.
+        """
+        return pulumi.get(self, "default")
+
+
+@pulumi.output_type
+class GetConnectionOptionPasswordOptionHistoryResult(dict):
+    def __init__(__self__, *,
+                 active: _builtins.bool,
+                 size: _builtins.int):
+        """
+        :param _builtins.bool active: Enables password history checking.
+        :param _builtins.int size: Number of previous passwords to check against. Must be between 1 and 24. Default: 3.
+        """
+        pulumi.set(__self__, "active", active)
+        pulumi.set(__self__, "size", size)
+
+    @_builtins.property
+    @pulumi.getter
+    def active(self) -> _builtins.bool:
+        """
+        Enables password history checking.
+        """
+        return pulumi.get(self, "active")
+
+    @_builtins.property
+    @pulumi.getter
+    def size(self) -> _builtins.int:
+        """
+        Number of previous passwords to check against. Must be between 1 and 24. Default: 3.
+        """
+        return pulumi.get(self, "size")
+
+
+@pulumi.output_type
+class GetConnectionOptionPasswordOptionProfileDataResult(dict):
+    def __init__(__self__, *,
+                 active: _builtins.bool,
+                 blocked_fields: Sequence[_builtins.str]):
+        """
+        :param _builtins.bool active: Prevents users from including profile data in passwords.
+        :param Sequence[_builtins.str] blocked_fields: User profile fields to block from passwords. Maximum 12 items, each max 100 characters.
+        """
+        pulumi.set(__self__, "active", active)
+        pulumi.set(__self__, "blocked_fields", blocked_fields)
+
+    @_builtins.property
+    @pulumi.getter
+    def active(self) -> _builtins.bool:
+        """
+        Prevents users from including profile data in passwords.
+        """
+        return pulumi.get(self, "active")
+
+    @_builtins.property
+    @pulumi.getter(name="blockedFields")
+    def blocked_fields(self) -> Sequence[_builtins.str]:
+        """
+        User profile fields to block from passwords. Maximum 12 items, each max 100 characters.
+        """
+        return pulumi.get(self, "blocked_fields")
+
+
+@pulumi.output_type
 class GetConnectionOptionSigningKeyResult(dict):
     def __init__(__self__, *,
                  cert: _builtins.str,
@@ -25240,6 +25980,24 @@ class GetCustomDomainsCustomDomainVerificationResult(dict):
         Represents the current status of the domain verification process.
         """
         return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetEventStreamActionConfigurationResult(dict):
+    def __init__(__self__, *,
+                 action_id: _builtins.str):
+        """
+        :param _builtins.str action_id: The ID of the Auth0 Action to use as the event stream destination.
+        """
+        pulumi.set(__self__, "action_id", action_id)
+
+    @_builtins.property
+    @pulumi.getter(name="actionId")
+    def action_id(self) -> _builtins.str:
+        """
+        The ID of the Auth0 Action to use as the event stream destination.
+        """
+        return pulumi.get(self, "action_id")
 
 
 @pulumi.output_type
@@ -26456,6 +27214,24 @@ class GetResourceServerAuthorizationDetailResult(dict):
         Type of authorization details.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetResourceServerAuthorizationPolicyResult(dict):
+    def __init__(__self__, *,
+                 policy_id: _builtins.str):
+        """
+        :param _builtins.str policy_id: Identifier of the authorization policy.
+        """
+        pulumi.set(__self__, "policy_id", policy_id)
+
+    @_builtins.property
+    @pulumi.getter(name="policyId")
+    def policy_id(self) -> _builtins.str:
+        """
+        Identifier of the authorization policy.
+        """
+        return pulumi.get(self, "policy_id")
 
 
 @pulumi.output_type

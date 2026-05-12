@@ -61,6 +61,7 @@ export function getClientGrants(args?: GetClientGrantsArgs, opts?: pulumi.Invoke
     return pulumi.runtime.invoke("auth0:index/getClientGrants:getClientGrants", {
         "audience": args.audience,
         "clientId": args.clientId,
+        "defaultFor": args.defaultFor,
     }, opts);
 }
 
@@ -76,6 +77,10 @@ export interface GetClientGrantsArgs {
      * The ID of the client to filter by.
      */
     clientId?: string;
+    /**
+     * Filter by defaultFor value (e.g., `thirdPartyClients`).
+     */
+    defaultFor?: string;
 }
 
 /**
@@ -94,6 +99,10 @@ export interface GetClientGrantsResult {
      * The ID of the client to filter by.
      */
     readonly clientId?: string;
+    /**
+     * Filter by defaultFor value (e.g., `thirdPartyClients`).
+     */
+    readonly defaultFor?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -154,6 +163,7 @@ export function getClientGrantsOutput(args?: GetClientGrantsOutputArgs, opts?: p
     return pulumi.runtime.invokeOutput("auth0:index/getClientGrants:getClientGrants", {
         "audience": args.audience,
         "clientId": args.clientId,
+        "defaultFor": args.defaultFor,
     }, opts);
 }
 
@@ -169,4 +179,8 @@ export interface GetClientGrantsOutputArgs {
      * The ID of the client to filter by.
      */
     clientId?: pulumi.Input<string | undefined>;
+    /**
+     * Filter by defaultFor value (e.g., `thirdPartyClients`).
+     */
+    defaultFor?: pulumi.Input<string | undefined>;
 }

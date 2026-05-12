@@ -18,6 +18,7 @@ import com.pulumi.auth0.outputs.GetConnectionOptionPasswordComplexityOption;
 import com.pulumi.auth0.outputs.GetConnectionOptionPasswordDictionary;
 import com.pulumi.auth0.outputs.GetConnectionOptionPasswordHistory;
 import com.pulumi.auth0.outputs.GetConnectionOptionPasswordNoPersonalInfo;
+import com.pulumi.auth0.outputs.GetConnectionOptionPasswordOption;
 import com.pulumi.auth0.outputs.GetConnectionOptionSigningKey;
 import com.pulumi.auth0.outputs.GetConnectionOptionTotp;
 import com.pulumi.auth0.outputs.GetConnectionOptionValidation;
@@ -47,6 +48,11 @@ public final class GetConnectionOption {
      * 
      */
     private List<String> allowedAudiences;
+    /**
+     * @return Enable API Access to groups.
+     * 
+     */
+    private Boolean apiEnableGroups;
     /**
      * @return Enable API Access to users.
      * 
@@ -258,6 +264,11 @@ public final class GetConnectionOption {
      */
     private String iconUrl;
     /**
+     * @return List of allowed algorithms for the ID token signature. If not set, RS256 will be applied at runtime. (Okta/OIDC Connections)
+     * 
+     */
+    private List<String> idTokenSignedResponseAlgs;
+    /**
      * @return Azure AD Identity API. Available options are: `microsoft-identity-platform-v2.0` or `azure-active-directory-v1.0`.
      * 
      */
@@ -357,6 +368,11 @@ public final class GetConnectionOption {
      * 
      */
     private List<GetConnectionOptionPasswordNoPersonalInfo> passwordNoPersonalInfos;
+    /**
+     * @return Flexible password policy configuration. Only available for `auth0` strategy connections. Cannot be set together with legacy password policy fields (`passwordPolicy`, `passwordComplexityOptions`, `passwordHistory`, `passwordNoPersonalInfo`, `passwordDictionary`).
+     * 
+     */
+    private List<GetConnectionOptionPasswordOption> passwordOptions;
     /**
      * @return Indicates level of password strength to enforce during authentication. A strong password policy will make it difficult, if not improbable, for someone to guess a password through either manual or automated means. Options include `none`, `low`, `fair`, `good`, `excellent`.
      * 
@@ -518,6 +534,11 @@ public final class GetConnectionOption {
      */
     private String tokenEndpointAuthSigningAlg;
     /**
+     * @return Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: &#39;issuer&#39; or &#39;token_endpoint&#39;. (Okta/OIDC Connections)
+     * 
+     */
+    private String tokenEndpointJwtcaAudFormat;
+    /**
      * @return Configuration options for one-time passwords.
      * 
      */
@@ -614,6 +635,13 @@ public final class GetConnectionOption {
      */
     public List<String> allowedAudiences() {
         return this.allowedAudiences;
+    }
+    /**
+     * @return Enable API Access to groups.
+     * 
+     */
+    public Boolean apiEnableGroups() {
+        return this.apiEnableGroups;
     }
     /**
      * @return Enable API Access to users.
@@ -910,6 +938,13 @@ public final class GetConnectionOption {
         return this.iconUrl;
     }
     /**
+     * @return List of allowed algorithms for the ID token signature. If not set, RS256 will be applied at runtime. (Okta/OIDC Connections)
+     * 
+     */
+    public List<String> idTokenSignedResponseAlgs() {
+        return this.idTokenSignedResponseAlgs;
+    }
+    /**
      * @return Azure AD Identity API. Available options are: `microsoft-identity-platform-v2.0` or `azure-active-directory-v1.0`.
      * 
      */
@@ -1048,6 +1083,13 @@ public final class GetConnectionOption {
      */
     public List<GetConnectionOptionPasswordNoPersonalInfo> passwordNoPersonalInfos() {
         return this.passwordNoPersonalInfos;
+    }
+    /**
+     * @return Flexible password policy configuration. Only available for `auth0` strategy connections. Cannot be set together with legacy password policy fields (`passwordPolicy`, `passwordComplexityOptions`, `passwordHistory`, `passwordNoPersonalInfo`, `passwordDictionary`).
+     * 
+     */
+    public List<GetConnectionOptionPasswordOption> passwordOptions() {
+        return this.passwordOptions;
     }
     /**
      * @return Indicates level of password strength to enforce during authentication. A strong password policy will make it difficult, if not improbable, for someone to guess a password through either manual or automated means. Options include `none`, `low`, `fair`, `good`, `excellent`.
@@ -1274,6 +1316,13 @@ public final class GetConnectionOption {
         return this.tokenEndpointAuthSigningAlg;
     }
     /**
+     * @return Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: &#39;issuer&#39; or &#39;token_endpoint&#39;. (Okta/OIDC Connections)
+     * 
+     */
+    public String tokenEndpointJwtcaAudFormat() {
+        return this.tokenEndpointJwtcaAudFormat;
+    }
+    /**
      * @return Configuration options for one-time passwords.
      * 
      */
@@ -1391,6 +1440,7 @@ public final class GetConnectionOption {
         private String accessTokenUrl;
         private String adfsServer;
         private List<String> allowedAudiences;
+        private Boolean apiEnableGroups;
         private Boolean apiEnableUsers;
         private String appId;
         private List<GetConnectionOptionAttributeMap> attributeMaps;
@@ -1433,6 +1483,7 @@ public final class GetConnectionOption {
         private String globalTokenRevocationJwtIss;
         private String globalTokenRevocationJwtSub;
         private String iconUrl;
+        private List<String> idTokenSignedResponseAlgs;
         private String identityApi;
         private List<GetConnectionOptionIdpInitiated> idpInitiateds;
         private Boolean importMode;
@@ -1453,6 +1504,7 @@ public final class GetConnectionOption {
         private List<GetConnectionOptionPasswordDictionary> passwordDictionaries;
         private List<GetConnectionOptionPasswordHistory> passwordHistories;
         private List<GetConnectionOptionPasswordNoPersonalInfo> passwordNoPersonalInfos;
+        private List<GetConnectionOptionPasswordOption> passwordOptions;
         private String passwordPolicy;
         private String pingFederateBaseUrl;
         private Boolean pkceEnabled;
@@ -1485,6 +1537,7 @@ public final class GetConnectionOption {
         private String tokenEndpoint;
         private String tokenEndpointAuthMethod;
         private String tokenEndpointAuthSigningAlg;
+        private String tokenEndpointJwtcaAudFormat;
         private List<GetConnectionOptionTotp> totps;
         private String twilioSid;
         private String twilioToken;
@@ -1506,6 +1559,7 @@ public final class GetConnectionOption {
     	      this.accessTokenUrl = defaults.accessTokenUrl;
     	      this.adfsServer = defaults.adfsServer;
     	      this.allowedAudiences = defaults.allowedAudiences;
+    	      this.apiEnableGroups = defaults.apiEnableGroups;
     	      this.apiEnableUsers = defaults.apiEnableUsers;
     	      this.appId = defaults.appId;
     	      this.attributeMaps = defaults.attributeMaps;
@@ -1548,6 +1602,7 @@ public final class GetConnectionOption {
     	      this.globalTokenRevocationJwtIss = defaults.globalTokenRevocationJwtIss;
     	      this.globalTokenRevocationJwtSub = defaults.globalTokenRevocationJwtSub;
     	      this.iconUrl = defaults.iconUrl;
+    	      this.idTokenSignedResponseAlgs = defaults.idTokenSignedResponseAlgs;
     	      this.identityApi = defaults.identityApi;
     	      this.idpInitiateds = defaults.idpInitiateds;
     	      this.importMode = defaults.importMode;
@@ -1568,6 +1623,7 @@ public final class GetConnectionOption {
     	      this.passwordDictionaries = defaults.passwordDictionaries;
     	      this.passwordHistories = defaults.passwordHistories;
     	      this.passwordNoPersonalInfos = defaults.passwordNoPersonalInfos;
+    	      this.passwordOptions = defaults.passwordOptions;
     	      this.passwordPolicy = defaults.passwordPolicy;
     	      this.pingFederateBaseUrl = defaults.pingFederateBaseUrl;
     	      this.pkceEnabled = defaults.pkceEnabled;
@@ -1600,6 +1656,7 @@ public final class GetConnectionOption {
     	      this.tokenEndpoint = defaults.tokenEndpoint;
     	      this.tokenEndpointAuthMethod = defaults.tokenEndpointAuthMethod;
     	      this.tokenEndpointAuthSigningAlg = defaults.tokenEndpointAuthSigningAlg;
+    	      this.tokenEndpointJwtcaAudFormat = defaults.tokenEndpointJwtcaAudFormat;
     	      this.totps = defaults.totps;
     	      this.twilioSid = defaults.twilioSid;
     	      this.twilioToken = defaults.twilioToken;
@@ -1643,6 +1700,14 @@ public final class GetConnectionOption {
         }
         public Builder allowedAudiences(String... allowedAudiences) {
             return allowedAudiences(List.of(allowedAudiences));
+        }
+        @CustomType.Setter
+        public Builder apiEnableGroups(Boolean apiEnableGroups) {
+            if (apiEnableGroups == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOption", "apiEnableGroups");
+            }
+            this.apiEnableGroups = apiEnableGroups;
+            return this;
         }
         @CustomType.Setter
         public Builder apiEnableUsers(Boolean apiEnableUsers) {
@@ -2008,6 +2073,17 @@ public final class GetConnectionOption {
             return this;
         }
         @CustomType.Setter
+        public Builder idTokenSignedResponseAlgs(List<String> idTokenSignedResponseAlgs) {
+            if (idTokenSignedResponseAlgs == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOption", "idTokenSignedResponseAlgs");
+            }
+            this.idTokenSignedResponseAlgs = idTokenSignedResponseAlgs;
+            return this;
+        }
+        public Builder idTokenSignedResponseAlgs(String... idTokenSignedResponseAlgs) {
+            return idTokenSignedResponseAlgs(List.of(idTokenSignedResponseAlgs));
+        }
+        @CustomType.Setter
         public Builder identityApi(String identityApi) {
             if (identityApi == null) {
               throw new MissingRequiredPropertyException("GetConnectionOption", "identityApi");
@@ -2193,6 +2269,17 @@ public final class GetConnectionOption {
         }
         public Builder passwordNoPersonalInfos(GetConnectionOptionPasswordNoPersonalInfo... passwordNoPersonalInfos) {
             return passwordNoPersonalInfos(List.of(passwordNoPersonalInfos));
+        }
+        @CustomType.Setter
+        public Builder passwordOptions(List<GetConnectionOptionPasswordOption> passwordOptions) {
+            if (passwordOptions == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOption", "passwordOptions");
+            }
+            this.passwordOptions = passwordOptions;
+            return this;
+        }
+        public Builder passwordOptions(GetConnectionOptionPasswordOption... passwordOptions) {
+            return passwordOptions(List.of(passwordOptions));
         }
         @CustomType.Setter
         public Builder passwordPolicy(String passwordPolicy) {
@@ -2460,6 +2547,14 @@ public final class GetConnectionOption {
             return this;
         }
         @CustomType.Setter
+        public Builder tokenEndpointJwtcaAudFormat(String tokenEndpointJwtcaAudFormat) {
+            if (tokenEndpointJwtcaAudFormat == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOption", "tokenEndpointJwtcaAudFormat");
+            }
+            this.tokenEndpointJwtcaAudFormat = tokenEndpointJwtcaAudFormat;
+            return this;
+        }
+        @CustomType.Setter
         public Builder totps(List<GetConnectionOptionTotp> totps) {
             if (totps == null) {
               throw new MissingRequiredPropertyException("GetConnectionOption", "totps");
@@ -2590,6 +2685,7 @@ public final class GetConnectionOption {
             _resultValue.accessTokenUrl = accessTokenUrl;
             _resultValue.adfsServer = adfsServer;
             _resultValue.allowedAudiences = allowedAudiences;
+            _resultValue.apiEnableGroups = apiEnableGroups;
             _resultValue.apiEnableUsers = apiEnableUsers;
             _resultValue.appId = appId;
             _resultValue.attributeMaps = attributeMaps;
@@ -2632,6 +2728,7 @@ public final class GetConnectionOption {
             _resultValue.globalTokenRevocationJwtIss = globalTokenRevocationJwtIss;
             _resultValue.globalTokenRevocationJwtSub = globalTokenRevocationJwtSub;
             _resultValue.iconUrl = iconUrl;
+            _resultValue.idTokenSignedResponseAlgs = idTokenSignedResponseAlgs;
             _resultValue.identityApi = identityApi;
             _resultValue.idpInitiateds = idpInitiateds;
             _resultValue.importMode = importMode;
@@ -2652,6 +2749,7 @@ public final class GetConnectionOption {
             _resultValue.passwordDictionaries = passwordDictionaries;
             _resultValue.passwordHistories = passwordHistories;
             _resultValue.passwordNoPersonalInfos = passwordNoPersonalInfos;
+            _resultValue.passwordOptions = passwordOptions;
             _resultValue.passwordPolicy = passwordPolicy;
             _resultValue.pingFederateBaseUrl = pingFederateBaseUrl;
             _resultValue.pkceEnabled = pkceEnabled;
@@ -2684,6 +2782,7 @@ public final class GetConnectionOption {
             _resultValue.tokenEndpoint = tokenEndpoint;
             _resultValue.tokenEndpointAuthMethod = tokenEndpointAuthMethod;
             _resultValue.tokenEndpointAuthSigningAlg = tokenEndpointAuthSigningAlg;
+            _resultValue.tokenEndpointJwtcaAudFormat = tokenEndpointJwtcaAudFormat;
             _resultValue.totps = totps;
             _resultValue.twilioSid = twilioSid;
             _resultValue.twilioToken = twilioToken;

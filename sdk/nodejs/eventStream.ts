@@ -28,10 +28,11 @@ import * as utilities from "./utilities";
  *         awsRegion: "us-east-1",
  *     },
  * });
- * // Creates an event stream of type webhook
+ * // Creates an event stream of type webhook in a disabled state
  * const myEventStreamWebhook = new auth0.EventStream("my_event_stream_webhook", {
  *     name: "my-webhook",
  *     destinationType: "webhook",
+ *     status: "disabled",
  *     subscriptions: [
  *         "user.created",
  *         "user.updated",
@@ -61,6 +62,18 @@ import * as utilities from "./utilities";
  *             tokenWo: webhookToken,
  *             tokenWoVersion: 1,
  *         },
+ *     },
+ * });
+ * // Creates an event stream of type action
+ * const myEventStreamAction = new auth0.EventStream("my_event_stream_action", {
+ *     name: "my-action-stream",
+ *     destinationType: "action",
+ *     subscriptions: [
+ *         "user.created",
+ *         "user.updated",
+ *     ],
+ *     actionConfiguration: {
+ *         actionId: myAction.id,
  *     },
  * });
  * ```
@@ -104,11 +117,15 @@ export class EventStream extends pulumi.CustomResource {
     }
 
     /**
+     * Configuration for the Action destination. This block is only applicable when `destinationType` is set to `action`. Action configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
+     */
+    declare public readonly actionConfiguration: pulumi.Output<outputs.EventStreamActionConfiguration | undefined>;
+    /**
      * The ISO 8601 timestamp when the stream was created.
      */
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
-     * The type of event stream destination (either 'eventbridge' or 'webhook').
+     * The type of event stream destination. Possible values: `eventbridge`, `webhook`, or `action`.
      */
     declare public readonly destinationType: pulumi.Output<string>;
     /**
@@ -120,9 +137,9 @@ export class EventStream extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * The current status of the event stream.
+     * The current status of the event stream. Can be `enabled` or `disabled`.
      */
-    declare public /*out*/ readonly status: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * List of event types this stream is subscribed to.
      */
@@ -149,6 +166,7 @@ export class EventStream extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EventStreamState | undefined;
+            resourceInputs["actionConfiguration"] = state?.actionConfiguration;
             resourceInputs["createdAt"] = state?.createdAt;
             resourceInputs["destinationType"] = state?.destinationType;
             resourceInputs["eventbridgeConfiguration"] = state?.eventbridgeConfiguration;
@@ -165,13 +183,14 @@ export class EventStream extends pulumi.CustomResource {
             if (args?.subscriptions === undefined && !opts.urn) {
                 throw new Error("Missing required property 'subscriptions'");
             }
+            resourceInputs["actionConfiguration"] = args?.actionConfiguration;
             resourceInputs["destinationType"] = args?.destinationType;
             resourceInputs["eventbridgeConfiguration"] = args?.eventbridgeConfiguration;
             resourceInputs["name"] = args?.name;
+            resourceInputs["status"] = args?.status;
             resourceInputs["subscriptions"] = args?.subscriptions;
             resourceInputs["webhookConfiguration"] = args?.webhookConfiguration;
             resourceInputs["createdAt"] = undefined /*out*/;
-            resourceInputs["status"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -184,11 +203,15 @@ export class EventStream extends pulumi.CustomResource {
  */
 export interface EventStreamState {
     /**
+     * Configuration for the Action destination. This block is only applicable when `destinationType` is set to `action`. Action configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
+     */
+    actionConfiguration?: pulumi.Input<inputs.EventStreamActionConfiguration | undefined>;
+    /**
      * The ISO 8601 timestamp when the stream was created.
      */
     createdAt?: pulumi.Input<string | undefined>;
     /**
-     * The type of event stream destination (either 'eventbridge' or 'webhook').
+     * The type of event stream destination. Possible values: `eventbridge`, `webhook`, or `action`.
      */
     destinationType?: pulumi.Input<string | undefined>;
     /**
@@ -200,7 +223,7 @@ export interface EventStreamState {
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * The current status of the event stream.
+     * The current status of the event stream. Can be `enabled` or `disabled`.
      */
     status?: pulumi.Input<string | undefined>;
     /**
@@ -222,7 +245,11 @@ export interface EventStreamState {
  */
 export interface EventStreamArgs {
     /**
-     * The type of event stream destination (either 'eventbridge' or 'webhook').
+     * Configuration for the Action destination. This block is only applicable when `destinationType` is set to `action`. Action configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
+     */
+    actionConfiguration?: pulumi.Input<inputs.EventStreamActionConfiguration | undefined>;
+    /**
+     * The type of event stream destination. Possible values: `eventbridge`, `webhook`, or `action`.
      */
     destinationType: pulumi.Input<string>;
     /**
@@ -233,6 +260,10 @@ export interface EventStreamArgs {
      * The name of the event stream.
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * The current status of the event stream. Can be `enabled` or `disabled`.
+     */
+    status?: pulumi.Input<string | undefined>;
     /**
      * List of event types this stream is subscribed to.
      */

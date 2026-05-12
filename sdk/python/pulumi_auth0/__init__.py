@@ -20,6 +20,7 @@ from .connection import *
 from .connection_client import *
 from .connection_clients import *
 from .connection_directory import *
+from .connection_directory_synchronized_groups import *
 from .connection_keys import *
 from .connection_profile import *
 from .connection_scim_configuration import *
@@ -49,6 +50,7 @@ from .get_clients import *
 from .get_connection import *
 from .get_connection_directory import *
 from .get_connection_directory_default_mapping import *
+from .get_connection_directory_synchronized_groups import *
 from .get_connection_keys import *
 from .get_connection_profile import *
 from .get_connection_scim_configuration import *
@@ -244,6 +246,14 @@ _utilities.register(
   "fqn": "pulumi_auth0",
   "classes": {
    "auth0:index/connectionDirectory:ConnectionDirectory": "ConnectionDirectory"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/connectionDirectorySynchronizedGroups",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/connectionDirectorySynchronizedGroups:ConnectionDirectorySynchronizedGroups": "ConnectionDirectorySynchronizedGroups"
   }
  },
  {

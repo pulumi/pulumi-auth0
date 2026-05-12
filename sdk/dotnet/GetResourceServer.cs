@@ -159,6 +159,10 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly ImmutableArray<Outputs.GetResourceServerAuthorizationDetailResult> AuthorizationDetails;
         /// <summary>
+        /// Authorization policy for the resource server.(EA Only)
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetResourceServerAuthorizationPolicyResult> AuthorizationPolicies;
+        /// <summary>
         /// The ID of the client associated with this resource server. If a client has been created and linked to this resource server, this field will be populated with that client's ID.
         /// </summary>
         public readonly string ClientId;
@@ -241,6 +245,8 @@ namespace Pulumi.Auth0
 
             ImmutableArray<Outputs.GetResourceServerAuthorizationDetailResult> authorizationDetails,
 
+            ImmutableArray<Outputs.GetResourceServerAuthorizationPolicyResult> authorizationPolicies,
+
             string clientId,
 
             string consentPolicy,
@@ -281,6 +287,7 @@ namespace Pulumi.Auth0
         {
             AllowOfflineAccess = allowOfflineAccess;
             AuthorizationDetails = authorizationDetails;
+            AuthorizationPolicies = authorizationPolicies;
             ClientId = clientId;
             ConsentPolicy = consentPolicy;
             EnforcePolicies = enforcePolicies;

@@ -610,6 +610,20 @@ public class Client extends com.pulumi.resources.CustomResource {
         return this.organizationUsage;
     }
     /**
+     * Controls whether Auth0 redirects users to the application&#39;s callback URL on authentication errors or in email verification flows.Allowed values: `allowAlways` or `openRedirectProtection`.
+     * 
+     */
+    @Export(name="redirectionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> redirectionPolicy;
+
+    /**
+     * @return Controls whether Auth0 redirects users to the application&#39;s callback URL on authentication errors or in email verification flows.Allowed values: `allowAlways` or `openRedirectProtection`.
+     * 
+     */
+    public Output<String> redirectionPolicy() {
+        return this.redirectionPolicy;
+    }
+    /**
      * Configuration settings for the refresh tokens issued for this client.
      * 
      */
@@ -726,6 +740,20 @@ public class Client extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> ssoDisabled() {
         return Codegen.optional(this.ssoDisabled);
+    }
+    /**
+     * Security mode for third-party clients. Allowed values: `strict` or `permissive`.
+     * 
+     */
+    @Export(name="thirdPartySecurityMode", refs={String.class}, tree="[0]")
+    private Output<String> thirdPartySecurityMode;
+
+    /**
+     * @return Security mode for third-party clients. Allowed values: `strict` or `permissive`.
+     * 
+     */
+    public Output<String> thirdPartySecurityMode() {
+        return this.thirdPartySecurityMode;
     }
     /**
      * Allows configuration for token exchange

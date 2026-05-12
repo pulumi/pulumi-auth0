@@ -154,6 +154,21 @@ public final class ConnectionDirectoryState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Group synchronization configuration. Valid values are: off, all, selected. (EA only)
+     * 
+     */
+    @Import(name="synchronizeGroups")
+    private @Nullable Output<String> synchronizeGroups;
+
+    /**
+     * @return Group synchronization configuration. Valid values are: off, all, selected. (EA only)
+     * 
+     */
+    public Optional<Output<String>> synchronizeGroups() {
+        return Optional.ofNullable(this.synchronizeGroups);
+    }
+
+    /**
      * The timestamp at which the directory provisioning configuration was last updated.
      * 
      */
@@ -180,6 +195,7 @@ public final class ConnectionDirectoryState extends com.pulumi.resources.Resourc
         this.mappings = $.mappings;
         this.strategy = $.strategy;
         this.synchronizeAutomatically = $.synchronizeAutomatically;
+        this.synchronizeGroups = $.synchronizeGroups;
         this.updatedAt = $.updatedAt;
     }
 
@@ -398,6 +414,27 @@ public final class ConnectionDirectoryState extends com.pulumi.resources.Resourc
          */
         public Builder synchronizeAutomatically(Boolean synchronizeAutomatically) {
             return synchronizeAutomatically(Output.of(synchronizeAutomatically));
+        }
+
+        /**
+         * @param synchronizeGroups Group synchronization configuration. Valid values are: off, all, selected. (EA only)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder synchronizeGroups(@Nullable Output<String> synchronizeGroups) {
+            $.synchronizeGroups = synchronizeGroups;
+            return this;
+        }
+
+        /**
+         * @param synchronizeGroups Group synchronization configuration. Valid values are: off, all, selected. (EA only)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder synchronizeGroups(String synchronizeGroups) {
+            return synchronizeGroups(Output.of(synchronizeGroups));
         }
 
         /**

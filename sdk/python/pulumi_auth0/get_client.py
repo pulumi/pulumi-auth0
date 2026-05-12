@@ -27,7 +27,7 @@ class GetClientResult:
     """
     A collection of values returned by getClient.
     """
-    def __init__(__self__, addons=None, allowed_clients=None, allowed_logout_urls=None, allowed_origins=None, app_type=None, async_approval_notification_channels=None, callbacks=None, client_aliases=None, client_authentication_methods=None, client_id=None, client_metadata=None, client_secret=None, compliance_level=None, cross_origin_auth=None, cross_origin_loc=None, custom_login_page=None, custom_login_page_on=None, default_organizations=None, description=None, encryption_key=None, express_configurations=None, external_client_id=None, external_metadata_created_by=None, external_metadata_type=None, form_template=None, grant_types=None, id=None, initiate_login_uri=None, is_first_party=None, is_token_endpoint_ip_header_trusted=None, jwks_uri=None, jwt_configurations=None, logo_uri=None, mobiles=None, my_organization_configurations=None, name=None, native_social_logins=None, oidc_backchannel_logout_urls=None, oidc_conformant=None, oidc_logouts=None, organization_discovery_methods=None, organization_require_behavior=None, organization_usage=None, refresh_tokens=None, require_proof_of_possession=None, require_pushed_authorization_requests=None, resource_server_identifier=None, session_transfers=None, signed_request_objects=None, signing_keys=None, skip_non_verifiable_callback_uri_confirmation_prompt=None, sso=None, sso_disabled=None, token_endpoint_auth_method=None, token_exchanges=None, token_quotas=None, web_origins=None):
+    def __init__(__self__, addons=None, allowed_clients=None, allowed_logout_urls=None, allowed_origins=None, app_type=None, async_approval_notification_channels=None, callbacks=None, client_aliases=None, client_authentication_methods=None, client_id=None, client_metadata=None, client_secret=None, compliance_level=None, cross_origin_auth=None, cross_origin_loc=None, custom_login_page=None, custom_login_page_on=None, default_organizations=None, description=None, encryption_key=None, express_configurations=None, external_client_id=None, external_metadata_created_by=None, external_metadata_type=None, form_template=None, grant_types=None, id=None, initiate_login_uri=None, is_first_party=None, is_token_endpoint_ip_header_trusted=None, jwks_uri=None, jwt_configurations=None, logo_uri=None, mobiles=None, my_organization_configurations=None, name=None, native_social_logins=None, oidc_backchannel_logout_urls=None, oidc_conformant=None, oidc_logouts=None, organization_discovery_methods=None, organization_require_behavior=None, organization_usage=None, redirection_policy=None, refresh_tokens=None, require_proof_of_possession=None, require_pushed_authorization_requests=None, resource_server_identifier=None, session_transfers=None, signed_request_objects=None, signing_keys=None, skip_non_verifiable_callback_uri_confirmation_prompt=None, sso=None, sso_disabled=None, third_party_security_mode=None, token_endpoint_auth_method=None, token_exchanges=None, token_quotas=None, web_origins=None):
         if addons and not isinstance(addons, list):
             raise TypeError("Expected argument 'addons' to be a list")
         pulumi.set(__self__, "addons", addons)
@@ -157,6 +157,9 @@ class GetClientResult:
         if organization_usage and not isinstance(organization_usage, str):
             raise TypeError("Expected argument 'organization_usage' to be a str")
         pulumi.set(__self__, "organization_usage", organization_usage)
+        if redirection_policy and not isinstance(redirection_policy, str):
+            raise TypeError("Expected argument 'redirection_policy' to be a str")
+        pulumi.set(__self__, "redirection_policy", redirection_policy)
         if refresh_tokens and not isinstance(refresh_tokens, list):
             raise TypeError("Expected argument 'refresh_tokens' to be a list")
         pulumi.set(__self__, "refresh_tokens", refresh_tokens)
@@ -187,6 +190,9 @@ class GetClientResult:
         if sso_disabled and not isinstance(sso_disabled, bool):
             raise TypeError("Expected argument 'sso_disabled' to be a bool")
         pulumi.set(__self__, "sso_disabled", sso_disabled)
+        if third_party_security_mode and not isinstance(third_party_security_mode, str):
+            raise TypeError("Expected argument 'third_party_security_mode' to be a str")
+        pulumi.set(__self__, "third_party_security_mode", third_party_security_mode)
         if token_endpoint_auth_method and not isinstance(token_endpoint_auth_method, str):
             raise TypeError("Expected argument 'token_endpoint_auth_method' to be a str")
         pulumi.set(__self__, "token_endpoint_auth_method", token_endpoint_auth_method)
@@ -545,6 +551,14 @@ class GetClientResult:
         return pulumi.get(self, "organization_usage")
 
     @_builtins.property
+    @pulumi.getter(name="redirectionPolicy")
+    def redirection_policy(self) -> _builtins.str:
+        """
+        Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.Allowed values: `allow_always` or `open_redirect_protection`.
+        """
+        return pulumi.get(self, "redirection_policy")
+
+    @_builtins.property
     @pulumi.getter(name="refreshTokens")
     def refresh_tokens(self) -> Sequence['outputs.GetClientRefreshTokenResult']:
         """
@@ -620,6 +634,14 @@ class GetClientResult:
         Indicates whether or not SSO is disabled.
         """
         return pulumi.get(self, "sso_disabled")
+
+    @_builtins.property
+    @pulumi.getter(name="thirdPartySecurityMode")
+    def third_party_security_mode(self) -> _builtins.str:
+        """
+        Security mode for third-party clients. Allowed values: `strict` or `permissive`.
+        """
+        return pulumi.get(self, "third_party_security_mode")
 
     @_builtins.property
     @pulumi.getter(name="tokenEndpointAuthMethod")
@@ -703,6 +725,7 @@ class AwaitableGetClientResult(GetClientResult):
             organization_discovery_methods=self.organization_discovery_methods,
             organization_require_behavior=self.organization_require_behavior,
             organization_usage=self.organization_usage,
+            redirection_policy=self.redirection_policy,
             refresh_tokens=self.refresh_tokens,
             require_proof_of_possession=self.require_proof_of_possession,
             require_pushed_authorization_requests=self.require_pushed_authorization_requests,
@@ -713,6 +736,7 @@ class AwaitableGetClientResult(GetClientResult):
             skip_non_verifiable_callback_uri_confirmation_prompt=self.skip_non_verifiable_callback_uri_confirmation_prompt,
             sso=self.sso,
             sso_disabled=self.sso_disabled,
+            third_party_security_mode=self.third_party_security_mode,
             token_endpoint_auth_method=self.token_endpoint_auth_method,
             token_exchanges=self.token_exchanges,
             token_quotas=self.token_quotas,
@@ -791,6 +815,7 @@ def get_client(client_id: Optional[_builtins.str] = None,
         organization_discovery_methods=pulumi.get(__ret__, 'organization_discovery_methods'),
         organization_require_behavior=pulumi.get(__ret__, 'organization_require_behavior'),
         organization_usage=pulumi.get(__ret__, 'organization_usage'),
+        redirection_policy=pulumi.get(__ret__, 'redirection_policy'),
         refresh_tokens=pulumi.get(__ret__, 'refresh_tokens'),
         require_proof_of_possession=pulumi.get(__ret__, 'require_proof_of_possession'),
         require_pushed_authorization_requests=pulumi.get(__ret__, 'require_pushed_authorization_requests'),
@@ -801,6 +826,7 @@ def get_client(client_id: Optional[_builtins.str] = None,
         skip_non_verifiable_callback_uri_confirmation_prompt=pulumi.get(__ret__, 'skip_non_verifiable_callback_uri_confirmation_prompt'),
         sso=pulumi.get(__ret__, 'sso'),
         sso_disabled=pulumi.get(__ret__, 'sso_disabled'),
+        third_party_security_mode=pulumi.get(__ret__, 'third_party_security_mode'),
         token_endpoint_auth_method=pulumi.get(__ret__, 'token_endpoint_auth_method'),
         token_exchanges=pulumi.get(__ret__, 'token_exchanges'),
         token_quotas=pulumi.get(__ret__, 'token_quotas'),
@@ -876,6 +902,7 @@ def get_client_output(client_id: pulumi.Input[Optional[Optional[_builtins.str]]]
         organization_discovery_methods=pulumi.get(__response__, 'organization_discovery_methods'),
         organization_require_behavior=pulumi.get(__response__, 'organization_require_behavior'),
         organization_usage=pulumi.get(__response__, 'organization_usage'),
+        redirection_policy=pulumi.get(__response__, 'redirection_policy'),
         refresh_tokens=pulumi.get(__response__, 'refresh_tokens'),
         require_proof_of_possession=pulumi.get(__response__, 'require_proof_of_possession'),
         require_pushed_authorization_requests=pulumi.get(__response__, 'require_pushed_authorization_requests'),
@@ -886,6 +913,7 @@ def get_client_output(client_id: pulumi.Input[Optional[Optional[_builtins.str]]]
         skip_non_verifiable_callback_uri_confirmation_prompt=pulumi.get(__response__, 'skip_non_verifiable_callback_uri_confirmation_prompt'),
         sso=pulumi.get(__response__, 'sso'),
         sso_disabled=pulumi.get(__response__, 'sso_disabled'),
+        third_party_security_mode=pulumi.get(__response__, 'third_party_security_mode'),
         token_endpoint_auth_method=pulumi.get(__response__, 'token_endpoint_auth_method'),
         token_exchanges=pulumi.get(__response__, 'token_exchanges'),
         token_quotas=pulumi.get(__response__, 'token_quotas'),

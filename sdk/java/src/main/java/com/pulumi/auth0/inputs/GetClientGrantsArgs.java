@@ -45,11 +45,27 @@ public final class GetClientGrantsArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.clientId);
     }
 
+    /**
+     * Filter by defaultFor value (e.g., `thirdPartyClients`).
+     * 
+     */
+    @Import(name="defaultFor")
+    private @Nullable Output<String> defaultFor;
+
+    /**
+     * @return Filter by defaultFor value (e.g., `thirdPartyClients`).
+     * 
+     */
+    public Optional<Output<String>> defaultFor() {
+        return Optional.ofNullable(this.defaultFor);
+    }
+
     private GetClientGrantsArgs() {}
 
     private GetClientGrantsArgs(GetClientGrantsArgs $) {
         this.audience = $.audience;
         this.clientId = $.clientId;
+        this.defaultFor = $.defaultFor;
     }
 
     public static Builder builder() {
@@ -110,6 +126,27 @@ public final class GetClientGrantsArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder clientId(String clientId) {
             return clientId(Output.of(clientId));
+        }
+
+        /**
+         * @param defaultFor Filter by defaultFor value (e.g., `thirdPartyClients`).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultFor(@Nullable Output<String> defaultFor) {
+            $.defaultFor = defaultFor;
+            return this;
+        }
+
+        /**
+         * @param defaultFor Filter by defaultFor value (e.g., `thirdPartyClients`).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultFor(String defaultFor) {
+            return defaultFor(Output.of(defaultFor));
         }
 
         public GetClientGrantsArgs build() {

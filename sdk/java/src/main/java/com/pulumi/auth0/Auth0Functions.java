@@ -27,6 +27,8 @@ import com.pulumi.auth0.inputs.GetConnectionDirectoryArgs;
 import com.pulumi.auth0.inputs.GetConnectionDirectoryDefaultMappingArgs;
 import com.pulumi.auth0.inputs.GetConnectionDirectoryDefaultMappingPlainArgs;
 import com.pulumi.auth0.inputs.GetConnectionDirectoryPlainArgs;
+import com.pulumi.auth0.inputs.GetConnectionDirectorySynchronizedGroupsArgs;
+import com.pulumi.auth0.inputs.GetConnectionDirectorySynchronizedGroupsPlainArgs;
 import com.pulumi.auth0.inputs.GetConnectionKeysArgs;
 import com.pulumi.auth0.inputs.GetConnectionKeysPlainArgs;
 import com.pulumi.auth0.inputs.GetConnectionPlainArgs;
@@ -84,6 +86,7 @@ import com.pulumi.auth0.outputs.GetClientResult;
 import com.pulumi.auth0.outputs.GetClientsResult;
 import com.pulumi.auth0.outputs.GetConnectionDirectoryDefaultMappingResult;
 import com.pulumi.auth0.outputs.GetConnectionDirectoryResult;
+import com.pulumi.auth0.outputs.GetConnectionDirectorySynchronizedGroupsResult;
 import com.pulumi.auth0.outputs.GetConnectionKeysResult;
 import com.pulumi.auth0.outputs.GetConnectionProfileResult;
 import com.pulumi.auth0.outputs.GetConnectionResult;
@@ -3896,6 +3899,216 @@ public final class Auth0Functions {
      */
     public static CompletableFuture<GetConnectionDirectoryDefaultMappingResult> getConnectionDirectoryDefaultMappingPlain(GetConnectionDirectoryDefaultMappingPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("auth0:index/getConnectionDirectoryDefaultMapping:getConnectionDirectoryDefaultMapping", TypeShape.of(GetConnectionDirectoryDefaultMappingResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve the selected synchronized group IDs for a connection&#39;s directory provisioning configuration.
+     * 
+     * &gt; This data source is only available for [EA](https://auth0.com/docs/troubleshoot/product-lifecycle/product-release-stages#early-access) users.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetConnectionDirectorySynchronizedGroupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myGroups = Auth0Functions.getConnectionDirectorySynchronizedGroups(GetConnectionDirectorySynchronizedGroupsArgs.builder()
+     *             .connectionId("con_xxxxxxxxxxxxxxxx")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetConnectionDirectorySynchronizedGroupsResult> getConnectionDirectorySynchronizedGroups(GetConnectionDirectorySynchronizedGroupsArgs args) {
+        return getConnectionDirectorySynchronizedGroups(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve the selected synchronized group IDs for a connection&#39;s directory provisioning configuration.
+     * 
+     * &gt; This data source is only available for [EA](https://auth0.com/docs/troubleshoot/product-lifecycle/product-release-stages#early-access) users.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetConnectionDirectorySynchronizedGroupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myGroups = Auth0Functions.getConnectionDirectorySynchronizedGroups(GetConnectionDirectorySynchronizedGroupsArgs.builder()
+     *             .connectionId("con_xxxxxxxxxxxxxxxx")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetConnectionDirectorySynchronizedGroupsResult> getConnectionDirectorySynchronizedGroupsPlain(GetConnectionDirectorySynchronizedGroupsPlainArgs args) {
+        return getConnectionDirectorySynchronizedGroupsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve the selected synchronized group IDs for a connection&#39;s directory provisioning configuration.
+     * 
+     * &gt; This data source is only available for [EA](https://auth0.com/docs/troubleshoot/product-lifecycle/product-release-stages#early-access) users.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetConnectionDirectorySynchronizedGroupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myGroups = Auth0Functions.getConnectionDirectorySynchronizedGroups(GetConnectionDirectorySynchronizedGroupsArgs.builder()
+     *             .connectionId("con_xxxxxxxxxxxxxxxx")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetConnectionDirectorySynchronizedGroupsResult> getConnectionDirectorySynchronizedGroups(GetConnectionDirectorySynchronizedGroupsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getConnectionDirectorySynchronizedGroups:getConnectionDirectorySynchronizedGroups", TypeShape.of(GetConnectionDirectorySynchronizedGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve the selected synchronized group IDs for a connection&#39;s directory provisioning configuration.
+     * 
+     * &gt; This data source is only available for [EA](https://auth0.com/docs/troubleshoot/product-lifecycle/product-release-stages#early-access) users.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetConnectionDirectorySynchronizedGroupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myGroups = Auth0Functions.getConnectionDirectorySynchronizedGroups(GetConnectionDirectorySynchronizedGroupsArgs.builder()
+     *             .connectionId("con_xxxxxxxxxxxxxxxx")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetConnectionDirectorySynchronizedGroupsResult> getConnectionDirectorySynchronizedGroups(GetConnectionDirectorySynchronizedGroupsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getConnectionDirectorySynchronizedGroups:getConnectionDirectorySynchronizedGroups", TypeShape.of(GetConnectionDirectorySynchronizedGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve the selected synchronized group IDs for a connection&#39;s directory provisioning configuration.
+     * 
+     * &gt; This data source is only available for [EA](https://auth0.com/docs/troubleshoot/product-lifecycle/product-release-stages#early-access) users.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetConnectionDirectorySynchronizedGroupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myGroups = Auth0Functions.getConnectionDirectorySynchronizedGroups(GetConnectionDirectorySynchronizedGroupsArgs.builder()
+     *             .connectionId("con_xxxxxxxxxxxxxxxx")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetConnectionDirectorySynchronizedGroupsResult> getConnectionDirectorySynchronizedGroupsPlain(GetConnectionDirectorySynchronizedGroupsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("auth0:index/getConnectionDirectorySynchronizedGroups:getConnectionDirectorySynchronizedGroups", TypeShape.of(GetConnectionDirectorySynchronizedGroupsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieve the list of signing keys for a specific Auth0 connection. (Okta/OIDC only)

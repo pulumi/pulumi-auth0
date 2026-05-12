@@ -225,6 +225,10 @@ export interface GetClientResult {
      */
     readonly organizationUsage: string;
     /**
+     * Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.Allowed values: `allowAlways` or `openRedirectProtection`.
+     */
+    readonly redirectionPolicy: string;
+    /**
      * Configuration settings for the refresh tokens issued for this client.
      */
     readonly refreshTokens: outputs.GetClientRefreshToken[];
@@ -261,6 +265,10 @@ export interface GetClientResult {
      * Indicates whether or not SSO is disabled.
      */
     readonly ssoDisabled: boolean;
+    /**
+     * Security mode for third-party clients. Allowed values: `strict` or `permissive`.
+     */
+    readonly thirdPartySecurityMode: string;
     /**
      * The authentication method for the token endpoint. Results include `none` (public client without a client secret), `clientSecretPost` (client uses HTTP POST parameters), `clientSecretBasic` (client uses HTTP Basic), Managing a client's authentication method can be done via the `auth0.ClientCredentials` resource.
      */

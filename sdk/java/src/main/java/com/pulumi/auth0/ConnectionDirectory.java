@@ -56,6 +56,7 @@ import javax.annotation.Nullable;
  *                 .clientSecret("your-google-client-secret")
  *                 .domain("example.com")
  *                 .apiEnableUsers(true)
+ *                 .apiEnableGroups(true)
  *                 .build())
  *             .build());
  * 
@@ -85,6 +86,12 @@ import javax.annotation.Nullable;
  *                     .auth0("external_id")
  *                     .idp("id")
  *                     .build())
+ *             .build());
+ * 
+ *         // Configure directory provisioning with selective group synchronization
+ *         var withSelectedGroups = new ConnectionDirectory("withSelectedGroups", ConnectionDirectoryArgs.builder()
+ *             .connectionId(googleWorkspace.id())
+ *             .synchronizeGroups("selected")
  *             .build());
  * 
  *     }
@@ -226,6 +233,20 @@ public class ConnectionDirectory extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> synchronizeAutomatically() {
         return this.synchronizeAutomatically;
+    }
+    /**
+     * Group synchronization configuration. Valid values are: off, all, selected. (EA only)
+     * 
+     */
+    @Export(name="synchronizeGroups", refs={String.class}, tree="[0]")
+    private Output<String> synchronizeGroups;
+
+    /**
+     * @return Group synchronization configuration. Valid values are: off, all, selected. (EA only)
+     * 
+     */
+    public Output<String> synchronizeGroups() {
+        return this.synchronizeGroups;
     }
     /**
      * The timestamp at which the directory provisioning configuration was last updated.
