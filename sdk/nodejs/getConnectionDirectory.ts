@@ -82,6 +82,10 @@ export interface GetConnectionDirectoryResult {
      */
     readonly synchronizeAutomatically: boolean;
     /**
+     * Group synchronization configuration. Valid values are: off, all, selected. (EA only)
+     */
+    readonly synchronizeGroups: string;
+    /**
      * The timestamp at which the directory provisioning configuration was last updated.
      */
     readonly updatedAt: string;

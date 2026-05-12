@@ -33,6 +33,7 @@ namespace Pulumi.Auth0
     ///             ClientSecret = "your-google-client-secret",
     ///             Domain = "example.com",
     ///             ApiEnableUsers = true,
+    ///             ApiEnableGroups = true,
     ///         },
     ///     });
     /// 
@@ -70,6 +71,13 @@ namespace Pulumi.Auth0
     ///                 Idp = "id",
     ///             },
     ///         },
+    ///     });
+    /// 
+    ///     // Configure directory provisioning with selective group synchronization
+    ///     var withSelectedGroups = new Auth0.ConnectionDirectory("with_selected_groups", new()
+    ///     {
+    ///         ConnectionId = googleWorkspace.Id,
+    ///         SynchronizeGroups = "selected",
     ///     });
     /// 
     /// });
@@ -137,6 +145,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Output("synchronizeAutomatically")]
         public Output<bool> SynchronizeAutomatically { get; private set; } = null!;
+
+        /// <summary>
+        /// Group synchronization configuration. Valid values are: off, all, selected. (EA only)
+        /// </summary>
+        [Output("synchronizeGroups")]
+        public Output<string> SynchronizeGroups { get; private set; } = null!;
 
         /// <summary>
         /// The timestamp at which the directory provisioning configuration was last updated.
@@ -214,6 +228,12 @@ namespace Pulumi.Auth0
         [Input("synchronizeAutomatically")]
         public Input<bool>? SynchronizeAutomatically { get; set; }
 
+        /// <summary>
+        /// Group synchronization configuration. Valid values are: off, all, selected. (EA only)
+        /// </summary>
+        [Input("synchronizeGroups")]
+        public Input<string>? SynchronizeGroups { get; set; }
+
         public ConnectionDirectoryArgs()
         {
         }
@@ -281,6 +301,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("synchronizeAutomatically")]
         public Input<bool>? SynchronizeAutomatically { get; set; }
+
+        /// <summary>
+        /// Group synchronization configuration. Valid values are: off, all, selected. (EA only)
+        /// </summary>
+        [Input("synchronizeGroups")]
+        public Input<string>? SynchronizeGroups { get; set; }
 
         /// <summary>
         /// The timestamp at which the directory provisioning configuration was last updated.

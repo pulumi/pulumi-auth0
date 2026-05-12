@@ -102,6 +102,10 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly ImmutableArray<string> OrganizationDiscoveryMethods;
         /// <summary>
+        /// Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.Allowed values: `AllowAlways` or `OpenRedirectProtection`.
+        /// </summary>
+        public readonly string RedirectionPolicy;
+        /// <summary>
         /// The identifier of a resource server that client is associated withThis property can be sent only when app_type=resource_server.This property can not be changed, once the client is created.
         /// </summary>
         public readonly string ResourceServerIdentifier;
@@ -110,6 +114,10 @@ namespace Pulumi.Auth0.Outputs
         /// Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
         /// </summary>
         public readonly string SkipNonVerifiableCallbackUriConfirmationPrompt;
+        /// <summary>
+        /// Security mode for third-party clients. Allowed values: `Strict` or `Permissive`.
+        /// </summary>
+        public readonly string ThirdPartySecurityMode;
         /// <summary>
         /// Allows configuration for token exchange
         /// </summary>
@@ -169,11 +177,15 @@ namespace Pulumi.Auth0.Outputs
 
             ImmutableArray<string> organizationDiscoveryMethods,
 
+            string redirectionPolicy,
+
             string resourceServerIdentifier,
 
             ImmutableArray<Outputs.GetClientsClientSessionTransferResult> sessionTransfers,
 
             string skipNonVerifiableCallbackUriConfirmationPrompt,
+
+            string thirdPartySecurityMode,
 
             ImmutableArray<Outputs.GetClientsClientTokenExchangeResult> tokenExchanges,
 
@@ -203,9 +215,11 @@ namespace Pulumi.Auth0.Outputs
             Name = name;
             OidcLogouts = oidcLogouts;
             OrganizationDiscoveryMethods = organizationDiscoveryMethods;
+            RedirectionPolicy = redirectionPolicy;
             ResourceServerIdentifier = resourceServerIdentifier;
             SessionTransfers = sessionTransfers;
             SkipNonVerifiableCallbackUriConfirmationPrompt = skipNonVerifiableCallbackUriConfirmationPrompt;
+            ThirdPartySecurityMode = thirdPartySecurityMode;
             TokenExchanges = tokenExchanges;
             TokenQuotas = tokenQuotas;
             WebOrigins = webOrigins;

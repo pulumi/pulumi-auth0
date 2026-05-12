@@ -108,6 +108,8 @@ type Tenant struct {
 	DefaultTokenQuota TenantDefaultTokenQuotaPtrOutput `pulumi:"defaultTokenQuota"`
 	// Disable list of supported ACR values.
 	DisableAcrValuesSupported pulumi.BoolOutput `pulumi:"disableAcrValuesSupported"`
+	// Sets the third*party*security_mode assigned to clients created via Dynamic Client Registration. Can only be configured by [customers with pre-existing third-party client usage before April 2026](https://auth0.com/docs/get-started/applications/third-party-applications/permissive-mode#dynamic-client-registration-in-permissive-mode).
+	DynamicClientRegistrationSecurityMode pulumi.StringOutput `pulumi:"dynamicClientRegistrationSecurityMode"`
 	// Supported locales for the user interface. The first locale in the list will be used to set the default locale.
 	EnabledLocales pulumi.StringArrayOutput `pulumi:"enabledLocales"`
 	// Number of hours an ephemeral (non-persistent) session will stay valid.
@@ -200,6 +202,8 @@ type tenantState struct {
 	DefaultTokenQuota *TenantDefaultTokenQuota `pulumi:"defaultTokenQuota"`
 	// Disable list of supported ACR values.
 	DisableAcrValuesSupported *bool `pulumi:"disableAcrValuesSupported"`
+	// Sets the third*party*security_mode assigned to clients created via Dynamic Client Registration. Can only be configured by [customers with pre-existing third-party client usage before April 2026](https://auth0.com/docs/get-started/applications/third-party-applications/permissive-mode#dynamic-client-registration-in-permissive-mode).
+	DynamicClientRegistrationSecurityMode *string `pulumi:"dynamicClientRegistrationSecurityMode"`
 	// Supported locales for the user interface. The first locale in the list will be used to set the default locale.
 	EnabledLocales []string `pulumi:"enabledLocales"`
 	// Number of hours an ephemeral (non-persistent) session will stay valid.
@@ -263,6 +267,8 @@ type TenantState struct {
 	DefaultTokenQuota TenantDefaultTokenQuotaPtrInput
 	// Disable list of supported ACR values.
 	DisableAcrValuesSupported pulumi.BoolPtrInput
+	// Sets the third*party*security_mode assigned to clients created via Dynamic Client Registration. Can only be configured by [customers with pre-existing third-party client usage before April 2026](https://auth0.com/docs/get-started/applications/third-party-applications/permissive-mode#dynamic-client-registration-in-permissive-mode).
+	DynamicClientRegistrationSecurityMode pulumi.StringPtrInput
 	// Supported locales for the user interface. The first locale in the list will be used to set the default locale.
 	EnabledLocales pulumi.StringArrayInput
 	// Number of hours an ephemeral (non-persistent) session will stay valid.
@@ -330,6 +336,8 @@ type tenantArgs struct {
 	DefaultTokenQuota *TenantDefaultTokenQuota `pulumi:"defaultTokenQuota"`
 	// Disable list of supported ACR values.
 	DisableAcrValuesSupported *bool `pulumi:"disableAcrValuesSupported"`
+	// Sets the third*party*security_mode assigned to clients created via Dynamic Client Registration. Can only be configured by [customers with pre-existing third-party client usage before April 2026](https://auth0.com/docs/get-started/applications/third-party-applications/permissive-mode#dynamic-client-registration-in-permissive-mode).
+	DynamicClientRegistrationSecurityMode *string `pulumi:"dynamicClientRegistrationSecurityMode"`
 	// Supported locales for the user interface. The first locale in the list will be used to set the default locale.
 	EnabledLocales []string `pulumi:"enabledLocales"`
 	// Number of hours an ephemeral (non-persistent) session will stay valid.
@@ -394,6 +402,8 @@ type TenantArgs struct {
 	DefaultTokenQuota TenantDefaultTokenQuotaPtrInput
 	// Disable list of supported ACR values.
 	DisableAcrValuesSupported pulumi.BoolPtrInput
+	// Sets the third*party*security_mode assigned to clients created via Dynamic Client Registration. Can only be configured by [customers with pre-existing third-party client usage before April 2026](https://auth0.com/docs/get-started/applications/third-party-applications/permissive-mode#dynamic-client-registration-in-permissive-mode).
+	DynamicClientRegistrationSecurityMode pulumi.StringPtrInput
 	// Supported locales for the user interface. The first locale in the list will be used to set the default locale.
 	EnabledLocales pulumi.StringArrayInput
 	// Number of hours an ephemeral (non-persistent) session will stay valid.
@@ -571,6 +581,11 @@ func (o TenantOutput) DefaultTokenQuota() TenantDefaultTokenQuotaPtrOutput {
 // Disable list of supported ACR values.
 func (o TenantOutput) DisableAcrValuesSupported() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Tenant) pulumi.BoolOutput { return v.DisableAcrValuesSupported }).(pulumi.BoolOutput)
+}
+
+// Sets the third*party*security_mode assigned to clients created via Dynamic Client Registration. Can only be configured by [customers with pre-existing third-party client usage before April 2026](https://auth0.com/docs/get-started/applications/third-party-applications/permissive-mode#dynamic-client-registration-in-permissive-mode).
+func (o TenantOutput) DynamicClientRegistrationSecurityMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *Tenant) pulumi.StringOutput { return v.DynamicClientRegistrationSecurityMode }).(pulumi.StringOutput)
 }
 
 // Supported locales for the user interface. The first locale in the list will be used to set the default locale.

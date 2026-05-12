@@ -323,6 +323,10 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly string OrganizationUsage;
         /// <summary>
+        /// Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.Allowed values: `AllowAlways` or `OpenRedirectProtection`.
+        /// </summary>
+        public readonly string RedirectionPolicy;
+        /// <summary>
         /// Configuration settings for the refresh tokens issued for this client.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClientRefreshTokenResult> RefreshTokens;
@@ -359,6 +363,10 @@ namespace Pulumi.Auth0
         /// Indicates whether or not SSO is disabled.
         /// </summary>
         public readonly bool SsoDisabled;
+        /// <summary>
+        /// Security mode for third-party clients. Allowed values: `Strict` or `Permissive`.
+        /// </summary>
+        public readonly string ThirdPartySecurityMode;
         /// <summary>
         /// The authentication method for the token endpoint. Results include `None` (public client without a client secret), `ClientSecretPost` (client uses HTTP POST parameters), `ClientSecretBasic` (client uses HTTP Basic), Managing a client's authentication method can be done via the `auth0.ClientCredentials` resource.
         /// </summary>
@@ -464,6 +472,8 @@ namespace Pulumi.Auth0
 
             string organizationUsage,
 
+            string redirectionPolicy,
+
             ImmutableArray<Outputs.GetClientRefreshTokenResult> refreshTokens,
 
             bool requireProofOfPossession,
@@ -483,6 +493,8 @@ namespace Pulumi.Auth0
             bool sso,
 
             bool ssoDisabled,
+
+            string thirdPartySecurityMode,
 
             string tokenEndpointAuthMethod,
 
@@ -535,6 +547,7 @@ namespace Pulumi.Auth0
             OrganizationDiscoveryMethods = organizationDiscoveryMethods;
             OrganizationRequireBehavior = organizationRequireBehavior;
             OrganizationUsage = organizationUsage;
+            RedirectionPolicy = redirectionPolicy;
             RefreshTokens = refreshTokens;
             RequireProofOfPossession = requireProofOfPossession;
             RequirePushedAuthorizationRequests = requirePushedAuthorizationRequests;
@@ -545,6 +558,7 @@ namespace Pulumi.Auth0
             SkipNonVerifiableCallbackUriConfirmationPrompt = skipNonVerifiableCallbackUriConfirmationPrompt;
             Sso = sso;
             SsoDisabled = ssoDisabled;
+            ThirdPartySecurityMode = thirdPartySecurityMode;
             TokenEndpointAuthMethod = tokenEndpointAuthMethod;
             TokenExchanges = tokenExchanges;
             TokenQuotas = tokenQuotas;

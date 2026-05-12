@@ -640,6 +640,21 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Controls whether Auth0 redirects users to the application&#39;s callback URL on authentication errors or in email verification flows.Allowed values: `allowAlways` or `openRedirectProtection`.
+     * 
+     */
+    @Import(name="redirectionPolicy")
+    private @Nullable Output<String> redirectionPolicy;
+
+    /**
+     * @return Controls whether Auth0 redirects users to the application&#39;s callback URL on authentication errors or in email verification flows.Allowed values: `allowAlways` or `openRedirectProtection`.
+     * 
+     */
+    public Optional<Output<String>> redirectionPolicy() {
+        return Optional.ofNullable(this.redirectionPolicy);
+    }
+
+    /**
      * Configuration settings for the refresh tokens issued for this client.
      * 
      */
@@ -767,6 +782,21 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Security mode for third-party clients. Allowed values: `strict` or `permissive`.
+     * 
+     */
+    @Import(name="thirdPartySecurityMode")
+    private @Nullable Output<String> thirdPartySecurityMode;
+
+    /**
+     * @return Security mode for third-party clients. Allowed values: `strict` or `permissive`.
+     * 
+     */
+    public Optional<Output<String>> thirdPartySecurityMode() {
+        return Optional.ofNullable(this.thirdPartySecurityMode);
+    }
+
+    /**
      * Allows configuration for token exchange
      * 
      */
@@ -854,6 +884,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         this.organizationDiscoveryMethods = $.organizationDiscoveryMethods;
         this.organizationRequireBehavior = $.organizationRequireBehavior;
         this.organizationUsage = $.organizationUsage;
+        this.redirectionPolicy = $.redirectionPolicy;
         this.refreshToken = $.refreshToken;
         this.requireProofOfPossession = $.requireProofOfPossession;
         this.requirePushedAuthorizationRequests = $.requirePushedAuthorizationRequests;
@@ -863,6 +894,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         this.skipNonVerifiableCallbackUriConfirmationPrompt = $.skipNonVerifiableCallbackUriConfirmationPrompt;
         this.sso = $.sso;
         this.ssoDisabled = $.ssoDisabled;
+        this.thirdPartySecurityMode = $.thirdPartySecurityMode;
         this.tokenExchange = $.tokenExchange;
         this.tokenQuota = $.tokenQuota;
         this.webOrigins = $.webOrigins;
@@ -1829,6 +1861,27 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param redirectionPolicy Controls whether Auth0 redirects users to the application&#39;s callback URL on authentication errors or in email verification flows.Allowed values: `allowAlways` or `openRedirectProtection`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder redirectionPolicy(@Nullable Output<String> redirectionPolicy) {
+            $.redirectionPolicy = redirectionPolicy;
+            return this;
+        }
+
+        /**
+         * @param redirectionPolicy Controls whether Auth0 redirects users to the application&#39;s callback URL on authentication errors or in email verification flows.Allowed values: `allowAlways` or `openRedirectProtection`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder redirectionPolicy(String redirectionPolicy) {
+            return redirectionPolicy(Output.of(redirectionPolicy));
+        }
+
+        /**
          * @param refreshToken Configuration settings for the refresh tokens issued for this client.
          * 
          * @return builder
@@ -2013,6 +2066,27 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder ssoDisabled(Boolean ssoDisabled) {
             return ssoDisabled(Output.of(ssoDisabled));
+        }
+
+        /**
+         * @param thirdPartySecurityMode Security mode for third-party clients. Allowed values: `strict` or `permissive`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder thirdPartySecurityMode(@Nullable Output<String> thirdPartySecurityMode) {
+            $.thirdPartySecurityMode = thirdPartySecurityMode;
+            return this;
+        }
+
+        /**
+         * @param thirdPartySecurityMode Security mode for third-party clients. Allowed values: `strict` or `permissive`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder thirdPartySecurityMode(String thirdPartySecurityMode) {
+            return thirdPartySecurityMode(Output.of(thirdPartySecurityMode));
         }
 
         /**

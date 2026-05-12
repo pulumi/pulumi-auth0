@@ -93,6 +93,16 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			_, err = auth0.NewClientGrant(ctx, "default_3p_grant", &auth0.ClientGrantArgs{
+//				DefaultFor: pulumi.String("third_party_clients"),
+//				Audience:   myResourceServer.Identifier,
+//				Scopes: pulumi.StringArray{
+//					pulumi.String("read:foo"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			return nil
 //		})
 //	}
@@ -120,8 +130,10 @@ type ClientGrant struct {
 	Audience pulumi.StringOutput `pulumi:"audience"`
 	// Defines the types of authorization details allowed for this client grant.
 	AuthorizationDetailsTypes pulumi.StringArrayOutput `pulumi:"authorizationDetailsTypes"`
-	// ID of the client for this grant.
-	ClientId pulumi.StringOutput `pulumi:"clientId"`
+	// ID of the client for this grant. Mutually exclusive with `defaultFor`.
+	ClientId pulumi.StringPtrOutput `pulumi:"clientId"`
+	// Applies this client grant as the default for all clients in the specified group. The only accepted value is third*party*clients, which applies the grant to all third-party clients.
+	DefaultFor pulumi.StringPtrOutput `pulumi:"defaultFor"`
 	// Indicates whether this grant is a special grant created by Auth0. It cannot be modified or deleted directly.
 	IsSystem pulumi.BoolOutput `pulumi:"isSystem"`
 	// Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
@@ -141,9 +153,6 @@ func NewClientGrant(ctx *pulumi.Context,
 
 	if args.Audience == nil {
 		return nil, errors.New("invalid value for required argument 'Audience'")
-	}
-	if args.ClientId == nil {
-		return nil, errors.New("invalid value for required argument 'ClientId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ClientGrant
@@ -176,8 +185,10 @@ type clientGrantState struct {
 	Audience *string `pulumi:"audience"`
 	// Defines the types of authorization details allowed for this client grant.
 	AuthorizationDetailsTypes []string `pulumi:"authorizationDetailsTypes"`
-	// ID of the client for this grant.
+	// ID of the client for this grant. Mutually exclusive with `defaultFor`.
 	ClientId *string `pulumi:"clientId"`
+	// Applies this client grant as the default for all clients in the specified group. The only accepted value is third*party*clients, which applies the grant to all third-party clients.
+	DefaultFor *string `pulumi:"defaultFor"`
 	// Indicates whether this grant is a special grant created by Auth0. It cannot be modified or deleted directly.
 	IsSystem *bool `pulumi:"isSystem"`
 	// Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
@@ -197,8 +208,10 @@ type ClientGrantState struct {
 	Audience pulumi.StringPtrInput
 	// Defines the types of authorization details allowed for this client grant.
 	AuthorizationDetailsTypes pulumi.StringArrayInput
-	// ID of the client for this grant.
+	// ID of the client for this grant. Mutually exclusive with `defaultFor`.
 	ClientId pulumi.StringPtrInput
+	// Applies this client grant as the default for all clients in the specified group. The only accepted value is third*party*clients, which applies the grant to all third-party clients.
+	DefaultFor pulumi.StringPtrInput
 	// Indicates whether this grant is a special grant created by Auth0. It cannot be modified or deleted directly.
 	IsSystem pulumi.BoolPtrInput
 	// Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
@@ -222,8 +235,10 @@ type clientGrantArgs struct {
 	Audience string `pulumi:"audience"`
 	// Defines the types of authorization details allowed for this client grant.
 	AuthorizationDetailsTypes []string `pulumi:"authorizationDetailsTypes"`
-	// ID of the client for this grant.
-	ClientId string `pulumi:"clientId"`
+	// ID of the client for this grant. Mutually exclusive with `defaultFor`.
+	ClientId *string `pulumi:"clientId"`
+	// Applies this client grant as the default for all clients in the specified group. The only accepted value is third*party*clients, which applies the grant to all third-party clients.
+	DefaultFor *string `pulumi:"defaultFor"`
 	// Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
 	OrganizationUsage *string `pulumi:"organizationUsage"`
 	// Permissions (scopes) included in this grant. Can not be provided when `allowAllScopes` is set to `true`.
@@ -242,8 +257,10 @@ type ClientGrantArgs struct {
 	Audience pulumi.StringInput
 	// Defines the types of authorization details allowed for this client grant.
 	AuthorizationDetailsTypes pulumi.StringArrayInput
-	// ID of the client for this grant.
-	ClientId pulumi.StringInput
+	// ID of the client for this grant. Mutually exclusive with `defaultFor`.
+	ClientId pulumi.StringPtrInput
+	// Applies this client grant as the default for all clients in the specified group. The only accepted value is third*party*clients, which applies the grant to all third-party clients.
+	DefaultFor pulumi.StringPtrInput
 	// Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
 	OrganizationUsage pulumi.StringPtrInput
 	// Permissions (scopes) included in this grant. Can not be provided when `allowAllScopes` is set to `true`.
@@ -359,9 +376,14 @@ func (o ClientGrantOutput) AuthorizationDetailsTypes() pulumi.StringArrayOutput 
 	return o.ApplyT(func(v *ClientGrant) pulumi.StringArrayOutput { return v.AuthorizationDetailsTypes }).(pulumi.StringArrayOutput)
 }
 
-// ID of the client for this grant.
-func (o ClientGrantOutput) ClientId() pulumi.StringOutput {
-	return o.ApplyT(func(v *ClientGrant) pulumi.StringOutput { return v.ClientId }).(pulumi.StringOutput)
+// ID of the client for this grant. Mutually exclusive with `defaultFor`.
+func (o ClientGrantOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientGrant) pulumi.StringPtrOutput { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+// Applies this client grant as the default for all clients in the specified group. The only accepted value is third*party*clients, which applies the grant to all third-party clients.
+func (o ClientGrantOutput) DefaultFor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientGrant) pulumi.StringPtrOutput { return v.DefaultFor }).(pulumi.StringPtrOutput)
 }
 
 // Indicates whether this grant is a special grant created by Auth0. It cannot be modified or deleted directly.

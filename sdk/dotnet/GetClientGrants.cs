@@ -297,6 +297,12 @@ namespace Pulumi.Auth0
         [Input("clientId")]
         public string? ClientId { get; set; }
 
+        /// <summary>
+        /// Filter by DefaultFor value (e.g., `ThirdPartyClients`).
+        /// </summary>
+        [Input("defaultFor")]
+        public string? DefaultFor { get; set; }
+
         public GetClientGrantsArgs()
         {
         }
@@ -316,6 +322,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("clientId")]
         public Input<string>? ClientId { get; set; }
+
+        /// <summary>
+        /// Filter by DefaultFor value (e.g., `ThirdPartyClients`).
+        /// </summary>
+        [Input("defaultFor")]
+        public Input<string>? DefaultFor { get; set; }
 
         public GetClientGrantsInvokeArgs()
         {
@@ -340,6 +352,10 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly string? ClientId;
         /// <summary>
+        /// Filter by DefaultFor value (e.g., `ThirdPartyClients`).
+        /// </summary>
+        public readonly string? DefaultFor;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -352,11 +368,14 @@ namespace Pulumi.Auth0
 
             string? clientId,
 
+            string? defaultFor,
+
             string id)
         {
             Audience = audience;
             ClientGrants = clientGrants;
             ClientId = clientId;
+            DefaultFor = defaultFor;
             Id = id;
         }
     }

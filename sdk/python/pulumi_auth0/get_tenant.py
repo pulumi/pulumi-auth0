@@ -27,7 +27,7 @@ class GetTenantResult:
     """
     A collection of values returned by getTenant.
     """
-    def __init__(__self__, acr_values_supporteds=None, allow_organization_name_in_authentication_api=None, allowed_logout_urls=None, client_id_metadata_document_supported=None, customize_mfa_in_postlogin_action=None, default_audience=None, default_directory=None, default_redirection_uri=None, default_token_quotas=None, disable_acr_values_supported=None, domain=None, enabled_locales=None, ephemeral_session_lifetime=None, error_pages=None, flags=None, friendly_name=None, id=None, idle_ephemeral_session_lifetime=None, idle_session_lifetime=None, management_api_identifier=None, mtls=None, oidc_logouts=None, phone_consolidated_experience=None, picture_url=None, pushed_authorization_requests_supported=None, resource_parameter_profile=None, sandbox_version=None, session_cookies=None, session_lifetime=None, sessions=None, skip_non_verifiable_callback_uri_confirmation_prompt=None, support_email=None, support_url=None):
+    def __init__(__self__, acr_values_supporteds=None, allow_organization_name_in_authentication_api=None, allowed_logout_urls=None, client_id_metadata_document_supported=None, customize_mfa_in_postlogin_action=None, default_audience=None, default_directory=None, default_redirection_uri=None, default_token_quotas=None, disable_acr_values_supported=None, domain=None, dynamic_client_registration_security_mode=None, enabled_locales=None, ephemeral_session_lifetime=None, error_pages=None, flags=None, friendly_name=None, id=None, idle_ephemeral_session_lifetime=None, idle_session_lifetime=None, management_api_identifier=None, mtls=None, oidc_logouts=None, phone_consolidated_experience=None, picture_url=None, pushed_authorization_requests_supported=None, resource_parameter_profile=None, sandbox_version=None, session_cookies=None, session_lifetime=None, sessions=None, skip_non_verifiable_callback_uri_confirmation_prompt=None, support_email=None, support_url=None):
         if acr_values_supporteds and not isinstance(acr_values_supporteds, list):
             raise TypeError("Expected argument 'acr_values_supporteds' to be a list")
         pulumi.set(__self__, "acr_values_supporteds", acr_values_supporteds)
@@ -61,6 +61,9 @@ class GetTenantResult:
         if domain and not isinstance(domain, str):
             raise TypeError("Expected argument 'domain' to be a str")
         pulumi.set(__self__, "domain", domain)
+        if dynamic_client_registration_security_mode and not isinstance(dynamic_client_registration_security_mode, str):
+            raise TypeError("Expected argument 'dynamic_client_registration_security_mode' to be a str")
+        pulumi.set(__self__, "dynamic_client_registration_security_mode", dynamic_client_registration_security_mode)
         if enabled_locales and not isinstance(enabled_locales, list):
             raise TypeError("Expected argument 'enabled_locales' to be a list")
         pulumi.set(__self__, "enabled_locales", enabled_locales)
@@ -215,6 +218,14 @@ class GetTenantResult:
         Your Auth0 domain name.
         """
         return pulumi.get(self, "domain")
+
+    @_builtins.property
+    @pulumi.getter(name="dynamicClientRegistrationSecurityMode")
+    def dynamic_client_registration_security_mode(self) -> _builtins.str:
+        """
+        Sets the third*party*security_mode assigned to clients created via Dynamic Client Registration. Can only be configured by [customers with pre-existing third-party client usage before April 2026](https://auth0.com/docs/get-started/applications/third-party-applications/permissive-mode#dynamic-client-registration-in-permissive-mode).
+        """
+        return pulumi.get(self, "dynamic_client_registration_security_mode")
 
     @_builtins.property
     @pulumi.getter(name="enabledLocales")
@@ -410,6 +421,7 @@ class AwaitableGetTenantResult(GetTenantResult):
             default_token_quotas=self.default_token_quotas,
             disable_acr_values_supported=self.disable_acr_values_supported,
             domain=self.domain,
+            dynamic_client_registration_security_mode=self.dynamic_client_registration_security_mode,
             enabled_locales=self.enabled_locales,
             ephemeral_session_lifetime=self.ephemeral_session_lifetime,
             error_pages=self.error_pages,
@@ -463,6 +475,7 @@ def get_tenant(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTenan
         default_token_quotas=pulumi.get(__ret__, 'default_token_quotas'),
         disable_acr_values_supported=pulumi.get(__ret__, 'disable_acr_values_supported'),
         domain=pulumi.get(__ret__, 'domain'),
+        dynamic_client_registration_security_mode=pulumi.get(__ret__, 'dynamic_client_registration_security_mode'),
         enabled_locales=pulumi.get(__ret__, 'enabled_locales'),
         ephemeral_session_lifetime=pulumi.get(__ret__, 'ephemeral_session_lifetime'),
         error_pages=pulumi.get(__ret__, 'error_pages'),
@@ -513,6 +526,7 @@ def get_tenant_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOu
         default_token_quotas=pulumi.get(__response__, 'default_token_quotas'),
         disable_acr_values_supported=pulumi.get(__response__, 'disable_acr_values_supported'),
         domain=pulumi.get(__response__, 'domain'),
+        dynamic_client_registration_security_mode=pulumi.get(__response__, 'dynamic_client_registration_security_mode'),
         enabled_locales=pulumi.get(__response__, 'enabled_locales'),
         ephemeral_session_lifetime=pulumi.get(__response__, 'ephemeral_session_lifetime'),
         error_pages=pulumi.get(__response__, 'error_pages'),

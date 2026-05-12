@@ -210,6 +210,10 @@ export class Client extends pulumi.CustomResource {
      */
     declare public readonly organizationUsage: pulumi.Output<string>;
     /**
+     * Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.Allowed values: `allowAlways` or `openRedirectProtection`.
+     */
+    declare public readonly redirectionPolicy: pulumi.Output<string>;
+    /**
      * Configuration settings for the refresh tokens issued for this client.
      */
     declare public readonly refreshToken: pulumi.Output<outputs.ClientRefreshToken>;
@@ -242,6 +246,10 @@ export class Client extends pulumi.CustomResource {
      * Indicates whether or not SSO is disabled.
      */
     declare public readonly ssoDisabled: pulumi.Output<boolean | undefined>;
+    /**
+     * Security mode for third-party clients. Allowed values: `strict` or `permissive`.
+     */
+    declare public readonly thirdPartySecurityMode: pulumi.Output<string>;
     /**
      * Allows configuration for token exchange
      */
@@ -308,6 +316,7 @@ export class Client extends pulumi.CustomResource {
             resourceInputs["organizationDiscoveryMethods"] = state?.organizationDiscoveryMethods;
             resourceInputs["organizationRequireBehavior"] = state?.organizationRequireBehavior;
             resourceInputs["organizationUsage"] = state?.organizationUsage;
+            resourceInputs["redirectionPolicy"] = state?.redirectionPolicy;
             resourceInputs["refreshToken"] = state?.refreshToken;
             resourceInputs["requireProofOfPossession"] = state?.requireProofOfPossession;
             resourceInputs["requirePushedAuthorizationRequests"] = state?.requirePushedAuthorizationRequests;
@@ -317,6 +326,7 @@ export class Client extends pulumi.CustomResource {
             resourceInputs["skipNonVerifiableCallbackUriConfirmationPrompt"] = state?.skipNonVerifiableCallbackUriConfirmationPrompt;
             resourceInputs["sso"] = state?.sso;
             resourceInputs["ssoDisabled"] = state?.ssoDisabled;
+            resourceInputs["thirdPartySecurityMode"] = state?.thirdPartySecurityMode;
             resourceInputs["tokenExchange"] = state?.tokenExchange;
             resourceInputs["tokenQuota"] = state?.tokenQuota;
             resourceInputs["webOrigins"] = state?.webOrigins;
@@ -357,6 +367,7 @@ export class Client extends pulumi.CustomResource {
             resourceInputs["organizationDiscoveryMethods"] = args?.organizationDiscoveryMethods;
             resourceInputs["organizationRequireBehavior"] = args?.organizationRequireBehavior;
             resourceInputs["organizationUsage"] = args?.organizationUsage;
+            resourceInputs["redirectionPolicy"] = args?.redirectionPolicy;
             resourceInputs["refreshToken"] = args?.refreshToken;
             resourceInputs["requireProofOfPossession"] = args?.requireProofOfPossession;
             resourceInputs["requirePushedAuthorizationRequests"] = args?.requirePushedAuthorizationRequests;
@@ -365,6 +376,7 @@ export class Client extends pulumi.CustomResource {
             resourceInputs["skipNonVerifiableCallbackUriConfirmationPrompt"] = args?.skipNonVerifiableCallbackUriConfirmationPrompt;
             resourceInputs["sso"] = args?.sso;
             resourceInputs["ssoDisabled"] = args?.ssoDisabled;
+            resourceInputs["thirdPartySecurityMode"] = args?.thirdPartySecurityMode;
             resourceInputs["tokenExchange"] = args?.tokenExchange;
             resourceInputs["tokenQuota"] = args?.tokenQuota;
             resourceInputs["webOrigins"] = args?.webOrigins;
@@ -549,6 +561,10 @@ export interface ClientState {
      */
     organizationUsage?: pulumi.Input<string | undefined>;
     /**
+     * Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.Allowed values: `allowAlways` or `openRedirectProtection`.
+     */
+    redirectionPolicy?: pulumi.Input<string | undefined>;
+    /**
      * Configuration settings for the refresh tokens issued for this client.
      */
     refreshToken?: pulumi.Input<inputs.ClientRefreshToken | undefined>;
@@ -581,6 +597,10 @@ export interface ClientState {
      * Indicates whether or not SSO is disabled.
      */
     ssoDisabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Security mode for third-party clients. Allowed values: `strict` or `permissive`.
+     */
+    thirdPartySecurityMode?: pulumi.Input<string | undefined>;
     /**
      * Allows configuration for token exchange
      */
@@ -742,6 +762,10 @@ export interface ClientArgs {
      */
     organizationUsage?: pulumi.Input<string | undefined>;
     /**
+     * Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.Allowed values: `allowAlways` or `openRedirectProtection`.
+     */
+    redirectionPolicy?: pulumi.Input<string | undefined>;
+    /**
      * Configuration settings for the refresh tokens issued for this client.
      */
     refreshToken?: pulumi.Input<inputs.ClientRefreshToken | undefined>;
@@ -770,6 +794,10 @@ export interface ClientArgs {
      * Indicates whether or not SSO is disabled.
      */
     ssoDisabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Security mode for third-party clients. Allowed values: `strict` or `permissive`.
+     */
+    thirdPartySecurityMode?: pulumi.Input<string | undefined>;
     /**
      * Allows configuration for token exchange
      */

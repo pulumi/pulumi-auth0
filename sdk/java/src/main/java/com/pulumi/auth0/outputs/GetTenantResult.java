@@ -76,6 +76,11 @@ public final class GetTenantResult {
      */
     private String domain;
     /**
+     * @return Sets the third*party*security_mode assigned to clients created via Dynamic Client Registration. Can only be configured by [customers with pre-existing third-party client usage before April 2026](https://auth0.com/docs/get-started/applications/third-party-applications/permissive-mode#dynamic-client-registration-in-permissive-mode).
+     * 
+     */
+    private String dynamicClientRegistrationSecurityMode;
+    /**
      * @return Supported locales for the user interface. The first locale in the list will be used to set the default locale.
      * 
      */
@@ -265,6 +270,13 @@ public final class GetTenantResult {
         return this.domain;
     }
     /**
+     * @return Sets the third*party*security_mode assigned to clients created via Dynamic Client Registration. Can only be configured by [customers with pre-existing third-party client usage before April 2026](https://auth0.com/docs/get-started/applications/third-party-applications/permissive-mode#dynamic-client-registration-in-permissive-mode).
+     * 
+     */
+    public String dynamicClientRegistrationSecurityMode() {
+        return this.dynamicClientRegistrationSecurityMode;
+    }
+    /**
      * @return Supported locales for the user interface. The first locale in the list will be used to set the default locale.
      * 
      */
@@ -439,6 +451,7 @@ public final class GetTenantResult {
         private List<GetTenantDefaultTokenQuota> defaultTokenQuotas;
         private Boolean disableAcrValuesSupported;
         private String domain;
+        private String dynamicClientRegistrationSecurityMode;
         private List<String> enabledLocales;
         private Double ephemeralSessionLifetime;
         private List<GetTenantErrorPage> errorPages;
@@ -475,6 +488,7 @@ public final class GetTenantResult {
     	      this.defaultTokenQuotas = defaults.defaultTokenQuotas;
     	      this.disableAcrValuesSupported = defaults.disableAcrValuesSupported;
     	      this.domain = defaults.domain;
+    	      this.dynamicClientRegistrationSecurityMode = defaults.dynamicClientRegistrationSecurityMode;
     	      this.enabledLocales = defaults.enabledLocales;
     	      this.ephemeralSessionLifetime = defaults.ephemeralSessionLifetime;
     	      this.errorPages = defaults.errorPages;
@@ -594,6 +608,14 @@ public final class GetTenantResult {
               throw new MissingRequiredPropertyException("GetTenantResult", "domain");
             }
             this.domain = domain;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder dynamicClientRegistrationSecurityMode(String dynamicClientRegistrationSecurityMode) {
+            if (dynamicClientRegistrationSecurityMode == null) {
+              throw new MissingRequiredPropertyException("GetTenantResult", "dynamicClientRegistrationSecurityMode");
+            }
+            this.dynamicClientRegistrationSecurityMode = dynamicClientRegistrationSecurityMode;
             return this;
         }
         @CustomType.Setter
@@ -806,6 +828,7 @@ public final class GetTenantResult {
             _resultValue.defaultTokenQuotas = defaultTokenQuotas;
             _resultValue.disableAcrValuesSupported = disableAcrValuesSupported;
             _resultValue.domain = domain;
+            _resultValue.dynamicClientRegistrationSecurityMode = dynamicClientRegistrationSecurityMode;
             _resultValue.enabledLocales = enabledLocales;
             _resultValue.ephemeralSessionLifetime = ephemeralSessionLifetime;
             _resultValue.errorPages = errorPages;

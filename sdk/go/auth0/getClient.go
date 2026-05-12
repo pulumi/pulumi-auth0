@@ -152,6 +152,8 @@ type LookupClientResult struct {
 	OrganizationRequireBehavior string `pulumi:"organizationRequireBehavior"`
 	// Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
 	OrganizationUsage string `pulumi:"organizationUsage"`
+	// Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.Allowed values: `allowAlways` or `openRedirectProtection`.
+	RedirectionPolicy string `pulumi:"redirectionPolicy"`
 	// Configuration settings for the refresh tokens issued for this client.
 	RefreshTokens []GetClientRefreshToken `pulumi:"refreshTokens"`
 	// Makes the use of Proof-of-Possession mandatory for this client.
@@ -171,6 +173,8 @@ type LookupClientResult struct {
 	Sso bool `pulumi:"sso"`
 	// Indicates whether or not SSO is disabled.
 	SsoDisabled bool `pulumi:"ssoDisabled"`
+	// Security mode for third-party clients. Allowed values: `strict` or `permissive`.
+	ThirdPartySecurityMode string `pulumi:"thirdPartySecurityMode"`
 	// The authentication method for the token endpoint. Results include `none` (public client without a client secret), `clientSecretPost` (client uses HTTP POST parameters), `clientSecretBasic` (client uses HTTP Basic), Managing a client's authentication method can be done via the `ClientCredentials` resource.
 	TokenEndpointAuthMethod string `pulumi:"tokenEndpointAuthMethod"`
 	// Allows configuration for token exchange
@@ -434,6 +438,11 @@ func (o LookupClientResultOutput) OrganizationUsage() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClientResult) string { return v.OrganizationUsage }).(pulumi.StringOutput)
 }
 
+// Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.Allowed values: `allowAlways` or `openRedirectProtection`.
+func (o LookupClientResultOutput) RedirectionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClientResult) string { return v.RedirectionPolicy }).(pulumi.StringOutput)
+}
+
 // Configuration settings for the refresh tokens issued for this client.
 func (o LookupClientResultOutput) RefreshTokens() GetClientRefreshTokenArrayOutput {
 	return o.ApplyT(func(v LookupClientResult) []GetClientRefreshToken { return v.RefreshTokens }).(GetClientRefreshTokenArrayOutput)
@@ -481,6 +490,11 @@ func (o LookupClientResultOutput) Sso() pulumi.BoolOutput {
 // Indicates whether or not SSO is disabled.
 func (o LookupClientResultOutput) SsoDisabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupClientResult) bool { return v.SsoDisabled }).(pulumi.BoolOutput)
+}
+
+// Security mode for third-party clients. Allowed values: `strict` or `permissive`.
+func (o LookupClientResultOutput) ThirdPartySecurityMode() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClientResult) string { return v.ThirdPartySecurityMode }).(pulumi.StringOutput)
 }
 
 // The authentication method for the token endpoint. Results include `none` (public client without a client secret), `clientSecretPost` (client uses HTTP POST parameters), `clientSecretBasic` (client uses HTTP Basic), Managing a client's authentication method can be done via the `ClientCredentials` resource.

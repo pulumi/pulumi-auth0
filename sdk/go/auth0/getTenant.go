@@ -70,6 +70,8 @@ type LookupTenantResult struct {
 	DisableAcrValuesSupported bool `pulumi:"disableAcrValuesSupported"`
 	// Your Auth0 domain name.
 	Domain string `pulumi:"domain"`
+	// Sets the third*party*security_mode assigned to clients created via Dynamic Client Registration. Can only be configured by [customers with pre-existing third-party client usage before April 2026](https://auth0.com/docs/get-started/applications/third-party-applications/permissive-mode#dynamic-client-registration-in-permissive-mode).
+	DynamicClientRegistrationSecurityMode string `pulumi:"dynamicClientRegistrationSecurityMode"`
 	// Supported locales for the user interface. The first locale in the list will be used to set the default locale.
 	EnabledLocales []string `pulumi:"enabledLocales"`
 	// Number of hours an ephemeral (non-persistent) session will stay valid.
@@ -191,6 +193,11 @@ func (o LookupTenantResultOutput) DisableAcrValuesSupported() pulumi.BoolOutput 
 // Your Auth0 domain name.
 func (o LookupTenantResultOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTenantResult) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+// Sets the third*party*security_mode assigned to clients created via Dynamic Client Registration. Can only be configured by [customers with pre-existing third-party client usage before April 2026](https://auth0.com/docs/get-started/applications/third-party-applications/permissive-mode#dynamic-client-registration-in-permissive-mode).
+func (o LookupTenantResultOutput) DynamicClientRegistrationSecurityMode() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTenantResult) string { return v.DynamicClientRegistrationSecurityMode }).(pulumi.StringOutput)
 }
 
 // Supported locales for the user interface. The first locale in the list will be used to set the default locale.

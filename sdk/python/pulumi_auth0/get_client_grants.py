@@ -27,7 +27,7 @@ class GetClientGrantsResult:
     """
     A collection of values returned by getClientGrants.
     """
-    def __init__(__self__, audience=None, client_grants=None, client_id=None, id=None):
+    def __init__(__self__, audience=None, client_grants=None, client_id=None, default_for=None, id=None):
         if audience and not isinstance(audience, str):
             raise TypeError("Expected argument 'audience' to be a str")
         pulumi.set(__self__, "audience", audience)
@@ -37,6 +37,9 @@ class GetClientGrantsResult:
         if client_id and not isinstance(client_id, str):
             raise TypeError("Expected argument 'client_id' to be a str")
         pulumi.set(__self__, "client_id", client_id)
+        if default_for and not isinstance(default_for, str):
+            raise TypeError("Expected argument 'default_for' to be a str")
+        pulumi.set(__self__, "default_for", default_for)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -66,6 +69,14 @@ class GetClientGrantsResult:
         return pulumi.get(self, "client_id")
 
     @_builtins.property
+    @pulumi.getter(name="defaultFor")
+    def default_for(self) -> Optional[_builtins.str]:
+        """
+        Filter by default_for value (e.g., `third_party_clients`).
+        """
+        return pulumi.get(self, "default_for")
+
+    @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
@@ -83,11 +94,13 @@ class AwaitableGetClientGrantsResult(GetClientGrantsResult):
             audience=self.audience,
             client_grants=self.client_grants,
             client_id=self.client_id,
+            default_for=self.default_for,
             id=self.id)
 
 
 def get_client_grants(audience: Optional[_builtins.str] = None,
                       client_id: Optional[_builtins.str] = None,
+                      default_for: Optional[_builtins.str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClientGrantsResult:
     """
     Data source to retrieve a client grants based on client_id and/or audience
@@ -131,10 +144,12 @@ def get_client_grants(audience: Optional[_builtins.str] = None,
 
     :param _builtins.str audience: The audience to filter by.
     :param _builtins.str client_id: The ID of the client to filter by.
+    :param _builtins.str default_for: Filter by default_for value (e.g., `third_party_clients`).
     """
     __args__ = dict()
     __args__['audience'] = audience
     __args__['clientId'] = client_id
+    __args__['defaultFor'] = default_for
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('auth0:index/getClientGrants:getClientGrants', __args__, opts=opts, typ=GetClientGrantsResult).value
 
@@ -142,9 +157,11 @@ def get_client_grants(audience: Optional[_builtins.str] = None,
         audience=pulumi.get(__ret__, 'audience'),
         client_grants=pulumi.get(__ret__, 'client_grants'),
         client_id=pulumi.get(__ret__, 'client_id'),
+        default_for=pulumi.get(__ret__, 'default_for'),
         id=pulumi.get(__ret__, 'id'))
 def get_client_grants_output(audience: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              client_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             default_for: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClientGrantsResult]:
     """
     Data source to retrieve a client grants based on client_id and/or audience
@@ -188,14 +205,17 @@ def get_client_grants_output(audience: pulumi.Input[Optional[Optional[_builtins.
 
     :param _builtins.str audience: The audience to filter by.
     :param _builtins.str client_id: The ID of the client to filter by.
+    :param _builtins.str default_for: Filter by default_for value (e.g., `third_party_clients`).
     """
     __args__ = dict()
     __args__['audience'] = audience
     __args__['clientId'] = client_id
+    __args__['defaultFor'] = default_for
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('auth0:index/getClientGrants:getClientGrants', __args__, opts=opts, typ=GetClientGrantsResult)
     return __ret__.apply(lambda __response__: GetClientGrantsResult(
         audience=pulumi.get(__response__, 'audience'),
         client_grants=pulumi.get(__response__, 'client_grants'),
         client_id=pulumi.get(__response__, 'client_id'),
+        default_for=pulumi.get(__response__, 'default_for'),
         id=pulumi.get(__response__, 'id')))

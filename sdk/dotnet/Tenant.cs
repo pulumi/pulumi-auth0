@@ -147,6 +147,12 @@ namespace Pulumi.Auth0
         public Output<bool> DisableAcrValuesSupported { get; private set; } = null!;
 
         /// <summary>
+        /// Sets the third*party*security_mode assigned to clients created via Dynamic Client Registration. Can only be configured by [customers with pre-existing third-party client usage before April 2026](https://auth0.com/docs/get-started/applications/third-party-applications/permissive-mode#dynamic-client-registration-in-permissive-mode).
+        /// </summary>
+        [Output("dynamicClientRegistrationSecurityMode")]
+        public Output<string> DynamicClientRegistrationSecurityMode { get; private set; } = null!;
+
+        /// <summary>
         /// Supported locales for the user interface. The first locale in the list will be used to set the default locale.
         /// </summary>
         [Output("enabledLocales")]
@@ -384,6 +390,12 @@ namespace Pulumi.Auth0
         [Input("disableAcrValuesSupported")]
         public Input<bool>? DisableAcrValuesSupported { get; set; }
 
+        /// <summary>
+        /// Sets the third*party*security_mode assigned to clients created via Dynamic Client Registration. Can only be configured by [customers with pre-existing third-party client usage before April 2026](https://auth0.com/docs/get-started/applications/third-party-applications/permissive-mode#dynamic-client-registration-in-permissive-mode).
+        /// </summary>
+        [Input("dynamicClientRegistrationSecurityMode")]
+        public Input<string>? DynamicClientRegistrationSecurityMode { get; set; }
+
         [Input("enabledLocales")]
         private InputList<string>? _enabledLocales;
 
@@ -589,6 +601,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("disableAcrValuesSupported")]
         public Input<bool>? DisableAcrValuesSupported { get; set; }
+
+        /// <summary>
+        /// Sets the third*party*security_mode assigned to clients created via Dynamic Client Registration. Can only be configured by [customers with pre-existing third-party client usage before April 2026](https://auth0.com/docs/get-started/applications/third-party-applications/permissive-mode#dynamic-client-registration-in-permissive-mode).
+        /// </summary>
+        [Input("dynamicClientRegistrationSecurityMode")]
+        public Input<string>? DynamicClientRegistrationSecurityMode { get; set; }
 
         [Input("enabledLocales")]
         private InputList<string>? _enabledLocales;

@@ -37,6 +37,12 @@ namespace Pulumi.Auth0.Inputs
         }
 
         /// <summary>
+        /// Enable API Access to groups.
+        /// </summary>
+        [Input("apiEnableGroups")]
+        public Input<bool>? ApiEnableGroups { get; set; }
+
+        /// <summary>
         /// Enable API Access to users.
         /// </summary>
         [Input("apiEnableUsers")]
@@ -344,6 +350,18 @@ namespace Pulumi.Auth0.Inputs
         [Input("iconUrl")]
         public Input<string>? IconUrl { get; set; }
 
+        [Input("idTokenSignedResponseAlgs")]
+        private InputList<string>? _idTokenSignedResponseAlgs;
+
+        /// <summary>
+        /// List of allowed algorithms for the ID token signature. If not set, RS256 will be applied at runtime. (Okta/OIDC Connections)
+        /// </summary>
+        public InputList<string> IdTokenSignedResponseAlgs
+        {
+            get => _idTokenSignedResponseAlgs ?? (_idTokenSignedResponseAlgs = new InputList<string>());
+            set => _idTokenSignedResponseAlgs = value;
+        }
+
         /// <summary>
         /// Azure AD Identity API. Available options are: `microsoft-identity-platform-v2.0` or `azure-active-directory-v1.0`.
         /// </summary>
@@ -481,6 +499,12 @@ namespace Pulumi.Auth0.Inputs
         /// </summary>
         [Input("passwordNoPersonalInfo")]
         public Input<Inputs.ConnectionOptionsPasswordNoPersonalInfoGetArgs>? PasswordNoPersonalInfo { get; set; }
+
+        /// <summary>
+        /// Flexible password policy configuration. Only available for `Auth0` strategy connections. Cannot be set together with legacy password policy fields (`PasswordPolicy`, `PasswordComplexityOptions`, `PasswordHistory`, `PasswordNoPersonalInfo`, `PasswordDictionary`).
+        /// </summary>
+        [Input("passwordOptions")]
+        public Input<Inputs.ConnectionOptionsPasswordOptionsGetArgs>? PasswordOptions { get; set; }
 
         /// <summary>
         /// Indicates level of password strength to enforce during authentication. A strong password policy will make it difficult, if not improbable, for someone to guess a password through either manual or automated means. Options include `None`, `Low`, `Fair`, `Good`, `Excellent`.
@@ -691,6 +715,12 @@ namespace Pulumi.Auth0.Inputs
         /// </summary>
         [Input("tokenEndpointAuthSigningAlg")]
         public Input<string>? TokenEndpointAuthSigningAlg { get; set; }
+
+        /// <summary>
+        /// Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: 'issuer' or 'token_endpoint'. (Okta/OIDC Connections)
+        /// </summary>
+        [Input("tokenEndpointJwtcaAudFormat")]
+        public Input<string>? TokenEndpointJwtcaAudFormat { get; set; }
 
         /// <summary>
         /// Configuration options for one-time passwords.

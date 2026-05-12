@@ -64,6 +64,11 @@ import * as utilities from "./utilities";
  *     ],
  *     allowAllScopes: false,
  * });
+ * const default3pGrant = new auth0.ClientGrant("default_3p_grant", {
+ *     defaultFor: "third_party_clients",
+ *     audience: myResourceServer.identifier,
+ *     scopes: ["read:foo"],
+ * });
  * ```
  *
  * ## Import
@@ -122,9 +127,13 @@ export class ClientGrant extends pulumi.CustomResource {
      */
     declare public readonly authorizationDetailsTypes: pulumi.Output<string[] | undefined>;
     /**
-     * ID of the client for this grant.
+     * ID of the client for this grant. Mutually exclusive with `defaultFor`.
      */
-    declare public readonly clientId: pulumi.Output<string>;
+    declare public readonly clientId: pulumi.Output<string | undefined>;
+    /**
+     * Applies this client grant as the default for all clients in the specified group. The only accepted value is third*party*clients, which applies the grant to all third-party clients.
+     */
+    declare public readonly defaultFor: pulumi.Output<string | undefined>;
     /**
      * Indicates whether this grant is a special grant created by Auth0. It cannot be modified or deleted directly.
      */
@@ -160,6 +169,7 @@ export class ClientGrant extends pulumi.CustomResource {
             resourceInputs["audience"] = state?.audience;
             resourceInputs["authorizationDetailsTypes"] = state?.authorizationDetailsTypes;
             resourceInputs["clientId"] = state?.clientId;
+            resourceInputs["defaultFor"] = state?.defaultFor;
             resourceInputs["isSystem"] = state?.isSystem;
             resourceInputs["organizationUsage"] = state?.organizationUsage;
             resourceInputs["scopes"] = state?.scopes;
@@ -169,14 +179,12 @@ export class ClientGrant extends pulumi.CustomResource {
             if (args?.audience === undefined && !opts.urn) {
                 throw new Error("Missing required property 'audience'");
             }
-            if (args?.clientId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'clientId'");
-            }
             resourceInputs["allowAllScopes"] = args?.allowAllScopes;
             resourceInputs["allowAnyOrganization"] = args?.allowAnyOrganization;
             resourceInputs["audience"] = args?.audience;
             resourceInputs["authorizationDetailsTypes"] = args?.authorizationDetailsTypes;
             resourceInputs["clientId"] = args?.clientId;
+            resourceInputs["defaultFor"] = args?.defaultFor;
             resourceInputs["organizationUsage"] = args?.organizationUsage;
             resourceInputs["scopes"] = args?.scopes;
             resourceInputs["subjectType"] = args?.subjectType;
@@ -208,9 +216,13 @@ export interface ClientGrantState {
      */
     authorizationDetailsTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * ID of the client for this grant.
+     * ID of the client for this grant. Mutually exclusive with `defaultFor`.
      */
     clientId?: pulumi.Input<string | undefined>;
+    /**
+     * Applies this client grant as the default for all clients in the specified group. The only accepted value is third*party*clients, which applies the grant to all third-party clients.
+     */
+    defaultFor?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether this grant is a special grant created by Auth0. It cannot be modified or deleted directly.
      */
@@ -250,9 +262,13 @@ export interface ClientGrantArgs {
      */
     authorizationDetailsTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * ID of the client for this grant.
+     * ID of the client for this grant. Mutually exclusive with `defaultFor`.
      */
-    clientId: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
+    /**
+     * Applies this client grant as the default for all clients in the specified group. The only accepted value is third*party*clients, which applies the grant to all third-party clients.
+     */
+    defaultFor?: pulumi.Input<string | undefined>;
     /**
      * Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
      */

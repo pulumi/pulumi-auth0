@@ -33,10 +33,11 @@ import (
 //				DisplayName: pulumi.String("Google Workspace"),
 //				Strategy:    pulumi.String("google-apps"),
 //				Options: &auth0.ConnectionOptionsArgs{
-//					ClientId:       pulumi.String("your-google-client-id"),
-//					ClientSecret:   pulumi.String("your-google-client-secret"),
-//					Domain:         pulumi.String("example.com"),
-//					ApiEnableUsers: pulumi.Bool(true),
+//					ClientId:        pulumi.String("your-google-client-id"),
+//					ClientSecret:    pulumi.String("your-google-client-secret"),
+//					Domain:          pulumi.String("example.com"),
+//					ApiEnableUsers:  pulumi.Bool(true),
+//					ApiEnableGroups: pulumi.Bool(true),
 //				},
 //			})
 //			if err != nil {
@@ -75,6 +76,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Configure directory provisioning with selective group synchronization
+//			_, err = auth0.NewConnectionDirectory(ctx, "with_selected_groups", &auth0.ConnectionDirectoryArgs{
+//				ConnectionId:      googleWorkspace.ID(),
+//				SynchronizeGroups: pulumi.String("selected"),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			return nil
 //		})
 //	}
@@ -107,6 +116,8 @@ type ConnectionDirectory struct {
 	Strategy pulumi.StringOutput `pulumi:"strategy"`
 	// Whether periodic automatic synchronization is enabled. Defaults to false.
 	SynchronizeAutomatically pulumi.BoolOutput `pulumi:"synchronizeAutomatically"`
+	// Group synchronization configuration. Valid values are: off, all, selected. (EA only)
+	SynchronizeGroups pulumi.StringOutput `pulumi:"synchronizeGroups"`
 	// The timestamp at which the directory provisioning configuration was last updated.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 }
@@ -162,6 +173,8 @@ type connectionDirectoryState struct {
 	Strategy *string `pulumi:"strategy"`
 	// Whether periodic automatic synchronization is enabled. Defaults to false.
 	SynchronizeAutomatically *bool `pulumi:"synchronizeAutomatically"`
+	// Group synchronization configuration. Valid values are: off, all, selected. (EA only)
+	SynchronizeGroups *string `pulumi:"synchronizeGroups"`
 	// The timestamp at which the directory provisioning configuration was last updated.
 	UpdatedAt *string `pulumi:"updatedAt"`
 }
@@ -185,6 +198,8 @@ type ConnectionDirectoryState struct {
 	Strategy pulumi.StringPtrInput
 	// Whether periodic automatic synchronization is enabled. Defaults to false.
 	SynchronizeAutomatically pulumi.BoolPtrInput
+	// Group synchronization configuration. Valid values are: off, all, selected. (EA only)
+	SynchronizeGroups pulumi.StringPtrInput
 	// The timestamp at which the directory provisioning configuration was last updated.
 	UpdatedAt pulumi.StringPtrInput
 }
@@ -200,6 +215,8 @@ type connectionDirectoryArgs struct {
 	Mappings []ConnectionDirectoryMapping `pulumi:"mappings"`
 	// Whether periodic automatic synchronization is enabled. Defaults to false.
 	SynchronizeAutomatically *bool `pulumi:"synchronizeAutomatically"`
+	// Group synchronization configuration. Valid values are: off, all, selected. (EA only)
+	SynchronizeGroups *string `pulumi:"synchronizeGroups"`
 }
 
 // The set of arguments for constructing a ConnectionDirectory resource.
@@ -210,6 +227,8 @@ type ConnectionDirectoryArgs struct {
 	Mappings ConnectionDirectoryMappingArrayInput
 	// Whether periodic automatic synchronization is enabled. Defaults to false.
 	SynchronizeAutomatically pulumi.BoolPtrInput
+	// Group synchronization configuration. Valid values are: off, all, selected. (EA only)
+	SynchronizeGroups pulumi.StringPtrInput
 }
 
 func (ConnectionDirectoryArgs) ElementType() reflect.Type {
@@ -342,6 +361,11 @@ func (o ConnectionDirectoryOutput) Strategy() pulumi.StringOutput {
 // Whether periodic automatic synchronization is enabled. Defaults to false.
 func (o ConnectionDirectoryOutput) SynchronizeAutomatically() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ConnectionDirectory) pulumi.BoolOutput { return v.SynchronizeAutomatically }).(pulumi.BoolOutput)
+}
+
+// Group synchronization configuration. Valid values are: off, all, selected. (EA only)
+func (o ConnectionDirectoryOutput) SynchronizeGroups() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConnectionDirectory) pulumi.StringOutput { return v.SynchronizeGroups }).(pulumi.StringOutput)
 }
 
 // The timestamp at which the directory provisioning configuration was last updated.

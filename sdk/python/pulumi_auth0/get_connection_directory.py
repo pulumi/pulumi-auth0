@@ -27,7 +27,7 @@ class GetConnectionDirectoryResult:
     """
     A collection of values returned by getConnectionDirectory.
     """
-    def __init__(__self__, connection_id=None, connection_name=None, created_at=None, id=None, last_synchronization_at=None, last_synchronization_error=None, last_synchronization_status=None, mappings=None, strategy=None, synchronize_automatically=None, updated_at=None):
+    def __init__(__self__, connection_id=None, connection_name=None, created_at=None, id=None, last_synchronization_at=None, last_synchronization_error=None, last_synchronization_status=None, mappings=None, strategy=None, synchronize_automatically=None, synchronize_groups=None, updated_at=None):
         if connection_id and not isinstance(connection_id, str):
             raise TypeError("Expected argument 'connection_id' to be a str")
         pulumi.set(__self__, "connection_id", connection_id)
@@ -58,6 +58,9 @@ class GetConnectionDirectoryResult:
         if synchronize_automatically and not isinstance(synchronize_automatically, bool):
             raise TypeError("Expected argument 'synchronize_automatically' to be a bool")
         pulumi.set(__self__, "synchronize_automatically", synchronize_automatically)
+        if synchronize_groups and not isinstance(synchronize_groups, str):
+            raise TypeError("Expected argument 'synchronize_groups' to be a str")
+        pulumi.set(__self__, "synchronize_groups", synchronize_groups)
         if updated_at and not isinstance(updated_at, str):
             raise TypeError("Expected argument 'updated_at' to be a str")
         pulumi.set(__self__, "updated_at", updated_at)
@@ -143,6 +146,14 @@ class GetConnectionDirectoryResult:
         return pulumi.get(self, "synchronize_automatically")
 
     @_builtins.property
+    @pulumi.getter(name="synchronizeGroups")
+    def synchronize_groups(self) -> _builtins.str:
+        """
+        Group synchronization configuration. Valid values are: off, all, selected. (EA only)
+        """
+        return pulumi.get(self, "synchronize_groups")
+
+    @_builtins.property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> _builtins.str:
         """
@@ -167,6 +178,7 @@ class AwaitableGetConnectionDirectoryResult(GetConnectionDirectoryResult):
             mappings=self.mappings,
             strategy=self.strategy,
             synchronize_automatically=self.synchronize_automatically,
+            synchronize_groups=self.synchronize_groups,
             updated_at=self.updated_at)
 
 
@@ -203,6 +215,7 @@ def get_connection_directory(connection_id: Optional[_builtins.str] = None,
         mappings=pulumi.get(__ret__, 'mappings'),
         strategy=pulumi.get(__ret__, 'strategy'),
         synchronize_automatically=pulumi.get(__ret__, 'synchronize_automatically'),
+        synchronize_groups=pulumi.get(__ret__, 'synchronize_groups'),
         updated_at=pulumi.get(__ret__, 'updated_at'))
 def get_connection_directory_output(connection_id: pulumi.Input[Optional[_builtins.str]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConnectionDirectoryResult]:
@@ -236,4 +249,5 @@ def get_connection_directory_output(connection_id: pulumi.Input[Optional[_builti
         mappings=pulumi.get(__response__, 'mappings'),
         strategy=pulumi.get(__response__, 'strategy'),
         synchronize_automatically=pulumi.get(__response__, 'synchronize_automatically'),
+        synchronize_groups=pulumi.get(__response__, 'synchronize_groups'),
         updated_at=pulumi.get(__response__, 'updated_at')))

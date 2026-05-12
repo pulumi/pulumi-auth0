@@ -1831,6 +1831,10 @@ export interface ConnectionOptions {
      */
     allowedAudiences: string[];
     /**
+     * Enable API Access to groups.
+     */
+    apiEnableGroups?: boolean;
+    /**
      * Enable API Access to users.
      */
     apiEnableUsers?: boolean;
@@ -1999,6 +2003,10 @@ export interface ConnectionOptions {
      */
     iconUrl?: string;
     /**
+     * List of allowed algorithms for the ID token signature. If not set, RS256 will be applied at runtime. (Okta/OIDC Connections)
+     */
+    idTokenSignedResponseAlgs?: string[];
+    /**
      * Azure AD Identity API. Available options are: `microsoft-identity-platform-v2.0` or `azure-active-directory-v1.0`.
      */
     identityApi?: string;
@@ -2078,6 +2086,10 @@ export interface ConnectionOptions {
      * Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's `name`, `username`, `nickname`, `user_metadata.name`, `user_metadata.first`, `user_metadata.last`, user's `email`, or first part of the user's `email`.
      */
     passwordNoPersonalInfo: outputs.ConnectionOptionsPasswordNoPersonalInfo;
+    /**
+     * Flexible password policy configuration. Only available for `auth0` strategy connections. Cannot be set together with legacy password policy fields (`passwordPolicy`, `passwordComplexityOptions`, `passwordHistory`, `passwordNoPersonalInfo`, `passwordDictionary`).
+     */
+    passwordOptions: outputs.ConnectionOptionsPasswordOptions;
     /**
      * Indicates level of password strength to enforce during authentication. A strong password policy will make it difficult, if not improbable, for someone to guess a password through either manual or automated means. Options include `none`, `low`, `fair`, `good`, `excellent`.
      */
@@ -2206,6 +2218,10 @@ export interface ConnectionOptions {
      * Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
      */
     tokenEndpointAuthSigningAlg?: string;
+    /**
+     * Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: 'issuer' or 'token_endpoint'. (Okta/OIDC Connections)
+     */
+    tokenEndpointJwtcaAudFormat?: string;
     /**
      * Configuration options for one-time passwords.
      */
@@ -2619,6 +2635,89 @@ export interface ConnectionOptionsPasswordNoPersonalInfo {
     enable?: boolean;
 }
 
+export interface ConnectionOptionsPasswordOptions {
+    /**
+     * Password complexity requirements.
+     */
+    complexity: outputs.ConnectionOptionsPasswordOptionsComplexity;
+    /**
+     * Dictionary-based password validation.
+     */
+    dictionary: outputs.ConnectionOptionsPasswordOptionsDictionary;
+    /**
+     * Password history enforcement.
+     */
+    history: outputs.ConnectionOptionsPasswordOptionsHistory;
+    /**
+     * Personal information restriction policy.
+     */
+    profileData: outputs.ConnectionOptionsPasswordOptionsProfileData;
+}
+
+export interface ConnectionOptionsPasswordOptionsComplexity {
+    /**
+     * When all 4 character types are specified, determines if all or 3 of 4 are required. Possible values: `all`, `threeOfFour`. Default: `all`.
+     */
+    characterTypeRule: string;
+    /**
+     * Required character types. Valid values: `uppercase`, `lowercase`, `number`, `special`.
+     */
+    characterTypes: string[];
+    /**
+     * Controls whether 3+ consecutive identical characters are allowed. Possible values: `allow`, `block`. Default: `allow`.
+     */
+    identicalCharacters: string;
+    /**
+     * Controls behavior when the password exceeds 72 bytes. Possible values: `truncate`, `error`. Default: `error`.
+     */
+    maxLengthExceeded: string;
+    /**
+     * Minimum password length. Must be between 1 and 72. Default: 15.
+     */
+    minLength: number;
+    /**
+     * Controls whether sequential characters (abc, 123, etc.) are allowed. Possible values: `allow`, `block`. Default: `allow`.
+     */
+    sequentialCharacters: string;
+}
+
+export interface ConnectionOptionsPasswordOptionsDictionary {
+    /**
+     * Enables dictionary checking.
+     */
+    active: boolean;
+    /**
+     * Custom list of disallowed terms.
+     */
+    customs: string[];
+    /**
+     * Default dictionary to use. Possible values: `en10k`, `en100k`. Default: `en100k`.
+     */
+    default: string;
+}
+
+export interface ConnectionOptionsPasswordOptionsHistory {
+    /**
+     * Enables password history checking.
+     */
+    active: boolean;
+    /**
+     * Number of previous passwords to check against. Must be between 1 and 24. Default: 3.
+     */
+    size: number;
+}
+
+export interface ConnectionOptionsPasswordOptionsProfileData {
+    /**
+     * Prevents users from including profile data in passwords.
+     */
+    active: boolean;
+    /**
+     * User profile fields to block from passwords. Maximum 12 items, each max 100 characters.
+     */
+    blockedFields: string[];
+}
+
 export interface ConnectionOptionsSigningKey {
     cert: string;
     key: string;
@@ -3009,6 +3108,13 @@ export interface EncryptionKeyManagerEncryptionKey {
      * The ISO 8601 formatted date the encryption key was updated.
      */
     updatedAt: string;
+}
+
+export interface EventStreamActionConfiguration {
+    /**
+     * The ID of the Auth0 Action to use as the event stream destination.
+     */
+    actionId: string;
 }
 
 export interface EventStreamEventbridgeConfiguration {
@@ -4637,6 +4743,10 @@ export interface GetClientGrantsClientGrant {
      */
     clientId: string;
     /**
+     * Indicates this grant is the default for a category of clients.
+     */
+    defaultFor: string;
+    /**
      * The ID of the client grant.
      */
     id: string;
@@ -4995,6 +5105,10 @@ export interface GetClientsClient {
      */
     organizationDiscoveryMethods: string[];
     /**
+     * Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.Allowed values: `allowAlways` or `openRedirectProtection`.
+     */
+    redirectionPolicy: string;
+    /**
      * The identifier of a resource server that client is associated withThis property can be sent only when app_type=resource_server.This property can not be changed, once the client is created.
      */
     resourceServerIdentifier: string;
@@ -5003,6 +5117,10 @@ export interface GetClientsClient {
      * Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
      */
     skipNonVerifiableCallbackUriConfirmationPrompt: string;
+    /**
+     * Security mode for third-party clients. Allowed values: `strict` or `permissive`.
+     */
+    thirdPartySecurityMode: string;
     /**
      * Allows configuration for token exchange
      */
@@ -5268,6 +5386,10 @@ export interface GetConnectionOption {
      */
     allowedAudiences: string[];
     /**
+     * Enable API Access to groups.
+     */
+    apiEnableGroups: boolean;
+    /**
      * Enable API Access to users.
      */
     apiEnableUsers: boolean;
@@ -5436,6 +5558,10 @@ export interface GetConnectionOption {
      */
     iconUrl: string;
     /**
+     * List of allowed algorithms for the ID token signature. If not set, RS256 will be applied at runtime. (Okta/OIDC Connections)
+     */
+    idTokenSignedResponseAlgs: string[];
+    /**
      * Azure AD Identity API. Available options are: `microsoft-identity-platform-v2.0` or `azure-active-directory-v1.0`.
      */
     identityApi: string;
@@ -5515,6 +5641,10 @@ export interface GetConnectionOption {
      * Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's `name`, `username`, `nickname`, `user_metadata.name`, `user_metadata.first`, `user_metadata.last`, user's `email`, or first part of the user's `email`.
      */
     passwordNoPersonalInfos: outputs.GetConnectionOptionPasswordNoPersonalInfo[];
+    /**
+     * Flexible password policy configuration. Only available for `auth0` strategy connections. Cannot be set together with legacy password policy fields (`passwordPolicy`, `passwordComplexityOptions`, `passwordHistory`, `passwordNoPersonalInfo`, `passwordDictionary`).
+     */
+    passwordOptions: outputs.GetConnectionOptionPasswordOption[];
     /**
      * Indicates level of password strength to enforce during authentication. A strong password policy will make it difficult, if not improbable, for someone to guess a password through either manual or automated means. Options include `none`, `low`, `fair`, `good`, `excellent`.
      */
@@ -5643,6 +5773,10 @@ export interface GetConnectionOption {
      * Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
      */
     tokenEndpointAuthSigningAlg: string;
+    /**
+     * Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: 'issuer' or 'token_endpoint'. (Okta/OIDC Connections)
+     */
+    tokenEndpointJwtcaAudFormat: string;
     /**
      * Configuration options for one-time passwords.
      */
@@ -6056,6 +6190,89 @@ export interface GetConnectionOptionPasswordNoPersonalInfo {
     enable: boolean;
 }
 
+export interface GetConnectionOptionPasswordOption {
+    /**
+     * Password complexity requirements.
+     */
+    complexities: outputs.GetConnectionOptionPasswordOptionComplexity[];
+    /**
+     * Dictionary-based password validation.
+     */
+    dictionaries: outputs.GetConnectionOptionPasswordOptionDictionary[];
+    /**
+     * Password history enforcement.
+     */
+    histories: outputs.GetConnectionOptionPasswordOptionHistory[];
+    /**
+     * Personal information restriction policy.
+     */
+    profileDatas: outputs.GetConnectionOptionPasswordOptionProfileData[];
+}
+
+export interface GetConnectionOptionPasswordOptionComplexity {
+    /**
+     * When all 4 character types are specified, determines if all or 3 of 4 are required. Possible values: `all`, `threeOfFour`. Default: `all`.
+     */
+    characterTypeRule: string;
+    /**
+     * Required character types. Valid values: `uppercase`, `lowercase`, `number`, `special`.
+     */
+    characterTypes: string[];
+    /**
+     * Controls whether 3+ consecutive identical characters are allowed. Possible values: `allow`, `block`. Default: `allow`.
+     */
+    identicalCharacters: string;
+    /**
+     * Controls behavior when the password exceeds 72 bytes. Possible values: `truncate`, `error`. Default: `error`.
+     */
+    maxLengthExceeded: string;
+    /**
+     * Minimum password length. Must be between 1 and 72. Default: 15.
+     */
+    minLength: number;
+    /**
+     * Controls whether sequential characters (abc, 123, etc.) are allowed. Possible values: `allow`, `block`. Default: `allow`.
+     */
+    sequentialCharacters: string;
+}
+
+export interface GetConnectionOptionPasswordOptionDictionary {
+    /**
+     * Enables dictionary checking.
+     */
+    active: boolean;
+    /**
+     * Custom list of disallowed terms.
+     */
+    customs: string[];
+    /**
+     * Default dictionary to use. Possible values: `en10k`, `en100k`. Default: `en100k`.
+     */
+    default: string;
+}
+
+export interface GetConnectionOptionPasswordOptionHistory {
+    /**
+     * Enables password history checking.
+     */
+    active: boolean;
+    /**
+     * Number of previous passwords to check against. Must be between 1 and 24. Default: 3.
+     */
+    size: number;
+}
+
+export interface GetConnectionOptionPasswordOptionProfileData {
+    /**
+     * Prevents users from including profile data in passwords.
+     */
+    active: boolean;
+    /**
+     * User profile fields to block from passwords. Maximum 12 items, each max 100 characters.
+     */
+    blockedFields: string[];
+}
+
 export interface GetConnectionOptionSigningKey {
     cert: string;
     key: string;
@@ -6392,6 +6609,13 @@ export interface GetCustomDomainsCustomDomainVerification {
      * Represents the current status of the domain verification process.
      */
     status: string;
+}
+
+export interface GetEventStreamActionConfiguration {
+    /**
+     * The ID of the Auth0 Action to use as the event stream destination.
+     */
+    actionId: string;
 }
 
 export interface GetEventStreamEventbridgeConfiguration {
@@ -6841,6 +7065,13 @@ export interface GetResourceServerAuthorizationDetail {
      * Type of authorization details.
      */
     type: string;
+}
+
+export interface GetResourceServerAuthorizationPolicy {
+    /**
+     * Identifier of the authorization policy.
+     */
+    policyId: string;
 }
 
 export interface GetResourceServerProofOfPossession {
@@ -8069,6 +8300,13 @@ export interface ResourceServerAuthorizationDetail {
     type?: string;
 }
 
+export interface ResourceServerAuthorizationPolicy {
+    /**
+     * Identifier of the authorization policy.
+     */
+    policyId: string;
+}
+
 export interface ResourceServerProofOfPossession {
     /**
      * Disable proof-of-possession.
@@ -8312,7 +8550,7 @@ export interface TenantFlags {
     /**
      * If true, SMS phone numbers will not be obfuscated in Management API GET calls.
      */
-    disableManagementApiSmsObfuscation: boolean;
+    disableManagementApiSmsObfuscation?: boolean;
     /**
      * If enabled, users will be presented with an email verification prompt during their first login when using Azure AD or ADFS connections.
      */
@@ -8348,7 +8586,7 @@ export interface TenantFlags {
     /**
      * Indicates whether advanced API Authorization scenarios are enabled.
      */
-    enablePipeline2: boolean;
+    enablePipeline2?: boolean;
     /**
      * Indicates whether the public sign up process shows a `userExists` error if the user already exists.
      */

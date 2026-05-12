@@ -30,6 +30,11 @@ public final class GetClientGrantsResult {
      */
     private @Nullable String clientId;
     /**
+     * @return Filter by defaultFor value (e.g., `thirdPartyClients`).
+     * 
+     */
+    private @Nullable String defaultFor;
+    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
@@ -58,6 +63,13 @@ public final class GetClientGrantsResult {
         return Optional.ofNullable(this.clientId);
     }
     /**
+     * @return Filter by defaultFor value (e.g., `thirdPartyClients`).
+     * 
+     */
+    public Optional<String> defaultFor() {
+        return Optional.ofNullable(this.defaultFor);
+    }
+    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
@@ -77,6 +89,7 @@ public final class GetClientGrantsResult {
         private @Nullable String audience;
         private List<GetClientGrantsClientGrant> clientGrants;
         private @Nullable String clientId;
+        private @Nullable String defaultFor;
         private String id;
         public Builder() {}
         public Builder(GetClientGrantsResult defaults) {
@@ -84,6 +97,7 @@ public final class GetClientGrantsResult {
     	      this.audience = defaults.audience;
     	      this.clientGrants = defaults.clientGrants;
     	      this.clientId = defaults.clientId;
+    	      this.defaultFor = defaults.defaultFor;
     	      this.id = defaults.id;
         }
 
@@ -111,6 +125,12 @@ public final class GetClientGrantsResult {
             return this;
         }
         @CustomType.Setter
+        public Builder defaultFor(@Nullable String defaultFor) {
+
+            this.defaultFor = defaultFor;
+            return this;
+        }
+        @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetClientGrantsResult", "id");
@@ -123,6 +143,7 @@ public final class GetClientGrantsResult {
             _resultValue.audience = audience;
             _resultValue.clientGrants = clientGrants;
             _resultValue.clientId = clientId;
+            _resultValue.defaultFor = defaultFor;
             _resultValue.id = id;
             return _resultValue;
         }

@@ -245,6 +245,11 @@ public final class GetClientResult {
      */
     private String organizationUsage;
     /**
+     * @return Controls whether Auth0 redirects users to the application&#39;s callback URL on authentication errors or in email verification flows.Allowed values: `allowAlways` or `openRedirectProtection`.
+     * 
+     */
+    private String redirectionPolicy;
+    /**
      * @return Configuration settings for the refresh tokens issued for this client.
      * 
      */
@@ -290,6 +295,11 @@ public final class GetClientResult {
      * 
      */
     private Boolean ssoDisabled;
+    /**
+     * @return Security mode for third-party clients. Allowed values: `strict` or `permissive`.
+     * 
+     */
+    private String thirdPartySecurityMode;
     /**
      * @return The authentication method for the token endpoint. Results include `none` (public client without a client secret), `clientSecretPost` (client uses HTTP POST parameters), `clientSecretBasic` (client uses HTTP Basic), Managing a client&#39;s authentication method can be done via the `auth0.ClientCredentials` resource.
      * 
@@ -614,6 +624,13 @@ public final class GetClientResult {
         return this.organizationUsage;
     }
     /**
+     * @return Controls whether Auth0 redirects users to the application&#39;s callback URL on authentication errors or in email verification flows.Allowed values: `allowAlways` or `openRedirectProtection`.
+     * 
+     */
+    public String redirectionPolicy() {
+        return this.redirectionPolicy;
+    }
+    /**
      * @return Configuration settings for the refresh tokens issued for this client.
      * 
      */
@@ -678,6 +695,13 @@ public final class GetClientResult {
      */
     public Boolean ssoDisabled() {
         return this.ssoDisabled;
+    }
+    /**
+     * @return Security mode for third-party clients. Allowed values: `strict` or `permissive`.
+     * 
+     */
+    public String thirdPartySecurityMode() {
+        return this.thirdPartySecurityMode;
     }
     /**
      * @return The authentication method for the token endpoint. Results include `none` (public client without a client secret), `clientSecretPost` (client uses HTTP POST parameters), `clientSecretBasic` (client uses HTTP Basic), Managing a client&#39;s authentication method can be done via the `auth0.ClientCredentials` resource.
@@ -760,6 +784,7 @@ public final class GetClientResult {
         private List<String> organizationDiscoveryMethods;
         private String organizationRequireBehavior;
         private String organizationUsage;
+        private String redirectionPolicy;
         private List<GetClientRefreshToken> refreshTokens;
         private Boolean requireProofOfPossession;
         private Boolean requirePushedAuthorizationRequests;
@@ -770,6 +795,7 @@ public final class GetClientResult {
         private String skipNonVerifiableCallbackUriConfirmationPrompt;
         private Boolean sso;
         private Boolean ssoDisabled;
+        private String thirdPartySecurityMode;
         private String tokenEndpointAuthMethod;
         private List<GetClientTokenExchange> tokenExchanges;
         private List<GetClientTokenQuota> tokenQuotas;
@@ -820,6 +846,7 @@ public final class GetClientResult {
     	      this.organizationDiscoveryMethods = defaults.organizationDiscoveryMethods;
     	      this.organizationRequireBehavior = defaults.organizationRequireBehavior;
     	      this.organizationUsage = defaults.organizationUsage;
+    	      this.redirectionPolicy = defaults.redirectionPolicy;
     	      this.refreshTokens = defaults.refreshTokens;
     	      this.requireProofOfPossession = defaults.requireProofOfPossession;
     	      this.requirePushedAuthorizationRequests = defaults.requirePushedAuthorizationRequests;
@@ -830,6 +857,7 @@ public final class GetClientResult {
     	      this.skipNonVerifiableCallbackUriConfirmationPrompt = defaults.skipNonVerifiableCallbackUriConfirmationPrompt;
     	      this.sso = defaults.sso;
     	      this.ssoDisabled = defaults.ssoDisabled;
+    	      this.thirdPartySecurityMode = defaults.thirdPartySecurityMode;
     	      this.tokenEndpointAuthMethod = defaults.tokenEndpointAuthMethod;
     	      this.tokenExchanges = defaults.tokenExchanges;
     	      this.tokenQuotas = defaults.tokenQuotas;
@@ -1231,6 +1259,14 @@ public final class GetClientResult {
             return this;
         }
         @CustomType.Setter
+        public Builder redirectionPolicy(String redirectionPolicy) {
+            if (redirectionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "redirectionPolicy");
+            }
+            this.redirectionPolicy = redirectionPolicy;
+            return this;
+        }
+        @CustomType.Setter
         public Builder refreshTokens(List<GetClientRefreshToken> refreshTokens) {
             if (refreshTokens == null) {
               throw new MissingRequiredPropertyException("GetClientResult", "refreshTokens");
@@ -1320,6 +1356,14 @@ public final class GetClientResult {
             return this;
         }
         @CustomType.Setter
+        public Builder thirdPartySecurityMode(String thirdPartySecurityMode) {
+            if (thirdPartySecurityMode == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "thirdPartySecurityMode");
+            }
+            this.thirdPartySecurityMode = thirdPartySecurityMode;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tokenEndpointAuthMethod(String tokenEndpointAuthMethod) {
             if (tokenEndpointAuthMethod == null) {
               throw new MissingRequiredPropertyException("GetClientResult", "tokenEndpointAuthMethod");
@@ -1405,6 +1449,7 @@ public final class GetClientResult {
             _resultValue.organizationDiscoveryMethods = organizationDiscoveryMethods;
             _resultValue.organizationRequireBehavior = organizationRequireBehavior;
             _resultValue.organizationUsage = organizationUsage;
+            _resultValue.redirectionPolicy = redirectionPolicy;
             _resultValue.refreshTokens = refreshTokens;
             _resultValue.requireProofOfPossession = requireProofOfPossession;
             _resultValue.requirePushedAuthorizationRequests = requirePushedAuthorizationRequests;
@@ -1415,6 +1460,7 @@ public final class GetClientResult {
             _resultValue.skipNonVerifiableCallbackUriConfirmationPrompt = skipNonVerifiableCallbackUriConfirmationPrompt;
             _resultValue.sso = sso;
             _resultValue.ssoDisabled = ssoDisabled;
+            _resultValue.thirdPartySecurityMode = thirdPartySecurityMode;
             _resultValue.tokenEndpointAuthMethod = tokenEndpointAuthMethod;
             _resultValue.tokenExchanges = tokenExchanges;
             _resultValue.tokenQuotas = tokenQuotas;

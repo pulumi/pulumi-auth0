@@ -64,12 +64,28 @@ public final class ConnectionDirectoryArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.synchronizeAutomatically);
     }
 
+    /**
+     * Group synchronization configuration. Valid values are: off, all, selected. (EA only)
+     * 
+     */
+    @Import(name="synchronizeGroups")
+    private @Nullable Output<String> synchronizeGroups;
+
+    /**
+     * @return Group synchronization configuration. Valid values are: off, all, selected. (EA only)
+     * 
+     */
+    public Optional<Output<String>> synchronizeGroups() {
+        return Optional.ofNullable(this.synchronizeGroups);
+    }
+
     private ConnectionDirectoryArgs() {}
 
     private ConnectionDirectoryArgs(ConnectionDirectoryArgs $) {
         this.connectionId = $.connectionId;
         this.mappings = $.mappings;
         this.synchronizeAutomatically = $.synchronizeAutomatically;
+        this.synchronizeGroups = $.synchronizeGroups;
     }
 
     public static Builder builder() {
@@ -161,6 +177,27 @@ public final class ConnectionDirectoryArgs extends com.pulumi.resources.Resource
          */
         public Builder synchronizeAutomatically(Boolean synchronizeAutomatically) {
             return synchronizeAutomatically(Output.of(synchronizeAutomatically));
+        }
+
+        /**
+         * @param synchronizeGroups Group synchronization configuration. Valid values are: off, all, selected. (EA only)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder synchronizeGroups(@Nullable Output<String> synchronizeGroups) {
+            $.synchronizeGroups = synchronizeGroups;
+            return this;
+        }
+
+        /**
+         * @param synchronizeGroups Group synchronization configuration. Valid values are: off, all, selected. (EA only)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder synchronizeGroups(String synchronizeGroups) {
+            return synchronizeGroups(Output.of(synchronizeGroups));
         }
 
         public ConnectionDirectoryArgs build() {

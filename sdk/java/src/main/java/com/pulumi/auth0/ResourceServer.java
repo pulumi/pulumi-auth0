@@ -7,6 +7,7 @@ import com.pulumi.auth0.ResourceServerArgs;
 import com.pulumi.auth0.Utilities;
 import com.pulumi.auth0.inputs.ResourceServerState;
 import com.pulumi.auth0.outputs.ResourceServerAuthorizationDetail;
+import com.pulumi.auth0.outputs.ResourceServerAuthorizationPolicy;
 import com.pulumi.auth0.outputs.ResourceServerProofOfPossession;
 import com.pulumi.auth0.outputs.ResourceServerSubjectTypeAuthorization;
 import com.pulumi.auth0.outputs.ResourceServerTokenEncryption;
@@ -140,14 +141,14 @@ public class ResourceServer extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="allowOfflineAccess", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> allowOfflineAccess;
+    private Output<Boolean> allowOfflineAccess;
 
     /**
      * @return Indicates whether refresh tokens can be issued for this resource server.
      * 
      */
-    public Output<Optional<Boolean>> allowOfflineAccess() {
-        return Codegen.optional(this.allowOfflineAccess);
+    public Output<Boolean> allowOfflineAccess() {
+        return this.allowOfflineAccess;
     }
     /**
      * Authorization details for this resource server.
@@ -162,6 +163,20 @@ public class ResourceServer extends com.pulumi.resources.CustomResource {
      */
     public Output<List<ResourceServerAuthorizationDetail>> authorizationDetails() {
         return this.authorizationDetails;
+    }
+    /**
+     * Authorization policy for the resource server.(EA Only)
+     * 
+     */
+    @Export(name="authorizationPolicy", refs={ResourceServerAuthorizationPolicy.class}, tree="[0]")
+    private Output<ResourceServerAuthorizationPolicy> authorizationPolicy;
+
+    /**
+     * @return Authorization policy for the resource server.(EA Only)
+     * 
+     */
+    public Output<ResourceServerAuthorizationPolicy> authorizationPolicy() {
+        return this.authorizationPolicy;
     }
     /**
      * The ID of the client associated with this resource server. If a client has been created and linked to this resource server, this field will be populated with that client&#39;s ID.

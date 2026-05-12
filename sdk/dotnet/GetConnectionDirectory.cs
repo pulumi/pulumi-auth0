@@ -158,6 +158,10 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly bool SynchronizeAutomatically;
         /// <summary>
+        /// Group synchronization configuration. Valid values are: off, all, selected. (EA only)
+        /// </summary>
+        public readonly string SynchronizeGroups;
+        /// <summary>
         /// The timestamp at which the directory provisioning configuration was last updated.
         /// </summary>
         public readonly string UpdatedAt;
@@ -184,6 +188,8 @@ namespace Pulumi.Auth0
 
             bool synchronizeAutomatically,
 
+            string synchronizeGroups,
+
             string updatedAt)
         {
             ConnectionId = connectionId;
@@ -196,6 +202,7 @@ namespace Pulumi.Auth0
             Mappings = mappings;
             Strategy = strategy;
             SynchronizeAutomatically = synchronizeAutomatically;
+            SynchronizeGroups = synchronizeGroups;
             UpdatedAt = updatedAt;
         }
     }

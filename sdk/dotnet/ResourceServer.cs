@@ -117,13 +117,19 @@ namespace Pulumi.Auth0
         /// Indicates whether refresh tokens can be issued for this resource server.
         /// </summary>
         [Output("allowOfflineAccess")]
-        public Output<bool?> AllowOfflineAccess { get; private set; } = null!;
+        public Output<bool> AllowOfflineAccess { get; private set; } = null!;
 
         /// <summary>
         /// Authorization details for this resource server.
         /// </summary>
         [Output("authorizationDetails")]
         public Output<ImmutableArray<Outputs.ResourceServerAuthorizationDetail>> AuthorizationDetails { get; private set; } = null!;
+
+        /// <summary>
+        /// Authorization policy for the resource server.(EA Only)
+        /// </summary>
+        [Output("authorizationPolicy")]
+        public Output<Outputs.ResourceServerAuthorizationPolicy> AuthorizationPolicy { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the client associated with this resource server. If a client has been created and linked to this resource server, this field will be populated with that client's ID.
@@ -286,6 +292,12 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
+        /// Authorization policy for the resource server.(EA Only)
+        /// </summary>
+        [Input("authorizationPolicy")]
+        public Input<Inputs.ResourceServerAuthorizationPolicyArgs>? AuthorizationPolicy { get; set; }
+
+        /// <summary>
         /// Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `Null` to disable.
         /// </summary>
         [Input("consentPolicy")]
@@ -394,6 +406,12 @@ namespace Pulumi.Auth0
             get => _authorizationDetails ?? (_authorizationDetails = new InputList<Inputs.ResourceServerAuthorizationDetailGetArgs>());
             set => _authorizationDetails = value;
         }
+
+        /// <summary>
+        /// Authorization policy for the resource server.(EA Only)
+        /// </summary>
+        [Input("authorizationPolicy")]
+        public Input<Inputs.ResourceServerAuthorizationPolicyGetArgs>? AuthorizationPolicy { get; set; }
 
         /// <summary>
         /// The ID of the client associated with this resource server. If a client has been created and linked to this resource server, this field will be populated with that client's ID.

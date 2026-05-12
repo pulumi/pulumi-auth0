@@ -64,6 +64,11 @@ public final class GetConnectionDirectoryResult {
      */
     private Boolean synchronizeAutomatically;
     /**
+     * @return Group synchronization configuration. Valid values are: off, all, selected. (EA only)
+     * 
+     */
+    private String synchronizeGroups;
+    /**
      * @return The timestamp at which the directory provisioning configuration was last updated.
      * 
      */
@@ -141,6 +146,13 @@ public final class GetConnectionDirectoryResult {
         return this.synchronizeAutomatically;
     }
     /**
+     * @return Group synchronization configuration. Valid values are: off, all, selected. (EA only)
+     * 
+     */
+    public String synchronizeGroups() {
+        return this.synchronizeGroups;
+    }
+    /**
      * @return The timestamp at which the directory provisioning configuration was last updated.
      * 
      */
@@ -167,6 +179,7 @@ public final class GetConnectionDirectoryResult {
         private List<GetConnectionDirectoryMapping> mappings;
         private String strategy;
         private Boolean synchronizeAutomatically;
+        private String synchronizeGroups;
         private String updatedAt;
         public Builder() {}
         public Builder(GetConnectionDirectoryResult defaults) {
@@ -181,6 +194,7 @@ public final class GetConnectionDirectoryResult {
     	      this.mappings = defaults.mappings;
     	      this.strategy = defaults.strategy;
     	      this.synchronizeAutomatically = defaults.synchronizeAutomatically;
+    	      this.synchronizeGroups = defaults.synchronizeGroups;
     	      this.updatedAt = defaults.updatedAt;
         }
 
@@ -268,6 +282,14 @@ public final class GetConnectionDirectoryResult {
             return this;
         }
         @CustomType.Setter
+        public Builder synchronizeGroups(String synchronizeGroups) {
+            if (synchronizeGroups == null) {
+              throw new MissingRequiredPropertyException("GetConnectionDirectoryResult", "synchronizeGroups");
+            }
+            this.synchronizeGroups = synchronizeGroups;
+            return this;
+        }
+        @CustomType.Setter
         public Builder updatedAt(String updatedAt) {
             if (updatedAt == null) {
               throw new MissingRequiredPropertyException("GetConnectionDirectoryResult", "updatedAt");
@@ -287,6 +309,7 @@ public final class GetConnectionDirectoryResult {
             _resultValue.mappings = mappings;
             _resultValue.strategy = strategy;
             _resultValue.synchronizeAutomatically = synchronizeAutomatically;
+            _resultValue.synchronizeGroups = synchronizeGroups;
             _resultValue.updatedAt = updatedAt;
             return _resultValue;
         }
