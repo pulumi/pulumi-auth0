@@ -160,12 +160,8 @@ def get_action_module_version(module_id: Optional[_builtins.str] = None,
     # Get all versions to find the version ID
     my_module_versions = auth0.get_action_module_versions_output(module_id=my_module.id)
     # Retrieve a specific version by its ID
-    my_module_version = pulumi.Output.all(
-        id=my_module.id,
-        my_module_versions=my_module_versions
-    ).apply(lambda resolved_outputs: auth0.get_action_module_version_output(module_id=resolved_outputs['id'],
-        version_id=my_module_versions.versions[0].id))
-
+    my_module_version = auth0.get_action_module_version_output(module_id=my_module.id,
+        version_id=my_module_versions.versions[0].id)
     pulumi.export("versionNumber", my_module_version.version_number)
     pulumi.export("versionCode", my_module_version.code)
     pulumi.export("versionCreatedAt", my_module_version.created_at)
@@ -216,12 +212,8 @@ def get_action_module_version_output(module_id: pulumi.Input[Optional[_builtins.
     # Get all versions to find the version ID
     my_module_versions = auth0.get_action_module_versions_output(module_id=my_module.id)
     # Retrieve a specific version by its ID
-    my_module_version = pulumi.Output.all(
-        id=my_module.id,
-        my_module_versions=my_module_versions
-    ).apply(lambda resolved_outputs: auth0.get_action_module_version_output(module_id=resolved_outputs['id'],
-        version_id=my_module_versions.versions[0].id))
-
+    my_module_version = auth0.get_action_module_version_output(module_id=my_module.id,
+        version_id=my_module_versions.versions[0].id)
     pulumi.export("versionNumber", my_module_version.version_number)
     pulumi.export("versionCode", my_module_version.code)
     pulumi.export("versionCreatedAt", my_module_version.created_at)

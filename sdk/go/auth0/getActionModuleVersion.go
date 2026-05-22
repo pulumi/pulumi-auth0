@@ -49,14 +49,12 @@ import (
 //				ModuleId: myModule.ID(),
 //			}, nil)
 //			// Retrieve a specific version by its ID
-//			myModuleVersion := pulumi.All(myModule.ID(), myModuleVersions).ApplyT(func(_args []interface{}) (auth0.GetActionModuleVersionResult, error) {
-//				id := _args[0].(string)
-//				myModuleVersions := _args[1].(auth0.GetActionModuleVersionsResult)
-//				return auth0.GetActionModuleVersionResult(interface{}(auth0.GetActionModuleVersion(ctx, &auth0.GetActionModuleVersionArgs{
-//					ModuleId:  id,
-//					VersionId: myModuleVersions.Versions[0].Id,
-//				}, nil))), nil
-//			}).(auth0.GetActionModuleVersionResultOutput)
+//			myModuleVersion := auth0.GetActionModuleVersionOutput(ctx, auth0.GetActionModuleVersionOutputArgs{
+//				ModuleId: myModule.ID(),
+//				VersionId: myModuleVersions.ApplyT(func(myModuleVersions auth0.GetActionModuleVersionsResult) (*string, error) {
+//					return &myModuleVersions.Versions[0].Id, nil
+//				}).(pulumi.StringPtrOutput),
+//			}, nil)
 //			ctx.Export("versionNumber", myModuleVersion.ApplyT(func(myModuleVersion auth0.GetActionModuleVersionResult) (*int, error) {
 //				return &myModuleVersion.VersionNumber, nil
 //			}).(pulumi.IntPtrOutput))
