@@ -715,7 +715,7 @@ class ActionModuleLatestVersionArgsDict(TypedDict):
     """
     The time when this version was created.
     """
-    dependencies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ActionModuleLatestVersionDependencyArgs']]]]]
+    dependencies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ActionModuleLatestVersionDependencyArgsDict']]]]]
     """
     List of third party npm modules, and their versions, that this version depends on.
     """
@@ -723,7 +723,7 @@ class ActionModuleLatestVersionArgsDict(TypedDict):
     """
     The unique identifier of the version.
     """
-    secrets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ActionModuleLatestVersionSecretArgs']]]]]
+    secrets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ActionModuleLatestVersionSecretArgsDict']]]]]
     """
     List of secrets that are included in this version.
     """
@@ -1236,11 +1236,11 @@ class AttackProtectionBreachedPasswordDetectionArgsDict(TypedDict):
     """
     The subscription level for breached password detection methods. Use "enhanced" to enable Credential Guard. Possible values: `standard`, `enhanced`.
     """
-    pre_change_password: NotRequired[pulumi.Input[Optional['AttackProtectionBreachedPasswordDetectionPreChangePasswordArgs']]]
+    pre_change_password: NotRequired[pulumi.Input[Optional['AttackProtectionBreachedPasswordDetectionPreChangePasswordArgsDict']]]
     """
     Configuration options that apply before every password change attempt.
     """
-    pre_user_registration: NotRequired[pulumi.Input[Optional['AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs']]]
+    pre_user_registration: NotRequired[pulumi.Input[Optional['AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgsDict']]]
     """
     Configuration options that apply before every user registration attempt. Only available on public tenants.
     """
@@ -1522,27 +1522,27 @@ class AttackProtectionCaptchaArgsDict(TypedDict):
     """
     Active CAPTCHA provider ID. Set to empty string to disable CAPTCHA. Possible values: `recaptcha_v2`, `recaptcha_enterprise`, `hcaptcha`, `friendly_captcha`, `arkose`, `auth_challenge`, `simple_captcha`.
     """
-    arkose: NotRequired[pulumi.Input[Optional['AttackProtectionCaptchaArkoseArgs']]]
+    arkose: NotRequired[pulumi.Input[Optional['AttackProtectionCaptchaArkoseArgsDict']]]
     """
     Configuration for Arkose Labs.
     """
-    auth_challenge: NotRequired[pulumi.Input[Optional['AttackProtectionCaptchaAuthChallengeArgs']]]
+    auth_challenge: NotRequired[pulumi.Input[Optional['AttackProtectionCaptchaAuthChallengeArgsDict']]]
     """
     Configuration for Auth0's Auth Challenge.
     """
-    friendly_captcha: NotRequired[pulumi.Input[Optional['AttackProtectionCaptchaFriendlyCaptchaArgs']]]
+    friendly_captcha: NotRequired[pulumi.Input[Optional['AttackProtectionCaptchaFriendlyCaptchaArgsDict']]]
     """
     Configuration for Friendly Captcha.
     """
-    hcaptcha: NotRequired[pulumi.Input[Optional['AttackProtectionCaptchaHcaptchaArgs']]]
+    hcaptcha: NotRequired[pulumi.Input[Optional['AttackProtectionCaptchaHcaptchaArgsDict']]]
     """
     Configuration for hCaptcha.
     """
-    recaptcha_enterprise: NotRequired[pulumi.Input[Optional['AttackProtectionCaptchaRecaptchaEnterpriseArgs']]]
+    recaptcha_enterprise: NotRequired[pulumi.Input[Optional['AttackProtectionCaptchaRecaptchaEnterpriseArgsDict']]]
     """
     Configuration for Google reCAPTCHA Enterprise.
     """
-    recaptcha_v2: NotRequired[pulumi.Input[Optional['AttackProtectionCaptchaRecaptchaV2Args']]]
+    recaptcha_v2: NotRequired[pulumi.Input[Optional['AttackProtectionCaptchaRecaptchaV2ArgsDict']]]
     """
     Configuration for Google reCAPTCHA v2.
     """
@@ -2023,11 +2023,11 @@ class AttackProtectionSuspiciousIpThrottlingArgsDict(TypedDict):
     """
     List of trusted IP addresses that will not have attack protection enforced against them. This field allows you to specify multiple IP addresses, or ranges. You can use IPv4 or IPv6 addresses and CIDR notation.
     """
-    pre_login: NotRequired[pulumi.Input[Optional['AttackProtectionSuspiciousIpThrottlingPreLoginArgs']]]
+    pre_login: NotRequired[pulumi.Input[Optional['AttackProtectionSuspiciousIpThrottlingPreLoginArgsDict']]]
     """
     Configuration options that apply before every login attempt. Only available on public tenants.
     """
-    pre_user_registration: NotRequired[pulumi.Input[Optional['AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs']]]
+    pre_user_registration: NotRequired[pulumi.Input[Optional['AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgsDict']]]
     """
     Configuration options that apply before every user registration attempt. Only available on public tenants.
     """
@@ -2298,7 +2298,7 @@ class BrandingFontArgs:
 
 
 class BrandingPhoneNotificationTemplateContentArgsDict(TypedDict):
-    body: NotRequired[pulumi.Input[Optional['BrandingPhoneNotificationTemplateContentBodyArgs']]]
+    body: NotRequired[pulumi.Input[Optional['BrandingPhoneNotificationTemplateContentBodyArgsDict']]]
     """
     The body content of the phone notification template.
     """
@@ -3677,119 +3677,119 @@ class BrandingUniversalLoginArgs:
 
 
 class ClientAddonsArgsDict(TypedDict):
-    aws: NotRequired[pulumi.Input[Optional['ClientAddonsAwsArgs']]]
+    aws: NotRequired[pulumi.Input[Optional['ClientAddonsAwsArgsDict']]]
     """
     AWS Addon configuration.
     """
-    azure_blob: NotRequired[pulumi.Input[Optional['ClientAddonsAzureBlobArgs']]]
+    azure_blob: NotRequired[pulumi.Input[Optional['ClientAddonsAzureBlobArgsDict']]]
     """
     Azure Blob Storage Addon configuration.
     """
-    azure_sb: NotRequired[pulumi.Input[Optional['ClientAddonsAzureSbArgs']]]
+    azure_sb: NotRequired[pulumi.Input[Optional['ClientAddonsAzureSbArgsDict']]]
     """
     Azure Storage Bus Addon configuration.
     """
-    box: NotRequired[pulumi.Input[Optional['ClientAddonsBoxArgs']]]
+    box: NotRequired[pulumi.Input[Optional['ClientAddonsBoxArgsDict']]]
     """
     Box SSO indicator (no configuration settings needed for Box SSO).
     """
-    cloudbees: NotRequired[pulumi.Input[Optional['ClientAddonsCloudbeesArgs']]]
+    cloudbees: NotRequired[pulumi.Input[Optional['ClientAddonsCloudbeesArgsDict']]]
     """
     CloudBees SSO indicator (no configuration settings needed for CloudBees SSO).
     """
-    concur: NotRequired[pulumi.Input[Optional['ClientAddonsConcurArgs']]]
+    concur: NotRequired[pulumi.Input[Optional['ClientAddonsConcurArgsDict']]]
     """
     Concur SSO indicator (no configuration settings needed for Concur SSO).
     """
-    dropbox: NotRequired[pulumi.Input[Optional['ClientAddonsDropboxArgs']]]
+    dropbox: NotRequired[pulumi.Input[Optional['ClientAddonsDropboxArgsDict']]]
     """
     Dropbox SSO indicator (no configuration settings needed for Dropbox SSO).
     """
-    echosign: NotRequired[pulumi.Input[Optional['ClientAddonsEchosignArgs']]]
+    echosign: NotRequired[pulumi.Input[Optional['ClientAddonsEchosignArgsDict']]]
     """
     Adobe EchoSign SSO configuration.
     """
-    egnyte: NotRequired[pulumi.Input[Optional['ClientAddonsEgnyteArgs']]]
+    egnyte: NotRequired[pulumi.Input[Optional['ClientAddonsEgnyteArgsDict']]]
     """
     Egnyte SSO configuration.
     """
-    firebase: NotRequired[pulumi.Input[Optional['ClientAddonsFirebaseArgs']]]
+    firebase: NotRequired[pulumi.Input[Optional['ClientAddonsFirebaseArgsDict']]]
     """
     Google Firebase addon configuration.
     """
-    layer: NotRequired[pulumi.Input[Optional['ClientAddonsLayerArgs']]]
+    layer: NotRequired[pulumi.Input[Optional['ClientAddonsLayerArgsDict']]]
     """
     Layer addon configuration.
     """
-    mscrm: NotRequired[pulumi.Input[Optional['ClientAddonsMscrmArgs']]]
+    mscrm: NotRequired[pulumi.Input[Optional['ClientAddonsMscrmArgsDict']]]
     """
     Microsoft Dynamics CRM SSO configuration.
     """
-    newrelic: NotRequired[pulumi.Input[Optional['ClientAddonsNewrelicArgs']]]
+    newrelic: NotRequired[pulumi.Input[Optional['ClientAddonsNewrelicArgsDict']]]
     """
     New Relic SSO configuration.
     """
-    office365: NotRequired[pulumi.Input[Optional['ClientAddonsOffice365Args']]]
+    office365: NotRequired[pulumi.Input[Optional['ClientAddonsOffice365ArgsDict']]]
     """
     Microsoft Office 365 SSO configuration.
     """
-    rms: NotRequired[pulumi.Input[Optional['ClientAddonsRmsArgs']]]
+    rms: NotRequired[pulumi.Input[Optional['ClientAddonsRmsArgsDict']]]
     """
     Active Directory Rights Management Service SSO configuration.
     """
-    salesforce: NotRequired[pulumi.Input[Optional['ClientAddonsSalesforceArgs']]]
+    salesforce: NotRequired[pulumi.Input[Optional['ClientAddonsSalesforceArgsDict']]]
     """
     Salesforce SSO configuration.
     """
-    salesforce_api: NotRequired[pulumi.Input[Optional['ClientAddonsSalesforceApiArgs']]]
+    salesforce_api: NotRequired[pulumi.Input[Optional['ClientAddonsSalesforceApiArgsDict']]]
     """
     Salesforce API addon configuration.
     """
-    salesforce_sandbox_api: NotRequired[pulumi.Input[Optional['ClientAddonsSalesforceSandboxApiArgs']]]
+    salesforce_sandbox_api: NotRequired[pulumi.Input[Optional['ClientAddonsSalesforceSandboxApiArgsDict']]]
     """
     Salesforce Sandbox addon configuration.
     """
-    samlp: NotRequired[pulumi.Input[Optional['ClientAddonsSamlpArgs']]]
+    samlp: NotRequired[pulumi.Input[Optional['ClientAddonsSamlpArgsDict']]]
     """
     Configuration settings for a SAML add-on.
     """
-    sap_api: NotRequired[pulumi.Input[Optional['ClientAddonsSapApiArgs']]]
+    sap_api: NotRequired[pulumi.Input[Optional['ClientAddonsSapApiArgsDict']]]
     """
     SAP API addon configuration.
     """
-    sentry: NotRequired[pulumi.Input[Optional['ClientAddonsSentryArgs']]]
+    sentry: NotRequired[pulumi.Input[Optional['ClientAddonsSentryArgsDict']]]
     """
     Sentry SSO configuration.
     """
-    sharepoint: NotRequired[pulumi.Input[Optional['ClientAddonsSharepointArgs']]]
+    sharepoint: NotRequired[pulumi.Input[Optional['ClientAddonsSharepointArgsDict']]]
     """
     SharePoint SSO configuration.
     """
-    slack: NotRequired[pulumi.Input[Optional['ClientAddonsSlackArgs']]]
+    slack: NotRequired[pulumi.Input[Optional['ClientAddonsSlackArgsDict']]]
     """
     Slack team or workspace name usually first segment in your Slack URL, for example `https://acme-org.slack.com` would be `acme-org`.
     """
-    springcm: NotRequired[pulumi.Input[Optional['ClientAddonsSpringcmArgs']]]
+    springcm: NotRequired[pulumi.Input[Optional['ClientAddonsSpringcmArgsDict']]]
     """
     SpringCM SSO configuration.
     """
-    sso_integration: NotRequired[pulumi.Input[Optional['ClientAddonsSsoIntegrationArgs']]]
+    sso_integration: NotRequired[pulumi.Input[Optional['ClientAddonsSsoIntegrationArgsDict']]]
     """
     Generic SSO configuration.
     """
-    wams: NotRequired[pulumi.Input[Optional['ClientAddonsWamsArgs']]]
+    wams: NotRequired[pulumi.Input[Optional['ClientAddonsWamsArgsDict']]]
     """
     Windows Azure Mobile Services addon configuration.
     """
-    wsfed: NotRequired[pulumi.Input[Optional['ClientAddonsWsfedArgs']]]
+    wsfed: NotRequired[pulumi.Input[Optional['ClientAddonsWsfedArgsDict']]]
     """
     WS-Fed (WIF) addon indicator. Actual configuration is stored in `callback` and `client_aliases` properties on the client.
     """
-    zendesk: NotRequired[pulumi.Input[Optional['ClientAddonsZendeskArgs']]]
+    zendesk: NotRequired[pulumi.Input[Optional['ClientAddonsZendeskArgsDict']]]
     """
     Zendesk SSO configuration.
     """
-    zoom: NotRequired[pulumi.Input[Optional['ClientAddonsZoomArgs']]]
+    zoom: NotRequired[pulumi.Input[Optional['ClientAddonsZoomArgsDict']]]
     """
     Zoom SSO configuration.
     """
@@ -5405,7 +5405,7 @@ class ClientAddonsSamlpArgsDict(TypedDict):
     """
     Number of seconds during which the token is valid. Defaults to `3600` seconds.
     """
-    logout: NotRequired[pulumi.Input[Optional['ClientAddonsSamlpLogoutArgs']]]
+    logout: NotRequired[pulumi.Input[Optional['ClientAddonsSamlpLogoutArgsDict']]]
     """
     Configuration settings for logout.
     """
@@ -7675,7 +7675,7 @@ class ClientExpressConfigurationArgsDict(TypedDict):
     """
     The URI users should bookmark to log in to this application. Variable substitution is permitted for: organization*name, organization*id, and connection_name.
     """
-    linked_clients: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClientExpressConfigurationLinkedClientArgs']]]]]
+    linked_clients: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClientExpressConfigurationLinkedClientArgsDict']]]]]
     """
     List of client IDs that are linked to this express configuration (e.g. web or mobile clients).
     """
@@ -7962,11 +7962,11 @@ class ClientJwtConfigurationArgs:
 
 
 class ClientMobileArgsDict(TypedDict):
-    android: NotRequired[pulumi.Input[Optional['ClientMobileAndroidArgs']]]
+    android: NotRequired[pulumi.Input[Optional['ClientMobileAndroidArgsDict']]]
     """
     Configuration settings for Android native apps.
     """
-    ios: NotRequired[pulumi.Input[Optional['ClientMobileIosArgs']]]
+    ios: NotRequired[pulumi.Input[Optional['ClientMobileIosArgsDict']]]
     """
     Configuration settings for i0S native apps.
     """
@@ -8166,9 +8166,9 @@ class ClientMyOrganizationConfigurationArgs:
 
 
 class ClientNativeSocialLoginArgsDict(TypedDict):
-    apple: NotRequired[pulumi.Input[Optional['ClientNativeSocialLoginAppleArgs']]]
-    facebook: NotRequired[pulumi.Input[Optional['ClientNativeSocialLoginFacebookArgs']]]
-    google: NotRequired[pulumi.Input[Optional['ClientNativeSocialLoginGoogleArgs']]]
+    apple: NotRequired[pulumi.Input[Optional['ClientNativeSocialLoginAppleArgsDict']]]
+    facebook: NotRequired[pulumi.Input[Optional['ClientNativeSocialLoginFacebookArgsDict']]]
+    google: NotRequired[pulumi.Input[Optional['ClientNativeSocialLoginGoogleArgsDict']]]
 
 @pulumi.input_type
 class ClientNativeSocialLoginArgs:
@@ -8276,11 +8276,11 @@ class ClientOidcLogoutArgsDict(TypedDict):
     """
     Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
     """
-    backchannel_logout_initiators: NotRequired[pulumi.Input[Optional['ClientOidcLogoutBackchannelLogoutInitiatorsArgs']]]
+    backchannel_logout_initiators: NotRequired[pulumi.Input[Optional['ClientOidcLogoutBackchannelLogoutInitiatorsArgsDict']]]
     """
     Configure OIDC logout initiators for the Client
     """
-    backchannel_logout_session_metadata: NotRequired[pulumi.Input[Optional['ClientOidcLogoutBackchannelLogoutSessionMetadataArgs']]]
+    backchannel_logout_session_metadata: NotRequired[pulumi.Input[Optional['ClientOidcLogoutBackchannelLogoutSessionMetadataArgsDict']]]
     """
     Controls whether session metadata is included in the logout token. Default value is null.
     """
@@ -8440,7 +8440,7 @@ class ClientRefreshTokenArgsDict(TypedDict):
     """
     The amount of time in seconds in which a refresh token may be reused without triggering reuse detection.
     """
-    policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClientRefreshTokenPolicyArgs']]]]]
+    policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClientRefreshTokenPolicyArgsDict']]]]]
     """
     A collection of policies governing multi-resource refresh token exchange (MRRT), defining how refresh tokens can be used across different resource servers
     """
@@ -8986,11 +8986,11 @@ class ConnectionOptionsArgsDict(TypedDict):
     """
     App ID.
     """
-    attribute_map: NotRequired[pulumi.Input[Optional['ConnectionOptionsAttributeMapArgs']]]
+    attribute_map: NotRequired[pulumi.Input[Optional['ConnectionOptionsAttributeMapArgsDict']]]
     """
     OpenID Connect and Okta Workforce connections can automatically map claims received from the identity provider (IdP). You can configure this mapping through a library template provided by Auth0 or by entering your own template directly. Click [here](https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc#map-claims-for-oidc-connections) for more info.
     """
-    attributes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionOptionsAttributeArgs']]]]]
+    attributes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionOptionsAttributeArgsDict']]]]]
     """
     Order of attributes for precedence in identification.Valid values: email, phone*number, username. If Precedence is set, it must contain all values (email, phone*number, username) in specific order
     """
@@ -8998,7 +8998,7 @@ class ConnectionOptionsArgsDict(TypedDict):
     """
     Query string parameters to be included as part of the generated passwordless email link.
     """
-    authentication_methods: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionOptionsAuthenticationMethodArgs']]]]]
+    authentication_methods: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionOptionsAuthenticationMethodArgsDict']]]]]
     """
     Specifies the authentication methods and their configuration (enabled or disabled)
     """
@@ -9026,7 +9026,7 @@ class ConnectionOptionsArgsDict(TypedDict):
     """
     A case-sensitive map of key value pairs used as configuration variables for the `custom_script`.
     """
-    connection_settings: NotRequired[pulumi.Input[Optional['ConnectionOptionsConnectionSettingsArgs']]]
+    connection_settings: NotRequired[pulumi.Input[Optional['ConnectionOptionsConnectionSettingsArgsDict']]]
     """
     Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
     """
@@ -9038,11 +9038,11 @@ class ConnectionOptionsArgsDict(TypedDict):
     """
     Secret used to establish ownership of the consumer key.
     """
-    custom_headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionOptionsCustomHeaderArgs']]]]]
+    custom_headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionOptionsCustomHeaderArgsDict']]]]]
     """
     Configure extra headers to the Token endpoint of an OAuth 2.0 provider
     """
-    custom_password_hash: NotRequired[pulumi.Input[Optional['ConnectionOptionsCustomPasswordHashArgs']]]
+    custom_password_hash: NotRequired[pulumi.Input[Optional['ConnectionOptionsCustomPasswordHashArgsDict']]]
     """
     Configure custom password hashing within a connection. (EA only)
     """
@@ -9054,7 +9054,7 @@ class ConnectionOptionsArgsDict(TypedDict):
     """
     When enabled, additional debug information will be generated.
     """
-    decryption_key: NotRequired[pulumi.Input[Optional['ConnectionOptionsDecryptionKeyArgs']]]
+    decryption_key: NotRequired[pulumi.Input[Optional['ConnectionOptionsDecryptionKeyArgsDict']]]
     """
     The key used to decrypt encrypted responses from the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
     """
@@ -9126,7 +9126,7 @@ class ConnectionOptionsArgsDict(TypedDict):
     """
     Address to use as the sender.
     """
-    gateway_authentication: NotRequired[pulumi.Input[Optional['ConnectionOptionsGatewayAuthenticationArgs']]]
+    gateway_authentication: NotRequired[pulumi.Input[Optional['ConnectionOptionsGatewayAuthenticationArgsDict']]]
     """
     Defines the parameters used to generate the auth token for the custom gateway.
     """
@@ -9154,7 +9154,7 @@ class ConnectionOptionsArgsDict(TypedDict):
     """
     Azure AD Identity API. Available options are: `microsoft-identity-platform-v2.0` or `azure-active-directory-v1.0`.
     """
-    idp_initiated: NotRequired[pulumi.Input[Optional['ConnectionOptionsIdpInitiatedArgs']]]
+    idp_initiated: NotRequired[pulumi.Input[Optional['ConnectionOptionsIdpInitiatedArgsDict']]]
     """
     Configuration options for IDP Initiated Authentication. This is an object with the properties: `client_id`, `client_protocol`, and `client_authorize_query`.
     """
@@ -9198,7 +9198,7 @@ class ConnectionOptionsArgsDict(TypedDict):
     """
     The XML content for the SAML metadata document. Values within the xml will take precedence over other attributes set on the options block.
     """
-    mfa: NotRequired[pulumi.Input[Optional['ConnectionOptionsMfaArgs']]]
+    mfa: NotRequired[pulumi.Input[Optional['ConnectionOptionsMfaArgsDict']]]
     """
     Configuration options for multifactor authentication.
     """
@@ -9210,27 +9210,27 @@ class ConnectionOptionsArgsDict(TypedDict):
     """
     If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the DenyList here.
     """
-    passkey_options: NotRequired[pulumi.Input[Optional['ConnectionOptionsPasskeyOptionsArgs']]]
+    passkey_options: NotRequired[pulumi.Input[Optional['ConnectionOptionsPasskeyOptionsArgsDict']]]
     """
     Defines options for the passkey authentication method
     """
-    password_complexity_options: NotRequired[pulumi.Input[Optional['ConnectionOptionsPasswordComplexityOptionsArgs']]]
+    password_complexity_options: NotRequired[pulumi.Input[Optional['ConnectionOptionsPasswordComplexityOptionsArgsDict']]]
     """
     Configuration settings for password complexity.
     """
-    password_dictionary: NotRequired[pulumi.Input[Optional['ConnectionOptionsPasswordDictionaryArgs']]]
+    password_dictionary: NotRequired[pulumi.Input[Optional['ConnectionOptionsPasswordDictionaryArgsDict']]]
     """
     Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary.
     """
-    password_histories: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionOptionsPasswordHistoryArgs']]]]]
+    password_histories: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionOptionsPasswordHistoryArgsDict']]]]]
     """
     Configuration settings for the password history that is maintained for each user to prevent the reuse of passwords.
     """
-    password_no_personal_info: NotRequired[pulumi.Input[Optional['ConnectionOptionsPasswordNoPersonalInfoArgs']]]
+    password_no_personal_info: NotRequired[pulumi.Input[Optional['ConnectionOptionsPasswordNoPersonalInfoArgsDict']]]
     """
     Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's `name`, `username`, `nickname`, `user_metadata.name`, `user_metadata.first`, `user_metadata.last`, user's `email`, or first part of the user's `email`.
     """
-    password_options: NotRequired[pulumi.Input[Optional['ConnectionOptionsPasswordOptionsArgs']]]
+    password_options: NotRequired[pulumi.Input[Optional['ConnectionOptionsPasswordOptionsArgsDict']]]
     """
     Flexible password policy configuration. Only available for `auth0` strategy connections. Cannot be set together with legacy password policy fields (`password_policy`, `password_complexity_options`, `password_history`, `password_no_personal_info`, `password_dictionary`).
     """
@@ -9322,7 +9322,7 @@ class ConnectionOptionsArgsDict(TypedDict):
     """
     X.509 signing certificate (encoded in PEM or CER) you retrieved from the IdP, Base64-encoded.
     """
-    signing_key: NotRequired[pulumi.Input[Optional['ConnectionOptionsSigningKeyArgs']]]
+    signing_key: NotRequired[pulumi.Input[Optional['ConnectionOptionsSigningKeyArgsDict']]]
     """
     The key used to sign requests in the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
     """
@@ -9366,7 +9366,7 @@ class ConnectionOptionsArgsDict(TypedDict):
     """
     Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: 'issuer' or 'token_endpoint'. (Okta/OIDC Connections)
     """
-    totp: NotRequired[pulumi.Input[Optional['ConnectionOptionsTotpArgs']]]
+    totp: NotRequired[pulumi.Input[Optional['ConnectionOptionsTotpArgsDict']]]
     """
     Configuration options for one-time passwords.
     """
@@ -9414,7 +9414,7 @@ class ConnectionOptionsArgsDict(TypedDict):
     """
     User info endpoint.
     """
-    validation: NotRequired[pulumi.Input[Optional['ConnectionOptionsValidationArgs']]]
+    validation: NotRequired[pulumi.Input[Optional['ConnectionOptionsValidationArgsDict']]]
     """
     Validation of the minimum and maximum values allowed for a user to have as username.
     """
@@ -11291,15 +11291,15 @@ class ConnectionOptionsArgs:
 
 
 class ConnectionOptionsAttributeArgsDict(TypedDict):
-    emails: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionOptionsAttributeEmailArgs']]]]]
+    emails: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionOptionsAttributeEmailArgsDict']]]]]
     """
     Connection Options for Email Attribute
     """
-    phone_numbers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionOptionsAttributePhoneNumberArgs']]]]]
+    phone_numbers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionOptionsAttributePhoneNumberArgsDict']]]]]
     """
     Connection Options for Phone Number Attribute
     """
-    usernames: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionOptionsAttributeUsernameArgs']]]]]
+    usernames: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionOptionsAttributeUsernameArgsDict']]]]]
     """
     Connection Options for User Name Attribute
     """
@@ -11360,7 +11360,7 @@ class ConnectionOptionsAttributeArgs:
 
 
 class ConnectionOptionsAttributeEmailArgsDict(TypedDict):
-    identifiers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionOptionsAttributeEmailIdentifierArgs']]]]]
+    identifiers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionOptionsAttributeEmailIdentifierArgsDict']]]]]
     """
     Connection Options Email Attribute Identifier
     """
@@ -11368,7 +11368,7 @@ class ConnectionOptionsAttributeEmailArgsDict(TypedDict):
     """
     Defines whether Profile is required
     """
-    signups: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionOptionsAttributeEmailSignupArgs']]]]]
+    signups: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionOptionsAttributeEmailSignupArgsDict']]]]]
     """
     Defines signup settings for Email attribute
     """
@@ -11522,7 +11522,7 @@ class ConnectionOptionsAttributeEmailSignupArgsDict(TypedDict):
     """
     Defines signup status for Email Attribute
     """
-    verifications: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionOptionsAttributeEmailSignupVerificationArgs']]]]]
+    verifications: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionOptionsAttributeEmailSignupVerificationArgsDict']]]]]
     """
     Defines settings for Verification under Email attribute
     """
@@ -11664,7 +11664,7 @@ class ConnectionOptionsAttributeMapArgs:
 
 
 class ConnectionOptionsAttributePhoneNumberArgsDict(TypedDict):
-    identifiers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionOptionsAttributePhoneNumberIdentifierArgs']]]]]
+    identifiers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionOptionsAttributePhoneNumberIdentifierArgsDict']]]]]
     """
     Connection Options Phone Number Attribute Identifier
     """
@@ -11672,7 +11672,7 @@ class ConnectionOptionsAttributePhoneNumberArgsDict(TypedDict):
     """
     Defines whether Profile is required
     """
-    signups: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionOptionsAttributePhoneNumberSignupArgs']]]]]
+    signups: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionOptionsAttributePhoneNumberSignupArgsDict']]]]]
     """
     Defines signup settings for Phone Number attribute
     """
@@ -11786,7 +11786,7 @@ class ConnectionOptionsAttributePhoneNumberSignupArgsDict(TypedDict):
     """
     Defines status of signup for Phone Number attribute
     """
-    verifications: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionOptionsAttributePhoneNumberSignupVerificationArgs']]]]]
+    verifications: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionOptionsAttributePhoneNumberSignupVerificationArgsDict']]]]]
     """
     Defines verification settings for Phone Number attribute
     """
@@ -11860,7 +11860,7 @@ class ConnectionOptionsAttributePhoneNumberSignupVerificationArgs:
 
 
 class ConnectionOptionsAttributeUsernameArgsDict(TypedDict):
-    identifiers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionOptionsAttributeUsernameIdentifierArgs']]]]]
+    identifiers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionOptionsAttributeUsernameIdentifierArgsDict']]]]]
     """
     Connection options for User Name Attribute Identifier
     """
@@ -11868,11 +11868,11 @@ class ConnectionOptionsAttributeUsernameArgsDict(TypedDict):
     """
     Defines whether Profile is required
     """
-    signups: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionOptionsAttributeUsernameSignupArgs']]]]]
+    signups: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionOptionsAttributeUsernameSignupArgsDict']]]]]
     """
     Defines signup settings for User Name attribute
     """
-    validations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionOptionsAttributeUsernameValidationArgs']]]]]
+    validations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionOptionsAttributeUsernameValidationArgsDict']]]]]
     """
     Defines validation settings for User Name attribute
     """
@@ -12027,7 +12027,7 @@ class ConnectionOptionsAttributeUsernameSignupArgs:
 
 
 class ConnectionOptionsAttributeUsernameValidationArgsDict(TypedDict):
-    allowed_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionOptionsAttributeUsernameValidationAllowedTypeArgs']]]]]
+    allowed_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionOptionsAttributeUsernameValidationAllowedTypeArgsDict']]]]]
     """
     Defines allowed types for for UserName attribute
     """
@@ -12145,19 +12145,19 @@ class ConnectionOptionsAttributeUsernameValidationAllowedTypeArgs:
 
 
 class ConnectionOptionsAuthenticationMethodArgsDict(TypedDict):
-    email_otp: NotRequired[pulumi.Input[Optional['ConnectionOptionsAuthenticationMethodEmailOtpArgs']]]
+    email_otp: NotRequired[pulumi.Input[Optional['ConnectionOptionsAuthenticationMethodEmailOtpArgsDict']]]
     """
     Configures Email OTP authentication
     """
-    passkey: NotRequired[pulumi.Input[Optional['ConnectionOptionsAuthenticationMethodPasskeyArgs']]]
+    passkey: NotRequired[pulumi.Input[Optional['ConnectionOptionsAuthenticationMethodPasskeyArgsDict']]]
     """
     Configures passkey authentication
     """
-    password: NotRequired[pulumi.Input[Optional['ConnectionOptionsAuthenticationMethodPasswordArgs']]]
+    password: NotRequired[pulumi.Input[Optional['ConnectionOptionsAuthenticationMethodPasswordArgsDict']]]
     """
     Configures password authentication
     """
-    phone_otp: NotRequired[pulumi.Input[Optional['ConnectionOptionsAuthenticationMethodPhoneOtpArgs']]]
+    phone_otp: NotRequired[pulumi.Input[Optional['ConnectionOptionsAuthenticationMethodPhoneOtpArgsDict']]]
     """
     Configures Phone OTP authentication
     """
@@ -12925,19 +12925,19 @@ class ConnectionOptionsPasswordNoPersonalInfoArgs:
 
 
 class ConnectionOptionsPasswordOptionsArgsDict(TypedDict):
-    complexity: NotRequired[pulumi.Input[Optional['ConnectionOptionsPasswordOptionsComplexityArgs']]]
+    complexity: NotRequired[pulumi.Input[Optional['ConnectionOptionsPasswordOptionsComplexityArgsDict']]]
     """
     Password complexity requirements.
     """
-    dictionary: NotRequired[pulumi.Input[Optional['ConnectionOptionsPasswordOptionsDictionaryArgs']]]
+    dictionary: NotRequired[pulumi.Input[Optional['ConnectionOptionsPasswordOptionsDictionaryArgsDict']]]
     """
     Dictionary-based password validation.
     """
-    history: NotRequired[pulumi.Input[Optional['ConnectionOptionsPasswordOptionsHistoryArgs']]]
+    history: NotRequired[pulumi.Input[Optional['ConnectionOptionsPasswordOptionsHistoryArgsDict']]]
     """
     Password history enforcement.
     """
-    profile_data: NotRequired[pulumi.Input[Optional['ConnectionOptionsPasswordOptionsProfileDataArgs']]]
+    profile_data: NotRequired[pulumi.Input[Optional['ConnectionOptionsPasswordOptionsProfileDataArgsDict']]]
     """
     Personal information restriction policy.
     """
@@ -13390,7 +13390,7 @@ class ConnectionOptionsTotpArgs:
 
 
 class ConnectionOptionsValidationArgsDict(TypedDict):
-    username: NotRequired[pulumi.Input[Optional['ConnectionOptionsValidationUsernameArgs']]]
+    username: NotRequired[pulumi.Input[Optional['ConnectionOptionsValidationUsernameArgsDict']]]
     """
     Specifies the `min` and `max` values of username length.
     """
@@ -13510,35 +13510,35 @@ class ConnectionProfileOrganizationArgs:
 
 
 class ConnectionProfileStrategyOverridesArgsDict(TypedDict):
-    ad: NotRequired[pulumi.Input[Optional['ConnectionProfileStrategyOverridesAdArgs']]]
+    ad: NotRequired[pulumi.Input[Optional['ConnectionProfileStrategyOverridesAdArgsDict']]]
     """
     Strategy override configuration.
     """
-    adfs: NotRequired[pulumi.Input[Optional['ConnectionProfileStrategyOverridesAdfsArgs']]]
+    adfs: NotRequired[pulumi.Input[Optional['ConnectionProfileStrategyOverridesAdfsArgsDict']]]
     """
     Strategy override configuration.
     """
-    google_apps: NotRequired[pulumi.Input[Optional['ConnectionProfileStrategyOverridesGoogleAppsArgs']]]
+    google_apps: NotRequired[pulumi.Input[Optional['ConnectionProfileStrategyOverridesGoogleAppsArgsDict']]]
     """
     Strategy override configuration.
     """
-    oidc: NotRequired[pulumi.Input[Optional['ConnectionProfileStrategyOverridesOidcArgs']]]
+    oidc: NotRequired[pulumi.Input[Optional['ConnectionProfileStrategyOverridesOidcArgsDict']]]
     """
     Strategy override configuration.
     """
-    okta: NotRequired[pulumi.Input[Optional['ConnectionProfileStrategyOverridesOktaArgs']]]
+    okta: NotRequired[pulumi.Input[Optional['ConnectionProfileStrategyOverridesOktaArgsDict']]]
     """
     Strategy override configuration.
     """
-    pingfederate: NotRequired[pulumi.Input[Optional['ConnectionProfileStrategyOverridesPingfederateArgs']]]
+    pingfederate: NotRequired[pulumi.Input[Optional['ConnectionProfileStrategyOverridesPingfederateArgsDict']]]
     """
     Strategy override configuration.
     """
-    samlp: NotRequired[pulumi.Input[Optional['ConnectionProfileStrategyOverridesSamlpArgs']]]
+    samlp: NotRequired[pulumi.Input[Optional['ConnectionProfileStrategyOverridesSamlpArgsDict']]]
     """
     Strategy override configuration.
     """
-    waad: NotRequired[pulumi.Input[Optional['ConnectionProfileStrategyOverridesWaadArgs']]]
+    waad: NotRequired[pulumi.Input[Optional['ConnectionProfileStrategyOverridesWaadArgsDict']]]
     """
     Strategy override configuration.
     """
@@ -13679,7 +13679,7 @@ class ConnectionProfileStrategyOverridesArgs:
 
 
 class ConnectionProfileStrategyOverridesAdArgsDict(TypedDict):
-    connection_config: NotRequired[pulumi.Input[Optional['ConnectionProfileStrategyOverridesAdConnectionConfigArgs']]]
+    connection_config: NotRequired[pulumi.Input[Optional['ConnectionProfileStrategyOverridesAdConnectionConfigArgsDict']]]
     """
     Connection config for the strategy override.
     """
@@ -13737,7 +13737,7 @@ class ConnectionProfileStrategyOverridesAdConnectionConfigArgs:
 
 
 class ConnectionProfileStrategyOverridesAdfsArgsDict(TypedDict):
-    connection_config: NotRequired[pulumi.Input[Optional['ConnectionProfileStrategyOverridesAdfsConnectionConfigArgs']]]
+    connection_config: NotRequired[pulumi.Input[Optional['ConnectionProfileStrategyOverridesAdfsConnectionConfigArgsDict']]]
     """
     Connection config for the strategy override.
     """
@@ -13795,7 +13795,7 @@ class ConnectionProfileStrategyOverridesAdfsConnectionConfigArgs:
 
 
 class ConnectionProfileStrategyOverridesGoogleAppsArgsDict(TypedDict):
-    connection_config: NotRequired[pulumi.Input[Optional['ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigArgs']]]
+    connection_config: NotRequired[pulumi.Input[Optional['ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigArgsDict']]]
     """
     Connection config for the strategy override.
     """
@@ -13853,7 +13853,7 @@ class ConnectionProfileStrategyOverridesGoogleAppsConnectionConfigArgs:
 
 
 class ConnectionProfileStrategyOverridesOidcArgsDict(TypedDict):
-    connection_config: NotRequired[pulumi.Input[Optional['ConnectionProfileStrategyOverridesOidcConnectionConfigArgs']]]
+    connection_config: NotRequired[pulumi.Input[Optional['ConnectionProfileStrategyOverridesOidcConnectionConfigArgsDict']]]
     """
     Connection config for the strategy override.
     """
@@ -13911,7 +13911,7 @@ class ConnectionProfileStrategyOverridesOidcConnectionConfigArgs:
 
 
 class ConnectionProfileStrategyOverridesOktaArgsDict(TypedDict):
-    connection_config: NotRequired[pulumi.Input[Optional['ConnectionProfileStrategyOverridesOktaConnectionConfigArgs']]]
+    connection_config: NotRequired[pulumi.Input[Optional['ConnectionProfileStrategyOverridesOktaConnectionConfigArgsDict']]]
     """
     Connection config for the strategy override.
     """
@@ -13969,7 +13969,7 @@ class ConnectionProfileStrategyOverridesOktaConnectionConfigArgs:
 
 
 class ConnectionProfileStrategyOverridesPingfederateArgsDict(TypedDict):
-    connection_config: NotRequired[pulumi.Input[Optional['ConnectionProfileStrategyOverridesPingfederateConnectionConfigArgs']]]
+    connection_config: NotRequired[pulumi.Input[Optional['ConnectionProfileStrategyOverridesPingfederateConnectionConfigArgsDict']]]
     """
     Connection config for the strategy override.
     """
@@ -14027,7 +14027,7 @@ class ConnectionProfileStrategyOverridesPingfederateConnectionConfigArgs:
 
 
 class ConnectionProfileStrategyOverridesSamlpArgsDict(TypedDict):
-    connection_config: NotRequired[pulumi.Input[Optional['ConnectionProfileStrategyOverridesSamlpConnectionConfigArgs']]]
+    connection_config: NotRequired[pulumi.Input[Optional['ConnectionProfileStrategyOverridesSamlpConnectionConfigArgsDict']]]
     """
     Connection config for the strategy override.
     """
@@ -14085,7 +14085,7 @@ class ConnectionProfileStrategyOverridesSamlpConnectionConfigArgs:
 
 
 class ConnectionProfileStrategyOverridesWaadArgsDict(TypedDict):
-    connection_config: NotRequired[pulumi.Input[Optional['ConnectionProfileStrategyOverridesWaadConnectionConfigArgs']]]
+    connection_config: NotRequired[pulumi.Input[Optional['ConnectionProfileStrategyOverridesWaadConnectionConfigArgsDict']]]
     """
     Connection config for the strategy override.
     """
@@ -14637,11 +14637,11 @@ class EmailProviderCredentialsArgs:
 
 
 class EmailProviderSettingsArgsDict(TypedDict):
-    headers: NotRequired[pulumi.Input[Optional['EmailProviderSettingsHeadersArgs']]]
+    headers: NotRequired[pulumi.Input[Optional['EmailProviderSettingsHeadersArgsDict']]]
     """
     Headers settings for the `smtp` email provider.
     """
-    message: NotRequired[pulumi.Input[Optional['EmailProviderSettingsMessageArgs']]]
+    message: NotRequired[pulumi.Input[Optional['EmailProviderSettingsMessageArgsDict']]]
     """
     Message settings for the `mandrill` or `ses` email provider.
     """
@@ -15588,7 +15588,7 @@ class GuardianPhoneArgsDict(TypedDict):
     """
     Message types to use, array of `sms` and/or `voice`. Adding both to the array should enable the user to choose.
     """
-    options: NotRequired[pulumi.Input[Optional['GuardianPhoneOptionsArgs']]]
+    options: NotRequired[pulumi.Input[Optional['GuardianPhoneOptionsArgsDict']]]
     """
     Options for the various providers.
     """
@@ -15801,19 +15801,19 @@ class GuardianPushArgsDict(TypedDict):
     """
     Indicates whether Push MFA is enabled.
     """
-    amazon_sns: NotRequired[pulumi.Input[Optional['GuardianPushAmazonSnsArgs']]]
+    amazon_sns: NotRequired[pulumi.Input[Optional['GuardianPushAmazonSnsArgsDict']]]
     """
     Configuration for Amazon SNS.
     """
-    custom_app: NotRequired[pulumi.Input[Optional['GuardianPushCustomAppArgs']]]
+    custom_app: NotRequired[pulumi.Input[Optional['GuardianPushCustomAppArgsDict']]]
     """
     Configuration for the Guardian Custom App.
     """
-    direct_apns: NotRequired[pulumi.Input[Optional['GuardianPushDirectApnsArgs']]]
+    direct_apns: NotRequired[pulumi.Input[Optional['GuardianPushDirectApnsArgsDict']]]
     """
     Configuration for the Apple Push Notification service (APNs) settings.
     """
-    direct_fcm: NotRequired[pulumi.Input[Optional['GuardianPushDirectFcmArgs']]]
+    direct_fcm: NotRequired[pulumi.Input[Optional['GuardianPushDirectFcmArgsDict']]]
     """
     Configuration for Firebase Cloud Messaging (FCM) settings.
     """
@@ -16926,11 +16926,11 @@ class NetworkAclRuleArgsDict(TypedDict):
     """
     The scope of the Network ACL Rule
     """
-    match: NotRequired[pulumi.Input[Optional['NetworkAclRuleMatchArgs']]]
+    match: NotRequired[pulumi.Input[Optional['NetworkAclRuleMatchArgsDict']]]
     """
     The configuration for the Network ACL Rule
     """
-    not_match: NotRequired[pulumi.Input[Optional['NetworkAclRuleNotMatchArgs']]]
+    not_match: NotRequired[pulumi.Input[Optional['NetworkAclRuleNotMatchArgsDict']]]
     """
     The configuration for the Network ACL Rule
     """
@@ -18082,7 +18082,7 @@ class PagesLoginArgs:
 
 
 class PhoneNotificationTemplateContentArgsDict(TypedDict):
-    body: NotRequired[pulumi.Input[Optional['PhoneNotificationTemplateContentBodyArgs']]]
+    body: NotRequired[pulumi.Input[Optional['PhoneNotificationTemplateContentBodyArgsDict']]]
     """
     The body content of the phone notification template.
     """
@@ -18958,11 +18958,11 @@ class ResourceServerScopesScopeArgs:
 
 
 class ResourceServerSubjectTypeAuthorizationArgsDict(TypedDict):
-    client: NotRequired[pulumi.Input[Optional['ResourceServerSubjectTypeAuthorizationClientArgs']]]
+    client: NotRequired[pulumi.Input[Optional['ResourceServerSubjectTypeAuthorizationClientArgsDict']]]
     """
     Client authorization policies for the resource server.
     """
-    user: NotRequired[pulumi.Input[Optional['ResourceServerSubjectTypeAuthorizationUserArgs']]]
+    user: NotRequired[pulumi.Input[Optional['ResourceServerSubjectTypeAuthorizationUserArgsDict']]]
     """
     User authorization policies for the resource server.
     """
@@ -19069,7 +19069,7 @@ class ResourceServerTokenEncryptionArgsDict(TypedDict):
     """
     Disable token encryption.
     """
-    encryption_key: NotRequired[pulumi.Input[Optional['ResourceServerTokenEncryptionEncryptionKeyArgs']]]
+    encryption_key: NotRequired[pulumi.Input[Optional['ResourceServerTokenEncryptionEncryptionKeyArgsDict']]]
     """
     Authorization details for this resource server.
     """
@@ -19308,7 +19308,7 @@ class RolePermissionsPermissionArgs:
 
 
 class SelfServiceProfileBrandingArgsDict(TypedDict):
-    colors: NotRequired[pulumi.Input[Optional['SelfServiceProfileBrandingColorsArgs']]]
+    colors: NotRequired[pulumi.Input[Optional['SelfServiceProfileBrandingColorsArgsDict']]]
     """
     Configuration settings for colors for branding.
     """
@@ -19452,11 +19452,11 @@ class SelfServiceProfileUserAttributeArgs:
 
 
 class TenantDefaultTokenQuotaArgsDict(TypedDict):
-    clients: NotRequired[pulumi.Input[Optional['TenantDefaultTokenQuotaClientsArgs']]]
+    clients: NotRequired[pulumi.Input[Optional['TenantDefaultTokenQuotaClientsArgsDict']]]
     """
     The token quota configuration.
     """
-    organizations: NotRequired[pulumi.Input[Optional['TenantDefaultTokenQuotaOrganizationsArgs']]]
+    organizations: NotRequired[pulumi.Input[Optional['TenantDefaultTokenQuotaOrganizationsArgsDict']]]
     """
     The token quota configuration.
     """
@@ -20478,7 +20478,7 @@ class UserAttributeProfileUserAttributeArgsDict(TypedDict):
     """
     Whether the attribute is required in the profile.
     """
-    oidc_mapping: NotRequired[pulumi.Input[Optional['UserAttributeProfileUserAttributeOidcMappingArgs']]]
+    oidc_mapping: NotRequired[pulumi.Input[Optional['UserAttributeProfileUserAttributeOidcMappingArgsDict']]]
     """
     The OIDC mapping configuration for the user attribute.
     """
@@ -20490,7 +20490,7 @@ class UserAttributeProfileUserAttributeArgsDict(TypedDict):
     """
     The SCIM mapping for the user attribute.
     """
-    strategy_overrides: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['UserAttributeProfileUserAttributeStrategyOverrideArgs']]]]]
+    strategy_overrides: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['UserAttributeProfileUserAttributeStrategyOverrideArgsDict']]]]]
     """
     Strategy-specific overrides for user attribute mapping.
     """
@@ -20694,7 +20694,7 @@ class UserAttributeProfileUserAttributeStrategyOverrideArgsDict(TypedDict):
     """
     The strategy name (e.g., 'oidc', 'samlp', 'ad', etc.).
     """
-    oidc_mapping: NotRequired[pulumi.Input[Optional['UserAttributeProfileUserAttributeStrategyOverrideOidcMappingArgs']]]
+    oidc_mapping: NotRequired[pulumi.Input[Optional['UserAttributeProfileUserAttributeStrategyOverrideOidcMappingArgsDict']]]
     """
     OIDC mapping override for this strategy.
     """
@@ -20838,7 +20838,7 @@ class UserAttributeProfileUserIdArgsDict(TypedDict):
     """
     The SCIM mapping for the user ID.
     """
-    strategy_overrides: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['UserAttributeProfileUserIdStrategyOverrideArgs']]]]]
+    strategy_overrides: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['UserAttributeProfileUserIdStrategyOverrideArgsDict']]]]]
     """
     Strategy-specific overrides for user ID mapping.
     """

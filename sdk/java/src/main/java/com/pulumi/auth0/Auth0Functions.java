@@ -466,14 +466,10 @@ public final class Auth0Functions {
      *             .build());
      * 
      *         // Retrieve a specific version by its ID
-     *         final var myModuleVersion = Output.tuple(myModule.id(), myModuleVersions).applyValue(values -> {
-     *             var id = values.t1;
-     *             var myModuleVersions = values.t2;
-     *             return Auth0Functions.getActionModuleVersion(GetActionModuleVersionArgs.builder()
-     *                 .moduleId(id)
-     *                 .versionId(myModuleVersions.versions()[0].id())
-     *                 .build());
-     *         });
+     *         final var myModuleVersion = Auth0Functions.getActionModuleVersion(GetActionModuleVersionArgs.builder()
+     *             .moduleId(myModule.id())
+     *             .versionId(myModuleVersions.applyValue(_myModuleVersions -> _myModuleVersions.versions()[0].id()))
+     *             .build());
      * 
      *         ctx.export("versionNumber", myModuleVersion.applyValue(_myModuleVersion -> _myModuleVersion.versionNumber()));
      *         ctx.export("versionCode", myModuleVersion.applyValue(_myModuleVersion -> _myModuleVersion.code()));
@@ -537,14 +533,10 @@ public final class Auth0Functions {
      *             .build());
      * 
      *         // Retrieve a specific version by its ID
-     *         final var myModuleVersion = Output.tuple(myModule.id(), myModuleVersions).applyValue(values -> {
-     *             var id = values.t1;
-     *             var myModuleVersions = values.t2;
-     *             return Auth0Functions.getActionModuleVersion(GetActionModuleVersionArgs.builder()
-     *                 .moduleId(id)
-     *                 .versionId(myModuleVersions.versions()[0].id())
-     *                 .build());
-     *         });
+     *         final var myModuleVersion = Auth0Functions.getActionModuleVersion(GetActionModuleVersionArgs.builder()
+     *             .moduleId(myModule.id())
+     *             .versionId(myModuleVersions.applyValue(_myModuleVersions -> _myModuleVersions.versions()[0].id()))
+     *             .build());
      * 
      *         ctx.export("versionNumber", myModuleVersion.applyValue(_myModuleVersion -> _myModuleVersion.versionNumber()));
      *         ctx.export("versionCode", myModuleVersion.applyValue(_myModuleVersion -> _myModuleVersion.code()));
@@ -608,14 +600,10 @@ public final class Auth0Functions {
      *             .build());
      * 
      *         // Retrieve a specific version by its ID
-     *         final var myModuleVersion = Output.tuple(myModule.id(), myModuleVersions).applyValue(values -> {
-     *             var id = values.t1;
-     *             var myModuleVersions = values.t2;
-     *             return Auth0Functions.getActionModuleVersion(GetActionModuleVersionArgs.builder()
-     *                 .moduleId(id)
-     *                 .versionId(myModuleVersions.versions()[0].id())
-     *                 .build());
-     *         });
+     *         final var myModuleVersion = Auth0Functions.getActionModuleVersion(GetActionModuleVersionArgs.builder()
+     *             .moduleId(myModule.id())
+     *             .versionId(myModuleVersions.applyValue(_myModuleVersions -> _myModuleVersions.versions()[0].id()))
+     *             .build());
      * 
      *         ctx.export("versionNumber", myModuleVersion.applyValue(_myModuleVersion -> _myModuleVersion.versionNumber()));
      *         ctx.export("versionCode", myModuleVersion.applyValue(_myModuleVersion -> _myModuleVersion.code()));
@@ -679,14 +667,10 @@ public final class Auth0Functions {
      *             .build());
      * 
      *         // Retrieve a specific version by its ID
-     *         final var myModuleVersion = Output.tuple(myModule.id(), myModuleVersions).applyValue(values -> {
-     *             var id = values.t1;
-     *             var myModuleVersions = values.t2;
-     *             return Auth0Functions.getActionModuleVersion(GetActionModuleVersionArgs.builder()
-     *                 .moduleId(id)
-     *                 .versionId(myModuleVersions.versions()[0].id())
-     *                 .build());
-     *         });
+     *         final var myModuleVersion = Auth0Functions.getActionModuleVersion(GetActionModuleVersionArgs.builder()
+     *             .moduleId(myModule.id())
+     *             .versionId(myModuleVersions.applyValue(_myModuleVersions -> _myModuleVersions.versions()[0].id()))
+     *             .build());
      * 
      *         ctx.export("versionNumber", myModuleVersion.applyValue(_myModuleVersion -> _myModuleVersion.versionNumber()));
      *         ctx.export("versionCode", myModuleVersion.applyValue(_myModuleVersion -> _myModuleVersion.code()));
@@ -750,14 +734,10 @@ public final class Auth0Functions {
      *             .build());
      * 
      *         // Retrieve a specific version by its ID
-     *         final var myModuleVersion = Output.tuple(myModule.id(), myModuleVersions).applyValue(values -> {
-     *             var id = values.t1;
-     *             var myModuleVersions = values.t2;
-     *             return Auth0Functions.getActionModuleVersion(GetActionModuleVersionArgs.builder()
-     *                 .moduleId(id)
-     *                 .versionId(myModuleVersions.versions()[0].id())
-     *                 .build());
-     *         });
+     *         final var myModuleVersion = Auth0Functions.getActionModuleVersion(GetActionModuleVersionArgs.builder()
+     *             .moduleId(myModule.id())
+     *             .versionId(myModuleVersions.applyValue(_myModuleVersions -> _myModuleVersions.versions()[0].id()))
+     *             .build());
      * 
      *         ctx.export("versionNumber", myModuleVersion.applyValue(_myModuleVersion -> _myModuleVersion.versionNumber()));
      *         ctx.export("versionCode", myModuleVersion.applyValue(_myModuleVersion -> _myModuleVersion.code()));

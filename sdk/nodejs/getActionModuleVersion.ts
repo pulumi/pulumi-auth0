@@ -32,10 +32,10 @@ import * as utilities from "./utilities";
  *     moduleId: myModule.id,
  * });
  * // Retrieve a specific version by its ID
- * const myModuleVersion = pulumi.all([myModule.id, myModuleVersions]).apply(([id, myModuleVersions]) => auth0.getActionModuleVersionOutput({
- *     moduleId: id,
- *     versionId: myModuleVersions.versions?.[0]?.id,
- * }));
+ * const myModuleVersion = auth0.getActionModuleVersionOutput({
+ *     moduleId: myModule.id,
+ *     versionId: myModuleVersions.apply(myModuleVersions => myModuleVersions.versions?.[0]?.id),
+ * });
  * export const versionNumber = myModuleVersion.apply(myModuleVersion => myModuleVersion.versionNumber);
  * export const versionCode = myModuleVersion.apply(myModuleVersion => myModuleVersion.code);
  * export const versionCreatedAt = myModuleVersion.apply(myModuleVersion => myModuleVersion.createdAt);
@@ -126,10 +126,10 @@ export interface GetActionModuleVersionResult {
  *     moduleId: myModule.id,
  * });
  * // Retrieve a specific version by its ID
- * const myModuleVersion = pulumi.all([myModule.id, myModuleVersions]).apply(([id, myModuleVersions]) => auth0.getActionModuleVersionOutput({
- *     moduleId: id,
- *     versionId: myModuleVersions.versions?.[0]?.id,
- * }));
+ * const myModuleVersion = auth0.getActionModuleVersionOutput({
+ *     moduleId: myModule.id,
+ *     versionId: myModuleVersions.apply(myModuleVersions => myModuleVersions.versions?.[0]?.id),
+ * });
  * export const versionNumber = myModuleVersion.apply(myModuleVersion => myModuleVersion.versionNumber);
  * export const versionCode = myModuleVersion.apply(myModuleVersion => myModuleVersion.code);
  * export const versionCreatedAt = myModuleVersion.apply(myModuleVersion => myModuleVersion.createdAt);
