@@ -1971,6 +1971,10 @@ export interface ConnectionOptions {
      */
     fedMetadataXml?: pulumi.Input<string | undefined>;
     /**
+     * Configuration for collecting access tokens and refresh tokens from federated connections. Only applicable for OIDC connections.
+     */
+    federatedConnectionsAccessTokens?: pulumi.Input<inputs.ConnectionOptionsFederatedConnectionsAccessTokens | undefined>;
+    /**
      * If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
      */
     fieldsMap?: pulumi.Input<string | undefined>;
@@ -2550,6 +2554,13 @@ export interface ConnectionOptionsCustomPasswordHash {
 export interface ConnectionOptionsDecryptionKey {
     cert: pulumi.Input<string>;
     key: pulumi.Input<string>;
+}
+
+export interface ConnectionOptionsFederatedConnectionsAccessTokens {
+    /**
+     * When enabled, Auth0 will collect and store access tokens and refresh tokens obtained from federated connections during authentication.
+     */
+    active?: pulumi.Input<boolean | undefined>;
 }
 
 export interface ConnectionOptionsGatewayAuthentication {
@@ -3664,6 +3675,14 @@ export interface NetworkAclRuleMatch {
      */
     asns?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
+     * Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
+     */
+    connectingIpv4Cidrs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Connecting IPv6 CIDRs. Must contain between 1 and 20 unique items. Can be IPv6 addresses or CIDR blocks.
+     */
+    connectingIpv6Cidrs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
      * Geo Country Codes. Must contain between 1 and 10 unique items.
      */
     geoCountryCodes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
@@ -3671,6 +3690,10 @@ export interface NetworkAclRuleMatch {
      * Geo Subdivision Codes. Must contain between 1 and 10 unique items.
      */
     geoSubdivisionCodes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Hostnames. Must contain between 1 and 20 unique items.
+     */
+    hostnames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
      */
@@ -3699,6 +3722,14 @@ export interface NetworkAclRuleNotMatch {
      */
     asns?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
+     * Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
+     */
+    connectingIpv4Cidrs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Connecting IPv6 CIDRs. Must contain between 1 and 20 unique items. Can be IPv6 addresses or CIDR blocks.
+     */
+    connectingIpv6Cidrs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
      * Geo Country Codes. Must contain between 1 and 10 unique items.
      */
     geoCountryCodes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
@@ -3706,6 +3737,10 @@ export interface NetworkAclRuleNotMatch {
      * Geo Subdivision Codes. Must contain between 1 and 10 unique items.
      */
     geoSubdivisionCodes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Hostnames. Must contain between 1 and 20 unique items.
+     */
+    hostnames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
      */

@@ -27,7 +27,7 @@ class GetOrganizationResult:
     """
     A collection of values returned by getOrganization.
     """
-    def __init__(__self__, brandings=None, client_grants=None, connections=None, display_name=None, id=None, members=None, metadata=None, name=None, organization_id=None, token_quotas=None):
+    def __init__(__self__, brandings=None, client_grants=None, connections=None, display_name=None, id=None, members=None, metadata=None, name=None, organization_id=None, skip_client_grants=None, skip_connections=None, skip_members=None, token_quotas=None):
         if brandings and not isinstance(brandings, list):
             raise TypeError("Expected argument 'brandings' to be a list")
         pulumi.set(__self__, "brandings", brandings)
@@ -55,6 +55,15 @@ class GetOrganizationResult:
         if organization_id and not isinstance(organization_id, str):
             raise TypeError("Expected argument 'organization_id' to be a str")
         pulumi.set(__self__, "organization_id", organization_id)
+        if skip_client_grants and not isinstance(skip_client_grants, bool):
+            raise TypeError("Expected argument 'skip_client_grants' to be a bool")
+        pulumi.set(__self__, "skip_client_grants", skip_client_grants)
+        if skip_connections and not isinstance(skip_connections, bool):
+            raise TypeError("Expected argument 'skip_connections' to be a bool")
+        pulumi.set(__self__, "skip_connections", skip_connections)
+        if skip_members and not isinstance(skip_members, bool):
+            raise TypeError("Expected argument 'skip_members' to be a bool")
+        pulumi.set(__self__, "skip_members", skip_members)
         if token_quotas and not isinstance(token_quotas, list):
             raise TypeError("Expected argument 'token_quotas' to be a list")
         pulumi.set(__self__, "token_quotas", token_quotas)
@@ -71,13 +80,16 @@ class GetOrganizationResult:
     @pulumi.getter(name="clientGrants")
     def client_grants(self) -> Sequence[_builtins.str]:
         """
-        Client Grant ID(s) that are associated to the organization.
+        Client Grant ID(s) that are associated to the organization. Skips populating if `skip_client_grants` is `true`.
         """
         return pulumi.get(self, "client_grants")
 
     @_builtins.property
     @pulumi.getter
     def connections(self) -> Sequence['outputs.GetOrganizationConnectionResult']:
+        """
+        Connections enabled for this organization. Skips populating if `skip_connections` is `true`.
+        """
         return pulumi.get(self, "connections")
 
     @_builtins.property
@@ -100,7 +112,7 @@ class GetOrganizationResult:
     @pulumi.getter
     def members(self) -> Sequence[_builtins.str]:
         """
-        User ID(s) that are members of the organization.
+        User ID(s) that are members of the organization. Skips populating if `skip_members` is `true`.
         """
         return pulumi.get(self, "members")
 
@@ -129,6 +141,30 @@ class GetOrganizationResult:
         return pulumi.get(self, "organization_id")
 
     @_builtins.property
+    @pulumi.getter(name="skipClientGrants")
+    def skip_client_grants(self) -> Optional[_builtins.bool]:
+        """
+        Whether to skip organization client grants. Setting this to `true` will skip API call to /api/v2/organizations/{id}/client-grants.
+        """
+        return pulumi.get(self, "skip_client_grants")
+
+    @_builtins.property
+    @pulumi.getter(name="skipConnections")
+    def skip_connections(self) -> Optional[_builtins.bool]:
+        """
+        Whether to skip organization connections. Setting this to `true` will skip paginated API calls to /api/v2/organizations/{id}/connections.
+        """
+        return pulumi.get(self, "skip_connections")
+
+    @_builtins.property
+    @pulumi.getter(name="skipMembers")
+    def skip_members(self) -> Optional[_builtins.bool]:
+        """
+        Whether to skip organization members. Setting this to `true` will skip paginated API calls to /api/v2/organizations/{id}/members.
+        """
+        return pulumi.get(self, "skip_members")
+
+    @_builtins.property
     @pulumi.getter(name="tokenQuotas")
     def token_quotas(self) -> Sequence['outputs.GetOrganizationTokenQuotaResult']:
         """
@@ -152,11 +188,17 @@ class AwaitableGetOrganizationResult(GetOrganizationResult):
             metadata=self.metadata,
             name=self.name,
             organization_id=self.organization_id,
+            skip_client_grants=self.skip_client_grants,
+            skip_connections=self.skip_connections,
+            skip_members=self.skip_members,
             token_quotas=self.token_quotas)
 
 
 def get_organization(name: Optional[_builtins.str] = None,
                      organization_id: Optional[_builtins.str] = None,
+                     skip_client_grants: Optional[_builtins.bool] = None,
+                     skip_connections: Optional[_builtins.bool] = None,
+                     skip_members: Optional[_builtins.bool] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOrganizationResult:
     """
     Data source to retrieve a specific Auth0 organization by `organization_id` or `name`.
@@ -176,10 +218,16 @@ def get_organization(name: Optional[_builtins.str] = None,
 
     :param _builtins.str name: The name of the organization. If not provided, `organization_id` must be set. For performance, it is advised to use the `organization_id` as a lookup if possible.
     :param _builtins.str organization_id: The ID of the organization. If not provided, `name` must be set.
+    :param _builtins.bool skip_client_grants: Whether to skip organization client grants. Setting this to `true` will skip API call to /api/v2/organizations/{id}/client-grants.
+    :param _builtins.bool skip_connections: Whether to skip organization connections. Setting this to `true` will skip paginated API calls to /api/v2/organizations/{id}/connections.
+    :param _builtins.bool skip_members: Whether to skip organization members. Setting this to `true` will skip paginated API calls to /api/v2/organizations/{id}/members.
     """
     __args__ = dict()
     __args__['name'] = name
     __args__['organizationId'] = organization_id
+    __args__['skipClientGrants'] = skip_client_grants
+    __args__['skipConnections'] = skip_connections
+    __args__['skipMembers'] = skip_members
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('auth0:index/getOrganization:getOrganization', __args__, opts=opts, typ=GetOrganizationResult).value
 
@@ -193,9 +241,15 @@ def get_organization(name: Optional[_builtins.str] = None,
         metadata=pulumi.get(__ret__, 'metadata'),
         name=pulumi.get(__ret__, 'name'),
         organization_id=pulumi.get(__ret__, 'organization_id'),
+        skip_client_grants=pulumi.get(__ret__, 'skip_client_grants'),
+        skip_connections=pulumi.get(__ret__, 'skip_connections'),
+        skip_members=pulumi.get(__ret__, 'skip_members'),
         token_quotas=pulumi.get(__ret__, 'token_quotas'))
 def get_organization_output(name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                             organization_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            skip_client_grants: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                            skip_connections: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                            skip_members: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationResult]:
     """
     Data source to retrieve a specific Auth0 organization by `organization_id` or `name`.
@@ -215,10 +269,16 @@ def get_organization_output(name: pulumi.Input[Optional[Optional[_builtins.str]]
 
     :param _builtins.str name: The name of the organization. If not provided, `organization_id` must be set. For performance, it is advised to use the `organization_id` as a lookup if possible.
     :param _builtins.str organization_id: The ID of the organization. If not provided, `name` must be set.
+    :param _builtins.bool skip_client_grants: Whether to skip organization client grants. Setting this to `true` will skip API call to /api/v2/organizations/{id}/client-grants.
+    :param _builtins.bool skip_connections: Whether to skip organization connections. Setting this to `true` will skip paginated API calls to /api/v2/organizations/{id}/connections.
+    :param _builtins.bool skip_members: Whether to skip organization members. Setting this to `true` will skip paginated API calls to /api/v2/organizations/{id}/members.
     """
     __args__ = dict()
     __args__['name'] = name
     __args__['organizationId'] = organization_id
+    __args__['skipClientGrants'] = skip_client_grants
+    __args__['skipConnections'] = skip_connections
+    __args__['skipMembers'] = skip_members
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('auth0:index/getOrganization:getOrganization', __args__, opts=opts, typ=GetOrganizationResult)
     return __ret__.apply(lambda __response__: GetOrganizationResult(
@@ -231,4 +291,7 @@ def get_organization_output(name: pulumi.Input[Optional[Optional[_builtins.str]]
         metadata=pulumi.get(__response__, 'metadata'),
         name=pulumi.get(__response__, 'name'),
         organization_id=pulumi.get(__response__, 'organization_id'),
+        skip_client_grants=pulumi.get(__response__, 'skip_client_grants'),
+        skip_connections=pulumi.get(__response__, 'skip_connections'),
+        skip_members=pulumi.get(__response__, 'skip_members'),
         token_quotas=pulumi.get(__response__, 'token_quotas')))

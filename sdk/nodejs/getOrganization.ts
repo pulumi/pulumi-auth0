@@ -31,6 +31,9 @@ export function getOrganization(args?: GetOrganizationArgs, opts?: pulumi.Invoke
     return pulumi.runtime.invoke("auth0:index/getOrganization:getOrganization", {
         "name": args.name,
         "organizationId": args.organizationId,
+        "skipClientGrants": args.skipClientGrants,
+        "skipConnections": args.skipConnections,
+        "skipMembers": args.skipMembers,
     }, opts);
 }
 
@@ -46,6 +49,18 @@ export interface GetOrganizationArgs {
      * The ID of the organization. If not provided, `name` must be set.
      */
     organizationId?: string;
+    /**
+     * Whether to skip organization client grants. Setting this to `true` will skip API call to /api/v2/organizations/{id}/client-grants.
+     */
+    skipClientGrants?: boolean;
+    /**
+     * Whether to skip organization connections. Setting this to `true` will skip paginated API calls to /api/v2/organizations/{id}/connections.
+     */
+    skipConnections?: boolean;
+    /**
+     * Whether to skip organization members. Setting this to `true` will skip paginated API calls to /api/v2/organizations/{id}/members.
+     */
+    skipMembers?: boolean;
 }
 
 /**
@@ -57,9 +72,12 @@ export interface GetOrganizationResult {
      */
     readonly brandings: outputs.GetOrganizationBranding[];
     /**
-     * Client Grant ID(s) that are associated to the organization.
+     * Client Grant ID(s) that are associated to the organization. Skips populating if `skipClientGrants` is `true`.
      */
     readonly clientGrants: string[];
+    /**
+     * Connections enabled for this organization. Skips populating if `skipConnections` is `true`.
+     */
     readonly connections: outputs.GetOrganizationConnection[];
     /**
      * Friendly name of this organization.
@@ -70,7 +88,7 @@ export interface GetOrganizationResult {
      */
     readonly id: string;
     /**
-     * User ID(s) that are members of the organization.
+     * User ID(s) that are members of the organization. Skips populating if `skipMembers` is `true`.
      */
     readonly members: string[];
     /**
@@ -85,6 +103,18 @@ export interface GetOrganizationResult {
      * The ID of the organization. If not provided, `name` must be set.
      */
     readonly organizationId?: string;
+    /**
+     * Whether to skip organization client grants. Setting this to `true` will skip API call to /api/v2/organizations/{id}/client-grants.
+     */
+    readonly skipClientGrants?: boolean;
+    /**
+     * Whether to skip organization connections. Setting this to `true` will skip paginated API calls to /api/v2/organizations/{id}/connections.
+     */
+    readonly skipConnections?: boolean;
+    /**
+     * Whether to skip organization members. Setting this to `true` will skip paginated API calls to /api/v2/organizations/{id}/members.
+     */
+    readonly skipMembers?: boolean;
     /**
      * The token quota configuration.
      */
@@ -115,6 +145,9 @@ export function getOrganizationOutput(args?: GetOrganizationOutputArgs, opts?: p
     return pulumi.runtime.invokeOutput("auth0:index/getOrganization:getOrganization", {
         "name": args.name,
         "organizationId": args.organizationId,
+        "skipClientGrants": args.skipClientGrants,
+        "skipConnections": args.skipConnections,
+        "skipMembers": args.skipMembers,
     }, opts);
 }
 
@@ -130,4 +163,16 @@ export interface GetOrganizationOutputArgs {
      * The ID of the organization. If not provided, `name` must be set.
      */
     organizationId?: pulumi.Input<string | undefined>;
+    /**
+     * Whether to skip organization client grants. Setting this to `true` will skip API call to /api/v2/organizations/{id}/client-grants.
+     */
+    skipClientGrants?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether to skip organization connections. Setting this to `true` will skip paginated API calls to /api/v2/organizations/{id}/connections.
+     */
+    skipConnections?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether to skip organization members. Setting this to `true` will skip paginated API calls to /api/v2/organizations/{id}/members.
+     */
+    skipMembers?: pulumi.Input<boolean | undefined>;
 }

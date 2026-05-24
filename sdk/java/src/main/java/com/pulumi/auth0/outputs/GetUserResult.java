@@ -76,7 +76,7 @@ public final class GetUserResult {
      */
     private String password;
     /**
-     * @return List of API permissions granted to the user.
+     * @return List of API permissions granted to the user. Skips if `skipPermissions` is `true`. When `skipPermissions` is `true` (default), this will be an empty set to optimize performance and reduce rate limit consumption.
      * 
      */
     private List<GetUserPermission> permissions;
@@ -101,10 +101,20 @@ public final class GetUserResult {
      */
     private @Nullable String query;
     /**
-     * @return Set of IDs of roles assigned to the user.
+     * @return Set of IDs of roles assigned to the user. Skips if `skipRoles` is `true`. When `skipRoles` is `true` (default), this will be an empty set to optimize performance and reduce rate limit consumption.
      * 
      */
     private List<String> roles;
+    /**
+     * @return Whether to skip user permissions. Setting this to `true` will skips paginated API calls to /api/v2/users/{id}/permissions. Default: `false` to optimize performance and reduce rate limit consumption.
+     * 
+     */
+    private @Nullable Boolean skipPermissions;
+    /**
+     * @return Whether to skip user roles. Setting this to `true` will skips paginated API calls to /api/v2/users/{id}/roles. Default: `false` to optimize performance and reduce rate limit consumption.
+     * 
+     */
+    private @Nullable Boolean skipRoles;
     /**
      * @return ID of the user.
      * 
@@ -212,7 +222,7 @@ public final class GetUserResult {
         return this.password;
     }
     /**
-     * @return List of API permissions granted to the user.
+     * @return List of API permissions granted to the user. Skips if `skipPermissions` is `true`. When `skipPermissions` is `true` (default), this will be an empty set to optimize performance and reduce rate limit consumption.
      * 
      */
     public List<GetUserPermission> permissions() {
@@ -247,11 +257,25 @@ public final class GetUserResult {
         return Optional.ofNullable(this.query);
     }
     /**
-     * @return Set of IDs of roles assigned to the user.
+     * @return Set of IDs of roles assigned to the user. Skips if `skipRoles` is `true`. When `skipRoles` is `true` (default), this will be an empty set to optimize performance and reduce rate limit consumption.
      * 
      */
     public List<String> roles() {
         return this.roles;
+    }
+    /**
+     * @return Whether to skip user permissions. Setting this to `true` will skips paginated API calls to /api/v2/users/{id}/permissions. Default: `false` to optimize performance and reduce rate limit consumption.
+     * 
+     */
+    public Optional<Boolean> skipPermissions() {
+        return Optional.ofNullable(this.skipPermissions);
+    }
+    /**
+     * @return Whether to skip user roles. Setting this to `true` will skips paginated API calls to /api/v2/users/{id}/roles. Default: `false` to optimize performance and reduce rate limit consumption.
+     * 
+     */
+    public Optional<Boolean> skipRoles() {
+        return Optional.ofNullable(this.skipRoles);
     }
     /**
      * @return ID of the user.
@@ -309,6 +333,8 @@ public final class GetUserResult {
         private String picture;
         private @Nullable String query;
         private List<String> roles;
+        private @Nullable Boolean skipPermissions;
+        private @Nullable Boolean skipRoles;
         private @Nullable String userId;
         private String userMetadata;
         private String username;
@@ -334,6 +360,8 @@ public final class GetUserResult {
     	      this.picture = defaults.picture;
     	      this.query = defaults.query;
     	      this.roles = defaults.roles;
+    	      this.skipPermissions = defaults.skipPermissions;
+    	      this.skipRoles = defaults.skipRoles;
     	      this.userId = defaults.userId;
     	      this.userMetadata = defaults.userMetadata;
     	      this.username = defaults.username;
@@ -487,6 +515,18 @@ public final class GetUserResult {
             return roles(List.of(roles));
         }
         @CustomType.Setter
+        public Builder skipPermissions(@Nullable Boolean skipPermissions) {
+
+            this.skipPermissions = skipPermissions;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder skipRoles(@Nullable Boolean skipRoles) {
+
+            this.skipRoles = skipRoles;
+            return this;
+        }
+        @CustomType.Setter
         public Builder userId(@Nullable String userId) {
 
             this.userId = userId;
@@ -536,6 +576,8 @@ public final class GetUserResult {
             _resultValue.picture = picture;
             _resultValue.query = query;
             _resultValue.roles = roles;
+            _resultValue.skipPermissions = skipPermissions;
+            _resultValue.skipRoles = skipRoles;
             _resultValue.userId = userId;
             _resultValue.userMetadata = userMetadata;
             _resultValue.username = username;

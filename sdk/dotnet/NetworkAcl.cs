@@ -83,6 +83,45 @@ namespace Pulumi.Auth0
     ///         },
     ///     });
     /// 
+    ///     // Example of auth0_network_acl with hostname and connecting IP restrictions
+    ///     var blockCanonical = new Auth0.NetworkAcl("block_canonical", new()
+    ///     {
+    ///         Description = "Block canonical domain except from proxy",
+    ///         Active = true,
+    ///         Priority = 5,
+    ///         Rule = new Auth0.Inputs.NetworkAclRuleArgs
+    ///         {
+    ///             Action = new Auth0.Inputs.NetworkAclRuleActionArgs
+    ///             {
+    ///                 Block = true,
+    ///             },
+    ///             Scope = "tenant",
+    ///             Match = new Auth0.Inputs.NetworkAclRuleMatchArgs
+    ///             {
+    ///                 Hostnames = new[]
+    ///                 {
+    ///                     "mytenant1.us.auth0.com",
+    ///                 },
+    ///                 ConnectingIpv6Cidrs = new[]
+    ///                 {
+    ///                     "2001:db8::/32",
+    ///                     "::1",
+    ///                 },
+    ///             },
+    ///             NotMatch = new Auth0.Inputs.NetworkAclRuleNotMatchArgs
+    ///             {
+    ///                 Hostnames = new[]
+    ///                 {
+    ///                     "mytenant2.us.auth0.com",
+    ///                 },
+    ///                 ConnectingIpv4Cidrs = new[]
+    ///                 {
+    ///                     "203.0.113.0/24",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
     /// });
     /// ```
     /// 

@@ -31,6 +31,8 @@ export function getRole(args?: GetRoleArgs, opts?: pulumi.InvokeOptions): Promis
     return pulumi.runtime.invoke("auth0:index/getRole:getRole", {
         "name": args.name,
         "roleId": args.roleId,
+        "skipPermissions": args.skipPermissions,
+        "skipUsers": args.skipUsers,
     }, opts);
 }
 
@@ -46,6 +48,14 @@ export interface GetRoleArgs {
      * The ID of the role. If not provided, `name` must be set.
      */
     roleId?: string;
+    /**
+     * Whether to skip role permissions. Setting this to `true` will skip paginated API calls to /api/v2/roles/{id}/permissions.
+     */
+    skipPermissions?: boolean;
+    /**
+     * Whether to skip users assigned to this role (max 1000). Setting this to `true` will skip paginated API calls to /api/v2/roles/{id}/users.
+     */
+    skipUsers?: boolean;
 }
 
 /**
@@ -65,7 +75,7 @@ export interface GetRoleResult {
      */
     readonly name?: string;
     /**
-     * Configuration settings for permissions (scopes) attached to the role.
+     * Configuration settings for permissions (scopes) attached to the role. Skips populating if `skipPermissions` is `true`.
      */
     readonly permissions: outputs.GetRolePermission[];
     /**
@@ -73,7 +83,15 @@ export interface GetRoleResult {
      */
     readonly roleId?: string;
     /**
-     * List of user IDs assigned to this role. Retrieves a maximum of 1000 user IDs.
+     * Whether to skip role permissions. Setting this to `true` will skip paginated API calls to /api/v2/roles/{id}/permissions.
+     */
+    readonly skipPermissions?: boolean;
+    /**
+     * Whether to skip users assigned to this role (max 1000). Setting this to `true` will skip paginated API calls to /api/v2/roles/{id}/users.
+     */
+    readonly skipUsers?: boolean;
+    /**
+     * List of user IDs assigned to this role. Retrieves a maximum of 1000 user IDs. Skips populating if `skipUsers` is `true`.
      */
     readonly users: string[];
 }
@@ -102,6 +120,8 @@ export function getRoleOutput(args?: GetRoleOutputArgs, opts?: pulumi.InvokeOutp
     return pulumi.runtime.invokeOutput("auth0:index/getRole:getRole", {
         "name": args.name,
         "roleId": args.roleId,
+        "skipPermissions": args.skipPermissions,
+        "skipUsers": args.skipUsers,
     }, opts);
 }
 
@@ -117,4 +137,12 @@ export interface GetRoleOutputArgs {
      * The ID of the role. If not provided, `name` must be set.
      */
     roleId?: pulumi.Input<string | undefined>;
+    /**
+     * Whether to skip role permissions. Setting this to `true` will skip paginated API calls to /api/v2/roles/{id}/permissions.
+     */
+    skipPermissions?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether to skip users assigned to this role (max 1000). Setting this to `true` will skip paginated API calls to /api/v2/roles/{id}/users.
+     */
+    skipUsers?: pulumi.Input<boolean | undefined>;
 }

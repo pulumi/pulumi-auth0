@@ -10,6 +10,7 @@ import com.pulumi.auth0.outputs.GetConnectionOptionConnectionSetting;
 import com.pulumi.auth0.outputs.GetConnectionOptionCustomHeader;
 import com.pulumi.auth0.outputs.GetConnectionOptionCustomPasswordHash;
 import com.pulumi.auth0.outputs.GetConnectionOptionDecryptionKey;
+import com.pulumi.auth0.outputs.GetConnectionOptionFederatedConnectionsAccessToken;
 import com.pulumi.auth0.outputs.GetConnectionOptionGatewayAuthentication;
 import com.pulumi.auth0.outputs.GetConnectionOptionIdpInitiated;
 import com.pulumi.auth0.outputs.GetConnectionOptionMfa;
@@ -223,6 +224,11 @@ public final class GetConnectionOption {
      * 
      */
     private String fedMetadataXml;
+    /**
+     * @return Configuration for collecting access tokens and refresh tokens from federated connections. Only applicable for OIDC connections.
+     * 
+     */
+    private List<GetConnectionOptionFederatedConnectionsAccessToken> federatedConnectionsAccessTokens;
     /**
      * @return If you&#39;re configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
      * 
@@ -882,6 +888,13 @@ public final class GetConnectionOption {
         return this.fedMetadataXml;
     }
     /**
+     * @return Configuration for collecting access tokens and refresh tokens from federated connections. Only applicable for OIDC connections.
+     * 
+     */
+    public List<GetConnectionOptionFederatedConnectionsAccessToken> federatedConnectionsAccessTokens() {
+        return this.federatedConnectionsAccessTokens;
+    }
+    /**
      * @return If you&#39;re configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
      * 
      */
@@ -1475,6 +1488,7 @@ public final class GetConnectionOption {
         private Boolean enabledDatabaseCustomization;
         private String entityId;
         private String fedMetadataXml;
+        private List<GetConnectionOptionFederatedConnectionsAccessToken> federatedConnectionsAccessTokens;
         private String fieldsMap;
         private Boolean forwardRequestInfo;
         private String from;
@@ -1594,6 +1608,7 @@ public final class GetConnectionOption {
     	      this.enabledDatabaseCustomization = defaults.enabledDatabaseCustomization;
     	      this.entityId = defaults.entityId;
     	      this.fedMetadataXml = defaults.fedMetadataXml;
+    	      this.federatedConnectionsAccessTokens = defaults.federatedConnectionsAccessTokens;
     	      this.fieldsMap = defaults.fieldsMap;
     	      this.forwardRequestInfo = defaults.forwardRequestInfo;
     	      this.from = defaults.from;
@@ -2004,6 +2019,17 @@ public final class GetConnectionOption {
             }
             this.fedMetadataXml = fedMetadataXml;
             return this;
+        }
+        @CustomType.Setter
+        public Builder federatedConnectionsAccessTokens(List<GetConnectionOptionFederatedConnectionsAccessToken> federatedConnectionsAccessTokens) {
+            if (federatedConnectionsAccessTokens == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOption", "federatedConnectionsAccessTokens");
+            }
+            this.federatedConnectionsAccessTokens = federatedConnectionsAccessTokens;
+            return this;
+        }
+        public Builder federatedConnectionsAccessTokens(GetConnectionOptionFederatedConnectionsAccessToken... federatedConnectionsAccessTokens) {
+            return federatedConnectionsAccessTokens(List.of(federatedConnectionsAccessTokens));
         }
         @CustomType.Setter
         public Builder fieldsMap(String fieldsMap) {
@@ -2720,6 +2746,7 @@ public final class GetConnectionOption {
             _resultValue.enabledDatabaseCustomization = enabledDatabaseCustomization;
             _resultValue.entityId = entityId;
             _resultValue.fedMetadataXml = fedMetadataXml;
+            _resultValue.federatedConnectionsAccessTokens = federatedConnectionsAccessTokens;
             _resultValue.fieldsMap = fieldsMap;
             _resultValue.forwardRequestInfo = forwardRequestInfo;
             _resultValue.from = from;

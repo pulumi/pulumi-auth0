@@ -19023,6 +19023,8 @@ type ConnectionOptions struct {
 	EntityId *string `pulumi:"entityId"`
 	// Federation Metadata for the ADFS connection.
 	FedMetadataXml *string `pulumi:"fedMetadataXml"`
+	// Configuration for collecting access tokens and refresh tokens from federated connections. Only applicable for OIDC connections.
+	FederatedConnectionsAccessTokens *ConnectionOptionsFederatedConnectionsAccessTokens `pulumi:"federatedConnectionsAccessTokens"`
 	// If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
 	FieldsMap *string `pulumi:"fieldsMap"`
 	// Specifies whether or not request info should be forwarded to sms gateway.
@@ -19269,6 +19271,8 @@ type ConnectionOptionsArgs struct {
 	EntityId pulumi.StringPtrInput `pulumi:"entityId"`
 	// Federation Metadata for the ADFS connection.
 	FedMetadataXml pulumi.StringPtrInput `pulumi:"fedMetadataXml"`
+	// Configuration for collecting access tokens and refresh tokens from federated connections. Only applicable for OIDC connections.
+	FederatedConnectionsAccessTokens ConnectionOptionsFederatedConnectionsAccessTokensPtrInput `pulumi:"federatedConnectionsAccessTokens"`
 	// If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
 	FieldsMap pulumi.StringPtrInput `pulumi:"fieldsMap"`
 	// Specifies whether or not request info should be forwarded to sms gateway.
@@ -19692,6 +19696,13 @@ func (o ConnectionOptionsOutput) EntityId() pulumi.StringPtrOutput {
 // Federation Metadata for the ADFS connection.
 func (o ConnectionOptionsOutput) FedMetadataXml() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.FedMetadataXml }).(pulumi.StringPtrOutput)
+}
+
+// Configuration for collecting access tokens and refresh tokens from federated connections. Only applicable for OIDC connections.
+func (o ConnectionOptionsOutput) FederatedConnectionsAccessTokens() ConnectionOptionsFederatedConnectionsAccessTokensPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *ConnectionOptionsFederatedConnectionsAccessTokens {
+		return v.FederatedConnectionsAccessTokens
+	}).(ConnectionOptionsFederatedConnectionsAccessTokensPtrOutput)
 }
 
 // If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
@@ -20488,6 +20499,16 @@ func (o ConnectionOptionsPtrOutput) FedMetadataXml() pulumi.StringPtrOutput {
 		}
 		return v.FedMetadataXml
 	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration for collecting access tokens and refresh tokens from federated connections. Only applicable for OIDC connections.
+func (o ConnectionOptionsPtrOutput) FederatedConnectionsAccessTokens() ConnectionOptionsFederatedConnectionsAccessTokensPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *ConnectionOptionsFederatedConnectionsAccessTokens {
+		if v == nil {
+			return nil
+		}
+		return v.FederatedConnectionsAccessTokens
+	}).(ConnectionOptionsFederatedConnectionsAccessTokensPtrOutput)
 }
 
 // If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
@@ -24230,6 +24251,143 @@ func (o ConnectionOptionsDecryptionKeyPtrOutput) Key() pulumi.StringPtrOutput {
 		}
 		return &v.Key
 	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionOptionsFederatedConnectionsAccessTokens struct {
+	// When enabled, Auth0 will collect and store access tokens and refresh tokens obtained from federated connections during authentication.
+	Active *bool `pulumi:"active"`
+}
+
+// ConnectionOptionsFederatedConnectionsAccessTokensInput is an input type that accepts ConnectionOptionsFederatedConnectionsAccessTokensArgs and ConnectionOptionsFederatedConnectionsAccessTokensOutput values.
+// You can construct a concrete instance of `ConnectionOptionsFederatedConnectionsAccessTokensInput` via:
+//
+//	ConnectionOptionsFederatedConnectionsAccessTokensArgs{...}
+type ConnectionOptionsFederatedConnectionsAccessTokensInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsFederatedConnectionsAccessTokensOutput() ConnectionOptionsFederatedConnectionsAccessTokensOutput
+	ToConnectionOptionsFederatedConnectionsAccessTokensOutputWithContext(context.Context) ConnectionOptionsFederatedConnectionsAccessTokensOutput
+}
+
+type ConnectionOptionsFederatedConnectionsAccessTokensArgs struct {
+	// When enabled, Auth0 will collect and store access tokens and refresh tokens obtained from federated connections during authentication.
+	Active pulumi.BoolPtrInput `pulumi:"active"`
+}
+
+func (ConnectionOptionsFederatedConnectionsAccessTokensArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsFederatedConnectionsAccessTokens)(nil)).Elem()
+}
+
+func (i ConnectionOptionsFederatedConnectionsAccessTokensArgs) ToConnectionOptionsFederatedConnectionsAccessTokensOutput() ConnectionOptionsFederatedConnectionsAccessTokensOutput {
+	return i.ToConnectionOptionsFederatedConnectionsAccessTokensOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsFederatedConnectionsAccessTokensArgs) ToConnectionOptionsFederatedConnectionsAccessTokensOutputWithContext(ctx context.Context) ConnectionOptionsFederatedConnectionsAccessTokensOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsFederatedConnectionsAccessTokensOutput)
+}
+
+func (i ConnectionOptionsFederatedConnectionsAccessTokensArgs) ToConnectionOptionsFederatedConnectionsAccessTokensPtrOutput() ConnectionOptionsFederatedConnectionsAccessTokensPtrOutput {
+	return i.ToConnectionOptionsFederatedConnectionsAccessTokensPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionOptionsFederatedConnectionsAccessTokensArgs) ToConnectionOptionsFederatedConnectionsAccessTokensPtrOutputWithContext(ctx context.Context) ConnectionOptionsFederatedConnectionsAccessTokensPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsFederatedConnectionsAccessTokensOutput).ToConnectionOptionsFederatedConnectionsAccessTokensPtrOutputWithContext(ctx)
+}
+
+// ConnectionOptionsFederatedConnectionsAccessTokensPtrInput is an input type that accepts ConnectionOptionsFederatedConnectionsAccessTokensArgs, ConnectionOptionsFederatedConnectionsAccessTokensPtr and ConnectionOptionsFederatedConnectionsAccessTokensPtrOutput values.
+// You can construct a concrete instance of `ConnectionOptionsFederatedConnectionsAccessTokensPtrInput` via:
+//
+//	        ConnectionOptionsFederatedConnectionsAccessTokensArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionOptionsFederatedConnectionsAccessTokensPtrInput interface {
+	pulumi.Input
+
+	ToConnectionOptionsFederatedConnectionsAccessTokensPtrOutput() ConnectionOptionsFederatedConnectionsAccessTokensPtrOutput
+	ToConnectionOptionsFederatedConnectionsAccessTokensPtrOutputWithContext(context.Context) ConnectionOptionsFederatedConnectionsAccessTokensPtrOutput
+}
+
+type connectionOptionsFederatedConnectionsAccessTokensPtrType ConnectionOptionsFederatedConnectionsAccessTokensArgs
+
+func ConnectionOptionsFederatedConnectionsAccessTokensPtr(v *ConnectionOptionsFederatedConnectionsAccessTokensArgs) ConnectionOptionsFederatedConnectionsAccessTokensPtrInput {
+	return (*connectionOptionsFederatedConnectionsAccessTokensPtrType)(v)
+}
+
+func (*connectionOptionsFederatedConnectionsAccessTokensPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionOptionsFederatedConnectionsAccessTokens)(nil)).Elem()
+}
+
+func (i *connectionOptionsFederatedConnectionsAccessTokensPtrType) ToConnectionOptionsFederatedConnectionsAccessTokensPtrOutput() ConnectionOptionsFederatedConnectionsAccessTokensPtrOutput {
+	return i.ToConnectionOptionsFederatedConnectionsAccessTokensPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionOptionsFederatedConnectionsAccessTokensPtrType) ToConnectionOptionsFederatedConnectionsAccessTokensPtrOutputWithContext(ctx context.Context) ConnectionOptionsFederatedConnectionsAccessTokensPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOptionsFederatedConnectionsAccessTokensPtrOutput)
+}
+
+type ConnectionOptionsFederatedConnectionsAccessTokensOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsFederatedConnectionsAccessTokensOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOptionsFederatedConnectionsAccessTokens)(nil)).Elem()
+}
+
+func (o ConnectionOptionsFederatedConnectionsAccessTokensOutput) ToConnectionOptionsFederatedConnectionsAccessTokensOutput() ConnectionOptionsFederatedConnectionsAccessTokensOutput {
+	return o
+}
+
+func (o ConnectionOptionsFederatedConnectionsAccessTokensOutput) ToConnectionOptionsFederatedConnectionsAccessTokensOutputWithContext(ctx context.Context) ConnectionOptionsFederatedConnectionsAccessTokensOutput {
+	return o
+}
+
+func (o ConnectionOptionsFederatedConnectionsAccessTokensOutput) ToConnectionOptionsFederatedConnectionsAccessTokensPtrOutput() ConnectionOptionsFederatedConnectionsAccessTokensPtrOutput {
+	return o.ToConnectionOptionsFederatedConnectionsAccessTokensPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionOptionsFederatedConnectionsAccessTokensOutput) ToConnectionOptionsFederatedConnectionsAccessTokensPtrOutputWithContext(ctx context.Context) ConnectionOptionsFederatedConnectionsAccessTokensPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionOptionsFederatedConnectionsAccessTokens) *ConnectionOptionsFederatedConnectionsAccessTokens {
+		return &v
+	}).(ConnectionOptionsFederatedConnectionsAccessTokensPtrOutput)
+}
+
+// When enabled, Auth0 will collect and store access tokens and refresh tokens obtained from federated connections during authentication.
+func (o ConnectionOptionsFederatedConnectionsAccessTokensOutput) Active() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectionOptionsFederatedConnectionsAccessTokens) *bool { return v.Active }).(pulumi.BoolPtrOutput)
+}
+
+type ConnectionOptionsFederatedConnectionsAccessTokensPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionOptionsFederatedConnectionsAccessTokensPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionOptionsFederatedConnectionsAccessTokens)(nil)).Elem()
+}
+
+func (o ConnectionOptionsFederatedConnectionsAccessTokensPtrOutput) ToConnectionOptionsFederatedConnectionsAccessTokensPtrOutput() ConnectionOptionsFederatedConnectionsAccessTokensPtrOutput {
+	return o
+}
+
+func (o ConnectionOptionsFederatedConnectionsAccessTokensPtrOutput) ToConnectionOptionsFederatedConnectionsAccessTokensPtrOutputWithContext(ctx context.Context) ConnectionOptionsFederatedConnectionsAccessTokensPtrOutput {
+	return o
+}
+
+func (o ConnectionOptionsFederatedConnectionsAccessTokensPtrOutput) Elem() ConnectionOptionsFederatedConnectionsAccessTokensOutput {
+	return o.ApplyT(func(v *ConnectionOptionsFederatedConnectionsAccessTokens) ConnectionOptionsFederatedConnectionsAccessTokens {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionOptionsFederatedConnectionsAccessTokens
+		return ret
+	}).(ConnectionOptionsFederatedConnectionsAccessTokensOutput)
+}
+
+// When enabled, Auth0 will collect and store access tokens and refresh tokens obtained from federated connections during authentication.
+func (o ConnectionOptionsFederatedConnectionsAccessTokensPtrOutput) Active() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptionsFederatedConnectionsAccessTokens) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Active
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ConnectionOptionsGatewayAuthentication struct {
@@ -35405,10 +35563,16 @@ func (o NetworkAclRuleActionPtrOutput) RedirectUri() pulumi.StringPtrOutput {
 type NetworkAclRuleMatch struct {
 	// ASNs. Must contain between 1 and 10 unique items.
 	Asns []int `pulumi:"asns"`
+	// Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
+	ConnectingIpv4Cidrs []string `pulumi:"connectingIpv4Cidrs"`
+	// Connecting IPv6 CIDRs. Must contain between 1 and 20 unique items. Can be IPv6 addresses or CIDR blocks.
+	ConnectingIpv6Cidrs []string `pulumi:"connectingIpv6Cidrs"`
 	// Geo Country Codes. Must contain between 1 and 10 unique items.
 	GeoCountryCodes []string `pulumi:"geoCountryCodes"`
 	// Geo Subdivision Codes. Must contain between 1 and 10 unique items.
 	GeoSubdivisionCodes []string `pulumi:"geoSubdivisionCodes"`
+	// Hostnames. Must contain between 1 and 20 unique items.
+	Hostnames []string `pulumi:"hostnames"`
 	// IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
 	Ipv4Cidrs []string `pulumi:"ipv4Cidrs"`
 	// IPv6 CIDRs. Must contain between 1 and 10 unique items. Can be IPv6 addresses or CIDR blocks.
@@ -35435,10 +35599,16 @@ type NetworkAclRuleMatchInput interface {
 type NetworkAclRuleMatchArgs struct {
 	// ASNs. Must contain between 1 and 10 unique items.
 	Asns pulumi.IntArrayInput `pulumi:"asns"`
+	// Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
+	ConnectingIpv4Cidrs pulumi.StringArrayInput `pulumi:"connectingIpv4Cidrs"`
+	// Connecting IPv6 CIDRs. Must contain between 1 and 20 unique items. Can be IPv6 addresses or CIDR blocks.
+	ConnectingIpv6Cidrs pulumi.StringArrayInput `pulumi:"connectingIpv6Cidrs"`
 	// Geo Country Codes. Must contain between 1 and 10 unique items.
 	GeoCountryCodes pulumi.StringArrayInput `pulumi:"geoCountryCodes"`
 	// Geo Subdivision Codes. Must contain between 1 and 10 unique items.
 	GeoSubdivisionCodes pulumi.StringArrayInput `pulumi:"geoSubdivisionCodes"`
+	// Hostnames. Must contain between 1 and 20 unique items.
+	Hostnames pulumi.StringArrayInput `pulumi:"hostnames"`
 	// IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
 	Ipv4Cidrs pulumi.StringArrayInput `pulumi:"ipv4Cidrs"`
 	// IPv6 CIDRs. Must contain between 1 and 10 unique items. Can be IPv6 addresses or CIDR blocks.
@@ -35533,6 +35703,16 @@ func (o NetworkAclRuleMatchOutput) Asns() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v NetworkAclRuleMatch) []int { return v.Asns }).(pulumi.IntArrayOutput)
 }
 
+// Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
+func (o NetworkAclRuleMatchOutput) ConnectingIpv4Cidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NetworkAclRuleMatch) []string { return v.ConnectingIpv4Cidrs }).(pulumi.StringArrayOutput)
+}
+
+// Connecting IPv6 CIDRs. Must contain between 1 and 20 unique items. Can be IPv6 addresses or CIDR blocks.
+func (o NetworkAclRuleMatchOutput) ConnectingIpv6Cidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NetworkAclRuleMatch) []string { return v.ConnectingIpv6Cidrs }).(pulumi.StringArrayOutput)
+}
+
 // Geo Country Codes. Must contain between 1 and 10 unique items.
 func (o NetworkAclRuleMatchOutput) GeoCountryCodes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NetworkAclRuleMatch) []string { return v.GeoCountryCodes }).(pulumi.StringArrayOutput)
@@ -35541,6 +35721,11 @@ func (o NetworkAclRuleMatchOutput) GeoCountryCodes() pulumi.StringArrayOutput {
 // Geo Subdivision Codes. Must contain between 1 and 10 unique items.
 func (o NetworkAclRuleMatchOutput) GeoSubdivisionCodes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NetworkAclRuleMatch) []string { return v.GeoSubdivisionCodes }).(pulumi.StringArrayOutput)
+}
+
+// Hostnames. Must contain between 1 and 20 unique items.
+func (o NetworkAclRuleMatchOutput) Hostnames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NetworkAclRuleMatch) []string { return v.Hostnames }).(pulumi.StringArrayOutput)
 }
 
 // IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
@@ -35602,6 +35787,26 @@ func (o NetworkAclRuleMatchPtrOutput) Asns() pulumi.IntArrayOutput {
 	}).(pulumi.IntArrayOutput)
 }
 
+// Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
+func (o NetworkAclRuleMatchPtrOutput) ConnectingIpv4Cidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NetworkAclRuleMatch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectingIpv4Cidrs
+	}).(pulumi.StringArrayOutput)
+}
+
+// Connecting IPv6 CIDRs. Must contain between 1 and 20 unique items. Can be IPv6 addresses or CIDR blocks.
+func (o NetworkAclRuleMatchPtrOutput) ConnectingIpv6Cidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NetworkAclRuleMatch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectingIpv6Cidrs
+	}).(pulumi.StringArrayOutput)
+}
+
 // Geo Country Codes. Must contain between 1 and 10 unique items.
 func (o NetworkAclRuleMatchPtrOutput) GeoCountryCodes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NetworkAclRuleMatch) []string {
@@ -35619,6 +35824,16 @@ func (o NetworkAclRuleMatchPtrOutput) GeoSubdivisionCodes() pulumi.StringArrayOu
 			return nil
 		}
 		return v.GeoSubdivisionCodes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Hostnames. Must contain between 1 and 20 unique items.
+func (o NetworkAclRuleMatchPtrOutput) Hostnames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NetworkAclRuleMatch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Hostnames
 	}).(pulumi.StringArrayOutput)
 }
 
@@ -35675,10 +35890,16 @@ func (o NetworkAclRuleMatchPtrOutput) UserAgents() pulumi.StringArrayOutput {
 type NetworkAclRuleNotMatch struct {
 	// ASNs. Must contain between 1 and 10 unique items.
 	Asns []int `pulumi:"asns"`
+	// Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
+	ConnectingIpv4Cidrs []string `pulumi:"connectingIpv4Cidrs"`
+	// Connecting IPv6 CIDRs. Must contain between 1 and 20 unique items. Can be IPv6 addresses or CIDR blocks.
+	ConnectingIpv6Cidrs []string `pulumi:"connectingIpv6Cidrs"`
 	// Geo Country Codes. Must contain between 1 and 10 unique items.
 	GeoCountryCodes []string `pulumi:"geoCountryCodes"`
 	// Geo Subdivision Codes. Must contain between 1 and 10 unique items.
 	GeoSubdivisionCodes []string `pulumi:"geoSubdivisionCodes"`
+	// Hostnames. Must contain between 1 and 20 unique items.
+	Hostnames []string `pulumi:"hostnames"`
 	// IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
 	Ipv4Cidrs []string `pulumi:"ipv4Cidrs"`
 	// IPv6 CIDRs. Must contain between 1 and 10 unique items. Can be IPv6 addresses or CIDR blocks.
@@ -35705,10 +35926,16 @@ type NetworkAclRuleNotMatchInput interface {
 type NetworkAclRuleNotMatchArgs struct {
 	// ASNs. Must contain between 1 and 10 unique items.
 	Asns pulumi.IntArrayInput `pulumi:"asns"`
+	// Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
+	ConnectingIpv4Cidrs pulumi.StringArrayInput `pulumi:"connectingIpv4Cidrs"`
+	// Connecting IPv6 CIDRs. Must contain between 1 and 20 unique items. Can be IPv6 addresses or CIDR blocks.
+	ConnectingIpv6Cidrs pulumi.StringArrayInput `pulumi:"connectingIpv6Cidrs"`
 	// Geo Country Codes. Must contain between 1 and 10 unique items.
 	GeoCountryCodes pulumi.StringArrayInput `pulumi:"geoCountryCodes"`
 	// Geo Subdivision Codes. Must contain between 1 and 10 unique items.
 	GeoSubdivisionCodes pulumi.StringArrayInput `pulumi:"geoSubdivisionCodes"`
+	// Hostnames. Must contain between 1 and 20 unique items.
+	Hostnames pulumi.StringArrayInput `pulumi:"hostnames"`
 	// IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
 	Ipv4Cidrs pulumi.StringArrayInput `pulumi:"ipv4Cidrs"`
 	// IPv6 CIDRs. Must contain between 1 and 10 unique items. Can be IPv6 addresses or CIDR blocks.
@@ -35803,6 +36030,16 @@ func (o NetworkAclRuleNotMatchOutput) Asns() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v NetworkAclRuleNotMatch) []int { return v.Asns }).(pulumi.IntArrayOutput)
 }
 
+// Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
+func (o NetworkAclRuleNotMatchOutput) ConnectingIpv4Cidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NetworkAclRuleNotMatch) []string { return v.ConnectingIpv4Cidrs }).(pulumi.StringArrayOutput)
+}
+
+// Connecting IPv6 CIDRs. Must contain between 1 and 20 unique items. Can be IPv6 addresses or CIDR blocks.
+func (o NetworkAclRuleNotMatchOutput) ConnectingIpv6Cidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NetworkAclRuleNotMatch) []string { return v.ConnectingIpv6Cidrs }).(pulumi.StringArrayOutput)
+}
+
 // Geo Country Codes. Must contain between 1 and 10 unique items.
 func (o NetworkAclRuleNotMatchOutput) GeoCountryCodes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NetworkAclRuleNotMatch) []string { return v.GeoCountryCodes }).(pulumi.StringArrayOutput)
@@ -35811,6 +36048,11 @@ func (o NetworkAclRuleNotMatchOutput) GeoCountryCodes() pulumi.StringArrayOutput
 // Geo Subdivision Codes. Must contain between 1 and 10 unique items.
 func (o NetworkAclRuleNotMatchOutput) GeoSubdivisionCodes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NetworkAclRuleNotMatch) []string { return v.GeoSubdivisionCodes }).(pulumi.StringArrayOutput)
+}
+
+// Hostnames. Must contain between 1 and 20 unique items.
+func (o NetworkAclRuleNotMatchOutput) Hostnames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NetworkAclRuleNotMatch) []string { return v.Hostnames }).(pulumi.StringArrayOutput)
 }
 
 // IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
@@ -35872,6 +36114,26 @@ func (o NetworkAclRuleNotMatchPtrOutput) Asns() pulumi.IntArrayOutput {
 	}).(pulumi.IntArrayOutput)
 }
 
+// Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
+func (o NetworkAclRuleNotMatchPtrOutput) ConnectingIpv4Cidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NetworkAclRuleNotMatch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectingIpv4Cidrs
+	}).(pulumi.StringArrayOutput)
+}
+
+// Connecting IPv6 CIDRs. Must contain between 1 and 20 unique items. Can be IPv6 addresses or CIDR blocks.
+func (o NetworkAclRuleNotMatchPtrOutput) ConnectingIpv6Cidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NetworkAclRuleNotMatch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectingIpv6Cidrs
+	}).(pulumi.StringArrayOutput)
+}
+
 // Geo Country Codes. Must contain between 1 and 10 unique items.
 func (o NetworkAclRuleNotMatchPtrOutput) GeoCountryCodes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NetworkAclRuleNotMatch) []string {
@@ -35889,6 +36151,16 @@ func (o NetworkAclRuleNotMatchPtrOutput) GeoSubdivisionCodes() pulumi.StringArra
 			return nil
 		}
 		return v.GeoSubdivisionCodes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Hostnames. Must contain between 1 and 20 unique items.
+func (o NetworkAclRuleNotMatchPtrOutput) Hostnames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NetworkAclRuleNotMatch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Hostnames
 	}).(pulumi.StringArrayOutput)
 }
 
@@ -59080,6 +59352,8 @@ type GetConnectionOption struct {
 	EntityId string `pulumi:"entityId"`
 	// Federation Metadata for the ADFS connection.
 	FedMetadataXml string `pulumi:"fedMetadataXml"`
+	// Configuration for collecting access tokens and refresh tokens from federated connections. Only applicable for OIDC connections.
+	FederatedConnectionsAccessTokens []GetConnectionOptionFederatedConnectionsAccessToken `pulumi:"federatedConnectionsAccessTokens"`
 	// If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
 	FieldsMap string `pulumi:"fieldsMap"`
 	// Specifies whether or not request info should be forwarded to sms gateway.
@@ -59326,6 +59600,8 @@ type GetConnectionOptionArgs struct {
 	EntityId pulumi.StringInput `pulumi:"entityId"`
 	// Federation Metadata for the ADFS connection.
 	FedMetadataXml pulumi.StringInput `pulumi:"fedMetadataXml"`
+	// Configuration for collecting access tokens and refresh tokens from federated connections. Only applicable for OIDC connections.
+	FederatedConnectionsAccessTokens GetConnectionOptionFederatedConnectionsAccessTokenArrayInput `pulumi:"federatedConnectionsAccessTokens"`
 	// If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
 	FieldsMap pulumi.StringInput `pulumi:"fieldsMap"`
 	// Specifies whether or not request info should be forwarded to sms gateway.
@@ -59723,6 +59999,13 @@ func (o GetConnectionOptionOutput) EntityId() pulumi.StringOutput {
 // Federation Metadata for the ADFS connection.
 func (o GetConnectionOptionOutput) FedMetadataXml() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionOption) string { return v.FedMetadataXml }).(pulumi.StringOutput)
+}
+
+// Configuration for collecting access tokens and refresh tokens from federated connections. Only applicable for OIDC connections.
+func (o GetConnectionOptionOutput) FederatedConnectionsAccessTokens() GetConnectionOptionFederatedConnectionsAccessTokenArrayOutput {
+	return o.ApplyT(func(v GetConnectionOption) []GetConnectionOptionFederatedConnectionsAccessToken {
+		return v.FederatedConnectionsAccessTokens
+	}).(GetConnectionOptionFederatedConnectionsAccessTokenArrayOutput)
 }
 
 // If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
@@ -62733,6 +63016,103 @@ func (o GetConnectionOptionDecryptionKeyArrayOutput) Index(i pulumi.IntInput) Ge
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionDecryptionKey {
 		return vs[0].([]GetConnectionOptionDecryptionKey)[vs[1].(int)]
 	}).(GetConnectionOptionDecryptionKeyOutput)
+}
+
+type GetConnectionOptionFederatedConnectionsAccessToken struct {
+	// When enabled, Auth0 will collect and store access tokens and refresh tokens obtained from federated connections during authentication.
+	Active bool `pulumi:"active"`
+}
+
+// GetConnectionOptionFederatedConnectionsAccessTokenInput is an input type that accepts GetConnectionOptionFederatedConnectionsAccessTokenArgs and GetConnectionOptionFederatedConnectionsAccessTokenOutput values.
+// You can construct a concrete instance of `GetConnectionOptionFederatedConnectionsAccessTokenInput` via:
+//
+//	GetConnectionOptionFederatedConnectionsAccessTokenArgs{...}
+type GetConnectionOptionFederatedConnectionsAccessTokenInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionFederatedConnectionsAccessTokenOutput() GetConnectionOptionFederatedConnectionsAccessTokenOutput
+	ToGetConnectionOptionFederatedConnectionsAccessTokenOutputWithContext(context.Context) GetConnectionOptionFederatedConnectionsAccessTokenOutput
+}
+
+type GetConnectionOptionFederatedConnectionsAccessTokenArgs struct {
+	// When enabled, Auth0 will collect and store access tokens and refresh tokens obtained from federated connections during authentication.
+	Active pulumi.BoolInput `pulumi:"active"`
+}
+
+func (GetConnectionOptionFederatedConnectionsAccessTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionFederatedConnectionsAccessToken)(nil)).Elem()
+}
+
+func (i GetConnectionOptionFederatedConnectionsAccessTokenArgs) ToGetConnectionOptionFederatedConnectionsAccessTokenOutput() GetConnectionOptionFederatedConnectionsAccessTokenOutput {
+	return i.ToGetConnectionOptionFederatedConnectionsAccessTokenOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionFederatedConnectionsAccessTokenArgs) ToGetConnectionOptionFederatedConnectionsAccessTokenOutputWithContext(ctx context.Context) GetConnectionOptionFederatedConnectionsAccessTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionFederatedConnectionsAccessTokenOutput)
+}
+
+// GetConnectionOptionFederatedConnectionsAccessTokenArrayInput is an input type that accepts GetConnectionOptionFederatedConnectionsAccessTokenArray and GetConnectionOptionFederatedConnectionsAccessTokenArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionFederatedConnectionsAccessTokenArrayInput` via:
+//
+//	GetConnectionOptionFederatedConnectionsAccessTokenArray{ GetConnectionOptionFederatedConnectionsAccessTokenArgs{...} }
+type GetConnectionOptionFederatedConnectionsAccessTokenArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionFederatedConnectionsAccessTokenArrayOutput() GetConnectionOptionFederatedConnectionsAccessTokenArrayOutput
+	ToGetConnectionOptionFederatedConnectionsAccessTokenArrayOutputWithContext(context.Context) GetConnectionOptionFederatedConnectionsAccessTokenArrayOutput
+}
+
+type GetConnectionOptionFederatedConnectionsAccessTokenArray []GetConnectionOptionFederatedConnectionsAccessTokenInput
+
+func (GetConnectionOptionFederatedConnectionsAccessTokenArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionFederatedConnectionsAccessToken)(nil)).Elem()
+}
+
+func (i GetConnectionOptionFederatedConnectionsAccessTokenArray) ToGetConnectionOptionFederatedConnectionsAccessTokenArrayOutput() GetConnectionOptionFederatedConnectionsAccessTokenArrayOutput {
+	return i.ToGetConnectionOptionFederatedConnectionsAccessTokenArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionFederatedConnectionsAccessTokenArray) ToGetConnectionOptionFederatedConnectionsAccessTokenArrayOutputWithContext(ctx context.Context) GetConnectionOptionFederatedConnectionsAccessTokenArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionFederatedConnectionsAccessTokenArrayOutput)
+}
+
+type GetConnectionOptionFederatedConnectionsAccessTokenOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionFederatedConnectionsAccessTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionFederatedConnectionsAccessToken)(nil)).Elem()
+}
+
+func (o GetConnectionOptionFederatedConnectionsAccessTokenOutput) ToGetConnectionOptionFederatedConnectionsAccessTokenOutput() GetConnectionOptionFederatedConnectionsAccessTokenOutput {
+	return o
+}
+
+func (o GetConnectionOptionFederatedConnectionsAccessTokenOutput) ToGetConnectionOptionFederatedConnectionsAccessTokenOutputWithContext(ctx context.Context) GetConnectionOptionFederatedConnectionsAccessTokenOutput {
+	return o
+}
+
+// When enabled, Auth0 will collect and store access tokens and refresh tokens obtained from federated connections during authentication.
+func (o GetConnectionOptionFederatedConnectionsAccessTokenOutput) Active() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOptionFederatedConnectionsAccessToken) bool { return v.Active }).(pulumi.BoolOutput)
+}
+
+type GetConnectionOptionFederatedConnectionsAccessTokenArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionFederatedConnectionsAccessTokenArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionFederatedConnectionsAccessToken)(nil)).Elem()
+}
+
+func (o GetConnectionOptionFederatedConnectionsAccessTokenArrayOutput) ToGetConnectionOptionFederatedConnectionsAccessTokenArrayOutput() GetConnectionOptionFederatedConnectionsAccessTokenArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionFederatedConnectionsAccessTokenArrayOutput) ToGetConnectionOptionFederatedConnectionsAccessTokenArrayOutputWithContext(ctx context.Context) GetConnectionOptionFederatedConnectionsAccessTokenArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionFederatedConnectionsAccessTokenArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionFederatedConnectionsAccessTokenOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionFederatedConnectionsAccessToken {
+		return vs[0].([]GetConnectionOptionFederatedConnectionsAccessToken)[vs[1].(int)]
+	}).(GetConnectionOptionFederatedConnectionsAccessTokenOutput)
 }
 
 type GetConnectionOptionGatewayAuthentication struct {
@@ -67657,10 +68037,16 @@ func (o GetNetworkAclRuleActionArrayOutput) Index(i pulumi.IntInput) GetNetworkA
 type GetNetworkAclRuleMatch struct {
 	// ASNs. Must contain between 1 and 10 unique items.
 	Asns []int `pulumi:"asns"`
+	// Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
+	ConnectingIpv4Cidrs []string `pulumi:"connectingIpv4Cidrs"`
+	// Connecting IPv6 CIDRs. Must contain between 1 and 20 unique items. Can be IPv6 addresses or CIDR blocks.
+	ConnectingIpv6Cidrs []string `pulumi:"connectingIpv6Cidrs"`
 	// Geo Country Codes. Must contain between 1 and 10 unique items.
 	GeoCountryCodes []string `pulumi:"geoCountryCodes"`
 	// Geo Subdivision Codes. Must contain between 1 and 10 unique items.
 	GeoSubdivisionCodes []string `pulumi:"geoSubdivisionCodes"`
+	// Hostnames. Must contain between 1 and 20 unique items.
+	Hostnames []string `pulumi:"hostnames"`
 	// IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
 	Ipv4Cidrs []string `pulumi:"ipv4Cidrs"`
 	// IPv6 CIDRs. Must contain between 1 and 10 unique items. Can be IPv6 addresses or CIDR blocks.
@@ -67687,10 +68073,16 @@ type GetNetworkAclRuleMatchInput interface {
 type GetNetworkAclRuleMatchArgs struct {
 	// ASNs. Must contain between 1 and 10 unique items.
 	Asns pulumi.IntArrayInput `pulumi:"asns"`
+	// Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
+	ConnectingIpv4Cidrs pulumi.StringArrayInput `pulumi:"connectingIpv4Cidrs"`
+	// Connecting IPv6 CIDRs. Must contain between 1 and 20 unique items. Can be IPv6 addresses or CIDR blocks.
+	ConnectingIpv6Cidrs pulumi.StringArrayInput `pulumi:"connectingIpv6Cidrs"`
 	// Geo Country Codes. Must contain between 1 and 10 unique items.
 	GeoCountryCodes pulumi.StringArrayInput `pulumi:"geoCountryCodes"`
 	// Geo Subdivision Codes. Must contain between 1 and 10 unique items.
 	GeoSubdivisionCodes pulumi.StringArrayInput `pulumi:"geoSubdivisionCodes"`
+	// Hostnames. Must contain between 1 and 20 unique items.
+	Hostnames pulumi.StringArrayInput `pulumi:"hostnames"`
 	// IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
 	Ipv4Cidrs pulumi.StringArrayInput `pulumi:"ipv4Cidrs"`
 	// IPv6 CIDRs. Must contain between 1 and 10 unique items. Can be IPv6 addresses or CIDR blocks.
@@ -67759,6 +68151,16 @@ func (o GetNetworkAclRuleMatchOutput) Asns() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v GetNetworkAclRuleMatch) []int { return v.Asns }).(pulumi.IntArrayOutput)
 }
 
+// Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
+func (o GetNetworkAclRuleMatchOutput) ConnectingIpv4Cidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleMatch) []string { return v.ConnectingIpv4Cidrs }).(pulumi.StringArrayOutput)
+}
+
+// Connecting IPv6 CIDRs. Must contain between 1 and 20 unique items. Can be IPv6 addresses or CIDR blocks.
+func (o GetNetworkAclRuleMatchOutput) ConnectingIpv6Cidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleMatch) []string { return v.ConnectingIpv6Cidrs }).(pulumi.StringArrayOutput)
+}
+
 // Geo Country Codes. Must contain between 1 and 10 unique items.
 func (o GetNetworkAclRuleMatchOutput) GeoCountryCodes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetNetworkAclRuleMatch) []string { return v.GeoCountryCodes }).(pulumi.StringArrayOutput)
@@ -67767,6 +68169,11 @@ func (o GetNetworkAclRuleMatchOutput) GeoCountryCodes() pulumi.StringArrayOutput
 // Geo Subdivision Codes. Must contain between 1 and 10 unique items.
 func (o GetNetworkAclRuleMatchOutput) GeoSubdivisionCodes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetNetworkAclRuleMatch) []string { return v.GeoSubdivisionCodes }).(pulumi.StringArrayOutput)
+}
+
+// Hostnames. Must contain between 1 and 20 unique items.
+func (o GetNetworkAclRuleMatchOutput) Hostnames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleMatch) []string { return v.Hostnames }).(pulumi.StringArrayOutput)
 }
 
 // IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
@@ -67817,10 +68224,16 @@ func (o GetNetworkAclRuleMatchArrayOutput) Index(i pulumi.IntInput) GetNetworkAc
 type GetNetworkAclRuleNotMatch struct {
 	// ASNs. Must contain between 1 and 10 unique items.
 	Asns []int `pulumi:"asns"`
+	// Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
+	ConnectingIpv4Cidrs []string `pulumi:"connectingIpv4Cidrs"`
+	// Connecting IPv6 CIDRs. Must contain between 1 and 20 unique items. Can be IPv6 addresses or CIDR blocks.
+	ConnectingIpv6Cidrs []string `pulumi:"connectingIpv6Cidrs"`
 	// Geo Country Codes. Must contain between 1 and 10 unique items.
 	GeoCountryCodes []string `pulumi:"geoCountryCodes"`
 	// Geo Subdivision Codes. Must contain between 1 and 10 unique items.
 	GeoSubdivisionCodes []string `pulumi:"geoSubdivisionCodes"`
+	// Hostnames. Must contain between 1 and 20 unique items.
+	Hostnames []string `pulumi:"hostnames"`
 	// IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
 	Ipv4Cidrs []string `pulumi:"ipv4Cidrs"`
 	// IPv6 CIDRs. Must contain between 1 and 10 unique items. Can be IPv6 addresses or CIDR blocks.
@@ -67847,10 +68260,16 @@ type GetNetworkAclRuleNotMatchInput interface {
 type GetNetworkAclRuleNotMatchArgs struct {
 	// ASNs. Must contain between 1 and 10 unique items.
 	Asns pulumi.IntArrayInput `pulumi:"asns"`
+	// Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
+	ConnectingIpv4Cidrs pulumi.StringArrayInput `pulumi:"connectingIpv4Cidrs"`
+	// Connecting IPv6 CIDRs. Must contain between 1 and 20 unique items. Can be IPv6 addresses or CIDR blocks.
+	ConnectingIpv6Cidrs pulumi.StringArrayInput `pulumi:"connectingIpv6Cidrs"`
 	// Geo Country Codes. Must contain between 1 and 10 unique items.
 	GeoCountryCodes pulumi.StringArrayInput `pulumi:"geoCountryCodes"`
 	// Geo Subdivision Codes. Must contain between 1 and 10 unique items.
 	GeoSubdivisionCodes pulumi.StringArrayInput `pulumi:"geoSubdivisionCodes"`
+	// Hostnames. Must contain between 1 and 20 unique items.
+	Hostnames pulumi.StringArrayInput `pulumi:"hostnames"`
 	// IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
 	Ipv4Cidrs pulumi.StringArrayInput `pulumi:"ipv4Cidrs"`
 	// IPv6 CIDRs. Must contain between 1 and 10 unique items. Can be IPv6 addresses or CIDR blocks.
@@ -67919,6 +68338,16 @@ func (o GetNetworkAclRuleNotMatchOutput) Asns() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v GetNetworkAclRuleNotMatch) []int { return v.Asns }).(pulumi.IntArrayOutput)
 }
 
+// Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
+func (o GetNetworkAclRuleNotMatchOutput) ConnectingIpv4Cidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleNotMatch) []string { return v.ConnectingIpv4Cidrs }).(pulumi.StringArrayOutput)
+}
+
+// Connecting IPv6 CIDRs. Must contain between 1 and 20 unique items. Can be IPv6 addresses or CIDR blocks.
+func (o GetNetworkAclRuleNotMatchOutput) ConnectingIpv6Cidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleNotMatch) []string { return v.ConnectingIpv6Cidrs }).(pulumi.StringArrayOutput)
+}
+
 // Geo Country Codes. Must contain between 1 and 10 unique items.
 func (o GetNetworkAclRuleNotMatchOutput) GeoCountryCodes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetNetworkAclRuleNotMatch) []string { return v.GeoCountryCodes }).(pulumi.StringArrayOutput)
@@ -67927,6 +68356,11 @@ func (o GetNetworkAclRuleNotMatchOutput) GeoCountryCodes() pulumi.StringArrayOut
 // Geo Subdivision Codes. Must contain between 1 and 10 unique items.
 func (o GetNetworkAclRuleNotMatchOutput) GeoSubdivisionCodes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetNetworkAclRuleNotMatch) []string { return v.GeoSubdivisionCodes }).(pulumi.StringArrayOutput)
+}
+
+// Hostnames. Must contain between 1 and 20 unique items.
+func (o GetNetworkAclRuleNotMatchOutput) Hostnames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleNotMatch) []string { return v.Hostnames }).(pulumi.StringArrayOutput)
 }
 
 // IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
@@ -73283,238 +73717,6 @@ func (o GetUserAttributeProfileUserAttributeStrategyOverrideArrayOutput) Index(i
 	}).(GetUserAttributeProfileUserAttributeStrategyOverrideOutput)
 }
 
-type GetUserAttributeProfileUserAttributeStrategyOverrideOidcMapping struct {
-	// Display name for the OIDC mapping.
-	DisplayName string `pulumi:"displayName"`
-	// The OIDC mapping field.
-	Mapping string `pulumi:"mapping"`
-}
-
-// GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingInput is an input type that accepts GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArgs and GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput values.
-// You can construct a concrete instance of `GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingInput` via:
-//
-//	GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArgs{...}
-type GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingInput interface {
-	pulumi.Input
-
-	ToGetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput() GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput
-	ToGetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutputWithContext(context.Context) GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput
-}
-
-type GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArgs struct {
-	// Display name for the OIDC mapping.
-	DisplayName pulumi.StringInput `pulumi:"displayName"`
-	// The OIDC mapping field.
-	Mapping pulumi.StringInput `pulumi:"mapping"`
-}
-
-func (GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetUserAttributeProfileUserAttributeStrategyOverrideOidcMapping)(nil)).Elem()
-}
-
-func (i GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArgs) ToGetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput() GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput {
-	return i.ToGetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutputWithContext(context.Background())
-}
-
-func (i GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArgs) ToGetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutputWithContext(ctx context.Context) GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput)
-}
-
-// GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArrayInput is an input type that accepts GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArray and GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArrayOutput values.
-// You can construct a concrete instance of `GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArrayInput` via:
-//
-//	GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArray{ GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArgs{...} }
-type GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArrayInput interface {
-	pulumi.Input
-
-	ToGetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArrayOutput() GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArrayOutput
-	ToGetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArrayOutputWithContext(context.Context) GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArrayOutput
-}
-
-type GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArray []GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingInput
-
-func (GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetUserAttributeProfileUserAttributeStrategyOverrideOidcMapping)(nil)).Elem()
-}
-
-func (i GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArray) ToGetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArrayOutput() GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArrayOutput {
-	return i.ToGetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArrayOutputWithContext(context.Background())
-}
-
-func (i GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArray) ToGetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArrayOutputWithContext(ctx context.Context) GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArrayOutput)
-}
-
-type GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput struct{ *pulumi.OutputState }
-
-func (GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetUserAttributeProfileUserAttributeStrategyOverrideOidcMapping)(nil)).Elem()
-}
-
-func (o GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput) ToGetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput() GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput {
-	return o
-}
-
-func (o GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput) ToGetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutputWithContext(ctx context.Context) GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput {
-	return o
-}
-
-// Display name for the OIDC mapping.
-func (o GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput) DisplayName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetUserAttributeProfileUserAttributeStrategyOverrideOidcMapping) string { return v.DisplayName }).(pulumi.StringOutput)
-}
-
-// The OIDC mapping field.
-func (o GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput) Mapping() pulumi.StringOutput {
-	return o.ApplyT(func(v GetUserAttributeProfileUserAttributeStrategyOverrideOidcMapping) string { return v.Mapping }).(pulumi.StringOutput)
-}
-
-type GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArrayOutput struct{ *pulumi.OutputState }
-
-func (GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetUserAttributeProfileUserAttributeStrategyOverrideOidcMapping)(nil)).Elem()
-}
-
-func (o GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArrayOutput) ToGetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArrayOutput() GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArrayOutput {
-	return o
-}
-
-func (o GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArrayOutput) ToGetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArrayOutputWithContext(ctx context.Context) GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArrayOutput {
-	return o
-}
-
-func (o GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArrayOutput) Index(i pulumi.IntInput) GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetUserAttributeProfileUserAttributeStrategyOverrideOidcMapping {
-		return vs[0].([]GetUserAttributeProfileUserAttributeStrategyOverrideOidcMapping)[vs[1].(int)]
-	}).(GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput)
-}
-
-type GetUserAttributeProfileUserId struct {
-	// The OIDC mapping for the user ID.
-	OidcMapping string `pulumi:"oidcMapping"`
-	// The SAML mapping for the user ID.
-	SamlMappings []string `pulumi:"samlMappings"`
-	// The SCIM mapping for the user ID.
-	ScimMapping string `pulumi:"scimMapping"`
-	// Strategy-specific overrides for user ID mapping.
-	StrategyOverrides []GetUserAttributeProfileUserIdStrategyOverride `pulumi:"strategyOverrides"`
-}
-
-// GetUserAttributeProfileUserIdInput is an input type that accepts GetUserAttributeProfileUserIdArgs and GetUserAttributeProfileUserIdOutput values.
-// You can construct a concrete instance of `GetUserAttributeProfileUserIdInput` via:
-//
-//	GetUserAttributeProfileUserIdArgs{...}
-type GetUserAttributeProfileUserIdInput interface {
-	pulumi.Input
-
-	ToGetUserAttributeProfileUserIdOutput() GetUserAttributeProfileUserIdOutput
-	ToGetUserAttributeProfileUserIdOutputWithContext(context.Context) GetUserAttributeProfileUserIdOutput
-}
-
-type GetUserAttributeProfileUserIdArgs struct {
-	// The OIDC mapping for the user ID.
-	OidcMapping pulumi.StringInput `pulumi:"oidcMapping"`
-	// The SAML mapping for the user ID.
-	SamlMappings pulumi.StringArrayInput `pulumi:"samlMappings"`
-	// The SCIM mapping for the user ID.
-	ScimMapping pulumi.StringInput `pulumi:"scimMapping"`
-	// Strategy-specific overrides for user ID mapping.
-	StrategyOverrides GetUserAttributeProfileUserIdStrategyOverrideArrayInput `pulumi:"strategyOverrides"`
-}
-
-func (GetUserAttributeProfileUserIdArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetUserAttributeProfileUserId)(nil)).Elem()
-}
-
-func (i GetUserAttributeProfileUserIdArgs) ToGetUserAttributeProfileUserIdOutput() GetUserAttributeProfileUserIdOutput {
-	return i.ToGetUserAttributeProfileUserIdOutputWithContext(context.Background())
-}
-
-func (i GetUserAttributeProfileUserIdArgs) ToGetUserAttributeProfileUserIdOutputWithContext(ctx context.Context) GetUserAttributeProfileUserIdOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetUserAttributeProfileUserIdOutput)
-}
-
-// GetUserAttributeProfileUserIdArrayInput is an input type that accepts GetUserAttributeProfileUserIdArray and GetUserAttributeProfileUserIdArrayOutput values.
-// You can construct a concrete instance of `GetUserAttributeProfileUserIdArrayInput` via:
-//
-//	GetUserAttributeProfileUserIdArray{ GetUserAttributeProfileUserIdArgs{...} }
-type GetUserAttributeProfileUserIdArrayInput interface {
-	pulumi.Input
-
-	ToGetUserAttributeProfileUserIdArrayOutput() GetUserAttributeProfileUserIdArrayOutput
-	ToGetUserAttributeProfileUserIdArrayOutputWithContext(context.Context) GetUserAttributeProfileUserIdArrayOutput
-}
-
-type GetUserAttributeProfileUserIdArray []GetUserAttributeProfileUserIdInput
-
-func (GetUserAttributeProfileUserIdArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetUserAttributeProfileUserId)(nil)).Elem()
-}
-
-func (i GetUserAttributeProfileUserIdArray) ToGetUserAttributeProfileUserIdArrayOutput() GetUserAttributeProfileUserIdArrayOutput {
-	return i.ToGetUserAttributeProfileUserIdArrayOutputWithContext(context.Background())
-}
-
-func (i GetUserAttributeProfileUserIdArray) ToGetUserAttributeProfileUserIdArrayOutputWithContext(ctx context.Context) GetUserAttributeProfileUserIdArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetUserAttributeProfileUserIdArrayOutput)
-}
-
-type GetUserAttributeProfileUserIdOutput struct{ *pulumi.OutputState }
-
-func (GetUserAttributeProfileUserIdOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetUserAttributeProfileUserId)(nil)).Elem()
-}
-
-func (o GetUserAttributeProfileUserIdOutput) ToGetUserAttributeProfileUserIdOutput() GetUserAttributeProfileUserIdOutput {
-	return o
-}
-
-func (o GetUserAttributeProfileUserIdOutput) ToGetUserAttributeProfileUserIdOutputWithContext(ctx context.Context) GetUserAttributeProfileUserIdOutput {
-	return o
-}
-
-// The OIDC mapping for the user ID.
-func (o GetUserAttributeProfileUserIdOutput) OidcMapping() pulumi.StringOutput {
-	return o.ApplyT(func(v GetUserAttributeProfileUserId) string { return v.OidcMapping }).(pulumi.StringOutput)
-}
-
-// The SAML mapping for the user ID.
-func (o GetUserAttributeProfileUserIdOutput) SamlMappings() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetUserAttributeProfileUserId) []string { return v.SamlMappings }).(pulumi.StringArrayOutput)
-}
-
-// The SCIM mapping for the user ID.
-func (o GetUserAttributeProfileUserIdOutput) ScimMapping() pulumi.StringOutput {
-	return o.ApplyT(func(v GetUserAttributeProfileUserId) string { return v.ScimMapping }).(pulumi.StringOutput)
-}
-
-// Strategy-specific overrides for user ID mapping.
-func (o GetUserAttributeProfileUserIdOutput) StrategyOverrides() GetUserAttributeProfileUserIdStrategyOverrideArrayOutput {
-	return o.ApplyT(func(v GetUserAttributeProfileUserId) []GetUserAttributeProfileUserIdStrategyOverride {
-		return v.StrategyOverrides
-	}).(GetUserAttributeProfileUserIdStrategyOverrideArrayOutput)
-}
-
-type GetUserAttributeProfileUserIdArrayOutput struct{ *pulumi.OutputState }
-
-func (GetUserAttributeProfileUserIdArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetUserAttributeProfileUserId)(nil)).Elem()
-}
-
-func (o GetUserAttributeProfileUserIdArrayOutput) ToGetUserAttributeProfileUserIdArrayOutput() GetUserAttributeProfileUserIdArrayOutput {
-	return o
-}
-
-func (o GetUserAttributeProfileUserIdArrayOutput) ToGetUserAttributeProfileUserIdArrayOutputWithContext(ctx context.Context) GetUserAttributeProfileUserIdArrayOutput {
-	return o
-}
-
-func (o GetUserAttributeProfileUserIdArrayOutput) Index(i pulumi.IntInput) GetUserAttributeProfileUserIdOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetUserAttributeProfileUserId {
-		return vs[0].([]GetUserAttributeProfileUserId)[vs[1].(int)]
-	}).(GetUserAttributeProfileUserIdOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionDependencyInput)(nil)).Elem(), ActionDependencyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionDependencyArrayInput)(nil)).Elem(), ActionDependencyArray{})
@@ -73784,6 +73986,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsCustomPasswordHashPtrInput)(nil)).Elem(), ConnectionOptionsCustomPasswordHashArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsDecryptionKeyInput)(nil)).Elem(), ConnectionOptionsDecryptionKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsDecryptionKeyPtrInput)(nil)).Elem(), ConnectionOptionsDecryptionKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsFederatedConnectionsAccessTokensInput)(nil)).Elem(), ConnectionOptionsFederatedConnectionsAccessTokensArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsFederatedConnectionsAccessTokensPtrInput)(nil)).Elem(), ConnectionOptionsFederatedConnectionsAccessTokensArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsGatewayAuthenticationInput)(nil)).Elem(), ConnectionOptionsGatewayAuthenticationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsGatewayAuthenticationPtrInput)(nil)).Elem(), ConnectionOptionsGatewayAuthenticationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsIdpInitiatedInput)(nil)).Elem(), ConnectionOptionsIdpInitiatedArgs{})
@@ -74315,6 +74519,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionCustomPasswordHashArrayInput)(nil)).Elem(), GetConnectionOptionCustomPasswordHashArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionDecryptionKeyInput)(nil)).Elem(), GetConnectionOptionDecryptionKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionDecryptionKeyArrayInput)(nil)).Elem(), GetConnectionOptionDecryptionKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionFederatedConnectionsAccessTokenInput)(nil)).Elem(), GetConnectionOptionFederatedConnectionsAccessTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionFederatedConnectionsAccessTokenArrayInput)(nil)).Elem(), GetConnectionOptionFederatedConnectionsAccessTokenArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionGatewayAuthenticationInput)(nil)).Elem(), GetConnectionOptionGatewayAuthenticationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionGatewayAuthenticationArrayInput)(nil)).Elem(), GetConnectionOptionGatewayAuthenticationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionIdpInitiatedInput)(nil)).Elem(), GetConnectionOptionIdpInitiatedArgs{})
@@ -74495,10 +74701,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserAttributeProfileUserAttributeOidcMappingArrayInput)(nil)).Elem(), GetUserAttributeProfileUserAttributeOidcMappingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserAttributeProfileUserAttributeStrategyOverrideInput)(nil)).Elem(), GetUserAttributeProfileUserAttributeStrategyOverrideArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserAttributeProfileUserAttributeStrategyOverrideArrayInput)(nil)).Elem(), GetUserAttributeProfileUserAttributeStrategyOverrideArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingInput)(nil)).Elem(), GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArrayInput)(nil)).Elem(), GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetUserAttributeProfileUserIdInput)(nil)).Elem(), GetUserAttributeProfileUserIdArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetUserAttributeProfileUserIdArrayInput)(nil)).Elem(), GetUserAttributeProfileUserIdArray{})
 	pulumi.RegisterOutputType(ActionDependencyOutput{})
 	pulumi.RegisterOutputType(ActionDependencyArrayOutput{})
 	pulumi.RegisterOutputType(ActionModuleTypeOutput{})
@@ -74767,6 +74969,8 @@ func init() {
 	pulumi.RegisterOutputType(ConnectionOptionsCustomPasswordHashPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsDecryptionKeyOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsDecryptionKeyPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsFederatedConnectionsAccessTokensOutput{})
+	pulumi.RegisterOutputType(ConnectionOptionsFederatedConnectionsAccessTokensPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsGatewayAuthenticationOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsGatewayAuthenticationPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsIdpInitiatedOutput{})
@@ -75298,6 +75502,8 @@ func init() {
 	pulumi.RegisterOutputType(GetConnectionOptionCustomPasswordHashArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionDecryptionKeyOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionDecryptionKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionFederatedConnectionsAccessTokenOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionFederatedConnectionsAccessTokenArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionGatewayAuthenticationOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionGatewayAuthenticationArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionIdpInitiatedOutput{})
@@ -75478,8 +75684,4 @@ func init() {
 	pulumi.RegisterOutputType(GetUserAttributeProfileUserAttributeOidcMappingArrayOutput{})
 	pulumi.RegisterOutputType(GetUserAttributeProfileUserAttributeStrategyOverrideOutput{})
 	pulumi.RegisterOutputType(GetUserAttributeProfileUserAttributeStrategyOverrideArrayOutput{})
-	pulumi.RegisterOutputType(GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput{})
-	pulumi.RegisterOutputType(GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArrayOutput{})
-	pulumi.RegisterOutputType(GetUserAttributeProfileUserIdOutput{})
-	pulumi.RegisterOutputType(GetUserAttributeProfileUserIdArrayOutput{})
 }

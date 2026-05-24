@@ -46,6 +46,18 @@ namespace Pulumi.Auth0
         public string? Query { get; set; }
 
         /// <summary>
+        /// Whether to skip user permissions. Setting this to `True` will skips paginated API calls to /api/v2/users/{id}/permissions. Default: `False` to optimize performance and reduce rate limit consumption.
+        /// </summary>
+        [Input("skipPermissions")]
+        public bool? SkipPermissions { get; set; }
+
+        /// <summary>
+        /// Whether to skip user roles. Setting this to `True` will skips paginated API calls to /api/v2/users/{id}/roles. Default: `False` to optimize performance and reduce rate limit consumption.
+        /// </summary>
+        [Input("skipRoles")]
+        public bool? SkipRoles { get; set; }
+
+        /// <summary>
         /// ID of the user.
         /// </summary>
         [Input("userId")]
@@ -70,6 +82,18 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("query")]
         public Input<string>? Query { get; set; }
+
+        /// <summary>
+        /// Whether to skip user permissions. Setting this to `True` will skips paginated API calls to /api/v2/users/{id}/permissions. Default: `False` to optimize performance and reduce rate limit consumption.
+        /// </summary>
+        [Input("skipPermissions")]
+        public Input<bool>? SkipPermissions { get; set; }
+
+        /// <summary>
+        /// Whether to skip user roles. Setting this to `True` will skips paginated API calls to /api/v2/users/{id}/roles. Default: `False` to optimize performance and reduce rate limit consumption.
+        /// </summary>
+        [Input("skipRoles")]
+        public Input<bool>? SkipRoles { get; set; }
 
         /// <summary>
         /// ID of the user.
@@ -136,7 +160,7 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly string Password;
         /// <summary>
-        /// List of API permissions granted to the user.
+        /// List of API permissions granted to the user. Skips if `SkipPermissions` is `True`. When `SkipPermissions` is `True` (default), this will be an empty set to optimize performance and reduce rate limit consumption.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetUserPermissionResult> Permissions;
         /// <summary>
@@ -156,9 +180,17 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly string? Query;
         /// <summary>
-        /// Set of IDs of roles assigned to the user.
+        /// Set of IDs of roles assigned to the user. Skips if `SkipRoles` is `True`. When `SkipRoles` is `True` (default), this will be an empty set to optimize performance and reduce rate limit consumption.
         /// </summary>
         public readonly ImmutableArray<string> Roles;
+        /// <summary>
+        /// Whether to skip user permissions. Setting this to `True` will skips paginated API calls to /api/v2/users/{id}/permissions. Default: `False` to optimize performance and reduce rate limit consumption.
+        /// </summary>
+        public readonly bool? SkipPermissions;
+        /// <summary>
+        /// Whether to skip user roles. Setting this to `True` will skips paginated API calls to /api/v2/users/{id}/roles. Default: `False` to optimize performance and reduce rate limit consumption.
+        /// </summary>
+        public readonly bool? SkipRoles;
         /// <summary>
         /// ID of the user.
         /// </summary>
@@ -214,6 +246,10 @@ namespace Pulumi.Auth0
 
             ImmutableArray<string> roles,
 
+            bool? skipPermissions,
+
+            bool? skipRoles,
+
             string? userId,
 
             string userMetadata,
@@ -240,6 +276,8 @@ namespace Pulumi.Auth0
             Picture = picture;
             Query = query;
             Roles = roles;
+            SkipPermissions = skipPermissions;
+            SkipRoles = skipRoles;
             UserId = userId;
             UserMetadata = userMetadata;
             Username = username;

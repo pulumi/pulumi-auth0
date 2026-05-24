@@ -24,6 +24,30 @@ namespace Pulumi.Auth0.Inputs
             set => _asns = value;
         }
 
+        [Input("connectingIpv4Cidrs")]
+        private InputList<string>? _connectingIpv4Cidrs;
+
+        /// <summary>
+        /// Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
+        /// </summary>
+        public InputList<string> ConnectingIpv4Cidrs
+        {
+            get => _connectingIpv4Cidrs ?? (_connectingIpv4Cidrs = new InputList<string>());
+            set => _connectingIpv4Cidrs = value;
+        }
+
+        [Input("connectingIpv6Cidrs")]
+        private InputList<string>? _connectingIpv6Cidrs;
+
+        /// <summary>
+        /// Connecting IPv6 CIDRs. Must contain between 1 and 20 unique items. Can be IPv6 addresses or CIDR blocks.
+        /// </summary>
+        public InputList<string> ConnectingIpv6Cidrs
+        {
+            get => _connectingIpv6Cidrs ?? (_connectingIpv6Cidrs = new InputList<string>());
+            set => _connectingIpv6Cidrs = value;
+        }
+
         [Input("geoCountryCodes")]
         private InputList<string>? _geoCountryCodes;
 
@@ -46,6 +70,18 @@ namespace Pulumi.Auth0.Inputs
         {
             get => _geoSubdivisionCodes ?? (_geoSubdivisionCodes = new InputList<string>());
             set => _geoSubdivisionCodes = value;
+        }
+
+        [Input("hostnames")]
+        private InputList<string>? _hostnames;
+
+        /// <summary>
+        /// Hostnames. Must contain between 1 and 20 unique items.
+        /// </summary>
+        public InputList<string> Hostnames
+        {
+            get => _hostnames ?? (_hostnames = new InputList<string>());
+            set => _hostnames = value;
         }
 
         [Input("ipv4Cidrs")]

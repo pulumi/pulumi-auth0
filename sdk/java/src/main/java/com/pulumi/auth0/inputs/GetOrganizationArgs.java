@@ -5,6 +5,7 @@ package com.pulumi.auth0.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -45,11 +46,59 @@ public final class GetOrganizationArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.organizationId);
     }
 
+    /**
+     * Whether to skip organization client grants. Setting this to `true` will skip API call to /api/v2/organizations/{id}/client-grants.
+     * 
+     */
+    @Import(name="skipClientGrants")
+    private @Nullable Output<Boolean> skipClientGrants;
+
+    /**
+     * @return Whether to skip organization client grants. Setting this to `true` will skip API call to /api/v2/organizations/{id}/client-grants.
+     * 
+     */
+    public Optional<Output<Boolean>> skipClientGrants() {
+        return Optional.ofNullable(this.skipClientGrants);
+    }
+
+    /**
+     * Whether to skip organization connections. Setting this to `true` will skip paginated API calls to /api/v2/organizations/{id}/connections.
+     * 
+     */
+    @Import(name="skipConnections")
+    private @Nullable Output<Boolean> skipConnections;
+
+    /**
+     * @return Whether to skip organization connections. Setting this to `true` will skip paginated API calls to /api/v2/organizations/{id}/connections.
+     * 
+     */
+    public Optional<Output<Boolean>> skipConnections() {
+        return Optional.ofNullable(this.skipConnections);
+    }
+
+    /**
+     * Whether to skip organization members. Setting this to `true` will skip paginated API calls to /api/v2/organizations/{id}/members.
+     * 
+     */
+    @Import(name="skipMembers")
+    private @Nullable Output<Boolean> skipMembers;
+
+    /**
+     * @return Whether to skip organization members. Setting this to `true` will skip paginated API calls to /api/v2/organizations/{id}/members.
+     * 
+     */
+    public Optional<Output<Boolean>> skipMembers() {
+        return Optional.ofNullable(this.skipMembers);
+    }
+
     private GetOrganizationArgs() {}
 
     private GetOrganizationArgs(GetOrganizationArgs $) {
         this.name = $.name;
         this.organizationId = $.organizationId;
+        this.skipClientGrants = $.skipClientGrants;
+        this.skipConnections = $.skipConnections;
+        this.skipMembers = $.skipMembers;
     }
 
     public static Builder builder() {
@@ -110,6 +159,69 @@ public final class GetOrganizationArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder organizationId(String organizationId) {
             return organizationId(Output.of(organizationId));
+        }
+
+        /**
+         * @param skipClientGrants Whether to skip organization client grants. Setting this to `true` will skip API call to /api/v2/organizations/{id}/client-grants.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipClientGrants(@Nullable Output<Boolean> skipClientGrants) {
+            $.skipClientGrants = skipClientGrants;
+            return this;
+        }
+
+        /**
+         * @param skipClientGrants Whether to skip organization client grants. Setting this to `true` will skip API call to /api/v2/organizations/{id}/client-grants.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipClientGrants(Boolean skipClientGrants) {
+            return skipClientGrants(Output.of(skipClientGrants));
+        }
+
+        /**
+         * @param skipConnections Whether to skip organization connections. Setting this to `true` will skip paginated API calls to /api/v2/organizations/{id}/connections.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipConnections(@Nullable Output<Boolean> skipConnections) {
+            $.skipConnections = skipConnections;
+            return this;
+        }
+
+        /**
+         * @param skipConnections Whether to skip organization connections. Setting this to `true` will skip paginated API calls to /api/v2/organizations/{id}/connections.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipConnections(Boolean skipConnections) {
+            return skipConnections(Output.of(skipConnections));
+        }
+
+        /**
+         * @param skipMembers Whether to skip organization members. Setting this to `true` will skip paginated API calls to /api/v2/organizations/{id}/members.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipMembers(@Nullable Output<Boolean> skipMembers) {
+            $.skipMembers = skipMembers;
+            return this;
+        }
+
+        /**
+         * @param skipMembers Whether to skip organization members. Setting this to `true` will skip paginated API calls to /api/v2/organizations/{id}/members.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipMembers(Boolean skipMembers) {
+            return skipMembers(Output.of(skipMembers));
         }
 
         public GetOrganizationArgs build() {

@@ -27,7 +27,7 @@ class GetConnectionResult:
     """
     A collection of values returned by getConnection.
     """
-    def __init__(__self__, authentications=None, connected_accounts=None, connection_id=None, display_name=None, enabled_clients=None, id=None, is_domain_connection=None, metadata=None, name=None, options=None, realms=None, show_as_button=None, strategy=None):
+    def __init__(__self__, authentications=None, connected_accounts=None, connection_id=None, display_name=None, enabled_clients=None, id=None, is_domain_connection=None, metadata=None, name=None, options=None, realms=None, show_as_button=None, skip_enabled_clients=None, strategy=None):
         if authentications and not isinstance(authentications, list):
             raise TypeError("Expected argument 'authentications' to be a list")
         pulumi.set(__self__, "authentications", authentications)
@@ -64,6 +64,9 @@ class GetConnectionResult:
         if show_as_button and not isinstance(show_as_button, bool):
             raise TypeError("Expected argument 'show_as_button' to be a bool")
         pulumi.set(__self__, "show_as_button", show_as_button)
+        if skip_enabled_clients and not isinstance(skip_enabled_clients, bool):
+            raise TypeError("Expected argument 'skip_enabled_clients' to be a bool")
+        pulumi.set(__self__, "skip_enabled_clients", skip_enabled_clients)
         if strategy and not isinstance(strategy, str):
             raise TypeError("Expected argument 'strategy' to be a str")
         pulumi.set(__self__, "strategy", strategy)
@@ -104,7 +107,7 @@ class GetConnectionResult:
     @pulumi.getter(name="enabledClients")
     def enabled_clients(self) -> Sequence[_builtins.str]:
         """
-        IDs of the clients for which the connection is enabled.
+        IDs of the clients for which the connection is enabled. Skips populating if `skip_enabled_clients` is `true`.
         """
         return pulumi.get(self, "enabled_clients")
 
@@ -165,6 +168,14 @@ class GetConnectionResult:
         return pulumi.get(self, "show_as_button")
 
     @_builtins.property
+    @pulumi.getter(name="skipEnabledClients")
+    def skip_enabled_clients(self) -> Optional[_builtins.bool]:
+        """
+        Whether to skip enabled clients for this connection. Setting this to `true` will skip additional paginated API calls to /api/v2/connections/{id}/clients. Default: `false`.
+        """
+        return pulumi.get(self, "skip_enabled_clients")
+
+    @_builtins.property
     @pulumi.getter
     def strategy(self) -> _builtins.str:
         """
@@ -191,11 +202,13 @@ class AwaitableGetConnectionResult(GetConnectionResult):
             options=self.options,
             realms=self.realms,
             show_as_button=self.show_as_button,
+            skip_enabled_clients=self.skip_enabled_clients,
             strategy=self.strategy)
 
 
 def get_connection(connection_id: Optional[_builtins.str] = None,
                    name: Optional[_builtins.str] = None,
+                   skip_enabled_clients: Optional[_builtins.bool] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetConnectionResult:
     """
     Data source to retrieve a specific Auth0 connection by `connection_id` or `name`.
@@ -215,10 +228,12 @@ def get_connection(connection_id: Optional[_builtins.str] = None,
 
     :param _builtins.str connection_id: The ID of the connection. If not provided, `name` must be set.
     :param _builtins.str name: The name of the connection. If not provided, `connection_id` must be set.
+    :param _builtins.bool skip_enabled_clients: Whether to skip enabled clients for this connection. Setting this to `true` will skip additional paginated API calls to /api/v2/connections/{id}/clients. Default: `false`.
     """
     __args__ = dict()
     __args__['connectionId'] = connection_id
     __args__['name'] = name
+    __args__['skipEnabledClients'] = skip_enabled_clients
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('auth0:index/getConnection:getConnection', __args__, opts=opts, typ=GetConnectionResult).value
 
@@ -235,9 +250,11 @@ def get_connection(connection_id: Optional[_builtins.str] = None,
         options=pulumi.get(__ret__, 'options'),
         realms=pulumi.get(__ret__, 'realms'),
         show_as_button=pulumi.get(__ret__, 'show_as_button'),
+        skip_enabled_clients=pulumi.get(__ret__, 'skip_enabled_clients'),
         strategy=pulumi.get(__ret__, 'strategy'))
 def get_connection_output(connection_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                           name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          skip_enabled_clients: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConnectionResult]:
     """
     Data source to retrieve a specific Auth0 connection by `connection_id` or `name`.
@@ -257,10 +274,12 @@ def get_connection_output(connection_id: pulumi.Input[Optional[Optional[_builtin
 
     :param _builtins.str connection_id: The ID of the connection. If not provided, `name` must be set.
     :param _builtins.str name: The name of the connection. If not provided, `connection_id` must be set.
+    :param _builtins.bool skip_enabled_clients: Whether to skip enabled clients for this connection. Setting this to `true` will skip additional paginated API calls to /api/v2/connections/{id}/clients. Default: `false`.
     """
     __args__ = dict()
     __args__['connectionId'] = connection_id
     __args__['name'] = name
+    __args__['skipEnabledClients'] = skip_enabled_clients
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('auth0:index/getConnection:getConnection', __args__, opts=opts, typ=GetConnectionResult)
     return __ret__.apply(lambda __response__: GetConnectionResult(
@@ -276,4 +295,5 @@ def get_connection_output(connection_id: pulumi.Input[Optional[Optional[_builtin
         options=pulumi.get(__response__, 'options'),
         realms=pulumi.get(__response__, 'realms'),
         show_as_button=pulumi.get(__response__, 'show_as_button'),
+        skip_enabled_clients=pulumi.get(__response__, 'skip_enabled_clients'),
         strategy=pulumi.get(__response__, 'strategy')))

@@ -27,7 +27,7 @@ class GetRoleResult:
     """
     A collection of values returned by getRole.
     """
-    def __init__(__self__, description=None, id=None, name=None, permissions=None, role_id=None, users=None):
+    def __init__(__self__, description=None, id=None, name=None, permissions=None, role_id=None, skip_permissions=None, skip_users=None, users=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -43,6 +43,12 @@ class GetRoleResult:
         if role_id and not isinstance(role_id, str):
             raise TypeError("Expected argument 'role_id' to be a str")
         pulumi.set(__self__, "role_id", role_id)
+        if skip_permissions and not isinstance(skip_permissions, bool):
+            raise TypeError("Expected argument 'skip_permissions' to be a bool")
+        pulumi.set(__self__, "skip_permissions", skip_permissions)
+        if skip_users and not isinstance(skip_users, bool):
+            raise TypeError("Expected argument 'skip_users' to be a bool")
+        pulumi.set(__self__, "skip_users", skip_users)
         if users and not isinstance(users, list):
             raise TypeError("Expected argument 'users' to be a list")
         pulumi.set(__self__, "users", users)
@@ -75,7 +81,7 @@ class GetRoleResult:
     @pulumi.getter
     def permissions(self) -> Sequence['outputs.GetRolePermissionResult']:
         """
-        Configuration settings for permissions (scopes) attached to the role.
+        Configuration settings for permissions (scopes) attached to the role. Skips populating if `skip_permissions` is `true`.
         """
         return pulumi.get(self, "permissions")
 
@@ -88,10 +94,26 @@ class GetRoleResult:
         return pulumi.get(self, "role_id")
 
     @_builtins.property
+    @pulumi.getter(name="skipPermissions")
+    def skip_permissions(self) -> Optional[_builtins.bool]:
+        """
+        Whether to skip role permissions. Setting this to `true` will skip paginated API calls to /api/v2/roles/{id}/permissions.
+        """
+        return pulumi.get(self, "skip_permissions")
+
+    @_builtins.property
+    @pulumi.getter(name="skipUsers")
+    def skip_users(self) -> Optional[_builtins.bool]:
+        """
+        Whether to skip users assigned to this role (max 1000). Setting this to `true` will skip paginated API calls to /api/v2/roles/{id}/users.
+        """
+        return pulumi.get(self, "skip_users")
+
+    @_builtins.property
     @pulumi.getter
     def users(self) -> Sequence[_builtins.str]:
         """
-        List of user IDs assigned to this role. Retrieves a maximum of 1000 user IDs.
+        List of user IDs assigned to this role. Retrieves a maximum of 1000 user IDs. Skips populating if `skip_users` is `true`.
         """
         return pulumi.get(self, "users")
 
@@ -107,11 +129,15 @@ class AwaitableGetRoleResult(GetRoleResult):
             name=self.name,
             permissions=self.permissions,
             role_id=self.role_id,
+            skip_permissions=self.skip_permissions,
+            skip_users=self.skip_users,
             users=self.users)
 
 
 def get_role(name: Optional[_builtins.str] = None,
              role_id: Optional[_builtins.str] = None,
+             skip_permissions: Optional[_builtins.bool] = None,
+             skip_users: Optional[_builtins.bool] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRoleResult:
     """
     Data source to retrieve a specific Auth0 role by `role_id` or `name`.
@@ -131,10 +157,14 @@ def get_role(name: Optional[_builtins.str] = None,
 
     :param _builtins.str name: The name of the role. If not provided, `role_id` must be set.
     :param _builtins.str role_id: The ID of the role. If not provided, `name` must be set.
+    :param _builtins.bool skip_permissions: Whether to skip role permissions. Setting this to `true` will skip paginated API calls to /api/v2/roles/{id}/permissions.
+    :param _builtins.bool skip_users: Whether to skip users assigned to this role (max 1000). Setting this to `true` will skip paginated API calls to /api/v2/roles/{id}/users.
     """
     __args__ = dict()
     __args__['name'] = name
     __args__['roleId'] = role_id
+    __args__['skipPermissions'] = skip_permissions
+    __args__['skipUsers'] = skip_users
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('auth0:index/getRole:getRole', __args__, opts=opts, typ=GetRoleResult).value
 
@@ -144,9 +174,13 @@ def get_role(name: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         permissions=pulumi.get(__ret__, 'permissions'),
         role_id=pulumi.get(__ret__, 'role_id'),
+        skip_permissions=pulumi.get(__ret__, 'skip_permissions'),
+        skip_users=pulumi.get(__ret__, 'skip_users'),
         users=pulumi.get(__ret__, 'users'))
 def get_role_output(name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                     role_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                    skip_permissions: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                    skip_users: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRoleResult]:
     """
     Data source to retrieve a specific Auth0 role by `role_id` or `name`.
@@ -166,10 +200,14 @@ def get_role_output(name: pulumi.Input[Optional[Optional[_builtins.str]]] = None
 
     :param _builtins.str name: The name of the role. If not provided, `role_id` must be set.
     :param _builtins.str role_id: The ID of the role. If not provided, `name` must be set.
+    :param _builtins.bool skip_permissions: Whether to skip role permissions. Setting this to `true` will skip paginated API calls to /api/v2/roles/{id}/permissions.
+    :param _builtins.bool skip_users: Whether to skip users assigned to this role (max 1000). Setting this to `true` will skip paginated API calls to /api/v2/roles/{id}/users.
     """
     __args__ = dict()
     __args__['name'] = name
     __args__['roleId'] = role_id
+    __args__['skipPermissions'] = skip_permissions
+    __args__['skipUsers'] = skip_users
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('auth0:index/getRole:getRole', __args__, opts=opts, typ=GetRoleResult)
     return __ret__.apply(lambda __response__: GetRoleResult(
@@ -178,4 +216,6 @@ def get_role_output(name: pulumi.Input[Optional[Optional[_builtins.str]]] = None
         name=pulumi.get(__response__, 'name'),
         permissions=pulumi.get(__response__, 'permissions'),
         role_id=pulumi.get(__response__, 'role_id'),
+        skip_permissions=pulumi.get(__response__, 'skip_permissions'),
+        skip_users=pulumi.get(__response__, 'skip_users'),
         users=pulumi.get(__response__, 'users')))

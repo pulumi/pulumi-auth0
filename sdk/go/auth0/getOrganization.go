@@ -62,20 +62,27 @@ type LookupOrganizationArgs struct {
 	Name *string `pulumi:"name"`
 	// The ID of the organization. If not provided, `name` must be set.
 	OrganizationId *string `pulumi:"organizationId"`
+	// Whether to skip organization client grants. Setting this to `true` will skip API call to /api/v2/organizations/{id}/client-grants.
+	SkipClientGrants *bool `pulumi:"skipClientGrants"`
+	// Whether to skip organization connections. Setting this to `true` will skip paginated API calls to /api/v2/organizations/{id}/connections.
+	SkipConnections *bool `pulumi:"skipConnections"`
+	// Whether to skip organization members. Setting this to `true` will skip paginated API calls to /api/v2/organizations/{id}/members.
+	SkipMembers *bool `pulumi:"skipMembers"`
 }
 
 // A collection of values returned by getOrganization.
 type LookupOrganizationResult struct {
 	// Defines how to style the login pages.
 	Brandings []GetOrganizationBranding `pulumi:"brandings"`
-	// Client Grant ID(s) that are associated to the organization.
-	ClientGrants []string                        `pulumi:"clientGrants"`
-	Connections  []GetOrganizationConnectionType `pulumi:"connections"`
+	// Client Grant ID(s) that are associated to the organization. Skips populating if `skipClientGrants` is `true`.
+	ClientGrants []string `pulumi:"clientGrants"`
+	// Connections enabled for this organization. Skips populating if `skipConnections` is `true`.
+	Connections []GetOrganizationConnectionType `pulumi:"connections"`
 	// Friendly name of this organization.
 	DisplayName string `pulumi:"displayName"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// User ID(s) that are members of the organization.
+	// User ID(s) that are members of the organization. Skips populating if `skipMembers` is `true`.
 	Members []string `pulumi:"members"`
 	// Metadata associated with the organization. Maximum of 10 metadata properties allowed.
 	Metadata map[string]string `pulumi:"metadata"`
@@ -83,6 +90,12 @@ type LookupOrganizationResult struct {
 	Name *string `pulumi:"name"`
 	// The ID of the organization. If not provided, `name` must be set.
 	OrganizationId *string `pulumi:"organizationId"`
+	// Whether to skip organization client grants. Setting this to `true` will skip API call to /api/v2/organizations/{id}/client-grants.
+	SkipClientGrants *bool `pulumi:"skipClientGrants"`
+	// Whether to skip organization connections. Setting this to `true` will skip paginated API calls to /api/v2/organizations/{id}/connections.
+	SkipConnections *bool `pulumi:"skipConnections"`
+	// Whether to skip organization members. Setting this to `true` will skip paginated API calls to /api/v2/organizations/{id}/members.
+	SkipMembers *bool `pulumi:"skipMembers"`
 	// The token quota configuration.
 	TokenQuotas []GetOrganizationTokenQuota `pulumi:"tokenQuotas"`
 }
@@ -102,6 +115,12 @@ type LookupOrganizationOutputArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The ID of the organization. If not provided, `name` must be set.
 	OrganizationId pulumi.StringPtrInput `pulumi:"organizationId"`
+	// Whether to skip organization client grants. Setting this to `true` will skip API call to /api/v2/organizations/{id}/client-grants.
+	SkipClientGrants pulumi.BoolPtrInput `pulumi:"skipClientGrants"`
+	// Whether to skip organization connections. Setting this to `true` will skip paginated API calls to /api/v2/organizations/{id}/connections.
+	SkipConnections pulumi.BoolPtrInput `pulumi:"skipConnections"`
+	// Whether to skip organization members. Setting this to `true` will skip paginated API calls to /api/v2/organizations/{id}/members.
+	SkipMembers pulumi.BoolPtrInput `pulumi:"skipMembers"`
 }
 
 func (LookupOrganizationOutputArgs) ElementType() reflect.Type {
@@ -128,11 +147,12 @@ func (o LookupOrganizationResultOutput) Brandings() GetOrganizationBrandingArray
 	return o.ApplyT(func(v LookupOrganizationResult) []GetOrganizationBranding { return v.Brandings }).(GetOrganizationBrandingArrayOutput)
 }
 
-// Client Grant ID(s) that are associated to the organization.
+// Client Grant ID(s) that are associated to the organization. Skips populating if `skipClientGrants` is `true`.
 func (o LookupOrganizationResultOutput) ClientGrants() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupOrganizationResult) []string { return v.ClientGrants }).(pulumi.StringArrayOutput)
 }
 
+// Connections enabled for this organization. Skips populating if `skipConnections` is `true`.
 func (o LookupOrganizationResultOutput) Connections() GetOrganizationConnectionTypeArrayOutput {
 	return o.ApplyT(func(v LookupOrganizationResult) []GetOrganizationConnectionType { return v.Connections }).(GetOrganizationConnectionTypeArrayOutput)
 }
@@ -147,7 +167,7 @@ func (o LookupOrganizationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// User ID(s) that are members of the organization.
+// User ID(s) that are members of the organization. Skips populating if `skipMembers` is `true`.
 func (o LookupOrganizationResultOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupOrganizationResult) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
@@ -165,6 +185,21 @@ func (o LookupOrganizationResultOutput) Name() pulumi.StringPtrOutput {
 // The ID of the organization. If not provided, `name` must be set.
 func (o LookupOrganizationResultOutput) OrganizationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupOrganizationResult) *string { return v.OrganizationId }).(pulumi.StringPtrOutput)
+}
+
+// Whether to skip organization client grants. Setting this to `true` will skip API call to /api/v2/organizations/{id}/client-grants.
+func (o LookupOrganizationResultOutput) SkipClientGrants() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupOrganizationResult) *bool { return v.SkipClientGrants }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to skip organization connections. Setting this to `true` will skip paginated API calls to /api/v2/organizations/{id}/connections.
+func (o LookupOrganizationResultOutput) SkipConnections() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupOrganizationResult) *bool { return v.SkipConnections }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to skip organization members. Setting this to `true` will skip paginated API calls to /api/v2/organizations/{id}/members.
+func (o LookupOrganizationResultOutput) SkipMembers() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupOrganizationResult) *bool { return v.SkipMembers }).(pulumi.BoolPtrOutput)
 }
 
 // The token quota configuration.

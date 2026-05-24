@@ -39,7 +39,7 @@ public final class GetConnectionResult {
      */
     private String displayName;
     /**
-     * @return IDs of the clients for which the connection is enabled.
+     * @return IDs of the clients for which the connection is enabled. Skips populating if `skipEnabledClients` is `true`.
      * 
      */
     private List<String> enabledClients;
@@ -79,6 +79,11 @@ public final class GetConnectionResult {
      */
     private Boolean showAsButton;
     /**
+     * @return Whether to skip enabled clients for this connection. Setting this to `true` will skip additional paginated API calls to /api/v2/connections/{id}/clients. Default: `false`.
+     * 
+     */
+    private @Nullable Boolean skipEnabledClients;
+    /**
      * @return Type of the connection, which indicates the identity provider.
      * 
      */
@@ -114,7 +119,7 @@ public final class GetConnectionResult {
         return this.displayName;
     }
     /**
-     * @return IDs of the clients for which the connection is enabled.
+     * @return IDs of the clients for which the connection is enabled. Skips populating if `skipEnabledClients` is `true`.
      * 
      */
     public List<String> enabledClients() {
@@ -170,6 +175,13 @@ public final class GetConnectionResult {
         return this.showAsButton;
     }
     /**
+     * @return Whether to skip enabled clients for this connection. Setting this to `true` will skip additional paginated API calls to /api/v2/connections/{id}/clients. Default: `false`.
+     * 
+     */
+    public Optional<Boolean> skipEnabledClients() {
+        return Optional.ofNullable(this.skipEnabledClients);
+    }
+    /**
      * @return Type of the connection, which indicates the identity provider.
      * 
      */
@@ -198,6 +210,7 @@ public final class GetConnectionResult {
         private List<GetConnectionOption> options;
         private List<String> realms;
         private Boolean showAsButton;
+        private @Nullable Boolean skipEnabledClients;
         private String strategy;
         public Builder() {}
         public Builder(GetConnectionResult defaults) {
@@ -214,6 +227,7 @@ public final class GetConnectionResult {
     	      this.options = defaults.options;
     	      this.realms = defaults.realms;
     	      this.showAsButton = defaults.showAsButton;
+    	      this.skipEnabledClients = defaults.skipEnabledClients;
     	      this.strategy = defaults.strategy;
         }
 
@@ -325,6 +339,12 @@ public final class GetConnectionResult {
             return this;
         }
         @CustomType.Setter
+        public Builder skipEnabledClients(@Nullable Boolean skipEnabledClients) {
+
+            this.skipEnabledClients = skipEnabledClients;
+            return this;
+        }
+        @CustomType.Setter
         public Builder strategy(String strategy) {
             if (strategy == null) {
               throw new MissingRequiredPropertyException("GetConnectionResult", "strategy");
@@ -346,6 +366,7 @@ public final class GetConnectionResult {
             _resultValue.options = options;
             _resultValue.realms = realms;
             _resultValue.showAsButton = showAsButton;
+            _resultValue.skipEnabledClients = skipEnabledClients;
             _resultValue.strategy = strategy;
             return _resultValue;
         }

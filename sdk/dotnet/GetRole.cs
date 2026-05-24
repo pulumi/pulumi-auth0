@@ -120,6 +120,18 @@ namespace Pulumi.Auth0
         [Input("roleId")]
         public string? RoleId { get; set; }
 
+        /// <summary>
+        /// Whether to skip role permissions. Setting this to `True` will skip paginated API calls to /api/v2/roles/{id}/permissions.
+        /// </summary>
+        [Input("skipPermissions")]
+        public bool? SkipPermissions { get; set; }
+
+        /// <summary>
+        /// Whether to skip users assigned to this role (max 1000). Setting this to `True` will skip paginated API calls to /api/v2/roles/{id}/users.
+        /// </summary>
+        [Input("skipUsers")]
+        public bool? SkipUsers { get; set; }
+
         public GetRoleArgs()
         {
         }
@@ -139,6 +151,18 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("roleId")]
         public Input<string>? RoleId { get; set; }
+
+        /// <summary>
+        /// Whether to skip role permissions. Setting this to `True` will skip paginated API calls to /api/v2/roles/{id}/permissions.
+        /// </summary>
+        [Input("skipPermissions")]
+        public Input<bool>? SkipPermissions { get; set; }
+
+        /// <summary>
+        /// Whether to skip users assigned to this role (max 1000). Setting this to `True` will skip paginated API calls to /api/v2/roles/{id}/users.
+        /// </summary>
+        [Input("skipUsers")]
+        public Input<bool>? SkipUsers { get; set; }
 
         public GetRoleInvokeArgs()
         {
@@ -163,7 +187,7 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// Configuration settings for permissions (scopes) attached to the role.
+        /// Configuration settings for permissions (scopes) attached to the role. Skips populating if `SkipPermissions` is `True`.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRolePermissionResult> Permissions;
         /// <summary>
@@ -171,7 +195,15 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly string? RoleId;
         /// <summary>
-        /// List of user IDs assigned to this role. Retrieves a maximum of 1000 user IDs.
+        /// Whether to skip role permissions. Setting this to `True` will skip paginated API calls to /api/v2/roles/{id}/permissions.
+        /// </summary>
+        public readonly bool? SkipPermissions;
+        /// <summary>
+        /// Whether to skip users assigned to this role (max 1000). Setting this to `True` will skip paginated API calls to /api/v2/roles/{id}/users.
+        /// </summary>
+        public readonly bool? SkipUsers;
+        /// <summary>
+        /// List of user IDs assigned to this role. Retrieves a maximum of 1000 user IDs. Skips populating if `SkipUsers` is `True`.
         /// </summary>
         public readonly ImmutableArray<string> Users;
 
@@ -187,6 +219,10 @@ namespace Pulumi.Auth0
 
             string? roleId,
 
+            bool? skipPermissions,
+
+            bool? skipUsers,
+
             ImmutableArray<string> users)
         {
             Description = description;
@@ -194,6 +230,8 @@ namespace Pulumi.Auth0
             Name = name;
             Permissions = permissions;
             RoleId = roleId;
+            SkipPermissions = skipPermissions;
+            SkipUsers = skipUsers;
             Users = users;
         }
     }
