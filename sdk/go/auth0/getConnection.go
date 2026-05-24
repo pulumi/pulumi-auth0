@@ -62,6 +62,8 @@ type LookupConnectionArgs struct {
 	ConnectionId *string `pulumi:"connectionId"`
 	// The name of the connection. If not provided, `connectionId` must be set.
 	Name *string `pulumi:"name"`
+	// Whether to skip enabled clients for this connection. Setting this to `true` will skip additional paginated API calls to /api/v2/connections/{id}/clients. Default: `false`.
+	SkipEnabledClients *bool `pulumi:"skipEnabledClients"`
 }
 
 // A collection of values returned by getConnection.
@@ -74,7 +76,7 @@ type LookupConnectionResult struct {
 	ConnectionId *string `pulumi:"connectionId"`
 	// Name used in login screen.
 	DisplayName string `pulumi:"displayName"`
-	// IDs of the clients for which the connection is enabled.
+	// IDs of the clients for which the connection is enabled. Skips populating if `skipEnabledClients` is `true`.
 	EnabledClients []string `pulumi:"enabledClients"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -90,6 +92,8 @@ type LookupConnectionResult struct {
 	Realms []string `pulumi:"realms"`
 	// Display connection as a button. Only available on enterprise connections.
 	ShowAsButton bool `pulumi:"showAsButton"`
+	// Whether to skip enabled clients for this connection. Setting this to `true` will skip additional paginated API calls to /api/v2/connections/{id}/clients. Default: `false`.
+	SkipEnabledClients *bool `pulumi:"skipEnabledClients"`
 	// Type of the connection, which indicates the identity provider.
 	Strategy string `pulumi:"strategy"`
 }
@@ -109,6 +113,8 @@ type LookupConnectionOutputArgs struct {
 	ConnectionId pulumi.StringPtrInput `pulumi:"connectionId"`
 	// The name of the connection. If not provided, `connectionId` must be set.
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Whether to skip enabled clients for this connection. Setting this to `true` will skip additional paginated API calls to /api/v2/connections/{id}/clients. Default: `false`.
+	SkipEnabledClients pulumi.BoolPtrInput `pulumi:"skipEnabledClients"`
 }
 
 func (LookupConnectionOutputArgs) ElementType() reflect.Type {
@@ -150,7 +156,7 @@ func (o LookupConnectionResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// IDs of the clients for which the connection is enabled.
+// IDs of the clients for which the connection is enabled. Skips populating if `skipEnabledClients` is `true`.
 func (o LookupConnectionResultOutput) EnabledClients() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupConnectionResult) []string { return v.EnabledClients }).(pulumi.StringArrayOutput)
 }
@@ -188,6 +194,11 @@ func (o LookupConnectionResultOutput) Realms() pulumi.StringArrayOutput {
 // Display connection as a button. Only available on enterprise connections.
 func (o LookupConnectionResultOutput) ShowAsButton() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupConnectionResult) bool { return v.ShowAsButton }).(pulumi.BoolOutput)
+}
+
+// Whether to skip enabled clients for this connection. Setting this to `true` will skip additional paginated API calls to /api/v2/connections/{id}/clients. Default: `false`.
+func (o LookupConnectionResultOutput) SkipEnabledClients() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupConnectionResult) *bool { return v.SkipEnabledClients }).(pulumi.BoolPtrOutput)
 }
 
 // Type of the connection, which indicates the identity provider.

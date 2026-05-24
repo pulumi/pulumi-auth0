@@ -18,6 +18,14 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly ImmutableArray<int> Asns;
         /// <summary>
+        /// Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
+        /// </summary>
+        public readonly ImmutableArray<string> ConnectingIpv4Cidrs;
+        /// <summary>
+        /// Connecting IPv6 CIDRs. Must contain between 1 and 20 unique items. Can be IPv6 addresses or CIDR blocks.
+        /// </summary>
+        public readonly ImmutableArray<string> ConnectingIpv6Cidrs;
+        /// <summary>
         /// Geo Country Codes. Must contain between 1 and 10 unique items.
         /// </summary>
         public readonly ImmutableArray<string> GeoCountryCodes;
@@ -25,6 +33,10 @@ namespace Pulumi.Auth0.Outputs
         /// Geo Subdivision Codes. Must contain between 1 and 10 unique items.
         /// </summary>
         public readonly ImmutableArray<string> GeoSubdivisionCodes;
+        /// <summary>
+        /// Hostnames. Must contain between 1 and 20 unique items.
+        /// </summary>
+        public readonly ImmutableArray<string> Hostnames;
         /// <summary>
         /// IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
         /// </summary>
@@ -50,9 +62,15 @@ namespace Pulumi.Auth0.Outputs
         private NetworkAclRuleNotMatch(
             ImmutableArray<int> asns,
 
+            ImmutableArray<string> connectingIpv4Cidrs,
+
+            ImmutableArray<string> connectingIpv6Cidrs,
+
             ImmutableArray<string> geoCountryCodes,
 
             ImmutableArray<string> geoSubdivisionCodes,
+
+            ImmutableArray<string> hostnames,
 
             ImmutableArray<string> ipv4Cidrs,
 
@@ -65,8 +83,11 @@ namespace Pulumi.Auth0.Outputs
             ImmutableArray<string> userAgents)
         {
             Asns = asns;
+            ConnectingIpv4Cidrs = connectingIpv4Cidrs;
+            ConnectingIpv6Cidrs = connectingIpv6Cidrs;
             GeoCountryCodes = geoCountryCodes;
             GeoSubdivisionCodes = geoSubdivisionCodes;
+            Hostnames = hostnames;
             Ipv4Cidrs = ipv4Cidrs;
             Ipv6Cidrs = ipv6Cidrs;
             Ja3Fingerprints = ja3Fingerprints;

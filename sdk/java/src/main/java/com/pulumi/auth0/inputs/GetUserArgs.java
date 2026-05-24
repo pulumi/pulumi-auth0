@@ -5,6 +5,7 @@ package com.pulumi.auth0.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -46,6 +47,36 @@ public final class GetUserArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * Whether to skip user permissions. Setting this to `true` will skips paginated API calls to /api/v2/users/{id}/permissions. Default: `false` to optimize performance and reduce rate limit consumption.
+     * 
+     */
+    @Import(name="skipPermissions")
+    private @Nullable Output<Boolean> skipPermissions;
+
+    /**
+     * @return Whether to skip user permissions. Setting this to `true` will skips paginated API calls to /api/v2/users/{id}/permissions. Default: `false` to optimize performance and reduce rate limit consumption.
+     * 
+     */
+    public Optional<Output<Boolean>> skipPermissions() {
+        return Optional.ofNullable(this.skipPermissions);
+    }
+
+    /**
+     * Whether to skip user roles. Setting this to `true` will skips paginated API calls to /api/v2/users/{id}/roles. Default: `false` to optimize performance and reduce rate limit consumption.
+     * 
+     */
+    @Import(name="skipRoles")
+    private @Nullable Output<Boolean> skipRoles;
+
+    /**
+     * @return Whether to skip user roles. Setting this to `true` will skips paginated API calls to /api/v2/users/{id}/roles. Default: `false` to optimize performance and reduce rate limit consumption.
+     * 
+     */
+    public Optional<Output<Boolean>> skipRoles() {
+        return Optional.ofNullable(this.skipRoles);
+    }
+
+    /**
      * ID of the user.
      * 
      */
@@ -65,6 +96,8 @@ public final class GetUserArgs extends com.pulumi.resources.InvokeArgs {
     private GetUserArgs(GetUserArgs $) {
         this.customDomainHeader = $.customDomainHeader;
         this.query = $.query;
+        this.skipPermissions = $.skipPermissions;
+        this.skipRoles = $.skipRoles;
         this.userId = $.userId;
     }
 
@@ -126,6 +159,48 @@ public final class GetUserArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder query(String query) {
             return query(Output.of(query));
+        }
+
+        /**
+         * @param skipPermissions Whether to skip user permissions. Setting this to `true` will skips paginated API calls to /api/v2/users/{id}/permissions. Default: `false` to optimize performance and reduce rate limit consumption.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipPermissions(@Nullable Output<Boolean> skipPermissions) {
+            $.skipPermissions = skipPermissions;
+            return this;
+        }
+
+        /**
+         * @param skipPermissions Whether to skip user permissions. Setting this to `true` will skips paginated API calls to /api/v2/users/{id}/permissions. Default: `false` to optimize performance and reduce rate limit consumption.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipPermissions(Boolean skipPermissions) {
+            return skipPermissions(Output.of(skipPermissions));
+        }
+
+        /**
+         * @param skipRoles Whether to skip user roles. Setting this to `true` will skips paginated API calls to /api/v2/users/{id}/roles. Default: `false` to optimize performance and reduce rate limit consumption.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipRoles(@Nullable Output<Boolean> skipRoles) {
+            $.skipRoles = skipRoles;
+            return this;
+        }
+
+        /**
+         * @param skipRoles Whether to skip user roles. Setting this to `true` will skips paginated API calls to /api/v2/users/{id}/roles. Default: `false` to optimize performance and reduce rate limit consumption.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipRoles(Boolean skipRoles) {
+            return skipRoles(Output.of(skipRoles));
         }
 
         /**

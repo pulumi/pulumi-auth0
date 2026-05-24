@@ -10,6 +10,7 @@ import com.pulumi.auth0.outputs.ConnectionOptionsConnectionSettings;
 import com.pulumi.auth0.outputs.ConnectionOptionsCustomHeader;
 import com.pulumi.auth0.outputs.ConnectionOptionsCustomPasswordHash;
 import com.pulumi.auth0.outputs.ConnectionOptionsDecryptionKey;
+import com.pulumi.auth0.outputs.ConnectionOptionsFederatedConnectionsAccessTokens;
 import com.pulumi.auth0.outputs.ConnectionOptionsGatewayAuthentication;
 import com.pulumi.auth0.outputs.ConnectionOptionsIdpInitiated;
 import com.pulumi.auth0.outputs.ConnectionOptionsMfa;
@@ -224,6 +225,11 @@ public final class ConnectionOptions {
      * 
      */
     private @Nullable String fedMetadataXml;
+    /**
+     * @return Configuration for collecting access tokens and refresh tokens from federated connections. Only applicable for OIDC connections.
+     * 
+     */
+    private @Nullable ConnectionOptionsFederatedConnectionsAccessTokens federatedConnectionsAccessTokens;
     /**
      * @return If you&#39;re configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
      * 
@@ -883,6 +889,13 @@ public final class ConnectionOptions {
         return Optional.ofNullable(this.fedMetadataXml);
     }
     /**
+     * @return Configuration for collecting access tokens and refresh tokens from federated connections. Only applicable for OIDC connections.
+     * 
+     */
+    public Optional<ConnectionOptionsFederatedConnectionsAccessTokens> federatedConnectionsAccessTokens() {
+        return Optional.ofNullable(this.federatedConnectionsAccessTokens);
+    }
+    /**
      * @return If you&#39;re configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
      * 
      */
@@ -1476,6 +1489,7 @@ public final class ConnectionOptions {
         private @Nullable Boolean enabledDatabaseCustomization;
         private @Nullable String entityId;
         private @Nullable String fedMetadataXml;
+        private @Nullable ConnectionOptionsFederatedConnectionsAccessTokens federatedConnectionsAccessTokens;
         private @Nullable String fieldsMap;
         private @Nullable Boolean forwardRequestInfo;
         private @Nullable String from;
@@ -1595,6 +1609,7 @@ public final class ConnectionOptions {
     	      this.enabledDatabaseCustomization = defaults.enabledDatabaseCustomization;
     	      this.entityId = defaults.entityId;
     	      this.fedMetadataXml = defaults.fedMetadataXml;
+    	      this.federatedConnectionsAccessTokens = defaults.federatedConnectionsAccessTokens;
     	      this.fieldsMap = defaults.fieldsMap;
     	      this.forwardRequestInfo = defaults.forwardRequestInfo;
     	      this.from = defaults.from;
@@ -1916,6 +1931,12 @@ public final class ConnectionOptions {
         public Builder fedMetadataXml(@Nullable String fedMetadataXml) {
 
             this.fedMetadataXml = fedMetadataXml;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder federatedConnectionsAccessTokens(@Nullable ConnectionOptionsFederatedConnectionsAccessTokens federatedConnectionsAccessTokens) {
+
+            this.federatedConnectionsAccessTokens = federatedConnectionsAccessTokens;
             return this;
         }
         @CustomType.Setter
@@ -2444,6 +2465,7 @@ public final class ConnectionOptions {
             _resultValue.enabledDatabaseCustomization = enabledDatabaseCustomization;
             _resultValue.entityId = entityId;
             _resultValue.fedMetadataXml = fedMetadataXml;
+            _resultValue.federatedConnectionsAccessTokens = federatedConnectionsAccessTokens;
             _resultValue.fieldsMap = fieldsMap;
             _resultValue.forwardRequestInfo = forwardRequestInfo;
             _resultValue.from = from;

@@ -62,6 +62,10 @@ type LookupRoleArgs struct {
 	Name *string `pulumi:"name"`
 	// The ID of the role. If not provided, `name` must be set.
 	RoleId *string `pulumi:"roleId"`
+	// Whether to skip role permissions. Setting this to `true` will skip paginated API calls to /api/v2/roles/{id}/permissions.
+	SkipPermissions *bool `pulumi:"skipPermissions"`
+	// Whether to skip users assigned to this role (max 1000). Setting this to `true` will skip paginated API calls to /api/v2/roles/{id}/users.
+	SkipUsers *bool `pulumi:"skipUsers"`
 }
 
 // A collection of values returned by getRole.
@@ -72,11 +76,15 @@ type LookupRoleResult struct {
 	Id string `pulumi:"id"`
 	// The name of the role. If not provided, `roleId` must be set.
 	Name *string `pulumi:"name"`
-	// Configuration settings for permissions (scopes) attached to the role.
+	// Configuration settings for permissions (scopes) attached to the role. Skips populating if `skipPermissions` is `true`.
 	Permissions []GetRolePermissionType `pulumi:"permissions"`
 	// The ID of the role. If not provided, `name` must be set.
 	RoleId *string `pulumi:"roleId"`
-	// List of user IDs assigned to this role. Retrieves a maximum of 1000 user IDs.
+	// Whether to skip role permissions. Setting this to `true` will skip paginated API calls to /api/v2/roles/{id}/permissions.
+	SkipPermissions *bool `pulumi:"skipPermissions"`
+	// Whether to skip users assigned to this role (max 1000). Setting this to `true` will skip paginated API calls to /api/v2/roles/{id}/users.
+	SkipUsers *bool `pulumi:"skipUsers"`
+	// List of user IDs assigned to this role. Retrieves a maximum of 1000 user IDs. Skips populating if `skipUsers` is `true`.
 	Users []string `pulumi:"users"`
 }
 
@@ -95,6 +103,10 @@ type LookupRoleOutputArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The ID of the role. If not provided, `name` must be set.
 	RoleId pulumi.StringPtrInput `pulumi:"roleId"`
+	// Whether to skip role permissions. Setting this to `true` will skip paginated API calls to /api/v2/roles/{id}/permissions.
+	SkipPermissions pulumi.BoolPtrInput `pulumi:"skipPermissions"`
+	// Whether to skip users assigned to this role (max 1000). Setting this to `true` will skip paginated API calls to /api/v2/roles/{id}/users.
+	SkipUsers pulumi.BoolPtrInput `pulumi:"skipUsers"`
 }
 
 func (LookupRoleOutputArgs) ElementType() reflect.Type {
@@ -131,7 +143,7 @@ func (o LookupRoleResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRoleResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Configuration settings for permissions (scopes) attached to the role.
+// Configuration settings for permissions (scopes) attached to the role. Skips populating if `skipPermissions` is `true`.
 func (o LookupRoleResultOutput) Permissions() GetRolePermissionTypeArrayOutput {
 	return o.ApplyT(func(v LookupRoleResult) []GetRolePermissionType { return v.Permissions }).(GetRolePermissionTypeArrayOutput)
 }
@@ -141,7 +153,17 @@ func (o LookupRoleResultOutput) RoleId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRoleResult) *string { return v.RoleId }).(pulumi.StringPtrOutput)
 }
 
-// List of user IDs assigned to this role. Retrieves a maximum of 1000 user IDs.
+// Whether to skip role permissions. Setting this to `true` will skip paginated API calls to /api/v2/roles/{id}/permissions.
+func (o LookupRoleResultOutput) SkipPermissions() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupRoleResult) *bool { return v.SkipPermissions }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to skip users assigned to this role (max 1000). Setting this to `true` will skip paginated API calls to /api/v2/roles/{id}/users.
+func (o LookupRoleResultOutput) SkipUsers() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupRoleResult) *bool { return v.SkipUsers }).(pulumi.BoolPtrOutput)
+}
+
+// List of user IDs assigned to this role. Retrieves a maximum of 1000 user IDs. Skips populating if `skipUsers` is `true`.
 func (o LookupRoleResultOutput) Users() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupRoleResult) []string { return v.Users }).(pulumi.StringArrayOutput)
 }

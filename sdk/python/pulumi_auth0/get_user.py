@@ -27,7 +27,7 @@ class GetUserResult:
     """
     A collection of values returned by getUser.
     """
-    def __init__(__self__, app_metadata=None, blocked=None, connection_name=None, custom_domain_header=None, email=None, email_verified=None, family_name=None, given_name=None, id=None, name=None, nickname=None, password=None, permissions=None, phone_number=None, phone_verified=None, picture=None, query=None, roles=None, user_id=None, user_metadata=None, username=None, verify_email=None):
+    def __init__(__self__, app_metadata=None, blocked=None, connection_name=None, custom_domain_header=None, email=None, email_verified=None, family_name=None, given_name=None, id=None, name=None, nickname=None, password=None, permissions=None, phone_number=None, phone_verified=None, picture=None, query=None, roles=None, skip_permissions=None, skip_roles=None, user_id=None, user_metadata=None, username=None, verify_email=None):
         if app_metadata and not isinstance(app_metadata, str):
             raise TypeError("Expected argument 'app_metadata' to be a str")
         pulumi.set(__self__, "app_metadata", app_metadata)
@@ -82,6 +82,12 @@ class GetUserResult:
         if roles and not isinstance(roles, list):
             raise TypeError("Expected argument 'roles' to be a list")
         pulumi.set(__self__, "roles", roles)
+        if skip_permissions and not isinstance(skip_permissions, bool):
+            raise TypeError("Expected argument 'skip_permissions' to be a bool")
+        pulumi.set(__self__, "skip_permissions", skip_permissions)
+        if skip_roles and not isinstance(skip_roles, bool):
+            raise TypeError("Expected argument 'skip_roles' to be a bool")
+        pulumi.set(__self__, "skip_roles", skip_roles)
         if user_id and not isinstance(user_id, str):
             raise TypeError("Expected argument 'user_id' to be a str")
         pulumi.set(__self__, "user_id", user_id)
@@ -195,7 +201,7 @@ class GetUserResult:
     @pulumi.getter
     def permissions(self) -> Sequence['outputs.GetUserPermissionResult']:
         """
-        List of API permissions granted to the user.
+        List of API permissions granted to the user. Skips if `skip_permissions` is `true`. When `skip_permissions` is `true` (default), this will be an empty set to optimize performance and reduce rate limit consumption.
         """
         return pulumi.get(self, "permissions")
 
@@ -235,9 +241,25 @@ class GetUserResult:
     @pulumi.getter
     def roles(self) -> Sequence[_builtins.str]:
         """
-        Set of IDs of roles assigned to the user.
+        Set of IDs of roles assigned to the user. Skips if `skip_roles` is `true`. When `skip_roles` is `true` (default), this will be an empty set to optimize performance and reduce rate limit consumption.
         """
         return pulumi.get(self, "roles")
+
+    @_builtins.property
+    @pulumi.getter(name="skipPermissions")
+    def skip_permissions(self) -> Optional[_builtins.bool]:
+        """
+        Whether to skip user permissions. Setting this to `true` will skips paginated API calls to /api/v2/users/{id}/permissions. Default: `false` to optimize performance and reduce rate limit consumption.
+        """
+        return pulumi.get(self, "skip_permissions")
+
+    @_builtins.property
+    @pulumi.getter(name="skipRoles")
+    def skip_roles(self) -> Optional[_builtins.bool]:
+        """
+        Whether to skip user roles. Setting this to `true` will skips paginated API calls to /api/v2/users/{id}/roles. Default: `false` to optimize performance and reduce rate limit consumption.
+        """
+        return pulumi.get(self, "skip_roles")
 
     @_builtins.property
     @pulumi.getter(name="userId")
@@ -296,6 +318,8 @@ class AwaitableGetUserResult(GetUserResult):
             picture=self.picture,
             query=self.query,
             roles=self.roles,
+            skip_permissions=self.skip_permissions,
+            skip_roles=self.skip_roles,
             user_id=self.user_id,
             user_metadata=self.user_metadata,
             username=self.username,
@@ -304,6 +328,8 @@ class AwaitableGetUserResult(GetUserResult):
 
 def get_user(custom_domain_header: Optional[_builtins.str] = None,
              query: Optional[_builtins.str] = None,
+             skip_permissions: Optional[_builtins.bool] = None,
+             skip_roles: Optional[_builtins.bool] = None,
              user_id: Optional[_builtins.str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserResult:
     """
@@ -312,11 +338,15 @@ def get_user(custom_domain_header: Optional[_builtins.str] = None,
 
     :param _builtins.str custom_domain_header: Sets the `Auth0-Custom-Domain` header on all requests for this resource. Global setting of provider takes precedence over resource specific param, if both are set.
     :param _builtins.str query: Lucene Query for retrieving a user.
+    :param _builtins.bool skip_permissions: Whether to skip user permissions. Setting this to `true` will skips paginated API calls to /api/v2/users/{id}/permissions. Default: `false` to optimize performance and reduce rate limit consumption.
+    :param _builtins.bool skip_roles: Whether to skip user roles. Setting this to `true` will skips paginated API calls to /api/v2/users/{id}/roles. Default: `false` to optimize performance and reduce rate limit consumption.
     :param _builtins.str user_id: ID of the user.
     """
     __args__ = dict()
     __args__['customDomainHeader'] = custom_domain_header
     __args__['query'] = query
+    __args__['skipPermissions'] = skip_permissions
+    __args__['skipRoles'] = skip_roles
     __args__['userId'] = user_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('auth0:index/getUser:getUser', __args__, opts=opts, typ=GetUserResult).value
@@ -340,12 +370,16 @@ def get_user(custom_domain_header: Optional[_builtins.str] = None,
         picture=pulumi.get(__ret__, 'picture'),
         query=pulumi.get(__ret__, 'query'),
         roles=pulumi.get(__ret__, 'roles'),
+        skip_permissions=pulumi.get(__ret__, 'skip_permissions'),
+        skip_roles=pulumi.get(__ret__, 'skip_roles'),
         user_id=pulumi.get(__ret__, 'user_id'),
         user_metadata=pulumi.get(__ret__, 'user_metadata'),
         username=pulumi.get(__ret__, 'username'),
         verify_email=pulumi.get(__ret__, 'verify_email'))
 def get_user_output(custom_domain_header: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                     query: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                    skip_permissions: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                    skip_roles: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                     user_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserResult]:
     """
@@ -354,11 +388,15 @@ def get_user_output(custom_domain_header: pulumi.Input[Optional[Optional[_builti
 
     :param _builtins.str custom_domain_header: Sets the `Auth0-Custom-Domain` header on all requests for this resource. Global setting of provider takes precedence over resource specific param, if both are set.
     :param _builtins.str query: Lucene Query for retrieving a user.
+    :param _builtins.bool skip_permissions: Whether to skip user permissions. Setting this to `true` will skips paginated API calls to /api/v2/users/{id}/permissions. Default: `false` to optimize performance and reduce rate limit consumption.
+    :param _builtins.bool skip_roles: Whether to skip user roles. Setting this to `true` will skips paginated API calls to /api/v2/users/{id}/roles. Default: `false` to optimize performance and reduce rate limit consumption.
     :param _builtins.str user_id: ID of the user.
     """
     __args__ = dict()
     __args__['customDomainHeader'] = custom_domain_header
     __args__['query'] = query
+    __args__['skipPermissions'] = skip_permissions
+    __args__['skipRoles'] = skip_roles
     __args__['userId'] = user_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('auth0:index/getUser:getUser', __args__, opts=opts, typ=GetUserResult)
@@ -381,6 +419,8 @@ def get_user_output(custom_domain_header: pulumi.Input[Optional[Optional[_builti
         picture=pulumi.get(__response__, 'picture'),
         query=pulumi.get(__response__, 'query'),
         roles=pulumi.get(__response__, 'roles'),
+        skip_permissions=pulumi.get(__response__, 'skip_permissions'),
+        skip_roles=pulumi.get(__response__, 'skip_roles'),
         user_id=pulumi.get(__response__, 'user_id'),
         user_metadata=pulumi.get(__response__, 'user_metadata'),
         username=pulumi.get(__response__, 'username'),

@@ -4,6 +4,7 @@
 package com.pulumi.auth0.inputs;
 
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -45,6 +46,36 @@ public final class GetUserPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * Whether to skip user permissions. Setting this to `true` will skips paginated API calls to /api/v2/users/{id}/permissions. Default: `false` to optimize performance and reduce rate limit consumption.
+     * 
+     */
+    @Import(name="skipPermissions")
+    private @Nullable Boolean skipPermissions;
+
+    /**
+     * @return Whether to skip user permissions. Setting this to `true` will skips paginated API calls to /api/v2/users/{id}/permissions. Default: `false` to optimize performance and reduce rate limit consumption.
+     * 
+     */
+    public Optional<Boolean> skipPermissions() {
+        return Optional.ofNullable(this.skipPermissions);
+    }
+
+    /**
+     * Whether to skip user roles. Setting this to `true` will skips paginated API calls to /api/v2/users/{id}/roles. Default: `false` to optimize performance and reduce rate limit consumption.
+     * 
+     */
+    @Import(name="skipRoles")
+    private @Nullable Boolean skipRoles;
+
+    /**
+     * @return Whether to skip user roles. Setting this to `true` will skips paginated API calls to /api/v2/users/{id}/roles. Default: `false` to optimize performance and reduce rate limit consumption.
+     * 
+     */
+    public Optional<Boolean> skipRoles() {
+        return Optional.ofNullable(this.skipRoles);
+    }
+
+    /**
      * ID of the user.
      * 
      */
@@ -64,6 +95,8 @@ public final class GetUserPlainArgs extends com.pulumi.resources.InvokeArgs {
     private GetUserPlainArgs(GetUserPlainArgs $) {
         this.customDomainHeader = $.customDomainHeader;
         this.query = $.query;
+        this.skipPermissions = $.skipPermissions;
+        this.skipRoles = $.skipRoles;
         this.userId = $.userId;
     }
 
@@ -104,6 +137,28 @@ public final class GetUserPlainArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder query(@Nullable String query) {
             $.query = query;
+            return this;
+        }
+
+        /**
+         * @param skipPermissions Whether to skip user permissions. Setting this to `true` will skips paginated API calls to /api/v2/users/{id}/permissions. Default: `false` to optimize performance and reduce rate limit consumption.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipPermissions(@Nullable Boolean skipPermissions) {
+            $.skipPermissions = skipPermissions;
+            return this;
+        }
+
+        /**
+         * @param skipRoles Whether to skip user roles. Setting this to `true` will skips paginated API calls to /api/v2/users/{id}/roles. Default: `false` to optimize performance and reduce rate limit consumption.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipRoles(@Nullable Boolean skipRoles) {
+            $.skipRoles = skipRoles;
             return this;
         }
 

@@ -8,6 +8,7 @@ import com.pulumi.auth0.outputs.GetOrganizationConnection;
 import com.pulumi.auth0.outputs.GetOrganizationTokenQuota;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -23,10 +24,14 @@ public final class GetOrganizationResult {
      */
     private List<GetOrganizationBranding> brandings;
     /**
-     * @return Client Grant ID(s) that are associated to the organization.
+     * @return Client Grant ID(s) that are associated to the organization. Skips populating if `skipClientGrants` is `true`.
      * 
      */
     private List<String> clientGrants;
+    /**
+     * @return Connections enabled for this organization. Skips populating if `skipConnections` is `true`.
+     * 
+     */
     private List<GetOrganizationConnection> connections;
     /**
      * @return Friendly name of this organization.
@@ -39,7 +44,7 @@ public final class GetOrganizationResult {
      */
     private String id;
     /**
-     * @return User ID(s) that are members of the organization.
+     * @return User ID(s) that are members of the organization. Skips populating if `skipMembers` is `true`.
      * 
      */
     private List<String> members;
@@ -59,6 +64,21 @@ public final class GetOrganizationResult {
      */
     private @Nullable String organizationId;
     /**
+     * @return Whether to skip organization client grants. Setting this to `true` will skip API call to /api/v2/organizations/{id}/client-grants.
+     * 
+     */
+    private @Nullable Boolean skipClientGrants;
+    /**
+     * @return Whether to skip organization connections. Setting this to `true` will skip paginated API calls to /api/v2/organizations/{id}/connections.
+     * 
+     */
+    private @Nullable Boolean skipConnections;
+    /**
+     * @return Whether to skip organization members. Setting this to `true` will skip paginated API calls to /api/v2/organizations/{id}/members.
+     * 
+     */
+    private @Nullable Boolean skipMembers;
+    /**
      * @return The token quota configuration.
      * 
      */
@@ -73,12 +93,16 @@ public final class GetOrganizationResult {
         return this.brandings;
     }
     /**
-     * @return Client Grant ID(s) that are associated to the organization.
+     * @return Client Grant ID(s) that are associated to the organization. Skips populating if `skipClientGrants` is `true`.
      * 
      */
     public List<String> clientGrants() {
         return this.clientGrants;
     }
+    /**
+     * @return Connections enabled for this organization. Skips populating if `skipConnections` is `true`.
+     * 
+     */
     public List<GetOrganizationConnection> connections() {
         return this.connections;
     }
@@ -97,7 +121,7 @@ public final class GetOrganizationResult {
         return this.id;
     }
     /**
-     * @return User ID(s) that are members of the organization.
+     * @return User ID(s) that are members of the organization. Skips populating if `skipMembers` is `true`.
      * 
      */
     public List<String> members() {
@@ -125,6 +149,27 @@ public final class GetOrganizationResult {
         return Optional.ofNullable(this.organizationId);
     }
     /**
+     * @return Whether to skip organization client grants. Setting this to `true` will skip API call to /api/v2/organizations/{id}/client-grants.
+     * 
+     */
+    public Optional<Boolean> skipClientGrants() {
+        return Optional.ofNullable(this.skipClientGrants);
+    }
+    /**
+     * @return Whether to skip organization connections. Setting this to `true` will skip paginated API calls to /api/v2/organizations/{id}/connections.
+     * 
+     */
+    public Optional<Boolean> skipConnections() {
+        return Optional.ofNullable(this.skipConnections);
+    }
+    /**
+     * @return Whether to skip organization members. Setting this to `true` will skip paginated API calls to /api/v2/organizations/{id}/members.
+     * 
+     */
+    public Optional<Boolean> skipMembers() {
+        return Optional.ofNullable(this.skipMembers);
+    }
+    /**
      * @return The token quota configuration.
      * 
      */
@@ -150,6 +195,9 @@ public final class GetOrganizationResult {
         private Map<String,String> metadata;
         private @Nullable String name;
         private @Nullable String organizationId;
+        private @Nullable Boolean skipClientGrants;
+        private @Nullable Boolean skipConnections;
+        private @Nullable Boolean skipMembers;
         private List<GetOrganizationTokenQuota> tokenQuotas;
         public Builder() {}
         public Builder(GetOrganizationResult defaults) {
@@ -163,6 +211,9 @@ public final class GetOrganizationResult {
     	      this.metadata = defaults.metadata;
     	      this.name = defaults.name;
     	      this.organizationId = defaults.organizationId;
+    	      this.skipClientGrants = defaults.skipClientGrants;
+    	      this.skipConnections = defaults.skipConnections;
+    	      this.skipMembers = defaults.skipMembers;
     	      this.tokenQuotas = defaults.tokenQuotas;
         }
 
@@ -247,6 +298,24 @@ public final class GetOrganizationResult {
             return this;
         }
         @CustomType.Setter
+        public Builder skipClientGrants(@Nullable Boolean skipClientGrants) {
+
+            this.skipClientGrants = skipClientGrants;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder skipConnections(@Nullable Boolean skipConnections) {
+
+            this.skipConnections = skipConnections;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder skipMembers(@Nullable Boolean skipMembers) {
+
+            this.skipMembers = skipMembers;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tokenQuotas(List<GetOrganizationTokenQuota> tokenQuotas) {
             if (tokenQuotas == null) {
               throw new MissingRequiredPropertyException("GetOrganizationResult", "tokenQuotas");
@@ -268,6 +337,9 @@ public final class GetOrganizationResult {
             _resultValue.metadata = metadata;
             _resultValue.name = name;
             _resultValue.organizationId = organizationId;
+            _resultValue.skipClientGrants = skipClientGrants;
+            _resultValue.skipConnections = skipConnections;
+            _resultValue.skipMembers = skipMembers;
             _resultValue.tokenQuotas = tokenQuotas;
             return _resultValue;
         }

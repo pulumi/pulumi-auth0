@@ -88,6 +88,29 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // Example of auth0_network_acl with hostname and connecting IP restrictions
+ *         var blockCanonical = new NetworkAcl("blockCanonical", NetworkAclArgs.builder()
+ *             .description("Block canonical domain except from proxy")
+ *             .active(true)
+ *             .priority(5)
+ *             .rule(NetworkAclRuleArgs.builder()
+ *                 .action(NetworkAclRuleActionArgs.builder()
+ *                     .block(true)
+ *                     .build())
+ *                 .scope("tenant")
+ *                 .match(NetworkAclRuleMatchArgs.builder()
+ *                     .hostnames("mytenant1.us.auth0.com")
+ *                     .connectingIpv6Cidrs(                    
+ *                         "2001:db8::/32",
+ *                         "::1")
+ *                     .build())
+ *                 .notMatch(NetworkAclRuleNotMatchArgs.builder()
+ *                     .hostnames("mytenant2.us.auth0.com")
+ *                     .connectingIpv4Cidrs("203.0.113.0/24")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
  *     }
  * }
  * }

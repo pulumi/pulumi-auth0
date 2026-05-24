@@ -15,6 +15,8 @@ export function getUser(args?: GetUserArgs, opts?: pulumi.InvokeOptions): Promis
     return pulumi.runtime.invoke("auth0:index/getUser:getUser", {
         "customDomainHeader": args.customDomainHeader,
         "query": args.query,
+        "skipPermissions": args.skipPermissions,
+        "skipRoles": args.skipRoles,
         "userId": args.userId,
     }, opts);
 }
@@ -31,6 +33,14 @@ export interface GetUserArgs {
      * Lucene Query for retrieving a user.
      */
     query?: string;
+    /**
+     * Whether to skip user permissions. Setting this to `true` will skips paginated API calls to /api/v2/users/{id}/permissions. Default: `false` to optimize performance and reduce rate limit consumption.
+     */
+    skipPermissions?: boolean;
+    /**
+     * Whether to skip user roles. Setting this to `true` will skips paginated API calls to /api/v2/users/{id}/roles. Default: `false` to optimize performance and reduce rate limit consumption.
+     */
+    skipRoles?: boolean;
     /**
      * ID of the user.
      */
@@ -90,7 +100,7 @@ export interface GetUserResult {
      */
     readonly password: string;
     /**
-     * List of API permissions granted to the user.
+     * List of API permissions granted to the user. Skips if `skipPermissions` is `true`. When `skipPermissions` is `true` (default), this will be an empty set to optimize performance and reduce rate limit consumption.
      */
     readonly permissions: outputs.GetUserPermission[];
     /**
@@ -110,9 +120,17 @@ export interface GetUserResult {
      */
     readonly query?: string;
     /**
-     * Set of IDs of roles assigned to the user.
+     * Set of IDs of roles assigned to the user. Skips if `skipRoles` is `true`. When `skipRoles` is `true` (default), this will be an empty set to optimize performance and reduce rate limit consumption.
      */
     readonly roles: string[];
+    /**
+     * Whether to skip user permissions. Setting this to `true` will skips paginated API calls to /api/v2/users/{id}/permissions. Default: `false` to optimize performance and reduce rate limit consumption.
+     */
+    readonly skipPermissions?: boolean;
+    /**
+     * Whether to skip user roles. Setting this to `true` will skips paginated API calls to /api/v2/users/{id}/roles. Default: `false` to optimize performance and reduce rate limit consumption.
+     */
+    readonly skipRoles?: boolean;
     /**
      * ID of the user.
      */
@@ -139,6 +157,8 @@ export function getUserOutput(args?: GetUserOutputArgs, opts?: pulumi.InvokeOutp
     return pulumi.runtime.invokeOutput("auth0:index/getUser:getUser", {
         "customDomainHeader": args.customDomainHeader,
         "query": args.query,
+        "skipPermissions": args.skipPermissions,
+        "skipRoles": args.skipRoles,
         "userId": args.userId,
     }, opts);
 }
@@ -155,6 +175,14 @@ export interface GetUserOutputArgs {
      * Lucene Query for retrieving a user.
      */
     query?: pulumi.Input<string | undefined>;
+    /**
+     * Whether to skip user permissions. Setting this to `true` will skips paginated API calls to /api/v2/users/{id}/permissions. Default: `false` to optimize performance and reduce rate limit consumption.
+     */
+    skipPermissions?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether to skip user roles. Setting this to `true` will skips paginated API calls to /api/v2/users/{id}/roles. Default: `false` to optimize performance and reduce rate limit consumption.
+     */
+    skipRoles?: pulumi.Input<boolean | undefined>;
     /**
      * ID of the user.
      */

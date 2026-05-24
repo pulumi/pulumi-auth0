@@ -6,6 +6,7 @@ package com.pulumi.auth0.outputs;
 import com.pulumi.auth0.outputs.GetRolePermission;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -30,7 +31,7 @@ public final class GetRoleResult {
      */
     private @Nullable String name;
     /**
-     * @return Configuration settings for permissions (scopes) attached to the role.
+     * @return Configuration settings for permissions (scopes) attached to the role. Skips populating if `skipPermissions` is `true`.
      * 
      */
     private List<GetRolePermission> permissions;
@@ -40,7 +41,17 @@ public final class GetRoleResult {
      */
     private @Nullable String roleId;
     /**
-     * @return List of user IDs assigned to this role. Retrieves a maximum of 1000 user IDs.
+     * @return Whether to skip role permissions. Setting this to `true` will skip paginated API calls to /api/v2/roles/{id}/permissions.
+     * 
+     */
+    private @Nullable Boolean skipPermissions;
+    /**
+     * @return Whether to skip users assigned to this role (max 1000). Setting this to `true` will skip paginated API calls to /api/v2/roles/{id}/users.
+     * 
+     */
+    private @Nullable Boolean skipUsers;
+    /**
+     * @return List of user IDs assigned to this role. Retrieves a maximum of 1000 user IDs. Skips populating if `skipUsers` is `true`.
      * 
      */
     private List<String> users;
@@ -68,7 +79,7 @@ public final class GetRoleResult {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return Configuration settings for permissions (scopes) attached to the role.
+     * @return Configuration settings for permissions (scopes) attached to the role. Skips populating if `skipPermissions` is `true`.
      * 
      */
     public List<GetRolePermission> permissions() {
@@ -82,7 +93,21 @@ public final class GetRoleResult {
         return Optional.ofNullable(this.roleId);
     }
     /**
-     * @return List of user IDs assigned to this role. Retrieves a maximum of 1000 user IDs.
+     * @return Whether to skip role permissions. Setting this to `true` will skip paginated API calls to /api/v2/roles/{id}/permissions.
+     * 
+     */
+    public Optional<Boolean> skipPermissions() {
+        return Optional.ofNullable(this.skipPermissions);
+    }
+    /**
+     * @return Whether to skip users assigned to this role (max 1000). Setting this to `true` will skip paginated API calls to /api/v2/roles/{id}/users.
+     * 
+     */
+    public Optional<Boolean> skipUsers() {
+        return Optional.ofNullable(this.skipUsers);
+    }
+    /**
+     * @return List of user IDs assigned to this role. Retrieves a maximum of 1000 user IDs. Skips populating if `skipUsers` is `true`.
      * 
      */
     public List<String> users() {
@@ -103,6 +128,8 @@ public final class GetRoleResult {
         private @Nullable String name;
         private List<GetRolePermission> permissions;
         private @Nullable String roleId;
+        private @Nullable Boolean skipPermissions;
+        private @Nullable Boolean skipUsers;
         private List<String> users;
         public Builder() {}
         public Builder(GetRoleResult defaults) {
@@ -112,6 +139,8 @@ public final class GetRoleResult {
     	      this.name = defaults.name;
     	      this.permissions = defaults.permissions;
     	      this.roleId = defaults.roleId;
+    	      this.skipPermissions = defaults.skipPermissions;
+    	      this.skipUsers = defaults.skipUsers;
     	      this.users = defaults.users;
         }
 
@@ -155,6 +184,18 @@ public final class GetRoleResult {
             return this;
         }
         @CustomType.Setter
+        public Builder skipPermissions(@Nullable Boolean skipPermissions) {
+
+            this.skipPermissions = skipPermissions;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder skipUsers(@Nullable Boolean skipUsers) {
+
+            this.skipUsers = skipUsers;
+            return this;
+        }
+        @CustomType.Setter
         public Builder users(List<String> users) {
             if (users == null) {
               throw new MissingRequiredPropertyException("GetRoleResult", "users");
@@ -172,6 +213,8 @@ public final class GetRoleResult {
             _resultValue.name = name;
             _resultValue.permissions = permissions;
             _resultValue.roleId = roleId;
+            _resultValue.skipPermissions = skipPermissions;
+            _resultValue.skipUsers = skipUsers;
             _resultValue.users = users;
             return _resultValue;
         }

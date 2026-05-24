@@ -120,6 +120,24 @@ namespace Pulumi.Auth0
         [Input("organizationId")]
         public string? OrganizationId { get; set; }
 
+        /// <summary>
+        /// Whether to skip organization client grants. Setting this to `True` will skip API call to /api/v2/organizations/{id}/client-grants.
+        /// </summary>
+        [Input("skipClientGrants")]
+        public bool? SkipClientGrants { get; set; }
+
+        /// <summary>
+        /// Whether to skip organization connections. Setting this to `True` will skip paginated API calls to /api/v2/organizations/{id}/connections.
+        /// </summary>
+        [Input("skipConnections")]
+        public bool? SkipConnections { get; set; }
+
+        /// <summary>
+        /// Whether to skip organization members. Setting this to `True` will skip paginated API calls to /api/v2/organizations/{id}/members.
+        /// </summary>
+        [Input("skipMembers")]
+        public bool? SkipMembers { get; set; }
+
         public GetOrganizationArgs()
         {
         }
@@ -140,6 +158,24 @@ namespace Pulumi.Auth0
         [Input("organizationId")]
         public Input<string>? OrganizationId { get; set; }
 
+        /// <summary>
+        /// Whether to skip organization client grants. Setting this to `True` will skip API call to /api/v2/organizations/{id}/client-grants.
+        /// </summary>
+        [Input("skipClientGrants")]
+        public Input<bool>? SkipClientGrants { get; set; }
+
+        /// <summary>
+        /// Whether to skip organization connections. Setting this to `True` will skip paginated API calls to /api/v2/organizations/{id}/connections.
+        /// </summary>
+        [Input("skipConnections")]
+        public Input<bool>? SkipConnections { get; set; }
+
+        /// <summary>
+        /// Whether to skip organization members. Setting this to `True` will skip paginated API calls to /api/v2/organizations/{id}/members.
+        /// </summary>
+        [Input("skipMembers")]
+        public Input<bool>? SkipMembers { get; set; }
+
         public GetOrganizationInvokeArgs()
         {
         }
@@ -155,9 +191,12 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly ImmutableArray<Outputs.GetOrganizationBrandingResult> Brandings;
         /// <summary>
-        /// Client Grant ID(s) that are associated to the organization.
+        /// Client Grant ID(s) that are associated to the organization. Skips populating if `SkipClientGrants` is `True`.
         /// </summary>
         public readonly ImmutableArray<string> ClientGrants;
+        /// <summary>
+        /// Connections enabled for this organization. Skips populating if `SkipConnections` is `True`.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetOrganizationConnectionResult> Connections;
         /// <summary>
         /// Friendly name of this organization.
@@ -168,7 +207,7 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// User ID(s) that are members of the organization.
+        /// User ID(s) that are members of the organization. Skips populating if `SkipMembers` is `True`.
         /// </summary>
         public readonly ImmutableArray<string> Members;
         /// <summary>
@@ -183,6 +222,18 @@ namespace Pulumi.Auth0
         /// The ID of the organization. If not provided, `Name` must be set.
         /// </summary>
         public readonly string? OrganizationId;
+        /// <summary>
+        /// Whether to skip organization client grants. Setting this to `True` will skip API call to /api/v2/organizations/{id}/client-grants.
+        /// </summary>
+        public readonly bool? SkipClientGrants;
+        /// <summary>
+        /// Whether to skip organization connections. Setting this to `True` will skip paginated API calls to /api/v2/organizations/{id}/connections.
+        /// </summary>
+        public readonly bool? SkipConnections;
+        /// <summary>
+        /// Whether to skip organization members. Setting this to `True` will skip paginated API calls to /api/v2/organizations/{id}/members.
+        /// </summary>
+        public readonly bool? SkipMembers;
         /// <summary>
         /// The token quota configuration.
         /// </summary>
@@ -208,6 +259,12 @@ namespace Pulumi.Auth0
 
             string? organizationId,
 
+            bool? skipClientGrants,
+
+            bool? skipConnections,
+
+            bool? skipMembers,
+
             ImmutableArray<Outputs.GetOrganizationTokenQuotaResult> tokenQuotas)
         {
             Brandings = brandings;
@@ -219,6 +276,9 @@ namespace Pulumi.Auth0
             Metadata = metadata;
             Name = name;
             OrganizationId = organizationId;
+            SkipClientGrants = skipClientGrants;
+            SkipConnections = skipConnections;
+            SkipMembers = skipMembers;
             TokenQuotas = tokenQuotas;
         }
     }

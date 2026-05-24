@@ -5,6 +5,7 @@ package com.pulumi.auth0.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -45,11 +46,43 @@ public final class GetRoleArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.roleId);
     }
 
+    /**
+     * Whether to skip role permissions. Setting this to `true` will skip paginated API calls to /api/v2/roles/{id}/permissions.
+     * 
+     */
+    @Import(name="skipPermissions")
+    private @Nullable Output<Boolean> skipPermissions;
+
+    /**
+     * @return Whether to skip role permissions. Setting this to `true` will skip paginated API calls to /api/v2/roles/{id}/permissions.
+     * 
+     */
+    public Optional<Output<Boolean>> skipPermissions() {
+        return Optional.ofNullable(this.skipPermissions);
+    }
+
+    /**
+     * Whether to skip users assigned to this role (max 1000). Setting this to `true` will skip paginated API calls to /api/v2/roles/{id}/users.
+     * 
+     */
+    @Import(name="skipUsers")
+    private @Nullable Output<Boolean> skipUsers;
+
+    /**
+     * @return Whether to skip users assigned to this role (max 1000). Setting this to `true` will skip paginated API calls to /api/v2/roles/{id}/users.
+     * 
+     */
+    public Optional<Output<Boolean>> skipUsers() {
+        return Optional.ofNullable(this.skipUsers);
+    }
+
     private GetRoleArgs() {}
 
     private GetRoleArgs(GetRoleArgs $) {
         this.name = $.name;
         this.roleId = $.roleId;
+        this.skipPermissions = $.skipPermissions;
+        this.skipUsers = $.skipUsers;
     }
 
     public static Builder builder() {
@@ -110,6 +143,48 @@ public final class GetRoleArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder roleId(String roleId) {
             return roleId(Output.of(roleId));
+        }
+
+        /**
+         * @param skipPermissions Whether to skip role permissions. Setting this to `true` will skip paginated API calls to /api/v2/roles/{id}/permissions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipPermissions(@Nullable Output<Boolean> skipPermissions) {
+            $.skipPermissions = skipPermissions;
+            return this;
+        }
+
+        /**
+         * @param skipPermissions Whether to skip role permissions. Setting this to `true` will skip paginated API calls to /api/v2/roles/{id}/permissions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipPermissions(Boolean skipPermissions) {
+            return skipPermissions(Output.of(skipPermissions));
+        }
+
+        /**
+         * @param skipUsers Whether to skip users assigned to this role (max 1000). Setting this to `true` will skip paginated API calls to /api/v2/roles/{id}/users.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipUsers(@Nullable Output<Boolean> skipUsers) {
+            $.skipUsers = skipUsers;
+            return this;
+        }
+
+        /**
+         * @param skipUsers Whether to skip users assigned to this role (max 1000). Setting this to `true` will skip paginated API calls to /api/v2/roles/{id}/users.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipUsers(Boolean skipUsers) {
+            return skipUsers(Output.of(skipUsers));
         }
 
         public GetRoleArgs build() {

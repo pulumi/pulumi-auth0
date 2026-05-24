@@ -28,6 +28,10 @@ type LookupUserArgs struct {
 	CustomDomainHeader *string `pulumi:"customDomainHeader"`
 	// Lucene Query for retrieving a user.
 	Query *string `pulumi:"query"`
+	// Whether to skip user permissions. Setting this to `true` will skips paginated API calls to /api/v2/users/{id}/permissions. Default: `false` to optimize performance and reduce rate limit consumption.
+	SkipPermissions *bool `pulumi:"skipPermissions"`
+	// Whether to skip user roles. Setting this to `true` will skips paginated API calls to /api/v2/users/{id}/roles. Default: `false` to optimize performance and reduce rate limit consumption.
+	SkipRoles *bool `pulumi:"skipRoles"`
 	// ID of the user.
 	UserId *string `pulumi:"userId"`
 }
@@ -58,7 +62,7 @@ type LookupUserResult struct {
 	Nickname string `pulumi:"nickname"`
 	// Initial password for this user. Required for non-passwordless connections (SMS and email).
 	Password string `pulumi:"password"`
-	// List of API permissions granted to the user.
+	// List of API permissions granted to the user. Skips if `skipPermissions` is `true`. When `skipPermissions` is `true` (default), this will be an empty set to optimize performance and reduce rate limit consumption.
 	Permissions []GetUserPermissionType `pulumi:"permissions"`
 	// Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
 	PhoneNumber string `pulumi:"phoneNumber"`
@@ -68,8 +72,12 @@ type LookupUserResult struct {
 	Picture string `pulumi:"picture"`
 	// Lucene Query for retrieving a user.
 	Query *string `pulumi:"query"`
-	// Set of IDs of roles assigned to the user.
+	// Set of IDs of roles assigned to the user. Skips if `skipRoles` is `true`. When `skipRoles` is `true` (default), this will be an empty set to optimize performance and reduce rate limit consumption.
 	Roles []string `pulumi:"roles"`
+	// Whether to skip user permissions. Setting this to `true` will skips paginated API calls to /api/v2/users/{id}/permissions. Default: `false` to optimize performance and reduce rate limit consumption.
+	SkipPermissions *bool `pulumi:"skipPermissions"`
+	// Whether to skip user roles. Setting this to `true` will skips paginated API calls to /api/v2/users/{id}/roles. Default: `false` to optimize performance and reduce rate limit consumption.
+	SkipRoles *bool `pulumi:"skipRoles"`
 	// ID of the user.
 	UserId *string `pulumi:"userId"`
 	// Custom fields that store info about the user that does not impact a user's core functionality. Examples include work address, home address, and user preferences.
@@ -95,6 +103,10 @@ type LookupUserOutputArgs struct {
 	CustomDomainHeader pulumi.StringPtrInput `pulumi:"customDomainHeader"`
 	// Lucene Query for retrieving a user.
 	Query pulumi.StringPtrInput `pulumi:"query"`
+	// Whether to skip user permissions. Setting this to `true` will skips paginated API calls to /api/v2/users/{id}/permissions. Default: `false` to optimize performance and reduce rate limit consumption.
+	SkipPermissions pulumi.BoolPtrInput `pulumi:"skipPermissions"`
+	// Whether to skip user roles. Setting this to `true` will skips paginated API calls to /api/v2/users/{id}/roles. Default: `false` to optimize performance and reduce rate limit consumption.
+	SkipRoles pulumi.BoolPtrInput `pulumi:"skipRoles"`
 	// ID of the user.
 	UserId pulumi.StringPtrInput `pulumi:"userId"`
 }
@@ -178,7 +190,7 @@ func (o LookupUserResultOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Password }).(pulumi.StringOutput)
 }
 
-// List of API permissions granted to the user.
+// List of API permissions granted to the user. Skips if `skipPermissions` is `true`. When `skipPermissions` is `true` (default), this will be an empty set to optimize performance and reduce rate limit consumption.
 func (o LookupUserResultOutput) Permissions() GetUserPermissionTypeArrayOutput {
 	return o.ApplyT(func(v LookupUserResult) []GetUserPermissionType { return v.Permissions }).(GetUserPermissionTypeArrayOutput)
 }
@@ -203,9 +215,19 @@ func (o LookupUserResultOutput) Query() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupUserResult) *string { return v.Query }).(pulumi.StringPtrOutput)
 }
 
-// Set of IDs of roles assigned to the user.
+// Set of IDs of roles assigned to the user. Skips if `skipRoles` is `true`. When `skipRoles` is `true` (default), this will be an empty set to optimize performance and reduce rate limit consumption.
 func (o LookupUserResultOutput) Roles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupUserResult) []string { return v.Roles }).(pulumi.StringArrayOutput)
+}
+
+// Whether to skip user permissions. Setting this to `true` will skips paginated API calls to /api/v2/users/{id}/permissions. Default: `false` to optimize performance and reduce rate limit consumption.
+func (o LookupUserResultOutput) SkipPermissions() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupUserResult) *bool { return v.SkipPermissions }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to skip user roles. Setting this to `true` will skips paginated API calls to /api/v2/users/{id}/roles. Default: `false` to optimize performance and reduce rate limit consumption.
+func (o LookupUserResultOutput) SkipRoles() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupUserResult) *bool { return v.SkipRoles }).(pulumi.BoolPtrOutput)
 }
 
 // ID of the user.

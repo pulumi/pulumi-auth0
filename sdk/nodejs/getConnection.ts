@@ -31,6 +31,7 @@ export function getConnection(args?: GetConnectionArgs, opts?: pulumi.InvokeOpti
     return pulumi.runtime.invoke("auth0:index/getConnection:getConnection", {
         "connectionId": args.connectionId,
         "name": args.name,
+        "skipEnabledClients": args.skipEnabledClients,
     }, opts);
 }
 
@@ -46,6 +47,10 @@ export interface GetConnectionArgs {
      * The name of the connection. If not provided, `connectionId` must be set.
      */
     name?: string;
+    /**
+     * Whether to skip enabled clients for this connection. Setting this to `true` will skip additional paginated API calls to /api/v2/connections/{id}/clients. Default: `false`.
+     */
+    skipEnabledClients?: boolean;
 }
 
 /**
@@ -69,7 +74,7 @@ export interface GetConnectionResult {
      */
     readonly displayName: string;
     /**
-     * IDs of the clients for which the connection is enabled.
+     * IDs of the clients for which the connection is enabled. Skips populating if `skipEnabledClients` is `true`.
      */
     readonly enabledClients: string[];
     /**
@@ -101,6 +106,10 @@ export interface GetConnectionResult {
      */
     readonly showAsButton: boolean;
     /**
+     * Whether to skip enabled clients for this connection. Setting this to `true` will skip additional paginated API calls to /api/v2/connections/{id}/clients. Default: `false`.
+     */
+    readonly skipEnabledClients?: boolean;
+    /**
      * Type of the connection, which indicates the identity provider.
      */
     readonly strategy: string;
@@ -130,6 +139,7 @@ export function getConnectionOutput(args?: GetConnectionOutputArgs, opts?: pulum
     return pulumi.runtime.invokeOutput("auth0:index/getConnection:getConnection", {
         "connectionId": args.connectionId,
         "name": args.name,
+        "skipEnabledClients": args.skipEnabledClients,
     }, opts);
 }
 
@@ -145,4 +155,8 @@ export interface GetConnectionOutputArgs {
      * The name of the connection. If not provided, `connectionId` must be set.
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Whether to skip enabled clients for this connection. Setting this to `true` will skip additional paginated API calls to /api/v2/connections/{id}/clients. Default: `false`.
+     */
+    skipEnabledClients?: pulumi.Input<boolean | undefined>;
 }

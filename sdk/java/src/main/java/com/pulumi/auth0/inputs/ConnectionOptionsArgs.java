@@ -10,6 +10,7 @@ import com.pulumi.auth0.inputs.ConnectionOptionsConnectionSettingsArgs;
 import com.pulumi.auth0.inputs.ConnectionOptionsCustomHeaderArgs;
 import com.pulumi.auth0.inputs.ConnectionOptionsCustomPasswordHashArgs;
 import com.pulumi.auth0.inputs.ConnectionOptionsDecryptionKeyArgs;
+import com.pulumi.auth0.inputs.ConnectionOptionsFederatedConnectionsAccessTokensArgs;
 import com.pulumi.auth0.inputs.ConnectionOptionsGatewayAuthenticationArgs;
 import com.pulumi.auth0.inputs.ConnectionOptionsIdpInitiatedArgs;
 import com.pulumi.auth0.inputs.ConnectionOptionsMfaArgs;
@@ -606,6 +607,21 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<String>> fedMetadataXml() {
         return Optional.ofNullable(this.fedMetadataXml);
+    }
+
+    /**
+     * Configuration for collecting access tokens and refresh tokens from federated connections. Only applicable for OIDC connections.
+     * 
+     */
+    @Import(name="federatedConnectionsAccessTokens")
+    private @Nullable Output<ConnectionOptionsFederatedConnectionsAccessTokensArgs> federatedConnectionsAccessTokens;
+
+    /**
+     * @return Configuration for collecting access tokens and refresh tokens from federated connections. Only applicable for OIDC connections.
+     * 
+     */
+    public Optional<Output<ConnectionOptionsFederatedConnectionsAccessTokensArgs>> federatedConnectionsAccessTokens() {
+        return Optional.ofNullable(this.federatedConnectionsAccessTokens);
     }
 
     /**
@@ -1819,6 +1835,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         this.enabledDatabaseCustomization = $.enabledDatabaseCustomization;
         this.entityId = $.entityId;
         this.fedMetadataXml = $.fedMetadataXml;
+        this.federatedConnectionsAccessTokens = $.federatedConnectionsAccessTokens;
         this.fieldsMap = $.fieldsMap;
         this.forwardRequestInfo = $.forwardRequestInfo;
         this.from = $.from;
@@ -2763,6 +2780,27 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder fedMetadataXml(String fedMetadataXml) {
             return fedMetadataXml(Output.of(fedMetadataXml));
+        }
+
+        /**
+         * @param federatedConnectionsAccessTokens Configuration for collecting access tokens and refresh tokens from federated connections. Only applicable for OIDC connections.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder federatedConnectionsAccessTokens(@Nullable Output<ConnectionOptionsFederatedConnectionsAccessTokensArgs> federatedConnectionsAccessTokens) {
+            $.federatedConnectionsAccessTokens = federatedConnectionsAccessTokens;
+            return this;
+        }
+
+        /**
+         * @param federatedConnectionsAccessTokens Configuration for collecting access tokens and refresh tokens from federated connections. Only applicable for OIDC connections.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder federatedConnectionsAccessTokens(ConnectionOptionsFederatedConnectionsAccessTokensArgs federatedConnectionsAccessTokens) {
+            return federatedConnectionsAccessTokens(Output.of(federatedConnectionsAccessTokens));
         }
 
         /**

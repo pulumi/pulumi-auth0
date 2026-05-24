@@ -5,6 +5,7 @@ package com.pulumi.auth0.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -45,11 +46,27 @@ public final class GetConnectionArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Whether to skip enabled clients for this connection. Setting this to `true` will skip additional paginated API calls to /api/v2/connections/{id}/clients. Default: `false`.
+     * 
+     */
+    @Import(name="skipEnabledClients")
+    private @Nullable Output<Boolean> skipEnabledClients;
+
+    /**
+     * @return Whether to skip enabled clients for this connection. Setting this to `true` will skip additional paginated API calls to /api/v2/connections/{id}/clients. Default: `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> skipEnabledClients() {
+        return Optional.ofNullable(this.skipEnabledClients);
+    }
+
     private GetConnectionArgs() {}
 
     private GetConnectionArgs(GetConnectionArgs $) {
         this.connectionId = $.connectionId;
         this.name = $.name;
+        this.skipEnabledClients = $.skipEnabledClients;
     }
 
     public static Builder builder() {
@@ -110,6 +127,27 @@ public final class GetConnectionArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param skipEnabledClients Whether to skip enabled clients for this connection. Setting this to `true` will skip additional paginated API calls to /api/v2/connections/{id}/clients. Default: `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipEnabledClients(@Nullable Output<Boolean> skipEnabledClients) {
+            $.skipEnabledClients = skipEnabledClients;
+            return this;
+        }
+
+        /**
+         * @param skipEnabledClients Whether to skip enabled clients for this connection. Setting this to `true` will skip additional paginated API calls to /api/v2/connections/{id}/clients. Default: `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipEnabledClients(Boolean skipEnabledClients) {
+            return skipEnabledClients(Output.of(skipEnabledClients));
         }
 
         public GetConnectionArgs build() {

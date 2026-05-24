@@ -33,6 +33,36 @@ public final class NetworkAclRuleNotMatchArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
+     * 
+     */
+    @Import(name="connectingIpv4Cidrs")
+    private @Nullable Output<List<String>> connectingIpv4Cidrs;
+
+    /**
+     * @return Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
+     * 
+     */
+    public Optional<Output<List<String>>> connectingIpv4Cidrs() {
+        return Optional.ofNullable(this.connectingIpv4Cidrs);
+    }
+
+    /**
+     * Connecting IPv6 CIDRs. Must contain between 1 and 20 unique items. Can be IPv6 addresses or CIDR blocks.
+     * 
+     */
+    @Import(name="connectingIpv6Cidrs")
+    private @Nullable Output<List<String>> connectingIpv6Cidrs;
+
+    /**
+     * @return Connecting IPv6 CIDRs. Must contain between 1 and 20 unique items. Can be IPv6 addresses or CIDR blocks.
+     * 
+     */
+    public Optional<Output<List<String>>> connectingIpv6Cidrs() {
+        return Optional.ofNullable(this.connectingIpv6Cidrs);
+    }
+
+    /**
      * Geo Country Codes. Must contain between 1 and 10 unique items.
      * 
      */
@@ -60,6 +90,21 @@ public final class NetworkAclRuleNotMatchArgs extends com.pulumi.resources.Resou
      */
     public Optional<Output<List<String>>> geoSubdivisionCodes() {
         return Optional.ofNullable(this.geoSubdivisionCodes);
+    }
+
+    /**
+     * Hostnames. Must contain between 1 and 20 unique items.
+     * 
+     */
+    @Import(name="hostnames")
+    private @Nullable Output<List<String>> hostnames;
+
+    /**
+     * @return Hostnames. Must contain between 1 and 20 unique items.
+     * 
+     */
+    public Optional<Output<List<String>>> hostnames() {
+        return Optional.ofNullable(this.hostnames);
     }
 
     /**
@@ -141,8 +186,11 @@ public final class NetworkAclRuleNotMatchArgs extends com.pulumi.resources.Resou
 
     private NetworkAclRuleNotMatchArgs(NetworkAclRuleNotMatchArgs $) {
         this.asns = $.asns;
+        this.connectingIpv4Cidrs = $.connectingIpv4Cidrs;
+        this.connectingIpv6Cidrs = $.connectingIpv6Cidrs;
         this.geoCountryCodes = $.geoCountryCodes;
         this.geoSubdivisionCodes = $.geoSubdivisionCodes;
+        this.hostnames = $.hostnames;
         this.ipv4Cidrs = $.ipv4Cidrs;
         this.ipv6Cidrs = $.ipv6Cidrs;
         this.ja3Fingerprints = $.ja3Fingerprints;
@@ -197,6 +245,68 @@ public final class NetworkAclRuleNotMatchArgs extends com.pulumi.resources.Resou
          */
         public Builder asns(Integer... asns) {
             return asns(List.of(asns));
+        }
+
+        /**
+         * @param connectingIpv4Cidrs Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectingIpv4Cidrs(@Nullable Output<List<String>> connectingIpv4Cidrs) {
+            $.connectingIpv4Cidrs = connectingIpv4Cidrs;
+            return this;
+        }
+
+        /**
+         * @param connectingIpv4Cidrs Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectingIpv4Cidrs(List<String> connectingIpv4Cidrs) {
+            return connectingIpv4Cidrs(Output.of(connectingIpv4Cidrs));
+        }
+
+        /**
+         * @param connectingIpv4Cidrs Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectingIpv4Cidrs(String... connectingIpv4Cidrs) {
+            return connectingIpv4Cidrs(List.of(connectingIpv4Cidrs));
+        }
+
+        /**
+         * @param connectingIpv6Cidrs Connecting IPv6 CIDRs. Must contain between 1 and 20 unique items. Can be IPv6 addresses or CIDR blocks.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectingIpv6Cidrs(@Nullable Output<List<String>> connectingIpv6Cidrs) {
+            $.connectingIpv6Cidrs = connectingIpv6Cidrs;
+            return this;
+        }
+
+        /**
+         * @param connectingIpv6Cidrs Connecting IPv6 CIDRs. Must contain between 1 and 20 unique items. Can be IPv6 addresses or CIDR blocks.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectingIpv6Cidrs(List<String> connectingIpv6Cidrs) {
+            return connectingIpv6Cidrs(Output.of(connectingIpv6Cidrs));
+        }
+
+        /**
+         * @param connectingIpv6Cidrs Connecting IPv6 CIDRs. Must contain between 1 and 20 unique items. Can be IPv6 addresses or CIDR blocks.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectingIpv6Cidrs(String... connectingIpv6Cidrs) {
+            return connectingIpv6Cidrs(List.of(connectingIpv6Cidrs));
         }
 
         /**
@@ -259,6 +369,37 @@ public final class NetworkAclRuleNotMatchArgs extends com.pulumi.resources.Resou
          */
         public Builder geoSubdivisionCodes(String... geoSubdivisionCodes) {
             return geoSubdivisionCodes(List.of(geoSubdivisionCodes));
+        }
+
+        /**
+         * @param hostnames Hostnames. Must contain between 1 and 20 unique items.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hostnames(@Nullable Output<List<String>> hostnames) {
+            $.hostnames = hostnames;
+            return this;
+        }
+
+        /**
+         * @param hostnames Hostnames. Must contain between 1 and 20 unique items.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hostnames(List<String> hostnames) {
+            return hostnames(Output.of(hostnames));
+        }
+
+        /**
+         * @param hostnames Hostnames. Must contain between 1 and 20 unique items.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hostnames(String... hostnames) {
+            return hostnames(List.of(hostnames));
         }
 
         /**

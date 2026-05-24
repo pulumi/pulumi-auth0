@@ -1971,6 +1971,10 @@ export interface ConnectionOptions {
      */
     fedMetadataXml?: string;
     /**
+     * Configuration for collecting access tokens and refresh tokens from federated connections. Only applicable for OIDC connections.
+     */
+    federatedConnectionsAccessTokens: outputs.ConnectionOptionsFederatedConnectionsAccessTokens;
+    /**
      * If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
      */
     fieldsMap?: string;
@@ -2550,6 +2554,13 @@ export interface ConnectionOptionsCustomPasswordHash {
 export interface ConnectionOptionsDecryptionKey {
     cert: string;
     key: string;
+}
+
+export interface ConnectionOptionsFederatedConnectionsAccessTokens {
+    /**
+     * When enabled, Auth0 will collect and store access tokens and refresh tokens obtained from federated connections during authentication.
+     */
+    active: boolean;
 }
 
 export interface ConnectionOptionsGatewayAuthentication {
@@ -5526,6 +5537,10 @@ export interface GetConnectionOption {
      */
     fedMetadataXml: string;
     /**
+     * Configuration for collecting access tokens and refresh tokens from federated connections. Only applicable for OIDC connections.
+     */
+    federatedConnectionsAccessTokens: outputs.GetConnectionOptionFederatedConnectionsAccessToken[];
+    /**
      * If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
      */
     fieldsMap: string;
@@ -6105,6 +6120,13 @@ export interface GetConnectionOptionCustomPasswordHash {
 export interface GetConnectionOptionDecryptionKey {
     cert: string;
     key: string;
+}
+
+export interface GetConnectionOptionFederatedConnectionsAccessToken {
+    /**
+     * When enabled, Auth0 will collect and store access tokens and refresh tokens obtained from federated connections during authentication.
+     */
+    active: boolean;
 }
 
 export interface GetConnectionOptionGatewayAuthentication {
@@ -6740,6 +6762,14 @@ export interface GetNetworkAclRuleMatch {
      */
     asns: number[];
     /**
+     * Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
+     */
+    connectingIpv4Cidrs: string[];
+    /**
+     * Connecting IPv6 CIDRs. Must contain between 1 and 20 unique items. Can be IPv6 addresses or CIDR blocks.
+     */
+    connectingIpv6Cidrs: string[];
+    /**
      * Geo Country Codes. Must contain between 1 and 10 unique items.
      */
     geoCountryCodes: string[];
@@ -6747,6 +6777,10 @@ export interface GetNetworkAclRuleMatch {
      * Geo Subdivision Codes. Must contain between 1 and 10 unique items.
      */
     geoSubdivisionCodes: string[];
+    /**
+     * Hostnames. Must contain between 1 and 20 unique items.
+     */
+    hostnames: string[];
     /**
      * IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
      */
@@ -6775,6 +6809,14 @@ export interface GetNetworkAclRuleNotMatch {
      */
     asns: number[];
     /**
+     * Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
+     */
+    connectingIpv4Cidrs: string[];
+    /**
+     * Connecting IPv6 CIDRs. Must contain between 1 and 20 unique items. Can be IPv6 addresses or CIDR blocks.
+     */
+    connectingIpv6Cidrs: string[];
+    /**
      * Geo Country Codes. Must contain between 1 and 10 unique items.
      */
     geoCountryCodes: string[];
@@ -6782,6 +6824,10 @@ export interface GetNetworkAclRuleNotMatch {
      * Geo Subdivision Codes. Must contain between 1 and 10 unique items.
      */
     geoSubdivisionCodes: string[];
+    /**
+     * Hostnames. Must contain between 1 and 20 unique items.
+     */
+    hostnames: string[];
     /**
      * IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
      */
@@ -7945,6 +7991,14 @@ export interface NetworkAclRuleMatch {
      */
     asns?: number[];
     /**
+     * Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
+     */
+    connectingIpv4Cidrs?: string[];
+    /**
+     * Connecting IPv6 CIDRs. Must contain between 1 and 20 unique items. Can be IPv6 addresses or CIDR blocks.
+     */
+    connectingIpv6Cidrs?: string[];
+    /**
      * Geo Country Codes. Must contain between 1 and 10 unique items.
      */
     geoCountryCodes?: string[];
@@ -7952,6 +8006,10 @@ export interface NetworkAclRuleMatch {
      * Geo Subdivision Codes. Must contain between 1 and 10 unique items.
      */
     geoSubdivisionCodes?: string[];
+    /**
+     * Hostnames. Must contain between 1 and 20 unique items.
+     */
+    hostnames?: string[];
     /**
      * IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
      */
@@ -7980,6 +8038,14 @@ export interface NetworkAclRuleNotMatch {
      */
     asns?: number[];
     /**
+     * Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
+     */
+    connectingIpv4Cidrs?: string[];
+    /**
+     * Connecting IPv6 CIDRs. Must contain between 1 and 20 unique items. Can be IPv6 addresses or CIDR blocks.
+     */
+    connectingIpv6Cidrs?: string[];
+    /**
      * Geo Country Codes. Must contain between 1 and 10 unique items.
      */
     geoCountryCodes?: string[];
@@ -7987,6 +8053,10 @@ export interface NetworkAclRuleNotMatch {
      * Geo Subdivision Codes. Must contain between 1 and 10 unique items.
      */
     geoSubdivisionCodes?: string[];
+    /**
+     * Hostnames. Must contain between 1 and 20 unique items.
+     */
+    hostnames?: string[];
     /**
      * IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
      */

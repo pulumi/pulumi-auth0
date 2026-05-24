@@ -283,6 +283,8 @@ __all__ = [
     'ConnectionOptionsCustomPasswordHashArgsDict',
     'ConnectionOptionsDecryptionKeyArgs',
     'ConnectionOptionsDecryptionKeyArgsDict',
+    'ConnectionOptionsFederatedConnectionsAccessTokensArgs',
+    'ConnectionOptionsFederatedConnectionsAccessTokensArgsDict',
     'ConnectionOptionsGatewayAuthenticationArgs',
     'ConnectionOptionsGatewayAuthenticationArgsDict',
     'ConnectionOptionsIdpInitiatedArgs',
@@ -9114,6 +9116,10 @@ class ConnectionOptionsArgsDict(TypedDict):
     """
     Federation Metadata for the ADFS connection.
     """
+    federated_connections_access_tokens: NotRequired[pulumi.Input[Optional['ConnectionOptionsFederatedConnectionsAccessTokensArgsDict']]]
+    """
+    Configuration for collecting access tokens and refresh tokens from federated connections. Only applicable for OIDC connections.
+    """
     fields_map: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
@@ -9468,6 +9474,7 @@ class ConnectionOptionsArgs:
                  enabled_database_customization: pulumi.Input[Optional[_builtins.bool]] = None,
                  entity_id: pulumi.Input[Optional[_builtins.str]] = None,
                  fed_metadata_xml: pulumi.Input[Optional[_builtins.str]] = None,
+                 federated_connections_access_tokens: pulumi.Input[Optional['ConnectionOptionsFederatedConnectionsAccessTokensArgs']] = None,
                  fields_map: pulumi.Input[Optional[_builtins.str]] = None,
                  forward_request_info: pulumi.Input[Optional[_builtins.bool]] = None,
                  from_: pulumi.Input[Optional[_builtins.str]] = None,
@@ -9585,6 +9592,7 @@ class ConnectionOptionsArgs:
         :param pulumi.Input[_builtins.bool] enabled_database_customization: Set to `true` to use a legacy user store.
         :param pulumi.Input[_builtins.str] entity_id: Custom Entity ID for the connection.
         :param pulumi.Input[_builtins.str] fed_metadata_xml: Federation Metadata for the ADFS connection.
+        :param pulumi.Input['ConnectionOptionsFederatedConnectionsAccessTokensArgs'] federated_connections_access_tokens: Configuration for collecting access tokens and refresh tokens from federated connections. Only applicable for OIDC connections.
         :param pulumi.Input[_builtins.str] fields_map: If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
         :param pulumi.Input[_builtins.bool] forward_request_info: Specifies whether or not request info should be forwarded to sms gateway.
         :param pulumi.Input[_builtins.str] from_: Address to use as the sender.
@@ -9740,6 +9748,8 @@ class ConnectionOptionsArgs:
             pulumi.set(__self__, "entity_id", entity_id)
         if fed_metadata_xml is not None:
             pulumi.set(__self__, "fed_metadata_xml", fed_metadata_xml)
+        if federated_connections_access_tokens is not None:
+            pulumi.set(__self__, "federated_connections_access_tokens", federated_connections_access_tokens)
         if fields_map is not None:
             pulumi.set(__self__, "fields_map", fields_map)
         if forward_request_info is not None:
@@ -10352,6 +10362,18 @@ class ConnectionOptionsArgs:
     @fed_metadata_xml.setter
     def fed_metadata_xml(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fed_metadata_xml", value)
+
+    @_builtins.property
+    @pulumi.getter(name="federatedConnectionsAccessTokens")
+    def federated_connections_access_tokens(self) -> pulumi.Input[Optional['ConnectionOptionsFederatedConnectionsAccessTokensArgs']]:
+        """
+        Configuration for collecting access tokens and refresh tokens from federated connections. Only applicable for OIDC connections.
+        """
+        return pulumi.get(self, "federated_connections_access_tokens")
+
+    @federated_connections_access_tokens.setter
+    def federated_connections_access_tokens(self, value: pulumi.Input[Optional['ConnectionOptionsFederatedConnectionsAccessTokensArgs']]):
+        pulumi.set(self, "federated_connections_access_tokens", value)
 
     @_builtins.property
     @pulumi.getter(name="fieldsMap")
@@ -12505,6 +12527,35 @@ class ConnectionOptionsDecryptionKeyArgs:
     @key.setter
     def key(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "key", value)
+
+
+class ConnectionOptionsFederatedConnectionsAccessTokensArgsDict(TypedDict):
+    active: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    When enabled, Auth0 will collect and store access tokens and refresh tokens obtained from federated connections during authentication.
+    """
+
+@pulumi.input_type
+class ConnectionOptionsFederatedConnectionsAccessTokensArgs:
+    def __init__(__self__, *,
+                 active: pulumi.Input[Optional[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] active: When enabled, Auth0 will collect and store access tokens and refresh tokens obtained from federated connections during authentication.
+        """
+        if active is not None:
+            pulumi.set(__self__, "active", active)
+
+    @_builtins.property
+    @pulumi.getter
+    def active(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        When enabled, Auth0 will collect and store access tokens and refresh tokens obtained from federated connections during authentication.
+        """
+        return pulumi.get(self, "active")
+
+    @active.setter
+    def active(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "active", value)
 
 
 class ConnectionOptionsGatewayAuthenticationArgsDict(TypedDict):
@@ -17118,6 +17169,14 @@ class NetworkAclRuleMatchArgsDict(TypedDict):
     """
     ASNs. Must contain between 1 and 10 unique items.
     """
+    connecting_ipv4_cidrs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
+    """
+    connecting_ipv6_cidrs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Connecting IPv6 CIDRs. Must contain between 1 and 20 unique items. Can be IPv6 addresses or CIDR blocks.
+    """
     geo_country_codes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Geo Country Codes. Must contain between 1 and 10 unique items.
@@ -17125,6 +17184,10 @@ class NetworkAclRuleMatchArgsDict(TypedDict):
     geo_subdivision_codes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Geo Subdivision Codes. Must contain between 1 and 10 unique items.
+    """
+    hostnames: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Hostnames. Must contain between 1 and 20 unique items.
     """
     ipv4_cidrs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
@@ -17151,8 +17214,11 @@ class NetworkAclRuleMatchArgsDict(TypedDict):
 class NetworkAclRuleMatchArgs:
     def __init__(__self__, *,
                  asns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 connecting_ipv4_cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 connecting_ipv6_cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  geo_country_codes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  geo_subdivision_codes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 hostnames: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  ipv4_cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  ipv6_cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  ja3_fingerprints: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -17160,8 +17226,11 @@ class NetworkAclRuleMatchArgs:
                  user_agents: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] asns: ASNs. Must contain between 1 and 10 unique items.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] connecting_ipv4_cidrs: Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] connecting_ipv6_cidrs: Connecting IPv6 CIDRs. Must contain between 1 and 20 unique items. Can be IPv6 addresses or CIDR blocks.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] geo_country_codes: Geo Country Codes. Must contain between 1 and 10 unique items.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] geo_subdivision_codes: Geo Subdivision Codes. Must contain between 1 and 10 unique items.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] hostnames: Hostnames. Must contain between 1 and 20 unique items.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv4_cidrs: IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv6_cidrs: IPv6 CIDRs. Must contain between 1 and 10 unique items. Can be IPv6 addresses or CIDR blocks.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ja3_fingerprints: JA3 Fingerprints. Must contain between 1 and 10 unique items.
@@ -17170,10 +17239,16 @@ class NetworkAclRuleMatchArgs:
         """
         if asns is not None:
             pulumi.set(__self__, "asns", asns)
+        if connecting_ipv4_cidrs is not None:
+            pulumi.set(__self__, "connecting_ipv4_cidrs", connecting_ipv4_cidrs)
+        if connecting_ipv6_cidrs is not None:
+            pulumi.set(__self__, "connecting_ipv6_cidrs", connecting_ipv6_cidrs)
         if geo_country_codes is not None:
             pulumi.set(__self__, "geo_country_codes", geo_country_codes)
         if geo_subdivision_codes is not None:
             pulumi.set(__self__, "geo_subdivision_codes", geo_subdivision_codes)
+        if hostnames is not None:
+            pulumi.set(__self__, "hostnames", hostnames)
         if ipv4_cidrs is not None:
             pulumi.set(__self__, "ipv4_cidrs", ipv4_cidrs)
         if ipv6_cidrs is not None:
@@ -17198,6 +17273,30 @@ class NetworkAclRuleMatchArgs:
         pulumi.set(self, "asns", value)
 
     @_builtins.property
+    @pulumi.getter(name="connectingIpv4Cidrs")
+    def connecting_ipv4_cidrs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
+        """
+        return pulumi.get(self, "connecting_ipv4_cidrs")
+
+    @connecting_ipv4_cidrs.setter
+    def connecting_ipv4_cidrs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "connecting_ipv4_cidrs", value)
+
+    @_builtins.property
+    @pulumi.getter(name="connectingIpv6Cidrs")
+    def connecting_ipv6_cidrs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Connecting IPv6 CIDRs. Must contain between 1 and 20 unique items. Can be IPv6 addresses or CIDR blocks.
+        """
+        return pulumi.get(self, "connecting_ipv6_cidrs")
+
+    @connecting_ipv6_cidrs.setter
+    def connecting_ipv6_cidrs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "connecting_ipv6_cidrs", value)
+
+    @_builtins.property
     @pulumi.getter(name="geoCountryCodes")
     def geo_country_codes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -17220,6 +17319,18 @@ class NetworkAclRuleMatchArgs:
     @geo_subdivision_codes.setter
     def geo_subdivision_codes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "geo_subdivision_codes", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def hostnames(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Hostnames. Must contain between 1 and 20 unique items.
+        """
+        return pulumi.get(self, "hostnames")
+
+    @hostnames.setter
+    def hostnames(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "hostnames", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv4Cidrs")
@@ -17287,6 +17398,14 @@ class NetworkAclRuleNotMatchArgsDict(TypedDict):
     """
     ASNs. Must contain between 1 and 10 unique items.
     """
+    connecting_ipv4_cidrs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
+    """
+    connecting_ipv6_cidrs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Connecting IPv6 CIDRs. Must contain between 1 and 20 unique items. Can be IPv6 addresses or CIDR blocks.
+    """
     geo_country_codes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Geo Country Codes. Must contain between 1 and 10 unique items.
@@ -17294,6 +17413,10 @@ class NetworkAclRuleNotMatchArgsDict(TypedDict):
     geo_subdivision_codes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Geo Subdivision Codes. Must contain between 1 and 10 unique items.
+    """
+    hostnames: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Hostnames. Must contain between 1 and 20 unique items.
     """
     ipv4_cidrs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
@@ -17320,8 +17443,11 @@ class NetworkAclRuleNotMatchArgsDict(TypedDict):
 class NetworkAclRuleNotMatchArgs:
     def __init__(__self__, *,
                  asns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 connecting_ipv4_cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 connecting_ipv6_cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  geo_country_codes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  geo_subdivision_codes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 hostnames: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  ipv4_cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  ipv6_cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  ja3_fingerprints: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -17329,8 +17455,11 @@ class NetworkAclRuleNotMatchArgs:
                  user_agents: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] asns: ASNs. Must contain between 1 and 10 unique items.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] connecting_ipv4_cidrs: Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] connecting_ipv6_cidrs: Connecting IPv6 CIDRs. Must contain between 1 and 20 unique items. Can be IPv6 addresses or CIDR blocks.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] geo_country_codes: Geo Country Codes. Must contain between 1 and 10 unique items.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] geo_subdivision_codes: Geo Subdivision Codes. Must contain between 1 and 10 unique items.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] hostnames: Hostnames. Must contain between 1 and 20 unique items.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv4_cidrs: IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv6_cidrs: IPv6 CIDRs. Must contain between 1 and 10 unique items. Can be IPv6 addresses or CIDR blocks.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ja3_fingerprints: JA3 Fingerprints. Must contain between 1 and 10 unique items.
@@ -17339,10 +17468,16 @@ class NetworkAclRuleNotMatchArgs:
         """
         if asns is not None:
             pulumi.set(__self__, "asns", asns)
+        if connecting_ipv4_cidrs is not None:
+            pulumi.set(__self__, "connecting_ipv4_cidrs", connecting_ipv4_cidrs)
+        if connecting_ipv6_cidrs is not None:
+            pulumi.set(__self__, "connecting_ipv6_cidrs", connecting_ipv6_cidrs)
         if geo_country_codes is not None:
             pulumi.set(__self__, "geo_country_codes", geo_country_codes)
         if geo_subdivision_codes is not None:
             pulumi.set(__self__, "geo_subdivision_codes", geo_subdivision_codes)
+        if hostnames is not None:
+            pulumi.set(__self__, "hostnames", hostnames)
         if ipv4_cidrs is not None:
             pulumi.set(__self__, "ipv4_cidrs", ipv4_cidrs)
         if ipv6_cidrs is not None:
@@ -17367,6 +17502,30 @@ class NetworkAclRuleNotMatchArgs:
         pulumi.set(self, "asns", value)
 
     @_builtins.property
+    @pulumi.getter(name="connectingIpv4Cidrs")
+    def connecting_ipv4_cidrs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
+        """
+        return pulumi.get(self, "connecting_ipv4_cidrs")
+
+    @connecting_ipv4_cidrs.setter
+    def connecting_ipv4_cidrs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "connecting_ipv4_cidrs", value)
+
+    @_builtins.property
+    @pulumi.getter(name="connectingIpv6Cidrs")
+    def connecting_ipv6_cidrs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Connecting IPv6 CIDRs. Must contain between 1 and 20 unique items. Can be IPv6 addresses or CIDR blocks.
+        """
+        return pulumi.get(self, "connecting_ipv6_cidrs")
+
+    @connecting_ipv6_cidrs.setter
+    def connecting_ipv6_cidrs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "connecting_ipv6_cidrs", value)
+
+    @_builtins.property
     @pulumi.getter(name="geoCountryCodes")
     def geo_country_codes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -17389,6 +17548,18 @@ class NetworkAclRuleNotMatchArgs:
     @geo_subdivision_codes.setter
     def geo_subdivision_codes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "geo_subdivision_codes", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def hostnames(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Hostnames. Must contain between 1 and 20 unique items.
+        """
+        return pulumi.get(self, "hostnames")
+
+    @hostnames.setter
+    def hostnames(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "hostnames", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv4Cidrs")

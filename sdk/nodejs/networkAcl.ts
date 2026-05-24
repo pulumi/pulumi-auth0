@@ -57,6 +57,29 @@ import * as utilities from "./utilities";
  *         },
  *     },
  * });
+ * // Example of auth0_network_acl with hostname and connecting IP restrictions
+ * const blockCanonical = new auth0.NetworkAcl("block_canonical", {
+ *     description: "Block canonical domain except from proxy",
+ *     active: true,
+ *     priority: 5,
+ *     rule: {
+ *         action: {
+ *             block: true,
+ *         },
+ *         scope: "tenant",
+ *         match: {
+ *             hostnames: ["mytenant1.us.auth0.com"],
+ *             connectingIpv6Cidrs: [
+ *                 "2001:db8::/32",
+ *                 "::1",
+ *             ],
+ *         },
+ *         notMatch: {
+ *             hostnames: ["mytenant2.us.auth0.com"],
+ *             connectingIpv4Cidrs: ["203.0.113.0/24"],
+ *         },
+ *     },
+ * });
  * ```
  *
  * ## Import

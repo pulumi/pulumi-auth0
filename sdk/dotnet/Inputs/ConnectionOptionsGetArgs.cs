@@ -303,6 +303,12 @@ namespace Pulumi.Auth0.Inputs
         public Input<string>? FedMetadataXml { get; set; }
 
         /// <summary>
+        /// Configuration for collecting access tokens and refresh tokens from federated connections. Only applicable for OIDC connections.
+        /// </summary>
+        [Input("federatedConnectionsAccessTokens")]
+        public Input<Inputs.ConnectionOptionsFederatedConnectionsAccessTokensGetArgs>? FederatedConnectionsAccessTokens { get; set; }
+
+        /// <summary>
         /// If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
         /// </summary>
         [Input("fieldsMap")]

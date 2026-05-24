@@ -18,6 +18,16 @@ public final class GetNetworkAclRuleMatch {
      */
     private List<Integer> asns;
     /**
+     * @return Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
+     * 
+     */
+    private List<String> connectingIpv4Cidrs;
+    /**
+     * @return Connecting IPv6 CIDRs. Must contain between 1 and 20 unique items. Can be IPv6 addresses or CIDR blocks.
+     * 
+     */
+    private List<String> connectingIpv6Cidrs;
+    /**
      * @return Geo Country Codes. Must contain between 1 and 10 unique items.
      * 
      */
@@ -27,6 +37,11 @@ public final class GetNetworkAclRuleMatch {
      * 
      */
     private List<String> geoSubdivisionCodes;
+    /**
+     * @return Hostnames. Must contain between 1 and 20 unique items.
+     * 
+     */
+    private List<String> hostnames;
     /**
      * @return IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
      * 
@@ -62,6 +77,20 @@ public final class GetNetworkAclRuleMatch {
         return this.asns;
     }
     /**
+     * @return Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
+     * 
+     */
+    public List<String> connectingIpv4Cidrs() {
+        return this.connectingIpv4Cidrs;
+    }
+    /**
+     * @return Connecting IPv6 CIDRs. Must contain between 1 and 20 unique items. Can be IPv6 addresses or CIDR blocks.
+     * 
+     */
+    public List<String> connectingIpv6Cidrs() {
+        return this.connectingIpv6Cidrs;
+    }
+    /**
      * @return Geo Country Codes. Must contain between 1 and 10 unique items.
      * 
      */
@@ -74,6 +103,13 @@ public final class GetNetworkAclRuleMatch {
      */
     public List<String> geoSubdivisionCodes() {
         return this.geoSubdivisionCodes;
+    }
+    /**
+     * @return Hostnames. Must contain between 1 and 20 unique items.
+     * 
+     */
+    public List<String> hostnames() {
+        return this.hostnames;
     }
     /**
      * @return IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
@@ -121,8 +157,11 @@ public final class GetNetworkAclRuleMatch {
     @CustomType.Builder
     public static final class Builder {
         private List<Integer> asns;
+        private List<String> connectingIpv4Cidrs;
+        private List<String> connectingIpv6Cidrs;
         private List<String> geoCountryCodes;
         private List<String> geoSubdivisionCodes;
+        private List<String> hostnames;
         private List<String> ipv4Cidrs;
         private List<String> ipv6Cidrs;
         private List<String> ja3Fingerprints;
@@ -132,8 +171,11 @@ public final class GetNetworkAclRuleMatch {
         public Builder(GetNetworkAclRuleMatch defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.asns = defaults.asns;
+    	      this.connectingIpv4Cidrs = defaults.connectingIpv4Cidrs;
+    	      this.connectingIpv6Cidrs = defaults.connectingIpv6Cidrs;
     	      this.geoCountryCodes = defaults.geoCountryCodes;
     	      this.geoSubdivisionCodes = defaults.geoSubdivisionCodes;
+    	      this.hostnames = defaults.hostnames;
     	      this.ipv4Cidrs = defaults.ipv4Cidrs;
     	      this.ipv6Cidrs = defaults.ipv6Cidrs;
     	      this.ja3Fingerprints = defaults.ja3Fingerprints;
@@ -151,6 +193,28 @@ public final class GetNetworkAclRuleMatch {
         }
         public Builder asns(Integer... asns) {
             return asns(List.of(asns));
+        }
+        @CustomType.Setter
+        public Builder connectingIpv4Cidrs(List<String> connectingIpv4Cidrs) {
+            if (connectingIpv4Cidrs == null) {
+              throw new MissingRequiredPropertyException("GetNetworkAclRuleMatch", "connectingIpv4Cidrs");
+            }
+            this.connectingIpv4Cidrs = connectingIpv4Cidrs;
+            return this;
+        }
+        public Builder connectingIpv4Cidrs(String... connectingIpv4Cidrs) {
+            return connectingIpv4Cidrs(List.of(connectingIpv4Cidrs));
+        }
+        @CustomType.Setter
+        public Builder connectingIpv6Cidrs(List<String> connectingIpv6Cidrs) {
+            if (connectingIpv6Cidrs == null) {
+              throw new MissingRequiredPropertyException("GetNetworkAclRuleMatch", "connectingIpv6Cidrs");
+            }
+            this.connectingIpv6Cidrs = connectingIpv6Cidrs;
+            return this;
+        }
+        public Builder connectingIpv6Cidrs(String... connectingIpv6Cidrs) {
+            return connectingIpv6Cidrs(List.of(connectingIpv6Cidrs));
         }
         @CustomType.Setter
         public Builder geoCountryCodes(List<String> geoCountryCodes) {
@@ -173,6 +237,17 @@ public final class GetNetworkAclRuleMatch {
         }
         public Builder geoSubdivisionCodes(String... geoSubdivisionCodes) {
             return geoSubdivisionCodes(List.of(geoSubdivisionCodes));
+        }
+        @CustomType.Setter
+        public Builder hostnames(List<String> hostnames) {
+            if (hostnames == null) {
+              throw new MissingRequiredPropertyException("GetNetworkAclRuleMatch", "hostnames");
+            }
+            this.hostnames = hostnames;
+            return this;
+        }
+        public Builder hostnames(String... hostnames) {
+            return hostnames(List.of(hostnames));
         }
         @CustomType.Setter
         public Builder ipv4Cidrs(List<String> ipv4Cidrs) {
@@ -232,8 +307,11 @@ public final class GetNetworkAclRuleMatch {
         public GetNetworkAclRuleMatch build() {
             final var _resultValue = new GetNetworkAclRuleMatch();
             _resultValue.asns = asns;
+            _resultValue.connectingIpv4Cidrs = connectingIpv4Cidrs;
+            _resultValue.connectingIpv6Cidrs = connectingIpv6Cidrs;
             _resultValue.geoCountryCodes = geoCountryCodes;
             _resultValue.geoSubdivisionCodes = geoSubdivisionCodes;
+            _resultValue.hostnames = hostnames;
             _resultValue.ipv4Cidrs = ipv4Cidrs;
             _resultValue.ipv6Cidrs = ipv6Cidrs;
             _resultValue.ja3Fingerprints = ja3Fingerprints;

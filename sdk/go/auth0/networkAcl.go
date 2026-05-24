@@ -80,6 +80,38 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Example of auth0_network_acl with hostname and connecting IP restrictions
+//			_, err = auth0.NewNetworkAcl(ctx, "block_canonical", &auth0.NetworkAclArgs{
+//				Description: pulumi.String("Block canonical domain except from proxy"),
+//				Active:      pulumi.Bool(true),
+//				Priority:    pulumi.Int(5),
+//				Rule: &auth0.NetworkAclRuleArgs{
+//					Action: &auth0.NetworkAclRuleActionArgs{
+//						Block: pulumi.Bool(true),
+//					},
+//					Scope: pulumi.String("tenant"),
+//					Match: &auth0.NetworkAclRuleMatchArgs{
+//						Hostnames: pulumi.StringArray{
+//							pulumi.String("mytenant1.us.auth0.com"),
+//						},
+//						ConnectingIpv6Cidrs: pulumi.StringArray{
+//							pulumi.String("2001:db8::/32"),
+//							pulumi.String("::1"),
+//						},
+//					},
+//					NotMatch: &auth0.NetworkAclRuleNotMatchArgs{
+//						Hostnames: pulumi.StringArray{
+//							pulumi.String("mytenant2.us.auth0.com"),
+//						},
+//						ConnectingIpv4Cidrs: pulumi.StringArray{
+//							pulumi.String("203.0.113.0/24"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			return nil
 //		})
 //	}

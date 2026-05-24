@@ -166,6 +166,10 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string? FedMetadataXml;
         /// <summary>
+        /// Configuration for collecting access tokens and refresh tokens from federated connections. Only applicable for OIDC connections.
+        /// </summary>
+        public readonly Outputs.ConnectionOptionsFederatedConnectionsAccessTokens? FederatedConnectionsAccessTokens;
+        /// <summary>
         /// If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
         /// </summary>
         public readonly string? FieldsMap;
@@ -556,6 +560,8 @@ namespace Pulumi.Auth0.Outputs
 
             string? fedMetadataXml,
 
+            Outputs.ConnectionOptionsFederatedConnectionsAccessTokens? federatedConnectionsAccessTokens,
+
             string? fieldsMap,
 
             bool? forwardRequestInfo,
@@ -750,6 +756,7 @@ namespace Pulumi.Auth0.Outputs
             EnabledDatabaseCustomization = enabledDatabaseCustomization;
             EntityId = entityId;
             FedMetadataXml = fedMetadataXml;
+            FederatedConnectionsAccessTokens = federatedConnectionsAccessTokens;
             FieldsMap = fieldsMap;
             ForwardRequestInfo = forwardRequestInfo;
             From = from;

@@ -120,6 +120,12 @@ namespace Pulumi.Auth0
         [Input("name")]
         public string? Name { get; set; }
 
+        /// <summary>
+        /// Whether to skip enabled clients for this connection. Setting this to `True` will skip additional paginated API calls to /api/v2/connections/{id}/clients. Default: `False`.
+        /// </summary>
+        [Input("skipEnabledClients")]
+        public bool? SkipEnabledClients { get; set; }
+
         public GetConnectionArgs()
         {
         }
@@ -139,6 +145,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Whether to skip enabled clients for this connection. Setting this to `True` will skip additional paginated API calls to /api/v2/connections/{id}/clients. Default: `False`.
+        /// </summary>
+        [Input("skipEnabledClients")]
+        public Input<bool>? SkipEnabledClients { get; set; }
 
         public GetConnectionInvokeArgs()
         {
@@ -167,7 +179,7 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
-        /// IDs of the clients for which the connection is enabled.
+        /// IDs of the clients for which the connection is enabled. Skips populating if `SkipEnabledClients` is `True`.
         /// </summary>
         public readonly ImmutableArray<string> EnabledClients;
         /// <summary>
@@ -199,6 +211,10 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly bool ShowAsButton;
         /// <summary>
+        /// Whether to skip enabled clients for this connection. Setting this to `True` will skip additional paginated API calls to /api/v2/connections/{id}/clients. Default: `False`.
+        /// </summary>
+        public readonly bool? SkipEnabledClients;
+        /// <summary>
         /// Type of the connection, which indicates the identity provider.
         /// </summary>
         public readonly string Strategy;
@@ -229,6 +245,8 @@ namespace Pulumi.Auth0
 
             bool showAsButton,
 
+            bool? skipEnabledClients,
+
             string strategy)
         {
             Authentications = authentications;
@@ -243,6 +261,7 @@ namespace Pulumi.Auth0
             Options = options;
             Realms = realms;
             ShowAsButton = showAsButton;
+            SkipEnabledClients = skipEnabledClients;
             Strategy = strategy;
         }
     }
