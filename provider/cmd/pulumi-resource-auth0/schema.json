@@ -1949,8 +1949,7 @@
             "properties": {
                 "algorithm": {
                     "type": "string",
-                    "description": "Algorithm which will be used with the credential. Can be one of `RS256`, `RS384`, `PS256`. If not specified, `RS256` will be used.\n",
-                    "willReplaceOnChanges": true
+                    "description": "Algorithm which will be used with the credential. Can be one of `RS256`, `RS384`, `PS256`. If not specified, `RS256` will be used.\n"
                 },
                 "createdAt": {
                     "type": "string",
@@ -1958,8 +1957,7 @@
                 },
                 "credentialType": {
                     "type": "string",
-                    "description": "Credential type. Supported types: \u003cspan pulumi-lang-nodejs=\"`publicKey`\" pulumi-lang-dotnet=\"`PublicKey`\" pulumi-lang-go=\"`publicKey`\" pulumi-lang-python=\"`public_key`\" pulumi-lang-yaml=\"`publicKey`\" pulumi-lang-java=\"`publicKey`\" pulumi-lang-hcl=\"`public_key`\"\u003e`publicKey`\u003c/span\u003e.\n",
-                    "willReplaceOnChanges": true
+                    "description": "Credential type. Supported types: \u003cspan pulumi-lang-nodejs=\"`publicKey`\" pulumi-lang-dotnet=\"`PublicKey`\" pulumi-lang-go=\"`publicKey`\" pulumi-lang-python=\"`public_key`\" pulumi-lang-yaml=\"`publicKey`\" pulumi-lang-java=\"`publicKey`\" pulumi-lang-hcl=\"`public_key`\"\u003e`publicKey`\u003c/span\u003e.\n"
                 },
                 "expiresAt": {
                     "type": "string",
@@ -1975,18 +1973,15 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Friendly name for a credential.\n",
-                    "willReplaceOnChanges": true
+                    "description": "Friendly name for a credential.\n"
                 },
                 "parseExpiryFromCert": {
                     "type": "boolean",
-                    "description": "Parse expiry from x509 certificate. If true, attempts to parse the expiry date from the provided PEM. If also the \u003cspan pulumi-lang-nodejs=\"`expiresAt`\" pulumi-lang-dotnet=\"`ExpiresAt`\" pulumi-lang-go=\"`expiresAt`\" pulumi-lang-python=\"`expires_at`\" pulumi-lang-yaml=\"`expiresAt`\" pulumi-lang-java=\"`expiresAt`\" pulumi-lang-hcl=\"`expires_at`\"\u003e`expiresAt`\u003c/span\u003e is set the credential expiry will be set to the explicit \u003cspan pulumi-lang-nodejs=\"`expiresAt`\" pulumi-lang-dotnet=\"`ExpiresAt`\" pulumi-lang-go=\"`expiresAt`\" pulumi-lang-python=\"`expires_at`\" pulumi-lang-yaml=\"`expiresAt`\" pulumi-lang-java=\"`expiresAt`\" pulumi-lang-hcl=\"`expires_at`\"\u003e`expiresAt`\u003c/span\u003e value.\n",
-                    "willReplaceOnChanges": true
+                    "description": "Parse expiry from x509 certificate. If true, attempts to parse the expiry date from the provided PEM. If also the \u003cspan pulumi-lang-nodejs=\"`expiresAt`\" pulumi-lang-dotnet=\"`ExpiresAt`\" pulumi-lang-go=\"`expiresAt`\" pulumi-lang-python=\"`expires_at`\" pulumi-lang-yaml=\"`expiresAt`\" pulumi-lang-java=\"`expiresAt`\" pulumi-lang-hcl=\"`expires_at`\"\u003e`expiresAt`\u003c/span\u003e is set the credential expiry will be set to the explicit \u003cspan pulumi-lang-nodejs=\"`expiresAt`\" pulumi-lang-dotnet=\"`ExpiresAt`\" pulumi-lang-go=\"`expiresAt`\" pulumi-lang-python=\"`expires_at`\" pulumi-lang-yaml=\"`expiresAt`\" pulumi-lang-java=\"`expiresAt`\" pulumi-lang-hcl=\"`expires_at`\"\u003e`expiresAt`\u003c/span\u003e value.\n"
                 },
                 "pem": {
                     "type": "string",
-                    "description": "PEM-formatted public key (SPKI and PKCS1) or X509 certificate. Must be JSON escaped.\n",
-                    "willReplaceOnChanges": true
+                    "description": "PEM-formatted public key (SPKI and PKCS1) or X509 certificate. Must be JSON escaped.\n"
                 },
                 "updatedAt": {
                     "type": "string",
@@ -2916,6 +2911,10 @@
                     "type": "string",
                     "description": "Federation Metadata for the ADFS connection.\n"
                 },
+                "federatedConnectionsAccessTokens": {
+                    "$ref": "#/types/auth0:index/ConnectionOptionsFederatedConnectionsAccessTokens:ConnectionOptionsFederatedConnectionsAccessTokens",
+                    "description": "Configuration for collecting access tokens and refresh tokens from federated connections. Only applicable for OIDC connections.\n"
+                },
                 "fieldsMap": {
                     "type": "string",
                     "description": "If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.\n"
@@ -3263,6 +3262,7 @@
                         "connectionSettings",
                         "domainAliases",
                         "email",
+                        "federatedConnectionsAccessTokens",
                         "ips",
                         "issuer",
                         "jwksUri",
@@ -3811,6 +3811,22 @@
                 "cert",
                 "key"
             ]
+        },
+        "auth0:index/ConnectionOptionsFederatedConnectionsAccessTokens:ConnectionOptionsFederatedConnectionsAccessTokens": {
+            "properties": {
+                "active": {
+                    "type": "boolean",
+                    "description": "When enabled, Auth0 will collect and store access tokens and refresh tokens obtained from federated connections during authentication.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "active"
+                    ]
+                }
+            }
         },
         "auth0:index/ConnectionOptionsGatewayAuthentication:ConnectionOptionsGatewayAuthentication": {
             "properties": {
@@ -5342,6 +5358,20 @@
                     },
                     "description": "ASNs. Must contain between 1 and 10 unique items.\n"
                 },
+                "connectingIpv4Cidrs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.\n"
+                },
+                "connectingIpv6Cidrs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Connecting IPv6 CIDRs. Must contain between 1 and 20 unique items. Can be IPv6 addresses or CIDR blocks.\n"
+                },
                 "geoCountryCodes": {
                     "type": "array",
                     "items": {
@@ -5355,6 +5385,13 @@
                         "type": "string"
                     },
                     "description": "Geo Subdivision Codes. Must contain between 1 and 10 unique items.\n"
+                },
+                "hostnames": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Hostnames. Must contain between 1 and 20 unique items.\n"
                 },
                 "ipv4Cidrs": {
                     "type": "array",
@@ -5403,6 +5440,20 @@
                     },
                     "description": "ASNs. Must contain between 1 and 10 unique items.\n"
                 },
+                "connectingIpv4Cidrs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.\n"
+                },
+                "connectingIpv6Cidrs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Connecting IPv6 CIDRs. Must contain between 1 and 20 unique items. Can be IPv6 addresses or CIDR blocks.\n"
+                },
                 "geoCountryCodes": {
                     "type": "array",
                     "items": {
@@ -5416,6 +5467,13 @@
                         "type": "string"
                     },
                     "description": "Geo Subdivision Codes. Must contain between 1 and 10 unique items.\n"
+                },
+                "hostnames": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Hostnames. Must contain between 1 and 20 unique items.\n"
                 },
                 "ipv4Cidrs": {
                     "type": "array",
@@ -10929,6 +10987,13 @@
                     "type": "string",
                     "description": "Federation Metadata for the ADFS connection.\n"
                 },
+                "federatedConnectionsAccessTokens": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/getConnectionOptionFederatedConnectionsAccessToken:getConnectionOptionFederatedConnectionsAccessToken"
+                    },
+                    "description": "Configuration for collecting access tokens and refresh tokens from federated connections. Only applicable for OIDC connections.\n"
+                },
                 "fieldsMap": {
                     "type": "string",
                     "description": "If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.\n"
@@ -11336,6 +11401,7 @@
                 "enabledDatabaseCustomization",
                 "entityId",
                 "fedMetadataXml",
+                "federatedConnectionsAccessTokens",
                 "fieldsMap",
                 "forwardRequestInfo",
                 "from",
@@ -12009,6 +12075,23 @@
             "required": [
                 "cert",
                 "key"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getConnectionOptionFederatedConnectionsAccessToken:getConnectionOptionFederatedConnectionsAccessToken": {
+            "properties": {
+                "active": {
+                    "type": "boolean",
+                    "description": "When enabled, Auth0 will collect and store access tokens and refresh tokens obtained from federated connections during authentication.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "active"
             ],
             "language": {
                 "nodejs": {
@@ -13265,6 +13348,20 @@
                     },
                     "description": "ASNs. Must contain between 1 and 10 unique items.\n"
                 },
+                "connectingIpv4Cidrs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.\n"
+                },
+                "connectingIpv6Cidrs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Connecting IPv6 CIDRs. Must contain between 1 and 20 unique items. Can be IPv6 addresses or CIDR blocks.\n"
+                },
                 "geoCountryCodes": {
                     "type": "array",
                     "items": {
@@ -13278,6 +13375,13 @@
                         "type": "string"
                     },
                     "description": "Geo Subdivision Codes. Must contain between 1 and 10 unique items.\n"
+                },
+                "hostnames": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Hostnames. Must contain between 1 and 20 unique items.\n"
                 },
                 "ipv4Cidrs": {
                     "type": "array",
@@ -13318,8 +13422,11 @@
             "type": "object",
             "required": [
                 "asns",
+                "connectingIpv4Cidrs",
+                "connectingIpv6Cidrs",
                 "geoCountryCodes",
                 "geoSubdivisionCodes",
+                "hostnames",
                 "ipv4Cidrs",
                 "ipv6Cidrs",
                 "ja3Fingerprints",
@@ -13341,6 +13448,20 @@
                     },
                     "description": "ASNs. Must contain between 1 and 10 unique items.\n"
                 },
+                "connectingIpv4Cidrs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.\n"
+                },
+                "connectingIpv6Cidrs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Connecting IPv6 CIDRs. Must contain between 1 and 20 unique items. Can be IPv6 addresses or CIDR blocks.\n"
+                },
                 "geoCountryCodes": {
                     "type": "array",
                     "items": {
@@ -13354,6 +13475,13 @@
                         "type": "string"
                     },
                     "description": "Geo Subdivision Codes. Must contain between 1 and 10 unique items.\n"
+                },
+                "hostnames": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Hostnames. Must contain between 1 and 20 unique items.\n"
                 },
                 "ipv4Cidrs": {
                     "type": "array",
@@ -13394,8 +13522,11 @@
             "type": "object",
             "required": [
                 "asns",
+                "connectingIpv4Cidrs",
+                "connectingIpv6Cidrs",
                 "geoCountryCodes",
                 "geoSubdivisionCodes",
+                "hostnames",
                 "ipv4Cidrs",
                 "ipv6Cidrs",
                 "ja3Fingerprints",
@@ -19384,7 +19515,7 @@
             }
         },
         "auth0:index/networkAcl:NetworkAcl": {
-            "description": "With this resource, you can create and manage NetworkACLs for a tenant.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\n// Example of auth0_network_acl with match criteria\nconst myNetworkAclMatch = new auth0.NetworkAcl(\"my_network_acl_match\", {\n    description: \"Example with match network ACL\",\n    active: true,\n    priority: 1,\n    rule: {\n        action: {\n            allow: true,\n        },\n        scope: \"management\",\n        match: {\n            geoCountryCodes: [\n                \"US\",\n                \"CA\",\n            ],\n            geoSubdivisionCodes: [\n                \"US-NY\",\n                \"CA-ON\",\n            ],\n        },\n    },\n});\n// Example of auth0_network_acl with not-match criteria\nconst myNetworkAclNotMatch = new auth0.NetworkAcl(\"my_network_acl_not_match\", {\n    description: \"Example with not match network ACL\",\n    active: true,\n    priority: 3,\n    rule: {\n        action: {\n            log: true,\n        },\n        scope: \"authentication\",\n        notMatch: {\n            asns: [9876],\n            ipv4Cidrs: [\n                \"192.168.1.0/24\",\n                \"10.0.0.0/8\",\n            ],\n            ipv6Cidrs: [\"2001:db8::/32\"],\n        },\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\n# Example of auth0_network_acl with match criteria\nmy_network_acl_match = auth0.NetworkAcl(\"my_network_acl_match\",\n    description=\"Example with match network ACL\",\n    active=True,\n    priority=1,\n    rule={\n        \"action\": {\n            \"allow\": True,\n        },\n        \"scope\": \"management\",\n        \"match\": {\n            \"geo_country_codes\": [\n                \"US\",\n                \"CA\",\n            ],\n            \"geo_subdivision_codes\": [\n                \"US-NY\",\n                \"CA-ON\",\n            ],\n        },\n    })\n# Example of auth0_network_acl with not-match criteria\nmy_network_acl_not_match = auth0.NetworkAcl(\"my_network_acl_not_match\",\n    description=\"Example with not match network ACL\",\n    active=True,\n    priority=3,\n    rule={\n        \"action\": {\n            \"log\": True,\n        },\n        \"scope\": \"authentication\",\n        \"not_match\": {\n            \"asns\": [9876],\n            \"ipv4_cidrs\": [\n                \"192.168.1.0/24\",\n                \"10.0.0.0/8\",\n            ],\n            \"ipv6_cidrs\": [\"2001:db8::/32\"],\n        },\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Example of auth0_network_acl with match criteria\n    var myNetworkAclMatch = new Auth0.NetworkAcl(\"my_network_acl_match\", new()\n    {\n        Description = \"Example with match network ACL\",\n        Active = true,\n        Priority = 1,\n        Rule = new Auth0.Inputs.NetworkAclRuleArgs\n        {\n            Action = new Auth0.Inputs.NetworkAclRuleActionArgs\n            {\n                Allow = true,\n            },\n            Scope = \"management\",\n            Match = new Auth0.Inputs.NetworkAclRuleMatchArgs\n            {\n                GeoCountryCodes = new[]\n                {\n                    \"US\",\n                    \"CA\",\n                },\n                GeoSubdivisionCodes = new[]\n                {\n                    \"US-NY\",\n                    \"CA-ON\",\n                },\n            },\n        },\n    });\n\n    // Example of auth0_network_acl with not-match criteria\n    var myNetworkAclNotMatch = new Auth0.NetworkAcl(\"my_network_acl_not_match\", new()\n    {\n        Description = \"Example with not match network ACL\",\n        Active = true,\n        Priority = 3,\n        Rule = new Auth0.Inputs.NetworkAclRuleArgs\n        {\n            Action = new Auth0.Inputs.NetworkAclRuleActionArgs\n            {\n                Log = true,\n            },\n            Scope = \"authentication\",\n            NotMatch = new Auth0.Inputs.NetworkAclRuleNotMatchArgs\n            {\n                Asns = new[]\n                {\n                    9876,\n                },\n                Ipv4Cidrs = new[]\n                {\n                    \"192.168.1.0/24\",\n                    \"10.0.0.0/8\",\n                },\n                Ipv6Cidrs = new[]\n                {\n                    \"2001:db8::/32\",\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Example of auth0_network_acl with match criteria\n\t\t_, err := auth0.NewNetworkAcl(ctx, \"my_network_acl_match\", \u0026auth0.NetworkAclArgs{\n\t\t\tDescription: pulumi.String(\"Example with match network ACL\"),\n\t\t\tActive:      pulumi.Bool(true),\n\t\t\tPriority:    pulumi.Int(1),\n\t\t\tRule: \u0026auth0.NetworkAclRuleArgs{\n\t\t\t\tAction: \u0026auth0.NetworkAclRuleActionArgs{\n\t\t\t\t\tAllow: pulumi.Bool(true),\n\t\t\t\t},\n\t\t\t\tScope: pulumi.String(\"management\"),\n\t\t\t\tMatch: \u0026auth0.NetworkAclRuleMatchArgs{\n\t\t\t\t\tGeoCountryCodes: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"US\"),\n\t\t\t\t\t\tpulumi.String(\"CA\"),\n\t\t\t\t\t},\n\t\t\t\t\tGeoSubdivisionCodes: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"US-NY\"),\n\t\t\t\t\t\tpulumi.String(\"CA-ON\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Example of auth0_network_acl with not-match criteria\n\t\t_, err = auth0.NewNetworkAcl(ctx, \"my_network_acl_not_match\", \u0026auth0.NetworkAclArgs{\n\t\t\tDescription: pulumi.String(\"Example with not match network ACL\"),\n\t\t\tActive:      pulumi.Bool(true),\n\t\t\tPriority:    pulumi.Int(3),\n\t\t\tRule: \u0026auth0.NetworkAclRuleArgs{\n\t\t\t\tAction: \u0026auth0.NetworkAclRuleActionArgs{\n\t\t\t\t\tLog: pulumi.Bool(true),\n\t\t\t\t},\n\t\t\t\tScope: pulumi.String(\"authentication\"),\n\t\t\t\tNotMatch: \u0026auth0.NetworkAclRuleNotMatchArgs{\n\t\t\t\t\tAsns: pulumi.IntArray{\n\t\t\t\t\t\tpulumi.Int(9876),\n\t\t\t\t\t},\n\t\t\t\t\tIpv4Cidrs: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"192.168.1.0/24\"),\n\t\t\t\t\t\tpulumi.String(\"10.0.0.0/8\"),\n\t\t\t\t\t},\n\t\t\t\t\tIpv6Cidrs: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"2001:db8::/32\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    auth0 = {\n      source = \"pulumi/auth0\"\n    }\n  }\n}\n\n# Example of auth0_network_acl with match criteria\nresource \"auth0_networkacl\" \"my_network_acl_match\" {\n  description = \"Example with match network ACL\"\n  active      = true\n  priority    = 1\n  rule = {\n    action = {\n      allow = true\n    }\n    scope = \"management\"\n    match = {\n      geo_country_codes     = [\"US\", \"CA\"]\n      geo_subdivision_codes = [\"US-NY\", \"CA-ON\"]\n    }\n  }\n}\n# Example of auth0_network_acl with not-match criteria\nresource \"auth0_networkacl\" \"my_network_acl_not_match\" {\n  description = \"Example with not match network ACL\"\n  active      = true\n  priority    = 3\n  rule = {\n    action = {\n      log = true\n    }\n    scope = \"authentication\"\n    not_match = {\n      asns       = [9876]\n      ipv4_cidrs = [\"192.168.1.0/24\", \"10.0.0.0/8\"]\n      ipv6_cidrs = [\"2001:db8::/32\"]\n    }\n  }\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.NetworkAcl;\nimport com.pulumi.auth0.NetworkAclArgs;\nimport com.pulumi.auth0.inputs.NetworkAclRuleArgs;\nimport com.pulumi.auth0.inputs.NetworkAclRuleActionArgs;\nimport com.pulumi.auth0.inputs.NetworkAclRuleMatchArgs;\nimport com.pulumi.auth0.inputs.NetworkAclRuleNotMatchArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Example of auth0_network_acl with match criteria\n        var myNetworkAclMatch = new NetworkAcl(\"myNetworkAclMatch\", NetworkAclArgs.builder()\n            .description(\"Example with match network ACL\")\n            .active(true)\n            .priority(1)\n            .rule(NetworkAclRuleArgs.builder()\n                .action(NetworkAclRuleActionArgs.builder()\n                    .allow(true)\n                    .build())\n                .scope(\"management\")\n                .match(NetworkAclRuleMatchArgs.builder()\n                    .geoCountryCodes(                    \n                        \"US\",\n                        \"CA\")\n                    .geoSubdivisionCodes(                    \n                        \"US-NY\",\n                        \"CA-ON\")\n                    .build())\n                .build())\n            .build());\n\n        // Example of auth0_network_acl with not-match criteria\n        var myNetworkAclNotMatch = new NetworkAcl(\"myNetworkAclNotMatch\", NetworkAclArgs.builder()\n            .description(\"Example with not match network ACL\")\n            .active(true)\n            .priority(3)\n            .rule(NetworkAclRuleArgs.builder()\n                .action(NetworkAclRuleActionArgs.builder()\n                    .log(true)\n                    .build())\n                .scope(\"authentication\")\n                .notMatch(NetworkAclRuleNotMatchArgs.builder()\n                    .asns(9876)\n                    .ipv4Cidrs(                    \n                        \"192.168.1.0/24\",\n                        \"10.0.0.0/8\")\n                    .ipv6Cidrs(\"2001:db8::/32\")\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Example of auth0_network_acl with match criteria\n  myNetworkAclMatch:\n    type: auth0:NetworkAcl\n    name: my_network_acl_match\n    properties:\n      description: Example with match network ACL\n      active: true\n      priority: 1\n      rule:\n        action:\n          allow: true\n        scope: management\n        match:\n          geoCountryCodes:\n            - US\n            - CA\n          geoSubdivisionCodes:\n            - US-NY\n            - CA-ON\n  # Example of auth0_network_acl with not-match criteria\n  myNetworkAclNotMatch:\n    type: auth0:NetworkAcl\n    name: my_network_acl_not_match\n    properties:\n      description: Example with not match network ACL\n      active: true\n      priority: 3\n      rule:\n        action:\n          log: true\n        scope: authentication\n        notMatch:\n          asns:\n            - 9876\n          ipv4Cidrs:\n            - 192.168.1.0/24\n            - 10.0.0.0/8\n          ipv6Cidrs:\n            - 2001:db8::/32\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThis resource can be imported using the network acl ID.\n\nExample:\n\n```sh\n$ pulumi import auth0:index/networkAcl:NetworkAcl my_network_acl \"167f9a50-4444-3333-1111-ndfdaf953ab4\"\n```\n\n",
+            "description": "With this resource, you can create and manage NetworkACLs for a tenant.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\n// Example of auth0_network_acl with match criteria\nconst myNetworkAclMatch = new auth0.NetworkAcl(\"my_network_acl_match\", {\n    description: \"Example with match network ACL\",\n    active: true,\n    priority: 1,\n    rule: {\n        action: {\n            allow: true,\n        },\n        scope: \"management\",\n        match: {\n            geoCountryCodes: [\n                \"US\",\n                \"CA\",\n            ],\n            geoSubdivisionCodes: [\n                \"US-NY\",\n                \"CA-ON\",\n            ],\n        },\n    },\n});\n// Example of auth0_network_acl with not-match criteria\nconst myNetworkAclNotMatch = new auth0.NetworkAcl(\"my_network_acl_not_match\", {\n    description: \"Example with not match network ACL\",\n    active: true,\n    priority: 3,\n    rule: {\n        action: {\n            log: true,\n        },\n        scope: \"authentication\",\n        notMatch: {\n            asns: [9876],\n            ipv4Cidrs: [\n                \"192.168.1.0/24\",\n                \"10.0.0.0/8\",\n            ],\n            ipv6Cidrs: [\"2001:db8::/32\"],\n        },\n    },\n});\n// Example of auth0_network_acl with hostname and connecting IP restrictions\nconst blockCanonical = new auth0.NetworkAcl(\"block_canonical\", {\n    description: \"Block canonical domain except from proxy\",\n    active: true,\n    priority: 5,\n    rule: {\n        action: {\n            block: true,\n        },\n        scope: \"tenant\",\n        match: {\n            hostnames: [\"mytenant1.us.auth0.com\"],\n            connectingIpv6Cidrs: [\n                \"2001:db8::/32\",\n                \"::1\",\n            ],\n        },\n        notMatch: {\n            hostnames: [\"mytenant2.us.auth0.com\"],\n            connectingIpv4Cidrs: [\"203.0.113.0/24\"],\n        },\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\n# Example of auth0_network_acl with match criteria\nmy_network_acl_match = auth0.NetworkAcl(\"my_network_acl_match\",\n    description=\"Example with match network ACL\",\n    active=True,\n    priority=1,\n    rule={\n        \"action\": {\n            \"allow\": True,\n        },\n        \"scope\": \"management\",\n        \"match\": {\n            \"geo_country_codes\": [\n                \"US\",\n                \"CA\",\n            ],\n            \"geo_subdivision_codes\": [\n                \"US-NY\",\n                \"CA-ON\",\n            ],\n        },\n    })\n# Example of auth0_network_acl with not-match criteria\nmy_network_acl_not_match = auth0.NetworkAcl(\"my_network_acl_not_match\",\n    description=\"Example with not match network ACL\",\n    active=True,\n    priority=3,\n    rule={\n        \"action\": {\n            \"log\": True,\n        },\n        \"scope\": \"authentication\",\n        \"not_match\": {\n            \"asns\": [9876],\n            \"ipv4_cidrs\": [\n                \"192.168.1.0/24\",\n                \"10.0.0.0/8\",\n            ],\n            \"ipv6_cidrs\": [\"2001:db8::/32\"],\n        },\n    })\n# Example of auth0_network_acl with hostname and connecting IP restrictions\nblock_canonical = auth0.NetworkAcl(\"block_canonical\",\n    description=\"Block canonical domain except from proxy\",\n    active=True,\n    priority=5,\n    rule={\n        \"action\": {\n            \"block\": True,\n        },\n        \"scope\": \"tenant\",\n        \"match\": {\n            \"hostnames\": [\"mytenant1.us.auth0.com\"],\n            \"connecting_ipv6_cidrs\": [\n                \"2001:db8::/32\",\n                \"::1\",\n            ],\n        },\n        \"not_match\": {\n            \"hostnames\": [\"mytenant2.us.auth0.com\"],\n            \"connecting_ipv4_cidrs\": [\"203.0.113.0/24\"],\n        },\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Example of auth0_network_acl with match criteria\n    var myNetworkAclMatch = new Auth0.NetworkAcl(\"my_network_acl_match\", new()\n    {\n        Description = \"Example with match network ACL\",\n        Active = true,\n        Priority = 1,\n        Rule = new Auth0.Inputs.NetworkAclRuleArgs\n        {\n            Action = new Auth0.Inputs.NetworkAclRuleActionArgs\n            {\n                Allow = true,\n            },\n            Scope = \"management\",\n            Match = new Auth0.Inputs.NetworkAclRuleMatchArgs\n            {\n                GeoCountryCodes = new[]\n                {\n                    \"US\",\n                    \"CA\",\n                },\n                GeoSubdivisionCodes = new[]\n                {\n                    \"US-NY\",\n                    \"CA-ON\",\n                },\n            },\n        },\n    });\n\n    // Example of auth0_network_acl with not-match criteria\n    var myNetworkAclNotMatch = new Auth0.NetworkAcl(\"my_network_acl_not_match\", new()\n    {\n        Description = \"Example with not match network ACL\",\n        Active = true,\n        Priority = 3,\n        Rule = new Auth0.Inputs.NetworkAclRuleArgs\n        {\n            Action = new Auth0.Inputs.NetworkAclRuleActionArgs\n            {\n                Log = true,\n            },\n            Scope = \"authentication\",\n            NotMatch = new Auth0.Inputs.NetworkAclRuleNotMatchArgs\n            {\n                Asns = new[]\n                {\n                    9876,\n                },\n                Ipv4Cidrs = new[]\n                {\n                    \"192.168.1.0/24\",\n                    \"10.0.0.0/8\",\n                },\n                Ipv6Cidrs = new[]\n                {\n                    \"2001:db8::/32\",\n                },\n            },\n        },\n    });\n\n    // Example of auth0_network_acl with hostname and connecting IP restrictions\n    var blockCanonical = new Auth0.NetworkAcl(\"block_canonical\", new()\n    {\n        Description = \"Block canonical domain except from proxy\",\n        Active = true,\n        Priority = 5,\n        Rule = new Auth0.Inputs.NetworkAclRuleArgs\n        {\n            Action = new Auth0.Inputs.NetworkAclRuleActionArgs\n            {\n                Block = true,\n            },\n            Scope = \"tenant\",\n            Match = new Auth0.Inputs.NetworkAclRuleMatchArgs\n            {\n                Hostnames = new[]\n                {\n                    \"mytenant1.us.auth0.com\",\n                },\n                ConnectingIpv6Cidrs = new[]\n                {\n                    \"2001:db8::/32\",\n                    \"::1\",\n                },\n            },\n            NotMatch = new Auth0.Inputs.NetworkAclRuleNotMatchArgs\n            {\n                Hostnames = new[]\n                {\n                    \"mytenant2.us.auth0.com\",\n                },\n                ConnectingIpv4Cidrs = new[]\n                {\n                    \"203.0.113.0/24\",\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Example of auth0_network_acl with match criteria\n\t\t_, err := auth0.NewNetworkAcl(ctx, \"my_network_acl_match\", \u0026auth0.NetworkAclArgs{\n\t\t\tDescription: pulumi.String(\"Example with match network ACL\"),\n\t\t\tActive:      pulumi.Bool(true),\n\t\t\tPriority:    pulumi.Int(1),\n\t\t\tRule: \u0026auth0.NetworkAclRuleArgs{\n\t\t\t\tAction: \u0026auth0.NetworkAclRuleActionArgs{\n\t\t\t\t\tAllow: pulumi.Bool(true),\n\t\t\t\t},\n\t\t\t\tScope: pulumi.String(\"management\"),\n\t\t\t\tMatch: \u0026auth0.NetworkAclRuleMatchArgs{\n\t\t\t\t\tGeoCountryCodes: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"US\"),\n\t\t\t\t\t\tpulumi.String(\"CA\"),\n\t\t\t\t\t},\n\t\t\t\t\tGeoSubdivisionCodes: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"US-NY\"),\n\t\t\t\t\t\tpulumi.String(\"CA-ON\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Example of auth0_network_acl with not-match criteria\n\t\t_, err = auth0.NewNetworkAcl(ctx, \"my_network_acl_not_match\", \u0026auth0.NetworkAclArgs{\n\t\t\tDescription: pulumi.String(\"Example with not match network ACL\"),\n\t\t\tActive:      pulumi.Bool(true),\n\t\t\tPriority:    pulumi.Int(3),\n\t\t\tRule: \u0026auth0.NetworkAclRuleArgs{\n\t\t\t\tAction: \u0026auth0.NetworkAclRuleActionArgs{\n\t\t\t\t\tLog: pulumi.Bool(true),\n\t\t\t\t},\n\t\t\t\tScope: pulumi.String(\"authentication\"),\n\t\t\t\tNotMatch: \u0026auth0.NetworkAclRuleNotMatchArgs{\n\t\t\t\t\tAsns: pulumi.IntArray{\n\t\t\t\t\t\tpulumi.Int(9876),\n\t\t\t\t\t},\n\t\t\t\t\tIpv4Cidrs: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"192.168.1.0/24\"),\n\t\t\t\t\t\tpulumi.String(\"10.0.0.0/8\"),\n\t\t\t\t\t},\n\t\t\t\t\tIpv6Cidrs: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"2001:db8::/32\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Example of auth0_network_acl with hostname and connecting IP restrictions\n\t\t_, err = auth0.NewNetworkAcl(ctx, \"block_canonical\", \u0026auth0.NetworkAclArgs{\n\t\t\tDescription: pulumi.String(\"Block canonical domain except from proxy\"),\n\t\t\tActive:      pulumi.Bool(true),\n\t\t\tPriority:    pulumi.Int(5),\n\t\t\tRule: \u0026auth0.NetworkAclRuleArgs{\n\t\t\t\tAction: \u0026auth0.NetworkAclRuleActionArgs{\n\t\t\t\t\tBlock: pulumi.Bool(true),\n\t\t\t\t},\n\t\t\t\tScope: pulumi.String(\"tenant\"),\n\t\t\t\tMatch: \u0026auth0.NetworkAclRuleMatchArgs{\n\t\t\t\t\tHostnames: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"mytenant1.us.auth0.com\"),\n\t\t\t\t\t},\n\t\t\t\t\tConnectingIpv6Cidrs: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"2001:db8::/32\"),\n\t\t\t\t\t\tpulumi.String(\"::1\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tNotMatch: \u0026auth0.NetworkAclRuleNotMatchArgs{\n\t\t\t\t\tHostnames: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"mytenant2.us.auth0.com\"),\n\t\t\t\t\t},\n\t\t\t\t\tConnectingIpv4Cidrs: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"203.0.113.0/24\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    auth0 = {\n      source = \"pulumi/auth0\"\n    }\n  }\n}\n\n# Example of auth0_network_acl with match criteria\nresource \"auth0_networkacl\" \"my_network_acl_match\" {\n  description = \"Example with match network ACL\"\n  active      = true\n  priority    = 1\n  rule = {\n    action = {\n      allow = true\n    }\n    scope = \"management\"\n    match = {\n      geo_country_codes     = [\"US\", \"CA\"]\n      geo_subdivision_codes = [\"US-NY\", \"CA-ON\"]\n    }\n  }\n}\n# Example of auth0_network_acl with not-match criteria\nresource \"auth0_networkacl\" \"my_network_acl_not_match\" {\n  description = \"Example with not match network ACL\"\n  active      = true\n  priority    = 3\n  rule = {\n    action = {\n      log = true\n    }\n    scope = \"authentication\"\n    not_match = {\n      asns       = [9876]\n      ipv4_cidrs = [\"192.168.1.0/24\", \"10.0.0.0/8\"]\n      ipv6_cidrs = [\"2001:db8::/32\"]\n    }\n  }\n}\n# Example of auth0_network_acl with hostname and connecting IP restrictions\nresource \"auth0_networkacl\" \"block_canonical\" {\n  description = \"Block canonical domain except from proxy\"\n  active      = true\n  priority    = 5\n  rule = {\n    action = {\n      block = true\n    }\n    scope = \"tenant\"\n    match = {\n      hostnames             = [\"mytenant1.us.auth0.com\"]\n      connecting_ipv6_cidrs = [\"2001:db8::/32\", \"::1\"]\n    }\n    not_match = {\n      hostnames             = [\"mytenant2.us.auth0.com\"]\n      connecting_ipv4_cidrs = [\"203.0.113.0/24\"]\n    }\n  }\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.NetworkAcl;\nimport com.pulumi.auth0.NetworkAclArgs;\nimport com.pulumi.auth0.inputs.NetworkAclRuleArgs;\nimport com.pulumi.auth0.inputs.NetworkAclRuleActionArgs;\nimport com.pulumi.auth0.inputs.NetworkAclRuleMatchArgs;\nimport com.pulumi.auth0.inputs.NetworkAclRuleNotMatchArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Example of auth0_network_acl with match criteria\n        var myNetworkAclMatch = new NetworkAcl(\"myNetworkAclMatch\", NetworkAclArgs.builder()\n            .description(\"Example with match network ACL\")\n            .active(true)\n            .priority(1)\n            .rule(NetworkAclRuleArgs.builder()\n                .action(NetworkAclRuleActionArgs.builder()\n                    .allow(true)\n                    .build())\n                .scope(\"management\")\n                .match(NetworkAclRuleMatchArgs.builder()\n                    .geoCountryCodes(                    \n                        \"US\",\n                        \"CA\")\n                    .geoSubdivisionCodes(                    \n                        \"US-NY\",\n                        \"CA-ON\")\n                    .build())\n                .build())\n            .build());\n\n        // Example of auth0_network_acl with not-match criteria\n        var myNetworkAclNotMatch = new NetworkAcl(\"myNetworkAclNotMatch\", NetworkAclArgs.builder()\n            .description(\"Example with not match network ACL\")\n            .active(true)\n            .priority(3)\n            .rule(NetworkAclRuleArgs.builder()\n                .action(NetworkAclRuleActionArgs.builder()\n                    .log(true)\n                    .build())\n                .scope(\"authentication\")\n                .notMatch(NetworkAclRuleNotMatchArgs.builder()\n                    .asns(9876)\n                    .ipv4Cidrs(                    \n                        \"192.168.1.0/24\",\n                        \"10.0.0.0/8\")\n                    .ipv6Cidrs(\"2001:db8::/32\")\n                    .build())\n                .build())\n            .build());\n\n        // Example of auth0_network_acl with hostname and connecting IP restrictions\n        var blockCanonical = new NetworkAcl(\"blockCanonical\", NetworkAclArgs.builder()\n            .description(\"Block canonical domain except from proxy\")\n            .active(true)\n            .priority(5)\n            .rule(NetworkAclRuleArgs.builder()\n                .action(NetworkAclRuleActionArgs.builder()\n                    .block(true)\n                    .build())\n                .scope(\"tenant\")\n                .match(NetworkAclRuleMatchArgs.builder()\n                    .hostnames(\"mytenant1.us.auth0.com\")\n                    .connectingIpv6Cidrs(                    \n                        \"2001:db8::/32\",\n                        \"::1\")\n                    .build())\n                .notMatch(NetworkAclRuleNotMatchArgs.builder()\n                    .hostnames(\"mytenant2.us.auth0.com\")\n                    .connectingIpv4Cidrs(\"203.0.113.0/24\")\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Example of auth0_network_acl with match criteria\n  myNetworkAclMatch:\n    type: auth0:NetworkAcl\n    name: my_network_acl_match\n    properties:\n      description: Example with match network ACL\n      active: true\n      priority: 1\n      rule:\n        action:\n          allow: true\n        scope: management\n        match:\n          geoCountryCodes:\n            - US\n            - CA\n          geoSubdivisionCodes:\n            - US-NY\n            - CA-ON\n  # Example of auth0_network_acl with not-match criteria\n  myNetworkAclNotMatch:\n    type: auth0:NetworkAcl\n    name: my_network_acl_not_match\n    properties:\n      description: Example with not match network ACL\n      active: true\n      priority: 3\n      rule:\n        action:\n          log: true\n        scope: authentication\n        notMatch:\n          asns:\n            - 9876\n          ipv4Cidrs:\n            - 192.168.1.0/24\n            - 10.0.0.0/8\n          ipv6Cidrs:\n            - 2001:db8::/32\n  # Example of auth0_network_acl with hostname and connecting IP restrictions\n  blockCanonical:\n    type: auth0:NetworkAcl\n    name: block_canonical\n    properties:\n      description: Block canonical domain except from proxy\n      active: true\n      priority: 5\n      rule:\n        action:\n          block: true\n        scope: tenant\n        match:\n          hostnames:\n            - mytenant1.us.auth0.com\n          connectingIpv6Cidrs:\n            - 2001:db8::/32\n            - ::1\n        notMatch:\n          hostnames:\n            - mytenant2.us.auth0.com\n          connectingIpv4Cidrs:\n            - 203.0.113.0/24\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThis resource can be imported using the network acl ID.\n\nExample:\n\n```sh\n$ pulumi import auth0:index/networkAcl:NetworkAcl my_network_acl \"167f9a50-4444-3333-1111-ndfdaf953ab4\"\n```\n\n",
             "properties": {
                 "active": {
                     "type": "boolean",
@@ -24213,6 +24344,10 @@
                     "name": {
                         "type": "string",
                         "description": "The name of the connection. If not provided, \u003cspan pulumi-lang-nodejs=\"`connectionId`\" pulumi-lang-dotnet=\"`ConnectionId`\" pulumi-lang-go=\"`connectionId`\" pulumi-lang-python=\"`connection_id`\" pulumi-lang-yaml=\"`connectionId`\" pulumi-lang-java=\"`connectionId`\" pulumi-lang-hcl=\"`connection_id`\"\u003e`connectionId`\u003c/span\u003e must be set.\n"
+                    },
+                    "skipEnabledClients": {
+                        "type": "boolean",
+                        "description": "Whether to skip enabled clients for this connection. Setting this to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\" pulumi-lang-hcl=\"`true`\"\u003e`true`\u003c/span\u003e will skip additional paginated API calls to /api/v2/connections/{id}/clients. Default: \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e.\n"
                     }
                 },
                 "type": "object"
@@ -24243,7 +24378,7 @@
                         "type": "string"
                     },
                     "enabledClients": {
-                        "description": "IDs of the clients for which the connection is enabled.\n",
+                        "description": "IDs of the clients for which the connection is enabled. Skips populating if \u003cspan pulumi-lang-nodejs=\"`skipEnabledClients`\" pulumi-lang-dotnet=\"`SkipEnabledClients`\" pulumi-lang-go=\"`skipEnabledClients`\" pulumi-lang-python=\"`skip_enabled_clients`\" pulumi-lang-yaml=\"`skipEnabledClients`\" pulumi-lang-java=\"`skipEnabledClients`\" pulumi-lang-hcl=\"`skip_enabled_clients`\"\u003e`skipEnabledClients`\u003c/span\u003e is \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\" pulumi-lang-hcl=\"`true`\"\u003e`true`\u003c/span\u003e.\n",
                         "items": {
                             "type": "string"
                         },
@@ -24284,6 +24419,10 @@
                     },
                     "showAsButton": {
                         "description": "Display connection as a button. Only available on enterprise connections.\n",
+                        "type": "boolean"
+                    },
+                    "skipEnabledClients": {
+                        "description": "Whether to skip enabled clients for this connection. Setting this to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\" pulumi-lang-hcl=\"`true`\"\u003e`true`\u003c/span\u003e will skip additional paginated API calls to /api/v2/connections/{id}/clients. Default: \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e.\n",
                         "type": "boolean"
                     },
                     "strategy": {
@@ -25135,6 +25274,18 @@
                     "organizationId": {
                         "type": "string",
                         "description": "The ID of the organization. If not provided, \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\" pulumi-lang-hcl=\"`name`\"\u003e`name`\u003c/span\u003e must be set.\n"
+                    },
+                    "skipClientGrants": {
+                        "type": "boolean",
+                        "description": "Whether to skip organization client grants. Setting this to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\" pulumi-lang-hcl=\"`true`\"\u003e`true`\u003c/span\u003e will skip API call to /api/v2/organizations/{id}/client-grants.\n"
+                    },
+                    "skipConnections": {
+                        "type": "boolean",
+                        "description": "Whether to skip organization connections. Setting this to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\" pulumi-lang-hcl=\"`true`\"\u003e`true`\u003c/span\u003e will skip paginated API calls to /api/v2/organizations/{id}/connections.\n"
+                    },
+                    "skipMembers": {
+                        "type": "boolean",
+                        "description": "Whether to skip organization members. Setting this to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\" pulumi-lang-hcl=\"`true`\"\u003e`true`\u003c/span\u003e will skip paginated API calls to /api/v2/organizations/{id}/members.\n"
                     }
                 },
                 "type": "object"
@@ -25150,13 +25301,14 @@
                         "type": "array"
                     },
                     "clientGrants": {
-                        "description": "Client Grant ID(s) that are associated to the organization.\n",
+                        "description": "Client Grant ID(s) that are associated to the organization. Skips populating if \u003cspan pulumi-lang-nodejs=\"`skipClientGrants`\" pulumi-lang-dotnet=\"`SkipClientGrants`\" pulumi-lang-go=\"`skipClientGrants`\" pulumi-lang-python=\"`skip_client_grants`\" pulumi-lang-yaml=\"`skipClientGrants`\" pulumi-lang-java=\"`skipClientGrants`\" pulumi-lang-hcl=\"`skip_client_grants`\"\u003e`skipClientGrants`\u003c/span\u003e is \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\" pulumi-lang-hcl=\"`true`\"\u003e`true`\u003c/span\u003e.\n",
                         "items": {
                             "type": "string"
                         },
                         "type": "array"
                     },
                     "connections": {
+                        "description": "Connections enabled for this organization. Skips populating if \u003cspan pulumi-lang-nodejs=\"`skipConnections`\" pulumi-lang-dotnet=\"`SkipConnections`\" pulumi-lang-go=\"`skipConnections`\" pulumi-lang-python=\"`skip_connections`\" pulumi-lang-yaml=\"`skipConnections`\" pulumi-lang-java=\"`skipConnections`\" pulumi-lang-hcl=\"`skip_connections`\"\u003e`skipConnections`\u003c/span\u003e is \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\" pulumi-lang-hcl=\"`true`\"\u003e`true`\u003c/span\u003e.\n",
                         "items": {
                             "$ref": "#/types/auth0:index/getOrganizationConnection:getOrganizationConnection"
                         },
@@ -25171,7 +25323,7 @@
                         "type": "string"
                     },
                     "members": {
-                        "description": "User ID(s) that are members of the organization.\n",
+                        "description": "User ID(s) that are members of the organization. Skips populating if \u003cspan pulumi-lang-nodejs=\"`skipMembers`\" pulumi-lang-dotnet=\"`SkipMembers`\" pulumi-lang-go=\"`skipMembers`\" pulumi-lang-python=\"`skip_members`\" pulumi-lang-yaml=\"`skipMembers`\" pulumi-lang-java=\"`skipMembers`\" pulumi-lang-hcl=\"`skip_members`\"\u003e`skipMembers`\u003c/span\u003e is \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\" pulumi-lang-hcl=\"`true`\"\u003e`true`\u003c/span\u003e.\n",
                         "items": {
                             "type": "string"
                         },
@@ -25191,6 +25343,18 @@
                     "organizationId": {
                         "description": "The ID of the organization. If not provided, \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\" pulumi-lang-hcl=\"`name`\"\u003e`name`\u003c/span\u003e must be set.\n",
                         "type": "string"
+                    },
+                    "skipClientGrants": {
+                        "description": "Whether to skip organization client grants. Setting this to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\" pulumi-lang-hcl=\"`true`\"\u003e`true`\u003c/span\u003e will skip API call to /api/v2/organizations/{id}/client-grants.\n",
+                        "type": "boolean"
+                    },
+                    "skipConnections": {
+                        "description": "Whether to skip organization connections. Setting this to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\" pulumi-lang-hcl=\"`true`\"\u003e`true`\u003c/span\u003e will skip paginated API calls to /api/v2/organizations/{id}/connections.\n",
+                        "type": "boolean"
+                    },
+                    "skipMembers": {
+                        "description": "Whether to skip organization members. Setting this to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\" pulumi-lang-hcl=\"`true`\"\u003e`true`\u003c/span\u003e will skip paginated API calls to /api/v2/organizations/{id}/members.\n",
+                        "type": "boolean"
                     },
                     "tokenQuotas": {
                         "description": "The token quota configuration.\n",
@@ -25727,6 +25891,14 @@
                     "roleId": {
                         "type": "string",
                         "description": "The ID of the role. If not provided, \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\" pulumi-lang-hcl=\"`name`\"\u003e`name`\u003c/span\u003e must be set.\n"
+                    },
+                    "skipPermissions": {
+                        "type": "boolean",
+                        "description": "Whether to skip role permissions. Setting this to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\" pulumi-lang-hcl=\"`true`\"\u003e`true`\u003c/span\u003e will skip paginated API calls to /api/v2/roles/{id}/permissions.\n"
+                    },
+                    "skipUsers": {
+                        "type": "boolean",
+                        "description": "Whether to skip users assigned to this role (max 1000). Setting this to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\" pulumi-lang-hcl=\"`true`\"\u003e`true`\u003c/span\u003e will skip paginated API calls to /api/v2/roles/{id}/users.\n"
                     }
                 },
                 "type": "object"
@@ -25747,7 +25919,7 @@
                         "type": "string"
                     },
                     "permissions": {
-                        "description": "Configuration settings for permissions (scopes) attached to the role.\n",
+                        "description": "Configuration settings for permissions (scopes) attached to the role. Skips populating if \u003cspan pulumi-lang-nodejs=\"`skipPermissions`\" pulumi-lang-dotnet=\"`SkipPermissions`\" pulumi-lang-go=\"`skipPermissions`\" pulumi-lang-python=\"`skip_permissions`\" pulumi-lang-yaml=\"`skipPermissions`\" pulumi-lang-java=\"`skipPermissions`\" pulumi-lang-hcl=\"`skip_permissions`\"\u003e`skipPermissions`\u003c/span\u003e is \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\" pulumi-lang-hcl=\"`true`\"\u003e`true`\u003c/span\u003e.\n",
                         "items": {
                             "$ref": "#/types/auth0:index/getRolePermission:getRolePermission"
                         },
@@ -25757,8 +25929,16 @@
                         "description": "The ID of the role. If not provided, \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\" pulumi-lang-hcl=\"`name`\"\u003e`name`\u003c/span\u003e must be set.\n",
                         "type": "string"
                     },
+                    "skipPermissions": {
+                        "description": "Whether to skip role permissions. Setting this to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\" pulumi-lang-hcl=\"`true`\"\u003e`true`\u003c/span\u003e will skip paginated API calls to /api/v2/roles/{id}/permissions.\n",
+                        "type": "boolean"
+                    },
+                    "skipUsers": {
+                        "description": "Whether to skip users assigned to this role (max 1000). Setting this to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\" pulumi-lang-hcl=\"`true`\"\u003e`true`\u003c/span\u003e will skip paginated API calls to /api/v2/roles/{id}/users.\n",
+                        "type": "boolean"
+                    },
                     "users": {
-                        "description": "List of user IDs assigned to this role. Retrieves a maximum of 1000 user IDs.\n",
+                        "description": "List of user IDs assigned to this role. Retrieves a maximum of 1000 user IDs. Skips populating if \u003cspan pulumi-lang-nodejs=\"`skipUsers`\" pulumi-lang-dotnet=\"`SkipUsers`\" pulumi-lang-go=\"`skipUsers`\" pulumi-lang-python=\"`skip_users`\" pulumi-lang-yaml=\"`skipUsers`\" pulumi-lang-java=\"`skipUsers`\" pulumi-lang-hcl=\"`skip_users`\"\u003e`skipUsers`\u003c/span\u003e is \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\" pulumi-lang-hcl=\"`true`\"\u003e`true`\u003c/span\u003e.\n",
                         "items": {
                             "type": "string"
                         },
@@ -26159,6 +26339,14 @@
                         "type": "string",
                         "description": "Lucene Query for retrieving a user.\n"
                     },
+                    "skipPermissions": {
+                        "type": "boolean",
+                        "description": "Whether to skip user permissions. Setting this to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\" pulumi-lang-hcl=\"`true`\"\u003e`true`\u003c/span\u003e will skips paginated API calls to /api/v2/users/{id}/permissions. Default: \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e to optimize performance and reduce rate limit consumption.\n"
+                    },
+                    "skipRoles": {
+                        "type": "boolean",
+                        "description": "Whether to skip user roles. Setting this to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\" pulumi-lang-hcl=\"`true`\"\u003e`true`\u003c/span\u003e will skips paginated API calls to /api/v2/users/{id}/roles. Default: \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e to optimize performance and reduce rate limit consumption.\n"
+                    },
                     "userId": {
                         "type": "string",
                         "description": "ID of the user.\n"
@@ -26218,7 +26406,7 @@
                         "type": "string"
                     },
                     "permissions": {
-                        "description": "List of API permissions granted to the user.\n",
+                        "description": "List of API permissions granted to the user. Skips if \u003cspan pulumi-lang-nodejs=\"`skipPermissions`\" pulumi-lang-dotnet=\"`SkipPermissions`\" pulumi-lang-go=\"`skipPermissions`\" pulumi-lang-python=\"`skip_permissions`\" pulumi-lang-yaml=\"`skipPermissions`\" pulumi-lang-java=\"`skipPermissions`\" pulumi-lang-hcl=\"`skip_permissions`\"\u003e`skipPermissions`\u003c/span\u003e is \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\" pulumi-lang-hcl=\"`true`\"\u003e`true`\u003c/span\u003e. When \u003cspan pulumi-lang-nodejs=\"`skipPermissions`\" pulumi-lang-dotnet=\"`SkipPermissions`\" pulumi-lang-go=\"`skipPermissions`\" pulumi-lang-python=\"`skip_permissions`\" pulumi-lang-yaml=\"`skipPermissions`\" pulumi-lang-java=\"`skipPermissions`\" pulumi-lang-hcl=\"`skip_permissions`\"\u003e`skipPermissions`\u003c/span\u003e is \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\" pulumi-lang-hcl=\"`true`\"\u003e`true`\u003c/span\u003e (default), this will be an empty set to optimize performance and reduce rate limit consumption.\n",
                         "items": {
                             "$ref": "#/types/auth0:index/getUserPermission:getUserPermission"
                         },
@@ -26241,11 +26429,19 @@
                         "type": "string"
                     },
                     "roles": {
-                        "description": "Set of IDs of roles assigned to the user.\n",
+                        "description": "Set of IDs of roles assigned to the user. Skips if \u003cspan pulumi-lang-nodejs=\"`skipRoles`\" pulumi-lang-dotnet=\"`SkipRoles`\" pulumi-lang-go=\"`skipRoles`\" pulumi-lang-python=\"`skip_roles`\" pulumi-lang-yaml=\"`skipRoles`\" pulumi-lang-java=\"`skipRoles`\" pulumi-lang-hcl=\"`skip_roles`\"\u003e`skipRoles`\u003c/span\u003e is \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\" pulumi-lang-hcl=\"`true`\"\u003e`true`\u003c/span\u003e. When \u003cspan pulumi-lang-nodejs=\"`skipRoles`\" pulumi-lang-dotnet=\"`SkipRoles`\" pulumi-lang-go=\"`skipRoles`\" pulumi-lang-python=\"`skip_roles`\" pulumi-lang-yaml=\"`skipRoles`\" pulumi-lang-java=\"`skipRoles`\" pulumi-lang-hcl=\"`skip_roles`\"\u003e`skipRoles`\u003c/span\u003e is \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\" pulumi-lang-hcl=\"`true`\"\u003e`true`\u003c/span\u003e (default), this will be an empty set to optimize performance and reduce rate limit consumption.\n",
                         "items": {
                             "type": "string"
                         },
                         "type": "array"
+                    },
+                    "skipPermissions": {
+                        "description": "Whether to skip user permissions. Setting this to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\" pulumi-lang-hcl=\"`true`\"\u003e`true`\u003c/span\u003e will skips paginated API calls to /api/v2/users/{id}/permissions. Default: \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e to optimize performance and reduce rate limit consumption.\n",
+                        "type": "boolean"
+                    },
+                    "skipRoles": {
+                        "description": "Whether to skip user roles. Setting this to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\" pulumi-lang-hcl=\"`true`\"\u003e`true`\u003c/span\u003e will skips paginated API calls to /api/v2/users/{id}/roles. Default: \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e to optimize performance and reduce rate limit consumption.\n",
+                        "type": "boolean"
                     },
                     "userId": {
                         "description": "ID of the user.\n",
