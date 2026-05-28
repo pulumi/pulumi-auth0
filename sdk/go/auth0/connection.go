@@ -923,7 +923,7 @@ import (
 //
 // ### Okta Connection
 //
-// !> When configuring an Okta Workforce connection, the `scopes` attribute must be explicitly set. If omitted, the connection may not function correctly.
+// > When configuring an Okta Workforce connection, the `scopes` attribute must be explicitly set. If omitted, the connection may not function correctly.
 // To ensure proper behavior, always specify:  `scopes = ["openid", "profile", "email"]`
 //
 // ```go

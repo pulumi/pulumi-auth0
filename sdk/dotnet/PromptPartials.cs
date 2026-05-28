@@ -12,7 +12,7 @@ namespace Pulumi.Auth0
     /// <summary>
     /// With this resource, you can manage a customized sign up and login experience by adding custom content, form elements and css/javascript. You can read more about this [here](https://auth0.com/docs/customize/universal-login-pages/customize-signup-and-login-prompts).
     /// 
-    /// !&gt; **Deprecated:** `auth0.PromptPartials` has been deprecated. Please use `auth0.PromptScreenPartials` for managing multiple
+    /// &gt; **Deprecated:** `auth0.PromptPartials` has been deprecated. Please use `auth0.PromptScreenPartials` for managing multiple
     /// prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen.
     /// 
     /// ## Example Usage

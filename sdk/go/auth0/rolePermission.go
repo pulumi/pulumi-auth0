@@ -14,7 +14,7 @@ import (
 
 // With this resource, you can manage role permissions (1-1).
 //
-// !> This resource appends a permission to a role. In contrast, the `RolePermissions` resource manages all the
+// > This resource appends a permission to a role. In contrast, the `RolePermissions` resource manages all the
 // permissions assigned to a role. To avoid potential issues, it is recommended not to use this resource in conjunction
 // with the `RolePermissions` resource when managing permissions for the same role id.
 //

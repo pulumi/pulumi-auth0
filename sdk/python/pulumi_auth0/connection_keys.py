@@ -292,7 +292,7 @@ class ConnectionKeys(pulumi.CustomResource):
         """
         Client Assertion JWT is a more secure alternative to client secret authentication for OIDC and Okta Workforce connections. It uses a signed JWT instead of a shared secret to authenticate the client. The resource only supports key rotation. Use the ConnectionKeys data source to read existing keys. Removing the resource from configuration will NOT DELETE the key.
 
-        !> The triggers field is only a placeholder for an arbitrary map used to signal the provider
+        > The triggers field is only a placeholder for an arbitrary map used to signal the provider
         to perform a key rotation whenever any update is made.
         If the resource is removed from the configuration, the keys will not be deleted.
 
@@ -343,7 +343,7 @@ class ConnectionKeys(pulumi.CustomResource):
         """
         Client Assertion JWT is a more secure alternative to client secret authentication for OIDC and Okta Workforce connections. It uses a signed JWT instead of a shared secret to authenticate the client. The resource only supports key rotation. Use the ConnectionKeys data source to read existing keys. Removing the resource from configuration will NOT DELETE the key.
 
-        !> The triggers field is only a placeholder for an arbitrary map used to signal the provider
+        > The triggers field is only a placeholder for an arbitrary map used to signal the provider
         to perform a key rotation whenever any update is made.
         If the resource is removed from the configuration, the keys will not be deleted.
 

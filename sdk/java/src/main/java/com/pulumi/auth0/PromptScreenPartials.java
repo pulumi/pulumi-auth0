@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
 /**
  * With this resource, you can manage a customized sign up and login experience by adding custom content, form elements and css/javascript. You can read more about this [here](https://auth0.com/docs/customize/universal-login-pages/customize-signup-and-login-prompts).
  * 
- * !&gt; This resource manages the entire set of prompt screens enabled for a prompt. In contrast, the `auth0.PromptScreenPartial`
+ * &gt; This resource manages the entire set of prompt screens enabled for a prompt. In contrast, the `auth0.PromptScreenPartial`
  * resource appends a specific prompt screen to the list of prompt screens displayed to the user during the authentication flow.
  *  To avoid potential issues, it is recommended not to use this resource in conjunction with the `auth0.PromptScreenPartial`
  *  resource when managing prompt screens for the same prompt.

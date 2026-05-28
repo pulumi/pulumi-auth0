@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 /**
  * With this resource, you can manage all of the enabled clients on a connection.
  *
- * !> This resource manages all the enabled clients for a connection. In contrast, the `auth0.ConnectionClient` resource
+ * > This resource manages all the enabled clients for a connection. In contrast, the `auth0.ConnectionClient` resource
  * appends an enabled client to a connection. To avoid potential issues, it is recommended not to use this
  * resource in conjunction with the `auth0.ConnectionClient` resource when managing enabled clients for the same
  * connection id.

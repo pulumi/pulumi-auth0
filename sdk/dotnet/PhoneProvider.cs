@@ -12,10 +12,10 @@ namespace Pulumi.Auth0
     /// <summary>
     /// Auth0 allows you to configure your own phone messaging provider to help you manage, monitor, and troubleshoot your SMS and voice communications. You can only configure one phone provider for all SMS and voice communications per tenant.
     /// 
-    /// !&gt; This resource manages to create a max of 1 phone provider for a tenant.
+    /// &gt; This resource manages to create a max of 1 phone provider for a tenant.
     /// To avoid potential issues, it is recommended not to try creating multiple phone providers on the same tenant.
     /// 
-    /// !&gt; If you are using the `auth0.PhoneProvider` resource to create a `Custom` phone provider, you must ensure an action is created first with `custom-phone-provider` as the SupportedTriggers
+    /// &gt; If you are using the `auth0.PhoneProvider` resource to create a `Custom` phone provider, you must ensure an action is created first with `custom-phone-provider` as the SupportedTriggers
     /// 
     /// ## Example Usage
     /// 

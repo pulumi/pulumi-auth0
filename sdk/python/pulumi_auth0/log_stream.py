@@ -308,7 +308,7 @@ class LogStream(pulumi.CustomResource):
         """
         With this resource, you can manage your Auth0 log streams.
 
-        !> isPriority is a field that can be set while the resource is being created.
+        > isPriority is a field that can be set while the resource is being created.
         This cannot be updated once set. Updating the value might result in a noisy plan.
 
         ## Example Usage
@@ -383,7 +383,7 @@ class LogStream(pulumi.CustomResource):
         """
         With this resource, you can manage your Auth0 log streams.
 
-        !> isPriority is a field that can be set while the resource is being created.
+        > isPriority is a field that can be set while the resource is being created.
         This cannot be updated once set. Updating the value might result in a noisy plan.
 
         ## Example Usage

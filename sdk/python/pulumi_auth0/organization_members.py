@@ -108,7 +108,7 @@ class OrganizationMembers(pulumi.CustomResource):
         """
         This resource is used to manage members of an organization.
 
-        !> This resource manages all the members assigned to an organization. In contrast, the `OrganizationMember`
+        > This resource manages all the members assigned to an organization. In contrast, the `OrganizationMember`
         resource only appends a member to an organization. To avoid potential issues, it is recommended not to use this
         resource in conjunction with the `OrganizationMember` resource when managing members for the same organization
         id.
@@ -163,7 +163,7 @@ class OrganizationMembers(pulumi.CustomResource):
         """
         This resource is used to manage members of an organization.
 
-        !> This resource manages all the members assigned to an organization. In contrast, the `OrganizationMember`
+        > This resource manages all the members assigned to an organization. In contrast, the `OrganizationMember`
         resource only appends a member to an organization. To avoid potential issues, it is recommended not to use this
         resource in conjunction with the `OrganizationMember` resource when managing members for the same organization
         id.

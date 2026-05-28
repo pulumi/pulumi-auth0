@@ -9,10 +9,10 @@ import * as utilities from "./utilities";
 /**
  * With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right into Auth0. This resource allows you to configure email providers, so you can route all emails that are part of Auth0's authentication workflows through the supported high-volume email service of your choice.
  *
- * !> This resource manages to create a max of 1 email provider for a tenant.
+ * > This resource manages to create a max of 1 email provider for a tenant.
  * To avoid potential issues, it is recommended not to try creating multiple email providers on the same tenant.
  *
- * !> If you are using the `auth0.EmailProvider` resource to create a `custom` email provider, you must ensure an action is created first with `custom-email-provider` as the supportedTriggers
+ * > If you are using the `auth0.EmailProvider` resource to create a `custom` email provider, you must ensure an action is created first with `custom-email-provider` as the supportedTriggers
  *
  * ## Example Usage
  *

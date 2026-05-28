@@ -12,7 +12,7 @@ namespace Pulumi.Auth0
     /// <summary>
     /// This resource is used to manage members of an organization.
     /// 
-    /// !&gt; This resource manages all the members assigned to an organization. In contrast, the `auth0.OrganizationMember`
+    /// &gt; This resource manages all the members assigned to an organization. In contrast, the `auth0.OrganizationMember`
     /// resource only appends a member to an organization. To avoid potential issues, it is recommended not to use this
     /// resource in conjunction with the `auth0.OrganizationMember` resource when managing members for the same organization
     /// id.

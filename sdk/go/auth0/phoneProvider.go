@@ -14,10 +14,10 @@ import (
 
 // Auth0 allows you to configure your own phone messaging provider to help you manage, monitor, and troubleshoot your SMS and voice communications. You can only configure one phone provider for all SMS and voice communications per tenant.
 //
-// !> This resource manages to create a max of 1 phone provider for a tenant.
+// > This resource manages to create a max of 1 phone provider for a tenant.
 // To avoid potential issues, it is recommended not to try creating multiple phone providers on the same tenant.
 //
-// !> If you are using the `PhoneProvider` resource to create a `custom` phone provider, you must ensure an action is created first with `custom-phone-provider` as the supportedTriggers
+// > If you are using the `PhoneProvider` resource to create a `custom` phone provider, you must ensure an action is created first with `custom-phone-provider` as the supportedTriggers
 //
 // ## Example Usage
 //

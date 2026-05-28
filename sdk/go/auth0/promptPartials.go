@@ -14,7 +14,7 @@ import (
 
 // With this resource, you can manage a customized sign up and login experience by adding custom content, form elements and css/javascript. You can read more about this [here](https://auth0.com/docs/customize/universal-login-pages/customize-signup-and-login-prompts).
 //
-// !> **Deprecated:** `PromptPartials` has been deprecated. Please use `PromptScreenPartials` for managing multiple
+// > **Deprecated:** `PromptPartials` has been deprecated. Please use `PromptScreenPartials` for managing multiple
 // prompt screens or `PromptScreenPartial` for managing a single prompt screen.
 //
 // ## Example Usage

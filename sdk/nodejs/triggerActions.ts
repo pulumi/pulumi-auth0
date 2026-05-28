@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 /**
  * With this resource, you can bind actions to a trigger. Once actions are created and deployed, they can be attached (i.e. bound) to a trigger so that it will be executed as part of a flow. The list of actions reflects the order in which they will be executed during the appropriate flow.
  *
- * !> This resource manages all the action bindings to a trigger. In contrast, the `auth0.TriggerAction` resource only
+ * > This resource manages all the action bindings to a trigger. In contrast, the `auth0.TriggerAction` resource only
  * appends an action to the trigger binding. To avoid potential issues, it is recommended not to use this resource in
  * conjunction with the `auth0.TriggerAction` resource when binding actions to the same trigger.
  *
