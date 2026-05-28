@@ -12,7 +12,7 @@ namespace Pulumi.Auth0
     /// <summary>
     /// With this resource, you can manage enabled connections on an organization.
     /// 
-    /// !&gt; This resource appends a connection to an organization. In contrast, the `auth0.OrganizationConnections` resource
+    /// &gt; This resource appends a connection to an organization. In contrast, the `auth0.OrganizationConnections` resource
     /// manages all the connections enabled for an organization. To avoid potential issues, it is recommended not to use this
     /// resource in conjunction with the `auth0.OrganizationConnections` resource when managing enabled connections for the
     /// same organization id.

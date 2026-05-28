@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 /**
  * With this resource, you can manage a customized sign up and login experience by adding custom content, form elements and css/javascript. You can read more about this [here](https://auth0.com/docs/customize/universal-login-pages/customize-signup-and-login-prompts).
  *
- * !> This resource appends a specific prompt screen to the list of prompt screens displayed to the user during the authentication flow.
+ * > This resource appends a specific prompt screen to the list of prompt screens displayed to the user during the authentication flow.
  *  In contrast, the `auth0.PromptScreenPartials` resource manages the complete set of prompt screens that are displayed during the
  *  authentication flow. To avoid potential issues, it is recommended not to use this resource in conjunction with the
  *  `auth0.PromptScreenPartials` resource when managing prompt screens for the same prompt.

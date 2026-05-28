@@ -108,7 +108,7 @@ class UserRoles(pulumi.CustomResource):
         """
         With this resource, you can manage assigned roles for a user.
 
-        !> This resource manages all the roles assigned to a user. In contrast, the `UserRole` resource only appends a
+        > This resource manages all the roles assigned to a user. In contrast, the `UserRole` resource only appends a
         role to a user. To avoid potential issues, it is recommended not to use this resource in conjunction with the
         `UserRole` resource when managing roles for the same user id.
 
@@ -159,7 +159,7 @@ class UserRoles(pulumi.CustomResource):
         """
         With this resource, you can manage assigned roles for a user.
 
-        !> This resource manages all the roles assigned to a user. In contrast, the `UserRole` resource only appends a
+        > This resource manages all the roles assigned to a user. In contrast, the `UserRole` resource only appends a
         role to a user. To avoid potential issues, it is recommended not to use this resource in conjunction with the
         `UserRole` resource when managing roles for the same user id.
 

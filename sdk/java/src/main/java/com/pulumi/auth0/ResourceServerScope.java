@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 /**
  * With this resource, you can manage scopes (permissions) associated with a resource server (API).
  * 
- * !&gt; This resource appends a scope to a resource server. In contrast, the `auth0.ResourceServerScopes` resource manages
+ * &gt; This resource appends a scope to a resource server. In contrast, the `auth0.ResourceServerScopes` resource manages
  * all the scopes assigned to a resource server. To avoid potential issues, it is recommended not to use this resource in
  * conjunction with the `auth0.ResourceServerScopes` resource when managing scopes for the same resource server id.
  * 

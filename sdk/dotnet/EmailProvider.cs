@@ -12,10 +12,10 @@ namespace Pulumi.Auth0
     /// <summary>
     /// With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right into Auth0. This resource allows you to configure email providers, so you can route all emails that are part of Auth0's authentication workflows through the supported high-volume email service of your choice.
     /// 
-    /// !&gt; This resource manages to create a max of 1 email provider for a tenant.
+    /// &gt; This resource manages to create a max of 1 email provider for a tenant.
     /// To avoid potential issues, it is recommended not to try creating multiple email providers on the same tenant.
     /// 
-    /// !&gt; If you are using the `auth0.EmailProvider` resource to create a `Custom` email provider, you must ensure an action is created first with `custom-email-provider` as the SupportedTriggers
+    /// &gt; If you are using the `auth0.EmailProvider` resource to create a `Custom` email provider, you must ensure an action is created first with `custom-email-provider` as the SupportedTriggers
     /// 
     /// ## Example Usage
     /// 

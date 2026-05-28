@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
  *
  * Ordering of an action within a specific flow is not currently supported when using this resource; the action will get appended to the end of the flow. To precisely manage ordering, it is advised to either do so with the dashboard UI or with the `auth0TriggerBindings` resource.
  *
- * !> This resource appends an action to the trigger binding. In contrast, the `auth0.TriggerActions` resource manages all
+ * > This resource appends an action to the trigger binding. In contrast, the `auth0.TriggerActions` resource manages all
  * the action bindings to a trigger. To avoid potential issues, it is recommended not to use this resource in conjunction
  * with the `auth0.TriggerAction` resource when binding actions to the same trigger.
  *
