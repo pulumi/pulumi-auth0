@@ -68,11 +68,11 @@ export class SelfServiceProfileCustomText extends pulumi.CustomResource {
      */
     declare public readonly body: pulumi.Output<string>;
     /**
-     * The language of the custom text
+     * The language of the custom text. Options include: `en`
      */
     declare public readonly language: pulumi.Output<string>;
     /**
-     * The page where the custom text is shown
+     * The page where the custom text is shown. Options include: `get-started`
      */
     declare public readonly page: pulumi.Output<string>;
     /**
@@ -130,11 +130,11 @@ export interface SelfServiceProfileCustomTextState {
      */
     body?: pulumi.Input<string | undefined>;
     /**
-     * The language of the custom text
+     * The language of the custom text. Options include: `en`
      */
     language?: pulumi.Input<string | undefined>;
     /**
-     * The page where the custom text is shown
+     * The page where the custom text is shown. Options include: `get-started`
      */
     page?: pulumi.Input<string | undefined>;
     /**
@@ -152,11 +152,11 @@ export interface SelfServiceProfileCustomTextArgs {
      */
     body: pulumi.Input<string>;
     /**
-     * The language of the custom text
+     * The language of the custom text. Options include: `en`
      */
     language: pulumi.Input<string>;
     /**
-     * The page where the custom text is shown
+     * The page where the custom text is shown. Options include: `get-started`
      */
     page: pulumi.Input<string>;
     /**

@@ -369,6 +369,175 @@ func (o GetUserAttributeProfileUserIdStrategyOverrideArrayOutput) Index(i pulumi
 	}).(GetUserAttributeProfileUserIdStrategyOverrideOutput)
 }
 
+type GetUserConnectedAccountsConnectedAccount struct {
+	// The access type for the connected account.
+	AccessType string `pulumi:"accessType"`
+	// The name of the connection associated with the account.
+	Connection string `pulumi:"connection"`
+	// The unique identifier of the connection associated with the account.
+	ConnectionId string `pulumi:"connectionId"`
+	// ISO 8601 timestamp when the connected account was created.
+	CreatedAt string `pulumi:"createdAt"`
+	// ISO 8601 timestamp when the connected account expires. Empty string if not set.
+	ExpiresAt string `pulumi:"expiresAt"`
+	// The unique identifier for the connected account.
+	Id string `pulumi:"id"`
+	// The identifier of the organization associated with the connected account. Empty string if not set.
+	OrganizationId string `pulumi:"organizationId"`
+	// The scopes granted for this connected account.
+	Scopes []string `pulumi:"scopes"`
+	// The authentication strategy used by the connection.
+	Strategy string `pulumi:"strategy"`
+}
+
+// GetUserConnectedAccountsConnectedAccountInput is an input type that accepts GetUserConnectedAccountsConnectedAccountArgs and GetUserConnectedAccountsConnectedAccountOutput values.
+// You can construct a concrete instance of `GetUserConnectedAccountsConnectedAccountInput` via:
+//
+//	GetUserConnectedAccountsConnectedAccountArgs{...}
+type GetUserConnectedAccountsConnectedAccountInput interface {
+	pulumi.Input
+
+	ToGetUserConnectedAccountsConnectedAccountOutput() GetUserConnectedAccountsConnectedAccountOutput
+	ToGetUserConnectedAccountsConnectedAccountOutputWithContext(context.Context) GetUserConnectedAccountsConnectedAccountOutput
+}
+
+type GetUserConnectedAccountsConnectedAccountArgs struct {
+	// The access type for the connected account.
+	AccessType pulumi.StringInput `pulumi:"accessType"`
+	// The name of the connection associated with the account.
+	Connection pulumi.StringInput `pulumi:"connection"`
+	// The unique identifier of the connection associated with the account.
+	ConnectionId pulumi.StringInput `pulumi:"connectionId"`
+	// ISO 8601 timestamp when the connected account was created.
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// ISO 8601 timestamp when the connected account expires. Empty string if not set.
+	ExpiresAt pulumi.StringInput `pulumi:"expiresAt"`
+	// The unique identifier for the connected account.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The identifier of the organization associated with the connected account. Empty string if not set.
+	OrganizationId pulumi.StringInput `pulumi:"organizationId"`
+	// The scopes granted for this connected account.
+	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
+	// The authentication strategy used by the connection.
+	Strategy pulumi.StringInput `pulumi:"strategy"`
+}
+
+func (GetUserConnectedAccountsConnectedAccountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUserConnectedAccountsConnectedAccount)(nil)).Elem()
+}
+
+func (i GetUserConnectedAccountsConnectedAccountArgs) ToGetUserConnectedAccountsConnectedAccountOutput() GetUserConnectedAccountsConnectedAccountOutput {
+	return i.ToGetUserConnectedAccountsConnectedAccountOutputWithContext(context.Background())
+}
+
+func (i GetUserConnectedAccountsConnectedAccountArgs) ToGetUserConnectedAccountsConnectedAccountOutputWithContext(ctx context.Context) GetUserConnectedAccountsConnectedAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUserConnectedAccountsConnectedAccountOutput)
+}
+
+// GetUserConnectedAccountsConnectedAccountArrayInput is an input type that accepts GetUserConnectedAccountsConnectedAccountArray and GetUserConnectedAccountsConnectedAccountArrayOutput values.
+// You can construct a concrete instance of `GetUserConnectedAccountsConnectedAccountArrayInput` via:
+//
+//	GetUserConnectedAccountsConnectedAccountArray{ GetUserConnectedAccountsConnectedAccountArgs{...} }
+type GetUserConnectedAccountsConnectedAccountArrayInput interface {
+	pulumi.Input
+
+	ToGetUserConnectedAccountsConnectedAccountArrayOutput() GetUserConnectedAccountsConnectedAccountArrayOutput
+	ToGetUserConnectedAccountsConnectedAccountArrayOutputWithContext(context.Context) GetUserConnectedAccountsConnectedAccountArrayOutput
+}
+
+type GetUserConnectedAccountsConnectedAccountArray []GetUserConnectedAccountsConnectedAccountInput
+
+func (GetUserConnectedAccountsConnectedAccountArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUserConnectedAccountsConnectedAccount)(nil)).Elem()
+}
+
+func (i GetUserConnectedAccountsConnectedAccountArray) ToGetUserConnectedAccountsConnectedAccountArrayOutput() GetUserConnectedAccountsConnectedAccountArrayOutput {
+	return i.ToGetUserConnectedAccountsConnectedAccountArrayOutputWithContext(context.Background())
+}
+
+func (i GetUserConnectedAccountsConnectedAccountArray) ToGetUserConnectedAccountsConnectedAccountArrayOutputWithContext(ctx context.Context) GetUserConnectedAccountsConnectedAccountArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUserConnectedAccountsConnectedAccountArrayOutput)
+}
+
+type GetUserConnectedAccountsConnectedAccountOutput struct{ *pulumi.OutputState }
+
+func (GetUserConnectedAccountsConnectedAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUserConnectedAccountsConnectedAccount)(nil)).Elem()
+}
+
+func (o GetUserConnectedAccountsConnectedAccountOutput) ToGetUserConnectedAccountsConnectedAccountOutput() GetUserConnectedAccountsConnectedAccountOutput {
+	return o
+}
+
+func (o GetUserConnectedAccountsConnectedAccountOutput) ToGetUserConnectedAccountsConnectedAccountOutputWithContext(ctx context.Context) GetUserConnectedAccountsConnectedAccountOutput {
+	return o
+}
+
+// The access type for the connected account.
+func (o GetUserConnectedAccountsConnectedAccountOutput) AccessType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserConnectedAccountsConnectedAccount) string { return v.AccessType }).(pulumi.StringOutput)
+}
+
+// The name of the connection associated with the account.
+func (o GetUserConnectedAccountsConnectedAccountOutput) Connection() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserConnectedAccountsConnectedAccount) string { return v.Connection }).(pulumi.StringOutput)
+}
+
+// The unique identifier of the connection associated with the account.
+func (o GetUserConnectedAccountsConnectedAccountOutput) ConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserConnectedAccountsConnectedAccount) string { return v.ConnectionId }).(pulumi.StringOutput)
+}
+
+// ISO 8601 timestamp when the connected account was created.
+func (o GetUserConnectedAccountsConnectedAccountOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserConnectedAccountsConnectedAccount) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// ISO 8601 timestamp when the connected account expires. Empty string if not set.
+func (o GetUserConnectedAccountsConnectedAccountOutput) ExpiresAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserConnectedAccountsConnectedAccount) string { return v.ExpiresAt }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the connected account.
+func (o GetUserConnectedAccountsConnectedAccountOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserConnectedAccountsConnectedAccount) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The identifier of the organization associated with the connected account. Empty string if not set.
+func (o GetUserConnectedAccountsConnectedAccountOutput) OrganizationId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserConnectedAccountsConnectedAccount) string { return v.OrganizationId }).(pulumi.StringOutput)
+}
+
+// The scopes granted for this connected account.
+func (o GetUserConnectedAccountsConnectedAccountOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetUserConnectedAccountsConnectedAccount) []string { return v.Scopes }).(pulumi.StringArrayOutput)
+}
+
+// The authentication strategy used by the connection.
+func (o GetUserConnectedAccountsConnectedAccountOutput) Strategy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserConnectedAccountsConnectedAccount) string { return v.Strategy }).(pulumi.StringOutput)
+}
+
+type GetUserConnectedAccountsConnectedAccountArrayOutput struct{ *pulumi.OutputState }
+
+func (GetUserConnectedAccountsConnectedAccountArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUserConnectedAccountsConnectedAccount)(nil)).Elem()
+}
+
+func (o GetUserConnectedAccountsConnectedAccountArrayOutput) ToGetUserConnectedAccountsConnectedAccountArrayOutput() GetUserConnectedAccountsConnectedAccountArrayOutput {
+	return o
+}
+
+func (o GetUserConnectedAccountsConnectedAccountArrayOutput) ToGetUserConnectedAccountsConnectedAccountArrayOutputWithContext(ctx context.Context) GetUserConnectedAccountsConnectedAccountArrayOutput {
+	return o
+}
+
+func (o GetUserConnectedAccountsConnectedAccountArrayOutput) Index(i pulumi.IntInput) GetUserConnectedAccountsConnectedAccountOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetUserConnectedAccountsConnectedAccount {
+		return vs[0].([]GetUserConnectedAccountsConnectedAccount)[vs[1].(int)]
+	}).(GetUserConnectedAccountsConnectedAccountOutput)
+}
+
 type GetUserPermissionType struct {
 	// Description of the permission.
 	Description string `pulumi:"description"`
@@ -500,6 +669,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserAttributeProfileUserIdArrayInput)(nil)).Elem(), GetUserAttributeProfileUserIdArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserAttributeProfileUserIdStrategyOverrideInput)(nil)).Elem(), GetUserAttributeProfileUserIdStrategyOverrideArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserAttributeProfileUserIdStrategyOverrideArrayInput)(nil)).Elem(), GetUserAttributeProfileUserIdStrategyOverrideArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUserConnectedAccountsConnectedAccountInput)(nil)).Elem(), GetUserConnectedAccountsConnectedAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUserConnectedAccountsConnectedAccountArrayInput)(nil)).Elem(), GetUserConnectedAccountsConnectedAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserPermissionTypeInput)(nil)).Elem(), GetUserPermissionTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserPermissionTypeArrayInput)(nil)).Elem(), GetUserPermissionTypeArray{})
 	pulumi.RegisterOutputType(GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput{})
@@ -508,6 +679,8 @@ func init() {
 	pulumi.RegisterOutputType(GetUserAttributeProfileUserIdArrayOutput{})
 	pulumi.RegisterOutputType(GetUserAttributeProfileUserIdStrategyOverrideOutput{})
 	pulumi.RegisterOutputType(GetUserAttributeProfileUserIdStrategyOverrideArrayOutput{})
+	pulumi.RegisterOutputType(GetUserConnectedAccountsConnectedAccountOutput{})
+	pulumi.RegisterOutputType(GetUserConnectedAccountsConnectedAccountArrayOutput{})
 	pulumi.RegisterOutputType(GetUserPermissionTypeOutput{})
 	pulumi.RegisterOutputType(GetUserPermissionTypeArrayOutput{})
 }

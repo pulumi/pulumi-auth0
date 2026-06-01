@@ -66,14 +66,14 @@ public final class ClientAddonsSamlpArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Indicates whether a UPN claim should be created. Defaults to `true`.
+     * Indicates whether a UPN claim should be created.
      * 
      */
     @Import(name="createUpnClaim")
     private @Nullable Output<Boolean> createUpnClaim;
 
     /**
-     * @return Indicates whether a UPN claim should be created. Defaults to `true`.
+     * @return Indicates whether a UPN claim should be created.
      * 
      */
     public Optional<Output<Boolean>> createUpnClaim() {
@@ -96,14 +96,14 @@ public final class ClientAddonsSamlpArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`. Defaults to `sha1`.
+     * Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`.
      * 
      */
     @Import(name="digestAlgorithm")
     private @Nullable Output<String> digestAlgorithm;
 
     /**
-     * @return Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`. Defaults to `sha1`.
+     * @return Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`.
      * 
      */
     public Optional<Output<String>> digestAlgorithm() {
@@ -126,14 +126,14 @@ public final class ClientAddonsSamlpArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion. Defaults to `true`.
+     * Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion.
      * 
      */
     @Import(name="includeAttributeNameFormat")
     private @Nullable Output<Boolean> includeAttributeNameFormat;
 
     /**
-     * @return Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion. Defaults to `true`.
+     * @return Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion.
      * 
      */
     public Optional<Output<Boolean>> includeAttributeNameFormat() {
@@ -156,14 +156,14 @@ public final class ClientAddonsSamlpArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Number of seconds during which the token is valid. Defaults to `3600` seconds.
+     * Number of seconds during which the token is valid.
      * 
      */
     @Import(name="lifetimeInSeconds")
     private @Nullable Output<Integer> lifetimeInSeconds;
 
     /**
-     * @return Number of seconds during which the token is valid. Defaults to `3600` seconds.
+     * @return Number of seconds during which the token is valid.
      * 
      */
     public Optional<Output<Integer>> lifetimeInSeconds() {
@@ -186,14 +186,14 @@ public final class ClientAddonsSamlpArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Indicates whether or not to add additional identity information in the token, such as the provider used and the `accessToken`, if available. Defaults to `true`.
+     * Indicates whether or not to add additional identity information in the token, such as the provider used and the `accessToken`, if available.
      * 
      */
     @Import(name="mapIdentities")
     private @Nullable Output<Boolean> mapIdentities;
 
     /**
-     * @return Indicates whether or not to add additional identity information in the token, such as the provider used and the `accessToken`, if available. Defaults to `true`.
+     * @return Indicates whether or not to add additional identity information in the token, such as the provider used and the `accessToken`, if available.
      * 
      */
     public Optional<Output<Boolean>> mapIdentities() {
@@ -201,14 +201,14 @@ public final class ClientAddonsSamlpArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion. Defaults to `false`.
+     * Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion.
      * 
      */
     @Import(name="mapUnknownClaimsAsIs")
     private @Nullable Output<Boolean> mapUnknownClaimsAsIs;
 
     /**
-     * @return Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion. Defaults to `false`.
+     * @return Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion.
      * 
      */
     public Optional<Output<Boolean>> mapUnknownClaimsAsIs() {
@@ -231,14 +231,14 @@ public final class ClientAddonsSamlpArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+     * Format of the name identifier.
      * 
      */
     @Import(name="nameIdentifierFormat")
     private @Nullable Output<String> nameIdentifierFormat;
 
     /**
-     * @return Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+     * @return Format of the name identifier.
      * 
      */
     public Optional<Output<String>> nameIdentifierFormat() {
@@ -261,14 +261,14 @@ public final class ClientAddonsSamlpArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion. Defaults to `true`.
+     * Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion.
      * 
      */
     @Import(name="passthroughClaimsWithNoMapping")
     private @Nullable Output<Boolean> passthroughClaimsWithNoMapping;
 
     /**
-     * @return Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion. Defaults to `true`.
+     * @return Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion.
      * 
      */
     public Optional<Output<Boolean>> passthroughClaimsWithNoMapping() {
@@ -306,14 +306,14 @@ public final class ClientAddonsSamlpArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`. Defaults to `rsa-sha1`.
+     * Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`.
      * 
      */
     @Import(name="signatureAlgorithm")
     private @Nullable Output<String> signatureAlgorithm;
 
     /**
-     * @return Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`. Defaults to `rsa-sha1`.
+     * @return Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`.
      * 
      */
     public Optional<Output<String>> signatureAlgorithm() {
@@ -336,14 +336,14 @@ public final class ClientAddonsSamlpArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to `false`, all `xs:type` are `xs:anyType`. Defaults to `true`.
+     * Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to `false`, all `xs:type` are `xs:anyType`.
      * 
      */
     @Import(name="typedAttributes")
     private @Nullable Output<Boolean> typedAttributes;
 
     /**
-     * @return Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to `false`, all `xs:type` are `xs:anyType`. Defaults to `true`.
+     * @return Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to `false`, all `xs:type` are `xs:anyType`.
      * 
      */
     public Optional<Output<Boolean>> typedAttributes() {
@@ -459,7 +459,7 @@ public final class ClientAddonsSamlpArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param createUpnClaim Indicates whether a UPN claim should be created. Defaults to `true`.
+         * @param createUpnClaim Indicates whether a UPN claim should be created.
          * 
          * @return builder
          * 
@@ -470,7 +470,7 @@ public final class ClientAddonsSamlpArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param createUpnClaim Indicates whether a UPN claim should be created. Defaults to `true`.
+         * @param createUpnClaim Indicates whether a UPN claim should be created.
          * 
          * @return builder
          * 
@@ -501,7 +501,7 @@ public final class ClientAddonsSamlpArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param digestAlgorithm Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`. Defaults to `sha1`.
+         * @param digestAlgorithm Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`.
          * 
          * @return builder
          * 
@@ -512,7 +512,7 @@ public final class ClientAddonsSamlpArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param digestAlgorithm Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`. Defaults to `sha1`.
+         * @param digestAlgorithm Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`.
          * 
          * @return builder
          * 
@@ -543,7 +543,7 @@ public final class ClientAddonsSamlpArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param includeAttributeNameFormat Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion. Defaults to `true`.
+         * @param includeAttributeNameFormat Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion.
          * 
          * @return builder
          * 
@@ -554,7 +554,7 @@ public final class ClientAddonsSamlpArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param includeAttributeNameFormat Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion. Defaults to `true`.
+         * @param includeAttributeNameFormat Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion.
          * 
          * @return builder
          * 
@@ -585,7 +585,7 @@ public final class ClientAddonsSamlpArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param lifetimeInSeconds Number of seconds during which the token is valid. Defaults to `3600` seconds.
+         * @param lifetimeInSeconds Number of seconds during which the token is valid.
          * 
          * @return builder
          * 
@@ -596,7 +596,7 @@ public final class ClientAddonsSamlpArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param lifetimeInSeconds Number of seconds during which the token is valid. Defaults to `3600` seconds.
+         * @param lifetimeInSeconds Number of seconds during which the token is valid.
          * 
          * @return builder
          * 
@@ -627,7 +627,7 @@ public final class ClientAddonsSamlpArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param mapIdentities Indicates whether or not to add additional identity information in the token, such as the provider used and the `accessToken`, if available. Defaults to `true`.
+         * @param mapIdentities Indicates whether or not to add additional identity information in the token, such as the provider used and the `accessToken`, if available.
          * 
          * @return builder
          * 
@@ -638,7 +638,7 @@ public final class ClientAddonsSamlpArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param mapIdentities Indicates whether or not to add additional identity information in the token, such as the provider used and the `accessToken`, if available. Defaults to `true`.
+         * @param mapIdentities Indicates whether or not to add additional identity information in the token, such as the provider used and the `accessToken`, if available.
          * 
          * @return builder
          * 
@@ -648,7 +648,7 @@ public final class ClientAddonsSamlpArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param mapUnknownClaimsAsIs Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion. Defaults to `false`.
+         * @param mapUnknownClaimsAsIs Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion.
          * 
          * @return builder
          * 
@@ -659,7 +659,7 @@ public final class ClientAddonsSamlpArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param mapUnknownClaimsAsIs Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion. Defaults to `false`.
+         * @param mapUnknownClaimsAsIs Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion.
          * 
          * @return builder
          * 
@@ -690,7 +690,7 @@ public final class ClientAddonsSamlpArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param nameIdentifierFormat Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+         * @param nameIdentifierFormat Format of the name identifier.
          * 
          * @return builder
          * 
@@ -701,7 +701,7 @@ public final class ClientAddonsSamlpArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param nameIdentifierFormat Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+         * @param nameIdentifierFormat Format of the name identifier.
          * 
          * @return builder
          * 
@@ -742,7 +742,7 @@ public final class ClientAddonsSamlpArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param passthroughClaimsWithNoMapping Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion. Defaults to `true`.
+         * @param passthroughClaimsWithNoMapping Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion.
          * 
          * @return builder
          * 
@@ -753,7 +753,7 @@ public final class ClientAddonsSamlpArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param passthroughClaimsWithNoMapping Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion. Defaults to `true`.
+         * @param passthroughClaimsWithNoMapping Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion.
          * 
          * @return builder
          * 
@@ -805,7 +805,7 @@ public final class ClientAddonsSamlpArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param signatureAlgorithm Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`. Defaults to `rsa-sha1`.
+         * @param signatureAlgorithm Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`.
          * 
          * @return builder
          * 
@@ -816,7 +816,7 @@ public final class ClientAddonsSamlpArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param signatureAlgorithm Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`. Defaults to `rsa-sha1`.
+         * @param signatureAlgorithm Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`.
          * 
          * @return builder
          * 
@@ -847,7 +847,7 @@ public final class ClientAddonsSamlpArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param typedAttributes Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to `false`, all `xs:type` are `xs:anyType`. Defaults to `true`.
+         * @param typedAttributes Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to `false`, all `xs:type` are `xs:anyType`.
          * 
          * @return builder
          * 
@@ -858,7 +858,7 @@ public final class ClientAddonsSamlpArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param typedAttributes Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to `false`, all `xs:type` are `xs:anyType`. Defaults to `true`.
+         * @param typedAttributes Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to `false`, all `xs:type` are `xs:anyType`.
          * 
          * @return builder
          * 

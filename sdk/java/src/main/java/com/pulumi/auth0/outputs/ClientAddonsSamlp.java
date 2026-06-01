@@ -32,7 +32,7 @@ public final class ClientAddonsSamlp {
      */
     private @Nullable String binding;
     /**
-     * @return Indicates whether a UPN claim should be created. Defaults to `true`.
+     * @return Indicates whether a UPN claim should be created.
      * 
      */
     private @Nullable Boolean createUpnClaim;
@@ -42,7 +42,7 @@ public final class ClientAddonsSamlp {
      */
     private @Nullable String destination;
     /**
-     * @return Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`. Defaults to `sha1`.
+     * @return Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`.
      * 
      */
     private @Nullable String digestAlgorithm;
@@ -52,7 +52,7 @@ public final class ClientAddonsSamlp {
      */
     private @Nullable String flexibleMappings;
     /**
-     * @return Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion. Defaults to `true`.
+     * @return Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion.
      * 
      */
     private @Nullable Boolean includeAttributeNameFormat;
@@ -62,7 +62,7 @@ public final class ClientAddonsSamlp {
      */
     private @Nullable String issuer;
     /**
-     * @return Number of seconds during which the token is valid. Defaults to `3600` seconds.
+     * @return Number of seconds during which the token is valid.
      * 
      */
     private @Nullable Integer lifetimeInSeconds;
@@ -72,12 +72,12 @@ public final class ClientAddonsSamlp {
      */
     private @Nullable ClientAddonsSamlpLogout logout;
     /**
-     * @return Indicates whether or not to add additional identity information in the token, such as the provider used and the `accessToken`, if available. Defaults to `true`.
+     * @return Indicates whether or not to add additional identity information in the token, such as the provider used and the `accessToken`, if available.
      * 
      */
     private @Nullable Boolean mapIdentities;
     /**
-     * @return Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion. Defaults to `false`.
+     * @return Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion.
      * 
      */
     private @Nullable Boolean mapUnknownClaimsAsIs;
@@ -87,7 +87,7 @@ public final class ClientAddonsSamlp {
      */
     private @Nullable Map<String,String> mappings;
     /**
-     * @return Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+     * @return Format of the name identifier.
      * 
      */
     private @Nullable String nameIdentifierFormat;
@@ -97,7 +97,7 @@ public final class ClientAddonsSamlp {
      */
     private @Nullable List<String> nameIdentifierProbes;
     /**
-     * @return Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion. Defaults to `true`.
+     * @return Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion.
      * 
      */
     private @Nullable Boolean passthroughClaimsWithNoMapping;
@@ -112,7 +112,7 @@ public final class ClientAddonsSamlp {
      */
     private @Nullable Boolean signResponse;
     /**
-     * @return Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`. Defaults to `rsa-sha1`.
+     * @return Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`.
      * 
      */
     private @Nullable String signatureAlgorithm;
@@ -122,7 +122,7 @@ public final class ClientAddonsSamlp {
      */
     private @Nullable String signingCert;
     /**
-     * @return Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to `false`, all `xs:type` are `xs:anyType`. Defaults to `true`.
+     * @return Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to `false`, all `xs:type` are `xs:anyType`.
      * 
      */
     private @Nullable Boolean typedAttributes;
@@ -150,7 +150,7 @@ public final class ClientAddonsSamlp {
         return Optional.ofNullable(this.binding);
     }
     /**
-     * @return Indicates whether a UPN claim should be created. Defaults to `true`.
+     * @return Indicates whether a UPN claim should be created.
      * 
      */
     public Optional<Boolean> createUpnClaim() {
@@ -164,7 +164,7 @@ public final class ClientAddonsSamlp {
         return Optional.ofNullable(this.destination);
     }
     /**
-     * @return Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`. Defaults to `sha1`.
+     * @return Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`.
      * 
      */
     public Optional<String> digestAlgorithm() {
@@ -178,7 +178,7 @@ public final class ClientAddonsSamlp {
         return Optional.ofNullable(this.flexibleMappings);
     }
     /**
-     * @return Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion. Defaults to `true`.
+     * @return Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion.
      * 
      */
     public Optional<Boolean> includeAttributeNameFormat() {
@@ -192,7 +192,7 @@ public final class ClientAddonsSamlp {
         return Optional.ofNullable(this.issuer);
     }
     /**
-     * @return Number of seconds during which the token is valid. Defaults to `3600` seconds.
+     * @return Number of seconds during which the token is valid.
      * 
      */
     public Optional<Integer> lifetimeInSeconds() {
@@ -206,14 +206,14 @@ public final class ClientAddonsSamlp {
         return Optional.ofNullable(this.logout);
     }
     /**
-     * @return Indicates whether or not to add additional identity information in the token, such as the provider used and the `accessToken`, if available. Defaults to `true`.
+     * @return Indicates whether or not to add additional identity information in the token, such as the provider used and the `accessToken`, if available.
      * 
      */
     public Optional<Boolean> mapIdentities() {
         return Optional.ofNullable(this.mapIdentities);
     }
     /**
-     * @return Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion. Defaults to `false`.
+     * @return Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion.
      * 
      */
     public Optional<Boolean> mapUnknownClaimsAsIs() {
@@ -227,7 +227,7 @@ public final class ClientAddonsSamlp {
         return this.mappings == null ? Map.of() : this.mappings;
     }
     /**
-     * @return Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+     * @return Format of the name identifier.
      * 
      */
     public Optional<String> nameIdentifierFormat() {
@@ -241,7 +241,7 @@ public final class ClientAddonsSamlp {
         return this.nameIdentifierProbes == null ? List.of() : this.nameIdentifierProbes;
     }
     /**
-     * @return Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion. Defaults to `true`.
+     * @return Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion.
      * 
      */
     public Optional<Boolean> passthroughClaimsWithNoMapping() {
@@ -262,7 +262,7 @@ public final class ClientAddonsSamlp {
         return Optional.ofNullable(this.signResponse);
     }
     /**
-     * @return Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`. Defaults to `rsa-sha1`.
+     * @return Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`.
      * 
      */
     public Optional<String> signatureAlgorithm() {
@@ -276,7 +276,7 @@ public final class ClientAddonsSamlp {
         return Optional.ofNullable(this.signingCert);
     }
     /**
-     * @return Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to `false`, all `xs:type` are `xs:anyType`. Defaults to `true`.
+     * @return Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to `false`, all `xs:type` are `xs:anyType`.
      * 
      */
     public Optional<Boolean> typedAttributes() {

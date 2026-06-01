@@ -3469,6 +3469,22 @@
                         }
                     }
                 }
+            },
+            "auth0_user_connected_accounts": {
+                "current": "auth0:index/getUserConnectedAccounts:getUserConnectedAccounts",
+                "majorVersion": 3,
+                "fields": {
+                    "connected_accounts": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "scopes": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
     },

@@ -110,6 +110,10 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly Outputs.ConnectionOptionsDecryptionKey? DecryptionKey;
         /// <summary>
+        /// The destination URL for the SAML assertion. Used when configuring a SAML connection for proxy gateways.
+        /// </summary>
+        public readonly string? DestinationUrl;
+        /// <summary>
         /// Sign Request Algorithm Digest.
         /// </summary>
         public readonly string? DigestAlgorithm;
@@ -142,7 +146,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly ImmutableArray<string> DomainAliases;
         /// <summary>
-        /// Signature method used to sign the request. EA Only
+        /// The algorithm used to sign the DPoP proof. Allowed values: ES256, ES384, ES512, Ed25519.
         /// </summary>
         public readonly string? DpopSigningAlg;
         /// <summary>
@@ -317,6 +321,10 @@ namespace Pulumi.Auth0.Outputs
         /// Allows configuration if connections*realm*fallback flag is enabled for the tenant
         /// </summary>
         public readonly bool? RealmFallback;
+        /// <summary>
+        /// The recipient URL for the SAML assertion. Used when configuring a SAML connection for proxy gateways.
+        /// </summary>
+        public readonly string? RecipientUrl;
         /// <summary>
         /// Template that formats the SAML request.
         /// </summary>
@@ -532,6 +540,8 @@ namespace Pulumi.Auth0.Outputs
 
             Outputs.ConnectionOptionsDecryptionKey? decryptionKey,
 
+            string? destinationUrl,
+
             string? digestAlgorithm,
 
             bool? disableCache,
@@ -635,6 +645,8 @@ namespace Pulumi.Auth0.Outputs
             string? provider,
 
             bool? realmFallback,
+
+            string? recipientUrl,
 
             string? requestTemplate,
 
@@ -742,6 +754,7 @@ namespace Pulumi.Auth0.Outputs
             CustomScripts = customScripts;
             Debug = debug;
             DecryptionKey = decryptionKey;
+            DestinationUrl = destinationUrl;
             DigestAlgorithm = digestAlgorithm;
             DisableCache = disableCache;
             DisableSelfServiceChangePassword = disableSelfServiceChangePassword;
@@ -794,6 +807,7 @@ namespace Pulumi.Auth0.Outputs
             ProtocolBinding = protocolBinding;
             Provider = provider;
             RealmFallback = realmFallback;
+            RecipientUrl = recipientUrl;
             RequestTemplate = requestTemplate;
             RequestTokenUrl = requestTokenUrl;
             RequiresUsername = requiresUsername;

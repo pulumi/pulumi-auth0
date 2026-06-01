@@ -91,6 +91,7 @@
         "getTokenExchangeProfile.ts",
         "getUser.ts",
         "getUserAttributeProfile.ts",
+        "getUserConnectedAccounts.ts",
         "guardian.ts",
         "hook.ts",
         "index.ts",

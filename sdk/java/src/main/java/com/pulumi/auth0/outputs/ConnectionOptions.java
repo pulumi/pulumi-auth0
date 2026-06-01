@@ -156,6 +156,11 @@ public final class ConnectionOptions {
      */
     private @Nullable ConnectionOptionsDecryptionKey decryptionKey;
     /**
+     * @return The destination URL for the SAML assertion. Used when configuring a SAML connection for proxy gateways.
+     * 
+     */
+    private @Nullable String destinationUrl;
+    /**
      * @return Sign Request Algorithm Digest.
      * 
      */
@@ -196,7 +201,7 @@ public final class ConnectionOptions {
      */
     private @Nullable List<String> domainAliases;
     /**
-     * @return Signature method used to sign the request. EA Only
+     * @return The algorithm used to sign the DPoP proof. Allowed values: ES256, ES384, ES512, Ed25519.
      * 
      */
     private @Nullable String dpopSigningAlg;
@@ -415,6 +420,11 @@ public final class ConnectionOptions {
      * 
      */
     private @Nullable Boolean realmFallback;
+    /**
+     * @return The recipient URL for the SAML assertion. Used when configuring a SAML connection for proxy gateways.
+     * 
+     */
+    private @Nullable String recipientUrl;
     /**
      * @return Template that formats the SAML request.
      * 
@@ -791,6 +801,13 @@ public final class ConnectionOptions {
         return Optional.ofNullable(this.decryptionKey);
     }
     /**
+     * @return The destination URL for the SAML assertion. Used when configuring a SAML connection for proxy gateways.
+     * 
+     */
+    public Optional<String> destinationUrl() {
+        return Optional.ofNullable(this.destinationUrl);
+    }
+    /**
      * @return Sign Request Algorithm Digest.
      * 
      */
@@ -847,7 +864,7 @@ public final class ConnectionOptions {
         return this.domainAliases == null ? List.of() : this.domainAliases;
     }
     /**
-     * @return Signature method used to sign the request. EA Only
+     * @return The algorithm used to sign the DPoP proof. Allowed values: ES256, ES384, ES512, Ed25519.
      * 
      */
     public Optional<String> dpopSigningAlg() {
@@ -1153,6 +1170,13 @@ public final class ConnectionOptions {
      */
     public Optional<Boolean> realmFallback() {
         return Optional.ofNullable(this.realmFallback);
+    }
+    /**
+     * @return The recipient URL for the SAML assertion. Used when configuring a SAML connection for proxy gateways.
+     * 
+     */
+    public Optional<String> recipientUrl() {
+        return Optional.ofNullable(this.recipientUrl);
     }
     /**
      * @return Template that formats the SAML request.
@@ -1475,6 +1499,7 @@ public final class ConnectionOptions {
         private @Nullable Map<String,String> customScripts;
         private @Nullable Boolean debug;
         private @Nullable ConnectionOptionsDecryptionKey decryptionKey;
+        private @Nullable String destinationUrl;
         private @Nullable String digestAlgorithm;
         private @Nullable Boolean disableCache;
         private @Nullable Boolean disableSelfServiceChangePassword;
@@ -1527,6 +1552,7 @@ public final class ConnectionOptions {
         private @Nullable String protocolBinding;
         private @Nullable String provider;
         private @Nullable Boolean realmFallback;
+        private @Nullable String recipientUrl;
         private @Nullable String requestTemplate;
         private @Nullable String requestTokenUrl;
         private @Nullable Boolean requiresUsername;
@@ -1595,6 +1621,7 @@ public final class ConnectionOptions {
     	      this.customScripts = defaults.customScripts;
     	      this.debug = defaults.debug;
     	      this.decryptionKey = defaults.decryptionKey;
+    	      this.destinationUrl = defaults.destinationUrl;
     	      this.digestAlgorithm = defaults.digestAlgorithm;
     	      this.disableCache = defaults.disableCache;
     	      this.disableSelfServiceChangePassword = defaults.disableSelfServiceChangePassword;
@@ -1647,6 +1674,7 @@ public final class ConnectionOptions {
     	      this.protocolBinding = defaults.protocolBinding;
     	      this.provider = defaults.provider;
     	      this.realmFallback = defaults.realmFallback;
+    	      this.recipientUrl = defaults.recipientUrl;
     	      this.requestTemplate = defaults.requestTemplate;
     	      this.requestTokenUrl = defaults.requestTokenUrl;
     	      this.requiresUsername = defaults.requiresUsername;
@@ -1844,6 +1872,12 @@ public final class ConnectionOptions {
         public Builder decryptionKey(@Nullable ConnectionOptionsDecryptionKey decryptionKey) {
 
             this.decryptionKey = decryptionKey;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder destinationUrl(@Nullable String destinationUrl) {
+
+            this.destinationUrl = destinationUrl;
             return this;
         }
         @CustomType.Setter
@@ -2177,6 +2211,12 @@ public final class ConnectionOptions {
             return this;
         }
         @CustomType.Setter
+        public Builder recipientUrl(@Nullable String recipientUrl) {
+
+            this.recipientUrl = recipientUrl;
+            return this;
+        }
+        @CustomType.Setter
         public Builder requestTemplate(@Nullable String requestTemplate) {
 
             this.requestTemplate = requestTemplate;
@@ -2451,6 +2491,7 @@ public final class ConnectionOptions {
             _resultValue.customScripts = customScripts;
             _resultValue.debug = debug;
             _resultValue.decryptionKey = decryptionKey;
+            _resultValue.destinationUrl = destinationUrl;
             _resultValue.digestAlgorithm = digestAlgorithm;
             _resultValue.disableCache = disableCache;
             _resultValue.disableSelfServiceChangePassword = disableSelfServiceChangePassword;
@@ -2503,6 +2544,7 @@ public final class ConnectionOptions {
             _resultValue.protocolBinding = protocolBinding;
             _resultValue.provider = provider;
             _resultValue.realmFallback = realmFallback;
+            _resultValue.recipientUrl = recipientUrl;
             _resultValue.requestTemplate = requestTemplate;
             _resultValue.requestTokenUrl = requestTokenUrl;
             _resultValue.requiresUsername = requiresUsername;

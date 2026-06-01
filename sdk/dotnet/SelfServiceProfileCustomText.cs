@@ -59,13 +59,13 @@ namespace Pulumi.Auth0
         public Output<string> Body { get; private set; } = null!;
 
         /// <summary>
-        /// The language of the custom text
+        /// The language of the custom text. Options include: `En`
         /// </summary>
         [Output("language")]
         public Output<string> Language { get; private set; } = null!;
 
         /// <summary>
-        /// The page where the custom text is shown
+        /// The page where the custom text is shown. Options include: `get-started`
         /// </summary>
         [Output("page")]
         public Output<string> Page { get; private set; } = null!;
@@ -129,13 +129,13 @@ namespace Pulumi.Auth0
         public Input<string> Body { get; set; } = null!;
 
         /// <summary>
-        /// The language of the custom text
+        /// The language of the custom text. Options include: `En`
         /// </summary>
         [Input("language", required: true)]
         public Input<string> Language { get; set; } = null!;
 
         /// <summary>
-        /// The page where the custom text is shown
+        /// The page where the custom text is shown. Options include: `get-started`
         /// </summary>
         [Input("page", required: true)]
         public Input<string> Page { get; set; } = null!;
@@ -161,13 +161,13 @@ namespace Pulumi.Auth0
         public Input<string>? Body { get; set; }
 
         /// <summary>
-        /// The language of the custom text
+        /// The language of the custom text. Options include: `En`
         /// </summary>
         [Input("language")]
         public Input<string>? Language { get; set; }
 
         /// <summary>
-        /// The page where the custom text is shown
+        /// The page where the custom text is shown. Options include: `get-started`
         /// </summary>
         [Input("page")]
         public Input<string>? Page { get; set; }

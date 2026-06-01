@@ -26,7 +26,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string Binding;
         /// <summary>
-        /// Indicates whether a UPN claim should be created. Defaults to `True`.
+        /// Indicates whether a UPN claim should be created.
         /// </summary>
         public readonly bool CreateUpnClaim;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string Destination;
         /// <summary>
-        /// Algorithm used to calculate the digest of the SAML Assertion or response. Options include `Sha1` and `Sha256`. Defaults to `Sha1`.
+        /// Algorithm used to calculate the digest of the SAML Assertion or response. Options include `Sha1` and `Sha256`.
         /// </summary>
         public readonly string DigestAlgorithm;
         /// <summary>
@@ -42,7 +42,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string FlexibleMappings;
         /// <summary>
-        /// Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `False`, the attribute NameFormat is not set in the assertion. Defaults to `True`.
+        /// Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `False`, the attribute NameFormat is not set in the assertion.
         /// </summary>
         public readonly bool IncludeAttributeNameFormat;
         /// <summary>
@@ -50,7 +50,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string Issuer;
         /// <summary>
-        /// Number of seconds during which the token is valid. Defaults to `3600` seconds.
+        /// Number of seconds during which the token is valid.
         /// </summary>
         public readonly int LifetimeInSeconds;
         /// <summary>
@@ -58,11 +58,11 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClientAddonSamlpLogoutResult> Logouts;
         /// <summary>
-        /// Indicates whether or not to add additional identity information in the token, such as the provider used and the `AccessToken`, if available. Defaults to `True`.
+        /// Indicates whether or not to add additional identity information in the token, such as the provider used and the `AccessToken`, if available.
         /// </summary>
         public readonly bool MapIdentities;
         /// <summary>
-        /// Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion. Defaults to `False`.
+        /// Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion.
         /// </summary>
         public readonly bool MapUnknownClaimsAsIs;
         /// <summary>
@@ -70,7 +70,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string> Mappings;
         /// <summary>
-        /// Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+        /// Format of the name identifier.
         /// </summary>
         public readonly string NameIdentifierFormat;
         /// <summary>
@@ -78,7 +78,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly ImmutableArray<string> NameIdentifierProbes;
         /// <summary>
-        /// Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion. Defaults to `True`.
+        /// Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion.
         /// </summary>
         public readonly bool PassthroughClaimsWithNoMapping;
         /// <summary>
@@ -90,7 +90,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly bool SignResponse;
         /// <summary>
-        /// Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`. Defaults to `rsa-sha1`.
+        /// Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`.
         /// </summary>
         public readonly string SignatureAlgorithm;
         /// <summary>
@@ -98,7 +98,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string SigningCert;
         /// <summary>
-        /// Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to `False`, all `xs:type` are `xs:anyType`. Defaults to `True`.
+        /// Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to `False`, all `xs:type` are `xs:anyType`.
         /// </summary>
         public readonly bool TypedAttributes;
 

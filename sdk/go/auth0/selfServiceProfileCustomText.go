@@ -68,9 +68,9 @@ type SelfServiceProfileCustomText struct {
 
 	// The list of text keys and values to customize the self-service SSO page. Values can be plain text or rich HTML content limited to basic styling tags and hyperlinks
 	Body pulumi.StringOutput `pulumi:"body"`
-	// The language of the custom text
+	// The language of the custom text. Options include: `en`
 	Language pulumi.StringOutput `pulumi:"language"`
-	// The page where the custom text is shown
+	// The page where the custom text is shown. Options include: `get-started`
 	Page pulumi.StringOutput `pulumi:"page"`
 	// The id of the self-service profile
 	SsoId pulumi.StringOutput `pulumi:"ssoId"`
@@ -120,9 +120,9 @@ func GetSelfServiceProfileCustomText(ctx *pulumi.Context,
 type selfServiceProfileCustomTextState struct {
 	// The list of text keys and values to customize the self-service SSO page. Values can be plain text or rich HTML content limited to basic styling tags and hyperlinks
 	Body *string `pulumi:"body"`
-	// The language of the custom text
+	// The language of the custom text. Options include: `en`
 	Language *string `pulumi:"language"`
-	// The page where the custom text is shown
+	// The page where the custom text is shown. Options include: `get-started`
 	Page *string `pulumi:"page"`
 	// The id of the self-service profile
 	SsoId *string `pulumi:"ssoId"`
@@ -131,9 +131,9 @@ type selfServiceProfileCustomTextState struct {
 type SelfServiceProfileCustomTextState struct {
 	// The list of text keys and values to customize the self-service SSO page. Values can be plain text or rich HTML content limited to basic styling tags and hyperlinks
 	Body pulumi.StringPtrInput
-	// The language of the custom text
+	// The language of the custom text. Options include: `en`
 	Language pulumi.StringPtrInput
-	// The page where the custom text is shown
+	// The page where the custom text is shown. Options include: `get-started`
 	Page pulumi.StringPtrInput
 	// The id of the self-service profile
 	SsoId pulumi.StringPtrInput
@@ -146,9 +146,9 @@ func (SelfServiceProfileCustomTextState) ElementType() reflect.Type {
 type selfServiceProfileCustomTextArgs struct {
 	// The list of text keys and values to customize the self-service SSO page. Values can be plain text or rich HTML content limited to basic styling tags and hyperlinks
 	Body string `pulumi:"body"`
-	// The language of the custom text
+	// The language of the custom text. Options include: `en`
 	Language string `pulumi:"language"`
-	// The page where the custom text is shown
+	// The page where the custom text is shown. Options include: `get-started`
 	Page string `pulumi:"page"`
 	// The id of the self-service profile
 	SsoId string `pulumi:"ssoId"`
@@ -158,9 +158,9 @@ type selfServiceProfileCustomTextArgs struct {
 type SelfServiceProfileCustomTextArgs struct {
 	// The list of text keys and values to customize the self-service SSO page. Values can be plain text or rich HTML content limited to basic styling tags and hyperlinks
 	Body pulumi.StringInput
-	// The language of the custom text
+	// The language of the custom text. Options include: `en`
 	Language pulumi.StringInput
-	// The page where the custom text is shown
+	// The page where the custom text is shown. Options include: `get-started`
 	Page pulumi.StringInput
 	// The id of the self-service profile
 	SsoId pulumi.StringInput
@@ -258,12 +258,12 @@ func (o SelfServiceProfileCustomTextOutput) Body() pulumi.StringOutput {
 	return o.ApplyT(func(v *SelfServiceProfileCustomText) pulumi.StringOutput { return v.Body }).(pulumi.StringOutput)
 }
 
-// The language of the custom text
+// The language of the custom text. Options include: `en`
 func (o SelfServiceProfileCustomTextOutput) Language() pulumi.StringOutput {
 	return o.ApplyT(func(v *SelfServiceProfileCustomText) pulumi.StringOutput { return v.Language }).(pulumi.StringOutput)
 }
 
-// The page where the custom text is shown
+// The page where the custom text is shown. Options include: `get-started`
 func (o SelfServiceProfileCustomTextOutput) Page() pulumi.StringOutput {
 	return o.ApplyT(func(v *SelfServiceProfileCustomText) pulumi.StringOutput { return v.Page }).(pulumi.StringOutput)
 }

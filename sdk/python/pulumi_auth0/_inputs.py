@@ -5381,7 +5381,7 @@ class ClientAddonsSamlpArgsDict(TypedDict):
     """
     create_upn_claim: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    Indicates whether a UPN claim should be created. Defaults to `true`.
+    Indicates whether a UPN claim should be created.
     """
     destination: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -5389,7 +5389,7 @@ class ClientAddonsSamlpArgsDict(TypedDict):
     """
     digest_algorithm: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`. Defaults to `sha1`.
+    Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`.
     """
     flexible_mappings: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -5397,7 +5397,7 @@ class ClientAddonsSamlpArgsDict(TypedDict):
     """
     include_attribute_name_format: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion. Defaults to `true`.
+    Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion.
     """
     issuer: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -5405,7 +5405,7 @@ class ClientAddonsSamlpArgsDict(TypedDict):
     """
     lifetime_in_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
-    Number of seconds during which the token is valid. Defaults to `3600` seconds.
+    Number of seconds during which the token is valid.
     """
     logout: NotRequired[pulumi.Input[Optional['ClientAddonsSamlpLogoutArgsDict']]]
     """
@@ -5413,11 +5413,11 @@ class ClientAddonsSamlpArgsDict(TypedDict):
     """
     map_identities: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    Indicates whether or not to add additional identity information in the token, such as the provider used and the `access_token`, if available. Defaults to `true`.
+    Indicates whether or not to add additional identity information in the token, such as the provider used and the `access_token`, if available.
     """
     map_unknown_claims_as_is: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion. Defaults to `false`.
+    Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion.
     """
     mappings: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
@@ -5425,7 +5425,7 @@ class ClientAddonsSamlpArgsDict(TypedDict):
     """
     name_identifier_format: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+    Format of the name identifier.
     """
     name_identifier_probes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
@@ -5433,7 +5433,7 @@ class ClientAddonsSamlpArgsDict(TypedDict):
     """
     passthrough_claims_with_no_mapping: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion. Defaults to `true`.
+    Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion.
     """
     recipient: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -5445,7 +5445,7 @@ class ClientAddonsSamlpArgsDict(TypedDict):
     """
     signature_algorithm: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`. Defaults to `rsa-sha1`.
+    Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`.
     """
     signing_cert: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -5453,7 +5453,7 @@ class ClientAddonsSamlpArgsDict(TypedDict):
     """
     typed_attributes: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to `false`, all `xs:type` are `xs:anyType`. Defaults to `true`.
+    Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to `false`, all `xs:type` are `xs:anyType`.
     """
 
 @pulumi.input_type
@@ -5485,25 +5485,25 @@ class ClientAddonsSamlpArgs:
         :param pulumi.Input[_builtins.str] audience: Audience of the SAML Assertion. Default will be the Issuer on SAMLRequest.
         :param pulumi.Input[_builtins.str] authn_context_class_ref: Class reference of the authentication context.
         :param pulumi.Input[_builtins.str] binding: Protocol binding used for SAML logout responses.
-        :param pulumi.Input[_builtins.bool] create_upn_claim: Indicates whether a UPN claim should be created. Defaults to `true`.
+        :param pulumi.Input[_builtins.bool] create_upn_claim: Indicates whether a UPN claim should be created.
         :param pulumi.Input[_builtins.str] destination: Destination of the SAML Response. If not specified, it will be `AssertionConsumerUrl` of SAMLRequest or callback URL if there was no SAMLRequest.
-        :param pulumi.Input[_builtins.str] digest_algorithm: Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`. Defaults to `sha1`.
+        :param pulumi.Input[_builtins.str] digest_algorithm: Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`.
         :param pulumi.Input[_builtins.str] flexible_mappings: This is a supporting attribute to `mappings` field.Please note this is an experimental field. It should only be used when needed to send a map with keys as slices.
-        :param pulumi.Input[_builtins.bool] include_attribute_name_format: Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion. Defaults to `true`.
+        :param pulumi.Input[_builtins.bool] include_attribute_name_format: Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion.
         :param pulumi.Input[_builtins.str] issuer: Issuer of the SAML Assertion.
-        :param pulumi.Input[_builtins.int] lifetime_in_seconds: Number of seconds during which the token is valid. Defaults to `3600` seconds.
+        :param pulumi.Input[_builtins.int] lifetime_in_seconds: Number of seconds during which the token is valid.
         :param pulumi.Input['ClientAddonsSamlpLogoutArgs'] logout: Configuration settings for logout.
-        :param pulumi.Input[_builtins.bool] map_identities: Indicates whether or not to add additional identity information in the token, such as the provider used and the `access_token`, if available. Defaults to `true`.
-        :param pulumi.Input[_builtins.bool] map_unknown_claims_as_is: Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion. Defaults to `false`.
+        :param pulumi.Input[_builtins.bool] map_identities: Indicates whether or not to add additional identity information in the token, such as the provider used and the `access_token`, if available.
+        :param pulumi.Input[_builtins.bool] map_unknown_claims_as_is: Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] mappings: Mappings between the Auth0 user profile property name (`name`) and the output attributes on the SAML attribute in the assertion (`value`).
-        :param pulumi.Input[_builtins.str] name_identifier_format: Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+        :param pulumi.Input[_builtins.str] name_identifier_format: Format of the name identifier.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] name_identifier_probes: Attributes that can be used for Subject/NameID. Auth0 will try each of the attributes of this array in order and use the first value it finds.
-        :param pulumi.Input[_builtins.bool] passthrough_claims_with_no_mapping: Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion. Defaults to `true`.
+        :param pulumi.Input[_builtins.bool] passthrough_claims_with_no_mapping: Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion.
         :param pulumi.Input[_builtins.str] recipient: Recipient of the SAML Assertion (SubjectConfirmationData). Default is `AssertionConsumerUrl` on SAMLRequest or callback URL if no SAMLRequest was sent.
         :param pulumi.Input[_builtins.bool] sign_response: Indicates whether or not the SAML Response should be signed instead of the SAML Assertion.
-        :param pulumi.Input[_builtins.str] signature_algorithm: Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`. Defaults to `rsa-sha1`.
+        :param pulumi.Input[_builtins.str] signature_algorithm: Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`.
         :param pulumi.Input[_builtins.str] signing_cert: Optionally indicates the public key certificate used to validate SAML requests. If set, SAML requests will be required to be signed. A sample value would be `-----BEGIN PUBLIC KEY-----\\nMIGf...bpP/t3\\n+JGNGIRMj1hF1rnb6QIDAQAB\\n-----END PUBLIC KEY-----\\n`.
-        :param pulumi.Input[_builtins.bool] typed_attributes: Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to `false`, all `xs:type` are `xs:anyType`. Defaults to `true`.
+        :param pulumi.Input[_builtins.bool] typed_attributes: Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to `false`, all `xs:type` are `xs:anyType`.
         """
         if audience is not None:
             pulumi.set(__self__, "audience", audience)
@@ -5590,7 +5590,7 @@ class ClientAddonsSamlpArgs:
     @pulumi.getter(name="createUpnClaim")
     def create_upn_claim(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Indicates whether a UPN claim should be created. Defaults to `true`.
+        Indicates whether a UPN claim should be created.
         """
         return pulumi.get(self, "create_upn_claim")
 
@@ -5614,7 +5614,7 @@ class ClientAddonsSamlpArgs:
     @pulumi.getter(name="digestAlgorithm")
     def digest_algorithm(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`. Defaults to `sha1`.
+        Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`.
         """
         return pulumi.get(self, "digest_algorithm")
 
@@ -5638,7 +5638,7 @@ class ClientAddonsSamlpArgs:
     @pulumi.getter(name="includeAttributeNameFormat")
     def include_attribute_name_format(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion. Defaults to `true`.
+        Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion.
         """
         return pulumi.get(self, "include_attribute_name_format")
 
@@ -5662,7 +5662,7 @@ class ClientAddonsSamlpArgs:
     @pulumi.getter(name="lifetimeInSeconds")
     def lifetime_in_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Number of seconds during which the token is valid. Defaults to `3600` seconds.
+        Number of seconds during which the token is valid.
         """
         return pulumi.get(self, "lifetime_in_seconds")
 
@@ -5686,7 +5686,7 @@ class ClientAddonsSamlpArgs:
     @pulumi.getter(name="mapIdentities")
     def map_identities(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Indicates whether or not to add additional identity information in the token, such as the provider used and the `access_token`, if available. Defaults to `true`.
+        Indicates whether or not to add additional identity information in the token, such as the provider used and the `access_token`, if available.
         """
         return pulumi.get(self, "map_identities")
 
@@ -5698,7 +5698,7 @@ class ClientAddonsSamlpArgs:
     @pulumi.getter(name="mapUnknownClaimsAsIs")
     def map_unknown_claims_as_is(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion. Defaults to `false`.
+        Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion.
         """
         return pulumi.get(self, "map_unknown_claims_as_is")
 
@@ -5722,7 +5722,7 @@ class ClientAddonsSamlpArgs:
     @pulumi.getter(name="nameIdentifierFormat")
     def name_identifier_format(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+        Format of the name identifier.
         """
         return pulumi.get(self, "name_identifier_format")
 
@@ -5746,7 +5746,7 @@ class ClientAddonsSamlpArgs:
     @pulumi.getter(name="passthroughClaimsWithNoMapping")
     def passthrough_claims_with_no_mapping(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion. Defaults to `true`.
+        Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion.
         """
         return pulumi.get(self, "passthrough_claims_with_no_mapping")
 
@@ -5782,7 +5782,7 @@ class ClientAddonsSamlpArgs:
     @pulumi.getter(name="signatureAlgorithm")
     def signature_algorithm(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`. Defaults to `rsa-sha1`.
+        Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`.
         """
         return pulumi.get(self, "signature_algorithm")
 
@@ -5806,7 +5806,7 @@ class ClientAddonsSamlpArgs:
     @pulumi.getter(name="typedAttributes")
     def typed_attributes(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to `false`, all `xs:type` are `xs:anyType`. Defaults to `true`.
+        Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to `false`, all `xs:type` are `xs:anyType`.
         """
         return pulumi.get(self, "typed_attributes")
 
@@ -9060,6 +9060,10 @@ class ConnectionOptionsArgsDict(TypedDict):
     """
     The key used to decrypt encrypted responses from the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
     """
+    destination_url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The destination URL for the SAML assertion. Used when configuring a SAML connection for proxy gateways.
+    """
     digest_algorithm: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Sign Request Algorithm Digest.
@@ -9094,7 +9098,7 @@ class ConnectionOptionsArgsDict(TypedDict):
     """
     dpop_signing_alg: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Signature method used to sign the request. EA Only
+    The algorithm used to sign the DPoP proof. Allowed values: ES256, ES384, ES512, Ed25519.
     """
     email: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
@@ -9267,6 +9271,10 @@ class ConnectionOptionsArgsDict(TypedDict):
     realm_fallback: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Allows configuration if connections*realm*fallback flag is enabled for the tenant
+    """
+    recipient_url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The recipient URL for the SAML assertion. Used when configuring a SAML connection for proxy gateways.
     """
     request_template: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -9460,6 +9468,7 @@ class ConnectionOptionsArgs:
                  custom_scripts: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  debug: pulumi.Input[Optional[_builtins.bool]] = None,
                  decryption_key: pulumi.Input[Optional['ConnectionOptionsDecryptionKeyArgs']] = None,
+                 destination_url: pulumi.Input[Optional[_builtins.str]] = None,
                  digest_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_cache: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable_self_service_change_password: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -9512,6 +9521,7 @@ class ConnectionOptionsArgs:
                  protocol_binding: pulumi.Input[Optional[_builtins.str]] = None,
                  provider: pulumi.Input[Optional[_builtins.str]] = None,
                  realm_fallback: pulumi.Input[Optional[_builtins.bool]] = None,
+                 recipient_url: pulumi.Input[Optional[_builtins.str]] = None,
                  request_template: pulumi.Input[Optional[_builtins.str]] = None,
                  request_token_url: pulumi.Input[Optional[_builtins.str]] = None,
                  requires_username: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -9578,6 +9588,7 @@ class ConnectionOptionsArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_scripts: A map of scripts used to integrate with a custom database.
         :param pulumi.Input[_builtins.bool] debug: When enabled, additional debug information will be generated.
         :param pulumi.Input['ConnectionOptionsDecryptionKeyArgs'] decryption_key: The key used to decrypt encrypted responses from the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
+        :param pulumi.Input[_builtins.str] destination_url: The destination URL for the SAML assertion. Used when configuring a SAML connection for proxy gateways.
         :param pulumi.Input[_builtins.str] digest_algorithm: Sign Request Algorithm Digest.
         :param pulumi.Input[_builtins.bool] disable_cache: Indicates whether to disable the cache or not.
         :param pulumi.Input[_builtins.bool] disable_self_service_change_password: Indicates whether to remove the forgot password link within the New Universal Login.
@@ -9586,7 +9597,7 @@ class ConnectionOptionsArgs:
         :param pulumi.Input[_builtins.str] discovery_url: OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`.
         :param pulumi.Input[_builtins.str] domain: Domain name.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] domain_aliases: List of the domains that can be authenticated using the identity provider. Only needed for Identifier First authentication flows.
-        :param pulumi.Input[_builtins.str] dpop_signing_alg: Signature method used to sign the request. EA Only
+        :param pulumi.Input[_builtins.str] dpop_signing_alg: The algorithm used to sign the DPoP proof. Allowed values: ES256, ES384, ES512, Ed25519.
         :param pulumi.Input[_builtins.bool] email: Indicates whether to request the email scope. Used by some OAuth2 connections (e.g., LINE).
         :param pulumi.Input[_builtins.bool] enable_script_context: Set to `true` to inject context into custom DB scripts (warning: cannot be disabled once enabled).
         :param pulumi.Input[_builtins.bool] enabled_database_customization: Set to `true` to use a legacy user store.
@@ -9630,6 +9641,7 @@ class ConnectionOptionsArgs:
         :param pulumi.Input[_builtins.str] protocol_binding: The SAML Response Binding: how the SAML token is received by Auth0 from the IdP.
         :param pulumi.Input[_builtins.str] provider: Defines the custom `sms_gateway` provider.
         :param pulumi.Input[_builtins.bool] realm_fallback: Allows configuration if connections*realm*fallback flag is enabled for the tenant
+        :param pulumi.Input[_builtins.str] recipient_url: The recipient URL for the SAML assertion. Used when configuring a SAML connection for proxy gateways.
         :param pulumi.Input[_builtins.str] request_template: Template that formats the SAML request.
         :param pulumi.Input[_builtins.str] request_token_url: URL used to obtain an unauthorized request token.
         :param pulumi.Input[_builtins.bool] requires_username: Indicates whether the user is required to provide a username in addition to an email address.
@@ -9720,6 +9732,8 @@ class ConnectionOptionsArgs:
             pulumi.set(__self__, "debug", debug)
         if decryption_key is not None:
             pulumi.set(__self__, "decryption_key", decryption_key)
+        if destination_url is not None:
+            pulumi.set(__self__, "destination_url", destination_url)
         if digest_algorithm is not None:
             pulumi.set(__self__, "digest_algorithm", digest_algorithm)
         if disable_cache is not None:
@@ -9824,6 +9838,8 @@ class ConnectionOptionsArgs:
             pulumi.set(__self__, "provider", provider)
         if realm_fallback is not None:
             pulumi.set(__self__, "realm_fallback", realm_fallback)
+        if recipient_url is not None:
+            pulumi.set(__self__, "recipient_url", recipient_url)
         if request_template is not None:
             pulumi.set(__self__, "request_template", request_template)
         if request_token_url is not None:
@@ -10196,6 +10212,18 @@ class ConnectionOptionsArgs:
         pulumi.set(self, "decryption_key", value)
 
     @_builtins.property
+    @pulumi.getter(name="destinationUrl")
+    def destination_url(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The destination URL for the SAML assertion. Used when configuring a SAML connection for proxy gateways.
+        """
+        return pulumi.get(self, "destination_url")
+
+    @destination_url.setter
+    def destination_url(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "destination_url", value)
+
+    @_builtins.property
     @pulumi.getter(name="digestAlgorithm")
     def digest_algorithm(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -10295,7 +10323,7 @@ class ConnectionOptionsArgs:
     @pulumi.getter(name="dpopSigningAlg")
     def dpop_signing_alg(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Signature method used to sign the request. EA Only
+        The algorithm used to sign the DPoP proof. Allowed values: ES256, ES384, ES512, Ed25519.
         """
         return pulumi.get(self, "dpop_signing_alg")
 
@@ -10818,6 +10846,18 @@ class ConnectionOptionsArgs:
     @realm_fallback.setter
     def realm_fallback(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "realm_fallback", value)
+
+    @_builtins.property
+    @pulumi.getter(name="recipientUrl")
+    def recipient_url(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The recipient URL for the SAML assertion. Used when configuring a SAML connection for proxy gateways.
+        """
+        return pulumi.get(self, "recipient_url")
+
+    @recipient_url.setter
+    def recipient_url(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "recipient_url", value)
 
     @_builtins.property
     @pulumi.getter(name="requestTemplate")

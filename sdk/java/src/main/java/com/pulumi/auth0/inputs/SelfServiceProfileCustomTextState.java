@@ -31,14 +31,14 @@ public final class SelfServiceProfileCustomTextState extends com.pulumi.resource
     }
 
     /**
-     * The language of the custom text
+     * The language of the custom text. Options include: `en`
      * 
      */
     @Import(name="language")
     private @Nullable Output<String> language;
 
     /**
-     * @return The language of the custom text
+     * @return The language of the custom text. Options include: `en`
      * 
      */
     public Optional<Output<String>> language() {
@@ -46,14 +46,14 @@ public final class SelfServiceProfileCustomTextState extends com.pulumi.resource
     }
 
     /**
-     * The page where the custom text is shown
+     * The page where the custom text is shown. Options include: `get-started`
      * 
      */
     @Import(name="page")
     private @Nullable Output<String> page;
 
     /**
-     * @return The page where the custom text is shown
+     * @return The page where the custom text is shown. Options include: `get-started`
      * 
      */
     public Optional<Output<String>> page() {
@@ -124,7 +124,7 @@ public final class SelfServiceProfileCustomTextState extends com.pulumi.resource
         }
 
         /**
-         * @param language The language of the custom text
+         * @param language The language of the custom text. Options include: `en`
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class SelfServiceProfileCustomTextState extends com.pulumi.resource
         }
 
         /**
-         * @param language The language of the custom text
+         * @param language The language of the custom text. Options include: `en`
          * 
          * @return builder
          * 
@@ -145,7 +145,7 @@ public final class SelfServiceProfileCustomTextState extends com.pulumi.resource
         }
 
         /**
-         * @param page The page where the custom text is shown
+         * @param page The page where the custom text is shown. Options include: `get-started`
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class SelfServiceProfileCustomTextState extends com.pulumi.resource
         }
 
         /**
-         * @param page The page where the custom text is shown
+         * @param page The page where the custom text is shown. Options include: `get-started`
          * 
          * @return builder
          * 

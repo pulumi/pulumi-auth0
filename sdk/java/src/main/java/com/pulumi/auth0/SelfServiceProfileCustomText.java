@@ -86,28 +86,28 @@ public class SelfServiceProfileCustomText extends com.pulumi.resources.CustomRes
         return this.body;
     }
     /**
-     * The language of the custom text
+     * The language of the custom text. Options include: `en`
      * 
      */
     @Export(name="language", refs={String.class}, tree="[0]")
     private Output<String> language;
 
     /**
-     * @return The language of the custom text
+     * @return The language of the custom text. Options include: `en`
      * 
      */
     public Output<String> language() {
         return this.language;
     }
     /**
-     * The page where the custom text is shown
+     * The page where the custom text is shown. Options include: `get-started`
      * 
      */
     @Export(name="page", refs={String.class}, tree="[0]")
     private Output<String> page;
 
     /**
-     * @return The page where the custom text is shown
+     * @return The page where the custom text is shown. Options include: `get-started`
      * 
      */
     public Output<String> page() {

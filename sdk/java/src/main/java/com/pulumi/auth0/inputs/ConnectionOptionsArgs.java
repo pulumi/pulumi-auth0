@@ -400,6 +400,21 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * The destination URL for the SAML assertion. Used when configuring a SAML connection for proxy gateways.
+     * 
+     */
+    @Import(name="destinationUrl")
+    private @Nullable Output<String> destinationUrl;
+
+    /**
+     * @return The destination URL for the SAML assertion. Used when configuring a SAML connection for proxy gateways.
+     * 
+     */
+    public Optional<Output<String>> destinationUrl() {
+        return Optional.ofNullable(this.destinationUrl);
+    }
+
+    /**
      * Sign Request Algorithm Digest.
      * 
      */
@@ -520,14 +535,14 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Signature method used to sign the request. EA Only
+     * The algorithm used to sign the DPoP proof. Allowed values: ES256, ES384, ES512, Ed25519.
      * 
      */
     @Import(name="dpopSigningAlg")
     private @Nullable Output<String> dpopSigningAlg;
 
     /**
-     * @return Signature method used to sign the request. EA Only
+     * @return The algorithm used to sign the DPoP proof. Allowed values: ES256, ES384, ES512, Ed25519.
      * 
      */
     public Optional<Output<String>> dpopSigningAlg() {
@@ -1180,6 +1195,21 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * The recipient URL for the SAML assertion. Used when configuring a SAML connection for proxy gateways.
+     * 
+     */
+    @Import(name="recipientUrl")
+    private @Nullable Output<String> recipientUrl;
+
+    /**
+     * @return The recipient URL for the SAML assertion. Used when configuring a SAML connection for proxy gateways.
+     * 
+     */
+    public Optional<Output<String>> recipientUrl() {
+        return Optional.ofNullable(this.recipientUrl);
+    }
+
+    /**
      * Template that formats the SAML request.
      * 
      */
@@ -1821,6 +1851,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         this.customScripts = $.customScripts;
         this.debug = $.debug;
         this.decryptionKey = $.decryptionKey;
+        this.destinationUrl = $.destinationUrl;
         this.digestAlgorithm = $.digestAlgorithm;
         this.disableCache = $.disableCache;
         this.disableSelfServiceChangePassword = $.disableSelfServiceChangePassword;
@@ -1873,6 +1904,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         this.protocolBinding = $.protocolBinding;
         this.provider = $.provider;
         this.realmFallback = $.realmFallback;
+        this.recipientUrl = $.recipientUrl;
         this.requestTemplate = $.requestTemplate;
         this.requestTokenUrl = $.requestTokenUrl;
         this.requiresUsername = $.requiresUsername;
@@ -2479,6 +2511,27 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param destinationUrl The destination URL for the SAML assertion. Used when configuring a SAML connection for proxy gateways.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder destinationUrl(@Nullable Output<String> destinationUrl) {
+            $.destinationUrl = destinationUrl;
+            return this;
+        }
+
+        /**
+         * @param destinationUrl The destination URL for the SAML assertion. Used when configuring a SAML connection for proxy gateways.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder destinationUrl(String destinationUrl) {
+            return destinationUrl(Output.of(destinationUrl));
+        }
+
+        /**
          * @param digestAlgorithm Sign Request Algorithm Digest.
          * 
          * @return builder
@@ -2657,7 +2710,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param dpopSigningAlg Signature method used to sign the request. EA Only
+         * @param dpopSigningAlg The algorithm used to sign the DPoP proof. Allowed values: ES256, ES384, ES512, Ed25519.
          * 
          * @return builder
          * 
@@ -2668,7 +2721,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param dpopSigningAlg Signature method used to sign the request. EA Only
+         * @param dpopSigningAlg The algorithm used to sign the DPoP proof. Allowed values: ES256, ES384, ES512, Ed25519.
          * 
          * @return builder
          * 
@@ -3628,6 +3681,27 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder realmFallback(Boolean realmFallback) {
             return realmFallback(Output.of(realmFallback));
+        }
+
+        /**
+         * @param recipientUrl The recipient URL for the SAML assertion. Used when configuring a SAML connection for proxy gateways.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder recipientUrl(@Nullable Output<String> recipientUrl) {
+            $.recipientUrl = recipientUrl;
+            return this;
+        }
+
+        /**
+         * @param recipientUrl The recipient URL for the SAML assertion. Used when configuring a SAML connection for proxy gateways.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder recipientUrl(String recipientUrl) {
+            return recipientUrl(Output.of(recipientUrl));
         }
 
         /**

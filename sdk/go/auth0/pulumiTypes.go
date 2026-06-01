@@ -10647,43 +10647,43 @@ type ClientAddonsSamlp struct {
 	AuthnContextClassRef *string `pulumi:"authnContextClassRef"`
 	// Protocol binding used for SAML logout responses.
 	Binding *string `pulumi:"binding"`
-	// Indicates whether a UPN claim should be created. Defaults to `true`.
+	// Indicates whether a UPN claim should be created.
 	CreateUpnClaim *bool `pulumi:"createUpnClaim"`
 	// Destination of the SAML Response. If not specified, it will be `AssertionConsumerUrl` of SAMLRequest or callback URL if there was no SAMLRequest.
 	Destination *string `pulumi:"destination"`
-	// Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`. Defaults to `sha1`.
+	// Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`.
 	DigestAlgorithm *string `pulumi:"digestAlgorithm"`
 	// This is a supporting attribute to `mappings` field.Please note this is an experimental field. It should only be used when needed to send a map with keys as slices.
 	FlexibleMappings *string `pulumi:"flexibleMappings"`
-	// Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion. Defaults to `true`.
+	// Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion.
 	IncludeAttributeNameFormat *bool `pulumi:"includeAttributeNameFormat"`
 	// Issuer of the SAML Assertion.
 	Issuer *string `pulumi:"issuer"`
-	// Number of seconds during which the token is valid. Defaults to `3600` seconds.
+	// Number of seconds during which the token is valid.
 	LifetimeInSeconds *int `pulumi:"lifetimeInSeconds"`
 	// Configuration settings for logout.
 	Logout *ClientAddonsSamlpLogout `pulumi:"logout"`
-	// Indicates whether or not to add additional identity information in the token, such as the provider used and the `accessToken`, if available. Defaults to `true`.
+	// Indicates whether or not to add additional identity information in the token, such as the provider used and the `accessToken`, if available.
 	MapIdentities *bool `pulumi:"mapIdentities"`
-	// Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion. Defaults to `false`.
+	// Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion.
 	MapUnknownClaimsAsIs *bool `pulumi:"mapUnknownClaimsAsIs"`
 	// Mappings between the Auth0 user profile property name (`name`) and the output attributes on the SAML attribute in the assertion (`value`).
 	Mappings map[string]string `pulumi:"mappings"`
-	// Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+	// Format of the name identifier.
 	NameIdentifierFormat *string `pulumi:"nameIdentifierFormat"`
 	// Attributes that can be used for Subject/NameID. Auth0 will try each of the attributes of this array in order and use the first value it finds.
 	NameIdentifierProbes []string `pulumi:"nameIdentifierProbes"`
-	// Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion. Defaults to `true`.
+	// Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion.
 	PassthroughClaimsWithNoMapping *bool `pulumi:"passthroughClaimsWithNoMapping"`
 	// Recipient of the SAML Assertion (SubjectConfirmationData). Default is `AssertionConsumerUrl` on SAMLRequest or callback URL if no SAMLRequest was sent.
 	Recipient *string `pulumi:"recipient"`
 	// Indicates whether or not the SAML Response should be signed instead of the SAML Assertion.
 	SignResponse *bool `pulumi:"signResponse"`
-	// Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`. Defaults to `rsa-sha1`.
+	// Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`.
 	SignatureAlgorithm *string `pulumi:"signatureAlgorithm"`
 	// Optionally indicates the public key certificate used to validate SAML requests. If set, SAML requests will be required to be signed. A sample value would be `-----BEGIN PUBLIC KEY-----\nMIGf...bpP/t3\n+JGNGIRMj1hF1rnb6QIDAQAB\n-----END PUBLIC KEY-----\n`.
 	SigningCert *string `pulumi:"signingCert"`
-	// Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to `false`, all `xs:type` are `xs:anyType`. Defaults to `true`.
+	// Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to `false`, all `xs:type` are `xs:anyType`.
 	TypedAttributes *bool `pulumi:"typedAttributes"`
 }
 
@@ -10705,43 +10705,43 @@ type ClientAddonsSamlpArgs struct {
 	AuthnContextClassRef pulumi.StringPtrInput `pulumi:"authnContextClassRef"`
 	// Protocol binding used for SAML logout responses.
 	Binding pulumi.StringPtrInput `pulumi:"binding"`
-	// Indicates whether a UPN claim should be created. Defaults to `true`.
+	// Indicates whether a UPN claim should be created.
 	CreateUpnClaim pulumi.BoolPtrInput `pulumi:"createUpnClaim"`
 	// Destination of the SAML Response. If not specified, it will be `AssertionConsumerUrl` of SAMLRequest or callback URL if there was no SAMLRequest.
 	Destination pulumi.StringPtrInput `pulumi:"destination"`
-	// Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`. Defaults to `sha1`.
+	// Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`.
 	DigestAlgorithm pulumi.StringPtrInput `pulumi:"digestAlgorithm"`
 	// This is a supporting attribute to `mappings` field.Please note this is an experimental field. It should only be used when needed to send a map with keys as slices.
 	FlexibleMappings pulumi.StringPtrInput `pulumi:"flexibleMappings"`
-	// Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion. Defaults to `true`.
+	// Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion.
 	IncludeAttributeNameFormat pulumi.BoolPtrInput `pulumi:"includeAttributeNameFormat"`
 	// Issuer of the SAML Assertion.
 	Issuer pulumi.StringPtrInput `pulumi:"issuer"`
-	// Number of seconds during which the token is valid. Defaults to `3600` seconds.
+	// Number of seconds during which the token is valid.
 	LifetimeInSeconds pulumi.IntPtrInput `pulumi:"lifetimeInSeconds"`
 	// Configuration settings for logout.
 	Logout ClientAddonsSamlpLogoutPtrInput `pulumi:"logout"`
-	// Indicates whether or not to add additional identity information in the token, such as the provider used and the `accessToken`, if available. Defaults to `true`.
+	// Indicates whether or not to add additional identity information in the token, such as the provider used and the `accessToken`, if available.
 	MapIdentities pulumi.BoolPtrInput `pulumi:"mapIdentities"`
-	// Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion. Defaults to `false`.
+	// Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion.
 	MapUnknownClaimsAsIs pulumi.BoolPtrInput `pulumi:"mapUnknownClaimsAsIs"`
 	// Mappings between the Auth0 user profile property name (`name`) and the output attributes on the SAML attribute in the assertion (`value`).
 	Mappings pulumi.StringMapInput `pulumi:"mappings"`
-	// Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+	// Format of the name identifier.
 	NameIdentifierFormat pulumi.StringPtrInput `pulumi:"nameIdentifierFormat"`
 	// Attributes that can be used for Subject/NameID. Auth0 will try each of the attributes of this array in order and use the first value it finds.
 	NameIdentifierProbes pulumi.StringArrayInput `pulumi:"nameIdentifierProbes"`
-	// Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion. Defaults to `true`.
+	// Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion.
 	PassthroughClaimsWithNoMapping pulumi.BoolPtrInput `pulumi:"passthroughClaimsWithNoMapping"`
 	// Recipient of the SAML Assertion (SubjectConfirmationData). Default is `AssertionConsumerUrl` on SAMLRequest or callback URL if no SAMLRequest was sent.
 	Recipient pulumi.StringPtrInput `pulumi:"recipient"`
 	// Indicates whether or not the SAML Response should be signed instead of the SAML Assertion.
 	SignResponse pulumi.BoolPtrInput `pulumi:"signResponse"`
-	// Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`. Defaults to `rsa-sha1`.
+	// Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`.
 	SignatureAlgorithm pulumi.StringPtrInput `pulumi:"signatureAlgorithm"`
 	// Optionally indicates the public key certificate used to validate SAML requests. If set, SAML requests will be required to be signed. A sample value would be `-----BEGIN PUBLIC KEY-----\nMIGf...bpP/t3\n+JGNGIRMj1hF1rnb6QIDAQAB\n-----END PUBLIC KEY-----\n`.
 	SigningCert pulumi.StringPtrInput `pulumi:"signingCert"`
-	// Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to `false`, all `xs:type` are `xs:anyType`. Defaults to `true`.
+	// Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to `false`, all `xs:type` are `xs:anyType`.
 	TypedAttributes pulumi.BoolPtrInput `pulumi:"typedAttributes"`
 }
 
@@ -10837,7 +10837,7 @@ func (o ClientAddonsSamlpOutput) Binding() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSamlp) *string { return v.Binding }).(pulumi.StringPtrOutput)
 }
 
-// Indicates whether a UPN claim should be created. Defaults to `true`.
+// Indicates whether a UPN claim should be created.
 func (o ClientAddonsSamlpOutput) CreateUpnClaim() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSamlp) *bool { return v.CreateUpnClaim }).(pulumi.BoolPtrOutput)
 }
@@ -10847,7 +10847,7 @@ func (o ClientAddonsSamlpOutput) Destination() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSamlp) *string { return v.Destination }).(pulumi.StringPtrOutput)
 }
 
-// Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`. Defaults to `sha1`.
+// Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`.
 func (o ClientAddonsSamlpOutput) DigestAlgorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSamlp) *string { return v.DigestAlgorithm }).(pulumi.StringPtrOutput)
 }
@@ -10857,7 +10857,7 @@ func (o ClientAddonsSamlpOutput) FlexibleMappings() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSamlp) *string { return v.FlexibleMappings }).(pulumi.StringPtrOutput)
 }
 
-// Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion. Defaults to `true`.
+// Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion.
 func (o ClientAddonsSamlpOutput) IncludeAttributeNameFormat() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSamlp) *bool { return v.IncludeAttributeNameFormat }).(pulumi.BoolPtrOutput)
 }
@@ -10867,7 +10867,7 @@ func (o ClientAddonsSamlpOutput) Issuer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSamlp) *string { return v.Issuer }).(pulumi.StringPtrOutput)
 }
 
-// Number of seconds during which the token is valid. Defaults to `3600` seconds.
+// Number of seconds during which the token is valid.
 func (o ClientAddonsSamlpOutput) LifetimeInSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSamlp) *int { return v.LifetimeInSeconds }).(pulumi.IntPtrOutput)
 }
@@ -10877,12 +10877,12 @@ func (o ClientAddonsSamlpOutput) Logout() ClientAddonsSamlpLogoutPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSamlp) *ClientAddonsSamlpLogout { return v.Logout }).(ClientAddonsSamlpLogoutPtrOutput)
 }
 
-// Indicates whether or not to add additional identity information in the token, such as the provider used and the `accessToken`, if available. Defaults to `true`.
+// Indicates whether or not to add additional identity information in the token, such as the provider used and the `accessToken`, if available.
 func (o ClientAddonsSamlpOutput) MapIdentities() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSamlp) *bool { return v.MapIdentities }).(pulumi.BoolPtrOutput)
 }
 
-// Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion. Defaults to `false`.
+// Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion.
 func (o ClientAddonsSamlpOutput) MapUnknownClaimsAsIs() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSamlp) *bool { return v.MapUnknownClaimsAsIs }).(pulumi.BoolPtrOutput)
 }
@@ -10892,7 +10892,7 @@ func (o ClientAddonsSamlpOutput) Mappings() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ClientAddonsSamlp) map[string]string { return v.Mappings }).(pulumi.StringMapOutput)
 }
 
-// Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+// Format of the name identifier.
 func (o ClientAddonsSamlpOutput) NameIdentifierFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSamlp) *string { return v.NameIdentifierFormat }).(pulumi.StringPtrOutput)
 }
@@ -10902,7 +10902,7 @@ func (o ClientAddonsSamlpOutput) NameIdentifierProbes() pulumi.StringArrayOutput
 	return o.ApplyT(func(v ClientAddonsSamlp) []string { return v.NameIdentifierProbes }).(pulumi.StringArrayOutput)
 }
 
-// Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion. Defaults to `true`.
+// Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion.
 func (o ClientAddonsSamlpOutput) PassthroughClaimsWithNoMapping() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSamlp) *bool { return v.PassthroughClaimsWithNoMapping }).(pulumi.BoolPtrOutput)
 }
@@ -10917,7 +10917,7 @@ func (o ClientAddonsSamlpOutput) SignResponse() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSamlp) *bool { return v.SignResponse }).(pulumi.BoolPtrOutput)
 }
 
-// Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`. Defaults to `rsa-sha1`.
+// Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`.
 func (o ClientAddonsSamlpOutput) SignatureAlgorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSamlp) *string { return v.SignatureAlgorithm }).(pulumi.StringPtrOutput)
 }
@@ -10927,7 +10927,7 @@ func (o ClientAddonsSamlpOutput) SigningCert() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSamlp) *string { return v.SigningCert }).(pulumi.StringPtrOutput)
 }
 
-// Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to `false`, all `xs:type` are `xs:anyType`. Defaults to `true`.
+// Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to `false`, all `xs:type` are `xs:anyType`.
 func (o ClientAddonsSamlpOutput) TypedAttributes() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClientAddonsSamlp) *bool { return v.TypedAttributes }).(pulumi.BoolPtrOutput)
 }
@@ -10986,7 +10986,7 @@ func (o ClientAddonsSamlpPtrOutput) Binding() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Indicates whether a UPN claim should be created. Defaults to `true`.
+// Indicates whether a UPN claim should be created.
 func (o ClientAddonsSamlpPtrOutput) CreateUpnClaim() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsSamlp) *bool {
 		if v == nil {
@@ -11006,7 +11006,7 @@ func (o ClientAddonsSamlpPtrOutput) Destination() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`. Defaults to `sha1`.
+// Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`.
 func (o ClientAddonsSamlpPtrOutput) DigestAlgorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsSamlp) *string {
 		if v == nil {
@@ -11026,7 +11026,7 @@ func (o ClientAddonsSamlpPtrOutput) FlexibleMappings() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion. Defaults to `true`.
+// Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion.
 func (o ClientAddonsSamlpPtrOutput) IncludeAttributeNameFormat() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsSamlp) *bool {
 		if v == nil {
@@ -11046,7 +11046,7 @@ func (o ClientAddonsSamlpPtrOutput) Issuer() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Number of seconds during which the token is valid. Defaults to `3600` seconds.
+// Number of seconds during which the token is valid.
 func (o ClientAddonsSamlpPtrOutput) LifetimeInSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsSamlp) *int {
 		if v == nil {
@@ -11066,7 +11066,7 @@ func (o ClientAddonsSamlpPtrOutput) Logout() ClientAddonsSamlpLogoutPtrOutput {
 	}).(ClientAddonsSamlpLogoutPtrOutput)
 }
 
-// Indicates whether or not to add additional identity information in the token, such as the provider used and the `accessToken`, if available. Defaults to `true`.
+// Indicates whether or not to add additional identity information in the token, such as the provider used and the `accessToken`, if available.
 func (o ClientAddonsSamlpPtrOutput) MapIdentities() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsSamlp) *bool {
 		if v == nil {
@@ -11076,7 +11076,7 @@ func (o ClientAddonsSamlpPtrOutput) MapIdentities() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion. Defaults to `false`.
+// Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion.
 func (o ClientAddonsSamlpPtrOutput) MapUnknownClaimsAsIs() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsSamlp) *bool {
 		if v == nil {
@@ -11096,7 +11096,7 @@ func (o ClientAddonsSamlpPtrOutput) Mappings() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+// Format of the name identifier.
 func (o ClientAddonsSamlpPtrOutput) NameIdentifierFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsSamlp) *string {
 		if v == nil {
@@ -11116,7 +11116,7 @@ func (o ClientAddonsSamlpPtrOutput) NameIdentifierProbes() pulumi.StringArrayOut
 	}).(pulumi.StringArrayOutput)
 }
 
-// Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion. Defaults to `true`.
+// Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion.
 func (o ClientAddonsSamlpPtrOutput) PassthroughClaimsWithNoMapping() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsSamlp) *bool {
 		if v == nil {
@@ -11146,7 +11146,7 @@ func (o ClientAddonsSamlpPtrOutput) SignResponse() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`. Defaults to `rsa-sha1`.
+// Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`.
 func (o ClientAddonsSamlpPtrOutput) SignatureAlgorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsSamlp) *string {
 		if v == nil {
@@ -11166,7 +11166,7 @@ func (o ClientAddonsSamlpPtrOutput) SigningCert() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to `false`, all `xs:type` are `xs:anyType`. Defaults to `true`.
+// Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to `false`, all `xs:type` are `xs:anyType`.
 func (o ClientAddonsSamlpPtrOutput) TypedAttributes() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClientAddonsSamlp) *bool {
 		if v == nil {
@@ -18995,6 +18995,8 @@ type ConnectionOptions struct {
 	Debug *bool `pulumi:"debug"`
 	// The key used to decrypt encrypted responses from the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
 	DecryptionKey *ConnectionOptionsDecryptionKey `pulumi:"decryptionKey"`
+	// The destination URL for the SAML assertion. Used when configuring a SAML connection for proxy gateways.
+	DestinationUrl *string `pulumi:"destinationUrl"`
 	// Sign Request Algorithm Digest.
 	DigestAlgorithm *string `pulumi:"digestAlgorithm"`
 	// Indicates whether to disable the cache or not.
@@ -19011,7 +19013,7 @@ type ConnectionOptions struct {
 	Domain *string `pulumi:"domain"`
 	// List of the domains that can be authenticated using the identity provider. Only needed for Identifier First authentication flows.
 	DomainAliases []string `pulumi:"domainAliases"`
-	// Signature method used to sign the request. EA Only
+	// The algorithm used to sign the DPoP proof. Allowed values: ES256, ES384, ES512, Ed25519.
 	DpopSigningAlg *string `pulumi:"dpopSigningAlg"`
 	// Indicates whether to request the email scope. Used by some OAuth2 connections (e.g., LINE).
 	Email *bool `pulumi:"email"`
@@ -19099,6 +19101,8 @@ type ConnectionOptions struct {
 	Provider *string `pulumi:"provider"`
 	// Allows configuration if connections*realm*fallback flag is enabled for the tenant
 	RealmFallback *bool `pulumi:"realmFallback"`
+	// The recipient URL for the SAML assertion. Used when configuring a SAML connection for proxy gateways.
+	RecipientUrl *string `pulumi:"recipientUrl"`
 	// Template that formats the SAML request.
 	RequestTemplate *string `pulumi:"requestTemplate"`
 	// URL used to obtain an unauthorized request token.
@@ -19243,6 +19247,8 @@ type ConnectionOptionsArgs struct {
 	Debug pulumi.BoolPtrInput `pulumi:"debug"`
 	// The key used to decrypt encrypted responses from the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
 	DecryptionKey ConnectionOptionsDecryptionKeyPtrInput `pulumi:"decryptionKey"`
+	// The destination URL for the SAML assertion. Used when configuring a SAML connection for proxy gateways.
+	DestinationUrl pulumi.StringPtrInput `pulumi:"destinationUrl"`
 	// Sign Request Algorithm Digest.
 	DigestAlgorithm pulumi.StringPtrInput `pulumi:"digestAlgorithm"`
 	// Indicates whether to disable the cache or not.
@@ -19259,7 +19265,7 @@ type ConnectionOptionsArgs struct {
 	Domain pulumi.StringPtrInput `pulumi:"domain"`
 	// List of the domains that can be authenticated using the identity provider. Only needed for Identifier First authentication flows.
 	DomainAliases pulumi.StringArrayInput `pulumi:"domainAliases"`
-	// Signature method used to sign the request. EA Only
+	// The algorithm used to sign the DPoP proof. Allowed values: ES256, ES384, ES512, Ed25519.
 	DpopSigningAlg pulumi.StringPtrInput `pulumi:"dpopSigningAlg"`
 	// Indicates whether to request the email scope. Used by some OAuth2 connections (e.g., LINE).
 	Email pulumi.BoolPtrInput `pulumi:"email"`
@@ -19347,6 +19353,8 @@ type ConnectionOptionsArgs struct {
 	Provider pulumi.StringPtrInput `pulumi:"provider"`
 	// Allows configuration if connections*realm*fallback flag is enabled for the tenant
 	RealmFallback pulumi.BoolPtrInput `pulumi:"realmFallback"`
+	// The recipient URL for the SAML assertion. Used when configuring a SAML connection for proxy gateways.
+	RecipientUrl pulumi.StringPtrInput `pulumi:"recipientUrl"`
 	// Template that formats the SAML request.
 	RequestTemplate pulumi.StringPtrInput `pulumi:"requestTemplate"`
 	// URL used to obtain an unauthorized request token.
@@ -19628,6 +19636,11 @@ func (o ConnectionOptionsOutput) DecryptionKey() ConnectionOptionsDecryptionKeyP
 	return o.ApplyT(func(v ConnectionOptions) *ConnectionOptionsDecryptionKey { return v.DecryptionKey }).(ConnectionOptionsDecryptionKeyPtrOutput)
 }
 
+// The destination URL for the SAML assertion. Used when configuring a SAML connection for proxy gateways.
+func (o ConnectionOptionsOutput) DestinationUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *string { return v.DestinationUrl }).(pulumi.StringPtrOutput)
+}
+
 // Sign Request Algorithm Digest.
 func (o ConnectionOptionsOutput) DigestAlgorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.DigestAlgorithm }).(pulumi.StringPtrOutput)
@@ -19668,7 +19681,7 @@ func (o ConnectionOptionsOutput) DomainAliases() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConnectionOptions) []string { return v.DomainAliases }).(pulumi.StringArrayOutput)
 }
 
-// Signature method used to sign the request. EA Only
+// The algorithm used to sign the DPoP proof. Allowed values: ES256, ES384, ES512, Ed25519.
 func (o ConnectionOptionsOutput) DpopSigningAlg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.DpopSigningAlg }).(pulumi.StringPtrOutput)
 }
@@ -19890,6 +19903,11 @@ func (o ConnectionOptionsOutput) Provider() pulumi.StringPtrOutput {
 // Allows configuration if connections*realm*fallback flag is enabled for the tenant
 func (o ConnectionOptionsOutput) RealmFallback() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *bool { return v.RealmFallback }).(pulumi.BoolPtrOutput)
+}
+
+// The recipient URL for the SAML assertion. Used when configuring a SAML connection for proxy gateways.
+func (o ConnectionOptionsOutput) RecipientUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *string { return v.RecipientUrl }).(pulumi.StringPtrOutput)
 }
 
 // Template that formats the SAML request.
@@ -20361,6 +20379,16 @@ func (o ConnectionOptionsPtrOutput) DecryptionKey() ConnectionOptionsDecryptionK
 	}).(ConnectionOptionsDecryptionKeyPtrOutput)
 }
 
+// The destination URL for the SAML assertion. Used when configuring a SAML connection for proxy gateways.
+func (o ConnectionOptionsPtrOutput) DestinationUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DestinationUrl
+	}).(pulumi.StringPtrOutput)
+}
+
 // Sign Request Algorithm Digest.
 func (o ConnectionOptionsPtrOutput) DigestAlgorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *string {
@@ -20441,7 +20469,7 @@ func (o ConnectionOptionsPtrOutput) DomainAliases() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Signature method used to sign the request. EA Only
+// The algorithm used to sign the DPoP proof. Allowed values: ES256, ES384, ES512, Ed25519.
 func (o ConnectionOptionsPtrOutput) DpopSigningAlg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *string {
 		if v == nil {
@@ -20879,6 +20907,16 @@ func (o ConnectionOptionsPtrOutput) RealmFallback() pulumi.BoolPtrOutput {
 		}
 		return v.RealmFallback
 	}).(pulumi.BoolPtrOutput)
+}
+
+// The recipient URL for the SAML assertion. Used when configuring a SAML connection for proxy gateways.
+func (o ConnectionOptionsPtrOutput) RecipientUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RecipientUrl
+	}).(pulumi.StringPtrOutput)
 }
 
 // Template that formats the SAML request.
@@ -52088,43 +52126,43 @@ type GetClientAddonSamlp struct {
 	AuthnContextClassRef string `pulumi:"authnContextClassRef"`
 	// Protocol binding used for SAML logout responses.
 	Binding string `pulumi:"binding"`
-	// Indicates whether a UPN claim should be created. Defaults to `true`.
+	// Indicates whether a UPN claim should be created.
 	CreateUpnClaim bool `pulumi:"createUpnClaim"`
 	// Destination of the SAML Response. If not specified, it will be `AssertionConsumerUrl` of SAMLRequest or callback URL if there was no SAMLRequest.
 	Destination string `pulumi:"destination"`
-	// Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`. Defaults to `sha1`.
+	// Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`.
 	DigestAlgorithm string `pulumi:"digestAlgorithm"`
 	// This is a supporting attribute to `mappings` field.Please note this is an experimental field. It should only be used when needed to send a map with keys as slices.
 	FlexibleMappings string `pulumi:"flexibleMappings"`
-	// Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion. Defaults to `true`.
+	// Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion.
 	IncludeAttributeNameFormat bool `pulumi:"includeAttributeNameFormat"`
 	// Issuer of the SAML Assertion.
 	Issuer string `pulumi:"issuer"`
-	// Number of seconds during which the token is valid. Defaults to `3600` seconds.
+	// Number of seconds during which the token is valid.
 	LifetimeInSeconds int `pulumi:"lifetimeInSeconds"`
 	// Configuration settings for logout.
 	Logouts []GetClientAddonSamlpLogout `pulumi:"logouts"`
-	// Indicates whether or not to add additional identity information in the token, such as the provider used and the `accessToken`, if available. Defaults to `true`.
+	// Indicates whether or not to add additional identity information in the token, such as the provider used and the `accessToken`, if available.
 	MapIdentities bool `pulumi:"mapIdentities"`
-	// Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion. Defaults to `false`.
+	// Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion.
 	MapUnknownClaimsAsIs bool `pulumi:"mapUnknownClaimsAsIs"`
 	// Mappings between the Auth0 user profile property name (`name`) and the output attributes on the SAML attribute in the assertion (`value`).
 	Mappings map[string]string `pulumi:"mappings"`
-	// Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+	// Format of the name identifier.
 	NameIdentifierFormat string `pulumi:"nameIdentifierFormat"`
 	// Attributes that can be used for Subject/NameID. Auth0 will try each of the attributes of this array in order and use the first value it finds.
 	NameIdentifierProbes []string `pulumi:"nameIdentifierProbes"`
-	// Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion. Defaults to `true`.
+	// Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion.
 	PassthroughClaimsWithNoMapping bool `pulumi:"passthroughClaimsWithNoMapping"`
 	// Recipient of the SAML Assertion (SubjectConfirmationData). Default is `AssertionConsumerUrl` on SAMLRequest or callback URL if no SAMLRequest was sent.
 	Recipient string `pulumi:"recipient"`
 	// Indicates whether or not the SAML Response should be signed instead of the SAML Assertion.
 	SignResponse bool `pulumi:"signResponse"`
-	// Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`. Defaults to `rsa-sha1`.
+	// Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`.
 	SignatureAlgorithm string `pulumi:"signatureAlgorithm"`
 	// Optionally indicates the public key certificate used to validate SAML requests. If set, SAML requests will be required to be signed. A sample value would be `-----BEGIN PUBLIC KEY-----\nMIGf...bpP/t3\n+JGNGIRMj1hF1rnb6QIDAQAB\n-----END PUBLIC KEY-----\n`.
 	SigningCert string `pulumi:"signingCert"`
-	// Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to `false`, all `xs:type` are `xs:anyType`. Defaults to `true`.
+	// Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to `false`, all `xs:type` are `xs:anyType`.
 	TypedAttributes bool `pulumi:"typedAttributes"`
 }
 
@@ -52146,43 +52184,43 @@ type GetClientAddonSamlpArgs struct {
 	AuthnContextClassRef pulumi.StringInput `pulumi:"authnContextClassRef"`
 	// Protocol binding used for SAML logout responses.
 	Binding pulumi.StringInput `pulumi:"binding"`
-	// Indicates whether a UPN claim should be created. Defaults to `true`.
+	// Indicates whether a UPN claim should be created.
 	CreateUpnClaim pulumi.BoolInput `pulumi:"createUpnClaim"`
 	// Destination of the SAML Response. If not specified, it will be `AssertionConsumerUrl` of SAMLRequest or callback URL if there was no SAMLRequest.
 	Destination pulumi.StringInput `pulumi:"destination"`
-	// Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`. Defaults to `sha1`.
+	// Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`.
 	DigestAlgorithm pulumi.StringInput `pulumi:"digestAlgorithm"`
 	// This is a supporting attribute to `mappings` field.Please note this is an experimental field. It should only be used when needed to send a map with keys as slices.
 	FlexibleMappings pulumi.StringInput `pulumi:"flexibleMappings"`
-	// Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion. Defaults to `true`.
+	// Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion.
 	IncludeAttributeNameFormat pulumi.BoolInput `pulumi:"includeAttributeNameFormat"`
 	// Issuer of the SAML Assertion.
 	Issuer pulumi.StringInput `pulumi:"issuer"`
-	// Number of seconds during which the token is valid. Defaults to `3600` seconds.
+	// Number of seconds during which the token is valid.
 	LifetimeInSeconds pulumi.IntInput `pulumi:"lifetimeInSeconds"`
 	// Configuration settings for logout.
 	Logouts GetClientAddonSamlpLogoutArrayInput `pulumi:"logouts"`
-	// Indicates whether or not to add additional identity information in the token, such as the provider used and the `accessToken`, if available. Defaults to `true`.
+	// Indicates whether or not to add additional identity information in the token, such as the provider used and the `accessToken`, if available.
 	MapIdentities pulumi.BoolInput `pulumi:"mapIdentities"`
-	// Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion. Defaults to `false`.
+	// Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion.
 	MapUnknownClaimsAsIs pulumi.BoolInput `pulumi:"mapUnknownClaimsAsIs"`
 	// Mappings between the Auth0 user profile property name (`name`) and the output attributes on the SAML attribute in the assertion (`value`).
 	Mappings pulumi.StringMapInput `pulumi:"mappings"`
-	// Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+	// Format of the name identifier.
 	NameIdentifierFormat pulumi.StringInput `pulumi:"nameIdentifierFormat"`
 	// Attributes that can be used for Subject/NameID. Auth0 will try each of the attributes of this array in order and use the first value it finds.
 	NameIdentifierProbes pulumi.StringArrayInput `pulumi:"nameIdentifierProbes"`
-	// Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion. Defaults to `true`.
+	// Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion.
 	PassthroughClaimsWithNoMapping pulumi.BoolInput `pulumi:"passthroughClaimsWithNoMapping"`
 	// Recipient of the SAML Assertion (SubjectConfirmationData). Default is `AssertionConsumerUrl` on SAMLRequest or callback URL if no SAMLRequest was sent.
 	Recipient pulumi.StringInput `pulumi:"recipient"`
 	// Indicates whether or not the SAML Response should be signed instead of the SAML Assertion.
 	SignResponse pulumi.BoolInput `pulumi:"signResponse"`
-	// Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`. Defaults to `rsa-sha1`.
+	// Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`.
 	SignatureAlgorithm pulumi.StringInput `pulumi:"signatureAlgorithm"`
 	// Optionally indicates the public key certificate used to validate SAML requests. If set, SAML requests will be required to be signed. A sample value would be `-----BEGIN PUBLIC KEY-----\nMIGf...bpP/t3\n+JGNGIRMj1hF1rnb6QIDAQAB\n-----END PUBLIC KEY-----\n`.
 	SigningCert pulumi.StringInput `pulumi:"signingCert"`
-	// Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to `false`, all `xs:type` are `xs:anyType`. Defaults to `true`.
+	// Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to `false`, all `xs:type` are `xs:anyType`.
 	TypedAttributes pulumi.BoolInput `pulumi:"typedAttributes"`
 }
 
@@ -52252,7 +52290,7 @@ func (o GetClientAddonSamlpOutput) Binding() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClientAddonSamlp) string { return v.Binding }).(pulumi.StringOutput)
 }
 
-// Indicates whether a UPN claim should be created. Defaults to `true`.
+// Indicates whether a UPN claim should be created.
 func (o GetClientAddonSamlpOutput) CreateUpnClaim() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetClientAddonSamlp) bool { return v.CreateUpnClaim }).(pulumi.BoolOutput)
 }
@@ -52262,7 +52300,7 @@ func (o GetClientAddonSamlpOutput) Destination() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClientAddonSamlp) string { return v.Destination }).(pulumi.StringOutput)
 }
 
-// Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`. Defaults to `sha1`.
+// Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`.
 func (o GetClientAddonSamlpOutput) DigestAlgorithm() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClientAddonSamlp) string { return v.DigestAlgorithm }).(pulumi.StringOutput)
 }
@@ -52272,7 +52310,7 @@ func (o GetClientAddonSamlpOutput) FlexibleMappings() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClientAddonSamlp) string { return v.FlexibleMappings }).(pulumi.StringOutput)
 }
 
-// Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion. Defaults to `true`.
+// Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion.
 func (o GetClientAddonSamlpOutput) IncludeAttributeNameFormat() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetClientAddonSamlp) bool { return v.IncludeAttributeNameFormat }).(pulumi.BoolOutput)
 }
@@ -52282,7 +52320,7 @@ func (o GetClientAddonSamlpOutput) Issuer() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClientAddonSamlp) string { return v.Issuer }).(pulumi.StringOutput)
 }
 
-// Number of seconds during which the token is valid. Defaults to `3600` seconds.
+// Number of seconds during which the token is valid.
 func (o GetClientAddonSamlpOutput) LifetimeInSeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v GetClientAddonSamlp) int { return v.LifetimeInSeconds }).(pulumi.IntOutput)
 }
@@ -52292,12 +52330,12 @@ func (o GetClientAddonSamlpOutput) Logouts() GetClientAddonSamlpLogoutArrayOutpu
 	return o.ApplyT(func(v GetClientAddonSamlp) []GetClientAddonSamlpLogout { return v.Logouts }).(GetClientAddonSamlpLogoutArrayOutput)
 }
 
-// Indicates whether or not to add additional identity information in the token, such as the provider used and the `accessToken`, if available. Defaults to `true`.
+// Indicates whether or not to add additional identity information in the token, such as the provider used and the `accessToken`, if available.
 func (o GetClientAddonSamlpOutput) MapIdentities() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetClientAddonSamlp) bool { return v.MapIdentities }).(pulumi.BoolOutput)
 }
 
-// Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion. Defaults to `false`.
+// Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion.
 func (o GetClientAddonSamlpOutput) MapUnknownClaimsAsIs() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetClientAddonSamlp) bool { return v.MapUnknownClaimsAsIs }).(pulumi.BoolOutput)
 }
@@ -52307,7 +52345,7 @@ func (o GetClientAddonSamlpOutput) Mappings() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetClientAddonSamlp) map[string]string { return v.Mappings }).(pulumi.StringMapOutput)
 }
 
-// Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+// Format of the name identifier.
 func (o GetClientAddonSamlpOutput) NameIdentifierFormat() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClientAddonSamlp) string { return v.NameIdentifierFormat }).(pulumi.StringOutput)
 }
@@ -52317,7 +52355,7 @@ func (o GetClientAddonSamlpOutput) NameIdentifierProbes() pulumi.StringArrayOutp
 	return o.ApplyT(func(v GetClientAddonSamlp) []string { return v.NameIdentifierProbes }).(pulumi.StringArrayOutput)
 }
 
-// Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion. Defaults to `true`.
+// Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion.
 func (o GetClientAddonSamlpOutput) PassthroughClaimsWithNoMapping() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetClientAddonSamlp) bool { return v.PassthroughClaimsWithNoMapping }).(pulumi.BoolOutput)
 }
@@ -52332,7 +52370,7 @@ func (o GetClientAddonSamlpOutput) SignResponse() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetClientAddonSamlp) bool { return v.SignResponse }).(pulumi.BoolOutput)
 }
 
-// Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`. Defaults to `rsa-sha1`.
+// Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`.
 func (o GetClientAddonSamlpOutput) SignatureAlgorithm() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClientAddonSamlp) string { return v.SignatureAlgorithm }).(pulumi.StringOutput)
 }
@@ -52342,7 +52380,7 @@ func (o GetClientAddonSamlpOutput) SigningCert() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClientAddonSamlp) string { return v.SigningCert }).(pulumi.StringOutput)
 }
 
-// Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to `false`, all `xs:type` are `xs:anyType`. Defaults to `true`.
+// Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to `false`, all `xs:type` are `xs:anyType`.
 func (o GetClientAddonSamlpOutput) TypedAttributes() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetClientAddonSamlp) bool { return v.TypedAttributes }).(pulumi.BoolOutput)
 }
@@ -59324,6 +59362,8 @@ type GetConnectionOption struct {
 	Debug bool `pulumi:"debug"`
 	// The key used to decrypt encrypted responses from the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
 	DecryptionKeys []GetConnectionOptionDecryptionKey `pulumi:"decryptionKeys"`
+	// The destination URL for the SAML assertion. Used when configuring a SAML connection for proxy gateways.
+	DestinationUrl string `pulumi:"destinationUrl"`
 	// Sign Request Algorithm Digest.
 	DigestAlgorithm string `pulumi:"digestAlgorithm"`
 	// Indicates whether to disable the cache or not.
@@ -59340,7 +59380,7 @@ type GetConnectionOption struct {
 	Domain string `pulumi:"domain"`
 	// List of the domains that can be authenticated using the identity provider. Only needed for Identifier First authentication flows.
 	DomainAliases []string `pulumi:"domainAliases"`
-	// Signature method used to sign the request. EA Only
+	// The algorithm used to sign the DPoP proof. Allowed values: ES256, ES384, ES512, Ed25519.
 	DpopSigningAlg string `pulumi:"dpopSigningAlg"`
 	// Indicates whether to request the email scope. Used by some OAuth2 connections (e.g., LINE).
 	Email bool `pulumi:"email"`
@@ -59428,6 +59468,8 @@ type GetConnectionOption struct {
 	Provider string `pulumi:"provider"`
 	// Allows configuration if connectionsRealmFallback flag is enabled for the tenant
 	RealmFallback bool `pulumi:"realmFallback"`
+	// The recipient URL for the SAML assertion. Used when configuring a SAML connection for proxy gateways.
+	RecipientUrl string `pulumi:"recipientUrl"`
 	// Template that formats the SAML request.
 	RequestTemplate string `pulumi:"requestTemplate"`
 	// URL used to obtain an unauthorized request token.
@@ -59572,6 +59614,8 @@ type GetConnectionOptionArgs struct {
 	Debug pulumi.BoolInput `pulumi:"debug"`
 	// The key used to decrypt encrypted responses from the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
 	DecryptionKeys GetConnectionOptionDecryptionKeyArrayInput `pulumi:"decryptionKeys"`
+	// The destination URL for the SAML assertion. Used when configuring a SAML connection for proxy gateways.
+	DestinationUrl pulumi.StringInput `pulumi:"destinationUrl"`
 	// Sign Request Algorithm Digest.
 	DigestAlgorithm pulumi.StringInput `pulumi:"digestAlgorithm"`
 	// Indicates whether to disable the cache or not.
@@ -59588,7 +59632,7 @@ type GetConnectionOptionArgs struct {
 	Domain pulumi.StringInput `pulumi:"domain"`
 	// List of the domains that can be authenticated using the identity provider. Only needed for Identifier First authentication flows.
 	DomainAliases pulumi.StringArrayInput `pulumi:"domainAliases"`
-	// Signature method used to sign the request. EA Only
+	// The algorithm used to sign the DPoP proof. Allowed values: ES256, ES384, ES512, Ed25519.
 	DpopSigningAlg pulumi.StringInput `pulumi:"dpopSigningAlg"`
 	// Indicates whether to request the email scope. Used by some OAuth2 connections (e.g., LINE).
 	Email pulumi.BoolInput `pulumi:"email"`
@@ -59676,6 +59720,8 @@ type GetConnectionOptionArgs struct {
 	Provider pulumi.StringInput `pulumi:"provider"`
 	// Allows configuration if connectionsRealmFallback flag is enabled for the tenant
 	RealmFallback pulumi.BoolInput `pulumi:"realmFallback"`
+	// The recipient URL for the SAML assertion. Used when configuring a SAML connection for proxy gateways.
+	RecipientUrl pulumi.StringInput `pulumi:"recipientUrl"`
 	// Template that formats the SAML request.
 	RequestTemplate pulumi.StringInput `pulumi:"requestTemplate"`
 	// URL used to obtain an unauthorized request token.
@@ -59931,6 +59977,11 @@ func (o GetConnectionOptionOutput) DecryptionKeys() GetConnectionOptionDecryptio
 	return o.ApplyT(func(v GetConnectionOption) []GetConnectionOptionDecryptionKey { return v.DecryptionKeys }).(GetConnectionOptionDecryptionKeyArrayOutput)
 }
 
+// The destination URL for the SAML assertion. Used when configuring a SAML connection for proxy gateways.
+func (o GetConnectionOptionOutput) DestinationUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.DestinationUrl }).(pulumi.StringOutput)
+}
+
 // Sign Request Algorithm Digest.
 func (o GetConnectionOptionOutput) DigestAlgorithm() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionOption) string { return v.DigestAlgorithm }).(pulumi.StringOutput)
@@ -59971,7 +60022,7 @@ func (o GetConnectionOptionOutput) DomainAliases() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetConnectionOption) []string { return v.DomainAliases }).(pulumi.StringArrayOutput)
 }
 
-// Signature method used to sign the request. EA Only
+// The algorithm used to sign the DPoP proof. Allowed values: ES256, ES384, ES512, Ed25519.
 func (o GetConnectionOptionOutput) DpopSigningAlg() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionOption) string { return v.DpopSigningAlg }).(pulumi.StringOutput)
 }
@@ -60197,6 +60248,11 @@ func (o GetConnectionOptionOutput) Provider() pulumi.StringOutput {
 // Allows configuration if connectionsRealmFallback flag is enabled for the tenant
 func (o GetConnectionOptionOutput) RealmFallback() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetConnectionOption) bool { return v.RealmFallback }).(pulumi.BoolOutput)
+}
+
+// The recipient URL for the SAML assertion. Used when configuring a SAML connection for proxy gateways.
+func (o GetConnectionOptionOutput) RecipientUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.RecipientUrl }).(pulumi.StringOutput)
 }
 
 // Template that formats the SAML request.

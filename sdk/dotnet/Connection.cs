@@ -675,6 +675,8 @@ namespace Pulumi.Auth0
     ///             SignOutEndpoint = "https://saml.provider/sign_out",
     ///             GlobalTokenRevocationJwtIss = "issuer.example.com",
     ///             GlobalTokenRevocationJwtSub = "user123",
+    ///             DestinationUrl = "https://example.com/saml/destination",
+    ///             RecipientUrl = "https://example.com/saml/recipient",
     ///             DisableSignOut = true,
     ///             StrategyVersion = 2,
     ///             TenantDomain = "example.com",
