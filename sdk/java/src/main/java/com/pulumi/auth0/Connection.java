@@ -808,6 +808,8 @@ import javax.annotation.Nullable;
  *                 .signOutEndpoint("https://saml.provider/sign_out")
  *                 .globalTokenRevocationJwtIss("issuer.example.com")
  *                 .globalTokenRevocationJwtSub("user123")
+ *                 .destinationUrl("https://example.com/saml/destination")
+ *                 .recipientUrl("https://example.com/saml/recipient")
  *                 .disableSignOut(true)
  *                 .strategyVersion(2)
  *                 .tenantDomain("example.com")

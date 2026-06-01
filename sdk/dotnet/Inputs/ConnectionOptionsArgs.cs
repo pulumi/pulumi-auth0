@@ -213,6 +213,12 @@ namespace Pulumi.Auth0.Inputs
         public Input<Inputs.ConnectionOptionsDecryptionKeyArgs>? DecryptionKey { get; set; }
 
         /// <summary>
+        /// The destination URL for the SAML assertion. Used when configuring a SAML connection for proxy gateways.
+        /// </summary>
+        [Input("destinationUrl")]
+        public Input<string>? DestinationUrl { get; set; }
+
+        /// <summary>
         /// Sign Request Algorithm Digest.
         /// </summary>
         [Input("digestAlgorithm")]
@@ -267,7 +273,7 @@ namespace Pulumi.Auth0.Inputs
         }
 
         /// <summary>
-        /// Signature method used to sign the request. EA Only
+        /// The algorithm used to sign the DPoP proof. Allowed values: ES256, ES384, ES512, Ed25519.
         /// </summary>
         [Input("dpopSigningAlg")]
         public Input<string>? DpopSigningAlg { get; set; }
@@ -559,6 +565,12 @@ namespace Pulumi.Auth0.Inputs
         /// </summary>
         [Input("realmFallback")]
         public Input<bool>? RealmFallback { get; set; }
+
+        /// <summary>
+        /// The recipient URL for the SAML assertion. Used when configuring a SAML connection for proxy gateways.
+        /// </summary>
+        [Input("recipientUrl")]
+        public Input<string>? RecipientUrl { get; set; }
 
         /// <summary>
         /// Template that formats the SAML request.

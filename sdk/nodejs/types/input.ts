@@ -1064,7 +1064,7 @@ export interface ClientAddonsSamlp {
      */
     binding?: pulumi.Input<string | undefined>;
     /**
-     * Indicates whether a UPN claim should be created. Defaults to `true`.
+     * Indicates whether a UPN claim should be created.
      */
     createUpnClaim?: pulumi.Input<boolean | undefined>;
     /**
@@ -1072,7 +1072,7 @@ export interface ClientAddonsSamlp {
      */
     destination?: pulumi.Input<string | undefined>;
     /**
-     * Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`. Defaults to `sha1`.
+     * Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`.
      */
     digestAlgorithm?: pulumi.Input<string | undefined>;
     /**
@@ -1080,7 +1080,7 @@ export interface ClientAddonsSamlp {
      */
     flexibleMappings?: pulumi.Input<string | undefined>;
     /**
-     * Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion. Defaults to `true`.
+     * Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion.
      */
     includeAttributeNameFormat?: pulumi.Input<boolean | undefined>;
     /**
@@ -1088,7 +1088,7 @@ export interface ClientAddonsSamlp {
      */
     issuer?: pulumi.Input<string | undefined>;
     /**
-     * Number of seconds during which the token is valid. Defaults to `3600` seconds.
+     * Number of seconds during which the token is valid.
      */
     lifetimeInSeconds?: pulumi.Input<number | undefined>;
     /**
@@ -1096,11 +1096,11 @@ export interface ClientAddonsSamlp {
      */
     logout?: pulumi.Input<inputs.ClientAddonsSamlpLogout | undefined>;
     /**
-     * Indicates whether or not to add additional identity information in the token, such as the provider used and the `accessToken`, if available. Defaults to `true`.
+     * Indicates whether or not to add additional identity information in the token, such as the provider used and the `accessToken`, if available.
      */
     mapIdentities?: pulumi.Input<boolean | undefined>;
     /**
-     * Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion. Defaults to `false`.
+     * Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion.
      */
     mapUnknownClaimsAsIs?: pulumi.Input<boolean | undefined>;
     /**
@@ -1108,7 +1108,7 @@ export interface ClientAddonsSamlp {
      */
     mappings?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+     * Format of the name identifier.
      */
     nameIdentifierFormat?: pulumi.Input<string | undefined>;
     /**
@@ -1116,7 +1116,7 @@ export interface ClientAddonsSamlp {
      */
     nameIdentifierProbes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion. Defaults to `true`.
+     * Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion.
      */
     passthroughClaimsWithNoMapping?: pulumi.Input<boolean | undefined>;
     /**
@@ -1128,7 +1128,7 @@ export interface ClientAddonsSamlp {
      */
     signResponse?: pulumi.Input<boolean | undefined>;
     /**
-     * Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`. Defaults to `rsa-sha1`.
+     * Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`.
      */
     signatureAlgorithm?: pulumi.Input<string | undefined>;
     /**
@@ -1136,7 +1136,7 @@ export interface ClientAddonsSamlp {
      */
     signingCert?: pulumi.Input<string | undefined>;
     /**
-     * Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to `false`, all `xs:type` are `xs:anyType`. Defaults to `true`.
+     * Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to `false`, all `xs:type` are `xs:anyType`.
      */
     typedAttributes?: pulumi.Input<boolean | undefined>;
 }
@@ -1915,6 +1915,10 @@ export interface ConnectionOptions {
      */
     decryptionKey?: pulumi.Input<inputs.ConnectionOptionsDecryptionKey | undefined>;
     /**
+     * The destination URL for the SAML assertion. Used when configuring a SAML connection for proxy gateways.
+     */
+    destinationUrl?: pulumi.Input<string | undefined>;
+    /**
      * Sign Request Algorithm Digest.
      */
     digestAlgorithm?: pulumi.Input<string | undefined>;
@@ -1947,7 +1951,7 @@ export interface ConnectionOptions {
      */
     domainAliases?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Signature method used to sign the request. EA Only
+     * The algorithm used to sign the DPoP proof. Allowed values: ES256, ES384, ES512, Ed25519.
      */
     dpopSigningAlg?: pulumi.Input<string | undefined>;
     /**
@@ -2122,6 +2126,10 @@ export interface ConnectionOptions {
      * Allows configuration if connections*realm*fallback flag is enabled for the tenant
      */
     realmFallback?: pulumi.Input<boolean | undefined>;
+    /**
+     * The recipient URL for the SAML assertion. Used when configuring a SAML connection for proxy gateways.
+     */
+    recipientUrl?: pulumi.Input<string | undefined>;
     /**
      * Template that formats the SAML request.
      */

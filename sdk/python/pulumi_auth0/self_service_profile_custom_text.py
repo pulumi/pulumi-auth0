@@ -27,8 +27,8 @@ class SelfServiceProfileCustomTextArgs:
         The set of arguments for constructing a SelfServiceProfileCustomText resource.
 
         :param pulumi.Input[_builtins.str] body: The list of text keys and values to customize the self-service SSO page. Values can be plain text or rich HTML content limited to basic styling tags and hyperlinks
-        :param pulumi.Input[_builtins.str] language: The language of the custom text
-        :param pulumi.Input[_builtins.str] page: The page where the custom text is shown
+        :param pulumi.Input[_builtins.str] language: The language of the custom text. Options include: `en`
+        :param pulumi.Input[_builtins.str] page: The page where the custom text is shown. Options include: `get-started`
         :param pulumi.Input[_builtins.str] sso_id: The id of the self-service profile
         """
         pulumi.set(__self__, "body", body)
@@ -52,7 +52,7 @@ class SelfServiceProfileCustomTextArgs:
     @pulumi.getter
     def language(self) -> pulumi.Input[_builtins.str]:
         """
-        The language of the custom text
+        The language of the custom text. Options include: `en`
         """
         return pulumi.get(self, "language")
 
@@ -64,7 +64,7 @@ class SelfServiceProfileCustomTextArgs:
     @pulumi.getter
     def page(self) -> pulumi.Input[_builtins.str]:
         """
-        The page where the custom text is shown
+        The page where the custom text is shown. Options include: `get-started`
         """
         return pulumi.get(self, "page")
 
@@ -96,8 +96,8 @@ class _SelfServiceProfileCustomTextState:
         Input properties used for looking up and filtering SelfServiceProfileCustomText resources.
 
         :param pulumi.Input[_builtins.str] body: The list of text keys and values to customize the self-service SSO page. Values can be plain text or rich HTML content limited to basic styling tags and hyperlinks
-        :param pulumi.Input[_builtins.str] language: The language of the custom text
-        :param pulumi.Input[_builtins.str] page: The page where the custom text is shown
+        :param pulumi.Input[_builtins.str] language: The language of the custom text. Options include: `en`
+        :param pulumi.Input[_builtins.str] page: The page where the custom text is shown. Options include: `get-started`
         :param pulumi.Input[_builtins.str] sso_id: The id of the self-service profile
         """
         if body is not None:
@@ -125,7 +125,7 @@ class _SelfServiceProfileCustomTextState:
     @pulumi.getter
     def language(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The language of the custom text
+        The language of the custom text. Options include: `en`
         """
         return pulumi.get(self, "language")
 
@@ -137,7 +137,7 @@ class _SelfServiceProfileCustomTextState:
     @pulumi.getter
     def page(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The page where the custom text is shown
+        The page where the custom text is shown. Options include: `get-started`
         """
         return pulumi.get(self, "page")
 
@@ -204,8 +204,8 @@ class SelfServiceProfileCustomText(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] body: The list of text keys and values to customize the self-service SSO page. Values can be plain text or rich HTML content limited to basic styling tags and hyperlinks
-        :param pulumi.Input[_builtins.str] language: The language of the custom text
-        :param pulumi.Input[_builtins.str] page: The page where the custom text is shown
+        :param pulumi.Input[_builtins.str] language: The language of the custom text. Options include: `en`
+        :param pulumi.Input[_builtins.str] page: The page where the custom text is shown. Options include: `get-started`
         :param pulumi.Input[_builtins.str] sso_id: The id of the self-service profile
         """
         ...
@@ -308,8 +308,8 @@ class SelfServiceProfileCustomText(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] body: The list of text keys and values to customize the self-service SSO page. Values can be plain text or rich HTML content limited to basic styling tags and hyperlinks
-        :param pulumi.Input[_builtins.str] language: The language of the custom text
-        :param pulumi.Input[_builtins.str] page: The page where the custom text is shown
+        :param pulumi.Input[_builtins.str] language: The language of the custom text. Options include: `en`
+        :param pulumi.Input[_builtins.str] page: The page where the custom text is shown. Options include: `get-started`
         :param pulumi.Input[_builtins.str] sso_id: The id of the self-service profile
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -334,7 +334,7 @@ class SelfServiceProfileCustomText(pulumi.CustomResource):
     @pulumi.getter
     def language(self) -> pulumi.Output[_builtins.str]:
         """
-        The language of the custom text
+        The language of the custom text. Options include: `en`
         """
         return pulumi.get(self, "language")
 
@@ -342,7 +342,7 @@ class SelfServiceProfileCustomText(pulumi.CustomResource):
     @pulumi.getter
     def page(self) -> pulumi.Output[_builtins.str]:
         """
-        The page where the custom text is shown
+        The page where the custom text is shown. Options include: `get-started`
         """
         return pulumi.get(self, "page")
 

@@ -740,6 +740,8 @@ import (
 //					SignOutEndpoint:             pulumi.String("https://saml.provider/sign_out"),
 //					GlobalTokenRevocationJwtIss: pulumi.String("issuer.example.com"),
 //					GlobalTokenRevocationJwtSub: pulumi.String("user123"),
+//					DestinationUrl:              pulumi.String("https://example.com/saml/destination"),
+//					RecipientUrl:                pulumi.String("https://example.com/saml/recipient"),
 //					DisableSignOut:              pulumi.Bool(true),
 //					StrategyVersion:             pulumi.Int(2),
 //					TenantDomain:                pulumi.String("example.com"),

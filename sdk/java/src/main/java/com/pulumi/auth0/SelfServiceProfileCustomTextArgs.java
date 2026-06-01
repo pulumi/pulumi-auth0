@@ -30,14 +30,14 @@ public final class SelfServiceProfileCustomTextArgs extends com.pulumi.resources
     }
 
     /**
-     * The language of the custom text
+     * The language of the custom text. Options include: `en`
      * 
      */
     @Import(name="language", required=true)
     private Output<String> language;
 
     /**
-     * @return The language of the custom text
+     * @return The language of the custom text. Options include: `en`
      * 
      */
     public Output<String> language() {
@@ -45,14 +45,14 @@ public final class SelfServiceProfileCustomTextArgs extends com.pulumi.resources
     }
 
     /**
-     * The page where the custom text is shown
+     * The page where the custom text is shown. Options include: `get-started`
      * 
      */
     @Import(name="page", required=true)
     private Output<String> page;
 
     /**
-     * @return The page where the custom text is shown
+     * @return The page where the custom text is shown. Options include: `get-started`
      * 
      */
     public Output<String> page() {
@@ -123,7 +123,7 @@ public final class SelfServiceProfileCustomTextArgs extends com.pulumi.resources
         }
 
         /**
-         * @param language The language of the custom text
+         * @param language The language of the custom text. Options include: `en`
          * 
          * @return builder
          * 
@@ -134,7 +134,7 @@ public final class SelfServiceProfileCustomTextArgs extends com.pulumi.resources
         }
 
         /**
-         * @param language The language of the custom text
+         * @param language The language of the custom text. Options include: `en`
          * 
          * @return builder
          * 
@@ -144,7 +144,7 @@ public final class SelfServiceProfileCustomTextArgs extends com.pulumi.resources
         }
 
         /**
-         * @param page The page where the custom text is shown
+         * @param page The page where the custom text is shown. Options include: `get-started`
          * 
          * @return builder
          * 
@@ -155,7 +155,7 @@ public final class SelfServiceProfileCustomTextArgs extends com.pulumi.resources
         }
 
         /**
-         * @param page The page where the custom text is shown
+         * @param page The page where the custom text is shown. Options include: `get-started`
          * 
          * @return builder
          * 

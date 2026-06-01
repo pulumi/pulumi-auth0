@@ -355,6 +355,11 @@ export const getUserAttributeProfile: typeof import("./getUserAttributeProfile")
 export const getUserAttributeProfileOutput: typeof import("./getUserAttributeProfile").getUserAttributeProfileOutput = null as any;
 utilities.lazyLoad(exports, ["getUserAttributeProfile","getUserAttributeProfileOutput"], () => require("./getUserAttributeProfile"));
 
+export { GetUserConnectedAccountsArgs, GetUserConnectedAccountsResult, GetUserConnectedAccountsOutputArgs } from "./getUserConnectedAccounts";
+export const getUserConnectedAccounts: typeof import("./getUserConnectedAccounts").getUserConnectedAccounts = null as any;
+export const getUserConnectedAccountsOutput: typeof import("./getUserConnectedAccounts").getUserConnectedAccountsOutput = null as any;
+utilities.lazyLoad(exports, ["getUserConnectedAccounts","getUserConnectedAccountsOutput"], () => require("./getUserConnectedAccounts"));
+
 export { GuardianArgs, GuardianState } from "./guardian";
 export type Guardian = import("./guardian").Guardian;
 export const Guardian: typeof import("./guardian").Guardian = null as any;

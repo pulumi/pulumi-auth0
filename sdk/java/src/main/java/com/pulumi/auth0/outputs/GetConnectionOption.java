@@ -155,6 +155,11 @@ public final class GetConnectionOption {
      */
     private List<GetConnectionOptionDecryptionKey> decryptionKeys;
     /**
+     * @return The destination URL for the SAML assertion. Used when configuring a SAML connection for proxy gateways.
+     * 
+     */
+    private String destinationUrl;
+    /**
      * @return Sign Request Algorithm Digest.
      * 
      */
@@ -195,7 +200,7 @@ public final class GetConnectionOption {
      */
     private List<String> domainAliases;
     /**
-     * @return Signature method used to sign the request. EA Only
+     * @return The algorithm used to sign the DPoP proof. Allowed values: ES256, ES384, ES512, Ed25519.
      * 
      */
     private String dpopSigningAlg;
@@ -414,6 +419,11 @@ public final class GetConnectionOption {
      * 
      */
     private Boolean realmFallback;
+    /**
+     * @return The recipient URL for the SAML assertion. Used when configuring a SAML connection for proxy gateways.
+     * 
+     */
+    private String recipientUrl;
     /**
      * @return Template that formats the SAML request.
      * 
@@ -790,6 +800,13 @@ public final class GetConnectionOption {
         return this.decryptionKeys;
     }
     /**
+     * @return The destination URL for the SAML assertion. Used when configuring a SAML connection for proxy gateways.
+     * 
+     */
+    public String destinationUrl() {
+        return this.destinationUrl;
+    }
+    /**
      * @return Sign Request Algorithm Digest.
      * 
      */
@@ -846,7 +863,7 @@ public final class GetConnectionOption {
         return this.domainAliases;
     }
     /**
-     * @return Signature method used to sign the request. EA Only
+     * @return The algorithm used to sign the DPoP proof. Allowed values: ES256, ES384, ES512, Ed25519.
      * 
      */
     public String dpopSigningAlg() {
@@ -1152,6 +1169,13 @@ public final class GetConnectionOption {
      */
     public Boolean realmFallback() {
         return this.realmFallback;
+    }
+    /**
+     * @return The recipient URL for the SAML assertion. Used when configuring a SAML connection for proxy gateways.
+     * 
+     */
+    public String recipientUrl() {
+        return this.recipientUrl;
     }
     /**
      * @return Template that formats the SAML request.
@@ -1474,6 +1498,7 @@ public final class GetConnectionOption {
         private Map<String,String> customScripts;
         private Boolean debug;
         private List<GetConnectionOptionDecryptionKey> decryptionKeys;
+        private String destinationUrl;
         private String digestAlgorithm;
         private Boolean disableCache;
         private Boolean disableSelfServiceChangePassword;
@@ -1526,6 +1551,7 @@ public final class GetConnectionOption {
         private String protocolBinding;
         private String provider;
         private Boolean realmFallback;
+        private String recipientUrl;
         private String requestTemplate;
         private String requestTokenUrl;
         private Boolean requiresUsername;
@@ -1594,6 +1620,7 @@ public final class GetConnectionOption {
     	      this.customScripts = defaults.customScripts;
     	      this.debug = defaults.debug;
     	      this.decryptionKeys = defaults.decryptionKeys;
+    	      this.destinationUrl = defaults.destinationUrl;
     	      this.digestAlgorithm = defaults.digestAlgorithm;
     	      this.disableCache = defaults.disableCache;
     	      this.disableSelfServiceChangePassword = defaults.disableSelfServiceChangePassword;
@@ -1646,6 +1673,7 @@ public final class GetConnectionOption {
     	      this.protocolBinding = defaults.protocolBinding;
     	      this.provider = defaults.provider;
     	      this.realmFallback = defaults.realmFallback;
+    	      this.recipientUrl = defaults.recipientUrl;
     	      this.requestTemplate = defaults.requestTemplate;
     	      this.requestTokenUrl = defaults.requestTokenUrl;
     	      this.requiresUsername = defaults.requiresUsername;
@@ -1904,6 +1932,14 @@ public final class GetConnectionOption {
         }
         public Builder decryptionKeys(GetConnectionOptionDecryptionKey... decryptionKeys) {
             return decryptionKeys(List.of(decryptionKeys));
+        }
+        @CustomType.Setter
+        public Builder destinationUrl(String destinationUrl) {
+            if (destinationUrl == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOption", "destinationUrl");
+            }
+            this.destinationUrl = destinationUrl;
+            return this;
         }
         @CustomType.Setter
         public Builder digestAlgorithm(String digestAlgorithm) {
@@ -2367,6 +2403,14 @@ public final class GetConnectionOption {
             return this;
         }
         @CustomType.Setter
+        public Builder recipientUrl(String recipientUrl) {
+            if (recipientUrl == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOption", "recipientUrl");
+            }
+            this.recipientUrl = recipientUrl;
+            return this;
+        }
+        @CustomType.Setter
         public Builder requestTemplate(String requestTemplate) {
             if (requestTemplate == null) {
               throw new MissingRequiredPropertyException("GetConnectionOption", "requestTemplate");
@@ -2732,6 +2776,7 @@ public final class GetConnectionOption {
             _resultValue.customScripts = customScripts;
             _resultValue.debug = debug;
             _resultValue.decryptionKeys = decryptionKeys;
+            _resultValue.destinationUrl = destinationUrl;
             _resultValue.digestAlgorithm = digestAlgorithm;
             _resultValue.disableCache = disableCache;
             _resultValue.disableSelfServiceChangePassword = disableSelfServiceChangePassword;
@@ -2784,6 +2829,7 @@ public final class GetConnectionOption {
             _resultValue.protocolBinding = protocolBinding;
             _resultValue.provider = provider;
             _resultValue.realmFallback = realmFallback;
+            _resultValue.recipientUrl = recipientUrl;
             _resultValue.requestTemplate = requestTemplate;
             _resultValue.requestTokenUrl = requestTokenUrl;
             _resultValue.requiresUsername = requiresUsername;

@@ -71,6 +71,8 @@ import com.pulumi.auth0.inputs.GetTokenExchangeProfilePlainArgs;
 import com.pulumi.auth0.inputs.GetUserArgs;
 import com.pulumi.auth0.inputs.GetUserAttributeProfileArgs;
 import com.pulumi.auth0.inputs.GetUserAttributeProfilePlainArgs;
+import com.pulumi.auth0.inputs.GetUserConnectedAccountsArgs;
+import com.pulumi.auth0.inputs.GetUserConnectedAccountsPlainArgs;
 import com.pulumi.auth0.inputs.GetUserPlainArgs;
 import com.pulumi.auth0.outputs.GetActionModuleActionsResult;
 import com.pulumi.auth0.outputs.GetActionModuleResult;
@@ -112,6 +114,7 @@ import com.pulumi.auth0.outputs.GetSigningKeysResult;
 import com.pulumi.auth0.outputs.GetTenantResult;
 import com.pulumi.auth0.outputs.GetTokenExchangeProfileResult;
 import com.pulumi.auth0.outputs.GetUserAttributeProfileResult;
+import com.pulumi.auth0.outputs.GetUserConnectedAccountsResult;
 import com.pulumi.auth0.outputs.GetUserResult;
 import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
@@ -9121,5 +9124,40 @@ public final class Auth0Functions {
      */
     public static CompletableFuture<GetUserAttributeProfileResult> getUserAttributeProfilePlain(GetUserAttributeProfilePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("auth0:index/getUserAttributeProfile:getUserAttributeProfile", TypeShape.of(GetUserAttributeProfileResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve all connected accounts for a specific Auth0 user.
+     * 
+     */
+    public static Output<GetUserConnectedAccountsResult> getUserConnectedAccounts(GetUserConnectedAccountsArgs args) {
+        return getUserConnectedAccounts(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve all connected accounts for a specific Auth0 user.
+     * 
+     */
+    public static CompletableFuture<GetUserConnectedAccountsResult> getUserConnectedAccountsPlain(GetUserConnectedAccountsPlainArgs args) {
+        return getUserConnectedAccountsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve all connected accounts for a specific Auth0 user.
+     * 
+     */
+    public static Output<GetUserConnectedAccountsResult> getUserConnectedAccounts(GetUserConnectedAccountsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getUserConnectedAccounts:getUserConnectedAccounts", TypeShape.of(GetUserConnectedAccountsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve all connected accounts for a specific Auth0 user.
+     * 
+     */
+    public static Output<GetUserConnectedAccountsResult> getUserConnectedAccounts(GetUserConnectedAccountsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getUserConnectedAccounts:getUserConnectedAccounts", TypeShape.of(GetUserConnectedAccountsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve all connected accounts for a specific Auth0 user.
+     * 
+     */
+    public static CompletableFuture<GetUserConnectedAccountsResult> getUserConnectedAccountsPlain(GetUserConnectedAccountsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("auth0:index/getUserConnectedAccounts:getUserConnectedAccounts", TypeShape.of(GetUserConnectedAccountsResult.class), args, Utilities.withVersion(options));
     }
 }

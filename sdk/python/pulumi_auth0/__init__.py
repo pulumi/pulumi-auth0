@@ -76,6 +76,7 @@ from .get_tenant import *
 from .get_token_exchange_profile import *
 from .get_user import *
 from .get_user_attribute_profile import *
+from .get_user_connected_accounts import *
 from .guardian import *
 from .hook import *
 from .log_stream import *

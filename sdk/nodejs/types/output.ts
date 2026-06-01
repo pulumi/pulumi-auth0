@@ -1064,15 +1064,15 @@ export interface ClientAddonsSamlp {
      */
     binding?: string;
     /**
-     * Indicates whether a UPN claim should be created. Defaults to `true`.
+     * Indicates whether a UPN claim should be created.
      */
-    createUpnClaim?: boolean;
+    createUpnClaim: boolean;
     /**
      * Destination of the SAML Response. If not specified, it will be `AssertionConsumerUrl` of SAMLRequest or callback URL if there was no SAMLRequest.
      */
     destination?: string;
     /**
-     * Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`. Defaults to `sha1`.
+     * Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`.
      */
     digestAlgorithm?: string;
     /**
@@ -1080,45 +1080,45 @@ export interface ClientAddonsSamlp {
      */
     flexibleMappings?: string;
     /**
-     * Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion. Defaults to `true`.
+     * Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion.
      */
-    includeAttributeNameFormat?: boolean;
+    includeAttributeNameFormat: boolean;
     /**
      * Issuer of the SAML Assertion.
      */
     issuer?: string;
     /**
-     * Number of seconds during which the token is valid. Defaults to `3600` seconds.
+     * Number of seconds during which the token is valid.
      */
-    lifetimeInSeconds?: number;
+    lifetimeInSeconds: number;
     /**
      * Configuration settings for logout.
      */
     logout?: outputs.ClientAddonsSamlpLogout;
     /**
-     * Indicates whether or not to add additional identity information in the token, such as the provider used and the `accessToken`, if available. Defaults to `true`.
+     * Indicates whether or not to add additional identity information in the token, such as the provider used and the `accessToken`, if available.
      */
-    mapIdentities?: boolean;
+    mapIdentities: boolean;
     /**
-     * Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion. Defaults to `false`.
+     * Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion.
      */
     mapUnknownClaimsAsIs?: boolean;
     /**
      * Mappings between the Auth0 user profile property name (`name`) and the output attributes on the SAML attribute in the assertion (`value`).
      */
-    mappings?: {[key: string]: string};
+    mappings: {[key: string]: string};
     /**
-     * Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+     * Format of the name identifier.
      */
     nameIdentifierFormat?: string;
     /**
      * Attributes that can be used for Subject/NameID. Auth0 will try each of the attributes of this array in order and use the first value it finds.
      */
-    nameIdentifierProbes?: string[];
+    nameIdentifierProbes: string[];
     /**
-     * Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion. Defaults to `true`.
+     * Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion.
      */
-    passthroughClaimsWithNoMapping?: boolean;
+    passthroughClaimsWithNoMapping: boolean;
     /**
      * Recipient of the SAML Assertion (SubjectConfirmationData). Default is `AssertionConsumerUrl` on SAMLRequest or callback URL if no SAMLRequest was sent.
      */
@@ -1128,7 +1128,7 @@ export interface ClientAddonsSamlp {
      */
     signResponse?: boolean;
     /**
-     * Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`. Defaults to `rsa-sha1`.
+     * Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`.
      */
     signatureAlgorithm?: string;
     /**
@@ -1136,9 +1136,9 @@ export interface ClientAddonsSamlp {
      */
     signingCert?: string;
     /**
-     * Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to `false`, all `xs:type` are `xs:anyType`. Defaults to `true`.
+     * Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to `false`, all `xs:type` are `xs:anyType`.
      */
-    typedAttributes?: boolean;
+    typedAttributes: boolean;
 }
 
 export interface ClientAddonsSamlpLogout {
@@ -1915,6 +1915,10 @@ export interface ConnectionOptions {
      */
     decryptionKey?: outputs.ConnectionOptionsDecryptionKey;
     /**
+     * The destination URL for the SAML assertion. Used when configuring a SAML connection for proxy gateways.
+     */
+    destinationUrl?: string;
+    /**
      * Sign Request Algorithm Digest.
      */
     digestAlgorithm?: string;
@@ -1947,7 +1951,7 @@ export interface ConnectionOptions {
      */
     domainAliases: string[];
     /**
-     * Signature method used to sign the request. EA Only
+     * The algorithm used to sign the DPoP proof. Allowed values: ES256, ES384, ES512, Ed25519.
      */
     dpopSigningAlg?: string;
     /**
@@ -2122,6 +2126,10 @@ export interface ConnectionOptions {
      * Allows configuration if connections*realm*fallback flag is enabled for the tenant
      */
     realmFallback?: boolean;
+    /**
+     * The recipient URL for the SAML assertion. Used when configuring a SAML connection for proxy gateways.
+     */
+    recipientUrl?: string;
     /**
      * Template that formats the SAML request.
      */
@@ -4372,7 +4380,7 @@ export interface GetClientAddonSamlp {
      */
     binding: string;
     /**
-     * Indicates whether a UPN claim should be created. Defaults to `true`.
+     * Indicates whether a UPN claim should be created.
      */
     createUpnClaim: boolean;
     /**
@@ -4380,7 +4388,7 @@ export interface GetClientAddonSamlp {
      */
     destination: string;
     /**
-     * Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`. Defaults to `sha1`.
+     * Algorithm used to calculate the digest of the SAML Assertion or response. Options include `sha1` and `sha256`.
      */
     digestAlgorithm: string;
     /**
@@ -4388,7 +4396,7 @@ export interface GetClientAddonSamlp {
      */
     flexibleMappings: string;
     /**
-     * Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion. Defaults to `true`.
+     * Indicates whether or not we should infer the NameFormat based on the attribute name. If set to `false`, the attribute NameFormat is not set in the assertion.
      */
     includeAttributeNameFormat: boolean;
     /**
@@ -4396,7 +4404,7 @@ export interface GetClientAddonSamlp {
      */
     issuer: string;
     /**
-     * Number of seconds during which the token is valid. Defaults to `3600` seconds.
+     * Number of seconds during which the token is valid.
      */
     lifetimeInSeconds: number;
     /**
@@ -4404,11 +4412,11 @@ export interface GetClientAddonSamlp {
      */
     logouts: outputs.GetClientAddonSamlpLogout[];
     /**
-     * Indicates whether or not to add additional identity information in the token, such as the provider used and the `accessToken`, if available. Defaults to `true`.
+     * Indicates whether or not to add additional identity information in the token, such as the provider used and the `accessToken`, if available.
      */
     mapIdentities: boolean;
     /**
-     * Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion. Defaults to `false`.
+     * Indicates whether to add a prefix of `http://schema.auth0.com` to any claims that are not mapped to the common profile when passed through in the output assertion.
      */
     mapUnknownClaimsAsIs: boolean;
     /**
@@ -4416,7 +4424,7 @@ export interface GetClientAddonSamlp {
      */
     mappings: {[key: string]: string};
     /**
-     * Format of the name identifier. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+     * Format of the name identifier.
      */
     nameIdentifierFormat: string;
     /**
@@ -4424,7 +4432,7 @@ export interface GetClientAddonSamlp {
      */
     nameIdentifierProbes: string[];
     /**
-     * Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion. Defaults to `true`.
+     * Indicates whether or not to passthrough claims that are not mapped to the common profile in the output assertion.
      */
     passthroughClaimsWithNoMapping: boolean;
     /**
@@ -4436,7 +4444,7 @@ export interface GetClientAddonSamlp {
      */
     signResponse: boolean;
     /**
-     * Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`. Defaults to `rsa-sha1`.
+     * Algorithm used to sign the SAML Assertion or response. Options include `rsa-sha1` and `rsa-sha256`.
      */
     signatureAlgorithm: string;
     /**
@@ -4444,7 +4452,7 @@ export interface GetClientAddonSamlp {
      */
     signingCert: string;
     /**
-     * Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to `false`, all `xs:type` are `xs:anyType`. Defaults to `true`.
+     * Indicates whether or not we should infer the `xs:type` of the element. Types include `xs:string`, `xs:boolean`, `xs:double`, and `xs:anyType`. When set to `false`, all `xs:type` are `xs:anyType`.
      */
     typedAttributes: boolean;
 }
@@ -5481,6 +5489,10 @@ export interface GetConnectionOption {
      */
     decryptionKeys: outputs.GetConnectionOptionDecryptionKey[];
     /**
+     * The destination URL for the SAML assertion. Used when configuring a SAML connection for proxy gateways.
+     */
+    destinationUrl: string;
+    /**
      * Sign Request Algorithm Digest.
      */
     digestAlgorithm: string;
@@ -5513,7 +5525,7 @@ export interface GetConnectionOption {
      */
     domainAliases: string[];
     /**
-     * Signature method used to sign the request. EA Only
+     * The algorithm used to sign the DPoP proof. Allowed values: ES256, ES384, ES512, Ed25519.
      */
     dpopSigningAlg: string;
     /**
@@ -5688,6 +5700,10 @@ export interface GetConnectionOption {
      * Allows configuration if connectionsRealmFallback flag is enabled for the tenant
      */
     realmFallback: boolean;
+    /**
+     * The recipient URL for the SAML assertion. Used when configuring a SAML connection for proxy gateways.
+     */
+    recipientUrl: string;
     /**
      * Template that formats the SAML request.
      */
@@ -7619,6 +7635,45 @@ export interface GetUserAttributeProfileUserIdStrategyOverride {
     scimMapping: string;
     /**
      * The strategy name (e.g., 'oidc', 'samlp', 'ad', etc.).
+     */
+    strategy: string;
+}
+
+export interface GetUserConnectedAccountsConnectedAccount {
+    /**
+     * The access type for the connected account.
+     */
+    accessType: string;
+    /**
+     * The name of the connection associated with the account.
+     */
+    connection: string;
+    /**
+     * The unique identifier of the connection associated with the account.
+     */
+    connectionId: string;
+    /**
+     * ISO 8601 timestamp when the connected account was created.
+     */
+    createdAt: string;
+    /**
+     * ISO 8601 timestamp when the connected account expires. Empty string if not set.
+     */
+    expiresAt: string;
+    /**
+     * The unique identifier for the connected account.
+     */
+    id: string;
+    /**
+     * The identifier of the organization associated with the connected account. Empty string if not set.
+     */
+    organizationId: string;
+    /**
+     * The scopes granted for this connected account.
+     */
+    scopes: string[];
+    /**
+     * The authentication strategy used by the connection.
      */
     strategy: string;
 }
