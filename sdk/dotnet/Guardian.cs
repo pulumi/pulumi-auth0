@@ -12,6 +12,12 @@ namespace Pulumi.Auth0
     /// <summary>
     /// Multi-Factor Authentication works by requiring additional factors during the login process to prevent unauthorized access. With this resource you can configure some options available for MFA.
     /// 
+    /// &gt; **Phone provider configuration is moving to the Unified Phone Experience.** The `Provider` attribute and the
+    /// `Options` block inside the `Phone` block are deprecated in favor of the `auth0.PhoneProvider`
+    /// resource. The `Phone` block's `Enabled` and `MessageTypes` attributes remain in use. See the
+    /// migration guide
+    /// for details.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -40,16 +46,10 @@ namespace Pulumi.Auth0
     ///         Phone = new Auth0.Inputs.GuardianPhoneArgs
     ///         {
     ///             Enabled = true,
-    ///             Provider = "auth0",
     ///             MessageTypes = new[]
     ///             {
     ///                 "sms",
     ///                 "voice",
-    ///             },
-    ///             Options = new Auth0.Inputs.GuardianPhoneOptionsArgs
-    ///             {
-    ///                 EnrollmentMessage = "{{code}} is your verification code for {{tenant.friendly_name}}. Please enter this code to verify your enrollment.",
-    ///                 VerificationMessage = "{{code}} is your verification code for {{tenant.friendly_name}}.",
     ///             },
     ///         },
     ///         Push = new Auth0.Inputs.GuardianPushArgs

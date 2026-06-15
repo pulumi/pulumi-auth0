@@ -113,7 +113,7 @@ type Tenant struct {
 	// Supported locales for the user interface. The first locale in the list will be used to set the default locale.
 	EnabledLocales pulumi.StringArrayOutput `pulumi:"enabledLocales"`
 	// Number of hours an ephemeral (non-persistent) session will stay valid.
-	EphemeralSessionLifetime pulumi.Float64PtrOutput `pulumi:"ephemeralSessionLifetime"`
+	EphemeralSessionLifetime pulumi.Float64Output `pulumi:"ephemeralSessionLifetime"`
 	// Configuration for the error page
 	ErrorPage TenantErrorPagePtrOutput `pulumi:"errorPage"`
 	// Configuration settings for tenant flags.
@@ -121,9 +121,9 @@ type Tenant struct {
 	// Friendly name for the tenant.
 	FriendlyName pulumi.StringOutput `pulumi:"friendlyName"`
 	// Number of hours for which an ephemeral (non-persistent) session can be inactive before the user must log in again.
-	IdleEphemeralSessionLifetime pulumi.Float64PtrOutput `pulumi:"idleEphemeralSessionLifetime"`
+	IdleEphemeralSessionLifetime pulumi.Float64Output `pulumi:"idleEphemeralSessionLifetime"`
 	// Number of hours during which a session can be inactive before the user must log in again.
-	IdleSessionLifetime pulumi.Float64PtrOutput `pulumi:"idleSessionLifetime"`
+	IdleSessionLifetime pulumi.Float64Output `pulumi:"idleSessionLifetime"`
 	// Configuration for mTLS.
 	Mtls TenantMtlsOutput `pulumi:"mtls"`
 	// Settings related to OIDC RP-initiated Logout.
@@ -141,7 +141,7 @@ type Tenant struct {
 	// Alters behavior of tenant's session cookie. Contains a single `mode` property.
 	SessionCookie TenantSessionCookieOutput `pulumi:"sessionCookie"`
 	// Number of hours during which a session will stay valid.
-	SessionLifetime pulumi.Float64PtrOutput `pulumi:"sessionLifetime"`
+	SessionLifetime pulumi.Float64Output `pulumi:"sessionLifetime"`
 	// Sessions related settings for the tenant.
 	Sessions TenantSessionsOutput `pulumi:"sessions"`
 	// Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
@@ -594,8 +594,8 @@ func (o TenantOutput) EnabledLocales() pulumi.StringArrayOutput {
 }
 
 // Number of hours an ephemeral (non-persistent) session will stay valid.
-func (o TenantOutput) EphemeralSessionLifetime() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *Tenant) pulumi.Float64PtrOutput { return v.EphemeralSessionLifetime }).(pulumi.Float64PtrOutput)
+func (o TenantOutput) EphemeralSessionLifetime() pulumi.Float64Output {
+	return o.ApplyT(func(v *Tenant) pulumi.Float64Output { return v.EphemeralSessionLifetime }).(pulumi.Float64Output)
 }
 
 // Configuration for the error page
@@ -614,13 +614,13 @@ func (o TenantOutput) FriendlyName() pulumi.StringOutput {
 }
 
 // Number of hours for which an ephemeral (non-persistent) session can be inactive before the user must log in again.
-func (o TenantOutput) IdleEphemeralSessionLifetime() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *Tenant) pulumi.Float64PtrOutput { return v.IdleEphemeralSessionLifetime }).(pulumi.Float64PtrOutput)
+func (o TenantOutput) IdleEphemeralSessionLifetime() pulumi.Float64Output {
+	return o.ApplyT(func(v *Tenant) pulumi.Float64Output { return v.IdleEphemeralSessionLifetime }).(pulumi.Float64Output)
 }
 
 // Number of hours during which a session can be inactive before the user must log in again.
-func (o TenantOutput) IdleSessionLifetime() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *Tenant) pulumi.Float64PtrOutput { return v.IdleSessionLifetime }).(pulumi.Float64PtrOutput)
+func (o TenantOutput) IdleSessionLifetime() pulumi.Float64Output {
+	return o.ApplyT(func(v *Tenant) pulumi.Float64Output { return v.IdleSessionLifetime }).(pulumi.Float64Output)
 }
 
 // Configuration for mTLS.
@@ -664,8 +664,8 @@ func (o TenantOutput) SessionCookie() TenantSessionCookieOutput {
 }
 
 // Number of hours during which a session will stay valid.
-func (o TenantOutput) SessionLifetime() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *Tenant) pulumi.Float64PtrOutput { return v.SessionLifetime }).(pulumi.Float64PtrOutput)
+func (o TenantOutput) SessionLifetime() pulumi.Float64Output {
+	return o.ApplyT(func(v *Tenant) pulumi.Float64Output { return v.SessionLifetime }).(pulumi.Float64Output)
 }
 
 // Sessions related settings for the tenant.

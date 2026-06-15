@@ -31,13 +31,13 @@ namespace Pulumi.Auth0.Inputs
         }
 
         /// <summary>
-        /// Options for the various providers.
+        /// Options for the various providers. This block requires `PhoneConsolidatedExperience` to be `False` on the `auth0.Tenant`.
         /// </summary>
         [Input("options")]
         public Input<Inputs.GuardianPhoneOptionsArgs>? Options { get; set; }
 
         /// <summary>
-        /// Provider to use, one of `Auth0`, `Twilio` or `phone-message-hook`. Selecting `phone-message-hook` will require a Phone Message Action to be created before. [Learn how](https://auth0.com/docs/customize/actions/flows-and-triggers/send-phone-message-flow).
+        /// Provider to use, one of `Auth0`, `Twilio` or `phone-message-hook`. Selecting `phone-message-hook` will require a Phone Message Action to be created before. [Learn how](https://auth0.com/docs/customize/actions/flows-and-triggers/send-phone-message-flow). This field requires `PhoneConsolidatedExperience` to be `False` on the `auth0.Tenant`.
         /// </summary>
         [Input("provider")]
         public Input<string>? Provider { get; set; }

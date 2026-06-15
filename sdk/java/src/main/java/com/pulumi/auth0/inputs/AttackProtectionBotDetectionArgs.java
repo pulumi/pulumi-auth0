@@ -33,14 +33,14 @@ public final class AttackProtectionBotDetectionArgs extends com.pulumi.resources
     }
 
     /**
-     * Bot detection level. Possible values: `low`, `medium`, `high`. Set to empty string to disable.
+     * Bot detection level. Possible values: `low`, `medium`, `high`.
      * 
      */
     @Import(name="botDetectionLevel")
     private @Nullable Output<String> botDetectionLevel;
 
     /**
-     * @return Bot detection level. Possible values: `low`, `medium`, `high`. Set to empty string to disable.
+     * @return Bot detection level. Possible values: `low`, `medium`, `high`.
      * 
      */
     public Optional<Output<String>> botDetectionLevel() {
@@ -168,7 +168,7 @@ public final class AttackProtectionBotDetectionArgs extends com.pulumi.resources
         }
 
         /**
-         * @param botDetectionLevel Bot detection level. Possible values: `low`, `medium`, `high`. Set to empty string to disable.
+         * @param botDetectionLevel Bot detection level. Possible values: `low`, `medium`, `high`.
          * 
          * @return builder
          * 
@@ -179,7 +179,7 @@ public final class AttackProtectionBotDetectionArgs extends com.pulumi.resources
         }
 
         /**
-         * @param botDetectionLevel Bot detection level. Possible values: `low`, `medium`, `high`. Set to empty string to disable.
+         * @param botDetectionLevel Bot detection level. Possible values: `low`, `medium`, `high`.
          * 
          * @return builder
          * 

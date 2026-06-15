@@ -17,6 +17,11 @@ namespace Pulumi.Auth0
     /// 
     /// &gt; If you are using the `auth0.PhoneProvider` resource to create a `Custom` phone provider, you must ensure an action is created first with `custom-phone-provider` as the SupportedTriggers
     /// 
+    /// &gt; This resource is the recommended replacement for configuring a phone provider inside the `auth0.Guardian`
+    /// `Phone` block (the `Provider` attribute and `Options` block there are deprecated). See the
+    /// migration guide
+    /// for details.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp

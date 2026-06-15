@@ -283,14 +283,14 @@ public class Tenant extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="ephemeralSessionLifetime", refs={Double.class}, tree="[0]")
-    private Output</* @Nullable */ Double> ephemeralSessionLifetime;
+    private Output<Double> ephemeralSessionLifetime;
 
     /**
      * @return Number of hours an ephemeral (non-persistent) session will stay valid.
      * 
      */
-    public Output<Optional<Double>> ephemeralSessionLifetime() {
-        return Codegen.optional(this.ephemeralSessionLifetime);
+    public Output<Double> ephemeralSessionLifetime() {
+        return this.ephemeralSessionLifetime;
     }
     /**
      * Configuration for the error page
@@ -339,28 +339,28 @@ public class Tenant extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="idleEphemeralSessionLifetime", refs={Double.class}, tree="[0]")
-    private Output</* @Nullable */ Double> idleEphemeralSessionLifetime;
+    private Output<Double> idleEphemeralSessionLifetime;
 
     /**
      * @return Number of hours for which an ephemeral (non-persistent) session can be inactive before the user must log in again.
      * 
      */
-    public Output<Optional<Double>> idleEphemeralSessionLifetime() {
-        return Codegen.optional(this.idleEphemeralSessionLifetime);
+    public Output<Double> idleEphemeralSessionLifetime() {
+        return this.idleEphemeralSessionLifetime;
     }
     /**
      * Number of hours during which a session can be inactive before the user must log in again.
      * 
      */
     @Export(name="idleSessionLifetime", refs={Double.class}, tree="[0]")
-    private Output</* @Nullable */ Double> idleSessionLifetime;
+    private Output<Double> idleSessionLifetime;
 
     /**
      * @return Number of hours during which a session can be inactive before the user must log in again.
      * 
      */
-    public Output<Optional<Double>> idleSessionLifetime() {
-        return Codegen.optional(this.idleSessionLifetime);
+    public Output<Double> idleSessionLifetime() {
+        return this.idleSessionLifetime;
     }
     /**
      * Configuration for mTLS.
@@ -479,14 +479,14 @@ public class Tenant extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="sessionLifetime", refs={Double.class}, tree="[0]")
-    private Output</* @Nullable */ Double> sessionLifetime;
+    private Output<Double> sessionLifetime;
 
     /**
      * @return Number of hours during which a session will stay valid.
      * 
      */
-    public Output<Optional<Double>> sessionLifetime() {
-        return Codegen.optional(this.sessionLifetime);
+    public Output<Double> sessionLifetime() {
+        return this.sessionLifetime;
     }
     /**
      * Sessions related settings for the tenant.

@@ -18,7 +18,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Allowlists;
         /// <summary>
-        /// Bot detection level. Possible values: `Low`, `Medium`, `High`. Set to empty string to disable.
+        /// Bot detection level. Possible values: `Low`, `Medium`, `High`.
         /// </summary>
         public readonly string? BotDetectionLevel;
         /// <summary>

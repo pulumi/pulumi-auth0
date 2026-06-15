@@ -1521,7 +1521,7 @@ class Tenant(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="ephemeralSessionLifetime")
-    def ephemeral_session_lifetime(self) -> pulumi.Output[Optional[_builtins.float]]:
+    def ephemeral_session_lifetime(self) -> pulumi.Output[_builtins.float]:
         """
         Number of hours an ephemeral (non-persistent) session will stay valid.
         """
@@ -1553,7 +1553,7 @@ class Tenant(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="idleEphemeralSessionLifetime")
-    def idle_ephemeral_session_lifetime(self) -> pulumi.Output[Optional[_builtins.float]]:
+    def idle_ephemeral_session_lifetime(self) -> pulumi.Output[_builtins.float]:
         """
         Number of hours for which an ephemeral (non-persistent) session can be inactive before the user must log in again.
         """
@@ -1561,7 +1561,7 @@ class Tenant(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="idleSessionLifetime")
-    def idle_session_lifetime(self) -> pulumi.Output[Optional[_builtins.float]]:
+    def idle_session_lifetime(self) -> pulumi.Output[_builtins.float]:
         """
         Number of hours during which a session can be inactive before the user must log in again.
         """
@@ -1633,7 +1633,7 @@ class Tenant(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="sessionLifetime")
-    def session_lifetime(self) -> pulumi.Output[Optional[_builtins.float]]:
+    def session_lifetime(self) -> pulumi.Output[_builtins.float]:
         """
         Number of hours during which a session will stay valid.
         """

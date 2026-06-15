@@ -986,7 +986,7 @@ class AttackProtectionBotDetection(dict):
                  monitoring_mode_enabled: Optional[_builtins.bool] = None):
         """
         :param Sequence[_builtins.str] allowlists: List of IP addresses or ranges that will not trigger bot detection.
-        :param _builtins.str bot_detection_level: Bot detection level. Possible values: `low`, `medium`, `high`. Set to empty string to disable.
+        :param _builtins.str bot_detection_level: Bot detection level. Possible values: `low`, `medium`, `high`.
         :param _builtins.str challenge_password_policy: Challenge policy for password flow. Possible values: `never`, `when_risky`, `always`.
         :param _builtins.str challenge_password_reset_policy: Challenge policy for password reset flow. Possible values: `never`, `when_risky`, `always`.
         :param _builtins.str challenge_passwordless_policy: Challenge policy for passwordless flow. Possible values: `never`, `when_risky`, `always`.
@@ -1017,7 +1017,7 @@ class AttackProtectionBotDetection(dict):
     @pulumi.getter(name="botDetectionLevel")
     def bot_detection_level(self) -> Optional[_builtins.str]:
         """
-        Bot detection level. Possible values: `low`, `medium`, `high`. Set to empty string to disable.
+        Bot detection level. Possible values: `low`, `medium`, `high`.
         """
         return pulumi.get(self, "bot_detection_level")
 
@@ -7501,7 +7501,7 @@ class ConnectionOptions(dict):
         :param _builtins.str global_token_revocation_jwt_iss: Specifies the issuer of the JWT used for global token revocation for the SAML connection.
         :param _builtins.str global_token_revocation_jwt_sub: Specifies the subject of the JWT used for global token revocation for the SAML connection.
         :param _builtins.str icon_url: Icon URL.
-        :param Sequence[_builtins.str] id_token_signed_response_algs: List of allowed algorithms for the ID token signature. If not set, RS256 will be applied at runtime. (Okta/OIDC Connections)
+        :param Sequence[_builtins.str] id_token_signed_response_algs: List of allowed algorithms for the ID token signature. If not set or empty, default algorithm(s) will be applied at runtime. (Okta/OIDC Connections)
         :param _builtins.str identity_api: Azure AD Identity API. Available options are: `microsoft-identity-platform-v2.0` or `azure-active-directory-v1.0`.
         :param 'ConnectionOptionsIdpInitiatedArgs' idp_initiated: Configuration options for IDP Initiated Authentication. This is an object with the properties: `client_id`, `client_protocol`, and `client_authorize_query`.
         :param _builtins.bool import_mode: Indicates whether you have a legacy user store and want to gradually migrate those users to the Auth0 user store.
@@ -8200,7 +8200,7 @@ class ConnectionOptions(dict):
     @pulumi.getter(name="idTokenSignedResponseAlgs")
     def id_token_signed_response_algs(self) -> Optional[Sequence[_builtins.str]]:
         """
-        List of allowed algorithms for the ID token signature. If not set, RS256 will be applied at runtime. (Okta/OIDC Connections)
+        List of allowed algorithms for the ID token signature. If not set or empty, default algorithm(s) will be applied at runtime. (Okta/OIDC Connections)
         """
         return pulumi.get(self, "id_token_signed_response_algs")
 
@@ -12032,7 +12032,7 @@ class EventStreamWebhookConfiguration(dict):
                  webhook_authorization: 'outputs.EventStreamWebhookConfigurationWebhookAuthorization',
                  webhook_endpoint: _builtins.str):
         """
-        :param 'EventStreamWebhookConfigurationWebhookAuthorizationArgs' webhook_authorization: Authorization details for the webhook endpoint. Supports `basic` authentication using `username` and `password`, or `bearer` authentication using a `token`. The appropriate fields must be set based on the chosen method.
+        :param 'EventStreamWebhookConfigurationWebhookAuthorizationArgs' webhook_authorization: Authorization details for the webhook endpoint. Supports `basic` authentication using `username` and `password`, `bearer` authentication using a `token`, or `custom_header` authentication using `header_key` and `header_value` (or `header_value_wo`). The appropriate fields must be set based on the chosen method.
         :param _builtins.str webhook_endpoint: The HTTPS endpoint that will receive the webhook events. Must be a valid, publicly accessible URL.
         """
         pulumi.set(__self__, "webhook_authorization", webhook_authorization)
@@ -12042,7 +12042,7 @@ class EventStreamWebhookConfiguration(dict):
     @pulumi.getter(name="webhookAuthorization")
     def webhook_authorization(self) -> 'outputs.EventStreamWebhookConfigurationWebhookAuthorization':
         """
-        Authorization details for the webhook endpoint. Supports `basic` authentication using `username` and `password`, or `bearer` authentication using a `token`. The appropriate fields must be set based on the chosen method.
+        Authorization details for the webhook endpoint. Supports `basic` authentication using `username` and `password`, `bearer` authentication using a `token`, or `custom_header` authentication using `header_key` and `header_value` (or `header_value_wo`). The appropriate fields must be set based on the chosen method.
         """
         return pulumi.get(self, "webhook_authorization")
 
@@ -12060,7 +12060,15 @@ class EventStreamWebhookConfigurationWebhookAuthorization(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "passwordWo":
+        if key == "headerKey":
+            suggest = "header_key"
+        elif key == "headerValue":
+            suggest = "header_value"
+        elif key == "headerValueWo":
+            suggest = "header_value_wo"
+        elif key == "headerValueWoVersion":
+            suggest = "header_value_wo_version"
+        elif key == "passwordWo":
             suggest = "password_wo"
         elif key == "passwordWoVersion":
             suggest = "password_wo_version"
@@ -12082,6 +12090,10 @@ class EventStreamWebhookConfigurationWebhookAuthorization(dict):
 
     def __init__(__self__, *,
                  method: _builtins.str,
+                 header_key: Optional[_builtins.str] = None,
+                 header_value: Optional[_builtins.str] = None,
+                 header_value_wo: Optional[_builtins.str] = None,
+                 header_value_wo_version: Optional[_builtins.int] = None,
                  password: Optional[_builtins.str] = None,
                  password_wo: Optional[_builtins.str] = None,
                  password_wo_version: Optional[_builtins.int] = None,
@@ -12090,7 +12102,12 @@ class EventStreamWebhookConfigurationWebhookAuthorization(dict):
                  token_wo_version: Optional[_builtins.int] = None,
                  username: Optional[_builtins.str] = None):
         """
-        :param _builtins.str method: The authorization method used to secure the webhook endpoint. Can be either `basic` or `bearer`.
+        :param _builtins.str method: The authorization method used to secure the webhook endpoint. Can be `basic`, `bearer`, or `custom_header`.
+        :param _builtins.str header_key: The name of the HTTP header used for `custom_header` authentication. Required when `method` is `custom_header`. Returned by the API and stored in state.
+        :param _builtins.str header_value: The secret value sent in the custom header. Required when `method` is `custom_header` and `header_value_wo` is not provided. **Note:** For better security, use `header_value_wo` to prevent storing the secret in state.
+        :param _builtins.str header_value_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The secret value sent in the custom header (write-only). Not stored in Terraform state. Bump `header_value_wo_version` to rotate the secret.
+        :param _builtins.int header_value_wo_version: Version number for secret rotation. Update to trigger a new `header_value_wo` to be sent.
         :param _builtins.str password: The password for `basic` authentication. Required only when `method` is set to `basic`. **Note:** For better security, consider using `password_wo` instead to prevent storing the password in Terraform state.
         :param _builtins.str password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
                The password for `basic` authentication (write-only). This value is only available during resource creation and update, and is **not** stored in Terraform state. To change the password, update the `password_wo_version` attribute. Required only when `method` is set to `basic` and `password` is not provided.
@@ -12102,6 +12119,14 @@ class EventStreamWebhookConfigurationWebhookAuthorization(dict):
         :param _builtins.str username: The username for `basic` authentication. Required only when `method` is set to `basic`.
         """
         pulumi.set(__self__, "method", method)
+        if header_key is not None:
+            pulumi.set(__self__, "header_key", header_key)
+        if header_value is not None:
+            pulumi.set(__self__, "header_value", header_value)
+        if header_value_wo is not None:
+            pulumi.set(__self__, "header_value_wo", header_value_wo)
+        if header_value_wo_version is not None:
+            pulumi.set(__self__, "header_value_wo_version", header_value_wo_version)
         if password is not None:
             pulumi.set(__self__, "password", password)
         if password_wo is not None:
@@ -12121,9 +12146,42 @@ class EventStreamWebhookConfigurationWebhookAuthorization(dict):
     @pulumi.getter
     def method(self) -> _builtins.str:
         """
-        The authorization method used to secure the webhook endpoint. Can be either `basic` or `bearer`.
+        The authorization method used to secure the webhook endpoint. Can be `basic`, `bearer`, or `custom_header`.
         """
         return pulumi.get(self, "method")
+
+    @_builtins.property
+    @pulumi.getter(name="headerKey")
+    def header_key(self) -> Optional[_builtins.str]:
+        """
+        The name of the HTTP header used for `custom_header` authentication. Required when `method` is `custom_header`. Returned by the API and stored in state.
+        """
+        return pulumi.get(self, "header_key")
+
+    @_builtins.property
+    @pulumi.getter(name="headerValue")
+    def header_value(self) -> Optional[_builtins.str]:
+        """
+        The secret value sent in the custom header. Required when `method` is `custom_header` and `header_value_wo` is not provided. **Note:** For better security, use `header_value_wo` to prevent storing the secret in state.
+        """
+        return pulumi.get(self, "header_value")
+
+    @_builtins.property
+    @pulumi.getter(name="headerValueWo")
+    def header_value_wo(self) -> Optional[_builtins.str]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        The secret value sent in the custom header (write-only). Not stored in Terraform state. Bump `header_value_wo_version` to rotate the secret.
+        """
+        return pulumi.get(self, "header_value_wo")
+
+    @_builtins.property
+    @pulumi.getter(name="headerValueWoVersion")
+    def header_value_wo_version(self) -> Optional[_builtins.int]:
+        """
+        Version number for secret rotation. Update to trigger a new `header_value_wo` to be sent.
+        """
+        return pulumi.get(self, "header_value_wo_version")
 
     @_builtins.property
     @pulumi.getter
@@ -12345,8 +12403,8 @@ class GuardianPhone(dict):
         """
         :param _builtins.bool enabled: Indicates whether Phone MFA is enabled.
         :param Sequence[_builtins.str] message_types: Message types to use, array of `sms` and/or `voice`. Adding both to the array should enable the user to choose.
-        :param 'GuardianPhoneOptionsArgs' options: Options for the various providers.
-        :param _builtins.str provider: Provider to use, one of `auth0`, `twilio` or `phone-message-hook`. Selecting `phone-message-hook` will require a Phone Message Action to be created before. [Learn how](https://auth0.com/docs/customize/actions/flows-and-triggers/send-phone-message-flow).
+        :param 'GuardianPhoneOptionsArgs' options: Options for the various providers. This block requires `phone_consolidated_experience` to be `false` on the `Tenant`.
+        :param _builtins.str provider: Provider to use, one of `auth0`, `twilio` or `phone-message-hook`. Selecting `phone-message-hook` will require a Phone Message Action to be created before. [Learn how](https://auth0.com/docs/customize/actions/flows-and-triggers/send-phone-message-flow). This field requires `phone_consolidated_experience` to be `false` on the `Tenant`.
         """
         pulumi.set(__self__, "enabled", enabled)
         if message_types is not None:
@@ -12374,17 +12432,19 @@ class GuardianPhone(dict):
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""This field is deprecated in favor of the Unified Phone Experience. Use`PhoneProvider` resource instead. See the migration guide: https://auth0.com/docs/customize/phone-messages/unified-phone/migrate-to-unified-phone-experience-with-terraform.""")
     def options(self) -> Optional['outputs.GuardianPhoneOptions']:
         """
-        Options for the various providers.
+        Options for the various providers. This block requires `phone_consolidated_experience` to be `false` on the `Tenant`.
         """
         return pulumi.get(self, "options")
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""This field is deprecated in favor of the Unified Phone Experience. Use`PhoneProvider` resource instead. See the migration guide: https://auth0.com/docs/customize/phone-messages/unified-phone/migrate-to-unified-phone-experience-with-terraform.""")
     def provider(self) -> Optional[_builtins.str]:
         """
-        Provider to use, one of `auth0`, `twilio` or `phone-message-hook`. Selecting `phone-message-hook` will require a Phone Message Action to be created before. [Learn how](https://auth0.com/docs/customize/actions/flows-and-triggers/send-phone-message-flow).
+        Provider to use, one of `auth0`, `twilio` or `phone-message-hook`. Selecting `phone-message-hook` will require a Phone Message Action to be created before. [Learn how](https://auth0.com/docs/customize/actions/flows-and-triggers/send-phone-message-flow). This field requires `phone_consolidated_experience` to be `false` on the `Tenant`.
         """
         return pulumi.get(self, "provider")
 
@@ -13061,6 +13121,10 @@ class LogStreamSink(dict):
             suggest = "azure_subscription_id"
         elif key == "datadogApiKey":
             suggest = "datadog_api_key"
+        elif key == "datadogApiKeyWo":
+            suggest = "datadog_api_key_wo"
+        elif key == "datadogApiKeyWoVersion":
+            suggest = "datadog_api_key_wo_version"
         elif key == "datadogRegion":
             suggest = "datadog_region"
         elif key == "httpAuthorization":
@@ -13114,6 +13178,8 @@ class LogStreamSink(dict):
                  azure_resource_group: Optional[_builtins.str] = None,
                  azure_subscription_id: Optional[_builtins.str] = None,
                  datadog_api_key: Optional[_builtins.str] = None,
+                 datadog_api_key_wo: Optional[_builtins.str] = None,
+                 datadog_api_key_wo_version: Optional[_builtins.int] = None,
                  datadog_region: Optional[_builtins.str] = None,
                  http_authorization: Optional[_builtins.str] = None,
                  http_content_format: Optional[_builtins.str] = None,
@@ -13138,7 +13204,10 @@ class LogStreamSink(dict):
         :param _builtins.str azure_region: The Azure region code. Possible values: `australiacentral`, `australiaeast`, `australiasoutheast`, `brazilsouth`, `canadacentral`, `canadaeast`, `centralindia`, `centralus`, `eastasia`, `eastus`, `eastus2`, `francecentral`, `germanywestcentral`, `japaneast`, `japanwest`, `koreacentral`, `koreasouth`, `northcentralus`, `northeurope`, `norwayeast`, `southafricanorth`, `southcentralus`, `southeastasia`, `southindia`, `switzerlandnorth`, `uaenorth`, `uksouth`, `ukwest`, `westcentralus`, `westeurope`, `westindia`, `westus`, `westus2`.
         :param _builtins.str azure_resource_group: The Azure EventGrid resource group which allows you to manage all Azure assets within one subscription.
         :param _builtins.str azure_subscription_id: The unique alphanumeric string that identifies your Azure subscription.
-        :param _builtins.str datadog_api_key: The Datadog API key.
+        :param _builtins.str datadog_api_key: The Datadog API key. **Note:** For better security, consider using `datadog_api_key_wo` instead.
+        :param _builtins.str datadog_api_key_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The Datadog API key (write-only). This value is **not** stored in Terraform state.
+        :param _builtins.int datadog_api_key_wo_version: Version number for `datadog_api_key_wo`. Must be a positive integer (starting at `1`). Increment this value to trigger an API key change when using `datadog_api_key_wo`.
         :param _builtins.str datadog_region: The Datadog region. Possible values: `us`, `eu`, `us3`, `us5`.
         :param _builtins.str http_authorization: Sent in the HTTP "Authorization" header with each request.
         :param _builtins.str http_content_format: The format of data sent over HTTP. Options are "JSONLINES", "JSONARRAY" or "JSONOBJECT"
@@ -13172,6 +13241,10 @@ class LogStreamSink(dict):
             pulumi.set(__self__, "azure_subscription_id", azure_subscription_id)
         if datadog_api_key is not None:
             pulumi.set(__self__, "datadog_api_key", datadog_api_key)
+        if datadog_api_key_wo is not None:
+            pulumi.set(__self__, "datadog_api_key_wo", datadog_api_key_wo)
+        if datadog_api_key_wo_version is not None:
+            pulumi.set(__self__, "datadog_api_key_wo_version", datadog_api_key_wo_version)
         if datadog_region is not None:
             pulumi.set(__self__, "datadog_region", datadog_region)
         if http_authorization is not None:
@@ -13265,9 +13338,26 @@ class LogStreamSink(dict):
     @pulumi.getter(name="datadogApiKey")
     def datadog_api_key(self) -> Optional[_builtins.str]:
         """
-        The Datadog API key.
+        The Datadog API key. **Note:** For better security, consider using `datadog_api_key_wo` instead.
         """
         return pulumi.get(self, "datadog_api_key")
+
+    @_builtins.property
+    @pulumi.getter(name="datadogApiKeyWo")
+    def datadog_api_key_wo(self) -> Optional[_builtins.str]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        The Datadog API key (write-only). This value is **not** stored in Terraform state.
+        """
+        return pulumi.get(self, "datadog_api_key_wo")
+
+    @_builtins.property
+    @pulumi.getter(name="datadogApiKeyWoVersion")
+    def datadog_api_key_wo_version(self) -> Optional[_builtins.int]:
+        """
+        Version number for `datadog_api_key_wo`. Must be a positive integer (starting at `1`). Increment this value to trigger an API key change when using `datadog_api_key_wo`.
+        """
+        return pulumi.get(self, "datadog_api_key_wo_version")
 
     @_builtins.property
     @pulumi.getter(name="datadogRegion")
@@ -15895,7 +15985,7 @@ class TenantFlags(dict):
         :param _builtins.bool disable_management_api_sms_obfuscation: If true, SMS phone numbers will not be obfuscated in Management API GET calls.
         :param _builtins.bool enable_adfs_waad_email_verification: If enabled, users will be presented with an email verification prompt during their first login when using Azure AD or ADFS connections.
         :param _builtins.bool enable_apis_section: Indicates whether the APIs section is enabled for the tenant.
-        :param _builtins.bool enable_client_connections: Indicates whether all current connections should be enabled when a new client is created. (Default: `true`)
+        :param _builtins.bool enable_client_connections: Indicates whether all current connections should be enabled when a new client is created.
         :param _builtins.bool enable_custom_domain_in_emails: Indicates whether the tenant allows custom domains in emails. Before enabling this flag, you must have a custom domain with status: `ready`.
         :param _builtins.bool enable_dynamic_client_registration: Indicates whether the tenant allows dynamic client registration.
         :param _builtins.bool enable_idtoken_api2: Whether ID tokens can be used to authorize some types of requests to API v2 (true) or not (false).
@@ -16046,7 +16136,7 @@ class TenantFlags(dict):
     @pulumi.getter(name="enableClientConnections")
     def enable_client_connections(self) -> Optional[_builtins.bool]:
         """
-        Indicates whether all current connections should be enabled when a new client is created. (Default: `true`)
+        Indicates whether all current connections should be enabled when a new client is created.
         """
         return pulumi.get(self, "enable_client_connections")
 
@@ -17518,7 +17608,7 @@ class GetAttackProtectionBotDetectionResult(dict):
                  monitoring_mode_enabled: _builtins.bool):
         """
         :param Sequence[_builtins.str] allowlists: List of IP addresses or ranges that will not trigger bot detection.
-        :param _builtins.str bot_detection_level: Bot detection level. Possible values: `low`, `medium`, `high`. Set to empty string to disable.
+        :param _builtins.str bot_detection_level: Bot detection level. Possible values: `low`, `medium`, `high`.
         :param _builtins.str challenge_password_policy: Challenge policy for password flow. Possible values: `never`, `when_risky`, `always`.
         :param _builtins.str challenge_password_reset_policy: Challenge policy for password reset flow. Possible values: `never`, `when_risky`, `always`.
         :param _builtins.str challenge_passwordless_policy: Challenge policy for passwordless flow. Possible values: `never`, `when_risky`, `always`.
@@ -17543,7 +17633,7 @@ class GetAttackProtectionBotDetectionResult(dict):
     @pulumi.getter(name="botDetectionLevel")
     def bot_detection_level(self) -> _builtins.str:
         """
-        Bot detection level. Possible values: `low`, `medium`, `high`. Set to empty string to disable.
+        Bot detection level. Possible values: `low`, `medium`, `high`.
         """
         return pulumi.get(self, "bot_detection_level")
 
@@ -22934,7 +23024,7 @@ class GetConnectionOptionResult(dict):
         :param _builtins.str global_token_revocation_jwt_iss: Specifies the issuer of the JWT used for global token revocation for the SAML connection.
         :param _builtins.str global_token_revocation_jwt_sub: Specifies the subject of the JWT used for global token revocation for the SAML connection.
         :param _builtins.str icon_url: Icon URL.
-        :param Sequence[_builtins.str] id_token_signed_response_algs: List of allowed algorithms for the ID token signature. If not set, RS256 will be applied at runtime. (Okta/OIDC Connections)
+        :param Sequence[_builtins.str] id_token_signed_response_algs: List of allowed algorithms for the ID token signature. If not set or empty, default algorithm(s) will be applied at runtime. (Okta/OIDC Connections)
         :param _builtins.str identity_api: Azure AD Identity API. Available options are: `microsoft-identity-platform-v2.0` or `azure-active-directory-v1.0`.
         :param Sequence['GetConnectionOptionIdpInitiatedArgs'] idp_initiateds: Configuration options for IDP Initiated Authentication. This is an object with the properties: `client_id`, `client_protocol`, and `client_authorize_query`.
         :param _builtins.bool import_mode: Indicates whether you have a legacy user store and want to gradually migrate those users to the Auth0 user store.
@@ -23514,7 +23604,7 @@ class GetConnectionOptionResult(dict):
     @pulumi.getter(name="idTokenSignedResponseAlgs")
     def id_token_signed_response_algs(self) -> Sequence[_builtins.str]:
         """
-        List of allowed algorithms for the ID token signature. If not set, RS256 will be applied at runtime. (Okta/OIDC Connections)
+        List of allowed algorithms for the ID token signature. If not set or empty, default algorithm(s) will be applied at runtime. (Okta/OIDC Connections)
         """
         return pulumi.get(self, "id_token_signed_response_algs")
 
@@ -26227,7 +26317,7 @@ class GetEventStreamWebhookConfigurationResult(dict):
                  webhook_authorizations: Sequence['outputs.GetEventStreamWebhookConfigurationWebhookAuthorizationResult'],
                  webhook_endpoint: _builtins.str):
         """
-        :param Sequence['GetEventStreamWebhookConfigurationWebhookAuthorizationArgs'] webhook_authorizations: Authorization details for the webhook endpoint. Supports `basic` authentication using `username` and `password`, or `bearer` authentication using a `token`. The appropriate fields must be set based on the chosen method.
+        :param Sequence['GetEventStreamWebhookConfigurationWebhookAuthorizationArgs'] webhook_authorizations: Authorization details for the webhook endpoint. Supports `basic` authentication using `username` and `password`, `bearer` authentication using a `token`, or `custom_header` authentication using `header_key` and `header_value` (or `header_value_wo`). The appropriate fields must be set based on the chosen method.
         :param _builtins.str webhook_endpoint: The HTTPS endpoint that will receive the webhook events. Must be a valid, publicly accessible URL.
         """
         pulumi.set(__self__, "webhook_authorizations", webhook_authorizations)
@@ -26237,7 +26327,7 @@ class GetEventStreamWebhookConfigurationResult(dict):
     @pulumi.getter(name="webhookAuthorizations")
     def webhook_authorizations(self) -> Sequence['outputs.GetEventStreamWebhookConfigurationWebhookAuthorizationResult']:
         """
-        Authorization details for the webhook endpoint. Supports `basic` authentication using `username` and `password`, or `bearer` authentication using a `token`. The appropriate fields must be set based on the chosen method.
+        Authorization details for the webhook endpoint. Supports `basic` authentication using `username` and `password`, `bearer` authentication using a `token`, or `custom_header` authentication using `header_key` and `header_value` (or `header_value_wo`). The appropriate fields must be set based on the chosen method.
         """
         return pulumi.get(self, "webhook_authorizations")
 
@@ -26253,6 +26343,10 @@ class GetEventStreamWebhookConfigurationResult(dict):
 @pulumi.output_type
 class GetEventStreamWebhookConfigurationWebhookAuthorizationResult(dict):
     def __init__(__self__, *,
+                 header_key: _builtins.str,
+                 header_value: _builtins.str,
+                 header_value_wo: _builtins.str,
+                 header_value_wo_version: _builtins.int,
                  method: _builtins.str,
                  password: _builtins.str,
                  password_wo: _builtins.str,
@@ -26262,7 +26356,11 @@ class GetEventStreamWebhookConfigurationWebhookAuthorizationResult(dict):
                  token_wo_version: _builtins.int,
                  username: _builtins.str):
         """
-        :param _builtins.str method: The authorization method used to secure the webhook endpoint. Can be either `basic` or `bearer`.
+        :param _builtins.str header_key: The name of the HTTP header used for `custom_header` authentication. Required when `method` is `custom_header`. Returned by the API and stored in state.
+        :param _builtins.str header_value: The secret value sent in the custom header. Required when `method` is `custom_header` and `header_value_wo` is not provided. **Note:** For better security, use `header_value_wo` to prevent storing the secret in state.
+        :param _builtins.str header_value_wo: The secret value sent in the custom header (write-only). Not stored in Terraform state. Bump `header_value_wo_version` to rotate the secret.
+        :param _builtins.int header_value_wo_version: Version number for secret rotation. Update to trigger a new `header_value_wo` to be sent.
+        :param _builtins.str method: The authorization method used to secure the webhook endpoint. Can be `basic`, `bearer`, or `custom_header`.
         :param _builtins.str password: The password for `basic` authentication. Required only when `method` is set to `basic`. **Note:** For better security, consider using `password_wo` instead to prevent storing the password in Terraform state.
         :param _builtins.str password_wo: The password for `basic` authentication (write-only). This value is only available during resource creation and update, and is **not** stored in Terraform state. To change the password, update the `password_wo_version` attribute. Required only when `method` is set to `basic` and `password` is not provided.
         :param _builtins.int password_wo_version: Version number for password changes. Update this value to trigger a password change when using `password_wo`.
@@ -26271,6 +26369,10 @@ class GetEventStreamWebhookConfigurationWebhookAuthorizationResult(dict):
         :param _builtins.int token_wo_version: Version number for token changes. Update this value to trigger a token change when using `token_wo`.
         :param _builtins.str username: The username for `basic` authentication. Required only when `method` is set to `basic`.
         """
+        pulumi.set(__self__, "header_key", header_key)
+        pulumi.set(__self__, "header_value", header_value)
+        pulumi.set(__self__, "header_value_wo", header_value_wo)
+        pulumi.set(__self__, "header_value_wo_version", header_value_wo_version)
         pulumi.set(__self__, "method", method)
         pulumi.set(__self__, "password", password)
         pulumi.set(__self__, "password_wo", password_wo)
@@ -26281,10 +26383,42 @@ class GetEventStreamWebhookConfigurationWebhookAuthorizationResult(dict):
         pulumi.set(__self__, "username", username)
 
     @_builtins.property
+    @pulumi.getter(name="headerKey")
+    def header_key(self) -> _builtins.str:
+        """
+        The name of the HTTP header used for `custom_header` authentication. Required when `method` is `custom_header`. Returned by the API and stored in state.
+        """
+        return pulumi.get(self, "header_key")
+
+    @_builtins.property
+    @pulumi.getter(name="headerValue")
+    def header_value(self) -> _builtins.str:
+        """
+        The secret value sent in the custom header. Required when `method` is `custom_header` and `header_value_wo` is not provided. **Note:** For better security, use `header_value_wo` to prevent storing the secret in state.
+        """
+        return pulumi.get(self, "header_value")
+
+    @_builtins.property
+    @pulumi.getter(name="headerValueWo")
+    def header_value_wo(self) -> _builtins.str:
+        """
+        The secret value sent in the custom header (write-only). Not stored in Terraform state. Bump `header_value_wo_version` to rotate the secret.
+        """
+        return pulumi.get(self, "header_value_wo")
+
+    @_builtins.property
+    @pulumi.getter(name="headerValueWoVersion")
+    def header_value_wo_version(self) -> _builtins.int:
+        """
+        Version number for secret rotation. Update to trigger a new `header_value_wo` to be sent.
+        """
+        return pulumi.get(self, "header_value_wo_version")
+
+    @_builtins.property
     @pulumi.getter
     def method(self) -> _builtins.str:
         """
-        The authorization method used to secure the webhook endpoint. Can be either `basic` or `bearer`.
+        The authorization method used to secure the webhook endpoint. Can be `basic`, `bearer`, or `custom_header`.
         """
         return pulumi.get(self, "method")
 
@@ -28199,7 +28333,7 @@ class GetTenantFlagResult(dict):
         :param _builtins.bool disable_management_api_sms_obfuscation: If true, SMS phone numbers will not be obfuscated in Management API GET calls.
         :param _builtins.bool enable_adfs_waad_email_verification: If enabled, users will be presented with an email verification prompt during their first login when using Azure AD or ADFS connections.
         :param _builtins.bool enable_apis_section: Indicates whether the APIs section is enabled for the tenant.
-        :param _builtins.bool enable_client_connections: Indicates whether all current connections should be enabled when a new client is created. (Default: `true`)
+        :param _builtins.bool enable_client_connections: Indicates whether all current connections should be enabled when a new client is created.
         :param _builtins.bool enable_custom_domain_in_emails: Indicates whether the tenant allows custom domains in emails. Before enabling this flag, you must have a custom domain with status: `ready`.
         :param _builtins.bool enable_dynamic_client_registration: Indicates whether the tenant allows dynamic client registration.
         :param _builtins.bool enable_idtoken_api2: Whether ID tokens can be used to authorize some types of requests to API v2 (true) or not (false).
@@ -28325,7 +28459,7 @@ class GetTenantFlagResult(dict):
     @pulumi.getter(name="enableClientConnections")
     def enable_client_connections(self) -> _builtins.bool:
         """
-        Indicates whether all current connections should be enabled when a new client is created. (Default: `true`)
+        Indicates whether all current connections should be enabled when a new client is created.
         """
         return pulumi.get(self, "enable_client_connections")
 

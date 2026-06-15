@@ -15,6 +15,10 @@ import * as utilities from "./utilities";
  *
  * > The list of supported runtimes for a trigger are available via [Get triggers](https://auth0.com/docs/api/management/v2/actions/get-triggers)
  *
+ * > To delete an action along with its binding, use a two-step `pulumi up` to avoid a `409 Conflict` error (the API rejects deleting an action while it is still bound to a trigger).
+ * First, remove the action's binding from this resource and run `pulumi up` to unbind it;
+ * then remove the `auth0.Action` resource and run `pulumi up` again to delete the action completely.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -103,7 +107,7 @@ export class TriggerActions extends pulumi.CustomResource {
      */
     declare public readonly actions: pulumi.Output<outputs.TriggerActionsAction[]>;
     /**
-     * The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-email-provider`, `custom-phone-provider`.
+     * The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-email-provider`, `custom-phone-provider`, `login-post-identifier`, `signup-post-identifier`.
      */
     declare public readonly trigger: pulumi.Output<string>;
 
@@ -147,7 +151,7 @@ export interface TriggerActionsState {
      */
     actions?: pulumi.Input<pulumi.Input<inputs.TriggerActionsAction>[] | undefined>;
     /**
-     * The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-email-provider`, `custom-phone-provider`.
+     * The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-email-provider`, `custom-phone-provider`, `login-post-identifier`, `signup-post-identifier`.
      */
     trigger?: pulumi.Input<string | undefined>;
 }
@@ -161,7 +165,7 @@ export interface TriggerActionsArgs {
      */
     actions: pulumi.Input<pulumi.Input<inputs.TriggerActionsAction>[]>;
     /**
-     * The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-email-provider`, `custom-phone-provider`.
+     * The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-email-provider`, `custom-phone-provider`, `login-post-identifier`, `signup-post-identifier`.
      */
     trigger: pulumi.Input<string>;
 }

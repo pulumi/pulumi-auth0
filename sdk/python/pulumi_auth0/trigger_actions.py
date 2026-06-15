@@ -27,7 +27,7 @@ class TriggerActionsArgs:
         The set of arguments for constructing a TriggerActions resource.
 
         :param pulumi.Input[Sequence[pulumi.Input['TriggerActionsActionArgs']]] actions: The list of actions bound to this trigger.
-        :param pulumi.Input[_builtins.str] trigger: The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-email-provider`, `custom-phone-provider`.
+        :param pulumi.Input[_builtins.str] trigger: The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-email-provider`, `custom-phone-provider`, `login-post-identifier`, `signup-post-identifier`.
         """
         pulumi.set(__self__, "actions", actions)
         pulumi.set(__self__, "trigger", trigger)
@@ -48,7 +48,7 @@ class TriggerActionsArgs:
     @pulumi.getter
     def trigger(self) -> pulumi.Input[_builtins.str]:
         """
-        The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-email-provider`, `custom-phone-provider`.
+        The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-email-provider`, `custom-phone-provider`, `login-post-identifier`, `signup-post-identifier`.
         """
         return pulumi.get(self, "trigger")
 
@@ -66,7 +66,7 @@ class _TriggerActionsState:
         Input properties used for looking up and filtering TriggerActions resources.
 
         :param pulumi.Input[Sequence[pulumi.Input['TriggerActionsActionArgs']]] actions: The list of actions bound to this trigger.
-        :param pulumi.Input[_builtins.str] trigger: The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-email-provider`, `custom-phone-provider`.
+        :param pulumi.Input[_builtins.str] trigger: The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-email-provider`, `custom-phone-provider`, `login-post-identifier`, `signup-post-identifier`.
         """
         if actions is not None:
             pulumi.set(__self__, "actions", actions)
@@ -89,7 +89,7 @@ class _TriggerActionsState:
     @pulumi.getter
     def trigger(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-email-provider`, `custom-phone-provider`.
+        The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-email-provider`, `custom-phone-provider`, `login-post-identifier`, `signup-post-identifier`.
         """
         return pulumi.get(self, "trigger")
 
@@ -115,6 +115,10 @@ class TriggerActions(pulumi.CustomResource):
         conjunction with the `TriggerAction` resource when binding actions to the same trigger.
 
         > The list of supported runtimes for a trigger are available via [Get triggers](https://auth0.com/docs/api/management/v2/actions/get-triggers)
+
+        > To delete an action along with its binding, use a two-step `pulumi up` to avoid a `409 Conflict` error (the API rejects deleting an action while it is still bound to a trigger).
+        First, remove the action's binding from this resource and run `pulumi up` to unbind it;
+        then remove the `Action` resource and run `pulumi up` again to delete the action completely.
 
         ## Example Usage
 
@@ -172,7 +176,7 @@ class TriggerActions(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['TriggerActionsActionArgs', 'TriggerActionsActionArgsDict']]]] actions: The list of actions bound to this trigger.
-        :param pulumi.Input[_builtins.str] trigger: The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-email-provider`, `custom-phone-provider`.
+        :param pulumi.Input[_builtins.str] trigger: The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-email-provider`, `custom-phone-provider`, `login-post-identifier`, `signup-post-identifier`.
         """
         ...
     @overload
@@ -188,6 +192,10 @@ class TriggerActions(pulumi.CustomResource):
         conjunction with the `TriggerAction` resource when binding actions to the same trigger.
 
         > The list of supported runtimes for a trigger are available via [Get triggers](https://auth0.com/docs/api/management/v2/actions/get-triggers)
+
+        > To delete an action along with its binding, use a two-step `pulumi up` to avoid a `409 Conflict` error (the API rejects deleting an action while it is still bound to a trigger).
+        First, remove the action's binding from this resource and run `pulumi up` to unbind it;
+        then remove the `Action` resource and run `pulumi up` again to delete the action completely.
 
         ## Example Usage
 
@@ -294,7 +302,7 @@ class TriggerActions(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['TriggerActionsActionArgs', 'TriggerActionsActionArgsDict']]]] actions: The list of actions bound to this trigger.
-        :param pulumi.Input[_builtins.str] trigger: The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-email-provider`, `custom-phone-provider`.
+        :param pulumi.Input[_builtins.str] trigger: The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-email-provider`, `custom-phone-provider`, `login-post-identifier`, `signup-post-identifier`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -316,7 +324,7 @@ class TriggerActions(pulumi.CustomResource):
     @pulumi.getter
     def trigger(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-email-provider`, `custom-phone-provider`.
+        The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-email-provider`, `custom-phone-provider`, `login-post-identifier`, `signup-post-identifier`.
         """
         return pulumi.get(self, "trigger")
 

@@ -58,7 +58,7 @@ namespace Pulumi.Auth0.Inputs
         private Input<string>? _datadogApiKey;
 
         /// <summary>
-        /// The Datadog API key.
+        /// The Datadog API key. **Note:** For better security, consider using `DatadogApiKeyWo` instead.
         /// </summary>
         public Input<string>? DatadogApiKey
         {
@@ -69,6 +69,29 @@ namespace Pulumi.Auth0.Inputs
                 _datadogApiKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("datadogApiKeyWo")]
+        private Input<string>? _datadogApiKeyWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The Datadog API key (write-only). This value is **not** stored in Terraform state.
+        /// </summary>
+        public Input<string>? DatadogApiKeyWo
+        {
+            get => _datadogApiKeyWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _datadogApiKeyWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Version number for `DatadogApiKeyWo`. Must be a positive integer (starting at `1`). Increment this value to trigger an API key change when using `DatadogApiKeyWo`.
+        /// </summary>
+        [Input("datadogApiKeyWoVersion")]
+        public Input<int>? DatadogApiKeyWoVersion { get; set; }
 
         /// <summary>
         /// The Datadog region. Possible values: `Us`, `Eu`, `Us3`, `Us5`.
