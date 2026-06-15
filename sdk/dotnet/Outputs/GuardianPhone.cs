@@ -22,11 +22,11 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly ImmutableArray<string> MessageTypes;
         /// <summary>
-        /// Options for the various providers.
+        /// Options for the various providers. This block requires `PhoneConsolidatedExperience` to be `False` on the `auth0.Tenant`.
         /// </summary>
         public readonly Outputs.GuardianPhoneOptions? Options;
         /// <summary>
-        /// Provider to use, one of `Auth0`, `Twilio` or `phone-message-hook`. Selecting `phone-message-hook` will require a Phone Message Action to be created before. [Learn how](https://auth0.com/docs/customize/actions/flows-and-triggers/send-phone-message-flow).
+        /// Provider to use, one of `Auth0`, `Twilio` or `phone-message-hook`. Selecting `phone-message-hook` will require a Phone Message Action to be created before. [Learn how](https://auth0.com/docs/customize/actions/flows-and-triggers/send-phone-message-flow). This field requires `PhoneConsolidatedExperience` to be `False` on the `auth0.Tenant`.
         /// </summary>
         public readonly string? Provider;
 

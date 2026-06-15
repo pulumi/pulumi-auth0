@@ -18,7 +18,7 @@ public final class GetAttackProtectionBotDetection {
      */
     private List<String> allowlists;
     /**
-     * @return Bot detection level. Possible values: `low`, `medium`, `high`. Set to empty string to disable.
+     * @return Bot detection level. Possible values: `low`, `medium`, `high`.
      * 
      */
     private String botDetectionLevel;
@@ -52,7 +52,7 @@ public final class GetAttackProtectionBotDetection {
         return this.allowlists;
     }
     /**
-     * @return Bot detection level. Possible values: `low`, `medium`, `high`. Set to empty string to disable.
+     * @return Bot detection level. Possible values: `low`, `medium`, `high`.
      * 
      */
     public String botDetectionLevel() {

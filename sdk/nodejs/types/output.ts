@@ -138,7 +138,7 @@ export interface AttackProtectionBotDetection {
      */
     allowlists: string[];
     /**
-     * Bot detection level. Possible values: `low`, `medium`, `high`. Set to empty string to disable.
+     * Bot detection level. Possible values: `low`, `medium`, `high`.
      */
     botDetectionLevel: string;
     /**
@@ -2011,7 +2011,7 @@ export interface ConnectionOptions {
      */
     iconUrl?: string;
     /**
-     * List of allowed algorithms for the ID token signature. If not set, RS256 will be applied at runtime. (Okta/OIDC Connections)
+     * List of allowed algorithms for the ID token signature. If not set or empty, default algorithm(s) will be applied at runtime. (Okta/OIDC Connections)
      */
     idTokenSignedResponseAlgs?: string[];
     /**
@@ -3144,7 +3144,7 @@ export interface EventStreamEventbridgeConfiguration {
 
 export interface EventStreamWebhookConfiguration {
     /**
-     * Authorization details for the webhook endpoint. Supports `basic` authentication using `username` and `password`, or `bearer` authentication using a `token`. The appropriate fields must be set based on the chosen method.
+     * Authorization details for the webhook endpoint. Supports `basic` authentication using `username` and `password`, `bearer` authentication using a `token`, or `customHeader` authentication using `headerKey` and `headerValue` (or `headerValueWo`). The appropriate fields must be set based on the chosen method.
      */
     webhookAuthorization: outputs.EventStreamWebhookConfigurationWebhookAuthorization;
     /**
@@ -3155,7 +3155,24 @@ export interface EventStreamWebhookConfiguration {
 
 export interface EventStreamWebhookConfigurationWebhookAuthorization {
     /**
-     * The authorization method used to secure the webhook endpoint. Can be either `basic` or `bearer`.
+     * The name of the HTTP header used for `customHeader` authentication. Required when `method` is `customHeader`. Returned by the API and stored in state.
+     */
+    headerKey?: string;
+    /**
+     * The secret value sent in the custom header. Required when `method` is `customHeader` and `headerValueWo` is not provided. **Note:** For better security, use `headerValueWo` to prevent storing the secret in state.
+     */
+    headerValue?: string;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The secret value sent in the custom header (write-only). Not stored in Terraform state. Bump `headerValueWoVersion` to rotate the secret.
+     */
+    headerValueWo?: string;
+    /**
+     * Version number for secret rotation. Update to trigger a new `headerValueWo` to be sent.
+     */
+    headerValueWoVersion?: number;
+    /**
+     * The authorization method used to secure the webhook endpoint. Can be `basic`, `bearer`, or `customHeader`.
      */
     method: string;
     /**
@@ -3454,7 +3471,7 @@ export interface GetAttackProtectionBotDetection {
      */
     allowlists: string[];
     /**
-     * Bot detection level. Possible values: `low`, `medium`, `high`. Set to empty string to disable.
+     * Bot detection level. Possible values: `low`, `medium`, `high`.
      */
     botDetectionLevel: string;
     /**
@@ -5585,7 +5602,7 @@ export interface GetConnectionOption {
      */
     iconUrl: string;
     /**
-     * List of allowed algorithms for the ID token signature. If not set, RS256 will be applied at runtime. (Okta/OIDC Connections)
+     * List of allowed algorithms for the ID token signature. If not set or empty, default algorithm(s) will be applied at runtime. (Okta/OIDC Connections)
      */
     idTokenSignedResponseAlgs: string[];
     /**
@@ -6664,7 +6681,7 @@ export interface GetEventStreamEventbridgeConfiguration {
 
 export interface GetEventStreamWebhookConfiguration {
     /**
-     * Authorization details for the webhook endpoint. Supports `basic` authentication using `username` and `password`, or `bearer` authentication using a `token`. The appropriate fields must be set based on the chosen method.
+     * Authorization details for the webhook endpoint. Supports `basic` authentication using `username` and `password`, `bearer` authentication using a `token`, or `customHeader` authentication using `headerKey` and `headerValue` (or `headerValueWo`). The appropriate fields must be set based on the chosen method.
      */
     webhookAuthorizations: outputs.GetEventStreamWebhookConfigurationWebhookAuthorization[];
     /**
@@ -6675,7 +6692,23 @@ export interface GetEventStreamWebhookConfiguration {
 
 export interface GetEventStreamWebhookConfigurationWebhookAuthorization {
     /**
-     * The authorization method used to secure the webhook endpoint. Can be either `basic` or `bearer`.
+     * The name of the HTTP header used for `customHeader` authentication. Required when `method` is `customHeader`. Returned by the API and stored in state.
+     */
+    headerKey: string;
+    /**
+     * The secret value sent in the custom header. Required when `method` is `customHeader` and `headerValueWo` is not provided. **Note:** For better security, use `headerValueWo` to prevent storing the secret in state.
+     */
+    headerValue: string;
+    /**
+     * The secret value sent in the custom header (write-only). Not stored in Terraform state. Bump `headerValueWoVersion` to rotate the secret.
+     */
+    headerValueWo: string;
+    /**
+     * Version number for secret rotation. Update to trigger a new `headerValueWo` to be sent.
+     */
+    headerValueWoVersion: number;
+    /**
+     * The authorization method used to secure the webhook endpoint. Can be `basic`, `bearer`, or `customHeader`.
      */
     method: string;
     /**
@@ -7428,7 +7461,7 @@ export interface GetTenantFlag {
      */
     enableApisSection: boolean;
     /**
-     * Indicates whether all current connections should be enabled when a new client is created. (Default: `true`)
+     * Indicates whether all current connections should be enabled when a new client is created.
      */
     enableClientConnections: boolean;
     /**
@@ -7726,11 +7759,15 @@ export interface GuardianPhone {
      */
     messageTypes?: string[];
     /**
-     * Options for the various providers.
+     * Options for the various providers. This block requires `phoneConsolidatedExperience` to be `false` on the `auth0.Tenant`.
+     *
+     * @deprecated This field is deprecated in favor of the Unified Phone Experience. Use`auth0.PhoneProvider` resource instead. See the migration guide: https://auth0.com/docs/customize/phone-messages/unified-phone/migrate-to-unified-phone-experience-with-terraform.
      */
     options: outputs.GuardianPhoneOptions;
     /**
-     * Provider to use, one of `auth0`, `twilio` or `phone-message-hook`. Selecting `phone-message-hook` will require a Phone Message Action to be created before. [Learn how](https://auth0.com/docs/customize/actions/flows-and-triggers/send-phone-message-flow).
+     * Provider to use, one of `auth0`, `twilio` or `phone-message-hook`. Selecting `phone-message-hook` will require a Phone Message Action to be created before. [Learn how](https://auth0.com/docs/customize/actions/flows-and-triggers/send-phone-message-flow). This field requires `phoneConsolidatedExperience` to be `false` on the `auth0.Tenant`.
+     *
+     * @deprecated This field is deprecated in favor of the Unified Phone Experience. Use`auth0.PhoneProvider` resource instead. See the migration guide: https://auth0.com/docs/customize/phone-messages/unified-phone/migrate-to-unified-phone-experience-with-terraform.
      */
     provider?: string;
 }
@@ -7929,9 +7966,18 @@ export interface LogStreamSink {
      */
     azureSubscriptionId?: string;
     /**
-     * The Datadog API key.
+     * The Datadog API key. **Note:** For better security, consider using `datadogApiKeyWo` instead.
      */
     datadogApiKey?: string;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The Datadog API key (write-only). This value is **not** stored in Terraform state.
+     */
+    datadogApiKeyWo?: string;
+    /**
+     * Version number for `datadogApiKeyWo`. Must be a positive integer (starting at `1`). Increment this value to trigger an API key change when using `datadogApiKeyWo`.
+     */
+    datadogApiKeyWoVersion?: number;
     /**
      * The Datadog region. Possible values: `us`, `eu`, `us3`, `us5`.
      */
@@ -8675,7 +8721,7 @@ export interface TenantFlags {
     /**
      * If true, SMS phone numbers will not be obfuscated in Management API GET calls.
      */
-    disableManagementApiSmsObfuscation?: boolean;
+    disableManagementApiSmsObfuscation: boolean;
     /**
      * If enabled, users will be presented with an email verification prompt during their first login when using Azure AD or ADFS connections.
      */
@@ -8685,9 +8731,9 @@ export interface TenantFlags {
      */
     enableApisSection: boolean;
     /**
-     * Indicates whether all current connections should be enabled when a new client is created. (Default: `true`)
+     * Indicates whether all current connections should be enabled when a new client is created.
      */
-    enableClientConnections?: boolean;
+    enableClientConnections: boolean;
     /**
      * Indicates whether the tenant allows custom domains in emails. Before enabling this flag, you must have a custom domain with status: `ready`.
      */
@@ -8711,7 +8757,7 @@ export interface TenantFlags {
     /**
      * Indicates whether advanced API Authorization scenarios are enabled.
      */
-    enablePipeline2?: boolean;
+    enablePipeline2: boolean;
     /**
      * Indicates whether the public sign up process shows a `userExists` error if the user already exists.
      */

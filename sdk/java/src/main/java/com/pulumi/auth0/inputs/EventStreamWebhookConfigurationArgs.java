@@ -16,14 +16,14 @@ public final class EventStreamWebhookConfigurationArgs extends com.pulumi.resour
     public static final EventStreamWebhookConfigurationArgs Empty = new EventStreamWebhookConfigurationArgs();
 
     /**
-     * Authorization details for the webhook endpoint. Supports `basic` authentication using `username` and `password`, or `bearer` authentication using a `token`. The appropriate fields must be set based on the chosen method.
+     * Authorization details for the webhook endpoint. Supports `basic` authentication using `username` and `password`, `bearer` authentication using a `token`, or `customHeader` authentication using `headerKey` and `headerValue` (or `headerValueWo`). The appropriate fields must be set based on the chosen method.
      * 
      */
     @Import(name="webhookAuthorization", required=true)
     private Output<EventStreamWebhookConfigurationWebhookAuthorizationArgs> webhookAuthorization;
 
     /**
-     * @return Authorization details for the webhook endpoint. Supports `basic` authentication using `username` and `password`, or `bearer` authentication using a `token`. The appropriate fields must be set based on the chosen method.
+     * @return Authorization details for the webhook endpoint. Supports `basic` authentication using `username` and `password`, `bearer` authentication using a `token`, or `customHeader` authentication using `headerKey` and `headerValue` (or `headerValueWo`). The appropriate fields must be set based on the chosen method.
      * 
      */
     public Output<EventStreamWebhookConfigurationWebhookAuthorizationArgs> webhookAuthorization() {
@@ -71,7 +71,7 @@ public final class EventStreamWebhookConfigurationArgs extends com.pulumi.resour
         }
 
         /**
-         * @param webhookAuthorization Authorization details for the webhook endpoint. Supports `basic` authentication using `username` and `password`, or `bearer` authentication using a `token`. The appropriate fields must be set based on the chosen method.
+         * @param webhookAuthorization Authorization details for the webhook endpoint. Supports `basic` authentication using `username` and `password`, `bearer` authentication using a `token`, or `customHeader` authentication using `headerKey` and `headerValue` (or `headerValueWo`). The appropriate fields must be set based on the chosen method.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class EventStreamWebhookConfigurationArgs extends com.pulumi.resour
         }
 
         /**
-         * @param webhookAuthorization Authorization details for the webhook endpoint. Supports `basic` authentication using `username` and `password`, or `bearer` authentication using a `token`. The appropriate fields must be set based on the chosen method.
+         * @param webhookAuthorization Authorization details for the webhook endpoint. Supports `basic` authentication using `username` and `password`, `bearer` authentication using a `token`, or `customHeader` authentication using `headerKey` and `headerValue` (or `headerValueWo`). The appropriate fields must be set based on the chosen method.
          * 
          * @return builder
          * 

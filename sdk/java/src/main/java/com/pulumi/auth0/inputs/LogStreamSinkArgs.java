@@ -6,6 +6,7 @@ package com.pulumi.auth0.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -124,18 +125,50 @@ public final class LogStreamSinkArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Datadog API key.
+     * The Datadog API key. **Note:** For better security, consider using `datadogApiKeyWo` instead.
      * 
      */
     @Import(name="datadogApiKey")
     private @Nullable Output<String> datadogApiKey;
 
     /**
-     * @return The Datadog API key.
+     * @return The Datadog API key. **Note:** For better security, consider using `datadogApiKeyWo` instead.
      * 
      */
     public Optional<Output<String>> datadogApiKey() {
         return Optional.ofNullable(this.datadogApiKey);
+    }
+
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The Datadog API key (write-only). This value is **not** stored in Terraform state.
+     * 
+     */
+    @Import(name="datadogApiKeyWo")
+    private @Nullable Output<String> datadogApiKeyWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The Datadog API key (write-only). This value is **not** stored in Terraform state.
+     * 
+     */
+    public Optional<Output<String>> datadogApiKeyWo() {
+        return Optional.ofNullable(this.datadogApiKeyWo);
+    }
+
+    /**
+     * Version number for `datadogApiKeyWo`. Must be a positive integer (starting at `1`). Increment this value to trigger an API key change when using `datadogApiKeyWo`.
+     * 
+     */
+    @Import(name="datadogApiKeyWoVersion")
+    private @Nullable Output<Integer> datadogApiKeyWoVersion;
+
+    /**
+     * @return Version number for `datadogApiKeyWo`. Must be a positive integer (starting at `1`). Increment this value to trigger an API key change when using `datadogApiKeyWo`.
+     * 
+     */
+    public Optional<Output<Integer>> datadogApiKeyWoVersion() {
+        return Optional.ofNullable(this.datadogApiKeyWoVersion);
     }
 
     /**
@@ -389,6 +422,8 @@ public final class LogStreamSinkArgs extends com.pulumi.resources.ResourceArgs {
         this.azureResourceGroup = $.azureResourceGroup;
         this.azureSubscriptionId = $.azureSubscriptionId;
         this.datadogApiKey = $.datadogApiKey;
+        this.datadogApiKeyWo = $.datadogApiKeyWo;
+        this.datadogApiKeyWoVersion = $.datadogApiKeyWoVersion;
         this.datadogRegion = $.datadogRegion;
         this.httpAuthorization = $.httpAuthorization;
         this.httpContentFormat = $.httpContentFormat;
@@ -573,7 +608,7 @@ public final class LogStreamSinkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param datadogApiKey The Datadog API key.
+         * @param datadogApiKey The Datadog API key. **Note:** For better security, consider using `datadogApiKeyWo` instead.
          * 
          * @return builder
          * 
@@ -584,13 +619,57 @@ public final class LogStreamSinkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param datadogApiKey The Datadog API key.
+         * @param datadogApiKey The Datadog API key. **Note:** For better security, consider using `datadogApiKeyWo` instead.
          * 
          * @return builder
          * 
          */
         public Builder datadogApiKey(String datadogApiKey) {
             return datadogApiKey(Output.of(datadogApiKey));
+        }
+
+        /**
+         * @param datadogApiKeyWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * The Datadog API key (write-only). This value is **not** stored in Terraform state.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder datadogApiKeyWo(@Nullable Output<String> datadogApiKeyWo) {
+            $.datadogApiKeyWo = datadogApiKeyWo;
+            return this;
+        }
+
+        /**
+         * @param datadogApiKeyWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * The Datadog API key (write-only). This value is **not** stored in Terraform state.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder datadogApiKeyWo(String datadogApiKeyWo) {
+            return datadogApiKeyWo(Output.of(datadogApiKeyWo));
+        }
+
+        /**
+         * @param datadogApiKeyWoVersion Version number for `datadogApiKeyWo`. Must be a positive integer (starting at `1`). Increment this value to trigger an API key change when using `datadogApiKeyWo`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder datadogApiKeyWoVersion(@Nullable Output<Integer> datadogApiKeyWoVersion) {
+            $.datadogApiKeyWoVersion = datadogApiKeyWoVersion;
+            return this;
+        }
+
+        /**
+         * @param datadogApiKeyWoVersion Version number for `datadogApiKeyWo`. Must be a positive integer (starting at `1`). Increment this value to trigger an API key change when using `datadogApiKeyWo`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder datadogApiKeyWoVersion(Integer datadogApiKeyWoVersion) {
+            return datadogApiKeyWoVersion(Output.of(datadogApiKeyWoVersion));
         }
 
         /**

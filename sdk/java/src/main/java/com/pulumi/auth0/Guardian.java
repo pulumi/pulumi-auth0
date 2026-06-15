@@ -23,6 +23,12 @@ import javax.annotation.Nullable;
 /**
  * Multi-Factor Authentication works by requiring additional factors during the login process to prevent unauthorized access. With this resource you can configure some options available for MFA.
  * 
+ * &gt; **Phone provider configuration is moving to the Unified Phone Experience.** The `provider` attribute and the
+ * `options` block inside the `phone` block are deprecated in favor of the `auth0.PhoneProvider`
+ * resource. The `phone` block&#39;s `enabled` and `messageTypes` attributes remain in use. See the
+ * migration guide
+ * for details.
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -37,7 +43,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.auth0.inputs.GuardianWebauthnPlatformArgs;
  * import com.pulumi.auth0.inputs.GuardianWebauthnRoamingArgs;
  * import com.pulumi.auth0.inputs.GuardianPhoneArgs;
- * import com.pulumi.auth0.inputs.GuardianPhoneOptionsArgs;
  * import com.pulumi.auth0.inputs.GuardianPushArgs;
  * import com.pulumi.auth0.inputs.GuardianPushAmazonSnsArgs;
  * import com.pulumi.auth0.inputs.GuardianPushCustomAppArgs;
@@ -69,14 +74,9 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .phone(GuardianPhoneArgs.builder()
  *                 .enabled(true)
- *                 .provider("auth0")
  *                 .messageTypes(                
  *                     "sms",
  *                     "voice")
- *                 .options(GuardianPhoneOptionsArgs.builder()
- *                     .enrollmentMessage("{{code}} is your verification code for {{tenant.friendly_name}}. Please enter this code to verify your enrollment.")
- *                     .verificationMessage("{{code}} is your verification code for {{tenant.friendly_name}}.")
- *                     .build())
  *                 .build())
  *             .push(GuardianPushArgs.builder()
  *                 .enabled(true)

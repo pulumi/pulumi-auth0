@@ -25,6 +25,11 @@ import javax.annotation.Nullable;
  * 
  * &gt; If you are using the `auth0.PhoneProvider` resource to create a `custom` phone provider, you must ensure an action is created first with `custom-phone-provider` as the supportedTriggers
  * 
+ * &gt; This resource is the recommended replacement for configuring a phone provider inside the `auth0.Guardian`
+ * `phone` block (the `provider` attribute and `options` block there are deprecated). See the
+ * migration guide
+ * for details.
+ * 
  * ## Example Usage
  * 
  * <pre>
