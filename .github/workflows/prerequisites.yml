@@ -14,6 +14,10 @@ on:
       default_branch:
         type: string
         required: true
+      acceptance_fanout:
+        type: boolean
+        required: false
+        default: false
     outputs:
       version:
         description: "Provider version being built"
@@ -38,7 +42,7 @@ jobs:
       version: ${{ steps.provider-version.outputs.version }}
     steps:
     - name: Checkout Repo
-      uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
       with:
         persist-credentials: false    
     - env:
@@ -56,13 +60,13 @@ jobs:
         app-id: ${{ steps.esc-secrets.outputs.PULUMI_PROVIDER_AUTOMATION_APP_ID }}
         private-key: ${{ steps.esc-secrets.outputs.PULUMI_PROVIDER_AUTOMATION_PRIVATE_KEY }}
         owner: ${{ github.repository_owner }}
-    - uses: pulumi/provider-version-action@3a647064cf4697c7c6352b9a1d9e554450cbe957 # v1.6.1
+    - uses: pulumi/provider-version-action@c4f719182e607d0d8322f148f168d3372838e681 # v2.0.0
       id: provider-version
       with:
         major-version: 3
         set-env: 'PROVIDER_VERSION'
     - name: Cache examples generation
-      uses: actions/cache@9255dc7a253b0ccc959486e2bca901246202afeb # v5
+      uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5
       with:
         path: |
           .pulumi/examples-cache
@@ -77,6 +81,15 @@ jobs:
         # only saving the cache in the prerequisites job
         cache_save: true
     - name: Setup Go Cache
+      if: inputs.acceptance_fanout
+      uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5
+      with:
+        path: |
+          ~/go/pkg/mod
+          ~/.cache/go-build
+        key: ${{ runner.os }}-go-prerequisites-${{ hashFiles('provider/*.sum', 'upstream/*.sum', 'sdk/go/*.sum', 'sdk/*.sum', '*.sum') }}
+    - name: Setup Go Cache
+      if: inputs.acceptance_fanout == false
       uses: actions/setup-go@4dc6199c7b1a012772edbd06daecab0f50c9053c # v6
       with:
         cache-dependency-path: |
@@ -89,13 +102,23 @@ jobs:
       run: make prepare_local_workspace
       env:
         GITHUB_TOKEN: ${{ steps.app-auth.outputs.token }}
+    - name: Generate schema-embed
+      if: inputs.acceptance_fanout
+      run: make schema_embed
+    - name: Build tfgen
+      if: inputs.acceptance_fanout
+      run: make tfgen_build_only
     - name: Generate schema
+      if: inputs.acceptance_fanout == false
       run: make schema
     - name: Build registry docs
+      if: inputs.acceptance_fanout == false
       run: make build_registry_docs
     - name: Build provider binary
+      if: inputs.acceptance_fanout == false
       run: make provider
     - name: Unit-test provider code
+      if: inputs.acceptance_fanout == false
       run: make test_provider
       env:
         AUTH0_CLIENT_ID: ${{ steps.esc-secrets.outputs.AUTH0_CLIENT_ID }}
@@ -103,10 +126,11 @@ jobs:
         AUTH0_DOMAIN: ${{ steps.esc-secrets.outputs.AUTH0_DOMAIN }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Upload coverage reports to Codecov
-      uses: codecov/codecov-action@e79a6962e0d4c0c17b229090214935d2e33f8354 # v6.0.1
+      if: inputs.acceptance_fanout == false
+      uses: codecov/codecov-action@fb8b3582c8e4def4969c97caa2f19720cb33a72f # v7.0.0
       env:
         CODECOV_TOKEN: ${{ steps.esc-secrets.outputs.CODECOV_TOKEN }}
-    - if: inputs.is_pr
+    - if: inputs.acceptance_fanout == false && inputs.is_pr
       name: Check Schema is Valid
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -117,7 +141,7 @@ jobs:
           schema-tools compare -r github://api.github.com/pulumi -p auth0 -o "${{ inputs.default_branch }}" -n --local-path=provider/cmd/pulumi-resource-auth0/schema.json;
           echo "$EOF";
         } >> "$GITHUB_ENV"
-    - if: inputs.is_pr && inputs.is_automated == false && github.actor != 'dependabot[bot]'
+    - if: inputs.acceptance_fanout == false && inputs.is_pr && inputs.is_automated == false && github.actor != 'dependabot[bot]'
       name: Comment on PR with Details of Schema Check
       uses: thollander/actions-comment-pull-request@24bffb9b452ba05a4f3f77933840a6a841d1b32b # v3.0.1
       with:
