@@ -52,17 +52,17 @@ import (
 //			myModuleVersion := auth0.GetActionModuleVersionOutput(ctx, auth0.GetActionModuleVersionOutputArgs{
 //				ModuleId: myModule.ID(),
 //				VersionId: myModuleVersions.ApplyT(func(myModuleVersions auth0.GetActionModuleVersionsResult) (*string, error) {
-//					return &myModuleVersions.Versions[0].Id, nil
+//					return myModuleVersions.Versions[0].Id, nil
 //				}).(pulumi.StringPtrOutput),
 //			}, nil)
 //			ctx.Export("versionNumber", myModuleVersion.ApplyT(func(myModuleVersion auth0.GetActionModuleVersionResult) (*int, error) {
-//				return &myModuleVersion.VersionNumber, nil
+//				return myModuleVersion.VersionNumber, nil
 //			}).(pulumi.IntPtrOutput))
 //			ctx.Export("versionCode", myModuleVersion.ApplyT(func(myModuleVersion auth0.GetActionModuleVersionResult) (*string, error) {
-//				return &myModuleVersion.Code, nil
+//				return myModuleVersion.Code, nil
 //			}).(pulumi.StringPtrOutput))
 //			ctx.Export("versionCreatedAt", myModuleVersion.ApplyT(func(myModuleVersion auth0.GetActionModuleVersionResult) (*string, error) {
-//				return &myModuleVersion.CreatedAt, nil
+//				return myModuleVersion.CreatedAt, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
