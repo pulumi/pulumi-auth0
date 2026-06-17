@@ -25,7 +25,7 @@ namespace Pulumi.Auth0.Inputs
         }
 
         /// <summary>
-        /// Bot detection level. Possible values: `Low`, `Medium`, `High`. Set to empty string to disable.
+        /// Bot detection level. Possible values: `Low`, `Medium`, `High`.
         /// </summary>
         [Input("botDetectionLevel")]
         public Input<string>? BotDetectionLevel { get; set; }

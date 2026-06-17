@@ -9,6 +9,12 @@ import * as utilities from "./utilities";
 /**
  * Multi-Factor Authentication works by requiring additional factors during the login process to prevent unauthorized access. With this resource you can configure some options available for MFA.
  *
+ * > **Phone provider configuration is moving to the Unified Phone Experience.** The `provider` attribute and the
+ * `options` block inside the `phone` block are deprecated in favor of the `auth0.PhoneProvider`
+ * resource. The `phone` block's `enabled` and `messageTypes` attributes remain in use. See the
+ * migration guide
+ * for details.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -29,15 +35,10 @@ import * as utilities from "./utilities";
  *     },
  *     phone: {
  *         enabled: true,
- *         provider: "auth0",
  *         messageTypes: [
  *             "sms",
  *             "voice",
  *         ],
- *         options: {
- *             enrollmentMessage: "{{code}} is your verification code for {{tenant.friendly_name}}. Please enter this code to verify your enrollment.",
- *             verificationMessage: "{{code}} is your verification code for {{tenant.friendly_name}}.",
- *         },
  *     },
  *     push: {
  *         enabled: true,

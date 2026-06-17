@@ -19,7 +19,7 @@ public final class AttackProtectionBotDetection {
      */
     private @Nullable List<String> allowlists;
     /**
-     * @return Bot detection level. Possible values: `low`, `medium`, `high`. Set to empty string to disable.
+     * @return Bot detection level. Possible values: `low`, `medium`, `high`.
      * 
      */
     private @Nullable String botDetectionLevel;
@@ -53,7 +53,7 @@ public final class AttackProtectionBotDetection {
         return this.allowlists == null ? List.of() : this.allowlists;
     }
     /**
-     * @return Bot detection level. Possible values: `low`, `medium`, `high`. Set to empty string to disable.
+     * @return Bot detection level. Possible values: `low`, `medium`, `high`.
      * 
      */
     public Optional<String> botDetectionLevel() {

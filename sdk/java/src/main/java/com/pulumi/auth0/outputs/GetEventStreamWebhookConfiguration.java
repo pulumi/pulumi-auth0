@@ -13,7 +13,7 @@ import java.util.Objects;
 @CustomType
 public final class GetEventStreamWebhookConfiguration {
     /**
-     * @return Authorization details for the webhook endpoint. Supports `basic` authentication using `username` and `password`, or `bearer` authentication using a `token`. The appropriate fields must be set based on the chosen method.
+     * @return Authorization details for the webhook endpoint. Supports `basic` authentication using `username` and `password`, `bearer` authentication using a `token`, or `customHeader` authentication using `headerKey` and `headerValue` (or `headerValueWo`). The appropriate fields must be set based on the chosen method.
      * 
      */
     private List<GetEventStreamWebhookConfigurationWebhookAuthorization> webhookAuthorizations;
@@ -25,7 +25,7 @@ public final class GetEventStreamWebhookConfiguration {
 
     private GetEventStreamWebhookConfiguration() {}
     /**
-     * @return Authorization details for the webhook endpoint. Supports `basic` authentication using `username` and `password`, or `bearer` authentication using a `token`. The appropriate fields must be set based on the chosen method.
+     * @return Authorization details for the webhook endpoint. Supports `basic` authentication using `username` and `password`, `bearer` authentication using a `token`, or `customHeader` authentication using `headerKey` and `headerValue` (or `headerValueWo`). The appropriate fields must be set based on the chosen method.
      * 
      */
     public List<GetEventStreamWebhookConfigurationWebhookAuthorization> webhookAuthorizations() {

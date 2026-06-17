@@ -14,6 +14,11 @@ import * as utilities from "./utilities";
  *
  * > If you are using the `auth0.PhoneProvider` resource to create a `custom` phone provider, you must ensure an action is created first with `custom-phone-provider` as the supportedTriggers
  *
+ * > This resource is the recommended replacement for configuring a phone provider inside the `auth0.Guardian`
+ * `phone` block (the `provider` attribute and `options` block there are deprecated). See the
+ * migration guide
+ * for details.
+ *
  * ## Example Usage
  *
  * ```typescript

@@ -342,6 +342,12 @@ class Guardian(pulumi.CustomResource):
         """
         Multi-Factor Authentication works by requiring additional factors during the login process to prevent unauthorized access. With this resource you can configure some options available for MFA.
 
+        > **Phone provider configuration is moving to the Unified Phone Experience.** The `provider` attribute and the
+        `options` block inside the `phone` block are deprecated in favor of the `PhoneProvider`
+        resource. The `phone` block's `enabled` and `message_types` attributes remain in use. See the
+        migration guide
+        for details.
+
         ## Example Usage
 
         ```python
@@ -362,15 +368,10 @@ class Guardian(pulumi.CustomResource):
             },
             phone={
                 "enabled": True,
-                "provider": "auth0",
                 "message_types": [
                     "sms",
                     "voice",
                 ],
-                "options": {
-                    "enrollment_message": "{{code}} is your verification code for {{tenant.friendly_name}}. Please enter this code to verify your enrollment.",
-                    "verification_message": "{{code}} is your verification code for {{tenant.friendly_name}}.",
-                },
             },
             push={
                 "enabled": True,
@@ -431,6 +432,12 @@ class Guardian(pulumi.CustomResource):
         """
         Multi-Factor Authentication works by requiring additional factors during the login process to prevent unauthorized access. With this resource you can configure some options available for MFA.
 
+        > **Phone provider configuration is moving to the Unified Phone Experience.** The `provider` attribute and the
+        `options` block inside the `phone` block are deprecated in favor of the `PhoneProvider`
+        resource. The `phone` block's `enabled` and `message_types` attributes remain in use. See the
+        migration guide
+        for details.
+
         ## Example Usage
 
         ```python
@@ -451,15 +458,10 @@ class Guardian(pulumi.CustomResource):
             },
             phone={
                 "enabled": True,
-                "provider": "auth0",
                 "message_types": [
                     "sms",
                     "voice",
                 ],
-                "options": {
-                    "enrollment_message": "{{code}} is your verification code for {{tenant.friendly_name}}. Please enter this code to verify your enrollment.",
-                    "verification_message": "{{code}} is your verification code for {{tenant.friendly_name}}.",
-                },
             },
             push={
                 "enabled": True,

@@ -350,6 +350,16 @@ class LogStream(pulumi.CustomResource):
                 "aws_account_id": "my_account_id",
                 "aws_region": "us-east-2",
             })
+        # This is an example of a Datadog log stream using a write-only API key
+        # (recommended for security). The key is never stored in Terraform state.
+        datadog_secure = auth0.LogStream("datadog_secure",
+            name="Datadog (write-only key)",
+            type="datadog",
+            sink={
+                "datadog_region": "us",
+                "datadog_api_key_wo": "AKIAXXXXXXXXXXXXXXXX",
+                "datadog_api_key_wo_version": 1,
+            })
         ```
 
         ## Import
@@ -424,6 +434,16 @@ class LogStream(pulumi.CustomResource):
             sink={
                 "aws_account_id": "my_account_id",
                 "aws_region": "us-east-2",
+            })
+        # This is an example of a Datadog log stream using a write-only API key
+        # (recommended for security). The key is never stored in Terraform state.
+        datadog_secure = auth0.LogStream("datadog_secure",
+            name="Datadog (write-only key)",
+            type="datadog",
+            sink={
+                "datadog_region": "us",
+                "datadog_api_key_wo": "AKIAXXXXXXXXXXXXXXXX",
+                "datadog_api_key_wo_version": 1,
             })
         ```
 

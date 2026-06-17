@@ -276,7 +276,7 @@ public final class ConnectionOptions {
      */
     private @Nullable String iconUrl;
     /**
-     * @return List of allowed algorithms for the ID token signature. If not set, RS256 will be applied at runtime. (Okta/OIDC Connections)
+     * @return List of allowed algorithms for the ID token signature. If not set or empty, default algorithm(s) will be applied at runtime. (Okta/OIDC Connections)
      * 
      */
     private @Nullable List<String> idTokenSignedResponseAlgs;
@@ -969,7 +969,7 @@ public final class ConnectionOptions {
         return Optional.ofNullable(this.iconUrl);
     }
     /**
-     * @return List of allowed algorithms for the ID token signature. If not set, RS256 will be applied at runtime. (Okta/OIDC Connections)
+     * @return List of allowed algorithms for the ID token signature. If not set or empty, default algorithm(s) will be applied at runtime. (Okta/OIDC Connections)
      * 
      */
     public List<String> idTokenSignedResponseAlgs() {

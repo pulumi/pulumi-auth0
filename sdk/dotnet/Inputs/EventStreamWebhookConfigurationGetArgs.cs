@@ -13,7 +13,7 @@ namespace Pulumi.Auth0.Inputs
     public sealed class EventStreamWebhookConfigurationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Authorization details for the webhook endpoint. Supports `Basic` authentication using `Username` and `Password`, or `Bearer` authentication using a `Token`. The appropriate fields must be set based on the chosen method.
+        /// Authorization details for the webhook endpoint. Supports `Basic` authentication using `Username` and `Password`, `Bearer` authentication using a `Token`, or `CustomHeader` authentication using `HeaderKey` and `HeaderValue` (or `HeaderValueWo`). The appropriate fields must be set based on the chosen method.
         /// </summary>
         [Input("webhookAuthorization", required: true)]
         public Input<Inputs.EventStreamWebhookConfigurationWebhookAuthorizationGetArgs> WebhookAuthorization { get; set; } = null!;
