@@ -42,9 +42,18 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string? AzureSubscriptionId;
         /// <summary>
-        /// The Datadog API key.
+        /// The Datadog API key. **Note:** For better security, consider using `DatadogApiKeyWo` instead.
         /// </summary>
         public readonly string? DatadogApiKey;
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The Datadog API key (write-only). This value is **not** stored in Terraform state.
+        /// </summary>
+        public readonly string? DatadogApiKeyWo;
+        /// <summary>
+        /// Version number for `DatadogApiKeyWo`. Must be a positive integer (starting at `1`). Increment this value to trigger an API key change when using `DatadogApiKeyWo`.
+        /// </summary>
+        public readonly int? DatadogApiKeyWoVersion;
         /// <summary>
         /// The Datadog region. Possible values: `Us`, `Eu`, `Us3`, `Us5`.
         /// </summary>
@@ -128,6 +137,10 @@ namespace Pulumi.Auth0.Outputs
 
             string? datadogApiKey,
 
+            string? datadogApiKeyWo,
+
+            int? datadogApiKeyWoVersion,
+
             string? datadogRegion,
 
             string? httpAuthorization,
@@ -168,6 +181,8 @@ namespace Pulumi.Auth0.Outputs
             AzureResourceGroup = azureResourceGroup;
             AzureSubscriptionId = azureSubscriptionId;
             DatadogApiKey = datadogApiKey;
+            DatadogApiKeyWo = datadogApiKeyWo;
+            DatadogApiKeyWoVersion = datadogApiKeyWoVersion;
             DatadogRegion = datadogRegion;
             HttpAuthorization = httpAuthorization;
             HttpContentFormat = httpContentFormat;

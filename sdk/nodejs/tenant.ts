@@ -142,7 +142,7 @@ export class Tenant extends pulumi.CustomResource {
     /**
      * Number of hours an ephemeral (non-persistent) session will stay valid.
      */
-    declare public readonly ephemeralSessionLifetime: pulumi.Output<number | undefined>;
+    declare public readonly ephemeralSessionLifetime: pulumi.Output<number>;
     /**
      * Configuration for the error page
      */
@@ -158,11 +158,11 @@ export class Tenant extends pulumi.CustomResource {
     /**
      * Number of hours for which an ephemeral (non-persistent) session can be inactive before the user must log in again.
      */
-    declare public readonly idleEphemeralSessionLifetime: pulumi.Output<number | undefined>;
+    declare public readonly idleEphemeralSessionLifetime: pulumi.Output<number>;
     /**
      * Number of hours during which a session can be inactive before the user must log in again.
      */
-    declare public readonly idleSessionLifetime: pulumi.Output<number | undefined>;
+    declare public readonly idleSessionLifetime: pulumi.Output<number>;
     /**
      * Configuration for mTLS.
      */
@@ -198,7 +198,7 @@ export class Tenant extends pulumi.CustomResource {
     /**
      * Number of hours during which a session will stay valid.
      */
-    declare public readonly sessionLifetime: pulumi.Output<number | undefined>;
+    declare public readonly sessionLifetime: pulumi.Output<number>;
     /**
      * Sessions related settings for the tenant.
      */

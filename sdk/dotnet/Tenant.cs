@@ -162,7 +162,7 @@ namespace Pulumi.Auth0
         /// Number of hours an ephemeral (non-persistent) session will stay valid.
         /// </summary>
         [Output("ephemeralSessionLifetime")]
-        public Output<double?> EphemeralSessionLifetime { get; private set; } = null!;
+        public Output<double> EphemeralSessionLifetime { get; private set; } = null!;
 
         /// <summary>
         /// Configuration for the error page
@@ -186,13 +186,13 @@ namespace Pulumi.Auth0
         /// Number of hours for which an ephemeral (non-persistent) session can be inactive before the user must log in again.
         /// </summary>
         [Output("idleEphemeralSessionLifetime")]
-        public Output<double?> IdleEphemeralSessionLifetime { get; private set; } = null!;
+        public Output<double> IdleEphemeralSessionLifetime { get; private set; } = null!;
 
         /// <summary>
         /// Number of hours during which a session can be inactive before the user must log in again.
         /// </summary>
         [Output("idleSessionLifetime")]
-        public Output<double?> IdleSessionLifetime { get; private set; } = null!;
+        public Output<double> IdleSessionLifetime { get; private set; } = null!;
 
         /// <summary>
         /// Configuration for mTLS.
@@ -246,7 +246,7 @@ namespace Pulumi.Auth0
         /// Number of hours during which a session will stay valid.
         /// </summary>
         [Output("sessionLifetime")]
-        public Output<double?> SessionLifetime { get; private set; } = null!;
+        public Output<double> SessionLifetime { get; private set; } = null!;
 
         /// <summary>
         /// Sessions related settings for the tenant.

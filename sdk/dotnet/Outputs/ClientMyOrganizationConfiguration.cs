@@ -26,6 +26,10 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string? ConnectionProfileId;
         /// <summary>
+        /// The client ID used as the invitation landing page when creating invitations through the My Organization API. Requires the tenant to have member management enabled, and the referenced client must allow organizations.
+        /// </summary>
+        public readonly string? InvitationLandingClientId;
+        /// <summary>
         /// The ID of the user attribute profile to use when creating organizations for this client.
         /// </summary>
         public readonly string? UserAttributeProfileId;
@@ -38,11 +42,14 @@ namespace Pulumi.Auth0.Outputs
 
             string? connectionProfileId,
 
+            string? invitationLandingClientId,
+
             string? userAttributeProfileId)
         {
             AllowedStrategies = allowedStrategies;
             ConnectionDeletionBehavior = connectionDeletionBehavior;
             ConnectionProfileId = connectionProfileId;
+            InvitationLandingClientId = invitationLandingClientId;
             UserAttributeProfileId = userAttributeProfileId;
         }
     }

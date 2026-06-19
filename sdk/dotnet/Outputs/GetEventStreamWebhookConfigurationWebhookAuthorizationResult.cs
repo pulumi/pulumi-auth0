@@ -14,7 +14,23 @@ namespace Pulumi.Auth0.Outputs
     public sealed class GetEventStreamWebhookConfigurationWebhookAuthorizationResult
     {
         /// <summary>
-        /// The authorization method used to secure the webhook endpoint. Can be either `Basic` or `Bearer`.
+        /// The name of the HTTP header used for `CustomHeader` authentication. Required when `Method` is `CustomHeader`. Returned by the API and stored in state.
+        /// </summary>
+        public readonly string HeaderKey;
+        /// <summary>
+        /// The secret value sent in the custom header. Required when `Method` is `CustomHeader` and `HeaderValueWo` is not provided. **Note:** For better security, use `HeaderValueWo` to prevent storing the secret in state.
+        /// </summary>
+        public readonly string HeaderValue;
+        /// <summary>
+        /// The secret value sent in the custom header (write-only). Not stored in Terraform state. Bump `HeaderValueWoVersion` to rotate the secret.
+        /// </summary>
+        public readonly string HeaderValueWo;
+        /// <summary>
+        /// Version number for secret rotation. Update to trigger a new `HeaderValueWo` to be sent.
+        /// </summary>
+        public readonly int HeaderValueWoVersion;
+        /// <summary>
+        /// The authorization method used to secure the webhook endpoint. Can be `Basic`, `Bearer`, or `CustomHeader`.
         /// </summary>
         public readonly string Method;
         /// <summary>
@@ -48,6 +64,14 @@ namespace Pulumi.Auth0.Outputs
 
         [OutputConstructor]
         private GetEventStreamWebhookConfigurationWebhookAuthorizationResult(
+            string headerKey,
+
+            string headerValue,
+
+            string headerValueWo,
+
+            int headerValueWoVersion,
+
             string method,
 
             string password,
@@ -64,6 +88,10 @@ namespace Pulumi.Auth0.Outputs
 
             string username)
         {
+            HeaderKey = headerKey;
+            HeaderValue = headerValue;
+            HeaderValueWo = headerValueWo;
+            HeaderValueWoVersion = headerValueWoVersion;
             Method = method;
             Password = password;
             PasswordWo = passwordWo;

@@ -62,6 +62,21 @@ public final class ClientMyOrganizationConfigurationArgs extends com.pulumi.reso
     }
 
     /**
+     * The client ID used as the invitation landing page when creating invitations through the My Organization API. Requires the tenant to have member management enabled, and the referenced client must allow organizations.
+     * 
+     */
+    @Import(name="invitationLandingClientId")
+    private @Nullable Output<String> invitationLandingClientId;
+
+    /**
+     * @return The client ID used as the invitation landing page when creating invitations through the My Organization API. Requires the tenant to have member management enabled, and the referenced client must allow organizations.
+     * 
+     */
+    public Optional<Output<String>> invitationLandingClientId() {
+        return Optional.ofNullable(this.invitationLandingClientId);
+    }
+
+    /**
      * The ID of the user attribute profile to use when creating organizations for this client.
      * 
      */
@@ -82,6 +97,7 @@ public final class ClientMyOrganizationConfigurationArgs extends com.pulumi.reso
         this.allowedStrategies = $.allowedStrategies;
         this.connectionDeletionBehavior = $.connectionDeletionBehavior;
         this.connectionProfileId = $.connectionProfileId;
+        this.invitationLandingClientId = $.invitationLandingClientId;
         this.userAttributeProfileId = $.userAttributeProfileId;
     }
 
@@ -174,6 +190,27 @@ public final class ClientMyOrganizationConfigurationArgs extends com.pulumi.reso
          */
         public Builder connectionProfileId(String connectionProfileId) {
             return connectionProfileId(Output.of(connectionProfileId));
+        }
+
+        /**
+         * @param invitationLandingClientId The client ID used as the invitation landing page when creating invitations through the My Organization API. Requires the tenant to have member management enabled, and the referenced client must allow organizations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder invitationLandingClientId(@Nullable Output<String> invitationLandingClientId) {
+            $.invitationLandingClientId = invitationLandingClientId;
+            return this;
+        }
+
+        /**
+         * @param invitationLandingClientId The client ID used as the invitation landing page when creating invitations through the My Organization API. Requires the tenant to have member management enabled, and the referenced client must allow organizations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder invitationLandingClientId(String invitationLandingClientId) {
+            return invitationLandingClientId(Output.of(invitationLandingClientId));
         }
 
         /**
