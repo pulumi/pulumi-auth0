@@ -62,7 +62,7 @@ public final class TenantFlags {
      */
     private @Nullable Boolean enableApisSection;
     /**
-     * @return Indicates whether all current connections should be enabled when a new client is created. (Default: `true`)
+     * @return Indicates whether all current connections should be enabled when a new client is created.
      * 
      */
     private @Nullable Boolean enableClientConnections;
@@ -213,7 +213,7 @@ public final class TenantFlags {
         return Optional.ofNullable(this.enableApisSection);
     }
     /**
-     * @return Indicates whether all current connections should be enabled when a new client is created. (Default: `true`)
+     * @return Indicates whether all current connections should be enabled when a new client is created.
      * 
      */
     public Optional<Boolean> enableClientConnections() {

@@ -5,6 +5,7 @@ package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -50,10 +51,21 @@ public final class LogStreamSink {
      */
     private @Nullable String azureSubscriptionId;
     /**
-     * @return The Datadog API key.
+     * @return The Datadog API key. **Note:** For better security, consider using `datadogApiKeyWo` instead.
      * 
      */
     private @Nullable String datadogApiKey;
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The Datadog API key (write-only). This value is **not** stored in Terraform state.
+     * 
+     */
+    private @Nullable String datadogApiKeyWo;
+    /**
+     * @return Version number for `datadogApiKeyWo`. Must be a positive integer (starting at `1`). Increment this value to trigger an API key change when using `datadogApiKeyWo`.
+     * 
+     */
+    private @Nullable Integer datadogApiKeyWoVersion;
     /**
      * @return The Datadog region. Possible values: `us`, `eu`, `us3`, `us5`.
      * 
@@ -186,11 +198,26 @@ public final class LogStreamSink {
         return Optional.ofNullable(this.azureSubscriptionId);
     }
     /**
-     * @return The Datadog API key.
+     * @return The Datadog API key. **Note:** For better security, consider using `datadogApiKeyWo` instead.
      * 
      */
     public Optional<String> datadogApiKey() {
         return Optional.ofNullable(this.datadogApiKey);
+    }
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The Datadog API key (write-only). This value is **not** stored in Terraform state.
+     * 
+     */
+    public Optional<String> datadogApiKeyWo() {
+        return Optional.ofNullable(this.datadogApiKeyWo);
+    }
+    /**
+     * @return Version number for `datadogApiKeyWo`. Must be a positive integer (starting at `1`). Increment this value to trigger an API key change when using `datadogApiKeyWo`.
+     * 
+     */
+    public Optional<Integer> datadogApiKeyWoVersion() {
+        return Optional.ofNullable(this.datadogApiKeyWoVersion);
     }
     /**
      * @return The Datadog region. Possible values: `us`, `eu`, `us3`, `us5`.
@@ -322,6 +349,8 @@ public final class LogStreamSink {
         private @Nullable String azureResourceGroup;
         private @Nullable String azureSubscriptionId;
         private @Nullable String datadogApiKey;
+        private @Nullable String datadogApiKeyWo;
+        private @Nullable Integer datadogApiKeyWoVersion;
         private @Nullable String datadogRegion;
         private @Nullable String httpAuthorization;
         private @Nullable String httpContentFormat;
@@ -349,6 +378,8 @@ public final class LogStreamSink {
     	      this.azureResourceGroup = defaults.azureResourceGroup;
     	      this.azureSubscriptionId = defaults.azureSubscriptionId;
     	      this.datadogApiKey = defaults.datadogApiKey;
+    	      this.datadogApiKeyWo = defaults.datadogApiKeyWo;
+    	      this.datadogApiKeyWoVersion = defaults.datadogApiKeyWoVersion;
     	      this.datadogRegion = defaults.datadogRegion;
     	      this.httpAuthorization = defaults.httpAuthorization;
     	      this.httpContentFormat = defaults.httpContentFormat;
@@ -413,6 +444,18 @@ public final class LogStreamSink {
         public Builder datadogApiKey(@Nullable String datadogApiKey) {
 
             this.datadogApiKey = datadogApiKey;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder datadogApiKeyWo(@Nullable String datadogApiKeyWo) {
+
+            this.datadogApiKeyWo = datadogApiKeyWo;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder datadogApiKeyWoVersion(@Nullable Integer datadogApiKeyWoVersion) {
+
+            this.datadogApiKeyWoVersion = datadogApiKeyWoVersion;
             return this;
         }
         @CustomType.Setter
@@ -521,6 +564,8 @@ public final class LogStreamSink {
             _resultValue.azureResourceGroup = azureResourceGroup;
             _resultValue.azureSubscriptionId = azureSubscriptionId;
             _resultValue.datadogApiKey = datadogApiKey;
+            _resultValue.datadogApiKeyWo = datadogApiKeyWo;
+            _resultValue.datadogApiKeyWoVersion = datadogApiKeyWoVersion;
             _resultValue.datadogRegion = datadogRegion;
             _resultValue.httpAuthorization = httpAuthorization;
             _resultValue.httpContentFormat = httpContentFormat;

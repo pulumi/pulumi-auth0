@@ -1083,7 +1083,7 @@ func (o ActionSupportedTriggersPtrOutput) Version() pulumi.StringPtrOutput {
 type AttackProtectionBotDetection struct {
 	// List of IP addresses or ranges that will not trigger bot detection.
 	Allowlists []string `pulumi:"allowlists"`
-	// Bot detection level. Possible values: `low`, `medium`, `high`. Set to empty string to disable.
+	// Bot detection level. Possible values: `low`, `medium`, `high`.
 	BotDetectionLevel *string `pulumi:"botDetectionLevel"`
 	// Challenge policy for password flow. Possible values: `never`, `whenRisky`, `always`.
 	ChallengePasswordPolicy *string `pulumi:"challengePasswordPolicy"`
@@ -1109,7 +1109,7 @@ type AttackProtectionBotDetectionInput interface {
 type AttackProtectionBotDetectionArgs struct {
 	// List of IP addresses or ranges that will not trigger bot detection.
 	Allowlists pulumi.StringArrayInput `pulumi:"allowlists"`
-	// Bot detection level. Possible values: `low`, `medium`, `high`. Set to empty string to disable.
+	// Bot detection level. Possible values: `low`, `medium`, `high`.
 	BotDetectionLevel pulumi.StringPtrInput `pulumi:"botDetectionLevel"`
 	// Challenge policy for password flow. Possible values: `never`, `whenRisky`, `always`.
 	ChallengePasswordPolicy pulumi.StringPtrInput `pulumi:"challengePasswordPolicy"`
@@ -1203,7 +1203,7 @@ func (o AttackProtectionBotDetectionOutput) Allowlists() pulumi.StringArrayOutpu
 	return o.ApplyT(func(v AttackProtectionBotDetection) []string { return v.Allowlists }).(pulumi.StringArrayOutput)
 }
 
-// Bot detection level. Possible values: `low`, `medium`, `high`. Set to empty string to disable.
+// Bot detection level. Possible values: `low`, `medium`, `high`.
 func (o AttackProtectionBotDetectionOutput) BotDetectionLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AttackProtectionBotDetection) *string { return v.BotDetectionLevel }).(pulumi.StringPtrOutput)
 }
@@ -1262,7 +1262,7 @@ func (o AttackProtectionBotDetectionPtrOutput) Allowlists() pulumi.StringArrayOu
 	}).(pulumi.StringArrayOutput)
 }
 
-// Bot detection level. Possible values: `low`, `medium`, `high`. Set to empty string to disable.
+// Bot detection level. Possible values: `low`, `medium`, `high`.
 func (o AttackProtectionBotDetectionPtrOutput) BotDetectionLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AttackProtectionBotDetection) *string {
 		if v == nil {
@@ -16300,6 +16300,8 @@ type ClientMyOrganizationConfiguration struct {
 	ConnectionDeletionBehavior *string `pulumi:"connectionDeletionBehavior"`
 	// The ID of the connection profile to use when creating organizations for this client.
 	ConnectionProfileId *string `pulumi:"connectionProfileId"`
+	// The client ID used as the invitation landing page when creating invitations through the My Organization API. Requires the tenant to have member management enabled, and the referenced client must allow organizations.
+	InvitationLandingClientId *string `pulumi:"invitationLandingClientId"`
 	// The ID of the user attribute profile to use when creating organizations for this client.
 	UserAttributeProfileId *string `pulumi:"userAttributeProfileId"`
 }
@@ -16322,6 +16324,8 @@ type ClientMyOrganizationConfigurationArgs struct {
 	ConnectionDeletionBehavior pulumi.StringPtrInput `pulumi:"connectionDeletionBehavior"`
 	// The ID of the connection profile to use when creating organizations for this client.
 	ConnectionProfileId pulumi.StringPtrInput `pulumi:"connectionProfileId"`
+	// The client ID used as the invitation landing page when creating invitations through the My Organization API. Requires the tenant to have member management enabled, and the referenced client must allow organizations.
+	InvitationLandingClientId pulumi.StringPtrInput `pulumi:"invitationLandingClientId"`
 	// The ID of the user attribute profile to use when creating organizations for this client.
 	UserAttributeProfileId pulumi.StringPtrInput `pulumi:"userAttributeProfileId"`
 }
@@ -16418,6 +16422,11 @@ func (o ClientMyOrganizationConfigurationOutput) ConnectionProfileId() pulumi.St
 	return o.ApplyT(func(v ClientMyOrganizationConfiguration) *string { return v.ConnectionProfileId }).(pulumi.StringPtrOutput)
 }
 
+// The client ID used as the invitation landing page when creating invitations through the My Organization API. Requires the tenant to have member management enabled, and the referenced client must allow organizations.
+func (o ClientMyOrganizationConfigurationOutput) InvitationLandingClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientMyOrganizationConfiguration) *string { return v.InvitationLandingClientId }).(pulumi.StringPtrOutput)
+}
+
 // The ID of the user attribute profile to use when creating organizations for this client.
 func (o ClientMyOrganizationConfigurationOutput) UserAttributeProfileId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientMyOrganizationConfiguration) *string { return v.UserAttributeProfileId }).(pulumi.StringPtrOutput)
@@ -16474,6 +16483,16 @@ func (o ClientMyOrganizationConfigurationPtrOutput) ConnectionProfileId() pulumi
 			return nil
 		}
 		return v.ConnectionProfileId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The client ID used as the invitation landing page when creating invitations through the My Organization API. Requires the tenant to have member management enabled, and the referenced client must allow organizations.
+func (o ClientMyOrganizationConfigurationPtrOutput) InvitationLandingClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientMyOrganizationConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InvitationLandingClientId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -19043,7 +19062,7 @@ type ConnectionOptions struct {
 	GlobalTokenRevocationJwtSub *string `pulumi:"globalTokenRevocationJwtSub"`
 	// Icon URL.
 	IconUrl *string `pulumi:"iconUrl"`
-	// List of allowed algorithms for the ID token signature. If not set, RS256 will be applied at runtime. (Okta/OIDC Connections)
+	// List of allowed algorithms for the ID token signature. If not set or empty, default algorithm(s) will be applied at runtime. (Okta/OIDC Connections)
 	IdTokenSignedResponseAlgs []string `pulumi:"idTokenSignedResponseAlgs"`
 	// Azure AD Identity API. Available options are: `microsoft-identity-platform-v2.0` or `azure-active-directory-v1.0`.
 	IdentityApi *string `pulumi:"identityApi"`
@@ -19295,7 +19314,7 @@ type ConnectionOptionsArgs struct {
 	GlobalTokenRevocationJwtSub pulumi.StringPtrInput `pulumi:"globalTokenRevocationJwtSub"`
 	// Icon URL.
 	IconUrl pulumi.StringPtrInput `pulumi:"iconUrl"`
-	// List of allowed algorithms for the ID token signature. If not set, RS256 will be applied at runtime. (Okta/OIDC Connections)
+	// List of allowed algorithms for the ID token signature. If not set or empty, default algorithm(s) will be applied at runtime. (Okta/OIDC Connections)
 	IdTokenSignedResponseAlgs pulumi.StringArrayInput `pulumi:"idTokenSignedResponseAlgs"`
 	// Azure AD Identity API. Available options are: `microsoft-identity-platform-v2.0` or `azure-active-directory-v1.0`.
 	IdentityApi pulumi.StringPtrInput `pulumi:"identityApi"`
@@ -19758,7 +19777,7 @@ func (o ConnectionOptionsOutput) IconUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.IconUrl }).(pulumi.StringPtrOutput)
 }
 
-// List of allowed algorithms for the ID token signature. If not set, RS256 will be applied at runtime. (Okta/OIDC Connections)
+// List of allowed algorithms for the ID token signature. If not set or empty, default algorithm(s) will be applied at runtime. (Okta/OIDC Connections)
 func (o ConnectionOptionsOutput) IdTokenSignedResponseAlgs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConnectionOptions) []string { return v.IdTokenSignedResponseAlgs }).(pulumi.StringArrayOutput)
 }
@@ -20619,7 +20638,7 @@ func (o ConnectionOptionsPtrOutput) IconUrl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// List of allowed algorithms for the ID token signature. If not set, RS256 will be applied at runtime. (Okta/OIDC Connections)
+// List of allowed algorithms for the ID token signature. If not set or empty, default algorithm(s) will be applied at runtime. (Okta/OIDC Connections)
 func (o ConnectionOptionsPtrOutput) IdTokenSignedResponseAlgs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ConnectionOptions) []string {
 		if v == nil {
@@ -31859,7 +31878,7 @@ func (o EventStreamEventbridgeConfigurationPtrOutput) AwsRegion() pulumi.StringP
 }
 
 type EventStreamWebhookConfiguration struct {
-	// Authorization details for the webhook endpoint. Supports `basic` authentication using `username` and `password`, or `bearer` authentication using a `token`. The appropriate fields must be set based on the chosen method.
+	// Authorization details for the webhook endpoint. Supports `basic` authentication using `username` and `password`, `bearer` authentication using a `token`, or `customHeader` authentication using `headerKey` and `headerValue` (or `headerValueWo`). The appropriate fields must be set based on the chosen method.
 	WebhookAuthorization EventStreamWebhookConfigurationWebhookAuthorization `pulumi:"webhookAuthorization"`
 	// The HTTPS endpoint that will receive the webhook events. Must be a valid, publicly accessible URL.
 	WebhookEndpoint string `pulumi:"webhookEndpoint"`
@@ -31877,7 +31896,7 @@ type EventStreamWebhookConfigurationInput interface {
 }
 
 type EventStreamWebhookConfigurationArgs struct {
-	// Authorization details for the webhook endpoint. Supports `basic` authentication using `username` and `password`, or `bearer` authentication using a `token`. The appropriate fields must be set based on the chosen method.
+	// Authorization details for the webhook endpoint. Supports `basic` authentication using `username` and `password`, `bearer` authentication using a `token`, or `customHeader` authentication using `headerKey` and `headerValue` (or `headerValueWo`). The appropriate fields must be set based on the chosen method.
 	WebhookAuthorization EventStreamWebhookConfigurationWebhookAuthorizationInput `pulumi:"webhookAuthorization"`
 	// The HTTPS endpoint that will receive the webhook events. Must be a valid, publicly accessible URL.
 	WebhookEndpoint pulumi.StringInput `pulumi:"webhookEndpoint"`
@@ -31960,7 +31979,7 @@ func (o EventStreamWebhookConfigurationOutput) ToEventStreamWebhookConfiguration
 	}).(EventStreamWebhookConfigurationPtrOutput)
 }
 
-// Authorization details for the webhook endpoint. Supports `basic` authentication using `username` and `password`, or `bearer` authentication using a `token`. The appropriate fields must be set based on the chosen method.
+// Authorization details for the webhook endpoint. Supports `basic` authentication using `username` and `password`, `bearer` authentication using a `token`, or `customHeader` authentication using `headerKey` and `headerValue` (or `headerValueWo`). The appropriate fields must be set based on the chosen method.
 func (o EventStreamWebhookConfigurationOutput) WebhookAuthorization() EventStreamWebhookConfigurationWebhookAuthorizationOutput {
 	return o.ApplyT(func(v EventStreamWebhookConfiguration) EventStreamWebhookConfigurationWebhookAuthorization {
 		return v.WebhookAuthorization
@@ -31996,7 +32015,7 @@ func (o EventStreamWebhookConfigurationPtrOutput) Elem() EventStreamWebhookConfi
 	}).(EventStreamWebhookConfigurationOutput)
 }
 
-// Authorization details for the webhook endpoint. Supports `basic` authentication using `username` and `password`, or `bearer` authentication using a `token`. The appropriate fields must be set based on the chosen method.
+// Authorization details for the webhook endpoint. Supports `basic` authentication using `username` and `password`, `bearer` authentication using a `token`, or `customHeader` authentication using `headerKey` and `headerValue` (or `headerValueWo`). The appropriate fields must be set based on the chosen method.
 func (o EventStreamWebhookConfigurationPtrOutput) WebhookAuthorization() EventStreamWebhookConfigurationWebhookAuthorizationPtrOutput {
 	return o.ApplyT(func(v *EventStreamWebhookConfiguration) *EventStreamWebhookConfigurationWebhookAuthorization {
 		if v == nil {
@@ -32017,7 +32036,16 @@ func (o EventStreamWebhookConfigurationPtrOutput) WebhookEndpoint() pulumi.Strin
 }
 
 type EventStreamWebhookConfigurationWebhookAuthorization struct {
-	// The authorization method used to secure the webhook endpoint. Can be either `basic` or `bearer`.
+	// The name of the HTTP header used for `customHeader` authentication. Required when `method` is `customHeader`. Returned by the API and stored in state.
+	HeaderKey *string `pulumi:"headerKey"`
+	// The secret value sent in the custom header. Required when `method` is `customHeader` and `headerValueWo` is not provided. **Note:** For better security, use `headerValueWo` to prevent storing the secret in state.
+	HeaderValue *string `pulumi:"headerValue"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The secret value sent in the custom header (write-only). Not stored in Terraform state. Bump `headerValueWoVersion` to rotate the secret.
+	HeaderValueWo *string `pulumi:"headerValueWo"`
+	// Version number for secret rotation. Update to trigger a new `headerValueWo` to be sent.
+	HeaderValueWoVersion *int `pulumi:"headerValueWoVersion"`
+	// The authorization method used to secure the webhook endpoint. Can be `basic`, `bearer`, or `customHeader`.
 	Method string `pulumi:"method"`
 	// The password for `basic` authentication. Required only when `method` is set to `basic`. **Note:** For better security, consider using `passwordWo` instead to prevent storing the password in Terraform state.
 	Password *string `pulumi:"password"`
@@ -32049,7 +32077,16 @@ type EventStreamWebhookConfigurationWebhookAuthorizationInput interface {
 }
 
 type EventStreamWebhookConfigurationWebhookAuthorizationArgs struct {
-	// The authorization method used to secure the webhook endpoint. Can be either `basic` or `bearer`.
+	// The name of the HTTP header used for `customHeader` authentication. Required when `method` is `customHeader`. Returned by the API and stored in state.
+	HeaderKey pulumi.StringPtrInput `pulumi:"headerKey"`
+	// The secret value sent in the custom header. Required when `method` is `customHeader` and `headerValueWo` is not provided. **Note:** For better security, use `headerValueWo` to prevent storing the secret in state.
+	HeaderValue pulumi.StringPtrInput `pulumi:"headerValue"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The secret value sent in the custom header (write-only). Not stored in Terraform state. Bump `headerValueWoVersion` to rotate the secret.
+	HeaderValueWo pulumi.StringPtrInput `pulumi:"headerValueWo"`
+	// Version number for secret rotation. Update to trigger a new `headerValueWo` to be sent.
+	HeaderValueWoVersion pulumi.IntPtrInput `pulumi:"headerValueWoVersion"`
+	// The authorization method used to secure the webhook endpoint. Can be `basic`, `bearer`, or `customHeader`.
 	Method pulumi.StringInput `pulumi:"method"`
 	// The password for `basic` authentication. Required only when `method` is set to `basic`. **Note:** For better security, consider using `passwordWo` instead to prevent storing the password in Terraform state.
 	Password pulumi.StringPtrInput `pulumi:"password"`
@@ -32146,7 +32183,28 @@ func (o EventStreamWebhookConfigurationWebhookAuthorizationOutput) ToEventStream
 	}).(EventStreamWebhookConfigurationWebhookAuthorizationPtrOutput)
 }
 
-// The authorization method used to secure the webhook endpoint. Can be either `basic` or `bearer`.
+// The name of the HTTP header used for `customHeader` authentication. Required when `method` is `customHeader`. Returned by the API and stored in state.
+func (o EventStreamWebhookConfigurationWebhookAuthorizationOutput) HeaderKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventStreamWebhookConfigurationWebhookAuthorization) *string { return v.HeaderKey }).(pulumi.StringPtrOutput)
+}
+
+// The secret value sent in the custom header. Required when `method` is `customHeader` and `headerValueWo` is not provided. **Note:** For better security, use `headerValueWo` to prevent storing the secret in state.
+func (o EventStreamWebhookConfigurationWebhookAuthorizationOutput) HeaderValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventStreamWebhookConfigurationWebhookAuthorization) *string { return v.HeaderValue }).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// The secret value sent in the custom header (write-only). Not stored in Terraform state. Bump `headerValueWoVersion` to rotate the secret.
+func (o EventStreamWebhookConfigurationWebhookAuthorizationOutput) HeaderValueWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventStreamWebhookConfigurationWebhookAuthorization) *string { return v.HeaderValueWo }).(pulumi.StringPtrOutput)
+}
+
+// Version number for secret rotation. Update to trigger a new `headerValueWo` to be sent.
+func (o EventStreamWebhookConfigurationWebhookAuthorizationOutput) HeaderValueWoVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EventStreamWebhookConfigurationWebhookAuthorization) *int { return v.HeaderValueWoVersion }).(pulumi.IntPtrOutput)
+}
+
+// The authorization method used to secure the webhook endpoint. Can be `basic`, `bearer`, or `customHeader`.
 func (o EventStreamWebhookConfigurationWebhookAuthorizationOutput) Method() pulumi.StringOutput {
 	return o.ApplyT(func(v EventStreamWebhookConfigurationWebhookAuthorization) string { return v.Method }).(pulumi.StringOutput)
 }
@@ -32212,7 +32270,48 @@ func (o EventStreamWebhookConfigurationWebhookAuthorizationPtrOutput) Elem() Eve
 	}).(EventStreamWebhookConfigurationWebhookAuthorizationOutput)
 }
 
-// The authorization method used to secure the webhook endpoint. Can be either `basic` or `bearer`.
+// The name of the HTTP header used for `customHeader` authentication. Required when `method` is `customHeader`. Returned by the API and stored in state.
+func (o EventStreamWebhookConfigurationWebhookAuthorizationPtrOutput) HeaderKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventStreamWebhookConfigurationWebhookAuthorization) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HeaderKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// The secret value sent in the custom header. Required when `method` is `customHeader` and `headerValueWo` is not provided. **Note:** For better security, use `headerValueWo` to prevent storing the secret in state.
+func (o EventStreamWebhookConfigurationWebhookAuthorizationPtrOutput) HeaderValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventStreamWebhookConfigurationWebhookAuthorization) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HeaderValue
+	}).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// The secret value sent in the custom header (write-only). Not stored in Terraform state. Bump `headerValueWoVersion` to rotate the secret.
+func (o EventStreamWebhookConfigurationWebhookAuthorizationPtrOutput) HeaderValueWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventStreamWebhookConfigurationWebhookAuthorization) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HeaderValueWo
+	}).(pulumi.StringPtrOutput)
+}
+
+// Version number for secret rotation. Update to trigger a new `headerValueWo` to be sent.
+func (o EventStreamWebhookConfigurationWebhookAuthorizationPtrOutput) HeaderValueWoVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EventStreamWebhookConfigurationWebhookAuthorization) *int {
+		if v == nil {
+			return nil
+		}
+		return v.HeaderValueWoVersion
+	}).(pulumi.IntPtrOutput)
+}
+
+// The authorization method used to secure the webhook endpoint. Can be `basic`, `bearer`, or `customHeader`.
 func (o EventStreamWebhookConfigurationWebhookAuthorizationPtrOutput) Method() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EventStreamWebhookConfigurationWebhookAuthorization) *string {
 		if v == nil {
@@ -32705,9 +32804,13 @@ type GuardianPhone struct {
 	Enabled bool `pulumi:"enabled"`
 	// Message types to use, array of `sms` and/or `voice`. Adding both to the array should enable the user to choose.
 	MessageTypes []string `pulumi:"messageTypes"`
-	// Options for the various providers.
+	// Options for the various providers. This block requires `phoneConsolidatedExperience` to be `false` on the `Tenant`.
+	//
+	// Deprecated: This field is deprecated in favor of the Unified Phone Experience. Use`PhoneProvider` resource instead. See the migration guide: https://auth0.com/docs/customize/phone-messages/unified-phone/migrate-to-unified-phone-experience-with-terraform.
 	Options *GuardianPhoneOptions `pulumi:"options"`
-	// Provider to use, one of `auth0`, `twilio` or `phone-message-hook`. Selecting `phone-message-hook` will require a Phone Message Action to be created before. [Learn how](https://auth0.com/docs/customize/actions/flows-and-triggers/send-phone-message-flow).
+	// Provider to use, one of `auth0`, `twilio` or `phone-message-hook`. Selecting `phone-message-hook` will require a Phone Message Action to be created before. [Learn how](https://auth0.com/docs/customize/actions/flows-and-triggers/send-phone-message-flow). This field requires `phoneConsolidatedExperience` to be `false` on the `Tenant`.
+	//
+	// Deprecated: This field is deprecated in favor of the Unified Phone Experience. Use`PhoneProvider` resource instead. See the migration guide: https://auth0.com/docs/customize/phone-messages/unified-phone/migrate-to-unified-phone-experience-with-terraform.
 	Provider *string `pulumi:"provider"`
 }
 
@@ -32727,9 +32830,13 @@ type GuardianPhoneArgs struct {
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 	// Message types to use, array of `sms` and/or `voice`. Adding both to the array should enable the user to choose.
 	MessageTypes pulumi.StringArrayInput `pulumi:"messageTypes"`
-	// Options for the various providers.
+	// Options for the various providers. This block requires `phoneConsolidatedExperience` to be `false` on the `Tenant`.
+	//
+	// Deprecated: This field is deprecated in favor of the Unified Phone Experience. Use`PhoneProvider` resource instead. See the migration guide: https://auth0.com/docs/customize/phone-messages/unified-phone/migrate-to-unified-phone-experience-with-terraform.
 	Options GuardianPhoneOptionsPtrInput `pulumi:"options"`
-	// Provider to use, one of `auth0`, `twilio` or `phone-message-hook`. Selecting `phone-message-hook` will require a Phone Message Action to be created before. [Learn how](https://auth0.com/docs/customize/actions/flows-and-triggers/send-phone-message-flow).
+	// Provider to use, one of `auth0`, `twilio` or `phone-message-hook`. Selecting `phone-message-hook` will require a Phone Message Action to be created before. [Learn how](https://auth0.com/docs/customize/actions/flows-and-triggers/send-phone-message-flow). This field requires `phoneConsolidatedExperience` to be `false` on the `Tenant`.
+	//
+	// Deprecated: This field is deprecated in favor of the Unified Phone Experience. Use`PhoneProvider` resource instead. See the migration guide: https://auth0.com/docs/customize/phone-messages/unified-phone/migrate-to-unified-phone-experience-with-terraform.
 	Provider pulumi.StringPtrInput `pulumi:"provider"`
 }
 
@@ -32820,12 +32927,16 @@ func (o GuardianPhoneOutput) MessageTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GuardianPhone) []string { return v.MessageTypes }).(pulumi.StringArrayOutput)
 }
 
-// Options for the various providers.
+// Options for the various providers. This block requires `phoneConsolidatedExperience` to be `false` on the `Tenant`.
+//
+// Deprecated: This field is deprecated in favor of the Unified Phone Experience. Use`PhoneProvider` resource instead. See the migration guide: https://auth0.com/docs/customize/phone-messages/unified-phone/migrate-to-unified-phone-experience-with-terraform.
 func (o GuardianPhoneOutput) Options() GuardianPhoneOptionsPtrOutput {
 	return o.ApplyT(func(v GuardianPhone) *GuardianPhoneOptions { return v.Options }).(GuardianPhoneOptionsPtrOutput)
 }
 
-// Provider to use, one of `auth0`, `twilio` or `phone-message-hook`. Selecting `phone-message-hook` will require a Phone Message Action to be created before. [Learn how](https://auth0.com/docs/customize/actions/flows-and-triggers/send-phone-message-flow).
+// Provider to use, one of `auth0`, `twilio` or `phone-message-hook`. Selecting `phone-message-hook` will require a Phone Message Action to be created before. [Learn how](https://auth0.com/docs/customize/actions/flows-and-triggers/send-phone-message-flow). This field requires `phoneConsolidatedExperience` to be `false` on the `Tenant`.
+//
+// Deprecated: This field is deprecated in favor of the Unified Phone Experience. Use`PhoneProvider` resource instead. See the migration guide: https://auth0.com/docs/customize/phone-messages/unified-phone/migrate-to-unified-phone-experience-with-terraform.
 func (o GuardianPhoneOutput) Provider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GuardianPhone) *string { return v.Provider }).(pulumi.StringPtrOutput)
 }
@@ -32874,7 +32985,9 @@ func (o GuardianPhonePtrOutput) MessageTypes() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Options for the various providers.
+// Options for the various providers. This block requires `phoneConsolidatedExperience` to be `false` on the `Tenant`.
+//
+// Deprecated: This field is deprecated in favor of the Unified Phone Experience. Use`PhoneProvider` resource instead. See the migration guide: https://auth0.com/docs/customize/phone-messages/unified-phone/migrate-to-unified-phone-experience-with-terraform.
 func (o GuardianPhonePtrOutput) Options() GuardianPhoneOptionsPtrOutput {
 	return o.ApplyT(func(v *GuardianPhone) *GuardianPhoneOptions {
 		if v == nil {
@@ -32884,7 +32997,9 @@ func (o GuardianPhonePtrOutput) Options() GuardianPhoneOptionsPtrOutput {
 	}).(GuardianPhoneOptionsPtrOutput)
 }
 
-// Provider to use, one of `auth0`, `twilio` or `phone-message-hook`. Selecting `phone-message-hook` will require a Phone Message Action to be created before. [Learn how](https://auth0.com/docs/customize/actions/flows-and-triggers/send-phone-message-flow).
+// Provider to use, one of `auth0`, `twilio` or `phone-message-hook`. Selecting `phone-message-hook` will require a Phone Message Action to be created before. [Learn how](https://auth0.com/docs/customize/actions/flows-and-triggers/send-phone-message-flow). This field requires `phoneConsolidatedExperience` to be `false` on the `Tenant`.
+//
+// Deprecated: This field is deprecated in favor of the Unified Phone Experience. Use`PhoneProvider` resource instead. See the migration guide: https://auth0.com/docs/customize/phone-messages/unified-phone/migrate-to-unified-phone-experience-with-terraform.
 func (o GuardianPhonePtrOutput) Provider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuardianPhone) *string {
 		if v == nil {
@@ -34632,8 +34747,13 @@ type LogStreamSink struct {
 	AzureResourceGroup *string `pulumi:"azureResourceGroup"`
 	// The unique alphanumeric string that identifies your Azure subscription.
 	AzureSubscriptionId *string `pulumi:"azureSubscriptionId"`
-	// The Datadog API key.
+	// The Datadog API key. **Note:** For better security, consider using `datadogApiKeyWo` instead.
 	DatadogApiKey *string `pulumi:"datadogApiKey"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The Datadog API key (write-only). This value is **not** stored in Terraform state.
+	DatadogApiKeyWo *string `pulumi:"datadogApiKeyWo"`
+	// Version number for `datadogApiKeyWo`. Must be a positive integer (starting at `1`). Increment this value to trigger an API key change when using `datadogApiKeyWo`.
+	DatadogApiKeyWoVersion *int `pulumi:"datadogApiKeyWoVersion"`
 	// The Datadog region. Possible values: `us`, `eu`, `us3`, `us5`.
 	DatadogRegion *string `pulumi:"datadogRegion"`
 	// Sent in the HTTP "Authorization" header with each request.
@@ -34694,8 +34814,13 @@ type LogStreamSinkArgs struct {
 	AzureResourceGroup pulumi.StringPtrInput `pulumi:"azureResourceGroup"`
 	// The unique alphanumeric string that identifies your Azure subscription.
 	AzureSubscriptionId pulumi.StringPtrInput `pulumi:"azureSubscriptionId"`
-	// The Datadog API key.
+	// The Datadog API key. **Note:** For better security, consider using `datadogApiKeyWo` instead.
 	DatadogApiKey pulumi.StringPtrInput `pulumi:"datadogApiKey"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The Datadog API key (write-only). This value is **not** stored in Terraform state.
+	DatadogApiKeyWo pulumi.StringPtrInput `pulumi:"datadogApiKeyWo"`
+	// Version number for `datadogApiKeyWo`. Must be a positive integer (starting at `1`). Increment this value to trigger an API key change when using `datadogApiKeyWo`.
+	DatadogApiKeyWoVersion pulumi.IntPtrInput `pulumi:"datadogApiKeyWoVersion"`
 	// The Datadog region. Possible values: `us`, `eu`, `us3`, `us5`.
 	DatadogRegion pulumi.StringPtrInput `pulumi:"datadogRegion"`
 	// Sent in the HTTP "Authorization" header with each request.
@@ -34842,9 +34967,20 @@ func (o LogStreamSinkOutput) AzureSubscriptionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LogStreamSink) *string { return v.AzureSubscriptionId }).(pulumi.StringPtrOutput)
 }
 
-// The Datadog API key.
+// The Datadog API key. **Note:** For better security, consider using `datadogApiKeyWo` instead.
 func (o LogStreamSinkOutput) DatadogApiKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LogStreamSink) *string { return v.DatadogApiKey }).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// The Datadog API key (write-only). This value is **not** stored in Terraform state.
+func (o LogStreamSinkOutput) DatadogApiKeyWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogStreamSink) *string { return v.DatadogApiKeyWo }).(pulumi.StringPtrOutput)
+}
+
+// Version number for `datadogApiKeyWo`. Must be a positive integer (starting at `1`). Increment this value to trigger an API key change when using `datadogApiKeyWo`.
+func (o LogStreamSinkOutput) DatadogApiKeyWoVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LogStreamSink) *int { return v.DatadogApiKeyWoVersion }).(pulumi.IntPtrOutput)
 }
 
 // The Datadog region. Possible values: `us`, `eu`, `us3`, `us5`.
@@ -35021,7 +35157,7 @@ func (o LogStreamSinkPtrOutput) AzureSubscriptionId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The Datadog API key.
+// The Datadog API key. **Note:** For better security, consider using `datadogApiKeyWo` instead.
 func (o LogStreamSinkPtrOutput) DatadogApiKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogStreamSink) *string {
 		if v == nil {
@@ -35029,6 +35165,27 @@ func (o LogStreamSinkPtrOutput) DatadogApiKey() pulumi.StringPtrOutput {
 		}
 		return v.DatadogApiKey
 	}).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// The Datadog API key (write-only). This value is **not** stored in Terraform state.
+func (o LogStreamSinkPtrOutput) DatadogApiKeyWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogStreamSink) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DatadogApiKeyWo
+	}).(pulumi.StringPtrOutput)
+}
+
+// Version number for `datadogApiKeyWo`. Must be a positive integer (starting at `1`). Increment this value to trigger an API key change when using `datadogApiKeyWo`.
+func (o LogStreamSinkPtrOutput) DatadogApiKeyWoVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LogStreamSink) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DatadogApiKeyWoVersion
+	}).(pulumi.IntPtrOutput)
 }
 
 // The Datadog region. Possible values: `us`, `eu`, `us3`, `us5`.
@@ -41834,7 +41991,7 @@ type TenantFlags struct {
 	EnableAdfsWaadEmailVerification *bool `pulumi:"enableAdfsWaadEmailVerification"`
 	// Indicates whether the APIs section is enabled for the tenant.
 	EnableApisSection *bool `pulumi:"enableApisSection"`
-	// Indicates whether all current connections should be enabled when a new client is created. (Default: `true`)
+	// Indicates whether all current connections should be enabled when a new client is created.
 	EnableClientConnections *bool `pulumi:"enableClientConnections"`
 	// Indicates whether the tenant allows custom domains in emails. Before enabling this flag, you must have a custom domain with status: `ready`.
 	EnableCustomDomainInEmails *bool `pulumi:"enableCustomDomainInEmails"`
@@ -41900,7 +42057,7 @@ type TenantFlagsArgs struct {
 	EnableAdfsWaadEmailVerification pulumi.BoolPtrInput `pulumi:"enableAdfsWaadEmailVerification"`
 	// Indicates whether the APIs section is enabled for the tenant.
 	EnableApisSection pulumi.BoolPtrInput `pulumi:"enableApisSection"`
-	// Indicates whether all current connections should be enabled when a new client is created. (Default: `true`)
+	// Indicates whether all current connections should be enabled when a new client is created.
 	EnableClientConnections pulumi.BoolPtrInput `pulumi:"enableClientConnections"`
 	// Indicates whether the tenant allows custom domains in emails. Before enabling this flag, you must have a custom domain with status: `ready`.
 	EnableCustomDomainInEmails pulumi.BoolPtrInput `pulumi:"enableCustomDomainInEmails"`
@@ -42061,7 +42218,7 @@ func (o TenantFlagsOutput) EnableApisSection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TenantFlags) *bool { return v.EnableApisSection }).(pulumi.BoolPtrOutput)
 }
 
-// Indicates whether all current connections should be enabled when a new client is created. (Default: `true`)
+// Indicates whether all current connections should be enabled when a new client is created.
 func (o TenantFlagsOutput) EnableClientConnections() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TenantFlags) *bool { return v.EnableClientConnections }).(pulumi.BoolPtrOutput)
 }
@@ -42262,7 +42419,7 @@ func (o TenantFlagsPtrOutput) EnableApisSection() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Indicates whether all current connections should be enabled when a new client is created. (Default: `true`)
+// Indicates whether all current connections should be enabled when a new client is created.
 func (o TenantFlagsPtrOutput) EnableClientConnections() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TenantFlags) *bool {
 		if v == nil {
@@ -45980,7 +46137,7 @@ func (o GetActionSupportedTriggerArrayOutput) Index(i pulumi.IntInput) GetAction
 type GetAttackProtectionBotDetection struct {
 	// List of IP addresses or ranges that will not trigger bot detection.
 	Allowlists []string `pulumi:"allowlists"`
-	// Bot detection level. Possible values: `low`, `medium`, `high`. Set to empty string to disable.
+	// Bot detection level. Possible values: `low`, `medium`, `high`.
 	BotDetectionLevel string `pulumi:"botDetectionLevel"`
 	// Challenge policy for password flow. Possible values: `never`, `whenRisky`, `always`.
 	ChallengePasswordPolicy string `pulumi:"challengePasswordPolicy"`
@@ -46006,7 +46163,7 @@ type GetAttackProtectionBotDetectionInput interface {
 type GetAttackProtectionBotDetectionArgs struct {
 	// List of IP addresses or ranges that will not trigger bot detection.
 	Allowlists pulumi.StringArrayInput `pulumi:"allowlists"`
-	// Bot detection level. Possible values: `low`, `medium`, `high`. Set to empty string to disable.
+	// Bot detection level. Possible values: `low`, `medium`, `high`.
 	BotDetectionLevel pulumi.StringInput `pulumi:"botDetectionLevel"`
 	// Challenge policy for password flow. Possible values: `never`, `whenRisky`, `always`.
 	ChallengePasswordPolicy pulumi.StringInput `pulumi:"challengePasswordPolicy"`
@@ -46074,7 +46231,7 @@ func (o GetAttackProtectionBotDetectionOutput) Allowlists() pulumi.StringArrayOu
 	return o.ApplyT(func(v GetAttackProtectionBotDetection) []string { return v.Allowlists }).(pulumi.StringArrayOutput)
 }
 
-// Bot detection level. Possible values: `low`, `medium`, `high`. Set to empty string to disable.
+// Bot detection level. Possible values: `low`, `medium`, `high`.
 func (o GetAttackProtectionBotDetectionOutput) BotDetectionLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAttackProtectionBotDetection) string { return v.BotDetectionLevel }).(pulumi.StringOutput)
 }
@@ -55374,6 +55531,8 @@ type GetClientMyOrganizationConfiguration struct {
 	ConnectionDeletionBehavior string `pulumi:"connectionDeletionBehavior"`
 	// The ID of the connection profile to use when creating organizations for this client.
 	ConnectionProfileId string `pulumi:"connectionProfileId"`
+	// The client ID used as the invitation landing page when creating invitations through the My Organization API. Requires the tenant to have member management enabled, and the referenced client must allow organizations.
+	InvitationLandingClientId string `pulumi:"invitationLandingClientId"`
 	// The ID of the user attribute profile to use when creating organizations for this client.
 	UserAttributeProfileId string `pulumi:"userAttributeProfileId"`
 }
@@ -55396,6 +55555,8 @@ type GetClientMyOrganizationConfigurationArgs struct {
 	ConnectionDeletionBehavior pulumi.StringInput `pulumi:"connectionDeletionBehavior"`
 	// The ID of the connection profile to use when creating organizations for this client.
 	ConnectionProfileId pulumi.StringInput `pulumi:"connectionProfileId"`
+	// The client ID used as the invitation landing page when creating invitations through the My Organization API. Requires the tenant to have member management enabled, and the referenced client must allow organizations.
+	InvitationLandingClientId pulumi.StringInput `pulumi:"invitationLandingClientId"`
 	// The ID of the user attribute profile to use when creating organizations for this client.
 	UserAttributeProfileId pulumi.StringInput `pulumi:"userAttributeProfileId"`
 }
@@ -55464,6 +55625,11 @@ func (o GetClientMyOrganizationConfigurationOutput) ConnectionDeletionBehavior()
 // The ID of the connection profile to use when creating organizations for this client.
 func (o GetClientMyOrganizationConfigurationOutput) ConnectionProfileId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClientMyOrganizationConfiguration) string { return v.ConnectionProfileId }).(pulumi.StringOutput)
+}
+
+// The client ID used as the invitation landing page when creating invitations through the My Organization API. Requires the tenant to have member management enabled, and the referenced client must allow organizations.
+func (o GetClientMyOrganizationConfigurationOutput) InvitationLandingClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientMyOrganizationConfiguration) string { return v.InvitationLandingClientId }).(pulumi.StringOutput)
 }
 
 // The ID of the user attribute profile to use when creating organizations for this client.
@@ -57813,6 +57979,8 @@ type GetClientsClientMyOrganizationConfiguration struct {
 	ConnectionDeletionBehavior string `pulumi:"connectionDeletionBehavior"`
 	// The ID of the connection profile to use when creating organizations for this client.
 	ConnectionProfileId string `pulumi:"connectionProfileId"`
+	// The client ID used as the invitation landing page when creating invitations through the My Organization API. Requires the tenant to have member management enabled, and the referenced client must allow organizations.
+	InvitationLandingClientId string `pulumi:"invitationLandingClientId"`
 	// The ID of the user attribute profile to use when creating organizations for this client.
 	UserAttributeProfileId string `pulumi:"userAttributeProfileId"`
 }
@@ -57835,6 +58003,8 @@ type GetClientsClientMyOrganizationConfigurationArgs struct {
 	ConnectionDeletionBehavior pulumi.StringInput `pulumi:"connectionDeletionBehavior"`
 	// The ID of the connection profile to use when creating organizations for this client.
 	ConnectionProfileId pulumi.StringInput `pulumi:"connectionProfileId"`
+	// The client ID used as the invitation landing page when creating invitations through the My Organization API. Requires the tenant to have member management enabled, and the referenced client must allow organizations.
+	InvitationLandingClientId pulumi.StringInput `pulumi:"invitationLandingClientId"`
 	// The ID of the user attribute profile to use when creating organizations for this client.
 	UserAttributeProfileId pulumi.StringInput `pulumi:"userAttributeProfileId"`
 }
@@ -57903,6 +58073,11 @@ func (o GetClientsClientMyOrganizationConfigurationOutput) ConnectionDeletionBeh
 // The ID of the connection profile to use when creating organizations for this client.
 func (o GetClientsClientMyOrganizationConfigurationOutput) ConnectionProfileId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClientsClientMyOrganizationConfiguration) string { return v.ConnectionProfileId }).(pulumi.StringOutput)
+}
+
+// The client ID used as the invitation landing page when creating invitations through the My Organization API. Requires the tenant to have member management enabled, and the referenced client must allow organizations.
+func (o GetClientsClientMyOrganizationConfigurationOutput) InvitationLandingClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientsClientMyOrganizationConfiguration) string { return v.InvitationLandingClientId }).(pulumi.StringOutput)
 }
 
 // The ID of the user attribute profile to use when creating organizations for this client.
@@ -59410,7 +59585,7 @@ type GetConnectionOption struct {
 	GlobalTokenRevocationJwtSub string `pulumi:"globalTokenRevocationJwtSub"`
 	// Icon URL.
 	IconUrl string `pulumi:"iconUrl"`
-	// List of allowed algorithms for the ID token signature. If not set, RS256 will be applied at runtime. (Okta/OIDC Connections)
+	// List of allowed algorithms for the ID token signature. If not set or empty, default algorithm(s) will be applied at runtime. (Okta/OIDC Connections)
 	IdTokenSignedResponseAlgs []string `pulumi:"idTokenSignedResponseAlgs"`
 	// Azure AD Identity API. Available options are: `microsoft-identity-platform-v2.0` or `azure-active-directory-v1.0`.
 	IdentityApi string `pulumi:"identityApi"`
@@ -59662,7 +59837,7 @@ type GetConnectionOptionArgs struct {
 	GlobalTokenRevocationJwtSub pulumi.StringInput `pulumi:"globalTokenRevocationJwtSub"`
 	// Icon URL.
 	IconUrl pulumi.StringInput `pulumi:"iconUrl"`
-	// List of allowed algorithms for the ID token signature. If not set, RS256 will be applied at runtime. (Okta/OIDC Connections)
+	// List of allowed algorithms for the ID token signature. If not set or empty, default algorithm(s) will be applied at runtime. (Okta/OIDC Connections)
 	IdTokenSignedResponseAlgs pulumi.StringArrayInput `pulumi:"idTokenSignedResponseAlgs"`
 	// Azure AD Identity API. Available options are: `microsoft-identity-platform-v2.0` or `azure-active-directory-v1.0`.
 	IdentityApi pulumi.StringInput `pulumi:"identityApi"`
@@ -60101,7 +60276,7 @@ func (o GetConnectionOptionOutput) IconUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionOption) string { return v.IconUrl }).(pulumi.StringOutput)
 }
 
-// List of allowed algorithms for the ID token signature. If not set, RS256 will be applied at runtime. (Okta/OIDC Connections)
+// List of allowed algorithms for the ID token signature. If not set or empty, default algorithm(s) will be applied at runtime. (Okta/OIDC Connections)
 func (o GetConnectionOptionOutput) IdTokenSignedResponseAlgs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetConnectionOption) []string { return v.IdTokenSignedResponseAlgs }).(pulumi.StringArrayOutput)
 }
@@ -67354,7 +67529,7 @@ func (o GetEventStreamEventbridgeConfigurationArrayOutput) Index(i pulumi.IntInp
 }
 
 type GetEventStreamWebhookConfiguration struct {
-	// Authorization details for the webhook endpoint. Supports `basic` authentication using `username` and `password`, or `bearer` authentication using a `token`. The appropriate fields must be set based on the chosen method.
+	// Authorization details for the webhook endpoint. Supports `basic` authentication using `username` and `password`, `bearer` authentication using a `token`, or `customHeader` authentication using `headerKey` and `headerValue` (or `headerValueWo`). The appropriate fields must be set based on the chosen method.
 	WebhookAuthorizations []GetEventStreamWebhookConfigurationWebhookAuthorization `pulumi:"webhookAuthorizations"`
 	// The HTTPS endpoint that will receive the webhook events. Must be a valid, publicly accessible URL.
 	WebhookEndpoint string `pulumi:"webhookEndpoint"`
@@ -67372,7 +67547,7 @@ type GetEventStreamWebhookConfigurationInput interface {
 }
 
 type GetEventStreamWebhookConfigurationArgs struct {
-	// Authorization details for the webhook endpoint. Supports `basic` authentication using `username` and `password`, or `bearer` authentication using a `token`. The appropriate fields must be set based on the chosen method.
+	// Authorization details for the webhook endpoint. Supports `basic` authentication using `username` and `password`, `bearer` authentication using a `token`, or `customHeader` authentication using `headerKey` and `headerValue` (or `headerValueWo`). The appropriate fields must be set based on the chosen method.
 	WebhookAuthorizations GetEventStreamWebhookConfigurationWebhookAuthorizationArrayInput `pulumi:"webhookAuthorizations"`
 	// The HTTPS endpoint that will receive the webhook events. Must be a valid, publicly accessible URL.
 	WebhookEndpoint pulumi.StringInput `pulumi:"webhookEndpoint"`
@@ -67429,7 +67604,7 @@ func (o GetEventStreamWebhookConfigurationOutput) ToGetEventStreamWebhookConfigu
 	return o
 }
 
-// Authorization details for the webhook endpoint. Supports `basic` authentication using `username` and `password`, or `bearer` authentication using a `token`. The appropriate fields must be set based on the chosen method.
+// Authorization details for the webhook endpoint. Supports `basic` authentication using `username` and `password`, `bearer` authentication using a `token`, or `customHeader` authentication using `headerKey` and `headerValue` (or `headerValueWo`). The appropriate fields must be set based on the chosen method.
 func (o GetEventStreamWebhookConfigurationOutput) WebhookAuthorizations() GetEventStreamWebhookConfigurationWebhookAuthorizationArrayOutput {
 	return o.ApplyT(func(v GetEventStreamWebhookConfiguration) []GetEventStreamWebhookConfigurationWebhookAuthorization {
 		return v.WebhookAuthorizations
@@ -67462,7 +67637,15 @@ func (o GetEventStreamWebhookConfigurationArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type GetEventStreamWebhookConfigurationWebhookAuthorization struct {
-	// The authorization method used to secure the webhook endpoint. Can be either `basic` or `bearer`.
+	// The name of the HTTP header used for `customHeader` authentication. Required when `method` is `customHeader`. Returned by the API and stored in state.
+	HeaderKey string `pulumi:"headerKey"`
+	// The secret value sent in the custom header. Required when `method` is `customHeader` and `headerValueWo` is not provided. **Note:** For better security, use `headerValueWo` to prevent storing the secret in state.
+	HeaderValue string `pulumi:"headerValue"`
+	// The secret value sent in the custom header (write-only). Not stored in Terraform state. Bump `headerValueWoVersion` to rotate the secret.
+	HeaderValueWo string `pulumi:"headerValueWo"`
+	// Version number for secret rotation. Update to trigger a new `headerValueWo` to be sent.
+	HeaderValueWoVersion int `pulumi:"headerValueWoVersion"`
+	// The authorization method used to secure the webhook endpoint. Can be `basic`, `bearer`, or `customHeader`.
 	Method string `pulumi:"method"`
 	// The password for `basic` authentication. Required only when `method` is set to `basic`. **Note:** For better security, consider using `passwordWo` instead to prevent storing the password in Terraform state.
 	Password string `pulumi:"password"`
@@ -67492,7 +67675,15 @@ type GetEventStreamWebhookConfigurationWebhookAuthorizationInput interface {
 }
 
 type GetEventStreamWebhookConfigurationWebhookAuthorizationArgs struct {
-	// The authorization method used to secure the webhook endpoint. Can be either `basic` or `bearer`.
+	// The name of the HTTP header used for `customHeader` authentication. Required when `method` is `customHeader`. Returned by the API and stored in state.
+	HeaderKey pulumi.StringInput `pulumi:"headerKey"`
+	// The secret value sent in the custom header. Required when `method` is `customHeader` and `headerValueWo` is not provided. **Note:** For better security, use `headerValueWo` to prevent storing the secret in state.
+	HeaderValue pulumi.StringInput `pulumi:"headerValue"`
+	// The secret value sent in the custom header (write-only). Not stored in Terraform state. Bump `headerValueWoVersion` to rotate the secret.
+	HeaderValueWo pulumi.StringInput `pulumi:"headerValueWo"`
+	// Version number for secret rotation. Update to trigger a new `headerValueWo` to be sent.
+	HeaderValueWoVersion pulumi.IntInput `pulumi:"headerValueWoVersion"`
+	// The authorization method used to secure the webhook endpoint. Can be `basic`, `bearer`, or `customHeader`.
 	Method pulumi.StringInput `pulumi:"method"`
 	// The password for `basic` authentication. Required only when `method` is set to `basic`. **Note:** For better security, consider using `passwordWo` instead to prevent storing the password in Terraform state.
 	Password pulumi.StringInput `pulumi:"password"`
@@ -67561,7 +67752,27 @@ func (o GetEventStreamWebhookConfigurationWebhookAuthorizationOutput) ToGetEvent
 	return o
 }
 
-// The authorization method used to secure the webhook endpoint. Can be either `basic` or `bearer`.
+// The name of the HTTP header used for `customHeader` authentication. Required when `method` is `customHeader`. Returned by the API and stored in state.
+func (o GetEventStreamWebhookConfigurationWebhookAuthorizationOutput) HeaderKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventStreamWebhookConfigurationWebhookAuthorization) string { return v.HeaderKey }).(pulumi.StringOutput)
+}
+
+// The secret value sent in the custom header. Required when `method` is `customHeader` and `headerValueWo` is not provided. **Note:** For better security, use `headerValueWo` to prevent storing the secret in state.
+func (o GetEventStreamWebhookConfigurationWebhookAuthorizationOutput) HeaderValue() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventStreamWebhookConfigurationWebhookAuthorization) string { return v.HeaderValue }).(pulumi.StringOutput)
+}
+
+// The secret value sent in the custom header (write-only). Not stored in Terraform state. Bump `headerValueWoVersion` to rotate the secret.
+func (o GetEventStreamWebhookConfigurationWebhookAuthorizationOutput) HeaderValueWo() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventStreamWebhookConfigurationWebhookAuthorization) string { return v.HeaderValueWo }).(pulumi.StringOutput)
+}
+
+// Version number for secret rotation. Update to trigger a new `headerValueWo` to be sent.
+func (o GetEventStreamWebhookConfigurationWebhookAuthorizationOutput) HeaderValueWoVersion() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEventStreamWebhookConfigurationWebhookAuthorization) int { return v.HeaderValueWoVersion }).(pulumi.IntOutput)
+}
+
+// The authorization method used to secure the webhook endpoint. Can be `basic`, `bearer`, or `customHeader`.
 func (o GetEventStreamWebhookConfigurationWebhookAuthorizationOutput) Method() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEventStreamWebhookConfigurationWebhookAuthorization) string { return v.Method }).(pulumi.StringOutput)
 }
@@ -72679,7 +72890,7 @@ type GetTenantFlag struct {
 	EnableAdfsWaadEmailVerification bool `pulumi:"enableAdfsWaadEmailVerification"`
 	// Indicates whether the APIs section is enabled for the tenant.
 	EnableApisSection bool `pulumi:"enableApisSection"`
-	// Indicates whether all current connections should be enabled when a new client is created. (Default: `true`)
+	// Indicates whether all current connections should be enabled when a new client is created.
 	EnableClientConnections bool `pulumi:"enableClientConnections"`
 	// Indicates whether the tenant allows custom domains in emails. Before enabling this flag, you must have a custom domain with status: `ready`.
 	EnableCustomDomainInEmails bool `pulumi:"enableCustomDomainInEmails"`
@@ -72743,7 +72954,7 @@ type GetTenantFlagArgs struct {
 	EnableAdfsWaadEmailVerification pulumi.BoolInput `pulumi:"enableAdfsWaadEmailVerification"`
 	// Indicates whether the APIs section is enabled for the tenant.
 	EnableApisSection pulumi.BoolInput `pulumi:"enableApisSection"`
-	// Indicates whether all current connections should be enabled when a new client is created. (Default: `true`)
+	// Indicates whether all current connections should be enabled when a new client is created.
 	EnableClientConnections pulumi.BoolInput `pulumi:"enableClientConnections"`
 	// Indicates whether the tenant allows custom domains in emails. Before enabling this flag, you must have a custom domain with status: `ready`.
 	EnableCustomDomainInEmails pulumi.BoolInput `pulumi:"enableCustomDomainInEmails"`
@@ -72876,7 +73087,7 @@ func (o GetTenantFlagOutput) EnableApisSection() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetTenantFlag) bool { return v.EnableApisSection }).(pulumi.BoolOutput)
 }
 
-// Indicates whether all current connections should be enabled when a new client is created. (Default: `true`)
+// Indicates whether all current connections should be enabled when a new client is created.
 func (o GetTenantFlagOutput) EnableClientConnections() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetTenantFlag) bool { return v.EnableClientConnections }).(pulumi.BoolOutput)
 }

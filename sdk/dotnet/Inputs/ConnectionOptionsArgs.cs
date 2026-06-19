@@ -366,7 +366,7 @@ namespace Pulumi.Auth0.Inputs
         private InputList<string>? _idTokenSignedResponseAlgs;
 
         /// <summary>
-        /// List of allowed algorithms for the ID token signature. If not set, RS256 will be applied at runtime. (Okta/OIDC Connections)
+        /// List of allowed algorithms for the ID token signature. If not set or empty, default algorithm(s) will be applied at runtime. (Okta/OIDC Connections)
         /// </summary>
         public InputList<string> IdTokenSignedResponseAlgs
         {

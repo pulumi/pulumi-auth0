@@ -13,7 +13,52 @@ namespace Pulumi.Auth0.Inputs
     public sealed class EventStreamWebhookConfigurationWebhookAuthorizationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The authorization method used to secure the webhook endpoint. Can be either `Basic` or `Bearer`.
+        /// The name of the HTTP header used for `CustomHeader` authentication. Required when `Method` is `CustomHeader`. Returned by the API and stored in state.
+        /// </summary>
+        [Input("headerKey")]
+        public Input<string>? HeaderKey { get; set; }
+
+        [Input("headerValue")]
+        private Input<string>? _headerValue;
+
+        /// <summary>
+        /// The secret value sent in the custom header. Required when `Method` is `CustomHeader` and `HeaderValueWo` is not provided. **Note:** For better security, use `HeaderValueWo` to prevent storing the secret in state.
+        /// </summary>
+        public Input<string>? HeaderValue
+        {
+            get => _headerValue;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _headerValue = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("headerValueWo")]
+        private Input<string>? _headerValueWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The secret value sent in the custom header (write-only). Not stored in Terraform state. Bump `HeaderValueWoVersion` to rotate the secret.
+        /// </summary>
+        public Input<string>? HeaderValueWo
+        {
+            get => _headerValueWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _headerValueWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Version number for secret rotation. Update to trigger a new `HeaderValueWo` to be sent.
+        /// </summary>
+        [Input("headerValueWoVersion")]
+        public Input<int>? HeaderValueWoVersion { get; set; }
+
+        /// <summary>
+        /// The authorization method used to secure the webhook endpoint. Can be `Basic`, `Bearer`, or `CustomHeader`.
         /// </summary>
         [Input("method", required: true)]
         public Input<string> Method { get; set; } = null!;

@@ -138,7 +138,7 @@ export interface AttackProtectionBotDetection {
      */
     allowlists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Bot detection level. Possible values: `low`, `medium`, `high`. Set to empty string to disable.
+     * Bot detection level. Possible values: `low`, `medium`, `high`.
      */
     botDetectionLevel?: pulumi.Input<string | undefined>;
     /**
@@ -1643,6 +1643,10 @@ export interface ClientMyOrganizationConfiguration {
      */
     connectionProfileId?: pulumi.Input<string | undefined>;
     /**
+     * The client ID used as the invitation landing page when creating invitations through the My Organization API. Requires the tenant to have member management enabled, and the referenced client must allow organizations.
+     */
+    invitationLandingClientId?: pulumi.Input<string | undefined>;
+    /**
      * The ID of the user attribute profile to use when creating organizations for this client.
      */
     userAttributeProfileId?: pulumi.Input<string | undefined>;
@@ -2011,7 +2015,7 @@ export interface ConnectionOptions {
      */
     iconUrl?: pulumi.Input<string | undefined>;
     /**
-     * List of allowed algorithms for the ID token signature. If not set, RS256 will be applied at runtime. (Okta/OIDC Connections)
+     * List of allowed algorithms for the ID token signature. If not set or empty, default algorithm(s) will be applied at runtime. (Okta/OIDC Connections)
      */
     idTokenSignedResponseAlgs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -3144,7 +3148,7 @@ export interface EventStreamEventbridgeConfiguration {
 
 export interface EventStreamWebhookConfiguration {
     /**
-     * Authorization details for the webhook endpoint. Supports `basic` authentication using `username` and `password`, or `bearer` authentication using a `token`. The appropriate fields must be set based on the chosen method.
+     * Authorization details for the webhook endpoint. Supports `basic` authentication using `username` and `password`, `bearer` authentication using a `token`, or `customHeader` authentication using `headerKey` and `headerValue` (or `headerValueWo`). The appropriate fields must be set based on the chosen method.
      */
     webhookAuthorization: pulumi.Input<inputs.EventStreamWebhookConfigurationWebhookAuthorization>;
     /**
@@ -3155,7 +3159,24 @@ export interface EventStreamWebhookConfiguration {
 
 export interface EventStreamWebhookConfigurationWebhookAuthorization {
     /**
-     * The authorization method used to secure the webhook endpoint. Can be either `basic` or `bearer`.
+     * The name of the HTTP header used for `customHeader` authentication. Required when `method` is `customHeader`. Returned by the API and stored in state.
+     */
+    headerKey?: pulumi.Input<string | undefined>;
+    /**
+     * The secret value sent in the custom header. Required when `method` is `customHeader` and `headerValueWo` is not provided. **Note:** For better security, use `headerValueWo` to prevent storing the secret in state.
+     */
+    headerValue?: pulumi.Input<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The secret value sent in the custom header (write-only). Not stored in Terraform state. Bump `headerValueWoVersion` to rotate the secret.
+     */
+    headerValueWo?: pulumi.Input<string | undefined>;
+    /**
+     * Version number for secret rotation. Update to trigger a new `headerValueWo` to be sent.
+     */
+    headerValueWoVersion?: pulumi.Input<number | undefined>;
+    /**
+     * The authorization method used to secure the webhook endpoint. Can be `basic`, `bearer`, or `customHeader`.
      */
     method: pulumi.Input<string>;
     /**
@@ -3363,11 +3384,15 @@ export interface GuardianPhone {
      */
     messageTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Options for the various providers.
+     * Options for the various providers. This block requires `phoneConsolidatedExperience` to be `false` on the `auth0.Tenant`.
+     *
+     * @deprecated This field is deprecated in favor of the Unified Phone Experience. Use`auth0.PhoneProvider` resource instead. See the migration guide: https://auth0.com/docs/customize/phone-messages/unified-phone/migrate-to-unified-phone-experience-with-terraform.
      */
     options?: pulumi.Input<inputs.GuardianPhoneOptions | undefined>;
     /**
-     * Provider to use, one of `auth0`, `twilio` or `phone-message-hook`. Selecting `phone-message-hook` will require a Phone Message Action to be created before. [Learn how](https://auth0.com/docs/customize/actions/flows-and-triggers/send-phone-message-flow).
+     * Provider to use, one of `auth0`, `twilio` or `phone-message-hook`. Selecting `phone-message-hook` will require a Phone Message Action to be created before. [Learn how](https://auth0.com/docs/customize/actions/flows-and-triggers/send-phone-message-flow). This field requires `phoneConsolidatedExperience` to be `false` on the `auth0.Tenant`.
+     *
+     * @deprecated This field is deprecated in favor of the Unified Phone Experience. Use`auth0.PhoneProvider` resource instead. See the migration guide: https://auth0.com/docs/customize/phone-messages/unified-phone/migrate-to-unified-phone-experience-with-terraform.
      */
     provider?: pulumi.Input<string | undefined>;
 }
@@ -3566,9 +3591,18 @@ export interface LogStreamSink {
      */
     azureSubscriptionId?: pulumi.Input<string | undefined>;
     /**
-     * The Datadog API key.
+     * The Datadog API key. **Note:** For better security, consider using `datadogApiKeyWo` instead.
      */
     datadogApiKey?: pulumi.Input<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The Datadog API key (write-only). This value is **not** stored in Terraform state.
+     */
+    datadogApiKeyWo?: pulumi.Input<string | undefined>;
+    /**
+     * Version number for `datadogApiKeyWo`. Must be a positive integer (starting at `1`). Increment this value to trigger an API key change when using `datadogApiKeyWo`.
+     */
+    datadogApiKeyWoVersion?: pulumi.Input<number | undefined>;
     /**
      * The Datadog region. Possible values: `us`, `eu`, `us3`, `us5`.
      */
@@ -4322,7 +4356,7 @@ export interface TenantFlags {
      */
     enableApisSection?: pulumi.Input<boolean | undefined>;
     /**
-     * Indicates whether all current connections should be enabled when a new client is created. (Default: `true`)
+     * Indicates whether all current connections should be enabled when a new client is created.
      */
     enableClientConnections?: pulumi.Input<boolean | undefined>;
     /**

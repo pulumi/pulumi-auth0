@@ -27,6 +27,11 @@ public final class GetClientMyOrganizationConfiguration {
      */
     private String connectionProfileId;
     /**
+     * @return The client ID used as the invitation landing page when creating invitations through the My Organization API. Requires the tenant to have member management enabled, and the referenced client must allow organizations.
+     * 
+     */
+    private String invitationLandingClientId;
+    /**
      * @return The ID of the user attribute profile to use when creating organizations for this client.
      * 
      */
@@ -55,6 +60,13 @@ public final class GetClientMyOrganizationConfiguration {
         return this.connectionProfileId;
     }
     /**
+     * @return The client ID used as the invitation landing page when creating invitations through the My Organization API. Requires the tenant to have member management enabled, and the referenced client must allow organizations.
+     * 
+     */
+    public String invitationLandingClientId() {
+        return this.invitationLandingClientId;
+    }
+    /**
      * @return The ID of the user attribute profile to use when creating organizations for this client.
      * 
      */
@@ -74,6 +86,7 @@ public final class GetClientMyOrganizationConfiguration {
         private List<String> allowedStrategies;
         private String connectionDeletionBehavior;
         private String connectionProfileId;
+        private String invitationLandingClientId;
         private String userAttributeProfileId;
         public Builder() {}
         public Builder(GetClientMyOrganizationConfiguration defaults) {
@@ -81,6 +94,7 @@ public final class GetClientMyOrganizationConfiguration {
     	      this.allowedStrategies = defaults.allowedStrategies;
     	      this.connectionDeletionBehavior = defaults.connectionDeletionBehavior;
     	      this.connectionProfileId = defaults.connectionProfileId;
+    	      this.invitationLandingClientId = defaults.invitationLandingClientId;
     	      this.userAttributeProfileId = defaults.userAttributeProfileId;
         }
 
@@ -112,6 +126,14 @@ public final class GetClientMyOrganizationConfiguration {
             return this;
         }
         @CustomType.Setter
+        public Builder invitationLandingClientId(String invitationLandingClientId) {
+            if (invitationLandingClientId == null) {
+              throw new MissingRequiredPropertyException("GetClientMyOrganizationConfiguration", "invitationLandingClientId");
+            }
+            this.invitationLandingClientId = invitationLandingClientId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder userAttributeProfileId(String userAttributeProfileId) {
             if (userAttributeProfileId == null) {
               throw new MissingRequiredPropertyException("GetClientMyOrganizationConfiguration", "userAttributeProfileId");
@@ -124,6 +146,7 @@ public final class GetClientMyOrganizationConfiguration {
             _resultValue.allowedStrategies = allowedStrategies;
             _resultValue.connectionDeletionBehavior = connectionDeletionBehavior;
             _resultValue.connectionProfileId = connectionProfileId;
+            _resultValue.invitationLandingClientId = invitationLandingClientId;
             _resultValue.userAttributeProfileId = userAttributeProfileId;
             return _resultValue;
         }

@@ -50,31 +50,47 @@ public final class GuardianPhoneArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Options for the various providers.
+     * Options for the various providers. This block requires `phoneConsolidatedExperience` to be `false` on the `auth0.Tenant`.
+     * 
+     * @deprecated
+     * This field is deprecated in favor of the Unified Phone Experience. Use`auth0.PhoneProvider` resource instead. See the migration guide: https://auth0.com/docs/customize/phone-messages/unified-phone/migrate-to-unified-phone-experience-with-terraform.
      * 
      */
+    @Deprecated /* This field is deprecated in favor of the Unified Phone Experience. Use`auth0.PhoneProvider` resource instead. See the migration guide: https://auth0.com/docs/customize/phone-messages/unified-phone/migrate-to-unified-phone-experience-with-terraform. */
     @Import(name="options")
     private @Nullable Output<GuardianPhoneOptionsArgs> options;
 
     /**
-     * @return Options for the various providers.
+     * @return Options for the various providers. This block requires `phoneConsolidatedExperience` to be `false` on the `auth0.Tenant`.
+     * 
+     * @deprecated
+     * This field is deprecated in favor of the Unified Phone Experience. Use`auth0.PhoneProvider` resource instead. See the migration guide: https://auth0.com/docs/customize/phone-messages/unified-phone/migrate-to-unified-phone-experience-with-terraform.
      * 
      */
+    @Deprecated /* This field is deprecated in favor of the Unified Phone Experience. Use`auth0.PhoneProvider` resource instead. See the migration guide: https://auth0.com/docs/customize/phone-messages/unified-phone/migrate-to-unified-phone-experience-with-terraform. */
     public Optional<Output<GuardianPhoneOptionsArgs>> options() {
         return Optional.ofNullable(this.options);
     }
 
     /**
-     * Provider to use, one of `auth0`, `twilio` or `phone-message-hook`. Selecting `phone-message-hook` will require a Phone Message Action to be created before. [Learn how](https://auth0.com/docs/customize/actions/flows-and-triggers/send-phone-message-flow).
+     * Provider to use, one of `auth0`, `twilio` or `phone-message-hook`. Selecting `phone-message-hook` will require a Phone Message Action to be created before. [Learn how](https://auth0.com/docs/customize/actions/flows-and-triggers/send-phone-message-flow). This field requires `phoneConsolidatedExperience` to be `false` on the `auth0.Tenant`.
+     * 
+     * @deprecated
+     * This field is deprecated in favor of the Unified Phone Experience. Use`auth0.PhoneProvider` resource instead. See the migration guide: https://auth0.com/docs/customize/phone-messages/unified-phone/migrate-to-unified-phone-experience-with-terraform.
      * 
      */
+    @Deprecated /* This field is deprecated in favor of the Unified Phone Experience. Use`auth0.PhoneProvider` resource instead. See the migration guide: https://auth0.com/docs/customize/phone-messages/unified-phone/migrate-to-unified-phone-experience-with-terraform. */
     @Import(name="provider")
     private @Nullable Output<String> provider;
 
     /**
-     * @return Provider to use, one of `auth0`, `twilio` or `phone-message-hook`. Selecting `phone-message-hook` will require a Phone Message Action to be created before. [Learn how](https://auth0.com/docs/customize/actions/flows-and-triggers/send-phone-message-flow).
+     * @return Provider to use, one of `auth0`, `twilio` or `phone-message-hook`. Selecting `phone-message-hook` will require a Phone Message Action to be created before. [Learn how](https://auth0.com/docs/customize/actions/flows-and-triggers/send-phone-message-flow). This field requires `phoneConsolidatedExperience` to be `false` on the `auth0.Tenant`.
+     * 
+     * @deprecated
+     * This field is deprecated in favor of the Unified Phone Experience. Use`auth0.PhoneProvider` resource instead. See the migration guide: https://auth0.com/docs/customize/phone-messages/unified-phone/migrate-to-unified-phone-experience-with-terraform.
      * 
      */
+    @Deprecated /* This field is deprecated in favor of the Unified Phone Experience. Use`auth0.PhoneProvider` resource instead. See the migration guide: https://auth0.com/docs/customize/phone-messages/unified-phone/migrate-to-unified-phone-experience-with-terraform. */
     public Optional<Output<String>> provider() {
         return Optional.ofNullable(this.provider);
     }
@@ -159,43 +175,59 @@ public final class GuardianPhoneArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param options Options for the various providers.
+         * @param options Options for the various providers. This block requires `phoneConsolidatedExperience` to be `false` on the `auth0.Tenant`.
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated in favor of the Unified Phone Experience. Use`auth0.PhoneProvider` resource instead. See the migration guide: https://auth0.com/docs/customize/phone-messages/unified-phone/migrate-to-unified-phone-experience-with-terraform.
+         * 
          */
+        @Deprecated /* This field is deprecated in favor of the Unified Phone Experience. Use`auth0.PhoneProvider` resource instead. See the migration guide: https://auth0.com/docs/customize/phone-messages/unified-phone/migrate-to-unified-phone-experience-with-terraform. */
         public Builder options(@Nullable Output<GuardianPhoneOptionsArgs> options) {
             $.options = options;
             return this;
         }
 
         /**
-         * @param options Options for the various providers.
+         * @param options Options for the various providers. This block requires `phoneConsolidatedExperience` to be `false` on the `auth0.Tenant`.
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated in favor of the Unified Phone Experience. Use`auth0.PhoneProvider` resource instead. See the migration guide: https://auth0.com/docs/customize/phone-messages/unified-phone/migrate-to-unified-phone-experience-with-terraform.
+         * 
          */
+        @Deprecated /* This field is deprecated in favor of the Unified Phone Experience. Use`auth0.PhoneProvider` resource instead. See the migration guide: https://auth0.com/docs/customize/phone-messages/unified-phone/migrate-to-unified-phone-experience-with-terraform. */
         public Builder options(GuardianPhoneOptionsArgs options) {
             return options(Output.of(options));
         }
 
         /**
-         * @param provider Provider to use, one of `auth0`, `twilio` or `phone-message-hook`. Selecting `phone-message-hook` will require a Phone Message Action to be created before. [Learn how](https://auth0.com/docs/customize/actions/flows-and-triggers/send-phone-message-flow).
+         * @param provider Provider to use, one of `auth0`, `twilio` or `phone-message-hook`. Selecting `phone-message-hook` will require a Phone Message Action to be created before. [Learn how](https://auth0.com/docs/customize/actions/flows-and-triggers/send-phone-message-flow). This field requires `phoneConsolidatedExperience` to be `false` on the `auth0.Tenant`.
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated in favor of the Unified Phone Experience. Use`auth0.PhoneProvider` resource instead. See the migration guide: https://auth0.com/docs/customize/phone-messages/unified-phone/migrate-to-unified-phone-experience-with-terraform.
+         * 
          */
+        @Deprecated /* This field is deprecated in favor of the Unified Phone Experience. Use`auth0.PhoneProvider` resource instead. See the migration guide: https://auth0.com/docs/customize/phone-messages/unified-phone/migrate-to-unified-phone-experience-with-terraform. */
         public Builder provider(@Nullable Output<String> provider) {
             $.provider = provider;
             return this;
         }
 
         /**
-         * @param provider Provider to use, one of `auth0`, `twilio` or `phone-message-hook`. Selecting `phone-message-hook` will require a Phone Message Action to be created before. [Learn how](https://auth0.com/docs/customize/actions/flows-and-triggers/send-phone-message-flow).
+         * @param provider Provider to use, one of `auth0`, `twilio` or `phone-message-hook`. Selecting `phone-message-hook` will require a Phone Message Action to be created before. [Learn how](https://auth0.com/docs/customize/actions/flows-and-triggers/send-phone-message-flow). This field requires `phoneConsolidatedExperience` to be `false` on the `auth0.Tenant`.
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated in favor of the Unified Phone Experience. Use`auth0.PhoneProvider` resource instead. See the migration guide: https://auth0.com/docs/customize/phone-messages/unified-phone/migrate-to-unified-phone-experience-with-terraform.
+         * 
          */
+        @Deprecated /* This field is deprecated in favor of the Unified Phone Experience. Use`auth0.PhoneProvider` resource instead. See the migration guide: https://auth0.com/docs/customize/phone-messages/unified-phone/migrate-to-unified-phone-experience-with-terraform. */
         public Builder provider(String provider) {
             return provider(Output.of(provider));
         }

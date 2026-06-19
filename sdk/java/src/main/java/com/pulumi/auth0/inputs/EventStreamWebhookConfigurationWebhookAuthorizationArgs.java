@@ -18,14 +18,76 @@ public final class EventStreamWebhookConfigurationWebhookAuthorizationArgs exten
     public static final EventStreamWebhookConfigurationWebhookAuthorizationArgs Empty = new EventStreamWebhookConfigurationWebhookAuthorizationArgs();
 
     /**
-     * The authorization method used to secure the webhook endpoint. Can be either `basic` or `bearer`.
+     * The name of the HTTP header used for `customHeader` authentication. Required when `method` is `customHeader`. Returned by the API and stored in state.
+     * 
+     */
+    @Import(name="headerKey")
+    private @Nullable Output<String> headerKey;
+
+    /**
+     * @return The name of the HTTP header used for `customHeader` authentication. Required when `method` is `customHeader`. Returned by the API and stored in state.
+     * 
+     */
+    public Optional<Output<String>> headerKey() {
+        return Optional.ofNullable(this.headerKey);
+    }
+
+    /**
+     * The secret value sent in the custom header. Required when `method` is `customHeader` and `headerValueWo` is not provided. **Note:** For better security, use `headerValueWo` to prevent storing the secret in state.
+     * 
+     */
+    @Import(name="headerValue")
+    private @Nullable Output<String> headerValue;
+
+    /**
+     * @return The secret value sent in the custom header. Required when `method` is `customHeader` and `headerValueWo` is not provided. **Note:** For better security, use `headerValueWo` to prevent storing the secret in state.
+     * 
+     */
+    public Optional<Output<String>> headerValue() {
+        return Optional.ofNullable(this.headerValue);
+    }
+
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The secret value sent in the custom header (write-only). Not stored in Terraform state. Bump `headerValueWoVersion` to rotate the secret.
+     * 
+     */
+    @Import(name="headerValueWo")
+    private @Nullable Output<String> headerValueWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The secret value sent in the custom header (write-only). Not stored in Terraform state. Bump `headerValueWoVersion` to rotate the secret.
+     * 
+     */
+    public Optional<Output<String>> headerValueWo() {
+        return Optional.ofNullable(this.headerValueWo);
+    }
+
+    /**
+     * Version number for secret rotation. Update to trigger a new `headerValueWo` to be sent.
+     * 
+     */
+    @Import(name="headerValueWoVersion")
+    private @Nullable Output<Integer> headerValueWoVersion;
+
+    /**
+     * @return Version number for secret rotation. Update to trigger a new `headerValueWo` to be sent.
+     * 
+     */
+    public Optional<Output<Integer>> headerValueWoVersion() {
+        return Optional.ofNullable(this.headerValueWoVersion);
+    }
+
+    /**
+     * The authorization method used to secure the webhook endpoint. Can be `basic`, `bearer`, or `customHeader`.
      * 
      */
     @Import(name="method", required=true)
     private Output<String> method;
 
     /**
-     * @return The authorization method used to secure the webhook endpoint. Can be either `basic` or `bearer`.
+     * @return The authorization method used to secure the webhook endpoint. Can be `basic`, `bearer`, or `customHeader`.
      * 
      */
     public Output<String> method() {
@@ -144,6 +206,10 @@ public final class EventStreamWebhookConfigurationWebhookAuthorizationArgs exten
     private EventStreamWebhookConfigurationWebhookAuthorizationArgs() {}
 
     private EventStreamWebhookConfigurationWebhookAuthorizationArgs(EventStreamWebhookConfigurationWebhookAuthorizationArgs $) {
+        this.headerKey = $.headerKey;
+        this.headerValue = $.headerValue;
+        this.headerValueWo = $.headerValueWo;
+        this.headerValueWoVersion = $.headerValueWoVersion;
         this.method = $.method;
         this.password = $.password;
         this.passwordWo = $.passwordWo;
@@ -173,7 +239,93 @@ public final class EventStreamWebhookConfigurationWebhookAuthorizationArgs exten
         }
 
         /**
-         * @param method The authorization method used to secure the webhook endpoint. Can be either `basic` or `bearer`.
+         * @param headerKey The name of the HTTP header used for `customHeader` authentication. Required when `method` is `customHeader`. Returned by the API and stored in state.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder headerKey(@Nullable Output<String> headerKey) {
+            $.headerKey = headerKey;
+            return this;
+        }
+
+        /**
+         * @param headerKey The name of the HTTP header used for `customHeader` authentication. Required when `method` is `customHeader`. Returned by the API and stored in state.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder headerKey(String headerKey) {
+            return headerKey(Output.of(headerKey));
+        }
+
+        /**
+         * @param headerValue The secret value sent in the custom header. Required when `method` is `customHeader` and `headerValueWo` is not provided. **Note:** For better security, use `headerValueWo` to prevent storing the secret in state.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder headerValue(@Nullable Output<String> headerValue) {
+            $.headerValue = headerValue;
+            return this;
+        }
+
+        /**
+         * @param headerValue The secret value sent in the custom header. Required when `method` is `customHeader` and `headerValueWo` is not provided. **Note:** For better security, use `headerValueWo` to prevent storing the secret in state.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder headerValue(String headerValue) {
+            return headerValue(Output.of(headerValue));
+        }
+
+        /**
+         * @param headerValueWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * The secret value sent in the custom header (write-only). Not stored in Terraform state. Bump `headerValueWoVersion` to rotate the secret.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder headerValueWo(@Nullable Output<String> headerValueWo) {
+            $.headerValueWo = headerValueWo;
+            return this;
+        }
+
+        /**
+         * @param headerValueWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * The secret value sent in the custom header (write-only). Not stored in Terraform state. Bump `headerValueWoVersion` to rotate the secret.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder headerValueWo(String headerValueWo) {
+            return headerValueWo(Output.of(headerValueWo));
+        }
+
+        /**
+         * @param headerValueWoVersion Version number for secret rotation. Update to trigger a new `headerValueWo` to be sent.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder headerValueWoVersion(@Nullable Output<Integer> headerValueWoVersion) {
+            $.headerValueWoVersion = headerValueWoVersion;
+            return this;
+        }
+
+        /**
+         * @param headerValueWoVersion Version number for secret rotation. Update to trigger a new `headerValueWo` to be sent.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder headerValueWoVersion(Integer headerValueWoVersion) {
+            return headerValueWoVersion(Output.of(headerValueWoVersion));
+        }
+
+        /**
+         * @param method The authorization method used to secure the webhook endpoint. Can be `basic`, `bearer`, or `customHeader`.
          * 
          * @return builder
          * 
@@ -184,7 +336,7 @@ public final class EventStreamWebhookConfigurationWebhookAuthorizationArgs exten
         }
 
         /**
-         * @param method The authorization method used to secure the webhook endpoint. Can be either `basic` or `bearer`.
+         * @param method The authorization method used to secure the webhook endpoint. Can be `basic`, `bearer`, or `customHeader`.
          * 
          * @return builder
          * 

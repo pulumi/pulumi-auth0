@@ -12,7 +12,27 @@ import java.util.Objects;
 @CustomType
 public final class GetEventStreamWebhookConfigurationWebhookAuthorization {
     /**
-     * @return The authorization method used to secure the webhook endpoint. Can be either `basic` or `bearer`.
+     * @return The name of the HTTP header used for `customHeader` authentication. Required when `method` is `customHeader`. Returned by the API and stored in state.
+     * 
+     */
+    private String headerKey;
+    /**
+     * @return The secret value sent in the custom header. Required when `method` is `customHeader` and `headerValueWo` is not provided. **Note:** For better security, use `headerValueWo` to prevent storing the secret in state.
+     * 
+     */
+    private String headerValue;
+    /**
+     * @return The secret value sent in the custom header (write-only). Not stored in Terraform state. Bump `headerValueWoVersion` to rotate the secret.
+     * 
+     */
+    private String headerValueWo;
+    /**
+     * @return Version number for secret rotation. Update to trigger a new `headerValueWo` to be sent.
+     * 
+     */
+    private Integer headerValueWoVersion;
+    /**
+     * @return The authorization method used to secure the webhook endpoint. Can be `basic`, `bearer`, or `customHeader`.
      * 
      */
     private String method;
@@ -54,7 +74,35 @@ public final class GetEventStreamWebhookConfigurationWebhookAuthorization {
 
     private GetEventStreamWebhookConfigurationWebhookAuthorization() {}
     /**
-     * @return The authorization method used to secure the webhook endpoint. Can be either `basic` or `bearer`.
+     * @return The name of the HTTP header used for `customHeader` authentication. Required when `method` is `customHeader`. Returned by the API and stored in state.
+     * 
+     */
+    public String headerKey() {
+        return this.headerKey;
+    }
+    /**
+     * @return The secret value sent in the custom header. Required when `method` is `customHeader` and `headerValueWo` is not provided. **Note:** For better security, use `headerValueWo` to prevent storing the secret in state.
+     * 
+     */
+    public String headerValue() {
+        return this.headerValue;
+    }
+    /**
+     * @return The secret value sent in the custom header (write-only). Not stored in Terraform state. Bump `headerValueWoVersion` to rotate the secret.
+     * 
+     */
+    public String headerValueWo() {
+        return this.headerValueWo;
+    }
+    /**
+     * @return Version number for secret rotation. Update to trigger a new `headerValueWo` to be sent.
+     * 
+     */
+    public Integer headerValueWoVersion() {
+        return this.headerValueWoVersion;
+    }
+    /**
+     * @return The authorization method used to secure the webhook endpoint. Can be `basic`, `bearer`, or `customHeader`.
      * 
      */
     public String method() {
@@ -119,6 +167,10 @@ public final class GetEventStreamWebhookConfigurationWebhookAuthorization {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String headerKey;
+        private String headerValue;
+        private String headerValueWo;
+        private Integer headerValueWoVersion;
         private String method;
         private String password;
         private String passwordWo;
@@ -130,6 +182,10 @@ public final class GetEventStreamWebhookConfigurationWebhookAuthorization {
         public Builder() {}
         public Builder(GetEventStreamWebhookConfigurationWebhookAuthorization defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.headerKey = defaults.headerKey;
+    	      this.headerValue = defaults.headerValue;
+    	      this.headerValueWo = defaults.headerValueWo;
+    	      this.headerValueWoVersion = defaults.headerValueWoVersion;
     	      this.method = defaults.method;
     	      this.password = defaults.password;
     	      this.passwordWo = defaults.passwordWo;
@@ -140,6 +196,38 @@ public final class GetEventStreamWebhookConfigurationWebhookAuthorization {
     	      this.username = defaults.username;
         }
 
+        @CustomType.Setter
+        public Builder headerKey(String headerKey) {
+            if (headerKey == null) {
+              throw new MissingRequiredPropertyException("GetEventStreamWebhookConfigurationWebhookAuthorization", "headerKey");
+            }
+            this.headerKey = headerKey;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder headerValue(String headerValue) {
+            if (headerValue == null) {
+              throw new MissingRequiredPropertyException("GetEventStreamWebhookConfigurationWebhookAuthorization", "headerValue");
+            }
+            this.headerValue = headerValue;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder headerValueWo(String headerValueWo) {
+            if (headerValueWo == null) {
+              throw new MissingRequiredPropertyException("GetEventStreamWebhookConfigurationWebhookAuthorization", "headerValueWo");
+            }
+            this.headerValueWo = headerValueWo;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder headerValueWoVersion(Integer headerValueWoVersion) {
+            if (headerValueWoVersion == null) {
+              throw new MissingRequiredPropertyException("GetEventStreamWebhookConfigurationWebhookAuthorization", "headerValueWoVersion");
+            }
+            this.headerValueWoVersion = headerValueWoVersion;
+            return this;
+        }
         @CustomType.Setter
         public Builder method(String method) {
             if (method == null) {
@@ -206,6 +294,10 @@ public final class GetEventStreamWebhookConfigurationWebhookAuthorization {
         }
         public GetEventStreamWebhookConfigurationWebhookAuthorization build() {
             final var _resultValue = new GetEventStreamWebhookConfigurationWebhookAuthorization();
+            _resultValue.headerKey = headerKey;
+            _resultValue.headerValue = headerValue;
+            _resultValue.headerValueWo = headerValueWo;
+            _resultValue.headerValueWoVersion = headerValueWoVersion;
             _resultValue.method = method;
             _resultValue.password = password;
             _resultValue.passwordWo = passwordWo;

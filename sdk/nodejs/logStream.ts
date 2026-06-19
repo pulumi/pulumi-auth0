@@ -53,6 +53,17 @@ import * as utilities from "./utilities";
  *         awsRegion: "us-east-2",
  *     },
  * });
+ * // This is an example of a Datadog log stream using a write-only API key
+ * // (recommended for security). The key is never stored in Terraform state.
+ * const datadogSecure = new auth0.LogStream("datadog_secure", {
+ *     name: "Datadog (write-only key)",
+ *     type: "datadog",
+ *     sink: {
+ *         datadogRegion: "us",
+ *         datadogApiKeyWo: "AKIAXXXXXXXXXXXXXXXX",
+ *         datadogApiKeyWoVersion: 1,
+ *     },
+ * });
  * ```
  *
  * ## Import

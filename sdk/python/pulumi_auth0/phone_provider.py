@@ -213,6 +213,11 @@ class PhoneProvider(pulumi.CustomResource):
 
         > If you are using the `PhoneProvider` resource to create a `custom` phone provider, you must ensure an action is created first with `custom-phone-provider` as the supported_triggers
 
+        > This resource is the recommended replacement for configuring a phone provider inside the `Guardian`
+        `phone` block (the `provider` attribute and `options` block there are deprecated). See the
+        migration guide
+        for details.
+
         ## Example Usage
 
         ```python
@@ -299,6 +304,11 @@ class PhoneProvider(pulumi.CustomResource):
         To avoid potential issues, it is recommended not to try creating multiple phone providers on the same tenant.
 
         > If you are using the `PhoneProvider` resource to create a `custom` phone provider, you must ensure an action is created first with `custom-phone-provider` as the supported_triggers
+
+        > This resource is the recommended replacement for configuring a phone provider inside the `Guardian`
+        `phone` block (the `provider` attribute and `options` block there are deprecated). See the
+        migration guide
+        for details.
 
         ## Example Usage
 

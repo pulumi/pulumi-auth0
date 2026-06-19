@@ -206,7 +206,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string IconUrl;
         /// <summary>
-        /// List of allowed algorithms for the ID token signature. If not set, RS256 will be applied at runtime. (Okta/OIDC Connections)
+        /// List of allowed algorithms for the ID token signature. If not set or empty, default algorithm(s) will be applied at runtime. (Okta/OIDC Connections)
         /// </summary>
         public readonly ImmutableArray<string> IdTokenSignedResponseAlgs;
         /// <summary>
