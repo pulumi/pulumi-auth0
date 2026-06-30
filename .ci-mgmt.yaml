@@ -7,6 +7,9 @@ env:
     AUTH0_CLIENT_SECRET: ${{ secrets.AUTH0_CLIENT_SECRET }}
     AUTH0_DOMAIN: ${{ secrets.AUTH0_DOMAIN }}
 makeTemplate: bridged
+# provider_program_test.go tests load the built provider plugin from ./bin, so
+# the fanout test_provider job must build the provider first. See pulumi/ci-mgmt#2336.
+testProviderNeedsProviderBinary: true
 team: ecosystem
 pulumiConvert: 1
 registryDocs: true
