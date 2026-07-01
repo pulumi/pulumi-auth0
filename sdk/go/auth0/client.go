@@ -69,6 +69,8 @@ type Client struct {
 	ExternalMetadataCreatedBy pulumi.StringOutput `pulumi:"externalMetadataCreatedBy"`
 	// Type of external metadata. Value is `cimd` for CIMD-registered clients.
 	ExternalMetadataType pulumi.StringOutput `pulumi:"externalMetadataType"`
+	// Federated Credential Management (FedCM) configuration. (EA only)
+	FedcmLogin ClientFedcmLoginPtrOutput `pulumi:"fedcmLogin"`
 	// HTML form template to be used for WS-Federation.
 	FormTemplate pulumi.StringPtrOutput `pulumi:"formTemplate"`
 	// Types of grants that this client is authorized to use.
@@ -217,6 +219,8 @@ type clientState struct {
 	ExternalMetadataCreatedBy *string `pulumi:"externalMetadataCreatedBy"`
 	// Type of external metadata. Value is `cimd` for CIMD-registered clients.
 	ExternalMetadataType *string `pulumi:"externalMetadataType"`
+	// Federated Credential Management (FedCM) configuration. (EA only)
+	FedcmLogin *ClientFedcmLogin `pulumi:"fedcmLogin"`
 	// HTML form template to be used for WS-Federation.
 	FormTemplate *string `pulumi:"formTemplate"`
 	// Types of grants that this client is authorized to use.
@@ -329,6 +333,8 @@ type ClientState struct {
 	ExternalMetadataCreatedBy pulumi.StringPtrInput
 	// Type of external metadata. Value is `cimd` for CIMD-registered clients.
 	ExternalMetadataType pulumi.StringPtrInput
+	// Federated Credential Management (FedCM) configuration. (EA only)
+	FedcmLogin ClientFedcmLoginPtrInput
 	// HTML form template to be used for WS-Federation.
 	FormTemplate pulumi.StringPtrInput
 	// Types of grants that this client is authorized to use.
@@ -437,6 +443,8 @@ type clientArgs struct {
 	EncryptionKey map[string]string `pulumi:"encryptionKey"`
 	// Express Configuration settings for the client. Used with OIN Express Configuration.
 	ExpressConfiguration *ClientExpressConfiguration `pulumi:"expressConfiguration"`
+	// Federated Credential Management (FedCM) configuration. (EA only)
+	FedcmLogin *ClientFedcmLogin `pulumi:"fedcmLogin"`
 	// HTML form template to be used for WS-Federation.
 	FormTemplate *string `pulumi:"formTemplate"`
 	// Types of grants that this client is authorized to use.
@@ -538,6 +546,8 @@ type ClientArgs struct {
 	EncryptionKey pulumi.StringMapInput
 	// Express Configuration settings for the client. Used with OIN Express Configuration.
 	ExpressConfiguration ClientExpressConfigurationPtrInput
+	// Federated Credential Management (FedCM) configuration. (EA only)
+	FedcmLogin ClientFedcmLoginPtrInput
 	// HTML form template to be used for WS-Federation.
 	FormTemplate pulumi.StringPtrInput
 	// Types of grants that this client is authorized to use.
@@ -796,6 +806,11 @@ func (o ClientOutput) ExternalMetadataCreatedBy() pulumi.StringOutput {
 // Type of external metadata. Value is `cimd` for CIMD-registered clients.
 func (o ClientOutput) ExternalMetadataType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Client) pulumi.StringOutput { return v.ExternalMetadataType }).(pulumi.StringOutput)
+}
+
+// Federated Credential Management (FedCM) configuration. (EA only)
+func (o ClientOutput) FedcmLogin() ClientFedcmLoginPtrOutput {
+	return o.ApplyT(func(v *Client) ClientFedcmLoginPtrOutput { return v.FedcmLogin }).(ClientFedcmLoginPtrOutput)
 }
 
 // HTML form template to be used for WS-Federation.

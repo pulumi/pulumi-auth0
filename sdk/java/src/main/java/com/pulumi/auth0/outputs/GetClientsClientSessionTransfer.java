@@ -3,6 +3,7 @@
 
 package com.pulumi.auth0.outputs;
 
+import com.pulumi.auth0.outputs.GetClientsClientSessionTransferDelegation;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
@@ -23,6 +24,11 @@ public final class GetClientsClientSessionTransfer {
      * 
      */
     private Boolean canCreateSessionTransferToken;
+    /**
+     * @return Configuration for delegation (impersonation) access using Session Transfer Tokens. (EA Only)
+     * 
+     */
+    private List<GetClientsClientSessionTransferDelegation> delegations;
     /**
      * @return Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities. Usually configured in the native application.
      * 
@@ -58,6 +64,13 @@ public final class GetClientsClientSessionTransfer {
         return this.canCreateSessionTransferToken;
     }
     /**
+     * @return Configuration for delegation (impersonation) access using Session Transfer Tokens. (EA Only)
+     * 
+     */
+    public List<GetClientsClientSessionTransferDelegation> delegations() {
+        return this.delegations;
+    }
+    /**
      * @return Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities. Usually configured in the native application.
      * 
      */
@@ -91,6 +104,7 @@ public final class GetClientsClientSessionTransfer {
         private Boolean allowRefreshToken;
         private List<String> allowedAuthenticationMethods;
         private Boolean canCreateSessionTransferToken;
+        private List<GetClientsClientSessionTransferDelegation> delegations;
         private Boolean enforceCascadeRevocation;
         private String enforceDeviceBinding;
         private Boolean enforceOnlineRefreshTokens;
@@ -100,6 +114,7 @@ public final class GetClientsClientSessionTransfer {
     	      this.allowRefreshToken = defaults.allowRefreshToken;
     	      this.allowedAuthenticationMethods = defaults.allowedAuthenticationMethods;
     	      this.canCreateSessionTransferToken = defaults.canCreateSessionTransferToken;
+    	      this.delegations = defaults.delegations;
     	      this.enforceCascadeRevocation = defaults.enforceCascadeRevocation;
     	      this.enforceDeviceBinding = defaults.enforceDeviceBinding;
     	      this.enforceOnlineRefreshTokens = defaults.enforceOnlineRefreshTokens;
@@ -133,6 +148,17 @@ public final class GetClientsClientSessionTransfer {
             return this;
         }
         @CustomType.Setter
+        public Builder delegations(List<GetClientsClientSessionTransferDelegation> delegations) {
+            if (delegations == null) {
+              throw new MissingRequiredPropertyException("GetClientsClientSessionTransfer", "delegations");
+            }
+            this.delegations = delegations;
+            return this;
+        }
+        public Builder delegations(GetClientsClientSessionTransferDelegation... delegations) {
+            return delegations(List.of(delegations));
+        }
+        @CustomType.Setter
         public Builder enforceCascadeRevocation(Boolean enforceCascadeRevocation) {
             if (enforceCascadeRevocation == null) {
               throw new MissingRequiredPropertyException("GetClientsClientSessionTransfer", "enforceCascadeRevocation");
@@ -161,6 +187,7 @@ public final class GetClientsClientSessionTransfer {
             _resultValue.allowRefreshToken = allowRefreshToken;
             _resultValue.allowedAuthenticationMethods = allowedAuthenticationMethods;
             _resultValue.canCreateSessionTransferToken = canCreateSessionTransferToken;
+            _resultValue.delegations = delegations;
             _resultValue.enforceCascadeRevocation = enforceCascadeRevocation;
             _resultValue.enforceDeviceBinding = enforceDeviceBinding;
             _resultValue.enforceOnlineRefreshTokens = enforceOnlineRefreshTokens;

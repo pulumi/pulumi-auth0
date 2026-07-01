@@ -276,6 +276,11 @@ public final class ConnectionOptions {
      */
     private @Nullable String iconUrl;
     /**
+     * @return Indicates whether the identity provider supports session expiry via the id*token. When true, Auth0 will use the session*expiry claim from the upstream IdP&#39;s ID token to determine the maximum session lifetime. Only applicable for Okta and OIDC connections.
+     * 
+     */
+    private @Nullable Boolean idTokenSessionExpirySupported;
+    /**
      * @return List of allowed algorithms for the ID token signature. If not set or empty, default algorithm(s) will be applied at runtime. (Okta/OIDC Connections)
      * 
      */
@@ -571,7 +576,7 @@ public final class ConnectionOptions {
      */
     private @Nullable String twilioToken;
     /**
-     * @return Value can be `backChannel` or `frontChannel`. Front Channel will use OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel will use `response_type=code`.
+     * @return The connection&#39;s communication channel type. For OIDC connections, accepted values are `backChannel` and `frontChannel`; for Okta Workforce connections, only `backChannel` is accepted. Front Channel uses the OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel uses `response_type=code`.
      * 
      */
     private @Nullable String type;
@@ -967,6 +972,13 @@ public final class ConnectionOptions {
      */
     public Optional<String> iconUrl() {
         return Optional.ofNullable(this.iconUrl);
+    }
+    /**
+     * @return Indicates whether the identity provider supports session expiry via the id*token. When true, Auth0 will use the session*expiry claim from the upstream IdP&#39;s ID token to determine the maximum session lifetime. Only applicable for Okta and OIDC connections.
+     * 
+     */
+    public Optional<Boolean> idTokenSessionExpirySupported() {
+        return Optional.ofNullable(this.idTokenSessionExpirySupported);
     }
     /**
      * @return List of allowed algorithms for the ID token signature. If not set or empty, default algorithm(s) will be applied at runtime. (Okta/OIDC Connections)
@@ -1382,7 +1394,7 @@ public final class ConnectionOptions {
         return Optional.ofNullable(this.twilioToken);
     }
     /**
-     * @return Value can be `backChannel` or `frontChannel`. Front Channel will use OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel will use `response_type=code`.
+     * @return The connection&#39;s communication channel type. For OIDC connections, accepted values are `backChannel` and `frontChannel`; for Okta Workforce connections, only `backChannel` is accepted. Front Channel uses the OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel uses `response_type=code`.
      * 
      */
     public Optional<String> type() {
@@ -1523,6 +1535,7 @@ public final class ConnectionOptions {
         private @Nullable String globalTokenRevocationJwtIss;
         private @Nullable String globalTokenRevocationJwtSub;
         private @Nullable String iconUrl;
+        private @Nullable Boolean idTokenSessionExpirySupported;
         private @Nullable List<String> idTokenSignedResponseAlgs;
         private @Nullable String identityApi;
         private @Nullable ConnectionOptionsIdpInitiated idpInitiated;
@@ -1645,6 +1658,7 @@ public final class ConnectionOptions {
     	      this.globalTokenRevocationJwtIss = defaults.globalTokenRevocationJwtIss;
     	      this.globalTokenRevocationJwtSub = defaults.globalTokenRevocationJwtSub;
     	      this.iconUrl = defaults.iconUrl;
+    	      this.idTokenSessionExpirySupported = defaults.idTokenSessionExpirySupported;
     	      this.idTokenSignedResponseAlgs = defaults.idTokenSignedResponseAlgs;
     	      this.identityApi = defaults.identityApi;
     	      this.idpInitiated = defaults.idpInitiated;
@@ -2019,6 +2033,12 @@ public final class ConnectionOptions {
         public Builder iconUrl(@Nullable String iconUrl) {
 
             this.iconUrl = iconUrl;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder idTokenSessionExpirySupported(@Nullable Boolean idTokenSessionExpirySupported) {
+
+            this.idTokenSessionExpirySupported = idTokenSessionExpirySupported;
             return this;
         }
         @CustomType.Setter
@@ -2515,6 +2535,7 @@ public final class ConnectionOptions {
             _resultValue.globalTokenRevocationJwtIss = globalTokenRevocationJwtIss;
             _resultValue.globalTokenRevocationJwtSub = globalTokenRevocationJwtSub;
             _resultValue.iconUrl = iconUrl;
+            _resultValue.idTokenSessionExpirySupported = idTokenSessionExpirySupported;
             _resultValue.idTokenSignedResponseAlgs = idTokenSignedResponseAlgs;
             _resultValue.identityApi = identityApi;
             _resultValue.idpInitiated = idpInitiated;

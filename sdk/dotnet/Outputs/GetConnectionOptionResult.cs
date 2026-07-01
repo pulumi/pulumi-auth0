@@ -206,6 +206,10 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string IconUrl;
         /// <summary>
+        /// Indicates whether the identity provider supports session expiry via the id_token. When true, Auth0 will use the SessionExpiry claim from the upstream IdP's ID token to determine the maximum session lifetime. Only applicable for Okta and OIDC connections.
+        /// </summary>
+        public readonly bool IdTokenSessionExpirySupported;
+        /// <summary>
         /// List of allowed algorithms for the ID token signature. If not set or empty, default algorithm(s) will be applied at runtime. (Okta/OIDC Connections)
         /// </summary>
         public readonly ImmutableArray<string> IdTokenSignedResponseAlgs;
@@ -442,7 +446,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string TwilioToken;
         /// <summary>
-        /// Value can be `BackChannel` or `FrontChannel`. Front Channel will use OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel will use `response_type=code`.
+        /// The connection's communication channel type. For OIDC connections, accepted values are `BackChannel` and `FrontChannel`; for Okta Workforce connections, only `BackChannel` is accepted. Front Channel uses the OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel uses `response_type=code`.
         /// </summary>
         public readonly string Type;
         /// <summary>
@@ -587,6 +591,8 @@ namespace Pulumi.Auth0.Outputs
             string globalTokenRevocationJwtSub,
 
             string iconUrl,
+
+            bool idTokenSessionExpirySupported,
 
             ImmutableArray<string> idTokenSignedResponseAlgs,
 
@@ -778,6 +784,7 @@ namespace Pulumi.Auth0.Outputs
             GlobalTokenRevocationJwtIss = globalTokenRevocationJwtIss;
             GlobalTokenRevocationJwtSub = globalTokenRevocationJwtSub;
             IconUrl = iconUrl;
+            IdTokenSessionExpirySupported = idTokenSessionExpirySupported;
             IdTokenSignedResponseAlgs = idTokenSignedResponseAlgs;
             IdentityApi = identityApi;
             IdpInitiateds = idpInitiateds;

@@ -23,6 +23,8 @@ class ResourceServerArgs:
     def __init__(__self__, *,
                  identifier: pulumi.Input[_builtins.str],
                  allow_offline_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_online_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_online_access_with_ephemeral_sessions: pulumi.Input[Optional[_builtins.bool]] = None,
                  authorization_details: pulumi.Input[Optional[Sequence[pulumi.Input['ResourceServerAuthorizationDetailArgs']]]] = None,
                  authorization_policy: pulumi.Input[Optional['ResourceServerAuthorizationPolicyArgs']] = None,
                  consent_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -43,6 +45,8 @@ class ResourceServerArgs:
 
         :param pulumi.Input[_builtins.str] identifier: Unique identifier for the resource server. Used as the audience parameter for authorization calls. Cannot be changed once set.
         :param pulumi.Input[_builtins.bool] allow_offline_access: Indicates whether refresh tokens can be issued for this resource server.
+        :param pulumi.Input[_builtins.bool] allow_online_access: Indicates whether Online Refresh Tokens can be issued for this resource server. (EA Only)
+        :param pulumi.Input[_builtins.bool] allow_online_access_with_ephemeral_sessions: Indicates whether Online Refresh Tokens can be issued even when sessions are configured as ephemeral. (EA Only)
         :param pulumi.Input[Sequence[pulumi.Input['ResourceServerAuthorizationDetailArgs']]] authorization_details: Authorization details for this resource server.
         :param pulumi.Input['ResourceServerAuthorizationPolicyArgs'] authorization_policy: Authorization policy for the resource server.(EA Only)
         :param pulumi.Input[_builtins.str] consent_policy: Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
@@ -62,6 +66,10 @@ class ResourceServerArgs:
         pulumi.set(__self__, "identifier", identifier)
         if allow_offline_access is not None:
             pulumi.set(__self__, "allow_offline_access", allow_offline_access)
+        if allow_online_access is not None:
+            pulumi.set(__self__, "allow_online_access", allow_online_access)
+        if allow_online_access_with_ephemeral_sessions is not None:
+            pulumi.set(__self__, "allow_online_access_with_ephemeral_sessions", allow_online_access_with_ephemeral_sessions)
         if authorization_details is not None:
             pulumi.set(__self__, "authorization_details", authorization_details)
         if authorization_policy is not None:
@@ -116,6 +124,30 @@ class ResourceServerArgs:
     @allow_offline_access.setter
     def allow_offline_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_offline_access", value)
+
+    @_builtins.property
+    @pulumi.getter(name="allowOnlineAccess")
+    def allow_online_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Indicates whether Online Refresh Tokens can be issued for this resource server. (EA Only)
+        """
+        return pulumi.get(self, "allow_online_access")
+
+    @allow_online_access.setter
+    def allow_online_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "allow_online_access", value)
+
+    @_builtins.property
+    @pulumi.getter(name="allowOnlineAccessWithEphemeralSessions")
+    def allow_online_access_with_ephemeral_sessions(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Indicates whether Online Refresh Tokens can be issued even when sessions are configured as ephemeral. (EA Only)
+        """
+        return pulumi.get(self, "allow_online_access_with_ephemeral_sessions")
+
+    @allow_online_access_with_ephemeral_sessions.setter
+    def allow_online_access_with_ephemeral_sessions(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "allow_online_access_with_ephemeral_sessions", value)
 
     @_builtins.property
     @pulumi.getter(name="authorizationDetails")
@@ -302,6 +334,8 @@ class ResourceServerArgs:
 class _ResourceServerState:
     def __init__(__self__, *,
                  allow_offline_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_online_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_online_access_with_ephemeral_sessions: pulumi.Input[Optional[_builtins.bool]] = None,
                  authorization_details: pulumi.Input[Optional[Sequence[pulumi.Input['ResourceServerAuthorizationDetailArgs']]]] = None,
                  authorization_policy: pulumi.Input[Optional['ResourceServerAuthorizationPolicyArgs']] = None,
                  client_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -324,6 +358,8 @@ class _ResourceServerState:
         Input properties used for looking up and filtering ResourceServer resources.
 
         :param pulumi.Input[_builtins.bool] allow_offline_access: Indicates whether refresh tokens can be issued for this resource server.
+        :param pulumi.Input[_builtins.bool] allow_online_access: Indicates whether Online Refresh Tokens can be issued for this resource server. (EA Only)
+        :param pulumi.Input[_builtins.bool] allow_online_access_with_ephemeral_sessions: Indicates whether Online Refresh Tokens can be issued even when sessions are configured as ephemeral. (EA Only)
         :param pulumi.Input[Sequence[pulumi.Input['ResourceServerAuthorizationDetailArgs']]] authorization_details: Authorization details for this resource server.
         :param pulumi.Input['ResourceServerAuthorizationPolicyArgs'] authorization_policy: Authorization policy for the resource server.(EA Only)
         :param pulumi.Input[_builtins.str] client_id: The ID of the client associated with this resource server. If a client has been created and linked to this resource server, this field will be populated with that client's ID.
@@ -345,6 +381,10 @@ class _ResourceServerState:
         """
         if allow_offline_access is not None:
             pulumi.set(__self__, "allow_offline_access", allow_offline_access)
+        if allow_online_access is not None:
+            pulumi.set(__self__, "allow_online_access", allow_online_access)
+        if allow_online_access_with_ephemeral_sessions is not None:
+            pulumi.set(__self__, "allow_online_access_with_ephemeral_sessions", allow_online_access_with_ephemeral_sessions)
         if authorization_details is not None:
             pulumi.set(__self__, "authorization_details", authorization_details)
         if authorization_policy is not None:
@@ -393,6 +433,30 @@ class _ResourceServerState:
     @allow_offline_access.setter
     def allow_offline_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_offline_access", value)
+
+    @_builtins.property
+    @pulumi.getter(name="allowOnlineAccess")
+    def allow_online_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Indicates whether Online Refresh Tokens can be issued for this resource server. (EA Only)
+        """
+        return pulumi.get(self, "allow_online_access")
+
+    @allow_online_access.setter
+    def allow_online_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "allow_online_access", value)
+
+    @_builtins.property
+    @pulumi.getter(name="allowOnlineAccessWithEphemeralSessions")
+    def allow_online_access_with_ephemeral_sessions(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Indicates whether Online Refresh Tokens can be issued even when sessions are configured as ephemeral. (EA Only)
+        """
+        return pulumi.get(self, "allow_online_access_with_ephemeral_sessions")
+
+    @allow_online_access_with_ephemeral_sessions.setter
+    def allow_online_access_with_ephemeral_sessions(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "allow_online_access_with_ephemeral_sessions", value)
 
     @_builtins.property
     @pulumi.getter(name="authorizationDetails")
@@ -618,6 +682,8 @@ class ResourceServer(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_offline_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_online_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_online_access_with_ephemeral_sessions: pulumi.Input[Optional[_builtins.bool]] = None,
                  authorization_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResourceServerAuthorizationDetailArgs', 'ResourceServerAuthorizationDetailArgsDict']]]]] = None,
                  authorization_policy: pulumi.Input[Optional[Union['ResourceServerAuthorizationPolicyArgs', 'ResourceServerAuthorizationPolicyArgsDict']]] = None,
                  consent_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -649,6 +715,8 @@ class ResourceServer(pulumi.CustomResource):
             identifier="https://api.example.com",
             signing_alg="RS256",
             allow_offline_access=True,
+            allow_online_access=True,
+            allow_online_access_with_ephemeral_sessions=False,
             token_lifetime=8600,
             skip_consent_for_verifiable_first_party_clients=True,
             consent_policy="transactional-authorization-with-mfa",
@@ -718,6 +786,8 @@ class ResourceServer(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] allow_offline_access: Indicates whether refresh tokens can be issued for this resource server.
+        :param pulumi.Input[_builtins.bool] allow_online_access: Indicates whether Online Refresh Tokens can be issued for this resource server. (EA Only)
+        :param pulumi.Input[_builtins.bool] allow_online_access_with_ephemeral_sessions: Indicates whether Online Refresh Tokens can be issued even when sessions are configured as ephemeral. (EA Only)
         :param pulumi.Input[Sequence[pulumi.Input[Union['ResourceServerAuthorizationDetailArgs', 'ResourceServerAuthorizationDetailArgsDict']]]] authorization_details: Authorization details for this resource server.
         :param pulumi.Input[Union['ResourceServerAuthorizationPolicyArgs', 'ResourceServerAuthorizationPolicyArgsDict']] authorization_policy: Authorization policy for the resource server.(EA Only)
         :param pulumi.Input[_builtins.str] consent_policy: Consent policy for this resource server. Options include `transactional-authorization-with-mfa`, or `null` to disable.
@@ -755,6 +825,8 @@ class ResourceServer(pulumi.CustomResource):
             identifier="https://api.example.com",
             signing_alg="RS256",
             allow_offline_access=True,
+            allow_online_access=True,
+            allow_online_access_with_ephemeral_sessions=False,
             token_lifetime=8600,
             skip_consent_for_verifiable_first_party_clients=True,
             consent_policy="transactional-authorization-with-mfa",
@@ -837,6 +909,8 @@ class ResourceServer(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_offline_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_online_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_online_access_with_ephemeral_sessions: pulumi.Input[Optional[_builtins.bool]] = None,
                  authorization_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResourceServerAuthorizationDetailArgs', 'ResourceServerAuthorizationDetailArgsDict']]]]] = None,
                  authorization_policy: pulumi.Input[Optional[Union['ResourceServerAuthorizationPolicyArgs', 'ResourceServerAuthorizationPolicyArgsDict']]] = None,
                  consent_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -863,6 +937,8 @@ class ResourceServer(pulumi.CustomResource):
             __props__ = ResourceServerArgs.__new__(ResourceServerArgs)
 
             __props__.__dict__["allow_offline_access"] = allow_offline_access
+            __props__.__dict__["allow_online_access"] = allow_online_access
+            __props__.__dict__["allow_online_access_with_ephemeral_sessions"] = allow_online_access_with_ephemeral_sessions
             __props__.__dict__["authorization_details"] = authorization_details
             __props__.__dict__["authorization_policy"] = authorization_policy
             __props__.__dict__["consent_policy"] = consent_policy
@@ -894,6 +970,8 @@ class ResourceServer(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             allow_offline_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            allow_online_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            allow_online_access_with_ephemeral_sessions: pulumi.Input[Optional[_builtins.bool]] = None,
             authorization_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResourceServerAuthorizationDetailArgs', 'ResourceServerAuthorizationDetailArgsDict']]]]] = None,
             authorization_policy: pulumi.Input[Optional[Union['ResourceServerAuthorizationPolicyArgs', 'ResourceServerAuthorizationPolicyArgsDict']]] = None,
             client_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -920,6 +998,8 @@ class ResourceServer(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] allow_offline_access: Indicates whether refresh tokens can be issued for this resource server.
+        :param pulumi.Input[_builtins.bool] allow_online_access: Indicates whether Online Refresh Tokens can be issued for this resource server. (EA Only)
+        :param pulumi.Input[_builtins.bool] allow_online_access_with_ephemeral_sessions: Indicates whether Online Refresh Tokens can be issued even when sessions are configured as ephemeral. (EA Only)
         :param pulumi.Input[Sequence[pulumi.Input[Union['ResourceServerAuthorizationDetailArgs', 'ResourceServerAuthorizationDetailArgsDict']]]] authorization_details: Authorization details for this resource server.
         :param pulumi.Input[Union['ResourceServerAuthorizationPolicyArgs', 'ResourceServerAuthorizationPolicyArgsDict']] authorization_policy: Authorization policy for the resource server.(EA Only)
         :param pulumi.Input[_builtins.str] client_id: The ID of the client associated with this resource server. If a client has been created and linked to this resource server, this field will be populated with that client's ID.
@@ -944,6 +1024,8 @@ class ResourceServer(pulumi.CustomResource):
         __props__ = _ResourceServerState.__new__(_ResourceServerState)
 
         __props__.__dict__["allow_offline_access"] = allow_offline_access
+        __props__.__dict__["allow_online_access"] = allow_online_access
+        __props__.__dict__["allow_online_access_with_ephemeral_sessions"] = allow_online_access_with_ephemeral_sessions
         __props__.__dict__["authorization_details"] = authorization_details
         __props__.__dict__["authorization_policy"] = authorization_policy
         __props__.__dict__["client_id"] = client_id
@@ -971,6 +1053,22 @@ class ResourceServer(pulumi.CustomResource):
         Indicates whether refresh tokens can be issued for this resource server.
         """
         return pulumi.get(self, "allow_offline_access")
+
+    @_builtins.property
+    @pulumi.getter(name="allowOnlineAccess")
+    def allow_online_access(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Indicates whether Online Refresh Tokens can be issued for this resource server. (EA Only)
+        """
+        return pulumi.get(self, "allow_online_access")
+
+    @_builtins.property
+    @pulumi.getter(name="allowOnlineAccessWithEphemeralSessions")
+    def allow_online_access_with_ephemeral_sessions(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Indicates whether Online Refresh Tokens can be issued even when sessions are configured as ephemeral. (EA Only)
+        """
+        return pulumi.get(self, "allow_online_access_with_ephemeral_sessions")
 
     @_builtins.property
     @pulumi.getter(name="authorizationDetails")

@@ -3,6 +3,7 @@
 
 package com.pulumi.auth0.outputs;
 
+import com.pulumi.auth0.outputs.ClientSessionTransferDelegation;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.String;
@@ -24,6 +25,11 @@ public final class ClientSessionTransfer {
      * 
      */
     private @Nullable Boolean canCreateSessionTransferToken;
+    /**
+     * @return Configuration for delegation (impersonation) access using Session Transfer Tokens. (EA Only)
+     * 
+     */
+    private @Nullable ClientSessionTransferDelegation delegation;
     /**
      * @return Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities. Usually configured in the native application.
      * 
@@ -59,6 +65,13 @@ public final class ClientSessionTransfer {
         return Optional.ofNullable(this.canCreateSessionTransferToken);
     }
     /**
+     * @return Configuration for delegation (impersonation) access using Session Transfer Tokens. (EA Only)
+     * 
+     */
+    public Optional<ClientSessionTransferDelegation> delegation() {
+        return Optional.ofNullable(this.delegation);
+    }
+    /**
      * @return Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities. Usually configured in the native application.
      * 
      */
@@ -92,6 +105,7 @@ public final class ClientSessionTransfer {
         private @Nullable Boolean allowRefreshToken;
         private @Nullable List<String> allowedAuthenticationMethods;
         private @Nullable Boolean canCreateSessionTransferToken;
+        private @Nullable ClientSessionTransferDelegation delegation;
         private @Nullable Boolean enforceCascadeRevocation;
         private @Nullable String enforceDeviceBinding;
         private @Nullable Boolean enforceOnlineRefreshTokens;
@@ -101,6 +115,7 @@ public final class ClientSessionTransfer {
     	      this.allowRefreshToken = defaults.allowRefreshToken;
     	      this.allowedAuthenticationMethods = defaults.allowedAuthenticationMethods;
     	      this.canCreateSessionTransferToken = defaults.canCreateSessionTransferToken;
+    	      this.delegation = defaults.delegation;
     	      this.enforceCascadeRevocation = defaults.enforceCascadeRevocation;
     	      this.enforceDeviceBinding = defaults.enforceDeviceBinding;
     	      this.enforceOnlineRefreshTokens = defaults.enforceOnlineRefreshTokens;
@@ -128,6 +143,12 @@ public final class ClientSessionTransfer {
             return this;
         }
         @CustomType.Setter
+        public Builder delegation(@Nullable ClientSessionTransferDelegation delegation) {
+
+            this.delegation = delegation;
+            return this;
+        }
+        @CustomType.Setter
         public Builder enforceCascadeRevocation(@Nullable Boolean enforceCascadeRevocation) {
 
             this.enforceCascadeRevocation = enforceCascadeRevocation;
@@ -150,6 +171,7 @@ public final class ClientSessionTransfer {
             _resultValue.allowRefreshToken = allowRefreshToken;
             _resultValue.allowedAuthenticationMethods = allowedAuthenticationMethods;
             _resultValue.canCreateSessionTransferToken = canCreateSessionTransferToken;
+            _resultValue.delegation = delegation;
             _resultValue.enforceCascadeRevocation = enforceCascadeRevocation;
             _resultValue.enforceDeviceBinding = enforceDeviceBinding;
             _resultValue.enforceOnlineRefreshTokens = enforceOnlineRefreshTokens;

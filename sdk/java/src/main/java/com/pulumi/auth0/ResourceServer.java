@@ -61,6 +61,8 @@ import javax.annotation.Nullable;
  *             .identifier("https://api.example.com")
  *             .signingAlg("RS256")
  *             .allowOfflineAccess(true)
+ *             .allowOnlineAccess(true)
+ *             .allowOnlineAccessWithEphemeralSessions(false)
  *             .tokenLifetime(8600)
  *             .skipConsentForVerifiableFirstPartyClients(true)
  *             .consentPolicy("transactional-authorization-with-mfa")
@@ -149,6 +151,34 @@ public class ResourceServer extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> allowOfflineAccess() {
         return this.allowOfflineAccess;
+    }
+    /**
+     * Indicates whether Online Refresh Tokens can be issued for this resource server. (EA Only)
+     * 
+     */
+    @Export(name="allowOnlineAccess", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> allowOnlineAccess;
+
+    /**
+     * @return Indicates whether Online Refresh Tokens can be issued for this resource server. (EA Only)
+     * 
+     */
+    public Output<Boolean> allowOnlineAccess() {
+        return this.allowOnlineAccess;
+    }
+    /**
+     * Indicates whether Online Refresh Tokens can be issued even when sessions are configured as ephemeral. (EA Only)
+     * 
+     */
+    @Export(name="allowOnlineAccessWithEphemeralSessions", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> allowOnlineAccessWithEphemeralSessions;
+
+    /**
+     * @return Indicates whether Online Refresh Tokens can be issued even when sessions are configured as ephemeral. (EA Only)
+     * 
+     */
+    public Output<Boolean> allowOnlineAccessWithEphemeralSessions() {
+        return this.allowOnlineAccessWithEphemeralSessions;
     }
     /**
      * Authorization details for this resource server.

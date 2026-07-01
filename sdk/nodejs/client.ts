@@ -136,6 +136,10 @@ export class Client extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly externalMetadataType: pulumi.Output<string>;
     /**
+     * Federated Credential Management (FedCM) configuration. (EA only)
+     */
+    declare public readonly fedcmLogin: pulumi.Output<outputs.ClientFedcmLogin | undefined>;
+    /**
      * HTML form template to be used for WS-Federation.
      */
     declare public readonly formTemplate: pulumi.Output<string | undefined>;
@@ -298,6 +302,7 @@ export class Client extends pulumi.CustomResource {
             resourceInputs["externalClientId"] = state?.externalClientId;
             resourceInputs["externalMetadataCreatedBy"] = state?.externalMetadataCreatedBy;
             resourceInputs["externalMetadataType"] = state?.externalMetadataType;
+            resourceInputs["fedcmLogin"] = state?.fedcmLogin;
             resourceInputs["formTemplate"] = state?.formTemplate;
             resourceInputs["grantTypes"] = state?.grantTypes;
             resourceInputs["initiateLoginUri"] = state?.initiateLoginUri;
@@ -350,6 +355,7 @@ export class Client extends pulumi.CustomResource {
             resourceInputs["description"] = (args?.description) ?? "Managed by Pulumi";
             resourceInputs["encryptionKey"] = args?.encryptionKey;
             resourceInputs["expressConfiguration"] = args?.expressConfiguration;
+            resourceInputs["fedcmLogin"] = args?.fedcmLogin;
             resourceInputs["formTemplate"] = args?.formTemplate;
             resourceInputs["grantTypes"] = args?.grantTypes;
             resourceInputs["initiateLoginUri"] = args?.initiateLoginUri;
@@ -486,6 +492,10 @@ export interface ClientState {
      * Type of external metadata. Value is `cimd` for CIMD-registered clients.
      */
     externalMetadataType?: pulumi.Input<string | undefined>;
+    /**
+     * Federated Credential Management (FedCM) configuration. (EA only)
+     */
+    fedcmLogin?: pulumi.Input<inputs.ClientFedcmLogin | undefined>;
     /**
      * HTML form template to be used for WS-Federation.
      */
@@ -691,6 +701,10 @@ export interface ClientArgs {
      * Express Configuration settings for the client. Used with OIN Express Configuration.
      */
     expressConfiguration?: pulumi.Input<inputs.ClientExpressConfiguration | undefined>;
+    /**
+     * Federated Credential Management (FedCM) configuration. (EA only)
+     */
+    fedcmLogin?: pulumi.Input<inputs.ClientFedcmLogin | undefined>;
     /**
      * HTML form template to be used for WS-Federation.
      */

@@ -68,6 +68,10 @@ type LookupResourceServerArgs struct {
 type LookupResourceServerResult struct {
 	// Indicates whether refresh tokens can be issued for this resource server.
 	AllowOfflineAccess bool `pulumi:"allowOfflineAccess"`
+	// Indicates whether Online Refresh Tokens can be issued for this resource server. (EA Only)
+	AllowOnlineAccess bool `pulumi:"allowOnlineAccess"`
+	// Indicates whether Online Refresh Tokens can be issued even when sessions are configured as ephemeral. (EA Only)
+	AllowOnlineAccessWithEphemeralSessions bool `pulumi:"allowOnlineAccessWithEphemeralSessions"`
 	// Authorization details for this resource server.
 	AuthorizationDetails []GetResourceServerAuthorizationDetail `pulumi:"authorizationDetails"`
 	// Authorization policy for the resource server.(EA Only)
@@ -151,6 +155,16 @@ func (o LookupResourceServerResultOutput) ToLookupResourceServerResultOutputWith
 // Indicates whether refresh tokens can be issued for this resource server.
 func (o LookupResourceServerResultOutput) AllowOfflineAccess() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupResourceServerResult) bool { return v.AllowOfflineAccess }).(pulumi.BoolOutput)
+}
+
+// Indicates whether Online Refresh Tokens can be issued for this resource server. (EA Only)
+func (o LookupResourceServerResultOutput) AllowOnlineAccess() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupResourceServerResult) bool { return v.AllowOnlineAccess }).(pulumi.BoolOutput)
+}
+
+// Indicates whether Online Refresh Tokens can be issued even when sessions are configured as ephemeral. (EA Only)
+func (o LookupResourceServerResultOutput) AllowOnlineAccessWithEphemeralSessions() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupResourceServerResult) bool { return v.AllowOnlineAccessWithEphemeralSessions }).(pulumi.BoolOutput)
 }
 
 // Authorization details for this resource server.

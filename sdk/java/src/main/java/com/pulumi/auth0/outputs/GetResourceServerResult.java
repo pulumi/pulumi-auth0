@@ -27,6 +27,16 @@ public final class GetResourceServerResult {
      */
     private Boolean allowOfflineAccess;
     /**
+     * @return Indicates whether Online Refresh Tokens can be issued for this resource server. (EA Only)
+     * 
+     */
+    private Boolean allowOnlineAccess;
+    /**
+     * @return Indicates whether Online Refresh Tokens can be issued even when sessions are configured as ephemeral. (EA Only)
+     * 
+     */
+    private Boolean allowOnlineAccessWithEphemeralSessions;
+    /**
      * @return Authorization details for this resource server.
      * 
      */
@@ -139,6 +149,20 @@ public final class GetResourceServerResult {
      */
     public Boolean allowOfflineAccess() {
         return this.allowOfflineAccess;
+    }
+    /**
+     * @return Indicates whether Online Refresh Tokens can be issued for this resource server. (EA Only)
+     * 
+     */
+    public Boolean allowOnlineAccess() {
+        return this.allowOnlineAccess;
+    }
+    /**
+     * @return Indicates whether Online Refresh Tokens can be issued even when sessions are configured as ephemeral. (EA Only)
+     * 
+     */
+    public Boolean allowOnlineAccessWithEphemeralSessions() {
+        return this.allowOnlineAccessWithEphemeralSessions;
     }
     /**
      * @return Authorization details for this resource server.
@@ -298,6 +322,8 @@ public final class GetResourceServerResult {
     @CustomType.Builder
     public static final class Builder {
         private Boolean allowOfflineAccess;
+        private Boolean allowOnlineAccess;
+        private Boolean allowOnlineAccessWithEphemeralSessions;
         private List<GetResourceServerAuthorizationDetail> authorizationDetails;
         private List<GetResourceServerAuthorizationPolicy> authorizationPolicies;
         private String clientId;
@@ -323,6 +349,8 @@ public final class GetResourceServerResult {
         public Builder(GetResourceServerResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowOfflineAccess = defaults.allowOfflineAccess;
+    	      this.allowOnlineAccess = defaults.allowOnlineAccess;
+    	      this.allowOnlineAccessWithEphemeralSessions = defaults.allowOnlineAccessWithEphemeralSessions;
     	      this.authorizationDetails = defaults.authorizationDetails;
     	      this.authorizationPolicies = defaults.authorizationPolicies;
     	      this.clientId = defaults.clientId;
@@ -352,6 +380,22 @@ public final class GetResourceServerResult {
               throw new MissingRequiredPropertyException("GetResourceServerResult", "allowOfflineAccess");
             }
             this.allowOfflineAccess = allowOfflineAccess;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder allowOnlineAccess(Boolean allowOnlineAccess) {
+            if (allowOnlineAccess == null) {
+              throw new MissingRequiredPropertyException("GetResourceServerResult", "allowOnlineAccess");
+            }
+            this.allowOnlineAccess = allowOnlineAccess;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder allowOnlineAccessWithEphemeralSessions(Boolean allowOnlineAccessWithEphemeralSessions) {
+            if (allowOnlineAccessWithEphemeralSessions == null) {
+              throw new MissingRequiredPropertyException("GetResourceServerResult", "allowOnlineAccessWithEphemeralSessions");
+            }
+            this.allowOnlineAccessWithEphemeralSessions = allowOnlineAccessWithEphemeralSessions;
             return this;
         }
         @CustomType.Setter
@@ -539,6 +583,8 @@ public final class GetResourceServerResult {
         public GetResourceServerResult build() {
             final var _resultValue = new GetResourceServerResult();
             _resultValue.allowOfflineAccess = allowOfflineAccess;
+            _resultValue.allowOnlineAccess = allowOnlineAccess;
+            _resultValue.allowOnlineAccessWithEphemeralSessions = allowOnlineAccessWithEphemeralSessions;
             _resultValue.authorizationDetails = authorizationDetails;
             _resultValue.authorizationPolicies = authorizationPolicies;
             _resultValue.clientId = clientId;

@@ -27,10 +27,16 @@ class GetResourceServerResult:
     """
     A collection of values returned by getResourceServer.
     """
-    def __init__(__self__, allow_offline_access=None, authorization_details=None, authorization_policies=None, client_id=None, consent_policy=None, enforce_policies=None, id=None, identifier=None, is_system=None, name=None, proof_of_possessions=None, resource_server_id=None, scopes=None, signing_alg=None, signing_secret=None, skip_consent_for_verifiable_first_party_clients=None, subject_type_authorizations=None, token_dialect=None, token_encryptions=None, token_lifetime=None, token_lifetime_for_web=None, verification_location=None):
+    def __init__(__self__, allow_offline_access=None, allow_online_access=None, allow_online_access_with_ephemeral_sessions=None, authorization_details=None, authorization_policies=None, client_id=None, consent_policy=None, enforce_policies=None, id=None, identifier=None, is_system=None, name=None, proof_of_possessions=None, resource_server_id=None, scopes=None, signing_alg=None, signing_secret=None, skip_consent_for_verifiable_first_party_clients=None, subject_type_authorizations=None, token_dialect=None, token_encryptions=None, token_lifetime=None, token_lifetime_for_web=None, verification_location=None):
         if allow_offline_access and not isinstance(allow_offline_access, bool):
             raise TypeError("Expected argument 'allow_offline_access' to be a bool")
         pulumi.set(__self__, "allow_offline_access", allow_offline_access)
+        if allow_online_access and not isinstance(allow_online_access, bool):
+            raise TypeError("Expected argument 'allow_online_access' to be a bool")
+        pulumi.set(__self__, "allow_online_access", allow_online_access)
+        if allow_online_access_with_ephemeral_sessions and not isinstance(allow_online_access_with_ephemeral_sessions, bool):
+            raise TypeError("Expected argument 'allow_online_access_with_ephemeral_sessions' to be a bool")
+        pulumi.set(__self__, "allow_online_access_with_ephemeral_sessions", allow_online_access_with_ephemeral_sessions)
         if authorization_details and not isinstance(authorization_details, list):
             raise TypeError("Expected argument 'authorization_details' to be a list")
         pulumi.set(__self__, "authorization_details", authorization_details)
@@ -102,6 +108,22 @@ class GetResourceServerResult:
         Indicates whether refresh tokens can be issued for this resource server.
         """
         return pulumi.get(self, "allow_offline_access")
+
+    @_builtins.property
+    @pulumi.getter(name="allowOnlineAccess")
+    def allow_online_access(self) -> _builtins.bool:
+        """
+        Indicates whether Online Refresh Tokens can be issued for this resource server. (EA Only)
+        """
+        return pulumi.get(self, "allow_online_access")
+
+    @_builtins.property
+    @pulumi.getter(name="allowOnlineAccessWithEphemeralSessions")
+    def allow_online_access_with_ephemeral_sessions(self) -> _builtins.bool:
+        """
+        Indicates whether Online Refresh Tokens can be issued even when sessions are configured as ephemeral. (EA Only)
+        """
+        return pulumi.get(self, "allow_online_access_with_ephemeral_sessions")
 
     @_builtins.property
     @pulumi.getter(name="authorizationDetails")
@@ -279,6 +301,8 @@ class AwaitableGetResourceServerResult(GetResourceServerResult):
             yield self
         return GetResourceServerResult(
             allow_offline_access=self.allow_offline_access,
+            allow_online_access=self.allow_online_access,
+            allow_online_access_with_ephemeral_sessions=self.allow_online_access_with_ephemeral_sessions,
             authorization_details=self.authorization_details,
             authorization_policies=self.authorization_policies,
             client_id=self.client_id,
@@ -332,6 +356,8 @@ def get_resource_server(identifier: Optional[_builtins.str] = None,
 
     return AwaitableGetResourceServerResult(
         allow_offline_access=pulumi.get(__ret__, 'allow_offline_access'),
+        allow_online_access=pulumi.get(__ret__, 'allow_online_access'),
+        allow_online_access_with_ephemeral_sessions=pulumi.get(__ret__, 'allow_online_access_with_ephemeral_sessions'),
         authorization_details=pulumi.get(__ret__, 'authorization_details'),
         authorization_policies=pulumi.get(__ret__, 'authorization_policies'),
         client_id=pulumi.get(__ret__, 'client_id'),
@@ -382,6 +408,8 @@ def get_resource_server_output(identifier: pulumi.Input[Optional[Optional[_built
     __ret__ = pulumi.runtime.invoke_output('auth0:index/getResourceServer:getResourceServer', __args__, opts=opts, typ=GetResourceServerResult)
     return __ret__.apply(lambda __response__: GetResourceServerResult(
         allow_offline_access=pulumi.get(__response__, 'allow_offline_access'),
+        allow_online_access=pulumi.get(__response__, 'allow_online_access'),
+        allow_online_access_with_ephemeral_sessions=pulumi.get(__response__, 'allow_online_access_with_ephemeral_sessions'),
         authorization_details=pulumi.get(__response__, 'authorization_details'),
         authorization_policies=pulumi.get(__response__, 'authorization_policies'),
         client_id=pulumi.get(__response__, 'client_id'),

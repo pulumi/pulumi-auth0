@@ -25,6 +25,7 @@ namespace Pulumi.Auth0
     ///     var myModule = new Auth0.ActionModule("my_module", new()
     ///     {
     ///         Name = "My Shared Module",
+    ///         Publish = true,
     ///         Code = @"/**
     ///  * A shared utility function that can be used across multiple actions.
     ///  */
@@ -52,6 +53,33 @@ namespace Pulumi.Auth0
     ///                 Name = "API_KEY",
     ///                 Value = "my-secret-api-key",
     ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     // Use the module in an action by referencing its id and version_id.
+    ///     var myAction = new Auth0.Action("my_action", new()
+    ///     {
+    ///         Name = "My Action",
+    ///         Runtime = "node22",
+    ///         Deploy = true,
+    ///         Code = @"const myModule = require('My Shared Module');
+    /// 
+    /// exports.onExecutePostLogin = async (event, api) =&gt; {
+    ///   console.log(myModule.greet(event.user.name));
+    /// };
+    /// ",
+    ///         Modules = new[]
+    ///         {
+    ///             new Auth0.Inputs.ActionModuleArgs
+    ///             {
+    ///                 ModuleId = myModule.Id,
+    ///                 ModuleVersionId = myModule.VersionId,
+    ///             },
+    ///         },
+    ///         SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs
+    ///         {
+    ///             Id = "post-login",
+    ///             Version = "v3",
     ///         },
     ///     });
     /// 

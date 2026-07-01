@@ -9,6 +9,7 @@ import com.pulumi.auth0.inputs.ClientCredentialsSignedRequestObjectArgs;
 import com.pulumi.auth0.inputs.ClientCredentialsTlsClientAuthArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -50,18 +51,50 @@ public final class ClientCredentialsState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Secret for the client when using `clientSecretPost` or `clientSecretBasic` authentication method. Keep this private. To access this attribute you need to add either `read:client_keys` or `read:client_credentials` scope to the Terraform client. Otherwise, the attribute will contain an empty string. The attribute will also be an empty string in case `privateKeyJwt` is selected as an authentication method.
+     * Secret for the client when using `clientSecretPost` or `clientSecretBasic` authentication method. Keep this private. To access this attribute you need to add either `read:client_keys` or `read:client_credentials` scope to the Terraform client. Otherwise, the attribute will contain an empty string. The attribute will also be an empty string in case `privateKeyJwt` is selected as an authentication method. **Note:** For better security, consider using `clientSecretWo` instead.
      * 
      */
     @Import(name="clientSecret")
     private @Nullable Output<String> clientSecret;
 
     /**
-     * @return Secret for the client when using `clientSecretPost` or `clientSecretBasic` authentication method. Keep this private. To access this attribute you need to add either `read:client_keys` or `read:client_credentials` scope to the Terraform client. Otherwise, the attribute will contain an empty string. The attribute will also be an empty string in case `privateKeyJwt` is selected as an authentication method.
+     * @return Secret for the client when using `clientSecretPost` or `clientSecretBasic` authentication method. Keep this private. To access this attribute you need to add either `read:client_keys` or `read:client_credentials` scope to the Terraform client. Otherwise, the attribute will contain an empty string. The attribute will also be an empty string in case `privateKeyJwt` is selected as an authentication method. **Note:** For better security, consider using `clientSecretWo` instead.
      * 
      */
     public Optional<Output<String>> clientSecret() {
         return Optional.ofNullable(this.clientSecret);
+    }
+
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Secret for the client when using `clientSecretPost` or `clientSecretBasic` authentication method (write-only). This value is **not** stored in Terraform state. Bump `clientSecretWoVersion` to rotate it. Requires Terraform 1.11+.
+     * 
+     */
+    @Import(name="clientSecretWo")
+    private @Nullable Output<String> clientSecretWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Secret for the client when using `clientSecretPost` or `clientSecretBasic` authentication method (write-only). This value is **not** stored in Terraform state. Bump `clientSecretWoVersion` to rotate it. Requires Terraform 1.11+.
+     * 
+     */
+    public Optional<Output<String>> clientSecretWo() {
+        return Optional.ofNullable(this.clientSecretWo);
+    }
+
+    /**
+     * Version counter for `clientSecretWo`. Must be a positive integer (starting at `1`). Increment this value to trigger a client secret change when using `clientSecretWo`.
+     * 
+     */
+    @Import(name="clientSecretWoVersion")
+    private @Nullable Output<Integer> clientSecretWoVersion;
+
+    /**
+     * @return Version counter for `clientSecretWo`. Must be a positive integer (starting at `1`). Increment this value to trigger a client secret change when using `clientSecretWo`.
+     * 
+     */
+    public Optional<Output<Integer>> clientSecretWoVersion() {
+        return Optional.ofNullable(this.clientSecretWoVersion);
     }
 
     /**
@@ -130,6 +163,8 @@ public final class ClientCredentialsState extends com.pulumi.resources.ResourceA
         this.authenticationMethod = $.authenticationMethod;
         this.clientId = $.clientId;
         this.clientSecret = $.clientSecret;
+        this.clientSecretWo = $.clientSecretWo;
+        this.clientSecretWoVersion = $.clientSecretWoVersion;
         this.privateKeyJwt = $.privateKeyJwt;
         this.selfSignedTlsClientAuth = $.selfSignedTlsClientAuth;
         this.signedRequestObject = $.signedRequestObject;
@@ -197,7 +232,7 @@ public final class ClientCredentialsState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param clientSecret Secret for the client when using `clientSecretPost` or `clientSecretBasic` authentication method. Keep this private. To access this attribute you need to add either `read:client_keys` or `read:client_credentials` scope to the Terraform client. Otherwise, the attribute will contain an empty string. The attribute will also be an empty string in case `privateKeyJwt` is selected as an authentication method.
+         * @param clientSecret Secret for the client when using `clientSecretPost` or `clientSecretBasic` authentication method. Keep this private. To access this attribute you need to add either `read:client_keys` or `read:client_credentials` scope to the Terraform client. Otherwise, the attribute will contain an empty string. The attribute will also be an empty string in case `privateKeyJwt` is selected as an authentication method. **Note:** For better security, consider using `clientSecretWo` instead.
          * 
          * @return builder
          * 
@@ -208,13 +243,57 @@ public final class ClientCredentialsState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param clientSecret Secret for the client when using `clientSecretPost` or `clientSecretBasic` authentication method. Keep this private. To access this attribute you need to add either `read:client_keys` or `read:client_credentials` scope to the Terraform client. Otherwise, the attribute will contain an empty string. The attribute will also be an empty string in case `privateKeyJwt` is selected as an authentication method.
+         * @param clientSecret Secret for the client when using `clientSecretPost` or `clientSecretBasic` authentication method. Keep this private. To access this attribute you need to add either `read:client_keys` or `read:client_credentials` scope to the Terraform client. Otherwise, the attribute will contain an empty string. The attribute will also be an empty string in case `privateKeyJwt` is selected as an authentication method. **Note:** For better security, consider using `clientSecretWo` instead.
          * 
          * @return builder
          * 
          */
         public Builder clientSecret(String clientSecret) {
             return clientSecret(Output.of(clientSecret));
+        }
+
+        /**
+         * @param clientSecretWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * Secret for the client when using `clientSecretPost` or `clientSecretBasic` authentication method (write-only). This value is **not** stored in Terraform state. Bump `clientSecretWoVersion` to rotate it. Requires Terraform 1.11+.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientSecretWo(@Nullable Output<String> clientSecretWo) {
+            $.clientSecretWo = clientSecretWo;
+            return this;
+        }
+
+        /**
+         * @param clientSecretWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * Secret for the client when using `clientSecretPost` or `clientSecretBasic` authentication method (write-only). This value is **not** stored in Terraform state. Bump `clientSecretWoVersion` to rotate it. Requires Terraform 1.11+.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientSecretWo(String clientSecretWo) {
+            return clientSecretWo(Output.of(clientSecretWo));
+        }
+
+        /**
+         * @param clientSecretWoVersion Version counter for `clientSecretWo`. Must be a positive integer (starting at `1`). Increment this value to trigger a client secret change when using `clientSecretWo`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientSecretWoVersion(@Nullable Output<Integer> clientSecretWoVersion) {
+            $.clientSecretWoVersion = clientSecretWoVersion;
+            return this;
+        }
+
+        /**
+         * @param clientSecretWoVersion Version counter for `clientSecretWo`. Must be a positive integer (starting at `1`). Increment this value to trigger a client secret change when using `clientSecretWo`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientSecretWoVersion(Integer clientSecretWoVersion) {
+            return clientSecretWoVersion(Output.of(clientSecretWoVersion));
         }
 
         /**

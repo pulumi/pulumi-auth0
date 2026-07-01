@@ -3,6 +3,7 @@
 
 package com.pulumi.auth0.inputs;
 
+import com.pulumi.auth0.inputs.ClientSessionTransferDelegationArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -52,6 +53,21 @@ public final class ClientSessionTransferArgs extends com.pulumi.resources.Resour
      */
     public Optional<Output<Boolean>> canCreateSessionTransferToken() {
         return Optional.ofNullable(this.canCreateSessionTransferToken);
+    }
+
+    /**
+     * Configuration for delegation (impersonation) access using Session Transfer Tokens. (EA Only)
+     * 
+     */
+    @Import(name="delegation")
+    private @Nullable Output<ClientSessionTransferDelegationArgs> delegation;
+
+    /**
+     * @return Configuration for delegation (impersonation) access using Session Transfer Tokens. (EA Only)
+     * 
+     */
+    public Optional<Output<ClientSessionTransferDelegationArgs>> delegation() {
+        return Optional.ofNullable(this.delegation);
     }
 
     /**
@@ -105,6 +121,7 @@ public final class ClientSessionTransferArgs extends com.pulumi.resources.Resour
         this.allowRefreshToken = $.allowRefreshToken;
         this.allowedAuthenticationMethods = $.allowedAuthenticationMethods;
         this.canCreateSessionTransferToken = $.canCreateSessionTransferToken;
+        this.delegation = $.delegation;
         this.enforceCascadeRevocation = $.enforceCascadeRevocation;
         this.enforceDeviceBinding = $.enforceDeviceBinding;
         this.enforceOnlineRefreshTokens = $.enforceOnlineRefreshTokens;
@@ -181,6 +198,27 @@ public final class ClientSessionTransferArgs extends com.pulumi.resources.Resour
          */
         public Builder canCreateSessionTransferToken(Boolean canCreateSessionTransferToken) {
             return canCreateSessionTransferToken(Output.of(canCreateSessionTransferToken));
+        }
+
+        /**
+         * @param delegation Configuration for delegation (impersonation) access using Session Transfer Tokens. (EA Only)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder delegation(@Nullable Output<ClientSessionTransferDelegationArgs> delegation) {
+            $.delegation = delegation;
+            return this;
+        }
+
+        /**
+         * @param delegation Configuration for delegation (impersonation) access using Session Transfer Tokens. (EA Only)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder delegation(ClientSessionTransferDelegationArgs delegation) {
+            return delegation(Output.of(delegation));
         }
 
         /**

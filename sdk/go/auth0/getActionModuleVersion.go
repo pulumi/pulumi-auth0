@@ -44,16 +44,10 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			// Get all versions to find the version ID
-//			myModuleVersions := auth0.GetActionModuleVersionsOutput(ctx, auth0.GetActionModuleVersionsOutputArgs{
-//				ModuleId: myModule.ID(),
-//			}, nil)
-//			// Retrieve a specific version by its ID
+//			// Retrieve the latest published version using the module's version_id directly
 //			myModuleVersion := auth0.GetActionModuleVersionOutput(ctx, auth0.GetActionModuleVersionOutputArgs{
-//				ModuleId: myModule.ID(),
-//				VersionId: myModuleVersions.ApplyT(func(myModuleVersions auth0.GetActionModuleVersionsResult) (*string, error) {
-//					return myModuleVersions.Versions[0].Id, nil
-//				}).(pulumi.StringPtrOutput),
+//				ModuleId:  myModule.ID(),
+//				VersionId: myModule.VersionId,
 //			}, nil)
 //			ctx.Export("versionNumber", myModuleVersion.ApplyT(func(myModuleVersion auth0.GetActionModuleVersionResult) (*int, error) {
 //				return myModuleVersion.VersionNumber, nil

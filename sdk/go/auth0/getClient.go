@@ -114,6 +114,8 @@ type LookupClientResult struct {
 	ExternalMetadataCreatedBy string `pulumi:"externalMetadataCreatedBy"`
 	// Type of external metadata. Value is `cimd` for CIMD-registered clients.
 	ExternalMetadataType string `pulumi:"externalMetadataType"`
+	// Federated Credential Management (FedCM) configuration. (EA only)
+	FedcmLogins []GetClientFedcmLogin `pulumi:"fedcmLogins"`
 	// HTML form template to be used for WS-Federation.
 	FormTemplate string `pulumi:"formTemplate"`
 	// Types of grants that this client is authorized to use.
@@ -339,6 +341,11 @@ func (o LookupClientResultOutput) ExternalMetadataCreatedBy() pulumi.StringOutpu
 // Type of external metadata. Value is `cimd` for CIMD-registered clients.
 func (o LookupClientResultOutput) ExternalMetadataType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClientResult) string { return v.ExternalMetadataType }).(pulumi.StringOutput)
+}
+
+// Federated Credential Management (FedCM) configuration. (EA only)
+func (o LookupClientResultOutput) FedcmLogins() GetClientFedcmLoginArrayOutput {
+	return o.ApplyT(func(v LookupClientResult) []GetClientFedcmLogin { return v.FedcmLogins }).(GetClientFedcmLoginArrayOutput)
 }
 
 // HTML form template to be used for WS-Federation.

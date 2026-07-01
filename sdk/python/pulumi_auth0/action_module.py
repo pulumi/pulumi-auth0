@@ -298,6 +298,7 @@ class ActionModule(pulumi.CustomResource):
 
         my_module = auth0.ActionModule("my_module",
             name="My Shared Module",
+            publish=True,
             code=\"\"\"/**
          * A shared utility function that can be used across multiple actions.
          */
@@ -318,6 +319,25 @@ class ActionModule(pulumi.CustomResource):
                 "name": "API_KEY",
                 "value": "my-secret-api-key",
             }])
+        # Use the module in an action by referencing its id and version_id.
+        my_action = auth0.Action("my_action",
+            name="My Action",
+            runtime="node22",
+            deploy=True,
+            code=\"\"\"const myModule = require('My Shared Module');
+
+        exports.onExecutePostLogin = async (event, api) => {
+          console.log(myModule.greet(event.user.name));
+        };
+        \"\"\",
+            modules=[{
+                "module_id": my_module.id,
+                "module_version_id": my_module.version_id,
+            }],
+            supported_triggers={
+                "id": "post-login",
+                "version": "v3",
+            })
         ```
 
 
@@ -346,6 +366,7 @@ class ActionModule(pulumi.CustomResource):
 
         my_module = auth0.ActionModule("my_module",
             name="My Shared Module",
+            publish=True,
             code=\"\"\"/**
          * A shared utility function that can be used across multiple actions.
          */
@@ -366,6 +387,25 @@ class ActionModule(pulumi.CustomResource):
                 "name": "API_KEY",
                 "value": "my-secret-api-key",
             }])
+        # Use the module in an action by referencing its id and version_id.
+        my_action = auth0.Action("my_action",
+            name="My Action",
+            runtime="node22",
+            deploy=True,
+            code=\"\"\"const myModule = require('My Shared Module');
+
+        exports.onExecutePostLogin = async (event, api) => {
+          console.log(myModule.greet(event.user.name));
+        };
+        \"\"\",
+            modules=[{
+                "module_id": my_module.id,
+                "module_version_id": my_module.version_id,
+            }],
+            supported_triggers={
+                "id": "post-login",
+                "version": "v3",
+            })
         ```
 
 

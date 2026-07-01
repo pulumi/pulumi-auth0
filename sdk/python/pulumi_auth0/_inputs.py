@@ -191,6 +191,10 @@ __all__ = [
     'ClientExpressConfigurationArgsDict',
     'ClientExpressConfigurationLinkedClientArgs',
     'ClientExpressConfigurationLinkedClientArgsDict',
+    'ClientFedcmLoginArgs',
+    'ClientFedcmLoginArgsDict',
+    'ClientFedcmLoginGoogleArgs',
+    'ClientFedcmLoginGoogleArgsDict',
     'ClientJwtConfigurationArgs',
     'ClientJwtConfigurationArgsDict',
     'ClientMobileArgs',
@@ -221,6 +225,8 @@ __all__ = [
     'ClientRefreshTokenPolicyArgsDict',
     'ClientSessionTransferArgs',
     'ClientSessionTransferArgsDict',
+    'ClientSessionTransferDelegationArgs',
+    'ClientSessionTransferDelegationArgsDict',
     'ClientTokenExchangeArgs',
     'ClientTokenExchangeArgsDict',
     'ClientTokenQuotaArgs',
@@ -7874,6 +7880,62 @@ class ClientExpressConfigurationLinkedClientArgs:
         pulumi.set(self, "client_id", value)
 
 
+class ClientFedcmLoginArgsDict(TypedDict):
+    google: pulumi.Input['ClientFedcmLoginGoogleArgsDict']
+    """
+    Google FedCM configuration. (EA only)
+    """
+
+@pulumi.input_type
+class ClientFedcmLoginArgs:
+    def __init__(__self__, *,
+                 google: pulumi.Input['ClientFedcmLoginGoogleArgs']):
+        """
+        :param pulumi.Input['ClientFedcmLoginGoogleArgs'] google: Google FedCM configuration. (EA only)
+        """
+        pulumi.set(__self__, "google", google)
+
+    @_builtins.property
+    @pulumi.getter
+    def google(self) -> pulumi.Input['ClientFedcmLoginGoogleArgs']:
+        """
+        Google FedCM configuration. (EA only)
+        """
+        return pulumi.get(self, "google")
+
+    @google.setter
+    def google(self, value: pulumi.Input['ClientFedcmLoginGoogleArgs']):
+        pulumi.set(self, "google", value)
+
+
+class ClientFedcmLoginGoogleArgsDict(TypedDict):
+    is_enabled: pulumi.Input[_builtins.bool]
+    """
+    Whether to show the Google FedCM prompt on Login. (EA only)
+    """
+
+@pulumi.input_type
+class ClientFedcmLoginGoogleArgs:
+    def __init__(__self__, *,
+                 is_enabled: pulumi.Input[_builtins.bool]):
+        """
+        :param pulumi.Input[_builtins.bool] is_enabled: Whether to show the Google FedCM prompt on Login. (EA only)
+        """
+        pulumi.set(__self__, "is_enabled", is_enabled)
+
+    @_builtins.property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Whether to show the Google FedCM prompt on Login. (EA only)
+        """
+        return pulumi.get(self, "is_enabled")
+
+    @is_enabled.setter
+    def is_enabled(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "is_enabled", value)
+
+
 class ClientJwtConfigurationArgsDict(TypedDict):
     alg: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -8661,6 +8723,10 @@ class ClientSessionTransferArgsDict(TypedDict):
     """
     Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session*transfer*token
     """
+    delegation: NotRequired[pulumi.Input[Optional['ClientSessionTransferDelegationArgsDict']]]
+    """
+    Configuration for delegation (impersonation) access using Session Transfer Tokens. (EA Only)
+    """
     enforce_cascade_revocation: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities. Usually configured in the native application.
@@ -8680,12 +8746,14 @@ class ClientSessionTransferArgs:
                  allow_refresh_token: pulumi.Input[Optional[_builtins.bool]] = None,
                  allowed_authentication_methods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  can_create_session_transfer_token: pulumi.Input[Optional[_builtins.bool]] = None,
+                 delegation: pulumi.Input[Optional['ClientSessionTransferDelegationArgs']] = None,
                  enforce_cascade_revocation: pulumi.Input[Optional[_builtins.bool]] = None,
                  enforce_device_binding: pulumi.Input[Optional[_builtins.str]] = None,
                  enforce_online_refresh_tokens: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] allow_refresh_token: Indicates whether the application is allowed to use a refresh token when using a session*transfer*token session.
         :param pulumi.Input[_builtins.bool] can_create_session_transfer_token: Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session*transfer*token
+        :param pulumi.Input['ClientSessionTransferDelegationArgs'] delegation: Configuration for delegation (impersonation) access using Session Transfer Tokens. (EA Only)
         :param pulumi.Input[_builtins.bool] enforce_cascade_revocation: Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities. Usually configured in the native application.
         :param pulumi.Input[_builtins.str] enforce_device_binding: Configures the level of device binding enforced when a session*transfer*token is consumed. Can be one of `ip`, `asn` or `none`.
         :param pulumi.Input[_builtins.bool] enforce_online_refresh_tokens: Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are. Usually configured in the web application.
@@ -8696,6 +8764,8 @@ class ClientSessionTransferArgs:
             pulumi.set(__self__, "allowed_authentication_methods", allowed_authentication_methods)
         if can_create_session_transfer_token is not None:
             pulumi.set(__self__, "can_create_session_transfer_token", can_create_session_transfer_token)
+        if delegation is not None:
+            pulumi.set(__self__, "delegation", delegation)
         if enforce_cascade_revocation is not None:
             pulumi.set(__self__, "enforce_cascade_revocation", enforce_cascade_revocation)
         if enforce_device_binding is not None:
@@ -8737,6 +8807,18 @@ class ClientSessionTransferArgs:
         pulumi.set(self, "can_create_session_transfer_token", value)
 
     @_builtins.property
+    @pulumi.getter
+    def delegation(self) -> pulumi.Input[Optional['ClientSessionTransferDelegationArgs']]:
+        """
+        Configuration for delegation (impersonation) access using Session Transfer Tokens. (EA Only)
+        """
+        return pulumi.get(self, "delegation")
+
+    @delegation.setter
+    def delegation(self, value: pulumi.Input[Optional['ClientSessionTransferDelegationArgs']]):
+        pulumi.set(self, "delegation", value)
+
+    @_builtins.property
     @pulumi.getter(name="enforceCascadeRevocation")
     def enforce_cascade_revocation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -8771,6 +8853,55 @@ class ClientSessionTransferArgs:
     @enforce_online_refresh_tokens.setter
     def enforce_online_refresh_tokens(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enforce_online_refresh_tokens", value)
+
+
+class ClientSessionTransferDelegationArgsDict(TypedDict):
+    allow_delegated_access: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`. (EA Only)
+    """
+    enforce_device_binding: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Indicates the device binding enforcement for delegation (impersonation) access. If set to 'ip', device binding is enforced by IP. If set to 'asn', device binding is enforced by ASN. Defaults to `ip`. (EA Only)
+    """
+
+@pulumi.input_type
+class ClientSessionTransferDelegationArgs:
+    def __init__(__self__, *,
+                 allow_delegated_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enforce_device_binding: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] allow_delegated_access: Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`. (EA Only)
+        :param pulumi.Input[_builtins.str] enforce_device_binding: Indicates the device binding enforcement for delegation (impersonation) access. If set to 'ip', device binding is enforced by IP. If set to 'asn', device binding is enforced by ASN. Defaults to `ip`. (EA Only)
+        """
+        if allow_delegated_access is not None:
+            pulumi.set(__self__, "allow_delegated_access", allow_delegated_access)
+        if enforce_device_binding is not None:
+            pulumi.set(__self__, "enforce_device_binding", enforce_device_binding)
+
+    @_builtins.property
+    @pulumi.getter(name="allowDelegatedAccess")
+    def allow_delegated_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`. (EA Only)
+        """
+        return pulumi.get(self, "allow_delegated_access")
+
+    @allow_delegated_access.setter
+    def allow_delegated_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "allow_delegated_access", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enforceDeviceBinding")
+    def enforce_device_binding(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Indicates the device binding enforcement for delegation (impersonation) access. If set to 'ip', device binding is enforced by IP. If set to 'asn', device binding is enforced by ASN. Defaults to `ip`. (EA Only)
+        """
+        return pulumi.get(self, "enforce_device_binding")
+
+    @enforce_device_binding.setter
+    def enforce_device_binding(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "enforce_device_binding", value)
 
 
 class ClientTokenExchangeArgsDict(TypedDict):
@@ -9176,6 +9307,10 @@ class ConnectionOptionsArgsDict(TypedDict):
     """
     Icon URL.
     """
+    id_token_session_expiry_supported: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Indicates whether the identity provider supports session expiry via the id*token. When true, Auth0 will use the session*expiry claim from the upstream IdP's ID token to determine the maximum session lifetime. Only applicable for Okta and OIDC connections.
+    """
     id_token_signed_response_algs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of allowed algorithms for the ID token signature. If not set or empty, default algorithm(s) will be applied at runtime. (Okta/OIDC Connections)
@@ -9414,7 +9549,7 @@ class ConnectionOptionsArgsDict(TypedDict):
     """
     type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Value can be `back_channel` or `front_channel`. Front Channel will use OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel will use `response_type=code`.
+    The connection's communication channel type. For OIDC connections, accepted values are `back_channel` and `front_channel`; for Okta Workforce connections, only `back_channel` is accepted. Front Channel uses the OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel uses `response_type=code`.
     """
     upstream_params: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -9512,6 +9647,7 @@ class ConnectionOptionsArgs:
                  global_token_revocation_jwt_iss: pulumi.Input[Optional[_builtins.str]] = None,
                  global_token_revocation_jwt_sub: pulumi.Input[Optional[_builtins.str]] = None,
                  icon_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 id_token_session_expiry_supported: pulumi.Input[Optional[_builtins.bool]] = None,
                  id_token_signed_response_algs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  identity_api: pulumi.Input[Optional[_builtins.str]] = None,
                  idp_initiated: pulumi.Input[Optional['ConnectionOptionsIdpInitiatedArgs']] = None,
@@ -9632,6 +9768,7 @@ class ConnectionOptionsArgs:
         :param pulumi.Input[_builtins.str] global_token_revocation_jwt_iss: Specifies the issuer of the JWT used for global token revocation for the SAML connection.
         :param pulumi.Input[_builtins.str] global_token_revocation_jwt_sub: Specifies the subject of the JWT used for global token revocation for the SAML connection.
         :param pulumi.Input[_builtins.str] icon_url: Icon URL.
+        :param pulumi.Input[_builtins.bool] id_token_session_expiry_supported: Indicates whether the identity provider supports session expiry via the id*token. When true, Auth0 will use the session*expiry claim from the upstream IdP's ID token to determine the maximum session lifetime. Only applicable for Okta and OIDC connections.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] id_token_signed_response_algs: List of allowed algorithms for the ID token signature. If not set or empty, default algorithm(s) will be applied at runtime. (Okta/OIDC Connections)
         :param pulumi.Input[_builtins.str] identity_api: Azure AD Identity API. Available options are: `microsoft-identity-platform-v2.0` or `azure-active-directory-v1.0`.
         :param pulumi.Input['ConnectionOptionsIdpInitiatedArgs'] idp_initiated: Configuration options for IDP Initiated Authentication. This is an object with the properties: `client_id`, `client_protocol`, and `client_authorize_query`.
@@ -9691,7 +9828,7 @@ class ConnectionOptionsArgs:
         :param pulumi.Input['ConnectionOptionsTotpArgs'] totp: Configuration options for one-time passwords.
         :param pulumi.Input[_builtins.str] twilio_sid: SID for your Twilio account.
         :param pulumi.Input[_builtins.str] twilio_token: AuthToken for your Twilio account.
-        :param pulumi.Input[_builtins.str] type: Value can be `back_channel` or `front_channel`. Front Channel will use OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel will use `response_type=code`.
+        :param pulumi.Input[_builtins.str] type: The connection's communication channel type. For OIDC connections, accepted values are `back_channel` and `front_channel`; for Okta Workforce connections, only `back_channel` is accepted. Front Channel uses the OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel uses `response_type=code`.
         :param pulumi.Input[_builtins.str] upstream_params: You can pass provider-specific parameters to an identity provider during authentication. The values can either be static per connection or dynamic per user.
         :param pulumi.Input[_builtins.bool] use_cert_auth: Indicates whether to use cert auth or not.
         :param pulumi.Input[_builtins.bool] use_kerberos: Indicates whether to use Kerberos or not.
@@ -9800,6 +9937,8 @@ class ConnectionOptionsArgs:
             pulumi.set(__self__, "global_token_revocation_jwt_sub", global_token_revocation_jwt_sub)
         if icon_url is not None:
             pulumi.set(__self__, "icon_url", icon_url)
+        if id_token_session_expiry_supported is not None:
+            pulumi.set(__self__, "id_token_session_expiry_supported", id_token_session_expiry_supported)
         if id_token_signed_response_algs is not None:
             pulumi.set(__self__, "id_token_signed_response_algs", id_token_signed_response_algs)
         if identity_api is not None:
@@ -10520,6 +10659,18 @@ class ConnectionOptionsArgs:
         pulumi.set(self, "icon_url", value)
 
     @_builtins.property
+    @pulumi.getter(name="idTokenSessionExpirySupported")
+    def id_token_session_expiry_supported(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Indicates whether the identity provider supports session expiry via the id*token. When true, Auth0 will use the session*expiry claim from the upstream IdP's ID token to determine the maximum session lifetime. Only applicable for Okta and OIDC connections.
+        """
+        return pulumi.get(self, "id_token_session_expiry_supported")
+
+    @id_token_session_expiry_supported.setter
+    def id_token_session_expiry_supported(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "id_token_session_expiry_supported", value)
+
+    @_builtins.property
     @pulumi.getter(name="idTokenSignedResponseAlgs")
     def id_token_signed_response_algs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -11231,7 +11382,7 @@ class ConnectionOptionsArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Value can be `back_channel` or `front_channel`. Front Channel will use OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel will use `response_type=code`.
+        The connection's communication channel type. For OIDC connections, accepted values are `back_channel` and `front_channel`; for Okta Workforce connections, only `back_channel` is accepted. Front Channel uses the OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel uses `response_type=code`.
         """
         return pulumi.get(self, "type")
 

@@ -23,6 +23,10 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly bool CanCreateSessionTransferToken;
         /// <summary>
+        /// Configuration for delegation (impersonation) access using Session Transfer Tokens. (EA Only)
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetClientSessionTransferDelegationResult> Delegations;
+        /// <summary>
         /// Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities. Usually configured in the native application.
         /// </summary>
         public readonly bool EnforceCascadeRevocation;
@@ -43,6 +47,8 @@ namespace Pulumi.Auth0.Outputs
 
             bool canCreateSessionTransferToken,
 
+            ImmutableArray<Outputs.GetClientSessionTransferDelegationResult> delegations,
+
             bool enforceCascadeRevocation,
 
             string enforceDeviceBinding,
@@ -52,6 +58,7 @@ namespace Pulumi.Auth0.Outputs
             AllowRefreshToken = allowRefreshToken;
             AllowedAuthenticationMethods = allowedAuthenticationMethods;
             CanCreateSessionTransferToken = canCreateSessionTransferToken;
+            Delegations = delegations;
             EnforceCascadeRevocation = enforceCascadeRevocation;
             EnforceDeviceBinding = enforceDeviceBinding;
             EnforceOnlineRefreshTokens = enforceOnlineRefreshTokens;

@@ -434,7 +434,6 @@ public final class Auth0Functions {
      * import com.pulumi.auth0.ActionModule;
      * import com.pulumi.auth0.ActionModuleArgs;
      * import com.pulumi.auth0.Auth0Functions;
-     * import com.pulumi.auth0.inputs.GetActionModuleVersionsArgs;
      * import com.pulumi.auth0.inputs.GetActionModuleVersionArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
@@ -463,15 +462,10 @@ public final class Auth0Functions {
      *             """)
      *             .build());
      * 
-     *         // Get all versions to find the version ID
-     *         final var myModuleVersions = Auth0Functions.getActionModuleVersions(GetActionModuleVersionsArgs.builder()
-     *             .moduleId(myModule.id())
-     *             .build());
-     * 
-     *         // Retrieve a specific version by its ID
+     *         // Retrieve the latest published version using the module's version_id directly
      *         final var myModuleVersion = Auth0Functions.getActionModuleVersion(GetActionModuleVersionArgs.builder()
      *             .moduleId(myModule.id())
-     *             .versionId(myModuleVersions.applyValue(_myModuleVersions -> _myModuleVersions.versions()[0].id()))
+     *             .versionId(myModule.versionId())
      *             .build());
      * 
      *         ctx.export("versionNumber", myModuleVersion.applyValue(_myModuleVersion -> _myModuleVersion.versionNumber()));
@@ -501,7 +495,6 @@ public final class Auth0Functions {
      * import com.pulumi.auth0.ActionModule;
      * import com.pulumi.auth0.ActionModuleArgs;
      * import com.pulumi.auth0.Auth0Functions;
-     * import com.pulumi.auth0.inputs.GetActionModuleVersionsArgs;
      * import com.pulumi.auth0.inputs.GetActionModuleVersionArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
@@ -530,15 +523,10 @@ public final class Auth0Functions {
      *             """)
      *             .build());
      * 
-     *         // Get all versions to find the version ID
-     *         final var myModuleVersions = Auth0Functions.getActionModuleVersions(GetActionModuleVersionsArgs.builder()
-     *             .moduleId(myModule.id())
-     *             .build());
-     * 
-     *         // Retrieve a specific version by its ID
+     *         // Retrieve the latest published version using the module's version_id directly
      *         final var myModuleVersion = Auth0Functions.getActionModuleVersion(GetActionModuleVersionArgs.builder()
      *             .moduleId(myModule.id())
-     *             .versionId(myModuleVersions.applyValue(_myModuleVersions -> _myModuleVersions.versions()[0].id()))
+     *             .versionId(myModule.versionId())
      *             .build());
      * 
      *         ctx.export("versionNumber", myModuleVersion.applyValue(_myModuleVersion -> _myModuleVersion.versionNumber()));
@@ -568,7 +556,6 @@ public final class Auth0Functions {
      * import com.pulumi.auth0.ActionModule;
      * import com.pulumi.auth0.ActionModuleArgs;
      * import com.pulumi.auth0.Auth0Functions;
-     * import com.pulumi.auth0.inputs.GetActionModuleVersionsArgs;
      * import com.pulumi.auth0.inputs.GetActionModuleVersionArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
@@ -597,15 +584,10 @@ public final class Auth0Functions {
      *             """)
      *             .build());
      * 
-     *         // Get all versions to find the version ID
-     *         final var myModuleVersions = Auth0Functions.getActionModuleVersions(GetActionModuleVersionsArgs.builder()
-     *             .moduleId(myModule.id())
-     *             .build());
-     * 
-     *         // Retrieve a specific version by its ID
+     *         // Retrieve the latest published version using the module's version_id directly
      *         final var myModuleVersion = Auth0Functions.getActionModuleVersion(GetActionModuleVersionArgs.builder()
      *             .moduleId(myModule.id())
-     *             .versionId(myModuleVersions.applyValue(_myModuleVersions -> _myModuleVersions.versions()[0].id()))
+     *             .versionId(myModule.versionId())
      *             .build());
      * 
      *         ctx.export("versionNumber", myModuleVersion.applyValue(_myModuleVersion -> _myModuleVersion.versionNumber()));
@@ -635,7 +617,6 @@ public final class Auth0Functions {
      * import com.pulumi.auth0.ActionModule;
      * import com.pulumi.auth0.ActionModuleArgs;
      * import com.pulumi.auth0.Auth0Functions;
-     * import com.pulumi.auth0.inputs.GetActionModuleVersionsArgs;
      * import com.pulumi.auth0.inputs.GetActionModuleVersionArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
@@ -664,15 +645,10 @@ public final class Auth0Functions {
      *             """)
      *             .build());
      * 
-     *         // Get all versions to find the version ID
-     *         final var myModuleVersions = Auth0Functions.getActionModuleVersions(GetActionModuleVersionsArgs.builder()
-     *             .moduleId(myModule.id())
-     *             .build());
-     * 
-     *         // Retrieve a specific version by its ID
+     *         // Retrieve the latest published version using the module's version_id directly
      *         final var myModuleVersion = Auth0Functions.getActionModuleVersion(GetActionModuleVersionArgs.builder()
      *             .moduleId(myModule.id())
-     *             .versionId(myModuleVersions.applyValue(_myModuleVersions -> _myModuleVersions.versions()[0].id()))
+     *             .versionId(myModule.versionId())
      *             .build());
      * 
      *         ctx.export("versionNumber", myModuleVersion.applyValue(_myModuleVersion -> _myModuleVersion.versionNumber()));
@@ -702,7 +678,6 @@ public final class Auth0Functions {
      * import com.pulumi.auth0.ActionModule;
      * import com.pulumi.auth0.ActionModuleArgs;
      * import com.pulumi.auth0.Auth0Functions;
-     * import com.pulumi.auth0.inputs.GetActionModuleVersionsArgs;
      * import com.pulumi.auth0.inputs.GetActionModuleVersionArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
@@ -731,15 +706,10 @@ public final class Auth0Functions {
      *             """)
      *             .build());
      * 
-     *         // Get all versions to find the version ID
-     *         final var myModuleVersions = Auth0Functions.getActionModuleVersions(GetActionModuleVersionsArgs.builder()
-     *             .moduleId(myModule.id())
-     *             .build());
-     * 
-     *         // Retrieve a specific version by its ID
+     *         // Retrieve the latest published version using the module's version_id directly
      *         final var myModuleVersion = Auth0Functions.getActionModuleVersion(GetActionModuleVersionArgs.builder()
      *             .moduleId(myModule.id())
-     *             .versionId(myModuleVersions.applyValue(_myModuleVersions -> _myModuleVersions.versions()[0].id()))
+     *             .versionId(myModule.versionId())
      *             .build());
      * 
      *         ctx.export("versionNumber", myModuleVersion.applyValue(_myModuleVersion -> _myModuleVersion.versionNumber()));

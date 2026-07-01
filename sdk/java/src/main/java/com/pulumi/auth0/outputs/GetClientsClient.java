@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.auth0.outputs.GetClientsClientExpressConfiguration;
+import com.pulumi.auth0.outputs.GetClientsClientFedcmLogin;
 import com.pulumi.auth0.outputs.GetClientsClientMyOrganizationConfiguration;
 import com.pulumi.auth0.outputs.GetClientsClientOidcLogout;
 import com.pulumi.auth0.outputs.GetClientsClientSessionTransfer;
@@ -91,6 +92,11 @@ public final class GetClientsClient {
      * 
      */
     private String externalMetadataType;
+    /**
+     * @return Federated Credential Management (FedCM) configuration. (EA only)
+     * 
+     */
+    private List<GetClientsClientFedcmLogin> fedcmLogins;
     /**
      * @return Types of grants that this client is authorized to use.
      * 
@@ -268,6 +274,13 @@ public final class GetClientsClient {
         return this.externalMetadataType;
     }
     /**
+     * @return Federated Credential Management (FedCM) configuration. (EA only)
+     * 
+     */
+    public List<GetClientsClientFedcmLogin> fedcmLogins() {
+        return this.fedcmLogins;
+    }
+    /**
      * @return Types of grants that this client is authorized to use.
      * 
      */
@@ -399,6 +412,7 @@ public final class GetClientsClient {
         private String externalClientId;
         private String externalMetadataCreatedBy;
         private String externalMetadataType;
+        private List<GetClientsClientFedcmLogin> fedcmLogins;
         private List<String> grantTypes;
         private Boolean isFirstParty;
         private Boolean isTokenEndpointIpHeaderTrusted;
@@ -432,6 +446,7 @@ public final class GetClientsClient {
     	      this.externalClientId = defaults.externalClientId;
     	      this.externalMetadataCreatedBy = defaults.externalMetadataCreatedBy;
     	      this.externalMetadataType = defaults.externalMetadataType;
+    	      this.fedcmLogins = defaults.fedcmLogins;
     	      this.grantTypes = defaults.grantTypes;
     	      this.isFirstParty = defaults.isFirstParty;
     	      this.isTokenEndpointIpHeaderTrusted = defaults.isTokenEndpointIpHeaderTrusted;
@@ -577,6 +592,17 @@ public final class GetClientsClient {
             }
             this.externalMetadataType = externalMetadataType;
             return this;
+        }
+        @CustomType.Setter
+        public Builder fedcmLogins(List<GetClientsClientFedcmLogin> fedcmLogins) {
+            if (fedcmLogins == null) {
+              throw new MissingRequiredPropertyException("GetClientsClient", "fedcmLogins");
+            }
+            this.fedcmLogins = fedcmLogins;
+            return this;
+        }
+        public Builder fedcmLogins(GetClientsClientFedcmLogin... fedcmLogins) {
+            return fedcmLogins(List.of(fedcmLogins));
         }
         @CustomType.Setter
         public Builder grantTypes(List<String> grantTypes) {
@@ -744,6 +770,7 @@ public final class GetClientsClient {
             _resultValue.externalClientId = externalClientId;
             _resultValue.externalMetadataCreatedBy = externalMetadataCreatedBy;
             _resultValue.externalMetadataType = externalMetadataType;
+            _resultValue.fedcmLogins = fedcmLogins;
             _resultValue.grantTypes = grantTypes;
             _resultValue.isFirstParty = isFirstParty;
             _resultValue.isTokenEndpointIpHeaderTrusted = isTokenEndpointIpHeaderTrusted;

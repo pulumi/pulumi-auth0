@@ -362,6 +362,12 @@ namespace Pulumi.Auth0.Inputs
         [Input("iconUrl")]
         public Input<string>? IconUrl { get; set; }
 
+        /// <summary>
+        /// Indicates whether the identity provider supports session expiry via the id*token. When true, Auth0 will use the session*expiry claim from the upstream IdP's ID token to determine the maximum session lifetime. Only applicable for Okta and OIDC connections.
+        /// </summary>
+        [Input("idTokenSessionExpirySupported")]
+        public Input<bool>? IdTokenSessionExpirySupported { get; set; }
+
         [Input("idTokenSignedResponseAlgs")]
         private InputList<string>? _idTokenSignedResponseAlgs;
 
@@ -769,7 +775,7 @@ namespace Pulumi.Auth0.Inputs
         }
 
         /// <summary>
-        /// Value can be `BackChannel` or `FrontChannel`. Front Channel will use OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel will use `response_type=code`.
+        /// The connection's communication channel type. For OIDC connections, accepted values are `BackChannel` and `FrontChannel`; for Okta Workforce connections, only `BackChannel` is accepted. Front Channel uses the OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel uses `response_type=code`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

@@ -9,6 +9,7 @@ import com.pulumi.auth0.inputs.ClientState;
 import com.pulumi.auth0.outputs.ClientAddons;
 import com.pulumi.auth0.outputs.ClientDefaultOrganization;
 import com.pulumi.auth0.outputs.ClientExpressConfiguration;
+import com.pulumi.auth0.outputs.ClientFedcmLogin;
 import com.pulumi.auth0.outputs.ClientJwtConfiguration;
 import com.pulumi.auth0.outputs.ClientMobile;
 import com.pulumi.auth0.outputs.ClientMyOrganizationConfiguration;
@@ -352,6 +353,20 @@ public class Client extends com.pulumi.resources.CustomResource {
      */
     public Output<String> externalMetadataType() {
         return this.externalMetadataType;
+    }
+    /**
+     * Federated Credential Management (FedCM) configuration. (EA only)
+     * 
+     */
+    @Export(name="fedcmLogin", refs={ClientFedcmLogin.class}, tree="[0]")
+    private Output</* @Nullable */ ClientFedcmLogin> fedcmLogin;
+
+    /**
+     * @return Federated Credential Management (FedCM) configuration. (EA only)
+     * 
+     */
+    public Output<Optional<ClientFedcmLogin>> fedcmLogin() {
+        return Codegen.optional(this.fedcmLogin);
     }
     /**
      * HTML form template to be used for WS-Federation.

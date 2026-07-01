@@ -27,11 +27,8 @@ import * as utilities from "./utilities";
  * };
  * `,
  * });
- * // Get the published versions of the module
- * const myModuleVersions = auth0.getActionModuleVersionsOutput({
- *     moduleId: myModule.id,
- * });
- * // Create an action that uses the module
+ * // Create an action that uses the module.
+ * // Use version_id directly from the module resource — no data source needed.
  * const myAction1 = new auth0.Action("my_action_1", {
  *     name: "My Action Using Module 1",
  *     deploy: true,
@@ -46,7 +43,7 @@ import * as utilities from "./utilities";
  *     },
  *     modules: [{
  *         moduleId: myModule.id,
- *         moduleVersionId: myModuleVersions.apply(myModuleVersions => myModuleVersions.versions?.[0]?.id),
+ *         moduleVersionId: myModule.versionId,
  *     }],
  * });
  * // Create another action that uses the same module
@@ -64,7 +61,7 @@ import * as utilities from "./utilities";
  *     },
  *     modules: [{
  *         moduleId: myModule.id,
- *         moduleVersionId: myModuleVersions.apply(myModuleVersions => myModuleVersions.versions?.[0]?.id),
+ *         moduleVersionId: myModule.versionId,
  *     }],
  * });
  * // Retrieve all actions that are using this module
@@ -134,11 +131,8 @@ export interface GetActionModuleActionsResult {
  * };
  * `,
  * });
- * // Get the published versions of the module
- * const myModuleVersions = auth0.getActionModuleVersionsOutput({
- *     moduleId: myModule.id,
- * });
- * // Create an action that uses the module
+ * // Create an action that uses the module.
+ * // Use version_id directly from the module resource — no data source needed.
  * const myAction1 = new auth0.Action("my_action_1", {
  *     name: "My Action Using Module 1",
  *     deploy: true,
@@ -153,7 +147,7 @@ export interface GetActionModuleActionsResult {
  *     },
  *     modules: [{
  *         moduleId: myModule.id,
- *         moduleVersionId: myModuleVersions.apply(myModuleVersions => myModuleVersions.versions?.[0]?.id),
+ *         moduleVersionId: myModule.versionId,
  *     }],
  * });
  * // Create another action that uses the same module
@@ -171,7 +165,7 @@ export interface GetActionModuleActionsResult {
  *     },
  *     modules: [{
  *         moduleId: myModule.id,
- *         moduleVersionId: myModuleVersions.apply(myModuleVersions => myModuleVersions.versions?.[0]?.id),
+ *         moduleVersionId: myModule.versionId,
  *     }],
  * });
  * // Retrieve all actions that are using this module

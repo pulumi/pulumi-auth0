@@ -247,6 +247,10 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly string ExternalMetadataType;
         /// <summary>
+        /// Federated Credential Management (FedCM) configuration. (EA only)
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetClientFedcmLoginResult> FedcmLogins;
+        /// <summary>
         /// HTML form template to be used for WS-Federation.
         /// </summary>
         public readonly string FormTemplate;
@@ -434,6 +438,8 @@ namespace Pulumi.Auth0
 
             string externalMetadataType,
 
+            ImmutableArray<Outputs.GetClientFedcmLoginResult> fedcmLogins,
+
             string formTemplate,
 
             ImmutableArray<string> grantTypes,
@@ -528,6 +534,7 @@ namespace Pulumi.Auth0
             ExternalClientId = externalClientId;
             ExternalMetadataCreatedBy = externalMetadataCreatedBy;
             ExternalMetadataType = externalMetadataType;
+            FedcmLogins = fedcmLogins;
             FormTemplate = formTemplate;
             GrantTypes = grantTypes;
             Id = id;

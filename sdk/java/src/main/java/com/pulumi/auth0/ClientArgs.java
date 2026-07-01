@@ -6,6 +6,7 @@ package com.pulumi.auth0;
 import com.pulumi.auth0.inputs.ClientAddonsArgs;
 import com.pulumi.auth0.inputs.ClientDefaultOrganizationArgs;
 import com.pulumi.auth0.inputs.ClientExpressConfigurationArgs;
+import com.pulumi.auth0.inputs.ClientFedcmLoginArgs;
 import com.pulumi.auth0.inputs.ClientJwtConfigurationArgs;
 import com.pulumi.auth0.inputs.ClientMobileArgs;
 import com.pulumi.auth0.inputs.ClientMyOrganizationConfigurationArgs;
@@ -299,6 +300,21 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<ClientExpressConfigurationArgs>> expressConfiguration() {
         return Optional.ofNullable(this.expressConfiguration);
+    }
+
+    /**
+     * Federated Credential Management (FedCM) configuration. (EA only)
+     * 
+     */
+    @Import(name="fedcmLogin")
+    private @Nullable Output<ClientFedcmLoginArgs> fedcmLogin;
+
+    /**
+     * @return Federated Credential Management (FedCM) configuration. (EA only)
+     * 
+     */
+    public Optional<Output<ClientFedcmLoginArgs>> fedcmLogin() {
+        return Optional.ofNullable(this.fedcmLogin);
     }
 
     /**
@@ -772,6 +788,7 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.encryptionKey = $.encryptionKey;
         this.expressConfiguration = $.expressConfiguration;
+        this.fedcmLogin = $.fedcmLogin;
         this.formTemplate = $.formTemplate;
         this.grantTypes = $.grantTypes;
         this.initiateLoginUri = $.initiateLoginUri;
@@ -1258,6 +1275,27 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder expressConfiguration(ClientExpressConfigurationArgs expressConfiguration) {
             return expressConfiguration(Output.of(expressConfiguration));
+        }
+
+        /**
+         * @param fedcmLogin Federated Credential Management (FedCM) configuration. (EA only)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fedcmLogin(@Nullable Output<ClientFedcmLoginArgs> fedcmLogin) {
+            $.fedcmLogin = fedcmLogin;
+            return this;
+        }
+
+        /**
+         * @param fedcmLogin Federated Credential Management (FedCM) configuration. (EA only)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fedcmLogin(ClientFedcmLoginArgs fedcmLogin) {
+            return fedcmLogin(Output.of(fedcmLogin));
         }
 
         /**

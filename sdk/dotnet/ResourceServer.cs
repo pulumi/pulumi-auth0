@@ -28,6 +28,8 @@ namespace Pulumi.Auth0
     ///         Identifier = "https://api.example.com",
     ///         SigningAlg = "RS256",
     ///         AllowOfflineAccess = true,
+    ///         AllowOnlineAccess = true,
+    ///         AllowOnlineAccessWithEphemeralSessions = false,
     ///         TokenLifetime = 8600,
     ///         SkipConsentForVerifiableFirstPartyClients = true,
     ///         ConsentPolicy = "transactional-authorization-with-mfa",
@@ -118,6 +120,18 @@ namespace Pulumi.Auth0
         /// </summary>
         [Output("allowOfflineAccess")]
         public Output<bool> AllowOfflineAccess { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates whether Online Refresh Tokens can be issued for this resource server. (EA Only)
+        /// </summary>
+        [Output("allowOnlineAccess")]
+        public Output<bool> AllowOnlineAccess { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates whether Online Refresh Tokens can be issued even when sessions are configured as ephemeral. (EA Only)
+        /// </summary>
+        [Output("allowOnlineAccessWithEphemeralSessions")]
+        public Output<bool> AllowOnlineAccessWithEphemeralSessions { get; private set; } = null!;
 
         /// <summary>
         /// Authorization details for this resource server.
@@ -279,6 +293,18 @@ namespace Pulumi.Auth0
         [Input("allowOfflineAccess")]
         public Input<bool>? AllowOfflineAccess { get; set; }
 
+        /// <summary>
+        /// Indicates whether Online Refresh Tokens can be issued for this resource server. (EA Only)
+        /// </summary>
+        [Input("allowOnlineAccess")]
+        public Input<bool>? AllowOnlineAccess { get; set; }
+
+        /// <summary>
+        /// Indicates whether Online Refresh Tokens can be issued even when sessions are configured as ephemeral. (EA Only)
+        /// </summary>
+        [Input("allowOnlineAccessWithEphemeralSessions")]
+        public Input<bool>? AllowOnlineAccessWithEphemeralSessions { get; set; }
+
         [Input("authorizationDetails")]
         private InputList<Inputs.ResourceServerAuthorizationDetailArgs>? _authorizationDetails;
 
@@ -394,6 +420,18 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("allowOfflineAccess")]
         public Input<bool>? AllowOfflineAccess { get; set; }
+
+        /// <summary>
+        /// Indicates whether Online Refresh Tokens can be issued for this resource server. (EA Only)
+        /// </summary>
+        [Input("allowOnlineAccess")]
+        public Input<bool>? AllowOnlineAccess { get; set; }
+
+        /// <summary>
+        /// Indicates whether Online Refresh Tokens can be issued even when sessions are configured as ephemeral. (EA Only)
+        /// </summary>
+        [Input("allowOnlineAccessWithEphemeralSessions")]
+        public Input<bool>? AllowOnlineAccessWithEphemeralSessions { get; set; }
 
         [Input("authorizationDetails")]
         private InputList<Inputs.ResourceServerAuthorizationDetailGetArgs>? _authorizationDetails;
