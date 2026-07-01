@@ -377,6 +377,16 @@
                             }
                         }
                     },
+                    "fedcm_login": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "google": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
                     "grant_types": {
                         "maxItemsOne": false
                     },
@@ -481,6 +491,9 @@
                             "fields": {
                                 "allowed_authentication_methods": {
                                     "maxItemsOne": false
+                                },
+                                "delegation": {
+                                    "maxItemsOne": true
                                 }
                             }
                         }
@@ -2248,6 +2261,16 @@
                             }
                         }
                     },
+                    "fedcm_login": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "google": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "grant_types": {
                         "maxItemsOne": false
                     },
@@ -2352,6 +2375,9 @@
                             "fields": {
                                 "allowed_authentication_methods": {
                                     "maxItemsOne": false
+                                },
+                                "delegation": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }
@@ -2446,6 +2472,16 @@
                                         }
                                     }
                                 },
+                                "fedcm_login": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "google": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
                                 "grant_types": {
                                     "maxItemsOne": false
                                 },
@@ -2490,6 +2526,9 @@
                                     "elem": {
                                         "fields": {
                                             "allowed_authentication_methods": {
+                                                "maxItemsOne": false
+                                            },
+                                            "delegation": {
                                                 "maxItemsOne": false
                                             }
                                         }
