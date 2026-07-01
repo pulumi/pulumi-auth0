@@ -39,6 +39,36 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * Indicates whether Online Refresh Tokens can be issued for this resource server. (EA Only)
+     * 
+     */
+    @Import(name="allowOnlineAccess")
+    private @Nullable Output<Boolean> allowOnlineAccess;
+
+    /**
+     * @return Indicates whether Online Refresh Tokens can be issued for this resource server. (EA Only)
+     * 
+     */
+    public Optional<Output<Boolean>> allowOnlineAccess() {
+        return Optional.ofNullable(this.allowOnlineAccess);
+    }
+
+    /**
+     * Indicates whether Online Refresh Tokens can be issued even when sessions are configured as ephemeral. (EA Only)
+     * 
+     */
+    @Import(name="allowOnlineAccessWithEphemeralSessions")
+    private @Nullable Output<Boolean> allowOnlineAccessWithEphemeralSessions;
+
+    /**
+     * @return Indicates whether Online Refresh Tokens can be issued even when sessions are configured as ephemeral. (EA Only)
+     * 
+     */
+    public Optional<Output<Boolean>> allowOnlineAccessWithEphemeralSessions() {
+        return Optional.ofNullable(this.allowOnlineAccessWithEphemeralSessions);
+    }
+
+    /**
      * Authorization details for this resource server.
      * 
      */
@@ -312,6 +342,8 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
 
     private ResourceServerState(ResourceServerState $) {
         this.allowOfflineAccess = $.allowOfflineAccess;
+        this.allowOnlineAccess = $.allowOnlineAccess;
+        this.allowOnlineAccessWithEphemeralSessions = $.allowOnlineAccessWithEphemeralSessions;
         this.authorizationDetails = $.authorizationDetails;
         this.authorizationPolicy = $.authorizationPolicy;
         this.clientId = $.clientId;
@@ -369,6 +401,48 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
          */
         public Builder allowOfflineAccess(Boolean allowOfflineAccess) {
             return allowOfflineAccess(Output.of(allowOfflineAccess));
+        }
+
+        /**
+         * @param allowOnlineAccess Indicates whether Online Refresh Tokens can be issued for this resource server. (EA Only)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowOnlineAccess(@Nullable Output<Boolean> allowOnlineAccess) {
+            $.allowOnlineAccess = allowOnlineAccess;
+            return this;
+        }
+
+        /**
+         * @param allowOnlineAccess Indicates whether Online Refresh Tokens can be issued for this resource server. (EA Only)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowOnlineAccess(Boolean allowOnlineAccess) {
+            return allowOnlineAccess(Output.of(allowOnlineAccess));
+        }
+
+        /**
+         * @param allowOnlineAccessWithEphemeralSessions Indicates whether Online Refresh Tokens can be issued even when sessions are configured as ephemeral. (EA Only)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowOnlineAccessWithEphemeralSessions(@Nullable Output<Boolean> allowOnlineAccessWithEphemeralSessions) {
+            $.allowOnlineAccessWithEphemeralSessions = allowOnlineAccessWithEphemeralSessions;
+            return this;
+        }
+
+        /**
+         * @param allowOnlineAccessWithEphemeralSessions Indicates whether Online Refresh Tokens can be issued even when sessions are configured as ephemeral. (EA Only)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowOnlineAccessWithEphemeralSessions(Boolean allowOnlineAccessWithEphemeralSessions) {
+            return allowOnlineAccessWithEphemeralSessions(Output.of(allowOnlineAccessWithEphemeralSessions));
         }
 
         /**

@@ -155,6 +155,14 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly bool AllowOfflineAccess;
         /// <summary>
+        /// Indicates whether Online Refresh Tokens can be issued for this resource server. (EA Only)
+        /// </summary>
+        public readonly bool AllowOnlineAccess;
+        /// <summary>
+        /// Indicates whether Online Refresh Tokens can be issued even when sessions are configured as ephemeral. (EA Only)
+        /// </summary>
+        public readonly bool AllowOnlineAccessWithEphemeralSessions;
+        /// <summary>
         /// Authorization details for this resource server.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetResourceServerAuthorizationDetailResult> AuthorizationDetails;
@@ -243,6 +251,10 @@ namespace Pulumi.Auth0
         private GetResourceServerResult(
             bool allowOfflineAccess,
 
+            bool allowOnlineAccess,
+
+            bool allowOnlineAccessWithEphemeralSessions,
+
             ImmutableArray<Outputs.GetResourceServerAuthorizationDetailResult> authorizationDetails,
 
             ImmutableArray<Outputs.GetResourceServerAuthorizationPolicyResult> authorizationPolicies,
@@ -286,6 +298,8 @@ namespace Pulumi.Auth0
             string verificationLocation)
         {
             AllowOfflineAccess = allowOfflineAccess;
+            AllowOnlineAccess = allowOnlineAccess;
+            AllowOnlineAccessWithEphemeralSessions = allowOnlineAccessWithEphemeralSessions;
             AuthorizationDetails = authorizationDetails;
             AuthorizationPolicies = authorizationPolicies;
             ClientId = clientId;

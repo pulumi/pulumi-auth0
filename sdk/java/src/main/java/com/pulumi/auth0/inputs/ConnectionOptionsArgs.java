@@ -760,6 +760,21 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Indicates whether the identity provider supports session expiry via the id*token. When true, Auth0 will use the session*expiry claim from the upstream IdP&#39;s ID token to determine the maximum session lifetime. Only applicable for Okta and OIDC connections.
+     * 
+     */
+    @Import(name="idTokenSessionExpirySupported")
+    private @Nullable Output<Boolean> idTokenSessionExpirySupported;
+
+    /**
+     * @return Indicates whether the identity provider supports session expiry via the id*token. When true, Auth0 will use the session*expiry claim from the upstream IdP&#39;s ID token to determine the maximum session lifetime. Only applicable for Okta and OIDC connections.
+     * 
+     */
+    public Optional<Output<Boolean>> idTokenSessionExpirySupported() {
+        return Optional.ofNullable(this.idTokenSessionExpirySupported);
+    }
+
+    /**
      * List of allowed algorithms for the ID token signature. If not set or empty, default algorithm(s) will be applied at runtime. (Okta/OIDC Connections)
      * 
      */
@@ -1645,14 +1660,14 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Value can be `backChannel` or `frontChannel`. Front Channel will use OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel will use `response_type=code`.
+     * The connection&#39;s communication channel type. For OIDC connections, accepted values are `backChannel` and `frontChannel`; for Okta Workforce connections, only `backChannel` is accepted. Front Channel uses the OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel uses `response_type=code`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Value can be `backChannel` or `frontChannel`. Front Channel will use OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel will use `response_type=code`.
+     * @return The connection&#39;s communication channel type. For OIDC connections, accepted values are `backChannel` and `frontChannel`; for Okta Workforce connections, only `backChannel` is accepted. Front Channel uses the OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel uses `response_type=code`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -1875,6 +1890,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         this.globalTokenRevocationJwtIss = $.globalTokenRevocationJwtIss;
         this.globalTokenRevocationJwtSub = $.globalTokenRevocationJwtSub;
         this.iconUrl = $.iconUrl;
+        this.idTokenSessionExpirySupported = $.idTokenSessionExpirySupported;
         this.idTokenSignedResponseAlgs = $.idTokenSignedResponseAlgs;
         this.identityApi = $.identityApi;
         this.idpInitiated = $.idpInitiated;
@@ -3022,6 +3038,27 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder iconUrl(String iconUrl) {
             return iconUrl(Output.of(iconUrl));
+        }
+
+        /**
+         * @param idTokenSessionExpirySupported Indicates whether the identity provider supports session expiry via the id*token. When true, Auth0 will use the session*expiry claim from the upstream IdP&#39;s ID token to determine the maximum session lifetime. Only applicable for Okta and OIDC connections.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder idTokenSessionExpirySupported(@Nullable Output<Boolean> idTokenSessionExpirySupported) {
+            $.idTokenSessionExpirySupported = idTokenSessionExpirySupported;
+            return this;
+        }
+
+        /**
+         * @param idTokenSessionExpirySupported Indicates whether the identity provider supports session expiry via the id*token. When true, Auth0 will use the session*expiry claim from the upstream IdP&#39;s ID token to determine the maximum session lifetime. Only applicable for Okta and OIDC connections.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder idTokenSessionExpirySupported(Boolean idTokenSessionExpirySupported) {
+            return idTokenSessionExpirySupported(Output.of(idTokenSessionExpirySupported));
         }
 
         /**
@@ -4324,7 +4361,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param type Value can be `backChannel` or `frontChannel`. Front Channel will use OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel will use `response_type=code`.
+         * @param type The connection&#39;s communication channel type. For OIDC connections, accepted values are `backChannel` and `frontChannel`; for Okta Workforce connections, only `backChannel` is accepted. Front Channel uses the OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel uses `response_type=code`.
          * 
          * @return builder
          * 
@@ -4335,7 +4372,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param type Value can be `backChannel` or `frontChannel`. Front Channel will use OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel will use `response_type=code`.
+         * @param type The connection&#39;s communication channel type. For OIDC connections, accepted values are `backChannel` and `frontChannel`; for Okta Workforce connections, only `backChannel` is accepted. Front Channel uses the OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel uses `response_type=code`.
          * 
          * @return builder
          * 

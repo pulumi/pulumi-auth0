@@ -275,6 +275,11 @@ public final class GetConnectionOption {
      */
     private String iconUrl;
     /**
+     * @return Indicates whether the identity provider supports session expiry via the id_token. When true, Auth0 will use the sessionExpiry claim from the upstream IdP&#39;s ID token to determine the maximum session lifetime. Only applicable for Okta and OIDC connections.
+     * 
+     */
+    private Boolean idTokenSessionExpirySupported;
+    /**
      * @return List of allowed algorithms for the ID token signature. If not set or empty, default algorithm(s) will be applied at runtime. (Okta/OIDC Connections)
      * 
      */
@@ -570,7 +575,7 @@ public final class GetConnectionOption {
      */
     private String twilioToken;
     /**
-     * @return Value can be `backChannel` or `frontChannel`. Front Channel will use OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel will use `response_type=code`.
+     * @return The connection&#39;s communication channel type. For OIDC connections, accepted values are `backChannel` and `frontChannel`; for Okta Workforce connections, only `backChannel` is accepted. Front Channel uses the OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel uses `response_type=code`.
      * 
      */
     private String type;
@@ -966,6 +971,13 @@ public final class GetConnectionOption {
      */
     public String iconUrl() {
         return this.iconUrl;
+    }
+    /**
+     * @return Indicates whether the identity provider supports session expiry via the id_token. When true, Auth0 will use the sessionExpiry claim from the upstream IdP&#39;s ID token to determine the maximum session lifetime. Only applicable for Okta and OIDC connections.
+     * 
+     */
+    public Boolean idTokenSessionExpirySupported() {
+        return this.idTokenSessionExpirySupported;
     }
     /**
      * @return List of allowed algorithms for the ID token signature. If not set or empty, default algorithm(s) will be applied at runtime. (Okta/OIDC Connections)
@@ -1381,7 +1393,7 @@ public final class GetConnectionOption {
         return this.twilioToken;
     }
     /**
-     * @return Value can be `backChannel` or `frontChannel`. Front Channel will use OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel will use `response_type=code`.
+     * @return The connection&#39;s communication channel type. For OIDC connections, accepted values are `backChannel` and `frontChannel`; for Okta Workforce connections, only `backChannel` is accepted. Front Channel uses the OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel uses `response_type=code`.
      * 
      */
     public String type() {
@@ -1522,6 +1534,7 @@ public final class GetConnectionOption {
         private String globalTokenRevocationJwtIss;
         private String globalTokenRevocationJwtSub;
         private String iconUrl;
+        private Boolean idTokenSessionExpirySupported;
         private List<String> idTokenSignedResponseAlgs;
         private String identityApi;
         private List<GetConnectionOptionIdpInitiated> idpInitiateds;
@@ -1644,6 +1657,7 @@ public final class GetConnectionOption {
     	      this.globalTokenRevocationJwtIss = defaults.globalTokenRevocationJwtIss;
     	      this.globalTokenRevocationJwtSub = defaults.globalTokenRevocationJwtSub;
     	      this.iconUrl = defaults.iconUrl;
+    	      this.idTokenSessionExpirySupported = defaults.idTokenSessionExpirySupported;
     	      this.idTokenSignedResponseAlgs = defaults.idTokenSignedResponseAlgs;
     	      this.identityApi = defaults.identityApi;
     	      this.idpInitiateds = defaults.idpInitiateds;
@@ -2132,6 +2146,14 @@ public final class GetConnectionOption {
               throw new MissingRequiredPropertyException("GetConnectionOption", "iconUrl");
             }
             this.iconUrl = iconUrl;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder idTokenSessionExpirySupported(Boolean idTokenSessionExpirySupported) {
+            if (idTokenSessionExpirySupported == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOption", "idTokenSessionExpirySupported");
+            }
+            this.idTokenSessionExpirySupported = idTokenSessionExpirySupported;
             return this;
         }
         @CustomType.Setter
@@ -2800,6 +2822,7 @@ public final class GetConnectionOption {
             _resultValue.globalTokenRevocationJwtIss = globalTokenRevocationJwtIss;
             _resultValue.globalTokenRevocationJwtSub = globalTokenRevocationJwtSub;
             _resultValue.iconUrl = iconUrl;
+            _resultValue.idTokenSessionExpirySupported = idTokenSessionExpirySupported;
             _resultValue.idTokenSignedResponseAlgs = idTokenSignedResponseAlgs;
             _resultValue.identityApi = identityApi;
             _resultValue.idpInitiateds = idpInitiateds;

@@ -1589,6 +1589,20 @@ export interface ClientExpressConfigurationLinkedClient {
     clientId?: pulumi.Input<string | undefined>;
 }
 
+export interface ClientFedcmLogin {
+    /**
+     * Google FedCM configuration. (EA only)
+     */
+    google: pulumi.Input<inputs.ClientFedcmLoginGoogle>;
+}
+
+export interface ClientFedcmLoginGoogle {
+    /**
+     * Whether to show the Google FedCM prompt on Login. (EA only)
+     */
+    isEnabled: pulumi.Input<boolean>;
+}
+
 export interface ClientJwtConfiguration {
     /**
      * Algorithm used to sign JWTs. Can be one of `HS256`, `RS256`, `PS256`.
@@ -1760,6 +1774,10 @@ export interface ClientSessionTransfer {
      */
     canCreateSessionTransferToken?: pulumi.Input<boolean | undefined>;
     /**
+     * Configuration for delegation (impersonation) access using Session Transfer Tokens. (EA Only)
+     */
+    delegation?: pulumi.Input<inputs.ClientSessionTransferDelegation | undefined>;
+    /**
      * Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities. Usually configured in the native application.
      */
     enforceCascadeRevocation?: pulumi.Input<boolean | undefined>;
@@ -1771,6 +1789,17 @@ export interface ClientSessionTransfer {
      * Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are. Usually configured in the web application.
      */
     enforceOnlineRefreshTokens?: pulumi.Input<boolean | undefined>;
+}
+
+export interface ClientSessionTransferDelegation {
+    /**
+     * Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`. (EA Only)
+     */
+    allowDelegatedAccess?: pulumi.Input<boolean | undefined>;
+    /**
+     * Indicates the device binding enforcement for delegation (impersonation) access. If set to 'ip', device binding is enforced by IP. If set to 'asn', device binding is enforced by ASN. Defaults to `ip`. (EA Only)
+     */
+    enforceDeviceBinding?: pulumi.Input<string | undefined>;
 }
 
 export interface ClientTokenExchange {
@@ -2015,6 +2044,10 @@ export interface ConnectionOptions {
      */
     iconUrl?: pulumi.Input<string | undefined>;
     /**
+     * Indicates whether the identity provider supports session expiry via the id*token. When true, Auth0 will use the session*expiry claim from the upstream IdP's ID token to determine the maximum session lifetime. Only applicable for Okta and OIDC connections.
+     */
+    idTokenSessionExpirySupported?: pulumi.Input<boolean | undefined>;
+    /**
      * List of allowed algorithms for the ID token signature. If not set or empty, default algorithm(s) will be applied at runtime. (Okta/OIDC Connections)
      */
     idTokenSignedResponseAlgs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
@@ -2251,7 +2284,7 @@ export interface ConnectionOptions {
      */
     twilioToken?: pulumi.Input<string | undefined>;
     /**
-     * Value can be `backChannel` or `frontChannel`. Front Channel will use OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel will use `response_type=code`.
+     * The connection's communication channel type. For OIDC connections, accepted values are `backChannel` and `frontChannel`; for Okta Workforce connections, only `backChannel` is accepted. Front Channel uses the OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel uses `response_type=code`.
      */
     type?: pulumi.Input<string | undefined>;
     /**

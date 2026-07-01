@@ -44,10 +44,23 @@ namespace Pulumi.Auth0
         public Output<string> ClientId { get; private set; } = null!;
 
         /// <summary>
-        /// Secret for the client when using `ClientSecretPost` or `ClientSecretBasic` authentication method. Keep this private. To access this attribute you need to add either `read:client_keys` or `read:client_credentials` scope to the Terraform client. Otherwise, the attribute will contain an empty string. The attribute will also be an empty string in case `PrivateKeyJwt` is selected as an authentication method.
+        /// Secret for the client when using `ClientSecretPost` or `ClientSecretBasic` authentication method. Keep this private. To access this attribute you need to add either `read:client_keys` or `read:client_credentials` scope to the Terraform client. Otherwise, the attribute will contain an empty string. The attribute will also be an empty string in case `PrivateKeyJwt` is selected as an authentication method. **Note:** For better security, consider using `ClientSecretWo` instead.
         /// </summary>
         [Output("clientSecret")]
         public Output<string> ClientSecret { get; private set; } = null!;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Secret for the client when using `ClientSecretPost` or `ClientSecretBasic` authentication method (write-only). This value is **not** stored in Terraform state. Bump `ClientSecretWoVersion` to rotate it. Requires Terraform 1.11+.
+        /// </summary>
+        [Output("clientSecretWo")]
+        public Output<string?> ClientSecretWo { get; private set; } = null!;
+
+        /// <summary>
+        /// Version counter for `ClientSecretWo`. Must be a positive integer (starting at `1`). Increment this value to trigger a client secret change when using `ClientSecretWo`.
+        /// </summary>
+        [Output("clientSecretWoVersion")]
+        public Output<int?> ClientSecretWoVersion { get; private set; } = null!;
 
         /// <summary>
         /// Defines `PrivateKeyJwt` client authentication method.
@@ -99,6 +112,7 @@ namespace Pulumi.Auth0
                 AdditionalSecretOutputs =
                 {
                     "clientSecret",
+                    "clientSecretWo",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -139,7 +153,7 @@ namespace Pulumi.Auth0
         private Input<string>? _clientSecret;
 
         /// <summary>
-        /// Secret for the client when using `ClientSecretPost` or `ClientSecretBasic` authentication method. Keep this private. To access this attribute you need to add either `read:client_keys` or `read:client_credentials` scope to the Terraform client. Otherwise, the attribute will contain an empty string. The attribute will also be an empty string in case `PrivateKeyJwt` is selected as an authentication method.
+        /// Secret for the client when using `ClientSecretPost` or `ClientSecretBasic` authentication method. Keep this private. To access this attribute you need to add either `read:client_keys` or `read:client_credentials` scope to the Terraform client. Otherwise, the attribute will contain an empty string. The attribute will also be an empty string in case `PrivateKeyJwt` is selected as an authentication method. **Note:** For better security, consider using `ClientSecretWo` instead.
         /// </summary>
         public Input<string>? ClientSecret
         {
@@ -150,6 +164,29 @@ namespace Pulumi.Auth0
                 _clientSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("clientSecretWo")]
+        private Input<string>? _clientSecretWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Secret for the client when using `ClientSecretPost` or `ClientSecretBasic` authentication method (write-only). This value is **not** stored in Terraform state. Bump `ClientSecretWoVersion` to rotate it. Requires Terraform 1.11+.
+        /// </summary>
+        public Input<string>? ClientSecretWo
+        {
+            get => _clientSecretWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientSecretWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Version counter for `ClientSecretWo`. Must be a positive integer (starting at `1`). Increment this value to trigger a client secret change when using `ClientSecretWo`.
+        /// </summary>
+        [Input("clientSecretWoVersion")]
+        public Input<int>? ClientSecretWoVersion { get; set; }
 
         /// <summary>
         /// Defines `PrivateKeyJwt` client authentication method.
@@ -199,7 +236,7 @@ namespace Pulumi.Auth0
         private Input<string>? _clientSecret;
 
         /// <summary>
-        /// Secret for the client when using `ClientSecretPost` or `ClientSecretBasic` authentication method. Keep this private. To access this attribute you need to add either `read:client_keys` or `read:client_credentials` scope to the Terraform client. Otherwise, the attribute will contain an empty string. The attribute will also be an empty string in case `PrivateKeyJwt` is selected as an authentication method.
+        /// Secret for the client when using `ClientSecretPost` or `ClientSecretBasic` authentication method. Keep this private. To access this attribute you need to add either `read:client_keys` or `read:client_credentials` scope to the Terraform client. Otherwise, the attribute will contain an empty string. The attribute will also be an empty string in case `PrivateKeyJwt` is selected as an authentication method. **Note:** For better security, consider using `ClientSecretWo` instead.
         /// </summary>
         public Input<string>? ClientSecret
         {
@@ -210,6 +247,29 @@ namespace Pulumi.Auth0
                 _clientSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("clientSecretWo")]
+        private Input<string>? _clientSecretWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Secret for the client when using `ClientSecretPost` or `ClientSecretBasic` authentication method (write-only). This value is **not** stored in Terraform state. Bump `ClientSecretWoVersion` to rotate it. Requires Terraform 1.11+.
+        /// </summary>
+        public Input<string>? ClientSecretWo
+        {
+            get => _clientSecretWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientSecretWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Version counter for `ClientSecretWo`. Must be a positive integer (starting at `1`). Increment this value to trigger a client secret change when using `ClientSecretWo`.
+        /// </summary>
+        [Input("clientSecretWoVersion")]
+        public Input<int>? ClientSecretWoVersion { get; set; }
 
         /// <summary>
         /// Defines `PrivateKeyJwt` client authentication method.

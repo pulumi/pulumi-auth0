@@ -149,6 +149,10 @@ export interface GetClientResult {
      */
     readonly externalMetadataType: string;
     /**
+     * Federated Credential Management (FedCM) configuration. (EA only)
+     */
+    readonly fedcmLogins: outputs.GetClientFedcmLogin[];
+    /**
      * HTML form template to be used for WS-Federation.
      */
     readonly formTemplate: string;

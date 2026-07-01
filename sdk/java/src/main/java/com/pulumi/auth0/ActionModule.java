@@ -33,9 +33,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.auth0.ActionModule;
- * import com.pulumi.auth0.ActionModuleArgs;
  * import com.pulumi.auth0.inputs.ActionModuleDependencyArgs;
  * import com.pulumi.auth0.inputs.ActionModuleSecretArgs;
+ * import com.pulumi.auth0.Action;
+ * import com.pulumi.auth0.ActionArgs;
+ * import com.pulumi.auth0.inputs.ActionSupportedTriggersArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -51,6 +53,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) }{{@code
  *         var myModule = new ActionModule("myModule", ActionModuleArgs.builder()
  *             .name("My Shared Module")
+ *             .publish(true)
  *             .code("""
  * /**
  *  * A shared utility function that can be used across multiple actions.
@@ -71,6 +74,28 @@ import javax.annotation.Nullable;
  *             .secrets(ActionModuleSecretArgs.builder()
  *                 .name("API_KEY")
  *                 .value("my-secret-api-key")
+ *                 .build())
+ *             .build());
+ * 
+ *         // Use the module in an action by referencing its id and version_id.
+ *         var myAction = new Action("myAction", ActionArgs.builder()
+ *             .name("My Action")
+ *             .runtime("node22")
+ *             .deploy(true)
+ *             .code("""
+ * const myModule = require('My Shared Module');
+ * 
+ * exports.onExecutePostLogin = async (event, api) => }{{@code
+ *   console.log(myModule.greet(event.user.name));
+ * }}{@code ;
+ *             """)
+ *             .modules(com.pulumi.auth0.inputs.ActionModuleArgs.builder()
+ *                 .moduleId(myModule.id())
+ *                 .moduleVersionId(myModule.versionId())
+ *                 .build())
+ *             .supportedTriggers(ActionSupportedTriggersArgs.builder()
+ *                 .id("post-login")
+ *                 .version("v3")
  *                 .build())
  *             .build());
  * 

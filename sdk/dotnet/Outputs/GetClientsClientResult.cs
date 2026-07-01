@@ -70,6 +70,10 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string ExternalMetadataType;
         /// <summary>
+        /// Federated Credential Management (FedCM) configuration. (EA only)
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetClientsClientFedcmLoginResult> FedcmLogins;
+        /// <summary>
         /// Types of grants that this client is authorized to use.
         /// </summary>
         public readonly ImmutableArray<string> GrantTypes;
@@ -161,6 +165,8 @@ namespace Pulumi.Auth0.Outputs
 
             string externalMetadataType,
 
+            ImmutableArray<Outputs.GetClientsClientFedcmLoginResult> fedcmLogins,
+
             ImmutableArray<string> grantTypes,
 
             bool isFirstParty,
@@ -207,6 +213,7 @@ namespace Pulumi.Auth0.Outputs
             ExternalClientId = externalClientId;
             ExternalMetadataCreatedBy = externalMetadataCreatedBy;
             ExternalMetadataType = externalMetadataType;
+            FedcmLogins = fedcmLogins;
             GrantTypes = grantTypes;
             IsFirstParty = isFirstParty;
             IsTokenEndpointIpHeaderTrusted = isTokenEndpointIpHeaderTrusted;

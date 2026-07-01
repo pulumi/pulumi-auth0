@@ -158,6 +158,12 @@ namespace Pulumi.Auth0
         public Output<string> ExternalMetadataType { get; private set; } = null!;
 
         /// <summary>
+        /// Federated Credential Management (FedCM) configuration. (EA only)
+        /// </summary>
+        [Output("fedcmLogin")]
+        public Output<Outputs.ClientFedcmLogin?> FedcmLogin { get; private set; } = null!;
+
+        /// <summary>
         /// HTML form template to be used for WS-Federation.
         /// </summary>
         [Output("formTemplate")]
@@ -553,6 +559,12 @@ namespace Pulumi.Auth0
         public Input<Inputs.ClientExpressConfigurationArgs>? ExpressConfiguration { get; set; }
 
         /// <summary>
+        /// Federated Credential Management (FedCM) configuration. (EA only)
+        /// </summary>
+        [Input("fedcmLogin")]
+        public Input<Inputs.ClientFedcmLoginArgs>? FedcmLogin { get; set; }
+
+        /// <summary>
         /// HTML form template to be used for WS-Federation.
         /// </summary>
         [Input("formTemplate")]
@@ -942,6 +954,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("externalMetadataType")]
         public Input<string>? ExternalMetadataType { get; set; }
+
+        /// <summary>
+        /// Federated Credential Management (FedCM) configuration. (EA only)
+        /// </summary>
+        [Input("fedcmLogin")]
+        public Input<Inputs.ClientFedcmLoginGetArgs>? FedcmLogin { get; set; }
 
         /// <summary>
         /// HTML form template to be used for WS-Federation.

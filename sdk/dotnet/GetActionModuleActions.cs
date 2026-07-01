@@ -38,13 +38,8 @@ namespace Pulumi.Auth0
         /// ",
         ///     });
         /// 
-        ///     // Get the published versions of the module
-        ///     var myModuleVersions = Auth0.GetActionModuleVersions.Invoke(new()
-        ///     {
-        ///         ModuleId = myModule.Id,
-        ///     });
-        /// 
-        ///     // Create an action that uses the module
+        ///     // Create an action that uses the module.
+        ///     // Use version_id directly from the module resource — no data source needed.
         ///     var myAction1 = new Auth0.Action("my_action_1", new()
         ///     {
         ///         Name = "My Action Using Module 1",
@@ -64,7 +59,7 @@ namespace Pulumi.Auth0
         ///             new Auth0.Inputs.ActionModuleArgs
         ///             {
         ///                 ModuleId = myModule.Id,
-        ///                 ModuleVersionId = myModuleVersions.Apply(getActionModuleVersionsResult =&gt; getActionModuleVersionsResult.Versions[0]?.Id),
+        ///                 ModuleVersionId = myModule.VersionId,
         ///             },
         ///         },
         ///     });
@@ -89,7 +84,7 @@ namespace Pulumi.Auth0
         ///             new Auth0.Inputs.ActionModuleArgs
         ///             {
         ///                 ModuleId = myModule.Id,
-        ///                 ModuleVersionId = myModuleVersions.Apply(getActionModuleVersionsResult =&gt; getActionModuleVersionsResult.Versions[0]?.Id),
+        ///                 ModuleVersionId = myModule.VersionId,
         ///             },
         ///         },
         ///     });
@@ -141,13 +136,8 @@ namespace Pulumi.Auth0
         /// ",
         ///     });
         /// 
-        ///     // Get the published versions of the module
-        ///     var myModuleVersions = Auth0.GetActionModuleVersions.Invoke(new()
-        ///     {
-        ///         ModuleId = myModule.Id,
-        ///     });
-        /// 
-        ///     // Create an action that uses the module
+        ///     // Create an action that uses the module.
+        ///     // Use version_id directly from the module resource — no data source needed.
         ///     var myAction1 = new Auth0.Action("my_action_1", new()
         ///     {
         ///         Name = "My Action Using Module 1",
@@ -167,7 +157,7 @@ namespace Pulumi.Auth0
         ///             new Auth0.Inputs.ActionModuleArgs
         ///             {
         ///                 ModuleId = myModule.Id,
-        ///                 ModuleVersionId = myModuleVersions.Apply(getActionModuleVersionsResult =&gt; getActionModuleVersionsResult.Versions[0]?.Id),
+        ///                 ModuleVersionId = myModule.VersionId,
         ///             },
         ///         },
         ///     });
@@ -192,7 +182,7 @@ namespace Pulumi.Auth0
         ///             new Auth0.Inputs.ActionModuleArgs
         ///             {
         ///                 ModuleId = myModule.Id,
-        ///                 ModuleVersionId = myModuleVersions.Apply(getActionModuleVersionsResult =&gt; getActionModuleVersionsResult.Versions[0]?.Id),
+        ///                 ModuleVersionId = myModule.VersionId,
         ///             },
         ///         },
         ///     });
@@ -244,13 +234,8 @@ namespace Pulumi.Auth0
         /// ",
         ///     });
         /// 
-        ///     // Get the published versions of the module
-        ///     var myModuleVersions = Auth0.GetActionModuleVersions.Invoke(new()
-        ///     {
-        ///         ModuleId = myModule.Id,
-        ///     });
-        /// 
-        ///     // Create an action that uses the module
+        ///     // Create an action that uses the module.
+        ///     // Use version_id directly from the module resource — no data source needed.
         ///     var myAction1 = new Auth0.Action("my_action_1", new()
         ///     {
         ///         Name = "My Action Using Module 1",
@@ -270,7 +255,7 @@ namespace Pulumi.Auth0
         ///             new Auth0.Inputs.ActionModuleArgs
         ///             {
         ///                 ModuleId = myModule.Id,
-        ///                 ModuleVersionId = myModuleVersions.Apply(getActionModuleVersionsResult =&gt; getActionModuleVersionsResult.Versions[0]?.Id),
+        ///                 ModuleVersionId = myModule.VersionId,
         ///             },
         ///         },
         ///     });
@@ -295,7 +280,7 @@ namespace Pulumi.Auth0
         ///             new Auth0.Inputs.ActionModuleArgs
         ///             {
         ///                 ModuleId = myModule.Id,
-        ///                 ModuleVersionId = myModuleVersions.Apply(getActionModuleVersionsResult =&gt; getActionModuleVersionsResult.Versions[0]?.Id),
+        ///                 ModuleVersionId = myModule.VersionId,
         ///             },
         ///         },
         ///     });

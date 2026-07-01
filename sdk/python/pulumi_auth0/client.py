@@ -39,6 +39,7 @@ class ClientArgs:
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  encryption_key: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  express_configuration: pulumi.Input[Optional['ClientExpressConfigurationArgs']] = None,
+                 fedcm_login: pulumi.Input[Optional['ClientFedcmLoginArgs']] = None,
                  form_template: pulumi.Input[Optional[_builtins.str]] = None,
                  grant_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  initiate_login_uri: pulumi.Input[Optional[_builtins.str]] = None,
@@ -90,6 +91,7 @@ class ClientArgs:
         :param pulumi.Input[_builtins.str] description: Description of the purpose of the client.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] encryption_key: Encryption used for WS-Fed responses with this client.
         :param pulumi.Input['ClientExpressConfigurationArgs'] express_configuration: Express Configuration settings for the client. Used with OIN Express Configuration.
+        :param pulumi.Input['ClientFedcmLoginArgs'] fedcm_login: Federated Credential Management (FedCM) configuration. (EA only)
         :param pulumi.Input[_builtins.str] form_template: HTML form template to be used for WS-Federation.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] grant_types: Types of grants that this client is authorized to use.
         :param pulumi.Input[_builtins.str] initiate_login_uri: Initiate login URI. Must be HTTPS or an empty string.
@@ -158,6 +160,8 @@ class ClientArgs:
             pulumi.set(__self__, "encryption_key", encryption_key)
         if express_configuration is not None:
             pulumi.set(__self__, "express_configuration", express_configuration)
+        if fedcm_login is not None:
+            pulumi.set(__self__, "fedcm_login", fedcm_login)
         if form_template is not None:
             pulumi.set(__self__, "form_template", form_template)
         if grant_types is not None:
@@ -437,6 +441,18 @@ class ClientArgs:
     @express_configuration.setter
     def express_configuration(self, value: pulumi.Input[Optional['ClientExpressConfigurationArgs']]):
         pulumi.set(self, "express_configuration", value)
+
+    @_builtins.property
+    @pulumi.getter(name="fedcmLogin")
+    def fedcm_login(self) -> pulumi.Input[Optional['ClientFedcmLoginArgs']]:
+        """
+        Federated Credential Management (FedCM) configuration. (EA only)
+        """
+        return pulumi.get(self, "fedcm_login")
+
+    @fedcm_login.setter
+    def fedcm_login(self, value: pulumi.Input[Optional['ClientFedcmLoginArgs']]):
+        pulumi.set(self, "fedcm_login", value)
 
     @_builtins.property
     @pulumi.getter(name="formTemplate")
@@ -822,6 +838,7 @@ class _ClientState:
                  external_client_id: pulumi.Input[Optional[_builtins.str]] = None,
                  external_metadata_created_by: pulumi.Input[Optional[_builtins.str]] = None,
                  external_metadata_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 fedcm_login: pulumi.Input[Optional['ClientFedcmLoginArgs']] = None,
                  form_template: pulumi.Input[Optional[_builtins.str]] = None,
                  grant_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  initiate_login_uri: pulumi.Input[Optional[_builtins.str]] = None,
@@ -879,6 +896,7 @@ class _ClientState:
         :param pulumi.Input[_builtins.str] external_client_id: The URL of the Client ID Metadata Document. Only present for CIMD-registered clients.
         :param pulumi.Input[_builtins.str] external_metadata_created_by: Who created the external metadata client: `admin` (via Management API), `client` (self-registered), or `unknown`.
         :param pulumi.Input[_builtins.str] external_metadata_type: Type of external metadata. Value is `cimd` for CIMD-registered clients.
+        :param pulumi.Input['ClientFedcmLoginArgs'] fedcm_login: Federated Credential Management (FedCM) configuration. (EA only)
         :param pulumi.Input[_builtins.str] form_template: HTML form template to be used for WS-Federation.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] grant_types: Types of grants that this client is authorized to use.
         :param pulumi.Input[_builtins.str] initiate_login_uri: Initiate login URI. Must be HTTPS or an empty string.
@@ -957,6 +975,8 @@ class _ClientState:
             pulumi.set(__self__, "external_metadata_created_by", external_metadata_created_by)
         if external_metadata_type is not None:
             pulumi.set(__self__, "external_metadata_type", external_metadata_type)
+        if fedcm_login is not None:
+            pulumi.set(__self__, "fedcm_login", fedcm_login)
         if form_template is not None:
             pulumi.set(__self__, "form_template", form_template)
         if grant_types is not None:
@@ -1288,6 +1308,18 @@ class _ClientState:
     @external_metadata_type.setter
     def external_metadata_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_metadata_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="fedcmLogin")
+    def fedcm_login(self) -> pulumi.Input[Optional['ClientFedcmLoginArgs']]:
+        """
+        Federated Credential Management (FedCM) configuration. (EA only)
+        """
+        return pulumi.get(self, "fedcm_login")
+
+    @fedcm_login.setter
+    def fedcm_login(self, value: pulumi.Input[Optional['ClientFedcmLoginArgs']]):
+        pulumi.set(self, "fedcm_login", value)
 
     @_builtins.property
     @pulumi.getter(name="formTemplate")
@@ -1696,6 +1728,7 @@ class Client(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  encryption_key: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  express_configuration: pulumi.Input[Optional[Union['ClientExpressConfigurationArgs', 'ClientExpressConfigurationArgsDict']]] = None,
+                 fedcm_login: pulumi.Input[Optional[Union['ClientFedcmLoginArgs', 'ClientFedcmLoginArgsDict']]] = None,
                  form_template: pulumi.Input[Optional[_builtins.str]] = None,
                  grant_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  initiate_login_uri: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1761,6 +1794,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: Description of the purpose of the client.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] encryption_key: Encryption used for WS-Fed responses with this client.
         :param pulumi.Input[Union['ClientExpressConfigurationArgs', 'ClientExpressConfigurationArgsDict']] express_configuration: Express Configuration settings for the client. Used with OIN Express Configuration.
+        :param pulumi.Input[Union['ClientFedcmLoginArgs', 'ClientFedcmLoginArgsDict']] fedcm_login: Federated Credential Management (FedCM) configuration. (EA only)
         :param pulumi.Input[_builtins.str] form_template: HTML form template to be used for WS-Federation.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] grant_types: Types of grants that this client is authorized to use.
         :param pulumi.Input[_builtins.str] initiate_login_uri: Initiate login URI. Must be HTTPS or an empty string.
@@ -1844,6 +1878,7 @@ class Client(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  encryption_key: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  express_configuration: pulumi.Input[Optional[Union['ClientExpressConfigurationArgs', 'ClientExpressConfigurationArgsDict']]] = None,
+                 fedcm_login: pulumi.Input[Optional[Union['ClientFedcmLoginArgs', 'ClientFedcmLoginArgsDict']]] = None,
                  form_template: pulumi.Input[Optional[_builtins.str]] = None,
                  grant_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  initiate_login_uri: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1903,6 +1938,7 @@ class Client(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["encryption_key"] = encryption_key
             __props__.__dict__["express_configuration"] = express_configuration
+            __props__.__dict__["fedcm_login"] = fedcm_login
             __props__.__dict__["form_template"] = form_template
             __props__.__dict__["grant_types"] = grant_types
             __props__.__dict__["initiate_login_uri"] = initiate_login_uri
@@ -1973,6 +2009,7 @@ class Client(pulumi.CustomResource):
             external_client_id: pulumi.Input[Optional[_builtins.str]] = None,
             external_metadata_created_by: pulumi.Input[Optional[_builtins.str]] = None,
             external_metadata_type: pulumi.Input[Optional[_builtins.str]] = None,
+            fedcm_login: pulumi.Input[Optional[Union['ClientFedcmLoginArgs', 'ClientFedcmLoginArgsDict']]] = None,
             form_template: pulumi.Input[Optional[_builtins.str]] = None,
             grant_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             initiate_login_uri: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2034,6 +2071,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] external_client_id: The URL of the Client ID Metadata Document. Only present for CIMD-registered clients.
         :param pulumi.Input[_builtins.str] external_metadata_created_by: Who created the external metadata client: `admin` (via Management API), `client` (self-registered), or `unknown`.
         :param pulumi.Input[_builtins.str] external_metadata_type: Type of external metadata. Value is `cimd` for CIMD-registered clients.
+        :param pulumi.Input[Union['ClientFedcmLoginArgs', 'ClientFedcmLoginArgsDict']] fedcm_login: Federated Credential Management (FedCM) configuration. (EA only)
         :param pulumi.Input[_builtins.str] form_template: HTML form template to be used for WS-Federation.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] grant_types: Types of grants that this client is authorized to use.
         :param pulumi.Input[_builtins.str] initiate_login_uri: Initiate login URI. Must be HTTPS or an empty string.
@@ -2092,6 +2130,7 @@ class Client(pulumi.CustomResource):
         __props__.__dict__["external_client_id"] = external_client_id
         __props__.__dict__["external_metadata_created_by"] = external_metadata_created_by
         __props__.__dict__["external_metadata_type"] = external_metadata_type
+        __props__.__dict__["fedcm_login"] = fedcm_login
         __props__.__dict__["form_template"] = form_template
         __props__.__dict__["grant_types"] = grant_types
         __props__.__dict__["initiate_login_uri"] = initiate_login_uri
@@ -2301,6 +2340,14 @@ class Client(pulumi.CustomResource):
         Type of external metadata. Value is `cimd` for CIMD-registered clients.
         """
         return pulumi.get(self, "external_metadata_type")
+
+    @_builtins.property
+    @pulumi.getter(name="fedcmLogin")
+    def fedcm_login(self) -> pulumi.Output[Optional['outputs.ClientFedcmLogin']]:
+        """
+        Federated Credential Management (FedCM) configuration. (EA only)
+        """
+        return pulumi.get(self, "fedcm_login")
 
     @_builtins.property
     @pulumi.getter(name="formTemplate")

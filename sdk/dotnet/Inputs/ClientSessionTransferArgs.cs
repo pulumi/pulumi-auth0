@@ -33,6 +33,12 @@ namespace Pulumi.Auth0.Inputs
         public Input<bool>? CanCreateSessionTransferToken { get; set; }
 
         /// <summary>
+        /// Configuration for delegation (impersonation) access using Session Transfer Tokens. (EA Only)
+        /// </summary>
+        [Input("delegation")]
+        public Input<Inputs.ClientSessionTransferDelegationArgs>? Delegation { get; set; }
+
+        /// <summary>
         /// Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities. Usually configured in the native application.
         /// </summary>
         [Input("enforceCascadeRevocation")]

@@ -20,6 +20,8 @@ import * as utilities from "./utilities";
  *     identifier: "https://api.example.com",
  *     signingAlg: "RS256",
  *     allowOfflineAccess: true,
+ *     allowOnlineAccess: true,
+ *     allowOnlineAccessWithEphemeralSessions: false,
  *     tokenLifetime: 8600,
  *     skipConsentForVerifiableFirstPartyClients: true,
  *     consentPolicy: "transactional-authorization-with-mfa",
@@ -120,6 +122,14 @@ export class ResourceServer extends pulumi.CustomResource {
      */
     declare public readonly allowOfflineAccess: pulumi.Output<boolean>;
     /**
+     * Indicates whether Online Refresh Tokens can be issued for this resource server. (EA Only)
+     */
+    declare public readonly allowOnlineAccess: pulumi.Output<boolean>;
+    /**
+     * Indicates whether Online Refresh Tokens can be issued even when sessions are configured as ephemeral. (EA Only)
+     */
+    declare public readonly allowOnlineAccessWithEphemeralSessions: pulumi.Output<boolean>;
+    /**
      * Authorization details for this resource server.
      */
     declare public readonly authorizationDetails: pulumi.Output<outputs.ResourceServerAuthorizationDetail[]>;
@@ -206,6 +216,8 @@ export class ResourceServer extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ResourceServerState | undefined;
             resourceInputs["allowOfflineAccess"] = state?.allowOfflineAccess;
+            resourceInputs["allowOnlineAccess"] = state?.allowOnlineAccess;
+            resourceInputs["allowOnlineAccessWithEphemeralSessions"] = state?.allowOnlineAccessWithEphemeralSessions;
             resourceInputs["authorizationDetails"] = state?.authorizationDetails;
             resourceInputs["authorizationPolicy"] = state?.authorizationPolicy;
             resourceInputs["clientId"] = state?.clientId;
@@ -230,6 +242,8 @@ export class ResourceServer extends pulumi.CustomResource {
                 throw new Error("Missing required property 'identifier'");
             }
             resourceInputs["allowOfflineAccess"] = args?.allowOfflineAccess;
+            resourceInputs["allowOnlineAccess"] = args?.allowOnlineAccess;
+            resourceInputs["allowOnlineAccessWithEphemeralSessions"] = args?.allowOnlineAccessWithEphemeralSessions;
             resourceInputs["authorizationDetails"] = args?.authorizationDetails;
             resourceInputs["authorizationPolicy"] = args?.authorizationPolicy;
             resourceInputs["consentPolicy"] = args?.consentPolicy;
@@ -262,6 +276,14 @@ export interface ResourceServerState {
      * Indicates whether refresh tokens can be issued for this resource server.
      */
     allowOfflineAccess?: pulumi.Input<boolean | undefined>;
+    /**
+     * Indicates whether Online Refresh Tokens can be issued for this resource server. (EA Only)
+     */
+    allowOnlineAccess?: pulumi.Input<boolean | undefined>;
+    /**
+     * Indicates whether Online Refresh Tokens can be issued even when sessions are configured as ephemeral. (EA Only)
+     */
+    allowOnlineAccessWithEphemeralSessions?: pulumi.Input<boolean | undefined>;
     /**
      * Authorization details for this resource server.
      */
@@ -344,6 +366,14 @@ export interface ResourceServerArgs {
      * Indicates whether refresh tokens can be issued for this resource server.
      */
     allowOfflineAccess?: pulumi.Input<boolean | undefined>;
+    /**
+     * Indicates whether Online Refresh Tokens can be issued for this resource server. (EA Only)
+     */
+    allowOnlineAccess?: pulumi.Input<boolean | undefined>;
+    /**
+     * Indicates whether Online Refresh Tokens can be issued even when sessions are configured as ephemeral. (EA Only)
+     */
+    allowOnlineAccessWithEphemeralSessions?: pulumi.Input<boolean | undefined>;
     /**
      * Authorization details for this resource server.
      */

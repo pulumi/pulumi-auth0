@@ -108,9 +108,8 @@ def get_action_module_actions(module_id: Optional[_builtins.str] = None,
       }
     };
     \"\"\")
-    # Get the published versions of the module
-    my_module_versions = auth0.get_action_module_versions_output(module_id=my_module.id)
-    # Create an action that uses the module
+    # Create an action that uses the module.
+    # Use version_id directly from the module resource — no data source needed.
     my_action1 = auth0.Action("my_action_1",
         name="My Action Using Module 1",
         deploy=True,
@@ -125,7 +124,7 @@ def get_action_module_actions(module_id: Optional[_builtins.str] = None,
         },
         modules=[{
             "module_id": my_module.id,
-            "module_version_id": my_module_versions.versions[0].id,
+            "module_version_id": my_module.version_id,
         }])
     # Create another action that uses the same module
     my_action2 = auth0.Action("my_action_2",
@@ -142,7 +141,7 @@ def get_action_module_actions(module_id: Optional[_builtins.str] = None,
         },
         modules=[{
             "module_id": my_module.id,
-            "module_version_id": my_module_versions.versions[0].id,
+            "module_version_id": my_module.version_id,
         }])
     # Retrieve all actions that are using this module
     my_module_actions = auth0.get_action_module_actions_output(module_id=my_module.id)
@@ -185,9 +184,8 @@ def get_action_module_actions_output(module_id: pulumi.Input[Optional[_builtins.
       }
     };
     \"\"\")
-    # Get the published versions of the module
-    my_module_versions = auth0.get_action_module_versions_output(module_id=my_module.id)
-    # Create an action that uses the module
+    # Create an action that uses the module.
+    # Use version_id directly from the module resource — no data source needed.
     my_action1 = auth0.Action("my_action_1",
         name="My Action Using Module 1",
         deploy=True,
@@ -202,7 +200,7 @@ def get_action_module_actions_output(module_id: pulumi.Input[Optional[_builtins.
         },
         modules=[{
             "module_id": my_module.id,
-            "module_version_id": my_module_versions.versions[0].id,
+            "module_version_id": my_module.version_id,
         }])
     # Create another action that uses the same module
     my_action2 = auth0.Action("my_action_2",
@@ -219,7 +217,7 @@ def get_action_module_actions_output(module_id: pulumi.Input[Optional[_builtins.
         },
         modules=[{
             "module_id": my_module.id,
-            "module_version_id": my_module_versions.versions[0].id,
+            "module_version_id": my_module.version_id,
         }])
     # Retrieve all actions that are using this module
     my_module_actions = auth0.get_action_module_actions_output(module_id=my_module.id)

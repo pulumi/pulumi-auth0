@@ -38,17 +38,11 @@ namespace Pulumi.Auth0
         /// ",
         ///     });
         /// 
-        ///     // Get all versions to find the version ID
-        ///     var myModuleVersions = Auth0.GetActionModuleVersions.Invoke(new()
-        ///     {
-        ///         ModuleId = myModule.Id,
-        ///     });
-        /// 
-        ///     // Retrieve a specific version by its ID
+        ///     // Retrieve the latest published version using the module's version_id directly
         ///     var myModuleVersion = Auth0.GetActionModuleVersion.Invoke(new()
         ///     {
         ///         ModuleId = myModule.Id,
-        ///         VersionId = myModuleVersions.Apply(getActionModuleVersionsResult =&gt; getActionModuleVersionsResult.Versions[0]?.Id),
+        ///         VersionId = myModule.VersionId,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -90,17 +84,11 @@ namespace Pulumi.Auth0
         /// ",
         ///     });
         /// 
-        ///     // Get all versions to find the version ID
-        ///     var myModuleVersions = Auth0.GetActionModuleVersions.Invoke(new()
-        ///     {
-        ///         ModuleId = myModule.Id,
-        ///     });
-        /// 
-        ///     // Retrieve a specific version by its ID
+        ///     // Retrieve the latest published version using the module's version_id directly
         ///     var myModuleVersion = Auth0.GetActionModuleVersion.Invoke(new()
         ///     {
         ///         ModuleId = myModule.Id,
-        ///         VersionId = myModuleVersions.Apply(getActionModuleVersionsResult =&gt; getActionModuleVersionsResult.Versions[0]?.Id),
+        ///         VersionId = myModule.VersionId,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -142,17 +130,11 @@ namespace Pulumi.Auth0
         /// ",
         ///     });
         /// 
-        ///     // Get all versions to find the version ID
-        ///     var myModuleVersions = Auth0.GetActionModuleVersions.Invoke(new()
-        ///     {
-        ///         ModuleId = myModule.Id,
-        ///     });
-        /// 
-        ///     // Retrieve a specific version by its ID
+        ///     // Retrieve the latest published version using the module's version_id directly
         ///     var myModuleVersion = Auth0.GetActionModuleVersion.Invoke(new()
         ///     {
         ///         ModuleId = myModule.Id,
-        ///         VersionId = myModuleVersions.Apply(getActionModuleVersionsResult =&gt; getActionModuleVersionsResult.Versions[0]?.Id),
+        ///         VersionId = myModule.VersionId,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;

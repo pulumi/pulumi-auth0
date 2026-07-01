@@ -7,6 +7,7 @@ import com.pulumi.auth0.outputs.GetClientAddon;
 import com.pulumi.auth0.outputs.GetClientClientAuthenticationMethod;
 import com.pulumi.auth0.outputs.GetClientDefaultOrganization;
 import com.pulumi.auth0.outputs.GetClientExpressConfiguration;
+import com.pulumi.auth0.outputs.GetClientFedcmLogin;
 import com.pulumi.auth0.outputs.GetClientJwtConfiguration;
 import com.pulumi.auth0.outputs.GetClientMobile;
 import com.pulumi.auth0.outputs.GetClientMyOrganizationConfiguration;
@@ -149,6 +150,11 @@ public final class GetClientResult {
      * 
      */
     private String externalMetadataType;
+    /**
+     * @return Federated Credential Management (FedCM) configuration. (EA only)
+     * 
+     */
+    private List<GetClientFedcmLogin> fedcmLogins;
     /**
      * @return HTML form template to be used for WS-Federation.
      * 
@@ -491,6 +497,13 @@ public final class GetClientResult {
         return this.externalMetadataType;
     }
     /**
+     * @return Federated Credential Management (FedCM) configuration. (EA only)
+     * 
+     */
+    public List<GetClientFedcmLogin> fedcmLogins() {
+        return this.fedcmLogins;
+    }
+    /**
      * @return HTML form template to be used for WS-Federation.
      * 
      */
@@ -765,6 +778,7 @@ public final class GetClientResult {
         private String externalClientId;
         private String externalMetadataCreatedBy;
         private String externalMetadataType;
+        private List<GetClientFedcmLogin> fedcmLogins;
         private String formTemplate;
         private List<String> grantTypes;
         private String id;
@@ -827,6 +841,7 @@ public final class GetClientResult {
     	      this.externalClientId = defaults.externalClientId;
     	      this.externalMetadataCreatedBy = defaults.externalMetadataCreatedBy;
     	      this.externalMetadataType = defaults.externalMetadataType;
+    	      this.fedcmLogins = defaults.fedcmLogins;
     	      this.formTemplate = defaults.formTemplate;
     	      this.grantTypes = defaults.grantTypes;
     	      this.id = defaults.id;
@@ -1083,6 +1098,17 @@ public final class GetClientResult {
             }
             this.externalMetadataType = externalMetadataType;
             return this;
+        }
+        @CustomType.Setter
+        public Builder fedcmLogins(List<GetClientFedcmLogin> fedcmLogins) {
+            if (fedcmLogins == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "fedcmLogins");
+            }
+            this.fedcmLogins = fedcmLogins;
+            return this;
+        }
+        public Builder fedcmLogins(GetClientFedcmLogin... fedcmLogins) {
+            return fedcmLogins(List.of(fedcmLogins));
         }
         @CustomType.Setter
         public Builder formTemplate(String formTemplate) {
@@ -1430,6 +1456,7 @@ public final class GetClientResult {
             _resultValue.externalClientId = externalClientId;
             _resultValue.externalMetadataCreatedBy = externalMetadataCreatedBy;
             _resultValue.externalMetadataType = externalMetadataType;
+            _resultValue.fedcmLogins = fedcmLogins;
             _resultValue.formTemplate = formTemplate;
             _resultValue.grantTypes = grantTypes;
             _resultValue.id = id;

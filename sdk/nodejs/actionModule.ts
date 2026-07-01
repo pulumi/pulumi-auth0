@@ -17,6 +17,7 @@ import * as utilities from "./utilities";
  *
  * const myModule = new auth0.ActionModule("my_module", {
  *     name: "My Shared Module",
+ *     publish: true,
  *     code: `/**
  *  * A shared utility function that can be used across multiple actions.
  *  *&#47;
@@ -37,6 +38,26 @@ import * as utilities from "./utilities";
  *         name: "API_KEY",
  *         value: "my-secret-api-key",
  *     }],
+ * });
+ * // Use the module in an action by referencing its id and version_id.
+ * const myAction = new auth0.Action("my_action", {
+ *     name: "My Action",
+ *     runtime: "node22",
+ *     deploy: true,
+ *     code: `const myModule = require('My Shared Module');
+ *
+ * exports.onExecutePostLogin = async (event, api) => {
+ *   console.log(myModule.greet(event.user.name));
+ * };
+ * `,
+ *     modules: [{
+ *         moduleId: myModule.id,
+ *         moduleVersionId: myModule.versionId,
+ *     }],
+ *     supportedTriggers: {
+ *         id: "post-login",
+ *         version: "v3",
+ *     },
  * });
  * ```
  */

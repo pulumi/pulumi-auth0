@@ -57,6 +57,14 @@ export interface GetResourceServerResult {
      */
     readonly allowOfflineAccess: boolean;
     /**
+     * Indicates whether Online Refresh Tokens can be issued for this resource server. (EA Only)
+     */
+    readonly allowOnlineAccess: boolean;
+    /**
+     * Indicates whether Online Refresh Tokens can be issued even when sessions are configured as ephemeral. (EA Only)
+     */
+    readonly allowOnlineAccessWithEphemeralSessions: boolean;
+    /**
      * Authorization details for this resource server.
      */
     readonly authorizationDetails: outputs.GetResourceServerAuthorizationDetail[];

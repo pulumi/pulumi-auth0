@@ -13,6 +13,1236 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetTenantErrorPage struct {
+	// Custom Error HTML (Liquid syntax is supported)
+	Html string `pulumi:"html"`
+	// Whether to show the link to log as part of the default error page (true, default) or not to show the link (false).
+	ShowLogLink bool `pulumi:"showLogLink"`
+	// URL to redirect to when an error occurs instead of showing the default error page
+	Url string `pulumi:"url"`
+}
+
+// GetTenantErrorPageInput is an input type that accepts GetTenantErrorPageArgs and GetTenantErrorPageOutput values.
+// You can construct a concrete instance of `GetTenantErrorPageInput` via:
+//
+//	GetTenantErrorPageArgs{...}
+type GetTenantErrorPageInput interface {
+	pulumi.Input
+
+	ToGetTenantErrorPageOutput() GetTenantErrorPageOutput
+	ToGetTenantErrorPageOutputWithContext(context.Context) GetTenantErrorPageOutput
+}
+
+type GetTenantErrorPageArgs struct {
+	// Custom Error HTML (Liquid syntax is supported)
+	Html pulumi.StringInput `pulumi:"html"`
+	// Whether to show the link to log as part of the default error page (true, default) or not to show the link (false).
+	ShowLogLink pulumi.BoolInput `pulumi:"showLogLink"`
+	// URL to redirect to when an error occurs instead of showing the default error page
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (GetTenantErrorPageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTenantErrorPage)(nil)).Elem()
+}
+
+func (i GetTenantErrorPageArgs) ToGetTenantErrorPageOutput() GetTenantErrorPageOutput {
+	return i.ToGetTenantErrorPageOutputWithContext(context.Background())
+}
+
+func (i GetTenantErrorPageArgs) ToGetTenantErrorPageOutputWithContext(ctx context.Context) GetTenantErrorPageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTenantErrorPageOutput)
+}
+
+// GetTenantErrorPageArrayInput is an input type that accepts GetTenantErrorPageArray and GetTenantErrorPageArrayOutput values.
+// You can construct a concrete instance of `GetTenantErrorPageArrayInput` via:
+//
+//	GetTenantErrorPageArray{ GetTenantErrorPageArgs{...} }
+type GetTenantErrorPageArrayInput interface {
+	pulumi.Input
+
+	ToGetTenantErrorPageArrayOutput() GetTenantErrorPageArrayOutput
+	ToGetTenantErrorPageArrayOutputWithContext(context.Context) GetTenantErrorPageArrayOutput
+}
+
+type GetTenantErrorPageArray []GetTenantErrorPageInput
+
+func (GetTenantErrorPageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTenantErrorPage)(nil)).Elem()
+}
+
+func (i GetTenantErrorPageArray) ToGetTenantErrorPageArrayOutput() GetTenantErrorPageArrayOutput {
+	return i.ToGetTenantErrorPageArrayOutputWithContext(context.Background())
+}
+
+func (i GetTenantErrorPageArray) ToGetTenantErrorPageArrayOutputWithContext(ctx context.Context) GetTenantErrorPageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTenantErrorPageArrayOutput)
+}
+
+type GetTenantErrorPageOutput struct{ *pulumi.OutputState }
+
+func (GetTenantErrorPageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTenantErrorPage)(nil)).Elem()
+}
+
+func (o GetTenantErrorPageOutput) ToGetTenantErrorPageOutput() GetTenantErrorPageOutput {
+	return o
+}
+
+func (o GetTenantErrorPageOutput) ToGetTenantErrorPageOutputWithContext(ctx context.Context) GetTenantErrorPageOutput {
+	return o
+}
+
+// Custom Error HTML (Liquid syntax is supported)
+func (o GetTenantErrorPageOutput) Html() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTenantErrorPage) string { return v.Html }).(pulumi.StringOutput)
+}
+
+// Whether to show the link to log as part of the default error page (true, default) or not to show the link (false).
+func (o GetTenantErrorPageOutput) ShowLogLink() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantErrorPage) bool { return v.ShowLogLink }).(pulumi.BoolOutput)
+}
+
+// URL to redirect to when an error occurs instead of showing the default error page
+func (o GetTenantErrorPageOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTenantErrorPage) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type GetTenantErrorPageArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTenantErrorPageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTenantErrorPage)(nil)).Elem()
+}
+
+func (o GetTenantErrorPageArrayOutput) ToGetTenantErrorPageArrayOutput() GetTenantErrorPageArrayOutput {
+	return o
+}
+
+func (o GetTenantErrorPageArrayOutput) ToGetTenantErrorPageArrayOutputWithContext(ctx context.Context) GetTenantErrorPageArrayOutput {
+	return o
+}
+
+func (o GetTenantErrorPageArrayOutput) Index(i pulumi.IntInput) GetTenantErrorPageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTenantErrorPage {
+		return vs[0].([]GetTenantErrorPage)[vs[1].(int)]
+	}).(GetTenantErrorPageOutput)
+}
+
+type GetTenantFlag struct {
+	// Whether the legacy delegation endpoint will be enabled for your account (true) or not available (false).
+	AllowLegacyDelegationGrantTypes bool `pulumi:"allowLegacyDelegationGrantTypes"`
+	// Whether the legacy `auth/ro` endpoint (used with resource owner password and passwordless features) will be enabled for your account (true) or not available (false).
+	AllowLegacyRoGrantTypes bool `pulumi:"allowLegacyRoGrantTypes"`
+	// If enabled, customers can use Tokeninfo Endpoint, otherwise they can not use it.
+	AllowLegacyTokeninfoEndpoint bool `pulumi:"allowLegacyTokeninfoEndpoint"`
+	// Enables new insights activity page view.
+	DashboardInsightsView bool `pulumi:"dashboardInsightsView"`
+	// Enables beta access to log streaming changes.
+	DashboardLogStreamsNext bool `pulumi:"dashboardLogStreamsNext"`
+	// Indicates whether classic Universal Login prompts include additional security headers to prevent clickjacking.
+	DisableClickjackProtectionHeaders bool `pulumi:"disableClickjackProtectionHeaders"`
+	// Disables SAML fields map fix for bad mappings with repeated attributes.
+	DisableFieldsMapFix bool `pulumi:"disableFieldsMapFix"`
+	// If true, SMS phone numbers will not be obfuscated in Management API GET calls.
+	DisableManagementApiSmsObfuscation bool `pulumi:"disableManagementApiSmsObfuscation"`
+	// If enabled, users will be presented with an email verification prompt during their first login when using Azure AD or ADFS connections.
+	EnableAdfsWaadEmailVerification bool `pulumi:"enableAdfsWaadEmailVerification"`
+	// Indicates whether the APIs section is enabled for the tenant.
+	EnableApisSection bool `pulumi:"enableApisSection"`
+	// Indicates whether all current connections should be enabled when a new client is created.
+	EnableClientConnections bool `pulumi:"enableClientConnections"`
+	// Indicates whether the tenant allows custom domains in emails. Before enabling this flag, you must have a custom domain with status: `ready`.
+	EnableCustomDomainInEmails bool `pulumi:"enableCustomDomainInEmails"`
+	// Indicates whether the tenant allows dynamic client registration.
+	EnableDynamicClientRegistration bool `pulumi:"enableDynamicClientRegistration"`
+	// Whether ID tokens can be used to authorize some types of requests to API v2 (true) or not (false).
+	EnableIdtokenApi2 bool `pulumi:"enableIdtokenApi2"`
+	// Indicates whether to use the older v2 legacy logs search.
+	EnableLegacyLogsSearchV2 bool `pulumi:"enableLegacyLogsSearchV2"`
+	// Whether ID tokens and the userinfo endpoint includes a complete user profile (true) or only OpenID Connect claims (false).
+	EnableLegacyProfile bool `pulumi:"enableLegacyProfile"`
+	// Indicates whether advanced API Authorization scenarios are enabled.
+	EnablePipeline2 bool `pulumi:"enablePipeline2"`
+	// Indicates whether the public sign up process shows a `userExists` error if the user already exists.
+	EnablePublicSignupUserExistsError bool `pulumi:"enablePublicSignupUserExistsError"`
+	// Flag indicating whether users will not be prompted to confirm log in before SSO redirection. This flag applies to existing tenants only; new tenants have it enforced as true.
+	EnableSso bool `pulumi:"enableSso"`
+	// Used to allow users to pick which factor to enroll with from the list of available MFA factors.
+	MfaShowFactorListOnEnrollment bool `pulumi:"mfaShowFactorListOnEnrollment"`
+	// Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
+	NoDiscloseEnterpriseConnections bool `pulumi:"noDiscloseEnterpriseConnections"`
+	// Remove `alg` from jwks(JSON Web Key Sets).
+	RemoveAlgFromJwks bool `pulumi:"removeAlgFromJwks"`
+	// This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
+	RequirePushedAuthorizationRequests bool `pulumi:"requirePushedAuthorizationRequests"`
+	// Delete underlying grant when a refresh token is revoked via the Authentication API.
+	RevokeRefreshTokenGrant bool `pulumi:"revokeRefreshTokenGrant"`
+	// Indicates whether to use scope descriptions for consent.
+	UseScopeDescriptionsForConsent bool `pulumi:"useScopeDescriptionsForConsent"`
+}
+
+// GetTenantFlagInput is an input type that accepts GetTenantFlagArgs and GetTenantFlagOutput values.
+// You can construct a concrete instance of `GetTenantFlagInput` via:
+//
+//	GetTenantFlagArgs{...}
+type GetTenantFlagInput interface {
+	pulumi.Input
+
+	ToGetTenantFlagOutput() GetTenantFlagOutput
+	ToGetTenantFlagOutputWithContext(context.Context) GetTenantFlagOutput
+}
+
+type GetTenantFlagArgs struct {
+	// Whether the legacy delegation endpoint will be enabled for your account (true) or not available (false).
+	AllowLegacyDelegationGrantTypes pulumi.BoolInput `pulumi:"allowLegacyDelegationGrantTypes"`
+	// Whether the legacy `auth/ro` endpoint (used with resource owner password and passwordless features) will be enabled for your account (true) or not available (false).
+	AllowLegacyRoGrantTypes pulumi.BoolInput `pulumi:"allowLegacyRoGrantTypes"`
+	// If enabled, customers can use Tokeninfo Endpoint, otherwise they can not use it.
+	AllowLegacyTokeninfoEndpoint pulumi.BoolInput `pulumi:"allowLegacyTokeninfoEndpoint"`
+	// Enables new insights activity page view.
+	DashboardInsightsView pulumi.BoolInput `pulumi:"dashboardInsightsView"`
+	// Enables beta access to log streaming changes.
+	DashboardLogStreamsNext pulumi.BoolInput `pulumi:"dashboardLogStreamsNext"`
+	// Indicates whether classic Universal Login prompts include additional security headers to prevent clickjacking.
+	DisableClickjackProtectionHeaders pulumi.BoolInput `pulumi:"disableClickjackProtectionHeaders"`
+	// Disables SAML fields map fix for bad mappings with repeated attributes.
+	DisableFieldsMapFix pulumi.BoolInput `pulumi:"disableFieldsMapFix"`
+	// If true, SMS phone numbers will not be obfuscated in Management API GET calls.
+	DisableManagementApiSmsObfuscation pulumi.BoolInput `pulumi:"disableManagementApiSmsObfuscation"`
+	// If enabled, users will be presented with an email verification prompt during their first login when using Azure AD or ADFS connections.
+	EnableAdfsWaadEmailVerification pulumi.BoolInput `pulumi:"enableAdfsWaadEmailVerification"`
+	// Indicates whether the APIs section is enabled for the tenant.
+	EnableApisSection pulumi.BoolInput `pulumi:"enableApisSection"`
+	// Indicates whether all current connections should be enabled when a new client is created.
+	EnableClientConnections pulumi.BoolInput `pulumi:"enableClientConnections"`
+	// Indicates whether the tenant allows custom domains in emails. Before enabling this flag, you must have a custom domain with status: `ready`.
+	EnableCustomDomainInEmails pulumi.BoolInput `pulumi:"enableCustomDomainInEmails"`
+	// Indicates whether the tenant allows dynamic client registration.
+	EnableDynamicClientRegistration pulumi.BoolInput `pulumi:"enableDynamicClientRegistration"`
+	// Whether ID tokens can be used to authorize some types of requests to API v2 (true) or not (false).
+	EnableIdtokenApi2 pulumi.BoolInput `pulumi:"enableIdtokenApi2"`
+	// Indicates whether to use the older v2 legacy logs search.
+	EnableLegacyLogsSearchV2 pulumi.BoolInput `pulumi:"enableLegacyLogsSearchV2"`
+	// Whether ID tokens and the userinfo endpoint includes a complete user profile (true) or only OpenID Connect claims (false).
+	EnableLegacyProfile pulumi.BoolInput `pulumi:"enableLegacyProfile"`
+	// Indicates whether advanced API Authorization scenarios are enabled.
+	EnablePipeline2 pulumi.BoolInput `pulumi:"enablePipeline2"`
+	// Indicates whether the public sign up process shows a `userExists` error if the user already exists.
+	EnablePublicSignupUserExistsError pulumi.BoolInput `pulumi:"enablePublicSignupUserExistsError"`
+	// Flag indicating whether users will not be prompted to confirm log in before SSO redirection. This flag applies to existing tenants only; new tenants have it enforced as true.
+	EnableSso pulumi.BoolInput `pulumi:"enableSso"`
+	// Used to allow users to pick which factor to enroll with from the list of available MFA factors.
+	MfaShowFactorListOnEnrollment pulumi.BoolInput `pulumi:"mfaShowFactorListOnEnrollment"`
+	// Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
+	NoDiscloseEnterpriseConnections pulumi.BoolInput `pulumi:"noDiscloseEnterpriseConnections"`
+	// Remove `alg` from jwks(JSON Web Key Sets).
+	RemoveAlgFromJwks pulumi.BoolInput `pulumi:"removeAlgFromJwks"`
+	// This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
+	RequirePushedAuthorizationRequests pulumi.BoolInput `pulumi:"requirePushedAuthorizationRequests"`
+	// Delete underlying grant when a refresh token is revoked via the Authentication API.
+	RevokeRefreshTokenGrant pulumi.BoolInput `pulumi:"revokeRefreshTokenGrant"`
+	// Indicates whether to use scope descriptions for consent.
+	UseScopeDescriptionsForConsent pulumi.BoolInput `pulumi:"useScopeDescriptionsForConsent"`
+}
+
+func (GetTenantFlagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTenantFlag)(nil)).Elem()
+}
+
+func (i GetTenantFlagArgs) ToGetTenantFlagOutput() GetTenantFlagOutput {
+	return i.ToGetTenantFlagOutputWithContext(context.Background())
+}
+
+func (i GetTenantFlagArgs) ToGetTenantFlagOutputWithContext(ctx context.Context) GetTenantFlagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTenantFlagOutput)
+}
+
+// GetTenantFlagArrayInput is an input type that accepts GetTenantFlagArray and GetTenantFlagArrayOutput values.
+// You can construct a concrete instance of `GetTenantFlagArrayInput` via:
+//
+//	GetTenantFlagArray{ GetTenantFlagArgs{...} }
+type GetTenantFlagArrayInput interface {
+	pulumi.Input
+
+	ToGetTenantFlagArrayOutput() GetTenantFlagArrayOutput
+	ToGetTenantFlagArrayOutputWithContext(context.Context) GetTenantFlagArrayOutput
+}
+
+type GetTenantFlagArray []GetTenantFlagInput
+
+func (GetTenantFlagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTenantFlag)(nil)).Elem()
+}
+
+func (i GetTenantFlagArray) ToGetTenantFlagArrayOutput() GetTenantFlagArrayOutput {
+	return i.ToGetTenantFlagArrayOutputWithContext(context.Background())
+}
+
+func (i GetTenantFlagArray) ToGetTenantFlagArrayOutputWithContext(ctx context.Context) GetTenantFlagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTenantFlagArrayOutput)
+}
+
+type GetTenantFlagOutput struct{ *pulumi.OutputState }
+
+func (GetTenantFlagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTenantFlag)(nil)).Elem()
+}
+
+func (o GetTenantFlagOutput) ToGetTenantFlagOutput() GetTenantFlagOutput {
+	return o
+}
+
+func (o GetTenantFlagOutput) ToGetTenantFlagOutputWithContext(ctx context.Context) GetTenantFlagOutput {
+	return o
+}
+
+// Whether the legacy delegation endpoint will be enabled for your account (true) or not available (false).
+func (o GetTenantFlagOutput) AllowLegacyDelegationGrantTypes() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantFlag) bool { return v.AllowLegacyDelegationGrantTypes }).(pulumi.BoolOutput)
+}
+
+// Whether the legacy `auth/ro` endpoint (used with resource owner password and passwordless features) will be enabled for your account (true) or not available (false).
+func (o GetTenantFlagOutput) AllowLegacyRoGrantTypes() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantFlag) bool { return v.AllowLegacyRoGrantTypes }).(pulumi.BoolOutput)
+}
+
+// If enabled, customers can use Tokeninfo Endpoint, otherwise they can not use it.
+func (o GetTenantFlagOutput) AllowLegacyTokeninfoEndpoint() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantFlag) bool { return v.AllowLegacyTokeninfoEndpoint }).(pulumi.BoolOutput)
+}
+
+// Enables new insights activity page view.
+func (o GetTenantFlagOutput) DashboardInsightsView() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantFlag) bool { return v.DashboardInsightsView }).(pulumi.BoolOutput)
+}
+
+// Enables beta access to log streaming changes.
+func (o GetTenantFlagOutput) DashboardLogStreamsNext() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantFlag) bool { return v.DashboardLogStreamsNext }).(pulumi.BoolOutput)
+}
+
+// Indicates whether classic Universal Login prompts include additional security headers to prevent clickjacking.
+func (o GetTenantFlagOutput) DisableClickjackProtectionHeaders() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantFlag) bool { return v.DisableClickjackProtectionHeaders }).(pulumi.BoolOutput)
+}
+
+// Disables SAML fields map fix for bad mappings with repeated attributes.
+func (o GetTenantFlagOutput) DisableFieldsMapFix() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantFlag) bool { return v.DisableFieldsMapFix }).(pulumi.BoolOutput)
+}
+
+// If true, SMS phone numbers will not be obfuscated in Management API GET calls.
+func (o GetTenantFlagOutput) DisableManagementApiSmsObfuscation() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantFlag) bool { return v.DisableManagementApiSmsObfuscation }).(pulumi.BoolOutput)
+}
+
+// If enabled, users will be presented with an email verification prompt during their first login when using Azure AD or ADFS connections.
+func (o GetTenantFlagOutput) EnableAdfsWaadEmailVerification() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantFlag) bool { return v.EnableAdfsWaadEmailVerification }).(pulumi.BoolOutput)
+}
+
+// Indicates whether the APIs section is enabled for the tenant.
+func (o GetTenantFlagOutput) EnableApisSection() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantFlag) bool { return v.EnableApisSection }).(pulumi.BoolOutput)
+}
+
+// Indicates whether all current connections should be enabled when a new client is created.
+func (o GetTenantFlagOutput) EnableClientConnections() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantFlag) bool { return v.EnableClientConnections }).(pulumi.BoolOutput)
+}
+
+// Indicates whether the tenant allows custom domains in emails. Before enabling this flag, you must have a custom domain with status: `ready`.
+func (o GetTenantFlagOutput) EnableCustomDomainInEmails() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantFlag) bool { return v.EnableCustomDomainInEmails }).(pulumi.BoolOutput)
+}
+
+// Indicates whether the tenant allows dynamic client registration.
+func (o GetTenantFlagOutput) EnableDynamicClientRegistration() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantFlag) bool { return v.EnableDynamicClientRegistration }).(pulumi.BoolOutput)
+}
+
+// Whether ID tokens can be used to authorize some types of requests to API v2 (true) or not (false).
+func (o GetTenantFlagOutput) EnableIdtokenApi2() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantFlag) bool { return v.EnableIdtokenApi2 }).(pulumi.BoolOutput)
+}
+
+// Indicates whether to use the older v2 legacy logs search.
+func (o GetTenantFlagOutput) EnableLegacyLogsSearchV2() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantFlag) bool { return v.EnableLegacyLogsSearchV2 }).(pulumi.BoolOutput)
+}
+
+// Whether ID tokens and the userinfo endpoint includes a complete user profile (true) or only OpenID Connect claims (false).
+func (o GetTenantFlagOutput) EnableLegacyProfile() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantFlag) bool { return v.EnableLegacyProfile }).(pulumi.BoolOutput)
+}
+
+// Indicates whether advanced API Authorization scenarios are enabled.
+func (o GetTenantFlagOutput) EnablePipeline2() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantFlag) bool { return v.EnablePipeline2 }).(pulumi.BoolOutput)
+}
+
+// Indicates whether the public sign up process shows a `userExists` error if the user already exists.
+func (o GetTenantFlagOutput) EnablePublicSignupUserExistsError() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantFlag) bool { return v.EnablePublicSignupUserExistsError }).(pulumi.BoolOutput)
+}
+
+// Flag indicating whether users will not be prompted to confirm log in before SSO redirection. This flag applies to existing tenants only; new tenants have it enforced as true.
+func (o GetTenantFlagOutput) EnableSso() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantFlag) bool { return v.EnableSso }).(pulumi.BoolOutput)
+}
+
+// Used to allow users to pick which factor to enroll with from the list of available MFA factors.
+func (o GetTenantFlagOutput) MfaShowFactorListOnEnrollment() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantFlag) bool { return v.MfaShowFactorListOnEnrollment }).(pulumi.BoolOutput)
+}
+
+// Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
+func (o GetTenantFlagOutput) NoDiscloseEnterpriseConnections() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantFlag) bool { return v.NoDiscloseEnterpriseConnections }).(pulumi.BoolOutput)
+}
+
+// Remove `alg` from jwks(JSON Web Key Sets).
+func (o GetTenantFlagOutput) RemoveAlgFromJwks() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantFlag) bool { return v.RemoveAlgFromJwks }).(pulumi.BoolOutput)
+}
+
+// This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
+func (o GetTenantFlagOutput) RequirePushedAuthorizationRequests() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantFlag) bool { return v.RequirePushedAuthorizationRequests }).(pulumi.BoolOutput)
+}
+
+// Delete underlying grant when a refresh token is revoked via the Authentication API.
+func (o GetTenantFlagOutput) RevokeRefreshTokenGrant() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantFlag) bool { return v.RevokeRefreshTokenGrant }).(pulumi.BoolOutput)
+}
+
+// Indicates whether to use scope descriptions for consent.
+func (o GetTenantFlagOutput) UseScopeDescriptionsForConsent() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantFlag) bool { return v.UseScopeDescriptionsForConsent }).(pulumi.BoolOutput)
+}
+
+type GetTenantFlagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTenantFlagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTenantFlag)(nil)).Elem()
+}
+
+func (o GetTenantFlagArrayOutput) ToGetTenantFlagArrayOutput() GetTenantFlagArrayOutput {
+	return o
+}
+
+func (o GetTenantFlagArrayOutput) ToGetTenantFlagArrayOutputWithContext(ctx context.Context) GetTenantFlagArrayOutput {
+	return o
+}
+
+func (o GetTenantFlagArrayOutput) Index(i pulumi.IntInput) GetTenantFlagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTenantFlag {
+		return vs[0].([]GetTenantFlag)[vs[1].(int)]
+	}).(GetTenantFlagOutput)
+}
+
+type GetTenantMtl struct {
+	// Disable mTLS settings.
+	Disable bool `pulumi:"disable"`
+	// Enable mTLS endpoint aliases.
+	EnableEndpointAliases bool `pulumi:"enableEndpointAliases"`
+}
+
+// GetTenantMtlInput is an input type that accepts GetTenantMtlArgs and GetTenantMtlOutput values.
+// You can construct a concrete instance of `GetTenantMtlInput` via:
+//
+//	GetTenantMtlArgs{...}
+type GetTenantMtlInput interface {
+	pulumi.Input
+
+	ToGetTenantMtlOutput() GetTenantMtlOutput
+	ToGetTenantMtlOutputWithContext(context.Context) GetTenantMtlOutput
+}
+
+type GetTenantMtlArgs struct {
+	// Disable mTLS settings.
+	Disable pulumi.BoolInput `pulumi:"disable"`
+	// Enable mTLS endpoint aliases.
+	EnableEndpointAliases pulumi.BoolInput `pulumi:"enableEndpointAliases"`
+}
+
+func (GetTenantMtlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTenantMtl)(nil)).Elem()
+}
+
+func (i GetTenantMtlArgs) ToGetTenantMtlOutput() GetTenantMtlOutput {
+	return i.ToGetTenantMtlOutputWithContext(context.Background())
+}
+
+func (i GetTenantMtlArgs) ToGetTenantMtlOutputWithContext(ctx context.Context) GetTenantMtlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTenantMtlOutput)
+}
+
+// GetTenantMtlArrayInput is an input type that accepts GetTenantMtlArray and GetTenantMtlArrayOutput values.
+// You can construct a concrete instance of `GetTenantMtlArrayInput` via:
+//
+//	GetTenantMtlArray{ GetTenantMtlArgs{...} }
+type GetTenantMtlArrayInput interface {
+	pulumi.Input
+
+	ToGetTenantMtlArrayOutput() GetTenantMtlArrayOutput
+	ToGetTenantMtlArrayOutputWithContext(context.Context) GetTenantMtlArrayOutput
+}
+
+type GetTenantMtlArray []GetTenantMtlInput
+
+func (GetTenantMtlArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTenantMtl)(nil)).Elem()
+}
+
+func (i GetTenantMtlArray) ToGetTenantMtlArrayOutput() GetTenantMtlArrayOutput {
+	return i.ToGetTenantMtlArrayOutputWithContext(context.Background())
+}
+
+func (i GetTenantMtlArray) ToGetTenantMtlArrayOutputWithContext(ctx context.Context) GetTenantMtlArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTenantMtlArrayOutput)
+}
+
+type GetTenantMtlOutput struct{ *pulumi.OutputState }
+
+func (GetTenantMtlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTenantMtl)(nil)).Elem()
+}
+
+func (o GetTenantMtlOutput) ToGetTenantMtlOutput() GetTenantMtlOutput {
+	return o
+}
+
+func (o GetTenantMtlOutput) ToGetTenantMtlOutputWithContext(ctx context.Context) GetTenantMtlOutput {
+	return o
+}
+
+// Disable mTLS settings.
+func (o GetTenantMtlOutput) Disable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantMtl) bool { return v.Disable }).(pulumi.BoolOutput)
+}
+
+// Enable mTLS endpoint aliases.
+func (o GetTenantMtlOutput) EnableEndpointAliases() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantMtl) bool { return v.EnableEndpointAliases }).(pulumi.BoolOutput)
+}
+
+type GetTenantMtlArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTenantMtlArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTenantMtl)(nil)).Elem()
+}
+
+func (o GetTenantMtlArrayOutput) ToGetTenantMtlArrayOutput() GetTenantMtlArrayOutput {
+	return o
+}
+
+func (o GetTenantMtlArrayOutput) ToGetTenantMtlArrayOutputWithContext(ctx context.Context) GetTenantMtlArrayOutput {
+	return o
+}
+
+func (o GetTenantMtlArrayOutput) Index(i pulumi.IntInput) GetTenantMtlOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTenantMtl {
+		return vs[0].([]GetTenantMtl)[vs[1].(int)]
+	}).(GetTenantMtlOutput)
+}
+
+type GetTenantOidcLogout struct {
+	// Enable the endSessionEndpoint URL in the .well-known discovery configuration.
+	RpLogoutEndSessionEndpointDiscovery bool `pulumi:"rpLogoutEndSessionEndpointDiscovery"`
+}
+
+// GetTenantOidcLogoutInput is an input type that accepts GetTenantOidcLogoutArgs and GetTenantOidcLogoutOutput values.
+// You can construct a concrete instance of `GetTenantOidcLogoutInput` via:
+//
+//	GetTenantOidcLogoutArgs{...}
+type GetTenantOidcLogoutInput interface {
+	pulumi.Input
+
+	ToGetTenantOidcLogoutOutput() GetTenantOidcLogoutOutput
+	ToGetTenantOidcLogoutOutputWithContext(context.Context) GetTenantOidcLogoutOutput
+}
+
+type GetTenantOidcLogoutArgs struct {
+	// Enable the endSessionEndpoint URL in the .well-known discovery configuration.
+	RpLogoutEndSessionEndpointDiscovery pulumi.BoolInput `pulumi:"rpLogoutEndSessionEndpointDiscovery"`
+}
+
+func (GetTenantOidcLogoutArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTenantOidcLogout)(nil)).Elem()
+}
+
+func (i GetTenantOidcLogoutArgs) ToGetTenantOidcLogoutOutput() GetTenantOidcLogoutOutput {
+	return i.ToGetTenantOidcLogoutOutputWithContext(context.Background())
+}
+
+func (i GetTenantOidcLogoutArgs) ToGetTenantOidcLogoutOutputWithContext(ctx context.Context) GetTenantOidcLogoutOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTenantOidcLogoutOutput)
+}
+
+// GetTenantOidcLogoutArrayInput is an input type that accepts GetTenantOidcLogoutArray and GetTenantOidcLogoutArrayOutput values.
+// You can construct a concrete instance of `GetTenantOidcLogoutArrayInput` via:
+//
+//	GetTenantOidcLogoutArray{ GetTenantOidcLogoutArgs{...} }
+type GetTenantOidcLogoutArrayInput interface {
+	pulumi.Input
+
+	ToGetTenantOidcLogoutArrayOutput() GetTenantOidcLogoutArrayOutput
+	ToGetTenantOidcLogoutArrayOutputWithContext(context.Context) GetTenantOidcLogoutArrayOutput
+}
+
+type GetTenantOidcLogoutArray []GetTenantOidcLogoutInput
+
+func (GetTenantOidcLogoutArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTenantOidcLogout)(nil)).Elem()
+}
+
+func (i GetTenantOidcLogoutArray) ToGetTenantOidcLogoutArrayOutput() GetTenantOidcLogoutArrayOutput {
+	return i.ToGetTenantOidcLogoutArrayOutputWithContext(context.Background())
+}
+
+func (i GetTenantOidcLogoutArray) ToGetTenantOidcLogoutArrayOutputWithContext(ctx context.Context) GetTenantOidcLogoutArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTenantOidcLogoutArrayOutput)
+}
+
+type GetTenantOidcLogoutOutput struct{ *pulumi.OutputState }
+
+func (GetTenantOidcLogoutOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTenantOidcLogout)(nil)).Elem()
+}
+
+func (o GetTenantOidcLogoutOutput) ToGetTenantOidcLogoutOutput() GetTenantOidcLogoutOutput {
+	return o
+}
+
+func (o GetTenantOidcLogoutOutput) ToGetTenantOidcLogoutOutputWithContext(ctx context.Context) GetTenantOidcLogoutOutput {
+	return o
+}
+
+// Enable the endSessionEndpoint URL in the .well-known discovery configuration.
+func (o GetTenantOidcLogoutOutput) RpLogoutEndSessionEndpointDiscovery() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantOidcLogout) bool { return v.RpLogoutEndSessionEndpointDiscovery }).(pulumi.BoolOutput)
+}
+
+type GetTenantOidcLogoutArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTenantOidcLogoutArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTenantOidcLogout)(nil)).Elem()
+}
+
+func (o GetTenantOidcLogoutArrayOutput) ToGetTenantOidcLogoutArrayOutput() GetTenantOidcLogoutArrayOutput {
+	return o
+}
+
+func (o GetTenantOidcLogoutArrayOutput) ToGetTenantOidcLogoutArrayOutputWithContext(ctx context.Context) GetTenantOidcLogoutArrayOutput {
+	return o
+}
+
+func (o GetTenantOidcLogoutArrayOutput) Index(i pulumi.IntInput) GetTenantOidcLogoutOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTenantOidcLogout {
+		return vs[0].([]GetTenantOidcLogout)[vs[1].(int)]
+	}).(GetTenantOidcLogoutOutput)
+}
+
+type GetTenantSession struct {
+	// When active, users will be presented with a consent prompt to confirm the logout request if the request is not trustworthy. Turn off the consent prompt to bypass user confirmation.
+	OidcLogoutPromptEnabled bool `pulumi:"oidcLogoutPromptEnabled"`
+}
+
+// GetTenantSessionInput is an input type that accepts GetTenantSessionArgs and GetTenantSessionOutput values.
+// You can construct a concrete instance of `GetTenantSessionInput` via:
+//
+//	GetTenantSessionArgs{...}
+type GetTenantSessionInput interface {
+	pulumi.Input
+
+	ToGetTenantSessionOutput() GetTenantSessionOutput
+	ToGetTenantSessionOutputWithContext(context.Context) GetTenantSessionOutput
+}
+
+type GetTenantSessionArgs struct {
+	// When active, users will be presented with a consent prompt to confirm the logout request if the request is not trustworthy. Turn off the consent prompt to bypass user confirmation.
+	OidcLogoutPromptEnabled pulumi.BoolInput `pulumi:"oidcLogoutPromptEnabled"`
+}
+
+func (GetTenantSessionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTenantSession)(nil)).Elem()
+}
+
+func (i GetTenantSessionArgs) ToGetTenantSessionOutput() GetTenantSessionOutput {
+	return i.ToGetTenantSessionOutputWithContext(context.Background())
+}
+
+func (i GetTenantSessionArgs) ToGetTenantSessionOutputWithContext(ctx context.Context) GetTenantSessionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTenantSessionOutput)
+}
+
+// GetTenantSessionArrayInput is an input type that accepts GetTenantSessionArray and GetTenantSessionArrayOutput values.
+// You can construct a concrete instance of `GetTenantSessionArrayInput` via:
+//
+//	GetTenantSessionArray{ GetTenantSessionArgs{...} }
+type GetTenantSessionArrayInput interface {
+	pulumi.Input
+
+	ToGetTenantSessionArrayOutput() GetTenantSessionArrayOutput
+	ToGetTenantSessionArrayOutputWithContext(context.Context) GetTenantSessionArrayOutput
+}
+
+type GetTenantSessionArray []GetTenantSessionInput
+
+func (GetTenantSessionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTenantSession)(nil)).Elem()
+}
+
+func (i GetTenantSessionArray) ToGetTenantSessionArrayOutput() GetTenantSessionArrayOutput {
+	return i.ToGetTenantSessionArrayOutputWithContext(context.Background())
+}
+
+func (i GetTenantSessionArray) ToGetTenantSessionArrayOutputWithContext(ctx context.Context) GetTenantSessionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTenantSessionArrayOutput)
+}
+
+type GetTenantSessionOutput struct{ *pulumi.OutputState }
+
+func (GetTenantSessionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTenantSession)(nil)).Elem()
+}
+
+func (o GetTenantSessionOutput) ToGetTenantSessionOutput() GetTenantSessionOutput {
+	return o
+}
+
+func (o GetTenantSessionOutput) ToGetTenantSessionOutputWithContext(ctx context.Context) GetTenantSessionOutput {
+	return o
+}
+
+// When active, users will be presented with a consent prompt to confirm the logout request if the request is not trustworthy. Turn off the consent prompt to bypass user confirmation.
+func (o GetTenantSessionOutput) OidcLogoutPromptEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantSession) bool { return v.OidcLogoutPromptEnabled }).(pulumi.BoolOutput)
+}
+
+type GetTenantSessionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTenantSessionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTenantSession)(nil)).Elem()
+}
+
+func (o GetTenantSessionArrayOutput) ToGetTenantSessionArrayOutput() GetTenantSessionArrayOutput {
+	return o
+}
+
+func (o GetTenantSessionArrayOutput) ToGetTenantSessionArrayOutputWithContext(ctx context.Context) GetTenantSessionArrayOutput {
+	return o
+}
+
+func (o GetTenantSessionArrayOutput) Index(i pulumi.IntInput) GetTenantSessionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTenantSession {
+		return vs[0].([]GetTenantSession)[vs[1].(int)]
+	}).(GetTenantSessionOutput)
+}
+
+type GetTenantSessionCooky struct {
+	// Behavior of tenant session cookie. Accepts either "persistent" or "non-persistent".
+	Mode string `pulumi:"mode"`
+}
+
+// GetTenantSessionCookyInput is an input type that accepts GetTenantSessionCookyArgs and GetTenantSessionCookyOutput values.
+// You can construct a concrete instance of `GetTenantSessionCookyInput` via:
+//
+//	GetTenantSessionCookyArgs{...}
+type GetTenantSessionCookyInput interface {
+	pulumi.Input
+
+	ToGetTenantSessionCookyOutput() GetTenantSessionCookyOutput
+	ToGetTenantSessionCookyOutputWithContext(context.Context) GetTenantSessionCookyOutput
+}
+
+type GetTenantSessionCookyArgs struct {
+	// Behavior of tenant session cookie. Accepts either "persistent" or "non-persistent".
+	Mode pulumi.StringInput `pulumi:"mode"`
+}
+
+func (GetTenantSessionCookyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTenantSessionCooky)(nil)).Elem()
+}
+
+func (i GetTenantSessionCookyArgs) ToGetTenantSessionCookyOutput() GetTenantSessionCookyOutput {
+	return i.ToGetTenantSessionCookyOutputWithContext(context.Background())
+}
+
+func (i GetTenantSessionCookyArgs) ToGetTenantSessionCookyOutputWithContext(ctx context.Context) GetTenantSessionCookyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTenantSessionCookyOutput)
+}
+
+// GetTenantSessionCookyArrayInput is an input type that accepts GetTenantSessionCookyArray and GetTenantSessionCookyArrayOutput values.
+// You can construct a concrete instance of `GetTenantSessionCookyArrayInput` via:
+//
+//	GetTenantSessionCookyArray{ GetTenantSessionCookyArgs{...} }
+type GetTenantSessionCookyArrayInput interface {
+	pulumi.Input
+
+	ToGetTenantSessionCookyArrayOutput() GetTenantSessionCookyArrayOutput
+	ToGetTenantSessionCookyArrayOutputWithContext(context.Context) GetTenantSessionCookyArrayOutput
+}
+
+type GetTenantSessionCookyArray []GetTenantSessionCookyInput
+
+func (GetTenantSessionCookyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTenantSessionCooky)(nil)).Elem()
+}
+
+func (i GetTenantSessionCookyArray) ToGetTenantSessionCookyArrayOutput() GetTenantSessionCookyArrayOutput {
+	return i.ToGetTenantSessionCookyArrayOutputWithContext(context.Background())
+}
+
+func (i GetTenantSessionCookyArray) ToGetTenantSessionCookyArrayOutputWithContext(ctx context.Context) GetTenantSessionCookyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTenantSessionCookyArrayOutput)
+}
+
+type GetTenantSessionCookyOutput struct{ *pulumi.OutputState }
+
+func (GetTenantSessionCookyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTenantSessionCooky)(nil)).Elem()
+}
+
+func (o GetTenantSessionCookyOutput) ToGetTenantSessionCookyOutput() GetTenantSessionCookyOutput {
+	return o
+}
+
+func (o GetTenantSessionCookyOutput) ToGetTenantSessionCookyOutputWithContext(ctx context.Context) GetTenantSessionCookyOutput {
+	return o
+}
+
+// Behavior of tenant session cookie. Accepts either "persistent" or "non-persistent".
+func (o GetTenantSessionCookyOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTenantSessionCooky) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+type GetTenantSessionCookyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTenantSessionCookyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTenantSessionCooky)(nil)).Elem()
+}
+
+func (o GetTenantSessionCookyArrayOutput) ToGetTenantSessionCookyArrayOutput() GetTenantSessionCookyArrayOutput {
+	return o
+}
+
+func (o GetTenantSessionCookyArrayOutput) ToGetTenantSessionCookyArrayOutputWithContext(ctx context.Context) GetTenantSessionCookyArrayOutput {
+	return o
+}
+
+func (o GetTenantSessionCookyArrayOutput) Index(i pulumi.IntInput) GetTenantSessionCookyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTenantSessionCooky {
+		return vs[0].([]GetTenantSessionCooky)[vs[1].(int)]
+	}).(GetTenantSessionCookyOutput)
+}
+
+type GetUserAttributeProfileUserAttribute struct {
+	// The Auth0 mapping for the user attribute.
+	Auth0Mapping string `pulumi:"auth0Mapping"`
+	// Description of the user attribute.
+	Description string `pulumi:"description"`
+	// Display label for the user attribute.
+	Label string `pulumi:"label"`
+	// Name of the user attribute.
+	Name string `pulumi:"name"`
+	// The OIDC mapping configuration for the user attribute.
+	OidcMappings []GetUserAttributeProfileUserAttributeOidcMapping `pulumi:"oidcMappings"`
+	// Whether the attribute is required in the profile.
+	ProfileRequired bool `pulumi:"profileRequired"`
+	// SAML mapping override for this strategy.
+	SamlMappings []string `pulumi:"samlMappings"`
+	// The SCIM mapping for the user attribute.
+	ScimMapping string `pulumi:"scimMapping"`
+	// Strategy-specific overrides for user attribute mapping.
+	StrategyOverrides []GetUserAttributeProfileUserAttributeStrategyOverride `pulumi:"strategyOverrides"`
+}
+
+// GetUserAttributeProfileUserAttributeInput is an input type that accepts GetUserAttributeProfileUserAttributeArgs and GetUserAttributeProfileUserAttributeOutput values.
+// You can construct a concrete instance of `GetUserAttributeProfileUserAttributeInput` via:
+//
+//	GetUserAttributeProfileUserAttributeArgs{...}
+type GetUserAttributeProfileUserAttributeInput interface {
+	pulumi.Input
+
+	ToGetUserAttributeProfileUserAttributeOutput() GetUserAttributeProfileUserAttributeOutput
+	ToGetUserAttributeProfileUserAttributeOutputWithContext(context.Context) GetUserAttributeProfileUserAttributeOutput
+}
+
+type GetUserAttributeProfileUserAttributeArgs struct {
+	// The Auth0 mapping for the user attribute.
+	Auth0Mapping pulumi.StringInput `pulumi:"auth0Mapping"`
+	// Description of the user attribute.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Display label for the user attribute.
+	Label pulumi.StringInput `pulumi:"label"`
+	// Name of the user attribute.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The OIDC mapping configuration for the user attribute.
+	OidcMappings GetUserAttributeProfileUserAttributeOidcMappingArrayInput `pulumi:"oidcMappings"`
+	// Whether the attribute is required in the profile.
+	ProfileRequired pulumi.BoolInput `pulumi:"profileRequired"`
+	// SAML mapping override for this strategy.
+	SamlMappings pulumi.StringArrayInput `pulumi:"samlMappings"`
+	// The SCIM mapping for the user attribute.
+	ScimMapping pulumi.StringInput `pulumi:"scimMapping"`
+	// Strategy-specific overrides for user attribute mapping.
+	StrategyOverrides GetUserAttributeProfileUserAttributeStrategyOverrideArrayInput `pulumi:"strategyOverrides"`
+}
+
+func (GetUserAttributeProfileUserAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUserAttributeProfileUserAttribute)(nil)).Elem()
+}
+
+func (i GetUserAttributeProfileUserAttributeArgs) ToGetUserAttributeProfileUserAttributeOutput() GetUserAttributeProfileUserAttributeOutput {
+	return i.ToGetUserAttributeProfileUserAttributeOutputWithContext(context.Background())
+}
+
+func (i GetUserAttributeProfileUserAttributeArgs) ToGetUserAttributeProfileUserAttributeOutputWithContext(ctx context.Context) GetUserAttributeProfileUserAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUserAttributeProfileUserAttributeOutput)
+}
+
+// GetUserAttributeProfileUserAttributeArrayInput is an input type that accepts GetUserAttributeProfileUserAttributeArray and GetUserAttributeProfileUserAttributeArrayOutput values.
+// You can construct a concrete instance of `GetUserAttributeProfileUserAttributeArrayInput` via:
+//
+//	GetUserAttributeProfileUserAttributeArray{ GetUserAttributeProfileUserAttributeArgs{...} }
+type GetUserAttributeProfileUserAttributeArrayInput interface {
+	pulumi.Input
+
+	ToGetUserAttributeProfileUserAttributeArrayOutput() GetUserAttributeProfileUserAttributeArrayOutput
+	ToGetUserAttributeProfileUserAttributeArrayOutputWithContext(context.Context) GetUserAttributeProfileUserAttributeArrayOutput
+}
+
+type GetUserAttributeProfileUserAttributeArray []GetUserAttributeProfileUserAttributeInput
+
+func (GetUserAttributeProfileUserAttributeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUserAttributeProfileUserAttribute)(nil)).Elem()
+}
+
+func (i GetUserAttributeProfileUserAttributeArray) ToGetUserAttributeProfileUserAttributeArrayOutput() GetUserAttributeProfileUserAttributeArrayOutput {
+	return i.ToGetUserAttributeProfileUserAttributeArrayOutputWithContext(context.Background())
+}
+
+func (i GetUserAttributeProfileUserAttributeArray) ToGetUserAttributeProfileUserAttributeArrayOutputWithContext(ctx context.Context) GetUserAttributeProfileUserAttributeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUserAttributeProfileUserAttributeArrayOutput)
+}
+
+type GetUserAttributeProfileUserAttributeOutput struct{ *pulumi.OutputState }
+
+func (GetUserAttributeProfileUserAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUserAttributeProfileUserAttribute)(nil)).Elem()
+}
+
+func (o GetUserAttributeProfileUserAttributeOutput) ToGetUserAttributeProfileUserAttributeOutput() GetUserAttributeProfileUserAttributeOutput {
+	return o
+}
+
+func (o GetUserAttributeProfileUserAttributeOutput) ToGetUserAttributeProfileUserAttributeOutputWithContext(ctx context.Context) GetUserAttributeProfileUserAttributeOutput {
+	return o
+}
+
+// The Auth0 mapping for the user attribute.
+func (o GetUserAttributeProfileUserAttributeOutput) Auth0Mapping() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserAttributeProfileUserAttribute) string { return v.Auth0Mapping }).(pulumi.StringOutput)
+}
+
+// Description of the user attribute.
+func (o GetUserAttributeProfileUserAttributeOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserAttributeProfileUserAttribute) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Display label for the user attribute.
+func (o GetUserAttributeProfileUserAttributeOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserAttributeProfileUserAttribute) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// Name of the user attribute.
+func (o GetUserAttributeProfileUserAttributeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserAttributeProfileUserAttribute) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The OIDC mapping configuration for the user attribute.
+func (o GetUserAttributeProfileUserAttributeOutput) OidcMappings() GetUserAttributeProfileUserAttributeOidcMappingArrayOutput {
+	return o.ApplyT(func(v GetUserAttributeProfileUserAttribute) []GetUserAttributeProfileUserAttributeOidcMapping {
+		return v.OidcMappings
+	}).(GetUserAttributeProfileUserAttributeOidcMappingArrayOutput)
+}
+
+// Whether the attribute is required in the profile.
+func (o GetUserAttributeProfileUserAttributeOutput) ProfileRequired() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetUserAttributeProfileUserAttribute) bool { return v.ProfileRequired }).(pulumi.BoolOutput)
+}
+
+// SAML mapping override for this strategy.
+func (o GetUserAttributeProfileUserAttributeOutput) SamlMappings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetUserAttributeProfileUserAttribute) []string { return v.SamlMappings }).(pulumi.StringArrayOutput)
+}
+
+// The SCIM mapping for the user attribute.
+func (o GetUserAttributeProfileUserAttributeOutput) ScimMapping() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserAttributeProfileUserAttribute) string { return v.ScimMapping }).(pulumi.StringOutput)
+}
+
+// Strategy-specific overrides for user attribute mapping.
+func (o GetUserAttributeProfileUserAttributeOutput) StrategyOverrides() GetUserAttributeProfileUserAttributeStrategyOverrideArrayOutput {
+	return o.ApplyT(func(v GetUserAttributeProfileUserAttribute) []GetUserAttributeProfileUserAttributeStrategyOverride {
+		return v.StrategyOverrides
+	}).(GetUserAttributeProfileUserAttributeStrategyOverrideArrayOutput)
+}
+
+type GetUserAttributeProfileUserAttributeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetUserAttributeProfileUserAttributeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUserAttributeProfileUserAttribute)(nil)).Elem()
+}
+
+func (o GetUserAttributeProfileUserAttributeArrayOutput) ToGetUserAttributeProfileUserAttributeArrayOutput() GetUserAttributeProfileUserAttributeArrayOutput {
+	return o
+}
+
+func (o GetUserAttributeProfileUserAttributeArrayOutput) ToGetUserAttributeProfileUserAttributeArrayOutputWithContext(ctx context.Context) GetUserAttributeProfileUserAttributeArrayOutput {
+	return o
+}
+
+func (o GetUserAttributeProfileUserAttributeArrayOutput) Index(i pulumi.IntInput) GetUserAttributeProfileUserAttributeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetUserAttributeProfileUserAttribute {
+		return vs[0].([]GetUserAttributeProfileUserAttribute)[vs[1].(int)]
+	}).(GetUserAttributeProfileUserAttributeOutput)
+}
+
+type GetUserAttributeProfileUserAttributeOidcMapping struct {
+	// Display name for the OIDC mapping.
+	DisplayName string `pulumi:"displayName"`
+	// The OIDC mapping field.
+	Mapping string `pulumi:"mapping"`
+}
+
+// GetUserAttributeProfileUserAttributeOidcMappingInput is an input type that accepts GetUserAttributeProfileUserAttributeOidcMappingArgs and GetUserAttributeProfileUserAttributeOidcMappingOutput values.
+// You can construct a concrete instance of `GetUserAttributeProfileUserAttributeOidcMappingInput` via:
+//
+//	GetUserAttributeProfileUserAttributeOidcMappingArgs{...}
+type GetUserAttributeProfileUserAttributeOidcMappingInput interface {
+	pulumi.Input
+
+	ToGetUserAttributeProfileUserAttributeOidcMappingOutput() GetUserAttributeProfileUserAttributeOidcMappingOutput
+	ToGetUserAttributeProfileUserAttributeOidcMappingOutputWithContext(context.Context) GetUserAttributeProfileUserAttributeOidcMappingOutput
+}
+
+type GetUserAttributeProfileUserAttributeOidcMappingArgs struct {
+	// Display name for the OIDC mapping.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// The OIDC mapping field.
+	Mapping pulumi.StringInput `pulumi:"mapping"`
+}
+
+func (GetUserAttributeProfileUserAttributeOidcMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUserAttributeProfileUserAttributeOidcMapping)(nil)).Elem()
+}
+
+func (i GetUserAttributeProfileUserAttributeOidcMappingArgs) ToGetUserAttributeProfileUserAttributeOidcMappingOutput() GetUserAttributeProfileUserAttributeOidcMappingOutput {
+	return i.ToGetUserAttributeProfileUserAttributeOidcMappingOutputWithContext(context.Background())
+}
+
+func (i GetUserAttributeProfileUserAttributeOidcMappingArgs) ToGetUserAttributeProfileUserAttributeOidcMappingOutputWithContext(ctx context.Context) GetUserAttributeProfileUserAttributeOidcMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUserAttributeProfileUserAttributeOidcMappingOutput)
+}
+
+// GetUserAttributeProfileUserAttributeOidcMappingArrayInput is an input type that accepts GetUserAttributeProfileUserAttributeOidcMappingArray and GetUserAttributeProfileUserAttributeOidcMappingArrayOutput values.
+// You can construct a concrete instance of `GetUserAttributeProfileUserAttributeOidcMappingArrayInput` via:
+//
+//	GetUserAttributeProfileUserAttributeOidcMappingArray{ GetUserAttributeProfileUserAttributeOidcMappingArgs{...} }
+type GetUserAttributeProfileUserAttributeOidcMappingArrayInput interface {
+	pulumi.Input
+
+	ToGetUserAttributeProfileUserAttributeOidcMappingArrayOutput() GetUserAttributeProfileUserAttributeOidcMappingArrayOutput
+	ToGetUserAttributeProfileUserAttributeOidcMappingArrayOutputWithContext(context.Context) GetUserAttributeProfileUserAttributeOidcMappingArrayOutput
+}
+
+type GetUserAttributeProfileUserAttributeOidcMappingArray []GetUserAttributeProfileUserAttributeOidcMappingInput
+
+func (GetUserAttributeProfileUserAttributeOidcMappingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUserAttributeProfileUserAttributeOidcMapping)(nil)).Elem()
+}
+
+func (i GetUserAttributeProfileUserAttributeOidcMappingArray) ToGetUserAttributeProfileUserAttributeOidcMappingArrayOutput() GetUserAttributeProfileUserAttributeOidcMappingArrayOutput {
+	return i.ToGetUserAttributeProfileUserAttributeOidcMappingArrayOutputWithContext(context.Background())
+}
+
+func (i GetUserAttributeProfileUserAttributeOidcMappingArray) ToGetUserAttributeProfileUserAttributeOidcMappingArrayOutputWithContext(ctx context.Context) GetUserAttributeProfileUserAttributeOidcMappingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUserAttributeProfileUserAttributeOidcMappingArrayOutput)
+}
+
+type GetUserAttributeProfileUserAttributeOidcMappingOutput struct{ *pulumi.OutputState }
+
+func (GetUserAttributeProfileUserAttributeOidcMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUserAttributeProfileUserAttributeOidcMapping)(nil)).Elem()
+}
+
+func (o GetUserAttributeProfileUserAttributeOidcMappingOutput) ToGetUserAttributeProfileUserAttributeOidcMappingOutput() GetUserAttributeProfileUserAttributeOidcMappingOutput {
+	return o
+}
+
+func (o GetUserAttributeProfileUserAttributeOidcMappingOutput) ToGetUserAttributeProfileUserAttributeOidcMappingOutputWithContext(ctx context.Context) GetUserAttributeProfileUserAttributeOidcMappingOutput {
+	return o
+}
+
+// Display name for the OIDC mapping.
+func (o GetUserAttributeProfileUserAttributeOidcMappingOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserAttributeProfileUserAttributeOidcMapping) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The OIDC mapping field.
+func (o GetUserAttributeProfileUserAttributeOidcMappingOutput) Mapping() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserAttributeProfileUserAttributeOidcMapping) string { return v.Mapping }).(pulumi.StringOutput)
+}
+
+type GetUserAttributeProfileUserAttributeOidcMappingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetUserAttributeProfileUserAttributeOidcMappingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUserAttributeProfileUserAttributeOidcMapping)(nil)).Elem()
+}
+
+func (o GetUserAttributeProfileUserAttributeOidcMappingArrayOutput) ToGetUserAttributeProfileUserAttributeOidcMappingArrayOutput() GetUserAttributeProfileUserAttributeOidcMappingArrayOutput {
+	return o
+}
+
+func (o GetUserAttributeProfileUserAttributeOidcMappingArrayOutput) ToGetUserAttributeProfileUserAttributeOidcMappingArrayOutputWithContext(ctx context.Context) GetUserAttributeProfileUserAttributeOidcMappingArrayOutput {
+	return o
+}
+
+func (o GetUserAttributeProfileUserAttributeOidcMappingArrayOutput) Index(i pulumi.IntInput) GetUserAttributeProfileUserAttributeOidcMappingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetUserAttributeProfileUserAttributeOidcMapping {
+		return vs[0].([]GetUserAttributeProfileUserAttributeOidcMapping)[vs[1].(int)]
+	}).(GetUserAttributeProfileUserAttributeOidcMappingOutput)
+}
+
+type GetUserAttributeProfileUserAttributeStrategyOverride struct {
+	// OIDC mapping override for this strategy.
+	OidcMappings []GetUserAttributeProfileUserAttributeStrategyOverrideOidcMapping `pulumi:"oidcMappings"`
+	// SAML mapping override for this strategy.
+	SamlMappings []string `pulumi:"samlMappings"`
+	// SCIM mapping override for this strategy.
+	ScimMapping string `pulumi:"scimMapping"`
+	// The strategy name (e.g., 'oidc', 'samlp', 'ad', etc.).
+	Strategy string `pulumi:"strategy"`
+}
+
+// GetUserAttributeProfileUserAttributeStrategyOverrideInput is an input type that accepts GetUserAttributeProfileUserAttributeStrategyOverrideArgs and GetUserAttributeProfileUserAttributeStrategyOverrideOutput values.
+// You can construct a concrete instance of `GetUserAttributeProfileUserAttributeStrategyOverrideInput` via:
+//
+//	GetUserAttributeProfileUserAttributeStrategyOverrideArgs{...}
+type GetUserAttributeProfileUserAttributeStrategyOverrideInput interface {
+	pulumi.Input
+
+	ToGetUserAttributeProfileUserAttributeStrategyOverrideOutput() GetUserAttributeProfileUserAttributeStrategyOverrideOutput
+	ToGetUserAttributeProfileUserAttributeStrategyOverrideOutputWithContext(context.Context) GetUserAttributeProfileUserAttributeStrategyOverrideOutput
+}
+
+type GetUserAttributeProfileUserAttributeStrategyOverrideArgs struct {
+	// OIDC mapping override for this strategy.
+	OidcMappings GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArrayInput `pulumi:"oidcMappings"`
+	// SAML mapping override for this strategy.
+	SamlMappings pulumi.StringArrayInput `pulumi:"samlMappings"`
+	// SCIM mapping override for this strategy.
+	ScimMapping pulumi.StringInput `pulumi:"scimMapping"`
+	// The strategy name (e.g., 'oidc', 'samlp', 'ad', etc.).
+	Strategy pulumi.StringInput `pulumi:"strategy"`
+}
+
+func (GetUserAttributeProfileUserAttributeStrategyOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUserAttributeProfileUserAttributeStrategyOverride)(nil)).Elem()
+}
+
+func (i GetUserAttributeProfileUserAttributeStrategyOverrideArgs) ToGetUserAttributeProfileUserAttributeStrategyOverrideOutput() GetUserAttributeProfileUserAttributeStrategyOverrideOutput {
+	return i.ToGetUserAttributeProfileUserAttributeStrategyOverrideOutputWithContext(context.Background())
+}
+
+func (i GetUserAttributeProfileUserAttributeStrategyOverrideArgs) ToGetUserAttributeProfileUserAttributeStrategyOverrideOutputWithContext(ctx context.Context) GetUserAttributeProfileUserAttributeStrategyOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUserAttributeProfileUserAttributeStrategyOverrideOutput)
+}
+
+// GetUserAttributeProfileUserAttributeStrategyOverrideArrayInput is an input type that accepts GetUserAttributeProfileUserAttributeStrategyOverrideArray and GetUserAttributeProfileUserAttributeStrategyOverrideArrayOutput values.
+// You can construct a concrete instance of `GetUserAttributeProfileUserAttributeStrategyOverrideArrayInput` via:
+//
+//	GetUserAttributeProfileUserAttributeStrategyOverrideArray{ GetUserAttributeProfileUserAttributeStrategyOverrideArgs{...} }
+type GetUserAttributeProfileUserAttributeStrategyOverrideArrayInput interface {
+	pulumi.Input
+
+	ToGetUserAttributeProfileUserAttributeStrategyOverrideArrayOutput() GetUserAttributeProfileUserAttributeStrategyOverrideArrayOutput
+	ToGetUserAttributeProfileUserAttributeStrategyOverrideArrayOutputWithContext(context.Context) GetUserAttributeProfileUserAttributeStrategyOverrideArrayOutput
+}
+
+type GetUserAttributeProfileUserAttributeStrategyOverrideArray []GetUserAttributeProfileUserAttributeStrategyOverrideInput
+
+func (GetUserAttributeProfileUserAttributeStrategyOverrideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUserAttributeProfileUserAttributeStrategyOverride)(nil)).Elem()
+}
+
+func (i GetUserAttributeProfileUserAttributeStrategyOverrideArray) ToGetUserAttributeProfileUserAttributeStrategyOverrideArrayOutput() GetUserAttributeProfileUserAttributeStrategyOverrideArrayOutput {
+	return i.ToGetUserAttributeProfileUserAttributeStrategyOverrideArrayOutputWithContext(context.Background())
+}
+
+func (i GetUserAttributeProfileUserAttributeStrategyOverrideArray) ToGetUserAttributeProfileUserAttributeStrategyOverrideArrayOutputWithContext(ctx context.Context) GetUserAttributeProfileUserAttributeStrategyOverrideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUserAttributeProfileUserAttributeStrategyOverrideArrayOutput)
+}
+
+type GetUserAttributeProfileUserAttributeStrategyOverrideOutput struct{ *pulumi.OutputState }
+
+func (GetUserAttributeProfileUserAttributeStrategyOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUserAttributeProfileUserAttributeStrategyOverride)(nil)).Elem()
+}
+
+func (o GetUserAttributeProfileUserAttributeStrategyOverrideOutput) ToGetUserAttributeProfileUserAttributeStrategyOverrideOutput() GetUserAttributeProfileUserAttributeStrategyOverrideOutput {
+	return o
+}
+
+func (o GetUserAttributeProfileUserAttributeStrategyOverrideOutput) ToGetUserAttributeProfileUserAttributeStrategyOverrideOutputWithContext(ctx context.Context) GetUserAttributeProfileUserAttributeStrategyOverrideOutput {
+	return o
+}
+
+// OIDC mapping override for this strategy.
+func (o GetUserAttributeProfileUserAttributeStrategyOverrideOutput) OidcMappings() GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArrayOutput {
+	return o.ApplyT(func(v GetUserAttributeProfileUserAttributeStrategyOverride) []GetUserAttributeProfileUserAttributeStrategyOverrideOidcMapping {
+		return v.OidcMappings
+	}).(GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArrayOutput)
+}
+
+// SAML mapping override for this strategy.
+func (o GetUserAttributeProfileUserAttributeStrategyOverrideOutput) SamlMappings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetUserAttributeProfileUserAttributeStrategyOverride) []string { return v.SamlMappings }).(pulumi.StringArrayOutput)
+}
+
+// SCIM mapping override for this strategy.
+func (o GetUserAttributeProfileUserAttributeStrategyOverrideOutput) ScimMapping() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserAttributeProfileUserAttributeStrategyOverride) string { return v.ScimMapping }).(pulumi.StringOutput)
+}
+
+// The strategy name (e.g., 'oidc', 'samlp', 'ad', etc.).
+func (o GetUserAttributeProfileUserAttributeStrategyOverrideOutput) Strategy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserAttributeProfileUserAttributeStrategyOverride) string { return v.Strategy }).(pulumi.StringOutput)
+}
+
+type GetUserAttributeProfileUserAttributeStrategyOverrideArrayOutput struct{ *pulumi.OutputState }
+
+func (GetUserAttributeProfileUserAttributeStrategyOverrideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUserAttributeProfileUserAttributeStrategyOverride)(nil)).Elem()
+}
+
+func (o GetUserAttributeProfileUserAttributeStrategyOverrideArrayOutput) ToGetUserAttributeProfileUserAttributeStrategyOverrideArrayOutput() GetUserAttributeProfileUserAttributeStrategyOverrideArrayOutput {
+	return o
+}
+
+func (o GetUserAttributeProfileUserAttributeStrategyOverrideArrayOutput) ToGetUserAttributeProfileUserAttributeStrategyOverrideArrayOutputWithContext(ctx context.Context) GetUserAttributeProfileUserAttributeStrategyOverrideArrayOutput {
+	return o
+}
+
+func (o GetUserAttributeProfileUserAttributeStrategyOverrideArrayOutput) Index(i pulumi.IntInput) GetUserAttributeProfileUserAttributeStrategyOverrideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetUserAttributeProfileUserAttributeStrategyOverride {
+		return vs[0].([]GetUserAttributeProfileUserAttributeStrategyOverride)[vs[1].(int)]
+	}).(GetUserAttributeProfileUserAttributeStrategyOverrideOutput)
+}
+
 type GetUserAttributeProfileUserAttributeStrategyOverrideOidcMapping struct {
 	// Display name for the OIDC mapping.
 	DisplayName string `pulumi:"displayName"`
@@ -663,6 +1893,24 @@ func (o GetUserPermissionTypeArrayOutput) Index(i pulumi.IntInput) GetUserPermis
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantErrorPageInput)(nil)).Elem(), GetTenantErrorPageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantErrorPageArrayInput)(nil)).Elem(), GetTenantErrorPageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantFlagInput)(nil)).Elem(), GetTenantFlagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantFlagArrayInput)(nil)).Elem(), GetTenantFlagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantMtlInput)(nil)).Elem(), GetTenantMtlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantMtlArrayInput)(nil)).Elem(), GetTenantMtlArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantOidcLogoutInput)(nil)).Elem(), GetTenantOidcLogoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantOidcLogoutArrayInput)(nil)).Elem(), GetTenantOidcLogoutArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantSessionInput)(nil)).Elem(), GetTenantSessionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantSessionArrayInput)(nil)).Elem(), GetTenantSessionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantSessionCookyInput)(nil)).Elem(), GetTenantSessionCookyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantSessionCookyArrayInput)(nil)).Elem(), GetTenantSessionCookyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUserAttributeProfileUserAttributeInput)(nil)).Elem(), GetUserAttributeProfileUserAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUserAttributeProfileUserAttributeArrayInput)(nil)).Elem(), GetUserAttributeProfileUserAttributeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUserAttributeProfileUserAttributeOidcMappingInput)(nil)).Elem(), GetUserAttributeProfileUserAttributeOidcMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUserAttributeProfileUserAttributeOidcMappingArrayInput)(nil)).Elem(), GetUserAttributeProfileUserAttributeOidcMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUserAttributeProfileUserAttributeStrategyOverrideInput)(nil)).Elem(), GetUserAttributeProfileUserAttributeStrategyOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUserAttributeProfileUserAttributeStrategyOverrideArrayInput)(nil)).Elem(), GetUserAttributeProfileUserAttributeStrategyOverrideArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingInput)(nil)).Elem(), GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArrayInput)(nil)).Elem(), GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserAttributeProfileUserIdInput)(nil)).Elem(), GetUserAttributeProfileUserIdArgs{})
@@ -673,6 +1921,24 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserConnectedAccountsConnectedAccountArrayInput)(nil)).Elem(), GetUserConnectedAccountsConnectedAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserPermissionTypeInput)(nil)).Elem(), GetUserPermissionTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserPermissionTypeArrayInput)(nil)).Elem(), GetUserPermissionTypeArray{})
+	pulumi.RegisterOutputType(GetTenantErrorPageOutput{})
+	pulumi.RegisterOutputType(GetTenantErrorPageArrayOutput{})
+	pulumi.RegisterOutputType(GetTenantFlagOutput{})
+	pulumi.RegisterOutputType(GetTenantFlagArrayOutput{})
+	pulumi.RegisterOutputType(GetTenantMtlOutput{})
+	pulumi.RegisterOutputType(GetTenantMtlArrayOutput{})
+	pulumi.RegisterOutputType(GetTenantOidcLogoutOutput{})
+	pulumi.RegisterOutputType(GetTenantOidcLogoutArrayOutput{})
+	pulumi.RegisterOutputType(GetTenantSessionOutput{})
+	pulumi.RegisterOutputType(GetTenantSessionArrayOutput{})
+	pulumi.RegisterOutputType(GetTenantSessionCookyOutput{})
+	pulumi.RegisterOutputType(GetTenantSessionCookyArrayOutput{})
+	pulumi.RegisterOutputType(GetUserAttributeProfileUserAttributeOutput{})
+	pulumi.RegisterOutputType(GetUserAttributeProfileUserAttributeArrayOutput{})
+	pulumi.RegisterOutputType(GetUserAttributeProfileUserAttributeOidcMappingOutput{})
+	pulumi.RegisterOutputType(GetUserAttributeProfileUserAttributeOidcMappingArrayOutput{})
+	pulumi.RegisterOutputType(GetUserAttributeProfileUserAttributeStrategyOverrideOutput{})
+	pulumi.RegisterOutputType(GetUserAttributeProfileUserAttributeStrategyOverrideArrayOutput{})
 	pulumi.RegisterOutputType(GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingOutput{})
 	pulumi.RegisterOutputType(GetUserAttributeProfileUserAttributeStrategyOverrideOidcMappingArrayOutput{})
 	pulumi.RegisterOutputType(GetUserAttributeProfileUserIdOutput{})

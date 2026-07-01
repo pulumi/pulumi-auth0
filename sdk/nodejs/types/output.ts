@@ -1589,6 +1589,20 @@ export interface ClientExpressConfigurationLinkedClient {
     clientId?: string;
 }
 
+export interface ClientFedcmLogin {
+    /**
+     * Google FedCM configuration. (EA only)
+     */
+    google: outputs.ClientFedcmLoginGoogle;
+}
+
+export interface ClientFedcmLoginGoogle {
+    /**
+     * Whether to show the Google FedCM prompt on Login. (EA only)
+     */
+    isEnabled: boolean;
+}
+
 export interface ClientJwtConfiguration {
     /**
      * Algorithm used to sign JWTs. Can be one of `HS256`, `RS256`, `PS256`.
@@ -1760,6 +1774,10 @@ export interface ClientSessionTransfer {
      */
     canCreateSessionTransferToken: boolean;
     /**
+     * Configuration for delegation (impersonation) access using Session Transfer Tokens. (EA Only)
+     */
+    delegation?: outputs.ClientSessionTransferDelegation;
+    /**
      * Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities. Usually configured in the native application.
      */
     enforceCascadeRevocation?: boolean;
@@ -1771,6 +1789,17 @@ export interface ClientSessionTransfer {
      * Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are. Usually configured in the web application.
      */
     enforceOnlineRefreshTokens?: boolean;
+}
+
+export interface ClientSessionTransferDelegation {
+    /**
+     * Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`. (EA Only)
+     */
+    allowDelegatedAccess: boolean;
+    /**
+     * Indicates the device binding enforcement for delegation (impersonation) access. If set to 'ip', device binding is enforced by IP. If set to 'asn', device binding is enforced by ASN. Defaults to `ip`. (EA Only)
+     */
+    enforceDeviceBinding: string;
 }
 
 export interface ClientTokenExchange {
@@ -2015,6 +2044,10 @@ export interface ConnectionOptions {
      */
     iconUrl?: string;
     /**
+     * Indicates whether the identity provider supports session expiry via the id*token. When true, Auth0 will use the session*expiry claim from the upstream IdP's ID token to determine the maximum session lifetime. Only applicable for Okta and OIDC connections.
+     */
+    idTokenSessionExpirySupported?: boolean;
+    /**
      * List of allowed algorithms for the ID token signature. If not set or empty, default algorithm(s) will be applied at runtime. (Okta/OIDC Connections)
      */
     idTokenSignedResponseAlgs?: string[];
@@ -2251,9 +2284,9 @@ export interface ConnectionOptions {
      */
     twilioToken?: string;
     /**
-     * Value can be `backChannel` or `frontChannel`. Front Channel will use OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel will use `response_type=code`.
+     * The connection's communication channel type. For OIDC connections, accepted values are `backChannel` and `frontChannel`; for Okta Workforce connections, only `backChannel` is accepted. Front Channel uses the OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel uses `response_type=code`.
      */
-    type?: string;
+    type: string;
     /**
      * You can pass provider-specific parameters to an identity provider during authentication. The values can either be static per connection or dynamic per user.
      */
@@ -4769,6 +4802,20 @@ export interface GetClientExpressConfigurationLinkedClient {
     clientId: string;
 }
 
+export interface GetClientFedcmLogin {
+    /**
+     * Google FedCM configuration. (EA only)
+     */
+    googles: outputs.GetClientFedcmLoginGoogle[];
+}
+
+export interface GetClientFedcmLoginGoogle {
+    /**
+     * Whether to show the Google FedCM prompt on Login. (EA only)
+     */
+    isEnabled: boolean;
+}
+
 export interface GetClientGrantsClientGrant {
     /**
      * When enabled, all scopes configured on the resource server are allowed for this client grant. EA Only.
@@ -4971,6 +5018,10 @@ export interface GetClientSessionTransfer {
      */
     canCreateSessionTransferToken: boolean;
     /**
+     * Configuration for delegation (impersonation) access using Session Transfer Tokens. (EA Only)
+     */
+    delegations: outputs.GetClientSessionTransferDelegation[];
+    /**
      * Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities. Usually configured in the native application.
      */
     enforceCascadeRevocation: boolean;
@@ -4982,6 +5033,17 @@ export interface GetClientSessionTransfer {
      * Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are. Usually configured in the web application.
      */
     enforceOnlineRefreshTokens: boolean;
+}
+
+export interface GetClientSessionTransferDelegation {
+    /**
+     * Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`. (EA Only)
+     */
+    allowDelegatedAccess: boolean;
+    /**
+     * Indicates the device binding enforcement for delegation (impersonation) access. If set to 'ip', device binding is enforced by IP. If set to 'asn', device binding is enforced by ASN. Defaults to `ip`. (EA Only)
+     */
+    enforceDeviceBinding: string;
 }
 
 export interface GetClientSignedRequestObject {
@@ -5117,6 +5179,10 @@ export interface GetClientsClient {
      */
     externalMetadataType: string;
     /**
+     * Federated Credential Management (FedCM) configuration. (EA only)
+     */
+    fedcmLogins: outputs.GetClientsClientFedcmLogin[];
+    /**
      * Types of grants that this client is authorized to use.
      */
     grantTypes: string[];
@@ -5225,6 +5291,20 @@ export interface GetClientsClientExpressConfigurationLinkedClient {
     clientId: string;
 }
 
+export interface GetClientsClientFedcmLogin {
+    /**
+     * Google FedCM configuration. (EA only)
+     */
+    googles: outputs.GetClientsClientFedcmLoginGoogle[];
+}
+
+export interface GetClientsClientFedcmLoginGoogle {
+    /**
+     * Whether to show the Google FedCM prompt on Login. (EA only)
+     */
+    isEnabled: boolean;
+}
+
 export interface GetClientsClientMyOrganizationConfiguration {
     /**
      * The list of connection strategies that are allowed when creating organizations for this client (e.g. "okta", "samlp").
@@ -5292,6 +5372,10 @@ export interface GetClientsClientSessionTransfer {
      */
     canCreateSessionTransferToken: boolean;
     /**
+     * Configuration for delegation (impersonation) access using Session Transfer Tokens. (EA Only)
+     */
+    delegations: outputs.GetClientsClientSessionTransferDelegation[];
+    /**
      * Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities. Usually configured in the native application.
      */
     enforceCascadeRevocation: boolean;
@@ -5303,6 +5387,17 @@ export interface GetClientsClientSessionTransfer {
      * Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are. Usually configured in the web application.
      */
     enforceOnlineRefreshTokens: boolean;
+}
+
+export interface GetClientsClientSessionTransferDelegation {
+    /**
+     * Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`. (EA Only)
+     */
+    allowDelegatedAccess: boolean;
+    /**
+     * Indicates the device binding enforcement for delegation (impersonation) access. If set to 'ip', device binding is enforced by IP. If set to 'asn', device binding is enforced by ASN. Defaults to `ip`. (EA Only)
+     */
+    enforceDeviceBinding: string;
 }
 
 export interface GetClientsClientTokenExchange {
@@ -5614,6 +5709,10 @@ export interface GetConnectionOption {
      */
     iconUrl: string;
     /**
+     * Indicates whether the identity provider supports session expiry via the id_token. When true, Auth0 will use the sessionExpiry claim from the upstream IdP's ID token to determine the maximum session lifetime. Only applicable for Okta and OIDC connections.
+     */
+    idTokenSessionExpirySupported: boolean;
+    /**
      * List of allowed algorithms for the ID token signature. If not set or empty, default algorithm(s) will be applied at runtime. (Okta/OIDC Connections)
      */
     idTokenSignedResponseAlgs: string[];
@@ -5850,7 +5949,7 @@ export interface GetConnectionOption {
      */
     twilioToken: string;
     /**
-     * Value can be `backChannel` or `frontChannel`. Front Channel will use OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel will use `response_type=code`.
+     * The connection's communication channel type. For OIDC connections, accepted values are `backChannel` and `frontChannel`; for Okta Workforce connections, only `backChannel` is accepted. Front Channel uses the OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel uses `response_type=code`.
      */
     type: string;
     /**

@@ -27,14 +27,10 @@ import * as utilities from "./utilities";
  * };
  * `,
  * });
- * // Get all versions to find the version ID
- * const myModuleVersions = auth0.getActionModuleVersionsOutput({
- *     moduleId: myModule.id,
- * });
- * // Retrieve a specific version by its ID
+ * // Retrieve the latest published version using the module's version_id directly
  * const myModuleVersion = auth0.getActionModuleVersionOutput({
  *     moduleId: myModule.id,
- *     versionId: myModuleVersions.apply(myModuleVersions => myModuleVersions.versions?.[0]?.id),
+ *     versionId: myModule.versionId,
  * });
  * export const versionNumber = myModuleVersion.apply(myModuleVersion => myModuleVersion.versionNumber);
  * export const versionCode = myModuleVersion.apply(myModuleVersion => myModuleVersion.code);
@@ -121,14 +117,10 @@ export interface GetActionModuleVersionResult {
  * };
  * `,
  * });
- * // Get all versions to find the version ID
- * const myModuleVersions = auth0.getActionModuleVersionsOutput({
- *     moduleId: myModule.id,
- * });
- * // Retrieve a specific version by its ID
+ * // Retrieve the latest published version using the module's version_id directly
  * const myModuleVersion = auth0.getActionModuleVersionOutput({
  *     moduleId: myModule.id,
- *     versionId: myModuleVersions.apply(myModuleVersions => myModuleVersions.versions?.[0]?.id),
+ *     versionId: myModule.versionId,
  * });
  * export const versionNumber = myModuleVersion.apply(myModuleVersion => myModuleVersion.versionNumber);
  * export const versionCode = myModuleVersion.apply(myModuleVersion => myModuleVersion.code);
