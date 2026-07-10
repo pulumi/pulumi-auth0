@@ -43,13 +43,13 @@ import * as utilities from "./utilities";
  * const myRole = new auth0.Role("my_role", {name: "My Role"});
  * const scopesList = resourceServerScopes.scopes.apply(scopes => scopes.map(scope => (scope.name)));
  * const myRolePerm: auth0.RolePermission[] = [];
- * for (const range = {value: 0}; range.value < std.toset({
+ * for (let range = 0; range < std.toset({
  *     input: scopesList,
- * }).result; range.value++) {
- *     myRolePerm.push(new auth0.RolePermission(`my_role_perm-${range.value}`, {
+ * }).result; range++) {
+ *     myRolePerm.push(new auth0.RolePermission(`my_role_perm-${range}`, {
  *         roleId: myRole.id,
  *         resourceServerIdentifier: resourceServer.identifier,
- *         permission: range.value,
+ *         permission: range,
  *     }));
  * }
  * ```

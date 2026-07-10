@@ -4524,7 +4524,7 @@ export interface GetClientAddonSamlpLogout {
 
 export interface GetClientAddonSapApi {
     /**
-     * If activated in the OAuth 2.0 client configuration (transaction `SOAUTH2) the SAML attribute `clientId` must be set and equal the `clientId` form parameter of the access token request.
+     * If activated in the OAuth 2.0 client configuration (transaction ` SOAUTH2) the SAML attribute  `clientId`must be set and equal the`clientId` form parameter of the access token request.
      */
     clientId: string;
     /**
