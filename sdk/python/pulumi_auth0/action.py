@@ -28,7 +28,9 @@ class ActionArgs:
                  modules: pulumi.Input[Optional[Sequence[pulumi.Input['ActionModuleArgs']]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  runtime: pulumi.Input[Optional[_builtins.str]] = None,
-                 secrets: pulumi.Input[Optional[Sequence[pulumi.Input['ActionSecretArgs']]]] = None):
+                 secrets: pulumi.Input[Optional[Sequence[pulumi.Input['ActionSecretArgs']]]] = None,
+                 secrets_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 secrets_wos: pulumi.Input[Optional[Sequence[pulumi.Input['ActionSecretsWoArgs']]]] = None):
         """
         The set of arguments for constructing a Action resource.
 
@@ -39,7 +41,9 @@ class ActionArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ActionModuleArgs']]] modules: List of action modules and their versions that this action depends on.
         :param pulumi.Input[_builtins.str] name: The name of the action.
         :param pulumi.Input[_builtins.str] runtime: The Node runtime. Possible values are: `node12`, `node16` (not recommended), `node18`, `node22`
-        :param pulumi.Input[Sequence[pulumi.Input['ActionSecretArgs']]] secrets: List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
+        :param pulumi.Input[Sequence[pulumi.Input['ActionSecretArgs']]] secrets: List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned. **Note:** Secret values are persisted in Terraform state as plain text. For better security, consider using `secrets_wo` instead, which supports write-only values and ephemeral variables.
+        :param pulumi.Input[_builtins.int] secrets_wo_version: Version number for `secrets_wo` changes. Adding, renaming, or removing a `secrets_wo` entry is detected automatically, but changing only the **value** of an existing secret is not (write-only values are not tracked in state). Increment this value to push value-only changes to the API.
+        :param pulumi.Input[Sequence[pulumi.Input['ActionSecretsWoArgs']]] secrets_wos: List of secrets for the action (write-only). Secret values are only available during resource creation and update, and are **not** stored in Terraform state. Adding, renaming, or removing an entry is applied automatically; to change only the value of an existing secret, bump the `secrets_wo_version` attribute. To remove all secrets, delete the `secrets_wo` blocks together with the `secrets_wo_version` attribute. This is an ordered list, so reordering the blocks is treated as a change. Conflicts with `secrets`.
         """
         pulumi.set(__self__, "code", code)
         pulumi.set(__self__, "supported_triggers", supported_triggers)
@@ -55,6 +59,10 @@ class ActionArgs:
             pulumi.set(__self__, "runtime", runtime)
         if secrets is not None:
             pulumi.set(__self__, "secrets", secrets)
+        if secrets_wo_version is not None:
+            pulumi.set(__self__, "secrets_wo_version", secrets_wo_version)
+        if secrets_wos is not None:
+            pulumi.set(__self__, "secrets_wos", secrets_wos)
 
     @_builtins.property
     @pulumi.getter
@@ -144,13 +152,37 @@ class ActionArgs:
     @pulumi.getter
     def secrets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ActionSecretArgs']]]]:
         """
-        List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
+        List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned. **Note:** Secret values are persisted in Terraform state as plain text. For better security, consider using `secrets_wo` instead, which supports write-only values and ephemeral variables.
         """
         return pulumi.get(self, "secrets")
 
     @secrets.setter
     def secrets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ActionSecretArgs']]]]):
         pulumi.set(self, "secrets", value)
+
+    @_builtins.property
+    @pulumi.getter(name="secretsWoVersion")
+    def secrets_wo_version(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Version number for `secrets_wo` changes. Adding, renaming, or removing a `secrets_wo` entry is detected automatically, but changing only the **value** of an existing secret is not (write-only values are not tracked in state). Increment this value to push value-only changes to the API.
+        """
+        return pulumi.get(self, "secrets_wo_version")
+
+    @secrets_wo_version.setter
+    def secrets_wo_version(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "secrets_wo_version", value)
+
+    @_builtins.property
+    @pulumi.getter(name="secretsWos")
+    def secrets_wos(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ActionSecretsWoArgs']]]]:
+        """
+        List of secrets for the action (write-only). Secret values are only available during resource creation and update, and are **not** stored in Terraform state. Adding, renaming, or removing an entry is applied automatically; to change only the value of an existing secret, bump the `secrets_wo_version` attribute. To remove all secrets, delete the `secrets_wo` blocks together with the `secrets_wo_version` attribute. This is an ordered list, so reordering the blocks is treated as a change. Conflicts with `secrets`.
+        """
+        return pulumi.get(self, "secrets_wos")
+
+    @secrets_wos.setter
+    def secrets_wos(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ActionSecretsWoArgs']]]]):
+        pulumi.set(self, "secrets_wos", value)
 
 
 @pulumi.input_type
@@ -163,6 +195,8 @@ class _ActionState:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  runtime: pulumi.Input[Optional[_builtins.str]] = None,
                  secrets: pulumi.Input[Optional[Sequence[pulumi.Input['ActionSecretArgs']]]] = None,
+                 secrets_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 secrets_wos: pulumi.Input[Optional[Sequence[pulumi.Input['ActionSecretsWoArgs']]]] = None,
                  supported_triggers: pulumi.Input[Optional['ActionSupportedTriggersArgs']] = None,
                  version_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -174,7 +208,9 @@ class _ActionState:
         :param pulumi.Input[Sequence[pulumi.Input['ActionModuleArgs']]] modules: List of action modules and their versions that this action depends on.
         :param pulumi.Input[_builtins.str] name: The name of the action.
         :param pulumi.Input[_builtins.str] runtime: The Node runtime. Possible values are: `node12`, `node16` (not recommended), `node18`, `node22`
-        :param pulumi.Input[Sequence[pulumi.Input['ActionSecretArgs']]] secrets: List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
+        :param pulumi.Input[Sequence[pulumi.Input['ActionSecretArgs']]] secrets: List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned. **Note:** Secret values are persisted in Terraform state as plain text. For better security, consider using `secrets_wo` instead, which supports write-only values and ephemeral variables.
+        :param pulumi.Input[_builtins.int] secrets_wo_version: Version number for `secrets_wo` changes. Adding, renaming, or removing a `secrets_wo` entry is detected automatically, but changing only the **value** of an existing secret is not (write-only values are not tracked in state). Increment this value to push value-only changes to the API.
+        :param pulumi.Input[Sequence[pulumi.Input['ActionSecretsWoArgs']]] secrets_wos: List of secrets for the action (write-only). Secret values are only available during resource creation and update, and are **not** stored in Terraform state. Adding, renaming, or removing an entry is applied automatically; to change only the value of an existing secret, bump the `secrets_wo_version` attribute. To remove all secrets, delete the `secrets_wo` blocks together with the `secrets_wo_version` attribute. This is an ordered list, so reordering the blocks is treated as a change. Conflicts with `secrets`.
         :param pulumi.Input['ActionSupportedTriggersArgs'] supported_triggers: List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
         :param pulumi.Input[_builtins.str] version_id: Version ID of the action. This value is available if `deploy` is set to true.
         """
@@ -192,6 +228,10 @@ class _ActionState:
             pulumi.set(__self__, "runtime", runtime)
         if secrets is not None:
             pulumi.set(__self__, "secrets", secrets)
+        if secrets_wo_version is not None:
+            pulumi.set(__self__, "secrets_wo_version", secrets_wo_version)
+        if secrets_wos is not None:
+            pulumi.set(__self__, "secrets_wos", secrets_wos)
         if supported_triggers is not None:
             pulumi.set(__self__, "supported_triggers", supported_triggers)
         if version_id is not None:
@@ -273,13 +313,37 @@ class _ActionState:
     @pulumi.getter
     def secrets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ActionSecretArgs']]]]:
         """
-        List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
+        List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned. **Note:** Secret values are persisted in Terraform state as plain text. For better security, consider using `secrets_wo` instead, which supports write-only values and ephemeral variables.
         """
         return pulumi.get(self, "secrets")
 
     @secrets.setter
     def secrets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ActionSecretArgs']]]]):
         pulumi.set(self, "secrets", value)
+
+    @_builtins.property
+    @pulumi.getter(name="secretsWoVersion")
+    def secrets_wo_version(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Version number for `secrets_wo` changes. Adding, renaming, or removing a `secrets_wo` entry is detected automatically, but changing only the **value** of an existing secret is not (write-only values are not tracked in state). Increment this value to push value-only changes to the API.
+        """
+        return pulumi.get(self, "secrets_wo_version")
+
+    @secrets_wo_version.setter
+    def secrets_wo_version(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "secrets_wo_version", value)
+
+    @_builtins.property
+    @pulumi.getter(name="secretsWos")
+    def secrets_wos(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ActionSecretsWoArgs']]]]:
+        """
+        List of secrets for the action (write-only). Secret values are only available during resource creation and update, and are **not** stored in Terraform state. Adding, renaming, or removing an entry is applied automatically; to change only the value of an existing secret, bump the `secrets_wo_version` attribute. To remove all secrets, delete the `secrets_wo` blocks together with the `secrets_wo_version` attribute. This is an ordered list, so reordering the blocks is treated as a change. Conflicts with `secrets`.
+        """
+        return pulumi.get(self, "secrets_wos")
+
+    @secrets_wos.setter
+    def secrets_wos(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ActionSecretsWoArgs']]]]):
+        pulumi.set(self, "secrets_wos", value)
 
     @_builtins.property
     @pulumi.getter(name="supportedTriggers")
@@ -319,6 +383,8 @@ class Action(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  runtime: pulumi.Input[Optional[_builtins.str]] = None,
                  secrets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionSecretArgs', 'ActionSecretArgsDict']]]]] = None,
+                 secrets_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 secrets_wos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionSecretsWoArgs', 'ActionSecretsWoArgsDict']]]]] = None,
                  supported_triggers: pulumi.Input[Optional[Union['ActionSupportedTriggersArgs', 'ActionSupportedTriggersArgsDict']]] = None,
                  __props__=None):
         """
@@ -329,8 +395,9 @@ class Action(pulumi.CustomResource):
         The provider also supports a 1:many variant auth0_trigger_actions.
         If by any means, a binding is missing is the state file, it can be imported to the state and deleted, before attempting to delete the action.
 
-        > Values provided in the sensitive values shall be stored in the raw state as plain text: secrets.
+        > Values provided in the `secrets` block are stored in the raw state as plain text.
         Read more about sensitive data in state.
+        For better security, consider using the `secrets_wo` write-only alternative, whose values are never stored in Terraform state.
 
         ## Example Usage
 
@@ -378,6 +445,27 @@ class Action(pulumi.CustomResource):
                     "value": "Bar",
                 },
             ])
+        config = pulumi.Config()
+        # API key passed to the post-login action.
+        action_api_key = config.require("actionApiKey")
+        my_secure_action = auth0.Action("my_secure_action",
+            name=std.format(input="Secure Action %s",
+                args=[std.timestamp()["result"]])["result"],
+            runtime="node22",
+            deploy=True,
+            code=\"\"\"exports.onExecutePostLogin = async (event, api) => {
+          console.log(event);
+        };
+        \"\"\",
+            supported_triggers={
+                "id": "post-login",
+                "version": "v3",
+            },
+            secrets_wos=[{
+                "name": "API_KEY",
+                "value": action_api_key,
+            }],
+            secrets_wo_version=1)
         ```
 
         ## Import
@@ -402,7 +490,9 @@ class Action(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ActionModuleArgs', 'ActionModuleArgsDict']]]] modules: List of action modules and their versions that this action depends on.
         :param pulumi.Input[_builtins.str] name: The name of the action.
         :param pulumi.Input[_builtins.str] runtime: The Node runtime. Possible values are: `node12`, `node16` (not recommended), `node18`, `node22`
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ActionSecretArgs', 'ActionSecretArgsDict']]]] secrets: List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ActionSecretArgs', 'ActionSecretArgsDict']]]] secrets: List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned. **Note:** Secret values are persisted in Terraform state as plain text. For better security, consider using `secrets_wo` instead, which supports write-only values and ephemeral variables.
+        :param pulumi.Input[_builtins.int] secrets_wo_version: Version number for `secrets_wo` changes. Adding, renaming, or removing a `secrets_wo` entry is detected automatically, but changing only the **value** of an existing secret is not (write-only values are not tracked in state). Increment this value to push value-only changes to the API.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ActionSecretsWoArgs', 'ActionSecretsWoArgsDict']]]] secrets_wos: List of secrets for the action (write-only). Secret values are only available during resource creation and update, and are **not** stored in Terraform state. Adding, renaming, or removing an entry is applied automatically; to change only the value of an existing secret, bump the `secrets_wo_version` attribute. To remove all secrets, delete the `secrets_wo` blocks together with the `secrets_wo_version` attribute. This is an ordered list, so reordering the blocks is treated as a change. Conflicts with `secrets`.
         :param pulumi.Input[Union['ActionSupportedTriggersArgs', 'ActionSupportedTriggersArgsDict']] supported_triggers: List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
         """
         ...
@@ -419,8 +509,9 @@ class Action(pulumi.CustomResource):
         The provider also supports a 1:many variant auth0_trigger_actions.
         If by any means, a binding is missing is the state file, it can be imported to the state and deleted, before attempting to delete the action.
 
-        > Values provided in the sensitive values shall be stored in the raw state as plain text: secrets.
+        > Values provided in the `secrets` block are stored in the raw state as plain text.
         Read more about sensitive data in state.
+        For better security, consider using the `secrets_wo` write-only alternative, whose values are never stored in Terraform state.
 
         ## Example Usage
 
@@ -468,6 +559,27 @@ class Action(pulumi.CustomResource):
                     "value": "Bar",
                 },
             ])
+        config = pulumi.Config()
+        # API key passed to the post-login action.
+        action_api_key = config.require("actionApiKey")
+        my_secure_action = auth0.Action("my_secure_action",
+            name=std.format(input="Secure Action %s",
+                args=[std.timestamp()["result"]])["result"],
+            runtime="node22",
+            deploy=True,
+            code=\"\"\"exports.onExecutePostLogin = async (event, api) => {
+          console.log(event);
+        };
+        \"\"\",
+            supported_triggers={
+                "id": "post-login",
+                "version": "v3",
+            },
+            secrets_wos=[{
+                "name": "API_KEY",
+                "value": action_api_key,
+            }],
+            secrets_wo_version=1)
         ```
 
         ## Import
@@ -506,6 +618,8 @@ class Action(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  runtime: pulumi.Input[Optional[_builtins.str]] = None,
                  secrets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionSecretArgs', 'ActionSecretArgsDict']]]]] = None,
+                 secrets_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 secrets_wos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionSecretsWoArgs', 'ActionSecretsWoArgsDict']]]]] = None,
                  supported_triggers: pulumi.Input[Optional[Union['ActionSupportedTriggersArgs', 'ActionSupportedTriggersArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -525,6 +639,8 @@ class Action(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["runtime"] = runtime
             __props__.__dict__["secrets"] = secrets
+            __props__.__dict__["secrets_wo_version"] = secrets_wo_version
+            __props__.__dict__["secrets_wos"] = secrets_wos
             if supported_triggers is None and not opts.urn:
                 raise TypeError("Missing required property 'supported_triggers'")
             __props__.__dict__["supported_triggers"] = supported_triggers
@@ -546,6 +662,8 @@ class Action(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             runtime: pulumi.Input[Optional[_builtins.str]] = None,
             secrets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionSecretArgs', 'ActionSecretArgsDict']]]]] = None,
+            secrets_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
+            secrets_wos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionSecretsWoArgs', 'ActionSecretsWoArgsDict']]]]] = None,
             supported_triggers: pulumi.Input[Optional[Union['ActionSupportedTriggersArgs', 'ActionSupportedTriggersArgsDict']]] = None,
             version_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Action':
         """
@@ -561,7 +679,9 @@ class Action(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ActionModuleArgs', 'ActionModuleArgsDict']]]] modules: List of action modules and their versions that this action depends on.
         :param pulumi.Input[_builtins.str] name: The name of the action.
         :param pulumi.Input[_builtins.str] runtime: The Node runtime. Possible values are: `node12`, `node16` (not recommended), `node18`, `node22`
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ActionSecretArgs', 'ActionSecretArgsDict']]]] secrets: List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ActionSecretArgs', 'ActionSecretArgsDict']]]] secrets: List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned. **Note:** Secret values are persisted in Terraform state as plain text. For better security, consider using `secrets_wo` instead, which supports write-only values and ephemeral variables.
+        :param pulumi.Input[_builtins.int] secrets_wo_version: Version number for `secrets_wo` changes. Adding, renaming, or removing a `secrets_wo` entry is detected automatically, but changing only the **value** of an existing secret is not (write-only values are not tracked in state). Increment this value to push value-only changes to the API.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ActionSecretsWoArgs', 'ActionSecretsWoArgsDict']]]] secrets_wos: List of secrets for the action (write-only). Secret values are only available during resource creation and update, and are **not** stored in Terraform state. Adding, renaming, or removing an entry is applied automatically; to change only the value of an existing secret, bump the `secrets_wo_version` attribute. To remove all secrets, delete the `secrets_wo` blocks together with the `secrets_wo_version` attribute. This is an ordered list, so reordering the blocks is treated as a change. Conflicts with `secrets`.
         :param pulumi.Input[Union['ActionSupportedTriggersArgs', 'ActionSupportedTriggersArgsDict']] supported_triggers: List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
         :param pulumi.Input[_builtins.str] version_id: Version ID of the action. This value is available if `deploy` is set to true.
         """
@@ -576,6 +696,8 @@ class Action(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["runtime"] = runtime
         __props__.__dict__["secrets"] = secrets
+        __props__.__dict__["secrets_wo_version"] = secrets_wo_version
+        __props__.__dict__["secrets_wos"] = secrets_wos
         __props__.__dict__["supported_triggers"] = supported_triggers
         __props__.__dict__["version_id"] = version_id
         return Action(resource_name, opts=opts, __props__=__props__)
@@ -632,9 +754,25 @@ class Action(pulumi.CustomResource):
     @pulumi.getter
     def secrets(self) -> pulumi.Output[Optional[Sequence['outputs.ActionSecret']]]:
         """
-        List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
+        List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned. **Note:** Secret values are persisted in Terraform state as plain text. For better security, consider using `secrets_wo` instead, which supports write-only values and ephemeral variables.
         """
         return pulumi.get(self, "secrets")
+
+    @_builtins.property
+    @pulumi.getter(name="secretsWoVersion")
+    def secrets_wo_version(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        Version number for `secrets_wo` changes. Adding, renaming, or removing a `secrets_wo` entry is detected automatically, but changing only the **value** of an existing secret is not (write-only values are not tracked in state). Increment this value to push value-only changes to the API.
+        """
+        return pulumi.get(self, "secrets_wo_version")
+
+    @_builtins.property
+    @pulumi.getter(name="secretsWos")
+    def secrets_wos(self) -> pulumi.Output[Optional[Sequence['outputs.ActionSecretsWo']]]:
+        """
+        List of secrets for the action (write-only). Secret values are only available during resource creation and update, and are **not** stored in Terraform state. Adding, renaming, or removing an entry is applied automatically; to change only the value of an existing secret, bump the `secrets_wo_version` attribute. To remove all secrets, delete the `secrets_wo` blocks together with the `secrets_wo_version` attribute. This is an ordered list, so reordering the blocks is treated as a change. Conflicts with `secrets`.
+        """
+        return pulumi.get(self, "secrets_wos")
 
     @_builtins.property
     @pulumi.getter(name="supportedTriggers")

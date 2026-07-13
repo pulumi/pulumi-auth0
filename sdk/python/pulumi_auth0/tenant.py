@@ -1481,7 +1481,7 @@ class Tenant(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="defaultRedirectionUri")
-    def default_redirection_uri(self) -> pulumi.Output[_builtins.str]:
+    def default_redirection_uri(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The default absolute redirection URI. Must be HTTPS or an empty string.
         """

@@ -6,10 +6,12 @@ package com.pulumi.auth0.inputs;
 import com.pulumi.auth0.inputs.ActionDependencyArgs;
 import com.pulumi.auth0.inputs.ActionModuleArgs;
 import com.pulumi.auth0.inputs.ActionSecretArgs;
+import com.pulumi.auth0.inputs.ActionSecretsWoArgs;
 import com.pulumi.auth0.inputs.ActionSupportedTriggersArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -112,18 +114,48 @@ public final class ActionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
+     * List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned. **Note:** Secret values are persisted in Terraform state as plain text. For better security, consider using `secretsWo` instead, which supports write-only values and ephemeral variables.
      * 
      */
     @Import(name="secrets")
     private @Nullable Output<List<ActionSecretArgs>> secrets;
 
     /**
-     * @return List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
+     * @return List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned. **Note:** Secret values are persisted in Terraform state as plain text. For better security, consider using `secretsWo` instead, which supports write-only values and ephemeral variables.
      * 
      */
     public Optional<Output<List<ActionSecretArgs>>> secrets() {
         return Optional.ofNullable(this.secrets);
+    }
+
+    /**
+     * Version number for `secretsWo` changes. Adding, renaming, or removing a `secretsWo` entry is detected automatically, but changing only the **value** of an existing secret is not (write-only values are not tracked in state). Increment this value to push value-only changes to the API.
+     * 
+     */
+    @Import(name="secretsWoVersion")
+    private @Nullable Output<Integer> secretsWoVersion;
+
+    /**
+     * @return Version number for `secretsWo` changes. Adding, renaming, or removing a `secretsWo` entry is detected automatically, but changing only the **value** of an existing secret is not (write-only values are not tracked in state). Increment this value to push value-only changes to the API.
+     * 
+     */
+    public Optional<Output<Integer>> secretsWoVersion() {
+        return Optional.ofNullable(this.secretsWoVersion);
+    }
+
+    /**
+     * List of secrets for the action (write-only). Secret values are only available during resource creation and update, and are **not** stored in Terraform state. Adding, renaming, or removing an entry is applied automatically; to change only the value of an existing secret, bump the `secretsWoVersion` attribute. To remove all secrets, delete the `secretsWo` blocks together with the `secretsWoVersion` attribute. This is an ordered list, so reordering the blocks is treated as a change. Conflicts with `secrets`.
+     * 
+     */
+    @Import(name="secretsWos")
+    private @Nullable Output<List<ActionSecretsWoArgs>> secretsWos;
+
+    /**
+     * @return List of secrets for the action (write-only). Secret values are only available during resource creation and update, and are **not** stored in Terraform state. Adding, renaming, or removing an entry is applied automatically; to change only the value of an existing secret, bump the `secretsWoVersion` attribute. To remove all secrets, delete the `secretsWo` blocks together with the `secretsWoVersion` attribute. This is an ordered list, so reordering the blocks is treated as a change. Conflicts with `secrets`.
+     * 
+     */
+    public Optional<Output<List<ActionSecretsWoArgs>>> secretsWos() {
+        return Optional.ofNullable(this.secretsWos);
     }
 
     /**
@@ -166,6 +198,8 @@ public final class ActionState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.runtime = $.runtime;
         this.secrets = $.secrets;
+        this.secretsWoVersion = $.secretsWoVersion;
+        this.secretsWos = $.secretsWos;
         this.supportedTriggers = $.supportedTriggers;
         this.versionId = $.versionId;
     }
@@ -335,7 +369,7 @@ public final class ActionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secrets List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
+         * @param secrets List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned. **Note:** Secret values are persisted in Terraform state as plain text. For better security, consider using `secretsWo` instead, which supports write-only values and ephemeral variables.
          * 
          * @return builder
          * 
@@ -346,7 +380,7 @@ public final class ActionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secrets List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
+         * @param secrets List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned. **Note:** Secret values are persisted in Terraform state as plain text. For better security, consider using `secretsWo` instead, which supports write-only values and ephemeral variables.
          * 
          * @return builder
          * 
@@ -356,13 +390,65 @@ public final class ActionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secrets List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
+         * @param secrets List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned. **Note:** Secret values are persisted in Terraform state as plain text. For better security, consider using `secretsWo` instead, which supports write-only values and ephemeral variables.
          * 
          * @return builder
          * 
          */
         public Builder secrets(ActionSecretArgs... secrets) {
             return secrets(List.of(secrets));
+        }
+
+        /**
+         * @param secretsWoVersion Version number for `secretsWo` changes. Adding, renaming, or removing a `secretsWo` entry is detected automatically, but changing only the **value** of an existing secret is not (write-only values are not tracked in state). Increment this value to push value-only changes to the API.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretsWoVersion(@Nullable Output<Integer> secretsWoVersion) {
+            $.secretsWoVersion = secretsWoVersion;
+            return this;
+        }
+
+        /**
+         * @param secretsWoVersion Version number for `secretsWo` changes. Adding, renaming, or removing a `secretsWo` entry is detected automatically, but changing only the **value** of an existing secret is not (write-only values are not tracked in state). Increment this value to push value-only changes to the API.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretsWoVersion(Integer secretsWoVersion) {
+            return secretsWoVersion(Output.of(secretsWoVersion));
+        }
+
+        /**
+         * @param secretsWos List of secrets for the action (write-only). Secret values are only available during resource creation and update, and are **not** stored in Terraform state. Adding, renaming, or removing an entry is applied automatically; to change only the value of an existing secret, bump the `secretsWoVersion` attribute. To remove all secrets, delete the `secretsWo` blocks together with the `secretsWoVersion` attribute. This is an ordered list, so reordering the blocks is treated as a change. Conflicts with `secrets`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretsWos(@Nullable Output<List<ActionSecretsWoArgs>> secretsWos) {
+            $.secretsWos = secretsWos;
+            return this;
+        }
+
+        /**
+         * @param secretsWos List of secrets for the action (write-only). Secret values are only available during resource creation and update, and are **not** stored in Terraform state. Adding, renaming, or removing an entry is applied automatically; to change only the value of an existing secret, bump the `secretsWoVersion` attribute. To remove all secrets, delete the `secretsWo` blocks together with the `secretsWoVersion` attribute. This is an ordered list, so reordering the blocks is treated as a change. Conflicts with `secrets`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretsWos(List<ActionSecretsWoArgs> secretsWos) {
+            return secretsWos(Output.of(secretsWos));
+        }
+
+        /**
+         * @param secretsWos List of secrets for the action (write-only). Secret values are only available during resource creation and update, and are **not** stored in Terraform state. Adding, renaming, or removing an entry is applied automatically; to change only the value of an existing secret, bump the `secretsWoVersion` attribute. To remove all secrets, delete the `secretsWo` blocks together with the `secretsWoVersion` attribute. This is an ordered list, so reordering the blocks is treated as a change. Conflicts with `secrets`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretsWos(ActionSecretsWoArgs... secretsWos) {
+            return secretsWos(List.of(secretsWos));
         }
 
         /**

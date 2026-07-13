@@ -171,7 +171,7 @@ public final class GetClientResult {
      */
     private String id;
     /**
-     * @return Initiate login URI. Must be HTTPS or an empty string.
+     * @return Initiate login URI. Must be HTTPS or an empty string. May contain Auth0 dynamic login URI placeholders such as `{organization.metadata.public_login_host}` or `{custom_domain.metadata.public_app_host}`, which are resolved by Auth0 at request time. See https://auth0.com/docs/get-started/applications/application-settings.
      * 
      */
     private String initiateLoginUri;
@@ -525,7 +525,7 @@ public final class GetClientResult {
         return this.id;
     }
     /**
-     * @return Initiate login URI. Must be HTTPS or an empty string.
+     * @return Initiate login URI. Must be HTTPS or an empty string. May contain Auth0 dynamic login URI placeholders such as `{organization.metadata.public_login_host}` or `{custom_domain.metadata.public_app_host}`, which are resolved by Auth0 at request time. See https://auth0.com/docs/get-started/applications/application-settings.
      * 
      */
     public String initiateLoginUri() {

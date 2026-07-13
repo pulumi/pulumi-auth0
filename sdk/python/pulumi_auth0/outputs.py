@@ -24,6 +24,7 @@ __all__ = [
     'ActionModuleLatestVersionSecret',
     'ActionModuleSecret',
     'ActionSecret',
+    'ActionSecretsWo',
     'ActionSupportedTriggers',
     'AttackProtectionBotDetection',
     'AttackProtectionBreachedPasswordDetection',
@@ -238,6 +239,7 @@ __all__ = [
     'PromptScreenPartialsScreenPartial',
     'PromptScreenPartialsScreenPartialInsertionPoints',
     'PromptScreenRendererFilters',
+    'RateLimitPolicyConfiguration',
     'ResourceServerAuthorizationDetail',
     'ResourceServerAuthorizationPolicy',
     'ResourceServerProofOfPossession',
@@ -285,6 +287,7 @@ __all__ = [
     'GetActionModuleVersionsVersionDependencyResult',
     'GetActionModuleVersionsVersionSecretResult',
     'GetActionSecretResult',
+    'GetActionSecretsWoResult',
     'GetActionSupportedTriggerResult',
     'GetAttackProtectionBotDetectionResult',
     'GetAttackProtectionBreachedPasswordDetectionResult',
@@ -497,6 +500,9 @@ __all__ = [
     'GetPromptScreenPartialsScreenPartialResult',
     'GetPromptScreenPartialsScreenPartialInsertionPointResult',
     'GetPromptScreenRendererFilterResult',
+    'GetRateLimitPoliciesRateLimitPolicyResult',
+    'GetRateLimitPoliciesRateLimitPolicyConfigurationResult',
+    'GetRateLimitPolicyConfigurationResult',
     'GetResourceServerAuthorizationDetailResult',
     'GetResourceServerAuthorizationPolicyResult',
     'GetResourceServerProofOfPossessionResult',
@@ -926,6 +932,37 @@ class ActionSecret(dict):
     def value(self) -> _builtins.str:
         """
         Secret value.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class ActionSecretsWo(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str name: The name of the action.
+        :param _builtins.str value: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Secret value (write-only). This value is never stored in Terraform state.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the action.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Secret value (write-only). This value is never stored in Terraform state.
         """
         return pulumi.get(self, "value")
 
@@ -15202,6 +15239,65 @@ class PromptScreenRendererFilters(dict):
 
 
 @pulumi.output_type
+class RateLimitPolicyConfiguration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "redirectUri":
+            suggest = "redirect_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RateLimitPolicyConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RateLimitPolicyConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RateLimitPolicyConfiguration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 action: _builtins.str,
+                 limit: Optional[_builtins.int] = None,
+                 redirect_uri: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str action: Action to take when the rate limit is exceeded. Valid values are: allow block log redirect
+        :param _builtins.int limit: Maximum number of requests allowed in a single window (0-10000). Required and only valid for the `block`, `log`, and `redirect` actions. (EA only)
+        :param _builtins.str redirect_uri: HTTPS URI to redirect to when the rate limit is exceeded. Required and only valid for the `redirect` action. (EA only)
+        """
+        pulumi.set(__self__, "action", action)
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if redirect_uri is not None:
+            pulumi.set(__self__, "redirect_uri", redirect_uri)
+
+    @_builtins.property
+    @pulumi.getter
+    def action(self) -> _builtins.str:
+        """
+        Action to take when the rate limit is exceeded. Valid values are: allow block log redirect
+        """
+        return pulumi.get(self, "action")
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[_builtins.int]:
+        """
+        Maximum number of requests allowed in a single window (0-10000). Required and only valid for the `block`, `log`, and `redirect` actions. (EA only)
+        """
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter(name="redirectUri")
+    def redirect_uri(self) -> Optional[_builtins.str]:
+        """
+        HTTPS URI to redirect to when the rate limit is exceeded. Required and only valid for the `redirect` action. (EA only)
+        """
+        return pulumi.get(self, "redirect_uri")
+
+
+@pulumi.output_type
 class ResourceServerAuthorizationDetail(dict):
     def __init__(__self__, *,
                  disable: Optional[_builtins.bool] = None,
@@ -17716,6 +17812,35 @@ class GetActionSecretResult(dict):
     def value(self) -> _builtins.str:
         """
         Secret value.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetActionSecretsWoResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str name: Secret name.
+        :param _builtins.str value: Secret value (write-only). This value is never stored in Terraform state.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Secret name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        Secret value (write-only). This value is never stored in Terraform state.
         """
         return pulumi.get(self, "value")
 
@@ -27928,6 +28053,170 @@ class GetPromptScreenRendererFilterResult(dict):
         An array of organizations identified by id or a metadata key/value pair. Entity Limit: 25.
         """
         return pulumi.get(self, "organizations")
+
+
+@pulumi.output_type
+class GetRateLimitPoliciesRateLimitPolicyResult(dict):
+    def __init__(__self__, *,
+                 configurations: Sequence['outputs.GetRateLimitPoliciesRateLimitPolicyConfigurationResult'],
+                 consumer: _builtins.str,
+                 consumer_selector: _builtins.str,
+                 created_at: _builtins.str,
+                 id: _builtins.str,
+                 resource: _builtins.str,
+                 updated_at: _builtins.str):
+        """
+        :param Sequence['GetRateLimitPoliciesRateLimitPolicyConfigurationArgs'] configurations: The throttling configuration applied when the rate limit is reached. (EA only)
+        :param _builtins.str consumer: The consumer category the policy applies to. Valid values are: [client] (EA Only)
+        :param _builtins.str consumer_selector: Identifier or category within the consumer to which the policy applies. Supported values: `client_id:<client_id>`, `client_id:<cimd_uri>`, `cimd_clients`, `third_party_clients`, or `default`. (EA only)
+        :param _builtins.str created_at: The date and time when the rate limit policy was created.
+        :param _builtins.str id: The ID of the Rate Limit Policy. (EA only)
+        :param _builtins.str resource: The resource the policy applies to. Valid values are: [oauth_authentication_api] (EA Only)
+        :param _builtins.str updated_at: The date and time when the rate limit policy was last updated.
+        """
+        pulumi.set(__self__, "configurations", configurations)
+        pulumi.set(__self__, "consumer", consumer)
+        pulumi.set(__self__, "consumer_selector", consumer_selector)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "resource", resource)
+        pulumi.set(__self__, "updated_at", updated_at)
+
+    @_builtins.property
+    @pulumi.getter
+    def configurations(self) -> Sequence['outputs.GetRateLimitPoliciesRateLimitPolicyConfigurationResult']:
+        """
+        The throttling configuration applied when the rate limit is reached. (EA only)
+        """
+        return pulumi.get(self, "configurations")
+
+    @_builtins.property
+    @pulumi.getter
+    def consumer(self) -> _builtins.str:
+        """
+        The consumer category the policy applies to. Valid values are: [client] (EA Only)
+        """
+        return pulumi.get(self, "consumer")
+
+    @_builtins.property
+    @pulumi.getter(name="consumerSelector")
+    def consumer_selector(self) -> _builtins.str:
+        """
+        Identifier or category within the consumer to which the policy applies. Supported values: `client_id:<client_id>`, `client_id:<cimd_uri>`, `cimd_clients`, `third_party_clients`, or `default`. (EA only)
+        """
+        return pulumi.get(self, "consumer_selector")
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        The date and time when the rate limit policy was created.
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the Rate Limit Policy. (EA only)
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def resource(self) -> _builtins.str:
+        """
+        The resource the policy applies to. Valid values are: [oauth_authentication_api] (EA Only)
+        """
+        return pulumi.get(self, "resource")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> _builtins.str:
+        """
+        The date and time when the rate limit policy was last updated.
+        """
+        return pulumi.get(self, "updated_at")
+
+
+@pulumi.output_type
+class GetRateLimitPoliciesRateLimitPolicyConfigurationResult(dict):
+    def __init__(__self__, *,
+                 action: _builtins.str,
+                 limit: _builtins.int,
+                 redirect_uri: _builtins.str):
+        """
+        :param _builtins.str action: Action to take when the rate limit is exceeded. Valid values are: [allow block log redirect] (EA only)
+        :param _builtins.int limit: Maximum number of requests allowed in a single window (0-10000). Required and only valid for the `block`, `log`, and `redirect` actions. (EA only)
+        :param _builtins.str redirect_uri: HTTPS URI to redirect to when the rate limit is exceeded. Required and only valid for the `redirect` action. (EA only)
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "redirect_uri", redirect_uri)
+
+    @_builtins.property
+    @pulumi.getter
+    def action(self) -> _builtins.str:
+        """
+        Action to take when the rate limit is exceeded. Valid values are: [allow block log redirect] (EA only)
+        """
+        return pulumi.get(self, "action")
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> _builtins.int:
+        """
+        Maximum number of requests allowed in a single window (0-10000). Required and only valid for the `block`, `log`, and `redirect` actions. (EA only)
+        """
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter(name="redirectUri")
+    def redirect_uri(self) -> _builtins.str:
+        """
+        HTTPS URI to redirect to when the rate limit is exceeded. Required and only valid for the `redirect` action. (EA only)
+        """
+        return pulumi.get(self, "redirect_uri")
+
+
+@pulumi.output_type
+class GetRateLimitPolicyConfigurationResult(dict):
+    def __init__(__self__, *,
+                 action: _builtins.str,
+                 limit: _builtins.int,
+                 redirect_uri: _builtins.str):
+        """
+        :param _builtins.str action: Action to take when the rate limit is exceeded. Valid values are: [allow block log redirect] (EA only)
+        :param _builtins.int limit: Maximum number of requests allowed in a single window (0-10000). Required and only valid for the `block`, `log`, and `redirect` actions. (EA only)
+        :param _builtins.str redirect_uri: HTTPS URI to redirect to when the rate limit is exceeded. Required and only valid for the `redirect` action. (EA only)
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "redirect_uri", redirect_uri)
+
+    @_builtins.property
+    @pulumi.getter
+    def action(self) -> _builtins.str:
+        """
+        Action to take when the rate limit is exceeded. Valid values are: [allow block log redirect] (EA only)
+        """
+        return pulumi.get(self, "action")
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> _builtins.int:
+        """
+        Maximum number of requests allowed in a single window (0-10000). Required and only valid for the `block`, `log`, and `redirect` actions. (EA only)
+        """
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter(name="redirectUri")
+    def redirect_uri(self) -> _builtins.str:
+        """
+        HTTPS URI to redirect to when the rate limit is exceeded. Required and only valid for the `redirect` action. (EA only)
+        """
+        return pulumi.get(self, "redirect_uri")
 
 
 @pulumi.output_type

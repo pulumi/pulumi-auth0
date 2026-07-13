@@ -31,6 +31,8 @@ __all__ = [
     'ActionModuleSecretArgsDict',
     'ActionSecretArgs',
     'ActionSecretArgsDict',
+    'ActionSecretsWoArgs',
+    'ActionSecretsWoArgsDict',
     'ActionSupportedTriggersArgs',
     'ActionSupportedTriggersArgsDict',
     'AttackProtectionBotDetectionArgs',
@@ -459,6 +461,8 @@ __all__ = [
     'PromptScreenPartialsScreenPartialInsertionPointsArgsDict',
     'PromptScreenRendererFiltersArgs',
     'PromptScreenRendererFiltersArgsDict',
+    'RateLimitPolicyConfigurationArgs',
+    'RateLimitPolicyConfigurationArgsDict',
     'ResourceServerAuthorizationDetailArgs',
     'ResourceServerAuthorizationDetailArgsDict',
     'ResourceServerAuthorizationPolicyArgs',
@@ -1047,6 +1051,56 @@ class ActionSecretArgs:
     def value(self) -> pulumi.Input[_builtins.str]:
         """
         Secret value.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "value", value)
+
+
+class ActionSecretsWoArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    The name of the action.
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+    Secret value (write-only). This value is never stored in Terraform state.
+    """
+
+@pulumi.input_type
+class ActionSecretsWoArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str],
+                 value: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] name: The name of the action.
+        :param pulumi.Input[_builtins.str] value: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Secret value (write-only). This value is never stored in Terraform state.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the action.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[_builtins.str]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Secret value (write-only). This value is never stored in Terraform state.
         """
         return pulumi.get(self, "value")
 
@@ -19256,6 +19310,74 @@ class PromptScreenRendererFiltersArgs:
     @organizations.setter
     def organizations(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "organizations", value)
+
+
+class RateLimitPolicyConfigurationArgsDict(TypedDict):
+    action: pulumi.Input[_builtins.str]
+    """
+    Action to take when the rate limit is exceeded. Valid values are: allow block log redirect
+    """
+    limit: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Maximum number of requests allowed in a single window (0-10000). Required and only valid for the `block`, `log`, and `redirect` actions. (EA only)
+    """
+    redirect_uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    HTTPS URI to redirect to when the rate limit is exceeded. Required and only valid for the `redirect` action. (EA only)
+    """
+
+@pulumi.input_type
+class RateLimitPolicyConfigurationArgs:
+    def __init__(__self__, *,
+                 action: pulumi.Input[_builtins.str],
+                 limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 redirect_uri: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] action: Action to take when the rate limit is exceeded. Valid values are: allow block log redirect
+        :param pulumi.Input[_builtins.int] limit: Maximum number of requests allowed in a single window (0-10000). Required and only valid for the `block`, `log`, and `redirect` actions. (EA only)
+        :param pulumi.Input[_builtins.str] redirect_uri: HTTPS URI to redirect to when the rate limit is exceeded. Required and only valid for the `redirect` action. (EA only)
+        """
+        pulumi.set(__self__, "action", action)
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if redirect_uri is not None:
+            pulumi.set(__self__, "redirect_uri", redirect_uri)
+
+    @_builtins.property
+    @pulumi.getter
+    def action(self) -> pulumi.Input[_builtins.str]:
+        """
+        Action to take when the rate limit is exceeded. Valid values are: allow block log redirect
+        """
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "action", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of requests allowed in a single window (0-10000). Required and only valid for the `block`, `log`, and `redirect` actions. (EA only)
+        """
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "limit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="redirectUri")
+    def redirect_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        HTTPS URI to redirect to when the rate limit is exceeded. Required and only valid for the `redirect` action. (EA only)
+        """
+        return pulumi.get(self, "redirect_uri")
+
+    @redirect_uri.setter
+    def redirect_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "redirect_uri", value)
 
 
 class ResourceServerAuthorizationDetailArgsDict(TypedDict):

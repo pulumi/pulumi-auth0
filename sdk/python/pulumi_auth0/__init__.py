@@ -68,6 +68,8 @@ from .get_phone_notification_template import *
 from .get_phone_provider import *
 from .get_prompt_screen_partials import *
 from .get_prompt_screen_renderer import *
+from .get_rate_limit_policies import *
+from .get_rate_limit_policy import *
 from .get_resource_server import *
 from .get_role import *
 from .get_self_service_profile import *
@@ -101,6 +103,7 @@ from .prompt_screen_partial import *
 from .prompt_screen_partials import *
 from .prompt_screen_renderer import *
 from .provider import *
+from .rate_limit_policy import *
 from .resource_server import *
 from .resource_server_scope import *
 from .resource_server_scopes import *
@@ -551,6 +554,14 @@ _utilities.register(
   "fqn": "pulumi_auth0",
   "classes": {
    "auth0:index/promptScreenRenderer:PromptScreenRenderer": "PromptScreenRenderer"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/rateLimitPolicy",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/rateLimitPolicy:RateLimitPolicy": "RateLimitPolicy"
   }
  },
  {

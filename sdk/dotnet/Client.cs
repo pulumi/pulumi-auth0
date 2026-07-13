@@ -176,7 +176,7 @@ namespace Pulumi.Auth0
         public Output<ImmutableArray<string>> GrantTypes { get; private set; } = null!;
 
         /// <summary>
-        /// Initiate login URI. Must be HTTPS or an empty string.
+        /// Initiate login URI. Must be HTTPS or an empty string. May contain Auth0 dynamic login URI placeholders such as `{organization.metadata.public_login_host}` or `{custom_domain.metadata.public_app_host}`, which are resolved by Auth0 at request time. See https://auth0.com/docs/get-started/applications/application-settings.
         /// </summary>
         [Output("initiateLoginUri")]
         public Output<string?> InitiateLoginUri { get; private set; } = null!;
@@ -583,7 +583,7 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// Initiate login URI. Must be HTTPS or an empty string.
+        /// Initiate login URI. Must be HTTPS or an empty string. May contain Auth0 dynamic login URI placeholders such as `{organization.metadata.public_login_host}` or `{custom_domain.metadata.public_app_host}`, which are resolved by Auth0 at request time. See https://auth0.com/docs/get-started/applications/application-settings.
         /// </summary>
         [Input("initiateLoginUri")]
         public Input<string>? InitiateLoginUri { get; set; }
@@ -980,7 +980,7 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// Initiate login URI. Must be HTTPS or an empty string.
+        /// Initiate login URI. Must be HTTPS or an empty string. May contain Auth0 dynamic login URI placeholders such as `{organization.metadata.public_login_host}` or `{custom_domain.metadata.public_app_host}`, which are resolved by Auth0 at request time. See https://auth0.com/docs/get-started/applications/application-settings.
         /// </summary>
         [Input("initiateLoginUri")]
         public Input<string>? InitiateLoginUri { get; set; }

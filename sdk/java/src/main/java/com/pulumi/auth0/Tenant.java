@@ -213,14 +213,14 @@ public class Tenant extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="defaultRedirectionUri", refs={String.class}, tree="[0]")
-    private Output<String> defaultRedirectionUri;
+    private Output</* @Nullable */ String> defaultRedirectionUri;
 
     /**
      * @return The default absolute redirection URI. Must be HTTPS or an empty string.
      * 
      */
-    public Output<String> defaultRedirectionUri() {
-        return this.defaultRedirectionUri;
+    public Output<Optional<String>> defaultRedirectionUri() {
+        return Codegen.optional(this.defaultRedirectionUri);
     }
     /**
      * Token Quota configuration.

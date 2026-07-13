@@ -46,8 +46,12 @@ type LookupActionResult struct {
 	Name *string `pulumi:"name"`
 	// The Node runtime. Possible values are: `node12`, `node16` (not recommended), `node18`, `node22`
 	Runtime string `pulumi:"runtime"`
-	// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
+	// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned. **Note:** Secret values are persisted in Terraform state as plain text. For better security, consider using `secretsWo` instead, which supports write-only values and ephemeral variables.
 	Secrets []GetActionSecret `pulumi:"secrets"`
+	// Version number for `secretsWo` changes. Adding, renaming, or removing a `secretsWo` entry is detected automatically, but changing only the **value** of an existing secret is not (write-only values are not tracked in state). Increment this value to push value-only changes to the API.
+	SecretsWoVersion int `pulumi:"secretsWoVersion"`
+	// List of secrets for the action (write-only). Secret values are only available during resource creation and update, and are **not** stored in Terraform state. Adding, renaming, or removing an entry is applied automatically; to change only the value of an existing secret, bump the `secretsWoVersion` attribute. To remove all secrets, delete the `secretsWo` blocks together with the `secretsWoVersion` attribute. This is an ordered list, so reordering the blocks is treated as a change. Conflicts with `secrets`.
+	SecretsWos []GetActionSecretsWo `pulumi:"secretsWos"`
 	// List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
 	SupportedTriggers []GetActionSupportedTrigger `pulumi:"supportedTriggers"`
 	// Version ID of the action. This value is available if `deploy` is set to true.
@@ -125,9 +129,19 @@ func (o LookupActionResultOutput) Runtime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupActionResult) string { return v.Runtime }).(pulumi.StringOutput)
 }
 
-// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
+// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned. **Note:** Secret values are persisted in Terraform state as plain text. For better security, consider using `secretsWo` instead, which supports write-only values and ephemeral variables.
 func (o LookupActionResultOutput) Secrets() GetActionSecretArrayOutput {
 	return o.ApplyT(func(v LookupActionResult) []GetActionSecret { return v.Secrets }).(GetActionSecretArrayOutput)
+}
+
+// Version number for `secretsWo` changes. Adding, renaming, or removing a `secretsWo` entry is detected automatically, but changing only the **value** of an existing secret is not (write-only values are not tracked in state). Increment this value to push value-only changes to the API.
+func (o LookupActionResultOutput) SecretsWoVersion() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupActionResult) int { return v.SecretsWoVersion }).(pulumi.IntOutput)
+}
+
+// List of secrets for the action (write-only). Secret values are only available during resource creation and update, and are **not** stored in Terraform state. Adding, renaming, or removing an entry is applied automatically; to change only the value of an existing secret, bump the `secretsWoVersion` attribute. To remove all secrets, delete the `secretsWo` blocks together with the `secretsWoVersion` attribute. This is an ordered list, so reordering the blocks is treated as a change. Conflicts with `secrets`.
+func (o LookupActionResultOutput) SecretsWos() GetActionSecretsWoArrayOutput {
+	return o.ApplyT(func(v LookupActionResult) []GetActionSecretsWo { return v.SecretsWos }).(GetActionSecretsWoArrayOutput)
 }
 
 // List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.

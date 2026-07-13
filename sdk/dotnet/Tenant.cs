@@ -132,7 +132,7 @@ namespace Pulumi.Auth0
         /// The default absolute redirection URI. Must be HTTPS or an empty string.
         /// </summary>
         [Output("defaultRedirectionUri")]
-        public Output<string> DefaultRedirectionUri { get; private set; } = null!;
+        public Output<string?> DefaultRedirectionUri { get; private set; } = null!;
 
         /// <summary>
         /// Token Quota configuration.

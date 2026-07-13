@@ -103,7 +103,7 @@ type Tenant struct {
 	// Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
 	DefaultDirectory pulumi.StringOutput `pulumi:"defaultDirectory"`
 	// The default absolute redirection URI. Must be HTTPS or an empty string.
-	DefaultRedirectionUri pulumi.StringOutput `pulumi:"defaultRedirectionUri"`
+	DefaultRedirectionUri pulumi.StringPtrOutput `pulumi:"defaultRedirectionUri"`
 	// Token Quota configuration.
 	DefaultTokenQuota TenantDefaultTokenQuotaPtrOutput `pulumi:"defaultTokenQuota"`
 	// Disable list of supported ACR values.
@@ -569,8 +569,8 @@ func (o TenantOutput) DefaultDirectory() pulumi.StringOutput {
 }
 
 // The default absolute redirection URI. Must be HTTPS or an empty string.
-func (o TenantOutput) DefaultRedirectionUri() pulumi.StringOutput {
-	return o.ApplyT(func(v *Tenant) pulumi.StringOutput { return v.DefaultRedirectionUri }).(pulumi.StringOutput)
+func (o TenantOutput) DefaultRedirectionUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Tenant) pulumi.StringPtrOutput { return v.DefaultRedirectionUri }).(pulumi.StringPtrOutput)
 }
 
 // Token Quota configuration.

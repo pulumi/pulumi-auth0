@@ -315,6 +315,16 @@ export const getPromptScreenRenderer: typeof import("./getPromptScreenRenderer")
 export const getPromptScreenRendererOutput: typeof import("./getPromptScreenRenderer").getPromptScreenRendererOutput = null as any;
 utilities.lazyLoad(exports, ["getPromptScreenRenderer","getPromptScreenRendererOutput"], () => require("./getPromptScreenRenderer"));
 
+export { GetRateLimitPoliciesArgs, GetRateLimitPoliciesResult, GetRateLimitPoliciesOutputArgs } from "./getRateLimitPolicies";
+export const getRateLimitPolicies: typeof import("./getRateLimitPolicies").getRateLimitPolicies = null as any;
+export const getRateLimitPoliciesOutput: typeof import("./getRateLimitPolicies").getRateLimitPoliciesOutput = null as any;
+utilities.lazyLoad(exports, ["getRateLimitPolicies","getRateLimitPoliciesOutput"], () => require("./getRateLimitPolicies"));
+
+export { GetRateLimitPolicyArgs, GetRateLimitPolicyResult, GetRateLimitPolicyOutputArgs } from "./getRateLimitPolicy";
+export const getRateLimitPolicy: typeof import("./getRateLimitPolicy").getRateLimitPolicy = null as any;
+export const getRateLimitPolicyOutput: typeof import("./getRateLimitPolicy").getRateLimitPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getRateLimitPolicy","getRateLimitPolicyOutput"], () => require("./getRateLimitPolicy"));
+
 export { GetResourceServerArgs, GetResourceServerResult, GetResourceServerOutputArgs } from "./getResourceServer";
 export const getResourceServer: typeof import("./getResourceServer").getResourceServer = null as any;
 export const getResourceServerOutput: typeof import("./getResourceServer").getResourceServerOutput = null as any;
@@ -477,6 +487,11 @@ utilities.lazyLoad(exports, ["PromptScreenRenderer"], () => require("./promptScr
 
 export * from "./provider";
 import { Provider } from "./provider";
+
+export { RateLimitPolicyArgs, RateLimitPolicyState } from "./rateLimitPolicy";
+export type RateLimitPolicy = import("./rateLimitPolicy").RateLimitPolicy;
+export const RateLimitPolicy: typeof import("./rateLimitPolicy").RateLimitPolicy = null as any;
+utilities.lazyLoad(exports, ["RateLimitPolicy"], () => require("./rateLimitPolicy"));
 
 export { ResourceServerArgs, ResourceServerState } from "./resourceServer";
 export type ResourceServer = import("./resourceServer").ResourceServer;
@@ -711,6 +726,8 @@ const _module = {
                 return new PromptScreenPartials(name, <any>undefined, { urn })
             case "auth0:index/promptScreenRenderer:PromptScreenRenderer":
                 return new PromptScreenRenderer(name, <any>undefined, { urn })
+            case "auth0:index/rateLimitPolicy:RateLimitPolicy":
+                return new RateLimitPolicy(name, <any>undefined, { urn })
             case "auth0:index/resourceServer:ResourceServer":
                 return new ResourceServer(name, <any>undefined, { urn })
             case "auth0:index/resourceServerScope:ResourceServerScope":
@@ -814,6 +831,7 @@ pulumi.runtime.registerResourceModule("auth0", "index/promptPartials", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/promptScreenPartial", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/promptScreenPartials", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/promptScreenRenderer", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/rateLimitPolicy", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/resourceServer", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/resourceServerScope", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/resourceServerScopes", _module)

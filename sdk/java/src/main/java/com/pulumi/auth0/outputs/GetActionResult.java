@@ -6,10 +6,12 @@ package com.pulumi.auth0.outputs;
 import com.pulumi.auth0.outputs.GetActionDependency;
 import com.pulumi.auth0.outputs.GetActionModule;
 import com.pulumi.auth0.outputs.GetActionSecret;
+import com.pulumi.auth0.outputs.GetActionSecretsWo;
 import com.pulumi.auth0.outputs.GetActionSupportedTrigger;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -54,10 +56,20 @@ public final class GetActionResult {
      */
     private String runtime;
     /**
-     * @return List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
+     * @return List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned. **Note:** Secret values are persisted in Terraform state as plain text. For better security, consider using `secretsWo` instead, which supports write-only values and ephemeral variables.
      * 
      */
     private List<GetActionSecret> secrets;
+    /**
+     * @return Version number for `secretsWo` changes. Adding, renaming, or removing a `secretsWo` entry is detected automatically, but changing only the **value** of an existing secret is not (write-only values are not tracked in state). Increment this value to push value-only changes to the API.
+     * 
+     */
+    private Integer secretsWoVersion;
+    /**
+     * @return List of secrets for the action (write-only). Secret values are only available during resource creation and update, and are **not** stored in Terraform state. Adding, renaming, or removing an entry is applied automatically; to change only the value of an existing secret, bump the `secretsWoVersion` attribute. To remove all secrets, delete the `secretsWo` blocks together with the `secretsWoVersion` attribute. This is an ordered list, so reordering the blocks is treated as a change. Conflicts with `secrets`.
+     * 
+     */
+    private List<GetActionSecretsWo> secretsWos;
     /**
      * @return List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
      * 
@@ -120,11 +132,25 @@ public final class GetActionResult {
         return this.runtime;
     }
     /**
-     * @return List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
+     * @return List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned. **Note:** Secret values are persisted in Terraform state as plain text. For better security, consider using `secretsWo` instead, which supports write-only values and ephemeral variables.
      * 
      */
     public List<GetActionSecret> secrets() {
         return this.secrets;
+    }
+    /**
+     * @return Version number for `secretsWo` changes. Adding, renaming, or removing a `secretsWo` entry is detected automatically, but changing only the **value** of an existing secret is not (write-only values are not tracked in state). Increment this value to push value-only changes to the API.
+     * 
+     */
+    public Integer secretsWoVersion() {
+        return this.secretsWoVersion;
+    }
+    /**
+     * @return List of secrets for the action (write-only). Secret values are only available during resource creation and update, and are **not** stored in Terraform state. Adding, renaming, or removing an entry is applied automatically; to change only the value of an existing secret, bump the `secretsWoVersion` attribute. To remove all secrets, delete the `secretsWo` blocks together with the `secretsWoVersion` attribute. This is an ordered list, so reordering the blocks is treated as a change. Conflicts with `secrets`.
+     * 
+     */
+    public List<GetActionSecretsWo> secretsWos() {
+        return this.secretsWos;
     }
     /**
      * @return List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
@@ -158,6 +184,8 @@ public final class GetActionResult {
         private @Nullable String name;
         private String runtime;
         private List<GetActionSecret> secrets;
+        private Integer secretsWoVersion;
+        private List<GetActionSecretsWo> secretsWos;
         private List<GetActionSupportedTrigger> supportedTriggers;
         private String versionId;
         public Builder() {}
@@ -171,6 +199,8 @@ public final class GetActionResult {
     	      this.name = defaults.name;
     	      this.runtime = defaults.runtime;
     	      this.secrets = defaults.secrets;
+    	      this.secretsWoVersion = defaults.secretsWoVersion;
+    	      this.secretsWos = defaults.secretsWos;
     	      this.supportedTriggers = defaults.supportedTriggers;
     	      this.versionId = defaults.versionId;
         }
@@ -245,6 +275,25 @@ public final class GetActionResult {
             return secrets(List.of(secrets));
         }
         @CustomType.Setter
+        public Builder secretsWoVersion(Integer secretsWoVersion) {
+            if (secretsWoVersion == null) {
+              throw new MissingRequiredPropertyException("GetActionResult", "secretsWoVersion");
+            }
+            this.secretsWoVersion = secretsWoVersion;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder secretsWos(List<GetActionSecretsWo> secretsWos) {
+            if (secretsWos == null) {
+              throw new MissingRequiredPropertyException("GetActionResult", "secretsWos");
+            }
+            this.secretsWos = secretsWos;
+            return this;
+        }
+        public Builder secretsWos(GetActionSecretsWo... secretsWos) {
+            return secretsWos(List.of(secretsWos));
+        }
+        @CustomType.Setter
         public Builder supportedTriggers(List<GetActionSupportedTrigger> supportedTriggers) {
             if (supportedTriggers == null) {
               throw new MissingRequiredPropertyException("GetActionResult", "supportedTriggers");
@@ -273,6 +322,8 @@ public final class GetActionResult {
             _resultValue.name = name;
             _resultValue.runtime = runtime;
             _resultValue.secrets = secrets;
+            _resultValue.secretsWoVersion = secretsWoVersion;
+            _resultValue.secretsWos = secretsWos;
             _resultValue.supportedTriggers = supportedTriggers;
             _resultValue.versionId = versionId;
             return _resultValue;
